@@ -38,6 +38,7 @@ import 'core-js/es6/regexp';
 import 'core-js/es6/map';
 import 'core-js/es6/weak-map';
 import 'core-js/es6/set';
+import 'core-js/es6/string';
 
 /** Evergreen browsers require these. **/
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
@@ -73,3 +74,5 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+import cssVars from 'css-vars-ponyfill';
+cssVars({ watch: true, onlyLegacy: true, shadowDOM: true});

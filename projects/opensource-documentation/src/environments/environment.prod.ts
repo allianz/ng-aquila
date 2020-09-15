@@ -1,6 +1,8 @@
+declare var require: any;
+
 export const environment = {
-  CURRENT_CHANNEL: '{CURRENT_CHANNEL}',
+  CURRENT_CHANNEL: 'stable',
   CURRENT_VERSION: require('projects/ng-aquila/src/package.json').version,
-  VERSIONS: [],
+  VERSIONS: require('../../../../versions.json'),
   production: true
 };

@@ -65,7 +65,6 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         if (themeFromQuery) {
           this._themeSwitcherService.switchTheme(themeFromQuery);
         } else {
-          this.stopPonyfill();
           this._themeSwitcherService.removeTheming();
         }
       } else {
@@ -82,7 +81,6 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
       takeUntil(this._destroyed)
     ).subscribe(theme => {
       this.selectedTheme = theme;
-      this.startPonyfill();
       if (this.cssVarSidebar) {
         this.cssVarSidebar.reset();
       }
@@ -135,44 +133,5 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   ngOnDestroy() {
     this._destroyed.next();
     this._destroyed.complete();
-  }
-
-  startPonyfill() {
-    if (this._ponyFillIsRunning) { return; }
-    this._ponyFillIsRunning = true;
-    cssVars({
-      onlyLegacy: true,
-      shadowDOM: true,
-      updateURLs: false,
-      silent: true,
-      watch: true,
-      onComplete(cssText, styleNode, cssVariables, benchmark) {
-        console.log(benchmark);
-      },
-      onWarning(message) { }
-    });
-  }
-
-  // We stop the ponyfill by calling it again with watch=false
-  // watch is needed in angular as angular constantly adds style elements
-  // depending which component was loaded on the current page
-  // stopping watch kills the mutationobserver
-  // updateDOM: false means in this call we also do not want the ponyfill
-  // to add anything in the DOM
-  stopPonyfill() {
-    if (!this._ponyFillIsRunning) { return; }
-    this._ponyFillIsRunning = false;
-    cssVars({
-      watch: false,
-      updateDOM: false,
-      onComplete: (cssText, styleNode, cssVariables, benchmark) => {
-        console.log('cleaning up after css var ponyfill');
-        const styleTags = document.getElementsByTagName('style');
-        const linkTags = document.getElementsByTagName('link');
-        this.clearStyleTags(styleTags);
-        this.clearStyleTags(linkTags);
-      },
-      onWarning(message) { }
-    });
   }
 }

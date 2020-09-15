@@ -24,15 +24,15 @@ const ROUTES = [
   }
 ];
 
-// const channels = environment.VERSIONS.channels.map(channel => {
-//   return { name: channel, url: environment.VERSIONS.urls[channel]};
-// });
+const channels = environment.VERSIONS.channels.map(channel => {
+  return { name: channel, url: environment.VERSIONS.urls[channel]};
+});
 
-// const VERSIONS: DocVersions = {
-//   currentVersion: environment.CURRENT_VERSION,
-//   currentChannel: environment.CURRENT_CHANNEL,
-//   channels: channels
-// };
+const VERSIONS: DocVersions = {
+  currentVersion: environment.CURRENT_VERSION,
+  currentChannel: environment.CURRENT_CHANNEL,
+  channels
+};
 
 const LOGO_PATH: LogoPath = {
   logoWithTitlePath: 'assets/logos/aposin_logo_with_text.svg',
@@ -65,7 +65,7 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
   providers: [
     { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
     { provide: NXV_MANIFEST_TOKEN, useValue: MANIFEST },
-    // { provide: NX_DOC_VERSIONS, useValue: VERSIONS},
+    { provide: NX_DOC_VERSIONS, useValue: VERSIONS},
     { provide: NX_DOCS_SELECTABLE_THEMES, useValue: [
       { name: 'docs-dark', displayName: 'Default', url: 'assets/aposin.css' },
       { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' }

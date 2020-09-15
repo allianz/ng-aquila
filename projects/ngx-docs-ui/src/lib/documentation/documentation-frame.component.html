@@ -31,7 +31,7 @@
       <nxv-theme-switch *ngIf="showThemingSwitcher" [themes]="themes"
         [selected]="selectedTheme" (selectedChange)="selectTheme($event)">
       </nxv-theme-switch>
-      <!-- <nxv-version-select class="docs-version-select"></nxv-version-select> -->
+      <nxv-version-select class="docs-version-select"></nxv-version-select>
       <nx-link>
         <a [href]="githubLinkConfig.repoLink"
           target="_blank">
