@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "ng-high-memory": "NODE_OPTIONS=--max-old-space-size=5120 ng",
+    "release": "standard-version -n",
     "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation --port=4200",
     "build": "ng build",
     "test": "ng test",
@@ -26,6 +27,10 @@
     "build:package": "node ./scripts/build-package.js",
     "library:generate:docs": "npm run cli -- generate projects/ng-aquila",
     "cli": "ts-node --project projects/ngx-docs-cli/tsconfig.json ./projects/ngx-docs-cli/src/main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/aposin/ng-aquila.git"
   },
   "husky": {
     "hooks": {
@@ -113,6 +118,7 @@
     "rimraf": "^3.0.2",
     "sass-lint": "^1.13.1",
     "shelljs": "^0.8.4",
+    "standard-version": "^9.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "tslint-jasmine-rules": "^1.6.1",
