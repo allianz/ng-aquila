@@ -1,0 +1,62 @@
+@import "../../../../ng-aquila/src/shared-styles/index";
+
+$icon-diameter: nx-spacer(m);
+$up-icon-shift: -3px;
+$down-icon-shift: $up-icon-shift + nx-spacer(2xs);
+
+:host {
+  cursor: pointer;
+}
+
+.nx-sort-header__icons-container {
+  display: inline-block;
+  margin-right: nx-spacer(2xs);
+  vertical-align: bottom;
+  width: $icon-diameter;
+  position: relative;
+  height: $icon-diameter;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
+
+  nx-icon {
+    font-size: nx-font-size(xs);
+    position: absolute;
+    font-weight: nx-font-weight(semibold);
+    width: $icon-diameter;
+  }
+
+  .nx-sort-header__icon-up {
+    top: $up-icon-shift;
+  }
+
+  .nx-sort-header__icon-down {
+    top: $down-icon-shift;
+  }
+
+  .nx-sort-header__hidden-icon {
+    visibility: hidden;
+  }
+}
+
+.nx-sort-header__focus-container {
+  display: flex;
+}
+
+.nx-sort-header__focus-container:focus {
+  // don't show inner dotted border on firefox
+  outline: 0;
+
+  :host-context([data-whatinput="keyboard"]) & {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-sort-header__focus-container {
+    color: buttonText;
+  }
+}

@@ -1,0 +1,3 @@
+<nx-taglist [nxTags]="tags" [nxAllowTagDeletion]="false" tabindex="0" (nxTagClick)="log($event)">
+</nx-taglist>
+<pre *ngIf="logMessage">{{logMessage}}</pre>

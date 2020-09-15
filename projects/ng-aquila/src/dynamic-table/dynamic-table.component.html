@@ -1,0 +1,26 @@
+<div class="nx-table__container" *ngIf="data && data.length > 0">
+  <div class="nx-table__scroll">
+    <cdk-table [dataSource]="dataSource" class="nx-table">
+      <!-- Column Definition -->
+      <ng-container *ngFor="let element of displayedColumns" cdkColumnDef="{{element.key}}">
+        <cdk-header-cell *cdkHeaderCellDef class="nx-table__header-cell"
+                         [ngClass]="{'nx-table__header-cell--number': isNumeric(element) }">
+          <div class="nx-table__header-title--block">
+            <span class="nx-table__header-title"> {{element.title}}</span>
+          </div>
+        </cdk-header-cell>
+        <cdk-cell *cdkCellDef="let row" class="nx-table__cell"
+                  [ngClass]="{'nx-table__cell--number': isNumeric(element) }" [innerHTML]="row[element.key]"></cdk-cell>
+      </ng-container>
+
+      <!-- Header and Row Declarations -->
+      <cdk-header-row *cdkHeaderRowDef="columnKeys" class="nx-table__header-row"></cdk-header-row>
+      <cdk-row *cdkRowDef="let row; columns: columnKeys" class="nx-table__row"
+               (dblclick)="handleRowClick(row)"></cdk-row>
+
+    </cdk-table>
+  </div>
+</div>
+<div class="nx-table__appendix" *ngIf="data.length === 0">
+  <ng-content></ng-content>
+</div>

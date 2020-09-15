@@ -1,0 +1,31 @@
+<nx-formfield nxLabel="Phone number (Prefix)">
+  <input nxInput nxAriaLabel="Phone number with prefix +49"/>
+  <span nxFormfieldPrefix>
+    +49
+  </span>
+</nx-formfield>
+
+<nx-formfield nxLabel="Amount of damage (Postfix)">
+  <input nxInput type="number" nxAriaLabel="Amount of Damage (Euro)"/>
+  <span nxFormfieldSuffix>
+    Euro
+  </span>
+</nx-formfield>
+
+<nx-formfield nxLabel="Your name (Appendix)">
+  <input nxInput/>
+  <span nxFormfieldAppendix>
+    <a
+      [nxPopoverTriggerFor]='popoverAppendixExample'
+      nxPopoverDirection="top"
+      nxPopoverTrigger="hover">
+      <nx-icon name="info-circle-o"></nx-icon>
+    </a>
+  </span>
+</nx-formfield>
+
+<nx-popover #popoverAppendixExample>
+    <div style="max-width: 300px;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa. Nemo, eius exercitationem?
+    </div>
+</nx-popover>

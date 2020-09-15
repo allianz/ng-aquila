@@ -1,0 +1,12 @@
+{
+  "spec_dir": "/dist/ng-aquila/schematics",
+  "spec_files": [
+    "**/*[sS]pec.js",
+    "!**/*nospec.js"
+  ],
+  "helpers": [
+    "test/helpers/**/*.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": false
+}

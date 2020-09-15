@@ -1,0 +1,7 @@
+<h2 class="component-examples__header">All examples for {{(componentService.current | async).title}}</h2>
+
+<ng-container *ngFor="let example of (componentService.current | async).examples">
+    <nxv-example-viewer
+      example ='{{example}}'>
+    </nxv-example-viewer>
+</ng-container>

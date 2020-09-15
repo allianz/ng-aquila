@@ -1,0 +1,19 @@
+<input
+  type="radio"
+  [id]="inputId"
+  [attr.name]="name"
+  [disabled]="disabled"
+  (blur)="touch()"
+  (change)="_onInputChange($event)"
+  (click)="_onInputClick($event)"
+  [checked]="checked"
+  [attr.aria-labelledby]="labelId"
+  class="nx-radio__input">
+<label [id]="labelId" [attr.for]="inputId" class="nx-radio__label" [class.has-label]="labelHasContent">
+    <div class="nx-radio__circle">
+      <div *ngIf="checked" class="nx-radio__dot"></div>
+    </div>
+    <span class="nx-radio__label--text" #radioLabelWrapper (cdkObserveContent)="labelContentChanged()">
+      <ng-content></ng-content>
+    </span>
+</label>

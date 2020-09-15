@@ -1,0 +1,19 @@
+<div class="component-overview__header-container">
+  <h1 class="component-overview__header">
+    {{(componentService.current | async)?.title}}
+  </h1>
+  <nx-badge *ngIf="(componentService.current | async)?.expert === true && (componentService.current | async)?.b2c === false"
+            type="active">
+    expert component
+  </nx-badge>
+</div>
+<nx-tab-nav-bar class="component-overview__navigation" appearance="expert">
+  <a
+    nxTabLink *ngFor="let tab of activeTabs"
+    [routerLink]="tab.path"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive">
+    {{tab.label}}
+</a>
+</nx-tab-nav-bar>
+<router-outlet></router-outlet>

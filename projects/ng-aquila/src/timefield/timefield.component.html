@@ -1,0 +1,55 @@
+<label class="nx-timefield__label" [ngClass]="hasFocus" [attr.for]="hours">{{label}}</label>
+<div class="nx-timefield__wrapper">
+  <div class="nx-timefield-input__fields" [ngClass]="hasFocus">
+    <input
+     [id]="idHours"
+      #inputHours
+      [value]="hours || null"
+      class="nx-timefield-input__field__hours"
+      type="text"
+      maxlength="2"
+      autocomplete="off"
+      (focusout)="_onBlur('hours')"
+      (input)="_onInput($event,'hours')"
+      (focus)="_onFocus()"
+      [required]="required"
+      [attr.aria-required]="required"
+      [attr.aria-label]="_getAriaLabel('hours')"
+      [disabled]="disabled"
+      [ngClass]="hasFocus"
+      [placeholder]="placeholderHours"
+    />
+    <span class="nx-timefield-hours-separator" [ngClass]="hasFocus">:</span>
+    <input
+      [id]="idMinutes"
+      required
+      #inputMinutes
+      [value]="minutes || null"
+      class="nx-timefield-input__field__minutes"
+      type="text"
+      maxlength="2"
+      autocomplete="off"
+      (input)="_onInput($event,'minutes')"
+      (focus)="_onFocus()"
+      (focusout)="_onBlur('minutes')"
+      [required]="required"
+      [attr.aria-required]="required"
+      [attr.aria-label]="_getAriaLabel('minutes')"
+      [disabled]="disabled"
+      [ngClass]="hasFocus"
+      [placeholder]="placeholderMinutes"
+    />
+  </div>
+  <nx-radio-group
+      [name]="idRadioGroup"
+      [(ngModel)]="_toggleAMPM"
+      (ngModelChange)="_updateTime()"
+      *ngIf="twelveHourFormat"
+      (click)="_updateTime()"
+      [disabled]="disabled"
+      [negative]="negative"
+    >
+    <nx-radio labelSize="small" nxValue="AM">{{labelAM}}</nx-radio>
+    <nx-radio labelSize="small" nxValue="PM">{{labelPM}}</nx-radio>
+  </nx-radio-group>
+</div>

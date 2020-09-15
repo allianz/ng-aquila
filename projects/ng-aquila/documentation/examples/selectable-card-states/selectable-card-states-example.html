@@ -1,0 +1,31 @@
+<nx-selectable-card>
+  <p>Default selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card checked>
+  <p>Checked selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card disabled>
+  <p>Disabled selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card disabled checked>
+  <p>Disabled and checked selectable card</p>
+</nx-selectable-card>
+
+<form [formGroup]="formGroup">
+  <nx-selectable-card required formControlName="errorCard" class="nx-margin-bottom-xs">
+    <p>Selectable card with error</p>
+    <nx-error appearance="text">
+      This card must be selected.
+    </nx-error>
+  </nx-selectable-card>
+
+  <nx-selectable-card required formControlName="errorCard2">
+    <p>Checked selectable card with error</p>
+    <nx-error appearance="text">
+      This card must not be selected.
+    </nx-error>
+  </nx-selectable-card>
+</form>

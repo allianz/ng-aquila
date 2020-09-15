@@ -1,0 +1,33 @@
+@import '../shared-styles/index';
+
+:host {
+  display: block;
+}
+
+.nx-progress-stepper__content {
+  &[aria-expanded='false'] {
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.nx-progress-stepper__mobile-label {
+  display: none;
+  @include var(color, progress-indicator-mobile-color);
+  @include type-style(progress-indicator-mobile);
+}
+
+@include media-breakpoint-down(small) {
+  .nx-progress-stepper__mobile-label {
+    display: block;
+    text-align: center;
+  }
+}
+
+.nx-progress-stepper__title {
+  display: block;
+
+  ::ng-deep nx-label {
+    margin-bottom: nx-spacer(m);
+  }
+}

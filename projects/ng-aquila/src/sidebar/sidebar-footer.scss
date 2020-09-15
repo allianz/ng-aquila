@@ -1,0 +1,11 @@
+@import '../shared-styles/index';
+
+
+.nx-sidebar__footer-container {
+
+  ::ng-deep [nxbutton],
+  ::ng-deep [nxiconbutton],
+  ::ng-deep [nxsidebartoggle] {
+    @include var(color, sidebar-footer-button-color)
+  }
+}

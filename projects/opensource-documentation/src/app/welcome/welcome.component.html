@@ -1,0 +1,28 @@
+<main>
+  <div nxLayout="grid maxwidth" class="nxv-info-panel">
+    <div nxRow class="nxv-grey-row">
+      <div nxCol="12">
+        <div class="nxv-welcome__container">
+          <h1 nxHeadline="section">Aquila Components </h1>
+
+          <p class="nxv-welcome__text">User Interface (UI) library for the Open Insurance Platform</p>
+          <p class="nxv-welcome__subtext">powered by Allianz GDF</p>
+
+          <div class="nxv-welcome__buttons">
+            <button nxButton="secondary" [routerLink]="['/guides']"
+              type="button">Get Started</button>
+            <button nxButton="primary" [routerLink]="['/documentation']"
+              type="button">Components</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div nxRow>
+    <div nxCol="12">
+      <doc-footer></doc-footer>
+    </div>
+  </div>
+
+</main>

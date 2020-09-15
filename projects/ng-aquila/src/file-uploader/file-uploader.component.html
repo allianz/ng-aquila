@@ -1,0 +1,53 @@
+<ng-content select="nx-label"></ng-content>
+<ng-content select="[nxFileUploadHint]"></ng-content>
+<ng-content select="nx-file-uploader-drop-zone"></ng-content>
+<ng-content select="[nxFileUploadButton]"></ng-content>
+<input #nativeInputFile
+       type="file"
+       [attr.multiple]="multiple || null"
+       [attr.disabled]="disabled || null"
+       [attr.accept]="accept"
+       (change)="_onFileChange($event)"
+>
+<ng-container *ngIf="value">
+  <div class="nx-file-uploader--file-list nx-margin-bottom-m"
+       role="listbox"
+  >
+    <div class="nx-file-uploader--file-row"
+         [class.nx-file-uploader--file-state-uploading]="file.isUploading"
+         *ngFor="let file of value"
+         role="option"
+         tabindex="0"
+         (keydown)="_handleKeydownListRow($event)"
+    >
+      <div class="nx-file-uploader--file-name">
+        {{file?.name}}
+      </div>
+
+      <div class="nx-file-uploader--file-size">
+        <span *ngIf="!file.isUploading">{{file?.size/1024/1024 | number:'.2'}} MB</span>
+        <span *ngIf="file.isUploading">{{uploadingLabel}}</span>
+      </div>
+
+      <div class="nx-file-uploader--file-row-actions">
+        <div class="nx-file-uploader--file-status">
+          <nx-spinner nxSize="medium" *ngIf="file.isUploading"></nx-spinner>
+          <nx-icon name="check-circle" size="s" *ngIf="file.isUploaded"  [attr.aria-label]="uploadedLabel || null"></nx-icon>
+        </div>
+
+        <button nxIconButton="tertiary small-medium"
+                [attr.aria-label]="deleteLabel || null"
+                class="nx-file-uploader--file-action-delete"
+                type="button"
+                [attr.disabled]="file.isUploading || null"
+                (click)="removeFile(file)"
+                aria-hidden="true"
+        >
+          <nx-icon name="trash-o"></nx-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-content select="nx-error" *ngIf="errorState"></ng-content>

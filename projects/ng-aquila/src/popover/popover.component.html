@@ -1,0 +1,23 @@
+<ng-template>
+  <div [ngClass]="classList" role="tooltip" aria-hidden="false" (click)="_onClick($event)" [dir]="dir">
+    <div class="nx-popover__content" tabindex="0">
+        <div class="nx-popover__arrow" [ngStyle]="arrowStyle">
+          </div>
+      <span
+          aria-label="close"
+          tabindex="0"
+          role="button"
+          class="nx-popover__close-icon"
+          (click)="emitCloseButtonClick()"
+          (keyup)="_onCloseKeyup($event)"
+          *ngIf="showCloseButton">
+        <nx-icon aria-hidden="true" name="close"></nx-icon>
+        </span>
+
+      <span [id]="id">
+        <ng-content></ng-content>
+        <ng-container [ngTemplateOutlet]="_lazyContent?._template"></ng-container>
+      </span>
+    </div>
+  </div>
+</ng-template>

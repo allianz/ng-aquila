@@ -1,0 +1,31 @@
+.color-box {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  border-radius: 4px;
+  border: 1px solid #FFFFFF;
+}
+
+.patrol {
+  background: #007D8C;
+}
+
+.purple {
+  background: #5A3982;
+}
+
+.blue {
+  background: #49648C;
+}
+
+.patrol.isDisabled {
+  background: rgba(0, 125, 140, .4);
+}
+
+.purple.isDisabled {
+  background: rgba(90, 57, 130, .4);
+}
+
+.blue.isDisabled {
+  background: rgba(73, 100, 140, .4);
+}

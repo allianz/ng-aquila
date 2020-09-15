@@ -1,0 +1,15 @@
+<ng-template>
+  <div class="nx-context-menu"
+    [ngClass]="_classList"
+    (keydown)="_handleKeydown($event)"
+    (click)="closed.emit('click')"
+    [@transformContextMenu]="_panelAnimationState"
+    (@transformContextMenu.start)="_onAnimationStart($event)"
+    (@transformContextMenu.done)="_onAnimationDone($event)"
+    tabindex="-1"
+    role="menu">
+    <div class="nx-context-menu__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,43 @@
+@import "../../shared-styles/index";
+
+.nx-comparison-table__mobile-toggle-section-header {
+  @include type-style(comparison-table-mobile-section-header);
+
+  @include var(background-color, comparison-table-toggle-section-header-background-color);
+  padding: 8px 16px;
+
+  border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+}
+
+.nx-comparison-table-toggle-section__header-wrapper {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nx-comparison-table-toggle-section__header-wrapper:focus {
+  // don't show inner dotted border on firefox
+  outline: 0;
+}
+
+.nx-comparison-table-toggle-section__header-content {
+  $header-content-padding: 24px 32px 24px 16px;
+  @include type-style(heading-04);
+  padding: $header-content-padding;
+  border: nx-border-size(xs) solid v(comparison-table-border-color);
+  @include var(background-color, comparison-table-toggle-section-header-background-color);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  :host-context([dir="rtl"]) & {
+    padding: nx-flip-for-rtl($header-content-padding);
+  }
+}
+
+.nx-expansion-panel__chevron {
+  pointer-events: none;
+  @include var(font-size, accordion-chevron-size);
+  @include var(color, accordion-regular-chevron-color);
+}

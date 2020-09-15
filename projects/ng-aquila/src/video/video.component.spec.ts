@@ -1,0 +1,227 @@
+import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import * as axe from 'axe-core';
+
+import { NxVideoComponent } from './video.component';
+import { NxVideoModule } from './video.module';
+import { By } from '@angular/platform-browser';
+
+// For better readablity here, We can safely ignore some conventions in our specs
+// tslint:disable:component-class-suffix
+
+@Directive()
+abstract class VideoTest {
+  @ViewChild(NxVideoComponent) videoInstance: NxVideoComponent;
+
+  videoId = 'fooBAR';
+  altText = '';
+  nxPlayButtonAriaLabel = '';
+  previewImageSrc = '';
+  fullscreen = true;
+}
+
+describe('NxVideoComponent', () => {
+  let fixture: ComponentFixture<VideoTest>;
+  let testInstance: VideoTest;
+  let videoInstance: NxVideoComponent;
+
+  const createTestComponent = (component: Type<VideoTest>) => {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    videoInstance = testInstance.videoInstance;
+  };
+
+  function getIframe(): HTMLIFrameElement {
+    return fixture.nativeElement.querySelector('iframe');
+  }
+
+  function getPreviewImageElement(): HTMLImageElement {
+    return fixture.nativeElement.querySelector('.nx-video__thumbnail');
+  }
+
+  function getVideoPlayButton(): HTMLButtonElement {
+    return fixture.nativeElement.querySelector('.nx-video__play-button');
+  }
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        BasicVideo
+      ],
+      imports: [
+        NxVideoModule
+      ]
+    }).compileComponents();
+  }));
+
+  it('creates the video component', async(() => {
+    createTestComponent(BasicVideo);
+    expect(videoInstance).toBeTruthy();
+  }));
+
+  it('replaces the image on play button click', async(() => {
+    createTestComponent(BasicVideo);
+    let thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
+    expect(thumbnail).not.toBe(null);
+
+    const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+    playButton.nativeElement.click();
+    fixture.detectChanges();
+
+    thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
+    expect(thumbnail).toBe(null);
+  }));
+
+  it('constructs correct preview image source URL', async(() => {
+    createTestComponent(BasicVideo);
+
+    testInstance.videoId = 'fooBAR';
+    fixture.detectChanges();
+    expect(videoInstance.imgSrc).toBe('https://img.youtube.com/vi/fooBAR/sddefault.jpg');
+  }));
+
+  it('use preview img src if set', async(() => {
+    createTestComponent(BasicVideo);
+    testInstance.previewImageSrc = 'testURI';
+    fixture.detectChanges();
+    expect(videoInstance.imgSrc).toBe('testURI');
+  }));
+
+  it('uses sensible defaults for nxPlayButtonAriaLabel if not set', async(() => {
+    createTestComponent(BasicVideo);
+
+    const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+    expect(playButton.nativeElement.getAttribute('aria-label')).toBe('Play Video');
+  }));
+
+  it('uses altText to construct aria-label if set', async(() => {
+    createTestComponent(BasicVideo);
+    testInstance.altText = 'foo';
+    fixture.detectChanges();
+
+    const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+    expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foo - Play Video');
+  }));
+
+  it('uses nxPlayButtonAriaLabel as aria-label if set', async(() => {
+    createTestComponent(BasicVideo);
+    testInstance.nxPlayButtonAriaLabel = 'foobar';
+    fixture.detectChanges();
+
+    const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+    expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foobar');
+  }));
+
+  it('allows allowfullscreen by default', () => {
+    createTestComponent(BasicVideo);
+    videoInstance.select();
+    fixture.detectChanges();
+    const iframe = getIframe();
+    expect(iframe.getAttribute('allowfullscreen')).toBe('true');
+  });
+
+  it('toggles allowfullscreen', () => {
+    createTestComponent(BasicVideo);
+    videoInstance.select();
+    fixture.detectChanges();
+    const iframe = getIframe();
+    expect(iframe.getAttribute('allowfullscreen')).toBe('true');
+
+    testInstance.fullscreen = false;
+    videoInstance.select();
+    fixture.detectChanges();
+    expect(iframe.getAttribute('allowfullscreen')).toBe('false');
+  });
+
+  describe('programmatic change', () => {
+    it('should update on videoId change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.videoId = '1234';
+      videoInstance.showPlayer = true;
+      fixture.detectChanges();
+      const iframe = getIframe();
+      expect(iframe.src).toContain('/embed/1234');
+    });
+
+    it('should update on altText change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.altText = 'alternative';
+      fixture.detectChanges();
+      const imgElement = getPreviewImageElement();
+      expect(imgElement.alt).toBe('alternative');
+    });
+
+    it('should update on nxPlayButtonAriaLabel change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.nxPlayButtonAriaLabel = 'play-label';
+      fixture.detectChanges();
+      const playButton = getVideoPlayButton();
+      expect(playButton.getAttribute('aria-label')).toBe('play-label');
+    });
+
+    it('should update on previewImageSrc change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.previewImageSrc = '/somewhere/over/the/rainbow';
+      fixture.detectChanges();
+      const imgElement = getPreviewImageElement();
+      expect(imgElement.src).toContain('/somewhere/over/the/rainbow');
+    });
+
+    it('should update on showPlayerControls change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.showPlayerControls = false;
+      videoInstance.showPlayer = true;
+      fixture.detectChanges();
+      const iframe = getIframe();
+      expect(iframe.src).toContain('&controls=0');
+    });
+
+    it('should update on allowFullScreen change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.allowFullScreen = false;
+      videoInstance.showPlayer = true;
+      fixture.detectChanges();
+      const iframe = getIframe();
+      expect(iframe.getAttribute('allowfullscreen')).toBe('false');
+    });
+
+    it('should update on interfaceLanguage change', () => {
+      createTestComponent(BasicVideo);
+      videoInstance.interfaceLanguage = 'ru';
+      videoInstance.showPlayer = true;
+      fixture.detectChanges();
+      const iframe = getIframe();
+      expect(iframe.src).toContain('&hl=ru');
+    });
+  });
+
+  describe('a11y', () => {
+    it('has no accessbility violations', function (done) {
+      createTestComponent(BasicVideo);
+
+      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
+        console.log(JSON.stringify(results.violations));
+
+        expect(results.violations.length).toBe(0);
+        // const violationMessages = results.violations.map(item => item.description);
+        done();
+      });
+    });
+  });
+});
+
+// careful, don't include an actual video id the test template, or your headless test browser might start
+// playing the video in the background spook you out real good ;-)
+@Component({
+  template: `
+    <nx-video
+    [nxAltText]="altText"
+    [nxPreviewImageSrc]="previewImageSrc"
+    [nxVideoId]="videoId"
+    [nxPlayButtonAriaLabel]="nxPlayButtonAriaLabel"
+    [nxAllowFullScreen]="fullscreen"></nx-video>
+  `
+})
+class BasicVideo extends VideoTest {
+}

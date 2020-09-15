@@ -1,0 +1,20 @@
+@import '../../shared-styles/index';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @include media-breakpoint-up('small') {
+    flex-direction: row;
+  }
+}
+
+:host(.is-responsive) {
+  flex-direction: column;
+
+  @include media-breakpoint-up('medium') {
+    flex-direction: row;
+  }
+}

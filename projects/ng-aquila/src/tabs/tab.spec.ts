@@ -1,0 +1,68 @@
+import { NxTabsModule } from './tabs.module';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { Type, Component, ViewChild, Directive } from '@angular/core';
+import { NxTabComponent } from './tab';
+
+@Directive()
+abstract class TabTest {
+  @ViewChild(NxTabComponent) tab: NxTabComponent;
+}
+
+describe('NxTabComponent', () => {
+
+  let fixture: ComponentFixture<TabTest>;
+  let testInstance: TabTest;
+
+  const createTestComponent = (component: Type<TabTest>) => {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+  };
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        NoGroupTest,
+        WithGroup
+      ],
+      imports: [
+        NxTabsModule
+      ]
+    }).compileComponents();
+  }));
+
+  it('should throw an error if tab is not wrapped in tab-group', () => {
+    expect(() => createTestComponent(NoGroupTest)).toThrowError(/The nx-tab element has to be wrapped.*/);
+  });
+
+  it('should destroy the viewrefs when destroyed', () => {
+    createTestComponent(WithGroup);
+    const headerRef = testInstance.tab.headerViewRef;
+    const contentRef = testInstance.tab.contentViewRef;
+    testInstance.tab.ngOnDestroy();
+    fixture.detectChanges();
+    expect(headerRef.destroyed).toBe(true);
+    expect(contentRef.destroyed).toBe(true);
+  });
+});
+
+@Component({
+  template: `
+  <nx-tab>Some content</nx-tab>
+  `
+})
+// tslint:disable-next-line:component-class-suffix
+class NoGroupTest extends TabTest {
+}
+
+@Component({
+  template: `
+  <nx-tab-group>
+    <nx-tab><ng-template nxTabLabel>Label</ng-template>Some content</nx-tab>
+  </nx-tab-group>
+  `
+})
+// tslint:disable-next-line:component-class-suffix
+class WithGroup extends TabTest {
+
+}

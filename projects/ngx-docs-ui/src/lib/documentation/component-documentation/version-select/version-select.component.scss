@@ -1,0 +1,10 @@
+:host {
+  nx-icon {
+    transform: rotateZ(0);
+    transition: transform 200ms ease-out;
+
+    &.icon-rotated {
+      transform: rotate(-180deg);
+    }
+  }
+}

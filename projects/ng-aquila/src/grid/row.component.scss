@@ -1,0 +1,10 @@
+@import './mixins.scss';
+
+:host {
+  @include make-row();
+}
+
+/**
+ * ROW VARIATIONS
+ */
+@include make-row-variations();

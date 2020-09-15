@@ -1,0 +1,16 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12, 12, 4">
+      <nx-formfield nxLabel="Country Code">
+        <nx-dropdown [(ngModel)]="customLabelDropdownValue">
+          <ng-template nxClosedLabel>
+            <span>{{ customLabelDropdownValue?.prefix }}</span>
+          </ng-template>
+          <nx-dropdown-item *ngFor="let item of telPrefixDemoData" [nxValue]="item">
+            {{ item.prefix }} ({{ item.countryId }})
+          </nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

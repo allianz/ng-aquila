@@ -1,0 +1,18 @@
+@import '../shared-styles/index';
+
+:host {
+  display: block;
+}
+
+.nx-radio-toggle {
+  display: flex;
+  height: 100%;
+
+  @include media-breakpoint-down('small') {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}

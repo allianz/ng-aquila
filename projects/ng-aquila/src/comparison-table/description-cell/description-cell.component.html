@@ -1,0 +1,25 @@
+<ng-template #content>
+  <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
+    <div class="nx-comparison-table__description-cell"
+         [attr.role]="_table.viewType === 'desktop' ? 'rowheader' : 'columnheader'"
+         [attr.aria-colspan]="_table.viewType === 'tablet' ? _table._infoColumnCount() : '1'"
+         [attr.id]="id">
+      <div class="nx-comparison-table__cell-content">
+        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="_table.viewType === 'mobile'">
+    <th class="nx-comparison-table__description-cell"
+        [class.is-intersection-column]="_row._isIntersectionRow()"
+        scope="col"
+        [attr.id]="id">
+      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+    </th>
+  </ng-container>
+</ng-template>
+
+<ng-template #ngContent>
+  <ng-content></ng-content>
+</ng-template>

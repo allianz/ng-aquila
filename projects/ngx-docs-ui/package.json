@@ -1,0 +1,17 @@
+{
+  "name": "@aposin/ngx-docs-ui",
+  "private": true,
+  "version": "1.0.0-beta.0",
+  "scripts": {
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+},
+  "devDependencies": {
+    "ng-packagr": "^4.4.5"
+  },
+  "peerDependencies": {
+    "@angular/core": "^7.0.0",
+    "@angular/common": "^7.0.0"
+  }
+}

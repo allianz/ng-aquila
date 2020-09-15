@@ -1,0 +1,8 @@
+:host {
+  overflow-x: auto;
+  display: block;
+}
+
+.nx-table-cell--checkbox {
+  padding-right: 0;
+}

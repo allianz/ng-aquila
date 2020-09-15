@@ -1,0 +1,94 @@
+@import '../../shared-styles/index';
+
+$max-modal-content-height: 65vh !default;
+$horizontal-offset: 48px;
+$action-bar-height: nx-spacer(2xl);
+
+:host {
+  @include var(background, modal-background-color);
+  @include var(color, modal-text-color);
+  padding: nx-spacer(3m) nx-spacer(3m) nx-spacer(4m) nx-spacer(3m);
+  border-radius: nx-border-radius(s);
+  box-shadow: nx-box-shadow(l);
+
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+
+  overflow: auto;
+  outline: 0;
+
+  // The modal container should completely fill its parent overlay element.
+  width: 100%;
+  height: 100%;
+
+  // Since the modal won't stretch to fit the parent, if the height
+  // isn't set, we have to inherit the min and max values explicitly.
+  min-height: inherit;
+  max-height: inherit;
+
+  @include media-breakpoint-down('small') {
+    margin: 0 nx-spacer(2xs);
+    padding: nx-spacer(3m) nx-spacer(2m) nx-spacer(4m) nx-spacer(2m);
+  }
+}
+
+::ng-deep .nx-modal__content {
+  display: block;
+  margin: 0 -#{nx-spacer(3m)};
+  padding: 0 nx-spacer(3m);
+  max-height: $max-modal-content-height;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+::ng-deep .nx-modal__actions {
+
+  // Pull the actions down to avoid their padding stacking with the modal's padding.
+  margin-bottom: -#{nx-spacer(4m)};
+
+  // Make the top grey border also stretch over the modal padding
+  margin-left: -#{nx-spacer(3m)};
+  margin-right: -#{nx-spacer(3m)};
+
+  height: $action-bar-height;
+  border-top: nx-border-size(xs) solid v(modal-actions-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 nx-spacer(3m);
+  border-bottom-left-radius: nx-border-radius(s);
+  border-bottom-right-radius: nx-border-radius(s);
+}
+
+.nx-modal__close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: nx-spacer(s);
+  right: nx-spacer(s);
+  height: nx-spacer(m);
+  outline: none;
+  padding: 0;
+  @include var(color, modal-close-icon-color);
+
+  nx-icon {
+    font-size: nx-font-size(s);
+  }
+
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: nx-spacer(s);
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-modal__close:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}

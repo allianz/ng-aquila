@@ -1,0 +1,207 @@
+@import "../shared-styles/index";
+
+$dropdown-border-radius: nx-border-radius(s);
+$dropdown-border-size: nx-border-size(xs);
+
+@function dropdown-field-padding($padding) {
+  @return $padding - $dropdown-border-size;
+}
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+:host:focus {
+  outline: none;
+}
+
+:host(.nx-dropdown--negative):focus {
+  font-weight: nx-font-weight(semibold);
+}
+
+:host(.nx-dropdown--negative) {
+  @include var(color, negative);
+}
+
+.nx-dropdown__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+:host(.nx-dropdown--disabled) .nx-dropdown__container {
+  cursor: not-allowed;
+}
+
+.nx-dropdown__rendered {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nx-dropdown__panel {
+  box-shadow: map-get($shadows, s);
+  border-radius: $dropdown-border-radius;
+  min-width: 100%;
+
+  ::ng-deep .nx-checkbox__label {
+    @include type-style(dropdown-item);
+    display: flex;
+    align-items: center;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--in-outline-field {
+    .nx-dropdown__panel-header {
+      @include type-style(formfield-outline-label);
+    }
+
+    .nx-dropdown__panel-body {
+      // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
+      max-height: calc(6 * (#{v(dropdown-item-outline-line-height)} + 16px) + 16px);
+    }
+
+    ::ng-deep .nx-dropdown-results__group-label {
+      @include type-style(formfield-outline-label);
+      font-style: normal;
+      font-weight: nx-font-weight(bold);
+    }
+
+    ::ng-deep nx-dropdown-item {
+      .nx-dropdown-results__option, .nx-dropdown-results__option-label {
+        @include dropdown-overlay__option--outline;
+      }
+      .nx-dropdown-results__option-checkicon {
+        @include var(height, dropdown-item-outline-line-height);
+      }
+    }
+
+    ::ng-deep .nx-dropdown__filter-input {
+      @include type-style(formfield-outline-control);
+
+      &:empty {
+        font-weight: nx-font-weight(light);
+      }
+    }
+  }
+}
+
+.nx-dropdown__icon {
+  @include var(font-size, dropdown-chevron-size);
+  line-height: 0;
+}
+
+.nx-dropdown__chevron {
+  vertical-align: middle;
+}
+
+.nx-dropdown__panel-header {
+  @include type-style(formfield-label);
+  @include var(color, dropdown-panel-header-text-color);
+  @include var(background-color, dropdown-panel-header-background-color);
+  padding: nx-spacer(2xs) nx-spacer(2m);
+  border-top-left-radius: $dropdown-border-radius;
+  border-top-right-radius: $dropdown-border-radius;
+  z-index: 1;
+}
+
+.nx-dropdown__panel-body {
+  @include var(background-color, dropdown-panel-background-color);
+  // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
+  max-height: calc(6 * (#{v(dropdown-item-line-height)} + 16px) + 16px);
+  overflow-y: auto;
+  outline: none;
+}
+
+.nx-dropdown__filter {
+  $dropdown-filter-padding: nx-spacer(s) nx-spacer(2m) nx-spacer(xs) nx-spacer(2m);
+
+  position: relative;
+  padding: $dropdown-filter-padding;
+  @include var(background-color, dropdown-panel-background-color);
+
+  [dir="rtl"] & {
+    padding: nx-flip-for-rtl($dropdown-filter-padding);
+  }
+
+}
+
+.nx-dropdown__filter-input {
+  $dropdown-filter-input-padding: 0 nx-spacer(m) dropdown-field-padding(nx-spacer(3xs)) 0; 
+
+  @include type-style(formfield-control);
+  border: 0;
+  border-bottom: $dropdown-border-size v(dropdown-filter-input-border-color) solid;
+  @include var(color, dropdown-filter-input-text-color);
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+  padding: $dropdown-filter-input-padding;
+  font-weight: nx-font-weight(light);
+
+  /* IE10+ Fix to remove the clear button that appears on input */
+  &::-ms-clear {
+    display: none;
+  }
+
+  [dir="rtl"] & {
+    padding: nx-flip-for-rtl($dropdown-filter-input-padding);
+  }
+}
+
+.nx-dropdown__panel.has-filter ::ng-deep nx-dropdown-item:first-of-type .nx-dropdown-results__option {
+  padding-top: nx-spacer(xs);
+}
+
+.nx-dropdown__filter-icon {
+  position: absolute;
+  height: nx-spacer(m);
+  right: nx-spacer(2m);
+  top: calc(#{nx-spacer(s)} + #{$dropdown-border-size});
+  cursor: pointer;
+
+  [dir="rtl"] & {
+    left: nx-spacer(2m);
+    right: auto;
+  }
+}
+
+.nx-dropdown__filter-icon nx-icon {
+  font-size: nx-font-size(s);
+}
+
+.nx-dropdown__filter-input:focus {
+  @include var(border-color, dropdown-filter-input-active-border-color);
+}
+
+.nx-dropdown__filter-input.is-filled:focus {
+  font-weight: nx-font-weight(semibold);
+
+  @include var(color, dropdown-filter-input-active-text-color);
+  @include var(border-color, dropdown-filter-input-active-border-color);
+
+  & + .nx-dropdown__filter-icon {
+    @include var(color, dropdown-filter-input-active-text-color);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-dropdown__panel {
+    box-shadow: 0 0 0 nx-border-size(xs) windowText;
+  }
+
+  .nx-dropdown__panel-header {
+    border-bottom: nx-border-size(xs) solid windowText;
+  }
+
+  .nx-dropdown__filter-input {
+    border-bottom-color: buttonText;
+  }
+}

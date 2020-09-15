@@ -1,0 +1,9 @@
+
+<button nxButton (click)="openFromText()" class="nx-margin-right-s">open from text</button>
+<button nxButton (click)="openFromTemplate()">open from template</button>
+
+<ng-template #template>
+      <strong>Information</strong> <br>
+      You see an info message toast (from a template).
+      It will disappear in 3000 ms.
+</ng-template>

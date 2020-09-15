@@ -1,0 +1,72 @@
+<!--
+We are building the following structure.
+
++-----------------------------+ +-----------+
+| Prefix |   Input   | Suffix | |  Appendix |
++-----------------------------+ +-----------+
+|-----------------Border--------------------|
++-------------------------------------------+
+|                 Hints                     |
++-------------------------------------------+
+|                                           |
+|                Messages                   |
+|                                           |
++-------------------------------------------+
+
+-->
+
+<div class="nx-formfield__wrapper">
+
+
+  <!-- Give a flex context to properly align suffix, input & postfix -->
+  <div class="nx-formfield__row" #connectionContainer>
+    <div class="nx-formfield__flexfield">
+
+
+      <div class="nx-formfield__input-container">
+        <div class="nx-formfield__prefix" *ngIf="_prefixChildren.length">
+          <ng-content select="[nxFormfieldPrefix]"></ng-content>
+        </div>
+
+        <div class="nx-formfield__input">
+          <ng-content></ng-content>
+
+          <!-- This handles the floating whole behavior -->
+          <span class="nx-formfield__label-holder">
+            <label class="nx-formfield__label" [id]="labelId" [attr.aria-owns]="_control.id"
+              [attr.for]="_control.id">
+              <ng-container *ngIf="!_labelChild">
+                {{ label }}
+              </ng-container>
+              <ng-content select="nx-formfield-label"></ng-content>
+            </label>
+          </span>
+        </div>
+
+        <div class="nx-formfield__suffix" *ngIf="_suffixChildren.length">
+          <ng-content select="[nxFormfieldSuffix]"></ng-content>
+        </div>
+      </div>
+      <!-- Space to render the hints below the textfield -->
+      <div class="nx-formfield__hints" *ngIf="_hintChildren.length">
+        <ng-content select="[nxFormfieldHint]"></ng-content>
+      </div>
+    </div>
+
+    <!-- Appendix is similar to a suffix but visibly outside of the input  -->
+    <div class="nx-formfield__appendix" *ngIf="_appendixChildren.length">
+      <ng-content select="[nxFormfieldAppendix]"></ng-content>
+    </div>
+  </div>
+
+  <!-- In case we got some additional information we render them below the given input -->
+  <ng-container [ngSwitch]="getDisplayedMessage()">
+    <div class="nx-formfield__message" *ngSwitchCase="'error'">
+      <ng-content select="[nxFormfieldError]"></ng-content>
+    </div>
+
+    <div class="nx-formfield__message" *ngSwitchCase="'note'">
+      <ng-content select="[nxFormfieldNote]"></ng-content>
+    </div>
+  </ng-container>
+</div>

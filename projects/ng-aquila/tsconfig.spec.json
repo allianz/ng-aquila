@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc",
+    "types": ["jasmine", "node", "karma-viewport"],
+    "target": "es5"
+  },
+  "files": ["test.ts"],
+  "include": ["**/*.spec.ts", "**/*.d.ts"],
+  "exclude": ["src/schematics"]
+}

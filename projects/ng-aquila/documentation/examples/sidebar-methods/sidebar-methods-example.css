@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 300px;
+  display: flex;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+button {
+  margin: 16px;
+}

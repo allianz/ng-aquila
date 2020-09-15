@@ -1,0 +1,24 @@
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+/**
+* @title Timefield reactive forms example
+*/
+@Component({
+  selector: 'nx-timefield-reactive-example',
+  styleUrls: ['timefield-reactive-example.css'],
+  templateUrl: './timefield-reactive-example.html'
+})
+export class TimefieldReactiveExampleComponent {
+  public testForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.testForm = this.fb.group({
+      timefieldReactive: ['22:54', Validators.required]
+    });
+  }
+}

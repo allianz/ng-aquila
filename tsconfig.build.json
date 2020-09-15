@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@aposin/ng-aquila": [
+        "dist/ng-aquila"
+      ],
+      "@aposin/ng-aquila/*": [
+        "dist/ng-aquila/*"
+      ],
+      "@aposin/ngx-docs-ui": [
+        "dist/ngx-docs-ui"
+      ],
+      "@aposin/ng-aquila/documentation/*": [
+        "dist/ng-aquila/documentation/generated/*"
+      ]
+    }
+  }
+}

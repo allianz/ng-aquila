@@ -1,0 +1,14 @@
+<ng-container *ngFor="let item of menuData">
+  <button nxMenuButton
+      (click)="onClick(item)"
+      nxType="root"
+      [expandable]="!!item.children"
+      nxMenuItem
+      [expanded]="item.expanded"
+      type="button">
+    {{item.label}}
+  </button>
+  <div nxMenuItem *ngIf="item.children && item.expanded">
+    <a *ngFor="let child of item.children" nxMenuLink href="javascript:void(0)">{{child.label}}</a>
+  </div>
+</ng-container>

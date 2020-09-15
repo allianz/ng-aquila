@@ -1,0 +1,220 @@
+@import "../shared-styles/index";
+
+$dot-size: nx-spacer(2xs);
+$list-margin-bottom: nx-spacer(2m);
+$dot-border-radius: 50%;
+
+:host {
+  @include var(color, list-text-color);
+  list-style: none;
+  margin-bottom: $list-margin-bottom;
+  padding: 0;
+  counter-reset: list;
+}
+
+:host(.nx-list--normal) {
+  @include type-style(paragraph-02);
+}
+
+:host(.nx-list--small) {
+  @include type-style(paragraph-03);
+}
+
+:host(.nx-list--xsmall) {
+  @include type-style(paragraph-04);
+}
+
+// Inverting the color is enough for most states,
+// we only have to take extra care of the ordered-circle variant
+:host(.nx-list--negative) {
+  @include var(color, negative);
+
+  ::ng-deep .nx-list__icon {
+    @include var(color, negative);
+  }
+}
+
+:host ::ng-deep {
+  .nx-list__icon {
+    position: absolute;
+    left: 0;
+    @include var(font-size, list-icon-size);
+    @include var(color, list-icon-color);
+    top: calc((#{v(paragraph-02-line-height)} - #{v(list-icon-size)})/2);
+    @include var(line-height, list-icon-size);
+    @include var(height, list-icon-size);
+
+    [dir="rtl"] & {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+:host(ul.nx-list--small) ::ng-deep li {
+  .nx-list__icon {
+    top: calc((#{v(paragraph-03-line-height)} - #{v(list-icon-size)}) /2);
+  }
+}
+
+:host(ul.nx-list--xsmall) ::ng-deep li {
+  .nx-list__icon {
+    top: calc((#{v(paragraph-04-line-height)} - #{v(list-icon-size)}) /2);
+  }
+}
+
+// our .c-list__item's
+:host ::ng-deep li {
+  margin-bottom: nx-spacer(s);
+  padding-left: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
+  position: relative;
+
+  [dir="rtl"] & {
+    padding-right: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
+    padding-left: initial;
+  }
+}
+
+// apply the default dot for unordered (ul) lists, always exclude items with icons
+:host(ul) ::ng-deep > li:not([nxlisticon]) {
+
+  &:before {
+    @include var(background-color, list-icon-color);
+    border-radius: $dot-border-radius;
+    content: "";
+    display: inline-block;
+    height: $dot-size;
+    width: $dot-size;
+    margin-right: nx-spacer(s);
+    position: absolute;
+    margin-left: calc(-1 * #{v(list-icon-size)});
+    margin-top: calc((#{v(paragraph-02-line-height)} - #{$dot-size}) /2);
+    transform: translateX(-50%);
+
+    [dir="rtl"] & {
+      margin-right: calc(-1 * #{v(list-icon-size)});
+      margin-left: nx-spacer(s);
+      transform: translateX(50%);
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: windowText;
+    }
+  }
+}
+
+:host(ul.nx-list--small) ::ng-deep > li:not([nxlisticon]):before {
+  margin-top: calc((#{v(paragraph-03-line-height)} - #{$dot-size}) /2);
+}
+
+:host(ul.nx-list--xsmall)  ::ng-deep > li:not([nxlisticon]):before {
+  margin-top: calc((#{v(paragraph-04-line-height)} - #{$dot-size}) /2);
+}
+
+// ordered lists (ol) have no dot but the counter, always exclude items with icons
+:host(ol) ::ng-deep > li:not([nxlisticon]) {
+
+  &:before {
+    counter-increment: list;
+    content: counter(list);
+    position: absolute;
+    font-size: inherit;
+    font-weight: bold;
+    display: inline-block;
+    @include var(width, list-icon-size);
+    text-align: center;
+    left: 0;
+
+    [dir="rtl"] & {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+:host ::ng-deep li > ::ng-deep ol,
+:host ::ng-deep li > ::ng-deep ul {
+  margin-bottom: nx-spacer(s);
+  margin-top: nx-spacer(s);
+}
+
+// ordered lists (ol) with option `ordered-circle` have a counter with a circle around
+:host(ol.nx-list--ordered-circle) ::ng-deep > li:not([nxlisticon]) {
+
+  &:before {
+    @include var(width, list-circle-size);
+    @include type-style(paragraph-03);
+    color: greenyellow;
+    @include var(color, list-circle-text-color);
+    left: 0;
+    top: calc((#{v(paragraph-02-line-height)} - #{v(paragraph-03-line-height)})/2);
+    z-index: 2;
+
+    :host-context([dir="rtl"]) & {
+      right: 0;
+      left: auto;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      border: nx-border-size(xs) solid windowText;
+      border-radius: 50%;
+    }
+  }
+
+  &:after {
+    border-radius: $dot-border-radius;
+    @include var(width, list-circle-size);
+    @include var(height, list-circle-size);
+    @include var(background-color, list-icon-color);
+    left: 0;
+    top: calc((#{v(paragraph-02-line-height)} - #{v(list-circle-size)})/2);
+    content: '';
+    position: absolute;
+
+    [dir="rtl"] & {
+      right: 0;
+      left: auto;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: windowText;
+    }
+  }
+}
+
+:host(ol.nx-list--ordered-circle.nx-list--small) ::ng-deep > li:not([nxlisticon]) {
+  &:before {
+    top: calc((#{v(paragraph-03-line-height)} - #{v(paragraph-03-line-height)})/2);
+  }
+
+  &:after {
+    top: calc((#{v(paragraph-03-line-height)} - #{v(list-circle-size)})/2);
+  }
+}
+
+:host(ol.nx-list--ordered-circle.nx-list--xsmall) ::ng-deep > li:not([nxlisticon]) {
+  &:before {
+    top: calc((#{v(paragraph-04-line-height)} - #{v(paragraph-03-line-height)})/2);
+  }
+
+  &:after {
+    top: calc((#{v(paragraph-04-line-height)} - #{v(list-circle-size)})/2);
+  }
+}
+
+// take care of the circle when being inverted
+:host(ol.nx-list--ordered-circle.nx-list--negative) {
+  &::ng-deep > li:not([nxlisticon]):after {
+    @include var(background-color, negative);
+  }
+
+  &::ng-deep > li:not([nxlisticon]):before {
+    @include var(color, negative-background);
+  }
+}
+
+:host(ul.nx-list--negative) ::ng-deep > li:not([nxlisticon]) {
+  &:before {
+    @include var(background-color, negative);
+  }
+}

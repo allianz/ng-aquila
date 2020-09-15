@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.build.json",
+
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false,
+    "fullTemplateTypeCheck": true
+  },
+  "compilerOptions": {
+    "outDir": "../out-tsc",
+    "module": "es2015",
+    "target": "es2015"
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.d.ts"],
+  "typeRoots": ["node_modules/@types", "typings.d.ts"],
+  "types": ["node"]
+}

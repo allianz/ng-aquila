@@ -1,0 +1,11 @@
+<div>
+  <!-- We only allow formfield controls here -->
+  <div *ngIf="!hasDropdown" class="nx-word__inner-wrapper">
+    <ng-content select="[nxInput]"></ng-content>
+  </div>
+  <ng-content select="nx-dropdown"></ng-content>
+</div>
+
+<nx-popover #popover>
+  <ng-content select="[nxError]"></ng-content>
+</nx-popover>

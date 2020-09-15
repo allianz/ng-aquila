@@ -1,0 +1,17 @@
+/* Import global styles here */
+@import '@angular/cdk/overlay-prebuilt.css';
+@import '@angular/cdk/a11y-prebuilt.css';
+
+// TODO: maybe remove if ABS is removed
+// for the abs theme
+// provided here because we use base-href during build for prod
+// since v8 they switched the angular cli's behavior of relative urls
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto.woff") format("woff"),
+    url("../assets/fonts/Roboto.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+

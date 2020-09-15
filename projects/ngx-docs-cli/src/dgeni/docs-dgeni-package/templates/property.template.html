@@ -1,0 +1,42 @@
+{% import "macros.html" as macros %}
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell">
+    {%- if property.isDirectiveInput -%}
+      <div class="docs-api-input-marker">
+        {%- if property.directiveInputAlias -%}
+          <span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{$ property.directiveInputAlias $}</span>)
+        {% else %}
+          <span class="docs-api-input__keyword">@Input</span>()
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if property.isDirectiveOutput -%}
+      <div class="docs-api-output-marker">
+        {%- if property.directiveOutputAlias -%}
+          <span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">{$ property.directiveOutputAlias $}</span>)
+        {% else %}
+          <span class="docs-api-output__keyword">@Output</span>()
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if property.isDeprecated -%}
+      <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(property) $}>
+        Deprecated
+      </div>
+    {%- endif -%}   
+
+    <p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">{$ property.name $}</span>:
+        <span class="docs-api-property__type">{$ property.type $}</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    {$ property.description | marked | safe $}
+    {%- if property.deletionTarget -%}
+      <strong>Deletion target:</strong> {$ property.deletionTarget $}
+    {%- endif -%}
+  </td>
+</tr>

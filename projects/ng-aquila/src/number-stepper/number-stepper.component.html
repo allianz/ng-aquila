@@ -1,0 +1,50 @@
+<div *ngIf="label" class="nx-stepper__label">
+  <label [for]="inputId">
+    {{label}}
+  </label>
+</div>
+<div class="nx-stepper__label" #customLabel *ngIf="!label" [id]="ariaDescribedBy">
+  <ng-content></ng-content>
+</div>
+<div class="nx-stepper__input-container">
+  <button
+    [attr.aria-label]="_intl.decrementAriaLabel"
+    [nxButton]="_buttonType"
+    class="nx-stepper__down nx-stepper__control"
+    (click)="decrementOnClick()"
+    [disabled]="disabled || value <= min"
+    type="button">
+    <nx-icon name="minus" size="s"></nx-icon>
+  </button>
+  <div class="nx-stepper__input-wrapper">
+    <div class="nx-stepper__inner-wrapper">
+        <ng-content select="nx-number-stepper-prefix"></ng-content>
+
+        <input type="number"
+               [nxAutoResize]="resize"
+               [attr.aria-describedby]="ariaDescribedBy"
+               [id]="inputId" [ngClass]="inputClassNames"
+               (input)="onInputChange($event)"
+               (blur)="onTouchedCallback()"
+               (keydown.arrowup)="incrementOnKey($event)"
+               (keydown.arrowdown)="decrementOnKey($event)"
+               #nativeInput
+               spellcheck="false"
+               [disabled]="disabled"
+        />
+
+        <ng-content select="nx-number-stepper-suffix"></ng-content>
+    </div>
+    <div class="nx-stepper__input-underline"></div>
+  </div>
+
+  <button
+    [attr.aria-label]="_intl.incrementAriaLabel"
+    [nxButton]="_buttonType"
+    class="nx-stepper__up nx-stepper__control"
+    (click)="incrementOnClick()"
+    [disabled]="disabled || value >= max"
+    type="button">
+    <nx-icon name="plus" size="s"></nx-icon>
+  </button>
+</div>

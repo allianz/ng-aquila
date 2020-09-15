@@ -1,0 +1,17 @@
+  <div class="nx-rating__container" role="radiogroup">
+    <nx-icon *ngFor="let rating of [1,2,3,4,5]"
+      (click)="setSelection(rating)"
+      (keyup)="handleKeyUp($event, rating)"
+      role="radio"
+      [attr.aria-label]="getAriaLabel(rating)"
+      [attr.aria-checked]="isSelected(rating)"
+      [tabindex]="disabled ? -1 : 0"
+      class="nx-rating__icon"
+      [name]="getIconName(rating)"
+      size="m">
+    </nx-icon>
+  </div>
+  <div class="nx-rating__label" *ngIf="startLabel || endLabel">
+    <span class="nx-rating__label--start">{{startLabel}}</span>
+    <span class="nx-rating__label--end">{{endLabel}}</span>
+  </div>

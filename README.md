@@ -1,0 +1,31 @@
+# Angular components for the Open Insurance Platform
+
+## Background
+Aquila is an open-source component library provided by the Allianz Global Digital Factory (GDF). We use this library internally with Allianz branding. Here we provide a white label variant as part of the Open Insurance Platform. 
+
+> We are currently still setting up some things :construction:. For instance:
+> - you may find some icons missing in the documentation
+> - you will not find a hosted documentation, but you can run it locally
+> - we still need to get the CI pipeline fully automated
+
+## Getting started :medal_sports:
+Add the library to your project with the Angular CLI:
+
+```
+ng add @aposin/ng-aquila
+```
+
+## Documentation :books:
+The documentation is not deployed yet. You can start it locally with:
+```
+npm ci
+npm start
+```
+
+## Contributing :raised_hands:
+We are happy that you submit issues here in the [issue board](https://github.com/aposin/ng-aquila/issues) for now.
+
+More detailed developer documentation and contribution guidelines for code contributions will follow.
+
+## License :memo:
+[MIT](https://www.github.com/aposin/ng-aquila/blob/main/LICENSE) License

@@ -1,0 +1,87 @@
+<header nx-header>
+  <nx-header-row>
+    <nx-header-brand>
+      <nx-link>
+        <a [routerLink]="'/welcome'">
+          <figure nxFigure>
+            <img class="documentation-header__main-logo"
+              src={{logoPath.logoWithTitlePath}}
+              alt="Brand Logo" role="none">
+          </figure>
+        </a>
+      </nx-link>
+    </nx-header-brand>
+    <nx-header-navigation class="nx-desktop-navigation">
+      <ul>
+        <li>
+          <a [routerLink]="'/welcome'" routerLinkActive="is-active"
+            nxHeaderLink>Welcome</a>
+        </li>
+        <li>
+          <a [routerLink]="'/documentation'" routerLinkActive="is-active"
+            nxHeaderLink>Documentation</a>
+        </li>
+        <li>
+          <a [routerLink]="'/guides'" routerLinkActive="is-active"
+            nxHeaderLink>Guides</a>
+        </li>
+      </ul>
+    </nx-header-navigation>
+    <nx-header-actions>
+      <nxv-theme-switch *ngIf="showThemingSwitcher" [themes]="themes"
+        [selected]="selectedTheme" (selectedChange)="selectTheme($event)">
+      </nxv-theme-switch>
+      <!-- <nxv-version-select class="docs-version-select"></nxv-version-select> -->
+      <nx-link>
+        <a [href]="githubLinkConfig.repoLink"
+          target="_blank">
+          <svg class="documentation-header__github-logo" width="33px"
+            height="32px" viewBox="0 0 33 32"
+            [attr.alt]="githubLinkConfig.logoAltText">
+            <g transform="translate(-1119.000000, -14.000000)" fill="#9B9B9B">
+              <g id="Group-2" transform="translate(927.000000, 14.000000)">
+                <path
+                  d="M208.403405,0 C199.34568,0 192,7.3446728 192,16.4054189 C192,23.6534115 196.700067,29.801667 203.21893,31.9709287 C204.039704,32.1219915 204.338809,31.6154276 204.338809,31.1803667 C204.338809,30.7916318 204.324709,29.7593694 204.316653,28.3907406 C199.753549,29.3817125 198.790776,26.1912664 198.790776,26.1912664 C198.044526,24.2959319 196.968959,23.7913822 196.968959,23.7913822 C195.47948,22.7742261 197.081752,22.7943678 197.081752,22.7943678 C198.728337,22.9101826 199.59443,24.4852639 199.59443,24.4852639 C201.057725,26.9918991 203.434446,26.2678048 204.369021,25.8478503 C204.51807,24.7883966 204.942053,24.0653094 205.410347,23.6554257 C201.76772,23.2415136 197.937775,21.8336084 197.937775,15.5473822 C197.937775,13.7567847 198.577274,12.2914756 199.626657,11.1454126 C199.457466,10.7304934 198.894506,9.06175317 199.78779,6.80386802 C199.78779,6.80386802 201.164476,6.36276467 204.298525,8.4857004 C205.606729,8.12113554 207.010606,7.93986019 208.405419,7.93281059 C209.799225,7.93986019 211.202095,8.12113554 212.512313,8.4857004 C215.644348,6.36276467 217.019019,6.80386802 217.019019,6.80386802 C217.914318,9.06175317 217.351357,10.7304934 217.183174,11.1454126 C218.234571,12.2914756 218.869035,13.7567847 218.869035,15.5473822 C218.869035,21.8497218 215.033047,23.2364782 211.379342,23.6423336 C211.967479,24.1488974 212.492171,25.1499402 212.492171,26.6807098 C212.492171,28.8731344 212.472029,30.6425832 212.472029,31.1803667 C212.472029,31.6194559 212.768112,32.1300481 213.599965,31.9699216 C220.113792,29.7956245 224.809831,23.6513973 224.809831,16.4054189 C224.809831,7.3446728 217.464151,0 208.403405,0"
+                  id="Fill-4"></path>
+              </g>
+            </g>
+          </svg>
+        </a>
+      </nx-link>
+    </nx-header-actions>
+  </nx-header-row>
+  <nx-header-row class="nx-mobile-navigation">
+    <nx-header-navigation>
+      <ul>
+        <li>
+          <a [routerLink]="'/welcome'" routerLinkActive="is-active"
+            nxHeaderLink>Welcome</a>
+        </li>
+        <li>
+          <a [routerLink]="'/documentation'" routerLinkActive="is-active"
+            nxHeaderLink>Documentation</a>
+        </li>
+        <li>
+          <a [routerLink]="'/guides'" routerLinkActive="is-active"
+            nxHeaderLink>Guides</a>
+        </li>
+      </ul>
+    </nx-header-navigation>
+  </nx-header-row>
+</header>
+
+<ng-container *ngIf="(manifestService.available | async); else loading">
+  <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #loading>
+  Manifest Missing
+  <form (ngSubmit)="onSubmit()">
+    <label>
+      Upload <input #files type="file" required name='manifestFile'
+        (change)="onFileChange($event)">
+    </label>
+    <button type="submit">submit</button>
+  </form>
+</ng-template>
+<nxv-css-var-sidebar *ngIf="showThemingSidebar"></nxv-css-var-sidebar>

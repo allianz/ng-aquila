@@ -1,0 +1,69 @@
+---
+title: Context Menu
+category: components
+b2c: false
+expert: true
+stable: done
+---
+
+<div class="docs-deprecation-warning">
+  <strong>Expert: </strong>
+  Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
+</div>
+
+The `<nx-context-menu>` is a floating panel containing a list of options.
+
+<!-- example(context-menu-basic) -->
+
+By itself, the `<nx-context-menu>` element does not render anything. The menu is attached to and opened via application of the `nxContextTriggerFor` directive:
+
+### Toggling the menu programmatically
+
+The context menu exposes an API to open/close programmatically. Please note that in this case, an `nxContextMenuTriggerFor` directive is still necessary to attach the context menu to a trigger element in the DOM.
+
+<!-- example(context-menu-programmatic) -->
+
+### Icons
+
+Context menus support displaying `<nx-icon>` elements before the menu item text.
+
+<!-- example(context-menu-icons) -->
+
+### Nested context menu
+The context menu has the ability to open a sub-menu. To do so, you have to define your root menu and sub-menus, in addition to setting the `nxContextMenuTriggerFor` on the `nxContextMenuItem` that should trigger the sub-menu:
+
+<!-- example(context-menu-nested) -->
+
+### Disabling menu items
+
+Menu items can be disabled by adding a `disabled` attribute to the `nxContextMenuItem`.
+
+<!-- example(context-menu-disabled) -->
+
+### Lazy rendering
+
+By default, the context menu content will be initialized even when the panel is closed.
+To defer initialization until the context menu is open, the content can be provided as an ng-template with the `nxContextMenuContent` attribute:
+
+<!-- example(context-menu-lazy) -->
+
+### Passing in data to a menu
+
+When using lazy rendering, additional context data can be passed to the context menu panel via the `nxContextMenuTriggerData` input. This allows for a single context menu instance to be rendered with a different set of data, depending on the trigger that opened it:
+
+<!-- example(context-menu-data) -->
+
+### Scroll strategy
+
+By default scroll strategy of the context `reposition`, which lets the menu stay open and reposition itself when scrolling. To close the context menu on scroll, the scroll strategy can be set to `close`.
+
+<!-- example(context-menu-scroll-strategy) -->
+
+### Keyboard interaction
+
+* DOWN_ARROW: Focuses the next menu item
+* UP_ARROW: Focuses previous menu item
+* RIGHT_ARROW: Opens the menu item's sub-menu
+* LEFT_ARROW: Closes the current menu, if it is a sub-menu
+* ENTER: Activates the focused menu item
+* ESCAPE: Closes the menu

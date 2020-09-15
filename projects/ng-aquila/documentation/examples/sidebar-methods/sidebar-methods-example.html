@@ -1,0 +1,16 @@
+<nx-sidebar #sidebar resizeable>
+  <button nxAction
+      *ngFor="let action of actions"
+      routerLink="./"
+      [queryParams]="action.query"
+      routerLinkActive="is-selected"
+      type="button">
+    <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+    {{action.label}}
+  </button>
+</nx-sidebar>
+<main>
+  <button nxButton (click)="sidebar.toggle()" type="button">toggle</button>
+  <button nxButton (click)="sidebar.expand()" [attr.disabled]="sidebar.open || null" type="button">expand</button>
+  <button nxButton (click)="sidebar.close()" [attr.disabled]="!sidebar.open || null" type="button">close</button>
+</main>

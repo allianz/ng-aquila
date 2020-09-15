@@ -1,0 +1,306 @@
+@import '../shared-styles/index';
+
+$border-width: nx-border-size(m);
+$border-radius: nx-border-radius(s);
+
+@function button-padding($padding) {
+  @return $padding - $border-width;
+}
+
+:host {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+
+  @include media-breakpoint-down("small") {
+    width: 100%;
+  }
+
+  &.has-error {
+    .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {
+      @include var(border-color, danger);
+      @include var(background-color, danger);
+    }
+
+    .nx-radio-toggle__label-container {
+      @include var(border-color, danger);
+      @include var(color, danger);
+    }
+
+    &:hover {
+      .nx-radio-toggle__label-container {
+        @include var(color, toggle-button-hover-text-color);
+      }
+    }
+  }
+}
+
+.nx-radio-toggle__input {
+  opacity: 0;
+  position: absolute;
+
+  &:active + .nx-radio-toggle__label-container {
+    @include var(background-color, toggle-button-active-background-color);
+    @include var(border-color, toggle-button-active-border-color);
+    @include var(color, toggle-button-active-text-color);
+  }
+
+  &:checked:disabled + .nx-radio-toggle__label-container {
+    @include var(background-color, toggle-button-disabled-selected-background-color);
+    @include var(border-color, toggle-button-disabled-selected-border-color);
+    @include var(color, toggle-button-disabled-selected-text-color);
+  }
+
+  &:disabled + .nx-radio-toggle__label-container {
+    @include var(background-color, toggle-button-disabled-background-color);
+    @include var(border-color, toggle-button-disabled-border-color);
+    @include var(color, toggle-button-disabled-text-color);
+    cursor: not-allowed;
+
+    .nx-radio-toggle__label {
+      cursor: not-allowed;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: GrayText;
+      color: GrayText;
+    }
+  }
+}
+
+.nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {
+  @include var(background-color, toggle-button-selected-background-color);
+  @include var(border-color, toggle-button-selected-border-color);
+  @include var(color, toggle-button-selected-text-color);
+  cursor: default;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: highlight;
+    border-color: buttonText;
+  }
+
+  .nx-toggle-button__mobile-check {
+    @include media-breakpoint-down("small") {
+      display: inline-block;
+    }
+  }
+
+  .nx-radio-toggle__label {
+    cursor: default;
+
+    @media screen and (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      color: highlightText;
+    }
+  }
+}
+
+.nx-toggle-button__mobile-check {
+  display: none;
+  font-size: nx-font-size(s);
+  margin-right: nx-spacer(2xs);
+  height: nx-spacer(m);
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
+}
+
+// small version
+:host-context(.nx-radio-toggle--small) {
+
+  .nx-radio-toggle__label-container {
+    @include type-style(toggle-button-small);
+    min-height: nx-spacer(s);
+    padding: button-padding(nx-spacer(2xs));
+    text-transform: none;
+
+    @include media-breakpoint-down("small") {
+      @include type-style(toggle-button-large);
+      padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+    }
+  }
+}
+
+.nx-radio-toggle {
+  user-select: none;
+  cursor: pointer;
+}
+
+$border-rounded-on-the-left: $border-radius 0 0 $border-radius;
+$border-rounded-on-the-right: 0 $border-radius $border-radius 0; 
+$border-rounded-on-the-top: $border-radius $border-radius 0 0;
+$border-rounded-on-the-bottom: 0 0 $border-radius $border-radius;
+
+$bordered-without-left: $border-width $border-width $border-width 0;
+$bordered-without-right: $border-width 0 $border-width $border-width;
+
+.nx-radio-toggle__label-container.nx-radio-toggle__label-container--first {
+  border-radius: $border-rounded-on-the-left;
+  border-width: $border-width 0 $border-width $border-width;
+
+  @include media-breakpoint-down("small") {
+    border-width: $border-width;
+    border-bottom-width: nx-border-size(xs);
+    border-radius: $border-rounded-on-the-top;
+  }
+
+  :host-context([dir="rtl"]) & {
+    border-radius: $border-rounded-on-the-right;
+    border-width: $bordered-without-left;
+
+    @include media-breakpoint-down("small") {
+      border-width: $border-width;
+      border-bottom-width: nx-border-size(xs);
+      border-radius: $border-rounded-on-the-top;
+    }
+  }
+}
+
+.nx-radio-toggle__label-container.nx-radio-toggle__label-container--last {
+  border-radius: $border-rounded-on-the-right;
+  border-width: $border-width;
+
+  :host-context([dir="rtl"]) & {
+    border-radius: $border-rounded-on-the-left;
+    border-width: $border-width;
+  }
+
+  @include media-breakpoint-down("small") {
+    border-width: $border-width;
+    border-top-width: nx-border-size(xs);
+    border-radius: $border-rounded-on-the-bottom;
+
+    // prevent style changes if there is only one toggle option
+    &.nx-radio-toggle__label-container--first {
+      border-radius: $border-radius;
+      border-width: $border-width;
+    }
+  }
+
+  :host-context([dir="rtl"]) & {
+    border-radius: $border-rounded-on-the-left;
+    border-width: $border-width;
+
+    @include media-breakpoint-down("small") {
+      border-width: $border-width;
+      border-top-width: nx-border-size(xs);
+      border-radius: $border-rounded-on-the-bottom;
+    }
+  }
+}
+
+.nx-radio-toggle__label-container {
+  @include type-style(toggle-button-large);
+  padding: button-padding(nx-spacer(xs)) button-padding(nx-spacer(2m));
+  @include var(color, toggle-button-unselected-text-color);
+  @include var(background-color, toggle-button-unselected-background-color);
+  @include var(border-color, toggle-button-unselected-border-color);
+  border-style: solid;
+  border-radius: 0;
+  border-width: $bordered-without-right;
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  @include var(text-transform, button-text-transform);
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: nx-spacer(m);
+
+  @include media-breakpoint-down("small") {
+    border-width: nx-border-size(xs) nx-border-size(m);
+    justify-content: center;
+    padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+  }
+
+  :host-context([dir="rtl"]) & {
+    border-width: $bordered-without-left;
+
+    @include media-breakpoint-down("small") {
+      border-width: nx-border-size(xs) nx-border-size(m);
+    }
+  }
+
+
+  &:hover {
+    @include var(background-color, toggle-button-hover-background-color);
+    @include var(border-color, toggle-button-hover-border-color);
+    @include var(color, toggle-button-hover-text-color);
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border-color: buttonText;
+    background-color: buttonFace;
+    color: buttonText;
+
+    .nx-radio-toggle__label {
+      -ms-high-contrast-adjust: none;
+    }
+  }
+}
+
+// negative version
+:host-context(.nx-radio-toggle--negative) {
+  .nx-radio-toggle__input {
+
+    &:focus + .nx-radio-toggle__label-container {
+      @include var(background-color, negative-01);
+      @include var(border-color, negative-01);
+      @include var(color, negative-accent);
+    }
+
+    &:active + .nx-radio-toggle__label-container {
+      @include var(background-color, negative-02);
+      @include var(border-color, negative-02);
+      @include var(color, negative-accent);
+    }
+
+    &:disabled:checked + .nx-radio-toggle__label-container {
+      @include var(background-color, negative-dimmed);
+      border-color: transparent;
+      @include var(color, negative-background-dimmed);
+    }
+
+    &:disabled + .nx-radio-toggle__label-container {
+      background-color: transparent;
+      @include var(border-color, negative-dimmed);
+      @include var(color, negative-dimmed);
+    }
+
+    &:checked + .nx-radio-toggle__label-container {
+      @include var(background-color, negative);
+      @include var(border-color, negative);
+      @include var(color, negative-accent);
+    }
+  }
+
+  .nx-radio-toggle__label-container {
+    @include var(border-color, negative);
+    @include var(color, negative);
+  }
+
+  .nx-radio-toggle__label-container:hover {
+    @include var(background-color, negative-01);
+    @include var(border-color, negative-01);
+    @include var(color, negative-accent);
+  }
+}
+
+.nx-radio-toggle__label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+// focus style
+:host-context([data-whatinput="keyboard"]) {
+  .nx-radio-toggle__input:focus + .nx-radio-toggle__label-container {
+    @include focus-style;
+    z-index: 1; // otherwise the right box shadown is not shown
+  }
+}
+
+

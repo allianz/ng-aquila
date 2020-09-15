@@ -1,0 +1,24 @@
+<nav>
+  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+    <nx-tree-node *nxTreeNodeDef="let node">
+       <button class="docs-action" nxAction
+           nxTreeNodePadding
+           nxTreeNodePaddingIndent="16"
+           routerLinkActive="is-selected"
+           routerLink="{{node.component.id}}"
+           title="{{node.label}}">
+         {{node.label}}
+       </button>
+    </nx-tree-node>
+    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+       <button class="docs-action" nxAction
+           nxTreeNodeToggle
+           nxTreeNodePadding
+           expandable
+           [expanded]="_treeControl.isExpanded(node)"
+           title="{{node.label}}">
+         {{node.label}}
+       </button>
+    </nx-tree-node>
+  </nx-tree>
+</nav>

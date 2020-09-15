@@ -1,0 +1,92 @@
+@import "../shared-styles/index";
+
+:host {
+  display: inline-block;
+}
+
+:host(.nx-rating--negative) {
+  .nx-rating__label, .nx-rating__icon {
+    @include var(color, negative);
+  }
+}
+
+:host(.nx-rating--disabled) {
+  cursor: not-allowed;
+  outline: none;
+
+  .nx-rating__label {
+    @include var(color, rating-disabled-label-color);
+  }
+
+  .nx-rating__icon {
+    @include var(color, rating-disabled-icon-color);
+    cursor: not-allowed;
+  }
+}
+
+.nx-rating__container {
+  display: flex;
+}
+
+.nx-rating__label {
+  display: flex;
+  @include type-style(rating-label);
+  @include var(color, rating-label-color);
+}
+
+.nx-rating__label--end {
+  margin-left: auto;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: auto;
+    margin-left: initial;
+  }
+}
+
+.nx-rating__icon {
+  @include var(font-size, rating-icon-size);
+  @include var(color, rating-icon-color);
+  width: auto;
+  background: none;
+  border: none;
+  margin-right: nx-spacer(s);
+  cursor: pointer;
+  outline: none;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(s);
+  }
+}
+
+.nx-rating__icon:last-child {
+  margin-right: 0;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: 0;
+  }
+}
+
+// ARIA styles
+:host-context([data-whatinput="keyboard"]) .nx-rating__icon:focus  {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-rating__icon {
+    color: buttonText;
+  }
+
+  :host(.nx-rating--disabled) {
+    .nx-rating__icon,
+    .nx-rating__label {
+      color: GrayText;
+    }
+  }
+
+  .nx-rating__label {
+    -ms-high-contrast-adjust: none;   // fixes the broken focus styling
+  }
+}

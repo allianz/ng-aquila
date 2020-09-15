@@ -1,0 +1,7 @@
+.nx-header__actions nx-link + nx-link {
+  margin-left: 16px;
+}
+
+.nx-header__actions nx-link nx-icon {
+  margin-right: 0;
+}

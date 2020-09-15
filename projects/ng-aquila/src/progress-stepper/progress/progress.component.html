@@ -1,0 +1,43 @@
+<span *ngIf="title" class="nx-single-step__title">{{title}}</span>
+<span class="nx-progress-stepper__title">
+  <ng-content select="nx-label"></ng-content>
+</span>
+
+<div class="nx-subprogress__items">
+  <ng-container *ngFor="let step of steps; let i = index">
+
+    <div
+      [class.nx-subprogress__item--inactive]="selectedIndex !== i && !step.completed"
+      [attr.aria-disabled]="selectedIndex !== i && !step.completed"
+      [class.nx-subprogress__item--selected]="selectedIndex === i"
+      class="nx-subprogress__item">
+
+      <div class="nx-subprogress__counter">
+      <div class="nx-subprogress__number">
+
+          {{ i + 1 }}
+          </div>
+      </div>
+
+      <label class="nx-subprogress__label">{{step.stepLabel || step.label}}</label>
+
+      <div class="nx-subprogress__progress"  *ngIf="selectedIndex === i">
+        <nx-progressbar
+          [value]="progress"></nx-progressbar>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="nx-progress-stepper__mobile-label">
+    {{currentLabel}}
+</div>
+
+
+<div *ngFor="let step of steps; let i = index"
+      class="nx-progress-stepper__content" role="tabpanel"
+      [id]="_getStepContentId(i)"
+      [attr.aria-label]="currentLabel"
+      [attr.aria-expanded]="selectedIndex === i">
+  <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+</div>

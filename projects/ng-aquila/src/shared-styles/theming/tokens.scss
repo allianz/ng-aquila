@@ -1,0 +1,1225 @@
+$nx-theme: (
+  'font-family': unquote("'Public Sans Latin', sans-serif !important"),
+
+  // we have some components with transparent background: checkbox, formfield, code-input, circle-toggle, radio-button e.g
+  // right now they all have a hardcoded transparent background; consider using ui-background or a new ui-variable for that in future
+  ui-background: #0f2a3d,
+  ui-01: ui-background, // background of elements having the same background color as the page (message, datefield, header, dropdown)
+  ui-02: #143851, // background of things on ui-01, expansion panel, menu, table, sidebar
+  ui-03: #194666, // more darker light grey background, e.g. progressbar, header, table, tag, tertiary button
+  ui-04: #2d7fb8, // used for borders of white surfaces e.g popover, table, card, datefield panel, modal.
+  ui-05: #e9f7fb, // grey color of borders of interactive elements: radio, checkbox, filter input of dropdown, formfield border, taglist border
+  ui-06: #ffffff, // dark borders (formfield) + tooltip background
+
+  interactive-text: interactive-primary,
+  interactive-primary: #27abd6,
+  hover-primary: #3bb4db,
+  hover-secondary: #194666,
+
+  active-primary: #66c4e3,
+  hover-link: #51bcdf,
+
+  focus-box-shadow: (
+    0 0 0 2px #0f2a3d,
+    0 0 0 6px #27abd6
+  ),
+  focus-inset-box-shadow: (
+    inset 0 0 0 4px #27abd6,
+    inset 0 0 0 6px #0f2a3d
+  ),
+
+  // typically used on dark backgrounds
+  text-01: #ffffff,
+  // typically used on light backgrounds
+  text-02: #0f2a3d, // text, icon color of buttons, checkbox etc
+
+  info: #7C97D0,
+  warning: #EFBE25,
+  danger: #ED6F7C,
+  success: #26AE31,
+
+  accent-01: #00B17F, // emphasis
+  accent-02: #6B8CFF, // cta
+
+  disabled-01: #969696,
+  disabled-02: #DBDBDB,
+  disabled-03: #EDEDED,
+  disabled-04: rgba(39, 171, 214, 0.35),
+
+  negative: ui-01,
+  negative-accent: #E5E7E6,
+  negative-01: #23628f,
+  negative-02: #2d7fb8,
+  negative-background: #E5E7E6,
+
+  negative-dimmed: rgba(15, 42, 61, 0.4),
+  negative-01-dimmed: negative-01,
+  negative-02-dimmed: negative-02,
+  negative-background-dimmed: rgba(229, 231, 230, 0.4),
+
+  grid-max-width: 1184px,
+
+  readonly-01: rgba(150, 150, 150, 0.35),
+  readonly-02: #969696,
+  readonly-03: #FFFFFF,
+
+  heading-01-font-size: 54px,
+  heading-01-line-height: 60px,
+  heading-01-font-weight: 300,
+  heading-01-letter-spacing: 0.3px,
+
+  heading-01-mobile-font-size: heading-02-font-size,
+  heading-01-mobile-line-height: heading-02-line-height,
+  heading-01-mobile-font-weight: heading-02-font-weight,
+  heading-01-mobile-letter-spacing: heading-02-letter-spacing,
+
+  heading-02-font-size: 40px,
+  heading-02-line-height: 48px,
+  heading-02-font-weight: 300,
+  heading-02-letter-spacing: 0.3px,
+
+  heading-02-mobile-font-size: 35px,
+  heading-02-mobile-line-height: 40px,
+  heading-02-mobile-font-weight: 300,
+  heading-02-mobile-letter-spacing: heading-02-letter-spacing,
+
+  heading-03-font-size: 30px,
+  heading-03-line-height: 36px,
+  heading-03-font-weight: 300,
+  heading-03-letter-spacing: 0.3px,
+
+  heading-03-mobile-font-size: heading-04-font-size,
+  heading-03-mobile-line-height: heading-04-line-height,
+  heading-03-mobile-font-weight: heading-04-font-weight,
+  heading-03-mobile-letter-spacing: heading-04-letter-spacing,
+
+  heading-04-font-size: 26px,
+  heading-04-line-height: 32px,
+  heading-04-font-weight: 300,
+  heading-04-letter-spacing: 0.3px,
+
+  heading-04-mobile-font-size: heading-05-font-size,
+  heading-04-mobile-line-height: heading-05-line-height,
+  heading-04-mobile-font-weight: heading-05-font-weight,
+  heading-04-mobile-letter-spacing: heading-05-letter-spacing,
+
+  heading-05-font-size: 24px,
+  heading-05-line-height: 32px,
+  heading-05-font-weight: 600,
+  heading-05-letter-spacing: 0.2px,
+
+  heading-05-mobile-font-size: heading-06-font-size,
+  heading-05-mobile-line-height: heading-06-line-height,
+  heading-05-mobile-font-weight: heading-06-font-weight,
+  heading-05-mobile-letter-spacing: heading-06-letter-spacing,
+
+  heading-06-font-size: 20px,
+  heading-06-line-height: 28px,
+  heading-06-font-weight: 300,
+  heading-06-letter-spacing: 0.2px,
+
+  heading-06-mobile-font-size: 18px,
+  heading-06-mobile-line-height: 28px,
+  heading-06-mobile-font-weight: 300,
+  heading-06-mobile-letter-spacing: 0.2px,
+
+  paragraph-01-font-size: 20px,
+  paragraph-01-line-height: 28px,
+  paragraph-01-font-weight: 400,
+  paragraph-01-letter-spacing: 0.2px,
+
+  // copy large
+  paragraph-02-font-size: 18px,
+  paragraph-02-line-height: 24px,
+  paragraph-02-font-weight: 400,
+  paragraph-02-letter-spacing: 0.2px,
+
+  // copy normal
+  paragraph-03-font-size: 16px,
+  paragraph-03-line-height: 24px,
+  paragraph-03-font-weight: 400,
+  paragraph-03-letter-spacing: 0,
+
+  // copy medium
+  paragraph-04-font-size: 14px,
+  paragraph-04-line-height: 20px,
+  paragraph-04-font-weight: 600,
+  paragraph-04-letter-spacing: 0.2px,
+
+  paragraph-05-font-size: 12px,
+  paragraph-05-line-height: 16px,
+  paragraph-05-font-weight: 600,
+  paragraph-05-letter-spacing: 0.5px,
+
+  // label typographies used for labels in form controls
+  // and for font size in inputs/dropdown
+  large-label-font-size: 20px,
+  large-label-line-height: 28px,
+  large-label-font-weight: 400,
+  large-label-letter-spacing: 0.2px,
+
+  small-label-font-size: 16px,
+  small-label-line-height: 24px,
+  small-label-font-weight: 400,
+  small-label-letter-spacing: 0,
+
+  button-small-font-size: 14px,
+  button-small-line-height: 16px,
+  button-small-font-weight: 600,
+  button-small-letter-spacing: 1px,
+
+  button-small-medium-font-size: button-medium-font-size,
+  button-small-medium-line-height: button-medium-line-height,
+  button-small-medium-font-weight: button-medium-font-weight,
+  button-small-medium-letter-spacing: button-medium-letter-spacing,
+
+  button-medium-font-size: 16px,
+  button-medium-line-height: 24px,
+  button-medium-font-weight: 600,
+  button-medium-letter-spacing: 1px,
+
+  button-large-font-size: 20px,
+  button-large-line-height: 24px,
+  button-large-font-weight: 600,
+  button-large-letter-spacing: 1px,
+
+  /************* COMPONENT SPECIFIC MAPPINGS *************/
+  accordion-regular-font-size: heading-04-font-size,
+  accordion-regular-line-height: heading-04-line-height,
+  accordion-regular-font-weight: heading-04-font-weight,
+  accordion-regular-letter-spacing: heading-04-letter-spacing,
+
+  accordion-regular-mobile-font-size: heading-06-font-size,
+  accordion-regular-mobile-line-height: heading-06-line-height,
+  accordion-regular-mobile-font-weight: 400,
+  accordion-regular-mobile-letter-spacing: heading-06-letter-spacing,
+
+  accordion-light-font-size: paragraph-01-font-size,
+  accordion-light-line-height: paragraph-01-line-height,
+  accordion-light-font-weight: paragraph-01-font-weight,
+  accordion-light-letter-spacing: paragraph-01-letter-spacing,
+
+  accordion-light-mobile-font-size: paragraph-03-font-size,
+  accordion-light-mobile-line-height: paragraph-03-line-height,
+  accordion-light-mobile-font-weight: paragraph-03-font-weight,
+  accordion-light-mobile-letter-spacing: paragraph-03-letter-spacing,
+
+  accordion-body-font-size: paragraph-03-font-size,
+  accordion-body-line-height: paragraph-03-line-height,
+  accordion-body-font-weight: paragraph-03-font-weight,
+  accordion-body-letter-spacing: paragraph-03-letter-spacing,
+
+  accordion-chevron-size: 24px,
+  accordion-regular-chevron-color: interactive-text,
+  accordion-regular-hover-chevron-color: interactive-text,
+  accordion-disabled-color: disabled-01,
+  accordion-regular-header-background-color: ui-03,
+  accordion-regular-header-text-color: text-01,
+  accordion-regular-header-hover-text-color: text-01,
+  accordion-regular-header-top-margin: 16px,
+  accordion-regular-border-color: transparent,
+  accordion-regular-mobile-border-color: ui-04,
+  accordion-regular-mobile-separator-color: ui-04,
+
+  accordion-regular-header-padding: 24px 32px,
+  accordion-regular-body-padding: 24px 88px 32px 32px,
+  accordion-light-header-text-color: interactive-text,
+  accordion-light-header-hover-text-color: interactive-text,
+  accordion-light-chevron-color: interactive-text,
+  accordion-light-hover-chevron-color: interactive-text,
+  accordion-light-header-padding: 24px 32px,
+  accordion-light-body-padding: 24px 88px 32px 32px,
+  accordion-light-border-color: ui-04,
+
+  action-font-size: paragraph-03-font-size,
+  action-line-height: paragraph-03-line-height,
+  action-font-weight: paragraph-03-font-weight,
+  action-letter-spacing: paragraph-03-letter-spacing,
+  action-color: text-01,
+  action-hover-color: text-01,
+  action-background-color: ui-02,
+  action-hover-background-color: ui-03,
+  action-selected-color: text-02,
+  action-selected-background-color: interactive-primary,
+  action-icon-size: 20px,
+  action-expand-icon-size: 16px,
+
+  badge-font-size: paragraph-03-font-size,
+  badge-line-height: paragraph-03-line-height,
+  badge-font-weight: paragraph-03-font-weight,
+  badge-letter-spacing: paragraph-03-letter-spacing,
+  badge-background-color: ui-06,
+  badge-color: text-02,
+  badge-active-background-color: #a2e8f5,
+  badge-active-color: badge-color,
+  badge-positive-background-color: #b3f998,
+  badge-positive-color: badge-color,
+  badge-critical-background-color: #f19b94,
+  badge-critical-color: badge-color,
+  badge-negative-background-color: #f9ee89,
+  badge-negative-color: badge-color,
+  badge-vibrant-background-color: #969696,
+  badge-vibrant-color: text-02,
+  badge-vibrant-active-background-color: #688fe2,
+  badge-vibrant-active-color: badge-vibrant-color,
+  badge-vibrant-positive-background-color: #33ad3d,
+  badge-vibrant-positive-color: badge-vibrant-color,
+  badge-vibrant-critical-background-color: #fb4f61,
+  badge-vibrant-critical-color: badge-vibrant-color,
+  badge-vibrant-negative-background-color: #EFBE25,
+  badge-vibrant-negative-color: badge-vibrant-color,
+
+  base-label-color: text-01,
+  base-label-small-font-size: small-label-font-size,
+  base-label-small-line-height: small-label-line-height,
+  base-label-small-font-weight: 600,
+  base-label-small-letter-spacing: small-label-letter-spacing,
+  base-label-large-font-size: large-label-font-size,
+  base-label-large-line-height: large-label-line-height,
+  base-label-large-font-weight: 300,
+  base-label-large-letter-spacing: large-label-letter-spacing,
+
+  base-error-color: danger,
+  base-error-simple-icon-size: 20px,
+  base-error-simple-font-size: paragraph-03-font-size,
+  base-error-simple-line-height: 20px,
+  base-error-simple-font-weight: paragraph-03-font-weight,
+  base-error-simple-letter-spacing: paragraph-03-letter-spacing,
+
+  button-primary-background-color: interactive-primary,
+  button-primary-border-color: transparent,
+  button-primary-text-color: text-02,
+  button-primary-hover-background-color: hover-primary,
+  button-primary-hover-border-color: transparent,
+  button-primary-hover-text-color: text-02,
+  button-primary-active-background-color: active-primary,
+  button-primary-active-text-color: text-02,
+  button-primary-active-border-color: transparent,
+  button-primary-disabled-background-color: rgba(39, 171, 214, 0.4),
+  button-primary-disabled-text-color: rgba(0, 0, 0, 0.4),
+  button-primary-disabled-border-color: transparent,
+
+  button-secondary-background-color: transparent,
+  button-secondary-border-color: interactive-primary,
+  button-secondary-text-color: text-01,
+  button-secondary-hover-background-color: hover-primary,
+  button-secondary-hover-border-color: transparent,
+  button-secondary-hover-text-color: text-02,
+  button-secondary-active-background-color: active-primary,
+  button-secondary-active-text-color: text-02,
+  button-secondary-active-border-color: transparent,
+  button-secondary-disabled-background-color: transparent,
+  button-secondary-disabled-text-color: rgba(39, 171, 214, 0.4),
+  button-secondary-disabled-border-color: rgba(39, 171, 214, 0.4),
+
+  button-tertiary-background-color: transparent,
+  button-tertiary-border-color: transparent,
+  button-tertiary-text-color: button-secondary-text-color,
+  button-tertiary-hover-background-color: hover-secondary,
+  button-tertiary-hover-border-color: hover-secondary,
+  button-tertiary-hover-text-color: button-secondary-text-color,
+  button-tertiary-active-background-color: ui-04,
+  button-tertiary-active-text-color: button-secondary-text-color,
+  button-tertiary-active-border-color: transparent,
+  button-tertiary-disabled-background-color: button-secondary-background-color,
+  button-tertiary-disabled-text-color: button-secondary-disabled-text-color,
+  button-tertiary-disabled-border-color: transparent,
+
+  button-emphasis-background-color: accent-01,
+  button-emphasis-border-color: transparent,
+  button-emphasis-text-color: text-02,
+  button-emphasis-hover-background-color: #007e5a,
+  button-emphasis-hover-border-color: transparent,
+  button-emphasis-hover-text-color: text-02,
+  button-emphasis-active-background-color: #006548,
+  button-emphasis-active-text-color: text-02,
+  button-emphasis-active-border-color: transparent,
+  button-emphasis-disabled-background-color: rgba(0, 177, 127, 0.4),
+  button-emphasis-disabled-text-color: rgba(255, 255, 255, 0.4),
+  button-emphasis-disabled-border-color: transparent,
+
+  button-cta-background-color: accent-02,
+  button-cta-border-color: transparent,
+  button-cta-text-color: text-02,
+  button-cta-hover-background-color: #3864ff,
+  button-cta-hover-border-color: transparent,
+  button-cta-hover-text-color: text-02,
+  button-cta-active-background-color: #1f51ff,
+  button-cta-active-text-color: text-02,
+  button-cta-active-border-color: transparent,
+  button-cta-disabled-background-color: rgba(107, 140, 255, 0.4),
+  button-cta-disabled-text-color: rgba(255, 255, 255, 0.4),
+  button-cta-disabled-border-color: transparent,
+
+  button-text-transform: uppercase,
+  button-border-radius: 4px,
+  button-border-width: 2px,
+  button-small-height: 32px,
+  button-small-medium-height: 40px,
+  button-medium-height: 48px,
+  button-large-height: 72px,
+
+  button-small-icon-size: 16px,
+  button-small-medium-icon-size: 20px,
+  button-medium-icon-size: 24px,
+  button-large-icon-size: 24px,
+
+  plain-button-color: link-color,
+  plain-button-hover-color: link-hover-color,
+  plain-button-active-color: link-active-color,
+  plain-button-disabled-color: link-disabled-color,
+  plain-button-font-size: link-small-font-size,
+  plain-button-line-height: link-small-line-height,
+  plain-button-font-weight: link-small-font-weight,
+  plain-button-letter-spacing: link-small-letter-spacing,
+  plain-button-icon-size: link-small-icon-size,
+
+  breadcrumb-color: text-01,
+  breadcrumb-font-size: 16px,
+  breadcrumb-line-height: 24px,
+  breadcrumb-letter-spacing: 0,
+  breadcrumb-font-weight: 400,
+  breadcrumb-chevron-color: text-01,
+
+  icon-button-small-icon-size: 16px,
+  icon-button-small-medium-icon-size: 24px,
+  icon-button-medium-icon-size: 24px,
+  icon-button-large-icon-size: 24px,
+
+  card-text-color: text-01,
+  card-background-color: ui-01,
+  card-background-hover-color: ui-02,         // deprecated
+  card-background-selected-color: #767676,  // deprecated
+  card-border-color: ui-04,
+  card-border-width: 1px,
+  card-border-radius: 4px,
+
+  comparison-table-popular-cell-text-color: black,
+  comparison-table-popular-cell-background-color: #a7ddef,
+  comparison-table-selected-column-background-color: ui-03,
+  comparison-table-selected-column-text-color: text-01,
+  comparison-table-border-color: ui-04,
+  comparison-table-header-background-color: ui-01,
+  comparison-table-header-text-color: text-01,
+
+  comparison-table-disabled-text-color: disabled-01,
+  comparison-table-disabled-column-header-text-color: comparison-table-disabled-text-color,
+
+  comparison-table-cell-background-color: ui-01,
+  comparison-table-intersection-cell-background-color: ui-background,
+  comparison-table-toggle-section-header-background-color: ui-background,
+  comparison-table-expansion-cell-color: interactive-text,
+
+  comparison-table-font-size: 16px,
+  comparison-table-line-height: 20px,
+  comparison-table-font-weight: 400,
+  comparison-table-letter-spacing: 0,
+
+  comparison-table-popular-cell-font-size: 14px,
+  comparison-table-popular-cell-line-height: 16px,
+  comparison-table-popular-cell-font-weight: 600,
+  comparison-table-popular-cell-letter-spacing: 0.2px,
+
+  comparison-table-description-cell-mobile-font-size: 14px,
+  comparison-table-description-cell-mobile-line-height: 16px,
+  comparison-table-description-cell-mobile-font-weight: 700,
+  comparison-table-description-cell-mobile-letter-spacing: 0.2px,
+
+  comparison-table-mobile-section-header-font-size: 14px,
+  comparison-table-mobile-section-header-line-height: 24px,
+  comparison-table-mobile-section-header-font-weight: 600,
+  comparison-table-mobile-section-header-letter-spacing: 0,
+
+  comparison-table-group-label-font-size: 16px,
+  comparison-table-group-label-line-height: 24px,
+  comparison-table-group-label-font-weight: 600,
+  comparison-table-group-label-letter-spacing: 1,
+
+  selectable-card-text-color: text-01,
+  selectable-card-background-color: ui-01,
+  selectable-card-background-hover-color: ui-02,
+  selectable-card-background-selected-color: ui-02,
+  selectable-card-background-selected-hover-color: ui-03,
+  selectable-card-background-disabled-color: ui-01,
+  selectable-card-background-disabled-selected-color: ui-02,
+
+  selectable-card-icon-color: success,
+  selectable-card-icon-diabled-color: rgba(30, 137, 39, 0.4),
+
+  selectable-card-border-color: #999999,
+  selectable-card-border-hover-color: ui-06,
+  selectable-card-border-selected-color: ui-06,
+  selectable-card-border-disabled-color: ui-03,
+  selectable-card-border-disabled-selected-color: #C3C3C3,
+  selectable-card-border-error-color: danger,
+  selectable-card-border-width: 1px,
+  selectable-card-border-radius: 4px,
+
+
+  checkbox-border-width: 2px,
+  checkbox-border-radius: 4px,
+  checkbox-control-size: 24px,
+  // IE has problems using 24px because of the border
+  // it just doesn't want to align the icon into the remaining 20x20
+  // space, despite all other browsers just do it correctly
+  checkbox-icon-size: 20px,
+
+  checkbox-background-color: transparent,
+  checkbox-border-color: ui-05,
+  checkbox-icon-color: text-02,
+  checkbox-indeterminate-color: interactive-primary,
+  checkbox-selected-background-color: interactive-primary,
+  checkbox-selected-border-color: interactive-primary,
+  checkbox-hover-background-color: hover-primary,
+  checkbox-hover-border-color: hover-primary,
+  checkbox-active-background-color: active-primary,
+  checkbox-active-border-color: active-primary,
+  checkbox-disabled-border-color: disabled-01,
+  checkbox-disabled-background-color: disabled-04,
+  checkbox-disabled-selected-background-color: disabled-01,
+  checkbox-disabled-icon-color: text-02,
+  checkbox-label-color: text-01,
+  checkbox-label-disabled-color: disabled-01,
+  // the control and the first line of text are supposed to be aligned
+  // depending on the height of the control and the line-height of the text
+  // you can use these variables to push either the control or the text down to fit
+  // 1) if control size is larger than text line height the text needs to be pushed down
+  // 2) if the text line height is larger than the control size the control needs to be pushed down
+  checkbox-large-label-control-margin-top: 2px,
+  checkbox-large-label-text-margin-top: 0,
+  checkbox-large-label-text-margin-left: 12px,
+  checkbox-small-label-control-margin-top: 0,
+  checkbox-small-label-text-margin-top: 0,
+  checkbox-small-label-text-margin-left: 12px,
+
+  checkbox-large-label-font-size: large-label-font-size,
+  checkbox-large-label-line-height: large-label-line-height,
+  checkbox-large-label-font-weight: large-label-font-weight,
+  checkbox-large-label-letter-spacing: large-label-letter-spacing,
+
+  checkbox-small-label-font-size: small-label-font-size,
+  checkbox-small-label-line-height: small-label-line-height,
+  checkbox-small-label-font-weight: small-label-font-weight,
+  checkbox-small-label-letter-spacing: small-label-letter-spacing,
+
+  checkbox-disabled-negative-background-color: negative-dimmed,
+
+  circle-toggle-checkmark-background-color: accent-01,
+  circle-toggle-checkmark-color: #FFFFFF,
+  circle-toggle-checkmark-border-color: ui-background,
+  circle-toggle-icon-color: interactive-primary,
+  circle-toggle-border-color: interactive-primary,
+  circle-toggle-background-color: transparent,
+  circle-toggle-selected-icon-color: #FFFFFF,
+  circle-toggle-selected-border-color: interactive-primary,
+  circle-toggle-selected-background-color: interactive-primary,
+  circle-toggle-hover-icon-color: #FFFFFF,
+  circle-toggle-hover-border-color: hover-primary,
+  circle-toggle-hover-background-color: hover-primary,
+
+  circle-toggle-label-font-size: small-label-font-size,
+  circle-toggle-label-line-height: small-label-line-height,
+  circle-toggle-label-font-weight: small-label-font-weight,
+  circle-toggle-label-letter-spacing: small-label-letter-spacing,
+  circle-toggle-label-mobile-font-size: paragraph-04-font-size,
+  circle-toggle-label-mobile-line-height: paragraph-04-line-height,
+  circle-toggle-label-mobile-font-weight: circle-toggle-label-font-weight,
+  circle-toggle-label-mobile-letter-spacing: paragraph-04-letter-spacing,
+  circle-toggle-hint-font-size: circle-toggle-label-font-size,
+  circle-toggle-hint-line-height: circle-toggle-label-line-height,
+  circle-toggle-hint-font-weight: circle-toggle-label-font-weight,
+  circle-toggle-hint-letter-spacing: circle-toggle-label-letter-spacing,
+  circle-toggle-hint-mobile-font-size: circle-toggle-label-mobile-font-size,
+  circle-toggle-hint-mobile-line-height: circle-toggle-label-mobile-line-height,
+  circle-toggle-hint-mobile-font-weight: 300,
+  circle-toggle-hint-mobile-letter-spacing: circle-toggle-label-mobile-letter-spacing,
+  circle-toggle-label-color: text-01,
+  circle-toggle-hint-color: text-01,
+
+  circle-toggle-content-text-font-size: heading-05-font-size,
+  circle-toggle-content-text-line-height: heading-05-line-height,
+  circle-toggle-content-text-font-weight: 400,
+  circle-toggle-content-text-letter-spacing: heading-05-letter-spacing,
+
+  circle-toggle-content-text-mobile-font-size: heading-05-mobile-font-size,
+  circle-toggle-content-text-mobile-line-height: heading-05-mobile-line-height,
+  circle-toggle-content-text-mobile-font-weight: 400,
+  circle-toggle-content-text-mobile-letter-spacing: heading-05-mobile-letter-spacing,
+
+  circle-toggle-content-text-color: interactive-text,
+  circle-toggle-selected-content-text-color: #FFFFFF,
+
+  code-input-font-size: heading-04-font-size,
+  code-input-line-height: heading-04-line-height,
+  code-input-font-weight: 600,
+  code-input-letter-spacing: heading-04-letter-spacing,
+  code-input-color: text-01,
+  code-input-active-color: interactive-primary,
+  code-input-error-color: danger,
+  code-input-disabled-color: disabled-01,
+
+  context-menu-font-size: paragraph-03-font-size,
+  context-menu-line-height: paragraph-03-line-height,
+  context-menu-font-weight: paragraph-03-font-weight,
+  context-menu-letter-spacing: paragraph-03-letter-spacing,
+
+  context-menu-background-color: ui-02,
+  context-menu-item-text-color: text-01,
+  context-menu-item-active-color: interactive-text,
+  context-menu-item-disabled-color: disabled-01,
+  context-menu-item-icon-size: 20px,
+  context-menu-item-expand-icon-size: 20px,
+
+  datefield-toggle-icon-size: formfield-icon-size,
+
+  datefield-change-view-font-size: small-label-font-size,
+  datefield-change-view-line-height: 1,
+  datefield-change-view-font-weight: bold,
+  datefield-change-view-letter-spacing: small-label-letter-spacing,
+  datefield-change-view-color: interactive-text,
+  datefield-change-view-hover-color: hover-primary,
+
+  datefield-cell-font-size: paragraph-03-font-size,
+  datefield-cell-line-height: paragraph-03-line-height,
+  datefield-cell-font-weight: 600,
+  datefield-cell-letter-spacing: paragraph-03-letter-spacing,
+  datefield-cell-color: text-01,
+  datefield-cell-selected-background-color: interactive-primary,
+  datefield-cell-selected-color: text-02,
+  datefield-cell-hover-background-color: ui-03,
+  datefield-cell-hover-color: text-01,
+  datefield-cell-disabled-color: disabled-01,
+  datefield-cell-focused-background-color: ui-01,
+
+  datefield-header-cell-color: #C3C3C3,
+
+  datefield-period-label-font-size: large-label-font-size,
+  datefield-period-label-line-height: datefield-controls-icon-size,
+  datefield-period-label-font-weight: 600,
+  datefield-period-label-letter-spacing: large-label-letter-spacing,
+  datefield-period-label-color: text-01,
+
+  datefield-controls-color: interactive-text,
+  datefield-controls-hover-color: hover-primary,
+  datefield-controls-icon-size: 24px,
+
+  datefield-panel-background-color: ui-01,
+  datefield-panel-header-background-color: ui-01,
+  datefield-panel-border-color: ui-04,
+
+  dropdown-panel-background-color: ui-02,
+  dropdown-panel-header-background-color: #27abd6,
+  dropdown-panel-text-color: text-01,
+  dropdown-panel-header-text-color: text-01,
+  dropdown-group-section-background-color: ui-03,
+
+  dropdown-item-text-color: text-01,
+  dropdown-item-selected-color: text-01,
+  dropdown-item-hover-color: hover-primary,
+  dropdown-item-checkmark-color: text-01,
+  dropdown-item-font-size: large-label-font-size,
+  dropdown-item-line-height: large-label-line-height,
+  dropdown-item-font-weight: large-label-font-weight,
+  dropdown-item-letter-spacing: large-label-letter-spacing,
+
+  dropdown-item-outline-font-size: small-label-font-size,
+  dropdown-item-outline-line-height: small-label-line-height,
+  dropdown-item-outline-font-weight: small-label-font-weight,
+  dropdown-item-outline-letter-spacing: small-label-letter-spacing,
+
+  dropdown-item-text-color-disabled: disabled-01,
+
+  dropdown-chevron-size: formfield-icon-size,
+  dropdown-filter-input-text-color: text-01,
+  dropdown-filter-input-border-color: ui-05,
+  dropdown-filter-input-active-text-color: interactive-primary,
+  dropdown-filter-input-active-border-color: interactive-primary,
+
+  footer-font-size: paragraph-03-font-size,
+  footer-line-height: paragraph-03-line-height,
+  footer-font-weight: paragraph-03-font-weight,
+  footer-letter-spacing: paragraph-03-letter-spacing,
+  footer-color: ui-05,
+  footer-copyright-font-weight: 700,
+
+  // ------------ formfield tokens shared between all appearances ------------- //
+  // -------------------------------------------------------------------------- //
+  formfield-bottom-padding: 24px,
+  formfield-icon-size: 24px,
+  formfield-label-color: text-01,
+  formfield-control-color: text-01,
+  formfield-border-width: 1px,
+  formfield-active-color: interactive-text,
+  formfield-hover-border-color: ui-06,
+  formfield-disabled-text-color: disabled-01,
+  formfield-disabled-border-color: disabled-01,
+  formfield-readonly-border-color: readonly-02,
+  formfield-readonly-background-color: readonly-01,
+
+  // ------------ formfield tokens only for the default appearance ------------ //
+  // -------------------------------------------------------------------------- //
+  formfield-control-height: 32px,
+  formfield-error-input-font-weight: 700,
+  formfield-input-padding: 0 0 3px 0,
+  formfield-border-color: ui-06,
+  formfield-active-border-color: interactive-primary,
+  formfield-background-color: transparent,
+
+  // The typography for the flexfield container
+  // The typography is set here that all controls
+  // like dropdown, input, textarea and especially custom controls inherit the typography
+  // and don't have to care about it
+  formfield-control-font-size: paragraph-01-font-size,
+  formfield-control-line-height: paragraph-01-line-height,
+  formfield-control-font-weight: 600,
+  formfield-control-letter-spacing: paragraph-01-letter-spacing,
+
+  formfield-label-font-size: paragraph-05-font-size,
+  formfield-label-line-height: paragraph-05-line-height,
+  formfield-label-font-weight: paragraph-05-font-weight,
+  formfield-label-letter-spacing: paragraph-05-letter-spacing,
+
+  formfield-label-height: 16px,
+  formfield-floating-distance: -16px,
+
+  formfield-placeholder-label-font-size: formfield-control-font-size,
+  formfield-placeholder-label-line-height: formfield-control-line-height,
+  formfield-placeholder-label-font-weight: 300,
+  formfield-placeholder-label-letter-spacing: formfield-control-letter-spacing,
+
+  formfield-input-native-placeholder-font-size: formfield-control-font-size,
+  formfield-input-native-placeholder-line-height: formfield-control-line-height,
+  formfield-input-native-placeholder-font-weight: 200,
+  formfield-input-native-placeholder-letter-spacing: formfield-control-letter-spacing,
+  formfield-input-native-placeholder-color: ui-05,
+
+  // the spacing between the flexfield and the hint below it
+  formfield-hint-spacing: 8px,
+  formfield-hint-font-size: paragraph-05-font-size,
+  formfield-hint-line-height: paragraph-05-line-height,
+  formfield-hint-font-weight: 400,
+  formfield-hint-letter-spacing: paragraph-05-letter-spacing,
+
+  // --------- formfield tokens only for the outline appearance --------------- //
+  // -------------------------------------------------------------------------- //
+  formfield-outline-control-height: 40px,
+  formfield-outline-border-color: ui-05,
+  formfield-outline-active-border-color: interactive-text,
+  formfield-outline-focus-box-shadow: 0 0 0 2px #27abd6,
+
+  formfield-outline-control-font-size: paragraph-03-font-size,
+  formfield-outline-control-line-height: paragraph-03-line-height,
+  formfield-outline-control-font-weight: paragraph-03-font-weight,
+  formfield-outline-control-letter-spacing: paragraph-03-letter-spacing,
+
+  formfield-outline-label-font-size: paragraph-03-font-size,
+  formfield-outline-label-line-height: paragraph-03-line-height,
+  formfield-outline-label-font-weight: 600,
+  formfield-outline-label-letter-spacing: paragraph-03-letter-spacing,
+
+  formfield-outline-label-height: 28px,
+  formfield-outline-floating-distance: -29px,
+
+  formfield-outline-hint-spacing: 8px, // TODO integrate
+  formfield-outline-hint-font-size: paragraph-03-font-size,
+  formfield-outline-hint-line-height: 1em,
+  formfield-outline-hint-font-weight: paragraph-03-font-weight,
+  formfield-outline-hint-letter-spacing: paragraph-03-letter-spacing,
+
+  formfield-outline-input-native-placeholder-font-size: formfield-outline-control-font-size,
+  formfield-outline-input-native-placeholder-line-height: formfield-outline-control-font-size,
+  formfield-outline-input-native-placeholder-font-weight: 200,
+  formfield-outline-input-native-placeholder-letter-spacing: formfield-outline-control-letter-spacing,
+  formfield-outline-input-native-placeholder-color: ui-05,
+
+  header-font-size: paragraph-03-font-size,
+  header-line-height: paragraph-03-line-height,
+  header-font-weight: paragraph-03-font-weight,
+  header-letter-spacing: paragraph-03-letter-spacing,
+
+  header-link-active-color: hover-primary,
+  header-link-active-font-weight: 700,
+
+  header-background-color: ui-01,
+  header-border-color: ui-04,
+
+  icon-filled-background-color: text-01,
+  icon-filled-color: ui-01,
+
+  link-large-font-size: heading-03-font-size,
+  link-large-line-height: heading-03-line-height,
+  link-large-font-weight: 600,
+  link-large-letter-spacing: heading-03-letter-spacing,
+
+  link-large-icon-size: 32px,
+  link-small-font-size: 16px,
+  link-small-line-height: 24px,
+  link-small-font-weight: 600,
+  link-small-letter-spacing: 1px,
+  link-small-icon-size: 24px,
+
+  link-color: interactive-text,
+  link-hover-color: hover-link,
+  link-active-color: active-primary,
+  link-disabled-color: disabled-04,
+
+  link-black-color: text-01,
+  link-black-hover-color: #9A9A9A,
+  link-black-active-color: #5C5C5C,
+  link-black-disabled-color: disabled-01,
+
+  list-text-color: text-01,
+  list-circle-text-color: text-02,
+  list-icon-color: white,
+  list-icon-size: 24px,
+  list-circle-size: 24px,
+
+  list-negative-circle-text-color: negative-background,
+
+  menu-background-color: ui-01,
+  menu-item-border-color: ui-04,
+
+  menu-button-background-color: ui-01,
+  menu-button-hover-background-color: ui-03,
+  menu-button-text-color: text-01,
+
+  menu-button-expanded-background-color: interactive-primary,
+  menu-button-expanded-border-color: interactive-primary,
+  menu-button-expanded-text-color: text-02,
+
+  menu-button-nested-background-color: ui-02,
+  menu-button-nested-expanded-background-color: #66c4e3,
+  menu-button-nested-expanded-border-color: #66c4e3,
+  menu-button-nested-expanded-color: text-02,
+
+  message-text-color: text-01,
+  message-close-icon-color: message-text-color,
+  message-box-shadow: 0 2px 4px rgba(65, 65, 65, 0.5),
+  message-border-radius: 4px,
+
+  message-regular-background-color: ui-01,
+  message-regular-border-color: text-01,
+
+  message-info-icon-color: info,
+  message-info-background-color: ui-01,
+  message-info-border-color: info,
+
+  message-error-icon-color: danger,
+  message-error-background-color: ui-01,
+  message-error-border-color: danger,
+
+  message-success-icon-color: success,
+  message-success-background-color: ui-01,
+  message-success-border-color: success,
+
+  message-warning-icon-color: warning,
+  message-warning-background-color: ui-01,
+  message-warning-border-color: warning,
+
+  message-font-size: paragraph-03-font-size,
+  message-line-height: paragraph-03-line-height,
+  message-font-weight: paragraph-03-font-weight,
+  message-letter-spacing: paragraph-03-letter-spacing,
+
+  message-banner-border-radius: 4px,
+
+  modal-background-color: ui-03,
+  modal-text-color: text-01,
+  modal-close-icon-color: text-01,
+  modal-actions-background-color: ui-02,
+  modal-actions-border-color: ui-04,
+
+  pagination-link-color: interactive-text,
+  pagination-link-disabled-color: disabled-04,
+  pagination-item-font-weight: 600,
+  pagination-text-color: text-01,
+  pagination-icon-size: 24px,
+  pagination-icon-font-weight: 600,
+
+  pagination-font-size: paragraph-03-font-size,
+  pagination-line-height: paragraph-03-line-height,
+  pagination-font-weight: paragraph-03-font-weight,
+  pagination-letter-spacing: paragraph-03-letter-spacing,
+
+  pagination-compact-direction-font-size: link-small-font-size,
+  pagination-compact-direction-line-height: link-small-line-height,
+  pagination-compact-direction-font-weight: link-small-font-weight,
+  pagination-compact-direction-letter-spacing: link-small-letter-spacing,
+
+  natural-language-form-large-font-size: heading-02-font-size,
+  natural-language-form-large-line-height: 52px,
+  natural-language-form-large-font-weight: heading-02-font-weight,
+  natural-language-form-large-letter-spacing: heading-02-letter-spacing,
+
+  natural-language-form-small-font-size: heading-04-font-size,
+  natural-language-form-small-line-height: 36px,
+  natural-language-form-small-font-weight: heading-04-font-weight,
+  natural-language-form-small-letter-spacing: heading-04-letter-spacing,
+
+  natural-language-form-text-color: text-01,
+  natural-language-form-border-color: ui-04,
+  natural-language-form-active-color: formfield-active-color,
+  natural-language-form-active-border-color: interactive-primary,
+
+  natural-language-form-error-color: danger,
+  natural-language-form-error-border-color: danger,
+
+  number-stepper-label-font-size: large-label-font-size,
+  number-stepper-label-line-height: large-label-line-height,
+  number-stepper-label-font-weight: large-label-font-weight,
+  number-stepper-label-letter-spacing: large-label-letter-spacing,
+
+  number-stepper-large-font-size: heading-02-font-size,
+  number-stepper-large-line-height: heading-02-line-height,
+  number-stepper-large-font-weight: 400,
+  number-stepper-large-letter-spacing: heading-02-letter-spacing,
+
+  number-stepper-small-font-size: paragraph-01-font-size,
+  number-stepper-small-line-height: paragraph-01-line-height,
+  number-stepper-small-font-weight: paragraph-01-font-weight,
+  number-stepper-small-letter-spacing: paragraph-01-letter-spacing,
+
+  number-stepper-color: text-01,
+  number-stepper-underline-color: text-01,
+  number-stepper-disabled-color: formfield-disabled-text-color,
+  number-stepper-disabled-underline-color: formfield-disabled-border-color,
+
+  page-search-font-size: heading-03-font-size,
+  page-search-line-height: heading-03-line-height,
+  page-search-font-weight: 600,
+  page-search-letter-spacing: heading-03-letter-spacing,
+  page-search-icon-color: interactive-primary,
+  page-search-background-color: ui-02,
+  page-search-box-shadow: none,
+
+  popover-content-font-size: paragraph-03-font-size,
+  popover-content-line-height: paragraph-03-line-height,
+  popover-content-font-weight: paragraph-03-font-weight,
+  popover-content-letter-spacing: paragraph-03-letter-spacing,
+  popover-close-icon-size: 16px,
+
+  popover-text-color: text-01,
+  popover-background-color: ui-01,
+  popover-border-color: ui-04,
+  popover-close-icon-color: ui-04,
+
+  progressbar-background-color: ui-03,
+  progressbar-indicator-color: interactive-primary,
+
+  // ----- progress-indicator components ----- //
+  // mobile label is used in all three indicator components
+  progress-indicator-mobile-color: text-01,
+  progress-indicator-mobile-font-size: paragraph-03-font-size,
+  progress-indicator-mobile-line-height: paragraph-03-line-height,
+  progress-indicator-mobile-font-weight: paragraph-03-font-weight,
+  progress-indicator-mobile-letter-spacing: paragraph-03-letter-spacing,
+
+  progress-stepper-label-font-size: large-label-font-size,
+  progress-stepper-label-line-height: large-label-line-height,
+  progress-stepper-label-font-weight: 300,
+  progress-stepper-label-letter-spacing: large-label-letter-spacing,
+
+  progress-stepper-step-font-size: paragraph-03-font-size,
+  progress-stepper-step-line-height: paragraph-03-line-height,
+  progress-stepper-step-font-weight: paragraph-03-font-weight,
+  progress-stepper-step-letter-spacing: paragraph-03-letter-spacing,
+
+  progress-stepper-dotnumber-font-size: paragraph-04-font-size,
+  progress-stepper-dotnumber-line-height: paragraph-04-line-height,
+  progress-stepper-dotnumber-font-weight: 700,
+  progress-stepper-dotnumber-letter-spacing: paragraph-04-letter-spacing,
+
+  progress-stepper-step-color: interactive-text,
+  progress-stepper-step-disabled-color: disabled-02,
+  progress-stepper-dot-color: text-02,
+  progress-stepper-dot-background-color: interactive-primary,
+  progress-stepper-dot-disabled-background-color: disabled-02,
+
+  single-stepper-step-color: text-01,
+  single-stepper-step-font-size: paragraph-03-font-size,
+  single-stepper-step-line-height: paragraph-03-line-height,
+  single-stepper-step-font-weight: 300,
+  single-stepper-step-letter-spacing: paragraph-03-letter-spacing,
+
+  multi-stepper-line-color: disabled-01,
+  multi-stepper-line-filled-color: interactive-primary,
+
+  // later we can split this deeper into completed and uncompleted steps
+  multi-stepper-dot-touched-color: interactive-primary,
+  multi-stepper-dot-checkmark-color: ui-01,
+  multi-stepper-dot-disabled-color: disabled-01,
+
+  multi-stepper-step-color: text-01,
+  multi-stepper-step-disabled-color: disabled-01,
+  multi-stepper-step-font-size: paragraph-03-font-size,
+  multi-stepper-step-line-height: paragraph-03-line-height,
+  multi-stepper-step-font-weight: paragraph-03-font-weight,
+  multi-stepper-step-letter-spacing: paragraph-03-letter-spacing,
+
+  multi-stepper-group-color: multi-stepper-step-color,
+  multi-stepper-group-disabled-color: multi-stepper-step-disabled-color,
+  multi-stepper-group-font-size: paragraph-01-font-size,
+  multi-stepper-group-line-height: paragraph-01-line-height,
+  multi-stepper-group-font-weight: paragraph-01-font-weight,
+  multi-stepper-group-letter-spacing: paragraph-01-letter-spacing,
+  // ----- end progress-indicator components ----- //
+
+  radio-button-circle-color: ui-05,
+  radio-button-hover-circle-color: hover-primary,
+  radio-button-hover-dot-color: hover-primary,
+  radio-button-selected-dot-color: interactive-primary,
+  radio-button-selected-circle-color: interactive-primary,
+  radio-button-dot-background-color: transparent,
+  radio-button-selected-background-color: transparent,
+  radio-button-dot-size: 8px,
+  radio-button-disabled-selected-background-color: transparent,
+  radio-button-disabled-selected-dot-color: disabled-01,
+  radio-button-disabled-text-color: disabled-01,
+  radio-button-disabled-border-color: disabled-01,
+  radio-button-label-color: text-01,
+
+  radio-button-large-label-font-size: large-label-font-size,
+  radio-button-large-label-line-height: large-label-line-height,
+  radio-button-large-label-font-weight: large-label-font-weight,
+  radio-button-large-label-letter-spacing: large-label-letter-spacing,
+
+  radio-button-small-label-font-size: small-label-font-size,
+  radio-button-small-label-line-height: small-label-line-height,
+  radio-button-small-label-font-weight: small-label-font-weight,
+  radio-button-small-label-letter-spacing: small-label-letter-spacing,
+
+  // the radio button and the first line of label are supposed to be aligned
+  // depending on the height of the radio button and the line-height of the label
+  // you can use these variables to push either the radio button or the text down to fit
+  // 1) if radio button height size is larger than label line height the text needs to be pushed down
+  // 2) if the label line height is larger than the radio button height size the radio button needs to be pushed down
+  radio-button-large-label-margin-top: 0,
+  radio-button-large-label-margin-left: 12px,
+  radio-button-large-circle-margin-top: 2px,
+  radio-button-small-label-margin-top: 0,
+  radio-button-small-label-margin-left: 12px,
+  radio-button-small-circle-margin-top: 0,
+
+  slider-background-color: ui-04,
+  slider-disabled-background-color: disabled-01,
+  slider-indicator-color: interactive-primary,
+  slider-indicator-disabled-color: disabled-04,
+  slider-label-color: text-01,
+  slider-handle-value-color: interactive-text,
+  slider-handle-background-color: #e9f7fb,
+  slider-handle-value-disabled-color: text-02,
+  slider-handle-value-border-color: ui-02,
+  slider-value-label-color: text-01,
+  slider-value-background-color: #e9f7fb,
+  slider-value-label-disabled-color: disabled-02,
+  slider-value-disabled-background-color: disabled-01,
+  slider-handle-border-color: ui-02,
+  slider-handle-focus-border-color: interactive-primary,
+  slider-handle-active-inset-color: rgba(39, 171, 214, 0.2),
+
+  slider-label-font-size: base-label-large-font-size,
+  slider-label-line-height: base-label-large-line-height,
+  slider-label-letter-spacing: base-label-large-letter-spacing,
+  slider-label-font-weight: base-label-large-font-weight,
+
+  slider-value-label-font-size: paragraph-03-font-size,
+  slider-value-label-line-height: paragraph-03-line-height,
+  slider-value-label-letter-spacing: paragraph-03-letter-spacing,
+  slider-value-label-font-weight: 300,
+
+  slider-handle-value-font-size: paragraph-05-font-size,
+  slider-handle-value-line-height: paragraph-05-line-height,
+  slider-handle-value-font-weight: paragraph-05-font-weight,
+  slider-handle-value-letter-spacing: paragraph-05-letter-spacing,
+
+  slider-negative-background-color: negative-dimmed,
+
+  rating-icon-color: text-01,
+  rating-icon-size: 40px,
+  rating-label-color: text-01,
+  rating-disabled-icon-color: disabled-01,
+  rating-disabled-label-color: disabled-01,
+  rating-label-font-size: paragraph-03-font-size,
+  rating-label-line-height: paragraph-03-line-height,
+  rating-label-font-weight: paragraph-03-font-weight,
+  rating-label-letter-spacing: paragraph-03-letter-spacing,
+
+  spinner-background-color: ui-03,
+  spinner-indicator-color: interactive-primary,
+
+  spinner-negative-background-color: rgba(150, 150, 150, 0.4),
+  spinner-negative-indicator-color: negative,
+
+  // the control and the first line of text are supposed to be aligned
+  // depending on the height of the control and the line-height of the text
+  // you can use these variables to push either the control or the text down to fit
+  // 1) if control size is larger than text line height the text needs to be pushed down
+  // 2) if the text line height is larger than the control size the control needs to be pushed down
+  switcher-large-label-control-margin-top: 2px,
+  switcher-large-label-text-margin-top: 0,
+  switcher-small-label-control-margin-top: 0,
+  switcher-small-label-text-margin-top: 0,
+
+  switcher-big-large-label-control-margin-top: 0,
+  switcher-big-large-label-text-margin-top: 2px,
+  switcher-big-small-label-control-margin-top: 0,
+  switcher-big-small-label-text-margin-top: 4px,
+
+  switcher-large-font-size: large-label-font-size,
+  switcher-large-line-height: large-label-line-height,
+  switcher-large-font-weight: large-label-font-weight,
+  switcher-large-letter-spacing: large-label-letter-spacing,
+
+  switcher-small-font-size: small-label-font-size,
+  switcher-small-line-height: small-label-line-height,
+  switcher-small-font-weight: small-label-font-weight,
+  switcher-small-letter-spacing: small-label-letter-spacing,
+
+  switcher-checked-background-color: interactive-primary,
+  switcher-checked-icon-color: interactive-text,
+  switcher-dot-background-color: #FFFFFF,
+  switcher-unchecked-background-color: ui-03,
+  switcher-disabled-background-color: disabled-01,
+  switcher-disabled-dot-background-color: disabled-02,
+  switcher-disabled-icon-color: disabled-01,
+  switcher-disabled-text-color: disabled-01,
+
+  taglist-font-size: paragraph-04-font-size,
+  taglist-line-height: 16px,
+  taglist-font-weight: paragraph-04-font-weight,
+  taglist-letter-spacing: 1px,
+  taglist-close-icon-size: 16px,
+  taglist-color: white,
+  taglist-border-color: #C3C3C3,
+  taglist-background-color: transparent,
+
+  taglist-hover-color: text-02,
+  taglist-hover-border-color: #C3C3C3,
+  taglist-hover-background-color: #C3C3C3,
+
+  tab-item-color: interactive-text,
+  tab-item-border-color: interactive-text,
+  tab-item-disabled-color: disabled-01,
+  tab-item-disabled-border-color: disabled-01,
+
+  tab-item-font-size: paragraph-02-font-size,
+  tab-item-line-height: paragraph-02-line-height,
+  tab-item-font-weight: paragraph-02-font-weight,
+  tab-item-letter-spacing: paragraph-02-letter-spacing,
+
+  tab-expert-color: text-01,
+  tab-expert-bottom-border-color: #DADADA,
+
+  tab-item-disabled-negative-color: negative-dimmed,
+  tab-item-disabled-negative-border-color: negative-dimmed,
+
+  // Base table styles, also for dynamic tables
+  table-border-bottom-color: ui-06,
+  table-header-cell-font-size: paragraph-03-font-size,
+  table-header-cell-line-height: paragraph-03-line-height,
+  table-header-cell-font-weight: 600,
+  table-header-cell-letter-spacing: paragraph-03-letter-spacing,
+
+  table-header-cell-color: text-01,
+  table-header-border-top-color: ui-06,
+  table-header-border-bottom-color: ui-06,
+
+  table-cell-font-size: paragraph-03-font-size,
+  table-cell-line-height: paragraph-03-line-height,
+  table-cell-font-weight: paragraph-03-font-weight,
+  table-cell-letter-spacing: paragraph-03-letter-spacing,
+  table-cell-border-top-color: ui-06,
+  table-cell-color: text-01,
+  table-header-cell-background-color: transparent,
+
+  table-row-background-color: transparent,
+
+  // Selectable table
+  selectable-table-row-hover-background-color: ui-02,
+  selectable-table-row-active-background-color: ui-02,
+  selectable-table-row-selected-hover-background-color: ui-02,
+  selectable-table-row-selected-border-color: active-primary,
+
+  expandable-table-arrow-icon-color: text-01,
+
+  // Zebra table
+  zebra-table-even-row-background-color: ui-02,
+  zebra-table-odd-row-background-color: transparent,
+  zebra-table-row-active-background-color: ui-04,
+  zebra-table-row-hover-background-color: ui-03,
+  zebra-table-row-selected-background-color: #595959,
+  zebra-table-cell-border-top-color: ui-02,
+
+  toggle-button-unselected-border-color: interactive-primary,
+  toggle-button-unselected-text-color: interactive-text,
+  toggle-button-unselected-background-color: transparent,
+  toggle-button-selected-border-color: interactive-primary,
+  toggle-button-selected-background-color: interactive-primary,
+  toggle-button-selected-text-color: text-02,
+  toggle-button-hover-background-color: hover-primary,
+  toggle-button-hover-border-color: hover-primary,
+  toggle-button-hover-text-color: text-02,
+  toggle-button-active-background-color: active-primary,
+  toggle-button-active-border-color: active-primary,
+  toggle-button-active-text-color: text-02,
+  toggle-button-disabled-background-color: ui-01,
+  toggle-button-disabled-border-color: rgba(39, 171, 214, 0.4),
+  toggle-button-disabled-text-color: rgba(27, 119, 149, 0.4),
+  toggle-button-disabled-selected-background-color: rgba(39, 171, 214, 0.4),
+  toggle-button-disabled-selected-border-color: transparent,
+  toggle-button-disabled-selected-text-color: text-02,
+
+  toggle-button-large-font-size: button-medium-font-size,
+  toggle-button-large-line-height: button-medium-line-height,
+  toggle-button-large-font-weight: button-medium-font-weight,
+  toggle-button-large-letter-spacing: button-medium-letter-spacing,
+
+  toggle-button-small-font-size: button-small-font-size,
+  toggle-button-small-line-height: button-small-line-height,
+  toggle-button-small-font-weight: button-small-font-weight,
+  toggle-button-small-letter-spacing: button-small-letter-spacing,
+
+  tooltip-background-color: ui-03,
+  tooltip-text-color: text-01,
+  tooltip-border-radius: 4px,
+  tooltip-font-size: paragraph-04-font-size,
+  tooltip-line-height: paragraph-04-line-height,
+  tooltip-font-weight: 400,
+  tooltip-letter-spacing: paragraph-04-letter-spacing,
+
+  sidebar-background-color: ui-02,
+  sidebar-handle-color: ui-04,
+  sidebar-footer-button-color: text-01,
+
+  file-uploader-file-row-text-color: text-01,
+  file-uploader-file-row-border-bottom-color: ui-04,
+  file-uploader-file-row-hover-background-color: ui-02,
+  file-uploader-file-row-icon-color: success,
+  file-uploader-file-row-uploading-file-name-color: #9A9A9A,
+  file-uploader-file-name-font-size: paragraph-03-font-size,
+  file-uploader-file-name-line-height: 16px,
+  file-uploader-file-name-font-weight: 600,
+  file-uploader-file-name-letter-spacing: 0,
+  file-uploader-hint-font-size: paragraph-04-font-size,
+  file-uploader-hint-line-height: paragraph-05-line-height,
+  file-uploader-hint-font-weight: 300,
+  file-uploader-hint-letter-spacing: 0,
+  file-uploader-drop-zone-border-color: ui-06,
+  file-uploader-drop-zone-text-color: text-01,
+
+  toolbar-border-bottom-color: ui-04,
+  toolbar-background: ui-02,
+
+  timefield-color: text-01,
+  timefield-active-color: interactive-primary,
+  timefield-font-size: heading-06-font-size,
+  timefield-line-height: heading-06-line-height,
+  timefield-font-weight: 600,
+  timefield-letter-spacing: heading-06-letter-spacing,
+  timefield-error-color: danger,
+  timefield-disabled-color: disabled-01,
+  timefield-label-font-size: paragraph-05-font-size,
+  timefield-label-line-height: paragraph-05-line-height,
+  timefield-label-letter-spacing: paragraph-05-letter-spacing,
+  timefield-label-font-weight: paragraph-05-font-weight
+);

@@ -1,0 +1,47 @@
+<div class="nxv-example-viewer">
+  <div class="nxv-example-viewer__header">
+    <span nxCopytext="small">
+      {{exampleData.title}}
+    </span>
+
+    <div class="nxv-example-viewer__actions">
+      <button nxButton="small secondary"
+          *ngIf="showSourceCode"
+          class="nxv-example-viewer__copy-code-button"
+          (click)="copySourceCode()">
+        <nx-icon name="duplicate"></nx-icon>
+        {{copyButtonText}}
+      </button>
+      <button nxButton="small secondary"
+          class="nxv-example-viewer__show-code-button"
+          (click)="toggleSourceView()">
+        {{ showSourceCode == true ? 'hide' : 'show code' }}
+      </button>
+      <nx-link>
+        <a [routerLink]="'/examples/' + example"
+            nxTooltip="View example in fullscreen" nxTooltipPosition="right"
+            class="nxv-fullscreen-button">
+          <nx-icon name="launch" aria-hidden="true"></nx-icon>
+        </a>
+      </nx-link>
+    </div>
+  </div>
+  <!-- Code to the example -->
+  <div class="nxv-example-viewer__source" *ngIf="showSourceCode">
+    <nx-tab-group #tabsComponent appearance="expert">
+      <nx-tab *ngFor="let type of exampleDescriptorTypes" [label]="type.label">
+        <div class="nvx-tab__content">
+          <pre class="nxv-docs__example-code"><nxv-doc-viewer id={{type.type}}
+                [fileUrl]="getExampleSourceUrl(type.type, exampleDescriptor.url)"></nxv-doc-viewer>
+          </pre>
+        </div>
+      </nx-tab>
+    </nx-tab-group>
+  </div>
+  <hr class="nxv-example-viewer__divider" *ngIf="showSourceCode">
+
+  <!-- Live example -->
+  <div class="nxv-example-viewer__body">
+    <ng-template [cdkPortalOutlet]="examplePortal"></ng-template>
+  </div>
+</div>

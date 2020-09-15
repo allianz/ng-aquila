@@ -1,0 +1,9 @@
+<button
+  *ngIf="_config.showCloseIcon"
+  [attr.aria-label]="_config.closeIconButtonLabel"
+  (click)="_closeButtonClick()"
+  class="nx-modal__close"
+  type="button">
+  <nx-icon name="close"></nx-icon>
+</button>
+<ng-template cdkPortalOutlet></ng-template>

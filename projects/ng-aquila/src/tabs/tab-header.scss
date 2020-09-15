@@ -1,0 +1,21 @@
+@import "../shared-styles/index";
+
+:host {
+  display: block;
+
+  .nx-tab-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+:host-context(nx-tab-group.is-expert) {
+  .nx-tab-header {
+    justify-content: flex-start;
+    border-bottom-width: nx-border-size(xs);
+    border-bottom-style: solid;
+    @include var(border-bottom-color, tab-expert-bottom-border-color);
+  }
+}
+

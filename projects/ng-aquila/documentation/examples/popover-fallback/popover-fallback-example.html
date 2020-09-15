@@ -1,0 +1,23 @@
+<button nxButton="primary small" [nxPopoverTriggerFor]="popoverLeftAnchorFallback"
+        nxPopoverDirection="left" nxPopoverTrigger="click" class="nx-margin-right-2xs" type="button">Fallback to right
+</button>
+
+<nx-popover #popoverLeftAnchorFallback>
+  <div class="fixed-width">
+    <span>Fallback to right: The positioning of the popover follows a fallback strategy to make sure that the component is displayed correctly in
+      the most common situations.
+    </span>
+  </div>
+</nx-popover>
+
+<button nxButton="primary small" [nxPopoverTriggerFor]="popoverRightAnchorFallback"
+        nxPopoverDirection="right" nxPopoverTrigger="click" type="button">Fallback to left
+</button>
+
+<nx-popover #popoverRightAnchorFallback>
+  <div class="fixed-width">
+    <span>Fallback to left : The positioning of the popover follows a fallback strategy to make sure that the component is displayed correctly in
+      the most common situations.
+    </span>
+  </div>
+</nx-popover>

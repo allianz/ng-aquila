@@ -1,0 +1,146 @@
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { By } from '@angular/platform-browser';
+import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import * as axe from 'axe-core';
+
+import { NxListComponent } from './list.component';
+import { NxListModule } from './list.module';
+
+// For better readablity here, We can safely ignore some conventions in our specs
+// tslint:disable:component-class-suffix
+
+@Directive()
+abstract class ListTest {
+  @ViewChild(NxListComponent) listInstance: NxListComponent;
+}
+
+describe('NxListComponent', () => {
+  let fixture: ComponentFixture<ListTest>;
+  let testInstance: ListTest;
+  let listInstance: NxListComponent;
+  let listNativeElement: HTMLUListElement;
+
+  const createTestComponent = (component: Type<ListTest>) => {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    listInstance = testInstance.listInstance;
+    listNativeElement = <HTMLUListElement>fixture.nativeElement.querySelector('ul');
+  };
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        BasicList,
+        ListWithModifier,
+        ListWithIcons,
+        ConfigurableList
+      ],
+      imports: [
+        NxListModule
+      ]
+    }).compileComponents();
+  }));
+
+  it('creates the List', async(() => {
+    createTestComponent(BasicList);
+    expect(listInstance).toBeTruthy();
+  }));
+
+  it('creates full modifier class from a correct keyword', async(() => {
+    createTestComponent(ListWithModifier);
+    expect(listNativeElement.classList.contains('nx-list--small')).toBe(true);
+    expect(listNativeElement.classList.contains('nx-list--ordered-circle')).toBe(true);
+    expect(listNativeElement.classList.contains('nx-list--negative')).toBe(true);
+  }));
+
+  it('displays list icons', async(() => {
+    createTestComponent(ListWithIcons);
+    const icons = fixture.debugElement.queryAll(By.css('nx-icon'));
+
+    expect(icons[0].componentInstance.name).toBe('check');
+    expect(icons[1].componentInstance.name).toBe('product-cross');
+  }));
+
+  it('should update class names after input changes', fakeAsync(() => {
+    createTestComponent(ConfigurableList);
+    (testInstance as ConfigurableList).type = 'small negative';
+    fixture.detectChanges();
+    expect(listNativeElement.classList.contains('nx-list--small')).toBe(true);
+    expect(listNativeElement.classList.contains('nx-list--negative')).toBe(true);
+  }));
+
+  it('should change the icon', () => {
+    createTestComponent(ConfigurableList);
+    (testInstance as ConfigurableList).iconName = 'product-cross';
+    fixture.detectChanges();
+    const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
+    expect(listItems.item(0).querySelector('nx-icon').classList).toContain('product-cross');
+  });
+
+  it('Should change size', async(() => {
+    createTestComponent(ConfigurableList);
+    (testInstance as ConfigurableList).type = 'xsmall';
+    fixture.detectChanges();
+    expect(listNativeElement.classList.contains('nx-list--xsmall')).toBe(true);
+  }));
+
+  describe('a11y', () => {
+    it('has no accessibility violations', function (done) {
+      createTestComponent(BasicList);
+
+      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
+        expect(results.violations.length).toBe(0);
+        // const violationMessages = results.violations.map(item => item.description);
+        done();
+      });
+    });
+  });
+});
+
+@Component({
+  template: `
+    <ul nxList>
+      <li>1</li>
+      <li>2</li>
+    </ul>
+  `
+})
+class BasicList extends ListTest {
+}
+
+@Component({
+  template: `
+    <ul nxList="small negative ordered-circle">
+      <li>1</li>
+      <li>2</li>
+    </ul>
+  `
+})
+class ListWithModifier extends ListTest {
+}
+
+@Component({
+  template: `
+    <ul>
+      <li nxListIcon="check">1</li>
+      <li nxListIcon="product-cross">2</li>
+    </ul>
+  `
+})
+class ListWithIcons extends ListTest {
+}
+
+@Component({
+  template: `
+    <ul [nxList]="type">
+      <li [nxListIcon]="iconName">1</li>
+      <li>2</li>
+    </ul>
+  `
+})
+class ConfigurableList extends ListTest {
+  type: string = 'small';
+  iconName: string = 'check';
+}

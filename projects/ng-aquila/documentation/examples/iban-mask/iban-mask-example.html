@@ -1,0 +1,17 @@
+<form [formGroup]="validatedMaskForm">
+  <nx-formfield nxLabel="IBAN">
+    <input nxInput nxMask nxIbanMask formControlName="maskInput"/>
+  </nx-formfield>
+  <button nxButton="primary small" type="submit">submit</button>
+</form>
+
+Form value: {{ validatedMaskForm.value | json }}<br>
+Testform: {{ validatedMaskForm.status | json }}<br>
+Validation errors: {{ validatedMaskForm.get('maskInput').errors | json }}<br>
+
+<p><strong>Try to enter some test IBANs:</strong></p>
+<p>
+  <strong>Germany:</strong> DE89 3704 0044 0532 0130 00<br>
+  <strong>Norway:</strong> NO93 8601 1117 947<br>
+  <strong>Malta:</strong> MT84 MALT 0110 0001 2345 MTLC AST0 01S
+</p>

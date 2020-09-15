@@ -1,0 +1,12 @@
+:host {
+  display: block;
+
+  &.is-header-row.is-sticky {
+    position: sticky;
+    top: 0;
+
+    // z-index needed because otherwise the toggle section icon
+    // would be on top of sticky header row
+    z-index: 1;
+  }
+}

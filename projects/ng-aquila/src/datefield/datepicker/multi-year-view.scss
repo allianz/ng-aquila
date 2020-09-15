@@ -1,0 +1,67 @@
+@import '../../shared-styles/index';
+
+$item-size: nx-spacer(3m);
+
+// calculate the margin between the columns
+$total-calendar-width: 7 * $item-size;
+$item-outer-margin: nx-spacer(2xs);
+$total-margin-width: $total-calendar-width - 4 * $item-size - 2 * $item-outer-margin;
+$item-side-margin: $total-margin-width / 6;
+
+// calculate margins for mobile
+$total-calendar-width-mobile: 264px;
+$item-outer-margin-mobile: nx-spacer(s);
+$total-margin-width-mobile: $total-calendar-width-mobile - 4 * $item-size - 2 * $item-outer-margin-mobile;
+$item-side-margin-mobile: $total-margin-width-mobile / 6;
+
+.nx-calendar-table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+:host ::ng-deep .nx-calendar-body {
+  .nx-calendar-body-cell-content {
+    margin: 0 $item-side-margin nx-spacer(2xs);
+
+    @include media-breakpoint-response(mobile) {
+      margin: 0 $item-side-margin-mobile nx-spacer(2xs);
+    }
+  }
+
+  tr .nx-calendar-body-cell:first-child .nx-calendar-body-cell-content {
+    margin-left: $item-outer-margin;
+
+    @include media-breakpoint-response(mobile) {
+      margin-left: $item-outer-margin-mobile;
+    }
+
+    [dir="rtl"] & {
+      margin-right: $item-outer-margin;
+      margin-left: $item-side-margin;
+
+      @include media-breakpoint-response(mobile) {
+        margin-right: $item-side-margin-mobile;
+        margin-left: $item-side-margin-mobile;
+      }
+    }
+  }
+
+  tr .nx-calendar-body-cell:last-child .nx-calendar-body-cell-content {
+    margin-right: $item-outer-margin;
+
+    @include media-breakpoint-response(mobile) {
+      margin-right: $item-outer-margin-mobile;
+    }
+
+    [dir="rtl"] & {
+      margin-right: $item-side-margin;
+      margin-left: $item-outer-margin;
+
+      @include media-breakpoint-response(mobile) {
+        margin-right: $item-side-margin-mobile;
+        margin-left: $item-side-margin-mobile;
+      }
+    }
+  }
+}

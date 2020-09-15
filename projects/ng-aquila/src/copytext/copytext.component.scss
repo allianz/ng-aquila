@@ -1,0 +1,29 @@
+@import '../shared-styles/index';
+
+:host {
+  margin: 0 0 nx-spacer(2m);
+  @include type-style(paragraph-03);
+}
+
+:host.nx-copy.nx-copy {
+  // set default font-weight for all copytexts and override the type style
+  // e.g. paragraph-04 definition has font-weight 600 so we need to override it
+  // the font-weight can be overriden with css
+  font-weight: 400;
+}
+
+:host(.nx-copy--negative) {
+  @include var(color, negative);
+}
+
+:host(.nx-copy--small) {
+  @include type-style(paragraph-05);
+}
+
+:host(.nx-copy--medium) {
+  @include type-style(paragraph-04);
+}
+
+:host(.nx-copy--large) {
+  @include type-style(paragraph-02);
+}

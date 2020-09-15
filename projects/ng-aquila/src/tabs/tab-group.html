@@ -1,0 +1,66 @@
+
+
+  <ng-container *ngIf="!_showAccordion">
+  <nx-tab-header
+      #tabHeader
+      [selectedIndex]="selectedIndex"
+      (selectFocusedIndex)="selectedIndex = $event"
+      (indexFocused)="focusChanged($event)"
+      [autoselect]="autoselect">
+    <button
+      type="button"
+      nxTabLabelWrapper
+      *ngFor="let tab of tabs; let i = index"
+      role="tab"
+      (click)="handleClick(i)"
+      class="nx-tab-header__item"
+      [id]="_getTabLabelId(i)"
+      [attr.aria-controls]="_getTabContentId(i)"
+      [attr.aria-selected]="selectedIndex == i"
+      [attr.tabindex]="getTabIndex(tab, i)"
+      [disabled]="tab.disabled"
+      [class.nx-tab-header__item--disabled]="tab.disabled"
+      [class.nx-tab-header__item--active]="selectedIndex == i">
+      <div class="nx-tab-label__content">
+        <nx-tab-header-outlet *ngIf="tab.templateLabel" [content]="tab.headerViewRef"></nx-tab-header-outlet>
+        <ng-container *ngIf="!tab.templateLabel">{{tab.label}}</ng-container>
+      </div>
+    </button>
+  </nx-tab-header>
+
+  <div class="nx-tab-body__container">
+    <nx-tab-body
+      *ngFor="let tab of tabs; let i = index"
+      [id]="_getTabContentId(i)"
+      role="tabpanel"
+      [attr.tabindex]="(selectedIndex == i) ? 0 : -1"
+      class="nx-tab__body"
+      [attr.aria-labelledby]="_getTabContentId(i)"
+      [class.nx-tab__body--active]="selectedIndex == i"
+      [tab]="tab"
+      [active]="selectedIndex == i"
+    ></nx-tab-body>
+  </div>
+</ng-container>
+
+<ng-template [ngIf]="_showAccordion">
+<nx-accordion #accordion [negative]="negative">
+  <nx-expansion-panel *ngFor="let tab of tabs; let i = index"
+                      [expanded]="selectedIndex === i"
+                      (opened)="_panelOpened(i)"
+                      [disabled]="tab.disabled"
+  >
+    <nx-expansion-panel-header>
+      <nx-expansion-panel-title>
+        <nx-tab-header-outlet *ngIf="tab.templateLabel" [content]="tab.headerViewRef"></nx-tab-header-outlet>
+        <ng-container *ngIf="!tab.templateLabel">{{tab.label}}</ng-container>
+      </nx-expansion-panel-title>
+    </nx-expansion-panel-header>
+    <!-- this is not lazy loading this is a trick because the portal gets added here -->
+    <!-- so we could rewrite the tab-body component that it takes care of "lazy loading" and the
+    accordion wouldn't know about it -->
+    <!-- active=true is a trick because we want to keep the content attached for better user experience along with expansion panel animation.  -->
+    <nx-tab-body [active]="true" [tab]="tab"></nx-tab-body>
+  </nx-expansion-panel>
+</nx-accordion>
+</ng-template>

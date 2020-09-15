@@ -1,0 +1,24 @@
+<p>
+  <nx-icon aria-label="trigger by click" name="info-circle-o" size="s" [nxPopoverTriggerFor]="popoverClick"
+    nxPopoverTrigger="click" tabindex="0"
+    role="button">
+  </nx-icon>
+  Triggered by click
+</p>
+<nx-popover #popoverClick>
+  <span>Trigger by click</span>
+</nx-popover>
+
+<p>
+  <nx-icon name="info-circle-o" size="s" #popoverTrigger="nxPopoverTrigger" [nxPopoverTriggerFor]="popoverManual"
+    [(nxPopoverShow)]="popoverManualOpenFlag" nxPopoverDirection="top"
+    (click)="popoverManualOpenFlag = !popoverManualOpenFlag" (keydown)="handleKeydown($event)" nxPopoverTrigger="manual"
+    tabindex="0" aria-label="trigger manually"
+    role="button">
+  </nx-icon>
+  Triggered manually
+</p>
+
+<nx-popover #popoverManual>
+  <span>Trigger manually</span>
+</nx-popover>

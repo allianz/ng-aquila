@@ -1,0 +1,25 @@
+$grid-columns: 12;
+$grid-gutter-width-base: 32px;
+$grid-gutter-width-mobile: 16px;
+// $grid-gutter-width-big: 40px;
+
+$grid-gutter-widths: (
+  xsmall: $grid-gutter-width-mobile,
+  small: $grid-gutter-width-mobile,
+  medium: $grid-gutter-width-base,
+  large: $grid-gutter-width-base,
+  xlarge: $grid-gutter-width-base,
+  2xlarge: $grid-gutter-width-base,
+  3xlarge: $grid-gutter-width-base
+);
+
+$grid-breakpoints: (
+  xsmall: 0,
+  small: 320px,
+  medium: 704px,
+  large: 992px,
+  xlarge: 1280px,
+  2xlarge: 1472px,
+  3xlarge: 1760px
+);
+

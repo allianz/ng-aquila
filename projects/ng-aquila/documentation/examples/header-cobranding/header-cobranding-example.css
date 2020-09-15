@@ -1,0 +1,28 @@
+.cobranding {
+  font-size: 16px;
+  font-weight: normal;
+  white-space: nowrap;
+  margin-right: 16px;
+  margin-left: auto;
+}
+
+.nx-header__actions nx-link + nx-link {
+  margin-left: 16px;
+}
+
+.nx-header__actions nx-link nx-icon {
+  margin-right: 0;
+}
+
+nx-header-brand .logo-with-title {
+  margin-right: 8px;
+}
+
+.logo-text {
+  color: var(--text-01, #ffffff);
+}
+
+figure {
+  display: flex;
+  align-items: center;
+}

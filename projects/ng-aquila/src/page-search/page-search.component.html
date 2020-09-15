@@ -1,0 +1,12 @@
+<div class="nx-pagesearch">
+  <div nxLayout="grid">
+    <div nxRow>
+      <div [nxCol]="contentLayout" class="nx-pagesearch--content">
+        <ng-content></ng-content>
+      </div>
+      <div [nxCol]="buttonLayout" *ngIf="!hideSearchButton" class="nx-pagesearch__actions">
+        <button nxButton="primary medium" (click)="onButtonClick()" type="button">{{buttonLabel}}</button>
+      </div>
+    </div>
+  </div>
+</div>

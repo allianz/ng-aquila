@@ -1,0 +1,8 @@
+<nx-checkbox-group [(ngModel)]="checkboxes">
+  <nx-label>This is a nx-checkbox-group</nx-label>
+  <nx-checkbox value="checkbox 1">Checkbox 1</nx-checkbox>
+  <nx-checkbox value="checkbox 2">Checkbox 2</nx-checkbox>
+  <nx-checkbox value="checkbox 3">Checkbox 3</nx-checkbox>
+</nx-checkbox-group>
+
+<p>Value: {{ checkboxes | json }}</p>

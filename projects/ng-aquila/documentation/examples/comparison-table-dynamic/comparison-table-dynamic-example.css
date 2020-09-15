@@ -1,0 +1,36 @@
+.container {
+  background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
+  padding: 12px;
+}
+
+.has-popover {
+  display: flex;
+  flex-direction: row;
+}
+
+.has-popover nx-icon {
+  outline: none;
+  margin-left: auto;
+  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
+}
+
+@media only screen and (max-width: 704px) {
+  .has-popover {
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 704px) and (max-width: 991px) {
+  .has-popover nx-icon {
+    margin-left: 8px;
+  }
+
+  .has-popover {
+    align-items: center;
+  }
+}
+
+/* Set background color for sticky placeholder cell in header */
+nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
+  background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
+}

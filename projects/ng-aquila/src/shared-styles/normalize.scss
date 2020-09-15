@@ -1,0 +1,66 @@
+body {
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-family: 'Public Sans Latin', sans-serif;
+}
+
+table,
+th,
+td,
+tr {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+small {
+  font-size: inherit;
+}
+
+em,
+address {
+  font-style: normal;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}

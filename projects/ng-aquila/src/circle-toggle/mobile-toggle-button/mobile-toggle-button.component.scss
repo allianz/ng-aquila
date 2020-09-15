@@ -1,0 +1,163 @@
+@import '../../shared-styles/index';
+
+
+:host {
+  display: none;
+  position: relative;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+  flex-direction: row;
+  border-width: nx-border-size(xs) nx-border-size(m);
+  @include var(border-color, circle-toggle-border-color);
+  border-style: solid;
+  padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+:host:not(.is-flipped):not(.is-disabled):hover {
+  @include var(background-color, circle-toggle-hover-background-color);
+  @include var(border-color, circle-toggle-hover-border-color);
+
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text {
+    @include var(color, circle-toggle-hover-icon-color);
+  }
+}
+
+:host-context(.is-responsive) {
+  @include media-breakpoint-down("small") {
+    display: flex;
+  }
+}
+
+
+.nx-toggle-button__label-hint {
+  @include var(color, circle-toggle-icon-color);
+  @include type-style(circle-toggle-hint-mobile);
+}
+
+.nx-toggle-button__label-text {
+  @include var(color, circle-toggle-icon-color);
+  @include type-style(circle-toggle-label-mobile);
+  padding-top: 0;
+  padding-right: nx-spacer(3xs);
+  // hardcode for now, as in design the mobile toggle button doesn't exist anymore
+  font-weight: nx-font-weight(semibold);
+
+  :host-context([dir="rtl"]) & {
+    padding-right: initial;
+    padding-left: nx-spacer(3xs);
+  }
+}
+
+.nx-toggle-button__mobile-check {
+  font-size: nx-font-size(s);
+  height: nx-spacer(m);
+  display: inline-block;
+  opacity: 0;
+  margin-right: nx-spacer(2xs);
+  @include var(color, circle-toggle-checkmark-color);
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
+}
+
+:host(.is-first) {
+  border-top-width: nx-border-size(m);
+  border-radius: nx-border-radius(s) nx-border-radius(s) 0 0;
+}
+
+:host(.is-last) {
+  border-bottom-width: nx-border-size(m);
+  border-radius: 0 0 nx-border-radius(s) nx-border-radius(s);
+}
+
+:host(.is-flipped) {
+  @include var(background-color, circle-toggle-selected-background-color);
+
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text {
+    @include var(color, circle-toggle-selected-icon-color);
+  }
+
+  .nx-toggle-button__mobile-check {
+    opacity: 1;
+  }
+}
+
+:host(.is-negative) {
+  @include var(border-color, negative);
+
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text,
+  .nx-toggle-button__mobile-check {
+    @include var(color, negative);
+  }
+
+  &:not(.is-flipped):not(.is-disabled):hover {
+    @include var(background-color, negative-01);
+    @include var(border-color, negative-01);
+
+    .nx-toggle-button__label-hint,
+    .nx-toggle-button__label-text {
+      @include var(color, negative-accent);
+    }
+  }
+}
+
+:host(.is-negative.is-flipped) {
+  @include var(background-color, negative);
+
+  .nx-toggle-button__label-hint,
+  .nx-toggle-button__label-text,
+  .nx-toggle-button__mobile-check {
+    @include var(color, negative-accent);
+  }
+}
+
+:host(.is-disabled) {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host,
+  :host(.is-negative) {
+    background-color: buttonFace;
+    border-color: buttonText;
+
+    .nx-toggle-button__label-hint,
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__mobile-check {
+      color: buttonText;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+
+  :host(.is-flipped),
+  :host(.is-negative.is-flipped) {
+    background-color: highlight;
+
+    .nx-toggle-button__label-hint,
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__mobile-check {
+      color: highlightText;
+    }
+  }
+
+  :host(.is-disabled) {
+    opacity: 1;
+    border-color: GrayText;
+    color: GrayText;
+
+    &.is-flipped {
+      .nx-toggle-button__mobile-check {
+        color: GrayText;
+      }
+    }
+  }
+}

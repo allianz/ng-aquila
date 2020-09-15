@@ -1,0 +1,15 @@
+<div class="nx-sort-header__focus-container" role="button" tabindex="0">
+  <div class="nx-sort-header__icons-container"
+      [attr.aria-label]="_getAriaLabel()">
+    <nx-icon name="chevron-up-small"
+        class="nx-sort-header__icon-up"
+        [class.nx-sort-header__hidden-icon]="_isSortedDescending()">
+    </nx-icon>
+    <nx-icon name="chevron-down-small"
+        class="nx-sort-header__icon-down"
+        [class.nx-sort-header__hidden-icon]="_isSortedAscending()">
+    </nx-icon>
+  </div>
+
+  <ng-content></ng-content>
+</div>

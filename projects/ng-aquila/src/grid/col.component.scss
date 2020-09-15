@@ -1,0 +1,8 @@
+@import './mixins.scss';
+
+@include make-grid-columns-bem-style();
+
+/**
+ * COL VARIATIONS
+ */
+ @include make-col-variations();

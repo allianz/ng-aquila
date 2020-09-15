@@ -1,0 +1,90 @@
+@import '../../shared-styles/index';
+
+$header-padding: nx-spacer(s);
+$header-line-height: nx-line-height(2xs);
+$header-height: $header-line-height + 2 * $header-padding;
+$datepicker-border-width: nx-border-size(xs);
+
+// calc total width and height of calendar
+$item-size: nx-spacer(3m);
+$controls-height: nx-spacer(4m);
+$spacing-above-calendar: nx-spacer(s);
+$spacing-beneath-calendar: nx-spacer(2m);
+$spacing-beneath-calendar-mobile: nx-spacer(s);
+$spacing-sides-calendar: nx-spacer(2m);
+$spacing-sides-calendar-mobile: nx-spacer(xs);
+
+$calendar-height: calc(
+  #{$controls-height}
+  + #{$spacing-above-calendar}
+  + 7 * #{$item-size}
+  + #{$spacing-beneath-calendar}
+  - #{$datepicker-border-width}
+);
+
+$calendar-height-mobile: calc(
+  #{$controls-height}
+  + #{$spacing-above-calendar}
+  + 7 * #{$item-size}
+  + #{$spacing-beneath-calendar-mobile}
+  - #{$datepicker-border-width}
+);
+
+$calendar-width: calc(
+  7 * #{$item-size}
+  + 2 * #{$spacing-sides-calendar}
+  - 2 * #{$datepicker-border-width}
+);
+
+$calendar-width-mobile: calc(
+  7 * #{$item-size}
+  + 2 * #{$spacing-sides-calendar-mobile}
+  - 2 * #{$datepicker-border-width}
+);
+
+:host {
+  @include var(background, datefield-panel-background-color);
+  display: flex;
+  flex-flow: column nowrap;
+  box-shadow: nx-box-shadow(l);
+  border: $datepicker-border-width solid v(datefield-panel-border-color);
+  border-radius: nx-border-radius(s);
+}
+
+.nx-datepicker-header {
+  @include var(background, datefield-panel-header-background-color);
+  padding: calc(#{$header-padding} - #{$datepicker-border-width}) $header-padding $header-padding $header-padding;
+  display: flex;
+  height: $header-height - $datepicker-border-width;
+
+  @include media-breakpoint-response(mobile) {
+    padding-left: calc(20px - #{$datepicker-border-width});
+    padding-right: calc(20px - #{$datepicker-border-width});
+  }
+}
+
+.nx-datepicker-close {
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 0;
+  @include var(font-size, datefield-controls-icon-size);
+  @include var(color, datefield-controls-color);
+  outline: none;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: auto;
+    margin-left: initial;
+  }
+}
+
+nx-calendar {
+  width: $calendar-width;
+  height: $calendar-height;
+
+  @include media-breakpoint-response(mobile) {
+    width: $calendar-width-mobile;
+    height: $calendar-height-mobile;
+  }
+}

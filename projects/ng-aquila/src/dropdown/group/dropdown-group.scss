@@ -1,0 +1,21 @@
+@import '../../shared-styles/index';
+
+:host {
+  display: block;
+}
+
+:host:first-child .nx-dropdown-results__group {
+  @include var(background, dropdown-group-section-background-color);
+}
+
+:host:first-child .nx-dropdown-results__group-label {
+  padding-top: nx-spacer(s);
+}
+
+
+.nx-dropdown-results__group-label {
+  @include type-style(formfield-label);
+  font-style: italic;
+  font-weight: nx-font-weight(bold);
+  padding: nx-spacer(m) nx-spacer(2m) nx-spacer(s);
+}

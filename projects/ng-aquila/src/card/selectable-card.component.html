@@ -1,0 +1,35 @@
+<input #input
+       type="checkbox"
+       [checked]="checked"
+       [value]="value || null"
+       [attr.disabled]="disabled"
+       (change)="_onInteractionEvent($event)"
+       (blur)="onTouchedCallback($event)"
+       [attr.id]="id"
+       [attr.name]="name"
+       (click)="_onInputClick($event)"
+       [required]="required"
+       [attr.aria-required]="required"
+       [attr.tabindex]="tabindex"
+       [attr.aria-invalid]="errorState"
+       [attr.aria-describedby]="_errorListIds || null"
+>
+
+<label [attr.for]="id" [class.is-disabled]="disabled">
+  <ng-container *ngTemplateOutlet="selectableCardContent"></ng-container>
+</label>
+
+<ng-content *ngIf="errorState" select="nx-error"></ng-content>
+
+<ng-template #selectableCardContent>
+  <nx-icon name="check-circle" size="s" class="checked-icon"></nx-icon>
+  <div class="nx-selectable-card--headline">
+    <ng-content select="nx-card-header"></ng-content>
+  </div>
+  <div class="nx-selectable-card--content">
+    <ng-content></ng-content>
+  </div>
+  <div class="nx-selectable-card--footer">
+    <ng-content select="nx-card-footer"></ng-content>
+  </div>
+</ng-template>

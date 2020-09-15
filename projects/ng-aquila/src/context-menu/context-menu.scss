@@ -1,0 +1,33 @@
+@import "../shared-styles/index.scss";
+
+.nx-context-menu {
+  border-radius: nx-border-radius(s);
+  @include var(background, context-menu-background-color);
+
+  @media screen and (-ms-high-contrast: active) {
+    border: nx-border-size(xs) solid windowText;
+  }
+
+  // Give the menu a minimum height so that the user can't
+  // collapse it to zero when they scroll away.
+  min-height: nx-spacer(xl);
+  box-shadow: map-get($shadows, s);
+  outline: none;
+  overflow-y: auto;
+
+  &.ng-animating {
+    pointer-events: none;
+  }
+}
+
+// `:not(:empty)` allows for the menu to collapse to 0x0 when it doesn't have content.
+.nx-context-menu__content:not(:empty) {
+  padding-top: nx-spacer(s);
+  padding-bottom: nx-spacer(s);
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: buttonFace;
+  }
+}

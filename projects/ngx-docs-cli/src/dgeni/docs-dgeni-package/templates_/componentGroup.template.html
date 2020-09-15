@@ -1,0 +1,36 @@
+<h2>
+  API reference for Angular {$ doc.packageDisplayName $} {$ doc.displayName $}
+</h2>
+
+
+{% macro property(property) -%}
+  {% include 'property.template.html' %}
+{% endmacro %}
+
+
+
+
+{% if doc.directives.length %}
+  
+  {% for directive in doc.directives %}
+  <h3>{$ directive.name $}</h3>
+  <!-- TODO description not working? -->
+  {% if directive.description %}
+    <p class="docs-api-class-description">{$ doc.description | marked | safe $}</p>
+  {% endif %}
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in directive.properties %}
+        {$ property(p) $}
+      {% endfor %}
+    </tbody>
+  
+  </table>
+  {% endfor %}
+{% endif %}

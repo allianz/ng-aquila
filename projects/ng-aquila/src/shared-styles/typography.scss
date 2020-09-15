@@ -1,0 +1,99 @@
+// Warning: Do not use these variables. And use $font-weight list instance
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Use this list for the font-weight
+$font-weight: (
+  light: 300,
+  regular: 400,
+  semibold: 600,
+  bold: 700
+);
+
+// line-height
+$line-height-depending-base: 1.6;
+$line-height-depending-small: 1.4;
+$line-height-depending-xsmall: 1.3;
+$line-height-depending-xxsmall: 1.25;
+$line-height-depending-medium: 1.8;
+$line-height-depending-large: 2;
+
+// copy
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 16px;
+$font-size-xlarge: 18px;
+$font-size-xxlarge: 20px;
+$font-size-xxxlarge: 24px;
+$font-size-primary: $font-size-large;
+
+$line-height-base: 1;
+$line-height-xsmall: 1.5rem;
+$line-height-small: 20px;
+$line-height-medium: 22px;
+$line-height-large: 24px;
+$line-height-xlarge: 26px;
+$line-height-xxlarge: 28px;
+
+$line-height-mobile-small: 18px;
+$line-height-mobile-medium: 20px;
+$line-height-mobile-large: 22px;
+$line-height-mobile-xlarge: 24px;
+$line-height-primary: $line-height-large;
+
+// headlines
+$font-size-h1: 54px;
+$font-size-h2: 40px;
+$font-size-h3: 30px;
+$font-size-h4: 26px;
+$font-size-h5: $font-size-xxxlarge;
+$font-size-h6: $font-size-xxlarge;
+
+$font-size-h1-mobile: 40px;
+$font-size-h1-mobile-bold-cap: 35px;
+$font-size-h2-mobile: 35px;
+$font-size-h3-mobile: 26px;
+$font-size-h4-mobile: $font-size-xxxlarge;
+$font-size-h5-mobile: $font-size-xxlarge;
+$font-size-h6-mobile: $font-size-xlarge;
+
+$line-height-h1: 62px;
+$line-height-h1-bold-cap: 59px;
+$line-height-h2: 48px;
+$line-height-h3: 38px;
+$line-height-h4: 34px;
+$line-height-h5: 32px;
+$line-height-h6: 28px;
+
+$line-height-h1-mobile: 46px;
+$line-height-h1-bold-cap-mobile: 40px;
+$line-height-h2-mobile: 41px;
+$line-height-h3-mobile: 32px;
+$line-height-h4-mobile: 30px;
+$line-height-h5-mobile: $line-height-xlarge;
+$line-height-h6-mobile: $line-height-large;
+
+// letter spacing
+$letter-spacing-small: 0.06rem;
+$letter-spacing-medium: 0.1rem;
+$letter-spacing-medium-alt: 0.11rem;
+$letter-spacing-large: 0.16rem;
+
+// icon fontsizes
+$font-size-icon-large: 3.2rem;
+
+//slider button font sizes
+$font-size-button-large: 5rem;
+$font-size-button-medium: 3rem;
+$font-size-button-small: 2rem;
+
+$line-height-icon-large: 5.4rem;
+
+//icon size xl
+$icon-size-2x: 2em;
+$icon-size-3x: 3em;
+$icon-size-4x: 4em;
+$icon-size-5x: 5em;
+$icon-size-6x: 6em;

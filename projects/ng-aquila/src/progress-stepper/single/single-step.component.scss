@@ -1,0 +1,50 @@
+@import '../../shared-styles/index';
+
+$margin-bottom: nx-spacer(2xs);
+
+:host {
+  display: block;
+}
+
+.nx-single-step__infos {
+  display: flex;
+  @include type-style(single-stepper-step);
+  @include var(color, single-stepper-step-color);
+  margin-top: nx-spacer(2xs);
+}
+
+// We will show those parts only on larger screens
+.nx-single-step__title,
+nx-progressbar {
+  margin-bottom: $margin-bottom;
+  display: block;
+}
+
+@include media-breakpoint-down(small) {
+  nx-progressbar,
+  .nx-single-step__infos {
+    display: none;
+  }
+}
+
+.nx-single-step__title {
+  @include type-style(progress-stepper-label);
+  margin-bottom: nx-spacer(m);
+
+  @include media-breakpoint-up(small) {
+    display: block;
+  }
+}
+
+.nx-single-step__next {
+  margin-left: auto;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: auto;
+    margin-left: initial;
+  }
+
+  @include media-breakpoint-down(small) {
+    display: none;
+  }
+}

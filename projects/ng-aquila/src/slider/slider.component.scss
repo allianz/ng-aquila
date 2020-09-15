@@ -1,0 +1,275 @@
+@import '../shared-styles/index';
+
+$handle-diameter: nx-spacer(m);
+$value-width: nx-spacer(4m);
+$value-height: nx-spacer(m);
+$arrow-size: 1.5 * nx-spacer(3xs);
+$value-border: nx-border-size(xs) solid;
+$value-top: - ($value-height + nx-spacer(s));
+$background-height: nx-spacer(3xs);
+$wrapper-padding-top: (($handle-diameter - $background-height) * 0.5) + $value-height + 2 * nx-spacer(s);
+$wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-spacer(2xs);
+
+:host {
+  display: block;
+}
+
+.nx-slider__label {
+  @include type-style(slider-label);
+  @include var(color, slider-label-color);
+}
+
+.nx-slider__wrapper {
+  width: 100%;
+  padding: $wrapper-padding-top 0 $wrapper-padding-bottom;
+}
+
+.nx-slider__background {
+  position: relative;
+  @include var(background-color, slider-background-color);
+  display: block;
+  height: nx-spacer(3xs);
+  border-radius: nx-border-radius(xs);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.nx-slider__filler {
+  display: inline-block;
+  height: $background-height;
+  border-radius: nx-border-radius(xs);
+  @include var(background-color, slider-indicator-color);
+  float: left;
+
+  :host-context([dir="rtl"]) & {
+    float: right;
+  }
+}
+
+.nx-slider__handle {
+  display: inline-block;
+  position: relative;
+  width: $handle-diameter;
+  height: $handle-diameter;
+  border-radius: 50%;
+  box-shadow: nx-box-shadow(s);
+  border-style: solid;
+  border-width: nx-border-size(xs);
+  @include var(border-color, slider-handle-border-color);
+  @include var(background, slider-handle-background-color);
+  box-sizing: border-box;
+  margin-left: -(nx-spacer(xs));
+  top: - (($handle-diameter - $background-height) * 0.5);
+  z-index: 2;
+  cursor: grab;
+
+  :host-context([dir="rtl"]) & {
+    margin-right: -(nx-spacer(xs));
+    margin-left: initial;
+  }
+
+  &:focus {
+    outline: none;
+    @include var(border-color, slider-handle-focus-border-color);
+  }
+
+  &:active {
+    box-shadow: nx-box-shadow(s), inset 0 0 0 4px v(slider-handle-background-color),
+      inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
+    cursor: grabbing;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) {
+
+  .nx-slider__handle:focus {
+    @include var(border-color, slider-handle-focus-border-color);
+    @include focus-style;
+  }
+}
+
+.nx-slider__value {
+  @include type-style(slider-handle-value);
+  @include var(color, slider-handle-value-color);
+  border: $value-border;
+  @include var(border-color, slider-handle-border-color);
+  border-radius: nx-border-radius(s);
+  box-shadow: nx-box-shadow(s);
+  cursor: grab;
+  height: $value-height;
+  width: $value-width;
+  text-align: center;
+  right: nx-spacer(2xs);
+  $padding-top-bottom: (nx-spacer(3xs) - nx-border-size(xs));
+  padding: $padding-top-bottom nx-spacer(2xs);
+  position: relative;
+  top: $value-top;
+  // legacy-browser friendly alternative to "width: fit-content"
+  display: table;
+  left: 50%;
+  transform: translateX(-50%);
+  @include var(background, slider-value-background-color);
+
+  :host-context([dir="rtl"]) & {
+    right: 50%;
+    left: nx-spacer(2xs);
+    transform: translateX(50%);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.nx-slider__arrow {
+  width: $arrow-size;
+  height: $arrow-size;
+  border-right: $value-border;
+  border-bottom: $value-border;
+  left: 50%;
+  transform: translate(-50%, 1px) rotate(45deg);
+  position: absolute;
+  box-shadow: -2px -2px 1px 1px v(slider-value-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, .5);
+  @include var(background, slider-value-background-color);
+  @include var(border-color, slider-handle-border-color);
+}
+
+.nx-slider__label-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  @include type-style(slider-value-label);
+  @include var(color, slider-value-label-color);
+}
+
+.nx-slider__max-value-label {
+  text-align: right;
+}
+
+:host(.nx-slider--disabled) {
+  cursor: not-allowed;
+
+  .nx-slider__filler,
+  .nx-slider__value,
+  .nx-slider__value-label,
+  .nx-slider__handle,
+  .nx-slider__background {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  .nx-slider__value,
+  .nx-slider__handle {
+    @include var(background-color, slider-value-disabled-background-color);
+  }
+
+  .nx-slider__filler {
+    @include var(background-color, slider-indicator-disabled-color);
+  }
+
+  .nx-slider__value {
+    @include var(color, slider-handle-value-disabled-color);
+  }
+
+  .nx-slider__label-container {
+    @include var(color, slider-value-label-disabled-color);
+  }
+
+  .nx-slider__arrow {
+    @include var(background, slider-value-disabled-background-color);
+    box-shadow: -2px -2px 1px 1px v(slider-value-disabled-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, .5);
+  }
+
+  .nx-slider__background {
+    @include var(background, slider-disabled-background-color);
+  }
+}
+
+// negative styles
+:host(.nx-slider--negative) {
+
+  .nx-slider__label,
+  .nx-slider__value-label {
+    @include var(color, negative);
+  }
+
+  .nx-slider__filler {
+    @include var(background-color, negative);
+  }
+
+  .nx-slider__background {
+    @include var(background-color, slider-negative-background-color);
+  }
+}
+
+// negative disabled styles
+:host(.nx-slider--negative.nx-slider--disabled) {
+  .nx-slider__label,
+  .nx-slider__value-label {
+    @include var(color, negative-01);
+  }
+
+  .nx-slider__filler {
+    @include var(background-color, negative-01);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-slider__background {
+    background-color: buttonFace;
+    border: nx-border-size(xs) solid buttonText;
+  }
+  .nx-slider__filler {
+    background-color: highlight;
+  }
+
+  .nx-slider__handle {
+    background-color: buttonFace;
+    border-color: buttonText;
+
+    &:hover,
+    &:focus {
+      background-color: highlight;
+    }
+
+    &:active {
+      background-color: buttonText;
+    }
+  }
+
+  .nx-slider__value {
+    border-color: buttonText;
+    background-color: buttonFace;
+    color: buttonText;
+    -ms-high-contrast-adjust: none;
+  }
+
+  .nx-slider__arrow {
+    -ms-high-contrast-adjust: auto;
+    background-color: buttonFace;
+  }
+
+  :host(.nx-slider--disabled) {
+    .nx-slider__background {
+      background-color: background;
+      border: nx-border-size(xs) solid GrayText;
+    }
+
+    .nx-slider__filler {
+      background-color: GrayText;
+    }
+
+    .nx-slider__handle {
+      background-color: GrayText;
+    }
+
+    .nx-slider__value {
+      border-color: GrayText;
+      color: GrayText;
+    }
+
+    .nx-slider__arrow {
+      border-color: GrayText;
+    }
+  }
+}

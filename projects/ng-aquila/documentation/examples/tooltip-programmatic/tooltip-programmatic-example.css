@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+button[nxButton=small] {
+  margin-bottom: 32px;
+}

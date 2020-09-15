@@ -1,0 +1,38 @@
+@import "../../shared-styles/index";
+
+:host {
+  display: block;
+}
+
+.nx-toggle-button {
+  display: block;
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  line-height: nx-line-height(2xs);
+  height: nx-line-height(2xs);
+
+  .nx-toggle-button__icon {
+    transform: rotateZ(0);
+    transition: transform 200ms ease;
+    @include var(color,expandable-table-arrow-icon-color);
+  }
+
+  &.is-expanded {
+    .nx-toggle-button__icon {
+      transform: rotateZ(-180deg);
+    }
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-toggle-button:focus {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+}

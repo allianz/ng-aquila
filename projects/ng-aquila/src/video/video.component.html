@@ -1,0 +1,23 @@
+<div class="nx-video">
+  <div class="nx-video__iframe">
+
+    <div *ngIf="!showPlayer">
+
+      <button class="nx-video__play-button"
+              (click)="select()"
+              [attr.aria-label]="playButtonAriaLabel"
+              (keydown.enter)="select()">
+        <nx-icon class="nx-video__high-contrast-icon" name="play" size="s"></nx-icon>
+      </button>
+      <img [src]="imgSrc" class="nx-video__thumbnail"
+           [alt]="altText"
+           (click)="select()"
+           (keydown.enter)="select()">
+
+    </div>
+    <div *ngIf="videoId && showPlayer">
+      <iframe title="video" class="nx-video__iframe" [attr.allowfullscreen]="allowFullScreen" [src]="videoSrc"></iframe>
+    </div>
+
+  </div>
+</div>

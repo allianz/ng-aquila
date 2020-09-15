@@ -1,0 +1,34 @@
+<ng-template #content>
+  <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
+    <div class="nx-comparison-table-toggle-section__header-wrapper"
+         role="columnheader"
+         [attr.aria-colspan]="_getColspan()"
+         [attr.aria-expanded]="_toggleSection.isExpanded"
+         [attr.id]="id"
+         (click)="toggle()"
+         [attr.tabindex]="0"
+         (keydown)="_onKeydown($event)">
+      <div class="nx-comparison-table-toggle-section__header-content">
+        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+        <nx-icon class="nx-expansion-panel__chevron"
+                 [@indicatorRotate]="_toggleSection.getOpenState()"
+                 name="chevron-down"
+                 aria-hidden="true">
+        </nx-icon>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="_table.viewType === 'mobile'">
+    <th class="nx-comparison-table__mobile-toggle-section-header"
+        scope="col"
+        [attr.colspan]="_getColspan()"
+        [attr.id]="id">
+      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+    </th>
+  </ng-container>
+</ng-template>
+
+<ng-template #ngContent>
+  <ng-content></ng-content>
+</ng-template>

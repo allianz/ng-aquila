@@ -1,0 +1,8 @@
+.btn-spacing{
+  margin-right: 10px;
+}
+
+:host-context([data-whatinput="mouse"]) nx-icon:focus {
+  outline: none;
+}
+

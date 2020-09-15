@@ -1,0 +1,13 @@
+
+<div class="container">
+  <div cdkScrollable class="content">
+    <nxv-doc-viewer
+      (contentLoaded)="toc.refresh()"
+      [fileUrl]="this.guide.file"></nxv-doc-viewer>
+  </div>
+
+  <div class="docs-toc">
+    <nxv-table-of-contents #toc container=".content"></nxv-table-of-contents>
+  </div>
+
+</div>

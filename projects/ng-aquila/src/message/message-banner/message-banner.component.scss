@@ -1,0 +1,109 @@
+@import '../../shared-styles/index';
+
+$border-size: nx-border-size(xs);
+
+@function message-padding($padding) {
+  @return $padding - $border-size;
+}
+
+:host {
+  @include message-layout();
+  @include var(border-radius, message-banner-border-radius);
+  padding: message-padding(nx-spacer(s));
+  box-shadow: nx-box-shadow(s);
+}
+
+.nx-message-banner__content-wrapper {
+  max-width: 100%;
+}
+
+:host(.context-info) {
+  @include var(border-color, message-info-border-color);
+  @include var(background-color, message-info-background-color);
+
+  .nx-message-banner__icon {
+    @include var(color, message-info-icon-color);
+  }
+}
+
+:host(.context-error) {
+  @include var(border-color, message-error-border-color);
+  @include var(background-color, message-error-background-color);
+
+  .nx-message-banner__icon {
+    @include var(color, message-error-icon-color);
+  }
+}
+
+:host(.context-warning) {
+  @include var(border-color, message-warning-border-color);
+  @include var(background-color, message-warning-background-color);
+
+  .nx-message-banner__icon {
+    @include var(color, message-warning-icon-color);
+  }
+}
+
+:host(.context-info),
+:host(.context-warning),
+:host(.context-error) {
+
+  .nx-message-banner__icon ~ .nx-message-banner__content-wrapper {
+    @include media-breakpoint-response(mobile) {
+      .nx-message-banner__content {
+        display: inline;
+        margin-left: message-padding(nx-spacer(2m));
+
+        [dir="rtl"] & {
+          margin-left: initial;
+          margin-right: message-padding(nx-spacer(2m));
+        }
+      }
+    }
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    .nx-message-banner__icon {
+      color: windowText;
+    }
+  }
+}
+
+.nx-message-banner__icon {
+  margin-right: nx-spacer(s);
+
+  @include media-breakpoint-response(mobile) {
+    position: absolute;
+  }
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(s);
+  }
+}
+
+:host(.nx-message--closable) {
+  padding-right: message-padding(nx-spacer(3m));
+
+  @include media-breakpoint-response(mobile) {
+    padding-right: message-padding(nx-spacer(2m));
+  }
+
+  [dir="rtl"] & {
+    padding-right: message-padding(nx-spacer(m));
+    padding-left: message-padding(nx-spacer(3m));
+
+    @include media-breakpoint-response(mobile) {
+      padding-left: message-padding(nx-spacer(2m));
+    }
+  }
+}
+
+.nx-message-banner__close-icon {
+  @include message__close-icon;
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-message-banner__close-icon:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}

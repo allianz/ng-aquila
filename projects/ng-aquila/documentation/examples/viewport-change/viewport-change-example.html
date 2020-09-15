@@ -1,0 +1,14 @@
+Change the size of the window in order to see how this side navigation is closed and expanded according to the viewport:
+<br>
+<br>
+<nx-sidebar class="my-sidebar" resizeable #sidebar>
+  <button nxAction
+      *ngFor="let action of actions"
+      routerLink="./"
+      [queryParams]="action.query"
+      routerLinkActive="is-selected"
+      type="button">
+    <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+    {{action.label}}
+  </button>
+</nx-sidebar>

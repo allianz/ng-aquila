@@ -1,0 +1,11 @@
+<div>
+  <div class="nx-radio-group__label">
+    <ng-content select="nx-label"></ng-content>
+  </div>
+  <div *ngIf="errorState" class="nx-radio-group__errors">
+    <ng-content select="nx-error"></ng-content>
+  </div>
+  <div class="nx-radio-group__controls">
+    <ng-content></ng-content>
+  </div>
+</div>

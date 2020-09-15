@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./",
+    "module": "commonjs",
+    "target": "es2015",
+    "types": ["jasmine", "node"],
+    "rootDir": ".",
+    "sourceMap": false
+  },
+  "include": ["**/*"],
+  "exclude": []
+}

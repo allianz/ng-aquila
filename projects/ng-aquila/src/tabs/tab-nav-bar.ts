@@ -1,0 +1,140 @@
+import { Component, Input, Directive, ChangeDetectionStrategy, Optional, SkipSelf, ChangeDetectorRef, InjectionToken, Inject } from '@angular/core';
+import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { NxTabsAppearance } from './tab-group';
+
+export interface TabNavBarDefaultOptions {
+  /** Sets the default appearance. */
+  appearance?: NxTabsAppearance;
+}
+
+export const TAB_NAV_BAR_DEFAULT_OPTIONS = new InjectionToken<TabNavBarDefaultOptions>('TAB_NAV_BAR_DEFAULT_OPTIONS');
+
+@Component({
+  selector: 'nx-tab-nav-bar',
+  templateUrl: 'tab-nav-bar.html',
+  styleUrls: ['./tab-nav-bar.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.is-negative]': 'negative',
+    '[class.is-disabled]': 'disabled',
+    '[class.is-expert]': 'appearance === "expert"',
+    'role': 'navigation'
+  }
+})
+export class NxTabNavBarComponent {
+
+  private _negative: boolean = false;
+
+  /** Whether the tab nav bar has negative styling. */
+  @Input()
+  set negative(value: boolean) {
+    const newValue = coerceBooleanProperty(value);
+    if (newValue !== this.negative) {
+      this._negative = newValue;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+
+  get negative() {
+    return this._negative;
+  }
+
+  private _disabled: boolean = false;
+
+  /** Whether the tab nav bar has disabled styling. */
+  @Input()
+  set disabled(value: boolean) {
+    const newValue = coerceBooleanProperty(value);
+    if (newValue !== this.disabled) {
+      this._disabled = newValue;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+
+  get disabled() {
+    return this._disabled;
+  }
+
+  private _appearance: NxTabsAppearance;
+
+  /**
+   * **Expert option**
+   *
+   * Sets the appearance of the tab nav bar. Default: 'default'.
+   */
+  @Input()
+  set appearance(value: NxTabsAppearance) {
+    if (this._appearance !== value) {
+      this._appearance = value;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+  get appearance(): NxTabsAppearance {
+    return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'default';
+  }
+
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions
+  ) { }
+
+  static ngAcceptInputType_negative: BooleanInput;
+  static ngAcceptInputType_disabled: BooleanInput;
+}
+
+@Directive({
+  selector: '[nxTabLink]',
+  host: {
+    '[class.nx-tab-link]': 'true',
+    '[class.is-active]': 'active',
+    '[class.is-disabled]': 'disabled',
+    '[attr.aria-current]': 'active',
+    '[attr.tabindex]': '_getTabIndex()',
+    '[attr.aria-disabled]': 'disabled.toString()',
+  }
+})
+export class NxTabLinkDirective {
+
+  private _active: boolean = false;
+  private _disabled: boolean = false;
+
+  /** Whether the tab link is active and has the active styling. */
+  @Input()
+  get active(): boolean {
+    return this._active;
+  }
+  set active(value: boolean) {
+    const newValue = coerceBooleanProperty(value);
+    if (newValue !== this._active) {
+      this._active = value;
+    }
+  }
+
+  /** Whether the tab link is disabled. Default: false. */
+  @Input()
+  get disabled(): boolean {
+    return (this._tabNavBar && this._tabNavBar.disabled) ? this._tabNavBar.disabled : this._disabled;
+  }
+  set disabled(value: boolean) {
+    const newValue = coerceBooleanProperty(value);
+    if (newValue !== this._disabled) {
+      this._disabled = value;
+    }
+  }
+
+  constructor(
+    @Optional() @SkipSelf() private _tabNavBar: NxTabNavBarComponent
+  ) {
+    if (!this._tabNavBar) {
+      throw Error(`The nx-tab-link element has to be wrapped in a nx-tab-nav-bar to work.`);
+    }
+
+  }
+
+  _getTabIndex(): string {
+    return (this.disabled) ? '-1' : '0';
+  }
+
+  static ngAcceptInputType_active: BooleanInput;
+  static ngAcceptInputType_disabled: BooleanInput;
+}

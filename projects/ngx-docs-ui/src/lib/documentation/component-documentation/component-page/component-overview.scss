@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+
+  ::ng-deep code {
+    white-space: pre-wrap;
+  }
+}

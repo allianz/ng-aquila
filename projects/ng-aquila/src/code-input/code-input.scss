@@ -1,0 +1,144 @@
+@import '../shared-styles/index';
+
+$selected-box-shadow: 0 -2px 0 0;
+$default-box-shadow: 0 -1px 0 0;
+
+:host {
+  display: block;
+
+  .nx-code-input__field {
+    @include type-style(code-input);
+    @include var(color, code-input-color);
+    margin: 0 nx-spacer(3xs);
+    text-align: center;
+    border: 0;
+    outline: 0;
+    @include var(caret-color, code-input-active-color);
+    box-shadow: inset $default-box-shadow v(code-input-color);
+    width: nx-spacer(2m);
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-sizing: border-box;
+
+    &:focus {
+      margin-bottom: - nx-border-size(xs);
+      @include var(color, code-input-active-color);
+      box-shadow: inset $selected-box-shadow v(code-input-active-color);
+    }
+  }
+
+  .nx-code-input__field:first-child {
+    margin-left: 0;
+  }
+
+  .nx-code-input__field:last-child {
+    margin-right: 0;
+  }
+
+  .nx-code-input--field-with-gap {
+    margin-left: 20px;
+  }
+
+  &:focus {
+    // This will ensure there is no second focus style shown in high contrast mode
+    outline: none;
+  }
+  
+  [dir="rtl"] & {
+    .nx-code-input__field:first-child {
+      margin-right: 0;
+      margin-left: nx-spacer(3xs);
+    }
+
+    .nx-code-input__field:last-child {
+      margin-left: 0;
+      margin-right: nx-spacer(3xs);
+    }
+
+    .nx-code-input--field-with-gap {
+      margin-left: nx-spacer(3xs);
+      margin-right: 20px;
+    }
+  }
+}
+
+:host.is-negative {
+  .nx-code-input__field {
+    @include var(caret-color, negative);
+    box-shadow: inset $default-box-shadow v(negative);
+    @include var(color, negative);
+
+    &:focus {
+      box-shadow: inset $selected-box-shadow v(negative);
+    }
+  }
+}
+
+:host.has-error {
+  &:not(.is-negative) {
+    .nx-code-input__field {
+      margin-bottom: - nx-border-size(xs);
+      font-weight: nx-font-weight(bold);
+      @include var(color, code-input-error-color);
+      box-shadow: inset $default-box-shadow v(code-input-error-color);
+
+      &:focus {
+        box-shadow: inset $selected-box-shadow v(code-input-error-color);
+      }
+    }
+  }
+
+  &.is-negative {
+    .nx-code-input__field {
+      font-weight: nx-font-weight(bold);
+    }
+  }
+}
+
+:host.is-disabled {
+  cursor: not-allowed;
+
+  .nx-code-input__field {
+    cursor: not-allowed;
+    @include var(color, code-input-disabled-color);
+    box-shadow: inset $default-box-shadow nx-theme-color(code-input-disabled-color);
+    box-shadow: inset $default-box-shadow v(code-input-disabled-color);
+  }
+}
+
+:host.is-disabled.is-negative {
+  .nx-code-input__field {
+    @include var(color, negative-02-dimmed);
+    box-shadow: inset $default-box-shadow v(negative-02-dimmed);
+  }
+}
+
+// remove the number spinners on Mozilla and Chrome
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+input[type=number] {
+   -moz-appearance: textfield;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-code-input__field {
+    box-shadow: inset $default-box-shadow buttonText;
+
+    &:focus {
+      box-shadow: inset $selected-box-shadow buttonText;
+    }
+  }
+
+  :host.is-disabled {
+    .nx-code-input__field {
+      color: GrayText;
+      box-shadow: inset $default-box-shadow GrayText;
+      opacity: 1;
+    }
+  }
+}

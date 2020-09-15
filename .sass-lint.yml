@@ -1,0 +1,18 @@
+files:
+  include: 'projects/ng-aquila/**/*.scss'
+options:
+  formatter: stylish
+  merge-default-rules: false
+rules:
+  no-vendor-prefixes:
+    -
+
+  # Inner Spacing
+  space-after-comma: 1
+  space-before-colon: 1
+  space-after-colon: 1
+  space-before-brace: 1
+  space-before-bang: 1
+  space-after-bang: 1
+  space-between-parens: 1
+  space-around-operator: 1

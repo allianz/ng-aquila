@@ -1,0 +1,50 @@
+@import '../../shared-styles/index';
+
+:host {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+
+  &:not(.is-responsive) {
+    opacity: 0.9999;  // trick that focus-ring of check-icon can shine through
+  }
+
+  .nx-circle-toggle__input {
+    opacity: 0;
+    position: absolute;
+  }
+}
+
+:host:not(.in-group) {
+  margin-right: nx-spacer(xl);
+
+  @include media-breakpoint-down("small") {
+    margin-right: nx-spacer(4m);
+  }
+
+  [dir="rtl"] & {
+    margin-right: initial;
+    margin-left: nx-spacer(xl);
+
+    @include media-breakpoint-down("small") {
+      margin-right: initial;
+      margin-left: nx-spacer(4m);
+    }
+  }
+}
+
+// ARIA
+:host-context([data-whatinput="keyboard"]) {
+  .nx-circle-toggle__input:focus + .nx-circle-toggle__label {
+
+    ::ng-deep .nx-toggle-circle__icon-wrapper,
+    ::ng-deep .nx-toggle-circle__check-focus {
+      @include focus-style;
+    }
+
+    ::ng-deep nx-mobile-toggle-button {
+      @include focus-style;
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<nx-sidebar class="docs-sidebar" minWidth="100">
+  <button nxAction *ngFor="let guide of availableGuides" routerLink="{{guide.id}}" routerLinkActive="is-selected" type="button">
+    {{guide.title}}
+  </button>
+</nx-sidebar>
+
+<main>
+  <div nxLayout="grid maxwidth" class="guide__wrapper">
+    <div nxRow>
+      <div nxCol="12">
+        <div class="guide__content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nxv-footer></nxv-footer>
+</main>

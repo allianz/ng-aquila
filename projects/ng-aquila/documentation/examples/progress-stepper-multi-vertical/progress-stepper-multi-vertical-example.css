@@ -1,0 +1,24 @@
+@media (min-width: 704px) {
+  :host(.is-vertical) {
+    display: flex;
+    padding: 24px 0;
+  }
+
+  :host(.is-vertical) aside {
+    padding-left: 32px;
+  }
+}
+
+form button {
+  margin-right: 32px;
+}
+
+nx-radio-toggle {
+  display: block;
+}
+
+.action-container > *{
+  display: inline-block;
+  margin: 0 32px 16px 0;
+  float: left;
+}

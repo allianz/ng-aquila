@@ -1,0 +1,30 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
+      "@aposin/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
+      "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
+      "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
+    },
+  },
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true
+  }
+}

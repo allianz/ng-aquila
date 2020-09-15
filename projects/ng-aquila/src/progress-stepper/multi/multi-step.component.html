@@ -1,0 +1,71 @@
+<span *ngIf="title && direction === 'horizontal'" class="nx-single-step__title">{{title}}</span>
+<span class="nx-progress-stepper__title" *ngIf="direction === 'horizontal'">
+  <ng-content select="nx-label"></ng-content>
+</span>
+
+<div class="nx-multi-stepper__items">
+  <ng-container *ngIf="groups.length === 0 || direction === 'horizontal'; else groupsTemplate">
+    <ng-container *ngFor="let step of steps;let i = index; let isLast = last; let isFirst = first">
+
+      <nx-multi-step-item
+        (click)="!_stepDisabled(i) && step.select()"
+        [last]="isLast"
+        [label]="step.stepLabel || step.label"
+        [completed]="step.completed"
+        [selected]="selectedIndex === i"
+        [active]="selectedIndex > i"
+        [disabled]="_stepDisabled(i)"
+        [direction]="direction">
+      </nx-multi-step-item>
+    </ng-container>
+  </ng-container>
+</div>
+
+
+<div class="labels-container"
+     *ngIf="direction === 'horizontal'">
+  <div class="label" [attr.label]="step.label" *ngFor="let step of steps;let i = index; "
+       [ngClass]="{'is-disabled':_stepDisabled(i), 'is-selected': (selectedIndex === i)}"
+       (click)="!_stepDisabled(i) && step.select()">
+    <span>{{ step.label }}</span>
+  </div>
+</div>
+
+<div class="nx-progress-stepper__mobile-label">
+  {{currentLabel}}
+</div>
+
+<div *ngFor="let step of steps; let i = index"
+      class="nx-progress-stepper__content" role="tabpanel"
+      [id]="_getStepContentId(i)"
+      [attr.aria-label]="currentLabel"
+      [attr.aria-expanded]="selectedIndex === i">
+  <ng-container [ngTemplateOutlet]="step.content"></ng-container>
+</div>
+
+<ng-template #groupsTemplate>
+  <ng-container *ngFor="let group of groups; let i = index;">
+    <div class="nx-multi-stepper__group">
+      <div class="nx-multi-stepper__group-label"
+          [class.is-active]="_isGroupActive(i)"
+          [class.is-disabled]="_isGroupDisabled(i)">
+        {{ group.label }}
+      </div>
+
+      <div class="nx-multi-stepper__group-items">
+        <ng-container *ngFor="let step of group.steps; let isLast = last;">
+          <nx-multi-step-item
+              (click)="!_stepDisabled(_getIndex(step)) && step.select()"
+              [last]="isLast"
+              [label]="step.stepLabel || step.label"
+              [completed]="step.completed"
+              [selected]="selectedIndex === _getIndex(step)"
+              [active]="selectedIndex > _getIndex(step)"
+              [disabled]="_stepDisabled(_getIndex(step))"
+              [direction]="direction">
+          </nx-multi-step-item>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

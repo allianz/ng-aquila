@@ -1,0 +1,35 @@
+<nx-context-menu #menu="nxContextMenu">
+  <button nxContextMenuItem type="button">
+    <nx-icon aria-hidden="true" name="setting"></nx-icon>
+    Settings
+  </button>
+  <button nxContextMenuItem [nxContextMenuTriggerFor]="subMenu" type="button">
+    <nx-icon aria-hidden="true" name="download"></nx-icon>
+    Download
+  </button>
+  <button nxContextMenuItem [nxContextMenuTriggerFor]="helpSubMenu" type="button">
+    <nx-icon aria-hidden="true" name="info-circle-o"></nx-icon>
+    Help
+  </button>
+</nx-context-menu>
+
+<nx-context-menu #subMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">pdf</button>
+  <button nxContextMenuItem [nxContextMenuTriggerFor]="qualitySubMenu" type="button">jpg</button>
+</nx-context-menu>
+
+<nx-context-menu #helpSubMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">FAQ</button>
+  <button nxContextMenuItem type="button">Call Support</button>
+</nx-context-menu>
+
+<nx-context-menu #qualitySubMenu="nxContextMenu">
+  <button nxContextMenuItem type="button">low quality</button>
+  <button nxContextMenuItem type="button">medium quality</button>
+  <button nxContextMenuItem type="button">high quality</button>
+  <button nxContextMenuItem type="button">highest quality</button>
+</nx-context-menu>
+
+<button nxIconButton="tertiary small" [nxContextMenuTriggerFor]="menu" type="button">
+  <nx-icon name="ellipsis-h"></nx-icon>
+</button>

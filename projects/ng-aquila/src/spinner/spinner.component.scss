@@ -1,0 +1,97 @@
+@import '../shared-styles/index';
+
+$diameter-small: nx-spacer(s);
+$diameter-medium: nx-spacer(m);
+$diameter-large: nx-spacer(3m);
+$edge-margin: 4%;
+$edge-diameter: 12%;
+
+@keyframes spin {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+
+:host {
+  position: relative;
+  display: block;
+}
+
+:host(.nx-spinner--small) {
+  width: $diameter-small;
+  height: $diameter-small;
+}
+
+:host(.nx-spinner--medium) {
+  width: $diameter-medium;
+  height: $diameter-medium;
+}
+
+:host(.nx-spinner--large) {
+  width: $diameter-large;
+  height: $diameter-large;
+}
+
+.nx-spinner__spin-block {
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg);
+  border-style: solid;
+  border-radius: 50%;
+  border-color: v(spinner-indicator-color) v(spinner-background-color) v(spinner-background-color) v(spinner-background-color);
+  animation-name: spin;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+:host(.nx-spinner--small) .nx-spinner__spin-block {
+  border-width: calc( #{0.1 * $diameter-small} );
+}
+
+:host(.nx-spinner--medium) .nx-spinner__spin-block {
+  border-width: calc( #{0.1 * $diameter-medium} );
+}
+
+:host(.nx-spinner--large) .nx-spinner__spin-block {
+  border-width: calc( #{0.1 * $diameter-large} );
+}
+
+.nx-spinner__edge-left,
+.nx-spinner__edge-right {
+  width: $edge-diameter;
+  height: $edge-diameter;
+  border-radius: 50%;
+  @include var(background-color, spinner-indicator-color);
+  position: absolute;
+  top: $edge-margin;
+}
+
+.nx-spinner__edge-left {
+  left: $edge-margin;
+}
+
+.nx-spinner__edge-right {
+  right: $edge-margin;
+}
+
+// negative styles
+:host(.nx-spinner--negative) {
+  .nx-spinner__spin-block {
+    border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color) v(spinner-negative-background-color) v(spinner-negative-background-color);
+  }
+
+  .nx-spinner__edge-left,
+  .nx-spinner__edge-right {
+    @include var(background-color, spinner-negative-indicator-color);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-spinner__spin-block {
+    border-color: window highlight highlight highlight;
+  }
+}

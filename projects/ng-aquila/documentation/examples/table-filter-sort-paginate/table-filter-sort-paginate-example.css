@@ -1,0 +1,14 @@
+table {
+  overflow-x: auto;
+  display: block;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  margin-top: 24px;
+  align-self: flex-end;
+}

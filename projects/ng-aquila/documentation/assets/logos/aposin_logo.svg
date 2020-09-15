@@ -1,0 +1,25 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" width="32px" height="32px" xml:space="preserve" id="main-header-logo">
+        <style type="text/css">
+          .circle{fill:#066F71;}
+          .line{fill: none; stroke: lime; stroke-width: 26;}
+          .a{stroke:#3b9491}
+          .b{stroke:#47babc}
+          .c {stroke:#1ba6c2;stroke-dasharray: 744.5 664.5;stroke-dashoffset: 1190;}
+          .d {stroke:#009ee2;stroke-dasharray: 460 1301;stroke-dashoffset: 1591;}
+          .e {stroke:#1ba6c2;stroke-dasharray: 454 1550;stroke-dashoffset: 1575;}
+          .f {stroke:#56bcb6;stroke-dasharray: 1400 1007;stroke-dashoffset: 1630;}
+          .g {stroke:#3b9491;stroke-dasharray: 1390 1310;stroke-dashoffset: 1731;}
+          .h {stroke:#066f71;stroke-dasharray: 1940 1120;stroke-dashoffset: 1388;}
+        </style>
+        <g id="Ebene_3">
+          <circle class="circle" cx="500" cy="500" r="25.8"></circle>
+          <circle class="line a" cx="500" cy="500" r="109"></circle>
+          <circle class="line b" cx="500" cy="500" r="165"></circle>
+          <circle class="line c" cx="500" cy="500" r="221"></circle>
+          <circle class="line d" cx="500" cy="500" r="277"></circle>
+          <circle class="line e" cx="500" cy="500" r="330"></circle>
+          <circle class="line f" cx="500" cy="500" r="383"></circle>
+          <circle class="line g" cx="500" cy="500" r="436"></circle>
+          <circle class="line h" cx="500" cy="500" r="487"></circle>
+        </g>
+        </svg>

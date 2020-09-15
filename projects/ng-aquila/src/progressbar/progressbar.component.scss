@@ -1,0 +1,67 @@
+@import '../shared-styles/index';
+
+:host {
+  display: block;
+  height: nx-spacer(3xs);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.nx-progress__track {
+  @include var(background-color, progressbar-background-color);
+  height: 100%;
+}
+
+.nx-progress__indicator {
+  transform-origin: top left;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+  :host-context([dir="rtl"]) & {
+    transform-origin: top right;   
+  }
+}
+
+// A pseudo element is created for each progress bar bar that fills with the indicator color.
+.nx-progress__indicator::after {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  animation: none;
+  content: '';
+  display: inline-block;
+  left: 0;
+  @include var(background-color, progressbar-indicator-color);
+
+  :host-context([dir="rtl"]) & {
+    right: 0;
+    left: auto;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host {
+    // height made bigger because it's very little in high contrast
+    height: nx-spacer(2xs);
+  }
+
+  .nx-progress__track {
+    border: nx-border-size(xs) solid windowFrame;
+    border-radius: nx-border-radius(xs);
+  }
+
+  .nx-progress__indicator {
+    border-right: nx-border-size(xs) solid windowFrame;
+
+    [dir="rtl"] & {
+      border-right: none;
+      border-left: nx-border-size(xs) solid windowFrame;
+    }
+  }
+
+  .nx-progress__indicator::after {
+    background: highlight;
+  }
+}

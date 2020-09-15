@@ -1,0 +1,162 @@
+@import "../shared-styles/index";
+
+$mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
+
+:host {
+  display: block;
+}
+
+:host(.nx-expansion-panel--negative) ::ng-deep {
+  div.nx-expansion-panel__body * {
+    @include var(color, negative);
+  }
+}
+
+.nx-expansion-panel__content {
+  overflow: hidden;
+  display: block;
+}
+
+.nx-expansion-panel__body {
+
+  padding: v(accordion-regular-body-padding);
+  @include type-style(accordion-body);
+
+  @include media-breakpoint-down(small) {
+    padding: $mobile-body-padding;
+  }
+
+  :host-context([dir="rtl"]) & {
+    // TODO: fix RTL here
+    padding: v(accordion-regular-body-padding, true);
+
+    @include media-breakpoint-down(small) {
+      padding: $mobile-body-padding;
+    }
+  }
+}
+
+:host(.nx-expansion-panel--regular) {
+  @include var(margin-top, accordion-regular-header-top-margin);
+
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(accordion-regular-border-color);
+  }
+
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(accordion-regular-border-color);
+  }
+
+  @include media-breakpoint-down(small) {
+    margin-top: 0;
+
+    ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color);
+    }
+
+    &:last-child,
+    &:only-child {
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color), inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
+      }
+    }
+
+    &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color), inset 0 -1px 0 0 v(accordion-regular-mobile-separator-color);
+    }
+  }
+}
+
+// Styles of the light version
+:host(.nx-expansion-panel--light) {
+  .nx-expansion-panel__body {
+    $light-body-padding: v(accordion-light-body-padding);
+
+    padding: $light-body-padding;
+
+    @include media-breakpoint-down(small) {
+      padding: $mobile-body-padding;
+    }
+
+    [dir="rtl"] & {
+      // TODO fix RTL here
+      padding: nx-flip-for-rtl($light-body-padding);
+
+      @include media-breakpoint-down(small) {
+        padding: $mobile-body-padding;
+      }
+    }
+  }
+}
+
+:host(.nx-expansion-panel--light):not(.nx-expansion-panel--negative) {
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(accordion-light-border-color);
+  }
+
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(accordion-light-border-color);
+  }
+}
+
+// negative styles
+:host(.nx-expansion-panel--regular.nx-expansion-panel--negative) {
+  @include media-breakpoint-down(small) {
+    ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow: inset 0 1px 0 0 v(negative-01);
+    }
+
+    &:last-child,
+    &:only-child {
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow: inset 0 1px 0 0 v(negative-01), inset 0 -1px 0 0 v(negative-01);
+      }
+    }
+
+    &.nx-expanded ::ng-deep .nx-expansion-panel__header-content {
+      box-shadow: inset 0 1px 0 0 v(negative-01), inset 0 -1px 0 0 v(negative-01);
+    }
+  }
+}
+
+:host(.nx-expansion-panel--light.nx-expansion-panel--negative) {
+  @include var(color, negative);
+
+  ::ng-deep .nx-expansion-panel__header-content {
+    box-shadow: inset 0 1px 0 0 v(negative);
+  }
+
+  &:last-child,
+  &:only-child {
+    box-shadow: 0 1px 0 0 v(negative);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host {
+    border-color: windowText;
+    color: buttonText;
+
+    &.nx-expansion-panel--regular {
+      border: nx-border-size(xs) solid buttonText;
+    }
+
+    &.is-disabled {
+      border-color: GrayText;
+    }
+
+    &.nx-expansion-panel--light.nx-expansion-panel--negative,
+    &.nx-expansion-panel--light:not(.nx-expansion-panel--negative) {
+      ::ng-deep .nx-expansion-panel__header-content {
+        box-shadow: inset 0 1px 0 0 windowText;
+      }
+
+      &:last-child,
+      &:only-child {
+        box-shadow: 0 1px 0 0 windowText;
+      }
+    }
+  }
+}

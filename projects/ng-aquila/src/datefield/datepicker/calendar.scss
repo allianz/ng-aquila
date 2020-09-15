@@ -1,0 +1,77 @@
+@import '../../shared-styles/index';
+
+$item-size: nx-spacer(3m);
+$calendar-content-width: 7 * $item-size;
+
+.nx-calendar-content {
+  width: $calendar-content-width;
+  margin: nx-spacer(s) auto 0 auto;
+}
+
+.nx-calendar-previous-button,
+.nx-calendar-next-button {
+  @include var(color, datefield-controls-color);
+  @include var(font-size, datefield-controls-icon-size);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 0;
+
+  padding: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    @include var(color, datefield-controls-hover-color);
+  }
+}
+
+.nx-calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.nx-calendar-period-label {
+  @include type-style(datefield-period-label);
+  @include var(color, datefield-period-label-color);
+  text-align: center;
+}
+
+.nx-calendar-view-controls {
+  text-align: center;
+  height: nx-spacer(m);
+}
+
+.nx-calendar-change-view-button {
+  @include type-style(datefield-change-view);
+  @include var(color, datefield-change-view-color);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin: nx-spacer(2xs) 0 0 0;
+  height: nx-spacer(s);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    @include var(color, datefield-change-view-hover-color);
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-calendar-change-view-button:focus,
+:host-context([data-whatinput="keyboard"]) .nx-calendar-previous-button:focus,
+:host-context([data-whatinput="keyboard"]) .nx-calendar-next-button:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}
+
+// don't show inner dotted border on firefox
+button::-moz-focus-inner {
+  border: 0;
+}

@@ -1,0 +1,157 @@
+@import "../shared-styles/index";
+
+$padding-bottom: nx-spacer(2xs) - nx-border-size(m);
+
+:host {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  &.is-expert {
+    justify-content: flex-start;
+    border-bottom-width: nx-border-size(xs);
+    border-bottom-style: solid;
+    @include var(border-bottom-color, tab-expert-bottom-border-color);
+  }
+}
+
+:host ::ng-deep a.nx-tab-link {
+  @include tab__item;
+}
+
+:host ::ng-deep a.nx-tab-link.is-active {
+  @include tab__item--active;
+}
+
+:host.is-expert ::ng-deep {
+  a.nx-tab-link {
+    padding: 0 0 4px 0;
+    margin: 0 nx-spacer(s);
+    border-color: transparent;
+    border-bottom-width: 4px;
+    position: relative;
+  }
+
+  a.nx-tab-link:first-child {
+    margin-left: 0;
+
+    [dir="rtl"] & {
+      margin-right: 0;
+      margin-left: nx-spacer(s);
+    }
+  }
+
+  a.nx-tab-link:last-child {
+    margin-right: 0;
+
+    [dir="rtl"] & {
+      margin-right: nx-spacer(s);
+      margin-left: 0;
+    }
+  }
+
+  a.nx-tab-link.is-disabled:not(.is-active) {
+    border-bottom-color: transparent;
+  }
+}
+
+:host.is-expert:not(.is-negative) ::ng-deep {
+  a.nx-tab-link:not(.is-disabled):not(.is-active) {
+    @include var(color, tab-expert-color);
+
+    @media screen and (-ms-high-contrast: active) {
+      color: buttonText;
+    }
+  }
+
+  a.nx-tab-link.is-active {
+    @include var(border-color, tab-item-border-color);
+  }
+}
+
+:host(.is-negative) {
+  @include var(color, negative);
+
+  ::ng-deep a.nx-tab-link {
+    @include var(color, negative);
+    @include var(border-bottom-color, negative);
+  }
+
+  ::ng-deep a.nx-tab-link.is-disabled {
+    @include var(color, tab-item-disabled-negative-color);
+    @include var(border-color, tab-item-disabled-negative-color);
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    ::ng-deep a.nx-tab-link.is-active {
+      background-color: highlight;
+      color: highlightText;
+      border-color: windowFrame;
+    }
+  }
+}
+
+:host.is-expert.is-negative {
+  ::ng-deep a.nx-tab-link:not(.is-active) {
+    border-bottom-color: transparent;
+  }
+}
+
+:host ::ng-deep a.nx-tab-link.is-disabled {
+  @include tab__item--disabled;
+}
+
+:host(.is-disabled) {
+  cursor: not-allowed;
+}
+
+:host(.is-disabled.is-negative) {
+  ::ng-deep a.nx-tab-link {
+    @include var(color, tab-item-disabled-negative-color);
+    @include var(border-color, tab-item-disabled-negative-color);
+  }
+}
+
+// not:(.is-disabled) is needed because if you click on a disabled link and then press an arrow key the disabled tab gets focused.
+:host-context([data-whatinput="keyboard"]) {
+  &:not(.is-expert) ::ng-deep .nx-tab-link:not(.is-disabled):focus  {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+  }
+
+  &.is-expert ::ng-deep .nx-tab-link:not(.is-disabled):focus {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: calc(100% - 4px);   // subtract bottom border
+      width: 100%;
+      top: 0px;
+
+      @include focus-style;
+      border-radius: nx-border-radius(s);
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host(.is-negative) {
+    color: buttonText;
+
+    ::ng-deep a.nx-tab-link {
+      color: buttonText;
+      border-bottom-color: buttonText;
+    }
+
+    ::ng-deep a.nx-tab-link.is-active {
+      background-color: highlight;
+      color: highlightText;
+      border-color: highlight;
+    }
+
+    ::ng-deep a.nx-tab-link.is-disabled {
+      color: GrayText;
+      border-bottom-color: GrayText;
+    }
+  }
+}

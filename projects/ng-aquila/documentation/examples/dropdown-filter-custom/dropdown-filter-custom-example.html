@@ -1,0 +1,14 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,12,6">
+      <nx-formfield nxLabel="Car brand">
+        <nx-dropdown [nxShowFilter]="true"
+          nxFilterPlaceholder="Type to search car"
+          [filterFn]="myFilter">
+          <nx-dropdown-item
+            *ngFor="let brand of demoData" [nxValue]="brand"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

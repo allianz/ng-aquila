@@ -1,0 +1,5 @@
+<form [formGroup]='testForm'>
+  <nx-rating formControlName='rating'></nx-rating>
+</form>
+
+<p>Form value: {{ testForm.value | json }}</p>

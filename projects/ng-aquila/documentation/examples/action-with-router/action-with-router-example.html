@@ -1,0 +1,8 @@
+<button nxAction
+  *ngFor="let action of actions"
+  routerLink="./"
+  [queryParams]="action.query"
+  routerLinkActive="is-selected">
+  <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+  {{action.label}}
+</button>

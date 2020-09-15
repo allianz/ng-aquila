@@ -1,0 +1,160 @@
+@import "../shared-styles/index";
+
+// General style
+:host {
+  @include var(color, link-color);
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  transition: color .2s ease, box-shadow .2s ease;
+  hyphens: none;
+
+  &:hover {
+    @include var(color, link-hover-color);
+  }
+
+  &::ng-deep a:active {
+    @include var(color, link-active-color);
+  }
+
+  &::ng-deep a {
+    display: flex;    // get icons aligned with text
+    align-items: center;
+  }
+}
+
+:host.nx-link--small {
+  @include type-style(link-small);
+}
+
+:host.nx-link--large {
+  @include type-style(link-large);
+}
+
+// focus styling
+:host-context([data-whatinput="keyboard"])::ng-deep a:focus {
+  border-radius: nx-border-radius(s);
+  outline: 0;
+  @include focus-style;
+}
+
+// negative
+:host(.nx-link--negative) {
+  @include var(color, negative);
+
+  &:hover {
+    @include var(color, negative-01);
+  }
+
+  &::ng-deep a:active {
+    @include var(color, negative-02);
+  }
+
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    @include var(color, negative-dimmed);
+  }
+}
+
+// black
+:host(.nx-link--black) {
+  @include var(color, link-black-color);
+
+  &:hover {
+    @include var(color, link-black-hover-color);
+  }
+
+  &::ng-deep a:active {
+    @include var(color, link-black-active-color);
+  }
+
+  &::ng-deep a[disabled],
+  &::ng-deep a[aria-disabled] {
+    @include var(color, link-black-disabled-color);
+  }
+}
+
+// link within text
+:host.nx-link--text {
+  font-weight: nx-font-weight(bold);
+  text-transform: none;
+  letter-spacing: normal;
+  border-radius: nx-border-radius(s);
+  font-size: inherit;
+  line-height: inherit;
+  display: inline;
+
+  // fix text - link alignment in IE11
+  ::ng-deep a {
+    display: inline;
+  }
+
+  ::ng-deep nx-icon.nx-link__icon {
+    vertical-align: bottom;
+  }
+}
+
+// link with icons
+:host::ng-deep {
+  .c-icon::before, nx-icon.nx-link__icon::before {
+    line-height: inherit;
+    font-size: inherit;
+  }
+}
+
+:host.nx-link--small ::ng-deep {
+  .c-icon, nx-icon.nx-link__icon {
+    @include var(font-size, link-small-icon-size);
+  }
+}
+
+:host.nx-link--large ::ng-deep {
+  .c-icon, nx-icon.nx-link__icon {
+    @include var(font-size, link-large-icon-size);
+  }
+}
+
+// space between icon and text
+:host:not(.nx-link--text) ::ng-deep {
+  .c-icon, nx-icon.nx-link__icon {
+    $link-icon-margin: 0 nx-spacer(2xs) 0 0; 
+    margin: $link-icon-margin;
+
+    [dir="rtl"] & {
+      margin: nx-flip-for-rtl($link-icon-margin);
+    }
+  }
+}
+
+// variation: icon on the right
+:host:not(.nx-link--text).nx-link--icon-right ::ng-deep {
+  .c-icon, nx-icon.nx-link__icon {
+    $link-icon-right-margin: 0 0 0 nx-spacer(2xs); 
+    order: 2;
+    margin: $link-icon-right-margin;
+
+    [dir="rtl"] & {
+      margin: nx-flip-for-rtl($link-icon-right-margin);
+    }
+  }
+}
+
+// disabled
+:host::ng-deep a[disabled],
+:host::ng-deep a[aria-disabled] {
+  cursor: not-allowed;
+  @include var(color, link-disabled-color);
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host::ng-deep a[disabled],
+  :host::ng-deep a[aria-disabled] {
+    color: GrayText;
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../../../../ng-aquila/src/shared-styles/theming/themes/aposin";
+
+$nx-theme-documentation: (
+  documentation-expert-container-background: #1c7997,
+  documentation-markdown-code-background-color: darken(#0f2a3d, 20%),
+  documentation-header-background: ui-02,
+  documentation-welcome-questions-background: ui-02,
+  documentation-welcome-set-up-background: ui-02,
+  documentation-welcome-lifecycle-background: ui-02,
+  documentation-welcome-grey-row-background-color: ui-02,
+  documentation-deprecated-color: #34311E,
+  documentation-svg-filter: none,
+
+  // Tokens for examples
+  documentation-comparison-table-example-minus-color: #ada8a8,
+  documentation-comparison-table-example-info-icon-color: interactive-primary,
+
+
+  documentation-fullscreen-background-01: ui-01,
+  documentation-fullscreen-background-02: ui-02,
+
+  // Tokens for examples
+  documentation-inverse-container-background: negative-background,
+  documentation-margin-example-background-color: #1c7997,
+  documentation-comparison-table-example-background-color: ui-01,
+
+  // Tokens for api and code
+  documentation-api-codebox-border-color: #969696,
+  documentation-api-methodbox-border-color: #969696,
+  documentation-api-methodbox-header-background-color: rgba(0, 0, 0, 0.03),
+
+  documentation-api-code-import-text-color: #faa1ff,
+  documentation-api-code-path-text-color: #7dff90,
+  documentation-api-code-keywords-text-color: #7dff90,
+  documentation-api-code-alias-text-color: #fafc7c,
+  documentation-api-code-types-text-color: #faa1ff,
+
+  // Tokens for grid examples
+  documentation-grid-text-color: #000000,
+  documentation-grid-tiny-color: #DBD3D8,
+  documentation-grid-small-color: #FAC748,
+  documentation-grid-medium-color: #87D68D,
+  documentation-grid-large-color: #27ABD6,
+  documentation-grid-xlarge-color: #E18335,
+  documentation-grid-2xlarge-color: #DB4C40,
+  documentation-grid-3xlarge-color: #8D6A9F,
+  documentation-grid-examples-dotted-border-color: #E5E7E6,
+
+  documentation-grid-tiny-color-01: darken(#DBD3D8, 20%),
+  documentation-grid-small-color-01: darken(#FAC748, 20%),
+  documentation-grid-medium-color-01: darken(#87D68D, 20%),
+  documentation-grid-large-color-01: darken(#27ABD6, 20%),
+  documentation-grid-xlarge-color-01: darken(#E18335, 20%),
+  documentation-grid-2xlarge-color-01: darken(#DB4C40, 20%),
+  documentation-grid-3xlarge-color-01: darken(#8D6A9F, 20%),
+
+  documentation-grid-tiny-color-02: darken(#DBD3D8, 40%),
+  documentation-grid-small-color-02: darken(#FAC748, 40%),
+  documentation-grid-medium-color-02: darken(#87D68D, 40%),
+  documentation-grid-large-color-02: darken(#27ABD6, 30%),
+  documentation-grid-xlarge-color-02: darken(#E18335, 30%),
+  documentation-grid-2xlarge-color-02: darken(#DB4C40, 40%),
+  documentation-grid-3xlarge-color-02: darken(#8D6A9F, 40%),
+);
+
+$nx-themes: nx-register-theme($nx-theme-documentation, docs-theme, aposin);

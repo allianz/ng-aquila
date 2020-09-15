@@ -1,0 +1,476 @@
+@import "../shared-styles/index";
+
+/* Break out mixin
+ *
+ * Allows to break out of deeply nested selectors
+ * and prepend directionality attribute to the outermost selector.
+ * Works for coma separated selector list as well.
+ */
+@mixin break-out($selectors, $dir:'ltr') {
+    @at-root #{prependDir($selectors, $dir)} {
+      @content;
+    }
+}
+
+@function prependDir($selectors, $dir) {
+  $selectorsWithDir: null;
+  @each $selector in $selectors {
+    $selectorsWithDir: append($selectorsWithDir, '[dir="#{$dir}"]#{$selector}', 'comma');
+  }
+  @return $selectorsWithDir;
+}
+
+:host {
+  display: block;
+  @include type-style(comparison-table);
+
+  // DESKTOP / TABLET STYLING
+  ::ng-deep .nx-comparison-table__row {
+    display: flex;
+
+    .nx-comparison-table__popular-cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nx-comparison-table__popular-cell .nx-comparison-table__cell-content {
+      @include type-style(comparison-table-popular-cell);
+      @include var(background-color, comparison-table-popular-cell-background-color);
+      @include var(color, comparison-table-popular-cell-text-color);
+      width: 100%;
+      padding: nx-spacer(2xs) nx-spacer(xs);
+
+      @include break-out(&, 'ltr') {
+        margin-right: 1px;
+      }
+
+      @include break-out(&, 'rtl') {
+        margin-left: 1px;
+      }
+    }
+
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__popular-cell {
+      font-weight: nx-font-weight(semibold);
+      width: 0;
+
+      @include break-out(&, 'ltr') {
+        text-align: left;
+      }
+
+      @include break-out(&, 'rtl') {
+        text-align: right;
+      }
+    }
+
+    .nx-comparison-table__cell,
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__placeholder-cell {
+      text-align: center;
+      width: 0;
+    }
+
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__popular-cell,
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__placeholder-cell {
+      flex: 1 1 auto;
+
+      // flex-grow for intersection-cells is set with js
+    }
+
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__cell {
+      .nx-comparison-table__cell-content {
+        padding: 16px;
+        height: 100%;
+        @include var(background-color, comparison-table-cell-background-color);
+      }
+    }
+
+    .nx-comparison-table__placeholder-cell {
+      .nx-comparison-table__cell-content {
+        height: 100%;
+      }
+    }
+
+    .nx-comparison-table__cell.is-selected .nx-comparison-table__cell-content {
+      @include var(background-color, comparison-table-selected-column-background-color);
+    }
+
+    // DESKTOP  +  TABLET disabled styles
+    .nx-comparison-table__cell.is-disabled {
+      @include var(color, comparison-table-disabled-text-color);
+
+      ::ng-deep nx-icon:not([nxComparisonTableSelectButton]) {
+        opacity: 40%;
+      }
+    }
+  }
+
+  .nx-comparison-table__toggle-section-body {
+    overflow-y: hidden;
+  }
+
+  ::ng-deep nx-comparison-table-flex-row.is-header-row,
+  ::ng-deep nx-comparison-table-flex-row.is-footer-row {
+    .nx-comparison-table__cell .nx-comparison-table__cell-content {
+      padding: 16px 4px;
+      @include var(background-color, comparison-table-header-background-color);
+    }
+
+    .nx-comparison-table__cell:not(.is-selected) .nx-comparison-table__cell-content {
+      @include var(color, comparison-table-header-text-color);
+    }
+
+    .nx-comparison-table__cell.is-disabled .nx-comparison-table__cell-content {
+      @include var(color, comparison-table-disabled-column-header-text-color);
+    }
+  }
+
+  ::ng-deep nx-comparison-table-flex-row.has-intersection {
+    .nx-comparison-table__description-cell .nx-comparison-table__cell-content,
+    .nx-comparison-table__intersection-cell .nx-comparison-table__cell-content {
+      @include var(background, comparison-table-intersection-cell-background-color);
+    }
+  }
+
+  // vertical borders between cells (on left side)
+  ::ng-deep .nx-comparison-table__row {
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__placeholder-cell {
+      .nx-comparison-table__cell-content {
+        @include break-out(&, 'ltr') {
+          border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+        }
+
+        @include break-out(&, 'rtl') {
+          border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+        }
+      }
+    }
+  }
+
+  // vertical border on right side
+  ::ng-deep .nx-comparison-table__row {
+    .nx-comparison-table__cell:first-child,
+    .nx-comparison-table__description-cell {
+      .nx-comparison-table__cell-content {
+        @include break-out(&, 'ltr') {
+          border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+        }
+
+        @include break-out(&, 'rtl') {
+          border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+        }
+      }
+    }
+  }
+
+  // horizontal borders
+  ::ng-deep nx-comparison-table-flex-row.is-header-row,
+  ::ng-deep nx-comparison-table-flex-row.is-footer-row {
+    .nx-comparison-table__cell .nx-comparison-table__cell-content {
+      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+
+      border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+    }
+  }
+
+  // horizontal border on all content rows
+  ::ng-deep nx-comparison-table-flex-row.is-content-row {
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__intersection-cell {
+      .nx-comparison-table__cell-content {
+        border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+  }
+
+  // bottom border for group-expansion cell
+  ::ng-deep nx-comparison-table-desktop-group {
+    .nx-comparison-table__group-expansion-cell {
+      border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+    }
+  }
+
+  // no borders for popular cell row placeholder cells
+  ::ng-deep .nx-comparison-table__row .nx-comparison-table__placeholder-cell.is-popular-placeholder-cell .nx-comparison-table__cell-content {
+    @include break-out(&, 'ltr') {
+      border-right: none;
+    }
+
+    @include break-out(&, 'rtl') {
+      border-left: none;
+    }
+  }
+
+  // horizontal border on the first row of each block
+  ::ng-deep nx-comparison-table-flex-row.is-header-row,
+  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-flex-row,
+  ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-flex-row,
+  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-desktop-group nx-comparison-table-flex-row:first-child,
+  ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-desktop-group nx-comparison-table-flex-row:first-child {
+    .nx-comparison-table__description-cell {
+      .nx-comparison-table__cell-content {
+        border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    @include media-breakpoint-up(large) {
+      .nx-comparison-table__cell,
+      .nx-comparison-table__intersection-cell {
+        .nx-comparison-table__cell-content {
+          border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(medium) {
+    ::ng-deep nx-comparison-table-flex-row,
+    ::ng-deep nx-comparison-table-desktop-group {
+      .nx-comparison-table__intersection-cell {
+        .nx-comparison-table__cell-content {
+          @include break-out(&, 'ltr') {
+            border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+          }
+
+          @include break-out(&, 'rtl') {
+            border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+          }
+        }
+      }
+    }
+  }
+
+  // display a margin on the bottom of the header row
+  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-flex-row,
+  ::ng-deep nx-comparison-table-flex-row.is-header-row + .nx-comparison-table__toggle-section,
+  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-desktop-group {
+    margin-top: 8px;
+  }
+
+  // display a margin on top of several elements
+  ::ng-deep nx-comparison-table-flex-row.is-footer-row,
+  ::ng-deep nx-comparison-table-flex-row + .nx-comparison-table__toggle-section,
+  ::ng-deep nx-comparison-table-desktop-group + .nx-comparison-table__toggle-section,
+  ::ng-deep .nx-comparison-table__toggle-section + .nx-comparison-table__toggle-section,
+  ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-flex-row,
+  ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-desktop-group,
+  ::ng-deep nx-comparison-table-desktop-group + nx-comparison-table-desktop-group {
+    margin-top: 16px;
+  }
+
+  // MOBILE STYLING
+  @include media-breakpoint-down(small) {
+    overflow-x: scroll;
+  }
+
+  ::ng-deep table {
+    border-collapse: separate;
+    border-spacing: 0;
+
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__mobile-header-cell {
+      text-align: center;
+      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+      vertical-align: top;
+
+      @include break-out(&, 'ltr') {
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    .nx-comparison-table__intersection-cell,
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell {
+      padding: 8px;
+      @include var(background-color, comparison-table-cell-background-color);
+    }
+
+    .nx-comparison-table__mobile-header-cell {
+      padding: 8px 4px;
+
+      &:not(.is-selected) {
+        @include var(background-color, comparison-table-header-background-color);
+        @include var(color, comparison-table-header-text-color);
+      }
+
+      &.is-disabled {
+        @include var(color, comparison-table-disabled-column-header-text-color);
+      }
+    }
+
+    tr:last-child {
+
+      .nx-comparison-table__cell,
+      .nx-comparison-table__description-cell,
+      .nx-comparison-table__mobile-header-cell {
+        border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    .nx-comparison-table__intersection-cell {
+      border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
+    }
+
+    .nx-comparison-table__mobile-header-cell {
+      @include break-out(&, 'ltr') {
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    tr th:last-child,
+    tr td:last-child {
+      @include break-out(&, 'ltr') {
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    .nx-comparison-table__intersection-cell {
+      min-width: 256px;
+      width: 256px;
+      @include var(background, comparison-table-intersection-cell-background-color);
+    }
+
+    .nx-comparison-table__description-cell.is-intersection-column {
+      @include var(background, comparison-table-intersection-cell-background-color);
+    }
+
+    .nx-comparison-table__description-cell {
+      @include type-style(comparison-table-description-cell-mobile);
+
+    }
+
+    .nx-comparison-table__cell,
+    .nx-comparison-table__description-cell,
+    .nx-comparison-table__mobile-header-cell {
+      width: 128px;
+      min-width: 128px;
+    }
+
+    .nx-comparison-table__placeholder-cell {
+      padding: 0;
+      border: none;
+      min-width: 4px;
+    }
+
+    .nx-comparison-table__mobile-toggle-section-header {
+      @include break-out(&, 'ltr') {
+        text-align: left;
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        text-align: right;
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    // border for placeholder cells after certain cell types
+    .nx-comparison-table__mobile-toggle-section-header + .nx-comparison-table__placeholder-cell,
+    .nx-comparison-table__description-cell + .nx-comparison-table__placeholder-cell,
+    .nx-comparison-table__cell + .nx-comparison-table__placeholder-cell {
+      @include break-out(&, 'ltr') {
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+    }
+
+    .nx-comparison-table__description-cell + .nx-comparison-table__placeholder-cell {
+      min-width: 8px;
+    }
+
+    // Sticky behaviour
+    tr th:first-child,
+    tr td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    // MOBILE disabled styles
+    tr.is-disabled {
+
+      ::ng-deep .nx-comparison-table__mobile-header-cell,
+      ::ng-deep .nx-comparison-table__cell {
+        @include var(color, comparison-table-disabled-text-color);
+
+        ::ng-deep nx-icon:not([nxComparisonTableSelectButton]) {
+          opacity: 40%;
+        }
+      }
+    }
+  }
+
+  // remove margins from some components that are placed inside table cells
+  ::ng-deep .nx-comparison-table__intersection-cell,
+  ::ng-deep .nx-comparison-table__cell,
+  ::ng-deep .nx-comparison-table__description-cell,
+  ::ng-deep .nx-comparison-table__mobile-header-cell {
+    nx-checkbox {
+      margin: 0;
+
+      .nx-checkbox__label {
+        padding: 0;
+      }
+    }
+
+    button[nxbutton] {
+      margin: 0;
+    }
+
+    nx-formfield .nx-formfield__wrapper {
+      padding-bottom: 0;
+    }
+
+    nx-formfield.has-outline .nx-formfield__wrapper {
+      padding-top: 0;
+    }
+
+    [nxlist] {
+      margin: 0;
+
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // fix alignment on IE
+    nx-link a {
+      display: inline-flex;
+    }
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) ::ng-deep .nx-comparison-table-toggle-section__header-wrapper:focus {
+  .nx-comparison-table-toggle-section__header-content {
+    @include focus-style;
+    z-index: 1; // otherwise the bottom border is covered by the next row
+    position: relative; // needed that z-index works
+  }
+}

@@ -1,0 +1,42 @@
+@import 'aposin';
+
+$expert-theme: (
+  grid-max-width: 1472px,
+
+  accordion-light-font-size: paragraph-03-font-size,
+  accordion-light-line-height: paragraph-03-line-height,
+  accordion-light-font-weight: paragraph-03-font-weight,
+  accordion-light-letter-spacing: paragraph-03-letter-spacing,
+
+  accordion-regular-font-size: paragraph-03-font-size,
+  accordion-regular-line-height: paragraph-03-line-height,
+  accordion-regular-font-weight: paragraph-03-font-weight,
+  accordion-regular-letter-spacing: paragraph-03-letter-spacing,
+
+  accordion-regular-chevron-color: text-01,
+  accordion-regular-hover-chevron-color: interactive-text,
+  accordion-light-color: text-01,
+  accordion-light-header-text-color: text-01,
+  accordion-light-header-hover-text-color: interactive-text,
+  accordion-light-chevron-color: text-01,
+  accordion-light-hover-chevron-color: interactive-text,
+
+  accordion-light-header-padding: 16px,
+  accordion-light-body-padding: 0 16px 16px,
+
+  accordion-regular-header-background-color: ui-02,
+  accordion-regular-header-hover-text-color: interactive-text,
+  accordion-regular-header-top-margin: 0,
+  accordion-regular-border-color: ui-04,
+  accordion-regular-mobile-border-color: ui-04,
+  accordion-regular-mobile-separator-color: transparent,
+  accordion-regular-header-padding: 16px,
+  accordion-regular-body-padding:  16px 24px,
+
+  icon-button-small-icon-size: 24px,
+
+  message-banner-border-radius: 0,
+
+);
+
+$themes: nx-register-theme($expert-theme, expert, aposin);

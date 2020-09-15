@@ -1,0 +1,155 @@
+@import '../shared-styles/index';
+
+$modal-max-height: 100vh;
+$modal-max-width: 100vw;
+$horizontal-offset: 48px;
+$vertical-offset-small: 48px;
+$horizontal-offset-small: 16px;
+$z-index: 1000;
+$custom-width: 736px;
+$action-bar-height: nx-spacer(2xl);
+
+:host {
+  position: relative;
+  z-index: $z-index;
+}
+
+.nx-modal {
+  display: flex;
+  position: fixed;
+  width: $modal-max-width;
+  height: $modal-max-height;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .3s ease;
+}
+
+.nx-modal__backdrop {
+  background-color: rgba(0, 0, 0, 0.35);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.nx-modal__position {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+.nx-modal__container {
+  border-radius: nx-border-radius(s);
+  box-shadow: nx-box-shadow(l);
+  @include var(background, modal-background-color);
+  @include var(color, modal-text-color);
+}
+
+.nx-modal__content-wrapper {
+  padding: nx-spacer(3m) nx-spacer(3m) nx-spacer(4m) nx-spacer(3m);
+  max-height: calc(#{$modal-max-height} - #{$horizontal-offset});
+  overflow-y: auto;
+
+  @include media-breakpoint-down('small') {
+    max-height: 70vh;
+    padding: nx-spacer(3m) nx-spacer(2m) nx-spacer(4m) nx-spacer(2m);
+  }
+}
+
+.nx-modal__close {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: nx-spacer(s);
+  right: nx-spacer(s);
+  height: nx-spacer(m);
+  outline: none;
+  padding: 0;
+
+  @include var(color, modal-close-icon-color);
+
+  nx-icon {
+    font-size: nx-font-size(s);
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: nx-spacer(s);
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-modal__close:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}
+
+@include media-breakpoint-down('small') {
+  .nx-modal__position {
+    width: 100%;
+  }
+
+  .nx-modal__container {
+    position: relative;
+    max-width: calc(#{$modal-max-width} - #{$horizontal-offset-small});
+    // reduce height in order to prevent overlap between the mobile browser bottom bar and the modal dialog
+    max-height: 70vh;
+    margin: 0 auto;
+  }
+}
+
+/** size options **/
+:host(.nx-modal--fixed-width) .nx-modal__container {
+  width: $custom-width;
+  max-width: calc(#{$modal-max-width} - #{$horizontal-offset-small});
+}
+
+::ng-deep .nx-modal__actions {
+  height: $action-bar-height;
+  border-top: nx-border-size(xs) solid v(modal-actions-border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 nx-spacer(3m);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom-left-radius: nx-border-radius(s);
+  border-bottom-right-radius: nx-border-radius(s);
+  @include var(background, modal-actions-background-color);
+}
+
+::ng-deep .nx-modal__content {
+  overflow-y: auto;
+  max-height: calc(#{$modal-max-height} - #{$action-bar-height} - #{nx-spacer(4m)});
+  padding: 0 nx-spacer(3m);
+  margin: 0 -#{nx-spacer(3m)};
+
+  @include media-breakpoint-down('small') {
+    // needed because of the absolute positioning of the action bar
+    max-height: calc(70vh - #{$action-bar-height} - #{nx-spacer(4m)});
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-modal__content-wrapper,
+  ::ng-deep .nx-modal__actions {
+    border: nx-border-size(m) solid windowText;
+  }
+}

@@ -1,0 +1,100 @@
+
+// Border size
+$borders : (
+  xs : 1px,
+  s  : 1.6px,
+  m  : 2px,
+  l  : 3px,
+  xl : 4px
+);
+
+// Border radius
+$border-radius : (
+  xs : 2px,
+  s  : 4px,
+  m  : 16px,
+  l  : 32px
+);
+
+//letter-spacing
+$letter-spacings : (
+  2xs : 0px,
+  xs  : 0.2px,
+  s   : 0.3px,
+
+  m   : 0.5px,
+  2m  : 1px
+);
+
+// font sizes
+$font-sizes : (
+  5xs : 12px,
+  4xs : 14px,
+  3xs : 16px,
+  2xs : 18px,
+  xs  : 20px,
+  s   : 24px,
+
+  m   : 26px,
+  2m  : 30px,
+
+  l   : 40px,
+  xl  : 54px
+);
+
+// line heights
+$line-heights :(
+  4xs : 16px,
+  3xs : 20px,
+  2xs : 24px,
+  xs  : 28px,
+
+  m   : 32px,
+  2m  : 36px,
+  3m  : 40px,
+
+  l   : 48px,
+  xl  : 60px
+);
+
+// 8pt Grid Values
+// Spacings
+$sizes : (
+  5xs : 0px,
+  4xs : 2px,
+  3xs : 4px,
+  2xs : 8px,
+  xs  : 12px,
+  s   : 16px,
+
+  m   : 24px,
+  2m  : 32px,
+  3m  : 40px,
+  4m  : 48px,
+
+  l   : 56px,
+  xl  : 64px,
+  2xl : 72px,
+  3xl : 80px,
+  4xl : 88px,
+  5xl : 96px
+);
+
+$margins : (
+  3xs : map-get($sizes, 3xs),
+  2xs : map-get($sizes, 2xs),
+  xs  : map-get($sizes, xs),
+  s   : map-get($sizes, s),
+
+  m   : map-get($sizes, m),
+  2m  : map-get($sizes, 2m),
+  3m  : map-get($sizes, 3m),
+  4m  : map-get($sizes, 4m),
+
+  l   : map-get($sizes, l),
+  xl  : map-get($sizes, xl),
+  2xl : map-get($sizes, 2xl),
+  3xl : map-get($sizes, 3xl),
+  4xl : map-get($sizes, 4xl),
+  5xl : map-get($sizes, 5xl),
+);

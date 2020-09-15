@@ -1,0 +1,193 @@
+import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { Component, EventEmitter, forwardRef, Input, Output, ChangeDetectionStrategy,
+  ChangeDetectorRef, ViewChildren, ElementRef, QueryList, AfterContentInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NxTagComponent } from './tag.component';
+
+@Component({
+  selector: 'nx-taglist',
+  templateUrl: 'taglist.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './taglist.component.scss' ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NxTaglistComponent),
+      multi: true
+    }
+  ],
+  host: {
+    '[class.nx-taglist--keyword]': 'isKeywordList',
+    '[attr.aria-labelledby]': 'labelledby || null',
+    '[attr.tabindex]': '-1'
+  }
+})
+
+export class NxTaglistComponent implements ControlValueAccessor {
+
+  /** An event is dispatched each time when the list of tags changed. */
+  @Output('nxTagsChange') tagsChange: EventEmitter<any[]> = new EventEmitter<any[]>();
+
+  /** An event is dispatched each time when a tag is clicked. */
+  @Output('nxTagClick') tagClickEvent: EventEmitter<any> = new EventEmitter<any>();
+
+  /** @docs-private */
+  @ViewChildren(NxTagComponent, {read: ElementRef}) tagChildren: QueryList<ElementRef>;
+
+  private _tags: any[] = [];
+  /** Sets the list of tags. */
+  @Input('nxTags')
+  set tags(value: any[]) {
+    this._tags = value;
+    this._changeDetectorRef.markForCheck();
+  }
+  get tags(): any[] {
+    return this._tags;
+  }
+
+  private _tabindex: number = -1;
+  /** Sets the tabindex of the contained tags. Default value: -1. */
+  @Input()
+  set tabindex(value: number) {
+    this._tabindex = coerceNumberProperty(value);
+    this._changeDetectorRef.markForCheck();
+  }
+  get tabindex(): number {
+    return this.allowTagDeletion ? 0 : this._tabindex;
+  }
+
+  private _allowTagDeletion: boolean = true;
+  /** Whether the tags can be removed from the list. Default: true. */
+  @Input('nxAllowTagDeletion')
+  set allowTagDeletion(value: boolean) {
+    this._allowTagDeletion = coerceBooleanProperty(value);
+    this._changeDetectorRef.markForCheck();
+  }
+  get allowTagDeletion(): boolean {
+    return this._allowTagDeletion;
+  }
+
+  private _isKeywordList: boolean = false;
+  /** Whether the tags can be styled as keywords. */
+  @Input('nxIsKeywordList')
+  set isKeywordList(value: boolean) {
+    this._isKeywordList = coerceBooleanProperty(value);
+    this._changeDetectorRef.markForCheck();
+  }
+  get isKeywordList(): boolean {
+    return this._isKeywordList;
+  }
+
+  private _labelProperty: string = 'nxTaglistLabel';
+    /** Sets the label property, in case tags represent objects. */
+  @Input('nxLabelProperty')
+  set labelProp(value: string) {
+    if (this._labelProperty !== value) {
+      this._labelProperty = value;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+  get labelProp(): string {
+    return this._labelProperty;
+  }
+
+  private _ariaLabelledBy: string;
+  /** Sets the label property to improve accessibility. */
+  @Input('aria-labelledby')
+  set labelledby(value: string) {
+    if (this._ariaLabelledBy !== value) {
+      this._ariaLabelledBy = value;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+  get labelledby(): string {
+    return this._ariaLabelledBy;
+  }
+
+  private _valueFormatterFn: (value: any) => string = (value) => value;
+  /** Sets the customization function for tag value.  */
+  @Input('nxValueFormatter')
+  set valueFormatter(fn: (value: any) => string) {
+    this._valueFormatterFn = fn;
+    this._changeDetectorRef.markForCheck();
+  }
+  get valueFormatter(): (value: any) => string {
+    return this._valueFormatterFn;
+  }
+
+  private _onChange: (value: any) => void = () => {};
+  private _onTouched: () => any = () => {};
+
+  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+
+  /** Allows to delete a tag given index. Takes index of the tag to be deleted as a parameter */
+  delete(index: number, value: any) {
+
+    if (this.allowTagDeletion) {
+      this.tags = [
+        ...this.tags.slice(0, index),
+        ...this.tags.slice(index + 1)
+      ];
+
+      // focus next element after deletion
+      if (this.tagChildren.toArray()[index + 1]) {
+        this.tagChildren.toArray()[index + 1].nativeElement.focus();
+      }
+
+      this._onChange(this.tags);
+
+      this.tagsChange.emit(this.tags);
+    }
+  }
+
+  /** Allows to add a tag. Takes tag object as an input */
+  addTag(tag: any) {
+    if (!tag) {
+      return;
+    }
+
+    // make sure tag is either string or has the configured label prop and is not yet in the list
+    if ((typeof tag === 'string' && this.tags.indexOf(tag) === -1) ||
+      (tag[ this.labelProp ] && this.tags.filter((t) => t[ this.labelProp ] === tag[ this.labelProp ]).length < 1)) {
+
+      this.tags = [ ...this.tags, tag ];
+      this._onChange(this.tags);
+      this.tagsChange.emit(this.tags);
+    }
+  }
+
+  /** Allows to clear the tag list. */
+  clearTags() {
+    this.tags = [];
+    this._onChange(this.tags);
+    this.tagsChange.emit(this.tags);
+  }
+
+  /** @docs-private */
+  writeValue(tags: any): void {
+    this.tags = tags;
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  /** @docs-private */
+  renderTag(tag: any) {
+    const tagStr: string = typeof tag === 'string' ? tag : tag[ this.labelProp ];
+    return this.valueFormatter(tagStr);
+  }
+
+  /** @docs-private */
+  tagClick(index, value: any) {
+    this.tagClickEvent.emit(this.tags[index]);
+  }
+
+  static ngAcceptInputType_tabindex: NumberInput;
+  static ngAcceptInputType_allowTagDeletion: BooleanInput;
+  static ngAcceptInputType_isKeywordList: BooleanInput;
+}

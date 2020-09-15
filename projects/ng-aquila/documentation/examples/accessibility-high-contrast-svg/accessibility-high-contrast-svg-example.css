@@ -1,0 +1,27 @@
+.svg-container {
+  display: flex;
+  flex-direction: column;
+}
+
+svg {
+  margin: 16px auto 0;
+}
+
+.svg-container > p {
+  margin: 16px auto;
+}
+
+
+/* For external stylesheet example svg */
+.flyer-with-external-style {
+  fill: #757372;
+  fill-rule: evenodd;
+  transform: translate(-1);
+}
+
+/* add this to your stylings */
+@media screen and (-ms-high-contrast: active) {
+  .flyer-with-external-style {
+    fill: windowText;   /* proprietary Windows system color value; IE/Edge only */
+  }
+}

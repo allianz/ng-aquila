@@ -1,0 +1,153 @@
+@import "../../shared-styles/index";
+
+$option-margin-checked: nx-spacer(m);
+
+:host {
+  display: block;
+}
+
+:host:focus {
+  outline: none;
+}
+
+:host(.nx-hidden) {
+  display: none;
+}
+
+:host:first-child .nx-dropdown-results__option {
+  padding-top: nx-spacer(s);
+}
+
+:host:last-child .nx-dropdown-results__option {
+  padding-bottom: nx-spacer(s);
+}
+
+nx-checkbox {
+  margin-bottom: 0;
+}
+
+.nx-dropdown-results__option {
+  @include dropdown-overlay__option;
+}
+
+.nx-dropdown-results__option-label {
+  @include dropdown-overlay__option-label;
+  white-space: pre-line;
+}
+
+:host(.nx-multiselect) {
+  .nx-dropdown-results__option {
+    display: block;
+    padding-left: nx-spacer(2m);
+
+    [dir="rtl"] & {
+      padding-right: nx-spacer(2m);
+    }
+  }
+}
+
+:host:hover .nx-dropdown-results__option-label,
+:host(.nx-selected):hover .nx-dropdown-results__option-label,
+:host(.nx-selected):hover .nx-dropdown-results__option-checkicon {
+  @include var(color, dropdown-item-hover-color);
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host:hover,
+  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
+    .nx-dropdown-results__option-label {
+      color: highlightText;
+      background-color: highlight;
+    }
+  }
+
+  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
+    .nx-dropdown-results__option-checkicon {
+      -ms-high-contrast-adjust: none;
+      color: highlightText;
+      background: highlight;
+      z-index: 1;
+    }
+  }
+}
+
+:host(.nx-selected) .nx-dropdown-results__option-checkicon {
+  opacity: 1;
+}
+
+:host(.nx-selected) .nx-dropdown-results__option-label {
+  @include var(color, dropdown-item-selected-color);
+}
+
+.nx-dropdown-results__option-checkicon {
+  opacity: 0;
+  margin-right: nx-spacer(2xs);
+  @include var(height, dropdown-item-line-height);
+  @include var(color, dropdown-item-checkmark-color);
+
+  nx-icon {
+    @include var(line-height, dropdown-item-line-height);
+    font-size: nx-font-size(3xs);
+  }
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
+}
+
+// focus style
+/* clean-css ignore:start */
+:host-context([data-whatinput="keyboard"] .nx-dropdown__panel-body.is-stable).nx-dropdown-item--active {
+  .nx-dropdown-results__option .nx-dropdown-results__option-label {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+  }
+}
+/* clean-css ignore:end */
+
+// focus style - multiselect dropdown item
+/* clean-css ignore:start */
+:host-context([data-whatinput="keyboard"] .nx-dropdown__panel-body.is-stable).nx-multiselect.nx-dropdown-item--active {
+  .nx-dropdown-results__option .nx-dropdown-results__option-label {
+    box-shadow: none;
+
+    @media screen and (-ms-high-contrast: active) {
+      box-shadow: none;
+    }
+  }
+
+  ::ng-deep .nx-checkbox__label {
+    border-radius: nx-border-radius(s);
+    @include focus-style;
+  }
+}
+/* clean-css ignore:end */
+
+:host(.nx-selected.nx-dropdown-item--active) .nx-dropdown-results__option-label {
+  padding-left: $option-margin-checked;
+  margin-left: -$option-margin-checked;
+
+  [dir="rtl"] & {
+    padding-left: initial;
+    margin-left: initial;
+    padding-right: $option-margin-checked;
+    margin-right: -$option-margin-checked;
+  }
+}
+
+:host ::ng-deep .nx-checkbox__label {
+  padding: 0 nx-spacer(3xs);
+  margin: 0 -#{nx-spacer(3xs)};
+}
+
+:host(.nx-dropdown-item--disabled) {
+
+  .nx-dropdown-results__option {
+    cursor: not-allowed;
+  }
+
+  .nx-dropdown-results__option-label {
+    @include var(color, dropdown-item-text-color-disabled);
+  }
+}

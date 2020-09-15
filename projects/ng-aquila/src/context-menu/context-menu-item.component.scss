@@ -1,0 +1,83 @@
+@import "../shared-styles/index.scss";
+
+:host {
+  @include type-style(context-menu);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: nx-spacer(3xs) nx-spacer(4m) nx-spacer(3xs) nx-spacer(2m);
+  @include var(color, context-menu-item-text-color);
+
+  [dir="rtl"] & {
+    padding: nx-spacer(3xs) nx-spacer(2m) nx-spacer(3xs) nx-spacer(4m);
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    -ms-high-contrast-adjust: none;
+    background-color: buttonFace;
+    color: buttonText;
+  }
+
+  &:not(:disabled) {
+    &:hover,
+    &:active,
+    &.is-highlighted {
+      @include var(color, context-menu-item-active-color);
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: highlight;
+        color: highlightText;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    @include var(color, context-menu-item-disabled-color);
+
+    @media screen and (-ms-high-contrast: active) {
+      color: GrayText;
+    }
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  ::ng-deep > nx-icon {
+    margin-right: nx-spacer(2xs);
+    @include var(font-size, context-menu-item-icon-size);
+
+    [dir="rtl"] & {
+      margin-right: initial;
+      margin-left: nx-spacer(2xs);
+    }
+  }
+}
+
+:host .nx-context-menu-item__expand {
+  @include var(font-size, context-menu-item-expand-icon-size);
+  padding-left: nx-spacer(2xs);
+  margin-left: auto;
+  margin-right: - nx-spacer(s);
+  width: 1em;
+
+  [dir="rtl"] & {
+    margin-right: auto;
+    margin-left: - nx-spacer(s);
+    transform: rotateZ(180deg);
+  }
+}
+
+:host-context([data-whatinput="keyboard"]):focus {
+  border-radius: 2 * nx-border-radius(s);
+  outline: 0;
+  @include focus-style-inset;
+}

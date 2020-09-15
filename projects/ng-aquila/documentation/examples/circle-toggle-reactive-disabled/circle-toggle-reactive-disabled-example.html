@@ -1,0 +1,11 @@
+<form novalidate [formGroup]="testForm">
+  <nx-circle-toggle-group formControlName="reactiveToggle">
+    <nx-circle-toggle *ngFor="let item of sampleValues" [value]="item.value" [icon]="item.icon" [hint]="item.hint"
+      [label]="item.label"></nx-circle-toggle>
+  </nx-circle-toggle-group>
+</form>
+
+<p>Form value: {{ testForm.value | json }}</p>
+<p>Form status: {{ testForm.status | json }}</p>
+
+<button nxButton="primary small" (click)="switchStatusClick()" type="button">Switch Status</button>

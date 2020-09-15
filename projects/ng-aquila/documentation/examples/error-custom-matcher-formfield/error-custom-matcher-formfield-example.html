@@ -1,0 +1,11 @@
+<form>
+  <nx-formfield nxLabel="Label">
+    <input nxInput [formControl]="emailFormControl"/>
+    <span nxFormfieldHint>
+      This field will show an error while typing.
+    </span>
+    <nx-error nxFormfieldError>
+     Please enter a valid email address.
+    </nx-error>
+  </nx-formfield>
+</form>

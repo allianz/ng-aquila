@@ -1,0 +1,142 @@
+@import "../../../../ng-aquila/src/shared-styles/index.scss";
+@import "../styles/viewer-styles.scss";
+
+$toc-width: 200px;
+
+:host {
+  display: block;
+  height: 100vh;
+  line-height: 24px;
+  @include var(background, ui-background);
+  @include var(color, text-01);
+
+  @media (max-width: 786px) {
+    padding-top: 120px;
+  }
+
+  @media (min-width: 786px) {
+    padding-top: 60px;
+  }  font-size: 16px;
+}
+
+.nx-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 24px;
+
+  .nx-header__brand {
+    margin-right: 32px;
+
+    img {
+      @include var(filter, documentation-svg-filter)
+    }
+  }
+
+  figure {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 120px;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+  }
+}
+
+.nx-desktop-navigation {
+  @media (max-width: 786px) {
+    display: none;
+  }
+}
+ .nx-mobile-navigation {
+  @media (min-width: 786px) {
+    display: none;
+  }
+}
+
+.toc {
+  position: relative;
+  width: $toc-width;
+
+  nxv-table-of-contents {
+    position: sticky;
+    top: 24px;
+
+    @media (max-width: 786px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 786px) {
+    display: none;
+  }
+}
+
+.documentation-header__github-logo {
+  vertical-align: middle;
+}
+
+::ng-deep nx-sidebar.docs-sidebar {
+  width: 240px;
+
+  .nx-sidebar__toggle-button {
+    display: none;
+  }
+
+// Workaround to hide the sidebar on mobile completely until we have a better solution
+  @media (max-width: 786px) {
+    display: none!important;
+  }
+}
+
+::ng-deep .docs-dropdown {
+  font-weight: 200;
+  margin-right: 16px;
+}
+
+::ng-deep .docs-toc {
+  position: relative;
+  width: $toc-width;
+  margin-left: 16px;
+
+  nxv-table-of-contents {
+    position: sticky;
+    display: inline-flex;
+    top: 24px;
+    width: $toc-width;
+    height: calc(100vh - 84px);
+    overflow-y: auto;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) ::ng-deep .docs-dropdown:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}
+
+.docs-version-select {
+  margin-right: 16px;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .documentation-header__main-logo,
+  .documentation-header__github-logo {
+    g {
+      fill: buttonText;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@import '../shared-styles/index';
+
+$tooltip-max-width: 408px;
+$tooltip-arrow-size: nx-spacer(xs);
+$tooltip-arrow-offset: nx-spacer(s) - $tooltip-arrow-size / 2 ;
+
+::ng-deep .nx-tooltip-panel {
+  // The overlay reference updates the pointer-events style property directly on the HTMLElement
+  // depending on the state of the overlay. For tooltips the overlay panel should never enable
+  // pointer events. To overwrite the inline CSS from the overlay reference `!important` is needed.
+  pointer-events: none !important;
+}
+
+:host {
+  padding: nx-spacer(s);
+}
+
+.nx-tooltip {
+  @include type-style(tooltip);
+  @include var(color, tooltip-text-color);
+  @include var(background-color, tooltip-background-color);
+  @include var(border-radius, tooltip-border-radius);
+  max-width: $tooltip-max-width;
+  padding: nx-spacer(2xs) nx-spacer(s);
+}
+
+.nx-tooltip__arrow {
+  position: absolute;
+  width: $tooltip-arrow-size;
+  height: $tooltip-arrow-size;
+  background-color: inherit;
+  z-index: -1;
+  opacity: inherit; //IE FIX
+
+  &--top {
+    transform: translate(-50%, 0) rotate(45deg);
+    bottom: $tooltip-arrow-offset;
+  }
+
+  &--right {
+    transform: translate(0, -50%) rotate(45deg);
+    left: $tooltip-arrow-offset;
+
+    :host-context([dir="rtl"]) & {
+      right: $tooltip-arrow-offset;
+      left: auto;
+    }
+  }
+
+  &--bottom {
+    transform: translate(-50%, 0) rotate(45deg);
+    top: $tooltip-arrow-offset;
+  }
+
+  &--left {
+    transform: translate(0, -50%) rotate(45deg);
+    right: $tooltip-arrow-offset;
+
+    :host-context([dir="rtl"]) & {
+      right: auto;
+      left: $tooltip-arrow-offset;
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-tooltip__arrow {
+    border: nx-border-size(xs) solid windowText;
+  }
+
+  .nx-tooltip {
+    border: nx-border-size(xs) solid windowText;
+    border-radius: nx-border-radius(s);
+  }
+}

@@ -1,0 +1,139 @@
+@import "../shared-styles/index";
+
+:host {
+  display: block;
+
+  input {
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  label {
+    border: v(selectable-card-border-width) solid v(selectable-card-border-color);
+    display: block;
+    position: relative;
+    padding: nx-spacer(s);
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: nx-spacer(2xs);
+    @include var(border-radius, selectable-card-border-radius);
+    @include var(background, selectable-card-background-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  input:checked + label {
+    @include var(background, selectable-card-background-selected-color);
+    @include var(border-color, selectable-card-border-selected-color);
+
+    ::ng-deep nx-icon.checked-icon {
+      display: block;
+    }
+  }
+
+  label:hover,
+  label:active {
+    @include var(background, selectable-card-background-hover-color);
+    @include var(border-color, selectable-card-border-hover-color);
+  }
+
+  input:checked + label:hover {
+    @include var(background, selectable-card-background-selected-hover-color);
+  }
+
+  // reset hover styles for devices that don't support hover
+  @media (hover: none) {
+    label:hover {
+      @include var(background, selectable-card-background-color);
+      @include var(border-color, selectable-card-border-color);
+    }
+
+    input:checked + label:hover {
+      @include var(background, selectable-card-background-selected-color);
+    }
+  }
+
+  ::ng-deep nx-icon.checked-icon {
+    position: absolute;
+    right: nx-spacer(s);
+    top: nx-spacer(s);
+    display: none;
+    @include var(color, selectable-card-icon-color);
+
+    [dir="rtl"] & {
+      right: auto;
+      left: nx-spacer(s);
+    }
+  }
+}
+
+:host(.is-disabled) {
+  label {
+    @include var(border-color, selectable-card-border-disabled-color);
+    cursor: not-allowed;
+  }
+
+  label:hover {
+    @include var(background, selectable-card-background-disabled-color);
+  }
+
+  input:checked + label {
+    @include var(background, selectable-card-background-disabled-selected-color);
+    @include var(border-color, selectable-card-border-disabled-selected-color);
+
+    ::ng-deep nx-icon.checked-icon {
+      display: block;
+      @include var(color, selectable-card-icon-diabled-color);
+    }
+  }
+}
+
+:host(.has-error) {
+
+  label,
+  label:hover,
+  input:checked + label,
+  input:checked + label:hover {
+    @include var(border-color, selectable-card-border-error-color);
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) input:focus + label,
+:host-context([data-whatinput="keyboard"]) :host:focus label {
+  @include focus-style;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host {
+    label {
+      border-color: buttonText;
+    }
+
+    input:checked + label {
+      border-width: nx-border-size(l);
+      padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
+      border-color: highlight;
+    }
+  }
+
+  :host(.is-disabled) {
+    label,
+    input:checked + label {
+      border-color: GrayText;
+      color: GrayText;
+
+      ::ng-deep nx-icon.checked-icon {
+        color: GrayText;
+      }
+    }
+  }
+}

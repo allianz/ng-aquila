@@ -1,0 +1,15 @@
+<nx-formfield nxLabel="Date of damage">
+  <input
+    #formatDatefield="nxDatefield"
+    [nxParseFormat]="['MM/DD/YYYY', 'MM--DD-->YYYY']"
+    nxDisplayFormat="MM--DD-->YYYY"
+    ngModel nxDatefield nxInput
+    [nxDatepicker]="myDatepicker"/>
+
+  <span nxFormfieldHint>
+      MM/DD/YYYY
+  </span>
+  <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+  <nx-datepicker #myDatepicker></nx-datepicker>
+
+</nx-formfield>

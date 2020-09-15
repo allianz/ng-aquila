@@ -1,0 +1,18 @@
+<div nxLayout="grid">
+  <div nxRow style="align-items: flex-end">
+    <div nxCol="12, 12, 6">
+      <nx-formfield nxLabel="Car brand">
+        <nx-dropdown placeholder="Choose a car brand">
+          <nx-dropdown-item *ngFor="let brand of demoData" [nxValue]="brand"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+    <div nxCol="12, 12, 6">
+      <nx-formfield nxLabel="Car brand" appearance="outline">
+        <nx-dropdown placeholder="Choose a car brand">
+          <nx-dropdown-item *ngFor="let brand of demoData" [nxValue]="brand"></nx-dropdown-item>
+        </nx-dropdown>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

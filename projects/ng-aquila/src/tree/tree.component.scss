@@ -1,0 +1,10 @@
+@import '../shared-styles/index';
+
+:host.nx-tree {
+  display: block;
+}
+
+.nx-tree__node {
+  display: block;
+  overflow: hidden;
+}

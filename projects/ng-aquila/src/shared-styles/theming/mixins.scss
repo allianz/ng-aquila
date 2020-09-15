@@ -1,0 +1,156 @@
+@import "tokens";
+
+// Register current theme with a name; overwrite currently used tokens
+/// @access public
+/// @param {String} $theme - the token map of the theme
+/// @param {String} $name - the name of the new theme
+/// @param {String} $base - the theme used as a token base for the new theme
+/// @example - @include($my-tokens, testTheme, aposin);
+@function nx-register-theme($theme, $name, $base: null) {
+
+  @if ($base == null) {
+    $nx-theme: map-merge($nx-theme, $theme) !global;
+  } @else {
+      $parent-theme: map-get($nx-themes, $base);
+      @if ($parent-theme == null) {
+        @error 'Theme: parent theme is not defined.';
+      }
+      // overwrite the already existing tokens by merging:
+      // new tokens + overwritten base theme tokens + base theme tokens
+      // global is needed to change a variable value from a local scope
+      $nx-theme: map-merge($parent-theme, $theme) !global;
+  }
+
+  $nx-themes: add-theme($nx-themes, $name, $nx-theme) !global;
+  @return $nx-themes;
+}
+
+// Compile theme tokens to css
+/// @access public
+/// @returns injected into the :root scope css variable declarations
+/// @param {String} $theme-name - the name of theme to build
+/// @example -  @include nx-build-theme(aposin)
+@mixin nx-build-theme($theme-name: aposin) {
+
+  $theme: map-get($nx-themes, $theme-name);
+
+  :root {
+    @each $name, $value in $theme {
+      $parentValue: map-get($theme, $value);
+      @if ($parentValue != null) {
+        $value: var(--#{$value});
+      }
+      @include _css-var($name, $value);
+    }
+  }
+
+  body {
+    background-color: v(ui-background);
+    color: v(text-01);
+  }
+}
+
+/// @access public
+/// @returns different type styles per token.
+/// @param {String} $name - the name of the token to get the styles for
+/// @example -  @include type-style('body-short-01');
+@mixin type-style($name) {
+  @include nx--type-style($name);
+}
+
+// Create a custom property declaration
+/// @access private
+@mixin _css-var($name, $value) {
+  // sass-lint dies with a fatal error if you use
+  // --${$name}
+  // https://github.com/sasstools/sass-lint/issues/877
+  #{"--"+$name}: #{$value};
+}
+
+/// Helper mixin to include the styles for a given token in any selector in your
+/// project.
+/// @access public
+/// @param {String} $name - the name of the token to get the styles for
+/// @param {?Map} $breakpoints - if set provides media queries for the given breakpoints
+@mixin nx--type-style($name) {
+  @include var(font-size, #{$name}-font-size);
+  @include var(line-height, #{$name}-line-height);
+  @include var(font-weight, #{$name}-font-weight);
+  @include var(letter-spacing, #{$name}-letter-spacing);
+}
+
+
+// LEGACY
+// was used because we created fallback values for IE11
+// but now we do not add any fallback values anymore
+// users of the library have to import a theme file now
+/// @access public
+/// @param {String} $property - css tyle property (e.g. background)
+/// @param {String} $token - token key to be applied to the $property
+/// @returns a css style definition (e.g. background: var(--button-background);)
+/// @example - @include(background, button-background)
+@mixin var($property, $token) {
+  $fallbackValue: _get-fallback-value($token);
+
+  #{$property}: var(--#{$token});
+}
+
+// helper to get css var with a fallback value
+// returns var(--<$token>, <fallback-value>
+@function v($token, $isRtl: false) {
+  $fallbackValue: null;
+  @if $isRtl {
+    $fallbackValue: nx-flip-for-rtl(_get-fallback-value($token));
+  } @else {
+    $fallbackValue: _get-fallback-value($token);
+  }
+
+  @return var(--#{$token});
+}
+
+/// Gets a css variable with a fallback value
+/// @access public
+/// @param {String} $token - token key to be used
+/// @returns var(--<$token>, <fallback-value>
+/// @example - background: nx-theme(primary-action)
+@function nx-theme($token) {
+  @return v($token);
+}
+
+/// @access private
+// Checks if the token exists.
+@function _get-fallback-value($token) {
+  $fallbackValue: _nx-deep-find-value($nx-theme, $token, map-get($nx-theme, $token));
+
+  @if ($fallbackValue == null) {
+    @error 'Theme: cannot find value for key `' + $token + '`';
+  }
+
+  @return $fallbackValue;
+}
+
+// Helper function to make it possible to reuse keys from the same map.
+// Example:
+// $theme: (
+//    global-color: #123456,
+//    component-color: global-color
+// );
+// This makes it possible to reuse "global-color" inside the theming map.
+// Functions and mixins like nx-theme(), v() and var() will take care of resolving
+// these references
+/// @access private
+@function _nx-deep-find-value($theme, $key, $value) {
+  $parent-value: map-get($theme, $value);
+
+  @if ($parent-value != null) {
+    @return _nx-deep-find-value($theme, $value, $parent-value);
+  }
+
+  @return $value;
+}
+
+// Adds a new theme to the list of available themes
+@function add-theme($nx-themes, $key, $value: null) {
+  $new-theme: ($key: $value);
+  @return map-merge($nx-themes, $new-theme);
+}

@@ -1,0 +1,61 @@
+@import "../shared-styles/index.scss";
+
+:host(.nx-menu) {
+  display: block;
+}
+
+.nx-menu__wrapper {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: auto;
+  @include var(background, menu-background-color);
+}
+
+::ng-deep .nx-menu__link {
+  display: block;
+  padding: nx-spacer(xs) 0;
+  font-size: nx-font-size(2xs);
+  line-height: nx-line-height(2xs);
+  outline: none;
+
+  + .nx-menu__link {
+    margin-top: nx-spacer(2xs);
+  }
+}
+
+::ng-deep [data-whatinput="keyboard"] .nx-menu__link:focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+  outline: none;
+}
+
+::ng-deep .nx-menu__item {
+  &.nx-menu__item--small,
+  &.nx-menu__item--large {
+    padding: nx-spacer(m);
+    border-bottom: nx-border-size(xs) solid v(menu-item-border-color);
+
+    @media screen and (-ms-high-contrast: active) {
+      border-bottom-color: windowText;
+    }
+  }
+
+  &.nx-menu__item--large {
+    padding-left: nx-spacer(xl);
+
+    :host-context([dir="rtl"]) & {
+      padding-right: nx-spacer(xl);
+      padding-left: initial; 
+    }
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  ::ng-deep .nx-menu__link {
+    text-decoration: none;
+  }
+}

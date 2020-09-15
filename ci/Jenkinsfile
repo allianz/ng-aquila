@@ -1,0 +1,153 @@
+def shared
+
+// number of build results and days to keep has to be defined in jenkinsfile
+// for multibranch pipelines
+// Lesson learned: if you run a properties() block later again all former properties
+// get overridden!!!!! so be careful. all properties should be set in here
+properties([
+  buildDiscarder([$class: 'EnhancedOldBuildDiscarder', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', discardOnlyOnSuccess: false, numToKeepStr: '3'])
+])
+
+node('nodejs-with-browsers-v12') {
+  skipDefaultCheckout()
+
+  scmVars = checkout scm
+
+  shared = load 'ci/shared.groovy'
+  shared.gitAuthenticate()
+
+  env.GIT_COMMIT = scmVars.GIT_COMMIT
+
+  branch = env.BRANCH_NAME
+ 
+
+  stage("Prepare") {
+    shared.withNotification('ci/install', "NPM Install") {
+      sh 'npm -v'
+      sh 'node -v'
+      sh "http_proxy=''"
+      sh 'npm config set fetch-retries 3'
+      sh 'npm config set fetch-retry-mintimeout 15000'
+      sh 'npm config set fetch-retry-maxtimeout 90000'
+      sh 'npm ci'
+    }
+  }
+
+  stage("Generate docs") {
+    shared.withNotification('ci/generate-docs', "Generate docs") {
+      sh 'npm run library:generate:docs'
+    }
+  }
+
+  stage("Lint") {
+    shared.withNotification('ci/test/lint', "Linter") {
+      echo 'Running Linter'
+      sh 'npm run lint'
+    }
+  }
+
+  stage("Test Docs-ui") {
+    shared.withNotification('ci/test/unit/ngx-docs-ui', "Unit Test docs-ui") {
+      echo 'Running Unit Tests'
+
+      sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
+      /*
+        The unit test will generate some report files
+        which we want to save in the jenkins job (junit log & coverage)
+      */
+      junit 'karma-test-results/ngx-docs-ui/*.xml'
+      publishHTML target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: 'projects/ngx-docs-ui/coverage',
+          reportFiles: 'index.html',
+          reportName: 'Coverage Report ngx-docs-ui (Istanbul)'
+        ]
+    }
+  }
+
+  stage ("View Engine Tests Library") {
+    shared.withNotification('ci/test/library:ve', "VE Test library") {
+      echo 'Testing ng-aquila with view engine'
+
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false'
+    }
+  }
+
+  stage ("View Engine Build Library") {
+    shared.withNotification('ci/build/library/ve', "VE Build library") {
+      sh "npm run build:lib"
+    }
+  }
+
+  stage ("Build docs-ui") {
+    shared.withNotification('ci/build/docs-ui', "Build docs-ui") {
+      sh "npm run build:docs-ui"
+    }
+  }
+
+  stage("Build documentation with Ivy artefacts") {
+    echo "Running integration builds"
+
+    shared.withNotification('ci/build/documentation', "Smoke test of new docs") {
+      echo "Run documentation build"
+      sh "npm run build:docs -- --no-progress"
+    }
+  }
+
+  stage("Ivy Test Library") {
+    shared.withNotification('ci/test/library', "Unit Test Library") {
+      echo 'Running Unit Tests'
+
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ivy -- --watch=false --code-coverage'
+        /*
+          The unit test will generate some report files
+          which we want to save in the jenkins job (junit log & coverage)
+        */
+      junit 'karma-test-results/ng-aquila/*.xml'
+      publishHTML target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: true,
+        reportDir: 'projects/ng-aquila/coverage',
+        reportFiles: 'index.html',
+        reportName: 'Coverage Report Aquila (Istanbul)'
+      ]
+    }
+  }
+
+  // stage("Test schematics") {
+  //   shared.withNotification('ci/test/schematics', "Test schematics") {
+  //     echo "Testing schematics"
+  //     echo "TODO"
+  //     // sh 'npm run test:schematics'
+  //   }
+  // }
+
+  stage("Ivy Build Library") {
+    shared.withNotification('ci/build/library', "Build Library") {
+      echo 'Building Library'
+      sh 'npm run build:lib:ivy'
+    }
+  }
+
+  // Builds docs-ui again against the ivy artifact of the library
+  stage("Ivy Build docs-ui") {
+    shared.withNotification('ci/build/docs-ui', "Build docs-ui") {
+      echo 'Building docs-ui'
+      sh "npm run build:docs-ui"
+    }
+  }
+
+  // build against the ivy artifacts
+  stage("Build documentation with Ivy artefacts") {
+    shared.withNotification('ci/build/documentation/ivy', "Build Documentation") {
+      echo "Building docs"
+      // workaround until https://github.com/angular/angular/issues/35602 is fixed
+      sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
+      sh "npm run build:docs -- --no-progress"
+    }
+  }
+}
+

@@ -1,0 +1,109 @@
+@import '../../shared-styles/index';
+
+$counter-circle-size: nx-spacer(m);
+
+.nx-subprogress__items {
+  display: flex;
+  margin: 0 auto;
+
+  @include media-breakpoint-down(small) {
+    display: none;
+  }
+}
+
+.nx-subprogress__item {
+  display: flex;
+  flex: 1 0 auto;
+
+  &:not(:first-child) {
+    margin-left: nx-spacer(s);
+
+    :host-context([dir="rtl"]) & {
+      margin-right: nx-spacer(s);
+      margin-left: initial;
+    }
+  }
+}
+
+.nx-subprogress__item--selected {
+  display: flex;
+  flex: 1 1 100%;
+  align-items: center;
+}
+
+.nx-subprogress__progress {
+  flex: 1 1 100%;
+  margin-left: nx-spacer(2xs);
+
+  :host-context([dir="rtl"]) & {
+    margin-right: nx-spacer(2xs);
+    margin-left: initial;
+  }
+}
+
+.nx-subprogress__item--inactive {
+  .nx-subprogress__counter {
+    max-width: $counter-circle-size;
+
+    background-color: transparent;
+    border-width: nx-border-size(m);
+    border-style: solid;
+    @include var(border-color, progress-stepper-dot-disabled-background-color);
+    @include var(color, progress-stepper-dot-disabled-background-color);
+  }
+
+  .nx-subprogress__label {
+    @include var(color, progress-stepper-step-disabled-color);
+  }
+}
+
+.nx-subprogress__label {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include var(color, progress-stepper-step-color);
+  @include type-style(progress-stepper-step);
+}
+
+.nx-subprogress__counter {
+  flex: 0 0 $counter-circle-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include var(background-color, progress-stepper-dot-background-color);
+  @include var(color, progress-stepper-dot-color);
+  width: $counter-circle-size;
+  height: $counter-circle-size;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: nx-spacer(2xs); 
+
+  :host-context([dir="rtl"]) & {
+    margin-right: initial;
+    margin-left: nx-spacer(2xs);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .nx-subprogress__counter {
+    -ms-high-contrast-adjust: none;
+    background-color: transparent;
+    color: windowText;
+    border: nx-border-size(xs) solid windowText;
+    border-radius: 50%;
+  }
+
+  .nx-subprogress__item--inactive {
+    color: GrayText;
+
+    .nx-subprogress__counter {
+      color: GrayText;
+      border: nx-border-size(xs) solid GrayText;
+    }
+  }
+}
+
+.nx-subprogress__number {
+  @include type-style(progress-stepper-dotnumber);
+}
+

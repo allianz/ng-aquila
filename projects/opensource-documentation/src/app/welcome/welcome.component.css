@@ -1,0 +1,55 @@
+main {
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nxv-info-panel {
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.nxv-grey-row.nx-grid__row {
+  margin-bottom: 32px;
+}
+
+.nxv-grey-row.nx-grid__row:before {
+  content: '';
+  display: block;
+  width: 100vw;
+  margin-left: 50%;
+  position: absolute;
+  left: -50vw;
+  top: 0;
+  height: 100%;
+}
+
+.nxv-welcome__container {
+  padding-top: 48px;
+  text-align: center;
+}
+
+.nxv-welcome__text {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  margin: 24px 0 8px 0;
+  font-weight: 400;
+}
+
+.nxv-welcome__subtext {
+  color: #27abd6;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.2px;
+  margin: 8px 0 24px 0;
+  font-weight: 400;
+}
+
+.nxv-welcome__buttons button {
+    margin-left: 8px;
+    margin-right: 8px;
+}

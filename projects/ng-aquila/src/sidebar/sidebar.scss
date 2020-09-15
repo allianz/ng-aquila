@@ -1,0 +1,146 @@
+@import '../shared-styles/index';
+
+$sidebar-width: 280px;
+
+:host {
+  position: relative;
+  height: 100%;
+  transition: width 0.15s ease;
+  display: flex;
+  flex: 0 0 auto;
+  width: $sidebar-width;
+
+  &.is-resizing {
+    transition: none;
+  }
+
+  @include media-breakpoint-down(small) {
+    width: 100%;
+    transition: none;
+
+    .nx-sidebar__handle {
+      display: none;
+    }
+  }
+
+  &.is-closed {
+    ::ng-deep button[nxSidebarToggle] {
+      transform: rotateZ(180deg);
+    }
+
+    ::ng-deep .nx-sidebar__footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+::ng-deep .nx-sidebar__footer {
+  padding: nx-spacer(s) 0;
+  display: flex;
+  justify-content: flex-end;
+  @include var(color, sidebar-footer-button-color);
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    flex: 0 1 nx-spacer(m);
+    min-width: nx-spacer(2xs);
+    height: 1px;
+  }
+
+  &::after {
+    flex: 0 1 nx-spacer(s);
+  }
+}
+
+::ng-deep .nx-sidebar__footer-container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+.nx-sidebar__handle {
+  position: absolute;
+  right: -14px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex: 0 0 nx-spacer(s);
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+  margin: 0;
+  cursor: col-resize;
+  outline: none;
+  z-index: 1;
+  @include var(color, sidebar-handle-color);
+
+  :host-context([dir="rtl"]) & {
+    right: auto;
+    left: -15px;
+  }
+
+  &::before {
+    content: '||';
+    font-size: nx-font-size(4xs);
+    letter-spacing: -1px;
+    font-weight: $font-weight-semibold;
+    color: inherit;
+
+    @media screen and (-ms-high-contrast: active) {
+      -ms-high-contrast-adjust: none;
+      color: buttonText;
+      background-color: buttonFace;
+      box-shadow: 0 0 0 6px buttonFace, 0 0 0 nx-spacer(2xs) buttonText;
+    }
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]) .nx-sidebar__handle:focus {
+
+  &::before {
+    border-radius: nx-border-radius(s);
+    padding-right: 1px;
+    @include focus-style;
+
+    [dir="rtl"] & {
+      padding-right: initial;
+      padding-left: 1px;
+    }
+  }
+}
+
+.nx-sidebar__box {
+  height: 100%;
+  flex: 1 1 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  @include var(background, sidebar-background-color);
+
+  @media screen and (-ms-high-contrast: active) {
+    border-right: nx-border-size(xs) solid windowText;
+
+    :host-context([dir="rtl"]) & {
+      border-right: none;
+      border-left: nx-border-size(xs) solid windowText;
+    }
+  }
+}
+
+.nx-sidebar__content {
+  flex: 1 1 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  padding-top: nx-spacer(s);
+}

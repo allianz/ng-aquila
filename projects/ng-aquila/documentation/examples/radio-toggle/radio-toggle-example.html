@@ -1,0 +1,32 @@
+<h3>Normal</h3>
+
+<nx-radio-toggle>
+  <nx-radio-toggle-button nxValue="A"  [nxSelected]="true">Label A</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="B">Label B</nx-radio-toggle-button>
+</nx-radio-toggle>
+
+<br>
+
+<h3>Small</h3>
+<nx-radio-toggle [nxStyle]="'small'">
+  <nx-radio-toggle-button nxValue="A">Label A</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="B" [nxSelected]='true'>Label B</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="C">Label C</nx-radio-toggle-button>
+</nx-radio-toggle>
+
+<br>
+
+<h3>Disabled</h3>
+<nx-radio-toggle nxDisabled>
+  <nx-radio-toggle-button nxValue="A">Label A</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="B" [nxSelected]='true' nxDisabled>Label B</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="C">Label C</nx-radio-toggle-button>
+</nx-radio-toggle>
+
+<br>
+
+<nx-radio-toggle>
+  <nx-radio-toggle-button nxValue="A" nxDisabled>Label A</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="B" [nxSelected]='true'>Label B</nx-radio-toggle-button>
+  <nx-radio-toggle-button nxValue="C">Label C</nx-radio-toggle-button>
+</nx-radio-toggle>

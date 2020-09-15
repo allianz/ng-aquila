@@ -1,0 +1,22 @@
+<input
+  type="checkbox"
+  [id]="id"
+  [name]="name"
+  [checked]="checked"
+  [indeterminate]="indeterminate" [disabled]="disabled"
+  (blur)="touch()"
+  [attr.aria-labelledby]="id + '-label'"
+  (click)="_onInputClick($event)"
+  class="nx-checkbox__input"
+  [value]="value"
+>
+
+<label [id]="id + '-label'" [attr.for]="id" class="nx-checkbox__label" [class.has-label]="labelHasContent">
+    <span class="nx-checkbox__control">
+        <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
+        <div *ngIf="indeterminate" class="nx-checkbox__indeterminate-indicator"></div>
+    </span>
+    <div class="nx-checkbox__label-text" #checkboxLabelWrapper (cdkObserveContent)="labelContentChanged()">
+        <ng-content></ng-content>
+    </div>
+</label>

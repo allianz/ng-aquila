@@ -1,0 +1,48 @@
+@import '../shared-styles/index';
+:host {
+  @include type-style(badge);
+  display: inline-block;
+  padding: 0 nx-spacer(2xs);
+  white-space: nowrap;
+  border-radius: nx-border-radius(s) * 3;
+  min-width: nx-spacer(m);
+
+  @media screen and (-ms-high-contrast: active) {
+    border: nx-border-size(xs) solid windowText;
+  }
+}
+
+@mixin badge-variant($variation: '') {
+  $prefix: 'badge-';
+  @if ($variation != '') {
+    $prefix: 'badge-#{$variation}-';
+  }
+
+  @include var(color, $prefix + color);
+  @include var(background-color, $prefix + 'background-color');
+
+  &.nx-badge--active {
+    @include var(background-color, $prefix + active-background-color);
+    @include var(color, $prefix + active-color);
+  }
+  &.nx-badge--positive {
+    @include var(background-color, $prefix + positive-background-color);
+    @include var(color, $prefix + positive-color);
+  }
+  &.nx-badge--critical {
+    @include var(background-color, $prefix + critical-background-color);
+    @include var(color, $prefix + critical-color);
+  }
+  &.nx-badge--negative {
+    @include var(background-color, $prefix + negative-background-color);
+    @include var(color, $prefix + negative-color);
+  }
+}
+
+:host {
+  @include badge-variant();
+}
+
+:host.nx-badge--vibrant {
+  @include badge-variant('vibrant');
+}

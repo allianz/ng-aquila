@@ -1,0 +1,6 @@
+// This is the file that should be imported by the theming consumer apps so that they can use our mixins and base themes.
+
+$nx-themes: (); // all registered themes are added here
+$nx-themes: () !global;
+
+@import "mixins";
