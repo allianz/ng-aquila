@@ -1,0 +1,42 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxDialogService, NxModalRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/modal'</span>;
+
+<span class="hljs-meta">@Component</span>({
+  template: <span class="hljs-string">`
+  &lt;div class="u-text-center"&gt;
+    &lt;h3&gt;Modal Dialog from a component &lt;/h3&gt;
+    &lt;p&gt;
+    Any content can be included in a modal view and styled as necessary.
+    &lt;/p&gt;
+  &lt;/div&gt;`</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SimpleModalComponent { }
+
+<span class="hljs-comment">/**
+* @title Modal opening example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./modal-opening-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-opening-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalOpeningExampleComponent {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template'</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template2'</span>) templateRef2: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+
+  templateDialogRef: NxModalRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  componentDialogRef: NxModalRef&lt;SimpleModalComponent&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> dialogService: NxDialogService</span>) {}
+
+  openFromTemplate(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.templateDialogRef = <span class="hljs-keyword">this</span>.dialogService.open(<span class="hljs-keyword">this</span>.templateRef, {ariaLabel: <span class="hljs-string">'A simple dialog'</span>} );
+  }
+
+  openFromComponent(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.componentDialogRef = <span class="hljs-keyword">this</span>.dialogService.open(SimpleModalComponent, { ariaLabel: <span class="hljs-string">'A simple dialog'</span>, showCloseIcon: <span class="hljs-literal">true</span> });
+  }
+
+  closeTemplateDialog() {
+    <span class="hljs-keyword">this</span>.templateDialogRef.close();
+  }
+}

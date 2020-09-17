@@ -1,0 +1,28 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span> <span class="hljs-attr">nxType</span>=<span class="hljs-string">"root"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"s"</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  Option 1 (root level)
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
+    <span class="hljs-attr">nxType</span>=<span class="hljs-string">"root"</span>
+    <span class="hljs-attr">expandable</span>
+    [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"primaryExpanded"</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">"primaryExpanded=!primaryExpanded"</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"s"</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  Option 2 (root level, expandable)
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span> <span class="hljs-attr">nxType</span>=<span class="hljs-string">"nested"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  Option 2.1 (nested level)
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
+    <span class="hljs-attr">nxType</span>=<span class="hljs-string">"nested"</span>
+    <span class="hljs-attr">expandable</span>
+    [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"secondaryExpanded"</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">"secondaryExpanded=!secondaryExpanded"</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  Option 2.2 (nested level, expandable)
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

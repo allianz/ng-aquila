@@ -1,0 +1,45 @@
+<p class="docs-markdown--p">The Checkbox is used when there is a list of options and the user may select one or more options, including all or none. This component appears also in case of yes or no choices (e.g. “Remember me” by Login).  It's an efficient and elegant way to select/deselect an item or enable/disable certain actions.</p>
+<p class="docs-markdown--p">This component implements the checkbox as the combination of a label and an input tag. It is not intended that you use the checkbox without a label.</p>
+<h3 id="label-binding" class="docs-markdown--h3">Label binding</h3>
+<p class="docs-markdown--p">For better accessibility, the checkbox is always bound to its label by using a <code>for</code> tag.</p>
+<h3 id="examples" class="docs-markdown--h3">Examples</h3>
+<p class="docs-markdown--p">The following six checkbox states are supported:</p>
+<div nx-docs-example="checkbox-states">exampleID: checkbox-states</div>
+<h4 id="simple-binding" class="docs-markdown--h4">Simple binding</h4>
+<div nx-docs-example="checkbox-simple-binding">exampleID: checkbox-simple-binding</div>
+<h4 id="label-size" class="docs-markdown--h4">Label size</h4>
+<p class="docs-markdown--p">The font size of the label can be set to two different sizes with the <code>[labelSize]</code> property.</p>
+<div nx-docs-example="checkbox-label-size">exampleID: checkbox-label-size</div>
+<h4 id="negative-styling" class="docs-markdown--h4">Negative Styling</h4>
+<p class="docs-markdown--p">You can apply the negative styling to the checkboxes by using the <code>negative</code> input on either the checkbox group or a single checkbox.</p>
+<p class="docs-markdown--p">If used both on a checkbox and its containing checkbox group, the group setting overrides the single checkbox.</p>
+<div nx-docs-example="checkbox-negative">exampleID: checkbox-negative</div>
+<h4 id="template-driven-with-ngmodel" class="docs-markdown--h4">Template-driven with ngModel</h4>
+<div nx-docs-example="checkbox-template-driven">exampleID: checkbox-template-driven</div>
+<h4 id="reactive" class="docs-markdown--h4">Reactive</h4>
+<div nx-docs-example="checkbox-reactive">exampleID: checkbox-reactive</div>
+<h4 id="outputs" class="docs-markdown--h4">Outputs</h4>
+<div nx-docs-example="checkbox-outputs">exampleID: checkbox-outputs</div>
+<h3 id="checkbox-group" class="docs-markdown--h3">Checkbox group</h3>
+<p class="docs-markdown--p">Checkboxes can be grouped under one label and validated together. The checkbox group is used when you want to add a label or include an error message.</p>
+<p class="docs-markdown--p"><strong>Please note:</strong> When wrapping the <code>&lt;nx-checkbox&gt;</code> inside a <code>&lt;nx-checkbox-group&gt;</code>, the <code>nx-checkbox-group</code> takes control.</p>
+<h4 id="basic-usage" class="docs-markdown--h4">Basic usage</h4>
+<div nx-docs-example="checkbox-group-basic">exampleID: checkbox-group-basic</div>
+<h4 id="horizontal-usage" class="docs-markdown--h4">Horizontal usage</h4>
+<div nx-docs-example="checkbox-group-horizontal">exampleID: checkbox-group-horizontal</div>
+<h4 id="reactive-form" class="docs-markdown--h4">Reactive form</h4>
+<div nx-docs-example="checkbox-group-reactive">exampleID: checkbox-group-reactive</div>
+<div class="docs-expert-container">
+<h3 id="expert%3A-checkbox-group-label" class="docs-markdown--h3">Expert: Checkbox group label</h3>
+<p class="docs-markdown--p">With <code>size</code> you can change the styling of the checkbox-group's label.
+The label of the checkbox group is by default for B2C. The appearance of the label can be changed setting the <code>size</code> property to <code>small</code>.</p>
+<div nx-docs-example="checkbox-group-label-size">exampleID: checkbox-group-label-size</div>
+<h3 id="validation" class="docs-markdown--h3">Validation</h3>
+<p class="docs-markdown--p"><strong>Important</strong>: Please note that the <code>nx-error</code> is only for <strong>Expert</strong>.</p>
+<div nx-docs-example="checkbox-group-validation">exampleID: checkbox-group-validation</div>
+</div>
+<h3 id="dynamic" class="docs-markdown--h3">Dynamic</h3>
+<div nx-docs-example="checkbox-group-dynamic">exampleID: checkbox-group-dynamic</div>
+<h3 id="inheritance" class="docs-markdown--h3">Inheritance</h3>
+<p class="docs-markdown--p">The properties can be inherited from the checkbox group to the checkboxes inside it. In this example you can toggle them and check the result.</p>
+<div nx-docs-example="checkbox-group-inheritance">exampleID: checkbox-group-inheritance</div>

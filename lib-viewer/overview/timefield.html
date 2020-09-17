@@ -1,0 +1,25 @@
+<p class="docs-markdown--p">The timefield component makes it easier for users to enter time inputs. Maximum character length per input field is 2 and by default it accepts time inputs in 24h format (ex: 23:00, 12:35,...). Programmatic time input is always accepted in <code>ISO 24h</code> time format.</p>
+<p class="docs-markdown--p">In 24h format you can enter hours between 0-23 and minutes between 0-59.
+Using the <code>twelveHourFormat</code> input of the timefield component, the AM/PM toggler can be activated. In 12h format you can enter hours between 1-12 and minutes between 0-59. Note that the model will always accept and return time in 24h format.</p>
+<h3 id="reactive-form-example" class="docs-markdown--h3">Reactive form example</h3>
+<div nx-docs-example="timefield-reactive">exampleID: timefield-reactive</div>
+<h3 id="template-driven-form-example" class="docs-markdown--h3">Template Driven form example</h3>
+<div nx-docs-example="timefield-template-driven">exampleID: timefield-template-driven</div>
+<h3 id="12h-time-format-toggler-example" class="docs-markdown--h3">12h time format toggler example</h3>
+<p class="docs-markdown--p">12h time format AM/PM toggler can be activated using <code>twelveHourFormat</code> input. Note that the model value will always be returned in 24h format.</p>
+<div nx-docs-example="timefield-format-toggler">exampleID: timefield-format-toggler</div>
+<h3 id="disabled" class="docs-markdown--h3">Disabled</h3>
+<p class="docs-markdown--p">With <code>[disabled]</code> the timefield inputs and radio group can be disabled.</p>
+<div nx-docs-example="timefield-disabled">exampleID: timefield-disabled</div>
+<h3 id="negative-styling" class="docs-markdown--h3">Negative styling</h3>
+<p class="docs-markdown--p">You can apply the negative styling to the timefield by using the <code>[negative]</code> input.</p>
+<div nx-docs-example="timefield-negative">exampleID: timefield-negative</div>
+<h3 id="localization" class="docs-markdown--h3">Localization</h3>
+<p class="docs-markdown--p">By default input fields have English aria-labels. To translate them you can subclass the <code>NxTimefieldIntl</code> and provide it in your module.</p>
+<p class="docs-markdown--p">The default aria-label's are:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">hours input (hh): &quot;hours&quot;</li>
+<li class="docs-markdown--li">minutes input (mm): &quot;minutes&quot;</li>
+</ul>
+<p class="docs-markdown--p">Thereby you can provide your own translations for the inputs as given in the example below.</p>
+<div nx-docs-example="timefield-localize">exampleID: timefield-localize</div>

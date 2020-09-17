@@ -1,0 +1,37 @@
+<p class="docs-markdown--p">Use a radio button when you want the user to choose from a relatively small (i.e. two to six) group of mutually exclusive options. If several options can be selected, consider checkboxes instead.
+Please note that the radio button has no margins.</p>
+<div nx-docs-example="radio-button">exampleID: radio-button</div>
+<p class="docs-markdown--p">Keep in mind that the content of <code>nx-radio</code> equals the button's label (in this case, &quot;Default&quot;, &quot;Checked&quot; etc.).</p>
+<div nx-docs-example="radio-button-sample">exampleID: radio-button-sample</div>
+<h2 id="radio-group" class="docs-markdown--h2">Radio group</h2>
+<p class="docs-markdown--p">Just like standard <code>&lt;input type=&quot;radio&quot;&gt;</code> elements, these radio button components can be grouped. For this purpose you can use the <code>nx-radio-group</code> component. Just make sure to set the name property on the group, which will then take care of assigning the same name to each radio button within the group.</p>
+<h3 id="basic-usage" class="docs-markdown--h3">Basic usage</h3>
+<p class="docs-markdown--p">The radio group is a set of radio buttons grouped together under an optional group label.</p>
+<div nx-docs-example="radio-button-group">exampleID: radio-button-group</div>
+<h3 id="horizontal-usage" class="docs-markdown--h3">Horizontal usage</h3>
+<div nx-docs-example="radio-button-group-horizontal">exampleID: radio-button-group-horizontal</div>
+<h3 id="template-driven-with-ngmodel" class="docs-markdown--h3">Template-driven with ngModel</h3>
+<p class="docs-markdown--p">In case <code>nx-radio-group</code> is used, the value of the selected option is managed by the group. Consequently, <code>ngModel</code> is supposed to be used on the group rather than the contained <code>nx-radio</code> components.</p>
+<div nx-docs-example="radio-button-form">exampleID: radio-button-form</div>
+<h3 id="reactive-form" class="docs-markdown--h3">Reactive form</h3>
+<div nx-docs-example="radio-button-reactive">exampleID: radio-button-reactive</div>
+<h3 id="label-sizes" class="docs-markdown--h3">Label Sizes</h3>
+<div nx-docs-example="radio-button-sizes">exampleID: radio-button-sizes</div>
+<h3 id="negative-styling" class="docs-markdown--h3">Negative Styling</h3>
+<p class="docs-markdown--p">You can apply the negative styling to the radio buttons by using the <code>negative</code> input on either the radio group or a single radio button.</p>
+<p class="docs-markdown--p">If used both on a radio button and its containing radio group, the radio group setting overrides the single radio button.</p>
+<div nx-docs-example="radio-button-negative">exampleID: radio-button-negative</div>
+<h3 id="radio-group-disabled" class="docs-markdown--h3">Radio Group Disabled</h3>
+<p class="docs-markdown--p">The disabled-state for radio components contained in a group can be managed by the group.</p>
+<div nx-docs-example="radio-button-disabled">exampleID: radio-button-disabled</div>
+<h3 id="radio-button-event" class="docs-markdown--h3">Radio Button Event</h3>
+<div nx-docs-example="radio-button-event">exampleID: radio-button-event</div>
+<div class="docs-expert-container">
+<h3 id="expert%3A-radio-button-group-label" class="docs-markdown--h3">Expert: Radio button group label</h3>
+<p class="docs-markdown--p">With <code>size</code> you can change the styling of the radio button group's label.
+The label of the radio button group is by default for B2C. The appearance of the label can be changed setting the <code>size</code> property to <code>small</code>, which is the formatting for Expert.</p>
+<div nx-docs-example="radio-button-group-label-size">exampleID: radio-button-group-label-size</div>
+<h3 id="expert%3A-validation-and-error-message" class="docs-markdown--h3">Expert: validation and error message</h3>
+<p class="docs-markdown--p">Please note that the <code>nx-error</code> is only for <strong>Expert</strong>.</p>
+<div nx-docs-example="radio-button-group-validation">exampleID: radio-button-group-validation</div>
+</div>

@@ -1,0 +1,45 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxBadgeType } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/badge'</span>;
+
+<span class="hljs-keyword">type</span> Contract = {
+  id: <span class="hljs-built_in">string</span>;
+  user: <span class="hljs-built_in">string</span>;
+  status: NxBadgeType;
+  documents: <span class="hljs-built_in">string</span>[];
+};
+
+<span class="hljs-comment">/**
+ * @title Data Context Menu Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./context-menu-data-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'context-menu-data-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContextMenuDataExampleComponent {
+  contracts: Contract[] = [
+    {
+      id: <span class="hljs-string">'23412'</span>,
+      user: <span class="hljs-string">'Anna Schuster'</span>,
+      status: <span class="hljs-string">'active'</span>,
+      documents: [
+        <span class="hljs-string">'Contract 01/04/2017'</span>,
+      ]
+    },
+    {
+      id: <span class="hljs-string">'09090'</span>,
+      user: <span class="hljs-string">'Max Pecu'</span>,
+      status: <span class="hljs-string">'active'</span>,
+      documents: [
+        <span class="hljs-string">'Contract 11/07/2015'</span>,
+      ]
+    },
+    {
+      id: <span class="hljs-string">'45234'</span>,
+      user: <span class="hljs-string">'Sefan Maier'</span>,
+      status: <span class="hljs-string">'active'</span>,
+      documents: [
+        <span class="hljs-string">'Contract 01/01/2017'</span>,
+      ]
+    }
+  ];
+}

@@ -1,0 +1,29 @@
+<p class="docs-markdown--p">Autocomplete is a companion to the input element. When input element receives a focus or a down arrow is pressed and autocomplete items are defined, the autcomplete panel is displayed. On selecting the autocomplete option, it's value is used to set the value of input.</p>
+<h3 id="module" class="docs-markdown--h3">Module</h3>
+<p class="docs-markdown--p">Autocomplete requires Angular CDK.</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { OverlayModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/cdk/overlay'</span>;<span class="hljs-string">`
+</span></code></pre>
+<p class="docs-markdown--p">Autocomplete can be used with input only, but usually you'll wan't to use it within formfield or natural language form. For this you'll need these additional imports.</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
+<span class="hljs-keyword">import</span> { NxNaturalLanguageFormModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/natural-language-form'</span>;
+</code></pre>
+<h3 id="examples" class="docs-markdown--h3">Examples</h3>
+<p class="docs-markdown--p">To use autocomplete, create a <code>nx-autocomplete</code> element with <code>nx-autocomplete-option</code> elements. Set the <code>[value]</code> of the <code>nx-autocomplete-option</code> to the one you wish to fill the input with. Export the Autocomplete component to the template variable. Use nxAutocompleteTrigger directive (<code>[nxAutocomplete]</code>) on the input element with it's value set to the template variable of the Autocomplete component to bind input to the autocomplete.</p>
+<div nx-docs-example="autocomplete-basic">exampleID: autocomplete-basic</div>
+<h4 id="autocomplete-with-filtering" class="docs-markdown--h4">Autocomplete with filtering</h4>
+<p class="docs-markdown--p">You can also filter the content of the list based on the value of the input field. The list will be dynamically updated given text input.</p>
+<div nx-docs-example="autocomplete-filtering">exampleID: autocomplete-filtering</div>
+<h4 id="default-item-rendering" class="docs-markdown--h4">Default item rendering</h4>
+<p class="docs-markdown--p">The autocomplete trigger can provide a default autocomplete options rendering. To use this feature, provide a search callback function via <code>[nxAutocompleteItems]</code> attribute. The callback signature has to be <code>(val: string) =&gt; Observable&lt;Array&lt;string&gt;&gt;</code>.</p>
+<div nx-docs-example="autocomplete-default-rendering">exampleID: autocomplete-default-rendering</div>
+<h4 id="data-binding" class="docs-markdown--h4">Data binding</h4>
+<p class="docs-markdown--p">All options that apply to the data binding can be used. For details look at the examples with different bindings and different options generation below and also <code>nxInput</code>, <code>nxFormField</code> and <code>nxNaturalLanguageForm</code>.</p>
+<div nx-docs-example="autocomplete-data-binding">exampleID: autocomplete-data-binding</div>
+<div class="docs-expert-container">
+<h4 id="expert%3A-autocomplete-with-outline" class="docs-markdown--h4">Expert: Autocomplete with outline</h4>
+<p class="docs-markdown--p">In a formfield with an outline the styling of the autocomplete will adjust accordingly.</p>
+<p class="docs-markdown--p">Please note that this is an <strong>Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
+<div nx-docs-example="autocomplete-outline">exampleID: autocomplete-outline</div>
+</div>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">The autocomplete can be accessed via keyboard. You can trigger the search by simply start typing in the input. After the overlay popped up, you can use ARROW_UP and ARROW_DOWN to focus on the desired element. Hitting SPACE or ENTER selects the value however ESC or TAB closes the autocomplete.</p>

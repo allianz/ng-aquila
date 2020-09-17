@@ -1,0 +1,24 @@
+<div class="docs-deprecation-warning">
+  <strong>Expert: </strong>
+  Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
+</div>
+<p class="docs-markdown--p">The <code>&lt;nx-sidebar&gt;</code> provides a collapsible container for side content (often navigation, though it can be any content) alongside some primary content.</p>
+<p class="docs-markdown--p">Please note that all the following examples use the <a href="./documentation/action">NxActionComponent</a> for the side navigation items.
+The <code>NxActionModule</code> <strong>is not automatically imported</strong> when you import the <code>NxSidebarModule</code>. Therefore you have to import the <code>NxActionModule</code> yourself, if you want the same sidebar look:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxActionModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/action'</span>;
+</code></pre>
+<h3 id="static-sidebar-with-actions" class="docs-markdown--h3">Static Sidebar with Actions</h3>
+<p class="docs-markdown--p">One possible content for the sidebar is a list of navigation links, in this case a list of <code>nxAction</code> items.
+The default width of <code>280px</code> can be overwritten by your own css like in the following example.</p>
+<div nx-docs-example="sidebar">exampleID: sidebar</div>
+<h3 id="resizeable-side-navigation-with-tree" class="docs-markdown--h3">Resizeable Side navigation with Tree</h3>
+<p class="docs-markdown--p">A <code>&lt;nx-sidebar&gt;</code> can be resized by dragging the right edge when the option <code>resizeable</code> is set.</p>
+<div nx-docs-example="sidebar-resizeable">exampleID: sidebar-resizeable</div>
+<p class="docs-markdown--p">A <code>&lt;nx-sidebar&gt;</code> can be expanded or closed using the expand(), close() and toggle() methods.</p>
+<div nx-docs-example="sidebar-methods">exampleID: sidebar-methods</div>
+<h3 id="footer-area" class="docs-markdown--h3">Footer area</h3>
+<p class="docs-markdown--p">For placing some view shortcuts on the bottom of the sidebar, a <code>&lt;nx-sidebar-footer&gt;</code> area can be added. Additionally with <code>nxSidebarToggle</code> you can add a button to toggle the sidebar like shown in the following example.</p>
+<div nx-docs-example="sidebar-footer">exampleID: sidebar-footer</div>
+<h3 id="output-events" class="docs-markdown--h3">Output events</h3>
+<p class="docs-markdown--p">You can use the <code>widthChange</code> output event in order to subscribe to changes of the sidebar width.</p>
+<div nx-docs-example="sidebar-outputs">exampleID: sidebar-outputs</div>

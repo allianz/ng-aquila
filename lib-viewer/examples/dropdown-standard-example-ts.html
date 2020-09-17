@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Standard dropdown example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./dropdown-standard-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownStandardExampleComponent {
+  demoData = [
+    <span class="hljs-string">'BMW'</span>, <span class="hljs-string">'Audi'</span>, <span class="hljs-string">'VW'</span>, <span class="hljs-string">'Mercedes'</span>, <span class="hljs-string">'Porsche'</span>, <span class="hljs-string">'Tesla'</span>, <span class="hljs-string">'Lada'</span>,
+    <span class="hljs-string">'Opel'</span>, <span class="hljs-string">'Fiat'</span>, <span class="hljs-string">'Ford'</span>, <span class="hljs-string">'Kia'</span>, <span class="hljs-string">'Toyota'</span>, <span class="hljs-string">'Ferrari'</span>
+  ];
+
+  toText(value): <span class="hljs-built_in">string</span> {
+    <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
+  }
+}

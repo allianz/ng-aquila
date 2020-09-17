@@ -1,0 +1,13 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/** @title Circle text example */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./circle-toggle-text-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./circle-toggle-text-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CircleToggleTextExampleComponent {
+  sampleValues = [
+    { value: <span class="hljs-string">'A'</span>, circleText: <span class="hljs-string">'Yes'</span>, selected: <span class="hljs-literal">true</span> },
+    { value: <span class="hljs-string">'B'</span>, circleText: <span class="hljs-string">'No'</span>, selected: <span class="hljs-literal">false</span> },
+  ];
+}

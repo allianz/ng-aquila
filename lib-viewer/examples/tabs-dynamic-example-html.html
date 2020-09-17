@@ -1,0 +1,13 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let tab of tabs; let i = index"</span> [<span class="hljs-attr">label</span>]=<span class="hljs-string">"tab"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tab__content nx-margin-bottom-m"</span>&gt;</span>
+      Content of tab {{tab}}
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"small"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-0 nx-margin-left-s"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"removeTab(i)"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Remove tab<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"add-container"</span>&gt;</span>
+  New tab label: <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> #<span class="hljs-attr">newTabText</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-left-s nx-margin-right-2xs"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-0"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"addTab(newTabText.value)"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,0 +1,51 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> {FormBuilder, FormGroup, Validators} <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Checkbox group inheritance example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./checkbox-group-inheritance-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./checkbox-group-inheritance-example.css'</span>]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CheckboxGroupInheritanceExampleComponent {
+  <span class="hljs-keyword">public</span> optionsForm: FormGroup;
+  <span class="hljs-keyword">public</span> myFormGroup: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.myFormGroup = <span class="hljs-keyword">this</span>.fb.group({
+      <span class="hljs-string">'terms'</span>: [[]]
+    });
+
+    <span class="hljs-keyword">this</span>.optionsForm = <span class="hljs-keyword">this</span>.fb.group({
+      isNegative: [<span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>],
+      isRequired: [<span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>],
+      isDisabled: [<span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>],
+      isLarge: [<span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>],
+      isLabelExpert: [<span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>],
+    });
+  }
+
+  toggleDisabled() {
+    <span class="hljs-keyword">const</span> checkboxGroup = <span class="hljs-keyword">this</span>.myFormGroup.get(<span class="hljs-string">'terms'</span>);
+    <span class="hljs-keyword">if</span> (checkboxGroup.disabled) {
+      <span class="hljs-keyword">this</span>.myFormGroup.get(<span class="hljs-string">'terms'</span>).enable();
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.myFormGroup.get(<span class="hljs-string">'terms'</span>).disable();
+    }
+  }
+
+  toggleRequired() {
+    <span class="hljs-keyword">const</span> checkboxGroup = <span class="hljs-keyword">this</span>.myFormGroup.get(<span class="hljs-string">'terms'</span>);
+    <span class="hljs-keyword">if</span> (checkboxGroup.validator === Validators.required) {
+      checkboxGroup.clearValidators();
+    } <span class="hljs-keyword">else</span> {
+      checkboxGroup.setValidators(Validators.required);
+    }
+  }
+}

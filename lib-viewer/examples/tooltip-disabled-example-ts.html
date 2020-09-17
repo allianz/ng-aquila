@@ -1,0 +1,16 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Disabled tooltip
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  styleUrls: [<span class="hljs-string">'./tooltip-disabled-example.css'</span>],
+  templateUrl: <span class="hljs-string">'./tooltip-disabled-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipDisabledExampleComponent {
+  disabled: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+  toggle() {
+    <span class="hljs-keyword">this</span>.disabled = !<span class="hljs-keyword">this</span>.disabled;
+  }
+}

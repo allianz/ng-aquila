@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Validation example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./mask-validation-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MaskValidationComponent {
+  validatedMaskForm: FormGroup = <span class="hljs-keyword">new</span> FormGroup({
+    maskInput: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {}),
+  });
+
+  unvalidatedMaskForm: FormGroup = <span class="hljs-keyword">new</span> FormGroup({
+    maskInput2: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {}),
+  });
+}

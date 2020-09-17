@@ -1,0 +1,7 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"!closed"</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">"info"</span> <span class="hljs-attr">closable</span>=<span class="hljs-string">"true"</span> (<span class="hljs-attr">close</span>)=<span class="hljs-string">"closed = true"</span>&gt;</span>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  Distinctio odit voluptas assumenda iure ab quaerat aliquid harum facere rerum
+  excepturi accusantium commodi vel libero, nesciunt maxime minus exercitationem iste quod.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"closed"</span>&gt;</span> A close event was emitted!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"closed = !closed"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span> Toggle closed<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

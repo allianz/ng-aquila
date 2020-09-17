@@ -1,0 +1,45 @@
+
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"form"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"12,12,6"</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Car brand"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"dropdown"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>&gt;</span>CLEAR VALUE<span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"BMW"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"Audi"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"Volvo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"Mini"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+            Please select a value
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">"info"</span> <span class="hljs-attr">nxFormfieldNote</span>&gt;</span>
+            This field is required
+          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"12"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ form.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ form.status | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Try to set the value to BMW, Audi, Volvo or Mini.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"update-container"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> #<span class="hljs-attr">reactiveInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> /&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span>
+              <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-0"</span>
+              (<span class="hljs-attr">click</span>)=<span class="hljs-string">"patch(reactiveInput.value)"</span>
+              <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+            Update
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

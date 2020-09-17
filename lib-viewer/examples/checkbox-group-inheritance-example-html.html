@@ -1,0 +1,29 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Properties<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"optionsForm"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"isNegative"</span>&gt;</span>Toggle negative<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"isRequired"</span> (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">"toggleRequired()"</span>&gt;</span>Toggle required<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"isDisabled"</span> (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">"toggleDisabled()"</span>&gt;</span>Toggle disabled<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"isLarge"</span>&gt;</span>Toggle checkbox label size<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"isLabelExpert"</span>&gt;</span>Toggle checkbox group label size (Expert)<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Result<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"myFormGroup"</span> &gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> [<span class="hljs-attr">ngClass</span>]=<span class="hljs-string">"{'docs-inverse-container': optionsForm.value.isNegative}"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"terms"</span>
+                       [<span class="hljs-attr">negative</span>]=<span class="hljs-string">"optionsForm.value.isNegative"</span>
+                       [<span class="hljs-attr">labelSize</span>]=<span class="hljs-string">"optionsForm.value.isLarge ? 'large' : 'small'"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> [<span class="hljs-attr">size</span>]=<span class="hljs-string">"optionsForm.value.isLabelExpert ? 'small' : 'large' "</span>&gt;</span>Select your choices<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">"text"</span>&gt;</span>
+        Please select at least one checkbox.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Term 1"</span>&gt;</span>Checkbox 1<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Term 2"</span>&gt;</span>Checkbox 2<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Term 3"</span>&gt;</span>Checkbox 3<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Term 4"</span>&gt;</span>Checkbox 4<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Term 5"</span>&gt;</span>Checkbox 5<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ myFormGroup.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ myFormGroup.status | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

@@ -1,0 +1,27 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxIconRegistry } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/icon'</span>;
+<span class="hljs-keyword">import</span> { DomSanitizer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/platform-browser'</span>;
+
+<span class="hljs-comment">/**
+* @title Register Icons Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./icon-registry-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> IconRegistryExampleComponent {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> nxIconRegistry: NxIconRegistry,
+    <span class="hljs-keyword">private</span> domSanitizer: DomSanitizer
+  </span>) {
+
+    <span class="hljs-keyword">this</span>.nxIconRegistry.addSvgIconLiteral(<span class="hljs-string">'search'</span>,
+      domSanitizer.bypassSecurityTrustHtml(<span class="hljs-string">'&lt;svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="100%" height="100%" viewBox="0 0 24 24"&gt;&lt;g data-name="Layer 2"&gt;&lt;g data-name="search"&gt;&lt;rect width="24" height="24" opacity="0"/&gt;&lt;path d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;'</span>)
+    );
+
+   <span class="hljs-keyword">this</span>.nxIconRegistry.addSvgIcon(<span class="hljs-string">'setting'</span>,
+      domSanitizer.bypassSecurityTrustResourceUrl(<span class="hljs-string">'assets/icons/settings.svg'</span>));
+
+    <span class="hljs-keyword">this</span>.nxIconRegistry.registerFont(<span class="hljs-string">'fa'</span>, <span class="hljs-string">'fa'</span>, <span class="hljs-string">'fa-'</span>);
+
+  }
+}

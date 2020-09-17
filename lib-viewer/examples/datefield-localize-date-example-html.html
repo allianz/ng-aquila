@@ -1,0 +1,18 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">"info"</span>&gt;</span>
+  Try changing the locale and look how the Datefield display format and parsing and the
+  labels in the Datepicker calendar are changing.<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">select</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"currentLocale"</span> (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">"changeLocal($event)"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"currentLocale"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"de-DE"</span>&gt;</span>de-DE<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"en-US"</span>&gt;</span>en-US<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ar-EG"</span>&gt;</span>ar-EG<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ja"</span>&gt;</span>ja<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Date of damage"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxDatefield</span> <span class="hljs-attr">nxInput</span> [<span class="hljs-attr">nxDatepicker</span>]=<span class="hljs-string">"myDatepicker"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"currentDate"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span> [<span class="hljs-attr">for</span>]=<span class="hljs-string">"myDatepicker"</span> <span class="hljs-attr">nxFormfieldSuffix</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">myDatepicker</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

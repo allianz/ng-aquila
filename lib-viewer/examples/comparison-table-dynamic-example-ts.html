@@ -1,0 +1,45 @@
+<span class="hljs-keyword">import</span> { NxComparisonTableRowType } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/comparison-table'</span>;
+<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ngx-docs-ui'</span>;
+<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;
+<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+
+<span class="hljs-keyword">type</span> ContentCell = { <span class="hljs-keyword">type</span>: NxComparisonTableRowType, description?: <span class="hljs-built_in">string</span>, cells: <span class="hljs-built_in">string</span>[]};
+<span class="hljs-keyword">type</span> ToggleSection = { <span class="hljs-keyword">type</span>: <span class="hljs-string">'toggleSection'</span>, header: <span class="hljs-built_in">string</span>, content: ContentCell[]};
+<span class="hljs-keyword">type</span> TableData = (ContentCell | ToggleSection)[];
+
+<span class="hljs-comment">/** @title Dynamically filled table */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./comparison-table-dynamic-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./comparison-table-dynamic-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComparisonTableDynamicExampleComponent <span class="hljs-keyword">implements</span> OnDestroy {
+  data: TableData = [
+    { <span class="hljs-keyword">type</span>: <span class="hljs-string">'header'</span>, cells: [ <span class="hljs-string">'This is a header cell'</span>, <span class="hljs-string">'This is a header cell'</span> ] },
+    { <span class="hljs-keyword">type</span>: <span class="hljs-string">'content'</span>, description: <span class="hljs-string">'This is a description cell'</span>, cells: [ <span class="hljs-string">'This is a cell'</span>, <span class="hljs-string">'This is a cell'</span> ]},
+    {
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">'toggleSection'</span>, header: <span class="hljs-string">'Toggle Section'</span>,
+      content: [
+        { <span class="hljs-keyword">type</span>: <span class="hljs-string">'content'</span>, description: <span class="hljs-string">'This is a description cell'</span>, cells: [ <span class="hljs-string">'This is a cell'</span>, <span class="hljs-string">'This is a cell'</span> ]},
+        { <span class="hljs-keyword">type</span>: <span class="hljs-string">'content'</span>, description: <span class="hljs-string">'This is a description cell'</span>, cells: [ <span class="hljs-string">'This is a cell'</span>, <span class="hljs-string">'This is a cell'</span> ]},
+      ]
+    },
+    { <span class="hljs-keyword">type</span>: <span class="hljs-string">'footer'</span>, cells: [ <span class="hljs-string">'This is a footer cell'</span>, <span class="hljs-string">'This is a footer cell'</span>] },
+  ];
+
+  unselectedClassNames: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> demoService: BaseDemoThemingService</span>) {
+    <span class="hljs-keyword">this</span>.demoService.unselectedClassNames.pipe(
+      takeUntil(<span class="hljs-keyword">this</span>._destroyed)
+    ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
+      <span class="hljs-keyword">this</span>.unselectedClassNames = value;
+    });
+  }
+
+  ngOnDestroy() {
+    <span class="hljs-keyword">this</span>._destroyed.next();
+    <span class="hljs-keyword">this</span>._destroyed.complete();
+  }
+}

@@ -1,0 +1,55 @@
+<p class="docs-markdown--p">All components in our Component Library are compliant with the WCAG 2 Level AA accessibility standards. These Accessibility Guidelines (WCAG) are part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). By being complaint with them we want to make our components accessible, primarily for people with disabilities, but also for all users on all devices (including highly limited devices, such as mobile phones).</p>
+<p class="docs-markdown--p"><strong>Using our accessibility compliant components does not make your application accessible by default.</strong> Our components fulfil most of the accessibiility requirements, but there are still some things you have to pay attention to. In the <a href="./documentation/accessibility/overview#guidelines">Guidelines</a> you can find hints to consider.</p>
+<h3 id="our-component-library-supports%3A" class="docs-markdown--h3">Our component library supports:</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Color contrast</li>
+<li class="docs-markdown--li">Keyboard navigation</li>
+<li class="docs-markdown--li">High contrast support</li>
+<li class="docs-markdown--li">Screen reader support</li>
+</ul>
+<h3 id="we-aim-to-support-the-following-screen-readers%3A" class="docs-markdown--h3">We aim to support the following screen readers:</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">VoiceOver macOS 12 (evergreen)</li>
+<li class="docs-markdown--li">JAWS 2019</li>
+<li class="docs-markdown--li">NVDA (evergreen)</li>
+</ul>
+<h3 id="guidelines" class="docs-markdown--h3">Guidelines</h3>
+<h4 id="usage-of-aria-label" class="docs-markdown--h4">Usage of aria-label</h4>
+<p class="docs-markdown--p">One important accessibility attribute is <code>aria-label</code>, which describes a certain element and is read by the screenreader when the user has focused its element.
+We provide our components with default placeholders. In most cases, you need to adjust the <code>aria-label</code> value according to your use case.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">
+<p class="docs-markdown--p">When using a variable as value for the <code>aria-label</code> you need to use attribute binding:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">"myAriaLabelVariable"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p">In other cases you can simply assign the <code>aria-label</code> attribute:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"My icon description string"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>`
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p">If the aria labels are needed inside the component template we usually have specific inputs for that or make use of an injection token like in the datepicker:
+<a href="./documentation/datefield/overview#localizing-labels-and-messages">datepicker localization example</a>.</p>
+</li>
+</ul>
+<p class="docs-markdown--p">You can find more information on the <code>aria-label</code> attribute <a href="https://www.w3.org/TR/wai-aria/#aria-label">here</a>.</p>
+<h4 id="setting-high-contrast-colors-for-svgs" class="docs-markdown--h4">Setting high contrast colors for SVGs</h4>
+<p class="docs-markdown--p">All components of this UI component library implement the high contrast mode for MS Edge and IE 11. However, if you use your own SVGs, you may need to add high contrast styling on your own.</p>
+<p class="docs-markdown--p">This is the basic code snippet for setting the color of a svg in high contrast mode (also used in the example below):</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (-ms-high-contrast: active) {
+  <span class="hljs-selector-class">.g-inside-svg</span> {
+    <span class="hljs-comment">/* proprietary Windows system color value; IE/Edge only */</span>
+    fill: windowText;
+  }
+}
+</code></pre>
+<p class="docs-markdown--p">For more information on which colors to use in the high contrast mode, please visit <a href="https://docs.microsoft.com/en-us/windows/uwp/design/accessibility/high-contrast-themes#high-contrast-colors">this explanation</a>.</p>
+<div nx-docs-example="accessibility-high-contrast-svg">exampleID: accessibility-high-contrast-svg</div>
+<h3 id="helpful-tools-and-links-for-aria-guidelines-and-verification" class="docs-markdown--h3">Helpful tools and links for ARIA guidelines and verification</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><a href="https://webaim.org/resources/contrastchecker/">Color contrast checker</a></li>
+<li class="docs-markdown--li"><a href="https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/master/Accessibility/HighContrast/explainer.md">High contrast mode explanation</a></li>
+<li class="docs-markdown--li"><a href="https://docs.microsoft.com/en-us/windows/uwp/design/accessibility/high-contrast-themes">High contrast themes</a></li>
+<li class="docs-markdown--li"><a href="https://www.deque.com/axe">Automatic a11y compliance checker</a></li>
+</ul>

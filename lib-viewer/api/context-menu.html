@@ -1,0 +1,447 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxContextMenuModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/context-menu'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxContextMenuContentDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxContextMenuContentDirective"></span>
+  <code>NxContextMenuContentDirective</code></h4><p class="docs-api-class-description"><p>Context menu content that will be rendered lazily once the menu is opened.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">ng-template[nxContextMenuContent]</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxContextMenuItemComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxContextMenuItemComponent"></span>
+  <code>NxContextMenuItemComponent</code></h4><p class="docs-api-class-description"><p>This directive is intended to be used inside an nx-context-menu tag.
+It exists mostly to set the role attribute, disabled state and styling.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxContextMenuItem]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxContextMenuItem</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">disabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the context menu item is disabled.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focus(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Focuses this context menu item.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getLabel(<!--
+     -->): <span class="docs-api-method-returns-type">string</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Gets the label to be used when determining whether the option should be focused.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxContextMenuTriggerDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxContextMenuTriggerDirective"></span>
+  <code>NxContextMenuTriggerDirective</code></h4><p class="docs-api-class-description"><p>This directive is intended to be used in conjunction with an nx-context-menu tag.
+It is responsible for toggling the display of the provided context menu instance.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxContextMenuTriggerFor]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxContextMenuTrigger</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContextMenuTriggerFor'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">contextMenu</span>:
+        <span class="docs-api-property__type">NxContextMenuComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>References the context menu instance that the trigger is associated with.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContextMenuTriggerData'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">contextMenuData</span>:
+        <span class="docs-api-property__type">any</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Data to be passed along to any lazily-rendered content.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">scrollStrategy</span>:
+        <span class="docs-api-property__type">NxContextMenuScrollStrategy</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">contextMenuClosed</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event emitted when the associated context menu is closed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">contextMenuOpened</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event emitted when the associated context menu is opened.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">contextMenuOpen</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the context menu is open.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">closeContextMenu(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Closes the context menu.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focus(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Focuses the context menu trigger.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">openContextMenu(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Opens the context menu.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggleContextMenu(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Toggles the context menu between the open and closed states.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">triggersSubmenu(<!--
+     -->): <span class="docs-api-method-returns-type">boolean</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Whether the context menu triggers a sub-menu or a top-level one.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxContextMenuComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxContextMenuComponent"></span>
+  <code>NxContextMenuComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-context-menu</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxContextMenu</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">closed</span>:
+        <span class="docs-api-property__type">EventEmitter<void | 'click' | 'keydown' | 'tab'></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event emitted when the menu is closed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">parentMenu</span>:
+        <span class="docs-api-property__type">NxContextMenuComponent | undefined</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Parent menu of the current menu panel.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focusFirstItem(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Focus the first item in the menu.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">resetActiveItem(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Resets the active item in the menu. This is used when the menu is opened, allowing
+the user to start from the first option when pressing the down arrow.</p>
+</div></div>
+
+
+  
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="NxContextMenuScrollStrategy" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="NxContextMenuScrollStrategy"></span>
+  <code>NxContextMenuScrollStrategy</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'close' | 'reposition'</code>
+</p>
+
+
+    </div>

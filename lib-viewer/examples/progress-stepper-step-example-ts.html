@@ -1,0 +1,13 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Progress Indicator step completion example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./progress-stepper-step-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./progress-stepper-step-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperStepExampleComponent {
+  testStepsData = [<span class="hljs-string">'Lorem'</span>, <span class="hljs-string">'Ipsum'</span>, <span class="hljs-string">'Dolar'</span>];
+  progress = <span class="hljs-number">0.15</span>;
+}

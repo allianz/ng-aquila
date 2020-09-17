@@ -1,0 +1,20 @@
+<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> ICONS <span class="hljs-keyword">from</span> <span class="hljs-string">'./icons.json'</span>;
+
+<span class="hljs-comment">/**
+ * @title Product Icons List Example
+ */</span>
+ <span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./icon-list-product-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./icon-list-product-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> IconListProductExampleComponent <span class="hljs-keyword">implements</span> OnInit {
+  iconList = [];
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.iconList = <span class="hljs-function">(<span class="hljs-params">ICONS <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span></span>).<span class="hljs-params">icons</span>.<span class="hljs-params">map</span>(<span class="hljs-params">(<span class="hljs-params">icon</span>) =&gt; {
+      <span class="hljs-keyword">return</span> icon.name.replace(<span class="hljs-params">'c-icon--', ''</span>).trim(<span class="hljs-params"></span>);
+    }</span>).<span class="hljs-params">filter</span>(<span class="hljs-params">iconName =&gt; iconName.includes(<span class="hljs-params">'product'</span>)</span>);
+  }
+}
+</span>

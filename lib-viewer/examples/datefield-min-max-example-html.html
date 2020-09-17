@@ -1,0 +1,23 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Date of damage"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+    [<span class="hljs-attr">nxMin</span>]=<span class="hljs-string">"minDate"</span> [<span class="hljs-attr">nxMax</span>]=<span class="hljs-string">"maxDate"</span>
+    <span class="hljs-attr">ngModel</span> #<span class="hljs-attr">dateMinMaxModel</span>=<span class="hljs-string">"ngModel"</span>
+    <span class="hljs-attr">nxDatefield</span> <span class="hljs-attr">nxInput</span> [<span class="hljs-attr">nxDatepicker</span>]=<span class="hljs-string">"picker2"</span>/&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>MM/DD/YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span> [<span class="hljs-attr">for</span>]=<span class="hljs-string">"picker2"</span> <span class="hljs-attr">nxFormfieldSuffix</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">picker2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
+            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMax"</span>&gt;</span>
+    The date is too far in the future
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
+            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldMin"</span>&gt;</span>
+    The date is too far in the past
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
+            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"dateMinMaxModel.errors &amp;&amp; dateMinMaxModel.errors.nxDatefieldParse"</span>&gt;</span>
+    That's not a date
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

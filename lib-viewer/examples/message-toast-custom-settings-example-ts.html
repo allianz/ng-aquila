@@ -1,0 +1,32 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxMessageToastRef, NxMessageToastConfig, NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/message'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
+  duration: <span class="hljs-number">0</span>,
+  context: <span class="hljs-string">'success'</span>,
+  announcementMessage: <span class="hljs-string">'Yay, you see a success message toast'</span>
+};
+
+<span class="hljs-comment">/**
+* @title Custom Settings example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./message-toast-custom-settings-example.html'</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessageToastCustomSettingsExampleComponent {
+
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template'</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  toastRef: NxMessageToastRef;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> messageToastService: NxMessageToastService</span>) { }
+
+  open() {
+    <span class="hljs-keyword">this</span>.toastRef = <span class="hljs-keyword">this</span>.messageToastService.openFromTemplate(<span class="hljs-keyword">this</span>.templateRef, myCustomConfig);
+  }
+
+  close() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.toastRef) {
+      <span class="hljs-keyword">this</span>.toastRef.dismiss();
+    }
+  }
+}

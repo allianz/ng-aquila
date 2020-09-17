@@ -1,0 +1,48 @@
+<h3 id="expert-module" class="docs-markdown--h3">Expert module</h3>
+<p class="docs-markdown--p">If you build internal applications (expert) some components need a specific configuration to be compliant with ergonomics and other requirements for internal applications. To obtain this configuration for your whole application, you can simply activate it by importing the expert module. This acts by setting injection tokens for all affected components (e.g., form fields).</p>
+<p class="docs-markdown--p">When imported, this module sets the injection tokens for a bunch of components. It uses the expert settings explained in dedicated sections of every affected component:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>Datepicker:</strong>: Sets the <code>[tabindex]</code> to <code>-1</code> for the <code>nx-datepicker-toggle</code>.</li>
+<li class="docs-markdown--li"><strong>Error:</strong> <code>[appearance]</code> is set to <code>&quot;text&quot;</code> (see <a href="./documentation/base/overview#error">here</a>).</li>
+<li class="docs-markdown--li"><strong>Formfield:</strong> <code>[appearance]</code> is set to <code>&quot;outline&quot;</code> and <code>nxFloatLabel</code> to <code>&quot;always&quot;</code> (see <a href="./documentation/formfield/overview#expert%253A-appearance">here</a>).</li>
+<li class="docs-markdown--li"><strong>Label:</strong> The size is set to <code>&quot;small&quot;</code> (see <a href="./documentation/base/overview#label">here</a>).</li>
+<li class="docs-markdown--li"><strong>TabGroup</strong> and <strong>TabNavBar</strong>: <code>[appearance]</code> is set to <code>&quot;expert&quot;</code> for both of the components (see <a href="./documentation/tabs/overview#expert%253A-appearance">here</a>).</li>
+</ul>
+<p class="docs-markdown--p">If you use this module, you don't need to set these configurations explicitly for every component in your template anymore. This means instead of using the expert properties for the component <code>&lt;nx-formfield nxFloatLabel=&quot;always&quot; appearance=&quot;outline&quot;&gt;</code> you only need to write <code>&lt;nx-formfield&gt;...&lt;/nx-formfield&gt;</code> and <code>nxFloatLabel</code>, <code>appearance</code> are set for you automatically.</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxExpertModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/config'</span>;
+</code></pre>
+<pre><code class="language-ts"><span class="hljs-string">"imports"</span>: [
+  ...,
+  ...,
+  NxExpertModule
+]
+</code></pre>
+<h3 id="expert-theming" class="docs-markdown--h3">Expert theming</h3>
+<h4 id="general" class="docs-markdown--h4">General</h4>
+<p class="docs-markdown--p">Expert components have some style differences from the default B2C component styles which <strong>don't get injected</strong> by the <code>NxExpertModule</code>. We reflect such style differences by applying a theme.</p>
+<p class="docs-markdown--p">Our theming is accomplished by using CSS custom properties (CSS variables) to overwrite the styles of our components. The styles of our components are <em>view encapsulated</em> which means that they cannot be overwritten from outside of the component without using the selector <code>::ng-deep</code>. The shadow piercing selector <code>::ng-deep</code> disables the view encapsulation for a css rule and should be used only in exceptional cases. You can find more information on view encapsulation in Angular <a href="https://angular.io/guide/component-styles#view-encapsulation">here</a>.</p>
+<h4 id="theme-import" class="docs-markdown--h4">Theme import</h4>
+<p class="docs-markdown--p">You have to import the expert CSS theme into your <code>angular.json</code> file:</p>
+<pre><code class="language-ts"><span class="hljs-string">"styles"</span>: [
+  <span class="hljs-string">"node_modules/@aposin/ng-aquila/themes/expert.css"</span>
+]
+</code></pre>
+<p class="docs-markdown--p">If you don't use the Angular CLI or just prefer another place you can use this CSS import instead:</p>
+<pre><code class="language-css"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/themes/expert.css"</span>;
+</code></pre>
+<h4 id="ie11-support" class="docs-markdown--h4">IE11 Support</h4>
+<p class="docs-markdown--p">To support IE11 we have a fallback in place: if you want to use a theme for IE11 you need to use the <a href="https://github.com/jhildenbiddle/css-vars-ponyfill/">css vars ponyfill</a>
+as a dependency.</p>
+<p class="docs-markdown--p">For that purpose you need to install the css-vars-ponyfill:</p>
+<pre><code>npm install css-vars-ponyfill
+</code></pre>
+<p class="docs-markdown--p">Then, import the ponyfill into your <code>polyfill.ts</code> and call it:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">'css-vars-ponyfill'</span>;
+
+cssVars({
+  watch: <span class="hljs-literal">true</span>,
+  onlyLegacy: <span class="hljs-literal">true</span>,
+  shadowDOM: <span class="hljs-literal">true</span>
+});
+</code></pre>
+<p class="docs-markdown--p">The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters <a href="https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options">here</a>.</p>

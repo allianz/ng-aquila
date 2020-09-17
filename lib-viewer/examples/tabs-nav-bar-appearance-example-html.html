@@ -1,0 +1,11 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-nav-bar</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">"expert"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
+    <span class="hljs-attr">nxTabLink</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let link of links"</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">"setActiveLink(link)"</span>
+    [<span class="hljs-attr">active</span>]=<span class="hljs-string">"currentLink.label === link.label"</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">"link.disabled"</span>
+    [<span class="hljs-attr">routerLink</span>]=<span class="hljs-string">"link.path"</span>&gt;</span>
+      {{link.label}}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab-nav-bar</span>&gt;</span>
+

@@ -1,0 +1,66 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Table Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-dynamic-table-example'</span>,
+  templateUrl: <span class="hljs-string">'./dynamic-table-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DynamicTableExampleComponent {
+  data = [
+    {
+      code: <span class="hljs-string">'AAC '</span>,
+      company: <span class="hljs-string">'Honda'</span>,
+      price: <span class="hljs-string">'$1.38 '</span>,
+      change: <span class="hljs-string">'-0.01 '</span>,
+      changePercent: <span class="hljs-string">'-0.36% '</span>,
+      sample: <span class="hljs-string">'$0.00 '</span>,
+      lorem: <span class="hljs-string">'ab lreom '</span>
+    },
+    {
+      code: <span class="hljs-string">'AAD '</span>,
+      company: <span class="hljs-string">'Abacus'</span>,
+      price: <span class="hljs-string">'$1.15 '</span>,
+      change: <span class="hljs-string">'+2.01 '</span>,
+      changePercent: <span class="hljs-string">'+45.00% '</span>,
+      sample: <span class="hljs-string">'$0.00 '</span>,
+      lorem: <span class="hljs-string">'ab ipsum '</span>
+    },
+    {
+      code: <span class="hljs-string">'AAC '</span>,
+      company: <span class="hljs-string">'Aditya'</span>,
+      price: <span class="hljs-string">'$2.22 '</span>,
+      change: <span class="hljs-string">'-1.21 '</span>,
+      changePercent: <span class="hljs-string">'+5.00% '</span>,
+      sample: <span class="hljs-string">'$0.00 '</span>,
+      lorem: <span class="hljs-string">'ab tyuy '</span>
+    },
+    {
+      code: <span class="hljs-string">'ABC '</span>,
+      company: <span class="hljs-string">'Acrux Limited'</span>,
+      price: <span class="hljs-string">'$1.50 '</span>,
+      change: <span class="hljs-string">'-0.01 '</span>,
+      changePercent: <span class="hljs-string">'±0% '</span>,
+      sample: <span class="hljs-string">'$0.00 '</span>,
+      lorem: <span class="hljs-string">'mad&lt;br&gt;abdi '</span>
+    },
+    {
+      code: <span class="hljs-string">'AGK '</span>,
+      company: <span class="hljs-string">'Adamus'</span>,
+      price: <span class="hljs-string">'$3.12 '</span>,
+      change: <span class="hljs-string">'-0.01 '</span>,
+      changePercent: <span class="hljs-string">'-1.00% '</span>,
+      sample: <span class="hljs-string">'$0.00 '</span>,
+      lorem: <span class="hljs-string">'ab tyuy '</span>
+    }
+  ];
+  displayedColumns = [
+    { title: <span class="hljs-string">'Code'</span>, key: <span class="hljs-string">'code'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
+    { title: <span class="hljs-string">'Company'</span>, key: <span class="hljs-string">'company'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
+    { title: <span class="hljs-string">'Price'</span>, key: <span class="hljs-string">'price'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'numeric'</span> },
+    { title: <span class="hljs-string">'Change Percent'</span>, key: <span class="hljs-string">'changePercent'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'numeric'</span> },
+    { title: <span class="hljs-string">'Change'</span>, key: <span class="hljs-string">'change'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'numeric'</span> },
+    { title: <span class="hljs-string">'Lorem Ipsum'</span>, key: <span class="hljs-string">'lorem'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> }
+  ];
+}

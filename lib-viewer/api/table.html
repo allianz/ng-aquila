@@ -1,0 +1,898 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxTableModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/table'</span>;
+    </code>
+  </p><h3 id="services" class="docs-header-link docs-api-h3">
+      <span header-link="services"></span>
+      Services
+    </h3>
+    
+      
+
+<h4 id="NxSortHeaderIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSortHeaderIntl"></span>
+  <code>NxSortHeaderIntl</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">changes</span>:
+        <span class="docs-api-property__type">Subject<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Stream that emits whenever the labels here are changed. Use this to notify
+components if the labels have changed after initialization.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">sortAscendingAriaLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The aria label for a header that can be sorted ascending.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">sortDescendingAriaLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The aria label for a header that can be sorted descending.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxExpandableTableCellComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxExpandableTableCellComponent"></span>
+  <code>NxExpandableTableCellComponent</code></h4><p class="docs-api-class-description"><p>This is an expandable table cell.
+Only works in conjunction with the <code>[nxExpandableTableRow]</code> component.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">td[nxExpandableTableCell]</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxExpandableTableRowComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxExpandableTableRowComponent"></span>
+  <code>NxExpandableTableRowComponent</code></h4><p class="docs-api-class-description"><p>This is an expandable table row.
+It can collapse its height to hide the content.
+Requires the table cells to have the <code>[nxExpandableTableCell]</code> component.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">tr[nxExpandableTableRow]</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">expanded</span>:
+        <span class="docs-api-property__type">BehaviorSubject<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">close(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Closes this row.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">expand(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Expands this row.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Toggles the expansion of this row.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxExpandableTableDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxExpandableTableDirective"></span>
+  <code>NxExpandableTableDirective</code></h4><p class="docs-api-class-description"><p>The nxExpandableTable adds row expansion functionality to the nxTable.
+It provides the logic to expand/collapse all expandable rows simultanously.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">table[nxExpandableTable]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxExpandableTable</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">expanded</span>:
+        <span class="docs-api-property__type">BehaviorSubject<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">rows</span>:
+        <span class="docs-api-property__type">QueryList<NxExpandableTableRowComponent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">close(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Closes all expandable rows.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">expand(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Expands all expandable rows.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Toggles the expandable rows. If all rows are open it will close them, otherwise it will open them.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxToggleButtonComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxToggleButtonComponent"></span>
+  <code>NxToggleButtonComponent</code></h4><p class="docs-api-class-description"><p>This toggle button can be clicked and toggles expandable elements.
+e.g. it can toggle a expandable table row or anything else that implements the <code>NxExpandable</code> interface.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-toggle-button</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">ariaLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">target</span>:
+        <span class="docs-api-property__type">NxExpandable</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>This is the expandable target that will be toggled when the user clicks the button.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxHeaderCellDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxHeaderCellDirective"></span>
+  <code>NxHeaderCellDirective</code></h4><p class="docs-api-class-description"><p>This is a table header cell.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxHeaderCell]</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxTableCellComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTableCellComponent"></span>
+  <code>NxTableCellComponent</code></h4><p class="docs-api-class-description"><p>This is a table cell.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">td[nxTableCell]</span>
+      
+        <span class="docs-api-class-selector-name">td[nxCell]</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxTableRowComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTableRowComponent"></span>
+  <code>NxTableRowComponent</code></h4><p class="docs-api-class-description"><p>This is a table row.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">tr[nxTableRow]</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">selectable</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether this table row is selectable</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">selected</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether this table row is selected</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">select</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxTableComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTableComponent"></span>
+  <code>NxTableComponent</code></h4><p class="docs-api-class-description"><p>This is a table.
+The table supports a <code>zebra</code> and a <code>condensed</code> mode.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">table[nxTable]</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">condensed</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Change the table mode to condensed</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">zebra</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Change the table mode to zebra</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxSortHeaderComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSortHeaderComponent"></span>
+  <code>NxSortHeaderComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">th[nxSortHeaderCell]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxSortHeaderComponent</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxSortHeaderCell'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">key</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the key of this sort header.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxSortDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSortDirective"></span>
+  <code>NxSortDirective</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">table[nxSort]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">NxSortDirective</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">active</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the key of the most recently sorted column.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">direction</span>:
+        <span class="docs-api-property__type">SortDirection</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the direction of the currently active sorted column. Default: &#39;asc&#39;.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">sortChange</span>:
+        <span class="docs-api-property__type">EventEmitter<SortEvent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event emitted when either the active sort or sort direction changes.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">sort(<!--
+     --><!--
+       --><!--
+         -->sortable:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Sets the active sort key and determines the new sort direction.
+Afterwards the output event <code>sortChange</code> is called.</p>
+<p>If <code>sortable</code> is not the key of the active sort header, the initial direction to sort is &#39;asc&#39;.
+Otherwise the direction of the sorted column changes.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            sortable:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+
+
+
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+      <span header-link="additional_classes"></span>
+      Additional classes
+    </h3>
+    
+      
+
+<h4 id="SortEvent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="SortEvent"></span>
+  <code>SortEvent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">active</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The name of the column that is being sorted by.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">direction</span>:
+        <span class="docs-api-property__type">SortDirection</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The sort direction.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      
+
+<h4 id="NxExpandable" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="NxExpandable"></span>
+  <code>NxExpandable</code>
+</h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">close</span>:
+        <span class="docs-api-property__type">() => void</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Closes this component.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">expand</span>:
+        <span class="docs-api-property__type">() => void</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Expands this component.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">expanded</span>:
+        <span class="docs-api-property__type">BehaviorSubject<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Indicates if this expandable instance is open or not.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">toggle</span>:
+        <span class="docs-api-property__type">() => void</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Toggles the open state.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="SortDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="SortDirection"></span>
+  <code>SortDirection</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'asc' | 'desc'</code>
+</p>
+
+
+    </div>

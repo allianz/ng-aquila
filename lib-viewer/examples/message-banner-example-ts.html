@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Notification banner example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./message-banner-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessageBannerExampleComponent {
+  infoBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+  warningBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+  errorBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+  showAllBanners() {
+    <span class="hljs-keyword">this</span>.infoBannerClosed = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">this</span>.warningBannerClosed = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">this</span>.errorBannerClosed = <span class="hljs-literal">false</span>;
+  }
+}

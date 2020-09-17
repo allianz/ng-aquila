@@ -1,0 +1,70 @@
+<div class="docs-deprecation-warning">
+  <strong>Expert: </strong>
+  Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
+</div>
+<p class="docs-markdown--p">Tooltip requires Angular CDK (incl. CSS).</p>
+<p class="docs-markdown--p">The Tooltip provides a text label that is displayed when the user hovers over or focuses an element.
+It allows to display additional information for supporting the customer,
+and should <strong>only be used for optional information</strong>.</p>
+<div nx-docs-example="tooltip-basic">exampleID: tooltip-basic</div>
+<h3 id="positioning" class="docs-markdown--h3">Positioning</h3>
+<p class="docs-markdown--p">By default the tooltip will be displayed below the element, but this can be configured
+using the <code>nxTooltipPosition</code> input. The tooltip can be displayed above,
+below, left or right of the element.</p>
+<p class="docs-markdown--p">If there is not enough space available on the viewport, the tooltip will
+fallback to a different position.</p>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th>Position</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>top</td>
+<td>Display above the element</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>Display beneath the element</td>
+</tr>
+<tr>
+<td>left</td>
+<td>Display to the left of the element</td>
+</tr>
+<tr>
+<td>right</td>
+<td>Display to the right of the element</td>
+</tr>
+</tbody>
+</table>
+<div nx-docs-example="tooltip-positions">exampleID: tooltip-positions</div>
+<h3 id="showing-and-hiding" class="docs-markdown--h3">Showing and hiding</h3>
+<p class="docs-markdown--p">By default, the tooltip will be shown when the user's mouse hovers over
+the tooltip's trigger element and hides when the user's mouse leaves.</p>
+<h3 id="show-and-hide-delays" class="docs-markdown--h3">Show and hide delays</h3>
+<p class="docs-markdown--p">To change the delay before showing or hiding the tooltip, you can use
+the inputs <code>nxTooltipShowDelay</code> and <code>nxTooltipHideDelay</code> to provide a delay time in milliseconds.</p>
+<p class="docs-markdown--p">The following example has a tooltip that waits one second to display after
+the user hovers over the button, and waits another second to hide after the user moves the mouse away.</p>
+<div nx-docs-example="tooltip-delay">exampleID: tooltip-delay</div>
+<h3 id="disabling-the-tooltip-from-showing" class="docs-markdown--h3">Disabling the tooltip from showing</h3>
+<p class="docs-markdown--p">To completely disable a tooltip, set <code>nxTooltipDisabled</code>. While disabled, a tooltip will never be shown.</p>
+<div nx-docs-example="tooltip-disabled">exampleID: tooltip-disabled</div>
+<h3 id="manually-calling-show()-and-hide()" class="docs-markdown--h3">Manually calling show() and hide()</h3>
+<p class="docs-markdown--p">To manually cause the tooltip to show or hide, you can call the show and hide directive methods,
+which both accept a number in milliseconds to delay before applying the display change.</p>
+<div nx-docs-example="tooltip-programmatic">exampleID: tooltip-programmatic</div>
+<h3 id="changing-the-default-delay-behavior" class="docs-markdown--h3">Changing the default delay behavior</h3>
+<p class="docs-markdown--p">You can configure your app's tooltip default show/hide delays and default
+position by configuring and providing your options using the <code>NX_TOOLTIP_DEFAULT_OPTIONS</code>
+injection token.</p>
+<div nx-docs-example="tooltip-settings">exampleID: tooltip-settings</div>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">Elements with the <code>nxTooltip</code> will add an <code>aria-describedby</code> label that
+provides a reference to a visually hidden element containing the tooltip's message.
+This provides screenreaders the information needed to read out the tooltip's
+contents when the end-user focuses on the element triggering the tooltip.
+The element referenced via <code>aria-describedby</code> is not the tooltip itself,
+but instead an invisible copy of the tooltip content that is always present in the DOM.</p>

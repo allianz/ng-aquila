@@ -1,0 +1,35 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-keyword">enum</span> FruitPreferenceType {
+  NEVER,
+  RARELY,
+  SOMETIMES,
+  OFTEN,
+  ALWAYS
+}
+
+<span class="hljs-comment">/**
+ * @title Slider Textual Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-slider-textual-example'</span>,
+  templateUrl: <span class="hljs-string">'./slider-textual-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SliderTextualExampleComponent {
+  fruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
+    <span class="hljs-keyword">switch</span> (value) {
+      <span class="hljs-keyword">case</span> FruitPreferenceType.NEVER:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'never'</span>;
+      <span class="hljs-keyword">case</span> FruitPreferenceType.RARELY:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'rarely'</span>;
+      <span class="hljs-keyword">case</span> FruitPreferenceType.SOMETIMES:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'sometimes'</span>;
+      <span class="hljs-keyword">case</span> FruitPreferenceType.OFTEN:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'often'</span>;
+      <span class="hljs-keyword">case</span> FruitPreferenceType.ALWAYS:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'always'</span>;
+    }
+  }
+  minFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">`never`</span>;
+  maxFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">`always`</span>;
+}

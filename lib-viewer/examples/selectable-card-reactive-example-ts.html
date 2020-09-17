@@ -1,0 +1,22 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Selectable cards reactive example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./selectable-card-reactive-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SelectableCardReactiveExampleComponent {
+  <span class="hljs-keyword">public</span> testForm: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
+      selectableCardTestReactive: [<span class="hljs-literal">false</span>, Validators.requiredTrue]
+    });
+  }
+}

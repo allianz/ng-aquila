@@ -1,0 +1,14 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"myFormGroup"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"terms"</span> <span class="hljs-attr">required</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"data"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>  [<span class="hljs-attr">size</span>]=<span class="hljs-string">"'small'"</span>&gt;</span>Select your choices<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">"text"</span>&gt;</span>
+      Please select at least one checkbox.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let key of data"</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">"key"</span> <span class="hljs-attr">checked</span>&gt;</span>{{key}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form value: {{ myFormGroup.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Form status: {{ myFormGroup.status | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"addNewCb()"</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Add new checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"removeCB()"</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Remove first checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

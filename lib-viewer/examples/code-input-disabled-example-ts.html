@@ -1,0 +1,43 @@
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Disabled example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-code-input-disabled-example'</span>,
+  templateUrl: <span class="hljs-string">'code-input-disabled-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'code-input-disabled-example.css'</span>]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CodeInputDisabledExampleComponent <span class="hljs-keyword">implements</span> OnInit {
+  inputValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;
+  codeForm: FormGroup;
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
+      keyCode: <span class="hljs-keyword">new</span> FormControl(
+        { value: <span class="hljs-keyword">this</span>.inputValue, disabled: <span class="hljs-literal">true</span> },
+        { validators: [
+            Validators.required,
+            Validators.pattern(<span class="hljs-string">'[A-Z]+'</span>),
+            Validators.minLength(<span class="hljs-number">4</span>)
+          ],
+          updateOn: <span class="hljs-string">'submit'</span>
+        }
+      )
+    });
+  }
+
+  <span class="hljs-keyword">get</span> keyCode() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.codeForm.get(<span class="hljs-string">'keyCode'</span>);
+  }
+
+  toggleDisabled() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.keyCode.disabled) {
+      <span class="hljs-keyword">this</span>.keyCode.enable();
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.keyCode.disable();
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<h3 id="examples" class="docs-markdown--h3">Examples</h3>
+<p class="docs-markdown--p">This component has two sizes - big and normal.</p>
+<div nx-docs-example="number-stepper-sizes">exampleID: number-stepper-sizes</div>
+<h4 id="standalone" class="docs-markdown--h4">Standalone</h4>
+<p class="docs-markdown--p">Number of travellers</p>
+<div nx-docs-example="number-stepper-standalone">exampleID: number-stepper-standalone</div>
+<h4 id="custom-label" class="docs-markdown--h4">Custom label</h4>
+<p class="docs-markdown--p">You can use custom markup by omiting the nxLabel attribute and provide your markup inside the element, e.g. to show a tooltip. If nxLabel is set the custom content will not be rendered!</p>
+<div nx-docs-example="number-stepper-custom-label">exampleID: number-stepper-custom-label</div>
+<h4 id="leading-zero-(number-formatting)" class="docs-markdown--h4">Leading Zero (Number Formatting)</h4>
+<p class="docs-markdown--p">By default, numbers have a preceeding zero. You can disable this by setting the <code>leadingZero</code> property to false as shown in the example below.</p>
+<div nx-docs-example="number-stepper-formatting">exampleID: number-stepper-formatting</div>
+<h4 id="prefix-and-suffix" class="docs-markdown--h4">Prefix and Suffix</h4>
+<p class="docs-markdown--p">You can add a prefix/suffix at the beginning or at the end of the number input by using <code>nx-number-stepper-prefix</code> or <code>nx-number-stepper-suffix</code> as shown in the example below.</p>
+<div nx-docs-example="number-stepper-additions">exampleID: number-stepper-additions</div>
+<h4 id="simple-binding" class="docs-markdown--h4">Simple Binding</h4>
+<div nx-docs-example="number-stepper-simple-binding">exampleID: number-stepper-simple-binding</div>
+<h4 id="template-driven-with-ngmodel" class="docs-markdown--h4">Template-driven with ngModel</h4>
+<div nx-docs-example="number-stepper-template-driven">exampleID: number-stepper-template-driven</div>
+<h4 id="reactive" class="docs-markdown--h4">Reactive</h4>
+<div nx-docs-example="number-stepper-reactive">exampleID: number-stepper-reactive</div>
+<h4 id="floating-point-support" class="docs-markdown--h4">Floating point support</h4>
+<p class="docs-markdown--p">Floating point numbers are fully supported and can be enabled by setting the step size to a decimal number</p>
+<div nx-docs-example="number-stepper-floating-point">exampleID: number-stepper-floating-point</div>
+<h4 id="negative-styling" class="docs-markdown--h4">Negative styling</h4>
+<div nx-docs-example="number-stepper-negative">exampleID: number-stepper-negative</div>
+<h4 id="disabled" class="docs-markdown--h4">Disabled</h4>
+<p class="docs-markdown--p">You can fully disable user input on the number stepper component by setting <code>nxDisabled</code> property to <code>true</code>.</p>
+<div nx-docs-example="number-stepper-disabled-explicit">exampleID: number-stepper-disabled-explicit</div>
+<p class="docs-markdown--p">The number stepper will also be disabled as part of a disabled form.</p>
+<div nx-docs-example="number-stepper-disabled-implicit">exampleID: number-stepper-disabled-implicit</div>
+<h3 id="validation" class="docs-markdown--h3">Validation</h3>
+<p class="docs-markdown--p">The directive registers itself as a validator and will append one of the following errors:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>nxNumberStepperStepError</code> when the value is not a valid step. E.g. for nxMin=0 and nxStep=2 the value 1 is not a valid step</li>
+<li class="docs-markdown--li"><code>nxNumberStepperFormatError</code> when the value contains invalid characters, e.g. letters</li>
+</ul>
+<p class="docs-markdown--p">As usual you can use this error key to distinguish from other errors.
+Try it below: Enter 1 or type in any letter to see the errors.</p>
+<div nx-docs-example="number-stepper-validation">exampleID: number-stepper-validation</div>
+<h3 id="auto-resizing" class="docs-markdown--h3">Auto resizing</h3>
+<p class="docs-markdown--p">When working with larger numbers or decimals the input width might be too small to properly show the current number. By enabling <code>nxResize=&quot;true&quot;</code> the input automatically grows and shrinks to the width of the input value including border and padding.</p>
+<div nx-docs-example="number-stepper-auto-resizing">exampleID: number-stepper-auto-resizing</div>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">If the component owns the focus, you can increment by pressing the ARROW-UP button and decrement by pressing the ARROW-DOWN button.</p>
+<h4 id="localization" class="docs-markdown--h4">Localization</h4>
+<p class="docs-markdown--p">The increment and decrement buttons need to have an aria-label for a11y support. By default they have english aria-labels, to translate them you can subclass the <code>NxNumberStepperIntl</code> and provide it in your module.</p>
+<div nx-docs-example="number-stepper-localize">exampleID: number-stepper-localize</div>

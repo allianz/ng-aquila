@@ -1,0 +1,21 @@
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Simple form example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./formfield-simple-form-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldSimpleFormExampleComponent {
+  formGroup: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">this</span>.formGroup = <span class="hljs-keyword">new</span> FormBuilder().group({
+      firstName: [<span class="hljs-string">''</span>, Validators.required],
+      lastName: [<span class="hljs-string">''</span>, Validators.required],
+      items: [<span class="hljs-string">''</span>, Validators.required],
+      email: [<span class="hljs-string">''</span>, Validators.required]
+    });
+  }
+}

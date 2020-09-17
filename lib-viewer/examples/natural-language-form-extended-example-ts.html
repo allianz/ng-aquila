@@ -1,0 +1,48 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Extended example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./natural-language-form-extended-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NaturalLanguageFormExtendedExampleComponent {
+  naturalForm: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.buildForm();
+  }
+
+  buildForm() {
+    <span class="hljs-keyword">this</span>.naturalForm = <span class="hljs-keyword">this</span>.fb.group({
+      who: <span class="hljs-keyword">new</span> FormControl(
+        <span class="hljs-string">''</span>,
+        [
+          Validators.required
+        ]
+      ),
+      city: <span class="hljs-keyword">new</span> FormControl(
+        <span class="hljs-string">''</span>,
+        [
+          Validators.required
+        ]
+      ),
+      spots: <span class="hljs-keyword">new</span> FormControl(
+        <span class="hljs-string">''</span>,
+        [
+          Validators.pattern(<span class="hljs-string">'[0-9]*'</span>),
+          Validators.required
+        ]
+      )
+      }
+    );
+  }
+
+  validate() {
+    <span class="hljs-built_in">Object</span>.keys(<span class="hljs-keyword">this</span>.naturalForm.controls).forEach(<span class="hljs-function"><span class="hljs-params">field</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> control = <span class="hljs-keyword">this</span>.naturalForm.get(field);
+      control.markAsTouched({ onlySelf: <span class="hljs-literal">true</span> });
+    });
+  }
+}

@@ -1,0 +1,62 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu</span>=<span class="hljs-string">"nxContextMenu"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxContextMenuContent</span> <span class="hljs-attr">let-contract</span>=<span class="hljs-string">"contract"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user-o"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      User: {{ contract.user }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"bookmark-o"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      Bookmark
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"pen"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      Edit
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxContextMenuItem</span>
+      [<span class="hljs-attr">nxContextMenuTriggerFor</span>]=<span class="hljs-string">"documentsSubmenu"</span>
+      [<span class="hljs-attr">nxContextMenuTriggerData</span>]=<span class="hljs-string">"{ documents: contract.documents }"</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"file"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      Documents
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">documentsSubmenu</span>=<span class="hljs-string">"nxContextMenu"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxContextMenuContent</span> <span class="hljs-attr">let-documents</span>=<span class="hljs-string">"documents"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let document of documents"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxContextMenuItem</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"pdf"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        {{ document }}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">condensed</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Contract Id<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Context menu"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let contract of contracts"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{ contract.id }}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">"contract.status"</span>&gt;</span>{{ contract.status }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">"tertiary small"</span>
+          [<span class="hljs-attr">nxContextMenuTriggerFor</span>]=<span class="hljs-string">"menu"</span>
+          [<span class="hljs-attr">nxContextMenuTriggerData</span>]=<span class="hljs-string">"{ contract: contract }"</span>
+          <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Open menu"</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ellipsis-h"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

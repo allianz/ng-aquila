@@ -1,0 +1,63 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxViewportService, NxBreakpoints } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/utils'</span>;
+<span class="hljs-keyword">import</span> { NxSidebarComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/sidebar'</span>;
+<span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+
+<span class="hljs-comment">/**
+* @title Viewport Subscription example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./viewport-change-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./viewport-change-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ViewportChangeExampleComponent <span class="hljs-keyword">implements</span> OnDestroy {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'sidebar'</span>) sidebar: NxSidebarComponent;
+  actions = [
+    {
+      icon: <span class="hljs-string">'file-text'</span>,
+      label: <span class="hljs-string">'All Files'</span>,
+      query: { a: <span class="hljs-number">1</span> }
+    },
+    {
+      icon: <span class="hljs-string">'calendar'</span>,
+      label: <span class="hljs-string">'Calendar'</span>,
+      query: { a: <span class="hljs-number">2</span> }
+    },
+    {
+      icon: <span class="hljs-string">'mail-o'</span>,
+      label: <span class="hljs-string">'Email'</span>,
+      query: { a: <span class="hljs-number">3</span> }
+    },
+    {
+      icon: <span class="hljs-string">'user-business-o'</span>,
+      label: <span class="hljs-string">'My Profile'</span>,
+      query: { a: <span class="hljs-number">4</span> }
+    },
+    {
+      icon: <span class="hljs-string">'file'</span>,
+      label: <span class="hljs-string">'Recent Downloads'</span>,
+      query: { a: <span class="hljs-number">5</span> }
+    }
+  ];
+
+  viewportServiceSubscription: Subscription;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> viewportService: NxViewportService</span>) {
+
+    <span class="hljs-keyword">this</span>.viewportServiceSubscription = <span class="hljs-keyword">this</span>.viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanMedium</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (isGreaterThanMedium &amp;&amp; !<span class="hljs-keyword">this</span>.sidebar.open) {
+          <span class="hljs-keyword">this</span>.sidebar.expand();
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanMedium) {
+          <span class="hljs-comment">// don't trigger unneeded close() and expand()</span>
+          <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.sidebar.open) {
+            <span class="hljs-keyword">this</span>.sidebar.close();
+          }
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    <span class="hljs-keyword">this</span>.viewportServiceSubscription.unsubscribe();
+  }
+}

@@ -1,0 +1,18 @@
+<h3 id="module" class="docs-markdown--h3">Module</h3>
+<p class="docs-markdown--p">We have a hard dependency on NxPopover (to display error messages) so make sure to import the OverlayModule and its css as described in <a href="./documentation/popover/overview">NxPopover</a>.</p>
+<p class="docs-markdown--p">A Natural Language Form is a composition of your usual set of html elements and 'Words' (<code>NxWordComponent</code>).</p>
+<p class="docs-markdown--p">Words are wrappers for <code>NxFormfieldControl</code> components like <a href="./documentation/input/overview">NxInput</a> and <a href="./documentation/dropdown/overview">NxDropdown</a> and provide the necessary functionality to use them inline, with appropriate styling and a functionality to show errors in a popover. A word has the ability to grow and shrink while maintaining a minimal width which can be chosen by you.</p>
+<h3 id="examples" class="docs-markdown--h3">Examples</h3>
+<h4 id="basic-example" class="docs-markdown--h4">Basic example</h4>
+<p class="docs-markdown--p">Here is a simple example. You can trigger the error by touching and blurring the field as it's set to be required. Each word will display an error message in a popover if any is given through the directive nxError.</p>
+<div nx-docs-example="natural-language-form-basic">exampleID: natural-language-form-basic</div>
+<h4 id="extended" class="docs-markdown--h4">Extended</h4>
+<p class="docs-markdown--p">A Natural Language Form can contain an unlimited amount of words. You can pass in all inputs that you can already use with a <a href="./documentation/formfield/overview">NxFormfield</a> which are at the moment <a href="./documentation/input/overview">NxInput</a> and <a href="./documentation/dropdown/overview">NxDropdown</a>. If you want to create your own input, you have to implement the abstract class <code>NxFormfieldControl</code>.</p>
+<div nx-docs-example="natural-language-form-extended">exampleID: natural-language-form-extended</div>
+<h4 id="negative-styling" class="docs-markdown--h4">Negative styling</h4>
+<div nx-docs-example="natural-language-form-negative">exampleID: natural-language-form-negative</div>
+<h4 id="sizes" class="docs-markdown--h4">Sizes</h4>
+<p class="docs-markdown--p">The default size of the Natural Language Form is <code>large</code>. You can change this via the <code>[size]</code> input as shown below.</p>
+<div nx-docs-example="natural-language-form-sizes">exampleID: natural-language-form-sizes</div>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">Don't forget to add a label to any word you are using. Otherwise you will hurt accessibility and people won't know which input is expected.</p>

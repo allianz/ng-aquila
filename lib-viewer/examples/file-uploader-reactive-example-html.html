@@ -1,0 +1,25 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"testForm"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-uploader</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"documents"</span>
+                    <span class="hljs-attr">required</span> #<span class="hljs-attr">documentUpload</span>
+                    <span class="hljs-attr">accept</span>=<span class="hljs-string">"image/jpeg, image/x-png, image/png"</span>
+                    <span class="hljs-attr">multiple</span>
+                    [<span class="hljs-attr">uploader</span>]=<span class="hljs-string">"uploader"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"small"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-3xs"</span>&gt;</span>Required file to upload<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-s"</span> <span class="hljs-attr">nxFileUploadHint</span>&gt;</span>Only JPG or PNG files are accepted.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small-medium"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-s"</span> <span class="hljs-attr">nxFileUploadButton</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"plus"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-right-2xs"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      Add File
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"secondary small"</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>
+          [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">"!testForm.valid"</span>
+          [<span class="hljs-attr">nxFileUploadTriggerFor</span>]=<span class="hljs-string">"documentUpload"</span>
+          <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-0"</span>&gt;</span>
+    Upload files
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

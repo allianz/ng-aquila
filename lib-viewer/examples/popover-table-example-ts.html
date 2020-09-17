@@ -1,0 +1,78 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Popover Table Example
+ */</span>
+ <span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-popover-table-example'</span>,
+  templateUrl: <span class="hljs-string">'./popover-table-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PopoverTableExampleComponent {
+  data = [
+    {
+      nxDirection: <span class="hljs-string">'right'</span>,
+      nospaceon: <span class="hljs-string">'right'</span>,
+      fallback: <span class="hljs-string">'bottom'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'right'</span>,
+      nospaceon: <span class="hljs-string">'right, bottom'</span>,
+      fallback: <span class="hljs-string">'left'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'right'</span>,
+      nospaceon: <span class="hljs-string">'right, bottom, left'</span>,
+      fallback: <span class="hljs-string">'top'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'bottom'</span>,
+      nospaceon: <span class="hljs-string">'bottom'</span>,
+      fallback: <span class="hljs-string">'right'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'bottom'</span>,
+      nospaceon: <span class="hljs-string">'bottom, right'</span>,
+      fallback: <span class="hljs-string">'left'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'bottom'</span>,
+      nospaceon: <span class="hljs-string">'bottom, right, left'</span>,
+      fallback: <span class="hljs-string">'top'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'left'</span>,
+      nospaceon: <span class="hljs-string">'left'</span>,
+      fallback: <span class="hljs-string">'bottom'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'left'</span>,
+      nospaceon: <span class="hljs-string">'left, bottom'</span>,
+      fallback: <span class="hljs-string">'right'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'left'</span>,
+      nospaceon: <span class="hljs-string">'bottom, right, left'</span>,
+      fallback: <span class="hljs-string">'top'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'top'</span>,
+      nospaceon: <span class="hljs-string">'top'</span>,
+      fallback: <span class="hljs-string">'bottom'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'top'</span>,
+      nospaceon: <span class="hljs-string">'top, bottom'</span>,
+      fallback: <span class="hljs-string">'right'</span>
+    },
+    {
+      nxDirection: <span class="hljs-string">'top'</span>,
+      nospaceon: <span class="hljs-string">'top, bottom, right'</span>,
+      fallback: <span class="hljs-string">'left'</span>
+    }
+  ];
+  displayedColumns = [
+    { title: <span class="hljs-string">'nxDirection'</span>, key: <span class="hljs-string">'nxDirection'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
+    { title: <span class="hljs-string">'no space on'</span>, key: <span class="hljs-string">'nospaceon'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
+    { title: <span class="hljs-string">'fallback'</span>, key: <span class="hljs-string">'fallback'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> }
+  ];
+}

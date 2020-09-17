@@ -1,0 +1,154 @@
+<h2 id="custom-theming---release-candidate" class="docs-markdown--h2">Custom theming - release candidate</h2>
+<p class="docs-markdown--p">All components in this library are styled by using the style tokens listed <a href="./documentation/theming/overview#general-theming-tokens">here</a>. You can create your own custom theme by overwriting the values of these style tokens.</p>
+<p class="docs-markdown--p">The library provides an interface for extending and overwriting properties of our base theme to enable the creation of custom application themes. This is accomplished by using SCSS maps for merging your newly defined style tokens and our base theme tokens and then injecting those into the components by CSS variables.</p>
+<p class="docs-markdown--p">If you want your application to support IE11, please look at the <a href="./documentation/theming/overview#ie11-support">IE11 support section</a>.</p>
+<h3 id="customizing-the-base-theme" class="docs-markdown--h3">Customizing the base theme</h3>
+<p class="docs-markdown--p">In order to define your custom theme first create a file <code>&lt;your-theme&gt;.scss</code>.</p>
+<p class="docs-markdown--p">To register your theme import the theming utilities:</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
+</code></pre>
+<p class="docs-markdown--p">Then, you should define your new theme as a <code>scss-map</code> which overwrites all default theming tokens you want to change:</p>
+<pre><code class="language-scss"><span class="hljs-variable">$my-theme</span>: (
+  interactive-primary: green,
+
+  link-color: interactive-primary,
+
+  heading-<span class="hljs-number">01</span>-font-size: <span class="hljs-number">58px</span>,
+  heading-<span class="hljs-number">01</span>-line-height: <span class="hljs-number">64px</span>,
+  heading-<span class="hljs-number">01</span>-font-weight: <span class="hljs-number">500</span>,
+  heading-<span class="hljs-number">01</span>-letter-spacing: <span class="hljs-number">0.2px</span>
+);
+
+<span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName);
+</code></pre>
+<p class="docs-markdown--p">By calling the <code>nx-register-theme(themeName)</code> mixin you are merging our base theme with your own theme (overwritten tokens + new tokens).</p>
+<p class="docs-markdown--p">Per default, the base theme for the new theme is aposin. You can also pass another theme as a base (third argument), but you first have to import or define it:</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/themes/your-base-theme"</span>;
+...
+<span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName, baseThemeName);
+</code></pre>
+<div class="docs-private">
+Currently the following internal themes are available as a base theme: **aposin** (implicitly), **ndbx**, **ndbx-expert** and **direct**, which have to be explicitly imported as shown in the example above.
+</div>
+<h3 id="enabling-(building)-a-new-theme" class="docs-markdown--h3">Enabling (building) a new theme</h3>
+<p class="docs-markdown--p">In order to inject the newly defined custom theme tokens into the components you have to build your new theme by using the <code>nx-buid-theme</code> mixin.</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@include</span> nx-build-theme(themeName);
+</code></pre>
+<p class="docs-markdown--p"><strong>Important:</strong> Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application.
+We recommend the following import in your global scss file:</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+
+<span class="hljs-keyword">@include</span> nx-build-theme(themeName);
+</code></pre>
+<h3 id="using-your-new-theme" class="docs-markdown--h3">Using your new theme</h3>
+<p class="docs-markdown--p">In order to have access to the newly defined tokens you have to import <code>&lt;your-theme&gt;.scss</code> into every SCSS file where you want to use your tokens. You can also import it to a global SCSS stylesheet and import this one wherever needed.</p>
+<p class="docs-markdown--p">We provide you with two utility helpers:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>nx-theme(token)</strong> for getting a css variable value</li>
+<li class="docs-markdown--li"><strong>type-style(token)</strong> for getting the defined typography properties of an element. here you have to prefix these tokens in the same way and define font-size, font-weight, letter-spacing and line-height as shown in the snippet with <em>headline-01</em> above.</li>
+</ul>
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+
+<span class="hljs-selector-class">.test-class</span> {
+  <span class="hljs-keyword">@include</span> type-style(heading-<span class="hljs-number">01</span>);
+  <span class="hljs-attribute">background</span>: nx-theme(interactive-primary);
+}
+</code></pre>
+<h3 id="advanced" class="docs-markdown--h3">Advanced</h3>
+<p class="docs-markdown--p">You can also add new tokens when creating your custom theme as well as use exisiting token values for your new tokens:</p>
+<pre><code class="language-scss"><span class="hljs-variable">$my-theme</span>: (
+  my-new-token: pink,
+  my-new-token-<span class="hljs-number">2</span>: primary-action,
+);
+
+<span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName);
+</code></pre>
+<p class="docs-markdown--p">And then use them as stated before:</p>
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+
+<span class="hljs-selector-class">.test-class</span> {
+  <span class="hljs-attribute">background</span>: nx-theme(my-new-token);
+}
+</code></pre>
+<h4 id="ie11-support" class="docs-markdown--h4">IE11 Support</h4>
+<p class="docs-markdown--p">If you want to use theming, this required a <a href="https://github.com/jhildenbiddle/css-vars-ponyfill/">css vars ponyfill</a> for IE11
+as a dependency.</p>
+<p class="docs-markdown--p">For that purpose you need to install the css-vars-ponyfill:</p>
+<pre><code>npm install css-vars-ponyfill
+</code></pre>
+<p class="docs-markdown--p">Then, import the ponyfill into your <code>polyfill.ts</code> and call it:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">'css-vars-ponyfill'</span>;
+
+cssVars({
+  watch: <span class="hljs-literal">true</span>,
+  onlyLegacy: <span class="hljs-literal">true</span>,
+  shadowDOM: <span class="hljs-literal">true</span>
+});
+</code></pre>
+<p class="docs-markdown--p">The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters <a href="https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options">here</a>.</p>
+<h3 id="general-theming-tokens" class="docs-markdown--h3">General Theming Tokens</h3>
+<p class="docs-markdown--p">Our components are themed by the following general tokens. You can overwrite their values in your custom theme.
+A full list of the current style tokens can be found <a href="https://www.github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss">here</a>.</p>
+<pre><code class="language-scss">  ui-<span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2A3D</span>,
+  ui-<span class="hljs-number">01</span>: <span class="hljs-number">#0F2A3D</span>,
+  ui-<span class="hljs-number">02</span>: <span class="hljs-number">#143851</span>,
+  ui-<span class="hljs-number">03</span>: <span class="hljs-number">#194666</span>,
+  ui-<span class="hljs-number">04</span>: <span class="hljs-number">#2D7FB8</span>,
+  ui-<span class="hljs-number">05</span>: <span class="hljs-number">#E9F7FB</span>,
+  ui-<span class="hljs-number">06</span>: <span class="hljs-number">#FFFFFF</span>,
+
+  interactive-text: <span class="hljs-number">#27ABD6</span>,
+  interactive-primary: <span class="hljs-number">#27ABD6</span>,
+  hover-primary: <span class="hljs-number">#3BB4DB</span>,
+  hover-secondary: <span class="hljs-number">#194666</span>,
+
+  active-primary: <span class="hljs-number">#66C4E3</span>,
+  hover-link: <span class="hljs-number">#51BCDF</span>,
+
+  focus-box-shadow: (
+    <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">2px</span> <span class="hljs-number">#0F2A3D</span>,
+    <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">6px</span> <span class="hljs-number">#27ABD6</span>
+  ),
+
+  focus-inset-box-shadow: (
+    inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">4px</span> <span class="hljs-number">#27ABD6</span>,
+    inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">6px</span> <span class="hljs-number">#0F2A3D</span>
+  ),
+
+  // typically used on dark backgrounds
+  text-<span class="hljs-number">01</span>: <span class="hljs-number">#FFFFFF</span>,
+  // typically used on light backgrounds
+  text-<span class="hljs-number">02</span>: <span class="hljs-number">#0F2A3D</span>, // text, icon color of buttons, checkbox etc
+
+  info: <span class="hljs-number">#7C97D0</span>,
+  warning: <span class="hljs-number">#EFBE25</span>,
+  danger: <span class="hljs-number">#ED6F7C</span>,
+  success: <span class="hljs-number">#26AE31</span>,
+
+  accent-<span class="hljs-number">01</span>: <span class="hljs-number">#00B17F</span>, // emphasis
+  accent-<span class="hljs-number">02</span>: <span class="hljs-number">#6B8CFF</span>, // cta
+
+  disabled-<span class="hljs-number">01</span>: <span class="hljs-number">#969696</span>,
+  disabled-<span class="hljs-number">02</span>: <span class="hljs-number">#DBDBDB</span>,
+  disabled-<span class="hljs-number">03</span>: <span class="hljs-number">#EDEDED</span>,
+  disabled-<span class="hljs-number">04</span>: rgba(<span class="hljs-number">39</span>, <span class="hljs-number">171</span>, <span class="hljs-number">214</span>, <span class="hljs-number">0.35</span>),
+
+  negative: <span class="hljs-number">#0F2A3D</span>,
+  negative-accent: <span class="hljs-number">#E5E7E6</span>,
+  negative-<span class="hljs-number">01</span>: <span class="hljs-number">#23628F</span>,
+  negative-<span class="hljs-number">02</span>: <span class="hljs-number">#2D7FB8</span>,
+  negative-background: <span class="hljs-number">#E5E7E6</span>,
+
+  negative-dimmed: rgba(<span class="hljs-number">15</span>, <span class="hljs-number">42</span>, <span class="hljs-number">61</span>, <span class="hljs-number">0.4</span>),
+  negative-<span class="hljs-number">01</span>-dimmed: <span class="hljs-number">#23628F</span>,
+  negative-<span class="hljs-number">02</span>-dimmed: <span class="hljs-number">#2D7FB8</span>,
+  negative-background-dimmed: rgba(<span class="hljs-number">229</span>, <span class="hljs-number">231</span>, <span class="hljs-number">230</span>, <span class="hljs-number">0.4</span>),
+
+  grid-max-width: <span class="hljs-number">1184px</span>,
+
+  readonly-<span class="hljs-number">01</span>: rgba(<span class="hljs-number">150</span>, <span class="hljs-number">150</span>, <span class="hljs-number">150</span>, <span class="hljs-number">0.35</span>),
+  readonly-<span class="hljs-number">02</span>: <span class="hljs-number">#969696</span>,
+  readonly-<span class="hljs-number">03</span>: <span class="hljs-number">#FFFFFF</span>,
+</code></pre>

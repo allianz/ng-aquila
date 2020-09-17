@@ -1,0 +1,18 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">"singleRadioOutputTest"</span>
+  (<span class="hljs-attr">nxGroupValueChange</span>)=<span class="hljs-string">"log('nxGroupValueChange occured: '+$event.value)"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-m"</span>&gt;</span>This is a nx-radio-group label<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
+    <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"option1"</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-m"</span>
+    (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">"log('nxValueChange occured: '+$event.value)"</span>&gt;</span>
+    Option 1
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
+    <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"option2"</span>
+    (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">"log('nxValueChange occured: '+$event.value)"</span>&gt;</span>
+    Option 2
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">pre</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"logMessage"</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>

@@ -1,0 +1,27 @@
+<div class="docs-deprecation-warning">
+  <strong>Expert: </strong>
+  Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
+</div>
+<p class="docs-markdown--p">This is a collapsible menu. It is designed to be a replacement for the top level navigation in the header and the sidebar on small screens (mobile and tablet if necessary).
+The menu consists of a wrapper <code>&lt;nx-menu&gt;</code> component that handles the collapsing and positioning of the menu content.
+A common <code>&lt;nx-menu&gt;</code> contains a set of <code>[nxMenuItem]</code>,<code>[nxMenuButton]</code> and <code>[nxMenuLink]</code>.
+The content of the menu is not resticted to those elements.</p>
+<h2 id="menu-button" class="docs-markdown--h2">Menu Button</h2>
+<p class="docs-markdown--p">The <code>[nxMenuButton]</code> component is meant to be ether a top level link or a expandable item that reveals the next navigation level. A <code>[nxMenuButton]</code> can also contain a icon that is placed in front of the label.
+The icon needs to be marked with the <code>[nxMenuButtonIcon]</code> directive.
+When marked as 'expandable' the button will display a chevron icon to indicate its <code>expanded</code> state.</p>
+<div nx-docs-example="menu-button">exampleID: menu-button</div>
+<h2 id="menu-link" class="docs-markdown--h2">Menu Link</h2>
+<p class="docs-markdown--p">Every menu has a number of links. Those are usually displayed below an expanded <code>[nxMenuButton]</code> button.
+The <code>[nxMenuLink]</code> directive can be applied to a <code>&lt;a&gt;</code> tag to get the correct styling.</p>
+<div nx-docs-example="menu-link">exampleID: menu-link</div>
+<h2 id="menu-item" class="docs-markdown--h2">Menu Item</h2>
+<p class="docs-markdown--p">The <code>[nxMenuItem]</code> is used to structure sections within the menu. It can contain a series of <code>[nxMenuLink]</code> aswell as any other content. The item supports two different indentation levels, e.g. menues with icons in the buttons can use the large indentation while others can use the default.</p>
+<div nx-docs-example="menu-item">exampleID: menu-item</div>
+<p class="docs-markdown--p">Here is an example using the large indentation with buttons including icons:</p>
+<div nx-docs-example="menu-item-with-icons">exampleID: menu-item-with-icons</div>
+<h2 id="menu-container" class="docs-markdown--h2">Menu Container</h2>
+<p class="docs-markdown--p">The <code>&lt;nx-menu&gt;</code> component provides a collapsible container that covers the whole viewport below the header.
+It can contain any content, but usually combinations of at least <code>[nxMenuLink]</code>, <code>[nxMenuItem]</code> and <code>[nxMenuButton]</code>.
+The component can be toggled via the <code>toggle()</code> function. Here is a full example using a burger button to open the menu and the <code>&lt;nx-tree&gt;</code> to render the nested items.</p>
+<div nx-docs-example="menu">exampleID: menu</div>

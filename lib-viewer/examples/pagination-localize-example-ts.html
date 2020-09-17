@@ -1,0 +1,36 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { IPaginationTexts, NX_PAGINATION_TEXTS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/pagination'</span>;
+
+<span class="hljs-keyword">const</span> myPaginationTexts: IPaginationTexts = {
+  previous: <span class="hljs-string">'myPreviousText'</span>,
+  next: <span class="hljs-string">'myNextText'</span>,
+  ofLabel: <span class="hljs-string">'myOf'</span>,
+  ariaLabel: <span class="hljs-string">'myAriaLabelText'</span>
+};
+
+<span class="hljs-comment">/**
+* @title Localization Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./pagination-localize-example.html'</span>,
+  providers: [
+    {provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts}
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PaginationLocalizeExampleComponent {
+  page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+  count: <span class="hljs-built_in">number</span> = <span class="hljs-number">210</span>;
+  perPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+
+  prevPage() {
+    <span class="hljs-keyword">this</span>.page--;
+  }
+
+  nextPage() {
+    <span class="hljs-keyword">this</span>.page++;
+  }
+
+  goToPage(n: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">this</span>.page = n;
+  }
+}

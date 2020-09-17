@@ -1,0 +1,43 @@
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component, OnInit, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxCodeInputIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/code-input'</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyIntl <span class="hljs-keyword">extends</span> NxCodeInputIntl {
+  inputFieldAriaLabel = <span class="hljs-string">'Key eingeben'</span>;
+  ofLabel = <span class="hljs-string">'von'</span>;
+}
+
+<span class="hljs-comment">/**
+* @title Localization example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-code-input-localize-example'</span>,
+  templateUrl: <span class="hljs-string">'code-input-localize-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'code-input-localize-example.css'</span>],
+  providers: [
+    {provide: NxCodeInputIntl, useClass: MyIntl},
+  ],
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CodeInputLocalizeExampleComponent <span class="hljs-keyword">implements</span> OnInit {
+  inputValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;
+  codeForm: FormGroup;
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
+      keyCode: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-keyword">this</span>.inputValue, {
+        validators: [
+          Validators.required,
+          Validators.pattern(<span class="hljs-string">'[A-Z]+'</span>),
+          Validators.minLength(<span class="hljs-number">5</span>)
+        ],
+        updateOn: <span class="hljs-string">'submit'</span>
+      })
+    });
+  }
+
+  <span class="hljs-keyword">get</span> keyCode() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.codeForm.get(<span class="hljs-string">'keyCode'</span>);
+  }
+}

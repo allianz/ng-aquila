@@ -1,0 +1,20 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Disable responsive example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./circle-toggle-responsive-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CircleToggleResponsiveExampleComponent {
+
+  sampleValues = [{value: <span class="hljs-string">'A'</span>, icon: <span class="hljs-string">'product-heart'</span>, hint: <span class="hljs-string">'Hint A'</span>, label: <span class="hljs-string">'Label A'</span>, selected: <span class="hljs-literal">false</span>},
+    {value: <span class="hljs-string">'B'</span>, icon: <span class="hljs-string">'product-bed'</span>, hint: <span class="hljs-string">'Hint B'</span>, label: <span class="hljs-string">'Label B'</span>, selected: <span class="hljs-literal">true</span>},
+    {value: <span class="hljs-string">'C'</span>, icon: <span class="hljs-string">'product-bike'</span>, hint: <span class="hljs-string">'Hint C'</span>, label: <span class="hljs-string">'Label C'</span>, selected: <span class="hljs-literal">false</span>},
+  ];
+
+  logMessage(event) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`toggle-circle changed to value: `</span> + event);
+  }
+
+}

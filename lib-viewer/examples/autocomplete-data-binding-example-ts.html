@@ -1,0 +1,41 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+<span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;
+<span class="hljs-keyword">import</span> { WikipediaService } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../common/wikipedia.service'</span>;
+
+<span class="hljs-comment">/**
+* @title Data binding examples
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./autocomplete-data-binding-example.html'</span>,
+  providers: [ WikipediaService ]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AutocompleteDataBindingExampleComponent {
+
+  modelBoundData: <span class="hljs-built_in">string</span> = <span class="hljs-string">'asdf'</span>;
+
+  testForm = <span class="hljs-keyword">new</span> FormBuilder().group({
+    autocomplete: [<span class="hljs-literal">null</span>, Validators.required]
+  });
+
+  dynamicBackendOptions: <span class="hljs-function">(<span class="hljs-params">term: <span class="hljs-built_in">string</span></span>) =&gt;</span> Observable&lt;<span class="hljs-built_in">string</span>[]&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> wikipediaService: WikipediaService</span>) {
+    <span class="hljs-keyword">this</span>.dynamicBackendOptions = <span class="hljs-function">(<span class="hljs-params">term: <span class="hljs-built_in">string</span></span>) =&gt;</span> wikipediaService
+      .search(term)
+      .pipe(map(<span class="hljs-function">(<span class="hljs-params">items: <span class="hljs-built_in">any</span></span>) =&gt;</span> items.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.value)));
+  }
+
+  simpleFilteredOptions(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {
+    <span class="hljs-keyword">if</span> (!value) {<span class="hljs-keyword">return</span> []; }
+    <span class="hljs-keyword">const</span> data = (<span class="hljs-string">'Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,'</span> +
+      <span class="hljs-string">'Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,'</span> +
+      <span class="hljs-string">'Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow'</span>)
+      .split(<span class="hljs-string">','</span>);
+    <span class="hljs-keyword">return</span> data.filter(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> {
+      <span class="hljs-keyword">return</span> item.toLowerCase().indexOf(value.toLowerCase()) &gt;= <span class="hljs-number">0</span>;
+    });
+  }
+}

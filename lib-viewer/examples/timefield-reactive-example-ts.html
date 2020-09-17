@@ -1,0 +1,24 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Timefield reactive forms example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-timefield-reactive-example'</span>,
+  styleUrls: [<span class="hljs-string">'timefield-reactive-example.css'</span>],
+  templateUrl: <span class="hljs-string">'./timefield-reactive-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TimefieldReactiveExampleComponent {
+  <span class="hljs-keyword">public</span> testForm: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
+      timefieldReactive: [<span class="hljs-string">'22:54'</span>, Validators.required]
+    });
+  }
+}

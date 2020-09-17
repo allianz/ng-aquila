@@ -1,0 +1,46 @@
+<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Action Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-action-example'</span>,
+  styleUrls: [<span class="hljs-string">'action-example.css'</span>],
+  templateUrl: <span class="hljs-string">'./action-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ActionDemoComponent <span class="hljs-keyword">implements</span> OnInit {
+  actions = [
+    {
+      icon: <span class="hljs-string">'file-text'</span>,
+      label: <span class="hljs-string">'All Files'</span>
+    },
+    {
+      icon: <span class="hljs-string">'calendar'</span>,
+      label: <span class="hljs-string">'Calendar'</span>
+    },
+    {
+      icon: <span class="hljs-string">'mail-o'</span>,
+      label: <span class="hljs-string">'Email'</span>
+    },
+    {
+      icon: <span class="hljs-string">'user-business-o'</span>,
+      label: <span class="hljs-string">'My Profile'</span>
+    },
+    {
+      icon: <span class="hljs-string">'file'</span>,
+      label: <span class="hljs-string">'Recent Downloads'</span>
+    }
+  ];
+
+  selectedAction;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {}
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.selectedAction = <span class="hljs-keyword">this</span>.actions[<span class="hljs-number">1</span>];
+  }
+
+  onSelect(action) {
+    <span class="hljs-keyword">this</span>.selectedAction = action;
+  }
+}

@@ -1,0 +1,25 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Simple Pagination Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./pagination-simple-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PaginationSimpleExampleComponent {
+  page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+  count: <span class="hljs-built_in">number</span> = <span class="hljs-number">210</span>;
+  perPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+
+  prevPage() {
+    <span class="hljs-keyword">this</span>.page--;
+  }
+
+  nextPage() {
+    <span class="hljs-keyword">this</span>.page++;
+  }
+
+  goToPage(n: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">this</span>.page = n;
+  }
+}

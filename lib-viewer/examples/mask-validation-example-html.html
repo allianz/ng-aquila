@@ -1,0 +1,40 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"6"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">"subsection-xsmall"</span>&gt;</span>With mask validation<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"validatedMaskForm"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Time"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxMask</span>=<span class="hljs-string">"00:00:00"</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"maskInput"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+            Mask: 00:00:00
+          <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+
+      Form value: {{ validatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      Testform: {{ validatedMaskForm.status | json }}
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"6"</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">"subsection-xsmall"</span>&gt;</span>Without mask validation<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"unvalidatedMaskForm"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Time"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxMask</span>=<span class="hljs-string">"00:00:00"</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"maskInput2"</span> <span class="hljs-attr">validateMask</span>=<span class="hljs-string">"false"</span>/&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+            Mask: 00:00:00
+          <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+
+      Form value: {{ unvalidatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+      Testform: {{ unvalidatedMaskForm.status | json }}
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

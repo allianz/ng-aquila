@@ -1,0 +1,26 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Custom label example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./dropdown-custom-label-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownCustomLabelExampleComponent {
+  customLabelDropdownValue;
+
+  telPrefixDemoData = [
+    {
+      prefix: <span class="hljs-string">'+1'</span>,
+      countryId: <span class="hljs-string">'United States of America'</span>
+    },
+    {
+      prefix: <span class="hljs-string">'+49'</span>,
+      countryId: <span class="hljs-string">'Germany'</span>
+    },
+    {
+      prefix: <span class="hljs-string">'+41'</span>,
+      countryId: <span class="hljs-string">'Switzerland'</span>
+    }
+  ];
+}

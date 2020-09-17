@@ -1,0 +1,13 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+
+<span class="hljs-comment">/**
+* @title Date filter example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./datefield-filter-example.html'</span>
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldFilterExampleComponent {
+  onlyDaysWith6 = <span class="hljs-function">(<span class="hljs-params">date: Moment</span>) =&gt;</span> date.date() === <span class="hljs-number">6</span>;
+}

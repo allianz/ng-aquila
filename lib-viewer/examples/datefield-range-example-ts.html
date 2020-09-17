@@ -1,0 +1,23 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+<span class="hljs-keyword">import</span> { NxDatepickerComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+
+<span class="hljs-comment">/**
+* @title Date range example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./datefield-range-example.html'</span>
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldRangeExampleComponent {
+
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'endDatepicker'</span>, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) endDatepicker: NxDatepickerComponent&lt;Moment&gt;;
+
+  startDate: Moment = <span class="hljs-literal">null</span>;
+  endDate: Moment = <span class="hljs-literal">null</span>;
+
+  updateEndDatepicker() {
+    <span class="hljs-keyword">this</span>.endDate = <span class="hljs-keyword">this</span>.startDate;
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.endDatepicker.open());
+  }
+}

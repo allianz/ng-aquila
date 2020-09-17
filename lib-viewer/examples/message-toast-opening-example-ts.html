@@ -1,0 +1,24 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/message'</span>;
+
+<span class="hljs-comment">/**
+* @title Opening example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./message-toast-opening-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessageToastOpeningExampleComponent {
+
+  toastText: <span class="hljs-built_in">string</span> = <span class="hljs-string">'A success message toast with a custom text.'</span>;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template'</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> messageToastService: NxMessageToastService</span>) { }
+
+  openFromText() {
+    <span class="hljs-keyword">this</span>.messageToastService.open(<span class="hljs-keyword">this</span>.toastText, {context: <span class="hljs-string">'success'</span>, duration: <span class="hljs-number">5000</span>});
+  }
+
+  openFromTemplate() {
+    <span class="hljs-keyword">this</span>.messageToastService.openFromTemplate(<span class="hljs-keyword">this</span>.templateRef, {announcementMessage: <span class="hljs-string">'You see an info message. It will disappear in 3000 ms.'</span>});
+  }
+}

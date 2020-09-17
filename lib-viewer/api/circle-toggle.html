@@ -1,0 +1,537 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxCircleToggleModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/circle-toggle'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxCircleToggleGroupComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxCircleToggleGroupComponent"></span>
+  <code>NxCircleToggleGroupComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-circle-toggle-group</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">disabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle group is disabled.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">name</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Name that is used for accessibility.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">negative</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle group uses the negative styling.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">responsive</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle group has a responsive behavior.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">value</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The value of the selected circle toggle in the circle toggle group.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">valueChange</span>:
+        <span class="docs-api-property__type">EventEmitter<any></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event emitted when the selection changes. Outputs the value of the currently selected button.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">id</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Id of the circle toggle group.</p>
+<p>If not set, the circle toggle group gets an incremented value by default.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxCircleToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxCircleToggleComponent"></span>
+  <code>NxCircleToggleComponent</code><span class="docs-api-class-extends-clauses">
+    <span class="docs-api-class-extends-label">extends</span>
+    <span class="docs-api-class-extends-type">ToggleButton</span>
+  </span></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-circle-toggle</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">checked</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle is checked.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">circleText</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>A text that is displayed inside the circle toggle.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">disabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle is disabled.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">hint</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Additional hint displayed below the label.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'icon'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">iconName</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Id of the icon that should be displayed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">label</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label displayed below the circle.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">name</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Name that is used for accessibility.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">negative</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle uses the negative set of styling.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">responsive</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the circle toggle has a responsive behavior.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">svg</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>SVG that is displayed if the circle toggle is unchecked.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">svgChecked</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>SVG that is displayed if the circle toggle is checked.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">value</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The value that is used in the model.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">checkedChange</span>:
+        <span class="docs-api-property__type">EventEmitter<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event that is emitted when the checked state fo the circle toggle changes.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">selectionChange</span>:
+        <span class="docs-api-property__type">EventEmitter<ToggleChangeEvent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event that is emitted when the checked state of the circle toggle changes.
+The event object contains the circle toggle itself and its value (see ToggleChangeEvent).</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">id</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Id of the circle toggle.</p>
+<p>If not set, the circle toggle gets an incremented value by default.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+      <span header-link="additional_classes"></span>
+      Additional classes
+    </h3>
+    
+      
+
+<h4 id="ToggleChangeEvent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="ToggleChangeEvent"></span>
+  <code>ToggleChangeEvent</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">button</span>:
+        <span class="docs-api-property__type">ToggleButton</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>A toggle button</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">value</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The value of the toggle button that is sent with the event.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    </div>

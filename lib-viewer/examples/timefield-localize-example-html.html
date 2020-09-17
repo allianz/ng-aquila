@@ -1,0 +1,9 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">"ngForm"</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"testForm"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-timefield</span> #<span class="hljs-attr">timefield</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"today"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-timefield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"timefield.errorState"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+      Invalid time input.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

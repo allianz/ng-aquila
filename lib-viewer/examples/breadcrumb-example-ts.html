@@ -1,0 +1,24 @@
+
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Basic usage
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./breadcrumb-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./breadcrumb-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> BreadcrumbExampleComponent {
+
+  items = [
+    { link: <span class="hljs-string">''</span>, name: <span class="hljs-string">'Home'</span>},
+    { link: <span class="hljs-string">''</span>, name: <span class="hljs-string">'Insurance'</span>},
+    { link: <span class="hljs-string">''</span>, name: <span class="hljs-string">'Health Insurance'</span>},
+  ];
+
+  dynamicItems = <span class="hljs-keyword">this</span>.items;
+
+  goToItem(i: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">this</span>.dynamicItems = <span class="hljs-keyword">this</span>.items.slice(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
+  }
+}

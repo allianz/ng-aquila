@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxNumberStepperIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/number-stepper'</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyIntl <span class="hljs-keyword">extends</span> NxNumberStepperIntl {
+  decrementAriaLabel = <span class="hljs-string">'verringern'</span>;
+  incrementAriaLabel = <span class="hljs-string">'erhöhen'</span>;
+}
+
+<span class="hljs-comment">/**
+* @title Localization Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./number-stepper-localize-example.html'</span>,
+  providers: [
+    {provide: NxNumberStepperIntl, useClass: MyIntl},
+  ],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NumberStepperLocalizeExampleComponent {}

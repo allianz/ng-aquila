@@ -1,0 +1,10 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-timefield</span> #<span class="hljs-attr">timefield</span> <span class="hljs-attr">required</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"templateModel"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"templateTest"</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Time"</span> <span class="hljs-attr">twelveHourFormat</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-timefield</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Model Value (24h format): {{templateModel}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"timefield.errorState"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>&gt;</span>
+      Invalid time input.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+

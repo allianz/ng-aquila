@@ -1,0 +1,24 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">"ngForm"</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"codeForm"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-code-input</span> #<span class="hljs-attr">codeInput</span>
+      [<span class="hljs-attr">length</span>]=<span class="hljs-string">"4"</span>
+      <span class="hljs-attr">nxConvertTo</span>=<span class="hljs-string">"upper"</span>
+      <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"keyCode"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-code-input</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"codeInput.errorState"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"keyCode.hasError('required')"</span>&gt;</span>
+      Entry is required.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"keyCode.hasError('minlength')"</span>&gt;</span>
+      Entry is too short.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"secondary small"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"form.resetForm()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Clear<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    Code input value: '{{ keyCode.value }}'
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

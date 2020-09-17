@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxDialogService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/modal'</span>;
+
+<span class="hljs-comment">/**
+* @title Closing behaviour example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./modal-closing-behaviour-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-closing-behaviour-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalClosingNehaviourExampleComponent {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template'</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> dialogService: NxDialogService</span>) {}
+
+  openFromTemplate(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.dialogService.open(<span class="hljs-keyword">this</span>.templateRef, { ariaLabel: <span class="hljs-string">'A simple modal'</span>, disableClose: <span class="hljs-literal">true</span> });
+  }
+}

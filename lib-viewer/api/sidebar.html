@@ -1,0 +1,280 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxSidebarModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/sidebar'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxSidebarComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSidebarComponent"></span>
+  <code>NxSidebarComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-sidebar</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">minWidth</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the minimal width (in pixel) of the sidebar.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">resizeHandleAriaLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>This sets the accessibility label for the resize handle of the sidebar.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">resizeable</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>If set to <code>true</code> this will enable dynamic resizing of the sidebar.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">widthChange</span>:
+        <span class="docs-api-property__type">EventEmitter<number></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Emits the new width of the sidebar on resize or on close/open event.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">dir</span>:
+        <span class="docs-api-property__type">Direction</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The text direction of the containing app.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">open</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>This reflects the current open state of the sidebar.
+      It will be <code>true</code> if the sidebar is expanded and <code>false</code> if the sidebar is closed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">width</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>This sets the width of the sidebar.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">close(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>This will close the sidebar to its minimal width.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">expand(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>This will expand the sidebar to its full width.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>This will close or expand the sidebar depending if its expanded or closed.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxSidebarFooterComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSidebarFooterComponent"></span>
+  <code>NxSidebarFooterComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-sidebar-footer</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxSidebarToggleComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSidebarToggleComponent"></span>
+  <code>NxSidebarToggleComponent</code><span class="docs-api-class-extends-clauses">
+    <span class="docs-api-class-extends-label">extends</span>
+    <span class="docs-api-class-extends-type">NxButtonBase</span>
+  </span></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">button[nxSidebarToggle]</span>
+      
+    </div>
+</p>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
+
+
+
+    </div>

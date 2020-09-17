@@ -1,0 +1,336 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxTooltipModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/tooltip'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxTooltipDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTooltipDirective"></span>
+  <code>NxTooltipDirective</code></h4><p class="docs-api-class-description"><p>Directive that attaches a tooltip to the host element.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxTooltip]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxTooltip</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTooltipDisabled'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">disabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Disables the display of the tooltip.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTooltipHideDelay'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">hideDelay</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default delay in ms before hiding the tooltip after hide is called</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTooltip'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">message</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The message to be displayed in the tooltip</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTooltipPosition'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">position</span>:
+        <span class="docs-api-property__type">TooltipPosition</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Allows the user to define the position of the tooltip relative to the parent element</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxTooltipShowDelay'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">showDelay</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default delay in ms before showing the tooltip after show is called</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">hide(<!--
+     --><!--
+       --><!--
+         -->delay:
+              <span class="docs-api-property__type">number = this.hideDelay</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Hides the tooltip after the delay in ms, defaults to tooltip-delay-hide or 0ms if no input</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            delay:
+            <span class="docs-api-method-parameter-type">number = this.hideDelay</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">show(<!--
+     --><!--
+       --><!--
+         -->delay:
+              <span class="docs-api-property__type">number = this.showDelay</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            delay:
+            <span class="docs-api-method-parameter-type">number = this.showDelay</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Shows/hides the tooltip</p>
+</div></div>
+
+
+  
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      
+
+<h4 id="NxTooltipDefaultOptions" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="NxTooltipDefaultOptions"></span>
+  <code>NxTooltipDefaultOptions</code>
+</h4><p class="docs-api-interface-description"><p>Default <code>nxTooltip</code> options that can be overridden.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">hideDelay</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default delay in ms before hiding the tooltip after hide is called</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">position</span>:
+        <span class="docs-api-property__type">TooltipPosition</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default position of the tooltip</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">showDelay</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default delay in ms before showing the tooltip after show is called</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">touchendHideDelay</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The default delay in ms before hiding the tooltip on touch devices</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="TooltipPosition" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="TooltipPosition"></span>
+  <code>TooltipPosition</code>
+</h4><p class="docs-api-type-alias-description"><p>Possible positions of the tooltip.</p>
+</p><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'left' | 'right' | 'top' | 'bottom'</code>
+</p>
+
+
+    </div>

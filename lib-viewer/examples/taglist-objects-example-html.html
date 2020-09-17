@@ -1,0 +1,12 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-taglist</span> #<span class="hljs-attr">taglistObjects</span> [(<span class="hljs-attr">nxTags</span>)]=<span class="hljs-string">"tags"</span>&gt;</span>Sorry, you don't have any fruit.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-taglist</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Please provide a tag"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">addTagInputObjects</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+      Note that the tag list will just ignore empty tag values.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"taglistObjects.addTag({nxTaglistLabel:addTagInputObjects.value})"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-right-2xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Add tag<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"secondary small"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"taglistObjects.clearTags()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Clear tags<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Current Value: {{tags | json}}

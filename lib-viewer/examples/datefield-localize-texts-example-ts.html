@@ -1,0 +1,31 @@
+<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+<span class="hljs-keyword">import</span> { NxDatepickerIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyIntl <span class="hljs-keyword">extends</span> NxDatepickerIntl {
+  calendarLabel = <span class="hljs-string">'My Calendar'</span>;                <span class="hljs-comment">/** used by screen readers */</span>
+  openCalendarLabel = <span class="hljs-string">'Open my calendar'</span>;       <span class="hljs-comment">/** used by screen readers */</span>
+  prevMonthLabel = <span class="hljs-string">'My previous month'</span>;         <span class="hljs-comment">/** used by screen readers */</span>
+  nextMonthLabel = <span class="hljs-string">'My next month'</span>;             <span class="hljs-comment">/** used by screen readers */</span>
+  prevYearLabel = <span class="hljs-string">'My previous year'</span>;           <span class="hljs-comment">/** used by screen readers */</span>
+  nextYearLabel = <span class="hljs-string">'My next year'</span>;               <span class="hljs-comment">/** used by screen readers */</span>
+  prevMultiYearLabel = <span class="hljs-string">'My previous 20 years'</span>;  <span class="hljs-comment">/** used by screen readers */</span>
+  nextMultiYearLabel = <span class="hljs-string">'My next 20 years'</span>;      <span class="hljs-comment">/** used by screen readers */</span>
+  switchToMonthViewLabel = <span class="hljs-string">'Choose a special date'</span>;
+  switchToMultiYearViewLabel = <span class="hljs-string">'Choose button'</span>;
+}
+
+<span class="hljs-comment">/**
+* @title Localizing labels and messages example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./datefield-localize-texts-example.html'</span>,
+  providers: [
+    {provide: NxDatepickerIntl, useClass: MyIntl}
+  ]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldLocalizeTextsExampleComponent {
+  currentDate: Moment = <span class="hljs-literal">null</span>;
+}

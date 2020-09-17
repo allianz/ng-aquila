@@ -1,0 +1,15 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let item of menuData"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
+        (<span class="hljs-attr">click</span>)=<span class="hljs-string">"onClick(item)"</span>
+        <span class="hljs-attr">nxType</span>=<span class="hljs-string">"root"</span>
+        [<span class="hljs-attr">expandable</span>]=<span class="hljs-string">"!!item.children"</span>
+        <span class="hljs-attr">nxMenuItem</span>
+        [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"item.expanded"</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxMenuButtonIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"item.icon"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"s"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      {{item.label}}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxMenuItem</span>=<span class="hljs-string">"l"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"item.children &amp;&amp; item.expanded"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let child of item.children"</span> <span class="hljs-attr">nxMenuLink</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0)"</span>&gt;</span>{{child.label}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>

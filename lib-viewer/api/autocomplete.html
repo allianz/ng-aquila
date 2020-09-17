@@ -1,0 +1,710 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxAutocompleteModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/autocomplete'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxAutocompleteOptionComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxAutocompleteOptionComponent"></span>
+  <code>NxAutocompleteOptionComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-autocomplete-option</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">disabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the option is disabled.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">value</span>:
+        <span class="docs-api-property__type">any</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The value of the autocomplete option.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">onSelectionChange</span>:
+        <span class="docs-api-property__type">EventEmitter<NxAutocompleteOptionSelected></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event emitted when the option is selected or deselected.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">active</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether or not the option is currently active and ready to be selected.
+An active option displays styles as if it is focused, but the
+focus is actually retained somewhere else. This comes in handy
+for components like autocomplete where focus must remain on the input.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">id</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Id of the autocomplete option. By default it is set to an incremented value.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">selected</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether or not the option is currently selected.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">deselect(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Deselects the option.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">select(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Selects the option.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxAutocompleteTriggerDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxAutocompleteTriggerDirective"></span>
+  <code>NxAutocompleteTriggerDirective</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">input[nxAutocomplete]</span>
+      
+        <span class="docs-api-class-selector-name">textarea[nxAutocomplete]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxAutocompleteTrigger</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAutocomplete'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">autocomplete</span>:
+        <span class="docs-api-property__type">NxAutocompleteComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The autocomplete panel to be attached to this trigger.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAutocompleteDisabled'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">autocompleteDisabled</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether autocomplete functionality is disabled.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAutocompleteDebounce'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">debounce</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Debounce in ms before items callback is triggered. Defaults to 400</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAutocompleteItems'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">itemsCb</span>:
+        <span class="docs-api-property__type">(val: string) => Observable<string[]></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The items callback. Called with input value, must return Observable of Array of strings</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">activeOption</span>:
+        <span class="docs-api-property__type">NxAutocompleteOptionComponent | null</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The currently active option, coerced to NxAutocompleteOptionComponent type.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">optionSelections</span>:
+        <span class="docs-api-property__type">Observable<NxAutocompleteOptionSelected></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Stream of autocomplete option selections.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">panelClosingActions</span>:
+        <span class="docs-api-property__type">Observable<NxAutocompleteOptionSelected></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>A stream of actions that should close the autocomplete panel, including
+when an option is selected, on blur, and when TAB is pressed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">panelOpen</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether or not the autocomplete panel is open.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">closePanel(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Closes the autocomplete suggestion panel.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">openPanel(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Opens the autocomplete suggestion panel.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxAutocompleteComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxAutocompleteComponent"></span>
+  <code>NxAutocompleteComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-autocomplete</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxAutocomplete</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'class'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">classList</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Takes classes set on the host nx-autocomplete element and applies them to the panel
+inside the overlay container to allow for easy styling.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">items</span>:
+        <span class="docs-api-property__type">string[] | Observable<string[]></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Items observable. If given, autocomplete takes care of the options and ng-content is discarderd</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxValueFormatter'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">valueFormatter</span>:
+        <span class="docs-api-property__type">(value: any) => string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Value to string converter.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">closed</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event that is emitted when the autocomplete panel is closed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">opened</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event that is emitted when the autocomplete panel is opened.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">optionSelected</span>:
+        <span class="docs-api-property__type">EventEmitter<NxAutocompleteSelectedEvent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event that is emitted whenever an option from the list is selected.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">id</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Unique ID to be used by autocomplete trigger&#39;s &quot;aria-owns&quot; property.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isOpen</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the autocomplete panel is open.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">options</span>:
+        <span class="docs-api-property__type">QueryList<NxAutocompleteOptionComponent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Autocomplete options</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">showPanel</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the autocomplete panel should be visible, depending on option length.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+      <span header-link="additional_classes"></span>
+      Additional classes
+    </h3>
+    
+      
+
+<h4 id="NxAutocompleteOptionSelected" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxAutocompleteOptionSelected"></span>
+  <code>NxAutocompleteOptionSelected</code></h4><p class="docs-api-class-description"><p>Option selected event</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isUserInput</span>:
+        <span class="docs-api-property__type">false</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the input was triggered by the user.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">source</span>:
+        <span class="docs-api-property__type">NxAutocompleteOptionComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The option that is selected or deselected.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxAutocompleteSelectedEvent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxAutocompleteSelectedEvent"></span>
+  <code>NxAutocompleteSelectedEvent</code></h4><p class="docs-api-class-description"><p>Event object that is emitted when an autocomplete option is selected.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">option</span>:
+        <span class="docs-api-property__type">NxAutocompleteOptionComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Option that was selected.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">source</span>:
+        <span class="docs-api-property__type">NxAutocompleteComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Reference to the autocomplete panel that emitted the event.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    </div>

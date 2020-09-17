@@ -1,0 +1,35 @@
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component, OnInit, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxTimefieldIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/timefield'</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyIntl <span class="hljs-keyword">extends</span> NxTimefieldIntl {
+  inputFieldHoursAriaLabel = <span class="hljs-string">'stunden'</span>;
+  inputFieldMinutesAriaLabel = <span class="hljs-string">'minuten'</span>;
+}
+
+<span class="hljs-comment">/**
+* @title Localization example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-timefield-localize-example'</span>,
+  templateUrl: <span class="hljs-string">'timefield-localize-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'timefield-localize-example.css'</span>],
+  providers: [
+    { provide: NxTimefieldIntl, useClass: MyIntl },
+  ],
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TimefieldLocalizeExampleComponent <span class="hljs-keyword">implements</span> OnInit {
+  testForm: FormGroup;
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">new</span> FormGroup({
+      today: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
+        validators: [
+          Validators.required,
+        ]
+      })
+    });
+  }
+}

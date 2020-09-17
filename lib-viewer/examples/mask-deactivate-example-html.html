@@ -1,0 +1,19 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">'6'</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"templateModel"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"activate"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-m"</span>&gt;</span>Activate<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">"deactivate"</span>&gt;</span>De-activate<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"6"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"ID"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxMask</span>=<span class="hljs-string">"SS-AAAAA"</span> [<span class="hljs-attr">deactivateMask</span>]=<span class="hljs-string">"templateModel === 'deactivate' ? true : false"</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"modelVal"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+          Mask: SS-AAAAA (mask deactivated: {{ templateModel === 'deactivate' ? true : false }})
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+      Model value: {{ modelVal }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

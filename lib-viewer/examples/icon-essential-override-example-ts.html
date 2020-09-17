@@ -1,0 +1,31 @@
+<span class="hljs-keyword">import</span> { DomSanitizer } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/platform-browser'</span>;
+<span class="hljs-keyword">import</span> { NxIconRegistry } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/icon'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">// play-circle-fill from https://remixicon.com/</span>
+<span class="hljs-keyword">const</span> playSvg = <span class="hljs-string">'&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"&gt;&lt;path fill="none" d="M0 0h24v24H0z"/&gt;&lt;path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zM10.622 8.415a.4.4 0 0 0-.622.332v6.506a.4.4 0 0 0 .622.332l4.879-3.252a.4.4 0 0 0 0-.666l-4.88-3.252z"/&gt;&lt;/svg&gt;'</span>;
+
+<span class="hljs-comment">/**
+ * @title Essential Icon Override Example
+ */</span>
+ <span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./icon-essential-override-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./icon-essential-override-example.css'</span>],
+  providers: [
+    <span class="hljs-comment">// we only use the provider here to get a scoped instance of the NxIconRegistry</span>
+    <span class="hljs-comment">// only for this example that the rest of the documentation examples are not affected</span>
+    { provide: NxIconRegistry }
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> IconEssentialOverrideExampleComponent {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> iconRegistry: NxIconRegistry, sanitizer: DomSanitizer</span>) {
+    <span class="hljs-comment">// override it with another SVG</span>
+    <span class="hljs-keyword">this</span>.iconRegistry.addSvgIconLiteral(<span class="hljs-string">'play'</span>, sanitizer.bypassSecurityTrustHtml(playSvg));
+
+    <span class="hljs-comment">// override an icon with a font, here we take font awesome</span>
+    <span class="hljs-comment">// we register the font first and override the 'calendar' icon</span>
+    <span class="hljs-comment">// of ng-aquila with the 'calendar-week' icon of font awesome</span>
+    <span class="hljs-keyword">this</span>.iconRegistry.registerFont(<span class="hljs-string">'fa'</span>, <span class="hljs-string">'fas'</span>, <span class="hljs-string">'fa-'</span>);
+    <span class="hljs-keyword">this</span>.iconRegistry.addFontIcon(<span class="hljs-string">'calendar'</span>, <span class="hljs-string">'calendar-week'</span>, <span class="hljs-string">'fa'</span>);
+  }
+}

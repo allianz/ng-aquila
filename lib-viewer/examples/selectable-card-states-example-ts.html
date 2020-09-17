@@ -1,0 +1,27 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { AbstractControl, FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Selectable cards states example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./selectable-card-states-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SelectableCardStatesExampleComponent {
+  formGroup: FormGroup;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.formGroup = <span class="hljs-keyword">this</span>.fb.group({
+      errorCard: [<span class="hljs-literal">false</span>, Validators.requiredTrue],
+      errorCard2: [<span class="hljs-literal">true</span>, validateSecondCard]
+    });
+    <span class="hljs-keyword">this</span>.formGroup.markAllAsTouched();
+  }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateSecondCard</span>(<span class="hljs-params">control: AbstractControl</span>) </span>{
+  <span class="hljs-keyword">return</span> !!control.value ? { invalid: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
+}

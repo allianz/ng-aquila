@@ -1,0 +1,33 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Reactive disabled example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./circle-toggle-reactive-disabled-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CircleToggleReactiveDisabledExampleComponent {
+
+  testForm = <span class="hljs-keyword">this</span>.formBuilder.group({
+    reactiveToggle: [<span class="hljs-string">''</span>, Validators.required]
+  });
+
+  sampleValues = [{value: <span class="hljs-string">'A'</span>, icon: <span class="hljs-string">'product-heart'</span>, hint: <span class="hljs-string">'Hint A'</span>, label: <span class="hljs-string">'Label A'</span>, selected: <span class="hljs-literal">false</span>},
+    {value: <span class="hljs-string">'B'</span>, icon: <span class="hljs-string">'product-bed'</span>, hint: <span class="hljs-string">'Hint B'</span>, label: <span class="hljs-string">'Label B'</span>, selected: <span class="hljs-literal">true</span>},
+    {value: <span class="hljs-string">'C'</span>, icon: <span class="hljs-string">'product-bike'</span>, hint: <span class="hljs-string">'Hint C'</span>, label: <span class="hljs-string">'Label C'</span>, selected: <span class="hljs-literal">false</span>},
+  ];
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.testForm.disable();
+  }
+
+  switchStatusClick() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.testForm.disabled) {
+      <span class="hljs-keyword">this</span>.testForm.enable();
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-keyword">this</span>.testForm.disable();
+    }
+  }
+
+}

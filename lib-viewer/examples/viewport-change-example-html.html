@@ -1,0 +1,14 @@
+Change the size of the window in order to see how this side navigation is closed and expanded according to the viewport:
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"my-sidebar"</span> <span class="hljs-attr">resizeable</span> #<span class="hljs-attr">sidebar</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxAction</span>
+      *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let action of actions"</span>
+      <span class="hljs-attr">routerLink</span>=<span class="hljs-string">"./"</span>
+      [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">"action.query"</span>
+      <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">"is-selected"</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"action.icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    {{action.label}}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidebar</span>&gt;</span>

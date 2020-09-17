@@ -1,0 +1,35 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormArray, FormBuilder, FormControl, FormGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Selectable cards dynamic example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./selectable-card-dynamic-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SelectableCardDynamicExampleComponent {
+  <span class="hljs-keyword">public</span> myFormGroup: FormGroup;
+
+  cardArray = <span class="hljs-keyword">new</span> FormArray([
+    <span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">false</span>),
+    <span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">false</span>),
+    <span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">false</span>)]);
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.myFormGroup = <span class="hljs-keyword">this</span>.fb.group({
+      <span class="hljs-string">'cards'</span>: <span class="hljs-keyword">this</span>.cardArray
+    });
+  }
+
+  <span class="hljs-keyword">public</span> addNewCard() {
+    <span class="hljs-keyword">this</span>.cardArray.push(<span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">false</span>));
+  }
+
+  <span class="hljs-keyword">public</span> removeFirstCard() {
+    <span class="hljs-keyword">this</span>.cardArray.removeAt(<span class="hljs-number">0</span>);
+  }
+
+  <span class="hljs-keyword">get</span> cards(): FormArray {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.myFormGroup.get(<span class="hljs-string">'cards'</span>) <span class="hljs-keyword">as</span> FormArray;
+  }
+}

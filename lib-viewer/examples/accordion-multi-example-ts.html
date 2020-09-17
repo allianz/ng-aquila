@@ -1,0 +1,15 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Multi Accordion Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./accordion-multi-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AccordionMultiExampleComponent {
+  multi = <span class="hljs-literal">true</span>;
+
+  toggleMulti() {
+    <span class="hljs-keyword">this</span>.multi = !<span class="hljs-keyword">this</span>.multi;
+  }
+}

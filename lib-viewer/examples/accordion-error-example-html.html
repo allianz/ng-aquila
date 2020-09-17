@@ -1,0 +1,53 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-accordion</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"expansion-title-with-icon"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"infoHasError"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-error__icon"</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"'exclamation-triangle'"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>General Information<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"formGroupInfo"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"12,12,6,6"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Surname"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">required</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"surname"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span> Please note: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> you have to fill out this field to continue.
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"expansion-title-with-icon"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"paymentHasError"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-error__icon"</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"'exclamation-triangle'"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Payment details<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-title</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel-header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"formGroupPayment"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">"grid"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">"12,12,6,6"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Label"</span>&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">required</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"input"</span> /&gt;</span>
+              <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span> Please note: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> you have to fill out this field to continue.
+              <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-accordion</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"infoHasError || paymentHasError"</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">"error"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span> Error: <span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> Please check the red marked areas.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>

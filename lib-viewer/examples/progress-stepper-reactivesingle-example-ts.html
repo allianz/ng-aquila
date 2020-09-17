@@ -1,0 +1,34 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Progress Indicator reactive form with single form example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./progress-stepper-reactivesingle-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./progress-stepper-reactivesingle-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperReactivesingleExampleComponent {
+  testForm: FormGroup;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>._formBuilder.group({
+      personalDetails: <span class="hljs-keyword">new</span> FormGroup({
+        name: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
+          validators: Validators.required
+        }),
+        age: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
+          validators: Validators.required
+        })
+      }),
+      address: <span class="hljs-keyword">new</span> FormGroup({
+        street: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
+          validators: Validators.required
+        }),
+        postalCode: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
+          validators: Validators.required
+        })
+      })
+    });
+  }
+
+}

@@ -1,0 +1,32 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
+<span class="hljs-keyword">import</span> { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/base'</span>;
+<span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/input'</span>;
+
+<span class="hljs-keyword">const</span> myDefaultOptions: FormfieldDefaultOptions = {
+  appearance: <span class="hljs-string">'outline'</span>,
+  nxFloatLabel: <span class="hljs-string">'always'</span>
+};
+
+<span class="hljs-keyword">const</span> myErrorOptions: ErrorDefaultOptions = {
+  appearance: <span class="hljs-string">'text'</span>
+};
+
+<span class="hljs-comment">/**
+* @title Global default settings example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./formfield-global-example.html'</span>,
+  providers: [
+    {provide: FORMFIELD_DEFAULT_OPTIONS, useValue: myDefaultOptions},
+    {provide: ERROR_DEFAULT_OPTIONS, useValue: myErrorOptions}
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldGlobalExampleComponent <span class="hljs-keyword">implements</span> AfterContentInit {
+  <span class="hljs-keyword">public</span> modelValue;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'errorNgModel'</span>, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) errorNgModel: NxInputDirective;
+
+  ngAfterContentInit() {
+    <span class="hljs-keyword">this</span>.errorNgModel.ngControl.control.markAsTouched();
+  }
+}

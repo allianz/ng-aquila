@@ -1,0 +1,1319 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxIconModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/icon'</span>;
+    </code>
+  </p><h3 id="services" class="docs-header-link docs-api-h3">
+      <span header-link="services"></span>
+      Services
+    </h3>
+    
+      
+
+<h4 id="NxIconRegistry" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxIconRegistry"></span>
+  <code>NxIconRegistry</code></h4>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">addFontIcon(<!--
+     --><!--
+       --><!--
+         -->iconName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->alias:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->fontName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Only necessary to override an existing svg icon in the registry
+with a font class. Useful to override the essential library icons.
+To register an icon font in general use <code>registerFont</code> and
+<code>setDefaultFontClass</code>.</p>
+<p>Example: you want to override the essential svg icon of the library <code>chevron-down</code>
+with an icon from your icon font called &#39;arrow-down&#39;. You would first register your
+icon font:
+<code>iconRegistry.registerFont(&#39;my-icons&#39;);</code>
+<code>iconRegistry.setDefaultFontClass(&#39;my-icons&#39;);</code>
+and then override the chevron-down icon in the registry:
+<code>iconRegistry.addFontIcon(&#39;chevron-down&#39;, &#39;arrow-down&#39;);</code></p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            iconName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            alias<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            fontName<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">addSvgIcon(<!--
+     --><!--
+       --><!--
+         -->iconName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->url<!--
+         -->,<!--
+       --><!--
+         -->safeUrl:
+              <span class="docs-api-property__type">SafeResourceUrl</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Registers an icon by URL.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            iconName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+            <p class="docs-api-method-parameter-description">
+              Name under which the icon should be registered.
+            </p>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            url:
+            <span class="docs-api-method-parameter-type"></span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            safeUrl:
+            <span class="docs-api-method-parameter-type">SafeResourceUrl</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">addSvgIconLiteral(<!--
+     --><!--
+       --><!--
+         -->iconName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->literal:
+              <span class="docs-api-property__type">SafeHtml</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Registers an icon using an HTML string.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            iconName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            literal:
+            <span class="docs-api-method-parameter-type">SafeHtml</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getDefaultFont(<!--
+     -->): <span class="docs-api-method-returns-type">NxIconFontDefinition</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the registered CSS class name.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getFont(<!--
+     --><!--
+       --><!--
+         -->fontName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the registered font by name.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            fontName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getIcon(<!--
+     --><!--
+       --><!--
+         -->iconName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->): <span class="docs-api-method-returns-type">NxSvgIcon | NxFontIcon</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the icon from the registry or undefined if not found.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            iconName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">registerFont(<!--
+     --><!--
+       --><!--
+         -->name:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->hostClass:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->prefix:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Register an icon font which can be used by the font input on the icon component.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            name:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            hostClass<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+            <p class="docs-api-method-parameter-description">
+              The hostClass is the general class like `fa` and an optional prefix can be given.
+            </p>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            prefix<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+            <p class="docs-api-method-parameter-description">
+              The prefix is helpful if your class name for the icon would be prefixed,
+e.g. my-icons--heart but you still want to only use the name
+<code>&lt;nx-icon name="heart" font="my-icons"&gt;&lt;/nx-icon&gt;</code>.
+            </p>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">setDefaultFont(<!--
+     --><!--
+       --><!--
+         -->name:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Sets the font as the default font that is used when the font input
+is omitted.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            name:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name"><div class="docs-api-deprecated-marker" >
+            Deprecated
+          </div>getSvgIcon(<!--
+     --><!--
+       --><!--
+         -->iconName:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns an Observable that produces the icon (as an <code>&lt;svg&gt;</code> DOM element)</p>
+<p>use <code>getIcon</code> instead</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            iconName:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+
+
+
+    <h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxIconComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxIconComponent"></span>
+  <code>NxIconComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-icon</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">fill</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the icon is filled.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">font</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the font name that should be used.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">name</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the name for specifying the icon.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">outline</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the icon has an outline.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">size</span>:
+        <span class="docs-api-property__type">IconSize</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Specifies the size of the icon.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+      <span header-link="additional_classes"></span>
+      Additional classes
+    </h3>
+    
+      
+
+<h4 id="NxDefaultIcons" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxDefaultIcons"></span>
+  <code>NxDefaultIcons</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">arrow-first</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">arrow-last</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">arrow-left</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">arrow-right</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">calendar</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">check</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">check-circle</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-down</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-down-small</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-left</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-left-small</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-right</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-right-small</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-up</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">chevron-up-small</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">close</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">ellipsis-h</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">exclamation-circle</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">exclamation-triangle</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">info-circle</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">minus</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">password-hide-o</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">password-show-o</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">play</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">plus</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">star</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">star-o</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">trash-o</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxIconFontDefinition" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxIconFontDefinition"></span>
+  <code>NxIconFontDefinition</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">hostClass</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">prefix</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxSvgIcon" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSvgIcon"></span>
+  <code>NxSvgIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">svgElement</span>:
+        <span class="docs-api-property__type">SVGElement | null</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getContent(<!--
+     -->): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the content.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxSvgIconLiteral" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSvgIconLiteral"></span>
+  <code>NxSvgIconLiteral</code><span class="docs-api-class-extends-clauses">
+    <span class="docs-api-class-extends-label">extends</span>
+    <span class="docs-api-class-extends-type">NxSvgIcon</span>
+  </span></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">svgElement</span>:
+        <span class="docs-api-property__type">SVGElement | null</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getContent(<!--
+     -->): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the content.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxSvgIconFromUrl" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxSvgIconFromUrl"></span>
+  <code>NxSvgIconFromUrl</code><span class="docs-api-class-extends-clauses">
+    <span class="docs-api-class-extends-label">extends</span>
+    <span class="docs-api-class-extends-type">NxSvgIcon</span>
+  </span></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">svgElement</span>:
+        <span class="docs-api-property__type">SVGElement | null</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">url</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getContent(<!--
+     -->): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the content. If the SVG is not already loaded it fetches the SVG from icons&#39; URL</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxFontIcon" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxFontIcon"></span>
+  <code>NxFontIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">alias</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">font</span>:
+        <span class="docs-api-property__type">NxIconFontDefinition</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getClasses(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="IconSize" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="IconSize"></span>
+  <code>IconSize</code>
+</h4><p class="docs-api-type-alias-description"><p>Types of icon sizes</p>
+</p><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'auto' | 's' | 'm' | 'l' | 'xl'</code>
+</p>
+
+
+    </div>

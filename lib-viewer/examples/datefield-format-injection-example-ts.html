@@ -1,0 +1,29 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+<span class="hljs-keyword">import</span> { NX_DATE_FORMATS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MY_FORMATS = {
+  parse: {
+    dateInput: <span class="hljs-string">'LL'</span>,
+  },
+  display: {
+    dateInput: <span class="hljs-string">'LL'</span>,
+    monthYearLabel: <span class="hljs-string">'MMM YYYY'</span>,
+    dateA11yLabel: <span class="hljs-string">'LL'</span>,
+    monthYearA11yLabel: <span class="hljs-string">'MMMM YYYY'</span>,
+  },
+};
+
+<span class="hljs-comment">/**
+* @title Custom date formats injection token
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./datefield-format-injection-example.html'</span>,
+  providers: [
+    {provide: NX_DATE_FORMATS, useValue: MY_FORMATS},
+  ]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldFormatInjectionExampleComponent {
+  inputString = moment();
+}

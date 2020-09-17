@@ -1,0 +1,32 @@
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Code input type example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'code-input-type-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'code-input-type-example.css'</span>]
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CodeInputTypeExampleComponent <span class="hljs-keyword">implements</span> OnInit {
+  inputValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;
+  codeForm: FormGroup;
+
+  ngOnInit() {
+    <span class="hljs-keyword">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
+      keyCode: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-keyword">this</span>.inputValue, {
+        validators: [
+          Validators.required,
+          Validators.pattern(<span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'^[0-9]*$'</span>)),
+          Validators.minLength(<span class="hljs-number">4</span>)
+        ],
+        updateOn: <span class="hljs-string">'submit'</span>
+      })
+    });
+  }
+
+  <span class="hljs-keyword">get</span> keyCode() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.codeForm.get(<span class="hljs-string">'keyCode'</span>);
+  }
+}

@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+ * @title Reactive example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./dropdown-reactive-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./dropdown-reactive-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownReactiveExampleComponent {
+  form = <span class="hljs-keyword">new</span> FormBuilder().group({
+    dropdown: [<span class="hljs-string">'BMW'</span>, Validators.required]
+  });
+
+  patch(value) {
+    <span class="hljs-keyword">this</span>.form.patchValue({<span class="hljs-string">'dropdown'</span>: value});
+  }
+}

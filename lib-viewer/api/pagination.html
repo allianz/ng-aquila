@@ -1,0 +1,495 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxPaginationModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/pagination'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxPaginationComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxPaginationComponent"></span>
+  <code>NxPaginationComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-pagination</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxCount'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">count</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Number of total items over all pages.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPage'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">page</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the current page.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPerPage'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">perPage</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the number of items you want to show per page.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxType'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">type</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Determines the type of pagination.</p>
+<p>Values: simple | advanced, default: simple.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">nxGoNext</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event emitted when the next page button is clicked</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">nxGoPage</span>:
+        <span class="docs-api-property__type">EventEmitter<number></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event emitted when a page number is clicked.
+Provides the number of the page as parameter.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">nxGoPrev</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event emitted when the previous page button is clicked.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">calculateTotalPages(<!--
+     -->): <span class="docs-api-method-returns-type">number</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the total number of pages</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getMax(<!--
+     -->): <span class="docs-api-method-returns-type">number</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the number of the last page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getMin(<!--
+     -->): <span class="docs-api-method-returns-type">number</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the number of the first page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">isPaginationCompactVisible(<!--
+     -->): <span class="docs-api-method-returns-type">boolean</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns true, if <code>nxCount</code> is greater than 0 and the type of pagination is &#39;simple&#39;, else false.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">isPaginationVisible(<!--
+     -->): <span class="docs-api-method-returns-type">boolean</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns true, if <code>nxCount</code> is greater than 0, else false.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">lastPage(<!--
+     -->): <span class="docs-api-method-returns-type">boolean</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns if the current page is the last page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">onFirst(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Directs to the first page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">onLast(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Directs to the last page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">onNext(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Directs to the next page.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">onPage(<!--
+     --><!--
+       --><!--
+         -->n:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Directs to the page with number n.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            n:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">onPrev(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Directs to the previous page.</p>
+</div></div>
+
+
+  
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      
+
+<h4 id="IPaginationTexts" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="IPaginationTexts"></span>
+  <code>IPaginationTexts</code>
+</h4><p class="docs-api-interface-description"><p>Interface for providing custom labels in a simple pagination.
+With an implementation you can localize your pagination with the NX_PAGINATION_TEXTS injection token.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">ariaLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace the aria label.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">first</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace &#39;first&#39;.</p>
+<p>Optional attribute needed only for the advanced pagination.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">last</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace &#39;last&#39;.</p>
+<p>Optional attribute needed only for the advanced pagination.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">next</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace &#39;next&#39;.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">ofLabel</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace &#39;of&#39;.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">previous</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Label that should replace &#39;previous&#39;.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    </div>

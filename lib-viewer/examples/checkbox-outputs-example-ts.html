@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Outputs example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./checkbox-outputs-example.html'</span>
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CheckboxOutputsExampleComponent {
+  <span class="hljs-keyword">public</span> logMessage: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">public</span> messages = [];
+
+  <span class="hljs-keyword">public</span> log(value) {
+    <span class="hljs-keyword">this</span>.messages.push(value);
+    <span class="hljs-keyword">this</span>.logMessage = <span class="hljs-keyword">this</span>.messages.join(<span class="hljs-string">'\n'</span>);
+  }
+}

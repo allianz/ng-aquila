@@ -1,0 +1,29 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">"testForm"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-single-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">"Step"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Your name and age"</span> <span class="hljs-attr">formGroupName</span>=<span class="hljs-string">"personalDetails"</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">"testForm"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-top-s"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Name"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">required</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"name"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Age"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">required</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"age"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">nxStepperPrevious</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-right-2xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Previous<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">nxStepperNext</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> <span class="hljs-attr">label</span>=<span class="hljs-string">"Your Address"</span> <span class="hljs-attr">formGroupName</span>=<span class="hljs-string">"address"</span> [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">"testForm"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-top-s"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Street"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">required</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"street"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"PostalCode"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">required</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">"postalCode"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">nxStepperPrevious</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-right-2xs"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Previous<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">nxStepperNext</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-single-stepper</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+{{ testForm.value | json }}

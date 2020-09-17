@@ -1,0 +1,17 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"toggleGroupModel"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-circle-toggle</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let item of sampleValues"</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">"item.value"</span> [<span class="hljs-attr">icon</span>]=<span class="hljs-string">"item.icon"</span> [<span class="hljs-attr">hint</span>]=<span class="hljs-string">"item.hint"</span>
+    [<span class="hljs-attr">label</span>]=<span class="hljs-string">"item.label"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-circle-toggle-group</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Try to set the value to A, B or C<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"patch-container"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> #<span class="hljs-attr">inputNgModel</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> 
+          <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-bottom-0"</span>
+          (<span class="hljs-attr">click</span>)=<span class="hljs-string">"toggleGroupModel = inputNgModel.value"</span>
+          <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+    Patch
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected value: {{toggleGroupModel}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

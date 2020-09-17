@@ -1,0 +1,38 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+* @title Simple binding example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./circle-toggle-simple-binding-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./circle-toggle-simple-binding-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CircleToggleSimpleBindingExampleComponent {
+
+  simpleBinding;
+  currentChar = <span class="hljs-string">'D'</span>;
+
+  sampleValues = [{value: <span class="hljs-string">'A'</span>, icon: <span class="hljs-string">'product-heart'</span>, hint: <span class="hljs-string">'Hint A'</span>, label: <span class="hljs-string">'Label A'</span>, selected: <span class="hljs-literal">false</span>},
+    {value: <span class="hljs-string">'B'</span>, icon: <span class="hljs-string">'product-bed'</span>, hint: <span class="hljs-string">'Hint B'</span>, label: <span class="hljs-string">'Label B'</span>, selected: <span class="hljs-literal">true</span>},
+    {value: <span class="hljs-string">'C'</span>, icon: <span class="hljs-string">'product-bike'</span>, hint: <span class="hljs-string">'Hint C'</span>, label: <span class="hljs-string">'Label C'</span>, selected: <span class="hljs-literal">false</span>},
+  ];
+
+  addBtn() {
+    <span class="hljs-keyword">this</span>.sampleValues.push({
+      value: <span class="hljs-keyword">this</span>.currentChar,
+      icon: <span class="hljs-string">'product-bike'</span>,
+      hint: <span class="hljs-string">`Hint <span class="hljs-subst">${<span class="hljs-keyword">this</span>.currentChar}</span>`</span>,
+      label: <span class="hljs-string">`Label <span class="hljs-subst">${<span class="hljs-keyword">this</span>.currentChar}</span>`</span>,
+      selected: <span class="hljs-literal">false</span>
+    });
+
+    <span class="hljs-keyword">let</span> nextCharCode = <span class="hljs-keyword">this</span>.currentChar.charCodeAt(<span class="hljs-number">0</span>) + <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">if</span> (nextCharCode &gt;= <span class="hljs-number">90</span>) {
+      nextCharCode = <span class="hljs-number">65</span>;
+    }
+
+    <span class="hljs-keyword">this</span>.currentChar = <span class="hljs-built_in">String</span>.fromCharCode(nextCharCode);
+  }
+
+}

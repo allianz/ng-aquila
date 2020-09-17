@@ -1,0 +1,61 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { FileItem, NxFileUploadResult, NxFileUploader, NxFileUploadConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/file-uploader'</span>;
+<span class="hljs-keyword">import</span> { NxMessageToastConfig, NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/message'</span>;
+<span class="hljs-keyword">import</span> { HttpParams, HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/common/http'</span>;
+
+<span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
+  duration: <span class="hljs-number">3000</span>,
+  context: <span class="hljs-string">'success'</span>,
+  announcementMessage: <span class="hljs-string">'File was uploaded successfully!'</span>
+};
+
+<span class="hljs-comment">/** @title File uploader validation example */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./file-uploader-validation-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./file-uploader-validation-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FileUploaderValidationExampleComponent {
+  testForm: FormGroup;
+  uploader: NxFileUploader;
+  uploadConfig: NxFileUploadConfig = {
+    requestUrl: <span class="hljs-string">'file-upload'</span>,
+    options: {
+      params: <span class="hljs-keyword">new</span> HttpParams(),
+      reportProgress: <span class="hljs-literal">true</span>
+    }
+  };
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> fb: FormBuilder,
+    <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
+    <span class="hljs-keyword">private</span> http: HttpClient
+  </span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+
+    <span class="hljs-keyword">this</span>.uploader = <span class="hljs-keyword">new</span> NxFileUploader(<span class="hljs-keyword">this</span>.uploadConfig, <span class="hljs-keyword">this</span>.http);
+
+    <span class="hljs-keyword">this</span>.uploader.response.subscribe(<span class="hljs-function">(<span class="hljs-params">result: NxFileUploadResult</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (result.success) {
+        <span class="hljs-keyword">this</span>.messageToastService.open(<span class="hljs-string">'All files were uploaded successfully!'</span>, myCustomConfig);
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (result.error) {
+        <span class="hljs-comment">// error handling</span>
+        <span class="hljs-keyword">this</span>.testForm.controls[<span class="hljs-string">'documents'</span>].setErrors({ <span class="hljs-string">'serverError'</span>: <span class="hljs-literal">true</span> });
+      }
+    });
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
+      documents: [[], Validators.required]
+    });
+  }
+
+  onChange($event: FileItem[]) {
+    <span class="hljs-built_in">console</span>.log($event);
+  }
+
+  onDelete($event: FileItem) {
+    <span class="hljs-built_in">console</span>.log($event);
+  }
+}

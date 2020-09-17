@@ -1,0 +1,20 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/tabs'</span>;
+
+<span class="hljs-keyword">const</span> myDefaultOptions: TabGroupDefaultOptions = {
+  appearance: <span class="hljs-string">'expert'</span>
+};
+
+<span class="hljs-comment">/**
+ * @title Injection token for tab group
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./tabs-injection-token-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./tabs-injection-token-example.css'</span>],
+  providers: [
+    { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TabsInjectionTokenExampleComponent {
+  currentIndex: <span class="hljs-built_in">number</span>;
+}

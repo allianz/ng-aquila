@@ -1,0 +1,19 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Tag Output Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-taglist-output-example'</span>,
+  templateUrl: <span class="hljs-string">'./taglist-output-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TagListOutputExampleComponent {
+  tags = [<span class="hljs-string">'Apples'</span>, <span class="hljs-string">'Oranges'</span>];
+  messages = [];
+  logMessage;
+
+  log(value) {
+    <span class="hljs-keyword">this</span>.messages.push(value);
+    <span class="hljs-keyword">this</span>.logMessage = <span class="hljs-keyword">this</span>.messages.join(<span class="hljs-string">'\n'</span>);
+  }
+}

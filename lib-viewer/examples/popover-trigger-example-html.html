@@ -1,0 +1,24 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"trigger by click"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"info-circle-o"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"s"</span> [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">"popoverClick"</span>
+    <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">"click"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span>
+    <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  Triggered by click
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverClick</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger by click<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"info-circle-o"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"s"</span> #<span class="hljs-attr">popoverTrigger</span>=<span class="hljs-string">"nxPopoverTrigger"</span> [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">"popoverManual"</span>
+    [(<span class="hljs-attr">nxPopoverShow</span>)]=<span class="hljs-string">"popoverManualOpenFlag"</span> <span class="hljs-attr">nxPopoverDirection</span>=<span class="hljs-string">"top"</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">"popoverManualOpenFlag = !popoverManualOpenFlag"</span> (<span class="hljs-attr">keydown</span>)=<span class="hljs-string">"handleKeydown($event)"</span> <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">"manual"</span>
+    <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"trigger manually"</span>
+    <span class="hljs-attr">role</span>=<span class="hljs-string">"button"</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  Triggered manually
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverManual</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger manually<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>

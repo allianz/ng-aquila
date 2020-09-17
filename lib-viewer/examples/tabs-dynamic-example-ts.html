@@ -1,0 +1,22 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Dynamically adding and removing tabs
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./tabs-dynamic-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./tabs-dynamic-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TabsDynamicExampleComponent {
+
+  tabs = [<span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>];
+
+  addTab(text: <span class="hljs-built_in">string</span>) {
+    <span class="hljs-keyword">this</span>.tabs = [...this.tabs, text];
+  }
+
+  removeTab(index: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">this</span>.tabs.splice(index, <span class="hljs-number">1</span>);
+  }
+
+}

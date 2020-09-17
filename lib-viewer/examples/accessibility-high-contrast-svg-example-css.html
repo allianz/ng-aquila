@@ -1,0 +1,27 @@
+<span class="hljs-selector-class">.svg-container</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">flex-direction</span>: column;
+}
+
+<span class="hljs-selector-tag">svg</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">16px</span> auto <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.svg-container</span> &gt; <span class="hljs-selector-tag">p</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">16px</span> auto;
+}
+
+
+<span class="hljs-comment">/* For external stylesheet example svg */</span>
+<span class="hljs-selector-class">.flyer-with-external-style</span> {
+  <span class="hljs-attribute">fill</span>: <span class="hljs-number">#757372</span>;
+  <span class="hljs-attribute">fill-rule</span>: evenodd;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">1</span>);
+}
+
+<span class="hljs-comment">/* add this to your stylings */</span>
+<span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-ms-high-contrast:</span> active) {
+  <span class="hljs-selector-class">.flyer-with-external-style</span> {
+    <span class="hljs-attribute">fill</span>: windowText;   <span class="hljs-comment">/* proprietary Windows system color value; IE/Edge only */</span>
+  }
+}

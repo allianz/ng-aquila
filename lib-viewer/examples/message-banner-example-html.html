@@ -1,0 +1,14 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span> <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">"Close info message banner"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"!infoBannerClosed"</span> (<span class="hljs-attr">close</span>)=<span class="hljs-string">"infoBannerClosed = true"</span>&gt;</span>
+ You are logged in as Max Mustermann.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span> <span class="hljs-attr">context</span>=<span class="hljs-string">"warning"</span> <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">"Close warning message banner"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"!warningBannerClosed"</span> (<span class="hljs-attr">close</span>)=<span class="hljs-string">"warningBannerClosed = true"</span>&gt;</span>
+  Your password expires in three days!
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-message-banner</span> <span class="hljs-attr">context</span>=<span class="hljs-string">"error"</span> <span class="hljs-attr">closeButtonLabel</span>=<span class="hljs-string">"Close error message banner"</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"!errorBannerClosed"</span> (<span class="hljs-attr">close</span>)=<span class="hljs-string">"errorBannerClosed = true"</span>&gt;</span>
+ The object could not be found.
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-message-banner</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">"!infoBannerClosed &amp;&amp; !warningBannerClosed &amp;&amp; !errorBannerClosed"</span> <span class="hljs-attr">nxButton</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"showAllBanners()"</span>&gt;</span> Show all message banners <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+

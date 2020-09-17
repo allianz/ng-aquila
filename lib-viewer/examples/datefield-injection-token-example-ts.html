@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+<span class="hljs-keyword">import</span> { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+
+<span class="hljs-keyword">const</span> datepickerExpertOptions: DatepickerDefaultOptions = { toggleIconTabindex: <span class="hljs-number">-1</span> };
+
+<span class="hljs-comment">/**
+* @title Datepicker injection token
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./datefield-injection-token-example.html'</span>,
+  providers: [
+    { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerExpertOptions }
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldInjectionTokenExampleComponent {
+  date1: Moment = <span class="hljs-literal">null</span>;
+}

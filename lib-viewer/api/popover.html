@@ -1,0 +1,453 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxPopoverModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/popover'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxPopoverComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxPopoverComponent"></span>
+  <code>NxPopoverComponent</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-popover</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxPopover</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'nxClosed'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">closed</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Event emitted when the popover is closed.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">dir</span>:
+        <span class="docs-api-property__type">Direction</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The text direction of the containing app.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxPopoverTriggerDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxPopoverTriggerDirective"></span>
+  <code>NxPopoverTriggerDirective</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxPopoverTriggerFor]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxPopoverTrigger</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">closeOnClickOutside</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the popover should be closed on click outside of the popover in the trigger modes &#39;manual&#39; and &#39;click&#39;.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverCloseable'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">closeable</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether to show a close button. By default a close icon is only shown for trigger type click.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverDirection'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">direction</span>:
+        <span class="docs-api-property__type">PopoverDirection</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the desired direction to open the popover. E.g., right, left, bottom, top</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverModal'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">modal</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the popover opens in modal state.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverTriggerFor'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">popover</span>:
+        <span class="docs-api-property__type">NxPopoverComponent</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Links the trigger with the popover to open.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverInitialVisible'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">popoverInitialVisible</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the popover will be opened automatically.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverScrollStrategy'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">scrollStrategy</span>:
+        <span class="docs-api-property__type">PopoverTriggerScrollStrategy</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the scroll strategy. &#39;close&#39; closes the popover on scroll while &#39;reposition&#39; scrolls the popover with the origin.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverShow'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">show</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether to show or hide the popover.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverTrigger'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">trigger</span>:
+        <span class="docs-api-property__type">PopoverTriggerType</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the way to trigger the popover. Options are hover, click, manual</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxPopoverVisibleChange'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">visibleChange</span>:
+        <span class="docs-api-property__type">EventEmitter<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event is emitted when the visibility of the popopver changes.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'nxPopoverShowChange'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">changeShow</span>:
+        <span class="docs-api-property__type">EventEmitter<boolean></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>An event is emitted if the visibility status of the popover changes.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isRtl</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">close(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Close the popover instance.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">open(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Open the popover instance.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggle(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Toggle the popover instance.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">updatePosition(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Update the popover with the given position strategy.</p>
+</div></div>
+
+
+  
+
+
+
+    
+      
+
+<h4 id="NxPopoverContentDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxPopoverContentDirective"></span>
+  <code>NxPopoverContentDirective</code></h4><p class="docs-api-class-description"><p>Popover content that will be rendered lazily
+after the popover is opened for the first time.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">ng-template[nxPopoverContent]</span>
+      
+    </div>
+</p>
+
+
+
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="PopoverDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="PopoverDirection"></span>
+  <code>PopoverDirection</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'left' | 'top' | 'right' | 'bottom'</code>
+</p>
+
+
+    
+      
+
+<h4 id="PopoverTriggerType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="PopoverTriggerType"></span>
+  <code>PopoverTriggerType</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'click' | 'hover' | 'manual'</code>
+</p>
+
+
+    
+      
+
+<h4 id="PopoverTriggerScrollStrategy" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="PopoverTriggerScrollStrategy"></span>
+  <code>PopoverTriggerScrollStrategy</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'close' | 'reposition'</code>
+</p>
+
+
+    </div>

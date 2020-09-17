@@ -1,0 +1,336 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-api">
+  <p class="docs-api-module-import">
+    <code>
+      <span class="docs-api-module-import__import-span">import</span>
+      { NxMaskModule }
+      <span class="docs-api-module-import__from-span">from</span>
+      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/mask'</span>;
+    </code>
+  </p><h3 id="directives" class="docs-header-link docs-api-h3">
+      <span header-link="directives"></span>
+      Directives
+    </h3>
+    
+      
+
+<h4 id="NxIbanMaskDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxIbanMaskDirective"></span>
+  <code>NxIbanMaskDirective</code></h4><p class="docs-api-class-description"><p>To use the <code>NxIbanMaskDirective</code>, you have to install the <strong>peer dependency</strong> <code>iban.js</code>.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">input[nxIbanMask]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxIbanMaskDirective</span>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxMaskDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxMaskDirective"></span>
+  <code>NxMaskDirective</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">input[nxMask]</span>
+      
+    </div>
+</p><span class="docs-api-class-export-label">Exported as:</span>
+<span class="docs-api-class-export-name">nxMaskDirective</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxConvertTo'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">convertTo</span>:
+        <span class="docs-api-property__type">MaskConversionTypes</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the case sensitivity of the mask.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">deactivateMask</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the mask validation should be deactivated.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">dropSpecialCharacters</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the separators should be dropped in the control value accessor.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxMask'</span>)
+        </div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">mask</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the mask.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">separators</span>:
+        <span class="docs-api-property__type">string[]</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the keys that are recognized as separators.
+Default separators: / ( ) . : - + , and space.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">validateMask</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the mask validation should be applied on the input. Default: true.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">cvaModelChange</span>:
+        <span class="docs-api-property__type">Subject<string></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Emits the unmasked value before the value changes.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getUnmaskedValue(<!--
+     -->): <span class="docs-api-method-returns-type">string</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Returns the unmasked value.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">registerAfterInputHook(<!--
+     --><!--
+       --><!--
+         -->afterInput:
+              <span class="docs-api-property__type">(event</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Registers a function to be executed after the onInput handler.
+The registered hook receives a <code>KeyboardEvent</code> from the onInput event handler as a parameter.</p>
+<p><strong>Note:</strong> If you register a <code>afterInputHook</code>, you may also register a <code>beforePasteHook</code>
+to perform similar changes for pasting.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            afterInput:
+            <span class="docs-api-method-parameter-type">(event</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">registerBeforePasteHook(<!--
+     --><!--
+       --><!--
+         -->beforePaste:
+              <span class="docs-api-property__type">(event</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Registers a function to be executed before the onPaste handler.
+The registered hook receives a <code>ClipboardEvent</code> from the onPaste event handler as a parameter.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            beforePaste:
+            <span class="docs-api-method-parameter-type">(event</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">setMask(<!--
+     --><!--
+       --><!--
+         -->value:
+              <span class="docs-api-property__type">string</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Sets the mask (for programmatical use).</p>
+<p>No <code>_onChangeCallback()</code> will be called!</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            value:
+            <span class="docs-api-method-parameter-type">string</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+
+
+
+    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+      <span header-link="additional_type_aliases"></span>
+      Additional type aliases
+    </h3>
+    
+      
+
+<h4 id="MaskConversionTypes" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="MaskConversionTypes"></span>
+  <code>MaskConversionTypes</code>
+</h4><p class="docs-api-type-alias-description"><p>Options for input case sensitivity.</p>
+</p><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'lower' | 'upper'</code>
+</p>
+
+
+    </div>

@@ -1,0 +1,36 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
+
+<span class="hljs-comment">/**
+* @title Outline formfield example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./dropdown-outline-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./dropdown-outline-example.css'</span>],
+  providers: [{
+    provide: FORMFIELD_DEFAULT_OPTIONS, useValue: { appearance: <span class="hljs-string">'outline'</span>, nxFloatLabel: <span class="hljs-string">'always'</span>}
+  }]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownOutlineExampleComponent {
+  demoData = [
+    <span class="hljs-string">'BMW'</span>, <span class="hljs-string">'Audi'</span>, <span class="hljs-string">'VW'</span>, <span class="hljs-string">'Mercedes'</span>, <span class="hljs-string">'Porsche'</span>, <span class="hljs-string">'Tesla'</span>, <span class="hljs-string">'Lada'</span>,
+    <span class="hljs-string">'Opel'</span>, <span class="hljs-string">'Fiat'</span>, <span class="hljs-string">'Ford'</span>, <span class="hljs-string">'Kia'</span>, <span class="hljs-string">'Toyota'</span>, <span class="hljs-string">'Ferrari'</span>
+  ];
+  demoGroupData = [{
+    label: <span class="hljs-string">'Birds'</span>,
+    items: [
+      <span class="hljs-string">'Parrot'</span>,
+      <span class="hljs-string">'Pidgin'</span>,
+      <span class="hljs-string">'Swallow'</span>
+    ]
+  }, {
+    label: <span class="hljs-string">'Fish'</span>,
+    items: [
+      <span class="hljs-string">'Salmon'</span>,
+      <span class="hljs-string">'Mackerel'</span>,
+      <span class="hljs-string">'Catfish'</span>
+    ]
+  }];
+
+  testBind: <span class="hljs-built_in">string</span> = <span class="hljs-string">'Catfish'</span>;
+}

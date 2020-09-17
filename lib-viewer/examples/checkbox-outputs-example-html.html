@@ -1,0 +1,7 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> #<span class="hljs-attr">checkboxTest</span>
+  (<span class="hljs-attr">checkboxChange</span>)=<span class="hljs-string">"log('checkbox change occured')"</span>
+  (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">"log('checked change occured')"</span>
+  (<span class="hljs-attr">indeterminateChange</span>)=<span class="hljs-string">"log('indeterminate change occured')"</span>&gt;</span>Check me.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"small"</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"checkboxTest.indeterminate = !checkboxTest.indeterminate"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>Toggle Indeterminate<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">pre</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"logMessage"</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>

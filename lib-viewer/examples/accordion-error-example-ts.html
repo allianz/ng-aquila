@@ -1,0 +1,40 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators, FormGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Accordion Error Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./accordion-error-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./accordion-error-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AccordionErrorExampleComponent {
+
+  <span class="hljs-keyword">public</span> showErrorPayment: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">public</span> showErrorInfo: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+
+  formGroupInfo: FormGroup;
+  formGroupPayment: FormGroup;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.createForm();
+  }
+
+  createForm() {
+    <span class="hljs-keyword">this</span>.formGroupInfo = <span class="hljs-keyword">this</span>.fb.group({
+      surname: [<span class="hljs-string">'Mustermann'</span>, Validators.required]
+    });
+    <span class="hljs-keyword">this</span>.formGroupPayment = <span class="hljs-keyword">this</span>.fb.group({
+      input: [, Validators.required]
+    });
+    <span class="hljs-keyword">this</span>.formGroupPayment.markAllAsTouched();
+  }
+
+  <span class="hljs-keyword">get</span> infoHasError() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.formGroupInfo.get(<span class="hljs-string">'surname'</span>).hasError(<span class="hljs-string">'required'</span>);
+  }
+
+  <span class="hljs-keyword">get</span> paymentHasError() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.formGroupPayment.get(<span class="hljs-string">'input'</span>).hasError(<span class="hljs-string">'required'</span>);
+  }
+}

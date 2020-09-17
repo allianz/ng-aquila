@@ -1,0 +1,62 @@
+<h3 id="margins" class="docs-markdown--h3">Margins</h3>
+<p class="docs-markdown--p">The margins are intended to help you layout components shipped with this library. Setting such margins is needed since the components we ship are usually agnostic to any layout, putting you in control of laying out the components the way needed for your application's user experience.</p>
+<p class="docs-markdown--p">They can be integrated through the angular JSON <code>angular[-cli].json</code> or by importing it in your styles <code>style.scss</code> file.</p>
+<p class="docs-markdown--p">Use this path to import it via your angular-cli.json file:</p>
+<pre><code class="language-ts"><span class="hljs-string">"styles"</span>: [
+  <span class="hljs-string">"@aposin/ng-aquila/css/utilities.css"</span>
+]
+</code></pre>
+<p class="docs-markdown--p">If you don't use the Angular CLI or just prefer another place you can use this css import instead:</p>
+<pre><code class="language-css"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/css/utilities.css"</span>;
+</code></pre>
+<h4 id="margin-sizes" class="docs-markdown--h4">Margin sizes</h4>
+<p class="docs-markdown--p">We provide you with following margin sizes:</p>
+<div nx-docs-example="margin-sizes">exampleID: margin-sizes</div>
+<h4 id="usage" class="docs-markdown--h4">Usage</h4>
+<p class="docs-markdown--p">We also provide you with helper classes for all these sizes, which follow the pattern <code>.nx-margin-{direction}-{size}</code>.</p>
+<p class="docs-markdown--p">The <code>direction</code> property is one of the following:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>left</strong> - sets <code>margin-left</code></li>
+<li class="docs-markdown--li"><strong>right</strong> - sets <code>margin-right</code></li>
+<li class="docs-markdown--li"><strong>top</strong> - sets <code>margin-top</code></li>
+<li class="docs-markdown--li"><strong>bottom</strong> - sets <code>margin-bottom</code></li>
+<li class="docs-markdown--li"><strong>x</strong> - sets <code>margin-left</code> and <code>margin-right</code></li>
+<li class="docs-markdown--li"><strong>y</strong> - sets <code>margin-top</code> and <code>margin-bottom</code></li>
+<li class="docs-markdown--li">blank - sets a margin on all sides of the element</li>
+</ul>
+<p class="docs-markdown--p">Thereby, <code>size</code> has to be matching one of the sizes defined in the table above.</p>
+<p class="docs-markdown--p">An example of the margin helper classes usage can be found in the example below.</p>
+<div nx-docs-example="margin-usage">exampleID: margin-usage</div>
+<h3 id="breakpoints-and-viewport" class="docs-markdown--h3">Breakpoints and Viewport</h3>
+<p class="docs-markdown--p">Our library provides a viewport service, which is a utility for reacting to changes in the viewport. It provides three methods: <code>min</code>, <code>max</code> and <code>between</code> for subscribing to particular viewport breakpoints.</p>
+<h4 id="breakpoints" class="docs-markdown--h4">Breakpoints</h4>
+<p class="docs-markdown--p">The following viewport breakpoints are available:</p>
+<pre><code class="language-ts"><span class="hljs-comment">/** Available breakpoints to subscribe to. */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">enum</span> NxBreakpoints {
+  BREAKPOINT_XSMALL = <span class="hljs-number">0</span>,
+  BREAKPOINT_SMALL = <span class="hljs-number">320</span>,
+  BREAKPOINT_MEDIUM = <span class="hljs-number">704</span>,
+  BREAKPOINT_LARGE = <span class="hljs-number">992</span>,
+  BREAKPOINT_XLARGE = <span class="hljs-number">1280</span>,
+  BREAKPOINT_2XLARGE = <span class="hljs-number">1472</span>,
+  BREAKPOINT_3XLARGE = <span class="hljs-number">1760</span>
+}
+</code></pre>
+<p class="docs-markdown--p">You can react to changes in the viewport in your components the following way:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxViewportService, NxBreakpoints } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/utils'</span>;
+showComponentX: <span class="hljs-built_in">boolean</span>;
+
+<span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> viewportService: NxViewportService</span>) {
+  <span class="hljs-keyword">this</span>.viewportService.max(NxBreakpoints.BREAKPOINT_LARGE)
+    .subscribe(<span class="hljs-function"><span class="hljs-params">isMaximumLarge</span> =&gt;</span> <span class="hljs-keyword">this</span>.showComponentX = isMaximumLarge);
+}
+</code></pre>
+<h4 id="basic-viewport-subscription" class="docs-markdown--h4">Basic Viewport Subscription</h4>
+<p class="docs-markdown--p">The example below shows a sidebar, which is expanded from 704px (BREAKPOINT_MEDIUM) on and otherwise closed.</p>
+<div nx-docs-example="viewport-change">exampleID: viewport-change</div>
+<h4 id="advanced%3A-custom-throttletime" class="docs-markdown--h4">Advanced: custom throttleTime</h4>
+<p class="docs-markdown--p">Per default, the viewport service catches window resize events with an interval of 200ms.
+If this default throttle time does not serve your needs you can change it by passing it as a parameter to the methods <code>min</code>, <code>max</code> and <code>between</code>:</p>
+<pre><code class="language-ts"> <span class="hljs-keyword">this</span>.viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM, <span class="hljs-number">500</span>)
+    .subscribe(<span class="hljs-function"><span class="hljs-params">isMaximumLarge</span> =&gt;</span> <span class="hljs-keyword">this</span>.showComponentX = isMaximumLarge);
+</code></pre>

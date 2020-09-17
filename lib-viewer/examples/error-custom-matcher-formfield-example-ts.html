@@ -1,0 +1,26 @@
+<span class="hljs-keyword">import</span> { ErrorStateMatcher } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/utils'</span>;
+<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormControl, FormGroupDirective, NgForm, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-meta">@Injectable</span>()
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ShowOnDirtyErrorStateMatcher <span class="hljs-keyword">implements</span> ErrorStateMatcher {
+  <span class="hljs-comment">/** Custom error state matcher that checks for validity of the formfield. */</span>
+  isErrorState(control: FormControl | <span class="hljs-literal">null</span>, form: FormGroupDirective | NgForm | <span class="hljs-literal">null</span>): <span class="hljs-built_in">boolean</span> {
+    <span class="hljs-keyword">return</span> !!(control &amp;&amp; control.invalid &amp;&amp; (control.dirty || (form &amp;&amp; form.submitted)));
+  }
+}
+
+<span class="hljs-comment">/**
+ * @title Custom error state matching Formfield Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'error-custom-matcher-formfield-example.html'</span>,
+  providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CustomErrorStateMatcher {
+
+  emailFormControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, [
+    Validators.required,
+    Validators.email,
+  ]);
+}

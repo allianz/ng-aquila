@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+
+<span class="hljs-comment">/**
+* @title Progress Indicator reactive form with separate form per step
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./progress-stepper-reactivemulti-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./progress-stepper-reactivemulti-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperReactivemultiExampleComponent {
+  stepOneForm: FormGroup;
+  stepTwoForm: FormGroup;
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>) {
+    <span class="hljs-keyword">this</span>.stepOneForm = <span class="hljs-keyword">this</span>._formBuilder.group({ name: <span class="hljs-string">''</span> });
+    <span class="hljs-keyword">this</span>.stepTwoForm = <span class="hljs-keyword">this</span>._formBuilder.group({ age: <span class="hljs-string">''</span> });
+  }
+}

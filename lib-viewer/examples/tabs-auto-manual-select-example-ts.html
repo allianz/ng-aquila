@@ -1,0 +1,18 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+
+<span class="hljs-comment">/**
+ * @title Auto and manual select
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./tabs-auto-manual-select-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./tabs-auto-manual-select-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TabsAutoManualSelectExampleComponent {
+
+  autoselect: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+
+  toggleAutoselect() {
+    <span class="hljs-keyword">this</span>.autoselect = <span class="hljs-keyword">this</span>.autoselect ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;
+  }
+
+}

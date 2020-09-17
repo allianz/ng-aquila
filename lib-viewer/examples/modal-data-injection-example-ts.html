@@ -1,0 +1,37 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxDialogService, NxModalRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/modal'</span>;
+
+<span class="hljs-comment">/**
+* @title Data injection example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./modal-data-injection-example.html'</span>,
+  styleUrls: [<span class="hljs-string">'./modal-data-injection-example.css'</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ModalDataInjectionExampleComponent {
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'template'</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  actionResult: <span class="hljs-built_in">string</span>;
+
+  dialogRef: NxModalRef&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>&gt;;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> dialogService: NxDialogService</span>) {
+  }
+
+  openFromTemplate(): <span class="hljs-built_in">void</span> {
+    <span class="hljs-keyword">this</span>.dialogRef = <span class="hljs-keyword">this</span>.dialogService.open(<span class="hljs-keyword">this</span>.templateRef, {
+      showCloseIcon: <span class="hljs-literal">true</span>,
+      ariaLabel: <span class="hljs-string">'A modal with injected data'</span>,
+      data: {
+        name: <span class="hljs-string">'Max Mustermann'</span>
+      }
+    });
+
+    <span class="hljs-keyword">this</span>.dialogRef.afterClosed().subscribe(<span class="hljs-function"><span class="hljs-params">result</span> =&gt;</span> {
+      <span class="hljs-keyword">this</span>.actionResult = result;
+    });
+  }
+
+  closeDialog() {
+    <span class="hljs-keyword">this</span>.dialogRef.close();
+  }
+}

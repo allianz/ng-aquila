@@ -1,0 +1,34 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"top"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar</span> #<span class="hljs-attr">sidebar</span> <span class="hljs-attr">resizeHandleAriaLabel</span>=<span class="hljs-string">"Toggle sidebar width"</span> <span class="hljs-attr">resizeable</span> <span class="hljs-attr">minWidth</span>=<span class="hljs-string">"140"</span> (<span class="hljs-attr">widthChange</span>)=<span class="hljs-string">"log($event)"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"my-sidebar"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree</span> [<span class="hljs-attr">dataSource</span>]=<span class="hljs-string">"_dataSource"</span> [<span class="hljs-attr">treeControl</span>]=<span class="hljs-string">"_treeControl"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">"let node"</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxAction</span>
+            <span class="hljs-attr">nxTreeNodePadding</span>
+            <span class="hljs-attr">nxTreeNodePaddingOffset</span>=<span class="hljs-string">"40"</span>
+            <span class="hljs-attr">routerLink</span>=<span class="hljs-string">"./"</span>
+            [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">"node.query"</span>
+            <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">"is-selected"</span>
+            <span class="hljs-attr">title</span>=<span class="hljs-string">"{{node.label}}"</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"node.icon"</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"node.icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+         {{node.label}}
+       <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">"let node; when: _hasChild"</span>&gt;</span>
+       <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxAction</span>
+           <span class="hljs-attr">nxTreeNodeToggle</span>
+           <span class="hljs-attr">nxTreeNodePadding</span>
+           <span class="hljs-attr">nxTreeNodePaddingOffset</span>=<span class="hljs-string">"40"</span>
+           <span class="hljs-attr">expandable</span>
+           [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">"_treeControl.isExpanded(node)"</span>
+           <span class="hljs-attr">title</span>=<span class="hljs-string">"{{node.label}}"</span>
+           <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"node.icon"</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"node.icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+         {{node.label}}
+       <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidebar</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">"sidebar.toggle()"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>toggle expansion<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">pre</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">"logMessage"</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>

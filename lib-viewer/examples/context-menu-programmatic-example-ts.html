@@ -1,0 +1,21 @@
+<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxContextMenuTriggerDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/context-menu'</span>;
+
+<span class="hljs-comment">/**
+* @title Programmatic Context Menu Example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  templateUrl: <span class="hljs-string">'./context-menu-programmatic-example.html'</span>,
+  host: {
+    <span class="hljs-string">'(document:keydown.control.p)'</span>: <span class="hljs-string">'openContextMenu($event)'</span>
+  }
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContextMenuProgrammaticExampleComponent {
+  <span class="hljs-meta">@ViewChild</span>(NxContextMenuTriggerDirective)
+  trigger: NxContextMenuTriggerDirective;
+
+  openContextMenu($event) {
+    $event.preventDefault();
+    <span class="hljs-keyword">this</span>.trigger.toggleContextMenu();
+  }
+}
