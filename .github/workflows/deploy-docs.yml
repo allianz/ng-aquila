@@ -1,6 +1,5 @@
 name: Deploy documentation app to github pages
-on:
-  workflow_dispatch
+on: workflow_dispatch
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,7 +17,7 @@ jobs:
           npm run build:lib
           npm run build:docs-ui
           npm run library:generate:docs
-          npm run build:docs
+          npm run build:docs -- --base-href=/ng-aquila/ --no-progress
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.1
