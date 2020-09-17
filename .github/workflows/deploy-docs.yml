@@ -1,0 +1,31 @@
+name: Deploy documentation app to github pages
+on:
+  workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: npm ci
+
+      - name: Build documentation
+        run: |
+          npm run build:lib
+          npm run build:docs-ui
+          npm run library:generate:docs
+          npm run build:docs
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.6.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist/opensource-documentation
+          CLEAN: true
+          
+      
