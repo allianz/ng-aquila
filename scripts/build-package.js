@@ -46,3 +46,8 @@ compileSchematics()
 console.log("========================");
 console.log("  Copying scss sources");
 cpx.copy(`projects/ng-aquila/src/shared-styles/theming/**/*`, `dist/ng-aquila/styles`);
+
+console.log("========================");
+console.log("  Copying other assets");
+cpx.copy('README.md', 'dist/ng-aquila');
+cpx.copy('LICENSE', 'dist/ng-aquila');
