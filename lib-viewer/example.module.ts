@@ -35,13 +35,13 @@ import {ButtonIconExampleComponent} from './../examples/button-icon/button-icon-
 import {ButtonLargeExampleComponent} from './../examples/button-large/button-large-example';
 import {ButtonMediumExampleComponent} from './../examples/button-medium/button-medium-example';
 import {ButtonNegativeExampleComponent} from './../examples/button-negative/button-negative-example';
+import {ButtonPlainExampleComponent} from './../examples/button-plain/button-plain-example';
 import {ButtonSmallMediumExampleComponent} from './../examples/button-small-medium/button-small-medium-example';
 import {ButtonSmallExampleComponent} from './../examples/button-small/button-small-example';
 import {ButtonWithIconExampleComponent} from './../examples/button-with-icon/button-with-icon-example';
 import {ButtonExampleComponent} from './../examples/button/button-example';
 import {CardHeaderFooterExampleComponent} from './../examples/card-header-footer/card-header-footer-example';
 import {CardExampleComponent} from './../examples/card/card-example';
-import {ButtonPlainExampleComponent} from './../examples/button-plain/button-plain-example';
 import {CheckboxGroupBasicExampleComponent} from './../examples/checkbox-group-basic/checkbox-group-basic-example';
 import {CheckboxGroupDynamicExampleComponent} from './../examples/checkbox-group-dynamic/checkbox-group-dynamic-example';
 import {CheckboxGroupHorizontalExampleComponent} from './../examples/checkbox-group-horizontal/checkbox-group-horizontal-example';
@@ -49,16 +49,16 @@ import {CheckboxGroupInheritanceExampleComponent} from './../examples/checkbox-g
 import {CheckboxGroupLabelSizeExampleComponent} from './../examples/checkbox-group-label-size/checkbox-group-label-size-example';
 import {CheckboxGroupReactiveExampleComponent} from './../examples/checkbox-group-reactive/checkbox-group-reactive-example';
 import {CheckboxGroupValidationExampleComponent} from './../examples/checkbox-group-validation/checkbox-group-validation-example';
+import {CheckboxLabelSizeExampleComponent} from './../examples/checkbox-label-size/checkbox-label-size-example';
 import {CheckboxNegativeExampleComponent} from './../examples/checkbox-negative/checkbox-negative-example';
 import {CheckboxOutputsExampleComponent} from './../examples/checkbox-outputs/checkbox-outputs-example';
 import {CheckboxReactiveExampleComponent} from './../examples/checkbox-reactive/checkbox-reactive-example';
-import {CheckboxLabelSizeExampleComponent} from './../examples/checkbox-label-size/checkbox-label-size-example';
 import {CheckboxSimpleBindingExampleComponent} from './../examples/checkbox-simple-binding/checkbox-simple-binding-example';
 import {CheckboxStatesExampleComponent} from './../examples/checkbox-states/checkbox-states-example';
+import {CheckboxTemplateDrivenExampleComponent} from './../examples/checkbox-template-driven/checkbox-template-driven-example';
 import {CircleToggleGroupExampleComponent} from './../examples/circle-toggle-group/circle-toggle-group-example';
 import {CircleToggleNegativeExampleComponent} from './../examples/circle-toggle-negative/circle-toggle-negative-example';
 import {CircleToggleReactiveDisabledExampleComponent} from './../examples/circle-toggle-reactive-disabled/circle-toggle-reactive-disabled-example';
-import {CheckboxTemplateDrivenExampleComponent} from './../examples/checkbox-template-driven/checkbox-template-driven-example';
 import {CircleToggleReactiveExampleComponent} from './../examples/circle-toggle-reactive/circle-toggle-reactive-example';
 import {CircleToggleResponsiveExampleComponent} from './../examples/circle-toggle-responsive/circle-toggle-responsive-example';
 import {CircleToggleSimpleBindingExampleComponent} from './../examples/circle-toggle-simple-binding/circle-toggle-simple-binding-example';
@@ -79,18 +79,18 @@ import {ComparisonTableFormElementsExampleComponent} from './../examples/compari
 import {ComparisonTableModifyThemingExampleComponent} from './../examples/comparison-table-modify-theming/comparison-table-modify-theming-example';
 import {ComparisonTableRowGroupExampleComponent} from './../examples/comparison-table-row-group/comparison-table-row-group-example';
 import {ComparisonTableWithIntersectionExampleComponent} from './../examples/comparison-table-with-intersection/comparison-table-with-intersection-example';
+import {ComparisonTableWithToggleSectionsExampleComponent} from './../examples/comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import {ComparisonTableExampleComponent} from './../examples/comparison-table/comparison-table-example';
 import {ContextMenuBasicExampleComponent} from './../examples/context-menu-basic/context-menu-basic-example';
-import {ComparisonTableWithToggleSectionsExampleComponent} from './../examples/comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import {ContextMenuDataExampleComponent} from './../examples/context-menu-data/context-menu-data-example';
 import {ContextMenuDisabledExampleComponent} from './../examples/context-menu-disabled/context-menu-disabled-example';
-import {ContextMenuLazyExampleComponent} from './../examples/context-menu-lazy/context-menu-lazy-example';
 import {ContextMenuIconsExampleComponent} from './../examples/context-menu-icons/context-menu-icons-example';
+import {ContextMenuLazyExampleComponent} from './../examples/context-menu-lazy/context-menu-lazy-example';
 import {ContextMenuNestedExampleComponent} from './../examples/context-menu-nested/context-menu-nested-example';
+import {ContextMenuProgrammaticExampleComponent} from './../examples/context-menu-programmatic/context-menu-programmatic-example';
 import {ContextMenuScrollStrategyExampleComponent} from './../examples/context-menu-scroll-strategy/context-menu-scroll-strategy-example';
 import {CopytextNegativeExampleComponent} from './../examples/copytext-negative/copytext-negative-example';
 import {CopytextSizesExampleComponent} from './../examples/copytext-sizes/copytext-sizes-example';
-import {ContextMenuProgrammaticExampleComponent} from './../examples/context-menu-programmatic/context-menu-programmatic-example';
 import {DatefieldBasicExampleComponent} from './../examples/datefield-basic/datefield-basic-example';
 import {DatefieldDisabledExampleComponent} from './../examples/datefield-disabled/datefield-disabled-example';
 import {DatefieldFilterExampleComponent} from './../examples/datefield-filter/datefield-filter-example';
@@ -107,9 +107,9 @@ import {DatefieldRangeExampleComponent} from './../examples/datefield-range/date
 import {DatefieldReactiveExampleComponent} from './../examples/datefield-reactive/datefield-reactive-example';
 import {DatefieldStartviewExampleComponent} from './../examples/datefield-startview/datefield-startview-example';
 import {DatefieldToggleFocusExampleComponent} from './../examples/datefield-toggle-focus/datefield-toggle-focus-example';
+import {DropdownCustomLabelExampleComponent} from './../examples/dropdown-custom-label/dropdown-custom-label-example';
 import {DropdownDisabledItemsExampleComponent} from './../examples/dropdown-disabled-items/dropdown-disabled-items-example';
 import {DropdownFilterCustomExampleComponent} from './../examples/dropdown-filter-custom/dropdown-filter-custom-example';
-import {DropdownCustomLabelExampleComponent} from './../examples/dropdown-custom-label/dropdown-custom-label-example';
 import {DropdownFilterExampleComponent} from './../examples/dropdown-filter/dropdown-filter-example';
 import {DropdownGroupExampleComponent} from './../examples/dropdown-group/dropdown-group-example';
 import {DropdownMultiSelectExampleComponent} from './../examples/dropdown-multi-select/dropdown-multi-select-example';
@@ -118,9 +118,9 @@ import {DropdownOutlineExampleComponent} from './../examples/dropdown-outline/dr
 import {DropdownPlaceholderExampleComponent} from './../examples/dropdown-placeholder/dropdown-placeholder-example';
 import {DropdownReactiveExampleComponent} from './../examples/dropdown-reactive/dropdown-reactive-example';
 import {DropdownRenderingItemsExampleComponent} from './../examples/dropdown-rendering-items/dropdown-rendering-items-example';
+import {DropdownSimpleBindingExampleComponent} from './../examples/dropdown-simple-binding/dropdown-simple-binding-example';
 import {DropdownStandardExampleComponent} from './../examples/dropdown-standard/dropdown-standard-example';
 import {DropdownTemplateDrivenComponent} from './../examples/dropdown-template-driven/dropdown-template-driven-example';
-import {DropdownSimpleBindingExampleComponent} from './../examples/dropdown-simple-binding/dropdown-simple-binding-example';
 import {DynamicTableDataExampleComponent} from './../examples/dynamic-table-data/dynamic-table-data-example';
 import {DynamicTableEventExampleComponent} from './../examples/dynamic-table-event/dynamic-table-event-example';
 import {DynamicTableWithoutDataExampleComponent} from './../examples/dynamic-table-without-data/dynamic-table-without-data-example';
@@ -137,19 +137,19 @@ import {FileUploaderTemplateDrivenExampleComponent} from './../examples/file-upl
 import {FileUploaderTypeValidationExampleComponent} from './../examples/file-uploader-type-validation/file-uploader-type-validation-example';
 import {FileUploaderValidationExampleComponent} from './../examples/file-uploader-validation/file-uploader-validation-example';
 import {FileUploaderWithRequestExampleComponent} from './../examples/file-uploader-with-request/file-uploader-with-request-example';
+import {FooterExampleComponent} from './../examples/footer/footer-example';
 import {FormfieldAppearanceExampleComponent} from './../examples/formfield-appearance/formfield-appearance-example';
 import {FormfieldBasicExampleComponent} from './../examples/formfield-basic/formfield-basic-example';
-import {FooterExampleComponent} from './../examples/footer/footer-example';
 import {FormfieldCharacterCountExampleComponent} from './../examples/formfield-character-count/formfield-character-count-example';
 import {FormfieldCustomLabelExampleComponent} from './../examples/formfield-custom-label/formfield-custom-label-example';
-import {FormfieldCustomExampleComponent} from './../examples/formfield-custom/formfield-custom-example';
 import {MyTelInput} from './../examples/formfield-custom-tel-input/formfield-custom-tel-input-example';
+import {FormfieldCustomExampleComponent} from './../examples/formfield-custom/formfield-custom-example';
 import {FormfieldErrorExampleComponent} from './../examples/formfield-error/formfield-error-example';
 import {FormfieldExpertErrorExampleComponent} from './../examples/formfield-expert-error/formfield-expert-error-example';
 import {FormfieldFloatingExampleComponent} from './../examples/formfield-floating/formfield-floating-example';
+import {FormfieldGlobalExampleComponent} from './../examples/formfield-global/formfield-global-example';
 import {FormfieldHintExampleComponent} from './../examples/formfield-hint/formfield-hint-example';
 import {FormfieldMultipleErrorsExampleComponent} from './../examples/formfield-multiple-errors/formfield-multiple-errors-example';
-import {FormfieldGlobalExampleComponent} from './../examples/formfield-global/formfield-global-example';
 import {FormfieldNegativeExampleComponent} from './../examples/formfield-negative/formfield-negative-example';
 import {FormfieldNoteAndErrorExampleComponent} from './../examples/formfield-note-and-error/formfield-note-and-error-example';
 import {FormfieldNoteExampleComponent} from './../examples/formfield-note/formfield-note-example';
@@ -166,26 +166,26 @@ import {GridMaxwidthExampleComponent} from './../examples/grid-maxwidth/grid-max
 import {GridMultiInputs1ExampleComponent} from './../examples/grid-multi-inputs-1/grid-multi-inputs-1-example';
 import {GridMultiInputs2ExampleComponent} from './../examples/grid-multi-inputs-2/grid-multi-inputs-2-example';
 import {GridNogutterExampleComponent} from './../examples/grid-nogutter/grid-nogutter-example';
+import {GridOffsetExampleComponent} from './../examples/grid-offset/grid-offset-example';
 import {GridOneInputExampleComponent} from './../examples/grid-one-input/grid-one-input-example';
 import {HeaderCobrandingComponent} from './../examples/header-cobranding/header-cobranding-example';
-import {GridOffsetExampleComponent} from './../examples/grid-offset/grid-offset-example';
 import {HeaderIconsComponent} from './../examples/header-icons/header-icons-example';
-import {HeaderDemoComponent} from './../examples/header/header-example';
 import {HeaderTwoRowsDemoComponent} from './../examples/header-two-rows/header-two-rows-example';
+import {HeaderDemoComponent} from './../examples/header/header-example';
 import {HeadlineFontWeightsExampleComponent} from './../examples/headline-font-weights/headline-font-weights-example';
 import {HeadlineLinksExampleComponent} from './../examples/headline-links/headline-links-example';
 import {HeadlineNegativeExampleComponent} from './../examples/headline-negative/headline-negative-example';
 import {HeadlineSizesExampleComponent} from './../examples/headline-sizes/headline-sizes-example';
 import {IbanMaskComponent} from './../examples/iban-mask/iban-mask-example';
+import {IconEssentialIconsExampleComponent} from './../examples/icon-essential-icons/icon-essential-icons-example';
 import {IconEssentialOverrideExampleComponent} from './../examples/icon-essential-override/icon-essential-override-example';
 import {IconFilledExampleComponent} from './../examples/icon-filled/icon-filled-example';
-import {IconEssentialIconsExampleComponent} from './../examples/icon-essential-icons/icon-essential-icons-example';
 import {IconGeneralExampleComponent} from './../examples/icon-general/icon-general-example';
 import {IconListFunctionalExampleComponent} from './../examples/icon-list-functional/icon-list-functional-example';
 import {IconListProductExampleComponent} from './../examples/icon-list-product/icon-list-product-example';
 import {IconOutlineExampleComponent} from './../examples/icon-outline/icon-outline-example';
-import {IconSizesExampleComponent} from './../examples/icon-sizes/icon-sizes-example';
 import {IconRegistryExampleComponent} from './../examples/icon-registry/icon-registry-example';
+import {IconSizesExampleComponent} from './../examples/icon-sizes/icon-sizes-example';
 import {ImageAttributeExampleComponent} from './../examples/image-attribute/image-attribute-example';
 import {ImageDefaultExampleComponent} from './../examples/image-default/image-default-example';
 import {ImageFixedRatiosExampleComponent} from './../examples/image-fixed-ratios/image-fixed-ratios-example';
@@ -196,9 +196,9 @@ import {InputStandaloneExampleComponent} from './../examples/input-standalone/in
 import {InputTemplateDrivenExampleComponent} from './../examples/input-template-driven/input-template-driven-example';
 import {InputWithoutFormfieldExampleComponent} from './../examples/input-without-formfield/input-without-formfield-example';
 import {InputExampleComponent} from './../examples/input/input-example';
+import {LabelExampleComponent} from './../examples/label/label-example';
 import {LinkBlackExampleComponent} from './../examples/link-black/link-black-example';
 import {LinkDefaultExampleComponent} from './../examples/link-default/link-default-example';
-import {LabelExampleComponent} from './../examples/label/label-example';
 import {LinkIconsExampleComponent} from './../examples/link-icons/link-icons-example';
 import {LinkMultipleExampleComponent} from './../examples/link-multiple/link-multiple-example';
 import {LinkNegativeExampleComponent} from './../examples/link-negative/link-negative-example';
@@ -207,8 +207,8 @@ import {LinkWithinTextExampleComponent} from './../examples/link-within-text/lin
 import {ListCirclesExampleComponent} from './../examples/list-circles/list-circles-example';
 import {ListCopytextExampleComponent} from './../examples/list-copytext/list-copytext-example';
 import {CustomColorListExampleComponent} from './../examples/list-custom-color/list-custom-color-example';
-import {ListNegativeExampleComponent} from './../examples/list-negative/list-negative-example';
 import {ListIconsExampleComponent} from './../examples/list-icons/list-icons-example';
+import {ListNegativeExampleComponent} from './../examples/list-negative/list-negative-example';
 import {ListNestingExampleComponent} from './../examples/list-nesting/list-nesting-example';
 import {ListOrderedExampleComponent} from './../examples/list-ordered/list-ordered-example';
 import {ListUnorderedExampleComponent} from './../examples/list-unordered/list-unordered-example';
@@ -224,19 +224,19 @@ import {NxMenuButtonExampleComponent} from './../examples/menu-button/menu-butto
 import {NxMenuItemWithIconsExampleComponent} from './../examples/menu-item-with-icons/menu-item-with-icons-example';
 import {NxMenuItemExampleComponent} from './../examples/menu-item/menu-item-example';
 import {NxMenuLinkExampleComponent} from './../examples/menu-link/menu-link-example';
-import {MessageBannerExampleComponent} from './../examples/message-banner/message-banner-example';
 import {MenuExampleComponent} from './../examples/menu/menu-example';
+import {MessageBannerExampleComponent} from './../examples/message-banner/message-banner-example';
+import {MessageClosableExampleComponent} from './../examples/message-closable/message-closable-example';
 import {MessageErrorExampleComponent} from './../examples/message-error/message-error-example';
 import {MessageInfoExampleComponent} from './../examples/message-info/message-info-example';
-import {MessageClosableExampleComponent} from './../examples/message-closable/message-closable-example';
 import {MessageSuccessExampleComponent} from './../examples/message-success/message-success-example';
 import {MessageToastCustomSettingsExampleComponent} from './../examples/message-toast-custom-settings/message-toast-custom-settings-example';
 import {MessageToastOpeningExampleComponent} from './../examples/message-toast-opening/message-toast-opening-example';
 import {MessageWarningExampleComponent} from './../examples/message-warning/message-warning-example';
 import {ModalBasicExampleComponent} from './../examples/modal-basic/modal-basic-example';
 import {ModalClosingNehaviourExampleComponent} from './../examples/modal-closing-behaviour/modal-closing-behaviour-example';
-import {ModalContentActionsExampleComponent} from './../examples/modal-content-actions/modal-content-actions-example';
 import {ModalClosingExampleComponent} from './../examples/modal-closing/modal-closing-example';
+import {ModalContentActionsExampleComponent} from './../examples/modal-content-actions/modal-content-actions-example';
 import {ModalDataInjectionExampleComponent} from './../examples/modal-data-injection/modal-data-injection-example';
 import {ModalFixedWidthExampleComponent} from './../examples/modal-fixed-width/modal-fixed-width-example';
 import {ModalOpeningExampleComponent} from './../examples/modal-opening/modal-opening-example';
@@ -257,16 +257,16 @@ import {NumberStepperReactiveExampleComponent} from './../examples/number-steppe
 import {NumberStepperSimpleBindingExampleComponent} from './../examples/number-stepper-simple-binding/number-stepper-simple-binding-example';
 import {NumberStepperSizesExampleComponent} from './../examples/number-stepper-sizes/number-stepper-sizes-example';
 import {NumberStepperStandaloneExampleComponent} from './../examples/number-stepper-standalone/number-stepper-standalone-example';
+import {NumberStepperTemplateDrivenExampleComponent} from './../examples/number-stepper-template-driven/number-stepper-template-driven-example';
 import {NumberStepperValidationExampleComponent} from './../examples/number-stepper-validation/number-stepper-validation-example';
 import {PageSearchAutocompleteExampleComponent} from './../examples/page-search-autocomplete/page-search-autocomplete-example';
-import {NumberStepperTemplateDrivenExampleComponent} from './../examples/number-stepper-template-driven/number-stepper-template-driven-example';
 import {PageSearchClickExampleComponent} from './../examples/page-search-click/page-search-click-example';
 import {PageSearchHiddenExampleComponent} from './../examples/page-search-hidden/page-search-hidden-example';
 import {PageSearchInputExampleComponent} from './../examples/page-search-input/page-search-input-example';
 import {PaginationAdvancedExampleComponent} from './../examples/pagination-advanced/pagination-advanced-example';
+import {PaginationLocalizeAdvancedExampleComponent} from './../examples/pagination-localize-advanced/pagination-localize-advanced-example';
 import {PaginationLocalizeExampleComponent} from './../examples/pagination-localize/pagination-localize-example';
 import {PaginationSimpleExampleComponent} from './../examples/pagination-simple/pagination-simple-example';
-import {PaginationLocalizeAdvancedExampleComponent} from './../examples/pagination-localize-advanced/pagination-localize-advanced-example';
 import {PopoverClickOutsideExampleComponent} from './../examples/popover-click-outside/popover-click-outside-example';
 import {PopoverCustomExampleComponent} from './../examples/popover-custom/popover-custom-example';
 import {PopoverFallbackExampleComponent} from './../examples/popover-fallback/popover-fallback-example';
@@ -274,28 +274,28 @@ import {PopoverHoverExampleComponent} from './../examples/popover-hover/popover-
 import {PopoverLazyloadExampleComponent} from './../examples/popover-lazyload/popover-lazyload-example';
 import {PopoverModalExampleComponent} from './../examples/popover-modal/popover-modal-example';
 import {PopoverPositioningExampleComponent} from './../examples/popover-positioning/popover-positioning-example';
+import {PopoverScrollExampleComponent} from './../examples/popover-scroll/popover-scroll-example';
 import {PopoverScrollableExampleComponent} from './../examples/popover-scrollable/popover-scrollable-example';
 import {PopoverTableExampleComponent} from './../examples/popover-table/popover-table-example';
 import {PopoverTriggerExampleComponent} from './../examples/popover-trigger/popover-trigger-example';
 import {ProgressStepperCustomExampleComponent} from './../examples/progress-stepper-custom/progress-stepper-custom-example';
 import {ProgressStepperFormExampleComponent} from './../examples/progress-stepper-form/progress-stepper-form-example';
-import {PopoverScrollExampleComponent} from './../examples/popover-scroll/popover-scroll-example';
 import {ProgressStepperMultiGroupsExampleComponent} from './../examples/progress-stepper-multi-groups/progress-stepper-multi-groups-example';
 import {ProgressStepperMultiVerticalExampleComponent} from './../examples/progress-stepper-multi-vertical/progress-stepper-multi-vertical-example';
 import {ProgressStepperMultiExampleComponent} from './../examples/progress-stepper-multi/progress-stepper-multi-example';
 import {ProgressStepperNonlinearExampleComponent} from './../examples/progress-stepper-nonlinear/progress-stepper-nonlinear-example';
 import {ProgressStepperProgressExampleComponent} from './../examples/progress-stepper-progress/progress-stepper-progress-example';
 import {ProgressStepperReactivemultiExampleComponent} from './../examples/progress-stepper-reactivemulti/progress-stepper-reactivemulti-example';
-import {ProgressStepperStepExampleComponent} from './../examples/progress-stepper-step/progress-stepper-step-example';
 import {ProgressStepperReactivesingleExampleComponent} from './../examples/progress-stepper-reactivesingle/progress-stepper-reactivesingle-example';
+import {ProgressStepperStepExampleComponent} from './../examples/progress-stepper-step/progress-stepper-step-example';
 import {ProgressStepperTitleExampleComponent} from './../examples/progress-stepper-title/progress-stepper-title-example';
-import {ProgressbarBasicExampleComponent} from './../examples/progressbar-basic/progressbar-basic-example';
 import {ProgressStepperExampleComponent} from './../examples/progress-stepper/progress-stepper-example';
+import {ProgressbarBasicExampleComponent} from './../examples/progressbar-basic/progressbar-basic-example';
 import {ProgressbarExampleComponent} from './../examples/progressbar/progressbar-example';
 import {RadioButtonDisabledExampleComponent} from './../examples/radio-button-disabled/radio-button-disabled-example';
+import {RadioButtonEventExampleComponent} from './../examples/radio-button-event/radio-button-event-example';
 import {RadioButtonFormExampleComponent} from './../examples/radio-button-form/radio-button-form-example';
 import {RadioButtonGroupHorizontalExampleComponent} from './../examples/radio-button-group-horizontal/radio-button-group-horizontal-example';
-import {RadioButtonEventExampleComponent} from './../examples/radio-button-event/radio-button-event-example';
 import {RadioButtonGroupLabelSizeExampleComponent} from './../examples/radio-button-group-label-size/radio-button-group-label-size-example';
 import {RadioButtonGroupValidationExampleComponent} from './../examples/radio-button-group-validation/radio-button-group-validation-example';
 import {RadioButtonGroupExampleComponent} from './../examples/radio-button-group/radio-button-group-example';
@@ -318,14 +318,14 @@ import {RatingReactiveExampleComponent} from './../examples/rating-reactive/rati
 import {RatingSimpleExampleComponent} from './../examples/rating-simple/rating-simple-example';
 import {RatingTemplateExampleComponent} from './../examples/rating-template/rating-template-example';
 import {SelectableCardBasicExampleComponent} from './../examples/selectable-card-basic/selectable-card-basic-example';
+import {SelectableCardDynamicExampleComponent} from './../examples/selectable-card-dynamic/selectable-card-dynamic-example';
 import {SelectableCardReactiveExampleComponent} from './../examples/selectable-card-reactive/selectable-card-reactive-example';
 import {SelectableCardStatesExampleComponent} from './../examples/selectable-card-states/selectable-card-states-example';
-import {SelectableCardDynamicExampleComponent} from './../examples/selectable-card-dynamic/selectable-card-dynamic-example';
 import {SidebarFooterExampleComponent} from './../examples/sidebar-footer/sidebar-footer-example';
 import {SidebarMethodsExampleComponent} from './../examples/sidebar-methods/sidebar-methods-example';
+import {SidebarOutputsExampleComponent} from './../examples/sidebar-outputs/sidebar-outputs-example';
 import {SidebarResizeableExampleComponent} from './../examples/sidebar-resizeable/sidebar-resizeable-example';
 import {SidebarExampleComponent} from './../examples/sidebar/sidebar-example';
-import {SidebarOutputsExampleComponent} from './../examples/sidebar-outputs/sidebar-outputs-example';
 import {SliderBasicExampleComponent} from './../examples/slider-basic/slider-basic-example';
 import {SliderDecimalExampleComponent} from './../examples/slider-decimal/slider-decimal-example';
 import {SliderDefaultExampleComponent} from './../examples/slider-default/slider-default-example';
@@ -348,13 +348,13 @@ import {SwitcherNegativeExampleComponent} from './../examples/switcher-negative/
 import {SwitcherReactiveFormExampleComponent} from './../examples/switcher-reactive-form/switcher-reactive-form-example';
 import {SwitcherTemplateDrivenExampleComponent} from './../examples/switcher-template-driven/switcher-template-driven-example';
 import {TableCondensedExampleComponent} from './../examples/table-condensed/table-condensed-example';
-import {TableFilterSortPaginateExampleComponent} from './../examples/table-filter-sort-paginate/table-filter-sort-paginate-example';
 import {ExpandableRowExampleComponent} from './../examples/table-expandable/table-expandable-example';
+import {TableFilterSortPaginateExampleComponent} from './../examples/table-filter-sort-paginate/table-filter-sort-paginate-example';
 import {TableSelectingExampleComponent} from './../examples/table-selecting/table-selecting-example';
 import {TableSingleSelectExampleComponent} from './../examples/table-single-select/table-single-select-example';
+import {TableSortingExampleComponent} from './../examples/table-sorting/table-sorting-example';
 import {TableZebraExampleComponent} from './../examples/table-zebra/table-zebra-example';
 import {TableExampleComponent} from './../examples/table/table-example';
-import {TableSortingExampleComponent} from './../examples/table-sorting/table-sorting-example';
 import {TabsAppearanceExampleComponent} from './../examples/tabs-appearance/tabs-appearance-example';
 import {TabsAutoManualSelectExampleComponent} from './../examples/tabs-auto-manual-select/tabs-auto-manual-select-example';
 import {TabsBasicExampleComponent} from './../examples/tabs-basic/tabs-basic-example';
@@ -376,22 +376,22 @@ import {TagListDeleteExampleComponent} from './../examples/taglist-delete/taglis
 import {TagListFormatterExampleComponent} from './../examples/taglist-formatter/taglist-formatter-example';
 import {TagListKeywordExampleComponent} from './../examples/taglist-keyword/taglist-keyword-example';
 import {TagListObjectsExampleComponent} from './../examples/taglist-objects/taglist-objects-example';
-import {TagListReactiveExampleComponent} from './../examples/taglist-reactive/taglist-reactive-example';
 import {TagListOutputExampleComponent} from './../examples/taglist-output/taglist-output-example';
-import {TaglistExampleComponent} from './../examples/taglist/taglist-example';
+import {TagListReactiveExampleComponent} from './../examples/taglist-reactive/taglist-reactive-example';
 import {TagListTemplateDrivenExampleComponent} from './../examples/taglist-templatedriven/taglist-templatedriven-example';
+import {TaglistExampleComponent} from './../examples/taglist/taglist-example';
 import {TimefieldDisabledExampleComponent} from './../examples/timefield-disabled/timefield-disabled-example';
 import {TimefieldFormatTogglerExampleComponent} from './../examples/timefield-format-toggler/timefield-format-toggler-example';
-import {TimefieldNegativeExampleComponent} from './../examples/timefield-negative/timefield-negative-example';
 import {TimefieldLocalizeExampleComponent} from './../examples/timefield-localize/timefield-localize-example';
+import {TimefieldNegativeExampleComponent} from './../examples/timefield-negative/timefield-negative-example';
 import {TimefieldReactiveExampleComponent} from './../examples/timefield-reactive/timefield-reactive-example';
 import {TimefieldTemplateDrivenExampleComponent} from './../examples/timefield-template-driven/timefield-template-driven-example';
 import {ToolbarPositioningContentExampleComponent} from './../examples/toolbar-positioning-content/toolbar-positioning-content-example';
-import {TooltipBasicExampleComponent} from './../examples/tooltip-basic/tooltip-basic-example';
-import {TooltipDisabledExampleComponent} from './../examples/tooltip-disabled/tooltip-disabled-example';
-import {TooltipDelayExampleComponent} from './../examples/tooltip-delay/tooltip-delay-example';
-import {TooltipPositionsExampleComponent} from './../examples/tooltip-positions/tooltip-positions-example';
 import {ToolbarExampleComponent} from './../examples/toolbar/toolbar-example';
+import {TooltipBasicExampleComponent} from './../examples/tooltip-basic/tooltip-basic-example';
+import {TooltipDelayExampleComponent} from './../examples/tooltip-delay/tooltip-delay-example';
+import {TooltipDisabledExampleComponent} from './../examples/tooltip-disabled/tooltip-disabled-example';
+import {TooltipPositionsExampleComponent} from './../examples/tooltip-positions/tooltip-positions-example';
 import {TooltipProgrammaticExampleComponent} from './../examples/tooltip-programmatic/tooltip-programmatic-example';
 import {TooltipSettingsExampleComponent} from './../examples/tooltip-settings/tooltip-settings-example';
 import {TreeDemoComponent} from './../examples/tree/tree-example';
@@ -532,6 +532,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Negative Example',
     component: ButtonNegativeExampleComponent
   },
+  'button-plain': {
+    id: 'button-plain',
+    title: 'Plain Buttons Example',
+    component: ButtonPlainExampleComponent
+  },
   'button-small-medium': {
     id: 'button-small-medium',
     title: 'Small Medium Size Example',
@@ -561,11 +566,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'card',
     title: 'Default Card Example',
     component: CardExampleComponent
-  },
-  'button-plain': {
-    id: 'button-plain',
-    title: 'Plain Buttons Example',
-    component: ButtonPlainExampleComponent
   },
   'checkbox-group-basic': {
     id: 'checkbox-group-basic',
@@ -602,6 +602,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Checkbox group validation example',
     component: CheckboxGroupValidationExampleComponent
   },
+  'checkbox-label-size': {
+    id: 'checkbox-label-size',
+    title: 'Label size example',
+    component: CheckboxLabelSizeExampleComponent
+  },
   'checkbox-negative': {
     id: 'checkbox-negative',
     title: 'Negative styling example',
@@ -617,11 +622,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Reactive example',
     component: CheckboxReactiveExampleComponent
   },
-  'checkbox-label-size': {
-    id: 'checkbox-label-size',
-    title: 'Label size example',
-    component: CheckboxLabelSizeExampleComponent
-  },
   'checkbox-simple-binding': {
     id: 'checkbox-simple-binding',
     title: 'Simple binding example',
@@ -631,6 +631,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'checkbox-states',
     title: 'Checkbox States',
     component: CheckboxStatesExampleComponent
+  },
+  'checkbox-template-driven': {
+    id: 'checkbox-template-driven',
+    title: 'Template-driven example with ngModel',
+    component: CheckboxTemplateDrivenExampleComponent
   },
   'circle-toggle-group': {
     id: 'circle-toggle-group',
@@ -646,11 +651,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'circle-toggle-reactive-disabled',
     title: 'Reactive disabled example',
     component: CircleToggleReactiveDisabledExampleComponent
-  },
-  'checkbox-template-driven': {
-    id: 'checkbox-template-driven',
-    title: 'Template-driven example with ngModel',
-    component: CheckboxTemplateDrivenExampleComponent
   },
   'circle-toggle-reactive': {
     id: 'circle-toggle-reactive',
@@ -752,6 +752,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Intersection example',
     component: ComparisonTableWithIntersectionExampleComponent
   },
+  'comparison-table-with-toggle-sections': {
+    id: 'comparison-table-with-toggle-sections',
+    title: 'Toggle section example',
+    component: ComparisonTableWithToggleSectionsExampleComponent
+  },
   'comparison-table': {
     id: 'comparison-table',
     title: 'Basic example',
@@ -761,11 +766,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'context-menu-basic',
     title: 'Basic Context Menu Example',
     component: ContextMenuBasicExampleComponent
-  },
-  'comparison-table-with-toggle-sections': {
-    id: 'comparison-table-with-toggle-sections',
-    title: 'Toggle section example',
-    component: ComparisonTableWithToggleSectionsExampleComponent
   },
   'context-menu-data': {
     id: 'context-menu-data',
@@ -777,20 +777,25 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Disabled Context Menu Example',
     component: ContextMenuDisabledExampleComponent
   },
-  'context-menu-lazy': {
-    id: 'context-menu-lazy',
-    title: 'Lazy Context Menu Example',
-    component: ContextMenuLazyExampleComponent
-  },
   'context-menu-icons': {
     id: 'context-menu-icons',
     title: 'Icons Context Menu Example',
     component: ContextMenuIconsExampleComponent
   },
+  'context-menu-lazy': {
+    id: 'context-menu-lazy',
+    title: 'Lazy Context Menu Example',
+    component: ContextMenuLazyExampleComponent
+  },
   'context-menu-nested': {
     id: 'context-menu-nested',
     title: 'Nested Context Menu Example',
     component: ContextMenuNestedExampleComponent
+  },
+  'context-menu-programmatic': {
+    id: 'context-menu-programmatic',
+    title: 'Programmatic Context Menu Example',
+    component: ContextMenuProgrammaticExampleComponent
   },
   'context-menu-scroll-strategy': {
     id: 'context-menu-scroll-strategy',
@@ -806,11 +811,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'copytext-sizes',
     title: 'Size examples',
     component: CopytextSizesExampleComponent
-  },
-  'context-menu-programmatic': {
-    id: 'context-menu-programmatic',
-    title: 'Programmatic Context Menu Example',
-    component: ContextMenuProgrammaticExampleComponent
   },
   'datefield-basic': {
     id: 'datefield-basic',
@@ -892,6 +892,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Datepicker toggle focus example',
     component: DatefieldToggleFocusExampleComponent
   },
+  'dropdown-custom-label': {
+    id: 'dropdown-custom-label',
+    title: 'Custom label example',
+    component: DropdownCustomLabelExampleComponent
+  },
   'dropdown-disabled-items': {
     id: 'dropdown-disabled-items',
     title: 'Disabled items example',
@@ -901,11 +906,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'dropdown-filter-custom',
     title: 'Custom Filter Example',
     component: DropdownFilterCustomExampleComponent
-  },
-  'dropdown-custom-label': {
-    id: 'dropdown-custom-label',
-    title: 'Custom label example',
-    component: DropdownCustomLabelExampleComponent
   },
   'dropdown-filter': {
     id: 'dropdown-filter',
@@ -947,6 +947,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Examples for rendering items',
     component: DropdownRenderingItemsExampleComponent
   },
+  'dropdown-simple-binding': {
+    id: 'dropdown-simple-binding',
+    title: 'Simple binding example',
+    component: DropdownSimpleBindingExampleComponent
+  },
   'dropdown-standard': {
     id: 'dropdown-standard',
     title: 'Standard dropdown example',
@@ -956,11 +961,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'dropdown-template-driven',
     title: 'Template driven example',
     component: DropdownTemplateDrivenComponent
-  },
-  'dropdown-simple-binding': {
-    id: 'dropdown-simple-binding',
-    title: 'Simple binding example',
-    component: DropdownSimpleBindingExampleComponent
   },
   'dynamic-table-data': {
     id: 'dynamic-table-data',
@@ -1042,6 +1042,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Custom uploading implementation',
     component: FileUploaderWithRequestExampleComponent
   },
+  'footer': {
+    id: 'footer',
+    title: 'Footer',
+    component: FooterExampleComponent
+  },
   'formfield-appearance': {
     id: 'formfield-appearance',
     title: 'Appearance example',
@@ -1051,11 +1056,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'formfield-basic',
     title: 'Basic formfield example',
     component: FormfieldBasicExampleComponent
-  },
-  'footer': {
-    id: 'footer',
-    title: 'Footer',
-    component: FooterExampleComponent
   },
   'formfield-character-count': {
     id: 'formfield-character-count',
@@ -1067,15 +1067,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Custom formfield label example',
     component: FormfieldCustomLabelExampleComponent
   },
-  'formfield-custom': {
-    id: 'formfield-custom',
-    title: 'Usage Custom Formfield Control example',
-    component: FormfieldCustomExampleComponent
-  },
   'formfield-custom-tel-input': {
     id: 'formfield-custom-tel-input',
     title: 'Implementing Custom Formfield Control example',
     component: MyTelInput
+  },
+  'formfield-custom': {
+    id: 'formfield-custom',
+    title: 'Usage Custom Formfield Control example',
+    component: FormfieldCustomExampleComponent
   },
   'formfield-error': {
     id: 'formfield-error',
@@ -1092,6 +1092,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Floating examples',
     component: FormfieldFloatingExampleComponent
   },
+  'formfield-global': {
+    id: 'formfield-global',
+    title: 'Global default settings example',
+    component: FormfieldGlobalExampleComponent
+  },
   'formfield-hint': {
     id: 'formfield-hint',
     title: 'Hint example',
@@ -1101,11 +1106,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'formfield-multiple-errors',
     title: 'Multiple errors example',
     component: FormfieldMultipleErrorsExampleComponent
-  },
-  'formfield-global': {
-    id: 'formfield-global',
-    title: 'Global default settings example',
-    component: FormfieldGlobalExampleComponent
   },
   'formfield-negative': {
     id: 'formfield-negative',
@@ -1187,6 +1187,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Current tier of the grid',
     component: GridNogutterExampleComponent
   },
+  'grid-offset': {
+    id: 'grid-offset',
+    title: 'Offset example',
+    component: GridOffsetExampleComponent
+  },
   'grid-one-input': {
     id: 'grid-one-input',
     title: 'One input example',
@@ -1197,25 +1202,20 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Header with co-branding example',
     component: HeaderCobrandingComponent
   },
-  'grid-offset': {
-    id: 'grid-offset',
-    title: 'Offset example',
-    component: GridOffsetExampleComponent
-  },
   'header-icons': {
     id: 'header-icons',
     title: 'Header with functional icons example',
     component: HeaderIconsComponent
   },
-  'header': {
-    id: 'header',
-    title: 'Single Row Header Example',
-    component: HeaderDemoComponent
-  },
   'header-two-rows': {
     id: 'header-two-rows',
     title: 'Header Two Rows Example',
     component: HeaderTwoRowsDemoComponent
+  },
+  'header': {
+    id: 'header',
+    title: 'Single Row Header Example',
+    component: HeaderDemoComponent
   },
   'headline-font-weights': {
     id: 'headline-font-weights',
@@ -1242,6 +1242,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'IBAN mask example',
     component: IbanMaskComponent
   },
+  'icon-essential-icons': {
+    id: 'icon-essential-icons',
+    title: 'Essential Icons Example',
+    component: IconEssentialIconsExampleComponent
+  },
   'icon-essential-override': {
     id: 'icon-essential-override',
     title: 'Essential Icon Override Example',
@@ -1251,11 +1256,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'icon-filled',
     title: 'Icons Filled Example',
     component: IconFilledExampleComponent
-  },
-  'icon-essential-icons': {
-    id: 'icon-essential-icons',
-    title: 'Essential Icons Example',
-    component: IconEssentialIconsExampleComponent
   },
   'icon-general': {
     id: 'icon-general',
@@ -1277,15 +1277,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Icons Outline Example',
     component: IconOutlineExampleComponent
   },
-  'icon-sizes': {
-    id: 'icon-sizes',
-    title: 'Icons Sizes Example',
-    component: IconSizesExampleComponent
-  },
   'icon-registry': {
     id: 'icon-registry',
     title: 'Register Icons Example',
     component: IconRegistryExampleComponent
+  },
+  'icon-sizes': {
+    id: 'icon-sizes',
+    title: 'Icons Sizes Example',
+    component: IconSizesExampleComponent
   },
   'image-attribute': {
     id: 'image-attribute',
@@ -1337,6 +1337,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Basic input field example',
     component: InputExampleComponent
   },
+  'label': {
+    id: 'label',
+    title: 'Label example',
+    component: LabelExampleComponent
+  },
   'link-black': {
     id: 'link-black',
     title: 'Black link example',
@@ -1346,11 +1351,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'link-default',
     title: 'Default link example',
     component: LinkDefaultExampleComponent
-  },
-  'label': {
-    id: 'label',
-    title: 'Label example',
-    component: LabelExampleComponent
   },
   'link-icons': {
     id: 'link-icons',
@@ -1392,15 +1392,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Custom list item color example',
     component: CustomColorListExampleComponent
   },
-  'list-negative': {
-    id: 'list-negative',
-    title: 'Negative styling example',
-    component: ListNegativeExampleComponent
-  },
   'list-icons': {
     id: 'list-icons',
     title: 'Lists with icons examples',
     component: ListIconsExampleComponent
+  },
+  'list-negative': {
+    id: 'list-negative',
+    title: 'Negative styling example',
+    component: ListNegativeExampleComponent
   },
   'list-nesting': {
     id: 'list-nesting',
@@ -1477,15 +1477,20 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Menu links',
     component: NxMenuLinkExampleComponent
   },
+  'menu': {
+    id: 'menu',
+    title: 'Complete menu example',
+    component: MenuExampleComponent
+  },
   'message-banner': {
     id: 'message-banner',
     title: 'Notification banner example',
     component: MessageBannerExampleComponent
   },
-  'menu': {
-    id: 'menu',
-    title: 'Complete menu example',
-    component: MenuExampleComponent
+  'message-closable': {
+    id: 'message-closable',
+    title: 'Closable example',
+    component: MessageClosableExampleComponent
   },
   'message-error': {
     id: 'message-error',
@@ -1496,11 +1501,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'message-info',
     title: 'Info context example',
     component: MessageInfoExampleComponent
-  },
-  'message-closable': {
-    id: 'message-closable',
-    title: 'Closable example',
-    component: MessageClosableExampleComponent
   },
   'message-success': {
     id: 'message-success',
@@ -1532,15 +1532,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Closing behaviour example',
     component: ModalClosingNehaviourExampleComponent
   },
-  'modal-content-actions': {
-    id: 'modal-content-actions',
-    title: 'Modal with content and actions example',
-    component: ModalContentActionsExampleComponent
-  },
   'modal-closing': {
     id: 'modal-closing',
     title: 'Modal closing example',
     component: ModalClosingExampleComponent
+  },
+  'modal-content-actions': {
+    id: 'modal-content-actions',
+    title: 'Modal with content and actions example',
+    component: ModalContentActionsExampleComponent
   },
   'modal-data-injection': {
     id: 'modal-data-injection',
@@ -1642,6 +1642,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Standalone example',
     component: NumberStepperStandaloneExampleComponent
   },
+  'number-stepper-template-driven': {
+    id: 'number-stepper-template-driven',
+    title: 'Template-driven example with ngModel',
+    component: NumberStepperTemplateDrivenExampleComponent
+  },
   'number-stepper-validation': {
     id: 'number-stepper-validation',
     title: 'Validation example',
@@ -1651,11 +1656,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'page-search-autocomplete',
     title: 'Autocomplete Example',
     component: PageSearchAutocompleteExampleComponent
-  },
-  'number-stepper-template-driven': {
-    id: 'number-stepper-template-driven',
-    title: 'Template-driven example with ngModel',
-    component: NumberStepperTemplateDrivenExampleComponent
   },
   'page-search-click': {
     id: 'page-search-click',
@@ -1677,6 +1677,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Advanced Pagination Example',
     component: PaginationAdvancedExampleComponent
   },
+  'pagination-localize-advanced': {
+    id: 'pagination-localize-advanced',
+    title: 'Localization - Advanced Pagination',
+    component: PaginationLocalizeAdvancedExampleComponent
+  },
   'pagination-localize': {
     id: 'pagination-localize',
     title: 'Localization Example',
@@ -1686,11 +1691,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'pagination-simple',
     title: 'Simple Pagination Example',
     component: PaginationSimpleExampleComponent
-  },
-  'pagination-localize-advanced': {
-    id: 'pagination-localize-advanced',
-    title: 'Localization - Advanced Pagination',
-    component: PaginationLocalizeAdvancedExampleComponent
   },
   'popover-click-outside': {
     id: 'popover-click-outside',
@@ -1727,6 +1727,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Popover positioning Example',
     component: PopoverPositioningExampleComponent
   },
+  'popover-scroll': {
+    id: 'popover-scroll',
+    title: 'Popover Scroll Example',
+    component: PopoverScrollExampleComponent
+  },
   'popover-scrollable': {
     id: 'popover-scrollable',
     title: 'Popover Scrollable Example',
@@ -1751,11 +1756,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'progress-stepper-form',
     title: 'Progress Indicator multi manual step completion example',
     component: ProgressStepperFormExampleComponent
-  },
-  'popover-scroll': {
-    id: 'popover-scroll',
-    title: 'Popover Scroll Example',
-    component: PopoverScrollExampleComponent
   },
   'progress-stepper-multi-groups': {
     id: 'progress-stepper-multi-groups',
@@ -1787,30 +1787,30 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Progress Indicator reactive form with separate form per step',
     component: ProgressStepperReactivemultiExampleComponent
   },
-  'progress-stepper-step': {
-    id: 'progress-stepper-step',
-    title: 'Progress Indicator step completion example',
-    component: ProgressStepperStepExampleComponent
-  },
   'progress-stepper-reactivesingle': {
     id: 'progress-stepper-reactivesingle',
     title: 'Progress Indicator reactive form with single form example',
     component: ProgressStepperReactivesingleExampleComponent
+  },
+  'progress-stepper-step': {
+    id: 'progress-stepper-step',
+    title: 'Progress Indicator step completion example',
+    component: ProgressStepperStepExampleComponent
   },
   'progress-stepper-title': {
     id: 'progress-stepper-title',
     title: 'Progress Indicator title example',
     component: ProgressStepperTitleExampleComponent
   },
-  'progressbar-basic': {
-    id: 'progressbar-basic',
-    title: 'Progress Bar Basic Example',
-    component: ProgressbarBasicExampleComponent
-  },
   'progress-stepper': {
     id: 'progress-stepper',
     title: 'Progress Indicator example',
     component: ProgressStepperExampleComponent
+  },
+  'progressbar-basic': {
+    id: 'progressbar-basic',
+    title: 'Progress Bar Basic Example',
+    component: ProgressbarBasicExampleComponent
   },
   'progressbar': {
     id: 'progressbar',
@@ -1822,6 +1822,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Disabled Example',
     component: RadioButtonDisabledExampleComponent
   },
+  'radio-button-event': {
+    id: 'radio-button-event',
+    title: 'Event Example',
+    component: RadioButtonEventExampleComponent
+  },
   'radio-button-form': {
     id: 'radio-button-form',
     title: 'Template Driven Examples',
@@ -1831,11 +1836,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'radio-button-group-horizontal',
     title: 'Radio Button Group Horizontal Example',
     component: RadioButtonGroupHorizontalExampleComponent
-  },
-  'radio-button-event': {
-    id: 'radio-button-event',
-    title: 'Event Example',
-    component: RadioButtonEventExampleComponent
   },
   'radio-button-group-label-size': {
     id: 'radio-button-group-label-size',
@@ -1947,6 +1947,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Selectable cards basic example',
     component: SelectableCardBasicExampleComponent
   },
+  'selectable-card-dynamic': {
+    id: 'selectable-card-dynamic',
+    title: 'Selectable cards dynamic example',
+    component: SelectableCardDynamicExampleComponent
+  },
   'selectable-card-reactive': {
     id: 'selectable-card-reactive',
     title: 'Selectable cards reactive example',
@@ -1956,11 +1961,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'selectable-card-states',
     title: 'Selectable cards states example',
     component: SelectableCardStatesExampleComponent
-  },
-  'selectable-card-dynamic': {
-    id: 'selectable-card-dynamic',
-    title: 'Selectable cards dynamic example',
-    component: SelectableCardDynamicExampleComponent
   },
   'sidebar-footer': {
     id: 'sidebar-footer',
@@ -1972,6 +1972,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Side navigation Methods',
     component: SidebarMethodsExampleComponent
   },
+  'sidebar-outputs': {
+    id: 'sidebar-outputs',
+    title: 'Outputs example',
+    component: SidebarOutputsExampleComponent
+  },
   'sidebar-resizeable': {
     id: 'sidebar-resizeable',
     title: 'Side navigation resizeable Example',
@@ -1981,11 +1986,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'sidebar',
     title: 'Side navigation with Actions',
     component: SidebarExampleComponent
-  },
-  'sidebar-outputs': {
-    id: 'sidebar-outputs',
-    title: 'Outputs example',
-    component: SidebarOutputsExampleComponent
   },
   'slider-basic': {
     id: 'slider-basic',
@@ -2097,15 +2097,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Condensed Example',
     component: TableCondensedExampleComponent
   },
-  'table-filter-sort-paginate': {
-    id: 'table-filter-sort-paginate',
-    title: 'Advanced example for sorting, filtering and pagination',
-    component: TableFilterSortPaginateExampleComponent
-  },
   'table-expandable': {
     id: 'table-expandable',
     title: 'Expandable Rows',
     component: ExpandableRowExampleComponent
+  },
+  'table-filter-sort-paginate': {
+    id: 'table-filter-sort-paginate',
+    title: 'Advanced example for sorting, filtering and pagination',
+    component: TableFilterSortPaginateExampleComponent
   },
   'table-selecting': {
     id: 'table-selecting',
@@ -2117,6 +2117,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Single Row Selection',
     component: TableSingleSelectExampleComponent
   },
+  'table-sorting': {
+    id: 'table-sorting',
+    title: 'Sorting example',
+    component: TableSortingExampleComponent
+  },
   'table-zebra': {
     id: 'table-zebra',
     title: 'Zebra mode example',
@@ -2126,11 +2131,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'table',
     title: 'Simple Table',
     component: TableExampleComponent
-  },
-  'table-sorting': {
-    id: 'table-sorting',
-    title: 'Sorting example',
-    component: TableSortingExampleComponent
   },
   'tabs-appearance': {
     id: 'tabs-appearance',
@@ -2237,25 +2237,25 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Tag Objects Example',
     component: TagListObjectsExampleComponent
   },
-  'taglist-reactive': {
-    id: 'taglist-reactive',
-    title: 'Tag Reactive Example',
-    component: TagListReactiveExampleComponent
-  },
   'taglist-output': {
     id: 'taglist-output',
     title: 'Tag Output Example',
     component: TagListOutputExampleComponent
   },
-  'taglist': {
-    id: 'taglist',
-    title: 'Tag Example',
-    component: TaglistExampleComponent
+  'taglist-reactive': {
+    id: 'taglist-reactive',
+    title: 'Tag Reactive Example',
+    component: TagListReactiveExampleComponent
   },
   'taglist-templatedriven': {
     id: 'taglist-templatedriven',
     title: 'Tag Template Driven Example',
     component: TagListTemplateDrivenExampleComponent
+  },
+  'taglist': {
+    id: 'taglist',
+    title: 'Tag Example',
+    component: TaglistExampleComponent
   },
   'timefield-disabled': {
     id: 'timefield-disabled',
@@ -2267,15 +2267,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Timefield format toggler example',
     component: TimefieldFormatTogglerExampleComponent
   },
-  'timefield-negative': {
-    id: 'timefield-negative',
-    title: 'Timefield negative example',
-    component: TimefieldNegativeExampleComponent
-  },
   'timefield-localize': {
     id: 'timefield-localize',
     title: 'Localization example',
     component: TimefieldLocalizeExampleComponent
+  },
+  'timefield-negative': {
+    id: 'timefield-negative',
+    title: 'Timefield negative example',
+    component: TimefieldNegativeExampleComponent
   },
   'timefield-reactive': {
     id: 'timefield-reactive',
@@ -2292,30 +2292,30 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Toolbar positioning content Example',
     component: ToolbarPositioningContentExampleComponent
   },
+  'toolbar': {
+    id: 'toolbar',
+    title: 'Toolbar basic example',
+    component: ToolbarExampleComponent
+  },
   'tooltip-basic': {
     id: 'tooltip-basic',
     title: 'Tooltip',
     component: TooltipBasicExampleComponent
-  },
-  'tooltip-disabled': {
-    id: 'tooltip-disabled',
-    title: 'Disabled tooltip',
-    component: TooltipDisabledExampleComponent
   },
   'tooltip-delay': {
     id: 'tooltip-delay',
     title: 'Tooltip with delay',
     component: TooltipDelayExampleComponent
   },
+  'tooltip-disabled': {
+    id: 'tooltip-disabled',
+    title: 'Disabled tooltip',
+    component: TooltipDisabledExampleComponent
+  },
   'tooltip-positions': {
     id: 'tooltip-positions',
     title: 'Tooltip positions',
     component: TooltipPositionsExampleComponent
-  },
-  'toolbar': {
-    id: 'toolbar',
-    title: 'Toolbar basic example',
-    component: ToolbarExampleComponent
   },
   'tooltip-programmatic': {
     id: 'tooltip-programmatic',
@@ -2380,13 +2380,13 @@ export const EXAMPLE_LIST = [
   ButtonLargeExampleComponent,
   ButtonMediumExampleComponent,
   ButtonNegativeExampleComponent,
+  ButtonPlainExampleComponent,
   ButtonSmallMediumExampleComponent,
   ButtonSmallExampleComponent,
   ButtonWithIconExampleComponent,
   ButtonExampleComponent,
   CardHeaderFooterExampleComponent,
   CardExampleComponent,
-  ButtonPlainExampleComponent,
   CheckboxGroupBasicExampleComponent,
   CheckboxGroupDynamicExampleComponent,
   CheckboxGroupHorizontalExampleComponent,
@@ -2394,16 +2394,16 @@ export const EXAMPLE_LIST = [
   CheckboxGroupLabelSizeExampleComponent,
   CheckboxGroupReactiveExampleComponent,
   CheckboxGroupValidationExampleComponent,
+  CheckboxLabelSizeExampleComponent,
   CheckboxNegativeExampleComponent,
   CheckboxOutputsExampleComponent,
   CheckboxReactiveExampleComponent,
-  CheckboxLabelSizeExampleComponent,
   CheckboxSimpleBindingExampleComponent,
   CheckboxStatesExampleComponent,
+  CheckboxTemplateDrivenExampleComponent,
   CircleToggleGroupExampleComponent,
   CircleToggleNegativeExampleComponent,
   CircleToggleReactiveDisabledExampleComponent,
-  CheckboxTemplateDrivenExampleComponent,
   CircleToggleReactiveExampleComponent,
   CircleToggleResponsiveExampleComponent,
   CircleToggleSimpleBindingExampleComponent,
@@ -2424,18 +2424,18 @@ export const EXAMPLE_LIST = [
   ComparisonTableModifyThemingExampleComponent,
   ComparisonTableRowGroupExampleComponent,
   ComparisonTableWithIntersectionExampleComponent,
+  ComparisonTableWithToggleSectionsExampleComponent,
   ComparisonTableExampleComponent,
   ContextMenuBasicExampleComponent,
-  ComparisonTableWithToggleSectionsExampleComponent,
   ContextMenuDataExampleComponent,
   ContextMenuDisabledExampleComponent,
-  ContextMenuLazyExampleComponent,
   ContextMenuIconsExampleComponent,
+  ContextMenuLazyExampleComponent,
   ContextMenuNestedExampleComponent,
+  ContextMenuProgrammaticExampleComponent,
   ContextMenuScrollStrategyExampleComponent,
   CopytextNegativeExampleComponent,
   CopytextSizesExampleComponent,
-  ContextMenuProgrammaticExampleComponent,
   DatefieldBasicExampleComponent,
   DatefieldDisabledExampleComponent,
   DatefieldFilterExampleComponent,
@@ -2452,9 +2452,9 @@ export const EXAMPLE_LIST = [
   DatefieldReactiveExampleComponent,
   DatefieldStartviewExampleComponent,
   DatefieldToggleFocusExampleComponent,
+  DropdownCustomLabelExampleComponent,
   DropdownDisabledItemsExampleComponent,
   DropdownFilterCustomExampleComponent,
-  DropdownCustomLabelExampleComponent,
   DropdownFilterExampleComponent,
   DropdownGroupExampleComponent,
   DropdownMultiSelectExampleComponent,
@@ -2463,9 +2463,9 @@ export const EXAMPLE_LIST = [
   DropdownPlaceholderExampleComponent,
   DropdownReactiveExampleComponent,
   DropdownRenderingItemsExampleComponent,
+  DropdownSimpleBindingExampleComponent,
   DropdownStandardExampleComponent,
   DropdownTemplateDrivenComponent,
-  DropdownSimpleBindingExampleComponent,
   DynamicTableDataExampleComponent,
   DynamicTableEventExampleComponent,
   DynamicTableWithoutDataExampleComponent,
@@ -2482,19 +2482,19 @@ export const EXAMPLE_LIST = [
   FileUploaderTypeValidationExampleComponent,
   FileUploaderValidationExampleComponent,
   FileUploaderWithRequestExampleComponent,
+  FooterExampleComponent,
   FormfieldAppearanceExampleComponent,
   FormfieldBasicExampleComponent,
-  FooterExampleComponent,
   FormfieldCharacterCountExampleComponent,
   FormfieldCustomLabelExampleComponent,
-  FormfieldCustomExampleComponent,
   MyTelInput,
+  FormfieldCustomExampleComponent,
   FormfieldErrorExampleComponent,
   FormfieldExpertErrorExampleComponent,
   FormfieldFloatingExampleComponent,
+  FormfieldGlobalExampleComponent,
   FormfieldHintExampleComponent,
   FormfieldMultipleErrorsExampleComponent,
-  FormfieldGlobalExampleComponent,
   FormfieldNegativeExampleComponent,
   FormfieldNoteAndErrorExampleComponent,
   FormfieldNoteExampleComponent,
@@ -2511,26 +2511,26 @@ export const EXAMPLE_LIST = [
   GridMultiInputs1ExampleComponent,
   GridMultiInputs2ExampleComponent,
   GridNogutterExampleComponent,
+  GridOffsetExampleComponent,
   GridOneInputExampleComponent,
   HeaderCobrandingComponent,
-  GridOffsetExampleComponent,
   HeaderIconsComponent,
-  HeaderDemoComponent,
   HeaderTwoRowsDemoComponent,
+  HeaderDemoComponent,
   HeadlineFontWeightsExampleComponent,
   HeadlineLinksExampleComponent,
   HeadlineNegativeExampleComponent,
   HeadlineSizesExampleComponent,
   IbanMaskComponent,
+  IconEssentialIconsExampleComponent,
   IconEssentialOverrideExampleComponent,
   IconFilledExampleComponent,
-  IconEssentialIconsExampleComponent,
   IconGeneralExampleComponent,
   IconListFunctionalExampleComponent,
   IconListProductExampleComponent,
   IconOutlineExampleComponent,
-  IconSizesExampleComponent,
   IconRegistryExampleComponent,
+  IconSizesExampleComponent,
   ImageAttributeExampleComponent,
   ImageDefaultExampleComponent,
   ImageFixedRatiosExampleComponent,
@@ -2541,9 +2541,9 @@ export const EXAMPLE_LIST = [
   InputTemplateDrivenExampleComponent,
   InputWithoutFormfieldExampleComponent,
   InputExampleComponent,
+  LabelExampleComponent,
   LinkBlackExampleComponent,
   LinkDefaultExampleComponent,
-  LabelExampleComponent,
   LinkIconsExampleComponent,
   LinkMultipleExampleComponent,
   LinkNegativeExampleComponent,
@@ -2552,8 +2552,8 @@ export const EXAMPLE_LIST = [
   ListCirclesExampleComponent,
   ListCopytextExampleComponent,
   CustomColorListExampleComponent,
-  ListNegativeExampleComponent,
   ListIconsExampleComponent,
+  ListNegativeExampleComponent,
   ListNestingExampleComponent,
   ListOrderedExampleComponent,
   ListUnorderedExampleComponent,
@@ -2569,19 +2569,19 @@ export const EXAMPLE_LIST = [
   NxMenuItemWithIconsExampleComponent,
   NxMenuItemExampleComponent,
   NxMenuLinkExampleComponent,
-  MessageBannerExampleComponent,
   MenuExampleComponent,
+  MessageBannerExampleComponent,
+  MessageClosableExampleComponent,
   MessageErrorExampleComponent,
   MessageInfoExampleComponent,
-  MessageClosableExampleComponent,
   MessageSuccessExampleComponent,
   MessageToastCustomSettingsExampleComponent,
   MessageToastOpeningExampleComponent,
   MessageWarningExampleComponent,
   ModalBasicExampleComponent,
   ModalClosingNehaviourExampleComponent,
-  ModalContentActionsExampleComponent,
   ModalClosingExampleComponent,
+  ModalContentActionsExampleComponent,
   ModalDataInjectionExampleComponent,
   ModalFixedWidthExampleComponent,
   ModalOpeningExampleComponent,
@@ -2602,16 +2602,16 @@ export const EXAMPLE_LIST = [
   NumberStepperSimpleBindingExampleComponent,
   NumberStepperSizesExampleComponent,
   NumberStepperStandaloneExampleComponent,
+  NumberStepperTemplateDrivenExampleComponent,
   NumberStepperValidationExampleComponent,
   PageSearchAutocompleteExampleComponent,
-  NumberStepperTemplateDrivenExampleComponent,
   PageSearchClickExampleComponent,
   PageSearchHiddenExampleComponent,
   PageSearchInputExampleComponent,
   PaginationAdvancedExampleComponent,
+  PaginationLocalizeAdvancedExampleComponent,
   PaginationLocalizeExampleComponent,
   PaginationSimpleExampleComponent,
-  PaginationLocalizeAdvancedExampleComponent,
   PopoverClickOutsideExampleComponent,
   PopoverCustomExampleComponent,
   PopoverFallbackExampleComponent,
@@ -2619,28 +2619,28 @@ export const EXAMPLE_LIST = [
   PopoverLazyloadExampleComponent,
   PopoverModalExampleComponent,
   PopoverPositioningExampleComponent,
+  PopoverScrollExampleComponent,
   PopoverScrollableExampleComponent,
   PopoverTableExampleComponent,
   PopoverTriggerExampleComponent,
   ProgressStepperCustomExampleComponent,
   ProgressStepperFormExampleComponent,
-  PopoverScrollExampleComponent,
   ProgressStepperMultiGroupsExampleComponent,
   ProgressStepperMultiVerticalExampleComponent,
   ProgressStepperMultiExampleComponent,
   ProgressStepperNonlinearExampleComponent,
   ProgressStepperProgressExampleComponent,
   ProgressStepperReactivemultiExampleComponent,
-  ProgressStepperStepExampleComponent,
   ProgressStepperReactivesingleExampleComponent,
+  ProgressStepperStepExampleComponent,
   ProgressStepperTitleExampleComponent,
-  ProgressbarBasicExampleComponent,
   ProgressStepperExampleComponent,
+  ProgressbarBasicExampleComponent,
   ProgressbarExampleComponent,
   RadioButtonDisabledExampleComponent,
+  RadioButtonEventExampleComponent,
   RadioButtonFormExampleComponent,
   RadioButtonGroupHorizontalExampleComponent,
-  RadioButtonEventExampleComponent,
   RadioButtonGroupLabelSizeExampleComponent,
   RadioButtonGroupValidationExampleComponent,
   RadioButtonGroupExampleComponent,
@@ -2663,14 +2663,14 @@ export const EXAMPLE_LIST = [
   RatingSimpleExampleComponent,
   RatingTemplateExampleComponent,
   SelectableCardBasicExampleComponent,
+  SelectableCardDynamicExampleComponent,
   SelectableCardReactiveExampleComponent,
   SelectableCardStatesExampleComponent,
-  SelectableCardDynamicExampleComponent,
   SidebarFooterExampleComponent,
   SidebarMethodsExampleComponent,
+  SidebarOutputsExampleComponent,
   SidebarResizeableExampleComponent,
   SidebarExampleComponent,
-  SidebarOutputsExampleComponent,
   SliderBasicExampleComponent,
   SliderDecimalExampleComponent,
   SliderDefaultExampleComponent,
@@ -2693,13 +2693,13 @@ export const EXAMPLE_LIST = [
   SwitcherReactiveFormExampleComponent,
   SwitcherTemplateDrivenExampleComponent,
   TableCondensedExampleComponent,
-  TableFilterSortPaginateExampleComponent,
   ExpandableRowExampleComponent,
+  TableFilterSortPaginateExampleComponent,
   TableSelectingExampleComponent,
   TableSingleSelectExampleComponent,
+  TableSortingExampleComponent,
   TableZebraExampleComponent,
   TableExampleComponent,
-  TableSortingExampleComponent,
   TabsAppearanceExampleComponent,
   TabsAutoManualSelectExampleComponent,
   TabsBasicExampleComponent,
@@ -2721,22 +2721,22 @@ export const EXAMPLE_LIST = [
   TagListFormatterExampleComponent,
   TagListKeywordExampleComponent,
   TagListObjectsExampleComponent,
-  TagListReactiveExampleComponent,
   TagListOutputExampleComponent,
-  TaglistExampleComponent,
+  TagListReactiveExampleComponent,
   TagListTemplateDrivenExampleComponent,
+  TaglistExampleComponent,
   TimefieldDisabledExampleComponent,
   TimefieldFormatTogglerExampleComponent,
-  TimefieldNegativeExampleComponent,
   TimefieldLocalizeExampleComponent,
+  TimefieldNegativeExampleComponent,
   TimefieldReactiveExampleComponent,
   TimefieldTemplateDrivenExampleComponent,
   ToolbarPositioningContentExampleComponent,
-  TooltipBasicExampleComponent,
-  TooltipDisabledExampleComponent,
-  TooltipDelayExampleComponent,
-  TooltipPositionsExampleComponent,
   ToolbarExampleComponent,
+  TooltipBasicExampleComponent,
+  TooltipDelayExampleComponent,
+  TooltipDisabledExampleComponent,
+  TooltipPositionsExampleComponent,
   TooltipProgrammaticExampleComponent,
   TooltipSettingsExampleComponent,
   TreeDemoComponent,
@@ -2851,6 +2851,10 @@ export const EXAMPLE_ROUTES = [
     component: ButtonNegativeExampleComponent
   },
 {
+    path: 'button-plain',
+    component: ButtonPlainExampleComponent
+  },
+{
     path: 'button-small-medium',
     component: ButtonSmallMediumExampleComponent
   },
@@ -2873,10 +2877,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'card',
     component: CardExampleComponent
-  },
-{
-    path: 'button-plain',
-    component: ButtonPlainExampleComponent
   },
 {
     path: 'checkbox-group-basic',
@@ -2907,6 +2907,10 @@ export const EXAMPLE_ROUTES = [
     component: CheckboxGroupValidationExampleComponent
   },
 {
+    path: 'checkbox-label-size',
+    component: CheckboxLabelSizeExampleComponent
+  },
+{
     path: 'checkbox-negative',
     component: CheckboxNegativeExampleComponent
   },
@@ -2919,16 +2923,16 @@ export const EXAMPLE_ROUTES = [
     component: CheckboxReactiveExampleComponent
   },
 {
-    path: 'checkbox-label-size',
-    component: CheckboxLabelSizeExampleComponent
-  },
-{
     path: 'checkbox-simple-binding',
     component: CheckboxSimpleBindingExampleComponent
   },
 {
     path: 'checkbox-states',
     component: CheckboxStatesExampleComponent
+  },
+{
+    path: 'checkbox-template-driven',
+    component: CheckboxTemplateDrivenExampleComponent
   },
 {
     path: 'circle-toggle-group',
@@ -2941,10 +2945,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'circle-toggle-reactive-disabled',
     component: CircleToggleReactiveDisabledExampleComponent
-  },
-{
-    path: 'checkbox-template-driven',
-    component: CheckboxTemplateDrivenExampleComponent
   },
 {
     path: 'circle-toggle-reactive',
@@ -3027,16 +3027,16 @@ export const EXAMPLE_ROUTES = [
     component: ComparisonTableWithIntersectionExampleComponent
   },
 {
+    path: 'comparison-table-with-toggle-sections',
+    component: ComparisonTableWithToggleSectionsExampleComponent
+  },
+{
     path: 'comparison-table',
     component: ComparisonTableExampleComponent
   },
 {
     path: 'context-menu-basic',
     component: ContextMenuBasicExampleComponent
-  },
-{
-    path: 'comparison-table-with-toggle-sections',
-    component: ComparisonTableWithToggleSectionsExampleComponent
   },
 {
     path: 'context-menu-data',
@@ -3047,16 +3047,20 @@ export const EXAMPLE_ROUTES = [
     component: ContextMenuDisabledExampleComponent
   },
 {
-    path: 'context-menu-lazy',
-    component: ContextMenuLazyExampleComponent
-  },
-{
     path: 'context-menu-icons',
     component: ContextMenuIconsExampleComponent
   },
 {
+    path: 'context-menu-lazy',
+    component: ContextMenuLazyExampleComponent
+  },
+{
     path: 'context-menu-nested',
     component: ContextMenuNestedExampleComponent
+  },
+{
+    path: 'context-menu-programmatic',
+    component: ContextMenuProgrammaticExampleComponent
   },
 {
     path: 'context-menu-scroll-strategy',
@@ -3069,10 +3073,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'copytext-sizes',
     component: CopytextSizesExampleComponent
-  },
-{
-    path: 'context-menu-programmatic',
-    component: ContextMenuProgrammaticExampleComponent
   },
 {
     path: 'datefield-basic',
@@ -3139,16 +3139,16 @@ export const EXAMPLE_ROUTES = [
     component: DatefieldToggleFocusExampleComponent
   },
 {
+    path: 'dropdown-custom-label',
+    component: DropdownCustomLabelExampleComponent
+  },
+{
     path: 'dropdown-disabled-items',
     component: DropdownDisabledItemsExampleComponent
   },
 {
     path: 'dropdown-filter-custom',
     component: DropdownFilterCustomExampleComponent
-  },
-{
-    path: 'dropdown-custom-label',
-    component: DropdownCustomLabelExampleComponent
   },
 {
     path: 'dropdown-filter',
@@ -3183,16 +3183,16 @@ export const EXAMPLE_ROUTES = [
     component: DropdownRenderingItemsExampleComponent
   },
 {
+    path: 'dropdown-simple-binding',
+    component: DropdownSimpleBindingExampleComponent
+  },
+{
     path: 'dropdown-standard',
     component: DropdownStandardExampleComponent
   },
 {
     path: 'dropdown-template-driven',
     component: DropdownTemplateDrivenComponent
-  },
-{
-    path: 'dropdown-simple-binding',
-    component: DropdownSimpleBindingExampleComponent
   },
 {
     path: 'dynamic-table-data',
@@ -3259,16 +3259,16 @@ export const EXAMPLE_ROUTES = [
     component: FileUploaderWithRequestExampleComponent
   },
 {
+    path: 'footer',
+    component: FooterExampleComponent
+  },
+{
     path: 'formfield-appearance',
     component: FormfieldAppearanceExampleComponent
   },
 {
     path: 'formfield-basic',
     component: FormfieldBasicExampleComponent
-  },
-{
-    path: 'footer',
-    component: FooterExampleComponent
   },
 {
     path: 'formfield-character-count',
@@ -3279,12 +3279,12 @@ export const EXAMPLE_ROUTES = [
     component: FormfieldCustomLabelExampleComponent
   },
 {
-    path: 'formfield-custom',
-    component: FormfieldCustomExampleComponent
-  },
-{
     path: 'formfield-custom-tel-input',
     component: MyTelInput
+  },
+{
+    path: 'formfield-custom',
+    component: FormfieldCustomExampleComponent
   },
 {
     path: 'formfield-error',
@@ -3299,16 +3299,16 @@ export const EXAMPLE_ROUTES = [
     component: FormfieldFloatingExampleComponent
   },
 {
+    path: 'formfield-global',
+    component: FormfieldGlobalExampleComponent
+  },
+{
     path: 'formfield-hint',
     component: FormfieldHintExampleComponent
   },
 {
     path: 'formfield-multiple-errors',
     component: FormfieldMultipleErrorsExampleComponent
-  },
-{
-    path: 'formfield-global',
-    component: FormfieldGlobalExampleComponent
   },
 {
     path: 'formfield-negative',
@@ -3375,6 +3375,10 @@ export const EXAMPLE_ROUTES = [
     component: GridNogutterExampleComponent
   },
 {
+    path: 'grid-offset',
+    component: GridOffsetExampleComponent
+  },
+{
     path: 'grid-one-input',
     component: GridOneInputExampleComponent
   },
@@ -3383,20 +3387,16 @@ export const EXAMPLE_ROUTES = [
     component: HeaderCobrandingComponent
   },
 {
-    path: 'grid-offset',
-    component: GridOffsetExampleComponent
-  },
-{
     path: 'header-icons',
     component: HeaderIconsComponent
   },
 {
-    path: 'header',
-    component: HeaderDemoComponent
-  },
-{
     path: 'header-two-rows',
     component: HeaderTwoRowsDemoComponent
+  },
+{
+    path: 'header',
+    component: HeaderDemoComponent
   },
 {
     path: 'headline-font-weights',
@@ -3419,16 +3419,16 @@ export const EXAMPLE_ROUTES = [
     component: IbanMaskComponent
   },
 {
+    path: 'icon-essential-icons',
+    component: IconEssentialIconsExampleComponent
+  },
+{
     path: 'icon-essential-override',
     component: IconEssentialOverrideExampleComponent
   },
 {
     path: 'icon-filled',
     component: IconFilledExampleComponent
-  },
-{
-    path: 'icon-essential-icons',
-    component: IconEssentialIconsExampleComponent
   },
 {
     path: 'icon-general',
@@ -3447,12 +3447,12 @@ export const EXAMPLE_ROUTES = [
     component: IconOutlineExampleComponent
   },
 {
-    path: 'icon-sizes',
-    component: IconSizesExampleComponent
-  },
-{
     path: 'icon-registry',
     component: IconRegistryExampleComponent
+  },
+{
+    path: 'icon-sizes',
+    component: IconSizesExampleComponent
   },
 {
     path: 'image-attribute',
@@ -3495,16 +3495,16 @@ export const EXAMPLE_ROUTES = [
     component: InputExampleComponent
   },
 {
+    path: 'label',
+    component: LabelExampleComponent
+  },
+{
     path: 'link-black',
     component: LinkBlackExampleComponent
   },
 {
     path: 'link-default',
     component: LinkDefaultExampleComponent
-  },
-{
-    path: 'label',
-    component: LabelExampleComponent
   },
 {
     path: 'link-icons',
@@ -3539,12 +3539,12 @@ export const EXAMPLE_ROUTES = [
     component: CustomColorListExampleComponent
   },
 {
-    path: 'list-negative',
-    component: ListNegativeExampleComponent
-  },
-{
     path: 'list-icons',
     component: ListIconsExampleComponent
+  },
+{
+    path: 'list-negative',
+    component: ListNegativeExampleComponent
   },
 {
     path: 'list-nesting',
@@ -3607,12 +3607,16 @@ export const EXAMPLE_ROUTES = [
     component: NxMenuLinkExampleComponent
   },
 {
+    path: 'menu',
+    component: MenuExampleComponent
+  },
+{
     path: 'message-banner',
     component: MessageBannerExampleComponent
   },
 {
-    path: 'menu',
-    component: MenuExampleComponent
+    path: 'message-closable',
+    component: MessageClosableExampleComponent
   },
 {
     path: 'message-error',
@@ -3621,10 +3625,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'message-info',
     component: MessageInfoExampleComponent
-  },
-{
-    path: 'message-closable',
-    component: MessageClosableExampleComponent
   },
 {
     path: 'message-success',
@@ -3651,12 +3651,12 @@ export const EXAMPLE_ROUTES = [
     component: ModalClosingNehaviourExampleComponent
   },
 {
-    path: 'modal-content-actions',
-    component: ModalContentActionsExampleComponent
-  },
-{
     path: 'modal-closing',
     component: ModalClosingExampleComponent
+  },
+{
+    path: 'modal-content-actions',
+    component: ModalContentActionsExampleComponent
   },
 {
     path: 'modal-data-injection',
@@ -3739,16 +3739,16 @@ export const EXAMPLE_ROUTES = [
     component: NumberStepperStandaloneExampleComponent
   },
 {
+    path: 'number-stepper-template-driven',
+    component: NumberStepperTemplateDrivenExampleComponent
+  },
+{
     path: 'number-stepper-validation',
     component: NumberStepperValidationExampleComponent
   },
 {
     path: 'page-search-autocomplete',
     component: PageSearchAutocompleteExampleComponent
-  },
-{
-    path: 'number-stepper-template-driven',
-    component: NumberStepperTemplateDrivenExampleComponent
   },
 {
     path: 'page-search-click',
@@ -3767,16 +3767,16 @@ export const EXAMPLE_ROUTES = [
     component: PaginationAdvancedExampleComponent
   },
 {
+    path: 'pagination-localize-advanced',
+    component: PaginationLocalizeAdvancedExampleComponent
+  },
+{
     path: 'pagination-localize',
     component: PaginationLocalizeExampleComponent
   },
 {
     path: 'pagination-simple',
     component: PaginationSimpleExampleComponent
-  },
-{
-    path: 'pagination-localize-advanced',
-    component: PaginationLocalizeAdvancedExampleComponent
   },
 {
     path: 'popover-click-outside',
@@ -3807,6 +3807,10 @@ export const EXAMPLE_ROUTES = [
     component: PopoverPositioningExampleComponent
   },
 {
+    path: 'popover-scroll',
+    component: PopoverScrollExampleComponent
+  },
+{
     path: 'popover-scrollable',
     component: PopoverScrollableExampleComponent
   },
@@ -3825,10 +3829,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'progress-stepper-form',
     component: ProgressStepperFormExampleComponent
-  },
-{
-    path: 'popover-scroll',
-    component: PopoverScrollExampleComponent
   },
 {
     path: 'progress-stepper-multi-groups',
@@ -3855,24 +3855,24 @@ export const EXAMPLE_ROUTES = [
     component: ProgressStepperReactivemultiExampleComponent
   },
 {
-    path: 'progress-stepper-step',
-    component: ProgressStepperStepExampleComponent
-  },
-{
     path: 'progress-stepper-reactivesingle',
     component: ProgressStepperReactivesingleExampleComponent
+  },
+{
+    path: 'progress-stepper-step',
+    component: ProgressStepperStepExampleComponent
   },
 {
     path: 'progress-stepper-title',
     component: ProgressStepperTitleExampleComponent
   },
 {
-    path: 'progressbar-basic',
-    component: ProgressbarBasicExampleComponent
-  },
-{
     path: 'progress-stepper',
     component: ProgressStepperExampleComponent
+  },
+{
+    path: 'progressbar-basic',
+    component: ProgressbarBasicExampleComponent
   },
 {
     path: 'progressbar',
@@ -3883,16 +3883,16 @@ export const EXAMPLE_ROUTES = [
     component: RadioButtonDisabledExampleComponent
   },
 {
+    path: 'radio-button-event',
+    component: RadioButtonEventExampleComponent
+  },
+{
     path: 'radio-button-form',
     component: RadioButtonFormExampleComponent
   },
 {
     path: 'radio-button-group-horizontal',
     component: RadioButtonGroupHorizontalExampleComponent
-  },
-{
-    path: 'radio-button-event',
-    component: RadioButtonEventExampleComponent
   },
 {
     path: 'radio-button-group-label-size',
@@ -3983,16 +3983,16 @@ export const EXAMPLE_ROUTES = [
     component: SelectableCardBasicExampleComponent
   },
 {
+    path: 'selectable-card-dynamic',
+    component: SelectableCardDynamicExampleComponent
+  },
+{
     path: 'selectable-card-reactive',
     component: SelectableCardReactiveExampleComponent
   },
 {
     path: 'selectable-card-states',
     component: SelectableCardStatesExampleComponent
-  },
-{
-    path: 'selectable-card-dynamic',
-    component: SelectableCardDynamicExampleComponent
   },
 {
     path: 'sidebar-footer',
@@ -4003,16 +4003,16 @@ export const EXAMPLE_ROUTES = [
     component: SidebarMethodsExampleComponent
   },
 {
+    path: 'sidebar-outputs',
+    component: SidebarOutputsExampleComponent
+  },
+{
     path: 'sidebar-resizeable',
     component: SidebarResizeableExampleComponent
   },
 {
     path: 'sidebar',
     component: SidebarExampleComponent
-  },
-{
-    path: 'sidebar-outputs',
-    component: SidebarOutputsExampleComponent
   },
 {
     path: 'slider-basic',
@@ -4103,12 +4103,12 @@ export const EXAMPLE_ROUTES = [
     component: TableCondensedExampleComponent
   },
 {
-    path: 'table-filter-sort-paginate',
-    component: TableFilterSortPaginateExampleComponent
-  },
-{
     path: 'table-expandable',
     component: ExpandableRowExampleComponent
+  },
+{
+    path: 'table-filter-sort-paginate',
+    component: TableFilterSortPaginateExampleComponent
   },
 {
     path: 'table-selecting',
@@ -4119,16 +4119,16 @@ export const EXAMPLE_ROUTES = [
     component: TableSingleSelectExampleComponent
   },
 {
+    path: 'table-sorting',
+    component: TableSortingExampleComponent
+  },
+{
     path: 'table-zebra',
     component: TableZebraExampleComponent
   },
 {
     path: 'table',
     component: TableExampleComponent
-  },
-{
-    path: 'table-sorting',
-    component: TableSortingExampleComponent
   },
 {
     path: 'tabs-appearance',
@@ -4215,20 +4215,20 @@ export const EXAMPLE_ROUTES = [
     component: TagListObjectsExampleComponent
   },
 {
-    path: 'taglist-reactive',
-    component: TagListReactiveExampleComponent
-  },
-{
     path: 'taglist-output',
     component: TagListOutputExampleComponent
   },
 {
-    path: 'taglist',
-    component: TaglistExampleComponent
+    path: 'taglist-reactive',
+    component: TagListReactiveExampleComponent
   },
 {
     path: 'taglist-templatedriven',
     component: TagListTemplateDrivenExampleComponent
+  },
+{
+    path: 'taglist',
+    component: TaglistExampleComponent
   },
 {
     path: 'timefield-disabled',
@@ -4239,12 +4239,12 @@ export const EXAMPLE_ROUTES = [
     component: TimefieldFormatTogglerExampleComponent
   },
 {
-    path: 'timefield-negative',
-    component: TimefieldNegativeExampleComponent
-  },
-{
     path: 'timefield-localize',
     component: TimefieldLocalizeExampleComponent
+  },
+{
+    path: 'timefield-negative',
+    component: TimefieldNegativeExampleComponent
   },
 {
     path: 'timefield-reactive',
@@ -4259,24 +4259,24 @@ export const EXAMPLE_ROUTES = [
     component: ToolbarPositioningContentExampleComponent
   },
 {
-    path: 'tooltip-basic',
-    component: TooltipBasicExampleComponent
+    path: 'toolbar',
+    component: ToolbarExampleComponent
   },
 {
-    path: 'tooltip-disabled',
-    component: TooltipDisabledExampleComponent
+    path: 'tooltip-basic',
+    component: TooltipBasicExampleComponent
   },
 {
     path: 'tooltip-delay',
     component: TooltipDelayExampleComponent
   },
 {
-    path: 'tooltip-positions',
-    component: TooltipPositionsExampleComponent
+    path: 'tooltip-disabled',
+    component: TooltipDisabledExampleComponent
   },
 {
-    path: 'toolbar',
-    component: ToolbarExampleComponent
+    path: 'tooltip-positions',
+    component: TooltipPositionsExampleComponent
   },
 {
     path: 'tooltip-programmatic',

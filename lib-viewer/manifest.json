@@ -1581,6 +1581,17 @@
       "url": "lib-viewer/examples/button-negative-example-###TYPE###.html"
     },
     {
+      "id": "button-plain",
+      "component": "ButtonPlainExampleComponent",
+      "title": "Plain Buttons Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/button-plain-example-###TYPE###.html"
+    },
+    {
       "id": "button-small-medium",
       "component": "ButtonSmallMediumExampleComponent",
       "title": "Small Medium Size Example",
@@ -1645,17 +1656,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/card-example-###TYPE###.html"
-    },
-    {
-      "id": "button-plain",
-      "component": "ButtonPlainExampleComponent",
-      "title": "Plain Buttons Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/button-plain-example-###TYPE###.html"
     },
     {
       "id": "checkbox-group-basic",
@@ -1735,6 +1735,17 @@
       "url": "lib-viewer/examples/checkbox-group-validation-example-###TYPE###.html"
     },
     {
+      "id": "checkbox-label-size",
+      "component": "CheckboxLabelSizeExampleComponent",
+      "title": "Label size example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/checkbox-label-size-example-###TYPE###.html"
+    },
+    {
       "id": "checkbox-negative",
       "component": "CheckboxNegativeExampleComponent",
       "title": "Negative styling example",
@@ -1768,17 +1779,6 @@
       "url": "lib-viewer/examples/checkbox-reactive-example-###TYPE###.html"
     },
     {
-      "id": "checkbox-label-size",
-      "component": "CheckboxLabelSizeExampleComponent",
-      "title": "Label size example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/checkbox-label-size-example-###TYPE###.html"
-    },
-    {
       "id": "checkbox-simple-binding",
       "component": "CheckboxSimpleBindingExampleComponent",
       "title": "Simple binding example",
@@ -1799,6 +1799,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/checkbox-states-example-###TYPE###.html"
+    },
+    {
+      "id": "checkbox-template-driven",
+      "component": "CheckboxTemplateDrivenExampleComponent",
+      "title": "Template-driven example with ngModel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/checkbox-template-driven-example-###TYPE###.html"
     },
     {
       "id": "circle-toggle-group",
@@ -1832,17 +1843,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/circle-toggle-reactive-disabled-example-###TYPE###.html"
-    },
-    {
-      "id": "checkbox-template-driven",
-      "component": "CheckboxTemplateDrivenExampleComponent",
-      "title": "Template-driven example with ngModel",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/checkbox-template-driven-example-###TYPE###.html"
     },
     {
       "id": "circle-toggle-reactive",
@@ -2065,6 +2065,17 @@
       "url": "lib-viewer/examples/comparison-table-with-intersection-example-###TYPE###.html"
     },
     {
+      "id": "comparison-table-with-toggle-sections",
+      "component": "ComparisonTableWithToggleSectionsExampleComponent",
+      "title": "Toggle section example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/comparison-table-with-toggle-sections-example-###TYPE###.html"
+    },
+    {
       "id": "comparison-table",
       "component": "ComparisonTableExampleComponent",
       "title": "Basic example",
@@ -2085,17 +2096,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-basic-example-###TYPE###.html"
-    },
-    {
-      "id": "comparison-table-with-toggle-sections",
-      "component": "ComparisonTableWithToggleSectionsExampleComponent",
-      "title": "Toggle section example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/comparison-table-with-toggle-sections-example-###TYPE###.html"
     },
     {
       "id": "context-menu-data",
@@ -2120,17 +2120,6 @@
       "url": "lib-viewer/examples/context-menu-disabled-example-###TYPE###.html"
     },
     {
-      "id": "context-menu-lazy",
-      "component": "ContextMenuLazyExampleComponent",
-      "title": "Lazy Context Menu Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/context-menu-lazy-example-###TYPE###.html"
-    },
-    {
       "id": "context-menu-icons",
       "component": "ContextMenuIconsExampleComponent",
       "title": "Icons Context Menu Example",
@@ -2142,6 +2131,17 @@
       "url": "lib-viewer/examples/context-menu-icons-example-###TYPE###.html"
     },
     {
+      "id": "context-menu-lazy",
+      "component": "ContextMenuLazyExampleComponent",
+      "title": "Lazy Context Menu Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-lazy-example-###TYPE###.html"
+    },
+    {
       "id": "context-menu-nested",
       "component": "ContextMenuNestedExampleComponent",
       "title": "Nested Context Menu Example",
@@ -2151,6 +2151,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-nested-example-###TYPE###.html"
+    },
+    {
+      "id": "context-menu-programmatic",
+      "component": "ContextMenuProgrammaticExampleComponent",
+      "title": "Programmatic Context Menu Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-programmatic-example-###TYPE###.html"
     },
     {
       "id": "context-menu-scroll-strategy",
@@ -2184,17 +2195,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/copytext-sizes-example-###TYPE###.html"
-    },
-    {
-      "id": "context-menu-programmatic",
-      "component": "ContextMenuProgrammaticExampleComponent",
-      "title": "Programmatic Context Menu Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/context-menu-programmatic-example-###TYPE###.html"
     },
     {
       "id": "datefield-basic",
@@ -2373,6 +2373,17 @@
       "url": "lib-viewer/examples/datefield-toggle-focus-example-###TYPE###.html"
     },
     {
+      "id": "dropdown-custom-label",
+      "component": "DropdownCustomLabelExampleComponent",
+      "title": "Custom label example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dropdown-custom-label-example-###TYPE###.html"
+    },
+    {
       "id": "dropdown-disabled-items",
       "component": "DropdownDisabledItemsExampleComponent",
       "title": "Disabled items example",
@@ -2393,17 +2404,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/dropdown-filter-custom-example-###TYPE###.html"
-    },
-    {
-      "id": "dropdown-custom-label",
-      "component": "DropdownCustomLabelExampleComponent",
-      "title": "Custom label example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/dropdown-custom-label-example-###TYPE###.html"
     },
     {
       "id": "dropdown-filter",
@@ -2494,6 +2494,17 @@
       "url": "lib-viewer/examples/dropdown-rendering-items-example-###TYPE###.html"
     },
     {
+      "id": "dropdown-simple-binding",
+      "component": "DropdownSimpleBindingExampleComponent",
+      "title": "Simple binding example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dropdown-simple-binding-example-###TYPE###.html"
+    },
+    {
       "id": "dropdown-standard",
       "component": "DropdownStandardExampleComponent",
       "title": "Standard dropdown example",
@@ -2514,17 +2525,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/dropdown-template-driven-example-###TYPE###.html"
-    },
-    {
-      "id": "dropdown-simple-binding",
-      "component": "DropdownSimpleBindingExampleComponent",
-      "title": "Simple binding example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/dropdown-simple-binding-example-###TYPE###.html"
     },
     {
       "id": "dynamic-table-data",
@@ -2703,6 +2703,17 @@
       "url": "lib-viewer/examples/file-uploader-with-request-example-###TYPE###.html"
     },
     {
+      "id": "footer",
+      "component": "FooterExampleComponent",
+      "title": "Footer",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/footer-example-###TYPE###.html"
+    },
+    {
       "id": "formfield-appearance",
       "component": "FormfieldAppearanceExampleComponent",
       "title": "Appearance example",
@@ -2723,17 +2734,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/formfield-basic-example-###TYPE###.html"
-    },
-    {
-      "id": "footer",
-      "component": "FooterExampleComponent",
-      "title": "Footer",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/footer-example-###TYPE###.html"
     },
     {
       "id": "formfield-character-count",
@@ -2758,17 +2758,6 @@
       "url": "lib-viewer/examples/formfield-custom-label-example-###TYPE###.html"
     },
     {
-      "id": "formfield-custom",
-      "component": "FormfieldCustomExampleComponent",
-      "title": "Usage Custom Formfield Control example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/formfield-custom-example-###TYPE###.html"
-    },
-    {
       "id": "formfield-custom-tel-input",
       "component": "MyTelInput",
       "title": "Implementing Custom Formfield Control example",
@@ -2778,6 +2767,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/formfield-custom-tel-input-example-###TYPE###.html"
+    },
+    {
+      "id": "formfield-custom",
+      "component": "FormfieldCustomExampleComponent",
+      "title": "Usage Custom Formfield Control example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/formfield-custom-example-###TYPE###.html"
     },
     {
       "id": "formfield-error",
@@ -2813,6 +2813,17 @@
       "url": "lib-viewer/examples/formfield-floating-example-###TYPE###.html"
     },
     {
+      "id": "formfield-global",
+      "component": "FormfieldGlobalExampleComponent",
+      "title": "Global default settings example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/formfield-global-example-###TYPE###.html"
+    },
+    {
       "id": "formfield-hint",
       "component": "FormfieldHintExampleComponent",
       "title": "Hint example",
@@ -2833,17 +2844,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/formfield-multiple-errors-example-###TYPE###.html"
-    },
-    {
-      "id": "formfield-global",
-      "component": "FormfieldGlobalExampleComponent",
-      "title": "Global default settings example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/formfield-global-example-###TYPE###.html"
     },
     {
       "id": "formfield-negative",
@@ -3022,6 +3022,17 @@
       "url": "lib-viewer/examples/grid-nogutter-example-###TYPE###.html"
     },
     {
+      "id": "grid-offset",
+      "component": "GridOffsetExampleComponent",
+      "title": "Offset example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/grid-offset-example-###TYPE###.html"
+    },
+    {
       "id": "grid-one-input",
       "component": "GridOneInputExampleComponent",
       "title": "One input example",
@@ -3044,17 +3055,6 @@
       "url": "lib-viewer/examples/header-cobranding-example-###TYPE###.html"
     },
     {
-      "id": "grid-offset",
-      "component": "GridOffsetExampleComponent",
-      "title": "Offset example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/grid-offset-example-###TYPE###.html"
-    },
-    {
       "id": "header-icons",
       "component": "HeaderIconsComponent",
       "title": "Header with functional icons example",
@@ -3066,17 +3066,6 @@
       "url": "lib-viewer/examples/header-icons-example-###TYPE###.html"
     },
     {
-      "id": "header",
-      "component": "HeaderDemoComponent",
-      "title": "Single Row Header Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/header-example-###TYPE###.html"
-    },
-    {
       "id": "header-two-rows",
       "component": "HeaderTwoRowsDemoComponent",
       "title": "Header Two Rows Example",
@@ -3086,6 +3075,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/header-two-rows-example-###TYPE###.html"
+    },
+    {
+      "id": "header",
+      "component": "HeaderDemoComponent",
+      "title": "Single Row Header Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/header-example-###TYPE###.html"
     },
     {
       "id": "headline-font-weights",
@@ -3143,6 +3143,17 @@
       "url": "lib-viewer/examples/iban-mask-example-###TYPE###.html"
     },
     {
+      "id": "icon-essential-icons",
+      "component": "IconEssentialIconsExampleComponent",
+      "title": "Essential Icons Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/icon-essential-icons-example-###TYPE###.html"
+    },
+    {
       "id": "icon-essential-override",
       "component": "IconEssentialOverrideExampleComponent",
       "title": "Essential Icon Override Example",
@@ -3163,17 +3174,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/icon-filled-example-###TYPE###.html"
-    },
-    {
-      "id": "icon-essential-icons",
-      "component": "IconEssentialIconsExampleComponent",
-      "title": "Essential Icons Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/icon-essential-icons-example-###TYPE###.html"
     },
     {
       "id": "icon-general",
@@ -3220,17 +3220,6 @@
       "url": "lib-viewer/examples/icon-outline-example-###TYPE###.html"
     },
     {
-      "id": "icon-sizes",
-      "component": "IconSizesExampleComponent",
-      "title": "Icons Sizes Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/icon-sizes-example-###TYPE###.html"
-    },
-    {
       "id": "icon-registry",
       "component": "IconRegistryExampleComponent",
       "title": "Register Icons Example",
@@ -3240,6 +3229,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/icon-registry-example-###TYPE###.html"
+    },
+    {
+      "id": "icon-sizes",
+      "component": "IconSizesExampleComponent",
+      "title": "Icons Sizes Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/icon-sizes-example-###TYPE###.html"
     },
     {
       "id": "image-attribute",
@@ -3352,6 +3352,17 @@
       "url": "lib-viewer/examples/input-example-###TYPE###.html"
     },
     {
+      "id": "label",
+      "component": "LabelExampleComponent",
+      "title": "Label example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/label-example-###TYPE###.html"
+    },
+    {
       "id": "link-black",
       "component": "LinkBlackExampleComponent",
       "title": "Black link example",
@@ -3372,17 +3383,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/link-default-example-###TYPE###.html"
-    },
-    {
-      "id": "label",
-      "component": "LabelExampleComponent",
-      "title": "Label example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/label-example-###TYPE###.html"
     },
     {
       "id": "link-icons",
@@ -3473,17 +3473,6 @@
       "url": "lib-viewer/examples/list-custom-color-example-###TYPE###.html"
     },
     {
-      "id": "list-negative",
-      "component": "ListNegativeExampleComponent",
-      "title": "Negative styling example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/list-negative-example-###TYPE###.html"
-    },
-    {
       "id": "list-icons",
       "component": "ListIconsExampleComponent",
       "title": "Lists with icons examples",
@@ -3493,6 +3482,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/list-icons-example-###TYPE###.html"
+    },
+    {
+      "id": "list-negative",
+      "component": "ListNegativeExampleComponent",
+      "title": "Negative styling example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/list-negative-example-###TYPE###.html"
     },
     {
       "id": "list-nesting",
@@ -3660,6 +3660,17 @@
       "url": "lib-viewer/examples/menu-link-example-###TYPE###.html"
     },
     {
+      "id": "menu",
+      "component": "MenuExampleComponent",
+      "title": "Complete menu example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/menu-example-###TYPE###.html"
+    },
+    {
       "id": "message-banner",
       "component": "MessageBannerExampleComponent",
       "title": "Notification banner example",
@@ -3671,15 +3682,15 @@
       "url": "lib-viewer/examples/message-banner-example-###TYPE###.html"
     },
     {
-      "id": "menu",
-      "component": "MenuExampleComponent",
-      "title": "Complete menu example",
+      "id": "message-closable",
+      "component": "MessageClosableExampleComponent",
+      "title": "Closable example",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/menu-example-###TYPE###.html"
+      "url": "lib-viewer/examples/message-closable-example-###TYPE###.html"
     },
     {
       "id": "message-error",
@@ -3702,17 +3713,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/message-info-example-###TYPE###.html"
-    },
-    {
-      "id": "message-closable",
-      "component": "MessageClosableExampleComponent",
-      "title": "Closable example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/message-closable-example-###TYPE###.html"
     },
     {
       "id": "message-success",
@@ -3781,17 +3781,6 @@
       "url": "lib-viewer/examples/modal-closing-behaviour-example-###TYPE###.html"
     },
     {
-      "id": "modal-content-actions",
-      "component": "ModalContentActionsExampleComponent",
-      "title": "Modal with content and actions example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/modal-content-actions-example-###TYPE###.html"
-    },
-    {
       "id": "modal-closing",
       "component": "ModalClosingExampleComponent",
       "title": "Modal closing example",
@@ -3801,6 +3790,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/modal-closing-example-###TYPE###.html"
+    },
+    {
+      "id": "modal-content-actions",
+      "component": "ModalContentActionsExampleComponent",
+      "title": "Modal with content and actions example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/modal-content-actions-example-###TYPE###.html"
     },
     {
       "id": "modal-data-injection",
@@ -4023,6 +4023,17 @@
       "url": "lib-viewer/examples/number-stepper-standalone-example-###TYPE###.html"
     },
     {
+      "id": "number-stepper-template-driven",
+      "component": "NumberStepperTemplateDrivenExampleComponent",
+      "title": "Template-driven example with ngModel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/number-stepper-template-driven-example-###TYPE###.html"
+    },
+    {
       "id": "number-stepper-validation",
       "component": "NumberStepperValidationExampleComponent",
       "title": "Validation example",
@@ -4043,17 +4054,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/page-search-autocomplete-example-###TYPE###.html"
-    },
-    {
-      "id": "number-stepper-template-driven",
-      "component": "NumberStepperTemplateDrivenExampleComponent",
-      "title": "Template-driven example with ngModel",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/number-stepper-template-driven-example-###TYPE###.html"
     },
     {
       "id": "page-search-click",
@@ -4100,6 +4100,17 @@
       "url": "lib-viewer/examples/pagination-advanced-example-###TYPE###.html"
     },
     {
+      "id": "pagination-localize-advanced",
+      "component": "PaginationLocalizeAdvancedExampleComponent",
+      "title": "Localization - Advanced Pagination",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/pagination-localize-advanced-example-###TYPE###.html"
+    },
+    {
       "id": "pagination-localize",
       "component": "PaginationLocalizeExampleComponent",
       "title": "Localization Example",
@@ -4120,17 +4131,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/pagination-simple-example-###TYPE###.html"
-    },
-    {
-      "id": "pagination-localize-advanced",
-      "component": "PaginationLocalizeAdvancedExampleComponent",
-      "title": "Localization - Advanced Pagination",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/pagination-localize-advanced-example-###TYPE###.html"
     },
     {
       "id": "popover-click-outside",
@@ -4210,6 +4210,17 @@
       "url": "lib-viewer/examples/popover-positioning-example-###TYPE###.html"
     },
     {
+      "id": "popover-scroll",
+      "component": "PopoverScrollExampleComponent",
+      "title": "Popover Scroll Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/popover-scroll-example-###TYPE###.html"
+    },
+    {
       "id": "popover-scrollable",
       "component": "PopoverScrollableExampleComponent",
       "title": "Popover Scrollable Example",
@@ -4263,17 +4274,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/progress-stepper-form-example-###TYPE###.html"
-    },
-    {
-      "id": "popover-scroll",
-      "component": "PopoverScrollExampleComponent",
-      "title": "Popover Scroll Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/popover-scroll-example-###TYPE###.html"
     },
     {
       "id": "progress-stepper-multi-groups",
@@ -4342,17 +4342,6 @@
       "url": "lib-viewer/examples/progress-stepper-reactivemulti-example-###TYPE###.html"
     },
     {
-      "id": "progress-stepper-step",
-      "component": "ProgressStepperStepExampleComponent",
-      "title": "Progress Indicator step completion example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/progress-stepper-step-example-###TYPE###.html"
-    },
-    {
       "id": "progress-stepper-reactivesingle",
       "component": "ProgressStepperReactivesingleExampleComponent",
       "title": "Progress Indicator reactive form with single form example",
@@ -4362,6 +4351,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/progress-stepper-reactivesingle-example-###TYPE###.html"
+    },
+    {
+      "id": "progress-stepper-step",
+      "component": "ProgressStepperStepExampleComponent",
+      "title": "Progress Indicator step completion example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/progress-stepper-step-example-###TYPE###.html"
     },
     {
       "id": "progress-stepper-title",
@@ -4375,17 +4375,6 @@
       "url": "lib-viewer/examples/progress-stepper-title-example-###TYPE###.html"
     },
     {
-      "id": "progressbar-basic",
-      "component": "ProgressbarBasicExampleComponent",
-      "title": "Progress Bar Basic Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/progressbar-basic-example-###TYPE###.html"
-    },
-    {
       "id": "progress-stepper",
       "component": "ProgressStepperExampleComponent",
       "title": "Progress Indicator example",
@@ -4395,6 +4384,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/progress-stepper-example-###TYPE###.html"
+    },
+    {
+      "id": "progressbar-basic",
+      "component": "ProgressbarBasicExampleComponent",
+      "title": "Progress Bar Basic Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/progressbar-basic-example-###TYPE###.html"
     },
     {
       "id": "progressbar",
@@ -4419,6 +4419,17 @@
       "url": "lib-viewer/examples/radio-button-disabled-example-###TYPE###.html"
     },
     {
+      "id": "radio-button-event",
+      "component": "RadioButtonEventExampleComponent",
+      "title": "Event Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/radio-button-event-example-###TYPE###.html"
+    },
+    {
       "id": "radio-button-form",
       "component": "RadioButtonFormExampleComponent",
       "title": "Template Driven Examples",
@@ -4439,17 +4450,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/radio-button-group-horizontal-example-###TYPE###.html"
-    },
-    {
-      "id": "radio-button-event",
-      "component": "RadioButtonEventExampleComponent",
-      "title": "Event Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/radio-button-event-example-###TYPE###.html"
     },
     {
       "id": "radio-button-group-label-size",
@@ -4694,6 +4694,17 @@
       "url": "lib-viewer/examples/selectable-card-basic-example-###TYPE###.html"
     },
     {
+      "id": "selectable-card-dynamic",
+      "component": "SelectableCardDynamicExampleComponent",
+      "title": "Selectable cards dynamic example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/selectable-card-dynamic-example-###TYPE###.html"
+    },
+    {
       "id": "selectable-card-reactive",
       "component": "SelectableCardReactiveExampleComponent",
       "title": "Selectable cards reactive example",
@@ -4714,17 +4725,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/selectable-card-states-example-###TYPE###.html"
-    },
-    {
-      "id": "selectable-card-dynamic",
-      "component": "SelectableCardDynamicExampleComponent",
-      "title": "Selectable cards dynamic example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/selectable-card-dynamic-example-###TYPE###.html"
     },
     {
       "id": "sidebar-footer",
@@ -4749,6 +4749,17 @@
       "url": "lib-viewer/examples/sidebar-methods-example-###TYPE###.html"
     },
     {
+      "id": "sidebar-outputs",
+      "component": "SidebarOutputsExampleComponent",
+      "title": "Outputs example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidebar-outputs-example-###TYPE###.html"
+    },
+    {
       "id": "sidebar-resizeable",
       "component": "SidebarResizeableExampleComponent",
       "title": "Side navigation resizeable Example",
@@ -4769,17 +4780,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/sidebar-example-###TYPE###.html"
-    },
-    {
-      "id": "sidebar-outputs",
-      "component": "SidebarOutputsExampleComponent",
-      "title": "Outputs example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/sidebar-outputs-example-###TYPE###.html"
     },
     {
       "id": "slider-basic",
@@ -5024,17 +5024,6 @@
       "url": "lib-viewer/examples/table-condensed-example-###TYPE###.html"
     },
     {
-      "id": "table-filter-sort-paginate",
-      "component": "TableFilterSortPaginateExampleComponent",
-      "title": "Advanced example for sorting, filtering and pagination",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/table-filter-sort-paginate-example-###TYPE###.html"
-    },
-    {
       "id": "table-expandable",
       "component": "ExpandableRowExampleComponent",
       "title": "Expandable Rows",
@@ -5044,6 +5033,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/table-expandable-example-###TYPE###.html"
+    },
+    {
+      "id": "table-filter-sort-paginate",
+      "component": "TableFilterSortPaginateExampleComponent",
+      "title": "Advanced example for sorting, filtering and pagination",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/table-filter-sort-paginate-example-###TYPE###.html"
     },
     {
       "id": "table-selecting",
@@ -5068,6 +5068,17 @@
       "url": "lib-viewer/examples/table-single-select-example-###TYPE###.html"
     },
     {
+      "id": "table-sorting",
+      "component": "TableSortingExampleComponent",
+      "title": "Sorting example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/table-sorting-example-###TYPE###.html"
+    },
+    {
       "id": "table-zebra",
       "component": "TableZebraExampleComponent",
       "title": "Zebra mode example",
@@ -5088,17 +5099,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/table-example-###TYPE###.html"
-    },
-    {
-      "id": "table-sorting",
-      "component": "TableSortingExampleComponent",
-      "title": "Sorting example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/table-sorting-example-###TYPE###.html"
     },
     {
       "id": "tabs-appearance",
@@ -5332,17 +5332,6 @@
       "url": "lib-viewer/examples/taglist-objects-example-###TYPE###.html"
     },
     {
-      "id": "taglist-reactive",
-      "component": "TagListReactiveExampleComponent",
-      "title": "Tag Reactive Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/taglist-reactive-example-###TYPE###.html"
-    },
-    {
       "id": "taglist-output",
       "component": "TagListOutputExampleComponent",
       "title": "Tag Output Example",
@@ -5354,15 +5343,15 @@
       "url": "lib-viewer/examples/taglist-output-example-###TYPE###.html"
     },
     {
-      "id": "taglist",
-      "component": "TaglistExampleComponent",
-      "title": "Tag Example",
+      "id": "taglist-reactive",
+      "component": "TagListReactiveExampleComponent",
+      "title": "Tag Reactive Example",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/taglist-example-###TYPE###.html"
+      "url": "lib-viewer/examples/taglist-reactive-example-###TYPE###.html"
     },
     {
       "id": "taglist-templatedriven",
@@ -5374,6 +5363,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/taglist-templatedriven-example-###TYPE###.html"
+    },
+    {
+      "id": "taglist",
+      "component": "TaglistExampleComponent",
+      "title": "Tag Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/taglist-example-###TYPE###.html"
     },
     {
       "id": "timefield-disabled",
@@ -5398,17 +5398,6 @@
       "url": "lib-viewer/examples/timefield-format-toggler-example-###TYPE###.html"
     },
     {
-      "id": "timefield-negative",
-      "component": "TimefieldNegativeExampleComponent",
-      "title": "Timefield negative example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/timefield-negative-example-###TYPE###.html"
-    },
-    {
       "id": "timefield-localize",
       "component": "TimefieldLocalizeExampleComponent",
       "title": "Localization example",
@@ -5418,6 +5407,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/timefield-localize-example-###TYPE###.html"
+    },
+    {
+      "id": "timefield-negative",
+      "component": "TimefieldNegativeExampleComponent",
+      "title": "Timefield negative example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/timefield-negative-example-###TYPE###.html"
     },
     {
       "id": "timefield-reactive",
@@ -5453,6 +5453,17 @@
       "url": "lib-viewer/examples/toolbar-positioning-content-example-###TYPE###.html"
     },
     {
+      "id": "toolbar",
+      "component": "ToolbarExampleComponent",
+      "title": "Toolbar basic example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/toolbar-example-###TYPE###.html"
+    },
+    {
       "id": "tooltip-basic",
       "component": "TooltipBasicExampleComponent",
       "title": "Tooltip",
@@ -5462,17 +5473,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/tooltip-basic-example-###TYPE###.html"
-    },
-    {
-      "id": "tooltip-disabled",
-      "component": "TooltipDisabledExampleComponent",
-      "title": "Disabled tooltip",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/tooltip-disabled-example-###TYPE###.html"
     },
     {
       "id": "tooltip-delay",
@@ -5486,6 +5486,17 @@
       "url": "lib-viewer/examples/tooltip-delay-example-###TYPE###.html"
     },
     {
+      "id": "tooltip-disabled",
+      "component": "TooltipDisabledExampleComponent",
+      "title": "Disabled tooltip",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tooltip-disabled-example-###TYPE###.html"
+    },
+    {
       "id": "tooltip-positions",
       "component": "TooltipPositionsExampleComponent",
       "title": "Tooltip positions",
@@ -5495,17 +5506,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/tooltip-positions-example-###TYPE###.html"
-    },
-    {
-      "id": "toolbar",
-      "component": "ToolbarExampleComponent",
-      "title": "Toolbar basic example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/toolbar-example-###TYPE###.html"
     },
     {
       "id": "tooltip-programmatic",

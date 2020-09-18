@@ -343,6 +343,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 
 ng-aquila
+MIT
 MIT License
 
 Copyright (c) 2020 Allianz, unless specified otherwise in the respective file(s)
