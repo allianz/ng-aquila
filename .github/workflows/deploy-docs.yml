@@ -3,6 +3,7 @@ on: workflow_dispatch
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -18,6 +19,7 @@ jobs:
           npm run build:docs-ui
           npm run library:generate:docs
           npm run build:docs -- --base-href=/ng-aquila/ --no-progress
+          cp projects/opensource-documentation/src/404.html dist/opensource-documentation
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.1
