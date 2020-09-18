@@ -28,6 +28,7 @@
     "library:generate:docs": "npm run cli -- generate projects/ng-aquila",
     "cli": "ts-node --project projects/ngx-docs-cli/tsconfig.json ./projects/ngx-docs-cli/src/main"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://www.github.com/aposin/ng-aquila.git"
