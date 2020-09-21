@@ -1,3 +1,14 @@
+@import "../shared-styles/index";
+
 :host {
   display: block;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+:host-context([data-whatinput="keyboard"]):focus {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
 }
