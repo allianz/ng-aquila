@@ -5,7 +5,6 @@ Aquila is an open-source component library provided by the Allianz Global Digita
 
 > We are currently still setting up some things :construction:. For instance:
 > - you may find some icons missing in the documentation
-> - you will not find a hosted documentation, but you can run it locally
 > - we still need to get the CI pipeline fully automated
 
 ## Getting started :medal_sports:
@@ -16,7 +15,10 @@ ng add @aposin/ng-aquila
 ```
 
 ## Documentation :books:
-The documentation is not deployed yet. You can start it locally with:
+
+You can find the documentation here: https://aposin.github.io/ng-aquila
+
+You can also run the documentation locally with:
 ```
 npm ci
 npm start
