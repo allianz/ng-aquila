@@ -8,5 +8,7 @@ export abstract class BaseDemoThemingService {
   abstract readonly headerThemeAvailable: Subject<boolean>;
 
   abstract changeComparisonTableTheme(theme: string);
+  abstract getCodeChanges(theme: string): string;
   abstract setUnselectedClassNames(value: string);
+  abstract getThemeNames(): string[];
 }

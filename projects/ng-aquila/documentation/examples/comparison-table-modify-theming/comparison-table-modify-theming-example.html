@@ -1,6 +1,8 @@
 <nx-radio-toggle [ngModel]="headerTheme" (ngModelChange)="changeHeaderTheme($event)" [nxDisabled]="!headerThemeAvailable" nxStyle="small">
-  <nx-radio-toggle-button nxValue="default">Default</nx-radio-toggle-button>
-  <nx-radio-toggle-button nxValue="richPetrol"><div class="color-box patrol" [class.isDisabled]="!headerThemeAvailable"></div>Rich Petrol</nx-radio-toggle-button>
-  <nx-radio-toggle-button nxValue="richPurple"><div class="color-box purple" [class.isDisabled]="!headerThemeAvailable"></div>Rich Purple</nx-radio-toggle-button>
-  <nx-radio-toggle-button nxValue="richBlue"><div class="color-box blue" [class.isDisabled]="!headerThemeAvailable"></div>Rich Blue</nx-radio-toggle-button>
+  <nx-radio-toggle-button *ngFor="let themeName of demoService.getThemeNames(); let i = index" [nxValue]="themeName">
+    <div *ngIf="themeName !== 'Default'" [class]="getColorBoxClassNames(i)" [class.isDisabled]="!headerThemeAvailable"></div>{{ themeName }}
+  </nx-radio-toggle-button>
 </nx-radio-toggle>
+
+<p *ngIf="headerTheme !== 'Default'">To get this variant, modify these tokens:</p>
+<pre *ngIf="headerTheme !== 'Default'">{{ demoService.getCodeChanges(headerTheme) }}</pre>

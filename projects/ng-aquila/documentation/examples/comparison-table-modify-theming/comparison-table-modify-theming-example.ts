@@ -10,18 +10,18 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./comparison-table-modify-theming-example.css']
 })
 export class ComparisonTableModifyThemingExampleComponent implements OnDestroy {
-  headerTheme: string = 'default';
+  headerTheme: string = 'Default';
   headerThemeAvailable: boolean = true;
   private _destroyed = new Subject();
 
-  constructor(private demoService: BaseDemoThemingService) {
+  constructor(public demoService: BaseDemoThemingService) {
     this.demoService.headerThemeAvailable.pipe(
       takeUntil(this._destroyed)
     ).subscribe((value: boolean) => {
       this.headerThemeAvailable = value;
 
       if (!this.headerThemeAvailable) {
-        this.changeHeaderTheme('default');
+        this.changeHeaderTheme('Default');
       }
     });
   }
@@ -29,6 +29,10 @@ export class ComparisonTableModifyThemingExampleComponent implements OnDestroy {
   changeHeaderTheme(theme: string) {
     this.headerTheme = theme;
     this.demoService.changeComparisonTableTheme(theme);
+  }
+
+  getColorBoxClassNames(colorIndex: number) {
+    return `color-box color-${colorIndex}`;
   }
 
   ngOnDestroy() {

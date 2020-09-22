@@ -9,5 +9,7 @@ export class DemoThemingService extends BaseDemoThemingService {
   readonly headerThemeAvailable = new Subject<boolean>();
 
   changeComparisonTableTheme(theme: string) {}
+  getCodeChanges(theme: string) { return ''; }
   setUnselectedClassNames(value: string) {}
+  getThemeNames() { return []; }
 }

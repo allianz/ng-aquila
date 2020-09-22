@@ -81,26 +81,6 @@ For demonstrating different color combinations, we use a DemoThemingService for 
 
 <!-- example(comparison-table-modify-theming) -->
 
-To get the shown variants, these tokens need to be modified:
-
-```
-// rich petrol:
-comparison-table-header-background-color: #007D8C,
-comparison-table-header-text-color: text-02,
-comparison-table-selected-column-background-color: #B1DADD,
-
-// rich purple:
-comparison-table-popular-cell-background-color: #96DCFA,
-comparison-table-header-background-color: #5A3982,
-comparison-table-header-text-color: text-02,
-comparison-table-selected-column-background-color: #DAD0E1,
-
-// rich blue:
-comparison-table-header-background-color: #49648C,
-comparison-table-header-text-color: text-02,
-comparison-table-selected-column-background-color: #CAD4DE,
-```
-
 </div>
 
 #### Dynamically filled table
