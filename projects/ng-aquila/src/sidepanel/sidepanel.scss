@@ -1,0 +1,36 @@
+@import '../shared-styles/index';
+
+:host {
+  display: block;
+  @include var(background, sidepanel-background-color);
+  @include var(box-shadow, sidepanel-floating-shadow);
+
+  &.is-floating {
+    position: fixed;
+    right: 0;
+    z-index: 1;
+
+    [dir="rtl"] & {
+      right: auto;
+      left: 0;
+    }
+  }
+
+  &.is-static {
+    position: sticky;
+    top: 0;
+  }
+
+  &.is-closed {
+    display: none;
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border-left: 1px solid windowText;
+
+    [dir="rtl"] & {
+      border-left: none;
+      border-right: 1px solid windowText;
+    }
+  }
+}

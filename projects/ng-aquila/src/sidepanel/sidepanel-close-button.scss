@@ -1,0 +1,24 @@
+@import '../shared-styles/index';
+
+:host {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  nx-icon {
+    @include var(color, sidepanel-close-icon-color);
+
+    @media screen and (-ms-high-contrast: active) {
+      color: buttonText;
+    }
+  }
+}
+
+:host-context([data-whatinput="keyboard"]):focus nx-icon {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}

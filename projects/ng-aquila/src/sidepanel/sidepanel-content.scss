@@ -1,0 +1,6 @@
+@import '../shared-styles/index';
+
+:host {
+  display: block;
+  overflow-y: auto;     // height is set in js so that overflow: auto works correctly
+}

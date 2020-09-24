@@ -63,6 +63,7 @@ import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
+import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
 
 // Collect all imports and exports here
 // Note: when you have to call .forRoot() or .forChild() in imports you have to add it separately from
@@ -122,6 +123,7 @@ const EXPORTED_MODULES = [
   NxHeaderModule,
   NxInputModule,
   NxSidebarModule,
+  NxSidepanelModule,
   NxBadgeModule,
   NxTreeModule,
   NxActionModule,
