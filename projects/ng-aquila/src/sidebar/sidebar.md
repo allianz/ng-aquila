@@ -1,15 +1,10 @@
 ---
 title: Side Navigation
 category: components
-b2c: false
+b2c: true
 expert: true
 stable: done
 ---
-
-<div class="docs-deprecation-warning">
-  <strong>Expert: </strong>
-  Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
-</div>
 
 The `<nx-sidebar>` provides a collapsible container for side content (often navigation, though it can be any content) alongside some primary content.
 
