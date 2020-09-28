@@ -143,10 +143,12 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
   /** Unique ID to be used by autocomplete trigger's "aria-owns" property. */
   id: string = `nx-autocomplete-${_uniqueAutocompleteIdCounter++}`;
 
-  // As autocomplete option can hold any value, we might need a converter
-  // to get a string representation, which can be stored in input. Default value ? value.toString() : null.
   /**
-   * Value to string converter.
+   * Value to string converter function.
+   * As an autocomplete option can hold any value, a converter might be needed
+   * to get a string representation of the value, which can be stored in the input.
+   *
+   * Default: value ? value.toString() : null.
    */
   @Input('nxValueFormatter')
   public valueFormatter: (value: any) => string = (value: any) => value ? value.toString() : null
