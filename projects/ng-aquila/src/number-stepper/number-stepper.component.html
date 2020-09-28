@@ -8,7 +8,7 @@
 </div>
 <div class="nx-stepper__input-container">
   <button
-    [attr.aria-label]="_intl.decrementAriaLabel"
+    [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel"
     [nxButton]="_buttonType"
     class="nx-stepper__down nx-stepper__control"
     (click)="decrementOnClick()"
@@ -23,6 +23,7 @@
         <input type="number"
                [nxAutoResize]="resize"
                [attr.aria-describedby]="ariaDescribedBy"
+               [attr.aria-label]="inputAriaLabel"
                [id]="inputId" [ngClass]="inputClassNames"
                (input)="onInputChange($event)"
                (blur)="onTouchedCallback()"
@@ -39,7 +40,7 @@
   </div>
 
   <button
-    [attr.aria-label]="_intl.incrementAriaLabel"
+    [attr.aria-label]="incrementAriaLabel || _intl.incrementAriaLabel"
     [nxButton]="_buttonType"
     class="nx-stepper__up nx-stepper__control"
     (click)="incrementOnClick()"

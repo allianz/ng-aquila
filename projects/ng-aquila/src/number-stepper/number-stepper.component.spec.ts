@@ -26,10 +26,13 @@ abstract class NumberStepperTest {
   negative: boolean = false;
   leadingZero: boolean = true;
   disabled: boolean = false;
+  inputAriaLabel: string = 'input label';
+  incrementAriaLabel: string = 'increase number';
+  decrementAriaLabel: string = 'decrease number';
   testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
   @ViewChild(NxNumberStepperComponent) stepperInstance: NxNumberStepperComponent;
 
-  onSubmit() {}
+  onSubmit() { }
 }
 
 describe('NxNumberStepperComponent', () => {
@@ -48,10 +51,10 @@ describe('NxNumberStepperComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     stepperInstance = testInstance.stepperInstance;
-    upButton = <HTMLButtonElement>fixture.nativeElement.querySelector('button.nx-stepper__up');
-    downButton = <HTMLButtonElement>fixture.nativeElement.querySelector('button.nx-stepper__down');
-    inputElement = <HTMLInputElement>fixture.nativeElement.querySelector('input');
-    label = <HTMLLabelElement>fixture.nativeElement.querySelector('label');
+    upButton = fixture.nativeElement.querySelector('button.nx-stepper__up') as HTMLButtonElement;
+    downButton = fixture.nativeElement.querySelector('button.nx-stepper__down') as HTMLButtonElement;
+    inputElement = fixture.nativeElement.querySelector('input') as HTMLInputElement;
+    label = fixture.nativeElement.querySelector('label') as HTMLLabelElement;
     stepperDebugElement = fixture.debugElement.query(By.directive(NxNumberStepperComponent));
     stepperNativeElement = stepperDebugElement.nativeElement;
   }
@@ -64,7 +67,7 @@ describe('NxNumberStepperComponent', () => {
         ReactiveFormsModule
       ],
       providers: [
-        {provide: NxNumberStepperIntl, useClass: MyIntl},
+        { provide: NxNumberStepperIntl, useClass: MyIntl },
       ],
       declarations: [
         BasicStepper,
@@ -115,14 +118,14 @@ describe('NxNumberStepperComponent', () => {
       expect(label).not.toBeNull();
     });
 
-    it('should count up by 1 by default', fakeAsync( () => {
+    it('should count up by 1 by default', fakeAsync(() => {
       createTestComponent(BasicStepper);
       clickUp();
       expect(stepperInstance.value).toBe(1);
       assertInputValue('01');
     }));
 
-    it('should have min = 0 by default and not decrement', fakeAsync( () => {
+    it('should have min = 0 by default and not decrement', fakeAsync(() => {
       createTestComponent(BasicStepper);
       clickDown();
       expect(downButton.disabled).toBe(true);
@@ -142,7 +145,7 @@ describe('NxNumberStepperComponent', () => {
   });
 
   describe('button disabling', () => {
-    it('should disable the down button on min', fakeAsync( () => {
+    it('should disable the down button on min', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.max = 2;
@@ -152,7 +155,7 @@ describe('NxNumberStepperComponent', () => {
       expect(downButton.disabled).toBe(true);
     }));
 
-    it('should not disable the down button for correct values', fakeAsync( () => {
+    it('should not disable the down button for correct values', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -10;
       fixture.detectChanges();
@@ -160,7 +163,7 @@ describe('NxNumberStepperComponent', () => {
       expect(downButton.disabled).toBe(false);
     }));
 
-    it('should disable the up button on max', fakeAsync( () => {
+    it('should disable the up button on max', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.max = 2;
@@ -170,7 +173,7 @@ describe('NxNumberStepperComponent', () => {
       expect(upButton.disabled).toBe(true);
     }));
 
-    it('should not disable the up button for correct values', fakeAsync( () => {
+    it('should not disable the up button for correct values', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       clickUp();
       expect(upButton.disabled).toBe(false);
@@ -188,7 +191,7 @@ describe('NxNumberStepperComponent', () => {
       expect(downButton.disabled).toBe(false);
     }));
 
-    it('should disable the down button if user input is below the minimum', fakeAsync( () => {
+    it('should disable the down button if user input is below the minimum', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.max = 2;
@@ -200,7 +203,7 @@ describe('NxNumberStepperComponent', () => {
       expect(downButton.disabled).toBe(true);
     }));
 
-    it('should disable the up button if user input is over the maximum', fakeAsync( () => {
+    it('should disable the up button if user input is over the maximum', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.max = 2;
@@ -226,7 +229,7 @@ describe('NxNumberStepperComponent', () => {
   });
 
   describe('min/max', () => {
-    it('should not count over the maximum', fakeAsync( () => {
+    it('should not count over the maximum', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.max = 2;
       testInstance.step = 2;
@@ -237,7 +240,7 @@ describe('NxNumberStepperComponent', () => {
       assertInputValue('02');
     }));
 
-    it('should not count below the minimum', fakeAsync( () => {
+    it('should not count below the minimum', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.step = 2;
@@ -278,7 +281,7 @@ describe('NxNumberStepperComponent', () => {
       assertInputValue('-1');
     }));
 
-    it('should count up by custom stepsize 2', fakeAsync( () => {
+    it('should count up by custom stepsize 2', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.step = 2;
       fixture.detectChanges();
@@ -287,7 +290,7 @@ describe('NxNumberStepperComponent', () => {
       assertInputValue('02');
     }));
 
-    it('should count down by custom stepsize 2', fakeAsync( () => {
+    it('should count down by custom stepsize 2', fakeAsync(() => {
       createTestComponent(ConfigurableStepper);
       testInstance.min = -2;
       testInstance.step = 2;
@@ -453,7 +456,7 @@ describe('NxNumberStepperComponent', () => {
   describe('reactive', () => {
     it('should not submit form on buttons click', fakeAsync(() => {
       createTestComponent(ReactiveFormStepper);
-      const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
+      const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
       spyOn(testInstance, 'onSubmit');
 
       clickUp();
@@ -479,7 +482,7 @@ describe('NxNumberStepperComponent', () => {
       expect(testInstance.testForm.get('count').value)
         .toEqual(2, 'Expected value to change once control is blurred.');
     }));
-    });
+  });
 
   describe('with onPush', () => {
 
@@ -573,6 +576,43 @@ describe('NxNumberStepperComponent', () => {
       }
     ));
 
+    it('should use inputs for button aria-labels', () => {
+      createTestComponent(ConfigurableStepper);
+      expect(downButton.getAttribute('aria-label')).toBe('decrease number');
+      expect(upButton.getAttribute('aria-label')).toBe('increase number');
+    });
+
+    it('should set the aria-label of the input via input', () => {
+      createTestComponent(ConfigurableStepper);
+      expect(inputElement.getAttribute('aria-label')).toBe('input label');
+    });
+
+    it('should react on change of inputs for aria-labels', () => {
+      createTestComponent(ConfigurableStepper);
+      expect(downButton.getAttribute('aria-label')).toBe('decrease number');
+      expect(upButton.getAttribute('aria-label')).toBe('increase number');
+      expect(inputElement.getAttribute('aria-label')).toBe('input label');
+
+      fixture.componentInstance.incrementAriaLabel = 'new increase';
+      fixture.componentInstance.decrementAriaLabel = 'new decrease';
+      fixture.componentInstance.inputAriaLabel = 'new input label';
+
+      fixture.detectChanges();
+
+      expect(downButton.getAttribute('aria-label')).toBe('new decrease');
+      expect(upButton.getAttribute('aria-label')).toBe('new increase');
+      expect(inputElement.getAttribute('aria-label')).toBe('new input label');
+    });
+
+    it('should give precedence to inputs and not injected attributes for aria-labels', inject([NxNumberStepperIntl],
+      (intl: NxNumberStepperIntl) => {
+        createTestComponent(ConfigurableStepper);
+        expect(downButton.getAttribute('aria-label')).toBe('decrease number');
+        expect(upButton.getAttribute('aria-label')).toBe('increase number');
+        expect(inputElement.getAttribute('aria-label')).toBe('input label');
+      }
+    ));
+
     it('should rerender when the i18n aria labels change', inject([NxNumberStepperIntl],
       (intl: NxNumberStepperIntl) => {
         createTestComponent(BasicStepper);
@@ -583,10 +623,10 @@ describe('NxNumberStepperComponent', () => {
       }
     ));
 
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', function (done) {
       createTestComponent(BasicStepper);
 
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
+      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
         expect(results.violations.length).toBe(0);
         const violationMessages = results.violations.map(item => item.description);
         done();
@@ -600,14 +640,14 @@ describe('NxNumberStepperComponent', () => {
     <nx-number-stepper nxLabel="Test"></nx-number-stepper>
   `
 })
-class BasicStepper extends NumberStepperTest {}
+class BasicStepper extends NumberStepperTest { }
 
 @Component({
   template: `
     <nx-number-stepper [(nxValue)]="value"></nx-number-stepper>
   `
 })
-class SimpleBindingStepper extends NumberStepperTest {}
+class SimpleBindingStepper extends NumberStepperTest { }
 
 @Component({
   template: `
@@ -633,21 +673,27 @@ class ResizeOnInitTestOnPush extends NumberStepperTest {
     <nx-number-stepper [(ngModel)]="value"></nx-number-stepper>
   `
 })
-class NgModelStepper extends NumberStepperTest {}
+class NgModelStepper extends NumberStepperTest { }
 
 @Component({
   template: `
-    <nx-number-stepper [nxMin]="min" [nxMax]="max" [nxStep]="step" [negative]="negative" [leadingZero]="leadingZero"></nx-number-stepper>
+    <nx-number-stepper [nxMin]="min"
+    [nxMax]="max" [nxStep]="step"
+    [negative]="negative"
+    [leadingZero]="leadingZero"
+    [inputAriaLabel]="inputAriaLabel"
+    [incrementAriaLabel]="incrementAriaLabel"
+    [decrementAriaLabel]="decrementAriaLabel"></nx-number-stepper>
   `
 })
-class ConfigurableStepper extends NumberStepperTest {}
+class ConfigurableStepper extends NumberStepperTest { }
 
 @Component({
   template: `
     <nx-number-stepper [nxDisabled]="disabled" [nxMin]="-10"></nx-number-stepper>
   `
 })
-class DisableableStepper extends NumberStepperTest {}
+class DisableableStepper extends NumberStepperTest { }
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -655,7 +701,7 @@ class DisableableStepper extends NumberStepperTest {}
     <nx-number-stepper [negative]="negative"></nx-number-stepper>
   `
 })
-class StepperOnPush extends NumberStepperTest {}
+class StepperOnPush extends NumberStepperTest { }
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -666,7 +712,7 @@ class StepperOnPush extends NumberStepperTest {}
     </nx-number-stepper>
   `
 })
-class DirectivesStepper extends NumberStepperTest {}
+class DirectivesStepper extends NumberStepperTest { }
 
 @Component({
   template: `
@@ -676,7 +722,7 @@ class DirectivesStepper extends NumberStepperTest {}
     </form>
   `
 })
-class ReactiveFormStepper extends NumberStepperTest {}
+class ReactiveFormStepper extends NumberStepperTest { }
 
 @Component({
   template: `
@@ -690,6 +736,6 @@ class ReactiveFormOnBlurStepper extends NumberStepperTest {
     super();
     this.testForm = this.fb.group({
       count: 0
-    }, {updateOn: 'blur'});
+    }, { updateOn: 'blur' });
   }
 }

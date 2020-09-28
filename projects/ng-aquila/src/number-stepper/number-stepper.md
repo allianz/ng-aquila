@@ -80,7 +80,13 @@ When working with larger numbers or decimals the input width might be too small 
 ### Accessibility
 If the component owns the focus, you can increment by pressing the ARROW-UP button and decrement by pressing the ARROW-DOWN button.
 
-#### Localization
-The increment and decrement buttons need to have an aria-label for a11y support. By default they have english aria-labels, to translate them you can subclass the `NxNumberStepperIntl` and provide it in your module.
+The increment and decrement buttons need to have an `aria-label` for a11y support. By default they have english aria-labels, to translate them you can subclass the `NxNumberStepperIntl` and provide it in your module as shown in the [Localization example](./documentation/number-stepper/overview#localization). If you want to set these aria-labels separately for a certain number stepper you can use the inputs `incrementAriaLabel` and `decrementAriaLabel`. These inputs take precedence over `NxNumberStepperIntl`.
 
+In addition, the input of the number stepper should also have an `aria-label` attribute, which can be set only via the input `inputAriaLabel`.
+
+The example below shows the usage of the above mentioned `aria-label` inputs.
+
+<!-- example(number-stepper-a11y) -->
+
+#### Localization
 <!-- example(number-stepper-localize) -->

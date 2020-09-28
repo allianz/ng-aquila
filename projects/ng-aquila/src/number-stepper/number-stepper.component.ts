@@ -62,6 +62,9 @@ export class NxNumberStepperComponent extends MappedStyles
   private _max: number = 100;
   private _value: number = 0;
   private _label = null;
+  private _incrementAriaLabel = '';
+  private _decrementAriaLabel = '';
+  private _inputAriaLabel = '';
   private _resize: boolean = false;
   private _intlSubscription: Subscription;
   private _negative: boolean = false;
@@ -126,6 +129,36 @@ export class NxNumberStepperComponent extends MappedStyles
       this._label = value;
       this._changeDetectorRef.markForCheck();
     }
+  }
+
+  /** Sets the aria-label for the increment button. */
+  @Input()
+  set incrementAriaLabel(value: string) {
+    this._incrementAriaLabel = value;
+  }
+
+  get incrementAriaLabel(): string {
+    return this._incrementAriaLabel;
+  }
+
+  /** Sets the aria-label for the decrement button. */
+  @Input()
+  set decrementAriaLabel(value: string) {
+    this._decrementAriaLabel = value;
+  }
+
+  get decrementAriaLabel(): string {
+    return this._decrementAriaLabel;
+  }
+
+  /** Sets the aria-label for the input of the number stepper. */
+  @Input()
+  set inputAriaLabel(value: string) {
+    this._inputAriaLabel = value;
+  }
+
+  get inputAriaLabel(): string {
+    return this._inputAriaLabel;
   }
 
   /** Sets the step size. Default: 1 */
