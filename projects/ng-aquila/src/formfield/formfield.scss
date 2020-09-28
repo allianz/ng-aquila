@@ -67,7 +67,7 @@ $outline-padding: 7px;
   min-width: 0;
   display: flex;
   text-align: left;
-  
+
   [dir="rtl"] & {
     text-align: right;
   }
@@ -269,6 +269,7 @@ $outline-padding: 7px;
     padding: 0;
     @include var(border-width, formfield-border-width);
     @include var(border-color, formfield-outline-border-color);
+    @include var(background-color, formfield-outline-background-color);
     border-style: solid;
     border-radius: nx-border-radius(s);
     @include var(height, formfield-outline-control-height);

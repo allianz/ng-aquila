@@ -36,7 +36,6 @@ $expert-theme: (
   icon-button-small-icon-size: 24px,
 
   message-banner-border-radius: 0,
-
 );
 
 $themes: nx-register-theme($expert-theme, expert, aposin);
