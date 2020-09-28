@@ -12,7 +12,7 @@
   </ng-container>
   <ng-container *ngIf="_table.viewType === 'mobile'">
     <td class="nx-comparison-table__intersection-cell"
-        [attr.rowspan]="_table._infoColumnCount()"
+        [attr.rowspan]="_getMobileRowspan()"
         [attr.headers]="_getHeaderIds()">
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </td>

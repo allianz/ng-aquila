@@ -11,6 +11,7 @@ import { NxComparisonTableBase } from './comparison-table-base';
 import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
+import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 
 @Component({
   selector: 'nx-comparison-table',
@@ -166,6 +167,13 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
       this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header'
     );
     return (row as NxComparisonTableRowDirective).cells.toArray();
+  }
+
+  _getPopularCell(): NxComparisonTablePopularCell {
+    const row = this.elements.find(element =>
+      this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header'
+    );
+    return (row as NxComparisonTableRowDirective).popularCell;
   }
 
   _getFooterCells(): NxComparisonTableCell[] {

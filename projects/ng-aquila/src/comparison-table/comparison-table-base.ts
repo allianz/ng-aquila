@@ -28,6 +28,9 @@ export abstract class NxComparisonTableBase implements OnDestroy {
   /** How many product columns the table has. */
   abstract _infoColumnCount();
 
+  /** Get the popular cell of the table. */
+  abstract _getPopularCell();
+
   /** Add a column to the list of disabled columns. */
   abstract _addDisabledColumn(disabledColumn: number);
 

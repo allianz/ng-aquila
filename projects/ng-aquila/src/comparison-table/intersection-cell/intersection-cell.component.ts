@@ -32,4 +32,8 @@ export class NxComparisonTableIntersectionCell {
     return headers;
   }
 
+  _getMobileRowspan() {
+    return this._table._getPopularCell() ? this._table._infoColumnCount() + 1 : this._table._infoColumnCount();
+  }
+
 }

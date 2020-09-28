@@ -301,6 +301,13 @@
       @include var(background-color, comparison-table-cell-background-color);
     }
 
+    .nx-comparison-table__mobile-popular-cell {
+      @include type-style(comparison-table-popular-cell);
+      @include var(background-color, comparison-table-popular-cell-background-color);
+      @include var(color, comparison-table-popular-cell-text-color);
+      padding: 4px;
+    }
+
     .nx-comparison-table__mobile-header-cell {
       padding: 8px 4px;
 
@@ -311,6 +318,25 @@
 
       &.is-disabled {
         @include var(color, comparison-table-disabled-column-header-text-color);
+      }
+    }
+
+    .nx-comparison-table__mobile-popular-cell,
+    .nx-comparison-table__placeholder-with-border-cell {
+      border-top: nx-border-size(xs) solid v(comparison-table-border-color);
+    }
+
+    .nx-comparison-table__intersection-cell-marker {
+      display: none;
+    }
+
+    .nx-comparison-table__intersection-cell-marker + .nx-comparison-table__placeholder-with-border-cell {
+      @include break-out(&, 'ltr') {
+        border-left: nx-border-size(xs) solid v(comparison-table-border-color);
+      }
+
+      @include break-out(&, 'rtl') {
+        border-right: nx-border-size(xs) solid v(comparison-table-border-color);
       }
     }
 
@@ -338,7 +364,7 @@
     }
 
     tr th:last-child,
-    tr td:last-child {
+    tr td:last-child:not(.nx-comparison-table__placeholder-with-border-cell) {
       @include break-out(&, 'ltr') {
         border-right: nx-border-size(xs) solid v(comparison-table-border-color);
       }

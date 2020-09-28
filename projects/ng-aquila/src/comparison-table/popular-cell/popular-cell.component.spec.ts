@@ -83,15 +83,32 @@ describe('NxComparisonTablePopularCell', () => {
     expect(placeholderCells.length).toBe(2);
   }));
 
-  it('should not display on mobile', fakeAsync(() => {
+  it('should display cell on mobile', fakeAsync(() => {
     createTestComponent(PopularCellComponent);
     viewport.set('mobile');
     window.dispatchEvent(new Event('resize'));
     tick(THROTTLE_TIME);
     fixture.detectChanges();
 
-    const popularCell = fixture.debugElement.query(By.css('.nx-comparison-table__popular-cell'));
-    expect(popularCell).toBe(null);
+    const popularCell = fixture.debugElement.query(By.css('.nx-comparison-table__mobile-popular-cell'));
+    expect(popularCell).toBeDefined();
+    expect(popularCell.nativeElement.textContent).toBe('Popular cell');
+  }));
+
+  it('should have the correct number of placeholder cells in the popular cell row (mobile)', fakeAsync(() => {
+    createTestComponent(PopularCellComponent);
+    viewport.set('mobile');
+    window.dispatchEvent(new Event('resize'));
+    tick(THROTTLE_TIME);
+    fixture.detectChanges();
+
+    const popularRow = fixture.debugElement.query(By.css('.nx-comparison-table__popular-row'));
+    expect(popularRow).toBeDefined();
+
+    const placeholderCells = popularRow.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-cell');
+    expect(placeholderCells.length).toBe(1);
+    const emptyCells = popularRow.nativeElement.querySelectorAll('.nx-comparison-table__placeholder-with-border-cell');
+    expect(emptyCells.length).toBe(1);
   }));
 
   afterEach(() => viewport.reset());
