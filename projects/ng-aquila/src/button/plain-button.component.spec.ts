@@ -8,6 +8,8 @@ import { NxPlainButtonComponent } from './plain-button.component';
 @Directive()
 abstract class ButtonTest {
   @ViewChild('button') buttonInstance: NxPlainButtonComponent;
+
+  classNames: string;
 }
 
 describe('NxBreadcrumbComponent', () => {
@@ -19,7 +21,7 @@ describe('NxBreadcrumbComponent', () => {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
-    buttonElement = <HTMLButtonElement>fixture.nativeElement.querySelector('button');
+    buttonElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
   }
 
   beforeEach(async(() => {
@@ -39,12 +41,32 @@ describe('NxBreadcrumbComponent', () => {
     expect(buttonElement).toBeTruthy();
     expect(buttonElement.textContent).toBe('Hello Button');
   });
+
+  it('creates a non-danger button', () => {
+    createTestComponent(BasicButton);
+    expect(testInstance.buttonInstance.danger).toBe(false);
+    expect(buttonElement.classList).not.toContain('nx-plain-button--danger');
+  });
+
+  describe('danger', () => {
+    it('displays a danger button', () => {
+      createTestComponent(BasicButton);
+      fixture.componentInstance.classNames = 'danger';
+      fixture.detectChanges();
+      expect(testInstance.buttonInstance.danger).toBe(true);
+      expect(buttonElement.classList).toContain('nx-plain-button--danger');
+
+      fixture.componentInstance.classNames = '';
+      fixture.detectChanges();
+      expect(testInstance.buttonInstance.danger).toBe(false);
+      expect(buttonElement.classList).not.toContain('nx-plain-button--danger');
+    });
+  });
 });
 
 @Component({
   template: `
-    <button nxButton #button class="some-arbitray-class-name">Hello Button</button>
+    <button [nxPlainButton]="classNames" #button>Hello Button</button>
   `
 })
-class BasicButton extends ButtonTest {
-}
+class BasicButton extends ButtonTest {}

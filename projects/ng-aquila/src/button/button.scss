@@ -90,6 +90,10 @@ $button-margin-bottom: nx-spacer(m);
   @include button-theme(primary);
 }
 
+:host(.nx-button--primary.nx-button--danger) {
+  @include button-theme(primary-danger);
+}
+
 :host(.nx-button--primary.nx-button--negative) {
   @include var(background-color, negative);
   @include var(border-color, negative);
@@ -127,6 +131,10 @@ $button-margin-bottom: nx-spacer(m);
   @include button-theme(secondary);
 }
 
+:host(.nx-button--secondary.nx-button--danger) {
+  @include button-theme(secondary-danger);
+}
+
 :host(.nx-button--secondary.nx-button--negative) {
   @include var(color, negative);
   @include var(border-color, negative);
@@ -161,6 +169,10 @@ $button-margin-bottom: nx-spacer(m);
 
 :host(.nx-button--tertiary) {
   @include button-theme(tertiary);
+}
+
+:host(.nx-button--tertiary.nx-button--danger) {
+  @include button-theme(tertiary-danger);
 }
 
 :host(.nx-button--tertiary.nx-button--negative) {

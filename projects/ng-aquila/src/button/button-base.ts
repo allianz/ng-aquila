@@ -35,6 +35,8 @@ export class NxButtonBase {
   @HostBinding('class.nx-button--small') get isSmall(): boolean { return this.size === 'small'; }
 
   /** @docs-private */
+  @HostBinding('class.nx-button--danger') get isDanger(): boolean { return this.danger; }
+  /** @docs-private */
   @HostBinding('class.nx-button--block') get isBlock(): boolean { return this.block; }
   /** @docs-private */
   @HostBinding('class.nx-button--negative') get isNegative(): boolean { return this.negative; }
@@ -45,6 +47,7 @@ export class NxButtonBase {
   /** @docs-private */
   size: NxButtonSize = DEFAULT_SIZE;
 
+  danger: boolean = false;
   negative: boolean = false;
   block: boolean = false;
 
@@ -63,6 +66,7 @@ export class NxButtonBase {
     const [size = null] = this._classNames.match(/small-medium|small|medium|large/) || [DEFAULT_SIZE];
     this.size = size as NxButtonSize;
 
+    this.danger = /danger/.test(this._classNames);
     this.negative = /negative/.test(this._classNames);
     this.block = /block/.test(this._classNames);
 

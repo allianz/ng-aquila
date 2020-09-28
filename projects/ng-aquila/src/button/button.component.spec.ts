@@ -17,11 +17,12 @@ abstract class ButtonTest {
 
   buttonType: NxButtonType = 'primary';
   buttonSize: NxButtonSize = 'medium';
+  danger: string = '';
   negative: string = '';
   block: string = '';
 
   get classNames(): string {
-    return `${this.buttonType} ${this.buttonSize} ${this.negative} ${this.block}`;
+    return `${this.buttonType} ${this.buttonSize} ${this.danger} ${this.negative} ${this.block}`;
   }
 }
 @Component({
@@ -103,7 +104,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {
       fixture.detectChanges();
       testInstance = fixture.componentInstance;
       buttonInstance = testInstance.buttonInstance;
-      buttonNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('button');
+      buttonNativeElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
     }
 
     function changeAndCheckButtonSize(testSize: NxButtonSize, expectedClass: string) {
@@ -165,6 +166,11 @@ class ConfigurableOnPushIconButton extends ButtonTest {
         expect(buttonNativeElement.classList).toContain('nx-button--primary');
       });
 
+      it('creates a non-danger button', () => {
+        createTestComponent(testTarget.basic);
+        expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
+      });
+
       it('creates a non-negative button', () => {
         createTestComponent(testTarget.basic);
         expect(buttonNativeElement.classList).not.toContain('nx-button--negative');
@@ -199,6 +205,21 @@ class ConfigurableOnPushIconButton extends ButtonTest {
         changeAndCheckButtonSize('large', 'nx-button--large');
         changeAndCheckButtonSize('medium', 'nx-button--medium');
         changeAndCheckButtonSize('small-medium', 'nx-button--small-medium');
+      });
+    });
+
+    describe('danger', () => {
+      it('displays a danger button', () => {
+        createTestComponent(testTarget.configurable);
+        fixture.componentInstance.danger = 'danger';
+        fixture.detectChanges();
+        expect(buttonInstance.danger).toBe(true);
+        expect(buttonNativeElement.classList).toContain('nx-button--danger');
+
+        fixture.componentInstance.danger = '';
+        fixture.detectChanges();
+        expect(buttonInstance.danger).toBe(false);
+        expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
       });
     });
 
@@ -248,6 +269,19 @@ class ConfigurableOnPushIconButton extends ButtonTest {
         changeAndCheckButtonSizeProgrammaticly('large', 'nx-button--large');
         changeAndCheckButtonSizeProgrammaticly('medium', 'nx-button--medium');
         changeAndCheckButtonSizeProgrammaticly('small-medium', 'nx-button--small-medium');
+      });
+
+      it('updates view on danger change', () => {
+        createTestComponent(testTarget.onPush);
+        buttonInstance.classNames = 'danger';
+        fixture.detectChanges();
+        expect(buttonInstance.danger).toBe(true);
+        expect(buttonNativeElement.classList).toContain('nx-button--danger');
+
+        buttonInstance.classNames = '';
+        fixture.detectChanges();
+        expect(buttonInstance.danger).toBe(false);
+        expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
       });
 
       it('updates view on negative change', () => {

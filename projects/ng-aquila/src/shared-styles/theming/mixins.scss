@@ -90,8 +90,6 @@
 /// @returns a css style definition (e.g. background: var(--button-background);)
 /// @example - @include(background, button-background)
 @mixin var($property, $token) {
-  $fallbackValue: _get-fallback-value($token);
-
   #{$property}: var(--#{$token});
 }
 

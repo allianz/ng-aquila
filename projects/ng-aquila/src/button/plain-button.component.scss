@@ -40,6 +40,29 @@
   }
 }
 
+:host.nx-plain-button--danger {
+  @include var(color, plain-button-danger-color);
+
+  &:hover {
+    @include var(color, plain-button-danger-hover-color);
+  }
+
+  // reset hover styles for devices that don't support hover
+  @media (hover: none) {
+    &:hover {
+      @include var(color, plain-button-danger-color);
+    }
+  }
+
+  &:active {
+    @include var(color, plain-button-danger-active-color);
+  }
+
+  &:disabled {
+    @include var(color, plain-button-danger-disabled-color);
+  }
+}
+
 :host([nxplainbutton]) {
   ::ng-deep nx-icon {
     @include var(font-size, plain-button-icon-size);
