@@ -29,8 +29,6 @@ We are building the following structure.
         </div>
 
         <div class="nx-formfield__input">
-          <ng-content></ng-content>
-
           <!-- This handles the floating whole behavior -->
           <span class="nx-formfield__label-holder">
             <label class="nx-formfield__label" [id]="labelId" [attr.aria-owns]="_control.id"
@@ -41,6 +39,8 @@ We are building the following structure.
               <ng-content select="nx-formfield-label"></ng-content>
             </label>
           </span>
+
+          <ng-content></ng-content>
         </div>
 
         <div class="nx-formfield__suffix" *ngIf="_suffixChildren.length">
