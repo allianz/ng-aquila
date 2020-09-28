@@ -49,9 +49,11 @@ In some cases you want to have a header with two rows. In this case simply place
 
 ### Expert
 
-#### Application title
+#### Application title and Header Actions
 
 You can show the title of your application in the header by using the `<nx-header-app-title>` directive inside the `<nx-header-brand>` as shown in the example below. The application title is displayed after the logo separated by a vertical line.
+
+`<nx-header-actions>` is a container where additional actions can be placed. Depending on the action, use links if it redirects to a different page, or a button if it is an action happening on the current page.
 
 <!-- example(header-icons) -->
 
