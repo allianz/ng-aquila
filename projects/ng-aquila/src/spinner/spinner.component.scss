@@ -4,7 +4,6 @@ $diameter-small: nx-spacer(s);
 $diameter-medium: nx-spacer(m);
 $diameter-large: nx-spacer(3m);
 $edge-margin: 4%;
-$edge-diameter: 12%;
 
 @keyframes spin {
   0% {
@@ -62,12 +61,21 @@ $edge-diameter: 12%;
 
 .nx-spinner__edge-left,
 .nx-spinner__edge-right {
-  width: $edge-diameter;
-  height: $edge-diameter;
+  width: 12%;
+  height: 12%;
   border-radius: 50%;
   @include var(background-color, spinner-indicator-color);
   position: absolute;
   top: $edge-margin;
+}
+
+// correct the size of the bobbles for small, because otherwise they look off
+:host(.nx-spinner--small) {
+  .nx-spinner__edge-left,
+  .nx-spinner__edge-right {
+    width: 10%;
+    height: 10%;
+  }
 }
 
 .nx-spinner__edge-left {
