@@ -6,7 +6,11 @@ import {
   Overlay,
   OverlayConfig,
   OverlayRef,
-  PositionStrategy
+  PositionStrategy,
+  VerticalConnectionPos,
+  HorizontalConnectionPos,
+  OverlayConnectionPosition,
+  OriginConnectionPosition,
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -35,77 +39,21 @@ import { Platform } from '@angular/cdk/platform';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
 import { Directionality } from '@angular/cdk/bidi';
 
-export declare type PopoverDirection = 'left' | 'top' | 'right' | 'bottom';
+export declare type PopoverVerticalDirection = 'top' | 'bottom';
+export declare type PopoverHorizontalDirection = 'left' | 'right';
+export declare type PopoverDirection = PopoverHorizontalDirection | PopoverVerticalDirection;
 export declare type PopoverTriggerType = 'click' | 'hover' | 'manual';
 export declare type PopoverTriggerScrollStrategy = 'close' | 'reposition';
 let nextId = 0;
+const BASE_OFFSET = 16;
 
-const fallbacks: ConnectionPositionPair[] = [
-  {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetX: 0,
-    offsetY: 16
-  },
-  {
-    originX: 'end',
-    originY: 'top',
-    overlayX: 'end',
-    overlayY: 'bottom',
-    offsetX: 0,
-    offsetY: -16
-  },
-  {
-    originX: 'center',
-    originY: 'bottom',
-    overlayX: 'center',
-    overlayY: 'top',
-    offsetX: 0,
-    offsetY: 16
-  },
-  {
-    originX: 'end',
-    originY: 'bottom',
-    overlayX: 'end',
-    overlayY: 'top',
-    offsetX: 0,
-    offsetY: 16
-  },
-  {
-    originX: 'end',
-    originY: 'center',
-    overlayX: 'start',
-    overlayY: 'center',
-    offsetX: 16,
-    offsetY: 0
-  },
-  {
-    originX: 'start',
-    originY: 'center',
-    overlayX: 'end',
-    overlayY: 'center',
-    offsetX: -16,
-    offsetY: 0
-  },
-  {
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom',
-    offsetX: 0,
-    offsetY: -16
-  },
-  {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'bottom',
-    offsetX: 0,
-    offsetY: -16
-  }
-];
+/**
+ * Creates an error to be thrown if the user provided an invalid popover direction.
+ * @docs-private
+ */
+export function getNxPopoverInvalidDirectionError(direction: string) {
+  return Error(`Popover direction "${direction}" is invalid.`);
+}
 
 @Directive({
   selector: '[nxPopoverTriggerFor]',
@@ -132,6 +80,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   /** Element that was focused before the Popover was opened. Save this to restore upon close. */
   private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
   private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
+  private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
   /** @docs-private */
   id = 'nx-popover-' + nextId++;
 
@@ -510,50 +459,16 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   }
 
   private getPosition(): FlexibleConnectedPositionStrategy {
-    let positions: ConnectedPosition[];
-    let offsetX = 0;
-    let offsetY = 0;
-    if (this.direction === 'top') {
-      positions = [{
-        overlayX: 'center',
-        overlayY: 'bottom',
-        originX: 'center',
-        originY: 'top'
-      }];
-      offsetX = 0;
-      offsetY = -20;
-    } else if (this.direction === 'right') {
-      positions = [{
-        overlayX: this.isRtl ? 'end' : 'start',
-        overlayY: 'center',
-        originX: this.isRtl ? 'start' : 'end',
-        originY: 'center'
-      }];
-      offsetX = 20;
-      offsetY = 0;
-    } else if (this.direction === 'bottom') {
-      positions = [{
-        overlayX: 'center',
-        overlayY: 'top',
-        originX: 'center',
-        originY: 'bottom'
-      }];
-      offsetX = 0;
-      offsetY = 20;
-    } else if (this.direction === 'left') {
-      positions = [{
-        overlayX: this.isRtl ? 'start' : 'end',
-        overlayY: 'center',
-        originX: this.isRtl ? 'end' : 'start',
-        originY: 'center'
-      }];
-      offsetX = -20;
-      offsetY = 0;
-    }
+    const origin = this._getOrigin(this.direction);
+    const overlay = this._getOverlayPosition(this.direction);
+    const offset = this._getOffset(this.direction);
+    const fallbacks = this._getFallbackPositions(this.direction);
     return this.overlay.position().flexibleConnectedTo(this.elementRef)
-      .withPositions([...positions, ...fallbacks])
-      .withDefaultOffsetX(offsetX)
-      .withDefaultOffsetY(offsetY);
+      .withPositions([{
+        ...origin,
+        ...overlay,
+        ...offset,
+      }, ...fallbacks]);
   }
 
   /** Returns the focus to the element focused before the Popover was open. */
@@ -563,6 +478,186 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     if (toFocus && typeof toFocus.focus === 'function') {
       toFocus.focus();
     }
+  }
+
+  /**
+   * Returns the origin position based on the user's direction preference.
+   */
+  _getOrigin(direction: PopoverDirection): OriginConnectionPosition {
+    switch (direction) {
+      case 'top':
+      case 'bottom': {
+        return {
+          originX: 'center',
+          originY: direction
+        };
+      }
+      case 'left': {
+        return {
+          originX: this.isRtl ? 'end' : 'start',
+          originY: 'center'
+        };
+      }
+      case 'right': {
+        return {
+          originX: this.isRtl ? 'start' : 'end',
+          originY: 'center'
+        };
+      }
+      default: {
+        throw getNxPopoverInvalidDirectionError(direction);
+      }
+    }
+  }
+
+  /** Returns the overlay position based on the user's direction preference */
+  _getOverlayPosition(direction: PopoverDirection): OverlayConnectionPosition {
+    switch (direction) {
+      case 'top':
+      case 'bottom': {
+        return {
+          overlayX: 'center',
+          overlayY: this._getInversePosition(direction) as VerticalConnectionPos,
+        };
+      }
+      case 'left': {
+        return {
+          overlayX: this.isRtl ? 'start' : 'end',
+          overlayY: 'center',
+        };
+      }
+      case 'right': {
+        return {
+          overlayX: this.isRtl ? 'end' : 'start',
+          overlayY: 'center',
+        };
+      }
+      default: {
+        throw getNxPopoverInvalidDirectionError(direction);
+      }
+    }
+  }
+
+  /** Returns the overlay offset required by the user's direction preference */
+  private _getOffset(direction: PopoverDirection) {
+    switch (direction) {
+      case 'top': {
+        return {
+          offsetY: BASE_OFFSET * -1,
+        };
+      }
+      case 'bottom': {
+        return {
+          offsetY: BASE_OFFSET,
+        };
+      }
+      case 'left': {
+        return {
+          offsetX: BASE_OFFSET * -1,
+        };
+      }
+      case 'right': {
+        return {
+          offsetX: BASE_OFFSET,
+        };
+      }
+      default: {
+        throw getNxPopoverInvalidDirectionError(direction);
+      }
+    }
+  }
+
+  /** Returns the opposite direction, using aquila popover direction naming: top, right, bottom, left */
+  private _getInversePopoverDirection(direction: PopoverDirection): PopoverDirection {
+    const popoverDirectionPairs = {
+      top: 'bottom',
+      right: 'left',
+      bottom: 'top',
+      left: 'right',
+    };
+    return popoverDirectionPairs[direction] as PopoverDirection;
+  }
+
+  /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */
+  private _getInversePosition(position: string): VerticalConnectionPos | HorizontalConnectionPos {
+    const positionPairs = {
+      top: 'bottom',
+      bottom: 'top',
+      start: 'end',
+      end: 'start',
+      center: 'center',
+    };
+    return positionPairs[position];
+  }
+
+  /** Returns an array of fallback positions for popover, following the algoritm:
+   * 1) Slightly alternate preferred position if applicable. I.e. for 'top' try 'top-start' and 'top-end' positioning.
+   * 2) Try the opposite position, i.e. for 'top' try 'bottom'.
+   * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'
+   * 4) All remaining positions from positions list
+   */
+  private _getFallbackPositions(
+    direction: PopoverDirection,
+    possibleDirections: PopoverDirection[] = this._possiblePopoverDirections
+    ): ConnectionPositionPair[] {
+    if (!direction) {
+      return [];
+    }
+    const remainigDirections = possibleDirections.filter(possibleDirection => possibleDirection !== direction);
+    let fallbackPositions: ConnectionPositionPair[] = [];
+    switch (direction) {
+      case 'top':
+      case 'bottom': {
+        fallbackPositions = this._getVerticalFallbackPositionPairs(direction);
+        break;
+      }
+      case 'left':
+      case 'right': {
+        fallbackPositions = this._getHorizontalFallbackPositionPairs(direction);
+        break;
+      }
+    }
+
+    const inverseDirection = this._getInversePopoverDirection(direction);
+    const nextFallbackPosition = remainigDirections.indexOf(inverseDirection) > -1 ? inverseDirection : possibleDirections[0];
+    return [...fallbackPositions, ...this._getFallbackPositions(nextFallbackPosition, remainigDirections)];
+  }
+
+  /** Calculates fallbacks for vertical popover positioning */
+  private _getVerticalFallbackPositionPairs(direction: PopoverVerticalDirection): ConnectionPositionPair[] {
+    const isSelectedDirection = direction === this.direction;
+    const verticalFallbackPositionPairs: ConnectionPositionPair[] = [];
+    const basePositionPair = {
+      ...this._getOrigin(direction),
+      ...this._getOverlayPosition(direction),
+      ...this._getOffset(direction),
+    };
+
+    if (!isSelectedDirection) {
+      // HINT: selected direction matches basePosition, so we don't need to repeat it in fallback
+      verticalFallbackPositionPairs.push(basePositionPair);
+    }
+    verticalFallbackPositionPairs.push({
+        ...basePositionPair,
+        originX: 'start',
+        overlayX: 'start',
+    }, {
+        ...basePositionPair,
+        originX: 'end',
+        overlayX: 'end',
+    });
+    return verticalFallbackPositionPairs;
+  }
+
+  /** Calculates fallbacks for horizontal popover positioning */
+  private _getHorizontalFallbackPositionPairs(direction: PopoverHorizontalDirection): ConnectionPositionPair[] {
+    const offset = this._getOffset(direction);
+
+    return [{
+      ...this._getOrigin(direction),
+      ...this._getOverlayPosition(direction),
+      ...offset,
+    }];
   }
 
   get isRtl(): boolean {

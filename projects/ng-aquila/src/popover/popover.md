@@ -33,16 +33,7 @@ It is possible to position the popover top/right/bottom/left to the trigger by s
 
 The positioning of the popover follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the popover tries to find a fitting position within the window.
 
-The following two popovers have a width of 800px.
-
-* The first popover is configured to be opened on the left side (`nxPopoverDirection`="left") but will not fit the screen. This example will fallback to the bottom center/right.
-* The second popover is configured to be opened on the right side (`nxPopoverDirection`="right") but will not fit the screen. This example will fallback to the bottom center/left.
-
-<!-- example(popover-fallback) -->
-
-### Details
-
-The following table explains the fallback strategy of the popover. The column "nxDirection" is the desired orientation of the popover. The column "no space on" describes the constraints by the window on the top/right/bottom/left side. The column "fallback" describes the fallback-orientation of the popover.
+The following table explains the fallback strategy of the popover. 
 
 <!-- example(popover-table) -->
 
