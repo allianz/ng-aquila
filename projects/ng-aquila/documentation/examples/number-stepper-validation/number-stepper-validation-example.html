@@ -1,5 +1,5 @@
 <nx-number-stepper nxSize="big" [(ngModel)]="number"
-  #stepperValidModel="ngModel" nxStep="2"></nx-number-stepper>
+  #stepperValidModel="ngModel" nxStep="2" inputAriaLabel="Number of travellers"></nx-number-stepper>
 
 <nx-message nxContext="info"
   *ngIf="!stepperValidModel.errors">

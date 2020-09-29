@@ -12,7 +12,6 @@ This component has two sizes - big and normal.
 <!-- example(number-stepper-sizes) -->
 
 #### Standalone
-Number of travellers
 
 <!-- example(number-stepper-standalone) -->
 
@@ -83,6 +82,8 @@ If the component owns the focus, you can increment by pressing the ARROW-UP butt
 The increment and decrement buttons need to have an `aria-label` for a11y support. By default they have english aria-labels, to translate them you can subclass the `NxNumberStepperIntl` and provide it in your module as shown in the [Localization example](./documentation/number-stepper/overview#localization). If you want to set these aria-labels separately for a certain number stepper you can use the inputs `incrementAriaLabel` and `decrementAriaLabel`. These inputs take precedence over `NxNumberStepperIntl`.
 
 In addition, the input of the number stepper should also have an `aria-label` attribute, which can be set only via the input `inputAriaLabel`.
+
+**Please make sure to use either `nxLabel` or `inputAriaLabel`** to set the label on the number-stepper. In case you use a [custom label](./documentation/number-stepper/overview#custom-label), you should also use an additional `inputAriaLabel`.
 
 The example below shows the usage of the above mentioned `aria-label` inputs.
 

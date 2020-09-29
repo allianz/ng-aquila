@@ -1,8 +1,8 @@
 <form [formGroup]="fb">
-  <nx-number-stepper formControlName="amount" nxSize="big">
+  <nx-number-stepper formControlName="amount" nxSize="big" inputAriaLabel="Sum of Expenses">
     <nx-number-stepper-suffix>$</nx-number-stepper-suffix>
   </nx-number-stepper>
-  <nx-number-stepper formControlName="amount" nxSize="normal">
+  <nx-number-stepper formControlName="amount" nxSize="normal" inputAriaLabel="Sum of Expenses">
     <nx-number-stepper-prefix>€</nx-number-stepper-prefix>
   </nx-number-stepper>
 </form>
