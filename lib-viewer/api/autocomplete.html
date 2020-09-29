@@ -460,7 +460,10 @@ inside the overlay container to allow for easy styling.</p>
     </p>
   </td>
   <td class="docs-api-property-description">
-    <p>Value to string converter.</p>
+    <p>Value to string converter function.
+As an autocomplete option can hold any value, a converter might be needed
+to get a string representation of the value, which can be stored in the input.</p>
+<p>Default: value ? value.toString() : null.</p>
 </td>
 </tr>
 

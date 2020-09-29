@@ -2,7 +2,6 @@
 <p class="docs-markdown--p">This component has two sizes - big and normal.</p>
 <div nx-docs-example="number-stepper-sizes">exampleID: number-stepper-sizes</div>
 <h4 id="standalone" class="docs-markdown--h4">Standalone</h4>
-<p class="docs-markdown--p">Number of travellers</p>
 <div nx-docs-example="number-stepper-standalone">exampleID: number-stepper-standalone</div>
 <h4 id="custom-label" class="docs-markdown--h4">Custom label</h4>
 <p class="docs-markdown--p">You can use custom markup by omiting the nxLabel attribute and provide your markup inside the element, e.g. to show a tooltip. If nxLabel is set the custom content will not be rendered!</p>
@@ -43,6 +42,10 @@ Try it below: Enter 1 or type in any letter to see the errors.</p>
 <div nx-docs-example="number-stepper-auto-resizing">exampleID: number-stepper-auto-resizing</div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">If the component owns the focus, you can increment by pressing the ARROW-UP button and decrement by pressing the ARROW-DOWN button.</p>
+<p class="docs-markdown--p">The increment and decrement buttons need to have an <code>aria-label</code> for a11y support. By default they have english aria-labels, to translate them you can subclass the <code>NxNumberStepperIntl</code> and provide it in your module as shown in the <a href="./documentation/number-stepper/overview#localization">Localization example</a>. If you want to set these aria-labels separately for a certain number stepper you can use the inputs <code>incrementAriaLabel</code> and <code>decrementAriaLabel</code>. These inputs take precedence over <code>NxNumberStepperIntl</code>.</p>
+<p class="docs-markdown--p">In addition, the input of the number stepper should also have an <code>aria-label</code> attribute, which can be set only via the input <code>inputAriaLabel</code>.</p>
+<p class="docs-markdown--p"><strong>Please make sure to use either <code>nxLabel</code> or <code>inputAriaLabel</code></strong> to set the label on the number-stepper. In case you use a <a href="./documentation/number-stepper/overview#custom-label">custom label</a>, you should also use an additional <code>inputAriaLabel</code>.</p>
+<p class="docs-markdown--p">The example below shows the usage of the above mentioned <code>aria-label</code> inputs.</p>
+<div nx-docs-example="number-stepper-a11y">exampleID: number-stepper-a11y</div>
 <h4 id="localization" class="docs-markdown--h4">Localization</h4>
-<p class="docs-markdown--p">The increment and decrement buttons need to have an aria-label for a11y support. By default they have english aria-labels, to translate them you can subclass the <code>NxNumberStepperIntl</code> and provide it in your module.</p>
 <div nx-docs-example="number-stepper-localize">exampleID: number-stepper-localize</div>

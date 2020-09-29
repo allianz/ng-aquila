@@ -151,6 +151,9 @@
       "id": "sidebar"
     },
     {
+      "id": "sidepanel"
+    },
+    {
       "id": "slider"
     },
     {
@@ -304,6 +307,7 @@
         "button-small-medium",
         "button-medium",
         "button-large",
+        "button-danger",
         "button-block",
         "button-negative",
         "button-with-icon",
@@ -893,6 +897,7 @@
         "number-stepper-disabled-implicit",
         "number-stepper-validation",
         "number-stepper-auto-resizing",
+        "number-stepper-a11y",
         "number-stepper-localize"
       ],
       "category": "components",
@@ -941,7 +946,6 @@
         "popover-trigger",
         "popover-click-outside",
         "popover-positioning",
-        "popover-fallback",
         "popover-table",
         "popover-custom",
         "popover-lazyload",
@@ -1069,9 +1073,23 @@
       "category": "components",
       "apiFile": "lib-viewer/api/sidebar.html",
       "overviewFile": "lib-viewer/overview/sidebar.html",
-      "b2c": false,
+      "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "sidepanel",
+      "title": "Sidepanel",
+      "examples": [
+        "sidepanel-floating",
+        "sidepanel-static"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
     },
     {
       "id": "slider",
@@ -1249,6 +1267,7 @@
       "examples": [
         "tooltip-basic",
         "tooltip-positions",
+        "tooltip-fallbacks-table",
         "tooltip-delay",
         "tooltip-disabled",
         "tooltip-programmatic",
@@ -1535,6 +1554,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/button-block-example-###TYPE###.html"
+    },
+    {
+      "id": "button-danger",
+      "component": "ButtonDangerExampleComponent",
+      "title": "Danger Buttons Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/button-danger-example-###TYPE###.html"
     },
     {
       "id": "button-icon",
@@ -3880,6 +3910,17 @@
       "url": "lib-viewer/examples/natural-language-form-sizes-example-###TYPE###.html"
     },
     {
+      "id": "number-stepper-a11y",
+      "component": "NumberStepperAccessibilityExampleComponent",
+      "title": "Number Stepper Accessiblity Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/number-stepper-a11y-example-###TYPE###.html"
+    },
+    {
       "id": "number-stepper-additions",
       "component": "NumberStepperAdditionsExampleComponent",
       "title": "Prefix and Suffix",
@@ -4153,17 +4194,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/popover-custom-example-###TYPE###.html"
-    },
-    {
-      "id": "popover-fallback",
-      "component": "PopoverFallbackExampleComponent",
-      "title": "Popover fallback Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/popover-fallback-example-###TYPE###.html"
     },
     {
       "id": "popover-hover",
@@ -4780,6 +4810,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/sidebar-example-###TYPE###.html"
+    },
+    {
+      "id": "sidepanel-floating",
+      "component": "SidepanelFloatingExampleComponent",
+      "title": "Floating sidepanel example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-floating-example-###TYPE###.html"
+    },
+    {
+      "id": "sidepanel-static",
+      "component": "SidepanelStaticExampleComponent",
+      "title": "Static sidepanel example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-static-example-###TYPE###.html"
     },
     {
       "id": "slider-basic",
@@ -5495,6 +5547,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/tooltip-disabled-example-###TYPE###.html"
+    },
+    {
+      "id": "tooltip-fallbacks-table",
+      "component": "TooltipFallbacksTableExampleComponent",
+      "title": "Tooltip Fallbacks Table Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tooltip-fallbacks-table-example-###TYPE###.html"
     },
     {
       "id": "tooltip-positions",

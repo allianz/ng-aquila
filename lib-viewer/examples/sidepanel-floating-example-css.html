@@ -1,0 +1,26 @@
+<span class="hljs-selector-class">.my-sidepanel</span> {
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">60px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">60px</span>);
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">240px</span>;
+}
+
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">785px</span>) {
+  <span class="hljs-selector-class">.my-sidepanel</span> {
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">120px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">120px</span>);
+  }
+}
+
+<span class="hljs-selector-class">.my-sidepanel-header</span> {
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">justify-content</span>: space-between;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">32px</span> <span class="hljs-number">32px</span> <span class="hljs-number">24px</span> <span class="hljs-number">32px</span>;
+}
+
+<span class="hljs-selector-class">.my-sidepanel-content</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">32px</span> <span class="hljs-number">32px</span> <span class="hljs-number">32px</span>;
+}
+
+<span class="hljs-selector-class">.example-hint</span> <span class="hljs-selector-tag">nx-icon</span> {
+  <span class="hljs-attribute">vertical-align</span>: bottom;
+}

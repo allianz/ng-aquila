@@ -1,16 +1,16 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
 
 <span class="hljs-comment">/**
- * @title Popover Table Example
+ * @title Tooltip Fallbacks Table Example
  */</span>
  <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-popover-table-example'</span>,
-  templateUrl: <span class="hljs-string">'./popover-table-example.html'</span>
+  selector: <span class="hljs-string">'nx-tooltip-fallbacks-table-example'</span>,
+  templateUrl: <span class="hljs-string">'./tooltip-fallbacks-table-example.html'</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PopoverTableExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipFallbacksTableExampleComponent {
   data = [
     {
-      nxDirection: <span class="hljs-string">'top'</span>,
+      nxTooltipPosition: <span class="hljs-string">'top'</span>,
       fallback1: <span class="hljs-string">'top-left'</span>,
       fallback2: <span class="hljs-string">'top-right'</span>,
       fallback3: <span class="hljs-string">'bottom'</span>,
@@ -20,7 +20,7 @@
       fallback7: <span class="hljs-string">'right'</span>,
     },
     {
-      nxDirection: <span class="hljs-string">'bottom'</span>,
+      nxTooltipPosition: <span class="hljs-string">'bottom'</span>,
       fallback1: <span class="hljs-string">'bottom-left'</span>,
       fallback2: <span class="hljs-string">'bottom-right'</span>,
       fallback3: <span class="hljs-string">'top'</span>,
@@ -30,7 +30,7 @@
       fallback7: <span class="hljs-string">'right'</span>,
     },
     {
-      nxDirection: <span class="hljs-string">'left'</span>,
+      nxTooltipPosition: <span class="hljs-string">'left'</span>,
       fallback1: <span class="hljs-string">'right'</span>,
       fallback2: <span class="hljs-string">'bottom'</span>,
       fallback3: <span class="hljs-string">'bottom-left'</span>,
@@ -40,7 +40,7 @@
       fallback7: <span class="hljs-string">'top-right'</span>,
     },
     {
-      nxDirection: <span class="hljs-string">'right'</span>,
+      nxTooltipPosition: <span class="hljs-string">'right'</span>,
       fallback1: <span class="hljs-string">'left'</span>,
       fallback2: <span class="hljs-string">'bottom'</span>,
       fallback3: <span class="hljs-string">'bottom-left'</span>,
@@ -52,7 +52,7 @@
   ];
   displayedColumns = [
     <span class="hljs-comment">// HINT: \xa0 is a non-breaking space, so the table header looks nicer</span>
-    { title: <span class="hljs-string">'nxDirection'</span>, key: <span class="hljs-string">'nxDirection'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
+    { title: <span class="hljs-string">'nxTooltipPosition'</span>, key: <span class="hljs-string">'nxTooltipPosition'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
     { title: <span class="hljs-string">'fallback\xa01'</span>, key: <span class="hljs-string">'fallback1'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
     { title: <span class="hljs-string">'fallback\xa02'</span>, key: <span class="hljs-string">'fallback2'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
     { title: <span class="hljs-string">'fallback\xa03'</span>, key: <span class="hljs-string">'fallback3'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },

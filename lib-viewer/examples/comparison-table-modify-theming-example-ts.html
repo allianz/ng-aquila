@@ -10,18 +10,18 @@
   styleUrls: [<span class="hljs-string">'./comparison-table-modify-theming-example.css'</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComparisonTableModifyThemingExampleComponent <span class="hljs-keyword">implements</span> OnDestroy {
-  headerTheme: <span class="hljs-built_in">string</span> = <span class="hljs-string">'default'</span>;
+  headerTheme: <span class="hljs-built_in">string</span> = <span class="hljs-string">'Default'</span>;
   headerThemeAvailable: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
   <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> demoService: BaseDemoThemingService</span>) {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> demoService: BaseDemoThemingService</span>) {
     <span class="hljs-keyword">this</span>.demoService.headerThemeAvailable.pipe(
       takeUntil(<span class="hljs-keyword">this</span>._destroyed)
     ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">boolean</span></span>) =&gt;</span> {
       <span class="hljs-keyword">this</span>.headerThemeAvailable = value;
 
       <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.headerThemeAvailable) {
-        <span class="hljs-keyword">this</span>.changeHeaderTheme(<span class="hljs-string">'default'</span>);
+        <span class="hljs-keyword">this</span>.changeHeaderTheme(<span class="hljs-string">'Default'</span>);
       }
     });
   }
@@ -29,6 +29,10 @@
   changeHeaderTheme(theme: <span class="hljs-built_in">string</span>) {
     <span class="hljs-keyword">this</span>.headerTheme = theme;
     <span class="hljs-keyword">this</span>.demoService.changeComparisonTableTheme(theme);
+  }
+
+  getColorBoxClassNames(colorIndex: <span class="hljs-built_in">number</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`color-box color-<span class="hljs-subst">${colorIndex}</span>`</span>;
   }
 
   ngOnDestroy() {

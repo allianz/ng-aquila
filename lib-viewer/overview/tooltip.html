@@ -11,8 +11,6 @@ and should <strong>only be used for optional information</strong>.</p>
 <p class="docs-markdown--p">By default the tooltip will be displayed below the element, but this can be configured
 using the <code>nxTooltipPosition</code> input. The tooltip can be displayed above,
 below, left or right of the element.</p>
-<p class="docs-markdown--p">If there is not enough space available on the viewport, the tooltip will
-fallback to a different position.</p>
 <table class="docs-markdown--table">
 <thead>
 <tr>
@@ -40,6 +38,11 @@ fallback to a different position.</p>
 </tbody>
 </table>
 <div nx-docs-example="tooltip-positions">exampleID: tooltip-positions</div>
+<h3 id="fallback-strategy" class="docs-markdown--h3">Fallback strategy</h3>
+<p class="docs-markdown--p">The positioning of the tooltip follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the tooltip tries to find a fitting position within the window.
+The following table explains the fallback strategy of the tooltip.</p>
+<div nx-docs-example="tooltip-fallbacks-table">exampleID: tooltip-fallbacks-table</div>
+<p class="docs-markdown--p">Note that the table contains a few positions that are not available to be set by the user. <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code> and <code>bottom-right</code> are special positions that are used as a fallback option only.</p>
 <h3 id="showing-and-hiding" class="docs-markdown--h3">Showing and hiding</h3>
 <p class="docs-markdown--p">By default, the tooltip will be shown when the user's mouse hovers over
 the tooltip's trigger element and hides when the user's mouse leaves.</p>

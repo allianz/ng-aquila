@@ -31,6 +31,7 @@ import {BadgeExampleComponent} from './../examples/badge/badge-example';
 import {BreadcrumbNegativeExampleComponent} from './../examples/breadcrumb-negative/breadcrumb-negative-example';
 import {BreadcrumbExampleComponent} from './../examples/breadcrumb/breadcrumb-example';
 import {ButtonBlockExampleComponent} from './../examples/button-block/button-block-example';
+import {ButtonDangerExampleComponent} from './../examples/button-danger/button-danger-example';
 import {ButtonIconExampleComponent} from './../examples/button-icon/button-icon-example';
 import {ButtonLargeExampleComponent} from './../examples/button-large/button-large-example';
 import {ButtonMediumExampleComponent} from './../examples/button-medium/button-medium-example';
@@ -244,6 +245,7 @@ import {NaturalLanguageFormBasicExampleComponent} from './../examples/natural-la
 import {NaturalLanguageFormExtendedExampleComponent} from './../examples/natural-language-form-extended/natural-language-form-extended-example';
 import {NaturalLanguageFormNegativeExampleComponent} from './../examples/natural-language-form-negative/natural-language-form-negative-example';
 import {NaturalLanguageFormSizesExampleComponent} from './../examples/natural-language-form-sizes/natural-language-form-sizes-example';
+import {NumberStepperAccessibilityExampleComponent} from './../examples/number-stepper-a11y/number-stepper-a11y-example';
 import {NumberStepperAdditionsExampleComponent} from './../examples/number-stepper-additions/number-stepper-additions-example';
 import {NumberStepperAutoResizingExampleComponent} from './../examples/number-stepper-auto-resizing/number-stepper-auto-resizing-example';
 import {NumberStepperCustomLabelExampleComponent} from './../examples/number-stepper-custom-label/number-stepper-custom-label-example';
@@ -269,7 +271,6 @@ import {PaginationLocalizeExampleComponent} from './../examples/pagination-local
 import {PaginationSimpleExampleComponent} from './../examples/pagination-simple/pagination-simple-example';
 import {PopoverClickOutsideExampleComponent} from './../examples/popover-click-outside/popover-click-outside-example';
 import {PopoverCustomExampleComponent} from './../examples/popover-custom/popover-custom-example';
-import {PopoverFallbackExampleComponent} from './../examples/popover-fallback/popover-fallback-example';
 import {PopoverHoverExampleComponent} from './../examples/popover-hover/popover-hover-example';
 import {PopoverLazyloadExampleComponent} from './../examples/popover-lazyload/popover-lazyload-example';
 import {PopoverModalExampleComponent} from './../examples/popover-modal/popover-modal-example';
@@ -326,6 +327,8 @@ import {SidebarMethodsExampleComponent} from './../examples/sidebar-methods/side
 import {SidebarOutputsExampleComponent} from './../examples/sidebar-outputs/sidebar-outputs-example';
 import {SidebarResizeableExampleComponent} from './../examples/sidebar-resizeable/sidebar-resizeable-example';
 import {SidebarExampleComponent} from './../examples/sidebar/sidebar-example';
+import {SidepanelFloatingExampleComponent} from './../examples/sidepanel-floating/sidepanel-floating-example';
+import {SidepanelStaticExampleComponent} from './../examples/sidepanel-static/sidepanel-static-example';
 import {SliderBasicExampleComponent} from './../examples/slider-basic/slider-basic-example';
 import {SliderDecimalExampleComponent} from './../examples/slider-decimal/slider-decimal-example';
 import {SliderDefaultExampleComponent} from './../examples/slider-default/slider-default-example';
@@ -391,6 +394,7 @@ import {ToolbarExampleComponent} from './../examples/toolbar/toolbar-example';
 import {TooltipBasicExampleComponent} from './../examples/tooltip-basic/tooltip-basic-example';
 import {TooltipDelayExampleComponent} from './../examples/tooltip-delay/tooltip-delay-example';
 import {TooltipDisabledExampleComponent} from './../examples/tooltip-disabled/tooltip-disabled-example';
+import {TooltipFallbacksTableExampleComponent} from './../examples/tooltip-fallbacks-table/tooltip-fallbacks-table-example';
 import {TooltipPositionsExampleComponent} from './../examples/tooltip-positions/tooltip-positions-example';
 import {TooltipProgrammaticExampleComponent} from './../examples/tooltip-programmatic/tooltip-programmatic-example';
 import {TooltipSettingsExampleComponent} from './../examples/tooltip-settings/tooltip-settings-example';
@@ -511,6 +515,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'button-block',
     title: 'Block Example',
     component: ButtonBlockExampleComponent
+  },
+  'button-danger': {
+    id: 'button-danger',
+    title: 'Danger Buttons Example',
+    component: ButtonDangerExampleComponent
   },
   'button-icon': {
     id: 'button-icon',
@@ -1577,6 +1586,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Size example',
     component: NaturalLanguageFormSizesExampleComponent
   },
+  'number-stepper-a11y': {
+    id: 'number-stepper-a11y',
+    title: 'Number Stepper Accessiblity Example',
+    component: NumberStepperAccessibilityExampleComponent
+  },
   'number-stepper-additions': {
     id: 'number-stepper-additions',
     title: 'Prefix and Suffix',
@@ -1701,11 +1715,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'popover-custom',
     title: 'Popover Custom Example',
     component: PopoverCustomExampleComponent
-  },
-  'popover-fallback': {
-    id: 'popover-fallback',
-    title: 'Popover fallback Example',
-    component: PopoverFallbackExampleComponent
   },
   'popover-hover': {
     id: 'popover-hover',
@@ -1986,6 +1995,16 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'sidebar',
     title: 'Side navigation with Actions',
     component: SidebarExampleComponent
+  },
+  'sidepanel-floating': {
+    id: 'sidepanel-floating',
+    title: 'Floating sidepanel example',
+    component: SidepanelFloatingExampleComponent
+  },
+  'sidepanel-static': {
+    id: 'sidepanel-static',
+    title: 'Static sidepanel example',
+    component: SidepanelStaticExampleComponent
   },
   'slider-basic': {
     id: 'slider-basic',
@@ -2312,6 +2331,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Disabled tooltip',
     component: TooltipDisabledExampleComponent
   },
+  'tooltip-fallbacks-table': {
+    id: 'tooltip-fallbacks-table',
+    title: 'Tooltip Fallbacks Table Example',
+    component: TooltipFallbacksTableExampleComponent
+  },
   'tooltip-positions': {
     id: 'tooltip-positions',
     title: 'Tooltip positions',
@@ -2376,6 +2400,7 @@ export const EXAMPLE_LIST = [
   BreadcrumbNegativeExampleComponent,
   BreadcrumbExampleComponent,
   ButtonBlockExampleComponent,
+  ButtonDangerExampleComponent,
   ButtonIconExampleComponent,
   ButtonLargeExampleComponent,
   ButtonMediumExampleComponent,
@@ -2589,6 +2614,7 @@ export const EXAMPLE_LIST = [
   NaturalLanguageFormExtendedExampleComponent,
   NaturalLanguageFormNegativeExampleComponent,
   NaturalLanguageFormSizesExampleComponent,
+  NumberStepperAccessibilityExampleComponent,
   NumberStepperAdditionsExampleComponent,
   NumberStepperAutoResizingExampleComponent,
   NumberStepperCustomLabelExampleComponent,
@@ -2614,7 +2640,6 @@ export const EXAMPLE_LIST = [
   PaginationSimpleExampleComponent,
   PopoverClickOutsideExampleComponent,
   PopoverCustomExampleComponent,
-  PopoverFallbackExampleComponent,
   PopoverHoverExampleComponent,
   PopoverLazyloadExampleComponent,
   PopoverModalExampleComponent,
@@ -2671,6 +2696,8 @@ export const EXAMPLE_LIST = [
   SidebarOutputsExampleComponent,
   SidebarResizeableExampleComponent,
   SidebarExampleComponent,
+  SidepanelFloatingExampleComponent,
+  SidepanelStaticExampleComponent,
   SliderBasicExampleComponent,
   SliderDecimalExampleComponent,
   SliderDefaultExampleComponent,
@@ -2736,6 +2763,7 @@ export const EXAMPLE_LIST = [
   TooltipBasicExampleComponent,
   TooltipDelayExampleComponent,
   TooltipDisabledExampleComponent,
+  TooltipFallbacksTableExampleComponent,
   TooltipPositionsExampleComponent,
   TooltipProgrammaticExampleComponent,
   TooltipSettingsExampleComponent,
@@ -2833,6 +2861,10 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'button-block',
     component: ButtonBlockExampleComponent
+  },
+{
+    path: 'button-danger',
+    component: ButtonDangerExampleComponent
   },
 {
     path: 'button-icon',
@@ -3687,6 +3719,10 @@ export const EXAMPLE_ROUTES = [
     component: NaturalLanguageFormSizesExampleComponent
   },
 {
+    path: 'number-stepper-a11y',
+    component: NumberStepperAccessibilityExampleComponent
+  },
+{
     path: 'number-stepper-additions',
     component: NumberStepperAdditionsExampleComponent
   },
@@ -3785,10 +3821,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'popover-custom',
     component: PopoverCustomExampleComponent
-  },
-{
-    path: 'popover-fallback',
-    component: PopoverFallbackExampleComponent
   },
 {
     path: 'popover-hover',
@@ -4013,6 +4045,14 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'sidebar',
     component: SidebarExampleComponent
+  },
+{
+    path: 'sidepanel-floating',
+    component: SidepanelFloatingExampleComponent
+  },
+{
+    path: 'sidepanel-static',
+    component: SidepanelStaticExampleComponent
   },
 {
     path: 'slider-basic',
@@ -4273,6 +4313,10 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'tooltip-disabled',
     component: TooltipDisabledExampleComponent
+  },
+{
+    path: 'tooltip-fallbacks-table',
+    component: TooltipFallbacksTableExampleComponent
   },
 {
     path: 'tooltip-positions',

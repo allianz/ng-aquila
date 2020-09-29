@@ -1,0 +1,33 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/utils'</span>;
+<span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+
+<span class="hljs-comment">/**
+* @title Floating sidepanel example
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  selector: <span class="hljs-string">'nx-sidepanel-floating-example'</span>,
+  styleUrls: [<span class="hljs-string">'sidepanel-floating-example.css'</span>],
+  templateUrl: <span class="hljs-string">'./sidepanel-floating-example.html'</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SidepanelFloatingExampleComponent {
+  opened: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+  isGreaterThanSmall: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+
+  viewportServiceSubscription: Subscription;
+
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> viewportService: NxViewportService</span>) {
+    <span class="hljs-keyword">this</span>.viewportServiceSubscription = <span class="hljs-keyword">this</span>.viewportService.min(NxBreakpoints.BREAKPOINT_SMALL)
+      .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanSmall</span> =&gt;</span> {
+        <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
+        <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-keyword">this</span>.isGreaterThanSmall) {
+          <span class="hljs-keyword">this</span>.isGreaterThanSmall = isGreaterThanSmall;
+          <span class="hljs-keyword">if</span> (isGreaterThanSmall &amp;&amp; !<span class="hljs-keyword">this</span>.opened) {
+            <span class="hljs-keyword">this</span>.opened = <span class="hljs-literal">true</span>;
+          } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-keyword">this</span>.opened) {
+            <span class="hljs-keyword">this</span>.opened = <span class="hljs-literal">false</span>;
+          }
+        }
+      });
+  }
+}
