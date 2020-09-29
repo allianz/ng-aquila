@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="10.1.0"></a>
+# [10.1.0](https://github.com/aposin/ng-aquila/compare/v10.0.0...v10.1.0) (2020-09-29)
+
+
+### Bug Fixes
+
+* **formfield:** add background to outline formfield ([a42a695](https://github.com/aposin/ng-aquila/commit/a42a695))
+* **formfield:** change order of label and input in template ([2016ff6](https://github.com/aposin/ng-aquila/commit/2016ff6))
+* **sidepanel:** use box-shadow only for floating variant ([4feb209](https://github.com/aposin/ng-aquila/commit/4feb209))
+* **spinner:** correct size of bobbles for small spinner ([b252164](https://github.com/aposin/ng-aquila/commit/b252164))
+* **tabs:** only show content focus when keyboard is used ([eb94092](https://github.com/aposin/ng-aquila/commit/eb94092))
+
+
+### Features
+
+* **button:** add danger option ([e38f563](https://github.com/aposin/ng-aquila/commit/e38f563))
+* **comparison-table:** popular cell for mobile view ([4e84871](https://github.com/aposin/ng-aquila/commit/4e84871))
+* **number-stepper:** add inputs for aria-labels ([90adcc7](https://github.com/aposin/ng-aquila/commit/90adcc7))
+* **popover:** new positioning logic ported from tooltip ([9c8eb7d](https://github.com/aposin/ng-aquila/commit/9c8eb7d))
+* **sidepanel:** add component ([a050365](https://github.com/aposin/ng-aquila/commit/a050365))
+* **tooltip:** new positions in fallback ([9c2d3ef](https://github.com/aposin/ng-aquila/commit/9c2d3ef))
+
+
+
 <a name="10.0.0"></a>
 # 10.0.0 (2020-09-15)
 
