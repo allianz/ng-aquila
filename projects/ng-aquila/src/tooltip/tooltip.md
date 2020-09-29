@@ -26,9 +26,6 @@ By default the tooltip will be displayed below the element, but this can be conf
 using the `nxTooltipPosition` input. The tooltip can be displayed above,
 below, left or right of the element.
 
-If there is not enough space available on the viewport, the tooltip will
-fallback to a different position.
-
 | Position | Description                         |
 | -------- | ----------------------------------- |
 | top      | Display above the element           |
@@ -36,8 +33,16 @@ fallback to a different position.
 | left     | Display to the left of the element  |
 | right    | Display to the right of the element |
 
-
 <!-- example(tooltip-positions) -->
+
+### Fallback strategy
+
+The positioning of the tooltip follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the tooltip tries to find a fitting position within the window.
+The following table explains the fallback strategy of the tooltip.
+
+<!-- example(tooltip-fallbacks-table) -->
+
+Note that the table contains a few positions that are not available to be set by the user. `top-left`, `top-right`, `bottom-left` and `bottom-right` are special positions that are used as a fallback option only.
 
 ### Showing and hiding
 

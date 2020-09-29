@@ -435,28 +435,28 @@ describe('NxTooltipDirective', () => {
 
     it('should consistently position before and after overlay origin in ltr and rtl dir', () => {
       tooltipDirective.position = 'left';
-      const leftOrigin = tooltipDirective._getOrigin();
+      const leftOrigin = tooltipDirective._getOrigin(tooltipDirective.position);
       tooltipDirective.position = 'right';
-      const rightOrigin = tooltipDirective._getOrigin();
+      const rightOrigin = tooltipDirective._getOrigin(tooltipDirective.position);
 
       // Test expectations in RTL
       dir.value = 'rtl';
-      expect(tooltipDirective._getOrigin()).toEqual(leftOrigin);
+      expect(tooltipDirective._getOrigin(tooltipDirective.position)).toEqual(leftOrigin);
       tooltipDirective.position = 'left';
-      expect(tooltipDirective._getOrigin()).toEqual(rightOrigin);
+      expect(tooltipDirective._getOrigin(tooltipDirective.position)).toEqual(rightOrigin);
     });
 
     it('should consistently position before and after overlay position in ltr and rtl dir', () => {
       tooltipDirective.position = 'left';
-      const leftOverlayPosition = tooltipDirective._getOverlayPosition();
+      const leftOverlayPosition = tooltipDirective._getOverlayPosition(tooltipDirective.position);
       tooltipDirective.position = 'right';
-      const rightOverlayPosition = tooltipDirective._getOverlayPosition();
+      const rightOverlayPosition = tooltipDirective._getOverlayPosition(tooltipDirective.position);
 
       // Test expectations in RTL
       dir.value = 'rtl';
-      expect(tooltipDirective._getOverlayPosition()).toEqual(leftOverlayPosition);
+      expect(tooltipDirective._getOverlayPosition(tooltipDirective.position)).toEqual(leftOverlayPosition);
       tooltipDirective.position = 'left';
-      expect(tooltipDirective._getOverlayPosition()).toEqual(rightOverlayPosition);
+      expect(tooltipDirective._getOverlayPosition(tooltipDirective.position)).toEqual(rightOverlayPosition);
     });
 
     it('should throw when trying to assign an invalid position', () => {
@@ -626,30 +626,30 @@ describe('NxTooltipDirective', () => {
 
     it('should set a origin position', () => {
       tooltip.position = 'left';
-      expect(tooltip._getOrigin().originX).toBe('start');
+      expect(tooltip._getOrigin(tooltip.position).originX).toBe('start');
 
       tooltip.position = 'right';
-      expect(tooltip._getOrigin().originX).toBe('end');
+      expect(tooltip._getOrigin(tooltip.position).originX).toBe('end');
 
       tooltip.position = 'top';
-      expect(tooltip._getOrigin().originY).toBe('top');
+      expect(tooltip._getOrigin(tooltip.position).originY).toBe('top');
 
       tooltip.position = 'bottom';
-      expect(tooltip._getOrigin().originY).toBe('bottom');
+      expect(tooltip._getOrigin(tooltip.position).originY).toBe('bottom');
     });
 
     it('should set overlay position', () => {
       tooltip.position = 'left';
-      expect(tooltip._getOverlayPosition().overlayX).toBe('end');
+      expect(tooltip._getOverlayPosition(tooltip.position).overlayX).toBe('end');
 
       tooltip.position = 'right';
-      expect(tooltip._getOverlayPosition().overlayX).toBe('start');
+      expect(tooltip._getOverlayPosition(tooltip.position).overlayX).toBe('start');
 
       tooltip.position = 'top';
-      expect(tooltip._getOverlayPosition().overlayY).toBe('bottom');
+      expect(tooltip._getOverlayPosition(tooltip.position).overlayY).toBe('bottom');
 
       tooltip.position = 'bottom';
-      expect(tooltip._getOverlayPosition().overlayY).toBe('top');
+      expect(tooltip._getOverlayPosition(tooltip.position).overlayY).toBe('top');
     });
   });
 
@@ -903,7 +903,7 @@ describe('NxTooltipComponent', () => {
     tick();
 
     expect(tooltipDirective.position).toBe('right');
-    expect(tooltipDirective._getOverlayPosition().overlayX).toBe('start');
+    expect(tooltipDirective._getOverlayPosition(tooltipDirective.position).overlayX).toBe('start');
   }));
 });
 

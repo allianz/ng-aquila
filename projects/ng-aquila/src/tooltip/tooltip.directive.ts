@@ -10,6 +10,8 @@ import {
   OverlayRef,
   ScrollStrategy,
   ConnectionPositionPair,
+  VerticalConnectionPos,
+  HorizontalConnectionPos,
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -31,10 +33,14 @@ import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { NxTooltipComponent } from './tooltip.component';
 
+const BASE_OFFSET = 12;
+
 /**
  * Possible positions of the tooltip.
  */
-export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
+export type TooltipPosition = TooltipVerticalPosition | TooltipHorizontalPosition;
+export type TooltipHorizontalPosition = 'left' | 'right';
+export type TooltipVerticalPosition = 'top' | 'bottom';
 
 /**
  * CSS class that will be attached to the overlay panel.
@@ -43,7 +49,7 @@ export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 export const NX_TOOLTIP_PANEL_CLASS = 'nx-tooltip-panel';
 
 /**
- * Creates an error to be thrown if the user supplied an invalid tooltip position.
+ * Creates an error to be thrown if the user provided an invalid tooltip position.
  * @docs-private
  */
 export function getNxTooltipInvalidPositionError(position: string) {
@@ -81,34 +87,6 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
   };
 }
 
-const fallbacks: ConnectionPositionPair[] = [
-  {
-    originX: 'center',
-    originY: 'bottom',
-    overlayX: 'center',
-    overlayY: 'top',
-  },
-  {
-    originX: 'end',
-    originY: 'center',
-    overlayX: 'start',
-    overlayY: 'center',
-  },
-  {
-    originX: 'start',
-    originY: 'center',
-    overlayX: 'end',
-    overlayY: 'center',
-  },
-  {
-    originX: 'center',
-    originY: 'top',
-    overlayX: 'center',
-    overlayY: 'bottom',
-
-  }
-];
-
 /**
  * Directive that attaches a tooltip to the host element.
  *
@@ -130,6 +108,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   private _disabled: boolean = false;
   private _scrollStrategy: () => ScrollStrategy;
   private _embeddedViewRef: ComponentRef<NxTooltipComponent>;
+  private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
 
   /** Allows the user to define the position of the tooltip relative to the parent element */
   @Input('nxTooltipPosition')
@@ -384,70 +363,199 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   private _updatePosition() {
     const position =
         this._overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy;
-    const origin = this._getOrigin();
-    const overlay = this._getOverlayPosition();
+    const origin = this._getOrigin(this.position);
+    const overlay = this._getOverlayPosition(this.position);
+    const offset = this._getOffset(this.position);
+    const fallbacks = this._getFallbackPositions(this.position);
 
     position.withPositions([
       {
         ...origin,
-        ...overlay
+        ...overlay,
+        ...offset,
       },
       ...fallbacks
     ]);
   }
 
   /**
-   * Returns the origin position and a fallback position based on the user's position preference.
-   * The fallback position is the inverse of the origin (e.g. `'left' -> 'right'`).
+   * Returns the origin position based on the user's position preference.
    */
-  _getOrigin(): OriginConnectionPosition {
-    const isLtr = !this._dir || this._dir.value === 'ltr';
-    const position = this.position;
-    let originPosition: OriginConnectionPosition;
-
-    if (position === 'top' || position === 'bottom') {
-      originPosition = {
-        originX: 'center',
-        originY: position
-      };
-    } else if (
-      (position === 'left' && isLtr) ||
-      (position === 'right' && !isLtr)) {
-      originPosition = {originX: 'start', originY: 'center'};
-    } else if (
-      (position === 'right' && isLtr) ||
-      (position === 'left' && !isLtr)) {
-      originPosition = {originX: 'end', originY: 'center'};
-    } else {
-      throw getNxTooltipInvalidPositionError(position);
+  _getOrigin(position: TooltipPosition): OriginConnectionPosition {
+    switch (position) {
+      case 'top':
+      case 'bottom': {
+        return {
+          originX: 'center',
+          originY: position
+        };
+      }
+      case 'left': {
+        return {
+          originX: this._isLtr ? 'start' : 'end',
+          originY: 'center'
+        };
+      }
+      case 'right': {
+        return {
+          originX: this._isLtr ? 'end' : 'start',
+          originY: 'center'
+        };
+      }
+      default: {
+        throw getNxTooltipInvalidPositionError(position);
+      }
     }
-
-    return originPosition;
   }
 
-  /** Returns the overlay position and a fallback position based on the user's preference */
-  _getOverlayPosition(): OverlayConnectionPosition {
-    const isLtr = !this._dir || this._dir.value === 'ltr';
-    const position = this.position;
-    let overlayPosition: OverlayConnectionPosition;
+  /** Returns the overlay position based on the user's preference */
+  _getOverlayPosition(position: TooltipPosition): OverlayConnectionPosition {
+    switch (position) {
+      case 'top':
+      case 'bottom': {
+        return {
+          overlayX: 'center',
+          overlayY: this._getInversePosition(position) as VerticalConnectionPos,
+        };
+      }
+      case 'left': {
+        return {
+          overlayX: this._isLtr ? 'end' : 'start',
+          overlayY: 'center',
+        };
+      }
+      case 'right': {
+        return {
+          overlayX: this._isLtr ? 'start' : 'end',
+          overlayY: 'center',
+        };
+      }
+      default: {
+        throw getNxTooltipInvalidPositionError(position);
+      }
+    }
+  }
 
-    if (position === 'top') {
-      overlayPosition = {overlayX: 'center', overlayY: 'bottom'};
-    } else if (position === 'bottom') {
-      overlayPosition = {overlayX: 'center', overlayY: 'top'};
-    } else if (
-      (position === 'left' && isLtr) ||
-      (position === 'right' && !isLtr)) {
-      overlayPosition = {overlayX: 'end', overlayY: 'center'};
-    } else if (
-      (position === 'right' && isLtr) ||
-      (position === 'left' && !isLtr)) {
-      overlayPosition = {overlayX: 'start', overlayY: 'center'};
-    } else {
-      throw getNxTooltipInvalidPositionError(position);
+  /** Returns the overlay offset required by the user's position preference */
+  private _getOffset(position: TooltipPosition) {
+    switch (position) {
+      case 'top': {
+        return {
+          offsetY: BASE_OFFSET * -1,
+        };
+      }
+      case 'bottom': {
+        return {
+          offsetY: BASE_OFFSET,
+        };
+      }
+      case 'left': {
+        return {
+          offsetX: BASE_OFFSET * -1,
+        };
+      }
+      case 'right': {
+        return {
+          offsetX: BASE_OFFSET,
+        };
+      }
+      default: {
+        throw getNxTooltipInvalidPositionError(position);
+      }
+    }
+  }
+
+  /** Returns the opposite position, using aquila tooltip position naming: top, right, bottom, left */
+  private _getInverseTooltipPosition(position: TooltipPosition): TooltipPosition {
+    const tooltopPositionPairs = {
+      top: 'bottom',
+      right: 'left',
+      bottom: 'top',
+      left: 'right',
+    };
+    return tooltopPositionPairs[position] as TooltipPosition;
+  }
+
+  /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */
+  private _getInversePosition(position: string): VerticalConnectionPos | HorizontalConnectionPos {
+    const positionPairs = {
+      top: 'bottom',
+      bottom: 'top',
+      start: 'end',
+      end: 'start',
+      center: 'center',
+    };
+    return positionPairs[position];
+  }
+
+  /** Returns an array of fallback positions for tooltip, following the algoritm:
+   * 1) Slightly alternate preferred position if applicable. I.e. for 'top' try 'top-start' and 'top-end' positioning.
+   * 2) Try the opposite position, i.e. for 'top' try 'bottom'.
+   * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'
+   * 4) All remaining positions from positions list
+   */
+  private _getFallbackPositions(
+    position: TooltipPosition,
+    possiblePositions: TooltipPosition[] = this._possibleTooltipPositions
+    ): ConnectionPositionPair[] {
+    if (!position) {
+      return [];
+    }
+    const remainigPositions = possiblePositions.filter(possiblePosition => possiblePosition !== position);
+    let fallbackPositions: ConnectionPositionPair[] = [];
+    switch (position) {
+      case 'top':
+      case 'bottom': {
+        fallbackPositions = this._getVerticalFallbackPositionPairs(position);
+        break;
+      }
+      case 'left':
+      case 'right': {
+        fallbackPositions = this._getHorizontalFallbackPositionPairs(position);
+        break;
+      }
     }
 
-    return overlayPosition;
+    const inversePosition = this._getInverseTooltipPosition(position);
+    const nextFallbackPosition = remainigPositions.indexOf(inversePosition) > -1 ? inversePosition : possiblePositions[0];
+    return [...fallbackPositions, ...this._getFallbackPositions(nextFallbackPosition, remainigPositions)];
+  }
+
+  /** Calculates fallbacks for vertical tooltip positioning */
+  private _getVerticalFallbackPositionPairs(position: TooltipVerticalPosition): ConnectionPositionPair[] {
+    const isSelectedPosition = position === this.position;
+    const verticalFallbackPositionPairs: ConnectionPositionPair[] = [];
+    const basePositionPair = {
+      ...this._getOrigin(position),
+      ...this._getOverlayPosition(position),
+      ...this._getOffset(position),
+    };
+
+    if (!isSelectedPosition) {
+      // HINT: selected position matches basePosition, so we don't need to repeat it in fallback
+      verticalFallbackPositionPairs.push(basePositionPair);
+    }
+    verticalFallbackPositionPairs.push({
+        ...basePositionPair,
+        originX: 'start',
+        overlayX: 'start',
+    }, {
+        ...basePositionPair,
+        originX: 'end',
+        overlayX: 'end',
+    });
+    return verticalFallbackPositionPairs;
+  }
+
+  /** Calculates fallbacks for horizontal tooltip positioning */
+  private _getHorizontalFallbackPositionPairs(position: TooltipHorizontalPosition): ConnectionPositionPair[] {
+    const offset = this._getOffset(position);
+
+    return [{
+      ...this._getOrigin(position),
+      ...this._getOverlayPosition(position),
+      ...offset,
+    }];
   }
 
   /** Updates the tooltip message and repositions the overlay according to the new message length */
@@ -508,6 +616,10 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
       };
       this._tooltipInstance.position = 'top';
     }
+  }
+
+  get _isLtr(): boolean {
+    return !this._dir || this._dir.value === 'ltr';
   }
 
   static ngAcceptInputType_disabled: BooleanInput;
