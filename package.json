@@ -97,7 +97,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/node": "^12.12.61",
     "@types/shelljs": "^0.8.8",
-    "axe-core": "^3.5.5",
+    "axe-core": "^4.0.2",
     "codelyzer": "^6.0.0",
     "cpx": "^1.5.0",
     "husky": "^4.3.0",

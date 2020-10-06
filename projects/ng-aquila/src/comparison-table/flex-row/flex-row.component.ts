@@ -9,7 +9,6 @@ import { Platform } from '@angular/cdk/platform';
   templateUrl: './flex-row.component.html',
   styleUrls: ['./flex-row.component.scss'],
   host: {
-    'role': 'rowgroup',
     '[class.is-header-row]': 'row.type === "header"',
     '[class.is-footer-row]': 'row.type === "footer"',
     '[class.is-content-row]': 'row.type === "content"',
