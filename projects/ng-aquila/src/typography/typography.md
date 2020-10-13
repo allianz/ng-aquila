@@ -22,7 +22,7 @@ Use this path to import it via your angular-cli.json file:
 
 ```ts
 "styles": [
-  "@aposin/ng-aquila/css/utilities.css"
+  "node_modules/@aposin/ng-aquila/css/utilities.css"
 ]
 ```
 
