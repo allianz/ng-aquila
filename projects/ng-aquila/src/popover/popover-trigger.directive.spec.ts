@@ -46,7 +46,7 @@ describe('NxPopoverTriggerDirective', () => {
     testInstance = fixture.componentInstance;
     popoverInstance = testInstance.popoverInstance;
     triggerInstance = testInstance.triggerInstance;
-    buttonNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('button');
+    buttonNativeElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
   }
 
   beforeEach(async(() => {
@@ -252,13 +252,16 @@ describe('NxPopoverTriggerDirective', () => {
       expect(getPopoverContent()).toBeFalsy();
     }));
 
-    it('should behave correctly if closeOnClickOutside is toggled', fakeAsync(() => {
+    it('should close on backdrop click if closeOnClickOutside is set to true', fakeAsync(() => {
       createTestComponent(ClickOnDocument);
       click();
       document.dispatchEvent(new MouseEvent('click'));
       fixture.detectChanges();
       expect(getPopoverContent()).toBeFalsy();
+    }));
 
+    it('should not close on backdrop click if closeOnClickOutside is set to false', fakeAsync(() => {
+      createTestComponent(ClickOnDocument);
       (testInstance as ClickOnDocument).closable = false;
       fixture.detectChanges();
 
@@ -373,6 +376,28 @@ describe('NxPopoverTriggerDirective', () => {
       flush();
       expect(spy).toHaveBeenCalled();
       subscription.unsubscribe();
+    }));
+
+    it('should behave correctly if closeOnClickOutside is set to true', fakeAsync(() => {
+      createTestComponent(ModalPopover);
+      click();
+      const backdrop = getBackdrop();
+      backdrop.click();
+      flush();
+      expect(getPopoverContent()).toBeFalsy();
+    }));
+
+    it('should behave correctly if closeOnClickOutside is set to false', fakeAsync(() => {
+      createTestComponent(ModalPopover);
+
+      (testInstance as ClickOnDocument).closable = false;
+      fixture.detectChanges();
+
+      click();
+      const backdrop = getBackdrop();
+      backdrop.click();
+      flush();
+      expect(getPopoverContent()).toBeTruthy();
     }));
   });
 
@@ -617,15 +642,22 @@ class PopoverFallBackComponent extends PopoverTest {
 @Component({
   template: `
     <div>
-      <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click"
-      [nxPopoverCloseable]="false" [nxPopoverModal]="true">Hover
+      <button
+          [nxPopoverTriggerFor]="popoverHover"
+          nxPopoverDirection="right"
+          nxPopoverTrigger="click"
+          [nxPopoverCloseable]="false"
+          [closeOnClickOutside]="closable"
+          [nxPopoverModal]="true">Hover
       </button>
     </div>
 
     <nx-popover #popoverHover>
     </nx-popover>`
 })
-class ModalPopover extends PopoverTest { }
+class ModalPopover extends PopoverTest {
+  closable = true;
+}
 
 @Component({
   template: `

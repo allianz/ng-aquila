@@ -301,7 +301,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       this._autoFocusFirstTabbableElement(element);
 
       // attach a close click listener only if it makes sense (ignore it on hover e.g.)
-      if (this.shouldReactOnClickOutside()) {
+      if (this.closeOnClickOutside) {
         this.waitForClose();
       }
     }
@@ -319,10 +319,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         element.focus();
       }
     });
-  }
-
-  private shouldReactOnClickOutside() {
-    return (!this._modal && this.closeOnClickOutside);
   }
 
   // detaches the overlay
@@ -352,7 +348,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
       overlayState.scrollStrategy.enable();
 
-      if (this._modal && this.trigger === 'click') {
+      if (this._modal) {
         overlayState.hasBackdrop = true;
       }
 
@@ -360,7 +356,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       this.subscribeToPositions(overlayState.positionStrategy as FlexibleConnectedPositionStrategy);
       this._subscribeToAttach();
       this._subscribeToDetach();
-      if (this._modal) {
+      if (this._modal && this._closeOnClickOutside) {
         this._subscribeToBackdropClick();
       }
     }
