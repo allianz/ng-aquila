@@ -3,7 +3,8 @@
         [nxContextMenuTriggerFor]="nxvVersionSelect"
         (contextMenuOpened)="_versionSelectIsOpened = true"
         (contextMenuClosed)="_versionSelectIsOpened = false">
-  {{ formatVersion(_selected) }}
+  <span class="desktop-label">{{ formatVersion(_selected) }}</span>
+  <span class="mobile-label">{{ mobileFormatVersion(_selected) }}</span>
   <nx-icon name="chevron-down" class="nx-margin-left-2xs" [class.icon-rotated]="_versionSelectIsOpened"></nx-icon>
 </button>
 

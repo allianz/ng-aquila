@@ -2,6 +2,8 @@ import { NxvDocumentationConfig } from './../core/types';
 import { NXV_FOOTER } from './../core/tokens';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -43,6 +45,8 @@ import { CssVarSidebarModule } from './css-vars-sandbox/css-var-sandbox.module';
     NxvOverviewModule,
     NxvDocumentationPageModule,
     NxHeaderModule,
+    NxIconModule,
+    NxButtonModule,
     NxLinkModule,
     FormsModule,
     NxvVersionSelectModule,

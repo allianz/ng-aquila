@@ -3,12 +3,24 @@
 
 .nxv-status__container {
   display: flex;
-  margin-bottom: 24px;
-  margin-top: 24px;
+  margin-bottom: 32px;
+  margin-top: 8px;
+  flex-wrap: wrap;
 }
 
 .nxv-status {
   margin-right: 36px;
+  white-space: nowrap;
+  margin-top: 16px;
+
+  @media (max-width: 420px) {
+    margin-right: 24px;
+  }
+}
+
+.nxv-status-deprecated {
+  display: flex;
+  margin-top: 16px;
 }
 
 .nxv-status-text {
@@ -21,7 +33,7 @@
   margin-right: 8px;
 }
 
-.nxv-status-deprecated {
+.nxv-status-deprecated-color {
   @include var(background, documentation-deprecated-color);
   width: 24px;
   height: 24px;

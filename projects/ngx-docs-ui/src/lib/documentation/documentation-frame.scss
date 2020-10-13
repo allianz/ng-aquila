@@ -33,6 +33,10 @@ $toc-width: 200px;
     img {
       @include var(filter, documentation-svg-filter)
     }
+
+    @media (max-width: 420px) {
+      margin-right: 0;
+    }
   }
 
   figure {
@@ -55,9 +59,34 @@ $toc-width: 200px;
     display: none;
   }
 }
- .nx-mobile-navigation {
+
+.nx-header__row {
+  @media (max-width: 420px) {
+    padding: 1px 16px 0 16px;
+  }
+}
+
+.nx-header__actions {
+  @media (max-width: 420px) {
+    margin-left: 0;
+  }
+}
+
+.nx-mobile-navigation {
   @media (min-width: 786px) {
     display: none;
+  }
+
+  @media (max-width: 420px) {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex: 1 1 0;
+    }
+  
+    a {
+      margin-right: 0;
+    }
   }
 }
 
@@ -90,15 +119,16 @@ $toc-width: 200px;
     display: none;
   }
 
-// Workaround to hide the sidebar on mobile completely until we have a better solution
-  @media (max-width: 786px) {
-    display: none!important;
+  &.mobile-sidebar--visible {
+    position: absolute;
+    z-index: 1;
   }
-}
 
-::ng-deep .docs-dropdown {
-  font-weight: 200;
-  margin-right: 16px;
+  &:not(.mobile-sidebar--visible) {
+    @media (max-width: 786px) {
+      display: none!important;
+    }
+  }
 }
 
 ::ng-deep .docs-toc {
@@ -124,13 +154,12 @@ $toc-width: 200px;
   }
 }
 
-:host-context([data-whatinput="keyboard"]) ::ng-deep .docs-dropdown:focus {
-  @include focus-style;
-  border-radius: nx-border-radius(s);
-}
-
 .docs-version-select {
   margin-right: 16px;
+
+  @media (max-width: 420px) {
+    margin-right: 4px;
+  }
 }
 
 @media screen and (-ms-high-contrast: active) {

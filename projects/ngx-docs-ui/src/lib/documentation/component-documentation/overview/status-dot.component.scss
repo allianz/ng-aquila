@@ -10,13 +10,8 @@
     @include var(color, success);
   }
 
-  nx-icon.fa-clock,
   nx-icon.fa-hourglass-half {
     @include var(color, interactive-primary);
-  }
-
-  nx-icon.fa-clock {
-    font-weight: 400;
   }
 
   nx-icon.fa-minus {

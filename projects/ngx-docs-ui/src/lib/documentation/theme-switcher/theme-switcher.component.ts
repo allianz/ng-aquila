@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Theme } from './theme-switcher.service';
 
 @Component({
@@ -14,6 +15,11 @@ export class NxvThemeSwitcherComponent {
 
   @Input() selected: Theme;
   @Output() readonly selectedChange = new EventEmitter<Theme>();
+
+  constructor(private iconRegistry: NxIconRegistry) {
+    this.iconRegistry.registerFont('fa', 'fas', 'fa-');
+    this.iconRegistry.addFontIcon('fill-drip', 'fill-drip', 'fa');
+  }
 
   select(theme: Theme) {
     this.selected = theme;

@@ -160,7 +160,7 @@ For a new component:
 | category  | `components \| Expert (Alpha)`      | The category in which the component is listed.                                                |
 | b2c       | `true \| **false**`                 | Whether the component is allowed to be used in client facing applications (B2C).              |
 | expert    | `true \| **false**`                 | Whether the component is an expert option and can be used for internal applications (Expert). |
-| stable    | `done \| progress \| queue \| **na**` | Describes the stable status of the component.       
+| stable    | `done \| progress \| **na**` | Describes the stable status of the component.       
 
 Button example:
 ```

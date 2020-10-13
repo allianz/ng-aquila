@@ -10,4 +10,10 @@
       transform: rotate(-180deg);
     }
   }
+
+  @media (max-width: 703px) {
+    .label-text {
+      display: none;
+    }
+  }
 }

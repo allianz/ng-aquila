@@ -43,6 +43,17 @@ export class NxVersionSelectComponent {
     return `${channel}`;
   }
 
+  public mobileFormatVersion(channel) {
+    // Only show the version when the current one is selected.
+    // We won't know the opposite version, as we don't maintain them
+    // in both directions
+    if (this.versions && this.versions.currentChannel === channel) {
+      return `${this.versions.currentVersion}`;
+    }
+
+    return `${channel}`;
+  }
+
   public changeVersion(event) {
     const url = this.versions.channels.find(channel => channel.name === event.target.value).url;
     window.top.location.href = url;

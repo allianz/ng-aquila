@@ -1,10 +1,11 @@
-<nx-sidebar class="docs-sidebar" minWidth="240">
+<nx-sidebar class="docs-sidebar" minWidth="240"
+            [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
   <button nxAction *ngFor="let guide of availableGuides" routerLink="{{guide.id}}" routerLinkActive="is-selected" type="button">
     {{guide.title}}
   </button>
 </nx-sidebar>
 
-<main>
+<main (click)="mainContentClicked()">
   <div nxLayout="grid maxwidth" class="guide__wrapper">
     <div nxRow>
       <div nxCol="12">

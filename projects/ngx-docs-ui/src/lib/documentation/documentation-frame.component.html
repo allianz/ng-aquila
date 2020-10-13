@@ -51,6 +51,13 @@
     </nx-header-actions>
   </nx-header-row>
   <nx-header-row class="nx-mobile-navigation">
+    <button *ngIf="showMobileMenuButton"
+            nxIconButton="tertiary small"
+            class="nx-margin-bottom-0 nx-margin-right-s"
+            aria-label="open side-navigation"
+            (click)="mobileSidebar = !mobileSidebar">
+      <nx-icon name="bars"></nx-icon>
+    </button>
     <nx-header-navigation>
       <ul>
         <li>

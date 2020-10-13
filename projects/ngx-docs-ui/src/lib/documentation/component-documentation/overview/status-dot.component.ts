@@ -18,7 +18,6 @@ export class NxvStatusDotComponent {
 
   constructor(public iconRegistry: NxIconRegistry) {
     this.iconRegistry.registerFont('fa', 'fas', 'fa-');
-    this.iconRegistry.addFontIcon('docs-queue', 'clock', 'fa');
     this.iconRegistry.addFontIcon('docs-progress', 'hourglass-half', 'fa');
     this.iconRegistry.addFontIcon('docs-not-applicable', 'minus', 'fa');
   }
@@ -30,9 +29,6 @@ export class NxvStatusDotComponent {
     } else if (value === 'progress') {
       this.message = 'In progress';
       this.iconName = 'docs-progress';
-    } else if (value === 'queue') {
-      this.message = 'Work planned but not in progress';
-      this.iconName = 'docs-queue';
     } else {
       this.message = 'n/a';
       this.iconName = 'docs-not-applicable';

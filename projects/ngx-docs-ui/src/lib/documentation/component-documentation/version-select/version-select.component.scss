@@ -7,4 +7,16 @@
       transform: rotate(-180deg);
     }
   }
+
+  @media (max-width: 703px) {
+    .desktop-label {
+      display: none;
+    }
+  }
+
+  @media (min-width: 704px) {
+    .mobile-label {
+      display: none;
+    }
+  }
 }

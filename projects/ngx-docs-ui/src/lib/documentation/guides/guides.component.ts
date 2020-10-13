@@ -4,6 +4,7 @@ import { ManifestService } from '../../service/manifest.service';
 import { Manifest, GuideDescriptor } from '../../core/manifest';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DocumentationFrameComponent } from '../documentation-frame.component';
 
 @Component({
   selector: 'nxv-guides',
@@ -18,7 +19,8 @@ export class NxvGuidesComponent implements OnDestroy {
   constructor(
     private manifestService: ManifestService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public documentationFrame: DocumentationFrameComponent
   ) {
     this.guideSubscription = manifestService.manifest
       .pipe(map((manifest: Manifest) => manifest.guides)).subscribe(guides => {
@@ -33,5 +35,9 @@ export class NxvGuidesComponent implements OnDestroy {
     if (this.guideSubscription) {
       this.guideSubscription.unsubscribe();
     }
+  }
+
+  mainContentClicked() {
+    this.documentationFrame.mobileSidebar = false;
   }
 }

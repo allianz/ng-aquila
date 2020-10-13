@@ -1,4 +1,4 @@
-export type STATUS_TYPE = 'done' | 'progress' | 'queue' | 'na';
+export type STATUS_TYPE = 'done' | 'progress' | 'na';
 
 export interface Manifest {
   components: ComponentDescriptor[];

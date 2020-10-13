@@ -5,13 +5,13 @@ import { takeUntil } from 'rxjs/operators';
 
 import { ManifestService } from '../service/manifest.service';
 import { RabbitHole } from './rabbit-hole.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
-import cssVars from 'css-vars-ponyfill';
 import { Egg } from './egg';
 import { NX_DOCS_LOGO_PATH, NX_DOCS_GITHUB_LINK } from '../core/tokens';
 import { LogoPath, GithubLinkConfig } from '../core/types';
+import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 export class NxDocFeatures {
   themeSwitcher = false;
@@ -32,9 +32,13 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   themes: Theme[];
   private _ponyFillIsRunning = false;
 
+  mobileSidebar: boolean = false;
+
   showThemingSwitcher = false;
   // TODO: set this according to the calling application (injection token?), always there right now
   showThemingSidebar = false;
+
+  showMobileMenuButton: boolean = false;
 
    @ViewChild(CssVarSidebarComponent) cssVarSidebar: CssVarSidebarComponent;
 
@@ -42,10 +46,14 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     public manifestService: ManifestService,
     private _rabbitHole: RabbitHole,
     private _route: ActivatedRoute,
+    private _router: Router,
     private _themeSwitcherService: ThemeSwitcherService,
+    private iconRegistry: NxIconRegistry,
     @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures,
     @Inject(NX_DOCS_LOGO_PATH) public logoPath: LogoPath,
-    @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig) {
+    @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig
+  ) {
+
     this.themes = this._themeSwitcherService.themes();
     this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
 
@@ -83,6 +91,20 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
       this.selectedTheme = theme;
       if (this.cssVarSidebar) {
         this.cssVarSidebar.reset();
+      }
+    });
+
+    this.iconRegistry.registerFont('fa', 'fas', 'fa-');
+    this.iconRegistry.addFontIcon('bars', 'bars', 'fa');
+
+    this._router.events.forEach((event) => {
+      // hide the mobile sidebar every time the route changes
+      if (event instanceof NavigationStart) {
+        this.mobileSidebar = false;
+      }
+      // show the mobile menu button only when a documenation or a guide page is shown
+      if (event instanceof NavigationEnd) {
+        this.showMobileMenuButton = (this._router.url.match(/^\/documentation|guides\//)) ? true : false;
       }
     });
   }
