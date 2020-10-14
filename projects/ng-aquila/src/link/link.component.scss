@@ -140,6 +140,16 @@
   }
 }
 
+:host.nx-link--icon-only ::ng-deep {
+  .c-icon, nx-icon.nx-link__icon {
+    margin-right: 0;
+
+    [dir="rtl"] & {
+      margin-left: 0;
+    }
+  }
+}
+
 // disabled
 :host::ng-deep a[disabled],
 :host::ng-deep a[aria-disabled] {

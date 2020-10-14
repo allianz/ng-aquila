@@ -19,7 +19,8 @@ const MAPPING = {
   'black': 'nx-link--black',
   'negative': 'nx-link--negative',
   'text': 'nx-link--text',
-  'icon-right': 'nx-link--icon-right'
+  'icon-right': 'nx-link--icon-right',
+  'icon-only': 'nx-link--icon-only',
 };
 
 const DEFAULT_CLASSES = [ 'nx-link' ];
@@ -45,7 +46,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit {
   /**
    * Sets the style of the link, thereby altering the visual appearance.
    *
-   * You can use any combination of 'black', 'icon-right', 'negative' or 'text'
+   * You can use any combination of 'black', 'icon-right', 'icon-only', 'negative' or 'text'
    */
   classNames;
 
