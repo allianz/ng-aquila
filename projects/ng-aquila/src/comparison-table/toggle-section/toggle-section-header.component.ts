@@ -51,9 +51,4 @@ export class NxToggleSectionHeaderComponent {
       }
     }
   }
-
-  _getColspan() {
-    return this._toggleSection._numberOfRows();
-  }
-
 }

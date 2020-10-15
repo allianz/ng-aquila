@@ -143,6 +143,7 @@ describe('ToggleSectionHeaderComponent', () => {
       expect(headerElements[0].attributes['role']).toBe('row');
       const wrapper = headerElements[0].nativeElement.querySelector('.nx-comparison-table-toggle-section__header-wrapper') as HTMLElement;
       expect(wrapper.getAttribute('role')).toBe('columnheader');
+      expect(wrapper.getAttribute('aria-colspan')).toBe('2');
     }));
 
     it('should have set the correct roles / scopes (mobile)', fakeAsync(() => {
@@ -155,6 +156,7 @@ describe('ToggleSectionHeaderComponent', () => {
       mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
       expect(mobileHeaderElements[0].attributes['role']).toBeUndefined();
       expect(mobileHeaderElements[0].attributes['scope']).toBe('col');
+      expect(mobileHeaderElements[0].attributes['colspan']).toBe('1');
     }));
 
     it('should have set the correct aria-expanded (desktop)', () => {
