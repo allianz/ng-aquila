@@ -31,6 +31,10 @@ $action-bar-height: nx-spacer(2xl);
     margin: 0 nx-spacer(2xs);
     padding: nx-spacer(3m) nx-spacer(2m) nx-spacer(4m) nx-spacer(2m);
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: nx-border-size(m) solid windowText;
+  }
 }
 
 ::ng-deep .nx-modal__content {
