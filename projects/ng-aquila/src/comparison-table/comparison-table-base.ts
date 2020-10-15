@@ -15,7 +15,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
   selectedIndexChange: EventEmitter<number>;
   _disabledIndexes: number[] = [];
-  selectedIndex: number;
+  abstract selectedIndex: number;
   _destroyed: Subject<void> = new Subject();
 
   _stickyPlaceholder = false;

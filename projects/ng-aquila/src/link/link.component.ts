@@ -25,6 +25,10 @@ const MAPPING = {
 
 const DEFAULT_CLASSES = [ 'nx-link' ];
 
+/**
+ * `Input('nxStyle') classNames` sets the style of the link, thereby altering the visual appearance.
+ * You can use any combination of 'black', 'icon-right', 'icon-only', 'negative' or 'text'.
+ */
 @Component({
   selector: 'nx-link',
   styleUrls: [ './link.component.scss' ],
@@ -42,13 +46,6 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit {
 
   /** @docs-private */
   @ContentChild(NxIconComponent) icon: NxIconComponent;
-
-  /**
-   * Sets the style of the link, thereby altering the visual appearance.
-   *
-   * You can use any combination of 'black', 'icon-right', 'icon-only', 'negative' or 'text'
-   */
-  classNames;
 
   /** Sets the size of the link. Default: 'small'. */
   @Input()

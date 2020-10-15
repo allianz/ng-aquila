@@ -1,12 +1,11 @@
 import {
   ArrayLiteralExpression,
   CallExpression,
-  isCallExpression,
   NodeArray,
   ObjectLiteralExpression,
   PropertyAssignment,
   StringLiteral,
-  SyntaxKind,
+  SyntaxKind
 } from 'typescript';
 
 import { CategorizedClassDoc } from './dgeni-definitions';
@@ -34,8 +33,8 @@ export function getDirectiveMetadata(classDoc: CategorizedClassDoc): Map<string,
   }
 
   const expression = declaration.decorators
-    .filter(decorator => decorator.expression && isCallExpression(decorator.expression))
-    .map(decorator => decorator.expression as CallExpression)
+    .filter(decorator => decorator.expression)
+    .map(decorator => decorator.expression as any as CallExpression)
     .find(callExpression => callExpression.expression.getText() === 'Component' ||
                             callExpression.expression.getText() === 'Directive');
 

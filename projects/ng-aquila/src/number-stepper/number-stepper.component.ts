@@ -43,6 +43,10 @@ const CUSTOM_VALIDATOR = {
 
 let nextUniqueId = 0;
 
+/**
+ * `Input('nxSize') classNames` defines the size of the number stepper.
+ * Values: big | normal. Default: normal
+ */
 @Component({
   selector: 'nx-number-stepper',
   templateUrl: 'number-stepper.component.html',
@@ -73,13 +77,6 @@ export class NxNumberStepperComponent extends MappedStyles
 
   /** @docs-private */
   numberInputValue: string;
-
-  /**
-   * Defines the size of the number stepper.
-   *
-   * Values: big | normal. Default: normal
-   */
-  classNames: string;
 
   /** @docs-private */
   public inputClassNames: string = mapClassNames(

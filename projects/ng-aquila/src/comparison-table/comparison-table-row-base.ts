@@ -12,7 +12,7 @@ export abstract class NxComparisonTableRowBase {
   cells: QueryList<NxComparisonTableCell>;
   descriptionCell: NxComparisonTableDescriptionCell;
   popularCell?: NxComparisonTablePopularCell;
-  type: NxComparisonTableRowType;
+  abstract type: NxComparisonTableRowType;
   abstract _isPartOfToggleSection(): boolean;
   abstract _isPartOfRowGroup(): boolean;
   abstract _isIntersectionRow(): boolean;

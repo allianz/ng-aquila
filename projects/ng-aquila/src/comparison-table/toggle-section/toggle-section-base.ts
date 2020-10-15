@@ -6,7 +6,7 @@ import { NxToggleSectionHeaderComponent } from './toggle-section-header.componen
 export abstract class NxToggleSectionBase {
 
   /** Whether the toggle section is expanded. */
-  isExpanded: boolean;
+  abstract isExpanded: boolean;
 
   toggleSectionHeader: NxToggleSectionHeaderComponent;
   /** @docs-private */

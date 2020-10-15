@@ -24,7 +24,6 @@ import {
   NgControl,
   NgForm
 } from '@angular/forms';
-import { SelectableCard } from './selectable-card';
 import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 
@@ -35,7 +34,6 @@ let nextId = 0;
   templateUrl: './selectable-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./selectable-card.component.scss'],
-  providers: [{provide: SelectableCard, useExisting: forwardRef(() => NxSelectableCardComponent)}],
   host: {
     '[class.is-checked]': 'checked',
     '[class.is-disabled]': 'disabled',
@@ -46,7 +44,7 @@ let nextId = 0;
   }
 })
 
-export class NxSelectableCardComponent extends SelectableCard implements ControlValueAccessor, DoCheck, AfterContentInit {
+export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit {
   private _id: string = (nextId++).toString();
   private _checked = false;
   private _disabled: boolean = false;
@@ -187,8 +185,6 @@ export class NxSelectableCardComponent extends SelectableCard implements Control
               @Optional() private _parentForm: NgForm,
               @Optional() private _parentFormGroup: FormGroupDirective
   ) {
-    super();
-
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
       // the `providers` to avoid running into a circular import.

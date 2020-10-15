@@ -13,7 +13,7 @@ import {
   SkipSelf,
   OnDestroy,
   ElementRef,
-  ChangeDetectorRef
+  ChangeDetectorRef, OnChanges
 } from '@angular/core';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
@@ -35,49 +35,23 @@ import { Directionality } from '@angular/cdk/bidi';
   preserveWhitespaces: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnDestroy {
+export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
   _destroyed: Subject<boolean> = new Subject();
 
   constructor(
       @Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective,
       @SkipSelf() private _errorStateMatcher: ErrorStateMatcher) {
     super(stepper);
+
+    this.interacted = false;
   }
 
-  set stepControl(value: any) {
-    this._stepControl = value;
-
-    // If a step control changes its state, the stepper needs to update.
-    if (this._stepControl) {
-      this._stepControl.statusChanges
-        .pipe(
-          takeUntil(this._destroyed),
-          takeWhile(() => this._stepControl === value)
-        )
-        .subscribe(() => {
-          this.stepper._stateChanged();
-        });
-    }
-  }
-  /** The top level abstract control of the step. */
-  get stepControl() {
-    return this._stepControl;
-  }
   private _stepControl: any;
 
-  set interacted(value: boolean) {
-    this._interacted = value;
+  /** The top level abstract control of the step. */
+  stepControl: any;
 
-    if (this.stepper) {
-      this.stepper._stateChanged();
-    }
-  }
-
-  /** Whether the user has seen the expanded step content or not. */
-  get interacted(): boolean {
-    return this._interacted;
-  }
-  private _interacted: boolean = false;
+  private _interacted: boolean;
 
   /** Custom error state matcher that checks for validity of the step form. */
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -87,6 +61,35 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnDes
     // e.g when the user directly clicks the "next" button or directly on the step
     const customErrorState = !!(control && control.invalid && this.interacted);
     return originalErrorState || customErrorState;
+  }
+
+  ngOnChanges() {
+    // We can't use the `changes: SimpleChanges` as a parameter here
+    // because CdkStep only defines the ngOnChanges() method.
+    super.ngOnChanges();
+
+    if (this.stepControl !== this._stepControl) {
+      this._stepControl = this.stepControl;
+
+      // If a step control changes its state, the stepper needs to update.
+      if (this._stepControl) {
+        this._stepControl.statusChanges
+          .pipe(
+            takeUntil(this._destroyed),
+            takeWhile(() => this._stepControl === this.stepControl)
+          )
+          .subscribe(() => {
+            this.stepper._stateChanged();
+          });
+      }
+    }
+
+    if (this.interacted !== this._interacted) {
+      this._interacted = this.interacted;
+      if (this.stepper) {
+        this.stepper._stateChanged();
+      }
+    }
   }
 
   ngOnDestroy() {

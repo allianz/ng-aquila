@@ -96,7 +96,7 @@ function getPositions(): ConnectionPositionPair[] {
     '(click)': 'openPanel()'
   }
 })
-export class NxDropdownComponent extends NxDropdownControl implements ControlValueAccessor,
+export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor,
   OnInit, AfterContentInit, OnDestroy, DoCheck {
 
   // The dropdown currently doesn't support readonly of the NxFormfieldControl so we hardcode it here
@@ -182,6 +182,17 @@ export class NxDropdownComponent extends NxDropdownControl implements ControlVal
   }
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value);
+  }
+
+  /**
+   * Whether the dropdown should allow multi selection and additional checkboxes are shown.
+   *
+   * Note: Please make sure the value you bind is an array. If not an error is thrown! */
+  @Input('nxIsMultiselect') isMultiSelect: boolean = false;
+
+  /** The id of the input. */
+  get id() {
+    return this.renderedValueId;
   }
 
   /** Whether the component is required. This adds an aria-required label to the component. */
@@ -430,7 +441,6 @@ export class NxDropdownComponent extends NxDropdownControl implements ControlVal
     @Optional() private _parentForm: NgForm,
     @Optional() private _parentFormGroup: FormGroupDirective,
     @Optional() private _dir: Directionality) {
-    super();
 
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
