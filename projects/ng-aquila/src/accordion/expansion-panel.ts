@@ -26,7 +26,7 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 let nextId = 0;
 
 /** The styling of the accordion. */
-export type AccordionStyle = 'regular' | 'light';
+export type AccordionStyle = 'regular' | 'light' | 'extra-light';
 const DEFAULT_TYPE = 'regular';
 
 @Component({
@@ -40,6 +40,7 @@ const DEFAULT_TYPE = 'regular';
     '[class.nx-expanded]': 'expanded',
     '[class.nx-expansion-panel--light]': '_accordionStyle === "light"',
     '[class.nx-expansion-panel--regular]': '_accordionStyle === "regular"',
+    '[class.nx-expansion-panel--extra-light]': '_accordionStyle === "extra-light"',
     '[class.nx-expansion-panel--negative]': 'negative',
     '[class.is-disabled]': 'disabled',
   },
@@ -69,7 +70,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
   set style(value: AccordionStyle) {
     value = value ? value : DEFAULT_TYPE;
 
-    const [newValue] = value.match(/regular|light/) || [DEFAULT_TYPE];
+    const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
     this._style = newValue as AccordionStyle;
     this._accordionStyle = newValue as AccordionStyle;
   }

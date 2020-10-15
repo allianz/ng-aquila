@@ -134,6 +134,53 @@ $mobile-header-padding: nx-spacer(s);
   }
 }
 
+// extra light
+:host-context(.nx-expansion-panel--extra-light) {
+  .nx-expansion-panel__header-content {
+    padding: 0;
+    margin-top: 0;
+    background: transparent;
+    justify-content: flex-start;
+    width: max-content;
+    max-width: 100%;
+    @include var(color, accordion-extra-light-header-text-color);
+
+    border-radius: 4px;     // get a focus style with round edges
+  }
+
+  .nx-expansion-panel__chevron {
+    @include var(color, accordion-extra-light-chevron-color);
+  }
+
+  ::ng-deep .nx-expansion-panel__header-title {
+    @include type-style(accordion-extra-light);
+    margin-right: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+:host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
+  .nx-expansion-panel__header-content {
+    @include var(color, negative);
+  }
+
+  .nx-expansion-panel__chevron {
+    @include var(color, negative);
+  }
+
+  &.is-disabled {
+    .nx-expansion-panel__header-content {
+      @include var(color, negative-dimmed);
+    }
+  
+    .nx-expansion-panel__chevron {
+      @include var(color, negative-dimmed);
+    }
+  }
+}
+
 // disabled styles
 :host.is-disabled.is-disabled {
   .nx-expansion-panel__chevron, .nx-expansion-panel__header-content {
@@ -161,7 +208,9 @@ $mobile-header-padding: nx-spacer(s);
 
   :host-context(.nx-expansion-panel--regular):not(.is-disabled),
   :host-context(.nx-expansion-panel--light:not(.nx-expansion-panel--negative)),
-  :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative) {
+  :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative),
+  :host-context(.nx-expansion-panel--extra-light),
+  :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
 
     .nx-expansion-panel__header-content,
     &:not(.is-disabled) .nx-expansion-panel__header-content:hover {

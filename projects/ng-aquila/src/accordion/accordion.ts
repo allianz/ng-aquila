@@ -25,7 +25,7 @@ export class NxAccordionDirective extends CdkAccordion {
   set style(value: AccordionStyle) {
     value = value ? value : DEFAULT_TYPE;
 
-    const [newValue] = value.match(/regular|light/) || [DEFAULT_TYPE];
+    const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
     this._style = newValue as AccordionStyle;
   }
   get style(): AccordionStyle {

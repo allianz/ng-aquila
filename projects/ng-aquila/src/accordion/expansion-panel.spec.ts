@@ -20,8 +20,8 @@ describe('NxExpansionPanelComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     panelInstance = testInstance.panel;
-    panelNativeElement = <HTMLElement>fixture.nativeElement.querySelector('nx-expansion-panel');
-    headerNativeElement = <HTMLElement>fixture.nativeElement.querySelector('nx-expansion-panel-header');
+    panelNativeElement = (fixture.nativeElement.querySelector('nx-expansion-panel') as HTMLElement);
+    headerNativeElement = (fixture.nativeElement.querySelector('nx-expansion-panel-header') as HTMLElement);
   }
 
   beforeEach(async(() => {
@@ -38,7 +38,7 @@ describe('NxExpansionPanelComponent', () => {
         LazyPanelOpenOnLoad,
         PanelWithTwoWayBinding,
         PanelWithDifferentAppearances,
-        PanelWithAccordeon
+        PanelWithAccordion
       ],
     });
     TestBed.compileComponents();
@@ -250,6 +250,18 @@ describe('NxExpansionPanelComponent', () => {
       expect(panelNativeElement.classList).toContain('nx-expansion-panel--light');
     });
 
+    it('should set extra-light style', () => {
+      createTestComponent(PanelWithDifferentAppearances);
+      expect(panelNativeElement.classList).not.toContain('nx-expansion-panel--extra-light');
+
+      const instance = (testInstance as PanelWithDifferentAppearances);
+      instance.style = 'extra-light';
+
+      fixture.detectChanges();
+
+      expect(panelNativeElement.classList).toContain('nx-expansion-panel--extra-light');
+    });
+
     it('should set regular style', () => {
       createTestComponent(PanelWithDifferentAppearances);
       const instance = (testInstance as PanelWithDifferentAppearances);
@@ -273,12 +285,12 @@ describe('NxExpansionPanelComponent', () => {
     });
 
     it('should inherit negative flag from parent accordion', () => {
-      createTestComponent(PanelWithAccordeon);
+      createTestComponent(PanelWithAccordion);
       expect(panelNativeElement.classList).toContain('nx-expansion-panel--negative');
     });
 
     it('should prefer own negative flag', () => {
-      createTestComponent(PanelWithAccordeon);
+      createTestComponent(PanelWithAccordion);
       expect(panelNativeElement.classList).toContain('nx-expansion-panel--negative');
 
       const secondPanel = fixture.debugElement.query(By.css('nx-expansion-panel:nth-child(2)')).nativeElement;
@@ -286,13 +298,12 @@ describe('NxExpansionPanelComponent', () => {
     });
 
     it('should inherit style from parent accordion', () => {
-      createTestComponent(PanelWithAccordeon);
+      createTestComponent(PanelWithAccordion);
       expect(panelNativeElement.classList).toContain('nx-expansion-panel--light');
 
       const secondPanel = fixture.debugElement.query(By.css('nx-expansion-panel:nth-child(2)')).nativeElement;
       expect(secondPanel.classList).toContain('nx-expansion-panel--regular');
     });
-
   });
 
   describe('disabled state', () => {
@@ -450,5 +461,5 @@ class PanelWithDifferentAppearances extends PanelTest {
     </nx-expansion-panel>
   <nx-accordion>`
 })
-class PanelWithAccordeon extends PanelTest {
+class PanelWithAccordion extends PanelTest {
 }

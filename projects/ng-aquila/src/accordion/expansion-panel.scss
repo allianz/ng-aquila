@@ -134,6 +134,16 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
   }
 }
 
+:host(.nx-expansion-panel--extra-light) {
+  &:not(:first-child) {
+    @include var(margin-top, accordion-extra-light-header-top-margin);
+  }
+
+  .nx-expansion-panel__body {
+    @include var(padding, accordion-extra-light-body-padding);
+  }
+}
+
 @media screen and (-ms-high-contrast: active) {
   :host {
     border-color: windowText;
