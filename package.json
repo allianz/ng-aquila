@@ -40,14 +40,20 @@
     }
   },
   "lint-staged": {
-    "projects/ng-aquila/src/**/*.ts": [
-      "tslint -c projects//ng-aquila/tslint.json --fix"
+    "projects/ng-aquila/src/**/*(!spec).ts": [
+      "tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.lib.json --fix"
+    ],
+    "projects/ng-aquila/src/**/*.spec.ts": [
+      "tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.spec.json --fix"
+    ],
+    "projects/ngx-docs-ui/src/**/*(!spec).ts": [
+      "tslint -c projects/ngx-docs-ui/tslint.json -p projects/ngx-docs-ui/tsconfig.lib.json --fix"
     ],
     "projects/ngx-docs-ui/src/**/*.ts": [
-      "tslint -c projects/ngx-docs-ui/tslint.json --fix"
+      "tslint -c projects/ngx-docs-ui/tslint.json -p projects/ngx-docs-ui/tsconfig.spec.json --fix"
     ],
     "projects/opensource-documentation/**/*.ts": [
-      "tslint -c projects//opensource-documentation/tslint.json --fix"
+      "tslint -c projects/opensource-documentation/tslint.json -p projects/opensource-documentation/tsconfig.app.json --fix"
     ],
     "*.scss": "npm run lint:scss"
   },

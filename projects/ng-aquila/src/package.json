@@ -11,6 +11,7 @@
     "@angular/common": "^10.0.0",
     "@angular/cdk": "^10.0.0",
     "@angular/animations": "^10.0.0",
+    "@angular/router": "^10.0.0",
     "moment": "^2.22.2",
     "object-fit-images": "^3.2.3",
     "what-input": "^5.1.2",

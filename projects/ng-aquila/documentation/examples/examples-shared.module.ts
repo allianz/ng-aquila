@@ -64,6 +64,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
+import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 
 // Collect all imports and exports here
 // Note: when you have to call .forRoot() or .forChild() in imports you have to add it separately from
@@ -102,6 +103,7 @@ const EXPORTED_MODULES = [
   NxMomentDateModule,
   NxNaturalLanguageFormModule,
   NxNumberStepperModule,
+  NxOverlayModule,
   NxPaginationModule,
   NxPageSearchModule,
   NxPopoverModule,
