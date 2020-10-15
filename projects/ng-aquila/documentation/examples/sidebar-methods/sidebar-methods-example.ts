@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
   templateUrl: './sidebar-methods-example.html'
 })
 export class SidebarMethodsExampleComponent {
+  expandedWidth: number = 350;
+
   actions = [
     {
       icon: 'file-text',

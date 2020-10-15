@@ -81,7 +81,7 @@ export class NxSidebarComponent implements OnDestroy, OnInit {
   }
   private _open: boolean = true;
 
-  /** This sets the width of the sidebar. */
+  /** This sets the width of the sidebar in an expanded state. */
   set width(value: number) {
     const newValue = Math.max(value, this.minWidth);
 
@@ -134,8 +134,11 @@ export class NxSidebarComponent implements OnDestroy, OnInit {
   }
 
   /** This will expand the sidebar to its full width. */
-  expand() {
+  expand(expandedWidth: number = null) {
     this.open = true;
+    if (expandedWidth) {
+      this.width = expandedWidth;
+    }
   }
 
   /** This will close the sidebar to its minimal width. */
@@ -143,7 +146,7 @@ export class NxSidebarComponent implements OnDestroy, OnInit {
     this.open = false;
   }
 
-  /** This will close or expand the sidebar depending if its expanded or closed. */
+  /** This will close or expand the sidebar depending if it is expanded or closed. */
   toggle() {
     if (this.open) {
       this.close();

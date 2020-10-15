@@ -26,7 +26,9 @@ The default width of `280px` can be overwritten by your own css like in the foll
 A `<nx-sidebar>` can be resized by dragging the right edge when the option `resizeable` is set.
 <!-- example(sidebar-resizeable) -->
 
-A `<nx-sidebar>` can be expanded or closed using the expand(), close() and toggle() methods.
+A `<nx-sidebar>` can be expanded or closed using the `expand()`, `close()` and `toggle()` methods.
+
+If you have to reinit the default width in an expanded state, you can call `expand(width)` with the new width as parameter or directly set the `width` of the sidebar.
 
 <!-- example(sidebar-methods) -->
 

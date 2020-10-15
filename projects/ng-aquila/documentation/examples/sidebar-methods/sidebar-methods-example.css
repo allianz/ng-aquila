@@ -12,6 +12,11 @@ main {
   flex-direction: column;
 }
 
-button {
-  margin: 16px;
+.resize-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+nx-formfield {
+  width: 100px;
 }

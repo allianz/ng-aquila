@@ -97,6 +97,12 @@ describe('NxSidebarComponent', () => {
     it('should not render the resize handle', () => {
       expect(sidebarElement.nativeElement.querySelector('.nx-sidebar__handle')).toBeNull();
     });
+
+    it('expands to a certain width when expand() is called with a parameter', () => {
+      sidebarInstance.expand(350);
+      fixture.detectChanges();
+      expect(sidebarElement.nativeElement.style.width).toBe(`350px`);
+    });
   });
 
   describe('resizeable', () => {
