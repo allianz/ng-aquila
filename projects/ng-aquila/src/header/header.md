@@ -16,7 +16,7 @@ It usually contains a brand logo, navigation links and other actions like a user
 
 
 The header provides a layout consisting of three sections, `<nx-header-brand>`, `<nx-header-navigation>` and `<nx-header-actions>`.
-The `<nx-header-brand>` is thr first section from the left and contains the applications/brands logo.
+The `<nx-header-brand>` is the first section from the left and contains the applications/brands logo.
 
 
 Next there is a `<nx-header-navigation>` section that can contain navigation links. The styling of the individual navigation links is provided by the `nxHeaderLink` directive.

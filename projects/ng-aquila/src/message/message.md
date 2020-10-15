@@ -42,7 +42,7 @@ A `(close)` event is emitted when the user clicks on the close icon.
 
 When using a closable message please set an `aria-label` on the close button via the `closeButtonLabel` property. If you don't set the `aria-label` explicitly it will have **'Close dialog'** as default value. As the default is in English, in almost all cases you should explicitly set the label.
 
-When displaying notificaions we recommend that you use `aria-live` combined with the [LiveAnnouncer](https://material.angular.io/cdk/a11y/api) in order to be accessibility compliant.
+When displaying notifications we recommend that you use `aria-live` combined with the [LiveAnnouncer](https://material.angular.io/cdk/a11y/api) in order to be accessibility compliant.
 
 <!-- example(message-closable) -->
 

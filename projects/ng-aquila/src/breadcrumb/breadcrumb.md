@@ -21,4 +21,4 @@ You can see the basic behaviour of the breadcrumb component in the example below
 
 
 ### Accessibility
-Note that the breadcrumb component should be always applied on a `<ol>` tag and wrapped in a `<nav>` with `aria-label='Breadcrumb'`. The breadcrumb items should be on a `<a>` tag and wrapped in `<li>`. The currently active item is automatically marked with `aria-current='page'`. These best practices for breadcrum are already applied in the basic example above. You can find further information on the breadcrumb a11y practices [here](https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html).
+Note that the breadcrumb component should be always applied on a `<ol>` tag and wrapped in a `<nav>` with `aria-label='Breadcrumb'`. The breadcrumb items should be on a `<a>` tag and wrapped in `<li>`. The currently active item is automatically marked with `aria-current='page'`. These best practices for breadcrumbs are already applied in the basic example above. You can find further information on the breadcrumb a11y practices [here](https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html).

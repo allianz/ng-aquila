@@ -14,7 +14,7 @@ stable: done
 This is a collapsible menu. It is designed to be a replacement for the top level navigation in the header and the sidebar on small screens (mobile and tablet if necessary).
 The menu consists of a wrapper `<nx-menu>` component that handles the collapsing and positioning of the menu content.
 A common `<nx-menu>` contains a set of `[nxMenuItem]`,`[nxMenuButton]` and `[nxMenuLink]`.
-The content of the menu is not resticted to those elements.
+The content of the menu is not restricted to those elements.
 
 ## Menu Button
 

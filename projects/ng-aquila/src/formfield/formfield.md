@@ -28,7 +28,7 @@ You can't use the formfield without a matching input. A matching input fulfills 
 ### Simple Form
 This form will show a validation error as both fields are required and one fields uses the appendix slot to display an info [`<nx-icon>`](./documentation/icon/overview) together with a popover.
 
-The formfield width depends only on the grid column it is placed in and exapands until it has taken 100% of the width.
+The formfield width depends only on the grid column it is placed in and expands until it has taken 100% of the width.
 
 **Note:** You have to include NxPopoverModule to run this example. See [NxPopover](./documentation/popover/overview) for details.
 

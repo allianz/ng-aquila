@@ -77,7 +77,7 @@ The example below shows an **error while the user is typing (dirty)** and not un
 <!-- example(error-custom-matcher-formfield) -->
 
 ### Global custom ErrorStateMatcher
-You can also set a custom error matching behaviour globally by defnining yout custom error state matcher:
+You can also set a custom error matching behaviour globally by defining your custom error state matcher:
 
 ```ts
 @Injectable()
