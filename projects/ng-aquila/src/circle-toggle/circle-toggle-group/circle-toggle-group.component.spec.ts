@@ -7,68 +7,69 @@ import { By } from '@angular/platform-browser';
 import { NxCircleToggleGroupComponent } from './circle-toggle-group.component';
 
 describe('NxToggleButtonGroup', () => {
-    let fixture: ComponentFixture<ButtonToggleGroupTest>;
-    let testInstance: ButtonToggleGroupTest;
-    let toggleComponent: NxCircleToggleGroupComponent;
-    let toggleInputs: NodeListOf<HTMLInputElement>;
-    let toggleButtons: NodeListOf<HTMLElement>;
-    let toggleNativeElement: HTMLElement;
+  let fixture: ComponentFixture<ButtonToggleGroupTest>;
+  let testInstance: ButtonToggleGroupTest;
+  let toggleComponent: NxCircleToggleGroupComponent;
+  let toggleInputs: NodeListOf<HTMLInputElement>;
+  let toggleButtons: NodeListOf<HTMLElement>;
+  let toggleNativeElement: HTMLElement;
 
-    function createTestComponent(component: Type<ButtonToggleGroupTest>) {
-      fixture = TestBed.createComponent(component);
-      fixture.detectChanges();
-      testInstance = fixture.componentInstance;
+  function createTestComponent(component: Type<ButtonToggleGroupTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
 
-      toggleComponent = fixture.componentInstance.buttonToggleGroup;
-      toggleInputs = fixture.nativeElement.querySelectorAll('input');
-      toggleButtons = fixture.nativeElement.querySelectorAll('nx-circle-toggle');
-      const toggleDebugElement = fixture.debugElement.query(By.directive(NxCircleToggleGroupComponent));
-      toggleNativeElement = toggleDebugElement.nativeElement;
-    }
+    toggleComponent = fixture.componentInstance.buttonToggleGroup;
+    toggleInputs = fixture.nativeElement.querySelectorAll('input');
+    toggleButtons = fixture.nativeElement.querySelectorAll('nx-circle-toggle');
+    const toggleDebugElement = fixture.debugElement.query(By.directive(NxCircleToggleGroupComponent));
+    toggleNativeElement = toggleDebugElement.nativeElement;
+  }
 
-    function click(index: number) {
-      toggleInputs.item(index).click();
-      fixture.detectChanges();
-    }
+  function click(index: number) {
+    toggleInputs.item(index).click();
+    fixture.detectChanges();
+  }
 
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SimpleCircleToggleGroupComponent,
-          NgModelCircleToggleGroupComponent,
-          ReactiveCircleToggleGroupComponent,
-          NgForCircleToggleGroupComponent,
-          DisabledCircleToggleGroupComponent,
-          CircleToggleOnPushComponent,
-          EmptyToggleOnPushComponent
-        ],
-        imports: [
-          NxCircleToggleModule, FormsModule, ReactiveFormsModule
-        ]
-      }).compileComponents();
-    }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SimpleCircleToggleGroupComponent,
+        NgModelCircleToggleGroupComponent,
+        ReactiveCircleToggleGroupComponent,
+        NgForCircleToggleGroupComponent,
+        DisabledCircleToggleGroupComponent,
+        CircleToggleOnPushComponent,
+        EmptyToggleOnPushComponent,
+        CircleToggleGroupWithDivComponent
+      ],
+      imports: [
+        NxCircleToggleModule, FormsModule, ReactiveFormsModule
+      ]
+    }).compileComponents();
+  }));
 
-    it('should not allow more than one button to be checked at once', () => {
-        createTestComponent(SimpleCircleToggleGroupComponent);
-
-        click(0);
-        expect(toggleInputs.item(0).checked).toBeTruthy();
-        expect(toggleInputs.item(1).checked).toBeFalsy();
-        expect(toggleInputs.item(2).checked).toBeFalsy();
-
-        click(1);
-        expect(toggleInputs.item(0).checked).toBeFalsy();
-        expect(toggleInputs.item(1).checked).toBeTruthy();
-        expect(toggleInputs.item(2).checked).toBeFalsy();
-    });
-
-    it('should fire group change events with the correct value', () => {
+  it('should not allow more than one button to be checked at once', () => {
       createTestComponent(SimpleCircleToggleGroupComponent);
-      spyOn(toggleComponent.valueChange, 'emit');
-      click(0);
 
-      expect(toggleComponent.valueChange.emit).toHaveBeenCalledWith('A');
-    });
+      click(0);
+      expect(toggleInputs.item(0).checked).toBeTruthy();
+      expect(toggleInputs.item(1).checked).toBeFalsy();
+      expect(toggleInputs.item(2).checked).toBeFalsy();
+
+      click(1);
+      expect(toggleInputs.item(0).checked).toBeFalsy();
+      expect(toggleInputs.item(1).checked).toBeTruthy();
+      expect(toggleInputs.item(2).checked).toBeFalsy();
+  });
+
+  it('should fire group change events with the correct value', () => {
+    createTestComponent(SimpleCircleToggleGroupComponent);
+    spyOn(toggleComponent.valueChange, 'emit');
+    click(0);
+
+    expect(toggleComponent.valueChange.emit).toHaveBeenCalledWith('A');
+  });
 
   it('should work with ngModel', fakeAsync(() => {
     createTestComponent(NgModelCircleToggleGroupComponent);
@@ -106,7 +107,6 @@ describe('NxToggleButtonGroup', () => {
 
     expect(toggleComponent.buttons.toArray()[0].value).toBe(ngForComp.testButtons[0].value);
     expect(toggleComponent.buttons.toArray()[1].value).toBe(ngForComp.testButtons[1].value);
-
   });
 
   it('should project the label and hint correctly into the view', () => {
@@ -131,7 +131,6 @@ describe('NxToggleButtonGroup', () => {
 
   it('should assign the same name to all child toggles', () => {
     createTestComponent(SimpleCircleToggleGroupComponent);
-
     expect(toggleInputs.item(0).name).toBe(toggleInputs.item(1).name);
   });
 
@@ -158,6 +157,11 @@ describe('NxToggleButtonGroup', () => {
     toggleComponent.value = 'B';
     fixture.detectChanges();
     expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button').classList.contains('is-flipped')).toBe(true);
+  });
+
+  it('recognizes descendants', () => {
+    createTestComponent(CircleToggleGroupWithDivComponent);
+    expect(toggleComponent.buttons.length).toBe(3);
   });
 
   describe('programmatic change', () => {
@@ -228,8 +232,7 @@ abstract class ButtonToggleGroupTest {
     </nx-circle-toggle-group>
   `
 })
-class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {
-}
+class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
   template: `
@@ -241,8 +244,7 @@ class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-class CircleToggleOnPushComponent extends ButtonToggleGroupTest {
-}
+class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
 
 @Component({
   template: `
@@ -251,8 +253,7 @@ class CircleToggleOnPushComponent extends ButtonToggleGroupTest {
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {
-}
+class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}
 
 @Component({
   template: `
@@ -262,10 +263,8 @@ class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {
       <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
     </nx-circle-toggle-group>
   `
-},
-)
-class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {
-}
+})
+class NgModelCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 
 @Component({
   template: `
@@ -318,5 +317,17 @@ class NgForCircleToggleGroupComponent extends ButtonToggleGroupTest {
     </nx-circle-toggle-group>
   `
 })
-class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {
-}
+class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
+
+@Component({
+  template: `
+    <nx-circle-toggle-group>
+      <div>
+        <nx-circle-toggle value="A" icon="product-heart" hint="info1" label="text1"></nx-circle-toggle>
+        <nx-circle-toggle value="B" icon="product-bed" hint="info2" label="text2"></nx-circle-toggle>
+        <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
+      </div>
+    </nx-circle-toggle-group>
+  `
+})
+class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}

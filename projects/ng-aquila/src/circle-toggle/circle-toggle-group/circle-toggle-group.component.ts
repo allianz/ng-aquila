@@ -46,7 +46,7 @@ let nextId = 0;
 })
 export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
 
-  @ContentChildren(ToggleButton) private _buttons: QueryList<ToggleButton>;
+  @ContentChildren(ToggleButton, { descendants: true }) private _buttons: QueryList<ToggleButton>;
 
   private _id = `nx-circle-toggle-group-${nextId++}`;
 
