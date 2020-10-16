@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="10.2.0"></a>
+# [10.2.0](https://github.com/aposin/ng-aquila/compare/v10.1.0...v10.2.0) (2020-10-16)
+
+
+### Bug Fixes
+
+* letter-spacing token for extra-light accordion and comparison-table ([59cf1f6](https://github.com/aposin/ng-aquila/commit/59cf1f6))
+* **circle-toggle:** group does not recognize toggle-button descendants ([46f6dca](https://github.com/aposin/ng-aquila/commit/46f6dca))
+* **comparison-table:** correct aria-colspan on toggle-section headers ([e6c3740](https://github.com/aposin/ng-aquila/commit/e6c3740))
+* **comparison-table:** remove doubled rowgroup role ([c9160c1](https://github.com/aposin/ng-aquila/commit/c9160c1))
+* **link:** new option for using an icon with no text ([f01a7b6](https://github.com/aposin/ng-aquila/commit/f01a7b6))
+* **modal:** add border to container for high contrast ([d13a73d](https://github.com/aposin/ng-aquila/commit/d13a73d))
+* **popover:** allow closeOnClickOutside and manual trigger for modal ([8684d31](https://github.com/aposin/ng-aquila/commit/8684d31))
+
+
+### Features
+
+* **overlay-service:** add new overlay service ([9755de6](https://github.com/aposin/ng-aquila/commit/9755de6))
+* typescript 4 support ([#66](https://github.com/aposin/ng-aquila/issues/66)) ([c1330ad](https://github.com/aposin/ng-aquila/commit/c1330ad))
+* **accordion:** add extra light option ([38b9652](https://github.com/aposin/ng-aquila/commit/38b9652))
+
+
+
 <a name="10.1.0"></a>
 # [10.1.0](https://github.com/aposin/ng-aquila/compare/v10.0.0...v10.1.0) (2020-09-29)
 
