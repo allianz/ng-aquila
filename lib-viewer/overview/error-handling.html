@@ -53,7 +53,7 @@ To change the default error state matching you can implement the <code>ErrorStat
 <p class="docs-markdown--p">The example below shows an <strong>error while the user is typing (dirty)</strong> and not until he blurrs the input field as in the default case.</p>
 <div nx-docs-example="error-custom-matcher-formfield">exampleID: error-custom-matcher-formfield</div>
 <h3 id="global-custom-errorstatematcher" class="docs-markdown--h3">Global custom ErrorStateMatcher</h3>
-<p class="docs-markdown--p">You can also set a custom error matching behaviour globally by defnining yout custom error state matcher:</p>
+<p class="docs-markdown--p">You can also set a custom error matching behaviour globally by defining your custom error state matcher:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ShowOnDirtyErrorStateMatcher <span class="hljs-keyword">implements</span> ErrorStateMatcher {
   <span class="hljs-comment">/** Custom error state matcher that checks for validity of the formfield. */</span>

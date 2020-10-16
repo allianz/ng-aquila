@@ -118,6 +118,9 @@
       "id": "number-stepper"
     },
     {
+      "id": "overlay"
+    },
+    {
       "id": "page-search"
     },
     {
@@ -212,9 +215,11 @@
         "accordion-standalone",
         "accordion",
         "accordion-multi",
-        "accordion-light",
         "accordion-negative",
+        "accordion-light",
         "accordion-light-negative",
+        "accordion-extra-light",
+        "accordion-extra-light-negative",
         "accordion-lazy",
         "accordion-error"
       ],
@@ -908,6 +913,20 @@
       "stable": "done"
     },
     {
+      "id": "overlay",
+      "title": "Overlay",
+      "examples": [
+        "overlay-positioning",
+        "overlay-limiting-fallbacks"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/overlay.html",
+      "overviewFile": "lib-viewer/overview/overlay.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "page-search",
       "title": "Page Search",
       "examples": [
@@ -1345,6 +1364,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/accordion-error-example-###TYPE###.html"
+    },
+    {
+      "id": "accordion-extra-light-negative",
+      "component": "AccordionExtraLightNegativeExampleComponent",
+      "title": "Extra Light Negative Styling Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/accordion-extra-light-negative-example-###TYPE###.html"
+    },
+    {
+      "id": "accordion-extra-light",
+      "component": "AccordionExtraLightExampleComponent",
+      "title": "Extra Light Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/accordion-extra-light-example-###TYPE###.html"
     },
     {
       "id": "accordion-lazy",
@@ -4084,6 +4125,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/number-stepper-validation-example-###TYPE###.html"
+    },
+    {
+      "id": "overlay-limiting-fallbacks",
+      "component": "OverlayLimitingFallbacksExampleComponent",
+      "title": "Notification Panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/overlay-limiting-fallbacks-example-###TYPE###.html"
+    },
+    {
+      "id": "overlay-positioning",
+      "component": "OverlayPositioningExampleComponent",
+      "title": "Notification Panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/overlay-positioning-example-###TYPE###.html"
     },
     {
       "id": "page-search-autocomplete",

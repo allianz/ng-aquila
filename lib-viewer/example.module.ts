@@ -12,6 +12,8 @@ import { RouterModule, ROUTES } from '@angular/router';
 
 import {AccessibilityHighContrastSvgExampleComponent} from './../examples/accessibility-high-contrast-svg/accessibility-high-contrast-svg-example';
 import {AccordionErrorExampleComponent} from './../examples/accordion-error/accordion-error-example';
+import {AccordionExtraLightNegativeExampleComponent} from './../examples/accordion-extra-light-negative/accordion-extra-light-negative-example';
+import {AccordionExtraLightExampleComponent} from './../examples/accordion-extra-light/accordion-extra-light-example';
 import {AccordionLazyExampleComponent} from './../examples/accordion-lazy/accordion-lazy-example';
 import {AccordionLightNegativeExampleComponent} from './../examples/accordion-light-negative/accordion-light-negative-example';
 import {AccordionLightExampleComponent} from './../examples/accordion-light/accordion-light-example';
@@ -261,6 +263,8 @@ import {NumberStepperSizesExampleComponent} from './../examples/number-stepper-s
 import {NumberStepperStandaloneExampleComponent} from './../examples/number-stepper-standalone/number-stepper-standalone-example';
 import {NumberStepperTemplateDrivenExampleComponent} from './../examples/number-stepper-template-driven/number-stepper-template-driven-example';
 import {NumberStepperValidationExampleComponent} from './../examples/number-stepper-validation/number-stepper-validation-example';
+import {OverlayLimitingFallbacksExampleComponent} from './../examples/overlay-limiting-fallbacks/overlay-limiting-fallbacks-example';
+import {OverlayPositioningExampleComponent} from './../examples/overlay-positioning/overlay-positioning-example';
 import {PageSearchAutocompleteExampleComponent} from './../examples/page-search-autocomplete/page-search-autocomplete-example';
 import {PageSearchClickExampleComponent} from './../examples/page-search-click/page-search-click-example';
 import {PageSearchHiddenExampleComponent} from './../examples/page-search-hidden/page-search-hidden-example';
@@ -420,6 +424,16 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'accordion-error',
     title: 'Accordion Error Example',
     component: AccordionErrorExampleComponent
+  },
+  'accordion-extra-light-negative': {
+    id: 'accordion-extra-light-negative',
+    title: 'Extra Light Negative Styling Example',
+    component: AccordionExtraLightNegativeExampleComponent
+  },
+  'accordion-extra-light': {
+    id: 'accordion-extra-light',
+    title: 'Extra Light Example',
+    component: AccordionExtraLightExampleComponent
   },
   'accordion-lazy': {
     id: 'accordion-lazy',
@@ -1666,6 +1680,16 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Validation example',
     component: NumberStepperValidationExampleComponent
   },
+  'overlay-limiting-fallbacks': {
+    id: 'overlay-limiting-fallbacks',
+    title: 'Notification Panel',
+    component: OverlayLimitingFallbacksExampleComponent
+  },
+  'overlay-positioning': {
+    id: 'overlay-positioning',
+    title: 'Notification Panel',
+    component: OverlayPositioningExampleComponent
+  },
   'page-search-autocomplete': {
     id: 'page-search-autocomplete',
     title: 'Autocomplete Example',
@@ -2381,6 +2405,8 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
 export const EXAMPLE_LIST = [
   AccessibilityHighContrastSvgExampleComponent,
   AccordionErrorExampleComponent,
+  AccordionExtraLightNegativeExampleComponent,
+  AccordionExtraLightExampleComponent,
   AccordionLazyExampleComponent,
   AccordionLightNegativeExampleComponent,
   AccordionLightExampleComponent,
@@ -2630,6 +2656,8 @@ export const EXAMPLE_LIST = [
   NumberStepperStandaloneExampleComponent,
   NumberStepperTemplateDrivenExampleComponent,
   NumberStepperValidationExampleComponent,
+  OverlayLimitingFallbacksExampleComponent,
+  OverlayPositioningExampleComponent,
   PageSearchAutocompleteExampleComponent,
   PageSearchClickExampleComponent,
   PageSearchHiddenExampleComponent,
@@ -2785,6 +2813,14 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'accordion-error',
     component: AccordionErrorExampleComponent
+  },
+{
+    path: 'accordion-extra-light-negative',
+    component: AccordionExtraLightNegativeExampleComponent
+  },
+{
+    path: 'accordion-extra-light',
+    component: AccordionExtraLightExampleComponent
   },
 {
     path: 'accordion-lazy',
@@ -3781,6 +3817,14 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'number-stepper-validation',
     component: NumberStepperValidationExampleComponent
+  },
+{
+    path: 'overlay-limiting-fallbacks',
+    component: OverlayLimitingFallbacksExampleComponent
+  },
+{
+    path: 'overlay-positioning',
+    component: OverlayPositioningExampleComponent
   },
 {
     path: 'page-search-autocomplete',
