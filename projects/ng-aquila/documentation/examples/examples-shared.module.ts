@@ -64,6 +64,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
+import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 
 // Collect all imports and exports here
@@ -138,7 +139,8 @@ const EXPORTED_MODULES = [
   NxLabelModule,
   NxFileUploaderModule,
   NxToolbarModule,
-  NxTimefieldModule
+  NxTimefieldModule,
+  NxSmallStageModule,
 ];
 
 @NgModule({

@@ -1,0 +1,107 @@
+@import '../shared-styles/index';
+
+$image-container-offset-end: var(--small-stage-image-container-offset-end);
+$image-container-padding-start: var(--small-stage-image-container-padding-start);
+$image-container-padding-top: var(--small-stage-image-container-padding-top);
+
+:host {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 nx-spacer(2m);
+  background-color: var(--small-stage-background-color);
+
+  &.nx-small-stage--content-narrow {
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  @include media-breakpoint-response(mobile) {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+
+    &.nx-small-stage--content-narrow {
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.content-container {
+  padding: nx-spacer(3m) 0 nx-spacer(2m);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+.image-container {
+  min-height: var(--small-stage-image-min-height);
+  padding-left: $image-container-padding-start;
+  padding-top: $image-container-padding-top;
+  position: relative;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+
+  :host(.nx-small-stage--w-end-offset) & {
+    padding-right: $image-container-offset-end;
+  }
+
+  @include media-breakpoint-response(mobile) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    padding-top: 0;
+
+    :host(.nx-small-stage--w-end-offset) & {
+      padding-right: 0;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    min-width: var(--small-stage-image-min-width);
+    width: calc(100% - #{$image-container-padding-start});
+    height: calc(100% - #{$image-container-padding-top});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
+    :host(.nx-small-stage--w-end-offset) & {
+      width: calc(100% - #{$image-container-offset-end} - #{$image-container-padding-start});
+    }
+
+    @include media-breakpoint-response(mobile) {
+      background-position: right bottom;
+      width: calc(100% - #{$image-container-padding-start});
+      height: 100%;
+
+      :host(.nx-small-stage--w-end-offset) & {
+        width: calc(100% - #{$image-container-padding-start});
+      }
+    }
+  }
+
+  :host-context([dir="rtl"]) {
+    .image-container {
+      padding-right: $image-container-padding-start;
+      padding-left: 0;
+    }
+
+    &.nx-small-stage--w-end-offset .image-container {
+      padding-left: $image-container-offset-end;
+    
+      @include media-breakpoint-response(mobile) {
+        padding-left: 0;
+      }
+    }
+
+    .image-container__inner {
+      @include media-breakpoint-response(mobile) {
+        background-position: left bottom;
+      }
+    }
+  }
+}
+
