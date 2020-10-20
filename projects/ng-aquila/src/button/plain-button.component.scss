@@ -13,6 +13,10 @@
   padding: 0;
   @include type-style(plain-button);
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
     @include var(color, plain-button-hover-color);
   }
