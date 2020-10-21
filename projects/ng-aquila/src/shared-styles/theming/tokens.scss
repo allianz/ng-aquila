@@ -920,6 +920,14 @@ $nx-theme: (
   natural-language-form-error-color: danger,
   natural-language-form-error-border-color: danger,
 
+  notification-panel-background-color: ui-01,
+  notification-panel-item-unread-background-color: ui-02,
+  notification-panel-item-unread-hover-background-color: ui-03,
+  notification-panel-item-unread-active-background-color: ui-04,
+  notification-panel-item-read-background-color: ui-01,
+  notification-panel-item-read-hover-background-color: ui-02,
+  notification-panel-item-read-active-background-color: ui-03,
+
   number-stepper-label-font-size: large-label-font-size,
   number-stepper-label-line-height: large-label-line-height,
   number-stepper-label-font-weight: large-label-font-weight,

@@ -1,0 +1,4 @@
+.inline-delete {
+  display: flex;
+  justify-content: space-between;
+}

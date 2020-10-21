@@ -149,6 +149,7 @@ describe('NxOverlayService', () => {
 
 @Component({
   template: `
+
   <button #button>Trigger</button>
 
   <ng-template let-data let-overlayRef="overlayRef">

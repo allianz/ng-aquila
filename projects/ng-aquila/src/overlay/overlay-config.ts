@@ -65,6 +65,9 @@ export class NxOverlayConfig<D = any> {
   /** Max-height of the overlay. If a number is provided, assumes pixel units. */
   maxHeight?: number | string;
 
+  /** The distance from the trigger to the overlay in pixels. */
+  offset?: number;
+
   /** Position overrides. */
   direction?: NxOverlayDirection = 'bottom';
 

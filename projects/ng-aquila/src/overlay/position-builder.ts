@@ -88,12 +88,13 @@ export class NxOverlayPositionBuilder {
     const fallbacks = this._getFallbackPositions(config.direction, config);
     const origin = this.getOrigin(config.direction);
     const overlay = this.getOverlayPosition(config.direction);
-    const offset = this.getOffset(config.direction);
+    const offset = this.getOffset(config.direction, config);
     return this._overlay.position()
       .flexibleConnectedTo(element)
       .withPush(false)
-      .withFlexibleDimensions(false)
+      .withFlexibleDimensions(true)
       .withLockedPosition()
+      .withGrowAfterOpen()
       .withPositions([
         {
           ...origin,
@@ -123,27 +124,28 @@ export class NxOverlayPositionBuilder {
   }
 
   /** Returns the overlay offset required by the user's direction preference */
-  getOffset(direction: NxOverlayDirection) {
+  getOffset(direction: NxOverlayDirection, config: NxOverlayConfig) {
+    const offset = config.offset || BASE_OFFSET;
     const [genericDirection] = direction.split('-');
     switch (genericDirection) {
       case 'top': {
         return {
-          offsetY: BASE_OFFSET * -1,
+          offsetY: offset * -1,
         };
       }
       case 'bottom': {
         return {
-          offsetY: BASE_OFFSET,
+          offsetY: offset,
         };
       }
       case 'left': {
         return {
-          offsetX: BASE_OFFSET * -1,
+          offsetX: offset * -1,
         };
       }
       case 'right': {
         return {
-          offsetX: BASE_OFFSET,
+          offsetX: offset,
         };
       }
       default: {
@@ -176,7 +178,7 @@ export class NxOverlayPositionBuilder {
     resolvedDirections.forEach(fallbackDirection => {
       const origin = this.getOrigin(fallbackDirection);
       const overlay = this.getOverlayPosition(fallbackDirection);
-      const offset = this.getOffset(fallbackDirection);
+      const offset = this.getOffset(fallbackDirection, config);
       fallbackPositions.push({
         ...origin,
         ...overlay,
@@ -232,8 +234,8 @@ export class NxOverlayPositionBuilder {
   /** Resolve the fallback order to all possible direction. For top and bottom we want to add the start and end positions. */
   private _resolveFallbacks(fallbacks: NxOverlayDirection[], config: NxOverlayConfig) {
     const [generalDirection, addition] = this._splitDirection(config.direction);
-
     return fallbacks.reduce((resolved, direction) => {
+      console.log(direction);
       if (direction === 'top' || direction === 'bottom') {
         if (addition) {
           // if we have something like bottom-start we want to do bottom-end first

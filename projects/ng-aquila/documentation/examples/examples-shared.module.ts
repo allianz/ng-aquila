@@ -64,6 +64,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { NxTimefieldModule } from '@aposin/ng-aquila/timefield';
 import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
+import { NxNotificationPanelModule } from '@aposin/ng-aquila/notification-panel';
 import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 
@@ -103,6 +104,7 @@ const EXPORTED_MODULES = [
   NxModalModule,
   NxMomentDateModule,
   NxNaturalLanguageFormModule,
+  NxNotificationPanelModule,
   NxNumberStepperModule,
   NxOverlayModule,
   NxPaginationModule,

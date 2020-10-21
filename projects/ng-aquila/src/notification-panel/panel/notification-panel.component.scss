@@ -1,0 +1,25 @@
+@import "../../shared-styles/index";
+:host {
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--notification-panel-background-color);
+    max-height: 740px;
+    height: 100%;
+    width: 400px;
+    overflow-y: auto;
+    box-shadow: nx-box-shadow(l);
+    border-radius: 8px;
+    &:focus {
+        outline: none;
+    }
+}
+
+::ng-deep nx-notification-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 8px;
+    &:first-child {
+        padding-top: 0;
+    }
+}
