@@ -4728,6 +4728,17 @@
       "url": "lib-viewer/examples/radio-toggle-form-example-###TYPE###.html"
     },
     {
+      "id": "radio-toggle-negative",
+      "component": "RadioToggleNegativeExampleComponent",
+      "title": "Negative Styling Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/radio-toggle-negative-example-###TYPE###.html"
+    },
+    {
       "id": "radio-toggle-reactive",
       "component": "RadioToggleReactiveExampleComponent",
       "title": "Reactive Form Example",
@@ -5815,17 +5826,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/viewport-change-example-###TYPE###.html"
-    },
-    {
-      "id": "radio-toggle-negative",
-      "component": "RadioToggleNegativeExampleComponent",
-      "title": "Negative Styling Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/radio-toggle-negative-example-###TYPE###.html"
     }
   ],
   "guides": [

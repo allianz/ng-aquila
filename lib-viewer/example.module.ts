@@ -314,6 +314,7 @@ import {RadioButtonSizesExampleComponent} from './../examples/radio-button-sizes
 import {RadioButtonExampleComponent} from './../examples/radio-button/radio-button-example';
 import {RadioToggleCustomExampleComponent} from './../examples/radio-toggle-custom/radio-toggle-custom-example';
 import {RadioToggleFormExampleComponent} from './../examples/radio-toggle-form/radio-toggle-form-example';
+import {RadioToggleNegativeExampleComponent} from './../examples/radio-toggle-negative/radio-toggle-negative-example';
 import {RadioToggleReactiveExampleComponent} from './../examples/radio-toggle-reactive/radio-toggle-reactive-example';
 import {RadioToggleValidationExampleComponent} from './../examples/radio-toggle-validation/radio-toggle-validation-example';
 import {RadioToggleBasicExampleComponent} from './../examples/radio-toggle/radio-toggle-example';
@@ -413,7 +414,6 @@ import {VideoAdvancedExampleComponent} from './../examples/video-advanced/video-
 import {VideoCustomExampleComponent} from './../examples/video-custom/video-custom-example';
 import {VideoExampleComponent} from './../examples/video/video-example';
 import {ViewportChangeExampleComponent} from './../examples/viewport-change/viewport-change-example';
-import {RadioToggleNegativeExampleComponent} from './../examples/radio-toggle-negative/radio-toggle-negative-example';
 
 export interface ComponentExample {
   id: string;
@@ -1942,6 +1942,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Template Driven Form Example',
     component: RadioToggleFormExampleComponent
   },
+  'radio-toggle-negative': {
+    id: 'radio-toggle-negative',
+    title: 'Negative Styling Example',
+    component: RadioToggleNegativeExampleComponent
+  },
   'radio-toggle-reactive': {
     id: 'radio-toggle-reactive',
     title: 'Reactive Form Example',
@@ -2437,11 +2442,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Viewport Subscription example',
     component: ViewportChangeExampleComponent
   },
-  'radio-toggle-negative': {
-    id: 'radio-toggle-negative',
-    title: 'Negative Styling Example',
-    component: RadioToggleNegativeExampleComponent
-  },
 };
 
 export const EXAMPLE_LIST = [
@@ -2749,6 +2749,7 @@ export const EXAMPLE_LIST = [
   RadioButtonExampleComponent,
   RadioToggleCustomExampleComponent,
   RadioToggleFormExampleComponent,
+  RadioToggleNegativeExampleComponent,
   RadioToggleReactiveExampleComponent,
   RadioToggleValidationExampleComponent,
   RadioToggleBasicExampleComponent,
@@ -2848,7 +2849,6 @@ export const EXAMPLE_LIST = [
   VideoCustomExampleComponent,
   VideoExampleComponent,
   ViewportChangeExampleComponent,
-  RadioToggleNegativeExampleComponent,
 ];
 
 export const EXAMPLE_ROUTES = [
@@ -4072,6 +4072,10 @@ export const EXAMPLE_ROUTES = [
     component: RadioToggleFormExampleComponent
   },
 {
+    path: 'radio-toggle-negative',
+    component: RadioToggleNegativeExampleComponent
+  },
+{
     path: 'radio-toggle-reactive',
     component: RadioToggleReactiveExampleComponent
   },
@@ -4466,10 +4470,6 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'viewport-change',
     component: ViewportChangeExampleComponent
-  },
-{
-    path: 'radio-toggle-negative',
-    component: RadioToggleNegativeExampleComponent
   }]
   }
 ];
