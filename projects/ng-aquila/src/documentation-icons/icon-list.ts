@@ -1,5 +1,6 @@
 export const ICON_MAPPINGS = {
 'bars': { alias: 'bars', font: 'far'},
+'bell-o': { alias: 'bell', font: 'far' },
 'bookmark-o': { alias: 'bookmark', font: 'far' },
 'download': { alias: 'download', font: 'fas' },
 'duplicate': { alias: 'copy', font: 'far' },
