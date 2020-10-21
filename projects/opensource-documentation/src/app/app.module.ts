@@ -14,6 +14,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
 import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
 import { DemoThemingService } from './demo-theming.service';
+import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 
 const ROUTES = [
   {
@@ -60,7 +61,8 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     ),
     ExampleModule.forRoot(),
     BrowserAnimationsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    NxDocumentationIconModule
   ],
   providers: [
     { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
