@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="10.3.0"></a>
+# [10.3.0](https://github.com/aposin/ng-aquila/compare/v10.2.0...v10.3.0) (2020-10-21)
+
+
+### Bug Fixes
+
+* **plain-button:** remove browser focus outline ([67bcb60](https://github.com/aposin/ng-aquila/commit/67bcb60))
+
+
+### Features
+
+* **notification-panel:** add new component ([ef30e5c](https://github.com/aposin/ng-aquila/commit/ef30e5c))
+* **small-stage:** introduce component ([b0035b6](https://github.com/aposin/ng-aquila/commit/b0035b6))
+
+
+
 <a name="10.2.0"></a>
 # [10.2.0](https://github.com/aposin/ng-aquila/compare/v10.1.0...v10.2.0) (2020-10-16)
 
