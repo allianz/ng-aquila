@@ -1,0 +1,31 @@
+<div class="docs-deprecation-warning">
+<strong>Work in progress / Experimental</strong>
+The small stage component is provided as a beta preview. Breaking changes may still be introduced outside of major versions until the service is
+considered stable.
+</div>
+<h3 id="overview" class="docs-markdown--h3">Overview</h3>
+<p class="docs-markdown--p">Small stage is designed to be used at the top of your page or section to serve as a heading with an illustration.</p>
+<p class="docs-markdown--p">Although, small stage does not restrict the content that can be placed within the content section of the stage, it is recommended to use a heading and topline or subline when needed.
+The image of small stage fluidly grows or shrinks, adapting to the viewport size and available space.
+On smaller screens the image section is always displayed below the content section.</p>
+<p class="docs-markdown--p">Since small stage is designed to take 100% width of a page or a container, it's recommended to open the examples in a new window to get a better feeling of how it is intended to look and behave.</p>
+<p class="docs-markdown--p">Examples here feature both short and long headlines side by side in order to better outline the small stage behavior.</p>
+<h3 id="default" class="docs-markdown--h3">Default</h3>
+<p class="docs-markdown--p">The default small stage features a 70/30 ratio for content container and image container.</p>
+<p class="docs-markdown--p">Image is positioned in the center of image container.</p>
+<p class="docs-markdown--p">Image url is passed to the small stage through <code>imageUrl</code> input.</p>
+<div nx-docs-example="small-stage-default">exampleID: small-stage-default</div>
+<p class="docs-markdown--p">Various sizes of headlines and sublines can be used to achieve the desired effect.</p>
+<div nx-docs-example="small-stage-content-variation">exampleID: small-stage-content-variation</div>
+<h3 id="narrow-content" class="docs-markdown--h3">Narrow content</h3>
+<p class="docs-markdown--p">In some cases you might need to use a narrow content container, e.g. when the headline is short and you want a better positioning of the image.</p>
+<p class="docs-markdown--p">Setting a <code>contentNarrow</code> input on small stage component switches the ratio between content and image containers to 50/50.</p>
+<div nx-docs-example="small-stage-text-narrow">exampleID: small-stage-text-narrow</div>
+<h3 id="image-offset" class="docs-markdown--h3">Image offset</h3>
+<p class="docs-markdown--p">If you want to add extra spacing after the image, this is possible through setting <code>offsetEnd</code> input on the component. It is also combinable with <code>contentNarrow</code>, when needed.</p>
+<div nx-docs-example="small-stage-image-offset">exampleID: small-stage-image-offset</div>
+<p class="docs-markdown--p">For best results across different viewport sizes, we suggest using the <a href="./documentation/layout/overview#basic-viewport-subscription">viewport service</a> to dynamically adjust styles of small stage to your needs.</p>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">In order to achieve responsive behavior and fluid scaling of the small stage, we're leveraging the css background image functionality under the hood to display the image.
+Since background images are intended solely for decorative purposes, they are ignored by assistive technologies and there's no way to provide alternative description as with html <code>&lt;img&gt;</code> tag.</p>
+<p class="docs-markdown--p">Please, refrain from presenting meaningful content or convey information through the image in the small stage component. Image section should be used for decoration and the content of the page should not depend on the image being loaded or accessible.</p>

@@ -738,6 +738,13 @@
   --natural-language-form-active-border-color: var(--interactive-primary);
   --natural-language-form-error-color: var(--danger);
   --natural-language-form-error-border-color: var(--danger);
+  --notification-panel-background-color: var(--ui-01);
+  --notification-panel-item-unread-background-color: var(--ui-02);
+  --notification-panel-item-unread-hover-background-color: var(--ui-03);
+  --notification-panel-item-unread-active-background-color: var(--ui-04);
+  --notification-panel-item-read-background-color: var(--ui-01);
+  --notification-panel-item-read-hover-background-color: var(--ui-02);
+  --notification-panel-item-read-active-background-color: var(--ui-03);
   --number-stepper-label-font-size: var(--large-label-font-size);
   --number-stepper-label-line-height: var(--large-label-line-height);
   --number-stepper-label-font-weight: var(--large-label-font-weight);
@@ -872,6 +879,12 @@
   --slider-handle-value-font-weight: var(--paragraph-05-font-weight);
   --slider-handle-value-letter-spacing: var(--paragraph-05-letter-spacing);
   --slider-negative-background-color: var(--negative-dimmed);
+  --small-stage-background-color: var(--ui-03);
+  --small-stage-image-min-height: 64px;
+  --small-stage-image-min-width: 116px;
+  --small-stage-image-container-padding-top: 40px;
+  --small-stage-image-container-padding-start: 40px;
+  --small-stage-image-container-offset-end: 25%;
   --rating-icon-color: var(--text-01);
   --rating-icon-size: 40px;
   --rating-label-color: var(--text-01);

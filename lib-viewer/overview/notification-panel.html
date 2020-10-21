@@ -1,0 +1,23 @@
+<p class="docs-markdown--p">The notification panel is supposed to be used in the header to give users quick access to recent messages and notifications. It consists of a trigger button that opens the notification flyout.</p>
+<h2 id="clickable-items" class="docs-markdown--h2">Clickable items</h2>
+<p class="docs-markdown--p">In this variation each notification is completely clickable and will trigger a routing event.
+Try to avoid additional interactive elements inside each notification. For this use case see the next example <a href="./documentation/notification-panel/overview#notifications-with-actions">Notifications with actions</a>.</p>
+<div nx-docs-example="notification-panel-clickable">exampleID: notification-panel-clickable</div>
+<h2 id="mixing-clickable-with-informational-notifications" class="docs-markdown--h2">Mixing clickable with informational notifications</h2>
+<p class="docs-markdown--p">For the use case that you want to mix clickable and non-clickable notifications you can either omit the <code>href</code> attribute on the <code>anchor</code> tag or use <code>[routerLink]=&quot;null&quot;</code> or use a div. An anchor without an href is considered as a normal text element by assistive technology.
+Please note there is an issue at Angular that <code>[routerLink]=&quot;null&quot;</code> adds a href to the current route and is not removing it. See: https://github.com/angular/angular/issues/13980 but the router will not do anything if the route is the same.</p>
+<div nx-docs-example="notification-panel-mixed">exampleID: notification-panel-mixed</div>
+<h2 id="notifications-with-actions" class="docs-markdown--h2">Notifications with actions</h2>
+<p class="docs-markdown--p">If you need more actions inside a notification set the property <code>clickable</code> to false and add your
+interactive elements to the content. Examples for these actions are links, delete buttons or context menus. Instead of <code>div</code>s you could also use anchor elements without a href or use the element selector <code>nx-notification-panel-item</code>.</p>
+<div nx-docs-example="notification-panel-actions">exampleID: notification-panel-actions</div>
+<h2 id="accessibility" class="docs-markdown--h2">Accessibility</h2>
+<p class="docs-markdown--p">Don't forget to add an title aria-label to the trigger button.
+Use an anchor tag if the whole notification is supposed to be clickable.
+A good way to help screen reader users is to add a wrapper around the triggering button defining an region, e.g. <code>region=&quot;Notifications&quot;</code>. That helps screen reader users to quickly access the trigger button from anywhere in the page.</p>
+<h3 id="keyboard-support" class="docs-markdown--h3">Keyboard support</h3>
+<p class="docs-markdown--p">ENTER - opens the overlay panel</p>
+<p class="docs-markdown--p">ESC - Closes the overlay panel</p>
+<p class="docs-markdown--p">TAB - Tab through the notification items and its focusable children if there are any</p>
+<p class="docs-markdown--p">UP ARROW / RIGHT ARROW - Move focus to the next notification item.</p>
+<p class="docs-markdown--p">DOWN ARROW / LEFT ARROW - Move focus to the previous notification item.</p>

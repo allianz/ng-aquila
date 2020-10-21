@@ -247,6 +247,9 @@ import {NaturalLanguageFormBasicExampleComponent} from './../examples/natural-la
 import {NaturalLanguageFormExtendedExampleComponent} from './../examples/natural-language-form-extended/natural-language-form-extended-example';
 import {NaturalLanguageFormNegativeExampleComponent} from './../examples/natural-language-form-negative/natural-language-form-negative-example';
 import {NaturalLanguageFormSizesExampleComponent} from './../examples/natural-language-form-sizes/natural-language-form-sizes-example';
+import {NotificationPanelActionsExampleComponent} from './../examples/notification-panel-actions/notification-panel-actions-example';
+import {NotificationPanelClickableExampleComponent} from './../examples/notification-panel-clickable/notification-panel-clickable-example';
+import {NotificationPanelMixedExampleComponent} from './../examples/notification-panel-mixed/notification-panel-mixed-example';
 import {NumberStepperAccessibilityExampleComponent} from './../examples/number-stepper-a11y/number-stepper-a11y-example';
 import {NumberStepperAdditionsExampleComponent} from './../examples/number-stepper-additions/number-stepper-additions-example';
 import {NumberStepperAutoResizingExampleComponent} from './../examples/number-stepper-auto-resizing/number-stepper-auto-resizing-example';
@@ -311,7 +314,6 @@ import {RadioButtonSizesExampleComponent} from './../examples/radio-button-sizes
 import {RadioButtonExampleComponent} from './../examples/radio-button/radio-button-example';
 import {RadioToggleCustomExampleComponent} from './../examples/radio-toggle-custom/radio-toggle-custom-example';
 import {RadioToggleFormExampleComponent} from './../examples/radio-toggle-form/radio-toggle-form-example';
-import {RadioToggleNegativeExampleComponent} from './../examples/radio-toggle-negative/radio-toggle-negative-example';
 import {RadioToggleReactiveExampleComponent} from './../examples/radio-toggle-reactive/radio-toggle-reactive-example';
 import {RadioToggleValidationExampleComponent} from './../examples/radio-toggle-validation/radio-toggle-validation-example';
 import {RadioToggleBasicExampleComponent} from './../examples/radio-toggle/radio-toggle-example';
@@ -344,6 +346,10 @@ import {SliderReactiveExampleComponent} from './../examples/slider-reactive/slid
 import {SliderTemplateExampleComponent} from './../examples/slider-template/slider-template-example';
 import {SliderTextualExampleComponent} from './../examples/slider-textual/slider-textual-example';
 import {SliderThumbExampleComponent} from './../examples/slider-thumb/slider-thumb-example';
+import {SmallStageContentVariationExampleComponent} from './../examples/small-stage-content-variation/small-stage-content-variation-example';
+import {SmallStageDefaultExampleComponent} from './../examples/small-stage-default/small-stage-default-example';
+import {SmallStageImageOffsetExampleComponent} from './../examples/small-stage-image-offset/small-stage-image-offset-example';
+import {SmallStageTextNarrowExampleComponent} from './../examples/small-stage-text-narrow/small-stage-text-narrow-example';
 import {SpinnerNegativeExampleComponent} from './../examples/spinner-negative/spinner-negative-example';
 import {SpinnerSizesExampleComponent} from './../examples/spinner-sizes/spinner-sizes-example';
 import {SwitcherDefaultExampleComponent} from './../examples/switcher-default/switcher-default-example';
@@ -407,6 +413,7 @@ import {VideoAdvancedExampleComponent} from './../examples/video-advanced/video-
 import {VideoCustomExampleComponent} from './../examples/video-custom/video-custom-example';
 import {VideoExampleComponent} from './../examples/video/video-example';
 import {ViewportChangeExampleComponent} from './../examples/viewport-change/viewport-change-example';
+import {RadioToggleNegativeExampleComponent} from './../examples/radio-toggle-negative/radio-toggle-negative-example';
 
 export interface ComponentExample {
   id: string;
@@ -1600,6 +1607,21 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Size example',
     component: NaturalLanguageFormSizesExampleComponent
   },
+  'notification-panel-actions': {
+    id: 'notification-panel-actions',
+    title: 'Notification Panel',
+    component: NotificationPanelActionsExampleComponent
+  },
+  'notification-panel-clickable': {
+    id: 'notification-panel-clickable',
+    title: 'Notification Panel',
+    component: NotificationPanelClickableExampleComponent
+  },
+  'notification-panel-mixed': {
+    id: 'notification-panel-mixed',
+    title: 'Notification Panel',
+    component: NotificationPanelMixedExampleComponent
+  },
   'number-stepper-a11y': {
     id: 'number-stepper-a11y',
     title: 'Number Stepper Accessiblity Example',
@@ -1920,11 +1942,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Template Driven Form Example',
     component: RadioToggleFormExampleComponent
   },
-  'radio-toggle-negative': {
-    id: 'radio-toggle-negative',
-    title: 'Negative Styling Example',
-    component: RadioToggleNegativeExampleComponent
-  },
   'radio-toggle-reactive': {
     id: 'radio-toggle-reactive',
     title: 'Reactive Form Example',
@@ -2084,6 +2101,26 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     id: 'slider-thumb',
     title: 'Slider Thumb Example',
     component: SliderThumbExampleComponent
+  },
+  'small-stage-content-variation': {
+    id: 'small-stage-content-variation',
+    title: 'Small stage content variation example',
+    component: SmallStageContentVariationExampleComponent
+  },
+  'small-stage-default': {
+    id: 'small-stage-default',
+    title: 'Small stage default example',
+    component: SmallStageDefaultExampleComponent
+  },
+  'small-stage-image-offset': {
+    id: 'small-stage-image-offset',
+    title: 'Small stage image offset example',
+    component: SmallStageImageOffsetExampleComponent
+  },
+  'small-stage-text-narrow': {
+    id: 'small-stage-text-narrow',
+    title: 'Small stage narrow content example',
+    component: SmallStageTextNarrowExampleComponent
   },
   'spinner-negative': {
     id: 'spinner-negative',
@@ -2400,6 +2437,11 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Viewport Subscription example',
     component: ViewportChangeExampleComponent
   },
+  'radio-toggle-negative': {
+    id: 'radio-toggle-negative',
+    title: 'Negative Styling Example',
+    component: RadioToggleNegativeExampleComponent
+  },
 };
 
 export const EXAMPLE_LIST = [
@@ -2640,6 +2682,9 @@ export const EXAMPLE_LIST = [
   NaturalLanguageFormExtendedExampleComponent,
   NaturalLanguageFormNegativeExampleComponent,
   NaturalLanguageFormSizesExampleComponent,
+  NotificationPanelActionsExampleComponent,
+  NotificationPanelClickableExampleComponent,
+  NotificationPanelMixedExampleComponent,
   NumberStepperAccessibilityExampleComponent,
   NumberStepperAdditionsExampleComponent,
   NumberStepperAutoResizingExampleComponent,
@@ -2704,7 +2749,6 @@ export const EXAMPLE_LIST = [
   RadioButtonExampleComponent,
   RadioToggleCustomExampleComponent,
   RadioToggleFormExampleComponent,
-  RadioToggleNegativeExampleComponent,
   RadioToggleReactiveExampleComponent,
   RadioToggleValidationExampleComponent,
   RadioToggleBasicExampleComponent,
@@ -2737,6 +2781,10 @@ export const EXAMPLE_LIST = [
   SliderTemplateExampleComponent,
   SliderTextualExampleComponent,
   SliderThumbExampleComponent,
+  SmallStageContentVariationExampleComponent,
+  SmallStageDefaultExampleComponent,
+  SmallStageImageOffsetExampleComponent,
+  SmallStageTextNarrowExampleComponent,
   SpinnerNegativeExampleComponent,
   SpinnerSizesExampleComponent,
   SwitcherDefaultExampleComponent,
@@ -2800,6 +2848,7 @@ export const EXAMPLE_LIST = [
   VideoCustomExampleComponent,
   VideoExampleComponent,
   ViewportChangeExampleComponent,
+  RadioToggleNegativeExampleComponent,
 ];
 
 export const EXAMPLE_ROUTES = [
@@ -3755,6 +3804,18 @@ export const EXAMPLE_ROUTES = [
     component: NaturalLanguageFormSizesExampleComponent
   },
 {
+    path: 'notification-panel-actions',
+    component: NotificationPanelActionsExampleComponent
+  },
+{
+    path: 'notification-panel-clickable',
+    component: NotificationPanelClickableExampleComponent
+  },
+{
+    path: 'notification-panel-mixed',
+    component: NotificationPanelMixedExampleComponent
+  },
+{
     path: 'number-stepper-a11y',
     component: NumberStepperAccessibilityExampleComponent
   },
@@ -4011,10 +4072,6 @@ export const EXAMPLE_ROUTES = [
     component: RadioToggleFormExampleComponent
   },
 {
-    path: 'radio-toggle-negative',
-    component: RadioToggleNegativeExampleComponent
-  },
-{
     path: 'radio-toggle-reactive',
     component: RadioToggleReactiveExampleComponent
   },
@@ -4141,6 +4198,22 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'slider-thumb',
     component: SliderThumbExampleComponent
+  },
+{
+    path: 'small-stage-content-variation',
+    component: SmallStageContentVariationExampleComponent
+  },
+{
+    path: 'small-stage-default',
+    component: SmallStageDefaultExampleComponent
+  },
+{
+    path: 'small-stage-image-offset',
+    component: SmallStageImageOffsetExampleComponent
+  },
+{
+    path: 'small-stage-text-narrow',
+    component: SmallStageTextNarrowExampleComponent
   },
 {
     path: 'spinner-negative',
@@ -4393,6 +4466,10 @@ export const EXAMPLE_ROUTES = [
 {
     path: 'viewport-change',
     component: ViewportChangeExampleComponent
+  },
+{
+    path: 'radio-toggle-negative',
+    component: RadioToggleNegativeExampleComponent
   }]
   }
 ];

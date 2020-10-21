@@ -55,6 +55,9 @@
       "id": "datefield"
     },
     {
+      "id": "documentation-icons"
+    },
+    {
       "id": "dropdown"
     },
     {
@@ -115,6 +118,9 @@
       "id": "natural-language-form"
     },
     {
+      "id": "notification-panel"
+    },
+    {
       "id": "number-stepper"
     },
     {
@@ -158,6 +164,9 @@
     },
     {
       "id": "slider"
+    },
+    {
+      "id": "small-stage"
     },
     {
       "id": "spinner"
@@ -885,6 +894,21 @@
       "stable": "done"
     },
     {
+      "id": "notification-panel",
+      "title": "Notification panel",
+      "examples": [
+        "notification-panel-clickable",
+        "notification-panel-mixed",
+        "notification-panel-actions"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/notification-panel.html",
+      "overviewFile": "lib-viewer/overview/notification-panel.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "number-stepper",
       "title": "Number Stepper",
       "examples": [
@@ -1132,6 +1156,22 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "small-stage",
+      "title": "Small stage",
+      "examples": [
+        "small-stage-default",
+        "small-stage-content-variation",
+        "small-stage-text-narrow",
+        "small-stage-image-offset"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress"
     },
     {
       "id": "spinner",
@@ -3951,6 +3991,39 @@
       "url": "lib-viewer/examples/natural-language-form-sizes-example-###TYPE###.html"
     },
     {
+      "id": "notification-panel-actions",
+      "component": "NotificationPanelActionsExampleComponent",
+      "title": "Notification Panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/notification-panel-actions-example-###TYPE###.html"
+    },
+    {
+      "id": "notification-panel-clickable",
+      "component": "NotificationPanelClickableExampleComponent",
+      "title": "Notification Panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/notification-panel-clickable-example-###TYPE###.html"
+    },
+    {
+      "id": "notification-panel-mixed",
+      "component": "NotificationPanelMixedExampleComponent",
+      "title": "Notification Panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/notification-panel-mixed-example-###TYPE###.html"
+    },
+    {
       "id": "number-stepper-a11y",
       "component": "NumberStepperAccessibilityExampleComponent",
       "title": "Number Stepper Accessiblity Example",
@@ -4655,17 +4728,6 @@
       "url": "lib-viewer/examples/radio-toggle-form-example-###TYPE###.html"
     },
     {
-      "id": "radio-toggle-negative",
-      "component": "RadioToggleNegativeExampleComponent",
-      "title": "Negative Styling Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/radio-toggle-negative-example-###TYPE###.html"
-    },
-    {
       "id": "radio-toggle-reactive",
       "component": "RadioToggleReactiveExampleComponent",
       "title": "Reactive Form Example",
@@ -5016,6 +5078,50 @@
         "css"
       ],
       "url": "lib-viewer/examples/slider-thumb-example-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-content-variation",
+      "component": "SmallStageContentVariationExampleComponent",
+      "title": "Small stage content variation example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-content-variation-example-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-default",
+      "component": "SmallStageDefaultExampleComponent",
+      "title": "Small stage default example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-default-example-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-image-offset",
+      "component": "SmallStageImageOffsetExampleComponent",
+      "title": "Small stage image offset example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-image-offset-example-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-text-narrow",
+      "component": "SmallStageTextNarrowExampleComponent",
+      "title": "Small stage narrow content example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-text-narrow-example-###TYPE###.html"
     },
     {
       "id": "spinner-negative",
@@ -5709,6 +5815,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/viewport-change-example-###TYPE###.html"
+    },
+    {
+      "id": "radio-toggle-negative",
+      "component": "RadioToggleNegativeExampleComponent",
+      "title": "Negative Styling Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/radio-toggle-negative-example-###TYPE###.html"
     }
   ],
   "guides": [
