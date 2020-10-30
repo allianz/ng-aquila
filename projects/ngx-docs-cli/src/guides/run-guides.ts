@@ -9,7 +9,7 @@ import { manifest } from './manifest';
 import { transform } from './transform';
 import { MarkdownFile } from '../shared/markdown-file';
 import { showProcessingNotice } from '../shared/logging';
-import chalk from 'chalk';
+import chalk = require('chalk');
 
 const mdFiles$ = bindNodeCallback(glob);
 const outputFile$ = bindNodeCallback(fs.outputFile);

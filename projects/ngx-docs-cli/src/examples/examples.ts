@@ -3,7 +3,7 @@ import { highlightSourceFiles } from './example-sources/examples-sources';
 import { generateModuleFile } from './example-module/examples-module';
 import { of } from 'rxjs';
 import { tap, concat, last, map, catchError } from 'rxjs/operators';
-import chalk from 'chalk';
+import chalk = require('chalk');
 
 
 function run(source, {moduleFile, outputExampleSources}) {

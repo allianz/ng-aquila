@@ -1,4 +1,7 @@
-import * as fm from 'front-matter';
+import * as fmImport from 'front-matter';
+// front-matter 4.0.2 exports the type declarations incorrectly
+// use this until that is fixed
+const fm = fmImport as any;
 import * as hljs from 'highlight.js';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';

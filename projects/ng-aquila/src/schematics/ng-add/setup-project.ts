@@ -6,7 +6,7 @@ import {
   getProjectTargetOptions
 } from '@angular/cdk/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import * as Chalk from 'chalk';
+import * as chalk from 'chalk';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { Schema } from './schema';
 import { parseJsonAst } from '@angular-devkit/core';
@@ -106,7 +106,7 @@ function addScripts(options: Schema, scriptName: string, scriptPath: string) {
       }
       host.overwrite('angular.json', JSON.stringify(workspace, null, 2));
     } catch (e) {
-      console.warn(Chalk.default.red(`Failed to add the script "${scriptName}" to scripts array of "angular.json" file.`));
+      console.warn(chalk.red(`Failed to add the script "${scriptName}" to scripts array of "angular.json" file.`));
     }
     return host;
   };
@@ -119,17 +119,17 @@ function addStyles(options: Schema, path: string, importString: string) {
     const styleFilePath = getProjectStyleFile(project);
 
     if (!styleFilePath) {
-      console.warn(Chalk.default.red(`Could not find the default style file for this project.`));
-      console.warn(Chalk.default.red(`Please import '${path}' file in your CSS.`));
+      console.warn(chalk.red(`Could not find the default style file for this project.`));
+      console.warn(chalk.red(`Please import '${path}' file in your CSS.`));
       return;
     }
 
     const buffer = host.read(styleFilePath);
 
     if (!buffer) {
-      console.warn(Chalk.default.red(`Could not read the default style file within the project ` +
-        `(${Chalk.default.italic(styleFilePath)})`));
-      console.warn(Chalk.default.red(`Please import '${path}' file in your CSS.`));
+      console.warn(chalk.red(`Could not read the default style file within the project ` +
+        `(${chalk.italic(styleFilePath)})`));
+      console.warn(chalk.red(`Please import '${path}' file in your CSS.`));
       return;
     }
 

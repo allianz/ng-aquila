@@ -1,5 +1,5 @@
 import { tap } from 'rxjs/operators';
-import chalk from 'chalk';
+import chalk = require('chalk');
 import { pipe } from 'rxjs';
 import { basename } from 'path';
 import { MarkdownFile } from './markdown-file';

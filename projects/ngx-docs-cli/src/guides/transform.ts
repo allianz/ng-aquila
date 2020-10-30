@@ -1,4 +1,5 @@
-import * as fm from 'front-matter';
+import * as fmImport from 'front-matter';
+const fm = fmImport as any;
 import * as hljs from 'highlight.js';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';

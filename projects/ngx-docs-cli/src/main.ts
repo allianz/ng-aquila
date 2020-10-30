@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import chalk from 'chalk';
+import chalk = require('chalk');
 import * as program from 'commander';
 import * as path from 'path';
 import { concat } from 'rxjs';

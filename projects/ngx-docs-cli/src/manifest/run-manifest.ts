@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import { bindNodeCallback, pipe } from 'rxjs';
 import { tap, switchMap } from 'rxjs/operators';
-import chalk from 'chalk';
+import chalk = require('chalk');
 
 const fileWriter$ = bindNodeCallback(fs.outputFile);
 
