@@ -1519,6 +1519,130 @@
 		{
 			"name": "c-icon--sidebar-right",
 			"unicode": "eb42"
+		},
+		{
+			"name": "c-icon--doc",
+			"unicode": "eb44"
+		},
+		{
+			"name": "c-icon--doc-text",
+			"unicode": "eb45"
+		},
+		{
+			"name": "c-icon--product-locate-position-f",
+			"unicode": "eb46"
+		},
+		{
+			"name": "c-icon--product-danger-f",
+			"unicode": "eb47"
+		},
+		{
+			"name": "c-icon--product-coins-money-f",
+			"unicode": "eb48"
+		},
+		{
+			"name": "c-icon--product-check-paper-f",
+			"unicode": "eb49"
+		},
+		{
+			"name": "c-icon--speaker-off-o",
+			"unicode": "eb50"
+		},
+		{
+			"name": "c-icon--speaker-off",
+			"unicode": "eb51"
+		},
+		{
+			"name": "c-icon--speaker-on-o",
+			"unicode": "eb52"
+		},
+		{
+			"name": "c-icon--speaker-on",
+			"unicode": "eb53"
+		},
+		{
+			"name": "c-icon--help-question-f",
+			"unicode": "eb54"
+		},
+		{
+			"name": "c-icon--voice-of-the-customer-f",
+			"unicode": "eb55"
+		},
+		{
+			"name": "c-icon--product-blog",
+			"unicode": "eb56"
+		},
+		{
+			"name": "c-icon--product-fire",
+			"unicode": "eb57"
+		},
+		{
+			"name": "c-icon--product-fork-lift-truck",
+			"unicode": "eb58"
+		},
+		{
+			"name": "c-icon--product-music",
+			"unicode": "eb59"
+		},
+		{
+			"name": "c-icon--product-podcast",
+			"unicode": "eb60"
+		},
+		{
+			"name": "c-icon--laptop-cog-wheel",
+			"unicode": "eb61"
+		},
+		{
+			"name": "c-icon--board-share-graph",
+			"unicode": "eb62"
+		},
+		{
+			"name": "c-icon--trees",
+			"unicode": "eb63"
+		},
+		{
+			"name": "c-icon--hand-tray",
+			"unicode": "eb64"
+		},
+		{
+			"name": "c-icon--tv-world-globe",
+			"unicode": "eb65"
+		},
+		{
+			"name": "c-icon--helmet-construction",
+			"unicode": "eb66"
+		},
+		{
+			"name": "c-icon--manager",
+			"unicode": "eb67"
+		},
+		{
+			"name": "c-icon--tractor",
+			"unicode": "eb68"
+		},
+		{
+			"name": "c-icon--skyscraper",
+			"unicode": "eb69"
+		},
+		{
+			"name": "c-icon--hand-cog-wheel",
+			"unicode": "eb70"
+		},
+		{
+			"name": "c-icon--fountain-pen",
+			"unicode": "eb71"
+		},
+		{
+			"name": "c-icon--certificate-papers",
+			"unicode": "eb72"
+		},
+		{
+			"name": "c-icon--grapes",
+			"unicode": "eb73"
+		},
+		{
+			"name": "c-icon--product-media",
+			"unicode": "eb74"
 		}
 	]
 }
