@@ -18,6 +18,10 @@ export class ThemeSwitcherService {
   constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private _themes: Theme[]) { }
 
   switchTheme(newTheme: Theme) {
+    if (this._selectedTheme === newTheme) {
+      return;
+    }
+
     this._selectedTheme = newTheme;
 
     // get the theme link element
