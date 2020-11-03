@@ -30,7 +30,7 @@ a {
   @include var(border-color, message-warning-border-color);
   padding: 24px - $message-border-width;
   @include var(border-radius, message-border-radius);
-  @include var(background-color, message-warning-background-color);
+  @include var(background-color, documentation-message-warning-background-color);
   margin-bottom: 16px;
 }
 
@@ -216,7 +216,7 @@ a {
 }
 
 ::ng-deep pre {
-  @include var(background, ui-02);
+  background: var(--documentation-codeblock-background-color);
   padding: 16px;
   border-radius: 2px;
   display: inline-block;
