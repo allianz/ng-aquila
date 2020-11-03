@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -11,13 +12,20 @@ import { takeUntil } from 'rxjs/operators';
 export class ComparisonTableWithIntersectionExampleComponent implements OnDestroy {
   unselectedClassNames: string;
   private _destroyed = new Subject();
+  showOverviewSeparately: boolean;
 
-  constructor(private demoService: BaseDemoThemingService) {
+  constructor(
+    private viewportService: NxViewportService,
+    private demoService: BaseDemoThemingService
+  ) {
     this.demoService.unselectedClassNames.pipe(
       takeUntil(this._destroyed)
     ).subscribe((value: string) => {
       this.unselectedClassNames = value;
     });
+
+    this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM)
+    .subscribe(isMaximumMedium => this.showOverviewSeparately = isMaximumMedium);
   }
 
   ngOnDestroy() {

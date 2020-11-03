@@ -45,6 +45,8 @@ You can also set the initially selected product by using the `[selectedIndex]` i
 
 You can further use intersection cells (`nx-comparison-table-intersection-cell`) which are a merge of multiple cells.
 
+For the mobile view, in this example the content of the intersection cell is displayed inside an extra-light accordion above the table.
+
 <!-- example(comparison-table-with-intersection) -->
 
 #### Row Groups
