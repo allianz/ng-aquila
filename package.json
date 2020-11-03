@@ -12,7 +12,7 @@
     "lint:scss": "sass-lint -c .sass-lint.yml -q -v",
     "lint": "npm-run-all lint:ts lint:scss",
     "lint:commitmsg": "commitlint -e",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged --relative",
     "build:all:ivy": "npm-run-all build:lib:ivy build:docs-ui build:docs",
     "build:all:ve": "npm-run-all build:lib build:docs-ui build:docs",
     "build:lib": "npm run ng-high-memory -- build ng-aquila --prod && npm run build:package",
@@ -40,20 +40,14 @@
     }
   },
   "lint-staged": {
-    "projects/ng-aquila/src/**/*(!spec).ts": [
-      "tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.lib.json --fix"
+    "projects/ng-aquila/**/*.ts": [
+      "ng lint ng-aquila --fix --files"
     ],
-    "projects/ng-aquila/src/**/*.spec.ts": [
-      "tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.spec.json --fix"
-    ],
-    "projects/ngx-docs-ui/src/**/*(!spec).ts": [
-      "tslint -c projects/ngx-docs-ui/tslint.json -p projects/ngx-docs-ui/tsconfig.lib.json --fix"
-    ],
-    "projects/ngx-docs-ui/src/**/*.ts": [
-      "tslint -c projects/ngx-docs-ui/tslint.json -p projects/ngx-docs-ui/tsconfig.spec.json --fix"
+    "projects/ngx-docs-ui/**/*.ts": [
+      "ng lint ngx-docs-ui --fix --files"
     ],
     "projects/opensource-documentation/**/*.ts": [
-      "tslint -c projects/opensource-documentation/tslint.json -p projects/opensource-documentation/tsconfig.app.json --fix"
+      "ng lint opensource-documentation --fix --files"
     ],
     "*.scss": "npm run lint:scss"
   },
