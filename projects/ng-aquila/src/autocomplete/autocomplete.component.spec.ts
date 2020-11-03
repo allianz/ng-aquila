@@ -1,13 +1,13 @@
 import { ViewChild, Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
-import {async, ComponentFixture, fakeAsync, inject, TestBed, tick} from '@angular/core/testing';
-import {Observable, of} from 'rxjs';
-import {Component, Type} from '@angular/core';
-import {NxAutocompleteModule} from './autocomplete.module';
-import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {OverlayContainer, OverlayModule} from '@angular/cdk/overlay';
-import {CommonModule} from '@angular/common';
+import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { Observable, of } from 'rxjs';
+import { Component, Type } from '@angular/core';
+import { NxAutocompleteModule } from './autocomplete.module';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import { CommonModule } from '@angular/common';
 import * as axe from 'axe-core';
 
 import { NxAutocompleteComponent } from '.';
@@ -49,24 +49,7 @@ describe('NxAutocompleteComponent:', () => {
     return getAutocompletePanel().querySelectorAll('.nx-autocomplete-option') as NodeListOf<HTMLElement>;
   }
 
-  function getNotificationInfo(): HTMLElement {
-    return fixture.nativeElement.querySelector('.c-notification--info');
-  }
-
-  function getNotificationError(): HTMLElement {
-    return fixture.nativeElement.querySelector('.c-notification--error');
-  }
-
   beforeEach(async(() => {
-
-    /*
-    Currently our a11y test fails with: `role combobox  is not allowed for given element`
-    Seems to be coming from axe support of aria 1.1 introduced in axe-core 3.1.0
-
-    Read details: https://www.w3.org/TR/wai-aria-1.1/#combobox
-    Created issue on axe-core: https://github.com/dequelabs/axe-core/issues/1116
-    */
-
     TestBed.configureTestingModule({
       declarations: [
         BasicAutocompleteComponent,
@@ -252,25 +235,7 @@ describe('NxAutocompleteComponent:', () => {
     expect(openedModal).toBeTruthy();
   }));
 
-    describe('a11y', () => {
-    // Important: axe will stay configured over all specs
-    // if we don't reset it. So make the reset very local and reset it
-    // immediately after the specs of this block being ran.
-    beforeAll(() => {
-
-      axe.configure({
-        rules: [
-          {
-            id: 'aria-allowed-role',
-            enabled: false
-          }
-        ]
-      });
-    });
-
-    afterAll(() => {
-      axe.reset();
-    });
+  describe('a11y', () => {
 
     it('has no accessibility violations', function (done) {
       createTestComponent(BasicAutocompleteComponent);
@@ -293,29 +258,29 @@ const DATA = [
 ];
 
 const COMPLEX_DATA = [
-  { id: 'A', desc: 'A descr'},
-  { id: 'AA', desc: 'AA descr'},
-  { id: 'C', desc: 'C descr'}
+  { id: 'A', desc: 'A descr' },
+  { id: 'AA', desc: 'AA descr' },
+  { id: 'C', desc: 'C descr' }
 ];
 
 @Directive()
 class AutocompleteComponent {
-  @ViewChild(NxAutocompleteComponent,  { read: ElementRef }) autocompleteInstanceRef: ElementRef;
+  @ViewChild(NxAutocompleteComponent, { read: ElementRef }) autocompleteInstanceRef: ElementRef;
   @ViewChild(NxAutocompleteComponent) autocompleteInstance: NxAutocompleteComponent;
 
   public inputVal: any;
 
   public autocompleteDisabled = false;
 
-  searchData(value: string): Array<string> {
+  searchData(value: string): string[] {
     return DATA.filter((item) => item.indexOf(value) >= 0);
   }
 
-  searchComplexData(value: string): Array<any> {
+  searchComplexData(value: string): any[] {
     return COMPLEX_DATA.filter((item) => item.desc.indexOf(value) >= 0);
   }
 
-  searchFunction(value: string): Observable<Array<any>> {
+  searchFunction(value: string): Observable<any[]> {
     return of(DATA.filter((item) => item.indexOf(value) >= 0));
   }
 }
@@ -424,5 +389,5 @@ function isVisible(el) {
   if (getComputedStyle(el).visibility === 'hidden') {
     return false;
   }
-  return ( el.offsetWidth > 0 || el.offsetHeight > 0 );
+  return (el.offsetWidth > 0 || el.offsetHeight > 0);
 }

@@ -643,6 +643,11 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
       .flexibleConnectedTo(this._getConnectedElement())
       .withViewportMargin(viewPortMargin)
       .withPush(false)
+      // to fix an edge case that would open the overlay after it has been visually hidden
+      // and the trigger moved to the bottom edge of the viewport
+      // problem is that the CDK overlay takes the last position into account which results
+      // in the overlay only being 16px in height. this change disabled this code path for now
+      .withGrowAfterOpen(true)
       .withPositions([
         {
           originX: 'start',
