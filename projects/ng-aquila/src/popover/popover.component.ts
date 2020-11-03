@@ -53,8 +53,7 @@ export class NxPopoverComponent implements OnDestroy {
     return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
   }
 
-  constructor(@Optional() private _dir: Directionality) {
-  }
+  constructor(@Optional() private _dir: Directionality) {}
 
   ngOnDestroy() {
     this.closed.complete();
@@ -80,9 +79,13 @@ export class NxPopoverComponent implements OnDestroy {
   }
 
   /** @docs-private */
-  get classList(): string[] {
+  get classList(): string {
     if (this.direction) {
-      return [`nx-popover--${this.direction}`];
+      // Returning an array here caused an error that the classes were not set
+      // after a prod build. Couldn't reproduce it properly in an isolated way.
+      // As it doesn't make sense to return an array for a single value anyway
+      // changed it to a string and that seems to work.
+      return `nx-popover--${this.direction}`;
     }
   }
 
