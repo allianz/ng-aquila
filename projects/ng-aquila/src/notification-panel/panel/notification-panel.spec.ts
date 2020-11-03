@@ -125,7 +125,7 @@ describe('NxLinkComponent', () => {
       </nx-notification-item-content>
     </a>
     <nx-notification-header>
-      <h3 nxCopytext="large" class="nx-margin-0">Unread
+      <h3 nxCopytext="large" class="nx-margin-0">Read
       </h3>
     </nx-notification-header>
     <a nx-notification-panel-item read routerLink="/documentation/button">
