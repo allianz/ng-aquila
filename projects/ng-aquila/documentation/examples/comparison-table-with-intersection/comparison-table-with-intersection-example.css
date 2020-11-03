@@ -46,10 +46,10 @@ nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
   flex-direction: row;
 }
 
-.has-popover nx-icon {
+.info-icon,
+.popular-info-icon {
   outline: none;
   margin-left: auto;
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
 }
 
 @media only screen and (max-width: 704px) {
@@ -71,15 +71,10 @@ nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
   margin: 0;
 }
 
-.info-icon {
+.info-icon,
+.popular-info-icon {
   cursor: pointer;
   align-self: flex-start;
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
-}
-
-.info-icon-service {
-  cursor: pointer;
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
 }
 
 @media only screen and (min-width: 704px) and (max-width: 991px) {
@@ -96,6 +91,14 @@ nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
   .service-lists {
     flex-direction: column;
   }
+}
+
+.info-icon {
+  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
+}
+
+.popular-info-icon {
+  color: var(--documentation-comparison-table-example-most-popular-icon-color);
 }
 
 .minus-icon {

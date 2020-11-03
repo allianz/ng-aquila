@@ -14,7 +14,8 @@ $nx-theme-documentation: (
   // Tokens for examples
   documentation-comparison-table-example-minus-color: #ada8a8,
   documentation-comparison-table-example-info-icon-color: interactive-primary,
-
+  documentation-comparison-table-example-background-color: ui-01,
+  documentation-comparison-table-example-most-popular-icon-color: comparison-table-popular-cell-text-color,
 
   documentation-fullscreen-background-01: ui-01,
   documentation-fullscreen-background-02: ui-02,
@@ -22,7 +23,6 @@ $nx-theme-documentation: (
   // Tokens for examples
   documentation-inverse-container-background: negative-background,
   documentation-margin-example-background-color: #1c7997,
-  documentation-comparison-table-example-background-color: ui-01,
 
   // Tokens for api and code
   documentation-api-codebox-border-color: #969696,

@@ -5,8 +5,9 @@
       <nx-comparison-table-popular-cell forColumn="2">
         <div class="popular-cell__content-wrapper">
           <p class="popular-cell__title">Most popular</p>
-          <nx-icon class="info-icon" aria-hidden="true" name="info-circle-o" size="s" #popoverTrigger="nxPopoverTrigger"
-            [nxPopoverTriggerFor]="popover" nxPopoverTrigger="hover"></nx-icon>
+          <nx-icon class="popular-info-icon" name="info-circle-o" size="s" #popoverTrigger="nxPopoverTrigger"
+                  [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click" tabindex="0"
+                  aria-label="More information" role="button"></nx-icon>
           <nx-popover #popover>
             <span>This product was chosen by most of the users</span>
           </nx-popover>
@@ -60,8 +61,9 @@
       <nx-comparison-table-description-cell>
         <div class="has-popover">
           <span>Summary of what all services include</span>
-          <nx-icon aria-label="Summary of what all services include" name="info-circle-o" size="s"
-            [nxPopoverTriggerFor]="popoverContent1" nxPopoverTrigger="click" tabindex="0" role="button">
+          <nx-icon class="info-icon" aria-label="More information" name="info-circle-o"
+                   size="s" [nxPopoverTriggerFor]="popoverContent1" nxPopoverTrigger="click"
+                   tabindex="0" role="button">
           </nx-icon>
           <nx-popover #popoverContent1>
             <span>Summary of what all services include</span>
@@ -91,8 +93,9 @@
       <nx-comparison-table-description-cell>
         <div class="has-popover">
           <span>Service headline</span>
-          <nx-icon aria-label="Service headline" name="info-circle-o" size="s" [nxPopoverTriggerFor]="popoverContent1"
-            nxPopoverTrigger="click" tabindex="0" role="button">
+          <nx-icon class="info-icon" aria-label="More information" name="info-circle-o"
+                   size="s" [nxPopoverTriggerFor]="popoverContent1"
+                   nxPopoverTrigger="click" tabindex="0" role="button">
           </nx-icon>
           <nx-popover #popoverContent1>
             <span>Service headline popover content</span>
@@ -110,8 +113,9 @@
       <nx-comparison-table-description-cell>
         <div class="has-popover">
           <span>Service headline</span>
-          <nx-icon aria-label="Service headline" name="info-circle-o" size="s" [nxPopoverTriggerFor]="popoverContent2"
-            nxPopoverTrigger="click" tabindex="0" role="button">
+          <nx-icon class="info-icon" aria-label="More information" name="info-circle-o"
+                   size="s" [nxPopoverTriggerFor]="popoverContent2"
+                   nxPopoverTrigger="click" tabindex="0" role="button">
           </nx-icon>
           <nx-popover #popoverContent2>
             <span>Service headline popover content</span>
