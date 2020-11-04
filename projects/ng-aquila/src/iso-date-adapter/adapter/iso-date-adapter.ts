@@ -1,7 +1,7 @@
 import { pad } from '@aposin/ng-aquila/utils';
 import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 
-import { NgModule, Optional, Inject } from '@angular/core';
+import { Optional, Inject } from '@angular/core';
 
 import dayjs, { Dayjs } from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
@@ -30,15 +30,14 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
  * @docs-private
  */
 export class NxIsoDateAdapter extends NxDateAdapter<string> {
-
   private _localeData: {
-    firstDayOfWeek: number,
-    longMonths: string[],
-    shortMonths: string[],
-    dates: string[],
-    longDaysOfWeek: string[],
-    shortDaysOfWeek: string[],
-    narrowDaysOfWeek: string[]
+    firstDayOfWeek: number;
+    longMonths: string[];
+    shortMonths: string[];
+    dates: string[];
+    longDaysOfWeek: string[];
+    shortDaysOfWeek: string[];
+    narrowDaysOfWeek: string[];
   };
 
   constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string) {
@@ -75,15 +74,54 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
     return this._createDayjs(date).format(displayFormat);
   }
 
-  parse(value: any, format: string | string[], strict: boolean): string {
-    let obj: Dayjs;
-    if (value && typeof value === 'string') {
-      obj = dayjs(value, format, this.locale, strict);
+  /**
+   * if the given formats include a localized format we have to map
+   * it manually to a dayjs format as dayjs recognizes locale
+   * format only for formatting not for parsing
+   * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946
+   */
+  normalizeFormat(format: string | string[]): string[] {
+    const availableLocalFormats = dayjs.Ls[dayjs.locale()].formats;
+    let normalizedFormat = format;
+
+    if (!Array.isArray(normalizedFormat)) {
+      normalizedFormat = [normalizedFormat];
     }
 
-    if (obj && !obj.isValid()) {
+    normalizedFormat = normalizedFormat.map((formatString) => {
+      if (Object.keys(availableLocalFormats).indexOf(formatString) !== -1) {
+        return availableLocalFormats[formatString];
+      }
+
+      return formatString;
+    });
+
+    return normalizedFormat;
+  }
+
+  parse(value: any, format: string | string[], strict: boolean): string {
+    let obj: Dayjs;
+
+    const normalizedFormats = this.normalizeFormat(format);
+    if (value && typeof value === 'string') {
+      if (strict) {
+        obj = dayjs(value, normalizedFormats, this.locale, true);
+      } else {
+        // The non strict parsing of day.js is rather strict when it comes to separators.
+        // For example, this format: YYYY-MM-DD still requires the user to type in the -
+        // To get a little closer to the behavior of momentjs, the following code extends
+        // the list of given formats with versions were all the separators were removed
+        const formatsWithoutSeparators = [...normalizedFormats].map((normalizedformat) => {
+          return normalizedformat.replace(/[^\w]/g, '');
+        });
+        obj = dayjs(value, [...normalizedFormats, ...formatsWithoutSeparators], this.locale, false);
+      }
+    }
+
+    if (obj?.isValid() === false) {
       return '';
     }
+
     return obj ? obj.format(ISO_STRING_FORMAT) : null;
   }
 
@@ -120,7 +158,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
   }
 
   createDate(year: number, month: number, date: number): string {
-      // Check for invalid month and date (except upper bound on date which we have to check after
+    // Check for invalid month and date (except upper bound on date which we have to check after
     // creating the Date).
     if (month < 0 || month > 11) {
       throw Error(`Invalid month index "${month}". Month index has to be between 0 and 11.`);
@@ -188,16 +226,17 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
 
   setLocale(locale: string) {
     const data = dayjs().locale(locale).localeData();
+
     this._localeData = {
       firstDayOfWeek: data.firstDayOfWeek(),
       longMonths: data.months(),
       shortMonths: data.monthsShort(),
       dates: range(31, (i) => this._createDayjs(this.createDate(2017, 0, i + 1)).format('D')),
-      // TODO bug in dayjs taking globale one for now
-      longDaysOfWeek: (dayjs as any).localeData().weekdays(),
+      longDaysOfWeek: data.weekdays(),
       shortDaysOfWeek: data.weekdaysShort(),
-      narrowDaysOfWeek: data.weekdaysMin(),
+      narrowDaysOfWeek: data.weekdaysMin()
     };
+
     super.setLocale(locale);
   }
 
@@ -208,5 +247,4 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
   private _createString(year: number, month: number, date: number) {
     return `${year}-${pad(month.toString())}-${pad(date.toString())}`;
   }
-
 }

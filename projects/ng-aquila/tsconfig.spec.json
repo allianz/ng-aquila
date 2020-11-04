@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "../out-tsc",
     "types": ["jasmine", "node", "karma-viewport"],
-    "target": "es5"
+    "target": "es5",
+    "allowSyntheticDefaultImports": true
   },
   "files": ["test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"],

@@ -13,15 +13,26 @@ import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 ```
 
-The date field requires Angular CDK (incl. CSS).
+The date field requires the Angular CDK (incl. CSS).
 
 ### Choose your DateAdapter
-You can choose between using the native date, [Moment.js](https://momentjs.com/) or implement your own. This documentation is using the moment implementation.
+You can choose between using the native date, an ISO string adapter that uses [dayjs](https://day.js.org/) under the hood, [Moment.js](https://momentjs.com/), or implement your own. This documentation is using the moment date adapter.
 
 |Module              |Date type|Supported locales                                                      |Dependencies                      |Import from                       |
 |--------------------|---------|-----------------------------------------------------------------------|----------------------------------|----------------------------------|
 |`NxNativeDateModule`|`Date`   |en-US                                                                  |None                              |`@aposin/ng-aquila/datefield`     |
-|`NxMomentDateModule`|`Moment` |[See project](https://github.com/moment/moment/tree/develop/src/locale)|[Moment.js](https://momentjs.com/)|`@aposin/ng-aquila/moment-date-adapter`|
+|`NxMomentDateModule`|`Moment` |[See moment project](https://github.com/moment/moment/tree/develop/src/locale)|[Moment.js](https://momentjs.com/)|`@aposin/ng-aquila/moment-date-adapter`|
+|`NxIsoDateModule`|`string` in ISO format YYYY-MM-DD |[See dayjs project](https://github.com/iamkun/dayjs/tree/dev/src/locale)|[dayjs](https://day.js.org/)|`@aposin/ng-aquila/iso-date-adapter`|
+
+Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).
+
+
+#### ISO Date Adapter
+The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.
+
+For localization you have to import the locales yourself. `en` is the default locale. To add e.g. german you use `import 'dayjs/locale/de'`.
+
+Please install the `dayjs` package to use this adapter.
 
 #### Native Date
 
@@ -29,7 +40,7 @@ You can choose between using the native date, [Moment.js](https://momentjs.com/)
 import { NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 ```
 
-That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why we use the Moment.js adapter in this demonstration.
+That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why for most use cases you should use the ISO or moment adapter.
 
 #### Moment.js
 
@@ -44,11 +55,14 @@ You can implement your own DateAdapter to use other libraries like [date-fns](ht
 
 #### Setting the selected date
 
-The type of values that the datepicker expects depends on the type of DateAdapter provided in your application. The `NativeDateAdapter`, for example, works directly with **plain JavaScript Date objects**. When using the `MomentDateAdapter`, however, the **values will all be Moment.js instances**.
+The type of values that the datepicker expects depends on the type of DateAdapter provided in your application. The `NativeDateAdapter`, for example, works directly with **plain JavaScript Date objects**. When using the `MomentDateAdapter`, however, the **values will all be Moment.js instances**. With the `IsoDateAdapter` the model is ISO date strings in the format of YYYY-MM-DD.
 
 Depending on the DateAdapter being used, the datepicker may automatically deserialize certain date formats for you as well. For example, both the `NativeDateAdapter` and `MomentDateAdapter` allow [ISO 8601](https://tools.ietf.org/html/rfc3339) strings to be passed to the datepicker and automatically converted to the proper object type. This can be convenient when binding data directly from your backend to the datepicker. However, the datepicker will not accept date strings formatted in user format such as "1/2/2017" as this is ambiguous and will mean different things depending on the locale of the browser running the code. You can test which strings are accepted:
 
 <!-- example(datefield-iso) -->
+
+### Manipulating dates
+The adapter interface defines some methods to directly manipulate a date value like `addCalendarDays`, `addCalendarMonths` and `addCalendarYears`. That way you don't need to know how the underlying date object works and especially helps for the Iso Date Adapter to manipulate your date. See the [API](./documentation/datefield/overview) for a list of methods.
 
 ### Examples
 This is a full example showing the capabilities of this component. It integrates into `nx-formfield` so you have access to floating labels, hints and error messages. Optionally you can provide a Datepicker.
@@ -88,11 +102,11 @@ Both parsing and formatting depend on the capabilities of the chosen DateAdapter
 <!-- example(datefield-format-injection) -->
 
 #### Parsing
-Parsing converts a string into a valid date model which is either a native Date object or a moment object with the current set of available NxDateAdapters.
+Parsing converts the input string to the proper model of the date adapter you are using.
 
-**Parsing capabilities of date adapters:** The native date object has only minimal parsing capabilities. There is no parsing format supported so it's simply ignored if any is given. The moment class has a pretty good support for parsing in different formats.
+**Parsing capabilities of date adapters:** The native date object has only minimal parsing capabilities. There is no parsing format supported so it's simply ignored if any is given.
 
-The default parsing pattern for the moment adapter is `L` standing for local aware and translates to `MM/DD/YYYY` for `en-US`. See the [documentation](https://momentjs.com/docs/#/parsing/) for details.
+The default parsing pattern for the Iso and moment adapter is `L` standing for local aware and translates to `MM/DD/YYYY` for `en`.
 
 Pass a pattern of your choice to be used for the internal date heuristics. There are multiple valid formats. If you don't pass one, the current locale format will be the base for the pattern's heuristics.
 
@@ -123,7 +137,7 @@ You can manually open or close the date picker by accessing its template referen
 ### Localization
 
 #### Date Localization
-The ability to localize the datepicker **depends on the chosen date implementation**. The native date adapter supports only en-US and you can't change the values. The moment adapter supports a variety of locales. See Moment.js for a full list of locales.
+The ability to localize the datepicker **depends on the chosen date implementation**. The native date adapter supports only en-US and you can't change the values. The Iso and moment adapters support a variety of locales.
 
 The Datepicker falls back on the Application token `LOCALE_ID` and can be overwritten through the `NX_DATE_LOCALE` if necessary:
 
