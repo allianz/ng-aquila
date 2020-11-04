@@ -85,8 +85,8 @@ import {ComparisonTableWithIntersectionExampleComponent} from './../examples/com
 import {ComparisonTableWithToggleSectionsExampleComponent} from './../examples/comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import {ComparisonTableExampleComponent} from './../examples/comparison-table/comparison-table-example';
 import {ContextMenuBasicExampleComponent} from './../examples/context-menu-basic/context-menu-basic-example';
-import {ContextMenuDataExampleComponent} from './../examples/context-menu-data/context-menu-data-example';
 import {ContextMenuDisabledExampleComponent} from './../examples/context-menu-disabled/context-menu-disabled-example';
+import {ContextMenuDataExampleComponent} from './../examples/context-menu-data/context-menu-data-example';
 import {ContextMenuIconsExampleComponent} from './../examples/context-menu-icons/context-menu-icons-example';
 import {ContextMenuLazyExampleComponent} from './../examples/context-menu-lazy/context-menu-lazy-example';
 import {ContextMenuNestedExampleComponent} from './../examples/context-menu-nested/context-menu-nested-example';
@@ -112,8 +112,8 @@ import {DatefieldStartviewExampleComponent} from './../examples/datefield-startv
 import {DatefieldToggleFocusExampleComponent} from './../examples/datefield-toggle-focus/datefield-toggle-focus-example';
 import {DropdownCustomLabelExampleComponent} from './../examples/dropdown-custom-label/dropdown-custom-label-example';
 import {DropdownDisabledItemsExampleComponent} from './../examples/dropdown-disabled-items/dropdown-disabled-items-example';
-import {DropdownFilterCustomExampleComponent} from './../examples/dropdown-filter-custom/dropdown-filter-custom-example';
 import {DropdownFilterExampleComponent} from './../examples/dropdown-filter/dropdown-filter-example';
+import {DropdownFilterCustomExampleComponent} from './../examples/dropdown-filter-custom/dropdown-filter-custom-example';
 import {DropdownGroupExampleComponent} from './../examples/dropdown-group/dropdown-group-example';
 import {DropdownMultiSelectExampleComponent} from './../examples/dropdown-multi-select/dropdown-multi-select-example';
 import {DropdownNegativeExampleComponent} from './../examples/dropdown-negative/dropdown-negative-example';
@@ -183,8 +183,8 @@ import {IbanMaskComponent} from './../examples/iban-mask/iban-mask-example';
 import {IconEssentialIconsExampleComponent} from './../examples/icon-essential-icons/icon-essential-icons-example';
 import {IconEssentialOverrideExampleComponent} from './../examples/icon-essential-override/icon-essential-override-example';
 import {IconFilledExampleComponent} from './../examples/icon-filled/icon-filled-example';
-import {IconGeneralExampleComponent} from './../examples/icon-general/icon-general-example';
 import {IconListFunctionalExampleComponent} from './../examples/icon-list-functional/icon-list-functional-example';
+import {IconGeneralExampleComponent} from './../examples/icon-general/icon-general-example';
 import {IconListProductExampleComponent} from './../examples/icon-list-product/icon-list-product-example';
 import {IconOutlineExampleComponent} from './../examples/icon-outline/icon-outline-example';
 import {IconRegistryExampleComponent} from './../examples/icon-registry/icon-registry-example';
@@ -194,8 +194,8 @@ import {ImageDefaultExampleComponent} from './../examples/image-default/image-de
 import {ImageFixedRatiosExampleComponent} from './../examples/image-fixed-ratios/image-fixed-ratios-example';
 import {ImageRoundedExampleComponent} from './../examples/image-rounded/image-rounded-example';
 import {InputAutoresizeExampleComponent} from './../examples/input-autoresize/input-autoresize-example';
-import {InputReactiveExampleComponent} from './../examples/input-reactive/input-reactive-example';
 import {InputStandaloneExampleComponent} from './../examples/input-standalone/input-standalone-example';
+import {InputReactiveExampleComponent} from './../examples/input-reactive/input-reactive-example';
 import {InputTemplateDrivenExampleComponent} from './../examples/input-template-driven/input-template-driven-example';
 import {InputWithoutFormfieldExampleComponent} from './../examples/input-without-formfield/input-without-formfield-example';
 import {InputExampleComponent} from './../examples/input/input-example';
@@ -398,12 +398,12 @@ import {TimefieldDisabledExampleComponent} from './../examples/timefield-disable
 import {TimefieldFormatTogglerExampleComponent} from './../examples/timefield-format-toggler/timefield-format-toggler-example';
 import {TimefieldLocalizeExampleComponent} from './../examples/timefield-localize/timefield-localize-example';
 import {TimefieldNegativeExampleComponent} from './../examples/timefield-negative/timefield-negative-example';
-import {TimefieldReactiveExampleComponent} from './../examples/timefield-reactive/timefield-reactive-example';
 import {TimefieldTemplateDrivenExampleComponent} from './../examples/timefield-template-driven/timefield-template-driven-example';
 import {ToolbarPositioningContentExampleComponent} from './../examples/toolbar-positioning-content/toolbar-positioning-content-example';
 import {ToolbarExampleComponent} from './../examples/toolbar/toolbar-example';
-import {TooltipBasicExampleComponent} from './../examples/tooltip-basic/tooltip-basic-example';
+import {TimefieldReactiveExampleComponent} from './../examples/timefield-reactive/timefield-reactive-example';
 import {TooltipDelayExampleComponent} from './../examples/tooltip-delay/tooltip-delay-example';
+import {TooltipBasicExampleComponent} from './../examples/tooltip-basic/tooltip-basic-example';
 import {TooltipDisabledExampleComponent} from './../examples/tooltip-disabled/tooltip-disabled-example';
 import {TooltipFallbacksTableExampleComponent} from './../examples/tooltip-fallbacks-table/tooltip-fallbacks-table-example';
 import {TooltipPositionsExampleComponent} from './../examples/tooltip-positions/tooltip-positions-example';
@@ -797,15 +797,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Basic Context Menu Example',
     component: ContextMenuBasicExampleComponent
   },
-  'context-menu-data': {
-    id: 'context-menu-data',
-    title: 'Data Context Menu Example',
-    component: ContextMenuDataExampleComponent
-  },
   'context-menu-disabled': {
     id: 'context-menu-disabled',
     title: 'Disabled Context Menu Example',
     component: ContextMenuDisabledExampleComponent
+  },
+  'context-menu-data': {
+    id: 'context-menu-data',
+    title: 'Data Context Menu Example',
+    component: ContextMenuDataExampleComponent
   },
   'context-menu-icons': {
     id: 'context-menu-icons',
@@ -932,15 +932,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Disabled items example',
     component: DropdownDisabledItemsExampleComponent
   },
-  'dropdown-filter-custom': {
-    id: 'dropdown-filter-custom',
-    title: 'Custom Filter Example',
-    component: DropdownFilterCustomExampleComponent
-  },
   'dropdown-filter': {
     id: 'dropdown-filter',
     title: 'Filter example',
     component: DropdownFilterExampleComponent
+  },
+  'dropdown-filter-custom': {
+    id: 'dropdown-filter-custom',
+    title: 'Custom Filter Example',
+    component: DropdownFilterCustomExampleComponent
   },
   'dropdown-group': {
     id: 'dropdown-group',
@@ -1287,15 +1287,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Icons Filled Example',
     component: IconFilledExampleComponent
   },
-  'icon-general': {
-    id: 'icon-general',
-    title: 'General Icons Example',
-    component: IconGeneralExampleComponent
-  },
   'icon-list-functional': {
     id: 'icon-list-functional',
     title: 'Functional Icons List Example',
     component: IconListFunctionalExampleComponent
+  },
+  'icon-general': {
+    id: 'icon-general',
+    title: 'General Icons Example',
+    component: IconGeneralExampleComponent
   },
   'icon-list-product': {
     id: 'icon-list-product',
@@ -1342,15 +1342,15 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Textarea with autoresize example',
     component: InputAutoresizeExampleComponent
   },
-  'input-reactive': {
-    id: 'input-reactive',
-    title: 'Reactive example',
-    component: InputReactiveExampleComponent
-  },
   'input-standalone': {
     id: 'input-standalone',
     title: 'Standalone example',
     component: InputStandaloneExampleComponent
+  },
+  'input-reactive': {
+    id: 'input-reactive',
+    title: 'Reactive example',
+    component: InputReactiveExampleComponent
   },
   'input-template-driven': {
     id: 'input-template-driven',
@@ -2362,11 +2362,6 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Timefield negative example',
     component: TimefieldNegativeExampleComponent
   },
-  'timefield-reactive': {
-    id: 'timefield-reactive',
-    title: 'Timefield reactive forms example',
-    component: TimefieldReactiveExampleComponent
-  },
   'timefield-template-driven': {
     id: 'timefield-template-driven',
     title: 'Timefield Template Driven Form',
@@ -2382,15 +2377,20 @@ export const EXAMPLES: {[key: string]: ComponentExample} = {
     title: 'Toolbar basic example',
     component: ToolbarExampleComponent
   },
-  'tooltip-basic': {
-    id: 'tooltip-basic',
-    title: 'Tooltip',
-    component: TooltipBasicExampleComponent
+  'timefield-reactive': {
+    id: 'timefield-reactive',
+    title: 'Timefield reactive forms example',
+    component: TimefieldReactiveExampleComponent
   },
   'tooltip-delay': {
     id: 'tooltip-delay',
     title: 'Tooltip with delay',
     component: TooltipDelayExampleComponent
+  },
+  'tooltip-basic': {
+    id: 'tooltip-basic',
+    title: 'Tooltip',
+    component: TooltipBasicExampleComponent
   },
   'tooltip-disabled': {
     id: 'tooltip-disabled',
@@ -2520,8 +2520,8 @@ export const EXAMPLE_LIST = [
   ComparisonTableWithToggleSectionsExampleComponent,
   ComparisonTableExampleComponent,
   ContextMenuBasicExampleComponent,
-  ContextMenuDataExampleComponent,
   ContextMenuDisabledExampleComponent,
+  ContextMenuDataExampleComponent,
   ContextMenuIconsExampleComponent,
   ContextMenuLazyExampleComponent,
   ContextMenuNestedExampleComponent,
@@ -2547,8 +2547,8 @@ export const EXAMPLE_LIST = [
   DatefieldToggleFocusExampleComponent,
   DropdownCustomLabelExampleComponent,
   DropdownDisabledItemsExampleComponent,
-  DropdownFilterCustomExampleComponent,
   DropdownFilterExampleComponent,
+  DropdownFilterCustomExampleComponent,
   DropdownGroupExampleComponent,
   DropdownMultiSelectExampleComponent,
   DropdownNegativeExampleComponent,
@@ -2618,8 +2618,8 @@ export const EXAMPLE_LIST = [
   IconEssentialIconsExampleComponent,
   IconEssentialOverrideExampleComponent,
   IconFilledExampleComponent,
-  IconGeneralExampleComponent,
   IconListFunctionalExampleComponent,
+  IconGeneralExampleComponent,
   IconListProductExampleComponent,
   IconOutlineExampleComponent,
   IconRegistryExampleComponent,
@@ -2629,8 +2629,8 @@ export const EXAMPLE_LIST = [
   ImageFixedRatiosExampleComponent,
   ImageRoundedExampleComponent,
   InputAutoresizeExampleComponent,
-  InputReactiveExampleComponent,
   InputStandaloneExampleComponent,
+  InputReactiveExampleComponent,
   InputTemplateDrivenExampleComponent,
   InputWithoutFormfieldExampleComponent,
   InputExampleComponent,
@@ -2833,12 +2833,12 @@ export const EXAMPLE_LIST = [
   TimefieldFormatTogglerExampleComponent,
   TimefieldLocalizeExampleComponent,
   TimefieldNegativeExampleComponent,
-  TimefieldReactiveExampleComponent,
   TimefieldTemplateDrivenExampleComponent,
   ToolbarPositioningContentExampleComponent,
   ToolbarExampleComponent,
-  TooltipBasicExampleComponent,
+  TimefieldReactiveExampleComponent,
   TooltipDelayExampleComponent,
+  TooltipBasicExampleComponent,
   TooltipDisabledExampleComponent,
   TooltipFallbacksTableExampleComponent,
   TooltipPositionsExampleComponent,
@@ -3156,12 +3156,12 @@ export const EXAMPLE_ROUTES = [
     component: ContextMenuBasicExampleComponent
   },
 {
-    path: 'context-menu-data',
-    component: ContextMenuDataExampleComponent
-  },
-{
     path: 'context-menu-disabled',
     component: ContextMenuDisabledExampleComponent
+  },
+{
+    path: 'context-menu-data',
+    component: ContextMenuDataExampleComponent
   },
 {
     path: 'context-menu-icons',
@@ -3264,12 +3264,12 @@ export const EXAMPLE_ROUTES = [
     component: DropdownDisabledItemsExampleComponent
   },
 {
-    path: 'dropdown-filter-custom',
-    component: DropdownFilterCustomExampleComponent
-  },
-{
     path: 'dropdown-filter',
     component: DropdownFilterExampleComponent
+  },
+{
+    path: 'dropdown-filter-custom',
+    component: DropdownFilterCustomExampleComponent
   },
 {
     path: 'dropdown-group',
@@ -3548,12 +3548,12 @@ export const EXAMPLE_ROUTES = [
     component: IconFilledExampleComponent
   },
 {
-    path: 'icon-general',
-    component: IconGeneralExampleComponent
-  },
-{
     path: 'icon-list-functional',
     component: IconListFunctionalExampleComponent
+  },
+{
+    path: 'icon-general',
+    component: IconGeneralExampleComponent
   },
 {
     path: 'icon-list-product',
@@ -3592,12 +3592,12 @@ export const EXAMPLE_ROUTES = [
     component: InputAutoresizeExampleComponent
   },
 {
-    path: 'input-reactive',
-    component: InputReactiveExampleComponent
-  },
-{
     path: 'input-standalone',
     component: InputStandaloneExampleComponent
+  },
+{
+    path: 'input-reactive',
+    component: InputReactiveExampleComponent
   },
 {
     path: 'input-template-driven',
@@ -4408,10 +4408,6 @@ export const EXAMPLE_ROUTES = [
     component: TimefieldNegativeExampleComponent
   },
 {
-    path: 'timefield-reactive',
-    component: TimefieldReactiveExampleComponent
-  },
-{
     path: 'timefield-template-driven',
     component: TimefieldTemplateDrivenExampleComponent
   },
@@ -4424,12 +4420,16 @@ export const EXAMPLE_ROUTES = [
     component: ToolbarExampleComponent
   },
 {
-    path: 'tooltip-basic',
-    component: TooltipBasicExampleComponent
+    path: 'timefield-reactive',
+    component: TimefieldReactiveExampleComponent
   },
 {
     path: 'tooltip-delay',
     component: TooltipDelayExampleComponent
+  },
+{
+    path: 'tooltip-basic',
+    component: TooltipBasicExampleComponent
   },
 {
     path: 'tooltip-disabled',

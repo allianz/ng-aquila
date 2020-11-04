@@ -1,20 +1,20 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/tabs'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myDefaultOptions: TabGroupDefaultOptions = {
-  appearance: <span class="hljs-string">'expert'</span>
+  <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;expert&#x27;</span>
 };
 
 <span class="hljs-comment">/**
- * @title Injection token for tab group
+ * <span class="hljs-doctag">@title </span>Injection token for tab group
  */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./tabs-injection-token-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./tabs-injection-token-example.css'</span>],
-  providers: [
-    { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-injection-token-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-injection-token-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    { <span class="hljs-attr">provide</span>: TAB_GROUP_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myDefaultOptions },
   ]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TabsInjectionTokenExampleComponent {
-  currentIndex: <span class="hljs-built_in">number</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsInjectionTokenExampleComponent</span> </span>{
+  <span class="hljs-attr">currentIndex</span>: <span class="hljs-built_in">number</span>;
 }

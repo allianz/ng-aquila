@@ -1,27 +1,27 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
-<span class="hljs-comment">/** @title Switcher Reactive Form */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Switcher Reactive Form */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./switcher-reactive-form-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./switcher-reactive-form-example.html&#x27;</span>
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SwitcherReactiveFormExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwitcherReactiveFormExampleComponent</span> </span>{
 
-  testForm: FormGroup;
+  <span class="hljs-attr">testForm</span>: FormGroup;
   isSubmitted: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.createForm();
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.createForm();
   }
 
-  createForm() {
-    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
-      switcherTestReactive: [ <span class="hljs-literal">false</span>, Validators.requiredTrue ]
+  <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-attr">switcherTestReactive</span>: [ <span class="hljs-literal">false</span>, Validators.requiredTrue ]
     });
   }
 
-  onSubmit() {
-    <span class="hljs-keyword">this</span>.isSubmitted = <span class="hljs-literal">true</span>;
+  <span class="hljs-function"><span class="hljs-title">onSubmit</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.isSubmitted = <span class="hljs-literal">true</span>;
   }
 }

@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Multiple errors example
+* <span class="hljs-doctag">@title </span>Multiple errors example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./formfield-multiple-errors-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-multiple-errors-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldMultipleErrorsExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldMultipleErrorsExampleComponent</span> </span>{
 
-  emailFormControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, [
+  emailFormControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [
     Validators.required,
     Validators.email,
   ]);

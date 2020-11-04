@@ -1,36 +1,36 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Outline formfield example
+* <span class="hljs-doctag">@title </span>Outline formfield example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./dropdown-outline-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./dropdown-outline-example.css'</span>],
-  providers: [{
-    provide: FORMFIELD_DEFAULT_OPTIONS, useValue: { appearance: <span class="hljs-string">'outline'</span>, nxFloatLabel: <span class="hljs-string">'always'</span>}
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-outline-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-outline-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [{
+    <span class="hljs-attr">provide</span>: FORMFIELD_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>, <span class="hljs-attr">nxFloatLabel</span>: <span class="hljs-string">&#x27;always&#x27;</span>}
   }]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownOutlineExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownOutlineExampleComponent</span> </span>{
   demoData = [
-    <span class="hljs-string">'BMW'</span>, <span class="hljs-string">'Audi'</span>, <span class="hljs-string">'VW'</span>, <span class="hljs-string">'Mercedes'</span>, <span class="hljs-string">'Porsche'</span>, <span class="hljs-string">'Tesla'</span>, <span class="hljs-string">'Lada'</span>,
-    <span class="hljs-string">'Opel'</span>, <span class="hljs-string">'Fiat'</span>, <span class="hljs-string">'Ford'</span>, <span class="hljs-string">'Kia'</span>, <span class="hljs-string">'Toyota'</span>, <span class="hljs-string">'Ferrari'</span>
+    <span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-string">&#x27;VW&#x27;</span>, <span class="hljs-string">&#x27;Mercedes&#x27;</span>, <span class="hljs-string">&#x27;Porsche&#x27;</span>, <span class="hljs-string">&#x27;Tesla&#x27;</span>, <span class="hljs-string">&#x27;Lada&#x27;</span>,
+    <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Ferrari&#x27;</span>
   ];
   demoGroupData = [{
-    label: <span class="hljs-string">'Birds'</span>,
-    items: [
-      <span class="hljs-string">'Parrot'</span>,
-      <span class="hljs-string">'Pidgin'</span>,
-      <span class="hljs-string">'Swallow'</span>
+    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Birds&#x27;</span>,
+    <span class="hljs-attr">items</span>: [
+      <span class="hljs-string">&#x27;Parrot&#x27;</span>,
+      <span class="hljs-string">&#x27;Pidgin&#x27;</span>,
+      <span class="hljs-string">&#x27;Swallow&#x27;</span>
     ]
   }, {
-    label: <span class="hljs-string">'Fish'</span>,
-    items: [
-      <span class="hljs-string">'Salmon'</span>,
-      <span class="hljs-string">'Mackerel'</span>,
-      <span class="hljs-string">'Catfish'</span>
+    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Fish&#x27;</span>,
+    <span class="hljs-attr">items</span>: [
+      <span class="hljs-string">&#x27;Salmon&#x27;</span>,
+      <span class="hljs-string">&#x27;Mackerel&#x27;</span>,
+      <span class="hljs-string">&#x27;Catfish&#x27;</span>
     ]
   }];
 
-  testBind: <span class="hljs-built_in">string</span> = <span class="hljs-string">'Catfish'</span>;
+  testBind: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;Catfish&#x27;</span>;
 }

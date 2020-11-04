@@ -1,22 +1,22 @@
-<span class="hljs-keyword">import</span> { Component, ViewChild, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/input'</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Error example
+* <span class="hljs-doctag">@title </span>Error example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./formfield-error-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-error-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldErrorExampleComponent <span class="hljs-keyword">implements</span> AfterContentInit {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldErrorExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterContentInit</span> </span>{
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'exampleErrorNgModel'</span>, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModel: NxInputDirective;
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'exampleErrorNgModelHint'</span>, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModelHint: NxInputDirective;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModel: NxInputDirective;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModelHint&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModelHint: NxInputDirective;
   <span class="hljs-keyword">public</span> valueSupplementError;
   <span class="hljs-keyword">public</span> valueSupplementErrorHint;
 
-  ngAfterContentInit() {
-    <span class="hljs-keyword">this</span>.exampleErrorNgModel.ngControl.control.markAsTouched();
-    <span class="hljs-keyword">this</span>.exampleErrorNgModelHint.ngControl.control.markAsTouched();
+  <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.exampleErrorNgModel.ngControl.control.markAsTouched();
+    <span class="hljs-built_in">this</span>.exampleErrorNgModelHint.ngControl.control.markAsTouched();
   }
 
 }

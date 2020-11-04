@@ -1,11 +1,11 @@
 <h3 id="module" class="docs-markdown--h3">Module</h3>
 <p class="docs-markdown--p">Ensure that you provide a date implementation in addition to the required module:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxDatefieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
-<span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxDatefieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 </code></pre>
-<p class="docs-markdown--p">The date field requires Angular CDK (incl. CSS).</p>
+<p class="docs-markdown--p">The date field requires the Angular CDK (incl. CSS).</p>
 <h3 id="choose-your-dateadapter" class="docs-markdown--h3">Choose your DateAdapter</h3>
-<p class="docs-markdown--p">You can choose between using the native date, <a href="https://momentjs.com/">Moment.js</a> or implement your own. This documentation is using the moment implementation.</p>
+<p class="docs-markdown--p">You can choose between using the native date, an ISO string adapter that uses <a href="https://day.js.org/">dayjs</a> under the hood, <a href="https://momentjs.com/">Moment.js</a>, or implement your own. This documentation is using the moment date adapter.</p>
 <table class="docs-markdown--table">
 <thead>
 <tr>
@@ -27,26 +27,40 @@
 <tr>
 <td><code>NxMomentDateModule</code></td>
 <td><code>Moment</code></td>
-<td><a href="https://github.com/moment/moment/tree/develop/src/locale">See project</a></td>
+<td><a href="https://github.com/moment/moment/tree/develop/src/locale">See moment project</a></td>
 <td><a href="https://momentjs.com/">Moment.js</a></td>
 <td><code>@aposin/ng-aquila/moment-date-adapter</code></td>
 </tr>
+<tr>
+<td><code>NxIsoDateModule</code></td>
+<td><code>string</code> in ISO format YYYY-MM-DD</td>
+<td><a href="https://github.com/iamkun/dayjs/tree/dev/src/locale">See dayjs project</a></td>
+<td><a href="https://day.js.org/">dayjs</a></td>
+<td><code>@aposin/ng-aquila/iso-date-adapter</code></td>
+</tr>
 </tbody>
 </table>
+<p class="docs-markdown--p">Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).</p>
+<h4 id="iso-date-adapter" class="docs-markdown--h4">ISO Date Adapter</h4>
+<p class="docs-markdown--p">The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.</p>
+<p class="docs-markdown--p">For localization you have to import the locales yourself. <code>en</code> is the default locale. To add e.g. german you use <code>import 'dayjs/locale/de'</code>.</p>
+<p class="docs-markdown--p">Please install the <code>dayjs</code> package to use this adapter.</p>
 <h4 id="native-date" class="docs-markdown--h4">Native Date</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 </code></pre>
-<p class="docs-markdown--p">That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why we use the Moment.js adapter in this demonstration.</p>
+<p class="docs-markdown--p">That's an implementation on top of the native Date object in the browser. You have no dependencies but you won't be able to change the parse format. To repeat this: You won't be able to change the parsing, that's why for most use cases you should use the ISO or moment adapter.</p>
 <h4 id="moment.js" class="docs-markdown--h4">Moment.js</h4>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxMomentDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/moment-date-adapter'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxMomentDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/moment-date-adapter&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">If you choose to use the moment implementation you have to fulfill the Moment.js peerDependency and import the NxMomentDateModule instead of the NativeDateAdapter.</p>
 <h4 id="custom" class="docs-markdown--h4">Custom</h4>
 <p class="docs-markdown--p">You can implement your own DateAdapter to use other libraries like <a href="https://date-fns.org/">date-fns</a> or <a href="https://github.com/taylorhakes/fecha">fecha</a>.</p>
 <h4 id="setting-the-selected-date" class="docs-markdown--h4">Setting the selected date</h4>
-<p class="docs-markdown--p">The type of values that the datepicker expects depends on the type of DateAdapter provided in your application. The <code>NativeDateAdapter</code>, for example, works directly with <strong>plain JavaScript Date objects</strong>. When using the <code>MomentDateAdapter</code>, however, the <strong>values will all be Moment.js instances</strong>.</p>
+<p class="docs-markdown--p">The type of values that the datepicker expects depends on the type of DateAdapter provided in your application. The <code>NativeDateAdapter</code>, for example, works directly with <strong>plain JavaScript Date objects</strong>. When using the <code>MomentDateAdapter</code>, however, the <strong>values will all be Moment.js instances</strong>. With the <code>IsoDateAdapter</code> the model is ISO date strings in the format of YYYY-MM-DD.</p>
 <p class="docs-markdown--p">Depending on the DateAdapter being used, the datepicker may automatically deserialize certain date formats for you as well. For example, both the <code>NativeDateAdapter</code> and <code>MomentDateAdapter</code> allow <a href="https://tools.ietf.org/html/rfc3339">ISO 8601</a> strings to be passed to the datepicker and automatically converted to the proper object type. This can be convenient when binding data directly from your backend to the datepicker. However, the datepicker will not accept date strings formatted in user format such as &quot;1/2/2017&quot; as this is ambiguous and will mean different things depending on the locale of the browser running the code. You can test which strings are accepted:</p>
 <div nx-docs-example="datefield-iso">exampleID: datefield-iso</div>
+<h3 id="manipulating-dates" class="docs-markdown--h3">Manipulating dates</h3>
+<p class="docs-markdown--p">The adapter interface defines some methods to directly manipulate a date value like <code>addCalendarDays</code>, <code>addCalendarMonths</code> and <code>addCalendarYears</code>. That way you don't need to know how the underlying date object works and especially helps for the Iso Date Adapter to manipulate your date. See the <a href="./documentation/datefield/overview">API</a> for a list of methods.</p>
 <h3 id="examples" class="docs-markdown--h3">Examples</h3>
 <p class="docs-markdown--p">This is a full example showing the capabilities of this component. It integrates into <code>nx-formfield</code> so you have access to floating labels, hints and error messages. Optionally you can provide a Datepicker.</p>
 <p class="docs-markdown--p">You need to add the Directives <code>nxInput</code> to make the input accessible to the <code>nx-formfield</code> and <code>nxDatefield</code> to gain access to the actual date handling. The datepicker is provided by creating the <code>nx-datepicker</code> component together with a <code>nx-datepicker-toggle</code>. You have to tell the date field about the datepicker by connecting it with the <code>[nxDatepicker]</code> Input.</p>
@@ -69,9 +83,9 @@
 <p class="docs-markdown--p">Both parsing and formatting depend on the capabilities of the chosen DateAdapter. Every date adapter brings it's own defaults so you don't have to set anything by default. To do so anyway you inject the necessary patterns through the injection token <code>NX_DATE_FORMATS</code>:</p>
 <div nx-docs-example="datefield-format-injection">exampleID: datefield-format-injection</div>
 <h4 id="parsing" class="docs-markdown--h4">Parsing</h4>
-<p class="docs-markdown--p">Parsing converts a string into a valid date model which is either a native Date object or a moment object with the current set of available NxDateAdapters.</p>
-<p class="docs-markdown--p"><strong>Parsing capabilities of date adapters:</strong> The native date object has only minimal parsing capabilities. There is no parsing format supported so it's simply ignored if any is given. The moment class has a pretty good support for parsing in different formats.</p>
-<p class="docs-markdown--p">The default parsing pattern for the moment adapter is <code>L</code> standing for local aware and translates to <code>MM/DD/YYYY</code> for <code>en-US</code>. See the <a href="https://momentjs.com/docs/#/parsing/">documentation</a> for details.</p>
+<p class="docs-markdown--p">Parsing converts the input string to the proper model of the date adapter you are using.</p>
+<p class="docs-markdown--p"><strong>Parsing capabilities of date adapters:</strong> The native date object has only minimal parsing capabilities. There is no parsing format supported so it's simply ignored if any is given.</p>
+<p class="docs-markdown--p">The default parsing pattern for the Iso and moment adapter is <code>L</code> standing for local aware and translates to <code>MM/DD/YYYY</code> for <code>en</code>.</p>
 <p class="docs-markdown--p">Pass a pattern of your choice to be used for the internal date heuristics. There are multiple valid formats. If you don't pass one, the current locale format will be the base for the pattern's heuristics.</p>
 <p class="docs-markdown--p">In order to prevent any ambiguity with the date given by the user, <strong>parsing is set to strict by default</strong>. You can disable the strict mode with <code>[nxStrict]='false'</code>, but be aware that this may lead to situations where the date is not recognized as intended by the user.</p>
 <p class="docs-markdown--p">The following example shows two datefields with both strict and non-strict formatting. The <code>[parseFormat]</code> is set to MM-DD-YYYY. In your implementation you can also use a list of strings for <code>[parseFormat]</code>.</p>
@@ -89,14 +103,14 @@ Here is an example: Provide a valid input like 01/01/2018, then click somewhere 
 <div nx-docs-example="datefield-manual">exampleID: datefield-manual</div>
 <h3 id="localization" class="docs-markdown--h3">Localization</h3>
 <h4 id="date-localization" class="docs-markdown--h4">Date Localization</h4>
-<p class="docs-markdown--p">The ability to localize the datepicker <strong>depends on the chosen date implementation</strong>. The native date adapter supports only en-US and you can't change the values. The moment adapter supports a variety of locales. See Moment.js for a full list of locales.</p>
+<p class="docs-markdown--p">The ability to localize the datepicker <strong>depends on the chosen date implementation</strong>. The native date adapter supports only en-US and you can't change the values. The Iso and moment adapters support a variety of locales.</p>
 <p class="docs-markdown--p">The Datepicker falls back on the Application token <code>LOCALE_ID</code> and can be overwritten through the <code>NX_DATE_LOCALE</code> if necessary:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-  providers: [
-    {provide: NX_DATE_LOCALE, useValue: <span class="hljs-string">'en-GB'</span>}
+  <span class="hljs-attr">providers</span>: [
+    {<span class="hljs-attr">provide</span>: NX_DATE_LOCALE, <span class="hljs-attr">useValue</span>: <span class="hljs-string">&#x27;en-GB&#x27;</span>}
   ]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyApp { }
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> </span>{ }
 </code></pre>
 <p class="docs-markdown--p">If you want to <strong>change the locale during runtime</strong> you can use the <code>setLocale()</code> method of the used DateAdapter implementation. This is shown in the following example.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the locale setting does not change all labels and texts in the datepicker, only the date related parts are translated. You need to provide your own translation for texts like the header. You can find an example in the next chapter <a href="./documentation/datefield/overview#localizing-labels-and-messages">Localizing labels and messages</a>.</p>

@@ -1,29 +1,29 @@
-<span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
-<span class="hljs-keyword">import</span> { NxDateAdapter, NX_DATE_LOCALE } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+<span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxDateAdapter, NX_DATE_LOCALE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Localizing date example
+* <span class="hljs-doctag">@title </span>Localizing date example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./datefield-localize-date-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-localize-date-example.html&#x27;</span>
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldLocalizeDateExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldLocalizeDateExampleComponent</span> </span>{
   <span class="hljs-keyword">public</span> currentDate: Moment = <span class="hljs-literal">null</span>;
   <span class="hljs-keyword">public</span> currentLocale;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
     <span class="hljs-keyword">public</span> nxDateAdapter: NxDateAdapter&lt;Moment&gt;,
-    <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">public</span> nxDateLocale: <span class="hljs-built_in">string</span></span>) {
-    <span class="hljs-keyword">this</span>.currentLocale = nxDateLocale;
+    <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">public</span> nxDateLocale: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.currentLocale = nxDateLocale;
 
-    <span class="hljs-keyword">this</span>.nxDateAdapter.localeChanges.subscribe(<span class="hljs-function"><span class="hljs-params">locale</span> =&gt;</span> {
-      <span class="hljs-keyword">this</span>.currentLocale = locale;
+    <span class="hljs-built_in">this</span>.nxDateAdapter.localeChanges.subscribe(<span class="hljs-function"><span class="hljs-params">locale</span> =&gt;</span> {
+      <span class="hljs-built_in">this</span>.currentLocale = locale;
     });
   }
 
-  changeLocal(value) {
-    <span class="hljs-keyword">this</span>.nxDateAdapter.setLocale(value);
+  <span class="hljs-function"><span class="hljs-title">changeLocal</span>(<span class="hljs-params">value</span>)</span> {
+    <span class="hljs-built_in">this</span>.nxDateAdapter.setLocale(value);
   }
 }

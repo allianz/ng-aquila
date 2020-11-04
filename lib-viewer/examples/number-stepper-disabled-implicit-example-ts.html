@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { FormGroup, FormControl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormControl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Disabled as part of disabled form example
+* <span class="hljs-doctag">@title </span>Disabled as part of disabled form example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./number-stepper-disabled-implicit-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./number-stepper-disabled-implicit-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NumberStepperDisabledImplicitExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumberStepperDisabledImplicitExampleComponent</span> </span>{
 
   fb = <span class="hljs-keyword">new</span> FormGroup({
-    amount: <span class="hljs-keyword">new</span> FormControl({value: <span class="hljs-string">''</span>, disabled: <span class="hljs-literal">true</span>})
+    <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl({<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>})
   });
 }

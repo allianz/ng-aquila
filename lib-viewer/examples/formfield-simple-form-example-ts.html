@@ -1,21 +1,21 @@
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Simple form example
+* <span class="hljs-doctag">@title </span>Simple form example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./formfield-simple-form-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-simple-form-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldSimpleFormExampleComponent {
-  formGroup: FormGroup;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldSimpleFormExampleComponent</span> </span>{
+  <span class="hljs-attr">formGroup</span>: FormGroup;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">this</span>.formGroup = <span class="hljs-keyword">new</span> FormBuilder().group({
-      firstName: [<span class="hljs-string">''</span>, Validators.required],
-      lastName: [<span class="hljs-string">''</span>, Validators.required],
-      items: [<span class="hljs-string">''</span>, Validators.required],
-      email: [<span class="hljs-string">''</span>, Validators.required]
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.formGroup = <span class="hljs-keyword">new</span> FormBuilder().group({
+      <span class="hljs-attr">firstName</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+      <span class="hljs-attr">lastName</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+      <span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+      <span class="hljs-attr">email</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
     });
   }
 }

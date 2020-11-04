@@ -1,41 +1,41 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Side navigation Methods
+* <span class="hljs-doctag">@title </span>Side navigation Methods
 */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-sidebar-methods-example'</span>,
-  styleUrls: [<span class="hljs-string">'sidebar-methods-example.css'</span>],
-  templateUrl: <span class="hljs-string">'./sidebar-methods-example.html'</span>
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-sidebar-methods-example&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidebar-methods-example.css&#x27;</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidebar-methods-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SidebarMethodsExampleComponent {
-  expandedWidth: <span class="hljs-built_in">number</span> = <span class="hljs-number">350</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SidebarMethodsExampleComponent</span> </span>{
+  <span class="hljs-attr">expandedWidth</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">350</span>;
 
   actions = [
     {
-      icon: <span class="hljs-string">'file-text'</span>,
-      label: <span class="hljs-string">'All Files'</span>,
-      query: { a: <span class="hljs-number">1</span> }
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;All Files&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">1</span> }
     },
     {
-      icon: <span class="hljs-string">'calendar'</span>,
-      label: <span class="hljs-string">'Calendar'</span>,
-      query: { a: <span class="hljs-number">2</span> }
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Calendar&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">2</span> }
     },
     {
-      icon: <span class="hljs-string">'mail-o'</span>,
-      label: <span class="hljs-string">'Email'</span>,
-      query: { a: <span class="hljs-number">3</span> }
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;mail-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Email&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">3</span> }
     },
     {
-      icon: <span class="hljs-string">'user-business-o'</span>,
-      label: <span class="hljs-string">'My Profile'</span>,
-      query: { a: <span class="hljs-number">4</span> }
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-business-o&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;My Profile&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">4</span> }
     },
     {
-      icon: <span class="hljs-string">'file'</span>,
-      label: <span class="hljs-string">'Recent Downloads'</span>,
-      query: { a: <span class="hljs-number">5</span> }
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Recent Downloads&#x27;</span>,
+      <span class="hljs-attr">query</span>: { <span class="hljs-attr">a</span>: <span class="hljs-number">5</span> }
     }
   ];
 }

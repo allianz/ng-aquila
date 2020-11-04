@@ -1,49 +1,49 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Expandable Rows
+* <span class="hljs-doctag">@title </span>Expandable Rows
 */</span>
 <span class="hljs-meta">@Component</span>({
-   styleUrls: [<span class="hljs-string">'table-expandable-example.css'</span>],
-   templateUrl: <span class="hljs-string">'./table-expandable-example.html'</span>
+   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;table-expandable-example.css&#x27;</span>],
+   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-expandable-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ExpandableRowExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExpandableRowExampleComponent</span> </span>{
   tableElements = [
     {
-       product: <span class="hljs-string">'Car'</span>,
-       contractNumber: <span class="hljs-number">1234</span>,
-       desc: <span class="hljs-string">'this is a contract'</span>,
-       website: <span class="hljs-string">'www.example.com'</span>,
-       endingAt: <span class="hljs-string">'1/3/2020'</span>,
-       status: <span class="hljs-string">'negative'</span>,
-       statusText: <span class="hljs-string">'open'</span>
+       <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+       <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
+       <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+       <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+       <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/3/2020&#x27;</span>,
+       <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+       <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
     },
     {
-       product: <span class="hljs-string">'Health'</span>,
-       contractNumber: <span class="hljs-number">2423</span>,
-       desc: <span class="hljs-string">'this is another contract'</span>,
-       website: <span class="hljs-string">'www.aposin.org'</span>,
-       endingAt: <span class="hljs-string">'4/2/2020'</span>,
-       status: <span class="hljs-string">'active'</span>,
-       statusText: <span class="hljs-string">'accepted'</span>
+       <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
+       <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
+       <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is another contract&#x27;</span>,
+       <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+       <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;4/2/2020&#x27;</span>,
+       <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+       <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>
     },
     {
-       product: <span class="hljs-string">'Car'</span>,
-       contractNumber: <span class="hljs-number">353455</span>,
-       desc: <span class="hljs-string">'Lorem ipsum dolor sit amet, csis libero. '</span>,
-       website: <span class="hljs-string">'www.example.com'</span>,
-       endingAt: <span class="hljs-string">'6/2/2020'</span>,
-       status: <span class="hljs-string">'positive'</span>,
-       statusText: <span class="hljs-string">'accepted'</span>
+       <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+       <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
+       <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
+       <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+       <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;6/2/2020&#x27;</span>,
+       <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
+       <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>
     },
     {
-       product: <span class="hljs-string">'Home'</span>,
-       contractNumber: <span class="hljs-number">22344</span>,
-       desc: <span class="hljs-string">'this is a description of a contract'</span>,
-       website: <span class="hljs-string">'www.example.org'</span>,
-       endingAt: <span class="hljs-string">'1/2/2027'</span>,
-       status: <span class="hljs-string">'critical'</span>,
-       statusText: <span class="hljs-string">'rejected'</span>
+       <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Home&#x27;</span>,
+       <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
+       <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a description of a contract&#x27;</span>,
+       <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
+       <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/2/2027&#x27;</span>,
+       <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
+       <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>
     }
   ];
 }

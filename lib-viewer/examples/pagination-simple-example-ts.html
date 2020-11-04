@@ -1,25 +1,25 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Simple Pagination Example
+* <span class="hljs-doctag">@title </span>Simple Pagination Example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./pagination-simple-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-simple-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PaginationSimpleExampleComponent {
-  page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaginationSimpleExampleComponent</span> </span>{
+  <span class="hljs-attr">page</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
   count: <span class="hljs-built_in">number</span> = <span class="hljs-number">210</span>;
   perPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
 
-  prevPage() {
-    <span class="hljs-keyword">this</span>.page--;
+  <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.page--;
   }
 
-  nextPage() {
-    <span class="hljs-keyword">this</span>.page++;
+  <span class="hljs-function"><span class="hljs-title">nextPage</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.page++;
   }
 
-  goToPage(n: <span class="hljs-built_in">number</span>) {
-    <span class="hljs-keyword">this</span>.page = n;
+  <span class="hljs-function"><span class="hljs-title">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.page = n;
   }
 }

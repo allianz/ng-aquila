@@ -1,18 +1,18 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Event Example
+ * <span class="hljs-doctag">@title </span>Event Example
  */</span>
  <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-radio-button-event-example'</span>,
-  templateUrl: <span class="hljs-string">'./radio-button-event-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./radio-button-event-example.css'</span>]
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-radio-button-event-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./radio-button-event-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-button-event-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> RadioButtonEventExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioButtonEventExampleComponent</span> </span>{
   <span class="hljs-keyword">public</span> logMessage: <span class="hljs-built_in">string</span>;
   <span class="hljs-keyword">public</span> messages = [];
-  <span class="hljs-keyword">public</span> log(value) {
-    <span class="hljs-keyword">this</span>.messages.push(value);
-    <span class="hljs-keyword">this</span>.logMessage = <span class="hljs-keyword">this</span>.messages.join(<span class="hljs-string">'\n'</span>);
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">log</span>(<span class="hljs-params">value</span>)</span> {
+    <span class="hljs-built_in">this</span>.messages.push(value);
+    <span class="hljs-built_in">this</span>.logMessage = <span class="hljs-built_in">this</span>.messages.join(<span class="hljs-string">&#x27;\n&#x27;</span>);
   }
 }

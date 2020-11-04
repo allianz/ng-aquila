@@ -1,28 +1,28 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { Validators, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { Validators, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Reactive example
+* <span class="hljs-doctag">@title </span>Reactive example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./circle-toggle-reactive-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./circle-toggle-reactive-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-reactive-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-reactive-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CircleToggleReactiveExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleToggleReactiveExampleComponent</span> </span>{
 
   formBuilder = <span class="hljs-keyword">new</span> FormBuilder();
 
-  testForm = <span class="hljs-keyword">this</span>.formBuilder.group({
-    reactiveToggle: [<span class="hljs-string">''</span>, Validators.required]
+  testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
+    <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
   });
 
-  sampleValues = [{value: <span class="hljs-string">'A'</span>, icon: <span class="hljs-string">'product-heart'</span>, hint: <span class="hljs-string">'Hint A'</span>, label: <span class="hljs-string">'Label A'</span>, selected: <span class="hljs-literal">false</span>},
-    {value: <span class="hljs-string">'B'</span>, icon: <span class="hljs-string">'product-car'</span>, hint: <span class="hljs-string">'Hint B'</span>, label: <span class="hljs-string">'Label B'</span>, selected: <span class="hljs-literal">true</span>},
-    {value: <span class="hljs-string">'C'</span>, icon: <span class="hljs-string">'product-plane'</span>, hint: <span class="hljs-string">'Hint C'</span>, label: <span class="hljs-string">'Label C'</span>, selected: <span class="hljs-literal">false</span>},
+  sampleValues = [{<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint A&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label A&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>},
+    {<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint B&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label B&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">true</span>},
+    {<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint C&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label C&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>},
   ];
 
   patch(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">void</span> {
-    <span class="hljs-keyword">this</span>.testForm.patchValue({<span class="hljs-string">'reactiveToggle'</span>: value});
+    <span class="hljs-built_in">this</span>.testForm.patchValue({<span class="hljs-string">&#x27;reactiveToggle&#x27;</span>: value});
   }
 
 }

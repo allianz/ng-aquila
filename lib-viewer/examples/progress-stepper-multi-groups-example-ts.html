@@ -1,32 +1,32 @@
-<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxMultiStepperComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/progress-stepper'</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxMultiStepperComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progress-stepper&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Progress Indicator Multi Groups Example
+* <span class="hljs-doctag">@title </span>Progress Indicator Multi Groups Example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./progress-stepper-multi-groups-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./progress-stepper-multi-groups-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-multi-groups-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-multi-groups-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperMultiGroupsExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperMultiGroupsExampleComponent</span> </span>{
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'stepper'</span>)
-  stepper: NxMultiStepperComponent;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;stepper&#x27;</span>)
+  <span class="hljs-attr">stepper</span>: NxMultiStepperComponent;
 
   groups = [
     {
-      label: <span class="hljs-string">'Group 1'</span>,
-      steps: [
-        { label: <span class="hljs-string">'Step 1'</span> },
-        { label: <span class="hljs-string">'Step 2'</span> },
-        { label: <span class="hljs-string">'Step 3'</span> }
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Group 1&#x27;</span>,
+      <span class="hljs-attr">steps</span>: [
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Step 1&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Step 2&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Step 3&#x27;</span> }
       ]
     },
     {
-      label: <span class="hljs-string">'Group 2'</span>,
-      steps: [
-        { label: <span class="hljs-string">'Step 4'</span> },
-        { label: <span class="hljs-string">'Step 5'</span> }
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Group 2&#x27;</span>,
+      <span class="hljs-attr">steps</span>: [
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Step 4&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Step 5&#x27;</span> }
       ]
     }
   ];

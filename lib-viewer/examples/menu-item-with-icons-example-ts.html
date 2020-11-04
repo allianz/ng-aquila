@@ -1,53 +1,53 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Menu item with large indentation and button icons
+* <span class="hljs-doctag">@title </span>Menu item with large indentation and button icons
 */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-menu-item-with-icons.example'</span>,
-  templateUrl: <span class="hljs-string">'menu-item-with-icons-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'menu-item-with-icons-example.css'</span>]
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-menu-item-with-icons.example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;menu-item-with-icons-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;menu-item-with-icons-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NxMenuItemWithIconsExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NxMenuItemWithIconsExampleComponent</span> </span>{
   menuData = [
     {
-      label: <span class="hljs-string">'Option 1'</span>,
-      expanded: <span class="hljs-literal">false</span>,
-      icon: <span class="hljs-string">'setting'</span>,
-      children: [
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1&#x27;</span>,
+      <span class="hljs-attr">expanded</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;setting&#x27;</span>,
+      <span class="hljs-attr">children</span>: [
         {
-          label: <span class="hljs-string">'Option 1.1'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1.1&#x27;</span>
         },
         {
-          label: <span class="hljs-string">'Option 1.2'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1.2&#x27;</span>
         },
         {
-          label: <span class="hljs-string">'Option 1.3'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1.3&#x27;</span>
         }
       ]
     },
     {
-      label: <span class="hljs-string">'Option 2'</span>,
-      icon: <span class="hljs-string">'file'</span>,
-      children: [
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file&#x27;</span>,
+      <span class="hljs-attr">children</span>: [
         {
-          label: <span class="hljs-string">'Option 2.1'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2.1&#x27;</span>
         },
         {
-          label: <span class="hljs-string">'Option 2.2'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2.2&#x27;</span>
         },
         {
-          label: <span class="hljs-string">'Option 2.3'</span>
+          <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 2.3&#x27;</span>
         }
       ]
     },
     {
-      label: <span class="hljs-string">'Option 3'</span>,
-      icon: <span class="hljs-string">'user-o'</span>
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 3&#x27;</span>,
+      <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;user-o&#x27;</span>
     }
   ];
 
-  onClick(item) {
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params">item</span>)</span> {
     item.expanded = !item.expanded;
   }
 }

@@ -1,25 +1,25 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
   NX_TOOLTIP_DEFAULT_OPTIONS,
   NxTooltipDefaultOptions
-} <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/tooltip'</span>;
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myDefaultOptions: NxTooltipDefaultOptions = {
-  position: <span class="hljs-string">'right'</span>,
-  showDelay: <span class="hljs-number">500</span>,
-  hideDelay: <span class="hljs-number">0</span>,
-  touchendHideDelay: <span class="hljs-number">1500</span>
+  <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;right&#x27;</span>,
+  <span class="hljs-attr">showDelay</span>: <span class="hljs-number">500</span>,
+  <span class="hljs-attr">hideDelay</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">touchendHideDelay</span>: <span class="hljs-number">1500</span>
 };
 
 <span class="hljs-comment">/**
- * @title Tooltip global settings
+ * <span class="hljs-doctag">@title </span>Tooltip global settings
  */</span>
 <span class="hljs-meta">@Component</span>({
-  styleUrls: [<span class="hljs-string">'./tooltip-settings-example.css'</span>],
-  templateUrl: <span class="hljs-string">'./tooltip-settings-example.html'</span>,
-  providers: [
-    { provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions }
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tooltip-settings-example.css&#x27;</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tooltip-settings-example.html&#x27;</span>,
+  <span class="hljs-attr">providers</span>: [
+    { <span class="hljs-attr">provide</span>: NX_TOOLTIP_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myDefaultOptions }
   ]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipSettingsExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipSettingsExampleComponent</span> </span>{
 }

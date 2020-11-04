@@ -1,18 +1,18 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Reactive example
+* <span class="hljs-doctag">@title </span>Reactive example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./number-stepper-reactive-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./number-stepper-reactive-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> NumberStepperReactiveExampleComponent {
-  testForm: FormGroup;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NumberStepperReactiveExampleComponent</span> </span>{
+  <span class="hljs-attr">testForm</span>: FormGroup;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
-      stepperTestReactive: <span class="hljs-number">3</span>
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-attr">stepperTestReactive</span>: <span class="hljs-number">3</span>
     });
   }
 }

@@ -1,43 +1,43 @@
-<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
-<span class="hljs-keyword">import</span> { Component, OnInit, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxCodeInputIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/code-input'</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component, OnInit, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxCodeInputIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/code-input&#x27;</span>;
 
 <span class="hljs-meta">@Injectable</span>()
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MyIntl <span class="hljs-keyword">extends</span> NxCodeInputIntl {
-  inputFieldAriaLabel = <span class="hljs-string">'Key eingeben'</span>;
-  ofLabel = <span class="hljs-string">'von'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxCodeInputIntl</span> </span>{
+  inputFieldAriaLabel = <span class="hljs-string">&#x27;Key eingeben&#x27;</span>;
+  ofLabel = <span class="hljs-string">&#x27;von&#x27;</span>;
 }
 
 <span class="hljs-comment">/**
-* @title Localization example
+* <span class="hljs-doctag">@title </span>Localization example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-code-input-localize-example'</span>,
-  templateUrl: <span class="hljs-string">'code-input-localize-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'code-input-localize-example.css'</span>],
-  providers: [
-    {provide: NxCodeInputIntl, useClass: MyIntl},
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-code-input-localize-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;code-input-localize-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;code-input-localize-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    {<span class="hljs-attr">provide</span>: NxCodeInputIntl, <span class="hljs-attr">useClass</span>: MyIntl},
   ],
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CodeInputLocalizeExampleComponent <span class="hljs-keyword">implements</span> OnInit {
-  inputValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">''</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodeInputLocalizeExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
+  <span class="hljs-attr">inputValue</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
   codeForm: FormGroup;
 
-  ngOnInit() {
-    <span class="hljs-keyword">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
-      keyCode: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-keyword">this</span>.inputValue, {
-        validators: [
+  <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
+      <span class="hljs-attr">keyCode</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-built_in">this</span>.inputValue, {
+        <span class="hljs-attr">validators</span>: [
           Validators.required,
-          Validators.pattern(<span class="hljs-string">'[A-Z]+'</span>),
+          Validators.pattern(<span class="hljs-string">&#x27;[A-Z]+&#x27;</span>),
           Validators.minLength(<span class="hljs-number">5</span>)
         ],
-        updateOn: <span class="hljs-string">'submit'</span>
+        <span class="hljs-attr">updateOn</span>: <span class="hljs-string">&#x27;submit&#x27;</span>
       })
     });
   }
 
-  <span class="hljs-keyword">get</span> keyCode() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.codeForm.get(<span class="hljs-string">'keyCode'</span>);
+  <span class="hljs-keyword">get</span> <span class="hljs-title">keyCode</span>() {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.codeForm.get(<span class="hljs-string">&#x27;keyCode&#x27;</span>);
   }
 }

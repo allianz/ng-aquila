@@ -1,31 +1,31 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Progress Indicator reactive form with single form example
+* <span class="hljs-doctag">@title </span>Progress Indicator reactive form with single form example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./progress-stepper-reactivesingle-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./progress-stepper-reactivesingle-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-reactivesingle-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-reactivesingle-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperReactivesingleExampleComponent {
-  testForm: FormGroup;
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>._formBuilder.group({
-      personalDetails: <span class="hljs-keyword">new</span> FormGroup({
-        name: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
-          validators: Validators.required
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperReactivesingleExampleComponent</span> </span>{
+  <span class="hljs-attr">testForm</span>: FormGroup;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>._formBuilder.group({
+      <span class="hljs-attr">personalDetails</span>: <span class="hljs-keyword">new</span> FormGroup({
+        <span class="hljs-attr">name</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+          <span class="hljs-attr">validators</span>: Validators.required
         }),
-        age: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
-          validators: Validators.required
+        <span class="hljs-attr">age</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+          <span class="hljs-attr">validators</span>: Validators.required
         })
       }),
-      address: <span class="hljs-keyword">new</span> FormGroup({
-        street: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
-          validators: Validators.required
+      <span class="hljs-attr">address</span>: <span class="hljs-keyword">new</span> FormGroup({
+        <span class="hljs-attr">street</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+          <span class="hljs-attr">validators</span>: Validators.required
         }),
-        postalCode: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {
-          validators: Validators.required
+        <span class="hljs-attr">postalCode</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+          <span class="hljs-attr">validators</span>: Validators.required
         })
       })
     });

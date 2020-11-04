@@ -1,20 +1,20 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Progress Indicator multi manual step completion example
+* <span class="hljs-doctag">@title </span>Progress Indicator multi manual step completion example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./progress-stepper-form-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./progress-stepper-form-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-form-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-form-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperFormExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperFormExampleComponent</span> </span>{
   lastStepCompleted = <span class="hljs-literal">false</span>;
-  manualCompletionForm = <span class="hljs-keyword">this</span>._formBuilder.group({<span class="hljs-string">'name'</span>: [<span class="hljs-string">''</span>, Validators.required]});
+  manualCompletionForm = <span class="hljs-built_in">this</span>._formBuilder.group({<span class="hljs-string">&#x27;name&#x27;</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]});
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>) {}
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {}
 
-  completeLastStep() {
-    <span class="hljs-keyword">this</span>.lastStepCompleted = <span class="hljs-literal">true</span>;
+  <span class="hljs-function"><span class="hljs-title">completeLastStep</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.lastStepCompleted = <span class="hljs-literal">true</span>;
   }
 }

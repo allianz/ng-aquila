@@ -1,21 +1,21 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { SPACE, ENTER } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/cdk/keycodes'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { SPACE, ENTER } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/keycodes&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Popover Trigger Example
+* <span class="hljs-doctag">@title </span>Popover Trigger Example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-popover-trigger-example'</span>,
-  templateUrl: <span class="hljs-string">'./popover-trigger-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./popover-trigger-example.css'</span>]
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-popover-trigger-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./popover-trigger-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./popover-trigger-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> PopoverTriggerExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PopoverTriggerExampleComponent</span> </span>{
   popoverManualOpenFlag = <span class="hljs-literal">false</span>;
-  handleKeydown(event) {
+  <span class="hljs-function"><span class="hljs-title">handleKeydown</span>(<span class="hljs-params">event</span>)</span> {
     <span class="hljs-keyword">switch</span> (event.keyCode) {
       <span class="hljs-keyword">case</span> SPACE:
       <span class="hljs-keyword">case</span> ENTER:
-        <span class="hljs-keyword">this</span>.popoverManualOpenFlag = !<span class="hljs-keyword">this</span>.popoverManualOpenFlag;
+        <span class="hljs-built_in">this</span>.popoverManualOpenFlag = !<span class="hljs-built_in">this</span>.popoverManualOpenFlag;
         <span class="hljs-keyword">break</span>;
       <span class="hljs-keyword">default</span>:
         <span class="hljs-keyword">return</span>;

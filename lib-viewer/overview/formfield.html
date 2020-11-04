@@ -1,8 +1,8 @@
 <p class="docs-markdown--p">In most cases it is sufficient to only import the nxInputModule - this <strong>already includes the NxFormfieldModule module</strong>.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxInputModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/input'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxInputModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">You can import this Formfield module only, but you are required to pass in a <a href="./documentation/input/overview">nxInput</a> control. So don't try using this import alone.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">The formfield component is only usable in combination with a compatible input like nxInput. You will get floating labels, hints and a space to properly render additional information and errors below the input.</p>
 <p class="docs-markdown--p">You can't use the formfield without a matching input. A matching input fulfills the requirements of the <code>NxFormfieldControl</code> interface.</p>
@@ -75,7 +75,7 @@ The input field has to be passed as a <code>control</code> to the <code>nx-passw
 <p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>.
 Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
 <p class="docs-markdown--p">The HTML code below shows how we can consume our custom control.</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">"Phone number"</span>&gt;</span>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Phone number&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-custom-tel-input-example</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-custom-tel-input-example</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 </code></pre>

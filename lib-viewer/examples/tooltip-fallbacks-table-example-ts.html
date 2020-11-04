@@ -1,64 +1,64 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Tooltip Fallbacks Table Example
+ * <span class="hljs-doctag">@title </span>Tooltip Fallbacks Table Example
  */</span>
  <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-tooltip-fallbacks-table-example'</span>,
-  templateUrl: <span class="hljs-string">'./tooltip-fallbacks-table-example.html'</span>
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-tooltip-fallbacks-table-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tooltip-fallbacks-table-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipFallbacksTableExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipFallbacksTableExampleComponent</span> </span>{
   data = [
     {
-      nxTooltipPosition: <span class="hljs-string">'top'</span>,
-      fallback1: <span class="hljs-string">'top-left'</span>,
-      fallback2: <span class="hljs-string">'top-right'</span>,
-      fallback3: <span class="hljs-string">'bottom'</span>,
-      fallback4: <span class="hljs-string">'bottom-left'</span>,
-      fallback5: <span class="hljs-string">'bottom-right'</span>,
-      fallback6: <span class="hljs-string">'left'</span>,
-      fallback7: <span class="hljs-string">'right'</span>,
+      <span class="hljs-attr">nxTooltipPosition</span>: <span class="hljs-string">&#x27;top&#x27;</span>,
+      <span class="hljs-attr">fallback1</span>: <span class="hljs-string">&#x27;top-left&#x27;</span>,
+      <span class="hljs-attr">fallback2</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
+      <span class="hljs-attr">fallback3</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>,
+      <span class="hljs-attr">fallback4</span>: <span class="hljs-string">&#x27;bottom-left&#x27;</span>,
+      <span class="hljs-attr">fallback5</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>,
+      <span class="hljs-attr">fallback6</span>: <span class="hljs-string">&#x27;left&#x27;</span>,
+      <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;right&#x27;</span>,
     },
     {
-      nxTooltipPosition: <span class="hljs-string">'bottom'</span>,
-      fallback1: <span class="hljs-string">'bottom-left'</span>,
-      fallback2: <span class="hljs-string">'bottom-right'</span>,
-      fallback3: <span class="hljs-string">'top'</span>,
-      fallback4: <span class="hljs-string">'top-left'</span>,
-      fallback5: <span class="hljs-string">'top-right'</span>,
-      fallback6: <span class="hljs-string">'left'</span>,
-      fallback7: <span class="hljs-string">'right'</span>,
+      <span class="hljs-attr">nxTooltipPosition</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>,
+      <span class="hljs-attr">fallback1</span>: <span class="hljs-string">&#x27;bottom-left&#x27;</span>,
+      <span class="hljs-attr">fallback2</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>,
+      <span class="hljs-attr">fallback3</span>: <span class="hljs-string">&#x27;top&#x27;</span>,
+      <span class="hljs-attr">fallback4</span>: <span class="hljs-string">&#x27;top-left&#x27;</span>,
+      <span class="hljs-attr">fallback5</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
+      <span class="hljs-attr">fallback6</span>: <span class="hljs-string">&#x27;left&#x27;</span>,
+      <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;right&#x27;</span>,
     },
     {
-      nxTooltipPosition: <span class="hljs-string">'left'</span>,
-      fallback1: <span class="hljs-string">'right'</span>,
-      fallback2: <span class="hljs-string">'bottom'</span>,
-      fallback3: <span class="hljs-string">'bottom-left'</span>,
-      fallback4: <span class="hljs-string">'bottom-right'</span>,
-      fallback5: <span class="hljs-string">'top'</span>,
-      fallback6: <span class="hljs-string">'top-left'</span>,
-      fallback7: <span class="hljs-string">'top-right'</span>,
+      <span class="hljs-attr">nxTooltipPosition</span>: <span class="hljs-string">&#x27;left&#x27;</span>,
+      <span class="hljs-attr">fallback1</span>: <span class="hljs-string">&#x27;right&#x27;</span>,
+      <span class="hljs-attr">fallback2</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>,
+      <span class="hljs-attr">fallback3</span>: <span class="hljs-string">&#x27;bottom-left&#x27;</span>,
+      <span class="hljs-attr">fallback4</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>,
+      <span class="hljs-attr">fallback5</span>: <span class="hljs-string">&#x27;top&#x27;</span>,
+      <span class="hljs-attr">fallback6</span>: <span class="hljs-string">&#x27;top-left&#x27;</span>,
+      <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
     },
     {
-      nxTooltipPosition: <span class="hljs-string">'right'</span>,
-      fallback1: <span class="hljs-string">'left'</span>,
-      fallback2: <span class="hljs-string">'bottom'</span>,
-      fallback3: <span class="hljs-string">'bottom-left'</span>,
-      fallback4: <span class="hljs-string">'bottom-right'</span>,
-      fallback5: <span class="hljs-string">'top'</span>,
-      fallback6: <span class="hljs-string">'top-left'</span>,
-      fallback7: <span class="hljs-string">'top-right'</span>,
+      <span class="hljs-attr">nxTooltipPosition</span>: <span class="hljs-string">&#x27;right&#x27;</span>,
+      <span class="hljs-attr">fallback1</span>: <span class="hljs-string">&#x27;left&#x27;</span>,
+      <span class="hljs-attr">fallback2</span>: <span class="hljs-string">&#x27;bottom&#x27;</span>,
+      <span class="hljs-attr">fallback3</span>: <span class="hljs-string">&#x27;bottom-left&#x27;</span>,
+      <span class="hljs-attr">fallback4</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>,
+      <span class="hljs-attr">fallback5</span>: <span class="hljs-string">&#x27;top&#x27;</span>,
+      <span class="hljs-attr">fallback6</span>: <span class="hljs-string">&#x27;top-left&#x27;</span>,
+      <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
     },
   ];
   displayedColumns = [
     <span class="hljs-comment">// HINT: \xa0 is a non-breaking space, so the table header looks nicer</span>
-    { title: <span class="hljs-string">'nxTooltipPosition'</span>, key: <span class="hljs-string">'nxTooltipPosition'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa01'</span>, key: <span class="hljs-string">'fallback1'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa02'</span>, key: <span class="hljs-string">'fallback2'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa03'</span>, key: <span class="hljs-string">'fallback3'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa04'</span>, key: <span class="hljs-string">'fallback4'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa05'</span>, key: <span class="hljs-string">'fallback5'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa06'</span>, key: <span class="hljs-string">'fallback6'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> },
-    { title: <span class="hljs-string">'fallback\xa07'</span>, key: <span class="hljs-string">'fallback7'</span>, <span class="hljs-keyword">type</span>: <span class="hljs-string">'string'</span> }
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;nxTooltipPosition&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;nxTooltipPosition&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa01&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback1&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa02&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback2&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa03&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback3&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa04&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback4&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa05&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback5&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa06&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback6&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa07&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback7&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> }
   ];
 }

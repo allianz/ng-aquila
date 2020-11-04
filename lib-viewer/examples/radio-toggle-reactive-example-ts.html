@@ -1,39 +1,39 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Reactive Form Example
+* <span class="hljs-doctag">@title </span>Reactive Form Example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./radio-toggle-reactive-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./radio-toggle-reactive-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./radio-toggle-reactive-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-toggle-reactive-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> RadioToggleReactiveExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioToggleReactiveExampleComponent</span> </span>{
 
-  data = [<span class="hljs-string">'A'</span>, <span class="hljs-string">'B'</span>, <span class="hljs-string">'C'</span>];
+  data = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>];
   testForm: FormGroup;
   disabledToggleForm: FormGroup;
   isToggleDisabled: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.createForm();
-    <span class="hljs-keyword">this</span>.disabledToggleForm = <span class="hljs-keyword">this</span>.fb.group({
-      disabledToggle: [{ value: <span class="hljs-string">'B'</span>, disabled: <span class="hljs-literal">true</span>}]
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.createForm();
+    <span class="hljs-built_in">this</span>.disabledToggleForm = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-attr">disabledToggle</span>: [{ <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>}]
     });
   }
 
-  createForm() {
-    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.fb.group({
-      testToggle: [<span class="hljs-string">'B'</span>, Validators.required]
+  <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-attr">testToggle</span>: [<span class="hljs-string">&#x27;B&#x27;</span>, Validators.required]
     });
   }
 
-  toggleDisabled() {
-    <span class="hljs-keyword">this</span>.isToggleDisabled = !<span class="hljs-keyword">this</span>.isToggleDisabled;
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isToggleDisabled) {
-      <span class="hljs-keyword">this</span>.testForm.get(<span class="hljs-string">'testToggle'</span>).disable();
+  <span class="hljs-function"><span class="hljs-title">toggleDisabled</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.isToggleDisabled = !<span class="hljs-built_in">this</span>.isToggleDisabled;
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.isToggleDisabled) {
+      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>).disable();
     } <span class="hljs-keyword">else</span> {
-      <span class="hljs-keyword">this</span>.testForm.get(<span class="hljs-string">'testToggle'</span>).enable();
+      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>).enable();
     }
   }
 

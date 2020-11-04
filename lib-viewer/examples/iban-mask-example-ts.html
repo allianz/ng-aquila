@@ -1,14 +1,14 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormControl } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormControl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title IBAN mask example
+* <span class="hljs-doctag">@title </span>IBAN mask example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./iban-mask-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./iban-mask-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> IbanMaskComponent {
-  validatedMaskForm: FormGroup = <span class="hljs-keyword">new</span> FormGroup({
-    maskInput: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">''</span>, {}),
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IbanMaskComponent</span> </span>{
+  <span class="hljs-attr">validatedMaskForm</span>: FormGroup = <span class="hljs-keyword">new</span> FormGroup({
+    <span class="hljs-attr">maskInput</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {}),
   });
 }

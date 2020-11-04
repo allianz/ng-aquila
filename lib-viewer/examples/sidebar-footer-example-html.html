@@ -1,22 +1,22 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"my-sidebar"</span> <span class="hljs-attr">resizeable</span> #<span class="hljs-attr">sidebar</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;my-sidebar&quot;</span> <span class="hljs-attr">resizeable</span> #<span class="hljs-attr">sidebar</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxAction</span>
-      *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let action of actions"</span>
-      <span class="hljs-attr">routerLink</span>=<span class="hljs-string">"./"</span>
-      [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">"action.query"</span>
-      <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">"is-selected"</span>
-      <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"action.icon"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+      *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let action of actions&quot;</span>
+      <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;./&quot;</span>
+      [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;action.query&quot;</span>
+      <span class="hljs-attr">routerLinkActive</span>=<span class="hljs-string">&quot;is-selected&quot;</span>
+      <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;action.icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
     {{action.label}}
   <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-sidebar-footer</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">"tertiary small-medium"</span> 
-        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Open settings"</span>
-        <span class="hljs-attr">nxTooltip</span>=<span class="hljs-string">"Open settings"</span>
-        <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-0"</span>
-        <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"setting"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;tertiary small-medium&quot;</span> 
+        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Open settings&quot;</span>
+        <span class="hljs-attr">nxTooltip</span>=<span class="hljs-string">&quot;Open settings&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-0&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;setting&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxSidebarToggle</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Toggle sidebar"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxSidebarToggle</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle sidebar&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidebar-footer</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidebar</span>&gt;</span>

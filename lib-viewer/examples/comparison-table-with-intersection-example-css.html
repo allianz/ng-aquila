@@ -46,10 +46,10 @@
   <span class="hljs-attribute">flex-direction</span>: row;
 }
 
-<span class="hljs-selector-class">.has-popover</span> <span class="hljs-selector-tag">nx-icon</span> {
+<span class="hljs-selector-class">.info-icon</span>,
+<span class="hljs-selector-class">.popular-info-icon</span> {
   <span class="hljs-attribute">outline</span>: none;
   <span class="hljs-attribute">margin-left</span>: auto;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-info-icon-color, #<span class="hljs-number">3</span>bb4db);
 }
 
 <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">704px</span>) {
@@ -71,15 +71,10 @@
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-class">.info-icon</span> {
+<span class="hljs-selector-class">.info-icon</span>,
+<span class="hljs-selector-class">.popular-info-icon</span> {
   <span class="hljs-attribute">cursor</span>: pointer;
   <span class="hljs-attribute">align-self</span>: flex-start;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-info-icon-color, #<span class="hljs-number">3</span>bb4db);
-}
-
-<span class="hljs-selector-class">.info-icon-service</span> {
-  <span class="hljs-attribute">cursor</span>: pointer;
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-info-icon-color, #<span class="hljs-number">3</span>bb4db);
 }
 
 <span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">704px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">991px</span>) {
@@ -96,6 +91,14 @@
   <span class="hljs-selector-class">.service-lists</span> {
     <span class="hljs-attribute">flex-direction</span>: column;
   }
+}
+
+<span class="hljs-selector-class">.info-icon</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-info-icon-color, #<span class="hljs-number">3</span>bb4db);
+}
+
+<span class="hljs-selector-class">.popular-info-icon</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-most-popular-icon-color);
 }
 
 <span class="hljs-selector-class">.minus-icon</span> {

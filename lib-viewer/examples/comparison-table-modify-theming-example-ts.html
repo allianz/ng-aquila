@@ -1,42 +1,42 @@
-<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ngx-docs-ui'</span>;
-<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
-<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;
+<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ngx-docs-ui&#x27;</span>;
+<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
-<span class="hljs-comment">/** @title Modify theming of examples */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Modify theming of examples */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-comparison-table-modify-theming-example'</span>,
-  templateUrl: <span class="hljs-string">'./comparison-table-modify-theming-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./comparison-table-modify-theming-example.css'</span>]
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-comparison-table-modify-theming-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-modify-theming-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-modify-theming-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComparisonTableModifyThemingExampleComponent <span class="hljs-keyword">implements</span> OnDestroy {
-  headerTheme: <span class="hljs-built_in">string</span> = <span class="hljs-string">'Default'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableModifyThemingExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
+  <span class="hljs-attr">headerTheme</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;Default&#x27;</span>;
   headerThemeAvailable: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
   <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> demoService: BaseDemoThemingService</span>) {
-    <span class="hljs-keyword">this</span>.demoService.headerThemeAvailable.pipe(
-      takeUntil(<span class="hljs-keyword">this</span>._destroyed)
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> demoService: BaseDemoThemingService</span>)</span> {
+    <span class="hljs-built_in">this</span>.demoService.headerThemeAvailable.pipe(
+      takeUntil(<span class="hljs-built_in">this</span>._destroyed)
     ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">boolean</span></span>) =&gt;</span> {
-      <span class="hljs-keyword">this</span>.headerThemeAvailable = value;
+      <span class="hljs-built_in">this</span>.headerThemeAvailable = value;
 
-      <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.headerThemeAvailable) {
-        <span class="hljs-keyword">this</span>.changeHeaderTheme(<span class="hljs-string">'Default'</span>);
+      <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.headerThemeAvailable) {
+        <span class="hljs-built_in">this</span>.changeHeaderTheme(<span class="hljs-string">&#x27;Default&#x27;</span>);
       }
     });
   }
 
-  changeHeaderTheme(theme: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">this</span>.headerTheme = theme;
-    <span class="hljs-keyword">this</span>.demoService.changeComparisonTableTheme(theme);
+  <span class="hljs-function"><span class="hljs-title">changeHeaderTheme</span>(<span class="hljs-params">theme: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.headerTheme = theme;
+    <span class="hljs-built_in">this</span>.demoService.changeComparisonTableTheme(theme);
   }
 
-  getColorBoxClassNames(colorIndex: <span class="hljs-built_in">number</span>) {
+  <span class="hljs-function"><span class="hljs-title">getColorBoxClassNames</span>(<span class="hljs-params">colorIndex: <span class="hljs-built_in">number</span></span>)</span> {
     <span class="hljs-keyword">return</span> <span class="hljs-string">`color-box color-<span class="hljs-subst">${colorIndex}</span>`</span>;
   }
 
-  ngOnDestroy() {
-    <span class="hljs-keyword">this</span>._destroyed.next();
-    <span class="hljs-keyword">this</span>._destroyed.complete();
+  <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>._destroyed.next();
+    <span class="hljs-built_in">this</span>._destroyed.complete();
   }
 }

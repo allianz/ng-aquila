@@ -5,7 +5,7 @@
 <h3 id="customizing-the-base-theme" class="docs-markdown--h3">Customizing the base theme</h3>
 <p class="docs-markdown--p">In order to define your custom theme first create a file <code>&lt;your-theme&gt;.scss</code>.</p>
 <p class="docs-markdown--p">To register your theme import the theming utilities:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/theming&quot;</span>;
 </code></pre>
 <p class="docs-markdown--p">Then, you should define your new theme as a <code>scss-map</code> which overwrites all default theming tokens you want to change:</p>
 <pre><code class="language-scss"><span class="hljs-variable">$my-theme</span>: (
@@ -23,8 +23,8 @@
 </code></pre>
 <p class="docs-markdown--p">By calling the <code>nx-register-theme(themeName)</code> mixin you are merging our base theme with your own theme (overwritten tokens + new tokens).</p>
 <p class="docs-markdown--p">Per default, the base theme for the new theme is aposin. You can also pass another theme as a base (third argument), but you first have to import or define it:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/themes/your-base-theme"</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/theming&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/themes/your-base-theme&quot;</span>;
 ...
 <span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName, baseThemeName);
 </code></pre>
@@ -37,8 +37,8 @@ Currently the following internal themes are available as a base theme: **aposin*
 </code></pre>
 <p class="docs-markdown--p"><strong>Important:</strong> Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application.
 We recommend the following import in your global scss file:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/styles/theming"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/styles/theming&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss&quot;</span>;
 
 <span class="hljs-keyword">@include</span> nx-build-theme(themeName);
 </code></pre>
@@ -49,7 +49,7 @@ We recommend the following import in your global scss file:</p>
 <li class="docs-markdown--li"><strong>nx-theme(token)</strong> for getting a css variable value</li>
 <li class="docs-markdown--li"><strong>type-style(token)</strong> for getting the defined typography properties of an element. here you have to prefix these tokens in the same way and define font-size, font-weight, letter-spacing and line-height as shown in the snippet with <em>headline-01</em> above.</li>
 </ul>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss&quot;</span>;
 
 <span class="hljs-selector-class">.test-class</span> {
   <span class="hljs-keyword">@include</span> type-style(heading-<span class="hljs-number">01</span>);
@@ -66,7 +66,7 @@ We recommend the following import in your global scss file:</p>
 <span class="hljs-variable">$nx-themes</span>: nx-register-theme(<span class="hljs-variable">$my-theme</span>, themeName);
 </code></pre>
 <p class="docs-markdown--p">And then use them as stated before:</p>
-<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss"</span>;
+<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;&lt;path-to-theme-file&gt;/&lt;your-theme&gt;.scss&quot;</span>;
 
 <span class="hljs-selector-class">.test-class</span> {
   <span class="hljs-attribute">background</span>: nx-theme(my-new-token);
@@ -79,12 +79,12 @@ as a dependency.</p>
 <pre><code>npm install css-vars-ponyfill
 </code></pre>
 <p class="docs-markdown--p">Then, import the ponyfill into your <code>polyfill.ts</code> and call it:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">'css-vars-ponyfill'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;css-vars-ponyfill&#x27;</span>;
 
 cssVars({
-  watch: <span class="hljs-literal">true</span>,
-  onlyLegacy: <span class="hljs-literal">true</span>,
-  shadowDOM: <span class="hljs-literal">true</span>
+  <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">onlyLegacy</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">shadowDOM</span>: <span class="hljs-literal">true</span>
 });
 </code></pre>
 <p class="docs-markdown--p">The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters <a href="https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options">here</a>.</p>

@@ -1,29 +1,29 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Progress Indicator non linear step completion example
+* <span class="hljs-doctag">@title </span>Progress Indicator non linear step completion example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./progress-stepper-nonlinear-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./progress-stepper-nonlinear-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-nonlinear-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-nonlinear-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperNonlinearExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperNonlinearExampleComponent</span> </span>{
   multiSteps = [
     {
-      name: <span class="hljs-string">'Lorem'</span>,
-      completed: <span class="hljs-literal">false</span>
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Lorem&#x27;</span>,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
     },
     {
-      name: <span class="hljs-string">'Ipsum'</span>,
-      completed: <span class="hljs-literal">false</span>
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Ipsum&#x27;</span>,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
     },
     {
-      name: <span class="hljs-string">'Dolar'</span>,
-      completed: <span class="hljs-literal">false</span>
+      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Dolar&#x27;</span>,
+      <span class="hljs-attr">completed</span>: <span class="hljs-literal">false</span>
     }
   ];
 
-  completeStep(i: <span class="hljs-built_in">number</span>) {
-    <span class="hljs-keyword">this</span>.multiSteps[i].completed = !<span class="hljs-keyword">this</span>.multiSteps[i].completed;
+  <span class="hljs-function"><span class="hljs-title">completeStep</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.multiSteps[i].completed = !<span class="hljs-built_in">this</span>.multiSteps[i].completed;
   }
 }

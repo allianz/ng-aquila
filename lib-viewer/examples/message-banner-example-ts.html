@@ -1,19 +1,19 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Notification banner example
+* <span class="hljs-doctag">@title </span>Notification banner example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./message-banner-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./message-banner-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> MessageBannerExampleComponent {
-  infoBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageBannerExampleComponent</span> </span>{
+  <span class="hljs-attr">infoBannerClosed</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
   warningBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
   errorBannerClosed: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  showAllBanners() {
-    <span class="hljs-keyword">this</span>.infoBannerClosed = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">this</span>.warningBannerClosed = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">this</span>.errorBannerClosed = <span class="hljs-literal">false</span>;
+  <span class="hljs-function"><span class="hljs-title">showAllBanners</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.infoBannerClosed = <span class="hljs-literal">false</span>;
+    <span class="hljs-built_in">this</span>.warningBannerClosed = <span class="hljs-literal">false</span>;
+    <span class="hljs-built_in">this</span>.errorBannerClosed = <span class="hljs-literal">false</span>;
   }
 }

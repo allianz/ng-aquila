@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Multi Accordion Example
+* <span class="hljs-doctag">@title </span>Multi Accordion Example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./accordion-multi-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./accordion-multi-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AccordionMultiExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AccordionMultiExampleComponent</span> </span>{
   multi = <span class="hljs-literal">true</span>;
 
-  toggleMulti() {
-    <span class="hljs-keyword">this</span>.multi = !<span class="hljs-keyword">this</span>.multi;
+  <span class="hljs-function"><span class="hljs-title">toggleMulti</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.multi = !<span class="hljs-built_in">this</span>.multi;
   }
 }

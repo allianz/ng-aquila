@@ -1,36 +1,36 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Appearance for Tabs Navbar
+ * <span class="hljs-doctag">@title </span>Appearance for Tabs Navbar
  */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./tabs-nav-bar-appearance-example.html'</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-nav-bar-appearance-example.html&#x27;</span>,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TabsNavBarAppearanceExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsNavBarAppearanceExampleComponent</span> </span>{
 
   links = [
     {
-      label: <span class="hljs-string">'Subpage 1'</span>,
-      path: <span class="hljs-string">'...'</span>,
-      disabled: <span class="hljs-literal">false</span>
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 1&#x27;</span>,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;...&#x27;</span>,
+      <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>
     },
     {
-      label: <span class="hljs-string">'Subpage 2'</span>,
-      path: <span class="hljs-string">'...'</span>,
-      disabled: <span class="hljs-literal">false</span>
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 2&#x27;</span>,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;...&#x27;</span>,
+      <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>
     },
     {
-      label: <span class="hljs-string">'Subpage 3'</span>,
-      path: <span class="hljs-string">'...'</span>,
-      disabled: <span class="hljs-literal">true</span>
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 3&#x27;</span>,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;...&#x27;</span>,
+      <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>
     }
   ];
 
-  currentLink = <span class="hljs-keyword">this</span>.links[<span class="hljs-number">0</span>];
+  currentLink = <span class="hljs-built_in">this</span>.links[<span class="hljs-number">0</span>];
 
-  setActiveLink(link) {
+  <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link</span>)</span> {
     <span class="hljs-keyword">if</span> (!link.disabled) {
-      <span class="hljs-keyword">this</span>.currentLink = link;
+      <span class="hljs-built_in">this</span>.currentLink = link;
     }
   }
 }

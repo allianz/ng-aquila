@@ -1,6 +1,6 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
-<span class="hljs-keyword">enum</span> FruitPreferenceType {
+<span class="hljs-built_in">enum</span> FruitPreferenceType {
   NEVER,
   RARELY,
   SOMETIMES,
@@ -9,27 +9,27 @@
 }
 
 <span class="hljs-comment">/**
- * @title Slider Textual Example
+ * <span class="hljs-doctag">@title </span>Slider Textual Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-slider-textual-example'</span>,
-  templateUrl: <span class="hljs-string">'./slider-textual-example.html'</span>
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-slider-textual-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./slider-textual-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SliderTextualExampleComponent {
-  fruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SliderTextualExampleComponent</span> </span>{
+  <span class="hljs-attr">fruitPreferenceFormatter</span>: <span class="hljs-built_in">Function</span> = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
     <span class="hljs-keyword">switch</span> (value) {
       <span class="hljs-keyword">case</span> FruitPreferenceType.NEVER:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'never'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;never&#x27;</span>;
       <span class="hljs-keyword">case</span> FruitPreferenceType.RARELY:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'rarely'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;rarely&#x27;</span>;
       <span class="hljs-keyword">case</span> FruitPreferenceType.SOMETIMES:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'sometimes'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;sometimes&#x27;</span>;
       <span class="hljs-keyword">case</span> FruitPreferenceType.OFTEN:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'often'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;often&#x27;</span>;
       <span class="hljs-keyword">case</span> FruitPreferenceType.ALWAYS:
-        <span class="hljs-keyword">return</span> <span class="hljs-string">'always'</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;always&#x27;</span>;
     }
   }
-  minFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">`never`</span>;
-  maxFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-string">`always`</span>;
+  <span class="hljs-attr">minFruitPreferenceFormatter</span>: <span class="hljs-built_in">Function</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`never`</span>;
+  maxFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`always`</span>;
 }

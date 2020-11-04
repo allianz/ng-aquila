@@ -7,7 +7,7 @@
 <h3 id="modal-opening" class="docs-markdown--h3">Modal Opening</h3>
 <p class="docs-markdown--p">A modal can be opened by using the <code>open</code> method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> myDialogRef = dialogService.open(MyModalComponent, {
-  width: <span class="hljs-string">'600px'</span>,
+  <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;600px&#x27;</span>,
 });
 
 myDialogRef.close();
@@ -38,19 +38,19 @@ The three different closing variants are demonstrated in the example below:</p>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> dialogRef = dialog.open(YourDialog, {
-  data: { name: <span class="hljs-string">'Max Mustermann'</span> },
+  <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Max Mustermann&#x27;</span> },
 });
 </code></pre>
 <p class="docs-markdown--p">In your dialog you can access this data by injecting the <code>NX_MODAL_DATA</code> token:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NX_MODAL_DATA } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/modal'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NX_MODAL_DATA } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'your-dialog'</span>,
-  template: <span class="hljs-string">'passed in {{ data.name }}'</span>,
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;your-dialog&#x27;</span>,
+  <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;passed in {{ data.name }}&#x27;</span>,
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> YourDialog {
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">public</span> data: <span class="hljs-built_in">any</span></span>) { }
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourDialog</span> </span>{
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">public</span> data: <span class="hljs-built_in">any</span></span>)</span> { }
 }
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
@@ -58,10 +58,10 @@ The three different closing variants are demonstrated in the example below:</p>
 <h3 id="global-configuration" class="docs-markdown--h3">Global Configuration</h3>
 <p class="docs-markdown--p">You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-  providers: [
+  <span class="hljs-attr">providers</span>: [
     {
-        provide: NX_MODAL_DEFAULT_OPTIONS,
-        useValue: { width: <span class="hljs-number">700</span>px, showCloseIcon: <span class="hljs-literal">true</span>}
+        <span class="hljs-attr">provide</span>: NX_MODAL_DEFAULT_OPTIONS,
+        <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">width</span>: <span class="hljs-number">700</span>px, <span class="hljs-attr">showCloseIcon</span>: <span class="hljs-literal">true</span>}
     }
   ]
 </code></pre>
@@ -73,10 +73,10 @@ The three different closing variants are demonstrated in the example below:</p>
 <h3 id="deprecated-modal-component" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxModalModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/modal'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxModalModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
-  imports: [
+  <span class="hljs-attr">imports</span>: [
     NxModalModule.forRoot()
   ]
 })

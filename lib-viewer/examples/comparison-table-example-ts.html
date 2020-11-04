@@ -1,28 +1,28 @@
-<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ngx-docs-ui'</span>;
-<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs/operators'</span>;
-<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">'rxjs'</span>;
+<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ngx-docs-ui&#x27;</span>;
+<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
+<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 
-<span class="hljs-comment">/** @title Basic example */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Basic example */</span>
 <span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">'nx-comparison-table-example'</span>,
-  templateUrl: <span class="hljs-string">'./comparison-table-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./comparison-table-example.css'</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-comparison-table-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ComparisonTableExampleComponent <span class="hljs-keyword">implements</span> OnDestroy {
-  unselectedClassNames: <span class="hljs-built_in">string</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
+  <span class="hljs-attr">unselectedClassNames</span>: <span class="hljs-built_in">string</span>;
   <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> demoService: BaseDemoThemingService</span>) {
-    <span class="hljs-keyword">this</span>.demoService.unselectedClassNames.pipe(
-      takeUntil(<span class="hljs-keyword">this</span>._destroyed)
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> demoService: BaseDemoThemingService</span>)</span> {
+    <span class="hljs-built_in">this</span>.demoService.unselectedClassNames.pipe(
+      takeUntil(<span class="hljs-built_in">this</span>._destroyed)
     ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
-      <span class="hljs-keyword">this</span>.unselectedClassNames = value;
+      <span class="hljs-built_in">this</span>.unselectedClassNames = value;
     });
   }
 
-  ngOnDestroy() {
-    <span class="hljs-keyword">this</span>._destroyed.next();
-    <span class="hljs-keyword">this</span>._destroyed.complete();
+  <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>._destroyed.next();
+    <span class="hljs-built_in">this</span>._destroyed.complete();
   }
 }

@@ -1,33 +1,33 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> {FormBuilder, FormGroup, Validators} <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {FormBuilder, FormGroup, Validators} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Checkbox group dynamic checkboxes example
+* <span class="hljs-doctag">@title </span>Checkbox group dynamic checkboxes example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./checkbox-group-dynamic-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./checkbox-group-dynamic-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./checkbox-group-dynamic-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./checkbox-group-dynamic-example.css&#x27;</span>]
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> CheckboxGroupDynamicExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckboxGroupDynamicExampleComponent</span> </span>{
   <span class="hljs-keyword">public</span> myFormGroup: FormGroup;
   data = [
-    <span class="hljs-string">'one'</span>, <span class="hljs-string">'two'</span>, <span class="hljs-string">'three'</span>
+    <span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>
   ];
   i = <span class="hljs-number">1</span>;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.myFormGroup = <span class="hljs-keyword">this</span>.fb.group({
-      <span class="hljs-string">'terms'</span>: [[], Validators.required]
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.myFormGroup = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-string">&#x27;terms&#x27;</span>: [[], Validators.required]
     });
   }
 
-  <span class="hljs-keyword">public</span> addNewCb() {
-    <span class="hljs-keyword">this</span>.data.push(<span class="hljs-string">'Checkbox '</span> + <span class="hljs-keyword">this</span>.i);
-    <span class="hljs-keyword">this</span>.i++;
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">addNewCb</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.data.push(<span class="hljs-string">&#x27;Checkbox &#x27;</span> + <span class="hljs-built_in">this</span>.i);
+    <span class="hljs-built_in">this</span>.i++;
   }
 
-  <span class="hljs-keyword">public</span> removeCB() {
-    <span class="hljs-keyword">this</span>.data.shift();
+  <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-title">removeCB</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.data.shift();
   }
 }

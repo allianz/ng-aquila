@@ -1,33 +1,33 @@
-<span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
-<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
-<span class="hljs-keyword">import</span> { NxDateAdapter, NX_DATE_LOCALE } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/datefield'</span>;
+<span class="hljs-keyword">import</span> { Component, Inject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+<span class="hljs-keyword">import</span> { Moment } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxDateAdapter, NX_DATE_LOCALE } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Parsing example
+* <span class="hljs-doctag">@title </span>Parsing example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./datefield-parsing-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./datefield-parsing-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-parsing-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-parsing-example.css&#x27;</span>]
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DatefieldParsingExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldParsingExampleComponent</span> </span>{
 
   <span class="hljs-keyword">public</span> strictDate = moment();
   <span class="hljs-keyword">public</span> nonStrictDate = moment();
   <span class="hljs-keyword">public</span> openedStrict = <span class="hljs-literal">false</span>;
   <span class="hljs-keyword">public</span> openedNonStrict = <span class="hljs-literal">false</span>;
   <span class="hljs-keyword">public</span> currentLocale: <span class="hljs-built_in">string</span>;
-  <span class="hljs-keyword">public</span> parseFormat = <span class="hljs-string">'MM/DD/YYYY'</span>;
+  <span class="hljs-keyword">public</span> parseFormat = <span class="hljs-string">&#x27;MM/DD/YYYY&#x27;</span>;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
     <span class="hljs-keyword">public</span> nxDateAdapter: NxDateAdapter&lt;Moment&gt;,
-    <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">public</span> nxDateLocale: <span class="hljs-built_in">string</span></span>) {
+    <span class="hljs-meta">@Inject</span>(NX_DATE_LOCALE) <span class="hljs-keyword">public</span> nxDateLocale: <span class="hljs-built_in">string</span></span>)</span> {
 
-      <span class="hljs-keyword">this</span>.currentLocale = nxDateLocale;
+      <span class="hljs-built_in">this</span>.currentLocale = nxDateLocale;
 
-      <span class="hljs-keyword">this</span>.nxDateAdapter.localeChanges.subscribe(<span class="hljs-function"><span class="hljs-params">locale</span> =&gt;</span> {
-        <span class="hljs-keyword">this</span>.currentLocale = locale;
+      <span class="hljs-built_in">this</span>.nxDateAdapter.localeChanges.subscribe(<span class="hljs-function"><span class="hljs-params">locale</span> =&gt;</span> {
+        <span class="hljs-built_in">this</span>.currentLocale = locale;
     });
   }
 

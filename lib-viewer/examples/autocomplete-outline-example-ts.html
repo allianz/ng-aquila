@@ -1,23 +1,23 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Autocomplete with formfield example
+* <span class="hljs-doctag">@title </span>Autocomplete with formfield example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./autocomplete-outline-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-outline-example.html&#x27;</span>
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AutocompleteOutlineExampleComponent {
-  filteredOptions: <span class="hljs-built_in">string</span>[];
-  options = [<span class="hljs-string">'Chimpanzee'</span>, <span class="hljs-string">'Chinchilla'</span>, <span class="hljs-string">'Chipmunk'</span>, <span class="hljs-string">'Coati'</span>, <span class="hljs-string">'Cicada'</span>, <span class="hljs-string">'Clam'</span>,
-    <span class="hljs-string">'Clownfish'</span>, <span class="hljs-string">'Cobra'</span>, <span class="hljs-string">'Cockroach'</span>, <span class="hljs-string">'Cod'</span>, <span class="hljs-string">'Condor'</span>, <span class="hljs-string">'Constrictor'</span>, <span class="hljs-string">'Coral'</span>, <span class="hljs-string">'Cougar'</span>, <span class="hljs-string">'Cow'</span>,
-    <span class="hljs-string">'Coyote'</span>, <span class="hljs-string">'Coypu'</span>, <span class="hljs-string">'Crab'</span>, <span class="hljs-string">'Crane'</span>, <span class="hljs-string">'Crane fly'</span>, <span class="hljs-string">'Crawdad'</span>, <span class="hljs-string">'Crayfish'</span>, <span class="hljs-string">'Cricket'</span>, <span class="hljs-string">'Crocodile'</span>, <span class="hljs-string">'Crow'</span>];
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutocompleteOutlineExampleComponent</span> </span>{
+  <span class="hljs-attr">filteredOptions</span>: <span class="hljs-built_in">string</span>[];
+  options = [<span class="hljs-string">&#x27;Chimpanzee&#x27;</span>, <span class="hljs-string">&#x27;Chinchilla&#x27;</span>, <span class="hljs-string">&#x27;Chipmunk&#x27;</span>, <span class="hljs-string">&#x27;Coati&#x27;</span>, <span class="hljs-string">&#x27;Cicada&#x27;</span>, <span class="hljs-string">&#x27;Clam&#x27;</span>,
+    <span class="hljs-string">&#x27;Clownfish&#x27;</span>, <span class="hljs-string">&#x27;Cobra&#x27;</span>, <span class="hljs-string">&#x27;Cockroach&#x27;</span>, <span class="hljs-string">&#x27;Cod&#x27;</span>, <span class="hljs-string">&#x27;Condor&#x27;</span>, <span class="hljs-string">&#x27;Constrictor&#x27;</span>, <span class="hljs-string">&#x27;Coral&#x27;</span>, <span class="hljs-string">&#x27;Cougar&#x27;</span>, <span class="hljs-string">&#x27;Cow&#x27;</span>,
+    <span class="hljs-string">&#x27;Coyote&#x27;</span>, <span class="hljs-string">&#x27;Coypu&#x27;</span>, <span class="hljs-string">&#x27;Crab&#x27;</span>, <span class="hljs-string">&#x27;Crane&#x27;</span>, <span class="hljs-string">&#x27;Crane fly&#x27;</span>, <span class="hljs-string">&#x27;Crawdad&#x27;</span>, <span class="hljs-string">&#x27;Crayfish&#x27;</span>, <span class="hljs-string">&#x27;Cricket&#x27;</span>, <span class="hljs-string">&#x27;Crocodile&#x27;</span>, <span class="hljs-string">&#x27;Crow&#x27;</span>];
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">this</span>.filteredOptions = <span class="hljs-keyword">this</span>.options.slice();
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.slice();
   }
 
-  filter(value: <span class="hljs-built_in">any</span>) {
-    <span class="hljs-keyword">this</span>.filteredOptions = <span class="hljs-keyword">this</span>.options.filter(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(value, <span class="hljs-string">'gi'</span>).test(s));
+  <span class="hljs-function"><span class="hljs-title">filter</span>(<span class="hljs-params">value: <span class="hljs-built_in">any</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.filter(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).test(s));
   }
 }

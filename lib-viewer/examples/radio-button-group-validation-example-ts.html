@@ -1,23 +1,23 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Radio button group validation Example
+ * <span class="hljs-doctag">@title </span>Radio button group validation Example
  */</span>
  <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./radio-button-group-validation-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./radio-button-group-validation-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./radio-button-group-validation-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./radio-button-group-validation-example.css&#x27;</span>]
  })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> RadioButtonGroupValidationExampleComponent {
-  testForm: FormGroup;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioButtonGroupValidationExampleComponent</span> </span>{
+  <span class="hljs-attr">testForm</span>: FormGroup;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.createForm();
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.createForm();
   }
 
-  createForm() {
-    <span class="hljs-keyword">this</span>.testForm = <span class="hljs-keyword">this</span>.formBuilder.group({
-      radioTestReactive: [<span class="hljs-literal">null</span>, Validators.required]
+  <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
+      <span class="hljs-attr">radioTestReactive</span>: [<span class="hljs-literal">null</span>, Validators.required]
     });
   }
 }

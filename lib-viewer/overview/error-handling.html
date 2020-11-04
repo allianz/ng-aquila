@@ -31,10 +31,10 @@
 To change the default error state matching you can implement the <code>ErrorStateMatcher</code> interface in your component and use it instead of the default one:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@Component</span>({
   ...
-  providers: [
+  <span class="hljs-attr">providers</span>: [
     {
-      provide: ErrorStateMatcher,
-      useExisting: CustomErrorStateMatcher
+      <span class="hljs-attr">provide</span>: ErrorStateMatcher,
+      <span class="hljs-attr">useExisting</span>: CustomErrorStateMatcher
     }
   ]
   ...
@@ -55,19 +55,19 @@ To change the default error state matching you can implement the <code>ErrorStat
 <h3 id="global-custom-errorstatematcher" class="docs-markdown--h3">Global custom ErrorStateMatcher</h3>
 <p class="docs-markdown--p">You can also set a custom error matching behaviour globally by defining your custom error state matcher:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@Injectable</span>()
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ShowOnDirtyErrorStateMatcher <span class="hljs-keyword">implements</span> ErrorStateMatcher {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ShowOnDirtyErrorStateMatcher</span> <span class="hljs-title">implements</span> <span class="hljs-title">ErrorStateMatcher</span> </span>{
   <span class="hljs-comment">/** Custom error state matcher that checks for validity of the formfield. */</span>
-  isErrorState(control: FormControl | <span class="hljs-literal">null</span>, form: FormGroupDirective | NgForm | <span class="hljs-literal">null</span>): <span class="hljs-built_in">boolean</span> {
+  isErrorState(control: FormControl | <span class="hljs-literal">null</span>, <span class="hljs-attr">form</span>: FormGroupDirective | NgForm | <span class="hljs-literal">null</span>): <span class="hljs-built_in">boolean</span> {
     <span class="hljs-keyword">return</span> !!(control &amp;&amp; control.invalid &amp;&amp; (control.dirty || (form &amp;&amp; form.submitted)));
   }
 }
 </code></pre>
 <p class="docs-markdown--p">and then providing it globaly, for example in your <code>app.module.ts</code>:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-  providers: [
-    { provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher }
+  <span class="hljs-attr">providers</span>: [
+    { <span class="hljs-attr">provide</span>: ErrorStateMatcher, <span class="hljs-attr">useClass</span>: CustomErrorStateMatcher }
   ]
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ApplicationModule { }
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ApplicationModule</span> </span>{ }
 </code></pre>

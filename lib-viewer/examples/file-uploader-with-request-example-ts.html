@@ -1,64 +1,64 @@
-<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxFileUploaderComponent, FileItem } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/file-uploader'</span>;
-<span class="hljs-keyword">import</span> { NxMessageToastConfig, NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/message'</span>;
-<span class="hljs-keyword">import</span> { HttpParams, HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/common/http'</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxFileUploaderComponent, FileItem } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxMessageToastConfig, NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> { HttpParams, HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
-  duration: <span class="hljs-number">3000</span>,
-  context: <span class="hljs-string">'success'</span>,
-  announcementMessage: <span class="hljs-string">'File was uploaded successfully!'</span>
+  <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
+  <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+  <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;File was uploaded successfully!&#x27;</span>
 };
 
-<span class="hljs-comment">/** @title Custom uploading implementation */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Custom uploading implementation */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./file-uploader-with-request-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./file-uploader-with-request-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./file-uploader-with-request-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-with-request-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FileUploaderWithRequestExampleComponent {
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'documentUpload'</span>,  { <span class="hljs-keyword">static</span>: <span class="hljs-literal">false</span> }) documentUpload: NxFileUploaderComponent;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderWithRequestExampleComponent</span> </span>{
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>,  { <span class="hljs-attr">static</span>: <span class="hljs-literal">false</span> }) documentUpload: NxFileUploaderComponent;
   <span class="hljs-keyword">public</span> showUploadError: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params">
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
     <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
     <span class="hljs-keyword">private</span> http: HttpClient
-  </span>) {}
+  </span>)</span> {}
 
-  upload(url: <span class="hljs-built_in">string</span>) {
-    <span class="hljs-keyword">this</span>.showUploadError = <span class="hljs-literal">false</span>;
+  <span class="hljs-function"><span class="hljs-title">upload</span>(<span class="hljs-params">url: <span class="hljs-built_in">string</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.showUploadError = <span class="hljs-literal">false</span>;
 
-    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.documentUpload.value) {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">this</span>.documentUpload.value) {
       <span class="hljs-keyword">return</span>;
     }
 
     <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> FormData();
 
-    <span class="hljs-keyword">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+    <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
       <span class="hljs-keyword">if</span> (!fileItem.isUploaded) {
         fileItem.setUploadingState();
-        formData.append(<span class="hljs-string">'uploads[]'</span>, fileItem.file, fileItem.name);
+        formData.append(<span class="hljs-string">&#x27;uploads[]&#x27;</span>, fileItem.file, fileItem.name);
       }
     });
 
     <span class="hljs-keyword">const</span> params = <span class="hljs-keyword">new</span> HttpParams();
     <span class="hljs-keyword">const</span> options = {
       params,
-      reportProgress: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">reportProgress</span>: <span class="hljs-literal">true</span>,
     };
 
-    <span class="hljs-keyword">this</span>.http.post(url, formData, options).subscribe(
+    <span class="hljs-built_in">this</span>.http.post(url, formData, options).subscribe(
       <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
-        <span class="hljs-keyword">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           fileItem.setUploadedState();
         });
-        <span class="hljs-keyword">this</span>.messageToastService.open(<span class="hljs-string">'All files were uploaded successfully!'</span>, myCustomConfig);
+        <span class="hljs-built_in">this</span>.messageToastService.open(<span class="hljs-string">&#x27;All files were uploaded successfully!&#x27;</span>, myCustomConfig);
       },
       <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
-        <span class="hljs-keyword">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           <span class="hljs-keyword">if</span> (!fileItem.isUploaded) {
             fileItem.setErrorState();
           }
         });
-        <span class="hljs-keyword">this</span>.showUploadError = <span class="hljs-literal">true</span>;
+        <span class="hljs-built_in">this</span>.showUploadError = <span class="hljs-literal">true</span>;
       }
     );
   }

@@ -1,17 +1,17 @@
-<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxTooltipDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/tooltip'</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxTooltipDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Tooltip programmatic toggling
+ * <span class="hljs-doctag">@title </span>Tooltip programmatic toggling
  */</span>
 <span class="hljs-meta">@Component</span>({
-  styleUrls: [<span class="hljs-string">'./tooltip-programmatic-example.css'</span>],
-  templateUrl: <span class="hljs-string">'./tooltip-programmatic-example.html'</span>
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tooltip-programmatic-example.css&#x27;</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tooltip-programmatic-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipProgrammaticExampleComponent {
-  <span class="hljs-meta">@ViewChild</span>(NxTooltipDirective, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) tooltip: NxTooltipDirective;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipProgrammaticExampleComponent</span> </span>{
+  <span class="hljs-meta">@ViewChild</span>(NxTooltipDirective, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) tooltip: NxTooltipDirective;
 
-  toggle() {
-    <span class="hljs-keyword">this</span>.tooltip.toggle();
+  <span class="hljs-function"><span class="hljs-title">toggle</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.tooltip.toggle();
   }
 }

@@ -1,19 +1,19 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Reactive example
+ * <span class="hljs-doctag">@title </span>Reactive example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./dropdown-reactive-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./dropdown-reactive-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-reactive-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-reactive-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> DropdownReactiveExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownReactiveExampleComponent</span> </span>{
   form = <span class="hljs-keyword">new</span> FormBuilder().group({
-    dropdown: [<span class="hljs-string">'BMW'</span>, Validators.required]
+    <span class="hljs-attr">dropdown</span>: [<span class="hljs-string">&#x27;BMW&#x27;</span>, Validators.required]
   });
 
-  patch(value) {
-    <span class="hljs-keyword">this</span>.form.patchValue({<span class="hljs-string">'dropdown'</span>: value});
+  <span class="hljs-function"><span class="hljs-title">patch</span>(<span class="hljs-params">value</span>)</span> {
+    <span class="hljs-built_in">this</span>.form.patchValue({<span class="hljs-string">&#x27;dropdown&#x27;</span>: value});
   }
 }

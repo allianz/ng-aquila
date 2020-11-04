@@ -1,44 +1,44 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { NxBadgeType } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/badge'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxBadgeType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/badge&#x27;</span>;
 
 <span class="hljs-keyword">type</span> Contract = {
-  id: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>;
   user: <span class="hljs-built_in">string</span>;
   status: NxBadgeType;
   documents: <span class="hljs-built_in">string</span>[];
 };
 
 <span class="hljs-comment">/**
- * @title Data Context Menu Example
+ * <span class="hljs-doctag">@title </span>Data Context Menu Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./context-menu-data-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'context-menu-data-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./context-menu-data-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;context-menu-data-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ContextMenuDataExampleComponent {
-  contracts: Contract[] = [
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContextMenuDataExampleComponent</span> </span>{
+  <span class="hljs-attr">contracts</span>: Contract[] = [
     {
-      id: <span class="hljs-string">'23412'</span>,
-      user: <span class="hljs-string">'Anna Schuster'</span>,
-      status: <span class="hljs-string">'active'</span>,
-      documents: [
-        <span class="hljs-string">'Contract 01/04/2017'</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;23412&#x27;</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-string">&#x27;Anna Schuster&#x27;</span>,
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+      <span class="hljs-attr">documents</span>: [
+        <span class="hljs-string">&#x27;Contract 01/04/2017&#x27;</span>,
       ]
     },
     {
-      id: <span class="hljs-string">'09090'</span>,
-      user: <span class="hljs-string">'Max Pecu'</span>,
-      status: <span class="hljs-string">'active'</span>,
-      documents: [
-        <span class="hljs-string">'Contract 11/07/2015'</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;09090&#x27;</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-string">&#x27;Max Pecu&#x27;</span>,
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+      <span class="hljs-attr">documents</span>: [
+        <span class="hljs-string">&#x27;Contract 11/07/2015&#x27;</span>,
       ]
     },
     {
-      id: <span class="hljs-string">'45234'</span>,
-      user: <span class="hljs-string">'Sefan Maier'</span>,
-      status: <span class="hljs-string">'active'</span>,
-      documents: [
-        <span class="hljs-string">'Contract 01/01/2017'</span>,
+      <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;45234&#x27;</span>,
+      <span class="hljs-attr">user</span>: <span class="hljs-string">&#x27;Sefan Maier&#x27;</span>,
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+      <span class="hljs-attr">documents</span>: [
+        <span class="hljs-string">&#x27;Contract 01/01/2017&#x27;</span>,
       ]
     }
   ];

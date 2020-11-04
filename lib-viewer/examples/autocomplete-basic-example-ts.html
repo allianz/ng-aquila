@@ -1,15 +1,15 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Autocomplete example
+* <span class="hljs-doctag">@title </span>Autocomplete example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./autocomplete-basic-example.html'</span>
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-basic-example.html&#x27;</span>
 })
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AutocompleteBasicExampleComponent {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutocompleteBasicExampleComponent</span> </span>{
   options = (<span class="hljs-string">`Chimpanzee,Chinchilla,Chipmunk,Coati,Cicada,Clam,
     Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,
     Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow`</span>)
-  .split(<span class="hljs-string">','</span>);
+  .split(<span class="hljs-string">&#x27;,&#x27;</span>);
 }

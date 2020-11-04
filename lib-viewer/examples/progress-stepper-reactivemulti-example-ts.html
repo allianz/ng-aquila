@@ -1,18 +1,18 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FormGroup, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/forms'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* @title Progress Indicator reactive form with separate form per step
+* <span class="hljs-doctag">@title </span>Progress Indicator reactive form with separate form per step
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./progress-stepper-reactivemulti-example.html'</span>,
-  styleUrls: [<span class="hljs-string">'./progress-stepper-reactivemulti-example.css'</span>]
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-reactivemulti-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-reactivemulti-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> ProgressStepperReactivemultiExampleComponent {
-  stepOneForm: FormGroup;
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperReactivemultiExampleComponent</span> </span>{
+  <span class="hljs-attr">stepOneForm</span>: FormGroup;
   stepTwoForm: FormGroup;
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>) {
-    <span class="hljs-keyword">this</span>.stepOneForm = <span class="hljs-keyword">this</span>._formBuilder.group({ name: <span class="hljs-string">''</span> });
-    <span class="hljs-keyword">this</span>.stepTwoForm = <span class="hljs-keyword">this</span>._formBuilder.group({ age: <span class="hljs-string">''</span> });
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.stepOneForm = <span class="hljs-built_in">this</span>._formBuilder.group({ <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;&#x27;</span> });
+    <span class="hljs-built_in">this</span>.stepTwoForm = <span class="hljs-built_in">this</span>._formBuilder.group({ <span class="hljs-attr">age</span>: <span class="hljs-string">&#x27;&#x27;</span> });
   }
 }

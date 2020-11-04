@@ -2209,17 +2209,6 @@
       "url": "lib-viewer/examples/context-menu-basic-example-###TYPE###.html"
     },
     {
-      "id": "context-menu-data",
-      "component": "ContextMenuDataExampleComponent",
-      "title": "Data Context Menu Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/context-menu-data-example-###TYPE###.html"
-    },
-    {
       "id": "context-menu-disabled",
       "component": "ContextMenuDisabledExampleComponent",
       "title": "Disabled Context Menu Example",
@@ -2229,6 +2218,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-disabled-example-###TYPE###.html"
+    },
+    {
+      "id": "context-menu-data",
+      "component": "ContextMenuDataExampleComponent",
+      "title": "Data Context Menu Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-data-example-###TYPE###.html"
     },
     {
       "id": "context-menu-icons",
@@ -2506,17 +2506,6 @@
       "url": "lib-viewer/examples/dropdown-disabled-items-example-###TYPE###.html"
     },
     {
-      "id": "dropdown-filter-custom",
-      "component": "DropdownFilterCustomExampleComponent",
-      "title": "Custom Filter Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/dropdown-filter-custom-example-###TYPE###.html"
-    },
-    {
       "id": "dropdown-filter",
       "component": "DropdownFilterExampleComponent",
       "title": "Filter example",
@@ -2526,6 +2515,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/dropdown-filter-example-###TYPE###.html"
+    },
+    {
+      "id": "dropdown-filter-custom",
+      "component": "DropdownFilterCustomExampleComponent",
+      "title": "Custom Filter Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dropdown-filter-custom-example-###TYPE###.html"
     },
     {
       "id": "dropdown-group",
@@ -3287,17 +3287,6 @@
       "url": "lib-viewer/examples/icon-filled-example-###TYPE###.html"
     },
     {
-      "id": "icon-general",
-      "component": "IconGeneralExampleComponent",
-      "title": "General Icons Example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/icon-general-example-###TYPE###.html"
-    },
-    {
       "id": "icon-list-functional",
       "component": "IconListFunctionalExampleComponent",
       "title": "Functional Icons List Example",
@@ -3307,6 +3296,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/icon-list-functional-example-###TYPE###.html"
+    },
+    {
+      "id": "icon-general",
+      "component": "IconGeneralExampleComponent",
+      "title": "General Icons Example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/icon-general-example-###TYPE###.html"
     },
     {
       "id": "icon-list-product",
@@ -3408,17 +3408,6 @@
       "url": "lib-viewer/examples/input-autoresize-example-###TYPE###.html"
     },
     {
-      "id": "input-reactive",
-      "component": "InputReactiveExampleComponent",
-      "title": "Reactive example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/input-reactive-example-###TYPE###.html"
-    },
-    {
       "id": "input-standalone",
       "component": "InputStandaloneExampleComponent",
       "title": "Standalone example",
@@ -3428,6 +3417,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/input-standalone-example-###TYPE###.html"
+    },
+    {
+      "id": "input-reactive",
+      "component": "InputReactiveExampleComponent",
+      "title": "Reactive example",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/input-reactive-example-###TYPE###.html"
     },
     {
       "id": "input-template-driven",
@@ -5652,17 +5652,6 @@
       "url": "lib-viewer/examples/timefield-negative-example-###TYPE###.html"
     },
     {
-      "id": "timefield-reactive",
-      "component": "TimefieldReactiveExampleComponent",
-      "title": "Timefield reactive forms example",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/timefield-reactive-example-###TYPE###.html"
-    },
-    {
       "id": "timefield-template-driven",
       "component": "TimefieldTemplateDrivenExampleComponent",
       "title": "Timefield Template Driven Form",
@@ -5696,15 +5685,15 @@
       "url": "lib-viewer/examples/toolbar-example-###TYPE###.html"
     },
     {
-      "id": "tooltip-basic",
-      "component": "TooltipBasicExampleComponent",
-      "title": "Tooltip",
+      "id": "timefield-reactive",
+      "component": "TimefieldReactiveExampleComponent",
+      "title": "Timefield reactive forms example",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/tooltip-basic-example-###TYPE###.html"
+      "url": "lib-viewer/examples/timefield-reactive-example-###TYPE###.html"
     },
     {
       "id": "tooltip-delay",
@@ -5716,6 +5705,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/tooltip-delay-example-###TYPE###.html"
+    },
+    {
+      "id": "tooltip-basic",
+      "component": "TooltipBasicExampleComponent",
+      "title": "Tooltip",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tooltip-basic-example-###TYPE###.html"
     },
     {
       "id": "tooltip-disabled",

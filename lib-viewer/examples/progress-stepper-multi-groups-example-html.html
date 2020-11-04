@@ -1,32 +1,32 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">"Step"</span>
-   <span class="hljs-attr">direction</span>=<span class="hljs-string">"vertical"</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Step&quot;</span>
+   <span class="hljs-attr">direction</span>=<span class="hljs-string">&quot;vertical&quot;</span>
    #<span class="hljs-attr">stepper</span>
    <span class="hljs-attr">linear</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-step-group</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let group of groups"</span>
-      [<span class="hljs-attr">label</span>]=<span class="hljs-string">"group.label"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">"let step of group.steps"</span>
-        [<span class="hljs-attr">label</span>]=<span class="hljs-string">"step.label"</span>
-        [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">"form"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">"ngForm"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">"'Input ' + step.label"</span>
-            <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">"always"</span>
-            <span class="hljs-attr">appearance</span>=<span class="hljs-string">"outline"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">"step.label"</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-step-group</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let group of groups&quot;</span>
+      [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;group.label&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-step</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let step of group.steps&quot;</span>
+        [<span class="hljs-attr">label</span>]=<span class="hljs-string">&quot;step.label&quot;</span>
+        [<span class="hljs-attr">stepControl</span>]=<span class="hljs-string">&quot;form&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">&quot;ngForm&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;&#x27;Input &#x27; + step.label&quot;</span>
+            <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+            <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;step.label&quot;</span>
               <span class="hljs-attr">nxInput</span>
               <span class="hljs-attr">required</span>
               <span class="hljs-attr">ngModel</span>
-              <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+              <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
             Please fill out the field!
           <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nx-margin-right-2xs"</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
           <span class="hljs-attr">nxStepperPrevious</span>&gt;</span>Previous<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">"primary small"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
           <span class="hljs-attr">nxStepperNext</span>&gt;</span>Next<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-step-group</span>&gt;</span>

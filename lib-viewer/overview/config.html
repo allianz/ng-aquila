@@ -9,9 +9,9 @@
 <li class="docs-markdown--li"><strong>TabGroup</strong> and <strong>TabNavBar</strong>: <code>[appearance]</code> is set to <code>&quot;expert&quot;</code> for both of the components (see <a href="./documentation/tabs/overview#expert%253A-appearance">here</a>).</li>
 </ul>
 <p class="docs-markdown--p">If you use this module, you don't need to set these configurations explicitly for every component in your template anymore. This means instead of using the expert properties for the component <code>&lt;nx-formfield nxFloatLabel=&quot;always&quot; appearance=&quot;outline&quot;&gt;</code> you only need to write <code>&lt;nx-formfield&gt;...&lt;/nx-formfield&gt;</code> and <code>nxFloatLabel</code>, <code>appearance</code> are set for you automatically.</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxExpertModule } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/config'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxExpertModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/config&#x27;</span>;
 </code></pre>
-<pre><code class="language-ts"><span class="hljs-string">"imports"</span>: [
+<pre><code class="language-ts"><span class="hljs-string">&quot;imports&quot;</span>: [
   ...,
   ...,
   NxExpertModule
@@ -23,12 +23,12 @@
 <p class="docs-markdown--p">Our theming is accomplished by using CSS custom properties (CSS variables) to overwrite the styles of our components. The styles of our components are <em>view encapsulated</em> which means that they cannot be overwritten from outside of the component without using the selector <code>::ng-deep</code>. The shadow piercing selector <code>::ng-deep</code> disables the view encapsulation for a css rule and should be used only in exceptional cases. You can find more information on view encapsulation in Angular <a href="https://angular.io/guide/component-styles#view-encapsulation">here</a>.</p>
 <h4 id="theme-import" class="docs-markdown--h4">Theme import</h4>
 <p class="docs-markdown--p">You have to import the expert CSS theme into your <code>angular.json</code> file:</p>
-<pre><code class="language-ts"><span class="hljs-string">"styles"</span>: [
-  <span class="hljs-string">"node_modules/@aposin/ng-aquila/themes/expert.css"</span>
+<pre><code class="language-ts"><span class="hljs-string">&quot;styles&quot;</span>: [
+  <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/expert.css&quot;</span>
 ]
 </code></pre>
 <p class="docs-markdown--p">If you don't use the Angular CLI or just prefer another place you can use this CSS import instead:</p>
-<pre><code class="language-css"><span class="hljs-keyword">@import</span> <span class="hljs-string">"@aposin/ng-aquila/themes/expert.css"</span>;
+<pre><code class="language-css"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;@aposin/ng-aquila/themes/expert.css&quot;</span>;
 </code></pre>
 <h4 id="ie11-support" class="docs-markdown--h4">IE11 Support</h4>
 <p class="docs-markdown--p">To support IE11 we have a fallback in place: if you want to use a theme for IE11 you need to use the <a href="https://github.com/jhildenbiddle/css-vars-ponyfill/">css vars ponyfill</a>
@@ -37,12 +37,12 @@ as a dependency.</p>
 <pre><code>npm install css-vars-ponyfill
 </code></pre>
 <p class="docs-markdown--p">Then, import the ponyfill into your <code>polyfill.ts</code> and call it:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">'css-vars-ponyfill'</span>;
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;css-vars-ponyfill&#x27;</span>;
 
 cssVars({
-  watch: <span class="hljs-literal">true</span>,
-  onlyLegacy: <span class="hljs-literal">true</span>,
-  shadowDOM: <span class="hljs-literal">true</span>
+  <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">onlyLegacy</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">shadowDOM</span>: <span class="hljs-literal">true</span>
 });
 </code></pre>
 <p class="docs-markdown--p">The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters <a href="https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options">here</a>.</p>

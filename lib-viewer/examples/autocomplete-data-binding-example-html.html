@@ -1,16 +1,16 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">'Template bound'</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text'</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">'auto3'</span> <span class="hljs-attr">nxAutocompleteDebounce</span>=<span class="hljs-string">'0'</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">'modelBoundData'</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&#x27;Template bound&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&#x27;auto3&#x27;</span> <span class="hljs-attr">nxAutocompleteDebounce</span>=<span class="hljs-string">&#x27;0&#x27;</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&#x27;modelBoundData&#x27;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto3</span>=<span class="hljs-string">'nxAutocomplete'</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">'let item of simpleFilteredOptions(modelBoundData)'</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">'item'</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto3</span>=<span class="hljs-string">&#x27;nxAutocomplete&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&#x27;let item of simpleFilteredOptions(modelBoundData)&#x27;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&#x27;item&#x27;</span>&gt;</span>
     {{item | lowercase}}
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
 Template bound: {{ modelBoundData }}
 
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">'testForm'</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">'Reactive bound'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'text'</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">'auto4'</span> [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">'dynamicBackendOptions'</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">'autocomplete'</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&#x27;testForm&#x27;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&#x27;Reactive bound&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&#x27;auto4&#x27;</span> [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&#x27;dynamicBackendOptions&#x27;</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&#x27;autocomplete&#x27;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto4</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
@@ -18,10 +18,10 @@ Reactive form: {{ testForm.controls.autocomplete.value }}
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-natural-language-form</span>&gt;</span>
   Here is a word
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">'Provide this required field'</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">ngModel</span> <span class="hljs-attr">required</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">'auto5'</span> [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">'dynamicBackendOptions'</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-word</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&#x27;Provide this required field&#x27;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">ngModel</span> <span class="hljs-attr">required</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&#x27;auto5&#x27;</span> [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&#x27;dynamicBackendOptions&#x27;</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxError</span>&gt;</span>This field is required.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto5</span>=<span class="hljs-string">'nxAutocomplete'</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto5</span>=<span class="hljs-string">&#x27;nxAutocomplete&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-word</span>&gt;</span>
   with some following copy.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-natural-language-form</span>&gt;</span>

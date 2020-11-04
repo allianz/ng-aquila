@@ -1,17 +1,17 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { TooltipPosition } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/tooltip'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { TooltipPosition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tooltip&#x27;</span>;
 
 <span class="hljs-comment">/**
- * @title Tooltip positions
+ * <span class="hljs-doctag">@title </span>Tooltip positions
  */</span>
 <span class="hljs-meta">@Component</span>({
-  styleUrls: [<span class="hljs-string">'./tooltip-positions-example.css'</span>],
-  templateUrl: <span class="hljs-string">'./tooltip-positions-example.html'</span>
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tooltip-positions-example.css&#x27;</span>],
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tooltip-positions-example.html&#x27;</span>
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> TooltipPositionsExampleComponent {
-  positions: TooltipPosition[];
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipPositionsExampleComponent</span> </span>{
+  <span class="hljs-attr">positions</span>: TooltipPosition[];
 
-  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {
-    <span class="hljs-keyword">this</span>.positions = [<span class="hljs-string">'top'</span>, <span class="hljs-string">'right'</span>, <span class="hljs-string">'bottom'</span>, <span class="hljs-string">'left'</span>];
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.positions = [<span class="hljs-string">&#x27;top&#x27;</span>, <span class="hljs-string">&#x27;right&#x27;</span>, <span class="hljs-string">&#x27;bottom&#x27;</span>, <span class="hljs-string">&#x27;left&#x27;</span>];
   }
 }

@@ -1,32 +1,32 @@
-<span class="hljs-keyword">import</span> { Component, ViewChild, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">'@angular/core'</span>;
-<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/formfield'</span>;
-<span class="hljs-keyword">import</span> { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/base'</span>;
-<span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">'@aposin/ng-aquila/input'</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild, AfterContentInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/base&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxInputDirective } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/input&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myDefaultOptions: FormfieldDefaultOptions = {
-  appearance: <span class="hljs-string">'outline'</span>,
-  nxFloatLabel: <span class="hljs-string">'always'</span>
+  <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>,
+  <span class="hljs-attr">nxFloatLabel</span>: <span class="hljs-string">&#x27;always&#x27;</span>
 };
 
 <span class="hljs-keyword">const</span> myErrorOptions: ErrorDefaultOptions = {
-  appearance: <span class="hljs-string">'text'</span>
+  <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;text&#x27;</span>
 };
 
 <span class="hljs-comment">/**
-* @title Global default settings example
+* <span class="hljs-doctag">@title </span>Global default settings example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  templateUrl: <span class="hljs-string">'./formfield-global-example.html'</span>,
-  providers: [
-    {provide: FORMFIELD_DEFAULT_OPTIONS, useValue: myDefaultOptions},
-    {provide: ERROR_DEFAULT_OPTIONS, useValue: myErrorOptions}
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-global-example.html&#x27;</span>,
+  <span class="hljs-attr">providers</span>: [
+    {<span class="hljs-attr">provide</span>: FORMFIELD_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myDefaultOptions},
+    {<span class="hljs-attr">provide</span>: ERROR_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myErrorOptions}
   ]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FormfieldGlobalExampleComponent <span class="hljs-keyword">implements</span> AfterContentInit {
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldGlobalExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterContentInit</span> </span>{
   <span class="hljs-keyword">public</span> modelValue;
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">'errorNgModel'</span>, { <span class="hljs-keyword">static</span>: <span class="hljs-literal">true</span> }) errorNgModel: NxInputDirective;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;errorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) errorNgModel: NxInputDirective;
 
-  ngAfterContentInit() {
-    <span class="hljs-keyword">this</span>.errorNgModel.ngControl.control.markAsTouched();
+  <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.errorNgModel.ngControl.control.markAsTouched();
   }
 }
