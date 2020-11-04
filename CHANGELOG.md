@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.4.0](https://github.com/aposin/ng-aquila/compare/v10.3.0...v10.4.0) (2020-11-04)
+
+
+### Bug Fixes
+
+* **autocomplete:** overlay being opened too small ([5fbbe9a](https://github.com/aposin/ng-aquila/commit/5fbbe9adfd471204006ab7a121981180589ca936))
+* **popover:** not applying direction classes correctly ([fe39d81](https://github.com/aposin/ng-aquila/commit/fe39d814a8f13794ab233ab379d872451a16b0b6))
+
+
+### Features
+
+* **context-menu, notification-panel:** set trigger button as active ([6ffd738](https://github.com/aposin/ng-aquila/commit/6ffd738c295bb81595a0627d342fedcac2ab100b))
+* **iso-date-adapter:** add new adapter ([50c36d5](https://github.com/aposin/ng-aquila/commit/50c36d5349956925d6e52061e260af300742b3e1))
+
+
+
 <a name="10.3.0"></a>
 # [10.3.0](https://github.com/aposin/ng-aquila/compare/v10.2.0...v10.3.0) (2020-10-21)
 
