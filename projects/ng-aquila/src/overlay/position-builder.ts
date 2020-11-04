@@ -235,7 +235,6 @@ export class NxOverlayPositionBuilder {
   private _resolveFallbacks(fallbacks: NxOverlayDirection[], config: NxOverlayConfig) {
     const [generalDirection, addition] = this._splitDirection(config.direction);
     return fallbacks.reduce((resolved, direction) => {
-      console.log(direction);
       if (direction === 'top' || direction === 'bottom') {
         if (addition) {
           // if we have something like bottom-start we want to do bottom-end first

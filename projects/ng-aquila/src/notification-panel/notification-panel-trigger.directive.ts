@@ -1,5 +1,5 @@
-import { Directive, ElementRef, Input, TemplateRef } from '@angular/core';
-import { NxOverlayConfig, NxOverlayRef, NxOverlayService } from '@aposin/ng-aquila/overlay';
+import { Directive, ElementRef, Input, Optional, Self, TemplateRef } from '@angular/core';
+import { NxOverlayConfig, NxOverlayRef, NxOverlayService, NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { take } from 'rxjs/operators';
 
 const DEFAULT_CONFIG: NxOverlayConfig = {
@@ -30,13 +30,15 @@ export class NxNotificationPanelTriggerDirective {
 
   constructor(
     private _nxOverlay: NxOverlayService,
-    private _element: ElementRef<HTMLElement>) { }
+    private _element: ElementRef<HTMLElement>,
+    @Optional() @Self() private _triggerButton: NxTriggerButton) { }
 
   open() {
     if (this._overlayRef) {
       return;
     }
-    this._overlayRef = this._nxOverlay.open(this._panelTemplate, this._element, DEFAULT_CONFIG);
+    const config = { ...DEFAULT_CONFIG, ...{ triggerButton: this._triggerButton }};
+    this._overlayRef = this._nxOverlay.open(this._panelTemplate, this._element, config);
     this._overlayRef.afterClosed().pipe(take(1)).subscribe(() => this.close());
   }
 

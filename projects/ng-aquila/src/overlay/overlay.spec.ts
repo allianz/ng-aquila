@@ -1,3 +1,4 @@
+import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxOverlayRef } from './overlay-ref';
 import { NxOverlayService } from './overlay-service';
 import { ESCAPE } from '@angular/cdk/keycodes';
@@ -20,7 +21,8 @@ describe('NxOverlayService', () => {
       imports: [
         NxOverlayModule,
         OverlayTestModule,
-        RouterTestingModule.withRoutes([])
+        RouterTestingModule.withRoutes([]),
+        NxButtonModule
       ],
       declarations: [TestRootComponent],
       providers: [
@@ -145,12 +147,24 @@ describe('NxOverlayService', () => {
 
     expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
   }));
+
+  it('should set active styles on trigger button', fakeAsync(() => {
+    const overlayRef =
+      overlayService.open(PlainComponent, fixture.componentInstance.trigger, {triggerButton: fixture.componentInstance.button});
+    fixture.detectChanges();
+    flush();
+    expect(fixture.componentInstance.button.active).toBe(true);
+    overlayRef.close();
+    fixture.detectChanges();
+    flush();
+    expect(fixture.componentInstance.button.active).toBe(false);
+  }));
 });
 
 @Component({
   template: `
 
-  <button #button>Trigger</button>
+  <button #button nxButton="tertiary small">Trigger</button>
 
   <ng-template let-data let-overlayRef="overlayRef">
       Hello {{localValue}} {{data?.value}}{{setDialogRef(overlayRef)}}</ng-template>`,
@@ -161,6 +175,7 @@ class ComponentWithTemplateRef {
 
   @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
   @ViewChild('button') trigger: ElementRef;
+  @ViewChild(NxButtonComponent) button: NxButtonComponent;
 
   setDialogRef(overlayRef: NxOverlayRef<any>): string {
     this.overlayRef = overlayRef;
@@ -185,7 +200,7 @@ export class TestRootComponent {
 class PlainComponent { }
 
 @NgModule({
-  imports: [NxOverlayModule],
+  imports: [NxOverlayModule, NxButtonModule],
   exports: [ComponentWithTemplateRef, PlainComponent],
   declarations: [ComponentWithTemplateRef, PlainComponent],
   entryComponents: [

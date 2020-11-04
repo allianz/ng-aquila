@@ -111,6 +111,9 @@ export class NxOverlayRef<T, R = any> {
     this._overlayRef.dispose();
     this._state = NxOverlayState.CLOSED;
     this._containerInstance.restoreFocus();
+    if (this._containerInstance._config.triggerButton) {
+      this._containerInstance._config.triggerButton.setTriggerInactive();
+    }
   }
 
   /**

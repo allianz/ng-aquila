@@ -1,13 +1,14 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
+  ConnectedPosition,
   FlexibleConnectedPositionStrategy,
   Overlay,
   OverlayConfig,
   OverlayRef,
   ScrollStrategy,
-  ConnectedPosition
 } from '@angular/cdk/overlay';
+import { normalizePassiveListenerOptions } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
   AfterContentInit,
@@ -19,14 +20,15 @@ import {
   Optional,
   Output,
   Self,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
-import { normalizePassiveListenerOptions } from '@angular/cdk/platform';
-import { asapScheduler, merge, of as observableOf, Subscription, fromEvent, Observable } from 'rxjs';
-import { delay, filter, take, takeUntil, map } from 'rxjs/operators';
-import { NxContextMenuComponent } from './context-menu.component';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
+import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subscription } from 'rxjs';
+import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
+
 import { throwNxContextMenuMissingError } from './context-menu-errors';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
+import { NxContextMenuComponent } from './context-menu.component';
 
 /** Default top padding of the menu panel. */
 export const MENU_PANEL_TOP_PADDING = 16;
@@ -130,7 +132,8 @@ export class NxContextMenuTriggerDirective
       @Optional()
       @Self()
       private _contextMenuItemInstance: NxContextMenuItemComponent,
-      @Optional() private _dir: Directionality) {
+      @Optional() private _dir: Directionality,
+      @Optional() @Self() private _triggerButton: NxTriggerButton) {
 
     if (_contextMenuItemInstance) {
       _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();
@@ -195,6 +198,11 @@ export class NxContextMenuTriggerDirective
 
     if (this.contextMenu instanceof NxContextMenuComponent) {
       this.contextMenu._startAnimation();
+    }
+
+    if (this._triggerButton) {
+      this._triggerButton.setTriggerActive();
+      this.contextMenu.closed.pipe(take(1)).subscribe(() => this._triggerButton.setTriggerInactive());
     }
 
     this._waitForClose();

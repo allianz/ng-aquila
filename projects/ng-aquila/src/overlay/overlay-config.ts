@@ -1,5 +1,6 @@
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ScrollStrategy, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { NxTriggerButton } from './trigger-button';
 
 /** The ARIA role of the overlay. */
 export type NxOverlayRole = string;
@@ -107,4 +108,6 @@ export class NxOverlayConfig<D = any> {
 
   /** Alternate `ComponentFactoryResolver` to use when resolving the associated component. */
   componentFactoryResolver?: ComponentFactoryResolver;
+
+  triggerButton?: NxTriggerButton;
 }

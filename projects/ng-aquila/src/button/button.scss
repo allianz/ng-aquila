@@ -26,7 +26,7 @@ $button-margin-bottom: nx-spacer(m);
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(background-color, button-#{$type}-active-background-color);
     @include var(color, button-#{$type}-active-text-color);
     @include var(border-color, button-#{$type}-active-border-color);
@@ -114,7 +114,7 @@ $button-margin-bottom: nx-spacer(m);
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(background-color, negative-02);
     @include var(border-color, negative-02);
     @include var(color, negative-accent);
@@ -154,7 +154,7 @@ $button-margin-bottom: nx-spacer(m);
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(background-color, negative-02);
     @include var(border-color, negative-02);
     @include var(color, button-secondary-text-color);
@@ -191,7 +191,7 @@ $button-margin-bottom: nx-spacer(m);
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(background-color, negative-02);
     @include var(color, button-secondary-text-color);
   }

@@ -1,4 +1,5 @@
 import { ElementRef, ChangeDetectorRef, HostBinding, Directive } from '@angular/core';
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
 export type NxButtonType = 'primary' | 'secondary' | 'tertiary' | 'cta' | 'emphasis';
@@ -11,7 +12,7 @@ const DEFAULT_TYPE = 'primary';
 
 /** @docs-private */
 @Directive()
-export class NxButtonBase {
+export class NxButtonBase implements NxTriggerButton {
   private _classNames: string;
 
   /** @docs-private */
@@ -50,6 +51,8 @@ export class NxButtonBase {
   danger: boolean = false;
   negative: boolean = false;
   block: boolean = false;
+  @HostBinding('class.nx-button--active')
+  active: boolean = false;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef) { }
 
@@ -86,5 +89,15 @@ export class NxButtonBase {
    */
   get elementRef() {
     return this._elementRef;
+  }
+
+  setTriggerActive() {
+    this.active = true;
+    this._changeDetectorRef.markForCheck();
+  }
+
+  setTriggerInactive() {
+    this.active = false;
+    this._changeDetectorRef.markForCheck();
   }
 }

@@ -73,6 +73,9 @@ export class NxOverlayService implements OnDestroy {
     this.openOverlays.push(overlayRef);
     overlayRef.afterClosed().subscribe(() => this._removeOpenOverlay(overlayRef));
 
+    if (config.triggerButton) {
+      config.triggerButton.setTriggerActive();
+    }
     return overlayRef;
   }
 

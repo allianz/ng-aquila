@@ -35,6 +35,7 @@ import {
   createMouseEvent,
   createKeyboardEvent
 } from '../cdk-test-utils';
+import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -65,7 +66,7 @@ describe('nxContextMenu', () => {
 
   function createComponent<T>(component: Type<T>, providers = []): ComponentFixture<T> {
     TestBed.configureTestingModule({
-      imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule],
+      imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule],
       declarations: [component],
       providers
     }).compileComponents();
@@ -477,6 +478,19 @@ describe('nxContextMenu', () => {
     expect(event.defaultPrevented).toBe(false);
     flush();
   }));
+
+  it('should set trigger button active state', () => {
+    const fixture = createComponent(SimpleMenu);
+    fixture.detectChanges();
+
+    fixture.componentInstance.trigger.openContextMenu();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.button.active).toBe(true);
+
+    fixture.componentInstance.trigger.closeContextMenu();
+    fixture.detectChanges();
+    expect(fixture.componentInstance.button.active).toBe(false);
+  });
 
   describe('lazy rendering', () => {
     it('should be able to render the menu content lazily', fakeAsync(() => {
@@ -1156,6 +1170,7 @@ describe('nxContextMenu', () => {
       tick(500);
 
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(0, 'Expected no open menus');
+      expect(instance.rootButtonEl.active).toBe(false);
     }));
 
     it('should add an expand icon to the menu items that trigger a sub-menu', fakeAsync(() => {
@@ -1295,55 +1310,55 @@ describe('nxContextMenu', () => {
     }));
 
     it('should be able to open a submenu through an item that is not a direct descendant of the panel', fakeAsync(() => {
-        const nestedFixture = createComponent(SubmenuDeclaredInsideParentMenu);
-        overlay = overlayContainerElement;
+      const nestedFixture = createComponent(SubmenuDeclaredInsideParentMenu);
+      overlay = overlayContainerElement;
 
-        nestedFixture.detectChanges();
-        nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
-        nestedFixture.detectChanges();
-        tick(500);
-        expect(overlay.querySelectorAll('.nx-context-menu').length)
-          .toBe(1, 'Expected one open menu');
+      nestedFixture.detectChanges();
+      nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
+      nestedFixture.detectChanges();
+      tick(500);
+      expect(overlay.querySelectorAll('.nx-context-menu').length)
+        .toBe(1, 'Expected one open menu');
 
-        dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
-        nestedFixture.detectChanges();
-        tick(500);
+      dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
+      nestedFixture.detectChanges();
+      tick(500);
 
-        expect(overlay.querySelectorAll('.nx-context-menu').length)
-          .toBe(2, 'Expected two open menus');
-      }));
+      expect(overlay.querySelectorAll('.nx-context-menu').length)
+        .toBe(2, 'Expected two open menus');
+    }));
 
     it('should not close when hovering over a menu item inside a sub-menu panel that is declared inside the root menu', fakeAsync(() => {
-        const nestedFixture = createComponent(SubmenuDeclaredInsideParentMenu);
-        overlay = overlayContainerElement;
+      const nestedFixture = createComponent(SubmenuDeclaredInsideParentMenu);
+      overlay = overlayContainerElement;
 
-        nestedFixture.detectChanges();
-        nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
-        nestedFixture.detectChanges();
-        tick(500);
-        expect(overlay.querySelectorAll('.nx-context-menu').length)
-          .toBe(1, 'Expected one open menu');
+      nestedFixture.detectChanges();
+      nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
+      nestedFixture.detectChanges();
+      tick(500);
+      expect(overlay.querySelectorAll('.nx-context-menu').length)
+        .toBe(1, 'Expected one open menu');
 
-        dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
-        nestedFixture.detectChanges();
-        tick(500);
+      dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
+      nestedFixture.detectChanges();
+      tick(500);
 
-        expect(overlay.querySelectorAll('.nx-context-menu').length)
-          .toBe(2, 'Expected two open menus');
+      expect(overlay.querySelectorAll('.nx-context-menu').length)
+        .toBe(2, 'Expected two open menus');
 
-        dispatchMouseEvent(overlay.querySelector('.level-two-item'), 'mouseenter');
-        nestedFixture.detectChanges();
-        tick(500);
+      dispatchMouseEvent(overlay.querySelector('.level-two-item'), 'mouseenter');
+      nestedFixture.detectChanges();
+      tick(500);
 
-        expect(overlay.querySelectorAll('.nx-context-menu').length)
-          .toBe(2, 'Expected two open menus to remain');
-      }));
+      expect(overlay.querySelectorAll('.nx-context-menu').length)
+        .toBe(2, 'Expected two open menus to remain');
+    }));
   });
 });
 
 @Component({
   template: `
-    <button
+    <button nxButton="tertiary small"
       [nxContextMenuTriggerFor]="menu"
       #triggerEl>Toggle menu</button>
     <nx-context-menu
@@ -1363,7 +1378,8 @@ describe('nxContextMenu', () => {
 })
 class SimpleMenu {
   @ViewChild(NxContextMenuTriggerDirective) trigger: NxContextMenuTriggerDirective;
-  @ViewChild('triggerEl') triggerEl: ElementRef<HTMLElement>;
+  @ViewChild('triggerEl', {read: ElementRef}) triggerEl: ElementRef<HTMLElement>;
+  @ViewChild(NxButtonComponent) button: NxButtonComponent;
   @ViewChild(NxContextMenuComponent) menu: NxContextMenuComponent;
   @ViewChildren(NxContextMenuItemComponent) items: QueryList<NxContextMenuItemComponent>;
   extraItems: string[] = [];
@@ -1372,10 +1388,10 @@ class SimpleMenu {
 
 @Component({
   template: `
-    <button
+    <button nxButton="tertiary small"
       [nxContextMenuTriggerFor]="root"
       #rootTrigger="nxContextMenuTrigger"
-      #rootTriggerEl>Toggle menu</button>
+      #rootTriggerEl #rootTriggerButton>Toggle menu</button>
 
     <button
       [nxContextMenuTriggerFor]="levelTwo"
@@ -1419,7 +1435,8 @@ class SimpleMenu {
 class NestedMenu {
   @ViewChild('root') rootMenu: NxContextMenuComponent;
   @ViewChild('rootTrigger') rootTrigger: NxContextMenuTriggerDirective;
-  @ViewChild('rootTriggerEl') rootTriggerEl: ElementRef<HTMLElement>;
+  @ViewChild('rootTriggerEl', { read: ElementRef }) rootTriggerEl: ElementRef<HTMLElement>;
+  @ViewChild('rootTriggerEl', { read: NxButtonComponent }) rootButtonEl: NxButtonComponent;
   @ViewChild('alternateTrigger') alternateTrigger: NxContextMenuTriggerDirective;
   readonly rootCloseCallback = jasmine.createSpy('root menu closed callback');
 

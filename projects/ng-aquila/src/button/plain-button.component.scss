@@ -28,7 +28,7 @@
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(color, plain-button-active-color);
   }
 
@@ -58,7 +58,7 @@
     }
   }
 
-  &:active {
+  &:active, &.nx-button--active {
     @include var(color, plain-button-danger-active-color);
   }
 

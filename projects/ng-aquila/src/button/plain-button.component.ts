@@ -1,3 +1,4 @@
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
@@ -9,7 +10,8 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
   inputs: ['classNames:nxPlainButton'],
   host: {
     '[class.nx-plain-button--danger]': 'danger'
-  }
+  },
+  providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
 })
 export class NxPlainButtonComponent {
 

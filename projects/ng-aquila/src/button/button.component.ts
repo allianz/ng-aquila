@@ -1,3 +1,4 @@
+import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import {
   Component,
   ElementRef,
@@ -12,7 +13,8 @@ import { NxButtonBase } from './button-base';
   // tslint:disable-next-line:component-selector
   selector: 'button[nxButton]',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: ['classNames:nxButton']
+  inputs: ['classNames:nxButton'],
+  providers: [{provide: NxTriggerButton, useExisting: NxButtonComponent}]
 })
 
 export class NxButtonComponent extends NxButtonBase {
