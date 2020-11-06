@@ -66,7 +66,7 @@ $mobile-header-padding: nx-spacer(s);
   }
 }
 
-.nx-expansion-panel__chevron {
+:host .nx-expansion-panel__chevron {
   pointer-events: none;
   @include var(font-size, accordion-chevron-size);
 }
