@@ -11,7 +11,7 @@ interface Contract {
 }
 
 /**
-* @title Selecting Example
+* @title Multi Row Selection
 */
 @Component({
   styleUrls: ['table-selecting-example.css'],

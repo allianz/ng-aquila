@@ -15,7 +15,7 @@
       <td nxTableCell>{{item.contractNumber}}</td>
       <td nxTableCell>{{item.desc}}</td>
       <td nxTableCell>
-        <nx-link>{{item.website}}</nx-link>
+        <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
       </td>
       <td nxTableCell>{{ item.endingAt | date: 'dd/MM/yyyy' }}</td>
       <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
