@@ -8,6 +8,10 @@ import { ComponentExample } from '../doc-viewer/component-example';
 import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
 import { ManifestService } from './../service/manifest.service';
 
+interface ExampleConfig {
+  hideHeader?: boolean;
+}
+
 @Component({
   selector: 'nxv-example-viewer',
   templateUrl: './example-viewer.component.html',
@@ -52,6 +56,8 @@ export class ExampleViewerComponent {
   get example() {
     return this._example;
   }
+
+  @Input() config: ExampleConfig;
 
   toggleSourceView() {
     this.showSourceCode = !this.showSourceCode;

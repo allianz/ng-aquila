@@ -52,6 +52,9 @@ export class ExampleLoaderComponent {
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
       (exampleViewer.instance as ExampleViewerComponent).example = example;
+
+      const config = exampleElement.getAttribute('config')?.replace(/'/g, `"`);
+      (exampleViewer.instance as ExampleViewerComponent).config = config ? JSON.parse(config) : {};
     });
   }
 }

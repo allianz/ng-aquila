@@ -64,18 +64,21 @@ function getAllExamplesIDs(value: string) {
   const ids = [];
   let match = EXAMPLE_PATTERN.exec(value);
   while (match !== null) {
-    ids.push(match[1]);
+    const name = match[1].split(',')[0];
+    ids.push(name);
     match = EXAMPLE_PATTERN.exec(value);
   }
 
   return ids;
 }
 
-
 const replaceMarkers = content => (
-  content.replace(EXAMPLE_PATTERN, (_match: string, name: string) =>
-    `<div nx-docs-example="${name}">exampleID: ${name}</div>`
-  )
+  content.replace(EXAMPLE_PATTERN, (_match: string, example: string) => {
+    const name = example.split(',')[0];
+    const containsConfig = example.indexOf(',') !== -1;
+    const config = containsConfig ? example.replace(/[^,]*,\s*/, '') : '{}';
+    return `<div nx-docs-example="${name}" config="${config.replace(/"/g, `'`)}">exampleID: ${name}</div>`;
+  })
 );
 
 

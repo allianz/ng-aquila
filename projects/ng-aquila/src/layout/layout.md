@@ -28,7 +28,7 @@ If you don't use the Angular CLI or just prefer another place you can use this c
 
 #### Margin sizes
 We provide you with following margin sizes:
-<!-- example(margin-sizes) -->
+<!-- example(margin-sizes, { "hideHeader": true }) -->
 
 #### Usage
 

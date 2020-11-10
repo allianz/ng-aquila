@@ -81,7 +81,7 @@ Depending on the colors you choose, it may be necessary to modify the default bu
 
 For demonstrating different color combinations, we use a DemoThemingService for all examples. This is **not** needed for your implementation.
 
-<!-- example(comparison-table-modify-theming) -->
+<!-- example(comparison-table-modify-theming, { "hideHeader": true }) -->
 
 </div>
 
