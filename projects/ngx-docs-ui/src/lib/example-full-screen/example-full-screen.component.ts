@@ -9,13 +9,17 @@ import { Location } from '@angular/common';
 })
 export class ExampleFullScreenComponent implements OnInit {
 
+  example: string;
+
   constructor(
     private _route: ActivatedRoute,
     private _themeSwitcherService: ThemeSwitcherService,
     public _location: Location) {}
 
   ngOnInit() {
-    const themeName = this._route.snapshot.queryParamMap.get('theme');
+    const routeSnapshot = this._route.snapshot;
+    const themeName = routeSnapshot.queryParamMap.get('theme');
+    this.example = routeSnapshot.params.id;
     const selectedTheme = this._themeSwitcherService.get(themeName);
     if (selectedTheme) {
       this._themeSwitcherService.switchTheme(selectedTheme);

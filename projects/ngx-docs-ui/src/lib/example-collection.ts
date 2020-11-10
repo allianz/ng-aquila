@@ -3,7 +3,3 @@ export interface ExampleItem {
   title: string;
   component: any;
 }
-
-export interface ExampleList {
-  [key: string]: ExampleItem;
-}

@@ -140,7 +140,7 @@ program
           dgeni.run(sourceFiles, path.join(destination, 'api')),
           overview.run(sourceFiles, path.join(destination, 'overview')),
           examples.run(exampleFiles, {
-            moduleFile: moduleFileLocation,
+            serviceOutputPath: destination,
             outputExampleSources: path.join(destination, 'examples')
           }),
           guides.run(guideFiles, path.join(destination, 'guides'))

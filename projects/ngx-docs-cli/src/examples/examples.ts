@@ -1,31 +1,25 @@
+import { generateLazyLoadingService } from './lazy-loading-service/generate-service';
 
-import { highlightSourceFiles } from './example-sources/examples-sources';
-import { generateModuleFile } from './example-module/examples-module';
 import { of } from 'rxjs';
-import { tap, concat, last, map, catchError } from 'rxjs/operators';
 import chalk = require('chalk');
+import { highlightSourceFiles } from './highlight-files';
+import { createManifestData } from './manifest';
+import { collectMetadata } from './metadata';
 
+function run(source, { outputExampleSources, serviceOutputPath }) {
+  console.log(chalk.green('Processing Examples'));
 
-function run(source, {moduleFile, outputExampleSources}) {
-  return of('Processing Examples')
-    .pipe(tap(value => console.log(chalk.green(value) )),
-    concat(
-      highlightSourceFiles({source, dest: outputExampleSources}),
-      generateModuleFile({source, dest: moduleFile})
-    ),
-    last(),
-    tap((value: any) => {
-      value.map(item => {
-        console.log(chalk.magenta(`-- ${item.id}`));
-      });
-    }),
-    map(value => ({examples: value})),
-    catchError(error => {
-      console.error(chalk.magentaBright('Error while process example sources'));
-      console.error(chalk.magentaBright(error));
-      return null;
-    })
-  );
+  const groupedExamples = collectMetadata(source, serviceOutputPath);
+  groupedExamples.forEach(group => {
+    highlightSourceFiles(group, outputExampleSources);
+  });
+
+  chalk.green("Generating lazy loading servce");
+  generateLazyLoadingService(groupedExamples, serviceOutputPath);
+
+  const manifest = createManifestData(groupedExamples, source);
+
+  return of({ examples: manifest });
 }
 
 export default {

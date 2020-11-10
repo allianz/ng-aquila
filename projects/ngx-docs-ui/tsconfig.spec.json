@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["jasmine", "node", "karma-viewport"]
+    "types": ["jasmine", "node", "karma-viewport"],
+    "resolveJsonModule": true
   },
   "files": ["test.ts"],
   "include": ["**/*.spec.ts", "**/*.d.ts"]

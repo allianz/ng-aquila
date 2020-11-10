@@ -195,7 +195,7 @@ Please also add a title to the example component like
 ```ts
 /** @title Component basic example */
 @Component({
-	...
+  ...
 ```
 
 The title is used in the generation process and later shown in the example container.

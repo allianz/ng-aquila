@@ -81,13 +81,7 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
-  stage ("Build docs-ui") {
-    shared.withNotification('ci/build/docs-ui', "Build docs-ui") {
-      sh "npm run build:docs-ui"
-    }
-  }
-
-  stage("Build documentation with Ivy artefacts") {
+  stage ("Build documentation with Ivy artefacts") {
     echo "Running integration builds"
 
     shared.withNotification('ci/build/documentation', "Smoke test of new docs") {
@@ -117,26 +111,16 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
-  // stage("Test schematics") {
-  //   shared.withNotification('ci/test/schematics', "Test schematics") {
-  //     echo "Testing schematics"
-  //     echo "TODO"
-  //     // sh 'npm run test:schematics'
-  //   }
-  // }
+  stage("Test schematics") {
+    shared.withNotification('ci/test/schematics', "Test schematics") {
+      sh 'npm run test:schematics'
+    }
+  }
 
   stage("Ivy Build Library") {
     shared.withNotification('ci/build/library', "Build Library") {
       echo 'Building Library'
       sh 'npm run build:lib:ivy'
-    }
-  }
-
-  // Builds docs-ui again against the ivy artifact of the library
-  stage("Ivy Build docs-ui") {
-    shared.withNotification('ci/build/docs-ui', "Build docs-ui") {
-      echo 'Building docs-ui'
-      sh "npm run build:docs-ui"
     }
   }
 

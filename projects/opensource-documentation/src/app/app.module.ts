@@ -1,10 +1,11 @@
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxFooterModule } from '@aposin/ng-aquila/footer';
 import { NX_DOCS_SELECTABLE_THEMES, NX_DOCS_FEATURE_FLAGS, NX_DOCS_LOGO_PATH, LogoPath, NX_DOCS_GITHUB_LINK, GithubLinkConfig } from '@aposin/ngx-docs-ui';
 import { DocVersions, NXV_MANIFEST_TOKEN, NxvDocumentationModule, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { ExampleModule } from 'projects/ng-aquila/documentation/generated/example.module';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
 import { ColorPickerModule } from 'ngx-color-picker';
 
@@ -15,6 +16,8 @@ import { FooterComponent } from './footer/footer.component';
 import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
 import { DemoThemingService } from './demo-theming.service';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
+import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
 
 const ROUTES = [
   {
@@ -59,10 +62,11 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
         footerComponent: FooterComponent
       }
     ),
-    ExampleModule.forRoot(),
     BrowserAnimationsModule,
     ColorPickerModule,
-    NxDocumentationIconModule
+    NxDocumentationIconModule,
+    NxFooterModule,
+    NxButtonModule
   ],
   providers: [
     { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
@@ -74,7 +78,8 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     ]},
     { provide: NX_DOCS_FEATURE_FLAGS, useValue: { themeSwitcher: true} },
     { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
-    { provide: BaseDemoThemingService, useClass: DemoThemingService }
+    { provide: BaseDemoThemingService, useClass: DemoThemingService },
+    { provide: BaseLazyLoadingService, useExisting: LazyLoadingService }
   ],
   bootstrap: [AppComponent]
 })

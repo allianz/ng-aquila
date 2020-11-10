@@ -1,23 +1,47 @@
 {
-  "extends": ["tslint:recommended", "tslint-jasmine-rules"],
-  "rulesDirectory": ["./tools/tslint-rules/", "node_modules/codelyzer"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-jasmine-rules"
+  ],
+  "rulesDirectory": [
+    "./tools/tslint-rules/",
+    "node_modules/codelyzer"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "projects/ng-aquila/documentation/**"
+    ]
+  },
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
-    "comment-format": [true, "check-space"],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
     "curly": true,
     "deprecation": {
       "severity": "warning"
     },
     "eofline": true,
     "forin": true,
-    "import-blacklist": [true, "rxjs/Rx"],
+    "import-blacklist": [
+      true,
+      "rxjs/Rx"
+    ],
     "import-spacing": true,
-    "indent": [true, "spaces"],
+    "indent": [
+      true,
+      "spaces",
+      "2"
+    ],
     "interface-over-type-literal": false,
     "label-position": true,
-    "max-line-length": [true, 140],
+    "max-line-length": [
+      true,
+      140
+    ],
     "member-access": false,
     "member-ordering": [
       true,
@@ -31,7 +55,14 @@
     ],
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
@@ -58,10 +89,19 @@
       "check-whitespace"
     ],
     "prefer-const": true,
-    "quotemark": [true, "single"],
+    "quotemark": [
+      true,
+      "single"
+    ],
     "radix": true,
-    "semicolon": [true, "always"],
-    "triple-equals": [true, "allow-null-check"],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
     "typedef-whitespace": [
       true,
       {
@@ -95,7 +135,10 @@
     "no-disabled-tests": true,
     "no-consecutive-blank-lines": true,
     "encoding": true,
-    "linebreak-style": [true, "LF"],
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
     "no-irregular-whitespace": true,
     "max-classes-per-file": false,
     "only-arrow-functions": false,
@@ -105,8 +148,12 @@
     "jsdoc-format": false,
     "ban-types": false,
     // Custom rules
-    "coercion-types": [true,
-      ["coerceBooleanProperty", "coerceNumberProperty"]
+    "coercion-types": [
+      true,
+      [
+        "coerceBooleanProperty",
+        "coerceNumberProperty"
+      ]
     ]
   }
 }

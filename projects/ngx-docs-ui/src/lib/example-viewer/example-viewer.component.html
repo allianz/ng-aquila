@@ -1,7 +1,7 @@
 <div class="nxv-example-viewer">
   <div class="nxv-example-viewer__header">
     <span nxCopytext="small">
-      {{exampleData.title}}
+      {{exampleDescriptor.title}}
     </span>
 
     <div class="nxv-example-viewer__actions">
@@ -42,6 +42,7 @@
 
   <!-- Live example -->
   <div class="nxv-example-viewer__body">
-    <ng-template [cdkPortalOutlet]="examplePortal"></ng-template>
+    <nxv-lazy-example [exampleId]="example"></nxv-lazy-example>
   </div>
 </div>
+

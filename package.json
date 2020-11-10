@@ -13,11 +13,10 @@
     "lint": "npm-run-all lint:ts lint:scss",
     "lint:commitmsg": "commitlint -e",
     "lint-staged": "lint-staged --relative",
-    "build:all:ivy": "npm-run-all build:lib:ivy build:docs-ui build:docs",
-    "build:all:ve": "npm-run-all build:lib build:docs-ui build:docs",
+    "build:all:ivy": "npm-run-all build:lib:ivy build:docs",
+    "build:all:ve": "npm-run-all build:lib build:docs",
     "build:lib": "npm run ng-high-memory -- build ng-aquila --prod && npm run build:package",
     "build:lib:ivy": "npm run ng-high-memory -- build ng-aquila && npm run build:package",
-    "build:docs-ui": "ng build ngx-docs-ui --prod",
     "build:docs": "npm run ng-high-memory -- build opensource-documentation --prod",
     "build:tslint-rules": "tsc -p tools/tslint-rules/tsconfig.json",
     "test:lib": "npm run build:package && npm run test -- ng-aquila --configuration viewengine",
@@ -39,18 +38,6 @@
       "pre-commit": "npm run build:tslint-rules && npm run lint-staged"
     }
   },
-  "lint-staged": {
-    "projects/ng-aquila/**/*.ts": [
-      "ng lint ng-aquila --fix --files"
-    ],
-    "projects/ngx-docs-ui/**/*.ts": [
-      "ng lint ngx-docs-ui --fix --files"
-    ],
-    "projects/opensource-documentation/**/*.ts": [
-      "ng lint opensource-documentation --fix --files"
-    ],
-    "*.scss": "npm run lint:scss"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.2.1",
@@ -66,6 +53,7 @@
     "@commitlint/config-angular": "^11.0.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@schematics/angular": "^10.2.0",
+    "@types/fs-extra": "^9.0.3",
     "chalk": "^4.1.0",
     "classlist.js": "^1.1.20150312",
     "core-js": "^3.6.5",
@@ -75,6 +63,7 @@
     "dgeni": "^0.4.12",
     "dgeni-packages": "^0.28.4",
     "front-matter": "^4.0.2",
+    "fs-extra": "^9.0.1",
     "highlight.js": "^10.3.2",
     "iban": "^0.0.14",
     "markdown-it": "^12.0.2",

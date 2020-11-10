@@ -9,10 +9,10 @@
         "dist/ng-aquila/*"
       ],
       "@aposin/ngx-docs-ui": [
-        "dist/ngx-docs-ui"
+        "projects/ngx-docs-ui/src/public-api.ts"
       ],
       "@aposin/ng-aquila/documentation/*": [
-        "dist/ng-aquila/documentation/generated/*"
+        "projects/ng-aquila/documentation/generated/*"
       ]
     }
   }

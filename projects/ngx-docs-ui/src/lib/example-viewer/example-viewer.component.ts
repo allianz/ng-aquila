@@ -1,27 +1,27 @@
-import { Component, Input, Inject, Optional, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { ComponentExample } from '../doc-viewer/component-example';
-import { NX_EXAMPLES_TOKEN } from '../core/tokens';
-import { ExampleList } from '../example-collection';
-import { ManifestService } from '../service/manifest.service';
-import { ExampleDescriptor } from '../core/manifest';
-import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
-import { CopyService } from '../core/copy.service';
+import { ChangeDetectionStrategy, Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
+
+import { CopyService } from '../core/copy.service';
+import { ExampleDescriptor } from '../core/manifest';
+import { ComponentExample } from '../doc-viewer/component-example';
+import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
+import { ManifestService } from './../service/manifest.service';
 
 @Component({
   selector: 'nxv-example-viewer',
   templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss']
+  styleUrls: ['./example-viewer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleViewerComponent {
   constructor(
-    @Optional() @Inject(NX_EXAMPLES_TOKEN)
-    public exampleList: ExampleList,
     public manifestService: ManifestService,
-    public copyService: CopyService
-  ) { }
+    public copyService: CopyService,
+  ) {
+  }
 
+  moduleId: string;
   showSourceCode = false;
   _example: string;
   exampleData: ComponentExample;
@@ -37,16 +37,15 @@ export class ExampleViewerComponent {
   @ViewChildren(DocViewerComponent) docViewers: QueryList<DocViewerComponent>;
   @ViewChild(NxTabGroupComponent) tabGroup: NxTabGroupComponent;
 
+  exampleComponent = null;
+  exampleModuleFactory = null;
+
   @Input()
   set example(id: string) {
+    this._example = id;
 
-    if (this.manifestService.hasExample(id) && this.exampleList[id]) {
-      this._example = id;
+    if (this.manifestService.hasExample(id)) {
       this.exampleDescriptor = this.manifestService.getExample(id);
-      this.exampleData = this.exampleList[id];
-      this.examplePortal = new ComponentPortal(this.exampleData.component);
-    } else {
-      console.error('Example does not exist: ', id);
     }
   }
 

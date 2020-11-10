@@ -1,3 +1,5 @@
+import { NxvLazyExampleOutletModule } from './../lazy-example-outlet/lazy-example-outlet.module';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { PortalModule } from '@angular/cdk/portal';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +25,8 @@ import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
     NxIconModule,
     RouterModule,
     NxLinkModule,
-    NxTooltipModule
+    NxTooltipModule,
+    NxvLazyExampleOutletModule
   ],
   exports: [ExampleViewerComponent],
   declarations: [ExampleViewerComponent],

@@ -1,0 +1,9 @@
+<ng-template *ngIf="exampleComponent; else spinner" [ngComponentOutlet]="exampleComponent?.componentType"
+  [ngComponentOutletNgModuleFactory]="exampleModuleFactory"></ng-template>
+
+
+<ng-template #spinner>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <nx-spinner nxSize="large"></nx-spinner>
+  </div>
+</ng-template>

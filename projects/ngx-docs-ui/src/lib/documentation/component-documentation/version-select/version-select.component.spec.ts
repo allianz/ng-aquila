@@ -5,7 +5,6 @@ import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing'
 
 import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
-import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // For better readablity here, We can safely ignore some conventions in our specs

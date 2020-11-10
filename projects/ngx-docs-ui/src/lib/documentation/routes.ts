@@ -1,3 +1,4 @@
+import { ExampleFullScreenComponent } from './../example-full-screen/example-full-screen.component';
 import { DocumentationFrameComponent } from './documentation-frame.component';
 
 import { NxvComponentPage } from './component-documentation/component-page/component-page';
@@ -37,7 +38,6 @@ export const createViewerRoutes = args => [
           }
         ]
       },
-
       {
         path: 'documentation',
         component: NxvDocumentationComponent,
@@ -59,6 +59,10 @@ export const createViewerRoutes = args => [
           }
         ]
       }
-    ]
+    ],
+  },
+  {
+    path: 'examples/:id',
+    component: ExampleFullScreenComponent
   }
 ];

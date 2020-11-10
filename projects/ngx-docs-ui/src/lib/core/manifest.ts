@@ -33,7 +33,7 @@ export interface ApiDescriptor {
 
 export interface ExampleDescriptor {
   id: string;
-  component: string;
+  module: string;
   title: string;
   url: string;
   types: string[];
