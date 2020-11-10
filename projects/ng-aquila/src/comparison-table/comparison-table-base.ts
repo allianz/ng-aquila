@@ -1,5 +1,5 @@
-import { Directive, EventEmitter, OnDestroy } from '@angular/core';
-import { NxBreakpoints, NxViewportService  } from '@aposin/ng-aquila/utils';
+import { ChangeDetectorRef, Directive, EventEmitter, OnDestroy } from '@angular/core';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
 
@@ -42,7 +42,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
     return this._viewType;
   }
 
-  constructor(private viewportService: NxViewportService) {
+  constructor(private viewportService: NxViewportService, protected _cdRef: ChangeDetectorRef) {
     const mobile$ = this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM);
     const tablet$ = this.viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE);
     const desktop$ = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE);
@@ -51,7 +51,17 @@ export abstract class NxComparisonTableBase implements OnDestroy {
       mobile$.pipe(filter(value => value === true), mapTo('mobile' as NxComparisonTableViewType)),
       tablet$.pipe(filter(value => value === true), mapTo('tablet' as NxComparisonTableViewType)),
       desktop$.pipe(filter(value => value === true), mapTo('desktop' as NxComparisonTableViewType)),
-    ).pipe(takeUntil(this._destroyed)).subscribe(value => this._viewType = value);
+    )
+    .pipe(takeUntil(this._destroyed)).subscribe(value => {
+      this._viewType = value;
+      // We need to run change detection here or the view doesn't get updated
+      // if the component is wrapped inside a parent with onPush change detection
+      // we need mark for check as parts like the description cell look at the table's
+      // viewType but because the description cell is part of ng-content it is not checked
+      // when the comparison table view is checked but only when the component where the ng-content
+      // gets declared is checked
+      this._cdRef.markForCheck();
+    });
   }
 
   ngOnDestroy() {

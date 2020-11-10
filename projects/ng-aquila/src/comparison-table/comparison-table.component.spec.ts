@@ -1,13 +1,23 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
-import { NxComparisonTableCell } from './cell/cell.component';
-import { DebugElement, Type, Component, ViewChild, ViewChildren, Directive, QueryList } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DebugElement,
+  Directive,
+  QueryList,
+  Type,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxComparisonTableModule } from './comparison-table.module';
-import * as axe from 'axe-core';
-import { NxComparisonTableComponent } from './comparison-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import * as axe from 'axe-core';
+
 import { dispatchFakeEvent } from '../cdk-test-utils';
+import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import { NxComparisonTableComponent } from './comparison-table.component';
+import { NxComparisonTableModule } from './comparison-table.module';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;
@@ -67,7 +77,13 @@ describe('NxComparisonTableComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NxComparisonTableModule, BrowserAnimationsModule],
-      declarations: [BasicComponent, DisabledColumnsComponent, SelectableIndexComponent, LongPageWithTableComponent]
+      declarations: [
+        BasicComponent,
+        BasicOnPushComponent,
+        DisabledColumnsComponent,
+        SelectableIndexComponent,
+        LongPageWithTableComponent
+      ]
     });
     TestBed.compileComponents();
   }));
@@ -101,6 +117,7 @@ describe('NxComparisonTableComponent', () => {
       const rowsInToggleSections = toggleSectionElements[0].queryAll(By.css('.nx-comparison-table__row'));
       expect(rowsInToggleSections.length).toBe(2);
     }));
+
   });
 
   describe('responsive', () => {
@@ -186,6 +203,17 @@ describe('NxComparisonTableComponent', () => {
 
       expect(rows[3].queryAll(By.css('td')).length).toBe(3);
       expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell')).length).toBe(1);
+    }));
+
+    it('should update when parent is onPush', fakeAsync(() => {
+      createTestComponent(BasicOnPushComponent);
+      tick(THROTTLE_TIME);
+      viewport.set('mobile');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      fixture.detectChanges();
+
+      expect(fixture.nativeElement.querySelector('.nx-comparison-table__description-row')).toBeTruthy();
     }));
 
     afterEach(() => {
@@ -480,6 +508,32 @@ describe('NxComparisonTableComponent', () => {
       expect(descriptionRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(0);
     }));
 
+    it('should mark as sticky when parent is onPush', fakeAsync(() => {
+      createTestComponent(BasicOnPushComponent);
+      tick(THROTTLE_TIME);
+      expect(tableInstance._stickyPlaceholder).toBe(false);
+
+      const wrapperDiv = fixture.debugElement.query(By.css('div'));
+      wrapperDiv.nativeElement.scrollTop = 50;
+      dispatchFakeEvent(document, 'scroll');
+      fixture.detectChanges();
+      tick();
+
+      expect(tableInstance._stickyPlaceholder).toBe(true);
+      let stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
+      expect(stickyElements.length).toBe(1);
+
+      wrapperDiv.nativeElement.scrollTop = 0;
+      dispatchFakeEvent(document, 'scroll');
+      fixture.detectChanges();
+
+      tick();
+
+      expect(tableInstance._stickyPlaceholder).toBe(false);
+      stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
+      expect(stickyElements.length).toBe(0);
+    }));
+
     afterEach(() => {
       viewport.reset();
     });
@@ -524,6 +578,29 @@ describe('NxComparisonTableComponent', () => {
   template: BASIC_COMPARISON_TABLE_TEMPLATE
 })
 class BasicComponent extends TableTest {
+  data = [
+    { type: 'header', cells: ['This is a header cell', 'This is a header cell'] },
+    { type: 'content', description: 'This is a description cell', cells: ['This is a cell', 'This is a cell'] },
+    {
+      type: 'toggleSection', header: 'This can be opened',
+      content: [
+        { type: 'content', description: 'This is a description cell', cells: ['This is a cell', 'This is a cell'] },
+        { type: 'content', description: 'This is a description cell', cells: ['This is a cell', 'This is a cell'] },
+      ]
+    },
+    { type: 'footer', cells: ['This is a footer cell', 'This is a footer cell'] },
+  ];
+}
+
+@Component({
+  template: `
+  <div style="height: 200px; width: 200px; overflow: scroll;">
+    ${BASIC_COMPARISON_TABLE_TEMPLATE}
+  </div>
+`,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class BasicOnPushComponent extends TableTest {
   data = [
     { type: 'header', cells: ['This is a header cell', 'This is a header cell'] },
     { type: 'content', description: 'This is a description cell', cells: ['This is a cell', 'This is a cell'] },

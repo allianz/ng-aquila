@@ -1,17 +1,30 @@
-import { Component, QueryList, ContentChildren, Input, Output, EventEmitter, OnInit, ElementRef, OnDestroy, Optional, HostBinding } from '@angular/core';
+import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
-import { Direction, Directionality } from '@angular/cdk/bidi';
+import {
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnDestroy,
+  OnInit,
+  Optional,
+  Output,
+  QueryList,
+} from '@angular/core';
+import { NxViewportService } from '@aposin/ng-aquila/utils';
 
-import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
-import { NxToggleSectionDirective } from './toggle-section/toggle-section.directive';
-import { NxTableContentElement } from './table-content-element.directive';
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableBase } from './comparison-table-base';
-import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
-import { NxViewportService } from '@aposin/ng-aquila/utils';
+import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
+import { NxTableContentElement } from './table-content-element.directive';
+import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
+import { NxToggleSectionDirective } from './toggle-section/toggle-section.directive';
 
 @Component({
   selector: 'nx-comparison-table',
@@ -51,9 +64,10 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     private _platform: Platform,
     @Optional() private _dir: Directionality,
     /**docs-private */
-    viewportService: NxViewportService
+    viewportService: NxViewportService,
+    protected _cdRef: ChangeDetectorRef
   ) {
-    super(viewportService);
+    super(viewportService, _cdRef);
   }
 
   @HostBinding('attr.dir') get dir() {
@@ -86,6 +100,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         } else {
           this._stickyPlaceholder = false;
         }
+        this._cdRef.markForCheck();
       }
     } else if (this.viewType === 'mobile') {
       const descriptionRowCells = this._element.nativeElement
@@ -102,6 +117,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         } else {
           this._stickyPlaceholder = false;
         }
+        this._cdRef.markForCheck();
       }
     }
   }
