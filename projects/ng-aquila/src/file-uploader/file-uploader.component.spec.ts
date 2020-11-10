@@ -15,10 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
 abstract class FileUploaderTest {
   @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
   public form: FormGroup;
-  public queueList: null | Array<FileItem>;
+  public queueList: null | FileItem[];
   public required: boolean = false;
   public multiple: boolean = false;
   public maxFileSize: number;
+  public accept;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -162,7 +163,7 @@ describe('NxFileUploaderComponent', () => {
       fixture.detectChanges();
 
       expect(testInstance.form.controls['documents'].value.length).toBe(2);
-      expect((<HTMLElement[]>fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row')).length).toBe(2);
+      expect((fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row') as HTMLElement[]).length).toBe(2);
     });
   });
 
@@ -190,7 +191,7 @@ describe('NxFileUploaderComponent', () => {
 
       expect(testInstance.form.controls['documents'].value.length).toBe(2);
 
-      const deleteAction = <HTMLElement>fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete');
+      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete') as HTMLElement;
       deleteAction.click();
       fixture.detectChanges();
 
@@ -202,16 +203,24 @@ describe('NxFileUploaderComponent', () => {
 
   describe('Validation', () => {
 
-      it('should be required', () => {
+    function createAndAddFile(name: string, type: string) {
+      let fakeFile = new File(['3555'], name, { type });
+      fakeFile = Object.defineProperty( fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
+      const fileList = { 0: fakeFile, length: 1, item: (index: number) => fakeFile };
+      fileUploaderInstance._onFileChange({ type: 'change', target: { files: fileList } });
+      fixture.detectChanges();
+    }
+
+    it('should be required', () => {
       createTestComponent(ReactiveFileUpload);
-      const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
+      const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
       testInstance.required = true;
       fixture.detectChanges();
       submitButton.click();
       fixture.detectChanges();
 
       expect(testInstance.form.valid).toBe(false);
-      });
+    });
 
     it('should be invalid when all files are deleted from the queue', () => {
       createTestComponent(ReactiveFileUpload);
@@ -235,7 +244,7 @@ describe('NxFileUploaderComponent', () => {
 
       expect(testInstance.form.controls['documents'].value.length).toBe(1);
 
-      const deleteAction = <HTMLElement>fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete');
+      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete') as HTMLElement;
       deleteAction.click();
       fixture.detectChanges();
 
@@ -271,6 +280,58 @@ describe('NxFileUploaderComponent', () => {
       expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileSize')).toBe(true);
       expect(testInstance.form.controls['documents'].hasError('required')).toBe(true);
     });
+
+    it('should be valid when accept is not set', () => {
+      createTestComponent(ReactiveFileUpload);
+      createAndAddFile('fake file', 'text/html');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(false);
+    });
+
+    it('is invalid when file does not fit to mime type', () => {
+      createTestComponent(ReactiveFileUpload);
+      testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      fixture.detectChanges();
+
+      createAndAddFile('fake file', 'text/html');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(true);
+    });
+
+    it('is valid when file fits to mime type', () => {
+      createTestComponent(ReactiveFileUpload);
+      testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      fixture.detectChanges();
+      createAndAddFile('fake file', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(false);
+
+      testInstance.accept = 'image/*';
+      fixture.detectChanges();
+      createAndAddFile('test.png', 'image/png');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(false);
+    });
+
+    it('no error when fileType is not set', () => {
+      createTestComponent(ReactiveFileUpload);
+      testInstance.accept = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      fixture.detectChanges();
+      createAndAddFile('fake file', '');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(false);
+    });
+
+    it('valid when file ending is allowed', () => {
+      createTestComponent(ReactiveFileUpload);
+      testInstance.accept = '.png, .jpg';
+      fixture.detectChanges();
+      createAndAddFile('test.png', 'some type');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(false);
+    });
+
+    it('invalid when file ending is not allowed', () => {
+      createTestComponent(ReactiveFileUpload);
+      testInstance.accept = '.jpg';
+      fixture.detectChanges();
+      createAndAddFile('test.png', 'some type');
+      expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(true);
+    });
   });
 
   describe('keyboard support', () => {
@@ -296,7 +357,7 @@ describe('NxFileUploaderComponent', () => {
         }
       });
       fixture.detectChanges();
-      const fileRowList = <HTMLElement[]>fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row');
+      const fileRowList = fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row') as HTMLElement[];
       tick();
       fileRowList[0].focus();
 
@@ -337,23 +398,23 @@ describe('NxFileUploaderComponent', () => {
     }));
 
     it('should set described by with the error ids',
-        fakeAsync(() => {
-          let ariaDescribedBy;
+      fakeAsync(() => {
+        let ariaDescribedBy;
 
-          createTestComponent(ReactiveFileUpload);
-          const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
-          testInstance.required = true;
-          tick();
-          fixture.detectChanges();
-          submitButton.click();
-          fixture.detectChanges();
-          tick();
+        createTestComponent(ReactiveFileUpload);
+        const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
+        testInstance.required = true;
+        tick();
+        fixture.detectChanges();
+        submitButton.click();
+        fixture.detectChanges();
+        tick();
 
-          ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby').value;
-          expect(ariaDescribedBy).toContain(testInstance.fileUploaderInstance._errorList.map((error) => {
-            return error.id;
-          }));
+        ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby').value;
+        expect(ariaDescribedBy).toContain(testInstance.fileUploaderInstance._errorList.map((error) => {
+          return error.id;
         }));
+      }));
   });
 });
 
@@ -389,34 +450,28 @@ class BasicFileUpload extends FileUploaderTest {
 
 @Component({
   template: `
-      <form [formGroup]="form">
-          <nx-file-uploader formControlName="documents"
-                            [required]="required"
-                            [maxFileSize]="maxFileSize"
-                            multiple
-          >
-              <nx-label size="small">Required file to upload</nx-label>
-              <span nxFileUploadHint>maximum Filesize 2MB</span>
+    <form [formGroup]="form">
+      <nx-file-uploader formControlName="documents"
+                        [required]="required"
+                        [maxFileSize]="maxFileSize"
+                        multiple
+                        [accept]="accept">
+        <nx-label size="small">Required file to upload</nx-label>
+        <span nxFileUploadHint>maximum Filesize 2MB</span>
 
-              <button
-                      nxButton="primary"
-                      type="button"
-                      nxFileUploadButton>
-                  <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
-                  Add Files
-              </button>
+        <button nxButton="primary" type="button" nxFileUploadButton>
+          <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
+          Add Files
+        </button>
 
-              <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
-              <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
-                  File „ {{form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json}}“ can not be uploaded. File size exceeds size limit!
-              </nx-error>
-          </nx-file-uploader>
+        <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
+        <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
+            File „ {{form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json}}“ can not be uploaded. File size exceeds size limit!
+        </nx-error>
+      </nx-file-uploader>
 
-          <button nxButton="primary"
-                  type="submit"
-                  id="submit-button"
-          >Upload files</button>
-      </form>
+      <button nxButton="primary" type="submit" id="submit-button">Upload files</button>
+    </form>
 
   `
 })
@@ -440,7 +495,6 @@ class ReactiveFileUpload extends FileUploaderTest {
   template: `
       <nx-file-uploader [(ngModel)]="queueList">
           <nx-label size="small">Please upload a file</nx-label>
-
           <button
                   nxButton="primary"
                   type="button"

@@ -39,15 +39,16 @@ The FileItem class provides a set of methods and properties in order to set the 
 #### Max file size
 The max file size is set via the `[maxFileSize]` property. Please note that the file size is passed in bytes. 
 
-The returned error is  `NxFileUploadMaxFileSize`.
+The returned error is `NxFileUploadMaxFileSize`.
 
 The server's errors can be handled by setting the file state as shown in this example.
 
 <!-- example(file-uploader-validation) -->
 
 #### Accepted file types
-The permitted file types are set on the native input[type='file'] element.
-The returned error is  `NxFileUploadFileTypeNotAccepted`.
+The permitted file types can be set via `[accept]` and are passed down to the native input[type='file'] element. 
+
+Additionally, there is a basic client side validation integrated in the component which returns the error `NxFileUploadFileTypeNotAccepted`. However, **files should be always verified on the server side**.
 
 <!-- example(file-uploader-type-validation) -->
 

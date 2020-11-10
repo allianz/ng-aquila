@@ -8,6 +8,7 @@ import {
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
+/** @docs-private */
 @Injectable()
 export class UploadInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

@@ -27,7 +27,7 @@ import {
   NgForm, ValidatorFn
 } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
-import { NxFileUploaderValidators } from './file-uploader.validations';
+import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
 import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
 import { FileItem } from './file-uploader.model';
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
@@ -405,6 +405,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this.fileDeleted.emit(file);
     this.onTouchedCallback();
     this.onChangeCallback(this.value);
+
+    // resets the value of the file input, so that if a file is deleted and added again. otherwise there is no change detected
+    this.nativeInputFile.nativeElement.value = '';
   }
 
   /** Uploads the files via the defined uploader. */
@@ -434,24 +437,11 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this.validatorFnArray.push(NxFileUploaderValidators.maxFileSize(this.maxFileSize, file));
     this.validatorFnArray.push(NxFileUploaderValidators.fileType(file, this.accept));
 
-    if ((!this.maxFileSize || file.size <= this.maxFileSize) && this._verifyAccept(file.type, this.accept)) {
+    if ((!this.maxFileSize || file.size <= this.maxFileSize) && isFileTypeValid(file, this.accept)) {
       isValid = true;
     }
 
     return isValid;
-  }
-
-  /**
-   * Verifies the file type against the accepted types
-   */
-  _verifyAccept(fileType: string, accept: string): boolean {
-    if (!accept) {
-      return true;
-    }
-
-    return accept.replace(/\s/g, '').split(',').filter(acc => {
-      return new RegExp(acc.replace('*', '.*')).test(fileType);
-    }).length > 0;
   }
 
   /**
@@ -518,9 +508,6 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._addFilesToQueue(target.files as FileList);
     this.stateChanges.next();
     this._changeDetectorRef.markForCheck();
-
-    // resets the value of the file input, so that if a file is deleted and added again. otherwise there is no change detected
-    this.nativeInputFile.nativeElement.value = '';
   }
 
   /** Listens to changes in each file. */
