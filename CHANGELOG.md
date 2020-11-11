@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [10.4.1](https://github.com/aposin/ng-aquila/compare/v10.4.0...v10.4.1) (2020-11-11)
+
+
+### Bug Fixes
+
+* **accordion:** chevron loses size ([090cc93](https://github.com/aposin/ng-aquila/commit/090cc93a538da0a2b3bbffa284be516eb4a4fef2))
+* **comparison-table:** not updating when parent is onPush ([52c6b69](https://github.com/aposin/ng-aquila/commit/52c6b697192b752eb806fba0db238e5bf29e076c))
+* **file-uploader:** file cannot be added in single input in IE ([a3f7a18](https://github.com/aposin/ng-aquila/commit/a3f7a184dd2997daf17438c2851ed4aec513ade3))
+
+
+
 # [10.4.0](https://github.com/aposin/ng-aquila/compare/v10.3.0...v10.4.0) (2020-11-04)
 
 
