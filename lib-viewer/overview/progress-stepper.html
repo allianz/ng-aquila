@@ -13,43 +13,43 @@
 <h3 id="single-indicator" class="docs-markdown--h3">Single Indicator</h3>
 <p class="docs-markdown--p">This type of indicator shows a progress bar, a caption for the current step and if available there is a hint shown for the following step.</p>
 <p class="docs-markdown--p">You control the indicator through your own buttons decorated with directives <code>nxStepperPrevious</code> and <code>nxStepperNext</code> to connect them to the current indicator.</p>
-<div nx-docs-example="progress-stepper">exampleID: progress-stepper</div>
+<div nx-docs-example="progress-stepper" config="{}">exampleID: progress-stepper</div>
 <h3 id="labels" class="docs-markdown--h3">Labels</h3>
 <h4 id="custom-step-labels" class="docs-markdown--h4">Custom Step Labels</h4>
 <p class="docs-markdown--p">You can change the step labels in the single indicator prefixed for the current step (left hand) and also the following step (right hand).</p>
 <p class="docs-markdown--p">Note: The <code>currentStepLabel</code> will be used in all indicators for the mobile view.</p>
-<div nx-docs-example="progress-stepper-custom">exampleID: progress-stepper-custom</div>
+<div nx-docs-example="progress-stepper-custom" config="{}">exampleID: progress-stepper-custom</div>
 <h4 id="stepper-label" class="docs-markdown--h4">Stepper Label</h4>
 <p class="docs-markdown--p">The <code>&lt;nx-label&gt;</code> will be shown above the single indicator for all steps.</p>
-<div nx-docs-example="progress-stepper-title">exampleID: progress-stepper-title</div>
+<div nx-docs-example="progress-stepper-title" config="{}">exampleID: progress-stepper-title</div>
 <h3 id="multi-indicator" class="docs-markdown--h3">Multi Indicator</h3>
 <p class="docs-markdown--p">That's the Multi Indicator. In difference to the Single Indicator you have the overall progress bar divided by the step names.</p>
 <p class="docs-markdown--p"><strong>Warning</strong>: If a Multi Indicator step does not have a <code>[stepControl]</code> assigned, then a step is per default marked as completed after being passed.</p>
-<div nx-docs-example="progress-stepper-multi">exampleID: progress-stepper-multi</div>
+<div nx-docs-example="progress-stepper-multi" config="{}">exampleID: progress-stepper-multi</div>
 <h3 id="multi-indicator---manual-step-completion" class="docs-markdown--h3">Multi Indicator - manual step completion</h3>
 <p class="docs-markdown--p">Per default, valid steps except for the last step are completed when you set <code>[linear]=&quot;true&quot;</code>. You can complete the last step manually via its <code>[complete]</code> Input, as shown in the example below.</p>
-<div nx-docs-example="progress-stepper-form">exampleID: progress-stepper-form</div>
+<div nx-docs-example="progress-stepper-form" config="{}">exampleID: progress-stepper-form</div>
 <p class="docs-markdown--p">If you are not using the <code>[linear]</code> Input, you could also control the completion of the steps manually.</p>
-<div nx-docs-example="progress-stepper-nonlinear">exampleID: progress-stepper-nonlinear</div>
+<div nx-docs-example="progress-stepper-nonlinear" config="{}">exampleID: progress-stepper-nonlinear</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-multi-indicator-vertical" class="docs-markdown--h3">Expert: Multi Indicator Vertical</h3>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert option</strong>. This means that the vertical direction and group feature is only intended for internal applications and not for applications that are client facing.</p>
 <p class="docs-markdown--p">The progress indicator can be switched to a vertical layout, by setting the <code>direction</code> input to <code>vertical</code>.</p>
-<div nx-docs-example="progress-stepper-multi-vertical">exampleID: progress-stepper-multi-vertical</div>
+<div nx-docs-example="progress-stepper-multi-vertical" config="{}">exampleID: progress-stepper-multi-vertical</div>
 <h3 id="expert%3A-multi-indicator-groups" class="docs-markdown--h3">Expert: Multi Indicator Groups</h3>
 <p class="docs-markdown--p">Steps can be grouped by wrapping them in <code>nx-stepper-group</code> tags. Each group needs a label and at least one step inside of it. Groups are currently limited to the vertical multi stepper.</p>
-<div nx-docs-example="progress-stepper-multi-groups">exampleID: progress-stepper-multi-groups</div>
+<div nx-docs-example="progress-stepper-multi-groups" config="{}">exampleID: progress-stepper-multi-groups</div>
 </div>
 <h3 id="progress-indicator" class="docs-markdown--h3">Progress Indicator</h3>
 <p class="docs-markdown--p">With the Progress Indicator the user will see all steps listed horizontally, but there is only one progress bar visible for the current step.</p>
 <p class="docs-markdown--p">That progress bar can be controlled to inform the user about the progress of the current step. This update can't be done automatically by the indicator you have to provide the progress value.</p>
-<div nx-docs-example="progress-stepper-step">exampleID: progress-stepper-step</div>
+<div nx-docs-example="progress-stepper-step" config="{}">exampleID: progress-stepper-step</div>
 <h3 id="reactive-forms" class="docs-markdown--h3">Reactive Forms</h3>
 <p class="docs-markdown--p">You can use reactive forms the way you are used to it with normal forms. In addition each <code>nx-step</code> can be provided with a <code>stepControl</code> attribute which points to the top level <code>AbstractControl (FormControl, FormGroup or FormArray)</code> for the step. The <code>stepControl</code> is used to check the validity of the step which is mainly used for the &quot;linear&quot; option.</p>
 <p class="docs-markdown--p">There are two possible approaches. One is using a single form for the indicator, and the other is using a different form for each step</p>
-<div nx-docs-example="progress-stepper-reactivesingle">exampleID: progress-stepper-reactivesingle</div>
+<div nx-docs-example="progress-stepper-reactivesingle" config="{}">exampleID: progress-stepper-reactivesingle</div>
 <h3 id="reactive-form-example-with-separate-form-per-step" class="docs-markdown--h3">Reactive Form example with separate form per step</h3>
-<div nx-docs-example="progress-stepper-reactivemulti">exampleID: progress-stepper-reactivemulti</div>
+<div nx-docs-example="progress-stepper-reactivemulti" config="{}">exampleID: progress-stepper-reactivemulti</div>
 <h3 id="linear-progress" class="docs-markdown--h3">Linear Progress</h3>
 <p class="docs-markdown--p">You can force the user to complete a form before continuing. To make a indicator aware of it you have to enable linear progress with the property <code>linear</code> on any indicator and you have to assign the involved form group to the step through the <code>[stepControl]</code> Input.</p>
-<div nx-docs-example="progress-stepper-progress">exampleID: progress-stepper-progress</div>
+<div nx-docs-example="progress-stepper-progress" config="{}">exampleID: progress-stepper-progress</div>

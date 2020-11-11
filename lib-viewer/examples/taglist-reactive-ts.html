@@ -1,0 +1,23 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormGroup, FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Tag Reactive Example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;nx-taglist-reactive-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./taglist-reactive-example.html&#x27;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaglistReactiveExampleComponent</span> </span>{
+  <span class="hljs-attr">testForm</span>: FormGroup;
+
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+    <span class="hljs-built_in">this</span>.createForm();
+  }
+
+  <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-built_in">this</span>.fb.group({
+      <span class="hljs-attr">tagsTestReactive</span>: [ [ <span class="hljs-string">&#x27;Apples&#x27;</span>, <span class="hljs-string">&#x27;Oranges&#x27;</span> ], Validators.required ]
+    });
+  }
+}

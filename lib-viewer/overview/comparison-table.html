@@ -18,36 +18,36 @@ nx-comparison-<span class="hljs-selector-tag">table</span> ::ng-deep .nx-compari
 <p class="docs-markdown--p">A basic comparison table consists of rows (<code>nxComparisonTableRow</code>) containing table cells: normal (<code>nx-comparison-table-cell</code>) and description ones (<code>nx-comparison-table-description-cell</code>) as shown in the example below.</p>
 <p class="docs-markdown--p">Products/columns can be selected by using a <code>NxComparisonTableSelectButton</code> button. Pay attention that you have to specify the text of the button via the inputs <code>selectedLabel</code> and <code>unselectedLabel</code>.</p>
 <p class="docs-markdown--p">You can also set the initially selected product by using the <code>[selectedIndex]</code> input of the comparison table.</p>
-<div nx-docs-example="comparison-table">exampleID: comparison-table</div>
+<div nx-docs-example="comparison-table" config="{}">exampleID: comparison-table</div>
 <h4 id="intersection-cells" class="docs-markdown--h4">Intersection cells</h4>
 <p class="docs-markdown--p">You can further use intersection cells (<code>nx-comparison-table-intersection-cell</code>) which are a merge of multiple cells.</p>
 <p class="docs-markdown--p">For the mobile view, in this example the content of the intersection cell is displayed inside an extra-light accordion above the table.</p>
-<div nx-docs-example="comparison-table-with-intersection">exampleID: comparison-table-with-intersection</div>
+<div nx-docs-example="comparison-table-with-intersection" config="{}">exampleID: comparison-table-with-intersection</div>
 <h4 id="row-groups" class="docs-markdown--h4">Row Groups</h4>
 <p class="docs-markdown--p">If your table has a lot of rows you can group them inside a <code>nxComparisonTableRowGroup</code>. Then, only a certain number of rows is visible at the beginning. The rest can be expanded by the user. By default, the first 5 rows are shown when loading a page. You can change this number via the input <code>[visibleRows]</code>.</p>
 <p class="docs-markdown--p">The text of the expandable button area can be customized by setting <code>[labelCollapsed]</code> and <code>[labelExpanded]</code> on the row group.</p>
 <p class="docs-markdown--p">You can also control the initial expanded state and react to its changes through setting or binding to the <code>isExpanded</code> property.</p>
-<div nx-docs-example="comparison-table-row-group">exampleID: comparison-table-row-group</div>
+<div nx-docs-example="comparison-table-row-group" config="{}">exampleID: comparison-table-row-group</div>
 <h4 id="toggle-sections" class="docs-markdown--h4">Toggle Sections</h4>
 <p class="docs-markdown--p">Multiple table rows can be grouped in a toggle section (<code>nxComparisonTableToggleSection</code>) with a toggle section header (<code>nx-comparison-table-toggle-section-header</code>) as shown in the example below.</p>
-<div nx-docs-example="comparison-table-with-toggle-sections">exampleID: comparison-table-with-toggle-sections</div>
+<div nx-docs-example="comparison-table-with-toggle-sections" config="{}">exampleID: comparison-table-with-toggle-sections</div>
 <h4 id="disabled-table-columns" class="docs-markdown--h4">Disabled table columns</h4>
 <p class="docs-markdown--p">You can disable certain columns of the comparison table via the input <code>disabledColumn</code> on a header <code>nx-comparison-table-cell</code> as shown in the example below. Keep in mind that the <code>disabledColumn</code> attribute can be set only on header cells.</p>
-<div nx-docs-example="comparison-table-disabled-columns">exampleID: comparison-table-disabled-columns</div>
+<div nx-docs-example="comparison-table-disabled-columns" config="{}">exampleID: comparison-table-disabled-columns</div>
 <div class="docs-private">
 <h4 id="theming-variations" class="docs-markdown--h4">Theming variations</h4>
 <p class="docs-markdown--p">By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the <a href="./documentation/theming">theming page</a>.</p>
 <p class="docs-markdown--p">Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set <code>unselectedClassNames=&quot;secondary small negative&quot;</code> for <code>nxComparisonTableSelectButton</code>.</p>
 <p class="docs-markdown--p">For demonstrating different color combinations, we use a DemoThemingService for all examples. This is <strong>not</strong> needed for your implementation.</p>
-<div nx-docs-example="comparison-table-modify-theming">exampleID: comparison-table-modify-theming</div>
+<div nx-docs-example="comparison-table-modify-theming" config="{ 'hideHeader': true }">exampleID: comparison-table-modify-theming</div>
 </div>
 <h4 id="dynamically-filled-table" class="docs-markdown--h4">Dynamically filled table</h4>
-<div nx-docs-example="comparison-table-dynamic">exampleID: comparison-table-dynamic</div>
+<div nx-docs-example="comparison-table-dynamic" config="{}">exampleID: comparison-table-dynamic</div>
 <div class="docs-expert-container">
 <h4 id="expert%3A-form-controls-in-a-comparison-table" class="docs-markdown--h4">Expert: Form controls in a comparison table</h4>
 <p class="docs-markdown--p">You can easily place other components like a dropdown in the comparison table:</p>
 <p class="docs-markdown--p">Please note that <strong>this is an option for Expert</strong>. This means that form controls inside the comparison table are currently only intended for internal and not for client-facing applications.</p>
-<div nx-docs-example="comparison-table-form-elements">exampleID: comparison-table-form-elements</div>
+<div nx-docs-example="comparison-table-form-elements" config="{}">exampleID: comparison-table-form-elements</div>
 </div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">When using an icon-only cell it is important that the <code>nx-icon</code> has an <code>aria-label</code>. To learn more about the usage of an aria-label <a href="./documentation/accessibility/overview#usage-of-aria-label">click here</a>.</p>

@@ -9,34 +9,34 @@ The component is a wrapper around the native <code>input[type=file]</code> eleme
 <p class="docs-markdown--p">The component has a built-in http POST uploading functionality. To use this, there has to be a <code>NxFileUploader</code> defined and assigned to the file uploader component.
 Success and error handling can be done with subscribing to the <code>response</code> stream of the file uploader.</p>
 <p class="docs-markdown--p">Most of the examples are using the <code>[nxFileUploadTriggerFor]</code> directive for triggering the upload. Alternatively, <code>updateFiles()</code> of the File Uploader component can be used.</p>
-<div nx-docs-example="file-uploader-basic">exampleID: file-uploader-basic</div>
+<div nx-docs-example="file-uploader-basic" config="{}">exampleID: file-uploader-basic</div>
 <h3 id="reactive-form" class="docs-markdown--h3">Reactive form</h3>
-<div nx-docs-example="file-uploader-reactive">exampleID: file-uploader-reactive</div>
+<div nx-docs-example="file-uploader-reactive" config="{}">exampleID: file-uploader-reactive</div>
 <h3 id="template-driven-form" class="docs-markdown--h3">Template driven form</h3>
-<div nx-docs-example="file-uploader-template-driven">exampleID: file-uploader-template-driven</div>
+<div nx-docs-example="file-uploader-template-driven" config="{}">exampleID: file-uploader-template-driven</div>
 <h2 id="drop-zone" class="docs-markdown--h2">Drop zone</h2>
-<div nx-docs-example="file-uploader-drop-zone">exampleID: file-uploader-drop-zone</div>
+<div nx-docs-example="file-uploader-drop-zone" config="{}">exampleID: file-uploader-drop-zone</div>
 <h3 id="validation" class="docs-markdown--h3">Validation</h3>
 <p class="docs-markdown--p">The FileItem class provides a set of methods and properties in order to set the current state of the file.</p>
 <h4 id="max-file-size" class="docs-markdown--h4">Max file size</h4>
 <p class="docs-markdown--p">The max file size is set via the <code>[maxFileSize]</code> property. Please note that the file size is passed in bytes.</p>
-<p class="docs-markdown--p">The returned error is  <code>NxFileUploadMaxFileSize</code>.</p>
+<p class="docs-markdown--p">The returned error is <code>NxFileUploadMaxFileSize</code>.</p>
 <p class="docs-markdown--p">The server's errors can be handled by setting the file state as shown in this example.</p>
-<div nx-docs-example="file-uploader-validation">exampleID: file-uploader-validation</div>
+<div nx-docs-example="file-uploader-validation" config="{}">exampleID: file-uploader-validation</div>
 <h4 id="accepted-file-types" class="docs-markdown--h4">Accepted file types</h4>
-<p class="docs-markdown--p">The permitted file types are set on the native input[type='file'] element.
-The returned error is  <code>NxFileUploadFileTypeNotAccepted</code>.</p>
-<div nx-docs-example="file-uploader-type-validation">exampleID: file-uploader-type-validation</div>
+<p class="docs-markdown--p">The permitted file types can be set via <code>[accept]</code> and are passed down to the native input[type='file'] element.</p>
+<p class="docs-markdown--p">Additionally, there is a basic client side validation integrated in the component which returns the error <code>NxFileUploadFileTypeNotAccepted</code>. However, <strong>files should be always verified on the server side</strong>.</p>
+<div nx-docs-example="file-uploader-type-validation" config="{}">exampleID: file-uploader-type-validation</div>
 <h3 id="upload" class="docs-markdown--h3">Upload</h3>
 <p class="docs-markdown--p">All previous examples are implemented with the built-in uploading functionality of the file uploader.</p>
 <h4 id="auto-upload" class="docs-markdown--h4">Auto upload</h4>
-<div nx-docs-example="file-uploader-auto">exampleID: file-uploader-auto</div>
+<div nx-docs-example="file-uploader-auto" config="{}">exampleID: file-uploader-auto</div>
 <h4 id="separate-upload-requests-for-each-file" class="docs-markdown--h4">Separate upload requests for each file</h4>
 <p class="docs-markdown--p">By default, all files are sent within one single upload request. You can also send separate requests by adding <code>uploadSeparately: true</code> to the configuration of the NxFileUploader.</p>
-<div nx-docs-example="file-uploader-separate-requests">exampleID: file-uploader-separate-requests</div>
+<div nx-docs-example="file-uploader-separate-requests" config="{}">exampleID: file-uploader-separate-requests</div>
 <h4 id="custom-uploading-implementation" class="docs-markdown--h4">Custom uploading implementation</h4>
 <p class="docs-markdown--p">Besides the build-in uploading functionality you can also send an http request by yourself if you want to do more complex requests. Then you have to set the uploading status of the files manually:</p>
-<div nx-docs-example="file-uploader-with-request">exampleID: file-uploader-with-request</div>
+<div nx-docs-example="file-uploader-with-request" config="{}">exampleID: file-uploader-with-request</div>
 <h3 id="internationalization" class="docs-markdown--h3">Internationalization</h3>
 <p class="docs-markdown--p"><code>NxFileUploaderIntl</code> provides the text strings used inside the file uploader component (e.g. the uploading label). It can be customized by creating a class with the translated string values.</p>
-<div nx-docs-example="file-uploader-intl">exampleID: file-uploader-intl</div>
+<div nx-docs-example="file-uploader-intl" config="{}">exampleID: file-uploader-intl</div>

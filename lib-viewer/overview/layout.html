@@ -11,7 +11,7 @@
 </code></pre>
 <h4 id="margin-sizes" class="docs-markdown--h4">Margin sizes</h4>
 <p class="docs-markdown--p">We provide you with following margin sizes:</p>
-<div nx-docs-example="margin-sizes">exampleID: margin-sizes</div>
+<div nx-docs-example="margin-sizes" config="{ 'hideHeader': true }">exampleID: margin-sizes</div>
 <h4 id="usage" class="docs-markdown--h4">Usage</h4>
 <p class="docs-markdown--p">We also provide you with helper classes for all these sizes, which follow the pattern <code>.nx-margin-{direction}-{size}</code>.</p>
 <p class="docs-markdown--p">The <code>direction</code> property is one of the following:</p>
@@ -26,7 +26,7 @@
 </ul>
 <p class="docs-markdown--p">Thereby, <code>size</code> has to be matching one of the sizes defined in the table above.</p>
 <p class="docs-markdown--p">An example of the margin helper classes usage can be found in the example below.</p>
-<div nx-docs-example="margin-usage">exampleID: margin-usage</div>
+<div nx-docs-example="margin-usage" config="{}">exampleID: margin-usage</div>
 <h3 id="breakpoints-and-viewport" class="docs-markdown--h3">Breakpoints and Viewport</h3>
 <p class="docs-markdown--p">Our library provides a viewport service, which is a utility for reacting to changes in the viewport. It provides three methods: <code>min</code>, <code>max</code> and <code>between</code> for subscribing to particular viewport breakpoints.</p>
 <h4 id="breakpoints" class="docs-markdown--h4">Breakpoints</h4>
@@ -53,7 +53,7 @@ showComponentX: <span class="hljs-built_in">boolean</span>;
 </code></pre>
 <h4 id="basic-viewport-subscription" class="docs-markdown--h4">Basic Viewport Subscription</h4>
 <p class="docs-markdown--p">The example below shows a sidebar, which is expanded from 704px (BREAKPOINT_MEDIUM) on and otherwise closed.</p>
-<div nx-docs-example="viewport-change">exampleID: viewport-change</div>
+<div nx-docs-example="viewport-change" config="{}">exampleID: viewport-change</div>
 <h4 id="advanced%3A-custom-throttletime" class="docs-markdown--h4">Advanced: custom throttleTime</h4>
 <p class="docs-markdown--p">Per default, the viewport service catches window resize events with an interval of 200ms.
 If this default throttle time does not serve your needs you can change it by passing it as a parameter to the methods <code>min</code>, <code>max</code> and <code>between</code>:</p>

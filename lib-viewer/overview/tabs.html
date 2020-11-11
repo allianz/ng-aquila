@@ -1,45 +1,45 @@
 <h3 id="basic-example" class="docs-markdown--h3">Basic Example</h3>
-<div nx-docs-example="tabs-basic">exampleID: tabs-basic</div>
+<div nx-docs-example="tabs-basic" config="{}">exampleID: tabs-basic</div>
 <h3 id="header-alignment-and-styles" class="docs-markdown--h3">Header alignment and styles</h3>
 <p class="docs-markdown--p">From the style guide, the tab buttons are centered inside the tab header by default. You can change it by using the <code>.nx-tab-header</code> class and set <code>justify-content: flex-start</code>. With this class you can also change the paddings and margins of the header.</p>
-<div nx-docs-example="tabs-styling">exampleID: tabs-styling</div>
+<div nx-docs-example="tabs-styling" config="{}">exampleID: tabs-styling</div>
 <h3 id="template-example" class="docs-markdown--h3">Template Example</h3>
 <p class="docs-markdown--p">If you want to use more than just a string in the header you can provide a template with the <code>nxTabLabel</code> directive.</p>
-<div nx-docs-example="tabs-template">exampleID: tabs-template</div>
+<div nx-docs-example="tabs-template" config="{}">exampleID: tabs-template</div>
 <h3 id="lazy-loaded-content" class="docs-markdown--h3">Lazy loaded content</h3>
 <p class="docs-markdown--p">If you want to delay the initialization of the content of the tabs you can provide a template with
 the <code>nxTabContent</code> directive. <em>Please note</em>: only the content of the active tab is attached to the DOM regardless if you use lazy loading or not but if you do not provide a template the content is created by Angular when the tabs are created.</p>
-<div nx-docs-example="tabs-lazy">exampleID: tabs-lazy</div>
+<div nx-docs-example="tabs-lazy" config="{}">exampleID: tabs-lazy</div>
 <h3 id="dynamic" class="docs-markdown--h3">Dynamic</h3>
 <p class="docs-markdown--p">You can add and remove tabs dynamically.</p>
-<div nx-docs-example="tabs-dynamic">exampleID: tabs-dynamic</div>
+<div nx-docs-example="tabs-dynamic" config="{}">exampleID: tabs-dynamic</div>
 <h3 id="tabs-as-a-navigation-bar" class="docs-markdown--h3">Tabs as a Navigation Bar</h3>
 <p class="docs-markdown--p">While <code>nx-tab-group</code> is used to switch the content within a single route, <code>nx-tab-nav-bar</code> provides a tab-like component for navigating between routes. The <code>nx-tab-nav-bar</code> component is not tied to any router, it uses normal <code>a</code> elements and the active property of <code>nxTabLink</code> to determine which tab is currently active. The corresponding <code>router-outlet</code> can be placed anywhere in the view.</p>
-<div nx-docs-example="tabs-nav-bar">exampleID: tabs-nav-bar</div>
+<div nx-docs-example="tabs-nav-bar" config="{}">exampleID: tabs-nav-bar</div>
 <h3 id="negative-styling" class="docs-markdown--h3">Negative styling</h3>
-<div nx-docs-example="tabs-negative">exampleID: tabs-negative</div>
+<div nx-docs-example="tabs-negative" config="{}">exampleID: tabs-negative</div>
 <h3 id="disabled" class="docs-markdown--h3">Disabled</h3>
 <p class="docs-markdown--p">You can disable the whole tab group by setting the property <code>negative</code> on <code>nx-tab-group</code> or alternatively disable only a particular tab by setting it on <code>nx-tab</code>.</p>
 <p class="docs-markdown--p"><strong>Pay attention that a disabled and active tab violates the accessibility of the component</strong>, therefore we set the next focusable tab as active in case active and disabled is set on the same tab. If all tabs are disabled, than you can set a disabled active tab.</p>
-<div nx-docs-example="tabs-disabled">exampleID: tabs-disabled</div>
+<div nx-docs-example="tabs-disabled" config="{}">exampleID: tabs-disabled</div>
 <h3 id="output-events" class="docs-markdown--h3">Output events</h3>
 <p class="docs-markdown--p">The <code>selectedTabChange</code> event is emitted when the active tab changes</p>
 <p class="docs-markdown--p">The <code>focusChange</code> event is emitted when the focus on a tab label changed.</p>
 <p class="docs-markdown--p">Both events return an instance of <code>NxTabChangeEvent</code> containing the index and the tab instance.</p>
 <p class="docs-markdown--p">Limitations: The <code>focusChange</code> event is currently not supported on mobile breakpoints as the accordion is lacking this feature.</p>
-<div nx-docs-example="tabs-output-events">exampleID: tabs-output-events</div>
+<div nx-docs-example="tabs-output-events" config="{}">exampleID: tabs-output-events</div>
 <h3 id="responsive-behavior" class="docs-markdown--h3">Responsive behavior</h3>
 <p class="docs-markdown--p">The tabs component will switch to an accordion for mobile viewports and reuses the libraries' Accordion component. The content of the tab gets detached in this process and attached into the accordion and vice versa. Components in the tab contents will not be destroyed and keep their state so you can safely use any custom component.</p>
 <p class="docs-markdown--p">You can access the accordion component instance by the public accordion property of the TabGroupComponent. To disable the switch to the accordion you can set the input property <code>mobileAccordion = false</code>.</p>
 <p class="docs-markdown--p">Important notice: The <code>(focusChange)</code> event is currently not supported by the accordion so you should not rely on this event for mobile viewports. The <code>(selectedTabChange)</code> event however will work also if the accordion is active.</p>
-<div nx-docs-example="tabs-responsive">exampleID: tabs-responsive</div>
+<div nx-docs-example="tabs-responsive" config="{}">exampleID: tabs-responsive</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-appearance" class="docs-markdown--h3">Expert: Appearance</h3>
 <p class="docs-markdown--p">With <code>appearance=&quot;expert&quot;</code> you can change the styling of the tabs.</p>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the expert appearance is only intended for internal applications and not for applications that are client facing.</p>
-<div nx-docs-example="tabs-appearance">exampleID: tabs-appearance</div>
+<div nx-docs-example="tabs-appearance" config="{}">exampleID: tabs-appearance</div>
 <p class="docs-markdown--p">You can also use the expert styling with the navigation bar:</p>
-<div nx-docs-example="tabs-nav-bar-appearance">exampleID: tabs-nav-bar-appearance</div>
+<div nx-docs-example="tabs-nav-bar-appearance" config="{}">exampleID: tabs-nav-bar-appearance</div>
 </div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <h4 id="keyboard-support" class="docs-markdown--h4">Keyboard support</h4>
@@ -57,7 +57,7 @@ the <code>nxTabContent</code> directive. <em>Please note</em>: only the content 
 </tr>
 <tr>
 <td><code>RIGHT_ARROW</code></td>
-<td>Arrow	Move focus to the next tab. If focus is on the last tab move to the first tab.</td>
+<td>Arrow  Move focus to the next tab. If focus is on the last tab move to the first tab.</td>
 </tr>
 <tr>
 <td><code>TAB</code></td>
@@ -84,9 +84,9 @@ the <code>nxTabContent</code> directive. <em>Please note</em>: only the content 
 <li class="docs-markdown--li"><strong>manual select:</strong> when the user puts focus on a tab label he has to manually press SPACE or ENTER to select the tab.</li>
 </ul>
 <p class="docs-markdown--p">You can toggle the autoselect setting with the button below. Then try it out by tabbing onto the tab labels and see the difference when you press the left and right arrow keys.</p>
-<div nx-docs-example="tabs-auto-manual-select">exampleID: tabs-auto-manual-select</div>
+<div nx-docs-example="tabs-auto-manual-select" config="{}">exampleID: tabs-auto-manual-select</div>
 <h3 id="global-settings" class="docs-markdown--h3">Global settings</h3>
 <p class="docs-markdown--p">You can use the <code>TAB_GROUP_DEFAULT_OPTIONS</code> injection token if you want to set the <code>[appearance]</code> property on <code>&lt;nx-tab-group&gt;</code> component globally.</p>
-<div nx-docs-example="tabs-injection-token">exampleID: tabs-injection-token</div>
+<div nx-docs-example="tabs-injection-token" config="{}">exampleID: tabs-injection-token</div>
 <p class="docs-markdown--p">The same applies if you're using the tabs as a navigation bar (use <code>TABS_NAV_BAR_DEFAULT_OPTIONS</code>):</p>
-<div nx-docs-example="tabs-nav-bar-injection-token">exampleID: tabs-nav-bar-injection-token</div>
+<div nx-docs-example="tabs-nav-bar-injection-token" config="{}">exampleID: tabs-nav-bar-injection-token</div>

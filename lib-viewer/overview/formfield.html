@@ -7,70 +7,70 @@
 <p class="docs-markdown--p">The formfield component is only usable in combination with a compatible input like nxInput. You will get floating labels, hints and a space to properly render additional information and errors below the input.</p>
 <p class="docs-markdown--p">You can't use the formfield without a matching input. A matching input fulfills the requirements of the <code>NxFormfieldControl</code> interface.</p>
 <h3 id="basic-example" class="docs-markdown--h3">Basic Example</h3>
-<div nx-docs-example="formfield-basic">exampleID: formfield-basic</div>
+<div nx-docs-example="formfield-basic" config="{}">exampleID: formfield-basic</div>
 <h3 id="simple-form" class="docs-markdown--h3">Simple Form</h3>
 <p class="docs-markdown--p">This form will show a validation error as both fields are required and one fields uses the appendix slot to display an info <a href="./documentation/icon/overview"><code>&lt;nx-icon&gt;</code></a> together with a popover.</p>
 <p class="docs-markdown--p">The formfield width depends only on the grid column it is placed in and expands until it has taken 100% of the width.</p>
 <p class="docs-markdown--p"><strong>Note:</strong> You have to include NxPopoverModule to run this example. See <a href="./documentation/popover/overview">NxPopover</a> for details.</p>
-<div nx-docs-example="formfield-simple-form">exampleID: formfield-simple-form</div>
+<div nx-docs-example="formfield-simple-form" config="{}">exampleID: formfield-simple-form</div>
 <h3 id="floating" class="docs-markdown--h3">Floating</h3>
 <p class="docs-markdown--p">By default the label will float once the input is focused or filled. By specifying <code>nxFloatLabel</code> with a value of always you can make this formfield appear as a static input + label combination.</p>
-<div nx-docs-example="formfield-floating">exampleID: formfield-floating</div>
+<div nx-docs-example="formfield-floating" config="{}">exampleID: formfield-floating</div>
 <h3 id="custom-formfield-label" class="docs-markdown--h3">Custom formfield label</h3>
 <p class="docs-markdown--p">You can pass text label content via the input <code>nxLabel</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below.
 If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
-<div nx-docs-example="formfield-custom-label">exampleID: formfield-custom-label</div>
+<div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
 <h3 id="negative-styling" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">The negative modifier can be used whenever the component is used on a dark background.</p>
-<div nx-docs-example="formfield-negative">exampleID: formfield-negative</div>
+<div nx-docs-example="formfield-negative" config="{}">exampleID: formfield-negative</div>
 <h3 id="hint" class="docs-markdown--h3">Hint</h3>
 <p class="docs-markdown--p">You can add a hint to a formfield which is then displayed on the bottom right corner.</p>
-<div nx-docs-example="formfield-hint">exampleID: formfield-hint</div>
+<div nx-docs-example="formfield-hint" config="{}">exampleID: formfield-hint</div>
 <h3 id="character-count" class="docs-markdown--h3">Character count</h3>
 <p class="docs-markdown--p">To show the user both the character restrictions and the characters remaining, you can simply use the slot of the <code>nxFormfieldHint</code>.</p>
-<div nx-docs-example="formfield-character-count">exampleID: formfield-character-count</div>
+<div nx-docs-example="formfield-character-count" config="{}">exampleID: formfield-character-count</div>
 <h3 id="supplements-(errors%2C-notes)" class="docs-markdown--h3">Supplements (Errors, Notes)</h3>
 <p class="docs-markdown--p">It's possible to display additional information like error messages below the input. The component will render either errors or the information, depending on the state of the input.</p>
 <h4 id="notes" class="docs-markdown--h4">Notes</h4>
-<div nx-docs-example="formfield-note">exampleID: formfield-note</div>
+<div nx-docs-example="formfield-note" config="{}">exampleID: formfield-note</div>
 <h4 id="errors" class="docs-markdown--h4">Errors</h4>
 <p class="docs-markdown--p">Errors are shown once the textfield is touched. This textfield was programatically touched to demonstrate the error state in this example.</p>
-<div nx-docs-example="formfield-error">exampleID: formfield-error</div>
+<div nx-docs-example="formfield-error" config="{}">exampleID: formfield-error</div>
 <h4 id="multiple-errors" class="docs-markdown--h4">Multiple Errors</h4>
 <p class="docs-markdown--p">You can also show different errors on one input field according to the particular error occurring in the form as shown in the example below.</p>
-<div nx-docs-example="formfield-multiple-errors">exampleID: formfield-multiple-errors</div>
+<div nx-docs-example="formfield-multiple-errors" config="{}">exampleID: formfield-multiple-errors</div>
 <h4 id="notes-and-errors" class="docs-markdown--h4">Notes and Errors</h4>
 <p class="docs-markdown--p">Initially, the info is shown here. But once you touch the textfield (try focus and blur), it displays the error instead.</p>
-<div nx-docs-example="formfield-note-and-error">exampleID: formfield-note-and-error</div>
+<div nx-docs-example="formfield-note-and-error" config="{}">exampleID: formfield-note-and-error</div>
 <h3 id="prefix%2C-suffix%2C-appendix" class="docs-markdown--h3">Prefix, Suffix, Appendix</h3>
 <p class="docs-markdown--p">Provide additional information like the unit or icons with popovers by using additional spaces before and after the input. Both prefix and suffix are visually inside the input, the appendix is located outside to display elements like info icons as they need to be placed outside.</p>
 <p class="docs-markdown--p">Projected content is automatically colored in  a secondary color, auto-sized icons get a size of 24px (s) and a primary action dark color.</p>
 <p class="docs-markdown--p">Please note that the prefix and suffix are not read out by the screenreader, so you would have to set an explicit <code>aria-label</code> (which includes the prefix/suffix information) via the <code>nxAriaLabel</code> input on <code>nxInput</code> as shown in the example below.</p>
-<div nx-docs-example="formfield-prefix-suffix-appendix">exampleID: formfield-prefix-suffix-appendix</div>
+<div nx-docs-example="formfield-prefix-suffix-appendix" config="{}">exampleID: formfield-prefix-suffix-appendix</div>
 <h3 id="placeholder" class="docs-markdown--h3">Placeholder</h3>
 <p class="docs-markdown--p">Using placeholders is an optional way to assist the user when filling out inputs. Placeholders normally disappear when the user types something in or if the input is filled. A placeholder can be an example of what should be typed into the field. It is important not to confuse placeholders with labels and hints.</p>
 <p class="docs-markdown--p">Please note that placeholders are not fully accessible because their color contrast is usually lower than the one of actual text input. In addition, placeholders are <strong>not supported by all screen readers</strong>. Therefore, a placeholder should provide <strong>only non-essential information</strong>.</p>
-<div nx-docs-example="formfield-placeholder">exampleID: formfield-placeholder</div>
+<div nx-docs-example="formfield-placeholder" config="{}">exampleID: formfield-placeholder</div>
 <h3 id="password-visibility-toggle" class="docs-markdown--h3">Password visibility toggle</h3>
 <p class="docs-markdown--p">In order to hide/show characters on inputs of type password you can use the <code>nx-password-toggle</code> component in combination with a <code>nxFormFieldSuffix</code> as shown in the example below.
 The input field has to be passed as a <code>control</code> to the <code>nx-password-toggle</code> component.</p>
 <p class="docs-markdown--p"><strong>Important:</strong> When using a formfield with a visibility toggle please pass an <code>aria-label</code> to the password toggle via the <code>ariaLabel</code> input. If you don't set it explicitly it will have 'Show password' as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">For more information on the password toggle component have a look at the <a href="./documentation/input/api">Input API</a>.</p>
-<div nx-docs-example="formfield-password-visibility">exampleID: formfield-password-visibility</div>
+<div nx-docs-example="formfield-password-visibility" config="{}">exampleID: formfield-password-visibility</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-appearance" class="docs-markdown--h3">Expert: Appearance</h3>
 <p class="docs-markdown--p">With <code>appearance</code> you can change the styling of the formfield and add an outline.</p>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
-<div nx-docs-example="formfield-appearance">exampleID: formfield-appearance</div>
+<div nx-docs-example="formfield-appearance" config="{}">exampleID: formfield-appearance</div>
 <h3 id="expert%3A-error-message" class="docs-markdown--h3">Expert: Error message</h3>
 <p class="docs-markdown--p">For internal applications you can use the <code>nx-error</code> component with <code>appearance=&quot;text&quot;</code> to display errors. This textfield was programatically touched to demonstrate the error state in this example.</p>
-<div nx-docs-example="formfield-expert-error">exampleID: formfield-expert-error</div>
+<div nx-docs-example="formfield-expert-error" config="{}">exampleID: formfield-expert-error</div>
 </div>
 <h3 id="global-settings" class="docs-markdown--h3">Global settings</h3>
 <p class="docs-markdown--p">If you want to use default settings for all of your formfields, you can use the <code>FORMFIELD_DEFAULT_OPTIONS</code> injection token. Here global settings for <code>appearance</code> and <code>nxFloatLabel</code> can be defined.</p>
 <p class="docs-markdown--p">If a certain formfield should have another styling, you can overwrite it by explicitly defining the property in the template.</p>
 <p class="docs-markdown--p">The same is valid for the formfield error notifications (<code>nx-error</code>). The default error style is 'message', but you can use the <code>ERROR_DEFAULT_OPTIONS</code> injection token to overwrite it, as shown in the example below.</p>
-<div nx-docs-example="formfield-global">exampleID: formfield-global</div>
+<div nx-docs-example="formfield-global" config="{}">exampleID: formfield-global</div>
 <h3 id="creating-a-custom-form-field-control" class="docs-markdown--h3">Creating a custom form field control</h3>
 <p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>.
 Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
@@ -79,7 +79,7 @@ Let's start simple and check how it looks once you implement the necessary inter
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-custom-tel-input-example</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-custom-tel-input-example</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 </code></pre>
-<div nx-docs-example="formfield-custom">exampleID: formfield-custom</div>
+<div nx-docs-example="formfield-custom" config="{}">exampleID: formfield-custom</div>
 <h4 id="implementing-the-methods-and-properties-of-nxformfieldcontrol" class="docs-markdown--h4">Implementing the methods and properties of NxFormFieldControl</h4>
 <p class="docs-markdown--p">The implementation is similar to Angular Material and can be checked for reference <a href="https://material.angular.io/guide/creating-a-custom-form-field-control">Angular Material - Custom Formfield Controls</a></p>
-<div nx-docs-example="formfield-custom-tel-input">exampleID: formfield-custom-tel-input</div>
+<div nx-docs-example="formfield-custom-tel-input" config="{}">exampleID: formfield-custom-tel-input</div>

@@ -1,35 +1,35 @@
 <p class="docs-markdown--p">The slider component allows the user to select a value from a range between a minimum and a maximum value, using a given granularity (e.g. step size). The value can be selected via mouse, touch or keyboard (arrow keys).</p>
 <p class="docs-markdown--p">For better decimal/floating point handling this module is using the 3rd party library <a href="http://mikemcl.github.io/decimal.js/">decimal.js</a> which is required in the library dependencies and will be installed automatically.</p>
 <h3 id="basic" class="docs-markdown--h3">Basic</h3>
-<div nx-docs-example="slider-basic">exampleID: slider-basic</div>
+<div nx-docs-example="slider-basic" config="{}">exampleID: slider-basic</div>
 <h3 id="default-values" class="docs-markdown--h3">Default values</h3>
 <p class="docs-markdown--p">If no input is provided, the default values of <code>nxMin=0</code>, <code>nxMax=100</code> and <code>nxStep=1</code> apply. This is also the case if the provided inputs are invalid, for example if the minimum value is higher than the maximum value.</p>
-<div nx-docs-example="slider-default">exampleID: slider-default</div>
+<div nx-docs-example="slider-default" config="{}">exampleID: slider-default</div>
 <h3 id="decimal-handling" class="docs-markdown--h3">Decimal handling</h3>
 <p class="docs-markdown--p">To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for <code>nxStep=0.1</code> the value will have a maximum of 1 decimal place (1, 1.1 etc.). For <code>nxStep=0.01</code> the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.</p>
 <p class="docs-markdown--p">Try to change the step size below to 0.01 and move the slider again to see the effect.</p>
-<div nx-docs-example="slider-decimal">exampleID: slider-decimal</div>
+<div nx-docs-example="slider-decimal" config="{}">exampleID: slider-decimal</div>
 <h3 id="label-formatters" class="docs-markdown--h3">Label Formatters</h3>
 <p class="docs-markdown--p">By default, the minimum value is displayed in a label on the bottom left- and the maximum value on the bottom right-hand side of the slider. The current value is displayed above the slider handle. All three of these labels can be completely customized by providing formatter functions as input.
 By default, the values are rendered unchanged. In the following example, a Euro symbol is attached to the respective value, which is rounded to two decimal places.</p>
-<div nx-docs-example="slider-label">exampleID: slider-label</div>
+<div nx-docs-example="slider-label" config="{}">exampleID: slider-label</div>
 <p class="docs-markdown--p">Formatter functions can also be applied to create sliders that do not show numeric values at all. In the following example, textual values are mapped to the numeric slider model.</p>
-<div nx-docs-example="slider-textual">exampleID: slider-textual</div>
+<div nx-docs-example="slider-textual" config="{}">exampleID: slider-textual</div>
 <h3 id="disabled-slider" class="docs-markdown--h3">Disabled Slider</h3>
 <p class="docs-markdown--p">A disabled slider does not react to mouse, touch or keyboard events.</p>
-<div nx-docs-example="slider-disabled">exampleID: slider-disabled</div>
+<div nx-docs-example="slider-disabled" config="{}">exampleID: slider-disabled</div>
 <h3 id="negative-slider" class="docs-markdown--h3">Negative Slider</h3>
 <p class="docs-markdown--p">You can change the styling of the slider to negative via the <code>negative</code> property as shown in the example below.</p>
-<div nx-docs-example="slider-negative">exampleID: slider-negative</div>
+<div nx-docs-example="slider-negative" config="{}">exampleID: slider-negative</div>
 <h3 id="inverted-slider" class="docs-markdown--h3">Inverted Slider</h3>
 <p class="docs-markdown--p">In a scenario where the general text direction is set to right-to-left, the slider should be oriented accordingly. For this purpose, the <code>inverted</code> flag can be set to <code>true</code>. As a consequence, the maximum value is associated with the left-hand side of the slider and the minimum value is found on the right.</p>
-<div nx-docs-example="slider-inverted">exampleID: slider-inverted</div>
+<div nx-docs-example="slider-inverted" config="{}">exampleID: slider-inverted</div>
 <h3 id="template-driven-form-with-ngmodel" class="docs-markdown--h3">Template-driven Form with ngModel</h3>
 <p class="docs-markdown--p">The slider can be used in template-driven forms.</p>
-<div nx-docs-example="slider-template">exampleID: slider-template</div>
+<div nx-docs-example="slider-template" config="{}">exampleID: slider-template</div>
 <h3 id="reactive-form" class="docs-markdown--h3">Reactive Form</h3>
 <p class="docs-markdown--p">The slider can be used in reactive forms.</p>
-<div nx-docs-example="slider-reactive">exampleID: slider-reactive</div>
+<div nx-docs-example="slider-reactive" config="{}">exampleID: slider-reactive</div>
 <h3 id="hide-thumb-label" class="docs-markdown--h3">Hide thumb label</h3>
 <p class="docs-markdown--p">The thumb label on top of the slider can be hidden by changing the <code>[thumbLabel]</code> input property to false.</p>
-<div nx-docs-example="slider-thumb">exampleID: slider-thumb</div>
+<div nx-docs-example="slider-thumb" config="{}">exampleID: slider-thumb</div>

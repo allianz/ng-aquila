@@ -14,16 +14,16 @@ On smaller screens the image section is always displayed below the content secti
 <p class="docs-markdown--p">The default small stage features a 70/30 ratio for content container and image container.</p>
 <p class="docs-markdown--p">Image is positioned in the center of image container.</p>
 <p class="docs-markdown--p">Image url is passed to the small stage through <code>imageUrl</code> input.</p>
-<div nx-docs-example="small-stage-default">exampleID: small-stage-default</div>
+<div nx-docs-example="small-stage-default" config="{}">exampleID: small-stage-default</div>
 <p class="docs-markdown--p">Various sizes of headlines and sublines can be used to achieve the desired effect.</p>
-<div nx-docs-example="small-stage-content-variation">exampleID: small-stage-content-variation</div>
+<div nx-docs-example="small-stage-content-variation" config="{}">exampleID: small-stage-content-variation</div>
 <h3 id="narrow-content" class="docs-markdown--h3">Narrow content</h3>
 <p class="docs-markdown--p">In some cases you might need to use a narrow content container, e.g. when the headline is short and you want a better positioning of the image.</p>
 <p class="docs-markdown--p">Setting a <code>contentNarrow</code> input on small stage component switches the ratio between content and image containers to 50/50.</p>
-<div nx-docs-example="small-stage-text-narrow">exampleID: small-stage-text-narrow</div>
+<div nx-docs-example="small-stage-text-narrow" config="{}">exampleID: small-stage-text-narrow</div>
 <h3 id="image-offset" class="docs-markdown--h3">Image offset</h3>
 <p class="docs-markdown--p">If you want to add extra spacing after the image, this is possible through setting <code>offsetEnd</code> input on the component. It is also combinable with <code>contentNarrow</code>, when needed.</p>
-<div nx-docs-example="small-stage-image-offset">exampleID: small-stage-image-offset</div>
+<div nx-docs-example="small-stage-image-offset" config="{}">exampleID: small-stage-image-offset</div>
 <p class="docs-markdown--p">For best results across different viewport sizes, we suggest using the <a href="./documentation/layout/overview#basic-viewport-subscription">viewport service</a> to dynamically adjust styles of small stage to your needs.</p>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">In order to achieve responsive behavior and fluid scaling of the small stage, we're leveraging the css background image functionality under the hood to display the image.

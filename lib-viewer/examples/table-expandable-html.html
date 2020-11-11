@@ -1,0 +1,43 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">nxExpandableTable</span> #<span class="hljs-attr">expandableTable</span>=<span class="hljs-string">&quot;nxExpandableTable&quot;</span> <span class="hljs-attr">zebra</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--toggle&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Expand row&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button</span> [<span class="hljs-attr">target</span>]=<span class="hljs-string">&quot;expandableTable&quot;</span>
+          <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Toggle all rows&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-toggle-button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>
+        Product
+      <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>
+        Contract number
+      <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>
+        Ending date
+      <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>
+        Status
+      <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--toggle&quot;</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-toggle-button</span> [<span class="hljs-attr">target</span>]=<span class="hljs-string">&quot;expandableRow&quot;</span>
+            <span class="hljs-attr">ariaLabel</span>=<span class="hljs-string">&quot;Toggle {{item.product}} row&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-toggle-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.endingAt}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>&gt;</span>{{item.statusText}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxExpandableTableRow</span> #<span class="hljs-attr">expandableRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxExpandableTableCell</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxExpandableTableCell</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&#x27;#&#x27;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxExpandableTableCell</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>{{item.desc}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>

@@ -5,55 +5,55 @@ Therefore, make sure to import this module as well:</p>
 <p class="docs-markdown--p">Dropdown requires Angular CDK (incl. CSS).</p>
 <h3 id="standard-dropdown" class="docs-markdown--h3">Standard Dropdown</h3>
 <p class="docs-markdown--p">The dropdown wrapped by a formfield in different states is displayed in the following example.</p>
-<div nx-docs-example="dropdown-standard">exampleID: dropdown-standard</div>
+<div nx-docs-example="dropdown-standard" config="{}">exampleID: dropdown-standard</div>
 <h3 id="placeholder" class="docs-markdown--h3">Placeholder</h3>
 <p class="docs-markdown--p">It is possible to show a placeholder instead of the floating label. The placeholder will only be shown if no option is selected.</p>
-<div nx-docs-example="dropdown-placeholder">exampleID: dropdown-placeholder</div>
+<div nx-docs-example="dropdown-placeholder" config="{}">exampleID: dropdown-placeholder</div>
 <h3 id="rendering-of-dropdown-items" class="docs-markdown--h3">Rendering of dropdown-items</h3>
 <p class="docs-markdown--p">The items inside the dropdown can be rendered either by <code>[nxValueFormatter]</code> or by ng-content. If no ng-content is provided, the <code>[nxValue]</code> in combination with <code>[nxValueFormatter]</code> will be used to render the item content (left). This example also shows the usage of <code>[nxValueFormatter]</code>. It is possible to transform any <code>[nxValue]</code> into the rendered state (here: &quot;uppercase&quot;).</p>
 <p class="docs-markdown--p">If there is ng-content projected by nx-dropdown-item, this content will be used by the dropdown to display the items (middle). The library implements a fallback if you do not provide <code>[nxValueFormatter]</code> and ng-content. In this case, <code>[nxValue]</code> will be used by .toString() as value for the item (right).</p>
-<div nx-docs-example="dropdown-rendering-items">exampleID: dropdown-rendering-items</div>
+<div nx-docs-example="dropdown-rendering-items" config="{}">exampleID: dropdown-rendering-items</div>
 <h3 id="custom-closed-label-dropdown" class="docs-markdown--h3">Custom closed label dropdown</h3>
 <p class="docs-markdown--p">There might be use cases where you want to render a different label when the dropdown is closed. For such a use case we provide the option to add the <code>nxClosedLabel</code> directive on a <code>ng-template</code>.</p>
 <p class="docs-markdown--p">You can access the currently selected value via a ngModel binding like you see in the example below, where we use the value to render only the country code without the country id.</p>
-<div nx-docs-example="dropdown-custom-label">exampleID: dropdown-custom-label</div>
+<div nx-docs-example="dropdown-custom-label" config="{}">exampleID: dropdown-custom-label</div>
 <h3 id="negative-styling" class="docs-markdown--h3">Negative Styling</h3>
 <p class="docs-markdown--p">See below for an example of a dropdown with negative styling wrapped by a formfield in different states.</p>
-<div nx-docs-example="dropdown-negative">exampleID: dropdown-negative</div>
+<div nx-docs-example="dropdown-negative" config="{}">exampleID: dropdown-negative</div>
 <h3 id="group-dropdown" class="docs-markdown--h3">Group Dropdown</h3>
 <p class="docs-markdown--p">It might be necessary for your use case to group the items inside of a dropdown.
 This is how it's done:</p>
-<div nx-docs-example="dropdown-group">exampleID: dropdown-group</div>
+<div nx-docs-example="dropdown-group" config="{}">exampleID: dropdown-group</div>
 <h3 id="filter-dropdown" class="docs-markdown--h3">Filter dropdown</h3>
 <p class="docs-markdown--p">The dropdown can show an additional filter input, as demonstrated in this example:</p>
-<div nx-docs-example="dropdown-filter">exampleID: dropdown-filter</div>
+<div nx-docs-example="dropdown-filter" config="{}">exampleID: dropdown-filter</div>
 <h3 id="filter-dropdown-with-custom-filter-function" class="docs-markdown--h3">Filter dropdown with custom filter function</h3>
 <p class="docs-markdown--p">The default filter function is comparing the lower case dropdown label with the lower case string
 from the search filter via <code>String.indexOf()</code>.
 You can alter the default filter function by setting the <code>[filterFn]</code> input.
 In this case we want to be really strict and only have a match if a dropdown item contains the
 case sensitive user input from the beginning of the string!</p>
-<div nx-docs-example="dropdown-filter-custom">exampleID: dropdown-filter-custom</div>
+<div nx-docs-example="dropdown-filter-custom" config="{}">exampleID: dropdown-filter-custom</div>
 <h3 id="multi-select-dropdown" class="docs-markdown--h3">Multi select dropdown</h3>
 <p class="docs-markdown--p">The dropdown can be configured to allow multiple items to be selected. In this
 mode the dropdown stays open while selecting an item by keyboard or mouse.
 Moreover the dropdown renders checkboxes before each item to indicate the selection
 of the user.</p>
-<div nx-docs-example="dropdown-multi-select">exampleID: dropdown-multi-select</div>
+<div nx-docs-example="dropdown-multi-select" config="{}">exampleID: dropdown-multi-select</div>
 <h3 id="disabling-items" class="docs-markdown--h3">Disabling items</h3>
 <p class="docs-markdown--p">You can disable the whole dropdown as well as single dropdown items by setting their <code>disabled</code> property as shown in the example below:</p>
-<div nx-docs-example="dropdown-disabled-items">exampleID: dropdown-disabled-items</div>
+<div nx-docs-example="dropdown-disabled-items" config="{}">exampleID: dropdown-disabled-items</div>
 <h3 id="simple-binding" class="docs-markdown--h3">Simple binding</h3>
-<div nx-docs-example="dropdown-simple-binding">exampleID: dropdown-simple-binding</div>
+<div nx-docs-example="dropdown-simple-binding" config="{}">exampleID: dropdown-simple-binding</div>
 <h3 id="template-driven-form-with-ngmodel" class="docs-markdown--h3">Template-driven form with ngModel</h3>
-<div nx-docs-example="dropdown-template-driven">exampleID: dropdown-template-driven</div>
+<div nx-docs-example="dropdown-template-driven" config="{}">exampleID: dropdown-template-driven</div>
 <h3 id="reactive-form" class="docs-markdown--h3">Reactive form</h3>
-<div nx-docs-example="dropdown-reactive">exampleID: dropdown-reactive</div>
+<div nx-docs-example="dropdown-reactive" config="{}">exampleID: dropdown-reactive</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-dropdown-with-outline" class="docs-markdown--h3">Expert: Dropdown with outline</h3>
 <p class="docs-markdown--p">In a formfield with an outline the styling of the dropdown will adjust accordingly.</p>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
-<div nx-docs-example="dropdown-outline">exampleID: dropdown-outline</div>
+<div nx-docs-example="dropdown-outline" config="{}">exampleID: dropdown-outline</div>
 </div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The dropdown can be accessed via keyboard. If the component owns the focus, the dropdown will open when you hit ENTER. Pressing ESC while the dropdown is open will close it. To select a value while the dropdown is open, use ARROW-UP and ARROW-DOWN. You can quickly navigate to the first item with the HOME key and to the last item with the END key. Pressing the ALT key plus either the ARROW_UP or ARROW_DOWN key opens or closes the dropdown.</p>

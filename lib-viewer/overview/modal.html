@@ -14,7 +14,7 @@ myDialogRef.close();
 </code></pre>
 <p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>.
 If you use a specific component for your modal you have to include it in the list of <code>entryComponents</code> in your <code>NgModule</code>, as it gets instantiated at run-time and won't be found otherwise.</p>
-<div nx-docs-example="modal-opening">exampleID: modal-opening</div>
+<div nx-docs-example="modal-opening" config="{}">exampleID: modal-opening</div>
 <h3 id="modal-closing" class="docs-markdown--h3">Modal Closing</h3>
 <p class="docs-markdown--p">You can close a dialog in three different ways:</p>
 <ul class="docs-markdown--ul">
@@ -24,16 +24,16 @@ If you use a specific component for your modal you have to include it in the lis
 </ul>
 <p class="docs-markdown--p">When using the last two options you can also pass a result object/string on close.
 The three different closing variants are demonstrated in the example below:</p>
-<div nx-docs-example="modal-closing">exampleID: modal-closing</div>
+<div nx-docs-example="modal-closing" config="{}">exampleID: modal-closing</div>
 <h3 id="closing-behaviour" class="docs-markdown--h3">Closing behaviour</h3>
 <p class="docs-markdown--p">By default, the modal will close if the user clicks on the backdrop or hits the ESC key. These options can be disabled by using the <code>disableClose</code> parameter of the <code>NxModalConfig</code> as shown in the example below:</p>
-<div nx-docs-example="modal-closing-behaviour">exampleID: modal-closing-behaviour</div>
+<div nx-docs-example="modal-closing-behaviour" config="{}">exampleID: modal-closing-behaviour</div>
 <h3 id="modal-content-directives" class="docs-markdown--h3">Modal Content Directives</h3>
 <p class="docs-markdown--p">You can separate the dialog body into dialog content and dialog actions by using the directives <code>nxModalContent</code> and <code>nxModalActions</code>. <code>nxModalActions</code> is container for action buttons placed at the bottom of the dialog. The example below shows how to apply them for a Dialog with a disclaimer look.</p>
-<div nx-docs-example="modal-content-actions">exampleID: modal-content-actions</div>
+<div nx-docs-example="modal-content-actions" config="{}">exampleID: modal-content-actions</div>
 <h3 id="fixed-width" class="docs-markdown--h3">Fixed width</h3>
 <p class="docs-markdown--p">By default the width of the modal dialog is <code>736px</code>. You can change this behavior by setting the <code>width</code> property in the <code>NxModalConfig</code>.</p>
-<div nx-docs-example="modal-fixed-width">exampleID: modal-fixed-width</div>
+<div nx-docs-example="modal-fixed-width" config="{}">exampleID: modal-fixed-width</div>
 <h3 id="configuration" class="docs-markdown--h3">Configuration</h3>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>
@@ -54,7 +54,7 @@ The three different closing variants are demonstrated in the example below:</p>
 }
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
-<div nx-docs-example="modal-data-injection">exampleID: modal-data-injection</div>
+<div nx-docs-example="modal-data-injection" config="{}">exampleID: modal-data-injection</div>
 <h3 id="global-configuration" class="docs-markdown--h3">Global Configuration</h3>
 <p class="docs-markdown--p">You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
@@ -81,4 +81,4 @@ The three different closing variants are demonstrated in the example below:</p>
   ]
 })
 </code></pre>
-<div nx-docs-example="modal-basic">exampleID: modal-basic</div>
+<div nx-docs-example="modal-basic" config="{}">exampleID: modal-basic</div>

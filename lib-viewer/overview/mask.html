@@ -8,26 +8,26 @@
 </ul>
 <p class="docs-markdown--p">Thus, if you write <code>000-AAA</code> this specifies a mask that consists of three numbers and then three letters, with a separator in the middle.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that language specific characters (e.g. 'ä', 'ö', 'ü') are currently not supported.</p>
-<div nx-docs-example="mask">exampleID: mask</div>
+<div nx-docs-example="mask" config="{}">exampleID: mask</div>
 <h3 id="iban-mask" class="docs-markdown--h3">IBAN mask</h3>
 <p class="docs-markdown--p"><code>nxIbanMask</code> provides a mask for IBANs. The IBAN mask directive does some basic validation (e.g. regarding length and correctly placed characters), but is not able to verify if valid bank codes and account numbers are used. Lowercase letters are automatically converted to uppercase.</p>
 <p class="docs-markdown--p"><strong>Important:</strong> To use this, the peer dependency <a href="https://github.com/arhs/iban.js/">iban.js</a> is needed.</p>
-<div nx-docs-example="iban-mask">exampleID: iban-mask</div>
+<div nx-docs-example="iban-mask" config="{}">exampleID: iban-mask</div>
 <h3 id="custom-separators" class="docs-markdown--h3">Custom separators</h3>
 <p class="docs-markdown--p">The default separators are <code>/</code>, <code>(</code>, <code>)</code>, <code>.</code>, <code>:</code>, <code>-</code>, <code>+</code>, <code>,</code> and space.</p>
 <p class="docs-markdown--p">With <code>separators</code> you can set custom separators.</p>
-<div nx-docs-example="mask-separators">exampleID: mask-separators</div>
+<div nx-docs-example="mask-separators" config="{}">exampleID: mask-separators</div>
 <h3 id="drop-separators-in-ngmodel" class="docs-markdown--h3">Drop separators in ngModel</h3>
 <p class="docs-markdown--p">By default the value of your binding (ngModel/reactive forms) will include the separator characters of the mask. If you want to drop separators in this value, you can use the <code>dropSpecialCharacters</code> input.</p>
 <p class="docs-markdown--p">An alternative way to get the value without separators is calling the <code>getUnmaskedValue()</code> function.</p>
-<div nx-docs-example="mask-drop-characters">exampleID: mask-drop-characters</div>
+<div nx-docs-example="mask-drop-characters" config="{}">exampleID: mask-drop-characters</div>
 <h3 id="validation" class="docs-markdown--h3">Validation</h3>
 <p class="docs-markdown--p">Per default the mask is validated. It will send a <code>nxMaskLengthError</code>, if the lengths of input value and given mask do not match.</p>
 <p class="docs-markdown--p">The validation can be turned off via the <code>[validateMask]</code> input. In both cases you can add your custom validators (e.g. <code>required</code>) for the input.</p>
-<div nx-docs-example="mask-validation">exampleID: mask-validation</div>
+<div nx-docs-example="mask-validation" config="{}">exampleID: mask-validation</div>
 <h3 id="case-sensitivity" class="docs-markdown--h3">Case sensitivity</h3>
 <p class="docs-markdown--p">Optionally you can use the <code>nxConvertTo</code> input to automatically capitalize or lower the mask input value.</p>
-<div nx-docs-example="mask-case">exampleID: mask-case</div>
+<div nx-docs-example="mask-case" config="{}">exampleID: mask-case</div>
 <h3 id="deactivate-mask" class="docs-markdown--h3">Deactivate mask</h3>
 <p class="docs-markdown--p">You can optionally deactivate the mask controls using <code>deactivateMask</code> property. Activating this option will return the mask value as is without any validations.</p>
-<div nx-docs-example="mask-deactivate">exampleID: mask-deactivate</div>
+<div nx-docs-example="mask-deactivate" config="{}">exampleID: mask-deactivate</div>

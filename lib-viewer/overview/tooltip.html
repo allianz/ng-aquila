@@ -6,7 +6,7 @@
 <p class="docs-markdown--p">The Tooltip provides a text label that is displayed when the user hovers over or focuses an element.
 It allows to display additional information for supporting the customer,
 and should <strong>only be used for optional information</strong>.</p>
-<div nx-docs-example="tooltip-basic">exampleID: tooltip-basic</div>
+<div nx-docs-example="tooltip-basic" config="{}">exampleID: tooltip-basic</div>
 <h3 id="positioning" class="docs-markdown--h3">Positioning</h3>
 <p class="docs-markdown--p">By default the tooltip will be displayed below the element, but this can be configured
 using the <code>nxTooltipPosition</code> input. The tooltip can be displayed above,
@@ -37,11 +37,11 @@ below, left or right of the element.</p>
 </tr>
 </tbody>
 </table>
-<div nx-docs-example="tooltip-positions">exampleID: tooltip-positions</div>
+<div nx-docs-example="tooltip-positions" config="{}">exampleID: tooltip-positions</div>
 <h3 id="fallback-strategy" class="docs-markdown--h3">Fallback strategy</h3>
 <p class="docs-markdown--p">The positioning of the tooltip follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the tooltip tries to find a fitting position within the window.
 The following table explains the fallback strategy of the tooltip.</p>
-<div nx-docs-example="tooltip-fallbacks-table">exampleID: tooltip-fallbacks-table</div>
+<div nx-docs-example="tooltip-fallbacks-table" config="{}">exampleID: tooltip-fallbacks-table</div>
 <p class="docs-markdown--p">Note that the table contains a few positions that are not available to be set by the user. <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code> and <code>bottom-right</code> are special positions that are used as a fallback option only.</p>
 <h3 id="showing-and-hiding" class="docs-markdown--h3">Showing and hiding</h3>
 <p class="docs-markdown--p">By default, the tooltip will be shown when the user's mouse hovers over
@@ -51,19 +51,19 @@ the tooltip's trigger element and hides when the user's mouse leaves.</p>
 the inputs <code>nxTooltipShowDelay</code> and <code>nxTooltipHideDelay</code> to provide a delay time in milliseconds.</p>
 <p class="docs-markdown--p">The following example has a tooltip that waits one second to display after
 the user hovers over the button, and waits another second to hide after the user moves the mouse away.</p>
-<div nx-docs-example="tooltip-delay">exampleID: tooltip-delay</div>
+<div nx-docs-example="tooltip-delay" config="{}">exampleID: tooltip-delay</div>
 <h3 id="disabling-the-tooltip-from-showing" class="docs-markdown--h3">Disabling the tooltip from showing</h3>
 <p class="docs-markdown--p">To completely disable a tooltip, set <code>nxTooltipDisabled</code>. While disabled, a tooltip will never be shown.</p>
-<div nx-docs-example="tooltip-disabled">exampleID: tooltip-disabled</div>
+<div nx-docs-example="tooltip-disabled" config="{}">exampleID: tooltip-disabled</div>
 <h3 id="manually-calling-show()-and-hide()" class="docs-markdown--h3">Manually calling show() and hide()</h3>
 <p class="docs-markdown--p">To manually cause the tooltip to show or hide, you can call the show and hide directive methods,
 which both accept a number in milliseconds to delay before applying the display change.</p>
-<div nx-docs-example="tooltip-programmatic">exampleID: tooltip-programmatic</div>
+<div nx-docs-example="tooltip-programmatic" config="{}">exampleID: tooltip-programmatic</div>
 <h3 id="changing-the-default-delay-behavior" class="docs-markdown--h3">Changing the default delay behavior</h3>
 <p class="docs-markdown--p">You can configure your app's tooltip default show/hide delays and default
 position by configuring and providing your options using the <code>NX_TOOLTIP_DEFAULT_OPTIONS</code>
 injection token.</p>
-<div nx-docs-example="tooltip-settings">exampleID: tooltip-settings</div>
+<div nx-docs-example="tooltip-settings" config="{}">exampleID: tooltip-settings</div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">Elements with the <code>nxTooltip</code> will add an <code>aria-describedby</code> label that
 provides a reference to a visually hidden element containing the tooltip's message.

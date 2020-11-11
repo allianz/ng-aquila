@@ -1,35 +1,35 @@
 <h2 id="examples" class="docs-markdown--h2">Examples</h2>
 <p class="docs-markdown--p">By default, the tag component allows individual values to be deleted on click. This behavior can be disabled by setting the <code>nxAllowTagDeletion</code> flag to false.</p>
-<div nx-docs-example="taglist">exampleID: taglist</div>
+<div nx-docs-example="taglist" config="{}">exampleID: taglist</div>
 <h3 id="tag-keywords" class="docs-markdown--h3">Tag Keywords</h3>
 <p class="docs-markdown--p">The tags can optionally be styled as keywords by setting the respective option <code>nxIsKeywordList</code>.</p>
-<div nx-docs-example="taglist-keyword">exampleID: taglist-keyword</div>
+<div nx-docs-example="taglist-keyword" config="{}">exampleID: taglist-keyword</div>
 <h3 id="tag-formatter" class="docs-markdown--h3">Tag Formatter</h3>
 <p class="docs-markdown--p">The textual representation of tags can be customized through a formatter function, which can be useful for translation and other cases where the tag value depends on the application state. In this example, the formatter adds the prefix &quot;my&quot; to the tag value.</p>
-<div nx-docs-example="taglist-formatter">exampleID: taglist-formatter</div>
+<div nx-docs-example="taglist-formatter" config="{}">exampleID: taglist-formatter</div>
 <h3 id="delete-tags" class="docs-markdown--h3">Delete Tags</h3>
 <p class="docs-markdown--p">If the option <code>nxAllowTagDeletion</code> is not set to false, tags can be deleted from the list on click.</p>
 <p class="docs-markdown--p">Note that tags can be added and the list can be cleared by calling the respective methods <code>addTag</code> and <code>clearTags</code> on the component. The respective buttons and input in this example are independent of the component and only included in this example to show that they can be placed anywhere on the page and that any custom business logic and validation can be used.
 Any content of the element will be used as empty state and is displayed in case the tags array is empty.</p>
-<div nx-docs-example="taglist-delete">exampleID: taglist-delete</div>
-<div nx-docs-example="taglist-basic">exampleID: taglist-basic</div>
+<div nx-docs-example="taglist-delete" config="{}">exampleID: taglist-delete</div>
+<div nx-docs-example="taglist-basic" config="{}">exampleID: taglist-basic</div>
 <h3 id="objects-as-input" class="docs-markdown--h3">Objects as Input</h3>
 <p class="docs-markdown--p">In order to give you as much flexibility as possible and support a wide variety of use cases, the tag list not only works with strings but accepts any object as input which has a <code>nxTaglistLabel</code> property. Note that while this is the default name, the label property can be configured via the input. <code>nxLabelProperty</code>.</p>
-<div nx-docs-example="taglist-objects">exampleID: taglist-objects</div>
+<div nx-docs-example="taglist-objects" config="{}">exampleID: taglist-objects</div>
 <h3 id="template-driven-with-ngmodel" class="docs-markdown--h3">Template-driven with ngModel</h3>
 <p class="docs-markdown--p">The tag list component can be used within template-driven forms.</p>
-<div nx-docs-example="taglist-templatedriven">exampleID: taglist-templatedriven</div>
+<div nx-docs-example="taglist-templatedriven" config="{}">exampleID: taglist-templatedriven</div>
 <h3 id="reactive" class="docs-markdown--h3">Reactive</h3>
 <p class="docs-markdown--p">The tag list component can be used within reactive forms.</p>
-<div nx-docs-example="taglist-reactive">exampleID: taglist-reactive</div>
+<div nx-docs-example="taglist-reactive" config="{}">exampleID: taglist-reactive</div>
 <h3 id="output" class="docs-markdown--h3">Output</h3>
 <p class="docs-markdown--p">The tag emits an output on click, which contains the selected tag.</p>
 <p class="docs-markdown--p">You should also set <code>tabindex=&quot;0&quot;</code> for the taglist, so the tags are reachable via keyboard navigation.</p>
-<div nx-docs-example="taglist-output">exampleID: taglist-output</div>
+<div nx-docs-example="taglist-output" config="{}">exampleID: taglist-output</div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The default value of the <code>tabindex</code> of the tag items is <code>-1</code>. If the tags are removable then the default value is <code>0</code> so that they are focusable. In all other cases please take care of setting an appropriate tab-index via the input <code>tabindex</code> on the taglist (please check the <a href="./documentation/taglist/overview#output">output example</a>).</p>
 <p class="docs-markdown--p">In oder to improve accessibility, please consider <strong>linking a label</strong> to the tag list component, for example like this:</p>
-<div nx-docs-example="taglist-a11y">exampleID: taglist-a11y</div>
+<div nx-docs-example="taglist-a11y" config="{}">exampleID: taglist-a11y</div>
 <h4 id="keybord-navigation" class="docs-markdown--h4">Keybord navigation</h4>
 <p class="docs-markdown--p">If <code>nxAllowTagDeletion</code> is set to <code>true</code>, you can remove selected tags using BACKSPACE.
 If your tags trigger actions on click, these actions will be also triggered on ENTER click.</p>
