@@ -103,7 +103,7 @@ export class MenuExampleComponent {
     },
     {
       label: 'Option 2',
-      icon: 'user-business-o',
+      icon: 'user-o',
       children: [
         {
           label: 'Option 2.1',

@@ -13,7 +13,7 @@ export class MenuItemWithIconsExampleComponent {
     {
       label: 'Option 1',
       expanded: false,
-      icon: 'setting',
+      icon: 'file',
       children: [
         {
           label: 'Option 1.1'

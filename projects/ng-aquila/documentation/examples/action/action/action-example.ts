@@ -23,7 +23,7 @@ export class ActionExampleComponent implements OnInit {
       label: 'Email'
     },
     {
-      icon: 'user-business-o',
+      icon: 'user-o',
       label: 'My Profile'
     },
     {

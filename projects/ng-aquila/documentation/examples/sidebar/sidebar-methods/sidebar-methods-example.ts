@@ -28,7 +28,7 @@ export class SidebarMethodsExampleComponent {
       query: { a: 3 }
     },
     {
-      icon: 'user-business-o',
+      icon: 'user-o',
       label: 'My Profile',
       query: { a: 4 }
     },

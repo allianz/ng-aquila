@@ -31,7 +31,7 @@ export class SidebarResizeableExampleComponent {
   navigationData: MyTreeNode[] = [
     {
       label: 'Option 1',
-      icon: 'user-business-o',
+      icon: 'user-o',
       children: [
         {
           label: 'Option 1.1',
