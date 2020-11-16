@@ -49,7 +49,3 @@ nav a:last-child {
   font-weight: 600;
 }
 
-.docs-active  {
-  @include var(color, active-primary);
-  font-weight: 600;
-}

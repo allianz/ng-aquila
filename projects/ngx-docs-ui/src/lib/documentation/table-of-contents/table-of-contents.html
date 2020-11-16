@@ -4,8 +4,8 @@
     <a [routerLink]="_rootUrl" [fragment]="link.id"
       *ngFor="let link of links; let i = index"
       class="docs-level-{{link.type}} docs-link"
-      [class.docs-active]="link.active"
-      [class.docs-private]="link.private">
+      [class.docs-private]="link.private"
+      [class.docs-public]="link.public">
       {{link.name}}
     </a>
   </nav>

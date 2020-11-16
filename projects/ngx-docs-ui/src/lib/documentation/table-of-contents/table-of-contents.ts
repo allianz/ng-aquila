@@ -1,10 +1,20 @@
-import { Component, ElementRef, Inject, Input, OnInit, OnDestroy, AfterViewInit, AfterContentInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ActivatedRoute, NavigationEnd, Router, UrlSegment } from '@angular/router';
-import { Subject, fromEvent } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+} from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const DOCS_PRIVATE_CLASS_SELECTOR: string = '.docs-private';
+const DOCS_PUBLIC_CLASS_SELECTOR: string = '.docs-public';
 
 export interface Link {
   /* id of the section*/
@@ -12,9 +22,6 @@ export interface Link {
 
   /* header type h3/h4 */
   type: string;
-
-  /* If the anchor is in view of the page */
-  active: boolean;
 
   /* name of the anchor */
   name: string;
@@ -24,30 +31,26 @@ export interface Link {
 
   /* If the anchor should be available only for private packages */
   private: boolean;
+
+  /* If the anchor should only be shown in the public documentation. */
+  public: boolean;
 }
 
 @Component({
   selector: 'nxv-table-of-contents',
   styleUrls: ['./table-of-contents.scss'],
-  templateUrl: './table-of-contents.html'
+  templateUrl: './table-of-contents.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NxvTableOfContentsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
 
-  @Input() links: Link[] = [];
   @Input() container: string;
-  @Input() headerSelectors =
+
+  links: Link[] = [];
+  headerSelectors =
   '.docs-markdown--h2, .docs-api-h2, .docs-markdown--h3, .docs-markdown--h4, .docs-api-h3, .docs-api-h4';
 
-  @Input() privateHeaderSelectors =
-    `${DOCS_PRIVATE_CLASS_SELECTOR} .docs-markdown--h2,
-     ${DOCS_PRIVATE_CLASS_SELECTOR} .docs-api-h2,
-     ${DOCS_PRIVATE_CLASS_SELECTOR} .docs-markdown--h3,
-     ${DOCS_PRIVATE_CLASS_SELECTOR} .docs-markdown--h4,
-     ${DOCS_PRIVATE_CLASS_SELECTOR} .docs-api-h3,
-     ${DOCS_PRIVATE_CLASS_SELECTOR} .docs-api-h4`;
-
   _rootUrl = this._router.url.split('#')[0];
-  private _scrollContainer: any;
   private _destroyed = new Subject();
   private _urlFragment = '';
   scrollingSubscription: any;
@@ -55,7 +58,8 @@ export class NxvTableOfContentsComponent implements OnInit, OnDestroy, AfterView
   constructor(private _router: Router,
     private _route: ActivatedRoute,
     private _element: ElementRef,
-    @Inject(DOCUMENT) private _document: any) {
+    @Inject(DOCUMENT) private _document: any,
+    private _cdRef: ChangeDetectorRef) {
 
     this._router.events.pipe(takeUntil(this._destroyed)).subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -77,19 +81,6 @@ export class NxvTableOfContentsComponent implements OnInit, OnDestroy, AfterView
     });
   }
 
-  ngOnInit(): void {
-
-    this._scrollContainer = this.container ? this._document.querySelectorAll(this.container)[0] : window;
-    if (this._scrollContainer) {
-      fromEvent(this._scrollContainer, 'scroll').pipe(
-        takeUntil(this._destroyed),
-        debounceTime(10))
-        .subscribe(() => {
-          this.onScroll();
-        });
-    }
-  }
-
   ngAfterViewInit() {
     Promise.resolve().then(() => this.refresh());
   }
@@ -105,16 +96,7 @@ export class NxvTableOfContentsComponent implements OnInit, OnDestroy, AfterView
     if (target) {
       target.scrollIntoView();
     }
-  }
-
-  /** Gets the scroll offset of the scroll container */
-  private getScrollOffset(): number {
-    const { top } = this._element.nativeElement.getBoundingClientRect();
-    if (typeof this._scrollContainer.scrollTop !== 'undefined') {
-      return this._scrollContainer.scrollTop + top;
-    } else if (typeof this._scrollContainer.pageYOffset !== 'undefined') {
-      return this._scrollContainer.pageYOffset + top;
-    }
+    this._cdRef.detectChanges();
   }
 
   private createLinks(): Link[] {
@@ -131,25 +113,11 @@ export class NxvTableOfContentsComponent implements OnInit, OnDestroy, AfterView
           type: header.tagName.toLowerCase(),
           top,
           id: header.id,
-          active: false,
-          private: header.matches(this.privateHeaderSelectors),
+          private: header.matches(`${DOCS_PRIVATE_CLASS_SELECTOR} .${header.classList[0]}`),
+          public: header.matches(`${DOCS_PUBLIC_CLASS_SELECTOR} .${header.classList[0]}`)
         });
       }
     }
-
     return links;
-  }
-
-  private onScroll(): void {
-    for (let i = 0; i < this.links.length; i++) {
-      this.links[i].active = this.isLinkActive(this.links[i], this.links[i + 1]);
-    }
-  }
-
-  private isLinkActive(currentLink: any, nextLink: any): boolean {
-    // A link is considered active if the page is scrolled passed the anchor without also
-    // being scrolled passed the next link
-    const scrollOffset = this.getScrollOffset();
-    return scrollOffset >= currentLink.top && !(nextLink && nextLink.top < scrollOffset);
   }
 }
