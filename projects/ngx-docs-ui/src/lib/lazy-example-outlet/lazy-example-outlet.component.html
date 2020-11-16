@@ -1,5 +1,7 @@
-<ng-template *ngIf="exampleComponent; else spinner" [ngComponentOutlet]="exampleComponent?.componentType"
-  [ngComponentOutletNgModuleFactory]="exampleModuleFactory"></ng-template>
+<div [dir]="directionQuery">
+  <ng-template *ngIf="exampleComponent; else spinner" [ngComponentOutlet]="exampleComponent?.componentType"
+    [ngComponentOutletNgModuleFactory]="exampleModuleFactory"></ng-template>
+</div>
 
 
 <ng-template #spinner>

@@ -3,11 +3,13 @@ import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { NgModule } from '@angular/core';
 
 import { LazyExampleOutletComponent } from './lazy-example-outlet.component';
+import { BidiModule } from '@angular/cdk/bidi';
 
 @NgModule({
   imports: [
     NxSpinnerModule,
-    CommonModule
+    CommonModule,
+    BidiModule,
   ],
   exports: [LazyExampleOutletComponent],
   declarations: [LazyExampleOutletComponent],
