@@ -1,6 +1,7 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ContentChild } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ContentChild, ElementRef, OnDestroy } from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxActionIconDirective } from './action-icon.directive';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,7 +16,7 @@ import { NxActionIconDirective } from './action-icon.directive';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxActionComponent {
+export class NxActionComponent implements OnDestroy {
   @ContentChild(NxActionIconDirective) _iconChild: NxActionIconDirective;
 
   /** Whether this action is selected or not.  */
@@ -53,7 +54,17 @@ export class NxActionComponent {
   }
   private _expanded: boolean = false;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   static ngAcceptInputType_selected: BooleanInput;
   static ngAcceptInputType_expandable: BooleanInput;

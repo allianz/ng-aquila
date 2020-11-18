@@ -14,11 +14,13 @@ import {
   Optional,
   Output,
   ViewChild,
-  NgZone
+  NgZone,
+  AfterViewInit
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 interface Position {
   x: number;
@@ -52,7 +54,7 @@ const DEFAULT_STEP = 1;
     '[class.nx-slider--negative]': 'negative'
   }
 })
-export class NxSliderComponent implements ControlValueAccessor, OnDestroy {
+export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
 
   /** @docs-private */
   @ViewChild('handle', { static: true }) handleElement: ElementRef;
@@ -193,8 +195,15 @@ export class NxSliderComponent implements ControlValueAccessor, OnDestroy {
   /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
   @Input('nxLabelMaxFormatter') labelMaxFormatter: Function = (value) => value;
 
-  constructor(private elementRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef,
-              private _ngZone: NgZone, @Optional() private _dir: Directionality) {
+  constructor(private elementRef: ElementRef,
+              private _changeDetectorRef: ChangeDetectorRef,
+              private _ngZone: NgZone,
+              @Optional() private _dir: Directionality,
+              private _focusMonitor: FocusMonitor) {
+  }
+
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this.handleElement);
   }
 
   /** Sets the current value of the slider. */
@@ -209,6 +218,7 @@ export class NxSliderComponent implements ControlValueAccessor, OnDestroy {
 
   ngOnDestroy() {
     this.reset();
+    this._focusMonitor.stopMonitoring(this.handleElement);
   }
 
   writeValue(value: number): void {

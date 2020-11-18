@@ -7,6 +7,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { NxButtonBase } from './button-base';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +19,7 @@ import { NxButtonBase } from './button-base';
   providers: [{provide: NxTriggerButton, useExisting: NxIconButtonComponent}]
 })
 export class NxIconButtonComponent extends NxButtonBase {
-  constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef) {
-    super(changeDetectorRef, elementRef);
+  constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+    super(changeDetectorRef, elementRef, focusMonitor);
   }
 }

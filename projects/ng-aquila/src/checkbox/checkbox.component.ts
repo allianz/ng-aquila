@@ -18,6 +18,7 @@ import {
   ViewChild,
   ElementRef,
   DoCheck,
+  AfterViewInit,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -29,6 +30,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 let nextId = 0;
 
@@ -284,7 +286,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
   }
 })
 
-export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit {
+export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
   private _parentChangeSubscription: Subscription;
   private _id: string = (nextId++).toString();
   private _disabled: boolean = false;
@@ -295,6 +297,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
   /** @docs-private */
   @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper: ElementRef;
+
+  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
 
   /**
    * Id of the checkbox.
@@ -461,7 +465,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     @Optional() public checkboxGroup: NxCheckboxGroupComponent,
     @Self() @Optional() public ngControl: NgControl,
     @Optional() private _parentForm: NgForm,
-    @Optional() private _parentFormGroup: FormGroupDirective
+    @Optional() private _parentFormGroup: FormGroupDirective,
+    private _focusMonitor: FocusMonitor
   ) {
 
     if (this.ngControl) {
@@ -497,10 +502,15 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
   }
 
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._nativeInput);
+  }
+
   ngOnDestroy() {
     if (this._parentChangeSubscription) {
       this._parentChangeSubscription.unsubscribe();
     }
+    this._focusMonitor.stopMonitoring(this._nativeInput);
   }
 
   private _setIndeterminate(value: boolean) {

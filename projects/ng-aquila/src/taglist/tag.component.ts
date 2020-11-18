@@ -1,6 +1,7 @@
 import { coerceBooleanProperty, coerceNumberProperty, NumberInput, BooleanInput } from '@angular/cdk/coercion';
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ElementRef } from '@angular/core';
 import { DELETE, BACKSPACE, ENTER } from '@angular/cdk/keycodes';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'nx-tag',
@@ -13,7 +14,7 @@ import { DELETE, BACKSPACE, ENTER } from '@angular/cdk/keycodes';
     '[attr.tabindex]': 'tabindex'
   }
 })
-export class NxTagComponent {
+export class NxTagComponent implements OnDestroy {
   private _removable: boolean;
 
   /** Whether the tag is removeable. */
@@ -60,7 +61,16 @@ export class NxTagComponent {
   @Output() readonly removed: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
-    private _changeDetectorRef: ChangeDetectorRef) { }
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   /** @docs-private */
   // Emit the removed event that the parent can remove the value

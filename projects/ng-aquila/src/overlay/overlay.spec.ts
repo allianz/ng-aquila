@@ -101,6 +101,7 @@ describe('NxOverlayService', () => {
     const containerElement = overlayContainerElement.querySelector('.nx-overlay-container');
     dispatchKeyboardEvent(containerElement, 'keydown', ESCAPE, 'Escape');
     expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
+    flush();
   }));
 
   it('should close on click outside the overlay', fakeAsync(() => {

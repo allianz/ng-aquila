@@ -1,5 +1,6 @@
-import { Input, Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Input, Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, OnDestroy } from '@angular/core';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 const visibilityIcons = {
   show: 'password-show-o',
@@ -24,7 +25,7 @@ const visibilityIcons = {
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NxPasswordToggleComponent implements AfterViewInit {
+export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
 
   /** Input element using the toggle functionality. */
   @Input() control: HTMLInputElement;
@@ -51,7 +52,13 @@ export class NxPasswordToggleComponent implements AfterViewInit {
     return this._ariaLabel;
   }
 
-  constructor (private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor (
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
 
   ngAfterViewInit() {
     if (!this.control) {
@@ -60,6 +67,10 @@ export class NxPasswordToggleComponent implements AfterViewInit {
       // show the right icon according to the initial type of the input
       this._currentIcon = this.control.type === 'password' ? visibilityIcons['show'] : visibilityIcons['hide'];
     }
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   /** Toggles the type of the input. */

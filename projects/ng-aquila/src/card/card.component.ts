@@ -1,5 +1,6 @@
-import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, Attribute} from '@angular/core';
+import {Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, Attribute, ElementRef, OnDestroy} from '@angular/core';
 import {coerceBooleanProperty, BooleanInput} from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   template: '<ng-content></ng-content>',
@@ -17,7 +18,7 @@ import {coerceBooleanProperty, BooleanInput} from '@angular/cdk/coercion';
     '[attr.tabindex]': '_getTabindex()'
   }
 })
-export class NxCardComponent {
+export class NxCardComponent implements OnDestroy {
   _tabindex: string;
 
   /**
@@ -27,7 +28,7 @@ export class NxCardComponent {
    * Please use the selectable card component instead.
    *
    * @deprecated
-   * @deletion-target 10.0.0
+   * @deletion-target 11.0.0
    */
   @Input()
   set selectable(value: boolean) {
@@ -48,7 +49,7 @@ export class NxCardComponent {
    * Please use the selectable card component instead.
    *
    * @deprecated
-   * @deletion-target 10.0.0
+   * @deletion-target 11.0.0
   */
   @Input()
   set selected(value: boolean) {
@@ -70,7 +71,7 @@ export class NxCardComponent {
    * Please use the selectable card component instead.
    *
    * @deprecated
-   * @deletion-target 10.0.0
+   * @deletion-target 11.0.0
   */
   @Input()
   set disabled(value: boolean) {
@@ -92,14 +93,22 @@ export class NxCardComponent {
    * Please use the selectable card component instead.
    *
    * @deprecated
-   * @deletion-target 10.0.0
+   * @deletion-target 11.0.0
   */
   @Output() selectedChange = new EventEmitter<boolean>();
 
   constructor(
       private _changeDetectorRef: ChangeDetectorRef,
-      @Attribute('tabindex') tabindex: string) {
+      @Attribute('tabindex') tabindex: string,
+      private _elementRef: ElementRef,
+      private _focusMonitor: FocusMonitor
+  ) {
     this._tabindex = tabindex;
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   _toggleSelected(): void {

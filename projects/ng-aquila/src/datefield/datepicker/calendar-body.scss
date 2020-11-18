@@ -77,7 +77,7 @@ $item-size: nx-spacer(3m);
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-calendar-body-cell:focus {
+.nx-calendar-body-cell.cdk-keyboard-focused {
   .nx-calendar-body-cell-content {
     @include focus-style;
   }

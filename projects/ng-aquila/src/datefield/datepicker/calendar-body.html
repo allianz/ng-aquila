@@ -20,6 +20,7 @@
   </ng-container>
 
   <td *ngFor="let item of row; let colIndex = index"
+      #cell
       role="gridcell"
       class="nx-calendar-body-cell"
       [tabindex]="_isActiveCell(rowIndex, colIndex) ? 0 : -1"

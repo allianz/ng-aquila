@@ -195,10 +195,8 @@ $switcher-border-radius: nx-border-radius(m);
 }
 
 // ARIA
-:host-context([data-whatinput="keyboard"]) {
-  .nx-switcher__input:focus+.nx-switcher__label .nx-switcher__toggle {
-    @include focus-style;
-  }
+:host .nx-switcher__input.cdk-keyboard-focused + .nx-switcher__label .nx-switcher__toggle {
+  @include focus-style;
 }
 
 // DISABLED

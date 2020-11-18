@@ -41,7 +41,7 @@ $icon-size: nx-spacer(m);
   cursor: not-allowed;
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-datepicker-toggle-button:focus {
+.nx-datepicker-toggle-button.cdk-keyboard-focused {
   border-radius: nx-border-radius(s);
   @include focus-style;
 }

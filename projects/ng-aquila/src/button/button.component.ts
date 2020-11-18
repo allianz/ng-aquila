@@ -6,6 +6,7 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 import { NxButtonBase } from './button-base';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   templateUrl: './button.html',
@@ -18,7 +19,7 @@ import { NxButtonBase } from './button-base';
 })
 
 export class NxButtonComponent extends NxButtonBase {
-  constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef) {
-    super(changeDetectorRef, elementRef);
+  constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+    super(changeDetectorRef, elementRef, focusMonitor);
   }
 }

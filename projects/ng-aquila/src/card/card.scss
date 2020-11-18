@@ -39,7 +39,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]):focus {
+:host.cdk-keyboard-focused {
   @include focus-style;
 }
 

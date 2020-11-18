@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -369,6 +369,7 @@ describe('NxFileUploaderComponent', () => {
 
       dispatchKeyboardEvent(fileRowList[0], 'keydown', TAB);
       expect(document.activeElement).toEqual(fileRowList[0]);
+      flush();
     }));
   });
 

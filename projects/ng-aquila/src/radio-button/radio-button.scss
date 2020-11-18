@@ -157,10 +157,8 @@ $radio-border-radius: 50%;
 }
 
 // focus style
-:host-context([data-whatinput="keyboard"]) {
-  .nx-radio__input:focus + .nx-radio__label .nx-radio__circle {
-    @include focus-style;
-  }
+.nx-radio__input.cdk-keyboard-focused + .nx-radio__label .nx-radio__circle {
+  @include focus-style;
 }
 
 // hover styling

@@ -2,7 +2,7 @@ import {
   Component,
   EventEmitter,
   forwardRef,
-  Input, Output, ViewChild, Optional, OnInit, OnDestroy, AfterViewInit, HostListener, ChangeDetectorRef, ChangeDetectionStrategy
+  Input, Output, ViewChild, Optional, OnInit, OnDestroy, AfterViewInit, HostListener, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
@@ -11,6 +11,7 @@ import { ToggleButton } from './toggle-button';
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 export class ToggleChangeEvent {
   /** A toggle button */
@@ -54,6 +55,8 @@ export class NxCircleToggleComponent extends ToggleButton implements
 OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
 
   private _id: string = `toggle-button-${nextId++}`;
+
+  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
 
   /** @docs-private */
   inGroup: boolean = false;
@@ -276,8 +279,12 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   private onChangeCallback = (checked: boolean) => { };
   private onTouchedCallback = () => { };
 
-  constructor(/** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent,
-    private _checkedDispatcher: UniqueSelectionDispatcher, private _changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent,
+    private _checkedDispatcher: UniqueSelectionDispatcher,
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
+  ) {
     super();
 
     if (this.toggleGroup) {
@@ -301,11 +308,14 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
         this.id = this.toggleGroup.id + `-button-${nextId++}`;
       });
     }
+
+    this._focusMonitor.monitor(this._nativeInput);
   }
 
   ngOnDestroy() {
     // function returned by the listener
     this._removeUniqueSelectionListener();
+    this._focusMonitor.stopMonitoring(this._nativeInput);
   }
 
   /** @docs-private */

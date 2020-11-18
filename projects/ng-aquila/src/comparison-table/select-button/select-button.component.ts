@@ -4,6 +4,7 @@ import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableCell } from '../cell/cell.component';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -81,9 +82,10 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     _changeDetectorRef: ChangeDetectorRef,
     _elementRef: ElementRef,
     public _cell: NxComparisonTableCell,
-    private _table: NxComparisonTableBase
+    private _table: NxComparisonTableBase,
+    _focusMonitor: FocusMonitor
   ) {
-    super(_changeDetectorRef, _elementRef);
+    super(_changeDetectorRef, _elementRef, _focusMonitor);
     this._setClassNames();
 
     this._cell.indexChange.pipe(

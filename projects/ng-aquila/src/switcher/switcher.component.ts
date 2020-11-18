@@ -9,11 +9,14 @@ import {
   Self,
   DoCheck,
   ViewChild,
-  ElementRef
+  ElementRef,
+  AfterViewInit,
+  OnDestroy
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 let nextId = 0;
 /** Options for placement of the label */
@@ -42,7 +45,7 @@ export type LABEL_SIZE = 'small' | 'large';
   }
 })
 
-export class NxSwitcherComponent implements ControlValueAccessor, DoCheck {
+export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
 
   private _id: string = `nx-switcher-${nextId++}`;
   /** @docs-private */
@@ -50,6 +53,8 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck {
 
   /** @docs-private */
   @ViewChild('switcherLabelWrapper', { static: true }) _switcherLabelWrapper: ElementRef;
+
+  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
 
   /** Sets the id of the switcher */
   @Input()
@@ -151,13 +156,22 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck {
               @Optional() @Self() public ngControl: NgControl,
               private _errorStateMatcher: ErrorStateMatcher,
               @Optional() private _parentForm: NgForm,
-              @Optional() private _parentFormGroup: FormGroupDirective
+              @Optional() private _parentFormGroup: FormGroupDirective,
+              private _focusMonitor: FocusMonitor
   ) {
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
       // the `providers` to avoid running into a circular import.
       this.ngControl.valueAccessor = this;
     }
+  }
+
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._nativeInput);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._nativeInput);
   }
 
   /** Allows to toggle between the states */

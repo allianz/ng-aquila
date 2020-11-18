@@ -1,8 +1,10 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Inject,
   Input,
@@ -22,6 +24,7 @@ import { NxDatepickerIntl } from './datepicker-intl';
 import { NxMonthViewComponent } from './month-view';
 import { NxMultiYearViewComponent } from './multi-year-view';
 import { NxYearViewComponent } from './year-view';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
  * @license
@@ -47,7 +50,7 @@ const yearsPerPage = 20;
   exportAs: 'nxCalendar',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NxCalendarComponent<D> implements AfterContentInit, OnDestroy, OnChanges {
+export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {
   private _intlChanges: Subscription;
 
   /** A date representing the period (month or year) to start the calendar in. */
@@ -113,6 +116,10 @@ export class NxCalendarComponent<D> implements AfterContentInit, OnDestroy, OnCh
 
   /** Reference to the current multi-year view component. */
   @ViewChild(NxMultiYearViewComponent) multiYearView: NxMultiYearViewComponent<D>;
+
+  @ViewChild('previousButton') _previousButton: ElementRef<HTMLElement>;
+  @ViewChild('nextButton') _nextButton: ElementRef<HTMLElement>;
+  @ViewChild('changeViewButton') _changeViewButton: ElementRef<HTMLElement>;
   /**
    * The current active date. This determines which time period is shown and which date is
    * highlighted when using keyboard navigation.
@@ -173,7 +180,8 @@ export class NxCalendarComponent<D> implements AfterContentInit, OnDestroy, OnCh
               @Optional() private _dateAdapter: NxDateAdapter<D>,
               @Optional() private _dir: Directionality,
               @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
-              changeDetectorRef: ChangeDetectorRef) {
+              changeDetectorRef: ChangeDetectorRef,
+              private _focusMonitor: FocusMonitor) {
 
     if (!this._dateAdapter) {
       throw createMissingDateImplError('DateAdapter');
@@ -191,8 +199,17 @@ export class NxCalendarComponent<D> implements AfterContentInit, OnDestroy, OnCh
     this._currentView = this.startView;
   }
 
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._previousButton);
+    this._focusMonitor.monitor(this._nextButton);
+    this._focusMonitor.monitor(this._changeViewButton);
+  }
+
   ngOnDestroy() {
     this._intlChanges.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._previousButton);
+    this._focusMonitor.stopMonitoring(this._nextButton);
+    this._focusMonitor.stopMonitoring(this._changeViewButton);
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -78,11 +78,8 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
       inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
     cursor: grabbing;
   }
-}
 
-:host-context([data-whatinput="keyboard"]) {
-
-  .nx-slider__handle:focus {
+  &.cdk-keyboard-focused {
     @include var(border-color, slider-handle-focus-border-color);
     @include focus-style;
   }

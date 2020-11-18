@@ -6,6 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +15,10 @@ import {
   Input,
   Output,
   NgZone,
+  ViewChildren,
+  QueryList,
+  AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 import {take} from 'rxjs/operators';
 
@@ -45,7 +50,7 @@ export class NxCalendarCell {
   exportAs: 'nxCalendarBody',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxCalendarBodyComponent {
+export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
   /** The label for the table. (e.g. "Jan 2017"). */
   @Input() label: string;
 
@@ -82,7 +87,31 @@ export class NxCalendarBodyComponent {
   /** Emits when a new value out of followingItems is selected. */
   @Output() readonly selectedValueChangeToFollowing: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor(private _elementRef: ElementRef, private _ngZone: NgZone) { }
+  @ViewChildren('cell') _cells: QueryList<ElementRef<HTMLElement>>;
+
+  /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
+  private _cellsPrevious: QueryList<ElementRef<HTMLElement>>;
+
+  constructor(
+    private _elementRef: ElementRef,
+    private _ngZone: NgZone,
+    private _focusMonitor: FocusMonitor
+  ) { }
+
+  ngAfterViewInit() {
+    this._cells.forEach(cell => this._focusMonitor.monitor(cell));
+    this._cellsPrevious = this._cells;
+
+    this._cells.changes.subscribe(changes => {
+      this._cellsPrevious.forEach(cell => this._focusMonitor.stopMonitoring(cell));
+      this._cellsPrevious = this._cells;
+      this._cells.forEach(cell => this._focusMonitor.monitor(cell));
+    });
+  }
+
+  ngOnDestroy() {
+    this._cells.forEach(cell => this._focusMonitor.stopMonitoring(cell));
+  }
 
   _previousCellClicked(cell: NxCalendarCell): void {
     if (!this.allowDisabledSelection && !cell.enabled) {

@@ -32,10 +32,8 @@ $border-size: nx-border-size(m);
   }
 }
 
-:host-context([data-whatinput="keyboard"]) {
-  &:focus {
-    @include focus-style;
-  }
+:host.cdk-keyboard-focused {
+  @include focus-style;
 }
 
 .nx-tag__close-icon {

@@ -296,11 +296,7 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
 }
 
 // focus style
-:host-context([data-whatinput="keyboard"]) {
-  .nx-radio-toggle__input:focus + .nx-radio-toggle__label-container {
-    @include focus-style;
-    z-index: 1; // otherwise the right box shadown is not shown
-  }
+.nx-radio-toggle__input.cdk-keyboard-focused + .nx-radio-toggle__label-container {
+  @include focus-style;
+  z-index: 1; // otherwise the right box shadown is not shown
 }
-
-

@@ -73,6 +73,6 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-video__play-button:focus {
+.nx-video__play-button.cdk-keyboard-focused {
   @include focus-style;
 }

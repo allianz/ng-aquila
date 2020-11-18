@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { NxContextMenuComponent } from './context-menu.component';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
@@ -69,7 +70,8 @@ export class NxContextMenuItemComponent implements OnDestroy {
     @Inject(DOCUMENT) document: any,
     private _changeDetectorRef: ChangeDetectorRef,
     @Inject(NxContextMenuComponent)
-    @Optional() private _parentMenu: NxContextMenuComponent
+    @Optional() private _parentMenu: NxContextMenuComponent,
+    private _focusMonitor: FocusMonitor
   ) {
 
     if (_parentMenu && _parentMenu.addItem) {
@@ -77,6 +79,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     }
 
     this._document = document;
+    this._focusMonitor.monitor(this._elementRef);
   }
 
   /** Focuses this context menu item. */
@@ -90,6 +93,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     }
 
     this._hovered.complete();
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   /** Used to set the `tabindex`. */

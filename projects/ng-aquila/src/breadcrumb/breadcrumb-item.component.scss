@@ -1,29 +1,29 @@
 @import "../shared-styles/index";
 
 :host {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    cursor: auto;
-    @include var(color, breadcrumb-color);
-    @include type-style(breadcrumb);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: auto;
+  @include var(color, breadcrumb-color);
+  @include type-style(breadcrumb);
 }
 
 .nx-breadcrumb-item__chevron {
-    margin-left: nx-spacer(3xs);
+  margin-left: nx-spacer(3xs);
 
-    :host-context([dir="rtl"]) & {
-        margin-left: initial;
-        margin-right: nx-spacer(3xs);
-        transform: rotateZ(180deg);
-    }
+  :host-context([dir="rtl"]) & {
+    margin-left: initial;
+    margin-right: nx-spacer(3xs);
+    transform: rotateZ(180deg);
+  }
 }
 
 .nx-breadcrumb-item__text {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-:host-context([data-whatinput="keyboard"]):focus .nx-breadcrumb-item__text {
-    @include focus-style();
-    border-radius: nx-border-radius(xl);
+:host.cdk-keyboard-focused .nx-breadcrumb-item__text {
+  @include focus-style();
+  border-radius: nx-border-radius(xl);
 }

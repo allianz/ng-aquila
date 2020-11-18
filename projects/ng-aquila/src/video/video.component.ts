@@ -1,5 +1,6 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -10,9 +11,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 
 // note that this currently only supports youtube videos
-export class NxVideoComponent {
+export class NxVideoComponent implements AfterViewInit, OnDestroy {
 
   private _videoId: string = null;
+
+  @ViewChild('playButton') _playButton: ElementRef;
 
   /** Sets the id of the YouTube video. */
   @Input('nxVideoId')
@@ -109,7 +112,19 @@ export class NxVideoComponent {
   /** @docs-private */
   showPlayer = false;
 
-  constructor(private sanitizer: DomSanitizer, private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
+  ) {}
+
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._playButton);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._playButton);
+  }
 
   /** @docs-private */
   select(): void {

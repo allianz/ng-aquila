@@ -34,17 +34,14 @@
 }
 
 // ARIA
-:host-context([data-whatinput="keyboard"]) {
-  .nx-circle-toggle__input:focus + .nx-circle-toggle__label {
+:host .nx-circle-toggle__input.cdk-keyboard-focused + .nx-circle-toggle__label {
+  ::ng-deep .nx-toggle-circle__icon-wrapper,
+  ::ng-deep .nx-toggle-circle__check-focus {
+    @include focus-style;
+  }
 
-    ::ng-deep .nx-toggle-circle__icon-wrapper,
-    ::ng-deep .nx-toggle-circle__check-focus {
-      @include focus-style;
-    }
-
-    ::ng-deep nx-mobile-toggle-button {
-      @include focus-style;
-      z-index: 1;
-    }
+  ::ng-deep nx-mobile-toggle-button {
+    @include focus-style;
+    z-index: 1;
   }
 }

@@ -12,7 +12,7 @@
   padding-bottom: nx-spacer(s);
 }
 
-.nx-autocomplete-option {
+:host .nx-autocomplete-option {
   @include dropdown-overlay__option;
   padding-left: nx-spacer(2m);
 
@@ -30,18 +30,20 @@
       }
     }
   }
+
+  // keyboard focus styling
+  &.nx-active {
+    .nx-autocomplete-option__label {
+      border-radius: nx-border-radius(s);
+      @include focus-style;
+    }
+  }
+
   :host-context([dir="rtl"]) & {
     padding-right: nx-spacer(2m);
   }
 }
 
-.nx-autocomplete-option__label {
+:host .nx-autocomplete-option__label {
   @include dropdown-overlay__option-label;
-}
-
-:host-context([data-whatinput="keyboard"]) .nx-autocomplete-option.nx-active {
-  .nx-autocomplete-option__label {
-    border-radius: nx-border-radius(s);
-    @include focus-style;
-  }
 }

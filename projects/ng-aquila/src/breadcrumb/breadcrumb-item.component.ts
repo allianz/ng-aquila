@@ -1,4 +1,5 @@
-import { Component, Renderer2, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,9 +11,19 @@ import { Component, Renderer2, ElementRef, ChangeDetectionStrategy } from '@angu
     'class': 'nx-breadcrumb-item',
   }
 })
-export class NxBreadcrumbItemComponent {
+export class NxBreadcrumbItemComponent implements OnDestroy {
 
-  constructor(private _renderer: Renderer2, private _elemRef: ElementRef) { }
+  constructor(
+    private _renderer: Renderer2,
+    private _elemRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elemRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elemRef);
+  }
 
   /**@docs-private */
   setAsLast() {

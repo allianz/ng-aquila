@@ -1,5 +1,6 @@
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, OnDestroy } from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -13,7 +14,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
   },
   providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
 })
-export class NxPlainButtonComponent {
+export class NxPlainButtonComponent implements OnDestroy {
 
   private _classNames: string;
 
@@ -33,5 +34,15 @@ export class NxPlainButtonComponent {
     return this._classNames;
   }
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 }

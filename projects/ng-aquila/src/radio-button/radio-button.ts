@@ -16,7 +16,8 @@ import {
   QueryList,
   Self,
   ViewChild,
-  DoCheck
+  DoCheck,
+  AfterViewInit
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -27,6 +28,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {
@@ -276,9 +278,10 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     '[attr.aria-invalid]': '_controlInvalid() || null',
   }
 })
-export class NxRadioComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
   /** @docs-private */
   @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper: ElementRef;
+  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
   private _parentChangeSubscription: Subscription;
 
   private _id: string = `nx-radio-${nextId++}`;
@@ -425,7 +428,8 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, OnDestroy
   }
 
   constructor(@Optional() public radioGroup: NxRadioGroupComponent,
-              private _changeDetectorRef: ChangeDetectorRef) {}
+              private _changeDetectorRef: ChangeDetectorRef,
+              private _focusMonitor: FocusMonitor) {}
 
   ngOnInit() {
     if (this.radioGroup) {
@@ -442,10 +446,15 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, OnDestroy
     }
   }
 
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._nativeInput);
+  }
+
   ngOnDestroy() {
     if (this._parentChangeSubscription) {
       this._parentChangeSubscription.unsubscribe();
     }
+    this._focusMonitor.stopMonitoring(this._nativeInput);
   }
 
   writeValue(value: any): void {

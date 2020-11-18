@@ -33,7 +33,7 @@
 }
 
 // focus styling
-:host-context([data-whatinput="keyboard"])::ng-deep a:focus {
+:host.cdk-keyboard-focused ::ng-deep a {
   border-radius: nx-border-radius(s);
   outline: 0;
   @include focus-style;

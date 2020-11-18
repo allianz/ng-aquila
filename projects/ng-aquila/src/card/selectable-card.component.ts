@@ -1,16 +1,19 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   ContentChildren,
   DoCheck,
+  ElementRef,
   EventEmitter,
-  forwardRef,
   Input,
+  OnDestroy,
   Optional,
   Output,
   QueryList,
   Self,
+  ViewChild,
 } from '@angular/core';
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -26,6 +29,7 @@ import {
 } from '@angular/forms';
 import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 let nextId = 0;
 
@@ -44,7 +48,7 @@ let nextId = 0;
   }
 })
 
-export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit {
+export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
   private _id: string = (nextId++).toString();
   private _checked = false;
   private _disabled: boolean = false;
@@ -58,6 +62,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
   /** @docs-private */
   @ContentChildren(NxErrorComponent) _errorList: QueryList<NxErrorComponent>;
+  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
 
   /** @docs-private */
   errorState: boolean = false;
@@ -183,13 +188,18 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
               private _errorStateMatcher: ErrorStateMatcher,
               @Self() @Optional() public ngControl: NgControl,
               @Optional() private _parentForm: NgForm,
-              @Optional() private _parentFormGroup: FormGroupDirective
+              @Optional() private _parentFormGroup: FormGroupDirective,
+              private _focusMonitor: FocusMonitor
   ) {
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
       // the `providers` to avoid running into a circular import.
       this.ngControl.valueAccessor = this;
     }
+  }
+
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._nativeInput);
   }
 
   ngAfterContentInit() {
@@ -203,6 +213,10 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     this._errorListIds = this._errorList.map((errorItem: NxErrorComponent) => {
       return errorItem.id;
     }).join(' ');
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._nativeInput);
   }
 
   /** @docs-private */

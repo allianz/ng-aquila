@@ -4,11 +4,12 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inject, Input, Renderer2,
-  OnDestroy, HostListener
+  OnDestroy, HostListener, AfterViewInit
 } from '@angular/core';
 
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 import { NxRadioToggleComponent } from './radio-toggle.component';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** @docs-private */
 export class NxRadioToggleButtonChange {
@@ -33,7 +34,7 @@ export class NxRadioToggleButtonChange {
     '[attr.aria-invalid]': '_controlInvalid() || null'
   }
 })
-export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseComponent implements OnDestroy {
+export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseComponent implements AfterViewInit, OnDestroy {
 
   /** @docs-private */
   // emits when the button is checked to notify the group
@@ -80,7 +81,8 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     /** @docs-private */
     renderer: Renderer2,
     private _changeDetectorRef: ChangeDetectorRef,
-    private _toggleDispatcher: UniqueSelectionDispatcher) {
+    private _toggleDispatcher: UniqueSelectionDispatcher,
+    private _focusMonitor: FocusMonitor) {
     super(renderer);
 
     this._removeUniqueSelectionListener = this._toggleDispatcher.listen((id: string, radioToggleId: string) => {
@@ -96,10 +98,15 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     });
   }
 
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this.toggleInput);
+  }
+
   ngOnDestroy() {
     this._removeUniqueSelectionListener();
     this._destroyed.next();
     this._destroyed.complete();
+    this._focusMonitor.stopMonitoring(this.toggleInput);
   }
 
   /** @docs-private */

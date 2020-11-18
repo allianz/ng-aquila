@@ -59,7 +59,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]):focus {
+:host.cdk-keyboard-focused {
   @include focus-style-inset;
   border-radius: 2 * nx-border-radius(s);
 }

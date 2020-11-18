@@ -1,4 +1,5 @@
-import { ElementRef, ChangeDetectorRef, HostBinding, Directive } from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { ElementRef, ChangeDetectorRef, HostBinding, Directive, OnDestroy } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
@@ -12,7 +13,7 @@ const DEFAULT_TYPE = 'primary';
 
 /** @docs-private */
 @Directive()
-export class NxButtonBase implements NxTriggerButton {
+export class NxButtonBase implements NxTriggerButton, OnDestroy {
   private _classNames: string;
 
   /** @docs-private */
@@ -54,7 +55,17 @@ export class NxButtonBase implements NxTriggerButton {
   @HostBinding('class.nx-button--active')
   active: boolean = false;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef) { }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   public set classNames(value: string) {
     if (this._classNames === value) {

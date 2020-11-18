@@ -1,5 +1,6 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, Host, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Host, OnDestroy } from '@angular/core';
 import { merge, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -31,7 +32,9 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
 
   constructor(
     /** @docs-private */ @Host() public panel: NxExpansionPanelComponent,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
   ) {
     this._parentChangeSubscription = merge(
       panel.opened,
@@ -40,10 +43,12 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
     )
     .subscribe(() => this._changeDetectorRef.markForCheck());
 
+    this._focusMonitor.monitor(this._elementRef);
   }
 
   ngOnDestroy() {
     this._parentChangeSubscription.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   /** @docs-private */

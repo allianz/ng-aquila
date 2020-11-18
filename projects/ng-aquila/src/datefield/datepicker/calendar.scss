@@ -64,9 +64,9 @@ $calendar-content-width: 7 * $item-size;
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-calendar-change-view-button:focus,
-:host-context([data-whatinput="keyboard"]) .nx-calendar-previous-button:focus,
-:host-context([data-whatinput="keyboard"]) .nx-calendar-next-button:focus {
+.nx-calendar-change-view-button.cdk-keyboard-focused,
+.nx-calendar-previous-button.cdk-keyboard-focused,
+.nx-calendar-next-button.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
 }

@@ -107,8 +107,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]) input:focus + label,
-:host-context([data-whatinput="keyboard"]) :host:focus label {
+input.cdk-keyboard-focused + label {
   @include focus-style;
 }
 

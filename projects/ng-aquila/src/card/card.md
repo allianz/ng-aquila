@@ -7,7 +7,7 @@ stable: done
 ---
 <div class="docs-deprecation-warning">
   <h3>Deprecation warning</h3>
-  Note that the following properties of the card are deprecated and will be removed in v10:
+  Note that the following properties of the card are deprecated and will be removed in v11:
   <ul class="nx-margin-left-3m">
      <li>selectable</li>
      <li>selected</li>

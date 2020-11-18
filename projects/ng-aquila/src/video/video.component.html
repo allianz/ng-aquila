@@ -3,7 +3,8 @@
 
     <div *ngIf="!showPlayer">
 
-      <button class="nx-video__play-button"
+      <button #playButton
+              class="nx-video__play-button"
               (click)="select()"
               [attr.aria-label]="playButtonAriaLabel"
               (keydown.enter)="select()">

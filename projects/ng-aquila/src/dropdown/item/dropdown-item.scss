@@ -98,7 +98,7 @@ nx-checkbox {
 
 // focus style
 /* clean-css ignore:start */
-:host-context([data-whatinput="keyboard"] .nx-dropdown__panel-body.is-stable).nx-dropdown-item--active {
+:host-context(.nx-dropdown__panel-body.is-stable).nx-dropdown-item--active {
   .nx-dropdown-results__option .nx-dropdown-results__option-label {
     border-radius: nx-border-radius(s);
     @include focus-style;
@@ -108,7 +108,7 @@ nx-checkbox {
 
 // focus style - multiselect dropdown item
 /* clean-css ignore:start */
-:host-context([data-whatinput="keyboard"] .nx-dropdown__panel-body.is-stable).nx-multiselect.nx-dropdown-item--active {
+:host-context(.nx-dropdown__panel-body.is-stable).nx-multiselect.nx-dropdown-item--active {
   .nx-dropdown-results__option .nx-dropdown-results__option-label {
     box-shadow: none;
 

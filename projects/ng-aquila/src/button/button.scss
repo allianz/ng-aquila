@@ -77,11 +77,9 @@ $button-margin-bottom: nx-spacer(m);
   }
 }
 
-// This will enable focus styles for keyboard based inputs only.
-// Ideally we would use :focus-visible here but support is not ideally yet.
-// Instead we have to ensure that user's install what-input to get the keyboard flags.
-:host-context([data-whatinput="keyboard"]):focus,
-:host-context([data-whatinput="keyboard"]).nx-button--negative:focus {
+// focus styles
+:host.cdk-keyboard-focused,
+:host.cdk-keyboard-focused.nx-button--negative {
   @include focus-style;
 }
 

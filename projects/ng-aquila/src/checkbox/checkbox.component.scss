@@ -206,12 +206,9 @@ $checkbox-size: nx-spacer(m);
 }
 
 // focus styles
-:host-context([data-whatinput="keyboard"]) {
-  .nx-checkbox__input:focus + .nx-checkbox__label .nx-checkbox__control {
-    @include focus-style;
-  }
+.nx-checkbox__input.cdk-keyboard-focused + .nx-checkbox__label .nx-checkbox__control {
+  @include focus-style;
 }
-
 
 // high contrast mode
 // sass-lint:disable no-vendor-prefixes

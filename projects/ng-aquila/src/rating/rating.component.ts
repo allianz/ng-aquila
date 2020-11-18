@@ -1,6 +1,7 @@
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -8,12 +9,14 @@ import {
   EventEmitter,
   forwardRef,
   Input,
+  OnDestroy,
   Output,
   QueryList,
   ViewChildren
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'nx-rating',
@@ -32,7 +35,7 @@ import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput 
     '[class.nx-rating--disabled]': 'disabled',
   }
 })
-export class NxRatingComponent implements ControlValueAccessor {
+export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
 
   private _value: number = 0;
   /** Sets the selected rating 1 - 5. */
@@ -113,7 +116,18 @@ export class NxRatingComponent implements ControlValueAccessor {
   private onTouchedCallback = () => {};
   private onChangeCallback = (option: any) => {};
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
+  ) {}
+
+  ngAfterViewInit() {
+    this.icons.forEach(icon => this._focusMonitor.monitor(icon));
+  }
+
+  ngOnDestroy() {
+    this.icons.forEach(icon => this._focusMonitor.stopMonitoring(icon));
+  }
 
   /** Whether the given rating is selected. */
   isSelected(index: number) {
@@ -143,13 +157,13 @@ export class NxRatingComponent implements ControlValueAccessor {
     if (keyCode === RIGHT_ARROW) {
       this.value = Math.min(this.value + 1, 5);
       const elementRef: ElementRef = this.icons.toArray()[this.value - 1];
-      elementRef.nativeElement.focus();
+      this._focusMonitor.focusVia(elementRef, 'keyboard');
     }
 
     if (keyCode === LEFT_ARROW) {
       this.value = Math.max(this.value - 1, 1);
       const elementRef: ElementRef = this.icons.toArray()[this.value - 1];
-      elementRef.nativeElement.focus();
+      this._focusMonitor.focusVia(elementRef, 'keyboard');
     }
   }
 

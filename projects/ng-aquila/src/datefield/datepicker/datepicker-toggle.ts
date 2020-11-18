@@ -20,12 +20,16 @@ import {
   SimpleChanges,
   Optional,
   Inject,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
 } from '@angular/core';
 import { merge, of as observableOf, Subscription, Subject } from 'rxjs';
 
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxDatepickerComponent, DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from './datepicker.component';
 import { takeUntil } from 'rxjs/operators';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** Can be used to override the icon of a `nxDatepickerToggle`. */
 @Directive({
@@ -46,7 +50,7 @@ export class NxDatepickerToggleIconComponent {}
   exportAs: 'nxDatepickerToggle',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxDatepickerToggleComponent<D> implements AfterContentInit, OnChanges, OnDestroy {
+export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
   private _stateChanges = Subscription.EMPTY;
 
   private _disabled: boolean;
@@ -55,6 +59,8 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, OnChang
 
   /** Custom icon set by the consumer. */
   @ContentChild(NxDatepickerToggleIconComponent) _customIcon: NxDatepickerToggleIconComponent;
+
+  @ViewChild('toggleButton') _toggleButton: ElementRef<HTMLElement>;
 
   /** Datepicker instance that the button will toggle. */
   @Input('for')
@@ -100,16 +106,24 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, OnChang
     return 0;
   }
 
-  constructor(public _intl: NxDatepickerIntl, private _changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions) {
-      if (this._defaultOptions && this._defaultOptions.changes) {
-        this._defaultOptions.changes.pipe(
-          takeUntil(this._destroyed)
-        ).subscribe(() => {
-          this._changeDetectorRef.markForCheck();
-        });
-      }
+  constructor(
+    public _intl: NxDatepickerIntl,
+    private _changeDetectorRef: ChangeDetectorRef,
+    @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions,
+    private _focusMonitor: FocusMonitor
+  ) {
+    if (this._defaultOptions && this._defaultOptions.changes) {
+      this._defaultOptions.changes.pipe(
+        takeUntil(this._destroyed)
+      ).subscribe(() => {
+        this._changeDetectorRef.markForCheck();
+      });
     }
+  }
+
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._toggleButton);
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.datepicker) {
@@ -121,6 +135,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, OnChang
     this._stateChanges.unsubscribe();
     this._destroyed.next();
     this._destroyed.complete();
+    this._focusMonitor.stopMonitoring(this._toggleButton);
   }
 
   ngAfterContentInit() {

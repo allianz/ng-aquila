@@ -190,7 +190,7 @@ $mobile-header-padding: nx-spacer(s);
 }
 
 // a11y styles
-:host-context([data-whatinput="keyboard"]):focus {
+:host.cdk-keyboard-focused {
   .nx-expansion-panel__header-content {
     @include focus-style;
     z-index: 1;     // otherwise top border of next panel is displayed in focused element

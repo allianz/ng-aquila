@@ -1,3 +1,4 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, ElementRef, ChangeDetectorRef, Optional, Host, ChangeDetectionStrategy } from '@angular/core';
 import { NxButtonBase } from '@aposin/ng-aquila/button';
 
@@ -21,9 +22,10 @@ export class NxSidebarToggleComponent extends NxButtonBase {
 
   constructor(_changeDetectorRef: ChangeDetectorRef,
               _elementRef: ElementRef,
+              _focusMonitor: FocusMonitor,
               @Optional() @Host() private _sidebar: NxSidebarComponent) {
 
-    super(_changeDetectorRef, _elementRef);
+    super(_changeDetectorRef, _elementRef, _focusMonitor);
     this.classNames = 'tertiary small-medium';
   }
 
