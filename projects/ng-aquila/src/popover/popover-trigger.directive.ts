@@ -347,6 +347,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       }
 
       overlayState.scrollStrategy.enable();
+      overlayState.direction = this._dir.value || 'ltr';
 
       if (this._modal) {
         overlayState.hasBackdrop = true;

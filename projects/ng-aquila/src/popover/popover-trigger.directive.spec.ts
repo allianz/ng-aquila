@@ -67,7 +67,8 @@ describe('NxPopoverTriggerDirective', () => {
         PopoverFallBackComponent,
         ManualTrigger,
         ClickOnDocument,
-        ScrollablePopover
+        ScrollablePopover,
+        PopoverWithinRTLContainer,
       ]
     }).compileComponents();
   }));
@@ -553,6 +554,24 @@ describe('NxPopoverTriggerDirective', () => {
       });
     });
   });
+
+  describe('directionality of overlay', () => {
+    it('should be set to ltr by default', fakeAsync(() => {
+      createTestComponent(PopoverHoverComponent);
+      click();
+      fixture.detectChanges();
+      const direction = (triggerInstance as any).overlayRef.getDirection();
+      expect(direction).toBe('ltr');
+    }));
+
+    it('should be set to rtl if container direction is rtl', fakeAsync(() => {
+      createTestComponent(PopoverWithinRTLContainer);
+      click();
+      fixture.detectChanges();
+      const direction = (triggerInstance as any).overlayRef.getDirection();
+      expect(direction).toBe('rtl');
+    }));
+  });
 });
 
 @Component({
@@ -733,3 +752,21 @@ class ClickOnDocument extends PopoverTest {
       </nx-popover>`
 })
 class ScrollablePopover extends PopoverTest {}
+
+@Component({
+  template: `
+  <div [dir]="direction">
+  <button [nxPopoverTriggerFor]="popoverHover"
+  nxPopoverDirection="right"
+  nxPopoverTrigger="click"
+  [closeOnClickOutside]="closable">
+  Directionality
+  </button>
+</div>
+
+<nx-popover #popoverHover>
+</nx-popover>`
+})
+class PopoverWithinRTLContainer extends PopoverTest {
+  direction = 'rtl';
+}
