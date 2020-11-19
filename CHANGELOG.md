@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.5.0](https://github.com/aposin/ng-aquila/compare/v10.4.1...v10.5.0) (2020-11-19)
+
+
+### Bug Fixes
+
+* **comparison-table:** use clip-path for sticky behaviour ([e812ccd](https://github.com/aposin/ng-aquila/commit/e812ccd5195805f33f2b4e0f0e7af7664f92dbf2))
+* **popover:** proper rtl positioning ([e09a7cd](https://github.com/aposin/ng-aquila/commit/e09a7cd276e6dd2877ba73c1cced3c9584a371d4))
+
+
+### Features
+
+* **various:** use CDK FocusMonitor for keyboard focus style ([dfc2e79](https://github.com/aposin/ng-aquila/commit/dfc2e79a0699de0824fabe95e3fd870bda53ecf0))
+
+
+
 ## [10.4.1](https://github.com/aposin/ng-aquila/compare/v10.4.0...v10.4.1) (2020-11-11)
 
 
