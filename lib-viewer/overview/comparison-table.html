@@ -1,15 +1,3 @@
-<h3 id="mandatory-setup" class="docs-markdown--h3">Mandatory setup</h3>
-<p class="docs-markdown--p">In order to get the <strong>correct sticky behaviour of the header row, you have to set the background color of the plain header cell to the one of the surrounding container.</strong> Please check the css of the following examples and the code snipped below.</p>
-<pre><code class="language-scss"><span class="hljs-selector-class">.container-around-comparison-table</span> {
-  <span class="hljs-attribute">background-color</span>: &lt;background-color&gt;;
-}
-
-<span class="hljs-comment">// Set background color for sticky placeholder cell in header</span>
-nx-comparison-<span class="hljs-selector-tag">table</span> ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
-  background-color: &lt;background-color&gt;;
-}
-</code></pre>
-<p class="docs-markdown--p">The sticky behaviour is currently not supported for Safari and IE.</p>
 <h3 id="notes-about-the-usage-of-the-component" class="docs-markdown--h3">Notes about the usage of the component</h3>
 <p class="docs-markdown--p">It is recommended to use the comparison table with a <strong>maximum of 5 products</strong>.</p>
 <p class="docs-markdown--p">The footer cells are not displayed on mobile. Therefore please <strong>do not put any important content in the footer</strong>.</p>
