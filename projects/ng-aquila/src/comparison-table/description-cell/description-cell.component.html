@@ -11,10 +11,12 @@
   </ng-container>
 
   <ng-container *ngIf="_table.viewType === 'mobile'">
-    <th class="nx-comparison-table__description-cell"
+    <th #mobileCell
+        class="nx-comparison-table__description-cell"
         [class.is-intersection-column]="_row._isIntersectionRow()"
         scope="col"
-        [attr.id]="id">
+        [attr.id]="id"
+        [ngStyle]="{ 'clip-path': 'inset(' + _getMobileClipPathInset() + ')' }">
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </th>
   </ng-container>

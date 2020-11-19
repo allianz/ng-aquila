@@ -1,8 +1,9 @@
-import { Component, ViewChild, TemplateRef, Input } from '@angular/core';
+import { Component, ViewChild, TemplateRef, Input, ElementRef, Optional } from '@angular/core';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxToggleSectionBase } from './toggle-section-base';
 import { NxToggleSectionAnimations } from './toggle-section-animations';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { Directionality } from '@angular/cdk/bidi';
 
 let nextId = 0;
 
@@ -15,6 +16,7 @@ let nextId = 0;
 export class NxToggleSectionHeaderComponent {
 
   @ViewChild('content', { static: true }) _content: TemplateRef<any>;
+  @ViewChild('mobileCell') _mobileCell: ElementRef;
 
   private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
 
@@ -50,5 +52,13 @@ export class NxToggleSectionHeaderComponent {
         $event.preventDefault();
       }
     }
+  }
+
+  _getMobileClipPathInset(): string {
+    if (this._mobileCell) {
+      const cellRect = this._mobileCell.nativeElement.getBoundingClientRect();
+      return this._table._getMobileClipPathInset(cellRect);
+    }
+    return '0';
   }
 }

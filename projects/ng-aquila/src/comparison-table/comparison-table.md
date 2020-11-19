@@ -6,23 +6,6 @@ expert: true
 stable: progress
 ---
 
-### Mandatory setup
-
-In order to get the **correct sticky behaviour of the header row, you have to set the background color of the plain header cell to the one of the surrounding container.** Please check the css of the following examples and the code snipped below.
-
-```scss
-.container-around-comparison-table {
-  background-color: <background-color>;
-}
-
-// Set background color for sticky placeholder cell in header
-nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
-  background-color: <background-color>;
-}
-```
-
-The sticky behaviour is currently not supported for Safari and IE.
-
 ### Notes about the usage of the component
 
 It is recommended to use the comparison table with a **maximum of 5 products**.

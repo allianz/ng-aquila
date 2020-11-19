@@ -9,16 +9,13 @@
   class="nx-comparison-table__row" role="row">
 
   <!-- this placeholder cell is removed on tablet, as the row header disappears there  -->
-  <div *ngIf="!(_table.viewType === 'tablet')"
-    role="cell"
-    [class.is-sticky]="_table._stickyPlaceholder"
+  <div *ngIf="!(_table.viewType === 'tablet')" role="cell"
     class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
 
   <div *ngFor="let emptyCellBeforePopular of [].constructor(row.popularCell.forColumn - 1)"
     role="cell"
-    [class.is-sticky]="_table._stickyPlaceholder"
     class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
@@ -28,7 +25,6 @@
 
   <div *ngFor="let emptyCellAfterPopular of [].constructor(row.cells.length - row.popularCell.forColumn)"
     role="cell"
-    [class.is-sticky]="_table._stickyPlaceholder"
     class="nx-comparison-table__placeholder-cell  is-popular-placeholder-cell">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
@@ -40,8 +36,7 @@
   <ng-container *ngIf="row.type === 'header'">
     <div *ngIf="_table.viewType === 'desktop'"
          role="columnheader"
-         class="nx-comparison-table__placeholder-cell"
-         [class.is-sticky]="_table._stickyPlaceholder">
+         class="nx-comparison-table__placeholder-cell">
       <div class="nx-comparison-table__cell-content"></div>
     </div>
     <ng-container *ngFor="let headerCell of row.cells; let i = index">

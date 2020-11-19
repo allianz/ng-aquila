@@ -18,8 +18,6 @@ export abstract class NxComparisonTableBase implements OnDestroy {
   abstract selectedIndex: number;
   _destroyed: Subject<void> = new Subject();
 
-  _stickyPlaceholder = false;
-
   private _viewType: NxComparisonTableViewType = 'desktop';
 
   /** Get all header cells of the table. */
@@ -36,6 +34,9 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
   /** Remove a column from the list of disabled columns. */
   abstract _removeDisabledColumn(enabledColumn: number);
+
+  /** Get the mobile clipping path for a cell that should be cut when scrolling. */
+  abstract _getMobileClipPathInset(cellRect: DOMRect): string;
 
   /** @docs-private */
   get viewType(): NxComparisonTableViewType {

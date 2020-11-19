@@ -1,4 +1,5 @@
-import { Component, ViewChild, TemplateRef, Input } from '@angular/core';
+import { Directionality } from '@angular/cdk/bidi';
+import { Component, ViewChild, TemplateRef, Input, ElementRef, Optional } from '@angular/core';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 
@@ -11,6 +12,7 @@ let nextId = 0;
 export class NxComparisonTableDescriptionCell {
 
   @ViewChild('content', { static: true }) _content: TemplateRef<any>;
+  @ViewChild('mobileCell') _mobileCell: ElementRef;
 
   private _id: string = `nx-comparison-table-description-cell-${nextId++}`;
 
@@ -35,4 +37,11 @@ export class NxComparisonTableDescriptionCell {
     }
   }
 
+  _getMobileClipPathInset(): string {
+    if (this._mobileCell) {
+      const cellRect = this._mobileCell.nativeElement.getBoundingClientRect();
+      return this._table._getMobileClipPathInset(cellRect);
+    }
+    return '0';
+  }
 }

@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as axe from 'axe-core';
@@ -428,40 +428,37 @@ describe('NxComparisonTableComponent', () => {
   });
 
   describe('sticky behaviour', () => {
-    it('should not mark a sticky placeholder cell on desktop by default', () => {
+    it('should not cut a top clipping-path on desktop by default', fakeAsync(() => {
       createTestComponent(BasicComponent);
+      tick(THROTTLE_TIME);
+      flush();
+      fixture.detectChanges();
+      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const regex = /^inset\((.*)px -12px -1px\)$/;
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
+    }));
 
-      expect(tableInstance._stickyPlaceholder).toBe(false);
-      const stickyElements = rowElements[0].queryAll(By.css('.nx-placeholder--sticky'));
-      expect(stickyElements.length).toBe(0);
-    });
-
-    it('should mark the sticky placeholder cell when scrolled (desktop)', fakeAsync(() => {
+    it('should update top clipping-path when scrolled (desktop)', fakeAsync(() => {
       createTestComponent(LongPageWithTableComponent);
       tick(THROTTLE_TIME);
-      expect(tableInstance._stickyPlaceholder).toBe(false);
 
       const wrapperDiv = fixture.debugElement.query(By.css('div'));
       wrapperDiv.nativeElement.scrollTop = 50;
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-
-      expect(tableInstance._stickyPlaceholder).toBe(true);
-      let stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
-      expect(stickyElements.length).toBe(1);
+      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const regex = /^inset\((.*)px -12px -1px\)$/;
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-
-      expect(tableInstance._stickyPlaceholder).toBe(false);
-      stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
-      expect(stickyElements.length).toBe(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
     }));
 
-    it('should not mark a sticky placeholder by default on mobile', fakeAsync(() => {
+    it('should not cut a left clipping-path by default on mobile', fakeAsync(() => {
       createTestComponent(BasicComponent);
 
       viewport.set('mobile');
@@ -469,69 +466,61 @@ describe('NxComparisonTableComponent', () => {
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      const toggleSectionHeaderRow = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row'));
-      expect(toggleSectionHeaderRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(0);
-
-      const descriptionRow = tableElement.query(By.css('.nx-comparison-table__description-row'));
-      expect(descriptionRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(0);
+      const toggleSectionHeaderCell = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row'))
+                                                  .query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
+      const descriptionCell = tableElement.query(By.css('.nx-comparison-table__description-row'))
+                                          .query(By.css('.nx-comparison-table__description-cell'));
+      expect(descriptionCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
+      expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
     }));
 
-    it('should mark as a sticky placeholder on scroll (mobile)', fakeAsync(() => {
+    it('should update top clipping-path when scrolled (mobile)', fakeAsync(() => {
       viewport.set('mobile');
       window.dispatchEvent(new Event('resize'));
 
       createTestComponent(LongPageWithTableComponent);
-
       tick(THROTTLE_TIME);
       fixture.detectChanges();
 
-      expect(tableInstance._stickyPlaceholder).toBe(false);
+      const regex = /^inset\(0p?x? 0p?x? 0p?x? (.*)px\)$/;
+      const toggleSectionHeaderCell = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row'))
+                                                  .query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
+      const descriptionCell = tableElement.query(By.css('.nx-comparison-table__description-row'))
+                                          .query(By.css('.nx-comparison-table__description-cell'));
 
       tableElement.nativeElement.scrollTo(50, 0);
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
 
-      let toggleSectionHeaderRow = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row'));
-      expect(toggleSectionHeaderRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(1);
-      let descriptionRow = tableElement.query(By.css('.nx-comparison-table__description-row'));
-      expect(descriptionRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(1);
-
-      tableElement.nativeElement.scrollTo(0, 0);
+      tableElement.nativeElement.scrollTo(200, 0);
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-
-      toggleSectionHeaderRow = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row'));
-      expect(toggleSectionHeaderRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(0);
-      descriptionRow = tableElement.query(By.css('.nx-comparison-table__description-row'));
-      expect(descriptionRow.queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky')).length).toBe(0);
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'])[1])).toBeGreaterThan(0);
     }));
 
     it('should mark as sticky when parent is onPush', fakeAsync(() => {
       createTestComponent(BasicOnPushComponent);
       tick(THROTTLE_TIME);
-      expect(tableInstance._stickyPlaceholder).toBe(false);
 
       const wrapperDiv = fixture.debugElement.query(By.css('div'));
       wrapperDiv.nativeElement.scrollTop = 50;
       dispatchFakeEvent(document, 'scroll');
       fixture.detectChanges();
       tick();
-
-      expect(tableInstance._stickyPlaceholder).toBe(true);
-      let stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
-      expect(stickyElements.length).toBe(1);
+      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const regex = /^inset\((.*)px -12px -1px\)$/;
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       fixture.detectChanges();
-
       tick();
-
-      expect(tableInstance._stickyPlaceholder).toBe(false);
-      stickyElements = rowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell.is-sticky'));
-      expect(stickyElements.length).toBe(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
     }));
 
     afterEach(() => {

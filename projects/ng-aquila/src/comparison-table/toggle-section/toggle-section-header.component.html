@@ -20,10 +20,12 @@
   </ng-container>
 
   <ng-container *ngIf="_table.viewType === 'mobile'">
-    <th class="nx-comparison-table__mobile-toggle-section-header"
+    <th #mobileCell
+        class="nx-comparison-table__mobile-toggle-section-header"
         scope="col"
         [attr.colspan]="_toggleSection._numberOfRows()"
-        [attr.id]="id">
+        [attr.id]="id"
+        [ngStyle]="{ 'clip-path': 'inset(' + _getMobileClipPathInset() + ')' }">
       <ng-container *ngTemplateOutlet="ngContent"></ng-container>
     </th>
   </ng-container>

@@ -1,6 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { Platform } from '@angular/cdk/platform';
 import {
   ChangeDetectorRef,
   Component,
@@ -14,6 +13,7 @@ import {
   Optional,
   Output,
   QueryList,
+  ViewChild
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 
@@ -21,6 +21,7 @@ import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableBase } from './comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import { NxComparisonTableFlexRow } from './flex-row/flex-row.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { NxTableContentElement } from './table-content-element.directive';
 import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
@@ -43,6 +44,20 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
   private _selectedIndex: number;
 
+  @ViewChild('headerRow') _headerRowElement: NxComparisonTableFlexRow;
+  @ViewChild('desktopContent') _desktopContentDiv: ElementRef;
+
+  /** The top value for the clip-path of the _desktopContentDiv. */
+  _desktopContentClip: number = 0;
+
+  @ViewChild('stickyMobileCell') _stickyMobileCell: ElementRef;
+
+  /**
+   * The value of the right or left edge of the first column of the mobile table,
+   * that describes the threshold for how much clip-path is needed.
+   */
+  private _mobileStickyEdge: number;
+
   /** Sets which info column is selected. */
   @Input()
   set selectedIndex(value: number) {
@@ -61,21 +76,22 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
   constructor(
     private _element: ElementRef,
-    private _platform: Platform,
     @Optional() private _dir: Directionality,
-    /**docs-private */
     viewportService: NxViewportService,
     protected _cdRef: ChangeDetectorRef
   ) {
     super(viewportService, _cdRef);
   }
 
+  /** @docs-private */
   @HostBinding('attr.dir') get dir() {
     return (this._dir && this._dir.value) || 'ltr';
   }
 
   ngOnInit() {
     window.addEventListener('scroll', this._scrollHandler, true);
+    // set the clipping for the cells once at the beginnig
+    setTimeout(() => this._updateCellClipping());
   }
 
   ngOnDestroy() {
@@ -83,42 +99,46 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
   }
 
   private _scrollHandler = (event): void => {
-    // showing the background color on the placeholder cell is buggy on safari,
-    // therefore this is disabled for safari.
-    if ((this.viewType === 'desktop' || this.viewType === 'tablet') && !this._platform.SAFARI) {
-      const flexRows = this._element.nativeElement.getElementsByTagName('nx-comparison-table-flex-row');
+    this._updateCellClipping();
+  }
 
-      // only if flexRows are defined
-      if (flexRows.length > 1) {
-        const headerTop = flexRows[0].getBoundingClientRect().top;
-        const headerBottom = flexRows[0].getBoundingClientRect().bottom;
-        const secondRowTop = flexRows[1].getBoundingClientRect().top;
-        const lastRowBottom = flexRows[flexRows.length - 1].getBoundingClientRect().bottom;
-
-        if (secondRowTop < headerBottom && lastRowBottom > headerTop) {
-          this._stickyPlaceholder = true;
-        } else {
-          this._stickyPlaceholder = false;
-        }
+  _updateCellClipping() {
+    if ((this.viewType === 'desktop' || this.viewType === 'tablet')) {
+      const headerRect = this._headerRowElement.elementRef.nativeElement.getBoundingClientRect();
+      const contentRect = this._desktopContentDiv.nativeElement.getBoundingClientRect();
+      const newContentClip = headerRect.bottom - contentRect.top;
+      if (this._desktopContentClip !== newContentClip) {
+        this._desktopContentClip = newContentClip;
         this._cdRef.markForCheck();
       }
     } else if (this.viewType === 'mobile') {
-      const descriptionRowCells = this._element.nativeElement
-        .getElementsByClassName('nx-comparison-table__description-row')[0]
-        .getElementsByTagName('th');
-
-      // only if rows are defined
-      if (descriptionRowCells.length > 1) {
-        const firstCellRight = descriptionRowCells[0].getBoundingClientRect().right;
-        const secondCellLeft = descriptionRowCells[1].getBoundingClientRect().left;
-
-        if (firstCellRight > secondCellLeft) {
-          this._stickyPlaceholder = true;
-        } else {
-          this._stickyPlaceholder = false;
-        }
+      if (this._stickyMobileCell) {
+        const stickyRect = this._stickyMobileCell.nativeElement.getBoundingClientRect();
+        const isRTL = this._dir && this._dir.value === 'rtl';
+        this._mobileStickyEdge = isRTL ? stickyRect.left : stickyRect.right;
         this._cdRef.markForCheck();
+
+        // clip paths for placeholder cells with borders
+        const placeholderCells = this._element.nativeElement.getElementsByClassName('needs-clipping');
+        for (const cell of placeholderCells) {
+          const cellRect = cell.getBoundingClientRect();
+          cell.style['clip-path'] = `inset(${this._getMobileClipPathInset(cellRect)})`;
+        }
       }
+    }
+  }
+
+  _getMobileClipPathInset(cellRect: DOMRect): string {
+    if (!this._mobileStickyEdge) {
+      return '0';
+    }
+
+    if (this._dir && this._dir.value === 'rtl') {
+      const clip = cellRect.right - this._mobileStickyEdge;
+      return clip > 0 ? `0 ${clip}px 0 0` : '0';
+    } else {
+      const clip = this._mobileStickyEdge - cellRect.left;
+      return clip > 0 ? `0 0 0 ${clip}px` : '0';
     }
   }
 
@@ -227,6 +247,11 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     if (indexOfElement !== -1) {
       this._disabledIndexes.splice(indexOfElement, 1);
     }
+  }
+
+  _getHeaderRow(): NxComparisonTableRowDirective {
+    const headerRow = this.elements.find(element => this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header');
+    return (headerRow as NxComparisonTableRowDirective);
   }
 
   static ngAcceptInputType_selectedIndex: NumberInput;

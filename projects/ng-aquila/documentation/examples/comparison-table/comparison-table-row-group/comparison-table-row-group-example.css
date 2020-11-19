@@ -3,11 +3,6 @@
   padding: 12px;
 }
 
-/* Set background color for sticky placeholder cell in header */
-nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
-  background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
-}
-
 .product-title {
   font-weight: 600;
   margin: 0;

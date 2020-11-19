@@ -177,7 +177,6 @@
   ::ng-deep nx-comparison-table-flex-row.is-footer-row {
     .nx-comparison-table__cell .nx-comparison-table__cell-content {
       border-top: nx-border-size(xs) solid v(comparison-table-border-color);
-
       border-bottom: nx-border-size(xs) solid v(comparison-table-border-color);
     }
   }
@@ -213,9 +212,9 @@
 
   // horizontal border on the first row of each block
   ::ng-deep nx-comparison-table-flex-row.is-header-row,
-  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-flex-row,
+  ::ng-deep .nx-comparison-table__table-body > nx-comparison-table-flex-row:first-child,
   ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-flex-row,
-  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-desktop-group nx-comparison-table-flex-row:first-child,
+  ::ng-deep .nx-comparison-table__table-body > nx-comparison-table-desktop-group:first-child nx-comparison-table-flex-row:first-child,
   ::ng-deep .nx-comparison-table__toggle-section + nx-comparison-table-desktop-group nx-comparison-table-flex-row:first-child {
     .nx-comparison-table__description-cell {
       .nx-comparison-table__cell-content {
@@ -251,10 +250,8 @@
   }
 
   // display a margin on the bottom of the header row
-  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-flex-row,
-  ::ng-deep nx-comparison-table-flex-row.is-header-row + .nx-comparison-table__toggle-section,
-  ::ng-deep nx-comparison-table-flex-row.is-header-row + nx-comparison-table-desktop-group {
-    margin-top: 8px;
+  ::ng-deep nx-comparison-table-flex-row.is-header-row {
+    margin-bottom: 8px;
   }
 
   // display a margin on top of several elements
@@ -435,8 +432,15 @@
     tr th:first-child,
     tr td:first-child {
       position: sticky;
-      left: 0;
       z-index: 1;
+
+      @include break-out(&, 'ltr') {
+        left: 0;
+      }
+
+      @include break-out(&, 'rtl') {
+        right: 0;
+      }
     }
 
     // MOBILE disabled styles

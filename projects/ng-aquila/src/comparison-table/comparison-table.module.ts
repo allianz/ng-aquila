@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlatformModule } from '@angular/cdk/platform';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxComparisonTableComponent } from './comparison-table.component';
@@ -20,7 +19,6 @@ import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.compon
   imports: [
     CommonModule,
     NxIconModule,
-    PlatformModule
   ],
   declarations: [
     NxComparisonTableComponent,

@@ -3,11 +3,6 @@
   background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
 }
 
-/* Set background color also for sticky placeholder cell in header */
-nx-comparison-table ::ng-deep .nx-comparison-table__placeholder-cell.is-sticky {
-  background-color: var(--documentation-comparison-table-example-background-color, #0f2a3d);
-}
-
 .product-title {
   font-weight: 600;
   margin: 0 0 12px 0;
