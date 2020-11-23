@@ -1,6 +1,6 @@
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
@@ -28,7 +28,7 @@ const EXAMPLES = [
   imports: [
     NxModalModule.forRoot(),
     NxDropdownModule,
-    NxFormfieldModule,
+    NxInputModule,
     NxButtonModule,
     NxCopytextModule,
     NxHeadlineModule
