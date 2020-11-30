@@ -11,9 +11,9 @@ import { Component } from '@angular/core';
 export class BreadcrumbExampleComponent {
 
   items = [
-    { link: '', name: 'Home'},
-    { link: '', name: 'Insurance'},
-    { link: '', name: 'Health Insurance'},
+    'Home',
+    'Insurance',
+    'Health Insurance',
   ];
 
   dynamicItems = this.items;

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
@@ -39,7 +40,8 @@ const EXAMPLES = [
     NxBadgeModule,
     NxLinkModule,
     NxRadioModule,
-    ExamplesSharedModule
+    ExamplesSharedModule,
+    RouterModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]

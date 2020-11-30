@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
 
 import { NgModule } from '@angular/core';
@@ -9,7 +10,8 @@ const EXAMPLES = [
 
  @NgModule({
   imports: [
-    NxFooterModule
+    NxFooterModule,
+    RouterModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]

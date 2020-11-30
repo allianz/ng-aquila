@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
@@ -25,7 +26,8 @@ const EXAMPLES = [
   imports: [
     NxLinkModule,
     NxIconModule,
-    NxCopytextModule
+    NxCopytextModule,
+    RouterModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]

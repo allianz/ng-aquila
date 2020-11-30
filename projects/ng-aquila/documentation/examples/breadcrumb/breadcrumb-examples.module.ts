@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 
@@ -13,7 +14,8 @@ const EXAMPLES = [
  @NgModule({
   imports: [
     NxBreadcrumbModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
