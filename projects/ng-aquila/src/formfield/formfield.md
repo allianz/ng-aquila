@@ -11,7 +11,9 @@ In most cases it is sufficient to only import the nxInputModule - this **already
 import { NxInputModule } from '@aposin/ng-aquila/input';
 ```
 
-You can import this Formfield module only, but you are required to pass in a [nxInput](./documentation/input/overview) control. So don't try using this import alone.
+---
+
+Alternatively you could import NxFormfieldModule, but in this case you are required to also add an [nxInput](./documentation/input/overview) control to the html template, like in the Basic Example below.
 
 ```ts
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
