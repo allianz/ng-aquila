@@ -74,7 +74,7 @@ export function getNxAutocompleteMissingPanelError(): Error {
   exportAs: 'nxAutocompleteTrigger',
   providers: [NX_AUTOCOMPLETE_VALUE_ACCESSOR]
 })
-export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnDestroy, OnChanges, AfterViewInit {
+export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnDestroy, OnChanges, AfterViewInit, OnInit {
   private _overlayRef: OverlayRef | null;
   private _portal: TemplatePortal;
   private _componentDestroyed = false;
@@ -112,6 +112,9 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
   /** Value changes */
   private readonly _valueChanges: Subject<any> = new Subject<any>();
+
+  /** Subscription to direction changes */
+  private _dirChangeSubscription = Subscription.EMPTY;
 
   /** The autocomplete panel to be attached to this trigger. */
   @Input('nxAutocomplete') autocomplete: NxAutocompleteComponent;
@@ -230,7 +233,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
               private _viewContainerRef: ViewContainerRef,
               private _zone: NgZone,
               private _changeDetectorRef: ChangeDetectorRef,
-              @Optional() private _dir: Directionality,
+              private _dir: Directionality,
               @Optional() @Host() private _nxFormField: NxFormfieldComponent,
               @Optional() @Host() private _nxWordField: NxWordComponent,
               @Optional() @Inject(DOCUMENT) private _document: any,
@@ -242,6 +245,13 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
                 }
               }
 
+  ngOnInit() {
+    this._dirChangeSubscription = this._dir.change.subscribe(() => {
+      this._flipDirection();
+      this._changeDetectorRef.markForCheck();
+    });
+  }
+
   ngOnDestroy() {
     if (typeof window !== 'undefined') {
       window.removeEventListener('blur', this._windowBlurHandler);
@@ -250,8 +260,9 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     this._componentDestroyed = true;
     this._destroyPanel();
     this._closeKeyEventStream.complete();
-    if (this._controlValueChangesSubscription) { this._controlValueChangesSubscription.unsubscribe(); }
-    if (this._itemsSubscription) { this._itemsSubscription.unsubscribe(); }
+    this._controlValueChangesSubscription?.unsubscribe();
+    this._itemsSubscription?.unsubscribe();
+    this._dirChangeSubscription?.unsubscribe();
   }
 
   ngOnChanges() {
@@ -691,6 +702,11 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
   private _isFieldEnabled(): boolean {
     const element: HTMLInputElement = this._element.nativeElement;
     return !element.readOnly && !element.disabled;
+  }
+
+  private _flipDirection(): void {
+    this._overlayRef?.setDirection(this._dir.value);
+    this._overlayRef?.updatePositionStrategy(this._getOverlayPosition());
   }
 
   static ngAcceptInputType_debounce: NumberInput;

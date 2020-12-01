@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import * as axe from 'axe-core';
 
 import { NxAutocompleteComponent } from '.';
+import { NxAutocompleteTriggerDirective } from '.';
 import { NxInputModule } from '../input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
@@ -22,12 +23,14 @@ describe('NxAutocompleteComponent:', () => {
   let testInstance: AutocompleteComponent;
   let input: HTMLInputElement;
   let overlayContainer: OverlayContainer;
+  let triggerInstance: NxAutocompleteTriggerDirective;
 
   function createTestComponent(component: Type<AutocompleteComponent>) {
     fixture = TestBed.createComponent(component);
     fixture.autoDetectChanges();
     testInstance = fixture.componentInstance;
     input = fixture.nativeElement.querySelector('input');
+    triggerInstance = fixture.componentInstance.autocompleteTrigger;
   }
 
   function flush() {
@@ -57,7 +60,8 @@ describe('NxAutocompleteComponent:', () => {
         ComplexDataAutocompleteComponent,
         NgModelBindingAutocompleteComponent,
         ReactiveAutocompleteComponent,
-        AutocompleteInModalComponent
+        AutocompleteInModalComponent,
+        AutocompleteComponentWithDirection,
       ],
       imports: [
         CommonModule,
@@ -248,6 +252,48 @@ describe('NxAutocompleteComponent:', () => {
       });
     });
   });
+
+  describe('directionality of overlay', () => {
+    it('should be set to ltr by default', fakeAsync(() => {
+      createTestComponent(BasicAutocompleteComponent);
+      typeInput('A');
+      flush();
+      const direction = (triggerInstance as any)._overlayRef.getDirection();
+      expect(direction).toBe('ltr');
+    }));
+
+    it('should be set to rtl if container direction is rtl', fakeAsync(() => {
+      createTestComponent(AutocompleteComponentWithDirection);
+      typeInput('A');
+      flush();
+      const direction = (triggerInstance as any)._overlayRef.getDirection();
+      expect(direction).toBe('rtl');
+    }));
+  });
+
+  describe('when container direction changes', () => {
+    it('overlay direction should be updated respectively', fakeAsync(() => {
+      createTestComponent(AutocompleteComponentWithDirection);
+      typeInput('A');
+      flush();
+      (testInstance as AutocompleteComponentWithDirection).direction = 'ltr';
+      typeInput('A');
+      flush();
+      const direction = (triggerInstance as any)._overlayRef.getDirection();
+      expect(direction).toBe('ltr');
+    }));
+
+    it('overlay position strategy should be updated', fakeAsync(() => {
+      createTestComponent(AutocompleteComponentWithDirection);
+      typeInput('A');
+      flush();
+      spyOn((triggerInstance as any)._overlayRef, 'updatePositionStrategy');
+      (testInstance as AutocompleteComponentWithDirection).direction = 'ltr';
+      typeInput('A');
+      flush();
+      expect((triggerInstance as any)._overlayRef.updatePositionStrategy).toHaveBeenCalledTimes(1);
+    }));
+  });
 });
 
 const DATA = [
@@ -267,6 +313,7 @@ const COMPLEX_DATA = [
 class AutocompleteComponent {
   @ViewChild(NxAutocompleteComponent, { read: ElementRef }) autocompleteInstanceRef: ElementRef;
   @ViewChild(NxAutocompleteComponent) autocompleteInstance: NxAutocompleteComponent;
+  @ViewChild(NxAutocompleteTriggerDirective) autocompleteTrigger: NxAutocompleteTriggerDirective;
 
   public inputVal: any;
 
@@ -383,6 +430,19 @@ class ReactiveAutocompleteComponent extends AutocompleteComponent {
 })
 class AutocompleteInModalComponent extends AutocompleteComponent {
   open = true;
+}
+
+@Component({
+  template: `
+    <div [dir]="direction">
+      <input type="text" [nxAutocomplete]="auto1" [nxAutocompleteItems]="searchFunction" [nxAutocompleteDisabled]="autocompleteDisabled"
+        nxAutocompleteDebounce="0" aria-label="atcmpl" />
+      <nx-autocomplete #auto1></nx-autocomplete>
+    </div>
+  `
+})
+class AutocompleteComponentWithDirection extends AutocompleteComponent {
+  direction = 'rtl';
 }
 
 function isVisible(el) {
