@@ -79,6 +79,19 @@ describe('nxContextMenu', () => {
     return TestBed.createComponent<T>(component);
   }
 
+  function fakeDirectionalityFactory(dir: Direction, activeEmitter = false): [Partial<Directionality>, EventEmitter<Direction>] {
+    const changeEmitter = new EventEmitter<Direction>();
+    const fakeDirectionality = {
+      value: dir,
+      change: changeEmitter,
+    };
+    if (!activeEmitter) {
+      changeEmitter.complete();
+    }
+    return [fakeDirectionality, changeEmitter];
+
+  }
+
   afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
     // Since we're resetting the testing module in some of the tests,
     // we can potentially have multiple overlay containers.
@@ -179,51 +192,6 @@ describe('nxContextMenu', () => {
     expect(overlayContainerElement.textContent).toBeTruthy();
     expect(event.defaultPrevented).toBe(false);
   }));
-
-  it('should set the panel direction based on the trigger direction', () => {
-    const fixture = createComponent(SimpleMenu, [
-      {
-        provide: Directionality, useFactory: () => ({ value: 'rtl' })
-      }
-    ]);
-
-    fixture.detectChanges();
-    fixture.componentInstance.trigger.openContextMenu();
-    fixture.detectChanges();
-
-    const boundingBox =
-      overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-    expect(boundingBox.getAttribute('dir')).toEqual('rtl');
-  });
-
-  it('should update the panel direction if the trigger direction changes', () => {
-    const dirProvider = { value: 'rtl' };
-    const fixture = createComponent(SimpleMenu, [{
-      provide: Directionality, useFactory: () => dirProvider
-    }
-    ]);
-
-    fixture.detectChanges();
-    fixture.componentInstance.trigger.openContextMenu();
-    fixture.detectChanges();
-
-    let boundingBox =
-      overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-
-    expect(boundingBox.getAttribute('dir')).toEqual('rtl');
-
-    fixture.componentInstance.trigger.closeContextMenu();
-    fixture.detectChanges();
-
-    dirProvider.value = 'ltr';
-    fixture.componentInstance.trigger.openContextMenu();
-    fixture.detectChanges();
-
-    boundingBox =
-      overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-
-    expect(boundingBox.getAttribute('dir')).toEqual('ltr');
-  });
 
   it('should set the "menu" role on the overlay panel', () => {
     const fixture = createComponent(SimpleMenu);
@@ -746,8 +714,9 @@ describe('nxContextMenu', () => {
     let instance: NestedMenu;
     let overlay: HTMLElement;
     const compileTestComponent = (direction: Direction = 'ltr') => {
+      const [fakeDirectionality] = fakeDirectionalityFactory(direction);
       fixture = createComponent(NestedMenu, [{
-        provide: Directionality, useFactory: () => ({ value: direction })
+        provide: Directionality, useValue: fakeDirectionality
       }]);
 
       fixture.detectChanges();
@@ -1352,6 +1321,53 @@ describe('nxContextMenu', () => {
 
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(2, 'Expected two open menus to remain');
+    }));
+  });
+
+  describe('directionality of overlay', () => {
+    it('should be set to ltr by default', fakeAsync(() => {
+      const fixture = createComponent(SimpleMenu);
+      fixture.detectChanges();
+      const trigger = fixture.componentInstance.trigger;
+      trigger.openContextMenu();
+      fixture.detectChanges();
+
+      const direction = (trigger as any)._overlayRef.getDirection();
+      expect(direction).toBe('ltr');
+    }));
+
+    it('should be set to rtl if ancestor direction is rtl', fakeAsync(() => {
+      const [fakeDirectionality] = fakeDirectionalityFactory('rtl');
+      const fixture = createComponent(SimpleMenu, [
+        {
+          provide: Directionality, useValue: fakeDirectionality
+        }
+      ]);
+      fixture.detectChanges();
+      const trigger = fixture.componentInstance.trigger;
+      trigger.openContextMenu();
+      fixture.detectChanges();
+      const direction = (trigger as any)._overlayRef.getDirection();
+      expect(direction).toBe('rtl');
+    }));
+  });
+
+  describe('when ancestor direction changes', () => {
+    it('the context menu should be closed', fakeAsync(() => {
+      const [fakeDirectionality, changeEmitter] = fakeDirectionalityFactory('rtl', true);
+      const fixture = createComponent(SimpleMenu, [
+        {
+          provide: Directionality, useValue: fakeDirectionality
+        }
+      ]);
+      fixture.detectChanges();
+      const trigger = fixture.componentInstance.trigger;
+      spyOn(trigger, 'closeContextMenu');
+      trigger.openContextMenu();
+      fixture.detectChanges();
+      changeEmitter.emit('ltr');
+      expect(trigger.closeContextMenu).toHaveBeenCalledTimes(1);
+      changeEmitter.complete();
     }));
   });
 });

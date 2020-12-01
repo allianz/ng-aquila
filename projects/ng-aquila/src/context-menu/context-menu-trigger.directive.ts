@@ -17,6 +17,7 @@ import {
   EventEmitter,
   Input,
   OnDestroy,
+  OnInit,
   Optional,
   Output,
   Self,
@@ -58,13 +59,14 @@ const passiveEventListenerOptions = normalizePassiveListenerOptions({
   exportAs: 'nxContextMenuTrigger'
 })
 export class NxContextMenuTriggerDirective
-  implements AfterContentInit, OnDestroy {
+  implements AfterContentInit, OnInit, OnDestroy {
   private _portal: TemplatePortal;
   private _overlayRef: OverlayRef | null = null;
   private _contextMenuOpen: boolean = false;
   private _closingActionsSubscription = Subscription.EMPTY;
   private _hoverSubscription = Subscription.EMPTY;
   private _contextMenuCloseSubscription = Subscription.EMPTY;
+  private _dirChangeSubscription = Subscription.EMPTY;
   private _documentClickObservable: Observable<MouseEvent>;
   private _scrollStrategy: () => ScrollStrategy;
 
@@ -112,7 +114,7 @@ export class NxContextMenuTriggerDirective
 
   /** The text direction of the containing app. */
   private get dir(): Direction {
-    return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+    return this._dir?.value === 'rtl' ? 'rtl' : 'ltr';
   }
 
   /** Data to be passed along to any lazily-rendered content. */
@@ -143,6 +145,16 @@ export class NxContextMenuTriggerDirective
     this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
   }
 
+  ngOnInit() {
+    this._dirChangeSubscription = this._dir.change.subscribe(() => {
+      if (this.contextMenuOpen) {
+        // HINT: closing menu on direction change.
+        // When user re-opens it, the overlay and menu will be initialized properly, based on new direction.
+        this.closeContextMenu();
+      }
+    });
+  }
+
   ngAfterContentInit() {
     this._checkContextMenu();
     this._handleHover();
@@ -157,6 +169,7 @@ export class NxContextMenuTriggerDirective
     this._contextMenuCloseSubscription.unsubscribe();
     this._closingActionsSubscription.unsubscribe();
     this._hoverSubscription.unsubscribe();
+    this._dirChangeSubscription.unsubscribe();
   }
 
   /** Whether the context menu triggers a sub-menu or a top-level one. */
