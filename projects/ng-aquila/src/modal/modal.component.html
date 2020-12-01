@@ -3,7 +3,7 @@
     <div class="nx-modal__position">
       <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
 
-        <button
+        <button #closeButton
           (click)="closeButtonClick()"
           *ngIf="showCloseIcon"
           [attr.aria-label]="closeButtonLabel"

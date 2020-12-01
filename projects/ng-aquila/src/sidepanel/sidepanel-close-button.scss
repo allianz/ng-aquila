@@ -16,9 +16,9 @@
       color: buttonText;
     }
   }
-}
 
-:host-context([data-whatinput="keyboard"]):focus nx-icon {
-  @include focus-style;
-  border-radius: nx-border-radius(s);
+  &.cdk-keyboard-focused nx-icon {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
+  } 
 }

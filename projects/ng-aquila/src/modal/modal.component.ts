@@ -1,10 +1,11 @@
-import { OnDestroy, ChangeDetectionStrategy, Directive, ChangeDetectorRef } from '@angular/core';
+import { OnDestroy, ChangeDetectionStrategy, Directive, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Component, Input, OnInit, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { NxModalService } from './modal.service';
 import { EventManager } from '@angular/platform-browser';
 import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
 import { animateChild, query, transition, trigger, useAnimation } from '@angular/animations';
 import { Subscription } from 'rxjs';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** Container for the action buttons in a modal. Has a fixed position at the bottom of the modal on scroll. */
 @Directive({
@@ -55,9 +56,11 @@ export class NxModalContentDirective {}
   }
 })
 
-export class NxModalComponent implements OnInit, OnDestroy {
+export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _closeButtonLabel: string = 'Close dialog';
+
+  @ViewChild('closeButton') _closeButton: ElementRef;
 
   /** Sets the 'aria-label' of the modal close button needed for accessibility.
    *
@@ -114,8 +117,12 @@ export class NxModalComponent implements OnInit, OnDestroy {
   private closeSubscription: Subscription = Subscription.EMPTY;
   private removeEventListener: Function = undefined;
 
-  constructor(private modalService: NxModalService, private eventManager: EventManager, private _changeDetectorRef: ChangeDetectorRef) {
-  }
+  constructor(
+    private modalService: NxModalService,
+    private eventManager: EventManager,
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
+  ) {}
 
   ngOnInit() {
     this.closeSubscription = this.modalService.close$.subscribe(() => this.closeEvent.emit());
@@ -127,9 +134,16 @@ export class NxModalComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit() {
+    if (this.showCloseIcon) {
+      this._focusMonitor.monitor(this._closeButton);
+    }
+  }
+
   ngOnDestroy() {
     this.removeEventListener();
     this.closeSubscription.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._closeButton);
   }
 
   /** @docs-private */

@@ -106,8 +106,7 @@ $sidebar-width: 280px;
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-sidebar__handle:focus {
-
+.nx-sidebar__handle.cdk-keyboard-focused {
   &::before {
     border-radius: nx-border-radius(s);
     padding-right: 1px;

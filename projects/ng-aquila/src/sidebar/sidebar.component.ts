@@ -1,10 +1,11 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
   Input, Component, ChangeDetectorRef, OnDestroy,
-  ChangeDetectionStrategy, Renderer2, ElementRef, OnInit, Output, EventEmitter, Optional
+  ChangeDetectionStrategy, Renderer2, ElementRef, OnInit, Output, EventEmitter, Optional, ViewChild, AfterViewInit
 } from '@angular/core';
 import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 export const MAX_WIDTH = 400;
 export const MIN_WIDTH = 56;
@@ -22,7 +23,9 @@ export const RESIZE_STEP_SIZE = 20;
     '[style.width.px]': `_sidebarElementWidth`
   },
 })
-export class NxSidebarComponent implements OnDestroy, OnInit {
+export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
+
+  @ViewChild('resizeHandle') _resizeHandle: ElementRef;
 
   /** Emits the new width of the sidebar on resize or on close/open event.*/
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>();
@@ -120,7 +123,8 @@ export class NxSidebarComponent implements OnDestroy, OnInit {
     private renderer: Renderer2,
     private _element: ElementRef,
     @Optional() private _dir: Directionality,
-    ) {
+    private _focusMonitor: FocusMonitor
+  ) {
     this._onResize = this._onResize.bind(this);
     this._onResizeEnd = this._onResizeEnd.bind(this);
   }
@@ -129,8 +133,15 @@ export class NxSidebarComponent implements OnDestroy, OnInit {
     this.width = this._element.nativeElement.clientWidth;
   }
 
+  ngAfterViewInit() {
+    if (this.resizeable) {
+      this._focusMonitor.monitor(this._resizeHandle);
+    }
+  }
+
   ngOnDestroy() {
     this._removeDragEventListeners();
+    this._focusMonitor.stopMonitoring(this._resizeHandle);
   }
 
   /** This will expand the sidebar to its full width. */

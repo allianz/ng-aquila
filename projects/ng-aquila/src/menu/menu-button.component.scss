@@ -48,12 +48,12 @@
   &::-moz-focus-inner {
     border: 0;
   }
-}
 
-:host-context([data-whatinput="keyboard"]):focus {
-  @include focus-style-inset;
-  border-radius: 2 * nx-border-radius(s);
-  border: none;
+  &.cdk-keyboard-focused {
+    @include focus-style-inset;
+    border-radius: 2 * nx-border-radius(s);
+    border: none;
+  }
 }
 
 .nx-menu-button__expand-icon {

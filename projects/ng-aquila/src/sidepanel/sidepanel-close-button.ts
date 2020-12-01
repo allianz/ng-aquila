@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Component, ChangeDetectionStrategy, ElementRef, OnDestroy } from '@angular/core';
 import { NxSidepanelComponent } from './sidepanel';
 
 @Component({
@@ -11,11 +12,21 @@ import { NxSidepanelComponent } from './sidepanel';
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NxSidepanelCloseButtonComponent {
+export class NxSidepanelCloseButtonComponent implements OnDestroy {
 
   _toggle() {
     this._sidepanel.toggle();
   }
 
-  constructor(private _sidepanel: NxSidepanelComponent) {}
+  constructor(
+    private _sidepanel: NxSidepanelComponent,
+    private _focusMonitor: FocusMonitor,
+    private _elementRef: ElementRef
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 }

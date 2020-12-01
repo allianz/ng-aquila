@@ -1,5 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, Attribute, Directive } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, Attribute, Directive, ElementRef, OnDestroy } from '@angular/core';
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 export type NxMenuButtonType = 'root' | 'nested';
 
@@ -20,7 +21,7 @@ export type NxMenuButtonType = 'root' | 'nested';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxMenuButtonComponent {
+export class NxMenuButtonComponent implements OnDestroy {
   /** Whether this menu button is expandable or not. Will add a caret icon. */
   @Input()
   set expandable(value: boolean) {
@@ -62,7 +63,17 @@ export class NxMenuButtonComponent {
   }
   private _type: NxMenuButtonType = 'root';
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor,
+    private _elementRef: ElementRef
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   static ngAcceptInputType_expandable: BooleanInput;
   static ngAcceptInputType_expanded: BooleanInput;

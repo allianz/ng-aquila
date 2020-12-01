@@ -27,7 +27,7 @@
   }
 }
 
-::ng-deep [data-whatinput="keyboard"] .nx-menu__link:focus {
+::ng-deep .nx-menu__link.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
   outline: none;

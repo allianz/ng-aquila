@@ -94,7 +94,7 @@ $action-bar-height: nx-spacer(2xl);
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-modal__close:focus {
+.nx-modal__close.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
 }

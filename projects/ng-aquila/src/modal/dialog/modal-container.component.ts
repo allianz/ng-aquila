@@ -8,13 +8,15 @@ import {
   Optional,
   ChangeDetectorRef,
   ViewChild,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  OnDestroy,
+  AfterViewInit
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
 import { NxModalAnimations } from './modal-animations';
 import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal, DomPortal } from '@angular/cdk/portal';
-import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { NxModalConfig } from './modal-config';
 
 /**
@@ -52,11 +54,13 @@ export function throwNxDialogContentAlreadyAttachedError() {
     '(@modalContainer.done)': '_onAnimationDone($event)',
   },
 })
-export class NxModalContainer extends BasePortalOutlet {
+export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy {
   private _document: Document;
 
   /** The portal outlet inside of this container into which the modal content will be loaded. */
   @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
+
+  @ViewChild('closeButton') _closeButton: ElementRef;
 
   /** The class that traps and manages focus within the modal. */
   private _focusTrap: FocusTrap;
@@ -85,11 +89,22 @@ export class NxModalContainer extends BasePortalOutlet {
     private _changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(DOCUMENT) _document: any,
     /** The modal configuration. */
-    public _config: NxModalConfig) {
-
+    public _config: NxModalConfig,
+    private _focusMonitor: FocusMonitor
+  ) {
     super();
     this._ariaLabelledBy = _config.ariaLabelledBy || null;
     this._document = _document;
+  }
+
+  ngAfterViewInit() {
+    if (this._config.showCloseIcon) {
+      this._focusMonitor.monitor(this._closeButton);
+    }
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._closeButton);
   }
 
   /**
