@@ -112,25 +112,24 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
   }
 }
 
+// Focus Styles
 // not:(.is-disabled) is needed because if you click on a disabled link and then press an arrow key the disabled tab gets focused.
-:host-context([data-whatinput="keyboard"]) {
-  &:not(.is-expert) ::ng-deep .nx-tab-link:not(.is-disabled):focus  {
+:host:not(.is-expert) ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused  {
+  @include focus-style;
+  border-radius: nx-border-radius(s);
+}
+
+:host.is-expert ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: calc(100% - 4px);   // subtract bottom border
+    width: 100%;
+    top: 0px;
+
     @include focus-style;
     border-radius: nx-border-radius(s);
-  }
-
-  &.is-expert ::ng-deep .nx-tab-link:not(.is-disabled):focus {
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      height: calc(100% - 4px);   // subtract bottom border
-      width: 100%;
-      top: 0px;
-
-      @include focus-style;
-      border-radius: nx-border-radius(s);
-    }
   }
 }
 

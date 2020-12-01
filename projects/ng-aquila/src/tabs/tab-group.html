@@ -7,7 +7,7 @@
       (selectFocusedIndex)="selectedIndex = $event"
       (indexFocused)="focusChanged($event)"
       [autoselect]="autoselect">
-    <button
+    <button #tabButton
       type="button"
       nxTabLabelWrapper
       *ngFor="let tab of tabs; let i = index"

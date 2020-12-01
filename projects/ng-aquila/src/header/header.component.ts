@@ -5,9 +5,11 @@ import {
   QueryList,
   ContentChildren,
   ElementRef,
-  Input
+  Input,
+  OnDestroy
 } from '@angular/core';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** This directive defines a header row within the `<nx-header>` component. */
 @Directive({
@@ -109,8 +111,17 @@ export class NxHeaderNavigationItemDirective {}
   },
   template: '<span class="nx-header__link-title"><ng-content></ng-content></span>'
 })
-export class NxHeaderLinkComponent {
-  constructor(private _elementRef: ElementRef) {}
+export class NxHeaderLinkComponent implements OnDestroy {
+  constructor(
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   get textContent(): string {
     return this._elementRef.nativeElement.textContent;

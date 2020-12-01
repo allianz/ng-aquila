@@ -32,7 +32,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-toggle-button:focus {
-    border-radius: nx-border-radius(s);
-    @include focus-style;
+.nx-toggle-button.cdk-keyboard-focused {
+  border-radius: nx-border-radius(s);
+  @include focus-style;
 }

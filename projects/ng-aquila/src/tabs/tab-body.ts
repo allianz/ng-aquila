@@ -1,5 +1,17 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, SimpleChanges, OnChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+  SimpleChanges,
+  OnChanges,
+  ElementRef
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { NxTabComponent } from './tab';
@@ -41,7 +53,12 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   constructor(
-    private _tabGroup: NxTabGroupBase) { }
+    private _tabGroup: NxTabGroupBase,
+    private _focusMonitor: FocusMonitor,
+    private _elementRef: ElementRef
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
 
   ngOnInit() {
     this._appearanceSubscription = this._tabGroup._appearanceChange.subscribe(() => {
@@ -51,6 +68,7 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnDestroy() {
     this._appearanceSubscription.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   attach() {

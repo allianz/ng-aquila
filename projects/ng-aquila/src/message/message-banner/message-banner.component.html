@@ -1,5 +1,5 @@
 <nx-icon class="nx-message-banner__icon" [name]="icon" size="s"></nx-icon>
-<button
+<button #closeButton
   *ngIf="closable"
   (click)="_emitCloseEvent()"
   [attr.aria-label]="closeButtonLabel"
@@ -12,7 +12,6 @@
       aria-hidden="true">
     </nx-icon>
 </button>
-
 
 <div class="nx-message-banner__content-wrapper">
   <div class="nx-message-banner__content">

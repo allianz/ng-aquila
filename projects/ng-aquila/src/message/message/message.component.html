@@ -3,7 +3,7 @@
          [name]="icon"
          size="s">
 </nx-icon>
-<button
+<button #closeButton
   *ngIf="closable"
   (click)="_emitCloseEvent()"
   [attr.aria-label]="closeButtonLabel"

@@ -118,7 +118,7 @@ $header-link-border-width: nx-border-size(xl);
   }
 }
 
-:host-context([data-whatinput="keyboard"]) ::ng-deep .nx-header__link:focus {
+::ng-deep .nx-header__link.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
 }

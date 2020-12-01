@@ -1,7 +1,7 @@
 <nav *ngIf="isPaginationVisible()"  aria-label="Page navigation" class="nx-pagination" >
   <ul *ngIf="isPaginationContainerVisible()"  [attr.aria-label]="paginationTexts.ariaLabel" class="nx-pagination__container">
     <li class="nx-pagination__item">
-      <button
+      <button #link
         [disabled]="_isPaginationPreviousDisabled()"
         [attr.aria-label]="paginationTexts.first"
         [class.is-disabled]="_isPaginationPreviousDisabled()"
@@ -11,7 +11,7 @@
       </button>
     </li>
     <li class="nx-pagination__item nx-pagination__item-previous">
-      <button
+      <button #link
         [disabled]="_isPaginationPreviousDisabled()"
         [attr.aria-label]="paginationTexts.previous"
         [class.is-disabled]="_isPaginationPreviousDisabled()"
@@ -21,7 +21,8 @@
       </button>
     </li>
     <li *ngFor="let pageNum of getPages()" class="nx-pagination__item nx-pagination__item--desktop" [ngClass]="getPaginationItemClasses(pageNum)">
-      <button class="nx-pagination--number"
+      <button #link
+        class="nx-pagination--number"
         *ngIf="pageNum.label !== '...'"
         (click)="onPage(pageNum.value)"
         [attr.aria-current]="(pageNum.value === page) ? 'page' : ''"
@@ -33,7 +34,8 @@
       </span>
     </li>
     <li *ngFor="let pageNum of getMobilePages()" class="nx-pagination__item nx-pagination__item--mobile" [ngClass]="getPaginationItemClasses(pageNum)">
-      <button class="nx-pagination--number"
+      <button #link
+        class="nx-pagination--number"
         (click)="onPage(pageNum.value)"
         [attr.aria-current]="(pageNum.value === page) ? 'page' : ''"
         [ngClass]="getPaginationNumberClasses(pageNum)">
@@ -41,7 +43,7 @@
       </button>
     </li>
     <li class="nx-pagination__item nx-pagination__item-next">
-      <button
+      <button #link
         [disabled]="_isPaginationNextDisabled()"
         [attr.aria-label]="paginationTexts.next"
         [class.is-disabled]="_isPaginationNextDisabled()"
@@ -51,7 +53,7 @@
       </button>
     </li>
     <li class="nx-pagination__item">
-      <button
+      <button #link
         [disabled]="_isPaginationNextDisabled()"
         [attr.aria-label]="paginationTexts.last"
         [class.is-disabled]="_isPaginationNextDisabled()"
@@ -62,8 +64,9 @@
     </li>
   </ul>
 </nav>
-<nav *ngIf="isPaginationCompactVisible()" [attr.aria-label]="paginationTexts.ariaLabel" class="nx-pagination-compact" >
-  <button [attr.aria-label]="paginationTexts.previous"
+<nav *ngIf="isPaginationCompactVisible()" [attr.aria-label]="paginationTexts.ariaLabel" class="nx-pagination-compact">
+  <button #link
+    [attr.aria-label]="paginationTexts.previous"
     class="nx-pagination-compact__previous"
     [disabled]="_isPaginationPreviousDisabled()"
     [class.is-disabled]="_isPaginationPreviousDisabled()"
@@ -78,7 +81,7 @@
       <span class="nx-pagination-compact__page-separator"> {{ paginationTexts.ofLabel }} </span>
       <span class="nx-pagination-compact__total-pages">{{ totalNumberPages }}</span>
   </div>
-  <button
+  <button #link
     class="nx-pagination-compact__next"
     [disabled]="_isPaginationNextDisabled()"
     [class.is-disabled]="_isPaginationNextDisabled()"

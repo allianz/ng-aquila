@@ -9,11 +9,18 @@ import {
   Optional,
   Output,
   AfterContentInit,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
 import { Directionality } from '@angular/cdk/bidi';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** @docs-private */
 export interface Page {
@@ -29,7 +36,13 @@ export interface Page {
   styleUrls: [ './pagination.component.scss' ],
 })
 
-export class NxPaginationComponent implements OnInit, AfterContentInit {
+export class NxPaginationComponent implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {
+
+  @ViewChildren('link') _linkElements: QueryList<ElementRef>;
+
+  /** Preserves the current value of the _linkElements ViewChildren in case _linkElements changes. */
+  _linkElementsPrevious: QueryList<ElementRef>;
+
   private _page: number;
   private _count: number;
   private _perPage: number;
@@ -96,7 +109,8 @@ export class NxPaginationComponent implements OnInit, AfterContentInit {
       @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts,
       @Optional() private _dir: Directionality,
       private paginationUtilsService: NxPaginationUtils,
-      private _changeDetectorRef: ChangeDetectorRef) {
+      private _changeDetectorRef: ChangeDetectorRef,
+      private _focusMonitor: FocusMonitor) {
     this.paginationTexts = paginationTexts || DefaultPaginationTexts;
    }
 
@@ -108,6 +122,20 @@ export class NxPaginationComponent implements OnInit, AfterContentInit {
     if (this.type === 'advanced' && (!this.paginationTexts.last || !this.paginationTexts.first)) {
       console.warn('Please define aria labels for the last and first arrows.');
     }
+  }
+
+  ngAfterViewInit() {
+    this._linkElements.forEach(link => this._focusMonitor.monitor(link));
+    this._linkElementsPrevious = this._linkElements;
+    this._linkElements.changes.subscribe(_linkElements => {
+      this._linkElementsPrevious.forEach(link => this._focusMonitor.stopMonitoring(link));
+      this._linkElementsPrevious = this._linkElements;
+      this._linkElements.forEach(link => this._focusMonitor.monitor(link));
+    });
+  }
+
+  ngOnDestroy() {
+    this._linkElements.forEach(link => this._focusMonitor.stopMonitoring(link));
   }
 
   /** Returns the number of the first page. */

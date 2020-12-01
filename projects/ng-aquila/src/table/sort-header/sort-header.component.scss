@@ -49,7 +49,7 @@ $down-icon-shift: $up-icon-shift + nx-spacer(2xs);
   // don't show inner dotted border on firefox
   outline: 0;
 
-  :host-context([data-whatinput="keyboard"]) & {
+  &.cdk-keyboard-focused {
     @include focus-style;
     border-radius: nx-border-radius(s);
   }

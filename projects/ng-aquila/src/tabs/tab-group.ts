@@ -16,7 +16,9 @@ import {
   ViewChildren,
   InjectionToken,
   Inject,
-  Optional
+  Optional,
+  ElementRef,
+  AfterViewInit
 } from '@angular/core';
 import { merge, Subscription, Subject } from 'rxjs';
 
@@ -26,6 +28,7 @@ import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxViewportService, NxBreakpoints } from '@aposin/ng-aquila/utils';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 export type NxTabsAppearance = 'expert' | 'default';
 
@@ -58,7 +61,7 @@ let nextId: number = 0;
   },
   providers: [{ provide: NxTabGroupBase, useExisting: NxTabGroupComponent }]
 })
-export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterContentInit, AfterContentChecked {
+export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
   private _selectedIndex: number | null = null;
   private _groupId: number;
   private _negative: boolean = false;
@@ -83,6 +86,11 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterCont
 
   /** @docs-private */
   @ViewChild('accordion', { read: NxAccordionDirective }) accordion: NxAccordionDirective;
+
+  @ViewChildren('tabButton') _tabButtons: QueryList<ElementRef>;
+
+  /** Preserves the current value of the _tabButtons ViewChildren in case it changes. */
+  private _tabButtonsPrevious: QueryList<ElementRef>;
 
   /** Sets the selected tab. */
   @Input()
@@ -180,7 +188,8 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterCont
   constructor(
     public viewportService: NxViewportService,
     private _changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions
+    @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions,
+    private _focusMonitor: FocusMonitor
   ) {
     this._groupId = nextId++;
 
@@ -272,10 +281,23 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterCont
     }
   }
 
+  ngAfterViewInit() {
+    this._tabButtons.forEach(button => this._focusMonitor.monitor(button));
+    this._tabButtonsPrevious = this._tabButtons;
+    this._tabButtons.changes.subscribe(tabButtons => {
+      this._tabButtonsPrevious.forEach(button => this._focusMonitor.stopMonitoring(button));
+      this._tabButtonsPrevious = tabButtons;
+      tabButtons.forEach(button => this._focusMonitor.monitor(button));
+    });
+  }
+
   ngOnDestroy() {
     this._tabsSubscription.unsubscribe();
     this._tabLabelSubscription.unsubscribe();
     this._viewportSubscription.unsubscribe();
+    this._tabButtons.forEach(button => {
+      this._focusMonitor.stopMonitoring(button);
+    });
   }
 
   /**

@@ -103,7 +103,7 @@ $border-size: nx-border-size(xs);
   @include message__close-icon;
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-message-banner__close-icon:focus {
+.nx-message-banner__close-icon.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
 }

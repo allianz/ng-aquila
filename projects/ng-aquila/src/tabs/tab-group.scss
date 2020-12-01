@@ -74,19 +74,18 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
   white-space: nowrap;
 }
 
-:host-context([data-whatinput="keyboard"]) {
-  &:not(.is-expert) {
-    .nx-tab-header__item:focus {
-      @include focus-style;
-      border-radius: nx-border-radius(s);
-    }
+// Focus styles
+:host:not(.is-expert) {
+  .nx-tab-header__item.cdk-keyboard-focused {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
   }
+}
 
-  &.is-expert {
-    .nx-tab-header__item:focus .nx-tab-label__content {
-      @include focus-style;
-      border-radius: nx-border-radius(s);
-    }
+:host.is-expert {
+  .nx-tab-header__item.cdk-keyboard-focused .nx-tab-label__content {
+    @include focus-style;
+    border-radius: nx-border-radius(s);
   }
 }
 

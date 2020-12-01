@@ -1,5 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ChangeDetectorRef,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+  OnDestroy,
+  AfterViewInit
+} from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** The contextual type of a message. */
 export type CONTEXT = 'regular' | 'info' | 'error' | 'success' | 'warning';
@@ -25,9 +37,11 @@ const ICONS = {
     '[class.nx-message--closable]': 'closable'
   }
 })
-export class NxMessageComponent {
+export class NxMessageComponent implements AfterViewInit, OnDestroy {
 
   private _context: CONTEXT = 'regular';
+
+  @ViewChild('closeButton') _closeButton: ElementRef;
 
   /**
    * Sets the context of the message.
@@ -83,7 +97,20 @@ export class NxMessageComponent {
   /** Event emitted when the close icon of the message has been clicked. */
   @Output('close') closeEvent = new EventEmitter<void>();
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
+  ) {}
+
+  ngAfterViewInit() {
+    if (this.closable) {
+      this._focusMonitor.monitor(this._closeButton);
+    }
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._closeButton);
+  }
 
   /** @docs-private */
   _emitCloseEvent() {

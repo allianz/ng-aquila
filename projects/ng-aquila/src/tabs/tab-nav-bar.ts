@@ -1,6 +1,19 @@
-import { Component, Input, Directive, ChangeDetectionStrategy, Optional, SkipSelf, ChangeDetectorRef, InjectionToken, Inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  Directive,
+  ChangeDetectionStrategy,
+  Optional,
+  SkipSelf,
+  ChangeDetectorRef,
+  InjectionToken,
+  Inject,
+  ElementRef,
+  OnDestroy
+} from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxTabsAppearance } from './tab-group';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 export interface TabNavBarDefaultOptions {
   /** Sets the default appearance. */
@@ -93,7 +106,7 @@ export class NxTabNavBarComponent {
     '[attr.aria-disabled]': 'disabled.toString()',
   }
 })
-export class NxTabLinkDirective {
+export class NxTabLinkDirective implements OnDestroy {
 
   private _active: boolean = false;
   private _disabled: boolean = false;
@@ -123,12 +136,19 @@ export class NxTabLinkDirective {
   }
 
   constructor(
-    @Optional() @SkipSelf() private _tabNavBar: NxTabNavBarComponent
+    @Optional() @SkipSelf() private _tabNavBar: NxTabNavBarComponent,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
   ) {
     if (!this._tabNavBar) {
       throw Error(`The nx-tab-link element has to be wrapped in a nx-tab-nav-bar to work.`);
     }
 
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
   }
 
   _getTabIndex(): string {

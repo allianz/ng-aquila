@@ -1,8 +1,20 @@
-import { Component, Input, Optional, ChangeDetectionStrategy, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Optional,
+  ChangeDetectionStrategy,
+  OnInit,
+  ChangeDetectorRef,
+  OnDestroy,
+  ElementRef,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 import { NxSortDirective } from './sort.directive';
 import { Subscription } from 'rxjs';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { NxSortHeaderIntl } from './sort-header-intl';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,11 +28,13 @@ import { NxSortHeaderIntl } from './sort-header-intl';
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NxSortHeaderComponent implements OnInit, OnDestroy {
+export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _parentChangeSubscription: Subscription;
   private _intlSubscription: Subscription;
   private _key: string;
+
+  @ViewChild('focusContainer') _focusContainer: ElementRef;
 
   /** Sets the key of this sort header. */
   @Input('nxSortHeaderCell')
@@ -35,7 +49,8 @@ export class NxSortHeaderComponent implements OnInit, OnDestroy {
 
   constructor(@Optional() public _sort: NxSortDirective,
     public _intl: NxSortHeaderIntl,
-    private _changeDetectorRef: ChangeDetectorRef
+    private _changeDetectorRef: ChangeDetectorRef,
+    private _focusMonitor: FocusMonitor
   ) {
     this._intlSubscription = this._intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
   }
@@ -46,11 +61,16 @@ export class NxSortHeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngAfterViewInit() {
+    this._focusMonitor.monitor(this._focusContainer);
+  }
+
   ngOnDestroy() {
     if (this._parentChangeSubscription) {
       this._parentChangeSubscription.unsubscribe();
     }
     this._intlSubscription.unsubscribe();
+    this._focusMonitor.stopMonitoring(this._focusContainer);
   }
 
   _handleClick() {

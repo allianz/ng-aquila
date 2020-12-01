@@ -176,10 +176,10 @@ nx-icon.nx-pagination__arrow {
 }
 
 // ARIA styles
-:host-context([data-whatinput="keyboard"]) .nx-pagination-compact__previous:focus,
-:host-context([data-whatinput="keyboard"]) .nx-pagination-compact__next:focus,
-:host-context([data-whatinput="keyboard"]) .nx-pagination__link:focus,
-:host-context([data-whatinput="keyboard"]) .nx-pagination--number:focus {
+.nx-pagination-compact__previous.cdk-keyboard-focused,
+.nx-pagination-compact__next.cdk-keyboard-focused,
+.nx-pagination__link.cdk-keyboard-focused,
+.nx-pagination--number.cdk-keyboard-focused {
   @include focus-style;
   border-radius: nx-border-radius(s);
 }
