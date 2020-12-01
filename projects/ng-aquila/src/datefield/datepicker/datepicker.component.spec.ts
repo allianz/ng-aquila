@@ -8,10 +8,11 @@ import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NxDatepickerComponent } from './datepicker.component';
 import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
-import { ViewChild } from '@angular/core';
+import { EventEmitter, ViewChild } from '@angular/core';
 import { Component } from '@angular/core';
 
 import {JAN, JUN, JUL, DEC } from '../../cdk-test-utils';
+import { Direction, Directionality } from '@angular/cdk/bidi';
 // tslint:disable component-class-suffix
 
 describe('NxDatepicker', () => {
@@ -38,6 +39,18 @@ describe('NxDatepicker', () => {
     return TestBed.createComponent(component);
   }
 
+  function fakeDirectionalityFactory(dir: Direction, activeEmitter = false): [Partial<Directionality>, EventEmitter<Direction>] {
+    const changeEmitter = new EventEmitter<Direction>();
+    const fakeDirectionality = {
+      value: dir,
+      change: changeEmitter,
+    };
+    if (!activeEmitter) {
+      changeEmitter.complete();
+    }
+    return [fakeDirectionality, changeEmitter];
+  }
+
   afterEach(inject([OverlayContainer], (container: OverlayContainer) => {
     container.ngOnDestroy();
   }));
@@ -47,23 +60,66 @@ describe('NxDatepicker', () => {
       let fixture: ComponentFixture<StandardDatepicker>;
       let testComponent: StandardDatepicker;
 
-      beforeEach(fakeAsync(() => {
-        fixture = createComponent(StandardDatepicker, [NxNativeDateModule]);
+      function compileTestComponent(providers = []) {
+        fixture = createComponent(StandardDatepicker, [NxNativeDateModule], providers);
         fixture.detectChanges();
 
         testComponent = fixture.componentInstance;
-      }));
+      }
 
       afterEach(fakeAsync(() => {
-        testComponent.datepicker.close();
-        fixture.detectChanges();
+        testComponent?.datepicker.close();
+        fixture?.detectChanges();
         flush();
       }));
 
       it('should initialize with correct value shown in input', () => {
+        compileTestComponent();
         if (SUPPORTS_INTL) {
           expect(fixture.nativeElement.querySelector('input').value).toBe('1/1/2020');
         }
+      });
+
+      describe('popup direction', () => {
+        it('is initialized with ltr by default', fakeAsync(() => {
+          compileTestComponent();
+          testComponent.datepicker.open();
+          fixture.detectChanges();
+          flush();
+
+          const direction = (testComponent.datepicker as any)._popupRef.getDirection();
+          expect(direction).toBe('ltr');
+        }));
+
+        it('is initialized with rtl if provided', fakeAsync(() => {
+          const [fakeDirectionality] = fakeDirectionalityFactory('rtl');
+          compileTestComponent([
+            { provide: Directionality, useValue: fakeDirectionality}
+          ]);
+          testComponent.datepicker.open();
+          fixture.detectChanges();
+          flush();
+
+          const direction = (testComponent.datepicker as any)._popupRef.getDirection();
+          expect(direction).toBe('rtl');
+        }));
+      });
+      describe('when ancestor directionality changes', () => {
+        it('closes datepicker popup and removes ref', fakeAsync(() => {
+          const [fakeDirectionality, changeEmitter] = fakeDirectionalityFactory('ltr', true);
+          compileTestComponent([
+            { provide: Directionality, useValue: fakeDirectionality}
+          ]);
+          testComponent.datepicker.open();
+          spyOn(testComponent.datepicker, 'close');
+          fixture.detectChanges();
+          flush();
+          changeEmitter.emit('rtl');
+
+          expect(testComponent.datepicker.close).toHaveBeenCalledTimes(1);
+          expect((testComponent.datepicker as any)._popupRef).toBe(null);
+          changeEmitter.complete();
+        }));
       });
     });
   });

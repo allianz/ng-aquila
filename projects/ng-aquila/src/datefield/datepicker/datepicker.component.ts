@@ -249,6 +249,8 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
   _toggleButton: NxDatepickerToggleComponent<D>;
 
+  _dirChangeSubscription: Subscription;
+
   /** Emits when the datepicker is disabled. */
   readonly _disabledChange = new Subject<boolean>();
 
@@ -263,11 +265,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     if (!this._dateAdapter) {
       throw createMissingDateImplError('DateAdapter');
     }
+    this._dirChangeSubscription = this._dir.change.subscribe(() => {
+      this.close();
+      this._destroyPopup();
+    });
   }
 
   ngOnDestroy() {
     this.close();
     this._inputSubscription.unsubscribe();
+    this._dirChangeSubscription.unsubscribe();
     this._disabledChange.complete();
 
     if (this._popupRef) {
@@ -424,7 +431,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
       positionStrategy: this._createPopupPositionStrategy(),
       hasBackdrop: true,
       backdropClass: 'nx-overlay-transparent-backdrop',
-      direction: this._dir ? this._dir.value : 'ltr',
+      direction: this._dir?.value || 'ltr',
       scrollStrategy: this._scrollStrategy(),
       panelClass: 'nx-datepicker-popup',
     });
@@ -435,6 +442,15 @@ export class NxDatepickerComponent<D> implements OnDestroy {
       this._popupRef.backdropClick(),
       this._popupRef.keydownEvents().pipe(filter(event => event.keyCode === ESCAPE))
     ).subscribe(() => this.close());
+  }
+
+  /** Destroy popup */
+  private _destroyPopup(): void {
+    if (this._popupRef) {
+      this._popupRef = null;
+      this._popupComponentRef = null;
+      this._calendarPortal = null;
+    }
   }
 
   /** Create the popup PositionStrategy. */
