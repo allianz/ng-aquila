@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class FormfieldCustomLabelExampleComponent {
 
-  isOptional = '';
+  isOptional = '(optional)';
 
   addOptionalSuffix() {
-    this.isOptional = this.isOptional === '' ? '(Optional)' : '';
+    this.isOptional = this.isOptional === '' ? '(optional)' : '';
   }
 }
