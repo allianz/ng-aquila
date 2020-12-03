@@ -101,6 +101,14 @@ You can also overwrite the default dialog configuration by using the NX_MODAL_DE
   ]
 ```
 
+### Directionality
+By default all dialogs are rendered with `ltr` direction.
+If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the `direction` configuration property.
+
+To get your app direction we recommend using [Directionality](https://material.angular.io/cdk/bidi/overview) from Angular CDK.
+
+<!-- example(modal-with-direction)> -->
+
 ### Accessbility
 By default, each modal has `role="dialog"` on the root element. The role can be changed to `alertdialog` via the `NxModalConfig`.
 

@@ -227,6 +227,18 @@ describe('NxDialog', () => {
       expect(afterCloseCallback).toHaveBeenCalledTimes(1);
     })));
 
+  it('should apply ltr direction to the modal if none provided', fakeAsync(() => {
+    const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
+    viewContainerFixture.detectChanges();
+    expect((dialogRef as any)._overlayRef.getDirection()).toBe('ltr');
+  }));
+
+  it('should apply passed direction to the modal', fakeAsync(() => {
+    const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef, direction: 'rtl' });
+    viewContainerFixture.detectChanges();
+    expect((dialogRef as any)._overlayRef.getDirection()).toBe('rtl');
+  }));
+
   describe('closing', () => {
     it('should close a dialog and get back a result before it is closed', fakeAsync(() => {
       const dialogRef = dialog.open(PizzaMsg, {viewContainerRef: testViewContainerRef});

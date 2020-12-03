@@ -13,6 +13,7 @@ import { ModalContentActionsExampleComponent } from './modal-content-actions/mod
 import { ModalDataInjectionExampleComponent } from './modal-data-injection/modal-data-injection-example';
 import { ModalFixedWidthExampleComponent } from './modal-fixed-width/modal-fixed-width-example';
 import { ModalOpeningExampleComponent } from './modal-opening/modal-opening-example';
+import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
   ModalBasicExampleComponent,
@@ -21,7 +22,8 @@ const EXAMPLES = [
   ModalContentActionsExampleComponent,
   ModalDataInjectionExampleComponent,
   ModalFixedWidthExampleComponent,
-  ModalOpeningExampleComponent
+  ModalOpeningExampleComponent,
+  ModalWithDirectionExampleComponent,
 ];
 
  @NgModule({
@@ -46,6 +48,7 @@ export class ModalExamplesModule {
       'modal-data-injection': ModalDataInjectionExampleComponent,
       'modal-fixed-width': ModalFixedWidthExampleComponent,
       'modal-opening': ModalOpeningExampleComponent,
+      'modal-with-direction': ModalWithDirectionExampleComponent,
     };
   }
 }

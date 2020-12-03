@@ -1,4 +1,3 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
   Overlay,
   OverlayConfig,
@@ -79,11 +78,6 @@ export class NxDialogService implements OnDestroy {
     return parent ? parent._afterAllClosed : this._afterAllClosedAtThisLevel;
   }
 
-  /** The text direction of the containing app. */
-  get dir(): Direction {
-    return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
-  }
-
   /**
    * Stream that emits when all open modal have finished closing.
    * Will emit on subscribe if there are no open modals to begin with.
@@ -98,7 +92,6 @@ export class NxDialogService implements OnDestroy {
     @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private _defaultOptions: NxModalConfig,
     @Inject(NX_MODAL_SCROLL_STRATEGY) scrollStrategy: any,
     @Optional() @SkipSelf() private _parentDialogService: NxDialogService,
-    @Optional() private _dir: Directionality,
     private _overlayContainer: OverlayContainer) {
     this._scrollStrategy = scrollStrategy;
   }
@@ -187,7 +180,7 @@ export class NxDialogService implements OnDestroy {
       maxWidth: modalConfig.maxWidth,
       maxHeight: modalConfig.maxHeight,
       disposeOnNavigation: modalConfig.closeOnNavigation,
-      direction: this.dir,
+      direction: modalConfig.direction,
     });
 
     if (modalConfig.backdropClass) {

@@ -1,5 +1,6 @@
 import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { ScrollStrategy } from '@angular/cdk/overlay';
+import { Direction } from '@angular/cdk/bidi';
 
 /** Valid ARIA roles for a modal element. */
 export type NxModalRole = 'dialog' | 'alertdialog';
@@ -116,4 +117,10 @@ export class NxModalConfig<D = any> {
    * Default value is `'Close dialog'`.
    */
   closeIconButtonLabel?: string = 'Close dialog';
+
+  /** Sets locale direction for the modal
+   *
+   * Default value is `'ltr'`
+   */
+  direction?: Direction = 'ltr';
 }
