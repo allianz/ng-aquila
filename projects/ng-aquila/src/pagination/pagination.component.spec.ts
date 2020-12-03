@@ -6,6 +6,7 @@ import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
 import { NX_PAGINATION_TEXTS, IPaginationTexts } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
+import { Direction, BidiModule } from '@angular/cdk/bidi';
 
 declare var viewport: any;
 
@@ -74,7 +75,8 @@ describe('NxPaginationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        NxPaginationModule
+        NxPaginationModule,
+        BidiModule,
       ],
       declarations: [
         SimplePagination,
@@ -83,7 +85,9 @@ describe('NxPaginationComponent', () => {
         AdvancedPaginationLess10,
         AdvancedPaginationMore10,
         AdvancedPaginationBeginat10,
-        LocalizationToken
+        LocalizationToken,
+        SimplePaginationWithDirection,
+        AdvancedPaginationWithDirection
       ],
       providers: [
         NxPaginationUtils,
@@ -275,6 +279,49 @@ describe('NxPaginationComponent', () => {
     });
   });
 
+  describe('directionality change', () => {
+    it('triggers change detection', () => {
+      createTestComponent(SimplePaginationWithDirection);
+      fixture.detectChanges();
+      spyOn((paginationInstance as any)._changeDetectorRef, 'detectChanges');
+      (testInstance as SimplePaginationWithDirection).direction = 'rtl';
+      fixture.detectChanges();
+      expect((paginationInstance as any)._changeDetectorRef.detectChanges).toHaveBeenCalledTimes(1);
+    });
+
+    it('updates arrow icons for simple pagination', () => {
+      createTestComponent(SimplePaginationWithDirection);
+      fixture.detectChanges();
+      const prevArrowSimpleIcon = prevArrowSimple.querySelector('nx-icon');
+      const nextArrowSimpleIcon = nextArrowSimple.querySelector('nx-icon');
+      expect(prevArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(nextArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      (testInstance as SimplePaginationWithDirection).direction = 'rtl';
+      fixture.detectChanges();
+      expect(prevArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(nextArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+    });
+
+    it('updates arrow icons for advanced pagination', () => {
+      createTestComponent(AdvancedPaginationWithDirection);
+      fixture.detectChanges();
+      const prevArrowIcon = prevArrow.querySelector('nx-icon');
+      const nextArrowIcon = nextArrow.querySelector('nx-icon');
+      const lastArrowIcon = fixture.debugElement.nativeElement.querySelector('.nx-pagination__link--last nx-icon');
+      const firstArrowIcon = fixture.debugElement.nativeElement.querySelector('.nx-pagination__link--first nx-icon');
+      expect(prevArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(nextArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(lastArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-last');
+      expect(firstArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-first');
+      (testInstance as AdvancedPaginationWithDirection).direction = 'rtl';
+      fixture.detectChanges();
+      expect(prevArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(nextArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(lastArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-first');
+      expect(firstArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-last');
+    });
+  });
+
   // The test fails because the disabled styles of the NEXT/PREVIOUS button is not conform with the contrast requirements
   // It was aligned with the designers that disabled elements should not fulfill the contrast requirements
   // tslint:disable-next-line:no-disabled-tests
@@ -380,4 +427,34 @@ class SimplePaginationBeginat10 extends PaginationTest {
 class LocalizationToken extends PaginationTest {
   count: number = 210;
   perPage: number = 10;
+}
+
+@Component({
+  template: `
+  <div [dir]='direction'>
+    <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage"
+    (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"></nx-pagination>
+  </div>
+  `
+})
+class SimplePaginationWithDirection extends PaginationTest {
+  direction: Direction = 'ltr';
+  count: number = 210;
+  perPage: number = 10;
+}
+
+@Component({
+  template: `
+  <div [dir]='direction'>
+    <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" [nxType]="type"
+    (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)">
+    </nx-pagination>
+  </div>
+  `
+})
+class AdvancedPaginationWithDirection extends PaginationTest {
+  direction: Direction = 'ltr';
+  count: number = 210;
+  perPage: number = 10;
+  type: string = 'advanced';
 }

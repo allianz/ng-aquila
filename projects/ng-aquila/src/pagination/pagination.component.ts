@@ -9,7 +9,6 @@ import {
   Optional,
   Output,
   AfterContentInit,
-  ViewChild,
   ViewChildren,
   QueryList,
   ElementRef,
@@ -21,6 +20,7 @@ import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from '.
 import { NxPaginationUtils } from './pagination-utils';
 import { Directionality } from '@angular/cdk/bidi';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { Subscription } from 'rxjs';
 
 /** @docs-private */
 export interface Page {
@@ -47,6 +47,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
   private _count: number;
   private _perPage: number;
   private _type: string = 'simple';
+  private _dirChangeSubscription: Subscription;
 
   /** @docs-private */
   paginationTexts: IPaginationTexts;
@@ -112,6 +113,9 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
       private _changeDetectorRef: ChangeDetectorRef,
       private _focusMonitor: FocusMonitor) {
     this.paginationTexts = paginationTexts || DefaultPaginationTexts;
+    this._dirChangeSubscription = this._dir.change.subscribe(() => {
+      this._changeDetectorRef.detectChanges();
+    });
    }
 
   ngOnInit() {
@@ -136,6 +140,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
   ngOnDestroy() {
     this._linkElements.forEach(link => this._focusMonitor.stopMonitoring(link));
+    this._dirChangeSubscription.unsubscribe();
   }
 
   /** Returns the number of the first page. */
