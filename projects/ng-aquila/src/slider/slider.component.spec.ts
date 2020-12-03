@@ -321,6 +321,7 @@ describe('NxSliderComponent', () => {
       // value of disabled slider should not have changed
       expect(sliderInstance.value).toBe(42);
       expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(true);
+      expect(sliderNativeElement.tabIndex).toBe(-1);
       expect(sliderNativeElement.classList).toContain('nx-slider--disabled');
     });
   });

@@ -80,7 +80,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     this._changeDetectorRef.markForCheck();
   }
   get tabindex(): number {
-    return this._tabIndex;
+    return this._disabled ? -1 : this._tabIndex;
   }
 
   private _min: number = DEFAULT_MIN;
