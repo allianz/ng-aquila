@@ -29,7 +29,7 @@ import {
   NgZone
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
-import { fromEvent, Observable, Subject } from 'rxjs';
+import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxPopoverComponent } from './popover.component';
@@ -37,7 +37,7 @@ import { FocusTrapFactory, FocusTrap } from '@angular/cdk/a11y';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
-import { Directionality } from '@angular/cdk/bidi';
+import { Direction, Directionality } from '@angular/cdk/bidi';
 
 export declare type PopoverVerticalDirection = 'top' | 'bottom';
 export declare type PopoverHorizontalDirection = 'left' | 'right';
@@ -69,6 +69,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   private overlayRef: OverlayRef;
   private portal: TemplatePortal<any>;
   private _destroyed = new Subject<void>();
+  private _overlayDestroyed = new Subject<void>();
   private _show: boolean = false;
   private _closeable: boolean = null;
   private _positionStrategy: PositionStrategy;
@@ -81,6 +82,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
   private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
   private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
+  private _dirChangeSubscription: Subscription;
   /** @docs-private */
   id = 'nx-popover-' + nextId++;
 
@@ -215,6 +217,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         this._ngZone.run(() => this.show = true);
       }
     });
+
+    this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
   }
 
   ngOnInit() {
@@ -246,7 +250,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       this.elementRef.nativeElement.removeEventListener(event, listener);
     });
     this._manualListeners.clear();
+    this._dirChangeSubscription.unsubscribe();
+    this._overlayDestroyed.next();
     this._destroyed.next();
+    this._overlayDestroyed.complete();
     this._destroyed.complete();
   }
 
@@ -347,7 +354,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       }
 
       overlayState.scrollStrategy.enable();
-      overlayState.direction = this._dir.value || 'ltr';
+      overlayState.direction = this._dir?.value || 'ltr';
 
       if (this._modal) {
         overlayState.hasBackdrop = true;
@@ -365,7 +372,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   }
 
   private subscribeToPositions(position: FlexibleConnectedPositionStrategy): void {
-    position.positionChanges.pipe(takeUntil(this._destroyed)).subscribe(change => {
+    position.positionChanges.pipe(takeUntil(this._overlayDestroyed)).subscribe(change => {
       const pair = change.connectionPair;
       this.positionOverlay(pair);
       this.positionArrow(pair);
@@ -382,14 +389,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   // for modal popovers close the popover on backdrop clicks
   private _subscribeToBackdropClick() {
-    this.overlayRef.backdropClick().pipe(takeUntil(this._destroyed)).subscribe((event) => {
+    this.overlayRef.backdropClick().pipe(takeUntil(this._overlayDestroyed)).subscribe((event) => {
       this.show = false;
     });
   }
 
   // Emit the nxClosed and the show status change event on the popover component when the overlay detaches
   private _subscribeToDetach() {
-    this.overlayRef.detachments().pipe(takeUntil(this._destroyed)).subscribe(data => {
+    this.overlayRef.detachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
       // This is an exception: when the popover is closed by a scrolling event,
       // then only the detached method is called but the show state variable remains unchanged.
       if (this.show) {
@@ -401,7 +408,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   }
 
   private _subscribeToAttach() {
-    this.overlayRef.attachments().pipe(takeUntil(this._destroyed)).subscribe(data => {
+    this.overlayRef.attachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
       this.changeShow.emit(this._show);
     });
   }
@@ -657,8 +664,17 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }];
   }
 
+  private _dirChangeHandler() {
+    if (this.overlayRef) {
+      this.closePopover();
+      this.overlayRef.dispose();
+      this.overlayRef = null;
+      this._overlayDestroyed.next();
+    }
+  }
+
   get isRtl(): boolean {
-    return this._dir && this._dir.value === 'rtl';
+    return this._dir?.value === 'rtl';
   }
 
   static ngAcceptInputType_show: BooleanInput;

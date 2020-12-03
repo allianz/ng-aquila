@@ -571,6 +571,43 @@ describe('NxPopoverTriggerDirective', () => {
       const direction = (triggerInstance as any).overlayRef.getDirection();
       expect(direction).toBe('rtl');
     }));
+
+    it('should be updated respectively, when ancestor dir changes', fakeAsync(() => {
+      createTestComponent(PopoverWithinRTLContainer);
+      click();
+      fixture.detectChanges();
+      (testInstance as PopoverWithinRTLContainer).direction = 'ltr';
+      fixture.detectChanges();
+      click();
+      fixture.detectChanges();
+      const direction = (triggerInstance as any).overlayRef.getDirection();
+      expect(direction).toBe('ltr');
+    }));
+  });
+
+  describe('when ancestor directionality changes', () => {
+    it('popover should be closed', fakeAsync(() => {
+      createTestComponent(PopoverWithinRTLContainer);
+      click();
+      fixture.detectChanges();
+      spyOn((triggerInstance as any), 'closePopover');
+      (testInstance as PopoverWithinRTLContainer).direction = 'ltr';
+      fixture.detectChanges();
+      expect((triggerInstance as any).closePopover).toHaveBeenCalled();
+    }));
+
+    it('overlayRef disposed and unset', fakeAsync(() => {
+      createTestComponent(PopoverWithinRTLContainer);
+      const triggerInstanceWithPrivateAccess = triggerInstance as any;
+      click();
+      fixture.detectChanges();
+      spyOn(triggerInstanceWithPrivateAccess.overlayRef, 'dispose');
+      const disposeFunction = triggerInstanceWithPrivateAccess.overlayRef.dispose;
+      (testInstance as PopoverWithinRTLContainer).direction = 'ltr';
+      fixture.detectChanges();
+      expect(disposeFunction).toHaveBeenCalledTimes(1);
+      expect(triggerInstanceWithPrivateAccess.overlayRef).toBeNull();
+    }));
   });
 });
 
