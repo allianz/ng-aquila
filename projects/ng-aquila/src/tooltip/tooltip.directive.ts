@@ -1,5 +1,5 @@
 import { AriaDescriber, FocusMonitor } from '@angular/cdk/a11y';
-import { Directionality } from '@angular/cdk/bidi';
+import { Direction, Directionality } from '@angular/cdk/bidi';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import {
@@ -29,7 +29,7 @@ import {
   ComponentRef,
   OnInit,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { NxTooltipComponent } from './tooltip.component';
 
@@ -109,6 +109,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   private _scrollStrategy: () => ScrollStrategy;
   private _embeddedViewRef: ComponentRef<NxTooltipComponent>;
   private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
+  private _dirChangeSubscription: Subscription;
 
   /** Allows the user to define the position of the tooltip relative to the parent element */
   @Input('nxTooltipPosition')
@@ -188,6 +189,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
       private _defaultOptions: NxTooltipDefaultOptions) {
 
     this._scrollStrategy = this._overlay.scrollStrategies.reposition;
+    this._dirChangeSubscription = _dir.change.subscribe(this._dirChangeHandler.bind(this));
     const element: HTMLElement = _elementRef.nativeElement;
 
     // The mouse events shouldn't be bound on mobile devices, because they can prevent the
@@ -248,6 +250,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     this._ariaDescriber.removeDescription(this._elementRef.nativeElement, this.message);
     this._focusMonitor.stopMonitoring(this._elementRef);
+    this._dirChangeSubscription.unsubscribe();
   }
 
   /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */
@@ -334,7 +337,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     });
 
     this._overlayRef = this._overlay.create({
-      direction: this._dir,
+      direction: this._dir.value || 'ltr',
       positionStrategy: strategy,
       panelClass: NX_TOOLTIP_PANEL_CLASS,
       scrollStrategy: this._scrollStrategy(),
@@ -615,6 +618,14 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         left: targetPosition + 'px',
       };
       this._tooltipInstance.position = 'top';
+    }
+  }
+
+  _dirChangeHandler(value: Direction) {
+    if (this._overlayRef) {
+      this.hide(0);
+      this._overlayRef.setDirection(value);
+      this._updatePosition();
     }
   }
 

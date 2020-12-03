@@ -15,6 +15,7 @@ import {
   ElementRef,
   ViewChild,
   NgZone,
+  EventEmitter,
 } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { By } from '@angular/platform-browser';
@@ -64,7 +65,7 @@ const initialTooltipMessage = 'initial tooltip message';
 describe('NxTooltipDirective', () => {
   let overlayContainer: OverlayContainer;
   let overlayContainerElement: HTMLElement;
-  let dir: {value: Direction};
+  let dir: {value: Direction, change: EventEmitter<Direction>};
   let platform: {IOS: boolean, isBrowser: boolean, ANDROID: boolean};
   let focusMonitor: FocusMonitor;
 
@@ -84,7 +85,7 @@ describe('NxTooltipDirective', () => {
       providers: [
         {provide: Platform, useFactory: () => platform},
         {provide: Directionality, useFactory: () => {
-          return dir = {value: 'ltr'};
+          return dir = {value: 'ltr', change: new EventEmitter()};
         }}
       ]
     });
@@ -441,12 +442,17 @@ describe('NxTooltipDirective', () => {
 
       // Test expectations in RTL
       dir.value = 'rtl';
+      dir.change.emit('rtl');
+      fixture.detectChanges();
       expect(tooltipDirective._getOrigin(tooltipDirective.position)).toEqual(leftOrigin);
       tooltipDirective.position = 'left';
       expect(tooltipDirective._getOrigin(tooltipDirective.position)).toEqual(rightOrigin);
     });
 
     it('should consistently position before and after overlay position in ltr and rtl dir', () => {
+      dir.value = 'ltr';
+      dir.change.emit('ltr');
+      fixture.detectChanges();
       tooltipDirective.position = 'left';
       const leftOverlayPosition = tooltipDirective._getOverlayPosition(tooltipDirective.position);
       tooltipDirective.position = 'right';
@@ -454,6 +460,8 @@ describe('NxTooltipDirective', () => {
 
       // Test expectations in RTL
       dir.value = 'rtl';
+      dir.change.emit('rtl');
+      fixture.detectChanges();
       expect(tooltipDirective._getOverlayPosition(tooltipDirective.position)).toEqual(leftOverlayPosition);
       tooltipDirective.position = 'left';
       expect(tooltipDirective._getOverlayPosition(tooltipDirective.position)).toEqual(rightOverlayPosition);
@@ -483,6 +491,7 @@ describe('NxTooltipDirective', () => {
 
     it('should keep the overlay direction in sync with the trigger direction', fakeAsync(() => {
       dir.value = 'rtl';
+      dir.change.emit('rtl');
       tooltipDirective.show();
       tick(200);
       fixture.detectChanges();
@@ -498,6 +507,7 @@ describe('NxTooltipDirective', () => {
       tick(500);
 
       dir.value = 'ltr';
+      dir.change.emit('ltr');
       tooltipDirective.show();
       tick(200);
       fixture.detectChanges();
