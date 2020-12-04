@@ -22,6 +22,7 @@
       "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
       "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
     },
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "strictTemplates": true,
