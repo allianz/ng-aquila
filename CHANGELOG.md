@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.6.0](https://github.com/aposin/ng-aquila/compare/v10.5.0...v10.6.0) (2020-12-04)
+
+
+### Bug Fixes
+
+* **moment-date-adapter:** moment is not a function error on StackBlitz ([14f0638](https://github.com/aposin/ng-aquila/commit/14f0638b7b5d9c9d47b1462108f8e7162c854208))
+* migration schema ([db7e08b](https://github.com/aposin/ng-aquila/commit/db7e08bbf0bc58a991149aae15c8c843fac42f14))
+* **slider:** prevent focus when disabled ([b7ac7ef](https://github.com/aposin/ng-aquila/commit/b7ac7ef6c1451a0ca6400cebbfccfd0764cae3f7))
+
+
+### Features
+
+* **autocomplete:** allow dynamic dir switching ([bb1c7b0](https://github.com/aposin/ng-aquila/commit/bb1c7b054fb85616abefb11830eea77c52ed1e88))
+* **context-menu:** allow dynamic dir switching ([8e04f09](https://github.com/aposin/ng-aquila/commit/8e04f09fb3ee123dd47f80124c1d2d0646b7a957))
+* **datepicker:** allow dynamic dir switching ([5b1624e](https://github.com/aposin/ng-aquila/commit/5b1624ec4b9bbe313294bca8a80e0c5ac637dc48))
+* **modal:** allow dynamic dir switching ([a8c1616](https://github.com/aposin/ng-aquila/commit/a8c16164c82088c4d59a914718a18578b0d47af6))
+* **pagination:** allow dynamic dir switching ([ae7a65e](https://github.com/aposin/ng-aquila/commit/ae7a65e38e5e555bbcd7ebdcfc682060808080b2))
+* **popover:** allow dynamic dir switching ([6890385](https://github.com/aposin/ng-aquila/commit/6890385089fe336bb3a80038eb6052e6b06e0e6f))
+* **tooltip:** allow dynamic dir switching ([79e37c3](https://github.com/aposin/ng-aquila/commit/79e37c34ed652ced407e8c421ef1943f09575b7c))
+* **various:** use CDK FocusMonitor for keyboard focus style ([ec47e38](https://github.com/aposin/ng-aquila/commit/ec47e388c698b6ec7349c48ce9ef26508785e31c))
+* **various:** use CDK FocusMonitor for keyboard focus style ([aa48a39](https://github.com/aposin/ng-aquila/commit/aa48a392dd53abbbb83f1b219696ff23fa4f8bf3))
+
+
+
 # [10.5.0](https://github.com/aposin/ng-aquila/compare/v10.4.1...v10.5.0) (2020-11-19)
 
 
