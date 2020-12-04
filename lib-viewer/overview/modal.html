@@ -65,6 +65,11 @@ The three different closing variants are demonstrated in the example below:</p>
     }
   ]
 </code></pre>
+<h3 id="directionality" class="docs-markdown--h3">Directionality</h3>
+<p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction.
+If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
+<p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>
+<div nx-docs-example="modal-with-direction" config="{}">exampleID: modal-with-direction</div>
 <h3 id="accessbility" class="docs-markdown--h3">Accessbility</h3>
 <p class="docs-markdown--p">By default, each modal has <code>role=&quot;dialog&quot;</code> on the root element. The role can be changed to <code>alertdialog</code> via the <code>NxModalConfig</code>.</p>
 <p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>

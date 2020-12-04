@@ -249,7 +249,7 @@
       "category": "components",
       "apiFile": "lib-viewer/api/action.html",
       "overviewFile": "lib-viewer/overview/action.html",
-      "b2c": false,
+      "b2c": true,
       "expert": true,
       "stable": "done"
     },
@@ -868,6 +868,7 @@
         "modal-content-actions",
         "modal-fixed-width",
         "modal-data-injection",
+        "modal-with-direction",
         "modal-basic"
       ],
       "category": "components",
@@ -3989,6 +3990,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/modal-opening-###TYPE###.html"
+    },
+    {
+      "id": "modal-with-direction",
+      "title": "Modal with direction example",
+      "module": "modal",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/modal-with-direction-###TYPE###.html"
     },
     {
       "id": "natural-language-form-basic",

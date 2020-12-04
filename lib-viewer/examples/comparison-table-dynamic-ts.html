@@ -1,5 +1,5 @@
 <span class="hljs-keyword">import</span> { NxComparisonTableRowType } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/comparison-table&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { ChangeDetectorRef, Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ngx-docs-ui&#x27;</span>;
 <span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 <span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
@@ -30,11 +30,15 @@
   unselectedClassNames: <span class="hljs-built_in">string</span>;
   <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
 
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> demoService: BaseDemoThemingService</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
+    <span class="hljs-keyword">private</span> demoService: BaseDemoThemingService,
+    <span class="hljs-keyword">private</span> changeDetectorRef: ChangeDetectorRef
+  </span>)</span> {
     <span class="hljs-built_in">this</span>.demoService.unselectedClassNames.pipe(
       takeUntil(<span class="hljs-built_in">this</span>._destroyed)
     ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
       <span class="hljs-built_in">this</span>.unselectedClassNames = value;
+      <span class="hljs-built_in">this</span>.changeDetectorRef.markForCheck();
     });
   }
 

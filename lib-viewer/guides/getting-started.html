@@ -2,21 +2,121 @@
 <p class="docs-markdown--p">With ng-aquila we are providing an Angular powered user interface (UI) library.</p>
 <h3 class="docs-markdown--h3" id="prerequisite">Prerequisite</h3>
 <p class="docs-markdown--p">You should have Node.js and the Angular CLI installed.</p>
-<h3 class="docs-markdown--h3" id="setup">Setup</h3>
+<h3 class="docs-markdown--h3" id="automatic-setup-with-ng-add">Automatic setup with ng add</h3>
 <ol>
 <li class="docs-markdown--li">
-<p class="docs-markdown--p">Create your project with Angular CLI:</p>
-<pre><code class="language-console">ng new my-aposin-project
+<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI version 10</a>:</strong></p>
+<pre><code class="language-console">npm install -g @angular/cli@10
+ng new my-aposin-project
 </code></pre>
 </li>
 <li class="docs-markdown--li">
-<p class="docs-markdown--p">Install ng-aquila:</p>
+<p class="docs-markdown--p"><strong>Add ng-aquila:</strong></p>
 <pre><code class="language-console">ng add @aposin/ng-aquila
+</code></pre>
+<p class="docs-markdown--p">Add the background color of the default theme to your styles file:</p>
+<pre><code class="language-scss"><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
+}
 </code></pre>
 </li>
 </ol>
 <p class="docs-markdown--p">Congratulations you're done 💪</p>
 <p class="docs-markdown--p">Now you can include components and start building your application.</p>
+<h3 class="docs-markdown--h3" id="manual-setup">Manual setup</h3>
+<p class="docs-markdown--p">You can also install ng-aquila manually.</p>
+<ol>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI version 10</a>:</strong></p>
+<pre><code>npm install -g @angular/cli@10
+ng new my-aposin-project
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Install ng-aquila and dependencies</strong></p>
+<pre><code>cd my-aposin-project
+npm install @aposin/ng-aquila
+npm install @angular/cdk@10 what-input
+</code></pre>
+<p class="docs-markdown--p">Depending on your needs, you may also install</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><a href="https://github.com/arhs/iban.js/">iban.js</a> if you want to use the <a href="./documentation/mask/overview#iban-mask">iban mask</a> (<code>npm install iban</code>)</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><a href="https://github.com/moment/moment">moment.js</a> if you want to use it as the adapter for the <a href="./documentation/datefield/overview">datefield</a> (<code>npm install moment</code>)</p>
+</li>
+</ul>
+<p class="docs-markdown--p">You can check the supported versions of peer dependencies <a href="https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json">here</a>.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Add what-input script</strong></p>
+<p class="docs-markdown--p">In order for the keyboard focus to work, the what-input script needs to be added to the <code>angular.json</code>:</p>
+<pre><code class="language-json">&quot;architect&quot;: {
+  &quot;build&quot;: {
+    &quot;builder&quot;: &quot;@angular-devkit/build-angular:browser&quot;,
+    &quot;options&quot;: {
+      // ...
+      &quot;scripts&quot;: [{
+        &quot;input&quot;: &quot;node_modules/what-input/dist/what-input.js&quot;
+      }]
+    }
+  }
+}
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Add base styles</strong></p>
+<p class="docs-markdown--p">Add the styles to the <code>angular.json</code>. You need the base styles ('normalize.css') and a theme file ('aposin.css' or 'expert.css'):</p>
+<pre><code class="language-json">&quot;architect&quot;: {
+  &quot;build&quot;: {
+    &quot;builder&quot;: &quot;@angular-devkit/build-angular:browser&quot;,
+    &quot;options&quot;: {
+      // ...
+      &quot;styles&quot;: [
+        // ...
+        &quot;node_modules/@aposin/ng-aquila/css/normalize.css&quot;,
+        &quot;node_modules/@aposin/ng-aquila/themes/aposin.css&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<p class="docs-markdown--p">Add the background color of the default theme to your styles file:</p>
+<pre><code class="language-css"><span class="hljs-selector-tag">body</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
+}
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Add NxExpertModule (optional)</strong></p>
+<p class="docs-markdown--p">In an expert/b2b application you also need the <code>NxExpertModule</code> to your <code>app.module.ts</code>. More information can be found on the <a href="./documentation/config/overview">documentation page about the expert module</a>.</p>
+<pre><code class="language-ts"><span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">import</span> { NxExpertModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/config&#x27;</span>;
+
+<span class="hljs-meta">@NgModule</span>({
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-comment">// ...</span>
+    NxExpertModule
+  ],
+  <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
+</code></pre>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Support for IE11 (optional)</strong></p>
+<p class="docs-markdown--p">If you need to support IE11, a polyfill is needed:</p>
+<pre><code>npm install css-vars-ponyfill
+</code></pre>
+<p class="docs-markdown--p">To activate it, include these two lines in your <code>polyfills.ts</code>:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;css-vars-ponyfill&#x27;</span>;
+cssVars({ <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">onlyLegacy</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">shadowDOM</span>: <span class="hljs-literal">true</span>});
+</code></pre>
+<p class="docs-markdown--p">If you use the <a href="./documentation/image/overview">image component</a>, you also need the <a href="https://github.com/fregante/object-fit-images">object-fit-images</a> polyfill (<code>npm install object-fit-images</code>).</p>
+<p class="docs-markdown--p">You can check the supported versions of these polyfills <a href="https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json">here</a>.</p>
+</li>
+</ol>
 <h3 class="docs-markdown--h3" id="device-and-browser-support">Device and Browser Support</h3>
 <p class="docs-markdown--p">We fully support the following browsers:</p>
 <ul class="docs-markdown--ul">
