@@ -6,3 +6,5 @@
 
 <p *ngIf="headerTheme !== 'Default'">To get this variant, modify these tokens:</p>
 <pre *ngIf="headerTheme !== 'Default'">{{ demoService.getCodeChanges(headerTheme) }}</pre>
+
+<p *ngIf="!headerThemeAvailable">To try out the different variations, change the global theme to "NDBX".</p>

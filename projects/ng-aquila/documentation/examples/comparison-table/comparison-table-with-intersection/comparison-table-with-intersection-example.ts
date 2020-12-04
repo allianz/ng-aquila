@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
 import { Subject } from 'rxjs';
@@ -16,12 +16,14 @@ export class ComparisonTableWithIntersectionExampleComponent implements OnDestro
 
   constructor(
     private viewportService: NxViewportService,
-    private demoService: BaseDemoThemingService
+    private demoService: BaseDemoThemingService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.demoService.unselectedClassNames.pipe(
       takeUntil(this._destroyed)
     ).subscribe((value: string) => {
       this.unselectedClassNames = value;
+      this.changeDetectorRef.markForCheck();
     });
 
     this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM)

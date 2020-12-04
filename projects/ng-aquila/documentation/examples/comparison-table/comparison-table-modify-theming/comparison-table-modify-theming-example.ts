@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -14,11 +14,15 @@ export class ComparisonTableModifyThemingExampleComponent implements OnDestroy {
   headerThemeAvailable: boolean = true;
   private _destroyed = new Subject();
 
-  constructor(public demoService: BaseDemoThemingService) {
+  constructor(
+    public demoService: BaseDemoThemingService,
+    private _changeDetectorRef: ChangeDetectorRef
+  ) {
     this.demoService.headerThemeAvailable.pipe(
       takeUntil(this._destroyed)
     ).subscribe((value: boolean) => {
       this.headerThemeAvailable = value;
+      this._changeDetectorRef.markForCheck();
 
       if (!this.headerThemeAvailable) {
         this.changeHeaderTheme('Default');
