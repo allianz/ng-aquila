@@ -1,5 +1,5 @@
 import { Component, QueryList, Type, ViewChild, ViewChildren, ChangeDetectionStrategy, Directive } from '@angular/core';
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, flush } from '@angular/core/testing';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import * as axe from 'axe-core';
 
@@ -200,7 +200,7 @@ describe('NxRadioComponent', () => {
       expect(radioInstances.toArray()[0].name).toBe('newName');
     });
 
-    it('changing a child radio causes the parent group to emit a change event', fakeAsync(() => {
+    it('changing a child radio causes the parent group to emit a change event', () => {
       createTestComponent(MultipleRadio);
       const instance = radioInstances.toArray()[0];
       const changeHandler = jasmine.createSpy('changeHandler');
@@ -217,11 +217,10 @@ describe('NxRadioComponent', () => {
       expect(returnValue.value).toEqual('0');
 
       subscription.unsubscribe();
-    }));
+    });
 
-    it('radios in the same group can be alternately selected', fakeAsync(() => {
+    it('radios in the same group can be alternately selected', () => {
       createTestComponent(MultipleRadio);
-      tick();
 
       assertChecked(0, false);
       assertChecked(1, true);
@@ -233,15 +232,15 @@ describe('NxRadioComponent', () => {
       labelElements.item(1).click();
       assertChecked(0, false);
       assertChecked(1, true);
-    }));
+    });
 
-    it('child radio components inherit disabled state from radio group', fakeAsync(() => {
+    it('child radio components inherit disabled state from radio group', () => {
       createTestComponent(MultipleRadioDisabled);
       expect(radioElements.item(0).disabled).toBe(true);
       expect(radioElements.item(1).disabled).toBe(true);
-    }));
+    });
 
-    it('should toggle disabled state', fakeAsync(() => {
+    it('should toggle disabled state', () => {
       createTestComponent(MultipleRadioDisabled);
       testInstance.disabled = false;
       fixture.detectChanges();
@@ -251,9 +250,9 @@ describe('NxRadioComponent', () => {
       fixture.detectChanges();
       expect(radioElements.item(0).disabled).toBe(true);
       expect(radioElements.item(1).disabled).toBe(true);
-    }));
+    });
 
-    it('should create a basic radio-group with non-negative styling', fakeAsync(() => {
+    it('should create a basic radio-group with non-negative styling', () => {
       createTestComponent(BasicRadioGroup);
       const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
@@ -265,9 +264,9 @@ describe('NxRadioComponent', () => {
       testInstance.radioInstances.toArray().forEach(radio => {
         expect(radio.negative).toBe(false);
       });
-    }));
+    });
 
-    it('should update on group negative change', fakeAsync(() => {
+    it('should update on group negative change', () => {
       createTestComponent(MultipleRadio);
       const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
@@ -291,9 +290,9 @@ describe('NxRadioComponent', () => {
       testInstance.radioInstances.toArray().forEach(radio => {
         expect(radio.negative).toBe(false);
       });
-    }));
+    });
 
-    it('should not update a single radio on negative change in group', fakeAsync(() => {
+    it('should not update a single radio on negative change in group', () => {
       createTestComponent(MultipleRadio);
       testInstance.groupNegative = false;
       testInstance.radioNegative = true;
@@ -309,14 +308,14 @@ describe('NxRadioComponent', () => {
       testInstance.radioInstances.toArray().forEach(radio => {
         expect(radio.negative).toBe(false);
       });
-    }));
+    });
   });
 
   describe('in radio group with ngModel', () => {
 
     it('should set initial value from ngModel', fakeAsync(() => {
       createTestComponent(GroupWithNgModel);
-      tick();
+      flush();
       expect(testInstance.radioGroup.value).toBe('1');
       assertChecked(1, true);
     }));
@@ -332,12 +331,12 @@ describe('NxRadioComponent', () => {
 
   describe('in radio group with reactive forms', () => {
 
-    it('updates initial group value in reactive form', fakeAsync(() => {
+    it('updates initial group value in reactive form', () => {
       createTestComponent(ReactiveRadio);
 
       expect(testInstance.radioGroup.value).toBe('1');
       assertChecked(1, true);
-    }));
+    });
 
     it('should toggle the disabled state', () => {
       createTestComponent(ReactiveRadio);

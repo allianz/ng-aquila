@@ -117,6 +117,7 @@ describe('NxSelectableCardComponent', () => {
     const subscription = fixture.componentInstance.selectableCardInstance.selectionChange.subscribe(spy);
     labelElement.click();
     fixture.detectChanges();
+    tick();
     expect(spy).toHaveBeenCalledWith(jasmine.any(NxSelectableCardChangeEvent));
     expect(selectableCardInstance.checkedChange.emit).toHaveBeenCalledWith(true);
 
