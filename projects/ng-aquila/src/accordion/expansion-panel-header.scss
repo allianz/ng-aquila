@@ -44,24 +44,26 @@ $mobile-header-padding: nx-spacer(s);
   }
 }
 
+$header-title-margin-after: nx-spacer(2m);
+$header-title-small-screen-margin-after: nx-spacer(s);
 ::ng-deep .nx-expansion-panel__header-title {
   @include type-style(accordion-regular);
   text-align: left;
-  margin-right: nx-spacer(2m);
+  margin-right: $header-title-margin-after;
 
   @include media-breakpoint-down(small) {
     @include type-style(accordion-regular-mobile);
-    margin-right: nx-spacer(s);
+    margin-right: $header-title-small-screen-margin-after;
   }
 
   :host-context([dir="rtl"]) & {
     text-align: right;
     margin-right: initial;
-    margin-left: nx-spacer(2m);
+    margin-left: $header-title-margin-after;
 
     @include media-breakpoint-down(small) {
       margin-right: initial;
-      margin-left: nx-spacer(s);
+      margin-left: $header-title-small-screen-margin-after;
     }
   }
 }
@@ -135,6 +137,7 @@ $mobile-header-padding: nx-spacer(s);
 }
 
 // extra light
+$extra-light-header-title-margin-after: 8px;
 :host-context(.nx-expansion-panel--extra-light) {
   .nx-expansion-panel__header-content {
     padding: 0;
@@ -154,10 +157,17 @@ $mobile-header-padding: nx-spacer(s);
 
   ::ng-deep .nx-expansion-panel__header-title {
     @include type-style(accordion-extra-light);
-    margin-right: 8px;
+    margin-right: $extra-light-header-title-margin-after;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+  }
+}
+
+:host-context([dir='rtl'] .nx-expansion-panel--extra-light) {
+  ::ng-deep .nx-expansion-panel__header-title {
+    margin-left: $extra-light-header-title-margin-after;
+    margin-right: 0;
   }
 }
 
