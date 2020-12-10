@@ -1,6 +1,6 @@
-import { FocusableOption, FocusOrigin } from '@angular/cdk/a11y';
+import { FocusableOption, FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ import { Subject } from 'rxjs';
   }
 })
 
-export class NxNotificationPanelItemComponent implements FocusableOption {
+export class NxNotificationPanelItemComponent implements FocusableOption, OnDestroy {
 
   private _read: boolean = false;
   private _clickable: boolean = true;
@@ -40,7 +40,16 @@ export class NxNotificationPanelItemComponent implements FocusableOption {
     return this._clickable;
   }
 
-  constructor(private _elementRef: ElementRef) { }
+  constructor(
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   focus(focusOrigin?: FocusOrigin) {
     // the focus key manager calls this method with the focusOrigin
@@ -50,6 +59,7 @@ export class NxNotificationPanelItemComponent implements FocusableOption {
     if (typeof focusOrigin === 'undefined' && !this._hasFocus) {
       this.focused.next(this);
       this._hasFocus = true;
+      this._focusMonitor.focusVia(this._elementRef, 'keyboard');
     }
 
     if (!this._hasFocus) {

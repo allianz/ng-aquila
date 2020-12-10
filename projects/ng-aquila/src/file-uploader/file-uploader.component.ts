@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -16,7 +17,8 @@ import {
   Output,
   QueryList,
   Self,
-  ViewChild
+  ViewChild,
+  ViewChildren
 } from '@angular/core';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import {
@@ -39,6 +41,7 @@ import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploader } from './file-uploader';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 let nextId = 0;
 
@@ -55,7 +58,7 @@ let nextId = 0;
 })
 
 export class NxFileUploaderComponent implements ControlValueAccessor, AfterContentInit, OnChanges,
-  OnDestroy, DoCheck, OnInit {
+  OnDestroy, DoCheck, OnInit, AfterViewInit {
 
   /** @docs-private */
   @ContentChild(NxFileUploaderButtonDirective, {static: false}) button: NxFileUploaderButtonDirective;
@@ -74,6 +77,11 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
   /** @docs-private */
   @ContentChildren(NxErrorComponent) _errorList: QueryList<NxErrorComponent>;
+
+  @ViewChildren('fileRowElement') _fileRowElements: QueryList<ElementRef>;
+
+  /** Preserves the current value of the _fileRowElements ViewChildren in case _fileRowElements changes. */
+  private _fileRowElementsPrevious: QueryList<ElementRef>;
 
   private _subscriptions: Subscription[] = [];
   private _filesSubscriptions: Subscription[] = [];
@@ -218,7 +226,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     public _intl: NxFileUploaderIntl,
     @Optional() private _parentForm: NgForm,
     @Optional() private _parentFormGroup: FormGroupDirective,
-    /** @docs-private */ @Optional() @Self() public ngControl: NgControl) {
+    /** @docs-private */ @Optional() @Self() public ngControl: NgControl,
+    private _focusMonitor: FocusMonitor) {
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
       // the `providers` to avoid running into a circular import.
@@ -240,6 +249,16 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._resetValidators();
   }
 
+  ngAfterViewInit() {
+    this._fileRowElements.forEach(row => this._focusMonitor.monitor(row));
+    this._fileRowElementsPrevious = this._fileRowElements;
+    this._fileRowElements.changes.subscribe(rowElements => {
+      this._fileRowElementsPrevious.forEach(row => this._focusMonitor.stopMonitoring(row));
+      this._fileRowElementsPrevious = rowElements;
+      rowElements.forEach(row => this._focusMonitor.monitor(row));
+    });
+  }
+
   ngOnChanges() {
     this.stateChanges.next();
   }
@@ -249,6 +268,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._intlChanges.unsubscribe();
     this._subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
     this._filesSubscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
+    this._fileRowElements.forEach(row => this._focusMonitor.stopMonitoring(row));
   }
 
   /** @docs-private */

@@ -52,10 +52,9 @@ $arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) rgba(65, 65,
   }
 }
 
-::ng-deep [data-whatinput="keyboard"] {
-  .nx-popover__content:focus, .nx-popover__close-icon:focus {
-    @include focus-style;
-  }
+.nx-popover__content.cdk-keyboard-focused,
+.nx-popover__close-icon.cdk-keyboard-focused {
+  @include focus-style;
 }
 
 .nx-popover__arrow {

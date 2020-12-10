@@ -305,6 +305,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       const element = this._embeddedViewRef.rootNodes[0] as HTMLElement;
       this._focusTrap = this._focusTrapFactory.create(element);
       this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
+
+      this._focusMonitor.monitor(element.querySelector('.nx-popover__content'));
+      const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon');
+      if (closeIcon) {
+        this._focusMonitor.monitor(closeIcon);
+      }
+
       this._autoFocusFirstTabbableElement(element);
 
       // attach a close click listener only if it makes sense (ignore it on hover e.g.)
@@ -333,6 +340,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   // on the popover component
   private closePopover(): void {
     if (this.overlayRef) {
+      const element = this._embeddedViewRef.rootNodes[0] as HTMLElement;
+      this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__content'));
+      this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__close-icon'));
+
       this._returnFocusAfterPopover();
       this.overlayRef.detach();
       this._embeddedViewRef = null;

@@ -8,6 +8,6 @@ nx-icon:hover {
   color: var(--hover-primary, #3bb4db);
 }
 
-:host-context([data-whatinput="mouse"]) nx-icon:focus {
+nx-icon.cdk-mouse-focused {
   outline: none;
 }

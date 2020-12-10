@@ -13,7 +13,8 @@
   <div class="nx-file-uploader--file-list nx-margin-bottom-m"
        role="listbox"
   >
-    <div class="nx-file-uploader--file-row"
+    <div #fileRowElement
+         class="nx-file-uploader--file-row"
          [class.nx-file-uploader--file-state-uploading]="file.isUploading"
          *ngFor="let file of value"
          role="option"

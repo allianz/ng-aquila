@@ -87,7 +87,7 @@
   display: block;
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-file-uploader--file-row:focus {
+.nx-file-uploader--file-row.cdk-keyboard-focused {
   @include focus-style;
 }
 
