@@ -93,16 +93,9 @@
   #{$property}: var(--#{$token});
 }
 
-// helper to get css var with a fallback value
-// returns var(--<$token>, <fallback-value>
-@function v($token, $isRtl: false) {
-  $fallbackValue: null;
-  @if $isRtl {
-    $fallbackValue: nx-flip-for-rtl(_get-fallback-value($token));
-  } @else {
-    $fallbackValue: _get-fallback-value($token);
-  }
-
+// Retired helper to get css var with a fallback value
+// Now basically a wrapper for css var function.
+@function v($token) {
   @return var(--#{$token});
 }
 

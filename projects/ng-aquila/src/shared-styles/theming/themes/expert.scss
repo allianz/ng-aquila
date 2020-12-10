@@ -23,6 +23,7 @@ $expert-theme: (
 
   accordion-light-header-padding: 16px,
   accordion-light-body-padding: 0 16px 16px,
+  accordion-light-body-padding-rtl: 0 16px 16px,
 
   accordion-regular-header-background-color: ui-02,
   accordion-regular-header-hover-text-color: interactive-text,
@@ -31,7 +32,8 @@ $expert-theme: (
   accordion-regular-mobile-border-color: ui-04,
   accordion-regular-mobile-separator-color: transparent,
   accordion-regular-header-padding: 16px,
-  accordion-regular-body-padding:  16px 24px,
+  accordion-regular-body-padding: 16px 24px,
+  accordion-regular-body-padding-rtl: 16px 24px,
 
   icon-button-small-icon-size: 24px,
 

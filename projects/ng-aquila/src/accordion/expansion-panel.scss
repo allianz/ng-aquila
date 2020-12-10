@@ -18,7 +18,6 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 }
 
 .nx-expansion-panel__body {
-
   padding: v(accordion-regular-body-padding);
   @include type-style(accordion-body);
 
@@ -27,8 +26,7 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
   }
 
   :host-context([dir="rtl"]) & {
-    // TODO: fix RTL here
-    padding: v(accordion-regular-body-padding, true);
+    padding: v(accordion-regular-body-padding-rtl);
 
     @include media-breakpoint-down(small) {
       padding: $mobile-body-padding;
@@ -71,17 +69,14 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 // Styles of the light version
 :host(.nx-expansion-panel--light) {
   .nx-expansion-panel__body {
-    $light-body-padding: v(accordion-light-body-padding);
-
-    padding: $light-body-padding;
+    padding: v(accordion-light-body-padding);
 
     @include media-breakpoint-down(small) {
       padding: $mobile-body-padding;
     }
 
     [dir="rtl"] & {
-      // TODO fix RTL here
-      padding: nx-flip-for-rtl($light-body-padding);
+      padding: v(accordion-light-body-padding-rtl);
 
       @include media-breakpoint-down(small) {
         padding: $mobile-body-padding;

@@ -22,15 +22,6 @@ $mobile-header-padding: nx-spacer(s);
   @include media-breakpoint-down(small) {
     padding: $mobile-header-padding;
   }
-
-  :host-context([dir="rtl"]) & {
-    // TODO: fix rtl here
-    padding: v(accordion-regular-header-padding, true);
-
-    @include media-breakpoint-down(small) {
-      padding: $mobile-header-padding;
-    }
-  }
 }
 
 // hover style for regular
@@ -86,15 +77,6 @@ $header-title-small-screen-margin-after: nx-spacer(s);
 
     @include media-breakpoint-down(small) {
       padding: $mobile-header-padding;
-    }
-
-    :host-context([dir="rtl"]) & {
-      // TODO: fix RTL here
-      padding: v(accordion-light-header-padding, true);
-
-      @include media-breakpoint-down(small) {
-        padding: $mobile-header-padding;
-      }
     }
   }
 
