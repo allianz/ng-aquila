@@ -1,0 +1,117 @@
+@import '../shared-styles/index';
+
+@mixin avatar-size($size) {
+  @include var(height, avatar-#{$size}-size);
+  @include var(width, avatar-#{$size}-size);
+  @include var(min-width, avatar-#{$size}-size);
+  @include type-style(avatar-#{$size});
+
+  ::ng-deep nx-icon {
+    @include var(font-size, avatar-#{$size}-icon-size);
+  }
+}
+
+:host {
+  background: var(--avatar-background-color);
+  color: var(--avatar-color);
+  border-radius: 50%;
+  text-align: center;
+
+  .nx-avatar__content-wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  ::ng-deep figure {
+    width: 100%;
+  }
+}
+
+// Sizes
+:host.nx-avatar--xsmall {
+  @include avatar-size(xsmall);
+}
+
+:host.nx-avatar--small {
+  @include avatar-size(small);
+}
+
+:host.nx-avatar--small-medium {
+  @include avatar-size(small-medium);
+}
+
+:host.nx-avatar--medium {
+  @include avatar-size(medium);
+}
+
+:host.nx-avatar--large {
+  @include avatar-size(large);
+}
+
+:host.nx-avatar--xlarge {
+  @include avatar-size(xlarge);
+}
+
+// Additional button styles
+:host.is-button {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  .nx-avatar__content-wrapper:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover:not(:disabled) .nx-avatar__content-wrapper:after {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active:not(:disabled) .nx-avatar__content-wrapper:after {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    @include var(opacity, avatar-disabled-opacity);
+  }
+
+  &.cdk-keyboard-focused {
+    @include focus-style();
+  }
+
+  &:focus {
+    // This will ensure there is no second focus style shown in high contrast mode
+    outline: none;
+  }
+
+  // don't show inner dotted border on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host {
+    border: 2px solid windowText;
+  }
+
+  :host.is-button {
+    border: 2px solid buttonText;
+    background-color: buttonFace;
+  }
+
+  :host.is-button:disabled {
+    opacity: 1;
+    border-color: GrayText;
+    color: GrayText;
+  }
+}
