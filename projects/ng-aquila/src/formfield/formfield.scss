@@ -352,7 +352,6 @@ $outline-padding: 7px;
 
 // Provide the floating behavior
 .nx-formfield.is-floating {
-
   .nx-formfield__label {
     transform: translateY(v(formfield-floating-distance));
     @include type-style(formfield-label);
@@ -364,7 +363,6 @@ $outline-padding: 7px;
   }
 
   &.has-outline {
-
     .nx-formfield__label {
       padding-top: 0;
       transform: translateY(v(formfield-outline-floating-distance));
@@ -373,8 +371,16 @@ $outline-padding: 7px;
 
     .nx-formfield__prefix ~ .nx-formfield__input {
       .nx-formfield__label {
-        padding: 0 $outline-padding;
+        padding: 0;
       }
+    }
+
+    .nx-formfield__input-container {
+      position: relative;
+    }
+
+    .nx-formfield__input {
+      position: unset;
     }
   }
 }
