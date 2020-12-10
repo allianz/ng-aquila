@@ -11,6 +11,7 @@ import { Moment } from 'moment';
 import { NxDatefieldDirective } from './datefield.directive';
 import { NxDatefieldModule } from './datefield.module';
 import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NxIsoDateModule } from '../iso-date-adapter';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -31,7 +32,7 @@ abstract class DatefieldTest {
   @ViewChild(NxDatefieldDirective) textInstance: NxDatefieldDirective<Date>;
 }
 
-describe('NxDatefieldDirective', () => {
+describe('NxDatefieldDirective with Moment', () => {
 
   let fixture: ComponentFixture<DatefieldTest>;
   let testInstance: DatefieldTest;
@@ -326,6 +327,80 @@ class ReactiveDatefield extends DatefieldTest {
 
     this.form = this.fb.group({
         datefield: {disabled: false, value: moment([2018, 0, 1])}
+    });
+  }
+}
+
+
+@Directive()
+abstract class DatefieldIsoTest {
+  public form: FormGroup;
+  @ViewChild(NxDatefieldDirective) datefieldInstance: NxDatefieldDirective<Date>;
+}
+
+describe('NxDatefieldDirective with IsoAdapter', () => {
+  let fixture: ComponentFixture<DatefieldIsoTest>;
+  let testInstance: DatefieldIsoTest;
+  let datefieldInstance: NxDatefieldDirective<Date>;
+  let nativeElement: HTMLInputElement;
+
+  function createTestComponent(component: Type<DatefieldIsoTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    datefieldInstance = testInstance.datefieldInstance;
+    nativeElement = fixture.nativeElement.querySelector('input');
+  }
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        ReactiveIsoDatefield
+      ],
+      imports: [
+        NxDatefieldModule,
+        NxIsoDateModule,
+        NxInputModule,
+        FormsModule,
+        ReactiveFormsModule
+      ]
+    }).compileComponents();
+  }));
+
+  it('has no error for a correct date', () => {
+    createTestComponent(ReactiveIsoDatefield);
+    expect(testInstance.form.get('datefield').valid).toBeTrue();
+  });
+
+  it('has an parsing error for an incorrect date', () => {
+    createTestComponent(ReactiveIsoDatefield);
+    const datefield = testInstance.form.get('datefield');
+    datefield.patchValue('this is no date');
+    fixture.detectChanges();
+    expect(datefield.valid).toBeFalse();
+    expect(datefield.errors['nxDatefieldParse']).toBeDefined();
+  });
+
+});
+
+
+@Component({
+  template: `
+    <form [formGroup]="form">
+      <nx-formfield nxLabel='Given Label'>
+        <input nxInput nxDatefield formControlName="datefield"/>
+      </nx-formfield>
+    </form>
+  `
+})
+class ReactiveIsoDatefield extends DatefieldIsoTest {
+  public fb;
+
+  constructor() {
+    super();
+    this.fb = new FormBuilder();
+    this.form = this.fb.group({
+      datefield: '01.01.2021'
     });
   }
 }

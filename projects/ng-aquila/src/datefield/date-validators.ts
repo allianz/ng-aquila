@@ -16,7 +16,7 @@ export class NxDateValidators {
     customParseFormat: string | string[] = null): ValidatorFn {
     return (): ValidationErrors | null => {
       const parsedValue = dateAdapter.parse(input.value, customParseFormat || dateFormats.parse.dateInput, strict);
-      const valid = !parsedValue || dateAdapter.isValid(parsedValue);
+      const valid = parsedValue && dateAdapter.isValid(parsedValue);
       return valid ? null : {'nxDatefieldParse': {'text': input}};
     };
   }
