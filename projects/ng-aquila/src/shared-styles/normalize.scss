@@ -1,5 +1,3 @@
-@import '../../../../node_modules/@angular/cdk/a11y';
-
 body {
   color: #FFFFFF;
   font-size: 12px;
@@ -66,5 +64,3 @@ ol {
 a {
   text-decoration: none;
 }
-
-@include cdk-a11y();
