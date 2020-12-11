@@ -1,6 +1,7 @@
 <ng-template #content>
   <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
-    <div class="nx-comparison-table-toggle-section__header-wrapper"
+    <div #wrapper
+         class="nx-comparison-table-toggle-section__header-wrapper"
          role="columnheader"
          [attr.aria-colspan]="_table.viewType === 'desktop' ? _table._getHeaderCells().length + 1 : _table._getHeaderCells().length"
          [attr.aria-expanded]="_toggleSection.isExpanded"

@@ -497,7 +497,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]) ::ng-deep .nx-comparison-table-toggle-section__header-wrapper:focus {
+::ng-deep .nx-comparison-table-toggle-section__header-wrapper.cdk-keyboard-focused {
   .nx-comparison-table-toggle-section__header-content {
     @include focus-style;
     z-index: 1; // otherwise the bottom border is covered by the next row

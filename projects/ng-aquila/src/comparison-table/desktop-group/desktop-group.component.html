@@ -7,7 +7,8 @@
   <div *ngIf="_table.viewType === 'desktop'" class="nx-comparison-table__placeholder-cell" role="cell">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
-  <div class="nx-comparison-table__intersection-cell nx-comparison-table__group-expansion-cell"
+  <div #expansionCell
+       class="nx-comparison-table__intersection-cell nx-comparison-table__group-expansion-cell"
        role="cell"
        [attr.aria-colspan]="_table._infoColumnCount()"
        [style.flex-grow]="_table._infoColumnCount()"

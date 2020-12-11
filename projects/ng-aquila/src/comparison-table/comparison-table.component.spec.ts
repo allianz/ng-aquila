@@ -422,6 +422,15 @@ describe('NxComparisonTableComponent', () => {
       expect(tableInstance.viewType).toBe('desktop');
     }));
 
+    it('emits a viewType change', fakeAsync(() => {
+      createTestComponent(BasicComponent);
+      spyOn(tableInstance.viewTypeChange, 'emit');
+      viewport.set('mobile');
+      window.dispatchEvent(new Event('resize'));
+      tick(THROTTLE_TIME);
+      expect(tableInstance.viewTypeChange.emit).toHaveBeenCalledWith('mobile');
+    }));
+
     afterEach(() => {
       viewport.reset();
     });

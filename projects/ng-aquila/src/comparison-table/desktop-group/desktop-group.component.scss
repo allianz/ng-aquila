@@ -23,7 +23,7 @@
   }
 }
 
-:host-context([data-whatinput="keyboard"]) .nx-comparison-table__group-expansion-cell:focus {
+.nx-comparison-table__group-expansion-cell.cdk-keyboard-focused {
   .nx-comparison-table__cell-content {
     @include focus-style;
   }

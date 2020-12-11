@@ -18,6 +18,8 @@ export abstract class NxComparisonTableBase implements OnDestroy {
   abstract selectedIndex: number;
   _destroyed: Subject<void> = new Subject();
 
+  readonly viewTypeChange: EventEmitter<NxComparisonTableViewType> = new EventEmitter<NxComparisonTableViewType>();
+
   private _viewType: NxComparisonTableViewType = 'desktop';
 
   /** Get all header cells of the table. */
@@ -54,6 +56,9 @@ export abstract class NxComparisonTableBase implements OnDestroy {
       desktop$.pipe(filter(value => value === true), mapTo('desktop' as NxComparisonTableViewType)),
     )
     .pipe(takeUntil(this._destroyed)).subscribe(value => {
+      if (this._viewType !== value) {
+        this.viewTypeChange.emit(value);
+      }
       this._viewType = value;
       // We need to run change detection here or the view doesn't get updated
       // if the component is wrapped inside a parent with onPush change detection
@@ -66,7 +71,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
   }
 
   ngOnDestroy() {
-      this._destroyed.next();
-      this._destroyed.complete();
+    this._destroyed.next();
+    this._destroyed.complete();
   }
 }
