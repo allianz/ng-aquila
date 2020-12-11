@@ -1,0 +1,14 @@
+.tab-header-content {
+  position: relative;
+  display: inline-block;
+}
+
+nx-indicator {
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+nx-indicator:not(:empty) {
+  top: -4px;
+}

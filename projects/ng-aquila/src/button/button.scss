@@ -56,6 +56,9 @@ $button-margin-bottom: nx-spacer(m);
   hyphens: none;
   vertical-align: middle;
 
+  // Fix for IE to make overflowing indicators visible
+  overflow: visible;
+
   // Expand every button on mobile to the full width
   @include media-breakpoint-response(mobile) {
     display: block;
@@ -250,6 +253,7 @@ $button-margin-bottom: nx-spacer(m);
   align-items: center;
   justify-content: center;
   vertical-align: bottom;
+  position: relative;
 }
 
 :host([nxiconbutton]),

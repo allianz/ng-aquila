@@ -57,6 +57,12 @@ Please be aware that icons are not accessible, and you need to provide an additi
 
 <!-- example(button-icon) -->
 
+#### Indicators
+
+Inside the icon button there can be used a [`<nx-indicator>`](./documentation/indicator/overview):
+
+<!-- example(button-icon-indicator) -->
+
 ### Plain Button
 
 The `nxPlainButton` does not need a lot of space. If only icons are used, they need to be made accessible, e.g. by using an `aria-label` or a tooltip.

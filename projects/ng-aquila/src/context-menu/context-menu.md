@@ -29,6 +29,12 @@ Context menus support displaying `<nx-icon>` elements before the menu item text.
 
 <!-- example(context-menu-icons) -->
 
+### Indicators
+
+Using the [`<nx-indicator>`](./documentation/indicator/overview), certain entries of the context menu can be marked.
+
+<!-- example(context-menu-indicator) -->
+
 ### Nested context menu
 The context menu has the ability to open a sub-menu. To do so, you have to define your root menu and sub-menus, in addition to setting the `nxContextMenuTriggerFor` on the `nxContextMenuItem` that should trigger the sub-menu:
 

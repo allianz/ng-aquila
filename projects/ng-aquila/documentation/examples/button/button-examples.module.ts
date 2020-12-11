@@ -1,6 +1,7 @@
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 
 import { NgModule } from '@angular/core';
 import { ButtonExampleComponent } from './button/button-example';
@@ -15,6 +16,7 @@ import { ButtonSmallExampleComponent } from './button-small/button-small-example
 import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-small-medium-example';
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
 import { LazyLoadedModule } from '../../lazy-loaded-module';
+import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
 
 const EXAMPLES = [
   ButtonExampleComponent,
@@ -27,11 +29,12 @@ const EXAMPLES = [
   ButtonPlainExampleComponent,
   ButtonSmallExampleComponent,
   ButtonSmallMediumExampleComponent,
-  ButtonWithIconExampleComponent
+  ButtonWithIconExampleComponent,
+  ButtonIconIndicatorExampleComponent
 ];
 
  @NgModule({
-  imports: [NxButtonModule, CommonModule, NxIconModule ],
+  imports: [NxButtonModule, CommonModule, NxIconModule, NxIndicatorModule ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
 })
@@ -49,6 +52,7 @@ export class ButtonExamplesModule implements LazyLoadedModule {
       'button-small': ButtonSmallExampleComponent,
       'button-small-medium': ButtonSmallMediumExampleComponent,
       'button-with-icon': ButtonWithIconExampleComponent,
+      'button-icon-indicator': ButtonIconIndicatorExampleComponent
     };
   }
 }

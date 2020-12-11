@@ -1,6 +1,7 @@
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { RouterModule } from '@angular/router';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 
 import { NgModule } from '@angular/core';
 import { TabsAppearanceExampleComponent } from './tabs-appearance/tabs-appearance-example';
@@ -18,6 +19,8 @@ import { TabsOutputEventsExampleComponent } from './tabs-output-events/tabs-outp
 import { TabsResponsiveExampleComponent } from './tabs-responsive/tabs-responsive-example';
 import { TabsStylingExampleComponent } from './tabs-styling/tabs-styling-example';
 import { TabsTemplateExampleComponent } from './tabs-template/tabs-template-example';
+import { TabsWithIndicatorExampleComponent } from './tabs-with-indicator/tabs-with-indicator-example';
+import { TabsNavBarWithIndicatorExampleComponent } from './tabs-nav-bar-with-indicator/tabs-nav-bar-with-indicator-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
@@ -35,7 +38,9 @@ const EXAMPLES = [
   TabsOutputEventsExampleComponent,
   TabsResponsiveExampleComponent,
   TabsStylingExampleComponent,
-  TabsTemplateExampleComponent
+  TabsTemplateExampleComponent,
+  TabsWithIndicatorExampleComponent,
+  TabsNavBarWithIndicatorExampleComponent
 ];
 
 @NgModule({
@@ -43,6 +48,7 @@ const EXAMPLES = [
     NxTabsModule,
     RouterModule,
     NxIconModule,
+    NxIndicatorModule,
     ExamplesSharedModule
   ],
   declarations: [EXAMPLES],
@@ -66,6 +72,8 @@ export class TabsExamplesModule {
       'tabs-responsive': TabsResponsiveExampleComponent,
       'tabs-styling': TabsStylingExampleComponent,
       'tabs-template': TabsTemplateExampleComponent,
+      'tabs-with-indicator': TabsWithIndicatorExampleComponent,
+      'tabs-nav-bar-with-indicator': TabsNavBarWithIndicatorExampleComponent
     };
   }
 }

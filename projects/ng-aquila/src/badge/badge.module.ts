@@ -4,7 +4,7 @@ import { NxBadgeComponent } from './badge.component';
 
 @NgModule({
   imports: [ CommonModule ],
-  declarations: [NxBadgeComponent],
-  exports: [NxBadgeComponent]
+  declarations: [ NxBadgeComponent ],
+  exports: [ NxBadgeComponent ]
 })
 export class NxBadgeModule {}

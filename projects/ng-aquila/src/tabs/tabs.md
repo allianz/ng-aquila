@@ -83,6 +83,16 @@ You can also use the expert styling with the navigation bar:
 
 <!-- example(tabs-nav-bar-appearance) -->
 
+#### Indicators
+
+Using the [`<nx-indicator>`](./documentation/badge/overview#indicator) which belongs to the `NxBadgeModule`, certain tabs can be marked.
+
+<!-- example(tabs-with-indicator) -->
+
+This is also possible with the navigation bar:
+
+<!-- example(tabs-nav-bar-with-indicator) -->
+
 </div>
 
 ### Accessibility

@@ -1,0 +1,12 @@
+.button-content {
+  position: relative;
+}
+
+nx-indicator {
+  position: absolute;
+}
+
+nx-indicator:not(:empty) {
+  top: -4px;
+  left: calc(100% - 4px);
+} 

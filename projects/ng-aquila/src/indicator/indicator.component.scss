@@ -1,0 +1,30 @@
+@import '../shared-styles/index';
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: nx-border-radius(s) * 3;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 16px;
+  @include type-style(indicator);
+  @include var(color, indicator-color);
+  @include var(background-color, indicator-background-color);
+  border: 1px solid v(indicator-border-color);
+
+  &:empty {
+    height: 10px;
+    width: 10px;
+  }
+
+  &:not(:empty) {
+    min-width: 16px;
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: nx-border-size(xs) solid windowText;
+  }
+}
+

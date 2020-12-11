@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 */
 @Component({
   selector: 'nx-action-example',
-  styleUrls: ['action-example.css'],
+  styleUrls: ['./action-example.css'],
   templateUrl: './action-example.html'
 })
 export class ActionExampleComponent implements OnInit {

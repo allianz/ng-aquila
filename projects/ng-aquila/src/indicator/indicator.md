@@ -1,0 +1,41 @@
+---
+title: Indicator
+category: components
+b2c: true
+expert: true
+stable: progress
+---
+
+The indicator is a small badge that can be used to mark an element or page as unread for the user.
+
+<!-- example(indicator) -->
+
+### Usage inside other components
+
+The indicator can be placed inside other components. Here are a few additional examples.
+
+#### Action
+
+<!-- example(action-indicator) -->
+
+#### Context Menu
+
+<!-- example(context-menu-indicator) -->
+
+#### Icon Button
+
+<!-- example(button-icon-indicator) -->
+
+<div class="docs-expert-container">
+
+#### Tabs
+
+Please note that **this is an Expert styling option**. This means that the indicator position is currently only defined for internal applications and not for applications that are client facing.
+
+<!-- example(tabs-with-indicator) -->
+
+This is also possible with the navigation bar:
+
+<!-- example(tabs-nav-bar-with-indicator) -->
+
+</div>

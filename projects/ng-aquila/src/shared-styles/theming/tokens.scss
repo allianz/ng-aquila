@@ -850,6 +850,15 @@ $nx-theme: (
   icon-filled-background-color: text-01,
   icon-filled-color: ui-01,
 
+  indicator-background-color: #f19b94,
+  indicator-color: text-02,
+  indicator-border-color: ui-01,
+
+  indicator-font-size: paragraph-05-font-size,
+  indicator-line-height: 11px,    // smaller than the font-size to fix the aligning in browsers
+  indicator-font-weight: paragraph-05-font-weight,
+  indicator-letter-spacing: 0,
+
   link-large-font-size: heading-03-font-size,
   link-large-line-height: heading-03-line-height,
   link-large-font-weight: 600,

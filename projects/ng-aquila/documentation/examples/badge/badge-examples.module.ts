@@ -20,7 +20,7 @@ export class BadgeExamplesModule {
   static components() {
     return {
       'badge': BadgeExampleComponent,
-      'badge-vibrant': BadgeVibrantExampleComponent,
+      'badge-vibrant': BadgeVibrantExampleComponent
     };
   }
 }

@@ -1,5 +1,6 @@
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
+import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxTableModule } from '@aposin/ng-aquila/table';
 
@@ -13,6 +14,7 @@ import { ContextMenuNestedExampleComponent } from './context-menu-nested/context
 import { ContextMenuProgrammaticExampleComponent } from './context-menu-programmatic/context-menu-programmatic-example';
 import { ContextMenuScrollStrategyExampleComponent } from './context-menu-scroll-strategy/context-menu-scroll-strategy-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 
 const EXAMPLES = [
   ContextMenuBasicExampleComponent,
@@ -22,7 +24,8 @@ const EXAMPLES = [
   ContextMenuLazyExampleComponent,
   ContextMenuNestedExampleComponent,
   ContextMenuProgrammaticExampleComponent,
-  ContextMenuScrollStrategyExampleComponent
+  ContextMenuScrollStrategyExampleComponent,
+  ContextMenuIndicatorExampleComponent
 ];
 
  @NgModule({
@@ -30,6 +33,7 @@ const EXAMPLES = [
     NxContextMenuModule,
     NxIconModule,
     NxBadgeModule,
+    NxIndicatorModule,
     NxTableModule,
     ExamplesSharedModule
   ],
@@ -47,6 +51,7 @@ export class ContextExamplesModule {
       'context-menu-nested': ContextMenuNestedExampleComponent,
       'context-menu-programmatic': ContextMenuProgrammaticExampleComponent,
       'context-menu-scroll-strategy': ContextMenuScrollStrategyExampleComponent,
+      'context-menu-indicator': ContextMenuIndicatorExampleComponent
     };
   }
 }
