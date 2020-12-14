@@ -33,10 +33,6 @@ describe('ng-aquila ng add', () => {
         .toContain('@import "@angular/cdk/a11y-prebuilt.css";');
     });
 
-    it('should add whatinput', async () => {
-      expect(testProjectConfig.architect!.build.options.scripts).toContain('node_modules/what-input/dist/what-input.js');
-    });
-
     it('should add css var ponyfill', async () => {
       expect(testSetup.appTree.readContent('projects/aquila-testing/src/polyfills.ts')).toContain('cssVars(');
     });

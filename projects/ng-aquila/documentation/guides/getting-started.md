@@ -51,7 +51,7 @@ You can also install ng-aquila manually.
     ```
     cd my-aposin-project
     npm install @aposin/ng-aquila
-    npm install @angular/cdk@10 what-input
+    npm install @angular/cdk@10
     ```
 
     Depending on your needs, you may also install
@@ -62,25 +62,7 @@ You can also install ng-aquila manually.
 
     You can check the supported versions of peer dependencies [here](https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json).
 
-3. **Add what-input script**
-
-    In order for the keyboard focus to work, the what-input script needs to be added to the `angular.json`:
-
-    ```json
-    "architect": {
-      "build": {
-        "builder": "@angular-devkit/build-angular:browser",
-        "options": {
-          // ...
-          "scripts": [{
-            "input": "node_modules/what-input/dist/what-input.js"
-          }]
-        }
-      }
-    }
-    ```
-
-4. **Add base styles**
+3. **Add base styles**
 
     Add the styles to the `angular.json`. You need the base styles ('normalize.css') and a theme file ('aposin.css' or 'expert.css'):
 
@@ -108,7 +90,7 @@ You can also install ng-aquila manually.
     }
     ```
 
-5. **Add NxExpertModule (optional)**
+4. **Add NxExpertModule (optional)**
 
     In an expert/b2b application you also need the `NxExpertModule` to your `app.module.ts`. More information can be found on the [documentation page about the expert module](./documentation/config/overview).
 
@@ -126,7 +108,7 @@ You can also install ng-aquila manually.
     export class AppModule {}
     ```
 
-6. **Support for IE11 (optional)**
+5. **Support for IE11 (optional)**
 
     If you need to support IE11, a polyfill is needed:
 

@@ -9,8 +9,6 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import * as chalk from 'chalk';
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { Schema } from './schema';
-import { parseJsonAst } from '@angular-devkit/core';
-import { isJsonAstObject } from '../utils/utils';
 
 export default function (options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
@@ -20,8 +18,7 @@ export default function (options: Schema): Rule {
       addAposinTheme(options),
       addCdkStyles(options),
       addCdkA11yStyles(options),
-      addPonyfillToPolyfills(options),
-      addAquilaScripts(options)
+      addPonyfillToPolyfills(options)
     ]);
   };
 }
@@ -68,48 +65,6 @@ function addCdkStyles(options: Schema) {
 
 function addCdkA11yStyles(options: Schema) {
   return addStyles(options, 'a11y-prebuilt.css', '@import "@angular/cdk/a11y-prebuilt.css";');
-}
-
-function addAquilaScripts(options: Schema) {
-  return addScripts(options, 'what-input', 'node_modules/what-input/dist/what-input.js');
-}
-
-function addScripts(options: Schema, scriptName: string, scriptPath: string) {
-  return (host: Tree) => {
-    try {
-      const angularJson = 'angular.json';
-      if (!host.exists(angularJson)) {
-        throw new Error(`Could not find ${angularJson}`);
-      }
-      const angularJsonFile = host.read(angularJson);
-      if (!angularJsonFile) {
-        throw new Error(`Failed to read ${angularJson} content`);
-      }
-      const jsonAst = parseJsonAst(angularJsonFile.toString());
-      if (!isJsonAstObject(jsonAst)) {
-        throw new Error(`Failed to parse JSON for ${angularJson}`);
-      }
-      const workspace = getWorkspace(host);
-      const project = getProjectFromWorkspace(workspace, options.project);
-      const buildOptions = getProjectTargetOptions(project, 'build');
-      if (!buildOptions.scripts) {
-        buildOptions.scripts = [scriptPath];
-      } else {
-        const existingScripts = buildOptions.scripts.map((s: any) => typeof s === 'string' ? s : s.input);
-        for (const path of existingScripts.entries()) {
-          // If the given asset is already specified in the scripts, we don't need to do anything.
-          if (path === scriptPath) {
-            return;
-          }
-        }
-        buildOptions.scripts.push(scriptPath);
-      }
-      host.overwrite('angular.json', JSON.stringify(workspace, null, 2));
-    } catch (e) {
-      console.warn(chalk.red(`Failed to add the script "${scriptName}" to scripts array of "angular.json" file.`));
-    }
-    return host;
-  };
 }
 
 function addStyles(options: Schema, path: string, importString: string) {

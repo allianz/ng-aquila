@@ -147,9 +147,6 @@
               "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
               "node_modules/highlight.js/styles/tomorrow-night-blue.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
-            ],
-            "scripts": [
-              "node_modules/what-input/dist/what-input.js"
             ]
           },
           "configurations": {

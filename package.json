@@ -73,7 +73,6 @@
     "parse-color": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.3",
-    "what-input": "^5.2.10",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
