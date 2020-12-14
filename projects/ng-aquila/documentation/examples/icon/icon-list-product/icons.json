@@ -1643,6 +1643,82 @@
     {
       "name": "c-icon--product-media",
       "unicode": "eb74"
+    },
+    {
+      "name": "c-icon--product-broken-mirror",
+      "unicode": "eb75"
+    },
+    {
+      "name": "c-icon--product-compass",
+      "unicode": "eb76"
+    },
+    {
+      "name": "c-icon--product-health-paw",
+      "unicode": "eb77"
+    },
+    {
+      "name": "c-icon--product-law-internet",
+      "unicode": "eb78"
+    },
+    {
+      "name": "c-icon--product-law-job",
+      "unicode": "eb79"
+    },
+    {
+      "name": "c-icon--product-law-key",
+      "unicode": "eb80"
+    },
+    {
+      "name": "c-icon--product-law-traffic",
+      "unicode": "eb81"
+    },
+    {
+      "name": "c-icon--product-legal-protection",
+      "unicode": "eb82"
+    },
+    {
+      "name": "c-icon--product-oil-tank",
+      "unicode": "eb83"
+    },
+    {
+      "name": "c-icon--product-shield-house",
+      "unicode": "eb85"
+    },
+    {
+      "name": "c-icon--product-shield-key",
+      "unicode": "eb86"
+    },
+    {
+      "name": "c-icon--product-shield-paw",
+      "unicode": "eb87"
+    },
+    {
+      "name": "c-icon--chatbot-default-o",
+      "unicode": "eb88"
+    },
+    {
+      "name": "c-icon--chatbot-joy-o",
+      "unicode": "eb89"
+    },
+    {
+      "name": "c-icon--chatbot-slightsmile-o",
+      "unicode": "eb90"
+    },
+    {
+      "name": "c-icon--chatbot-think-o",
+      "unicode": "eb91"
+    },
+    {
+      "name": "c-icon--chatbot-thrilled-o",
+      "unicode": "eb92"
+    },
+    {
+      "name": "c-icon--product-car-accident-abroad",
+      "unicode": "eb93"
+    },
+    {
+      "name": "c-icon--switch",
+      "unicode": "eb94"
     }
   ]
 }
