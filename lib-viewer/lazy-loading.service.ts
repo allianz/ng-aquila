@@ -33,6 +33,9 @@
   case 'autocomplete': return import('../examples/autocomplete/autocomplete-examples.module').then(m => m.AutocompleteExamplesModule);
   
 
+  case 'avatar': return import('../examples/avatar/avatar-examples.module').then(m => m.AvatarExamplesModule);
+  
+
   case 'badge': return import('../examples/badge/badge-examples.module').then(m => m.BadgeExamplesModule);
   
 
@@ -99,6 +102,9 @@
   case 'image': return import('../examples/image/image-examples.module').then(m => m.ImageExamplesModule);
   
 
+  case 'indicator': return import('../examples/indicator/indicator-examples.module').then(m => m.IndicatorExamplesModule);
+  
+
   case 'input': return import('../examples/input/input-examples.module').then(m => m.InputExamplesModule);
   
 
@@ -160,6 +166,9 @@
   
 
   case 'rating': return import('../examples/rating/rating-examples.module').then(m => m.RatingExamplesModule);
+  
+
+  case 'rtl': return import('../examples/rtl/rtl-examples.module').then(m => m.RTLExamplesModule);
   
 
   case 'sidebar': return import('../examples/sidebar/sidebar-examples.module').then(m => m.SidebarExamplesModule);

@@ -1,0 +1,41 @@
+<p class="docs-markdown--p">All components in our Component Library have built-in support for right-to-left (RTL) locales.</p>
+<p class="docs-markdown--p">There are 2 requirements for the component to display and behave properly in RTL environment:</p>
+<ol>
+<li class="docs-markdown--li">Your app should import <code>BidiModule</code> from <a href="https://material.angular.io/cdk/bidi/overview">Angular CDK</a> in the <code>app.module.ts</code>:<pre><code class="language-ts"><span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">import</span> { BidiModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/bidi&#x27;</span>;
+
+<span class="hljs-meta">@NgModule</span>({
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-comment">// ...</span>
+    BidiModule
+  ],
+  <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
+</code></pre>
+</li>
+<li class="docs-markdown--li">Any of the parent containers of the component needs to have <code>dir</code> HTML attribute set to <code>rtl</code>. For most cases a good place to add <code>dir</code> attribute is on the <code>app.component.ts/.html</code> level.</li>
+</ol>
+<!-- HINT: for some reason there's no space between end of the list and an example, so have to go with linebreak -->
+<br>
+<div nx-docs-example="rtl-basic" config="{}">exampleID: rtl-basic</div>
+<h3 id="component-examples-in-rtl" class="docs-markdown--h3">Component examples in RTL</h3>
+<p class="docs-markdown--p">To view components in an RTL setting in the documentation, add <code>?dir=rtl</code> to the end of the component url, e.g. <code>documentation/accordion/overview?dir=rtl</code>. Note that direction will be applied only to the content of examples and not to the whole documentation page. The RTL query is persisted between navigations.</p>
+<h3 id="dynamic-change" class="docs-markdown--h3">Dynamic change</h3>
+<p class="docs-markdown--p">There might be situations, when you want to change the directionality of your application dynamically.
+For example, when you have to support both RTL and LTR scripts within the same app and allow the user to switch through a dropdown or any other way of user input.</p>
+<p class="docs-markdown--p">Since we are using <a href="https://material.angular.io/cdk/bidi/overview">Angular CDK Bidirectionality module</a> under the hood to provide RTL support, you should pay attention to some constraints:</p>
+<ol>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p">In order for the components to properly pick up the change, it has to be happening within the angular app.
+This means, if you try to update the <code>dir</code> attribute through DOM API, like <code>document.querySelector('.app-container').dir = 'rtl'</code>, this change will not be properly picked up, which will result in degraded styles and in some cases render components unusable.
+One way of making the app properly pick up the <code>dir</code> change is to use <a href="https://angular.io/guide/property-binding">property binding</a> on the container element.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p">Direction change detection will not fire for <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags, since they are assumed to be static.</p>
+</li>
+</ol>
+<div nx-docs-example="rtl-dynamic" config="{}">exampleID: rtl-dynamic</div>
+<h3 id="modals" class="docs-markdown--h3">Modals</h3>
+<p class="docs-markdown--p">Almost all components of our library do not require any extra effort from the developer to work properly in an RTL environment, except setting the direction on the app or container components.
+The only exception is the <code>NxDialogService</code>, which require you to pass direction as a config parameter when opening a dialog. You will find more details on the <a href="./documentation/modal/overview#directionality">Modal documentation page</a>.</p>

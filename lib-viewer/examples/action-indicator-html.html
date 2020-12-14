@@ -1,0 +1,11 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxAction</span>
+  *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let action of actions&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;onSelect(action)&quot;</span>
+  [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;action === selectedAction&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">nxActionIcon</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;action.icon&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label-content&quot;</span>&gt;</span>
+    {{action.label}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;action.notification&quot;</span>
+      [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;getAriaLabel(action.notificationCount)&quot;</span>&gt;</span>{{ getIndicatorText(action.notificationCount) }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

@@ -36,7 +36,7 @@ ng new my-aposin-project
 <p class="docs-markdown--p"><strong>Install ng-aquila and dependencies</strong></p>
 <pre><code>cd my-aposin-project
 npm install @aposin/ng-aquila
-npm install @angular/cdk@10 what-input
+npm install @angular/cdk@10
 </code></pre>
 <p class="docs-markdown--p">Depending on your needs, you may also install</p>
 <ul class="docs-markdown--ul">
@@ -48,22 +48,6 @@ npm install @angular/cdk@10 what-input
 </li>
 </ul>
 <p class="docs-markdown--p">You can check the supported versions of peer dependencies <a href="https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json">here</a>.</p>
-</li>
-<li class="docs-markdown--li">
-<p class="docs-markdown--p"><strong>Add what-input script</strong></p>
-<p class="docs-markdown--p">In order for the keyboard focus to work, the what-input script needs to be added to the <code>angular.json</code>:</p>
-<pre><code class="language-json">&quot;architect&quot;: {
-  &quot;build&quot;: {
-    &quot;builder&quot;: &quot;@angular-devkit/build-angular:browser&quot;,
-    &quot;options&quot;: {
-      // ...
-      &quot;scripts&quot;: [{
-        &quot;input&quot;: &quot;node_modules/what-input/dist/what-input.js&quot;
-      }]
-    }
-  }
-}
-</code></pre>
 </li>
 <li class="docs-markdown--li">
 <p class="docs-markdown--p"><strong>Add base styles</strong></p>

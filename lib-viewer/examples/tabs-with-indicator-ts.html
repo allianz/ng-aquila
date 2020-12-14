@@ -1,0 +1,56 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Tab group with indicators
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-with-indicator-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-with-indicator-example.css&#x27;</span>]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsWithIndicatorExampleComponent</span> </span>{
+
+  tabs = [
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;First tab&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">false</span>
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Second tab&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Third tab&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">2</span>
+    },
+    {
+      <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Fourth tab&#x27;</span>,
+      <span class="hljs-attr">notification</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">notificationCount</span>: <span class="hljs-number">105</span>
+    }
+  ];
+
+  <span class="hljs-function"><span class="hljs-title">setSelectedTab</span>(<span class="hljs-params">selectedTab: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-keyword">let</span> tab = <span class="hljs-built_in">this</span>.tabs[selectedTab];
+    tab.notification = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">if</span> (tab.notificationCount) {
+      tab.notificationCount = <span class="hljs-number">0</span>;
+    }
+  }
+
+  <span class="hljs-function"><span class="hljs-title">getIndicatorText</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-keyword">if</span> (!notificationCount) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
+    }
+    <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> ? <span class="hljs-string">&#x27;99+&#x27;</span> : notificationCount;
+  }
+
+  <span class="hljs-function"><span class="hljs-title">getAriaLabel</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-keyword">if</span> (!notificationCount) {
+      <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;new notifications available&#x27;</span>;
+    }
+    <span class="hljs-keyword">return</span> notificationCount &gt; <span class="hljs-number">99</span> 
+        ? <span class="hljs-string">&#x27;more than 99 new notifications available&#x27;</span>
+        : notificationCount + <span class="hljs-string">&#x27; new notifications available&#x27;</span>;
+  }
+}

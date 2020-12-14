@@ -10,6 +10,9 @@
       "id": "autocomplete"
     },
     {
+      "id": "avatar"
+    },
+    {
       "id": "badge"
     },
     {
@@ -86,6 +89,9 @@
     },
     {
       "id": "image"
+    },
+    {
+      "id": "indicator"
     },
     {
       "id": "input"
@@ -244,7 +250,8 @@
       "title": "Action",
       "examples": [
         "action",
-        "action-with-router"
+        "action-with-router",
+        "action-indicator"
       ],
       "category": "components",
       "apiFile": "lib-viewer/api/action.html",
@@ -269,6 +276,22 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "examples": [
+        "avatar",
+        "avatar-button",
+        "avatar-size",
+        "avatar-colors"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/avatar.html",
+      "overviewFile": "lib-viewer/overview/avatar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
     },
     {
       "id": "badge",
@@ -326,6 +349,7 @@
         "button-negative",
         "button-with-icon",
         "button-icon",
+        "button-icon-indicator",
         "button-plain"
       ],
       "category": "components",
@@ -459,6 +483,7 @@
         "context-menu-basic",
         "context-menu-programmatic",
         "context-menu-icons",
+        "context-menu-indicator",
         "context-menu-nested",
         "context-menu-disabled",
         "context-menu-lazy",
@@ -727,6 +752,24 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "indicator",
+      "title": "Indicator",
+      "examples": [
+        "indicator",
+        "action-indicator",
+        "context-menu-indicator",
+        "button-icon-indicator",
+        "tabs-with-indicator",
+        "tabs-nav-bar-with-indicator"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/indicator.html",
+      "overviewFile": "lib-viewer/overview/indicator.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress"
     },
     {
       "id": "input",
@@ -1105,6 +1148,21 @@
       "stable": "done"
     },
     {
+      "id": "rtl",
+      "title": "Right-to-left support",
+      "examples": [
+        "rtl-basic",
+        "rtl-dynamic"
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/rtl.html",
+      "overviewFile": "lib-viewer/overview/rtl.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress",
+      "noApi": true
+    },
+    {
       "id": "sidebar",
       "title": "Side Navigation",
       "examples": [
@@ -1244,6 +1302,8 @@
         "tabs-responsive",
         "tabs-appearance",
         "tabs-nav-bar-appearance",
+        "tabs-with-indicator",
+        "tabs-nav-bar-with-indicator",
         "tabs-auto-manual-select",
         "tabs-injection-token",
         "tabs-nav-bar-injection-token"
@@ -1517,6 +1577,17 @@
       "url": "lib-viewer/examples/action-###TYPE###.html"
     },
     {
+      "id": "action-indicator",
+      "title": "Indicator Example",
+      "module": "action",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/action-indicator-###TYPE###.html"
+    },
+    {
       "id": "action-with-router",
       "title": "Action with Router Example",
       "module": "action",
@@ -1581,6 +1652,50 @@
         "css"
       ],
       "url": "lib-viewer/examples/autocomplete-outline-###TYPE###.html"
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar example",
+      "module": "avatar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/avatar-###TYPE###.html"
+    },
+    {
+      "id": "avatar-button",
+      "title": "Button example",
+      "module": "avatar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/avatar-button-###TYPE###.html"
+    },
+    {
+      "id": "avatar-colors",
+      "title": "Colors example",
+      "module": "avatar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/avatar-colors-###TYPE###.html"
+    },
+    {
+      "id": "avatar-size",
+      "title": "Size example",
+      "module": "avatar",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/avatar-size-###TYPE###.html"
     },
     {
       "id": "badge",
@@ -1669,6 +1784,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/button-icon-###TYPE###.html"
+    },
+    {
+      "id": "button-icon-indicator",
+      "title": "Icon button with indicators",
+      "module": "button",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/button-icon-indicator-###TYPE###.html"
     },
     {
       "id": "button-large",
@@ -2285,6 +2411,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-icons-###TYPE###.html"
+    },
+    {
+      "id": "context-menu-indicator",
+      "title": "Context Menu with indicators",
+      "module": "context-menu",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-indicator-###TYPE###.html"
     },
     {
       "id": "context-menu-lazy",
@@ -3429,6 +3566,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/image-rounded-###TYPE###.html"
+    },
+    {
+      "id": "indicator",
+      "title": "Indicator example",
+      "module": "indicator",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/indicator-###TYPE###.html"
     },
     {
       "id": "input",
@@ -4905,6 +5053,28 @@
       "url": "lib-viewer/examples/rating-template-###TYPE###.html"
     },
     {
+      "id": "rtl-basic",
+      "title": "RTL Basic Example",
+      "module": "rtl",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/rtl-basic-###TYPE###.html"
+    },
+    {
+      "id": "rtl-dynamic",
+      "title": "RTL Dynamic Example",
+      "module": "rtl",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/rtl-dynamic-###TYPE###.html"
+    },
+    {
       "id": "sidebar",
       "title": "Side navigation with Actions",
       "module": "sidebar",
@@ -5455,6 +5625,17 @@
       "url": "lib-viewer/examples/tabs-nav-bar-injection-token-###TYPE###.html"
     },
     {
+      "id": "tabs-nav-bar-with-indicator",
+      "title": "Tabs Navbar with Indicators",
+      "module": "tabs",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tabs-nav-bar-with-indicator-###TYPE###.html"
+    },
+    {
       "id": "tabs-negative",
       "title": "Negative styling",
       "module": "tabs",
@@ -5508,6 +5689,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/tabs-template-###TYPE###.html"
+    },
+    {
+      "id": "tabs-with-indicator",
+      "title": "Tab group with indicators",
+      "module": "tabs",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tabs-with-indicator-###TYPE###.html"
     },
     {
       "id": "taglist",
