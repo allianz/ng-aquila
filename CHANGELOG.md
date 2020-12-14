@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.7.0](https://github.com/aposin/ng-aquila/compare/v10.6.0...v10.7.0) (2020-12-14)
+
+
+### Bug Fixes
+
+* **accordion:** proper margins for rtl extra-light ver ([59d692a](https://github.com/aposin/ng-aquila/commit/59d692a575582e1a1d7214da8853be86d03d39a4))
+* **accordion:** proper padding tokens for rtl ([a81706b](https://github.com/aposin/ng-aquila/commit/a81706ba1289efe7626757422a956d9dc17f2b0c))
+* **datefield:** no error when parsing invalid date ([57a28fc](https://github.com/aposin/ng-aquila/commit/57a28fc62625dd54b3c825439b3e847b48983475))
+* **formfield:** float label to start for outline formfields ([f068094](https://github.com/aposin/ng-aquila/commit/f06809420b9d939965854b62d8d167b23d91ab6b))
+* **tooltip:** add a11y styles to global css, update docs ([2ce3923](https://github.com/aposin/ng-aquila/commit/2ce392304d75da8a8fca0e689de76d827b529165))
+
+
+### Features
+
+* **avatar:** add component ([0d075e8](https://github.com/aposin/ng-aquila/commit/0d075e8c973fa2e22bd30858848a39ba26b35cf2))
+* **comparison-table:** use CDK FocusMonitor for focus style ([85d47b8](https://github.com/aposin/ng-aquila/commit/85d47b8932ce46ee32a4ec396d758d79bbda3e05))
+* **indicator:** add indicator component ([3311a94](https://github.com/aposin/ng-aquila/commit/3311a9426305b635e1fe9f40e4b397a80252c498))
+* **various:** use CDK FocusMonitor for keyboard focus style ([587d86d](https://github.com/aposin/ng-aquila/commit/587d86d68e54dd14622bdb80726584c684e24b9b))
+
+
+### Reverts
+
+* Revert "fix(tooltip): add a11y styles to global css, update docs (#151)" (#154) ([01b936c](https://github.com/aposin/ng-aquila/commit/01b936caf881a14fa00895dc7d936d1d564c66c7))
+
+
+
 # [10.6.0](https://github.com/aposin/ng-aquila/compare/v10.5.0...v10.6.0) (2020-12-04)
 
 
