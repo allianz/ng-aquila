@@ -1,10 +1,11 @@
 import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ManifestService } from '../../../service/manifest.service';
 import { ComponentDescriptor } from '../../../core/manifest';
 import { ComponentService } from '../../../service/component.service';
+import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 
 export interface DocItem {
   id: string;
@@ -47,7 +48,8 @@ export class NxvComponentPage {
   constructor(private _route: ActivatedRoute,
     private router: Router,
     private manifestService: ManifestService,
-    public componentService: ComponentService
+    public componentService: ComponentService,
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks
   ) {
     // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
     // parent route for the section (material/cdk).
@@ -62,19 +64,19 @@ export class NxvComponentPage {
           // go to overview if not found
           this.router.navigate(['/']);
         }
-      });
+    });
 
-      componentService.current
-        .pipe(
-          filter(current => Boolean(current)),
-          takeUntil(this._destroyed)
-        ).subscribe(component => {
-          const apiTab = this.tabs.find(tab => tab.label === 'api');
-          apiTab.show = component.noApi ? false : true;
-        });
-    }
+    componentService.current
+      .pipe(
+        filter(current => Boolean(current)),
+        takeUntil(this._destroyed)
+      ).subscribe(component => {
+        const apiTab = this.tabs.find(tab => tab.label === 'api');
+        apiTab.show = component.noApi ? false : true;
+    });
+  }
 
-    get activeTabs() {
-      return this.tabs.filter(tab => tab.show);
-    }
+  get activeTabs() {
+    return this.tabs.filter(tab => tab.show);
+  }
 }

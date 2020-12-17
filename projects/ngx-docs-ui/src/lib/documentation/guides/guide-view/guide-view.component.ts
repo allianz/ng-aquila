@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { GuideDescriptor } from '../../../core/manifest';
+import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 import { ManifestService } from '../../../service/manifest.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class NxvGuideViewComponent {
   constructor(
     _route: ActivatedRoute,
     private manifestService: ManifestService,
-    private router: Router
+    private router: Router,
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks
   ) {
 
     // Listen for changes in the route or our manifest
@@ -41,6 +43,5 @@ export class NxvGuideViewComponent {
         this.router.navigate(['/']);
       }
     });
-
   }
 }

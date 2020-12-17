@@ -17,3 +17,7 @@
 </a>
 </nx-tab-nav-bar>
 <router-outlet></router-outlet>
+
+<nxv-feedback *ngIf="feedbackLinks"
+              [page]="(componentService.current | async)?.category === 'general' ? 'generalExplanation' : 'component'">
+</nxv-feedback>

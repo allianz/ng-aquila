@@ -162,6 +162,12 @@ $toc-width: 200px;
   }
 }
 
+::ng-deep nxv-feedback {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}
+
 @media screen and (-ms-high-contrast: active) {
   .documentation-header__main-logo,
   .documentation-header__github-logo {

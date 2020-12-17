@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxvFooterModule } from './footer/footer.module';
+import { NxvFeedbackModule } from '../feedback/feedback.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
       CommonModule,
       NxGridModule,
       NxvFooterModule,
+      NxvFeedbackModule,
       ScrollingModule
     ],
   exports: [],

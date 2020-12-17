@@ -1,0 +1,37 @@
+@import "../../../../../ng-aquila/src/shared-styles/index";
+
+:host {
+  display: block;
+
+  .desktop-box {
+    background: var(--ui-01);
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(65,65,65,.5);
+    border-radius: 4px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .mobile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--interactive-primary);
+    color: var(--text-02);
+    box-shadow: 0 2px 4px rgba(65,65,65,.5);
+    border-radius: 50%;
+    padding: 12px 0;
+    height: 48px;
+    width: 48px;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.cdk-keyboard-focused {
+      @include focus-style();
+    }
+  }
+}

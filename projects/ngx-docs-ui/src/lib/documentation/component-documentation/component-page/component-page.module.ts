@@ -13,6 +13,7 @@ import { NxvTableOfContentsModule } from '../../table-of-contents/table-of-conte
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxvFeedbackModule } from '../../feedback/feedback.module';
 
 @NgModule({
   imports: [
@@ -24,19 +25,14 @@ import { NxTabsModule } from '@aposin/ng-aquila/tabs';
     NxvTableOfContentsModule,
     ScrollingModule,
     NxBadgeModule,
-    NxTabsModule
-  ],
-  exports: [
-
+    NxTabsModule,
+    NxvFeedbackModule
   ],
   declarations: [
     NxvComponentPage,
     ComponentOverview,
     ComponentApi,
     ComponentExamples
-  ],
-  providers: [],
-  entryComponents: [
   ]
 })
 export class ComponentPageModule { }

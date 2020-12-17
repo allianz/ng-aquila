@@ -1,4 +1,3 @@
-import { LazyExampleOutletComponent } from './../lazy-example-outlet/lazy-example-outlet.component';
 import { NxvDocumentationConfig } from './../core/types';
 import { NXV_FOOTER } from './../core/tokens';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
