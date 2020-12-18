@@ -81,7 +81,12 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
    * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946
    */
   normalizeFormat(format: string | string[]): string[] {
-    const availableLocalFormats = dayjs.Ls[dayjs.locale()].formats;
+    const availableLocalFormats = dayjs.Ls[this.locale]?.formats;
+    if (!availableLocalFormats) {
+      throw new Error(
+        `NxIsoDateAdapter: The used locale "${this.locale}" is not available in this day.js instance. Please make sure the locale is imported.`
+      );
+    }
     let normalizedFormat = format;
 
     if (!Array.isArray(normalizedFormat)) {
@@ -112,11 +117,11 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         // To get a little closer to the behavior of momentjs, the following code extends
         // the list of given formats with versions were all the separators were removed
         const formatsWithoutSeparators = [...normalizedFormats].map((normalizedformat) => {
-          return normalizedformat.replace(/[^\w]/g, '');
+            return normalizedformat.replace(/[^\w]/g, '');
         });
         obj = dayjs(value, [...normalizedFormats, ...formatsWithoutSeparators], this.locale, false);
+          }
       }
-    }
 
     if (obj?.isValid() === false) {
       return '';

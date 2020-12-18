@@ -363,6 +363,9 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
         NxInputModule,
         FormsModule,
         ReactiveFormsModule
+      ],
+      providers: [
+        {provide: NX_DATE_LOCALE, useValue: 'en'}
       ]
     }).compileComponents();
   }));

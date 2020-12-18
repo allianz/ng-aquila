@@ -51,6 +51,23 @@ describe('NxIsoDateAdapter', () => {
     });
   });
 
+  describe('Localization with a different format between global day.js and the adapter', () => {
+    beforeEach(() => {
+      adapter.setLocale('de');
+      dayjs.locale('en');
+    });
+
+    it('should parse locale date with locale format (L)', () => {
+      const isoDate = adapter.parse('03.01.2020', 'L', true);
+      expect(isoDate).toMatch('2020-01-03');
+    });
+
+    it('should parse locale date with locale expanded format (LL)', () => {
+      const isoDate = adapter.parse('24. September 2020', 'LL', true);
+      expect(isoDate).toMatch('2020-09-24');
+    });
+  });
+
   it('should get year', () => {
     expect(adapter.getYear('2017-01-01')).toBe(2017);
   });
