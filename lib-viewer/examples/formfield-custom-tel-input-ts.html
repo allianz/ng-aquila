@@ -85,11 +85,11 @@
     <span class="hljs-built_in">this</span>.stateChanges.next();
   }
 
-  <span class="hljs-title">constructor</span>(<span class="hljs-params">
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
     formBuilder: FormBuilder,
     <span class="hljs-keyword">private</span> _focusMonitor: FocusMonitor,
     <span class="hljs-keyword">private</span> _elementRef: ElementRef&lt;HTMLElement&gt;,
-    <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">public</span> ngControl: NgControl</span>) {
+    <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">public</span> ngControl: NgControl</span>)</span> {
 
     <span class="hljs-built_in">this</span>.parts = formBuilder.group({
       <span class="hljs-attr">area</span>: [<span class="hljs-literal">null</span>, [Validators.required, Validators.minLength(<span class="hljs-number">3</span>), Validators.maxLength(<span class="hljs-number">3</span>)]],

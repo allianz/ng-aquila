@@ -1059,6 +1059,8 @@
   --sidepanel-background-color: var(--ui-02);
   --sidepanel-close-icon-color: var(--text-01);
   --sidepanel-floating-shadow: none;
+  --sidepanel-light-border-color: var(--ui-04);
+  --sidepanel-light-background-color: var(--ui-03);
   --sidepanel-header-font-size: var(--heading-05-font-size);
   --sidepanel-header-line-height: var(--heading-05-line-height);
   --sidepanel-header-font-weight: var(--heading-05-font-weight);

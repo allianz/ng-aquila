@@ -5,11 +5,33 @@
 <p class="docs-markdown--p">Please note that the sidepanel is currently <strong>not recommended for mobile usage</strong>.</p>
 <p class="docs-markdown--p">The <code>nx-sidepanel</code> is a container that is fixed to the right edge of the viewport to provide content that supports the main content area.</p>
 <p class="docs-markdown--p"><code>&lt;nx-sidepanel-header&gt;</code> provides a place that will stay fixed on top, when the bottom part of <code>&lt;nx-sidepanel-content&gt;</code> is scrolled down.</p>
-<h3 id="floating-sidepanel" class="docs-markdown--h3">Floating sidepanel</h3>
+<h3 id="color-variations" class="docs-markdown--h3">Color variations</h3>
+<p class="docs-markdown--p">There are two different color variations available.</p>
+<div class="docs-public">
+<h4 id="dark-version" class="docs-markdown--h4">Dark version</h4>
+<p class="docs-markdown--p">The dark version is the default one:</p>
+</div>
+<div class="docs-private">
+<h4 id="grey-sidepanel" class="docs-markdown--h4">Grey sidepanel</h4>
+<p class="docs-markdown--p">The default color of the sidepanel is grey:</p>
+</div>
+<div nx-docs-example="sidepanel-dark" config="{}">exampleID: sidepanel-dark</div>
+<div class="docs-public">
+<h4 id="light-version" class="docs-markdown--h4">Light version</h4>
+<p class="docs-markdown--p">With <code>appearance=&quot;light&quot;</code> you get a light version of the sidepanel.</p>
+</div>
+<div class="docs-private">
+<h4 id="white-sidepanel" class="docs-markdown--h4">White sidepanel</h4>
+<p class="docs-markdown--p">With <code>appearance=&quot;light&quot;</code> you get a white version of the sidepanel.</p>
+</div>
+<div nx-docs-example="sidepanel-light" config="{}">exampleID: sidepanel-light</div>
+<h3 id="positioning" class="docs-markdown--h3">Positioning</h3>
+<h4 id="floating-sidepanel" class="docs-markdown--h4">Floating sidepanel</h4>
 <p class="docs-markdown--p">A floating sidepanel does not affect the actual layout. It places itself at the outer right edge of the screen.</p>
 <div nx-docs-example="sidepanel-floating" config="{}">exampleID: sidepanel-floating</div>
-<h3 id="static-sidepanel" class="docs-markdown--h3">Static sidepanel</h3>
+<h4 id="static-sidepanel" class="docs-markdown--h4">Static sidepanel</h4>
 <p class="docs-markdown--p">With <code>[static]=&quot;true&quot;</code> the sidepanel can be used as a static element on the page. To integrate this correctly, you can use the surrounding example container shown in the example.</p>
 <div nx-docs-example="sidepanel-static" config="{}">exampleID: sidepanel-static</div>
-<h3 id="background-of-the-sidepanel" class="docs-markdown--h3">Background of the sidepanel</h3>
-<p class="docs-markdown--p">You can customize the background of the sidepanel with the <code>sidepanel-background-color</code> theming token or applying a background color to your content.</p>
+<h3 id="including-tabs-with-a-fixed-tabs-header" class="docs-markdown--h3">Including tabs with a fixed tabs-header</h3>
+<p class="docs-markdown--p">The sidepanel can contain a lot of different content. This is an example how tabs with a fixed tab-header can be used:</p>
+<div nx-docs-example="sidepanel-with-tabs" config="{}">exampleID: sidepanel-with-tabs</div>

@@ -1183,8 +1183,11 @@
       "id": "sidepanel",
       "title": "Sidepanel",
       "examples": [
+        "sidepanel-dark",
+        "sidepanel-light",
         "sidepanel-floating",
-        "sidepanel-static"
+        "sidepanel-static",
+        "sidepanel-with-tabs"
       ],
       "category": "components",
       "apiFile": "lib-viewer/api/sidepanel.html",
@@ -5130,6 +5133,17 @@
       "url": "lib-viewer/examples/sidebar-resizeable-###TYPE###.html"
     },
     {
+      "id": "sidepanel-dark",
+      "title": "Default appearance",
+      "module": "sidepanel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-dark-###TYPE###.html"
+    },
+    {
       "id": "sidepanel-floating",
       "title": "Floating sidepanel example",
       "module": "sidepanel",
@@ -5141,6 +5155,17 @@
       "url": "lib-viewer/examples/sidepanel-floating-###TYPE###.html"
     },
     {
+      "id": "sidepanel-light",
+      "title": "Light color variant",
+      "module": "sidepanel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-light-###TYPE###.html"
+    },
+    {
       "id": "sidepanel-static",
       "title": "Static sidepanel example",
       "module": "sidepanel",
@@ -5150,6 +5175,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/sidepanel-static-###TYPE###.html"
+    },
+    {
+      "id": "sidepanel-with-tabs",
+      "title": "Example with tabs",
+      "module": "sidepanel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-with-tabs-###TYPE###.html"
     },
     {
       "id": "slider-basic",
