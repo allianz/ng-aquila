@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  height: 400px;
+  background-color: var(--ui-02);
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.my-sidepanel {
+  width: 240px;
+}
+
+.my-sidepanel-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 32px 24px 32px;
+}
+
+.my-sidepanel-content {
+  padding: 0 32px 32px 32px;
+}

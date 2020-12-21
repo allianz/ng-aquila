@@ -4,7 +4,7 @@ import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxSidepanelModule } from './sidepanel.module';
-import { NxSidepanelComponent, PositionType } from './sidepanel';
+import { Appearance, NxSidepanelComponent, PositionType } from './sidepanel';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -14,6 +14,7 @@ abstract class SidepanelTest {
   @ViewChild(NxSidepanelComponent) sidebarInstance: NxSidepanelComponent;
   opened: boolean = true;
   position: PositionType = 'floating';
+  appearance: Appearance = 'dark';
 }
 
 describe('NxSidepanelComponent', () => {
@@ -68,6 +69,11 @@ describe('NxSidepanelComponent', () => {
       expect(sidepanelInstance.position).toBe('floating');
       expect(sidepanelElement.nativeElement.classList).toContain('is-floating');
       expect(sidepanelElement.nativeElement.classList).not.toContain('is-static');
+    });
+
+    it('is dark by default', () => {
+      expect(sidepanelInstance.appearance).toBe('dark');
+      expect(sidepanelElement.nativeElement.classList).not.toContain('light');
     });
   });
 
@@ -148,6 +154,19 @@ describe('NxSidepanelComponent', () => {
     });
   });
 
+  describe('appearance', () => {
+    beforeEach(() => {
+      createTestComponent(ConfigurableSidepanel);
+    });
+
+    it('changes appearance on input change', () => {
+      testInstance.appearance = 'light';
+      fixture.detectChanges();
+      expect(sidepanelInstance.appearance).toBe('light');
+      expect(sidepanelElement.nativeElement.classList).toContain('light');
+    });
+  });
+
   describe('a11y', () => {
     beforeEach(() => {
       createTestComponent(BasicSidepanel);
@@ -183,7 +202,7 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
 
 @Component({
   template: `
-    <nx-sidepanel [(opened)]="opened" [position]="position">
+    <nx-sidepanel [(opened)]="opened" [position]="position" [appearance]="appearance">
       <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
       <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
     </nx-sidepanel>

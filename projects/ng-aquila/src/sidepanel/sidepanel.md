@@ -17,18 +17,63 @@ The `nx-sidepanel` is a container that is fixed to the right edge of the viewpor
 
 `<nx-sidepanel-header>` provides a place that will stay fixed on top, when the bottom part of `<nx-sidepanel-content>` is scrolled down.
 
-### Floating sidepanel
+### Color variations
+
+There are two different color variations available.
+
+<div class="docs-public">
+
+#### Dark version
+
+The dark version is the default one:
+
+</div>
+
+<div class="docs-private">
+
+#### Grey sidepanel
+
+The default color of the sidepanel is grey:
+
+</div>
+
+<!-- example(sidepanel-dark) -->
+
+<div class="docs-public">
+
+#### Light version
+
+With `appearance="light"` you get a light version of the sidepanel.
+
+</div>
+
+<div class="docs-private">
+
+#### White sidepanel
+
+With `appearance="light"` you get a white version of the sidepanel.
+
+</div>
+
+
+<!-- example(sidepanel-light) -->
+
+### Positioning
+
+#### Floating sidepanel
 
 A floating sidepanel does not affect the actual layout. It places itself at the outer right edge of the screen.
 
 <!-- example(sidepanel-floating) -->
 
-### Static sidepanel
+#### Static sidepanel
 
 With `[static]="true"` the sidepanel can be used as a static element on the page. To integrate this correctly, you can use the surrounding example container shown in the example.
 
 <!-- example(sidepanel-static) -->
 
-### Background of the sidepanel
+### Including tabs with a fixed tabs-header
 
-You can customize the background of the sidepanel with the `sidepanel-background-color` theming token or applying a background color to your content.
+The sidepanel can contain a lot of different content. This is an example how tabs with a fixed tab-header can be used: 
+
+<!-- example(sidepanel-with-tabs) -->

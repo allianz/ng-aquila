@@ -14,14 +14,18 @@ import { NxSidepanelHeaderComponent } from './sidepanel-header';
 /** Type for the available position values. */
 export type PositionType = 'floating' | 'static';
 
+/** Type for the appearance of the sidepanel. */
+export type Appearance = 'light' | 'dark';
+
 @Component({
   selector: 'nx-sidepanel',
-  templateUrl: './sidepanel.html',
+  template: '<ng-content></ng-content>',
   styleUrls: ['./sidepanel.scss'],
   host: {
     '[class.is-closed]': '!opened',
     '[class.is-static]': 'position === "static"',
     '[class.is-floating]': 'position === "floating"',
+    '[class.light]': 'appearance === "light"',
     'role': 'complementary'
   },
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -59,6 +63,18 @@ export class NxSidepanelComponent {
   }
   get position(): PositionType {
     return this._position;
+  }
+
+  private _appearance: Appearance = 'dark';
+
+  /** Sets the appearance of the sidepanel. Default: dark. */
+  @Input()
+  set appearance(value: Appearance) {
+    this._appearance = value;
+    this._changeDetectorRef.markForCheck();
+  }
+  get appearance(): Appearance {
+    return this._appearance;
   }
 
   /** Toggles the opened state of the sidepanel. */

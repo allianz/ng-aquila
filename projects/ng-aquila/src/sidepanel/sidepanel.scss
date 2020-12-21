@@ -25,6 +25,16 @@
     display: none;
   }
 
+  &.light {
+    @include var(background, sidepanel-light-background-color);
+    border-left: 1px solid var(--sidepanel-light-border-color);
+
+    [dir="rtl"] & {
+      border-left: unset;
+      border-right: 1px solid var(--sidepanel-light-border-color);
+    }
+  }
+
   @media screen and (-ms-high-contrast: active) {
     border-left: 1px solid windowText;
 
