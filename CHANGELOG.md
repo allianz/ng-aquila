@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.8.0](https://github.com/aposin/ng-aquila/compare/v10.7.0...v10.8.0) (2020-12-21)
+
+
+### Bug Fixes
+
+* **iso-date-adapter:** use the locale of the date adapter ([#152](https://github.com/aposin/ng-aquila/issues/152)) ([cd55c93](https://github.com/aposin/ng-aquila/commit/cd55c939f04c90d1c7bfe4567e592d6820d4d896))
+
+
+### Features
+
+* **sidepanel:** add light color variant ([#156](https://github.com/aposin/ng-aquila/issues/156)) ([7b0959f](https://github.com/aposin/ng-aquila/commit/7b0959f219d0fe2844abff196c9136b4d91ad277))
+
+
+
 # [10.7.0](https://github.com/aposin/ng-aquila/compare/v10.6.0...v10.7.0) (2020-12-14)
 
 
