@@ -18,6 +18,7 @@ import { DemoThemingService } from './demo-theming.service';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
+import { TopInfoComponent } from './top-info/top-info.component';
 
 const ROUTES = [
   {
@@ -59,7 +60,8 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     NxvDocumentationModule.forRoot(
       {
         welcomeComponent: WelcomeComponent,
-        footerComponent: FooterComponent
+        footerComponent: FooterComponent,
+        topInfoComponent: TopInfoComponent
       }
     ),
     BrowserAnimationsModule,

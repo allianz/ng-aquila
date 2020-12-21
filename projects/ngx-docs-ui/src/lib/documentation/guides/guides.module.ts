@@ -7,6 +7,7 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxvFooterModule } from '../component-documentation/footer/footer.module';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
 import { NxActionModule } from '@aposin/ng-aquila/action';
+import { NxvTopInfoModule } from '../component-documentation/top-info/top-info.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NxActionModule } from '@aposin/ng-aquila/action';
     NxGridModule,
     NxvFooterModule,
     NxSidebarModule,
-    NxActionModule
+    NxActionModule,
+    NxvTopInfoModule
   ],
   exports: [],
   declarations: [

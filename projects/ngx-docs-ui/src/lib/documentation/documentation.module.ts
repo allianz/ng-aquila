@@ -1,5 +1,5 @@
 import { NxvDocumentationConfig } from './../core/types';
-import { NXV_FOOTER } from './../core/tokens';
+import { NXV_FOOTER, NXV_TOP_INFO } from './../core/tokens';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -87,7 +87,8 @@ export class NxvDocumentationModule {
         ManifestService,
         ComponentService,
       { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
-      { provide: NXV_FOOTER, useValue: args.footerComponent }
+      { provide: NXV_FOOTER, useValue: args.footerComponent },
+      { provide: NXV_TOP_INFO, useValue: args.topInfoComponent }
       ]
     };
   }
