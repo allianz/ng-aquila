@@ -32,9 +32,11 @@ import { NxContextMenuItemComponent } from './context-menu-item.component';
 import { NxContextMenuComponent } from './context-menu.component';
 
 /** Default top padding of the menu panel. */
-export const MENU_PANEL_TOP_PADDING = 16;
+export const MENU_PANEL_TOP_PADDING = 8;
 
-export const MENU_PANEL_OFFSET = 8;
+export const MENU_PANEL_OFFSET_Y = 8;
+
+export const MENU_PANEL_OFFSET_X = 8;
 
 export type NxContextMenuScrollStrategy = 'close' | 'reposition';
 
@@ -357,6 +359,7 @@ export class NxContextMenuTriggerDirective
     let originFallbackY = overlayFallbackY;
     let overlayX = originX;
     let overlayFallbackX = originFallbackX;
+    let offsetX = 0;
     let offsetY = 0;
 
     if (this.triggersSubmenu()) {
@@ -364,20 +367,22 @@ export class NxContextMenuTriggerDirective
       // to the edges of the trigger, instead of overlapping it.
       overlayFallbackX = originX = 'end';
       originFallbackX = overlayX = 'start';
+      offsetX = this.dir === 'rtl' ? -MENU_PANEL_OFFSET_X : MENU_PANEL_OFFSET_X;
       offsetY = -MENU_PANEL_TOP_PADDING;
     } else {
-      offsetY = MENU_PANEL_OFFSET;
+      offsetY = MENU_PANEL_OFFSET_Y;
       originY = 'bottom';
       originFallbackY = 'top';
     }
 
     positionStrategy.withPositions([
-      { originX, originY, overlayX, overlayY, offsetY },
+      { originX, originY, overlayX, overlayY, offsetX, offsetY },
       {
         originX: originFallbackX,
         originY,
         overlayX: overlayFallbackX,
         overlayY,
+        offsetX: -offsetX,
         offsetY
       },
       {
@@ -385,6 +390,7 @@ export class NxContextMenuTriggerDirective
         originY: originFallbackY,
         overlayX,
         overlayY: overlayFallbackY,
+        offsetX,
         offsetY: -offsetY
       },
       {
@@ -392,6 +398,7 @@ export class NxContextMenuTriggerDirective
         originY: originFallbackY,
         overlayX: overlayFallbackX,
         overlayY: overlayFallbackY,
+        offsetX: -offsetX,
         offsetY: -offsetY
       }
     ] as ConnectedPosition[]);

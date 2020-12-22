@@ -11,11 +11,11 @@
   border: none;
   outline: none;
   background: transparent;
-  padding: nx-spacer(3xs) nx-spacer(4m) nx-spacer(3xs) nx-spacer(2m);
+  padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
   @include var(color, context-menu-item-text-color);
 
   [dir="rtl"] & {
-    padding: nx-spacer(3xs) nx-spacer(2m) nx-spacer(3xs) nx-spacer(4m);
+    padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
   }
 
   @media screen and (-ms-high-contrast: active) {
@@ -66,12 +66,12 @@
   @include var(font-size, context-menu-item-expand-icon-size);
   padding-left: nx-spacer(2xs);
   margin-left: auto;
-  margin-right: - nx-spacer(s);
+  margin-right: 0;
   width: 1em;
 
   [dir="rtl"] & {
     margin-right: auto;
-    margin-left: - nx-spacer(s);
+    margin-left: 0;
     transform: rotateZ(180deg);
   }
 }

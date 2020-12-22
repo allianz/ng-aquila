@@ -10,7 +10,7 @@
 
   // Give the menu a minimum height so that the user can't
   // collapse it to zero when they scroll away.
-  min-height: nx-spacer(xl);
+  min-height: 56px;
   box-shadow: map-get($shadows, s);
   outline: none;
   overflow-y: auto;
@@ -22,8 +22,8 @@
 
 // `:not(:empty)` allows for the menu to collapse to 0x0 when it doesn't have content.
 .nx-context-menu__content:not(:empty) {
-  padding-top: nx-spacer(s);
-  padding-bottom: nx-spacer(s);
+  padding-top: nx-spacer(2xs);
+  padding-bottom: nx-spacer(2xs);
   display: flex;
   flex-direction: column;
 

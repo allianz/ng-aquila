@@ -20,7 +20,8 @@ import {
   NxContextMenuModule,
   NxContextMenuTriggerDirective,
   NxContextMenuItemComponent,
-  MENU_PANEL_OFFSET,
+  MENU_PANEL_OFFSET_X,
+  MENU_PANEL_OFFSET_Y,
   MENU_PANEL_TOP_PADDING
 } from './public-api';
 
@@ -594,7 +595,7 @@ describe('nxContextMenu', () => {
 
       // The y-position of the overlay should be unaffected, as it can already fit vertically
       expect(Math.floor(overlayRect.top))
-        .toBe(Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET),
+        .toBe(Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET_Y),
           `Expected menu top position to be unchanged if it can fit in the viewport.`);
     });
 
@@ -615,7 +616,7 @@ describe('nxContextMenu', () => {
       const overlayRect = overlayPane.getBoundingClientRect();
 
       expect(Math.floor(overlayRect.bottom))
-        .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET),
+        .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
           `Expected menu to open in "above" position if "below" position wouldn't fit.`);
 
       // The x-position of the overlay should be unaffected, as it can already fit horizontally
@@ -648,7 +649,7 @@ describe('nxContextMenu', () => {
           `Expected menu to open in "before" position if "after" position wouldn't fit.`);
 
       expect(Math.floor(overlayRect.bottom))
-        .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET),
+        .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
           `Expected menu to open in "above" position if "below" position wouldn't fit.`);
     });
 
@@ -1037,7 +1038,7 @@ describe('nxContextMenu', () => {
       const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
-      expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left));
+      expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left) - MENU_PANEL_OFFSET_X);
       expect(Math.round(triggerRect.top)).toBe(Math.round(panelRect.top) + MENU_PANEL_TOP_PADDING);
     });
 
@@ -1055,7 +1056,7 @@ describe('nxContextMenu', () => {
       const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
-      expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right));
+      expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right) + MENU_PANEL_OFFSET_X);
       expect(Math.round(triggerRect.top)).toBe(Math.round(panelRect.top) + MENU_PANEL_TOP_PADDING);
     });
 
@@ -1073,7 +1074,7 @@ describe('nxContextMenu', () => {
       const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
-      expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right));
+      expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right) + MENU_PANEL_OFFSET_X);
       expect(Math.round(triggerRect.top)).toBe(Math.round(panelRect.top) + MENU_PANEL_TOP_PADDING);
     });
 
@@ -1093,7 +1094,7 @@ describe('nxContextMenu', () => {
       const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
-      expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left));
+      expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left) - MENU_PANEL_OFFSET_X);
       expect(Math.round(triggerRect.top)).toBe(Math.round(panelRect.top) + MENU_PANEL_TOP_PADDING);
     }));
 
