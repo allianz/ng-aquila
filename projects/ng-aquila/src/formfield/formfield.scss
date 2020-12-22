@@ -122,7 +122,6 @@ $outline-padding: 7px;
   // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
   nx-icon.nx-icon--auto {
     @include var(font-size, formfield-icon-size);
-    font-weight: nx-font-weight(regular);
   }
 
   nx-icon {
