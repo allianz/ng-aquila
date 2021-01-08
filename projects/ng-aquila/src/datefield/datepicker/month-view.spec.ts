@@ -113,6 +113,19 @@ describe('NxMonthView', () => {
       expect(testComponent.selected).toEqual(new Date(2019, APR, 29));
     });
 
+    it('selects correct date when previous cell is in previous year', () => {
+      testComponent.activeDate = new Date(2020, JAN, 10);
+      fixture.detectChanges();
+
+      // adjacent cells:
+      // previous: 29 30 31 (DEC 2019)
+      const adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
+      (adjacentCells[1] as HTMLElement).click();    // click 30 DEC
+      fixture.detectChanges();
+
+      expect(testComponent.selected).toEqual(new Date(2019, DEC, 30));
+    });
+
     it('fires following selected change on following cell clicked', () => {
       testComponent.activeDate = new Date(2019, MAY, 10);
       fixture.detectChanges();
@@ -137,6 +150,32 @@ describe('NxMonthView', () => {
       fixture.detectChanges();
 
       expect(testComponent.selected).toEqual(new Date(2019, JUN, 8));
+    });
+
+    it('selects correct date when following cell is in next year', () => {
+      testComponent.activeDate = new Date(2020, DEC, 10);
+      fixture.detectChanges();
+
+      // adjacent cells:
+      // previous: 29 30 (NOV)
+      // following:
+      //    1 2 (JAN) (first row)
+      //    3 4 5 6 7 8 9 (JAN) (second row)
+
+      let adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
+      (adjacentCells[adjacentCells.length - 8] as HTMLElement).click();    // click 2 JAN
+      fixture.detectChanges();
+
+      expect(testComponent.selected).toEqual(new Date(2021, JAN, 2));
+
+      testComponent.activeDate = new Date(2020, DEC, 10);
+      fixture.detectChanges();
+
+      adjacentCells = monthViewNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
+      (adjacentCells[adjacentCells.length - 1] as HTMLElement).click();    // click 9 JAN
+      fixture.detectChanges();
+
+      expect(testComponent.selected).toEqual(new Date(2021, JAN, 9));
     });
 
     it('should mark active date', () => {

@@ -153,7 +153,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
   /** Handles when a new date is selected. */
   _dateSelected(date: number, monthsToAdd: number = 0) {
     if (this._selectedDate !== date) {
-      const selectedYear = this._dateAdapter.getYear(this.activeDate);
+      const selectedYear = this._dateAdapter.getYear(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
       const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
       const selectedDate = this._dateAdapter.createDate(selectedYear, selectedMonth, date);
 
