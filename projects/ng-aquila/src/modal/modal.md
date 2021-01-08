@@ -109,7 +109,7 @@ To get your app direction we recommend using [Directionality](https://material.a
 
 <!-- example(modal-with-direction)> -->
 
-### Accessbility
+### Accessibility
 By default, each modal has `role="dialog"` on the root element. The role can be changed to `alertdialog` via the `NxModalConfig`.
 
 The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the `NxModalConfig` as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.

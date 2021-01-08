@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ManifestService, Category } from '../../../service/manifest.service';
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'nxv-overview',
@@ -15,7 +16,8 @@ export class NxvOverviewComponent implements OnInit {
 
   constructor(
     public manifestService: ManifestService,
-    @Inject(NX_DOCS_GITHUB_LINK) private githubLinkConfig: GithubLinkConfig
+    @Inject(NX_DOCS_GITHUB_LINK) private githubLinkConfig: GithubLinkConfig,
+    private _router: Router
   ) {
     manifestService.manifest
     .subscribe(() => {
@@ -26,4 +28,8 @@ export class NxvOverviewComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  navigateToComponent(component) {
+    this._router.navigate(['/documentation', component.component.id]);
+  }
 }

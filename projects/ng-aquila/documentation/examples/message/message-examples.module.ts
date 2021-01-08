@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 
 import { NgModule } from '@angular/core';
 import { MessageBannerExampleComponent } from './message-banner/message-banner-example';
@@ -29,7 +30,9 @@ const EXAMPLES = [
     NxMessageModule,
     NxErrorModule,
     NxButtonModule,
-    CommonModule],
+    CommonModule,
+    NxHeadlineModule
+  ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
 })

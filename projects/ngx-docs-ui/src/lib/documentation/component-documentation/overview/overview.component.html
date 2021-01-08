@@ -33,7 +33,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr nxTableRow [routerLink]="['/documentation', component.component.id]"
+        <tr nxTableRow
+            [routerLink]="['/documentation', component.component.id]"
+            (keydown.ENTER)="navigateToComponent(component)"
+            (keydown.SPACE)="navigateToComponent(component)"
             *ngFor="let component of componentCategory.children"
             class="nxv-components-table__component-row"
             [class.is-deprecated]="component.component.deprecated">
