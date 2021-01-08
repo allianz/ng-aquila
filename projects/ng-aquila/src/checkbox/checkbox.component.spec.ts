@@ -191,6 +191,12 @@ describe('NxCheckboxComponent', () => {
     expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--label-large');
   });
 
+  it('focuses the checkbox when calling focus()', () => {
+    createTestComponent(BasicCheckbox);
+    checkboxInstance.focus();
+    expect(checkboxNativeElement.querySelector('.nx-checkbox__input')).toEqual(document.activeElement);
+  });
+
   describe('ngModel support', () => {
       function flushAndAssertChecked(checked: boolean) {
           fixture.detectChanges();

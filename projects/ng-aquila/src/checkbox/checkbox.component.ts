@@ -30,7 +30,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 
 let nextId = 0;
 
@@ -556,6 +556,11 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  /** Focuses the checkbox element. */
+  focus(focusOrigin?: FocusOrigin) {
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
   }
 
   /** @docs-private */
