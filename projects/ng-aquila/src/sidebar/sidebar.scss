@@ -36,7 +36,7 @@ $sidebar-width: 280px;
 }
 
 ::ng-deep .nx-sidebar__footer {
-  padding: nx-spacer(s) 0;
+  padding-bottom: 8px;
   display: flex;
   justify-content: flex-end;
   @include var(color, sidebar-footer-button-color);
@@ -45,7 +45,7 @@ $sidebar-width: 280px;
   &::after {
     content: '';
     display: block;
-    flex: 0 1 nx-spacer(m);
+    flex: 0 1 22px;
     min-width: nx-spacer(2xs);
     height: 1px;
   }
@@ -142,4 +142,8 @@ $sidebar-width: 280px;
   overflow: hidden;
   overflow-y: auto;
   padding-top: nx-spacer(s);
+
+  &:only-child {
+    padding-bottom: nx-spacer(s);
+  }
 }
