@@ -309,6 +309,12 @@ describe('NxRadioComponent', () => {
         expect(radio.negative).toBe(false);
       });
     });
+
+    it('focuses the radio when calling focus()', () => {
+      createTestComponent(BasicRadio);
+      radioInstances.toArray()[0].focus();
+      expect(fixture.nativeElement.querySelector('.nx-radio__input')).toEqual(document.activeElement);
+    });
   });
 
   describe('in radio group with ngModel', () => {

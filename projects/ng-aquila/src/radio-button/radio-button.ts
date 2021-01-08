@@ -28,7 +28,7 @@ import {
 import { Subject, Subscription } from 'rxjs';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {
@@ -357,6 +357,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
   /** An event is dispatched on each value change. */
   @Output('nxValueChange') valueChange: EventEmitter<NxRadioChange> = new EventEmitter<NxRadioChange>();
+
   private _value: any = null;
   private _checked: boolean = false;
   private _disabled: boolean = false;
@@ -474,6 +475,11 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
   registerOnTouched(onTouched: any): void {
     this.onTouchedCallback = onTouched;
+  }
+
+  /** Focuses the radio button element. */
+  focus(focusOrigin?: FocusOrigin) {
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
   }
 
   /** @docs-private */
