@@ -8,71 +8,71 @@ import { NxCircleToggleComponent } from './circle-toggle.component';
 import { dispatchTouchEvent, dispatchFakeEvent } from '../../cdk-test-utils';
 
 describe('NxToggleButton', () => {
-    let fixture: ComponentFixture<AbstractButtonToggleComponent>;
-    let toggleComponent: NxCircleToggleComponent;
-    let nativeToggleComponent: HTMLElement;
-    let input: HTMLInputElement;
-    let label: HTMLLabelElement;
+  let fixture: ComponentFixture<AbstractButtonToggleComponent>;
+  let toggleComponent: NxCircleToggleComponent;
+  let nativeToggleComponent: HTMLElement;
+  let input: HTMLInputElement;
+  let label: HTMLLabelElement;
 
-    function createTestComponent(component: Type<AbstractButtonToggleComponent>) {
-      fixture = TestBed.createComponent(component);
-      fixture.detectChanges();
-      toggleComponent = fixture.componentInstance.buttonToggle;
-      input = fixture.nativeElement.querySelector('input');
-      label = fixture.nativeElement.querySelector('label');
-      nativeToggleComponent = fixture.nativeElement.querySelector('nx-circle-toggle');
-    }
+  function createTestComponent(component: Type<AbstractButtonToggleComponent>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    toggleComponent = fixture.componentInstance.buttonToggle;
+    input = fixture.nativeElement.querySelector('input');
+    label = fixture.nativeElement.querySelector('label');
+    nativeToggleComponent = fixture.nativeElement.querySelector('nx-circle-toggle');
+  }
 
-    function click() {
-      input.click();
-      fixture.detectChanges();
-    }
+  function click() {
+    input.click();
+    fixture.detectChanges();
+  }
 
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          SimpleCircleToggleButtonComponent,
-          PreselectedCircleToggleButtoncComponent,
-          NgModelToggleButtonComponent,
-          ReactiveToggleButtonComponent,
-          DisabledToggleButtonComponent,
-          SvgCircleToggleButtonComponent,
-          CircleToggleButtonOnPushComponent,
-          TextCircleToggleButtonComponent
-        ],
-        imports: [
-          NxCircleToggleModule, FormsModule, ReactiveFormsModule
-        ]
-      }).compileComponents();
-    }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        SimpleCircleToggleButtonComponent,
+        PreselectedCircleToggleButtoncComponent,
+        NgModelToggleButtonComponent,
+        ReactiveToggleButtonComponent,
+        DisabledToggleButtonComponent,
+        SvgCircleToggleButtonComponent,
+        CircleToggleButtonOnPushComponent,
+        TextCircleToggleButtonComponent
+      ],
+      imports: [
+        NxCircleToggleModule, FormsModule, ReactiveFormsModule
+      ]
+    }).compileComponents();
+  }));
 
-    it('should change the checked attribute of the toggle button when clicked', () => {
-        createTestComponent(SimpleCircleToggleButtonComponent);
-        click();
-        expect(toggleComponent.checked).toBeTruthy();
-    });
-
-    it('should fire change events', () => {
+  it('should change the checked attribute of the toggle button when clicked', () => {
       createTestComponent(SimpleCircleToggleButtonComponent);
-      spyOn(toggleComponent.checkedChange, 'emit');
       click();
-      expect(toggleComponent.checkedChange.emit).toHaveBeenCalled();
-    });
+      expect(toggleComponent.checked).toBeTruthy();
+  });
 
-    it('should support preselection', () => {
-      createTestComponent(PreselectedCircleToggleButtoncComponent);
-      expect(input.checked).toBe(true);
-    });
+  it('should fire change events', () => {
+    createTestComponent(SimpleCircleToggleButtonComponent);
+    spyOn(toggleComponent.checkedChange, 'emit');
+    click();
+    expect(toggleComponent.checkedChange.emit).toHaveBeenCalled();
+  });
 
-    it('can be disabled', () => {
-      createTestComponent(DisabledToggleButtonComponent);
-      expect(input.disabled).toBe(true);
-    });
+  it('should support preselection', () => {
+    createTestComponent(PreselectedCircleToggleButtoncComponent);
+    expect(input.checked).toBe(true);
+  });
 
-    it('should link the label with the input field', () => {
-      createTestComponent(SimpleCircleToggleButtonComponent);
-      expect(input.id).toBe(label.htmlFor);
-    });
+  it('can be disabled', () => {
+    createTestComponent(DisabledToggleButtonComponent);
+    expect(input.disabled).toBe(true);
+  });
+
+  it('should link the label with the input field', () => {
+    createTestComponent(SimpleCircleToggleButtonComponent);
+    expect(input.id).toBe(label.htmlFor);
+  });
 
   it('should work in template driven forms using ngModel', fakeAsync(() => {
 
@@ -111,6 +111,12 @@ describe('NxToggleButton', () => {
     click();
     expect(reactComp.testGroup.value.reactiveToggle).toBeFalsy();
   }));
+
+  it('focuses the toggle button when calling focus()', () => {
+    createTestComponent(SimpleCircleToggleButtonComponent);
+    toggleComponent.focus();
+    expect(nativeToggleComponent.querySelector('.nx-circle-toggle__input')).toEqual(document.activeElement);
+  });
 
   describe('programmatic change', () => {
 

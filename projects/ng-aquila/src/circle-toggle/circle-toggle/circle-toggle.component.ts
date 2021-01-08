@@ -11,7 +11,7 @@ import { ToggleButton } from './toggle-button';
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 
 export class ToggleChangeEvent {
   /** A toggle button */
@@ -342,6 +342,11 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  /** Focuses the radio button element. */
+  focus(focusOrigin?: FocusOrigin) {
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
   }
 
   /** @docs-private */
