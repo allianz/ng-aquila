@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Table Example
  */
 @Component({
-  selector: 'nx-dynamic-table-example',
-  templateUrl: './dynamic-table-example.html'
+  selector: 'dynamic-table-example',
+  templateUrl: './dynamic-table-example.html',
+  styleUrls: ['./dynamic-table-example.css']
 })
 export class DynamicTableExampleComponent {
   data = [

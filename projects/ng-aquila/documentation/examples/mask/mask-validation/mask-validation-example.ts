@@ -5,7 +5,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 * @title Validation example
 */
 @Component({
-  templateUrl: './mask-validation-example.html'
+  selector: 'mask-validation-example',
+  templateUrl: './mask-validation-example.html',
+  styleUrls: ['./mask-validation-example.css']
 })
 export class MaskValidationExampleComponent {
   validatedMaskForm: FormGroup = new FormGroup({

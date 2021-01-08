@@ -18,6 +18,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 
 /** @title File uploader internationalization example */
 @Component({
+  selector: 'file-uploader-intl-example',
   templateUrl: './file-uploader-intl-example.html',
   styleUrls: ['./file-uploader-intl-example.css'],
   providers: [

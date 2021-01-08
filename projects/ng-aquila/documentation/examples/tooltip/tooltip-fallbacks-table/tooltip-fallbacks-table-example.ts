@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tooltip Fallbacks Table Example
  */
  @Component({
-  selector: 'nx-tooltip-fallbacks-table-example',
-  templateUrl: './tooltip-fallbacks-table-example.html'
+  selector: 'tooltip-fallbacks-table-example',
+  templateUrl: './tooltip-fallbacks-table-example.html',
+  styleUrls: ['./tooltip-fallbacks-table-example.css']
 })
 export class TooltipFallbacksTableExampleComponent {
   data = [

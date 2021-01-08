@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 * @title Static sidepanel example
 */
 @Component({
-  selector: 'nx-sidepanel-static-example',
-  styleUrls: ['sidepanel-static-example.css'],
-  templateUrl: './sidepanel-static-example.html'
+  selector: 'sidepanel-static-example',
+  templateUrl: './sidepanel-static-example.html',
+  styleUrls: ['sidepanel-static-example.css']
 })
 export class SidepanelStaticExampleComponent {
   opened: boolean = true;

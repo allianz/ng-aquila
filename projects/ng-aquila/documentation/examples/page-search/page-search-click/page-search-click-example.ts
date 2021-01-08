@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Button click example
 */
 @Component({
-  templateUrl: './page-search-click-example.html'
+  selector: 'page-search-click-example',
+  templateUrl: './page-search-click-example.html',
+  styleUrls: ['./page-search-click-example.css']
 })
 export class PageSearchClickExampleComponent {
 

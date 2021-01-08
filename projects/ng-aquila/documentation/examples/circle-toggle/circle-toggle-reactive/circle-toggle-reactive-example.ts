@@ -5,6 +5,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 * @title Reactive example
 */
 @Component({
+  selector: 'circle-toggle-reactive-example',
   templateUrl: './circle-toggle-reactive-example.html',
   styleUrls: ['./circle-toggle-reactive-example.css']
 })

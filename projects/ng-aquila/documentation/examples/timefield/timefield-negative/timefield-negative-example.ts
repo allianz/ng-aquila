@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 * @title Timefield negative example
 */
 @Component({
-  selector: 'nx-timefield-negative-example',
-  styleUrls: ['timefield-negative-example.css'],
-  templateUrl: './timefield-negative-example.html'
+  selector: 'timefield-negative-example',
+  templateUrl: './timefield-negative-example.html',
+  styleUrls: ['./timefield-negative-example.css']
 })
 export class TimefieldNegativeExampleComponent {
   templateModel: string = '00:54';

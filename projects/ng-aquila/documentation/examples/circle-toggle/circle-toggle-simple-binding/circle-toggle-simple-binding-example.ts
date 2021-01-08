@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 * @title Simple binding example
 */
 @Component({
+  selector: 'circle-toggle-simple-binding-example',
   templateUrl: './circle-toggle-simple-binding-example.html',
   styleUrls: ['./circle-toggle-simple-binding-example.css']
 })

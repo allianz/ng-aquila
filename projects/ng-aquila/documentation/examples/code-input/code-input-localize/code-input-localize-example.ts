@@ -12,7 +12,7 @@ export class MyIntl extends NxCodeInputIntl {
 * @title Localization example
 */
 @Component({
-  selector: 'nx-code-input-localize-example',
+  selector: 'code-input-localize-example',
   templateUrl: 'code-input-localize-example.html',
   styleUrls: ['code-input-localize-example.css'],
   providers: [

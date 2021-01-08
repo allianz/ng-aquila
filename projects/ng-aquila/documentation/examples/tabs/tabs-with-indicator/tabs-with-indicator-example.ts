@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
  * @title Tab group with indicators
  */
 @Component({
+  selector: 'tabs-with-indicator-example',
   templateUrl: './tabs-with-indicator-example.html',
   styleUrls: ['./tabs-with-indicator-example.css']
 })

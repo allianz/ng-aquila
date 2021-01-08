@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Info context example
 */
 @Component({
-  templateUrl: './message-info-example.html'
+  selector: 'message-info-example',
+  templateUrl: './message-info-example.html',
+  styleUrls: ['./message-info-example.css']
 })
 export class MessageInfoExampleComponent { }

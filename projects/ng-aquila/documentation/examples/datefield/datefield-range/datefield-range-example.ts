@@ -6,7 +6,9 @@ import { NxDatepickerComponent } from '@aposin/ng-aquila/datefield';
 * @title Date range example
 */
 @Component({
-  templateUrl: './datefield-range-example.html'
+  selector: 'datefield-range-example',
+  templateUrl: './datefield-range-example.html',
+  styleUrls: ['./datefield-range-example.css']
 })
 
 export class DatefieldRangeExampleComponent {

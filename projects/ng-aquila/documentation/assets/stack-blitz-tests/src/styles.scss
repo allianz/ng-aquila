@@ -1,0 +1,33 @@
+@import '~jasmine-core/lib/jasmine-core/jasmine.css';
+
+body {
+  background: #0f2a3d;
+  font-family: 'Public Sans', sans-serif; // Aquila font
+  font-size: 16px !important;
+  line-height: 24px !important;
+  padding: 24px;
+}
+
+.docs-inverse-container {
+  background: #e5e7e6;
+  padding: 24px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+   color: #0f2a3d;
+  }
+}
+
+.jasmine_html-reporter {
+  margin-bottom: 10px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+  margin: 8px;
+}

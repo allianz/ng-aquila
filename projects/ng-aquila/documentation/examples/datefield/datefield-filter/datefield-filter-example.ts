@@ -5,7 +5,9 @@ import { Moment } from 'moment';
 * @title Date filter example
 */
 @Component({
-  templateUrl: './datefield-filter-example.html'
+  selector: 'datefield-filter-example',
+  templateUrl: './datefield-filter-example.html',
+  styleUrls: ['./datefield-filter-example.css']
 })
 
 export class DatefieldFilterExampleComponent {

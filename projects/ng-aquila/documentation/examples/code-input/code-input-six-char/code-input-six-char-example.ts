@@ -5,7 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 * @title Six character code input example
 */
 @Component({
-  selector: 'nx-code-input-six-char-example',
+  selector: 'code-input-six-char-example',
   templateUrl: 'code-input-six-char-example.html',
   styleUrls: ['code-input-six-char-example.css'],
   changeDetection: ChangeDetectionStrategy.OnPush

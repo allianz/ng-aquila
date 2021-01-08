@@ -5,8 +5,9 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
  * @title Tooltip programmatic toggling
  */
 @Component({
-  styleUrls: ['./tooltip-programmatic-example.css'],
-  templateUrl: './tooltip-programmatic-example.html'
+  selector: 'tooltip-programmatic-example',
+  templateUrl: './tooltip-programmatic-example.html',
+  styleUrls: ['./tooltip-programmatic-example.css']
 })
 export class TooltipProgrammaticExampleComponent {
   @ViewChild(NxTooltipDirective, { static: true }) tooltip: NxTooltipDirective;

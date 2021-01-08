@@ -12,6 +12,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 
 /** @title File uploader type validation example */
 @Component({
+  selector: 'file-uploader-type-validation-example',
   templateUrl: './file-uploader-type-validation-example.html',
   styleUrls: ['./file-uploader-type-validation-example.css']
 })

@@ -5,7 +5,9 @@ import { FormControl, Validators } from '@angular/forms';
 * @title Multiple errors example
 */
 @Component({
-  templateUrl: './formfield-multiple-errors-example.html'
+  selector: 'formfield-multiple-errors-example',
+  templateUrl: './formfield-multiple-errors-example.html',
+  styleUrls: ['./formfield-multiple-errors-example.css']
 })
 export class FormfieldMultipleErrorsExampleComponent {
 

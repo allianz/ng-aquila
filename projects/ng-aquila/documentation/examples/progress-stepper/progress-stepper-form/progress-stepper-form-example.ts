@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 * @title Progress Indicator multi manual step completion example
 */
 @Component({
+  selector: 'progress-stepper-form-example',
   templateUrl: './progress-stepper-form-example.html',
   styleUrls: ['./progress-stepper-form-example.css']
 })

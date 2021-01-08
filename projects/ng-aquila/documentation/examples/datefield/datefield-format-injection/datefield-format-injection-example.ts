@@ -18,7 +18,9 @@ export const MY_FORMATS = {
 * @title Custom date formats injection token
 */
 @Component({
+  selector: 'datefield-format-injection-example',
   templateUrl: './datefield-format-injection-example.html',
+  styleUrls: ['./datefield-format-injection-example.css'],
   providers: [
     {provide: NX_DATE_FORMATS, useValue: MY_FORMATS},
   ]

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Success context example
 */
 @Component({
-  templateUrl: './message-success-example.html'
+  selector: 'message-success-example',
+  templateUrl: './message-success-example.html',
+  styleUrls: ['./message-success-example.css']
 })
 export class MessageSuccessExampleComponent {}

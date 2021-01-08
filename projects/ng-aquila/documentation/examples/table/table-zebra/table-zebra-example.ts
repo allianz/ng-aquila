@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 * @title Zebra mode example
 */
 @Component({
-  styleUrls: ['table-zebra-example.css'],
-  templateUrl: './table-zebra-example.html'
+  selector: 'table-zebra-example',
+  templateUrl: './table-zebra-example.html',
+  styleUrls: ['./table-zebra-example.css']
 })
 export class TableZebraExampleComponent {
   tableElements = [

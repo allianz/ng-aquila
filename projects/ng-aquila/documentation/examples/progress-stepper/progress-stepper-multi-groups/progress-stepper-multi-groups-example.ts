@@ -5,6 +5,7 @@ import { NxMultiStepperComponent } from '@aposin/ng-aquila/progress-stepper';
 * @title Progress Indicator Multi Groups Example
 */
 @Component({
+  selector: 'progress-stepper-multi-groups-example',
   templateUrl: './progress-stepper-multi-groups-example.html',
   styleUrls: ['./progress-stepper-multi-groups-example.css']
 })

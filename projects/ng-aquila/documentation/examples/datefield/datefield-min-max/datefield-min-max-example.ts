@@ -5,7 +5,9 @@ import * as moment from 'moment';
 * @title Example of setting min and max values
 */
 @Component({
-  templateUrl: './datefield-min-max-example.html'
+  selector: 'datefield-min-max-example',
+  templateUrl: './datefield-min-max-example.html',
+  styleUrls: ['./datefield-min-max-example.css']
 })
 
 export class DatefieldMinMaxExampleComponent {

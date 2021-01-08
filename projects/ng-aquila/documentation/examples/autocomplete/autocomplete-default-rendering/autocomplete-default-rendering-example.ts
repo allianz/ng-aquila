@@ -7,7 +7,9 @@ import { WikipediaService } from '../../../common/wikipedia.service';
 * @title Default item rendering example
 */
 @Component({
+  selector: 'autocomplete-default-rendering-example',
   templateUrl: './autocomplete-default-rendering-example.html',
+  styleUrls: ['./autocomplete-default-rendering-example.css'],
   providers: [ WikipediaService ]
 })
 

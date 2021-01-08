@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
  * @title Output events
  */
 @Component({
+  selector: 'tabs-output-events-example',
   templateUrl: './tabs-output-events-example.html',
   styleUrls: ['./tabs-output-events-example.css']
 })

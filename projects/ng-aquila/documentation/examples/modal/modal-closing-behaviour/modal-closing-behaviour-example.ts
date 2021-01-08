@@ -5,6 +5,7 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
 * @title Closing behaviour example
 */
 @Component({
+  selector: 'modal-closing-behaviour-example',
   templateUrl: './modal-closing-behaviour-example.html',
   styleUrls: ['./modal-closing-behaviour-example.css']
 })

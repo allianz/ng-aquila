@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 
 /** @title Basic example */
 @Component({
-  selector: 'nx-comparison-table-example',
+  selector: 'comparison-table-example',
   templateUrl: './comparison-table-example.html',
   styleUrls: ['./comparison-table-example.css'],
 })

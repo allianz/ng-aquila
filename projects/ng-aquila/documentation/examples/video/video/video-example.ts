@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Video Example
  */
 @Component({
-  selector: 'nx-video-example',
-  templateUrl: './video-example.html'
+  selector: 'video-example',
+  templateUrl: './video-example.html',
+  styleUrls: ['./video-example.css']
 })
 export class VideoExampleComponent {
 }

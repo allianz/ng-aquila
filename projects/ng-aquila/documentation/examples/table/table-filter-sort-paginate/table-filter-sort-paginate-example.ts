@@ -21,8 +21,9 @@ export class MyIntl extends NxSortHeaderIntl {
 * @title Advanced example for sorting, filtering and pagination
 */
 @Component({
-  styleUrls: ['table-filter-sort-paginate-example.css'],
+  selector: 'table-filter-sort-paginate-example',
   templateUrl: './table-filter-sort-paginate-example.html',
+  styleUrls: ['./table-filter-sort-paginate-example.css'],
   providers: [
     { provide: NxSortHeaderIntl, useClass: MyIntl },
   ],

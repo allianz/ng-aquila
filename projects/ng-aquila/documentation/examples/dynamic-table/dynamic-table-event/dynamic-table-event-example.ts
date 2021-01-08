@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Table Event Example
  */
 @Component({
-  selector: 'nx-dynamic-table-event-example',
-  templateUrl: './dynamic-table-event-example.html'
+  selector: 'dynamic-table-event-example',
+  templateUrl: './dynamic-table-event-example.html',
+  styleUrls: ['./dynamic-table-event-example.css']
 })
 export class DynamicTableEventExampleComponent {
   data = [

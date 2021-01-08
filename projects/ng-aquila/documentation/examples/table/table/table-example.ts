@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 * @title Simple Table
 */
 @Component({
-  selector: 'nx-table-example',
-  styleUrls: ['table-example.css'],
-  templateUrl: './table-example.html'
+  selector: 'table-example',
+  templateUrl: './table-example.html',
+  styleUrls: ['./table-example.css']
 })
 export class TableExampleComponent {
   tableElements = [

@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
 * @title Header with functional icons example
 */
 @Component({
-  styleUrls: ['header-icons-example.css'],
-  templateUrl: './header-icons-example.html'
+  selector: 'header-icons-example',
+  templateUrl: './header-icons-example.html',
+  styleUrls: ['./header-icons-example.css']
 })
 export class HeaderIconsExampleComponent { }

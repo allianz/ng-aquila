@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Error context example
 */
 @Component({
-  templateUrl: './message-error-example.html'
+  selector: 'message-error-example',
+  templateUrl: './message-error-example.html',
+  styleUrls: ['./message-error-example.css']
 })
 export class MessageErrorExampleComponent {}

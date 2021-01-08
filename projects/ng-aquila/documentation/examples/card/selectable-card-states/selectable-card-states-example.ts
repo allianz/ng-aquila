@@ -5,7 +5,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 * @title Selectable cards states example
 */
 @Component({
-  templateUrl: './selectable-card-states-example.html'
+  selector: 'selectable-card-states-example',
+  templateUrl: './selectable-card-states-example.html',
+  styleUrls: ['./selectable-card-states-example.css']
 })
 export class SelectableCardStatesExampleComponent {
   formGroup: FormGroup;

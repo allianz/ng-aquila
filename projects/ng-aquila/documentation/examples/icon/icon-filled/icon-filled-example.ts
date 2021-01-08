@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Icons Filled Example
 */
 @Component({
-  templateUrl: './icon-filled-example.html'
+  selector: 'icon-filled-example',
+  templateUrl: './icon-filled-example.html',
+  styleUrls: ['./icon-filled-example.css']
 })
 export class IconFilledExampleComponent {}

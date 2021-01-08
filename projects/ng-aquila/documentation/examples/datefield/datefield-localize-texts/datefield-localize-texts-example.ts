@@ -20,7 +20,9 @@ export class MyIntl extends NxDatepickerIntl {
 * @title Localizing labels and messages example
 */
 @Component({
+  selector: 'datefield-localize-texts-example',
   templateUrl: './datefield-localize-texts-example.html',
+  styleUrls: ['./datefield-localize-texts-example.css'],
   providers: [
     {provide: NxDatepickerIntl, useClass: MyIntl}
   ]

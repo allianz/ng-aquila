@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Mask Deactivate example
 */
 @Component({
-  templateUrl: './mask-deactivate-example.html'
+  selector: 'mask-deactivate-example',
+  templateUrl: './mask-deactivate-example.html',
+  styleUrls: ['./mask-deactivate-example.css']
 })
 export class MaskDeactivateExampleComponent {
   modelVal;

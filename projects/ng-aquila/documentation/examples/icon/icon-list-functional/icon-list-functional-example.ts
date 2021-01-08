@@ -5,6 +5,7 @@ import * as ICONS from './icons.json';
  * @title Functional Icons List Example
  */
  @Component({
+  selector: 'icon-list-functional-example',
   templateUrl: './icon-list-functional-example.html',
   styleUrls: ['./icon-list-functional-example.css']
 })

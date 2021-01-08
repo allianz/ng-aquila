@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Slider Inverted Example
  */
 @Component({
-  selector: 'nx-slider-inverted-example',
-  templateUrl: './slider-inverted-example.html'
+  selector: 'slider-inverted-example',
+  templateUrl: './slider-inverted-example.html',
+  styleUrls: ['./slider-inverted-example.css']
 })
 export class SliderInvertedExampleComponent {
 }

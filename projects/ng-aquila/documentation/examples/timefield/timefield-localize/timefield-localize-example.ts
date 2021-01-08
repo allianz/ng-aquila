@@ -12,9 +12,9 @@ export class MyIntl extends NxTimefieldIntl {
 * @title Localization example
 */
 @Component({
-  selector: 'nx-timefield-localize-example',
-  templateUrl: 'timefield-localize-example.html',
-  styleUrls: ['timefield-localize-example.css'],
+  selector: 'timefield-localize-example',
+  templateUrl: './timefield-localize-example.html',
+  styleUrls: ['./timefield-localize-example.css'],
   providers: [
     { provide: NxTimefieldIntl, useClass: MyIntl },
   ],

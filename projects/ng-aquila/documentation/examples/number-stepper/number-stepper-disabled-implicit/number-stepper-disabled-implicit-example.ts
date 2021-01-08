@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
 * @title Disabled as part of disabled form example
 */
 @Component({
-  templateUrl: './number-stepper-disabled-implicit-example.html'
+  selector: 'number-stepper-disabled-implicit-example',
+  templateUrl: './number-stepper-disabled-implicit-example.html',
+  styleUrls: ['./number-stepper-disabled-implicit-example.css']
 })
 export class NumberStepperDisabledImplicitExampleComponent {
 

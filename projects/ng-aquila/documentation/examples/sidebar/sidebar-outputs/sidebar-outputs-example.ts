@@ -23,8 +23,9 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
 * @title Outputs example
 */
 @Component({
-  styleUrls: ['sidebar-outputs-example.css'],
-  templateUrl: './sidebar-outputs-example.html'
+  selector: 'sidebar-outputs-example',
+  templateUrl: './sidebar-outputs-example.html',
+  styleUrls: ['sidebar-outputs-example.css']
 })
 export class SidebarOutputsExampleComponent {
   navigationData: MyTreeNode[] = [

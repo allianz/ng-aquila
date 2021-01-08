@@ -5,7 +5,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 * @title Reactive example
 */
 @Component({
-  templateUrl: './input-reactive-example.html'
+  selector: 'input-reactive-example',
+  templateUrl: './input-reactive-example.html',
+  styleUrls: ['./input-reactive-example.css']
 })
 export class InputReactiveExampleComponent {
 

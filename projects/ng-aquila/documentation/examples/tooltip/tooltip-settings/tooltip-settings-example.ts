@@ -15,8 +15,9 @@ const myDefaultOptions: NxTooltipDefaultOptions = {
  * @title Tooltip global settings
  */
 @Component({
-  styleUrls: ['./tooltip-settings-example.css'],
+  selector: 'tooltip-settings-example',
   templateUrl: './tooltip-settings-example.html',
+  styleUrls: ['./tooltip-settings-example.css'],
   providers: [
     { provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions }
   ]

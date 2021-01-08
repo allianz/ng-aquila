@@ -14,7 +14,9 @@ const myPaginationTexts: IPaginationTexts = {
 * @title Localization - Advanced Pagination
 */
 @Component({
+  selector: 'pagination-localize-advanced-example',
   templateUrl: './pagination-localize-advanced-example.html',
+  styleUrls: ['./pagination-localize-advanced-example.css'],
   providers: [
     {provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts}
   ]

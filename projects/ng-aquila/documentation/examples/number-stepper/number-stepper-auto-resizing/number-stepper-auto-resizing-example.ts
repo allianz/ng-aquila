@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Auto resizing example
 */
 @Component({
-  templateUrl: './number-stepper-auto-resizing-example.html'
+  selector: 'number-stepper-auto-resizing-example',
+  templateUrl: './number-stepper-auto-resizing-example.html',
+  styleUrls: ['./number-stepper-auto-resizing-example.css']
 })
 export class NumberStepperAutoResizingExampleComponent {
   number: number = 1000;

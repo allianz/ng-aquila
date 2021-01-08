@@ -616,15 +616,15 @@ a {
 }
 
 // Styles for examples
-::ng-deep nx-margin-sizes-example .margin-box {
+::ng-deep margin-sizes-example .margin-box {
   @include var(background, documentation-margin-example-background-color);
 }
 
-::ng-deep nx-margin-usage-example .wrapper {
+::ng-deep margin-usage-example .wrapper {
   @include var(background, documentation-margin-example-background-color);
 }
 
-::ng-deep nx-margin-usage-example .margin-box {
+::ng-deep margin-usage-example .margin-box {
   border: 1px solid v(documentation-margin-example-background-color);
   @include var(background-color, ui-01);
 }

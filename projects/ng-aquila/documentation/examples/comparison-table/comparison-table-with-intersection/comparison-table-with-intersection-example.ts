@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 
 /** @title Intersection example */
 @Component({
+  selector: 'comparison-table-with-intersection-example',
   templateUrl: './comparison-table-with-intersection-example.html',
   styleUrls: ['./comparison-table-with-intersection-example.css']
 })

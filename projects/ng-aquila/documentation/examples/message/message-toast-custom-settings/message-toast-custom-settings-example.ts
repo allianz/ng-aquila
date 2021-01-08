@@ -11,7 +11,9 @@ export const myCustomConfig: NxMessageToastConfig = {
 * @title Custom Settings example
 */
 @Component({
+  selector: 'message-toast-custom-settings-example',
   templateUrl: './message-toast-custom-settings-example.html',
+  styleUrls: ['./message-toast-custom-settings-example.css']
 })
 export class MessageToastCustomSettingsExampleComponent {
 

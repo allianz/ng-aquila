@@ -5,6 +5,7 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 * @title Modal closing example
 */
 @Component({
+  selector: 'modal-closing-example',
   templateUrl: './modal-closing-example.html',
   styleUrls: ['./modal-closing-example.css']
 })

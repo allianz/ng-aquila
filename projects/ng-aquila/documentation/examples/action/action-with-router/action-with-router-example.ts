@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Action with Router Example
 */
 @Component({
-  selector: 'nx-action-with-router-example',
+  selector: 'action-with-router-example',
   styleUrls: ['action-with-router-example.css'],
   templateUrl: './action-with-router-example.html'
 })

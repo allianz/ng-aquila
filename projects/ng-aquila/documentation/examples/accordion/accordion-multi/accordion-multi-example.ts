@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Multi Accordion Example
 */
 @Component({
-  templateUrl: './accordion-multi-example.html'
+  selector: 'accordion-multi-example',
+  templateUrl: './accordion-multi-example.html',
+  styleUrls: ['./accordion-multi-example.css']
 })
 export class AccordionMultiExampleComponent {
   multi = true;

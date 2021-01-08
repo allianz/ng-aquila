@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 /** @title Switcher Disabled Reactive Form */
 @Component({
-  selector: 'nx-switcher-disabled-example',
-  templateUrl: './switcher-disabled-example.html'
+  selector: 'switcher-disabled-example',
+  templateUrl: './switcher-disabled-example.html',
+  styleUrls: ['./switcher-disabled-example.css']
 })
 
 export class SwitcherDisabledExampleComponent {

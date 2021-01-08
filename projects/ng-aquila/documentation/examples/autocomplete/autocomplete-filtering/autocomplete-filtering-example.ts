@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Autocomplete filtering example
 */
 @Component({
-  templateUrl: './autocomplete-filtering-example.html'
+  selector: 'autocomplete-filtering-example',
+  templateUrl: './autocomplete-filtering-example.html',
+  styleUrls: ['./autocomplete-filtering-example.css']
 })
 
 export class AutocompleteFilteringExampleComponent {

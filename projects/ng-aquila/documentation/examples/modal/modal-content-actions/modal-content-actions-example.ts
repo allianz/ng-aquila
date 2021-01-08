@@ -5,6 +5,7 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 * @title Modal with content and actions example
 */
 @Component({
+  selector: 'modal-content-actions-example',
   templateUrl: './modal-content-actions-example.html',
   styleUrls: ['./modal-content-actions-example.css']
 })

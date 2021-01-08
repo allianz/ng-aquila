@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
  * @title Event Example
  */
  @Component({
-  selector: 'nx-radio-button-event-example',
+  selector: 'radio-button-event-example',
   templateUrl: './radio-button-event-example.html',
   styleUrls: ['./radio-button-event-example.css']
 })

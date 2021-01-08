@@ -5,8 +5,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
  * @title Tag Reactive Example
  */
 @Component({
-  selector: 'nx-taglist-reactive-example',
-  templateUrl: './taglist-reactive-example.html'
+  selector: 'taglist-reactive-example',
+  templateUrl: './taglist-reactive-example.html',
+  styleUrls: ['./taglist-reactive-example.css']
 })
 export class TaglistReactiveExampleComponent {
   testForm: FormGroup;

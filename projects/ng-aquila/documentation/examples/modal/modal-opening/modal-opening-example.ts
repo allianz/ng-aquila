@@ -16,6 +16,7 @@ export class SimpleModalComponent { }
 * @title Modal opening example
 */
 @Component({
+  selector: 'modal-opening-example',
   templateUrl: './modal-opening-example.html',
   styleUrls: ['./modal-opening-example.css']
 })

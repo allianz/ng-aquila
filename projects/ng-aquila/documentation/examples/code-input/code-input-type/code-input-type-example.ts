@@ -5,8 +5,9 @@ import { Component, OnInit } from '@angular/core';
  * @title Code input type example
  */
 @Component({
-  templateUrl: 'code-input-type-example.html',
-  styleUrls: ['code-input-type-example.css']
+  selector: 'code-input-type-example',
+  templateUrl: './code-input-type-example.html',
+  styleUrls: ['./code-input-type-example.css']
 })
 
 export class CodeInputTypeExampleComponent implements OnInit {

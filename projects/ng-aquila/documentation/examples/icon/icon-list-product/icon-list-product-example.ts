@@ -5,6 +5,7 @@ import * as ICONS from './icons.json';
  * @title Product Icons List Example
  */
  @Component({
+  selector: 'icon-list-product-example',
   templateUrl: './icon-list-product-example.html',
   styleUrls: ['./icon-list-product-example.css']
 })

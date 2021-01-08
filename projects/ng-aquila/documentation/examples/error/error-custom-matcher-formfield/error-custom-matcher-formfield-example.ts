@@ -14,7 +14,9 @@ export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
  * @title Custom error state matching Formfield Example
  */
 @Component({
-  templateUrl: 'error-custom-matcher-formfield-example.html',
+  selector: 'error-custom-matcher-formfield-example',
+  templateUrl: './error-custom-matcher-formfield-example.html',
+  styleUrls: ['./error-custom-matcher-formfield-example.css'],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}]
 })
 export class ErrorCustomMatcherFormfieldExampleComponent {

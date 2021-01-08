@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tag Delete Tag Example
  */
 @Component({
-  selector: 'nx-taglist-delete-example',
-  templateUrl: './taglist-delete-example.html'
+  selector: 'taglist-delete-example',
+  templateUrl: './taglist-delete-example.html',
+  styleUrls: ['./taglist-delete-example.css']
 })
 export class TaglistDeleteExampleComponent {
 

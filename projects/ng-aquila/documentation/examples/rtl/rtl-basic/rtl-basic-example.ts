@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
 */
 @Component({
   selector: 'rtl-basic-example',
-  templateUrl: './rtl-basic-example.html'
+  templateUrl: './rtl-basic-example.html',
+  styleUrls: ['./rtl-basic-example.css']
 })
 export class RTLBasicExampleComponent {
   sliderDemoValue: number = 10;

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 * @title Progress Indicator non linear step completion example
 */
 @Component({
+  selector: 'progress-stepper-nonlinear-example',
   templateUrl: './progress-stepper-nonlinear-example.html',
   styleUrls: ['./progress-stepper-nonlinear-example.css']
 })

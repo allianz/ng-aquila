@@ -5,7 +5,9 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 * @title Extended example
 */
 @Component({
-  templateUrl: './natural-language-form-extended-example.html'
+  selector: 'natural-language-form-extended-example',
+  templateUrl: './natural-language-form-extended-example.html',
+  styleUrls: ['./natural-language-form-extended-example.css']
 })
 export class NaturalLanguageFormExtendedExampleComponent {
   naturalForm: FormGroup;

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 * @title Seven character code input example
 */
 @Component({
-  selector: 'nx-code-input-seven-char-example',
+  selector: 'code-input-seven-char-example',
   templateUrl: 'code-input-seven-char-example.html',
   styleUrls: ['code-input-seven-char-example.css']
 })

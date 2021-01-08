@@ -8,7 +8,9 @@ const datepickerExpertOptions: DatepickerDefaultOptions = { toggleIconTabindex: 
 * @title Datepicker injection token
 */
 @Component({
+  selector: 'datefield-injection-token-example',
   templateUrl: './datefield-injection-token-example.html',
+  styleUrls: ['./datefield-injection-token-example.css'],
   providers: [
     { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerExpertOptions }
   ]

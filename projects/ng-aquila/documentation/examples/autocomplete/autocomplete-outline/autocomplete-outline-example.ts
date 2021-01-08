@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Autocomplete with formfield example
 */
 @Component({
-  templateUrl: './autocomplete-outline-example.html'
+  selector: 'autocomplete-outline-example',
+  templateUrl: './autocomplete-outline-example.html',
+  styleUrls: ['./autocomplete-outline-example.css']
 })
 
 export class AutocompleteOutlineExampleComponent {

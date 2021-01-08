@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Notification banner example
 */
 @Component({
-  templateUrl: './message-banner-example.html'
+  selector: 'message-banner-example',
+  templateUrl: './message-banner-example.html',
+  styleUrls: ['./message-banner-example.css']
 })
 export class MessageBannerExampleComponent {
   infoBannerClosed: boolean = false;

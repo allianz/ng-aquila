@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 * @title Accordion Error Example
 */
 @Component({
+  selector: 'accordion-error-example',
   templateUrl: './accordion-error-example.html',
   styleUrls: ['./accordion-error-example.css']
 })

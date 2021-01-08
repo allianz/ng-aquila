@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Icons Outline Example
 */
 @Component({
-  templateUrl: './icon-outline-example.html'
+  selector: 'icon-outline-example',
+  templateUrl: './icon-outline-example.html',
+  styleUrls: ['./icon-outline-example.css']
 })
 export class IconOutlineExampleComponent { }

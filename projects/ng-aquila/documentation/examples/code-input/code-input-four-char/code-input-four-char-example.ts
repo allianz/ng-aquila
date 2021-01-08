@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 * @title Four character code input example
 */
 @Component({
-  selector: 'nx-code-input-four-char-example',
+  selector: 'code-input-four-char-example',
   templateUrl: 'code-input-four-char-example.html',
   styleUrls: ['code-input-four-char-example.css']
 })

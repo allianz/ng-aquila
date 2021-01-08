@@ -12,6 +12,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 
 /** @title File uploader reactive form example */
 @Component({
+  selector: 'file-uploader-reactive-example',
   templateUrl: './file-uploader-reactive-example.html',
   styleUrls: ['./file-uploader-reactive-example.css']
 })

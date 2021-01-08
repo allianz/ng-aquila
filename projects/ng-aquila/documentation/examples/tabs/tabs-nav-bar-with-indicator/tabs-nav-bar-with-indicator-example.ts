@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tabs Navbar with Indicators
  */
 @Component({
-  styleUrls: ['./tabs-nav-bar-with-indicator-example.css'],
+  selector: 'tabs-nav-bar-with-indicator-example',
   templateUrl: './tabs-nav-bar-with-indicator-example.html',
+  styleUrls: ['./tabs-nav-bar-with-indicator-example.css']
 })
 export class TabsNavBarWithIndicatorExampleComponent {
 

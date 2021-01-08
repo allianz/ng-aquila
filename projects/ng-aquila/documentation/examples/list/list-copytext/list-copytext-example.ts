@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title List sizes copytext example
 */
 @Component({
-  templateUrl: './list-copytext-example.html'
+  selector: 'list-copytext-example',
+  templateUrl: './list-copytext-example.html',
+  styleUrls: ['./list-copytext-example.css']
 })
 export class ListCopytextExampleComponent {}

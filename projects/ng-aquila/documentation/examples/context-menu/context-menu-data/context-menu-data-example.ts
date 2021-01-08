@@ -12,6 +12,7 @@ type Contract = {
  * @title Data Context Menu Example
  */
 @Component({
+  selector: 'context-menu-data-example',
   templateUrl: './context-menu-data-example.html',
   styleUrls: ['context-menu-data-example.css']
 })

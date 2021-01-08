@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Nested lists
 */
 @Component({
-  templateUrl: './list-nesting-example.html'
+  selector: 'list-nesting-example',
+  templateUrl: './list-nesting-example.html',
+  styleUrls: ['./list-nesting-example.css']
 })
 export class ListNestingExampleComponent {}

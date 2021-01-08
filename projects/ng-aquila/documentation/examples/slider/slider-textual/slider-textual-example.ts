@@ -12,8 +12,9 @@ enum FruitPreferenceType {
  * @title Slider Textual Example
  */
 @Component({
-  selector: 'nx-slider-textual-example',
-  templateUrl: './slider-textual-example.html'
+  selector: 'slider-textual-example',
+  templateUrl: './slider-textual-example.html',
+  styleUrls: ['./slider-textual-example.css']
 })
 export class SliderTextualExampleComponent {
   fruitPreferenceFormatter: Function = (value: FruitPreferenceType) => {

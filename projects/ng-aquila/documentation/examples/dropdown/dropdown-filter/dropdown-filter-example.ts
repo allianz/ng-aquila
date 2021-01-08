@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Filter example
 */
 @Component({
-  templateUrl: './dropdown-filter-example.html'
+  selector: 'dropdown-filter-example',
+  templateUrl: './dropdown-filter-example.html',
+  styleUrls: ['./dropdown-filter-example.css']
 })
 export class DropdownFilterExampleComponent {
   demoData = [

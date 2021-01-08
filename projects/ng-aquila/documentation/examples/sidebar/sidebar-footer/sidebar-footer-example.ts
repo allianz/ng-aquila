@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Side navigation with footer area
 */
 @Component({
-  selector: 'nx-sidebar-footer-example',
+  selector: 'sidebar-footer-example',
   styleUrls: ['sidebar-footer-example.css'],
   templateUrl: './sidebar-footer-example.html'
 })

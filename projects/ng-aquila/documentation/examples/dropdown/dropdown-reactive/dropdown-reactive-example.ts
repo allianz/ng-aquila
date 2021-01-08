@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
  * @title Reactive example
  */
 @Component({
+  selector: 'dropdown-reactive-example',
   templateUrl: './dropdown-reactive-example.html',
   styleUrls: ['./dropdown-reactive-example.css']
 })

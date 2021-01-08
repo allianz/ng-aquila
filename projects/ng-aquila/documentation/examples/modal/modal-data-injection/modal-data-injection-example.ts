@@ -5,6 +5,7 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 * @title Data injection example
 */
 @Component({
+  selector: 'modal-data-injection-example',
   templateUrl: './modal-data-injection-example.html',
   styleUrls: ['./modal-data-injection-example.css']
 })

@@ -143,7 +143,7 @@ The HTML code below shows how we can consume our custom control.
 
 ```html
 <nx-formfield nxLabel="Phone number">
-  <nx-custom-tel-input-example></nx-custom-tel-input-example>
+  <formfield-custom-tel-input-example></formfield-custom-tel-input-example>
 </nx-formfield>
 ```
 

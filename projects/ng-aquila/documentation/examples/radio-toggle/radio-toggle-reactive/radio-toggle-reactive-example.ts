@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 * @title Reactive Form Example
 */
 @Component({
+  selector: 'radio-toggle-reactive-example',
   templateUrl: './radio-toggle-reactive-example.html',
   styleUrls: ['./radio-toggle-reactive-example.css']
 })

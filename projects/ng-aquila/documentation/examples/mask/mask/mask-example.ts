@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Mask example
 */
 @Component({
-  templateUrl: './mask-example.html'
+  selector: 'mask-example',
+  templateUrl: './mask-example.html',
+  styleUrls: ['./mask-example.css']
 })
 export class MaskExampleComponent {
 }

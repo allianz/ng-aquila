@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 * @title Checkbox group dynamic checkboxes example
 */
 @Component({
+  selector: 'checkbox-group-dynamic-example',
   templateUrl: './checkbox-group-dynamic-example.html',
   styleUrls: ['./checkbox-group-dynamic-example.css']
 })

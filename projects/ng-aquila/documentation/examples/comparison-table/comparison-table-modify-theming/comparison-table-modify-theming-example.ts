@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 /** @title Modify theming of examples */
 @Component({
-  selector: 'nx-comparison-table-modify-theming-example',
+  selector: 'comparison-table-modify-theming-example',
   templateUrl: './comparison-table-modify-theming-example.html',
   styleUrls: ['./comparison-table-modify-theming-example.css']
 })

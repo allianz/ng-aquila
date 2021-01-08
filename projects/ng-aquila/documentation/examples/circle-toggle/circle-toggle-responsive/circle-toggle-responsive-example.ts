@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Disable responsive example
 */
 @Component({
-  templateUrl: './circle-toggle-responsive-example.html'
+  selector: 'circle-toggle-responsive-example',
+  templateUrl: './circle-toggle-responsive-example.html',
+  styleUrls: ['./circle-toggle-responsive-example.css']
 })
 export class CircleToggleResponsiveExampleComponent {
 

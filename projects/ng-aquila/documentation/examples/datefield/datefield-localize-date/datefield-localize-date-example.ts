@@ -6,7 +6,9 @@ import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 * @title Localizing date example
 */
 @Component({
-  templateUrl: './datefield-localize-date-example.html'
+  selector: 'datefield-localize-date-example',
+  templateUrl: './datefield-localize-date-example.html',
+  styleUrls: ['./datefield-localize-date-example.css']
 })
 
 export class DatefieldLocalizeDateExampleComponent {

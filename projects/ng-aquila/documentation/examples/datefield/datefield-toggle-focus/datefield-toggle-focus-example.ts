@@ -5,7 +5,9 @@ import { Moment } from 'moment';
 * @title Datepicker toggle focus example
 */
 @Component({
-  templateUrl: './datefield-toggle-focus-example.html'
+  selector: 'datefield-toggle-focus-example',
+  templateUrl: './datefield-toggle-focus-example.html',
+  styleUrls: ['./datefield-toggle-focus-example.css']
 })
 
 export class DatefieldToggleFocusExampleComponent {

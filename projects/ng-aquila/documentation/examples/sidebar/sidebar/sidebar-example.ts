@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Side navigation with Actions
 */
 @Component({
-  selector: 'nx-sidebar-example',
+  selector: 'sidebar-example',
   styleUrls: ['sidebar-example.css'],
   templateUrl: './sidebar-example.html'
 })

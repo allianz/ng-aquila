@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
 * @title Simple form example
 */
 @Component({
-  templateUrl: './formfield-simple-form-example.html'
+  selector: 'formfield-simple-form-example',
+  templateUrl: './formfield-simple-form-example.html',
+  styleUrls: ['./formfield-simple-form-example.css']
 })
 export class FormfieldSimpleFormExampleComponent {
   formGroup: FormGroup;

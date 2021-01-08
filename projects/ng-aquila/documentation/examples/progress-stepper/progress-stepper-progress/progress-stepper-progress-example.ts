@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 * @title Progress Indicator linear progress example
 */
 @Component({
+  selector: 'progress-stepper-progress-example',
   templateUrl: './progress-stepper-progress-example.html',
   styleUrls: ['./progress-stepper-progress-example.css']
 })

@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Lists with icons examples
 */
 @Component({
-  templateUrl: './list-icons-example.html'
+  selector: 'list-icons-example',
+  templateUrl: './list-icons-example.html',
+  styleUrls: ['./list-icons-example.css']
 })
 export class ListIconsExampleComponent {}

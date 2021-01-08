@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
  * @title Multi select example
  */
 @Component({
-  templateUrl: './dropdown-multi-select-example.html'
+  selector: 'dropdown-multi-select-example',
+  templateUrl: './dropdown-multi-select-example.html',
+  styleUrls: ['./dropdown-multi-select-example.css']
 })
 export class DropdownMultiSelectExampleComponent {
   demoData = [

@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Outputs example
 */
 @Component({
-  templateUrl: './checkbox-outputs-example.html'
+  selector: 'checkbox-outputs-example',
+  templateUrl: './checkbox-outputs-example.html',
+  styleUrls: ['./checkbox-outputs-example.css']
 })
 
 export class CheckboxOutputsExampleComponent {

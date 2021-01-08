@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 * @title Disabled example
 */
 @Component({
-  selector: 'nx-code-input-disabled-example',
+  selector: 'code-input-disabled-example',
   templateUrl: 'code-input-disabled-example.html',
   styleUrls: ['code-input-disabled-example.css']
 })

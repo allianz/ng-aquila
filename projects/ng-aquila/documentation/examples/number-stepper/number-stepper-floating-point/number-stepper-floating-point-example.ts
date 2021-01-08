@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Floating point example
 */
 @Component({
-  templateUrl: './number-stepper-floating-point-example.html'
+  selector: 'number-stepper-floating-point-example',
+  templateUrl: './number-stepper-floating-point-example.html',
+  styleUrls: ['./number-stepper-floating-point-example.css']
 })
 export class NumberStepperFloatingPointExampleComponent {
   number: number = 0;

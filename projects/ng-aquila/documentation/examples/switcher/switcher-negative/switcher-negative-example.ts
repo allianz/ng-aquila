@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 
 /** @title Switcher Negative */
 @Component({
-  selector: 'nx-switcher-negative-example',
-  templateUrl: './switcher-negative-example.html'
+  selector: 'switcher-negative-example',
+  templateUrl: './switcher-negative-example.html',
+  styleUrls: ['./switcher-negative-example.css']
 })
 export class SwitcherNegativeExampleComponent {}

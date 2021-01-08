@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 * @title Default appearance
 */
 @Component({
-  selector: 'nx-sidepanel-dark-example',
-  styleUrls: ['sidepanel-dark-example.css'],
-  templateUrl: './sidepanel-dark-example.html'
+  selector: 'sidepanel-dark-example',
+  templateUrl: './sidepanel-dark-example.html',
+  styleUrls: ['sidepanel-dark-example.css']
 })
 export class SidepanelDarkExampleComponent {
   opened: boolean = true;

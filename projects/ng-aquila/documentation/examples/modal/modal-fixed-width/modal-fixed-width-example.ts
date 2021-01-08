@@ -5,6 +5,7 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
 * @title Fixed width example
 */
 @Component({
+  selector: 'modal-fixed-width-example',
   templateUrl: './modal-fixed-width-example.html',
   styleUrls: ['./modal-fixed-width-example.css']
 })

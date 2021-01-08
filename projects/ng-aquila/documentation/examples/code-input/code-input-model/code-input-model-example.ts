@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 * @title Manipulating model example
 */
 @Component({
-  selector: 'nx-code-input-model-example',
+  selector: 'code-input-model-example',
   templateUrl: 'code-input-model-example.html',
   styleUrls: ['code-input-model-example.css']
 })

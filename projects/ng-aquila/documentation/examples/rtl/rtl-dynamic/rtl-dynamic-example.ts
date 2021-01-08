@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
 */
 @Component({
   selector: 'rtl-dynamic-example',
-  templateUrl: './rtl-dynamic-example.html'
+  templateUrl: './rtl-dynamic-example.html',
+  styleUrls: ['./rtl-dynamic-example.css']
 })
 export class RTLDynamicExampleComponent {
   direction: Direction = 'ltr';

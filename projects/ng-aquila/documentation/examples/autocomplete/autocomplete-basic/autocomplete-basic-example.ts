@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Autocomplete example
 */
 @Component({
-  templateUrl: './autocomplete-basic-example.html'
+  selector: 'autocomplete-basic-example',
+  templateUrl: './autocomplete-basic-example.html',
+  styleUrls: ['./autocomplete-basic-example.css']
 })
 
 export class AutocompleteBasicExampleComponent {

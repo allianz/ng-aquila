@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Popover Table Example
  */
  @Component({
-  selector: 'nx-popover-table-example',
-  templateUrl: './popover-table-example.html'
+  selector: 'popover-table-example',
+  templateUrl: './popover-table-example.html',
+  styleUrls: ['./popover-table-example.css']
 })
 export class PopoverTableExampleComponent {
   data = [

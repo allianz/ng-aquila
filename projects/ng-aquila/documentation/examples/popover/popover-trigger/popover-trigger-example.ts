@@ -6,7 +6,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 * @title Popover Trigger Example
 */
 @Component({
-  selector: 'nx-popover-trigger-example',
+  selector: 'popover-trigger-example',
   templateUrl: './popover-trigger-example.html',
   styleUrls: ['./popover-trigger-example.css']
 })

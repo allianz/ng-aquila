@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 * @title Toolbar basic example
 */
 @Component({
-  selector: 'nx-toolbar-example',
-  styleUrls: ['toolbar-example.css'],
-  templateUrl: './toolbar-example.html'
+  selector: 'toolbar-example',
+  templateUrl: './toolbar-example.html',
+  styleUrls: ['./toolbar-example.css']
 })
 export class ToolbarExampleComponent {
 

@@ -5,7 +5,9 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
 * @title Error example
 */
 @Component({
-  templateUrl: './formfield-error-example.html'
+  selector: 'formfield-error-example',
+  templateUrl: './formfield-error-example.html',
+  styleUrls: ['./formfield-error-example.css']
 })
 export class FormfieldErrorExampleComponent implements AfterContentInit {
 

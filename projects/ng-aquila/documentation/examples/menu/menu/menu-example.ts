@@ -26,9 +26,9 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
 * @title Complete menu example
 */
 @Component({
-  selector: 'nx-menu-example',
-  styleUrls: ['menu-example.css'],
-  templateUrl: './menu-example.html'
+  selector: 'menu-example',
+  templateUrl: './menu-example.html',
+  styleUrls: ['menu-example.css']
 })
 export class MenuExampleComponent {
   navigationData: MyTreeNode[] = [

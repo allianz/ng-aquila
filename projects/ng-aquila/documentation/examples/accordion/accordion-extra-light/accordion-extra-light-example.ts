@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Extra Light Example
+* @title Accordion Extra Light Example
 */
 @Component({
-  templateUrl: './accordion-extra-light-example.html'
+  selector: 'accordion-extra-light-example',
+  templateUrl: './accordion-extra-light-example.html',
+  styleUrls: ['./accordion-extra-light-example.css']
 })
 export class AccordionExtraLightExampleComponent {}

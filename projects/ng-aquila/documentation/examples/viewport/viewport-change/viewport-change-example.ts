@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 * @title Viewport Subscription example
 */
 @Component({
+  selector: 'viewport-change-example',
   templateUrl: './viewport-change-example.html',
   styleUrls: ['./viewport-change-example.css']
 })

@@ -9,6 +9,7 @@ const playSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" wid
  * @title Essential Icon Override Example
  */
  @Component({
+  selector: 'icon-essential-override-example',
   templateUrl: './icon-essential-override-example.html',
   styleUrls: ['./icon-essential-override-example.css'],
   providers: [

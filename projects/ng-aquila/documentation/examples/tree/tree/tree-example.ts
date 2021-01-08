@@ -22,9 +22,9 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
 * @title Tree Example
 */
 @Component({
-  selector: 'nx-tree-example',
-  styleUrls: ['tree-example.css'],
-  templateUrl: './tree-example.html'
+  selector: 'tree-example',
+  templateUrl: './tree-example.html',
+  styleUrls: ['./tree-example.css']
 })
 export class TreeExampleComponent {
   navigationData: MyTreeNode[] = [

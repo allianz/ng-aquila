@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Validation example
 */
 @Component({
-  templateUrl: './number-stepper-validation-example.html'
+  selector: 'number-stepper-validation-example',
+  templateUrl: './number-stepper-validation-example.html',
+  styleUrls: ['./number-stepper-validation-example.css']
 })
 export class NumberStepperValidationExampleComponent {
   number: number = 0;

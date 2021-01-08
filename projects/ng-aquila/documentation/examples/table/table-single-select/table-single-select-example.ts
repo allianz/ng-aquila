@@ -14,8 +14,9 @@ interface Contract {
 * @title Single Row Selection
 */
 @Component({
-  styleUrls: ['table-single-select-example.css'],
-  templateUrl: './table-single-select-example.html'
+  selector: 'table-single-select-example',
+  templateUrl: './table-single-select-example.html',
+  styleUrls: ['./table-single-select-example.css'],
 })
 export class TableSingleSelectExampleComponent {
   showSelected: boolean = false;

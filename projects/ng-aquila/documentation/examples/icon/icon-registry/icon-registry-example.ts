@@ -6,7 +6,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 * @title Register Icons Example
 */
 @Component({
-  templateUrl: './icon-registry-example.html'
+  selector: 'icon-registry-example',
+  templateUrl: './icon-registry-example.html',
+  styleUrls: ['./icon-registry-example.css']
 })
 export class IconRegistryExampleComponent {
   constructor(

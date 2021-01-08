@@ -120,6 +120,11 @@
               "projects/opensource-documentation/src/assets",
               {
                 "glob": "**/*",
+                "input": "projects/ng-aquila/documentation/examples/",
+                "output": "/docs-content/examples-source/"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/ng-aquila/documentation/generated",
                 "output": "/lib-viewer/"
               },

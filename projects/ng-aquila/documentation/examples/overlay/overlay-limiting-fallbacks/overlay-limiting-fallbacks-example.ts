@@ -5,6 +5,7 @@ import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 * @title Notification Panel
 */
 @Component({
+  selector: 'overlay-limiting-fallbacks-example',
   templateUrl: './overlay-limiting-fallbacks-example.html',
   styleUrls: ['./overlay-limiting-fallbacks-example.css']
 })

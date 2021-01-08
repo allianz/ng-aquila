@@ -6,9 +6,9 @@ import { Subscription } from 'rxjs';
 * @title Floating sidepanel example
 */
 @Component({
-  selector: 'nx-sidepanel-floating-example',
-  styleUrls: ['sidepanel-floating-example.css'],
-  templateUrl: './sidepanel-floating-example.html'
+  selector: 'sidepanel-floating-example',
+  templateUrl: './sidepanel-floating-example.html',
+  styleUrls: ['sidepanel-floating-example.css']
 })
 export class SidepanelFloatingExampleComponent {
   opened: boolean = false;

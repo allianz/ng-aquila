@@ -5,7 +5,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 * @title Checkbox group validation example
 */
 @Component({
-  templateUrl: './checkbox-group-validation-example.html'
+  selector: 'checkbox-group-validation-example',
+  templateUrl: './checkbox-group-validation-example.html',
+  styleUrls: ['./checkbox-group-validation-example.css']
 })
 
 export class CheckboxGroupValidationExampleComponent {

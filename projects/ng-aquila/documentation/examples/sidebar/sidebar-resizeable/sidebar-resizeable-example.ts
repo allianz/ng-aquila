@@ -23,9 +23,9 @@ interface MyFlatTreeNode extends NxFlatTreeNode {
 * @title Side navigation resizeable Example
 */
 @Component({
-  selector: 'nx-sidebar-resizeable-example',
-  styleUrls: ['sidebar-resizeable-example.css'],
-  templateUrl: './sidebar-resizeable-example.html'
+  selector: 'sidebar-resizeable-example',
+  templateUrl: './sidebar-resizeable-example.html',
+  styleUrls: ['sidebar-resizeable-example.css']
 })
 export class SidebarResizeableExampleComponent {
   navigationData: MyTreeNode[] = [

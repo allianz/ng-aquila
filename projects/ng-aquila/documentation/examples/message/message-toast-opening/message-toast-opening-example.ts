@@ -5,7 +5,9 @@ import { NxMessageToastService } from '@aposin/ng-aquila/message';
 * @title Opening example
 */
 @Component({
-  templateUrl: './message-toast-opening-example.html'
+  selector: 'message-toast-opening-example',
+  templateUrl: './message-toast-opening-example.html',
+  styleUrls: ['./message-toast-opening-example.css']
 })
 export class MessageToastOpeningExampleComponent {
 

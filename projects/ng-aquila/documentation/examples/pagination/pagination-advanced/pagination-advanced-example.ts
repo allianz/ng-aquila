@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Advanced Pagination Example
 */
 @Component({
-  templateUrl: './pagination-advanced-example.html'
+  selector: 'pagination-advanced-example',
+  templateUrl: './pagination-advanced-example.html',
+  styleUrls: ['./pagination-advanced-example.css']
 })
 export class PaginationAdvancedExampleComponent {
   count: number = 210;

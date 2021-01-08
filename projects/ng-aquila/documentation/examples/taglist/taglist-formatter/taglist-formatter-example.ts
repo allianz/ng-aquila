@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tag Formatter Example
  */
 @Component({
-  selector: 'nx-taglist-formatter-example',
-  templateUrl: './taglist-formatter-example.html'
+  selector: 'taglist-formatter-example',
+  templateUrl: './taglist-formatter-example.html',
+  styleUrls: ['./taglist-formatter-example.css']
 })
 export class TaglistFormatterExampleComponent {
 

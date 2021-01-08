@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Popover Scroll Example
 */
 @Component({
-  selector: 'nx-popover-scroll-example',
+  selector: 'popover-scroll-example',
   templateUrl: './popover-scroll-example.html',
   styleUrls: ['./popover-scroll-example.css']
 })

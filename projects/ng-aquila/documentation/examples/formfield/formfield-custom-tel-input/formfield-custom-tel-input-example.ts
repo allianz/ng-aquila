@@ -16,7 +16,7 @@ export class MyTel {
 
 /** Custom `NxFormFieldControl` for telephone number input. */
 @Component({
-  selector: 'nx-custom-tel-input-example',
+  selector: 'formfield-custom-tel-input-example',
   templateUrl: 'formfield-custom-tel-input-example.html',
   styleUrls: ['formfield-custom-tel-input-example.css'],
   providers: [{provide: NxFormfieldControl, useExisting: FormfieldCustomTelInputExampleComponent}],

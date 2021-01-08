@@ -7,6 +7,7 @@ import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 * @title Parsing example
 */
 @Component({
+  selector: 'datefield-parsing-example',
   templateUrl: './datefield-parsing-example.html',
   styleUrls: ['./datefield-parsing-example.css']
 })

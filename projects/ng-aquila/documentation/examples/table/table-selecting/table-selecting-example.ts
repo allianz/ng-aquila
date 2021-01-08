@@ -14,8 +14,9 @@ interface Contract {
 * @title Multi Row Selection
 */
 @Component({
-  styleUrls: ['table-selecting-example.css'],
-  templateUrl: './table-selecting-example.html'
+  selector: 'table-selecting-example',
+  templateUrl: './table-selecting-example.html',
+  styleUrls: ['./table-selecting-example.css']
 })
 export class TableSelectingExampleComponent {
   showSelected: boolean = false;

@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 * @title Slider Label Example
 */
 @Component({
-  selector: 'nx-slider-label-example',
-  templateUrl: './slider-label-example.html'
+  selector: 'slider-label-example',
+  templateUrl: './slider-label-example.html',
+  styleUrls: ['./slider-label-example.css']
 })
 export class SliderLabelExampleComponent {
   euroSliderDemoValue: number = 0;

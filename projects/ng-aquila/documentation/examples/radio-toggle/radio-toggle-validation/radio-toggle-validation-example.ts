@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
  * @title Validation Example
  */
 @Component({
+  selector: 'radio-toggle-validation-example',
   templateUrl: './radio-toggle-validation-example.html',
   styleUrls: ['./radio-toggle-validation-example.css']
 })

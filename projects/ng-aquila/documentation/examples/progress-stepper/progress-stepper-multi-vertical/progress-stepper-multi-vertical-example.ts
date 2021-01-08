@@ -14,6 +14,7 @@ interface Animal {
 * @title Progress Indicator Multi Vertical Example
 */
 @Component({
+  selector: 'progress-stepper-multi-vertical-example',
   templateUrl: './progress-stepper-multi-vertical-example.html',
   styleUrls: ['./progress-stepper-multi-vertical-example.css'],
   host: {

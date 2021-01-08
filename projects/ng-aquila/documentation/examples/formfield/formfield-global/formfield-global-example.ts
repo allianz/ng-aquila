@@ -16,7 +16,9 @@ const myErrorOptions: ErrorDefaultOptions = {
 * @title Global default settings example
 */
 @Component({
+  selector: 'formfield-global-example',
   templateUrl: './formfield-global-example.html',
+  styleUrls: ['./formfield-global-example.css'],
   providers: [
     {provide: FORMFIELD_DEFAULT_OPTIONS, useValue: myDefaultOptions},
     {provide: ERROR_DEFAULT_OPTIONS, useValue: myErrorOptions}

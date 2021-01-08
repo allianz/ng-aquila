@@ -5,7 +5,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 * @title Selectable cards dynamic example
 */
 @Component({
-  templateUrl: './selectable-card-dynamic-example.html'
+  selector: 'selectable-card-dynamic-example',
+  templateUrl: './selectable-card-dynamic-example.html',
+  styleUrls: ['./selectable-card-dynamic-example.css']
 })
 export class SelectableCardDynamicExampleComponent {
   public myFormGroup: FormGroup;

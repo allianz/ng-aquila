@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 * @title Expandable Rows
 */
 @Component({
-   styleUrls: ['table-expandable-example.css'],
-   templateUrl: './table-expandable-example.html'
+  selector: 'table-expandable-example',
+  templateUrl: './table-expandable-example.html',
+  styleUrls: ['./table-expandable-example.css']
 })
 export class TableExpandableExampleComponent {
   tableElements = [

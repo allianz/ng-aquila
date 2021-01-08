@@ -11,6 +11,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 
 /** @title File uploader template-driven example */
 @Component({
+  selector: 'file-uploader-template-driven-example',
   templateUrl: './file-uploader-template-driven-example.html',
   styleUrls: ['./file-uploader-template-driven-example.css']
 })

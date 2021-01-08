@@ -4,9 +4,9 @@ import { Component } from '@angular/core';
 * @title Margin sizes
 */
 @Component({
+  selector: 'margin-sizes-example',
   templateUrl: './margin-sizes-example.html',
-  styleUrls: ['./margin-sizes-example.css'],
-  selector: 'nx-margin-sizes-example',
+  styleUrls: ['./margin-sizes-example.css']
 })
 export class MarginSizesExampleComponent {
   marginSizes = {

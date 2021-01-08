@@ -5,8 +5,9 @@ import { TooltipPosition } from '@aposin/ng-aquila/tooltip';
  * @title Tooltip positions
  */
 @Component({
-  styleUrls: ['./tooltip-positions-example.css'],
-  templateUrl: './tooltip-positions-example.html'
+  selector: 'tooltip-positions-example',
+  templateUrl: './tooltip-positions-example.html',
+  styleUrls: ['./tooltip-positions-example.css']
 })
 export class TooltipPositionsExampleComponent {
   positions: TooltipPosition[];

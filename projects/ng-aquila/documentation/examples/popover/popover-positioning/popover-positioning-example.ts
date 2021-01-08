@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Popover positioning Example
 */
 @Component({
-  selector: 'nx-popover-positioning-example',
+  selector: 'popover-positioning-example',
   templateUrl: './popover-positioning-example.html',
   styleUrls: ['./popover-positioning-example.css']
 })

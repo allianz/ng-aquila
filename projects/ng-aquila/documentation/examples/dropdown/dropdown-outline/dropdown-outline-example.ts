@@ -5,6 +5,7 @@ import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 * @title Outline formfield example
 */
 @Component({
+  selector: 'dropdown-outline-example',
   templateUrl: './dropdown-outline-example.html',
   styleUrls: ['./dropdown-outline-example.css'],
   providers: [{

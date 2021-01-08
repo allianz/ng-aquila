@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
  * @title Examples for rendering items
  */
 @Component({
-  templateUrl: './dropdown-rendering-items-example.html'
+  selector: 'dropdown-rendering-items-example',
+  templateUrl: './dropdown-rendering-items-example.html',
+  styleUrls: ['./dropdown-rendering-items-example.css']
 })
 export class DropdownRenderingItemsExampleComponent {
   demoData = [

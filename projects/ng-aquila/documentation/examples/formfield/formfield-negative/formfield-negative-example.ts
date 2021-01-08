@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Negative styling example
 */
 @Component({
-  templateUrl: './formfield-negative-example.html'
+  selector: 'formfield-negative-example',
+  templateUrl: './formfield-negative-example.html',
+  styleUrls: ['./formfield-negative-example.css']
 })
 export class FormfieldNegativeExampleComponent {}

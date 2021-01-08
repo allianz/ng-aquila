@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Light Negative Styling Example
 */
 @Component({
-  templateUrl: './accordion-light-negative-example.html'
+  selector: 'accordion-light-negative-example',
+  templateUrl: './accordion-light-negative-example.html',
+  styleUrls: ['./accordion-light-negative-example.css']
 })
 export class AccordionLightNegativeExampleComponent {}

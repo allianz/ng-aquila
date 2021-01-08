@@ -5,7 +5,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 * @title Reactive disabled example
 */
 @Component({
-  templateUrl: './circle-toggle-reactive-disabled-example.html'
+  selector: 'circle-toggle-reactive-disabled-example',
+  templateUrl: './circle-toggle-reactive-disabled-example.html',
+  styleUrls: ['./circle-toggle-reactive-disabled-example.css']
 })
 export class CircleToggleReactiveDisabledExampleComponent {
 

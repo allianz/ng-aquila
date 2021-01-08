@@ -21,10 +21,11 @@ export class MyIntl extends NxSortHeaderIntl {
 * @title Sorting example
 */
 @Component({
-  styleUrls: ['table-sorting-example.css'],
+  selector: 'table-sorting-example',
   templateUrl: './table-sorting-example.html',
+  styleUrls: ['table-sorting-example.css'],
   providers: [
-    {provide: NxSortHeaderIntl, useClass: MyIntl},
+    { provide: NxSortHeaderIntl, useClass: MyIntl },
   ],
 })
 export class TableSortingExampleComponent {

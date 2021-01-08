@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tag Accessibility Example
  */
 @Component({
-  selector: 'nx-taglist-a11y-example',
-  templateUrl: './taglist-a11y-example.html'
+  selector: 'taglist-a11y-example',
+  templateUrl: './taglist-a11y-example.html',
+  styleUrls: ['./taglist-a11y-example.css']
 })
 export class TaglistA11yExampleComponent {
 

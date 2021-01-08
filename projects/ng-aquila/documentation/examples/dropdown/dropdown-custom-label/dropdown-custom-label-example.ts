@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Custom label example
 */
 @Component({
-  templateUrl: './dropdown-custom-label-example.html'
+  selector: 'dropdown-custom-label-example',
+  templateUrl: './dropdown-custom-label-example.html',
+  styleUrls: ['./dropdown-custom-label-example.css']
 })
 export class DropdownCustomLabelExampleComponent {
   customLabelDropdownValue;

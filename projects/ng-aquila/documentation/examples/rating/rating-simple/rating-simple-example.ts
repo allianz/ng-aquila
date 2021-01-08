@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Rating Simple Bindig Example
  */
 @Component({
-  selector: 'nx-rating-simple-example',
-  templateUrl: './rating-simple-example.html'
+  selector: 'rating-simple-example',
+  templateUrl: './rating-simple-example.html',
+  styleUrls: ['./rating-simple-example.css']
 })
 export class RatingSimpleExampleComponent {
 

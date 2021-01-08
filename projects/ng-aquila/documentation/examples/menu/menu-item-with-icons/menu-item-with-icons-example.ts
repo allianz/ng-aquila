@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Menu item with large indentation and button icons
 */
 @Component({
-  selector: 'nx-menu-item-with-icons.example',
+  selector: 'menu-item-with-icons-example',
   templateUrl: 'menu-item-with-icons-example.html',
   styleUrls: ['menu-item-with-icons-example.css']
 })

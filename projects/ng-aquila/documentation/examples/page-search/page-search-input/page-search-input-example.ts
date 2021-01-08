@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Simple input example
 */
 @Component({
-  templateUrl: './page-search-input-example.html'
+  selector: 'page-search-input-example',
+  templateUrl: './page-search-input-example.html',
+  styleUrls: ['./page-search-input-example.css']
 })
 export class PageSearchInputExampleComponent {
   searchTerm: string;

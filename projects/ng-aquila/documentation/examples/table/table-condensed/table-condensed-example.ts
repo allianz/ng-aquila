@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
 * @title Condensed Example
 */
 @Component({
-  styleUrls: ['table-condensed-example.css'],
-  templateUrl: './table-condensed-example.html'
+  selector: 'table-condensed-example',
+  templateUrl: './table-condensed-example.html',
+  styleUrls: ['./table-condensed-example.css']
 })
 export class TableCondensedExampleComponent {
   tableElements = [

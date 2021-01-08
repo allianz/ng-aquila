@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
  * @title Appearance for Tabs Navbar
  */
 @Component({
+  selector: 'tabs-nav-bar-appearance-example',
   templateUrl: './tabs-nav-bar-appearance-example.html',
+  styleUrls: ['./tabs-nav-bar-appearance-example.css']
 })
 export class TabsNavBarAppearanceExampleComponent {
 

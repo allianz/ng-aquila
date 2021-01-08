@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Custom formfield label example
 */
 @Component({
-  templateUrl: './formfield-custom-label-example.html'
+  selector: 'formfield-custom-label-example',
+  templateUrl: './formfield-custom-label-example.html',
+  styleUrls: ['./formfield-custom-label-example.css']
 })
 export class FormfieldCustomLabelExampleComponent {
 

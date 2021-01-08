@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Sizes example
 */
 @Component({
-  templateUrl: './link-size-example.html'
+  selector: 'link-size-example',
+  templateUrl: './link-size-example.html',
+  styleUrls: ['./link-size-example.css']
 })
 export class LinkSizeExampleComponent {}

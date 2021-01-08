@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
  * @title Dynamically adding and removing tabs
  */
 @Component({
+  selector: 'tabs-dynamic-example',
   templateUrl: './tabs-dynamic-example.html',
   styleUrls: ['./tabs-dynamic-example.css']
 })

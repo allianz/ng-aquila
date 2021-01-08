@@ -5,6 +5,7 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 * @title Notification Panel
 */
 @Component({
+  selector: 'overlay-positioning-example',
   templateUrl: './overlay-positioning-example.html',
   styleUrls: ['./overlay-positioning-example.css']
 })

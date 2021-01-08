@@ -5,7 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 * @title Checkbox group reactive example
 */
 @Component({
-  templateUrl: './checkbox-group-reactive-example.html'
+  selector: 'checkbox-group-reactive-example',
+  templateUrl: './checkbox-group-reactive-example.html',
+  styleUrls: ['./checkbox-group-reactive-example.css']
 })
 
 export class CheckboxGroupReactiveExampleComponent {

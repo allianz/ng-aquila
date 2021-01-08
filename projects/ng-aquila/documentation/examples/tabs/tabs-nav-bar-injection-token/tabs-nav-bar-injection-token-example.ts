@@ -9,7 +9,9 @@ const myDefaultOptions: TabNavBarDefaultOptions = {
  * @title Injection Token in Tabs Navbar
  */
 @Component({
+  selector: 'tabs-nav-bar-injection-token-example',
   templateUrl: './tabs-nav-bar-injection-token-example.html',
+  styleUrls: ['./tabs-nav-bar-injection-token-example.css'],
   providers: [
     { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions }
   ]

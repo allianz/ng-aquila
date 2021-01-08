@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Toggle Button Example
 */
 @Component({
-  templateUrl: './radio-toggle-example.html'
+  selector: 'radio-toggle-example',
+  templateUrl: './radio-toggle-example.html',
+  styleUrls: ['./radio-toggle-example.css']
 })
 export class RadioToggleExampleComponent {
 }

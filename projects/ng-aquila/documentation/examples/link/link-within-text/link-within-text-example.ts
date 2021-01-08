@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Link within text example
 */
 @Component({
-  templateUrl: './link-within-text-example.html'
+  selector: 'link-within-text-example',
+  templateUrl: './link-within-text-example.html',
+  styleUrls: ['./link-within-text-example.css']
 })
 export class LinkWithinTextExampleComponent {}

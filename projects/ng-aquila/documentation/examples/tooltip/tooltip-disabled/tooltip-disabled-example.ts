@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Disabled tooltip
  */
 @Component({
-  styleUrls: ['./tooltip-disabled-example.css'],
-  templateUrl: './tooltip-disabled-example.html'
+  selector: 'tooltip-disabled-example',
+  templateUrl: './tooltip-disabled-example.html',
+  styleUrls: ['./tooltip-disabled-example.css']
 })
 export class TooltipDisabledExampleComponent {
   disabled: boolean = false;

@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 * @title Progress Indicator reactive form with single form example
 */
 @Component({
+  selector: 'progress-stepper-reactivesingle-example',
   templateUrl: './progress-stepper-reactivesingle-example.html',
   styleUrls: ['./progress-stepper-reactivesingle-example.css']
 })

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 * @title Negative styling example
 */
 @Component({
+  selector: 'circle-toggle-negative-example',
   templateUrl: './circle-toggle-negative-example.html',
   styleUrls: ['./circle-toggle-negative-example.css']
 })

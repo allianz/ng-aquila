@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 * @title Timefield format toggler example
 */
 @Component({
-  selector: 'nx-timefield-format-toggler-example',
-  styleUrls: ['timefield-format-toggler-example.css'],
-  templateUrl: './timefield-format-toggler-example.html'
+  selector: 'timefield-format-toggler-example',
+  templateUrl: './timefield-format-toggler-example.html',
+  styleUrls: ['./timefield-format-toggler-example.css'],
 })
 export class TimefieldFormatTogglerExampleComponent {
   templateModel: string = '12:01';

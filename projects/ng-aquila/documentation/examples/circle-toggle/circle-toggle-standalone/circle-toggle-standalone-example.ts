@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Standalone example
 */
 @Component({
-  templateUrl: './circle-toggle-standalone-example.html'
+  selector: 'circle-toggle-standalone-example',
+  templateUrl: './circle-toggle-standalone-example.html',
+  styleUrls: ['./circle-toggle-standalone-example.css']
 })
 export class CircleToggleStandaloneExampleComponent {}

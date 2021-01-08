@@ -8,7 +8,9 @@ import { WikipediaService } from '../../../common/wikipedia.service';
 * @title Data binding examples
 */
 @Component({
+  selector: 'autocomplete-data-binding-example',
   templateUrl: './autocomplete-data-binding-example.html',
+  styleUrls: ['./autocomplete-data-binding-example.css'],
   providers: [ WikipediaService ]
 })
 

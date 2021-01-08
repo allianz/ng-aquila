@@ -15,6 +15,8 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
+import { StackBlitzButtonModule } from './../stack-blitz/stack-blitz-button';
+
 @NgModule({
   imports: [
     PortalModule,
@@ -26,7 +28,8 @@ import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
     RouterModule,
     NxLinkModule,
     NxTooltipModule,
-    NxvLazyExampleOutletModule
+    NxvLazyExampleOutletModule,
+    StackBlitzButtonModule
   ],
   exports: [ExampleViewerComponent],
   declarations: [ExampleViewerComponent],

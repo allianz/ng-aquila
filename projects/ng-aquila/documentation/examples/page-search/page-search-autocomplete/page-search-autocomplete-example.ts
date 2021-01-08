@@ -7,7 +7,9 @@ import { WikipediaService } from '../../../common/wikipedia.service';
 * @title Autocomplete Example
 */
 @Component({
+  selector: 'page-search-autocomplete-example',
   templateUrl: './page-search-autocomplete-example.html',
+  styleUrls: ['./page-search-autocomplete-example.css'],
   providers: [ WikipediaService ]
 })
 export class PageSearchAutocompleteExampleComponent {

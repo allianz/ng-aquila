@@ -5,8 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  * @title Slider Reactive Form Example
  */
 @Component({
-  selector: 'nx-slider-reactive-example',
-  templateUrl: './slider-reactive-example.html'
+  selector: 'slider-reactive-example',
+  templateUrl: './slider-reactive-example.html',
+  styleUrls: ['./slider-reactive-example.css']
 })
 export class SliderReactiveExampleComponent {
 

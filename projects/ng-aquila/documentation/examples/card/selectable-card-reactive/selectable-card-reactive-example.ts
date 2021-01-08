@@ -5,7 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 * @title Selectable cards reactive example
 */
 @Component({
-  templateUrl: './selectable-card-reactive-example.html'
+  selector: 'selectable-card-reactive-example',
+  templateUrl: './selectable-card-reactive-example.html',
+  styleUrls: ['./selectable-card-reactive-example.css']
 })
 export class SelectableCardReactiveExampleComponent {
   public testForm: FormGroup;

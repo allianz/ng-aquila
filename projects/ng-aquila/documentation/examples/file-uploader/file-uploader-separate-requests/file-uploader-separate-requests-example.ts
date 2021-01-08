@@ -11,6 +11,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 
 /** @title Example with separate uploading requests */
 @Component({
+  selector: 'file-uploader-separate-requests-example',
   templateUrl: './file-uploader-separate-requests-example.html',
   styleUrls: ['./file-uploader-separate-requests-example.css']
 })

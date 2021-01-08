@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Tag Output Example
  */
 @Component({
-  selector: 'nx-taglist-output-example',
-  templateUrl: './taglist-output-example.html'
+  selector: 'taglist-output-example',
+  templateUrl: './taglist-output-example.html',
+  styleUrls: ['./taglist-output-example.css']
 })
 export class TaglistOutputExampleComponent {
   tags = ['Apples', 'Oranges'];

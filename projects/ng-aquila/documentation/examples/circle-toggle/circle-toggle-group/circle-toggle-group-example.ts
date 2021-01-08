@@ -4,7 +4,9 @@ import { Component } from '@angular/core';
 * @title Circle Toggle group example
 */
 @Component({
-  templateUrl: './circle-toggle-group-example.html'
+  selector: 'circle-toggle-group-example',
+  templateUrl: './circle-toggle-group-example.html',
+  styleUrls: ['./circle-toggle-group-example.css']
 })
 export class CircleToggleGroupExampleComponent {
 

@@ -12,9 +12,11 @@ const myPaginationTexts: IPaginationTexts = {
 * @title Localization Example
 */
 @Component({
+  selector: 'pagination-localize-example',
   templateUrl: './pagination-localize-example.html',
+  styleUrls: ['./pagination-localize-example.css'],
   providers: [
-    {provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts}
+    { provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }
   ]
 })
 export class PaginationLocalizeExampleComponent {

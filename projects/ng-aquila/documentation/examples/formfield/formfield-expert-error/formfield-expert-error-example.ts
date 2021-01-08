@@ -5,7 +5,9 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
  * @title Expert error message example
  */
 @Component({
-  templateUrl: './formfield-expert-error-example.html'
+  selector: 'formfield-expert-error-example',
+  templateUrl: './formfield-expert-error-example.html',
+  styleUrls: ['./formfield-expert-error-example.css']
 })
 export class FormfieldExpertErrorExampleComponent implements AfterContentInit {
   @ViewChild('exampleErrorNgModel', { static: true }) exampleErrorNgModel: NxInputDirective;

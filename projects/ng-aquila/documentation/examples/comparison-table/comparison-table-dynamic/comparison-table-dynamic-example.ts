@@ -10,6 +10,7 @@ type TableData = (ContentCell | ToggleSection)[];
 
 /** @title Dynamically filled table */
 @Component({
+  selector: 'comparison-table-dynamic-example',
   templateUrl: './comparison-table-dynamic-example.html',
   styleUrls: ['./comparison-table-dynamic-example.css']
 })

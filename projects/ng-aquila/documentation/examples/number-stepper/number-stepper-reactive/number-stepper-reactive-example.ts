@@ -5,7 +5,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 * @title Reactive example
 */
 @Component({
-  templateUrl: './number-stepper-reactive-example.html'
+  selector: 'number-stepper-reactive-example',
+  templateUrl: './number-stepper-reactive-example.html',
+  styleUrls: ['./number-stepper-reactive-example.css']
 })
 export class NumberStepperReactiveExampleComponent {
   testForm: FormGroup;

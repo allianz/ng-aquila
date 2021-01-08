@@ -5,7 +5,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@ang
 * @title Popover Hover Example
 */
 @Component({
-  selector: 'nx-popover-hover-example',
+  selector: 'popover-hover-example',
   templateUrl: './popover-hover-example.html',
   styleUrls: ['./popover-hover-example.css']
 })

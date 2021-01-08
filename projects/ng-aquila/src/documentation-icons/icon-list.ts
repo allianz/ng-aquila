@@ -14,6 +14,7 @@ export const ICON_MAPPINGS = {
 'mail-o': { alias: 'envelope', font: 'fas' },
 'pdf': { alias: 'file-pdf', font: 'far' },
 'pen': { alias: 'pen', font: 'fas' },
+'popout': { alias: 'expand-alt', font: 'fas' },
 'refresh': { alias: 'redo', font: 'fas' },
 'phone-o': { alias: 'phone-alt', font: 'fas' },
 'product-car': { alias: 'car', font: 'fas' },

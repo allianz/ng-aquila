@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 * @title Menu item
 */
 @Component({
-  selector: 'nx-menu-item.example',
+  selector: 'menu-item-example',
   templateUrl: 'menu-item-example.html',
   styleUrls: ['menu-item-example.css']
 })

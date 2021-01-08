@@ -6,8 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 */
 @Component({
   selector: 'nx-timefield-reactive-example',
-  styleUrls: ['timefield-reactive-example.css'],
-  templateUrl: './timefield-reactive-example.html'
+  templateUrl: './timefield-reactive-example.html',
+  styleUrls: ['./timefield-reactive-example.css']
 })
 export class TimefieldReactiveExampleComponent {
   public testForm: FormGroup;

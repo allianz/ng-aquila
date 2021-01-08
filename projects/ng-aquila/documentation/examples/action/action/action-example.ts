@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 * @title Action Example
 */
 @Component({
-  selector: 'nx-action-example',
+  selector: 'action-example',
   styleUrls: ['./action-example.css'],
   templateUrl: './action-example.html'
 })

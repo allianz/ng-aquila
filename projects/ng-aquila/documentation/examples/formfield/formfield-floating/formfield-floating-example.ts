@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 * @title Floating examples
 */
 @Component({
-  templateUrl: './formfield-floating-example.html'
+  selector: 'formfield-floating-example',
+  templateUrl: './formfield-floating-example.html',
+  styleUrls: ['./formfield-floating-example.css']
 })
 export class FormfieldFloatingExampleComponent {}

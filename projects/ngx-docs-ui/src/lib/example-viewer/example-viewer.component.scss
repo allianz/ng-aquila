@@ -75,6 +75,10 @@
   height: 24px;
 }
 
+nxv-stack-blitz-button ::ng-deep button {
+  margin: 0 0 0 8px;
+}
+
 .nxv-example-viewer--no-box {
   border: none;
 
