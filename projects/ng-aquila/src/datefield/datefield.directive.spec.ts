@@ -244,6 +244,14 @@ describe('NxDatefieldDirective with Moment', () => {
       expect(nativeElement.value).toBe('2018/01/01');
     }));
 
+    it('should have no error if input value is empty', () => {
+      createTestComponent(ReactiveDatefield);
+      nativeElement.value = '';
+      nativeElement.dispatchEvent(new Event('input'));
+      fixture.detectChanges();
+      expect(testInstance.form.get('datefield').valid).toBe(true);
+    });
+
     it('should have no error on custom date format', () => {
       createTestComponent(ReactiveDatefield);
       testInstance.displayFormat = 'MM--DD--YYYY';
@@ -378,10 +386,19 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
   it('has an parsing error for an incorrect date', () => {
     createTestComponent(ReactiveIsoDatefield);
     const datefield = testInstance.form.get('datefield');
-    datefield.patchValue('this is no date');
+    nativeElement.value = 'this is no date';
+    nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     expect(datefield.valid).toBeFalse();
     expect(datefield.errors['nxDatefieldParse']).toBeDefined();
+  });
+
+  it('has no error if input is empty', () => {
+    createTestComponent(ReactiveIsoDatefield);
+    nativeElement.value = '';
+    nativeElement.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    expect(testInstance.form.get('datefield').valid).toBeTrue();
   });
 
 });
