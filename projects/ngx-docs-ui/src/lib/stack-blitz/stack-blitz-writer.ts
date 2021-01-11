@@ -1,7 +1,7 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-import {ExampleData} from './example-data';
+import { ExampleData } from './example-data';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
@@ -12,9 +12,9 @@ const COPYRIGHT = `Copyright APOSIN 2021`;
  * structure is defined in the Material repository, but we include the docs-content as assets in
  * in the CLI configuration.
  */
-const DOCS_CONTENT_PATH = '/docs-content/examples-source';
+const DOCS_CONTENT_PATH = 'docs-content/examples-source';
 
-const TEMPLATE_PATH = '/assets/stack-blitz/';
+const TEMPLATE_PATH = 'assets/stack-blitz/';
 const TEMPLATE_FILES = [
   'src/app/aquila-module.ts',
   'src/index.html',
@@ -32,7 +32,7 @@ const TEMPLATE_FILES = [
   'tslint.json',
 ];
 
-const TEST_TEMPLATE_PATH = '/assets/stack-blitz-tests/';
+const TEST_TEMPLATE_PATH = 'assets/stack-blitz-tests/';
 const TEST_TEMPLATE_FILES = [
   'src/app/aquila-module.ts',
   'src/index.html',
@@ -199,11 +199,16 @@ export class StackBlitzWriter {
             filename: string,
             path: string,
             isTest: boolean,
-            prependApp = true): void {
-    this._http.get(path + filename, {responseType: 'text'}).subscribe(
-      response => this._addFileToForm(form, data, response, filename, path, isTest, prependApp),
-      error => console.log(error)
-    );
+            prependApp = true): Promise<string> {
+    return new Promise(resolve => {
+      this._http.get(path + filename, {responseType: 'text'}).subscribe(
+        response => {
+          this._addFileToForm(form, data, response, filename, path, isTest, prependApp);
+          resolve(path + filename);
+        },
+        error => console.log(error)
+      );
+    });
   }
 
   /**

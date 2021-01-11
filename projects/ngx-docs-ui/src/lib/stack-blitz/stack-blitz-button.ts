@@ -26,7 +26,7 @@ export class StackBlitzButton {
   exampleDescriptor: ExampleDescriptor;
 
   @HostListener('mouseover') onMouseOver() {
-    this.isDisabled = !this.stackBlitzForm;
+    this.isDisabled = !this.exampleDescriptor;
   }
 
   @Input()
@@ -36,16 +36,7 @@ export class StackBlitzButton {
       this.exampleData = new ExampleData(example, this.exampleDescriptor.title);
     }
 
-    if (example) {
-      this.stackBlitzWriter.constructStackBlitzForm(example,
-        this.exampleDescriptor.module,
-        this.exampleData,
-        example.includes('harness'))
-        .then((stackBlitzForm: HTMLFormElement) => {
-          this.stackBlitzForm = stackBlitzForm;
-          this.isDisabled = false;
-        });
-    } else {
+    if (!example) {
       this.isDisabled = true;
     }
   }
@@ -56,6 +47,25 @@ export class StackBlitzButton {
   ) {}
 
   openStackBlitz(): void {
+    if (!this.stackBlitzForm) { // First click
+      this.stackBlitzWriter.constructStackBlitzForm(this.exampleDescriptor.id,
+        this.exampleDescriptor.module,
+        this.exampleData,
+        this.exampleDescriptor.id.includes('harness'))
+        .then((stackBlitzForm: HTMLFormElement) => {
+          // This delay could trigger the browser's popup blocker if it takes too long
+          // The user can either allow the popup or do a second click, when the form is
+          // already constructed and set below
+          this.stackBlitzForm = stackBlitzForm;
+
+          this.submitStackBlitzForm();
+        });
+    } else { // Second click
+      this.submitStackBlitzForm();
+    }
+  }
+
+  submitStackBlitzForm(): void {
     // When the form is submitted, it must be in the document body. The standard of forms is not
     // to submit if it is detached from the document. See the following chromium commit for
     // more details:
