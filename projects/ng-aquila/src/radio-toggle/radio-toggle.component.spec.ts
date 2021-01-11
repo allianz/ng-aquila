@@ -5,7 +5,7 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import * as axe from 'axe-core';
 
-import { NxRadioToggleComponent } from './radio-toggle.component';
+import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
 
 // We can safely ignore some conventions in our specs
@@ -161,6 +161,44 @@ describe('NxRadioToggleComponent', () => {
       expect((toggleButtons[0].componentInstance).selected).toBe(true);
       expect((toggleButtons[1].componentInstance).selected).toBe(false);
     }));
+  });
+
+  describe('reset values', () => {
+    RESET_VALUES.forEach((resetValue, index) => {
+      it(`should deselect all when no matching button with "${resetValue}" value present`, fakeAsync(() => {
+        createTestComponent(LoopedRadioToggle);
+        const testInstance = fixture.componentInstance as LoopedRadioToggle;
+        testInstance.value = 'A';
+        fixture.detectChanges();
+        tick();
+        const toggleButtons = fixture.debugElement.queryAll(By.directive(NxRadioToggleButtonComponent));
+        expect((toggleButtons[0].componentInstance).selected).toBe(true);
+        expect((toggleButtons[1].componentInstance).selected).toBe(false);
+        expect((toggleButtons[2].componentInstance).selected).toBe(false);
+        testInstance.value = resetValue;
+        fixture.detectChanges();
+        tick();
+        expect((toggleButtons[0].componentInstance).selected).toBe(false);
+        expect((toggleButtons[1].componentInstance).selected).toBe(false);
+        expect((toggleButtons[2].componentInstance).selected).toBe(false);
+      }));
+
+      it(`should select respective button for value "${resetValue}" if present`, fakeAsync(() => {
+        createTestComponent(LoopedRadioToggle);
+        const testInstance = fixture.componentInstance as LoopedRadioToggle;
+        testInstance.data = RESET_VALUES;
+        testInstance.value = 'some_value'; // HINT: it you let value empty, 'undefined' button is pre-selected.
+        fixture.detectChanges();
+        tick();
+        testInstance.value = resetValue;
+        fixture.detectChanges();
+        tick();
+        const toggleButtons = fixture.debugElement.queryAll(By.directive(NxRadioToggleButtonComponent));
+        RESET_VALUES.forEach((_, i) => {
+          expect((toggleButtons[i].componentInstance).selected).toBe(i === index);
+        });
+      }));
+    });
   });
 
   describe('disabling', () => {

@@ -28,6 +28,8 @@ const MAPPING = {
   'small': 'nx-radio-toggle--small',
 };
 
+export const RESET_VALUES = [null, undefined, ''];
+
 @Component({
   selector: 'nx-radio-toggle',
   templateUrl: 'radio-toggle.component.html',
@@ -164,14 +166,14 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
   @Input('nxSelection')
   writeValue(value: any): void {
     this._selection = value;
-    if (value === null || value === undefined || value === '') {
+    const correspondingButton =
+      this.toggleButtons.find((button: NxRadioToggleButtonComponent) => button.value === this._selection);
+    if (correspondingButton) {
+      (correspondingButton as NxRadioToggleButtonComponent).select();
+      return;
+    }
+    if (RESET_VALUES.indexOf(value) > -1) {
       this.toggleButtons.map((button: NxRadioToggleButtonComponent) => button.deselect());
-    } else {
-      const correspondingButton =
-        this.toggleButtons.find((button: NxRadioToggleButtonComponent) => button.value === this._selection);
-      if (correspondingButton) {
-        (correspondingButton as NxRadioToggleButtonComponent).select();
-      }
     }
   }
 
