@@ -14,7 +14,7 @@ import {
   ViewEncapsulation,
   Renderer2
 } from '@angular/core';
-import { delay, startWith } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
 
 import { NxFormfieldHintDirective } from './hint.directive';
@@ -187,23 +187,27 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
 
     // Subscribe to changes in the child control state in order to update the form field UI.
-    subscription = this._control.stateChanges.pipe(startWith(null), delay(0)).subscribe(() => {
-      this._syncDescribedByIds();
-      this._changeDetectorRef.markForCheck();
+    subscription = this._control.stateChanges.pipe(startWith(null)).subscribe(() => {
+      Promise.resolve().then(() => {
+        this._syncDescribedByIds();
+        this._changeDetectorRef.markForCheck();
+      });
     });
 
     subscriptions.push(subscription);
 
     // Re-validate when the number of hints changes.
-    subscription = this._hintChildren.changes.pipe(startWith(null), delay(0)).subscribe(() => {
+    subscription = this._hintChildren.changes.pipe(startWith(null)).subscribe(() => {
       this._changeDetectorRef.markForCheck();
     });
     subscriptions.push(subscription);
 
     // Update the aria-described by when the number of errors changes.
-    subscription = this._errorChildren.changes.pipe(startWith(null), delay(0)).subscribe(() => {
-      this._syncDescribedByIds();
-      this._changeDetectorRef.markForCheck();
+    subscription = this._errorChildren.changes.pipe(startWith(null)).subscribe(() => {
+      Promise.resolve().then(() => {
+        this._syncDescribedByIds();
+        this._changeDetectorRef.markForCheck();
+      });
     });
     subscriptions.push(subscription);
 

@@ -36,7 +36,7 @@ import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput 
 import { NxFileUploaderIntl } from './file-uploader-intl';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
-import { delay, startWith } from 'rxjs/operators';
+import { startWith } from 'rxjs/operators';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
@@ -359,14 +359,14 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     subscriptions.push(subscription);
 
     // Re-validate when the number of hints changes.
-    subscription = this._hintChildren.changes.pipe(startWith(null), delay(0)).subscribe(() => {
+    subscription = this._hintChildren.changes.pipe(startWith(null)).subscribe(() => {
       this._syncDescribedByIds();
       this._changeDetectorRef.markForCheck();
     });
     subscriptions.push(subscription);
 
     // Re-validate when the number of hints changes.
-    subscription = this._errorList.changes.pipe(startWith(null), delay(0)).subscribe(() => {
+    subscription = this._errorList.changes.pipe(startWith(null)).subscribe(() => {
       this._syncDescribedByIds();
       this._changeDetectorRef.markForCheck();
     });
