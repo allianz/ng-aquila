@@ -2,17 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [10.9.0](https://github.com/aposin/ng-aquila/compare/v10.8.0...v10.9.0) (2021-01-12)
+
+As a documentation change there was added a link to stack-blitz for the examples.
+
+### Bug Fixes
+
+* **avatar:** hover and active grey bloom changes text color ([28e9a1e](https://github.com/aposin/ng-aquila/commit/28e9a1e0034878f9fff2edcbe5089a39427f921c))
+* **context-menu:** adjust height of items and offset of submenus ([6c504e3](https://github.com/aposin/ng-aquila/commit/6c504e37ab406290fdcc6212f58e09a23f2abdbf))
+* **datefield:** parseError when input is empty ([d9be564](https://github.com/aposin/ng-aquila/commit/d9be5643ad35e7f9f658e26a243226ee1723a2df))
+* **datefield:** select correct year in adjacent cells in datepicker ([c954981](https://github.com/aposin/ng-aquila/commit/c954981d299000fdc2fc4fa8b642ecb323af1f05))
+* **file-uploader, formfield:** remove delay(0) ([340866f](https://github.com/aposin/ng-aquila/commit/340866fedca30340c4f6bba769776406ea8f5313))
+* **formfield:** remove font-weight on nx-icons ([f992b32](https://github.com/aposin/ng-aquila/commit/f992b32024ad7a9fe4767e17867cdc6e4e46e857))
+* **icon:** svg does not fit in flexbox space inside icon ([da71316](https://github.com/aposin/ng-aquila/commit/da713165a8a8c92f9d270f754beaaea42b416caf))
+* **side-navigation:** add missing padding-bottom ([11584cb](https://github.com/aposin/ng-aquila/commit/11584cb97440c9929ad5589f7ab25ac099fe9128))
+* **toggle-button:** allow reset values as radio values ([c2720b9](https://github.com/aposin/ng-aquila/commit/c2720b92cc08a94e84df92487667db66b20a8c24))
+
+
+### Features
+
+* **checkbox:** add focus() method ([3cbb4bd](https://github.com/aposin/ng-aquila/commit/3cbb4bd1b52df0a286de1d6431da6d540dfb6716))
+* **circle-toggle:** add focus() method ([079d64d](https://github.com/aposin/ng-aquila/commit/079d64d3788601f842a8b800f13a726d3ac8bd03))
+* **radio-button:** add focus() method ([e3cd98b](https://github.com/aposin/ng-aquila/commit/e3cd98b9c454a6984ff8f5b58c5d1102e929077f))
+
+
+
 # [10.8.0](https://github.com/aposin/ng-aquila/compare/v10.7.0...v10.8.0) (2020-12-21)
 
 
 ### Bug Fixes
 
-* **iso-date-adapter:** use the locale of the date adapter ([#152](https://github.com/aposin/ng-aquila/issues/152)) ([cd55c93](https://github.com/aposin/ng-aquila/commit/cd55c939f04c90d1c7bfe4567e592d6820d4d896))
+* **iso-date-adapter:** use the locale of the date adapter ([cd55c93](https://github.com/aposin/ng-aquila/commit/cd55c939f04c90d1c7bfe4567e592d6820d4d896))
 
 
 ### Features
 
-* **sidepanel:** add light color variant ([#156](https://github.com/aposin/ng-aquila/issues/156)) ([7b0959f](https://github.com/aposin/ng-aquila/commit/7b0959f219d0fe2844abff196c9136b4d91ad277))
+* **sidepanel:** add light color variant ([7b0959f](https://github.com/aposin/ng-aquila/commit/7b0959f219d0fe2844abff196c9136b4d91ad277))
 
 
 
