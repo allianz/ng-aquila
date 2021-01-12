@@ -1,0 +1,5 @@
+@media screen and (-ms-high-contrast: active) {
+  .margin-box {
+    background-color: windowText;
+  }
+}

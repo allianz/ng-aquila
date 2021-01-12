@@ -1,0 +1,19 @@
+.wrapper {
+  display: table;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+}
+
+.margin-box {
+  width: 400px;
+  display: block;
+  line-height: 20px;
+  padding: 8px;
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .wrapper {
+    background-color: windowText;
+  }
+}

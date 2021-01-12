@@ -1,0 +1,30 @@
+<form [formGroup]="formLinear">
+  <nx-progress-stepper [linear]="true" currentStepLabel="Step">
+    <nx-step label="Your Details" formGroupName="personalDetails" [stepControl]="formLinear.controls.personalDetails">
+      <div class="nx-margin-top-s">
+        <nx-formfield nxLabel="Name">
+          <input nxInput required formControlName="name">
+        </nx-formfield>
+        <nx-formfield nxLabel="Age">
+          <input nxInput required formControlName="age">
+        </nx-formfield>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperNext type="button">Next</button>
+      </div>
+    </nx-step>
+    <nx-step label="Your Address" formGroupName="address" [stepControl]="formLinear.controls.address">
+      <div class="nx-margin-top-s">
+        <nx-formfield nxLabel="Street">
+          <input nxInput required formControlName="street">
+        </nx-formfield>
+        <nx-formfield nxLabel="Postal Code">
+          <input nxInput required formControlName="postalCode">
+        </nx-formfield>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperNext type="button">Next</button>
+      </div>
+    </nx-step>
+  </nx-progress-stepper>
+</form>
+{{ formLinear.value | json }}
+

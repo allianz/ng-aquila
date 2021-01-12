@@ -1,0 +1,29 @@
+<form [formGroup]="testForm">
+  <nx-single-stepper currentStepLabel="Step">
+    <nx-step label="Your name and age" formGroupName="personalDetails" [stepControl]="testForm">
+      <div class="nx-margin-top-s">
+        <nx-formfield nxLabel="Name">
+          <input nxInput required formControlName="name">
+        </nx-formfield>
+        <nx-formfield nxLabel="Age">
+          <input nxInput required formControlName="age">
+        </nx-formfield>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperNext type="button">Next</button>
+      </div>
+    </nx-step>
+    <nx-step label="Your Address" formGroupName="address" [stepControl]="testForm">
+      <div class="nx-margin-top-s">
+        <nx-formfield nxLabel="Street">
+          <input nxInput required formControlName="street">
+        </nx-formfield>
+        <nx-formfield nxLabel="PostalCode">
+          <input nxInput required formControlName="postalCode">
+        </nx-formfield>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperNext type="button">Next</button>
+      </div>
+    </nx-step>
+  </nx-single-stepper>
+</form>
+{{ testForm.value | json }}

@@ -1,0 +1,18 @@
+<nx-file-uploader #documentUpload multiple [uploader]="uploader">
+  <nx-label size="small" class="nx-margin-bottom-3xs">Select a file to upload</nx-label>
+  <span class="nx-margin-bottom-s" nxFileUploadHint>Multiple files can be selected</span>
+
+  <button nxButton="primary small-medium" type="button" class="nx-margin-bottom-s" nxFileUploadButton>
+    <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>
+    Add File
+  </button>
+
+</nx-file-uploader>
+
+<button nxButton="secondary small"
+        type="button"
+        [disabled]="!documentUpload.value?.length"
+        [nxFileUploadTriggerFor]="documentUpload"
+        class="nx-margin-bottom-0">
+  Upload files
+</button>

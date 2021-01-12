@@ -1,0 +1,11 @@
+<form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+  <nx-switcher name="reactiveTest" formControlName="switcherTestReactive">
+    switcher label
+  </nx-switcher>
+
+  <p><button nxButton="primary small" type="submit" class="nx-margin-bottom-0">submit</button></p>
+  <p>Form value: {{ testForm.value | json }}</p>
+  <p>Form status: {{ testForm.status | json }}</p>
+  <p>Form is {{ isSubmitted ? '' : ' not ' }} submitted</p>
+</form>
+

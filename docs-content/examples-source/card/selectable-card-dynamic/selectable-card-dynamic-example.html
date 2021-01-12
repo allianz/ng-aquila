@@ -1,0 +1,32 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="12,12,3">
+      <button (click)="addNewCard()"
+              nxButton="primary small"
+              type="button">
+        Add new card
+      </button>
+    </div>
+    <div nxCol="12,12,3">
+      <button (click)="removeFirstCard()"
+        nxButton="secondary small"
+        type="button">
+        Remove first card
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="myFormGroup">
+    <div nxRow formArrayName="cards">
+      <div *ngFor="let card of cards.controls; index as i"
+        nxCol="12,12,12,3">
+        <nx-selectable-card [formControlName]="i">
+          <p>
+            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+            consectetur, adipisci velit
+          </p>
+        </nx-selectable-card>
+      </div>
+    </div>
+    <p>Form value: {{ myFormGroup.value | json }}</p>
+  </form>
+</div>

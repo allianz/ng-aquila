@@ -5,7 +5,9 @@
 * <span class="hljs-doctag">@title </span>Programmatic Context Menu Example
 */</span>
 <span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;context-menu-programmatic-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./context-menu-programmatic-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./context-menu-programmatic-example.css&#x27;</span>],
   <span class="hljs-attr">host</span>: {
     <span class="hljs-string">&#x27;(document:keydown.control.p)&#x27;</span>: <span class="hljs-string">&#x27;openContextMenu($event)&#x27;</span>
   }

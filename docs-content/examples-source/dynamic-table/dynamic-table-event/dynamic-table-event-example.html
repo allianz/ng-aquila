@@ -1,0 +1,11 @@
+<nx-dynamic-table [nxDisplayedColumns]="displayedColumns" [nxData]="data" (nxRowClick)="handleRowClick($event)"></nx-dynamic-table>
+<ng-template #ngIfModalBody>
+  <div class="u-text-center">
+  <h3 nxHeadline="subsection-medium">Clicked row</h3>
+    <p nxCopytext="small" >{{ basicModalBody }}</p>
+    <br>
+    <button nxButton="primary" (click)="toggleModal()" type="button">Hide Modal</button>
+  </div>
+</ng-template>
+<nx-modal #basicModal [nxBody]="ngIfModalBody" [nxShowCloseIcon]="false" *ngIf="modalOpen"  >
+</nx-modal>

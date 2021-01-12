@@ -1,0 +1,18 @@
+<nx-multi-stepper [linear]="true" currentStepLabel="Step">
+  <nx-step label="Your name" [stepControl]="manualCompletionForm">
+    <div class="nx-margin-top-s">
+      <form [formGroup]="manualCompletionForm">
+        <nx-formfield nxLabel="Name">
+          <input nxInput formControlName="name" required>
+        </nx-formfield>
+        <button type="button" nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs">Previous</button>
+        <button type="button" nxButton="primary small" nxStepperNext>Next</button>
+      </form>
+    </div>
+  </nx-step>
+  <nx-step label="Done" [completed]="lastStepCompleted">
+    <div class="nx-margin-top-s">
+      <button nxButton="primary small" (click)="completeLastStep()" type="button">Complete last step</button>
+    </div>
+  </nx-step>
+  </nx-multi-stepper>

@@ -1,0 +1,9 @@
+<form novalidate [formGroup]="testForm">
+  <nx-switcher nxBig="true" formControlName="switcherDisabledReactive">
+      big disabled switcher
+  </nx-switcher>
+</form>
+<p>
+  <button nxButton="primary small" (click)="switchStatusClick()" type="button">Toggle disabled</button>
+</p>
+

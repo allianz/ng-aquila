@@ -1,0 +1,8 @@
+.docs-inverse-container {
+  padding: 0;
+}
+
+nx-checkbox-group {
+  padding: 8px;
+  display: block;
+}

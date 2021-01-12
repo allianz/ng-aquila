@@ -1,0 +1,17 @@
+<nx-accordion [multi]="multi">
+    <nx-expansion-panel>
+        <nx-expansion-panel-header>
+        <nx-expansion-panel-title>About us</nx-expansion-panel-title>
+        </nx-expansion-panel-header>
+        <p nxCopytext="normal">Lorem ipsum</p>
+    </nx-expansion-panel>
+    <nx-expansion-panel>
+        <nx-expansion-panel-header>
+        <nx-expansion-panel-title>Contact us</nx-expansion-panel-title>
+        </nx-expansion-panel-header>
+        <p nxCopytext="normal">Lorem ipsum</p>
+    </nx-expansion-panel>
+</nx-accordion>
+
+<p>Is [multi] active? {{multi}}</p>
+<button nxButton (click)="toggleMulti()" type="button">Toggle Multi</button>

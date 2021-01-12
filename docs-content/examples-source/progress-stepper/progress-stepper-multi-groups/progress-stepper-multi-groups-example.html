@@ -1,0 +1,33 @@
+<nx-multi-stepper currentStepLabel="Step"
+   direction="vertical"
+   #stepper
+   linear>
+
+  <nx-step-group *ngFor="let group of groups"
+      [label]="group.label">
+    <nx-step *ngFor="let step of group.steps"
+        [label]="step.label"
+        [stepControl]="form">
+      <form #form="ngForm">
+        <nx-formfield [nxLabel]="'Input ' + step.label"
+            nxFloatLabel="always"
+            appearance="outline">
+          <input [name]="step.label"
+              nxInput
+              required
+              ngModel
+              type="text">
+          <nx-error appearance="text" nxFormfieldError>
+            Please fill out the field!
+          </nx-error>
+        </nx-formfield>
+      </form>
+
+      <button nxButton="primary small" type="button" class="nx-margin-right-2xs"
+          nxStepperPrevious>Previous</button>
+
+      <button nxButton="primary small" type="button"
+          nxStepperNext>Next</button>
+    </nx-step>
+  </nx-step-group>
+</nx-multi-stepper>

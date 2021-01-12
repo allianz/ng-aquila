@@ -1,0 +1,20 @@
+<nx-number-stepper nxSize="big" [(ngModel)]="number"
+  #stepperValidModel="ngModel" nxStep="2" inputAriaLabel="Number of travellers"></nx-number-stepper>
+
+<nx-message nxContext="info"
+  *ngIf="!stepperValidModel.errors">
+  This is a hint. This message will disappear once you get an error
+  from parsing or when the input is missing altogether.
+</nx-message>
+
+<nx-error
+  *ngIf="stepperValidModel.errors &&
+  stepperValidModel.errors.nxNumberStepperStepError">
+  That's not a valid step
+</nx-error>
+
+<nx-error
+  *ngIf="stepperValidModel.errors &&
+  stepperValidModel.errors.nxNumberStepperFormatError">
+  That's not a valid number
+</nx-error>

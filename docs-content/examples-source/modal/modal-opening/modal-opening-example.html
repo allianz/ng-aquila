@@ -1,0 +1,10 @@
+<button nxButton class="nx-margin-right-xs" (click)="openFromTemplate()">open from template</button>
+<button nxButton (click)="openFromComponent()">open from component</button>
+
+<ng-template #template>
+  <div class="centered-content">
+    <h3 nxHeadline="subsection-medium">Modal from a template</h3>
+    <p nxCopytext="small">This content is placed within the <code>nx-modal-container</code></p>
+    <button nxButton (click)="closeTemplateDialog()">Close Modal</button>
+  </div>
+</ng-template>

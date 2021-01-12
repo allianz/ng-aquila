@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  height: 400px;
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 24px;
+}
+
+.my-sidepanel {
+  width: 384px;
+}
+
+.my-sidepanel-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 32px 24px 32px;
+}
+
+.my-sidepanel-content {
+  padding: 0 32px 32px 32px;
+}
+
+.my-sidepanel ::ng-deep nx-tab-header {
+  position: sticky;
+  top: 0;
+  background: var(--sidepanel-background-color);
+  /* use this for the light version:
+  background: var(--sidepanel-light-background-color);
+  */
+}

@@ -1,0 +1,45 @@
+.container {
+  background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
+  padding: 12px;
+}
+
+.product-title {
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.product-price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: 0.2px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.product-underline {
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.minus-icon {
+  color: var(--documentation-comparison-table-example-minus-color, #ada8a8);
+}
+
+.check-icon {
+  color: var(--success, #26AE31);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-container button {
+  margin: 0 auto;
+}

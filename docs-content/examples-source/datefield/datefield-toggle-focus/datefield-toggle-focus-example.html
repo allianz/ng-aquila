@@ -1,0 +1,28 @@
+<div nxLayout="grid">
+  <div nxRow>
+    <div nxCol="6">
+
+      <h4 nxHeadline="subsection-xsmall">With focus on toggle (default)</h4>
+      <nx-formfield nxLabel="Date">
+        <input nxDatefield nxInput [nxDatepicker]="myDatepicker1" [(ngModel)]="date1" />
+        <span nxFormfieldHint>MM/DD/YYYY</span>
+
+        <nx-datepicker-toggle [for]="myDatepicker1" nxFormfieldSuffix></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker1></nx-datepicker>
+      </nx-formfield>
+
+    </div>
+    <div nxCol="6">
+
+      <h4 nxHeadline="subsection-xsmall">Without focus on toggle</h4>
+      <nx-formfield nxLabel="Date">
+        <input nxDatefield nxInput [nxDatepicker]="myDatepicker2" [(ngModel)]="date2" />
+        <span nxFormfieldHint>MM/DD/YYYY</span>
+
+        <nx-datepicker-toggle [for]="myDatepicker2" tabindex="-1" nxFormfieldSuffix></nx-datepicker-toggle>
+        <nx-datepicker #myDatepicker2></nx-datepicker>
+      </nx-formfield>
+
+    </div>
+  </div>
+</div>

@@ -1049,30 +1049,6 @@
       "stable": "done"
     },
     {
-      "id": "progress-stepper",
-      "title": "Progress Indicator",
-      "examples": [
-        "progress-stepper",
-        "progress-stepper-custom",
-        "progress-stepper-title",
-        "progress-stepper-multi",
-        "progress-stepper-form",
-        "progress-stepper-nonlinear",
-        "progress-stepper-multi-vertical",
-        "progress-stepper-multi-groups",
-        "progress-stepper-step",
-        "progress-stepper-reactivesingle",
-        "progress-stepper-reactivemulti",
-        "progress-stepper-progress"
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progress-stepper.html",
-      "overviewFile": "lib-viewer/overview/progress-stepper.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "progressbar",
       "title": "Progress Bar",
       "examples": [
@@ -1444,6 +1420,30 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "progress-stepper",
+      "title": "Progress Indicator",
+      "examples": [
+        "progress-stepper",
+        "progress-stepper-custom",
+        "progress-stepper-title",
+        "progress-stepper-multi",
+        "progress-stepper-form",
+        "progress-stepper-nonlinear",
+        "progress-stepper-multi-vertical",
+        "progress-stepper-multi-groups",
+        "progress-stepper-step",
+        "progress-stepper-reactivesingle",
+        "progress-stepper-reactivemulti",
+        "progress-stepper-progress"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progress-stepper.html",
+      "overviewFile": "lib-viewer/overview/progress-stepper.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     }
   ],
   "examples": [
@@ -1482,7 +1482,7 @@
     },
     {
       "id": "accordion-extra-light",
-      "title": "Extra Light Example",
+      "title": "Accordion Extra Light Example",
       "module": "accordion",
       "types": [
         "ts",

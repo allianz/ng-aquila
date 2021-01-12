@@ -1,0 +1,32 @@
+<p class="nx-margin-top-0">Close on document click: {{ closeOnDocClick }}</p>
+
+<button nxButton="primary small"
+    class="nx-margin-right-2xs"
+    [nxPopoverTriggerFor]="popoverClick"
+    nxPopoverTrigger="click"
+    [closeOnClickOutside]="closeOnDocClick"
+    type="button">
+  Click
+</button>
+<nx-popover #popoverClick>
+  <span>Trigger by click</span>
+</nx-popover>
+
+<button #popoverTrigger="nxPopoverTrigger"
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverManual"
+    [(nxPopoverShow)]="popoverManualOpenFlag"
+    nxPopoverDirection="top"
+    (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
+    [closeOnClickOutside]="closeOnDocClick"
+    nxPopoverTrigger="manual"
+    type="button">
+  Manual
+</button>
+
+<nx-popover #popoverManual>
+  <span>Trigger manually</span>
+</nx-popover>
+
+<br>
+<button nxButton="secondary small" (click)="closeOnClickOutside()" type="button">Toggle closing on click outside</button>

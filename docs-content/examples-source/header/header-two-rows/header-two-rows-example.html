@@ -1,0 +1,61 @@
+<header nx-header>
+  <nx-header-row>
+    <nx-header-brand>
+      <nx-link>
+        <a href="#">
+          <figure nxFigure>
+            <img src="assets/logos/aposin_logo.svg"
+                 alt="Brand Logo" role="none">
+          </figure>
+          <span class="logo-text">APOSIN</span>
+        </a>
+      </nx-link>
+    </nx-header-brand>
+
+    <nx-header-actions>
+      <button nxButton="secondary small" class="login-button" type="button">Login</button>
+    </nx-header-actions>
+  </nx-header-row>
+  <nx-header-row>
+  <nx-header-navigation>
+    <nx-header-navigation-item>
+      <a routerLink="./"
+        [routerLinkActiveOptions]="{exact: true}"
+        routerLinkActive="is-active"
+        nxHeaderLink>Option 1</a>
+      </nx-header-navigation-item>
+      <nx-header-navigation-item>
+        <a routerLink="./"
+          [queryParams]="{s: 2}"
+          routerLinkActive="is-active"
+          nxHeaderLink>Option 2</a>
+      </nx-header-navigation-item>
+      <nx-header-navigation-item>
+        <a routerLink="./"
+          [queryParams]="{s: 3}"
+          routerLinkActive="is-active"
+          nxHeaderLink>Option 3</a>
+      </nx-header-navigation-item>
+      <nx-header-navigation-item>
+        <a routerLink="./"
+          [queryParams]="{s: 4}"
+          routerLinkActive="is-active"
+          [skipLocationChange]="true"
+          nxHeaderLink>Option 4</a>
+      </nx-header-navigation-item>
+      <nx-header-navigation-item>
+        <a routerLink="./"
+          [queryParams]="{s: 5}"
+          routerLinkActive="is-active"
+          [skipLocationChange]="true"
+          nxHeaderLink>Option 5</a>
+      </nx-header-navigation-item>
+      <nx-header-navigation-item>
+        <a routerLink="./"
+          [queryParams]="{s: 6}"
+          routerLinkActive="is-active"
+          nxHeaderLink>Option 6</a>
+      </nx-header-navigation-item>
+    </nx-header-navigation>
+  </nx-header-row>
+</header>

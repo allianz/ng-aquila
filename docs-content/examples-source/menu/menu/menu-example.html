@@ -1,0 +1,31 @@
+<nx-icon name="bars"
+  role="button"
+  (click)="menu.toggle()"
+  size="s"></nx-icon>
+
+<nx-menu #menu>
+  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+    <nx-tree-node *nxTreeNodeDef="let node" nxMenuItem="l">
+      <a *ngFor="let link of node.links"
+          nxMenuLink
+          routerLink="./"
+          [queryParams]="link.query">
+        {{link.label}}
+      </a>
+    </nx-tree-node>
+    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+      <button nxMenuButton
+          nxTreeNodeToggle
+          [nxMenuItem]="node.icon ? 's' : 'l'"
+          expandable
+          [expanded]="_treeControl.isExpanded(node)"
+          [nxType]="node.level === 0 ? 'root' : 'nested'"
+          type="button">
+        <nx-icon *ngIf="node.icon" nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
+        {{node.label}}
+      </button>
+    </nx-tree-node>
+  </nx-tree>
+
+  <button nxButton (click)="menu.toggle()" class="close-menu" type="button">close menu</button>
+</nx-menu>

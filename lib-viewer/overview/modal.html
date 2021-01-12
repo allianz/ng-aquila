@@ -70,7 +70,7 @@ The three different closing variants are demonstrated in the example below:</p>
 If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
 <p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>
 <div nx-docs-example="modal-with-direction" config="{}">exampleID: modal-with-direction</div>
-<h3 id="accessbility" class="docs-markdown--h3">Accessbility</h3>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">By default, each modal has <code>role=&quot;dialog&quot;</code> on the root element. The role can be changed to <code>alertdialog</code> via the <code>NxModalConfig</code>.</p>
 <p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>
 <p class="docs-markdown--p">When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.</p>

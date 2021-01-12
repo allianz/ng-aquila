@@ -1,0 +1,4 @@
+<nx-circle-toggle-group (valueChange)="logMessage($event)" responsive="false">
+  <nx-circle-toggle *ngFor="let item of sampleValues" [value]="item.value" [icon]="item.icon" 
+    [hint]="item.hint" [label]="item.label"></nx-circle-toggle>
+</nx-circle-toggle-group>

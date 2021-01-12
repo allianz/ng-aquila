@@ -12,9 +12,11 @@
 * <span class="hljs-doctag">@title </span>Localization Example
 */</span>
 <span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;pagination-localize-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-localize-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./pagination-localize-example.css&#x27;</span>],
   <span class="hljs-attr">providers</span>: [
-    {<span class="hljs-attr">provide</span>: NX_PAGINATION_TEXTS, <span class="hljs-attr">useValue</span>: myPaginationTexts}
+    { <span class="hljs-attr">provide</span>: NX_PAGINATION_TEXTS, <span class="hljs-attr">useValue</span>: myPaginationTexts }
   ]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaginationLocalizeExampleComponent</span> </span>{

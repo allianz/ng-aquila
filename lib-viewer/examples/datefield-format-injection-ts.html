@@ -18,7 +18,9 @@
 * <span class="hljs-doctag">@title </span>Custom date formats injection token
 */</span>
 <span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-format-injection-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-format-injection-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-format-injection-example.css&#x27;</span>],
   <span class="hljs-attr">providers</span>: [
     {<span class="hljs-attr">provide</span>: NX_DATE_FORMATS, <span class="hljs-attr">useValue</span>: MY_FORMATS},
   ]

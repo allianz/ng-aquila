@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.my-sidebar {
+  height: 300px;
+}
+
+button {
+  margin-left: 40px;
+}
+

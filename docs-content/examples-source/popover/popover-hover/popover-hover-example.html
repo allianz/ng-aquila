@@ -1,0 +1,14 @@
+<nx-icon #hoverTriggerIcon
+    name="refresh"
+    size="s"
+    [nxPopoverTriggerFor]='progress'
+    nxPopoverDirection="top"
+    nxPopoverTrigger="hover"
+    tabindex="0"
+    role="button"
+    aria-label="progress">
+</nx-icon>
+
+<nx-popover #progress>
+  Your application status is in progress.
+</nx-popover>

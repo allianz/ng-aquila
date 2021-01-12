@@ -1,0 +1,10 @@
+<button nxButton="small secondary" (click)="toggle()" type="button">
+  {{disabled ? 'en' : 'dis'}}able tooltip
+</button>
+
+<button nxButton
+    [nxTooltipDisabled]="disabled"
+    nxTooltip="This is a tooltip"
+    type="button">
+  I have a tooltip
+</button>

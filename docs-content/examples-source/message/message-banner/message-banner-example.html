@@ -1,0 +1,14 @@
+<nx-message-banner closeButtonLabel="Close info message banner" *ngIf="!infoBannerClosed" (close)="infoBannerClosed = true">
+ You are logged in as Max Mustermann.
+</nx-message-banner>
+
+<nx-message-banner context="warning" closeButtonLabel="Close warning message banner" *ngIf="!warningBannerClosed" (close)="warningBannerClosed = true">
+  Your password expires in three days!
+</nx-message-banner>
+
+<nx-message-banner context="error" closeButtonLabel="Close error message banner" *ngIf="!errorBannerClosed" (close)="errorBannerClosed = true">
+ The object could not be found.
+</nx-message-banner>
+
+<button [disabled]="!infoBannerClosed && !warningBannerClosed && !errorBannerClosed" nxButton type="button" (click)="showAllBanners()"> Show all message banners </button>
+

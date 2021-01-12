@@ -1,0 +1,10 @@
+<nx-slider
+        [nxMin]="0"
+        [nxMax]="10"
+        [nxStep]="0.1"
+        [nxLabelMinFormatter]="minEuroFormatter"
+        [nxLabelMaxFormatter]="maxEuroFormatter"
+        [nxValueFormatter]="euroValueFormatter"
+        [(nxValue)]="euroSliderDemoValue">
+</nx-slider>
+Slider value: {{euroSliderDemoValue}}

@@ -21,10 +21,11 @@
 * <span class="hljs-doctag">@title </span>Sorting example
 */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;table-sorting-example.css&#x27;</span>],
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-sorting-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-sorting-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;table-sorting-example.css&#x27;</span>],
   <span class="hljs-attr">providers</span>: [
-    {<span class="hljs-attr">provide</span>: NxSortHeaderIntl, <span class="hljs-attr">useClass</span>: MyIntl},
+    { <span class="hljs-attr">provide</span>: NxSortHeaderIntl, <span class="hljs-attr">useClass</span>: MyIntl },
   ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableSortingExampleComponent</span> </span>{

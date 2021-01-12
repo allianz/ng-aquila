@@ -1,0 +1,16 @@
+<form #form="ngForm" [formGroup]="codeForm">
+  <nx-code-input #codeInput formControlName="keyCode"></nx-code-input>
+
+  <div *ngIf="codeInput.errorState">
+    <nx-error *ngIf="keyCode.hasError('required')">
+      Entry is required.
+    </nx-error>
+    <nx-error *ngIf="keyCode.hasError('minlength')">
+      Entry is too short.
+    </nx-error>
+  </div>
+
+  <br>
+  <button nxButton="primary small" type="submit">Submit</button>
+  <button nxButton="secondary small" (click)="form.resetForm()" type="button">Clear</button>
+</form>

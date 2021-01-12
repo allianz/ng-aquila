@@ -2,7 +2,10 @@
   <strong>Expert: </strong>
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
-<p class="docs-markdown--p">Tooltip requires Angular CDK (incl. CSS).</p>
+<p class="docs-markdown--p">The Tooltip component requires additional CSS files from the Angular CDK to work. Please add the following files to your global styles or into the styles option in the angular.json if not already present:</p>
+<pre><code>  node_modules/@angular/cdk/overlay-prebuilt.css
+  node_modules/@angular/cdk/a11y-prebuilt.css
+</code></pre>
 <p class="docs-markdown--p">The Tooltip provides a text label that is displayed when the user hovers over or focuses an element.
 It allows to display additional information for supporting the customer,
 and should <strong>only be used for optional information</strong>.</p>

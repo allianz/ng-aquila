@@ -1,0 +1,11 @@
+.tab__content {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+}
+
+.add-container {
+  display: flex;
+  align-items: center;
+}

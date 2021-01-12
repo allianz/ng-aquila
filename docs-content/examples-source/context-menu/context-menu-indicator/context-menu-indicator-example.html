@@ -1,0 +1,24 @@
+<nx-context-menu #menu="nxContextMenu">
+  <button nxContextMenuItem type="button">
+    <span class="button-content">
+      Settings<nx-indicator aria-label="new notifications available'"></nx-indicator>
+    </span>
+  </button>
+  <button nxContextMenuItem type="button">
+    <span class="button-content">
+      Downloads<nx-indicator aria-label="1 new notification available">1</nx-indicator>
+    </span>
+  </button>
+  <button nxContextMenuItem type="button">
+    <span class="button-content">
+      Help<nx-indicator aria-label="more than 99 notifications available">99+</nx-indicator>
+    </span>
+  </button>
+</nx-context-menu>
+
+ <button nxIconButton="tertiary small"
+    [nxContextMenuTriggerFor]="menu"
+    aria-label="Open menu"
+    type="button">
+  <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+</button>

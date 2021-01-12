@@ -16,7 +16,9 @@
 * <span class="hljs-doctag">@title </span>Global default settings example
 */</span>
 <span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;formfield-global-example&#x27;</span>,
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./formfield-global-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./formfield-global-example.css&#x27;</span>],
   <span class="hljs-attr">providers</span>: [
     {<span class="hljs-attr">provide</span>: FORMFIELD_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myDefaultOptions},
     {<span class="hljs-attr">provide</span>: ERROR_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: myErrorOptions}

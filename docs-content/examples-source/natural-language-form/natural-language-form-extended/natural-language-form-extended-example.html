@@ -1,0 +1,34 @@
+<form>
+  <nx-natural-language-form [formGroup]="naturalForm">
+    <span>I want to be</span>
+    <nx-word nxSize='long' nxLabel='Always a label'>
+      <nx-dropdown formControlName='who'>
+        <nx-dropdown-item nxValue="student">a Student</nx-dropdown-item>
+        <nx-dropdown-item nxValue="philosopher">a Philosopher</nx-dropdown-item>
+        <nx-dropdown-item nxValue="sailor">a Sailor</nx-dropdown-item>
+      </nx-dropdown>
+      <div nxError>We need to know about the type of role you want.</div>
+    </nx-word>
+
+  <span>and visit the city of</span>
+
+    <nx-word nxSize='short' nxLabel='Always a label'>
+      <input nxInput formControlName='city'/>
+      <div nxError>This field is required.</div>
+    </nx-word>
+  <span>and see</span>
+    <nx-word nxSize='regular' nxLabel='Always a label'>
+      <input nxInput formControlName='spots'/>
+      <div nxError *ngIf="naturalForm.controls.spots.hasError('required')">This field is required.</div>
+      <div nxError *ngIf="naturalForm.controls.spots.hasError('pattern')">Only numbers are allowed.</div>
+    </nx-word>
+  <span> nice spots.</span>
+  </nx-natural-language-form>
+
+  <button nxButton (click)="validate()" type="submit">submit</button>
+</form>
+
+<p>
+  Form value: {{ naturalForm.value | json }}<br>
+  Form status: {{ naturalForm.status | json }}
+</p>
