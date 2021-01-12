@@ -53,7 +53,7 @@ const TEST_TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['aposin', 'aquila', 'example'];
-const angularVersion = '~10.2.3';
+const angularVersion = '~10.2.4';
 const materialVersion = '^10.2.7';
 const aquilaVersion = '^10.8.0';
 
@@ -69,13 +69,13 @@ const dependencies = {
   '@angular/router': angularVersion,
   '@aposin/ng-aquila': aquilaVersion,
   'css-vars-ponyfill': '^2.4.2',
-  'dayjs': '^1.9.7',
+  'dayjs': '^1.10.2',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
   'object-fit-images': '^3.2.4',
   'rxjs': '~6.6.0',
-  'tslib': '^2.0.3',
-  'zone.js': '~0.10.2',
+  'tslib': '^2.1.0',
+  'zone.js': '~0.10.2'
 };
 
 const testDependencies = {
@@ -92,13 +92,13 @@ const testDependencies = {
   '@types/jasmine': '^3.6.2',
   'jasmine-core': '^3.6.0',
   'css-vars-ponyfill': '^2.4.2',
-  'dayjs': '^1.9.7',
+  'dayjs': '^1.10.2',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
   'object-fit-images': '^3.2.4',
   'rxjs': '~6.6.0',
-  'tslib': '^2.0.3',
-  'zone.js': '~0.10.2',
+  'tslib': '^2.1.0',
+  'zone.js': '~0.10.2'
 };
 
 /**
