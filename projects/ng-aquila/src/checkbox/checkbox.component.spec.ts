@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, async, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, async, TestBed, tick, flush } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 import * as axe from 'axe-core';
 
@@ -153,6 +153,7 @@ describe('NxCheckboxComponent', () => {
     const subscription = fixture.componentInstance.checkboxInstance.checkboxChange.subscribe(spy);
     labelElement.click();
     fixture.detectChanges();
+    flush();
     expect(spy).toHaveBeenCalledWith(jasmine.any(NxCheckboxChangeEvent));
     expect(checkboxInstance.checkedChange.emit).toHaveBeenCalledWith(true);
 
@@ -257,6 +258,7 @@ describe('NxCheckboxComponent', () => {
       expect(checkboxNativeElement.classList.contains('has-error')).toBeFalsy();
       checkboxInstance.ngControl.control.markAsTouched();
       fixture.detectChanges();
+      flush();
       expect(checkboxNativeElement.classList.contains('has-error')).toBeTruthy();
     }));
 
@@ -267,6 +269,7 @@ describe('NxCheckboxComponent', () => {
       submitButton.click();
       tick();
       fixture.detectChanges();
+      flush();
 
       expect(testInstance.testForm.get('checkbox').dirty)
         .toEqual(false, `Expected control to start out pristine.`);
@@ -274,6 +277,7 @@ describe('NxCheckboxComponent', () => {
       labelElement.click();
       tick();
       fixture.detectChanges();
+      flush();
 
       expect(testInstance.testForm.get('checkbox').dirty)
         .toEqual(true, `Expected control to be dirty.`);
