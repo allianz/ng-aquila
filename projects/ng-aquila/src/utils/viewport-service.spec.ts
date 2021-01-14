@@ -291,7 +291,7 @@ describe('NxViewportService', () => {
   });
 
   describe('between', () => {
-    it('correctly returns a match for a mobile viewport: 0 - 704px', fakeAsync(() => {
+    it('correctly returns a match for a mobile viewport: 0 - 703px', fakeAsync(() => {
       let isMobile;
       let isMobilePlus;
       withSubscription(
@@ -306,7 +306,7 @@ describe('NxViewportService', () => {
       expect(isMobilePlus).toBeFalse();
     }));
 
-    it('correctly returns a match for a tablet viewport: 704px - 992px', fakeAsync(() => {
+    it('correctly returns a match for a tablet viewport: 704px - 991px', fakeAsync(() => {
       let isTablet;
       let isLargerThanTablet;
       let isSmallerThanTablet;
@@ -324,7 +324,7 @@ describe('NxViewportService', () => {
       expect(isSmallerThanTablet).toBeFalse();
     }));
 
-    it('correctly returns a match for a small desktop viewport: 992px - 1470px', fakeAsync(() => {
+    it('correctly returns a match for a desktop viewport: 992px - 1471px', fakeAsync(() => {
       let isDesktop;
       let isSmallerThanDesktop;
       let isLargerThanDesktop;

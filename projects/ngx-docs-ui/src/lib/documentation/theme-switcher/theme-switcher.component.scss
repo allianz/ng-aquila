@@ -1,6 +1,5 @@
 :host {
   display: inline-block;
-  margin-right: 4px;
 
   nx-icon {
     transform: rotateZ(0);
@@ -12,6 +11,13 @@
   }
 
   @media (max-width: 703px) {
+    button {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  @media (max-width: 991px) {
     .label-text {
       display: none;
     }

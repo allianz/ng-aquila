@@ -1,5 +1,6 @@
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NX_DOCS_SELECTABLE_THEMES, NX_DOCS_FEATURE_FLAGS, NX_DOCS_LOGO_PATH, LogoPath, NX_DOCS_GITHUB_LINK, GithubLinkConfig } from '@aposin/ngx-docs-ui';
 import { DocVersions, NXV_MANIFEST_TOKEN, NxvDocumentationModule, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { NgModule } from '@angular/core';
@@ -68,7 +69,8 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     ColorPickerModule,
     NxDocumentationIconModule,
     NxFooterModule,
-    NxButtonModule
+    NxButtonModule,
+    NxGridModule
   ],
   providers: [
     { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },

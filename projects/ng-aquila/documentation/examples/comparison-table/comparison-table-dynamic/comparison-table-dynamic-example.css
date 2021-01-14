@@ -14,7 +14,7 @@
   color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
 }
 
-@media only screen and (max-width: 704px) {
+@media only screen and (max-width: 703px) {
   .has-popover {
     text-align: left;
   }

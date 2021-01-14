@@ -9,12 +9,19 @@
   }
 
   @media (max-width: 703px) {
+    button {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+  @media (max-width: 991px) {
     .desktop-label {
       display: none;
     }
   }
 
-  @media (min-width: 704px) {
+  @media (min-width: 992px) {
     .mobile-label {
       display: none;
     }

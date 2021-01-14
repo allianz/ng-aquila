@@ -9,7 +9,7 @@ $toc-width: 200px;
   line-height: 24px;
   width: calc(100% - #{$toc-width});
   // Remove this when the sidebar issues on mobile are solved.
-  @media (max-width: 992px) {
+  @media (max-width: 991px) {
     width: 100%;
   }
 }

@@ -5,18 +5,19 @@ $toc-width: 200px;
 
 :host {
   display: block;
+  font-size: 16px;
   height: 100vh;
   line-height: 24px;
   @include var(background, ui-background);
   @include var(color, text-01);
 
-  @media (max-width: 786px) {
+  @media (max-width: 785px) {
     padding-top: 120px;
   }
 
   @media (min-width: 786px) {
     padding-top: 60px;
-  }  font-size: 16px;
+  }
 }
 
 .nx-header {
@@ -34,7 +35,7 @@ $toc-width: 200px;
       @include var(filter, documentation-svg-filter)
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 703px) {
       margin-right: 0;
     }
   }
@@ -55,19 +56,19 @@ $toc-width: 200px;
 }
 
 .nx-desktop-navigation {
-  @media (max-width: 786px) {
+  @media (max-width: 785px) {
     display: none;
   }
 }
 
 .nx-header__row {
-  @media (max-width: 420px) {
+  @media (max-width: 703px) {
     padding: 1px 16px 0 16px;
   }
 }
 
 .nx-header__actions {
-  @media (max-width: 420px) {
+  @media (max-width: 703px) {
     margin-left: 0;
   }
 }
@@ -77,15 +78,27 @@ $toc-width: 200px;
     display: none;
   }
 
-  @media (max-width: 420px) {
-    ul {
+  @media (max-width: 785px) {
+    ul, li {
       display: flex;
-      justify-content: space-between;
-      flex: 1 1 0;
+      flex: 1;
     }
-  
-    a {
-      margin-right: 0;
+
+    li {
+      justify-content: center;
+
+      a {
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+
+      &:first-child a {
+        margin-left: 0;
+      }
+
+      &:last-child a {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -98,17 +111,18 @@ $toc-width: 200px;
     position: sticky;
     top: 24px;
 
-    @media (max-width: 786px) {
+    @media (max-width: 785px) {
       display: none;
     }
   }
 
-  @media (max-width: 786px) {
+  @media (max-width: 785px) {
     display: none;
   }
 }
 
 .documentation-header__github-logo {
+  margin: 4px;
   vertical-align: middle;
 }
 
@@ -125,7 +139,7 @@ $toc-width: 200px;
   }
 
   &:not(.mobile-sidebar--visible) {
-    @media (max-width: 786px) {
+    @media (max-width: 785px) {
       display: none!important;
     }
   }
@@ -144,21 +158,21 @@ $toc-width: 200px;
     height: calc(100vh - 84px);
     overflow-y: auto;
 
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
       display: none;
     }
   }
 
-  @media (max-width: 992px) {
+  @media (max-width: 991px) {
     display: none;
   }
 }
 
 .docs-version-select {
-  margin-right: 16px;
+  margin-right: 8px;
 
-  @media (max-width: 420px) {
-    margin-right: 4px;
+  @media (max-width: 703px) {
+    margin-right: 0;
   }
 }
 
