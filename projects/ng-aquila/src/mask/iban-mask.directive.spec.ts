@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { NxMaskModule } from './mask.module';
@@ -50,7 +50,7 @@ describe('NxIbanMaskDirective', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           BasicIbanMaskComponent,

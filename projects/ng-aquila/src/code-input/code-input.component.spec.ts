@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Injectable, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NxCodeInputComponent } from './code-input.component';
@@ -38,11 +38,11 @@ describe('NxCodeInputComponent', () => {
     testInstance = fixture.componentInstance;
 
     codeInputElement = fixture.nativeElement.querySelector('nx-code-input');
-    inputElement = <HTMLInputElement>fixture.nativeElement.querySelector('.nx-code-input__field');
+    inputElement = (fixture.nativeElement.querySelector('.nx-code-input__field') as HTMLInputElement);
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
           NxCodeInputModule,
@@ -129,7 +129,7 @@ describe('NxCodeInputComponent', () => {
 
     expect(codeInputElement.classList).not.toContain('has-error');
 
-    const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
+    const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
     submitButton.click();
     tick();
     fixture.detectChanges();
@@ -150,7 +150,7 @@ describe('NxCodeInputComponent', () => {
     fixture.detectChanges();
     tick(1);
     ['A', 'B', 'C', 'D'].forEach((char, i) => {
-      const input = <HTMLInputElement>codeInputElement.querySelector(`input:nth-child(${i + 1})`);
+      const input = codeInputElement.querySelector(`input:nth-child(${i + 1})`) as HTMLInputElement;
       expect(input.value).toBe(char);
     });
   }));
@@ -169,7 +169,7 @@ describe('NxCodeInputComponent', () => {
     tick(1);
 
     ['1', '2', '3', ''].forEach((char, i) => {
-      const input = <HTMLInputElement>codeInputElement.querySelector(`input:nth-child(${i + 1})`);
+      const input = codeInputElement.querySelector(`input:nth-child(${i + 1})`) as HTMLInputElement;
       expect(input.value).toBe(char);
     });
 
@@ -271,7 +271,7 @@ describe('NxCodeInputComponent', () => {
     createTestComponent(CodeInputTest3);
     fixture.componentInstance.codeInputInstance.type = 'number';
     fixture.detectChanges();
-    const inputEl = <HTMLInputElement>fixture.nativeElement.querySelector('.nx-code-input__field');
+    const inputEl = fixture.nativeElement.querySelector('.nx-code-input__field') as HTMLInputElement;
     expect(inputEl.getAttribute('type')).toBe('number');
   }));
 

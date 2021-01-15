@@ -1,6 +1,6 @@
 import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
 import { Component, DebugElement, OnDestroy, Type, ViewChild, ViewChildren, QueryList, Directive, ChangeDetectionStrategy } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick, flush, inject } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, flush, inject, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as axe from 'axe-core';
@@ -61,7 +61,7 @@ describe('NxTabGroupComponent', () => {
   }
 
   describe('no preset options', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
           NxTabsModule,
@@ -84,7 +84,7 @@ describe('NxTabGroupComponent', () => {
 
     describe('basic tabs', () => {
 
-      it('creates the tab group', async(() => {
+      it('creates the tab group', waitForAsync(() => {
         createTestComponent(BasicTabs);
         expect(tabGroupInstance).toBeTruthy();
       }));
@@ -543,7 +543,7 @@ describe('NxTabGroupComponent', () => {
   });
 
   describe('default options injection token', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       tabsDefaultOptions.appearance = 'expert';
       TestBed.configureTestingModule({
         imports: [

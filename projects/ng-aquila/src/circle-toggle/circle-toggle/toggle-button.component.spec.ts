@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {NxCircleToggleModule} from '../circle-toggle.module';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
@@ -28,7 +28,7 @@ describe('NxToggleButton', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         SimpleCircleToggleButtonComponent,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAvatarComponent, NxAvatarSize } from './avatar';
 import { Component, ViewChild, Type, Directive } from '@angular/core';
@@ -25,7 +25,7 @@ describe('NxAvatarComponent', () => {
     avatarElement = fixture.debugElement.nativeElement.querySelector('[nxavatar]');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxAvatarModule,
@@ -51,7 +51,7 @@ describe('NxAvatarComponent', () => {
       createTestComponent(AvatarWithText);
       expect(avatarInstance.size).toBe('medium');
       expect(avatarElement.classList).toContain('nx-avatar--medium');
-    })
+    });
 
     it('creates the avatar with text inside', () => {
       createTestComponent(AvatarWithText);
@@ -60,7 +60,7 @@ describe('NxAvatarComponent', () => {
 
     it('creates the avatar with an icon inside', () => {
       createTestComponent(AvatarWithIcon);
-      expect(avatarElement.querySelector('nx-icon')).toBeTruthy();;
+      expect(avatarElement.querySelector('nx-icon')).toBeTruthy();
     });
 
     it('creates the avatar with an image inside', () => {

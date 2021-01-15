@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxTableComponent } from './table.component';
 import { NxTableModule } from './table.module';
@@ -31,7 +31,7 @@ describe(NxTableComponent.name, () => {
     tableElement = fixture.debugElement.query(By.directive(NxTableComponent));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         SimpleTableComponent,

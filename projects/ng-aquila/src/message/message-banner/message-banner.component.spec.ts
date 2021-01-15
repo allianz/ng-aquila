@@ -1,5 +1,5 @@
 import { Component, ElementRef, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxMessageModule } from '../message.module';
 import { dispatchMouseEvent } from '../../cdk-test-utils';
@@ -46,7 +46,7 @@ describe('NxMessageBannerComponent', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           BasicMessageBannerComponent,

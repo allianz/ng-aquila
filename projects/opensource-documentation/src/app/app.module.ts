@@ -57,7 +57,7 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES, { enableTracing: false }),
+    RouterModule.forRoot(ROUTES, { enableTracing: false, relativeLinkResolution: 'legacy' }),
     NxvDocumentationModule.forRoot(
       {
         welcomeComponent: WelcomeComponent,

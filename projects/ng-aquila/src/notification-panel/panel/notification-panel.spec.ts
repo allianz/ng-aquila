@@ -1,6 +1,6 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, Directive, Type } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -27,7 +27,7 @@ describe('NxLinkComponent', () => {
     testInstance = fixture.componentInstance;
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         TestComponent

@@ -4,7 +4,7 @@ import { NxNativeDateModule } from './index';
 import { NxNativeDateAdapter } from './native-date-adapter';
 import {Platform} from '@angular/cdk/platform';
 import {LOCALE_ID} from '@angular/core';
-import {async, inject, TestBed} from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import {JAN, FEB, MAR, DEC } from '../../cdk-test-utils';
 
 const SUPPORTS_INTL = typeof Intl !== 'undefined';
@@ -14,7 +14,7 @@ describe('NxNativeDateAdapter', () => {
   let adapter: NxNativeDateAdapter;
   let assertValidDate: (d: Date | null, valid: boolean) => void;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxNativeDateModule]
     }).compileComponents();
@@ -376,7 +376,7 @@ describe('NxNativeDateAdapter', () => {
 describe('NxNativeDateAdapter with MAT_DATE_LOCALE override', () => {
   let adapter: NxNativeDateAdapter;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxNativeDateModule],
       providers: [{provide: NX_DATE_LOCALE, useValue: 'da-DK'}]
@@ -400,7 +400,7 @@ describe('NxNativeDateAdapter with MAT_DATE_LOCALE override', () => {
 describe('NxNativeDateAdapter with LOCALE_ID override', () => {
   let adapter: NxNativeDateAdapter;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxNativeDateModule],
       providers: [{provide: LOCALE_ID, useValue: 'da-DK'}]

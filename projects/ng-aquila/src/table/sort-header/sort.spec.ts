@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ViewChild, Component, Type, Directive } from '@angular/core';
 import { inject } from '@angular/core/testing';
 import { SortDirection, SortEvent } from './sort.directive';
@@ -60,7 +60,7 @@ describe ('NxSort', () => {
     countHeader = testInstance.countHeader;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSortTableComponent,
@@ -118,8 +118,8 @@ describe ('NxSort', () => {
     it('shows both icons for a unsorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-      const chevronUpElement = <HTMLElement>nameHeaderElement.querySelector('.nx-sort-header__icon-up');
-      const chevronDownElement = <HTMLElement>nameHeaderElement.querySelector('.nx-sort-header__icon-down');
+      const chevronUpElement = nameHeaderElement.querySelector('.nx-sort-header__icon-up') as HTMLElement;
+      const chevronDownElement = nameHeaderElement.querySelector('.nx-sort-header__icon-down') as HTMLElement;
 
       expect(chevronUpElement.classList).not.toContain('.nx-sort-header__hidden-icon');
       expect(chevronDownElement.classList).not.toContain('.nx-sort-header__hidden-icon');
@@ -136,8 +136,8 @@ describe ('NxSort', () => {
       createTestComponent(BasicSortTableComponent);
 
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-      const chevronUpElement = <HTMLElement>nameHeaderElement.querySelector('.nx-sort-header__icon-up');
-      const chevronDownElement = <HTMLElement>nameHeaderElement.querySelector('.nx-sort-header__icon-down');
+      const chevronUpElement = nameHeaderElement.querySelector('.nx-sort-header__icon-up') as HTMLElement;
+      const chevronDownElement = nameHeaderElement.querySelector('.nx-sort-header__icon-down') as HTMLElement;
 
       // sort ascending
       nameHeaderElement.click();
@@ -233,7 +233,7 @@ describe ('NxSort', () => {
       createTestComponent(BasicSortTableComponent);
 
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-      const iconButtonElement = <HTMLDivElement>nameHeaderElement.querySelector('.nx-sort-header__icons-container');
+      const iconButtonElement = nameHeaderElement.querySelector('.nx-sort-header__icons-container') as HTMLDivElement;
       dispatchKeyboardEvent(iconButtonElement, 'keydown', ENTER);
       fixture.detectChanges();
 
@@ -246,7 +246,7 @@ describe ('NxSort', () => {
       createTestComponent(BasicSortTableComponent);
 
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader');
-      const iconButtonElement = <HTMLDivElement>nameHeaderElement.querySelector('.nx-sort-header__icons-container');
+      const iconButtonElement = nameHeaderElement.querySelector('.nx-sort-header__icons-container') as HTMLDivElement;
       dispatchKeyboardEvent(iconButtonElement, 'keydown', SPACE);
       fixture.detectChanges();
 

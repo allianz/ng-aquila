@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from './table.module';
 import { NxHeaderCellDirective } from './header-cell.directive';
 import * as axe from 'axe-core';
@@ -24,7 +24,7 @@ describe(NxHeaderCellDirective.name, () => {
     HeaderCellElement = fixture.debugElement.query(By.directive(NxHeaderCellDirective));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicHeaderCellComponent

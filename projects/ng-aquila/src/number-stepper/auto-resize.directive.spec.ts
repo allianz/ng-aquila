@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { NxAutoResizeDirective } from './auto-resize.directive';
@@ -30,7 +30,7 @@ describe('NxAutoResizeDirective', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           DefaultResize,

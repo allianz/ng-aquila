@@ -1,5 +1,5 @@
 import { NxColComponent } from './col.component';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DebugElement, Component, ViewChild, Type, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
@@ -24,7 +24,7 @@ describe('NxColDirective', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     divInstance = testInstance.layoutInstance;
-    divNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('div');
+    divNativeElement = (fixture.nativeElement.querySelector('div') as HTMLButtonElement);
   }
 
   function getClassesCreated(component: Type<DirectiveTest>, input: string): DebugElement {
@@ -36,7 +36,7 @@ describe('NxColDirective', () => {
     return fixture.nativeElement.querySelectorAll('[nxCol]')[index] || null;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [BasicTestNxColFourInputs,
                      BasicTestNxColTwoInputs,

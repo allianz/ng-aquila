@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxActionComponent } from './action.component';
 import { NxActionModule } from './action.module';
@@ -29,7 +29,7 @@ describe(NxActionComponent.name, () => {
     actionElement = fixture.nativeElement.querySelector('[nxAction]');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicAction,
@@ -46,11 +46,11 @@ describe(NxActionComponent.name, () => {
       createTestComponent(BasicAction);
     });
 
-    it('creates the action', async(() => {
+    it('creates the action', waitForAsync(() => {
       expect(actionInstance).toBeTruthy();
     }));
 
-    it('default action includes the bem block element', async(() => {
+    it('default action includes the bem block element', waitForAsync(() => {
       expect(actionElement.classList.contains('nx-action')).toBeTruthy();
     }));
 

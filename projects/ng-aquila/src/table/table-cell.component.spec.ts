@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from './table.module';
 import { NxTableCellComponent } from './table-cell.component';
 import * as axe from 'axe-core';
@@ -24,7 +24,7 @@ describe(NxTableCellComponent.name, () => {
     tableCellElement = fixture.debugElement.query(By.directive(NxTableCellComponent));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicTableCellComponent

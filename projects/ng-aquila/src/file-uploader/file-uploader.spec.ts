@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick, flush } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, flush, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, Injectable, Directive } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -35,7 +35,7 @@ export class UploadInterceptor implements HttpInterceptor {
 abstract class FileUploaderTest {
   @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
   public form: FormGroup;
-  public files: null | Array<FileItem>;
+  public files: null | FileItem[];
 
   uploader: NxFileUploader;
   uploadConfig = {
@@ -59,10 +59,10 @@ describe('NxFileUploaderComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     fileUploaderInstance = testInstance.fileUploaderInstance;
-    triggerButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#upload-trigger');
+    triggerButton = (fixture.nativeElement.querySelector('#upload-trigger') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicFileUpload

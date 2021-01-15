@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { Component, Type, ViewChildren, Directive, QueryList } from '@angular/core';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -28,7 +28,7 @@ describe('ToggleSectionHeaderComponent', () => {
     rowInstances = (testInstance as ToggleSectionTest).rowInstances;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
       declarations: [ BasicComponent ]

@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { Type, Component, Directive, QueryList, ViewChildren, ViewChild } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -30,7 +30,7 @@ describe('NxComparisonTablePopularCell', () => {
     popularCellElement = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxComparisonTableModule],
       declarations: [PopularCellComponent]

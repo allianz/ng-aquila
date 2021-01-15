@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxHeadlineComponent } from './headline.component';
@@ -25,7 +25,7 @@ describe('NxHeadlineDirective', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     headlineInstance = testInstance.headlineInstance;
-    headlineNativeElement = <HTMLHeadingElement>fixture.nativeElement.querySelector('h1');
+    headlineNativeElement = (fixture.nativeElement.querySelector('h1') as HTMLHeadingElement);
   }
 
   function setSize(value) {
@@ -33,7 +33,7 @@ describe('NxHeadlineDirective', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicHeadline,
@@ -45,18 +45,18 @@ describe('NxHeadlineDirective', () => {
     }).compileComponents();
   }));
 
-  it('creates the Headline', async(() => {
+  it('creates the Headline', waitForAsync(() => {
     createTestComponent(BasicHeadline);
     expect(headlineInstance).toBeTruthy();
   }));
 
-  it('should use type section by default', async(() => {
+  it('should use type section by default', waitForAsync(() => {
     createTestComponent(BasicHeadline);
     setSize('section');
     expect(headlineNativeElement.classList).toContain('nx-heading--section');
   }));
 
-  it('creates full modifier class from a correct keyword', async(() => {
+  it('creates full modifier class from a correct keyword', waitForAsync(() => {
     createTestComponent(BasicHeadline);
     setSize('page');
     expect(headlineNativeElement.classList).toContain('nx-heading--page');
@@ -87,7 +87,7 @@ describe('NxHeadlineDirective', () => {
     expect(headlineNativeElement.classList).toContain('nx-heading--negative');
   }));
 
-  it('passes through an unknown class', async(() => {
+  it('passes through an unknown class', waitForAsync(() => {
     createTestComponent(HeadlineWithArbitraryClass);
     expect(headlineNativeElement.classList).toContain('some-arbitray-class-name');
   }));

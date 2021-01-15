@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { DebugElement, Component, ViewChild, Type, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxLayoutComponent } from './layout.component';
@@ -23,7 +23,7 @@ describe('NxRowDirective', () => {
       fixture.detectChanges();
       testInstance = fixture.componentInstance;
       divInstance = testInstance.layoutInstance;
-      divNativeElement = <HTMLButtonElement> fixture.nativeElement.querySelector('div');
+      divNativeElement = (fixture.nativeElement.querySelector('div') as HTMLButtonElement);
     }
 
     function getClassesCreated(component: Type<DirectiveTest>, input: string): DebugElement {
@@ -31,7 +31,7 @@ describe('NxRowDirective', () => {
       return fixture.debugElement.query(By.css(input));
     }
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
           declarations: [ BasicRowDefault,
                           BasicRow,

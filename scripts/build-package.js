@@ -19,6 +19,7 @@ function compileTheme(theme) {
     console.info(result);
 }
 
+
 function compileSchematics() {
   rimraf.sync('./dist/ng-aquila/schematics');
 
@@ -41,7 +42,9 @@ console.log("  Building utility css");
 
 console.log("========================");
 console.log("  Building schematics");
-compileSchematics()
+// TODO enable again once schematics are fixed for Angular 11
+console.log("  ... temporarily disabled");
+// compileSchematics()
 
 console.log("========================");
 console.log("  Copying scss sources");

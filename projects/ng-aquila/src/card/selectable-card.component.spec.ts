@@ -1,10 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, ViewChildren, QueryList, Directive } from '@angular/core';
-import { ComponentFixture,
-  fakeAsync,
-  async,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule,
   FormsModule,
   FormBuilder,
@@ -50,10 +45,10 @@ describe('NxSelectableCardComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     selectableCardInstance = testInstance.selectableCardInstance;
-    inputElement = <HTMLInputElement>fixture.nativeElement.querySelector('input');
+    inputElement = (fixture.nativeElement.querySelector('input') as HTMLInputElement);
     selectableCardDebugElement = fixture.debugElement.query(By.directive(NxSelectableCardComponent));
     selectableCardNativeElement = selectableCardDebugElement.nativeElement;
-    labelElement = <HTMLLabelElement>fixture.nativeElement.querySelector('label');
+    labelElement = (fixture.nativeElement.querySelector('label') as HTMLLabelElement);
     errors = testInstance.errors;
   }
 
@@ -64,7 +59,7 @@ describe('NxSelectableCardComponent', () => {
     expect(inputElement.checked).toBe(checked);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSelectableCard,

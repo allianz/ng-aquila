@@ -1,7 +1,7 @@
 import { DocVersions, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
@@ -44,7 +44,7 @@ describe('NxvVersionSelectComponent', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
           NxvVersionSelectModule,

@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import {NxRatingModule} from './rating.module';
 import {NxRatingComponent} from './rating.component';
@@ -13,7 +13,7 @@ describe('NxRatingComponent', () => {
   let testInstance: RatingTest;
   let startLabel: HTMLSpanElement;
   let endLabel: HTMLSpanElement;
-  let icons: Array<HTMLElement>;
+  let icons: HTMLElement[];
   let testComponent: NxRatingComponent;
 
   function createTestComponent(component: Type<RatingTest>) {
@@ -26,7 +26,7 @@ describe('NxRatingComponent', () => {
     testComponent = testInstance.rating;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -52,7 +52,7 @@ describe('NxRatingComponent', () => {
     return getIcons().filter(dbgEl => dbgEl.componentInstance.name === 'star');
   }
 
-  function checkSelection(...expected: Array<boolean>) {
+  function checkSelection(...expected: boolean[]) {
     expected.forEach((value, index) => {
       expect(testComponent.getIconName(index + 1)).toBe(value ? 'star' : 'star-o');
     });

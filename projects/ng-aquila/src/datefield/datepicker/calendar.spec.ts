@@ -13,7 +13,7 @@ import { NxCalendarBodyComponent } from './calendar-body';
 import { NxNativeDateModule } from '../adapter/index';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { TestBed, async, ComponentFixture, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture, inject, waitForAsync } from '@angular/core/testing';
 import { Component } from '@angular/core';
 
 import {JAN, FEB, NOV, DEC, dispatchMouseEvent, dispatchKeyboardEvent,
@@ -26,7 +26,7 @@ import { NxCalendarComponent } from './calendar';
 describe('NxCalendarComponent', () => {
   let dir: {value: Direction};
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxButtonModule,

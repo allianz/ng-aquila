@@ -1,5 +1,5 @@
 import { Component, Type, Directive, ViewChildren, QueryList, DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, async, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 
 import { NxComparisonTableSelectButton } from './select-button.component';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -32,7 +32,7 @@ describe('NxComparisonTableSelectButton', () => {
     buttonNativeElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__select-button'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BasicComponent, ConfigurableComponent, DynamicComponent ],
       imports: [

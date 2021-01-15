@@ -1,6 +1,6 @@
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, async } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { Subscription } from 'rxjs';
 
@@ -49,7 +49,7 @@ describe('NxPopoverTriggerDirective', () => {
     buttonNativeElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         OverlayModule,

@@ -1,6 +1,6 @@
 import { NxCheckboxModule } from './checkbox.module';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { ComponentFixture, TestBed, fakeAsync, tick, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxCheckboxGroupComponent, NxCheckboxComponent, NxCheckboxGroupChangeEvent } from './checkbox.component';
 import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '@angular/core';
@@ -34,10 +34,10 @@ describe('NxCheckboxGroupComponent', () => {
     testInstance = fixture.componentInstance;
     checkboxGroupInstance = testInstance.checkboxGroupInstance;
     checkboxInstances = testInstance.checkboxInstances;
-    checkboxElements = <NodeListOf<HTMLInputElement>>fixture.nativeElement.querySelectorAll('input');
+    checkboxElements = (fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicCheckboxGroup,
@@ -108,14 +108,14 @@ describe('NxCheckboxGroupComponent', () => {
     [1, 2].forEach(i => checkboxElements[i].click());
     fixture.detectChanges();
 
-    let errors = <NodeListOf<HTMLInputElement>>fixture.nativeElement.querySelectorAll('nx-error');
+    let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
     expect(errors.length).toBe(1);
     expect(checkboxGroupInstance.errorState).toBeTruthy();
 
     [0, 1, 2].forEach(i => checkboxElements[i].click());
     fixture.detectChanges();
 
-    errors = <NodeListOf<HTMLInputElement>>fixture.nativeElement.querySelectorAll('nx-error');
+    errors = (fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>);
     expect(errors.length).toBe(0);
     expect(checkboxGroupInstance.errorState).toBeFalsy();
   }));
@@ -205,7 +205,7 @@ describe('NxCheckboxGroupComponent', () => {
 
   it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
     createTestComponent(CheckboxGroupReactive);
-    const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
+    const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
 
     submitButton.click();
     tick();

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from '../table.module';
 import { By } from '@angular/platform-browser';
 import { NxToggleButtonComponent, NxExpandable } from './toggle-button.component';
@@ -25,7 +25,7 @@ describe(NxToggleButtonComponent.name, () => {
     toggleButtonElement = fixture.debugElement.query(By.css('.nx-toggle-button'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicToggleButtonComponent

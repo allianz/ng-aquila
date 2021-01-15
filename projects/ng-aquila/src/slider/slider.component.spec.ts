@@ -1,6 +1,6 @@
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, async } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, NgModel } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
@@ -52,7 +52,7 @@ describe('NxSliderComponent', () => {
     sliderNativeElement = sliderDebugElement.nativeElement;
   };
 
-  beforeEach(async((() => {
+  beforeEach(waitForAsync((() => {
     TestBed.configureTestingModule({
       imports: [
         NxSliderModule,

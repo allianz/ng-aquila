@@ -1,7 +1,7 @@
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { By } from '@angular/platform-browser';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxListComponent } from './list.component';
@@ -26,10 +26,10 @@ describe('NxListComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     listInstance = testInstance.listInstance;
-    listNativeElement = <HTMLUListElement>fixture.nativeElement.querySelector('ul');
+    listNativeElement = (fixture.nativeElement.querySelector('ul') as HTMLUListElement);
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicList,
@@ -43,19 +43,19 @@ describe('NxListComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the List', async(() => {
+  it('creates the List', waitForAsync(() => {
     createTestComponent(BasicList);
     expect(listInstance).toBeTruthy();
   }));
 
-  it('creates full modifier class from a correct keyword', async(() => {
+  it('creates full modifier class from a correct keyword', waitForAsync(() => {
     createTestComponent(ListWithModifier);
     expect(listNativeElement.classList.contains('nx-list--small')).toBe(true);
     expect(listNativeElement.classList.contains('nx-list--ordered-circle')).toBe(true);
     expect(listNativeElement.classList.contains('nx-list--negative')).toBe(true);
   }));
 
-  it('displays list icons', async(() => {
+  it('displays list icons', waitForAsync(() => {
     createTestComponent(ListWithIcons);
     const icons = fixture.debugElement.queryAll(By.css('nx-icon'));
 
@@ -79,7 +79,7 @@ describe('NxListComponent', () => {
     expect(listItems.item(0).querySelector('nx-icon').classList).toContain('product-cross');
   });
 
-  it('Should change size', async(() => {
+  it('Should change size', waitForAsync(() => {
     createTestComponent(ConfigurableList);
     (testInstance as ConfigurableList).type = 'xsmall';
     fixture.detectChanges();

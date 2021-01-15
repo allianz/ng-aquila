@@ -1,6 +1,6 @@
 
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { NxErrorComponent, ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, ErrorStyleType } from './error.component';
 import { NxErrorModule } from './error.module';
@@ -34,7 +34,7 @@ describe('NxErrorComponent', () => {
   }
 
   describe('basic', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           BasicError,
@@ -55,7 +55,7 @@ describe('NxErrorComponent', () => {
       createTestComponent(ConfigurableError);
       testInstance.appearance = 'text';
       fixture.detectChanges();
-      const icon = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-icon');
+      const icon = fixture.nativeElement.querySelector('nx-icon') as HTMLButtonElement;
       expect(icon.classList).toContain('nx-error__icon');
       expect(errorInstance).toBeTruthy();
     });
@@ -68,14 +68,14 @@ describe('NxErrorComponent', () => {
 
     it('creates the nx-error with an auto generated id', () => {
       createTestComponent(BasicError);
-      const nxError = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-error');
+      const nxError = fixture.nativeElement.querySelector('nx-error') as HTMLButtonElement;
 
       expect(nxError.id).toMatch('^nx-error-[0-9]');
     });
 
     it('creates the nx-error with a custom id', () => {
       createTestComponent(ConfigurableError);
-      const nxError = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-error');
+      const nxError = fixture.nativeElement.querySelector('nx-error') as HTMLButtonElement;
 
       testInstance.id = '';
       fixture.detectChanges();
@@ -91,7 +91,7 @@ describe('NxErrorComponent', () => {
   });
 
   describe('error option injection', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       errorOptions.appearance = 'text';
       TestBed.configureTestingModule({
         declarations: [

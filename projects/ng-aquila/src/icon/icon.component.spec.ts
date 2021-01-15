@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxIconComponent } from './icon.component';
@@ -29,10 +29,10 @@ describe('NxIconComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     iconInstance = testInstance.buttonInstance;
-    iconNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-icon');
+    iconNativeElement = (fixture.nativeElement.querySelector('nx-icon') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicIcon,
@@ -49,27 +49,27 @@ describe('NxIconComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the button', async(() => {
+  it('creates the button', waitForAsync(() => {
     createTestComponent(BasicIcon);
     expect(iconInstance).toBeTruthy();
   }));
 
-  it('adds the class name for a icon', async(() => {
+  it('adds the class name for a icon', waitForAsync(() => {
     createTestComponent(BasicIcon);
     expect(iconNativeElement.classList).toContain('heart');
   }));
 
-  it('adds the class name for size', async(() => {
+  it('adds the class name for size', waitForAsync(() => {
     createTestComponent(SizeIcon);
     expect(iconNativeElement.classList).toContain('nx-icon--m');
   }));
 
-  it('adds the class name for outline', async(() => {
+  it('adds the class name for outline', waitForAsync(() => {
     createTestComponent(OutlineIcon);
     expect(iconNativeElement.classList).toContain('nx-icon--outline');
   }));
 
-  it('adds the class name for fill', async(() => {
+  it('adds the class name for fill', waitForAsync(() => {
     createTestComponent(FillIcon);
     expect(iconNativeElement.classList).toContain('nx-icon--fill');
   }));

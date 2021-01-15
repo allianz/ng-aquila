@@ -1,5 +1,5 @@
 import { Component, QueryList, Type, ViewChild, ViewChildren, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, flush } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, flush, waitForAsync } from '@angular/core/testing';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import * as axe from 'axe-core';
 
@@ -36,11 +36,11 @@ describe('NxRadioComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     radioInstances = testInstance.radioInstances;
-    radioElements = <NodeListOf<HTMLInputElement>>fixture.nativeElement.querySelectorAll('input');
-    labelElements = <NodeListOf<HTMLLabelElement>>fixture.nativeElement.querySelectorAll('label');
+    radioElements = (fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>);
+    labelElements = (fixture.nativeElement.querySelectorAll('label') as NodeListOf<HTMLLabelElement>);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxRadioModule,

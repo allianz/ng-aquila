@@ -1,6 +1,6 @@
 import { NxMomentDateModule } from './index';
 import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import * as moment from 'moment';
 
 import { NxMomentDateAdapter } from './moment-date-adapter';
@@ -11,7 +11,7 @@ describe('NxMomentDateAdapter', () => {
   let adapter: NxMomentDateAdapter;
   let assertValidDate: (d: moment.Moment | null, valid: boolean) => void;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxMomentDateModule ]
     }).compileComponents();

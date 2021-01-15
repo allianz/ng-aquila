@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as axe from 'axe-core';
@@ -74,7 +74,7 @@ describe('NxComparisonTableComponent', () => {
     rowElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__row'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxComparisonTableModule, BrowserAnimationsModule],
       declarations: [
@@ -442,9 +442,9 @@ describe('NxComparisonTableComponent', () => {
       tick(THROTTLE_TIME);
       flush();
       fixture.detectChanges();
-      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
     }));
 
     it('should update top clipping-path when scrolled (desktop)', fakeAsync(() => {
@@ -456,15 +456,15 @@ describe('NxComparisonTableComponent', () => {
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
     }));
 
     it('should not cut a left clipping-path by default on mobile', fakeAsync(() => {
@@ -501,15 +501,15 @@ describe('NxComparisonTableComponent', () => {
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
       expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
 
       tableElement.nativeElement.scrollTo(200, 0);
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1])).toBeGreaterThan(0);
-      expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
     }));
 
     it('should mark as sticky when parent is onPush', fakeAsync(() => {
@@ -521,15 +521,15 @@ describe('NxComparisonTableComponent', () => {
       dispatchFakeEvent(document, 'scroll');
       fixture.detectChanges();
       tick();
-      let tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+      const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       fixture.detectChanges();
       tick();
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1])).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
     }));
 
     afterEach(() => {

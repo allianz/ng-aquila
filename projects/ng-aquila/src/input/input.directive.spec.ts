@@ -1,6 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NxInputModule, NxInputDirective } from '@aposin/ng-aquila/input';
@@ -38,7 +38,7 @@ describe('NxInputDirective', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           BasicInput,
@@ -57,7 +57,7 @@ describe('NxInputDirective', () => {
 
   it(
     'creates the Input',
-    async(() => {
+    waitForAsync(() => {
       createTestComponent(BasicInput);
       expect(inputInstance).toBeTruthy();
     })
@@ -65,7 +65,7 @@ describe('NxInputDirective', () => {
 
   it(
     'default includes the bem block element',
-    async(() => {
+    waitForAsync(() => {
       createTestComponent(BasicInput);
       expect(nativeElement.classList.contains('c-input')).toBe(true);
     })
@@ -82,7 +82,7 @@ describe('NxInputDirective', () => {
 
   it(
     'defaults to type text',
-    async(() => {
+    waitForAsync(() => {
       createTestComponent(BasicInput);
       expect(nativeElement.type).toBe('text');
     })
@@ -159,7 +159,7 @@ describe('NxInputDirective', () => {
   describe('Textarea', () => {
     it(
       'is working with nxInput',
-      async(() => {
+      waitForAsync(() => {
         createTestComponent(BasicTextarea);
         expect(inputInstance).toBeTruthy();
       })
@@ -302,7 +302,7 @@ describe('NxInputDirective', () => {
   });
 
   describe('a11y', () => {
-    it('sets aria-required', async(() => {
+    it('sets aria-required', waitForAsync(() => {
       createTestComponent(RequiredInput);
       const ariaRequired = nativeElement.attributes.getNamedItem('aria-required').value;
 

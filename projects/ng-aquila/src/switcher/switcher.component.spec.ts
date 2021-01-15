@@ -1,5 +1,5 @@
 import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxSwitcherComponent } from './switcher.component';
@@ -33,8 +33,8 @@ describe('NxSwitcherComponent', () => {
     switcherInstance = testInstance.switcherInstance;
     switcherDebugElement = fixture.debugElement.query(By.directive(NxSwitcherComponent));
     switcherNativeElement = switcherDebugElement.nativeElement;
-    inputElement = <HTMLInputElement>fixture.nativeElement.querySelector('input');
-    labelElement = <HTMLLabelElement>switcherNativeElement.querySelector('label');
+    inputElement = (fixture.nativeElement.querySelector('input') as HTMLInputElement);
+    labelElement = (switcherNativeElement.querySelector('label') as HTMLLabelElement);
   };
 
   const assertChecked = (checked: boolean) => {
@@ -44,7 +44,7 @@ describe('NxSwitcherComponent', () => {
     expect(inputElement.getAttribute('aria-checked')).toBe(checked.toString());
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSwitcher,

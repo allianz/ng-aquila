@@ -1,6 +1,6 @@
 import { NxIsoDateModule } from './iso-date-adapter.module';
 import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
 import { NxIsoDateAdapter } from './iso-date-adapter';
@@ -12,7 +12,7 @@ describe('NxIsoDateAdapter', () => {
   let adapter: NxIsoDateAdapter;
   let assertValidDate: (d: string | null, valid: boolean) => void;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxIsoDateModule]
     }).compileComponents();

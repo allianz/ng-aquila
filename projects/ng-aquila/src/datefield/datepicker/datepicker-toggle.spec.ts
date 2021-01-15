@@ -1,6 +1,6 @@
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
 import { NxDatepickerComponent, DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from './datepicker.component';
-import { ComponentFixture, TestBed, async, flush, fakeAsync, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, flush, fakeAsync, inject, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NxDatefieldModule } from '../datefield.module';
 import { NxInputModule } from '@aposin/ng-aquila/input';
@@ -37,7 +37,7 @@ describe('NxDatepickerToggleComponent', () => {
     inputNativeElement = fixture.nativeElement.querySelector('input');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicToggleDateComponent,
@@ -124,7 +124,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
     toggleInstance = testInstance.toggleInstance;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     datepickerOptions.toggleIconTabindex = -1;
     TestBed.configureTestingModule({
       declarations: [

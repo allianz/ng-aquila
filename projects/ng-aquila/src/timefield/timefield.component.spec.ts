@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { NxTimefieldComponent } from './timefield.component';
 import { Directive, ViewChild, Type, Component, ChangeDetectionStrategy, Injectable } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -41,11 +41,11 @@ describe('NxTimefieldComponent', () => {
     testInstance = fixture.componentInstance;
     timefieldInstance = testInstance.timefieldInstance;
     timefieldElement = fixture.nativeElement.querySelector('nx-timefield');
-    inputElementHours = <HTMLInputElement>fixture.nativeElement.querySelector('.nx-timefield-input__field__hours');
-    inputElementMinutes = <HTMLInputElement>fixture.nativeElement.querySelector('.nx-timefield-input__field__minutes');
-    spanElementSeperator = <HTMLSpanElement>fixture.nativeElement.querySelector('.nx-timefield-hours-separator');
-    divElementInputFields = <HTMLDivElement>fixture.nativeElement.querySelector('.nx-timefield-input__fields');
-    divElementsWrapper = <HTMLDivElement>fixture.nativeElement.querySelector('.nx-timefield__wrapper');
+    inputElementHours = (fixture.nativeElement.querySelector('.nx-timefield-input__field__hours') as HTMLInputElement);
+    inputElementMinutes = (fixture.nativeElement.querySelector('.nx-timefield-input__field__minutes') as HTMLInputElement);
+    spanElementSeperator = (fixture.nativeElement.querySelector('.nx-timefield-hours-separator') as HTMLSpanElement);
+    divElementInputFields = (fixture.nativeElement.querySelector('.nx-timefield-input__fields') as HTMLDivElement);
+    divElementsWrapper = (fixture.nativeElement.querySelector('.nx-timefield__wrapper') as HTMLDivElement);
   }
 
   const assertTime = (time: string) => {
@@ -61,7 +61,7 @@ describe('NxTimefieldComponent', () => {
     assertTime(time);
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxTimefieldModule,

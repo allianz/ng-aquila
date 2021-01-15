@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
 
 import { NxDropdownModule } from '../dropdown.module';
 import { NxDropdownItemComponent } from './dropdown-item';
@@ -25,7 +25,7 @@ describe('NxDropdownItem component', () => {
     itemInstance = testInstance.item;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxDropdownModule],
       declarations: [BasicItem, EmptyItem, ProjectedItem]

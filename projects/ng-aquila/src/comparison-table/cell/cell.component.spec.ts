@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { NxComparisonTableCell } from './cell.component';
 import { DebugElement, Type, Component, ViewChild, ViewChildren, Directive, QueryList } from '@angular/core';
 import { By } from '@angular/platform-browser';
@@ -40,7 +40,7 @@ describe('NxComparisonTableCell', () => {
     cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
       declarations: [ BasicCellComponent, ConfigurableCellComponent, ToggleSectionCellComponent ]

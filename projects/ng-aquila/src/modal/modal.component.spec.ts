@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, DebugElement, QueryList, Type, ViewChild, ViewChildren, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import * as axe from 'axe-core';
@@ -19,7 +19,7 @@ abstract class ModalTest {
 
 describe('NxModalComponent', () => {
 
-beforeEach(async(() => {
+beforeEach(waitForAsync(() => {
   TestBed.configureTestingModule({
         imports: [
           NoopAnimationsModule,
@@ -46,7 +46,7 @@ beforeEach(async(() => {
     testInstance = fixture.componentInstance;
     modalInstance = testInstance.modalInstance;
     debugElement = fixture.debugElement;
-    buttonNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('button');
+    buttonNativeElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
   };
 
   const openModal = () => {
@@ -56,20 +56,20 @@ beforeEach(async(() => {
 
   describe('basic modal', () => {
 
-    it('should not add the modal to the DOM if it is closed', async(() => {
+    it('should not add the modal to the DOM if it is closed', waitForAsync(() => {
       createTestComponent(BasicModal);
       const basicModalDebugElement: DebugElement = debugElement.query(By.css('#basicModal'));
       expect(basicModalDebugElement).toBeFalsy();
     }));
 
-    it('should open the modal when the button is clicked', async(() => {
+    it('should open the modal when the button is clicked', waitForAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       const openedModal = fixture.nativeElement.querySelector('#basicModal');
       expect(openedModal).toBeTruthy();
     }));
 
-    it('allow clicking on content within the modal', async(() => {
+    it('allow clicking on content within the modal', waitForAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       const button: HTMLButtonElement = fixture.nativeElement.querySelector('#button');
@@ -84,7 +84,7 @@ beforeEach(async(() => {
       expect(clicked).toBeTruthy();
     }));
 
-    it('should close the modal on click outside', async(() => {
+    it('should close the modal on click outside', waitForAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       // a click on the backdrop should close the modal again
@@ -99,7 +99,7 @@ beforeEach(async(() => {
       expect(openedModal.classList.contains('ng-animating')).toBe(true);
     }));
 
-    it('should not close the modal on click inside content', async(() => {
+    it('should not close the modal on click inside content', waitForAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
@@ -110,7 +110,7 @@ beforeEach(async(() => {
       expect(openedModal).toBeTruthy();
     }));
 
-    it('should contain the cdkscrollable attribute in the content wrapper', async(() => {
+    it('should contain the cdkscrollable attribute in the content wrapper', waitForAsync(() => {
       createTestComponent(BasicModal);
       openModal();
       const modalWrapper = fixture.nativeElement.querySelector('.nx-modal__content-wrapper');
@@ -122,7 +122,7 @@ beforeEach(async(() => {
 
   describe('fixed width', () => {
 
-    it('should test for nxSize="fixed"', async(() => {
+    it('should test for nxSize="fixed"', waitForAsync(() => {
       createTestComponent(FixedWidthModal);
       testInstance.open = true;
       fixture.detectChanges();

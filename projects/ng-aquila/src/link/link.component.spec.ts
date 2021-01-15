@@ -1,6 +1,6 @@
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxLinkComponent, NxLinkSize } from './link.component';
@@ -31,7 +31,7 @@ describe('NxLinkComponent', () => {
     linkDebugElement = fixture.debugElement.query(By.directive(NxLinkComponent));
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicLink,
@@ -46,12 +46,12 @@ describe('NxLinkComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the Link', async(() => {
+  it('creates the Link', waitForAsync(() => {
     createTestComponent(BasicLink);
     expect(linkInstance).toBeTruthy();
   }));
 
-  it('default includes the bem block element', async(() => {
+  it('default includes the bem block element', waitForAsync(() => {
     createTestComponent(BasicLink);
     expect(linkDebugElement.nativeElement.classList.contains('nx-link')).toBe(true);
   }));

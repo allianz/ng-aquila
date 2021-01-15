@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { ElementRef, Renderer2, Component } from '@angular/core';
 import { mapClassNames, numberOfDecimals, appendClasses, removeClasses, clamp } from './utils';
 
@@ -58,7 +58,7 @@ describe('shared utils', () => {
   });
 
   describe('appendClasses/removeClasses', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           TestComponent

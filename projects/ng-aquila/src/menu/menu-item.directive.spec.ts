@@ -1,6 +1,6 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxMenuItemDirective } from './menu-item.directive';
 import { NxMenuModule } from './menu.module';
@@ -24,10 +24,10 @@ describe(NxMenuItemDirective.name, () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     menuGroupInstance = testInstance.menuGroupInstance;
-    menuGroupNativeElement = <HTMLElement>fixture.nativeElement.querySelector('[nxMenuItem]');
+    menuGroupNativeElement = (fixture.nativeElement.querySelector('[nxMenuItem]') as HTMLElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicMenuItem
@@ -44,11 +44,11 @@ describe(NxMenuItemDirective.name, () => {
       createTestComponent(BasicMenuItem);
     });
 
-    it('creates the menu item', async(() => {
+    it('creates the menu item', waitForAsync(() => {
       expect(menuGroupInstance).toBeTruthy();
     }));
 
-    it('menu item includes the bem block element', async(() => {
+    it('menu item includes the bem block element', waitForAsync(() => {
       expect(menuGroupNativeElement.classList.contains('nx-menu__item')).toBe(true);
     }));
   });

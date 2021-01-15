@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
 import { NxPaginationComponent } from './pagination.component';
 import { NxPaginationModule } from './pagination.module';
@@ -56,14 +56,14 @@ describe('NxPaginationComponent', () => {
     testInstance = fixture.componentInstance;
     paginationInstance = testInstance.paginationInstance;
 
-    nextArrow = <HTMLLinkElement>fixture.nativeElement.querySelector('.nx-pagination__link--next');
-    prevArrow = <HTMLLinkElement>fixture.nativeElement.querySelector('.nx-pagination__link--previous');
-    nextArrowSimple = <HTMLLinkElement>fixture.nativeElement.querySelector('.nx-pagination-compact__next');
-    prevArrowSimple = <HTMLLinkElement>fixture.nativeElement.querySelector('.nx-pagination-compact__previous');
-    currentPage = <HTMLSpanElement>fixture.nativeElement.querySelector('.nx-pagination-compact__current-page');
-    totalPages = <HTMLSpanElement>fixture.nativeElement.querySelector('.nx-pagination-compact__total-pages');
-    active = <HTMLLinkElement>fixture.nativeElement.querySelector('.is-active');
-    pageSeparator = <HTMLSpanElement>fixture.nativeElement.querySelector('.nx-pagination-compact__page-separator');
+    nextArrow = (fixture.nativeElement.querySelector('.nx-pagination__link--next') as HTMLLinkElement);
+    prevArrow = (fixture.nativeElement.querySelector('.nx-pagination__link--previous') as HTMLLinkElement);
+    nextArrowSimple = (fixture.nativeElement.querySelector('.nx-pagination-compact__next') as HTMLLinkElement);
+    prevArrowSimple = (fixture.nativeElement.querySelector('.nx-pagination-compact__previous') as HTMLLinkElement);
+    currentPage = (fixture.nativeElement.querySelector('.nx-pagination-compact__current-page') as HTMLSpanElement);
+    totalPages = (fixture.nativeElement.querySelector('.nx-pagination-compact__total-pages') as HTMLSpanElement);
+    active = (fixture.nativeElement.querySelector('.is-active') as HTMLLinkElement);
+    pageSeparator = (fixture.nativeElement.querySelector('.nx-pagination-compact__page-separator') as HTMLSpanElement);
 
     spanElement = fixture.debugElement.query(By.css('.nx-pagination-compact__direction-label'));
     listElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item:not(.nx-pagination__item--mobile)');
@@ -72,7 +72,7 @@ describe('NxPaginationComponent', () => {
     mobilePageElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item.nx-pagination__item--mobile .nx-pagination--number');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxPaginationModule,
@@ -227,7 +227,7 @@ describe('NxPaginationComponent', () => {
 
   describe('mobile pagination', () => {
 
-    it('should display advanced mobile pagination correctly', async(() => {
+    it('should display advanced mobile pagination correctly', waitForAsync(() => {
       createTestComponent(AdvancedPagination);
       fixture.detectChanges();
       expect(mobileListElements.length).toBe(3);
@@ -243,7 +243,7 @@ describe('NxPaginationComponent', () => {
       expect(nextArrowSimple.querySelector('.nx-pagination-compact__direction-label').textContent.trim()).toBe('myNext');
       expect(prevArrowSimple.querySelector('.nx-pagination-compact__direction-label').textContent.trim()).toBe('myPrevious');
       expect(pageSeparator.textContent.trim()).toBe('myOf');
-      const navElement = <HTMLElement>fixture.nativeElement.querySelector('.nx-pagination-compact');
+      const navElement = fixture.nativeElement.querySelector('.nx-pagination-compact') as HTMLElement;
       expect(navElement.attributes.getNamedItem('aria-label').value).toBe('myAriaLabel');
     });
   });

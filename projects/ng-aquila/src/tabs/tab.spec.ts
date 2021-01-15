@@ -1,5 +1,5 @@
 import { NxTabsModule } from './tabs.module';
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 import { Type, Component, ViewChild, Directive } from '@angular/core';
 import { NxTabComponent } from './tab';
 
@@ -19,7 +19,7 @@ describe('NxTabComponent', () => {
     testInstance = fixture.componentInstance;
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         NoGroupTest,

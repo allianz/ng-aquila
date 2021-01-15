@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
@@ -57,7 +57,7 @@ describe('NxSidebarComponent', () => {
     sidebarHandleElement = sidebarElement.query(By.css('.nx-sidebar__handle'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSidebar,
@@ -77,11 +77,11 @@ describe('NxSidebarComponent', () => {
       createTestComponent(BasicSidebar);
     });
 
-    it('creates the sidebar', async(() => {
+    it('creates the sidebar', waitForAsync(() => {
       expect(sidebarInstance).toBeTruthy();
     }));
 
-    it('displays the content', async(() => {
+    it('displays the content', waitForAsync(() => {
       const content = sidebarElement.nativeElement.querySelector('.nx-sidebar__content').textContent;
       expect(content).toBe('Hello sidebar');
     }));

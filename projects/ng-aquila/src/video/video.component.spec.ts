@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxVideoComponent } from './video.component';
@@ -44,7 +44,7 @@ describe('NxVideoComponent', () => {
     return fixture.nativeElement.querySelector('.nx-video__play-button');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicVideo
@@ -55,12 +55,12 @@ describe('NxVideoComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the video component', async(() => {
+  it('creates the video component', waitForAsync(() => {
     createTestComponent(BasicVideo);
     expect(videoInstance).toBeTruthy();
   }));
 
-  it('replaces the image on play button click', async(() => {
+  it('replaces the image on play button click', waitForAsync(() => {
     createTestComponent(BasicVideo);
     let thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
     expect(thumbnail).not.toBe(null);
@@ -73,7 +73,7 @@ describe('NxVideoComponent', () => {
     expect(thumbnail).toBe(null);
   }));
 
-  it('constructs correct preview image source URL', async(() => {
+  it('constructs correct preview image source URL', waitForAsync(() => {
     createTestComponent(BasicVideo);
 
     testInstance.videoId = 'fooBAR';
@@ -81,21 +81,21 @@ describe('NxVideoComponent', () => {
     expect(videoInstance.imgSrc).toBe('https://img.youtube.com/vi/fooBAR/sddefault.jpg');
   }));
 
-  it('use preview img src if set', async(() => {
+  it('use preview img src if set', waitForAsync(() => {
     createTestComponent(BasicVideo);
     testInstance.previewImageSrc = 'testURI';
     fixture.detectChanges();
     expect(videoInstance.imgSrc).toBe('testURI');
   }));
 
-  it('uses sensible defaults for nxPlayButtonAriaLabel if not set', async(() => {
+  it('uses sensible defaults for nxPlayButtonAriaLabel if not set', waitForAsync(() => {
     createTestComponent(BasicVideo);
 
     const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
     expect(playButton.nativeElement.getAttribute('aria-label')).toBe('Play Video');
   }));
 
-  it('uses altText to construct aria-label if set', async(() => {
+  it('uses altText to construct aria-label if set', waitForAsync(() => {
     createTestComponent(BasicVideo);
     testInstance.altText = 'foo';
     fixture.detectChanges();
@@ -104,7 +104,7 @@ describe('NxVideoComponent', () => {
     expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foo - Play Video');
   }));
 
-  it('uses nxPlayButtonAriaLabel as aria-label if set', async(() => {
+  it('uses nxPlayButtonAriaLabel as aria-label if set', waitForAsync(() => {
     createTestComponent(BasicVideo);
     testInstance.nxPlayButtonAriaLabel = 'foobar';
     fixture.detectChanges();

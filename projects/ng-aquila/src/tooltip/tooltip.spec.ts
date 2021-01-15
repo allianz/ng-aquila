@@ -1,13 +1,4 @@
-import {
-  async,
-  ComponentFixture,
-  fakeAsync,
-  flush,
-  flushMicrotasks,
-  inject,
-  TestBed,
-  tick
-} from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -93,7 +84,7 @@ describe('NxTooltipDirective', () => {
     TestBed.compileComponents();
   });
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {
       overlayContainer = oc;
       overlayContainerElement = oc.getContainerElement();
@@ -118,7 +109,7 @@ describe('NxTooltipDirective', () => {
       fixture = TestBed.createComponent(BasicTooltipDemo);
       fixture.detectChanges();
       buttonDebugElement = fixture.debugElement.query(By.css('button'));
-      buttonElement = <HTMLButtonElement> buttonDebugElement.nativeElement;
+      buttonElement = (buttonDebugElement.nativeElement as HTMLButtonElement);
       tooltipDirective = buttonDebugElement.injector.get<NxTooltipDirective>(NxTooltipDirective);
     });
 
@@ -247,7 +238,7 @@ describe('NxTooltipDirective', () => {
       expect(tooltipDirective._isTooltipVisible()).toBe(false);
     }));
 
-    it('should not show if hide is called before delay finishes', async(() => {
+    it('should not show if hide is called before delay finishes', waitForAsync(() => {
       assertTooltipInstance(tooltipDirective, false);
 
       const tooltipDelay = 1000;
@@ -726,7 +717,7 @@ describe('NxTooltipDirective', () => {
       fixture = TestBed.createComponent(OnPushTooltipDemo);
       fixture.detectChanges();
       buttonDebugElement = fixture.debugElement.query(By.css('button'));
-      buttonElement = <HTMLButtonElement> buttonDebugElement.nativeElement;
+      buttonElement = (buttonDebugElement.nativeElement as HTMLButtonElement);
       tooltipDirective = buttonDebugElement.injector.get<NxTooltipDirective>(NxTooltipDirective);
     });
 
@@ -807,7 +798,7 @@ describe('navigation', () => {
   let overlayContainerElement: HTMLElement;
   let overlayContainer: OverlayContainer;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule],
       providers: [
@@ -989,7 +980,7 @@ class OnPushTooltipDemo {
     </button>`,
 })
 class DynamicTooltipsDemo {
-  tooltips: Array<string> = [];
+  tooltips: string[] = [];
 
   constructor(private _elementRef: ElementRef<HTMLElement>) {}
 

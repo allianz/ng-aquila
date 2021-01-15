@@ -1,5 +1,5 @@
 import { NxSpinnerModule } from './spinner.module';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, Type, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
 import * as axe from 'axe-core';
@@ -27,10 +27,10 @@ describe('nxSpinnerComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     componentInstance = testInstance.spinnerInstance;
-    spinnerNativeElement = <HTMLElement>fixture.nativeElement.querySelector('nx-spinner');
+    spinnerNativeElement = (fixture.nativeElement.querySelector('nx-spinner') as HTMLElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicTestSpinner,

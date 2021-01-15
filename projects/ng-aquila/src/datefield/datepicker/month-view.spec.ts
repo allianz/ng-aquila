@@ -17,14 +17,14 @@ import {By} from '@angular/platform-browser';
 import {Component, ViewChild} from '@angular/core';
 import {Direction, Directionality} from '@angular/cdk/bidi';
 
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC, dispatchKeyboardEvent, dispatchFakeEvent } from '../../cdk-test-utils';
 
 // tslint:disable component-class-suffix
 describe('NxMonthView', () => {
   let dir: {value: Direction};
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxNativeDateModule

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxBreadcrumbComponent } from './breadcrumb.component';
 import { Component, ChangeDetectionStrategy, ViewChild, ViewChildren, QueryList, Type, Directive } from '@angular/core';
@@ -20,10 +20,10 @@ describe('NxBreadcrumbComponent', () => {
     fixture = TestBed.createComponent(component);
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
-    breadcrumbItemInstances = <QueryList<HTMLElement>>fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
+    breadcrumbItemInstances = (fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item') as QueryList<HTMLElement>);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxBreadcrumbModule

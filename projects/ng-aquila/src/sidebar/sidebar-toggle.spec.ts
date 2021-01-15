@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxSidebarToggleComponent } from './sidebar-toggle';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
@@ -21,10 +21,10 @@ describe('NxSidebarToggleButton', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     buttonInstance = testInstance.buttonInstance;
-    buttonNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('.nx-sidebar__toggle-button');
+    buttonNativeElement = (fixture.nativeElement.querySelector('.nx-sidebar__toggle-button') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BasicSidebarToggleComponent ],
       imports: [

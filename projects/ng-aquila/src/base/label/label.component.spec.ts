@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { NxLabelComponent, LabelDefaultOptions, LABEL_DEFAULT_OPTIONS, LABEL_SIZE_TYPE } from './label.component';
 import { NxLabelModule } from './label.module';
@@ -30,14 +30,14 @@ describe('NxLabelComponent', () => {
   }
 
   describe('basic', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ BasicLabel ],
         imports: [ NxLabelModule ]
       }).compileComponents();
     }));
 
-    it('creates the nx-label', async(() => {
+    it('creates the nx-label', waitForAsync(() => {
       createTestComponent(BasicLabel);
       expect(labelInstance).toBeTruthy();
       expect(labelInstance.size).toBe('large');
@@ -45,7 +45,7 @@ describe('NxLabelComponent', () => {
   });
 
   describe('injection token', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       customDefaultOptions.size = 'small';
       TestBed.configureTestingModule({
         declarations: [ BasicLabel, ConfigurableLabel ],

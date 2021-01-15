@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { DebugElement, Type, Component, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -22,7 +22,7 @@ describe('ComparisonTableFlexRow', () => {
     flexRowElements = fixture.debugElement.queryAll(By.css('nx-comparison-table-flex-row'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule ],
       declarations: [ BasicComponent ]

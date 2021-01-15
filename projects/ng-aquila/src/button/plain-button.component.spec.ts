@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxButtonModule } from './button.module';
 import { NxPlainButtonComponent } from './plain-button.component';
@@ -24,7 +24,7 @@ describe('NxBreadcrumbComponent', () => {
     buttonElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxButtonModule

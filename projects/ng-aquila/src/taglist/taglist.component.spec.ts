@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxTaglistComponent } from './taglist.component';
@@ -14,7 +14,7 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 @Directive()
 abstract class TaglistTest {
   @ViewChild(NxTaglistComponent) taglistInstance: NxTaglistComponent;
-  tags: Array<string | Object> = [ 'foo', 'bar' ];
+  tags: (string | Object)[] = [ 'foo', 'bar' ];
 }
 
 describe('NxTaglistComponent', () => {
@@ -29,7 +29,7 @@ describe('NxTaglistComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     taglistInstance = testInstance.taglistInstance;
-    listNativeElement = <HTMLUListElement>fixture.nativeElement.querySelector('ul');
+    listNativeElement = (fixture.nativeElement.querySelector('ul') as HTMLUListElement);
     tagElements = getTagElements();
   };
 
@@ -41,7 +41,7 @@ describe('NxTaglistComponent', () => {
     return tagElement.querySelector('.nx-tag__close');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicTaglist,
@@ -100,7 +100,7 @@ describe('NxTaglistComponent', () => {
     createTestComponent(BasicTaglist);
     spyOn(taglistInstance.tagClickEvent, 'emit');
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-    const button: HTMLButtonElement = <HTMLButtonElement>listItems.item(0).querySelector('nx-tag');
+    const button: HTMLButtonElement = listItems.item(0).querySelector('nx-tag') as HTMLButtonElement;
     button.click();
     expect(taglistInstance.tagClickEvent.emit).toHaveBeenCalledWith('foo');
   });
@@ -109,7 +109,7 @@ describe('NxTaglistComponent', () => {
     createTestComponent(BasicTaglist);
     spyOn(taglistInstance.tagsChange, 'emit');
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-    const button: HTMLButtonElement = <HTMLButtonElement>listItems.item(0).querySelector('.nx-tag__close');
+    const button: HTMLButtonElement = listItems.item(0).querySelector('.nx-tag__close') as HTMLButtonElement;
     button.click();
     expect(taglistInstance.tagsChange.emit).toHaveBeenCalledWith(['bar']);
   });

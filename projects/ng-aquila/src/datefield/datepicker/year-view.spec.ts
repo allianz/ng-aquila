@@ -15,7 +15,7 @@ import {Component, ViewChild} from '@angular/core';
 import {Direction, Directionality} from '@angular/cdk/bidi';
 import {NxCalendarBodyComponent} from './calendar-body';
 import {NxYearViewComponent} from './year-view';
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import {dispatchKeyboardEvent, dispatchFakeEvent} from '../../cdk-test-utils';
 // tslint:disable component-class-suffix
 
@@ -35,7 +35,7 @@ const DEC = 11;
 describe('NxYearView', () => {
   let dir: {value: Direction};
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxNativeDateModule,

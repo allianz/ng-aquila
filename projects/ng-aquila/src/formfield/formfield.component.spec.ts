@@ -1,6 +1,6 @@
 import { NxFormfieldHintDirective } from './hint.directive';
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, tick, inject } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, inject, waitForAsync } from '@angular/core/testing';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import * as axe from 'axe-core';
@@ -70,7 +70,7 @@ describe('NxFormfieldComponent', () => {
   describe('basic', () => {
 
     beforeEach(
-      async(() => {
+      waitForAsync(() => {
         TestBed.configureTestingModule({
           imports: [ReactiveFormsModule, FormsModule, NxInputModule],
           declarations: [
@@ -388,7 +388,7 @@ describe('NxFormfieldComponent', () => {
   });
 
   describe('Default options', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       formfieldDefaultOptions.appearance = 'outline';
       formfieldDefaultOptions.nxFloatLabel = 'always';
       TestBed.configureTestingModule({

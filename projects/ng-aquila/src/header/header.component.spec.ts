@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxHeaderComponent } from './header.component';
 import { NxHeaderModule } from './header.module';
@@ -24,10 +24,10 @@ describe(NxHeaderComponent.name, () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     headerInstance = testInstance.headerInstance;
-    headerNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-header');
+    headerNativeElement = (fixture.nativeElement.querySelector('nx-header') as HTMLButtonElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicHeader,
@@ -45,11 +45,11 @@ describe(NxHeaderComponent.name, () => {
       createTestComponent(BasicHeader);
     });
 
-    it('creates the header', async(() => {
+    it('creates the header', waitForAsync(() => {
       expect(headerInstance).toBeTruthy();
     }));
 
-    it('default header includes the bem block element', async(() => {
+    it('default header includes the bem block element', waitForAsync(() => {
       expect(headerNativeElement.classList.contains('nx-header')).toBe(true);
       expect(headerNativeElement.classList.contains('nx-header--single-row')).toBe(true);
     }));
@@ -100,11 +100,11 @@ describe(NxHeaderComponent.name, () => {
       createTestComponent(MultiRowHeader);
     });
 
-    it('header does not include the single row class', async(() => {
+    it('header does not include the single row class', waitForAsync(() => {
       expect(headerNativeElement.classList.contains('nx-header--single-row')).toBe(false);
     }));
 
-    it('header row contains bem class', async(() => {
+    it('header row contains bem class', waitForAsync(() => {
       expect(headerNativeElement.querySelector('nx-header-row')
         .classList.contains('nx-header__row')).toBe(true);
     }));
@@ -115,7 +115,7 @@ describe(NxHeaderComponent.name, () => {
       createTestComponent(CobrandingHeader);
     });
 
-    it('Should have separator', async(() => {
+    it('Should have separator', waitForAsync(() => {
       expect(fixture.nativeElement.querySelector('.nx-header__actions').classList
       .contains('nx-header__actions--show-separator')).toBe(false);
       testInstance.showSeparator = true;

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -42,7 +42,7 @@ describe('NxFileUploaderComponent', () => {
     labelElm = fixture.nativeElement.querySelector('nx-label');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicFileUpload,

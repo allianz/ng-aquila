@@ -1,7 +1,7 @@
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, ElementRef, QueryList, Type, ViewChild, ViewChildren, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, inject, TestBed, tick, async } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormsModule, NgControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import * as axe from 'axe-core';
 
@@ -34,7 +34,7 @@ describe('NxNaturalLanguageFormComponent', () => {
     formInstance = testInstance.formInstance;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
           NxNaturalLanguageFormModule,
@@ -52,7 +52,7 @@ describe('NxNaturalLanguageFormComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     inject([OverlayContainer], (oc: OverlayContainer) => {
       overlayContainer = oc;
     })();
@@ -173,14 +173,14 @@ describe('NxNaturalLanguageFormComponent', () => {
         tick();
 
         word = testInstance.words.first;
-        const dimensionA = (<HTMLElement>word.nativeElement).getBoundingClientRect();
+        const dimensionA = (word.nativeElement as HTMLElement).getBoundingClientRect();
 
         // let's test if it's growing
         testInstance.value = 'lorem ipsum dolar sit amet';
         fixture.detectChanges();
         tick();
         fixture.detectChanges();
-        const dimensionB = (<HTMLElement>word.nativeElement).getBoundingClientRect();
+        const dimensionB = (word.nativeElement as HTMLElement).getBoundingClientRect();
         expect(dimensionB.width).toBeGreaterThan(dimensionA.width);
 
         // should shrink too
@@ -189,7 +189,7 @@ describe('NxNaturalLanguageFormComponent', () => {
         tick();
         fixture.detectChanges();
 
-        const dimensionC = (<HTMLElement>word.nativeElement).getBoundingClientRect();
+        const dimensionC = (word.nativeElement as HTMLElement).getBoundingClientRect();
         expect(dimensionC.width).toBeCloseTo(dimensionA.width);
       })
     );
@@ -205,8 +205,8 @@ describe('NxNaturalLanguageFormComponent', () => {
       fixture.detectChanges();
 
       word = testInstance.words.first;
-      const dimensionWord = (<HTMLElement>word.nativeElement).getBoundingClientRect();
-      const dimensionForm = (<HTMLElement>testInstance.formInstanceNative.nativeElement).getBoundingClientRect();
+      const dimensionWord = (word.nativeElement as HTMLElement).getBoundingClientRect();
+      const dimensionForm = (testInstance.formInstanceNative.nativeElement as HTMLElement).getBoundingClientRect();
 
       expect(dimensionWord.width).toBeLessThanOrEqual(dimensionForm.width);
     }));
@@ -243,7 +243,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
     it('NLF should apply the change of size', () => {
       createTestComponent(NaturalLanguageFormSmallComponent);
-      const nlfElement = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-natural-language-form');
+      const nlfElement = fixture.nativeElement.querySelector('nx-natural-language-form') as HTMLButtonElement;
 
       expect(testInstance.formInstance.size).toBe('small');
       expect(nlfElement.classList).toContain('nx-natural-language-form--small');

@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxAutocompleteModule } from '../autocomplete/autocomplete.module';
 import { NxPageSearchComponent } from './page-search.component';
@@ -76,7 +76,7 @@ describe('NxPageSearchComponent', () => {
   });
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           PageSearchSimpleComponent,

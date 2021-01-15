@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {
   NxTreeComponent,
@@ -18,7 +18,7 @@ describe(NxTreeComponent.name, () => {
   let treeElement: HTMLElement;
   let underlyingDataSource: FakeDataSource;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [NxTreeModule],
       declarations: [

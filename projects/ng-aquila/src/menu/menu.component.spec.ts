@@ -1,6 +1,6 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxMenuComponent } from './menu.component';
 import { NxMenuModule } from './menu.module';
@@ -25,7 +25,7 @@ describe(NxMenuComponent.name, () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     menuInstance = testInstance.menuInstance;
-    menuNativeElement = <HTMLElement>fixture.nativeElement.querySelector('nx-menu');
+    menuNativeElement = (fixture.nativeElement.querySelector('nx-menu') as HTMLElement);
   }
 
   function getMenuWrapper() {
@@ -37,7 +37,7 @@ describe(NxMenuComponent.name, () => {
     expect(getMenuWrapper() !== null).toBe(open);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicMenu
@@ -54,7 +54,7 @@ describe(NxMenuComponent.name, () => {
       createTestComponent(BasicMenu);
     });
 
-    it('creates the menu', async(() => {
+    it('creates the menu', waitForAsync(() => {
       expect(menuInstance).toBeTruthy();
     }));
 

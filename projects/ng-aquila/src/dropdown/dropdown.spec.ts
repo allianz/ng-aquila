@@ -4,7 +4,7 @@ import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { Component, Type, ViewChild, ViewChildren, Directive, ChangeDetectionStrategy } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, async } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
@@ -42,7 +42,7 @@ describe('NxDropdownComponent', () => {
         ReactiveFormsModule,
         NxFormfieldModule
       ],
-      declarations: declarations
+      declarations
     }).compileComponents();
 
     inject([OverlayContainer], (oc: OverlayContainer) => {
@@ -55,8 +55,8 @@ describe('NxDropdownComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     dropdownInstance = testInstance.dropdown;
-    trigger = <HTMLDivElement>fixture.nativeElement.querySelector('.nx-dropdown__container');
-    renderedResult = <HTMLDivElement>fixture.nativeElement.querySelector('.nx-dropdown__rendered');
+    trigger = (fixture.nativeElement.querySelector('.nx-dropdown__container') as HTMLDivElement);
+    renderedResult = (fixture.nativeElement.querySelector('.nx-dropdown__rendered') as HTMLDivElement);
     dropdownElement = fixture.debugElement.query(By.css('nx-dropdown')).nativeElement;
   }
 
@@ -87,7 +87,7 @@ describe('NxDropdownComponent', () => {
   }
 
   function getBackdrop() {
-    return <HTMLDivElement>overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop');
+    return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLDivElement;
   }
 
   function getDropdownItems(): NodeListOf<Element> {
@@ -98,21 +98,21 @@ describe('NxDropdownComponent', () => {
     return overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item:not(.nx-hidden)');
   }
 
-  function getMultiselectCheckboxesElements(): Array<HTMLElement> {
+  function getMultiselectCheckboxesElements(): HTMLElement[] {
     return Array.from(overlayContainer.getContainerElement().querySelectorAll('.nx-checkbox'));
   }
 
-  function getMultiselectCheckboxes(): Array<HTMLInputElement> {
+  function getMultiselectCheckboxes(): HTMLInputElement[] {
     return Array.from(overlayContainer.getContainerElement().querySelectorAll('.nx-checkbox__input'))
       .map(item => item as HTMLInputElement);
   }
 
-  function getMultiselectCheckboxeStates(): Array<boolean> {
+  function getMultiselectCheckboxeStates(): boolean[] {
     return getMultiselectCheckboxes().map(input => input.checked);
   }
 
   function getFilterInput(): HTMLInputElement {
-    return <HTMLInputElement>overlayContainer.getContainerElement().querySelector('.nx-dropdown__filter-input');
+    return overlayContainer.getContainerElement().querySelector('.nx-dropdown__filter-input') as HTMLInputElement;
   }
 
   function clickOnItem(index: number) {
@@ -142,7 +142,7 @@ describe('NxDropdownComponent', () => {
     expect(getDropdown()).toBeFalsy();
   }
 
-  function expectItemsHighlighted(highlightedIndexes: Array<number>) {
+  function expectItemsHighlighted(highlightedIndexes: number[]) {
     let check = true;
 
     testInstance.dropdownItems.forEach((item, itemIndex) => {
@@ -604,7 +604,7 @@ describe('NxDropdownComponent', () => {
     it('should not check the checkboxes in multiselect if nothing is selected', fakeAsync(() => {
       createTestComponent(MultiSelectDropdownComponent);
       openDropdownByClick();
-      getMultiselectCheckboxeStates().every(state => <any>(expect(state).toBeFalsy()));
+      getMultiselectCheckboxeStates().every(state => (expect(state).toBeFalsy()) as any);
     }));
 
     it('should select and deselect the checkboxes correctly in multiselect', fakeAsync(() => {
@@ -1309,7 +1309,7 @@ abstract class DropdownTest {
   @ViewChild(NxDropdownComponent) dropdown: NxDropdownComponent;
   @ViewChildren(NxDropdownItemComponent) dropdownItems;
 
-  items: Array<DropdownTestItem> = [
+  items: DropdownTestItem[] = [
     { value: 'BMW' },
     { value: 'Audi' },
     { value: 'Volvo' },

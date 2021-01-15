@@ -1,6 +1,6 @@
 import { ViewChild, Type, Component, Directive } from '@angular/core';
 import { NxFooterComponent } from './footer.component';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxFooterModule } from './footer.module';
 import * as axe from 'axe-core';
 
@@ -20,10 +20,10 @@ describe(NxFooterComponent.name, () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     footerInstance = testInstance.footerInstance;
-    footerNativeElement = <HTMLElement>fixture.nativeElement.querySelector('nx-footer');
+    footerNativeElement = (fixture.nativeElement.querySelector('nx-footer') as HTMLElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicFooter

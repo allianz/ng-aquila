@@ -1,4 +1,4 @@
-import {async, TestBed, fakeAsync, tick, ComponentFixture, flush} from '@angular/core/testing';
+import { TestBed, fakeAsync, tick, ComponentFixture, flush, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, Type, Directive } from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,7 +24,7 @@ describe('NxExpansionPanelComponent', () => {
     headerNativeElement = (fixture.nativeElement.querySelector('nx-expansion-panel-header') as HTMLElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NoopAnimationsModule,

@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxButtonComponent } from './button.component';
@@ -135,7 +135,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {
       expect(buttonNativeElement.classList).toContain(expectedClass);
     }
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           testTarget.basic,
@@ -150,7 +150,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {
     }));
 
     describe('basic', () => {
-      it('creates the button', async(() => {
+      it('creates the button', waitForAsync(() => {
         createTestComponent(testTarget.basic);
         expect(buttonInstance).toBeTruthy();
       }));
@@ -181,7 +181,7 @@ class ConfigurableOnPushIconButton extends ButtonTest {
         expect(buttonNativeElement.classList).not.toContain('nx-button--block');
       });
 
-      it('allow other classes', async(() => {
+      it('allow other classes', waitForAsync(() => {
         createTestComponent(testTarget.basic);
         expect(buttonNativeElement.classList.contains('some-arbitray-class-name')).toBe(true);
       }));

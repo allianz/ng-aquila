@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, async, TestBed, tick, flush } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, flush, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 import * as axe from 'axe-core';
 
@@ -37,8 +37,8 @@ describe('NxCheckboxComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     checkboxInstance = testInstance.checkboxInstance;
-    inputElement = <HTMLInputElement>fixture.nativeElement.querySelector('input');
-    labelElement = <HTMLLabelElement>fixture.nativeElement.querySelector('label');
+    inputElement = (fixture.nativeElement.querySelector('input') as HTMLInputElement);
+    labelElement = (fixture.nativeElement.querySelector('label') as HTMLLabelElement);
     checkboxDebugElement = fixture.debugElement.query(By.directive(NxCheckboxComponent));
     checkboxNativeElement = checkboxDebugElement.nativeElement;
   }
@@ -57,7 +57,7 @@ describe('NxCheckboxComponent', () => {
       expect(inputElement.indeterminate).toBe(indeterminate);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicCheckbox,
@@ -264,7 +264,7 @@ describe('NxCheckboxComponent', () => {
 
     it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
       createTestComponent(ReactiveCheckbox);
-      const submitButton = <HTMLButtonElement>fixture.nativeElement.querySelector('#submit-button');
+      const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
 
       submitButton.click();
       tick();

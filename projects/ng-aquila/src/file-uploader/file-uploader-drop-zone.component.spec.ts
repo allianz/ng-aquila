@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, DebugElement, Type, ViewChild, Directive } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 abstract class FileUploaderTest {
   @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
   public form: FormGroup;
-  public queueList: null | Array<FileItem>;
+  public queueList: null | FileItem[];
   public required: boolean = false;
   public multiple: boolean = false;
   public disabled: boolean = false;
@@ -37,7 +37,7 @@ describe('NxFileUploaderComponent', () => {
     dropZoneElm = fixture.debugElement.query(By.css('nx-file-uploader-drop-zone'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         DropZoneFileUpload

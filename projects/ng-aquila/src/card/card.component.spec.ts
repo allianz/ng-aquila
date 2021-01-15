@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import {NxCardComponent} from './card.component';
@@ -25,7 +25,7 @@ describe('NxCardComponent', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     cardInstance = testInstance.cardInstance;
-    cardNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('nx-card');
+    cardNativeElement = (fixture.nativeElement.querySelector('nx-card') as HTMLButtonElement);
   }
 
   function assertSelected(checked: boolean) {
@@ -40,7 +40,7 @@ describe('NxCardComponent', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicCard,
@@ -53,7 +53,7 @@ describe('NxCardComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the component', async(() => {
+  it('creates the component', waitForAsync(() => {
     createTestComponent(BasicCard);
     expect(cardInstance).toBeTruthy();
   }));
@@ -108,7 +108,7 @@ describe('NxCardComponent', () => {
       expect(cardNativeElement.getAttribute('tabindex')).toBe('0');
     });
 
-    it('should change the selectable-state on binding changes', async(() => {
+    it('should change the selectable-state on binding changes', waitForAsync(() => {
       expect(cardNativeElement.classList.contains('is-selectable')).toBe(true);
     }));
 

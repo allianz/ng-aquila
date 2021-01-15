@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { DebugElement, Type, Component, Directive, QueryList, ViewChildren } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -34,7 +34,7 @@ describe('NxComparisonTableDescriptionCell', () => {
     rowInstances = (testInstance as DescriptionCellTest).rowInstances;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule ],
       declarations: [ DescriptionCellComponent, ConfigurableDescriptionCellComponent ]

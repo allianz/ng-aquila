@@ -1,6 +1,6 @@
 import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
 
@@ -30,7 +30,7 @@ describe('NxTagComponent', () => {
     tagNativeElement = fixture.nativeElement.querySelector('nx-tag');
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicTag,

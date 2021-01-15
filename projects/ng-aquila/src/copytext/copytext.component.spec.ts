@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxCopytextComponent } from './copytext.component';
@@ -25,7 +25,7 @@ describe('NxCopytextDirective', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     copytextInstance = testInstance.textInstance;
-    textNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('p');
+    textNativeElement = (fixture.nativeElement.querySelector('p') as HTMLButtonElement);
   }
 
   function setSize(value) {
@@ -33,7 +33,7 @@ describe('NxCopytextDirective', () => {
     fixture.detectChanges();
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicCopytext
@@ -44,17 +44,17 @@ describe('NxCopytextDirective', () => {
     }).compileComponents();
   }));
 
-  it('creates the component', async(() => {
+  it('creates the component', waitForAsync(() => {
     createTestComponent(BasicCopytext);
     expect(copytextInstance).toBeTruthy();
   }));
 
-  it('should use size normal by default', async(() => {
+  it('should use size normal by default', waitForAsync(() => {
     createTestComponent(BasicCopytext);
     expect(textNativeElement.classList.contains('nx-copy--normal')).toBe(true);
   }));
 
-  it('creates full modifier class from a correct keyword', async(() => {
+  it('creates full modifier class from a correct keyword', waitForAsync(() => {
     createTestComponent(BasicCopytext);
     setSize('small');
     expect(textNativeElement.classList.contains('nx-copy--small')).toBe(true);

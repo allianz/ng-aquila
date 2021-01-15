@@ -10,7 +10,7 @@
       "prefix": "nx",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ng-aquila/tsconfig.build.json",
             "project": "projects/ng-aquila/src/ng-package.json"
@@ -55,7 +55,7 @@
       "prefix": "nxv",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-docs-ui/tsconfig.build.json",
             "project": "projects/ngx-docs-ui/ng-package.json"
@@ -171,7 +171,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,

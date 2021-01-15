@@ -2,12 +2,12 @@ import {Component} from '@angular/core';
 import {NxCalendarBodyComponent, NxCalendarCell} from './calendar-body';
 import {By} from '@angular/platform-browser';
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 // tslint:disable component-class-suffix
 
 describe('NxCalendarBodyComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         NxCalendarBodyComponent,

@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { DebugElement, Type, Component, ViewChild, Directive, QueryList, ViewChildren } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
@@ -39,7 +39,7 @@ describe('NxComparisonTableIntersectionCell', () => {
     toggleSectionInstance = (testInstance as IntersectionCellTest).toggleSectionInstance;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
       declarations: [ IntersectionCellComponent, ToggleSectionComponent ]

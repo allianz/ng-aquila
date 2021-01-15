@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxActionIconDirective } from './action-icon.directive';
 import { NxActionModule } from './action.module';
@@ -26,7 +26,7 @@ describe(NxActionIconDirective.name, () => {
     actionIconElement = fixture.nativeElement.querySelector('[nxActionIcon]');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicActionIcon
@@ -42,7 +42,7 @@ describe(NxActionIconDirective.name, () => {
       createTestComponent(BasicActionIcon);
     });
 
-    it('default action icon includes the bem block element', async(() => {
+    it('default action icon includes the bem block element', waitForAsync(() => {
       expect(actionIconElement.classList.contains('nx-action__icon')).toBeTruthy();
     }));
   });

@@ -1,7 +1,7 @@
 import { DomSanitizer } from '@angular/platform-browser';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Component, ElementRef, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxMessageComponent, CONTEXT } from './message.component';
 import { NxMessageModule } from '../message.module';
@@ -44,13 +44,13 @@ describe('NxMessageComponent', () => {
   function setContextAndAssertIcon(context: CONTEXT, iconName: string) {
     testInstance.context = context;
     fixture.detectChanges();
-    const icon = <HTMLButtonElement>fixture.nativeElement.querySelector('.nx-message__icon');
+    const icon = fixture.nativeElement.querySelector('.nx-message__icon') as HTMLButtonElement;
     expect(icon).toBeTruthy();
     expect(componentInstance.getIconName()).toBe(iconName);
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           MessageBasicComponent,

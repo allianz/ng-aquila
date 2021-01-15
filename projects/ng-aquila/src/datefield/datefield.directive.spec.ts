@@ -2,7 +2,7 @@ import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NX_DATE_LOCALE } from './adapter/date-token';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, async, TestBed, tick, flush } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, flush, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import * as moment from 'moment';
@@ -47,7 +47,7 @@ describe('NxDatefieldDirective with Moment', () => {
     nativeElement = fixture.nativeElement.querySelector('input');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicDatefield,
@@ -68,7 +68,7 @@ describe('NxDatefieldDirective with Moment', () => {
     }).compileComponents();
   }));
 
-  it('should create the directive', async(() => {
+  it('should create the directive', waitForAsync(() => {
     createTestComponent(BasicDatefield);
     expect(datefieldInstance).toBeTruthy();
   }));
@@ -339,7 +339,6 @@ class ReactiveDatefield extends DatefieldTest {
   }
 }
 
-
 @Directive()
 abstract class DatefieldIsoTest {
   public form: FormGroup;
@@ -360,7 +359,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     nativeElement = fixture.nativeElement.querySelector('input');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         ReactiveIsoDatefield
@@ -402,7 +401,6 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
   });
 
 });
-
 
 @Component({
   template: `

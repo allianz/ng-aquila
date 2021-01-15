@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxMenuLinkDirective } from './menu-link.directive';
 import { NxMenuModule } from './menu.module';
@@ -23,10 +23,10 @@ describe(NxMenuLinkDirective.name, () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     menuLinkInstance = testInstance.menuLinkInstance;
-    menuLinkNativeElement = <HTMLElement>fixture.nativeElement.querySelector('[nxMenuLink]');
+    menuLinkNativeElement = (fixture.nativeElement.querySelector('[nxMenuLink]') as HTMLElement);
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicMenuLink
@@ -42,11 +42,11 @@ describe(NxMenuLinkDirective.name, () => {
       createTestComponent(BasicMenuLink);
     });
 
-    it('creates the menu link', async(() => {
+    it('creates the menu link', waitForAsync(() => {
       expect(menuLinkInstance).toBeTruthy();
     }));
 
-    it('menu link includes the bem block element', async(() => {
+    it('menu link includes the bem block element', waitForAsync(() => {
       expect(menuLinkNativeElement.classList.contains('nx-menu__link')).toBe(true);
     }));
   });

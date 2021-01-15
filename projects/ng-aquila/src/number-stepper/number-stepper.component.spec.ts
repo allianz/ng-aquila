@@ -1,6 +1,6 @@
 import { NxNumberStepperIntl } from './number-stepper-intl';
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive, Injectable } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, TestBed, tick, inject, async } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, inject, waitForAsync } from '@angular/core/testing';
 import { FormsModule, FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
@@ -59,7 +59,7 @@ describe('NxNumberStepperComponent', () => {
     stepperNativeElement = stepperDebugElement.nativeElement;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxNumberStepperModule,

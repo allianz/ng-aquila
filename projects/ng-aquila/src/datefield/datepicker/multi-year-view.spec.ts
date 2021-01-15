@@ -1,7 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { dispatchFakeEvent, dispatchKeyboardEvent, JAN } from '../../cdk-test-utils';
@@ -14,7 +14,7 @@ import { NxMultiYearViewComponent, yearsPerPage, yearsPerRow } from './multi-yea
 describe('NxMultiYearView', () => {
   let dir: {value: Direction};
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxNativeDateModule

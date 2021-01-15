@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxExpertModule } from './nx-expert.module';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
@@ -50,7 +50,7 @@ describe('NxExpertPreset', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
           NxDatefieldModule,

@@ -1,5 +1,5 @@
 import { NxTabsModule } from './tabs.module';
-import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture, inject, waitForAsync } from '@angular/core/testing';
 import { Type, Component, QueryList, ViewChildren, ChangeDetectionStrategy, ViewChild, Directive, DebugElement } from '@angular/core';
 import { NxTabLinkDirective, NxTabNavBarComponent, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tab-nav-bar';
 import { By } from '@angular/platform-browser';
@@ -32,7 +32,7 @@ describe('NxTabBarNavComponent', () => {
   };
 
   describe('no preset options', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           SimpleTabNavBar,
@@ -125,7 +125,7 @@ describe('NxTabBarNavComponent', () => {
   });
 
   describe('default options injection token', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
       tabsDefaultOptions.appearance = 'expert';
       TestBed.configureTestingModule({
         declarations: [

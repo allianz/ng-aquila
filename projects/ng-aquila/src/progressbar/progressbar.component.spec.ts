@@ -1,5 +1,5 @@
 import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { NxProgressbarComponent } from './progressbar.component';
@@ -30,7 +30,7 @@ describe('NxProgressbarComponent', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
         imports: [NxProgressbarModule, FormsModule]

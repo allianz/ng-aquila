@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,7 @@ describe('NxSidepanelComponent', () => {
     sidepanelElement = fixture.debugElement.query(By.css('nx-sidepanel'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSidepanel,
@@ -50,11 +50,11 @@ describe('NxSidepanelComponent', () => {
       createTestComponent(BasicSidepanel);
     });
 
-    it('creates the sidepanel', async(() => {
+    it('creates the sidepanel', waitForAsync(() => {
       expect(sidepanelInstance).toBeTruthy();
     }));
 
-    it('displays the content', async(() => {
+    it('displays the content', waitForAsync(() => {
       const content = sidepanelElement.nativeElement.textContent;
       expect(content).toContain('Sidepanel header');
       expect(content).toContain('Sidepanel content');
@@ -86,7 +86,7 @@ describe('NxSidepanelComponent', () => {
       expect(sidepanelInstance).toBeTruthy();
     });
 
-    it('displays the content', async(() => {
+    it('displays the content', waitForAsync(() => {
       const content = sidepanelElement.nativeElement.textContent;
       expect(content).toBe('My sidepanel');
     }));
@@ -122,7 +122,7 @@ describe('NxSidepanelComponent', () => {
     it('opens the sidepanel on open()', () => {
       testInstance.opened = false;
       fixture.detectChanges();
-      
+
       sidepanelInstance.open();
       fixture.detectChanges();
       expect(testInstance.opened).toBe(true);
@@ -132,7 +132,7 @@ describe('NxSidepanelComponent', () => {
     it('closes the sidepanel on close()', () => {
       testInstance.opened = true;
       fixture.detectChanges();
-      
+
       sidepanelInstance.close();
       fixture.detectChanges();
       expect(testInstance.opened).toBe(false);
@@ -209,4 +209,3 @@ class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
   `
 })
 class ConfigurableSidepanel extends SidepanelTest {}
-

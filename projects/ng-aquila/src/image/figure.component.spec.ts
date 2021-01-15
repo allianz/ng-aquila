@@ -1,6 +1,6 @@
 import { NxFigureComponent } from './figure.component';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxImageModule } from './image.module';
@@ -26,7 +26,7 @@ describe('NxImageDirective', () => {
     fixture.detectChanges();
     testInstance = fixture.componentInstance;
     imageInstance = testInstance.imageInstance;
-    imgNativeElement = <HTMLImageElement>fixture.nativeElement.querySelector('img');
+    imgNativeElement = (fixture.nativeElement.querySelector('img') as HTMLImageElement);
     figureNativeElement = fixture.nativeElement.querySelector('figure');
   };
 
@@ -35,7 +35,7 @@ describe('NxImageDirective', () => {
     fixture.detectChanges();
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicImage,
@@ -47,17 +47,17 @@ describe('NxImageDirective', () => {
     }).compileComponents();
   }));
 
-  it('creates the Image', async(() => {
+  it('creates the Image', waitForAsync(() => {
     createTestComponent(BasicImage);
     expect(imageInstance).toBeTruthy();
   }));
 
-  it('includes the nx-image--auto class by default', async(() => {
+  it('includes the nx-image--auto class by default', waitForAsync(() => {
     createTestComponent(BasicImage);
     expect(figureNativeElement.classList.contains('nx-image--auto')).toBe(true);
   }));
 
-  it('creates full modifier class from a correct keyword', async(() => {
+  it('creates full modifier class from a correct keyword', waitForAsync(() => {
     createTestComponent(FigureWithModifier);
     setKeyword('1by1');
     expect(figureNativeElement.classList.contains('nx-image--1by1')).toBe(true);

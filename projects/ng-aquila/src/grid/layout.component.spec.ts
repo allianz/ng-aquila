@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, Type, Directive } from '@angular/core';
 import { NxLayoutComponent } from './layout.component';
 import { NxGridModule } from './grid.module';
@@ -22,7 +22,7 @@ describe('NxLayoutDirective', () => {
       fixture.detectChanges();
       testInstance = fixture.componentInstance;
       divInstance = testInstance.layoutInstance;
-      divNativeElement = <HTMLButtonElement>fixture.nativeElement.querySelector('div');
+      divNativeElement = (fixture.nativeElement.querySelector('div') as HTMLButtonElement);
     }
 
     function getClassesCreated(component: Type<DirectiveTest>): String {
@@ -34,7 +34,7 @@ describe('NxLayoutDirective', () => {
       return element.className.split(' ').sort().join(' ');
     }
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
           declarations: [ BasicLayout,
                           BasicGridLayout,

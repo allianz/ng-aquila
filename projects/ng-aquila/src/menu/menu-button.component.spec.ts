@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, async, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { NxMenuButtonComponent, NxMenuButtonType } from './menu-button.component';
 import { NxMenuModule } from './menu.module';
@@ -29,7 +29,7 @@ describe(NxMenuButtonComponent.name, () => {
     menuButtonElement = fixture.nativeElement.querySelector('[nxMenuButton]');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxMenuModule
@@ -46,11 +46,11 @@ describe(NxMenuButtonComponent.name, () => {
       createTestComponent(BasicMenuButton);
     });
 
-    it('creates the menu button', async(() => {
+    it('creates the menu button', waitForAsync(() => {
       expect(menuButtonInstance).toBeTruthy();
     }));
 
-    it('default menu button includes the bem block element', async(() => {
+    it('default menu button includes the bem block element', waitForAsync(() => {
       expect(menuButtonElement.classList.contains('nx-menu-button')).toBeTruthy();
     }));
 

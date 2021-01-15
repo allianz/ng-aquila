@@ -1,6 +1,6 @@
 import { NxStepperPreviousDirective, NxStepperNextDirective } from '../buttons';
 import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, fakeAsync, TestBed, ComponentFixtureAutoDetect, flush } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, ComponentFixtureAutoDetect, flush, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { NxProgressStepperDirective } from '../progress-stepper.component';
@@ -41,7 +41,7 @@ describe('NxSingleStepperComponent', () => {
   }
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           SingleStepBasicTest,

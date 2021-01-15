@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { Type, Component, Directive, DebugElement } from '@angular/core';
 import { NxComparisonTableModule } from './comparison-table.module';
 import { By } from '@angular/platform-browser';
@@ -31,7 +31,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
     flexRowElements = rowGroupElement ? rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row')) : null;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
       declarations: [ BasicComponent, ConfigurableComponent, ToggleSectionComponent ]

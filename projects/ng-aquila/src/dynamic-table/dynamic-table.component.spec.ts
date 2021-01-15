@@ -1,6 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxDisplayedColumns } from './displayedColumns';
@@ -48,7 +48,7 @@ describe('NxDynamicTableComponent', () => {
     headerCellElements = fixture.nativeElement.querySelectorAll('cdk-header-cell');
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         NxDynamicTableModule,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync, flush } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync, flush, waitForAsync } from '@angular/core/testing';
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 import { ViewChildren, Directive, QueryList, DebugElement, Type, Component } from '@angular/core';
@@ -33,7 +33,7 @@ describe('ToggleSectionHeaderComponent', () => {
     mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
       declarations: [ BasicComponent, IdTestingComponent ]

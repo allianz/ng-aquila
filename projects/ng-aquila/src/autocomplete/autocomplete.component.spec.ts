@@ -1,7 +1,7 @@
 import { ViewChild, Directive } from '@angular/core';
 import { ElementRef } from '@angular/core';
 
-import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 import { Component, Type } from '@angular/core';
 import { NxAutocompleteModule } from './autocomplete.module';
@@ -52,7 +52,7 @@ describe('NxAutocompleteComponent:', () => {
     return getAutocompletePanel().querySelectorAll('.nx-autocomplete-option') as NodeListOf<HTMLElement>;
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicAutocompleteComponent,

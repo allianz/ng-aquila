@@ -1,6 +1,6 @@
 import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
 import { Component, DebugElement, Type, ViewChild, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -35,10 +35,10 @@ describe('NxTabHeaderComponent', () => {
     tabHeaderInstance = testInstance.tabHeaderInstance;
     tabHeaderDebugElement = fixture.debugElement.query(By.directive(NxTabHeaderComponent));
     tabHeaderNativeElement = tabHeaderDebugElement.nativeElement;
-    tabListContainer = <HTMLDivElement>tabHeaderNativeElement.querySelector('.nx-tab-header');
+    tabListContainer = (tabHeaderNativeElement.querySelector('.nx-tab-header') as HTMLDivElement);
   };
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicHeader,
@@ -52,7 +52,7 @@ describe('NxTabHeaderComponent', () => {
     }).compileComponents();
   }));
 
-  it('creates the tab header', async(() => {
+  it('creates the tab header', waitForAsync(() => {
     createTestComponent(BasicHeader);
     expect(tabHeaderInstance).toBeTruthy();
   }));

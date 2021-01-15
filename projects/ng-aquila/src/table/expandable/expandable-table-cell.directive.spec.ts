@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableCellComponent } from './expandable-table-cell.component';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
@@ -29,7 +29,7 @@ describe(NxExpandableTableCellComponent.name, () => {
     expandableTableCellElement = fixture.debugElement.query(By.directive(NxExpandableTableCellComponent));
   }
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicExpandableTableCellComponent
