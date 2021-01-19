@@ -19,6 +19,7 @@ abstract class FileUploaderTest {
   public required: boolean = false;
   public multiple: boolean = false;
   public maxFileSize: number;
+  public maxFileNumber: number;
   public accept;
 }
 
@@ -381,6 +382,62 @@ describe('NxFileUploaderComponent', () => {
       createAndAddFile('test.png', 'some type');
       expect(testInstance.form.controls['documents'].hasError('NxFileUploadFileTypeNotAccepted')).toBe(true);
     });
+
+    describe('maxFileNumber', () => {
+      it('is valid if maxFileNumber is not set', () => {
+        createTestComponent(ReactiveFileUpload);
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(false);
+      });
+
+      it('is valid with no file added', () => {
+        createTestComponent(ReactiveFileUpload);
+        testInstance.maxFileNumber = 2;
+        fixture.detectChanges();
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(false);
+      });
+
+      it('is valid if file number <= maxFileNumber', () => {
+        createTestComponent(ReactiveFileUpload);
+        testInstance.maxFileNumber = 2;
+        createAndAddFile('test.png', 'some type');
+        inputElm.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(false);
+
+        // add a second file
+        createAndAddFile('test.png', 'some type');
+        inputElm.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(false);
+      });
+
+      it('is invalid if file number > maxFileNumber', () => {
+        createTestComponent(ReactiveFileUpload);
+        testInstance.maxFileNumber = 2;
+        createAndAddFile('test.png', 'some type');
+        createAndAddFile('test.png', 'some type');
+        createAndAddFile('test.png', 'some type');
+        inputElm.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(true);
+      });
+
+      it('is updated after deleting a file', () => {
+        createTestComponent(ReactiveFileUpload);
+        testInstance.maxFileNumber = 2;
+        createAndAddFile('test.png', 'some type');
+        createAndAddFile('test.png', 'some type');
+        createAndAddFile('test.png', 'some type');
+        inputElm.dispatchEvent(new Event('change'));
+        fixture.detectChanges();
+
+        // click delete button of first file
+        fixture.nativeElement.querySelector('nx-file-upload-delete').click();
+        fixture.detectChanges();
+
+        expect(testInstance.form.controls['documents'].hasError('NxFileUploadMaxFileNumber')).toBe(false);
+      });
+    });
   });
 
   describe('keyboard support', () => {
@@ -505,6 +562,7 @@ class BasicFileUpload extends FileUploaderTest {
                         [required]="required"
                         [maxFileSize]="maxFileSize"
                         multiple
+                        [maxFileNumber]="maxFileNumber"
                         [accept]="accept">
         <nx-label size="small">Required file to upload</nx-label>
         <span nxFileUploadHint>maximum Filesize 2MB</span>
@@ -530,6 +588,7 @@ class ReactiveFileUpload extends FileUploaderTest {
   public required;
   public maxFileSize;
   public queueList;
+  public maxFileNumber;
 
   constructor() {
     super();

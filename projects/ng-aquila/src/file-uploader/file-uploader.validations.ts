@@ -1,4 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FileItem } from './file-uploader.model';
 
 /**
  * Verifies the file type against the accepted types
@@ -35,6 +36,15 @@ export class NxFileUploaderValidators {
     return (control: AbstractControl): ValidationErrors | null => {
       return (isFileTypeValid(file, accept)) ? null : {
         'NxFileUploadFileTypeNotAccepted': { 'fileName': file.name }
+      };
+    };
+  }
+
+  /** The form control validator for the max file number that is accepted. */
+  static maxFileNumber<D>(files: FileItem[], max: number|undefined): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return (!files || !files.length || !max || files.length <= max) ? null : {
+        'NxFileUploadMaxFileNumber': { 'max': max, 'actual': files.length }
       };
     };
   }

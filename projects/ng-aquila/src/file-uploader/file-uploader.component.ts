@@ -116,6 +116,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   private _accept: string;
   private _controlValidators: ValidatorFn | null = null;
   private _uploader: NxFileUploader;
+  private _maxFileNumber: number = null;
   _itemTemplate: TemplateRef<any>;
   _templateContext;
 
@@ -221,6 +222,15 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   }
   get uploader(): NxFileUploader {
     return this._uploader;
+  }
+
+  /** The max number of files that is accepted. */
+  @Input()
+  set maxFileNumber(value: number) {
+    this._maxFileNumber = coerceNumberProperty(value);
+  }
+  get maxFileNumber(): number {
+    return this._maxFileNumber;
   }
 
   /** Sets the template for the file items. */
@@ -336,8 +346,15 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
       }
 
       const validators = this._controlValidators
-        ? [this._controlValidators, ...this.validatorFnArray]
-        : this.validatorFnArray;
+        ? [
+          this._controlValidators,
+          NxFileUploaderValidators.maxFileNumber(this.value, this.maxFileNumber),
+          ...this.validatorFnArray
+        ]
+        : [
+          NxFileUploaderValidators.maxFileNumber(this.value, this.maxFileNumber),
+          ...this.validatorFnArray
+        ];
 
       this.ngControl.control.setValidators(validators);
       this.ngControl.control.updateValueAndValidity();
@@ -436,6 +453,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     this._subscribeToFileChanges();
+
+    this._resetValidators(true);
+    this._changeDetectorRef.markForCheck();
 
     this.valueChange.emit(this.value);
     this.fileDeleted.emit(file);
@@ -564,4 +584,5 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   static ngAcceptInputType_disabled: BooleanInput;
   static ngAcceptInputType_required: BooleanInput;
   static ngAcceptInputType_uploadSeparately: BooleanInput;
+  static ngAcceptInputType_maxFileNumber: NumberInput;
 }

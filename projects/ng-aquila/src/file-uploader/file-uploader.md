@@ -45,6 +45,13 @@ The server's errors can be handled by setting the file state as shown in this ex
 
 <!-- example(file-uploader-validation) -->
 
+#### Max file number
+The max file number is set via the `[maxFileNumber]` property.
+
+The return error is `NxFileUploadMaxFileNumber`.
+
+<!-- example(file-uploader-max-file-number) -->
+
 #### Accepted file types
 The permitted file types can be set via `[accept]` and are passed down to the native input[type='file'] element. 
 

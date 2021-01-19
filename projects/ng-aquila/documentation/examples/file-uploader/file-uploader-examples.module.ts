@@ -16,6 +16,7 @@ import { FileUploaderValidationExampleComponent } from './file-uploader-validati
 import { FileUploaderWithRequestExampleComponent } from './file-uploader-with-request/file-uploader-with-request-example';
 import { FileUploaderCustomItemExampleComponent } from './file-uploader-custom-item/file-uploader-custom-item-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { FileUploaderMaxFileNumberExampleComponent } from './file-uploader-max-file-number/file-uploader-max-file-number-example';
 
 
 const EXAMPLES = [
@@ -29,7 +30,8 @@ const EXAMPLES = [
   FileUploaderTypeValidationExampleComponent,
   FileUploaderValidationExampleComponent,
   FileUploaderWithRequestExampleComponent,
-  FileUploaderCustomItemExampleComponent,
+  FileUploaderMaxFileNumberExampleComponent,
+  FileUploaderCustomItemExampleComponent
 ];
 
 @NgModule({
@@ -56,7 +58,8 @@ export class FileExamplesModule {
       'file-uploader-type-validation': FileUploaderTypeValidationExampleComponent,
       'file-uploader-validation': FileUploaderValidationExampleComponent,
       'file-uploader-with-request': FileUploaderWithRequestExampleComponent,
-      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
+      'file-uploader-max-file-number': FileUploaderMaxFileNumberExampleComponent,
+      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent
     };
   }
 }
