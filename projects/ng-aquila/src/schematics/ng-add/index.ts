@@ -14,7 +14,7 @@ import { aquilaVersion } from './version-names';
 
 export default function (options: Schema): Rule {
   return (host: Tree, context: SchematicContext) => {
-    addPackageToPackageJson(host, '@aposin/ng-aquila', `${aquilaVersion}`);
+    addPackageToPackageJson(host, '@aposin/ng-aquila', `^${aquilaVersion}`);
     // the angular cli just adds `@aposin/ng-aquila` to the package.json but it is not installed
     // yet so we run the install first before we install the peer dependencies
     const installTaskId = context.addTask(new NodePackageInstallTask());

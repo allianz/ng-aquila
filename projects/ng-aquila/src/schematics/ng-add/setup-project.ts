@@ -7,11 +7,12 @@ import {
 } from '@angular/cdk/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import * as chalk from 'chalk';
-import { getWorkspace } from '@schematics/angular/utility/config';
+import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { Schema } from './schema';
+import { JsonArray } from '@angular-devkit/core';
 
 export default function (options: Schema): Rule {
-  return (host: Tree, context: SchematicContext) => {
+  return async (host: Tree, context: SchematicContext) => {
     const installTaskId = context.addTask(new NodePackageInstallTask());
     return chain([
       options && options.type && options.type === 'b2b' ? addExpertModule(options) : noop(),
@@ -24,38 +25,36 @@ export default function (options: Schema): Rule {
 }
 
 function addExpertModule(options: Schema) {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     addModuleImportToRootModule(host, 'NxExpertModule',
       '@aposin/ng-aquila/config', project);
-    return host;
   };
 }
 
 function addAposinTheme(options: Schema) {
-  return (host: Tree) => {
+  return async (host: Tree) => {
     if (options.noTheme) {
-      return host;
+      return;
     }
 
-    const workspace = getWorkspace(host);
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const newFilePath = 'node_modules/@aposin/ng-aquila/css/normalize.css';
 
     const buildOptions = getProjectTargetOptions(project, 'build');
-    if (!buildOptions.styles) {
-      buildOptions.styles = [newFilePath];
-    } else if (!buildOptions.styles.includes(newFilePath)) {
-      buildOptions.styles.push(newFilePath);
+    let styles = buildOptions.styles as JsonArray;
+    if (!styles) {
+      styles = [newFilePath];
+    } else if (!styles.includes(newFilePath)) {
+      styles.push(newFilePath);
     }
 
     const themeToAdd = options.type === 'b2b' ? 'expert.css' : 'aposin.css';
-    buildOptions.styles.push(`node_modules/@aposin/ng-aquila/themes/${themeToAdd}`);
+    styles.push(`node_modules/@aposin/ng-aquila/themes/${themeToAdd}`);
 
-    host.overwrite('angular.json', JSON.stringify(workspace, null, 2));
-
-    return host;
+    return updateWorkspace(workspace);
   };
 }
 
@@ -68,8 +67,8 @@ function addCdkA11yStyles(options: Schema) {
 }
 
 function addStyles(options: Schema, path: string, importString: string) {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const styleFilePath = getProjectStyleFile(project);
 
@@ -104,8 +103,8 @@ function addStyles(options: Schema, path: string, importString: string) {
 }
 
 export function addPonyfillToPolyfills(options: Schema) {
-  return (host: Tree) => {
-    const workspace = getWorkspace(host);
+  return async (host: Tree) => {
+    const workspace = await getWorkspace(host);
     const project = getProjectFromWorkspace(workspace, options.project);
     const buildOptions = getProjectTargetOptions(project, 'build');
 
@@ -113,7 +112,7 @@ export function addPonyfillToPolyfills(options: Schema) {
       throw new Error(`Could not find polyfills.ts in ${project.sourceRoot}`);
     }
 
-    const polyfillsTs = buildOptions.polyfills;
+    const polyfillsTs = buildOptions.polyfills as string;
     const polyfillsFile = host.read(polyfillsTs);
 
     if (!polyfillsFile) {
