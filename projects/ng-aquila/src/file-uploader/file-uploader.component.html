@@ -8,7 +8,7 @@
        [attr.disabled]="disabled || null"
        [attr.accept]="accept"
        (change)="_onFileChange($event)"
->
+/>
 <ng-container *ngIf="value">
   <div class="nx-file-uploader--file-list nx-margin-bottom-m"
        role="listbox"
@@ -16,39 +16,39 @@
     <div #fileRowElement
          class="nx-file-uploader--file-row"
          [class.nx-file-uploader--file-state-uploading]="file.isUploading"
+         [class.nx-file-uploader--default-template]="!_itemTemplate"
          *ngFor="let file of value"
          role="option"
          tabindex="0"
          (keydown)="_handleKeydownListRow($event)"
     >
-      <div class="nx-file-uploader--file-name">
-        {{file?.name}}
-      </div>
-
-      <div class="nx-file-uploader--file-size">
-        <span *ngIf="!file.isUploading">{{file?.size/1024/1024 | number:'.2'}} MB</span>
-        <span *ngIf="file.isUploading">{{uploadingLabel}}</span>
-      </div>
-
-      <div class="nx-file-uploader--file-row-actions">
-        <div class="nx-file-uploader--file-status">
-          <nx-spinner nxSize="medium" *ngIf="file.isUploading"></nx-spinner>
-          <nx-icon name="check-circle" size="s" *ngIf="file.isUploaded"  [attr.aria-label]="uploadedLabel || null"></nx-icon>
-        </div>
-
-        <button nxIconButton="tertiary small-medium"
-                [attr.aria-label]="deleteLabel || null"
-                class="nx-file-uploader--file-action-delete"
-                type="button"
-                [attr.disabled]="file.isUploading || null"
-                (click)="removeFile(file)"
-                aria-hidden="true"
-        >
-          <nx-icon name="trash-o"></nx-icon>
-        </button>
-      </div>
+      <ng-container *ngTemplateOutlet="_itemTemplate ? _itemTemplate : defaultFileRow; context: { templateContext: _templateContext, file: file }"></ng-container>
     </div>
   </div>
 </ng-container>
 
 <ng-content select="nx-error" *ngIf="errorState"></ng-content>
+
+<ng-template #defaultFileRow
+             let-templateContext="templateContext"
+             let-file="file"
+>
+  <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
+
+  <nx-file-upload-size [size]="file?.size"
+                       [isUploading]="file.isUploading"
+                       [uploadingLabel]="templateContext.uploadingLabel"
+  ></nx-file-upload-size>
+
+  <div class="nx-file-uploader--file-row-actions">
+    <nx-file-upload-status [isUploading]="file.isUploading"
+                           [isUploaded]="file.isUploaded"
+                           [uploadedLabel]="templateContext.uploadedLabel"
+    ></nx-file-upload-status>
+
+    <nx-file-upload-delete [deleteLabel]="templateContext.deleteLabel"
+                           [isUploading]="file.isUploading"
+                           (click)="removeFile(file)"
+    ></nx-file-upload-delete>
+  </div>
+</ng-template>

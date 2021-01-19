@@ -1,0 +1,9 @@
+@import "../../shared-styles/index";
+
+:host {
+  display: flex;
+
+  nx-icon {
+    @include var(color, file-uploader-file-row-icon-color);
+  }
+}

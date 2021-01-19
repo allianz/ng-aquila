@@ -3,6 +3,7 @@ import { EventEmitter } from '@angular/core';
 /**
  * Class used to keep track of the current states of the file
  */
+
 export class FileItem {
   /** The actual file data. */
   public file: File | null;

@@ -1,6 +1,7 @@
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxFileUploaderModule } from '@aposin/ng-aquila/file-uploader';
+import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 
 import { NgModule } from '@angular/core';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';
@@ -13,7 +14,9 @@ import { FileUploaderTemplateDrivenExampleComponent } from './file-uploader-temp
 import { FileUploaderTypeValidationExampleComponent } from './file-uploader-type-validation/file-uploader-type-validation-example';
 import { FileUploaderValidationExampleComponent } from './file-uploader-validation/file-uploader-validation-example';
 import { FileUploaderWithRequestExampleComponent } from './file-uploader-with-request/file-uploader-with-request-example';
+import { FileUploaderCustomItemExampleComponent } from './file-uploader-custom-item/file-uploader-custom-item-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+
 
 const EXAMPLES = [
   FileUploaderAutoExampleComponent,
@@ -25,18 +28,20 @@ const EXAMPLES = [
   FileUploaderTemplateDrivenExampleComponent,
   FileUploaderTypeValidationExampleComponent,
   FileUploaderValidationExampleComponent,
-  FileUploaderWithRequestExampleComponent
+  FileUploaderWithRequestExampleComponent,
+  FileUploaderCustomItemExampleComponent,
 ];
 
 @NgModule({
   imports: [
     NxFileUploaderModule,
     NxIconModule,
+    NxRadioModule,
     NxRadioToggleModule,
-    ExamplesSharedModule
+    ExamplesSharedModule,
   ],
   declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+  exports: [EXAMPLES],
 })
 export class FileExamplesModule {
   static components() {
@@ -51,6 +56,7 @@ export class FileExamplesModule {
       'file-uploader-type-validation': FileUploaderTypeValidationExampleComponent,
       'file-uploader-validation': FileUploaderValidationExampleComponent,
       'file-uploader-with-request': FileUploaderWithRequestExampleComponent,
+      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
     };
   }
 }

@@ -17,6 +17,7 @@ import {
   Output,
   QueryList,
   Self,
+  TemplateRef,
   ViewChild,
   ViewChildren
 } from '@angular/core';
@@ -115,6 +116,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   private _accept: string;
   private _controlValidators: ValidatorFn | null = null;
   private _uploader: NxFileUploader;
+  _itemTemplate: TemplateRef<any>;
+  _templateContext;
 
   /** @docs-private */
   errorState: boolean = false;
@@ -220,6 +223,17 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     return this._uploader;
   }
 
+  /** Sets the template for the file items. */
+  @Input()
+  set itemTemplate(template: TemplateRef<any>) {
+    if (this._itemTemplate !== template) {
+      this._itemTemplate = template;
+    }
+  }
+  get itemTemplate(): TemplateRef<any> {
+    return this._itemTemplate;
+  }
+
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     private _errorStateMatcher: ErrorStateMatcher,
@@ -233,6 +247,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
       // the `providers` to avoid running into a circular import.
       this.ngControl.valueAccessor = this;
     }
+
+    this._templateContext = this;
   }
 
   ngOnInit(): void {

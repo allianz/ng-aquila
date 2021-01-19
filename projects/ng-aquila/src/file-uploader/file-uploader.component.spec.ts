@@ -42,12 +42,21 @@ describe('NxFileUploaderComponent', () => {
     labelElm = fixture.nativeElement.querySelector('nx-label');
   }
 
+  function createAndAddFile(name: string, type: string) {
+    let fakeFile = new File(['3555'], name, { type });
+    fakeFile = Object.defineProperty( fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
+    const fileList = { 0: fakeFile, length: 1, item: (index: number) => fakeFile };
+    fileUploaderInstance._onFileChange({ type: 'change', target: { files: fileList } });
+    fixture.detectChanges();
+  }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         BasicFileUpload,
         ReactiveFileUpload,
-        DynamicFileUpload
+        DynamicFileUpload,
+        CustomItemTemplateFileUpload
       ],
       imports: [
         NxFileUploaderModule,
@@ -74,6 +83,16 @@ describe('NxFileUploaderComponent', () => {
 
       expect(inputElm.click).toHaveBeenCalled();
     });
+
+    it('should use default template class', fakeAsync(() => {
+      createTestComponent(BasicFileUpload);
+      createAndAddFile('fake file', 'text/html');
+      const defaultTemplateWrapper = fixture.nativeElement.querySelector(
+        '.nx-file-uploader--default-template'
+      ) as HTMLElement;
+
+      expect(defaultTemplateWrapper).not.toBeNull();
+    }));
   });
 
   describe('Template-Driven Form', () => {
@@ -88,6 +107,44 @@ describe('NxFileUploaderComponent', () => {
         expect(fileUploaderInstance.ngControl).toBeDefined();
       })
     );
+  });
+
+  describe('Custom Item Template', () => {
+    it('should create', () => {
+      createTestComponent(CustomItemTemplateFileUpload);
+      expect(fileUploaderInstance).toBeTruthy();
+    });
+
+    it('should replace the default template', fakeAsync(() => {
+      createTestComponent(CustomItemTemplateFileUpload);
+      createAndAddFile('fake file', 'text/html');
+
+      const customWrapper = fixture.nativeElement.querySelector(
+        '.nx-file-uploader--file-row .customWrapper'
+      ) as HTMLElement;
+      expect(customWrapper).not.toBeNull();
+
+      const defaultTemplateWrapper = fixture.nativeElement.querySelector(
+        '.nx-file-uploader--default-template'
+      ) as HTMLElement;
+
+      expect(defaultTemplateWrapper).toBeNull();
+    }));
+
+    it('should provide file and context variables within template', fakeAsync(() => {
+      createTestComponent(CustomItemTemplateFileUpload);
+      createAndAddFile('fake file', 'text/html');
+
+      const expectedContextClassName =
+        fixture.componentInstance.fileUploaderInstance;
+      const outputTemplateContextOutput = (fixture.componentInstance as any)
+        .outputTemplateContext;
+      expect(expectedContextClassName).toBe(outputTemplateContextOutput);
+
+      const expectedFirstFileClassName = fixture.componentInstance.queueList[0];
+      const outputFileOutput = (fixture.componentInstance as any).outputFile;
+      expect(expectedFirstFileClassName).toBe(outputFileOutput);
+    }));
   });
 
   describe('Reactive',  () => {
@@ -191,7 +248,7 @@ describe('NxFileUploaderComponent', () => {
 
       expect(testInstance.form.controls['documents'].value.length).toBe(2);
 
-      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete') as HTMLElement;
+      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button') as HTMLElement;
       deleteAction.click();
       fixture.detectChanges();
 
@@ -202,14 +259,6 @@ describe('NxFileUploaderComponent', () => {
   });
 
   describe('Validation', () => {
-
-    function createAndAddFile(name: string, type: string) {
-      let fakeFile = new File(['3555'], name, { type });
-      fakeFile = Object.defineProperty( fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
-      const fileList = { 0: fakeFile, length: 1, item: (index: number) => fakeFile };
-      fileUploaderInstance._onFileChange({ type: 'change', target: { files: fileList } });
-      fixture.detectChanges();
-    }
 
     it('should be required', () => {
       createTestComponent(ReactiveFileUpload);
@@ -244,7 +293,7 @@ describe('NxFileUploaderComponent', () => {
 
       expect(testInstance.form.controls['documents'].value.length).toBe(1);
 
-      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button.nx-file-uploader--file-action-delete') as HTMLElement;
+      const deleteAction = fixture.nativeElement.querySelector('.nx-file-uploader--file-row-actions button') as HTMLElement;
       deleteAction.click();
       fixture.detectChanges();
 
@@ -508,4 +557,70 @@ class ReactiveFileUpload extends FileUploaderTest {
 })
 class DynamicFileUpload extends FileUploaderTest {
   public queueList;
+}
+
+@Component({
+  template: `
+    <nx-file-uploader
+                      [(ngModel)]="queueList"
+                      [itemTemplate]="myItemTemplate"
+                      #documentUpload
+    >
+      <nx-label size="small">Please upload a file</nx-label>
+      <button
+              nxButton="primary"
+              type="button"
+              nxFileUploadButton>
+          <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
+          Add a file
+      </button>
+    </nx-file-uploader>
+
+    <ng-template
+                  #myItemTemplate
+                  let-templateContext="templateContext"
+                  let-file="file"
+    >
+      <!-- Both calls are used to provide the inner variables to the test class -->
+      {{ setOutputTemplateContext(templateContext) }}
+      {{ setOutputFile(file) }}
+
+      <section class="customWrapper">
+        <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
+
+        <nx-file-upload-size
+                              [size]="file?.size"
+                              [isUploading]="file.isUploading"
+                              [uploadingLabel]="templateContext.uploadingLabel"
+        ></nx-file-upload-size>
+
+        <div class="nx-file-uploader--file-row-actions">
+          <nx-file-upload-status
+                                  [isUploading]="file.isUploading"
+                                  [isUploaded]="file.isUploaded"
+                                  [uploadedLabel]="templateContext.uploadedLabel"
+          ></nx-file-upload-status>
+
+          <nx-file-upload-delete
+                                  [deleteLabel]="templateContext.deleteLabel"
+                                  [isUploading]="file.isUploading"
+                                  (click)="templateContext.removeFile(file)"
+          ></nx-file-upload-delete>
+        </div>
+      </section>
+    </ng-template>
+  `,
+})
+class CustomItemTemplateFileUpload extends FileUploaderTest {
+  public queueList;
+  outputTemplateContext: any;
+  outputFile: any;
+
+  setOutputTemplateContext(value: any) {
+    this.outputTemplateContext = value;
+  }
+
+  setOutputFile(value: any) {
+    this.outputFile = value;
+  }
 }

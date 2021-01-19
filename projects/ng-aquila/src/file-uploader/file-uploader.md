@@ -77,3 +77,9 @@ Besides the build-in uploading functionality you can also send an http request b
 `NxFileUploaderIntl` provides the text strings used inside the file uploader component (e.g. the uploading label). It can be customized by creating a class with the translated string values.
 
 <!-- example(file-uploader-intl) -->
+
+### Custom Item Template
+
+You can customize the template that is used to render each entry within the list of files to upload.
+
+<!-- example(file-uploader-custom-item) -->
