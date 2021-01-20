@@ -34,6 +34,7 @@
 
   &:disabled {
     @include var(color, plain-button-disabled-color);
+    cursor: not-allowed;
   }
 
   .nx-plain-button__content-wrapper {

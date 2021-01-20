@@ -302,15 +302,19 @@ $button-margin-bottom: nx-spacer(m);
 
 @media screen and (-ms-high-contrast: active) {
   :host {
-    background-color: buttonFace;
+    forced-color-adjust: none;
+    background-color: buttonFace!important;
+    border-color: buttonText!important;
+    color: buttonText!important;
 
     .nx-button__content-wrapper {
       -ms-high-contrast-adjust: none;
     }
-  }
 
-  :host:disabled {
-    color: GrayText;
-    border-color: GrayText;
+    &:disabled {
+      background-color: buttonFace!important;
+      border-color: GrayText!important;
+      color: GrayText!important;
+    }
   }
 }
