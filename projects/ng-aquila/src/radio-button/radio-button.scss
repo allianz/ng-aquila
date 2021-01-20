@@ -184,38 +184,70 @@ $radio-border-radius: 50%;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .nx-radio__label {
-    color: buttonText;
-  }
 
-  .nx-radio__circle {
-    border-color: buttonText;
-    background-color: buttonFace;
-  }
-
-  .nx-radio__input:checked + .nx-radio__label {
-    .nx-radio__circle {
-      border-color: highlight;
+  :host,
+  :host.nx-radio--negative {
+    .nx-radio__label {
+      color: buttonText;
     }
-
-    .nx-radio__dot {
-      background-color: highlight;
-    }
-  }
-
-  .nx-radio__input:disabled + .nx-radio__label,
-  :host.nx-radio--negative .nx-radio__input:disabled + .nx-radio__label {
-    color: GrayText;
-    opacity: 1;
 
     .nx-radio__circle {
-      border-color: GrayText;
+      forced-color-adjust: none;
+      border-color: buttonText;
+      background-color: buttonFace;
     }
-  }
 
-  .nx-radio__input:checked:disabled +.nx-radio__label {
-    .nx-radio__dot {
-      background-color: GrayText;
+    .nx-radio__input:checked + .nx-radio__label {
+      .nx-radio__circle {
+        border-color: highlight;
+      }
+
+      .nx-radio__dot {
+        background-color: highlight;
+      }
+    }
+
+    .nx-radio__input:disabled + .nx-radio__label {
+      color: GrayText;
+      opacity: 1;
+
+      .nx-radio__circle {
+        border-color: GrayText;
+      }
+    }
+
+    .nx-radio__input:checked:disabled +.nx-radio__label {
+      .nx-radio__dot {
+        background-color: GrayText;
+      }
+    }
+
+    // overwrite hover style
+    &:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
+      & + .nx-radio__label:hover .nx-radio__circle {
+        border-color: buttonText;
+      }
+
+      &:checked + .nx-radio__label:hover .nx-radio__circle {
+        border-color: highlight;
+      }
+    
+      &:checked + .nx-radio__label:hover .nx-radio__dot {
+        background-color: highlight;
+      }
+    }
+
+    // overwrite error styles
+    &.has-error {
+      .nx-radio__input + .nx-radio__label {
+        .nx-radio__circle {
+          border-color: buttonText;
+        }
+    
+        .nx-radio__dot {
+          background-color: buttonText;
+        }
+      }
     }
   }
 }
