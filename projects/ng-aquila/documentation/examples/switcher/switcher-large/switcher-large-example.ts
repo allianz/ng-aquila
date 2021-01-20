@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-/** @title Swicher Large */
+/** @title Switcher Large */
 @Component({
   selector: 'switcher-large-example',
   templateUrl: './switcher-large-example.html',
