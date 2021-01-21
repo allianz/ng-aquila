@@ -7,23 +7,22 @@ assignees: ''
 
 ---
 
-# Title <component name>
+## Title <component name>
 
 <!-- Fill in the parts that are relevant, delete those that aren't. Not all sections are going to apply to every component. -->
 
-## 🎖 Goals
+### 🎯 Goals
 
 <!-- What are we building and why? -->
 
-## 📖 References
+### 📖 References
 
-<!-- relevant links, everything that can help further -->
+<!-- Relevant links, everything that can help further -->
 
-## 👌 Requirements
+### 👌 Requirements
 
-<!-- What behaviour the component MUST have -->
+<!-- What behavior the component MUST have -->
 
-
-### Details
+### ℹ️ Details
 
 <!-- Any information about the later implementation. -->
