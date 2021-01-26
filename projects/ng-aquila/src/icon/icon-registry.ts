@@ -88,20 +88,6 @@ export class NxIconRegistry implements OnDestroy {
     this._icons.set(iconName, new NxFontIcon(alias, fontDefinition));
   }
 
-  /**
-   * Returns an Observable that produces the icon (as an `<svg>` DOM element)
-   * @param iconName
-   *
-   * @deprecated use `getIcon` instead
-   */
-  getSvgIcon(iconName: string): Observable<SVGElement> {
-    const icon = this.getSvgIcon(iconName);
-    if (icon instanceof NxSvgIcon) {
-      return icon.getContent().pipe(take(1), map(svg => cloneSvg(svg)));
-    }
-    throw Error(`Icon with name ${iconName} is not a svg icon`);
-  }
-
   /** Returns the icon from the registry or undefined if not found. */
   getIcon(iconName: string): NxSvgIcon | NxFontIcon {
     const icon = this._icons.get(iconName);

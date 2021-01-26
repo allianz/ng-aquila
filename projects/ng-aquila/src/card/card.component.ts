@@ -8,129 +8,21 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   selector: 'nx-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'nx-card',
-    '[class.is-selectable]': 'selectable',
-    '[class.is-selected]': 'selected',
-    '[class.is-disabled]': 'disabled',
-    '[attr.aria-disabled]': 'disabled',
-    '(click)': '_toggleSelected()',
-    '(keydown.enter)': '_toggleSelected()',
-    '[attr.tabindex]': '_getTabindex()'
+    'class': 'nx-card'
   }
 })
 export class NxCardComponent implements OnDestroy {
-  _tabindex: string;
-
-  /**
-   * Whether this card is selectable or not.
-   *
-   * The selectable property of the card is deprecated.
-   * Please use the selectable card component instead.
-   *
-   * @deprecated
-   * @deletion-target 11.0.0
-   */
-  @Input()
-  set selectable(value: boolean) {
-    this._selectable = coerceBooleanProperty(value);
-    this._changeDetectorRef.markForCheck();
-  }
-
-  get selectable(): boolean {
-    return this._selectable;
-  }
-
-  private _selectable: boolean;
-
-  /**
-   * Whether this card is selected or not.
-   *
-   * The selected property of the card is deprecated.
-   * Please use the selectable card component instead.
-   *
-   * @deprecated
-   * @deletion-target 11.0.0
-  */
-  @Input()
-  set selected(value: boolean) {
-    this._selected = coerceBooleanProperty(value);
-    this._changeDetectorRef.markForCheck();
-  }
-
-  get selected(): boolean {
-    return this._selected;
-  }
-
-  private _selected: boolean;
-
-  /**
-   * Whether a selectable card is disabled or not.
-   *
-   * The disabled property of the card will be deprecated,
-   * as its selectable properties are deprecated as well.
-   * Please use the selectable card component instead.
-   *
-   * @deprecated
-   * @deletion-target 11.0.0
-  */
-  @Input()
-  set disabled(value: boolean) {
-    this._disabled = coerceBooleanProperty(value);
-    this._changeDetectorRef.markForCheck();
-  }
-
-  get disabled(): boolean {
-    return this._disabled;
-  }
-
-  private _disabled: boolean = false;
-
-  /**
-   * Event emitted when the selected value has changed.
-   *
-   * This output  property of the card is deprecated,
-   * as its selectable properties are deprecated as well.
-   * Please use the selectable card component instead.
-   *
-   * @deprecated
-   * @deletion-target 11.0.0
-  */
-  @Output() selectedChange = new EventEmitter<boolean>();
-
   constructor(
-      private _changeDetectorRef: ChangeDetectorRef,
-      @Attribute('tabindex') tabindex: string,
       private _elementRef: ElementRef,
       private _focusMonitor: FocusMonitor
   ) {
-    this._tabindex = tabindex;
+    // we still listen for focus in case the user set a tabindex on the element
+    // the focus monitor only adds the cdk-keyboard-focus class if the element is focusable
+    // meaning it needs a tabindex in this case
     this._focusMonitor.monitor(this._elementRef);
   }
 
   ngOnDestroy() {
     this._focusMonitor.stopMonitoring(this._elementRef);
   }
-
-  _toggleSelected(): void {
-    if (this.selectable && !this.disabled) {
-      this.selected = !this.selected;
-      this.selectedChange.emit(this.selected);
-    }
-  }
-
-  _getTabindex(): string {
-    if (this.disabled) {
-      return '-1';
-    }
-
-    if (this.selectable) {
-      return this._tabindex || '0';
-    }
-
-    return this._tabindex || '';
-  }
-
-  static ngAcceptInputType_selectable: BooleanInput;
-  static ngAcceptInputType_selected: BooleanInput;
-  static ngAcceptInputType_disabled: BooleanInput;
 }

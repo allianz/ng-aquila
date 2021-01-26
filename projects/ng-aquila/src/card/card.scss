@@ -15,48 +15,8 @@
   &:hover, &:focus {
     outline: none;
   }
-
-  &.is-selectable {
-    cursor: pointer;
-
-    &:hover {
-      @include var(background, card-background-hover-color);
-    }
-  }
-
-  &.is-selected {
-    box-shadow: nx-box-shadow(l);
-    @include var(background, card-background-selected-color);
-  }
-
-  &.is-disabled {
-    cursor: not-allowed;
-    opacity: 0.4;
-
-    &:hover {
-      @include var(background, card-background-color);
-    }
-  }
 }
 
 :host.cdk-keyboard-focused {
   @include focus-style;
-}
-
-@media screen and (-ms-high-contrast: active) {
-  :host.is-selectable {
-    border-color: buttonText;
-  }
-
-  :host.is-selected {
-    border-width: nx-border-size(l);
-    padding: nx-spacer(m) - nx-border-size(l);
-    border-color: highlight;
-  }
-
-  :host.is-disabled {
-    opacity: 1;
-    border-color: GrayText;
-    color: GrayText;
-  }
 }

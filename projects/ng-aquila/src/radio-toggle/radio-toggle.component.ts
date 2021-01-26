@@ -194,14 +194,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
 
   /**
    * @docs-private
-   * @deprecated Do not use the setter
-   * @deletion-target 11.0.0
    */
-  set selection(selection: any) {
-    this._selection = selection;
-    this.onChangeCallback(selection);
-  }
-
   get selection(): any {
     return this._selection;
   }

@@ -255,17 +255,6 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
   private _localeSubscription = Subscription.EMPTY;
 
-  /**
-   * @deprecated
-   * @deletion-target 10.0.0 Calling `format` manually is not needed anymore and can be removed.
-   *
-   * This will force the current value to be parsed again by the given DateAdapter.
-   * That's a convenience method so you can trigger it manually.
-   */
-  public format() {
-    this.value = this.value;
-  }
-
   constructor(
       private _elementRef: ElementRef,
       @Optional() public _dateAdapter: NxDateAdapter<D>,
