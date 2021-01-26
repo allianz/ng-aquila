@@ -52,11 +52,13 @@ $border-size: nx-border-size(xs);
     }
 
     .nx-margin-x-#{$key} {
-      margin: 0 $value !important;
+      margin-right: $value !important;
+      margin-left: $value !important;
     }
 
     .nx-margin-y-#{$key} {
-      margin: $value 0 !important;
+      margin-top: $value !important;
+      margin-bottom: $value !important;
     }
 
     @each $position in $positions {
