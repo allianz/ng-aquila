@@ -1,7 +1,5 @@
 @import "../shared-styles/index";
 
-$button-margin-bottom: nx-spacer(m);
-
 @function button-padding($padding) {
   @return calc(#{$padding} - #{v(button-border-width)});
 }
@@ -48,7 +46,6 @@ $button-margin-bottom: nx-spacer(m);
   border-style: solid;
   border-color: transparent;
   cursor: pointer;
-  margin: 0 0 $button-margin-bottom;
   padding: button-padding(nx-spacer(xs)) button-padding(nx-spacer(2m));
   transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
   user-select: none;

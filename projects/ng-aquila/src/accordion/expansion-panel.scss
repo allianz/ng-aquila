@@ -35,7 +35,9 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 }
 
 :host(.nx-expansion-panel--regular) {
-  @include var(margin-top, accordion-regular-header-top-margin);
+  &:not(:first-child) {
+    @include var(margin-top, accordion-regular-header-top-margin);
+  }
 
   ::ng-deep .nx-expansion-panel__header-content {
     box-shadow: inset 0 1px 0 0 v(accordion-regular-border-color);
@@ -47,7 +49,9 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
   }
 
   @include media-breakpoint-down(small) {
-    margin-top: 0;
+    &:not(:first-child) {
+      margin-top: 0;
+    }
 
     ::ng-deep .nx-expansion-panel__header-content {
       box-shadow: inset 0 1px 0 0 v(accordion-regular-mobile-border-color);

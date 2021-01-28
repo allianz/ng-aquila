@@ -14,14 +14,7 @@
 .nx-pagination__container {
   display: flex;
   @include type-style(pagination);
-  margin: nx-spacer(2xs) 0;
   padding: 0;
-}
-
-@include respond-to('medium') {
-  .nx-pagination__container {
-    margin: nx-spacer(2xs) 0 nx-spacer(3m) 0;
-  }
 }
 
 .nx-pagination__item {
@@ -73,14 +66,7 @@ nx-icon.nx-pagination__arrow {
 .nx-pagination-compact {
   display: flex;
   @include type-style(pagination);
-  margin: nx-spacer(s) 0;
   padding: 0;
-}
-
-@include respond-to('medium') {
-  .nx-pagination-compact {
-    margin: nx-spacer(3m) 0;
-  }
 }
 
 .nx-pagination-compact__display {

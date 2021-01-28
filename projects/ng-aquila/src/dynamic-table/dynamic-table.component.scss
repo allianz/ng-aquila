@@ -2,7 +2,6 @@
 
 $padding-vertical: nx-spacer(m);
 $padding-sides: nx-spacer(s);
-$table-margin: nx-spacer(2m);
 
 $border-size-large: nx-border-size(m);
 $border-size-small: nx-border-size(xs);
@@ -18,10 +17,6 @@ $border-size-small: nx-border-size(xs);
   :host-context([dir="rtl"]) & {
     text-align: right;
   }
-}
-
-.nx-table__container {
-  margin: $table-margin 0;
 }
 
 .nx-table__scroll {

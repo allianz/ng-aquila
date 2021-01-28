@@ -18,7 +18,6 @@
     padding: nx-spacer(s);
     cursor: pointer;
     width: 100%;
-    margin-bottom: nx-spacer(2xs);
     @include var(border-radius, selectable-card-border-radius);
     @include var(background, selectable-card-background-color);
   }
@@ -73,6 +72,14 @@
       right: auto;
       left: nx-spacer(s);
     }
+  }
+
+  ::ng-deep nx-error:not(.nx-error--message) {
+    margin-top: 8px;
+  }
+
+  ::ng-deep nx-error.nx-error--message {
+    margin-top: 12px;
   }
 }
 

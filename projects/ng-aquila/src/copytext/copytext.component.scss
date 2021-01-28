@@ -1,7 +1,7 @@
 @import '../shared-styles/index';
 
 :host {
-  margin: 0 0 nx-spacer(2m);
+  margin: 0;
   @include type-style(paragraph-03);
 }
 

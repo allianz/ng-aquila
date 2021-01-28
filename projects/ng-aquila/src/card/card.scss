@@ -8,7 +8,6 @@
   @include var(border-radius, card-border-radius);
   box-shadow: none;
   display: inline-block;
-  margin-bottom: nx-spacer(m);
   padding: nx-spacer(m) - nx-border-size(xs);
   transition: background-color .2s ease, box-shadow .2s ease;
 

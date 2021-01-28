@@ -5,7 +5,6 @@ $checkbox-size: nx-spacer(m);
 :host {
   display: block;
   position: relative;
-  margin-bottom: nx-spacer(s);
 
   &.has-error {
     .nx-checkbox__input:checked + .nx-checkbox__label .nx-checkbox__control {

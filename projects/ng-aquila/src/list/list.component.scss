@@ -1,13 +1,11 @@
 @import "../shared-styles/index";
 
 $dot-size: nx-spacer(2xs);
-$list-margin-bottom: nx-spacer(2m);
 $dot-border-radius: 50%;
 
 :host {
   @include var(color, list-text-color);
   list-style: none;
-  margin-bottom: $list-margin-bottom;
   padding: 0;
   counter-reset: list;
 }
@@ -65,7 +63,6 @@ $dot-border-radius: 50%;
 
 // our .c-list__item's
 :host ::ng-deep li {
-  margin-bottom: nx-spacer(s);
   padding-left: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
   position: relative;
 
@@ -73,6 +70,10 @@ $dot-border-radius: 50%;
     padding-right: calc(#{v(list-icon-size)} + #{nx-spacer(xs)});
     padding-left: initial;
   }
+}
+
+:host ::ng-deep li:not(:last-child) {
+  margin-bottom: nx-spacer(s);
 }
 
 // apply the default dot for unordered (ul) lists, always exclude items with icons

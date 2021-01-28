@@ -176,7 +176,6 @@ $border-size: nx-border-size(xs);
   position: relative;
   border: $border-size solid;
   padding: message-padding(nx-spacer(m));
-  margin: nx-spacer(xs) 0;
 
   @include media-breakpoint-response(mobile) {
     padding: message-padding(nx-spacer(2m));

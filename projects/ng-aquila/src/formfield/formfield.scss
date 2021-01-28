@@ -8,6 +8,10 @@ $outline-padding: 7px;
   display: block;
   //default theme is white and gets overwritten depending of the focus, error state or given modifiers
   @include var(color, text-01);
+
+  nx-message {
+    margin-top: nx-spacer(xs);
+  }
 }
 
 .nx-formfield__wrapper {

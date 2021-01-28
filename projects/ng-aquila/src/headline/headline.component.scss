@@ -22,32 +22,26 @@
 
 :host(.nx-heading--page) {
   @include headline-typography('heading-01');
-  margin-bottom: nx-spacer(3m);
 }
 
 :host(.nx-heading--section) {
   @include headline-typography('heading-02');
-  margin-bottom: nx-spacer(4m);
 }
 
 :host(.nx-heading--subsection-large) {
   @include headline-typography('heading-03');
-  margin-bottom: nx-spacer(2m);
 }
 
 :host(.nx-heading--subsection-medium) {
   @include headline-typography('heading-04');
-  margin-bottom: nx-spacer(3m);
 }
 
 :host(.nx-heading--subsection-small) {
   @include headline-typography('heading-05');
-  margin-bottom: nx-spacer(2m);
 }
 
 :host(.nx-heading--subsection-xsmall) {
   @include headline-typography('heading-06');
-  margin-bottom: nx-spacer(m);
 }
 
 :host(.nx-heading--negative) {
@@ -62,7 +56,6 @@
   @include headline-typography('heading-01');
   font-weight: nx-font-weight(bold);
   text-transform: uppercase;
-  margin-bottom: nx-spacer(2xs);
 
   @include media-breakpoint-down(small) {
     font-weight: nx-font-weight(bold);

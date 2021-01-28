@@ -36,7 +36,7 @@ opensourceThemes.forEach(theme => {
 
 console.log("========================");
 console.log("  Building utility css");
-['utilities', 'normalize'].forEach(file => {
+['utilities', 'normalize', 'compatibility'].forEach(file => {
     execSync(`node-sass projects/ng-aquila/src/shared-styles/${file}.scss -o dist/ng-aquila/css`, {stdio: 'inherit'});
 })
 

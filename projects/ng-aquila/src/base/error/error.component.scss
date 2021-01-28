@@ -30,11 +30,3 @@
     }
   }
 }
-
-:host.nx-error--message {
-  margin: nx-spacer(xs) 0;
-
-  nx-message {
-    margin: 0;
-  }
-}

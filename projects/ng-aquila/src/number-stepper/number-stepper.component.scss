@@ -20,6 +20,11 @@ $margin-default: nx-spacer(s);
         box-shadow: none;
     }
   }
+
+  label:not(:empty) + .nx-stepper__input-container,
+  .nx-stepper__label:not(:empty) + .nx-stepper__input-container {
+    margin-top: nx-spacer(xs);
+  }
 }
 
 :host input {
@@ -29,7 +34,6 @@ $margin-default: nx-spacer(s);
 .nx-stepper__input-container {
   align-items: flex-end;
   display: flex;
-  margin-top: nx-spacer(xs);
 }
 
 .nx-stepper__label {
@@ -38,12 +42,12 @@ $margin-default: nx-spacer(s);
 }
 
 .nx-stepper__control {
-    width: nx-spacer(2m);
-    height: nx-spacer(2m);
-    min-height: nx-spacer(2m);
-    font-size: nx-font-size(s);
-    margin: 0;
-    padding: 0;
+  width: nx-spacer(2m);
+  height: nx-spacer(2m);
+  min-height: nx-spacer(2m);
+  font-size: nx-font-size(s);
+  margin: 0;
+  padding: 0;
 }
 
 .nx-stepper__input {

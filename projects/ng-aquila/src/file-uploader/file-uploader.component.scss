@@ -2,6 +2,10 @@
 
 :host {
   display: block;
+
+  ::ng-deep nx-error.nx-error--message {
+    margin: nx-spacer(xs) 0;
+  }
 }
 
 .nx-file-uploader--file-row {

@@ -11,6 +11,7 @@ $border-size: nx-border-size(xs);
   @include var(box-shadow, message-box-shadow);
   max-width: 352px;
   padding-left: message-padding(nx-spacer(xl));
+  margin: nx-spacer(xs) 0;
 
   @include media-breakpoint-response(mobile) {
     // overwrite the inline message styles
