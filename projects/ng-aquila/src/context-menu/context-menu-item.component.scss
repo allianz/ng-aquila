@@ -51,7 +51,7 @@
     border: 0;
   }
 
-  ::ng-deep > nx-icon {
+  ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
     margin-right: nx-spacer(2xs);
     @include var(font-size, context-menu-item-icon-size);
 
@@ -60,24 +60,24 @@
       margin-left: nx-spacer(2xs);
     }
   }
-}
 
-:host .nx-context-menu-item__expand {
-  @include var(font-size, context-menu-item-expand-icon-size);
-  padding-left: nx-spacer(2xs);
-  margin-left: auto;
-  margin-right: 0;
-  width: 1em;
-
-  [dir="rtl"] & {
-    margin-right: auto;
-    margin-left: 0;
-    transform: rotateZ(180deg);
+  .nx-context-menu-item__expand {
+    @include var(font-size, context-menu-item-expand-icon-size);
+    padding-left: nx-spacer(2xs);
+    margin-left: auto;
+    margin-right: 0;
+    width: 1em;
+  
+    [dir="rtl"] & {
+      margin-right: auto;
+      margin-left: 0;
+      transform: rotateZ(180deg);
+    }
   }
-}
 
-:host.cdk-keyboard-focused {
-  border-radius: 2 * nx-border-radius(s);
-  outline: 0;
-  @include focus-style-inset;
+  &.cdk-keyboard-focused {
+    border-radius: 2 * nx-border-radius(s);
+    outline: 0;
+    @include focus-style-inset;
+  }
 }
