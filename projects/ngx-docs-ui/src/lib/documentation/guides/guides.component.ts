@@ -25,7 +25,8 @@ export class NxvGuidesComponent implements OnDestroy {
     this.guideSubscription = manifestService.manifest
       .pipe(map((manifest: Manifest) => manifest.guides)).subscribe(guides => {
         this.availableGuides = guides;
-        if (guides.length) {
+        const hasChildRoute = this.route.snapshot.firstChild;
+        if (guides.length && !hasChildRoute) {
           this.router.navigate([guides[0].id], { relativeTo: this.route });
         }
       });
