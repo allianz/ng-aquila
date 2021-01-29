@@ -1153,14 +1153,21 @@ $nx-theme: (
 
   slider-negative-background-color: negative-dimmed,
 
-  small-stage-background-color: ui-03,
-
   small-stage-image-min-height: 64px,
   small-stage-image-min-width: 116px,
+  // HINT: base on viewport width, so the image gets smaller the narrower the viewport.
+  // Since it's only for mobile screens, maximum it evaluates to is 703px * 15% = 105.45px
+  small-stage-narrow-screen-image-height: 15vw,
 
-  small-stage-image-container-padding-top: 40px,
-  small-stage-image-container-padding-start: 40px,
+  small-stage-content-padding: 64px 0 64px,
+  small-stage-content-padding-narrow-screen: 40px 0 24px,
+  small-stage-header-padding: 16px 0 24px,
+  small-stage-image-container-padding-top: 72px,
+  small-stage-image-container-padding-to-content: 40px,
   small-stage-image-container-offset-end: 25%,
+
+  small-stage-with-header-content-padding: 0 0 64px,
+  small-stage-with-header-image-container-padding-top: 32px,
 
   rating-icon-color: text-01,
   rating-icon-size: 40px,

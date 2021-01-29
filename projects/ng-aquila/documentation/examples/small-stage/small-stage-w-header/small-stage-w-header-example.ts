@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Small stage default example
+* @title Small stage with header example
 */
 @Component({
-  selector: 'small-stage-default-example',
-  templateUrl: './small-stage-default-example.html',
-  styleUrls: ['./small-stage-default-example.css']
+  selector: 'small-stage-w-header-example',
+  templateUrl: './small-stage-w-header-example.html',
+  styleUrls: ['./small-stage-w-header-example.css'],
 })
-export class SmallStageDefaultExampleComponent {
+export class SmallStageWithHeaderExampleComponent {
   items = [
     'Home',
     'Insurance',

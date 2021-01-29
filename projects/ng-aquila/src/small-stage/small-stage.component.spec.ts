@@ -32,7 +32,11 @@ describe('NxSmallStageComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         BasicSmallStage,
-        DynamicSmallStage,
+        StartImageSmallStage,
+        EndImageSmallStage,
+        TwoImageSmallStage,
+        SmallStageWithHeader,
+        ThreeImageSmallStage,
       ],
       imports: [
         NxSmallStageModule,
@@ -45,11 +49,80 @@ describe('NxSmallStageComponent', () => {
     expect(smallStageInstance).toBeTruthy();
   }));
 
-  it('should change class when input changes', () => {
-    createTestComponent(DynamicSmallStage);
-    (testInstance as DynamicSmallStage).contentNarrow = true;
+  describe('start image', () => {
+    it('does not render image container if no directive present', () => {
+      createTestComponent(EndImageSmallStage);
+      fixture.detectChanges();
+      expect(smallStageDebugElement.nativeElement.querySelector('.image-container--start')).toBeNull();
+    });
+    it('properly pics src for image', () => {
+      createTestComponent(StartImageSmallStage);
+      fixture.detectChanges();
+      const style = smallStageDebugElement.componentInstance._startImageInlineStyle;
+      expect(style).toBe('backgroundImage: url(foo)');
+    });
+  });
+
+  describe('end image', () => {
+    it('does not render image container if no directive present', () => {
+      createTestComponent(StartImageSmallStage);
+      fixture.detectChanges();
+      expect(smallStageDebugElement.nativeElement.querySelector('.image-container--end')).toBeNull();
+    });
+    it('properly pics src for image', () => {
+      createTestComponent(EndImageSmallStage);
+      fixture.detectChanges();
+      const style = smallStageDebugElement.componentInstance._endImageInlineStyle;
+      expect(style).toBe('backgroundImage: url(bar)');
+    });
+  });
+
+  describe('narrow image', () => {
+    it('properly pics src for image', () => {
+      createTestComponent(ThreeImageSmallStage);
+      fixture.detectChanges();
+      const style = smallStageDebugElement.componentInstance._narrowScreenImageInlineStyle;
+      expect(style).toBe('backgroundImage: url(baz)');
+    });
+    it('falls back to end image src if narrow image directive missing', () => {
+      createTestComponent(TwoImageSmallStage);
+      fixture.detectChanges();
+      const style = smallStageDebugElement.componentInstance._narrowScreenImageInlineStyle;
+      expect(style).toBe('backgroundImage: url(bar)');
+    });
+    it('sets inner position class properly if present on directive', () => {
+      createTestComponent(ThreeImageSmallStage);
+      fixture.detectChanges();
+      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement.querySelector('.image-container-narrow-screen__inner').classList;
+      expect(narrowScreenImageInnerClassList.contains('image-container-narrow-screen__inner--center')).toBeTrue();
+    });
+    it('uses default end positioning when directive not present', ()=> {
+      createTestComponent(TwoImageSmallStage);
+      fixture.detectChanges();
+      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement.querySelector('.image-container-narrow-screen__inner').classList;
+      expect(narrowScreenImageInnerClassList.contains('image-container-narrow-screen__inner--end')).toBeTrue();
+    });
+  });
+
+  it('sets respective class when only start image present', () => {
+    createTestComponent(StartImageSmallStage);
     fixture.detectChanges();
-    expect(smallStageDebugElement.nativeElement.classList.contains('nx-small-stage--content-narrow')).toBe(true);
+    expect(smallStageDebugElement.nativeElement.classList.contains('nx-small-stage--only-start-image')).toBe(true);
+  });
+  it('sets respective class when only end image present', () => {
+    createTestComponent(EndImageSmallStage);
+    fixture.detectChanges();
+    expect(smallStageDebugElement.nativeElement.classList.contains('nx-small-stage--only-end-image')).toBe(true);
+  });
+  it('sets respective class when both images present', () => {
+    createTestComponent(TwoImageSmallStage);
+    fixture.detectChanges();
+    expect(smallStageDebugElement.nativeElement.classList.contains('nx-small-stage--two-images')).toBe(true);
+  });
+  it('sets respective class when header present', () => {
+    createTestComponent(SmallStageWithHeader);
+    fixture.detectChanges();
+    expect(smallStageDebugElement.nativeElement.classList.contains('nx-small-stage--w-header')).toBe(true);
   });
 
   describe('a11y', () => {
@@ -68,7 +141,7 @@ describe('NxSmallStageComponent', () => {
 @Component({
   template: `
     <nx-small-stage>
-      <p>text</p>
+      <nx-small-stage-content>text</nx-small-stage-content>
     </nx-small-stage>
   `
 })
@@ -77,11 +150,55 @@ class BasicSmallStage extends SmallStageTest {
 
 @Component({
   template: `
-    <nx-small-stage [contentNarrow]="contentNarrow">
-      <p>text</p>
+    <nx-small-stage>
+      <nx-small-stage-start-image src="foo"></nx-small-stage-start-image>
+      <nx-small-stage-content>text</nx-small-stage-content>
     </nx-small-stage>
   `
 })
-class DynamicSmallStage extends SmallStageTest {
-  contentNarrow = false;
-}
+class StartImageSmallStage extends SmallStageTest {}
+
+@Component({
+  template: `
+    <nx-small-stage>
+      <nx-small-stage-content>text</nx-small-stage-content>
+      <nx-small-stage-end-image src="bar"></nx-small-stage-end-image>
+    </nx-small-stage>
+  `
+})
+class EndImageSmallStage extends SmallStageTest {}
+
+@Component({
+  template: `
+    <nx-small-stage>
+      <nx-small-stage-start-image src="foo"></nx-small-stage-start-image>
+      <nx-small-stage-content>text</nx-small-stage-content>
+      <nx-small-stage-end-image src="bar"></nx-small-stage-end-image>
+    </nx-small-stage>
+  `
+})
+class TwoImageSmallStage extends SmallStageTest {}
+
+@Component({
+  template: `
+    <nx-small-stage>
+      <nx-small-stage-start-image src="foo"></nx-small-stage-start-image>
+      <nx-small-stage-content>text</nx-small-stage-content>
+      <nx-small-stage-end-image src="bar"></nx-small-stage-end-image>
+      <nx-small-stage-narrow-screen-image position='center' src="baz"></nx-small-stage-narrow-screen-image>
+    </nx-small-stage>
+  `
+})
+class ThreeImageSmallStage extends SmallStageTest {}
+
+@Component({
+  template: `
+    <nx-small-stage>
+      <nx-small-stage-header>Header</nx-small-stage-header>
+      <nx-small-stage-start-image src="foo"></nx-small-stage-start-image>
+      <nx-small-stage-content>text</nx-small-stage-content>
+      <nx-small-stage-end-image src="bar"></nx-small-stage-end-image>
+    </nx-small-stage>
+  `
+})
+class SmallStageWithHeader extends SmallStageTest {}

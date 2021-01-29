@@ -1,6 +1,15 @@
-<div class="content-container">
-  <ng-content></ng-content>
+<div class="header" *ngIf="_header">
+  <ng-content select="nx-small-stage-header"></ng-content>
 </div>
-<div class="image-container">
-  <div class="image-container__inner" [style]="_imageInlineStyle"></div>
+<div class="image-container image-container--start" *ngIf="_startImage">
+  <div class="image-container__inner" [style]="_startImageInlineStyle"></div>
+</div>
+<div class="content-container">
+  <ng-content select="nx-small-stage-content"></ng-content>
+</div>
+<div class="image-container image-container--end" [class.image-container--w-end-offset]="_endImage?.offsetEnd" *ngIf="_endImage">
+  <div class="image-container__inner" [style]="_endImageInlineStyle"></div>
+</div>
+<div class="image-container-narrow-screen">
+  <div [ngClass]="narrowScreenImageInnerClassNames" [style]="_narrowScreenImageInlineStyle"></div>
 </div>
