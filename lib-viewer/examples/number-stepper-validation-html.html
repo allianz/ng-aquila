@@ -2,19 +2,22 @@
   #<span class="hljs-attr">stepperValidModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span> <span class="hljs-attr">nxStep</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">inputAriaLabel</span>=<span class="hljs-string">&quot;Number of travellers&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-number-stepper</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-message</span> <span class="hljs-attr">nxContext</span>=<span class="hljs-string">&quot;info&quot;</span>
-  *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!stepperValidModel.errors&quot;</span>&gt;</span>
+  *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!stepperValidModel.errors&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
   This is a hint. This message will disappear once you get an error
   from parsing or when the input is missing altogether.
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-message</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
   *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;stepperValidModel.errors &amp;&amp;
-  stepperValidModel.errors.nxNumberStepperStepError&quot;</span>&gt;</span>
+  stepperValidModel.errors.nxNumberStepperStepError&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
   That&#x27;s not a valid step
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
   *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;stepperValidModel.errors &amp;&amp;
-  stepperValidModel.errors.nxNumberStepperFormatError&quot;</span>&gt;</span>
+  stepperValidModel.errors.nxNumberStepperFormatError&quot;</span>
+  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-xs&quot;</span>&gt;</span>
   That&#x27;s not a valid number
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>

@@ -6,6 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
 
 import { NgModule } from '@angular/core';
 import { FormfieldAppearanceExampleComponent } from './formfield-appearance/formfield-appearance-example';
@@ -61,6 +62,7 @@ const EXAMPLES = [
     NxDatefieldModule,
     NxInputModule,
     NxNativeDateModule,
+    NxMessageModule,
     ExamplesSharedModule
   ],
   declarations: [EXAMPLES],

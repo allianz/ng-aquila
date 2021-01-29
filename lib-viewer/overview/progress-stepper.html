@@ -1,12 +1,3 @@
-<div class="docs-deprecation-warning">
-  <h3>Deprecation warning</h3>
-  The attribute <code>title</code> on <code>nx-single-stepper</code>, <code>nx-multi-stepper</code> and <code>nx-progress-stepper</code> is deprecated and will be dropped in v11.0.0. Please use <code>nx-label</code> instead as shown in the <a href="./documentation/progress-stepper/overview#stepper-title">Progress Indicator label example</a> and in the code snippet below.
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-single-stepper</span> <span class="hljs-attr">currentStepLabel</span>=<span class="hljs-string">&quot;Step&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span>&gt;</span>My Title<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-  ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">nx-single-stepper</span>&gt;</span>
-</code></pre>
-</div>
 <p class="docs-markdown--p">An indicator is a wizard-like workflow that divides content into logical steps. You provide the content and distribute it in different steps. The indicator will ensure to show only the current content and inform the user about the overall progress.</p>
 <p class="docs-markdown--p">You can choose between &quot;Single Indicator&quot;, &quot;Multi Indicator&quot; and &quot;Progress Indicator&quot;. Those indicators can show different details of the overall progress.</p>
 <p class="docs-markdown--p">Ensure that you import the required modules. The progress indicator relies on the <a href="https://material.angular.io/cdk/stepper/overview">Angular CDK stepper </a> implementation so you have to fulfill the peer dependency on the CDK to use the indicator.</p>

@@ -1,0 +1,79 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-file-uploader</span>
+  #<span class="hljs-attr">documentUpload</span>
+  #<span class="hljs-attr">ngModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
+  <span class="hljs-attr">multiple</span>
+  [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;myFiles&quot;</span>
+  [<span class="hljs-attr">itemTemplate</span>]=<span class="hljs-string">&quot;myItemTemplate&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-3xs&quot;</span>
+    &gt;</span>Please upload a file&lt;/nx-label
+  &gt;
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small-medium&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+    <span class="hljs-attr">nxFileUploadButton</span>
+  &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    Add File
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showUploadError&quot;</span>&gt;</span> An error occured while uploading. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;ngModel.control.hasError(&#x27;required&#x27;)&quot;</span>&gt;</span>Required!<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+  <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+  <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+  [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;!documentUpload.value?.length&quot;</span>
+  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;upload(&#x27;file-upload&#x27;)&quot;</span>
+&gt;</span>
+  Upload files
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span>
+  #<span class="hljs-attr">myItemTemplate</span>
+  <span class="hljs-attr">let-templateContext</span>=<span class="hljs-string">&quot;templateContext&quot;</span>
+  <span class="hljs-attr">let-file</span>=<span class="hljs-string">&quot;file&quot;</span>
+&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-upload-name</span> [<span class="hljs-attr">name</span>]=<span class="hljs-string">&quot;file?.name&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-upload-name</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-upload-size</span>
+    [<span class="hljs-attr">size</span>]=<span class="hljs-string">&quot;file?.size&quot;</span>
+    [<span class="hljs-attr">isUploading</span>]=<span class="hljs-string">&quot;file.isUploading&quot;</span>
+    [<span class="hljs-attr">uploadingLabel</span>]=<span class="hljs-string">&quot;templateContext.uploadingLabel&quot;</span>
+  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-upload-size</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-file-uploader--file-row-actions&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-upload-status</span>
+      [<span class="hljs-attr">isUploading</span>]=<span class="hljs-string">&quot;file.isUploading&quot;</span>
+      [<span class="hljs-attr">isUploaded</span>]=<span class="hljs-string">&quot;file.isUploaded&quot;</span>
+      [<span class="hljs-attr">uploadedLabel</span>]=<span class="hljs-string">&quot;templateContext.uploadedLabel&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-upload-status</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-upload-delete</span>
+      [<span class="hljs-attr">deleteLabel</span>]=<span class="hljs-string">&quot;templateContext.deleteLabel&quot;</span>
+      [<span class="hljs-attr">isUploading</span>]=<span class="hljs-string">&quot;file.isUploading&quot;</span>
+      (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;templateContext.removeFile(file)&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-upload-delete</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>
+      [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;file.isUploading || file.isUploaded&quot;</span>
+      [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;file.formData&quot;</span>
+      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pictureRights&quot;</span>
+    &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+        &gt;</span>Do you own all rights to this picture?&lt;/nx-label
+      &gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;horizontal-buttons&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-s nx-margin-bottom-m&quot;</span>
+          &gt;</span>No&lt;/nx-radio
+        &gt;
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'small-stage-content-variation-example',
   templateUrl: './small-stage-content-variation-example.html',
-  styleUrls: ['./small-stage-content-variation-example.css']
+  styleUrls: ['./small-stage-content-variation-example.css'],
 })
 export class SmallStageContentVariationExampleComponent {
 }

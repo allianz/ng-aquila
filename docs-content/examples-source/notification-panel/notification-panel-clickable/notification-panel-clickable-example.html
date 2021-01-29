@@ -1,4 +1,4 @@
-<button nxIconButton="small tertiary" class="nx-margin-0"
+<button nxIconButton="small tertiary"
   [nxNotificationPanelTriggerFor]="panel1" title="Notifications">
   <nx-icon name="bell-o"></nx-icon>
 </button>
@@ -6,8 +6,8 @@
 <ng-template #panel1>
   <nx-notification-panel>
     <nx-notification-header>
-      <h3 nxCopytext="large" class="nx-margin-0 nx-font-weight-semibold">Unread
-      </h3><button nxPlainButton="small" type="button">Mark all as read <nx-icon
+      <h3 nxCopytext="large" class="nx-font-weight-semibold">Unread</h3>
+      <button nxPlainButton="small" type="button">Mark all as read <nx-icon
           name="check" class="nx-margin-left-2xs"></nx-icon></button>
     </nx-notification-header>
 
@@ -26,8 +26,7 @@
       </nx-notification-item-content>
     </a>
     <nx-notification-header>
-      <h3 nxCopytext="large" class="nx-margin-0 nx-font-weight-semibold">Read
-      </h3>
+      <h3 nxCopytext="large" class="nx-font-weight-semibold">Read</h3>
     </nx-notification-header>
     <a nxNotificationPanelItem read routerLink="#clickable-notification3">
       <nx-notification-item-metadata>Offers &middot; Yesterday

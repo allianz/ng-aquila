@@ -1,5 +1,5 @@
 <div nxLayout="grid">
-  <div nxRow>
+  <div nxRow class="nx-margin-bottom-s">
     <div nxCol="12,12,3">
       <button (click)="addNewCard()"
               nxButton="primary small"
@@ -19,7 +19,7 @@
     <div nxRow formArrayName="cards">
       <div *ngFor="let card of cards.controls; index as i"
         nxCol="12,12,12,3">
-        <nx-selectable-card [formControlName]="i">
+        <nx-selectable-card [formControlName]="i" class="nx-margin-bottom-xs">
           <p>
             Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
             consectetur, adipisci velit

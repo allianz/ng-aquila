@@ -4,11 +4,11 @@
     <nx-error appearance="text">
       Please select at least one checkbox.
     </nx-error>
-    <nx-checkbox *ngFor="let key of data" [value]="key" checked>{{key}}</nx-checkbox>
+    <nx-checkbox *ngFor="let key of data" [value]="key" checked class="nx-margin-bottom-s">{{key}}</nx-checkbox>
   </nx-checkbox-group>
   <p>Form value: {{ myFormGroup.value | json }}</p>
   <p>Form status: {{ myFormGroup.status | json }}</p>
 </form>
 
-<button (click)="addNewCb()" nxButton="primary small" type="button">Add new checkbox</button>
+<button (click)="addNewCb()" nxButton="primary small" type="button" class="nx-margin-right-3xs">Add new checkbox</button>
 <button (click)="removeCB()" nxButton="primary small" type="button">Remove first checkbox</button>

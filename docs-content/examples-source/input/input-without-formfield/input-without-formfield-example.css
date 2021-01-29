@@ -1,3 +1,7 @@
 input, textarea {
   border: 1px dotted #AAAAAA;
 }
+
+input {
+  margin-bottom: 12px;
+}

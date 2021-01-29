@@ -59,7 +59,6 @@ of the user.</p>
 <p class="docs-markdown--p">The dropdown can be accessed via keyboard. If the component owns the focus, the dropdown will open when you hit ENTER. Pressing ESC while the dropdown is open will close it. To select a value while the dropdown is open, use ARROW-UP and ARROW-DOWN. You can quickly navigate to the first item with the HOME key and to the last item with the END key. Pressing the ALT key plus either the ARROW_UP or ARROW_DOWN key opens or closes the dropdown.</p>
 <p class="docs-markdown--p">In order to mimic the native <code>&lt;select&gt;</code> element accessibility, the library is using <code>aria-labelledby</code> attribute to describe the dropdown. Under the hood, html ids of the element containing the rendered dropdown value and the element containing the formfield label are passed to the <code>aria-labelledby</code>. This allows assistive technology to read out currently selected value or placeholder of the dropdown together with the label displayed on the screen. If no formfield label is
 present, only the dropdown value is read.</p>
-<p class="docs-markdown--p">Support of <code>aria-label</code> component input has been deprecated in favor of <code>aria-labelledby</code>.</p>
 <h4 id="in-single-select-mode" class="docs-markdown--h4">In single select mode</h4>
 <p class="docs-markdown--p">Hitting SPACE or ENTER closes the dropdown and commit the selected value to the model.</p>
 <h4 id="in-multi-select-mode" class="docs-markdown--h4">In multi select mode</h4>

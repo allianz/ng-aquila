@@ -1,0 +1,137 @@
+<h1 class="docs-markdown--h1" id="releases-und-updating">Releases und updating</h1>
+<h2 class="docs-markdown--h2" id="updating-to-version-11">Updating to version 11</h2>
+<h3 class="docs-markdown--h3" id="breaking-changes">Breaking Changes</h3>
+<p class="docs-markdown--p">With v11 there are some breaking changes:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>Removal of outer margins of components</strong></p>
+<p class="docs-markdown--p">When ng-aquila was started, the first components were implemented with default outer margins. But since the number of projects using ng-aquila is growing, this is not suitable anymore for a lot of use cases and projects. This is why we decided to remove them with v11.</p>
+<p class="docs-danger-text nx-font-weight-bold">Please be aware that this change might affect the styling and layout of your application and it should be checked for visual differences.</p>
+<p class="docs-markdown--p">For an easier upgrade path we provide a compatibility css file that restores the margins prior to this change. To use this file add it to your <code>angular.json</code>:</p>
+<pre><code>&quot;architect&quot;: {
+  &quot;build&quot;: {
+    &quot;builder&quot;: &quot;@angular-devkit/build-angular:browser&quot;,
+    &quot;options&quot;: {
+      // ...
+      &quot;styles&quot;: [
+        // ...
+        &quot;node_modules/@aposin/ng-aquila/css/compatibility.css&quot;,
+      ]
+    }
+  }
+}
+</code></pre>
+<p class="docs-markdown--p">For the exact changes please check <code>compatibility.css</code> or</p>
+<details>
+  <summary>Expand here to show a summary of the changes</summary>
+<table class="docs-markdown--table">
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Changes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>expansion-panel/accordion</strong></td>
+<td>Removed  <code>margin-top: 16px</code>  before the first expansion-panel inside an accordion.</td>
+</tr>
+<tr>
+<td><strong>button</strong></td>
+<td>Removed  <code>margin: 0 0 24px 0</code> .</td>
+</tr>
+<tr>
+<td><strong>cards</strong></td>
+<td>Removed  <code>margin-bottom: 24px</code>  from the  <code>nx-card</code>  component and  <code>margin-bottom: 8px</code>  from the  <code>nx-selectable-card</code>  component.</td>
+</tr>
+<tr>
+<td><strong>checkbox</strong></td>
+<td>Removed  <code>margin-bottom: 16px</code> .</td>
+</tr>
+<tr>
+<td><strong>copytext</strong></td>
+<td>Removed  <code>margin: 0 0 32px 0</code> . The copytext now has a default  <code>margin: 0</code> .</td>
+</tr>
+<tr>
+<td><strong>dynamic-table</strong></td>
+<td>Removed  <code>margin: 32px 0</code> .</td>
+</tr>
+<tr>
+<td><strong>headlines</strong></td>
+<td>Removed  <code>margin-bottom</code>  from each headline size. The headlines now have a default  <code>margin: 0</code> .</td>
+</tr>
+<tr>
+<td><strong>lists</strong></td>
+<td>Removed  <code>margin-bottom: 32px</code>  from the list and  <code>margin-bottom: 16px</code>  from the last list item.</td>
+</tr>
+<tr>
+<td><strong>notifications and errors</strong></td>
+<td>Removed  <code>margin: 12px 0</code>  from  <code>nx-message</code> ,  <code>nx-message-banner</code>  and  <code>nx-error</code>  (of type  <code>message</code> ). For the Message Toast the margin is still used.</td>
+</tr>
+<tr>
+<td><strong>number-stepper</strong></td>
+<td>Removed  <code>margin-top: 12px</code>  if there is no label set.</td>
+</tr>
+<tr>
+<td><strong>pagination</strong></td>
+<td>Removed  <code>margin: 8px 0</code>  from the Advanced Pagination (+ smaller screens:  <code>margin: 8px 0 40px 0</code> ) and  <code>margin: 16px 0</code>  from the Simple Pagination (smaller screens: `margin: 40px 0).</td>
+</tr>
+<tr>
+<td><strong>taglist</strong></td>
+<td>Removed  <code>margin-bottom: 32px</code>  on the list. On the single tag items, there is still used a  <code>margin-bottom</code> .</td>
+</tr>
+</tbody>
+</table>
+</details>
+<br>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>card</strong>: Removal of the selecting functionality for the <code>nx-card</code> component in favor of <code>nx-selectable-card</code></p>
+<p class="docs-markdown--p">The deprecated <code>selectable</code>, <code>selected</code>, <code>disabled</code> and <code>selectedChange</code> properties were removed from the <code>nx-card</code> component. Please update to the <code>nx-selectable-card</code> component that covers all this functionality.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>comparison-table</strong>: The deprecated <code>label</code> input of <code>nxComparisonTableRowGroup</code> was removed. Use <code>labelCollapsed</code> instead.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>datefield</strong>:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">The deprecated <code>format()</code> function was removed, which is not needed to be called anymore.</li>
+<li class="docs-markdown--li">The deprecated <code>getPopupConnectionElementRef()</code> method was removed. Use <code>getConnectedOverlayOrigin()</code> instead.</li>
+<li class="docs-markdown--li">The deprecated <code>calendarHeader</code> property was removed from <code>NxDatepickerIntl</code>. Use <code>switchToMultiYearViewLabel</code> instead.</li>
+</ul>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>dropdown</strong>: The deprecated <code>nxAriaLabel</code> input input was removed. Accessibility for dropdown is now achieved with <code>aria-labelledby</code> that is set automatically.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>icon-registry</strong>: The deprecated <code>getSvgIcon()</code> method was removed. Please use <code>getIcon()</code> instead.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>margin-classes</strong>: corrected <code>nx-margin-x-{size}</code> and <code>nx-margin-y-{size}</code> classes</p>
+<p class="docs-markdown--p">Previously when using a <code>nx-margin-x-{size}</code> or <code>nx-margin-y-{size}</code> class, all four margins (top, right, bottom, left) were affected. When using <code>nx-margin-x-{size}</code> classes, the <strong>vertical margins are no longer set to 0</strong>. When using <code>nx-margin-y-{size}</code> classes, the <strong>horizontal margins are no longer set to 0</strong>.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>progress-indicator</strong>: The deprecated <code>title</code> input was removed. Use a <code>nx-label</code> element as content to the indicator instead.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>radio-toggle</strong>: Removal of the deprecated <code>selection</code> setter.</p>
+</li>
+<li class="docs-markdown--li">
+<p class="docs-markdown--p"><strong>small-stage</strong>: Rewrite to support retail</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">The <code>contentNarrow</code> input of <code>nx-small-stage</code> was renamed to <code>narrow</code> and moved to the <code>nx-small-stage-content</code> directive.</li>
+<li class="docs-markdown--li">The <code>offsetEnd</code> input of <code>nx-small-stage</code> was moved to the <code>nx-small-stage-end-image</code> directive.</li>
+<li class="docs-markdown--li">The <code>inputUrl</code> input of <code>nx-small-stage</code> was renamed to <code>src</code> and moved to the <code>nx-small-stage-end-image</code> directive.</li>
+<li class="docs-markdown--li">The <code>small-stage-image-container-padding-start</code> theming token was renamed to <code>small-stage-image-container-padding-to-content</code>.</li>
+<li class="docs-markdown--li">The <code>small-stage-background-color</code> theming token was removed. Please set the background-color directly with css.</li>
+</ul>
+</li>
+</ul>
+<h3 class="docs-markdown--h3" id="automatic-update-(ng-update)">Automatic update (<code>ng update</code>)</h3>
+<p class="docs-markdown--p">We want to make the update as seamless as possible for you with the use of Angular schematics. By using <code>ng update</code> from the Angular CLI this will automatically migrate your project to the new setup.
+You can update with the following commands:</p>
+<pre><code>ng update @angular/cli @angular/core --force
+ng update @angular/cdk --force
+ng update @aposin/ng-aquila --force
+</code></pre>
+<p class="docs-markdown--p">You can use the Angular CLI's <code>--allowDirty</code> flag if you don't want to commit between these steps.</p>

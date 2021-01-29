@@ -605,11 +605,13 @@
         "file-uploader-template-driven",
         "file-uploader-drop-zone",
         "file-uploader-validation",
+        "file-uploader-max-file-number",
         "file-uploader-type-validation",
         "file-uploader-auto",
         "file-uploader-separate-requests",
         "file-uploader-with-request",
-        "file-uploader-intl"
+        "file-uploader-intl",
+        "file-uploader-custom-item"
       ],
       "category": "components",
       "apiFile": "lib-viewer/api/file-uploader.html",
@@ -1049,6 +1051,30 @@
       "stable": "done"
     },
     {
+      "id": "progress-stepper",
+      "title": "Progress Indicator",
+      "examples": [
+        "progress-stepper",
+        "progress-stepper-custom",
+        "progress-stepper-title",
+        "progress-stepper-multi",
+        "progress-stepper-form",
+        "progress-stepper-nonlinear",
+        "progress-stepper-multi-vertical",
+        "progress-stepper-multi-groups",
+        "progress-stepper-step",
+        "progress-stepper-reactivesingle",
+        "progress-stepper-reactivemulti",
+        "progress-stepper-progress"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progress-stepper.html",
+      "overviewFile": "lib-viewer/overview/progress-stepper.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "progressbar",
       "title": "Progress Bar",
       "examples": [
@@ -1201,8 +1227,11 @@
       "examples": [
         "small-stage-default",
         "small-stage-content-variation",
-        "small-stage-text-narrow",
-        "small-stage-image-offset"
+        "small-stage-w-header",
+        "small-stage-w-bg",
+        "small-stage-expert-default",
+        "small-stage-expert-content-narrow",
+        "small-stage-expert-image-offset"
       ],
       "category": "components",
       "apiFile": "lib-viewer/api/small-stage.html",
@@ -1417,30 +1446,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/video.html",
       "overviewFile": "lib-viewer/overview/video.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "progress-stepper",
-      "title": "Progress Indicator",
-      "examples": [
-        "progress-stepper",
-        "progress-stepper-custom",
-        "progress-stepper-title",
-        "progress-stepper-multi",
-        "progress-stepper-form",
-        "progress-stepper-nonlinear",
-        "progress-stepper-multi-vertical",
-        "progress-stepper-multi-groups",
-        "progress-stepper-step",
-        "progress-stepper-reactivesingle",
-        "progress-stepper-reactivemulti",
-        "progress-stepper-progress"
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progress-stepper.html",
-      "overviewFile": "lib-viewer/overview/progress-stepper.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -2911,6 +2916,17 @@
       "url": "lib-viewer/examples/file-uploader-basic-###TYPE###.html"
     },
     {
+      "id": "file-uploader-custom-item",
+      "title": "File uploader custom-item example",
+      "module": "file-uploader",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/file-uploader-custom-item-###TYPE###.html"
+    },
+    {
       "id": "file-uploader-drop-zone",
       "title": "File uploader drop zone example",
       "module": "file-uploader",
@@ -2931,6 +2947,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/file-uploader-intl-###TYPE###.html"
+    },
+    {
+      "id": "file-uploader-max-file-number",
+      "title": "File uploader with max number of files example",
+      "module": "file-uploader",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/file-uploader-max-file-number-###TYPE###.html"
     },
     {
       "id": "file-uploader-reactive",
@@ -3385,7 +3412,7 @@
     },
     {
       "id": "headline-font-weights",
-      "title": "Headline Font Sizes Example",
+      "title": "Headline Font Weight Example",
       "module": "headline",
       "types": [
         "ts",
@@ -5331,26 +5358,59 @@
       "url": "lib-viewer/examples/small-stage-default-###TYPE###.html"
     },
     {
-      "id": "small-stage-image-offset",
-      "title": "Small stage image offset example",
+      "id": "small-stage-expert-content-narrow",
+      "title": "Small stage expert narrow content example",
       "module": "small-stage",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/small-stage-image-offset-###TYPE###.html"
+      "url": "lib-viewer/examples/small-stage-expert-content-narrow-###TYPE###.html"
     },
     {
-      "id": "small-stage-text-narrow",
-      "title": "Small stage narrow content example",
+      "id": "small-stage-expert-default",
+      "title": "Small stage expert default example",
       "module": "small-stage",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/small-stage-text-narrow-###TYPE###.html"
+      "url": "lib-viewer/examples/small-stage-expert-default-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-expert-image-offset",
+      "title": "Small stage expert image offset example",
+      "module": "small-stage",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-expert-image-offset-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-w-bg",
+      "title": "Small stage with background example",
+      "module": "small-stage",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-w-bg-###TYPE###.html"
+    },
+    {
+      "id": "small-stage-w-header",
+      "title": "Small stage with header example",
+      "module": "small-stage",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/small-stage-w-header-###TYPE###.html"
     },
     {
       "id": "spinner-negative",
@@ -5420,7 +5480,7 @@
     },
     {
       "id": "switcher-large",
-      "title": "Swicher Large",
+      "title": "Switcher Large",
       "module": "switcher",
       "types": [
         "ts",
@@ -6073,6 +6133,11 @@
       "id": "getting-started",
       "title": "Getting started",
       "file": "lib-viewer/guides/getting-started.html"
+    },
+    {
+      "id": "releases",
+      "title": "Releases und updating",
+      "file": "lib-viewer/guides/releases.html"
     }
   ]
 }

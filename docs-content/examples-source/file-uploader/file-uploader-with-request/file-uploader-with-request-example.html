@@ -17,14 +17,13 @@
         type="button"
         [disabled]="!documentUpload.value?.length"
         (click)="upload('file-upload')"
-        class="nx-margin-right-2xs nx-margin-bottom-0">
+        class="nx-margin-right-2xs">
   Upload files
 </button>
 
 <button nxButton="secondary small"
         type="button"
         [disabled]="!documentUpload.value?.length"
-        (click)="upload('file-upload-error')"
-        class="nx-margin-bottom-0">
+        (click)="upload('file-upload-error')">
   Upload files (and get an error)
 </button>

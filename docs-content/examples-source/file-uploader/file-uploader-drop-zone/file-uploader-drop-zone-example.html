@@ -14,7 +14,6 @@
 <button nxButton="secondary small"
         type="button"
         [nxFileUploadTriggerFor]="documentUpload"
-        [disabled]="!documentUpload.value?.length"
-        class="nx-margin-bottom-0">
+        [disabled]="!documentUpload.value?.length">
   Upload files
 </button>

@@ -23,6 +23,10 @@ Success and error handling can be done with subscribing to the <code>response</c
 <p class="docs-markdown--p">The returned error is <code>NxFileUploadMaxFileSize</code>.</p>
 <p class="docs-markdown--p">The server's errors can be handled by setting the file state as shown in this example.</p>
 <div nx-docs-example="file-uploader-validation" config="{}">exampleID: file-uploader-validation</div>
+<h4 id="max-file-number" class="docs-markdown--h4">Max file number</h4>
+<p class="docs-markdown--p">The max file number is set via the <code>[maxFileNumber]</code> property.</p>
+<p class="docs-markdown--p">The return error is <code>NxFileUploadMaxFileNumber</code>.</p>
+<div nx-docs-example="file-uploader-max-file-number" config="{}">exampleID: file-uploader-max-file-number</div>
 <h4 id="accepted-file-types" class="docs-markdown--h4">Accepted file types</h4>
 <p class="docs-markdown--p">The permitted file types can be set via <code>[accept]</code> and are passed down to the native input[type='file'] element.</p>
 <p class="docs-markdown--p">Additionally, there is a basic client side validation integrated in the component which returns the error <code>NxFileUploadFileTypeNotAccepted</code>. However, <strong>files should be always verified on the server side</strong>.</p>
@@ -40,3 +44,6 @@ Success and error handling can be done with subscribing to the <code>response</c
 <h3 id="internationalization" class="docs-markdown--h3">Internationalization</h3>
 <p class="docs-markdown--p"><code>NxFileUploaderIntl</code> provides the text strings used inside the file uploader component (e.g. the uploading label). It can be customized by creating a class with the translated string values.</p>
 <div nx-docs-example="file-uploader-intl" config="{}">exampleID: file-uploader-intl</div>
+<h3 id="custom-item-template" class="docs-markdown--h3">Custom Item Template</h3>
+<p class="docs-markdown--p">You can customize the template that is used to render each entry within the list of files to upload.</p>
+<div nx-docs-example="file-uploader-custom-item" config="{}">exampleID: file-uploader-custom-item</div>

@@ -449,6 +449,42 @@ components if the labels have changed after initialization.</p>
   <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
           <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
       <code>
+        <span class="docs-api-property__name">itemTemplate</span>:
+        <span class="docs-api-property__type">TemplateRef<any></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Sets the template for the file items.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">maxFileNumber</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The max number of files that is accepted.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
         <span class="docs-api-property__name">maxFileSize</span>:
         <span class="docs-api-property__type">number</span>
       </code>
@@ -641,6 +677,276 @@ components if the labels have changed after initialization.</p>
 
 
   
+
+
+
+    
+      
+
+<h4 id="NxFileUploaderItemDelete" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxFileUploaderItemDelete"></span>
+  <code>NxFileUploaderItemDelete</code></h4><p class="docs-api-class-description"><p>Shows a delete button.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-file-upload-delete</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">deleteLabel</span>:
+        <span class="docs-api-property__type">String</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The label that is used for the delete button (used by screen readers).</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isUploading</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the file is uploading at the moment. If true, the button is disabled. Default: false.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxFileUploaderItemName" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxFileUploaderItemName"></span>
+  <code>NxFileUploaderItemName</code></h4><p class="docs-api-class-description"><p>Shows the file name.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-file-upload-name</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">name</span>:
+        <span class="docs-api-property__type">String</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The filename.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxFileUploaderItemSize" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxFileUploaderItemSize"></span>
+  <code>NxFileUploaderItemSize</code></h4><p class="docs-api-class-description"><p>Shows a file size in Megabyte (MB) or an alternative label while the file is uploading.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-file-upload-size</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isUploading</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the file is uploading at the moment. Default: false.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">size</span>:
+        <span class="docs-api-property__type">number</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The size of the file in bytes.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">uploadingLabel</span>:
+        <span class="docs-api-property__type">String</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The label that is shown while uploading the file.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    
+      
+
+<h4 id="NxFileUploaderItemStatus" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxFileUploaderItemStatus"></span>
+  <code>NxFileUploaderItemStatus</code></h4><p class="docs-api-class-description"><p>Shows the current uploading status of a file.</p>
+</p><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-file-upload-status</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isUploaded</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the file was uploaded. If this is true, a <code>check-circle</code> icon is shown. Default: false.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isUploading</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">uploadedLabel</span>:
+        <span class="docs-api-property__type">String</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The label that is used once the file has been uploaded (used by screen readers).</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+
 
 
 

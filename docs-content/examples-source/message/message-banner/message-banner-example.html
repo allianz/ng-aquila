@@ -1,12 +1,12 @@
-<nx-message-banner closeButtonLabel="Close info message banner" *ngIf="!infoBannerClosed" (close)="infoBannerClosed = true">
+<nx-message-banner closeButtonLabel="Close info message banner" *ngIf="!infoBannerClosed" (close)="infoBannerClosed = true" class="nx-margin-bottom-xs">
  You are logged in as Max Mustermann.
 </nx-message-banner>
 
-<nx-message-banner context="warning" closeButtonLabel="Close warning message banner" *ngIf="!warningBannerClosed" (close)="warningBannerClosed = true">
+<nx-message-banner context="warning" closeButtonLabel="Close warning message banner" *ngIf="!warningBannerClosed" (close)="warningBannerClosed = true" class="nx-margin-bottom-xs">
   Your password expires in three days!
 </nx-message-banner>
 
-<nx-message-banner context="error" closeButtonLabel="Close error message banner" *ngIf="!errorBannerClosed" (close)="errorBannerClosed = true">
+<nx-message-banner context="error" closeButtonLabel="Close error message banner" *ngIf="!errorBannerClosed" (close)="errorBannerClosed = true" class="nx-margin-bottom-xs">
  The object could not be found.
 </nx-message-banner>
 
