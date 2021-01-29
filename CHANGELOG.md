@@ -2,6 +2,97 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.0.0](https://github.com/aposin/ng-aquila/compare/v10.9.0...v11.0.0) (2021-01-29)
+
+### Highlights
+
+#### Removal of outer default margins
+In this release we removed some default outer margins of components that were coming from the early days of the library and do not match the many different scenarios and layouts where these components are used. You are free to set a margin appropriate to your designs. As this can potentially mean visual changes we provide a compatibility css file that restores the former default margins. See the BREAKING CHANGES section below or the [update guide](https://aposin.github.io/ng-aquila/guides/releases) for more details and how to use the compatibility css.
+
+#### Deprecation removals
+After quite some time we cleaned up a lot of deprecations. We tried our best to migrate these deprecations during `ng update` or give you a warning in case you have to update manually.
+
+#### Small stage
+The small stage was extended to be used in both expert and retail scenarios. It should give you a lot of flexibility now to create the best experience for the end user. For that some adjustments have to be made as the code prior to this release is not working anymore. You find all relevant code examples in the documentation.
+
+
+### Bug Fixes
+
+* **breakpoints:** correct breakpoints and improve comments ([bec4636](https://github.com/aposin/ng-aquila/commit/bec4636d1546f583b2f22bdac9733a61e6609da3))
+* **button:** high contrast on chromium edge ([f65ab98](https://github.com/aposin/ng-aquila/commit/f65ab9828bad5c85159cc6f5a59d4d308347fbdc))
+* **checkbox:** high contrast on chromium edge ([a049888](https://github.com/aposin/ng-aquila/commit/a0498884ed957258a9b4f6a8f08947e6945e22f0))
+* **context-menu:** icons still have auto size ([cf20b17](https://github.com/aposin/ng-aquila/commit/cf20b17ed01ff2e9a99d2fbacf7bd9cd0d65b197))
+* **file-uploader:** add missing styles for components ([d8b7095](https://github.com/aposin/ng-aquila/commit/d8b70953c386d2880ff7a6f56e20532c13b82d2b))
+* **focus-styles:** high contrast on chromium edge ([d96a2cb](https://github.com/aposin/ng-aquila/commit/d96a2cba6491987b1148ba4403a67c5e500d584c))
+* **icon:** align to center ([b9a4b08](https://github.com/aposin/ng-aquila/commit/b9a4b08d96cc72bcae7b18ee1e60324f07792a00))
+* **iso-date-adapter:** use formats without separators first ([dac1128](https://github.com/aposin/ng-aquila/commit/dac11287b6f846b6bea17cf96cd07f25d7bf1f89))
+* **margin-classes:** add nx-margin-x-0 and nx-margin-y-0 classes ([d13370a](https://github.com/aposin/ng-aquila/commit/d13370ae9c8cb24261ea70747bb8503a5a565b8b))
+* **margin-classes:** only affect horizontal/vertical margins when using x/y ([f54ecc1](https://github.com/aposin/ng-aquila/commit/f54ecc1b35e6b9e740bc7f5782e6623776d3f0b4))
+* **progress-stepper:** match type of _stepHeader with CDK ([0ced970](https://github.com/aposin/ng-aquila/commit/0ced970480ca163a975f15113d402b45c0f7f961))
+* **radio-button:** high contrast on chromium edge  ([221ea41](https://github.com/aposin/ng-aquila/commit/221ea417948733e6720257818088692d09bcdc1b))
+* **radio-toggle:** high contrast on chromium edge ([0aa4b0d](https://github.com/aposin/ng-aquila/commit/0aa4b0daa138e3f8517960dfda91ffa66899c3be))
+* **schematics:** update to new CLI api ([d5286de](https://github.com/aposin/ng-aquila/commit/d5286deef5dbce20b3925bb48082d5cd36b12ad7))
+* **switcher:** high contrast on chromium edge ([b038b69](https://github.com/aposin/ng-aquila/commit/b038b6962fcad0cbabbb8ad6ea6c8fae222463f8))
+
+### Code Refactoring
+
+* remove deprecations without automatic update ([c5a7830](https://github.com/aposin/ng-aquila/commit/c5a78308c848f85c54800022c1ebd41a6fd85513))
+* remove various deprecations ([1084f82](https://github.com/aposin/ng-aquila/commit/1084f8297bbb95e02a53b718b01150ae2e9255ed))
+
+
+### Features
+
+* remove default outer margins from components  ([778f43a](https://github.com/aposin/ng-aquila/commit/778f43ac4900d05e7467d70c84d44a6328ad0d51))
+* **file-uploader:** add maxFileNumber validation ([e6a1af9](https://github.com/aposin/ng-aquila/commit/e6a1af93c98ef010658660c84d30d010ba0dae98))
+* **file-uploader:** custom file item templates ([690aa98](https://github.com/aposin/ng-aquila/commit/690aa9871750bef9a80cd98094ded8e3f8b99f18))
+* update to Angular 11 ([7157dfd](https://github.com/aposin/ng-aquila/commit/7157dfd6fb7c38659ba1bd6e143b5103efe275de))
+* **small-stage**: rewrite to support retail ([dd7e22e](https://github.com/aposin/ng-aquila/commit/dd7e22e91bbd23ff113e080cdd2b64ada88b9db7))
+
+
+### BREAKING CHANGES
+
+* **small-stage**: the component was refactored to support both retail and expert, the changes in detail contain:
+  * The `contentNarrow` input of `nx-small-stage` was renamed to `narrow` and moved to the `nx-small-stage-content` directive.
+  * The `offsetEnd` input of `nx-small-stage` was moved to the `nx-small-stage-end-image` directive.
+  * The `inputUrl` input of `nx-small-stage` was renamed to `src` and moved to the `nx-small-stage-end-image` directive.
+  * The `small-stage-image-container-padding-start` theming token was renamed to `small-stage-image-container-padding-to-content`.
+  * The `small-stage-background-color` theming token was removed. Please set the background-color directly with css.
+* **comparison-table**: removed the `label` input, use `labelCollapsed` instead
+* **datefield**: removed the `getPopupConnectionElementRef`method, use `getConnectedOverlayOrigin` instead
+* **datefield**: removed the `calendarHeader` property from `NxDatepickerIntl`, use `switchToMultiYearViewLabel` instead
+* **dropdown**: removed the `nxAriaLabel` input. Accessibility for dropdown is achieved with aria-labelledby that is set automatically
+* **progress-indicator**: removed the `title` input for all progress-indicators. Use a `nx-label` element as content to the indicator instead. Example:
+```
+  <nx-single-stepper currentStepLabel="Step">
+    <nx-label>My Title</nx-label>
+    ...
+  </nx-single-stepper>
+```
+* The outer margins of components were removed. For an easier upgrade path we provide a `compatibility.css` file that restores the margins prior to this change. To use this add "node_modules/@aposin/ng-aquila/css/compatibility.css" to your styles in `angular.json`.
+
+  The exact changes are:
+
+  - expansion-panel/accordion: Removed `margin-top: 16px`  before the first expansion-panel inside an accordion.
+  - button: Removed `margin: 0 0 24px 0`.
+  - cards: Removed `margin-bottom: 24px` from the `nx-card` component and `margin-bottom: 8px` from the `nx-selectable-card` component.                                                      
+  - checkbox: Removed `margin-bottom: 16px`.
+  - copytext: Removed `margin: 0 0 32px 0`. The copytext now has a default `margin: 0`.
+  - dynamic-table: Removed `margin: 32px 0`.
+  - headlines: Removed `margin-bottom` from each headline size. The headlines now have a default `margin: 0`.
+  - lists: Removed `margin-bottom: 32px` from the list and `margin-bottom: 16px` from the last list item.
+  - notifications and errors: Removed `margin: 12px 0` from `nx-message`, `nx-message-banner` and `nx-error` (of type `message`). For the Message Toast the margin is still used.
+  - number-stepper: Removed `margin-top: 12px` if there is no label set.
+  - pagination: Removed `margin: 8px 0` from the Advanced Pagination (+ smaller screens: `margin: 8px 0 40px 0` ) and  `margin: 16px 0`  from the Simple Pagination (smaller screens: `margin: 40px 0`).
+  - taglist: Removed `margin-bottom: 32px` on the list. On the single tag items, there is still used a `margin-bottom`.
+
+* **margin-classes:** When using nx-margin-x-..., the vertical margins are no longer set to 0. When using nx-margin-y-..., the horizontal margins are no longer set to 0.
+* * **card**: remove deprecated selectable, selected, disabled and selectedChange property. Please update to the `nx-selectable-card` component
+* **datefield**: remove deprecated format function which is not needed to be called anymore
+* **icon-registry**: remove deprecated `getSvgIcon` method. Use `getIcon` instead.
+* **radio-toggle**: remove deprecated `selection` setter
+
+
+
 # [10.9.0](https://github.com/aposin/ng-aquila/compare/v10.8.0...v10.9.0) (2021-01-12)
 
 As a documentation change there was added a link to stack-blitz for the examples.
