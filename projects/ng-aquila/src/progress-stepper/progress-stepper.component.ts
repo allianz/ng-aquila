@@ -20,6 +20,7 @@ import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 import { Directionality } from '@angular/cdk/bidi';
+import { FocusableOption } from '@angular/cdk/a11y';
 
 // tslint:disable:use-input-property-decorator
 
@@ -112,7 +113,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     /** Steps that belong to the current stepper, excluding ones from nested steppers. */
     readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
 
-  _stepHeader: QueryList<null> = new QueryList();
+  _stepHeader: QueryList<FocusableOption> = new QueryList();
 
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
   @Input() currentStepLabel: string;
