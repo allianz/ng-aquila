@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 /** Shows a file size in Megabyte (MB) or an alternative label while the file is uploading. */
 @Component({
   selector: 'nx-file-upload-size',
+  styleUrls: ['./file-uploader-size.component.scss'],
   template: `
     <span *ngIf="isUploading; else uploaded">{{ uploadingLabel }}</span>
     <ng-template #uploaded>

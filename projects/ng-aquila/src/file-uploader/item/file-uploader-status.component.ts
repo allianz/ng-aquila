@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 /** Shows the current uploading status of a file. */
 @Component({
   selector: 'nx-file-upload-status',
+  styleUrls: ['./file-uploader-status.component.scss'],
   template: `
       <nx-spinner *ngIf="isUploading" nxSize="medium"></nx-spinner>
       <nx-icon
