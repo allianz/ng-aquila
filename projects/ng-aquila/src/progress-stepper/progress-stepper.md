@@ -6,18 +6,6 @@ expert: true
 stable: done
 ---
 
-<div class="docs-deprecation-warning">
-  <h3>Deprecation warning</h3>
-  The attribute <code>title</code> on <code>nx-single-stepper</code>, <code>nx-multi-stepper</code> and <code>nx-progress-stepper</code> is deprecated and will be dropped in v11.0.0. Please use <code>nx-label</code> instead as shown in the <a href="./documentation/progress-stepper/overview#stepper-title">Progress Indicator label example</a> and in the code snippet below.
-
-  ```html
-  <nx-single-stepper currentStepLabel="Step">
-    <nx-label>My Title</nx-label>
-    ...
-  </nx-single-stepper>
-  ```
-</div>
-
 An indicator is a wizard-like workflow that divides content into logical steps. You provide the content and distribute it in different steps. The indicator will ensure to show only the current content and inform the user about the overall progress.
 
 You can choose between "Single Indicator", "Multi Indicator" and "Progress Indicator". Those indicators can show different details of the overall progress.

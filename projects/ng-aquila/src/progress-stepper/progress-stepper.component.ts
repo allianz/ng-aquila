@@ -117,11 +117,6 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
   @Input() currentStepLabel: string;
 
-  /** Sets the title to be rendered above the progress bar.
-   * @deletion-target 10.0.0
-   * @deprecated Use `nx-label` instead */
-  @Input() title: string;
-
   constructor(
     private _cdRef: ChangeDetectorRef,
     _dir: Directionality,

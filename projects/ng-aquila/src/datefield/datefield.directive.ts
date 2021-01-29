@@ -308,15 +308,6 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
   /**
    * @docs-private
-   * @deprecated
-   * Use `getConnectedOverlayOrigin` instead
-   */
-  getPopupConnectionElementRef(): ElementRef {
-    return this.getConnectedOverlayOrigin();
-  }
-
-  /**
-   * @docs-private
    *
    * Gets the element that the datepicker popup should be connected to.
    * @return The element to connect the popup to.

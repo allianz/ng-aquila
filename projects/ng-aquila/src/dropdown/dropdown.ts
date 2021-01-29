@@ -228,23 +228,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   /** Text displayed as placeholder for the filter. */
   @Input('nxFilterPlaceholder') filterPlaceholder: string = '';
 
-  /**
-   * Label to describe the component.
-   *
-   * The nxAriaLabel property is deprecated.
-   * Accessibility for dropdown is achieved with aria-labelledby that is set automatically.
-   * @deprecated
-   */
-  @Input('nxAriaLabel')
-  set _ariaLabel(_: any) {
-    if (isDevMode()) {
-      console.warn(
-        'nxAriaLabel Input of Dropdown component has been deprecated.\n' +
-        'Accessibility for dropdown is achieved with aria-labelledby that is set automatically. Please see the documentation for more details.\n'
-      );
-    }
-  }
-
   /** Event emitted when the select panel has been toggled. */
   @Output() readonly openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -104,6 +104,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
   /**
    * Attaches a DOM portal to the overlay container.
    * @param portal Portal to be attached.
+   * @deprecated To be turned into a method when changed in the CDK.
    */
   attachDomPortal = (portal: DomPortal) => {
     if (this._portalOutlet.hasAttached()) {

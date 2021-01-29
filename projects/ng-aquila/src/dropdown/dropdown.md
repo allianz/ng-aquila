@@ -109,7 +109,6 @@ The dropdown can be accessed via keyboard. If the component owns the focus, the 
 In order to mimic the native `<select>` element accessibility, the library is using `aria-labelledby` attribute to describe the dropdown. Under the hood, html ids of the element containing the rendered dropdown value and the element containing the formfield label are passed to the `aria-labelledby`. This allows assistive technology to read out currently selected value or placeholder of the dropdown together with the label displayed on the screen. If no formfield label is
 present, only the dropdown value is read.
 
-Support of `aria-label` component input has been deprecated in favor of `aria-labelledby`.
 
 #### In single select mode
 Hitting SPACE or ENTER closes the dropdown and commit the selected value to the model.

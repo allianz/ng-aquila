@@ -16,34 +16,10 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
   /** @docs-private */
   @ContentChildren(NxComparisonTableRowDirective) rows: QueryList<NxComparisonTableRowDirective>;
 
-  /**
-   * Sets the label of the expandable area that is shown when the row group is collapsed.
-   *
-   * The label property is deprecated. Please use labelCollapsed instead.
-   *
-   * @deprecated
-   * @deletion-target 10.0.0
-   */
-  @Input()
-  set label(newValue: string) {
-    if (newValue !== this._labelCollapsed) {
-      this._labelCollapsed = newValue;
-      if (isDevMode()) {
-        console.warn('Warning: The label property is deprecated. Use labelCollapsed instead');
-      }
-    }
-  }
-  get label(): string {
-    return this._labelCollapsed;
-  }
-
   private _labelCollapsed: string = 'More services';
 
   /**
    * Sets the label of the expandable area that is shown when the row group is collapsed.
-   *
-   * If the deprecated `label` is set, this value is taken instead.
-   * This will be removed in v11.0.0.
    */
   @Input()
   set labelCollapsed(newValue: string) {

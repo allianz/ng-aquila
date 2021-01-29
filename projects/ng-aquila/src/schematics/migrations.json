@@ -1,4 +1,10 @@
 {
   "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {}
+  "schematics": {
+    "migration-v11": {
+      "version": "11.0.0-0",
+      "description": "Updates ng-aquila to v11",
+      "factory": "./ng-update/index#updateToV11"
+    }
+  }
 }

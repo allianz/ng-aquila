@@ -14,7 +14,6 @@ $margin-bottom: nx-spacer(2xs);
 }
 
 // We will show those parts only on larger screens
-.nx-single-step__title,
 nx-progressbar {
   margin-bottom: $margin-bottom;
   display: block;
@@ -24,15 +23,6 @@ nx-progressbar {
   nx-progressbar,
   .nx-single-step__infos {
     display: none;
-  }
-}
-
-.nx-single-step__title {
-  @include type-style(progress-stepper-label);
-  margin-bottom: nx-spacer(m);
-
-  @include media-breakpoint-up(small) {
-    display: block;
   }
 }
 

@@ -18,11 +18,6 @@ export class NxDatepickerIntl {
    */
   readonly changes: Subject<void> = new Subject<void>();
 
-  /** A label for the calendar popup (visible in UI). */
-  /** @deprecated Use `switchToMultiYearViewLabel` instead
-  */
-  calendarHeader: string = 'Choose a date';
-
   /** A label for the calendar popup (used by screen readers). */
   calendarLabel: string = 'Calendar';
 

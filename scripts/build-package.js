@@ -42,9 +42,7 @@ console.log("  Building utility css");
 
 console.log("========================");
 console.log("  Building schematics");
-// TODO enable again once schematics are fixed for Angular 11
-console.log("  ... temporarily disabled");
-// compileSchematics()
+compileSchematics()
 
 console.log("========================");
 console.log("  Copying scss sources");
