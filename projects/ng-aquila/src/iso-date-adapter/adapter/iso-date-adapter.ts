@@ -119,7 +119,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         const formatsWithoutSeparators = [...normalizedFormats].map((normalizedformat) => {
             return normalizedformat.replace(/[^\w]/g, '');
         });
-        obj = dayjs(value, [...normalizedFormats, ...formatsWithoutSeparators], this.locale, false);
+        obj = dayjs(value, [...formatsWithoutSeparators, ...normalizedFormats], this.locale, false);
           }
       }
 

@@ -113,7 +113,13 @@ describe('NxIsoDateAdapter', () => {
     expect(adapter.parse('20190101', 'YYYY-MM-DD', false)).toBe('2019-01-01');
     expect(adapter.parse('20190101', ['YYYY-MM-DD', 'YYYY-MM-D', 'YYYY-M-D'], false)).toBe('2019-01-01');
     expect(adapter.parse('2019011', ['YYYY-MM-DD', 'YYYY-MM-D', 'YYYY-M-D'], false)).toBe('2019-01-01');
-    expect(adapter.parse('201911', ['YYYY-MM-DD', 'YYYY-MM-D', 'YYYY-M'], false)).toBe('2019-01-01');
+    expect(adapter.parse('201911', ['YYYY-MM-DD', 'YYYY-MM-D', 'YYYY-M'], false)).toBe('2019-11-01');
+    expect(adapter.parse('20191', ['YYYY-MM-DD', 'YYYY-MM-D', 'YYYY-M'], false)).toBe('2019-01-01');
+    expect(adapter.parse('201911', ['YYYY-M'], false)).toBe('2019-11-01');
+    expect(adapter.parse('2019-11', ['YYYYM'], false)).toBe('2019-11-01');
+    expect(adapter.parse('04.03.2019', ['DD.MM.YYYY', 'M-YYYY'], false)).toBe('2019-03-04');
+    expect(adapter.parse('02032019', ['DD.MM.YYYY', 'M-YYYY'], false)).toBe('2019-03-02');
+    expect(adapter.parse('102019', ['DD.MM.YYYY', 'M-YYYY'], false)).toBe('2019-10-01');
   });
 
   it('should allow strict parsing', () => {
