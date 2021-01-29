@@ -34,6 +34,10 @@ a {
   margin-bottom: 16px;
 }
 
+.docs-danger-text {
+  @include var(color, danger);
+}
+
 .docs-inverse-container {
   @include var(background, documentation-inverse-container-background);
   padding: 24px;
@@ -230,7 +234,8 @@ a {
 }
 
 ::ng-deep .docs-markdown--p code,
-::ng-deep .docs-markdown--li>code {
+::ng-deep .docs-markdown--li>code,
+::ng-deep .docs-markdown--table code {
   padding: 2px;
   margin: 0;
   @include var(background-color, documentation-markdown-code-background-color);
@@ -629,3 +634,8 @@ a {
   @include var(background-color, ui-01);
 }
 
+summary {
+  @include var(color, accordion-extra-light-header-text-color);
+  @include type-style(accordion-extra-light);
+  cursor: pointer;
+}
