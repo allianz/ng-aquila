@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Headline Font Sizes Example
+* @title Headline Font Weight Example
 */
 @Component({
   selector: 'headline-font-weights-example',

@@ -35,7 +35,7 @@ The positioning of the popover follows a fallback strategy to make sure that the
 
 The following table explains the fallback strategy of the popover. 
 
-<!-- example(popover-table) -->
+<!-- example(popover-table, { "hideHeader": true }) -->
 
 ### Custom content
 

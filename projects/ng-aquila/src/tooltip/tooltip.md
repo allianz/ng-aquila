@@ -45,7 +45,7 @@ below, left or right of the element.
 The positioning of the tooltip follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the tooltip tries to find a fitting position within the window.
 The following table explains the fallback strategy of the tooltip.
 
-<!-- example(tooltip-fallbacks-table) -->
+<!-- example(tooltip-fallbacks-table, { "hideHeader": true }) -->
 
 Note that the table contains a few positions that are not available to be set by the user. `top-left`, `top-right`, `bottom-left` and `bottom-right` are special positions that are used as a fallback option only.
 

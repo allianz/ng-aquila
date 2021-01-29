@@ -10,15 +10,15 @@
 }
 
 form button {
-  margin-right: 32px;
+  margin-right: 8px;
 }
 
 nx-radio-toggle {
   display: block;
 }
 
-.action-container > *{
+.action-container > * {
   display: inline-block;
-  margin: 0 32px 16px 0;
+  margin: 0 8px 8px 0;
   float: left;
 }

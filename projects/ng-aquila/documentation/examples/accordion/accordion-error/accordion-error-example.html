@@ -9,9 +9,9 @@
       </nx-expansion-panel-title>
     </nx-expansion-panel-header>
     <form [formGroup]="formGroupInfo">
-      <div nxLayout="grid">
+      <div nxLayout="grid nogutters">
         <div nxRow>
-          <div nxCol="12,12,6,6">
+          <div nxCol="12,12,12,6,6">
             <nx-formfield nxLabel="Surname">
               <input required nxInput formControlName="surname" />
               <nx-error nxFormfieldError>
@@ -33,9 +33,9 @@
       </nx-expansion-panel-title>
     </nx-expansion-panel-header>
     <form [formGroup]="formGroupPayment">
-      <div nxLayout="grid">
+      <div nxLayout="grid nogutters">
         <div nxRow>
-          <div nxCol="12,12,6,6">
+          <div nxCol="12,12,12,6,6">
             <nx-formfield nxLabel="Label">
               <input required nxInput formControlName="input" />
               <nx-error nxFormfieldError>
@@ -48,6 +48,6 @@
     </form>
   </nx-expansion-panel>
 </nx-accordion>
-<nx-message *ngIf="infoHasError || paymentHasError" nxContext="error">
+<nx-message *ngIf="infoHasError || paymentHasError" nxContext="error" class="nx-margin-top-xs">
   <strong> Error: </strong> Please check the red marked areas.
 </nx-message>

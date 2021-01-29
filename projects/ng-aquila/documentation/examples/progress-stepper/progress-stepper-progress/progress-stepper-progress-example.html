@@ -8,8 +8,8 @@
         <nx-formfield nxLabel="Age">
           <input nxInput required formControlName="age">
         </nx-formfield>
-        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
-        <button nxButton="primary small" nxStepperNext type="button">Next</button>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs nx-margin-bottom-s" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperNext class="nx-margin-bottom-s" type="button">Next</button>
       </div>
     </nx-step>
     <nx-step label="Your Address" formGroupName="address" [stepControl]="formLinear.controls.address">
@@ -20,7 +20,7 @@
         <nx-formfield nxLabel="Postal Code">
           <input nxInput required formControlName="postalCode">
         </nx-formfield>
-        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
+        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs nx-margin-bottom-s" type="button">Previous</button>
         <button nxButton="primary small" nxStepperNext type="button">Next</button>
       </div>
     </nx-step>

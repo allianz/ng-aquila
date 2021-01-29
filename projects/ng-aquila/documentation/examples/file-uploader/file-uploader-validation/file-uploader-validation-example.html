@@ -33,7 +33,6 @@
 <button nxButton="secondary small" type="button"
         [disabled]="!testForm.valid"
         [nxFileUploadTriggerFor]="documentUpload"
-        (click)="testForm.controls['documents'].setErrors({ 'serverError': false });"
-        class="nx-margin-bottom-0">
+        (click)="testForm.controls['documents'].setErrors({ 'serverError': false });">
   Upload files
 </button>

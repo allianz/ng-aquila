@@ -7,10 +7,6 @@ figure {
   align-items: center;
 }
 
-.login-button {
-  margin: 0;
-}
-
 .logo-text {
   color: var(--text-01, #ffffff);
 }
