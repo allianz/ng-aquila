@@ -72,6 +72,7 @@ describe('NxTooltipDirective', () => {
         OnPushTooltipDemo,
         DynamicTooltipsDemo,
         TooltipOnTextFields,
+        SelectableTooltip,
       ],
       providers: [
         {provide: Platform, useFactory: () => platform},
@@ -791,6 +792,52 @@ describe('NxTooltipDirective', () => {
 
   });
 
+  describe('selection of contents', () => {
+    it('is disabled by default', () => {
+      const fixture = TestBed.createComponent(BasicTooltipDemo);
+      fixture.detectChanges();
+      const userSelectStyle = fixture.componentInstance.button.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('none');
+    });
+
+    it('is allowed for input by default', () => {
+      const fixture = TestBed.createComponent(TooltipOnTextFields);
+      fixture.detectChanges();
+      const userSelectStyle = fixture.componentInstance.input.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('auto');
+    });
+
+    it('is allowed for textarea by default', () => {
+      const fixture = TestBed.createComponent(TooltipOnTextFields);
+      fixture.detectChanges();
+      const userSelectStyle = fixture.componentInstance.textarea.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('auto');
+    });
+
+    it('is allowed if nxTooltipSelectable input provided', () => {
+      const fixture = TestBed.createComponent(SelectableTooltip);
+      fixture.detectChanges();
+      const userSelectStyle = fixture.componentInstance.button.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('auto');
+    });
+
+    it('is allowed on input even if nxTooltipSelectable explicitly set to false', () => {
+      const fixture = TestBed.createComponent(SelectableTooltip);
+      fixture.detectChanges();
+      fixture.componentInstance.selectable = false;
+      const userSelectStyle = fixture.componentInstance.input.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('auto');
+    });
+
+    it('is allowed on textarea even if nxTooltipSelectable explicitly set to false', () => {
+      const fixture = TestBed.createComponent(SelectableTooltip);
+      fixture.detectChanges();
+      fixture.componentInstance.selectable = false;
+      const userSelectStyle = fixture.componentInstance.textarea.nativeElement.style.userSelect;
+      expect(userSelectStyle).toBe('auto');
+    });
+  });
+
 });
 
 describe('navigation', () => {
@@ -993,12 +1040,10 @@ class DynamicTooltipsDemo {
   template: `
     <input
       #input
-      style="user-select: none; -webkit-user-select: none"
       nxTooltip="Something">
 
     <textarea
       #textarea
-      style="user-select: none; -webkit-user-select: none"
       nxTooltip="Another thing"></textarea>
   `,
 })
@@ -1031,6 +1076,33 @@ class TooltipDemoWithoutPositionBinding {
 class TooltipDispose {
   @ViewChild(NxTooltipDirective) tooltip: NxTooltipDirective;
   @ViewChild('hover') buttonHover: ElementRef<HTMLButtonElement>;
+}
+
+@Component({
+  selector: 'nx-app',
+  template: `
+    <button #button
+            [nxTooltip]="message"
+            [nxTooltipSelectable]="selectable">
+      Button
+    </button>
+    <input
+      #input
+      [nxTooltipSelectable]="selectable"
+      nxTooltip="Something">
+
+    <textarea
+      #textarea
+      [nxTooltipSelectable]="selectable"
+      nxTooltip="Another thing"></textarea>
+    `
+})
+class SelectableTooltip {
+  message: any = initialTooltipMessage;
+  selectable: boolean = true;
+  @ViewChild('button') button: ElementRef<HTMLButtonElement>;
+  @ViewChild('input') input: ElementRef<HTMLInputElement>;
+  @ViewChild('textarea') textarea: ElementRef<HTMLTextAreaElement>;
 }
 
 /** Asserts whether a tooltip directive has a tooltip instance. */

@@ -106,6 +106,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   private _portal: ComponentPortal<NxTooltipComponent>;
   private _position: TooltipPosition = 'bottom';
   private _disabled: boolean = false;
+  private _selectable: boolean = false;
   private _scrollStrategy: () => ScrollStrategy;
   private _embeddedViewRef: ComponentRef<NxTooltipComponent>;
   private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
@@ -140,6 +141,19 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     // If tooltip is disabled, hide immediately.
     if (this._disabled) {
       this.hide(0);
+    }
+  }
+
+  /** Allows selection of text within tooltip trigger
+   *  NOTE: inputs and textareas always remain selectable, ignoring this input.
+  */
+  @Input('nxTooltipSelectable')
+  get selectable(): boolean { return this._selectable; }
+  set selectable(value) {
+    const oldValue = this._selectable;
+    this._selectable = coerceBooleanProperty(value);
+    if (this._selectable !== oldValue) {
+      this._updateSelectabilityStyles();
     }
   }
 
@@ -220,14 +234,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     }
   }
 
-  /**
-   * Setup styling-specific things
-   */
   ngOnInit() {
-    const element = this._elementRef.nativeElement;
-    const elementStyle = element.style as CSSStyleDeclaration & {webkitUserDrag: string};
-    const userSelect = element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA' ? '' : 'none';
-    elementStyle.webkitUserSelect = elementStyle.userSelect = (elementStyle as any).msUserSelect = userSelect;
+    this._updateSelectabilityStyles();
   }
 
   /**
@@ -301,6 +309,17 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   /** Handles the touchend events on the host element. */
   _handleTouchend() {
     this.hide(this._defaultOptions.touchendHideDelay);
+  }
+
+  /**
+   * Setup styling-specific things
+   */
+  _updateSelectabilityStyles(): void {
+    const element = this._elementRef.nativeElement;
+    const elementStyle = element.style as CSSStyleDeclaration & {webkitUserDrag: string};
+    const isSelectable = element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA' || this._selectable;
+    const userSelect = isSelectable ? 'auto' : 'none';
+    elementStyle.webkitUserSelect = elementStyle.userSelect = (elementStyle as any).msUserSelect = userSelect;
   }
 
   /** Create the overlay config and position strategy */
@@ -634,4 +653,5 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   }
 
   static ngAcceptInputType_disabled: BooleanInput;
+  static ngAcceptInputType_selectable: BooleanInput;
 }
