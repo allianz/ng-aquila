@@ -15,7 +15,7 @@ const playSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" wid
   providers: [
     // we only use the provider here to get a scoped instance of the NxIconRegistry
     // only for this example that the rest of the documentation examples are not affected
-    { provide: NxIconRegistry }
+    NxIconRegistry
   ]
 })
 export class IconEssentialOverrideExampleComponent {

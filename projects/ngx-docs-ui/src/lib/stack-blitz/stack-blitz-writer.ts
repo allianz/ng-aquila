@@ -157,11 +157,13 @@ export class StackBlitzWriter {
       const exampleContents = data.exampleFiles
         .map(file => this._readFile(form, data, file, baseExamplePath, isTest));
 
-      if (data.selectorName === 'icon-svg-example') {
-        this._readFile(form, data, 'assets/images/thumbup-icon.svg', '', isTest, false);
+      const allContents = templateContents.concat(exampleContents);
+
+      if (data.selectorName === 'icon-registry-example') {
+        allContents.push(this._readFile(form, data, 'assets/icons/settings.svg', '', isTest, false));
       }
 
-      Promise.all(templateContents.concat(exampleContents)).then(() => {
+      Promise.all(allContents).then(() => {
         resolve(form);
       });
     });
@@ -232,6 +234,8 @@ export class StackBlitzWriter {
       content = this._replaceExamplePlaceholderNames(data, filename, content);
     } else if (prependApp) {
       filename = 'src/app/' + filename;
+    } else if (filename.startsWith('assets')) {
+      filename = 'src/' + filename;
     }
     this._appendFormInput(form, `files[${filename}]`, this._appendCopyright(filename, content));
   }
