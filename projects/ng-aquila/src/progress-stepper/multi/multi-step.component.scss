@@ -111,12 +111,15 @@
           color: GrayText;
         }
 
+        &:not(.is-disabled) {
+          color: buttonText;
+        }
+
         span {
           -ms-high-contrast-adjust: none;
           background-color: buttonFace;
           border-radius: 4px;
           box-shadow: 0 0 0 2px buttonFace;
-          color: buttonText;
         }
 
         &.is-selected span {

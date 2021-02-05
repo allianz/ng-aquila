@@ -169,6 +169,13 @@ $border-size: nx-border-size(m);
 @media screen and (-ms-high-contrast: active) {
   .nx-word__inner-wrapper,
   ::ng-deep nx-dropdown {
-    border-bottom-color: buttonText;
+    border-bottom-color: buttonText !important;
+  }
+
+  :host(.is-focused) {
+    .nx-word__inner-wrapper,
+    ::ng-deep nx-dropdown {
+      border-bottom-color: highlight !important;
+    }
   }
 }

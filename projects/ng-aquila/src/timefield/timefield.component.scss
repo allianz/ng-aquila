@@ -140,9 +140,10 @@ $selected-box-shadow: 0 -2px 0 0;
 // high contrast
 @media screen and (-ms-high-contrast: active) {
   .nx-timefield-input__fields {
-    box-shadow: inset $default-box-shadow buttonText;
+    border-bottom: 1px solid buttonText;
+
     &.has-focus {
-      box-shadow: inset $selected-box-shadow highlight;
+      border-bottom: 1px solid highlight;
     }
   }
   :host.is-disabled {
@@ -151,7 +152,7 @@ $selected-box-shadow: 0 -2px 0 0;
       color: GrayText;
     }
     .nx-timefield-input__fields {
-      box-shadow: inset $default-box-shadow GrayText;
+      border-bottom: 1px solid GrayText;
     }
   }
 }

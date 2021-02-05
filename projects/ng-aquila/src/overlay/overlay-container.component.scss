@@ -7,4 +7,9 @@
   &:focus {
     outline: none;
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid windowText;
+    background: window;
+  }
 }

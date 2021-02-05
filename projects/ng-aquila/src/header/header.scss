@@ -64,6 +64,10 @@ $header-link-border-width: nx-border-size(xl);
     @include var(color, header-link-active-color);
     @include var(border-color, header-link-active-color);
   }
+
+  @media screen and (forced-colors: active) {
+    color: LinkText !important;
+  }
 }
 
 @media screen and (-ms-high-contrast: active) {

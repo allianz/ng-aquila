@@ -25,6 +25,7 @@
 
   @media screen and (-ms-high-contrast: active) {
     border: nx-border-size(xs) solid windowText;
+    color: windowText;
+    background-color: window;
   }
 }
-

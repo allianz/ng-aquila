@@ -50,6 +50,10 @@ $arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) rgba(65, 65,
   &::-moz-focus-inner {
     border: 0;
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    color: buttonText;
+  }
 }
 
 .nx-popover__content.cdk-keyboard-focused,

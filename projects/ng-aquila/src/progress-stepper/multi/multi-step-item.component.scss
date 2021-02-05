@@ -97,6 +97,10 @@ $vertical-line-height: nx-spacer(s);
 
     &.is-disabled .label {
       @include var(color, multi-stepper-step-disabled-color);
+
+      @media screen and (-ms-high-contrast: active) {
+        color: GrayText;
+      }
     }
 
     &.is-selected .label {
