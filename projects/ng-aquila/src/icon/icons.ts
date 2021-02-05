@@ -71,6 +71,10 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
       throw Error(`The URL provided to NxIconRegistry was not trusted as a resource URL ` +
         `via Angular's DomSanitizer. Attempted URL was "${safeUrl}".`);
     }
+    if (!this._httpClient) {
+      throw Error('Could not find HttpClient provider for using a SVG url in the nx-icon registry. ' +
+      'Please include the HttpClientModule from @angular/common/http in your app imports.');
+    }
   }
 
   /** Returns the content. If the SVG is not already loaded it fetches the SVG from icons' URL */
