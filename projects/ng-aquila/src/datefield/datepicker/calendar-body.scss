@@ -88,6 +88,10 @@ $item-size: nx-spacer(3m);
 
   .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
     @include var(background-color, datefield-cell-focused-background-color);
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: highlight;
+    }
   }
 }
 

@@ -125,39 +125,37 @@
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host,
-  :host(.is-negative) {
-    background-color: buttonFace;
-    border-color: buttonText;
+  :host {
+    forced-color-adjust: none;
+    background-color: buttonFace !important;
+    border-color: buttonText !important;
+    color: buttonText !important;
 
-    .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text,
-    .nx-toggle-button__mobile-check {
-      color: buttonText;
-      -ms-high-contrast-adjust: none;
+    .nx-toggle-button__label-hint {
+      color: buttonText !important;
     }
   }
 
-  :host(.is-flipped),
-  :host(.is-negative.is-flipped) {
-    background-color: highlight;
+  :host.is-flipped {
+    background-color: highlight !important;
+    color: highlightText !important;
 
-    .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text,
-    .nx-toggle-button__mobile-check {
-      color: highlightText;
+    .nx-toggle-button__label-hint {
+      color: highlightText !important;
     }
   }
 
-  :host(.is-disabled) {
+  :host.is-disabled {
     opacity: 1;
-    border-color: GrayText;
-    color: GrayText;
+    border-color: GrayText !important;
+    color: GrayText !important;
+    background-color: buttonFace !important;
 
-    &.is-flipped {
-      .nx-toggle-button__mobile-check {
-        color: GrayText;
-      }
+    .nx-toggle-button__label-text,
+    .nx-toggle-button__label-hint {
+      color: GrayText !important;
     }
   }
 }

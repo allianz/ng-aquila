@@ -52,25 +52,6 @@ nx-checkbox {
   @include var(color, dropdown-item-hover-color);
 }
 
-@media screen and (-ms-high-contrast: active) {
-  :host:hover,
-  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
-    .nx-dropdown-results__option-label {
-      color: highlightText;
-      background-color: highlight;
-    }
-  }
-
-  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
-    .nx-dropdown-results__option-checkicon {
-      -ms-high-contrast-adjust: none;
-      color: highlightText;
-      background: highlight;
-      z-index: 1;
-    }
-  }
-}
-
 :host(.nx-selected) .nx-dropdown-results__option-checkicon {
   opacity: 1;
 }
@@ -149,5 +130,30 @@ nx-checkbox {
 
   .nx-dropdown-results__option-label {
     @include var(color, dropdown-item-text-color-disabled);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  :host:hover:not(.nx-dropdown-item--disabled),
+  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
+    .nx-dropdown-results__option-label {
+      color: highlightText;
+      background-color: highlight;
+    }
+  }
+
+  :host(.nx-dropdown-item--active):not(.nx-multiselect) {
+    .nx-dropdown-results__option-checkicon {
+      -ms-high-contrast-adjust: none;
+      color: highlightText;
+      background: highlight;
+      z-index: 1;
+    }
+  }
+
+  :host(.nx-dropdown-item--disabled) {
+    .nx-dropdown-results__option-label {
+      color: GrayText;
+    }
   }
 }

@@ -195,6 +195,7 @@ $dropdown-border-size: nx-border-size(xs);
 @media screen and (-ms-high-contrast: active) {
   .nx-dropdown__panel {
     box-shadow: 0 0 0 nx-border-size(xs) windowText;
+    border: 1px solid CanvasText;   // Chromium Edge
   }
 
   .nx-dropdown__panel-header {

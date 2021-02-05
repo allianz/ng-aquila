@@ -31,7 +31,7 @@ $icon-outline-size-xl: 160px;
   }
 
   @media screen and (-ms-high-contrast: active) {
-    -ms-high-contrast-adjust: none;
+    color: inherit !important;
   }
 }
 

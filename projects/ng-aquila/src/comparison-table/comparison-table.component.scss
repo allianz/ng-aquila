@@ -504,3 +504,12 @@
     position: relative; // needed that z-index works
   }
 }
+
+@media screen and (-ms-high-contrast: active) {
+  ::ng-deep .nx-comparison-table__popular-cell,
+  ::ng-deep .nx-comparison-table__mobile-popular-cell {
+    border-top: 1px solid windowText;
+    border-right: 1px solid windowText;
+    border-left: 1px solid windowText;
+  }
+}

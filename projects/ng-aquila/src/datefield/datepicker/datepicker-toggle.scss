@@ -29,6 +29,10 @@ $icon-size: nx-spacer(m);
   &::-moz-focus-inner {
     border: 0;
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    color: ButtonText;
+  }
 }
 
 .default-icon {
@@ -39,6 +43,10 @@ $icon-size: nx-spacer(m);
 
 :host(.nx-datepicker-toggle--disabled) .nx-datepicker-toggle-button {
   cursor: not-allowed;
+
+  @media screen and (-ms-high-contrast: active) {
+    color: GrayText;
+  }
 }
 
 .nx-datepicker-toggle-button.cdk-keyboard-focused {

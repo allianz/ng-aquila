@@ -99,7 +99,7 @@ $dot-border-radius: 50%;
     }
 
     @media screen and (-ms-high-contrast: active) {
-      background-color: windowText;
+      background-color: windowText !important;
     }
   }
 }

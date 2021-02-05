@@ -125,6 +125,22 @@ input[type=number] {
    -moz-appearance: textfield;
 }
 
+@media screen and (forced-colors: active) {
+  .nx-code-input__field {
+    border-bottom: 1px solid buttonText !important;
+  }
+
+  &:focus {
+    border-bottom: 2px solid highlight !important;
+  }
+
+  :host.is-disabled {
+    .nx-code-input__field {
+      border-bottom: 1px solid GrayText !important;
+    }
+  }  
+}
+
 @media screen and (-ms-high-contrast: active) {
   .nx-code-input__field {
     box-shadow: inset $default-box-shadow buttonText;

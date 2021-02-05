@@ -259,92 +259,44 @@ $check-icon-size: nx-spacer(2m);
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .nx-toggle-circle__icon-wrapper {
-    border-color: buttonText;
-    background-color: buttonFace;
-  }
+  :host {
+    forced-color-adjust: none;
 
-  .nx-toggle-circle__content-text {
-    -ms-high-contrast-adjust: none;
-  }
-
-  .nx-toggle-circle__label-text,
-  .nx-toggle-circle__label-hint {
-    color: buttonText;
-  }
-
-  :host:not(.is-flipped),
-  :host(.is-negative):not(.is-flipped):not(.is-disabled):not(.is-touched) {
-
-    .nx-toggle-circle__icon nx-icon,
-    .nx-toggle-circle__content-text {
-      color: buttonText;
-    }
-  }
-
-  :host(.is-flipped),
-  :host(.is-negative.is-flipped) {
-
-    .nx-toggle-circle__icon-wrapper {
-      background: highlight;
-      border-color: highlight;
-      color: highlightText;
-    }
-
-    .nx-toggle-circle__icon nx-icon,
-    .nx-toggle-circle__content-text {
-      color: highlightText;
-    }
-
+    .nx-toggle-circle__icon-wrapper,
     .nx-toggle-circle__check-icon {
-      border-color: windowText;
-      color: windowText;
-    }
-  }
-
-  // Undo hover styles
-  :host:not(.is-disabled):not(.is-touched):hover,
-  :host.is-negative:not(.is-disabled):not(.is-touched):hover {
-    &.is-flipped {
-      .nx-toggle-circle__icon nx-icon,
-      .nx-toggle-circle__content-text {
-        color: highlightText;
-      }
+      border-color: buttonText !important;
+      color: buttonText !important;
+      background: buttonFace !important;
     }
 
-    &:not(.is-flipped) {
-      .nx-toggle-circle__icon nx-icon,
-      .nx-toggle-circle__content-text {
-        color: buttonText;
-      }
-    }
-  }
-
-  // disabled
-  :host(.is-disabled.is-flipped),
-  :host(.is-disabled.is-flipped):hover,
-  :host(.is-disabled) {
-    opacity: 1;
-
-    .nx-toggle-circle__icon-wrapper {
-      border-color: GrayText;
-      background: buttonFace;
-      color: GrayText;
-
-      .nx-toggle-circle__icon nx-icon,
-      .nx-toggle-circle__content-text {
-        color: GrayText;
-      }
-    }
-
-    .nx-toggle-circle__check-icon {
-      border-color: GrayText;
-      color: GrayText;
-    }
-
+    .nx-toggle-circle__content-text,
     .nx-toggle-circle__label-text,
     .nx-toggle-circle__label-hint {
-      color: GrayText;
+      color: buttonText !important;
+    }
+
+    &.is-flipped {
+      .nx-toggle-circle__icon-wrapper {
+        background: highlight !important;
+        border-color: highlight !important;
+        color: highlightText !important;
+      }
+    }
+
+    &.is-disabled {
+      opacity: 1;
+
+      .nx-toggle-circle__icon-wrapper,
+      .nx-toggle-circle__check-icon {
+        background: window !important;
+        border-color: GrayText !important;
+        color: GrayText !important;
+      }
+
+      .nx-toggle-circle__label-text,
+      .nx-toggle-circle__label-hint {
+        color: GrayText !important;
+      }
     }
   }
 }

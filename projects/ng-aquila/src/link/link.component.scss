@@ -162,9 +162,15 @@
   }
 }
 
+@media screen and (forced-colors: active) {
+  :host {
+    color: LinkText !important;
+  }
+}
+
 @media screen and (-ms-high-contrast: active) {
   :host::ng-deep a[disabled],
   :host::ng-deep a[aria-disabled] {
-    color: GrayText;
+    color: GrayText !important;
   }
 }
