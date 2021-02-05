@@ -1,6 +1,5 @@
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import {
-  ConnectedPosition,
   ConnectionPositionPair,
   FlexibleConnectedPositionStrategy,
   Overlay,
@@ -29,7 +28,7 @@ import {
   NgZone
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
-import { fromEvent, Observable, Subject, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxPopoverComponent } from './popover.component';
@@ -37,7 +36,7 @@ import { FocusTrapFactory, FocusTrap } from '@angular/cdk/a11y';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
-import { Direction, Directionality } from '@angular/cdk/bidi';
+import { Directionality } from '@angular/cdk/bidi';
 
 export declare type PopoverVerticalDirection = 'top' | 'bottom';
 export declare type PopoverHorizontalDirection = 'left' | 'right';
@@ -74,7 +73,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   private _closeable: boolean = null;
   private _positionStrategy: PositionStrategy;
   private _embeddedViewRef: EmbeddedViewRef<any>;
-  private _documentClickObservable: Observable<MouseEvent>;
   private _modal: boolean = false;
   /** The class that traps and manages focus within the popover. */
   private _focusTrap: FocusTrap;
@@ -178,7 +176,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
               private _platform: Platform,
               @Optional() private _dir: Directionality,
               @Optional() @Inject(DOCUMENT) private _document: any) {
-    this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
     const element: HTMLElement = elementRef.nativeElement;
     if (!this._platform.IOS && !this._platform.ANDROID) {
       this._manualListeners
@@ -426,7 +423,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   // subscribe to document clicks when trigger='click' to close the popover on clicks on the background
   private waitForClose() {
-    return this._documentClickObservable
+    return this.overlayRef.outsidePointerEvents()
       .pipe(
         map(event => event.target),
         filter(target => !this.elementRef.nativeElement.contains(target)),

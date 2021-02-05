@@ -1,5 +1,5 @@
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Type, ViewChild, Directive, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 import { Subscription } from 'rxjs';
@@ -46,7 +46,7 @@ describe('NxPopoverTriggerDirective', () => {
     testInstance = fixture.componentInstance;
     popoverInstance = testInstance.popoverInstance;
     triggerInstance = testInstance.triggerInstance;
-    buttonNativeElement = (fixture.nativeElement.querySelector('button') as HTMLButtonElement);
+    buttonNativeElement = (fixture.debugElement.query(By.css('button')).nativeElement as HTMLButtonElement);
   }
 
   beforeEach(waitForAsync(() => {
@@ -69,6 +69,7 @@ describe('NxPopoverTriggerDirective', () => {
         ClickOnDocument,
         ScrollablePopover,
         PopoverWithinRTLContainer,
+        PopoverClickShadowDomComponent
       ]
     }).compileComponents();
   }));
@@ -248,26 +249,36 @@ describe('NxPopoverTriggerDirective', () => {
     it('should close the popover by clicking outside for nxTrigger="click"', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
       click();
-      document.dispatchEvent(new MouseEvent('click'));
+      document.body.dispatchEvent(new MouseEvent('click'));
       fixture.detectChanges();
       expect(getPopoverContent()).toBeFalsy();
     }));
 
-    it('should close on backdrop click if closeOnClickOutside is set to true', fakeAsync(() => {
-      createTestComponent(ClickOnDocument);
+    it('should open correctly inside shadow dom', fakeAsync(() => {
+      createTestComponent(PopoverClickShadowDomComponent);
       click();
-      document.dispatchEvent(new MouseEvent('click'));
       fixture.detectChanges();
+      flush();
+      checkPopoverOpen(true);
+    }));
+
+    it('should close by clicking other element inside shadow dom', fakeAsync(() => {
+      createTestComponent(PopoverClickShadowDomComponent);
+      click();
+      const button = fixture.debugElement.query(By.css('.other')).nativeElement;
+      button.click();
+      fixture.detectChanges();
+      flush();
       expect(getPopoverContent()).toBeFalsy();
     }));
 
-    it('should not close on backdrop click if closeOnClickOutside is set to false', fakeAsync(() => {
+    it('should not close when clicked outside if closeOnClickOutside is set to false', fakeAsync(() => {
       createTestComponent(ClickOnDocument);
       (testInstance as ClickOnDocument).closable = false;
       fixture.detectChanges();
 
       click();
-      document.dispatchEvent(new MouseEvent('click'));
+      document.body.dispatchEvent(new MouseEvent('click'));
       fixture.detectChanges();
 
       expect(getPopoverContent()).toBeTruthy();
@@ -280,7 +291,7 @@ describe('NxPopoverTriggerDirective', () => {
       const subscription: Subscription = testInstance.popoverInstance.closed.subscribe(spy);
 
       click();
-      document.dispatchEvent(new MouseEvent('click'));
+      document.body.dispatchEvent(new MouseEvent('click'));
       expect(spy).toHaveBeenCalled();
       subscription.unsubscribe();
     }));
@@ -324,7 +335,10 @@ describe('NxPopoverTriggerDirective', () => {
     it('should close the popover by clicking anywhere outside the component', fakeAsync(() => {
       createTestComponent(PopoverClickComponent);
       click();
-      document.dispatchEvent(new Event('click'));
+      flush();
+      dispatchFakeEvent(document.body, 'click');
+      fixture.detectChanges();
+      flush();
       expect(getPopoverContent()).toBeFalsy();
     }));
 
@@ -364,6 +378,20 @@ describe('NxPopoverTriggerDirective', () => {
       backdrop.click();
       flush();
       expect(getPopoverContent()).toBeFalsy();
+    }));
+
+    it('should not close when backdrop is clicked if closeOnClickOutside is set to false', fakeAsync(() => {
+      createTestComponent(ModalPopover);
+      (testInstance as ModalPopover).closable = false;
+      fixture.detectChanges();
+      click();
+
+      const backdrop = getBackdrop();
+      backdrop.click();
+      fixture.detectChanges();
+      flush();
+
+      expect(getPopoverContent()).toBeTruthy();
     }));
 
     it('should emit closed event on backdrop click', fakeAsync(() => {
@@ -635,6 +663,22 @@ class PopoverHoverComponent extends PopoverTest {
     </nx-popover>`
 })
 class PopoverClickComponent extends PopoverTest {
+}
+
+@Component({
+  template: `
+    <div>
+      <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover
+      </button>
+    </div>
+
+    <button class="other">Other button</button>
+
+    <nx-popover #popoverHover>
+    </nx-popover>`,
+    encapsulation: ViewEncapsulation.ShadowDom
+})
+class PopoverClickShadowDomComponent extends PopoverTest {
 }
 
 @Component({
