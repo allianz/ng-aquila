@@ -275,102 +275,36 @@ $bordered-without-right: $border-width 0 $border-width $border-width;
   z-index: 1; // otherwise the right box shadown is not shown
 }
 
-
-// HIGH CONTRAST
-@mixin hc-unchecked {
-  background-color: buttonFace;
-  border-color: buttonText;
-  color: buttonText;
-}
-
-// also used for :disabled:checked
-@mixin hc-checked {
-  background-color: highlight;
-  border-color: buttonText;
-  color: highlightText;
-}
-
-@mixin hc-disabled-unchecked {
-  background-color: buttonFace;
-  border-color: GrayText;
-  color: GrayText;
-}
-
 @media screen and (-ms-high-contrast: active) {
   :host {
     forced-color-adjust: none;
-
-    &.has-error {
-      .nx-radio-toggle__input:checked + .nx-radio-toggle__label-container {
-        @include hc-checked();
-      }
-
-      .nx-radio-toggle__label-container {
-        border-color: buttonText;
-        color: buttonText;
-      }
-
-      &:hover {
-        .nx-radio-toggle__label-container {
-          color: buttonText;
-        }
-      }
-    }
   }
 
-  .nx-radio-toggle__input {
-    &:active + .nx-radio-toggle__label-container {
-      @include hc-unchecked();
-    }
-
-    &:checked + .nx-radio-toggle__label-container {
-      @include hc-checked();
-  
-      .nx-radio-toggle__label {
-        -ms-high-contrast-adjust: none;
-        color: highlightText;
-      }
-    }
-
-    &:checked:disabled + .nx-radio-toggle__label-container {
-      @include hc-checked();
-    }
-
-    &:disabled + .nx-radio-toggle__label-container {
-      @include hc-disabled-unchecked();
-    }
-  }
-
-  .nx-radio-toggle__label-container,
-  .nx-radio-toggle__label-container:hover {
-    @include hc-unchecked();
+  .nx-radio-toggle__label-container {
+    background-color: buttonFace !important;
+    border-color: buttonText !important;
+    color: buttonText !important;
 
     .nx-radio-toggle__label {
       -ms-high-contrast-adjust: none;
     }
   }
 
-  // negative version
-  :host-context(.nx-radio-toggle--negative) {
-    .nx-radio-toggle__input {
-      &:focus + .nx-radio-toggle__label-container,
-      &:active + .nx-radio-toggle__label-container {
-        @include hc-unchecked();
-      }
-
-      &:checked + .nx-radio-toggle__label-container,
-      &:disabled:checked + .nx-radio-toggle__label-container {
-        @include hc-checked();
-      }
-
-      &:disabled + .nx-radio-toggle__label-container {
-        @include hc-disabled-unchecked();
-      }
+  .nx-radio-toggle__input {
+    &:disabled + .nx-radio-toggle__label-container {
+      background-color: buttonFace !important;
+      border-color: GrayText !important;
+      color: GrayText !important;
     }
 
-    .nx-radio-toggle__label-container,
-    .nx-radio-toggle__label-container:hover {
-      @include hc-unchecked();
+    &:checked + .nx-radio-toggle__label-container {
+      background-color: highlight !important;
+      border-color: buttonText !important;
+      color: highlightText !important;
+  
+      .nx-radio-toggle__label {
+        color: highlightText !important;
+      }
     }
   }
 }

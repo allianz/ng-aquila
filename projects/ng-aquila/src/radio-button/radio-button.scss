@@ -184,69 +184,39 @@ $radio-border-radius: 50%;
 }
 
 @media screen and (-ms-high-contrast: active) {
-
-  :host,
-  :host.nx-radio--negative {
+  :host {
     .nx-radio__label {
-      color: buttonText;
+      color: buttonText !important;
     }
 
     .nx-radio__circle {
       forced-color-adjust: none;
-      border-color: buttonText;
-      background-color: buttonFace;
+      border-color: buttonText !important;
+      background-color: buttonFace !important;
     }
 
     .nx-radio__input:checked + .nx-radio__label {
       .nx-radio__circle {
-        border-color: highlight;
+        border-color: highlight !important;
       }
 
       .nx-radio__dot {
-        background-color: highlight;
+        background-color: highlight !important;
       }
     }
 
     .nx-radio__input:disabled + .nx-radio__label {
-      color: GrayText;
+      color: GrayText !important;
       opacity: 1;
 
       .nx-radio__circle {
-        border-color: GrayText;
+        border-color: GrayText !important;
       }
     }
 
-    .nx-radio__input:checked:disabled +.nx-radio__label {
+    .nx-radio__input:checked:disabled + .nx-radio__label {
       .nx-radio__dot {
-        background-color: GrayText;
-      }
-    }
-
-    // overwrite hover style
-    &:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
-      & + .nx-radio__label:hover .nx-radio__circle {
-        border-color: buttonText;
-      }
-
-      &:checked + .nx-radio__label:hover .nx-radio__circle {
-        border-color: highlight;
-      }
-    
-      &:checked + .nx-radio__label:hover .nx-radio__dot {
-        background-color: highlight;
-      }
-    }
-
-    // overwrite error styles
-    &.has-error {
-      .nx-radio__input + .nx-radio__label {
-        .nx-radio__circle {
-          border-color: buttonText;
-        }
-    
-        .nx-radio__dot {
-          background-color: buttonText;
-        }
+        background-color: GrayText !important;
       }
     }
   }

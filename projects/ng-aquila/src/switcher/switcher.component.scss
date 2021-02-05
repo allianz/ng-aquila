@@ -255,11 +255,6 @@ $switcher-border-radius: nx-border-radius(m);
         bottom: 0;
         box-shadow: 0 0 0 nx-border-size(m) buttonText;
         background-color: buttonText;
-
-        [dir="rtl"] & {
-          right: 0;
-          left: auto;
-        }
       }
     }
 

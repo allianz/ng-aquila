@@ -213,71 +213,44 @@ $checkbox-size: nx-spacer(m);
 // sass-lint:disable no-vendor-prefixes
 @media screen and (-ms-high-contrast: active) {
 
-  :host,
-  :host.nx-checkbox--negative,
-  :host.has-error {
-
-    .nx-checkbox__input + .nx-checkbox__label .nx-checkbox__control {
+  :host {
+    .nx-checkbox__control {
       forced-color-adjust: none;
-      border-color: buttonText;
-      background-color: buttonFace;
+      border-color: buttonText !important;
+      background-color: buttonFace !important;
     }
 
-    .nx-checkbox__input + .nx-checkbox__label .nx-checkbox__label-text {
-      color: buttonText;
+    .nx-checkbox__label-text {
+      color: buttonText !important;
     }
 
     .nx-checkbox__input:checked + .nx-checkbox__label .nx-checkbox__control {
-      background-color: highlight;
-      border-color: highlight;
-
-      nx-icon {
-        color: highlightText;
-      }
+      background-color: highlight !important;
+      border-color: highlight !important;
+      color: highlightText !important;
     }
 
     .nx-checkbox__input:indeterminate + .nx-checkbox__label .nx-checkbox__indeterminate-indicator {
-      color: buttonText;
+      color: buttonText !important;
     }
 
     .nx-checkbox__input:disabled + .nx-checkbox__label .nx-checkbox__label-text,
     .nx-checkbox__input:disabled + .nx-checkbox__label .nx-checkbox__control nx-icon {
-      color: GrayText;
+      color: GrayText !important;
     }
 
     .nx-checkbox__input:disabled:indeterminate + .nx-checkbox__label .nx-checkbox__indeterminate-indicator {
-      color: GrayText;
+      color: GrayText !important;
     }
 
     .nx-checkbox__input:disabled + .nx-checkbox__label .nx-checkbox__control {
-      border-color: GrayText;
+      border-color: GrayText !important;
     }
 
     .nx-checkbox__input:disabled:checked + .nx-checkbox__label .nx-checkbox__control {
-      background-color: buttonFace;
-      border-color: GrayText;
-
-      nx-icon {
-        color: GrayText;
-      }
+      background-color: buttonFace !important;
+      border-color: GrayText !important;
+      color: GrayText !important;
     }
-
-    // overwrite hover and active colors
-    &:not(.nx-checkbox--negative):not(.has-error):hover,
-    &:not(.nx-checkbox--negative):active {
-      .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__control {
-        background-color: highlight;
-        border-color: highlight;
-      }
-    
-      .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__indeterminate-indicator {
-        background-color: highlight;
-      }
-    
-      .nx-checkbox__input:not([disabled]) + .nx-checkbox__label .nx-checkbox__control {
-        border-color: buttonText;
-      }
-    }
-
   }
 }
