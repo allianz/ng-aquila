@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   templateUrl: './rtl-dynamic-example.html',
   styleUrls: ['./rtl-dynamic-example.css']
 })
-export class RTLDynamicExampleComponent {
+export class RtlDynamicExampleComponent {
   direction: Direction = 'ltr';
   sliderDemoValue: number = 10;
 
