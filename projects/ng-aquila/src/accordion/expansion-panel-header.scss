@@ -216,11 +216,11 @@ $extra-light-header-title-margin-after: 8px;
   }
 
   :host.is-disabled.is-disabled .nx-expansion-panel__header-content {
-    color: GrayText;
+    color: GrayText !important;
     background-color: buttonFace;
 
     .nx-expansion-panel__chevron {
-      color: GrayText;
+      color: GrayText!important;
     }
   }
 }

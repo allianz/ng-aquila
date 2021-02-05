@@ -99,7 +99,10 @@ $edge-margin: 4%;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .nx-spinner__spin-block {
-    border-color: window highlight highlight highlight;
+  :host,
+  :host.nx-spinner--negative {
+    .nx-spinner__spin-block {
+      border-color: window highlight highlight highlight;
+    }
   }
 }

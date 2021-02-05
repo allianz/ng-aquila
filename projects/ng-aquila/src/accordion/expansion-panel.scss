@@ -146,13 +146,16 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 @media screen and (-ms-high-contrast: active) {
   :host {
     border-color: windowText;
-    color: buttonText;
 
-    &.nx-expansion-panel--regular {
+    ::ng-deep .nx-expansion-panel__header-content {
+      color: buttonText;
+    }
+
+    &.nx-expansion-panel--regular ::ng-deep .nx-expansion-panel__header-content {
       border: nx-border-size(xs) solid buttonText;
     }
 
-    &.is-disabled {
+    &.is-disabled ::ng-deep .nx-expansion-panel__header-content {
       border-color: GrayText;
     }
 
@@ -164,7 +167,8 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 
       &:last-child,
       &:only-child {
-        box-shadow: 0 1px 0 0 windowText;
+        box-shadow: 0 1px 0 0 windowText;       // IE11
+        border-bottom: 1px solid CanvasText;    // Chromium Edge
       }
     }
   }

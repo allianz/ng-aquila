@@ -119,15 +119,22 @@ input.cdk-keyboard-focused + label {
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host {
-    label {
+  :host,
+  :host(.has-error) {
+    label,
+    label:hover {
       border-color: buttonText;
     }
 
-    input:checked + label {
+    input:checked + label,
+    input:checked + label:hover {
       border-width: nx-border-size(l);
       padding: nx-spacer(s) - nx-border-size(l) + nx-border-size(xs);
       border-color: highlight;
+
+      ::ng-deep nx-icon.checked-icon {
+        color: CanvasText;
+      }
     }
   }
 

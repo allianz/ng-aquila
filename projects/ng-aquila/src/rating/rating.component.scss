@@ -75,18 +75,25 @@
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .nx-rating__icon {
-    color: buttonText;
-  }
+  :host,
+  :host.nx-rating--negative {
+    .nx-rating__icon {
+      color: buttonText;
+    }
 
-  :host(.nx-rating--disabled) {
-    .nx-rating__icon,
     .nx-rating__label {
-      color: GrayText;
+      -ms-high-contrast-adjust: none;   // fixes the broken focus styling
+      color: CanvasText;
     }
   }
 
-  .nx-rating__label {
-    -ms-high-contrast-adjust: none;   // fixes the broken focus styling
+  :host(.nx-rating--disabled) {
+    .nx-rating__icon {
+      color: GrayText;
+    }
+
+    .nx-rating__label {
+      color: windowText;
+    }
   }
 }

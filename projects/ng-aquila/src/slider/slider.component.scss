@@ -236,19 +236,12 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
   .nx-slider__value {
     border-color: buttonText;
-    background-color: buttonFace;
     color: buttonText;
-    -ms-high-contrast-adjust: none;
-  }
-
-  .nx-slider__arrow {
-    -ms-high-contrast-adjust: auto;
-    background-color: buttonFace;
   }
 
   :host(.nx-slider--disabled) {
     .nx-slider__background {
-      background-color: background;
+      background-color: Canvas;
       border: nx-border-size(xs) solid GrayText;
     }
 
@@ -267,6 +260,12 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
     .nx-slider__arrow {
       border-color: GrayText;
+    }
+  }
+
+  :host.nx-slider--negative.nx-slider--disabled {
+    .nx-slider__filler {
+      background-color: GrayText;
     }
   }
 }

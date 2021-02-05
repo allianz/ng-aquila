@@ -11,6 +11,10 @@ $horizontal-padding-edges: nx-spacer(2xs);
   border-spacing: 0;
   border-bottom: $border-bottom-width solid v(table-border-bottom-color);
   width: 100%;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-bottom-color: CanvasText;
+  }
 }
 
 ::ng-deep .nx-header-cell {

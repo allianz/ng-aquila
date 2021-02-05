@@ -1,32 +1,38 @@
 @import "../shared-styles/index";
 
 :host {
-    display: flex;
-    list-style: none;
-    height: 24px;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  height: 24px;
+  padding: 0;
 }
 
 ::ng-deep li:last-child ::ng-deep .nx-breadcrumb-item {
-    font-weight: nx-font-weight(semibold);
-    cursor: auto;
+  font-weight: nx-font-weight(semibold);
+  cursor: auto;
 }
 
 ::ng-deep li:last-child ::ng-deep .nx-breadcrumb-item__chevron {
-    display: none;
+  display: none;
 }
 
 ::ng-deep li + li ::ng-deep .nx-breadcrumb-item {
-    margin-left: nx-spacer(3xs);
+  margin-left: nx-spacer(3xs);
 
-    :host-context([dir="rtl"]) & {
-        margin-left: initial;
-        margin-right: nx-spacer(3xs);
-    }
+  :host-context([dir="rtl"]) & {
+    margin-left: initial;
+    margin-right: nx-spacer(3xs);
+  }
 }
 
 :host(.is-negative) {
-    ::ng-deep .nx-breadcrumb-item {
-        @include var(color, negative);
-    }
+  ::ng-deep .nx-breadcrumb-item {
+    @include var(color, negative);
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  ::ng-deep .nx-breadcrumb-item__chevron {
+    color: windowText;
+  }
 }
