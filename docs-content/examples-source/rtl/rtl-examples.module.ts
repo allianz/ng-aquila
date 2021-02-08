@@ -3,14 +3,14 @@ import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxSliderModule } from '@aposin/ng-aquila/slider';
-import { RTLBasicExampleComponent } from './rtl-basic/rtl-basic-example';
-import { RTLDynamicExampleComponent } from './rtl-dynamic/rtl-dynamic-example';
+import { RtlBasicExampleComponent } from './rtl-basic/rtl-basic-example';
+import { RtlDynamicExampleComponent } from './rtl-dynamic/rtl-dynamic-example';
 import { CommonModule } from '@angular/common';
 import { BidiModule } from '@angular/cdk/bidi';
 
 const EXAMPLES = [
-  RTLBasicExampleComponent,
-  RTLDynamicExampleComponent,
+  RtlBasicExampleComponent,
+  RtlDynamicExampleComponent,
 ];
 
  @NgModule({
@@ -25,11 +25,11 @@ const EXAMPLES = [
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
 })
-export class RTLExamplesModule {
+export class RtlExamplesModule {
   static components() {
     return {
-      'rtl-basic': RTLBasicExampleComponent,
-      'rtl-dynamic': RTLDynamicExampleComponent,
+      'rtl-basic': RtlBasicExampleComponent,
+      'rtl-dynamic': RtlDynamicExampleComponent,
     };
   }
 }

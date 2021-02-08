@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './rtl-basic-example.html',
   styleUrls: ['./rtl-basic-example.css']
 })
-export class RTLBasicExampleComponent {
+export class RtlBasicExampleComponent {
   sliderDemoValue: number = 10;
 }

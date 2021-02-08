@@ -44,5 +44,5 @@ The filled option should only be used with **product** icons.
 <div nx-docs-example="icon-list-product" config="{}">exampleID: icon-list-product</div>
 </div>
 <h3 id="register-icons-service" class="docs-markdown--h3">Register icons service</h3>
-<p class="docs-markdown--p">Custom icons can be registered via the <code>NxIconRegistry</code> injectable service. With the <code>NxIconRegistry</code> you can associate icon names with SVG, URL and HTML strings and define a CSS font class.</p>
+<p class="docs-markdown--p">Custom icons can be registered via the <code>NxIconRegistry</code> injectable service. With the <code>NxIconRegistry</code> you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the <code>HttpClientModule</code> from <code>@angular/common/http</code>.</p>
 <div nx-docs-example="icon-registry" config="{}">exampleID: icon-registry</div>

@@ -168,7 +168,7 @@
   case 'rating': return import('../examples/rating/rating-examples.module').then(m => m.RatingExamplesModule);
   
 
-  case 'rtl': return import('../examples/rtl/rtl-examples.module').then(m => m.RTLExamplesModule);
+  case 'rtl': return import('../examples/rtl/rtl-examples.module').then(m => m.RtlExamplesModule);
   
 
   case 'sidebar': return import('../examples/sidebar/sidebar-examples.module').then(m => m.SidebarExamplesModule);
