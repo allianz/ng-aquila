@@ -10,10 +10,10 @@ You should have Node.js and the Angular CLI installed.
 
 ### Automatic setup with ng add
 
-1. **Create your project with [Angular CLI version 10](https://cli.angular.io/):**
+1. **Create your project with [Angular CLI version 11](https://cli.angular.io/):**
 
     ```console
-    npm install -g @angular/cli@10
+    npm install -g @angular/cli@11
     ng new my-aposin-project
     ```
 
@@ -39,10 +39,10 @@ Now you can include components and start building your application.
 
 You can also install ng-aquila manually.
 
-1. **Create your project with [Angular CLI version 10](https://cli.angular.io/):**
+1. **Create your project with [Angular CLI version 11](https://cli.angular.io/):**
 
     ```
-    npm install -g @angular/cli@10
+    npm install -g @angular/cli@11
     ng new my-aposin-project
     ```
 
@@ -51,7 +51,7 @@ You can also install ng-aquila manually.
     ```
     cd my-aposin-project
     npm install @aposin/ng-aquila
-    npm install @angular/cdk@10
+    npm install @angular/cdk
     ```
 
     Depending on your needs, you may also install
