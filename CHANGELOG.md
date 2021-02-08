@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.0.1](https://github.com/aposin/ng-aquila/compare/v11.0.0...v11.0.1) (2021-02-08)
+
+
+### Bug Fixes
+
+* **icon-registry:** throw proper error if HttpClient is missing ([86c6f69](https://github.com/aposin/ng-aquila/commit/86c6f69204110db4ebceb6364ac3d0c494508ef8))
+* **popover:** handle document clicks in shadow dom ([14025df](https://github.com/aposin/ng-aquila/commit/14025dfc63f3d805fb7c52be0e13ae356d87bc4e))
+* **tooltip:** add input to allow selection of text in trigger ([f12b99e](https://github.com/aposin/ng-aquila/commit/f12b99eb627709c7f00f26c37ac53c258d432b55))
+* **various:** high contrast on Chromium Edge ([1ade45c](https://github.com/aposin/ng-aquila/commit/1ade45cd69be90e71cbba921eb9fbd2baf27d7fe))
+* **various:** high contrast on Chromium Edge ([7858f2f](https://github.com/aposin/ng-aquila/commit/7858f2f3b5b672a611e1f166878e6751f3c82c3d))
+* **various:** high contrast on Chromium Edge ([3eaa23d](https://github.com/aposin/ng-aquila/commit/3eaa23d58375cf9ea884d171a7141409519feabf))
+
+
+
 # [11.0.0](https://github.com/aposin/ng-aquila/compare/v10.9.0...v11.0.0) (2021-01-29)
 
 ### Highlights
