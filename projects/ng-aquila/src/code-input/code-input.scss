@@ -128,10 +128,10 @@ input[type=number] {
 @media screen and (forced-colors: active) {
   .nx-code-input__field {
     border-bottom: 1px solid buttonText !important;
-  }
 
-  &:focus {
-    border-bottom: 2px solid highlight !important;
+    &:focus {
+      border-bottom: 2px solid highlight !important;
+    }
   }
 
   :host.is-disabled {

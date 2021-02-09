@@ -15,8 +15,7 @@ const { opensourceThemes } = require('./themes.js');
 
 
 function compileTheme(theme) {
-    const result = execSync(`node-sass projects/ng-aquila/src/shared-styles/theming/prebuilt/` + theme + `.scss dist/ng-aquila/themes/` + theme + `.css`).toString();
-    console.info(result);
+  execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/theming/prebuilt/${theme}.scss dist/ng-aquila/themes/${theme}.css`, { stdio: 'inherit' });
 }
 
 
@@ -37,7 +36,7 @@ opensourceThemes.forEach(theme => {
 console.log("========================");
 console.log("  Building utility css");
 ['utilities', 'normalize', 'compatibility'].forEach(file => {
-    execSync(`node-sass projects/ng-aquila/src/shared-styles/${file}.scss -o dist/ng-aquila/css`, {stdio: 'inherit'});
+    execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/${file}.scss dist/ng-aquila/css/${file}.css`, {stdio: 'inherit'});
 })
 
 console.log("========================");
