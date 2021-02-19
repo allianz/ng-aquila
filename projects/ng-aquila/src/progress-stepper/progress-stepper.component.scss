@@ -8,6 +8,9 @@
   &[aria-expanded='false'] {
     height: 0;
     overflow: hidden;
+    // needed that tabbing doesn't focus any focusable elements
+    // inside the content if the step isn't active
+    visibility: hidden;
   }
 }
 

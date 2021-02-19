@@ -1,3 +1,4 @@
+import { RIGHT_ARROW, ENTER, SPACE, LEFT_ARROW, DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -9,6 +10,7 @@ import * as axe from 'axe-core';
 import { Validators, FormBuilder, ReactiveFormsModule, FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 
 // We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -35,6 +37,10 @@ describe('NxMultiStepperComponent', () => {
     testInstance = fixture.componentInstance;
     multiStepInstance = testInstance.componentInstance;
     multiStepElementRef = testInstance.componentInstanceRef;
+  }
+
+  function getStepHeaders() {
+    return fixture.nativeElement.querySelectorAll('nx-multi-step-item');
   }
 
   beforeEach(
@@ -105,6 +111,32 @@ describe('NxMultiStepperComponent', () => {
 
     checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
     expect(checkIcon.length).toBe(1);
+  });
+
+  it('should move focus with arrow keys', () => {
+    createTestComponent(MultiStepBasicTest);
+    const stepHeaders = getStepHeaders();
+    dispatchKeyboardEvent(stepHeaders[0], 'keydown', RIGHT_ARROW);
+    fixture.detectChanges();
+    expect(testInstance.componentInstance._getFocusIndex()).toBe(1);
+    expect(testInstance.componentInstance.selectedIndex).toBe(0);
+  });
+
+  it('should select tab when pressing ENTER or SPACE', () => {
+    createTestComponent(MultiStepBasicTest);
+    const stepHeaders = getStepHeaders();
+    dispatchKeyboardEvent(stepHeaders[0], 'keydown', RIGHT_ARROW);
+    fixture.detectChanges();
+    dispatchKeyboardEvent(stepHeaders[1], 'keydown', ENTER);
+    fixture.detectChanges();
+    expect(testInstance.componentInstance._getFocusIndex()).toBe(1);
+    expect(testInstance.componentInstance.selectedIndex).toBe(1);
+    dispatchKeyboardEvent(stepHeaders[1], 'keydown', LEFT_ARROW);
+    fixture.detectChanges();
+    dispatchKeyboardEvent(stepHeaders[0], 'keydown', SPACE);
+    fixture.detectChanges();
+    expect(testInstance.componentInstance._getFocusIndex()).toBe(0);
+    expect(testInstance.componentInstance.selectedIndex).toBe(0);
   });
 
   describe('on step click', () => {
@@ -196,6 +228,18 @@ describe('NxMultiStepperComponent', () => {
           expect(step.classList.contains('nx-multi-step--vertical')).toBe(true);
         });
       });
+
+      it('should change step with UP and DOWN arrows', () => {
+        const stepHeaders = getStepHeaders();
+        dispatchKeyboardEvent(stepHeaders[0], 'keydown', DOWN_ARROW);
+        fixture.detectChanges();
+        expect(testInstance.componentInstance._getFocusIndex()).toBe(1);
+        expect(testInstance.componentInstance.selectedIndex).toBe(0);
+
+        dispatchKeyboardEvent(stepHeaders[1], 'keydown', UP_ARROW);
+        fixture.detectChanges();
+        expect(testInstance.componentInstance._getFocusIndex()).toBe(0);
+      });
     });
   });
 
@@ -221,6 +265,20 @@ describe('NxMultiStepperComponent', () => {
       steps.forEach((step: HTMLElement) => {
         expect(step.classList.contains('.nx-multi-step-item--vertical'));
       });
+    });
+
+    it('should set tabindexes correctly', () => {
+      const stepHeaders = getStepHeaders();
+      expect(stepHeaders[0].getAttribute('tabindex')).toBe('0');
+      expect(stepHeaders[1].getAttribute('tabindex')).toBe('-1');
+      expect(stepHeaders[2].getAttribute('tabindex')).toBe('-1');
+
+      stepHeaders[2].click();
+      fixture.detectChanges();
+
+      expect(stepHeaders[0].getAttribute('tabindex')).toBe('-1');
+      expect(stepHeaders[1].getAttribute('tabindex')).toBe('-1');
+      expect(stepHeaders[2].getAttribute('tabindex')).toBe('0');
     });
 
     describe('on step click', () => {
@@ -298,6 +356,23 @@ describe('NxMultiStepperComponent', () => {
         expect(results.violations.length).toBe(0);
         done();
       });
+    });
+
+    it('should set tabindexes and aria-selected on step headers', () => {
+      createTestComponent(MultiStepBasicTest);
+      const stepHeaders = getStepHeaders();
+      expect(stepHeaders[0].getAttribute('tabindex')).toBe('0');
+      expect(stepHeaders[1].getAttribute('tabindex')).toBe('-1');
+      expect(stepHeaders[0].getAttribute('aria-selected')).toBe('true');
+      expect(stepHeaders[1].getAttribute('aria-selected')).toBe('false');
+
+      stepHeaders[1].click();
+      fixture.detectChanges();
+
+      expect(stepHeaders[0].getAttribute('tabindex')).toBe('-1');
+      expect(stepHeaders[1].getAttribute('tabindex')).toBe('0');
+      expect(stepHeaders[0].getAttribute('aria-selected')).toBe('false');
+      expect(stepHeaders[1].getAttribute('aria-selected')).toBe('true');
     });
   });
 });
@@ -398,10 +473,16 @@ class MultiStepBasicTest extends MultiStepTest { }
         <nx-step label='Step 1' [completed]="completedOne">
           step 1 content
         </nx-step>
-      </nx-step-group>
-      <nx-step-group label="Group 2">
         <nx-step label='Step 2'>
           step 2 content
+        </nx-step>
+      </nx-step-group>
+      <nx-step-group label="Group 2">
+        <nx-step label='Step 3'>
+          step 3 content
+        </nx-step>
+        <nx-step label='Step 4'>
+          step 4 content
         </nx-step>
       </nx-step-group>
     </nx-multi-stepper>

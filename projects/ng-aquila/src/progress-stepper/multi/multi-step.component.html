@@ -2,13 +2,15 @@
   <ng-content select="nx-label"></ng-content>
 </span>
 
-<div class="nx-multi-stepper__items">
+<div class="nx-multi-stepper__items" role="tablist">
   <ng-container *ngIf="groups.length === 0 || direction === 'horizontal'; else groupsTemplate">
     <ng-container *ngFor="let step of steps;let i = index; let isLast = last; let isFirst = first">
 
       <nx-multi-step-item
         (click)="!_stepDisabled(i) && step.select()"
+        (keydown)="_onKeydown($event)"
         [last]="isLast"
+        [tabindex]="_getFocusIndex() === i ? 0 : -1"
         [label]="step.stepLabel || step.label"
         [completed]="step.completed"
         [selected]="selectedIndex === i"
@@ -55,6 +57,8 @@
         <ng-container *ngFor="let step of group.steps; let isLast = last;">
           <nx-multi-step-item
               (click)="!_stepDisabled(_getIndex(step)) && step.select()"
+              (keydown)="_onKeydown($event)"
+              [tabindex]="_getFocusIndex() === _getIndex(step) ? 0 : -1"
               [last]="isLast"
               [label]="step.stepLabel || step.label"
               [completed]="step.completed"

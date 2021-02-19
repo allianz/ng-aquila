@@ -16,15 +16,23 @@ $vertical-line-height: nx-spacer(s);
   padding-bottom: nx-spacer(2xs);
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+  }
+
+  &.cdk-keyboard-focused {
+    .dot {
+      @include focus-style;
+    }
+  }
+
   @media screen and (-ms-high-contrast: active) {
     .dot {
       border-color: buttonText;
     }
 
-    &.is-selected {
-      .dot  {
-        box-shadow: 0 0 0 4px highlight;
-      }
+    .small-dot {
+      background-color: buttonText;
     }
   }
 
@@ -223,21 +231,6 @@ $vertical-line-height: nx-spacer(s);
   padding: 0;
   margin: 0;
   background: transparent;
-}
-
-// TODO: At the moment the label-boxes cannot be focused with keyboard and this code has no effect.
-// When a navigation concept for the items is found, this needs to be refactored.
-:host-context([data-whatinput="keyboard"]) .label-box:focus {
-  outline: none;
-
-  // don't show inner dotted border on firefox
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  .dot {
-    @include focus-style;
-  }
 }
 
 .label {

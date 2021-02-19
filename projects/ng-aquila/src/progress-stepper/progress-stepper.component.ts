@@ -110,8 +110,8 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   /** Full list of steps inside the stepper, including inside nested steppers */
   @ContentChildren(NxStepComponent, { descendants: true }) _steps: QueryList<NxStepComponent>;
 
-    /** Steps that belong to the current stepper, excluding ones from nested steppers. */
-    readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
+  /** Steps that belong to the current stepper, excluding ones from nested steppers. */
+  readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
 
   _stepHeader: QueryList<FocusableOption> = new QueryList();
 

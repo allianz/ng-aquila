@@ -1,7 +1,8 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, OnDestroy } from '@angular/core';
 import { NxMultiStepperDirection } from './multi-step.component';
-import { CdkStepLabel } from '@angular/cdk/stepper';
+import { CdkStepHeader, CdkStepLabel } from '@angular/cdk/stepper';
 
 /** @docs-private */
 @Component({
@@ -16,10 +17,12 @@ import { CdkStepLabel } from '@angular/cdk/stepper';
     '[class.is-active]': 'active',
     '[class.is-disabled]': 'disabled',
     '[class.is-last]': 'last',
-    '[attr.aria-disabled]': 'disabled ? "true" : null'
+    '[attr.aria-disabled]': 'disabled ? "true" : null',
+    'role': 'tab',
+    '[attr.aria-selected]': 'selected',
   }
 })
-export class NxMultiStepItemComponent {
+export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy {
   /** The direction of the step */
   @Input()
   get direction(): NxMultiStepperDirection {
@@ -88,7 +91,17 @@ export class NxMultiStepItemComponent {
   }
   private _completed: boolean;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private _changeDetectorRef: ChangeDetectorRef,
+    public _elementRef: ElementRef<HTMLElement>,
+    private _focusMonitor: FocusMonitor) {
+    super(_elementRef);
+    this._focusMonitor.monitor(this._elementRef);
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   static ngAcceptInputType_selected: BooleanInput;
   static ngAcceptInputType_active: BooleanInput;

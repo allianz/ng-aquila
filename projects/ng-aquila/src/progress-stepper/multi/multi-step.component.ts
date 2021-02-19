@@ -1,10 +1,13 @@
+import { NxMultiStepItemComponent } from './multi-step-item.component';
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
   AfterContentInit,
   QueryList,
-  ContentChildren
+  ContentChildren,
+  ViewChildren,
+  AfterViewChecked
 } from '@angular/core';
 import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
 import { NxMultiStepperGroupComponent } from './multi-step-group.component';
@@ -32,7 +35,13 @@ export type NxMultiStepperDirection = 'vertical' | 'horizontal';
   }
 })
 export class NxMultiStepperComponent extends NxProgressStepperDirective
-  implements AfterContentInit {
+  implements AfterContentInit, AfterViewChecked {
+
+  /**
+   * We need to set the _stepHeader property as ViewChildren here
+   * as it is a ContentChildren query in the CDK
+   */
+  @ViewChildren(NxMultiStepItemComponent) _stepHeader: QueryList<NxMultiStepItemComponent>;
 
   /** @docs-private */
   @ContentChildren(NxMultiStepperGroupComponent, { descendants: true })
@@ -47,6 +56,15 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective
     this._direction = value;
   }
   private _direction: NxMultiStepperDirection = 'horizontal';
+
+  ngAfterViewChecked() {
+    // the _keyManager is currently private in the CdkStepper and the CDK/Material way
+    // is to create to separate components for the vertical and horizontal stepper with no
+    // possibility to change it during runtime
+    // opened a ticket: https://github.com/angular/components/issues/21874
+    // for now the quick solution is the hacky way to access the private property
+    this['_keyManager'].withVerticalOrientation(this._direction === 'vertical');
+  }
 
   ngAfterContentInit() {
     super.ngAfterContentInit();
@@ -87,6 +105,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective
     return [];
   }
 
+  // Returns the index of a certain step
   _getIndex(step: NxStepComponent): number {
     return this.steps.toArray().indexOf(step);
   }
