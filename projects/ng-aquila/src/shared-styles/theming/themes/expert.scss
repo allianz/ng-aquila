@@ -42,6 +42,7 @@ $expert-theme: (
   small-stage-image-container-padding-top: 42px,
   small-stage-content-padding: 40px 0 32px,
   small-stage-content-padding-narrow-screen: 40px 0 24px,
+  small-stage-image-container-padding-to-content: 40px,
 );
 
 $themes: nx-register-theme($expert-theme, expert, aposin);

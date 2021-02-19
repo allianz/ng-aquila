@@ -26,7 +26,7 @@ Examples here feature both short and long headlines side by side in order to bet
 
 ### Default
 
-The default small stage features a 1/2/1 ratio for image containers and content container.
+The default small stage features a 1/4/1 ratio for image containers and content container.
 
 Small stage provides 5 directives to be used for composition: 
 

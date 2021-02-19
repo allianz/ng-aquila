@@ -22,8 +22,8 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
   }
 
   &.nx-small-stage--two-images {
-    -ms-grid-columns: 1fr 2fr 1fr;
-    grid-template-columns: 1fr 2fr 1fr;
+    -ms-grid-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     text-align: center;
   }
 
@@ -100,6 +100,8 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
   padding-top: $image-container-padding-top;
   position: relative;
   -ms-grid-row: 1;
+  display: flex;
+  align-items: flex-end;
 
   :host.nx-small-stage--w-header & {
     padding-top: $image-container-padding-top--w-header;
@@ -137,6 +139,7 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
     min-width: var(--small-stage-image-min-width);
     width: calc(100% - #{$image-container-padding-to-content});
     height: calc(100% - #{$image-container-padding-top});
+    max-height: var(--small-stage-image-max-height);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;

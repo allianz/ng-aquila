@@ -1154,6 +1154,7 @@ $nx-theme: (
   slider-negative-background-color: negative-dimmed,
 
   small-stage-image-min-height: 64px,
+  small-stage-image-max-height: 144px,
   small-stage-image-min-width: 116px,
   // HINT: base on viewport width, so the image gets smaller the narrower the viewport.
   // Since it's only for mobile screens, maximum it evaluates to is 703px * 15% = 105.45px
@@ -1163,7 +1164,7 @@ $nx-theme: (
   small-stage-content-padding-narrow-screen: 40px 0 24px,
   small-stage-header-padding: 16px 0 24px,
   small-stage-image-container-padding-top: 72px,
-  small-stage-image-container-padding-to-content: 40px,
+  small-stage-image-container-padding-to-content: 20px,
   small-stage-image-container-offset-end: 25%,
 
   small-stage-with-header-content-padding: 0 0 64px,
