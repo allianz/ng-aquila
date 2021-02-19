@@ -102,18 +102,18 @@
     @include var(opacity, avatar-disabled-opacity);
   }
 
-  &.cdk-keyboard-focused {
-    @include focus-style();
-  }
-
   &:focus {
-    // This will ensure there is no second focus style shown in high contrast mode
+    // don't show native focus style
     outline: none;
   }
 
   // don't show inner dotted border on firefox
   &::-moz-focus-inner {
     border: 0;
+  }
+
+  &.cdk-keyboard-focused {
+    @include focus-style();
   }
 }
 
