@@ -17,6 +17,7 @@
       align-items: flex-start;
       flex-direction: column;
       margin: $multi-stepper-items-margin;
+      max-width: 100%;
 
       [dir="rtl"] & {
         margin: nx-flip-for-rtl($multi-stepper-items-margin);
@@ -24,6 +25,7 @@
     }
     .nx-multi-stepper__group-items {
       flex-direction: column;
+      max-width: 100%;
     };
 
     .nx-multi-stepper__group-label {
@@ -151,6 +153,7 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  max-width: 100%;
 }
 
 .nx-multi-stepper__group-label {
