@@ -131,9 +131,10 @@ You can also install ng-aquila manually.
 ### Device and Browser Support
 We fully support the following browsers:
 
-* Latest versions of Firefox, Chrome, and Safari
-* MS Edge
-* High contrast mode in MS IE11 and Edge
+- Chrome: latest
+- Firefox: latest and extended support release (ESR)
+- MS Edge: 2 most recent major versions
+- Safari: 2 most recent major versions
 
 We partly support IE11 and recommend to use modern browsers instead. Using IE11 can have a negative impact on UX and performance. 
 
