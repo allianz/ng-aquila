@@ -34,11 +34,13 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-content></ng-content>
-    <nx-icon *ngIf="_triggersSubmenu"
-      class="nx-context-menu-item__expand"
-      name="chevron-right-small">
-    </nx-icon>
+    <div class="nx-context-menu-item__content-wrapper" [class.has-submenu]="_triggersSubmenu">
+      <ng-content></ng-content>
+      <nx-icon *ngIf="_triggersSubmenu"
+        class="nx-context-menu-item__expand"
+        name="chevron-right-small">
+      </nx-icon>
+    </div>
     `,
   styleUrls: ['./context-menu-item.component.scss']
 })
@@ -121,7 +123,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
 
   /** Gets the label to be used when determining whether the option should be focused. */
   getLabel(): string {
-    const element: HTMLElement = this._elementRef.nativeElement;
+    const element: HTMLElement = this._elementRef.nativeElement.childNodes[0] as HTMLElement;
     const textNodeType = this._document ? this._document.TEXT_NODE : 3;
     let output = '';
 

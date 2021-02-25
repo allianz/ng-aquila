@@ -51,7 +51,16 @@
     border: 0;
   }
 
-  ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
+  .nx-context-menu-item__content-wrapper {
+    display: flex;
+    align-items: center;
+
+    &.has-submenu {
+      width: 100%;
+    }
+  }
+
+  .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
     margin-right: nx-spacer(2xs);
     @include var(font-size, context-menu-item-icon-size);
 
@@ -75,9 +84,9 @@
     }
   }
 
-  &.cdk-keyboard-focused {
-    border-radius: 2 * nx-border-radius(s);
+  &.cdk-keyboard-focused .nx-context-menu-item__content-wrapper {
+    border-radius: nx-border-radius(s);
     outline: 0;
-    @include focus-style-inset;
+    @include focus-style;
   }
 }
