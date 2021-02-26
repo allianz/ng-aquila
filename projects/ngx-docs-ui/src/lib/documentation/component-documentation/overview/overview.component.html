@@ -42,7 +42,7 @@
             [class.is-deprecated]="component.component.deprecated">
           <td nxCell
               class="nxv-components-table__component-label">
-              {{ component.label }}
+              <a [routerLink]="['/documentation', component.component.id]">{{ component.label }}</a>
           </td>
           <td nxCell class="nxv-components-table__support-cell hide-if-empty">
             <nx-badge *ngIf="component.component.b2c == true"
