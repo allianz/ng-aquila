@@ -64,7 +64,11 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
       this._wrapperElementPrevious = this._wrapperElement;
     }
     if (!this._wrapperElementPrevious && this._wrapperElement) {
-      this._focusMonitor.monitor(this._wrapperElement);
+      this._focusMonitor.monitor(this._wrapperElement).subscribe(origin => {
+        if (origin === 'keyboard') {
+          this._table._scrollElementIntoView(this._wrapperElement, 8);
+        }
+      });
       this._wrapperElementPrevious = this._wrapperElement;
     }
   }

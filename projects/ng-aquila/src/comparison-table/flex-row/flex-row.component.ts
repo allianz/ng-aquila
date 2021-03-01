@@ -1,6 +1,7 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTableBase } from '../comparison-table-base';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** @docs-private */
 @Component({
@@ -14,11 +15,25 @@ import { NxComparisonTableBase } from '../comparison-table-base';
     '[class.has-intersection]': 'row.intersectionCell'
   }
 })
-export class NxComparisonTableFlexRow {
+export class NxComparisonTableFlexRow implements OnDestroy {
 
   @Input() row: NxComparisonTableRowDirective;
 
-  constructor(public _table: NxComparisonTableBase, private _elementRef: ElementRef) {}
+  constructor(
+    public _table: NxComparisonTableBase,
+    private _elementRef: ElementRef,
+    private _focusMonitor: FocusMonitor
+  ) {
+    this._focusMonitor.monitor(this._elementRef, true).subscribe(origin => {
+      if (this.row.type !== 'header' && origin === 'keyboard') {
+        this._table._scrollElementIntoView(this._elementRef);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this._focusMonitor.stopMonitoring(this._elementRef);
+  }
 
   get elementRef(): ElementRef {
     return this._elementRef;

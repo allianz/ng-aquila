@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, EventEmitter, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
@@ -39,6 +39,12 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
   /** Get the mobile clipping path for a cell that should be cut when scrolling. */
   abstract _getMobileClipPathInset(cellRect: DOMRect): string;
+
+  /**
+   * Bring an element into view in case it is hidden by the sticky header row on top,
+   * optionally with some additional space above the element.
+   */
+  abstract _scrollElementIntoView(element: ElementRef, additionalSpacing?: number);
 
   /** @docs-private */
   get viewType(): NxComparisonTableViewType {

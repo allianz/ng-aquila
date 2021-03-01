@@ -61,7 +61,11 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
       this._expansionCellPrevious = this._expansionCell;
     }
     if (!this._expansionCellPrevious && this._expansionCell) {
-      this._focusMonitor.monitor(this._expansionCell);
+      this._focusMonitor.monitor(this._expansionCell).subscribe(origin => {
+        if (origin === 'keyboard') {
+          this._table._scrollElementIntoView(this._expansionCell, 8);
+        }
+      });
       this._expansionCellPrevious = this._expansionCell;
     }
   }
