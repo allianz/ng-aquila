@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.1.0](https://github.com/aposin/ng-aquila/compare/v11.0.1...v11.1.0) (2021-03-01)
+
+
+### Bug Fixes
+
+* **avatar:** focus style not visible in high contrast on edge ([a54ed9b](https://github.com/aposin/ng-aquila/commit/a54ed9b2db530c38b9d234d20b7f4ccd2fa048a7))
+* **comparison-table:** scroll element into view when hidden by header ([177faca](https://github.com/aposin/ng-aquila/commit/177facaf9bc98cdab9cd3d870cbc64a421958a76))
+* **context-menu:** update styling of keyboard focus ([416ad77](https://github.com/aposin/ng-aquila/commit/416ad775b120032c7d6bdf437e8eaa4970648e30))
+* **formfield:** apply expert placeholder styles to textarea ([aa89c37](https://github.com/aposin/ng-aquila/commit/aa89c37eb0c233123cf6fa5b089acf4cdf830289))
+* **formfield:** autofill style when using appearance is outline ([e105a79](https://github.com/aposin/ng-aquila/commit/e105a797acf7c7367f1bfae645fd6d8aa069f5e1))
+* **progress-stepper:** truncate long labels ([7bb06fd](https://github.com/aposin/ng-aquila/commit/7bb06fd1547aaa1101966b6287bb67766e491dcf))
+* **tooltip:** update padding ([2725c01](https://github.com/aposin/ng-aquila/commit/2725c018368c580659088666e4aa0df565386c71))
+
+
+### Features
+
+* **progress-indicator:** improve a11y for multi-stepper ([d8e6b70](https://github.com/aposin/ng-aquila/commit/d8e6b70c0fbe2866bc8182a0e11d6b613571f64c))
+* **small-stage:** design feedback based enhancements ([7f363bd](https://github.com/aposin/ng-aquila/commit/7f363bdc1b0178b05748410795b2a07439a160d1))
+
+
+
 ## [11.0.1](https://github.com/aposin/ng-aquila/compare/v11.0.0...v11.0.1) (2021-02-08)
 
 
