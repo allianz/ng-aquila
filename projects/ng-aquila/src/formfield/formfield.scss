@@ -330,12 +330,18 @@ $outline-padding: 7px;
     }
   }
 
-  input {
+  input, textarea {
     @include input-placeholder {
       @include type-style(formfield-outline-input-native-placeholder);
       @include var(color, formfield-input-native-placeholder-color);
     }
 
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  input {
     // to align the placeholder vertically inside the element on firefox the line height
     // needs to equal the element height.
     // the formfield-outline-control-height tokens are the outer element
