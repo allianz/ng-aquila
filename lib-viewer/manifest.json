@@ -512,6 +512,34 @@
       "stable": "done"
     },
     {
+      "id": "datefield",
+      "title": "Date Field",
+      "examples": [
+        "datefield-iso",
+        "datefield-basic",
+        "datefield-disabled",
+        "datefield-min-max",
+        "datefield-filter",
+        "datefield-range",
+        "datefield-reactive",
+        "datefield-format-injection",
+        "datefield-parsing",
+        "datefield-formatting",
+        "datefield-startview",
+        "datefield-manual",
+        "datefield-localize-date",
+        "datefield-localize-texts",
+        "datefield-toggle-focus",
+        "datefield-injection-token"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/datefield.html",
+      "overviewFile": "lib-viewer/overview/datefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "dropdown",
       "title": "Dropdown",
       "examples": [
@@ -676,22 +704,6 @@
       "stable": "done"
     },
     {
-      "id": "headline",
-      "title": "Headline",
-      "examples": [
-        "headline-sizes",
-        "headline-font-weights",
-        "headline-links",
-        "headline-negative"
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/headline.html",
-      "overviewFile": "lib-viewer/overview/headline.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "icon",
       "title": "Icons",
       "examples": [
@@ -707,6 +719,22 @@
       "category": "components",
       "apiFile": "lib-viewer/api/icon.html",
       "overviewFile": "lib-viewer/overview/icon.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "headline",
+      "title": "Headline",
+      "examples": [
+        "headline-sizes",
+        "headline-font-weights",
+        "headline-links",
+        "headline-negative"
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/headline.html",
+      "overviewFile": "lib-viewer/overview/headline.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -1313,34 +1341,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/taglist.html",
       "overviewFile": "lib-viewer/overview/taglist.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "datefield",
-      "title": "Date Field",
-      "examples": [
-        "datefield-iso",
-        "datefield-basic",
-        "datefield-disabled",
-        "datefield-min-max",
-        "datefield-filter",
-        "datefield-range",
-        "datefield-reactive",
-        "datefield-format-injection",
-        "datefield-parsing",
-        "datefield-formatting",
-        "datefield-startview",
-        "datefield-manual",
-        "datefield-localize-date",
-        "datefield-localize-texts",
-        "datefield-toggle-focus",
-        "datefield-injection-token"
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/datefield.html",
-      "overviewFile": "lib-viewer/overview/datefield.html",
       "b2c": true,
       "expert": true,
       "stable": "done"

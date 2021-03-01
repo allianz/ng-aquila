@@ -671,7 +671,7 @@
   --formfield-outline-hint-font-weight: var(--paragraph-03-font-weight);
   --formfield-outline-hint-letter-spacing: var(--paragraph-03-letter-spacing);
   --formfield-outline-input-native-placeholder-font-size: var(--formfield-outline-control-font-size);
-  --formfield-outline-input-native-placeholder-line-height: var(--formfield-outline-control-font-size);
+  --formfield-outline-input-native-placeholder-line-height: var(--formfield-outline-control-line-height);
   --formfield-outline-input-native-placeholder-font-weight: 200;
   --formfield-outline-input-native-placeholder-letter-spacing: var(--formfield-outline-control-letter-spacing);
   --formfield-outline-input-native-placeholder-color: var(--ui-05);
@@ -926,6 +926,7 @@
   --slider-handle-value-letter-spacing: var(--paragraph-05-letter-spacing);
   --slider-negative-background-color: var(--negative-dimmed);
   --small-stage-image-min-height: 64px;
+  --small-stage-image-max-height: 144px;
   --small-stage-image-min-width: 116px;
   --small-stage-narrow-screen-image-height: 15vw;
   --small-stage-content-padding: 40px 0 32px;
@@ -1097,8 +1098,10 @@
   --timefield-label-line-height: var(--paragraph-05-line-height);
   --timefield-label-letter-spacing: var(--paragraph-05-letter-spacing);
   --timefield-label-font-weight: var(--paragraph-05-font-weight);
-  --accordion-light-color: var(--text-01); }
+  --accordion-light-color: var(--text-01);
+}
 
 body {
   background-color: var(--ui-background);
-  color: var(--text-01); }
+  color: var(--text-01);
+}
