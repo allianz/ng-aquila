@@ -585,5 +585,12 @@ input:-webkit-autofill {
   &::first-line {
     @include type-style(formfield-control);
     font-family: v(font-family);
+    @include var(color, formfield-control-color);
+  }
+}
+
+.nx-formfield.has-outline {
+  input:-webkit-autofill::first-line {
+    @include type-style(formfield-outline-control);
   }
 }
