@@ -32,7 +32,7 @@
     @include var(color, plain-button-active-color);
   }
 
-  &:disabled {
+  &[disabled] {
     @include var(color, plain-button-disabled-color);
     cursor: not-allowed;
   }
@@ -63,12 +63,13 @@
     @include var(color, plain-button-danger-active-color);
   }
 
-  &:disabled {
+  &[disabled] {
     @include var(color, plain-button-danger-disabled-color);
   }
 }
 
-:host([nxplainbutton]) {
+:host([nxplainbutton]),
+:host(.nx-plain-button) {
   ::ng-deep nx-icon {
     @include var(font-size, plain-button-icon-size);
   }
@@ -79,4 +80,10 @@
   border-radius: nx-border-radius(s);
   outline: 0;
   @include focus-style;
+}
+
+:host(a) {
+  height: fit-content;
+  text-align: center;
+  text-decoration: none;
 }

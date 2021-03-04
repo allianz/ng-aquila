@@ -68,3 +68,9 @@ Inside the icon button there can be used a [`<nx-indicator>`](./documentation/in
 The `nxPlainButton` does not need a lot of space. If only icons are used, they need to be made accessible, e.g. by using an `aria-label` or a tooltip.
 
 <!-- example(button-plain) -->
+
+### Anchor Button
+
+You can use an `<a>` instead of a `<button>` element, in case you want to have an anchor styled like a button.
+
+<!-- example(anchor-button) -->

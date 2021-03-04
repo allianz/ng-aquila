@@ -1,5 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
 import { NxButtonComponent } from './button.component';
@@ -7,6 +7,7 @@ import { NxButtonModule } from './button.module';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIconButtonComponent } from './icon-button.component';
 import { NxButtonSize, NxButtonType, NxButtonBase } from './button-base';
+import { By } from '@angular/platform-browser';
 
 // For better readability here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix

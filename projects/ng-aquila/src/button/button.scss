@@ -9,7 +9,7 @@
   @include var(background-color, button-#{$type}-background-color);
   @include var(border-color, button-#{$type}-border-color);
 
-  &:hover:not(:disabled):not(:active) {
+  &:hover:not([disabled]):not(:active) {
     @include var(background-color, button-#{$type}-hover-background-color);
     @include var(color, button-#{$type}-hover-text-color);
     @include var(border-color, button-#{$type}-hover-border-color);
@@ -17,7 +17,7 @@
 
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
-    &:hover:not(:disabled):not(:active) {
+    &:hover:not([disabled]):not(:active) {
       @include var(color, button-#{$type}-text-color);
       @include var(background-color, button-#{$type}-background-color);
       @include var(border-color, button-#{$type}-border-color);
@@ -30,7 +30,7 @@
     @include var(border-color, button-#{$type}-active-border-color);
   }
 
-  &:disabled {
+  &[disabled] {
     @include var(background-color, button-#{$type}-disabled-background-color);
     @include var(color, button-#{$type}-disabled-text-color);
     @include var(border-color, button-#{$type}-disabled-border-color);
@@ -62,7 +62,7 @@
     width: 100%;
   }
 
-  &:disabled {
+  &[disabled] {
     cursor: not-allowed;
   }
 
@@ -97,7 +97,7 @@
   @include var(border-color, negative);
   @include var(color, negative-accent);
 
-  &:hover:not(:disabled):not(:active) {
+  &:hover:not([disabled]):not(:active) {
     @include var(background-color, negative-01);
     @include var(border-color, negative-01);
     @include var(color, negative-accent);
@@ -105,7 +105,7 @@
 
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
-    &:hover:not(:disabled):not(:active) {
+    &:hover:not([disabled]):not(:active) {
       @include var(background-color, negative);
       @include var(border-color, negative);
       @include var(color, negative-accent);
@@ -118,7 +118,7 @@
     @include var(color, negative-accent);
   }
 
-  &:disabled {
+  &[disabled] {
     @include var(background-color, negative-dimmed);
     border-color: transparent;
     @include var(color, negative-background-dimmed);
@@ -137,7 +137,7 @@
   @include var(color, negative);
   @include var(border-color, negative);
 
-  &:hover:not(:disabled):not(:active) {
+  &:hover:not([disabled]):not(:active) {
     @include var(background-color, negative-01);
     @include var(border-color, negative-01);
     @include var(color, button-secondary-text-color);
@@ -145,7 +145,7 @@
 
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
-    &:hover:not(:disabled):not(:active) {
+    &:hover:not([disabled]):not(:active) {
       background-color: transparent;
       @include var(border-color, negative);
       @include var(color, negative);
@@ -158,7 +158,7 @@
     @include var(color, button-secondary-text-color);
   }
 
-  &:disabled {
+  &[disabled] {
     background-color: transparent;
     @include var(border-color, negative-dimmed);
     @include var(color, negative-dimmed);
@@ -176,14 +176,14 @@
 :host(.nx-button--tertiary.nx-button--negative) {
   @include var(color, negative);
 
-  &:hover:not(:disabled):not(:active) {
+  &:hover:not([disabled]):not(:active) {
     @include var(background-color, negative-01);
     @include var(color, button-secondary-text-color);
   }
 
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
-    &:hover:not(:disabled):not(:active) {
+    &:hover:not([disabled]):not(:active) {
       background-color: transparent;
       @include var(color, negative);
     }
@@ -194,7 +194,7 @@
     @include var(color, button-secondary-text-color);
   }
 
-  &:disabled {
+  &[disabled] {
     background-color: transparent;
     @include var(color, negative-dimmed);
   }
@@ -254,6 +254,7 @@
 }
 
 :host([nxiconbutton]),
+:host(.nx-icon-button),
 :host([nxsidebartoggle]) {
   padding: 0;
   flex: 0 0 auto;
@@ -308,10 +309,22 @@
       -ms-high-contrast-adjust: none;
     }
 
-    &:disabled {
+    &[disabled] {
       background-color: buttonFace!important;
       border-color: GrayText!important;
       color: GrayText!important;
     }
   }
+}
+
+:host(a) {
+  display: inline-block;
+  height: fit-content;
+  text-align: center;
+  text-decoration: none;
+}
+
+:host(a[nxiconbutton]) {
+  display: inline-flex;
+  justify-content: center;
 }

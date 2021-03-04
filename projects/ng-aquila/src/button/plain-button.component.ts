@@ -1,6 +1,7 @@
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, OnDestroy, HostBinding, Input } from '@angular/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,6 +16,22 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
 })
 export class NxPlainButtonComponent implements OnDestroy {
+  /** @docs-private */
+  @HostBinding('attr.disabled') get isDisabled(): boolean { return this.disabled || null; }
+  /** @docs-private */
+  @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
+
+  private _disabled: boolean = false;
+
+  @Input()
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
+  static ngAcceptInputType_disabled: BooleanInput;
 
   private _classNames: string;
 

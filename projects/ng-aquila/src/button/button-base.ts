@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { ElementRef, ChangeDetectorRef, HostBinding, Directive, OnDestroy } from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ElementRef, ChangeDetectorRef, HostBinding, Directive, OnDestroy, HostListener, Input } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 
 /** Type of a button. */
@@ -42,6 +43,10 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
   @HostBinding('class.nx-button--block') get isBlock(): boolean { return this.block; }
   /** @docs-private */
   @HostBinding('class.nx-button--negative') get isNegative(): boolean { return this.negative; }
+  /** @docs-private */
+  @HostBinding('attr.disabled') get isDisabled(): boolean { return this.disabled || null; }
+  /** @docs-private */
+  @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
 
   /** @docs-private */
   type: NxButtonType = DEFAULT_TYPE;
@@ -54,6 +59,17 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
   block: boolean = false;
   @HostBinding('class.nx-button--active')
   active: boolean = false;
+  private _disabled: boolean = false;
+
+  @Input()
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value);
+  }
+  get disabled(): boolean {
+    return this._disabled;
+  }
+
+  static ngAcceptInputType_disabled: BooleanInput;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -111,4 +127,5 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
     this.active = false;
     this._changeDetectorRef.markForCheck();
   }
+
 }
