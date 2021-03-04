@@ -3,7 +3,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NxSidepanelComponent } from './sidepanel';
+import { NxSidepanelOuterContainerComponent, NxSidepanelComponent } from './sidepanel';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
 import { NxSidepanelContentComponent } from './sidepanel-content';
 import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
@@ -14,13 +14,15 @@ import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
     NxSidepanelComponent,
     NxSidepanelHeaderComponent,
     NxSidepanelContentComponent,
-    NxSidepanelCloseButtonComponent
+    NxSidepanelCloseButtonComponent,
+    NxSidepanelOuterContainerComponent
   ],
   exports: [
     NxSidepanelComponent,
     NxSidepanelHeaderComponent,
     NxSidepanelContentComponent,
-    NxSidepanelCloseButtonComponent
+    NxSidepanelCloseButtonComponent,
+    NxSidepanelOuterContainerComponent
   ]
 })
 export class NxSidepanelModule { }

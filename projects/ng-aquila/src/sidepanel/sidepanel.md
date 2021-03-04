@@ -11,9 +11,25 @@ stable: progress
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
 
+<div class="docs-deprecation-warning">
+  <strong>Deprecation of standalone <code>nx-sidepanel</code></strong><br>
+  Please note that the usage of an <code>nx-sidepanel</code> without a wrapping <code>nx-sidepanel-outer-container</code> is deprecated.
+</div>
+
 Please note that the sidepanel is currently **not recommended for mobile usage**.
 
-The `nx-sidepanel` is a container that is fixed to the right edge of the viewport to provide content that supports the main content area.
+The `nx-sidepanel` is a container that is fixed to the right edge of the viewport to provide content that supports the main content area. The `nx-sidepanel` needs to be wrapped into `nx-sidepanel-outer-container`, which also holds the main content besides the sidepanel:
+
+```html
+<nx-sidepanel-outer-container>
+
+  <!-- Main content of the page -->
+
+  <nx-sidepanel>
+    <!-- Content besides the main area of the page -->
+  </nx-sidepanel>
+</nx-sidepanel-outer-container>
+```
 
 `<nx-sidepanel-header>` provides a place that will stay fixed on top, when the bottom part of `<nx-sidepanel-content>` is scrolled down.
 

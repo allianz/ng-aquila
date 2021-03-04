@@ -1,13 +1,9 @@
-:host {
-  display: flex;
+.example-container {
   height: 400px;
   background-color: var(--ui-02);
 }
 
-.content {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
+.main-content {
   padding: 24px;
 }
 

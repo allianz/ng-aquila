@@ -1,0 +1,43 @@
+:host {
+  position: relative;
+  // z-index: 1;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+
+  .nx-sidepanel-outer-container__content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+  
+    &.with-margin {
+      transition: {
+        duration: .4s;
+        timing-function: cubic-bezier(0, 0, 0.1, 1);
+        property: margin-right;
+      }
+  
+      [dir="rtl"] & {
+        transition: {
+          property: margin-left;
+        }
+      }
+    }
+  
+    &.without-margin {
+      transition: {
+        duration: .2s;
+        timing-function: cubic-bezier(0.8, 0, 1, 1);
+        property: margin-right;
+      }
+  
+      [dir="rtl"] & {
+        transition: {
+          property: margin-left;
+        }
+      }
+    }
+  }
+}

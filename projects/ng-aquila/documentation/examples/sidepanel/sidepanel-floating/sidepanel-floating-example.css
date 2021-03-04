@@ -1,14 +1,9 @@
-.my-sidepanel {
-  top: 60px;
-  height: calc(100% - 60px);
-  width: 240px;
+.example-container {
+  height: 400px;
 }
 
-@media only screen and (max-width: 785px) {
-  .my-sidepanel {
-    top: 120px;
-    height: calc(100% - 120px);
-  }
+.my-sidepanel {
+  width: 240px;
 }
 
 .my-sidepanel-header {

@@ -4,7 +4,8 @@ import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxSidepanelModule } from './sidepanel.module';
-import { Appearance, NxSidepanelComponent, PositionType } from './sidepanel';
+import { Appearance, NxSidepanelOuterContainerComponent, NxSidepanelComponent, PositionType } from './sidepanel';
+import { BidiModule } from '@angular/cdk/bidi';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -12,6 +13,7 @@ import { Appearance, NxSidepanelComponent, PositionType } from './sidepanel';
 @Directive()
 abstract class SidepanelTest {
   @ViewChild(NxSidepanelComponent) sidebarInstance: NxSidepanelComponent;
+  @ViewChild(NxSidepanelOuterContainerComponent) wrapperInstance: NxSidepanelOuterContainerComponent;
   opened: boolean = true;
   position: PositionType = 'floating';
   appearance: Appearance = 'dark';
@@ -22,6 +24,7 @@ describe('NxSidepanelComponent', () => {
   let testInstance: SidepanelTest;
   let sidepanelInstance: NxSidepanelComponent;
   let sidepanelElement: DebugElement;
+  let outerContainerElement: DebugElement;
 
   function createTestComponent(component: Type<SidepanelTest>) {
     fixture = TestBed.createComponent(component);
@@ -29,6 +32,7 @@ describe('NxSidepanelComponent', () => {
     testInstance = fixture.componentInstance;
     sidepanelInstance = testInstance.sidebarInstance;
     sidepanelElement = fixture.debugElement.query(By.css('nx-sidepanel'));
+    outerContainerElement = fixture.debugElement.query(By.css('.nx-sidepanel-outer-container__content'));
   }
 
   beforeEach(waitForAsync(() => {
@@ -36,11 +40,13 @@ describe('NxSidepanelComponent', () => {
       declarations: [
         BasicSidepanel,
         SidepanelWithoutHeaderAndContent,
-        ConfigurableSidepanel
+        ConfigurableSidepanel,
+        SidepanelWithDirection
       ],
       imports: [
         BrowserAnimationsModule,
-        NxSidepanelModule
+        NxSidepanelModule,
+        BidiModule
       ]
     }).compileComponents();
   }));
@@ -75,6 +81,14 @@ describe('NxSidepanelComponent', () => {
       expect(sidepanelInstance.appearance).toBe('dark');
       expect(sidepanelElement.nativeElement.classList).not.toContain('light');
     });
+
+    it('has open-instant state by default', () => {
+      expect(sidepanelInstance._getOpenState()).toBe('open-instant');
+    });
+
+    it('should be set to ltr by default', () => {
+      expect(testInstance.wrapperInstance.dir).toBe('ltr');
+    });
   });
 
   describe('without header and content components', () => {
@@ -90,6 +104,10 @@ describe('NxSidepanelComponent', () => {
       const content = sidepanelElement.nativeElement.textContent;
       expect(content).toBe('My sidepanel');
     }));
+
+    it('openState is "open-instant" by default', () => {
+      expect(sidepanelInstance._getOpenState()).toBe('open-instant');
+    });
   });
 
   describe('open / closed', () => {
@@ -138,6 +156,17 @@ describe('NxSidepanelComponent', () => {
       expect(testInstance.opened).toBe(false);
       expect(sidepanelElement.nativeElement.classList).toContain('is-closed');
     });
+
+    it('updates the openState to "closed" when closing', () => {
+      sidepanelInstance.close();
+      expect(sidepanelInstance._getOpenState()).toBe('closed');
+    });
+
+    it('updates the openState to "opened" once it was closed', () => {
+      sidepanelInstance.close();
+      sidepanelInstance.open();
+      expect(sidepanelInstance._getOpenState()).toBe('open');
+    });
   });
 
   describe('position', () => {
@@ -167,6 +196,49 @@ describe('NxSidepanelComponent', () => {
     });
   });
 
+  describe('wrapper functionality (with static position)', () => {
+    beforeEach(() => {
+      createTestComponent(ConfigurableSidepanel);
+      testInstance.position = 'static';
+      fixture.detectChanges();
+    });
+
+    it('does not set a margin class when creating', () => {
+      expect(outerContainerElement.nativeElement.classList).not.toContain('with-margin');
+      expect(outerContainerElement.nativeElement.classList).not.toContain('without-margin');
+    });
+
+    it('adds correct class when sidepanel is closed', () => {
+      sidepanelInstance.close();
+      fixture.detectChanges();
+      expect(outerContainerElement.nativeElement.classList).not.toContain('with-margin');
+      expect(outerContainerElement.nativeElement.classList).toContain('without-margin');
+    });
+
+    it('adds correct class when sidepanel is opened again', () => {
+      sidepanelInstance.close();
+      fixture.detectChanges();
+      sidepanelInstance.open();
+      fixture.detectChanges();
+      expect(outerContainerElement.nativeElement.classList).toContain('with-margin');
+      expect(outerContainerElement.nativeElement.classList).not.toContain('without-margin');
+    });
+  });
+
+  describe('directionality', () => {
+    it('should be set to rtl if container direction is rtl', () => {
+      createTestComponent(SidepanelWithDirection);
+      expect(testInstance.wrapperInstance.dir).toBe('rtl');
+    });
+
+    it('updates when direction is changed', () => {
+      createTestComponent(SidepanelWithDirection);
+      (testInstance as SidepanelWithDirection).direction = 'ltr';
+      fixture.detectChanges();
+      expect(testInstance.wrapperInstance.dir).toBe('ltr');
+    });
+  });
+
   describe('a11y', () => {
     beforeEach(() => {
       createTestComponent(BasicSidepanel);
@@ -187,25 +259,50 @@ describe('NxSidepanelComponent', () => {
 
 @Component({
   template: `
-    <nx-sidepanel>
-      <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
-      <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
-    </nx-sidepanel>
+    <nx-sidepanel-outer-container>
+      Main content
+      <nx-sidepanel>
+        <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
+        <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
+      </nx-sidepanel>
+    </nx-sidepanel-outer-container>
   `
 })
 class BasicSidepanel extends SidepanelTest {}
 
 @Component({
-  template: `<nx-sidepanel>My sidepanel</nx-sidepanel>`
+  template: `
+    <nx-sidepanel-outer-container>
+      Main content
+      <nx-sidepanel>My sidepanel</nx-sidepanel>
+    </nx-sidepanel-outer-container>
+  `
 })
 class SidepanelWithoutHeaderAndContent extends SidepanelTest {}
 
 @Component({
   template: `
-    <nx-sidepanel [(opened)]="opened" [position]="position" [appearance]="appearance">
-      <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
-      <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
-    </nx-sidepanel>
+    <nx-sidepanel-outer-container>
+      Main content
+      <nx-sidepanel [(opened)]="opened" [position]="position" [appearance]="appearance">
+        <nx-sidepanel-header>Sidepanel header</nx-sidepanel-header>
+        <nx-sidepanel-content>Sidepanel content</nx-sidepanel-content>
+      </nx-sidepanel>
+    </nx-sidepanel-outer-container>
   `
 })
 class ConfigurableSidepanel extends SidepanelTest {}
+
+@Component({
+  template: `
+    <div [dir]="direction">
+      <nx-sidepanel-outer-container>
+        Main content
+        <nx-sidepanel>My sidepanel</nx-sidepanel>
+      </nx-sidepanel-outer-container>
+    </div>
+  `
+})
+class SidepanelWithDirection extends SidepanelTest {
+  direction = 'rtl';
+}

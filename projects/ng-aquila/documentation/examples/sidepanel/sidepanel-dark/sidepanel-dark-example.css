@@ -1,12 +1,8 @@
-:host {
-  display: flex;
+.example-container {
   height: 400px;
 }
 
-.content {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
+.main-content {
   padding-right: 24px;
 }
 
