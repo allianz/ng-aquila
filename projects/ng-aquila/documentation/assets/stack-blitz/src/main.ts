@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
@@ -18,6 +18,7 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientJsonpModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([]),

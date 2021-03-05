@@ -620,20 +620,6 @@ a {
   @include var(color, documentation-grid-3xlarge-color);
 }
 
-// Styles for examples
-::ng-deep margin-sizes-example .margin-box {
-  @include var(background, documentation-margin-example-background-color);
-}
-
-::ng-deep margin-usage-example .wrapper {
-  @include var(background, documentation-margin-example-background-color);
-}
-
-::ng-deep margin-usage-example .margin-box {
-  border: 1px solid v(documentation-margin-example-background-color);
-  @include var(background-color, ui-01);
-}
-
 summary {
   @include var(color, accordion-extra-light-header-text-color);
   @include type-style(accordion-extra-light);
