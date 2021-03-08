@@ -253,9 +253,8 @@
   position: relative;
 }
 
-:host([nxiconbutton]),
 :host(.nx-icon-button),
-:host([nxsidebartoggle]) {
+:host(.nx-sidebar__toggle-button) {
   padding: 0;
   flex: 0 0 auto;
 
@@ -280,7 +279,7 @@
   }
 }
 
-:host([nxbutton]) {
+:host(.nx-button) {
   &.nx-button--small ::ng-deep nx-icon {
     @include var(font-size, button-small-icon-size);
   }
@@ -324,7 +323,7 @@
   text-decoration: none;
 }
 
-:host(a[nxiconbutton]) {
+:host(a.nx-icon-button) {
   display: inline-flex;
   justify-content: center;
 }

@@ -11,7 +11,8 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
   changeDetection: ChangeDetectionStrategy.OnPush,
   inputs: ['classNames:nxPlainButton'],
   host: {
-    '[class.nx-plain-button--danger]': 'danger'
+    '[class.nx-plain-button]': 'true',
+    '[class.nx-plain-button--danger]': 'danger',
   },
   providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
 })

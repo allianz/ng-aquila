@@ -15,7 +15,10 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   selector: 'button[nxButton]',
   changeDetection: ChangeDetectionStrategy.OnPush,
   inputs: ['classNames:nxButton'],
-  providers: [{provide: NxTriggerButton, useExisting: NxButtonComponent}]
+  providers: [{provide: NxTriggerButton, useExisting: NxButtonComponent}],
+  host: {
+    '[class.nx-button]': 'true',
+  },
 })
 
 export class NxButtonComponent extends NxButtonBase {

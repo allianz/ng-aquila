@@ -68,7 +68,6 @@
   }
 }
 
-:host([nxplainbutton]),
 :host(.nx-plain-button) {
   ::ng-deep nx-icon {
     @include var(font-size, plain-button-icon-size);

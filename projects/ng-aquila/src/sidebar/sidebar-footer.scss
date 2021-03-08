@@ -3,9 +3,9 @@
 
 .nx-sidebar__footer-container {
 
-  ::ng-deep [nxbutton],
-  ::ng-deep [nxiconbutton],
-  ::ng-deep [nxsidebartoggle] {
+  ::ng-deep .nx-button,
+  ::ng-deep .nx-icon-button,
+  ::ng-deep .nx-sidebar__toggle-button {
     @include var(color, sidebar-footer-button-color)
   }
 }

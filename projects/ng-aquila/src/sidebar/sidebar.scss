@@ -24,7 +24,7 @@ $sidebar-width: 280px;
   }
 
   &.is-closed {
-    ::ng-deep button[nxSidebarToggle] {
+    ::ng-deep .nx-sidebar__toggle-button {
       transform: rotateZ(180deg);
     }
 
