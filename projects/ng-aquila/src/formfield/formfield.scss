@@ -183,7 +183,7 @@ $outline-padding: 7px;
   }
 }
 
-[nxformfieldhint] {
+.nx-formfield-hint {
   display: block;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -302,7 +302,7 @@ $outline-padding: 7px;
     }
   }
 
-  .nx-formfield__input textarea[nxInput] {
+  .nx-formfield__input textarea.nx-input {
     line-height: nx-line-height(2xs);
     padding: $outline-padding;
   }
@@ -407,7 +407,7 @@ $outline-padding: 7px;
       @include var(font-weight, formfield-error-input-font-weight);
     }
 
-    .nx-formfield__input input[nxInput] {
+    .nx-formfield__input input.nx-input {
       @include var(font-weight, formfield-error-input-font-weight);
     }
   }
@@ -508,7 +508,7 @@ $outline-padding: 7px;
   }
 }
 
-.nx-formfield__input textarea[nxInput] {
+.nx-formfield__input textarea.nx-input {
   vertical-align: bottom;
 }
 

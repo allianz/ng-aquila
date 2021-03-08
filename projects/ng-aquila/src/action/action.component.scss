@@ -43,7 +43,7 @@
     font-weight: nx-font-weight(bold);
   }
 
-  &[nxTreeNodePadding] {
+  &.nx-tree-node--with-padding {
     .nx-action__wrapper::before {
       flex-shrink: 0;
     }

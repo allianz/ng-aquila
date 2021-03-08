@@ -14,6 +14,7 @@ const DEFAULT_SIZE = 'auto';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./figure.component.scss'],
   host: {
+    '[class.nx-image]': 'true',
     '[class.nx-image--auto]': 'size === "auto" && !rounded',
     '[class.nx-image--1by1]': 'size === "1by1"',
     '[class.nx-image--1dot8by1]': 'size === "1dot8by1"',

@@ -3,6 +3,9 @@ import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'li[nxListIcon]',
+  host: {
+    '[class.nx-list__icon-wrapper]': 'true',
+  },
   template: `
     <span class="nx-list__icon">
       <nx-icon [name]='name'></nx-icon>

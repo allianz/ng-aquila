@@ -14,6 +14,9 @@ const cssUnitPattern = /([A-Za-z%]+)$/;
  */
 @Directive({
   selector: '[nxTreeNodePadding]',
+  host: {
+    '[class.nx-tree-node--with-padding]': 'true',
+  }
 })
 export class NxTreeNodePaddingDirective<T> implements OnDestroy {
   /** Current padding value applied to the element. Used to avoid unnecessarily hitting the DOM. */

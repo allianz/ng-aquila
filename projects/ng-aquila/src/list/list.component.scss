@@ -77,7 +77,7 @@ $dot-border-radius: 50%;
 }
 
 // apply the default dot for unordered (ul) lists, always exclude items with icons
-:host(ul) ::ng-deep > li:not([nxlisticon]) {
+:host(ul) ::ng-deep > li:not(.nx-list__icon-wrapper) {
 
   &:before {
     @include var(background-color, list-icon-color);
@@ -104,16 +104,16 @@ $dot-border-radius: 50%;
   }
 }
 
-:host(ul.nx-list--small) ::ng-deep > li:not([nxlisticon]):before {
+:host(ul.nx-list--small) ::ng-deep > li:not(.nx-list__icon-wrapper):before {
   margin-top: calc((#{v(paragraph-03-line-height)} - #{$dot-size}) /2);
 }
 
-:host(ul.nx-list--xsmall)  ::ng-deep > li:not([nxlisticon]):before {
+:host(ul.nx-list--xsmall)  ::ng-deep > li:not(.nx-list__icon-wrapper):before {
   margin-top: calc((#{v(paragraph-04-line-height)} - #{$dot-size}) /2);
 }
 
 // ordered lists (ol) have no dot but the counter, always exclude items with icons
-:host(ol) ::ng-deep > li:not([nxlisticon]) {
+:host(ol) ::ng-deep > li:not(.nx-list__icon-wrapper) {
 
   &:before {
     counter-increment: list;
@@ -140,7 +140,7 @@ $dot-border-radius: 50%;
 }
 
 // ordered lists (ol) with option `ordered-circle` have a counter with a circle around
-:host(ol.nx-list--ordered-circle) ::ng-deep > li:not([nxlisticon]) {
+:host(ol.nx-list--ordered-circle) ::ng-deep > li:not(.nx-list__icon-wrapper) {
 
   &:before {
     @include var(width, list-circle-size);
@@ -183,7 +183,7 @@ $dot-border-radius: 50%;
   }
 }
 
-:host(ol.nx-list--ordered-circle.nx-list--small) ::ng-deep > li:not([nxlisticon]) {
+:host(ol.nx-list--ordered-circle.nx-list--small) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
     top: calc((#{v(paragraph-03-line-height)} - #{v(paragraph-03-line-height)})/2);
   }
@@ -193,7 +193,7 @@ $dot-border-radius: 50%;
   }
 }
 
-:host(ol.nx-list--ordered-circle.nx-list--xsmall) ::ng-deep > li:not([nxlisticon]) {
+:host(ol.nx-list--ordered-circle.nx-list--xsmall) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
     top: calc((#{v(paragraph-04-line-height)} - #{v(paragraph-03-line-height)})/2);
   }
@@ -205,16 +205,16 @@ $dot-border-radius: 50%;
 
 // take care of the circle when being inverted
 :host(ol.nx-list--ordered-circle.nx-list--negative) {
-  &::ng-deep > li:not([nxlisticon]):after {
+  &::ng-deep > li:not(.nx-list__icon-wrapper):after {
     @include var(background-color, negative);
   }
 
-  &::ng-deep > li:not([nxlisticon]):before {
+  &::ng-deep > li:not(.nx-list__icon-wrapper):before {
     @include var(color, negative-background);
   }
 }
 
-:host(ul.nx-list--negative) ::ng-deep > li:not([nxlisticon]) {
+:host(ul.nx-list--negative) ::ng-deep > li:not(.nx-list__icon-wrapper) {
   &:before {
     @include var(background-color, negative);
   }

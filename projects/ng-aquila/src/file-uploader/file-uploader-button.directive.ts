@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
   host: {
     '[attr.aria-describedby]': '_ariaDescribedby || null',
     '[attr.disabled]': 'disabled || null',
+    '[class.nx-file-upload-button]': 'true'
   }
 })
 export class NxFileUploaderButtonDirective implements OnDestroy {

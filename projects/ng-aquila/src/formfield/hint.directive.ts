@@ -5,7 +5,8 @@ let uniqueId = 0;
 @Directive({
   selector: '[nxFormfieldHint]',
   host: {
-    '[attr.id]': 'id'
+    '[attr.id]': 'id',
+    '[class.nx-formfield-hint]': 'true'
   }
 })
 export class NxFormfieldHintDirective {

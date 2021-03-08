@@ -12,6 +12,7 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['list.component.scss'],
   host: {
+    '[class.nx-list]' : 'true',
     '[class.nx-list--xsmall]' : 'type === "xsmall"',
     '[class.nx-list--small]' : 'type === "small"',
     '[class.nx-list--normal]' : 'type === "normal"',

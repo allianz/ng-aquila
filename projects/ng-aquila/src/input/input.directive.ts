@@ -50,6 +50,7 @@ let nextUniqueId = 0;
   exportAs: 'nxInput',
   host: {
     '[class.c-input]': 'true',
+    '[class.nx-input]': 'true',
     '[attr.id]': 'id',
     '[class.is-filled]': 'empty === false',
     '[class.is-disabled]': 'disabled',

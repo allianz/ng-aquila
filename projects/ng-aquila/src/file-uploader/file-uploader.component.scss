@@ -79,11 +79,11 @@
   display: none;
 }
 
-::ng-deep [nxFileUploadButton] {
+::ng-deep .nx-file-upload-button {
   display: block;
 }
 
-::ng-deep [nxfileuploadhint] {
+::ng-deep .nx-file-upload-hint {
   @include type-style(file-uploader-hint);
 
   display: block;

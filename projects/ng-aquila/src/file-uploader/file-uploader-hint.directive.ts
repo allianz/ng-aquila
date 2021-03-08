@@ -4,7 +4,8 @@ let nextId = 0;
 @Directive({
   selector: '[nxFileUploadHint]',
   host: {
-    '[attr.id]': 'id'
+    '[attr.id]': 'id',
+    '[class.nx-file-upload-hint]': 'true',
   }
 })
 export class NxFileUploaderHintDirective {
