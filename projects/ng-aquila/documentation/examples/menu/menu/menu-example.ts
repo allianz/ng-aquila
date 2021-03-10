@@ -172,7 +172,7 @@ export class MenuExampleComponent {
     },
     {
       label: 'Option 3',
-      icon: 'setting',
+      icon: 'user-o',
       children: [
         {
           links: [
