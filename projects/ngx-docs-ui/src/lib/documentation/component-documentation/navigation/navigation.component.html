@@ -3,6 +3,7 @@
     <nx-tree-node *nxTreeNodeDef="let node">
        <button class="docs-action" nxAction
            nxTreeNodePadding
+           nxTreeNodeActionItem
            nxTreeNodePaddingIndent="16"
            routerLinkActive="is-selected"
            routerLink="{{node.component.id}}"
@@ -14,6 +15,7 @@
     <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
        <button class="docs-action" nxAction
            nxTreeNodeToggle
+           nxTreeNodeActionItem
            nxTreeNodePadding
            expandable
            [expanded]="_treeControl.isExpanded(node)"

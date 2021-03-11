@@ -1,6 +1,8 @@
+import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import {Component, ViewChild} from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {BehaviorSubject, Observable} from 'rxjs';
+import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import {
   NxTreeComponent,
   NxTreeFlatDataSource,
@@ -202,6 +204,92 @@ describe(NxTreeComponent.name, () => {
           [`topping_2 - cheese_2 + base_2`],
           [`topping_3 - cheese_3 + base_3`],
           [`>>> topping_4 - cheese_4 + base_4`]);
+      });
+    });
+
+    describe('keyboard navigaton', () => {
+      let fixture: ComponentFixture<NxTreeAppWithToggle>;
+      let component: NxTreeAppWithToggle;
+
+      beforeEach(() => {
+        fixture = TestBed.createComponent(NxTreeAppWithToggle);
+
+        component = fixture.componentInstance;
+        underlyingDataSource = component.underlyingDataSource;
+        treeElement = fixture.nativeElement.querySelector('nx-tree');
+
+        fixture.detectChanges();
+      });
+
+      it('should focus on first data on HOME', () => {
+        expect(component.tree.focusedData).toBeFalsy();
+
+        dispatchKeyboardEvent(treeElement, 'keydown', HOME);
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+      });
+
+      it('should focus on the last data on END', () => {
+        expect(component.tree.focusedData).toBeFalsy();
+
+        dispatchKeyboardEvent(treeElement, 'keydown', END);
+        // The collapsed last node is topping_3
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_3`);
+      });
+
+      it('should focus on next data on DOWN_ARROW', () => {
+        expect(component.tree.focusedData).toBeFalsy();
+
+        for (let i = 1; i <= 3; i++) {
+          dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+          expect(component.tree.focusedData.pizzaTopping).toBe(`topping_${i}`);
+        }
+      });
+
+      it('should focus on previous data on UP_ARROW', () => {
+        expect(component.tree.focusedData).toBeFalsy();
+
+        for (let i = 3; i >= 1; i--) {
+          dispatchKeyboardEvent(treeElement, 'keydown', UP_ARROW);
+          expect(component.tree.focusedData.pizzaTopping).toBe(`topping_${i}`);
+        }
+      });
+
+      it('should expand focused node on RIGHT_ARROW, and collapse on LEFT_ARROW', () => {
+        expect(component.tree.focusedData).toBeFalsy();
+
+        const data = underlyingDataSource.data;
+        underlyingDataSource.addChild(data[0]);
+        underlyingDataSource.addChild(data[0]);
+        fixture.detectChanges();
+
+        // Focus first item
+        dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+        fixture.detectChanges();
+
+        // Expand the node
+        dispatchKeyboardEvent(treeElement, 'keydown', RIGHT_ARROW);
+        fixture.detectChanges();
+
+        // Focus first child
+        dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_4`);
+
+        // Focus second child
+        dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_5`);
+
+        // Focus parent
+        dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+        expect(component.treeControl.expansionModel.selected.length).toBe(1, '1 node expanded');
+
+        // Collapse parent
+        dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
+        fixture.detectChanges();
+        expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+
+        expect(component.treeControl.expansionModel.selected.length).toBe(0, 'no node expanded');
       });
     });
   });

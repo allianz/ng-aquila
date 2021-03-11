@@ -6,5 +6,6 @@ export * from './node';
 export * from './outlet';
 export * from './padding';
 export * from './toggle';
+export * from './action-item.directive';
 export * from './tree.component';
 export * from './tree.module';

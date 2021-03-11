@@ -26,4 +26,6 @@ The `nxTreeNodeToggle` directive can be used to add expand/collapse feature to t
 
 ### Accessibility
 To provide an accessible tree, the expandable nodes need to contain a `button` element. Similar to this the leaf nodes need to contain a valid `a` or `button` element.
-The tree can then be transversed by keyboard. You can `TAB` through the individual nodes and close/expand them by pressing `SPACE` or `ENTER`.
+The tree can then be traversed by keyboard. You can `TAB` into the tree and go through the individual nodes with `UP` and `DOWN` buttons.
+You can close/expand them by pressing `LEFT` and `RIGHT` buttons respectively or toggle with `ENTER` or `SPACE`.
+To enable full keyboard support any actionable element (`a`, `button`, `checkbox`, etc.) withing a node needs to have `nxTreeNodeActionItem` directive set on it. This way when navigating through the tree, the focus state is correctly passed to the actionable item.

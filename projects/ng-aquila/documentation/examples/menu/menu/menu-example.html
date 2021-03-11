@@ -4,17 +4,19 @@
 
 <nx-menu #menu>
   <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
-    <nx-tree-node *nxTreeNodeDef="let node" nxMenuItem="l">
-      <a *ngFor="let link of node.links"
+    <nx-tree-node *nxTreeNodeDef="let node; when: _isLink" nxMenuItem="l">
+      <a
           nxMenuLink
+          nxTreeNodeActionItem
           routerLink="./"
-          [queryParams]="link.query">
-        {{link.label}}
+          [queryParams]="node.query">
+        {{node.label}}
       </a>
     </nx-tree-node>
     <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
       <button nxMenuButton
           nxTreeNodeToggle
+          nxTreeNodeActionItem
           [nxMenuItem]="node.icon ? 's' : 'l'"
           expandable
           [expanded]="_treeControl.isExpanded(node)"

@@ -3,6 +3,7 @@
     <nx-tree-node *nxTreeNodeDef="let node">
       <button nxAction
           nxTreeNodePadding
+          nxTreeNodeActionItem
           nxTreeNodePaddingOffset="40"
           routerLink="./"
           [queryParams]="node.query"
@@ -16,6 +17,7 @@
     <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
       <button nxAction
           nxTreeNodeToggle
+          nxTreeNodeActionItem
           nxTreeNodePadding
           nxTreeNodePaddingOffset="40"
           expandable
