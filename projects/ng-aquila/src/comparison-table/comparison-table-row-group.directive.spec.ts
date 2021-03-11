@@ -1,13 +1,19 @@
-import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
-import { Type, Component, Directive, DebugElement } from '@angular/core';
+import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync, inject } from '@angular/core/testing';
+import { Type, Component, Directive, DebugElement, ViewChild } from '@angular/core';
 import { NxComparisonTableModule } from './comparison-table.module';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table-base';
+import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;
+
+const comparisonTableDefaultOptions: ComparisonTableDefaultOptions = {
+  useFullRowForExpandableArea: true
+};
 
 @Directive()
 abstract class RowGroupTest {
@@ -15,6 +21,8 @@ abstract class RowGroupTest {
   labelCollapsed: string = 'To be opened';
   labelExpanded: string = 'To be closed';
   isExpanded: boolean = false;
+  useFullRowForExpandableArea: boolean = false;
+  @ViewChild(NxComparisonTableRowGroupDirective) rowGroupDirective: NxComparisonTableRowGroupDirective;
 }
 
 describe('NxComparisonTableRowGroupDirective', () => {
@@ -113,6 +121,13 @@ describe('NxComparisonTableRowGroupDirective', () => {
       expect(flexRowElements.length).toBe(5);
     });
 
+    it('sets useFullRowForExpandableArea to false by default', () => {
+      createTestComponent(BasicComponent);
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
+      const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
+      expect(expandableButtonElement.nativeElement.classList).not.toContain('full-width');
+    });
+
     describe('with binding to isExpanded property', () => {
       it('should show expanded rows if set to true', () => {
         createTestComponent(ConfigurableComponent);
@@ -206,6 +221,54 @@ describe('NxComparisonTableRowGroupDirective', () => {
   });
 });
 
+describe('NxComparisonTableRowGroupDirective using injection token', () => {
+  let fixture: ComponentFixture<RowGroupTest>;
+  let testInstance: RowGroupTest;
+  let rowGroupElement: DebugElement;
+
+  function createTestComponent(component: Type<RowGroupTest>) {
+    fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    testInstance = fixture.componentInstance;
+    rowGroupElement = fixture.debugElement.query(By.css('nx-comparison-table-desktop-group'));
+  }
+
+  beforeEach(waitForAsync(() => {
+    comparisonTableDefaultOptions.useFullRowForExpandableArea = true;
+    TestBed.configureTestingModule({
+      imports: [ NxComparisonTableModule, BrowserAnimationsModule ],
+      declarations: [ BasicComponent, ConfigurableComponent ],
+      providers: [
+        { provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableDefaultOptions }
+      ]
+    });
+    TestBed.compileComponents();
+  }));
+
+  it('changes useFullRowForExpandableArea on injection token change',
+    inject([COMPARISON_TABLE_DEFAULT_OPTIONS], (defaultOptions: ComparisonTableDefaultOptions) => {
+      createTestComponent(BasicComponent);
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
+      const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
+      expect(expandableButtonElement.nativeElement.classList).toContain('full-width');
+
+      defaultOptions.useFullRowForExpandableArea = false;
+      fixture.detectChanges();
+      expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
+      expect(expandableButtonElement.nativeElement.classList).not.toContain('full-width');
+    })
+  );
+
+  it('useFullRowForExpandableArea can be overwritten when injection token is used', () => {
+    createTestComponent(ConfigurableComponent);
+    testInstance.useFullRowForExpandableArea = true;
+    fixture.detectChanges();
+    expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
+    const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
+    expect(expandableButtonElement.nativeElement.classList).toContain('full-width');
+  });
+});
+
 @Component({
   template: `
     <nx-comparison-table>
@@ -236,7 +299,12 @@ class BasicComponent extends RowGroupTest { }
         <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
         <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
       </ng-container>
-      <ng-container nxComparisonTableRowGroup [labelCollapsed]="labelCollapsed" [labelExpanded]="labelExpanded" [visibleRows]="visibleRows" [(isExpanded)]="isExpanded">
+      <ng-container nxComparisonTableRowGroup
+            [labelCollapsed]="labelCollapsed"
+            [labelExpanded]="labelExpanded"
+            [visibleRows]="visibleRows"
+            [(isExpanded)]="isExpanded"
+            [useFullRowForExpandableArea]="useFullRowForExpandableArea">
         <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
           <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
           <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>

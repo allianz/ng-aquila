@@ -21,9 +21,7 @@
 }
 
 .nx-comparison-table-toggle-section__header-content {
-  $header-content-padding: 24px 32px 24px 16px;
-  @include type-style(heading-04);
-  padding: $header-content-padding;
+  @include type-style(comparison-table-toggle-section-header);
   border: nx-border-size(xs) solid v(comparison-table-border-color);
   @include var(background-color, comparison-table-toggle-section-header-background-color);
 
@@ -31,13 +29,15 @@
   justify-content: space-between;
   align-items: center;
 
-  :host-context([dir="rtl"]) & {
-    padding: nx-flip-for-rtl($header-content-padding);
+  @media screen and (-ms-high-contrast: active) {
+    border-color: buttonText;
+    background-color: buttonFace;
+    color: buttonText;
   }
 }
 
 .nx-expansion-panel__chevron {
   pointer-events: none;
-  @include var(font-size, accordion-chevron-size);
-  @include var(color, accordion-regular-chevron-color);
+  @include var(font-size, comparison-table-toggle-section-chevron-size);
+  @include var(color, comparison-table-toggle-section-chevron-color);
 }

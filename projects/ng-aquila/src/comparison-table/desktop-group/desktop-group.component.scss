@@ -20,6 +20,12 @@
     .group-label {
       @include type-style(comparison-table-group-label);
     }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: buttonText;
+      background: buttonFace;
+      border-color: buttonText;
+    }
   }
 }
 

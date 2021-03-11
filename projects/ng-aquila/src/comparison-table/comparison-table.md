@@ -42,6 +42,20 @@ You can also control the initial expanded state and react to its changes through
 
 <!-- example(comparison-table-row-group) -->
 
+<div class="docs-expert-container">
+
+#### Expert: Expand the expandable area over the full row width
+
+By setting `useFullRowForExpandableArea="true"` on the `nxComparisonTableRowGroup` element the expandable area uses the full width of the table.
+
+If the `NxExpertModule` is used, this is set by default.
+
+Please **switch the theme to "EXPERT" at the top of the page** to see the correct expert comparison table.
+
+<!-- example(comparison-table-expandable-area) -->
+
+</div>
+
 #### Toggle Sections
 
 Multiple table rows can be grouped in a toggle section (`nxComparisonTableToggleSection`) with a toggle section header (`nx-comparison-table-toggle-section-header`) as shown in the example below.
@@ -79,6 +93,8 @@ For demonstrating different color combinations, we use a DemoThemingService for 
 You can easily place other components like a dropdown in the comparison table:
 
 Please note that **this is an option for Expert**. This means that form controls inside the comparison table are currently only intended for internal and not for client-facing applications.
+
+Switch the theme to "EXPERT" at the top of the page to see the correct expert comparison table.
 
 <!-- example(comparison-table-form-elements) -->
 

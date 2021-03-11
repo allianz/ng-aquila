@@ -15,7 +15,12 @@
     <div #desktopContent class="nx-comparison-table__table-body" [ngStyle]="{ 'clip-path': 'inset(' + _desktopContentClip + 'px -12px -1px)' }">
       <ng-container *ngFor="let element of elements; let i = index">
         <nx-comparison-table-flex-row *ngIf="_isRow(element) && element.type !== 'header' && !element._isPartOfToggleSection() && !element._isPartOfRowGroup()" [row]="element"></nx-comparison-table-flex-row>
-        <nx-comparison-table-desktop-group *ngIf="_isRowGroup(element) && !element._isPartOfToggleSection()" [group]="element" [isExpanded]="element.isExpanded" (isExpandedChange)="element._handleIsExpandedChange($event)"></nx-comparison-table-desktop-group>
+        <nx-comparison-table-desktop-group
+            *ngIf="_isRowGroup(element) && !element._isPartOfToggleSection()"
+            [group]="element" [isExpanded]="element.isExpanded"
+            [useFullRowForExpandableArea]="element.useFullRowForExpandableArea"
+            (isExpandedChange)="element._handleIsExpandedChange($event)">
+        </nx-comparison-table-desktop-group>
 
         <div *ngIf="_isToggleSection(element)" class="nx-comparison-table__toggle-section">
           <div class="nx-comparison-table__toggle-section-header" role="row">
@@ -25,7 +30,13 @@
           <div class="nx-comparison-table__toggle-section-body" [@bodyExpansion]="element.getOpenState()" role="rowgroup">
             <ng-container *ngFor="let elementOfSection of element.rows">
               <nx-comparison-table-flex-row *ngIf="_isRow(elementOfSection) && !elementOfSection._isPartOfRowGroup()" [row]="elementOfSection"></nx-comparison-table-flex-row>
-              <nx-comparison-table-desktop-group *ngIf="_isRowGroup(elementOfSection)" [group]="elementOfSection" [isExpanded]="elementOfSection.isExpanded" (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)"></nx-comparison-table-desktop-group>
+              <nx-comparison-table-desktop-group
+                  *ngIf="_isRowGroup(elementOfSection)"
+                  [group]="elementOfSection"
+                  [isExpanded]="elementOfSection.isExpanded"
+                  [useFullRowForExpandableArea]="elementOfSection.useFullRowForExpandableArea"
+                  (isExpandedChange)="elementOfSection._handleIsExpandedChange($event)">
+              </nx-comparison-table-desktop-group>
             </ng-container>
           </div>
         </div>

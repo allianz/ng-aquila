@@ -502,6 +502,8 @@ $nx-theme: (
   comparison-table-border-color: ui-04,
   comparison-table-header-background-color: ui-01,
   comparison-table-header-text-color: text-01,
+  comparison-table-placeholder-cell-background-color: transparent,
+  comparison-table-placeholder-cell-border-color: transparent,
 
   comparison-table-disabled-text-color: disabled-01,
   comparison-table-disabled-column-header-text-color: comparison-table-disabled-text-color,
@@ -509,6 +511,10 @@ $nx-theme: (
   comparison-table-cell-background-color: ui-01,
   comparison-table-intersection-cell-background-color: ui-background,
   comparison-table-toggle-section-header-background-color: ui-background,
+  comparison-table-toggle-section-chevron-size: accordion-chevron-size,
+  comparison-table-toggle-section-chevron-color: accordion-regular-chevron-color,
+  comparison-table-toggle-section-header-padding: 24px 32px 24px 16px,
+  comparison-table-toggle-section-header-padding-rtl: 24px 16px 24px 32px,
   comparison-table-expansion-cell-color: interactive-text,
 
   comparison-table-font-size: 16px,
@@ -535,6 +541,11 @@ $nx-theme: (
   comparison-table-group-label-line-height: 24px,
   comparison-table-group-label-font-weight: 600,
   comparison-table-group-label-letter-spacing: 1px,
+
+  comparison-table-toggle-section-header-font-size: heading-04-font-size,
+  comparison-table-toggle-section-header-line-height: heading-04-line-height,
+  comparison-table-toggle-section-header-font-weight: heading-04-font-weight,
+  comparison-table-toggle-section-header-letter-spacing: heading-04-letter-spacing,
 
   selectable-card-text-color: text-01,
   selectable-card-background-color: ui-01,

@@ -1,7 +1,16 @@
-import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, Injectable, InjectionToken, OnDestroy } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
+
+@Injectable()
+export class ComparisonTableDefaultOptions {
+  /** Sets if the expandable area of a row group uses the full width of the row or leaves out the first column. (optional) */
+  useFullRowForExpandableArea?: boolean;
+}
+
+export const COMPARISON_TABLE_DEFAULT_OPTIONS =
+  new InjectionToken<ComparisonTableDefaultOptions>('COMPARISON_TABLE_DEFAULT_OPTIONS');
 
 /**
  * @docs-private

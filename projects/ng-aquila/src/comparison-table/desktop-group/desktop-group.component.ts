@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { NxComparisonTableBase } from '../comparison-table-base';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy, Optional, Inject } from '@angular/core';
+import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS, NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-group.directive';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { Direction, Directionality } from '@angular/cdk/bidi';
 
 /** @docs-private */
 @Component({
@@ -14,6 +15,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
   _expanded: boolean = false;
+  _useFullRowForExpandableArea: boolean;
 
   @Input() group: NxComparisonTableRowGroupDirective;
 
@@ -22,20 +24,37 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
   /** Preserves the current value of the _expansionCell ViewChild in case it changes. */
   private _expansionCellPrevious: ElementRef;
 
+  /** Sets if the row group is expanded. Default: false. */
   @Input()
   set isExpanded(value: boolean) {
     this._expanded = coerceBooleanProperty(value);
   }
-
-  get isExpanded() {
+  get isExpanded(): boolean {
     return this._expanded;
+  }
+
+  /** Sets if the expansion cell uses the full row of the table or leaves out the first column. Default: false. */
+  @Input()
+  set useFullRowForExpandableArea(value: boolean) {
+    this._useFullRowForExpandableArea = coerceBooleanProperty(value);
+  }
+  get useFullRowForExpandableArea(): boolean {
+    if (this._useFullRowForExpandableArea !== undefined) {
+      return this._useFullRowForExpandableArea;
+    }
+    if (this._defaultOptions && this._defaultOptions.useFullRowForExpandableArea !== undefined) {
+      return this._defaultOptions.useFullRowForExpandableArea;
+    }
+    return false;
   }
 
   @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
     public _table: NxComparisonTableBase,
-    private _focusMonitor: FocusMonitor
+    private _focusMonitor: FocusMonitor,
+    @Optional() private _dir: Directionality,
+    @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions
   ) {}
 
   ngAfterViewInit() {
@@ -48,6 +67,11 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this._focusMonitor.stopMonitoring(this._expansionCell);
+  }
+
+  /** The text direction of the containing app. */
+  get dir(): Direction {
+    return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
   }
 
   toggleGroup() {
@@ -83,5 +107,13 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
     return this._expanded ? 'open' : 'closed';
   }
 
+  get _expandedAreaColspan(): number {
+    if (this._table.viewType === 'desktop' && this._useFullRowForExpandableArea) {
+      return this._table._infoColumnCount() + 1;
+    }
+    return this._table._infoColumnCount();
+  }
+
   static ngAcceptInputType_isExpanded: BooleanInput;
+  static ngAcceptInputType_useFullRowForExpandableArea: BooleanInput;
 }

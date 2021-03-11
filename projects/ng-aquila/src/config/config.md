@@ -13,6 +13,7 @@ If you build internal applications (expert) some components need a specific conf
 
 When imported, this module sets the injection tokens for a bunch of components. It uses the expert settings explained in dedicated sections of every affected component:
 
+- **ComparisonTable**: Sets `[useFullRowForExpandableArea]` to `true` for `nxComparisonTableRowGroup`.
 - **Datepicker:**: Sets the `[tabindex]` to `-1` for the `nx-datepicker-toggle`.
 - **Error:** `[appearance]` is set to `"text"` (see [here](./documentation/base/overview#error)).
 - **Formfield:** `[appearance]` is set to `"outline"` and `nxFloatLabel` to `"always"` (see [here](./documentation/formfield/overview#expert%253A-appearance)).

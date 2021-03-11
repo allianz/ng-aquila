@@ -4,14 +4,15 @@
 </ng-container>
 
 <div *ngIf="group.rows.length > group.visibleRows" class="nx-comparison-table__row" role="row">
-  <div *ngIf="_table.viewType === 'desktop'" class="nx-comparison-table__placeholder-cell" role="cell">
+  <div *ngIf="_table.viewType === 'desktop' && !useFullRowForExpandableArea" class="nx-comparison-table__placeholder-cell" role="cell">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
   <div #expansionCell
        class="nx-comparison-table__intersection-cell nx-comparison-table__group-expansion-cell"
+       [class.full-width]="_table.viewType === 'desktop' && useFullRowForExpandableArea"
        role="cell"
-       [attr.aria-colspan]="_table._infoColumnCount()"
-       [style.flex-grow]="_table._infoColumnCount()"
+       [attr.aria-colspan]="_expandedAreaColspan"
+       [style.flex-grow]="_expandedAreaColspan"
        (click)="toggleGroup()"
        [attr.aria-expanded]="_expanded"
        tabindex="0"
@@ -21,7 +22,8 @@
       <nx-icon [name]="_expanded ? 'chevron-up' : 'chevron-down'"
                aria-hidden="true"
                size="s"
-               class="nx-margin-left-2xs">
+               [class.nx-margin-left-2xs]="dir === 'ltr'"
+               [class.nx-margin-right-2xs]="dir === 'rtl'">
       </nx-icon>
     </div>
   </div>

@@ -1,9 +1,10 @@
-import { Directive, Input, QueryList, ContentChildren, Optional, isDevMode, EventEmitter, Output } from '@angular/core';
+import { Directive, Input, QueryList, ContentChildren, Optional, EventEmitter, Output, Inject } from '@angular/core';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxTableContentElement } from './table-content-element.directive';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
 import { NumberInput, coerceNumberProperty, coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
+import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table-base';
 
 @Directive({
   selector: '[nxComparisonTableRowGroup]',
@@ -44,7 +45,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     return this._labelExpanded;
   }
 
-  _visibleRows: number = 5;
+  private _visibleRows: number = 5;
 
   /** Sets the number of rows that are visible when loading the component. Default: 5. */
   @Input()
@@ -58,7 +59,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     return this._visibleRows;
   }
 
-  _isExpanded: boolean = false;
+  private _isExpanded: boolean = false;
 
   /** Sets the expanded state of the row group */
   @Input()
@@ -73,11 +74,33 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     return this._isExpanded;
   }
 
+  private _useFullRowForExpandableArea: boolean;
+
+  /**
+   * **Expert Option**
+   *
+   * Sets if the expandable area uses the full width of the row or leaves out the first column. Default: false.
+   */
+  @Input()
+  set useFullRowForExpandableArea(value: boolean) {
+    this._useFullRowForExpandableArea = coerceBooleanProperty(value);
+  }
+  get useFullRowForExpandableArea(): boolean {
+    if (this._useFullRowForExpandableArea !== undefined) {
+      return this._useFullRowForExpandableArea;
+    }
+    if (this._defaultOptions && this._defaultOptions.useFullRowForExpandableArea !== undefined) {
+      return this._defaultOptions.useFullRowForExpandableArea;
+    }
+    return false;
+  }
+
   /** An event emitted every time the expanded state of the group changes */
   @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
-    @Optional() private _toggleSection: NxToggleSectionBase
+    @Optional() private _toggleSection: NxToggleSectionBase,
+    @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions
   ) {
     super();
   }
@@ -92,5 +115,6 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
   }
 
   static ngAcceptInputType_visibleRows: NumberInput;
+  static ngAcceptInputType_useFullRowForExpandableArea: BooleanInput;
   static ngAcceptInputType_isExpanded: BooleanInput;
 }

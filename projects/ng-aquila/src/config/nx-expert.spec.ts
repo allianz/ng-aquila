@@ -14,6 +14,7 @@ import {
 } from '@aposin/ng-aquila/base';
 import { NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
 import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
 
 @Directive()
 abstract class PresetTest {
@@ -53,6 +54,7 @@ describe('NxExpertPreset', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [
+          NxComparisonTableModule,
           NxDatefieldModule,
           NxErrorModule,
           NxExpertModule,
@@ -67,7 +69,8 @@ describe('NxExpertPreset', () => {
           FormfieldPresetComponent,
           LabelPresetComponent,
           TabGroupPresetComponent,
-          TabNavBarPresetComponent
+          TabNavBarPresetComponent,
+          ComparisonTablePresetComponent
         ]
       }).compileComponents();
     })
@@ -115,6 +118,13 @@ describe('NxExpertPreset', () => {
     it('should set appearance to expert on default for tab-nav-bar', () => {
       createTestComponent(TabNavBarPresetComponent);
       expect(tabNavBarInstance.appearance).toBe('expert');
+    });
+  });
+
+  describe('comparison-table presets', () => {
+    it('should set useFullRowForExpandableArea of row group to true', () => {
+      createTestComponent(ComparisonTablePresetComponent);
+      expect((testInstance as ComparisonTablePresetComponent).rowGroupInstance.useFullRowForExpandableArea).toBe(true);
     });
   });
 });
@@ -192,4 +202,29 @@ class TabNavBarPresetComponent extends PresetTest {
       this.currentLink = link;
     }
   }
+}
+
+@Component({
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header">
+        <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRowGroup>
+        <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4]">
+          <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+          <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+          <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>
+        </ng-container>
+      </ng-container>
+      <ng-container nxComparisonTableRow type="footer">
+        <nx-comparison-table-cell type="footer">This is a footer cell</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="footer">This is a footer cell</nx-comparison-table-cell>
+      </ng-container>
+    </nx-comparison-table>
+ `
+})
+class ComparisonTablePresetComponent extends PresetTest {
+  @ViewChild(NxComparisonTableRowGroupDirective) rowGroupInstance: NxComparisonTableRowGroupDirective;
 }

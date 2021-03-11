@@ -16,6 +16,7 @@ import { ComparisonTableModifyThemingExampleComponent } from './comparison-table
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
+import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
@@ -26,7 +27,8 @@ const EXAMPLES = [
   ComparisonTableModifyThemingExampleComponent,
   ComparisonTableRowGroupExampleComponent,
   ComparisonTableWithIntersectionExampleComponent,
-  ComparisonTableWithToggleSectionsExampleComponent
+  ComparisonTableWithToggleSectionsExampleComponent,
+  ComparisonTableExpandableAreaExampleComponent
 ];
 
  @NgModule({
@@ -55,6 +57,7 @@ export class ComparisonExamplesModule {
       'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
       'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
       'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
+      'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent
     };
   }
 }
