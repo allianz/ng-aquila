@@ -3,28 +3,28 @@
 }
 
 .color-1 {
-  background-color: var(--documentation-avatar-color-1);
+  background-color: var(--documentation-avatar-color-1, #87D68D);
 }
 
 .color-2 {
-  background-color: var(--documentation-avatar-color-2);
+  background-color: var(--documentation-avatar-color-2, #27ABD6);
 }
 
 .color-3 {
-  background-color: var(--documentation-avatar-color-3);
+  background-color: var(--documentation-avatar-color-3, #FAC748);
 }
 
 .color-4 {
-  background-color: var(--documentation-avatar-color-4);
-  color: var(--documentation-avatar-text-color);
+  background-color: var(--documentation-avatar-color-4, #E18335);
+  color: var(--documentation-avatar-text-color, #0f2a3d);
 }
 
 .color-5 {
-  background-color: var(--documentation-avatar-color-5);
-  color: var(--documentation-avatar-text-color);
+  background-color: var(--documentation-avatar-color-5, #DBD3D8);
+  color: var(--documentation-avatar-text-color, #0f2a3d);
 }
 
 .color-6 {
-  background-color: var(--documentation-avatar-color-6);
-  color: var(--documentation-avatar-text-color);
+  background-color: var(--documentation-avatar-color-6, #969696);
+  color: var(--documentation-avatar-text-color, #0f2a3d);
 }
