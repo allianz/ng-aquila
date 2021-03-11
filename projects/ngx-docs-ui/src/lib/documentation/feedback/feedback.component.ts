@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, ElementRef, Inject, Input, OnDestroy, Optional, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subscription } from 'rxjs';
 import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
@@ -14,7 +14,7 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
     '[class.is-desktop]': '!showMobileView'
   }
 })
-export class NxvFeedbackComponent implements OnDestroy {
+export class NxvFeedbackComponent implements OnInit, OnDestroy {
 
   @ViewChild('mobileButton') mobileButton: ElementRef;
 
@@ -23,6 +23,9 @@ export class NxvFeedbackComponent implements OnDestroy {
   viewportServiceSubscription: Subscription;
 
   showMobileView: boolean = false;
+
+  feedbackLinkPositive: string;
+  feedbackLinkNegative: string;
 
   constructor(
     @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks,
@@ -40,15 +43,13 @@ export class NxvFeedbackComponent implements OnDestroy {
     });
   }
 
+  ngOnInit() {
+    this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
+    this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
+  }
+
   ngOnDestroy() {
     this.viewportServiceSubscription.unsubscribe();
   }
 
-  openPositiveLink() {
-    window.open(this._feedbackLinks[this.page].positivePreset, '_blank');
-  }
-
-  openNegativeLink() {
-    window.open(this._feedbackLinks[this.page].negativePreset, '_blank');
-  }
 }

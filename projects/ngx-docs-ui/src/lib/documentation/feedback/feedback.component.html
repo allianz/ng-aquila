@@ -13,12 +13,12 @@
 <ng-template #feedbackButtons>
   <p class="nx-margin-top-0 nx-margin-bottom-0 nx-font-weight-semibold">Give us your feedback!</p>
   <p class="nx-margin-top-0">Was this helpful?</p>
-  <button #positiveButton nxButton="secondary small" class="nx-margin-right-2xs" role="link" (click)="openPositiveLink()">
+  <a #positiveButton nxButton="secondary small" class="nx-margin-right-2xs" [href]="feedbackLinkPositive" rel="nofollow" target="_blank">
     <nx-icon name="sentiment-very-satisfied" class="nx-margin-right-2xs"></nx-icon>
     Yes
-  </button>
-  <button #negativeButton nxButton="secondary small" role="link" (click)="openNegativeLink()">
+  </a>
+  <a #negativeButton nxButton="secondary small" [href]="feedbackLinkNegative" rel="nofollow" target="_blank">
     <nx-icon name="sentiment-very-dissatisfied" class="nx-margin-right-2xs"></nx-icon>
     No
-  </button>
+  </a>
 </ng-template>
