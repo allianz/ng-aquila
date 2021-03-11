@@ -28,4 +28,74 @@
     color: windowText;
     background-color: window;
   }
+
+  &.nx-indicator--over-text {
+    position: absolute;
+    top: 0;
+    left: 100%;
+
+    &:not(:empty) {
+      top: -4px;
+    }
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 100%;
+    }
+  }
+
+  &.nx-indicator--with-overlap {
+    position: absolute;
+
+    &:not(:empty) {
+      left: calc(100% - 4px);
+
+      [dir="rtl"] & {
+        left: auto;
+        right: calc(100% - 4px);
+      }
+    }
+  }
+
+  &.nx-indicator--after-text {
+    vertical-align: top;
+    margin-left: 4px;
+
+    [dir="rtl"] & {
+      margin-left: initial;
+      margin-right: 4px;
+    }
+  }
+
+  &.nx-indicator--over-icon {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+
+    &:empty {
+      left: calc(50% + 2px);
+      bottom: calc(50% + 2px);
+    }
+
+    [dir="rtl"] & {
+      left: auto;
+      right: 50%;
+
+      &:empty {
+        left: auto;
+        right: calc(50% + 2px);
+      }
+    }
+  }
+
+}
+
+// Targeting IE11 inline-flex and absolute position troubles
+:host-context(_:-ms-fullscreen, :root) {
+  &.nx-indicator--over-icon,
+  &.nx-indicator--over-text {
+    display: block;
+    padding-top: 1px;
+    text-align: center;
+  }
 }

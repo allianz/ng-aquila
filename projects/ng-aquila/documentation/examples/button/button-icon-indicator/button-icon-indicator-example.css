@@ -4,14 +4,3 @@
   margin: 0 -8px;
   width: 100%;
 }
-
-nx-indicator {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-}
-
-nx-indicator:empty {
-  left: calc(50% + 2px);
-  bottom: calc(50% + 2px);
-}
