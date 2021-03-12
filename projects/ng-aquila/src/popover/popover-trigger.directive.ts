@@ -480,7 +480,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         ...origin,
         ...overlay,
         ...offset,
-      }, ...fallbacks]);
+      }, ...fallbacks]).withFlexibleDimensions(false);
   }
 
   /** Returns the focus to the element focused before the Popover was open. */
