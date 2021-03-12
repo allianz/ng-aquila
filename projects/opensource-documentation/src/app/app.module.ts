@@ -14,8 +14,6 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
-import { BaseDemoThemingService } from '@aposin/ngx-docs-ui';
-import { DemoThemingService } from './demo-theming.service';
 import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
@@ -82,7 +80,6 @@ const GITHUB_REPO_LINK: GithubLinkConfig = {
     ]},
     { provide: NX_DOCS_FEATURE_FLAGS, useValue: { themeSwitcher: true} },
     { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
-    { provide: BaseDemoThemingService, useClass: DemoThemingService },
     { provide: BaseLazyLoadingService, useExisting: LazyLoadingService }
   ],
   bootstrap: [AppComponent]

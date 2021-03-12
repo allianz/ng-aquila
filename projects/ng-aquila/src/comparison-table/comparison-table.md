@@ -76,9 +76,7 @@ By setting some theming tokens, you can modify the look of the comparison table.
 
 Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set `unselectedClassNames="secondary small negative"` for `nxComparisonTableSelectButton`.
 
-For demonstrating different color combinations, we use a DemoThemingService for all examples. This is **not** needed for your implementation.
-
-<!-- example(comparison-table-modify-theming, { "hideHeader": true }) -->
+<!-- example(comparison-table-private-modify-theming, { "privateExample": true, "hideStackblitzButton": true }) -->
 
 </div>
 

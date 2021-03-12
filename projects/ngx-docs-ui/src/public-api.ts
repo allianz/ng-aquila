@@ -15,7 +15,6 @@ export * from './lib/documentation/theme-switcher/theme-switcher.service';
 export * from './lib/documentation/rabbit-hole.service';
 export * from './lib/example-full-screen/example-full-screen.component';
 export * from './lib/example-full-screen/example-full-screen.module';
-export * from './lib/service/demo-theming.service';
 export * from './lib/service/component.service';
 export * from './lib/service/lazy-loading.service';
 export * from './lib/documentation/navigation.service';

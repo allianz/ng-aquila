@@ -12,7 +12,6 @@ import { ComparisonTableExampleComponent } from './comparison-table/comparison-t
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
-import { ComparisonTableModifyThemingExampleComponent } from './comparison-table-modify-theming/comparison-table-modify-theming-example';
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
@@ -24,7 +23,6 @@ const EXAMPLES = [
   ComparisonTableDisabledColumnsExampleComponent,
   ComparisonTableDynamicExampleComponent,
   ComparisonTableFormElementsExampleComponent,
-  ComparisonTableModifyThemingExampleComponent,
   ComparisonTableRowGroupExampleComponent,
   ComparisonTableWithIntersectionExampleComponent,
   ComparisonTableWithToggleSectionsExampleComponent,
@@ -53,7 +51,6 @@ export class ComparisonExamplesModule {
       'comparison-table-disabled-columns': ComparisonTableDisabledColumnsExampleComponent,
       'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
       'comparison-table-form-elements': ComparisonTableFormElementsExampleComponent,
-      'comparison-table-modify-theming': ComparisonTableModifyThemingExampleComponent,
       'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
       'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
       'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
