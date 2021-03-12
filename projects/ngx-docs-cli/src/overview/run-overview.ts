@@ -44,7 +44,7 @@ const save = (folder) => pipe(
 );
 
 
-export const build = ({ source, dest}) => {
+export const build = ({ source, dest, ignorePrivateExamples }) => {
   return findAllFiles(source)
     .pipe(
       showProcessingNotice('Processing Overview'),
@@ -55,7 +55,7 @@ export const build = ({ source, dest}) => {
         return path.basename(file, '.md') === path.basename(path.dirname(file));
       }),
       readFileStream,
-      transform,
+      transform(ignorePrivateExamples),
       save(dest),
       manifest({key: 'components'})
     );

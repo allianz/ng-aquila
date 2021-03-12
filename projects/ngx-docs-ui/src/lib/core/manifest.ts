@@ -9,7 +9,7 @@ export interface Manifest {
 
 export interface ComponentDescriptor {
   id: string;
-  examples: string[];
+  examples: Object[];
   title: string;
   category: string;
   apiFile: string;

@@ -5,6 +5,10 @@ import * as ts from 'typescript';
 
 
 function findExampleFolders(source) {
+  if (!fs.existsSync(source)) {
+    return [];
+  }
+
   return fs.readdirSync(source, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name);

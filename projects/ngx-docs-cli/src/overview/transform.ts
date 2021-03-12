@@ -48,43 +48,57 @@ const processFrontMatter = map( (file: MarkdownFile) => {
 // Replace all example makers with a div
 // And collect all found examples in an array so we
 // can save them in the manifest file later
-const parseExamples = map( (file: MarkdownFile) => {
+const parseExamples = (ignorePrivateExamples) => map( (file: MarkdownFile) => {
   const content = file.content;
 
   // replace  marker with a div to attach later
-  file.content = replaceMarkers(content);
+  file.content = replaceMarkers(content, ignorePrivateExamples);
 
   // collect all examples for this component
-  file.examples = getAllExamplesIDs(content);
+  file.examples = getAllExamples(content, ignorePrivateExamples);
+
   return file;
 });
 
 
-function getAllExamplesIDs(value: string) {
-  const ids = [];
+
+function getAllExamples(value: string, ignorePrivateExamples) {
+  const examples = [];
   let match = EXAMPLE_PATTERN.exec(value);
   while (match !== null) {
     const name = match[1].split(',')[0];
-    ids.push(name);
+    const containsConfig = match[1].indexOf(',') !== -1;
+    const config = containsConfig ? match[1].replace(/[^,]*,\s*/, '') : '{}';
+
+    // add id if example is not private and private examples should be ignored
+    if (!(config && config.indexOf('privateExample') !== -1 && ignorePrivateExamples)) {
+      examples.push({ name: name, config: JSON.parse(config) });
+    }
+
     match = EXAMPLE_PATTERN.exec(value);
   }
 
-  return ids;
+  return examples;
 }
 
-const replaceMarkers = content => (
+const replaceMarkers = (content, ignorePrivateExamples) => (
   content.replace(EXAMPLE_PATTERN, (_match: string, example: string) => {
     const name = example.split(',')[0];
     const containsConfig = example.indexOf(',') !== -1;
     const config = containsConfig ? example.replace(/[^,]*,\s*/, '') : '{}';
+
+    if (config && config.indexOf('privateExample') !== -1 && ignorePrivateExamples) {
+      return ``;
+    }
+
     return `<div nx-docs-example="${name}" config="${config.replace(/"/g, `'`)}">exampleID: ${name}</div>`;
   })
 );
 
 
-export const transform = pipe(
+export const transform = (ignorePrivateExamples) => pipe(
   logFile,
   processFrontMatter,
   renderMarkdown,
-  parseExamples
+  parseExamples(ignorePrivateExamples)
 );

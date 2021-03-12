@@ -48,6 +48,7 @@ program
   .option('-w, --watch', 'Watch the source folder')
   .option('-c, --config [path]', 'Path to config file', parsePath)
   .option('-o, --output [path]', 'Where to save all generated files. By default `./generated` in your documentaiton folder .', parsePath)
+  .option('-pe, --private-examples [path]', 'An additional private examples folder.', null)
 
   .option('-m, --with-module [path]', 'Enable Example Module generation. \
         Pass in path otherwise the file is generated in the example folder.', parsePath, 'true')
@@ -138,10 +139,13 @@ program
         // of the observable.
         concat(
           dgeni.run(sourceFiles, path.join(destination, 'api')),
-          overview.run(sourceFiles, path.join(destination, 'overview')),
+          overview.run(sourceFiles, path.join(destination, 'overview'), {
+            ignorePrivateExamples: !cmd.privateExamples
+          }),
           examples.run(exampleFiles, {
             serviceOutputPath: destination,
-            outputExampleSources: path.join(destination, 'examples')
+            outputExampleSources: path.join(destination, 'examples'),
+            additionalSourcePath: cmd.privateExamples
           }),
           guides.run(guideFiles, path.join(destination, 'guides'))
         )

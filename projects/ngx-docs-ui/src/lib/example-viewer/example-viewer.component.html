@@ -26,7 +26,7 @@
           <nx-icon name="popout" aria-hidden="true"></nx-icon>
         </a>
       </nx-link>
-      <nxv-stack-blitz-button [example]="example"></nxv-stack-blitz-button>
+      <nxv-stack-blitz-button *ngIf="!config?.hideStackblitzButton" [example]="example"></nxv-stack-blitz-button>
     </div>
   </div>
   <!-- Code to the example -->

@@ -10,6 +10,8 @@ import { ManifestService } from './../service/manifest.service';
 
 interface ExampleConfig {
   hideHeader?: boolean;
+  hideStackblitzButton?: boolean;
+  privateExample?: boolean;
 }
 
 @Component({
