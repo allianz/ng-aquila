@@ -2,6 +2,7 @@
   <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
     <nx-tree-node *nxTreeNodeDef="let node">
        <button nxAction
+           nxTreeNodeActionItem
            nxTreeNodePadding
            nxTreeNodePaddingOffset="40"
            routerLinkActive="is-selected"
@@ -15,6 +16,7 @@
     </nx-tree-node>
     <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
        <button nxAction
+           nxTreeNodeActionItem
            nxTreeNodeToggle
            nxTreeNodePadding
            nxTreeNodePaddingOffset="40"

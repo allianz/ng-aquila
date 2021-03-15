@@ -1,7 +1,33 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { WikipediaService } from '../../../common/wikipedia.service';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WikipediaService {
+
+  private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+
+  constructor(private client: HttpClient) {}
+
+  search (term: string): Observable<any[]> {
+    const url = searchUrl(term, this.WIKIPEDIA_URL);
+    return this.client.jsonp(url, 'callback')
+      .pipe(map((response: any) => response[1].map((item: any) => {
+        return {value: item};
+      })));
+
+    function searchUrl(searchTeam: string, base: string) {
+      const params = new HttpParams()
+        .append('action', 'opensearch')
+        .append('search', encodeURIComponent(searchTeam))
+        .append('format', 'json');
+      return `${base}?${params.toString()}`;
+    }
+  }
+}
 
 /**
 * @title Autocomplete Example
@@ -15,13 +41,13 @@ import { WikipediaService } from '../../../common/wikipedia.service';
 export class PageSearchAutocompleteExampleComponent {
 
   searchFunction: (term: string) => Observable<string[]>;
-  searchTerm1: string;
-  searchTerm2: string;
+  searchTerm1 = '';
+  searchTerm2 = '';
 
   constructor(public wikipediaService: WikipediaService) {
     this.searchFunction = (term: string) => wikipediaService
       .search(term)
-      .pipe(map((items: any) => items.map((item) => item.value)));
+      .pipe(map((items: any) => items.map((item: any) => item.value)));
   }
 
 }

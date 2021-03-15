@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['sidepanel-floating-example.css']
 })
 export class SidepanelFloatingExampleComponent {
-  opened: boolean = false;
+  opened: boolean = true;
   isGreaterThanSmall: boolean = true;
 
   viewportServiceSubscription: Subscription;

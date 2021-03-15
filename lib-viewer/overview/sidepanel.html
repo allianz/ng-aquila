@@ -2,8 +2,21 @@
   <strong>Expert: </strong>
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
+<div class="docs-deprecation-warning">
+  <strong>Deprecation of standalone <code>nx-sidepanel</code></strong><br>
+  Please note that the usage of an <code>nx-sidepanel</code> without a wrapping <code>nx-sidepanel-outer-container</code> is deprecated.
+</div>
 <p class="docs-markdown--p">Please note that the sidepanel is currently <strong>not recommended for mobile usage</strong>.</p>
-<p class="docs-markdown--p">The <code>nx-sidepanel</code> is a container that is fixed to the right edge of the viewport to provide content that supports the main content area.</p>
+<p class="docs-markdown--p">The <code>nx-sidepanel</code> is a container that is fixed to the right edge of the viewport to provide content that supports the main content area. The <code>nx-sidepanel</code> needs to be wrapped into <code>nx-sidepanel-outer-container</code>, which also holds the main content besides the sidepanel:</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-sidepanel-outer-container</span>&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- Main content of the page --&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-sidepanel</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Content besides the main area of the page --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidepanel</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-sidepanel-outer-container</span>&gt;</span>
+</code></pre>
 <p class="docs-markdown--p"><code>&lt;nx-sidepanel-header&gt;</code> provides a place that will stay fixed on top, when the bottom part of <code>&lt;nx-sidepanel-content&gt;</code> is scrolled down.</p>
 <h3 id="color-variations" class="docs-markdown--h3">Color variations</h3>
 <p class="docs-markdown--p">There are two different color variations available.</p>

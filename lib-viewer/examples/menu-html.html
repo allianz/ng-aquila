@@ -1,21 +1,22 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bars&quot;</span>
-  <span class="hljs-attr">role</span>=<span class="hljs-string">&quot;button&quot;</span>
-  (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;menu.toggle()&quot;</span>
-  <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;menu.toggle()&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;open menu&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bars&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-menu</span> #<span class="hljs-attr">menu</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree</span> [<span class="hljs-attr">dataSource</span>]=<span class="hljs-string">&quot;_dataSource&quot;</span> [<span class="hljs-attr">treeControl</span>]=<span class="hljs-string">&quot;_treeControl&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node&quot;</span> <span class="hljs-attr">nxMenuItem</span>=<span class="hljs-string">&quot;l&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">a</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let link of node.links&quot;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node; when: _isLink&quot;</span> <span class="hljs-attr">nxMenuItem</span>=<span class="hljs-string">&quot;l&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">a</span>
           <span class="hljs-attr">nxMenuLink</span>
+          <span class="hljs-attr">nxTreeNodeActionItem</span>
           <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;./&quot;</span>
-          [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;link.query&quot;</span>&gt;</span>
-        {{link.label}}
+          [<span class="hljs-attr">queryParams</span>]=<span class="hljs-string">&quot;node.query&quot;</span>&gt;</span>
+        {{node.label}}
       <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tree-node</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">nx-tree-node</span> *<span class="hljs-attr">nxTreeNodeDef</span>=<span class="hljs-string">&quot;let node; when: _hasChild&quot;</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
           <span class="hljs-attr">nxTreeNodeToggle</span>
+          <span class="hljs-attr">nxTreeNodeActionItem</span>
           [<span class="hljs-attr">nxMenuItem</span>]=<span class="hljs-string">&quot;node.icon ? &#x27;s&#x27; : &#x27;l&#x27;&quot;</span>
           <span class="hljs-attr">expandable</span>
           [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;_treeControl.isExpanded(node)&quot;</span>

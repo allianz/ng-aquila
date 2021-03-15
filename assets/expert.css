@@ -414,11 +414,17 @@
   --comparison-table-border-color: var(--ui-04);
   --comparison-table-header-background-color: var(--ui-01);
   --comparison-table-header-text-color: var(--text-01);
+  --comparison-table-placeholder-cell-background-color: transparent;
+  --comparison-table-placeholder-cell-border-color: var(--comparison-table-border-color);
   --comparison-table-disabled-text-color: var(--disabled-01);
   --comparison-table-disabled-column-header-text-color: var(--comparison-table-disabled-text-color);
   --comparison-table-cell-background-color: var(--ui-01);
   --comparison-table-intersection-cell-background-color: var(--ui-background);
   --comparison-table-toggle-section-header-background-color: var(--ui-background);
+  --comparison-table-toggle-section-chevron-size: var(--accordion-chevron-size);
+  --comparison-table-toggle-section-chevron-color: var(--accordion-regular-chevron-color);
+  --comparison-table-toggle-section-header-padding: 16px;
+  --comparison-table-toggle-section-header-padding-rtl: 16px;
   --comparison-table-expansion-cell-color: var(--interactive-text);
   --comparison-table-font-size: 16px;
   --comparison-table-line-height: 20px;
@@ -440,6 +446,10 @@
   --comparison-table-group-label-line-height: 24px;
   --comparison-table-group-label-font-weight: 600;
   --comparison-table-group-label-letter-spacing: 1px;
+  --comparison-table-toggle-section-header-font-size: var(--paragraph-03-font-size);
+  --comparison-table-toggle-section-header-line-height: var(--paragraph-03-line-height);
+  --comparison-table-toggle-section-header-font-weight: var(--paragraph-03-font-weight);
+  --comparison-table-toggle-section-header-letter-spacing: var(--paragraph-03-letter-spacing);
   --selectable-card-text-color: var(--text-01);
   --selectable-card-background-color: var(--ui-01);
   --selectable-card-background-hover-color: var(--ui-02);

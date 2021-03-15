@@ -1,19 +1,22 @@
 <span class="hljs-selector-class">.wrapper</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--documentation-margin-example-background-color, #<span class="hljs-number">1</span>c7997);
   <span class="hljs-attribute">display</span>: table;
   <span class="hljs-attribute">align-items</span>: center;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
   <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100%</span>;
 }
 
-<span class="hljs-selector-class">.margin-box</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
-  <span class="hljs-attribute">display</span>: block;
-  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
-}
-
 <span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-ms-high-contrast:</span> active) {
   <span class="hljs-selector-class">.wrapper</span> {
     <span class="hljs-attribute">background-color</span>: windowText;
   }
+}
+
+<span class="hljs-selector-class">.margin-box</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">var</span>(--documentation-margin-example-background-color, #<span class="hljs-number">1</span>c7997);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--ui-<span class="hljs-number">01</span>, #<span class="hljs-number">0</span>f2a3d);
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
 }

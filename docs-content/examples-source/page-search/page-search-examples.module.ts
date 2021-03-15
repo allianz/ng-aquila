@@ -1,3 +1,4 @@
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';
@@ -23,7 +24,9 @@ const EXAMPLES = [
     NxInputModule,
     NxAutocompleteModule,
     NxIconModule,
-    ExamplesSharedModule
+    ExamplesSharedModule,
+    HttpClientJsonpModule,
+    HttpClientModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]

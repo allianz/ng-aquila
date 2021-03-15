@@ -10,15 +10,15 @@ interface Link {
 */
 export interface MyTreeNode extends NxTreeNode {
   children?: MyTreeNode[];
-  links?: Link[];
   label?: string;
   icon?: string;
+  query?: any;
 }
 
 /** Flat node with expandable and level information */
 interface MyFlatTreeNode extends NxFlatTreeNode {
   label?: string;
-  links?: Link[];
+  query?: any;
   icon?: string;
 }
 
@@ -39,8 +39,6 @@ export class MenuExampleComponent {
         {
           label: 'Option 1.1',
           children: [
-            {
-              links: [
               {
                 label: 'Option 1.2.1',
                 query: { a: '1.1.1' }
@@ -53,15 +51,11 @@ export class MenuExampleComponent {
                 label: 'Option 1.1.3',
                 query: { a: '1.1.3' }
               }
-              ]
-            }
           ]
         },
         {
           label: 'Option 1.2',
           children: [
-            {
-              links: [
                 {
                   label: 'Option 1.2.1',
                   query: { a: '1.2.1' }
@@ -74,15 +68,11 @@ export class MenuExampleComponent {
                   label: 'Option 1.2.3',
                   query: { a: '1.2.3' }
                 }
-              ]
-            }
           ]
         },
         {
           label: 'Option 1.3',
           children: [
-            {
-              links: [
                 {
                   label: 'Option 1.3.1',
                   query: { a: '1.3.1' }
@@ -95,8 +85,6 @@ export class MenuExampleComponent {
                   label: 'Option 1.3.3',
                   query: { a: '1.3.3' }
                 }
-              ]
-            }
           ]
         }
       ]
@@ -108,8 +96,6 @@ export class MenuExampleComponent {
         {
           label: 'Option 2.1',
           children: [
-            {
-              links: [
                 {
                   label: 'Option 2.2.1',
                   query: { a: '2.1.1' }
@@ -122,15 +108,11 @@ export class MenuExampleComponent {
                   label: 'Option 2.1.3',
                   query: { a: '2.1.3' }
                 }
-              ]
-            }
           ]
         },
         {
           label: 'Option 2.2',
           children: [
-            {
-              links: [
                 {
                   label: 'Option 2.2.1',
                   query: { a: '2.2.1' }
@@ -143,15 +125,11 @@ export class MenuExampleComponent {
                   label: 'Option 2.2.3',
                   query: { a: '2.2.3' }
                 }
-              ]
-            }
           ]
         },
         {
           label: 'Option 2.3',
           children: [
-            {
-              links: [
                 {
                   label: 'Option 2.3.1',
                   query: { a: '2.3.1' }
@@ -164,18 +142,14 @@ export class MenuExampleComponent {
                   label: 'Option 2.3.3',
                   query: { a: '2.3.3' }
                 }
-              ]
-            }
           ]
         }
       ]
     },
     {
       label: 'Option 3',
-      icon: 'setting',
+      icon: 'user-o',
       children: [
-        {
-          links: [
             {
               label: 'Option 3.1',
               query: { a: '3.1' }
@@ -188,8 +162,6 @@ export class MenuExampleComponent {
               label: 'Option 3.3',
               query: { a: '3.3' }
             }
-          ]
-        }
       ]
     }
   ];
@@ -204,4 +176,5 @@ export class MenuExampleComponent {
   }
 
   _hasChild = (_: number, node: NxFlatTreeNode) => node.expandable;
+  _isLink = (_: number, node: MyFlatTreeNode) => node.query;
 }

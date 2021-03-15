@@ -20,7 +20,7 @@
     "@angular/platform-browser": "^11.0.0",
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
-    "@aposin/ng-aquila": "^11.0.1",
+    "@aposin/ng-aquila": "^11.2.0",
     "css-vars-ponyfill": "^2.4.2",
     "dayjs": "^1.10.2",
     "iban": "^0.0.14",

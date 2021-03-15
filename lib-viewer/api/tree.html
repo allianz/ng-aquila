@@ -28,6 +28,40 @@
     
       
 
+<h4 id="NxTreeNodeActionItem" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTreeNodeActionItem"></span>
+  <code>NxTreeNodeActionItem</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">[nxTreeNodeActionItem]</span>
+      
+    </div>
+</p>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focus(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
+
+
+
+    
+      
+
 <h4 id="NxTreeNodeComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxTreeNodeComponent"></span>
   <code>NxTreeNodeComponent</code><span class="docs-api-class-extends-clauses">
@@ -42,10 +76,48 @@
       
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
-<span class="docs-api-class-export-name">nxTreeNode</span>
+<span class="docs-api-class-export-name">nxTreeNode</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">actionItem</span>:
+        <span class="docs-api-property__type">FocusableOption</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
 
 
+    
+  </table>
 
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focus(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
 
 
 
@@ -295,7 +367,7 @@ Default number 24px from material design menu sub-menu spec.</p>
   <code>NxTreeComponent</code><span class="docs-api-class-extends-clauses">
     <span class="docs-api-class-extends-label">extends</span>
     <span class="docs-api-class-extends-type">CdkTree<T></span>
-  </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTable with custom design styles.</p>
+  </span></h4><p class="docs-api-class-description"><p>Wrapper for the CdkTree with custom design styles and keyboard nav mechanics.</p>
 </p><p class="docs-api-directive-selectors">
   <span class="docs-api-class-selector-label">Selector:</span>
     <div class="docs-api__selector-container">
@@ -304,10 +376,561 @@ Default number 24px from material design menu sub-menu spec.</p>
       
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
-<span class="docs-api-class-export-name">nxTree</span>
+<span class="docs-api-class-export-name">nxTree</span><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">childrenMap</span>:
+        <span class="docs-api-property__type">Map<T | undefined, T[]></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>A map from parent node to a list of children.</p>
+</td>
+</tr>
 
 
+    
+      
 
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">focusedData</span>:
+        <span class="docs-api-property__type"></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Get current focused data</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">nodeMap</span>:
+        <span class="docs-api-property__type">Map<T, FocusableOption></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>The node map map data nodes to CdkTreeNodes</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">parentMap</span>:
+        <span class="docs-api-property__type">Map<T, T></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>A map from node data to its parent node data.</p>
+</td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">collapseCurrentFocusedNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Collapse the current node if it&#39;s expanded. Otherwise move to parent.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">expandAllNodes(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Expand all the nodes in the tree</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">expandCurrentFocusedNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Expand the current node if it&#39;s not expanded. Otherwise move to its first child.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focus(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Focus first node when the tree is focused</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focusFirstVisibleNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Change focus to first visible node in the tree.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focusLastVisibleNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Change focus to last visible node in the tree.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focusNextVisibleNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Change focus to next visible node.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">focusPreviousVisibleNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Change focus to previous visible node.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">insertNode(<!--
+     --><!--
+       --><!--
+         -->nodeData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->index:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->viewContainer:
+              <span class="docs-api-property__type">ViewContainerRef</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->parentData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Extended CdkTree method to track new nodes for a11y.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            nodeData:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            index:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            viewContainer<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">ViewContainerRef</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            parentData<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">insertToA11yNodeTracking(<!--
+     --><!--
+       --><!--
+         -->index:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->data:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->node:
+              <span class="docs-api-property__type">FocusableOption</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->parentData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Add tree node to data list based on owner of parent view container.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            index:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            data:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            node:
+            <span class="docs-api-method-parameter-type">FocusableOption</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            parentData<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">moveInA11yNodeTracking(<!--
+     --><!--
+       --><!--
+         -->previousIndex:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->currentIndex:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->parentData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Update node&#39;s index information based on the owner of view container.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            previousIndex:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            currentIndex:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            parentData<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">removeFromA11yNodeTracking(<!--
+     --><!--
+       --><!--
+         -->index:
+              <span class="docs-api-property__type">number</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->parentData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Remove a node data from node list based on the owner of view container.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            index:
+            <span class="docs-api-method-parameter-type">number</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            parentData<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">renderNodeChanges(<!--
+     --><!--
+       --><!--
+         -->data:
+              <span class="docs-api-property__type">T[]</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->dataDiffer:
+              <span class="docs-api-property__type">IterableDiffer<T> = this['_dataDiffer']</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->viewContainer:
+              <span class="docs-api-property__type">ViewContainerRef = this._nodeOutlet.viewContainer</span><!--
+         --><!--
+         -->,<!--
+       --><!--
+         -->parentData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>⚠️ Here we override the method from cdk tree ⚠️
+Basically it&#39;s the copy-paste of current method in cdk codebase
+plus some extra method calls to update the a11y node tracking.
+If the method changes in cdk, our tree might break,
+because this method is crucial for rendering.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            data:
+            <span class="docs-api-method-parameter-type">T[]</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            dataDiffer:
+            <span class="docs-api-method-parameter-type">IterableDiffer<T> = this['_dataDiffer']</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            viewContainer:
+            <span class="docs-api-method-parameter-type">ViewContainerRef = this._nodeOutlet.viewContainer</span>
+          </code>
+        </div>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            parentData<span class="docs-api-method-parameter-optional-marker">?</span>:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">toggleCurrentFocusedNode(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>Expand the current node if it&#39;s not expanded. Otherwise move to its first child.</p>
+</div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">updateFocusedData(<!--
+     --><!--
+       --><!--
+         -->newFocusedData:
+              <span class="docs-api-property__type">T</span><!--
+         --><!--
+         --><!--
+       --><!--
+       -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"><p>When a tree node is focused, update the current focused data.</p>
+</div><div class="docs-api-method-params">
+      <p class="docs-api-method-param-title">Parameters:</p>
+      
+        <div class="docs-api-parameter-container">
+          <code class="docs-api-parameter-name">
+            newFocusedData:
+            <span class="docs-api-method-parameter-type">T</span>
+          </code>
+        </div>
+      
+    </div></div>
+
+
+  
 
 
 

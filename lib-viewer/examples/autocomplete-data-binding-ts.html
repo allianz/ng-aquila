@@ -1,8 +1,34 @@
-<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { HttpClient, HttpParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 <span class="hljs-keyword">import</span> { map } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
-<span class="hljs-keyword">import</span> { WikipediaService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../../../common/wikipedia.service&#x27;</span>;
+<span class="hljs-keyword">import</span> { Observable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+
+<span class="hljs-meta">@Injectable</span>({
+  <span class="hljs-attr">providedIn</span>: <span class="hljs-string">&#x27;root&#x27;</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WikipediaService</span> </span>{
+
+  <span class="hljs-keyword">private</span> WIKIPEDIA_URL = <span class="hljs-string">&#x27;https://en.wikipedia.org/w/api.php&#x27;</span>;
+
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> client: HttpClient</span>)</span> {}
+
+  search (term: <span class="hljs-built_in">string</span>): Observable&lt;<span class="hljs-built_in">any</span>[]&gt; {
+    <span class="hljs-keyword">const</span> url = searchUrl(term, <span class="hljs-built_in">this</span>.WIKIPEDIA_URL);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.client.jsonp(url, <span class="hljs-string">&#x27;callback&#x27;</span>)
+      .pipe(map(<span class="hljs-function">(<span class="hljs-params">response: <span class="hljs-built_in">any</span></span>) =&gt;</span> response[<span class="hljs-number">1</span>].map(<span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">any</span></span>) =&gt;</span> {
+        <span class="hljs-keyword">return</span> {<span class="hljs-attr">value</span>: item};
+      })));
+
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">searchUrl</span>(<span class="hljs-params">searchTeam: <span class="hljs-built_in">string</span>, base: <span class="hljs-built_in">string</span></span>) </span>{
+      <span class="hljs-keyword">const</span> params = <span class="hljs-keyword">new</span> HttpParams()
+        .append(<span class="hljs-string">&#x27;action&#x27;</span>, <span class="hljs-string">&#x27;opensearch&#x27;</span>)
+        .append(<span class="hljs-string">&#x27;search&#x27;</span>, <span class="hljs-built_in">encodeURIComponent</span>(searchTeam))
+        .append(<span class="hljs-string">&#x27;format&#x27;</span>, <span class="hljs-string">&#x27;json&#x27;</span>);
+      <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${base}</span>?<span class="hljs-subst">${params.toString()}</span>`</span>;
+    }
+  }
+}
 
 <span class="hljs-comment">/**
 * <span class="hljs-doctag">@title </span>Data binding examples
@@ -27,7 +53,7 @@
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> wikipediaService: WikipediaService</span>)</span> {
     <span class="hljs-built_in">this</span>.dynamicBackendOptions = <span class="hljs-function">(<span class="hljs-params">term: <span class="hljs-built_in">string</span></span>) =&gt;</span> wikipediaService
       .search(term)
-      .pipe(map(<span class="hljs-function">(<span class="hljs-params">items: <span class="hljs-built_in">any</span></span>) =&gt;</span> items.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> item.value)));
+      .pipe(map(<span class="hljs-function">(<span class="hljs-params">items: <span class="hljs-built_in">any</span></span>) =&gt;</span> items.map(<span class="hljs-function">(<span class="hljs-params">item: <span class="hljs-built_in">any</span></span>) =&gt;</span> item.value)));
   }
 
   simpleFilteredOptions(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span>[] {

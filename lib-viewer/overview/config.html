@@ -2,6 +2,7 @@
 <p class="docs-markdown--p">If you build internal applications (expert) some components need a specific configuration to be compliant with ergonomics and other requirements for internal applications. To obtain this configuration for your whole application, you can simply activate it by importing the expert module. This acts by setting injection tokens for all affected components (e.g., form fields).</p>
 <p class="docs-markdown--p">When imported, this module sets the injection tokens for a bunch of components. It uses the expert settings explained in dedicated sections of every affected component:</p>
 <ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>ComparisonTable</strong>: Sets <code>[useFullRowForExpandableArea]</code> to <code>true</code> for <code>nxComparisonTableRowGroup</code>.</li>
 <li class="docs-markdown--li"><strong>Datepicker:</strong>: Sets the <code>[tabindex]</code> to <code>-1</code> for the <code>nx-datepicker-toggle</code>.</li>
 <li class="docs-markdown--li"><strong>Error:</strong> <code>[appearance]</code> is set to <code>&quot;text&quot;</code> (see <a href="./documentation/base/overview#error">here</a>).</li>
 <li class="docs-markdown--li"><strong>Formfield:</strong> <code>[appearance]</code> is set to <code>&quot;outline&quot;</code> and <code>nxFloatLabel</code> to <code>&quot;always&quot;</code> (see <a href="./documentation/formfield/overview#expert%253A-appearance">here</a>).</li>

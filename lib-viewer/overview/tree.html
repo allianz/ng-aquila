@@ -12,4 +12,6 @@ For an in depth documentation see  <a href="https://material.angular.io/componen
 <p class="docs-markdown--p">The <code>nxTreeNodeToggle</code> directive can be used to add expand/collapse feature to the tree node. It can be added to any place on the tree node. For better accesibility this directive should be added on a <code>button</code> element.</p>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">To provide an accessible tree, the expandable nodes need to contain a <code>button</code> element. Similar to this the leaf nodes need to contain a valid <code>a</code> or <code>button</code> element.
-The tree can then be transversed by keyboard. You can <code>TAB</code> through the individual nodes and close/expand them by pressing <code>SPACE</code> or <code>ENTER</code>.</p>
+The tree can then be traversed by keyboard. You can <code>TAB</code> into the tree and go through the individual nodes with <code>UP</code> and <code>DOWN</code> buttons.
+You can close/expand them by pressing <code>LEFT</code> and <code>RIGHT</code> buttons respectively or toggle with <code>ENTER</code> or <code>SPACE</code>.
+To enable full keyboard support any actionable element (<code>a</code>, <code>button</code>, <code>checkbox</code>, etc.) withing a node needs to have <code>nxTreeNodeActionItem</code> directive set on it. This way when navigating through the tree, the focus state is correctly passed to the actionable item.</p>

@@ -17,6 +17,7 @@ import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
 import { LazyLoadedModule } from '../../lazy-loaded-module';
 import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
+import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
 
 const EXAMPLES = [
   ButtonExampleComponent,
@@ -30,7 +31,8 @@ const EXAMPLES = [
   ButtonSmallExampleComponent,
   ButtonSmallMediumExampleComponent,
   ButtonWithIconExampleComponent,
-  ButtonIconIndicatorExampleComponent
+  ButtonIconIndicatorExampleComponent,
+  AnchorButtonExampleComponent
 ];
 
  @NgModule({
@@ -52,7 +54,8 @@ export class ButtonExamplesModule implements LazyLoadedModule {
       'button-small': ButtonSmallExampleComponent,
       'button-small-medium': ButtonSmallMediumExampleComponent,
       'button-with-icon': ButtonWithIconExampleComponent,
-      'button-icon-indicator': ButtonIconIndicatorExampleComponent
+      'button-icon-indicator': ButtonIconIndicatorExampleComponent,
+      'anchor-button': AnchorButtonExampleComponent
     };
   }
 }

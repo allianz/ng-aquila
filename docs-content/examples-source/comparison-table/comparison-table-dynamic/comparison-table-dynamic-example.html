@@ -5,7 +5,7 @@
       <ng-container *ngIf="element['type'] === 'header'" nxComparisonTableRow type="header">
         <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="header">
           {{ cell }}<br>
-          <button nxComparisonTableSelectButton type="button" class="nx-margin-top-s nx-margin-bottom-0" [unselectedClassNames]="unselectedClassNames"></button>
+          <button nxComparisonTableSelectButton type="button" class="nx-margin-top-s nx-margin-bottom-0"></button>
         </nx-comparison-table-cell>
       </ng-container>   
 
@@ -33,7 +33,7 @@
       <!-- footer row -->
       <ng-container *ngIf="element['type'] === 'footer'" nxComparisonTableRow type="footer">
         <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="footer">
-          <button nxComparisonTableSelectButton type="button" class="nx-margin-bottom-s" [unselectedClassNames]="unselectedClassNames"></button><br>
+          <button nxComparisonTableSelectButton type="button" class="nx-margin-bottom-s"></button><br>
           {{ cell }}
         </nx-comparison-table-cell>
       </ng-container>

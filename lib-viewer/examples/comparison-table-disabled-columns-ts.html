@@ -1,7 +1,4 @@
-<span class="hljs-keyword">import</span> { ChangeDetectorRef, Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
-<span class="hljs-keyword">import</span> { BaseDemoThemingService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ngx-docs-ui&#x27;</span>;
-<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Disabled Columns example */</span>
 <span class="hljs-meta">@Component</span>({
@@ -9,24 +6,4 @@
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./comparison-table-disabled-columns-example.html&#x27;</span>,
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-disabled-columns-example.css&#x27;</span>]
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableDisabledColumnsExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
-  <span class="hljs-attr">unselectedClassNames</span>: <span class="hljs-built_in">string</span>;
-  <span class="hljs-keyword">private</span> _destroyed = <span class="hljs-keyword">new</span> Subject();
-
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
-    <span class="hljs-keyword">private</span> demoService: BaseDemoThemingService,
-    <span class="hljs-keyword">private</span> changeDetectorRef: ChangeDetectorRef
-  </span>)</span> {
-    <span class="hljs-built_in">this</span>.demoService.unselectedClassNames.pipe(
-      takeUntil(<span class="hljs-built_in">this</span>._destroyed)
-    ).subscribe(<span class="hljs-function">(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>) =&gt;</span> {
-      <span class="hljs-built_in">this</span>.unselectedClassNames = value;
-      <span class="hljs-built_in">this</span>.changeDetectorRef.markForCheck();
-    });
-  }
-
-  <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>._destroyed.next();
-    <span class="hljs-built_in">this</span>._destroyed.complete();
-  }
-}
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableDisabledColumnsExampleComponent</span> </span>{ }
