@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.2.0](https://github.com/aposin/ng-aquila/compare/v11.1.0...v11.2.0) (2021-03-15)
+
+For the **sidepanel component** there was introduced the wrapping `nx-sidepanel-outer-container` component. The standalone sidepanel without a wrapper is deprecated. Please check the [documentation of the sidepanel](https://aposin.github.io/ng-aquila/documentation/sidepanel/overview) for more information.
+
+For the **tree component** there was a `nxTreeNodeActionItem` directive introduced. It should be added on actionable items (i.e. links, checkboxes, etc.) within the tree for better accessibility. Please check the [documentation of the tree](https://aposin.github.io/ng-aquila/documentation/tree/overview) for more information.
+
+### Bug Fixes
+
+* **button:** stop relying on attributes for styling ([e4d5f87](https://github.com/aposin/ng-aquila/commit/e4d5f870e7d87c32fb20148a3b44cfb321afcfab))
+* **dropdown:** not showing errors in progress indicators ([e8b9b10](https://github.com/aposin/ng-aquila/commit/e8b9b1062b108e97c03e93b4aae94b94dc0c4234))
+* **popover:** scroll positioning ([b8c909d](https://github.com/aposin/ng-aquila/commit/b8c909d89aaba0d92ba6ac2db2bd533238b64533))
+* **system:** stop relying on attributes for styling ([e6c63b2](https://github.com/aposin/ng-aquila/commit/e6c63b26f18ec9c5e5202a03fb188f8f270872e1))
+
+
+### Features
+
+* **button:** add anchor buttons ([6919587](https://github.com/aposin/ng-aquila/commit/69195873abb5f0cd73b2d5d474170e58a2af0fea))
+* **comparison-table:** support expert theme ([c66e9ec](https://github.com/aposin/ng-aquila/commit/c66e9ecce2b82a6337d671a4f816f71c46f2be6b))
+* **indicator:** positioning enhancements ([61ad282](https://github.com/aposin/ng-aquila/commit/61ad2820543beb5528950551be85d1dd39f459e3))
+* **sidepanel:** introduce wrapper container around sidepanel ([e07ed18](https://github.com/aposin/ng-aquila/commit/e07ed18ea1a07155d324452bb68a0df466bd3a2b))
+* **tree:** keyboard navigation ([f401de8](https://github.com/aposin/ng-aquila/commit/f401de860b9c868ca756c0bbf6df84e9db18b5da))
+
+
+
 # [11.1.0](https://github.com/aposin/ng-aquila/compare/v11.0.1...v11.1.0) (2021-03-01)
 
 
