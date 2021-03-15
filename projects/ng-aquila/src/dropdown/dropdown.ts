@@ -1,3 +1,4 @@
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
@@ -419,6 +420,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     private _ngZone: NgZone,
     @Attribute('tabindex') tabIndex: string,
     @Optional() private formFieldComponent: NxFormfieldComponent,
+    private _errorStateMatcher: ErrorStateMatcher,
     /** @docs-private */
     @Self() @Optional() public ngControl: NgControl,
     @Optional() private _parentForm: NgForm,
@@ -467,16 +469,11 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   }
 
   /** @docs-private */
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.touched || (form && form.submitted)));
-  }
-
-  /** @docs-private */
   updateErrorState() {
     const oldState = this.errorState;
     const parent = this._parentFormGroup || this._parentForm;
     const control = this.ngControl ? this.ngControl.control as FormControl : null;
-    const newState = this.isErrorState(control, parent);
+    const newState = this._errorStateMatcher.isErrorState(control, parent);
 
     if (newState !== oldState) {
       this.errorState = newState;

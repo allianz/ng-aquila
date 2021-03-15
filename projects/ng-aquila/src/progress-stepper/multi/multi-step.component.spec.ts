@@ -1,3 +1,4 @@
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { RIGHT_ARROW, ENTER, SPACE, LEFT_ARROW, DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
@@ -59,7 +60,8 @@ describe('NxMultiStepperComponent', () => {
           NxInputModule,
           NxFormfieldModule,
           FormsModule,
-          ReactiveFormsModule
+          ReactiveFormsModule,
+          NxDropdownModule
         ],
       }).compileComponents();
     })
@@ -192,8 +194,8 @@ describe('NxMultiStepperComponent', () => {
       multiStepInstance.next();
       fixture.detectChanges();
 
-      const formField = fixture.nativeElement.querySelector('nx-formfield');
-      expect(formField.classList.contains('has-error')).toBe(true);
+      const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
+      formFields.forEach(formfield => expect(formfield.classList.contains('has-error')).toBe(true));
     });
 
     it('shows errors if a form is untouched on selectedIndex change', () => {
@@ -202,8 +204,8 @@ describe('NxMultiStepperComponent', () => {
       multiStepInstance.selectedIndex = 1;
       fixture.detectChanges();
 
-      const formField = fixture.nativeElement.querySelector('nx-formfield');
-      expect(formField.classList.contains('has-error')).toBe(true);
+      const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
+      formFields.forEach(formfield => expect(formfield.classList.contains('has-error')).toBe(true));
     });
   });
 
@@ -435,7 +437,12 @@ class MultiStepCompletionTest extends MultiStepTest {
   <nx-step label="Your name" [stepControl]="manualCompletionForm">
     <form [formGroup]="manualCompletionForm">
       <nx-formfield nxLabel="Name">
-        <input nxInput formControlName="name" required>
+        <input nxInput formControlName="name">
+      </nx-formfield>
+      <nx-formfield nxLabel="Name">
+        <nx-dropdown formControlName="fruit">
+          <nx-dropdown-item nxValue="banana">Banana</nx-dropdown-item>
+        </nx-dropdown>
       </nx-formfield>
       <button type="button" nxStepperNext>Next</button>
     </form>
@@ -448,7 +455,8 @@ class MultiStepCompletionTest extends MultiStepTest {
 })
 class MultiStepValidationTest extends MultiStepTest {
   manualCompletionForm = new FormGroup({
-    name: new FormControl('', Validators.required)
+    name: new FormControl('', Validators.required),
+    fruit: new FormControl('', Validators.required)
   });
 }
 

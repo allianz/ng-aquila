@@ -4,7 +4,7 @@ import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { Component, Type, ViewChild, ViewChildren, Directive, ChangeDetectionStrategy } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import * as axe from 'axe-core';
@@ -325,6 +325,22 @@ describe('NxDropdownComponent', () => {
       flush();
       fixture.detectChanges();
       expect(trigger.textContent.trim()).toBe('BayMoWerk');
+    }));
+
+    it('should go into error state when error state matcher is true', fakeAsync(() => {
+      createTestComponent(DynamicDropdownComponent);
+      fixture.detectChanges();
+      const spy = jasmine.createSpy();
+      const stateChangesSubscription = dropdownInstance.stateChanges.subscribe(spy);
+      // quick hack to replace the default matcher without any large
+      // TestBed magic
+      dropdownInstance['_errorStateMatcher'] = {isErrorState: () => true };
+      fixture.detectChanges();
+      flush();
+      expect(dropdownInstance.errorState).toBe(true);
+      expect(spy).toHaveBeenCalled();
+
+      stateChangesSubscription.unsubscribe();
     }));
 
     it('should update the item label when projected content is deferred', fakeAsync(() => {
