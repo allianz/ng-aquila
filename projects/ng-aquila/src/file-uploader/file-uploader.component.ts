@@ -408,7 +408,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._subscriptions = subscriptions;
   }
 
-  _addFilesToQueue(files: FileList) {
+  _addFilesToQueue(files: File[]) {
     if (!this.multiple) {
       this.value = [];
     }
@@ -422,13 +422,13 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this.filesSelected.emit(this.value);
   }
 
-  _setFileListFromValue(files: FileList) {
+  _setFileListFromValue(files: File[]) {
     // we need to set max file size errors to false
     this.validatorFnArray = [];
     if (files === null) {
       this.value = null;
     } else {
-      Array.from(files).forEach((file: File) => {
+      files.forEach((file: File) => {
         if (this.isValidOnSelection(file)) {
           const tmp = new FileItem(file);
           if (this.value) {
@@ -561,7 +561,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     const target = event.target as HTMLInputElement;
-    this._addFilesToQueue(target.files as FileList);
+    this._addFilesToQueue(Array.from(target.files));
     this.stateChanges.next();
     this._changeDetectorRef.markForCheck();
   }

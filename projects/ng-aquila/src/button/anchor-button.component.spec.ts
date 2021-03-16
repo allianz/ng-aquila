@@ -2,7 +2,7 @@ import { Directive, ViewChild, Component, Type } from "@angular/core";
 import { ComponentFixture, waitForAsync, TestBed, fakeAsync } from "@angular/core/testing";
 import axe from "axe-core";
 import { NxButtonModule } from ".";
-import { NxIconModule } from "../icon/public-api";
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxAnchorButtonComponent } from "./anchor-button.component";
 
 @Directive()
