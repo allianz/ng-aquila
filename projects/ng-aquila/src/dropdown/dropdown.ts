@@ -30,7 +30,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { defer, merge, Observable, Subject } from 'rxjs';
-import {delay, filter, map, startWith, switchMap, take, takeUntil} from 'rxjs/operators';
+import { delay, filter, map, startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 import { getNxDropdownNonArrayValueError, getNxDropdownNonFunctionValueError } from './dropdown-errors';
 import { NxDropdownControl } from './dropdown.control';
@@ -215,13 +215,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     this._negative = !!this._style.match(/negative/);
   }
 
-    /** Placeholder to be shown if no value has been selected. */
-    @Input()
-    get placeholder(): string { return this._placeholder; }
-    set placeholder(value: string) {
-      this._placeholder = value;
-      this.stateChanges.next();
-    }
+  /** Placeholder to be shown if no value has been selected. */
+  @Input()
+  get placeholder(): string { return this._placeholder; }
+  set placeholder(value: string) {
+    this._placeholder = value;
+    this.stateChanges.next();
+  }
 
   /** Whether the dropdown should be shown with an additional filter input. */
   @Input('nxShowFilter') showFilter: boolean = false;
@@ -229,12 +229,15 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   /** Text displayed as placeholder for the filter. */
   @Input('nxFilterPlaceholder') filterPlaceholder: string = '';
 
+  /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
+  @Input('nxOverlayLabel') overlayLabel = '';
+
   /** Event emitted when the select panel has been toggled. */
   @Output() readonly openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /** Event emitted when the dropdown items get filtered. Returns the currently visible dropdown items. */
   @Output('filterResult') readonly filterResultChange: EventEmitter<NxDropdownItemComponent[]>
-  = new EventEmitter<NxDropdownItemComponent[]>();
+    = new EventEmitter<NxDropdownItemComponent[]>();
 
   /** Event emitted when the select has been opened. */
   @Output('opened') readonly _openedStream: Observable<void> =
@@ -274,7 +277,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
    * the trigger completely). If the panel cannot fit below the trigger, it
    * will fall back to a position above the trigger.
    */
-  _positions:  ConnectionPositionPair[];
+  _positions: ConnectionPositionPair[];
 
   /**
    * @docs-private
@@ -347,7 +350,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /** @docs-private */
   get label(): string {
-    return this.formFieldComponent ? this.formFieldComponent.label : '';
+    return this.overlayLabel ? this.overlayLabel : (this.formFieldComponent ? this.formFieldComponent.label : '');
   }
 
   /** Comparison function to specify which option is displayed. Defaults to object equality. */
@@ -865,7 +868,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     const keyCode = event.keyCode;
     // if has filter all events other than the listed ones should be ignored or handled in _onFilter()
     if (!([DOWN_ARROW, UP_ARROW, HOME, END, ENTER, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB].indexOf(keyCode) >= 0)
-         && this.showFilter) {
+      && this.showFilter) {
       return;
     }
 
@@ -900,10 +903,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
       this._ngZone.onStable
         .asObservable()
-      .pipe(
-        take(1),
-        delay(251) // we need to defer to get the new activeItemIndex. delay > debouncing of the typeAhead
-       ).subscribe(() => {
+        .pipe(
+          take(1),
+          delay(251) // we need to defer to get the new activeItemIndex. delay > debouncing of the typeAhead
+        ).subscribe(() => {
           this.isStable = true;
           this._changeDetectorRef.detectChanges();
         });

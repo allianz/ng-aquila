@@ -226,6 +226,29 @@ describe('NxDropdownComponent', () => {
       expect(dropdownInstance.shouldLabelFloat).toBe(true);
     }));
 
+    it('should use formfield label as the overlay label', fakeAsync(() => {
+      createTestComponent(SimpleDropdownComponent);
+      openDropdownByClick();
+      fixture.detectChanges();
+      tick();
+
+      const overlayLabel = overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel-header');
+      expect(overlayLabel.textContent.trim()).toBe('Car brand');
+    }));
+
+    it('should be possible to override the overlay label', fakeAsync(() => {
+      createTestComponent(SimpleDropdownComponent);
+      (testInstance as SimpleDropdownComponent).overlayLabel = 'My custom label';
+      fixture.detectChanges();
+      tick();
+      openDropdownByClick();
+      fixture.detectChanges();
+      tick();
+
+      const overlayLabel = overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel-header');
+      expect(overlayLabel.textContent.trim()).toBe('My custom label');
+    }));
+
     it('should show the correct label for truthy and falsy values', fakeAsync(() => {
       createTestComponent(DynamicDropdownComponent);
       testInstance.items = [
@@ -1341,7 +1364,7 @@ abstract class DropdownTest {
 @Component({
   template: `
   <nx-formfield nxLabel="Car brand">
-    <nx-dropdown>
+    <nx-dropdown [nxOverlayLabel]="overlayLabel">
       <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
       <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
       <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
@@ -1350,6 +1373,7 @@ abstract class DropdownTest {
   </nx-formfield>`
 })
 class SimpleDropdownComponent extends DropdownTest {
+  overlayLabel = '';
 }
 
 @Component({
