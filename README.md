@@ -3,10 +3,6 @@
 ## Background
 Aquila is an open-source component library provided by the Allianz Global Digital Factory (GDF). We use this library internally with Allianz branding. Here we provide a white label variant as part of the Open Insurance Platform. 
 
-> We are currently still setting up some things :construction:. For instance:
-> - you may find some icons missing in the documentation
-> - we still need to get the CI pipeline fully automated
-
 ## Getting started :medal_sports:
 Add the library to your project with the Angular CLI:
 
