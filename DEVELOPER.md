@@ -138,7 +138,7 @@ The component specification should provide reasonable options for the size here.
 
 3) Develop your component
 4) Add exports of all symbols that should be used by the consumer to the entry file
-5) Add an import for your component module into `projects/ng-aquila/documentation/examples/examples-shared.module.ts`. This way the module is available in the documentation and the component can be used in any example.
+5) Create a new examples module for the component as described in [Adding code examples](#adding-code-examples).
 
 ## Component documentation
 The documentation of a component is done via markdown. We implemented a CLI tool `ngx-docs-cli` that transforms these files to HTML, adds any referenced example files and automatically parses the typescript code to generate the API tables.
@@ -154,13 +154,14 @@ For a new component:
 1) Create a `<component-name>.md` file in your component folder. The name has to match the component folder name.
 2) Add metadata to the markdown file at the top and change it accordingly.
 
-| Attribute | Possible values                    | Description                                                                                   |
-|-----------|------------------------------------|-----------------------------------------------------------------------------------------------|
-| title     | `string`                           | The name of the component that is displayed.                                                  |
+| Attribute | Possible values                     | Description                                                                                   |
+|-----------|-------------------------------------|-----------------------------------------------------------------------------------------------|
+| title     | `string`                            | The name of the component that is displayed.                                                  |
 | category  | `components \| Expert (Alpha)`      | The category in which the component is listed.                                                |
 | b2c       | `true \| **false**`                 | Whether the component is allowed to be used in client facing applications (B2C).              |
 | expert    | `true \| **false**`                 | Whether the component is an expert option and can be used for internal applications (Expert). |
-| stable    | `done \| progress \| **na**` | Describes the stable status of the component.       
+| stable    | `done \| progress \| **na**`        | Describes the stable status of the component. |
+| noApi     | `true \| **false**`                 | If the API tab should be hidden. Useful for more general pages that don't belong to a specific component, e.g. 'Accessibility', 'Theming', ...     | 
 
 Button example:
 ```
@@ -179,28 +180,102 @@ The metadata is used to create the overview table and to place the component in 
 #### Headings
 When editing the documentation of a component, please make sure that only headings with three or more `#` are used, level 1 (`#`) or 2 (`##`) headings are not reflected in the table of contents.
 
+#### Expert-only
+
+If there are parts that are only defined for expert usage, please use the `docs-expert-container` class to wrap the content:
+
+```
+<div class="docs-expert-container">
+
+#### Expert: <Expert-only option>
+
+Please note that this is an **Expert option**. This means that it is only intended for internal applications and not for applications that are client facing.
+
+...
+
+<!-- example(component-expert-example) -->
+
+</div>
+```
+
+#### Adding public-only or private-only parts
+
+If there is a certain part that should be only visible in one of the two documentations (`ng-aquila`/public documentation and `ngx-ndbx`/private documentation), this can be marked with the `docs-public` and `docs-private` classes in the `.md` files:
+
+```
+<div class="docs-public">
+  Content that is only visible in the `ng-aquila` documentation. 
+</div>
+
+<div class="docs-private">
+  Content that is only visible in the `ngx-ndbx` documentation.
+</div>
+```
+
+If there is an example which contains sensitive information, this should not be placed in the default example folder in `ng-aquila`, but as a private example in `ngx-ndbx`. See [Private examples](#private-examples).
+
 ### Adding code examples
+
+The examples for the documentation are organized in modules, usually one module per component. The example modules are placed in `ng-aquila/projects/ng-aquila/documentation/examples/<component>`.
+
 Examples can be inserted to the documentation by using the placeholder
 
 ```html
 <!-- example(component-basic) -->
 ```
 
-in the markdown file. This is only a placeholder, the CLI tool will replace this part with a HTML element that will later be used by the documentation app to create and inject the example component automatically.
+in the markdown file. This is only a placeholder, the CLI tool will replace this part with a HTML element that will later be used by the documentation app to create and inject the example component automatically. Additionally add your new example to the dedicated example module at two places, in the `EXAMPLES` array and the return value of `components()`:
 
-Create the actual example component in the folder `<component-basic>` in `projects/ng-aquila/documentation/examples/`. Please use the name `<component-basic>-example.[html|ts|css]` for the example files and of course replace `component-basic` with your example name. In case you don't need any css code for your example, please create an empty css file anyway (It is needed for the generation process of the documentation).
+```ts
+const EXAMPLES = [
+  // ...
+  ComponentBasicExample
+];
+
+// ...
+export class ButtonExamplesModule implements LazyLoadedModule {
+  static components() {
+    return {
+      // ...
+      'component-basic': ComponentBasicExample
+    };
+  }
+}
+```
+
+For some basic imports you can also add the `ExamplesSharedModule` (`ng-aquila/projects/ng-aquila/documentation/examples/examples-shared.module.ts`) as an import to your Examples Module. This already contains some basic module imports (`CommonModule`, `FormsModule`, `ReactiveFormsModule` and the module imports for `NxButton`, `NxHeadline`, `NxCopytext` and `NxGrid`).
+
+Create the actual example component in the folder `<component-basic>` in `ng-aquila/projects/ng-aquila/documentation/examples/<component>/`. Please use the name `<component-basic>-example.[html|ts|css]` for the example files and of course replace `component-basic` with your example name. In case you don't need any css code for your example, please create an empty css file anyway (It is needed for the generation process of the documentation). Please also add a `'selector'` for your example component, this is needed if the example is opened in StackBlitz.
 
 Please also add a title to the example component like
 
 ```ts
 /** @title Component basic example */
 @Component({
-  ...
+	...
 ```
 
 The title is used in the generation process and later shown in the example container.
 
 Please use as little code as possible. The examples should contain the minimal code to achieve the use case it tries to describe.
+
+#### Private examples
+
+Examples which contain sensitive information (e.g. HEX-values of NDBX colors) should not be published with `ng-aquila`. These examples can be placed in `projects/ngx-ndbx/documentation/examples` as private examples. This means that they are placed in the `ngx-ndbx` repository and therefor not published publicly with `ng-aquila`.
+
+This path is specified in the generation of the documentation with the `--private-examples` flag:
+
+```
+npm run cli -- generate ng-aquila/projects/ng-aquila ... --private-examples <private-example-path>"
+```
+
+Private examples can be added with a similar structure to the examples contained in `ng-aquila` (see [Adding code examples](#adding-code-examples)). The private example modules and examples need to have a unique name and must be different from the ones placed in `ng-aquila` since they are merged together during the generation of the documentation.
+
+When adding a new private example to the documentation, it has to be marked with as `"privateExample": true`, so that the example marker will be ignored in the `ng-aquila` documentation. The stackblitz button should be also hidden:
+
+```html
+<!-- example(component-basic-private, { "privateExample": true, "hideStackblitzButton": true }) -->
+```
 
 ### API Descriptions
 The API descriptions are generated directly from DocStrings in the code. By default private properties are not listed. If you want to hide some property you can use a `/** @docs-private */`-description.
