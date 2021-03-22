@@ -1,21 +1,41 @@
 <nx-selectable-card class="nx-margin-bottom-xs">
+  <nx-card-header>
+    <h3 nxHeadline="subsection-small">Card headline</h3>
+    <hr>
+  </nx-card-header>
   <p>Default selectable card</p>
 </nx-selectable-card>
 
 <nx-selectable-card checked class="nx-margin-bottom-xs">
+  <nx-card-header>
+    <h3 nxHeadline="subsection-small">Card headline</h3>
+    <hr>
+  </nx-card-header>
   <p>Checked selectable card</p>
 </nx-selectable-card>
 
 <nx-selectable-card disabled class="nx-margin-bottom-xs">
+  <nx-card-header>
+    <h3 nxHeadline="subsection-small">Card headline</h3>
+    <hr>
+  </nx-card-header>
   <p>Disabled selectable card</p>
 </nx-selectable-card>
 
 <nx-selectable-card disabled checked class="nx-margin-bottom-xs">
+  <nx-card-header>
+    <h3 nxHeadline="subsection-small">Card headline</h3>
+    <hr>
+  </nx-card-header>
   <p>Disabled and checked selectable card</p>
 </nx-selectable-card>
 
 <form [formGroup]="formGroup">
   <nx-selectable-card required formControlName="errorCard" class="nx-margin-bottom-xs">
+    <nx-card-header>
+      <h3 nxHeadline="subsection-small">Card headline</h3>
+      <hr>
+    </nx-card-header>
     <p>Selectable card with error</p>
     <nx-error appearance="text">
       This card must be selected.
@@ -23,6 +43,10 @@
   </nx-selectable-card>
 
   <nx-selectable-card required formControlName="errorCard2" class="nx-margin-bottom-xs">
+    <nx-card-header>
+      <h3 nxHeadline="subsection-small">Card headline</h3>
+      <hr>
+    </nx-card-header>
     <p>Checked selectable card with error</p>
     <nx-error appearance="text">
       This card must not be selected.

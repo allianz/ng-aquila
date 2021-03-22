@@ -12,10 +12,10 @@ Use this component to present a card with different options.
 
 <!-- example(card) -->
 
-#### Card with header and footer
-A (selectable) card can contain a header and a footer section.
+#### Card with footer
+A (selectable) card can optionally contain a footer section.
 
-<!-- example(card-header-footer) -->
+<!-- example(card-footer) -->
 
 ### Selectable Card
 

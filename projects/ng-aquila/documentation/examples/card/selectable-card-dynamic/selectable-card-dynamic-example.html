@@ -20,6 +20,10 @@
       <div *ngFor="let card of cards.controls; index as i"
         nxCol="12,12,12,3">
         <nx-selectable-card [formControlName]="i" class="nx-margin-bottom-xs">
+          <nx-card-header>
+            <h3 nxHeadline="subsection-small">Card headline</h3>
+            <hr>
+          </nx-card-header>
           <p>
             Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
             consectetur, adipisci velit

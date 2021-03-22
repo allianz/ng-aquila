@@ -49,6 +49,19 @@
     @include var(background, selectable-card-background-selected-hover-color);
   }
 
+  // Prevents header contents from overflowing the icon
+  ::ng-deep nx-card-header:before {
+    content: '';
+    display: block;
+    width: calc(#{nx-spacer(m)} + 4px);
+    height: calc(#{nx-spacer(m)} + 4px);
+    float: right;
+
+    [dir="rtl"] & {
+      float: left;
+    }
+  }
+
   // reset hover styles for devices that don't support hover
   @media (hover: none) {
     label:hover {
