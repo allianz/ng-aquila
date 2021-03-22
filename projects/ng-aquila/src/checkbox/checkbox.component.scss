@@ -105,6 +105,7 @@ $checkbox-size: nx-spacer(m);
 
 .nx-checkbox__indeterminate-indicator {
   @include var(color, checkbox-indeterminate-color);
+  @include var(background-color, checkbox-indeterminate-color);
   box-sizing: content-box;
   height: 0;
   width: nx-spacer(2xs);
@@ -134,6 +135,7 @@ $checkbox-size: nx-spacer(m);
 
   .nx-checkbox__indeterminate-indicator {
     @include var(color, checkbox-disabled-border-color);
+    @include var(background-color, checkbox-disabled-border-color);
   }
 }
 
@@ -160,6 +162,11 @@ $checkbox-size: nx-spacer(m);
     @include var(background-color, negative-02-dimmed);
   }
 
+  .nx-checkbox__indeterminate-indicator {
+    @include var(color, negative);
+    @include var(background-color, negative);
+  }
+
   .nx-checkbox__input:disabled + .nx-checkbox__label {
     @include var(color, negative-dimmed);
 
@@ -169,6 +176,7 @@ $checkbox-size: nx-spacer(m);
     }
 
     .nx-checkbox__indeterminate-indicator {
+      @include var(color, negative-01-dimmed);
       @include var(background-color, negative-01-dimmed);
     }
   }
