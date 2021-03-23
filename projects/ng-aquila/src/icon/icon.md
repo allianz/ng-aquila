@@ -6,10 +6,33 @@ expert: true
 stable: done
 ---
 
-### General usage
 
 <div class="docs-private">
+
+  ### General usage of NDBX icons
+
   The icons are comprised of two general types: **functional** and **product icons**. **Functional icons** are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (**s**). **Product icons** are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with `product-*`. The outline and fill options should only be used in combination with **product** icons.
+
+  The general functionality of the icons is provided with the `NxIconModule` of `ng-aquila`. The Allianz Icons are provided with the additional `NdbxIconModule` of `@allianz/ngx-ndbx`. To use it, import it in the `app.module.ts` or in any other module:
+
+  ```ts
+  import { NxIconModule } from '@aposin/ng-aquila/icon';
+  import { NdbxIconModule } from '@allianz/ngx-ndbx/icon';
+
+  @NgModule({
+    declarations: [
+      // ...
+    ],
+    imports: [
+      // ...
+      NxIconModule,
+      NdbxIconModule
+    ],
+    // ...
+  })
+  export class AppModule { }
+  ```
+
 </div>
 
 <div class="docs-public">
@@ -49,13 +72,17 @@ them with the icon registry.
 
 ### Icons with outline
 <div class="docs-private">
+
 The outline option should only be used with **product** icons.
+
 </div>
 <!-- example(icon-outline) -->
 
 ### Filled icons
 <div class="docs-private">
+
 The filled option should only be used with **product** icons.
+
 </div>
 <!-- example(icon-filled) -->
 
@@ -63,12 +90,16 @@ The filled option should only be used with **product** icons.
 
 ### Functional icons
 
+To use the icons shown here, please make sure to import the `NdbxIconModule` (see [General usage of NDBX icons](./documentation/icon/overview#general-usage-of-ndbx-icons)).
+
 <!-- example(icon-list-functional) -->
 </div>
 
 <div class="docs-private">
 
 ### Product icons
+
+To use the icons shown here, please make sure to import the `NdbxIconModule` (see [General usage of NDBX icons](./documentation/icon/overview#general-usage-of-ndbx-icons)).
 
 <!-- example(icon-list-product) -->
 </div>
