@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive, ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
@@ -7,7 +7,10 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class ExpandableTableRowTest {
+  isExpanded: boolean = true;
   @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance: NxExpandableTableRowComponent;
+
+  constructor(public cdr: ChangeDetectorRef) {}
 }
 
 describe(NxExpandableTableRowComponent.name, () => {
@@ -27,7 +30,8 @@ describe(NxExpandableTableRowComponent.name, () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
-        BasicExpandableTableRowComponent
+        BasicExpandableTableRowComponent,
+        ConfigurableExpandableTableRowComponent
       ],
       imports: [NxTableModule]
     }).compileComponents();
@@ -51,7 +55,7 @@ describe(NxExpandableTableRowComponent.name, () => {
     });
   });
 
-  describe('programatic', () => {
+  describe('programmatic', () => {
     beforeEach(() => {
       createTestComponent(BasicExpandableTableRowComponent);
     });
@@ -92,6 +96,22 @@ describe(NxExpandableTableRowComponent.name, () => {
     });
   });
 
+  describe('isExpanded input', () => {
+    beforeEach(() => {
+      createTestComponent(ConfigurableExpandableTableRowComponent);
+    });
+
+    it('sets expanded', () => {
+      expect(expandableTableRowInstance.expanded.value).toBe(true);
+    });
+
+    it('updates expanded on isExpanded change', () => {
+      testInstance.isExpanded = false;
+      testInstance.cdr.detectChanges();
+      expect(expandableTableRowInstance.expanded.value).toBe(false);
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', (done) => {
       createTestComponent(BasicExpandableTableRowComponent);
@@ -111,3 +131,11 @@ describe(NxExpandableTableRowComponent.name, () => {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest { }
+
+@Component({
+  template: `
+    <tr nxExpandableTableRow [isExpanded]="isExpanded">example content</tr>
+ `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+class ConfigurableExpandableTableRowComponent extends ExpandableTableRowTest {}

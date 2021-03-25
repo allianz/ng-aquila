@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { NxExpandable } from './toggle-button.component';
 
@@ -17,6 +18,20 @@ import { NxExpandable } from './toggle-button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NxExpandableTableRowComponent implements NxExpandable {
+
+  private _isExpanded: boolean;
+
+  /* Whether the row is expanded. */
+  @Input()
+  set isExpanded(value: boolean) {
+    this._isExpanded = coerceBooleanProperty(value);
+    this.expanded.next(this._isExpanded);
+    this._changeDetectorRef.markForCheck();
+  }
+  get isExpanded() {
+    return this._isExpanded;
+  }
+
   expanded: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
@@ -51,4 +66,6 @@ export class NxExpandableTableRowComponent implements NxExpandable {
       this._changeDetectorRef.markForCheck();
     }
   }
+
+  static ngAcceptInputType_isExpanded: BooleanInput;
 }
