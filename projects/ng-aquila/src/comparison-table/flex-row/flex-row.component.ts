@@ -3,7 +3,12 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
-/** @docs-private */
+/**
+ * @docs-private
+ *
+ * Component that is only used internally for displaying a `nxComparisonTableRow`
+ * (header, content and footer rows) in desktop and tablet view.
+ */
 @Component({
   selector: 'nx-comparison-table-flex-row',
   templateUrl: './flex-row.component.html',

@@ -6,7 +6,11 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 
-/** @docs-private */
+/**
+ * @docs-private
+ *
+ * Component that is only used internally for displaying a `nxComparisonTableRowGroup` in desktop and tablet view.
+ */
 @Component({
   selector: 'nx-comparison-table-desktop-group',
   templateUrl: './desktop-group.component.html',
