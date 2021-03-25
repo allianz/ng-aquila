@@ -14,11 +14,9 @@
         <nx-comparison-table-description-cell *ngIf="element['description']">
           <div class="has-popover">
             <span>{{ element['description'] }}</span>
-            <nx-icon [attr.aria-label]="element['description']" name="info-circle-o" size="s"
-                     [nxPopoverTriggerFor]="popoverContent"
-                     nxPopoverTrigger="click" tabindex="0"
-                     role="button">
-            </nx-icon>
+            <button nxPlainButton class="info-icon" [attr.aria-label]="element['description']" [nxPopoverTriggerFor]="popoverContent" nxPopoverTrigger="click" type="button">
+              <nx-icon name="info-circle-o"></nx-icon>
+            </button>
             <nx-popover #popoverContent>
               <span>{{ element['description'] }}</span>
             </nx-popover>
@@ -46,11 +44,9 @@
 
             <div class="has-popover">
               <span>{{ row['description'] }}</span>
-              <nx-icon [attr.aria-label]="row['description']" name="info-circle-o" size="s"
-                       [nxPopoverTriggerFor]="popoverContent"
-                       nxPopoverTrigger="click" tabindex="0"
-                       role="button">
-              </nx-icon>
+              <button nxPlainButton class="info-icon" [attr.aria-label]="row['description']" [nxPopoverTriggerFor]="popoverContent" nxPopoverTrigger="click" type="button">
+                <nx-icon name="info-circle-o"></nx-icon>
+              </button>
               <nx-popover #popoverContent>
                 <span>{{row['description']}}</span>
               </nx-popover>

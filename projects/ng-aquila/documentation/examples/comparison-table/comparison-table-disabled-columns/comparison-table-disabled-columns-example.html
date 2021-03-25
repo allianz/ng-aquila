@@ -28,11 +28,9 @@
       <nx-comparison-table-description-cell>
         <div class="has-popover">
           <span>Summary of what all services include</span>
-          <nx-icon aria-label="Summary of what all services include" name="info-circle-o" size="s"
-                   [nxPopoverTriggerFor]="popoverContent1"
-                   nxPopoverTrigger="click" tabindex="0"
-                   role="button">
-          </nx-icon>
+          <button nxPlainButton class="info-icon" aria-label="More information" [nxPopoverTriggerFor]="popoverContent1" nxPopoverTrigger="click" type="button">
+            <nx-icon name="info-circle-o"></nx-icon>
+          </button>
           <nx-popover #popoverContent1>
             <span>Summary of what all services include</span>
           </nx-popover>
@@ -52,11 +50,9 @@
       <nx-comparison-table-description-cell>
         <div class="has-popover">
           <span>Service headline</span>
-          <nx-icon aria-label="Service headline" name="info-circle-o" size="s"
-                   [nxPopoverTriggerFor]="popoverContent2"
-                   nxPopoverTrigger="click" tabindex="0"
-                   role="button">
-          </nx-icon>
+          <button nxPlainButton class="info-icon" aria-label="More information" [nxPopoverTriggerFor]="popoverContent2" nxPopoverTrigger="click" type="button">
+            <nx-icon name="info-circle-o"></nx-icon>
+          </button>
           <nx-popover #popoverContent2>
             <span>Service headline popover content</span>
           </nx-popover>
