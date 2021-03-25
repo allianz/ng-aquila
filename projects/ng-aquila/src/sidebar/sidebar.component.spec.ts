@@ -182,6 +182,15 @@ describe('NxSidebarComponent', () => {
       });
     });
 
+    describe('when dragging handle', () => {
+      it('markForCheck is called twice', () => {
+        const markForCheckSpy = spyOn(sidebarInstance['_changeDetectorRef'], 'markForCheck');
+        mouseDrag(sidebarHandleElement, 0, 100);
+        // HINT: called once on resize, and once when setting new width.
+        expect(markForCheckSpy).toHaveBeenCalledTimes(2);
+      });
+    });
+
     describe('when using keyboard', () => {
       describe('and pressing SPACE', () => {
         beforeEach(() => {

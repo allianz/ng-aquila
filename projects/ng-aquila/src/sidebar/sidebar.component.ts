@@ -201,6 +201,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
     this._resizeWidth = Math.max(this.minWidth, this._resizeStartWidth + dx);
     this.open = this._resizeWidth > this.minWidth;
+    this._changeDetectorRef.markForCheck();
   }
 
   _onResizeEnd(event) {
