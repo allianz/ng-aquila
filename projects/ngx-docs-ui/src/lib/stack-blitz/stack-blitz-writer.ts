@@ -32,6 +32,8 @@ const TEMPLATE_FILES = [
   'tslint.json',
 ];
 
+const ASSETS_BASE_PATH = 'https://aposin.github.io/ng-aquila/';
+
 const TEST_TEMPLATE_PATH = 'assets/stack-blitz-tests/';
 const TEST_TEMPLATE_FILES = [
   'src/app/aquila-module.ts',
@@ -205,12 +207,21 @@ export class StackBlitzWriter {
     return new Promise(resolve => {
       this._http.get(path + filename, {responseType: 'text'}).subscribe(
         response => {
-          this._addFileToForm(form, data, response, filename, path, isTest, prependApp);
+          let fileContents = response;
+          if (filename.indexOf('.html') > 0) {
+            fileContents = this._replaceImagePaths(fileContents);
+          }
+          this._addFileToForm(form, data, fileContents, filename, path, isTest, prependApp);
           resolve(path + filename);
         },
         error => console.log(error)
       );
     });
+  }
+
+  _replaceImagePaths(fileContents: string) {
+    const regex = /(["'])((?:docs-|)assets\/(?:images|logos)\/.*?)(['"])/gm;
+    return fileContents.replace(regex, (_, prefix, url, suffix) => `${prefix}${ASSETS_BASE_PATH}${url}${suffix}`);
   }
 
   /**

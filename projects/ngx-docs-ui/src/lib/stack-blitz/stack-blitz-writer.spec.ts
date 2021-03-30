@@ -103,6 +103,26 @@ describe('StackBlitzWriter', () => {
 
     });
   }));
+
+  describe('replaceImagePath method', () => {
+    it('converts path to absolute for images', () => {
+      const fakeFileContents = '<img src="assets/images/blah.jpeg" />';
+      const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
+      expect(result).toBe('<img src="https://aposin.github.io/ng-aquila/assets/images/blah.jpeg" />');
+    });
+    it('converts path to absolute for logos', () => {
+      const fakeFileContents = '<img src="assets/logos/blah.svg" />';
+      const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
+      expect(result).toBe('<img src="https://aposin.github.io/ng-aquila/assets/logos/blah.svg" />');
+    });
+
+    it('does not convert path for other assets', () => {
+      const fakeFileContents = '<img src="assets/top-secret-info/blah.svg" />';
+      const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
+      expect(result).toBe('<img src="assets/top-secret-info/blah.svg" />');
+    });
+
+  });
 });
 
 const FAKE_DOCS: {[key: string]: string} = {
