@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.3.0](https://github.com/aposin/ng-aquila/compare/v11.2.0...v11.3.0) (2021-03-31)
+
+### Tabs changes
+The structure of the **tabs component** slightly changed. If you're using a tab-group which is aligned to the left and not centered, you need to modify the custom css and change `.nx-tab-header` to `nx-tab-header`:
+```
+:host ::ng-deep nx-tab-header {
+  justify-content: flex-start!important;
+}
+```
+
+### Bug Fixes
+
+* **card:** prevent header contents overflowing icon ([91ebb2c](https://github.com/aposin/ng-aquila/commit/91ebb2c46b2bde3b9e381c9f6709ecffedf94dbb))
+* **checkbox:** add checkbox indeterminate fill color ([522a6f4](https://github.com/aposin/ng-aquila/commit/522a6f475bf70374d883a7d7dc2592e669dca4b5))
+* **comparison-table:** use plain button for info icons, update popular cell theming tokens ([ce1ecbb](https://github.com/aposin/ng-aquila/commit/ce1ecbb7d2211ccef9aa36a8851985940ae67632))
+* **sidebar:** drag animation is visible again ([0fc1318](https://github.com/aposin/ng-aquila/commit/0fc13187607294dfbee8723e2256ec8057b381f2))
+* **small-stage:** add theming token for text color ([75c410a](https://github.com/aposin/ng-aquila/commit/75c410a6cb792108c35cf756750d033ffba67ac9))
+* **table, formfield:** remove padding from formfields inside table and add example ([ad7e21d](https://github.com/aposin/ng-aquila/commit/ad7e21d0bcad004d3afa7814c199bb9d7c4ac3bc))
+
+
+### Features
+
+* **card:** show icon outline for expert when card not selected ([e72aea9](https://github.com/aposin/ng-aquila/commit/e72aea9e01404fe9006b2719a42e9a6a976d15c9))
+* **dropdown:** add custom overlay label ([6670b31](https://github.com/aposin/ng-aquila/commit/6670b314131fe0de5fbb188327c3652a71b4ade3))
+* **phone-input:** add component ([d51e888](https://github.com/aposin/ng-aquila/commit/d51e888e0fe7197def8b162e44e61e2a1d16c244))
+* **table:** add isExpanded input for nxExpandableTableRow ([5916a1a](https://github.com/aposin/ng-aquila/commit/5916a1a0326bd95b364c7a49a35b6b3d563a1b75))
+* **tabs:** implement scrolling behavior of tabs header ([699adc9](https://github.com/aposin/ng-aquila/commit/699adc939576c0c1148d4685d78acccdf563c1d6))
+
+
+
 # [11.2.0](https://github.com/aposin/ng-aquila/compare/v11.1.0...v11.2.0) (2021-03-15)
 
 For the **sidepanel component** there was introduced the wrapping `nx-sidepanel-outer-container` component. The standalone sidepanel without a wrapper is deprecated. Please check the [documentation of the sidepanel](https://aposin.github.io/ng-aquila/documentation/sidepanel/overview) for more information.
