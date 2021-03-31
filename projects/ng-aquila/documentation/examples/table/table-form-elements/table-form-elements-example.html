@@ -1,0 +1,52 @@
+<table nxTable condensed class="nx-margin-bottom-xs">
+  <thead>
+    <tr nxTableRow>
+      <th nxHeaderCell>Assignment/Case ID</th>
+      <th nxHeaderCell>Gross Amount</th>
+      <th nxHeaderCell>Ending At</th>
+      <th nxHeaderCell>Status</th>
+      <th nxHeaderCell></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr nxTableRow *ngFor="let control of formArray.controls; index as i" [formGroup]="getFormGroup(i)">
+      <td nxTableCell>
+        <nx-formfield>
+          <input nxInput formControlName="id"/>
+        </nx-formfield>
+      </td>
+      <td nxTableCell>
+        <nx-formfield>
+          <input nxInput formControlName="amount"/>
+        </nx-formfield>
+      </td>
+      <td nxTableCell class="date-cell">
+        <nx-formfield>
+          <input nxDatefield nxInput [nxDatepicker]="myDatepicker" formControlName="endingAt" />
+        
+          <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+          <nx-datepicker #myDatepicker></nx-datepicker>
+        </nx-formfield>
+      </td>
+      <td nxTableCell class="status-cell">
+        <nx-formfield>
+          <nx-dropdown formControlName="status">
+            <nx-dropdown-item nxValue="open"></nx-dropdown-item>
+            <nx-dropdown-item nxValue="processing"></nx-dropdown-item>
+            <nx-dropdown-item nxValue="accepted"></nx-dropdown-item>
+            <nx-dropdown-item nxValue="rejected"></nx-dropdown-item>
+          </nx-dropdown>
+        </nx-formfield>
+      </td>
+      <td nxTableCell>
+        <button nxPlainButton (click)="removeRow(i)" aria-label="Remove row">
+          <nx-icon name="trash-o"></nx-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button nxPlainButton (click)="addRow()">
+  <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>Add row
+</button>

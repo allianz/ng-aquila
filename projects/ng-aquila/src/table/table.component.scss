@@ -266,6 +266,10 @@ $horizontal-padding-edges: nx-spacer(2xs);
     padding: 0;
   }
 
+  nx-formfield.has-outline .nx-formfield__wrapper {
+    padding-top: 0;
+  }
+
   .nx-list {
     margin: 0;
 

@@ -61,4 +61,10 @@ The table also supports expanding all rows at the same time. The `[nxExpandableT
 
 <!-- example(table-expandable) -->
 
+### Expert: Form elements
+
+Form elements can also be added to the table:
+
+<!-- example(table-form-elements) -->
+
 </div>
