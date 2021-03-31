@@ -554,9 +554,11 @@ $nx-theme: (
   selectable-card-background-selected-hover-color: ui-03,
   selectable-card-background-disabled-color: ui-01,
   selectable-card-background-disabled-selected-color: ui-02,
+  selectable-card-background-active-color: ui-03,
 
   selectable-card-icon-color: success,
-  selectable-card-icon-diabled-color: rgba(30, 137, 39, 0.4),
+  selectable-card-unchecked-icon-hover-color: #c2c2c2,
+  selectable-card-icon-placeholder-border-color: transparent,
 
   selectable-card-border-color: #999999,
   selectable-card-border-hover-color: ui-06,

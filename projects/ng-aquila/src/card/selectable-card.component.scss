@@ -35,7 +35,19 @@
     @include var(border-color, selectable-card-border-selected-color);
 
     ::ng-deep nx-icon.checked-icon {
-      display: block;
+      &::after {
+        display: none;
+      }
+
+      &::before, svg {
+        display: block;
+      }
+    }
+
+    &:hover {
+      ::ng-deep nx-icon.checked-icon {
+        color: var(--selectable-card-icon-color);
+      }
     }
   }
 
@@ -43,6 +55,27 @@
   label:active {
     @include var(background, selectable-card-background-hover-color);
     @include var(border-color, selectable-card-border-hover-color);
+  }
+
+  label:hover {
+   ::ng-deep nx-icon.checked-icon {
+      color: var(--selectable-card-unchecked-icon-hover-color);
+
+      &::after {
+        display: none;
+      }
+
+      &::before, svg {
+        display: block;
+      }
+    }
+  }
+
+  label:active {
+    background-color: var(--selectable-card-background-active-color);
+    ::ng-deep nx-icon.checked-icon {
+      @include var(color, selectable-card-icon-color);
+    }
   }
 
   input:checked + label:hover {
@@ -78,8 +111,20 @@
     position: absolute;
     right: nx-spacer(s);
     top: nx-spacer(s);
-    display: none;
     @include var(color, selectable-card-icon-color);
+
+    &::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--selectable-card-icon-placeholder-border-color);
+      border-radius: 50%;
+    }
+
+    &::before, svg {
+      display: none;
+    }
 
     [dir="rtl"] & {
       right: auto;
@@ -100,10 +145,24 @@
   label {
     @include var(border-color, selectable-card-border-disabled-color);
     cursor: not-allowed;
+
+    ::ng-deep nx-icon.checked-icon {
+      opacity: 40%;
+    }
   }
 
   label:hover {
     @include var(background, selectable-card-background-disabled-color);
+
+    ::ng-deep nx-icon.checked-icon {
+      &::after {
+        display: block;
+      }
+
+      &::before, svg {
+        display: none;
+      }
+    }
   }
 
   input:checked + label {
@@ -112,7 +171,6 @@
 
     ::ng-deep nx-icon.checked-icon {
       display: block;
-      @include var(color, selectable-card-icon-diabled-color);
     }
   }
 }
