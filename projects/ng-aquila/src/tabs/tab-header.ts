@@ -1,4 +1,5 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
 import { END, ENTER, HOME, SPACE } from '@angular/cdk/keycodes';
 import {
   AfterContentInit,
@@ -6,12 +7,16 @@ import {
   ChangeDetectorRef,
   Component,
   ContentChildren,
+  ElementRef,
   EventEmitter,
   Input,
+  Optional,
   Output,
   QueryList,
+  ViewChild,
 } from '@angular/core';
-
+import { NxScrollableTabBar } from './scrollable-tab-bar';
+import { NxTabGroupBase } from './tab-group-base';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 
 /** @docs-private */
@@ -19,12 +24,19 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
   selector: 'nx-tab-header',
   templateUrl: 'tab-header.html',
   styleUrls: ['./tab-header.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[class.at-start]': '_isScrolledToStart',
+    '[class.scrollable]': 'scrollable'
+  }
 })
 
-export class NxTabHeaderComponent implements AfterContentInit {
+export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterContentInit {
 
   private _keyManager: FocusKeyManager<NxTabLabelWrapperDirective>;
+
+  @ViewChild('tabsList') scrollableTabsList: ElementRef<HTMLElement>;
+  @ContentChildren('tabButton') tabButtons: QueryList<HTMLElement>;
 
   private _selectedIndex: number = 0;
 
@@ -62,14 +74,21 @@ export class NxTabHeaderComponent implements AfterContentInit {
 
   @ContentChildren(NxTabLabelWrapperDirective) labels: QueryList<NxTabLabelWrapperDirective>;
 
-  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor(
+    public _changeDetectorRef: ChangeDetectorRef,
+    _dir: Directionality,
+    @Optional() public _tabGroup: NxTabGroupBase,
+    _element: ElementRef
+  ) {
+    super(_changeDetectorRef, _dir, _element);
+  }
 
   ngAfterContentInit() {
+    super.ngAfterContentInit();
     this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels).withHorizontalOrientation('ltr').withWrap();
     this._keyManager.updateActiveItem(0);
     this._changeDetectorRef.markForCheck();
   }
-
   private _isValidIndex(idx: number) {
     if (!this.labels) { return true; }
     const tab = this.labels.toArray()[idx] || null;

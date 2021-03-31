@@ -126,13 +126,11 @@ $border-size: nx-border-size(xs);
   text-decoration: none;
   border: none;
   background: transparent;
-  @include var(color, tab-item-color);
-  @include var(border-color, tab-item-border-color);
-  border-bottom-width: nx-border-size(m);
-  border-bottom-style: solid;
-  padding: 0 nx-spacer(s) $padding-bottom nx-spacer(s);
+  color: var(--tab-item-color);
+  padding: nx-spacer(3xs) 0 nx-spacer(xs) 0;
+  margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
   outline: none;
-  margin: 0;
+  position: relative;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: buttonFace;
@@ -144,9 +142,11 @@ $border-size: nx-border-size(xs);
 
 @mixin tab__item--active {
   border-width: nx-border-size(xl);
-  font-weight: map-get($font-weight, bold);
+  font-weight: nx-font-weight(bold);
+  border-bottom-style: solid;
+  border-color: var(--tab-item-active-border-color);
   transition: font-weight .3s ease;
-  padding-bottom: nx-spacer(3xs);
+  padding-bottom: 8px;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: highlight;
@@ -156,8 +156,8 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin tab__item--disabled {
-  @include var(border-color, tab-item-disabled-border-color);
-  @include var(color, tab-item-disabled-color);
+  border-color: var(--tab-item-disabled-border-color);
+  color: var(--tab-item-disabled-color);
   cursor: not-allowed;
 
   @media screen and (-ms-high-contrast: active) {

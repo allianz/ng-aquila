@@ -175,7 +175,7 @@ describe('NxTabGroupComponent', () => {
         const secondLabel = fixture.debugElement.queryAll(By.css('.nx-tab-header__item'))[1];
         secondLabel.nativeElement.click();
         fixture.detectChanges();
-        tick();
+        tick(THROTTLE_TIME);
 
         const child = fixture.debugElement.query(By.css('.child'))!;
         expect(child.nativeElement).toBeDefined();
@@ -299,7 +299,7 @@ describe('NxTabGroupComponent', () => {
         expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBe(true);
       }));
 
-        it('should maintain the selected tab if a tab is removed', fakeAsync(() => {
+      it('should maintain the selected tab if a tab is removed', fakeAsync(() => {
         createTestComponent(DynamicTabTest);
         tick(THROTTLE_TIME);
         const dynamicTest = fixture.componentInstance as DynamicTabTest;
@@ -310,7 +310,7 @@ describe('NxTabGroupComponent', () => {
         // Remove the first tab that is right before the selected one.
         dynamicTest.tabs.splice(0, 1);
         fixture.detectChanges();
-        tick();
+        tick(THROTTLE_TIME);
 
         expect(tabGroupInstance.selectedIndex).toBe(0);
         expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBe(true);

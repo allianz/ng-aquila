@@ -1,7 +1,5 @@
 @import "../shared-styles/index";
 
-$padding-bottom: nx-spacer(2xs) - nx-border-size(m);
-
 :host {
   display: flex;
   align-items: flex-end;
@@ -11,27 +9,93 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
     justify-content: flex-start;
     border-bottom-width: nx-border-size(xs);
     border-bottom-style: solid;
-    @include var(border-bottom-color, tab-expert-bottom-border-color);
+    border-bottom-color: var(--tab-expert-bottom-border-color);
+  }
+
+  .nx-tab-nav-bar {
+    display: flex;
+    position: relative;
+    overflow-x: scroll;
+    outline: none;
+    -ms-overflow-style: none;   // hide scrollbar on IE
+    scrollbar-width: none;      // hide scrollbar on firefox
+
+    // hide scrollbar on chrome, edge, safari
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &.at-start {
+    .nx-tab-nav-bar {
+      margin-left: -8px;
+      padding-left: 8px;
+
+      [dir="rtl"] & {
+        margin-left: 0;
+        padding-left: 0;
+        margin-right: -8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &:not(.scrollable) {
+    .nx-tab-nav-bar {
+      margin-right: -8px;
+      padding-right: 8px;
+
+      [dir="rtl"] & {
+        margin-right: 0;
+        padding-right: 0;
+        margin-left: -8px;
+        padding-left: 8px;
+      }
+    }
   }
 }
 
 :host ::ng-deep a.nx-tab-link {
   @include tab__item;
+  white-space: nowrap;
 }
 
 :host ::ng-deep a.nx-tab-link.is-active {
   @include tab__item--active;
 }
 
-:host.is-expert ::ng-deep {
-  a.nx-tab-link {
-    padding: 0 0 4px 0;
-    margin: 0 nx-spacer(s);
-    border-color: transparent;
-    border-bottom-width: 4px;
-    position: relative;
+:host:not(.is-expert) ::ng-deep {
+  a.nx-tab-link:not(.is-active)::before {
+    content: '';
+    position: absolute;
+    width: calc(100% + 64px);
+    height: 1px;
+    background-color: var(--tab-item-border-color);
+    bottom: 0;
+    left: -32px;
   }
 
+  a.nx-tab-link:first-child::before {
+    left: 0px;
+    width: calc(100% + 32px);
+
+    [dir="rtl"] & {
+      left: initial;
+      right: 0;
+    }
+  }
+
+  a.nx-tab-link:last-child::before {
+    width: calc(100% + 32px);
+
+    [dir="rtl"] & {
+      left: initial;
+      right: -32px;
+    }
+  }
+}
+
+:host ::ng-deep {
   a.nx-tab-link:first-child {
     margin-left: 0;
 
@@ -49,6 +113,13 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
       margin-left: 0;
     }
   }
+}
+
+:host.is-expert ::ng-deep {
+  a.nx-tab-link {
+    padding: 4px 0;
+  }
+
 
   a.nx-tab-link.is-disabled:not(.is-active) {
     border-bottom-color: transparent;
@@ -57,7 +128,7 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
 
 :host.is-expert:not(.is-negative) ::ng-deep {
   a.nx-tab-link:not(.is-disabled):not(.is-active) {
-    @include var(color, tab-expert-color);
+    color: var(--tab-expert-color);
 
     @media screen and (-ms-high-contrast: active) {
       color: buttonText;
@@ -65,21 +136,21 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
   }
 
   a.nx-tab-link.is-active {
-    @include var(border-color, tab-item-border-color);
+    border-color: var(--tab-item-active-border-color);
   }
 }
 
 :host(.is-negative) {
-  @include var(color, negative);
+  color: var(--negative);
 
   ::ng-deep a.nx-tab-link {
-    @include var(color, negative);
-    @include var(border-bottom-color, negative);
+    color: var(--negative);
+    border-bottom-color: var(--negative);
   }
 
   ::ng-deep a.nx-tab-link.is-disabled {
-    @include var(color, tab-item-disabled-negative-color);
-    @include var(border-color, tab-item-disabled-negative-color);
+    color: var(--tab-item-disabled-negative-color);
+    border-color: var(--tab-item-disabled-negative-color);
   }
 
   @media screen and (-ms-high-contrast: active) {
@@ -107,26 +178,21 @@ $padding-bottom: nx-spacer(2xs) - nx-border-size(m);
 
 :host(.is-disabled.is-negative) {
   ::ng-deep a.nx-tab-link {
-    @include var(color, tab-item-disabled-negative-color);
-    @include var(border-color, tab-item-disabled-negative-color);
+    color: var(--tab-item-disabled-negative-color);
+    border-color: var(--tab-item-disabled-negative-color);
   }
 }
 
 // Focus Styles
 // not:(.is-disabled) is needed because if you click on a disabled link and then press an arrow key the disabled tab gets focused.
-:host:not(.is-expert) ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused  {
-  @include focus-style;
-  border-radius: nx-border-radius(s);
-}
-
-:host.is-expert ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused {
+:host ::ng-deep .nx-tab-link:not(.is-disabled).cdk-keyboard-focused {
   &::after {
     content: '';
     display: block;
     position: absolute;
-    height: calc(100% - 4px);   // subtract bottom border
+    height: var(--tab-item-line-height);
     width: 100%;
-    top: 0px;
+    top: 4px;
 
     @include focus-style;
     border-radius: nx-border-radius(s);

@@ -10,7 +10,7 @@ stable: done
 <!-- example(tabs-basic) -->
 
 ### Header alignment and styles
-From the style guide, the tab buttons are centered inside the tab header by default. You can change it by using the `.nx-tab-header` class and set `justify-content: flex-start`. With this class you can also change the paddings and margins of the header.
+From the style guide, the tab buttons are centered inside the tab header by default. You can change it by using the `nx-tab-header` element and set `justify-content: flex-start`.
 
 <!-- example(tabs-styling) -->
 

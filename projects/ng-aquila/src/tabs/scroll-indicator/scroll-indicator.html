@@ -1,0 +1,8 @@
+<div class="nx-tab-scroll-indicator__divider"></div>
+<button nxPlainButton
+    aria-hidden="true"
+    type="button"
+    *ngIf="_view === 'desktop'"
+    (click)="scroll()">
+  <nx-icon [name]="getChevronName()"></nx-icon>
+</button>

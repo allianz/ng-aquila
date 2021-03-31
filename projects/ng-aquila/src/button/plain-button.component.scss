@@ -86,3 +86,13 @@
   text-align: center;
   text-decoration: none;
 }
+
+@media screen and (-ms-high-contrast: active) {
+  :host {
+    color: buttonText!important;
+  }
+
+  :host[disabled] {
+    color: GrayText!important;
+  }
+}

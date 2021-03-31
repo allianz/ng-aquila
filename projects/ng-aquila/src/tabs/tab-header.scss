@@ -1,21 +1,58 @@
 @import "../shared-styles/index";
 
 :host {
-  display: block;
+  display: flex;
+  justify-content: center;
 
   .nx-tab-header {
     display: flex;
     align-items: flex-end;
-    justify-content: center;
+    overflow-x: scroll;
+    position: relative;
+    outline: none;
+
+    -ms-overflow-style: none;   // hide scrollbar on IE
+    scrollbar-width: none;      // hide scrollbar on firefox
+
+    // hide scrollbar on chrome, edge, safari
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &.at-start {
+    .nx-tab-header {
+      margin-left: -8px;
+      padding-left: 8px;
+
+      [dir="rtl"] & {
+        margin-left: 0;
+        padding-left: 0;
+        margin-right: -8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  &:not(.scrollable) {
+    .nx-tab-header {
+      margin-right: -8px;
+      padding-right: 8px; 
+
+      [dir="rtl"] & {
+        margin-right: 0;
+        padding-right: 0;
+        margin-left: -8px;
+        padding-left: 8px;
+      }
+    }
   }
 }
 
 :host-context(nx-tab-group.is-expert) {
-  .nx-tab-header {
-    justify-content: flex-start;
-    border-bottom-width: nx-border-size(xs);
-    border-bottom-style: solid;
-    @include var(border-bottom-color, tab-expert-bottom-border-color);
-  }
+  justify-content: flex-start;
+  border-bottom-width: nx-border-size(xs);
+  border-bottom-style: solid;
+  border-bottom-color: var(--tab-expert-bottom-border-color);
 }
 

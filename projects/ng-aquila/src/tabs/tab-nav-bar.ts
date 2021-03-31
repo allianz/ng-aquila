@@ -9,11 +9,17 @@ import {
   InjectionToken,
   Inject,
   ElementRef,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ContentChildren,
+  QueryList,
+  forwardRef
 } from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxTabsAppearance } from './tab-group';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { NxScrollableTabBar } from './scrollable-tab-bar';
+import { Directionality } from '@angular/cdk/bidi';
 
 export interface TabNavBarDefaultOptions {
   /** Sets the default appearance. */
@@ -31,10 +37,15 @@ export const TAB_NAV_BAR_DEFAULT_OPTIONS = new InjectionToken<TabNavBarDefaultOp
     '[class.is-negative]': 'negative',
     '[class.is-disabled]': 'disabled',
     '[class.is-expert]': 'appearance === "expert"',
-    'role': 'navigation'
+    'role': 'navigation',
+    '[class.at-start]': '_isScrolledToStart',
+    '[class.scrollable]': 'scrollable'
   }
 })
-export class NxTabNavBarComponent {
+export class NxTabNavBarComponent extends NxScrollableTabBar {
+
+  @ViewChild('tabsList') scrollableTabsList: ElementRef<HTMLElement>;
+  @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons: QueryList<HTMLElement>;
 
   private _negative: boolean = false;
 
@@ -87,9 +98,13 @@ export class NxTabNavBarComponent {
   }
 
   constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions
-  ) { }
+    public _changeDetectorRef: ChangeDetectorRef,
+    _dir: Directionality,
+    @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions,
+    _element: ElementRef
+  ) {
+    super(_changeDetectorRef, _dir, _element);
+  }
 
   static ngAcceptInputType_negative: BooleanInput;
   static ngAcceptInputType_disabled: BooleanInput;
