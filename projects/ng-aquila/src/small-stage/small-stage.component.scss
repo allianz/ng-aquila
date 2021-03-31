@@ -136,6 +136,7 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
 
   &__inner {
     position: absolute;
+    bottom: 0;
     min-width: var(--small-stage-image-min-width);
     width: calc(100% - #{$image-container-padding-to-content});
     height: calc(100% - #{$image-container-padding-top});

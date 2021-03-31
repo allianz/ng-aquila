@@ -29,16 +29,16 @@ export class NxSmallStageComponent {
 
   /** @docs-private */
   get _startImageInlineStyle(): string {
-    return `backgroundImage: url(${this._startImage?.src})`;
+    return `url(${this._startImage?.src})`;
   }
   /** @docs-private */
   get _endImageInlineStyle(): string {
-    return `backgroundImage: url(${this._endImage?.src})`;
+    return `url(${this._endImage?.src})`;
   }
 
   /** @docs-private */
   get _narrowScreenImageInlineStyle(): string {
-    return `backgroundImage: url(${this._narrowScreenImage?.src || this._endImage?.src || this._startImage?.src})`;
+    return `url(${this._narrowScreenImage?.src || this._endImage?.src || this._startImage?.src})`;
   }
 
   /** @docs-private */

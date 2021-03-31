@@ -59,7 +59,7 @@ describe('NxSmallStageComponent', () => {
       createTestComponent(StartImageSmallStage);
       fixture.detectChanges();
       const style = smallStageDebugElement.componentInstance._startImageInlineStyle;
-      expect(style).toBe('backgroundImage: url(foo)');
+      expect(style).toBe('url(foo)');
     });
   });
 
@@ -73,7 +73,7 @@ describe('NxSmallStageComponent', () => {
       createTestComponent(EndImageSmallStage);
       fixture.detectChanges();
       const style = smallStageDebugElement.componentInstance._endImageInlineStyle;
-      expect(style).toBe('backgroundImage: url(bar)');
+      expect(style).toBe('url(bar)');
     });
   });
 
@@ -82,24 +82,26 @@ describe('NxSmallStageComponent', () => {
       createTestComponent(ThreeImageSmallStage);
       fixture.detectChanges();
       const style = smallStageDebugElement.componentInstance._narrowScreenImageInlineStyle;
-      expect(style).toBe('backgroundImage: url(baz)');
+      expect(style).toBe('url(baz)');
     });
     it('falls back to end image src if narrow image directive missing', () => {
       createTestComponent(TwoImageSmallStage);
       fixture.detectChanges();
       const style = smallStageDebugElement.componentInstance._narrowScreenImageInlineStyle;
-      expect(style).toBe('backgroundImage: url(bar)');
+      expect(style).toBe('url(bar)');
     });
     it('sets inner position class properly if present on directive', () => {
       createTestComponent(ThreeImageSmallStage);
       fixture.detectChanges();
-      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement.querySelector('.image-container-narrow-screen__inner').classList;
+      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement
+        .querySelector('.image-container-narrow-screen__inner').classList;
       expect(narrowScreenImageInnerClassList.contains('image-container-narrow-screen__inner--center')).toBeTrue();
     });
-    it('uses default end positioning when directive not present', ()=> {
+    it('uses default end positioning when directive not present', () => {
       createTestComponent(TwoImageSmallStage);
       fixture.detectChanges();
-      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement.querySelector('.image-container-narrow-screen__inner').classList;
+      const narrowScreenImageInnerClassList = smallStageDebugElement.nativeElement
+        .querySelector('.image-container-narrow-screen__inner').classList;
       expect(narrowScreenImageInnerClassList.contains('image-container-narrow-screen__inner--end')).toBeTrue();
     });
   });
