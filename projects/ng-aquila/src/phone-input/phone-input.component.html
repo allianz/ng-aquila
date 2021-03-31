@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <nx-dropdown [class.hide]="readonly && !disabled" [nxValue]="countryCode"
+    class="nx-margin-right-2xs" #dropdown [nxShowFilter]="true"
+    [nxDisabled]="disabled"
+    [nxOverlayLabel]="areaCodeLabel">
+    <ng-template nxClosedLabel>
+      <span>+{{ _getCallingCode(dropdown.value) }}</span>
+    </ng-template>
+    <nx-dropdown-item *ngFor="let country of _sortedCountries"
+      [nxValue]="country">
+      {{ _getCountryName(country) }} (+{{ _getCallingCode(country) }})
+    </nx-dropdown-item>
+  </nx-dropdown>
+  <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
+  <input class="c-input" [class.hide]="readonly && !disabled" type="tel" (blur)="_onInputBlur()"
+    [(ngModel)]="_inputValue" (ngModelChange)="_onInput($event)"
+    [attr.aria-describedby]="_describedBy"
+    [attr.aria-labelledby]="_ariaLabelledBy"
+    [attr.required]="required || null"
+    [attr.disabled]="disabled || null"
+    [attr.placeholder]="placeholder || null"
+    >
+
+    <input class="c-input" *ngIf="readonly && !disabled"
+      class="readonly-input"
+      type="tel"
+      [attr.readonly]="readonly || null"
+      [attr.aria-readonly]="readonly || null"
+      [value]="_getReadonlyValue()"
+      [attr.aria-describedby]="_describedBy"
+      [attr.aria-labelledby]="_ariaLabelledBy">
+</div>

@@ -77,7 +77,8 @@ const dependencies = {
   'object-fit-images': '^3.2.4',
   'rxjs': '~6.6.0',
   'tslib': '^2.1.0',
-  'zone.js': '~0.10.2'
+  'zone.js': '~0.10.2',
+  'libphonenumber-js': '^1.9.11'
 };
 
 const testDependencies = {

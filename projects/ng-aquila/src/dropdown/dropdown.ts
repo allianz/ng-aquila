@@ -991,8 +991,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       this._changeDetectorRef.markForCheck();
       this.openedChange.emit(true);
 
-      // If there is no item selected, the filter takes the focus.
-      if (this.showFilter && !this._value) {
+      if (this.showFilter) {
         this.filterInput.nativeElement.focus();
       } else {
         this.panelBody.nativeElement.focus();

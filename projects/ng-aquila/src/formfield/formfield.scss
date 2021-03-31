@@ -352,7 +352,7 @@ $outline-padding: 7px;
   }
 }
 
-.nx-formfield.has-outline.is-readonly {
+.nx-formfield.has-outline.is-readonly:not(.is-disabled) {
   .nx-formfield__input-container {
     @include var(border-color, formfield-readonly-border-color);
     @include var(background-color, formfield-readonly-background-color);
@@ -468,7 +468,7 @@ $outline-padding: 7px;
 }
 
 // Readonly color
-.nx-formfield.is-readonly {
+.nx-formfield.is-readonly:not(.is-disabled) {
   nx-datepicker-toggle button {
     @include var(color, formfield-disabled-text-color);
   }
