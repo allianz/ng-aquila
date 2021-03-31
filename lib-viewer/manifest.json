@@ -139,6 +139,9 @@
       "id": "pagination"
     },
     {
+      "id": "phone-input"
+    },
+    {
       "id": "popover"
     },
     {
@@ -423,70 +426,6 @@
       "stable": "done"
     },
     {
-      "id": "button",
-      "title": "Button",
-      "examples": [
-        {
-          "name": "button",
-          "config": {}
-        },
-        {
-          "name": "button-small",
-          "config": {}
-        },
-        {
-          "name": "button-small-medium",
-          "config": {}
-        },
-        {
-          "name": "button-medium",
-          "config": {}
-        },
-        {
-          "name": "button-large",
-          "config": {}
-        },
-        {
-          "name": "button-danger",
-          "config": {}
-        },
-        {
-          "name": "button-block",
-          "config": {}
-        },
-        {
-          "name": "button-negative",
-          "config": {}
-        },
-        {
-          "name": "button-with-icon",
-          "config": {}
-        },
-        {
-          "name": "button-icon",
-          "config": {}
-        },
-        {
-          "name": "button-icon-indicator",
-          "config": {}
-        },
-        {
-          "name": "button-plain",
-          "config": {}
-        },
-        {
-          "name": "anchor-button",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/button.html",
-      "overviewFile": "lib-viewer/overview/button.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "card",
       "title": "Cards",
       "examples": [
@@ -495,7 +434,7 @@
           "config": {}
         },
         {
-          "name": "card-header-footer",
+          "name": "card-footer",
           "config": {}
         },
         {
@@ -737,6 +676,70 @@
       "expert": true,
       "stable": "done",
       "noApi": true
+    },
+    {
+      "id": "button",
+      "title": "Button",
+      "examples": [
+        {
+          "name": "button",
+          "config": {}
+        },
+        {
+          "name": "button-small",
+          "config": {}
+        },
+        {
+          "name": "button-small-medium",
+          "config": {}
+        },
+        {
+          "name": "button-medium",
+          "config": {}
+        },
+        {
+          "name": "button-large",
+          "config": {}
+        },
+        {
+          "name": "button-danger",
+          "config": {}
+        },
+        {
+          "name": "button-block",
+          "config": {}
+        },
+        {
+          "name": "button-negative",
+          "config": {}
+        },
+        {
+          "name": "button-with-icon",
+          "config": {}
+        },
+        {
+          "name": "button-icon",
+          "config": {}
+        },
+        {
+          "name": "button-icon-indicator",
+          "config": {}
+        },
+        {
+          "name": "button-plain",
+          "config": {}
+        },
+        {
+          "name": "anchor-button",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/button.html",
+      "overviewFile": "lib-viewer/overview/button.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "context-menu",
@@ -1899,6 +1902,50 @@
       "stable": "done"
     },
     {
+      "id": "phone-input",
+      "title": "Phone Input",
+      "examples": [
+        {
+          "name": "phone-input-retail",
+          "config": {}
+        },
+        {
+          "name": "phone-input-country-code",
+          "config": {}
+        },
+        {
+          "name": "phone-input-forms",
+          "config": {}
+        },
+        {
+          "name": "phone-input-disabled",
+          "config": {}
+        },
+        {
+          "name": "phone-input-validation",
+          "config": {}
+        },
+        {
+          "name": "phone-input-formatting",
+          "config": {}
+        },
+        {
+          "name": "phone-input-i18n",
+          "config": {}
+        },
+        {
+          "name": "phone-input-expert",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/phone-input.html",
+      "overviewFile": "lib-viewer/overview/phone-input.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "popover",
       "title": "Popover",
       "examples": [
@@ -2447,6 +2494,10 @@
         },
         {
           "name": "table-expandable",
+          "config": {}
+        },
+        {
+          "name": "table-form-elements",
           "config": {}
         }
       ],
@@ -3210,15 +3261,15 @@
       "url": "lib-viewer/examples/card-###TYPE###.html"
     },
     {
-      "id": "card-header-footer",
-      "title": "Cards with header and footer example",
+      "id": "card-footer",
+      "title": "Cards with footer example",
       "module": "card",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/card-header-footer-###TYPE###.html"
+      "url": "lib-viewer/examples/card-footer-###TYPE###.html"
     },
     {
       "id": "selectable-card-basic",
@@ -5861,6 +5912,94 @@
       "url": "lib-viewer/examples/pagination-simple-###TYPE###.html"
     },
     {
+      "id": "phone-input-country-code",
+      "title": "Selected country example",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-country-code-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-disabled",
+      "title": "Disabled example",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-disabled-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-expert",
+      "title": "Expert variation",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-expert-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-formatting",
+      "title": "Phone Input Formatting",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-formatting-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-forms",
+      "title": "Phone input usage in forms",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-forms-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-i18n",
+      "title": "Phone Input Internationalization",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-i18n-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-retail",
+      "title": "Retail variation",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-retail-###TYPE###.html"
+    },
+    {
+      "id": "phone-input-validation",
+      "title": "Phone input validation",
+      "module": "phone-input",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/phone-input-validation-###TYPE###.html"
+    },
+    {
       "id": "popover-click-outside",
       "title": "Closing on document click",
       "module": "popover",
@@ -6882,6 +7021,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/table-filter-sort-paginate-###TYPE###.html"
+    },
+    {
+      "id": "table-form-elements",
+      "title": "Table with form elements",
+      "module": "table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/table-form-elements-###TYPE###.html"
     },
     {
       "id": "table-selecting",

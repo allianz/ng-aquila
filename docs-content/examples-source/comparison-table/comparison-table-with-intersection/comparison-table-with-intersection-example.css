@@ -43,8 +43,8 @@
 
 .info-icon,
 .popular-info-icon {
-  outline: none;
   margin-left: auto;
+  align-self: flex-start;
 }
 
 @media only screen and (max-width: 703px) {
@@ -66,14 +66,8 @@
   margin: 0;
 }
 
-.info-icon,
-.popular-info-icon {
-  cursor: pointer;
-  align-self: flex-start;
-}
-
 @media only screen and (min-width: 704px) and (max-width: 991px) {
-  .has-popover nx-icon {
+  .info-icon {
     margin-left: 8px;
   }
 
@@ -86,14 +80,6 @@
   .service-lists {
     flex-direction: column;
   }
-}
-
-.info-icon {
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
-}
-
-.popular-info-icon {
-  color: var(--documentation-comparison-table-example-most-popular-icon-color);
 }
 
 .minus-icon {

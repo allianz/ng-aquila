@@ -32,27 +32,6 @@
   height: 100%;
 }
 
-.header-container button {
-  margin: 0 auto;
-}
-
-.has-popover {
-  display: flex;
-  flex-direction: row;
-}
-
-.has-popover nx-icon {
-  outline: none;
-  margin-left: auto;
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
-}
-
-@media only screen and (max-width: 703px) {
-  .has-popover {
-    text-align: left;
-  }
-}
-
 .popular-cell__content-wrapper {
   display: flex;
   width: 100%;
@@ -64,30 +43,6 @@
   width: 100%;
   text-align: center;
   margin: 0;
-}
-
-.info-icon,
-.popular-info-icon {
-  cursor: pointer;
-  align-self: flex-start;
-}
-
-@media only screen and (min-width: 704px) and (max-width: 991px) {
-  .has-popover nx-icon {
-    margin-left: 8px;
-  }
-
-  .has-popover {
-    align-items: center;
-  }
-}
-
-.info-icon {
-  color: var(--documentation-comparison-table-example-info-icon-color, #3bb4db);
-}
-
-.popular-info-icon {
-  color: var(--documentation-comparison-table-example-most-popular-icon-color);
 }
 
 .minus-icon {

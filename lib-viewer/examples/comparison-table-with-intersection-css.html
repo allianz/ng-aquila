@@ -1,6 +1,6 @@
 <span class="hljs-selector-class">.container</span> {
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-background-color, #<span class="hljs-number">0</span>f2a3d);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-background-color, <span class="hljs-number">#0f2a3d</span>);
 }
 
 <span class="hljs-selector-class">.product-title</span> {
@@ -43,11 +43,11 @@
 
 <span class="hljs-selector-class">.info-icon</span>,
 <span class="hljs-selector-class">.popular-info-icon</span> {
-  <span class="hljs-attribute">outline</span>: none;
   <span class="hljs-attribute">margin-left</span>: auto;
+  <span class="hljs-attribute">align-self</span>: flex-start;
 }
 
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">703px</span>) {
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">703px</span>) {
   <span class="hljs-selector-class">.has-popover</span> {
     <span class="hljs-attribute">text-align</span>: left;
   }
@@ -66,14 +66,8 @@
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
-<span class="hljs-selector-class">.info-icon</span>,
-<span class="hljs-selector-class">.popular-info-icon</span> {
-  <span class="hljs-attribute">cursor</span>: pointer;
-  <span class="hljs-attribute">align-self</span>: flex-start;
-}
-
-<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width:</span> <span class="hljs-number">704px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">991px</span>) {
-  <span class="hljs-selector-class">.has-popover</span> <span class="hljs-selector-tag">nx-icon</span> {
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">min-width</span>: <span class="hljs-number">704px</span>) <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">991px</span>) {
+  <span class="hljs-selector-class">.info-icon</span> {
     <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">8px</span>;
   }
 
@@ -82,26 +76,18 @@
   }
 }
 
-<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">703px</span>) {
+<span class="hljs-keyword">@media</span> (<span class="hljs-attribute">max-width</span>: <span class="hljs-number">703px</span>) {
   <span class="hljs-selector-class">.service-lists</span> {
     <span class="hljs-attribute">flex-direction</span>: column;
   }
 }
 
-<span class="hljs-selector-class">.info-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-info-icon-color, #<span class="hljs-number">3</span>bb4db);
-}
-
-<span class="hljs-selector-class">.popular-info-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-most-popular-icon-color);
-}
-
 <span class="hljs-selector-class">.minus-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-minus-color, #ada8a8);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-minus-color, <span class="hljs-number">#ada8a8</span>);
 }
 
 <span class="hljs-selector-class">.check-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success, #<span class="hljs-number">26</span>AE31);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success, <span class="hljs-number">#26AE31</span>);
 }
 
 <span class="hljs-selector-class">.service-lists</span> {
@@ -112,8 +98,8 @@
   <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
 }
 
-<span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.benefits-list</span> <span class="hljs-selector-pseudo">::ng-deep</span> <span class="hljs-selector-tag">nx-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success, #<span class="hljs-number">26</span>AE31);
+<span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.benefits-list</span> ::ng-deep nx-icon {
+  color: <span class="hljs-built_in">var</span>(--success, <span class="hljs-number">#26AE31</span>);
 }
 
 <span class="hljs-selector-class">.benefits-list</span> <span class="hljs-selector-tag">li</span> {

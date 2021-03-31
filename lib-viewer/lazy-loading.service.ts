@@ -150,6 +150,9 @@
   case 'pagination': return import('../examples/pagination/pagination-examples.module').then(m => m.PaginationExamplesModule);
   
 
+  case 'phone-input': return import('../examples/phone-input/phone-input-examples.module').then(m => m.PhoneInputExamplesModule);
+  
+
   case 'popover': return import('../examples/popover/popover-examples.module').then(m => m.PopoverExamplesModule);
   
 

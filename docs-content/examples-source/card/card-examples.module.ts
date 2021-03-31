@@ -5,7 +5,7 @@ import { NxCardModule } from '@aposin/ng-aquila/card';
 
 import { NgModule } from '@angular/core';
 import { CardExampleComponent } from './card/card-example';
-import { CardHeaderFooterExampleComponent } from './card-header-footer/card-header-footer-example';
+import { CardFooterExampleComponent } from './card-footer/card-footer-example';
 import { SelectableCardBasicExampleComponent } from './selectable-card-basic/selectable-card-basic-example';
 import { SelectableCardDynamicExampleComponent } from './selectable-card-dynamic/selectable-card-dynamic-example';
 import { SelectableCardReactiveExampleComponent } from './selectable-card-reactive/selectable-card-reactive-example';
@@ -14,7 +14,7 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
   CardExampleComponent,
-  CardHeaderFooterExampleComponent,
+  CardFooterExampleComponent,
   SelectableCardBasicExampleComponent,
   SelectableCardDynamicExampleComponent,
   SelectableCardReactiveExampleComponent,
@@ -36,7 +36,7 @@ export class CardExamplesModule {
   static components() {
     return {
       'card': CardExampleComponent,
-      'card-header-footer': CardHeaderFooterExampleComponent,
+      'card-footer': CardFooterExampleComponent,
       'selectable-card-basic': SelectableCardBasicExampleComponent,
       'selectable-card-dynamic': SelectableCardDynamicExampleComponent,
       'selectable-card-reactive': SelectableCardReactiveExampleComponent,

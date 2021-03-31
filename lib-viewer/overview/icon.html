@@ -1,6 +1,23 @@
-<h3 id="general-usage" class="docs-markdown--h3">General usage</h3>
 <div class="docs-private">
-  The icons are comprised of two general types: **functional** and **product icons**. **Functional icons** are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (**s**). **Product icons** are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with `product-*`. The outline and fill options should only be used in combination with **product** icons.
+<h3 id="general-usage-of-ndbx-icons" class="docs-markdown--h3">General usage of NDBX icons</h3>
+<p class="docs-markdown--p">The icons are comprised of two general types: <strong>functional</strong> and <strong>product icons</strong>. <strong>Functional icons</strong> are used to indicate important actions and functions like search, close or links. In most cases, functional icons will have a size of 24x24px (<strong>s</strong>). <strong>Product icons</strong> are a visual expression of aspects of our products. They are, for instance, used to select product options or in claims use cases. To make both icons distinguishable, the name of all product icons starts with <code>product-*</code>. The outline and fill options should only be used in combination with <strong>product</strong> icons.</p>
+<p class="docs-markdown--p">The general functionality of the icons is provided with the <code>NxIconModule</code> of <code>ng-aquila</code>. The Allianz Icons are provided with the additional <code>NdbxIconModule</code> of <code>@allianz/ngx-ndbx</code>. To use it, import it in the <code>app.module.ts</code> or in any other module:</p>
+<pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxIconModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/icon&#x27;</span>;
+<span class="hljs-keyword">import</span> { NdbxIconModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@allianz/ngx-ndbx/icon&#x27;</span>;
+
+<span class="hljs-meta">@NgModule</span>({
+  <span class="hljs-attr">declarations</span>: [
+    <span class="hljs-comment">// ...</span>
+  ],
+  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-comment">// ...</span>
+    NxIconModule,
+    NdbxIconModule
+  ],
+  <span class="hljs-comment">// ...</span>
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{ }
+</code></pre>
 </div>
 <div class="docs-public">
 <h3 id="open-source-icons-%2F-icons-not-working%3F" class="docs-markdown--h3">Open source icons / icons not working?</h3>
@@ -27,20 +44,22 @@ them with the icon registry.</p>
 <div nx-docs-example="icon-sizes" config="{}">exampleID: icon-sizes</div>
 <h3 id="icons-with-outline" class="docs-markdown--h3">Icons with outline</h3>
 <div class="docs-private">
-The outline option should only be used with **product** icons.
+<p class="docs-markdown--p">The outline option should only be used with <strong>product</strong> icons.</p>
 </div>
 <div nx-docs-example="icon-outline" config="{}">exampleID: icon-outline</div>
 <h3 id="filled-icons" class="docs-markdown--h3">Filled icons</h3>
 <div class="docs-private">
-The filled option should only be used with **product** icons.
+<p class="docs-markdown--p">The filled option should only be used with <strong>product</strong> icons.</p>
 </div>
 <div nx-docs-example="icon-filled" config="{}">exampleID: icon-filled</div>
 <div class="docs-private">
 <h3 id="functional-icons" class="docs-markdown--h3">Functional icons</h3>
+<p class="docs-markdown--p">To use the icons shown here, please make sure to import the <code>NdbxIconModule</code> (see <a href="./documentation/icon/overview#general-usage-of-ndbx-icons">General usage of NDBX icons</a>).</p>
 <div nx-docs-example="icon-list-functional" config="{}">exampleID: icon-list-functional</div>
 </div>
 <div class="docs-private">
 <h3 id="product-icons" class="docs-markdown--h3">Product icons</h3>
+<p class="docs-markdown--p">To use the icons shown here, please make sure to import the <code>NdbxIconModule</code> (see <a href="./documentation/icon/overview#general-usage-of-ndbx-icons">General usage of NDBX icons</a>).</p>
 <div nx-docs-example="icon-list-product" config="{}">exampleID: icon-list-product</div>
 </div>
 <h3 id="register-icons-service" class="docs-markdown--h3">Register icons service</h3>

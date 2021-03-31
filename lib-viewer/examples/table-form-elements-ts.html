@@ -1,0 +1,67 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormArray, FormControl, FormGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { DATEPICKER_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
+<span class="hljs-keyword">import</span> { FORMFIELD_DEFAULT_OPTIONS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
+<span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;moment&#x27;</span>;
+
+<span class="hljs-comment">/**
+* <span class="hljs-doctag">@title </span>Table with form elements
+*/</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-form-elements-example&#x27;</span>,
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-form-elements-example.html&#x27;</span>,
+  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-form-elements-example.css&#x27;</span>],
+  <span class="hljs-attr">providers</span>: [
+    <span class="hljs-comment">// Both provided with NxExpertModule</span>
+    { <span class="hljs-attr">provide</span>: FORMFIELD_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">appearance</span>: <span class="hljs-string">&#x27;outline&#x27;</span>, <span class="hljs-attr">nxFloatLabel</span>: <span class="hljs-string">&#x27;always&#x27;</span> }},
+    { <span class="hljs-attr">provide</span>: DATEPICKER_DEFAULT_OPTIONS, <span class="hljs-attr">useValue</span>: { <span class="hljs-attr">toggleIconTabindex</span>: -<span class="hljs-number">1</span> } },
+  ]
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableFormElementsExampleComponent</span> </span>{
+  
+  formArray = <span class="hljs-keyword">new</span> FormArray([
+    <span class="hljs-keyword">new</span> FormGroup({
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;123456789&#x27;</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-number">250.00</span>),
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> FormControl(moment([<span class="hljs-number">2021</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>])),
+      <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;open&#x27;</span>)
+    }),
+    <span class="hljs-keyword">new</span> FormGroup({
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;987654321&#x27;</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-number">1000.40</span>),
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> FormControl(moment([<span class="hljs-number">2023</span>, <span class="hljs-number">2</span>, <span class="hljs-number">23</span>])),
+      <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;processing&#x27;</span>)
+    }),
+    <span class="hljs-keyword">new</span> FormGroup({
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;123456700&#x27;</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-number">40</span>),
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> FormControl(moment([<span class="hljs-number">2019</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
+      <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;accepted&#x27;</span>)
+    }),
+    <span class="hljs-keyword">new</span> FormGroup({
+      <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;123456780&#x27;</span>),
+      <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-number">501</span>),
+      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> FormControl(moment([<span class="hljs-number">2018</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>])),
+      <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;rejected&#x27;</span>)
+    })
+  ]);
+
+  <span class="hljs-function"><span class="hljs-title">addRow</span>(<span class="hljs-params"></span>)</span> {
+    <span class="hljs-built_in">this</span>.formArray.push(
+      <span class="hljs-keyword">new</span> FormGroup({
+        <span class="hljs-attr">id</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>),
+        <span class="hljs-attr">amount</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>),
+        <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>),
+        <span class="hljs-attr">status</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>)
+      })
+    );
+  }
+
+  <span class="hljs-function"><span class="hljs-title">removeRow</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>)</span> {
+    <span class="hljs-built_in">this</span>.formArray.removeAt(index);
+  }
+
+  getFormGroup(i: <span class="hljs-built_in">number</span>): FormGroup {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formArray.controls[i] <span class="hljs-keyword">as</span> FormGroup;
+  }
+}

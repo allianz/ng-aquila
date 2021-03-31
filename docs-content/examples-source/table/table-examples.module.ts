@@ -7,6 +7,9 @@ import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 import { NxTableModule } from '@aposin/ng-aquila/table';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 
 import { NgModule } from '@angular/core';
 import { TableExampleComponent } from './table/table-example';
@@ -18,6 +21,8 @@ import { TableSingleSelectExampleComponent } from './table-single-select/table-s
 import { TableSortingExampleComponent } from './table-sorting/table-sorting-example';
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 const EXAMPLES = [
   TableExampleComponent,
@@ -27,7 +32,8 @@ const EXAMPLES = [
   TableSelectingExampleComponent,
   TableSingleSelectExampleComponent,
   TableSortingExampleComponent,
-  TableZebraExampleComponent
+  TableZebraExampleComponent,
+  TableFormElementsExampleComponent
 ];
 
  @NgModule({
@@ -36,10 +42,14 @@ const EXAMPLES = [
     NxSwitcherModule,
     NxCheckboxModule,
     NxPaginationModule,
+    NxDropdownModule,
+    NxDatefieldModule,
+    NxMomentDateModule,
     NxInputModule,
     NxBadgeModule,
     NxLinkModule,
     NxRadioModule,
+    NxIconModule,
     ExamplesSharedModule,
     RouterModule
   ],
@@ -57,6 +67,7 @@ export class TableExamplesModule {
       'table-single-select': TableSingleSelectExampleComponent,
       'table-sorting': TableSortingExampleComponent,
       'table-zebra': TableZebraExampleComponent,
+      'table-form-elements': TableFormElementsExampleComponent
     };
   }
 }

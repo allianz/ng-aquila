@@ -407,8 +407,8 @@
   --card-border-color: var(--ui-04);
   --card-border-width: 1px;
   --card-border-radius: 4px;
-  --comparison-table-popular-cell-text-color: black;
-  --comparison-table-popular-cell-background-color: #a7ddef;
+  --comparison-table-popular-cell-text-color: var(--text-01);
+  --comparison-table-popular-cell-background-color: #194666;
   --comparison-table-selected-column-background-color: var(--ui-03);
   --comparison-table-selected-column-text-color: var(--text-01);
   --comparison-table-border-color: var(--ui-04);
@@ -457,8 +457,10 @@
   --selectable-card-background-selected-hover-color: var(--ui-03);
   --selectable-card-background-disabled-color: var(--ui-01);
   --selectable-card-background-disabled-selected-color: var(--ui-02);
+  --selectable-card-background-active-color: var(--ui-03);
   --selectable-card-icon-color: var(--success);
-  --selectable-card-icon-diabled-color: rgba(30, 137, 39, 0.4);
+  --selectable-card-unchecked-icon-hover-color: #c2c2c2;
+  --selectable-card-icon-placeholder-border-color: #e9f7fb;
   --selectable-card-border-color: #999999;
   --selectable-card-border-hover-color: var(--ui-06);
   --selectable-card-border-selected-color: var(--ui-06);
@@ -947,6 +949,7 @@
   --small-stage-image-container-offset-end: 25%;
   --small-stage-with-header-content-padding: 0 0 64px;
   --small-stage-with-header-image-container-padding-top: 32px;
+  --small-stage-text-color: var(--text-01);
   --rating-icon-color: var(--text-01);
   --rating-icon-size: 40px;
   --rating-label-color: var(--text-01);
@@ -996,7 +999,8 @@
   --taglist-hover-border-color: #C3C3C3;
   --taglist-hover-background-color: #C3C3C3;
   --tab-item-color: var(--interactive-text);
-  --tab-item-border-color: var(--interactive-text);
+  --tab-item-border-color: var(--ui-05);
+  --tab-item-active-border-color: var(--interactive-text);
   --tab-item-disabled-color: var(--disabled-01);
   --tab-item-disabled-border-color: var(--disabled-01);
   --tab-item-font-size: var(--paragraph-02-font-size);

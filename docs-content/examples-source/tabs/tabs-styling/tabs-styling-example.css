@@ -2,6 +2,6 @@
   padding-top: 16px;
 }
 
-:host ::ng-deep .nx-tab-header {
+:host ::ng-deep nx-tab-header {
   justify-content: flex-start!important;
 }

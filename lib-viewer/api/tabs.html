@@ -316,7 +316,10 @@
 
 <h4 id="NxTabNavBarComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxTabNavBarComponent"></span>
-  <code>NxTabNavBarComponent</code></h4><p class="docs-api-directive-selectors">
+  <code>NxTabNavBarComponent</code><span class="docs-api-class-extends-clauses">
+    <span class="docs-api-class-extends-label">extends</span>
+    <span class="docs-api-class-extends-type">NxScrollableTabBar</span>
+  </span></h4><p class="docs-api-directive-selectors">
   <span class="docs-api-class-selector-label">Selector:</span>
     <div class="docs-api__selector-container">
       
@@ -385,10 +388,119 @@
 
 
     
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">direction</span>:
+        <span class="docs-api-property__type">Direction</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">scrollable</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">scrollableTabsList</span>:
+        <span class="docs-api-property__type">ElementRef<HTMLElement></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">tabButtons</span>:
+        <span class="docs-api-property__type">QueryList<HTMLElement></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">tabHeaderContainer</span>:
+        <span class="docs-api-property__type">ElementRef<HTMLElement></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
   </table>
 
 
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
 
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">scrollToEnd(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">scrollToStart(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
 
 
 
@@ -471,6 +583,145 @@
 
 
 
+
+
+
+    
+      
+
+<h4 id="NxTabScrollIndicator" class="docs-header-link docs-api-h4 docs-api-class-name">
+  <span header-link="NxTabScrollIndicator"></span>
+  <code>NxTabScrollIndicator</code></h4><p class="docs-api-directive-selectors">
+  <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+      
+        <span class="docs-api-class-selector-name">nx-tab-scroll-indicator</span>
+      
+    </div>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isScrolledToEnd</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">isScrolledToStart</span>:
+        <span class="docs-api-property__type">boolean</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">scrollDirection</span>:
+        <span class="docs-api-property__type">NxScrollDirection</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">buttonClicked</span>:
+        <span class="docs-api-property__type">EventEmitter<void></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">direction</span>:
+        <span class="docs-api-property__type">Direction</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+  </table>
+
+
+<h5 class="docs-api-method-header">Methods</h5>
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">getChevronName(<!--
+     -->): <span class="docs-api-method-returns-type">string</span></span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
+    
+
+
+<div class="docs-api-method-card">
+  <div class="docs-api-method-card-header">
+    <code>
+      <span class="docs-api-method-name">scroll(<!--
+     -->)</span>
+    </code>
+  </div>
+  <div class="docs-api-method-description"></div></div>
+
+
+  
 
 
 
@@ -622,6 +873,18 @@
 </h4><p class="docs-api-type-alias-value">
   <span class="docs-api-type-alias-value-label">Type:</span>
   <code class="docs-api-type-alias-value">'expert' | 'default'</code>
+</p>
+
+
+    
+      
+
+<h4 id="NxScrollDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+  <span header-link="NxScrollDirection"></span>
+  <code>NxScrollDirection</code>
+</h4><p class="docs-api-type-alias-value">
+  <span class="docs-api-type-alias-value-label">Type:</span>
+  <code class="docs-api-type-alias-value">'start' | 'end'</code>
 </p>
 
 
