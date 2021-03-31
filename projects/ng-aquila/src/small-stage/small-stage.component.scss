@@ -8,6 +8,7 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
 :host {
   display: -ms-grid;
   display: grid;
+  color: var(--small-stage-text-color);
   padding: 0 nx-spacer(2m);
   text-align: left;
 
