@@ -33,7 +33,7 @@ It is possible to position the popover top/right/bottom/left to the trigger by s
 
 The positioning of the popover follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the popover tries to find a fitting position within the window.
 
-The following table explains the fallback strategy of the popover. 
+The following table explains the fallback strategy of the popover.
 
 <!-- example(popover-table, { "hideHeader": true }) -->
 
@@ -71,7 +71,7 @@ To make the popovers behave correctly while scrolling, you have to place the dir
 <div cdkScrollable></div>
 ```
 
-The following examples illustrates the usage of `cdkScrollable`. The popovers are configured to close on scroll events. If there is no `cdkScrollable` on the container, scrolling leads to unexpected behaviour (left). By adding `cdkScrollable` to the right container, the popover closes as expected (right).
+The following examples illustrates the usage of `cdkScrollable`. Make sure to import the `CdkScrollableModule` from `@angular/cdk/scrolling`. The popovers are configured to close on scroll events. If there is no `cdkScrollable` on the container, scrolling leads to unexpected behaviour (left). By adding `cdkScrollable` to the right container, the popover closes as expected (right).
 
 <!-- example(popover-scrollable) -->
 
@@ -86,4 +86,3 @@ Please note that the popover with hover is only suitable for optional informatio
 ### Accessibility
 
 The assigned trigger will always receive `aria-describedby` property to point screenreaders to the related content in the popover.
-

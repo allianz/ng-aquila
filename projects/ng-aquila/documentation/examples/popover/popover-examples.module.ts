@@ -14,6 +14,7 @@ import { PopoverScrollExampleComponent } from './popover-scroll/popover-scroll-e
 import { PopoverScrollableExampleComponent } from './popover-scrollable/popover-scrollable-example';
 import { PopoverTableExampleComponent } from './popover-table/popover-table-example';
 import { PopoverTriggerExampleComponent } from './popover-trigger/popover-trigger-example';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
 
 const EXAMPLES = [
   PopoverClickOutsideExampleComponent,
@@ -33,7 +34,8 @@ const EXAMPLES = [
     NxPopoverModule,
     NxButtonModule,
     NxIconModule,
-    NxDynamicTableModule
+    NxDynamicTableModule,
+    CdkScrollableModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
