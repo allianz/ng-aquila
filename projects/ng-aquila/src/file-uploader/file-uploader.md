@@ -15,6 +15,8 @@ Use this component when you want users to upload files. The files can be uploade
 The `nx-file-uploader` shows the selected files in the queue list. In each row of this list, the file name is displayed with the current status and the available actions.
 The component is a wrapper around the native `input[type=file]` element and ensures that the standard HTML attributes (e.g. multiple) work as expected.
 
+Please note that if you allow multiple files upload, users will also be able to upload the same file multiple times. If this is an issue for your project, make sure to implement a backend check.
+
 ### Basic usage
 
 The component has a built-in http POST uploading functionality. To use this, there has to be a `NxFileUploader` defined and assigned to the file uploader component.

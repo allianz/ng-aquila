@@ -564,6 +564,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._addFilesToQueue(Array.from(target.files));
     this.stateChanges.next();
     this._changeDetectorRef.markForCheck();
+    this.nativeInputFile.nativeElement.value = '';
   }
 
   /** Listens to changes in each file. */
