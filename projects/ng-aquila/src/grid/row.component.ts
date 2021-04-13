@@ -1,47 +1,65 @@
-import { mapClassNames } from '@aposin/ng-aquila/utils';
-import { Component, ElementRef, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
-import { addStylesFromDimensions, isEmpty } from './utils';
+import { addStylesFromDimensions } from './utils';
 
 const MAPPING_JUSTIFY = {
-    'start': 'nx-justify-content-{tier}-start',
-    'end': 'nx-justify-content-{tier}-end',
-    'center': 'nx-justify-content-{tier}-center',
-    'between': 'nx-justify-content-{tier}-between',
-    'around': 'nx-justify-content-{tier}-around'
-  };
+  start: 'nx-justify-content-{tier}-start',
+  end: 'nx-justify-content-{tier}-end',
+  center: 'nx-justify-content-{tier}-center',
+  between: 'nx-justify-content-{tier}-between',
+  around: 'nx-justify-content-{tier}-around',
+};
 
 const MAPPING_ALIGN_ITEMS = {
-    'start': 'nx-align-items-{tier}-start',
-    'end': 'nx-align-items-{tier}-end',
-    'center': 'nx-align-items-{tier}-center',
-    'baseline': 'nx-align-items-{tier}-baseline',
-    'stretch': 'nx-align-items-{tier}-stretch'
-  };
+  start: 'nx-align-items-{tier}-start',
+  end: 'nx-align-items-{tier}-end',
+  center: 'nx-align-items-{tier}-center',
+  baseline: 'nx-align-items-{tier}-baseline',
+  stretch: 'nx-align-items-{tier}-stretch',
+};
 
 const MAPPING_ALIGN_CONTENT = {
-    'start': 'nx-align-content-{tier}-start',
-    'end': 'nx-align-content-{tier}-end',
-    'center': 'nx-align-content-{tier}-center',
-    'between': 'nx-align-content-{tier}-between',
-    'around': 'nx-align-content-{tier}-around',
-    'stretch': 'nx-align-content-{tier}-stretch'
-  };
+  start: 'nx-align-content-{tier}-start',
+  end: 'nx-align-content-{tier}-end',
+  center: 'nx-align-content-{tier}-center',
+  between: 'nx-align-content-{tier}-between',
+  around: 'nx-align-content-{tier}-around',
+  stretch: 'nx-align-content-{tier}-stretch',
+};
 
 const MAPPING_WRAP = {
-    'wrap': 'nx-flex-{tier}-wrap',
-    'nowrap': 'nx-flex-{tier}-nowrap',
-    'reverse': 'nx-flex-{tier}-wrap-reverse'
+  wrap: 'nx-flex-{tier}-wrap',
+  nowrap: 'nx-flex-{tier}-nowrap',
+  reverse: 'nx-flex-{tier}-wrap-reverse',
 };
 
 const MAPPING_LAYOUT = {
-    'row': 'nx-grid__row',
-    'row-reverse': 'nx-grid__row-reverse'
+  row: 'nx-grid__row',
+  'row-reverse': 'nx-grid__row-reverse',
 };
 
-export type RowJustification = 'start' | 'end' | 'center' | 'between' | 'around';
-export type RowContentAlignment = 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch';
-export type RowItemsAlignment = 'start' | 'end' | 'center' | 'between' | 'stretch';
+export type RowJustification =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around';
+
+export type RowContentAlignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'stretch';
+
+export type RowItemsAlignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'stretch';
+
 export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
 
 @Component({
@@ -51,17 +69,28 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['row.component.scss'],
   host: {
-    '[class]': '_classNames'
-  }
+    '[class]': '_classNames',
+  },
 })
-export class NxRowComponent implements OnInit {
-  private ROW  = 'row';
-  private ROW_RESERVE  = 'row-reverse';
+export class NxRowComponent {
+  private _justifyClasses: string = '';
+  private _alignContentClasses: string = '';
+  private _alignItemsClasses: string = '';
+  private _wrapClasses: string = '';
+  private _rowClass: string = MAPPING_LAYOUT.row;
 
-  _classNames: string = '';
-
-  /** General */
-  private _nxRow: string = this.ROW;
+  get _classNames() {
+    return [
+      this._rowClass,
+      this._justifyClasses,
+      this._alignContentClasses,
+      this._alignItemsClasses,
+      this._wrapClasses,
+      this.class,
+    ]
+      .filter((classes) => classes && classes.length)
+      .join(' ');
+  }
 
   /**
    * Values: row | row-reverse
@@ -70,56 +99,53 @@ export class NxRowComponent implements OnInit {
    */
   @Input()
   set nxRow(value: string) {
-    if (value !== '') {
-      this._nxRow = value;
+    if (value) {
+      this._rowClass = MAPPING_LAYOUT[value];
+
+      if (!this._rowClass) {
+        throw new Error('nxRow is incorrect');
+      }
+    } else {
+      this._rowClass = MAPPING_LAYOUT.row;
     }
   }
-
-  /* Input row variables */
 
   /** Align items on the main axis (horizontally). */
-  @Input('nxRowJustify') nxRowJustify: RowJustification | string = null;
+  @Input('nxRowJustify')
+  set nxRowJustify(value: RowJustification | string) {
+    this._justifyClasses = value
+      ? addStylesFromDimensions(value, MAPPING_JUSTIFY)
+      : '';
+  }
 
   /** Similar to nxRowAlignItems, but instead of aligning flex items, it aligns flex lines. */
-  @Input('nxRowAlignContent') nxRowAlignContent: RowContentAlignment | string = null;
+  @Input('nxRowAlignContent')
+  set nxRowAlignContent(value: RowContentAlignment | string) {
+    this._alignContentClasses = value
+      ? addStylesFromDimensions(value, MAPPING_ALIGN_CONTENT)
+      : '';
+  }
 
   /** The default alignment for items inside the flexible container. */
-  @Input('nxRowAlignItems') nxRowAlignItems: RowItemsAlignment | string = null;
+  @Input('nxRowAlignItems')
+  set nxRowAlignItems(value: RowItemsAlignment | string) {
+    this._alignItemsClasses = value
+      ? addStylesFromDimensions(value, MAPPING_ALIGN_ITEMS)
+      : '';
+  }
 
   /** How the flexible items should be wrapped. */
-  @Input('nxRowWrap') nxRowWrap: RowWrapping = null;
-
-  constructor(private el: ElementRef) { }
-
-  ngOnInit() {
-    if (this._nxRow === this.ROW ||
-      this._nxRow === this.ROW_RESERVE) {
-      /** add row style */
-      this._classNames = mapClassNames(this._nxRow, [], MAPPING_LAYOUT);
-      /** if not empty nxRowWrap, split input and add style */
-      if (this.nxRowWrap) {
-        /** possibles atributes: wrap,reverse,no-wrap */
-        this._classNames += addStylesFromDimensions(this.nxRowWrap, MAPPING_WRAP);
-      }
-      /** if not empty nxRowJustify, add style */
-      if (this.nxRowJustify) {
-        /** possibles atributes: start,end,center,between,around */
-        this._classNames += addStylesFromDimensions(this.nxRowJustify, MAPPING_JUSTIFY);
-      }
-      /** if not empty nxRowAlignContent, add style */
-      if (this.nxRowAlignContent) {
-        /** possibles atributes: start,end,center,between,stetch */
-        this._classNames += addStylesFromDimensions(this.nxRowAlignContent, MAPPING_ALIGN_CONTENT);
-      }
-      /** if not empty nxRowAlignItems, add style */
-      if (this.nxRowAlignItems) {
-        /** possibles atributes: start,end,center,around,stetch */
-        this._classNames += addStylesFromDimensions(this.nxRowAlignItems, MAPPING_ALIGN_ITEMS);
-      }
-      this._classNames += ' ' + this.el.nativeElement.className;
-      this._classNames = this._classNames.trim();
-    } else {
-      throw new Error('nxRow is incorrect');
-    }
+  @Input('nxRowWrap')
+  set nxRowWrap(value: RowWrapping) {
+    this._wrapClasses = value
+      ? addStylesFromDimensions(value, MAPPING_WRAP)
+      : '';
   }
+
+  /**
+   * Overwrite default class property to access user provided class.
+   * @docs-private
+   */
+  @Input()
+  class: string;
 }
