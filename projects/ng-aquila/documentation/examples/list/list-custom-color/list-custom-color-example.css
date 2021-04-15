@@ -1,3 +1,4 @@
-ul.list--custom-color li:before {
-  background: #FF9344;
+:host {
+  --list-icon-color: #ff9244;
+  --list-circle-text-color: #3a0096;
 }
