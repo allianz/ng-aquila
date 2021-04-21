@@ -1,6 +1,11 @@
-<div #focusContainer class="nx-sort-header__focus-container" role="button" tabindex="0">
-  <div class="nx-sort-header__icons-container"
-      [attr.aria-label]="_getAriaLabel()">
+<div #focusContainer
+  class="nx-sort-header__focus-container"
+  role="button"
+  tabindex="0"
+  [attr.title]="_getTitle()"
+  aria-live="polite"
+ >
+  <div class="nx-sort-header__icons-container" [attr.aria-label]="_getAriaLabel()">
     <nx-icon name="chevron-up-small"
         class="nx-sort-header__icon-up"
         [class.nx-sort-header__hidden-icon]="_isSortedDescending()">

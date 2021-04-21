@@ -16,6 +16,8 @@ interface DataStructure {
 class MyIntl extends NxSortHeaderIntl {
   sortAscendingAriaLabel = 'aufsteigend sortieren';
   sortDescendingAriaLabel = 'absteigend sortieren';
+  sortedAscendingAriaLabel = 'aufsteigend sortiert';
+  sortedDescendingAriaLabel = 'absteigend sortiert';
 }
 
 @Directive()
@@ -203,30 +205,32 @@ describe ('NxSort', () => {
     it('has the correct aria label for an unsorted column', () => {
       createTestComponent(BasicSortTableComponent);
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__icons-container');
-      expect(nameHeaderElement.getAttribute('aria-label')).toBe('aufsteigend sortieren');
+      expect(nameHeaderElement.getAttribute('aria-label')).toBe('');
     });
 
     it('has the correct aria label for a sorted column', () => {
       createTestComponent(BasicSortTableComponent);
-
+      const nameHeaderButtonElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__focus-container');
       const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__icons-container');
       nameHeaderElement.click();
       fixture.detectChanges();
-      expect(nameHeaderElement.getAttribute('aria-label')).toBe('absteigend sortieren');
+      expect(nameHeaderElement.getAttribute('aria-label')).toBe('aufsteigend sortiert');
+      expect(nameHeaderButtonElement.getAttribute('title')).toBe('absteigend sortieren');
 
       nameHeaderElement.click();
       fixture.detectChanges();
-      expect(nameHeaderElement.getAttribute('aria-label')).toBe('aufsteigend sortieren');
+      expect(nameHeaderElement.getAttribute('aria-label')).toBe('absteigend sortiert');
+      expect(nameHeaderButtonElement.getAttribute('title')).toBe('aufsteigend sortieren');
     });
 
     it('should rerender when aria labels change', inject([NxSortHeaderIntl],
       (intl: NxSortHeaderIntl) => {
         createTestComponent(BasicSortTableComponent);
-        const nameHeaderElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__icons-container');
+        const nameHeaderButtonElement = fixture.nativeElement.querySelector('#nameHeader .nx-sort-header__focus-container');
         intl.sortAscendingAriaLabel = 'aufsteigend sortieren nach';
         intl.changes.next();
         fixture.detectChanges();
-        expect(nameHeaderElement.getAttribute('aria-label')).toBe('aufsteigend sortieren nach');
+        expect(nameHeaderButtonElement.getAttribute('title')).toBe('aufsteigend sortieren nach');
     }));
 
     it('should sort on ENTER press', () => {

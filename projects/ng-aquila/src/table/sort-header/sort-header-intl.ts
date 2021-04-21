@@ -9,8 +9,12 @@ export class NxSortHeaderIntl {
    */
   readonly changes: Subject<void> = new Subject<void>();
 
-  /** The aria label for a header that can be sorted ascending. */
-  sortAscendingAriaLabel: string = 'sort ascending by';
-  /** The aria label for a header that can be sorted descending. */
-  sortDescendingAriaLabel: string = 'sort descending by';
+  /** The aria label for a header that can be clicked to sort ascending. */
+  sortAscendingAriaLabel: string = 'click to sort ascending';
+  /** The aria label for a header that can be clicked to sort descending. */
+  sortDescendingAriaLabel: string = 'click to sort descending';
+  /** The aria label for a column that is sorted ascending. */
+  sortedAscendingAriaLabel: string = 'sorted ascending by';
+  /** The aria label for a column that is sorted descending. */
+  sortedDescendingAriaLabel: string = 'sorted descending by';
 }
