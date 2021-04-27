@@ -67,9 +67,6 @@ $nx-theme-documentation: (
   documentation-grid-xlarge-color-02: darken(#E18335, 30%),
   documentation-grid-2xlarge-color-02: darken(#DB4C40, 40%),
   documentation-grid-3xlarge-color-02: darken(#8D6A9F, 40%),
-
-  documentation-small-stage-retail-background-color: ui-03,
-  documentation-small-stage-expert-background-color: ui-03,
 );
 
 $nx-themes: nx-register-theme($nx-theme-documentation, docs-theme, aposin);

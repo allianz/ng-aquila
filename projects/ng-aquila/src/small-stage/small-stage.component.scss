@@ -9,6 +9,7 @@ $image-container-padding-top--w-header: var(--small-stage-with-header-image-cont
   display: -ms-grid;
   display: grid;
   color: var(--small-stage-text-color);
+  background-color: var(--small-stage-default-background-color);
   padding: 0 nx-spacer(2m);
   text-align: left;
 

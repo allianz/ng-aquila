@@ -131,7 +131,11 @@ describe('NxSmallStageComponent', () => {
     it('has no accessbility violations', function (done) {
       createTestComponent(BasicSmallStage);
 
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
+      axe.run(fixture.nativeElement, {
+        rules: {
+          'color-contrast': { enabled: false }
+        }
+      }, (error: Error, results: axe.AxeResults) => {
         expect(results.violations.length).toBe(0);
         // const violationMessages = results.violations.map(item => item.description);
         done();

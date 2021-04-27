@@ -1,5 +1,4 @@
 .nx-small-stage {
-  background-color: var(--documentation-small-stage-retail-background-color, #194666);
   background-image: url('^assets/images/small-stage-bg-start.png'), url('^assets/images/small-stage-bg-end.png');
   background-repeat: no-repeat, no-repeat;
   background-position: left 50px top 20px, right 50px top 20px;
