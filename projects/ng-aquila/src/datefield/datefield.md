@@ -13,7 +13,7 @@ import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxNativeDateModule } from '@aposin/ng-aquila/datefield';
 ```
 
-The date field requires the Angular CDK (incl. CSS).
+The date field requires the Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
 ### Choose your DateAdapter
 You can choose between using the native date, an ISO string adapter that uses [dayjs](https://day.js.org/) under the hood, [Moment.js](https://momentjs.com/), or implement your own. This documentation is using the moment date adapter.

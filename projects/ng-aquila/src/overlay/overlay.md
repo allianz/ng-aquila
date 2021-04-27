@@ -27,6 +27,16 @@ Here are some features and advantages you get by using the service
 ### Angular CDK
 Under the hood the service is using the [CDK overlay](https://material.angular.io/cdk/overlay/overview). You can learn more about position and scroll strategies in the CDK documentation.
 
+The CDK is required by a number of modules such as message toast, popover or dropdown as they use the overlay component. If you intend to use those, please make sure you have imported the cdk-a11y and cdk-overlay stylesheets, so that everything gets displayed correctly:
+```scss
+@import '@angular/cdk/overlay-prebuilt.css';
+@import '@angular/cdk/a11y-prebuilt.css';
+```
+
+If you create a new project, the best way to add the necessary styles would be by running `ng add @allianz/ngx-ndbx`.
+
+If you migrate an existing project, make sure to add these to your global styles or into the styles option in the angular.json.
+
 ### Accessibility
 It is important to notice that the content that gets put into the overlay has to implement the specific accessibility patterns it needs. The service only takes care of accessibility features around the content, like closing or focus trapping. As an example a dropdown or autocomplete has to implement the role listbox, the context menu in contrast implements role menu.
 The role can be either set on the overlay wrapper directly via the configuration or can come from the content component.

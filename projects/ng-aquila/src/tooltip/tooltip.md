@@ -11,7 +11,7 @@ stable: done
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
 
-The Tooltip component requires additional CSS files from the Angular CDK to work. Please add the following files to your global styles or into the styles option in the angular.json if not already present:
+The Tooltip component requires additional CSS files from the Angular CDK to work. Please add the following files to your global styles or into the styles option in the angular.json if not already present (learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk)):
 
 ```
   node_modules/@angular/cdk/overlay-prebuilt.css

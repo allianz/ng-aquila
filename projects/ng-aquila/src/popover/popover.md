@@ -6,7 +6,7 @@ expert: true
 stable: done
 ---
 
-Popover requires Angular CDK (incl. CSS).
+Popover requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
 ### Trigger types
 

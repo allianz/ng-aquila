@@ -12,7 +12,7 @@ Therefore, make sure to import this module as well:
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 ```
 
-Dropdown requires Angular CDK (incl. CSS).
+Dropdown requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
 ### Standard Dropdown
 The dropdown wrapped by a formfield in different states is displayed in the following example.
