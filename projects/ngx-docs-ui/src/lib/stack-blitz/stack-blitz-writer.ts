@@ -78,7 +78,8 @@ const dependencies = {
   'rxjs': '~6.6.0',
   'tslib': '^2.1.0',
   'zone.js': '~0.10.2',
-  'libphonenumber-js': '^1.9.11'
+  'libphonenumber-js': '^1.9.11',
+  'i18n-iso-countries': '^6.5.0'
 };
 
 const testDependencies = {
