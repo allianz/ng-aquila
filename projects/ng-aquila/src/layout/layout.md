@@ -50,7 +50,23 @@ An example of the margin helper classes usage can be found in the example below.
 <!-- example(margin-usage) -->
 
 ### Breakpoints and Viewport
-Our library provides a viewport service, which is a utility for reacting to changes in the viewport. It provides three methods: `min`, `max` and `between` for subscribing to particular viewport breakpoints.
+Our library provides a set of tools for reacting to different viewports.
+For simple hiding elements on certain breakpoints you can use our utility classes.
+For more sophisticated use cases there is a viewport service. It provides three methods: `min`, `max` and `between` for subscribing to particular viewport breakpoints.
+
+#### Hide elements on specific breakpoints using CSS classes
+We provide a set of utility classes that can be used to hide elements on certain viewport sizes.
+
+Remember that you can combine CSS classes on the same element. So for example, if you wanted an element to show on small and large desktops,
+but be hidden on tablets and mobile, you could do something like the following.
+
+```html
+<p class="nx-hidden-xs nx-hidden-s nx-hidden-m">Hidden on tablet and smaller</p>
+```
+
+**Available classes:**
+
+<!-- example(hidden-classes, { "hideHeader": true }) -->
 
 #### Breakpoints
 The following viewport breakpoints are available:
@@ -91,5 +107,3 @@ If this default throttle time does not serve your needs you can change it by pas
  this.viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM, 500)
     .subscribe(isMaximumLarge => this.showComponentX = isMaximumLarge);
 ```
-
-

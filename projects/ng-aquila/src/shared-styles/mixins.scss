@@ -1,3 +1,6 @@
+@import "grid";
+@import "breakpoint";
+
 $dropdown-overlay__focus-line-width: nx-border-size(xl);
 $dropdown-overlay__option-margin: -(nx-spacer(2xs) + $dropdown-overlay__focus-line-width);
 
@@ -43,6 +46,7 @@ $border-size: nx-border-size(xs);
   }
 }
 
+
 @mixin create-margin-classes() {
   $positions: 'top', 'bottom', 'left', 'right';
 
@@ -86,6 +90,17 @@ $border-size: nx-border-size(xs);
 
   .nx-margin-0 {
     margin: 0 !important;
+  }
+}
+
+@mixin create-hidden-classes() {
+  @each $key, $value in $grid-breakpoints-short {
+
+    @include media-breakpoint-only($key, $grid-breakpoints-short) {
+      .nx-hidden-#{$key} {
+        display: none !important;
+      }
+    }
   }
 }
 
