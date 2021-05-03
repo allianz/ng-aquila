@@ -92,7 +92,7 @@ The filled option should only be used with **product** icons.
 
 To use the icons shown here, please make sure to import the `NdbxIconModule` (see [General usage of NDBX icons](./documentation/icon/overview#general-usage-of-ndbx-icons)).
 
-<!-- example(icon-list-functional) -->
+<!-- example(icon-list-functional, { "privateExample": true, "hideStackblitzButton": true }) -->
 </div>
 
 <div class="docs-private">
@@ -101,7 +101,7 @@ To use the icons shown here, please make sure to import the `NdbxIconModule` (se
 
 To use the icons shown here, please make sure to import the `NdbxIconModule` (see [General usage of NDBX icons](./documentation/icon/overview#general-usage-of-ndbx-icons)).
 
-<!-- example(icon-list-product) -->
+<!-- example(icon-list-product, { "privateExample": true, "hideStackblitzButton": true }) -->
 </div>
 
 ### Register icons service
