@@ -95,7 +95,7 @@ describe('NxDatefieldDirective with Moment', () => {
     fixture.detectChanges();
     tick();
 
-    expect(testInstance.value.isSame(moment([2008,  2,  5]))).toBeTruthy();
+    expect(testInstance.value.isSame(moment.utc([2008,  2,  5]))).toBeTruthy();
 
   }));
 
@@ -138,7 +138,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
     fixture.detectChanges();
     tick();
-    expect(testInstance.value.isSame((moment([2008,  2,  5])))).toBeTruthy();
+    expect(testInstance.value.isSame((moment.utc([2008,  2,  5])))).toBeTruthy();
 
     nativeElement.value = '03/05/08';
     nativeElement.dispatchEvent(new Event('input'));
@@ -162,7 +162,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
     fixture.detectChanges();
     tick();
-    expect(testInstance.value.isSame((moment([2008,  2,  5])))).toBeTruthy();
+    expect(testInstance.value.isSame((moment.utc([2008,  2,  5])))).toBeTruthy();
 
     nativeElement.value = '03/05/08';
     nativeElement.dispatchEvent(new Event('input'));
@@ -170,7 +170,7 @@ describe('NxDatefieldDirective with Moment', () => {
     fixture.detectChanges();
     tick();
 
-    expect(testInstance.value.isSame((moment([2008,  2,  5])))).toBeTruthy();
+    expect(testInstance.value.isSame((moment.utc([2008,  2,  5])))).toBeTruthy();
   }));
 
   it('should not be marked dirty when nxStrict and nxParseFormat is used', fakeAsync(() => {

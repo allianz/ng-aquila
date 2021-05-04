@@ -65,9 +65,9 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
 
   parse(value: any, format: string | string[], strict: boolean): Moment | null {
     if (value && typeof value === 'string') {
-      return moment(value, format, this.locale, strict);
+      return moment.utc(value, format, this.locale, strict);
     }
-    return value ? moment(value).locale(this.locale) : null;
+    return value ? moment.utc(value).locale(this.locale) : null;
   }
 
   format(date: Moment, displayFormat: string): string {
@@ -105,13 +105,13 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
   deserialize(value: any): Moment | null {
     let date;
     if (value instanceof Date) {
-      date = moment(value);
+      date = moment.utc({year: value.getFullYear(), month: value.getMonth(), date: value.getDate() });
     }
     if (typeof value === 'string') {
       if (!value) {
         return null;
       }
-      date = moment(value, moment.ISO_8601).locale(this.locale);
+      date = moment.utc(value, moment.ISO_8601).locale(this.locale);
     }
     if (date && this.isValid(date)) {
       return date;
@@ -138,7 +138,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
       throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
     }
 
-    const result = moment({year, month, date}).locale(this.locale);
+    const result = moment.utc({year, month, date}).locale(this.locale);
 
     // If the result isn't valid, the date must have been out of bounds for this month.
     if (!result.isValid()) {
@@ -170,7 +170,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
   }
 
   today(): Moment {
-    return moment().locale(this.locale);
+    return moment.utc().locale(this.locale);
   }
 
   addCalendarMonths(date: Moment, months: number): Moment {
