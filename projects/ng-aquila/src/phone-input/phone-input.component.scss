@@ -17,7 +17,6 @@
 }
 
 input {
-  padding-left: 0!important;
   flex: 1;
 }
 
@@ -27,6 +26,7 @@ input {
 
 nx-dropdown {
   width: auto;
+  margin-right: 8px;
 
   &.cdk-keyboard-focused {
     @include focus-style();
@@ -39,7 +39,7 @@ nx-dropdown {
   // to the formfield container. for the phone input we need to override these things
   ::ng-deep {
     .nx-dropdown__container {
-      padding-right: 0!important;
+      padding-right: 0;
     }
 
     .nx-dropdown__icon {
@@ -56,6 +56,10 @@ nx-dropdown {
 :host-context(.nx-formfield.has-outline) {
   nx-dropdown {
     margin-left: 7px;
+  }
+
+  input {
+    padding-left: 0;
   }
 
   ::ng-deep {
@@ -81,6 +85,32 @@ input {
   outline: 0;
   padding: 0;
   margin: 0;
+}
+
+:host-context([dir="rtl"]) {
+  nx-dropdown {
+    margin-right: 0;
+    margin-left: 8px;
+
+    ::ng-deep {
+      .nx-dropdown__icon {
+        margin-right: 8px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &:host-context(.nx-formfield.has-outline) {
+    nx-dropdown {
+      margin-right: 7px;
+      margin-left: 8px;
+    }
+
+    input {
+      padding-left: 7px;
+      padding-right: 0;
+    }
+  }
 }
 
 
