@@ -81,6 +81,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
   private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
   private _dirChangeSubscription: Subscription;
+  private _removeEventListener: Function = undefined;
   /** @docs-private */
   id = 'nx-popover-' + nextId++;
 
@@ -225,7 +226,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   ngAfterViewInit(): void {
     this.popover.id = this.id;
 
-    this.eventManager.addGlobalEventListener('window', 'keyup.esc', () => {
+    this._removeEventListener = this.eventManager.addGlobalEventListener('window', 'keyup.esc', () => {
       if (this.isOpen) {
         this.show = false;
       }
@@ -242,6 +243,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   ngOnDestroy(): void {
     this.show = false;
+    this._removeEventListener();
+    this._focusMonitor.stopMonitoring(this.elementRef.nativeElement);
     // Clean up the event listeners set in the constructor
     this._manualListeners.forEach((listener, event) => {
       this.elementRef.nativeElement.removeEventListener(event, listener);
