@@ -112,6 +112,32 @@ describe('PhoneInputComponent', () => {
     expect(input.getAttribute('disabled')).toBe(null);
   });
 
+  it('should update template after patchValue', fakeAsync(() => {
+    createTestComponent(ReactiveFormsPhoneInput);
+    const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+    formControl.patchValue('+49666');
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
+    expect(getInput().nativeElement.value).toBe('666');
+    expect(dropdown.nativeElement.textContent).toContain('+49');
+
+    formControl.patchValue('+1456');
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
+    expect(getInput().nativeElement.value).toBe('456');
+    expect(dropdown.nativeElement.textContent).toContain('+1');
+
+    formControl.patchValue('');
+    fixture.detectChanges();
+    flush();
+    fixture.detectChanges();
+    expect(getInput().nativeElement.value).toBe('');
+    // should fall back to what previous country code was set, by default +49
+    expect(dropdown.nativeElement.textContent.trim()).toBe('+49');
+  }));
+
   it('should disable from form control', () => {
     createTestComponent(ReactiveFormsPhoneInput);
     (testInstance as ReactiveFormsPhoneInput).formControl.disable();

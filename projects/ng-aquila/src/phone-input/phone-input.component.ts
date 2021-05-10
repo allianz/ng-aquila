@@ -261,6 +261,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
       this._inputValue = '';
       this._countryCode = this._previousCountryCode;
     }
+    this._changeDetectorRef.markForCheck();
   }
 
   registerOnChange(fn: any): void {
