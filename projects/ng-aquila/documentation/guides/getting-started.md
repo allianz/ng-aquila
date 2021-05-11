@@ -136,7 +136,7 @@ We fully support the following browsers:
 - MS Edge: 2 most recent major versions
 - Safari: 2 most recent major versions
 
-We partly support IE11 and recommend to use modern browsers instead. Using IE11 can have a negative impact on UX and performance. 
+IE11 is deprecated and it is recommend to use modern browsers instead. Using IE11 can have a negative impact on UX and performance. With Angular NDBX v13 (expected in fall 2021) we will fully drop IE11 support, following the strategy of [Angular](https://github.com/angular/angular/issues/41840). 
 
 ### Contributing
 We do not support external contributions yet, but hope we can in future. 
