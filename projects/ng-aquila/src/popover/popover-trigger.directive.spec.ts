@@ -71,7 +71,18 @@ describe('NxPopoverTriggerDirective', () => {
         PopoverWithinRTLContainer,
         PopoverClickShadowDomComponent
       ]
-    }).compileComponents();
+    });
+
+    // Simple trick to simulate that the user is using `preserveWhitespaces: true`
+    // as we had a bug with it. (see ngx-ndbx #3215)
+    // This shouldn't be an issue for the tests as they should work regardless,
+    // but it would indicate quickly if something is wrong
+    TestBed.overrideComponent(NxPopoverComponent, {
+      set: {
+        preserveWhitespaces: true
+      }
+    });
+    TestBed.compileComponents();
   }));
 
   beforeEach(() => {
@@ -647,6 +658,7 @@ describe('NxPopoverTriggerDirective', () => {
     </div>
 
     <nx-popover #popoverHover>
+       <span>Content</span>
     </nx-popover>`
 })
 class PopoverHoverComponent extends PopoverTest {
@@ -660,6 +672,7 @@ class PopoverHoverComponent extends PopoverTest {
     </div>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`
 })
 class PopoverClickComponent extends PopoverTest {
@@ -675,6 +688,7 @@ class PopoverClickComponent extends PopoverTest {
     <button class="other">Other button</button>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`,
     encapsulation: ViewEncapsulation.ShadowDom
 })
@@ -690,6 +704,7 @@ class PopoverClickShadowDomComponent extends PopoverTest {
     </div>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`
 })
 class PopoverShowClose extends PopoverTest {
@@ -704,6 +719,7 @@ class PopoverShowClose extends PopoverTest {
     </div>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`
 })
 class PopoverHideClose extends PopoverTest {
@@ -718,6 +734,7 @@ class PopoverHideClose extends PopoverTest {
     </div>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`
 })
 class PopoverHideCloseForClick extends PopoverTest {
@@ -753,6 +770,7 @@ class PopoverFallBackComponent extends PopoverTest {
     </div>
 
     <nx-popover #popoverHover>
+      <span>Content</span>
     </nx-popover>`
 })
 class ModalPopover extends PopoverTest {

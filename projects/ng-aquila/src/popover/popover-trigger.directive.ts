@@ -249,6 +249,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     this._manualListeners.forEach((listener, event) => {
       this.elementRef.nativeElement.removeEventListener(event, listener);
     });
+    if (this.overlayRef) {
+      this.overlayRef.dispose();
+    }
     this._manualListeners.clear();
     this._dirChangeSubscription.unsubscribe();
     this._overlayDestroyed.next();
@@ -302,7 +305,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     if (!this.createOverlay().hasAttached()) {
       this._embeddedViewRef = this.createOverlay().attach(this.portal);
 
-      const element = this._embeddedViewRef.rootNodes[0] as HTMLElement;
+      const element = this.getPopoverContainer() as HTMLElement;
       this._focusTrap = this._focusTrapFactory.create(element);
       this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
 
@@ -339,8 +342,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   // we are listening to the detachments observable which will then emit the nxClosed event
   // on the popover component
   private closePopover(): void {
-    if (this.overlayRef) {
-      const element = this._embeddedViewRef.rootNodes[0] as HTMLElement;
+    if (this.overlayRef.hasAttached()) {
+      const element = this.getPopoverContainer();
       this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__content'));
       this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__close-icon'));
 
@@ -493,6 +496,11 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     if (toFocus && typeof toFocus.focus === 'function') {
       toFocus.focus();
     }
+  }
+
+  /** Returns the main popover container of the injected content. */
+  private getPopoverContainer(): HTMLElement | null {
+    return this.overlayRef.overlayElement.querySelector('.nx-popover');
   }
 
   /**

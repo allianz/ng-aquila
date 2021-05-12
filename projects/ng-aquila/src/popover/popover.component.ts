@@ -19,7 +19,7 @@ import {ENTER, SPACE} from '@angular/cdk/keycodes';
   templateUrl: './popover.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./popover.component.scss'],
-  exportAs: 'nxPopover',
+  exportAs: 'nxPopover'
 })
 export class NxPopoverComponent implements OnDestroy {
   /** @docs-private */
