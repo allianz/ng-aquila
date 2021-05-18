@@ -15,6 +15,7 @@ import {
 import { NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
 import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
+import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 
 @Directive()
 abstract class PresetTest {
@@ -24,6 +25,7 @@ abstract class PresetTest {
   @ViewChild(NxLabelComponent) labelInstance: NxLabelComponent;
   @ViewChild(NxTabGroupComponent) tabGroupInstance: NxTabGroupComponent;
   @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
+  @ViewChild(NxSelectableCardComponent) selectableCardInstance: NxSelectableCardComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -36,6 +38,7 @@ describe('NxExpertPreset', () => {
   let errorInstance: NxErrorComponent;
   let tabGroupInstance: NxTabGroupComponent;
   let tabNavBarInstance: NxTabNavBarComponent;
+  let selectableCardInstance: NxSelectableCardComponent;
 
   function createTestComponent(component: Type<PresetTest>) {
     fixture = TestBed.createComponent(component);
@@ -48,6 +51,7 @@ describe('NxExpertPreset', () => {
     labelInstance = testInstance.labelInstance;
     tabGroupInstance = testInstance.tabGroupInstance;
     tabNavBarInstance = testInstance.tabNavBarInstance;
+    selectableCardInstance = testInstance.selectableCardInstance;
   }
 
   beforeEach(
@@ -61,7 +65,8 @@ describe('NxExpertPreset', () => {
           NxInputModule,
           NxLabelModule,
           NxMomentDateModule,
-          NxTabsModule
+          NxTabsModule,
+          NxCardModule
         ],
         declarations: [
           DatepickerPresetComponent,
@@ -70,7 +75,8 @@ describe('NxExpertPreset', () => {
           LabelPresetComponent,
           TabGroupPresetComponent,
           TabNavBarPresetComponent,
-          ComparisonTablePresetComponent
+          ComparisonTablePresetComponent,
+          SelectableCardPresetComponent
         ]
       }).compileComponents();
     })
@@ -125,6 +131,13 @@ describe('NxExpertPreset', () => {
     it('should set useFullRowForExpandableArea of row group to true', () => {
       createTestComponent(ComparisonTablePresetComponent);
       expect((testInstance as ComparisonTablePresetComponent).rowGroupInstance.useFullRowForExpandableArea).toBe(true);
+    });
+  });
+
+  describe('card presets', () => {
+    it('should set appearance to expert', () => {
+      createTestComponent(SelectableCardPresetComponent);
+      expect(selectableCardInstance.appearance).toBe('expert');
     });
   });
 });
@@ -228,3 +241,10 @@ class TabNavBarPresetComponent extends PresetTest {
 class ComparisonTablePresetComponent extends PresetTest {
   @ViewChild(NxComparisonTableRowGroupDirective) rowGroupInstance: NxComparisonTableRowGroupDirective;
 }
+
+@Component({
+  template: `
+    <nx-selectable-card></nx-selectable-card>
+  `
+})
+class SelectableCardPresetComponent extends PresetTest {}

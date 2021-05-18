@@ -1,11 +1,7 @@
 <form [formGroup]="testForm">
   <nx-selectable-card formControlName="selectableCardTestReactive">
-    <nx-card-header>
-      <h3 nxHeadline="subsection-small">Card headline</h3>
-      <hr>
-    </nx-card-header>
-    <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-    <nx-error appearance="text">
+    <div class="content"></div>
+    <nx-error>
       This card must be selected.
     </nx-error>
   </nx-selectable-card>

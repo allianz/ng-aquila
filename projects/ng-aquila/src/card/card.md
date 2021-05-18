@@ -12,16 +12,15 @@ Use this component to present a card with different options.
 
 <!-- example(card) -->
 
-#### Card with footer
-A (selectable) card can optionally contain a footer section.
-
-<!-- example(card-footer) -->
-
 ### Selectable Card
 
 #### Basic
 
 <!-- example(selectable-card-basic) -->
+
+#### Product Card
+
+<!-- example(selectable-card-product) -->
 
 #### Selectable Card States
 
@@ -34,3 +33,12 @@ A (selectable) card can optionally contain a footer section.
 #### Dynamically adding and removing cards
 
 <!-- example(selectable-card-dynamic) -->
+
+
+<div class="docs-expert-container">
+
+### Expert: Appearance
+With `appearance` you can change the styling of the card to expert.
+
+<!-- example(selectable-card-expert) -->
+</div>

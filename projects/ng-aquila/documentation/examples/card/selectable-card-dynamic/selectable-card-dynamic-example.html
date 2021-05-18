@@ -18,16 +18,9 @@
   <form [formGroup]="myFormGroup">
     <div nxRow formArrayName="cards">
       <div *ngFor="let card of cards.controls; index as i"
-        nxCol="12,12,12,3">
+        nxCol="12,12,12,4">
         <nx-selectable-card [formControlName]="i" class="nx-margin-bottom-xs">
-          <nx-card-header>
-            <h3 nxHeadline="subsection-small">Card headline</h3>
-            <hr>
-          </nx-card-header>
-          <p>
-            Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit
-          </p>
+          <h3 nxCopytext class="nx-margin-bottom-2m">Card headline</h3>
         </nx-selectable-card>
       </div>
     </div>

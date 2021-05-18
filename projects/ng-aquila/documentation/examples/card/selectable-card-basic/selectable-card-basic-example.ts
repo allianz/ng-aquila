@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'selectable-card-basic-example',
   templateUrl: './selectable-card-basic-example.html',
-  styleUrls: ['./selectable-card-basic-example.css']
+  styleUrls: ['./selectable-card-basic-example.scss']
 })
 export class SelectableCardBasicExampleComponent {
 }

@@ -23,9 +23,7 @@ abstract class SelectableCardTest {
   @ViewChildren(NxErrorComponent) errors: QueryList<NxErrorComponent>;
 
   checked: boolean = false;
-  indeterminate: boolean = false;
   disabled: boolean = false;
-  negative: boolean = false;
   testForm: FormGroup;
   customError: boolean;
 }
@@ -64,7 +62,8 @@ describe('NxSelectableCardComponent', () => {
       declarations: [
         BasicSelectableCard,
         ReactiveSelectableCard,
-        DynamicErrorSelectableCard
+        DynamicErrorSelectableCard,
+        ExpertSelectableCard
       ],
       imports: [
         NxCardModule,
@@ -75,13 +74,10 @@ describe('NxSelectableCardComponent', () => {
     }).compileComponents();
   }));
 
-  it(
-    'Should create the test component without errors',
-    fakeAsync(() => {
+  it('Should create the test component without errors', () => {
       createTestComponent(BasicSelectableCard);
       expect(testInstance).toBeTruthy();
-    })
-  );
+  });
 
   it('Should label refer to the hidden input', () => {
     createTestComponent(BasicSelectableCard);
@@ -119,6 +115,20 @@ describe('NxSelectableCardComponent', () => {
     subscription.unsubscribe();
   }));
 
+  describe('appearance', () => {
+    it('has default appearance', () => {
+      createTestComponent(BasicSelectableCard);
+      expect(selectableCardInstance.appearance).toBe('default');
+      expect(labelElement).not.toHaveClass('is-expert');
+    });
+
+    it('has expert appearance', () => {
+      createTestComponent(ExpertSelectableCard);
+      expect(selectableCardInstance.appearance).toBe('expert');
+      expect(selectableCardNativeElement).toHaveClass('is-expert');
+    });
+  });
+
   describe('reactive support', () => {
     // Ensures that setDisabledState is implemented correctly.
     it('accepts disabled from the form model', fakeAsync(() => {
@@ -146,9 +156,24 @@ describe('NxSelectableCardComponent', () => {
       expect(selectableCardNativeElement.classList.contains('has-error')).toBeTruthy();
     }));
   });
+
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('default card has no accessibility violations', function(done) {
       createTestComponent(BasicSelectableCard);
+
+      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
+        expect(results.violations.length).toBe(0);
+        const violationMessages = results.violations.map(item => item.description);
+        if (violationMessages.length) {
+          console.error(violationMessages);
+          expect(violationMessages).toBeFalsy();
+        }
+        done();
+      });
+    });
+
+    it('expert card has no accessibility violations', function(done) {
+      createTestComponent(ExpertSelectableCard);
 
       axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
         expect(results.violations.length).toBe(0);
@@ -194,6 +219,15 @@ class BasicSelectableCard extends SelectableCardTest {}
 
 @Component({
   template: `
+    <nx-selectable-card appearance="expert">
+      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+    </nx-selectable-card>
+  `
+})
+class ExpertSelectableCard extends SelectableCardTest {}
+
+@Component({
+  template: `
       <form [formGroup]="testForm">
           <nx-selectable-card formControlName="card">
               <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
@@ -202,13 +236,12 @@ class BasicSelectableCard extends SelectableCardTest {}
   `
 })
 class ReactiveSelectableCard extends SelectableCardTest {
-  public fb;
   constructor() {
     super();
 
-    this.fb = new FormBuilder();
+    const fb = new FormBuilder();
 
-    this.testForm = this.fb.group({
+    this.testForm = fb.group({
       card: [false, Validators.requiredTrue]}
     );
   }
@@ -230,14 +263,12 @@ class ReactiveSelectableCard extends SelectableCardTest {
   `
 })
 class DynamicErrorSelectableCard extends SelectableCardTest {
-  fb;
-
   constructor() {
     super();
 
-    this.fb = new FormBuilder();
+    const fb = new FormBuilder();
 
-    this.testForm = this.fb.group({
+    this.testForm = fb.group({
       card: [false, Validators.requiredTrue]
     });
   }

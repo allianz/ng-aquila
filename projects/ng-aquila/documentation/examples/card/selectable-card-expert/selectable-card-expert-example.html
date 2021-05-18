@@ -1,0 +1,34 @@
+<nx-selectable-card class="nx-margin-bottom-2m" appearance="expert">
+  <h3 nxHeadline="subsection-small">Card headline</h3>
+  <hr>
+  <p nxCopytext>Default selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card class="nx-margin-bottom-2m" checked appearance="expert">
+  <h3 nxHeadline="subsection-small">Card headline</h3>
+  <hr>
+  <p nxCopytext>Checked selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card class="nx-margin-bottom-2m" appearance="expert" disabled>
+  <h3 nxHeadline="subsection-small">Card headline</h3>
+  <hr>
+  <p nxCopytext>Disabled selectable card</p>
+</nx-selectable-card>
+
+<nx-selectable-card class="nx-margin-bottom-2m" checked appearance="expert" disabled>
+  <h3 nxHeadline="subsection-small">Card headline</h3>
+  <hr>
+  <p nxCopytext>Disabled checked selectable card</p>
+</nx-selectable-card>
+
+<form [formGroup]="formGroup">
+  <nx-selectable-card formControlName="card" appearance="expert">
+    <h3 nxHeadline="subsection-small">Card headline</h3>
+    <hr>
+    <p nxCopytext>Required selectable card</p>
+    <nx-error appearance="text">
+      This card must be selected.
+    </nx-error>
+  </nx-selectable-card>
+</form>

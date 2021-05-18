@@ -6,6 +6,7 @@ import { NxCardHeaderComponent } from './card-header.component';
 import { NxCardFooterComponent } from './card-footer.component';
 import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
   imports: [
     CommonModule,
     NxIconModule,
-    NxErrorModule
+    NxErrorModule,
+    NxCheckboxModule
   ]
 })
 export class NxCardModule { }
