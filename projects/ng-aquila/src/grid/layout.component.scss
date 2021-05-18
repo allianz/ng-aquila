@@ -4,7 +4,7 @@
   @include make-container($gutters: $grid-gutter-widths);
 }
 
-// Use for "edge to edge container" components
+// Use to remove all spacing between cells
 :host(.nx-grid--no-gutters) ::ng-deep {
   padding-left: 0;
   padding-right: 0;
@@ -18,6 +18,22 @@
   .nx-grid__row > [class*="nx-grid__column"] {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+// Use to remove the outer spacing, for "edge to edge container" components
+:host(.nx-grid--no-padding) ::ng-deep {
+  padding-left: 0;
+  padding-right: 0;
+
+  .nx-grid__row {
+    margin-left: -$grid-gutter-width-base / 2;
+    margin-right: -$grid-gutter-width-base / 2;
+
+    @include media-breakpoint-down(small) {
+      margin-left: -$grid-gutter-width-mobile / 2;
+      margin-right: -$grid-gutter-width-mobile / 2;
+    }
   }
 }
 

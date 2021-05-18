@@ -42,7 +42,7 @@ const DEFAULT_TYPE = 'regular';
     '[class.nx-expansion-panel--regular]': '_accordionStyle === "regular"',
     '[class.nx-expansion-panel--extra-light]': '_accordionStyle === "extra-light"',
     '[class.nx-expansion-panel--negative]': 'negative',
-    '[class.is-disabled]': 'disabled',
+    '[class.is-disabled]': 'disabled'
   },
   providers: [
     // Provide NxAccordionDirective as undefined to prevent nested expansion panels from registering

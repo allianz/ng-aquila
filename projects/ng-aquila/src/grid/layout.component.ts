@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -9,7 +9,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   host: {
     '[class.nx-grid]': 'grid',
     '[class.nx-grid--no-gutters]': 'noGutters',
-    '[class.nx-grid--max-width]': 'maxWidth'
+    '[class.nx-grid--max-width]': 'maxWidth',
+    '[class.nx-grid--no-padding]': 'noPadding'
   }
 })
 export class NxLayoutComponent {
@@ -24,10 +25,13 @@ export class NxLayoutComponent {
   /** @docs-private */
   maxWidth: boolean;
 
+  /** @docs-private */
+  noPadding: boolean;
+
   /**
    * Type of layout.
    *
-   * Values: grid | grid nogutters | grid maxwidth. Default value: grid.
+   * Values: grid | grid nogutters | grid maxwidth | grid nopadding. Default value: grid.
    */
   @Input('nxLayout')
   set classNames(value: string) {
@@ -36,9 +40,10 @@ export class NxLayoutComponent {
     }
 
     this._classNames = value;
-    this.grid = !!this._classNames.match(/grid/);
-    this.noGutters = !!this._classNames.match(/nogutters/);
-    this.maxWidth = !!this._classNames.match(/maxwidth/);
+    this.grid = /grid/.test(this._classNames);
+    this.noGutters = /nogutters/.test(this._classNames);
+    this.maxWidth = /maxwidth/.test(this._classNames);
+    this.noPadding = /nopadding/.test(this._classNames);
   }
 
   get classNames(): string {

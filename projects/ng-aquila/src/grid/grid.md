@@ -122,8 +122,9 @@ If you want to offset a column you can use the `nxColOffset` property similar to
 
 <!-- example(grid-offset) -->
 
-#### NoGutters
-Remove the spacing from rows and (direct) columns with `nogutters` like this:
+#### NoGutters and NoPadding
+Use `nogutters` to remove the spacing from rows and (direct) columns.
+Use `nopadding` to remove the spacing around the grid, but keep the column gutters. This is useful when you need to place the grid inside of another component that already has spacing (including the grid in grid case). 
 
 <!-- example(grid-nogutter) -->
 

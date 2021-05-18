@@ -40,6 +40,7 @@ describe('NxLayoutDirective', () => {
                           BasicGridLayout,
                           BasicGridLayoutClassTest,
                           BasicNoGutters,
+                          BasicNoPadding,
                           BasicMaxWidth,
                           BasicCombinate,
                           Basic2Combinate,
@@ -62,6 +63,10 @@ describe('NxLayoutDirective', () => {
 
     it('should test with input nxLayout="grid nogutters"', () => {
         expect(getClassesCreated(BasicNoGutters)).toEqual('nx-grid nx-grid--no-gutters');
+    });
+  
+    it('should test with input nxLayout="grid nopadding"', () => {
+        expect(getClassesCreated(BasicNoPadding)).toEqual('nx-grid nx-grid--no-padding');
     });
 
     it('should test with input nxLayout="grid maxwidth"', () => {
@@ -119,7 +124,11 @@ describe('NxLayoutDirective', () => {
 
   @Component( {
     template: `<div nxLayout='maxwidth grid nogutters' ></div> `
-  }) class BasicCompleteReverse extends DirectiveTest {}
+  }) class BasicCompleteReverse extends DirectiveTest { }
+
+  @Component( {
+    template: `<div nxLayout='grid nopadding'></div> `
+  }) class BasicNoPadding extends DirectiveTest {}
 
   @Component( {
     template: `<div [nxLayout]='layout' ></div> `
