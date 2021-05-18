@@ -82,8 +82,9 @@
 <h4 id="nxcol%3A-offset-columns" class="docs-markdown--h4">nxCol: Offset columns</h4>
 <p class="docs-markdown--p">If you want to offset a column you can use the <code>nxColOffset</code> property similar to the <code>nxCol</code> logic.</p>
 <div nx-docs-example="grid-offset" config="{}">exampleID: grid-offset</div>
-<h4 id="nogutters" class="docs-markdown--h4">NoGutters</h4>
-<p class="docs-markdown--p">Remove the spacing from rows and (direct) columns with <code>nogutters</code> like this:</p>
+<h4 id="nogutters-and-nopadding" class="docs-markdown--h4">NoGutters and NoPadding</h4>
+<p class="docs-markdown--p">Use <code>nogutters</code> to remove the spacing from rows and (direct) columns.
+Use <code>nopadding</code> to remove the spacing around the grid, but keep the column gutters. This is useful when you need to place the grid inside of another component that already has spacing (including the grid in grid case).</p>
 <div nx-docs-example="grid-nogutter" config="{}">exampleID: grid-nogutter</div>
 <h4 id="maxwidth" class="docs-markdown--h4">MaxWidth</h4>
 <p class="docs-markdown--p">In order to constrain the grid, define an overall maximum width (width: 1184px and max-width: 100%).</p>

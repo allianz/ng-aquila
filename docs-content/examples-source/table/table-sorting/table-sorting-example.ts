@@ -13,8 +13,10 @@ interface Contract {
 
 @Injectable()
 export class MyIntl extends NxSortHeaderIntl {
-  sortAscendingAriaLabel = 'sort ascending by';
-  sortDescendingAriaLabel = 'sort descending by';
+  sortAscendingAriaLabel: string = 'click to sort ascending';
+  sortDescendingAriaLabel: string = 'click to sort descending';
+  sortedAscendingAriaLabel: string = 'sorted ascending by';
+  sortedDescendingAriaLabel: string = 'sorted descending by';
 }
 
 /**

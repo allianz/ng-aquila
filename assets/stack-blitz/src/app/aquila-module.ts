@@ -42,6 +42,7 @@ import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
 import { NxPageSearchModule } from '@aposin/ng-aquila/page-search';
 import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
+import { NxPhoneInputModule } from '@aposin/ng-aquila/phone-input';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxProgressStepperModule } from '@aposin/ng-aquila/progress-stepper';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
@@ -108,6 +109,7 @@ import { NxVideoModule } from '@aposin/ng-aquila/video';
     NxPageSearchModule,
     NxPaginationModule,
     NxPopoverModule,
+    NxPhoneInputModule,
     NxProgressStepperModule,
     NxProgressbarModule,
     NxRadioModule,

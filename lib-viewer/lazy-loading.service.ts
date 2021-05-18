@@ -111,13 +111,13 @@
   case 'label': return import('../examples/label/label-examples.module').then(m => m.LabelExamplesModule);
   
 
+  case 'layout': return import('../examples/layout/layout-examples.module').then(m => m.LayoutExamplesModule);
+  
+
   case 'link': return import('../examples/link/link-examples.module').then(m => m.LinkExamplesModule);
   
 
   case 'list': return import('../examples/list/list-examples.module').then(m => m.ListExamplesModule);
-  
-
-  case 'margin': return import('../examples/margin/margin-examples.module').then(m => m.MarginExamplesModule);
   
 
   case 'mask': return import('../examples/mask/mask-examples.module').then(m => m.MaskExamplesModule);

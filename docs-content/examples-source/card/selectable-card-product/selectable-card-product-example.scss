@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+}
+
+img {
+  flex: 0 0 auto;
+  margin-right: 16px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-basis: 100%;
+}
+
+@media (max-width: 703px) {
+  .card {
+    display: block;
+  }
+
+  img {
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}

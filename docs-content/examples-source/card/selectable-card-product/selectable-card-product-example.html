@@ -1,0 +1,22 @@
+<nx-selectable-card>
+  <div class="card">
+    <img height="56" src="/assets/images/selectable-card.svg" alt="product image" />
+    <div class="content">
+      <div>
+        <h3 nxCopytext class="nx-font-weight-semibold nx-margin-bottom-2xs">
+          Card headline
+        </h3>
+        <p nxCopytext="medium" class="nx-margin-bottom-2xs">
+          Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,<br/> consectetur, adipisci velit
+        </p>
+        <span nxCopytext>$ 10 /monthly</span>
+      </div>
+      <button nxPlainButton  class="nx-margin-left-xs" [nxPopoverTriggerFor]="popover" nxPopoverTrigger="click">
+        <nx-icon size="s" name="info-circle-o"></nx-icon>
+        <nx-popover #popover>
+          <span nxCopytext>Trigger by click</span>
+        </nx-popover>
+      </button>
+    </div>
+  </div>
+</nx-selectable-card>

@@ -426,6 +426,70 @@
       "stable": "done"
     },
     {
+      "id": "button",
+      "title": "Button",
+      "examples": [
+        {
+          "name": "button",
+          "config": {}
+        },
+        {
+          "name": "button-small",
+          "config": {}
+        },
+        {
+          "name": "button-small-medium",
+          "config": {}
+        },
+        {
+          "name": "button-medium",
+          "config": {}
+        },
+        {
+          "name": "button-large",
+          "config": {}
+        },
+        {
+          "name": "button-danger",
+          "config": {}
+        },
+        {
+          "name": "button-block",
+          "config": {}
+        },
+        {
+          "name": "button-negative",
+          "config": {}
+        },
+        {
+          "name": "button-with-icon",
+          "config": {}
+        },
+        {
+          "name": "button-icon",
+          "config": {}
+        },
+        {
+          "name": "button-icon-indicator",
+          "config": {}
+        },
+        {
+          "name": "button-plain",
+          "config": {}
+        },
+        {
+          "name": "anchor-button",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/button.html",
+      "overviewFile": "lib-viewer/overview/button.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "card",
       "title": "Cards",
       "examples": [
@@ -434,11 +498,11 @@
           "config": {}
         },
         {
-          "name": "card-footer",
+          "name": "selectable-card-basic",
           "config": {}
         },
         {
-          "name": "selectable-card-basic",
+          "name": "selectable-card-product",
           "config": {}
         },
         {
@@ -451,6 +515,10 @@
         },
         {
           "name": "selectable-card-dynamic",
+          "config": {}
+        },
+        {
+          "name": "selectable-card-expert",
           "config": {}
         }
       ],
@@ -676,70 +744,6 @@
       "expert": true,
       "stable": "done",
       "noApi": true
-    },
-    {
-      "id": "button",
-      "title": "Button",
-      "examples": [
-        {
-          "name": "button",
-          "config": {}
-        },
-        {
-          "name": "button-small",
-          "config": {}
-        },
-        {
-          "name": "button-small-medium",
-          "config": {}
-        },
-        {
-          "name": "button-medium",
-          "config": {}
-        },
-        {
-          "name": "button-large",
-          "config": {}
-        },
-        {
-          "name": "button-danger",
-          "config": {}
-        },
-        {
-          "name": "button-block",
-          "config": {}
-        },
-        {
-          "name": "button-negative",
-          "config": {}
-        },
-        {
-          "name": "button-with-icon",
-          "config": {}
-        },
-        {
-          "name": "button-icon",
-          "config": {}
-        },
-        {
-          "name": "button-icon-indicator",
-          "config": {}
-        },
-        {
-          "name": "button-plain",
-          "config": {}
-        },
-        {
-          "name": "anchor-button",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/button.html",
-      "overviewFile": "lib-viewer/overview/button.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
     },
     {
       "id": "context-menu",
@@ -1303,14 +1307,6 @@
           "config": {}
         },
         {
-          "name": "icon-list-functional",
-          "config": {}
-        },
-        {
-          "name": "icon-list-product",
-          "config": {}
-        },
-        {
           "name": "icon-registry",
           "config": {}
         }
@@ -1439,6 +1435,12 @@
         {
           "name": "margin-usage",
           "config": {}
+        },
+        {
+          "name": "hidden-classes",
+          "config": {
+            "hideHeader": true
+          }
         },
         {
           "name": "viewport-change",
@@ -3261,17 +3263,6 @@
       "url": "lib-viewer/examples/card-###TYPE###.html"
     },
     {
-      "id": "card-footer",
-      "title": "Cards with footer example",
-      "module": "card",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/card-footer-###TYPE###.html"
-    },
-    {
       "id": "selectable-card-basic",
       "title": "Selectable cards basic example",
       "module": "card",
@@ -3292,6 +3283,28 @@
         "css"
       ],
       "url": "lib-viewer/examples/selectable-card-dynamic-###TYPE###.html"
+    },
+    {
+      "id": "selectable-card-expert",
+      "title": "Selectable cards expert example",
+      "module": "card",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/selectable-card-expert-###TYPE###.html"
+    },
+    {
+      "id": "selectable-card-product",
+      "title": "Selectable cards product example",
+      "module": "card",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/selectable-card-product-###TYPE###.html"
     },
     {
       "id": "selectable-card-reactive",
@@ -4867,28 +4880,6 @@
       "url": "lib-viewer/examples/icon-general-###TYPE###.html"
     },
     {
-      "id": "icon-list-functional",
-      "title": "Functional Icons List Example",
-      "module": "icon",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/icon-list-functional-###TYPE###.html"
-    },
-    {
-      "id": "icon-list-product",
-      "title": "Product Icons List Example",
-      "module": "icon",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/icon-list-product-###TYPE###.html"
-    },
-    {
       "id": "icon-outline",
       "title": "Icons Outline Example",
       "module": "icon",
@@ -5054,6 +5045,39 @@
       "url": "lib-viewer/examples/label-###TYPE###.html"
     },
     {
+      "id": "hidden-classes",
+      "title": "Hidden classes",
+      "module": "layout",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/hidden-classes-###TYPE###.html"
+    },
+    {
+      "id": "margin-sizes",
+      "title": "Margin sizes",
+      "module": "layout",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/margin-sizes-###TYPE###.html"
+    },
+    {
+      "id": "margin-usage",
+      "title": "Margin sizes example",
+      "module": "layout",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/margin-usage-###TYPE###.html"
+    },
+    {
       "id": "link-black",
       "title": "Black link example",
       "module": "link",
@@ -5217,28 +5241,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/list-unordered-###TYPE###.html"
-    },
-    {
-      "id": "margin-sizes",
-      "title": "Margin sizes",
-      "module": "margin",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/margin-sizes-###TYPE###.html"
-    },
-    {
-      "id": "margin-usage",
-      "title": "Margin sizes example",
-      "module": "margin",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/margin-usage-###TYPE###.html"
     },
     {
       "id": "iban-mask",

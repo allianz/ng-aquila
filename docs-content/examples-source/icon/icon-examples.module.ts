@@ -6,8 +6,6 @@ import { IconEssentialIconsExampleComponent } from './icon-essential-icons/icon-
 import { IconEssentialOverrideExampleComponent } from './icon-essential-override/icon-essential-override-example';
 import { IconFilledExampleComponent } from './icon-filled/icon-filled-example';
 import { IconGeneralExampleComponent } from './icon-general/icon-general-example';
-import { IconListFunctionalExampleComponent } from './icon-list-functional/icon-list-functional-example';
-import { IconListProductExampleComponent } from './icon-list-product/icon-list-product-example';
 import { IconOutlineExampleComponent } from './icon-outline/icon-outline-example';
 import { IconRegistryExampleComponent } from './icon-registry/icon-registry-example';
 import { IconSizesExampleComponent } from './icon-sizes/icon-sizes-example';
@@ -17,8 +15,6 @@ const EXAMPLES = [
   IconEssentialOverrideExampleComponent,
   IconFilledExampleComponent,
   IconGeneralExampleComponent,
-  IconListFunctionalExampleComponent,
-  IconListProductExampleComponent,
   IconOutlineExampleComponent,
   IconRegistryExampleComponent,
   IconSizesExampleComponent
@@ -36,8 +32,6 @@ export class IconExamplesModule {
       'icon-essential-override': IconEssentialOverrideExampleComponent,
       'icon-filled': IconFilledExampleComponent,
       'icon-general': IconGeneralExampleComponent,
-      'icon-list-functional': IconListFunctionalExampleComponent,
-      'icon-list-product': IconListProductExampleComponent,
       'icon-outline': IconOutlineExampleComponent,
       'icon-registry': IconRegistryExampleComponent,
       'icon-sizes': IconSizesExampleComponent,

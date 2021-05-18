@@ -1,4 +1,4 @@
-<p class="docs-markdown--p">Popover requires Angular CDK (incl. CSS).</p>
+<p class="docs-markdown--p">Popover requires Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
 <h3 id="trigger-types" class="docs-markdown--h3">Trigger types</h3>
 <p class="docs-markdown--p">It is possible to open the popover by hover, click event or manually. To adjust the trigger type accordingly, set the <code>nxPopoverTrigger</code> attribute to click/hover/manual.</p>
 <ul class="docs-markdown--ul">
@@ -36,7 +36,7 @@ Now the popover can be closed via the close icon as well as with the ESC-Key.</p
 <p class="docs-markdown--p">To make the popovers behave correctly while scrolling, you have to place the directive cdkScrollable on the scrolling container.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">cdkScrollable</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<p class="docs-markdown--p">The following examples illustrates the usage of <code>cdkScrollable</code>. The popovers are configured to close on scroll events. If there is no <code>cdkScrollable</code> on the container, scrolling leads to unexpected behaviour (left). By adding <code>cdkScrollable</code> to the right container, the popover closes as expected (right).</p>
+<p class="docs-markdown--p">The following examples illustrates the usage of <code>cdkScrollable</code>. Make sure to import the <code>CdkScrollableModule</code> from <code>@angular/cdk/scrolling</code>. The popovers are configured to close on scroll events. If there is no <code>cdkScrollable</code> on the container, scrolling leads to unexpected behaviour (left). By adding <code>cdkScrollable</code> to the right container, the popover closes as expected (right).</p>
 <div nx-docs-example="popover-scrollable" config="{}">exampleID: popover-scrollable</div>
 <h3 id="hover-triggered-popover" class="docs-markdown--h3">Hover triggered popover</h3>
 <p class="docs-markdown--p">The popover triggered by hover will close immediately after the mouse exits the trigger.</p>

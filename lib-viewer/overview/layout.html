@@ -28,7 +28,17 @@
 <p class="docs-markdown--p">An example of the margin helper classes usage can be found in the example below.</p>
 <div nx-docs-example="margin-usage" config="{}">exampleID: margin-usage</div>
 <h3 id="breakpoints-and-viewport" class="docs-markdown--h3">Breakpoints and Viewport</h3>
-<p class="docs-markdown--p">Our library provides a viewport service, which is a utility for reacting to changes in the viewport. It provides three methods: <code>min</code>, <code>max</code> and <code>between</code> for subscribing to particular viewport breakpoints.</p>
+<p class="docs-markdown--p">Our library provides a set of tools for reacting to different viewports.
+For simple hiding elements on certain breakpoints you can use our utility classes.
+For more sophisticated use cases there is a viewport service. It provides three methods: <code>min</code>, <code>max</code> and <code>between</code> for subscribing to particular viewport breakpoints.</p>
+<h4 id="hide-elements-on-specific-breakpoints-using-css-classes" class="docs-markdown--h4">Hide elements on specific breakpoints using CSS classes</h4>
+<p class="docs-markdown--p">We provide a set of utility classes that can be used to hide elements on certain viewport sizes.</p>
+<p class="docs-markdown--p">Remember that you can combine CSS classes on the same element. So for example, if you wanted an element to show on small and large desktops,
+but be hidden on tablets and mobile, you could do something like the following.</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-hidden-xs nx-hidden-s nx-hidden-m&quot;</span>&gt;</span>Hidden on tablet and smaller<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p"><strong>Available classes:</strong></p>
+<div nx-docs-example="hidden-classes" config="{ 'hideHeader': true }">exampleID: hidden-classes</div>
 <h4 id="breakpoints" class="docs-markdown--h4">Breakpoints</h4>
 <p class="docs-markdown--p">The following viewport breakpoints are available:</p>
 <pre><code class="language-ts"><span class="hljs-comment">/** Available breakpoints to subscribe to. */</span>
