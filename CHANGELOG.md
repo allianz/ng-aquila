@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.4.0](https://github.com/aposin/ng-aquila/compare/v11.3.0...v11.4.0) (2021-05-18)
+
+
+### Bug Fixes
+
+* **datefield:** use moment.utc() for creating dates ([5cebca0](https://github.com/aposin/ng-aquila/commit/5cebca0fdbd8da669ce975fc925229289b23f321))
+* **file-uploader:** reset native value ([dfc87cf](https://github.com/aposin/ng-aquila/commit/dfc87cf0861cdefe4e5bf8278a28aca94f571c59))
+* **grid:** support dynamic input bindings ([b02f6b6](https://github.com/aposin/ng-aquila/commit/b02f6b685eca86ed1d02091a03c6339ea5f10fe6))
+* **phone-input:** mark component for check when form value is changed ([62595a9](https://github.com/aposin/ng-aquila/commit/62595a9f91f7e2ecad60305a18187b98bd4e6fe1))
+* **popover:** cleanup event listeners to avoid memory leaks ([2fd400f](https://github.com/aposin/ng-aquila/commit/2fd400f36d4b0a6cf4f71452d19cea96c3cff905))
+* **popover:** querying text node with preserveWhitespaces ([4ada217](https://github.com/aposin/ng-aquila/commit/4ada21732b8c0ea7cbb75cb0d1b37bd449a67226))
+* **table:** improve screenreader experience for sorting ([d191797](https://github.com/aposin/ng-aquila/commit/d1917974ccd9e3073ce5b3b2ec714107df020d97))
+
+
+### Features
+
+* **grid:** add nopadding option for grid ([0b5fc77](https://github.com/aposin/ng-aquila/commit/0b5fc77f5d3afcc8cca55afd09ede9f66ce560af))
+* **phone-input:** add rtl support ([af77264](https://github.com/aposin/ng-aquila/commit/af7726464922eac2f987447205c37256971a5c16))
+* **selectable-card:** add retail selectable card ([b55c00a](https://github.com/aposin/ng-aquila/commit/b55c00a695ab15e77ba790b057b8c52d8b39a8f7))
+* **utils:** add classes to hide elements ([10b56cd](https://github.com/aposin/ng-aquila/commit/10b56cd39de8822a6df91723721077296b097258))
+* **small-stage:** add default small stage background token ([d5a9f4d](https://github.com/aposin/ng-aquila/commit/d5a9f4d06d24b384ede2e169ba48d2bac0792481))
+
+
+
 # [11.3.0](https://github.com/aposin/ng-aquila/compare/v11.2.0...v11.3.0) (2021-03-31)
 
 ### Tabs changes
