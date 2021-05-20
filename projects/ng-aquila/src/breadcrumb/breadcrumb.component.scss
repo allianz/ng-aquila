@@ -7,16 +7,32 @@
   padding: 0;
 }
 
-::ng-deep li:last-child ::ng-deep .nx-breadcrumb-item {
+:host(.is-link) {
+  ::ng-deep .nx-breadcrumb-item {
+    color: var(--breadcrumb-link-color);
+  }
+
+  ::ng-deep .nx-breadcrumb-item__text {
+    &:hover {
+      color: var(--breadcrumb-link-hover-color);
+    }
+
+    &:active {
+      color: var(--breadcrumb-link-active-color);
+    }
+  }
+}
+
+::ng-deep li:last-child .nx-breadcrumb-item {
   font-weight: nx-font-weight(semibold);
   cursor: auto;
 }
 
-::ng-deep li:last-child ::ng-deep .nx-breadcrumb-item__chevron {
+::ng-deep li:last-child .nx-breadcrumb-item__chevron {
   display: none;
 }
 
-::ng-deep li + li ::ng-deep .nx-breadcrumb-item {
+::ng-deep li + li .nx-breadcrumb-item {
   margin-left: nx-spacer(3xs);
 
   :host-context([dir="rtl"]) & {
@@ -27,7 +43,7 @@
 
 :host(.is-negative) {
   ::ng-deep .nx-breadcrumb-item {
-    @include var(color, negative);
+    color: var(--negative);
   }
 }
 

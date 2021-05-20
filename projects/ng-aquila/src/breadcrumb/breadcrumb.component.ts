@@ -5,6 +5,11 @@ import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 import { startWith, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
+/**
+ * The appearance of the breadcrumb.
+ */
+export type NxBreadcrumpAppearance = 'default' | 'link';
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ol[nxBreadcrumb]',
@@ -12,7 +17,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./breadcrumb.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    '[class.is-negative]': 'negative'
+    '[class.is-negative]': 'negative',
+    '[class.is-link]': 'appearance === "link"'
   }
 })
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy  {
@@ -20,6 +26,21 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy  {
   _destroyed: Subject<void> = new Subject();
 
   private _negative: boolean = false;
+
+  private _appeareance: NxBreadcrumpAppearance = 'default';
+
+  /**
+   * Sets the appearance of the breadcrumb. default: 'default'
+   */
+  @Input()
+  set appearance(value: NxBreadcrumpAppearance) {
+    this._appeareance = value;
+    this._cdr.markForCheck();
+  }
+
+  get appearance() {
+    return this._appeareance;
+  }
 
   /** Whether the component uses the negative styling. */
   @Input()
@@ -33,7 +54,8 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy  {
   }
 
   /**@docs-private */
-  @ContentChildren(NxBreadcrumbItemComponent, {descendants: true}) breadcrumbItems: QueryList<NxBreadcrumbItemComponent>;
+  @ContentChildren(NxBreadcrumbItemComponent, {descendants: true})
+  breadcrumbItems: QueryList<NxBreadcrumbItemComponent>;
 
   constructor(private _cdr: ChangeDetectorRef) { }
 

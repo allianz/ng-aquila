@@ -15,6 +15,12 @@ You can see the basic behaviour of the breadcrumb component in the example below
 
 <!-- example(breadcrumb) -->
 
+### Link appearance
+
+You can select the style of the breadcrump via the `appearance` input.
+
+<!-- example(breadcrumb-link) -->
+
 ### Negative styling
 
 <!-- example(breadcrumb-negative) -->

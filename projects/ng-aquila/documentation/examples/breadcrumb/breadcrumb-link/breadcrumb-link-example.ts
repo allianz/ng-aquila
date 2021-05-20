@@ -2,14 +2,14 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Basic usage
+* @title Appearance link
 */
 @Component({
-  selector: 'breadcrumb-example',
-  templateUrl: './breadcrumb-example.html',
-  styleUrls: ['./breadcrumb-example.css']
+  selector: 'breadcrumb-link-example',
+  templateUrl: './breadcrumb-link-example.html',
+  styleUrls: ['./breadcrumb-link-example.css']
 })
-export class BreadcrumbExampleComponent {
+export class BreadcrumbLinkExampleComponent {
   items = [
     'Home',
     'Insurance',

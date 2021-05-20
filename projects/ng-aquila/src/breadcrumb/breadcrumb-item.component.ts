@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,7 +8,7 @@ import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy } 
   styleUrls: ['breadcrumb-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    'class': 'nx-breadcrumb-item',
+    'class': 'nx-breadcrumb-item'
   }
 })
 export class NxBreadcrumbItemComponent implements OnDestroy {

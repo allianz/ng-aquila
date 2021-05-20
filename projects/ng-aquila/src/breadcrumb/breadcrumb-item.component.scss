@@ -25,5 +25,5 @@
 
 :host.cdk-keyboard-focused .nx-breadcrumb-item__text {
   @include focus-style();
-  border-radius: nx-border-radius(xl);
+  border-radius: nx-border-radius(s);
 }

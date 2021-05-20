@@ -31,7 +31,8 @@ describe('NxBreadcrumbComponent', () => {
       declarations: [
         BasicBreadcrumbComponent,
         BreadcrumbOnPushComponent,
-        DynamicBreadcrumbComponent
+        DynamicBreadcrumbComponent,
+        LinkBreadcrumbComponent
       ]
     }).compileComponents();
   }));
@@ -57,6 +58,11 @@ describe('NxBreadcrumbComponent', () => {
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
     expect(testInstance.breadcrumbInstance.negative).toBe(true);
+  });
+
+  it('should have appearence "link"', () => {
+    createTestComponent(LinkBreadcrumbComponent);
+    expect(fixture.nativeElement.querySelector('ol')).toHaveClass('is-link');
   });
 
   it('sets aria-current to last item', () => {
@@ -130,4 +136,24 @@ class DynamicBreadcrumbComponent extends BreadcrumbTest {
     'Test',
     'Test2'
   ];
+}
+
+@Component({
+  template: `
+    <ol nxBreadcrumb [appearance]="appearance">
+      <li>
+        <a nxBreadcrumbItem>
+          test
+        </a>
+      </li>
+      <li>
+        <a nxBreadcrumbItem>
+          test 2
+        </a>
+      </li>
+    </ol>
+  `
+})
+class LinkBreadcrumbComponent extends BreadcrumbTest {
+  appearance = 'link';
 }
