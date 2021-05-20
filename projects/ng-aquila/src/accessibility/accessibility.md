@@ -9,7 +9,7 @@ noApi: true
 
 All components in our Component Library are compliant with the WCAG 2 Level AA accessibility standards. These Accessibility Guidelines (WCAG) are part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI) of the World Wide Web Consortium (W3C). By being complaint with them we want to make our components accessible, primarily for people with disabilities, but also for all users on all devices (including highly limited devices, such as mobile phones).
 
-**Using our accessibility compliant components does not make your application accessible by default.** Our components fulfil most of the accessibiility requirements, but there are still some things you have to pay attention to. In the [Guidelines](./documentation/accessibility/overview#guidelines) you can find hints to consider.
+**Using our accessibility compliant components does not make your application accessible by default.** Our components fulfil most of the accessibiility requirements, but there are still some things you have to pay attention to. In the [Guidelines](./documentation/accessibility/overview#guidelines) you can find hints to consider.You can also go through this great [tutorial](https://codelabs.developers.google.com/angular-a11y#0) from the Angular team. 
 
 ### Our component library supports:
 - Color contrast
@@ -68,5 +68,5 @@ For more information on which colors to use in the high contrast mode, please vi
 - [High contrast mode explanation](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/master/Accessibility/HighContrast/explainer.md)
 - [High contrast themes](https://docs.microsoft.com/en-us/windows/uwp/design/accessibility/high-contrast-themes)
 - [Automatic a11y compliance checker](https://www.deque.com/axe)
-
+- [a11y training from the Angular team](https://codelabs.developers.google.com/angular-a11y#0)
 
