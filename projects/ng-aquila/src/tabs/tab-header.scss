@@ -37,7 +37,7 @@
   &:not(.scrollable) {
     .nx-tab-header {
       margin-right: -8px;
-      padding-right: 8px; 
+      padding-right: 8px;
 
       [dir="rtl"] & {
         margin-right: 0;
@@ -54,5 +54,8 @@
   border-bottom-width: nx-border-size(xs);
   border-bottom-style: solid;
   border-bottom-color: var(--tab-expert-bottom-border-color);
-}
 
+  .nx-tab-header {
+    width: 100%;
+  }
+}

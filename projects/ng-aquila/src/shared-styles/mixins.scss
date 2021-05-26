@@ -146,12 +146,21 @@ $border-size: nx-border-size(xs);
   margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
   outline: none;
   position: relative;
+  cursor: pointer;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: buttonFace;
     border-color: buttonText;
     color: buttonText;
     -ms-high-contrast-adjust: none;
+  }
+
+  &:hover {
+    color: var(--tab-item-hover-color);
+  }
+
+  &:active {
+    color: var(--tab-item-active-color);
   }
 }
 
@@ -160,8 +169,13 @@ $border-size: nx-border-size(xs);
   font-weight: nx-font-weight(bold);
   border-bottom-style: solid;
   border-color: var(--tab-item-active-border-color);
-  transition: font-weight .3s ease;
   padding-bottom: 8px;
+  cursor: default;
+
+  &:hover,
+  &:active {
+    color: var(--tab-item-color);
+  }
 
   @media screen and (-ms-high-contrast: active) {
     background-color: highlight;
@@ -174,6 +188,11 @@ $border-size: nx-border-size(xs);
   border-color: var(--tab-item-disabled-border-color);
   color: var(--tab-item-disabled-color);
   cursor: not-allowed;
+
+  &:hover,
+  &:active {
+    color: var(--tab-item-disabled-color);
+  }
 
   @media screen and (-ms-high-contrast: active) {
     border-color: GrayText;

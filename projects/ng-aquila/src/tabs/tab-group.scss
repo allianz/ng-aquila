@@ -8,10 +8,6 @@
   @include tab__item;
   flex: 0 0 auto;
 
-  &:hover:not(.nx-tab-header__item--disabled) {
-    cursor: pointer;
-  }
-
   // don't show inner dotted border on firefox
   &::-moz-focus-inner {
     border: 0;
@@ -42,60 +38,66 @@
   }
 }
 
-:host:not(.is-expert) {
-  .nx-tab-header__item:not(.nx-tab-header__item--active) {
-    ::before {
-      content: '';
-      position: absolute;
-      width: calc(100% + 64px);
-      height: 1px;
-      bottom: 0;
-      left: -32px;
-      background-color: var(--tab-item-border-color);
-    }
-  }
 
-  .nx-tab-header__item:first-child {
-    ::before {
-      left: 0;
-      width: calc(100% + 32px);
+.nx-tab-header__item::before {
+  content: '';
+  position: absolute;
+  width: calc(100% + #{nx-spacer(xl)});
+  height: 1px;
+  bottom: 0;
+  left: -(nx-spacer(2m));
+  background-color: var(--tab-item-border-color);
+}
 
-      [dir="rtl"] & {
-        left: initial;
-        right: 0;
-      }
-    }
-  }
+.nx-tab-header__item:first-child::before {
+  left: 0;
+  width: calc(100% + #{nx-spacer(2m)});
 
-  .nx-tab-header__item:last-child {
-    ::before {
-      width: calc(100% + 32px);
-
-      [dir="rtl"] & {
-        left: initial;
-        right: -32px;
-      }
-    }
+  [dir="rtl"] & {
+    left: initial;
+    right: 0;
   }
 }
 
+.nx-tab-header__item:last-child::before {
+  width: calc(100% + #{nx-spacer(2m)});
+
+  [dir="rtl"] & {
+    left: initial;
+    right: -(nx-spacer(2m));
+  }
+}
+
+
 :host(.is-expert) {
+  .nx-tab-header__item::before {
+    display: none;
+  }
+
   .nx-tab-header__item:not(.nx-tab-header__item--active) {
     border-color: transparent;
   }
 
   .nx-tab-header__item {
-    padding-bottom: 8px;
+    padding-bottom: nx-spacer(2xs);
   }
 
   .nx-tab-header__item.nx-tab-header__item--active {
-    padding-bottom: 4px;
+    padding-bottom: nx-spacer(3xs);
   }
 }
 
 :host(.is-expert):not(.is-negative) {
   .nx-tab-header__item:not(.nx-tab-header__item--active):not(.nx-tab-header__item--disabled) {
     @include var(color, tab-expert-color);
+
+    &:hover {
+      color: var(--tab-item-hover-color);
+    }
+
+    &:active {
+      color: var(--tab-item-active-color);
+    }
 
     @media screen and (-ms-high-contrast: active) {
       color: buttonText;
@@ -105,6 +107,10 @@
 
 .nx-tab-header__item--active {
   @include tab__item--active;
+
+  &::before {
+    display: none;
+  }
 }
 
 .nx-tab-header__item--disabled {
@@ -130,6 +136,11 @@
   .nx-tab-header__item {
     @include var(color, negative);
     @include var(border-bottom-color, negative);
+
+    &:hover,
+    &:active {
+      font-weight: nx-font-weight(bold);
+    }
   }
 
   .nx-tab-header__item.nx-tab-header__item--disabled {
@@ -150,9 +161,7 @@
 }
 
 :host(.is-disabled.is-negative) {
-
   .nx-tab-header__item {
-    @include tab__item--disabled;
     @include var(color, tab-item-disabled-negative-color);
     @include var(border-color, tab-item-disabled-negative-color);
   }

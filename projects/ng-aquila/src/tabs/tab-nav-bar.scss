@@ -10,6 +10,10 @@
     border-bottom-width: nx-border-size(xs);
     border-bottom-style: solid;
     border-bottom-color: var(--tab-expert-bottom-border-color);
+
+    .nx-tab-nav-bar {
+      width: 100%;
+    }
   }
 
   .nx-tab-nav-bar {
