@@ -17,6 +17,10 @@ import { FileUploaderWithRequestExampleComponent } from './file-uploader-with-re
 import { FileUploaderCustomItemExampleComponent } from './file-uploader-custom-item/file-uploader-custom-item-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderMaxFileNumberExampleComponent } from './file-uploader-max-file-number/file-uploader-max-file-number-example';
+import { FileUploaderExpertExampleComponent } from './file-uploader-expert/file-uploader-expert-example';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 
 
 const EXAMPLES = [
@@ -31,7 +35,8 @@ const EXAMPLES = [
   FileUploaderValidationExampleComponent,
   FileUploaderWithRequestExampleComponent,
   FileUploaderMaxFileNumberExampleComponent,
-  FileUploaderCustomItemExampleComponent
+  FileUploaderCustomItemExampleComponent,
+  FileUploaderExpertExampleComponent
 ];
 
 @NgModule({
@@ -39,8 +44,11 @@ const EXAMPLES = [
     NxFileUploaderModule,
     NxIconModule,
     NxRadioModule,
+    NxButtonModule,
     NxRadioToggleModule,
     ExamplesSharedModule,
+    NxFormfieldModule,
+    NxInputModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES],
@@ -59,7 +67,8 @@ export class FileExamplesModule {
       'file-uploader-validation': FileUploaderValidationExampleComponent,
       'file-uploader-with-request': FileUploaderWithRequestExampleComponent,
       'file-uploader-max-file-number': FileUploaderMaxFileNumberExampleComponent,
-      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent
+      'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
+      'file-uploader-expert': FileUploaderExpertExampleComponent,
     };
   }
 }
