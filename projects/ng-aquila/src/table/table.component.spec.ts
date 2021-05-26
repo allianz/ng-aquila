@@ -17,6 +17,8 @@ abstract class TableTest {
 describe(NxTableComponent.name, () => {
   const ZEBRA_CSS_CLASS = 'nx-table--zebra';
   const CONDENSED_CSS_CLASS = 'nx-table--condensed';
+  const STICKY_FIRST_CSS_CLASS = 'nx-table--sticky-first';
+  const STICKY_LAST_CSS_CLASS = 'nx-table--sticky-last';
 
   let fixture: ComponentFixture<TableTest>;
   let testInstance: TableTest;
@@ -108,6 +110,20 @@ describe(NxTableComponent.name, () => {
       tableInstance.condensed = true;
       fixture.detectChanges();
       expect(tableElement.nativeElement.classList.contains(CONDENSED_CSS_CLASS)).toBeTruthy();
+    });
+
+    it('sticky set to first should add a corresponding class', () => {
+      createTestComponent(SimpleTableComponent);
+      tableInstance.sticky = "first";
+      fixture.detectChanges();
+      expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
+      tableInstance.sticky = "last";
+      fixture.detectChanges();
+      expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();
+      tableInstance.sticky = "both";
+      fixture.detectChanges();
+      expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
+      expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();
     });
   });
 });

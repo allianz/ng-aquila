@@ -6,6 +6,8 @@ $vertical-padding: nx-spacer(s);
 $condensed-vertical-padding: nx-spacer(2xs);
 $horizontal-padding: nx-spacer(s);
 $horizontal-padding-edges: nx-spacer(2xs);
+$sticky-shadow-offset: nx-spacer(s);
+$sticky-shadow-size: nx-spacer(m);
 
 :host {
   border-spacing: 0;
@@ -141,7 +143,6 @@ $horizontal-padding-edges: nx-spacer(2xs);
     }
   }
 
-
   :host(.nx-table--condensed) & {
     .nx-expandable-table-cell__wrapper {
       padding-bottom: $condensed-vertical-padding - $cell-border-width;
@@ -160,7 +161,7 @@ $horizontal-padding-edges: nx-spacer(2xs);
       }
     }
 
-    &:nth-child(4n+2) {
+    &:nth-child(4n + 2) {
       @include var(background, zebra-table-odd-row-background-color);
 
       + .nx-table-row:not(.is-selected) {
@@ -185,7 +186,10 @@ $horizontal-padding-edges: nx-spacer(2xs);
     }
 
     &.nx-table-row--selectable.is-selected:hover {
-      @include var(background, selectable-table-row-selected-hover-background-color);
+      @include var(
+        background,
+        selectable-table-row-selected-hover-background-color
+      );
     }
   }
 }
@@ -219,7 +223,10 @@ $horizontal-padding-edges: nx-spacer(2xs);
   }
 
   &.nx-table-row--selectable.is-selected:hover {
-    @include var(background, selectable-table-row-selected-hover-background-color);
+    @include var(
+      background,
+      selectable-table-row-selected-hover-background-color
+    );
   }
 
   &.is-selected,
@@ -281,5 +288,40 @@ $horizontal-padding-edges: nx-spacer(2xs);
   // fix alignment on IE
   nx-link a {
     display: inline-flex;
+  }
+}
+
+// sticky columns
+@include media-breakpoint-up(medium) {
+  ::ng-deep .nx-header-cell,
+  ::ng-deep .nx-table-cell {
+    :host(.nx-table--sticky-first) &:first-child,
+    :host(.nx-table--sticky-last) &:last-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background-color: var(--table-sticky-column-background-color);
+
+      &::before {
+        box-shadow: $sticky-shadow-size 0 $sticky-shadow-offset
+          (-$sticky-shadow-size) v(shadow-large-color) inset;
+        right: -$sticky-shadow-size;
+        width: $sticky-shadow-size;
+        top: -1px;
+        bottom: -1px;
+        position: absolute;
+        content: " ";
+      }
+    }
+
+    :host(.nx-table--sticky-last) &:last-child {
+      right: 0;
+
+      &::before {
+        left: -$sticky-shadow-size;
+        box-shadow: -$sticky-shadow-size 0 $sticky-shadow-offset
+          (-$sticky-shadow-size) v(shadow-large-color) inset;
+      }
+    }
   }
 }

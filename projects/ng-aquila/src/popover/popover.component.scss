@@ -5,7 +5,7 @@ $popover-arrow-offset: -#{$popover-arrow-size / 2 - nx-border-size(xs)};
 $popover-border-radius: nx-border-radius(s);
 $popover-border-size: nx-border-size(xs);
 
-$arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) rgba(65, 65, 65, 0.5);
+$arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) v(shadow-grey-color);
 
 .nx-popover__content {
   @include type-style(popover-content);

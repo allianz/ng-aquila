@@ -183,6 +183,11 @@ $nx-theme: (
   button-large-font-weight: 600,
   button-large-letter-spacing: 1px,
 
+  shadow-small-color: rgba(0, 0, 0, .8),
+  shadow-large-color: rgba(0, 0, 0, .8),
+  shadow-small: 0 2px 4px var(--shadow-color),
+  shadow-large: 0 8px 24px var(--shadow-large-color),
+
   /************* COMPONENT SPECIFIC MAPPINGS *************/
   accordion-regular-font-size: heading-04-font-size,
   accordion-regular-line-height: heading-04-line-height,
@@ -928,7 +933,7 @@ $nx-theme: (
 
   message-text-color: text-01,
   message-close-icon-color: message-text-color,
-  message-box-shadow: 0 2px 4px rgba(65, 65, 65, 0.5),
+  message-box-shadow: shadow-small,
   message-border-radius: 4px,
 
   message-regular-background-color: ui-01,
@@ -1299,6 +1304,9 @@ $nx-theme: (
 
   table-row-background-color: transparent,
 
+  // Sticky column can never be transparent
+  table-sticky-column-background-color: ui-03,
+
   // Selectable table
   selectable-table-row-hover-background-color: ui-02,
   selectable-table-row-active-background-color: ui-02,
@@ -1358,7 +1366,7 @@ $nx-theme: (
 
   sidepanel-background-color: ui-02,
   sidepanel-close-icon-color: text-01,
-  sidepanel-floating-shadow: none,
+  sidepanel-floating-shadow: shadow-large,
   sidepanel-light-border-color: ui-04,
   sidepanel-light-background-color: ui-03,
 

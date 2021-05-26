@@ -6,7 +6,7 @@
   .desktop-box {
     background: var(--ui-01);
     width: 200px;
-    box-shadow: 0 2px 4px rgba(65,65,65,.5);
+    box-shadow: shadow-small;
     border-radius: 4px;
     padding: 12px;
     text-align: center;
@@ -18,7 +18,7 @@
     align-items: center;
     background: var(--interactive-primary);
     color: var(--text-02);
-    box-shadow: 0 2px 4px rgba(65,65,65,.5);
+    box-shadow: shadow-small;
     border-radius: 50%;
     padding: 12px 0;
     height: 48px;

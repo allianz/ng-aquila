@@ -25,6 +25,14 @@ Using attribute `zebra`, you can activate the zebra mode of the Table.
 
 <!-- example(table-zebra) -->
 
+### Sticky columns
+
+Using attribute `sticky`, you can make first or last column (or both of them at the same time) of the table be displayed as "sticky", by setting its value to `first`, `last` or `both` respectively.
+
+Please note that you are only allowed to make the first and/or last column sticky, to prohibit covering too much screen estate by fixed columns. For the same reason, this setting won't have effect on mobile screens.
+
+<!-- example(table-sticky) -->
+
 ### Sorting header
 
 This example shows how you can implement a basic sorting functionality for a table with `nxSort` and `nxSortHeaderCell`. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an `(sortChange)` event is outputted.

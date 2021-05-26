@@ -126,7 +126,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   left: 50%;
   transform: translate(-50%, 1px) rotate(45deg);
   position: absolute;
-  box-shadow: -2px -2px 1px 1px v(slider-value-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, .5);
+  box-shadow: -2px -2px 1px 1px v(slider-value-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) v(shadow-grey-color);
   @include var(background, slider-value-background-color);
   @include var(border-color, slider-handle-border-color);
 }

@@ -9,10 +9,13 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
   selector: 'table[nxTable]',
   template: '<ng-content></ng-content>',
   styleUrls: ['./table.component.scss'],
+  inputs: ['sticky'],
   host: {
     'class': 'nx-table',
     '[class.nx-table--condensed]': 'condensed',
-    '[class.nx-table--zebra]': 'zebra'
+    '[class.nx-table--zebra]': 'zebra',
+    '[class.nx-table--sticky-first]': 'sticky === "first" || sticky === "both"',
+    '[class.nx-table--sticky-last]': 'sticky === "last" || sticky === "both"'
   },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -21,6 +24,8 @@ export class NxTableComponent {
   private _condensed: boolean;
 
   private _zebra: boolean;
+
+  private _sticky: string;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
@@ -49,6 +54,20 @@ export class NxTableComponent {
 
   get zebra(): boolean {
     return this._zebra;
+  }
+
+  /**
+   * Makes first or last column "sticky".
+   *
+   * Values: first | last | both
+   */
+   @Input() set sticky(value: string) {
+    this._sticky = value;
+    this._changeDetectorRef.markForCheck();
+   }
+
+  get sticky(): string {
+    return this._sticky;
   }
 
   static ngAcceptInputType_condensed: BooleanInput;
