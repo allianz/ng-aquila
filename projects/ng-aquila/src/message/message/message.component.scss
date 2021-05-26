@@ -10,10 +10,6 @@ $border-size: nx-border-size(xs);
   @include message-layout();
 }
 
-.nx-message__content-wrapper {
-  max-width: 100%;
-}
-
 :host, :host(.context-regular) {
   @include var(border-color, message-regular-border-color);
   @include var(background-color, message-regular-background-color);
@@ -55,29 +51,9 @@ $border-size: nx-border-size(xs);
   }
 }
 
-:host(.context-info),
-:host(.context-warning),
-:host(.context-success),
-:host(.context-error) {
-
-  .nx-message__icon ~ .nx-message__content-wrapper {
-    @include media-breakpoint-response(mobile) {
-      .nx-message__content {
-        display: inline;
-        margin-left: message-padding(nx-spacer(2m));
-
-        [dir="rtl"] & {
-          margin-left: initial;
-          margin-right: message-padding(nx-spacer(2m));
-        }
-      }
-    }
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    .nx-message__icon {
-      color: windowText;
-    }
+@media screen and (-ms-high-contrast: active) {
+  .nx-message__icon {
+    color: windowText;
   }
 }
 
@@ -85,12 +61,18 @@ $border-size: nx-border-size(xs);
   margin-right: nx-spacer(s);
 
   @include media-breakpoint-response(mobile) {
-    position: absolute;
+    float: left;
+    margin-right: nx-spacer(2xs);
   }
 
   :host-context([dir="rtl"]) & {
+    float: right;
     margin-right: initial;
     margin-left: nx-spacer(s);
+
+    @include media-breakpoint-response(mobile) {
+      margin-left: nx-spacer(2xs);
+    }
   }
 }
 

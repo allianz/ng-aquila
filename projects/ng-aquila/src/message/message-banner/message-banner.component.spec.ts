@@ -36,13 +36,13 @@ describe('NxMessageBannerComponent', () => {
     componentInstance.context = context;
     fixture.detectChanges();
     expect(fixture.nativeElement.querySelector('nx-message-banner').getAttribute('class')).toContain(className);
-    expect(fixture.nativeElement.querySelector('.nx-message-banner__icon')).toBeTruthy();
+    expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
   }
 
   function setContextAndAssertIcon(context: BANNER_CONTEXT, iconName: string) {
     testInstance.context = context;
     fixture.detectChanges();
-    expect(componentInstance.getIconName()).toBe(iconName);
+    expect(componentInstance._iconName).toBe(iconName);
   }
 
   beforeEach(
@@ -78,14 +78,14 @@ describe('NxMessageBannerComponent', () => {
 
     it('should render an info context per default', () => {
       createTestComponent(BasicMessageBannerComponent);
-      expect(componentInstance.getIconName()).toBe('info-circle');
+      expect(componentInstance._iconName).toBe('info-circle');
     });
 
     it('should show the icon', () => {
       createTestComponent(BasicMessageBannerComponent);
       setContextAndAssertClass('warning', 'context-warning');
       fixture.detectChanges();
-      expect(fixture.nativeElement.querySelector('.nx-message-banner__icon')).toBeTruthy();
+      expect(fixture.nativeElement.querySelector('.nx-message__icon')).toBeTruthy();
     });
 
     it('should change the icon on context change', () => {
@@ -93,7 +93,7 @@ describe('NxMessageBannerComponent', () => {
       fixture.detectChanges();
       setContextAndAssertIcon('error', 'exclamation-triangle');
       setContextAndAssertIcon('info', 'info-circle');
-      setContextAndAssertIcon('warning', 'exclamation-circle');
+      setContextAndAssertIcon('warning', 'exclamation-circle-warning');
     });
   });
 
@@ -102,7 +102,7 @@ describe('NxMessageBannerComponent', () => {
     it('should emit a `close` event on click', () => {
       createTestComponent(ClosableMessageBannerComponent);
       spyOn(componentInstance.closeEvent, 'emit');
-      const closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       dispatchMouseEvent(closeButton, 'click');
       fixture.detectChanges();
       expect(componentInstance.closeEvent.emit).toHaveBeenCalled();
@@ -110,12 +110,12 @@ describe('NxMessageBannerComponent', () => {
 
     it('should have the proper closable class', () => {
       createTestComponent(ClosableMessageBannerComponent);
-      expect(fixture.nativeElement.querySelector('nx-message-banner').classList).toContain('nx-message-banner--closable');
+      expect(fixture.nativeElement.querySelector('nx-message-banner').classList).toContain('nx-message--closable');
     });
 
     it('should not submit form on closing', () => {
       createTestComponent(ClosableMessageBannerWithFormComponent);
-      const closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       closeButton.click();
       expect((testInstance as ClosableMessageBannerWithFormComponent).submitted).toBe(false);
     });
@@ -125,11 +125,11 @@ describe('NxMessageBannerComponent', () => {
 
     it('should update after closable change', () => {
       createTestComponent(MessageBannerOnPushComponent);
-      let closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      let closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       expect(closeButton).not.toBeNull();
       componentInstance.closable = false;
       fixture.detectChanges();
-      closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       expect(closeButton).toBeNull();
     });
 
@@ -137,12 +137,12 @@ describe('NxMessageBannerComponent', () => {
       createTestComponent(MessageBannerOnPushComponent);
       componentInstance.closable = true;
       fixture.detectChanges();
-      let closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      let closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       expect(closeButton.getAttribute('aria-label')).toEqual('Close dialog');
 
       componentInstance.closeButtonLabel = 'Close dialog 2';
       fixture.detectChanges();
-      closeButton = fixture.nativeElement.querySelector('.nx-message-banner__close-icon');
+      closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
       expect(closeButton.getAttribute('aria-label')).toEqual('Close dialog 2');
     });
 

@@ -1,17 +1,18 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
   ChangeDetectorRef,
-  Output,
   EventEmitter,
   ViewChild,
+  Output,
+  HostBinding,
+  Input,
   ElementRef,
-  OnDestroy,
-  AfterViewInit
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy
 } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** The contextual type of a message. */
 export type CONTEXT = 'regular' | 'info' | 'error' | 'success' | 'warning';
@@ -20,7 +21,7 @@ const ICONS = {
   info: 'info-circle',
   error: 'exclamation-triangle',
   success: 'check-circle',
-  warning: 'exclamation-circle'
+  warning: 'exclamation-circle-warning'
 };
 
 @Component({
@@ -28,18 +29,32 @@ const ICONS = {
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  exportAs: 'nxMessage',
-  host: {
-    '[class.context-info]': 'context === "info"',
-    '[class.context-error]': 'context === "error"',
-    '[class.context-success]': 'context === "success"',
-    '[class.context-warning]': 'context === "warning"',
-    '[class.nx-message--closable]': 'closable'
-  }
+  exportAs: 'nxMessage'
 })
-export class NxMessageComponent implements AfterViewInit, OnDestroy {
+export class NxMessageComponent implements AfterViewInit, OnDestroy  {
+  _context: CONTEXT = 'regular';
 
-  private _context: CONTEXT = 'regular';
+  @HostBinding('class.context-info')
+  get _isInfo() {
+    return this._context === 'info';
+  }
+
+  @HostBinding('class.context-success')
+  get _isSuccess() {
+    return this._context === 'success';
+  }
+
+  @HostBinding('class.context-warning')
+  get _isWarning() {
+    return this._context === 'warning';
+  }
+
+  @HostBinding('class.context-error')
+  get _isError() {
+    return this._context === 'error';
+  }
+
+  _allowedContexts: CONTEXT[] = ['regular', 'info', 'error', 'warning', 'success'];
 
   @ViewChild('closeButton') _closeButton: ElementRef;
 
@@ -48,19 +63,16 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
    * The message box will color accordingly. Default: 'regular' */
   @Input('nxContext')
   set context(value: CONTEXT) {
-    if (value !== this._context) {
-      this._context = value;
-      this._icon = this.getIconName();
-      this._changeDetectorRef.markForCheck();
-    }
+    this._updateContext(value);
   }
   get context(): CONTEXT {
-    return this._context;
+    return this._context as CONTEXT;
   }
 
-  private _closable: boolean = false;
+  _closable: boolean = false;
 
   /** Whether a message should have a close icon in order to be dismissed. */
+  @HostBinding('class.nx-message--closable')
   @Input()
   set closable(value: boolean) {
     const newValue = coerceBooleanProperty(value);
@@ -71,13 +83,6 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
   }
   get closable(): boolean {
     return this._closable;
-  }
-
-  private _icon: string;
-
-  /** @docs-private */
-  get icon(): string {
-    return this._icon;
   }
 
   private _closeButtonLabel: string = 'Close dialog';
@@ -99,7 +104,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
-    private _focusMonitor: FocusMonitor
+    private _focusMonitor: FocusMonitor,
   ) {}
 
   ngAfterViewInit() {
@@ -112,25 +117,24 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     this._focusMonitor.stopMonitoring(this._closeButton);
   }
 
-  /** @docs-private */
   _emitCloseEvent() {
     this.closeEvent.emit();
   }
 
-  /** @docs-private */
-  getIconName(): string {
-    if (this._context === 'info') {
-      return ICONS.info;
-    } else if (this._context === 'error') {
-      return ICONS.error;
-    } else if (this._context === 'success') {
-      return ICONS.success;
-    } else if (this._context === 'warning') {
-      return ICONS.warning;
-    }
-    return '';
+  get _iconName(): string {
+    const context = this._allowedContexts.indexOf(this._context) >= 0
+      ? this._context
+      : this._allowedContexts[0];
+
+    return ICONS[context];
   }
 
-  static ngAcceptInputType_showIcon: BooleanInput;
+  _updateContext(value: CONTEXT) {
+    if (value !== this._context) {
+      this._context = value;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+
   static ngAcceptInputType_closable: BooleanInput;
 }

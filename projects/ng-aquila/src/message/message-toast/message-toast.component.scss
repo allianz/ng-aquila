@@ -1,69 +1,10 @@
 @import '../../shared-styles/index';
 
-$border-size: nx-border-size(xs);
-
-@function message-padding($padding) {
-  @return $padding - $border-size;
-}
-
-:host {
-  @include message-layout();
+nx-message {
   @include var(box-shadow, message-box-shadow);
   max-width: 352px;
-  padding-left: message-padding(nx-spacer(xl));
-  margin: nx-spacer(xs) 0;
 
-  @include media-breakpoint-response(mobile) {
-    // overwrite the inline message styles
-    padding: message-padding(nx-spacer(m)) message-padding(nx-spacer(m)) message-padding(nx-spacer(m)) message-padding(nx-spacer(xl));
-  }
-
-  [dir="rtl"] & {
-    padding-left: message-padding(nx-spacer(m));
-    padding-right: message-padding(nx-spacer(xl));
-
-    @include media-breakpoint-response(mobile) {
-      // overwrite the inline message styles
-      padding: message-padding(nx-spacer(m)) message-padding(nx-spacer(xl)) message-padding(nx-spacer(m)) message-padding(nx-spacer(m));
-    }
-  }
-}
-
-:host(.context-info) {
-  @include var(border-color, message-info-border-color);
-  @include var(background-color, message-info-background-color);
-
-  .nx-message__icon {
-    @include var(color, message-info-icon-color);
-  }
-}
-
-:host(.context-success) {
-  @include var(border-color, message-success-border-color);
-  @include var(background-color, message-success-background-color);
-
-  .nx-message__icon {
-    @include var(color, message-success-icon-color);
-  }
-}
-
-:host(.context-info),
-:host(.context-success) {
-
-  @media screen and (-ms-high-contrast: active) {
-    .nx-message__icon {
-      color: windowText;
-    }
-  }
-}
-
-.nx-message__icon {
-  position: absolute;
-  top: message-padding(nx-spacer(m));
-  left: message-padding(nx-spacer(m));
-
-  :host-context([dir="rtl"]) & {
-    left: auto;
-    right: message-padding(nx-spacer(m));
+  @include media-breakpoint-down(small) {
+    max-width: calc(100vw - #{nx-spacer(s)});
   }
 }

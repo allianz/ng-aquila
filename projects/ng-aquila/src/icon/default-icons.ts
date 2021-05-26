@@ -13,6 +13,7 @@ export class NxDefaultIcons {
   'password-hide-o'?: string;
   'info-circle'?: string;
   'exclamation-circle'?: string;
+  'exclamation-circle-warning'?: string;
   'arrow-first'?: string;
   'arrow-left'?: string;
   'arrow-right'?: string;
@@ -59,3 +60,5 @@ export const DEFAULT_ICONS: { [k in keyof NxDefaultIcons]: string } = {
   'calendar': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4V1h2v2h6V1h2v2zM4 9v10h16V9H4zm2 4h5v4H6v-4z"/></svg>',
   'close': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
 };
+
+DEFAULT_ICONS['exclamation-circle-warning'] = DEFAULT_ICONS['exclamation-circle'];

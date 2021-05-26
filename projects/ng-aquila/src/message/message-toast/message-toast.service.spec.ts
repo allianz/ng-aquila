@@ -83,13 +83,13 @@ describe('NxMessageToast', () => {
       expect(overlayContainerElement.textContent!.trim()).toBe('Third message toast');
     }));
 
-    it('should reflect config in the template', fakeAsync(() => {
+    it('should reflect config in the template', () => {
       messageToastService.open(text, { context: 'success', duration: 0 });
       fixture.detectChanges();
 
-      const messageElement = overlayContainerElement.querySelector('nx-message-toast.context-success')!;
+      const messageElement = overlayContainerElement.querySelector('nx-message.context-success')!;
       expect(messageElement.textContent).toBeTruthy();
-    }));
+    });
   });
 
   describe('open from template', () => {
@@ -113,7 +113,7 @@ describe('NxMessageToast', () => {
       messageToastService.openFromTemplate(templateFixture.componentInstance.templateRef, { context: 'success' });
       templateFixture.detectChanges();
 
-      const containerElement = overlayContainerElement.querySelector('nx-message-toast.context-success')!;
+      const containerElement = overlayContainerElement.querySelector('nx-message.context-success')!;
       expect(containerElement.textContent).toContain('Testing template');
     });
 

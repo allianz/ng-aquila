@@ -222,7 +222,6 @@ $border-size: nx-border-size(xs);
   padding: message-padding(nx-spacer(m));
 
   @include media-breakpoint-response(mobile) {
-    padding: message-padding(nx-spacer(2m));
     display: block;
   }
 
@@ -246,7 +245,6 @@ $border-size: nx-border-size(xs);
 
   nx-icon {
     @include var(color, message-close-icon-color);
-    font-size: nx-font-size(3xs);
   }
 
   :host-context([dir="rtl"]) & {

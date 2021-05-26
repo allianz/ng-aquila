@@ -9,13 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./message-banner-example.css']
 })
 export class MessageBannerExampleComponent {
-  infoBannerClosed: boolean = false;
-  warningBannerClosed: boolean = false;
-  errorBannerClosed: boolean = false;
+  infoBanner: boolean = true;
+  warningBanner: boolean = true;
+  errorBanner: boolean = true;
 
   showAllBanners() {
-    this.infoBannerClosed = false;
-    this.warningBannerClosed = false;
-    this.errorBannerClosed = false;
+    this.infoBanner = true;
+    this.warningBanner = true;
+    this.errorBanner = true;
   }
 }

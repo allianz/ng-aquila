@@ -7,8 +7,6 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
 import { NxFontIcon, NxSvgIcon, NxSvgIconLiteral, NxSvgIconFromUrl } from './icons';
 import { DEFAULT_ICONS } from './default-icons';
 

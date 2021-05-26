@@ -1,8 +1,10 @@
-<nx-icon *ngIf="context !== 'regular'"
-         class="nx-message__icon"
-         [name]="icon"
-         size="s">
+<nx-icon *ngIf="_iconName"
+  class="nx-message__icon"
+  [name]="_iconName"
+  size="s"
+  aria-hidden="true">
 </nx-icon>
+
 <button #closeButton
   *ngIf="closable"
   (click)="_emitCloseEvent()"
@@ -17,9 +19,6 @@
     </nx-icon>
 </button>
 
-
-<div class="nx-message__content-wrapper">
-  <div class="nx-message__content">
-    <ng-content></ng-content>
-  </div>
+<div class="nx-message__content">
+  <ng-content></ng-content>
 </div>

@@ -46,7 +46,7 @@ describe('NxMessageComponent', () => {
     fixture.detectChanges();
     const icon = fixture.nativeElement.querySelector('.nx-message__icon') as HTMLButtonElement;
     expect(icon).toBeTruthy();
-    expect(componentInstance.getIconName()).toBe(iconName);
+    expect(componentInstance._iconName).toBe(iconName);
   }
 
   beforeEach(
@@ -99,7 +99,7 @@ describe('NxMessageComponent', () => {
       setContextAndAssertIcon('info', 'info-circle');
       setContextAndAssertIcon('error', 'exclamation-triangle');
       setContextAndAssertIcon('success', 'check-circle');
-      setContextAndAssertIcon('warning', 'exclamation-circle');
+      setContextAndAssertIcon('warning', 'exclamation-circle-warning');
     });
   });
 

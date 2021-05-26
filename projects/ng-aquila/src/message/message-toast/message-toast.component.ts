@@ -2,14 +2,9 @@ import { Component, OnDestroy, ViewChild, NgZone, ChangeDetectorRef, ComponentRe
 import { messageToastAnimations } from './message-toast-animations';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { Subject } from 'rxjs';
-import { NxMessageToastConfig, NxMessageToastData } from './message-toast-config';
+import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from './message-toast-config';
 import { take } from 'rxjs/operators';
 import { AnimationEvent } from '@angular/animations';
-
-const ICONS = {
-  info: 'info-circle',
-  success: 'check-circle',
-};
 
 /**
  * Internal component that wraps user-provided message toastcontent.
@@ -21,8 +16,6 @@ const ICONS = {
   styleUrls: ['./message-toast.component.scss'],
   host: {
     '[attr.role]': '_role',
-    '[class.context-info]': '_context === "info"',
-    '[class.context-success]': '_context === "success"',
     '[@state]': '_animationState',
     '(@state.done)': 'onAnimationEnd($event)'
   },
@@ -48,7 +41,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   /** ARIA role for the message toastcontainer. */
   _role: 'alert' | 'status' | null;
 
-  _context;
+  _context: NxMessageToastContext;
 
   constructor(
     private _ngZone: NgZone,
@@ -136,12 +129,8 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     }
   }
 
-  _getIconName(): string {
-    return this._context === 'success' ? ICONS.success : ICONS.info;
-  }
-
   _setAriaLabels() {
-     // Based on the ARIA spec, `alert` and `status` roles have an
+    // Based on the ARIA spec, `alert` and `status` roles have an
     // implicit `assertive` and `polite` politeness respectively.
     if (this.config.politeness === 'assertive' && !this.config.announcementMessage) {
       this._role = 'alert';
