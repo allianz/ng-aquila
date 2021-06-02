@@ -11,5 +11,5 @@
     <span *ngIf="circleText" class="nx-toggle-circle__content-text">{{circleText}}</span>
   </span>
 </div>
-<span [class.is-label-bold]="hint" class="nx-toggle-circle__label-text">{{label}}</span>
+<span *ngIf="label" [class.is-label-bold]="hint" class="nx-toggle-circle__label-text">{{label}}</span>
 <span *ngIf="hint" class="nx-toggle-circle__label-hint">{{hint}}</span>

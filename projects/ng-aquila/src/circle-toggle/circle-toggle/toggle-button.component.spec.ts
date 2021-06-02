@@ -74,6 +74,12 @@ describe('NxToggleButton', () => {
     expect(input.id).toBe(label.htmlFor);
   });
 
+  it('should display the label', () => {
+    createTestComponent(SimpleCircleToggleButtonComponent);
+    const textElement = nativeToggleComponent.querySelector('.nx-toggle-circle__label-text');
+    expect(textElement).toBeTruthy();
+  });
+
   it('should work in template driven forms using ngModel', fakeAsync(() => {
 
     function setValueInModel(value: boolean) {
@@ -134,6 +140,11 @@ describe('NxToggleButton', () => {
       toggleComponent.label = 'New label';
       fixture.detectChanges();
       expect(textElement.textContent.trim()).toBe('New label');
+
+      toggleComponent.label = '';
+      fixture.detectChanges();
+      const emptyTextElement = nativeToggleComponent.querySelector('.nx-toggle-circle__label-text');
+      expect(emptyTextElement).toBeFalsy();
     });
 
     it('should update view on hint change', () => {
