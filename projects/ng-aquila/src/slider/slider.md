@@ -75,3 +75,9 @@ The slider can be used in reactive forms.
 The thumb label on top of the slider can be hidden by changing the `[thumbLabel]` input property to false.
 
 <!-- example(slider-thumb) -->
+
+### Hide Min/Max labels
+
+The Min/Max labels under the slider can be hidden by changing the `[hideLabels]` input property to true.
+
+<!-- example(slider-labels) -->

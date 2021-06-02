@@ -13,6 +13,7 @@ import { SliderReactiveExampleComponent } from './slider-reactive/slider-reactiv
 import { SliderTemplateExampleComponent } from './slider-template/slider-template-example';
 import { SliderTextualExampleComponent } from './slider-textual/slider-textual-example';
 import { SliderThumbExampleComponent } from './slider-thumb/slider-thumb-example';
+import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
@@ -26,7 +27,8 @@ const EXAMPLES = [
   SliderReactiveExampleComponent,
   SliderTemplateExampleComponent,
   SliderTextualExampleComponent,
-  SliderThumbExampleComponent
+  SliderThumbExampleComponent,
+  SliderLabelsExampleComponent
 ];
 
 @NgModule({
@@ -52,6 +54,7 @@ export class SliderExamplesModule {
       'slider-template': SliderTemplateExampleComponent,
       'slider-textual': SliderTextualExampleComponent,
       'slider-thumb': SliderThumbExampleComponent,
+      'slider-labels': SliderLabelsExampleComponent
     };
   }
 }

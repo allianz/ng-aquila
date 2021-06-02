@@ -173,6 +173,17 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     return this._negative;
   }
 
+  private _hideLabels: boolean = false;
+  /** Hides the min/max labels (Default: 'false'). */
+  @Input('hideLabels')
+  set hideLabels(value: boolean) {
+      this._hideLabels = coerceBooleanProperty(value);
+      this._changeDetectorRef.markForCheck();
+  }
+  get hideLabels(): boolean {
+    return this._hideLabels;
+  }
+
   /** An event is dispatched on each value change. */
   @Output('nxValueChange') valueChange: EventEmitter<number> = new EventEmitter<number>();
 
@@ -520,4 +531,5 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   static ngAcceptInputType_thumbLabel: BooleanInput;
   static ngAcceptInputType_negative: BooleanInput;
   static ngAcceptInputType_value: NumberInput;
+  static ngAcceptInputType_hideLabels: BooleanInput;
 }

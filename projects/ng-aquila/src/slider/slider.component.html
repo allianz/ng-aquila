@@ -32,7 +32,7 @@
   </span>
 </div>
 
-<div class="nx-slider__label-container">
+<div *ngIf="!hideLabels" class="nx-slider__label-container">
     <span class="nx-slider__value-label">{{formatLabelLeft()}}</span>
     <span class="nx-slider__value-label">{{formatLabelRight()}}</span>
 </div>
