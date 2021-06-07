@@ -2,7 +2,6 @@ import { ViewChild, Type, Component, Directive } from '@angular/core';
 import { NxFooterComponent } from './footer.component';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxFooterModule } from './footer.module';
-import * as axe from 'axe-core';
 
 @Directive()
 abstract class FooterTest {
@@ -63,12 +62,9 @@ describe(NxFooterComponent.name, () => {
 
   });
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicFooter);
-      axe.run(fixture.nativeElement, {},  (_: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

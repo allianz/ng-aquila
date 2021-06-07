@@ -3,12 +3,9 @@ import { Component, Type, ViewChild, DebugElement, Directive } from '@angular/co
 import { NxPaginationComponent } from './pagination.component';
 import { NxPaginationModule } from './pagination.module';
 import { By } from '@angular/platform-browser';
-import * as axe from 'axe-core';
 import { NX_PAGINATION_TEXTS, IPaginationTexts } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
 import { Direction, BidiModule } from '@angular/cdk/bidi';
-
-declare var viewport: any;
 
 // We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -322,20 +319,10 @@ describe('NxPaginationComponent', () => {
     });
   });
 
-  // The test fails because the disabled styles of the NEXT/PREVIOUS button is not conform with the contrast requirements
-  // It was aligned with the designers that disabled elements should not fulfill the contrast requirements
-  // tslint:disable-next-line:no-disabled-tests
-  xdescribe('a11y', () => {
-
-    it('has no accessibility violations', function (done) {
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
       createTestComponent(SimplePagination);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

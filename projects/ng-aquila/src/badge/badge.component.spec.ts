@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { NxBadgeModule } from './badge.module';
 import { NxBadgeComponent, NxBadgeType } from './badge.component';
 
@@ -62,13 +61,11 @@ describe('NxBadgeComponent', () => {
       expect(badgeNativeElement.classList.contains('nx-badge--critical')).toBe(true);
     });
   });
+
   describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(DefaultBadgeComponent);
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

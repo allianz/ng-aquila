@@ -6,7 +6,6 @@ import { ReactiveFormsModule,
   Validators,
   FormGroup
 } from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxSelectableCardComponent } from './selectable-card.component';
 import { NxCardModule } from './card.module';
@@ -158,32 +157,14 @@ describe('NxSelectableCardComponent', () => {
   });
 
   describe('a11y', () => {
-    it('default card has no accessibility violations', function(done) {
+    it('default card has no accessibility violations', async () => {
       createTestComponent(BasicSelectableCard);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
-    it('expert card has no accessibility violations', function(done) {
+    it('expert card has no accessibility violations', async () => {
       createTestComponent(ExpertSelectableCard);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     it('should use nx-error IDs for aria-describedby', fakeAsync(() => {

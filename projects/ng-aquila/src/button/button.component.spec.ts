@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NxButtonComponent } from './button.component';
 import { NxButtonModule } from './button.module';
@@ -313,13 +312,9 @@ class ConfigurableOnPushIconButton extends ButtonTest {
     });
 
     describe('a11y', () => {
-      it('has no accessibility violations', function(done) {
+      it('has no accessibility violations', async () => {
         createTestComponent(testTarget.basic);
-
-        axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          done();
-        });
+        return expectAsync(fixture.nativeElement).toBeAccessible();
       });
     });
   });

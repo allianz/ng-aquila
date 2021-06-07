@@ -6,8 +6,6 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxProgressStepperComponent } from './progress.component';
 
-import * as axe from 'axe-core';
-
 // We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
 
@@ -85,14 +83,9 @@ describe('NxProgressStepperComponent', () => {
   );
 
   describe('a11y', () => {
-
-    it('has no accessibility violations for basic use case', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(ProgressBasicTest);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

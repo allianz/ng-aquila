@@ -2,7 +2,6 @@ import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angul
 import { DebugElement, Type, Component, ViewChild, Directive, QueryList, ViewChildren } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
-import * as axe from 'axe-core';
 import { NxComparisonTableIntersectionCell } from './intersection-cell.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';
@@ -126,18 +125,9 @@ describe('NxComparisonTableIntersectionCell', () => {
       expect(intersectionCellElements[0].attributes['rowspan']).toBe('3');
     }));
 
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(IntersectionCellComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     afterEach(() => {

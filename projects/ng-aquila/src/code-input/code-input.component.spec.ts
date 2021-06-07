@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Injectable, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { NxCodeInputComponent } from './code-input.component';
 import { NxCodeInputModule } from './code-input.module';
@@ -378,13 +377,9 @@ describe('NxCodeInputComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(CodeInputTest1);
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

@@ -3,7 +3,6 @@ import { NxTimefieldComponent } from './timefield.component';
 import { Directive, ViewChild, Type, Component, ChangeDetectionStrategy, Injectable } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NxTimefieldModule } from './timefield.module';
-import * as axe from 'axe-core';
 import { NxTimefieldIntl } from './timefield-intl';
 
 @Directive()
@@ -372,15 +371,11 @@ describe('NxTimefieldComponent', () => {
 
   });
   describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(SimpleTimefield);
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
+
     it('should overwrite the default aria labels', () => {
       createTestComponent(OverrideDefaultLabelsTimefield);
       expect(inputElementHours.getAttribute('aria-label')).toBe('stunden');

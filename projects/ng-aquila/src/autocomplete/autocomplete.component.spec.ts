@@ -8,7 +8,6 @@ import { NxAutocompleteModule } from './autocomplete.module';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import * as axe from 'axe-core';
 
 import { NxAutocompleteComponent } from '.';
 import { NxAutocompleteTriggerDirective } from '.';
@@ -240,16 +239,10 @@ describe('NxAutocompleteComponent:', () => {
   }));
 
   describe('a11y', () => {
-
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicAutocompleteComponent);
       typeInput('A');
-      fixture.whenStable().then(() => {
-        axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          done();
-        });
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 

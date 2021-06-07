@@ -5,7 +5,6 @@ import { NxFileUploaderModule } from './file-uploader.module';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import * as axe from 'axe-core';
 import { FileItem } from './file-uploader.model';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { DOWN_ARROW, TAB, UP_ARROW } from '@angular/cdk/keycodes';
@@ -480,14 +479,9 @@ describe('NxFileUploaderComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no basic accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicFileUpload);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     it('should add aria described by for hint and label', fakeAsync(() => {

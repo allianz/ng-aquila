@@ -1,7 +1,6 @@
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxLinkComponent, NxLinkSize } from './link.component';
 import { NxLinkModule } from './link.module';
@@ -105,14 +104,9 @@ describe('NxLinkComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicLink);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        // const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

@@ -2,10 +2,8 @@ import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Elem
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from './table.module';
 import { NxTableRowComponent } from './table-row.component';
-import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
-import { dispatchMouseEvent, createKeyboardEvent, dispatchEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
-import { SPACE } from '@angular/cdk/keycodes';
+import { dispatchMouseEvent } from '../cdk-test-utils';
 
 @Directive()
 class TableRowTest {
@@ -166,13 +164,9 @@ describe(NxTableRowComponent.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicTableRowComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

@@ -2,7 +2,6 @@ import { NxSpinnerModule } from './spinner.module';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, Type, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
-import * as axe from 'axe-core';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -99,17 +98,11 @@ describe('nxSpinnerComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicTestSpinner);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
-
 });
 
 @Component( {

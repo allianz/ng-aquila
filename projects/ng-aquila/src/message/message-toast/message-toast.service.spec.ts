@@ -6,7 +6,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { NxMessageToastService } from './message-toast.service';
 import { NxMessageModule } from '../message.module';
-import * as axe from 'axe-core';
 
 describe('NxMessageToast', () => {
   let messageToastService: NxMessageToastService;
@@ -236,14 +235,10 @@ describe('NxMessageToast', () => {
       expect(containerElement.getAttribute('role')).toBeFalsy();
     });
 
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       messageToastService.open('test');
       fixture.detectChanges();
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

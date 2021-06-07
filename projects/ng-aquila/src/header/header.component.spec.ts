@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { NxHeaderComponent } from './header.component';
 import { NxHeaderModule } from './header.module';
 
@@ -126,14 +125,9 @@ describe(NxHeaderComponent.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicHeader);
-      axe.run(fixture.nativeElement, {},  (_: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

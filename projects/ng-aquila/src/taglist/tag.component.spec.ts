@@ -2,7 +2,6 @@ import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import * as axe from 'axe-core';
 
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTagComponent } from './tag.component';
@@ -136,13 +135,9 @@ describe('NxTagComponent', () => {
       expect(tagInstance.removed.emit).toHaveBeenCalledWith('bar');
     });
 
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicTag);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

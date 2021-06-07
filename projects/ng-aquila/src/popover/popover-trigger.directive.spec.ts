@@ -1,7 +1,6 @@
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Type, ViewChild, Directive, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { Subscription } from 'rxjs';
 
 import { NxPopoverTriggerDirective } from './popover-trigger.directive';
@@ -577,20 +576,11 @@ describe('NxPopoverTriggerDirective', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessbility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(PopoverClickComponent);
       buttonNativeElement.dispatchEvent(new Event('click'));
       fixture.detectChanges();
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-
-        if (violationMessages.length) {
-          console.log(violationMessages);
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 

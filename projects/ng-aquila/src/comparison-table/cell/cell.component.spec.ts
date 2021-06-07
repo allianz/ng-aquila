@@ -3,7 +3,6 @@ import { NxComparisonTableCell } from './cell.component';
 import { DebugElement, Type, Component, ViewChild, ViewChildren, Directive, QueryList } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
-import * as axe from 'axe-core';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';
 import { NxToggleSectionDirective } from '../toggle-section/toggle-section.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -202,18 +201,9 @@ describe('NxComparisonTableCell', () => {
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
     }));
 
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicCellComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     afterEach(() => {

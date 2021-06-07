@@ -3,7 +3,6 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { ChangeDetectionStrategy, Component, ElementRef, QueryList, Type, ViewChild, ViewChildren, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormsModule, NgControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
@@ -213,20 +212,9 @@ describe('NxNaturalLanguageFormComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessbility violations', done => {
+    it('has no accessibility violations', async () => {
       createTestComponent(NaturalLanguageFormBasicComponent);
-      fixture.detectChanges();
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(
-          item => item
-        );
-
-        expect(violationMessages.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     it('assigns given nxLabel to the control via aria-label', fakeAsync(() => {

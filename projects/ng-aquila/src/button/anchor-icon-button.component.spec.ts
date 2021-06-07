@@ -1,10 +1,9 @@
-import { Directive, ViewChild, Component, Type } from "@angular/core";
-import { ComponentFixture, waitForAsync, TestBed, fakeAsync } from "@angular/core/testing";
-import axe from "axe-core";
-import { NxButtonModule } from ".";
+import { Directive, ViewChild, Component, Type } from '@angular/core';
+import { ComponentFixture, waitForAsync, TestBed, fakeAsync } from '@angular/core/testing';
+import { NxButtonModule } from '.';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxAnchorButtonComponent } from "./anchor-button.component";
-import { NxAnchorIconButtonComponent } from "./anchor-icon-button.component";
+import { NxAnchorButtonComponent } from './anchor-button.component';
+import { NxAnchorIconButtonComponent } from './anchor-icon-button.component';
 
 @Directive()
 abstract class AnchorIconButtonTest {
@@ -18,7 +17,7 @@ abstract class AnchorIconButtonTest {
 })
 class AnchorButton extends AnchorIconButtonTest {}
 
-  describe("NxAnchorIconButtonComponent", () => {
+  describe('NxAnchorIconButtonComponent', () => {
     let fixture: ComponentFixture<AnchorButton>;
     let testInstance: AnchorButton;
     let buttonInstance: NxAnchorButtonComponent;
@@ -51,21 +50,17 @@ class AnchorButton extends AnchorIconButtonTest {}
 
     it('prevents default when the anchor button is disabled', fakeAsync(() => {
       createTestComponent(AnchorButton);
-      let clickSpy = jasmine.createSpy("clickSpy");
-      buttonNativeElement.addEventListener("click", clickSpy);
+      const clickSpy = jasmine.createSpy('clickSpy');
+      buttonNativeElement.addEventListener('click', clickSpy);
       buttonInstance.disabled = true;
       buttonNativeElement.click();
       expect(clickSpy).toHaveBeenCalledTimes(0);
     }));
 
     describe('a11y', () => {
-      it('has no accessibility violations', function(done) {
+      it('has no accessibility violations', async () => {
         createTestComponent(AnchorButton);
-
-        axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          done();
-        });
+        await expectAsync(fixture.nativeElement).toBeAccessible();
       });
     });
 

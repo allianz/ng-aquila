@@ -1,7 +1,6 @@
 import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, flush, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxCheckboxComponent } from './checkbox.component';
 import { NxCheckboxChangeEvent } from './checkbox.component';
@@ -286,15 +285,9 @@ describe('NxCheckboxComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicCheckbox);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        // console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

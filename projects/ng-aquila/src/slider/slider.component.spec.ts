@@ -3,7 +3,6 @@ import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Dire
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, NgModel } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import * as axe from 'axe-core';
 
 import { NxSliderComponent } from './slider.component';
 import { NxSliderModule } from './slider.module';
@@ -345,7 +344,7 @@ describe('NxSliderComponent', () => {
 
     it('hides Min and Max labels', () => {
       createTestComponent(ConfigurableSlider);
-      let thumbLabels = fixture.nativeElement.querySelector('.nx-slider__value-label');
+      const thumbLabels = fixture.nativeElement.querySelector('.nx-slider__value-label');
       expect(testInstance.sliderInstance.hideLabels).toBe(true);
       expect(thumbLabels).toBeNull();
     });
@@ -625,14 +624,9 @@ describe('NxSliderComponent', () => {
       expect(document.activeElement).toBe(handle);
     });
 
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicSlider);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        // const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

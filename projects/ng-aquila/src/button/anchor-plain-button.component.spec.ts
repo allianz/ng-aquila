@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
-import axe from 'axe-core';
 import { NxAnchorPlainButtonComponent } from './anchor-plain-button.component';
 
 import { NxButtonModule } from './button.module';
@@ -52,21 +51,17 @@ describe('NxAnchorPlainButtonComponent', () => {
 
   it('prevents default when the anchor button is disabled', fakeAsync(() => {
     createTestComponent(BasicButton);
-    let clickSpy = jasmine.createSpy("clickSpy");
-    buttonElement.addEventListener("click", clickSpy);
+    const clickSpy = jasmine.createSpy('clickSpy');
+    buttonElement.addEventListener('click', clickSpy);
     testInstance.buttonInstance.disabled = true;
     buttonElement.click();
     expect(clickSpy).toHaveBeenCalledTimes(0);
   }));
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicButton);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 

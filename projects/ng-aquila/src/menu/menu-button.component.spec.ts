@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { NxMenuButtonComponent, NxMenuButtonType } from './menu-button.component';
 import { NxMenuModule } from './menu.module';
 
@@ -144,16 +143,9 @@ describe(NxMenuButtonComponent.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicMenuButton);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        const violationMessages = results.violations.map(item => item.description).join('\n');
-        if (violationMessages.length) {
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

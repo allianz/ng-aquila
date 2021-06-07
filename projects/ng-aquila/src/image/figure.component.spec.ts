@@ -1,7 +1,6 @@
 import { NxFigureComponent } from './figure.component';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxImageModule } from './image.module';
 
@@ -74,14 +73,9 @@ describe('NxImageDirective', () => {
   }));
 
   describe('a11y', () => {
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicImage);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        //       const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

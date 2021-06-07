@@ -3,7 +3,6 @@ import { Component, DebugElement, OnDestroy, Type, ViewChild, ViewChildren, Quer
 import { ComponentFixture, fakeAsync, TestBed, tick, flush, inject, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as axe from 'axe-core';
 
 import { NxTabGroupComponent, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tab-group';
 import { NxTabsModule } from './tabs.module';
@@ -528,16 +527,9 @@ describe('NxTabGroupComponent', () => {
     });
 
     describe('a11y', () => {
-
-      it('has no accessibility violations', function (done) {
+      it('has no accessibility violations', async () => {
         createTestComponent(BasicTabs);
-
-        axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          // const violationMessages = results.violations.map(item => item.description);
-          // console.log(violationMessages)
-          done();
-        });
+        await expectAsync(fixture.nativeElement).toBeAccessible();
       });
     });
   });

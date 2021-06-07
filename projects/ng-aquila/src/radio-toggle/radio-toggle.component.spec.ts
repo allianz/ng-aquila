@@ -3,7 +3,6 @@ import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 import { Component, QueryList, Type, ViewChildren, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
@@ -449,16 +448,9 @@ describe('NxRadioToggleComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(NoSelectionRadioToggle);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        // console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

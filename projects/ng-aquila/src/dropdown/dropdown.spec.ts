@@ -7,7 +7,6 @@ import { Component, Type, ViewChild, ViewChildren, Directive, ChangeDetectionStr
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import * as axe from 'axe-core';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -1247,15 +1246,9 @@ describe('NxDropdownComponent', () => {
       );
     }));
 
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(SimpleDropdownComponent);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     it('sets aria-labelledby to 2 ids', () => {

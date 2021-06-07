@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Dire
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, inject, waitForAsync } from '@angular/core/testing';
 import { FormsModule, FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import * as axe from 'axe-core';
 
 import { NxNumberStepperComponent } from './number-stepper.component';
 import { NxNumberStepperModule } from './number-stepper.module';
@@ -623,14 +622,9 @@ describe('NxNumberStepperComponent', () => {
       }
     ));
 
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicStepper);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

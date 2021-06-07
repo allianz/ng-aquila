@@ -1,8 +1,6 @@
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
 import { By } from '@angular/platform-browser';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxListComponent } from './list.component';
 import { NxListModule } from './list.module';
@@ -87,14 +85,9 @@ describe('NxListComponent', () => {
   }));
 
   describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicList);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        // const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

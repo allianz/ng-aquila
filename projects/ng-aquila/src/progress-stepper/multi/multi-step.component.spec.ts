@@ -7,7 +7,6 @@ import { By } from '@angular/platform-browser';
 import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxMultiStepperComponent, NxMultiStepperDirection } from './multi-step.component';
 
-import * as axe from 'axe-core';
 import { Validators, FormBuilder, ReactiveFormsModule, FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
@@ -350,14 +349,9 @@ describe('NxMultiStepperComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessibility violations for basic use case', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(MultiStepBasicTest);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     it('should set tabindexes and aria-selected on step headers', () => {

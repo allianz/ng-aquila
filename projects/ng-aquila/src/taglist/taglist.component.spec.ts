@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxTaglistComponent } from './taglist.component';
 import { NxTaglistModule } from './taglist.module';
@@ -265,22 +264,14 @@ describe('NxTaglistComponent', () => {
       expect(fixture.nativeElement.querySelector('nx-taglist').getAttribute('aria-labelledby')).toBe('taglist-headline2');
     });
 
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicTaglist);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
-    it('has no accessbility violations when aria-labelledby is set', function (done) {
+    it('has no accessibility violations when aria-labelledby is set', async () => {
       createTestComponent(AriaLabelledByTaglist);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

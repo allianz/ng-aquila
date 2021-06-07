@@ -1,6 +1,5 @@
 import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxSwitcherComponent } from './switcher.component';
 import { NxSwitcherModule } from './switcher.module';
@@ -258,16 +257,10 @@ describe('NxSwitcherComponent', () => {
     }));
   });
 
-    describe('a11y', () => {
-    it('has no accessbility violations', function (done) {
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicSwitcher);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 

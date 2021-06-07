@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { NxMenuLinkDirective } from './menu-link.directive';
 import { NxMenuModule } from './menu.module';
 
@@ -52,16 +51,9 @@ describe(NxMenuLinkDirective.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicMenuLink);
-      axe.run(fixture.nativeElement, {},  (_: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.log(violationMessages);
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

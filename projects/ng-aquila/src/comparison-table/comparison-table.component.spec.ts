@@ -11,7 +11,6 @@ import {
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import * as axe from 'axe-core';
 
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxComparisonTableCell } from './cell/cell.component';
@@ -552,18 +551,9 @@ describe('NxComparisonTableComponent', () => {
       expect(toggleSectionBody.attributes['role']).toBe('rowgroup');
     });
 
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicComponent);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     afterEach(() => {

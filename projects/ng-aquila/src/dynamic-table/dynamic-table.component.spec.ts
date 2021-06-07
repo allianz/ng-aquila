@@ -1,7 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxDisplayedColumns } from './displayedColumns';
 import { NxDynamicTableComponent } from './dynamic-table.component';
@@ -167,16 +166,9 @@ describe('NxDynamicTableComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicDynamicTable);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        // console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

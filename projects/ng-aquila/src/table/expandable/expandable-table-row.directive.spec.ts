@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Dire
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
-import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 
 @Directive()
@@ -113,13 +112,9 @@ describe(NxExpandableTableRowComponent.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicExpandableTableRowComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

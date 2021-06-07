@@ -4,7 +4,6 @@ import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '
 import {NxRatingModule} from './rating.module';
 import {NxRatingComponent} from './rating.component';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import * as axe from 'axe-core';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { RIGHT_ARROW, ENTER, LEFT_ARROW } from '@angular/cdk/keycodes';
 
@@ -264,21 +263,9 @@ describe('NxRatingComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessibility violations', (done) => {
-      createTestComponent(SimpleRatingComponent);
-      fixture.detectChanges();
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-
-        if (violationMessages.length) {
-          console.log(violationMessages);
-        }
-
-        done();
-      });
+    it('has no accessibility violations', async () => {
+      createTestComponent(SimpleBindingRatingComponent);
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

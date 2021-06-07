@@ -3,7 +3,6 @@ import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '
 import { ComponentFixture, fakeAsync, TestBed, tick, inject, waitForAsync } from '@angular/core/testing';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxInputModule, NxInputDirective } from '@aposin/ng-aquila/input';
 import { NxFormfieldComponent, AppearanceType, FORMFIELD_DEFAULT_OPTIONS, FloatLabelType, FormfieldDefaultOptions } from './formfield.component';
@@ -306,14 +305,9 @@ describe('NxFormfieldComponent', () => {
     });
 
     describe('a11y', () => {
-      it('has no basic accessibility violations', function(done) {
+      it('has no accessibility violations', async () => {
         createTestComponent(BasicFormfield);
-
-        axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-          expect(results.violations.length).toBe(0);
-          const violationMessages = results.violations.map(item => item.description);
-          done();
-        });
+        await expectAsync(fixture.nativeElement).toBeAccessible();
       });
 
       it('adds hints to aria described by', fakeAsync(() => {

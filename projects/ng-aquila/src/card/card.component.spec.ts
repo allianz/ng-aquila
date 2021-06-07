@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import {NxCardComponent} from './card.component';
 import {NxCardModule} from './card.module';
@@ -54,14 +53,9 @@ describe('NxCardComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+    it('expert card has no accessibility violations', async () => {
       createTestComponent(BasicCard);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

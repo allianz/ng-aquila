@@ -3,7 +3,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import {NxCircleToggleModule} from '../circle-toggle.module';
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import * as axe from 'axe-core';
 import { NxCircleToggleComponent } from './circle-toggle.component';
 import { dispatchTouchEvent, dispatchFakeEvent } from '../../cdk-test-utils';
 
@@ -297,19 +296,9 @@ describe('NxToggleButton', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(SimpleCircleToggleButtonComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-
-        if (violationMessages.length > 0) {
-          console.log(violationMessages);
-        }
-
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

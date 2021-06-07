@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, DebugElement, QueryList, Type, View
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import * as axe from 'axe-core';
 
 import { NxModalComponent } from './modal.component';
 import { NxModalModule } from './modal.module';
@@ -185,15 +184,9 @@ beforeEach(waitForAsync(() => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicModal);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        // const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

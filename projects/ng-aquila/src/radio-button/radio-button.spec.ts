@@ -1,7 +1,6 @@
 import { Component, QueryList, Type, ViewChild, ViewChildren, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, flush, waitForAsync } from '@angular/core/testing';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import * as axe from 'axe-core';
 
 import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 import { NxRadioModule } from './radio-button.module';
@@ -532,27 +531,15 @@ describe('NxRadioComponent', () => {
   });
 
   describe('a11y', () => {
-
-    it('has no accessibility violations for basic use case', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicRadio);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
-    it('has no accessibility violations in case of radio group', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(RadioGroupTest);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        console.log(violationMessages);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
-
   });
 });
 

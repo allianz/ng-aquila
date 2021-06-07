@@ -6,7 +6,6 @@ import { NxTableModule } from '../table.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { NxExpandableTableDirective } from './expandable-table.directive';
-import * as axe from 'axe-core';
 
 @Directive()
 abstract class TableTest {
@@ -138,13 +137,9 @@ describe(NxTableComponent.name, () => {
   });
 
   describe('a11y', () => {
-    it('has no accessibility violations', (done) => {
+    it('has no accessibility violations', async () => {
       createTestComponent(ExpandableTableComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

@@ -2,7 +2,6 @@ import { TestBed, ComponentFixture, fakeAsync, tick, waitForAsync } from '@angul
 import { DebugElement, Type, Component, Directive, QueryList, ViewChildren } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxComparisonTableModule } from '../comparison-table.module';
-import * as axe from 'axe-core';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
@@ -171,18 +170,9 @@ describe('NxComparisonTableDescriptionCell', () => {
       expect(descriptionCellElements[0].attributes['aria-colspan']).toBe('2');
     }));
 
-    it('has no accessibility violations', function(done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(DescriptionCellComponent);
-
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.error(violationMessages);
-          expect(violationMessages).toBeFalsy();
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
 
     afterEach(() => {

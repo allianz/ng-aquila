@@ -1,6 +1,5 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, flush, tick, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
+import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxPasswordToggleComponent } from './password-toggle.component';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { FormsModule } from '@angular/forms';
@@ -95,13 +94,9 @@ describe('NxPasswordToggleComponent', () => {
       expect(label).toBe('custom label');
     });
 
-    it('has no accessibility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicPasswordToggle);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

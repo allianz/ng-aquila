@@ -4,7 +4,6 @@ import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angul
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxCheckboxGroupComponent, NxCheckboxComponent, NxCheckboxGroupChangeEvent } from './checkbox.component';
 import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '@angular/core';
-import * as axe from 'axe-core';
 
 // We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -222,19 +221,10 @@ describe('NxCheckboxGroupComponent', () => {
       .toEqual(true, `Expected control to be dirty.`);
   }));
 
-    describe('a11y', () => {
-    it('has no accessibility violations', function (done) {
+  describe('a11y', () => {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicCheckboxGroup);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.log(JSON.stringify(results.violations, null, 2));
-          console.log(violationMessages);
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

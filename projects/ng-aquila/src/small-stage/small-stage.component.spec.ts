@@ -1,6 +1,5 @@
 import { Component, DebugElement, Type, ViewChild, Directive } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import * as axe from 'axe-core';
 
 import { NxSmallStageComponent } from './small-stage.component';
 import { NxSmallStageModule } from './small-stage.module';
@@ -128,18 +127,9 @@ describe('NxSmallStageComponent', () => {
   });
 
   describe('a11y', () => {
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(BasicSmallStage);
-
-      axe.run(fixture.nativeElement, {
-        rules: {
-          'color-contrast': { enabled: false }
-        }
-      }, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        // const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

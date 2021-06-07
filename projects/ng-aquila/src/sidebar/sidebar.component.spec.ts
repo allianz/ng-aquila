@@ -1,6 +1,5 @@
 import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import * as axe from 'axe-core';
 import { By } from '@angular/platform-browser';
 import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -392,19 +391,9 @@ describe('NxSidebarComponent', () => {
   });
 
   describe('a11y', () => {
-    beforeEach(() => {
+    it('has no accessibility violations', async () => {
       createTestComponent(ResizeableSidebar);
-    });
-
-    it('has no accessibility violations', function(done) {
-      axe.run(fixture.nativeElement, {},  (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        if (violationMessages.length) {
-          console.log(violationMessages);
-        }
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });

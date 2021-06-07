@@ -4,7 +4,6 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } fro
 import { RouterTestingModule } from '@angular/router/testing';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import * as axe from 'axe-core';
 
 import { NxNotificationPanelModule } from '../notification-panel.module';
 
@@ -85,14 +84,9 @@ describe('NxLinkComponent', () => {
   }));
 
   describe('a11y', () => {
-    it('has no accessbility violations', function (done) {
+    it('has no accessibility violations', async () => {
       createTestComponent(TestComponent);
-
-      axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {
-        expect(results.violations.length).toBe(0);
-        const violationMessages = results.violations.map(item => item.description);
-        done();
-      });
+      await expectAsync(fixture.nativeElement).toBeAccessible();
     });
   });
 });
