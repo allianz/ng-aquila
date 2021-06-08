@@ -9,40 +9,42 @@
 </form>
 
 <div class="table-container">
-  <table nxTable [sticky]="stickyColumn">
-    <thead>
-      <tr nxTableRow>
-        <th nxHeaderCell>
-          Product
-        </th>
-        <th nxHeaderCell>
-          Contract Number
-        </th>
-        <th nxHeaderCell>
-          Description
-        </th>
-        <th nxHeaderCell>
-          Website
-        </th>
-        <th nxHeaderCell>
-          Ending At
-        </th>
-        <th nxHeaderCell>
-          Status
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr nxTableRow *ngFor="let item of tableElements">
-        <td nxTableCell>{{item.product}}</td>
-        <td nxTableCell>{{item.contractNumber}}</td>
-        <td nxTableCell>{{item.desc}}</td>
-        <td nxTableCell>
-          <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
-        </td>
-        <td nxTableCell>{{item.endingAt}}</td>
-        <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
-      </tr>
-    </tbody>
-  </table>
+  <nx-swipebar label="Scroll to see more">
+    <table nxTable [sticky]="stickyColumn">
+      <thead>
+        <tr nxTableRow>
+          <th nxHeaderCell>
+            Product
+          </th>
+          <th nxHeaderCell>
+            Contract Number
+          </th>
+          <th nxHeaderCell>
+            Description
+          </th>
+          <th nxHeaderCell>
+            Website
+          </th>
+          <th nxHeaderCell>
+            Ending At
+          </th>
+          <th nxHeaderCell>
+            Status
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr nxTableRow *ngFor="let item of tableElements">
+          <td nxTableCell>{{item.product}}</td>
+          <td nxTableCell>{{item.contractNumber}}</td>
+          <td nxTableCell>{{item.desc}}</td>
+          <td nxTableCell>
+            <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
+          </td>
+          <td nxTableCell>{{item.endingAt}}</td>
+          <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
+        </tr>
+      </tbody>
+    </table>
+  </nx-swipebar>
 </div>

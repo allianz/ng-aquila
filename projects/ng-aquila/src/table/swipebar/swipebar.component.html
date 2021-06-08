@@ -1,0 +1,9 @@
+<div aria-hidden="true" #element>
+  <label nxCopytext *ngIf="label">{{ label }}</label>
+  <div class="bar">
+    <div class="indicator" #indicator></div>
+  </div>
+</div>
+<div class="scrollable" #scrollable>
+  <ng-content></ng-content>
+</div>

@@ -11,6 +11,8 @@ This component is implemented on top of the native HTML table `<table></table>` 
 We provide the following  directives: `nxTableCell`, `nxTableRow` and `nxHeaderCell` to apply our style respectively on the top of `td`, `tr` and `th`.
 This setup maintains the capabilities of the native table such as accessibility and native HTML markups within cells.
 
+For better mobile side-to-side scrolling user experience the table should be placed in a horizontal scroll indicator `<nx-swipebar>` component.
+
 <!-- example(table) -->
 
 ### Condensed mode

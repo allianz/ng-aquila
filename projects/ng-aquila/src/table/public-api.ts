@@ -10,3 +10,4 @@ export * from './expandable/expandable-table.directive';
 export * from './sort-header/sort-header.component';
 export * from './sort-header/sort.directive';
 export * from './sort-header/sort-header-intl';
+export * from './swipebar/swipebar.component';

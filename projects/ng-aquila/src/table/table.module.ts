@@ -12,6 +12,8 @@ import { NxExpandableTableDirective } from './expandable/expandable-table.direct
 import { NxSortHeaderComponent } from './sort-header/sort-header.component';
 import { NxSortDirective } from './sort-header/sort.directive';
 import { NxSortHeaderIntl } from './sort-header/sort-header-intl';
+import { NxSwipebarComponent } from './swipebar/swipebar.component';
+import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 
 const EXPORTED_DECLARED_ELEMENTS = [
   NxHeaderCellDirective,
@@ -24,14 +26,17 @@ const EXPORTED_DECLARED_ELEMENTS = [
   NxExpandableTableRowComponent,
   NxExpandableTableCellComponent,
   NxSortHeaderComponent,
-  NxSortDirective
+  NxSortDirective,
+  NxSwipebarComponent
 ];
+
 @NgModule({
   declarations: EXPORTED_DECLARED_ELEMENTS,
   exports: EXPORTED_DECLARED_ELEMENTS,
   imports: [
     CommonModule,
-    NxIconModule
+    NxIconModule,
+    NxCopytextModule
   ],
   providers: [ NxSortHeaderIntl ],
 })
