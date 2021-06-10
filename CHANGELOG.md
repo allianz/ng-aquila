@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.5.0](https://github.com/aposin/ng-aquila/compare/v11.4.0...v11.5.0) (2021-06-10)
+
+
+### Bug Fixes
+
+* **circle-toggle:** remove bottom padding ([012923b](https://github.com/aposin/ng-aquila/commit/012923ba7ee132a3207562dd2390a091fb9a52d9))
+
+
+### Features
+
+* **breadcrumb:** add link appearance ([303b7b1](https://github.com/aposin/ng-aquila/commit/303b7b1f0e4c543e7b2ef3e33296b104c19ff90a))
+* **message:** align styling of message, message banner & message toast ([9493eae](https://github.com/aposin/ng-aquila/commit/9493eaeecd9b8c412037b36ccbc8ab8946055e50))
+* **scroll-indicator:** add scroll indicator component ([a3f9151](https://github.com/aposin/ng-aquila/commit/a3f9151cdb1446c37cfba45004d3d235ec3620e8))
+* **slider:** hide min and max labels ([dc09449](https://github.com/aposin/ng-aquila/commit/dc094492fa42406c67d56ddd80b488ed7a87e75c))
+* **table:** add sticky columns feature ([b6ea02c](https://github.com/aposin/ng-aquila/commit/b6ea02cc3e9254b0d42908c0575b45720de10397))
+* **tabs:** add hover and active styles ([707a63a](https://github.com/aposin/ng-aquila/commit/707a63a7965966554ec988164f491217d4ccee8c))
+
+
+
 # [11.4.0](https://github.com/aposin/ng-aquila/compare/v11.3.0...v11.4.0) (2021-05-18)
 
 
