@@ -5,10 +5,12 @@ import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 import { NgModule } from '@angular/core';
 import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
 import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadcrumb-negative-example';
+import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';
 
 const EXAMPLES = [
   BreadcrumbExampleComponent,
-  BreadcrumbNegativeExampleComponent
+  BreadcrumbNegativeExampleComponent,
+  BreadcrumbLinkExampleComponent
 ];
 
  @NgModule({
@@ -25,6 +27,7 @@ export class BreadcrumbExamplesModule {
     return {
       'breadcrumb': BreadcrumbExampleComponent,
       'breadcrumb-negative': BreadcrumbNegativeExampleComponent,
+      'breadcrumb-link': BreadcrumbLinkExampleComponent,
     };
   }
 }

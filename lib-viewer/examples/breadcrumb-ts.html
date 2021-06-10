@@ -10,16 +10,13 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./breadcrumb-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BreadcrumbExampleComponent</span> </span>{
-
   items = [
     <span class="hljs-string">&#x27;Home&#x27;</span>,
     <span class="hljs-string">&#x27;Insurance&#x27;</span>,
     <span class="hljs-string">&#x27;Health Insurance&#x27;</span>,
   ];
 
-  dynamicItems = <span class="hljs-built_in">this</span>.items;
-
   <span class="hljs-function"><span class="hljs-title">goToItem</span>(<span class="hljs-params">i: <span class="hljs-built_in">number</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.dynamicItems = <span class="hljs-built_in">this</span>.items.slice(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
+    <span class="hljs-built_in">this</span>.items = <span class="hljs-built_in">this</span>.items.slice(<span class="hljs-number">0</span>, i + <span class="hljs-number">1</span>);
   }
 }

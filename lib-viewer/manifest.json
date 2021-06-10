@@ -338,34 +338,6 @@
       "stable": "done"
     },
     {
-      "id": "avatar",
-      "title": "Avatar",
-      "examples": [
-        {
-          "name": "avatar",
-          "config": {}
-        },
-        {
-          "name": "avatar-button",
-          "config": {}
-        },
-        {
-          "name": "avatar-size",
-          "config": {}
-        },
-        {
-          "name": "avatar-colors",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/avatar.html",
-      "overviewFile": "lib-viewer/overview/avatar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress"
-    },
-    {
       "id": "badge",
       "title": "Badge",
       "examples": [
@@ -414,6 +386,10 @@
           "config": {}
         },
         {
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
           "name": "breadcrumb-negative",
           "config": {}
         }
@@ -424,6 +400,34 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "avatar",
+      "title": "Avatar",
+      "examples": [
+        {
+          "name": "avatar",
+          "config": {}
+        },
+        {
+          "name": "avatar-button",
+          "config": {}
+        },
+        {
+          "name": "avatar-size",
+          "config": {}
+        },
+        {
+          "name": "avatar-colors",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/avatar.html",
+      "overviewFile": "lib-viewer/overview/avatar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
     },
     {
       "id": "button",
@@ -1023,10 +1027,6 @@
           "config": {}
         },
         {
-          "name": "file-uploader-drop-zone",
-          "config": {}
-        },
-        {
           "name": "file-uploader-validation",
           "config": {}
         },
@@ -1048,6 +1048,14 @@
         },
         {
           "name": "file-uploader-with-request",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-expert",
+          "config": {}
+        },
+        {
+          "name": "file-uploader-drop-zone",
           "config": {}
         },
         {
@@ -1752,82 +1760,6 @@
       "stable": "progress"
     },
     {
-      "id": "number-stepper",
-      "title": "Number Stepper",
-      "examples": [
-        {
-          "name": "number-stepper-sizes",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-standalone",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-custom-label",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-formatting",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-additions",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-template-driven",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-reactive",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-floating-point",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-negative",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-disabled-explicit",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-disabled-implicit",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-validation",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-auto-resizing",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-a11y",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/number-stepper.html",
-      "overviewFile": "lib-viewer/overview/number-stepper.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "overlay",
       "title": "Overlay",
       "examples": [
@@ -2349,6 +2281,10 @@
         {
           "name": "slider-thumb",
           "config": {}
+        },
+        {
+          "name": "slider-labels",
+          "config": {}
         }
       ],
       "category": "components",
@@ -2476,6 +2412,10 @@
         },
         {
           "name": "table-zebra",
+          "config": {}
+        },
+        {
+          "name": "table-sticky",
           "config": {}
         },
         {
@@ -2808,6 +2748,82 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "number-stepper",
+      "title": "Number Stepper",
+      "examples": [
+        {
+          "name": "number-stepper-sizes",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-standalone",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-custom-label",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-formatting",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-additions",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-template-driven",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-reactive",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-floating-point",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-negative",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-disabled-explicit",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-disabled-implicit",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-validation",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-auto-resizing",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-a11y",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/number-stepper.html",
+      "overviewFile": "lib-viewer/overview/number-stepper.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     }
   ],
   "examples": [
@@ -3096,6 +3112,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/breadcrumb-###TYPE###.html"
+    },
+    {
+      "id": "breadcrumb-link",
+      "title": "Appearance link",
+      "module": "breadcrumb",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/breadcrumb-link-###TYPE###.html"
     },
     {
       "id": "breadcrumb-negative",
@@ -4317,6 +4344,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/file-uploader-drop-zone-###TYPE###.html"
+    },
+    {
+      "id": "file-uploader-expert",
+      "title": "File uploader expert example",
+      "module": "file-uploader",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/file-uploader-expert-###TYPE###.html"
     },
     {
       "id": "file-uploader-intl",
@@ -6739,6 +6777,17 @@
       "url": "lib-viewer/examples/slider-label-###TYPE###.html"
     },
     {
+      "id": "slider-labels",
+      "title": "Slider hidden Min/Max Labels Example",
+      "module": "slider",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/slider-labels-###TYPE###.html"
+    },
+    {
       "id": "slider-negative",
       "title": "Negative Example",
       "module": "slider",
@@ -7067,6 +7116,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/table-sorting-###TYPE###.html"
+    },
+    {
+      "id": "table-sticky",
+      "title": "Sticky Columns Table",
+      "module": "table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/table-sticky-###TYPE###.html"
     },
     {
       "id": "table-zebra",

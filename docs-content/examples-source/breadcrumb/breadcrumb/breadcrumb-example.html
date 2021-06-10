@@ -1,6 +1,6 @@
 <nav aria-label="Breadcrumb">
   <ol nxBreadcrumb>
-    <li *ngFor="let item of dynamicItems; let i = index">
+    <li *ngFor="let item of items; let i = index">
       <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#">
         {{ item }}
       </a>

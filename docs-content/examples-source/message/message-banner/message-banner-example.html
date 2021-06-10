@@ -1,14 +1,16 @@
-<nx-message-banner closeButtonLabel="Close info message banner" *ngIf="!infoBannerClosed" (close)="infoBannerClosed = true" class="nx-margin-bottom-xs">
+<nx-message-banner closeButtonLabel="Close info message banner" *ngIf="infoBanner" (close)="infoBanner = false" class="nx-margin-bottom-xs">
+ <span class="nx-font-weight-bold">Notification title:</span><br/>
  You are logged in as Max Mustermann.
 </nx-message-banner>
 
-<nx-message-banner context="warning" closeButtonLabel="Close warning message banner" *ngIf="!warningBannerClosed" (close)="warningBannerClosed = true" class="nx-margin-bottom-xs">
+<nx-message-banner context="warning" closeButtonLabel="Close warning message banner" *ngIf="warningBanner" (close)="warningBanner = false" class="nx-margin-bottom-xs">
+  <span class="nx-font-weight-bold">Notification title:</span><br/>
   Your password expires in three days!
 </nx-message-banner>
 
-<nx-message-banner context="error" closeButtonLabel="Close error message banner" *ngIf="!errorBannerClosed" (close)="errorBannerClosed = true" class="nx-margin-bottom-xs">
- The object could not be found.
+<nx-message-banner context="error" closeButtonLabel="Close error message banner" *ngIf="errorBanner" (close)="errorBanner = false" class="nx-margin-bottom-xs">
+  <span class="nx-font-weight-bold">Notification title:</span><br/>
+  The object could not be found.
 </nx-message-banner>
 
-<button [disabled]="!infoBannerClosed && !warningBannerClosed && !errorBannerClosed" nxButton type="button" (click)="showAllBanners()"> Show all message banners </button>
-
+<button [disabled]="infoBanner && warningBanner && errorBanner" nxButton type="button" (click)="showAllBanners()"> Show all message banners </button>

@@ -10,6 +10,7 @@ import { NxTableModule } from '@aposin/ng-aquila/table';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
+import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 
 import { NgModule } from '@angular/core';
 import { TableExampleComponent } from './table/table-example';
@@ -22,6 +23,7 @@ import { TableSortingExampleComponent } from './table-sorting/table-sorting-exam
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
+import { TableStickyExampleComponent } from './table-sticky/table-sticky-example';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 const EXAMPLES = [
@@ -33,7 +35,8 @@ const EXAMPLES = [
   TableSingleSelectExampleComponent,
   TableSortingExampleComponent,
   TableZebraExampleComponent,
-  TableFormElementsExampleComponent
+  TableFormElementsExampleComponent,
+  TableStickyExampleComponent
 ];
 
  @NgModule({
@@ -50,6 +53,7 @@ const EXAMPLES = [
     NxLinkModule,
     NxRadioModule,
     NxIconModule,
+    NxRadioToggleModule,
     ExamplesSharedModule,
     RouterModule
   ],
@@ -67,7 +71,8 @@ export class TableExamplesModule {
       'table-single-select': TableSingleSelectExampleComponent,
       'table-sorting': TableSortingExampleComponent,
       'table-zebra': TableZebraExampleComponent,
-      'table-form-elements': TableFormElementsExampleComponent
+      'table-form-elements': TableFormElementsExampleComponent,
+      'table-sticky': TableStickyExampleComponent
     };
   }
 }

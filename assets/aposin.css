@@ -132,6 +132,10 @@
   --button-large-line-height: 24px;
   --button-large-font-weight: 600;
   --button-large-letter-spacing: 1px;
+  --shadow-small-color: rgba(0, 0, 0, 0.8);
+  --shadow-large-color: rgba(0, 0, 0, 0.8);
+  --shadow-small: 0 2px 4px var(--shadow-color);
+  --shadow-large: 0 8px 24px var(--shadow-large-color);
   --accordion-regular-font-size: var(--heading-04-font-size);
   --accordion-regular-line-height: var(--heading-04-line-height);
   --accordion-regular-font-weight: var(--heading-04-font-weight);
@@ -398,6 +402,9 @@
   --breadcrumb-letter-spacing: 0;
   --breadcrumb-font-weight: 400;
   --breadcrumb-chevron-color: var(--text-01);
+  --breadcrumb-link-color: var(--interactive-text);
+  --breadcrumb-link-hover-color: var(--hover-link);
+  --breadcrumb-link-active-color: var(--active-primary);
   --icon-button-small-icon-size: 16px;
   --icon-button-small-medium-icon-size: 24px;
   --icon-button-medium-icon-size: 24px;
@@ -747,7 +754,7 @@
   --menu-button-nested-expanded-color: var(--text-02);
   --message-text-color: var(--text-01);
   --message-close-icon-color: var(--message-text-color);
-  --message-box-shadow: 0 2px 4px rgba(65, 65, 65, 0.5);
+  --message-box-shadow: var(--shadow-small);
   --message-border-radius: 4px;
   --message-regular-background-color: var(--ui-01);
   --message-regular-border-color: var(--text-01);
@@ -767,7 +774,7 @@
   --message-line-height: var(--paragraph-03-line-height);
   --message-font-weight: var(--paragraph-03-font-weight);
   --message-letter-spacing: var(--paragraph-03-letter-spacing);
-  --message-banner-border-radius: 4px;
+  --message-banner-border-radius: 0;
   --modal-background-color: var(--ui-03);
   --modal-text-color: var(--text-01);
   --modal-close-icon-color: var(--text-01);
@@ -955,7 +962,7 @@
   --small-stage-with-header-content-padding: 0 0 64px;
   --small-stage-with-header-image-container-padding-top: 32px;
   --small-stage-text-color: var(--text-01);
-  --small-stage-default-background-color: #cfe9ee;
+  --small-stage-default-background-color: --ui-03;
   --rating-icon-color: var(--text-01);
   --rating-icon-size: 40px;
   --rating-label-color: var(--text-01);
@@ -1005,6 +1012,8 @@
   --taglist-hover-border-color: #C3C3C3;
   --taglist-hover-background-color: #C3C3C3;
   --tab-item-color: var(--interactive-text);
+  --tab-item-active-color: var(--active-primary);
+  --tab-item-hover-color: var(--hover-link);
   --tab-item-border-color: var(--ui-05);
   --tab-item-active-border-color: var(--interactive-text);
   --tab-item-disabled-color: var(--disabled-01);
@@ -1033,6 +1042,7 @@
   --table-cell-color: var(--text-01);
   --table-header-cell-background-color: transparent;
   --table-row-background-color: transparent;
+  --table-sticky-column-background-color: var(--ui-03);
   --selectable-table-row-hover-background-color: var(--ui-02);
   --selectable-table-row-active-background-color: var(--ui-02);
   --selectable-table-row-selected-hover-background-color: var(--ui-02);
@@ -1077,12 +1087,15 @@
   --tooltip-line-height: var(--paragraph-04-line-height);
   --tooltip-font-weight: 400;
   --tooltip-letter-spacing: var(--paragraph-04-letter-spacing);
+  --swipebar-background-color: var(--ui-04);
+  --swipebar-color: var(--interactive-primary);
+  --swipebar-padding: 32px 0 0;
   --sidebar-background-color: var(--ui-02);
   --sidebar-handle-color: var(--ui-04);
   --sidebar-footer-button-color: var(--text-01);
   --sidepanel-background-color: var(--ui-02);
   --sidepanel-close-icon-color: var(--text-01);
-  --sidepanel-floating-shadow: none;
+  --sidepanel-floating-shadow: var(--shadow-large);
   --sidepanel-light-border-color: var(--ui-04);
   --sidepanel-light-background-color: var(--ui-03);
   --sidepanel-header-font-size: var(--heading-05-font-size);
