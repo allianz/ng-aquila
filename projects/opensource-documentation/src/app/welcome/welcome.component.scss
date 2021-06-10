@@ -13,7 +13,7 @@ main {
 }
 
 .nxv-grey-row.nx-grid__row {
-  margin-bottom: 32px;
+  margin-bottom: 64px;
 }
 
 .nxv-grey-row.nx-grid__row:before {
@@ -57,4 +57,12 @@ main {
     margin-left: 0;
     margin-right: 0;
   }
+}
+
+.nxv-stackblitz-frame {
+  width: 100%;
+  background: #194666;
+  height: 600px;
+  border: 0;
+  overflow: hidden;
 }
