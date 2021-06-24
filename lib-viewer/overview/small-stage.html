@@ -1,6 +1,6 @@
 <div class="docs-deprecation-warning">
 <strong>Work in progress / Experimental</strong>
-The small stage component is provided as a beta preview. Breaking changes may still be introduced outside of major versions until the service is
+The small stage component is provided as a beta preview. Breaking changes may still be introduced outside of major versions until the component is
 considered stable.
 </div>
 <h3 id="overview" class="docs-markdown--h3">Overview</h3>
@@ -10,50 +10,34 @@ The images of small stage fluidly grow or shrink, adapting to the viewport size 
 On smaller screens only one image is displayed below the content section.</p>
 <p class="docs-markdown--p">Since small stage is designed to take 100% width of a page or a container, it's recommended to open the examples in a new window to get a better feeling of how it is intended to look and behave.</p>
 <p class="docs-markdown--p">Examples here feature both short and long headlines side by side in order to better outline the small stage behavior.</p>
-<h3 id="default" class="docs-markdown--h3">Default</h3>
-<p class="docs-markdown--p">The default small stage features a 1/4/1 ratio for image containers and content container.</p>
-<p class="docs-markdown--p">Small stage provides 5 directives to be used for composition:</p>
+<h3 id="basic-layout" class="docs-markdown--h3">Basic Layout</h3>
+<p class="docs-markdown--p">The layout of the small stage is structured in five slots that can be populated using the following marker directives:</p>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>nx-small-stage-header</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-start-image</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-content</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-end-image</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-narrow-screen-image</code></li>
+<li class="docs-markdown--li">Main area, contains text or other content</li>
+<li class="docs-markdown--li"><code>[nxSmallStageHeader]</code>: Header section</li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageStart]</code>: Left image of the small stage, visible on desktop</li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageEnd]</code>: Right image of the small stage, visible on desktop</li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageBottom]</code>: Image below the content area, visible on tablet and smaller</li>
 </ul>
 <div nx-docs-example="small-stage-default" config="{}">exampleID: small-stage-default</div>
 <p class="docs-markdown--p">Various sizes of headlines and sublines can be used to achieve the desired effect.</p>
 <div nx-docs-example="small-stage-content-variation" config="{}">exampleID: small-stage-content-variation</div>
-<p class="docs-markdown--p">It is not necessary to use all the directives, for example the expert version of small stage can be constructed with just 2 of them:</p>
-<ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>nx-small-stage-content</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-end-image</code></li>
-</ul>
 <p class="docs-markdown--p">Let's take a closer look at various parts of small stage:</p>
 <h4 id="images" class="docs-markdown--h4">Images</h4>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>nx-small-stage-start-image</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-end-image</code></li>
-<li class="docs-markdown--li"><code>nx-small-stage-narrow-screen-image</code></li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageStart]</code></li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageEnd]</code></li>
+<li class="docs-markdown--li"><code>[nxSmallStageImageBottom]</code></li>
 </ul>
-<p class="docs-markdown--p">All 3 image directives accept an <code>src</code> input, where you should pass a url address of the image to be loaded.
-Notice that start and end images an used around the content on bigger screens, but when viewport gets narrower than 704px only the narrow-screen image is displayed.
-It can be used, for example, to display the combination of two bigger screen images, like we do in the example, but it is optional.
-If narrow-screen image is not provided, the source of and end image is used for narrow screens.</p>
-<p class="docs-markdown--p">Narrow screen image has a <code>position</code> input that accepts either <code>start</code>, <code>end</code> or <code>center</code> to horizontally position it on the screen. The default value is <code>end</code>.</p>
-<p class="docs-markdown--p">End image accepts <code>offsetEnd</code> input, which is only intended for expert usage and is discussed in the specific section below.</p>
-<h4 id="content" class="docs-markdown--h4">Content</h4>
-<ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>nx-small-stage-content</code></li>
-</ul>
-<p class="docs-markdown--p">Content directive is used as a way to project its internals to a central part of the small stage.
-It accepts a <code>narrow</code> boolean input, which is intended for expert use only and is discussed in the specific section below.</p>
+<p class="docs-markdown--p">Images can be placed in all three slots using the <code>nx-small-stage-image</code> tag.
+It accepts an <code>src</code> input, where you should pass a url address of the image to be loaded.
+Notice that start and end images an used around the content on bigger screens, but when viewport gets narrower than 704px only the bottom image is displayed.</p>
 <h4 id="header" class="docs-markdown--h4">Header</h4>
 <ul class="docs-markdown--ul">
-<li class="docs-markdown--li"><code>nx-small-stage-header</code></li>
+<li class="docs-markdown--li"><code>[nxSmallStageHeader]</code></li>
 </ul>
-<p class="docs-markdown--p">In some cases you might need to add some data to the small stage that should not be in the content section, for example, breadcrumbs.
-For this the header directive is provided and it positions it's contents above the usual contents of the small stage.</p>
-<div nx-docs-example="small-stage-w-header" config="{}">exampleID: small-stage-w-header</div>
+<p class="docs-markdown--p">In some cases you might need to add some data to the small stage that should not be in the content section, for example, breadcrumbs or links.
+The header should contain only one line of text so it will not change the height of the stage.</p>
 <div class="docs-private">
 <h4 id="backgrounds" class="docs-markdown--h4">Backgrounds</h4>
 <p class="docs-markdown--p">If you need to add some background images to the small stage, you can do it through css on the main small stage container:</p>
@@ -61,17 +45,13 @@ For this the header directive is provided and it positions it's contents above t
 </div>
 <div class="docs-expert-container">
 <h3 id="expert-specifics" class="docs-markdown--h3">Expert specifics</h3>
-<p class="docs-markdown--p">The small stage component has some specifics related to expert usage that we will discuss in this section. For best results, you need to switch the theme to 'expert'.</p>
+<p class="docs-markdown--p">The small stage component has some specifics related to expert usage that we will discuss in this section. The small stage can be switched to expert by setting <code>appearance=&quot;expert&quot;</code>.</p>
 <p class="docs-markdown--p">Expert small stage is designed to use only one image after the content.</p>
 <div nx-docs-example="small-stage-expert-default" config="{}">exampleID: small-stage-expert-default</div>
 <h4 id="narrow-content" class="docs-markdown--h4">Narrow content</h4>
 <p class="docs-markdown--p">In some cases you might need to use a narrow content container, e.g. when the headline is short and you want a better positioning of the image.</p>
-<p class="docs-markdown--p">Setting a <code>narrow</code> input on <code>nx-small-stage-content</code> switches the ratio between content and image containers to 50/50.</p>
+<p class="docs-markdown--p">Setting the <code>narrow</code> input switches the ratio between content and image containers to 50/50.</p>
 <div nx-docs-example="small-stage-expert-content-narrow" config="{}">exampleID: small-stage-expert-content-narrow</div>
-<h4 id="image-offset" class="docs-markdown--h4">Image offset</h4>
-<p class="docs-markdown--p">If you want to add extra spacing after the image, this is possible through setting <code>offsetEnd</code> input on the end image directive. It is also combinable with <code>contentNarrow</code>, when needed.</p>
-<div nx-docs-example="small-stage-expert-image-offset" config="{}">exampleID: small-stage-expert-image-offset</div>
-<p class="docs-markdown--p">For best results across different viewport sizes, we suggest using the <a href="./documentation/layout/overview#basic-viewport-subscription">viewport service</a> to dynamically adjust styles of small stage to your needs.</p>
 </div>
 <h2 id="accessibility" class="docs-markdown--h2">Accessibility</h2>
 <p class="docs-markdown--p">In order to achieve responsive behavior and fluid scaling of the small stage, we're leveraging the css background image functionality under the hood to display the image.

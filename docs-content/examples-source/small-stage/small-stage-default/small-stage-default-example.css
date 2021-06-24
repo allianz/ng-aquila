@@ -1,0 +1,8 @@
+.highlighted {
+  font-weight: bold;
+  color: var(--info);
+}
+
+.v2 {
+  background: #DFEEDE;
+}

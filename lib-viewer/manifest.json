@@ -338,6 +338,34 @@
       "stable": "done"
     },
     {
+      "id": "avatar",
+      "title": "Avatar",
+      "examples": [
+        {
+          "name": "avatar",
+          "config": {}
+        },
+        {
+          "name": "avatar-button",
+          "config": {}
+        },
+        {
+          "name": "avatar-size",
+          "config": {}
+        },
+        {
+          "name": "avatar-colors",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/avatar.html",
+      "overviewFile": "lib-viewer/overview/avatar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "badge",
       "title": "Badge",
       "examples": [
@@ -400,34 +428,6 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
-    },
-    {
-      "id": "avatar",
-      "title": "Avatar",
-      "examples": [
-        {
-          "name": "avatar",
-          "config": {}
-        },
-        {
-          "name": "avatar-button",
-          "config": {}
-        },
-        {
-          "name": "avatar-size",
-          "config": {}
-        },
-        {
-          "name": "avatar-colors",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/avatar.html",
-      "overviewFile": "lib-viewer/overview/avatar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress"
     },
     {
       "id": "button",
@@ -719,6 +719,10 @@
         },
         {
           "name": "comparison-table-disabled-columns",
+          "config": {}
+        },
+        {
+          "name": "comparison-table-hidden-columns",
           "config": {}
         },
         {
@@ -1760,6 +1764,82 @@
       "stable": "progress"
     },
     {
+      "id": "number-stepper",
+      "title": "Number Stepper",
+      "examples": [
+        {
+          "name": "number-stepper-sizes",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-standalone",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-custom-label",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-formatting",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-additions",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-template-driven",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-reactive",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-floating-point",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-negative",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-disabled-explicit",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-disabled-implicit",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-validation",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-auto-resizing",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-a11y",
+          "config": {}
+        },
+        {
+          "name": "number-stepper-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/number-stepper.html",
+      "overviewFile": "lib-viewer/overview/number-stepper.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "overlay",
       "title": "Overlay",
       "examples": [
@@ -2307,10 +2387,6 @@
           "config": {}
         },
         {
-          "name": "small-stage-w-header",
-          "config": {}
-        },
-        {
           "name": "small-stage-w-bg",
           "config": {}
         },
@@ -2320,10 +2396,6 @@
         },
         {
           "name": "small-stage-expert-content-narrow",
-          "config": {}
-        },
-        {
-          "name": "small-stage-expert-image-offset",
           "config": {}
         }
       ],
@@ -2595,42 +2667,6 @@
       "noApi": true
     },
     {
-      "id": "timefield",
-      "title": "Timefield",
-      "examples": [
-        {
-          "name": "timefield-reactive",
-          "config": {}
-        },
-        {
-          "name": "timefield-template-driven",
-          "config": {}
-        },
-        {
-          "name": "timefield-format-toggler",
-          "config": {}
-        },
-        {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "progress"
-    },
-    {
       "id": "toolbar",
       "title": "Toolbar",
       "examples": [
@@ -2750,80 +2786,40 @@
       "stable": "done"
     },
     {
-      "id": "number-stepper",
-      "title": "Number Stepper",
+      "id": "timefield",
+      "title": "Timefield",
       "examples": [
         {
-          "name": "number-stepper-sizes",
+          "name": "timefield-reactive",
           "config": {}
         },
         {
-          "name": "number-stepper-standalone",
+          "name": "timefield-template-driven",
           "config": {}
         },
         {
-          "name": "number-stepper-custom-label",
+          "name": "timefield-format-toggler",
           "config": {}
         },
         {
-          "name": "number-stepper-formatting",
+          "name": "timefield-disabled",
           "config": {}
         },
         {
-          "name": "number-stepper-additions",
+          "name": "timefield-negative",
           "config": {}
         },
         {
-          "name": "number-stepper-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-template-driven",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-reactive",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-floating-point",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-negative",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-disabled-explicit",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-disabled-implicit",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-validation",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-auto-resizing",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-a11y",
-          "config": {}
-        },
-        {
-          "name": "number-stepper-localize",
+          "name": "timefield-localize",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/number-stepper.html",
-      "overviewFile": "lib-viewer/overview/number-stepper.html",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
       "b2c": true,
       "expert": true,
-      "stable": "done"
+      "stable": "progress"
     }
   ],
   "examples": [
@@ -3750,6 +3746,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/comparison-table-form-elements-###TYPE###.html"
+    },
+    {
+      "id": "comparison-table-hidden-columns",
+      "title": "Hidden Columns",
+      "module": "comparison-table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/comparison-table-hidden-columns-###TYPE###.html"
     },
     {
       "id": "comparison-table-row-group",
@@ -6885,17 +6892,6 @@
         "css"
       ],
       "url": "lib-viewer/examples/small-stage-expert-default-###TYPE###.html"
-    },
-    {
-      "id": "small-stage-expert-image-offset",
-      "title": "Small stage expert image offset example",
-      "module": "small-stage",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/small-stage-expert-image-offset-###TYPE###.html"
     },
     {
       "id": "small-stage-w-bg",

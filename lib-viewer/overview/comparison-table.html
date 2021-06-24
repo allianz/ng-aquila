@@ -29,6 +29,10 @@
 <h4 id="disabled-table-columns" class="docs-markdown--h4">Disabled table columns</h4>
 <p class="docs-markdown--p">You can disable certain columns of the comparison table via the input <code>disabledColumn</code> on a header <code>nx-comparison-table-cell</code> as shown in the example below. Keep in mind that the <code>disabledColumn</code> attribute can be set only on header cells.</p>
 <div nx-docs-example="comparison-table-disabled-columns" config="{}">exampleID: comparison-table-disabled-columns</div>
+<h4 id="hidden-table-columns" class="docs-markdown--h4">Hidden table columns</h4>
+<p class="docs-markdown--p">You can hide certain columns of the comparison table via the input <code>hiddenIndexes</code> on table <code>nx-comparison-table</code> as shown in the example below. Keep in mind that <code>hiddenIndexes</code> will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time.</p>
+<p class="docs-markdown--p">Please note that <strong>this example is using the <code>nx-context-menu</code> component which is an Expert component</strong>. This means that this combination is currently only intended for internal and not for client-facing applications.</p>
+<div nx-docs-example="comparison-table-hidden-columns" config="{}">exampleID: comparison-table-hidden-columns</div>
 <div class="docs-private">
 <h4 id="theming-variations" class="docs-markdown--h4">Theming variations</h4>
 <p class="docs-markdown--p">By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the <a href="./documentation/theming">theming page</a>.</p>

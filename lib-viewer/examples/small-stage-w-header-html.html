@@ -1,20 +1,20 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Breadcrumb&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">nxBreadcrumb</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of dynamicItems; let i = index&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxBreadcrumbItem</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;goToItem(i)&quot;</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- &lt;nx-small-stage&gt;
+  &lt;nx-small-stage-header&gt;
+    &lt;nav aria-label=&quot;Breadcrumb&quot;&gt;
+      &lt;ol nxBreadcrumb&gt;
+        &lt;li *ngFor=&quot;let item of dynamicItems; let i = index&quot;&gt;
+          &lt;a nxBreadcrumbItem (click)=&quot;goToItem(i)&quot; routerLink=&quot;#&quot;&gt;
             {{ item }}
-          <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage-header</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-start-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/images/small-stage-image-start.svg&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage-start-image</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-content</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-xs&quot;</span>&gt;</span>Topline text<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-0&quot;</span>&gt;</span>Headline text<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage-content</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-end-image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/images/small-stage-image-end.svg&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage-end-image</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-small-stage-narrow-screen-image</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;center&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;assets/images/small-stage-image-narrow-screen.svg&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage-narrow-screen-image</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">nx-small-stage</span>&gt;</span>
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/nav&gt;
+  &lt;/nx-small-stage-header&gt;
+  &lt;nx-small-stage-image nxSmallStageImageStart src=&quot;assets/images/small-stage-image-start.svg&quot;&gt;&lt;/nx-small-stage-image&gt;
+  &lt;nx-small-stage-content&gt;
+    &lt;p nxCopytext=&quot;large&quot; class=&quot;nx-margin-bottom-xs&quot;&gt;Topline text&lt;/p&gt;
+    &lt;h2 nxHeadline=&quot;subsection-large&quot; class=&quot;nx-margin-0&quot;&gt;Headline text&lt;/h2&gt;
+  &lt;/nx-small-stage-content&gt;
+  &lt;nx-small-stage-image nxSmallStageImageEnd src=&quot;assets/images/small-stage-image-end.svg&quot;&gt;&lt;/nx-small-stage-image&gt;
+  &lt;nx-small-stage-image nxSmallStageImageBottom src=&quot;assets/images/small-stage-image-narrow-screen.svg&quot;&gt;&lt;/nx-small-stage-image&gt;
+&lt;/nx-small-stage&gt; --&gt;</span>

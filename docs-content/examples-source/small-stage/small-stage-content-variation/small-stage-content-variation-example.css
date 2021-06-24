@@ -1,0 +1,4 @@
+.highlighted {
+  font-weight: bold;
+  color: var(--info);
+}
