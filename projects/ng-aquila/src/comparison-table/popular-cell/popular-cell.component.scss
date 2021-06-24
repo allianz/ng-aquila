@@ -1,0 +1,8 @@
+.nx-comparison-table__popular-cell.is-hidden,
+::ng-deep td.nx-comparison-table__mobile-popular-cell.is-hidden div{
+    display: none;
+}
+
+td.nx-comparison-table__mobile-popular-cell.is-hidden {
+    padding: 0
+}

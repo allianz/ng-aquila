@@ -4,6 +4,7 @@
          [class.is-disabled]="_isCellDisabled"
          [attr.role]="type === 'header' ? 'columnheader' : 'cell'"
          [class.is-selected]="_isSelected()"
+         [class.is-hidden]="_isCellHidden()"
          [attr.id]="id"
          [attr.headers]="_getHeaderIds()">
       <div class="nx-comparison-table__cell-content">
@@ -15,6 +16,7 @@
     <td [class.nx-comparison-table__mobile-header-cell]="type === 'header'"
         [class.nx-comparison-table__cell]="type !== 'header'"
         [class.is-selected]="_isSelected()"
+        [class.is-hidden]="_isCellHidden()"
         [attr.scope]="type === 'header' ? 'row' : ''"
         [attr.id]="id"
         [attr.headers]="_getHeaderIds()">

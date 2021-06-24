@@ -95,6 +95,10 @@ export class NxComparisonTableCell {
     return (this.index !== undefined && this.index === this._table.selectedIndex) ? true : false;
   }
 
+  _isCellHidden(): boolean {
+    return Array.isArray(this._table._hiddenIndexes) && this._table._hiddenIndexes.indexOf(this.index) !== -1;
+  }
+
   _selectCell() {
     this._table.selectedIndex = this.index;
   }

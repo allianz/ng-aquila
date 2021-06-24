@@ -5,3 +5,8 @@
   @include var(background-color, comparison-table-selected-column-background-color);
   @include var(color, comparison-table-selected-column-text-color);
 }
+
+.nx-comparison-table__mobile-header-cell.is-hidden,
+.nx-comparison-table__cell.is-hidden {
+  display: none;
+}

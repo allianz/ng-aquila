@@ -40,15 +40,57 @@ export const BASIC_COMPARISON_TABLE_TEMPLATE = `
     </ng-container>
   </nx-comparison-table>
 `;
+export const HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE = `
+  <nx-comparison-table [(selectedIndex)]="selected" [hiddenIndexes]="hiddenIndexes">
 
+  <ng-container *ngFor="let element of data">
+    <ng-container *ngIf="element['type'] === 'header'" nxComparisonTableRow [type]="element['type']">
+      <nx-comparison-table-description-cell *ngIf="element['description']">{{ element['description'] }}</nx-comparison-table-description-cell>>
+      <nx-comparison-table-cell *ngFor="let cell of element['cells']" [type]="element['type']">
+      <nx-comparison-table-popular-cell *ngIf="popular" [forColumn]="popular">popular cell</nx-comparison-table-popular-cell>
+      {{ cell }}
+      </nx-comparison-table-cell>
+      <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
+    </ng-container>
+
+    <ng-container *ngIf="element['type'] === 'toggleSection'" nxComparisonTableToggleSection>
+        <nx-comparison-table-toggle-section-header>{{ element['header'] }}</nx-comparison-table-toggle-section-header>
+        <ng-container *ngFor="let row of element['content']" nxComparisonTableRow>
+          <nx-comparison-table-description-cell *ngIf="row['description']">{{ row['description'] }}</nx-comparison-table-description-cell>>
+          <nx-comparison-table-cell *ngFor="let cell of row['cells']">{{ cell }}</nx-comparison-table-cell>
+          <nx-comparison-table-intersection-cell *ngIf="row['intersection']">{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="element['type'] === 'content'" nxComparisonTableRow [type]="element['type']">
+        <nx-comparison-table-description-cell *ngIf="element['description']">{{ element['description'] }}</nx-comparison-table-description-cell>>
+        <nx-comparison-table-cell *ngFor="let cell of element['cells']" [type]="element['type']">
+        {{ cell }}
+        </nx-comparison-table-cell>
+        <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
+      </ng-container>
+
+      <ng-container *ngIf="element['type'] === 'footer'" nxComparisonTableRow [type]="element['type']">
+      <nx-comparison-table-description-cell *ngIf="element['description']">{{ element['description'] }}</nx-comparison-table-description-cell>>
+      <nx-comparison-table-cell *ngFor="let cell of element['cells']" [type]="element['type']">
+      {{ cell }}
+      </nx-comparison-table-cell>
+      <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
+    </ng-container>
+
+    </ng-container>
+  </nx-comparison-table>
+`;
 @Directive()
 abstract class TableTest {
   @ViewChild(NxComparisonTableComponent) tableInstance: NxComparisonTableComponent;
   @ViewChildren(NxComparisonTableCell) cellInstances: QueryList<NxComparisonTableCell>;
   @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
 
+  hiddenIndexes = [];
   selected = 0;
   data;
+  popular;
 }
 
 describe('NxComparisonTableComponent', () => {
@@ -81,7 +123,8 @@ describe('NxComparisonTableComponent', () => {
         BasicOnPushComponent,
         DisabledColumnsComponent,
         SelectableIndexComponent,
-        LongPageWithTableComponent
+        LongPageWithTableComponent,
+        HiddenColumnsComponent
       ]
     });
     TestBed.compileComponents();
@@ -560,6 +603,81 @@ describe('NxComparisonTableComponent', () => {
       viewport.reset();
     });
   });
+
+  describe('hidden column', () => {
+    it('should not be hidden by default', () => {
+      createTestComponent(HiddenColumnsComponent);
+      cellInstances.forEach(cell => {
+        expect(cell._isCellHidden()).toBe(false);
+      });
+      cellElements.forEach(cell => {
+        expect(cell.nativeElement.classList).not.toContain('is-hidden');
+      });
+    });
+
+    it('should update on hiddenIndexes input change', () => {
+      createTestComponent(HiddenColumnsComponent);
+
+      (testInstance as HiddenColumnsComponent).hiddenIndexes = [2];
+      fixture.detectChanges();
+
+      rowInstances.forEach(row => {
+        expect(row.cells.toArray()[0]._isCellHidden()).toBe(false);
+        expect(row.cells.toArray()[1]._isCellHidden()).toBe(false);
+        expect(row.cells.toArray()[2]._isCellHidden()).toBe(true);
+      });
+
+      rowElements.forEach(row => {
+        const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
+        expect(cells[0].nativeElement.classList).not.toContain('is-hidden');
+        expect(cells[1].nativeElement.classList).not.toContain('is-hidden');
+        expect(cells[2].nativeElement.classList).toContain('is-hidden');
+      });
+
+      (testInstance as HiddenColumnsComponent).hiddenIndexes = [1];
+      fixture.detectChanges();
+
+      rowInstances.forEach(row => {
+        expect(row.cells.toArray()[0]._isCellHidden()).toBe(false);
+        expect(row.cells.toArray()[1]._isCellHidden()).toBe(true);
+        expect(row.cells.toArray()[2]._isCellHidden()).toBe(false);
+      });
+
+      rowElements.forEach(row => {
+        const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
+        expect(cells[0].nativeElement.classList).not.toContain('is-hidden');
+        expect(cells[1].nativeElement.classList).toContain('is-hidden');
+        expect(cells[2].nativeElement.classList).not.toContain('is-hidden');
+      });
+    });
+
+    it('should hide headline cells with popular columns', () => {
+      createTestComponent(HiddenColumnsComponent);
+
+      const querySelector = By.css('nx-comparison-table > div > nx-comparison-table-flex-row .nx-comparison-table__placeholder-cell');
+
+      // By default no popular columns
+      const first = fixture.debugElement.queryAll(querySelector);
+      expect(first.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(-1);
+      expect(first.length).toBe(1);
+
+      (testInstance as HiddenColumnsComponent).popular = 1;
+      fixture.detectChanges();
+
+      // After usage of popular attribute, the columns are visible but by default no hidden column
+      const second = fixture.debugElement.queryAll(querySelector);
+      expect(second.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(-1);
+      expect(second.length).toBe(4);
+
+      (testInstance as HiddenColumnsComponent).hiddenIndexes = [2];
+      fixture.detectChanges();
+
+      // After usage of popular attribute, the columns are visible and the column before the popular one is hidden
+      const third = fixture.debugElement.queryAll(querySelector);
+      expect(third.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(2);
+      expect(third.length).toBe(4);
+    });
+  });
 });
 
 @Component({
@@ -696,5 +814,31 @@ class LongPageWithTableComponent extends TableTest {
       ]
     },
     { type: 'footer', cells: ['This is a footer cell', 'This is a footer cell'] },
+  ];
+}
+
+@Component({
+  template: HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE
+})
+class HiddenColumnsComponent extends TableTest {
+  data = [
+    { type: 'header', popular: 2, cells: ['This is a header cell', 'This is a header cell', 'This is a hidden header cell'] },
+    { type: 'content', description: 'This is a description cell', cells: ['This is a cell', 'This is a cell', 'This is a hidden cell'] },
+    {
+      type: 'toggleSection', header: 'This can be opened',
+      content: [
+        {
+          type: 'content',
+          description: 'This is a description cell',
+          cells: ['This is a cell', 'This is a cell', 'This is a hidden cell']
+        },
+        {
+          type: 'content',
+          description: 'This is a description cell',
+          cells: ['This is a cell', 'This is a cell', 'This is a hidden cell']
+        },
+      ]
+    },
+    { type: 'footer', cells: ['This is a footer cell', 'This is a footer cell', 'This is a hidden footer cell'] },
   ];
 }

@@ -7,6 +7,7 @@ let nextId = 0;
 
 @Component({
   selector: 'nx-comparison-table-popular-cell',
+  styleUrls: ['./popular-cell.component.scss'],
   templateUrl: './popular-cell.component.html'
 })
 export class NxComparisonTablePopularCell {

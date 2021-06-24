@@ -5,6 +5,7 @@ import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
 
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
+import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
@@ -26,7 +28,8 @@ const EXAMPLES = [
   ComparisonTableRowGroupExampleComponent,
   ComparisonTableWithIntersectionExampleComponent,
   ComparisonTableWithToggleSectionsExampleComponent,
-  ComparisonTableExpandableAreaExampleComponent
+  ComparisonTableExpandableAreaExampleComponent,
+  ComparisonTableHiddenColumnsExampleComponent
 ];
 
  @NgModule({
@@ -39,7 +42,8 @@ const EXAMPLES = [
     NxFormfieldModule,
     NxListModule,
     ExamplesSharedModule,
-    NxAccordionModule
+    NxAccordionModule,
+    NxContextMenuModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]
@@ -54,7 +58,8 @@ export class ComparisonExamplesModule {
       'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
       'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
       'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
-      'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent
+      'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent,
+      'comparison-table-hidden-columns': ComparisonTableHiddenColumnsExampleComponent,
     };
   }
 }

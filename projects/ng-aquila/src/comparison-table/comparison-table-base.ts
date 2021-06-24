@@ -21,9 +21,10 @@ export type NxComparisonTableViewType = 'mobile' | 'tablet' | 'desktop';
 /** @docs-private */
 @Directive()
 export abstract class NxComparisonTableBase implements OnDestroy {
-
   selectedIndexChange: EventEmitter<number>;
+
   _disabledIndexes: number[] = [];
+  _hiddenIndexes: number[] = [];
   abstract selectedIndex: number;
   _destroyed: Subject<void> = new Subject();
 

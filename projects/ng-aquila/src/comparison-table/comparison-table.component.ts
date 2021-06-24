@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { coerceNumberProperty, coerceArray, NumberInput } from '@angular/cdk/coercion';
 import {
   ChangeDetectorRef,
   Component,
@@ -73,6 +73,18 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
   /** An event that is is dispatched each time selected index of the table has changed. */
   @Output() selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
+
+  /** Sets which column is hidden. */
+  @Input()
+  set hiddenIndexes(value: number[]) {
+    const newValue = coerceArray(value);
+    if (this._hiddenIndexes !== newValue) {
+      this._hiddenIndexes = newValue;
+    }
+  }
+  get hiddenIndexes(): number[] {
+    return this._hiddenIndexes;
+  }
 
   constructor(
     private _element: ElementRef,
@@ -225,7 +237,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
   }
 
   _infoColumnCount(): number {
-    return this._getHeaderCells().length;
+    return this._getHeaderCells().length - this.hiddenIndexes.length;
   }
 
   _getMobileColumnCount() {

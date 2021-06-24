@@ -14,18 +14,20 @@
     <div class="nx-comparison-table__cell-content"></div>
   </div>
 
-  <div *ngFor="let emptyCellBeforePopular of [].constructor(row.popularCell.forColumn - 1)"
+  <div *ngFor="let emptyCellBeforePopular of [].constructor(row.popularCell.forColumn - 1); let i = index"
     role="cell"
-    class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell">
+    class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell"
+    [class.is-hidden]="_table._hiddenIndexes.indexOf(i) !== -1">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
 
   <!-- popular cell content -->
   <ng-container *ngTemplateOutlet="row.popularCell._content"></ng-container>
 
-  <div *ngFor="let emptyCellAfterPopular of [].constructor(row.cells.length - row.popularCell.forColumn)"
+  <div *ngFor="let emptyCellAfterPopular of [].constructor(row.cells.length - row.popularCell.forColumn); let i = index"
     role="cell"
-    class="nx-comparison-table__placeholder-cell  is-popular-placeholder-cell">
+    class="nx-comparison-table__placeholder-cell is-popular-placeholder-cell"
+    [class.is-hidden]="_table._hiddenIndexes.indexOf(row.popularCell.forColumn + i) !== -1">
     <div class="nx-comparison-table__cell-content"></div>
   </div>
 </div>
