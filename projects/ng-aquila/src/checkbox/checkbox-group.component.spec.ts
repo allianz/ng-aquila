@@ -134,6 +134,17 @@ describe('NxCheckboxGroupComponent', () => {
     });
   }));
 
+  it('should unset the entire set of passed values correctly', fakeAsync(() => {
+    createTestComponent(CheckboxGroupValidation);
+    testInstance.myFormGroup.get("terms")?.setValue(['Term 2', 'Term 3']);
+    testInstance.myFormGroup.get("terms")?.setValue([]);
+    fixture.detectChanges();
+    tick();
+    checkboxInstances.toArray().map(checkbox => {
+      expect(checkbox.checked).toBe(false);
+    });
+  }));
+
   it('should add the checkboxes dynamically', fakeAsync(() => {
     createTestComponent(CheckboxGroupDynamic);
     fixture.detectChanges();

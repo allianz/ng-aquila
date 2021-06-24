@@ -177,7 +177,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
   ngAfterContentInit() {
     setTimeout(() => {
-      this._updateSelectedCheckboxFromValue();
+      this._updateSelectedCheckboxFromValue(true);
     });
 
     this._checkboxes.changes.subscribe(() => {
@@ -226,8 +226,10 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
   private _onTouched: () => any = () => { };
 
-  private _updateSelectedCheckboxFromValue(): void {
-    if (this._checkboxes && this._checkboxes.length && !!this._value && this._value.length) {
+  private _updateSelectedCheckboxFromValue(initialisation: boolean = false): void {
+    // prevent reset of class values with empty array during initialisation
+    const isValueSet = initialisation ? !!this._value && this._value.length : !!this._value;
+    if (this._checkboxes && this._checkboxes.length && isValueSet) {
       this._checkboxes.map(checkbox => {
         checkbox.checked = this._value.indexOf(checkbox.value) !== -1;
       });
