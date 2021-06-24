@@ -1,11 +1,7 @@
-import { Directive, Input } from '@angular/core';
+import { Directive } from '@angular/core';
 
-/** A directive for passing info about start image to small stage component. */
+/** A directive for passing the start image into small stage component. */
 @Directive({
-  // tslint:disable-next-line:directive-selector
-  selector: 'nx-small-stage-start-image'
+  selector: '[nxSmallStageImageStart]',
 })
-export class NxSmallStageStartImageDirective {
-  /* Sets the source for loading the image */
-  @Input() src: string;
-}
+export class NxSmallStageImageStartDirective {}

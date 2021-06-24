@@ -13,15 +13,14 @@
     "resolveJsonModule": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
       "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
       "@aposin/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
       "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
-      "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
+      "@aposin/ng-aquila/documentation/*": [
+        "projects/ng-aquila/documentation/generated/*"
+      ]
     },
     "allowSyntheticDefaultImports": true
   },

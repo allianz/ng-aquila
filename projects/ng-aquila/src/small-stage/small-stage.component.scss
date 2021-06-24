@@ -1,230 +1,253 @@
-@import '../shared-styles/index';
-
-$image-container-offset-end: var(--small-stage-image-container-offset-end);
-$image-container-padding-to-content: var(--small-stage-image-container-padding-to-content);
-$image-container-padding-top: var(--small-stage-image-container-padding-top);
-$image-container-padding-top--w-header: var(--small-stage-with-header-image-container-padding-top);
+@import "../shared-styles/index";
 
 :host {
-  display: -ms-grid;
-  display: grid;
+  display: flex;
   color: var(--small-stage-text-color);
   background-color: var(--small-stage-default-background-color);
-  padding: 0 nx-spacer(2m);
-  text-align: left;
+  justify-content: center;
+}
 
-  &.nx-small-stage--only-start-image {
-    -ms-grid-columns: 1fr 2fr;
-    grid-template-columns: 1fr 2fr;
-  }
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 8fr 2fr;
+  grid-template-columns: 2fr 8fr 2fr;
+  column-gap: $grid-gutter-width-base;
+  padding: 0 $grid-gutter-width-base;
+  flex: 1 1 auto;
+  width: 100%;
+}
 
-  &.nx-small-stage--only-end-image {
-    -ms-grid-columns: 2fr 1fr;
-    grid-template-columns: 2fr 1fr;
-  }
+.content {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  flex: 1 1 auto;
+}
 
-  &.nx-small-stage--two-images {
-    -ms-grid-columns: 1fr 4fr 1fr;
-    grid-template-columns: 1fr 4fr 1fr;
-    text-align: center;
-  }
+.image-start,
+.image-end {
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
 
-  &.nx-small-stage--content-narrow {
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+.image-start,
+.image-end,
+.image-bottom {
+  display: flex;
+  align-items: end;
+}
 
-    &.nx-small-stage--two-images {
-      -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  
-  @include media-breakpoint-response(mobile) {
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+::ng-deep nx-small-stage-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: var(--small-stage-image-min-height);
+  max-height: var(--small-stage-image-max-height);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
-    &.nx-small-stage--content-narrow,
-    &.nx-small-stage--only-start-image,
-    &.nx-small-stage--only-end-image,
-    &.nx-small-stage--two-images {
-      -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-    }
-  }
+::ng-deep [nxSmallStageImageEnd] {
+  background-position: bottom right;
+}
+
+::ng-deep [nxSmallStageImageBottom] {
+  background-position: bottom center;
+  height: var(--small-stage-image-bottom-height);
+}
+
+::ng-deep [nxSmallStageImageStart] {
+  background-position: bottom left;
 }
 
 .header {
-  grid-column: span 3;
-  -ms-grid-column-span: 3;
-  -ms-grid-row: 1;
   -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / -1;
+  min-height: var(--small-stage-header-height);
   padding: var(--small-stage-header-padding);
+  display: flex;
+}
 
-  @include media-breakpoint-response(mobile) {
+:host(:not(.is-expert)) {
+  .container {
+    max-width: var(--grid-max-width);
+  }
+
+  .content {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    text-align: center;
+    margin-bottom: var(--small-stage-content-margin-bottom);
+  }
+
+  .image-start {
+    -ms-grid-column: 1;
+    grid-column: 1;
+  }
+
+  .image-end {
+    -ms-grid-column: 3;
+    grid-column: 3;
+  }
+
+  .image-bottom {
+    display: none;
+    -ms-grid-row: 3;
+    grid-row: 3;
+  }
+
+  @include media-breakpoint-up(medium) {
+    .container {
+      min-height: var(--small-stage-min-height);
+    }
+  }
+
+  @include media-breakpoint-down(medium) {
+    .container {
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+    }
+
+    .image-start,
+    .image-end {
+      display: none;
+    }
+
+    .content {
+      -ms-grid-column: 1;
+      grid-column: 1;
+      margin-bottom: var(--small-stage-content-margin-bottom);
+    }
+
+    .image-bottom {
+      display: block;
+    }
+
+    ::ng-deep [nxSmallStageImageBottom] {
+      margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-content-margin-bottom));
+    }
+  }
+
+  @include media-breakpoint-down(small) {
+    .content {
+      margin-bottom: var(--small-stage-mobile-content-margin-bottom);
+    }
+
+    .header {
+      min-height: var(--small-stage-mobile-header-height);
+      padding: 0;
+
+      &:not(:empty) {
+        min-height: auto;
+        padding: var(--small-stage-mobile-header-padding);
+      }
+    }
+
+    ::ng-deep [nxSmallStageImageBottom] {
+      margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-mobile-content-margin-bottom));
+    }
+  }
+}
+
+:host(.is-expert) {
+  .container {
+    -ms-grid-columns: 8fr 3fr 1fr;
+    grid-template-columns: 8fr 3fr 1fr;
+    -ms-grid-rows: auto 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .image-start {
     display: none;
   }
-}
 
-.content-container {
-  padding: var(--small-stage-content-padding);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-
-  :host.nx-small-stage--only-start-image &,
-  :host.nx-small-stage--two-images & {
+  .image-end {
     -ms-grid-column: 2;
+    grid-column: 2;
   }
 
-  :host.nx-small-stage--w-header & {
-    padding: var(--small-stage-with-header-content-padding);
-    -ms-grid-row: 2;
-  }
-
-  @include media-breakpoint-response(mobile) {
-    :host &,
-    :host.nx-small-stage--w-header & {
-      padding: var(--small-stage-content-padding-narrow-screen);
-      -ms-grid-column: 1;
-    }
-
-    :host.nx-small-stage--only-start-image &,
-    :host.nx-small-stage--two-images & {
-      -ms-grid-column: 1;
+  ::ng-deep [nxSmallStageImageEnd] {
+    :host-context([dir="rtl"]) & {
+      background-position: bottom left;
     }
   }
-}
 
-.image-container {
-  min-height: var(--small-stage-image-min-height);
-  padding-top: $image-container-padding-top;
-  position: relative;
-  -ms-grid-row: 1;
-  display: flex;
-  align-items: flex-end;
-
-  :host.nx-small-stage--w-header & {
-    padding-top: $image-container-padding-top--w-header;
-    -ms-grid-row: 2;
-  }
-
-  &--start {
-    padding-right: $image-container-padding-to-content;
+  .content {
     -ms-grid-column: 1;
+    grid-column: 1;
+    margin-top: var(--small-stage-expert-content-margin-top);
+    margin-bottom: var(--small-stage-expert-content-margin-bottom);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
 
-    @include media-breakpoint-response(mobile) {
-      display: none;
+  .header {
+    min-height: var(--small-stage-expert-header-height);
+    padding: var(--small-stage-expert-header-padding);
+  }
+
+  @include media-breakpoint-up(medium) {
+    .content {
+      min-height: var(--small-stage-expert-content-min-height);
     }
   }
 
-  &--end {
-    padding-left: $image-container-padding-to-content;
-    -ms-grid-column: 2;
-
-    :host.nx-small-stage--two-images & {
-      -ms-grid-column: 3;
+  @include media-breakpoint-down(medium) {
+    .container {
+      -ms-grid-columns: 8fr 4fr;
+      grid-template-columns: 8fr 4fr;
     }
 
-    @include media-breakpoint-response(mobile) {
-      display: none;
+    ::ng-deep [nxSmallStageImageEnd] {
+      background-position: bottom center;
     }
   }
 
-  &--w-end-offset {
-    padding-right: $image-container-offset-end;
-  }
-
-  &__inner {
-    position: absolute;
-    bottom: 0;
-    min-width: var(--small-stage-image-min-width);
-    width: calc(100% - #{$image-container-padding-to-content});
-    height: calc(100% - #{$image-container-padding-top});
-    max-height: var(--small-stage-image-max-height);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-
-    :host.nx-small-stage--w-header & {
-      height: calc(100% - #{$image-container-padding-top--w-header});
+  @media (max-width: 450px) {
+    .container {
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
     }
 
-    .image-container--w-end-offset & {
-      width: calc(100% - #{$image-container-offset-end} - #{$image-container-padding-to-content});
+    .content {
+      margin-top: 0;
+      margin-bottom: var(--small-stage-expert-mobile-content-margin-bottom);
     }
-  }
-}
 
-.image-container-narrow-screen {
-  display: none;
-  position: relative;
+    .header {
+      padding: var(--small-stage-expert-mobile-header-padding);
+    }
 
-  @include media-breakpoint-response(mobile) {
-    display: block;
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
-    min-height: var(--small-stage-image-min-height);
-    height: var(--small-stage-narrow-screen-image-height); 
-    padding-top: 0;
-
-    :host.nx-small-stage--w-header & {
+    .image-end {
       -ms-grid-row: 3;
-    }
-  }
-
-  &__inner {
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-
-    &--start {
-      background-position: left bottom;
+      grid-row: 3;
+      -ms-grid-column: 1;
+      grid-column: 1;
+      margin: 0;
+      height: var(--small-stage-expert-image-min-height);
+      min-height: var(--small-stage-image-min-height);
     }
 
-    &--center {
-      background-position: center bottom;
-    }
-    
-    &--end {
-      background-position: right bottom;
+    ::ng-deep [nxSmallStageImageEnd] {
+      background-position: bottom right;
     }
   }
 }
 
-:host-context([dir="rtl"]) {
-  .image-container {
-    &--start {
-      padding-right: 0;
-      padding-left: $image-container-padding-to-content;
-    }
-
-    &--end {
-      padding-right: $image-container-padding-to-content;
-      padding-left: 0;
+:host(.is-expert.is-narrow) {
+  @include media-breakpoint-up(large) {
+    .container {
+      -ms-grid-columns: 6fr 5fr 1fr;
+      grid-template-columns: 6fr 5fr 1fr;
     }
   }
+}
 
-  &.nx-small-stage--w-end-offset .image-container {
-    padding-left: $image-container-offset-end;
-  
-    @include media-breakpoint-response(mobile) {
-      padding-left: 0;
-    }
-  }
-
-  .image-container-narrow-screen__inner {
-    @include media-breakpoint-response(mobile) {
-      &--start {
-        background-position: right bottom;
-      }
-      
-      &--end {
-        background-position: left bottom;
-      }
-    }
+@include media-breakpoint-down(small) {
+  .container {
+    padding: 0 $grid-gutter-width-mobile;
+    column-gap: $grid-gutter-width-mobile;
   }
 }

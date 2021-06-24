@@ -1,56 +1,44 @@
-import { Component, Input, ChangeDetectionStrategy, ContentChild } from '@angular/core';
-import { BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
-import { NxSmallStageEndImageDirective } from './directives/end-image.directive';
-import { NxSmallStageStartImageDirective } from './directives/start-image.directive';
-import { NxSmallStageNarrowScreenImageDirective } from './directives/narrow-screen-image.directive';
-import { NxSmallStageContentDirective } from './directives/content.directive';
-import { NxSmallStageHeaderDirective } from './directives/header.directive';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Component, Input, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+
+/**
+ * Appearance options for the small stage component.
+ */
+export type NxSmallStageAppearance = 'default' | 'expert';
 
 @Component({
   selector: 'nx-small-stage',
   templateUrl: './small-stage.component.html',
   styleUrls: ['./small-stage.component.scss'],
-  host: {
-    '[class.nx-small-stage]': 'true',
-    '[class.nx-small-stage--content-narrow]': '_isContentNarrow',
-    '[class.nx-small-stage--only-start-image]': '_startImage && !_endImage',
-    '[class.nx-small-stage--only-end-image]': '!_startImage && _endImage',
-    '[class.nx-small-stage--two-images]': '_startImage && _endImage',
-    '[class.nx-small-stage--w-header]': '_header',
-  },
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSmallStageComponent {
-  @ContentChild(NxSmallStageEndImageDirective) _endImage: NxSmallStageEndImageDirective;
-  @ContentChild(NxSmallStageStartImageDirective) _startImage: NxSmallStageStartImageDirective;
-  @ContentChild(NxSmallStageNarrowScreenImageDirective) _narrowScreenImage: NxSmallStageNarrowScreenImageDirective;
-  @ContentChild(NxSmallStageContentDirective) _content: NxSmallStageContentDirective;
-  @ContentChild(NxSmallStageHeaderDirective) _header: NxSmallStageHeaderDirective;
+  static ngAcceptInputType_narrow: BooleanInput;
 
-  /** @docs-private */
-  get _startImageInlineStyle(): string {
-    return `url(${this._startImage?.src})`;
+  private _narrow: boolean = false;
+
+  /**
+   * Sets the appearance of the small stage. Default: 'default'
+   */
+  @Input()
+  appearance: NxSmallStageAppearance = 'default';
+
+  /**
+   * Reduces the width of the text to 6/12 instead of 8/12.
+   *
+   * **Only works with appearance = 'expert'.**
+   */
+  @Input()
+  @HostBinding('class.is-narrow')
+  set narrow(value: boolean) {
+    this._narrow = coerceBooleanProperty(value);
   }
-  /** @docs-private */
-  get _endImageInlineStyle(): string {
-    return `url(${this._endImage?.src})`;
+  get narrow() {
+    return this._narrow;
   }
 
-  /** @docs-private */
-  get _narrowScreenImageInlineStyle(): string {
-    return `url(${this._narrowScreenImage?.src || this._endImage?.src || this._startImage?.src})`;
-  }
-
-  /** @docs-private */
-  get _isContentNarrow(): boolean {
-    return this._content?.narrow;
-  }
-
-  /** @docs-private */
-  get narrowScreenImageInnerClassNames(): string[] {
-    return [
-      'image-container-narrow-screen__inner',
-      `image-container-narrow-screen__inner--${this._narrowScreenImage?.position || 'end'}`,
-    ];
+  @HostBinding('class.is-expert')
+  get _isExpert() {
+    return this.appearance === 'expert';
   }
 }

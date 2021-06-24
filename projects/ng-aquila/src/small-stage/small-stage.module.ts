@@ -3,31 +3,31 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { NxSmallStageComponent } from './small-stage.component';
-import { NxSmallStageStartImageDirective } from './directives/start-image.directive';
-import { NxSmallStageEndImageDirective } from './directives/end-image.directive';
-import { NxSmallStageNarrowScreenImageDirective } from './directives/narrow-screen-image.directive';
-import { NxSmallStageContentDirective } from './directives/content.directive';
+import { NxSmallStageImageStartDirective } from './directives/start-image.directive';
+import { NxSmallStageImageEndDirective } from './directives/end-image.directive';
 import { NxSmallStageHeaderDirective } from './directives/header.directive';
+import { NxSmallStageImageBottomDirective } from './directives/bottom-image.directive';
+import { NxSmallStageImageDirective } from './directives/image.directive';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   exports: [
-    NxSmallStageStartImageDirective,
-    NxSmallStageEndImageDirective,
-    NxSmallStageNarrowScreenImageDirective,
-    NxSmallStageContentDirective,
+    NxSmallStageImageDirective,
+    NxSmallStageImageStartDirective,
+    NxSmallStageImageEndDirective,
     NxSmallStageHeaderDirective,
     NxSmallStageComponent,
+    NxSmallStageImageBottomDirective
   ],
   declarations: [
-    NxSmallStageStartImageDirective,
-    NxSmallStageEndImageDirective,
-    NxSmallStageNarrowScreenImageDirective,
-    NxSmallStageContentDirective,
+    NxSmallStageImageDirective,
+    NxSmallStageImageStartDirective,
+    NxSmallStageImageEndDirective,
     NxSmallStageHeaderDirective,
     NxSmallStageComponent,
+    NxSmallStageImageBottomDirective
   ],
   providers: [],
 })

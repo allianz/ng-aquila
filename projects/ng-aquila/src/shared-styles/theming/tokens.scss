@@ -1181,25 +1181,33 @@ $nx-theme: (
 
   slider-negative-background-color: negative-dimmed,
 
+  small-stage-min-height: 208px,
   small-stage-image-min-height: 64px,
   small-stage-image-max-height: 144px,
-  small-stage-image-min-width: 116px,
+  small-stage-header-height: 64px,
+  small-stage-header-padding: 16px 0 24px,
+  small-stage-mobile-header-height: 32px,
+  small-stage-mobile-header-padding: 16px 0,
   // HINT: base on viewport width, so the image gets smaller the narrower the viewport.
   // Since it's only for mobile screens, maximum it evaluates to is 703px * 15% = 105.45px
-  small-stage-narrow-screen-image-height: 15vw,
-
-  small-stage-content-padding: 64px 0 64px,
-  small-stage-content-padding-narrow-screen: 40px 0 24px,
-  small-stage-header-padding: 16px 0 24px,
-  small-stage-image-container-padding-top: 72px,
-  small-stage-image-container-padding-to-content: 20px,
-  small-stage-image-container-offset-end: 25%,
-
-  small-stage-with-header-content-padding: 0 0 64px,
-  small-stage-with-header-image-container-padding-top: 32px,
-
+  small-stage-image-bottom-height: 15vw,
+  small-stage-image-bottom-margin-top: 24px,
+  small-stage-image-bottom-max-height: 100px,
+  small-stage-content-margin-bottom: 64px,
+  small-stage-mobile-content-margin-bottom: 32px,
   small-stage-text-color: text-01,
-  small-stage-default-background-color: --ui-03,
+  small-stage-default-background-color: ui-03,
+
+  small-stage-expert-header-height: 0,
+  small-stage-expert-header-padding: 16px 0 8px,
+  small-stage-expert-content-min-height: 72px,
+  small-stage-expert-content-margin-top: 8px,
+  small-stage-expert-content-margin-bottom: 24px,
+  small-stage-expert-mobile-content-margin-bottom: 16px,
+  small-stage-expert-image-min-height: 100px,
+  small-stage-expert-image-mobile-height: 15vw,
+  small-stage-expert-mobile-header-padding: 8px 0,
+
 
   rating-icon-color: text-01,
   rating-icon-size: 40px,
