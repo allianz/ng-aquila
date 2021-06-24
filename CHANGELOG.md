@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.6.0](https://github.com/aposin/ng-aquila/compare/v11.5.0...v11.6.0) (2021-06-24)
+
+
+### Bug Fixes
+
+* **checkbox-group:** reset values with empty array ([1bf4fa9](https://github.com/aposin/ng-aquila/commit/1bf4fa9a844302f3e4221a17b918f3dc649d2768))
+
+
+### Features
+
+* **docs:** add starter app ([c0ed1e4](https://github.com/aposin/ng-aquila/commit/c0ed1e45a06393e866f09b0e28f8ebb46e7443c2))
+* **comparison-table:** add hidden columns feature ([db2a9fe](https://github.com/aposin/ng-aquila/commit/db2a9fec20e60c86aba7ed5344b4ebbb11351e61))
+* **small-stage:** refine component ([d58bc2e](https://github.com/aposin/ng-aquila/commit/d58bc2e13c53408dfc8a9e6f1e0df19957540ad8))
+
+
+
 # [11.5.0](https://github.com/aposin/ng-aquila/compare/v11.4.0...v11.5.0) (2021-06-10)
 
 
