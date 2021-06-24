@@ -1,4 +1,4 @@
-import { chain, noop, Rule, Tree, SchematicContext } from '@angular-devkit/schematics';
+import { chain, noop, Rule, Tree, SchematicContext, apply, mergeWith, url, MergeStrategy, SchematicsException, move, applyTemplates } from '@angular-devkit/schematics';
 import {
   addModuleImportToRootModule,
   getProjectFromWorkspace,
@@ -7,15 +7,17 @@ import {
 } from '@angular/cdk/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import * as chalk from 'chalk';
-import { getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
+import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { Schema } from './schema';
-import { JsonArray } from '@angular-devkit/core';
+import { JsonArray, template } from '@angular-devkit/core';
+import { isAngularApplicationProject } from '../utils/utils';
 
 export default function (options: Schema): Rule {
   return async (host: Tree, context: SchematicContext) => {
     const installTaskId = context.addTask(new NodePackageInstallTask());
     return chain([
       options && options.type && options.type === 'b2b' ? addExpertModule(options) : noop(),
+      options && options.starter ? addStarterApp(options) : noop(),
       addAposinTheme(options),
       addCdkStyles(options),
       addCdkA11yStyles(options),
@@ -30,6 +32,50 @@ function addExpertModule(options: Schema) {
     const project = getProjectFromWorkspace(workspace, options.project);
     addModuleImportToRootModule(host, 'NxExpertModule',
       '@aposin/ng-aquila/config', project);
+  };
+}
+
+function addStarterApp(options: Schema) {
+  return async (host: Tree, context: SchematicContext) => {
+    const workspace = await getWorkspace(host);
+    const project = getProjectFromWorkspace(workspace, options.project);
+    const projectRoot = project.sourceRoot || '.';
+    const projectAppPath = buildDefaultPath(project);
+
+    if (!isAngularApplicationProject(project)) {
+      throw new SchematicsException('Project is not an application or is using an unsupported builder');
+    }
+
+    const mainBuffer = host.read(`${projectRoot}/main.ts`);
+    if (!mainBuffer) {
+      throw new SchematicsException('Incompatible Starter project: cannot find main.ts');
+    }
+    if (!mainBuffer.toString().includes('AppModule')) {
+      throw new SchematicsException('Incompatible Starter project: main.ts is not bootstrapping AppModule');
+    }
+
+    const indexBuffer = host.read(`${projectRoot}/index.html`);
+    if (!indexBuffer) {
+      throw new SchematicsException('Incompatible Starter project: cannot find index.html');
+    }
+    if (!indexBuffer.toString().includes('<app-root')) {
+      throw new SchematicsException('Incompatible Starter project: index.html does not include <app-root> element');
+    }
+
+    const moduleBuffer = host.read(`${projectAppPath}/app.module.ts`);
+    if (!moduleBuffer) {
+      throw new SchematicsException(`Incompatible Starter project: ${projectAppPath}/app.module.ts does not exist`);
+    }
+    if (!moduleBuffer.toString().includes('AppComponent')) {
+      throw new SchematicsException(`Incompatible Starter project: ${projectAppPath}/app.module.ts does not import AppComponent`);
+    }
+
+    return mergeWith(
+      apply(url('./files'), [
+        move(projectAppPath)
+      ]),
+      MergeStrategy.Overwrite
+    );
   };
 }
 

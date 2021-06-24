@@ -34,6 +34,12 @@
       "description": "Option that no theme is added",
       "type": "boolean",
       "default": false
+    },
+    "starter": {
+      "description": "Option that creates the Starter App",
+      "type": "boolean",
+      "default": false,
+      "x-prompt": "Do you want to update your project with the Aquila Starter App? (WARNING: this will replace existing project files!)"
     }
   },
   "required": []

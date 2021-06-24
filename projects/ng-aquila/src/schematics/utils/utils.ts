@@ -11,6 +11,7 @@ import * as ts from 'typescript';
 import * as html from '@angular/compiler/src/ml_parser/ast';
 import { getHtmlTagDefinition } from '@angular/compiler/src/ml_parser/html_tags';
 import { JsonAstNode, JsonAstObject } from '@angular-devkit/core';
+import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 class SerializerVisitor implements html.Visitor {
   visitElement(element: html.Element, _context: any): any {
@@ -86,4 +87,17 @@ export function modifyProperty(node: ts.Node) {
 
 export function isJsonAstObject(node: JsonAstNode | null): node is JsonAstObject {
   return !!node && node.kind === 'object';
+}
+
+export function isAngularApplicationProject(project: ProjectDefinition): boolean {
+  if (project.extensions.projectType !== 'application') {
+    return false;
+  }
+
+  const builder = project.targets?.get('build')?.builder.toString();
+  if (builder && (builder.includes('@angular-devkit/build-angular:browser')
+  || builder.includes('@angular-builders/custom-webpack:browser'))) {
+    return true;
+  }
+  return false;
 }

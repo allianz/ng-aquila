@@ -30,5 +30,7 @@
   "include": [
     "src/schematics/**/*"
   ],
-  "exclude": []
+  "exclude": [
+    "src/schematics/*/files/**/*"
+  ]
 }

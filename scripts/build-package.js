@@ -51,3 +51,4 @@ console.log("========================");
 console.log("  Copying other assets");
 cpx.copy('README.md', 'dist/ng-aquila');
 cpx.copy('LICENSE', 'dist/ng-aquila');
+cpx.copy('./projects/ng-aquila/src/schematics/*/files/**', './dist/ng-aquila/schematics');

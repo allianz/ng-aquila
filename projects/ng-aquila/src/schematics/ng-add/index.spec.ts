@@ -38,6 +38,13 @@ describe('ng-aquila ng add', () => {
     it('should add css var ponyfill', async () => {
       expect(testSetup.appTree.readContent('projects/aquila-testing/src/polyfills.ts')).toContain('cssVars(');
     });
+
+    it('should not write Starter App files by default', () => {
+      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts'))
+        .not.toContain('openConsentDialog()');
+      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html'))
+        .not.toContain('Aquila Insurance App');
+    });
   });
 
   describe('expert', () => {
@@ -64,6 +71,20 @@ describe('ng-aquila ng add', () => {
 
     it('should not add a theme file if no-theme is set to true', () => {
       expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+    });
+  });
+
+  describe('starter app', () => {
+    beforeEach(async () => {
+      await testSetup.runMigration({ starter: true });
+      testProjectConfig = await getTestProjectConfig();
+    });
+
+    it('should update Starter App files', () => {
+      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts'))
+        .toContain('openConsentDialog()');
+      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html'))
+        .toContain('Aquila Insurance App');
     });
   });
 });

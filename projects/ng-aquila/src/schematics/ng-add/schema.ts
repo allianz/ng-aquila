@@ -15,4 +15,7 @@ export interface Schema {
 
   /** Whether no theme should be added. */
   noTheme: boolean;
+
+  /** Whether the Starter App should be added. */
+  starter: boolean;
 }
