@@ -15,7 +15,8 @@
     "moment": "^2.22.2",
     "object-fit-images": "^3.2.3",
     "iban": "^0.0.12",
-    "css-vars-ponyfill": "^2.1.2"
+    "css-vars-ponyfill": "^2.1.2",
+    "i18n-iso-countries": "^6.7.0"
   },
   "dependencies": {
     "decimal.js": "^10.0.1"
