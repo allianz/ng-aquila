@@ -1,5 +1,4 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
   AfterViewInit,
@@ -16,7 +15,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
+import { NxDropdownComponent, NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { LocalizedCountryNames } from 'i18n-iso-countries';
@@ -44,7 +43,13 @@ let next = 0;
     '[attr.id]': 'id'
   }
 })
-export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldControl<any>, OnDestroy, DoCheck, OnInit, AfterViewInit {
+export class NxPhoneInputComponent implements
+    ControlValueAccessor,
+    NxFormfieldControl<any>,
+    OnDestroy,
+    DoCheck,
+    OnInit,
+    AfterViewInit {
 
   @ViewChild(NxDropdownComponent, { static: true }) dropdown: NxDropdownComponent;
 
@@ -81,7 +86,6 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
   }
   set disabled(value: boolean) {
     this._disabled = value;
-    this._sortCountries();
   }
 
   private _readonly = false;
@@ -174,7 +178,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
   errorState: boolean = false;
   readonly controlType?: string = 'nx-phone-input';
 
-  _sortedCountries;
+  _sortedCountries: NxDropdownOption[];
   _countryCallingCode;
 
   private _subscriptions = new Subscription();
@@ -328,15 +332,14 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
   }
 
   _sortCountries() {
-    if (this.disabled) {
-      this._sortedCountries = [this._countryCode];
-    } else {
-      const sortedCountryCodes = getSortedCountryCodes(this.countryNames);
-      // Check if it's the initial assignment or a change of the disabled input value
-      if (this._sortedCountries === undefined || this._sortedCountries.length !== sortedCountryCodes.length) {
-        this._sortedCountries = sortedCountryCodes;
-      }
-    }
+    this._sortedCountries = getSortedCountryCodes(this.countryNames).map(country => this._getDropdownOption(country));
+  }
+
+  _getDropdownOption(country: string): NxDropdownOption {
+    return {
+      value: country,
+      label: `${ this._getCountryName(country) } (+${ this._getCallingCode(country) })`
+    };
   }
 
   _getCountryName(countryCode) {

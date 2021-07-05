@@ -92,6 +92,12 @@ You can disable the whole dropdown as well as single dropdown items by setting t
 
 <!-- example(dropdown-reactive) -->
 
+
+### Data-driven (lazy rendering)
+The options can also be passed to the dropdown using the `options` input. Dropdowns with many options benefit from this approach, as they will only be rendered when the dropdown is open. Grouping of options is currently not supported.
+
+<!-- example(dropdown-lazy) -->
+
 <div class="docs-expert-container">
 
 ### Expert: Dropdown with outline

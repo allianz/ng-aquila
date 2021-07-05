@@ -13,7 +13,7 @@ import { delay } from 'rxjs/operators';
 import { dispatchFakeEvent, dispatchKeyboardEvent, createFakeEvent } from '../cdk-test-utils';
 import { NxDropdownComponent } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
-import { NxDropdownItemChange, NxDropdownItemComponent } from './item/dropdown-item';
+import { NxDropdownItemComponent } from './item/dropdown-item';
 // tslint:disable:component-class-suffix
 
 describe('NxDropdownComponent', () => {
@@ -494,22 +494,6 @@ describe('NxDropdownComponent', () => {
 
     }));
 
-    it('should emit to `optionSelectionChanges` when an option is selected', fakeAsync(() => {
-      createTestComponent(SimpleDropdownComponent);
-      openDropdownByClick();
-      expectDropdownOpen();
-
-      let subscription;
-
-      const spy = jasmine.createSpy('option selection spy');
-
-      subscription = fixture.componentInstance.dropdown.optionSelectionChanges.subscribe(spy);
-      clickOnItem(0);
-      expect(spy).toHaveBeenCalledWith(jasmine.any(NxDropdownItemChange));
-
-      subscription.unsubscribe();
-    }));
-
     it('overlay should have same width as the dropdown', fakeAsync(() => {
       createTestComponent(SimpleDropdownComponent);
       dropdownElement.style.width = '400px';
@@ -611,7 +595,7 @@ describe('NxDropdownComponent', () => {
       openDropdownByKeyboard();
       flush();
       fixture.detectChanges();
-      tick();
+      tick(1);
       // 4 * 44 + 22 (half of item height) + 16 (firstItemPaddingTop) - 100 (middle of panel)
       expect(dropdownInstance.panelBody.nativeElement.scrollTop).toBe(106);
     }));
@@ -774,6 +758,7 @@ describe('NxDropdownComponent', () => {
       openDropdownByClick();
       clickOnItem(1);
       openDropdownByClick();
+
       const filterInput = getFilterInput();
       expect(() => {
         filterInput.value = 'G';
@@ -962,15 +947,16 @@ describe('NxDropdownComponent', () => {
 
     it('should support reactive forms binding', fakeAsync(() => {
       createTestComponent(ReactiveBindingDropdownComponent);
-      tick();
       openDropdownByClick();
+      fixture.detectChanges();
+      tick();
 
       clickOnItem(3);
       expect((testInstance as ReactiveBindingDropdownComponent).testForm.controls.dropdown.value).toBe('Mini');
     }));
   });
 
-  describe('with  a disabled item', () => {
+  describe('with a disabled item', () => {
     beforeEach(fakeAsync(() => {
       configureNxDropdownTestingModule([DisabledItemDropdown, DisabledItemMultiDropdown, DropdownOnPush]);
     }));
@@ -1038,7 +1024,7 @@ describe('NxDropdownComponent', () => {
       expect(dropdownItem.getAttribute('tabindex')).toBe('0');
       expect(dropdownItem.getAttribute('aria-disabled')).toBe('false');
 
-      (Array.from(dropdownInstance.options)[0] as NxDropdownItemComponent).disabled = true;
+      (Array.from(dropdownInstance.dropdownItems)[0] as NxDropdownItemComponent).disabled = true;
       fixture.detectChanges();
       expect(dropdownItem.classList.contains('nx-dropdown-item--disabled')).toBeTruthy();
       expect(dropdownItem.getAttribute('tabindex')).toBe('-1');
@@ -1114,7 +1100,7 @@ describe('NxDropdownComponent', () => {
       expectItemsHighlighted([1]);
     }));
 
-    it('should move over item array boundaries', fakeAsync(() => {
+    it('should not move over item array boundaries', fakeAsync(() => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByKeyboard();
       fixture.detectChanges();
@@ -1123,16 +1109,18 @@ describe('NxDropdownComponent', () => {
       dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', UP_ARROW);
       fixture.detectChanges();
       tick(300);
-      expectItemsHighlighted([3]);
+      expectItemsHighlighted([0]);
       dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       tick(300);
-      expectItemsHighlighted([0]);
+      expectItemsHighlighted([1]);
     }));
 
     it('should select the highlighted value via ENTER key', fakeAsync(() => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByKeyboard();
+      fixture.detectChanges();
+      tick(300);
       const dropdownOverlayDiv = getDropdown();
       dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
@@ -1236,6 +1224,33 @@ describe('NxDropdownComponent', () => {
     }));
   });
 
+  describe('lazy', () => {
+    beforeEach(fakeAsync(() => {
+      configureNxDropdownTestingModule([DropdownLazy]);
+      createTestComponent(DropdownLazy);
+    }));
+
+    it('renders options', fakeAsync(() => {
+      openDropdownByClick();
+      const options = getDropdownItems();
+      expect(options.length).toBe(3);
+    }));
+
+    it('renders labels', fakeAsync(() => {
+      openDropdownByClick();
+      const options = getDropdownItems();
+      expect(options[0].textContent).toBe('one');
+      expect(options[1].textContent).toBe('two');
+      expect(options[2].textContent).toBe('three');
+    }));
+
+    it('selects option', fakeAsync(() => {
+      openDropdownByClick();
+      clickOnItem(1);
+      expect(renderedResult.textContent).toBe('two');
+    }));
+  });
+
   describe('accessibility', () => {
     beforeEach(fakeAsync(() => {
       configureNxDropdownTestingModule([
@@ -1323,10 +1338,14 @@ describe('NxDropdownComponent', () => {
 
     it('should be able to jump to an item by typing', fakeAsync(() => {
       createTestComponent(DropdownCustomLabelComponent);
+      openDropdownByClick();
+      fixture.detectChanges();
+      tick();
       expect(dropdownInstance.value).toBeUndefined();
-      const renderedElement = fixture.nativeElement.querySelector('.nx-dropdown__rendered');
-      dispatchKeyboardEvent(renderedElement, 'keydown', D);
+      const panel = getDropdown();
+      dispatchKeyboardEvent(panel, 'keydown', D);
       tick(500);
+      dispatchKeyboardEvent(panel, 'keydown', ENTER);
       fixture.detectChanges();
       flush();
       expect(renderedResult.textContent).toBe('DE');
@@ -1788,4 +1807,29 @@ class DisabledItemMultiDropdown extends DropdownTest {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 class DropdownOnPush extends DropdownTest {
+}
+
+@Component({
+  template: `
+    <nx-formfield>
+      <nx-dropdown [options]="options" [(ngModel)]="model" name="dropdown"></nx-dropdown>
+    </nx-formfield>`
+})
+class DropdownLazy extends DropdownTest {
+  model: Number | null = null;
+
+  options = [
+    {
+      value: 1,
+      label: 'one'
+    },
+    {
+      value: 2,
+      label: 'two'
+    },
+    {
+      value: 3,
+      label: 'three'
+    }
+  ];
 }

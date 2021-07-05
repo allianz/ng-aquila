@@ -3,13 +3,13 @@
     <div nxCol="12, 12, 6">
       <nx-formfield nxLabel="Car brand">
         <nx-dropdown [nxValueFormatter]="toText">
-          <nx-dropdown-item *ngFor="let brand of demoData" [nxValue]="brand"></nx-dropdown-item>
+          <nx-dropdown-item *ngFor="let option of options" [nxValue]="option"></nx-dropdown-item>
         </nx-dropdown>
       </nx-formfield>
     </div>
     <div nxCol="12, 12, 6">
       <nx-formfield nxLabel="Car brand">
-        <nx-dropdown [nxDisabled]="true">
+        <nx-dropdown >
           <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
           <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
           <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>

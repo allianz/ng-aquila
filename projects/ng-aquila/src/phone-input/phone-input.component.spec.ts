@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { NxPhoneInputModule } from './phone-input.module';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, Directive, ViewChild, Type, DebugElement, Injectable } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, flush, inject, tick, flushMicrotasks } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush, inject } from '@angular/core/testing';
 
 import { NxPhoneInputComponent } from './phone-input.component';
 import { dispatchFakeEvent } from '../cdk-test-utils';
@@ -149,16 +149,6 @@ describe('PhoneInputComponent', () => {
     fixture.detectChanges();
     expect(dropdown.componentInstance.disabled).toBe(false);
     expect(input.getAttribute('disabled')).toBe(null);
-  });
-
-  it('should only render selected country in dropdown when disabled', () => {
-    createTestComponent(ReactiveFormsPhoneInput);
-    (testInstance as ReactiveFormsPhoneInput).formControl.disable();
-    fixture.detectChanges();
-    expect(dropdown.componentInstance.options.length).toBe(1);
-    (testInstance as ReactiveFormsPhoneInput).formControl.enable();
-    fixture.detectChanges();
-    expect(dropdown.componentInstance.options.length).toBeGreaterThan(1);
   });
 
   it('should remove leading zeros by default on blur', fakeAsync(() => {

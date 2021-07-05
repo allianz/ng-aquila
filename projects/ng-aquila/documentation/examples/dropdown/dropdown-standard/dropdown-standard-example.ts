@@ -5,13 +5,23 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'dropdown-standard-example',
-  templateUrl: './dropdown-standard-example.html',
-  styleUrls: ['./dropdown-standard-example.css']
+  templateUrl: './dropdown-standard-example.html'
 })
 export class DropdownStandardExampleComponent {
-  demoData = [
-    'BMW', 'Audi', 'VW', 'Mercedes', 'Porsche', 'Tesla', 'Lada',
-    'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
+  options = [
+    'BMW',
+    'Audi',
+    'VW',
+    'Mercedes',
+    'Porsche',
+    'Tesla',
+    'Lada',
+    'Opel',
+    'Fiat',
+    'Ford',
+    'Kia',
+    'Toyota',
+    'Ferrari'
   ];
 
   toText(value): string {

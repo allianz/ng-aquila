@@ -68,6 +68,10 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
    */
   @Input('nxValue') value;
 
+  get label(): string {
+    return this._mostRecentViewValue;
+  }
+
   /** The unique ID of the option. */
   get id(): string { return this._id; }
 
@@ -145,6 +149,10 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     // we have to check for changes in the DOM ourselves and dispatch an event. These checks are
     // relatively cheap, however we still limit them only to selected options in order to avoid
     // hitting the DOM too often.
+    this._updateViewValue();
+  }
+
+  private _updateViewValue() {
     if (this._selected) {
       const viewValue = this.viewValue;
 
@@ -175,6 +183,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   _selectViaInteraction(): void {
     if (!this.disabled) {
       this._selected = this.multiselect ? !this._selected : true;
+      this._updateViewValue();
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent(true);
     }
@@ -237,6 +246,11 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
       this._changeDetectorRef.markForCheck();
       this._emitSelectionChangeEvent();
     }
+  }
+
+  _initSelected(selected: boolean) {
+    this._selected = selected;
+    this._changeDetectorRef.markForCheck();
   }
 
   /** @docs-private */

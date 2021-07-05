@@ -2,15 +2,11 @@
   <nx-dropdown [class.hide]="readonly && !disabled" [nxValue]="countryCode"
     #dropdown [nxShowFilter]="true"
     [nxDisabled]="disabled"
-    [nxOverlayLabel]="areaCodeLabel">
-    <ng-template nxClosedLabel>
-      <span>+{{ _getCallingCode(dropdown.value) }}</span>
-    </ng-template>
-    <nx-dropdown-item *ngFor="let country of _sortedCountries"
-      [nxValue]="country">
-      {{ _getCountryName(country) }} (+{{ _getCallingCode(country) }})
-    </nx-dropdown-item>
+    [nxOverlayLabel]="areaCodeLabel"
+    [options]="_sortedCountries">
+    <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
   </nx-dropdown>
+
   <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
   <input class="c-input" [class.hide]="readonly && !disabled" type="tel" (blur)="_onInputBlur()"
     [(ngModel)]="_inputValue" (ngModelChange)="_onInput($event)"

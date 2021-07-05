@@ -1,9 +1,9 @@
 
 <!-- input and stuff-->
 <div cdkOverlayOrigin
-    #origin="cdkOverlayOrigin"
-    class="nx-dropdown__container"
-    #trigger>
+  #origin="cdkOverlayOrigin"
+  class="nx-dropdown__container"
+  #trigger>
   <div class="nx-dropdown__rendered" [id]="renderedValueId">
     <span *ngIf="empty && placeholder">{{ placeholder }}</span>
     <ng-container *ngIf="!empty">
@@ -36,21 +36,21 @@
   (detach)="closePanel()">
 
   <div class="nx-dropdown__panel"
-      [class.has-filter]="showFilter"
-      [class.nx-dropdown__panel--in-outline-field]="_isInOutlineField"
-      (keydown)="_handleKeydown($event)"
-      [dir]="dir"
-      #panel>
+    [class.has-filter]="showFilter"
+    [class.nx-dropdown__panel--in-outline-field]="_isInOutlineField"
+    (keydown)="_handleKeydown($event)"
+    [dir]="dir"
+    #panel>
     <div class="nx-dropdown__panel-header" *ngIf="label">
       {{ label }}
     </div>
     <div class="nx-dropdown__filter" *ngIf="showFilter">
       <input class="nx-dropdown__filter-input"
-             [class.is-filled]="!isFilterEmpty"
-             #filterInput
-             type="text"
-             (input)="_onFilter($event)"
-             [placeholder]="filterPlaceholder"
+        [class.is-filled]="!isFilterEmpty"
+        #filterInput
+        type="text"
+        (input)="_onFilter($event)"
+        [placeholder]="filterPlaceholder"
       >
       <span class="nx-dropdown__filter-icon" *ngIf="!isFilterEmpty" (click)="_clearFilter()">
         <nx-icon name="close"></nx-icon>
@@ -58,14 +58,19 @@
     </div>
 
     <div class="nx-dropdown__panel-body"
-         tabindex="-1"
-         role="listbox"
-         #panelBody
-         [class.is-stable]="isStable"
-         [attr.aria-activedescendant]="_getAriaActiveDescendant()"
-         [attr.aria-multiselectable]="isMultiSelect"
+      tabindex="-1"
+      role="listbox"
+      #panelBody
+      [attr.aria-activedescendant]="_getAriaActiveDescendant()"
+      [attr.aria-multiselectable]="isMultiSelect"
     >
-        <ng-content></ng-content>
-      </div>
+      <ng-content></ng-content>
+      <ng-container *ngFor="let option of options">
+        <nx-dropdown-item
+          (onSelectionChange)="_onSelect($event.item, $event.isUserInput, option)"
+          [nxValue]="option.value"
+          >{{ _getLabel(option) }}</nx-dropdown-item>
+      </ng-container>
+    </div>
   </div>
 </ng-template>
