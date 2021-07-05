@@ -5,6 +5,7 @@ import { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng
 import { TabGroupDefaultOptions, TabNavBarDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
 import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/comparison-table';
 import { SelectableCardDefaultOptions, SELECTABLE_CARD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/card';
+import { SmallStageDefaultOptions, SMALL_STAGE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/small-stage';
 
 // expert presets
 const comparisonTableExpertOptions: ComparisonTableDefaultOptions = { useFullRowForExpandableArea: true };
@@ -18,6 +19,7 @@ const datepickerExpertOptions: DatepickerDefaultOptions = { toggleIconTabindex: 
 const tabGroupOptions: TabGroupDefaultOptions = { appearance: 'expert'};
 const tabNavBarOptions: TabNavBarDefaultOptions = { appearance: 'expert' };
 const selectableCardOptions: SelectableCardDefaultOptions = { appearance: 'expert' };
+const smallStageOptions: SmallStageDefaultOptions = { appearance: 'expert' };
 
 @NgModule({
   providers: [
@@ -28,7 +30,8 @@ const selectableCardOptions: SelectableCardDefaultOptions = { appearance: 'exper
     { provide: ERROR_DEFAULT_OPTIONS, useValue: errorExpertOptions },
     { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabGroupOptions },
     { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions },
-    { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions }
+    { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
+    { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions }
   ]
 })
 

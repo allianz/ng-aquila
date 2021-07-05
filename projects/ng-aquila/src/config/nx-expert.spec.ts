@@ -16,6 +16,7 @@ import { NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
 import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
 import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
+import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 
 @Directive()
 abstract class PresetTest {
@@ -26,6 +27,7 @@ abstract class PresetTest {
   @ViewChild(NxTabGroupComponent) tabGroupInstance: NxTabGroupComponent;
   @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
   @ViewChild(NxSelectableCardComponent) selectableCardInstance: NxSelectableCardComponent;
+  @ViewChild(NxSmallStageComponent) smallStageInstance: NxSmallStageComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -39,6 +41,7 @@ describe('NxExpertPreset', () => {
   let tabGroupInstance: NxTabGroupComponent;
   let tabNavBarInstance: NxTabNavBarComponent;
   let selectableCardInstance: NxSelectableCardComponent;
+  let smallStageInstance: NxSmallStageComponent;
 
   function createTestComponent(component: Type<PresetTest>) {
     fixture = TestBed.createComponent(component);
@@ -52,6 +55,7 @@ describe('NxExpertPreset', () => {
     tabGroupInstance = testInstance.tabGroupInstance;
     tabNavBarInstance = testInstance.tabNavBarInstance;
     selectableCardInstance = testInstance.selectableCardInstance;
+    smallStageInstance = testInstance.smallStageInstance;
   }
 
   beforeEach(
@@ -66,7 +70,8 @@ describe('NxExpertPreset', () => {
           NxLabelModule,
           NxMomentDateModule,
           NxTabsModule,
-          NxCardModule
+          NxCardModule,
+          NxSmallStageModule
         ],
         declarations: [
           DatepickerPresetComponent,
@@ -76,7 +81,8 @@ describe('NxExpertPreset', () => {
           TabGroupPresetComponent,
           TabNavBarPresetComponent,
           ComparisonTablePresetComponent,
-          SelectableCardPresetComponent
+          SelectableCardPresetComponent,
+          SmallStagePresetComponent
         ]
       }).compileComponents();
     })
@@ -138,6 +144,13 @@ describe('NxExpertPreset', () => {
     it('should set appearance to expert', () => {
       createTestComponent(SelectableCardPresetComponent);
       expect(selectableCardInstance.appearance).toBe('expert');
+    });
+  });
+
+  describe('small stage presets', () => {
+    it('should set appearance to expert', () => {
+      createTestComponent(SmallStagePresetComponent);
+      expect(smallStageInstance.appearance).toBe('expert');
     });
   });
 });
@@ -248,3 +261,10 @@ class ComparisonTablePresetComponent extends PresetTest {
   `
 })
 class SelectableCardPresetComponent extends PresetTest {}
+
+@Component({
+  template: `
+    <nx-small-stage></nx-small-stage>
+  `
+})
+class SmallStagePresetComponent extends PresetTest {}

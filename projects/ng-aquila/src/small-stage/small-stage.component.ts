@@ -1,10 +1,24 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, HostBinding, InjectionToken, Optional, Inject } from '@angular/core';
 
 /**
  * Appearance options for the small stage component.
  */
 export type NxSmallStageAppearance = 'default' | 'expert';
+
+/**
+ * Represents the default options for the small stage.
+ * It can be configured using the `NX_SMALL_STAGE_DEFAULT_OPTIONS` injection token.
+ */
+export interface SmallStageDefaultOptions {
+  /**
+   * Sets the default appearance. (optional)
+   */
+  appearance?: NxSmallStageAppearance;
+}
+
+export const SMALL_STAGE_DEFAULT_OPTIONS =
+  new InjectionToken<SmallStageDefaultOptions>('SMALL_STAGE_DEFAULT_OPTIONS');
 
 @Component({
   selector: 'nx-small-stage',
@@ -40,5 +54,11 @@ export class NxSmallStageComponent {
   @HostBinding('class.is-expert')
   get _isExpert() {
     return this.appearance === 'expert';
+  }
+
+  constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) defaultOptions: SmallStageDefaultOptions) {
+    if (defaultOptions && defaultOptions.appearance) {
+      this.appearance = defaultOptions.appearance;
+    }
   }
 }
