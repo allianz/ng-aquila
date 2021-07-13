@@ -168,16 +168,16 @@ describe('NxSidebarComponent', () => {
         sidebarInstance.close();
         fixture.detectChanges();
         spyOn(sidebarInstance.widthChange, 'emit');
-        mouseDrag(sidebarHandleElement, 0, MAX_WIDTH + 100);
+        mouseDrag(sidebarHandleElement, 0, sidebarInstance.maxWidth + 100);
         fixture.detectChanges();
       });
 
       it('is open', () => {
-        expect(sidebarElement.nativeElement.style.width).toBe(`${MAX_WIDTH}px`);
+        expect(sidebarElement.nativeElement.style.width).toBe(`${sidebarInstance.maxWidth}px`);
       });
 
       it('it emits the new width (max width)', () => {
-        expect(sidebarInstance.widthChange.emit).toHaveBeenCalledWith(MAX_WIDTH);
+        expect(sidebarInstance.widthChange.emit).toHaveBeenCalledWith(sidebarInstance.maxWidth);
       });
     });
 
@@ -348,6 +348,20 @@ describe('NxSidebarComponent', () => {
 
       it ('has the minimal width', () => {
         expect(sidebarElement.nativeElement.style.width).toBe(`140px`);
+      });
+    });
+
+    describe('when setting max width', () => {
+      beforeEach(() => {
+        createTestComponent(WideSidebar);
+        sidebarInstance.maxWidth = 500;
+        sidebarInstance.toggle();
+        mouseDrag(sidebarHandleElement, 0, sidebarInstance.maxWidth);
+        fixture.detectChanges();
+      });
+
+      it ('sets the max width', () => {
+        expect(sidebarElement.nativeElement.style.width).toBe(`500px`);
       });
     });
 

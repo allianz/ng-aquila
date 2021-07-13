@@ -55,6 +55,16 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   }
   private _minWidth: number = MIN_WIDTH;
 
+  /** Sets the maximal width (in pixel) of the sidebar. */
+  @Input()
+  set maxWidth(value: number) {
+    this._maxWidth = coerceNumberProperty(value) || MAX_WIDTH;
+  }
+  get maxWidth() {
+    return this._maxWidth;
+  }
+  private _maxWidth: number = MAX_WIDTH;
+
   /** This sets the accessibility label for the resize handle of the sidebar. */
   @Input()
   set resizeHandleAriaLabel(value: string) {
@@ -215,7 +225,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
       } else {
         this.open = true;
-        this.width = Math.min(MAX_WIDTH, this._resizeWidth);
+        this.width = Math.min(this._maxWidth, this._resizeWidth);
         this._emitWidthChange(this.width);
       }
     }
@@ -244,7 +254,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
       this._emitWidthChange(this.width);
     } else if (event.which === RIGHT_ARROW) {
       if (this.open) {
-        this.width = Math.min(MAX_WIDTH, this.width + RESIZE_STEP_SIZE);
+        this.width = Math.min(this._maxWidth, this.width + RESIZE_STEP_SIZE);
       } else {
         this.open = true;
         this.width = Math.max(this.width, AUTO_COLLAPSE_WIDTH);
@@ -274,5 +284,6 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   static ngAcceptInputType_resizeable: BooleanInput;
   static ngAcceptInputType_minWidth: NumberInput;
+  static ngAcceptInputType_maxWidth: NumberInput;
   static ngAcceptInputType_open: BooleanInput;
 }
