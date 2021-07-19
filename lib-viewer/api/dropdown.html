@@ -185,6 +185,24 @@ A boolean should be returned.</p>
       
 
 <tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">options</span>:
+        <span class="docs-api-property__type">NxDropdownOption[]</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    <p>Array of options for the dropdown.</p>
+</td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
   <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxOverlayLabel'</span>)
         </div><p class="docs-api-property">
       <code>
@@ -397,6 +415,22 @@ This function is used for displaying and filtering the content
   <td class="docs-api-property-description">
     <p>The text direction of the containing app.</p>
 </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">dropdownItems</span>:
+        <span class="docs-api-property__type">QueryList<NxDropdownItemComponent></span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
 </tr>
 
 
@@ -662,6 +696,22 @@ as they are sentinel values signalling empty data.</p>
 <tr class="docs-api-properties-row">
   <td class="docs-api-properties-name-cell"><p class="docs-api-property">
       <code>
+        <span class="docs-api-property__name">label</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
         <span class="docs-api-property__name">selected</span>:
         <span class="docs-api-property__type">boolean</span>
       </code>
@@ -836,6 +886,65 @@ as they are sentinel values signalling empty data.</p>
   <td class="docs-api-property-description">
     <p>Reference to the option that emitted the event.</p>
 </td>
+</tr>
+
+
+    
+  </table>
+
+
+
+
+
+
+    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+      <span header-link="additional_interfaces"></span>
+      Additional interfaces
+    </h3>
+    
+      
+
+<h4 id="NxDropdownOption" class="docs-header-link docs-api-h4 docs-api-interface-name">
+  <span header-link="NxDropdownOption"></span>
+  <code>NxDropdownOption</code>
+</h4><p class="docs-api-interface-description"><p>An option of the dropdown.
+Contains a value and an optional label.
+If no label is specified, the value will be displayed instead.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+  <table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+      <th class="docs-api-properties-th">Name</th>
+      <th class="docs-api-properties-th">Description</th>
+    </tr>
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">label</span>:
+        <span class="docs-api-property__type">string</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
+</tr>
+
+
+    
+      
+
+<tr class="docs-api-properties-row">
+  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+      <code>
+        <span class="docs-api-property__name">value</span>:
+        <span class="docs-api-property__type">any</span>
+      </code>
+    </p>
+  </td>
+  <td class="docs-api-property-description">
+    </td>
 </tr>
 
 

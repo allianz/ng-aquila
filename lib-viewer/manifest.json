@@ -338,34 +338,6 @@
       "stable": "done"
     },
     {
-      "id": "avatar",
-      "title": "Avatar",
-      "examples": [
-        {
-          "name": "avatar",
-          "config": {}
-        },
-        {
-          "name": "avatar-button",
-          "config": {}
-        },
-        {
-          "name": "avatar-size",
-          "config": {}
-        },
-        {
-          "name": "avatar-colors",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/avatar.html",
-      "overviewFile": "lib-viewer/overview/avatar.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress"
-    },
-    {
       "id": "badge",
       "title": "Badge",
       "examples": [
@@ -623,6 +595,10 @@
         },
         {
           "name": "circle-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group-expert",
           "config": {}
         },
         {
@@ -951,6 +927,10 @@
         },
         {
           "name": "dropdown-reactive",
+          "config": {}
+        },
+        {
+          "name": "dropdown-lazy",
           "config": {}
         },
         {
@@ -2667,6 +2647,42 @@
       "noApi": true
     },
     {
+      "id": "timefield",
+      "title": "Timefield",
+      "examples": [
+        {
+          "name": "timefield-reactive",
+          "config": {}
+        },
+        {
+          "name": "timefield-template-driven",
+          "config": {}
+        },
+        {
+          "name": "timefield-format-toggler",
+          "config": {}
+        },
+        {
+          "name": "timefield-disabled",
+          "config": {}
+        },
+        {
+          "name": "timefield-negative",
+          "config": {}
+        },
+        {
+          "name": "timefield-localize",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/timefield.html",
+      "overviewFile": "lib-viewer/overview/timefield.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "toolbar",
       "title": "Toolbar",
       "examples": [
@@ -2786,38 +2802,30 @@
       "stable": "done"
     },
     {
-      "id": "timefield",
-      "title": "Timefield",
+      "id": "avatar",
+      "title": "Avatar",
       "examples": [
         {
-          "name": "timefield-reactive",
+          "name": "avatar",
           "config": {}
         },
         {
-          "name": "timefield-template-driven",
+          "name": "avatar-button",
           "config": {}
         },
         {
-          "name": "timefield-format-toggler",
+          "name": "avatar-size",
           "config": {}
         },
         {
-          "name": "timefield-disabled",
-          "config": {}
-        },
-        {
-          "name": "timefield-negative",
-          "config": {}
-        },
-        {
-          "name": "timefield-localize",
+          "name": "avatar-colors",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/timefield.html",
-      "overviewFile": "lib-viewer/overview/timefield.html",
-      "b2c": true,
+      "apiFile": "lib-viewer/api/avatar.html",
+      "overviewFile": "lib-viewer/overview/avatar.html",
+      "b2c": false,
       "expert": true,
       "stable": "progress"
     }
@@ -3517,6 +3525,17 @@
       "url": "lib-viewer/examples/circle-toggle-group-###TYPE###.html"
     },
     {
+      "id": "circle-toggle-group-expert",
+      "title": "Circle toggle group expert default example",
+      "module": "circle-toggle",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/circle-toggle-group-expert-###TYPE###.html"
+    },
+    {
       "id": "circle-toggle-negative",
       "title": "Negative styling example",
       "module": "circle-toggle",
@@ -4142,6 +4161,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/dropdown-group-###TYPE###.html"
+    },
+    {
+      "id": "dropdown-lazy",
+      "title": "Standard lazy example",
+      "module": "dropdown",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dropdown-lazy-###TYPE###.html"
     },
     {
       "id": "dropdown-multi-select",

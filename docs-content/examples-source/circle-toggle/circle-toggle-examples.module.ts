@@ -11,6 +11,7 @@ import { CircleToggleStandaloneExampleComponent } from './circle-toggle-standalo
 import { CircleToggleTemplateDrivenExampleComponent } from './circle-toggle-template-driven/circle-toggle-template-driven-example';
 import { CircleToggleTextExampleComponent } from './circle-toggle-text/circle-toggle-text-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-expert/circle-toggle-group-expert-example';
 
 const EXAMPLES = [
   CircleToggleGroupExampleComponent,
@@ -21,7 +22,8 @@ const EXAMPLES = [
   CircleToggleSimpleBindingExampleComponent,
   CircleToggleStandaloneExampleComponent,
   CircleToggleTemplateDrivenExampleComponent,
-  CircleToggleTextExampleComponent
+  CircleToggleTextExampleComponent,
+  CircleToggleGroupExpertExampleComponent
 ];
 
  @NgModule({
@@ -44,6 +46,7 @@ export class CircleExamplesModule {
       'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
       'circle-toggle-template-driven': CircleToggleTemplateDrivenExampleComponent,
       'circle-toggle-text': CircleToggleTextExampleComponent,
+      'circle-toggle-group-expert': CircleToggleGroupExpertExampleComponent
     };
   }
 }

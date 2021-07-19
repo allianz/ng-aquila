@@ -17,6 +17,7 @@ import { DropdownSimpleBindingExampleComponent } from './dropdown-simple-binding
 import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-standard-example';
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 
 const EXAMPLES = [
   DropdownCustomLabelExampleComponent,
@@ -32,7 +33,8 @@ const EXAMPLES = [
   DropdownRenderingItemsExampleComponent,
   DropdownSimpleBindingExampleComponent,
   DropdownStandardExampleComponent,
-  DropdownTemplateDrivenExampleComponent
+  DropdownTemplateDrivenExampleComponent,
+  DropdownLazyExampleComponent
 ];
 
 @NgModule({
@@ -61,6 +63,7 @@ export class DropdownExamplesModule {
       'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
       'dropdown-standard': DropdownStandardExampleComponent,
       'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
+      'dropdown-lazy': DropdownLazyExampleComponent,
     };
   }
 }
