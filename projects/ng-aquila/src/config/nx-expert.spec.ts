@@ -17,6 +17,7 @@ import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin
 import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
 import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
+import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
 
 @Directive()
 abstract class PresetTest {
@@ -28,6 +29,7 @@ abstract class PresetTest {
   @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
   @ViewChild(NxSelectableCardComponent) selectableCardInstance: NxSelectableCardComponent;
   @ViewChild(NxSmallStageComponent) smallStageInstance: NxSmallStageComponent;
+  @ViewChild(NxCircleToggleGroupComponent) circleToggleGroupInstance: NxCircleToggleGroupComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -42,6 +44,7 @@ describe('NxExpertPreset', () => {
   let tabNavBarInstance: NxTabNavBarComponent;
   let selectableCardInstance: NxSelectableCardComponent;
   let smallStageInstance: NxSmallStageComponent;
+  let circleToggleGroupInstance: NxCircleToggleGroupComponent;
 
   function createTestComponent(component: Type<PresetTest>) {
     fixture = TestBed.createComponent(component);
@@ -56,6 +59,7 @@ describe('NxExpertPreset', () => {
     tabNavBarInstance = testInstance.tabNavBarInstance;
     selectableCardInstance = testInstance.selectableCardInstance;
     smallStageInstance = testInstance.smallStageInstance;
+    circleToggleGroupInstance = testInstance.circleToggleGroupInstance;
   }
 
   beforeEach(
@@ -71,7 +75,8 @@ describe('NxExpertPreset', () => {
           NxMomentDateModule,
           NxTabsModule,
           NxCardModule,
-          NxSmallStageModule
+          NxSmallStageModule,
+          NxCircleToggleModule
         ],
         declarations: [
           DatepickerPresetComponent,
@@ -82,7 +87,8 @@ describe('NxExpertPreset', () => {
           TabNavBarPresetComponent,
           ComparisonTablePresetComponent,
           SelectableCardPresetComponent,
-          SmallStagePresetComponent
+          SmallStagePresetComponent,
+          CircleToggleGroupPresetComponent
         ]
       }).compileComponents();
     })
@@ -151,6 +157,13 @@ describe('NxExpertPreset', () => {
     it('should set appearance to expert', () => {
       createTestComponent(SmallStagePresetComponent);
       expect(smallStageInstance.appearance).toBe('expert');
+    });
+  });
+
+  describe('circle toggle group presets', () => {
+    it('should set appearance to expert', () => {
+      createTestComponent(CircleToggleGroupPresetComponent);
+      expect(circleToggleGroupInstance.appearance).toBe('expert');
     });
   });
 });
@@ -268,3 +281,10 @@ class SelectableCardPresetComponent extends PresetTest {}
   `
 })
 class SmallStagePresetComponent extends PresetTest {}
+
+@Component({
+  template: `
+    <nx-circle-toggle-group></nx-circle-toggle-group>
+  `
+})
+class CircleToggleGroupPresetComponent extends PresetTest {}

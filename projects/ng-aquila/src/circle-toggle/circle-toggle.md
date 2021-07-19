@@ -42,6 +42,18 @@ Please note that if no label is provided, on mobile the circleText will be displ
 
 <!-- example(circle-toggle-negative) -->
 
+<div class="docs-expert-container">
+
+#### Expert: Appearance
+
+With `appearance="expert"` you can change the styling of the card to expert.
+
+Please note that this is an **Expert option**. This means that it is only intended for internal applications and not for applications that are client facing.
+
+<!-- example(circle-toggle-group-expert)-->
+
+</div>
+
 ### Simple binding
 
 <!-- example(circle-toggle-simple-binding) -->

@@ -40,7 +40,8 @@ describe('NxToggleButtonGroup', () => {
         DisabledCircleToggleGroupComponent,
         CircleToggleOnPushComponent,
         EmptyToggleOnPushComponent,
-        CircleToggleGroupWithDivComponent
+        CircleToggleGroupWithDivComponent,
+        ExpertCircleToggleGroupComponent
       ],
       imports: [
         NxCircleToggleModule, FormsModule, ReactiveFormsModule
@@ -195,6 +196,19 @@ describe('NxToggleButtonGroup', () => {
     });
   });
 
+  describe('appearance', () => {
+    it('has default appearance', () => {
+      createTestComponent(SimpleCircleToggleGroupComponent);
+      expect(toggleComponent.appearance).toBe('default');
+    });
+
+    it('has expert appearance', () => {
+      createTestComponent(ExpertCircleToggleGroupComponent);
+      expect(toggleComponent.appearance).toBe('expert');
+      expect(toggleNativeElement.classList.contains('is-expert')).toBe(true);
+    });
+  });
+
   describe('a11y', () => {
     it('has no accessibility violations', async () => {
       createTestComponent(SimpleCircleToggleGroupComponent);
@@ -209,6 +223,7 @@ abstract class ButtonToggleGroupTest {
   buttonToggleGroup: NxCircleToggleGroupComponent;
   modelValue: string;
   valueBinding = 'B';
+  appearance = 'default';
 }
 
 @Component({
@@ -319,3 +334,14 @@ class DisabledCircleToggleGroupComponent extends ButtonToggleGroupTest {}
   `
 })
 class CircleToggleGroupWithDivComponent extends ButtonToggleGroupTest {}
+
+@Component({
+  template: `
+    <nx-circle-toggle-group appearance="expert">
+      <nx-circle-toggle value="A" icon="product-heart" hint="info1" label="text1"></nx-circle-toggle>
+      <nx-circle-toggle value="B" icon="product-bed" hint="info2" label="text2"></nx-circle-toggle>
+      <nx-circle-toggle value="C" icon="product-bed" hint="info3" label="text3"></nx-circle-toggle>
+    </nx-circle-toggle-group>
+  `
+})
+class ExpertCircleToggleGroupComponent extends ButtonToggleGroupTest {}

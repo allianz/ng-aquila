@@ -6,6 +6,7 @@ import { TabGroupDefaultOptions, TabNavBarDefaultOptions, TAB_GROUP_DEFAULT_OPTI
 import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/comparison-table';
 import { SelectableCardDefaultOptions, SELECTABLE_CARD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/card';
 import { SmallStageDefaultOptions, SMALL_STAGE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/small-stage';
+import { CircleToggleGroupDefaultOptions, CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS } from '@aposin/ng-aquila/circle-toggle';
 
 // expert presets
 const comparisonTableExpertOptions: ComparisonTableDefaultOptions = { useFullRowForExpandableArea: true };
@@ -20,6 +21,7 @@ const tabGroupOptions: TabGroupDefaultOptions = { appearance: 'expert'};
 const tabNavBarOptions: TabNavBarDefaultOptions = { appearance: 'expert' };
 const selectableCardOptions: SelectableCardDefaultOptions = { appearance: 'expert' };
 const smallStageOptions: SmallStageDefaultOptions = { appearance: 'expert' };
+const circleToggleGroupOptions: CircleToggleGroupDefaultOptions = { appearance: 'expert' };
 
 @NgModule({
   providers: [
@@ -31,7 +33,8 @@ const smallStageOptions: SmallStageDefaultOptions = { appearance: 'expert' };
     { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabGroupOptions },
     { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions },
     { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
-    { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions }
+    { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions },
+    { provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, useValue: circleToggleGroupOptions }
   ]
 })
 
