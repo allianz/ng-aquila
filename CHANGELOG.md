@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [11.7.0](https://github.com/aposin/ng-aquila/compare/v11.6.0...v11.7.0) (2021-07-19)
+
+
+### Bug Fixes
+
+* **peer-dependencies:** add i18n-iso-countries peer dependency ([4cd8c55](https://github.com/aposin/ng-aquila/commit/4cd8c5518412da3e44ef9c357239a7e08ac1835d))
+
+
+### Features
+
+* **circle-toggle:** expert appearance ([3f7909f](https://github.com/aposin/ng-aquila/commit/3f7909fdb09f324330f4192e765007e81b9494e4))
+* **dropdown:** lazy rendering ([f28fa3a](https://github.com/aposin/ng-aquila/commit/f28fa3a53cb08b0cfe64e77d35b91d1ff6f74369))
+* **sidebar:** maxwidth property ([20e357e](https://github.com/aposin/ng-aquila/commit/20e357e061320dc6e46eae64e027c7b6c6859e69))
+* **small-stage:** add default config to expert module ([d9f68d3](https://github.com/aposin/ng-aquila/commit/d9f68d3a93c16d4fa794387bdbbd427a473880ba))
+
+
+
 # [11.6.0](https://github.com/aposin/ng-aquila/compare/v11.5.0...v11.6.0) (2021-06-24)
 
 
