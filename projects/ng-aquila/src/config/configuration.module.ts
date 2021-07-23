@@ -11,8 +11,14 @@ import {
   labelOptions,
   datepickerOptions,
   tabGroupOptions,
-  tabNavBarOptions
+  tabNavBarOptions,
+  selectableCardOptions,
+  smallStageOptions,
+  circleToggleGroupOptions
 } from './configuration-service';
+import { SELECTABLE_CARD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/card';
+import { CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS } from '@aposin/ng-aquila/circle-toggle';
+import { SMALL_STAGE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/small-stage';
 
 @NgModule({
   providers: [
@@ -21,7 +27,10 @@ import {
     { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerOptions },
     { provide: ERROR_DEFAULT_OPTIONS, useValue: errorOptions },
     { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabGroupOptions },
-    { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions }
+    { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabNavBarOptions },
+    { provide: SELECTABLE_CARD_DEFAULT_OPTIONS, useValue: selectableCardOptions },
+    { provide: SMALL_STAGE_DEFAULT_OPTIONS, useValue: smallStageOptions },
+    { provide: CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS, useValue: circleToggleGroupOptions }
   ]
 })
 export class NxConfigurationModule { }

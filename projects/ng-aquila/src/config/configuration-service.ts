@@ -4,6 +4,9 @@ import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base
 import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
 import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
 import { Subject } from 'rxjs';
+import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
+import { CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
+import { SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
 
 export const datepickerOptions: DatepickerDefaultOptions = { changes: new Subject<void>() };
 export const errorOptions: ErrorDefaultOptions = { changes: new Subject<void>() };
@@ -11,6 +14,9 @@ export const formfieldOptions: FormfieldDefaultOptions = { };
 export const labelOptions: LabelDefaultOptions = { };
 export const tabGroupOptions: TabGroupDefaultOptions = { };
 export const tabNavBarOptions: TabNavBarDefaultOptions = { };
+export const selectableCardOptions: SelectableCardDefaultOptions = { };
+export const smallStageOptions: SmallStageDefaultOptions = { };
+export const circleToggleGroupOptions: CircleToggleGroupDefaultOptions = { };
 
 /**
  * Service for switching values of the defaultOptions injection tokens at runtime.
@@ -30,6 +36,9 @@ export class NxConfigurationService {
     delete labelOptions.size;
     delete tabGroupOptions.appearance;
     delete tabNavBarOptions.appearance;
+    delete selectableCardOptions.appearance;
+    delete smallStageOptions.appearance;
+    delete circleToggleGroupOptions.appearance;
   }
 
   switchToExpert() {
@@ -42,6 +51,9 @@ export class NxConfigurationService {
     labelOptions.size = 'small';
     tabGroupOptions.appearance = 'expert';
     tabNavBarOptions.appearance = 'expert';
+    selectableCardOptions.appearance = 'expert';
+    smallStageOptions.appearance = 'expert';
+    circleToggleGroupOptions.appearance = 'expert';
   }
 
   switchToRetail() {
@@ -54,5 +66,8 @@ export class NxConfigurationService {
     labelOptions.size = 'large';
     tabGroupOptions.appearance = 'default';
     tabNavBarOptions.appearance = 'default';
+    selectableCardOptions.appearance = 'default';
+    smallStageOptions.appearance = 'default';
+    circleToggleGroupOptions.appearance = 'default';
   }
 }

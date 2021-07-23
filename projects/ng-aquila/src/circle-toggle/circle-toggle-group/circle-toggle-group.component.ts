@@ -142,7 +142,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
   }
 
   get responsive(): boolean {
-    if (this.appearance === 'expert') {
+    if (this._isExpert) {
       return false;
     } else {
       return this._responsive;
@@ -150,16 +150,12 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
   }
 
   @HostBinding('class.is-expert')
-  get _isExpert() {
+  get _isExpert(): boolean {
     return this.appearance === 'expert';
   }
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) defaultOptions: CircleToggleGroupDefaultOptions) {
-    if (defaultOptions && defaultOptions.appearance) {
-      this.appearance = defaultOptions.appearance;
-    }
-  }
+    @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions) {}
 
   /** @docs-private */
   get selectedButton(): ToggleButton {
@@ -194,11 +190,24 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
   private _responsive: boolean = true;
 
+  private _appearance: NxCircleToggleGroupAppearance | undefined;
+
   /**
+   * **Expert option**
+   *
    * Sets the appearance of the circle toggle group. Default: 'default'
    */
    @Input()
-   appearance: NxCircleToggleGroupAppearance = 'default';
+   set appearance(value: NxCircleToggleGroupAppearance) {
+    if (this._appearance !== value) {
+      this._appearance = value;
+      this._changeDetectorRef.markForCheck();
+    }
+   }
+
+   get appearance(): NxCircleToggleGroupAppearance {
+     return this._appearance || this._defaultOptions?.appearance || 'default';
+   }
 
   private onChangeCallback = (value: string) => { };
   private onTouchedCallback = () => { };

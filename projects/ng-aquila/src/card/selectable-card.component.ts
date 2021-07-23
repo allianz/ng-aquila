@@ -74,7 +74,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
   private _negative: boolean = false;
   private _tabindex: string = '0';
   private _required: boolean;
-  private _appearance: NxSelectableCardAppearance = 'default';
+  private _appearance: NxSelectableCardAppearance | undefined;
 
   _errorListIds: string = '';
 
@@ -90,6 +90,11 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
   /** An event is dispatched each time the selectable card value is changed */
   @Output() checkedChange = new EventEmitter<boolean>();
 
+  /**
+   * ** Expert option **
+   *
+   * Sets the appearance of the small stage. Default: 'default'
+   */
   @Input()
   set appearance(value: NxSelectableCardAppearance) {
     if (value !== this.appearance) {
@@ -99,7 +104,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
   }
 
   get appearance(): NxSelectableCardAppearance {
-    return this._appearance;
+    return this._appearance || this._defaultOptions?.appearance || 'default';
   }
 
   /**
@@ -224,12 +229,8 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
               @Optional() private _parentForm: NgForm,
               @Optional() private _parentFormGroup: FormGroupDirective,
               private _focusMonitor: FocusMonitor,
-              @Optional() @Inject(SELECTABLE_CARD_DEFAULT_OPTIONS) defaultOptions: SelectableCardDefaultOptions
+              @Optional() @Inject(SELECTABLE_CARD_DEFAULT_OPTIONS) private _defaultOptions: SelectableCardDefaultOptions
   ) {
-    if (defaultOptions && defaultOptions.appearance) {
-      this.appearance = defaultOptions.appearance;
-    }
-
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
       // the `providers` to avoid running into a circular import.

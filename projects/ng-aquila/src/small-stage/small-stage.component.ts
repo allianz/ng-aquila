@@ -31,11 +31,22 @@ export class NxSmallStageComponent {
 
   private _narrow: boolean = false;
 
+  private _appearance: NxSmallStageAppearance | undefined;
   /**
+   * ** Expert option **
+   *
    * Sets the appearance of the small stage. Default: 'default'
    */
   @Input()
-  appearance: NxSmallStageAppearance = 'default';
+  set appearance(value: NxSmallStageAppearance) {
+    if (this._appearance !== value) {
+      this._appearance = value;
+    }
+   }
+
+   get appearance(): NxSmallStageAppearance {
+     return this._appearance || this._defaultOptions?.appearance || 'default';
+   }
 
   /**
    * Reduces the width of the text to 6/12 instead of 8/12.
@@ -52,13 +63,9 @@ export class NxSmallStageComponent {
   }
 
   @HostBinding('class.is-expert')
-  get _isExpert() {
+  get _isExpert(): boolean {
     return this.appearance === 'expert';
   }
 
-  constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) defaultOptions: SmallStageDefaultOptions) {
-    if (defaultOptions && defaultOptions.appearance) {
-      this.appearance = defaultOptions.appearance;
-    }
-  }
+  constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) private _defaultOptions: SmallStageDefaultOptions) {}
 }
