@@ -15,6 +15,8 @@ $default-box-shadow: 0 -1px 0 0;
     outline: 0;
     @include var(caret-color, code-input-active-color);
     box-shadow: inset $default-box-shadow v(code-input-color);
+    //this is needed for the box-shadow to be visible on iOS
+    -webkit-appearance: none;
     width: nx-spacer(2m);
     border-radius: 0;
     padding: 0;
