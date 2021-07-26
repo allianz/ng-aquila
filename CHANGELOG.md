@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.7.1](https://github.com/aposin/ng-aquila/compare/v11.7.0...v11.7.1) (2021-07-23)
+
+
+### Bug Fixes
+
+* **code-input:** underlines on ios ([32a273b](https://github.com/aposin/ng-aquila/commit/32a273bd33b1a82fff8833a62b2f16ccc6799105))
+* **docs:** fix theme switcher ([bdb050d](https://github.com/aposin/ng-aquila/commit/bdb050d451c23c967784ffd7119cdb54afb865a0))
+
+
+
 # [11.7.0](https://github.com/aposin/ng-aquila/compare/v11.6.0...v11.7.0) (2021-07-19)
 
 
