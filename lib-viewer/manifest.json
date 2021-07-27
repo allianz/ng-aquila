@@ -1476,46 +1476,6 @@
       "noApi": true
     },
     {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
-          "config": {}
-        },
-        {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "list",
       "title": "List",
       "examples": [
@@ -1671,6 +1631,46 @@
       "category": "components",
       "apiFile": "lib-viewer/api/message.html",
       "overviewFile": "lib-viewer/overview/message.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "link",
+      "title": "Link",
+      "examples": [
+        {
+          "name": "link-default",
+          "config": {}
+        },
+        {
+          "name": "link-size",
+          "config": {}
+        },
+        {
+          "name": "link-icons",
+          "config": {}
+        },
+        {
+          "name": "link-black",
+          "config": {}
+        },
+        {
+          "name": "link-negative",
+          "config": {}
+        },
+        {
+          "name": "link-multiple",
+          "config": {}
+        },
+        {
+          "name": "link-within-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
