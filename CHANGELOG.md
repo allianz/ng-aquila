@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.7.3](https://github.com/aposin/ng-aquila/compare/v11.7.2...v11.7.3) (2021-07-27)
+
+### Bug Fixes
+
+* **docs:** stackblitz link ([5ed228c](https://github.com/aposin/ng-aquila/commit/5ed228c1c59af6c2b9ca0c0dd9a9a779d5b0a0e1))
+
+
 ## [11.7.2](https://github.com/aposin/ng-aquila/compare/v11.7.1...v11.7.2) (2021-07-27)
 
 
