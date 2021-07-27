@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [11.7.2](https://github.com/aposin/ng-aquila/compare/v11.7.1...v11.7.2) (2021-07-27)
+
+
+### Bug Fixes
+
+* **code-input:** spinners in firefox ([e1d9ac4](https://github.com/aposin/ng-aquila/commit/e1d9ac4b94d4907e79ac8d305b57af50ae9c2e95))
+
+
+
 ## [11.7.1](https://github.com/aposin/ng-aquila/compare/v11.7.0...v11.7.1) (2021-07-23)
 
 
