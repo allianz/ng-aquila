@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "ng-high-memory": "NODE_OPTIONS=--max-old-space-size=5120 ng",
+    "ng-high-memory": "node --max_old_space_size=5120 ./node_modules/@angular/cli/bin/ng",
     "release": "standard-version -n",
     "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation --port=4200",
     "build": "ng build",
