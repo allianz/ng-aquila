@@ -16,9 +16,9 @@ const errorOptions: ErrorDefaultOptions = {
 
 @Directive()
 abstract class ErrorTest {
-  @ViewChild(NxErrorComponent) errorInstance: NxErrorComponent;
-  id: string;
-  appearance: ErrorStyleType;
+  @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
+  id!: string;
+  appearance!: ErrorStyleType;
 }
 
 describe('NxErrorComponent', () => {
@@ -124,7 +124,7 @@ describe('NxErrorComponent', () => {
         expect(messageEl).toBeFalsy();
 
         defaultOptions.appearance = 'message';
-        defaultOptions.changes.next();
+        defaultOptions.changes?.next();
         fixture.detectChanges();
         expect(testInstance.errorInstance.appearance).toBe('message');
         messageEl = fixture.nativeElement.querySelector('nx-message');

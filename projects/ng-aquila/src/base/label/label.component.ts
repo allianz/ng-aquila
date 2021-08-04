@@ -34,7 +34,7 @@ export class NxLabelComponent {
   readonly _stateChanges = new Subject<void>();
   private _disabled: boolean = false;
   private _negative: boolean = false;
-  private _size: LABEL_SIZE_TYPE;
+  private _size: LABEL_SIZE_TYPE | undefined;
 
   /** Sets the label to disabled */
   @Input()

@@ -9,7 +9,7 @@ import { NxExpandableTableDirective } from './expandable-table.directive';
 
 @Directive()
 abstract class TableTest {
-  @ViewChild(NxExpandableTableDirective) expandableTableInstance: NxExpandableTableDirective;
+  @ViewChild(NxExpandableTableDirective) expandableTableInstance!: NxExpandableTableDirective;
 }
 
 describe(NxTableComponent.name, () => {

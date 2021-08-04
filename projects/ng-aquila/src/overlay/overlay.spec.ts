@@ -99,7 +99,7 @@ describe('NxOverlayService', () => {
     fixture.detectChanges();
     flush();
     const containerElement = overlayContainerElement.querySelector('.nx-overlay-container');
-    dispatchKeyboardEvent(containerElement, 'keydown', ESCAPE, 'Escape');
+    dispatchKeyboardEvent(containerElement as Node, 'keydown', ESCAPE, 'Escape');
     expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
     flush();
   }));
@@ -171,12 +171,12 @@ describe('NxOverlayService', () => {
       Hello {{localValue}} {{data?.value}}{{setDialogRef(overlayRef)}}</ng-template>`,
 })
 class ComponentWithTemplateRef {
-  localValue: string;
-  overlayRef: NxOverlayRef<any>;
+  localValue!: string;
+  overlayRef!: NxOverlayRef<any>;
 
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
-  @ViewChild('button') trigger: ElementRef;
-  @ViewChild(NxButtonComponent) button: NxButtonComponent;
+  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+  @ViewChild('button') trigger!: ElementRef;
+  @ViewChild(NxButtonComponent) button!: NxButtonComponent;
 
   setDialogRef(overlayRef: NxOverlayRef<any>): string {
     this.overlayRef = overlayRef;
@@ -190,7 +190,7 @@ class ComponentWithTemplateRef {
   <router-outlet></router-outlet>`
 })
 export class TestRootComponent {
-  @ViewChild('button') trigger: ElementRef;
+  @ViewChild('button') trigger!: ElementRef;
 }
 
 @Component({

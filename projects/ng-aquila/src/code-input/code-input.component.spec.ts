@@ -17,7 +17,7 @@ class MyIntl extends NxCodeInputIntl {
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class CodeInputTest {
-  @ViewChild(NxCodeInputComponent) codeInputInstance: NxCodeInputComponent;
+  @ViewChild(NxCodeInputComponent) codeInputInstance!: NxCodeInputComponent;
 
   negative: boolean = false;
   disabled: boolean = false;
@@ -172,6 +172,7 @@ describe('NxCodeInputComponent', () => {
       expect(input.value).toBe(char);
     });
 
+    // @ts-ignore
     expect(testInstance.codeInputInstance._keyCode).toEqual(['1', '2', '3', undefined]);
   }));
 
@@ -358,10 +359,10 @@ describe('NxCodeInputComponent', () => {
       expect(testInstance.codeInputInstance.disabled).toBe(false);
 
       const form = (testInstance as CodeInputTest1).codeForm;
-      form.get('keyCode').disable();
+      form.get('keyCode')!.disable();
       expect(testInstance.codeInputInstance.disabled).toBe(true);
 
-      form.get('keyCode').enable();
+      form.get('keyCode')!.enable();
       expect(testInstance.codeInputInstance.disabled).toBe(false);
     });
 

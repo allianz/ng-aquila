@@ -66,7 +66,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
    * You can't use undefined, null and '' (empty strings)
    * as they are sentinel values signalling empty data.
    */
-  @Input('nxValue') value;
+  @Input('nxValue') value: any;
 
   get label(): string {
     return this._mostRecentViewValue;
@@ -97,7 +97,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     return this._selected;
   }
 
-  private _active: boolean;
+  private _active!: boolean;
 
   /** Whether the item is active. */
   get active(): boolean {
@@ -126,7 +126,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
    * @docs-private
    * The wrapping div in the template. Used by dropdown to use the container height for scrolling.
    */
-  @ViewChild('container', { static: true }) containerElement;
+  @ViewChild('container', { static: true }) containerElement: any;
 
   constructor(
     @Inject(NxDropdownControl) private _dropdown: NxDropdownControl,
@@ -169,7 +169,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     this._destroy.complete();
   }
 
-  _onClick(event) {
+  _onClick(event: Event) {
     /* preventDefault to stop triggering the event twice when you click on the checkbox or the label inside the item */
     event.preventDefault();
     event.stopPropagation();
@@ -211,7 +211,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     this._changeDetectorRef.markForCheck();
   }
 
-  private _showOrHideByFilter(search) {
+  private _showOrHideByFilter(search: string) {
     const constraint = (this._dropdown as NxDropdownComponent).filterFn(search, this.viewValue);
     this._hidden = constraint ? false : true;
     this._changeDetectorRef.markForCheck();
@@ -281,8 +281,8 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     return this.viewValue;
   }
 
-  _isContentEmpty(element) {
-    return element.children.length === 0 && !element.textContent.trim();
+  _isContentEmpty(element: Element) {
+    return element.children.length === 0 && !element.textContent?.trim();
   }
 
   _onLabelChange() {

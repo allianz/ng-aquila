@@ -1,4 +1,9 @@
-export const ICON_MAPPINGS = {
+export interface FontIcon {
+    alias: string;
+    font: string;
+}
+
+export const ICON_MAPPINGS: { [key: string]: FontIcon } = {
 'bars': { alias: 'bars', font: 'far'},
 'bell-o': { alias: 'bell', font: 'far' },
 'bookmark-o': { alias: 'bookmark', font: 'far' },

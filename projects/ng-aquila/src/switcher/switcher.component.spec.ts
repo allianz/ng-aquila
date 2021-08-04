@@ -11,7 +11,7 @@ import {FormsModule, ReactiveFormsModule, FormBuilder, FormControl, Validators, 
 
 @Directive()
 abstract class SwitcherTest {
-  @ViewChild(NxSwitcherComponent) switcherInstance: NxSwitcherComponent;
+  @ViewChild(NxSwitcherComponent) switcherInstance!: NxSwitcherComponent;
   checked = false;
   labelSize = 'large';
 }
@@ -66,7 +66,7 @@ describe('NxSwitcherComponent', () => {
     createTestComponent(BasicSwitcher);
     expect(switcherInstance).toBeTruthy();
     expect(labelElement).not.toBeNull();
-    expect(labelElement.textContent.trim()).toBe('basicLabel');
+    expect(labelElement!.textContent?.trim()).toBe('basicLabel');
     expect(labelElement.getAttribute('for')).toBe(inputElement.id);
     expect(labelElement.classList).toContain('has-label');
   });
@@ -74,7 +74,7 @@ describe('NxSwitcherComponent', () => {
   it('creates switcher without label', () => {
     createTestComponent(LabellessSwitcher);
     expect(switcherInstance).toBeTruthy();
-    expect(labelElement.textContent.trim()).toBe('');
+    expect(labelElement!.textContent!.trim()).toBe('');
     expect(labelElement.classList).not.toContain('has-label');
   });
 
@@ -325,7 +325,7 @@ class LabelSizeSwitcher extends SwitcherTest {
   `
 })
 class ValidationSwitcherForm extends SwitcherTest {
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     super();

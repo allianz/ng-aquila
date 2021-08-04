@@ -9,8 +9,8 @@ export type NxComparisonTableRowType = 'header' | 'content' | 'footer';
 /** @docs-private */
 @Directive()
 export abstract class NxComparisonTableRowBase {
-  cells: QueryList<NxComparisonTableCell>;
-  descriptionCell: NxComparisonTableDescriptionCell;
+  cells!: QueryList<NxComparisonTableCell>;
+  descriptionCell!: NxComparisonTableDescriptionCell;
   popularCell?: NxComparisonTablePopularCell;
   abstract type: NxComparisonTableRowType;
   abstract _isPartOfToggleSection(): boolean;

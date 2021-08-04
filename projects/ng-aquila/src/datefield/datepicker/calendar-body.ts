@@ -52,16 +52,16 @@ export class NxCalendarCell {
 })
 export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
   /** The label for the table. (e.g. "Jan 2017"). */
-  @Input() label: string;
+  @Input() label!: string;
 
   /** The cells to display in the table. */
-  @Input() rows: NxCalendarCell[][];
+  @Input() rows!: NxCalendarCell[][];
 
   /** The value in the table that corresponds to today. */
-  @Input() todayValue: number;
+  @Input() todayValue!: number;
 
   /** The value in the table that is currently selected. */
-  @Input() selectedValue: number;
+  @Input() selectedValue!: number;
 
   /** The number of columns in the table. */
   @Input() numCols = 7;
@@ -87,10 +87,10 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
   /** Emits when a new value out of followingItems is selected. */
   @Output() readonly selectedValueChangeToFollowing: EventEmitter<number> = new EventEmitter<number>();
 
-  @ViewChildren('cell') _cells: QueryList<ElementRef<HTMLElement>>;
+  @ViewChildren('cell') _cells!: QueryList<ElementRef<HTMLElement>>;
 
   /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
-  private _cellsPrevious: QueryList<ElementRef<HTMLElement>>;
+  private _cellsPrevious!: QueryList<ElementRef<HTMLElement>>;
 
   constructor(
     private _elementRef: ElementRef,

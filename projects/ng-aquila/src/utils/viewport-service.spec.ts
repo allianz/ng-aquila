@@ -9,7 +9,7 @@ describe('NxViewportService', () => {
   let viewportService: NxViewportService;
   const subscriptions: Subscription[] = [];
 
-  function withSubscription(observable, callback) {
+  function withSubscription(observable: any, callback: any) {
     subscriptions.push(observable.subscribe(callback));
   }
 
@@ -30,13 +30,13 @@ describe('NxViewportService', () => {
   describe('min', () => {
     it('Correctly returns a viewport match for an initial value', fakeAsync(() => {
       // viewport default = 1184
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), value => expect(value).toBeTrue());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), (value: any) => expect(value).toBeTrue());
       tick(200);
     }));
 
@@ -49,13 +49,13 @@ describe('NxViewportService', () => {
       let isMin2XLarge;
       let isMin3XLarge;
 
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), value => isMinXSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), value => isMinSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMinMedium = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), value => isMinLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), value => isMinXLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMin2XLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMin3XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMinXSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMinSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMinMedium = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMinLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMinXLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMin2XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMin3XLarge = value);
 
       changeViewport('mobile'); // 320px
       tick(200);
@@ -78,13 +78,13 @@ describe('NxViewportService', () => {
       let isMin2XLarge;
       let isMin3XLarge;
 
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), value => isMinXSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), value => isMinSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMinMedium = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), value => isMinLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), value => isMinXLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMin2XLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMin3XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMinXSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMinSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMinMedium = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMinLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMinXLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMin2XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMin3XLarge = value);
 
       changeViewport('tablet'); // 704px
       tick(200);
@@ -107,13 +107,13 @@ describe('NxViewportService', () => {
       let isMin2XLarge;
       let isMin3XLarge;
 
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), value => isMinXSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), value => isMinSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMinMedium = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), value => isMinLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), value => isMinXLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMin2XLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMin3XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMinXSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMinSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMinMedium = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMinLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMinXLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMin2XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMin3XLarge = value);
 
       changeViewport('desktop'); // 704px
       tick(200);
@@ -138,13 +138,13 @@ describe('NxViewportService', () => {
       let isMin2XLarge;
       let isMin3XLarge;
 
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), value => isMinXSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), value => isMinSmall = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMinMedium = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), value => isMinLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), value => isMinXLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMin2XLarge = value);
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMin3XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMinXSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMinSmall = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMinMedium = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMinLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMinXLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMin2XLarge = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMin3XLarge = value);
 
       tick(200);
 
@@ -161,13 +161,13 @@ describe('NxViewportService', () => {
   describe('max', () => {
     it('Correctly returns a viewport match for an initial value', fakeAsync(() => {
       // viewport default = 1184
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)), value => expect(value).toBeTrue());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)), value => expect(value).toBeFalse());
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), value => expect(value).toBeFalse());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE).pipe(take(1)), (value: any) => expect(value).toBeTrue());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL).pipe(take(1)), (value: any) => expect(value).toBeFalse());
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL).pipe(take(1)), (value: any) => expect(value).toBeFalse());
       // needed to clean timer queue
       tick(200);
     }));
@@ -181,13 +181,13 @@ describe('NxViewportService', () => {
       let isMax2XLarge;
       let isMax3XLarge;
 
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), value => isMaxXSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), value => isMaxSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMaxMedium = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), value => isMaxLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), value => isMaxXLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMax2XLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMax3XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMaxXSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMaxSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMaxMedium = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMaxLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMaxXLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMax2XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMax3XLarge = value);
 
       changeViewport('mobile'); // 320px
       tick(200);
@@ -210,13 +210,13 @@ describe('NxViewportService', () => {
       let isMax2XLarge;
       let isMax3XLarge;
 
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), value => isMaxXSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), value => isMaxSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMaxMedium = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), value => isMaxLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), value => isMaxXLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMax2XLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMax3XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMaxXSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMaxSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMaxMedium = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMaxLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMaxXLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMax2XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMax3XLarge = value);
 
       changeViewport('tablet');
       tick(200);
@@ -239,13 +239,13 @@ describe('NxViewportService', () => {
       let isMax2XLarge;
       let isMax3XLarge;
 
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), value => isMaxXSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), value => isMaxSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMaxMedium = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), value => isMaxLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), value => isMaxXLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMax2XLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMax3XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMaxXSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMaxSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMaxMedium = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMaxLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMaxXLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMax2XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMax3XLarge = value);
 
       changeViewport('desktop');
       tick(200);
@@ -270,13 +270,13 @@ describe('NxViewportService', () => {
       let isMax2XLarge;
       let isMax3XLarge;
 
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), value => isMaxXSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), value => isMaxSmall = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), value => isMaxMedium = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), value => isMaxLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), value => isMaxXLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), value => isMax2XLarge = value);
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), value => isMax3XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XSMALL), (value: any) => isMaxXSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_SMALL), (value: any) => isMaxSmall = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMaxMedium = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE), (value: any) => isMaxLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_XLARGE), (value: any) => isMaxXLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isMax2XLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMax3XLarge = value);
 
       tick(200);
 
@@ -295,9 +295,9 @@ describe('NxViewportService', () => {
       let isMobile;
       let isMobilePlus;
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), value => isMobile = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMobile = value);
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), value => isMobilePlus = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMobilePlus = value);
 
       changeViewport('mobile'); // 320px
       tick(200);
@@ -310,11 +310,12 @@ describe('NxViewportService', () => {
       let isTablet;
       let isLargerThanTablet;
       let isSmallerThanTablet;
-      withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE), value => isTablet = value);
+      withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE)
+        , (value: any) => isTablet = value);
       withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_3XLARGE)
-        , value => isLargerThanTablet = value);
+        , (value: any) => isLargerThanTablet = value);
       withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM)
-        , value => isSmallerThanTablet = value);
+        , (value: any) => isSmallerThanTablet = value);
 
       changeViewport('tablet'); // 704px
       tick(200);
@@ -330,12 +331,12 @@ describe('NxViewportService', () => {
       let isLargerThanDesktop;
 
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_2XLARGE), value => isDesktop = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => isDesktop = value);
       withSubscription(
         viewportService.between(NxBreakpoints.BREAKPOINT_2XLARGE, NxBreakpoints.BREAKPOINT_3XLARGE)
-        , value => isLargerThanDesktop = value);
+        , (value: any) => isLargerThanDesktop = value);
       withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_LARGE)
-        , value => isSmallerThanDesktop = value);
+        , (value: any) => isSmallerThanDesktop = value);
 
       changeViewport('desktop'); // 1184px
       tick(200);
@@ -351,9 +352,9 @@ describe('NxViewportService', () => {
       let isMobile;
       let isMobilePlus;
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), value => isMobile = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => isMobile = value);
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), value => isMobilePlus = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => isMobilePlus = value);
 
       tick(200);
 
@@ -367,7 +368,7 @@ describe('NxViewportService', () => {
     it('max returns a viewport change in 500ms', fakeAsync(() => {
       let isMaxLarge;
 
-      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE, 500), value => isMaxLarge = value);
+      withSubscription(viewportService.max(NxBreakpoints.BREAKPOINT_LARGE, 500), (value: any) => isMaxLarge = value);
 
       changeViewport('tablet');
       tick(200);
@@ -379,7 +380,7 @@ describe('NxViewportService', () => {
     it('min returns a viewport change in 700ms', fakeAsync(() => {
       let isMinMedium;
 
-      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM, 700), value => isMinMedium = value);
+      withSubscription(viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM, 700), (value: any) => isMinMedium = value);
 
       changeViewport('tablet');
       tick(699);
@@ -392,7 +393,7 @@ describe('NxViewportService', () => {
       let isTablet;
 
       withSubscription(
-        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE, 50), value => isTablet = value);
+        viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE, 50), (value: any) => isTablet = value);
 
       changeViewport('tablet');
       tick(25);

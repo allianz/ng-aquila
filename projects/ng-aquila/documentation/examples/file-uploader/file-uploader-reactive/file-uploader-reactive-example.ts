@@ -17,7 +17,7 @@ export const myCustomConfig: NxMessageToastConfig = {
   styleUrls: ['./file-uploader-reactive-example.css']
 })
 export class FileUploaderReactiveExampleComponent {
-  testForm: FormGroup;
+  testForm!: FormGroup;
   uploader: NxFileUploader;
   uploadConfig = {
     requestUrl: 'file-upload',

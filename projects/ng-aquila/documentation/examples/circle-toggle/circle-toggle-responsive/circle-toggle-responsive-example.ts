@@ -15,7 +15,7 @@ export class CircleToggleResponsiveExampleComponent {
     {value: 'C', icon: 'product-plane', hint: 'Hint C', label: 'Label C', selected: false},
   ];
 
-  logMessage(event) {
+  logMessage(event: Event) {
     console.log(`toggle-circle changed to value: ` + event);
   }
 

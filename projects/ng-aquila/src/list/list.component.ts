@@ -22,10 +22,10 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
 })
 
 export class NxListComponent {
-  private _classNames;
+  private _classNames: string = '';
 
   /** @docs-private */
-  type: NxListSize;
+  type: NxListSize | undefined;
 
   /** @docs-private */
   negative: boolean = false;

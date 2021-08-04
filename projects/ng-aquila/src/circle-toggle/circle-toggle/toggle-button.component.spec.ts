@@ -130,7 +130,7 @@ describe('NxToggleButton', () => {
       const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
       toggleComponent.checked = true;
       fixture.detectChanges();
-      expect(circleButton.classList.contains('is-flipped')).toBe(true);
+      expect(circleButton!.classList.contains('is-flipped')).toBe(true);
     });
 
     it('should update view on label change', () => {
@@ -138,7 +138,7 @@ describe('NxToggleButton', () => {
       const textElement = nativeToggleComponent.querySelector('.nx-toggle-circle__label-text');
       toggleComponent.label = 'New label';
       fixture.detectChanges();
-      expect(textElement.textContent.trim()).toBe('New label');
+      expect(textElement!.textContent?.trim()).toBe('New label');
 
       toggleComponent.label = '';
       fixture.detectChanges();
@@ -151,17 +151,17 @@ describe('NxToggleButton', () => {
       const hintElement = nativeToggleComponent.querySelector('.nx-toggle-circle__label-hint');
       toggleComponent.hint = 'New hint';
       fixture.detectChanges();
-      expect(hintElement.textContent.trim()).toBe('New hint');
+      expect(hintElement!.textContent?.trim()).toBe('New hint');
     });
 
     it('should update view on circleText change', () => {
       createTestComponent(TextCircleToggleButtonComponent);
       const textElement = nativeToggleComponent.querySelector('.nx-toggle-circle__content-text');
-      expect(textElement.textContent.trim()).toBe('TEXT');
+      expect(textElement!.textContent?.trim()).toBe('TEXT');
 
       toggleComponent.circleText = 'abc';
       fixture.detectChanges();
-      expect(textElement.textContent.trim()).toBe('abc');
+      expect(textElement!.textContent?.trim()).toBe('abc');
     });
 
     it('should update view on name change', () => {
@@ -215,24 +215,24 @@ describe('NxToggleButton', () => {
       createTestComponent(SvgCircleToggleButtonComponent);
       const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
       expect(toggleComponent.svgUrl).toBe('test.svg');
-      expect(circleButton.classList).not.toContain('is-negative');
+      expect(circleButton!.classList).not.toContain('is-negative');
 
       toggleComponent.negative = true;
       fixture.detectChanges();
       expect(toggleComponent.svgUrl).toBe('testInverted.svg');
-      expect(circleButton.classList).toContain('is-negative');
+      expect(circleButton!.classList).toContain('is-negative');
     });
 
     it('should update on touched change', () => {
       createTestComponent(SimpleCircleToggleButtonComponent);
       const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
       expect(toggleComponent._touched).toBe(false);
-      expect(circleButton.classList).not.toContain('is-touched');
+      expect(circleButton!.classList).not.toContain('is-touched');
 
       dispatchTouchEvent(nativeToggleComponent, 'touchstart');
       fixture.detectChanges();
       expect(toggleComponent._touched).toBe(true);
-      expect(circleButton.classList.contains('is-touched')).toBe(true);
+      expect(circleButton!.classList.contains('is-touched')).toBe(true);
     });
 
     it('should display correct svg on hover change (mobile)', () => {
@@ -275,7 +275,7 @@ describe('NxToggleButton', () => {
       const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
       toggleComponent.disabled = true;
       fixture.detectChanges();
-      expect(circleButton.classList.contains('is-disabled')).toBe(true);
+      expect(circleButton?.classList.contains('is-disabled')).toBe(true);
     });
 
     it('should update on negative change', () => {
@@ -283,7 +283,7 @@ describe('NxToggleButton', () => {
       const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
       toggleComponent.negative = true;
       fixture.detectChanges();
-      expect(circleButton.classList.contains('is-negative')).toBe(true);
+      expect(circleButton?.classList.contains('is-negative')).toBe(true);
     });
 
     it('should update on responsive change', () => {
@@ -306,8 +306,8 @@ describe('NxToggleButton', () => {
 @Directive()
 abstract class AbstractButtonToggleComponent {
   @ViewChild(NxCircleToggleComponent)
-  buttonToggle: NxCircleToggleComponent;
-  toggleModel: boolean;
+  buttonToggle!: NxCircleToggleComponent;
+  toggleModel!: boolean;
 }
 
 @Component({

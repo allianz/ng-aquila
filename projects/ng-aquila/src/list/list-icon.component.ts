@@ -15,8 +15,8 @@ import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 
 export class NxListIconComponent {
   /** @docs-private */
-  @ViewChild('viewRefPrefix', { read: ViewContainerRef }) viewRefPrefix: ViewContainerRef;
+  @ViewChild('viewRefPrefix', { read: ViewContainerRef }) viewRefPrefix!: ViewContainerRef;
 
   /** Sets the name of the icon to be displayed. */
-  @Input('nxListIcon') name: string;
+  @Input('nxListIcon') name!: string;
 }

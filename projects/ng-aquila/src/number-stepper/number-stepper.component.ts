@@ -64,8 +64,8 @@ export class NxNumberStepperComponent extends MappedStyles
   private _step: number = 1;
   private _min: number = 0;
   private _max: number = 100;
-  private _value: number = 0;
-  private _label = null;
+  private _value: number | null = 0;
+  private _label!: string;
   private _incrementAriaLabel = '';
   private _decrementAriaLabel = '';
   private _inputAriaLabel = '';
@@ -76,7 +76,7 @@ export class NxNumberStepperComponent extends MappedStyles
   private _disabled: boolean = false;
 
   /** @docs-private */
-  numberInputValue: string;
+  numberInputValue!: string;
 
   /** @docs-private */
   public inputClassNames: string = mapClassNames(
@@ -88,19 +88,19 @@ export class NxNumberStepperComponent extends MappedStyles
   public inputId = `nx-number-stepper-${nextUniqueId++}`;
 
   /** @docs-private */
-  public inputWidth;
+  public inputWidth!: number;
 
   /** @docs-private */
-  public ariaDescribedBy = null;
+  public ariaDescribedBy: string | null = null;
 
   /** @docs-private */
-  @ViewChild('customLabel') ngContentWrapper: ElementRef;
+  @ViewChild('customLabel') ngContentWrapper!: ElementRef;
 
   /** @docs-private */
-  @ViewChild(NxAutoResizeDirective, { static: true }) autoResize: NxAutoResizeDirective;
+  @ViewChild(NxAutoResizeDirective, { static: true }) autoResize!: NxAutoResizeDirective;
 
   /** @docs-private */
-  @ViewChild('nativeInput') nativeInput: ElementRef;
+  @ViewChild('nativeInput') nativeInput!: ElementRef;
 
   /** An event emitted on value change. */
   @Output('nxValueChange') valueChange = new EventEmitter<number>();
@@ -189,15 +189,15 @@ export class NxNumberStepperComponent extends MappedStyles
     return this._max;
   }
 
-  get value(): number {
+  get value(): number | null {
     return this._value;
   }
 
   /** Sets the value of the number-stepper. */
   @Input('nxValue')
   set value(value: number | null) {
-    this._value = value;
-    if (this._value !== null) {
+    this._value = value as number;
+    if (this._value) {
       this.setInputValue(this._value);
     } else {
       this.setInputValue(0);
@@ -258,7 +258,7 @@ export class NxNumberStepperComponent extends MappedStyles
 
   ngAfterViewInit() {
     if (this.ngContentWrapper) {
-      this.ariaDescribedBy = this.ngContentWrapper.nativeElement.children.length > 0 ? `label-for-${this.inputId}` : null;
+      this.ariaDescribedBy = this.ngContentWrapper.nativeElement.children.length > 0 ? `label-for-${this.inputId}` : '';
     }
     this.setInputValue(this._value);
   }
@@ -268,8 +268,8 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  setInputValue(value) {
-    const parsedValue = value !== null ? value : 0;
+  setInputValue(value: number | null) {
+    const parsedValue = value ? value : 0;
     if (this.leadingZero) {
       this.numberInputValue = pad(parsedValue.toString(), 2);
     } else {
@@ -288,19 +288,19 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /* ControlValueAccessor Implementations */
-  writeValue(value: any): void {
+  writeValue(value: number | null): void {
     this.value = value;
   }
 
-  private onChangeCallback = (_: any) => { };
+  private onChangeCallback: Function = () => { };
 
-  registerOnChange(onChange: any): void {
+  registerOnChange(onChange: Function): void {
     this.onChangeCallback = onChange;
   }
   /** @docs-private */
-  onTouchedCallback = () => { };
+  onTouchedCallback: Function = () => { };
 
-  registerOnTouched(onTouched: any): void {
+  registerOnTouched(onTouched: Function): void {
     this.onTouchedCallback = onTouched;
   }
 
@@ -316,11 +316,11 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  onInputChange(event) {
-    if (!this.validateUserInput(event.target.value)) {
+  onInputChange(event: Event ) {
+    if (!this.validateUserInput((event.target as HTMLInputElement).value)) {
       this._value = null;
     } else {
-      this._value = Number(event.target.value);
+      this._value = Number((event.target as HTMLInputElement).value);
     }
 
     // setInputValue() should be called so that numberInputValue is updated with the user input
@@ -328,7 +328,7 @@ export class NxNumberStepperComponent extends MappedStyles
       this.setInputValue(this._value);
     }
 
-    this.valueChange.emit(this._value);
+    this.valueChange.emit(this._value!);
     this.onChangeCallback(this._value);
   }
 
@@ -344,7 +344,7 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  incrementOnKey(event) {
+  incrementOnKey(event: Event) {
     this._increment();
     event.preventDefault();
   }
@@ -352,14 +352,14 @@ export class NxNumberStepperComponent extends MappedStyles
   /** @docs-private */
   _increment() {
     let newValue;
-    if (this.isBetweenLimits(this._value)) {
-      newValue = this.getNextGreaterValue(this._value);
+    if (this.isBetweenLimits(this._value || 0)) {
+      newValue = this.getNextGreaterValue(this._value || 0);
     } else {
-      newValue = this.enforceLimits(this._value);
+      newValue = this.enforceLimits(this._value || 0);
     }
     this.value = newValue;
     this.setInputValue(this.value);
-    this.valueChange.emit(this._value);
+    this.valueChange.emit(this._value!);
     this.onChangeCallback(this._value);
   }
 
@@ -378,7 +378,7 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  decrementOnKey(event) {
+  decrementOnKey(event: Event) {
     this._decrement();
     event.preventDefault();
   }
@@ -386,19 +386,19 @@ export class NxNumberStepperComponent extends MappedStyles
   /** @docs-private */
   _decrement() {
     let newValue;
-    if (this.isBetweenLimits(this._value)) {
-      newValue = this.getNextLowerValue(this._value);
+    if (this.isBetweenLimits(this._value || 0)) {
+      newValue = this.getNextLowerValue(this._value || 0);
     } else {
-      newValue = this.enforceLimits(this._value);
+      newValue = this.enforceLimits(this._value || 0);
     }
     this.value = newValue;
     this.setInputValue(this.value);
-    this.valueChange.emit(this._value);
+    this.valueChange.emit(this._value!);
     this.onChangeCallback(this._value);
   }
 
   /** @docs-private */
-  enforceLimits(value) {
+  enforceLimits(value: number): number {
     if (value > this._max) {
       return this._max;
     } else if (value < this._min) {
@@ -408,13 +408,13 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  getNextLowerValue(start) {
+  getNextLowerValue(start: number): number {
     // if there is an invalid input start is null
     if (!start) {
       start = 0;
     }
 
-    let next;
+    let next: number;
     if (this.isValidStep(start)) {
       next = (new Decimal(start).minus(new Decimal(this._step))).toNumber();
     } else {
@@ -424,7 +424,7 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  getNextGreaterValue(start) {
+  getNextGreaterValue(start: number) {
     let next;
     if (!start) {
       start = 0;
@@ -438,7 +438,7 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  isBetweenLimits(value) {
+  isBetweenLimits(value: number | Decimal) {
     return value <= this._max && value >= this._min;
   }
 
@@ -453,7 +453,7 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  isValidStep(value) {
+  isValidStep(value: number | Decimal | null) {
     if (value === null) {
       value = new Decimal(0);
     }
@@ -471,9 +471,8 @@ export class NxNumberStepperComponent extends MappedStyles
   }
 
   /** @docs-private */
-  userInputToNumber(value): number {
-    const current = value === '' ? 0 : value;
-    return parseInt(current, 10);
+  userInputToNumber(value: string): number {
+    return parseInt(value, 10) || 0;
   }
 
   _validateFn() {
@@ -499,7 +498,7 @@ export class NxNumberStepperComponent extends MappedStyles
   static ngAcceptInputType_negative: BooleanInput;
   static ngAcceptInputType_disabled: BooleanInput;
   static ngAcceptInputType_leadingZero: BooleanInput;
-  static ngAcceptInputType_min: number | string;
-  static ngAcceptInputType_max: number | string;
-  static ngAcceptInputType_step: number | string;
+  static ngAcceptInputType_min: number | string | null | undefined;
+  static ngAcceptInputType_max: number | string | null | undefined;
+  static ngAcceptInputType_step: number | string | null | undefined;
 }

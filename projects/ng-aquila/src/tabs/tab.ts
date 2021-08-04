@@ -27,7 +27,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
-  private _label: string;
+  private _label!: string;
   private _disabled: boolean = false;
 
   /** Emits whenever the internal state of the tab changes. */
@@ -49,15 +49,15 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     }
   }
 
-  private _templateLabel: TemplateRef<any>;
+  private _templateLabel!: TemplateRef<any>;
 
   /** Template inside the NxTab view that contains an `<ng-content>`. */
-  @ViewChild(TemplateRef, { static: true }) _implicitContent: TemplateRef<any>;
+  @ViewChild(TemplateRef, { static: true }) _implicitContent!: TemplateRef<any>;
   /**
    * Template provided in the tab content that will be used if present, used to enable lazy-loading
    */
   @ContentChild(NxTabContentDirective, { read: TemplateRef, static: true })
-  _explicitContent: TemplateRef<any>;
+  _explicitContent!: TemplateRef<any>;
 
   /** Sets the label of the tab shown in the tablist. */
   @Input()
@@ -84,8 +84,8 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     }
   }
 
-  private _headerViewRef: EmbeddedViewRef<any>;
-  private _contentViewRef: EmbeddedViewRef<any>;
+  private _headerViewRef!: EmbeddedViewRef<any>;
+  private _contentViewRef!: EmbeddedViewRef<any>;
 
   /** @docs-private */
   get headerViewRef() {

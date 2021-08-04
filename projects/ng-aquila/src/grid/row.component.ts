@@ -33,7 +33,7 @@ const MAPPING_WRAP = {
   reverse: 'nx-flex-{tier}-wrap-reverse',
 };
 
-const MAPPING_LAYOUT = {
+const MAPPING_LAYOUT: { [k: string]: string } = {
   row: 'nx-grid__row',
   'row-reverse': 'nx-grid__row-reverse',
 };
@@ -147,5 +147,5 @@ export class NxRowComponent {
    * @docs-private
    */
   @Input()
-  class: string;
+  class: string = '';
 }

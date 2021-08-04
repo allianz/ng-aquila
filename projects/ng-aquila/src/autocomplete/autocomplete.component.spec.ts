@@ -135,7 +135,7 @@ describe('NxAutocompleteComponent:', () => {
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
     expect(getAutocompleteItems().length).toBe(2);
-    expect(getAutocompleteItems().item(0).textContent.trim()).toBe('A');
+    expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('A');
   }));
 
   it('should handle complex data correctly', fakeAsync(() => {
@@ -144,8 +144,8 @@ describe('NxAutocompleteComponent:', () => {
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
     expect(getAutocompleteItems().length).toBe(2);
-    expect(getAutocompleteItems().item(0).textContent.trim()).toBe('a descr');
-    expect(getAutocompleteItems().item(1).textContent.trim()).toBe('aa descr');
+    expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a descr');
+    expect(getAutocompleteItems().item(1).textContent!.trim()).toBe('aa descr');
     getAutocompleteItems().item(0).click();
     flush();
     expect(testInstance.inputVal).toBe(COMPLEX_DATA[0]);
@@ -158,7 +158,7 @@ describe('NxAutocompleteComponent:', () => {
     flush();
     expect(getAutocompletePanel()).toBeTruthy();
     expect(getAutocompleteItems().length).toBe(2);
-    expect(getAutocompleteItems().item(0).textContent.trim()).toBe('a');
+    expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a');
   }));
 
   it('should support binding by ngModel', (done) => {
@@ -180,7 +180,7 @@ describe('NxAutocompleteComponent:', () => {
     fixture.whenStable().then(() => {
       getAutocompleteItems().item(1).click();
       const component = testInstance as ReactiveAutocompleteComponent;
-      expect(component.testForm.get('autocomplete').value).toBe('AA');
+      expect(component.testForm.get('autocomplete')!.value).toBe('AA');
       done();
     });
 
@@ -304,9 +304,9 @@ const COMPLEX_DATA = [
 
 @Directive()
 class AutocompleteComponent {
-  @ViewChild(NxAutocompleteComponent, { read: ElementRef }) autocompleteInstanceRef: ElementRef;
-  @ViewChild(NxAutocompleteComponent) autocompleteInstance: NxAutocompleteComponent;
-  @ViewChild(NxAutocompleteTriggerDirective) autocompleteTrigger: NxAutocompleteTriggerDirective;
+  @ViewChild(NxAutocompleteComponent, { read: ElementRef }) autocompleteInstanceRef!: ElementRef;
+  @ViewChild(NxAutocompleteComponent) autocompleteInstance!: NxAutocompleteComponent;
+  @ViewChild(NxAutocompleteTriggerDirective) autocompleteTrigger!: NxAutocompleteTriggerDirective;
 
   public inputVal: any;
 
@@ -373,7 +373,7 @@ class ComplexDataAutocompleteComponent extends AutocompleteComponent {
   `
 })
 class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
-  aValue;
+  aValue: any;
 }
 
 @Component({
@@ -438,7 +438,7 @@ class AutocompleteComponentWithDirection extends AutocompleteComponent {
   direction = 'rtl';
 }
 
-function isVisible(el) {
+function isVisible(el: any) {
   if (getComputedStyle(el).visibility === 'hidden') {
     return false;
   }

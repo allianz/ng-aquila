@@ -136,7 +136,7 @@ Mobile: table is flipped diagonally (with no footer cells!):
               <th class="nx-comparison-table__placeholder-cell" aria-hidden="true"></th>
             </ng-container>
 
-            <ng-container *ngTemplateOutlet="element?.descriptionCell?._content">
+            <ng-container *ngTemplateOutlet="$any(element?.descriptionCell?._content)">
             </ng-container>
           </ng-container>
         </ng-container>
@@ -145,7 +145,7 @@ Mobile: table is flipped diagonally (with no footer cells!):
           <th class="nx-comparison-table__placeholder-cell needs-clipping" aria-hidden="true"></th>
           <ng-container *ngFor="let row of element.rows">
             <ng-container *ngIf="_isRow(row)">
-              <ng-container *ngTemplateOutlet="row.descriptionCell?._content"></ng-container>
+              <ng-container *ngTemplateOutlet="$any(row.descriptionCell?._content)"></ng-container>
             </ng-container>
           </ng-container>
         </ng-container>
@@ -209,10 +209,10 @@ Mobile: table is flipped diagonally (with no footer cells!):
 
               <!-- if first mobile row: show intersection cells -->
               <ng-container *ngIf="headerIndex === 0 && element.intersectionCell">
-                <ng-container *ngTemplateOutlet="element?.intersectionCell?._content"></ng-container>
+                <ng-container *ngTemplateOutlet="element?.intersectionCell!._content"></ng-container>
               </ng-container>
               <ng-container *ngIf="element.cells.length > 0">
-                <ng-container *ngTemplateOutlet="element.cells.toArray()[headerIndex]?._content"></ng-container>
+                <ng-container *ngTemplateOutlet="element.cells.toArray()[headerIndex]!._content"></ng-container>
               </ng-container>
             </ng-container>
           </ng-container>

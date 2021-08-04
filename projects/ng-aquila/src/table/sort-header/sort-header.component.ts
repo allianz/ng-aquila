@@ -30,11 +30,11 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  private _parentChangeSubscription: Subscription;
+  private _parentChangeSubscription!: Subscription;
   private _intlSubscription: Subscription;
-  private _key: string;
+  private _key!: string;
 
-  @ViewChild('focusContainer') _focusContainer: ElementRef;
+  @ViewChild('focusContainer') _focusContainer!: ElementRef;
 
   /** Sets the key of this sort header. */
   @Input('nxSortHeaderCell')
@@ -77,7 +77,7 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this._sort.sort(this._key);
   }
 
-  _onKeydown($event) {
+  _onKeydown($event: KeyboardEvent) {
     if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
       this._sort.sort(this._key);
 

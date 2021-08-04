@@ -25,13 +25,13 @@ const DEFAULT_SIZE = 'auto';
   }
 })
 export class NxFigureComponent {
-  private _classNames: FigureType;
+  private _classNames!: FigureType;
 
   /** @docs-private */
-  rounded: boolean;
+  rounded: boolean = false;
 
   /** @docs-private */
-  size: figureSizes;
+  size: figureSizes = DEFAULT_SIZE;
 
   /**
    * Sets the type of the visual appearance of the image.
@@ -55,5 +55,5 @@ export class NxFigureComponent {
     return this._classNames;
   }
 
-  static ngAcceptInputType_classNames: FigureType | string;
+  static ngAcceptInputType_classNames: FigureType | string | null | undefined;
 }

@@ -22,7 +22,7 @@ abstract class VersionSelectTest {
     currentVersion: '7.4.0-beta.0'
   };
 
-  @ViewChild(NxVersionSelectComponent) versionSelect: NxVersionSelectComponent;
+  @ViewChild(NxVersionSelectComponent) versionSelect!: NxVersionSelectComponent;
 }
 
 describe('NxvVersionSelectComponent', () => {

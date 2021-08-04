@@ -6,7 +6,7 @@ import { NxAnchorButtonComponent } from './anchor-button.component';
 
 @Directive()
 abstract class AnchorButtonTest {
-  @ViewChild('button') buttonInstance: NxAnchorButtonComponent;
+  @ViewChild('button') buttonInstance!: NxAnchorButtonComponent;
 }
 
 @Component({

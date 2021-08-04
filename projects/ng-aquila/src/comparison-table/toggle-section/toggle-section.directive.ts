@@ -14,10 +14,10 @@ import { NxToggleSectionBase } from './toggle-section-base';
 export class NxToggleSectionDirective extends NxToggleSectionBase implements NxTableContentElement {
 
   /** @docs-private */
-  @ContentChild(NxToggleSectionHeaderComponent, { static: false }) toggleSectionHeader: NxToggleSectionHeaderComponent;
+  @ContentChild(NxToggleSectionHeaderComponent, { static: false }) toggleSectionHeader!: NxToggleSectionHeaderComponent;
 
   /** @docs-private */
-  @ContentChildren(NxTableContentElement) rows: QueryList<NxTableContentElement>;
+  @ContentChildren(NxTableContentElement) rows!: QueryList<NxTableContentElement>;
 
   private _isExpanded: boolean = true;
 

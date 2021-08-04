@@ -32,7 +32,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
   @Output('nxTagClick') tagClickEvent: EventEmitter<any> = new EventEmitter<any>();
 
   /** @docs-private */
-  @ViewChildren(NxTagComponent, {read: ElementRef}) tagChildren: QueryList<ElementRef>;
+  @ViewChildren(NxTagComponent, {read: ElementRef}) tagChildren!: QueryList<ElementRef>;
 
   private _tags: any[] = [];
   /** Sets the list of tags. */
@@ -91,7 +91,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     return this._labelProperty;
   }
 
-  private _ariaLabelledBy: string;
+  private _ariaLabelledBy!: string;
   /** Sets the label property to improve accessibility. */
   @Input('aria-labelledby')
   set labelledby(value: string) {
@@ -183,7 +183,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
   }
 
   /** @docs-private */
-  tagClick(index, value: any) {
+  tagClick(index: number, value: any) {
     this.tagClickEvent.emit(this.tags[index]);
   }
 

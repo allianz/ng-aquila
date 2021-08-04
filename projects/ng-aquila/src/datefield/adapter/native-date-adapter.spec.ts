@@ -10,7 +10,7 @@ import {JAN, FEB, MAR, DEC } from '../../cdk-test-utils';
 const SUPPORTS_INTL = typeof Intl !== 'undefined';
 
 describe('NxNativeDateAdapter', () => {
-  let platform;
+  let platform: any;
   let adapter: NxNativeDateAdapter;
   let assertValidDate: (d: Date | null, valid: boolean) => void;
 
@@ -27,7 +27,7 @@ describe('NxNativeDateAdapter', () => {
 
     assertValidDate = (d: Date | null, valid: boolean) => {
       expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
-      expect(adapter.isValid(d)).toBe(valid,
+      expect(adapter.isValid(d as Date)).toBe(valid,
           `Expected ${d} to be ${valid ? 'valid' : 'invalid'},` +
           ` but was ${valid ? 'invalid' : 'valid'}`);
     };

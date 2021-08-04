@@ -7,7 +7,7 @@ import { By } from '@angular/platform-browser';
 @Directive()
 abstract class ExpandableTableRowTest {
   isExpanded: boolean = true;
-  @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance: NxExpandableTableRowComponent;
+  @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
 
   constructor(public cdr: ChangeDetectorRef) {}
 }

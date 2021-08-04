@@ -24,11 +24,11 @@ export class NxTabScrollIndicator implements OnDestroy {
 
   _view = 'desktop';
 
-  @Input() scrollDirection: NxScrollDirection;
+  @Input() scrollDirection!: NxScrollDirection;
 
-  @Input() isScrolledToStart: boolean;
+  @Input() isScrolledToStart!: boolean;
 
-  @Input() isScrolledToEnd: boolean;
+  @Input() isScrolledToEnd!: boolean;
 
   @Output() buttonClicked: EventEmitter<void> = new EventEmitter<void>();
 

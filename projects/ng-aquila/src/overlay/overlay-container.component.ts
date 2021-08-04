@@ -44,10 +44,10 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
   private _document: Document;
 
   /** The portal outlet inside of this container into which the overlay content will be loaded. */
-  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
   /** The class that traps and manages focus within the overlay. */
-  private _focusTrap: FocusTrap;
+  private _focusTrap!: FocusTrap;
 
   /** Element that was focused before the overlay was opened. Save this to restore upon close. */
   private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;
@@ -56,7 +56,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
   _ariaLabelledBy: string | null;
 
   /** ID for the container DOM element. */
-  _id: string;
+  _id!: string;
 
   constructor(
     private _elementRef: ElementRef,

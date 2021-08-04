@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class LinkTest {
-  @ViewChild(NxLinkComponent) linkInstance: NxLinkComponent;
+  @ViewChild(NxLinkComponent) linkInstance!: NxLinkComponent;
 
   size: NxLinkSize = 'large';
 }

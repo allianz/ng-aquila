@@ -8,7 +8,7 @@ import { NxFileUploaderComponent } from './file-uploader.component';
 })
 export class NxFileUploaderTriggerDirective {
 
-  _fileUpload: NxFileUploaderComponent;
+  _fileUpload!: NxFileUploaderComponent;
 
   /** References the file upload component instance that the trigger is associated with. */
   @Input('nxFileUploadTriggerFor')

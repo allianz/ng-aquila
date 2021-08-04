@@ -74,17 +74,17 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
 
   protected _type = 'text';
 
-  protected _id: string;
+  protected _id!: string;
   protected _uid = `nx-input-${nextUniqueId++}`;
   protected _previousNativeValue: any;
   protected _disabled = false;
   protected _required = false;
   private _readonly: boolean = false;
   private _inputValueAccessor: {value: any};
-  public _ariaDescribedby: string;
-  private _placeholder: string;
+  public _ariaDescribedby!: string;
+  private _placeholder!: string;
 
-  @Input('nxAriaLabel') _ariaLabel: string;
+  @Input('nxAriaLabel') _ariaLabel!: string;
 
   /** @docs-private */
   errorState: boolean = false;
@@ -318,7 +318,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
 
   /** @docs-private */
   get shouldLabelFloat(): boolean {
-    return this.focused || !this.empty || (this.placeholder && this.placeholder.length > 0);
+    return !!(this.focused || !this.empty || (this.placeholder && this.placeholder.length > 0));
   }
 
   protected _dirtyCheckNativeValue() {

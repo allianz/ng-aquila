@@ -9,7 +9,7 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 })
 export class NxComparisonTableIntersectionCell {
 
-  @ViewChild('content', { static: true }) _content: TemplateRef<any>;
+  @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
   constructor(
     public _table: NxComparisonTableBase,

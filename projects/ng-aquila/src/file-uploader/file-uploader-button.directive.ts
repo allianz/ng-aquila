@@ -12,7 +12,7 @@ import { Subject } from 'rxjs';
 })
 export class NxFileUploaderButtonDirective implements OnDestroy {
   _clicked = new Subject();
-  _ariaDescribedby: string;
+  _ariaDescribedby: string | undefined;
   private _disabled: boolean = false;
 
   constructor(

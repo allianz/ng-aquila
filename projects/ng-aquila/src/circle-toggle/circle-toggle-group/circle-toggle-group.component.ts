@@ -158,8 +158,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions) {}
 
   /** @docs-private */
-  get selectedButton(): ToggleButton {
-    return this.buttons ? this.buttons.find(button => button.checked) : null;
+  get selectedButton(): ToggleButton | null {
+    return this.buttons ? this.buttons.find(button => button.checked) || null : null;
   }
 
   /** @docs-private */
@@ -171,7 +171,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
   static ngAcceptInputType_negative: BooleanInput;
   static ngAcceptInputType_responsive: BooleanInput;
 
-  @ContentChildren(ToggleButton, { descendants: true }) private _buttons: QueryList<ToggleButton>;
+  @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
 
   private _id = `nx-circle-toggle-group-${nextId++}`;
   private _destroyed: Subject<void> = new Subject();
@@ -182,11 +182,11 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
   private _name: string = `toggle-group-${nextId++}`;
 
-  private _disabled: boolean;
+  private _disabled: boolean = false;
 
   _negative: boolean = false;
 
-  private _value;
+  private _value!: string;
 
   private _responsive: boolean = true;
 
@@ -235,7 +235,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         filter(toggles => toggles.length > 0),
         tap(toggles =>
           Promise.resolve().then(() => {
-            toggles.forEach(toggle => toggle.toggleButton.resetClasses());
+            toggles.forEach( (toggle: any) => toggle.toggleButton.resetClasses());
             this.buttons.first.toggleButton.setFirstButton();
             this.buttons.last.toggleButton.setLastButton();
           })
@@ -250,7 +250,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     merge(...this.buttons.map(button => button.selectionChange))
       .pipe(takeUntil(changedOrDestroyed))
-      .subscribe((change: ToggleChangeEvent) => {
+      .subscribe((change: any) => {
         this.onChangeCallback(change.value);
         this.valueChange.emit(change.value);
       });

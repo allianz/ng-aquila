@@ -9,7 +9,7 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class ToggleTest {
-  @ViewChildren(NxComparisonTableSelectButton) buttonInstances: QueryList<NxComparisonTableSelectButton>;
+  @ViewChildren(NxComparisonTableSelectButton) buttonInstances!: QueryList<NxComparisonTableSelectButton>;
 
   unselectedLabel = 'Choose this';
   selectedLabel = 'Chosen!';

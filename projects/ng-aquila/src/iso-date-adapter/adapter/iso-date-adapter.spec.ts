@@ -25,7 +25,7 @@ describe('NxIsoDateAdapter', () => {
 
     assertValidDate = (d: string | null, valid: boolean) => {
       expect(adapter.isDateInstance(d)).not.toBeNull();
-      expect(adapter.isValid(d)).toBe(valid);
+      expect(adapter.isValid(d as string)).toBe(valid);
     };
   }));
 

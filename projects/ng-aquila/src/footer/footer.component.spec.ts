@@ -5,7 +5,7 @@ import { NxFooterModule } from './footer.module';
 
 @Directive()
 abstract class FooterTest {
-  @ViewChild(NxFooterComponent) footerInstance: NxFooterComponent;
+  @ViewChild(NxFooterComponent) footerInstance!: NxFooterComponent;
 }
 
 describe(NxFooterComponent.name, () => {
@@ -47,17 +47,17 @@ describe(NxFooterComponent.name, () => {
     });
 
     it('should apply the bem class to the footer navigation', () => {
-      expect(footerNativeElement.querySelector('nx-footer-navigation')
-        .classList.contains('nx-footer__navigation'));
+      expect(footerNativeElement
+        .querySelector('nx-footer-navigation')?.classList.contains('nx-footer__navigation'));
     });
 
     it('should apply the bem class to the copyright part', () => {
-      expect(footerNativeElement.querySelector('nx-footer-copyright')
-        .classList.contains('nx-footer__copyright'));
+      expect(footerNativeElement
+        .querySelector('nx-footer-copyright')?.classList.contains('nx-footer__copyright'));
     });
     it('should apply the bem class to the link', () => {
-      expect(footerNativeElement.querySelector('nx-footer-link')
-        .classList.contains('nx-footer__link'));
+      expect(footerNativeElement
+        .querySelector('nx-footer-link')?.classList.contains('nx-footer__link'));
     });
 
   });

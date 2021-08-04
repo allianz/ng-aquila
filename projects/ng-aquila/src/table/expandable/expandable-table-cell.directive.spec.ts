@@ -8,8 +8,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @Directive()
 abstract class ExpandableTableCellTest {
-  @ViewChild(NxExpandableTableCellComponent) expandableTableCellInstance: NxExpandableTableCellComponent;
-  @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance: NxExpandableTableRowComponent;
+  @ViewChild(NxExpandableTableCellComponent) expandableTableCellInstance!: NxExpandableTableCellComponent;
+  @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
 }
 
 describe(NxExpandableTableCellComponent.name, () => {

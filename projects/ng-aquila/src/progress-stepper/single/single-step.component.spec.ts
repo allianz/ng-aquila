@@ -13,8 +13,8 @@ import { NxLabelModule } from '@aposin/ng-aquila/base';
 
 @Directive()
 abstract class SingleStepTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef: ElementRef;
+  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef!: ElementRef;
 
   selectedIndex: number = 0;
 }

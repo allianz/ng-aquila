@@ -460,7 +460,7 @@ abstract class RadioToggleTest {
   value: any;
 
   @ViewChildren(NxRadioToggleComponent)
-  radioToggles: QueryList<NxRadioToggleComponent>;
+  radioToggles!: QueryList<NxRadioToggleComponent>;
 }
 
 @Component({
@@ -601,7 +601,7 @@ class ReactiveFormToggle extends RadioToggleTest {
 })
 class ValidationToggle extends RadioToggleTest {
   data = ['A', 'B', 'C'];
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     super();

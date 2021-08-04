@@ -23,7 +23,7 @@ export interface DocItem {
 })
 // tslint:disable-next-line:component-class-suffix
 export class NxvComponentPage {
-  componentDescriptor: ComponentDescriptor;
+  componentDescriptor!: ComponentDescriptor;
 
   tabs = [
     {
@@ -49,7 +49,7 @@ export class NxvComponentPage {
     private router: Router,
     private manifestService: ManifestService,
     public componentService: ComponentService,
-    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any
   ) {
     // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
     // parent route for the section (material/cdk).
@@ -72,7 +72,9 @@ export class NxvComponentPage {
         takeUntil(this._destroyed)
       ).subscribe(component => {
         const apiTab = this.tabs.find(tab => tab.label === 'api');
-        apiTab.show = component.noApi ? false : true;
+        if (apiTab) {
+          apiTab.show = component.noApi ? false : true;
+        }
     });
   }
 

@@ -20,13 +20,13 @@ export class NxLayoutComponent {
   grid: boolean = true;
 
   /** @docs-private */
-  noGutters: boolean;
+  noGutters!: boolean;
 
   /** @docs-private */
-  maxWidth: boolean;
+  maxWidth!: boolean;
 
   /** @docs-private */
-  noPadding: boolean;
+  noPadding!: boolean;
 
   /**
    * Type of layout.

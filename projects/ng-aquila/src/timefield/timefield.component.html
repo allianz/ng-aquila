@@ -1,6 +1,6 @@
-<label class="nx-timefield__label" [ngClass]="hasFocus" [attr.for]="hours">{{label}}</label>
+<label class="nx-timefield__label" [ngClass]="hasFocus || '' " [attr.for]="hours">{{label}}</label>
 <div class="nx-timefield__wrapper">
-  <div class="nx-timefield-input__fields" [ngClass]="hasFocus">
+  <div class="nx-timefield-input__fields" [ngClass]="hasFocus || '' ">
     <input
      [id]="idHours"
       #inputHours
@@ -16,10 +16,10 @@
       [attr.aria-required]="required"
       [attr.aria-label]="_getAriaLabel('hours')"
       [disabled]="disabled"
-      [ngClass]="hasFocus"
+      [ngClass]="hasFocus || '' "
       [placeholder]="placeholderHours"
     />
-    <span class="nx-timefield-hours-separator" [ngClass]="hasFocus">:</span>
+    <span class="nx-timefield-hours-separator" [ngClass]="hasFocus || '' ">:</span>
     <input
       [id]="idMinutes"
       required
@@ -36,7 +36,7 @@
       [attr.aria-required]="required"
       [attr.aria-label]="_getAriaLabel('minutes')"
       [disabled]="disabled"
-      [ngClass]="hasFocus"
+      [ngClass]="hasFocus || '' "
       [placeholder]="placeholderMinutes"
     />
   </div>

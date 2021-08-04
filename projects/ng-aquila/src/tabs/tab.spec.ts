@@ -5,7 +5,7 @@ import { NxTabComponent } from './tab';
 
 @Directive()
 abstract class TabTest {
-  @ViewChild(NxTabComponent) tab: NxTabComponent;
+  @ViewChild(NxTabComponent) tab!: NxTabComponent;
 }
 
 describe('NxTabComponent', () => {

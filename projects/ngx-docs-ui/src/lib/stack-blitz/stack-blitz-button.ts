@@ -21,9 +21,9 @@ export class StackBlitzButton {
    * StackBlitz not yet being ready for people with poor network connections or slow devices.
    */
   isDisabled = false;
-  stackBlitzForm: HTMLFormElement;
-  exampleData: ExampleData;
-  exampleDescriptor: ExampleDescriptor;
+  stackBlitzForm!: HTMLFormElement;
+  exampleData!: ExampleData;
+  exampleDescriptor!: ExampleDescriptor;
 
   @HostListener('mouseover') onMouseOver() {
     this.isDisabled = !this.exampleDescriptor;

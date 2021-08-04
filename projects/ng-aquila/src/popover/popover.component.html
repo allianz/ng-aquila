@@ -16,7 +16,7 @@
 
       <span [id]="id">
         <ng-content></ng-content>
-        <ng-container [ngTemplateOutlet]="_lazyContent?._template"></ng-container>
+        <ng-container [ngTemplateOutlet]="$any(_lazyContent?._template)"></ng-container>
       </span>
     </div>
   </div>

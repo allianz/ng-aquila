@@ -39,7 +39,7 @@ import { AnimationEvent } from '@angular/animations';
 })
 export class NxContextMenuComponent
   implements AfterContentInit, OnDestroy {
-  private _keyManager: FocusKeyManager<NxContextMenuItemComponent>;
+  private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;
 
   /** Menu items inside the current menu. */
   private _items: NxContextMenuItemComponent[] = [];
@@ -60,7 +60,7 @@ export class NxContextMenuComponent
   _animationDone = new Subject<AnimationEvent>();
 
   /** Whether the menu is animating. */
-  _isAnimating: boolean;
+  _isAnimating: boolean = false;
 
   /** Parent menu of the current menu panel. */
   parentMenu: NxContextMenuComponent | undefined;
@@ -69,18 +69,18 @@ export class NxContextMenuComponent
    * @docs-private
    * Layout direction of the menu.
    */
-  direction: Direction;
+  direction: Direction = 'ltr';
 
   /** @docs-private */
   @ViewChild(TemplateRef)
-  templateRef: TemplateRef<any>;
+  templateRef!: TemplateRef<any>;
 
   /**
    * Menu content that will be rendered lazily.
    * @docs-private
    */
   @ContentChild(NxContextMenuContentDirective)
-  lazyContent: NxContextMenuContentDirective;
+  lazyContent!: NxContextMenuContentDirective;
 
   /** Event emitted when the menu is closed. */
   @Output() readonly closed: EventEmitter<void | 'click' | 'keydown' | 'tab'> = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();

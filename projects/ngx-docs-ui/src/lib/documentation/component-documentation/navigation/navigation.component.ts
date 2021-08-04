@@ -26,7 +26,7 @@ class MyFlatTreeNode {
 export class NavigationComponent {
   _treeControl: NxFlatTreeControl<MyFlatTreeNode>;
 
-  _dataSource;
+  _dataSource: NxTreeFlatDataSource<any, any>;
 
   constructor(public manifestService: ManifestService) {
     this._treeControl = new NxFlatTreeControl();

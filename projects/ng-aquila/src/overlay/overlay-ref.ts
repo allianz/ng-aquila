@@ -15,7 +15,7 @@ let nextId = 0;
  */
 export class NxOverlayRef<T, R = any> {
   /** The instance of component opened into the overlay. */
-  componentInstance: T;
+  componentInstance!: T;
 
   /** Whether the user is allowed to close the overlay. */
   closeOnClickOutside: boolean | undefined = this._containerInstance._config.closeOnClickOutside;
@@ -90,7 +90,7 @@ export class NxOverlayRef<T, R = any> {
   waitForClose() {
     this._documentClickObservable
       .pipe(
-        map(event => event.target),
+        map(event => event.target as Node),
         filter((target: Node) => !this._overlayRef.overlayElement?.contains(target)),
         takeUntil(this._afterClosed))
       .subscribe(() => {

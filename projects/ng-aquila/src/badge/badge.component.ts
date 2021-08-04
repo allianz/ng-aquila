@@ -2,7 +2,7 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 /** Possible badge types. */
-export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative';
+export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
 
 @Component({
   selector: 'nx-badge',
@@ -18,7 +18,7 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative';
   }
 })
 export class NxBadgeComponent {
-  private _type: NxBadgeType;
+  private _type!: NxBadgeType;
   private _vibrant: boolean = false;
 
   constructor(private _changeDetRef: ChangeDetectorRef) { }

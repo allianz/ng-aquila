@@ -60,7 +60,7 @@ describe('NxDatepicker', () => {
       let fixture: ComponentFixture<StandardDatepicker>;
       let testComponent: StandardDatepicker;
 
-      function compileTestComponent(providers = []) {
+      function compileTestComponent(providers: Array<any> = []) {
         fixture = createComponent(StandardDatepicker, [NxNativeDateModule], providers);
         fixture.detectChanges();
 
@@ -136,6 +136,6 @@ class StandardDatepicker {
   touch = false;
   disabled = false;
   date: Date | null = new Date(2020, JAN, 1);
-  @ViewChild('d') datepicker: NxDatepickerComponent<Date>;
-  @ViewChild(NxDatefieldDirective) datepickerInput: NxDatefieldDirective<Date>;
+  @ViewChild('d') datepicker!: NxDatepickerComponent<Date>;
+  @ViewChild(NxDatefieldDirective) datepickerInput!: NxDatefieldDirective<Date>;
 }

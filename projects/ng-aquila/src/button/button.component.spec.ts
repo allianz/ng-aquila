@@ -13,7 +13,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class ButtonTest {
-  @ViewChild('button') buttonInstance: NxButtonBase;
+  @ViewChild('button') buttonInstance!: NxButtonBase;
 
   buttonType: NxButtonType = 'primary';
   buttonSize: NxButtonSize = 'medium';

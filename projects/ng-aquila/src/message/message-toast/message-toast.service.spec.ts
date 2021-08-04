@@ -50,7 +50,7 @@ describe('NxMessageToast', () => {
       messageToastService.open(text);
 
       const containerElement = overlayContainerElement.querySelector('nx-message-toast');
-      expect(containerElement.textContent.trim()).toBe(text);
+      expect(containerElement?.textContent?.trim()).toBe(text);
     });
 
     it('should open and close a message toast', fakeAsync(() => {
@@ -335,7 +335,7 @@ class BasicMessageToastTest {
 })
 // tslint:disable-next-line:component-class-suffix
 class ComponentWithTemplateRef {
-  @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 }
 
 @Component({

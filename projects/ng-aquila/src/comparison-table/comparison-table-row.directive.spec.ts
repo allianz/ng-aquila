@@ -7,8 +7,8 @@ import { BASIC_COMPARISON_TABLE_TEMPLATE } from './comparison-table.component.sp
 
 @Directive()
 abstract class RowTest {
-  @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
-  @ViewChildren(NxComparisonTableCell) cellInstances: QueryList<NxComparisonTableCell>;
+  @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
+  @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
 
   typeForFooter = 'footer';
 }

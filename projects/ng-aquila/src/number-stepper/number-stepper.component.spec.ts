@@ -29,7 +29,7 @@ abstract class NumberStepperTest {
   incrementAriaLabel: string = 'increase number';
   decrementAriaLabel: string = 'decrease number';
   testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
-  @ViewChild(NxNumberStepperComponent) stepperInstance: NxNumberStepperComponent;
+  @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
 
   onSubmit() { }
 }
@@ -325,6 +325,7 @@ describe('NxNumberStepperComponent', () => {
       inputElement.value = '0.33aa';
       inputElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
+      // @ts-ignore
       expect(testInstance.value).toBe(null);
       clickUp();
       expect(testInstance.value).toBe(1);
@@ -472,13 +473,13 @@ describe('NxNumberStepperComponent', () => {
       createTestComponent(ReactiveFormOnBlurStepper);
       inputElement.value = '2';
       inputElement.dispatchEvent(new Event('input'));
-      expect(testInstance.testForm.get('count').value)
+      expect(testInstance.testForm.get('count')!.value)
         .toBe(0, 'Expected value to remain unchanged until blur.');
 
       inputElement.dispatchEvent(new Event('blur'));
       fixture.detectChanges();
 
-      expect(testInstance.testForm.get('count').value)
+      expect(testInstance.testForm.get('count')!.value)
         .toEqual(2, 'Expected value to change once control is blurred.');
     }));
   });
@@ -502,7 +503,7 @@ describe('NxNumberStepperComponent', () => {
       createTestComponent(BasicStepper);
       testInstance.stepperInstance.label = 'Programmatic label';
       fixture.detectChanges();
-      expect(label.textContent.trim()).toBe('Programmatic label');
+      expect(label.textContent!.trim()).toBe('Programmatic label');
     });
 
     it('should update on resize change', () => {

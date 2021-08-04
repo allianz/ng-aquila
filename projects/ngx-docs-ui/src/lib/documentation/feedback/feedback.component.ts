@@ -16,19 +16,19 @@ import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {
 
-  @ViewChild('mobileButton') mobileButton: ElementRef;
+  @ViewChild('mobileButton') mobileButton!: ElementRef;
 
-  @Input() page: string;
+  @Input() page!: string;
 
   viewportServiceSubscription: Subscription;
 
   showMobileView: boolean = false;
 
-  feedbackLinkPositive: string;
-  feedbackLinkNegative: string;
+  feedbackLinkPositive!: string;
+  feedbackLinkNegative!: string;
 
   constructor(
-    @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks,
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any,
     private viewportService: NxViewportService,
     private focusMonitor: FocusMonitor
   ) {

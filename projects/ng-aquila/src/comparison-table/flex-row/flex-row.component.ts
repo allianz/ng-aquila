@@ -22,7 +22,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 })
 export class NxComparisonTableFlexRow implements OnDestroy {
 
-  @Input() row: NxComparisonTableRowDirective;
+  @Input() row!: NxComparisonTableRowDirective;
 
   constructor(
     public _table: NxComparisonTableBase,

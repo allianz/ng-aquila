@@ -21,7 +21,7 @@ const DEFAULT_TYPE = 'normal';
   }
 })
 export class NxCopytextComponent {
-  private _classNames: string;
+  private _classNames: string = '';
 
   /** @docs-private */
   type: NxCopytextType = DEFAULT_TYPE;

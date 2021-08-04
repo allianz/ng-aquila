@@ -37,7 +37,7 @@
       [dateFilter]="dateFilter"
       [maxDate]="maxDate"
       [minDate]="minDate"
-      (selectedChange)="_dateSelected($event)"
+      (selectedChange)="_dateSelected($event!)"
       (_userSelection)="_userSelected()">
   </nx-month-view>
 

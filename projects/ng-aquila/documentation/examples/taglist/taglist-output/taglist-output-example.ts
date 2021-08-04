@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 
 /**
  * @title Tag Output Example
@@ -10,10 +10,10 @@ import { Component } from '@angular/core';
 })
 export class TaglistOutputExampleComponent {
   tags = ['Apples', 'Oranges'];
-  messages = [];
-  logMessage;
+  messages: Array<any> = [];
+  logMessage: string = '';
 
-  log(value) {
+  log(value: Event) {
     this.messages.push(value);
     this.logMessage = this.messages.join('\n');
   }

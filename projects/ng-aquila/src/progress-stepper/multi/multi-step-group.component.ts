@@ -8,7 +8,7 @@ import { NxStepComponent } from '../progress-stepper.component';
 })
 export class NxMultiStepperGroupComponent {
   /** @docs-private */
-  @ContentChildren(NxStepComponent, { descendants: true }) steps: QueryList<NxStepComponent>;
+  @ContentChildren(NxStepComponent, { descendants: true }) steps!: QueryList<NxStepComponent>;
 
   /** Sets the label of a group that is shown to the user. */
   @Input()
@@ -19,7 +19,7 @@ export class NxMultiStepperGroupComponent {
   get label(): string {
     return this._label;
   }
-  private _label;
+  private _label!: string;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 }

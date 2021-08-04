@@ -15,13 +15,13 @@ let nextId = 0;
 })
 export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy {
 
-  @ViewChild('content', { static: true }) _content: TemplateRef<any>;
-  @ViewChild('mobileCell') _mobileCell: ElementRef;
+  @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
+  @ViewChild('mobileCell') _mobileCell!: ElementRef;
 
-  @ViewChild('wrapper') _wrapperElement: ElementRef;
+  @ViewChild('wrapper') _wrapperElement!: ElementRef;
 
   /** Preserves the current value of the _wrapperElement ViewChild in case it changes. */
-  private _wrapperElementPrevious: ElementRef;
+  private _wrapperElementPrevious!: ElementRef;
 
   private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
 
@@ -80,7 +80,7 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     }
   }
 
-  _onKeydown($event) {
+  _onKeydown($event: KeyboardEvent) {
     if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
       this.toggle();
 

@@ -15,7 +15,7 @@ import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from 
 })
 export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGroupBase implements NxTableContentElement {
   /** @docs-private */
-  @ContentChildren(NxComparisonTableRowDirective) rows: QueryList<NxComparisonTableRowDirective>;
+  @ContentChildren(NxComparisonTableRowDirective) rows!: QueryList<NxComparisonTableRowDirective>;
 
   private _labelCollapsed: string = 'More services';
 
@@ -74,7 +74,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     return this._isExpanded;
   }
 
-  private _useFullRowForExpandableArea: boolean;
+  private _useFullRowForExpandableArea: boolean | undefined;
 
   /**
    * **Expert Option**

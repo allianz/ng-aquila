@@ -21,16 +21,16 @@ import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.compon
 export class NxComparisonTableRowDirective extends NxComparisonTableRowBase implements AfterContentInit, OnDestroy, NxTableContentElement {
 
   /** @docs-private */
-  @ContentChildren(NxComparisonTableCell) cells: QueryList<NxComparisonTableCell>;
+  @ContentChildren(NxComparisonTableCell) cells!: QueryList<NxComparisonTableCell>;
 
   /** @docs-private */
-  @ContentChild(NxComparisonTableIntersectionCell, { static: false }) intersectionCell: NxComparisonTableIntersectionCell;
+  @ContentChild(NxComparisonTableIntersectionCell, { static: false }) intersectionCell!: NxComparisonTableIntersectionCell;
 
   /** @docs-private */
-  @ContentChild(NxComparisonTableDescriptionCell, { static: false }) descriptionCell: NxComparisonTableDescriptionCell;
+  @ContentChild(NxComparisonTableDescriptionCell, { static: false }) descriptionCell!: NxComparisonTableDescriptionCell;
 
   /** @docs-private */
-  @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell: NxComparisonTablePopularCell;
+  @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell!: NxComparisonTablePopularCell;
 
   private _type: NxComparisonTableRowType = 'content';
 

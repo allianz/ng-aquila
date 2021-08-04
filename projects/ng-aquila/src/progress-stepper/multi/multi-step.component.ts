@@ -41,11 +41,11 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective
    * We need to set the _stepHeader property as ViewChildren here
    * as it is a ContentChildren query in the CDK
    */
-  @ViewChildren(NxMultiStepItemComponent) _stepHeader: QueryList<NxMultiStepItemComponent>;
+  @ViewChildren(NxMultiStepItemComponent) _stepHeader!: QueryList<NxMultiStepItemComponent>;
 
   /** @docs-private */
   @ContentChildren(NxMultiStepperGroupComponent, { descendants: true })
-  groups: QueryList<NxMultiStepperGroupComponent>;
+  groups!: QueryList<NxMultiStepperGroupComponent>;
 
   /** Sets the direction of the multi stepper. */
   @Input()
@@ -99,7 +99,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective
   private get _stepsInGroups(): NxStepComponent[] {
     if (this.groups.length) {
       return this.groups
-        .reduce((steps, group) => steps.concat(group.steps.toArray()), []);
+        .reduce<NxStepComponent[]>((steps, group) => steps.concat(group.steps.toArray()), []);
     }
 
     return [];

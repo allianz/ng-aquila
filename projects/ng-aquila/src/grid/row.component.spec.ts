@@ -14,7 +14,7 @@ import { NxGridModule } from './grid.module';
 
 @Directive()
 abstract class DirectiveTest {
-  @ViewChild(NxLayoutComponent) layoutInstance: NxLayoutComponent;
+  @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;
 }
 
 describe('NxRowDirective', () => {

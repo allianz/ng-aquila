@@ -69,17 +69,17 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
   private _id: string = `nx-selectable-card-${nextId++}`;
   private _checked = false;
   private _disabled: boolean = false;
-  private _value: string;
-  private _name: string;
+  private _value: string = '';
+  private _name: string = '';
   private _negative: boolean = false;
   private _tabindex: string = '0';
-  private _required: boolean;
+  private _required: boolean | undefined;
   private _appearance: NxSelectableCardAppearance | undefined;
 
   _errorListIds: string = '';
 
-  @ContentChildren(NxErrorComponent) _errorList: QueryList<NxErrorComponent>;
-  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
+  @ContentChildren(NxErrorComponent) _errorList!: QueryList<NxErrorComponent>;
+  @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
   _errorState: boolean = false;
 
@@ -187,7 +187,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
   /** Whether the selectable card is required. */
   @Input()
   get required(): boolean {
-    return this._required;
+    return !!this._required;
   }
 
   set required(value: boolean) {

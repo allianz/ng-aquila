@@ -9,7 +9,7 @@ import { NxMenuModule } from './menu.module';
 
 @Directive()
 abstract class MenuItemTest {
-  @ViewChild(NxMenuItemDirective) menuGroupInstance: NxMenuItemDirective;
+  @ViewChild(NxMenuItemDirective) menuGroupInstance!: NxMenuItemDirective;
 }
 
 describe(NxMenuItemDirective.name, () => {

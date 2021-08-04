@@ -77,7 +77,7 @@ describe('NxYearView', () => {
 
     it('shows selected month if in same year', () => {
       const selectedEl = yearViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl.innerHTML.trim()).toBe('Mar');
+      expect(selectedEl!.innerHTML.trim()).toBe('Mar');
     });
 
     it('does not show selected month if in different year', () => {
@@ -94,7 +94,7 @@ describe('NxYearView', () => {
       fixture.detectChanges();
 
       const selectedEl = yearViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl.innerHTML.trim()).toBe('Dec');
+      expect(selectedEl!.innerHTML.trim()).toBe('Dec');
     });
 
     it('should emit the selected month on cell clicked', () => {
@@ -137,7 +137,7 @@ describe('NxYearView', () => {
           adapter = dateAdapter;
         }));
 
-        const activeDateEquals = (year, month, day) => {
+        const activeDateEquals = (year: any, month: any, day: any) => {
           expect(adapter.sameDate(calendarInstance.date, new Date(year, month, day))).toBeTruthy();
         };
 
@@ -342,9 +342,9 @@ describe('NxYearView', () => {
 class StandardYearView {
   date = new Date(2017, JAN, 5);
   selected = new Date(2017, MAR, 10);
-  selectedMonth: Date;
+  selectedMonth!: Date;
 
-  @ViewChild(NxYearViewComponent) yearView: NxYearViewComponent<Date>;
+  @ViewChild(NxYearViewComponent) yearView!: NxYearViewComponent<Date>;
 }
 
 @Component({

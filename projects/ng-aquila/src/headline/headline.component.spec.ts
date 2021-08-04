@@ -9,7 +9,7 @@ import { NxHeadlineModule } from './headline.module';
 
 @Directive()
 abstract class HeadlineTest {
-  @ViewChild(NxHeadlineComponent) headlineInstance: NxHeadlineComponent;
+  @ViewChild(NxHeadlineComponent) headlineInstance!: NxHeadlineComponent;
   size = '';
 }
 
@@ -27,7 +27,7 @@ describe('NxHeadlineDirective', () => {
     headlineNativeElement = (fixture.nativeElement.querySelector('h1') as HTMLHeadingElement);
   }
 
-  function setSize(value) {
+  function setSize(value: any) {
     fixture.componentInstance.size = value;
     fixture.detectChanges();
   }

@@ -7,7 +7,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 
 @Directive()
 abstract class PresetTest {
-  @ViewChild(NxFormfieldComponent) formfieldInstance: NxFormfieldComponent;
+  @ViewChild(NxFormfieldComponent) formfieldInstance!: NxFormfieldComponent;
 }
 
 describe('NxDirectPreset', () => {

@@ -358,7 +358,7 @@ abstract class PanelTest {
   expanded: boolean = false;
   disabled = false;
 
-  @ViewChild(NxExpansionPanelComponent) panel: NxExpansionPanelComponent;
+  @ViewChild(NxExpansionPanelComponent) panel!: NxExpansionPanelComponent;
 }
 
 @Component({
@@ -446,7 +446,7 @@ class PanelWithTwoWayBinding extends PanelTest {
   </nx-expansion-panel>`
 })
 class PanelWithDifferentAppearances extends PanelTest {
-  style = null;
+  style: any = null;
   negative = false;
 }
 

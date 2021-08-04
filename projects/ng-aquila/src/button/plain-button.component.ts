@@ -18,7 +18,7 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 })
 export class NxPlainButtonComponent implements OnDestroy {
   /** @docs-private */
-  @HostBinding('attr.disabled') get isDisabled(): boolean { return this.disabled || null; }
+  @HostBinding('attr.disabled') get isDisabled(): boolean | null { return this.disabled || null; }
   /** @docs-private */
   @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
 
@@ -34,7 +34,7 @@ export class NxPlainButtonComponent implements OnDestroy {
 
   static ngAcceptInputType_disabled: BooleanInput;
 
-  private _classNames: string;
+  private _classNames: string = '';
 
   danger: boolean = false;
 

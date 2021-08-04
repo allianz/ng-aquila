@@ -13,9 +13,9 @@ import { NxExpandable } from './toggle-button.component';
   exportAs: 'nxExpandableTable'
 })
 export class NxExpandableTableDirective implements AfterViewInit, NxExpandable {
-  @ContentChildren(NxExpandableTableRowComponent, { descendants: true }) rows: QueryList<NxExpandableTableRowComponent>;
+  @ContentChildren(NxExpandableTableRowComponent, { descendants: true }) rows!: QueryList<NxExpandableTableRowComponent>;
 
-  expanded: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   ngAfterViewInit() {
     this.rows.changes.pipe(

@@ -10,8 +10,8 @@ const tabsDefaultOptions: TabNavBarDefaultOptions = {
 
 @Directive()
 abstract class TabNavBarTest {
-  @ViewChildren(NxTabLinkDirective) tabLinks: QueryList<NxTabLinkDirective>;
-  @ViewChild(NxTabNavBarComponent) tabNavBar: NxTabNavBarComponent;
+  @ViewChildren(NxTabLinkDirective) tabLinks!: QueryList<NxTabLinkDirective>;
+  @ViewChild(NxTabNavBarComponent) tabNavBar!: NxTabNavBarComponent;
 
   appearance = 'expert';
 }

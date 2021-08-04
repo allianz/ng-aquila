@@ -79,7 +79,7 @@ describe('NxToggleButtonGroup', () => {
     fixture.detectChanges();
     tick();
 
-    expect(toggleComponent.selectedButton.value).toBe('A');
+    expect(toggleComponent.selectedButton?.value).toBe('A');
     expect(toggleComponent.buttons.toArray()[0].checked).toBeTruthy();
 
     click(1);
@@ -113,7 +113,7 @@ describe('NxToggleButtonGroup', () => {
     createTestComponent(SimpleCircleToggleGroupComponent);
     const toggles = fixture.nativeElement.querySelectorAll('nx-toggle-circle');
 
-    toggles.forEach((toggle, index) => {
+    toggles.forEach((toggle: any, index: any) => {
       const text = toggle.querySelector('.nx-toggle-circle__label-text') as HTMLSpanElement;
       const info = toggle.querySelector('.nx-toggle-circle__label-hint') as HTMLSpanElement;
       expect(text.textContent).toBe('text' + (index + 1));
@@ -149,14 +149,14 @@ describe('NxToggleButtonGroup', () => {
     toggleComponent.negative = true;
     fixture.detectChanges();
     const iconToggles = Array.from(toggleButtons).map( toggle => toggle.querySelector('nx-icon-toggle-button'));
-    iconToggles.forEach(toggle => expect(toggle.classList.contains('is-negative')).toBe(true));
+    iconToggles.forEach(toggle => expect(toggle?.classList.contains('is-negative')).toBe(true));
   });
 
   it('circle toggle gets correct styles on value change', () => {
     createTestComponent(SimpleCircleToggleGroupComponent);
     toggleComponent.value = 'B';
     fixture.detectChanges();
-    expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button').classList.contains('is-flipped')).toBe(true);
+    expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')?.classList.contains('is-flipped')).toBe(true);
   });
 
   it('recognizes descendants', () => {
@@ -220,8 +220,8 @@ describe('NxToggleButtonGroup', () => {
 @Directive()
 abstract class ButtonToggleGroupTest {
   @ViewChild(NxCircleToggleGroupComponent)
-  buttonToggleGroup: NxCircleToggleGroupComponent;
-  modelValue: string;
+  buttonToggleGroup!: NxCircleToggleGroupComponent;
+  modelValue!: string;
   valueBinding = 'B';
   appearance = 'default';
 }

@@ -75,30 +75,30 @@ export function getNxAutocompleteMissingPanelError(): Error {
   providers: [NX_AUTOCOMPLETE_VALUE_ACCESSOR]
 })
 export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnDestroy, OnChanges, AfterViewInit, OnInit {
-  private _overlayRef: OverlayRef | null;
-  private _portal: TemplatePortal;
+  private _overlayRef!: OverlayRef | null;
+  private _portal!: TemplatePortal;
   private _componentDestroyed = false;
 
   /** Old value of the native input. Used to work around issues with the `input` event on IE. */
-  private _previousValue: string | number | null;
+  private _previousValue: string | number | null | undefined;
 
   /** Strategy that is used to position the panel. */
-  private _positionStrategy: FlexibleConnectedPositionStrategy;
+  private _positionStrategy!: FlexibleConnectedPositionStrategy;
 
   /** Whether or not the label state is being overridden. */
   private _manuallyFloatingLabel = false;
 
   /** The subscription for closing actions (some are bound to document). */
-  private _closingActionsSubscription: Subscription;
+  private _closingActionsSubscription!: Subscription;
 
   /** Subscription to viewport size changes. */
   private _viewportSubscription = Subscription.EMPTY;
 
   /** Subscription to control value changes */
-  private _controlValueChangesSubscription: Subscription;
+  private _controlValueChangesSubscription!: Subscription;
 
   /** Subscription to items observable */
-  private _itemsSubscription: Subscription;
+  private _itemsSubscription!: Subscription;
 
    /**
    * Whether the autocomplete can open the next time it is focused. Used to prevent a focused,
@@ -117,7 +117,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
   private _dirChangeSubscription = Subscription.EMPTY;
 
   /** The autocomplete panel to be attached to this trigger. */
-  @Input('nxAutocomplete') autocomplete: NxAutocompleteComponent;
+  @Input('nxAutocomplete') autocomplete!: NxAutocompleteComponent;
 
   /** The items callback. Called with input value, must return Observable of Array of strings */
   @Input('nxAutocompleteItems')
@@ -131,7 +131,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
   get itemsCb() {
     return this._itemsCb;
   }
-  private _itemsCb: (val: string) => Observable<string[]> = null;
+  private _itemsCb!: (val: string) => Observable<string[]>;
 
   /** Debounce in ms before items callback is triggered. Defaults to 400 */
   @Input('nxAutocompleteDebounce')
@@ -186,8 +186,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     return merge(
-      fromEvent(this._document, 'mouseup'),
-      fromEvent(this._document, 'touchend')
+      fromEvent<MouseEvent | TouchEvent>(this._document, 'mouseup'),
+      fromEvent<MouseEvent | TouchEvent>(this._document, 'touchend')
     )
     .pipe(filter((event: MouseEvent | TouchEvent) => {
       const clickTarget = event.target as HTMLElement;
@@ -224,7 +224,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
   private get _formField(): NxFormfieldComponent | NxWordComponent {
     if (this._nxFormField) {
       return this._nxFormField;
-    } else if (this._nxWordField) {
+    } else {
       return this._nxWordField;
     }
   }

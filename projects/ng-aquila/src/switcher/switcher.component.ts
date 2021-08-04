@@ -52,9 +52,9 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
   errorState: boolean = false;
 
   /** @docs-private */
-  @ViewChild('switcherLabelWrapper', { static: true }) _switcherLabelWrapper: ElementRef;
+  @ViewChild('switcherLabelWrapper', { static: true }) _switcherLabelWrapper!: ElementRef;
 
-  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
+  @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
   /** Sets the id of the switcher */
   @Input()
@@ -77,7 +77,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     return this._labelPosition;
   }
 
-  private _name: string = null;
+  private _name: string | null = null;
   /** Sets the label text of the switcher */
   @Input()
   set name(value: string) {
@@ -85,7 +85,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     this._changeDetectorRef.markForCheck();
   }
   get name(): string {
-    return this._name;
+    return this._name as string;
   }
 
   private _checked: boolean = false;

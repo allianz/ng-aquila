@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./input-template-driven-example.css']
 })
 export class InputTemplateDrivenExampleComponent {
-  currentExampleValue: string;
+  currentExampleValue: string = '';
 }

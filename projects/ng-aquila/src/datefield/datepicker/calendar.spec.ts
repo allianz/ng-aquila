@@ -552,9 +552,9 @@ describe('NxCalendarComponent', () => {
     </nx-calendar>`
 })
 class StandardCalendar {
-  selected: Date;
-  selectedYear: Date;
-  selectedMonth: Date;
+  selected!: Date;
+  selectedYear!: Date;
+  selectedMonth!: Date;
   startDate = new Date(2017, JAN, 31);
 }
 
@@ -564,7 +564,7 @@ class StandardCalendar {
   `
 })
 class CalendarWithMinMax {
-  startAt: Date;
+  startAt!: Date;
   minDate = new Date(2016, JAN, 1);
   maxDate = new Date(2018, JAN, 1);
 }
@@ -576,7 +576,7 @@ class CalendarWithMinMax {
   `
 })
 class CalendarWithDateFilter {
-  selected: Date;
+  selected!: Date;
   startDate = new Date(2017, JAN, 1);
 
   dateFilter (date: Date) {

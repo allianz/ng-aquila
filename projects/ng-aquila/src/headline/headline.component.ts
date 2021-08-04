@@ -26,7 +26,7 @@ const DEFAULT_TYPE = 'section';
 })
 
 export class NxHeadlineComponent {
-  private _classNames: string;
+  private _classNames: string = '';
   /** @docs-private */
   public type: HeadlineType = DEFAULT_TYPE;
   /** @docs-private */

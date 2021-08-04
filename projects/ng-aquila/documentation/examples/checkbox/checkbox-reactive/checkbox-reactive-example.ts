@@ -11,7 +11,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 
 export class CheckboxReactiveExampleComponent {
-  public testForm: FormGroup;
+  public testForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();

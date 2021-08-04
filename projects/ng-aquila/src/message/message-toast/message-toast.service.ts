@@ -139,7 +139,7 @@ export class NxMessageToastService implements OnDestroy {
     }
   }
 
-  private _createInjector(config: NxMessageToastConfig, data: NxMessageToastData, injector: Injector): PortalInjector {
+  private _createInjector(config: NxMessageToastConfig, data: NxMessageToastData | null, injector: Injector): PortalInjector {
     const tokens = new WeakMap();
     tokens.set(NxMessageToastConfig, config);
     tokens.set(NxMessageToastData, data);

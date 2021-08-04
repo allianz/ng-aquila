@@ -10,12 +10,12 @@ import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '
 
 @Directive()
 abstract class CheckboxGroupTest {
-  @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance: NxCheckboxGroupComponent;
-  @ViewChildren(NxCheckboxComponent) checkboxInstances: QueryList<NxCheckboxComponent>;
+  @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance!: NxCheckboxGroupComponent;
+  @ViewChildren(NxCheckboxComponent) checkboxInstances!: QueryList<NxCheckboxComponent>;
 
   checked: boolean = false;
-  myFormGroup: FormGroup;
-  labelSize: string;
+  myFormGroup!: FormGroup;
+  labelSize!: string;
   disabled: boolean = false;
   negative: boolean = false;
 }
@@ -78,14 +78,14 @@ describe('NxCheckboxGroupComponent', () => {
 
   it('should update disabled on formGroup update', () => {
     createTestComponent(CheckboxGroupValidation);
-    expect(testInstance.myFormGroup.get('terms').disabled).toBe(false);
+    expect(testInstance.myFormGroup.get('terms')!.disabled).toBe(false);
     expect(checkboxGroupInstance.disabled).toBe(false);
 
-    testInstance.myFormGroup.get('terms').disable();
+    testInstance.myFormGroup.get('terms')!.disable();
     expect(testInstance.myFormGroup.disabled).toBe(true);
     expect(checkboxGroupInstance.disabled).toBe(true);
 
-    testInstance.myFormGroup.get('terms').enable();
+    testInstance.myFormGroup.get('terms')!.enable();
     expect(testInstance.myFormGroup.disabled).toBe(false);
     expect(checkboxGroupInstance.disabled).toBe(false);
   });
@@ -136,8 +136,8 @@ describe('NxCheckboxGroupComponent', () => {
 
   it('should unset the entire set of passed values correctly', fakeAsync(() => {
     createTestComponent(CheckboxGroupValidation);
-    testInstance.myFormGroup.get("terms")?.setValue(['Term 2', 'Term 3']);
-    testInstance.myFormGroup.get("terms")?.setValue([]);
+    testInstance.myFormGroup.get('terms')?.setValue(['Term 2', 'Term 3']);
+    testInstance.myFormGroup.get('terms')?.setValue([]);
     fixture.detectChanges();
     tick();
     checkboxInstances.toArray().map(checkbox => {
@@ -221,14 +221,14 @@ describe('NxCheckboxGroupComponent', () => {
     tick();
     fixture.detectChanges();
 
-    expect(testInstance.myFormGroup.get('terms').dirty)
+    expect(testInstance.myFormGroup.get('terms')!.dirty)
       .toEqual(false, `Expected control to start out pristine.`);
 
     checkboxElements[0].click();
     tick();
     fixture.detectChanges();
 
-    expect(testInstance.myFormGroup.get('terms').dirty)
+    expect(testInstance.myFormGroup.get('terms')!.dirty)
       .toEqual(true, `Expected control to be dirty.`);
   }));
 
@@ -270,7 +270,7 @@ class BasicCheckboxGroup extends CheckboxGroupTest {
   `
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
-  public myFormGroup: FormGroup;
+  public myFormGroup!: FormGroup;
 
   checkboxGroupCheckedValues = [
     'Term 2',
@@ -303,7 +303,7 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
   `
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
-  public myFormGroup: FormGroup;
+  public myFormGroup!: FormGroup;
 
   data = [
     'one', 'two', 'three'

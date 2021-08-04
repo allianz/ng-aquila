@@ -14,7 +14,7 @@ export class NxPageSearchComponent {
   /** An event emitted when the user clicks the search button. */
   @Output('nxButtonClick') buttonClick = new EventEmitter();
 
-  private _buttonLabel: string = null;
+  private _buttonLabel: string | null = null;
 
   /** Sets the text label of the button. */
   @Input('nxButtonLabel')
@@ -25,7 +25,7 @@ export class NxPageSearchComponent {
     }
   }
   get buttonLabel(): string {
-    return this._buttonLabel;
+    return this._buttonLabel as string;
   }
 
   private _hideSearchButton = false;
@@ -54,7 +54,7 @@ export class NxPageSearchComponent {
     return this._buttonLayout;
   }
 
-  private _contentLayout: string = null;
+  private _contentLayout: string | null = null;
 
   /** Layout of the content area inside of a NxGrid. Default: 12,12,12,10 | 12 (if search button is hidden). */
   @Input('nxContentLayout')

@@ -11,16 +11,16 @@ import { createFakeEvent } from '../cdk-test-utils';
 
 @Directive()
 abstract class InputTest {
-  @ViewChild(NxInputDirective) inputInstance: NxInputDirective;
+  @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
   public type = 'text';
   public required = false;
   public disabled = false;
   public readonly = false;
-  public currentValue;
-  public formControl;
-  public floatLabel;
-  public appearance;
-  public placeholderText: string;
+  public currentValue: any;
+  public formControl: any;
+  public floatLabel: any;
+  public appearance: any;
+  public placeholderText!: string;
 }
 
 describe('NxInputDirective', () => {
@@ -146,7 +146,7 @@ describe('NxInputDirective', () => {
       'reflect ngModel errors',
       fakeAsync(() => {
         createTestComponent(NgModelInput);
-        inputInstance.ngControl.control.markAsTouched();
+        inputInstance.ngControl.control!.markAsTouched();
 
         fixture.detectChanges();
         tick();
@@ -304,19 +304,19 @@ describe('NxInputDirective', () => {
   describe('a11y', () => {
     it('sets aria-required', waitForAsync(() => {
       createTestComponent(RequiredInput);
-      const ariaRequired = nativeElement.attributes.getNamedItem('aria-required').value;
+      const ariaRequired = nativeElement.attributes.getNamedItem('aria-required')!.value;
 
       expect(ariaRequired).toBe('true');
     }));
 
     it('sets aria-invalid', fakeAsync(() => {
       createTestComponent(NgModelInput);
-      inputInstance.ngControl.control.markAsTouched();
+      inputInstance.ngControl.control!.markAsTouched();
 
       fixture.detectChanges();
       tick();
 
-      const ariaInvalid = nativeElement.attributes.getNamedItem('aria-invalid').value;
+      const ariaInvalid = nativeElement.attributes.getNamedItem('aria-invalid')!.value;
       expect(ariaInvalid).toBe('true');
     }));
 
@@ -327,7 +327,7 @@ describe('NxInputDirective', () => {
       fixture.detectChanges();
       tick();
 
-      const label = nativeElement.attributes.getNamedItem('aria-label').value;
+      const label = nativeElement.attributes.getNamedItem('aria-label')!.value;
       expect(label).toBe('custom label');
     }));
   });

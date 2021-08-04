@@ -11,7 +11,7 @@ import { NxDynamicTableModule } from './dynamic-table.module';
 
 @Directive()
 abstract class DynamicTableTest {
-  @ViewChild(NxDynamicTableComponent) dynamicTableInstance: NxDynamicTableComponent;
+  @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;
   data: any[] = [
     { name: 'Mateo', email: 'mateo@email.com', phone: '678543129' },
     { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },

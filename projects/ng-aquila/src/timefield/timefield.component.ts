@@ -33,7 +33,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
   /** @docs-private */
   errorState: boolean = false;
 
-  _toggleAMPM: string;
+  _toggleAMPM!: string | null;
 
   /** Event that emits the time in 24h ISO format. */
   @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
@@ -81,15 +81,15 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
   }
 
   /* The time in 24h ISO format example: 12:54, 23:59,... */
-  private _time: string;
+  private _time!: string | null;
   /** @docs-private */
   set time(value: string) {
     this._time = value;
     this._onChangeCallback(value);
     this._changeDetectorRef.markForCheck();
   }
-  get time() {
-    return this._time;
+  get time(): string {
+    return this._time as string;
   }
 
   private _twelveHourFormat: boolean = false;
@@ -112,7 +112,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return this._twelveHourFormat;
   }
 
-  private _label: string;
+  private _label!: string;
   /** Sets the label which is displayed on top of timefield. */
   @Input()
   set label(value: string) {
@@ -177,7 +177,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return this._placeholderMinutes;
   }
 
-  private _required: boolean;
+  private _required!: boolean;
   /** Whether the timefield is required. */
   @Input()
   get required(): boolean {
@@ -216,7 +216,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return this._disabled;
   }
 
-  private _hours: string;
+  private _hours!: string;
   /** @docs-private */
   set hours(value: string) {
     this._hours = value;
@@ -226,7 +226,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return this._hours;
   }
 
-  private _minutes: string;
+  private _minutes!: string;
   /** @docs-private */
   set minutes(value: string) {
     this._minutes = value;
@@ -236,7 +236,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return this._minutes;
   }
 
-  private _hasFocus;
+  private _hasFocus!: any;
   /** @docs-private */
   get hasFocus() {
     return this._hasFocus ? 'has-focus' : null;
@@ -297,7 +297,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
   }
 
   _getAriaLabel(type: string) {
-    let label: string;
+    let label!: string;
     switch (type) {
       case 'hours':
         label = this._intl.inputFieldHoursAriaLabel;
@@ -309,7 +309,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return label;
   }
 
-  _onInput(event, type: string) {
+  _onInput(event: any, type: string) {
     this._onTouchedCallback();
     if (type === 'hours') {
       this.hours = event.target.value;
@@ -362,7 +362,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     return valid;
   }
 
-  private _parseAndSetTime(value: string): string {
+  private _parseAndSetTime(value: string): string | null {
     const valueInHoursAndMinutes = value.split(':');
     if (valueInHoursAndMinutes &&
       valueInHoursAndMinutes.length === 2 &&
@@ -390,6 +390,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._timeInTwentyFourHourFormat(hours, minutes);
       }
     }
+
     return null;
   }
 
@@ -398,7 +399,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     this._minutes = '';
     this._time = null;
     if (value) {
-      this.time = this._parseAndSetTime(value);
+      this.time = this._parseAndSetTime(value) as string;
     }
     this.valueChange.emit(this.time);
   }

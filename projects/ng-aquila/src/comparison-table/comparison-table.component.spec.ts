@@ -83,14 +83,14 @@ export const HIDDEN_INDEXES_COMPARISON_TABLE_TEMPLATE = `
 `;
 @Directive()
 abstract class TableTest {
-  @ViewChild(NxComparisonTableComponent) tableInstance: NxComparisonTableComponent;
-  @ViewChildren(NxComparisonTableCell) cellInstances: QueryList<NxComparisonTableCell>;
-  @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
+  @ViewChild(NxComparisonTableComponent) tableInstance!: NxComparisonTableComponent;
+  @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
+  @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
-  hiddenIndexes = [];
+  hiddenIndexes: any[] = [];
   selected = 0;
-  data;
-  popular;
+  data: any;
+  popular: any;
 }
 
 describe('NxComparisonTableComponent', () => {
@@ -486,7 +486,7 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
       const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
     }));
 
     it('should update top clipping-path when scrolled (desktop)', fakeAsync(() => {
@@ -500,13 +500,13 @@ describe('NxComparisonTableComponent', () => {
       fixture.detectChanges();
       const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
     }));
 
     it('should not cut a left clipping-path by default on mobile', fakeAsync(() => {
@@ -543,15 +543,15 @@ describe('NxComparisonTableComponent', () => {
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
       expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
 
       tableElement.nativeElement.scrollTo(200, 0);
       dispatchFakeEvent(document, 'scroll');
       tick();
       fixture.detectChanges();
-      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
-      expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(descriptionCell.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(toggleSectionHeaderCell.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
     }));
 
     it('should mark as sticky when parent is onPush', fakeAsync(() => {
@@ -565,13 +565,13 @@ describe('NxComparisonTableComponent', () => {
       tick();
       const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
       const regex = /^inset\((.*)px -12px -1px\)$/;
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeGreaterThan(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
 
       wrapperDiv.nativeElement.scrollTop = 0;
       dispatchFakeEvent(document, 'scroll');
       fixture.detectChanges();
       tick();
-      expect(parseInt(regex.exec(tableBody.styles['clip-path'])[1], 10)).toBeLessThanOrEqual(0);
+      expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
     }));
 
     afterEach(() => {

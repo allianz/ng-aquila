@@ -40,11 +40,11 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
   resizeEvent$: Subject<void> = new Subject<void>();
 
   /** @docs-private */
-  resizeObservable: Observable<void>;
+  resizeObservable!: Observable<void>;
 
   private _destroyed = new Subject();
 
-  @ContentChildren(NxWordComponent) _words: QueryList<NxWordComponent>;
+  @ContentChildren(NxWordComponent) _words!: QueryList<NxWordComponent>;
 
   /** @docs-private */
   updatePopoversSubscription: Subscription = Subscription.EMPTY;
@@ -91,7 +91,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
   /** @docs-private */
   @HostListener('window:orientationchange', ['$event'])
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  onResize(event: Event) {
     this.resizeEvent$.next();
   }
 

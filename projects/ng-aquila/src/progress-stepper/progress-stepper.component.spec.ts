@@ -11,8 +11,8 @@ import {NxDatepickerComponent} from '../datefield';
 
 @Directive()
 abstract class ProgressStepperTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef: ElementRef;
+  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef!: ElementRef;
 }
 
 describe('NxProgressStepperDirective', () => {

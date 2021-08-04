@@ -9,8 +9,8 @@ import { NxImageModule } from './image.module';
 
 @Directive()
 abstract class ImageTest {
-  @ViewChild(NxFigureComponent) imageInstance: NxFigureComponent;
-  keyword: string;
+  @ViewChild(NxFigureComponent) imageInstance!: NxFigureComponent;
+  keyword!: string;
 }
 
 describe('NxImageDirective', () => {
@@ -29,7 +29,7 @@ describe('NxImageDirective', () => {
     figureNativeElement = fixture.nativeElement.querySelector('figure');
   };
 
-  const setKeyword = (keyword) => {
+  const setKeyword = (keyword: string) => {
     testInstance.keyword = keyword;
     fixture.detectChanges();
   };

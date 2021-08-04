@@ -73,8 +73,8 @@ describe('NxRatingComponent', () => {
     it('should render the labels correctly', fakeAsync(() => {
       createTestComponent(SimpleRatingComponent);
 
-      expect(startLabel.textContent.trim()).toBe('poor');
-      expect(endLabel.textContent.trim()).toBe('great');
+      expect(startLabel.textContent?.trim()).toBe('poor');
+      expect(endLabel.textContent?.trim()).toBe('great');
     }));
 
     it('should handle clicking correctly', fakeAsync(() => {
@@ -156,7 +156,7 @@ describe('NxRatingComponent', () => {
       createTestComponent(ReactiveBindingRatingComponent);
       click(5);
       const simpleBinding = testInstance as ReactiveBindingRatingComponent;
-      expect(simpleBinding.testForm.get('rating').value).toBe(5);
+      expect(simpleBinding.testForm.get('rating')?.value).toBe(5);
     }));
 
     it('should toggle disabled', () => {
@@ -272,7 +272,7 @@ describe('NxRatingComponent', () => {
 
 @Directive()
 class RatingTest {
-  @ViewChild(NxRatingComponent) rating;
+  @ViewChild(NxRatingComponent) rating: any;
 }
 
 @Component({
@@ -289,7 +289,7 @@ class SimpleRatingComponent extends RatingTest {
   `
 })
 class SimpleBindingRatingComponent extends RatingTest {
-  theValue;
+  theValue: any;
 }
 
 @Component({
@@ -298,7 +298,7 @@ class SimpleBindingRatingComponent extends RatingTest {
   `
 })
 class NgModelBindingRatingComponent extends RatingTest {
-  theValue;
+  theValue: any;
 }
 
 @Component({

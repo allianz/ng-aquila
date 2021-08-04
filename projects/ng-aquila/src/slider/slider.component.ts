@@ -57,7 +57,7 @@ const DEFAULT_STEP = 1;
 export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
 
   /** @docs-private */
-  @ViewChild('handle', { static: true }) handleElement: ElementRef;
+  @ViewChild('handle', { static: true }) handleElement!: ElementRef;
 
   private _id: string = `nx-slider-${nextId++}`;
   /** Sets the id of the slider. */
@@ -112,11 +112,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     this._step = coerceNumberProperty(value, this._step);
 
     if (this._step % 1 !== 0) {
-      this._roundToDecimal = this._step.toString().split('.').pop().length;
+      this._roundToDecimal = this._step.toString().split('.').pop()!.length;
     }
   }
 
-  private _label: string;
+  private _label!: string;
   /** Sets the label which is displayed on top of the slider. */
   @Input('nxLabel')
   set label(value: string) {
@@ -189,10 +189,10 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
   private isActive = false;
   private dragSubscriptions: Subscription[] = [];
-  private frameId: number;
-  private position: Position = null;
+  private frameId!: number;
+  private position: Position | null = null;
   private _value: number = 0;
-  private _roundToDecimal: number;
+  private _roundToDecimal!: number;
   private _step: number = DEFAULT_STEP;
   private _currentValue: number = 0;
 
@@ -200,11 +200,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   private _onTouched: () => any = () => {};
 
   /** Sets the customization function for the value which is displayed above the slider handle (Default:(value) => value). ). */
-  @Input('nxValueFormatter') valueFormatter: Function = (value) => value;
+  @Input('nxValueFormatter') valueFormatter: Function = (value: any) => value;
   /** Sets the customization function for the label on the min-side of the slider (Default:(value) => value). */
-  @Input('nxLabelMinFormatter') labelMinFormatter: Function = (value) => value;
+  @Input('nxLabelMinFormatter') labelMinFormatter: Function = (value: any) => value;
   /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
-  @Input('nxLabelMaxFormatter') labelMaxFormatter: Function = (value) => value;
+  @Input('nxLabelMaxFormatter') labelMaxFormatter: Function = (value: any) => value;
 
   constructor(private elementRef: ElementRef,
               private _changeDetectorRef: ChangeDetectorRef,
@@ -384,18 +384,18 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
     if (isTouchEvent) {
       this._ngZone.runOutsideAngular(() => {
-        this.dragSubscriptions.push(fromEvent(document, 'touchmove').subscribe(this.handleDragMove.bind(this)));
-        this.dragSubscriptions.push(fromEvent(document, 'touchend').subscribe(this.handleDragStop.bind(this)));
+        this.dragSubscriptions.push(fromEvent<TouchEvent>(document, 'touchmove').subscribe(this.handleDragMove.bind(this)));
+        this.dragSubscriptions.push(fromEvent<TouchEvent>(document, 'touchend').subscribe(this.handleDragStop.bind(this)));
       });
       this._ngZone.run(() => {
-        this.dragSubscriptions.push(fromEvent(document, 'touchcancel').subscribe(this.handleDragStop.bind(this)));
+        this.dragSubscriptions.push(fromEvent<TouchEvent>(document, 'touchcancel').subscribe(this.handleDragStop.bind(this)));
       });
     } else {
       this._ngZone.runOutsideAngular(() => {
-        this.dragSubscriptions.push(fromEvent(document, 'mousemove').subscribe(this.handleDragMove.bind(this)));
+        this.dragSubscriptions.push(fromEvent<MouseEvent>(document, 'mousemove').subscribe(this.handleDragMove.bind(this)));
       });
       this._ngZone.run(() => {
-        this.dragSubscriptions.push(fromEvent(document, 'mouseup').subscribe(this.handleDragStop.bind(this)));
+        this.dragSubscriptions.push(fromEvent<MouseEvent>(document, 'mouseup').subscribe(this.handleDragStop.bind(this)));
       });
     }
 
@@ -423,7 +423,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
   valueByPosition(): void {
     const isRTL = this._dir && this._dir.value === 'rtl';
     const rect = this.elementRef.nativeElement.getBoundingClientRect();
-    const x = Math.max(rect.left, Math.min(rect.right, this.position.x));
+    const x = Math.max(rect.left, Math.min(rect.right, this.position!.x));
 
     // position of slider relative to slider width
     let percent = (x - rect.left) / rect.width;
@@ -504,7 +504,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     cancelAnimationFrame(this.frameId);
   }
 
-  private detectEventType(event): EventType {
+  private detectEventType(event: Event): EventType {
     return event.type.includes('touch') ? EventType.TOUCH : EventType.MOUSE;
   }
 

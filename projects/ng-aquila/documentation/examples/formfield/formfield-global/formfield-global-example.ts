@@ -25,10 +25,10 @@ const myErrorOptions: ErrorDefaultOptions = {
   ]
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {
-  public modelValue;
-  @ViewChild('errorNgModel', { static: true }) errorNgModel: NxInputDirective;
+  public modelValue!: string;
+  @ViewChild('errorNgModel', { static: true }) errorNgModel!: NxInputDirective;
 
   ngAfterContentInit() {
-    this.errorNgModel.ngControl.control.markAsTouched();
+    this.errorNgModel.ngControl.control?.markAsTouched();
   }
 }

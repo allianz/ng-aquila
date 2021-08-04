@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Page } from './pagination.component';
 
+interface PaginationItem {
+  label: string | number;
+  value: number;
+  class: string;
+}
+
 /** @docs-private */
 @Injectable()
 export class NxPaginationUtils  {
@@ -48,7 +54,7 @@ export class NxPaginationUtils  {
     const showEllipsis = currentPage < totalPages - 4;
 
     while (currentItemToShow <= totalPages) {
-      const endItem = end.length === 0 && showEllipsis ?
+      const endItem: PaginationItem = end.length === 0 && showEllipsis ?
         this.createPaginationItem(this._elipsisText, currentItemToShow, true) :
         this.createPaginationItem(currentItemToShow , currentItemToShow, true);
       end.push(endItem);
@@ -93,7 +99,7 @@ export class NxPaginationUtils  {
     }
   }
 
-  private createPaginationItem(label: string | number, value: number, classExpanded?: boolean) {
+  private createPaginationItem(label: string | number, value: number, classExpanded?: boolean): PaginationItem {
     return { label, value, class: classExpanded ? this._classExpanded : ''  };
   }
 

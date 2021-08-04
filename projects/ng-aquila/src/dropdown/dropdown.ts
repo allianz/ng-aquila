@@ -2,7 +2,7 @@ import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager, Highlightable } from '@angular/cdk/a11y';
 import { SelectionModel } from '@angular/cdk/collections';
 import {
   DOWN_ARROW,
@@ -126,14 +126,14 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   // The dropdown currently doesn't support readonly of the NxFormfieldControl so we hardcode it here
   readonly readonly: boolean = false;
 
-  private _selectionModel: SelectionModel<NxDropdownOption>;
+  private _selectionModel!: SelectionModel<NxDropdownOption>;
 
   protected _disabled: boolean = false;
 
   /** The ID of rendered dropdown html element. */
   readonly renderedValueId: string = `nx-dropdown-rendered-${nextUniqueId++}`;
 
-  private _placeholder: string;
+  private _placeholder: string = '';
 
   private _focused: boolean = false;
 
@@ -156,10 +156,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   _overlayViewportMargin: number = this.dir === 'rtl' ? 0 : 16;
 
   /** The last measured value for the trigger's client bounding rect. */
-  _triggerRect: ClientRect;
+  _triggerRect!: ClientRect;
 
   /** Holds the panelWidth after panel was attached. */
-  _panelWidth: number;
+  _panelWidth: number | undefined;
 
   /**
    * @docs-private
@@ -168,13 +168,14 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   readonly stateChanges = new Subject<any>();
 
   /** @docs-private */
-  ariaDescribedby: string;
+  ariaDescribedby: string | undefined;
 
   private _tabIndex: number = 0;
 
   /** @docs-private */
   currentFilter: string = '';
 
+  // @ts-ignore TODO: refactor to be TS compatible
   private _options: BehaviorSubject<NxDropdownOption[]> = new BehaviorSubject(null);
 
   /**
@@ -227,7 +228,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   }
 
   /** Whether the component is required. This adds an aria-required label to the component. */
-  @Input('nxRequired') required: boolean;
+  @Input('nxRequired') required!: boolean;
 
   private _style: string = '';
   /** Whether the dropdown should render in its negative style or not. */
@@ -302,35 +303,35 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
    * @docs-private
    * Panel containing the select options.
    */
-  @ViewChild('panel') panel: ElementRef;
+  @ViewChild('panel') panel!: ElementRef;
 
   /** @docs-private */
-  @ViewChild('panelBody') panelBody: ElementRef;
+  @ViewChild('panelBody') panelBody!: ElementRef;
 
   /** @docs-private */
-  @ViewChild('trigger', { static: true }) trigger: ElementRef;
+  @ViewChild('trigger', { static: true }) trigger!: ElementRef;
 
   /** @docs-private */
-  @ViewChild('filterInput') filterInput: ElementRef;
+  @ViewChild('filterInput') filterInput!: ElementRef;
 
   /**
    * @docs-private
    * Overlay pane containing the options.
    */
-  @ViewChild(CdkConnectedOverlay, { static: true }) overlayDir: CdkConnectedOverlay;
+  @ViewChild(CdkConnectedOverlay, { static: true }) overlayDir!: CdkConnectedOverlay;
 
-  @ContentChildren(NxDropdownItemComponent, { descendants: true }) _contentDropdownItems: QueryList<NxDropdownItemComponent>;
+  @ContentChildren(NxDropdownItemComponent, { descendants: true }) _contentDropdownItems!: QueryList<NxDropdownItemComponent>;
 
   /** @docs-private */
-  @ContentChildren(NxDropdownGroupComponent) groups;
+  @ContentChildren(NxDropdownGroupComponent) groups: any;
 
   @ContentChild(NxDropdownClosedLabelDirective)
-  _customClosedDropdownLabel: NxDropdownClosedLabelDirective;
+  _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
 
   @ViewChild('defaultClosedDropdownLabel', { static: true })
-  private _defaultClosedDropdownLabel: TemplateRef<any>;
+  private _defaultClosedDropdownLabel!: TemplateRef<any>;
 
-  @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems: QueryList<NxDropdownItemComponent>;
+  @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
 
   get dropdownItems(): QueryList<NxDropdownItemComponent> {
     return this._isLazy ? this._lazyDropdownItems : this._contentDropdownItems;
@@ -340,12 +341,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   get closedDropdownLabel(): TemplateRef<any> {
     return this._closedDropdownLabel;
   }
-  private _closedDropdownLabel: TemplateRef<any>;
+  private _closedDropdownLabel!: TemplateRef<any>;
 
   /** Emits whenever the component is destroyed. */
   private readonly _destroy = new Subject<void>();
 
-  private _keyManager: ActiveDescendantKeyManager<NxDropdownItemComponent>;
+  private _keyManager!: ActiveDescendantKeyManager<NxDropdownItemComponent>;
 
   /** @docs-private */
   get panelOpen(): boolean {
@@ -360,7 +361,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
    * This function is used for displaying and filtering the content
    * ( Default: (value) => value ? value.toString() : null; ).
    */
-  @Input('nxValueFormatter') valueFormatter = (value) => {
+  @Input('nxValueFormatter') valueFormatter = (value: any) => {
     return value == null ? '' : value.toString();
   }
 
@@ -643,7 +644,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
    */
   private _selectValue(value: any) {
     let option: NxDropdownOption;
-    const filterFn = (o: NxDropdownItemComponent) => {
+    const filterFn = (o: NxDropdownOption) => {
       try {
         // Treat null as a special reset value.
         return o.value !== null && this._compareWith(o.value, value);
@@ -657,7 +658,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     };
 
     const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-    option = options.find(filterFn);
+    option = options.find(filterFn) as NxDropdownOption;
 
     if (option) {
       this._selectionModel.select(option);
@@ -791,9 +792,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
   }
 
-  private _getItemOffset(item) {
-    const itemRect = item.containerElement.nativeElement.getBoundingClientRect();
+  private _getItemOffset(item: NxDropdownItemComponent | null): number {
+    if (!item) {
+      return 0;
+    }
 
+    const itemRect = item.containerElement.nativeElement.getBoundingClientRect();
     return itemRect.top + (itemRect.height / 2); // get position of the item's center
   }
 
@@ -984,17 +988,18 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   }
 
   /** @docs-private */
-  formatValue(value): string {
+  formatValue(value: any): string {
     return this.valueFormatter(value);
   }
 
   /** Called when the user types in the filter input */
-  _onFilter(event) {
+  _onFilter(event: Event) {
     event.preventDefault();
-    this.currentFilter = event.target.value;
-    this.filterChanges.next(event.target.value);
+    this.currentFilter = (event.target as HTMLInputElement).value;
+    this.filterChanges.next((event.target as HTMLInputElement).value);
     const allHidden = this.dropdownItems.toArray().every(option => option._hidden);
     if (allHidden) {
+      // @ts-ignore: not possible according to TS, but has been working already
       this._keyManager.setActiveItem(null);
     } else {
       this._keyManager.setFirstItemActive();

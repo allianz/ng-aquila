@@ -13,9 +13,9 @@ let nextId = 0;
 })
 export class NxComparisonTableCell {
 
-  @ViewChild('content', { static: true }) _content: TemplateRef<any>;
+  @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
-  private _index: number;
+  private _index!: number;
 
   /** @docs-private */
   @Input()
@@ -109,8 +109,8 @@ export class NxComparisonTableCell {
 
   _getHeaderIds(): string {
     // product header cell + (toggle-section) + description-cell
-    const headerCell = this._table._getHeaderCells().find(cell => cell.index === this.index);
-    let headers = `${headerCell.id}`;
+    const headerCell = this._table._getHeaderCells().find( (cell: NxComparisonTableCell) => cell.index === this.index);
+    let headers = headerCell ? `${headerCell.id}` : '';
 
     if (this._row.descriptionCell) {
       headers += ` ${this._row.descriptionCell.id}`;

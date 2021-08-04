@@ -36,7 +36,7 @@ export class NxBreadcrumbItemComponent implements OnDestroy {
   }
 
   // prevent location change when the user clicks on the chevron arrow
-  _onIconClick(event) {
+  _onIconClick(event: Event) {
     event.stopPropagation();
     event.preventDefault();
   }

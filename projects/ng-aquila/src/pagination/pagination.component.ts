@@ -38,14 +38,14 @@ export interface Page {
 
 export class NxPaginationComponent implements OnInit, AfterContentInit, AfterViewInit, OnDestroy {
 
-  @ViewChildren('link') _linkElements: QueryList<ElementRef>;
+  @ViewChildren('link') _linkElements!: QueryList<ElementRef>;
 
   /** Preserves the current value of the _linkElements ViewChildren in case _linkElements changes. */
-  _linkElementsPrevious: QueryList<ElementRef>;
+  _linkElementsPrevious!: QueryList<ElementRef>;
 
-  private _page: number;
-  private _count: number;
-  private _perPage: number;
+  private _page!: number;
+  private _count!: number;
+  private _perPage!: number;
   private _type: string = 'simple';
   private _dirChangeSubscription: Subscription;
 

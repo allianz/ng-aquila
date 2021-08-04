@@ -139,7 +139,7 @@ export class NxColComponent implements OnInit {
    * @docs-private
    */
   @Input()
-  class: string;
+  class!: string;
 
   constructor(private el: ElementRef) {}
 
@@ -160,13 +160,13 @@ export class NxColComponent implements OnInit {
     if (
       input &&
       !isEmptyArray(givenTiers) &&
-      this.checkNotAllowedValues(givenTiers, exclude)
+      this.checkNotAllowedValues(givenTiers, exclude!)
     ) {
       switch (givenTiers.length) {
         case 1:
           this.validateInput(givenTiers);
           mappedClasses = [
-            mapClassNames('', defaults, mapping) + givenTiers[0],
+            mapClassNames('', defaults!, mapping) + givenTiers[0],
           ];
           break;
         case 2:
@@ -259,6 +259,7 @@ export class NxColComponent implements OnInit {
       this.generateError(
         'Exception: NxColDirective. One argument is not number'
       );
+      return false;
     }
   }
 

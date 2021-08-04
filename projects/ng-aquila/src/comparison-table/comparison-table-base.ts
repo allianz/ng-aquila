@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, Injectable, Inj
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
+import { NxComparisonTablePopularCell, NxComparisonTableCell } from './public-api';
 
 @Injectable()
 export class ComparisonTableDefaultOptions {
@@ -21,7 +22,7 @@ export type NxComparisonTableViewType = 'mobile' | 'tablet' | 'desktop';
 /** @docs-private */
 @Directive()
 export abstract class NxComparisonTableBase implements OnDestroy {
-  selectedIndexChange: EventEmitter<number>;
+  selectedIndexChange!: EventEmitter<number>;
 
   _disabledIndexes: number[] = [];
   _hiddenIndexes: number[] = [];
@@ -33,19 +34,19 @@ export abstract class NxComparisonTableBase implements OnDestroy {
   private _viewType: NxComparisonTableViewType = 'desktop';
 
   /** Get all header cells of the table. */
-  abstract _getHeaderCells();
+  abstract _getHeaderCells(): NxComparisonTableCell[];
 
   /** How many product columns the table has. */
-  abstract _infoColumnCount();
+  abstract _infoColumnCount(): number;
 
   /** Get the popular cell of the table. */
-  abstract _getPopularCell();
+  abstract _getPopularCell(): NxComparisonTablePopularCell;
 
   /** Add a column to the list of disabled columns. */
-  abstract _addDisabledColumn(disabledColumn: number);
+  abstract _addDisabledColumn(disabledColumn: number): void;
 
   /** Remove a column from the list of disabled columns. */
-  abstract _removeDisabledColumn(enabledColumn: number);
+  abstract _removeDisabledColumn(enabledColumn: number): void;
 
   /** Get the mobile clipping path for a cell that should be cut when scrolling. */
   abstract _getMobileClipPathInset(cellRect: DOMRect): string;
@@ -54,7 +55,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
    * Bring an element into view in case it is hidden by the sticky header row on top,
    * optionally with some additional space above the element.
    */
-  abstract _scrollElementIntoView(element: ElementRef, additionalSpacing?: number);
+  abstract _scrollElementIntoView(element: ElementRef, additionalSpacing?: number): void;
 
   /** @docs-private */
   get viewType(): NxComparisonTableViewType {

@@ -17,7 +17,7 @@ const myCustomConfig: NxMessageToastConfig = {
   styleUrls: ['./file-uploader-max-file-number-example.css']
 })
 export class FileUploaderMaxFileNumberExampleComponent {
-  testForm: FormGroup;
+  testForm!: FormGroup;
   uploader: NxFileUploader;
   uploadConfig: NxFileUploadConfig = {
     requestUrl: 'file-upload',

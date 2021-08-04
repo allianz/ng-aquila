@@ -13,10 +13,10 @@ import { TableDataSource } from './tabledata-source';
 export class NxDynamicTableComponent implements OnInit {
 
   private _dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-  private _dataSource: TableDataSource | null;
-  private _data: any[];
-  private _displayedColumns: NxDisplayedColumns[];
-  private _columnKeys: string[];
+  private _dataSource!: TableDataSource | null;
+  private _data: any[] = [];
+  private _displayedColumns!: NxDisplayedColumns[];
+  private _columnKeys: string[] = [];
 
   /** Sets the data that it will show in the table. */
   @Input('nxData')
@@ -25,7 +25,7 @@ export class NxDynamicTableComponent implements OnInit {
       .filter(element => element);
     // If user dont pass displayedColumns the table will show all data and the name of columns will be the key of data
     if (!this._displayedColumns) {
-      const keys = [], cArray = [];
+      const keys: string[] = [], cArray: any[] = [];
       // For catch keys of data Objects and assing title, key and type string by default to displayedColumns
       this._data
         .forEach(element => {
@@ -51,12 +51,12 @@ export class NxDynamicTableComponent implements OnInit {
 
   /** Sets the name order and type of columns. */
   @Input('nxDisplayedColumns')
-  set displayedColumns(value: NxDisplayedColumns[]) {
-    this._displayedColumns = value;
-    this._columnKeys = value.map(column => column.key);
+  set displayedColumns(value: NxDisplayedColumns[] | undefined) {
+    this._displayedColumns = value as NxDisplayedColumns[];
+    this._columnKeys = value ? value.map(column => column.key) : [];
     this._changeDetectorRef.markForCheck();
   }
-  get displayedColumns(): NxDisplayedColumns[] {
+  get displayedColumns(): NxDisplayedColumns[] | undefined {
     return this._displayedColumns;
   }
 
@@ -65,7 +65,7 @@ export class NxDynamicTableComponent implements OnInit {
 
   /** @docs-private */
   get dataSource(): TableDataSource {
-    return this._dataSource;
+    return this._dataSource as TableDataSource;
   }
 
   /** @docs-private */

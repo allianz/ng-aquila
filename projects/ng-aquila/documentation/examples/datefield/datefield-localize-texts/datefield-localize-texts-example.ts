@@ -29,5 +29,5 @@ export class MyIntl extends NxDatepickerIntl {
 })
 
 export class DatefieldLocalizeTextsExampleComponent {
-  currentDate: Moment = null;
+  currentDate: Moment | null = null;
 }

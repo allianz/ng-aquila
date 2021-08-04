@@ -26,7 +26,7 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
 })
 
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
-  public manifestFile;
+  public manifestFile!: Blob;
   private _destroyed: Subject<void> = new Subject();
   selectedTheme: Theme;
   themes: Theme[];
@@ -40,7 +40,8 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
 
   showMobileMenuButton: boolean = false;
 
-   @ViewChild(CssVarSidebarComponent) cssVarSidebar: CssVarSidebarComponent;
+   @ViewChild(CssVarSidebarComponent)
+  cssVarSidebar!: CssVarSidebarComponent;
 
   constructor(
     public manifestService: ManifestService,
@@ -58,7 +59,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
 
     const themeQuery = this._route.snapshot.queryParamMap.get('theme');
-    const themeFromQuery = this._themeSwitcherService.get(themeQuery);
+    const themeFromQuery = this._themeSwitcherService.get(themeQuery as string);
     if (themeFromQuery) {
       this.selectedTheme = themeFromQuery;
       this._themeSwitcherService.switchTheme(this.selectedTheme);
@@ -129,7 +130,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     reader.readAsText(this.manifestFile);
   }
 
-  onFileChange(event) {
+  onFileChange(event: any) {
     this.manifestFile = event.currentTarget.files[0];
   }
 
@@ -145,7 +146,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
       const el = tags[i];
       const dataCssVarAttr = el.getAttribute('data-cssvars');
       if (dataCssVarAttr && dataCssVarAttr === 'out') {
-        el.parentNode.removeChild(el);
+        el.parentNode?.removeChild(el);
       } else {
         attributes.forEach(attr => el.removeAttribute(attr));
       }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import parseColor from 'parse-color';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { CssSelector } from '@angular/compiler';
 
 @Component({
   selector: 'nxv-css-var-sidebar',
@@ -15,8 +16,8 @@ import { ChangeDetectionStrategy } from '@angular/core';
 export class CssVarSidebarComponent {
   shown = true;
 
-  properties;
-  displayedProperties;
+  properties!: any[];
+  displayedProperties: any;
   filterValue: string = '';
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) { }
@@ -26,7 +27,7 @@ export class CssVarSidebarComponent {
       .reduce((rules, styleSheet: CSSStyleSheet) => {
         if (styleSheet.cssRules) {
           Array.from(styleSheet.cssRules)
-            .reduce((innerRules, cssRule: CSSStyleRule) => {
+            .reduce((innerRules: string[], cssRule: any ) => {
               if (cssRule.selectorText === ':root') {
                 let css = cssRule.cssText.split('{');
                 css = css[1].replace('}', '').split(';');
@@ -44,9 +45,9 @@ export class CssVarSidebarComponent {
       }, []);
   }
 
-  parseProperties(props) {
+  parseProperties(props: string[]) {
     const styles = getComputedStyle(document.documentElement);
-    const values = props.map(name => {
+    const values = props.map((name: string) => {
       const cssVarValue = styles.getPropertyValue(name).trim();
 
       const parsed = parseColor(cssVarValue);
@@ -69,7 +70,7 @@ export class CssVarSidebarComponent {
     return values;
   }
 
-  updateProperty(newValue, prop) {
+  updateProperty(newValue: string | null, prop: { name: string; }) {
     document.documentElement.style.setProperty(prop.name, newValue);
   }
 
@@ -79,7 +80,7 @@ export class CssVarSidebarComponent {
 
   filterProperties() {
     this.displayedProperties = this.properties.filter(
-      prop => prop.name.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0
+      (      prop: { name: string; value: string; }) => prop.name.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0
         || prop.value.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0
     );
   }
@@ -97,7 +98,7 @@ export class CssVarSidebarComponent {
     this._changeDetectorRef.markForCheck();
   }
 
-  trackProperties(index, element) {
+  trackProperties(index: unknown, element: HTMLInputElement ) {
     return element.name;
   }
 }

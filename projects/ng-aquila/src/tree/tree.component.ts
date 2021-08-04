@@ -50,7 +50,7 @@ import { NxTreeNodeOutletDirective } from './outlet';
 })
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {
   // Outlets within the tree's template where the dataNodes will be inserted.
-  @ViewChild(NxTreeNodeOutletDirective, { static: true }) _nodeOutlet: NxTreeNodeOutletDirective;
+  @ViewChild(NxTreeNodeOutletDirective, { static: true }) _nodeOutlet!: NxTreeNodeOutletDirective;
 
   /** The node map map data nodes to CdkTreeNodes */
   protected nodeMap: Map<T, FocusableOption> = new Map<T, FocusableOption>();
@@ -62,7 +62,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
   protected parentMap: Map<T, T> = new Map<T, T>();
 
   /** Current focused node data. */
-  protected _focusedData: T;
+  protected _focusedData!: T;
 
   /** Tab index for the tree. */
   _tabIndex = 0;
@@ -387,17 +387,17 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
       const changes = dataDiffer.diff(data);
       if (!changes) { return; }
       changes.forEachOperation(
-        (item: IterableChangeRecord<T>, adjustedPreviousIndex: number, currentIndex: number) => {
-          if (item.previousIndex == null) {
+        (item: IterableChangeRecord<T>, adjustedPreviousIndex: number | null, currentIndex: number | null) => {
+          if (item.previousIndex == null && currentIndex !== null) {
             this.insertNode(data[currentIndex], currentIndex, viewContainer, parentData);
           } else if (currentIndex == null) {
-            viewContainer.remove(adjustedPreviousIndex);
+            viewContainer.remove(adjustedPreviousIndex as number);
             this['_levels'].delete(item.item);
-            this.removeFromA11yNodeTracking(adjustedPreviousIndex, parentData);
+            this.removeFromA11yNodeTracking(adjustedPreviousIndex as number, parentData);
           } else {
-            const view = viewContainer.get(adjustedPreviousIndex);
+            const view = viewContainer.get(adjustedPreviousIndex as number);
             viewContainer.move(view!, currentIndex);
-            this.moveInA11yNodeTracking(adjustedPreviousIndex, currentIndex, parentData);
+            this.moveInA11yNodeTracking(adjustedPreviousIndex as number, currentIndex, parentData);
           }
         });
 

@@ -59,7 +59,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   set startAt(value: D | null) {
     this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _startAt: D | null;
+  private _startAt!: D | null;
 
   /** Whether the calendar should be started in month or year view. */
   @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
@@ -70,7 +70,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   set selected(value: D | null) {
     this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _selected: D | null;
+  private _selected!: D | null;
 
   /** The minimum selectable date. */
   @Input()
@@ -78,7 +78,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   set minDate(value: D | null) {
     this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _minDate: D | null;
+  private _minDate!: D | null;
 
   /** The maximum selectable date. */
   @Input()
@@ -86,10 +86,10 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   set maxDate(value: D | null) {
     this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _maxDate: D | null;
+  private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter: (date: D) => boolean;
+  @Input() dateFilter!: (date: D) => boolean;
 
   /** Emits when the currently selected date changes. */
   @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
@@ -110,16 +110,16 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   @Output() readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
 
   /** Reference to the current month view component. */
-  @ViewChild(NxMonthViewComponent) monthView: NxMonthViewComponent<D>;
+  @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<D>;
   /** Reference to the current year view component. */
-  @ViewChild(NxYearViewComponent) yearView: NxYearViewComponent<D>;
+  @ViewChild(NxYearViewComponent) yearView!: NxYearViewComponent<D>;
 
   /** Reference to the current multi-year view component. */
-  @ViewChild(NxMultiYearViewComponent) multiYearView: NxMultiYearViewComponent<D>;
+  @ViewChild(NxMultiYearViewComponent) multiYearView!: NxMultiYearViewComponent<D>;
 
-  @ViewChild('previousButton') _previousButton: ElementRef<HTMLElement>;
-  @ViewChild('nextButton') _nextButton: ElementRef<HTMLElement>;
-  @ViewChild('changeViewButton') _changeViewButton: ElementRef<HTMLElement>;
+  @ViewChild('previousButton') _previousButton!: ElementRef<HTMLElement>;
+  @ViewChild('nextButton') _nextButton!: ElementRef<HTMLElement>;
+  @ViewChild('changeViewButton') _changeViewButton!: ElementRef<HTMLElement>;
   /**
    * The current active date. This determines which time period is shown and which date is
    * highlighted when using keyboard navigation.
@@ -128,10 +128,10 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
   set _activeDate(value: D) {
     this._clampedActiveDate = this._dateAdapter.clampDate(value, this.minDate, this.maxDate);
   }
-  private _clampedActiveDate: D;
+  private _clampedActiveDate!: D;
 
   /** Whether the calendar is in month view. */
-  _currentView: 'month' | 'year' | 'multi-year';
+  _currentView!: 'month' | 'year' | 'multi-year';
 
   /** The label for the current calendar view. */
   get _periodButtonText(): string {

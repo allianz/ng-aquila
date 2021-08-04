@@ -88,7 +88,7 @@ export class NxSidepanelComponent {
 
   private _opened: boolean = true;
 
-  @ContentChild(NxSidepanelHeaderComponent, { read: ElementRef, static: false }) _header: ElementRef;
+  @ContentChild(NxSidepanelHeaderComponent, { read: ElementRef, static: false }) _header!: ElementRef;
 
   /**
    * An event emitted when the opened value has changed.
@@ -160,7 +160,7 @@ export class NxSidepanelComponent {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NxSidepanelOuterContainerComponent {
-  @ContentChild(NxSidepanelComponent) _sidepanel: NxSidepanelComponent;
+  @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;
 
   constructor(
     @Optional() private _dir: Directionality,

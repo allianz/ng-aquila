@@ -12,10 +12,10 @@ let nextId = 0;
 })
 export class NxComparisonTablePopularCell {
 
-  @ViewChild('content', { static: true }) _content: TemplateRef<any>;
+  @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
   private _id: string = `nx-comparison-table-popular-cell-${nextId++}`;
-  private _forColumn: number;
+  private _forColumn: number | undefined;
 
   /** Sets the Id of the popular cell. */
   @Input()
@@ -40,7 +40,7 @@ export class NxComparisonTablePopularCell {
     }
   }
   get forColumn(): number {
-    return this._forColumn;
+    return this._forColumn as number;
   }
 
   constructor (

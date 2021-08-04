@@ -47,7 +47,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
   private _size: NxLinkSize = 'small';
 
   /** @docs-private */
-  @ContentChild(NxIconComponent) icon: NxIconComponent;
+  @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
   /** Sets the size of the link. Default: 'small'. */
   @Input()

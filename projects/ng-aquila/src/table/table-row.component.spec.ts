@@ -7,7 +7,7 @@ import { dispatchMouseEvent } from '../cdk-test-utils';
 
 @Directive()
 class TableRowTest {
-  @ViewChild(NxTableRowComponent) tableRowInstance: NxTableRowComponent;
+  @ViewChild(NxTableRowComponent) tableRowInstance!: NxTableRowComponent;
 }
 
 function hasClass(element: ElementRef, className: string): boolean {

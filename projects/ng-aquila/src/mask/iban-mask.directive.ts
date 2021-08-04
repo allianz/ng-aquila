@@ -23,7 +23,7 @@ export const NX_IBAN_MASK_VALIDATORS: any = {
 })
 export class NxIbanMaskDirective implements OnInit, Validator {
 
-  private _countryCode: string;
+  private _countryCode!: string | null;
 
   constructor(
     private _elementRef: ElementRef,
@@ -49,8 +49,8 @@ export class NxIbanMaskDirective implements OnInit, Validator {
     const pastedData = (event.clipboardData || (window as any).clipboardData).getData('text');
 
     const enteredCountryCode = (
-      this.maskDirective.elementRefValue.substr(0, input.selectionStart)
-      + this.maskDirective.getMaskedString(pastedData, input.selectionStart)
+      this.maskDirective.elementRefValue.substr(0, input.selectionStart as number)
+      + this.maskDirective.getMaskedString(pastedData, input.selectionStart as number)
     ).substr(0, 2);
 
     this._setCountryCode(enteredCountryCode);
@@ -86,7 +86,7 @@ export class NxIbanMaskDirective implements OnInit, Validator {
     // split up after every third character
     const characterDefs = countrySpecs['structure'].match(/.{1,3}/g);
 
-    characterDefs.forEach(charDef => {
+    characterDefs!.forEach( (charDef: any) => {
       const character = charDef[0];
       const count = Number(charDef.substring(1, 3));
 
@@ -103,7 +103,7 @@ export class NxIbanMaskDirective implements OnInit, Validator {
     });
 
     // insert whitespaces after every 4 characters
-    mask = mask.match(/.{1,4}/g).join(' ');
+    mask = mask.match(/.{1,4}/g)!.join(' ');
 
     return mask;
   }

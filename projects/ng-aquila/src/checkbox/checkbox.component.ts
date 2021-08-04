@@ -73,10 +73,10 @@ export type NxCheckboxLabelSize = 'small' | 'large';
   }
 })
 export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
-  @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes: QueryList<NxCheckboxComponent>;
+  @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
 
   @ContentChild(forwardRef(() => NxLabelComponent))
-   _label: NxLabelComponent;
+   _label!: NxLabelComponent;
 
   readonly _stateChanges = new Subject<void>();
   errorState: boolean = false;
@@ -96,7 +96,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     return this._id;
   }
 
-  private _name: string;
+  private _name: string = '';
   /** Sets the name of the checkboxes inside the nx-checkbox-group. */
   @Input()
   set name(value: string) {
@@ -137,7 +137,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     return this._negative;
   }
 
-  private _labelSize: NxCheckboxLabelSize;
+  private _labelSize: NxCheckboxLabelSize | undefined;
   /** Sets the label size of the checkboxes inside the group */
   @Input()
   set labelSize(value: NxCheckboxLabelSize) {
@@ -146,22 +146,22 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
   }
 
   get labelSize(): NxCheckboxLabelSize {
-    return this._labelSize;
+    return this._labelSize as NxCheckboxLabelSize;
   }
 
   /** Whether the nx-checkbox-group are required. */
   @Input()
   get required(): boolean {
-    return this._required;
+    return !!this._required;
   }
 
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
   }
 
-  private _required: boolean;
+  private _required: boolean | undefined;
 
-  private _value: any[];
+  private _value: any[] | undefined;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
     private _errorStateMatcher: ErrorStateMatcher,
@@ -184,7 +184,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
       this._value = this._checkboxes.filter(checkbox => checkbox.checked).map(cb => cb.value);
 
       if (this.ngControl) {
-        this.ngControl.control.setValue(this._value);
+        this.ngControl.control!.setValue(this._value);
       }
       this._updateSelectedCheckboxFromValue();
     });
@@ -231,13 +231,13 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     const isValueSet = initialisation ? !!this._value && this._value.length : !!this._value;
     if (this._checkboxes && this._checkboxes.length && isValueSet) {
       this._checkboxes.map(checkbox => {
-        checkbox.checked = this._value.indexOf(checkbox.value) !== -1;
+        checkbox.checked = this._value!.indexOf(checkbox.value) !== -1;
       });
     }
   }
 
   /** @docs-private */
-  change(value) {
+  change(value: unknown) {
     const checkedCheckboxValues = this._checkboxes.filter(checkbox => checkbox.checked).map(checkbox => checkbox.value);
     this._onChange(checkedCheckboxValues);
 
@@ -289,18 +289,18 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 })
 
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
-  private _parentChangeSubscription: Subscription;
+  private _parentChangeSubscription!: Subscription;
   private _id: string = (nextId++).toString();
   private _disabled: boolean = false;
   private _negative: boolean = false;
   private _labelSize: NxCheckboxLabelSize = 'small';
   private _checked = false;
-  private _name: string = null;
+  private _name: string | null = null;
 
   /** @docs-private */
-  @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper: ElementRef;
+  @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper!: ElementRef;
 
-  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
+  @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
   /**
    * Id of the checkbox.
@@ -326,7 +326,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
   }
 
   get name(): string {
-    return (this.checkboxGroup && this.checkboxGroup.name) ? this.checkboxGroup.name : this._name;
+    return ((this.checkboxGroup && this.checkboxGroup.name) ? this.checkboxGroup.name : this._name) as string;
   }
 
   /** Whether the checkbox is disabled. */
@@ -410,14 +410,14 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
   /** Whether the checkbox is required. */
   @Input()
   get required(): boolean {
-    return this._required;
+    return !!this._required;
   }
 
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value);
   }
 
-  private _required: boolean;
+  private _required: boolean | undefined;
 
   /** Sets the value of the checkbox. Default value is the checked status. */
   @Input()
@@ -430,7 +430,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     this._changeDetectorRef.markForCheck();
   }
 
-  private _value: string;
+  private _value: string = '';
 
   /** An event emitted when the indeterminate value has changed */
   @Output()
@@ -490,7 +490,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
       control = this.ngControl ? this.ngControl.control as FormControl : null;
     }
 
-    return this._errorStateMatcher.isErrorState(control, parent);
+    return this._errorStateMatcher.isErrorState(control as FormControl, parent);
   }
 
   ngOnInit() {
@@ -562,7 +562,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
   /** Focuses the checkbox element. */
   focus(focusOrigin?: FocusOrigin) {
-    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
   }
 
   /** @docs-private */
@@ -571,7 +571,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
   }
 
   /** @docs-private */
-  _onInputClick(event): void {
+  _onInputClick(event: Event): void {
     // stop the propagation of the native click on the checkbox input so that a click is not triggered twice
     event.stopPropagation();
     if (!this.disabled) {

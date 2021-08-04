@@ -27,12 +27,12 @@ export class ExampleViewerComponent {
   ) {
   }
 
-  moduleId: string;
+  moduleId!: string;
   showSourceCode = false;
-  _example: string;
-  exampleData: ComponentExample;
-  exampleDescriptor: ExampleDescriptor;
-  examplePortal: ComponentPortal<any>;
+  _example!: string;
+  exampleData!: ComponentExample;
+  exampleDescriptor!: ExampleDescriptor;
+  examplePortal!: ComponentPortal<any>;
   exampleDescriptorTypes = [
     { type: 'html', label: 'html' },
     { type: 'ts', label: 'typescript' },
@@ -40,8 +40,10 @@ export class ExampleViewerComponent {
   ];
   copyButtonText = 'copy';
 
-  @ViewChildren(DocViewerComponent) docViewers: QueryList<DocViewerComponent>;
-  @ViewChild(NxTabGroupComponent) tabGroup: NxTabGroupComponent;
+  @ViewChildren(DocViewerComponent)
+  docViewers!: QueryList<DocViewerComponent>;
+  @ViewChild(NxTabGroupComponent)
+  tabGroup!: NxTabGroupComponent;
 
   exampleComponent = null;
   exampleModuleFactory = null;
@@ -59,7 +61,8 @@ export class ExampleViewerComponent {
     return this._example;
   }
 
-  @Input() config: ExampleConfig;
+  @Input()
+  config!: ExampleConfig;
 
   toggleSourceView() {
     this.showSourceCode = !this.showSourceCode;
@@ -67,7 +70,7 @@ export class ExampleViewerComponent {
 
   copySourceCode() {
     const currentTab = this.tabGroup.tabs.toArray()[this.tabGroup.selectedIndex].label;
-    const currentContent = this.docViewers.toArray().filter(viewer => viewer.id === currentTab).pop().content;
+    const currentContent = this.docViewers.toArray().filter(viewer => viewer.id === currentTab).pop()?.content;
     this.copyButtonText = 'copied!';
 
     setTimeout(() => {
@@ -77,7 +80,7 @@ export class ExampleViewerComponent {
     this.copyService.copyText(currentContent);
   }
 
-  getExampleSourceUrl(type, url) {
+  getExampleSourceUrl(type: string, url: string) {
     const file = url.split('###TYPE###').join(type);
     return file;
   }

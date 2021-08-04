@@ -12,8 +12,8 @@ import { NxModalModule } from './modal.module';
 @Directive()
 abstract class ModalTest {
   public open = false;
-  @ViewChildren(NxModalComponent) modalInstances: QueryList<NxModalComponent>;
-  @ViewChild(NxModalComponent) modalInstance: NxModalComponent;
+  @ViewChildren(NxModalComponent) modalInstances!: QueryList<NxModalComponent>;
+  @ViewChild(NxModalComponent) modalInstance!: NxModalComponent;
 }
 
 describe('NxModalComponent', () => {

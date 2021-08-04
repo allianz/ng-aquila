@@ -17,8 +17,8 @@ const DEFAULT_CONFIG: NxOverlayConfig = {
 })
 export class NxNotificationPanelTriggerDirective {
 
-  private _panelTemplate: TemplateRef<any>;
-  private _overlayRef: NxOverlayRef<any>;
+  private _panelTemplate!: TemplateRef<any>;
+  private _overlayRef!: NxOverlayRef<any> | null;
 
   @Input('nxNotificationPanelTriggerFor')
   set notificationPanel(value: TemplateRef<any>) {

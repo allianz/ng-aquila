@@ -11,8 +11,8 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class DescriptionCellTest {
-  @ViewChildren(NxComparisonTableDescriptionCell) descriptionCellInstances: QueryList<NxComparisonTableDescriptionCell>;
-  @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
+  @ViewChildren(NxComparisonTableDescriptionCell) descriptionCellInstances!: QueryList<NxComparisonTableDescriptionCell>;
+  @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
   descriptionId = 'description-cell';
 }

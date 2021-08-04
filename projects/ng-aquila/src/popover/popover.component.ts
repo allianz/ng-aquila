@@ -24,10 +24,10 @@ import {ENTER, SPACE} from '@angular/cdk/keycodes';
 export class NxPopoverComponent implements OnDestroy {
   /** @docs-private */
   @ViewChild(TemplateRef)
-  templateRef: TemplateRef<any>;
+  templateRef!: TemplateRef<any>;
 
   /** Content that will be rendered lazily. */
-  @ContentChild(NxPopoverContentDirective) _lazyContent: NxPopoverContentDirective;
+  @ContentChild(NxPopoverContentDirective) _lazyContent!: NxPopoverContentDirective;
 
   /** Event emitted when the popover is closed. */
   @Output('nxClosed')
@@ -37,10 +37,10 @@ export class NxPopoverComponent implements OnDestroy {
   closeButtonClick = new Subject<void>();
 
   /** @docs-private */
-  id: string;
+  id!: string;
 
   /** @docs-private */
-  direction;
+  direction!: string;
 
   /** @docs-private */
   showCloseButton: boolean = false;
@@ -66,7 +66,7 @@ export class NxPopoverComponent implements OnDestroy {
   }
 
   /** @docs-private */
-  _onCloseKeyup($event) {
+  _onCloseKeyup($event: KeyboardEvent) {
     if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
       this.emitCloseButtonClick();
     }
@@ -86,11 +86,13 @@ export class NxPopoverComponent implements OnDestroy {
       // As it doesn't make sense to return an array for a single value anyway
       // changed it to a string and that seems to work.
       return `nx-popover--${this.direction}`;
+    } else {
+      return '';
     }
   }
 
   /** Prevent the popover from closing when the user clicks on the popover content. */
-  _onClick(event) {
+  _onClick(event: Event) {
     event.stopPropagation();
   }
 }

@@ -9,7 +9,7 @@ import { NxCopytextModule } from './copytext.module';
 
 @Directive()
 abstract class CopytextTest {
-  @ViewChild(NxCopytextComponent) textInstance: NxCopytextComponent;
+  @ViewChild(NxCopytextComponent) textInstance!: NxCopytextComponent;
   size = '';
 }
 
@@ -27,7 +27,7 @@ describe('NxCopytextDirective', () => {
     textNativeElement = (fixture.nativeElement.querySelector('p') as HTMLButtonElement);
   }
 
-  function setSize(value) {
+  function setSize(value: any) {
     fixture.componentInstance.size = value;
     fixture.detectChanges();
   }

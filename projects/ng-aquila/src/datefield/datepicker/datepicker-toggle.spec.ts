@@ -14,10 +14,10 @@ const datepickerOptions: DatepickerDefaultOptions = {
 
 @Directive()
 abstract class DatepickerToggleTest {
-  public tabindex: number;
+  public tabindex!: number;
 
-  @ViewChild(NxDatepickerComponent) datepickerInstance: NxDatepickerComponent<Date>;
-  @ViewChild(NxDatepickerToggleComponent) toggleInstance: NxDatepickerToggleComponent<Date>;
+  @ViewChild(NxDatepickerComponent) datepickerInstance!: NxDatepickerComponent<Date>;
+  @ViewChild(NxDatepickerToggleComponent) toggleInstance!: NxDatepickerToggleComponent<Date>;
 }
 
 describe('NxDatepickerToggleComponent', () => {
@@ -150,7 +150,7 @@ describe('NxDatepickerToggleComponent using injection token', () => {
       expect(toggleElement.getAttribute('tabindex')).toBe('-1');
 
       defaultOptions.toggleIconTabindex = 2;
-      defaultOptions.changes.next();
+      defaultOptions.changes!.next();
       fixture.detectChanges();
       expect(toggleInstance.tabindex).toBe(2);
       expect(toggleElement.getAttribute('tabindex')).toBe('2');

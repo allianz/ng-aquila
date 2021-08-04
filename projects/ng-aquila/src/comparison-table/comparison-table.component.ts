@@ -40,23 +40,23 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
   // Attention: this contains all rows and toggle sections, AND all rows contained in a toggle section!
   /** @docs-private */
-  @ContentChildren(NxTableContentElement, { descendants: true }) elements: QueryList<NxTableContentElement>;
+  @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
 
-  private _selectedIndex: number;
+  private _selectedIndex: number | undefined;
 
-  @ViewChild('headerRow') _headerRowElement: NxComparisonTableFlexRow;
-  @ViewChild('desktopContent') _desktopContentDiv: ElementRef;
+  @ViewChild('headerRow') _headerRowElement!: NxComparisonTableFlexRow;
+  @ViewChild('desktopContent') _desktopContentDiv!: ElementRef;
 
   /** The top value for the clip-path of the _desktopContentDiv. */
   _desktopContentClip: number = 0;
 
-  @ViewChild('stickyMobileCell') _stickyMobileCell: ElementRef;
+  @ViewChild('stickyMobileCell') _stickyMobileCell!: ElementRef;
 
   /**
    * The value of the right or left edge of the first column of the mobile table,
    * that describes the threshold for how much clip-path is needed.
    */
-  private _mobileStickyEdge: number;
+  private _mobileStickyEdge: number | undefined;
 
   /** Sets which info column is selected. */
   @Input()
@@ -68,7 +68,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
   }
   get selectedIndex(): number {
-    return this._selectedIndex;
+    return this._selectedIndex as number;
   }
 
   /** An event that is is dispatched each time selected index of the table has changed. */
@@ -110,7 +110,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     window.removeEventListener('scroll', this._scrollHandler, true);
   }
 
-  private _scrollHandler = (event): void => {
+  private _scrollHandler = (event: Event): void => {
     this._updateCellClipping();
   }
 
@@ -248,13 +248,13 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     return this._getHeaderCells ? this._getHeaderCells()[i].disabledColumn : false;
   }
 
-  _addDisabledColumn(disabledColumn: number) {
+  _addDisabledColumn(disabledColumn: number): void {
     if (this._disabledIndexes.indexOf(disabledColumn) === -1) {
       this._disabledIndexes.push(disabledColumn);
     }
   }
 
-  _removeDisabledColumn(enabledColumn: number) {
+  _removeDisabledColumn(enabledColumn: number): void {
     const indexOfElement = this._disabledIndexes.indexOf(enabledColumn);
     if (indexOfElement !== -1) {
       this._disabledIndexes.splice(indexOfElement, 1);
@@ -266,7 +266,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     return (headerRow as NxComparisonTableRowDirective);
   }
 
-  _scrollElementIntoView(element: ElementRef, additionalSpacing: number = 0) {
+  _scrollElementIntoView(element: ElementRef, additionalSpacing: number = 0): void {
     // check if element starts above the bottom of the header
     // if yes: modify scrollTop position
     const scrolledParent = this._getScrollParent(element.nativeElement);
@@ -284,18 +284,18 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
   }
 
   // Taken from https://github.com/olahol/scrollparent.js (MIT License)
-  private _getScrollParent(node) {
+  private _getScrollParent(node: any) {
     const regex = /(auto|scroll)/;
-    const parents = (_node, ps) => {
+    const parents: any = (_node: any, ps: any) => {
       if (_node.parentNode === null) { return ps; }
       return parents(_node.parentNode, ps.concat([_node]));
     };
 
-    const style = (_node, prop) => getComputedStyle(_node, null).getPropertyValue(prop);
-    const overflow = _node => style(_node, 'overflow') + style(_node, 'overflow-y') + style(_node, 'overflow-x');
-    const scroll = _node => regex.test(overflow(_node));
+    const style = (_node: Element, prop: string) => getComputedStyle(_node, null).getPropertyValue(prop);
+    const overflow = (_node: any) => style(_node, 'overflow') + style(_node, 'overflow-y') + style(_node, 'overflow-x');
+    const scroll = (_node: any) => regex.test(overflow(_node));
 
-    const scrollParent = (_node) => {
+    const scrollParent = (_node: { parentNode: any; }) => {
       if (!(_node instanceof HTMLElement || _node instanceof SVGElement)) {
         return;
       }

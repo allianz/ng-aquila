@@ -16,11 +16,11 @@ import { NxNotificationPanelItemComponent } from './../notification-item/notific
 })
 export class NxNotificationPanelComponent implements AfterContentInit {
   @ViewChild(TemplateRef)
-  templateRef: TemplateRef<any>;
+  templateRef!: TemplateRef<any>;
 
-  @ContentChildren(NxNotificationPanelItemComponent, { descendants: true }) items: QueryList<NxNotificationPanelItemComponent>;
+  @ContentChildren(NxNotificationPanelItemComponent, { descendants: true }) items!: QueryList<NxNotificationPanelItemComponent>;
 
-  private _keyManager: FocusKeyManager<NxNotificationPanelItemComponent>;
+  private _keyManager!: FocusKeyManager<NxNotificationPanelItemComponent>;
 
   ngAfterContentInit() {
     this._initKeyManager();

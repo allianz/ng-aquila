@@ -17,7 +17,7 @@ const myCustomConfig: NxMessageToastConfig = {
   styleUrls: ['./file-uploader-validation-example.css']
 })
 export class FileUploaderValidationExampleComponent {
-  testForm: FormGroup;
+  testForm!: FormGroup;
   uploader: NxFileUploader;
   uploadConfig: NxFileUploadConfig = {
     requestUrl: 'file-upload',

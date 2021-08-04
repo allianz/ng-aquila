@@ -15,7 +15,7 @@ import { NxDialogService } from './dialog.service';
 })
 export class NxModalCloseDirective implements OnInit, OnChanges {
   /** Screenreader label for the button. */
-  @Input('aria-label') ariaLabel: string;
+  @Input('aria-label') ariaLabel!: string;
 
   /** Default to "button" to prevents accidental form submits. */
   @Input() type: 'submit' | 'button' | 'reset' = 'button';

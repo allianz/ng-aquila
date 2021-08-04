@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class NxvNavigationService {
   constructor(private _router: Router) { }
 
-  isNavigationWithinComponent(previousUrl, newUrl) {
+  isNavigationWithinComponent(previousUrl: string, newUrl: string) {
     const componentViewExpression = /documentation\/([^\/]+)/;
 
     const previousUrlMatch = previousUrl.match(componentViewExpression);

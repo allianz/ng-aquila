@@ -100,15 +100,15 @@ export function NX_TOOLTIP_DEFAULT_OPTIONS_FACTORY(): NxTooltipDefaultOptions {
   },
 })
 export class NxTooltipDirective implements OnDestroy, OnInit {
-  _overlayRef: OverlayRef | null;
-  _tooltipInstance: NxTooltipComponent | null;
+  _overlayRef!: OverlayRef | null;
+  _tooltipInstance!: NxTooltipComponent | null;
 
-  private _portal: ComponentPortal<NxTooltipComponent>;
+  private _portal!: ComponentPortal<NxTooltipComponent>;
   private _position: TooltipPosition = 'bottom';
   private _disabled: boolean = false;
   private _selectable: boolean = false;
   private _scrollStrategy: () => ScrollStrategy;
-  private _embeddedViewRef: ComponentRef<NxTooltipComponent>;
+  private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
   private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
   private _dirChangeSubscription: Subscription;
 
@@ -264,7 +264,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */
   show(delay: number = this.showDelay): void {
     if (this.disabled || !this.message || (this._isTooltipVisible() &&
-      !this._tooltipInstance.isDelayed())) {
+      !this._tooltipInstance?.isDelayed())) {
         return;
     }
 
@@ -383,6 +383,9 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
   /** Updates the position of the current tooltip. */
   private _updatePosition() {
+    if (!this._overlayRef) {
+      return;
+    }
     const position =
         this._overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy;
     const origin = this._getOrigin(this.position);
@@ -500,7 +503,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
   /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */
   private _getInversePosition(position: string): VerticalConnectionPos | HorizontalConnectionPos {
-    const positionPairs = {
+    const positionPairs: { [k: string]: VerticalConnectionPos | HorizontalConnectionPos } = {
       top: 'bottom',
       bottom: 'top',
       start: 'end',
@@ -591,7 +594,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         take(1),
         takeUntil(this._destroyed)
       ).subscribe(() => {
-        if (this._tooltipInstance) {
+        if (this._tooltipInstance && this._overlayRef) {
           this._overlayRef.updatePosition();
         }
       });
@@ -599,6 +602,9 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
   }
 
   private _positionArrow(pair: ConnectionPositionPair) {
+    if (!this._overlayRef || !this._tooltipInstance) {
+      return;
+    }
     const parentElementPositionX = this._elementRef.nativeElement.getBoundingClientRect().left;
     const parentElementWidth = this._elementRef.nativeElement.getBoundingClientRect().width / 2;
     const overlayElementLeftOffset = this._overlayRef
@@ -610,10 +616,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     const targetPosition = (parentElementPositionX + parentElementWidth) - (overlayElementLeftOffset);
 
     if (pair.originX === pair.overlayX) {
-      const direction = 'left';
-      const arrowStyle = {};
-
-      arrowStyle[direction] = targetPosition + 'px';
+      const arrowStyle = { left: targetPosition + 'px' };
       this._tooltipInstance.arrowStyle = arrowStyle;
     }
 

@@ -33,10 +33,10 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 
 export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterContentInit {
 
-  private _keyManager: FocusKeyManager<NxTabLabelWrapperDirective>;
+  private _keyManager!: FocusKeyManager<NxTabLabelWrapperDirective>;
 
-  @ViewChild('tabsList') scrollableTabsList: ElementRef<HTMLElement>;
-  @ContentChildren('tabButton') tabButtons: QueryList<HTMLElement>;
+  @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
+  @ContentChildren('tabButton') tabButtons!: QueryList<HTMLElement>;
 
   private _selectedIndex: number = 0;
 
@@ -52,7 +52,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
   }
 
   get focusIndex(): number {
-    return this._keyManager ? this._keyManager.activeItemIndex : 0;
+    return this._keyManager ? this._keyManager.activeItemIndex as number : 0;
   }
   set focusIndex(value: number) {
     if (!this._isValidIndex(value) || this.focusIndex === value || !this._keyManager) { return; }
@@ -72,7 +72,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
   @Output() readonly selectFocusedIndex: EventEmitter<number> = new EventEmitter<number>();
   @Output() readonly indexFocused: EventEmitter<number> = new EventEmitter<number>();
 
-  @ContentChildren(NxTabLabelWrapperDirective) labels: QueryList<NxTabLabelWrapperDirective>;
+  @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 
   constructor(
     public _changeDetectorRef: ChangeDetectorRef,
@@ -113,7 +113,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         break;
       case ENTER:
       case SPACE:
-        this.selectFocusedIndex.emit(this._keyManager.activeItemIndex);
+        this.selectFocusedIndex.emit(this._keyManager.activeItemIndex as number);
         event.preventDefault();
         break;
       default:
@@ -121,9 +121,9 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     }
 
     if (this.autoselect) {
-      this.selectFocusedIndex.emit(this._keyManager.activeItemIndex);
+      this.selectFocusedIndex.emit(this._keyManager.activeItemIndex as number);
     } else if (event.keyCode !== ENTER && event.keyCode !== SPACE) {
-      this.indexFocused.emit(this._keyManager.activeItemIndex);
+      this.indexFocused.emit(this._keyManager.activeItemIndex as number);
     }
   }
 }

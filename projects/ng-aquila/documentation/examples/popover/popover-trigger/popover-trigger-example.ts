@@ -13,8 +13,8 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 export class PopoverTriggerExampleComponent implements AfterViewInit, OnDestroy {
   popoverManualOpenFlag = false;
 
-  @ViewChild('clickTriggerIcon') _clickTriggerIcon: ElementRef<HTMLElement>;
-  @ViewChild('manualTriggerIcon') _manualTriggerIcon: ElementRef<HTMLElement>;
+  @ViewChild('clickTriggerIcon') _clickTriggerIcon!: ElementRef<HTMLElement>;
+  @ViewChild('manualTriggerIcon') _manualTriggerIcon!: ElementRef<HTMLElement>;
 
   constructor(private _focusMonitor: FocusMonitor) {}
 
@@ -28,7 +28,7 @@ export class PopoverTriggerExampleComponent implements AfterViewInit, OnDestroy 
     this._focusMonitor.stopMonitoring(this._manualTriggerIcon);
   }
 
-  handleKeydown(event) {
+  handleKeydown(event: KeyboardEvent) {
     switch (event.keyCode) {
       case SPACE:
       case ENTER:

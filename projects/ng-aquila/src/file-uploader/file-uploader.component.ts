@@ -62,27 +62,27 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   OnDestroy, DoCheck, OnInit, AfterViewInit {
 
   /** @docs-private */
-  @ContentChild(NxFileUploaderButtonDirective, {static: false}) button: NxFileUploaderButtonDirective;
+  @ContentChild(NxFileUploaderButtonDirective, {static: false}) button!: NxFileUploaderButtonDirective;
 
   /** @docs-private */
-  @ContentChild(NxFileUploaderDropZoneComponent, {static: true}) _dropZone: NxFileUploaderDropZoneComponent;
+  @ContentChild(NxFileUploaderDropZoneComponent, {static: true}) _dropZone!: NxFileUploaderDropZoneComponent;
 
   /** @docs-private */
-  @ViewChild('nativeInputFile', {static: false}) nativeInputFile: ElementRef;
+  @ViewChild('nativeInputFile', {static: false}) nativeInputFile!: ElementRef;
 
   /** @docs-private */
-  @ContentChild(NxLabelComponent, {static: false}) _label: NxLabelComponent;
+  @ContentChild(NxLabelComponent, {static: false}) _label!: NxLabelComponent;
 
   /** @docs-private */
-  @ContentChildren(NxFileUploaderHintDirective) _hintChildren: QueryList<NxFileUploaderHintDirective>;
+  @ContentChildren(NxFileUploaderHintDirective) _hintChildren!: QueryList<NxFileUploaderHintDirective>;
 
   /** @docs-private */
-  @ContentChildren(NxErrorComponent) _errorList: QueryList<NxErrorComponent>;
+  @ContentChildren(NxErrorComponent) _errorList!: QueryList<NxErrorComponent>;
 
-  @ViewChildren('fileRowElement') _fileRowElements: QueryList<ElementRef>;
+  @ViewChildren('fileRowElement') _fileRowElements!: QueryList<ElementRef>;
 
   /** Preserves the current value of the _fileRowElements ViewChildren in case _fileRowElements changes. */
-  private _fileRowElementsPrevious: QueryList<ElementRef>;
+  private _fileRowElementsPrevious!: QueryList<ElementRef>;
 
   private _subscriptions: Subscription[] = [];
   private _filesSubscriptions: Subscription[] = [];
@@ -107,17 +107,17 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   @Output() filesSelected = new EventEmitter<FileItem[]>();
 
   private _id: string = `nx-file-uploader-${nextId++}`;
-  private _name: string;
-  private _value: FileItem[] | null;
+  private _name!: string;
+  private _value!: FileItem[] | null;
   private _maxFileSize: number = 0;
   private _required: boolean = false;
   private _disabled: boolean = false;
   private _multiple: boolean = false;
-  private _accept: string;
+  private _accept!: string;
   private _controlValidators: ValidatorFn | null = null;
-  private _uploader: NxFileUploader;
-  private _maxFileNumber: number = null;
-  _itemTemplate: TemplateRef<any>;
+  private _uploader!: NxFileUploader;
+  private _maxFileNumber: number | null = null;
+  _itemTemplate!: TemplateRef<any>;
   _templateContext;
 
   /** @docs-private */
@@ -129,7 +129,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
   /** @docs-private */
   validatorFnArray: any[] = [];
 
-  private _intlChanges: Subscription;
+  private _intlChanges!: Subscription;
 
   /** Sets the id of the file uploader. */
   @Input()
@@ -152,11 +152,11 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
   /** The value of the file upload. */
   @Input()
-  set value(value: FileItem[] | null) {
-    this.writeValue(value);
+  set value(value: FileItem[] | undefined) {
+    this.writeValue(value as FileItem[]);
   }
-  get value(): FileItem[] | null {
-    return this._value;
+  get value(): FileItem[] | undefined {
+    return this._value as FileItem[];
   }
 
   /** Name that is used for accessibility. */
@@ -230,7 +230,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._maxFileNumber = coerceNumberProperty(value);
   }
   get maxFileNumber(): number {
-    return this._maxFileNumber;
+    return this._maxFileNumber as number;
   }
 
   /** Sets the template for the file items. */
@@ -281,7 +281,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this._fileRowElements.changes.subscribe(rowElements => {
       this._fileRowElementsPrevious.forEach(row => this._focusMonitor.stopMonitoring(row));
       this._fileRowElementsPrevious = rowElements;
-      rowElements.forEach(row => this._focusMonitor.monitor(row));
+      rowElements.forEach( (row: ElementRef) => this._focusMonitor.monitor(row));
     });
   }
 
@@ -348,11 +348,11 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
       const validators = this._controlValidators
         ? [
           this._controlValidators,
-          NxFileUploaderValidators.maxFileNumber(this.value, this.maxFileNumber),
+          NxFileUploaderValidators.maxFileNumber(this.value as FileItem[], this.maxFileNumber),
           ...this.validatorFnArray
         ]
         : [
-          NxFileUploaderValidators.maxFileNumber(this.value, this.maxFileNumber),
+          NxFileUploaderValidators.maxFileNumber(this.value as FileItem[], this.maxFileNumber),
           ...this.validatorFnArray
         ];
 
@@ -426,7 +426,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     // we need to set max file size errors to false
     this.validatorFnArray = [];
     if (files === null) {
-      this.value = null;
+      this.value = undefined;
     } else {
       files.forEach((file: File) => {
         if (this.isValidOnSelection(file)) {
@@ -445,7 +445,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
   /** Removes a file from the value list of the file upload input. */
   removeFile(file: any) {
-    this.value = this.value.filter(item => file !== item);
+    this.value = this.value!.filter(item => file !== item);
 
     if (this._filesSubscriptions) {
       this._filesSubscriptions.forEach((fileSubscription: Subscription) => fileSubscription.unsubscribe());
@@ -474,7 +474,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     if (this.uploader) {
-      this.uploader.uploadFiles(this.value);
+      this.uploader.uploadFiles(this.value as FileItem[]);
     }
   }
 
@@ -536,15 +536,15 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     this.button.setDescribedByIds(ids);
   }
 
-  _handleKeydownListRow(event) {
+  _handleKeydownListRow(event: KeyboardEvent) {
     if (event.keyCode === DOWN_ARROW) {
-      const nextFileItemRow = event.target.nextSibling;
+      const nextFileItemRow = (event.target as HTMLElement).nextSibling as HTMLElement;
       if (nextFileItemRow && nextFileItemRow.classList && nextFileItemRow.classList.contains('nx-file-uploader--file-row')) {
         event.preventDefault();
         nextFileItemRow.focus();
       }
     } else if (event.keyCode === UP_ARROW) {
-      const previousFileItemRow = event.target.previousSibling;
+      const previousFileItemRow = (event.target as HTMLElement).previousSibling as HTMLElement;
       if (previousFileItemRow && previousFileItemRow.classList && previousFileItemRow.classList.contains('nx-file-uploader--file-row')) {
         event.preventDefault();
         previousFileItemRow.focus();
@@ -561,7 +561,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     const target = event.target as HTMLInputElement;
-    this._addFilesToQueue(Array.from(target.files));
+    this._addFilesToQueue(Array.from(target.files as FileList));
     this.stateChanges.next();
     this._changeDetectorRef.markForCheck();
     this.nativeInputFile.nativeElement.value = '';

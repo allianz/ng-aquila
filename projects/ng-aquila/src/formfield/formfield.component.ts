@@ -82,23 +82,23 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   /** Html id of the formfield label */
   readonly labelId: string = `nx-formfield-label-${nextUniqueId++}`;
 
-  @ContentChild(NxFormfieldControl) _control: NxFormfieldControl<any>;
+  @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
 
   /**
    * Sets the label which will act as a floating label.
    * In addition, the component uses input and label to properly support accessibility.
    */
-  @Input('nxLabel') label: string;
+  @Input('nxLabel') label!: string;
 
-  @ContentChild(NxFormfieldLabelDirective) _labelChild: NxFormfieldLabelDirective;
-  @ContentChildren(NxFormfieldHintDirective) _hintChildren: QueryList<NxFormfieldHintDirective>;
-  @ContentChildren(NxFormfieldNoteDirective) _noteChildren: QueryList<NxFormfieldNoteDirective>;
-  @ContentChildren(NxFormfieldErrorDirective) _errorChildren: QueryList<NxFormfieldErrorDirective>;
-  @ContentChildren(NxFormfieldSuffixDirective) _suffixChildren: QueryList<NxFormfieldSuffixDirective>;
-  @ContentChildren(NxFormfieldPrefixDirective) _prefixChildren: QueryList<NxFormfieldPrefixDirective>;
-  @ContentChildren(NxFormfieldAppendixDirective) _appendixChildren: QueryList<NxFormfieldAppendixDirective>;
+  @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
+  @ContentChildren(NxFormfieldHintDirective) _hintChildren!: QueryList<NxFormfieldHintDirective>;
+  @ContentChildren(NxFormfieldNoteDirective) _noteChildren!: QueryList<NxFormfieldNoteDirective>;
+  @ContentChildren(NxFormfieldErrorDirective) _errorChildren!: QueryList<NxFormfieldErrorDirective>;
+  @ContentChildren(NxFormfieldSuffixDirective) _suffixChildren!: QueryList<NxFormfieldSuffixDirective>;
+  @ContentChildren(NxFormfieldPrefixDirective) _prefixChildren!: QueryList<NxFormfieldPrefixDirective>;
+  @ContentChildren(NxFormfieldAppendixDirective) _appendixChildren!: QueryList<NxFormfieldAppendixDirective>;
 
-  @ViewChild('connectionContainer', { static: true }) _connectionContainerRef: ElementRef;
+  @ViewChild('connectionContainer', { static: true }) _connectionContainerRef!: ElementRef;
 
   /**
    * Whether the label should float once the input is focused or filled (auto, default)
@@ -114,7 +114,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
       this._changeDetectorRef.markForCheck();
     }
   }
-  private _floatLabel: FloatLabelType;
+  private _floatLabel!: FloatLabelType;
 
   /**
    * Sets the styling of the formfield.
@@ -136,7 +136,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     this._styles = value;
   }
 
-  private _appearance: AppearanceType;
+  private _appearance!: AppearanceType;
 
   /**
    * **Expert option**

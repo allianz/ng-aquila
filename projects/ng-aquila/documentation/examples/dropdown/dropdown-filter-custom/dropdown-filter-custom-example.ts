@@ -14,7 +14,7 @@ export class DropdownFilterCustomExampleComponent {
     'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
   ];
 
-  myFilter(search, itemValue) {
+  myFilter(search: any, itemValue: any) {
     return itemValue.match(new RegExp('^' + search, 'g')) !== null;
   }
 }

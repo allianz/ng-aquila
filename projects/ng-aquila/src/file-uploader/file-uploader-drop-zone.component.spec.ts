@@ -12,13 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Directive()
 abstract class FileUploaderTest {
-  @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
-  public form: FormGroup;
-  public queueList: null | FileItem[];
+  @ViewChild(NxFileUploaderComponent, { static: false })
+  fileUploaderInstance!: NxFileUploaderComponent;
+  public form!: FormGroup;
+  public queueList!: null | FileItem[];
   public required: boolean = false;
   public multiple: boolean = false;
   public disabled: boolean = false;
-  public maxFileSize: number;
+  public maxFileSize!: number;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -139,9 +140,9 @@ describe('NxFileUploaderComponent', () => {
 })
 class DropZoneFileUpload extends FileUploaderTest {
   public fb;
-  public required;
-  public queueList;
-  public disabled;
+  public required: any;
+  public queueList: any;
+  public disabled: any;
 
   constructor() {
     super();

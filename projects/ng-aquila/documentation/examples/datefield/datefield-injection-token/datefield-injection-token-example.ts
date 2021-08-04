@@ -16,5 +16,5 @@ const datepickerExpertOptions: DatepickerDefaultOptions = { toggleIconTabindex: 
   ]
 })
 export class DatefieldInjectionTokenExampleComponent {
-  date1: Moment = null;
+  date1: Moment | null = null;
 }

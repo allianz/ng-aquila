@@ -43,8 +43,8 @@ export function formatDateHuman(date: Date) {
   Every keyword not found will just transfered wiithmout modifying.
 */
 
-export function mapClassNames(value, DEFAULTS = [], MAPPING = {}) {
-  let sanitizedList = [ ...DEFAULTS ];
+export function mapClassNames(value: string, DEFAULTS: string[] = [], MAPPING = {}) {
+  let sanitizedList: string[] = [ ...DEFAULTS ];
 
   if (typeof value === 'string') {
     const mappedClasses = getClassNameList(value, MAPPING);
@@ -54,8 +54,8 @@ export function mapClassNames(value, DEFAULTS = [], MAPPING = {}) {
   return sanitizedList.join(' ').trim();
 }
 
-export function getClassNameList(value, MAPPING = {}) {
-  let mappedClasses = [];
+export function getClassNameList(value: string, MAPPING: { [k: string]: string} = {}) {
+  let mappedClasses: string[] = [];
 
   if (typeof value === 'string') {
     const classNames = value.split(' ');
@@ -90,7 +90,7 @@ export function removeClasses(renderer: Renderer2, element: ElementRef, classes:
 }
 
 // YYYY-MM-DD -> DATE
-export function parseDate(dateString) {
+export function parseDate(dateString: string | number | Date) {
   return new Date(dateString);
 }
 
@@ -108,13 +108,13 @@ export function getFontShorthand(style: CSSStyleDeclaration) {
   return `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`;
 }
 
-export function numberOfDecimals(number) {
+export function numberOfDecimals(number: string | number) {
   const parsed = Number(number);
   if (Number.isNaN(parsed) || Number.isInteger(parsed)) {
     return 0;
   }
   const match = (parsed.toString()).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
-  if (!match[1]) {
+  if (!match || !match[1]) {
       return 0;
   }
   return match[1].length;

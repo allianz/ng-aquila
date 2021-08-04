@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { SecurityContext } from '@angular/core';
 
 export class NxSvgIcon {
-  svgElement: SVGElement | null;
+  svgElement: SVGElement | undefined;
 
   constructor(
     protected _httpClient: HttpClient,
@@ -15,7 +15,7 @@ export class NxSvgIcon {
   ) {}
 
   /** Returns the content. */
-  getContent(): Observable<SVGElement> {
+  getContent(): Observable<SVGElement | undefined> {
     return of(this.svgElement);
   }
 
@@ -55,7 +55,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
   url: string;
 
   // used to not send multiple requests for the same url
-  private _pendingRequest: Observable<any>;
+  private _pendingRequest: Observable<any> | undefined;
 
   constructor(
     safeUrl: SafeResourceUrl,
@@ -65,7 +65,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
   ) {
     super(_httpClient, _sanitizer, _document);
 
-    this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl);
+    this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
 
     if (!this.url) {
       throw Error(`The URL provided to NxIconRegistry was not trusted as a resource URL ` +
@@ -113,7 +113,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     }
 
     const req = this._httpClient.get(url, {responseType: 'text'}).pipe(
-      finalize(() => { this._pendingRequest = null; }),
+      finalize(() => { this._pendingRequest = undefined; }),
       share(),
     );
 

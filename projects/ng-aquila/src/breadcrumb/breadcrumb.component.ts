@@ -55,7 +55,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy  {
 
   /**@docs-private */
   @ContentChildren(NxBreadcrumbItemComponent, {descendants: true})
-  breadcrumbItems: QueryList<NxBreadcrumbItemComponent>;
+  breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
 
   constructor(private _cdr: ChangeDetectorRef) { }
 

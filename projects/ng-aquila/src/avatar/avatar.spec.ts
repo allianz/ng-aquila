@@ -7,7 +7,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @Directive()
 abstract class AvatarTest {
-  @ViewChild(NxAvatarComponent) avatarInstance: NxAvatarComponent;
+  @ViewChild(NxAvatarComponent) avatarInstance!: NxAvatarComponent;
   size: NxAvatarSize = 'small';
 }
 
@@ -55,7 +55,7 @@ describe('NxAvatarComponent', () => {
 
     it('creates the avatar with text inside', () => {
       createTestComponent(AvatarWithText);
-      expect(avatarElement.textContent.trim()).toBe('SM');
+      expect(avatarElement.textContent?.trim()).toBe('SM');
     });
 
     it('creates the avatar with an icon inside', () => {

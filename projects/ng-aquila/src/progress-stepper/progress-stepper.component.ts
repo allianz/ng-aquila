@@ -52,7 +52,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
   /** The top level abstract control of the step. */
   stepControl: any;
 
-  private _interacted: boolean;
+  private _interacted!: boolean;
 
   /** Custom error state matcher that checks for validity of the step form. */
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -108,7 +108,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   // Do not initialize with an empty QueryList or the hasNext() function produces
   // wrong results on init
   /** Full list of steps inside the stepper, including inside nested steppers */
-  @ContentChildren(NxStepComponent, { descendants: true }) _steps: QueryList<NxStepComponent>;
+  @ContentChildren(NxStepComponent, { descendants: true }) _steps!: QueryList<NxStepComponent>;
 
   /** Steps that belong to the current stepper, excluding ones from nested steppers. */
   readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
@@ -116,7 +116,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   _stepHeader: QueryList<FocusableOption> = new QueryList();
 
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
-  @Input() currentStepLabel: string;
+  @Input() currentStepLabel!: string;
 
   constructor(
     private _cdRef: ChangeDetectorRef,

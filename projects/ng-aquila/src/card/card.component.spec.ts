@@ -9,7 +9,7 @@ import {NxCardModule} from './card.module';
 
 @Directive()
 abstract class CardTest {
-  @ViewChild(NxCardComponent) cardInstance: NxCardComponent;
+  @ViewChild(NxCardComponent) cardInstance!: NxCardComponent;
 }
 
 describe('NxCardComponent', () => {

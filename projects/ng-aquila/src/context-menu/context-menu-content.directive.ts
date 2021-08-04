@@ -19,8 +19,8 @@ import { Subject } from 'rxjs';
   selector: 'ng-template[nxContextMenuContent]'
 })
 export class NxContextMenuContentDirective implements OnDestroy {
-  private _portal: TemplatePortal<any>;
-  private _outlet: DomPortalOutlet;
+  private _portal!: TemplatePortal<any>;
+  private _outlet!: DomPortalOutlet;
 
   /** Emits when the menu content has been attached. */
   _attached = new Subject<void>();

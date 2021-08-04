@@ -21,7 +21,7 @@ const createKeyboardEvent = (keyCode: number) => {
 
 @Directive()
 abstract class SliderTest {
-  @ViewChild(NxSliderComponent) sliderInstance: NxSliderComponent;
+  @ViewChild(NxSliderComponent) sliderInstance!: NxSliderComponent;
   stepSize: number = 1;
   min: number = 0;
   max: number = 10;
@@ -118,10 +118,10 @@ describe('NxSliderComponent', () => {
 
     it('renders the Slider with a label', () => {
       createTestComponent(BasicSlider);
-      const labelElement: HTMLLabelElement = sliderNativeElement.querySelector('label');
-      const anchorElement: HTMLElement = sliderNativeElement.querySelector('.nx-slider__handle');
+      const labelElement: HTMLLabelElement = sliderNativeElement.querySelector('label') as HTMLLabelElement;
+      const anchorElement: HTMLElement = sliderNativeElement.querySelector('.nx-slider__handle') as HTMLElement;
       expect(labelElement).not.toBeNull();
-      expect(labelElement.textContent.trim()).toBe('testLabel');
+      expect(labelElement.textContent?.trim()).toBe('testLabel');
       expect(labelElement.id).toBe('testSlider-label');
       expect(anchorElement.id).toBe('testSlider-handle');
     });
@@ -538,8 +538,8 @@ describe('NxSliderComponent', () => {
       createTestComponent(BasicSliderOnPush);
       testInstance.sliderInstance.id = 'slider-with-id';
       fixture.detectChanges();
-      const labelElement: HTMLLabelElement = sliderNativeElement.querySelector('label');
-      const anchorElement: HTMLElement = sliderNativeElement.querySelector('.nx-slider__handle');
+      const labelElement: HTMLLabelElement = sliderNativeElement.querySelector('label') as HTMLLabelElement;
+      const anchorElement: HTMLElement = sliderNativeElement.querySelector('.nx-slider__handle') as HTMLElement;
       expect(labelElement.id).toBe('slider-with-id-label');
       expect(anchorElement.id).toBe('slider-with-id-handle');
     });

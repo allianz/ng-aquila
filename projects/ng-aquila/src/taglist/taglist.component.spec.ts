@@ -12,7 +12,7 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 
 @Directive()
 abstract class TaglistTest {
-  @ViewChild(NxTaglistComponent) taglistInstance: NxTaglistComponent;
+  @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;
   tags: (string | Object)[] = [ 'foo', 'bar' ];
 }
 
@@ -67,9 +67,9 @@ describe('NxTaglistComponent', () => {
     expect(tagElements.length).toBe(2);
 
     const item0 = tagElements.item(0);
-    expect(item0.textContent.trim()).toBe('foo');
+    expect(item0.textContent?.trim()).toBe('foo');
     const item1 = tagElements.item(1);
-    expect(item1.textContent.trim()).toBe('bar');
+    expect(item1.textContent?.trim()).toBe('bar');
   });
 
   it('deletes tags on delete button click', () => {
@@ -118,7 +118,7 @@ describe('NxTaglistComponent', () => {
     expect(taglistInstance.tags.length).toBe(2);
 
     const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
-    expect(closeIcon).toBe(null);
+    expect(closeIcon).toBeNull();
   });
 
   it('can add tags', () => {
@@ -161,9 +161,9 @@ describe('NxTaglistComponent', () => {
     expect(listItems.length).toBe(2);
 
     const item0 = listItems.item(0).querySelector('nx-tag');
-    expect(item0.textContent.trim()).toBe('foo');
+    expect(item0?.textContent?.trim()).toBe('foo');
     const item1 = listItems.item(1).querySelector('nx-tag');
-    expect(item1.textContent.trim()).toBe('bar');
+    expect(item1?.textContent?.trim()).toBe('bar');
   });
 
   it('can add objects as tags', () => {
@@ -181,9 +181,9 @@ describe('NxTaglistComponent', () => {
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
 
     const item0 = listItems.item(0).querySelector('nx-tag');
-    expect(item0.textContent.trim()).toBe('my foo');
+    expect(item0?.textContent?.trim()).toBe('my foo');
     const item1 = listItems.item(1).querySelector('nx-tag');
-    expect(item1.textContent.trim()).toBe('my bar');
+    expect(item1?.textContent?.trim()).toBe('my bar');
   });
 
   describe('programmatic change', () => {
@@ -193,7 +193,7 @@ describe('NxTaglistComponent', () => {
       fixture.detectChanges();
       tagElements = getTagElements();
       expect(tagElements.length).toBe(3);
-      expect(tagElements.item(0).textContent.trim()).toBe('a');
+      expect(tagElements.item(0).textContent?.trim()).toBe('a');
     });
 
     it('should update on allowTagDeletion change', () => {
@@ -215,11 +215,11 @@ describe('NxTaglistComponent', () => {
       testInstance.taglistInstance.tags = [{customLabelProp: 'a'}, {customLabelProp: 'b'}, {customLabelProp: 'c'}];
       fixture.detectChanges();
       tagElements = getTagElements();
-      expect(tagElements.item(0).textContent.trim()).toBe('');
+      expect(tagElements.item(0).textContent?.trim()).toBe('');
       testInstance.taglistInstance.labelProp = 'customLabelProp';
       fixture.detectChanges();
       tagElements = getTagElements();
-      expect(tagElements.item(0).textContent.trim()).toBe('a');
+      expect(tagElements.item(0).textContent?.trim()).toBe('a');
     });
 
     it('should update on labelledby change', () => {
@@ -234,7 +234,7 @@ describe('NxTaglistComponent', () => {
       testInstance.taglistInstance.valueFormatter = (value) => `=== ${value} ===`;
       fixture.detectChanges();
       tagElements = getTagElements();
-      expect(tagElements.item(0).textContent.trim()).toBe('=== foo ===');
+      expect(tagElements.item(0).textContent?.trim()).toBe('=== foo ===');
     });
   });
 
@@ -244,7 +244,7 @@ describe('NxTaglistComponent', () => {
       createTestComponent(BasicTaglist);
       spyOn(taglistInstance.tagsChange, 'emit');
       const tag = listNativeElement.querySelectorAll('li').item(0).querySelector('nx-tag');
-      dispatchKeyboardEvent(tag, 'keydown', BACKSPACE);
+      dispatchKeyboardEvent(tag as Node, 'keydown', BACKSPACE);
       expect(taglistInstance.tagsChange.emit).toHaveBeenCalledWith(['bar']);
     });
 
@@ -252,7 +252,7 @@ describe('NxTaglistComponent', () => {
       createTestComponent(BasicTaglist);
       spyOn(taglistInstance.tagsChange, 'emit');
       const tag = listNativeElement.querySelectorAll('li').item(0).querySelector('nx-tag');
-      dispatchKeyboardEvent(tag, 'keydown', DELETE);
+      dispatchKeyboardEvent(tag as Node, 'keydown', DELETE);
       expect(taglistInstance.tagsChange.emit).toHaveBeenCalledWith(['bar']);
     });
 
@@ -307,7 +307,7 @@ class TaglistObjects extends TaglistTest {
   `
 })
 class TaglistWithFormatter extends TaglistTest {
-  myFormatter: Function = (value) => `my ${value}`;
+  myFormatter: Function = (value: any) => `my ${value}`;
 }
 
 @Component({

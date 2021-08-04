@@ -29,7 +29,7 @@ export interface NxExpandable {
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
   _expanded: boolean = false;
 
-  @ViewChild('button') _buttonElement: ElementRef;
+  @ViewChild('button') _buttonElement!: ElementRef;
 
   /**
    * This is the expandable target that will be toggled when the user clicks the button.
@@ -49,7 +49,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
         });
     }
   }
-  _target: NxExpandable;
+  _target!: NxExpandable;
 
   @Input()
   set ariaLabel(value: string) {
@@ -58,7 +58,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
   }
   _ariaLabel: string = '';
 
-  private _subscription: Subscription;
+  private _subscription!: Subscription;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 

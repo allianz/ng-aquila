@@ -8,10 +8,10 @@ import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
 
 @Directive()
 abstract class SpinnerTest {
-  @ViewChild(NxSpinnerComponent) spinnerInstance: NxSpinnerComponent;
+  @ViewChild(NxSpinnerComponent) spinnerInstance!: NxSpinnerComponent;
 
   size: SpinnerSize = 'small';
-  negative: boolean;
+  negative!: boolean;
 }
 
 describe('nxSpinnerComponent', () => {

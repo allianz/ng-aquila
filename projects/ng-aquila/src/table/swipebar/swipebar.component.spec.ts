@@ -11,7 +11,7 @@ const screenWidth = document.body.offsetWidth;
 
 @Directive()
 abstract class SwipebarTest {
-  @ViewChild(NxSwipebarComponent) swipebarInstance: NxSwipebarComponent;
+  @ViewChild(NxSwipebarComponent) swipebarInstance!: NxSwipebarComponent;
   overflow = false;
 }
 
@@ -51,7 +51,7 @@ describe(NxSwipebarComponent.name, () => {
 
   describe('when there is no overflow', () => {
     it('is hidden', () => {
-      expect(swipebarElement.querySelector('div').style.display).toBe('none');
+      expect(swipebarElement.querySelector('div')!.style.display).toBe('none');
     });
   });
 
@@ -64,26 +64,26 @@ describe(NxSwipebarComponent.name, () => {
     });
 
     it('is visible', () => {
-      expect(swipebarElement.querySelector('div').style.display).toBe('block');
+      expect(swipebarElement.querySelector('div')!.style.display).toBe('block');
     });
 
     it('has an indicator with correct size', () => {
-      const indicator: HTMLElement = swipebarElement.querySelector('.indicator');
+      const indicator: HTMLElement = swipebarElement.querySelector('.indicator') as HTMLElement;
       expect(indicator.offsetWidth).toBe(Math.round(screenWidth / 2));
     });
 
     it('has an indicator at the correct position', () => {
-      const indicator: HTMLElement = swipebarElement.querySelector('.indicator');
+      const indicator: HTMLElement = swipebarElement.querySelector('.indicator') as HTMLElement;
       expect(indicator.style.transform).toBe('translateX(0px)');
     });
 
     it('has an indicator at the correct position after scrolling', async () => {
-      const scrollable: HTMLElement = swipebarElement.querySelector('.scrollable');
+      const scrollable: HTMLElement = swipebarElement.querySelector('.scrollable') as HTMLElement;
       scrollable.scrollTo(screenWidth / 2, 0);
       scrollable.dispatchEvent(new Event('scroll'));
       await nextFrame();
 
-      const indicator: HTMLElement = swipebarElement.querySelector('.indicator');
+      const indicator: HTMLElement = swipebarElement.querySelector('.indicator') as HTMLElement;
       expect(indicator.style.transform).toBe(`translateX(${ Math.round(screenWidth / 4) }px)`);
     });
   });

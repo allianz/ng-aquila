@@ -157,7 +157,7 @@ describe('NxTooltipDirective', () => {
         fixture.detectChanges();
         tick(500);
 
-        tooltipDirective._overlayRef.detach();
+        tooltipDirective._overlayRef?.detach();
         tick(200);
         fixture.detectChanges();
         expect(tooltipDirective._isTooltipVisible()).toBe(false);
@@ -192,7 +192,7 @@ describe('NxTooltipDirective', () => {
       const overlayRef = tooltipDirective._overlayRef;
 
       expect(!!overlayRef).toBeTruthy();
-      expect(overlayRef.overlayElement.classList).toContain(NX_TOOLTIP_PANEL_CLASS,
+      expect(overlayRef?.overlayElement.classList).toContain(NX_TOOLTIP_PANEL_CLASS,
           'Expected the overlay panel element to have the tooltip panel class set.');
     }));
 
@@ -259,16 +259,6 @@ describe('NxTooltipDirective', () => {
     it('should not show tooltip if message is not present or empty', () => {
       assertTooltipInstance(tooltipDirective, false);
 
-      tooltipDirective.message = undefined;
-      fixture.detectChanges();
-      tooltipDirective.show();
-      assertTooltipInstance(tooltipDirective, false);
-
-      tooltipDirective.message = null;
-      fixture.detectChanges();
-      tooltipDirective.show();
-      assertTooltipInstance(tooltipDirective, false);
-
       tooltipDirective.message = '';
       fixture.detectChanges();
       tooltipDirective.show();
@@ -303,6 +293,7 @@ describe('NxTooltipDirective', () => {
 
       assertTooltipInstance(tooltipDirective, true);
 
+      // @ts-ignore
       spyOn(tooltipDirective._overlayRef, 'updatePosition').and.callThrough();
 
       tooltipDirective.position = 'top';
@@ -310,7 +301,7 @@ describe('NxTooltipDirective', () => {
       tick(100);
 
       assertTooltipInstance(tooltipDirective, true);
-      expect(tooltipDirective._overlayRef.updatePosition).toHaveBeenCalled();
+      expect(tooltipDirective._overlayRef?.updatePosition).toHaveBeenCalled();
     }));
 
     it('should not throw when updating the position for a closed tooltip', fakeAsync(() => {
@@ -326,7 +317,7 @@ describe('NxTooltipDirective', () => {
       // At this point the animation should be able to complete itself and trigger the
       // _animationDone function, but for unknown reasons in the test infrastructure,
       // this does not occur. Manually call the hook so the animation subscriptions get invoked.
-      tooltipDirective._tooltipInstance._animationDone({
+      tooltipDirective._tooltipInstance?._animationDone({
         fromState: 'visible',
         toState: 'hidden',
         totalTime: 150,
@@ -345,7 +336,7 @@ describe('NxTooltipDirective', () => {
 
       tooltipDirective.show();
       tick(200); // Tick for the show delay (default is 200)
-      expect(tooltipDirective._tooltipInstance.visibility).toBe('visible');
+      expect(tooltipDirective._tooltipInstance?.visibility).toBe('visible');
 
       fixture.detectChanges();
       expect(overlayContainerElement.textContent).toContain(initialTooltipMessage);
@@ -376,10 +367,10 @@ describe('NxTooltipDirective', () => {
 
       const buttons = dynamicTooltipsComponent.getButtons();
       const firstButtonAria = buttons[0].getAttribute('aria-describedby');
-      expect(document.querySelector(`#${firstButtonAria}`).textContent).toBe('Tooltip One');
+      expect(document.querySelector(`#${firstButtonAria}`)?.textContent).toBe('Tooltip One');
 
       const secondButtonAria = buttons[1].getAttribute('aria-describedby');
-      expect(document.querySelector(`#${secondButtonAria}`).textContent).toBe('Tooltip Two');
+      expect(document.querySelector(`#${secondButtonAria}`)?.textContent).toBe('Tooltip Two');
     });
 
     it('should not try to dispose the tooltip when destroyed and done hiding', fakeAsync(() => {
@@ -400,7 +391,7 @@ describe('NxTooltipDirective', () => {
       // _animationDone function, but for unknown reasons in the test infrastructure,
       // this does not occur. Manually call this and verify that doing so does not
       // throw an error.
-      tooltipInstance._animationDone({
+      tooltipInstance?._animationDone({
         fromState: 'visible',
         toState: 'hidden',
         totalTime: 150,
@@ -414,7 +405,7 @@ describe('NxTooltipDirective', () => {
       tick(150);
 
       const spy = jasmine.createSpy('complete spy');
-      const subscription = tooltipDirective._tooltipInstance.afterHidden()
+      const subscription = tooltipDirective._tooltipInstance?.afterHidden()
           .subscribe(undefined, undefined, spy);
 
       tooltipDirective.hide(0);
@@ -423,7 +414,7 @@ describe('NxTooltipDirective', () => {
       tick(500);
 
       expect(spy).toHaveBeenCalled();
-      subscription.unsubscribe();
+      subscription?.unsubscribe();
     }));
 
     it('should consistently position before and after overlay origin in ltr and rtl dir', () => {
@@ -478,7 +469,7 @@ describe('NxTooltipDirective', () => {
           overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
 
       expect(tooltipWrapper).toBeTruthy('Expected tooltip to be shown.');
-      expect(tooltipWrapper.getAttribute('dir')).toBe('rtl', 'Expected tooltip to be in RTL mode.');
+      expect(tooltipWrapper?.getAttribute('dir')).toBe('rtl', 'Expected tooltip to be in RTL mode.');
     }));
 
     it('should keep the overlay direction in sync with the trigger direction', fakeAsync(() => {
@@ -491,7 +482,7 @@ describe('NxTooltipDirective', () => {
 
       let tooltipWrapper =
           overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-      expect(tooltipWrapper.getAttribute('dir')).toBe('rtl', 'Expected tooltip to be in RTL.');
+      expect(tooltipWrapper?.getAttribute('dir')).toBe('rtl', 'Expected tooltip to be in RTL.');
 
       tooltipDirective.hide(0);
       tick(200);
@@ -507,7 +498,7 @@ describe('NxTooltipDirective', () => {
 
       tooltipWrapper =
           overlayContainerElement.querySelector('.cdk-overlay-connected-position-bounding-box');
-      expect(tooltipWrapper.getAttribute('dir')).toBe('ltr', 'Expected tooltip to be in LTR.');
+      expect(tooltipWrapper?.getAttribute('dir')).toBe('ltr', 'Expected tooltip to be in LTR.');
     }));
 
     it('should be able to set the tooltip message as a number', fakeAsync(() => {
@@ -603,6 +594,7 @@ describe('NxTooltipDirective', () => {
 
       const overlayRef = tooltipDirective._overlayRef;
 
+      // @ts-ignore
       spyOn(overlayRef, 'detach').and.callThrough();
 
       tooltipDirective.show();
@@ -611,7 +603,7 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
       tick(500);
 
-      expect(overlayRef.detach).not.toHaveBeenCalled();
+      expect(overlayRef?.detach).not.toHaveBeenCalled();
     }));
 
   });
@@ -694,9 +686,11 @@ describe('NxTooltipDirective', () => {
       fixture.detectChanges();
       tick(200);
 
-      spyOn(tooltipDirective._tooltipInstance, 'hide').and.callFake(() => {
-        inZoneSpy(NgZone.isInAngularZone());
-      });
+      if (tooltipDirective._tooltipInstance !== null) {
+        spyOn(tooltipDirective._tooltipInstance, 'hide').and.callFake(() => {
+          inZoneSpy(NgZone.isInAngularZone());
+        });
+      }
 
       fixture.componentInstance.scrollDown();
       tick(100);
@@ -704,6 +698,7 @@ describe('NxTooltipDirective', () => {
 
       expect(inZoneSpy).toHaveBeenCalled();
       expect(inZoneSpy).toHaveBeenCalledWith(true);
+
     }));
 
   });
@@ -970,8 +965,8 @@ class BasicTooltipDemo {
   message: any = initialTooltipMessage;
   showButton: boolean = true;
   showTooltipClass = false;
-  @ViewChild(NxTooltipDirective) tooltip: NxTooltipDirective;
-  @ViewChild('button') button: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
+  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
 }
 
 @Component({
@@ -991,7 +986,7 @@ class ScrollableTooltipDemo {
  message: string = initialTooltipMessage;
  showButton: boolean = true;
 
- @ViewChild(CdkScrollable) scrollingContainer: CdkScrollable;
+ @ViewChild(CdkScrollable) scrollingContainer!: CdkScrollable;
 
  scrollDown() {
      const scrollingContainerEl = this.scrollingContainer.getElementRef().nativeElement;
@@ -1048,8 +1043,8 @@ class DynamicTooltipsDemo {
   `,
 })
 class TooltipOnTextFields {
-  @ViewChild('input') input: ElementRef<HTMLInputElement>;
-  @ViewChild('textarea') textarea: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
+  @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
 }
 
 @Component({
@@ -1058,8 +1053,8 @@ class TooltipOnTextFields {
 })
 class TooltipDemoWithoutPositionBinding {
   message: any = initialTooltipMessage;
-  @ViewChild(NxTooltipDirective) tooltip: NxTooltipDirective;
-  @ViewChild('button') button: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
+  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
 }
 
 @Component({
@@ -1074,8 +1069,8 @@ class TooltipDemoWithoutPositionBinding {
   </button>`
 })
 class TooltipDispose {
-  @ViewChild(NxTooltipDirective) tooltip: NxTooltipDirective;
-  @ViewChild('hover') buttonHover: ElementRef<HTMLButtonElement>;
+  @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
+  @ViewChild('hover') buttonHover!: ElementRef<HTMLButtonElement>;
 }
 
 @Component({
@@ -1100,9 +1095,9 @@ class TooltipDispose {
 class SelectableTooltip {
   message: any = initialTooltipMessage;
   selectable: boolean = true;
-  @ViewChild('button') button: ElementRef<HTMLButtonElement>;
-  @ViewChild('input') input: ElementRef<HTMLInputElement>;
-  @ViewChild('textarea') textarea: ElementRef<HTMLTextAreaElement>;
+  @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
+  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
+  @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
 }
 
 /** Asserts whether a tooltip directive has a tooltip instance. */

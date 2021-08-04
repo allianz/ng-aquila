@@ -68,7 +68,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
     return this._disabled;
   }
 
-  private _name: string;
+  private _name!: string;
 
   /** Sets the name used for accessibility. */
   @Input('nxName')
@@ -110,7 +110,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
   ngAfterContentInit() {
     const changedOrDestroyed = merge(this.toggleButtons.changes, this._destroyed);
 
-    merge(...this.toggleButtons.map((button: any) => button.onChecked))
+    merge(...this.toggleButtons.map<NxRadioToggleButtonChange[]>((button: any) => button.onChecked))
       .pipe(takeUntil(changedOrDestroyed))
       .subscribe((change: NxRadioToggleButtonChange) => {
         this._selection = change.value;
@@ -141,7 +141,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
         filter(toggles => toggles.length > 0),
         takeUntil(this._destroyed)
       ).subscribe((toggles) => {
-        toggles.forEach(toggle => {
+        toggles.forEach( (toggle: NxRadioToggleButtonComponent) => {
           toggle.resetClasses();
           if (toggle.value === this.selection) {
             // We need to defer the selection for the edge case that the button with the value of this.selection
@@ -167,13 +167,14 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
   writeValue(value: any): void {
     this._selection = value;
     const correspondingButton =
-      this.toggleButtons.find((button: NxRadioToggleButtonComponent) => button.value === this._selection);
+      this.toggleButtons.find((button: NxRadioToggleButtonBaseComponent) => button.value === this._selection);
     if (correspondingButton) {
       (correspondingButton as NxRadioToggleButtonComponent).select();
       return;
     }
     if (RESET_VALUES.indexOf(value) > -1) {
-      this.toggleButtons.map((button: NxRadioToggleButtonComponent) => button.deselect());
+      this.toggleButtons.map((button: NxRadioToggleButtonBaseComponent) =>
+        (button as NxRadioToggleButtonComponent).deselect());
     }
   }
 
@@ -200,7 +201,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
   }
 
   /** @docs-private */
-  change(value) {
+  change(value: any) {
     this.onChangeCallback(value);
     if (this.onTouchedCallback) {
       this.onTouchedCallback();

@@ -10,7 +10,7 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
 
 // tslint:disable-next-line:component-class-suffix
 export class ComponentApi {
-  @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents: NxvTableOfContentsComponent;
+  @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;
   constructor(
     public componentService: ComponentService
   ) {}

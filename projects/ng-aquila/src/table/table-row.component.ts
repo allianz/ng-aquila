@@ -56,7 +56,7 @@ export class NxTableRowComponent {
 
   constructor(protected _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef) {}
 
-  _onSelect($event) {
+  _onSelect($event: KeyboardEvent) {
     if (!this._selectable || this.isActionEvent($event)) {
       return;
     }
@@ -72,8 +72,8 @@ export class NxTableRowComponent {
    * Checks if the event would trigger an action.
    * Return `true` if a button, link, input or label are clicked.
    */
-  private isActionEvent($event) {
-    let parent: HTMLElement = $event.target;
+  private isActionEvent($event: Event) {
+    let parent: HTMLElement = $event.target as HTMLElement;
 
     while (parent && parent !== this._elementRef.nativeElement) {
       if (['A', 'INPUT', 'BUTTON'].indexOf(parent.tagName) >= 0) {
@@ -82,7 +82,7 @@ export class NxTableRowComponent {
         return true;
       }
 
-      parent = parent.parentElement;
+      parent = parent.parentElement as HTMLElement;
     }
 
     return false;

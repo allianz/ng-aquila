@@ -87,15 +87,15 @@ export async function addLibrary(options: any, tree: Tree) {
  *
  */
 export class SchematicTestSetup {
-  runner: SchematicTestRunner;
-  tempFileSystemHost: TempScopedNodeJsSyncHost;
-  tmpDirPath: string;
-  previousWorkingDir: string;
-  warnOutput: string[];
-  infoOutput: string[];
-  errorOutput: string[];
-  hostTree: HostTree;
-  appTree: UnitTestTree;
+  runner!: SchematicTestRunner;
+  tempFileSystemHost!: TempScopedNodeJsSyncHost;
+  tmpDirPath!: string;
+  previousWorkingDir!: string;
+  warnOutput!: string[];
+  infoOutput!: string[];
+  errorOutput!: string[];
+  hostTree!: HostTree;
+  appTree!: UnitTestTree;
   // logger uses an internal rxjs version so if import Subscription
   // from rxjs here TS reports an error
   logSubscription: any;

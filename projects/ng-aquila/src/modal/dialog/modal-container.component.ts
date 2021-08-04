@@ -58,12 +58,12 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   private _document: Document;
 
   /** The portal outlet inside of this container into which the modal content will be loaded. */
-  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
-  @ViewChild('closeButton') _closeButton: ElementRef;
+  @ViewChild('closeButton') _closeButton!: ElementRef;
 
   /** The class that traps and manages focus within the modal. */
-  private _focusTrap: FocusTrap;
+  private _focusTrap!: FocusTrap;
 
   /** Element that was focused before the modal was opened. Save this to restore upon close. */
   private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;
@@ -81,7 +81,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   _ariaLabelledBy: string | null;
 
   /** ID for the container DOM element. */
-  _id: string;
+  _id!: string;
 
   constructor(
     private _elementRef: ElementRef,

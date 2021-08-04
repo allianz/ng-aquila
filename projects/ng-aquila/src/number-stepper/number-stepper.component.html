@@ -12,7 +12,7 @@
     [nxButton]="_buttonType"
     class="nx-stepper__down nx-stepper__control"
     (click)="decrementOnClick()"
-    [disabled]="disabled || value <= min"
+    [disabled]="disabled || $any(value) <= min"
     type="button">
     <nx-icon name="minus" size="s"></nx-icon>
   </button>
@@ -44,7 +44,7 @@
     [nxButton]="_buttonType"
     class="nx-stepper__up nx-stepper__control"
     (click)="incrementOnClick()"
-    [disabled]="disabled || value >= max"
+    [disabled]="disabled || $any(value) >= max"
     type="button">
     <nx-icon name="plus" size="s"></nx-icon>
   </button>

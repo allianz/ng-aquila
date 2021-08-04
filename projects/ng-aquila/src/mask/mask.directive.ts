@@ -51,7 +51,7 @@ interface CursorInfo {
 })
 export class NxMaskDirective implements ControlValueAccessor, Validator {
 
-  private _mask: string;
+  private _mask!: string;
   private _separators = ['/', '(', ')', '.', ':', '-', ' ', '+', ','];
   private _dropSpecialCharacters: boolean = false;
   private _validateMask: boolean = true;
@@ -66,13 +66,13 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
    * _cursor.selectionStart and selectionEnd is used for saving the current cursor position,
    * and a new cursor position is then calculated with this data.
    */
-  private _cursor: CursorInfo;
+  private _cursor!: CursorInfo | null;
 
   /** helper variable for saving the current value of the input element to compare it then with a new value. */
-  private _inputValue: string;
+  private _inputValue!: string;
 
   /** helper variable for saving the masked string of a pasted value and then applying it in _onInputChange(). */
-  private _pastedData: string;
+  private _pastedData!: string | null;
 
   /**
    * Emits the unmasked value before the value changes.
@@ -128,7 +128,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
       }
   }
   get deactivateMask(): boolean {
-    return this._deactivateMask;
+    return this._deactivateMask as boolean;
   }
 
   /** Sets the mask. */
@@ -172,7 +172,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     this._callOnChangeCallback();
   }
   get convertTo(): MaskConversionTypes {
-    return this._convertTo;
+    return this._convertTo as MaskConversionTypes;
   }
 
   /**
@@ -248,11 +248,11 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     if (keyCode === BACKSPACE || keyCode === DELETE) {
       // if backspace pressed, cursor has to move one character to start
       const backspaceShift = keyCode === BACKSPACE ? 1 : 0;
-      const lastCharacter = currentValue.substring(input.selectionStart - backspaceShift, input.selectionEnd - backspaceShift + 1);
+      const lastCharacter = currentValue.substring(input.selectionStart! - backspaceShift, input.selectionEnd! - backspaceShift + 1);
       const selectionAtLastCharacter = (input.selectionStart === currentValue.length - 1 + backspaceShift);
 
       if (input.selectionStart !== input.selectionEnd) {
-        let newPosition = input.selectionStart;
+        let newPosition: number = input.selectionStart as number;
         // jump behind separators, but do not shift after the next character (=> don't use _calculateCursorShift())
         while (this.isSeparator(this.mask[newPosition])) {
           newPosition++;
@@ -266,15 +266,15 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         event.preventDefault();
       } else if (this.isSeparator(lastCharacter)) {
         // do not delete a separator, only set cursor position
-        input.setSelectionRange(input.selectionStart - backspaceShift, input.selectionEnd - backspaceShift);
+        input.setSelectionRange(input.selectionStart! - backspaceShift, input.selectionEnd! - backspaceShift);
         event.preventDefault();
       } else {
         // for any other character: decrease cursor position by one (backspaceShift).
         // the input is modified and will be validated in _onInputChange().
-        this._cursor = { position: input.selectionStart - backspaceShift };
+        this._cursor = { position: input.selectionStart! - backspaceShift };
       }
     } else {
-      this._cursor = { selectionStart: input.selectionStart, selectionEnd: input.selectionEnd };
+      this._cursor = { selectionStart: input.selectionStart as number, selectionEnd: input.selectionEnd as number };
     }
   }
 
@@ -335,7 +335,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     // if _pastedData was set in _onPaste(), use this value
     if (this._pastedData) {
       this.updateValue(this._pastedData);
-      input.setSelectionRange(this._cursor.position, this._cursor.position);
+      input.setSelectionRange(this._cursor!.position as number, this._cursor!.position as number);
       this._pastedData = null;
       this._cursor = null;
       this._callOnChangeCallback();
@@ -399,13 +399,13 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     // saving these three values as if something is changed in the _beforePasteHook()
     // which causes the input value to be updated, this values will get lost.
-    const selectionStart = input.selectionStart;
+    const selectionStart: number = input.selectionStart as number;
     const selectionEnd = input.selectionEnd;
     const oldValue = input.value;
 
     this._beforePasteHook(event);
 
-    const maskedString = this.getMaskedString(pastedData, selectionStart);
+    const maskedString = this.getMaskedString(pastedData, selectionStart as number);
 
     // if mask is already filled up (and no characters are selected with the cursor), do nothing
     if (input.value.length === this._mask.length
@@ -426,22 +426,23 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     );
 
     let newValue: string = this.getMaskedString(
-      oldValue.substring(0, selectionStart)
+      oldValue.substring(0, selectionStart as number)
       + pastedUnmaskedValue
-      + oldValue.substring(selectionEnd, oldValue.length)
+      + oldValue.substring(selectionEnd as number, oldValue.length)
     );
 
     if (newValue.length >= this._mask.length) {
-      let newPosition = selectionStart;
+      // eslint-disable-next-line
+      let newPosition = selectionStart as number;
 
       let i = 1;
       do {
         newValue = this.getMaskedString(
-          oldValue.substring(0, selectionStart)
+          oldValue.substring(0, selectionStart as number)
           + pastedUnmaskedValue.substring(0, i)
-          + oldValue.substring(selectionEnd, oldValue.length)
+          + oldValue.substring(selectionEnd as number, oldValue.length)
         );
-        newPosition += this._calculateCursorShift(newPosition);
+        newPosition += this._calculateCursorShift(newPosition as number);
 
         i++;
       } while (newValue.length < this._mask.length);
@@ -449,14 +450,14 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
       // save value for using it in _onInputChange()
       this._pastedData = newValue;
       this._cursor = {
-        position: newPosition
+        position: newPosition as number
       };
       return;
     }
 
     // if pasting is fine: save the cursor position for using them in _onInputChange()
     this._cursor = {
-      position: selectionStart + maskedString.length
+      position: (selectionStart  as number) + maskedString.length
     };
   }
 
@@ -558,7 +559,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
   static ngAcceptInputType_dropSpecialCharacters: BooleanInput;
   static ngAcceptInputType_validateMask: BooleanInput;
-  static ngAcceptInputType_convertTo: MaskConversionTypes;
+  static ngAcceptInputType_convertTo: MaskConversionTypes | null | undefined;
   static ngAcceptInputType_deactivateMask: BooleanInput;
 
 }

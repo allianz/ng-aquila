@@ -12,7 +12,7 @@ import { NxMultiStepperComponent } from '@aposin/ng-aquila/progress-stepper';
 export class ProgressStepperMultiGroupsExampleComponent {
 
   @ViewChild('stepper')
-  stepper: NxMultiStepperComponent;
+  stepper!: NxMultiStepperComponent;
 
   groups = [
     {

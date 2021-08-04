@@ -73,9 +73,9 @@ export class NxFileUploaderDropZoneComponent {
     event.preventDefault();
 
     if (this.disabled) {
-      event.dataTransfer.dropEffect = 'none';
+      event.dataTransfer!.dropEffect = 'none';
     } else {
-      event.dataTransfer.dropEffect = 'copy';
+      event.dataTransfer!.dropEffect = 'copy';
       this._active = true;
       this._changeDetectorRef.markForCheck();
     }
@@ -85,23 +85,23 @@ export class NxFileUploaderDropZoneComponent {
   @HostListener('dragleave', ['$event'])
   onDragLeave(event: DragEvent) {
     this._active = false;
-    event.dataTransfer.dropEffect = 'none';
+    event.dataTransfer!.dropEffect = 'none';
     this._changeDetectorRef.markForCheck();
   }
 
   /** @docs-private */
   @HostListener('dragend', ['$event'])
   onDragEnd(event: DragEvent) {
-    event.dataTransfer.dropEffect = 'none';
+    event.dataTransfer!.dropEffect = 'none';
   }
 
   /** @docs-private */
   @HostListener('dragstart', ['$event'])
   onDragStart(event: DragEvent) {
     if (this.disabled) {
-      event.dataTransfer.dropEffect = 'none';
+      event.dataTransfer!.dropEffect = 'none';
     } else {
-      event.dataTransfer.dropEffect = 'copy';
+      event.dataTransfer!.dropEffect = 'copy';
     }
   }
 

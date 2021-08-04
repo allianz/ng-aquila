@@ -52,20 +52,20 @@ export type SIZES = 'regular' | 'short' | 'long';
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
   private subscription: Subscription = Subscription.EMPTY;
   private subscriptionValues: Subscription = Subscription.EMPTY;
-  private measureCanvas: HTMLCanvasElement;
+  private measureCanvas!: HTMLCanvasElement;
 
   /** @docs-private */
   inputChanges = new Subject<any>();
 
   _hasErrors: boolean = false;
-  private _overlayRef: OverlayRef;
-  private _embeddedViewRef: EmbeddedViewRef<any>;
-  private _overlayState: OverlayConfig;
+  private _overlayRef!: OverlayRef;
+  private _embeddedViewRef!: EmbeddedViewRef<any>;
+  private _overlayState!: OverlayConfig;
 
-  @ContentChild(NxFormfieldControl) _control: NxFormfieldControl<any>;
-  @ContentChildren(NxFormfieldErrorDirective) _errorChildren: QueryList<NxFormfieldErrorDirective>;
-  @ViewChild('popover', { static: true }) _popover: NxPopoverComponent;
-  @ContentChild(NxDropdownComponent) _dropdown: NxDropdownComponent;
+  @ContentChild(NxFormfieldControl) _control!: NxFormfieldControl<any>;
+  @ContentChildren(NxFormfieldErrorDirective) _errorChildren!: QueryList<NxFormfieldErrorDirective>;
+  @ViewChild('popover', { static: true }) _popover!: NxPopoverComponent;
+  @ContentChild(NxDropdownComponent) _dropdown!: NxDropdownComponent;
 
   /** @docs-private */
   @HostBinding('style.width.px')
@@ -80,7 +80,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
    * In order to be accessible, you have to provide a label with this property.
    * It will be attached to the given input through `aria-label`.
    */
-  @Input('nxLabel') label: string;
+  @Input('nxLabel') label: string = '';
 
   constructor(
     /** @docs-private */
@@ -106,7 +106,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     // if we have a ngcontrol available stick to its valueChanges subject
     if (this._control.ngControl) {
-      this.subscriptionValues = this._control.ngControl.valueChanges.subscribe(value => {
+      this.subscriptionValues = this._control.ngControl.valueChanges!.subscribe(value => {
         this.updateCurrentTextWidth();
         this.inputChanges.next();
       });
@@ -118,7 +118,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
       });
     }
 
-    this._control.setAriaLabel(this.label);
+    this._control.setAriaLabel!(this.label);
   }
 
   ngOnDestroy() {
@@ -145,9 +145,9 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     const ctx = this.measureCanvas.getContext('2d');
     const inputRef = this._control.elementRef;
     const styles = window.getComputedStyle(inputRef.nativeElement);
-    ctx.font = getFontShorthand(styles);
+    ctx!.font = getFontShorthand(styles);
 
-    const metrics = ctx.measureText(this._control.value);
+    const metrics = ctx!.measureText(this._control.value);
     // add 1px (cursor width) to prevent jumping of the text on blur.
     const newWidth = metrics.width + parseInt(styles.paddingRight, 10) + parseInt(styles.paddingLeft, 10) + 1;
 
@@ -163,14 +163,14 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     this.currentTextWidth = Math.min(this.currentTextWidth, parentMeasurement.width);
 
     if (this._overlayRef.hasAttached()) {
-      this._overlayState.positionStrategy.apply();
+      this._overlayState.positionStrategy!.apply();
     }
   }
 
   /** @docs-private */
   repositionError() {
     if (this._overlayRef.hasAttached()) {
-      this._overlayState.positionStrategy.apply();
+      this._overlayState.positionStrategy!.apply();
     }
   }
 
@@ -252,7 +252,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
   private positionArrow(pair: ConnectionPositionPair) {
     const parentElementPositionX = this.elementRef.nativeElement.getBoundingClientRect().left;
     const parentElementWidth = this.elementRef.nativeElement.getBoundingClientRect().width / 2;
-    const parentElementLeftOffset = this._overlayRef.overlayElement.parentElement.offsetLeft;
+    const parentElementLeftOffset = this._overlayRef.overlayElement.parentElement!.offsetLeft;
     const overlayElementLeftOffset = this._overlayRef.overlayElement.offsetLeft;
 
     // calculation for x position of the parent element. In this case, overlay left offset is the one thing to consider.

@@ -58,7 +58,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     this._selectedMonth = this._getMonthInCurrentYear(this._selected);
   }
-  private _selected: D | null;
+  private _selected!: D | null;
 
   /** The minimum selectable date. */
   @Input()
@@ -66,7 +66,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
   set minDate(value: D | null) {
     this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _minDate: D | null;
+  private _minDate!: D | null;
 
   /** The maximum selectable date. */
   @Input()
@@ -74,10 +74,10 @@ export class NxYearViewComponent<D> implements AfterContentInit {
   set maxDate(value: D | null) {
     this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _maxDate: D | null;
+  private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter: (date: D) => boolean;
+  @Input() dateFilter!: (date: D) => boolean;
 
   /** Emits when a new month is selected. */
   @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
@@ -89,22 +89,22 @@ export class NxYearViewComponent<D> implements AfterContentInit {
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
   /** The body of calendar table */
-  @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody;
+  @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody: any;
 
   /** Grid of calendar cells representing the months of the year. */
-  _months: NxCalendarCell[][];
+  _months!: NxCalendarCell[][];
 
   /** The label for this year (e.g. "2017"). */
-  _yearLabel: string;
+  _yearLabel!: string;
 
   /** The month in this year that today falls on. Null if today is in a different year. */
-  _todayMonth: number | null;
+  _todayMonth!: number | null;
 
   /**
    * The month in this year that the selected Date falls on.
    * Null if the selected Date is in a different year.
    */
-  _selectedMonth: number | null;
+  _selectedMonth!: number | null;
 
   _numCols: number = 3;
 

@@ -23,11 +23,11 @@ interface Animal {
 })
 export class ProgressStepperMultiVerticalExampleComponent {
   @ViewChild(NxProgressStepperDirective, { static: true })
-  stepper: NxMultiStepperComponent;
+  stepper!: NxMultiStepperComponent;
 
   direction: NxMultiStepperDirection = 'vertical';
 
-  value: Animal;
+  value: Animal | undefined;
 
   animalTypes = ['cat', 'dog'];
 
@@ -75,8 +75,8 @@ export class ProgressStepperMultiVerticalExampleComponent {
 
   constructor(private _formBuilder: FormBuilder) {
     this.animalTypeForm.form
-      .get('animalType')
-      .valueChanges.subscribe(value => {
+      .get('animalType')?.valueChanges
+      .subscribe(value => {
         if (value === 'dog') {
           this.breedForm.form.removeControl('catBreed');
           this.breedForm.form.addControl(

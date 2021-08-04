@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class VideoTest {
-  @ViewChild(NxVideoComponent) videoInstance: NxVideoComponent;
+  @ViewChild(NxVideoComponent) videoInstance!: NxVideoComponent;
 
   videoId = 'fooBAR';
   altText = '';

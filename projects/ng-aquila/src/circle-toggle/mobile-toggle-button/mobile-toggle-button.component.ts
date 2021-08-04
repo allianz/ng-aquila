@@ -26,19 +26,19 @@ export class NxMobileToggleButtonComponent {
   disabled: boolean = false;
 
   @Input()
-  hint: string;
+  hint: string = '';
 
   @Input()
-  label: string;
+  label: string = '';
 
   @Input()
-  circleText: string;
+  circleText: string = '';
 
   /** @docs-private */
-  isFirst: boolean;
+  isFirst: boolean = false;
 
   /** @docs-private */
-  isLast: boolean;
+  isLast: boolean = false;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 

@@ -16,7 +16,7 @@ export const enum NxModalState { OPEN, CLOSING, CLOSED }
  */
 export class NxModalRef<T, R = any> {
   /** The instance of component opened into the modal. */
-  componentInstance: T;
+  componentInstance!: T;
 
   /** Whether the user is allowed to close the modal. */
   disableClose: boolean | undefined = this._containerInstance._config.disableClose;

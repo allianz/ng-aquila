@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./formfield-appearance-example.css']
 })
 export class FormfieldAppearanceExampleComponent {
-  currentDate: Date = null;
+  currentDate: Date | null = null;
 }

@@ -10,5 +10,5 @@ import { Component } from '@angular/core';
 })
 export class TabsStylingExampleComponent {
 
-  currentIndex: number;
+  currentIndex: number = 0;
 }

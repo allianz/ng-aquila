@@ -14,14 +14,14 @@ import { ManifestService } from '../../../service/manifest.service';
 })
 
 export class NxvGuideViewComponent {
-  public guide: GuideDescriptor;
+  public guide!: GuideDescriptor;
   public guides: string[] = [];
 
   constructor(
     _route: ActivatedRoute,
     private manifestService: ManifestService,
     private router: Router,
-    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks
+    @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any
   ) {
 
     // Listen for changes in the route or our manifest

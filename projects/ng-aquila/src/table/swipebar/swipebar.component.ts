@@ -17,13 +17,13 @@ import {
 })
 export class NxSwipebarComponent implements AfterViewInit {
     @ViewChild('element')
-  private _element: ElementRef;
+  private _element!: ElementRef;
 
   @ViewChild('scrollable')
-  private _scrollable: ElementRef;
+  private _scrollable!: ElementRef;
 
   @ViewChild('indicator')
-  private _indicator: ElementRef;
+  private _indicator!: ElementRef;
 
   private _barLength = 0;
 
@@ -73,11 +73,12 @@ export class NxSwipebarComponent implements AfterViewInit {
     this._updateIndicator();
   }
 
-  private _onScroll({ target }) {
+  private _onScroll($event: Event) {
     if (this._mousedown) {
       return;
     }
 
+    const target: HTMLElement = $event.target as HTMLElement;
     const { scrollWidth, clientWidth } = this._scrollable.nativeElement;
     this._position = Math.floor(
       (target.scrollLeft / (scrollWidth - clientWidth)) *
@@ -86,7 +87,7 @@ export class NxSwipebarComponent implements AfterViewInit {
     this._updateIndicator();
   }
 
-  private _onMousedown($event) {
+  private _onMousedown($event: MouseEvent) {
     this._startX = $event.clientX;
     this._mousedown = true;
 
@@ -94,7 +95,7 @@ export class NxSwipebarComponent implements AfterViewInit {
     document.addEventListener('mouseup', this._onMouseup);
   }
 
-  private _onMousemove($event) {
+  private _onMousemove($event: MouseEvent) {
     const { offsetWidth } = this._scrollable.nativeElement;
 
     this._position = Math.max(

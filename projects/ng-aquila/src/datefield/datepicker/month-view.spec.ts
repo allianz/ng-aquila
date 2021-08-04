@@ -79,7 +79,7 @@ describe('NxMonthView', () => {
 
     it('shows selected date if in same month', () => {
       const selectedEl = monthViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl.innerHTML.trim()).toBe('10');
+      expect(selectedEl!.innerHTML.trim()).toBe('10');
     });
 
     it('does not show selected date if in different month', () => {
@@ -96,7 +96,7 @@ describe('NxMonthView', () => {
       fixture.detectChanges();
 
       const selectedEl = monthViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl.innerHTML.trim()).toBe('31');
+      expect(selectedEl!.innerHTML.trim()).toBe('31');
     });
 
     it('fires previous selected change on previous cell clicked', () => {
@@ -245,7 +245,7 @@ describe('NxMonthView', () => {
           adapter = dateAdapter;
         }));
 
-        const activeDateEquals = (year, month, day, activeDate = null) => {
+        const activeDateEquals = (year: number, month: number, day: number, activeDate?: Date) => {
           expect(adapter.sameDate(activeDate ? activeDate : calendarInstance.activeDate, new Date(year, month, day))).toBeTruthy();
         };
 
@@ -413,7 +413,7 @@ describe('NxMonthView', () => {
   template: `<nx-month-view [(activeDate)]="activeDate" [(selected)]="selected"></nx-month-view>`,
 })
 class StandardMonthView {
-  @ViewChild(NxMonthViewComponent) monthView: NxMonthViewComponent<Date>;
+  @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<Date>;
   activeDate = new Date(2017, JAN, 5);
   selected = new Date(2017, JAN, 10);
 }

@@ -27,7 +27,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   private _destroyed = false;
 
   /** The portal outlet inside of this container into which the message toastcontent will be loaded. */
-  @ViewChild(CdkPortalOutlet, {static: true}) _portalOutlet: CdkPortalOutlet;
+  @ViewChild(CdkPortalOutlet, {static: true}) _portalOutlet!: CdkPortalOutlet;
 
   /** Subject for notifying that the message toasthas exited from view. */
   readonly _onExit: Subject<any> = new Subject();
@@ -39,7 +39,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   _animationState = 'void';
 
   /** ARIA role for the message toastcontainer. */
-  _role: 'alert' | 'status' | null;
+  _role: 'alert' | 'status' | null = null;
 
   _context: NxMessageToastContext;
 
@@ -53,7 +53,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
   ) {
     super();
 
-    this._context = this.config.context;
+    this._context = this.config.context as NxMessageToastContext;
     this._setAriaLabels();
   }
 

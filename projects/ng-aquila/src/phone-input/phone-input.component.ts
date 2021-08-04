@@ -51,7 +51,7 @@ export class NxPhoneInputComponent implements
     OnInit,
     AfterViewInit {
 
-  @ViewChild(NxDropdownComponent, { static: true }) dropdown: NxDropdownComponent;
+  @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;
 
   value: any;
   _inputValue: string = '';
@@ -63,7 +63,7 @@ export class NxPhoneInputComponent implements
   focused: boolean = false;
 
   private _uid = 'phone-input-' + next++;
-  private _id: string;
+  private _id!: string;
 
   /** Sets the id of the phone input component. */
   @Input()
@@ -76,7 +76,7 @@ export class NxPhoneInputComponent implements
   }
 
   /** Whether the component should be required. */
-  @Input() required: boolean;
+  @Input() required!: boolean;
   private _disabled: boolean = false;
 
   /** Whether the component should be disabled. */
@@ -119,7 +119,7 @@ export class NxPhoneInputComponent implements
     this._countryCode = value;
   }
 
-  private _areaCodeLabel: string;
+  private _areaCodeLabel!: string;
 
   /** Set the text at the top of the dropdown. The default value is 'Area Code'. */
   @Input()
@@ -130,7 +130,7 @@ export class NxPhoneInputComponent implements
     this._areaCodeLabel = value;
   }
 
-  private _countryNames: LocalizedCountryNames<any>;
+  private _countryNames!: LocalizedCountryNames<any>;
 
   /** Set the translations of the countries. */
   @Input()
@@ -142,7 +142,7 @@ export class NxPhoneInputComponent implements
     this._sortCountries();
   }
 
-  private _placeholder;
+  private _placeholder: string = '';
 
   /** The placeholder to be shown in the input field. */
   @Input()
@@ -178,8 +178,8 @@ export class NxPhoneInputComponent implements
   errorState: boolean = false;
   readonly controlType?: string = 'nx-phone-input';
 
-  _sortedCountries: NxDropdownOption[];
-  _countryCallingCode;
+  _sortedCountries!: NxDropdownOption[];
+  _countryCallingCode: string = '';
 
   private _subscriptions = new Subscription();
 
@@ -299,7 +299,7 @@ export class NxPhoneInputComponent implements
     this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
   }
 
-  _onInput(event) {
+  _onInput(event: Event) {
     this.updateModel();
   }
 
@@ -327,7 +327,7 @@ export class NxPhoneInputComponent implements
       this._trimInputValue(this._removeLeadingZero(this._inputValue));
   }
 
-  _getCallingCode(country) {
+  _getCallingCode(country: string) {
     return getDialCodeByCountryCode(country);
   }
 
@@ -342,7 +342,7 @@ export class NxPhoneInputComponent implements
     };
   }
 
-  _getCountryName(countryCode) {
+  _getCountryName(countryCode: string) {
     const name = this.countryNames[countryCode];
     return Array.isArray(name) ? name[0] : name;
   }

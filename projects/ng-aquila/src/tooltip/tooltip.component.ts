@@ -32,13 +32,13 @@ type TooltipVisibility = 'initial' | 'visible' | 'hidden';
 })
 export class NxTooltipComponent implements OnDestroy {
   /** The timeout ID of any current timer set to show the tooltip */
-  private _showTimeoutId: number = null;
+  private _showTimeoutId: number | null = null;
 
   /** The timeout ID of any current timer set to hide the tooltip */
-  private _hideTimeoutId: number = null;
+  private _hideTimeoutId: number | null = null;
 
   /** Message to display in the tooltip */
-  private _message: string;
+  private _message!: string;
 
   set message(value: string) {
     this._message = value;

@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class SmallStageTest {
-  @ViewChild(NxSmallStageComponent) smallStageInstance: NxSmallStageComponent;
+  @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;
 }
 
 describe('NxSmallStageComponent', () => {

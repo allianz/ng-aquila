@@ -10,7 +10,7 @@ import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
 })
 export class NxVersionSelectComponent {
   _selected: string = '';
-  private _versions: DocVersions = null;
+  private _versions: DocVersions | null = null;
   _versionSelectIsOpened: boolean = false;
 
   @Input()
@@ -19,10 +19,10 @@ export class NxVersionSelectComponent {
     this._selected = value.currentChannel;
   }
   get versions(): DocVersions {
-    return this._versions;
+    return this._versions as DocVersions;
   }
 
-  @ViewChild(NxContextMenuTriggerDirective, { static: true }) contextMenuTrigger: NxContextMenuTriggerDirective;
+  @ViewChild(NxContextMenuTriggerDirective, { static: true }) contextMenuTrigger!: NxContextMenuTriggerDirective;
 
   constructor(@Optional() @Inject(NX_DOC_VERSIONS) _versions: DocVersions) {
     if (_versions) {
@@ -32,7 +32,7 @@ export class NxVersionSelectComponent {
     this.formatVersion = this.formatVersion.bind(this);
   }
 
-  public formatVersion(channel) {
+  public formatVersion(channel: string) {
     // Only show the version when the current one is selected.
     // We won't know the opposite version, as we don't maintain them
     // in both directions
@@ -43,7 +43,7 @@ export class NxVersionSelectComponent {
     return `${channel}`;
   }
 
-  public mobileFormatVersion(channel) {
+  public mobileFormatVersion(channel: string) {
     // Only show the version when the current one is selected.
     // We won't know the opposite version, as we don't maintain them
     // in both directions
@@ -54,8 +54,8 @@ export class NxVersionSelectComponent {
     return `${channel}`;
   }
 
-  public changeVersion(event) {
-    const url = this.versions.channels.find(channel => channel.name === event.target.value).url;
-    window.top.location.href = url;
+  public changeVersion(event: Event) {
+    const url = this.versions.channels.find(channel => channel.name === (event.target as HTMLInputElement).value)?.url;
+    window.top.location.href = url as string;
   }
 }

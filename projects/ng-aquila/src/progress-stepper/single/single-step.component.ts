@@ -26,7 +26,7 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
   /** @docs-private */
   get currentLabel() {
     const step = this.currentStep;
-    const label = step.stepLabel || step.label;
+    const label = step!.stepLabel || step!.label;
 
     return `
     ${this.currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}

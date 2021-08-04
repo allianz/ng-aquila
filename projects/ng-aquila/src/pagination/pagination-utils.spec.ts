@@ -5,7 +5,7 @@ import { NxPaginationModule } from './pagination.module';
 
 describe('NxPaginationUtils', () => {
 
-  function assertCheck (collection, length, values) {
+  function assertCheck (collection: any, length: any, values: any) {
     expect(collection.length).toEqual(length);
     for (let i = 0; i < values.length; i++) {
       expect(collection[i].label).toEqual(values[i]);

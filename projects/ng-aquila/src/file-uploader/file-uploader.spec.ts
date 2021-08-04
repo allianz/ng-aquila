@@ -33,11 +33,11 @@ export class UploadInterceptor implements HttpInterceptor {
 
 @Directive()
 abstract class FileUploaderTest {
-  @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
-  public form: FormGroup;
-  public files: null | FileItem[];
+  @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
+  public form!: FormGroup;
+  public files!: null | FileItem[];
 
-  uploader: NxFileUploader;
+  uploader!: NxFileUploader;
   uploadConfig = {
     requestUrl: 'file-upload',
     options: {
@@ -99,6 +99,7 @@ describe('NxFileUploaderComponent', () => {
       fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
       testInstance.form.patchValue({'documents': [ new FileItem(fakeFile) ]});
 
+      // @ts-ignore
       const file = fileUploaderInstance.value[0];
 
       // status: should not be uploaded or uploading
@@ -129,8 +130,8 @@ describe('NxFileUploaderComponent', () => {
         expect(response).toBeDefined();
         expect(response.error).toBeUndefined();
         expect(response.success).toBeDefined();
-        expect(response.success.files.length).toBe(3);
-        expect(response.success.requests.length).toBe(1);
+        expect(response.success?.files.length).toBe(3);
+        expect(response.success?.requests.length).toBe(1);
         done();
       });
 
@@ -159,8 +160,8 @@ describe('NxFileUploaderComponent', () => {
           expect(response).toBeDefined();
           expect(response.error).toBeUndefined();
           expect(response.success).toBeDefined();
-          expect(response.success.files.length).toBe(2);
-          expect(response.success.requests.length).toBe(1);
+          expect(response.success?.files.length).toBe(2);
+          expect(response.success?.requests.length).toBe(1);
           done();
         });
 
@@ -179,11 +180,11 @@ describe('NxFileUploaderComponent', () => {
         expect(response).toBeDefined();
         expect(response.success).toBeUndefined();
         expect(response.error).toBeDefined();
-        expect(response.error.files.length).toBe(3);
-        expect(response.error.requests.length).toBe(1);
+        expect(response.error?.files.length).toBe(3);
+        expect(response.error?.requests.length).toBe(1);
 
         // should have set the status of the files to error
-        fileUploaderInstance.value.forEach(file => {
+        fileUploaderInstance.value?.forEach(file => {
           expect(file.isUploaded).toBe(false);
           expect(file.isUploading).toBe(false);
           expect(file.isError).toBe(true);
@@ -211,7 +212,7 @@ describe('NxFileUploaderComponent', () => {
       testInstance.form.patchValue({'documents': [ new FileItem(fakeFile), new FileItem(fakeFile) ]});
 
       // status: should not be uploaded or uploading
-      fileUploaderInstance.value.forEach(file => {
+      fileUploaderInstance.value?.forEach(file => {
         expect(file.isUploaded).toBe(false);
         expect(file.isUploading).toBe(false);
         expect(file.isError).toBe(false);
@@ -221,7 +222,7 @@ describe('NxFileUploaderComponent', () => {
       tick(5);
 
       // status: should not be uploaded, should be uploading
-      fileUploaderInstance.value.forEach(file => {
+      fileUploaderInstance.value?.forEach(file => {
         expect(file.isUploaded).toBe(false);
         expect(file.isUploading).toBe(true);
         expect(file.isError).toBe(false);
@@ -230,7 +231,7 @@ describe('NxFileUploaderComponent', () => {
       tick(5);
 
       // status: should not be uploading, should be uploaded
-      fileUploaderInstance.value.forEach(file => {
+      fileUploaderInstance.value?.forEach(file => {
         expect(file.isUploaded).toBe(true);
         expect(file.isUploading).toBe(false);
         expect(file.isError).toBe(false);
@@ -245,8 +246,8 @@ describe('NxFileUploaderComponent', () => {
         expect(response).toBeDefined();
         expect(response.error).toBeUndefined();
         expect(response.success).toBeDefined();
-        expect(response.success.files.length).toBe(3);
-        expect(response.success.requests.length).toBe(3);
+        expect(response.success?.files.length).toBe(3);
+        expect(response.success?.requests.length).toBe(3);
         done();
       });
 
@@ -276,8 +277,8 @@ describe('NxFileUploaderComponent', () => {
           expect(response).toBeDefined();
           expect(response.error).toBeUndefined();
           expect(response.success).toBeDefined();
-          expect(response.success.files.length).toBe(2);
-          expect(response.success.requests.length).toBe(2);
+          expect(response.success?.files.length).toBe(2);
+          expect(response.success?.requests.length).toBe(2);
           done();
         });
 
@@ -297,11 +298,11 @@ describe('NxFileUploaderComponent', () => {
         expect(response).toBeDefined();
         expect(response.success).toBeUndefined();
         expect(response.error).toBeDefined();
-        expect(response.error.files.length).toBe(3);
-        expect(response.error.requests.length).toBe(3);
+        expect(response.error?.files.length).toBe(3);
+        expect(response.error?.requests.length).toBe(3);
 
         // should have set the status of the files to error
-        fileUploaderInstance.value.forEach(file => {
+        fileUploaderInstance.value?.forEach(file => {
           expect(file.isUploaded).toBe(false);
           expect(file.isUploading).toBe(false);
           expect(file.isError).toBe(true);

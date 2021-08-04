@@ -8,10 +8,10 @@ import { NxMenuModule } from './menu.module';
 
 @Directive()
 abstract class MenuButtonTest {
-  expandable: boolean;
-  expanded: boolean;
-  type: NxMenuButtonType;
-  @ViewChild(NxMenuButtonComponent) menuButtonInstance: NxMenuButtonComponent;
+  expandable!: boolean;
+  expanded!: boolean;
+  type!: NxMenuButtonType;
+  @ViewChild(NxMenuButtonComponent) menuButtonInstance!: NxMenuButtonComponent;
 }
 
 describe(NxMenuButtonComponent.name, () => {

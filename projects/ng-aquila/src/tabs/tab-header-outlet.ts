@@ -9,13 +9,13 @@ import { NxTabGroupBase } from './tab-group-base';
   template: '<ng-container #outlet></ng-container>'
 })
 export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
-  @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet: ViewContainerRef;
+  @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
-  @Input() content: EmbeddedViewRef<any>;
+  @Input() content!: EmbeddedViewRef<any>;
 
   constructor(private _tabGroup: NxTabGroupBase) { }
 
-  private _appearanceSubscription: Subscription;
+  private _appearanceSubscription!: Subscription;
 
   ngOnInit() {
     this._appearanceSubscription = this._tabGroup._appearanceChange.subscribe(() => {

@@ -19,14 +19,14 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
   _expanded: boolean = false;
-  _useFullRowForExpandableArea: boolean;
+  _useFullRowForExpandableArea: boolean = false;
 
-  @Input() group: NxComparisonTableRowGroupDirective;
+  @Input() group!: NxComparisonTableRowGroupDirective;
 
-  @ViewChild('expansionCell') _expansionCell: ElementRef;
+  @ViewChild('expansionCell') _expansionCell!: ElementRef;
 
   /** Preserves the current value of the _expansionCell ViewChild in case it changes. */
-  private _expansionCellPrevious: ElementRef;
+  private _expansionCellPrevious!: ElementRef;
 
   /** Sets if the row group is expanded. Default: false. */
   @Input()

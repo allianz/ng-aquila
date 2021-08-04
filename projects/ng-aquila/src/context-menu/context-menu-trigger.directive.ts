@@ -62,7 +62,7 @@ const passiveEventListenerOptions = normalizePassiveListenerOptions({
 })
 export class NxContextMenuTriggerDirective
   implements AfterContentInit, OnInit, OnDestroy {
-  private _portal: TemplatePortal;
+  private _portal!: TemplatePortal;
   private _overlayRef: OverlayRef | null = null;
   private _contextMenuOpen: boolean = false;
   private _closingActionsSubscription = Subscription.EMPTY;
@@ -98,7 +98,7 @@ export class NxContextMenuTriggerDirective
         });
     }
   }
-  private _contextMenu: NxContextMenuComponent;
+  private _contextMenu!: NxContextMenuComponent;
 
   @Input()
   set scrollStrategy(value: NxContextMenuScrollStrategy) {
@@ -120,7 +120,7 @@ export class NxContextMenuTriggerDirective
   }
 
   /** Data to be passed along to any lazily-rendered content. */
-  @Input('nxContextMenuTriggerData') contextMenuData: any;
+  @Input('nxContextMenuTriggerData') contextMenuData!: Object;
 
   /** Event emitted when the associated context menu is opened. */
   @Output() readonly contextMenuOpened: EventEmitter<void> = new EventEmitter<void>();
@@ -407,8 +407,8 @@ export class NxContextMenuTriggerDirective
   /**
    * Returns a stream that emits whenever an action that should close the context menu occurs. */
   private _contextMenuClosingActions() {
-    let backdrop;
-    let detachments;
+    let backdrop: Observable<MouseEvent>;
+    let detachments: Observable<void>;
 
     if (this._overlayRef) {
       backdrop = this._overlayRef.backdropClick();
@@ -426,7 +426,7 @@ export class NxContextMenuTriggerDirective
         )
       : observableOf();
 
-    return merge(backdrop, parentClose, hover, detachments);
+    return merge(backdrop!, parentClose, hover, detachments!);
   }
 
   /** Handles mouse presses on the trigger. */
@@ -471,7 +471,7 @@ export class NxContextMenuTriggerDirective
   private _waitForClose() {
     return this._documentClickObservable
       .pipe(
-        map(event => event.target),
+        map(event => event.target as Node),
         filter((target: Node) => !this._element.nativeElement.contains(target)),
         takeUntil(this.contextMenu.closed))
       .subscribe(() => {

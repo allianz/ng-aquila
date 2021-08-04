@@ -11,8 +11,8 @@ import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
 @Directive()
 abstract class SidepanelCloseButtonTest {
-  @ViewChild(NxSidepanelComponent) sidebarInstance: NxSidepanelComponent;
-  @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance: NxSidepanelCloseButtonComponent;
+  @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
+  @ViewChild(NxSidepanelCloseButtonComponent) buttonInstance!: NxSidepanelCloseButtonComponent;
 }
 
 describe('NxSidepanelCloseButtonComponent', () => {

@@ -12,8 +12,10 @@ import { FormsModule } from '@angular/forms';
 abstract class MessageTest {
   public context: CONTEXT = 'regular';
 
-  @ViewChild(NxMessageComponent) componentInstance: NxMessageComponent;
-  @ViewChild(NxMessageComponent,  { read: ElementRef }) formInscomponentInstanceRef: ElementRef;
+  @ViewChild(NxMessageComponent)
+  componentInstance!: NxMessageComponent;
+  @ViewChild(NxMessageComponent, { read: ElementRef })
+  formInscomponentInstanceRef!: ElementRef;
 }
 
 describe('NxMessageComponent', () => {

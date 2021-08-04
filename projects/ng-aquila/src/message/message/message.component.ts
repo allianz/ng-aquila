@@ -17,7 +17,7 @@ import {
 /** The contextual type of a message. */
 export type CONTEXT = 'regular' | 'info' | 'error' | 'success' | 'warning';
 
-const ICONS = {
+const ICONS: { [k: string]: string } = {
   info: 'info-circle',
   error: 'exclamation-triangle',
   success: 'check-circle',
@@ -56,7 +56,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy  {
 
   _allowedContexts: CONTEXT[] = ['regular', 'info', 'error', 'warning', 'success'];
 
-  @ViewChild('closeButton') _closeButton: ElementRef;
+  @ViewChild('closeButton') _closeButton!: ElementRef;
 
   /**
    * Sets the context of the message.

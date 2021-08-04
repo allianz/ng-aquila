@@ -11,7 +11,7 @@ import { NxNumberStepperModule } from './number-stepper.module';
 @Directive()
 abstract class ResizeTest {
   value: string = '10000';
-  @ViewChild(NxAutoResizeDirective) inputInstance: NxAutoResizeDirective;
+  @ViewChild(NxAutoResizeDirective) inputInstance!: NxAutoResizeDirective;
 }
 
 describe('NxAutoResizeDirective', () => {

@@ -20,7 +20,7 @@ const cssUnitPattern = /([A-Za-z%]+)$/;
 })
 export class NxTreeNodePaddingDirective<T> implements OnDestroy {
   /** Current padding value applied to the element. Used to avoid unnecessarily hitting the DOM. */
-  private _currentPadding: string|null;
+  private _currentPadding!: string | null;
 
   /** Subject that emits when the component has been destroyed. */
   private _destroyed = new Subject<void>();
@@ -35,7 +35,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     this._level = coerceNumberProperty(value);
     this._setPadding();
   }
-  _level: number;
+  _level!: number;
 
   /** The offset is added once on top of each indent. Default number is 0. */
   @Input('nxTreeNodePaddingOffset')

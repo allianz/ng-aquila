@@ -39,7 +39,7 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>('ER
 })
 export class NxErrorComponent implements OnDestroy {
   private _showIcon: boolean = true;
-  private _appearance: ErrorStyleType;
+  private _appearance!: ErrorStyleType;
   private _id: string = `nx-error-${nextId++}`;
   private _destroyed = new Subject();
 

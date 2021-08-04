@@ -25,7 +25,7 @@ export const RESIZE_STEP_SIZE = 20;
 })
 export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
-  @ViewChild('resizeHandle') _resizeHandle: ElementRef;
+  @ViewChild('resizeHandle') _resizeHandle!: ElementRef;
 
   /** Emits the new width of the sidebar on resize or on close/open event.*/
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>();
@@ -122,9 +122,9 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
   _resizeWidth: number = 0;
 
-  private _resizeStartX: number;
+  private _resizeStartX!: number;
 
-  private _resizeStartWidth: number;
+  private _resizeStartWidth!: number;
 
   private _unsubscribeListeners: (() => void)[] = [];
 
@@ -155,7 +155,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
   }
 
   /** This will expand the sidebar to its full width. */
-  expand(expandedWidth: number = null) {
+  expand(expandedWidth?: number) {
     this.open = true;
     if (expandedWidth) {
       this.width = expandedWidth;
@@ -185,7 +185,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     return this.open ? this.width : this.minWidth;
   }
 
-  _onResizeStart(event) {
+  _onResizeStart(event: any) {
     if (event.type.startsWith('touch')) {
       event = event.changedTouches[0];
     }
@@ -197,7 +197,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     this._attachDragEventListeners();
   }
 
-  _onResize(event) {
+  _onResize(event: any) {
     this._resizing = true;
 
     if (event.type.startsWith('touch')) {
@@ -214,7 +214,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     this._changeDetectorRef.markForCheck();
   }
 
-  _onResizeEnd(event) {
+  _onResizeEnd(event: MouseEvent) {
     this._resizing = false;
     this._removeDragEventListeners();
 
@@ -232,7 +232,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     this._resizeWidth = 0;
   }
 
-  _onResizeHandleClick(event) {
+  _onResizeHandleClick(event: MouseEvent) {
     if (this._isMouseDrag(this._resizeStartX, event.screenX)) {
       return;
     }
@@ -240,7 +240,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     this.toggle();
   }
 
-  _onSidebarKeydown(event) {
+  _onSidebarKeydown(event: KeyboardEvent) {
     if (event.which === SPACE) {
       event.preventDefault();
       this.toggle();

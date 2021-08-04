@@ -14,13 +14,13 @@ import { Component, Input } from '@angular/core';
 export class NxFileUploaderItemSize {
   /** The size of the file in bytes.*/
   @Input()
-  size: number;
+  size!: number;
 
   /** Whether the file is uploading at the moment. Default: false.*/
   @Input()
-  isUploading: boolean;
+  isUploading!: boolean;
 
   /** The label that is shown while uploading the file.*/
   @Input()
-  uploadingLabel: String;
+  uploadingLabel!: String;
 }

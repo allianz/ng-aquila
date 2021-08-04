@@ -29,7 +29,7 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 export class NxIconComponent implements OnChanges {
   /** Keeps track of the elements and attributes that we've prefixed with the current path. */
   private _elementsWithExternalReferences?: Map<Element, { name: string, value: string }[]>;
-  private _name: string;
+  private _name: string = '';
   private _previousFontClasses: string[] = [];
 
   /** Sets the name for specifying the icon.*/
@@ -79,7 +79,7 @@ export class NxIconComponent implements OnChanges {
   }
 
   /** Sets the font name that should be used. */
-  @Input() font: string;
+  @Input() font: string = '';
 
   constructor(
     /**@docs-private */
@@ -103,7 +103,7 @@ export class NxIconComponent implements OnChanges {
     } else {
       if (icon instanceof NxSvgIcon) {
         // add content
-        icon.getContent().pipe(take(1)).subscribe((content: SVGElement) => {
+        icon.getContent().pipe(take(1)).subscribe((content: SVGElement | undefined) => {
           if (!content) {
             return;
           }

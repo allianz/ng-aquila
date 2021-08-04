@@ -7,8 +7,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Directive()
 abstract class ToggleButtonTest {
-  @ViewChild(NxToggleButtonComponent) toggleButtonInstance: NxToggleButtonComponent;
-  target: NxExpandable;
+  @ViewChild(NxToggleButtonComponent) toggleButtonInstance!: NxToggleButtonComponent;
+  target!: NxExpandable;
 }
 
 describe(NxToggleButtonComponent.name, () => {

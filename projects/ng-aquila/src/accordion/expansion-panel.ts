@@ -57,9 +57,10 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     this._negative = coerceBooleanProperty(value);
   }
   get negative(): boolean {
-    return this._negative;
+    return this._negative as boolean;
   }
-  private _negative: boolean = null;
+
+  private _negative: boolean | null = null;
   _accordionStyle: AccordionStyle = DEFAULT_TYPE;
 
   /**
@@ -76,14 +77,15 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
   }
 
   get style(): AccordionStyle {
-    return this._style;
+    return this._style as AccordionStyle;
   }
-  private _style: AccordionStyle = null;
+
+  private _style: AccordionStyle | null = null;
 
   /** @docs-private */
-  @ContentChild(NxExpansionPanelBodyDirective) lazyContent;
+  @ContentChild(NxExpansionPanelBodyDirective) lazyContent: any;
 
-  private _portal: TemplatePortal;
+  private _portal!: TemplatePortal;
 
   /** @docs-private */
   get portal() {
@@ -145,5 +147,5 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     return this.expanded ? 'open' : 'closed';
   }
 
-  static ngAcceptInputType_negative: BooleanInput;
+  static ngAcceptInputType_negative: BooleanInput | '';
 }

@@ -12,12 +12,12 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class CheckboxTest {
-  @ViewChild(NxCheckboxComponent) checkboxInstance: NxCheckboxComponent;
+  @ViewChild(NxCheckboxComponent) checkboxInstance!: NxCheckboxComponent;
 
   checked: boolean = false;
   indeterminate: boolean = false;
-  testForm: FormGroup;
-  labelSize: string;
+  testForm!: FormGroup;
+  labelSize!: string;
   disabled: boolean = false;
   negative: boolean = false;
 }
@@ -78,7 +78,7 @@ describe('NxCheckboxComponent', () => {
     createTestComponent(BasicCheckbox);
     expect(inputElement).not.toBeNull();
     expect(labelElement).not.toBeNull();
-    expect(labelElement.textContent.trim()).not.toBe('');
+    expect(labelElement.textContent!.trim()).not.toBe('');
     expect(labelElement.htmlFor).toBe(inputElement.id);
     expect(labelElement.classList).toContain('has-label');
   });
@@ -86,7 +86,7 @@ describe('NxCheckboxComponent', () => {
   it('displays a checkbox without a label', () => {
     createTestComponent(LabellessCheckbox);
     expect(inputElement).not.toBeNull();
-    expect(labelElement.textContent.trim()).toBe('');
+    expect(labelElement.textContent!.trim()).toBe('');
     expect(checkboxNativeElement.classList).not.toContain('has-label');
   });
 
@@ -97,7 +97,7 @@ describe('NxCheckboxComponent', () => {
 
   it('sets the given label', () => {
     createTestComponent(BasicCheckbox);
-    expect(labelElement.textContent.trim()).toBe('Hello NX');
+    expect(labelElement.textContent!.trim()).toBe('Hello NX');
   });
 
   it('can be disabled', () => {
@@ -255,7 +255,7 @@ describe('NxCheckboxComponent', () => {
     it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
       createTestComponent(ReactiveCheckbox);
       expect(checkboxNativeElement.classList.contains('has-error')).toBeFalsy();
-      checkboxInstance.ngControl.control.markAsTouched();
+      checkboxInstance.ngControl.control!.markAsTouched();
       fixture.detectChanges();
       flush();
       expect(checkboxNativeElement.classList.contains('has-error')).toBeTruthy();
@@ -270,7 +270,7 @@ describe('NxCheckboxComponent', () => {
       fixture.detectChanges();
       flush();
 
-      expect(testInstance.testForm.get('checkbox').dirty)
+      expect(testInstance.testForm.get('checkbox')!.dirty)
         .toEqual(false, `Expected control to start out pristine.`);
 
       labelElement.click();
@@ -278,7 +278,7 @@ describe('NxCheckboxComponent', () => {
       fixture.detectChanges();
       flush();
 
-      expect(testInstance.testForm.get('checkbox').dirty)
+      expect(testInstance.testForm.get('checkbox')!.dirty)
         .toEqual(true, `Expected control to be dirty.`);
     }));
 

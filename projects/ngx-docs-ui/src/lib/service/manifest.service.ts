@@ -4,15 +4,15 @@ import { Manifest, ComponentDescriptor, GuideDescriptor, ExampleDescriptor } fro
 import { ReplaySubject } from 'rxjs';
 
 class CategoryChild {
-  label: string;
-  component: ComponentDescriptor;
+  label!: string;
+  component!: ComponentDescriptor;
 }
 export class Category {
-  label: string;
-  children: CategoryChild[];
+  label!: string;
+  children!: CategoryChild[];
 }
 
-const sortByLabel = function(a, b) {
+const sortByLabel = function(a: { label: string; }, b: { label: string; }) {
   const labelA = a.label.toLowerCase();
   const labelB = b.label.toLowerCase();
 
@@ -31,7 +31,7 @@ const sortByLabel = function(a, b) {
 export class ManifestService {
   protected _manifestChanges = new ReplaySubject<Manifest>(1);
   public available = new ReplaySubject<Boolean>(1);
-  protected _current: Manifest;
+  protected _current!: Manifest;
 
   constructor(
     @Optional() @Inject(NXV_MANIFEST_TOKEN)
@@ -59,7 +59,7 @@ export class ManifestService {
       throw new Error(`Could not find Guide with id ${id}`);
     }
 
-    return this._current.guides.find(item => item.id === id);
+    return this._current.guides.find(item => item.id === id) as GuideDescriptor;
   }
 
   hasComponent(id: string) {
@@ -71,20 +71,20 @@ export class ManifestService {
       throw new Error(`Could not find Component with id ${id}`);
     }
 
-    return this._current.components.find(item => item.id === id);
+    return this._current.components.find(item => item.id === id) as ComponentDescriptor;
   }
 
   getGroupedComponents(): Category[] {
     // group components by category
-    const componentsDict = this._current.components.reduce(
-        (categories, component: ComponentDescriptor) => {
+    const componentsDict: { [key: string]: any[] } = this._current.components.reduce(
+        (categories: any, component: ComponentDescriptor) => {
 
       (categories[component.category] = categories[component.category] || []).push(component);
       return categories;
     }, {});
 
     // form datastructure
-    const groupedCategories = Object.keys(componentsDict).reduce((categories, key: string) => {
+    const groupedCategories = Object.keys(componentsDict).reduce((categories: any, key: string) => {
       const categoryKey = key.toLowerCase();
       const category = {
         label: categoryKey,
@@ -100,7 +100,7 @@ export class ManifestService {
 
     // sort categories and components
     groupedCategories.sort(sortByLabel);
-    groupedCategories.map((components) => components.children.sort(sortByLabel));
+    groupedCategories.map((components: { children: any[]; }) => components.children.sort(sortByLabel));
 
     return groupedCategories;
   }
@@ -114,7 +114,7 @@ export class ManifestService {
       throw new Error(`Could not find Example with id ${id}`);
     }
 
-    return this._current.examples.find(item => item.id === id);
+    return this._current.examples.find(item => item.id === id) as ExampleDescriptor;
   }
 
   update(value: Manifest) {

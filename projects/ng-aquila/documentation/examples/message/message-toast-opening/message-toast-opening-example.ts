@@ -12,7 +12,7 @@ import { NxMessageToastService } from '@aposin/ng-aquila/message';
 export class MessageToastOpeningExampleComponent {
 
   toastText: string = 'A success message toast with a custom text.';
-  @ViewChild('template') templateRef: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
 
   constructor(private messageToastService: NxMessageToastService) { }
 

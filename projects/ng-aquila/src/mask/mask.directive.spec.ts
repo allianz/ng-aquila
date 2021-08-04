@@ -32,14 +32,14 @@ export function assertInputValue(nativeElement: HTMLInputElement, inputValue: st
 
 @Directive()
 abstract class MaskTest {
-  @ViewChild(NxMaskDirective) maskInstance: NxMaskDirective;
+  @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
 
-  mask: string;
+  mask!: string;
   separators: string[] = ['(', ')', ':', '-'];
   dropSpecialCharacters: boolean = false;
   validateMask: boolean = true;
-  modelVal: string;
-  convertTo: string;
+  modelVal!: string;
+  convertTo!: string;
   deactivateMask: boolean = false;
 
   testForm: FormGroup = new FormGroup({
@@ -256,19 +256,19 @@ describe('NxMaskDirective', () => {
       testInstance.mask = '00:00-00';
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
       nativeElement.value = '123456';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
     });
 
     it('updates validateMask value on change', () => {
@@ -284,13 +284,13 @@ describe('NxMaskDirective', () => {
       testInstance.validateMask = false;
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
     });
 
     it('updates the validated value after validateMask change', () => {
@@ -302,17 +302,17 @@ describe('NxMaskDirective', () => {
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
       testInstance.validateMask = false;
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       testInstance.validateMask = true;
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
     });
 
     it('should validate when switching from deactive mask to active', () => {
@@ -322,14 +322,14 @@ describe('NxMaskDirective', () => {
       testInstance.deactivateMask = true;
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       // mask deactive, the input should be valid even the value is incorrect.
       nativeElement.value = '1234';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(true);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(true);
 
       // mask activate, the input should be invalid if the value is incorrect.
       testInstance.deactivateMask = false;
@@ -337,7 +337,7 @@ describe('NxMaskDirective', () => {
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').valid).toBe(false);
+      expect(testInstance.testForm.get('maskInput')!.valid).toBe(false);
 
     });
   });
@@ -878,7 +878,7 @@ describe('NxMaskDirective', () => {
       assertInputValue(nativeElement, 'test', 'TEST');
       expect(testInstance.modelVal).toBe('TEST');
 
-      testInstance.convertTo = null;
+      testInstance.convertTo = '';
       fixture.detectChanges();
       assertInputValue(nativeElement, 'TeSt' , 'TeSt');
       expect(testInstance.modelVal).toBe('TeSt');

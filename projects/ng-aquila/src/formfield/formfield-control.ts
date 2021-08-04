@@ -5,31 +5,31 @@ import { Observable } from 'rxjs';
 /** @docs-private */
 @Directive()
 export abstract class NxFormfieldControl<T> {
-  value: T | null;
+  value!: T | null;
 
   // Allow the control to notify the parent formfield about internal state changes
-  readonly stateChanges: Observable<void>;
+  readonly stateChanges!: Observable<void>;
 
-  readonly empty: boolean;
+  readonly empty!: boolean;
 
-  readonly id: string;
+  readonly id!: string;
 
-  readonly ngControl: NgControl | null;
+  readonly ngControl!: NgControl | null;
 
-  readonly focused: boolean;
+  readonly focused!: boolean;
 
-  readonly required: boolean;
+  readonly required!: boolean;
 
-  readonly disabled: boolean;
+  readonly disabled!: boolean;
 
-  readonly readonly: boolean;
+  readonly readonly!: boolean;
 
   readonly shouldLabelFloat?: boolean;
 
-  readonly errorState: boolean;
+  readonly errorState!: boolean;
 
   /** The placeholder for this control. */
-  readonly placeholder: string;
+  readonly placeholder!: string;
 
     /**
    * An optional name for the control type that can be used to distinguish `nx-formfield` elements

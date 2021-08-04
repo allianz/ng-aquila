@@ -11,8 +11,8 @@ import { BidiModule } from '@angular/cdk/bidi';
 
 @Directive()
 abstract class SidepanelTest {
-  @ViewChild(NxSidepanelComponent) sidebarInstance: NxSidepanelComponent;
-  @ViewChild(NxSidepanelOuterContainerComponent) wrapperInstance: NxSidepanelOuterContainerComponent;
+  @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
+  @ViewChild(NxSidepanelOuterContainerComponent) wrapperInstance!: NxSidepanelOuterContainerComponent;
   opened: boolean = true;
   position: PositionType = 'floating';
   appearance: Appearance = 'dark';

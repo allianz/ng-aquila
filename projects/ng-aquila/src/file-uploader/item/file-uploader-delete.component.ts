@@ -18,9 +18,9 @@ import { Component, Input } from '@angular/core';
 export class NxFileUploaderItemDelete {
   /** Whether the file is uploading at the moment. If true, the button is disabled. Default: false.*/
   @Input()
-  isUploading: boolean;
+  isUploading!: boolean;
 
   /** The label that is used for the delete button (used by screen readers). */
   @Input()
-  deleteLabel: String;
+  deleteLabel!: String;
 }

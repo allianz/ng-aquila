@@ -11,7 +11,7 @@ import { NxSidebarModule } from './sidebar.module';
 
 @Directive()
 abstract class SidebarTest {
-  @ViewChild(NxSidebarComponent) sidebarInstance: NxSidebarComponent;
+  @ViewChild(NxSidebarComponent) sidebarInstance!: NxSidebarComponent;
 }
 
 describe('NxSidebarComponent', () => {

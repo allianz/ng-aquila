@@ -21,11 +21,11 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 })
 export class NxTableComponent {
 
-  private _condensed: boolean;
+  private _condensed!: boolean;
 
-  private _zebra: boolean;
+  private _zebra!: boolean;
 
-  private _sticky: string;
+  private _sticky!: string;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 

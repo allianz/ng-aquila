@@ -19,16 +19,16 @@ const formfieldDefaultOptions: FormfieldDefaultOptions = {
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class FormfieldTest {
-  @ViewChild(NxFormfieldComponent) textfieldInstance: NxFormfieldComponent;
-  @ViewChild(NxInputDirective) inputInstance: NxInputDirective;
-  @ViewChild(NxFormfieldErrorDirective) formfieldError: NxFormfieldErrorDirective;
-  @ViewChild(NxFormfieldNoteDirective) formfieldNote: NxFormfieldNoteDirective;
-  @ViewChild(NxFormfieldHintDirective) formfieldHint: NxFormfieldHintDirective;
+  @ViewChild(NxFormfieldComponent) textfieldInstance!: NxFormfieldComponent;
+  @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
+  @ViewChild(NxFormfieldErrorDirective) formfieldError!: NxFormfieldErrorDirective;
+  @ViewChild(NxFormfieldNoteDirective) formfieldNote!: NxFormfieldNoteDirective;
+  @ViewChild(NxFormfieldHintDirective) formfieldHint!: NxFormfieldHintDirective;
 
-  testForm: FormGroup;
-  currentValue;
-  appearance: AppearanceType;
-  floatLabel: FloatLabelType;
+  testForm!: FormGroup;
+  currentValue: any;
+  appearance!: AppearanceType;
+  floatLabel!: FloatLabelType;
   disabled: boolean = false;
   readonly: boolean = false;
 }
@@ -53,7 +53,7 @@ describe('NxFormfieldComponent', () => {
     formfieldInstance = testInstance.textfieldInstance;
   }
 
-  function fillWithContent(value) {
+  function fillWithContent(value: any) {
     testInstance.currentValue = value;
 
     // this round will assign it through ngModel to the input directly
@@ -195,7 +195,7 @@ describe('NxFormfieldComponent', () => {
         fillWithContent('fill with content');
 
         const floatingLabel = formfieldElement.querySelector('.nx-formfield__label');
-        const floatingLabelStyles = window.getComputedStyle(floatingLabel);
+        const floatingLabelStyles = window.getComputedStyle(floatingLabel as Element);
 
         const caluclatedMatrix = floatingLabelStyles.webkitTransform;
         expect(caluclatedMatrix).toBe('matrix(1, 0, 0, 1, 0, -16)');
@@ -206,7 +206,7 @@ describe('NxFormfieldComponent', () => {
       'reflects control error state in css',
       fakeAsync(() => {
         createTestComponent(ErrorFormfield);
-        testInstance.inputInstance.ngControl.control.markAsTouched();
+        testInstance.inputInstance.ngControl.control!.markAsTouched();
 
         fixture.detectChanges();
         tick();
@@ -224,7 +224,7 @@ describe('NxFormfieldComponent', () => {
         expect(fixture.nativeElement.textContent).not.toContain('content-error');
         expect(fixture.nativeElement.textContent).toContain('content-note');
 
-        testInstance.inputInstance.ngControl.control.markAsTouched();
+        testInstance.inputInstance.ngControl.control!.markAsTouched();
         fixture.detectChanges();
         tick();
         fixture.detectChanges();
@@ -242,7 +242,7 @@ describe('NxFormfieldComponent', () => {
         createTestComponent(NoteFormfield);
         expect(fixture.nativeElement.textContent).toContain('content-note');
 
-        testInstance.inputInstance.ngControl.control.markAsTouched();
+        testInstance.inputInstance.ngControl.control!.markAsTouched();
 
         fixture.detectChanges();
         tick();
@@ -316,7 +316,7 @@ describe('NxFormfieldComponent', () => {
         fixture.detectChanges();
 
         let ariaDescribedBy;
-          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby').value;
+          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
         tick();
         fixture.detectChanges();
 
@@ -333,17 +333,17 @@ describe('NxFormfieldComponent', () => {
           fixture.detectChanges();
           tick();
           // before only the not id is set
-          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby').value;
+          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
           expect(ariaDescribedBy).toBe(testInstance.formfieldNote.id);
 
-          testInstance.inputInstance.ngControl.control.markAsTouched();
+          testInstance.inputInstance.ngControl.control!.markAsTouched();
           fixture.detectChanges();
           tick();
           fixture.detectChanges();
           tick();
 
           // the error id should join the list of describedBy ids.
-          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby').value;
+          ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
           expect(ariaDescribedBy).toBe(testInstance.formfieldError.id);
         })
       );
@@ -351,8 +351,8 @@ describe('NxFormfieldComponent', () => {
       it('updates aria-owns and attribute for to the control id',
         () => {
           createTestComponent(BasicFormfield);
-          const ariaOwns = labelElement.attributes.getNamedItem('aria-owns').value;
-          const attrFor = labelElement.attributes.getNamedItem('for').value;
+          const ariaOwns = labelElement.attributes.getNamedItem('aria-owns')!.value;
+          const attrFor = labelElement.attributes.getNamedItem('for')!.value;
 
           expect(ariaOwns).toBe(testInstance.inputInstance.id);
           expect(attrFor).toBe(testInstance.inputInstance.id);

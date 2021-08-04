@@ -83,7 +83,7 @@ export class NxFileUploader {
     const valuesToUpload = files.filter(file => !file.isUploaded);
     valuesToUpload.forEach((file: FileItem) => {
       file.setUploadingState();
-      formData.append('uploads[]', file.file, file.name);
+      formData.append('uploads[]', file.file as Blob, file.name);
     });
 
     this._httpClient.post(this.config['requestUrl'], formData, this.config['options']).subscribe(
@@ -157,7 +157,7 @@ export class NxFileUploader {
     const formData = new FormData();
     if (!file.isUploaded) {
       file.setUploadingState();
-      formData.append('uploads[]', file.file, file.name);
+      formData.append('uploads[]', file.file as Blob, file.name);
     }
 
     this._httpClient.post(this.config['requestUrl'], formData, this.config['options']).subscribe(

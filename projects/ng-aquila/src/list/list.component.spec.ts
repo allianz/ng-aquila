@@ -10,7 +10,7 @@ import { NxListModule } from './list.module';
 
 @Directive()
 abstract class ListTest {
-  @ViewChild(NxListComponent) listInstance: NxListComponent;
+  @ViewChild(NxListComponent) listInstance!: NxListComponent;
 }
 
 describe('NxListComponent', () => {
@@ -74,7 +74,7 @@ describe('NxListComponent', () => {
     (testInstance as ConfigurableList).iconName = 'product-cross';
     fixture.detectChanges();
     const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-    expect(listItems.item(0).querySelector('nx-icon').classList).toContain('product-cross');
+    expect(listItems.item(0).querySelector('nx-icon')?.classList).toContain('product-cross');
   });
 
   it('Should change size', waitForAsync(() => {

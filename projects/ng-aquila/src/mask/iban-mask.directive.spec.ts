@@ -9,8 +9,8 @@ import { assertInputValue } from './mask.directive.spec';
 
 @Directive()
 abstract class IbanMaskTest {
-  @ViewChild(NxMaskDirective) maskInstance: NxMaskDirective;
-  @ViewChild(NxIbanMaskDirective) ibanInstance: NxIbanMaskDirective;
+  @ViewChild(NxMaskDirective) maskInstance!: NxMaskDirective;
+  @ViewChild(NxIbanMaskDirective) ibanInstance!: NxIbanMaskDirective;
 
   testForm: FormGroup = new FormGroup({
     maskInput: new FormControl('', {})
@@ -288,7 +288,7 @@ describe('NxIbanMaskDirective', () => {
 
       expect(testInstance.testForm.valid).toBe(false);
       expect(testInstance.testForm.touched).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('GD');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
     });
 
     it('should mark as invalid if iban is not valid', () => {
@@ -298,15 +298,15 @@ describe('NxIbanMaskDirective', () => {
       assertInputValue(nativeElement, 'DE', 'DE');
       assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 01');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
       assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 00');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
       assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
       expect(testInstance.testForm.valid).toBe(false);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 02');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
     });
 
     it('should not do iban valdation on mask validation turned off', () => {
@@ -319,21 +319,21 @@ describe('NxIbanMaskDirective', () => {
       assertInputValue(nativeElement, 'GD', 'GD');
 
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('GD');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
 
       // quick solution for getting the mask updated after entering the first to letters
       assertInputValue(nativeElement, 'DE', 'DE');
       assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 01');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
       assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 00');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
       assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
       expect(testInstance.testForm.valid).toBe(true);
-      expect(testInstance.testForm.get('maskInput').value).toBe('DE89 3704 0044 0532 0130 02');
+      expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
     });
   });
 

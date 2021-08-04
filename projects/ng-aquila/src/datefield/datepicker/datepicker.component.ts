@@ -100,9 +100,9 @@ export const DATEPICKER_DEFAULT_OPTIONS =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxDatepickerContentComponent<D> implements AfterContentInit {
-  datepicker: NxDatepickerComponent<D>;
+  datepicker!: NxDatepickerComponent<D>;
 
-  @ViewChild(NxCalendarComponent, { static: true }) _calendar: NxCalendarComponent<D>;
+  @ViewChild(NxCalendarComponent, { static: true }) _calendar!: NxCalendarComponent<D>;
 
   constructor(
     public _intl: NxDatepickerIntl,
@@ -140,7 +140,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   set startAt(value: D | null) {
     this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _startAt: D | null;
+  private _startAt!: D | null;
 
   /** The view that the calendar should start in. */
   @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
@@ -162,7 +162,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
       this._disabledChange.next(newValue);
     }
   }
-  private _disabled: boolean;
+  private _disabled!: boolean;
 
   /** @docs-private */
   selectedChanged: EventEmitter<D> = new EventEmitter<D>();
@@ -180,7 +180,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
 
   /** Classes to be passed to the date picker panel. Supports the same syntax as `ngClass`. */
-  @Input() panelClass: string | string[];
+  @Input() panelClass!: string | string[];
 
   /** Emits when the datepicker has been opened. */
   @Output('opened') openedStream: EventEmitter<void> = new EventEmitter<void>();
@@ -230,13 +230,13 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   }
 
   /** A reference to the overlay when the calendar is opened as a popup. */
-  private _popupRef: OverlayRef;
+  private _popupRef!: OverlayRef | null;
 
   /** A portal containing the calendar for this datepicker. */
-  private _calendarPortal: ComponentPortal<NxDatepickerContentComponent<D>>;
+  private _calendarPortal!: ComponentPortal<NxDatepickerContentComponent<D>> | null;
 
   /** Reference to the component instantiated in popup mode. */
-  private _popupComponentRef: ComponentRef<NxDatepickerContentComponent<D>> | null;
+  private _popupComponentRef!: ComponentRef<NxDatepickerContentComponent<D>> | null;
 
   /** The element that was focused before the datepicker was opened. */
   private _focusedElementBeforeOpen: HTMLElement | null = null;
@@ -245,9 +245,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   private _inputSubscription = Subscription.EMPTY;
 
   /** The input element this datepicker is associated with. */
-  _datepickerInput: NxDatefieldDirective<D>;
+  _datepickerInput!: NxDatefieldDirective<D>;
 
-  _toggleButton: NxDatepickerToggleComponent<D>;
+  _toggleButton!: NxDatepickerToggleComponent<D>;
 
   _dirChangeSubscription: Subscription;
 
@@ -257,7 +257,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
   constructor(private _overlay: Overlay,
               private _ngZone: NgZone,
               private _viewContainerRef: ViewContainerRef,
-              @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _scrollStrategy,
+              @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _scrollStrategy: any,
               @Optional() private _dateAdapter: NxDateAdapter<D>,
               @Optional() private _dir: Directionality,
               @Optional() @Inject(DOCUMENT) private _document: any) {
@@ -414,13 +414,13 @@ export class NxDatepickerComponent<D> implements OnDestroy {
       this._createPopup();
     }
 
-    if (!this._popupRef.hasAttached()) {
-      this._popupComponentRef = this._popupRef.attach(this._calendarPortal);
+    if (!this._popupRef!.hasAttached()) {
+      this._popupComponentRef = this._popupRef!.attach(this._calendarPortal);
       this._popupComponentRef.instance.datepicker = this;
 
       // Update the position once the calendar has rendered.
       this._ngZone.onStable.asObservable().pipe(take(1)).subscribe(() => {
-        this._popupRef.updatePosition();
+        this._popupRef!.updatePosition();
       });
     }
   }

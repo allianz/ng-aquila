@@ -10,7 +10,7 @@ import {NxIndicatorModule} from './indicator.module';
 
 @Directive()
 abstract class IndicatorTest {
-  @ViewChild(NxIndicatorComponent) indicatorInstance: NxIndicatorComponent;
+  @ViewChild(NxIndicatorComponent) indicatorInstance!: NxIndicatorComponent;
 }
 
 describe('NxIndicatorComponent', () => {

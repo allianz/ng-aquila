@@ -13,9 +13,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 // note that this currently only supports youtube videos
 export class NxVideoComponent implements AfterViewInit, OnDestroy {
 
-  private _videoId: string = null;
+  private _videoId: string | null = null;
 
-  @ViewChild('playButton') _playButton: ElementRef;
+  @ViewChild('playButton') _playButton!: ElementRef;
 
   /** Sets the id of the YouTube video. */
   @Input('nxVideoId')
@@ -26,7 +26,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     }
   }
   get videoId(): string {
-    return this._videoId;
+    return this._videoId as string;
   }
 
   private _altText: string = '';
@@ -57,7 +57,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     return this._playButtonAriaLabel;
   }
 
-  private _previewImageSrc: string = null;
+  private _previewImageSrc: string | null = null;
 
   /** Sets the preview image. If this is not provided, an image from YouTube will be used as default. */
   @Input('nxPreviewImageSrc')
@@ -68,7 +68,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     }
   }
   get previewImageSrc(): string {
-    return this._previewImageSrc;
+    return this._previewImageSrc as string;
   }
 
   private _showPlayerControls: boolean = true;
@@ -95,7 +95,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     return this._allowFullScreen;
   }
 
-  private _interfaceLanguage: string = null;
+  private _interfaceLanguage: string | null = null;
 
   /** Sets interface language. Can be used to override the interface language determined by YouTube. */
   @Input('nxInterfaceLanguage')
@@ -106,7 +106,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     }
   }
   get interfaceLanguage(): string {
-    return this._interfaceLanguage;
+    return this._interfaceLanguage as string;
   }
 
   /** @docs-private */

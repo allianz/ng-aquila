@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class HeaderCellTest {
-  @ViewChild(NxHeaderCellDirective) headerCellInstance: NxHeaderCellDirective;
+  @ViewChild(NxHeaderCellDirective) headerCellInstance!: NxHeaderCellDirective;
 }
 
 describe(NxHeaderCellDirective.name, () => {

@@ -5,7 +5,7 @@ import { NxToolbarModule } from './toolbar.module';
 
 @Directive()
 abstract class ToolbarTest {
-  @ViewChild(NxToolbarComponent) toolbarInstance: NxToolbarComponent;
+  @ViewChild(NxToolbarComponent) toolbarInstance!: NxToolbarComponent;
 }
 
 describe('NxToolbarComponent', () => {

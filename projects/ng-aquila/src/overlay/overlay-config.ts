@@ -34,7 +34,7 @@ export class NxOverlayConfig<D = any> {
   id?: string;
 
   /** The ARIA role of the overlay element. */
-  role?: NxOverlayRole = null;
+  role?: NxOverlayRole | null = null;
 
   /** Custom class for the overlay pane. */
   panelClass?: string | string[] = '';

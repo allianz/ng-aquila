@@ -25,11 +25,11 @@ import { NxTabGroupBase } from './tab-group-base';
   styleUrls: ['./tab-body.scss']
 })
 export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
-  private _appearanceSubscription: Subscription;
+  private _appearanceSubscription!: Subscription;
 
-  @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet: ViewContainerRef;
+  @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
-  @Input() tab: NxTabComponent;
+  @Input() tab!: NxTabComponent;
 
   private _active: boolean = false;
 

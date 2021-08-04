@@ -35,7 +35,7 @@ export class NxHeaderRowDirective {}
   }
 })
 export class NxHeaderComponent {
-  @ContentChildren(NxHeaderRowDirective) _headerRows: QueryList<NxHeaderRowDirective>;
+  @ContentChildren(NxHeaderRowDirective) _headerRows!: QueryList<NxHeaderRowDirective>;
 }
 
 /** This directive defines the header brand section within the `<nx-header>` component. */

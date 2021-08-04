@@ -35,7 +35,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
   private _direction: NxMultiStepperDirection = 'horizontal';
 
   /** The label of the step. */
-  @Input() label: CdkStepLabel | string;
+  @Input() label!: CdkStepLabel | string;
 
   /** Sets the selected step. */
   @Input()
@@ -46,7 +46,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     this._selected = coerceBooleanProperty(value);
     this._changeDetectorRef.markForCheck();
   }
-  private _selected: boolean;
+  private _selected!: boolean;
 
   /** Sets the active step. */
   @Input()
@@ -57,7 +57,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     this._active = coerceBooleanProperty(value);
     this._changeDetectorRef.markForCheck();
   }
-  private _active: boolean;
+  private _active!: boolean;
 
   @Input()
   get disabled(): boolean {
@@ -67,7 +67,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     this._disabled = coerceBooleanProperty(value);
     this._changeDetectorRef.markForCheck();
   }
-  private _disabled: boolean;
+  private _disabled!: boolean;
 
   /** Sets the last step. */
   @Input()
@@ -78,7 +78,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     this._last = coerceBooleanProperty(value);
     this._changeDetectorRef.markForCheck();
   }
-  private _last: boolean;
+  private _last!: boolean;
 
   /** Sets the step completed. */
   @Input()
@@ -89,7 +89,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     this._completed = coerceBooleanProperty(value);
     this._changeDetectorRef.markForCheck();
   }
-  private _completed: boolean;
+  private _completed!: boolean;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,

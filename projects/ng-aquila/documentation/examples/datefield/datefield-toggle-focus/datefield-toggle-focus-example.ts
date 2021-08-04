@@ -11,6 +11,6 @@ import { Moment } from 'moment';
 })
 
 export class DatefieldToggleFocusExampleComponent {
-  date1: Moment = null;
-  date2: Moment = null;
+  date1: Moment | null = null;
+  date2: Moment | null = null;
 }

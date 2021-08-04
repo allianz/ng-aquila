@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class TableCellTest {
-  @ViewChild(NxTableCellComponent) tableCellInstance: NxTableCellComponent;
+  @ViewChild(NxTableCellComponent) tableCellInstance!: NxTableCellComponent;
 }
 
 describe(NxTableCellComponent.name, () => {

@@ -13,7 +13,7 @@ export class NxvThemeSwitcherComponent {
 
   @Input() themes: Theme[] = [];
 
-  @Input() selected: Theme;
+  @Input() selected!: Theme;
   @Output() readonly selectedChange = new EventEmitter<Theme>();
 
   constructor(private iconRegistry: NxIconRegistry) {

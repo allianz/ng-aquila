@@ -1,6 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import {
   ConnectionPositionPair,
+  FlexibleConnectedPositionStrategyOrigin,
   HorizontalConnectionPos,
   OriginConnectionPosition,
   Overlay,
@@ -52,7 +53,7 @@ export const OVERLAY_POSITIONS: {[key in NxOverlayDirection]: (isRtl: boolean) =
     return { overlayX: isRtl ? 'end' : 'start', overlayY: 'center' };
   }
 };
-export const ORIGIN_POSITIONS: {[key in NxOverlayDirection]: (boolean) => OriginConnectionPosition} = {
+export const ORIGIN_POSITIONS: {[key in NxOverlayDirection]: (arg0: boolean) => OriginConnectionPosition} = {
   'top'(isRtl) {
     return { originX: 'center', originY: 'top'};
   },
@@ -84,8 +85,9 @@ export class NxOverlayPositionBuilder {
 
   constructor(private _overlay: Overlay, @Optional() private _dir: Directionality) { }
 
-  createPositionStrategy(element, config: NxOverlayConfig) {
-    const fallbacks = this._getFallbackPositions(config.direction, config);
+  createPositionStrategy(element: FlexibleConnectedPositionStrategyOrigin, config: NxOverlayConfig) {
+    const fallbacks = this._getFallbackPositions(config.direction as NxOverlayDirection,
+      config);
     const origin = this.getOrigin(config.direction);
     const overlay = this.getOverlayPosition(config.direction);
     const offset = this.getOffset(config.direction, config);
@@ -108,23 +110,26 @@ export class NxOverlayPositionBuilder {
   /**
    * Returns the origin position based on the user's direction preference.
    */
-  getOrigin(direction: NxOverlayDirection): OriginConnectionPosition {
-    if (!(direction in ORIGIN_POSITIONS)) {
-      throw getNxOverlayInvalidDirectionError(direction);
+  getOrigin(direction: NxOverlayDirection | undefined): OriginConnectionPosition {
+    if (!direction || !(direction in ORIGIN_POSITIONS)) {
+      throw getNxOverlayInvalidDirectionError(direction as string);
     }
     return ORIGIN_POSITIONS[direction](this.isRtl);
   }
 
   /** Returns the overlay position based on the user's direction preference */
-  getOverlayPosition(direction: NxOverlayDirection): OverlayConnectionPosition {
-    if (!(direction in OVERLAY_POSITIONS)) {
-      throw getNxOverlayInvalidDirectionError(direction);
+  getOverlayPosition(direction: NxOverlayDirection | undefined): OverlayConnectionPosition {
+    if (!direction || !(direction in OVERLAY_POSITIONS)) {
+      throw getNxOverlayInvalidDirectionError(direction as string);
     }
     return OVERLAY_POSITIONS[direction](this.isRtl);
   }
 
   /** Returns the overlay offset required by the user's direction preference */
-  getOffset(direction: NxOverlayDirection, config: NxOverlayConfig) {
+  getOffset(direction: NxOverlayDirection | undefined, config: NxOverlayConfig) {
+    if (!direction || !(direction in OVERLAY_POSITIONS)) {
+      throw getNxOverlayInvalidDirectionError(direction as string);
+    }
     const offset = config.offset || BASE_OFFSET;
     const [genericDirection] = direction.split('-');
     switch (genericDirection) {
@@ -202,6 +207,8 @@ export class NxOverlayPositionBuilder {
       case 'clockwise':
         order = CLOCKWISE_DIRECTIONS;
         break;
+      default:
+        throw getNxOverlayInvalidDirectionError(config.fallbackOrientation || '');
     }
     // reorder the array to start from the requested position
     const [generalDirection] = this._splitDirection(direction);
@@ -221,7 +228,7 @@ export class NxOverlayPositionBuilder {
 
   /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */
   private _getInversePosition(position: string): VerticalConnectionPos | HorizontalConnectionPos {
-    const positionPairs = {
+    const positionPairs: { [k: string]: VerticalConnectionPos | HorizontalConnectionPos } = {
       top: 'bottom',
       bottom: 'top',
       start: 'end',
@@ -233,21 +240,24 @@ export class NxOverlayPositionBuilder {
 
   /** Resolve the fallback order to all possible direction. For top and bottom we want to add the start and end positions. */
   private _resolveFallbacks(fallbacks: NxOverlayDirection[], config: NxOverlayConfig) {
+    if (!config.direction) {
+      throw getNxOverlayInvalidDirectionError('');
+    }
     const [generalDirection, addition] = this._splitDirection(config.direction);
-    return fallbacks.reduce((resolved, direction) => {
+    return fallbacks.reduce((resolved: NxOverlayDirection[], direction) => {
       if (direction === 'top' || direction === 'bottom') {
         if (addition) {
           // if we have something like bottom-start we want to do bottom-end first
           resolved.push(
-            `${direction}-${addition}`,
-            `${direction}-${this._getInversePosition(addition)}`,
+            `${direction}-${addition}` as NxOverlayDirection,
+            `${direction}-${this._getInversePosition(addition)}` as NxOverlayDirection,
             direction
           );
         } else {
           resolved.push(
             direction,
-            `${direction}-start`,
-            `${direction}-end`
+            `${direction}-start` as NxOverlayDirection,
+            `${direction}-end` as NxOverlayDirection
           );
         }
       } else {

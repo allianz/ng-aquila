@@ -115,11 +115,11 @@ describe('shared utils', () => {
 class TestComponent {
   constructor(private _elementRef: ElementRef, private _renderer: Renderer2) { }
 
-  testAppendClasses(classes) {
+  testAppendClasses(classes: any) {
     appendClasses(this._renderer, this._elementRef, classes);
   }
 
-  testRemoveClasses(classes) {
+  testRemoveClasses(classes: any) {
     removeClasses(this._renderer, this._elementRef, classes);
   }
 }

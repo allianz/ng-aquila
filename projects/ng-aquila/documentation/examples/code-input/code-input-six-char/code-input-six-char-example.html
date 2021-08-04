@@ -2,10 +2,10 @@
   <nx-code-input #codeInput formControlName="keyCode"></nx-code-input>
 
   <div *ngIf="codeInput.errorState">
-    <nx-error *ngIf="keyCode.hasError('required')" class="nx-margin-y-xs">
+    <nx-error *ngIf="keyCode?.hasError('required')" class="nx-margin-y-xs">
       Entry is required.
     </nx-error>
-    <nx-error *ngIf="keyCode.hasError('minlength')" class="nx-margin-y-xs">
+    <nx-error *ngIf="keyCode?.hasError('minlength')" class="nx-margin-y-xs">
       Entry is too short.
     </nx-error>
   </div>

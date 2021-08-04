@@ -12,7 +12,7 @@ import { ComponentService } from '../../../service/component.service';
 
 // tslint:disable-next-line:component-class-suffix
 export class ComponentOverview {
-  componentDescriptor: ComponentDescriptor;
+  componentDescriptor!: ComponentDescriptor;
 
   constructor(
     public componentService: ComponentService

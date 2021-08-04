@@ -13,7 +13,7 @@ export class NxDateValidators {
     dateFormats: NxDateFormats,
     input: HTMLInputElement,
     strict: boolean,
-    customParseFormat: string | string[] = null): ValidatorFn {
+    customParseFormat: string | string[]): ValidatorFn {
     return (): ValidationErrors | null => {
       if (!input.value) {
         return null;

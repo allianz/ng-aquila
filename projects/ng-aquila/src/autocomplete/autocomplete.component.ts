@@ -49,7 +49,7 @@ export class NxAutocompleteSelectedEvent {
 export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
   /** Manages active item in option list based on key events. */
-  _keyManager: ActiveDescendantKeyManager<NxAutocompleteOptionComponent>;
+  _keyManager!: ActiveDescendantKeyManager<NxAutocompleteOptionComponent>;
 
   /** Whether the autocomplete panel should be visible, depending on option length. */
   showPanel: boolean = false;
@@ -59,13 +59,13 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
   _isOpen: boolean = false;
 
   /** @docs-private */
-  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
   /**
    * @docs-private
    * Element for the panel containing the autocomplete options.
    */
-  @ViewChild('panel') panel: ElementRef;
+  @ViewChild('panel') panel!: ElementRef;
 
   /** Items observable. If given, autocomplete takes care of the options and ng-content is discarderd */
   @Input()
@@ -90,10 +90,10 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     }
   }
   get items(): string[] | Observable<string[]> {
-    return this._items;
+    return this._items as string[];
   }
-  private _items: string[] = null;
-  private _itemsSubscription: Subscription;
+  private _items: string[] | null = null;
+  private _itemsSubscription!: Subscription;
 
   /**
    * @docs-private
@@ -116,11 +116,11 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
   /** Autocomplete options in view - ie from items */
   @ViewChildren(NxAutocompleteOptionComponent)
-  private _vOptions: QueryList<NxAutocompleteOptionComponent>;
+  private _vOptions!: QueryList<NxAutocompleteOptionComponent>;
 
   /** Autocomplete options in content - ie user provided */
   @ContentChildren(NxAutocompleteOptionComponent, { descendants: true})
-  private _cOptions: QueryList<NxAutocompleteOptionComponent>;
+  private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
 
   /** Autocomplete options */
   public get options(): QueryList<NxAutocompleteOptionComponent> {

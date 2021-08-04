@@ -7,7 +7,7 @@ import { NxTimefieldIntl } from './timefield-intl';
 
 @Directive()
 abstract class TimefieldTest {
-  @ViewChild(NxTimefieldComponent) timefieldInstance: NxTimefieldComponent;
+  @ViewChild(NxTimefieldComponent) timefieldInstance!: NxTimefieldComponent;
 
   label: string = '';
   negative: boolean = false;
@@ -113,12 +113,16 @@ describe('NxTimefieldComponent', () => {
     const templateInstance = testInstance as TemplateDrivenTimefield;
     flushAndAssertTime('00:00');
     templateInstance.today = '00:00:00';
+    // @ts-ignore
     flushAndAssertTime(null);
     templateInstance.today = '00-00';
+    // @ts-ignore
     flushAndAssertTime(null);
     templateInstance.today = '00/00';
+    // @ts-ignore
     flushAndAssertTime(null);
     templateInstance.today = '00.00';
+    // @ts-ignore
     flushAndAssertTime(null);
   }));
 
@@ -131,6 +135,7 @@ describe('NxTimefieldComponent', () => {
     createTestComponent(TemplateDrivenTimefield);
     const templateInstance = testInstance as TemplateDrivenTimefield;
     templateInstance.today = '24:00';
+    // @ts-ignore
     flushAndAssertTime(null);
     fixture.detectChanges();
     tick();
@@ -141,6 +146,7 @@ describe('NxTimefieldComponent', () => {
     createTestComponent(TemplateDrivenTimefield);
     const templateInstance = testInstance as TemplateDrivenTimefield;
     templateInstance.today = '22:62';
+    // @ts-ignore
     flushAndAssertTime(null);
     fixture.detectChanges();
     tick();
@@ -183,6 +189,7 @@ describe('NxTimefieldComponent', () => {
     createTestComponent(TemplateDrivenTimefield);
     const templateInstance = testInstance as TemplateDrivenTimefield;
     templateInstance.today = 'abcd';
+    // @ts-ignore
     flushAndAssertTime(null);
     fixture.detectChanges();
     tick();
@@ -208,6 +215,7 @@ describe('NxTimefieldComponent', () => {
       expect(timefieldInstance._toggleAMPM).toBe('AM');
       timefieldInstance.twelveHourFormat = false;
       fixture.detectChanges();
+      // @ts-ignore
       expect(timefieldInstance._toggleAMPM).toBe(null);
     });
 
@@ -266,6 +274,7 @@ describe('NxTimefieldComponent', () => {
       expect(timefieldInstance.maxHours).toBe(12);
       timefieldInstance.twelveHourFormat = false;
       fixture.detectChanges();
+      // @ts-ignore
       expect(timefieldInstance._toggleAMPM).toBe(null);
       expect(timefieldInstance.minHours).toBe(0);
       expect(timefieldInstance.maxHours).toBe(23);
@@ -360,6 +369,7 @@ describe('NxTimefieldComponent', () => {
     it('should reflect the error state', fakeAsync(() => {
       createTestComponent(ReactiveTimefield);
       const reactInstance = testInstance as ReactiveTimefield;
+      // @ts-ignore
       assertTime(null);
       expect(reactInstance.testForm.status).toBe('INVALID');
       reactInstance.testForm.patchValue({ today: '00:00' });
@@ -414,7 +424,7 @@ class ConfigurableTimefield extends TimefieldTest { }
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class ReactiveTimefield extends TimefieldTest {
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     super();

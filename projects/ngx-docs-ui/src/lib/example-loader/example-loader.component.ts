@@ -31,7 +31,8 @@ export class ExampleLoaderComponent {
     private _injector: Injector
   ) {}
 
-  @Input() file: string;
+  @Input()
+  file!: string;
   @Input() examples: string[] = [];
   @Output() contentLoaded = new EventEmitter<any>();
 
@@ -51,7 +52,7 @@ export class ExampleLoaderComponent {
         exampleElement, this._componentFactoryResolver, this._appRef, this._injector);
       const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
       const exampleViewer = portalHost.attach(examplePortal);
-      (exampleViewer.instance as ExampleViewerComponent).example = example;
+      (exampleViewer.instance as ExampleViewerComponent).example = example as string;
 
       const config = exampleElement.getAttribute('config')?.replace(/'/g, `"`);
       (exampleViewer.instance as ExampleViewerComponent).config = config ? JSON.parse(config) : {};

@@ -8,9 +8,9 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-  @ViewChild('consentTemplate') consentTemplateRef: TemplateRef<any>;
-  @ViewChild('submitTemplate') submitTemplateRef: TemplateRef<any>;
-  dialogRef: NxModalRef<any, any>;
+  @ViewChild('consentTemplate') consentTemplateRef!: TemplateRef<any>;
+  @ViewChild('submitTemplate') submitTemplateRef!: TemplateRef<any>;
+  dialogRef!: NxModalRef<any, any>;
   formGroup: FormGroup;
 
   constructor(public dialogService: NxDialogService) {

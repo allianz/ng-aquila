@@ -12,7 +12,7 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 
 @Directive()
 abstract class IconTest {
-  @ViewChild(NxIconComponent) buttonInstance: NxIconComponent;
+  @ViewChild(NxIconComponent) buttonInstance!: NxIconComponent;
   name: string = '';
   font = 'custom-font';
 }

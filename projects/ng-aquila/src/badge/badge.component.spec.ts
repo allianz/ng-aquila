@@ -5,7 +5,7 @@ import { NxBadgeComponent, NxBadgeType } from './badge.component';
 
 @Directive()
 abstract class BadgeTest {
-  @ViewChild(NxBadgeComponent) badgeInstance: NxBadgeComponent;
+  @ViewChild(NxBadgeComponent) badgeInstance!: NxBadgeComponent;
   type = 'active';
 }
 describe('NxBadgeComponent', () => {

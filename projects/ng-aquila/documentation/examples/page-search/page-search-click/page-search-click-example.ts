@@ -10,10 +10,10 @@ import { Component } from '@angular/core';
 })
 export class PageSearchClickExampleComponent {
 
-  valuesByClick = [];
-  searchTerm: string;
+  valuesByClick: Array<string> = [];
+  searchTerm: string = '';
 
-  onButtonClick(value) {
+  onButtonClick(value: string) {
     this.valuesByClick.push(value);
   }
 }

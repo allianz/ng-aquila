@@ -1,8 +1,19 @@
 import { LocalizedCountryNames } from 'i18n-iso-countries';
 // This file gets created in the postinstall hook, see extract-calling-codes.js script
-import metadata from './metadata.json';
+import rawMetadata from './metadata.json';
 
 const MAX_LENGTH_COUNTRY_CODE = 3;
+
+class CountryMetadata {
+  countries: { [key: string]: string } = {};
+  callingCodes: { [key: string]: string } = {};
+  constructor(sourceObj: any) {
+    this.countries = sourceObj.countries;
+    this.callingCodes = sourceObj.callingCodes;
+  }
+}
+
+const metadata = new CountryMetadata(rawMetadata);
 
 /** Get dial code by country code */
 export const getDialCodeByCountryCode = function (countryCode: string): string {

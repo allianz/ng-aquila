@@ -15,11 +15,11 @@ const THROTTLE_TIME = 200;
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class TabHeaderScrollableTest {
-  direction;
-  tabs;
+  direction: any;
+  tabs: any;
 
-  @ViewChild(NxTabGroupComponent) tabGroupInstance: NxTabGroupComponent;
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
+  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabHeader', () => {
@@ -92,14 +92,14 @@ describe('Scrollable TabHeader', () => {
     }));
 
     it('hides scroll-to-start indicator', fakeAsync(() => {
-      expect(tabHeaderNativeElement.querySelector('.nx-tab-header').scrollLeft).toBe(0);
+      expect(tabHeaderNativeElement.querySelector('.nx-tab-header')?.scrollLeft).toBe(0);
       expect(getStartScrollElement().classList).toContain('is-scrolled-to-start');
     }));
 
     it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
       const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
-      scrollableContainer.scrollTo({ left: 50 });
-      dispatchFakeEvent(scrollableContainer, 'scroll');
+      scrollableContainer!.scrollTo({ left: 50 });
+      dispatchFakeEvent(scrollableContainer as Node, 'scroll');
       fixture.detectChanges();
       expect(getStartScrollElement().classList).not.toContain('is-scrolled-to-start');
     }));
@@ -110,8 +110,8 @@ describe('Scrollable TabHeader', () => {
 
     it('hides scroll-to-end indicator when at end', fakeAsync(() => {
       const scrollableContainer = tabHeaderNativeElement.querySelector('.nx-tab-header');
-      scrollableContainer.scrollTo({ left: 1000 });
-      dispatchFakeEvent(scrollableContainer, 'scroll');
+      scrollableContainer!.scrollTo({ left: 1000 });
+      dispatchFakeEvent(scrollableContainer as Node, 'scroll');
       fixture.detectChanges();
       expect(getEndScrollElement().classList).toContain('is-scrolled-to-end');
     }));
@@ -149,10 +149,10 @@ describe('Scrollable TabHeader', () => {
 
 @Directive()
 abstract class TabNavBarScrollableTest {
-  direction;
-  links;
+  direction: any;
+  links: any;
 
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
+  @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
 }
 
 describe('Scrollable TabNavBar', () => {
@@ -226,16 +226,16 @@ describe('Scrollable TabNavBar', () => {
     }));
 
     it('hides scroll-to-start indicator', fakeAsync(() => {
-      expect(tabNavBarNativeElement.querySelector('.nx-tab-nav-bar').scrollLeft).toBe(0);
+      expect(tabNavBarNativeElement.querySelector('.nx-tab-nav-bar')!.scrollLeft).toBe(0);
       expect(getStartScrollElement().classList).toContain('is-scrolled-to-start');
     }));
 
     it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
       const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
-      scrollableContainer.scrollTo({ left: 50 });
-      dispatchFakeEvent(scrollableContainer, 'scroll');
+      scrollableContainer!.scrollTo({ left: 50 });
+      dispatchFakeEvent(scrollableContainer!, 'scroll');
       fixture.detectChanges();
-      expect(scrollableContainer.scrollLeft).toBe(50);
+      expect(scrollableContainer!.scrollLeft).toBe(50);
       expect(getStartScrollElement().classList).not.toContain('is-scrolled-to-start');
     }));
 
@@ -245,8 +245,8 @@ describe('Scrollable TabNavBar', () => {
 
     it('hides scroll-to-end indicator when at end', fakeAsync(() => {
       const scrollableContainer = tabNavBarNativeElement.querySelector('.nx-tab-nav-bar');
-      scrollableContainer.scrollTo({ left: 1000 });
-      dispatchFakeEvent(scrollableContainer, 'scroll');
+      scrollableContainer!.scrollTo({ left: 1000 });
+      dispatchFakeEvent(scrollableContainer!, 'scroll');
       fixture.detectChanges();
       expect(getEndScrollElement().classList).toContain('is-scrolled-to-end');
     }));

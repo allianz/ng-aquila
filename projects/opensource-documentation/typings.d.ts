@@ -3,4 +3,4 @@ declare module '*.json' {
   export default value;
 }
 
-declare function Egg(keySequence: string, fn): void;
+declare function Egg(keySequence: string, fn: Function): void;

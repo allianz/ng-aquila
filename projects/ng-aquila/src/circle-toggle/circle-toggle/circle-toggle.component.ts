@@ -12,6 +12,7 @@ import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-togg
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { FileItem } from '@aposin/ng-aquila/file-uploader';
 
 export class ToggleChangeEvent {
   /** A toggle button */
@@ -20,7 +21,7 @@ export class ToggleChangeEvent {
   /** The value of the toggle button that is sent with the event. */
   value: string;
 
-  constructor(button, value) {
+  constructor(button: ToggleButton, value: string) {
     this.button = button;
     this.value = value;
   }
@@ -56,7 +57,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
 
   private _id: string = `toggle-button-${nextId++}`;
 
-  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
+  @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
   /** @docs-private */
   inGroup: boolean = false;
@@ -74,7 +75,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     return this._id;
   }
 
-  private _name: string = null;
+  private _name: string | null = null;
 
   /** Name that is used for accessibility. */
   @Input()
@@ -83,7 +84,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get name(): string {
-    return this._name;
+    return this._name as string;
   }
 
   /**
@@ -113,7 +114,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     return this._checked;
   }
 
-  private _value: string = null;
+  private _value: string | null = null;
 
   /** The value that is used in the model. */
   @Input()
@@ -122,10 +123,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get value(): string {
-    return this._value;
+    return this._value as string;
   }
 
-  private _iconName: string = null;
+  private _iconName: string | null = null;
   /** Id of the icon that should be displayed. */
   @Input('icon')
   set iconName(name: string) {
@@ -133,10 +134,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get iconName(): string {
-    return this._iconName;
+    return this._iconName as string;
   }
 
-  private _svg: string = null;
+  private _svg: string | null = null;
 
   /** SVG that is displayed if the circle toggle is unchecked. */
   @Input()
@@ -145,10 +146,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get svg(): string {
-    return this._svg;
+    return this._svg as string;
   }
 
-  private _svgChecked: string = null;
+  private _svgChecked: string | null = null;
 
   /** SVG that is displayed if the circle toggle is checked. */
   @Input()
@@ -157,10 +158,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get svgChecked(): string {
-    return this._svgChecked;
+    return this._svgChecked as string;
   }
 
-  private _circleText: string = null;
+  private _circleText: string | null = null;
 
   /** A text that is displayed inside the circle toggle. */
   @Input()
@@ -171,10 +172,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     }
   }
   get circleText(): string {
-    return this._circleText;
+    return this._circleText as string;
   }
 
-  private _label: string = null;
+  private _label: string | null = null;
 
   /** Label displayed below the circle. */
   @Input()
@@ -183,10 +184,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get label(): string {
-    return this._label;
+    return this._label as string;
   }
 
-  private _hint: string = null;
+  private _hint: string | null = null;
 
   /** Additional hint displayed below the label. */
   @Input()
@@ -195,10 +196,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
     this._changeDetectorRef.markForCheck();
   }
   get hint(): string {
-    return this._hint;
+    return this._hint as string;
   }
 
-  private _negative;
+  private _negative: boolean | undefined;
 
   /** Whether the circle toggle uses the negative set of styling. */
   @Input()
@@ -211,10 +212,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   }
 
   get negative() {
-    return this._negative;
+    return !!this._negative;
   }
 
-  private _responsive;
+  private _responsive: boolean | undefined;
 
   /** Whether the circle toggle has a responsive behavior. */
   @Input()
@@ -227,10 +228,10 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   }
 
   get responsive() {
-    return this._responsive;
+    return !!this._responsive;
   }
 
-  private _disabled: boolean;
+  private _disabled: boolean | undefined;
 
   /** Whether the circle toggle is disabled. */
   @Input()
@@ -243,12 +244,12 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   }
 
   get disabled() {
-    return this._disabled;
+    return !!this._disabled;
   }
 
   /** @docs-private */
   @ViewChild(NxMobileToggleButtonComponent, { static: true })
-  toggleButton: NxMobileToggleButtonComponent;
+  toggleButton!: NxMobileToggleButtonComponent;
 
   private _hover: boolean = false;
 
@@ -328,7 +329,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
       });
   }
 
-  writeValue(newValue): void {
+  writeValue(newValue: boolean): void {
     this.checked = newValue;
   }
 
@@ -346,11 +347,11 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
 
   /** Focuses the radio button element. */
   focus(focusOrigin?: FocusOrigin) {
-    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
   }
 
   /** @docs-private */
-  toggle(event) {
+  toggle(event: Event) {
     event.preventDefault();
     event.stopPropagation();
 
@@ -402,7 +403,7 @@ OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
   }
 
   /** @docs-private */
-  handleEnterKey(event) {
+  handleEnterKey(event: Event) {
     if (!this.toggleGroup) {
       this.toggle(event);
     }

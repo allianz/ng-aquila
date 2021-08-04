@@ -63,7 +63,7 @@ let nextId = 0;
 export class NxRadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
 
   @ContentChild(forwardRef(() => NxLabelComponent))
-  _label: NxLabelComponent;
+  _label!: NxLabelComponent;
 
   /** @docs-private */
   errorState: boolean = false;
@@ -127,10 +127,10 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
   private _selected: NxRadioComponent | null = null;
 
   @ContentChildren(forwardRef(() => NxRadioComponent), {descendants: true})
-  _radios: QueryList<NxRadioComponent>;
+  _radios!: QueryList<NxRadioComponent>;
 
   private _onChange: (value: any) => void = () => {};
-  private _onTouched: () => any = () => {};
+  private _onTouched: Function = () => {};
 
   get name(): string {
     return this._name;
@@ -196,15 +196,15 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     this._onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: Function): void {
     this._onTouched = fn;
   }
 
   /** @docs-private this is meant to be called by the radio buttons in this group */
-  change(value) {
+  change(value: any) {
     this.value = value;
     this._onChange(value);
-    this.groupValueChange.emit(new NxRadioChange(this._selected, this._value));
+    this.groupValueChange.emit(new NxRadioChange(this._selected as NxRadioComponent, this._value));
   }
 
   /** @docs-private this is meant to be called by the radio buttons in this group. */
@@ -280,9 +280,9 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 })
 export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterViewInit, OnDestroy {
   /** @docs-private */
-  @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper: ElementRef;
-  @ViewChild('input') _nativeInput: ElementRef<HTMLElement>;
-  private _parentChangeSubscription: Subscription;
+  @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper!: ElementRef;
+  @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
+  private _parentChangeSubscription!: Subscription;
 
   private _id: string = `nx-radio-${nextId++}`;
   /** Sets the id of the radio component. */
@@ -307,7 +307,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     return `${this.id}-label`;
   }
 
-  private _name: string = null;
+  private _name: string | null = null;
   // this is also the name attribute, which is mandatory in conjunction with ngModel, hence no nx prefix
   /** Sets the name of this radio component, which is mandatory in conjunction with ngModel (Default: null). */
   @Input('name')
@@ -318,7 +318,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
   }
   get name(): string {
-    return (this.radioGroup && this.radioGroup.name) ? this.radioGroup.name : this._name;
+    return (this.radioGroup && this.radioGroup.name) ? this.radioGroup.name : this._name as string;
   }
 
   private _labelSize: LabelSize = 'big';
@@ -465,21 +465,21 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
   }
 
-  private onChangeCallback = (_: any) => {};
+  private onChangeCallback: Function = () => {};
 
-  registerOnChange(onChange: any): void {
+  registerOnChange(onChange: Function): void {
     this.onChangeCallback = onChange;
   }
 
-  private onTouchedCallback = () => {};
+  private onTouchedCallback: Function = () => {};
 
-  registerOnTouched(onTouched: any): void {
+  registerOnTouched(onTouched: Function): void {
     this.onTouchedCallback = onTouched;
   }
 
   /** Focuses the radio button element. */
   focus(focusOrigin?: FocusOrigin) {
-    this._focusMonitor.focusVia(this._nativeInput, focusOrigin);
+    this._focusMonitor.focusVia(this._nativeInput, focusOrigin as FocusOrigin);
   }
 
   /** @docs-private */

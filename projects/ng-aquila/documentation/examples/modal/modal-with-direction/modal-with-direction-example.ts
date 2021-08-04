@@ -11,9 +11,9 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   styleUrls: ['./modal-with-direction-example.css']
 })
 export class ModalWithDirectionExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
 
-  templateDialogRef: NxModalRef<any>;
+  templateDialogRef!: NxModalRef<any>;
 
   constructor(
     public dialogService: NxDialogService,

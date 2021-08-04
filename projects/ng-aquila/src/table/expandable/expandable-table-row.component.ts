@@ -19,7 +19,7 @@ import { NxExpandable } from './toggle-button.component';
 })
 export class NxExpandableTableRowComponent implements NxExpandable {
 
-  private _isExpanded: boolean;
+  private _isExpanded!: boolean;
 
   /* Whether the row is expanded. */
   @Input()
@@ -32,7 +32,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
     return this._isExpanded;
   }
 
-  expanded: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 

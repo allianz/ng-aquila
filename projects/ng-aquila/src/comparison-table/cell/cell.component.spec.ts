@@ -13,9 +13,12 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class CellTest {
-  @ViewChildren(NxComparisonTableCell) cellInstances: QueryList<NxComparisonTableCell>;
-  @ViewChild(NxComparisonTableDescriptionCell) descriptionCellInstance: NxComparisonTableDescriptionCell;
-  @ViewChild(NxToggleSectionDirective) toggleSectionInstance: NxToggleSectionDirective;
+  @ViewChildren(NxComparisonTableCell)
+  cellInstances!: QueryList<NxComparisonTableCell>;
+  @ViewChild(NxComparisonTableDescriptionCell)
+  descriptionCellInstance!: NxComparisonTableDescriptionCell;
+  @ViewChild(NxToggleSectionDirective)
+  toggleSectionInstance!: NxToggleSectionDirective;
 
   selected = 0;
   headerTestId = 'header-cell-0';
@@ -179,7 +182,7 @@ describe('NxComparisonTableCell', () => {
       createTestComponent(ToggleSectionCellComponent);
 
       const headers = cellElements[1].attributes['headers'];
-      expect(headers.split(' ').length).toBe(3);
+      expect(headers?.split(' ').length).toBe(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
@@ -195,7 +198,7 @@ describe('NxComparisonTableCell', () => {
 
       cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
       const headers = cellElements[0].attributes['headers'];
-      expect(headers.split(' ').length).toBe(3);
+      expect(headers?.split(' ').length).toBe(3);
       expect(headers).toContain(cellInstances.toArray()[0].id);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);

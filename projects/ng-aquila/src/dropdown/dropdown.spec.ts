@@ -144,7 +144,7 @@ describe('NxDropdownComponent', () => {
   function expectItemsHighlighted(highlightedIndexes: number[]) {
     let check = true;
 
-    testInstance.dropdownItems.forEach((item, itemIndex) => {
+    testInstance.dropdownItems.forEach((item: { active: any; }, itemIndex: number) => {
       if (highlightedIndexes.indexOf(itemIndex) > -1 && !item.active) {
         check = false;
       }
@@ -157,7 +157,7 @@ describe('NxDropdownComponent', () => {
 
   function expectItemsHighlightedOnFilter(activeItem: Element) {
     let check = true;
-    const activeItems = testInstance.dropdownItems.filter(item => item.active);
+    const activeItems = testInstance.dropdownItems.filter((item: { active: any; }) => item.active);
 
     // don't allow more than one active item
     if (activeItems.length > 1) {
@@ -165,7 +165,7 @@ describe('NxDropdownComponent', () => {
     }
 
     // the active item in the view and internally should be the same
-    if (activeItem.textContent.trim() !== activeItems[0].viewValue) {
+    if (activeItem.textContent!.trim() !== activeItems[0].viewValue) {
       check = false;
     }
 
@@ -214,7 +214,8 @@ describe('NxDropdownComponent', () => {
       openDropdownByClick();
       clickOnBackdrop();
       const dropdown = fixture.debugElement.nativeElement.querySelector('nx-dropdown');
-      expect(document.activeElement).toBe(dropdown, 'Expected host element to be focused.');
+      expect(document.activeElement)
+        .toBe(dropdown, 'Expected host element to be focused.');
     }));
 
     it('should float label on opening overlay', fakeAsync(() => {
@@ -232,7 +233,7 @@ describe('NxDropdownComponent', () => {
       tick();
 
       const overlayLabel = overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel-header');
-      expect(overlayLabel.textContent.trim()).toBe('Car brand');
+      expect(overlayLabel!.textContent!.trim()).toBe('Car brand');
     }));
 
     it('should be possible to override the overlay label', fakeAsync(() => {
@@ -245,7 +246,7 @@ describe('NxDropdownComponent', () => {
       tick();
 
       const overlayLabel = overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel-header');
-      expect(overlayLabel.textContent.trim()).toBe('My custom label');
+      expect(overlayLabel!.textContent!.trim()).toBe('My custom label');
     }));
 
     it('should show the correct label for truthy and falsy values', fakeAsync(() => {
@@ -311,12 +312,12 @@ describe('NxDropdownComponent', () => {
       flush();
       const customElement = renderedResult.querySelector('i');
       expect(customElement).toBeTruthy();
-      expect(customElement.textContent).toBe('BMW');
+      expect(customElement!.textContent).toBe('BMW');
     }));
 
     it('should display the correct trigger value with nxValue options', fakeAsync(() => {
       createTestComponent(DynamicDropdownComponent);
-      testInstance.items = [{ value: 'BMW', label: null }, { value: 'Audi', label: null }];
+      testInstance.items = [{ value: 'BMW', label: undefined }, { value: 'Audi', label: undefined }];
       fixture.detectChanges();
       openDropdownByClick();
       clickOnItem(1);
@@ -326,12 +327,12 @@ describe('NxDropdownComponent', () => {
 
     it('should display the items in the dropdown correctly without content projection', fakeAsync(() => {
       createTestComponent(DynamicDropdownComponent);
-      testInstance.items = [{ value: 'BMW', label: null }, { value: 'Audi', label: null }];
+      testInstance.items = [{ value: 'BMW', label: undefined }, { value: 'Audi', label: undefined }];
       fixture.detectChanges();
       openDropdownByClick();
       const items: NodeListOf<Element> = getDropdownItems();
-      expect(items.item(0).textContent.trim()).toBe('BMW');
-      expect(items.item(1).textContent.trim()).toBe('Audi');
+      expect(items.item(0).textContent!.trim()).toBe('BMW');
+      expect(items.item(1).textContent!.trim()).toBe('Audi');
     }));
 
     it('should update the trigger when the selected option label is changed', fakeAsync(() => {
@@ -340,13 +341,13 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       flush();
       fixture.detectChanges();
-      expect(trigger.textContent.trim()).toBe('BMW');
+      expect(trigger.textContent!.trim()).toBe('BMW');
 
       testInstance.items[0].label = 'BayMoWerk';
       fixture.detectChanges();
       flush();
       fixture.detectChanges();
-      expect(trigger.textContent.trim()).toBe('BayMoWerk');
+      expect(trigger.textContent!.trim()).toBe('BayMoWerk');
     }));
 
     it('should go into error state when error state matcher is true', fakeAsync(() => {
@@ -407,7 +408,7 @@ describe('NxDropdownComponent', () => {
       trigger.click();
       fixture.detectChanges();
       let items: NodeListOf<Element> = getDropdownItems();
-      expect(items.item(0).textContent.trim()).toBe('value');
+      expect(items.item(0).textContent!.trim()).toBe('value');
       tick(100);
       fixture.detectChanges();
       mutationCallbacks.forEach(callback => callback());
@@ -415,7 +416,7 @@ describe('NxDropdownComponent', () => {
       // needs to be reflected in the component template now
       fixture.detectChanges();
       items = getDropdownItems();
-      expect(items.item(0).textContent.trim()).toBe('deferred label');
+      expect(items.item(0).textContent!.trim()).toBe('deferred label');
     }));
 
     it('should display the items in the dropdown correctly for content projection', fakeAsync(() => {
@@ -423,10 +424,10 @@ describe('NxDropdownComponent', () => {
       openDropdownByClick();
 
       const items: NodeListOf<Element> = getDropdownItems();
-      expect(items.item(0).textContent.trim()).toBe('B');
-      expect(items.item(1).textContent.trim()).toBe('A');
-      expect(items.item(2).textContent.trim()).toBe('V');
-      expect(items.item(3).textContent.trim()).toBe('M');
+      expect(items.item(0).textContent!.trim()).toBe('B');
+      expect(items.item(1).textContent!.trim()).toBe('A');
+      expect(items.item(2).textContent!.trim()).toBe('V');
+      expect(items.item(3).textContent!.trim()).toBe('M');
 
       clickOnItem(2);
 
@@ -504,7 +505,7 @@ describe('NxDropdownComponent', () => {
       tick();
       flush();
 
-      expect(getDropdown().clientWidth).toBe(400);
+      expect(getDropdown()!.clientWidth).toBe(400);
     }));
 
     it('should not autofill monitor dropdown', () => {
@@ -565,7 +566,7 @@ describe('NxDropdownComponent', () => {
 
     it('should adapt to the outline style of the formfield', fakeAsync(() => {
       const dropdownOverlayDiv = getDropdown();
-      expect(dropdownOverlayDiv.classList.contains('nx-dropdown__panel--in-outline-field')).toBeTruthy();
+      expect(dropdownOverlayDiv!.classList.contains('nx-dropdown__panel--in-outline-field')).toBeTruthy();
     }));
   });
 
@@ -581,7 +582,7 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       flush();
 
-      expect(getDropdown().clientWidth).toBe(document.body.clientWidth - dropdownInstance._overlayViewportMargin);
+      expect(getDropdown()!.clientWidth).toBe(document.body.clientWidth - dropdownInstance._overlayViewportMargin);
     }));
   });
 
@@ -714,7 +715,7 @@ describe('NxDropdownComponent', () => {
 
       items = getVisibleItems();
       expect(items.length).toBe(1);
-      expect(items.item(0).textContent.trim()).toBe('Germany');
+      expect(items.item(0).textContent!.trim()).toBe('Germany');
 
       filterInput.value = '';
       dispatchFakeEvent(filterInput, 'input');
@@ -779,7 +780,7 @@ describe('NxDropdownComponent', () => {
       dispatchFakeEvent(filterInput, 'input');
       fixture.detectChanges();
       flush();
-      const visibleItems = instance.dropdownItems.filter(item => !item._hidden);
+      const visibleItems = instance.dropdownItems.filter((item: { _hidden: any; }) => !item._hidden);
       expect(visibleItems.length).toBe(2);
       expect(instance.filterResultChanged).toHaveBeenCalledWith(visibleItems);
     }));
@@ -815,7 +816,7 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       visibleItems = getVisibleItems();
       expect(visibleItems.length).toBe(1);
-      expect(visibleItems[0].textContent.trim()).toBe('BMW');
+      expect(visibleItems[0].textContent!.trim()).toBe('BMW');
     }));
 
     it('should filter spaces', fakeAsync(() => {
@@ -848,10 +849,10 @@ describe('NxDropdownComponent', () => {
       const dropdownGroups = getDropdownGroups();
       expect(dropdownGroups.length).toBe(2);
 
-      let groupLabel = dropdownGroups.item(0).querySelector('.nx-dropdown-results__group-label').textContent;
+      let groupLabel = dropdownGroups.item(0).querySelector('.nx-dropdown-results__group-label')!.textContent;
       expect(groupLabel).toBe('German');
 
-      groupLabel = dropdownGroups.item(1).querySelector('.nx-dropdown-results__group-label').textContent;
+      groupLabel = dropdownGroups.item(1).querySelector('.nx-dropdown-results__group-label')!.textContent;
       expect(groupLabel).toBe('Swedish');
 
     }));
@@ -867,10 +868,10 @@ describe('NxDropdownComponent', () => {
       openDropdownByClick();
 
       const items: NodeListOf<Element> = getDropdownItems();
-      expect(items.item(0).textContent.trim()).toBe('BMW');
-      expect(items.item(1).textContent.trim()).toBe('AUDI');
-      expect(items.item(2).textContent.trim()).toBe('VOLVO');
-      expect(items.item(3).textContent.trim()).toBe('MINI');
+      expect(items.item(0).textContent!.trim()).toBe('BMW');
+      expect(items.item(1).textContent!.trim()).toBe('AUDI');
+      expect(items.item(2).textContent!.trim()).toBe('VOLVO');
+      expect(items.item(3).textContent!.trim()).toBe('MINI');
     }));
   });
 
@@ -1058,7 +1059,7 @@ describe('NxDropdownComponent', () => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByClick();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', TAB);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', TAB);
       fixture.detectChanges();
       flush();
       expectDropdownClose();
@@ -1072,17 +1073,17 @@ describe('NxDropdownComponent', () => {
       const items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
       expect(dropdownInstance.panelBody.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(0).id);
 
-      dispatchKeyboardEvent(getDropdown(), 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(getDropdown()!, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       tick(300);
 
-      dispatchKeyboardEvent(getDropdown(), 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(getDropdown()!, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       tick(300);
 
       expect(dropdownInstance.panelBody.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(2).id);
 
-      dispatchKeyboardEvent(getDropdown(), 'keydown', UP_ARROW);
+      dispatchKeyboardEvent(getDropdown()!, 'keydown', UP_ARROW);
       fixture.detectChanges();
       tick(300);
 
@@ -1093,7 +1094,7 @@ describe('NxDropdownComponent', () => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByKeyboard();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       tick(300);
       flush();
@@ -1106,11 +1107,11 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       tick(300);
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', UP_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', UP_ARROW);
       fixture.detectChanges();
       tick(300);
       expectItemsHighlighted([0]);
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       tick(300);
       expectItemsHighlighted([1]);
@@ -1122,9 +1123,9 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       tick(300);
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', ENTER);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', ENTER);
       fixture.detectChanges();
       flush();
       expectDropdownClose();
@@ -1135,10 +1136,10 @@ describe('NxDropdownComponent', () => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByKeyboard();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       fixture.detectChanges();
       flush();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', SPACE);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', SPACE);
       fixture.detectChanges();
       flush();
       expectDropdownClose();
@@ -1151,12 +1152,12 @@ describe('NxDropdownComponent', () => {
       tick(300);
       fixture.detectChanges();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       tick(300);
       fixture.detectChanges();
       expectItemsHighlighted([1]);
 
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
       tick(300);
       fixture.detectChanges();
       expectItemsHighlighted([2]);
@@ -1169,7 +1170,7 @@ describe('NxDropdownComponent', () => {
 
       const items = getVisibleItems();
       expect(items.length).toBe(2);
-      expect(items.item(0).textContent.trim()).toBe('Ireland');
+      expect(items.item(0).textContent!.trim()).toBe('Ireland');
       expect(items[0].classList).toContain('nx-dropdown-item--active');
       expectItemsHighlightedOnFilter(items.item(0));
     }));
@@ -1198,9 +1199,9 @@ describe('NxDropdownComponent', () => {
       fixture.detectChanges();
       expectDropdownOpen();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', SPACE);
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', DOWN_ARROW);
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', SPACE);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', SPACE);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', DOWN_ARROW);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', SPACE);
       tick(300);
       expectDropdownOpen();
       expect(dropdownInstance.value).toEqual(['BMW', 'Audi']);
@@ -1210,13 +1211,13 @@ describe('NxDropdownComponent', () => {
       createTestComponent(SimpleDropdownComponent);
       openDropdownByKeyboard();
       const dropdownOverlayDiv = getDropdown();
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', V);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', V);
       fixture.detectChanges();
       tick(300);
       flush();
       expectItemsHighlighted([2]);
 
-      dispatchKeyboardEvent(dropdownOverlayDiv, 'keydown', B);
+      dispatchKeyboardEvent(dropdownOverlayDiv as Node, 'keydown', B);
       fixture.detectChanges();
       tick(300);
       flush();
@@ -1343,9 +1344,9 @@ describe('NxDropdownComponent', () => {
       tick();
       expect(dropdownInstance.value).toBeUndefined();
       const panel = getDropdown();
-      dispatchKeyboardEvent(panel, 'keydown', D);
+      dispatchKeyboardEvent(panel as Node, 'keydown', D);
       tick(500);
-      dispatchKeyboardEvent(panel, 'keydown', ENTER);
+      dispatchKeyboardEvent(panel as Node, 'keydown', ENTER);
       fixture.detectChanges();
       flush();
       expect(renderedResult.textContent).toBe('DE');
@@ -1357,8 +1358,13 @@ type DropdownTestItem = { value: string, label?: string };
 
 @Directive()
 abstract class DropdownTest {
-  @ViewChild(NxDropdownComponent) dropdown: NxDropdownComponent;
-  @ViewChildren(NxDropdownItemComponent) dropdownItems;
+  @ViewChild(NxDropdownComponent) dropdown!: NxDropdownComponent;
+  @ViewChildren(NxDropdownItemComponent) dropdownItems!: {
+    forEach: (arg0: (item: any, itemIndex: any) => void) => void;
+      filter: (arg0: { (item: any): any; (item: any): boolean; }) => any;
+      length: jasmine.Expected<number>;
+      toArray: () => { selected: any; }[];
+    };
 
   items: DropdownTestItem[] = [
     { value: 'BMW' },
@@ -1366,7 +1372,7 @@ abstract class DropdownTest {
     { value: 'Volvo' },
     { value: 'Mini' }
   ];
-  label: String;
+  label: String = '';
   multiselect: boolean = false;
   showFilter: boolean = false;
   selected: any = 'BMW';
@@ -1512,7 +1518,7 @@ class MultiSelectDropdownContentProjectionComponent extends DropdownTest {
     </nx-dropdown>`
 })
 class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
-  toTextMulti(value): any {
+  toTextMulti(value: { map: (arg0: (item: any) => any) => any[]; toUpperCase: () => any; }): any {
     if (value) {
       if (Array.isArray(value)) {
         return value.map(item => item.toUpperCase()).join(', ');
@@ -1533,8 +1539,8 @@ class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
     </nx-dropdown>`
 })
 class DropdownCustomToTextFunctionComponent extends DropdownTest {
-  toText(value): string {
-    return value ? value.toUpperCase() : null;
+  toText(value: string): string {
+    return value ? value.toUpperCase() : '';
   }
 }
 
@@ -1549,7 +1555,7 @@ class DropdownCustomToTextFunctionComponent extends DropdownTest {
     </nx-dropdown>`
 })
 class FilterDropdownComponent extends DropdownTest {
-  filterResultChanged(event) { }
+  filterResultChanged(event: any) { }
 }
 
 @Component({
@@ -1575,7 +1581,7 @@ class FilterDropdownNoLabelComponent extends DropdownTest {
 })
 class CustomFilterDropdownComponent extends DropdownTest {
 
-  myFilter(search, itemValue) {
+  myFilter(search: string, itemValue: { match: (arg0: RegExp) => null; }) {
     return itemValue.match(new RegExp('^' + search)) !== null;
   }
 
@@ -1689,7 +1695,7 @@ class ScrollingTestComponent extends DropdownTest {
     </nx-dropdown>`
 })
 class TabIndexTestComponent extends DropdownTest {
-  tabIndex: number;
+  tabIndex: number = 0;
   disabled: boolean = false;
 }
 
@@ -1755,7 +1761,7 @@ class DeferredTestComponent extends DropdownTest {
   </nx-dropdown>`
 })
 class DropdownCustomLabelComponent extends DropdownTest {
-  customLabelDropdownValue;
+  customLabelDropdownValue: any;
 
   countryList = [
     {

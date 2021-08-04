@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class CopyService {
 
-  private textarea: HTMLTextAreaElement;
+  private textarea!: HTMLTextAreaElement | null;
 
   copyText(text: string): boolean {
     this.createTextareaAndSelect(text);

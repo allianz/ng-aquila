@@ -21,15 +21,24 @@ import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-a
 
 @Directive()
 abstract class PresetTest {
-  @ViewChild(NxDatepickerToggleComponent) datepickerToggleInstance: NxDatepickerToggleComponent<Date>;
-  @ViewChild(NxErrorComponent) errorInstance: NxErrorComponent;
-  @ViewChild(NxFormfieldComponent) formfieldInstance: NxFormfieldComponent;
-  @ViewChild(NxLabelComponent) labelInstance: NxLabelComponent;
-  @ViewChild(NxTabGroupComponent) tabGroupInstance: NxTabGroupComponent;
-  @ViewChild(NxTabNavBarComponent) tabNavBarInstance: NxTabNavBarComponent;
-  @ViewChild(NxSelectableCardComponent) selectableCardInstance: NxSelectableCardComponent;
-  @ViewChild(NxSmallStageComponent) smallStageInstance: NxSmallStageComponent;
-  @ViewChild(NxCircleToggleGroupComponent) circleToggleGroupInstance: NxCircleToggleGroupComponent;
+  @ViewChild(NxDatepickerToggleComponent)
+  datepickerToggleInstance!: NxDatepickerToggleComponent<Date>;
+  @ViewChild(NxErrorComponent)
+  errorInstance!: NxErrorComponent;
+  @ViewChild(NxFormfieldComponent)
+  formfieldInstance!: NxFormfieldComponent;
+  @ViewChild(NxLabelComponent)
+  labelInstance!: NxLabelComponent;
+  @ViewChild(NxTabGroupComponent)
+  tabGroupInstance!: NxTabGroupComponent;
+  @ViewChild(NxTabNavBarComponent)
+  tabNavBarInstance!: NxTabNavBarComponent;
+  @ViewChild(NxSelectableCardComponent)
+  selectableCardInstance!: NxSelectableCardComponent;
+  @ViewChild(NxSmallStageComponent)
+  smallStageInstance!: NxSmallStageComponent;
+  @ViewChild(NxCircleToggleGroupComponent)
+  circleToggleGroupInstance!: NxCircleToggleGroupComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -236,7 +245,7 @@ class TabNavBarPresetComponent extends PresetTest {
 
   currentLink = this.links[0];
 
-  setActiveLink(link) {
+  setActiveLink(link: any) {
     if (!link.disabled) {
       this.currentLink = link;
     }
@@ -265,7 +274,8 @@ class TabNavBarPresetComponent extends PresetTest {
  `
 })
 class ComparisonTablePresetComponent extends PresetTest {
-  @ViewChild(NxComparisonTableRowGroupDirective) rowGroupInstance: NxComparisonTableRowGroupDirective;
+  @ViewChild(NxComparisonTableRowGroupDirective)
+  rowGroupInstance!: NxComparisonTableRowGroupDirective;
 }
 
 @Component({

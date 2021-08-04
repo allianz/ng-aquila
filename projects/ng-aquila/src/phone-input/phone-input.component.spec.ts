@@ -197,28 +197,28 @@ describe('PhoneInputComponent', () => {
     createTestComponent(ConfigurablePhoneInput);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
-    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel').textContent).toContain('My area code');
+    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('My area code');
   });
 
   it('should change the country translations via input', () => {
     createTestComponent(ConfigurablePhoneInput);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
-    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel').textContent).toContain('Deutschland');
+    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Deutschland');
   });
 
   it('should change the dropdown top label via provider', () => {
     createTestComponent(I18nProviderTest);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
-    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel').textContent).toContain('Custom area code label');
+    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Custom area code label');
   });
 
   it('should change the country translations via provider', () => {
     createTestComponent(I18nProviderTest);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
-    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel').textContent).toContain('Deutschland');
+    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Deutschland');
   });
 
   it('should use default error state matcher', fakeAsync(() => {
@@ -245,7 +245,7 @@ describe('PhoneInputComponent', () => {
     expect(Object.keys(phoneInputInstance.countryNames).length).toBeGreaterThan(0);
     dispatchFakeEvent(dropdown.nativeElement, 'click');
     fixture.detectChanges();
-    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel').textContent).toContain('Germany');
+    expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Germany');
   });
 
   it('should accept a custom formatter', fakeAsync(() => {
@@ -296,7 +296,7 @@ describe('PhoneInputComponent', () => {
 
 @Directive()
 abstract class PhoneInputTest {
-  @ViewChild(NxPhoneInputComponent) phoneInput: NxPhoneInputComponent;
+  @ViewChild(NxPhoneInputComponent) phoneInput!: NxPhoneInputComponent;
   disabled = false;
   readonly = false;
   areaCodeLabel = 'My area code';

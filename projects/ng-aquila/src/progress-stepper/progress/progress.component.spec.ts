@@ -11,8 +11,8 @@ import { NxProgressStepperComponent } from './progress.component';
 
 @Directive()
 abstract class ProgressTest {
-  @ViewChild(NxProgressStepperDirective) componentInstance: NxProgressStepperDirective;
-  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef: ElementRef;
+  @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
+  @ViewChild(NxProgressStepperDirective,  { read: ElementRef }) componentInstanceRef!: ElementRef;
   progress = 1;
 }
 

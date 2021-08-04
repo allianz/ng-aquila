@@ -16,6 +16,6 @@ export class PhoneInputExpertExampleComponent {
   disabled = false;
 
   ngOnInit() {
-    setTimeout(_ => this.countryCode = 'AT')
+    setTimeout( () => this.countryCode = 'AT')
   }
 }

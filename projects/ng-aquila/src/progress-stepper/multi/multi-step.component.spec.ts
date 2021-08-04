@@ -17,8 +17,8 @@ import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 
 @Directive()
 abstract class MultiStepTest {
-  @ViewChild(NxMultiStepperComponent) componentInstance: NxMultiStepperComponent;
-  @ViewChild(NxMultiStepperComponent,  { read: ElementRef }) componentInstanceRef: ElementRef;
+  @ViewChild(NxMultiStepperComponent) componentInstance!: NxMultiStepperComponent;
+  @ViewChild(NxMultiStepperComponent,  { read: ElementRef }) componentInstanceRef!: ElementRef;
 }
 
 describe('NxMultiStepperComponent', () => {
@@ -182,7 +182,7 @@ describe('NxMultiStepperComponent', () => {
       multiStepInstance.next();
       fixture.detectChanges();
 
-      expect(multiStepInstance.currentStep.label).toBe('Step1');
+      expect(multiStepInstance.currentStep?.label).toBe('Step1');
       const formField = fixture.nativeElement.querySelector('nx-formfield');
       expect(formField.classList.contains('has-error')).toBe(true);
     });
@@ -194,7 +194,7 @@ describe('NxMultiStepperComponent', () => {
       fixture.detectChanges();
 
       const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
-      formFields.forEach(formfield => expect(formfield.classList.contains('has-error')).toBe(true));
+      formFields.forEach( (formfield: any) => expect(formfield.classList.contains('has-error')).toBe(true));
     });
 
     it('shows errors if a form is untouched on selectedIndex change', () => {
@@ -204,7 +204,7 @@ describe('NxMultiStepperComponent', () => {
       fixture.detectChanges();
 
       const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
-      formFields.forEach(formfield => expect(formfield.classList.contains('has-error')).toBe(true));
+      formFields.forEach( (formfield: any) => expect(formfield.classList.contains('has-error')).toBe(true));
     });
   });
 
@@ -250,18 +250,18 @@ describe('NxMultiStepperComponent', () => {
     });
 
     it('renders the groups', () => {
-      const groups = Array.from( multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'));
+      const groups: Array<any> = Array.from( multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'));
 
       expect(groups.length).toBe(2);
 
       groups.forEach((group: HTMLElement, i) => {
         const label = group.querySelector('.nx-multi-stepper__group-label');
-        expect(label.textContent.trim()).toBe(`Group ${i + 1}`);
+        expect(label!.textContent?.trim()).toBe(`Group ${i + 1}`);
       });
     });
 
     it('renders the steps', () => {
-      const steps = Array.from( multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
+      const steps: Array<any> = Array.from( multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
 
       steps.forEach((step: HTMLElement) => {
         expect(step.classList.contains('.nx-multi-step-item--vertical'));
@@ -386,7 +386,7 @@ describe('NxMultiStepperComponent', () => {
   `
 })
 class MultiStepDirectionTest extends MultiStepTest {
-  direction: NxMultiStepperDirection;
+  direction!: NxMultiStepperDirection;
 }
 
 @Component({

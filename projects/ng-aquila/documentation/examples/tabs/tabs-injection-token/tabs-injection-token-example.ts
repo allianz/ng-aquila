@@ -17,5 +17,5 @@ const myDefaultOptions: TabGroupDefaultOptions = {
   ]
 })
 export class TabsInjectionTokenExampleComponent {
-  currentIndex: number;
+  currentIndex: number = 0;
 }

@@ -15,7 +15,7 @@ const DEFAULT_TYPE = 'primary';
 /** @docs-private */
 @Directive()
 export class NxButtonBase implements NxTriggerButton, OnDestroy {
-  private _classNames: string;
+  private _classNames: string = '';
 
   /** @docs-private */
   @HostBinding('class.nx-button--primary') get isPrimary(): boolean { return this.type === 'primary'; }
@@ -44,7 +44,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
   /** @docs-private */
   @HostBinding('class.nx-button--negative') get isNegative(): boolean { return this.negative; }
   /** @docs-private */
-  @HostBinding('attr.disabled') get isDisabled(): boolean { return this.disabled || null; }
+  @HostBinding('attr.disabled') get isDisabled(): boolean | null { return this.disabled || null; }
   /** @docs-private */
   @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
 

@@ -9,9 +9,9 @@ const START_BUTTON_WIDTH: number = 40;
 @Directive()
 export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy {
 
-  tabHeaderContainer: ElementRef<HTMLElement>;
-  scrollableTabsList: ElementRef<HTMLElement>;
-  tabButtons: QueryList<HTMLElement>;
+  tabHeaderContainer!: ElementRef<HTMLElement>;
+  scrollableTabsList!: ElementRef<HTMLElement>;
+  tabButtons!: QueryList<HTMLElement>;
 
   _isScrolledToStart: boolean = true;
   _isScrolledToEnd: boolean = true;
@@ -44,7 +44,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     this._dirChangeSubscription.unsubscribe();
   }
 
-  _scrollHandler = (event): void => {
+  _scrollHandler = (event: Event): void => {
     this._updateScrollButtons();
   }
 
@@ -61,7 +61,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     const tabsListWidth = scrollListElement.getBoundingClientRect().width;
     const headerScrollPosition = Math.abs(scrollListElement.scrollLeft);
     let lastVisiblePosition = 0;
-    let itemToScrollTo: number;
+    let itemToScrollTo!: number;
 
     for (let i = 0; i < scrollListElement.children.length; i++) {
       const currentChildWidth = scrollListElement.children[i].getBoundingClientRect().width;
@@ -86,7 +86,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     let newPosition = lastVisiblePosition;
     for (let i = itemToScrollTo; i >= 0; i--) {
       const currentChildWidth = scrollListElement.children[i].getBoundingClientRect().width;
-      const previousChildWidth = i > 0 ? scrollListElement.children[i - 1].getBoundingClientRect().width : null;
+      const previousChildWidth = i > 0 ? scrollListElement.children[i - 1].getBoundingClientRect().width : 0;
 
       const currentChildFitsInWidth = lastVisiblePosition - (newPosition - currentChildWidth) <= tabsListWidth;
       const previousChildFitsInWidth =
@@ -117,7 +117,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     for (let i = 0; i < scrollListElement.children.length; i++) {
       const currentChildWidth = scrollListElement.children[i].getBoundingClientRect().width;
       const nextChildWidth = i < scrollListElement.children.length - 1
-          ? scrollListElement.children[i + 1].getBoundingClientRect().width : null;
+          ? scrollListElement.children[i + 1].getBoundingClientRect().width : 0;
       const currentChildFullyVisible = newPosition + currentChildWidth <= headerScrollPosition + tabsListWidth;
       const nextChildFullyVisible =
           newPosition + currentChildWidth + SPACE_BETWEEN_TABS + nextChildWidth <= headerScrollPosition + tabsListWidth;

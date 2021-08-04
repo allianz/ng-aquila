@@ -18,13 +18,13 @@ import { NxErrorComponent, NxErrorModule } from '@aposin/ng-aquila/base';
 
 @Directive()
 abstract class SelectableCardTest {
-  @ViewChild(NxSelectableCardComponent) selectableCardInstance: NxSelectableCardComponent;
-  @ViewChildren(NxErrorComponent) errors: QueryList<NxErrorComponent>;
+  @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
+  @ViewChildren(NxErrorComponent) errors!: QueryList<NxErrorComponent>;
 
   checked: boolean = false;
   disabled: boolean = false;
-  testForm: FormGroup;
-  customError: boolean;
+  testForm!: FormGroup;
+  customError!: boolean;
 }
 
 describe('NxSelectableCardComponent', () => {
@@ -150,7 +150,7 @@ describe('NxSelectableCardComponent', () => {
     it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
       createTestComponent(ReactiveSelectableCard);
       expect(selectableCardNativeElement.classList.contains('has-error')).toBeFalsy();
-      selectableCardInstance.ngControl.control.markAsTouched();
+      selectableCardInstance.ngControl.control!.markAsTouched();
       fixture.detectChanges();
       expect(selectableCardNativeElement.classList.contains('has-error')).toBeTruthy();
     }));
@@ -169,16 +169,16 @@ describe('NxSelectableCardComponent', () => {
 
     it('should use nx-error IDs for aria-describedby', fakeAsync(() => {
       createTestComponent(DynamicErrorSelectableCard);
-      selectableCardInstance.ngControl.control.markAsTouched();
+      selectableCardInstance.ngControl.control!.markAsTouched();
       fixture.detectChanges();
 
-      expect(errors.length).toBe(inputElement.attributes.getNamedItem('aria-describedby').value.split(' ').length);
+      expect(errors.length).toBe(inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ').length);
 
-      expect(inputElement.attributes.getNamedItem('aria-describedby').value).toBe(errors.toArray()[0].id);
+      expect(inputElement.attributes.getNamedItem('aria-describedby')!.value).toBe(errors.toArray()[0].id);
       testInstance.customError = true;
       fixture.detectChanges();
 
-      const errorIds = inputElement.attributes.getNamedItem('aria-describedby').value.split(' ');
+      const errorIds = inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ');
 
       expect(errorIds.length).toBe(errors.length);
 

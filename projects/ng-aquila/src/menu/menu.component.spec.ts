@@ -10,7 +10,7 @@ import { NxMenuModule } from './menu.module';
 @Directive()
 abstract class MenuTest {
   open: boolean = false;
-  @ViewChild(NxMenuComponent) menuInstance: NxMenuComponent;
+  @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
 }
 
 describe(NxMenuComponent.name, () => {
@@ -72,7 +72,7 @@ describe(NxMenuComponent.name, () => {
       });
 
       it('contains the content', () => {
-        expect(getMenuWrapper().textContent.trim()).toBe('examplecontent');
+        expect(getMenuWrapper()?.textContent?.trim()).toBe('examplecontent');
       });
     });
   });

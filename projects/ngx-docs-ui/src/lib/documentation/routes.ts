@@ -11,7 +11,7 @@ import { NxvOverviewComponent } from './component-documentation/overview/overvie
 import { NxvGuideViewComponent } from './guides/guide-view/guide-view.component';
 import { NxvDocumentationComponent } from './component-documentation/documentation-page.component';
 
-export const createViewerRoutes = args => [
+export const createViewerRoutes = (args: any) => [
   {
     path: 'my-viewer', redirectTo: ''
   },

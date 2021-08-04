@@ -30,7 +30,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
  * @docs-private
  */
 export class NxIsoDateAdapter extends NxDateAdapter<string> {
-  private _localeData: {
+  private _localeData!: {
     firstDayOfWeek: number;
     longMonths: string[];
     shortMonths: string[];
@@ -63,7 +63,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
       date = dayjs(value).locale(this.locale);
     }
 
-    if (date && this.isValid(date)) {
+    if (date && this.isValid(date.toString())) {
       return dayjs(date).locale(this.locale).format(ISO_STRING_FORMAT);
     }
 
@@ -81,7 +81,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
    * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946
    */
   normalizeFormat(format: string | string[]): string[] {
-    const availableLocalFormats = dayjs.Ls[this.locale]?.formats;
+    const availableLocalFormats: { [key: string]: any} = dayjs.Ls[this.locale]?.formats;
     if (!availableLocalFormats) {
       throw new Error(
         `NxIsoDateAdapter: The used locale "${this.locale}" is not available in this day.js instance. Please make sure the locale is imported.`
@@ -105,7 +105,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
   }
 
   parse(value: any, format: string | string[], strict: boolean): string {
-    let obj: Dayjs;
+    let obj!: Dayjs;
 
     const normalizedFormats = this.normalizeFormat(format);
     if (value && typeof value === 'string') {
@@ -127,7 +127,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
       return '';
     }
 
-    return obj ? obj.format(ISO_STRING_FORMAT) : null;
+    return obj ? obj.format(ISO_STRING_FORMAT) : '';
   }
 
   isValid(date: string): boolean {

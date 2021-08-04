@@ -12,14 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Directive()
 abstract class FileUploaderTest {
-  @ViewChild(NxFileUploaderComponent,  { static: false }) fileUploaderInstance: NxFileUploaderComponent;
-  public form: FormGroup;
-  public queueList: null | FileItem[];
+  @ViewChild(NxFileUploaderComponent, { static: false })
+  fileUploaderInstance!: NxFileUploaderComponent;
+  public form!: FormGroup;
+  public queueList!: null | FileItem[];
   public required: boolean = false;
   public multiple: boolean = false;
-  public maxFileSize: number;
-  public maxFileNumber: number;
-  public accept;
+  public maxFileSize!: number;
+  public maxFileNumber!: number;
+  public accept: any;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -141,6 +142,7 @@ describe('NxFileUploaderComponent', () => {
         .outputTemplateContext;
       expect(expectedContextClassName).toBe(outputTemplateContextOutput);
 
+      // @ts-ignore
       const expectedFirstFileClassName = fixture.componentInstance.queueList[0];
       const outputFileOutput = (fixture.componentInstance as any).outputFile;
       expect(expectedFirstFileClassName).toBe(outputFileOutput);
@@ -179,7 +181,7 @@ describe('NxFileUploaderComponent', () => {
     it('should set the control to dirty when value changes in the DOM', () => {
       createTestComponent(ReactiveFileUpload);
 
-      expect(testInstance.form.get('documents').dirty)
+      expect(testInstance.form.get('documents')?.dirty)
       .toEqual(false, `Expected control to start out pristine.`);
 
       let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -490,7 +492,7 @@ describe('NxFileUploaderComponent', () => {
       fixture.detectChanges();
 
       let ariaDescribedBy;
-      ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby').value;
+      ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
       tick();
       fixture.detectChanges();
 
@@ -511,7 +513,7 @@ describe('NxFileUploaderComponent', () => {
         fixture.detectChanges();
         tick();
 
-        ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby').value;
+        ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
         expect(ariaDescribedBy).toContain(testInstance.fileUploaderInstance._errorList.map((error) => {
           return error.id;
         }));
@@ -579,10 +581,10 @@ class BasicFileUpload extends FileUploaderTest {
 })
 class ReactiveFileUpload extends FileUploaderTest {
   public fb;
-  public required;
-  public maxFileSize;
-  public queueList;
-  public maxFileNumber;
+  public required: any;
+  public maxFileSize: any;
+  public queueList: any;
+  public maxFileNumber: any;
 
   constructor() {
     super();
@@ -609,7 +611,7 @@ class ReactiveFileUpload extends FileUploaderTest {
   `
 })
 class DynamicFileUpload extends FileUploaderTest {
-  public queueList;
+  public queueList: any;
 }
 
 @Component({
@@ -665,7 +667,7 @@ class DynamicFileUpload extends FileUploaderTest {
   `,
 })
 class CustomItemTemplateFileUpload extends FileUploaderTest {
-  public queueList;
+  public queueList: any;
   outputTemplateContext: any;
   outputFile: any;
 

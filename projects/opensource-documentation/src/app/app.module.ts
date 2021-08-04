@@ -28,7 +28,7 @@ const ROUTES = [
   }
 ];
 
-const channels = environment.VERSIONS.channels.map(channel => {
+const channels = environment.VERSIONS.channels.map( (channel: any) => {
   return { name: channel, url: environment.VERSIONS.urls[channel]};
 });
 

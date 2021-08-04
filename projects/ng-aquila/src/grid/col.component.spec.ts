@@ -15,7 +15,7 @@ import { sortedClassNames } from '../cdk-test-utils';
 
 @Directive()
 abstract class DirectiveTest {
-  @ViewChild(NxColComponent) column: NxColComponent;
+  @ViewChild(NxColComponent) column!: NxColComponent;
 }
 
 describe('NxColDirective', () => {

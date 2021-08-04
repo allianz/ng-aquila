@@ -7,8 +7,8 @@ import { NxBreadcrumbModule } from './breadcrumb.module';
 
 @Directive()
 abstract class BreadcrumbTest {
-  @ViewChild(NxBreadcrumbComponent) breadcrumbInstance: NxBreadcrumbComponent;
-  @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems: QueryList<NxBreadcrumbItemComponent>;
+  @ViewChild(NxBreadcrumbComponent) breadcrumbInstance!: NxBreadcrumbComponent;
+  @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
 }
 
 describe('NxBreadcrumbComponent', () => {
@@ -67,15 +67,20 @@ describe('NxBreadcrumbComponent', () => {
 
   it('sets aria-current to last item', () => {
     createTestComponent(DynamicBreadcrumbComponent);
+    // @ts-ignore
     expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
+    // @ts-ignore
     expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBeFalsy();
+    // @ts-ignore
     expect(breadcrumbItemInstances[2].getAttribute('aria-current')).toBe('page');
 
     (testInstance as DynamicBreadcrumbComponent).items = ['test', 'test2'];
     fixture.detectChanges();
     breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
 
+    // @ts-ignore
     expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
+    // @ts-ignore
     expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBe('page');
   });
 });

@@ -29,7 +29,7 @@ function range<T>(length: number, valueFunction: (index: number) => T): T[] {
  */
 export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
 
-  private _localeData: {
+  private _localeData!: {
     firstDayOfWeek: number,
     longMonths: string[],
     shortMonths: string[],

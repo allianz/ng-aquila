@@ -8,6 +8,6 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
   isMultiSelect: boolean = false;
 
   /** @docs-private */
-  abstract formatValue?(value): string;
+  abstract formatValue?(value: any): string;
 
 }

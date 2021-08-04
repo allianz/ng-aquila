@@ -8,7 +8,7 @@ import { NxDropdownItemComponent } from './dropdown-item';
 
 @Directive()
 abstract class DropdownItemTest {
-  @ViewChild(NxDropdownItemComponent) item;
+  @ViewChild(NxDropdownItemComponent) item: any;
 
 }
 

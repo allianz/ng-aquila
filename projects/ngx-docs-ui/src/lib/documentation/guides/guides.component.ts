@@ -13,7 +13,7 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
 })
 
 export class NxvGuidesComponent implements OnDestroy {
-  public availableGuides: GuideDescriptor[];
+  public availableGuides!: GuideDescriptor[];
   private guideSubscription: Subscription;
 
   constructor(

@@ -22,7 +22,7 @@ export class MyIntl extends NxCodeInputIntl {
 
 export class CodeInputLocalizeExampleComponent implements OnInit {
   inputValue: string = '';
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   ngOnInit() {
     this.codeForm = new FormGroup({

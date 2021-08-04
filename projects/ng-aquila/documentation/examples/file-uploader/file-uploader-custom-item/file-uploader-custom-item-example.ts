@@ -12,7 +12,7 @@ import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 export class CustomFileItem extends FileItem {
-  public formData: FormData;
+  public formData!: FormData;
 }
 
 export const myCustomConfig: NxMessageToastConfig = {
@@ -30,10 +30,10 @@ export const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderCustomItemExampleComponent {
   myFiles: CustomFileItem[] = [];
 
-  @ViewChild('documentUpload') documentUpload: NxFileUploaderComponent;
+  @ViewChild('documentUpload') documentUpload!: NxFileUploaderComponent;
   public showUploadError: boolean = false;
 
-  @ViewChild('ngModel') ngModel: NgModel;
+  @ViewChild('ngModel') ngModel!: NgModel;
 
   constructor(
     private messageToastService: NxMessageToastService,
@@ -67,7 +67,7 @@ export class FileUploaderCustomItemExampleComponent {
     this.myFiles.forEach((file: CustomFileItem) => {
       if (!file.isUploaded) {
         file.setUploadingState();
-        formData.set(file.name, file.file, file.name);
+        formData.set(file.name, file.file as Blob, file.name);
         formData.set(`${file.name}-form`, file.formData.toString());
       }
     });
@@ -80,7 +80,7 @@ export class FileUploaderCustomItemExampleComponent {
 
     this.http.post(url, formData, options).subscribe(
       (data) => {
-        this.documentUpload.value.forEach((fileItem: CustomFileItem) => {
+        this.documentUpload.value!.forEach((fileItem: FileItem) => {
           fileItem.setUploadedState();
         });
         this.messageToastService.open(
@@ -89,7 +89,7 @@ export class FileUploaderCustomItemExampleComponent {
         );
       },
       (error) => {
-        this.documentUpload.value.forEach((fileItem: CustomFileItem) => {
+        this.documentUpload.value!.forEach((fileItem: FileItem) => {
           if (!fileItem.isUploaded) {
             fileItem.setErrorState();
           }

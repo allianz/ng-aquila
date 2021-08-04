@@ -14,7 +14,7 @@ export class DropdownRenderingItemsExampleComponent {
     'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
   ];
 
-  toText(value): string {
+  toText(value: string): string | null {
     return value ? value.toUpperCase() : null;
   }
 }

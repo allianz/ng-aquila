@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./selectable-card-expert-example.css']
 })
 export class SelectableCardExpertExampleComponent {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();

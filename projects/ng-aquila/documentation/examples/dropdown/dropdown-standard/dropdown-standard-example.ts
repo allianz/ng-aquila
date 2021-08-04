@@ -24,7 +24,7 @@ export class DropdownStandardExampleComponent {
     'Ferrari'
   ];
 
-  toText(value): string {
+  toText(value: string): string | null {
     return value ? value.toUpperCase() : null;
   }
 }

@@ -12,7 +12,7 @@ import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 })
 
 export class DatefieldLocalizeDateExampleComponent {
-  public currentDate: Moment = null;
+  public currentDate: Moment | null = null;
   public currentLocale;
 
   constructor(
@@ -25,7 +25,7 @@ export class DatefieldLocalizeDateExampleComponent {
     });
   }
 
-  changeLocal(value) {
+  changeLocal(value: string) {
     this.nxDateAdapter.setLocale(value);
   }
 }

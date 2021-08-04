@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./radio-button-group-validation-example.css']
  })
 export class RadioButtonGroupValidationExampleComponent {
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.createForm();

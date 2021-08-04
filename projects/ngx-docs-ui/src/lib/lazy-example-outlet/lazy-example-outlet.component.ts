@@ -13,13 +13,14 @@ import { ActivatedRoute } from '@angular/router';
 
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {
 
-  @Input() exampleId: string;
+  @Input()
+  exampleId!: string;
 
-  exampleComponent = null;
-  exampleModuleFactory = null;
-  exampleDescriptor: ExampleDescriptor;
-  _queryParamSubscription: Subscription;
-  directionQuery: Direction;
+  exampleComponent: any = null;
+  exampleModuleFactory: any = null;
+  exampleDescriptor!: ExampleDescriptor;
+  _queryParamSubscription!: Subscription;
+  directionQuery!: Direction;
 
   constructor(
     private _lazyLoadingService: BaseLazyLoadingService,

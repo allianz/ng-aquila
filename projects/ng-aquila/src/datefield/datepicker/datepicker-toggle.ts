@@ -53,14 +53,14 @@ export class NxDatepickerToggleIconComponent {}
 export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
   private _stateChanges = Subscription.EMPTY;
 
-  private _disabled: boolean;
-  private _tabindex: number;
+  private _disabled: boolean | undefined;
+  private _tabindex: number | undefined;
   private _destroyed = new Subject();
 
   /** Custom icon set by the consumer. */
-  @ContentChild(NxDatepickerToggleIconComponent) _customIcon: NxDatepickerToggleIconComponent;
+  @ContentChild(NxDatepickerToggleIconComponent) _customIcon!: NxDatepickerToggleIconComponent;
 
-  @ViewChild('toggleButton') _toggleButton: ElementRef<HTMLElement>;
+  @ViewChild('toggleButton') _toggleButton!: ElementRef<HTMLElement>;
 
   /** Datepicker instance that the button will toggle. */
   @Input('for')
@@ -70,7 +70,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
   get datepicker(): NxDatepickerComponent<D> {
     return this._datepicker;
   }
-  _datepicker: NxDatepickerComponent<D>;
+  _datepicker!: NxDatepickerComponent<D>;
 
   private registerDatepicker(value: NxDatepickerComponent<D>) {
     if (value) {

@@ -13,9 +13,9 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class IntersectionCellTest {
-  @ViewChildren(NxComparisonTableIntersectionCell) intersectionCellInstances: QueryList<NxComparisonTableIntersectionCell>;
-  @ViewChild(NxComparisonTableDescriptionCell) descriptionCellInstance: NxComparisonTableDescriptionCell;
-  @ViewChild(NxToggleSectionDirective) toggleSectionInstance: NxToggleSectionDirective;
+  @ViewChildren(NxComparisonTableIntersectionCell) intersectionCellInstances!: QueryList<NxComparisonTableIntersectionCell>;
+  @ViewChild(NxComparisonTableDescriptionCell) descriptionCellInstance!: NxComparisonTableDescriptionCell;
+  @ViewChild(NxToggleSectionDirective) toggleSectionInstance!: NxToggleSectionDirective;
 
   intersectionId = 'intersection-cell';
 }
@@ -86,7 +86,7 @@ describe('NxComparisonTableIntersectionCell', () => {
       tick(THROTTLE_TIME);
 
       const headers = intersectionCellElements[0].attributes['headers'];
-      expect(headers.split(' ').length).toBe(2);
+      expect(headers?.split(' ').length).toBe(2);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
     }));
@@ -95,7 +95,7 @@ describe('NxComparisonTableIntersectionCell', () => {
       createTestComponent(ToggleSectionComponent);
 
       const headers = intersectionCellElements[0].attributes['headers'];
-      expect(headers.split(' ').length).toBe(2);
+      expect(headers?.split(' ').length).toBe(2);
       expect(headers).toContain(descriptionCellInstance.id);
       expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
     });

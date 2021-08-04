@@ -53,13 +53,13 @@ describe('NxCalendarBodyComponent', () => {
     it('highlights today', () => {
       const todayCell = calendarBodyNativeElement.querySelector('.nx-calendar-body-today');
       expect(todayCell).not.toBeNull();
-      expect(todayCell.innerHTML.trim()).toBe('3');
+      expect(todayCell!.innerHTML.trim()).toBe('3');
     });
 
     it('highlights selected', () => {
       const selectedCell = calendarBodyNativeElement.querySelector('.nx-calendar-body-selected');
       expect(selectedCell).not.toBeNull();
-      expect(selectedCell.innerHTML.trim()).toBe('4');
+      expect(selectedCell!.innerHTML.trim()).toBe('4');
     });
 
     it('cell should be selected on click', () => {
@@ -214,7 +214,7 @@ class CalendarBodyWithDisabledCells {
     return cell;
   }));
   allowDisabledSelection = false;
-  selected: number;
+  selected!: number;
 }
 
 @Component({

@@ -44,8 +44,8 @@ export const TAB_NAV_BAR_DEFAULT_OPTIONS = new InjectionToken<TabNavBarDefaultOp
 })
 export class NxTabNavBarComponent extends NxScrollableTabBar {
 
-  @ViewChild('tabsList') scrollableTabsList: ElementRef<HTMLElement>;
-  @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons: QueryList<HTMLElement>;
+  @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
+  @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons!: QueryList<HTMLElement>;
 
   private _negative: boolean = false;
 
@@ -79,7 +79,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     return this._disabled;
   }
 
-  private _appearance: NxTabsAppearance;
+  private _appearance!: NxTabsAppearance;
 
   /**
    * **Expert option**

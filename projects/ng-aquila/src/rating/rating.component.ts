@@ -76,7 +76,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     return this._negative;
   }
 
-  private _startLabel: string = null;
+  private _startLabel: string = '';
   /** Sets the label painted at the start of the rating component. */
   @Input('nxStartLabel')
   set startLabel(newValue: string) {
@@ -87,7 +87,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     return this._startLabel;
   }
 
-  private _endLabel: string = null;
+  private _endLabel: string | null = null;
   /** Sets the label painted at the end of the rating component. */
   @Input('nxEndLabel')
   set endLabel(newValue: string) {
@@ -95,7 +95,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     this._changeDetectorRef.markForCheck();
   }
   get endLabel(): string {
-    return this._endLabel;
+    return this._endLabel as string;
   }
 
   private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
@@ -112,9 +112,9 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   @Output('nxValueChange') valueChange = new EventEmitter<number>();
 
   /** @docs-private */
-  @ViewChildren(NxIconComponent, {read: ElementRef}) icons: QueryList<ElementRef>;
-  private onTouchedCallback = () => {};
-  private onChangeCallback = (option: any) => {};
+  @ViewChildren(NxIconComponent, {read: ElementRef}) icons!: QueryList<ElementRef>;
+  private onTouchedCallback: Function = () => {};
+  private onChangeCallback: (option: any) => any = (option: any) => {};
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -171,11 +171,11 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     this.value = value;
   }
 
-  registerOnChange(callback: any): void {
+  registerOnChange(callback: (option: any) => any ): void {
     this.onChangeCallback = callback;
   }
 
-  registerOnTouched(callback: any): void {
+  registerOnTouched(callback: Function): void {
     this.onTouchedCallback = callback;
   }
 
@@ -184,7 +184,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
   }
 
   /** @docs-private */
-  getAriaLabel(rating) {
+  getAriaLabel(rating: number) {
     return this.ariaLabel[rating - 1];
   }
 

@@ -15,11 +15,11 @@ export class NxRadioToggleButtonBaseComponent {
 
   /** @docs-private */
   @ViewChild('toggleButtonLabelContainer', { static: true })
-  labelContainer: ElementRef;
+  labelContainer!: ElementRef;
 
   /** @docs-private */
   @ViewChild('toggleInput', { static: true })
-  toggleInput: ElementRef;
+  toggleInput!: ElementRef;
 
   constructor(
     /** @docs-private */
@@ -27,7 +27,7 @@ export class NxRadioToggleButtonBaseComponent {
   }
 
   /** @docs-private */
-  triggerInputClick(event) {
+  triggerInputClick(event: MouseEvent) {
     event.stopPropagation();
     this.toggleInput.nativeElement.click();
   }

@@ -10,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 abstract class MessageBannerTest {
   public context: BANNER_CONTEXT = 'info';
 
-  @ViewChild(NxMessageBannerComponent) componentInstance: NxMessageBannerComponent;
-  @ViewChild(NxMessageBannerComponent,  { read: ElementRef }) formInscomponentInstanceRef: ElementRef;
+  @ViewChild(NxMessageBannerComponent) componentInstance!: NxMessageBannerComponent;
+  @ViewChild(NxMessageBannerComponent,  { read: ElementRef }) formInscomponentInstanceRef!: ElementRef;
 }
 
 describe('NxMessageBannerComponent', () => {

@@ -10,7 +10,7 @@ import { NxDialogService } from '@aposin/ng-aquila/modal';
   styleUrls: ['./modal-fixed-width-example.css']
 })
 export class ModalFixedWidthExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
 
   constructor(public dialogService: NxDialogService) {
   }

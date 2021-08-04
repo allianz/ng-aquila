@@ -23,9 +23,9 @@ class NxTestComponent { }
 @Directive()
 abstract class PopoverTest {
 
-  @ViewChild(NxPopoverComponent) popoverInstance: NxPopoverComponent;
-  @ViewChild(NxPopoverTriggerDirective) triggerInstance: NxPopoverTriggerDirective;
-  @ViewChild(NxTestComponent) testComponentInstance: NxTestComponent;
+  @ViewChild(NxPopoverComponent) popoverInstance!: NxPopoverComponent;
+  @ViewChild(NxPopoverTriggerDirective) triggerInstance!: NxPopoverTriggerDirective;
+  @ViewChild(NxTestComponent) testComponentInstance!: NxTestComponent;
 
   closeable: boolean = false;
 }
@@ -110,7 +110,7 @@ describe('NxPopoverTriggerDirective', () => {
     return overlayContainer.getContainerElement().querySelector('.nx-popover__arrow') as HTMLDivElement;
   }
 
-  function getPopoverByDirection(direction): HTMLDivElement {
+  function getPopoverByDirection(direction: any): HTMLDivElement {
     return overlayContainer.getContainerElement().querySelector('.nx-popover--' + direction) as HTMLDivElement;
   }
 
@@ -141,7 +141,7 @@ describe('NxPopoverTriggerDirective', () => {
   }
 
   function getBackdrop(): HTMLElement {
-    return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop');
+    return overlayContainer.getContainerElement().querySelector('.cdk-overlay-backdrop') as HTMLElement;
   }
 
   describe('basic', () => {
@@ -804,7 +804,7 @@ class LazyloadContent extends PopoverTest { }
 class ManualTrigger extends PopoverTest {
   popoverManualOpenFlag = false;
 
-  popoverOnShowChange(current) {
+  popoverOnShowChange(current: any) {
     setTimeout(() => this.popoverManualOpenFlag = !current);
   }
 }

@@ -21,6 +21,7 @@ export class ComparisonTableDynamicExampleComponent {
         { type: 'content', description: 'This is a description cell', cells: [ 'This is a cell', 'This is a cell' ]},
         { type: 'content', description: 'This is a description cell', cells: [ 'This is a cell', 'This is a cell' ]},
       ]
+    
     },
     { type: 'footer', cells: [ 'This is a footer cell', 'This is a footer cell'] },
   ];

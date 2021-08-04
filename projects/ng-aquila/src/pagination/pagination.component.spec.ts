@@ -19,7 +19,7 @@ const customTexts: IPaginationTexts = {
 
 @Directive()
 abstract class PaginationTest {
-  @ViewChild(NxPaginationComponent) paginationInstance: NxPaginationComponent;
+  @ViewChild(NxPaginationComponent) paginationInstance!: NxPaginationComponent;
   page: number = 1;
   prevPage = jasmine.createSpy('prevPageSpy');
   nextPage = jasmine.createSpy('nextPageSpy');
@@ -131,7 +131,7 @@ describe('NxPaginationComponent', () => {
       createTestComponent(SimplePaginationBeginat10);
       fixture.detectChanges();
       expect(currentPage && totalPages && prevArrowSimple).not.toBeNull();
-      expect(currentPage.textContent.trim()).toEqual('10');
+      expect(currentPage.textContent?.trim()).toEqual('10');
       prevArrowSimple.click();
       expect(testInstance.prevPage).toHaveBeenCalled();
     });
@@ -184,7 +184,7 @@ describe('NxPaginationComponent', () => {
       createTestComponent(AdvancedPaginationBeginat10);
       fixture.detectChanges();
       expect(pageElements && prevArrow).not.toBeNull();
-      expect(active.textContent.trim()).toEqual('10');
+      expect(active.textContent?.trim()).toEqual('10');
       prevArrow.click();
       expect(testInstance.prevPage).toHaveBeenCalled();
     });
@@ -237,11 +237,11 @@ describe('NxPaginationComponent', () => {
     it('should use injected NX_PAGINATION_TEXTS token', () => {
       createTestComponent(LocalizationToken);
       expect(paginationInstance.paginationTexts).toEqual(customTexts);
-      expect(nextArrowSimple.querySelector('.nx-pagination-compact__direction-label').textContent.trim()).toBe('myNext');
-      expect(prevArrowSimple.querySelector('.nx-pagination-compact__direction-label').textContent.trim()).toBe('myPrevious');
-      expect(pageSeparator.textContent.trim()).toBe('myOf');
+      expect(nextArrowSimple.querySelector('.nx-pagination-compact__direction-label')?.textContent?.trim()).toBe('myNext');
+      expect(prevArrowSimple.querySelector('.nx-pagination-compact__direction-label')?.textContent?.trim()).toBe('myPrevious');
+      expect(pageSeparator.textContent?.trim()).toBe('myOf');
       const navElement = fixture.nativeElement.querySelector('.nx-pagination-compact') as HTMLElement;
-      expect(navElement.attributes.getNamedItem('aria-label').value).toBe('myAriaLabel');
+      expect(navElement.attributes.getNamedItem('aria-label')?.value).toBe('myAriaLabel');
     });
   });
 
@@ -291,12 +291,12 @@ describe('NxPaginationComponent', () => {
       fixture.detectChanges();
       const prevArrowSimpleIcon = prevArrowSimple.querySelector('nx-icon');
       const nextArrowSimpleIcon = nextArrowSimple.querySelector('nx-icon');
-      expect(prevArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
-      expect(nextArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(prevArrowSimpleIcon?.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(nextArrowSimpleIcon?.getAttribute('ng-reflect-name')).toBe('arrow-right');
       (testInstance as SimplePaginationWithDirection).direction = 'rtl';
       fixture.detectChanges();
-      expect(prevArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
-      expect(nextArrowSimpleIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(prevArrowSimpleIcon?.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(nextArrowSimpleIcon?.getAttribute('ng-reflect-name')).toBe('arrow-left');
     });
 
     it('updates arrow icons for advanced pagination', () => {
@@ -306,14 +306,14 @@ describe('NxPaginationComponent', () => {
       const nextArrowIcon = nextArrow.querySelector('nx-icon');
       const lastArrowIcon = fixture.debugElement.nativeElement.querySelector('.nx-pagination__link--last nx-icon');
       const firstArrowIcon = fixture.debugElement.nativeElement.querySelector('.nx-pagination__link--first nx-icon');
-      expect(prevArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
-      expect(nextArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(prevArrowIcon?.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(nextArrowIcon?.getAttribute('ng-reflect-name')).toBe('arrow-right');
       expect(lastArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-last');
       expect(firstArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-first');
       (testInstance as AdvancedPaginationWithDirection).direction = 'rtl';
       fixture.detectChanges();
-      expect(prevArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-right');
-      expect(nextArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-left');
+      expect(prevArrowIcon?.getAttribute('ng-reflect-name')).toBe('arrow-right');
+      expect(nextArrowIcon?.getAttribute('ng-reflect-name')).toBe('arrow-left');
       expect(lastArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-first');
       expect(firstArrowIcon.getAttribute('ng-reflect-name')).toBe('arrow-last');
     });

@@ -13,7 +13,7 @@ export const NX_DOCS_SELECTABLE_THEMES = new InjectionToken<Theme[]>('DOCS_SELEC
 export class ThemeSwitcherService {
 
   readonly themeChanged = new Subject<Theme>();
-  private _selectedTheme: Theme;
+  private _selectedTheme!: Theme;
 
   constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private _themes: Theme[]) { }
 
@@ -42,13 +42,13 @@ export class ThemeSwitcherService {
 
     if (oldEl) {
       // el.remove() doesn't work on IE
-      oldEl.parentNode.removeChild(oldEl);
+      oldEl.parentNode?.removeChild(oldEl);
     }
 }
 
 removeTheming() {
   const oldEl = document.getElementById('docs-theme');
-  oldEl.parentNode.removeChild(oldEl);
+  oldEl?.parentNode?.removeChild(oldEl as Node);
 }
 
 reset() {

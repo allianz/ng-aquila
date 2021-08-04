@@ -65,7 +65,7 @@ describe('nxContextMenu', () => {
   let overlayContainer: OverlayContainer;
   let overlayContainerElement: HTMLElement;
 
-  function createComponent<T>(component: Type<T>, providers = []): ComponentFixture<T> {
+  function createComponent<T>(component: Type<T>, providers: any[] = []): ComponentFixture<T> {
     TestBed.configureTestingModule({
       imports: [NxContextMenuModule, NoopAnimationsModule, NxIconModule, NxButtonModule],
       declarations: [component],
@@ -160,7 +160,7 @@ describe('nxContextMenu', () => {
     // Flush due to the additional tick that is necessary for the FocusMonitor.
     flush();
 
-    expect(overlayContainerElement.querySelector('.nx-context-menu').scrollTop).toBe(0);
+    expect(overlayContainerElement.querySelector('.nx-context-menu')!.scrollTop).toBe(0);
   }));
 
   it('should close the menu when pressing ESCAPE', fakeAsync(() => {
@@ -169,7 +169,7 @@ describe('nxContextMenu', () => {
     fixture.componentInstance.trigger.openContextMenu();
 
     const panel = overlayContainerElement.querySelector('.nx-context-menu');
-    dispatchKeyboardEvent(panel, 'keydown', ESCAPE);
+    dispatchKeyboardEvent(panel!, 'keydown', ESCAPE);
     fixture.detectChanges();
     tick(500);
 
@@ -186,7 +186,7 @@ describe('nxContextMenu', () => {
     const event = createKeyboardEvent('keydown', ESCAPE);
     Object.defineProperty(event, 'altKey', { get: () => true });
 
-    panel.dispatchEvent(event);
+    panel!.dispatchEvent(event);
     fixture.detectChanges();
     tick(500);
 
@@ -308,6 +308,7 @@ describe('nxContextMenu', () => {
     const fixture = createComponent(SimpleMenu);
     fixture.detectChanges();
 
+    // @ts-ignore
     fixture.componentInstance.trigger.contextMenu = null;
     fixture.detectChanges();
 
@@ -358,7 +359,7 @@ describe('nxContextMenu', () => {
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.nx-context-menu');
-    const items = Array.from(panel.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+    const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
 
     // Focus the last item since focus starts from the first one.
     items[items.length - 1].focus();
@@ -367,7 +368,7 @@ describe('nxContextMenu', () => {
     spyOn(items[0], 'focus').and.callThrough();
 
     const event = createKeyboardEvent('keydown', HOME);
-    panel.dispatchEvent(event);
+    panel!.dispatchEvent(event);
 
     fixture.detectChanges();
 
@@ -384,7 +385,7 @@ describe('nxContextMenu', () => {
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.nx-context-menu');
-    const items = Array.from(panel.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+    const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
 
     // Focus the last item since focus starts from the first one.
     items[items.length - 1].focus();
@@ -394,7 +395,7 @@ describe('nxContextMenu', () => {
 
     const event = createKeyboardEvent('keydown', HOME);
     Object.defineProperty(event, 'altKey', { get: () => true });
-    panel.dispatchEvent(event);
+    panel!.dispatchEvent(event);
 
     fixture.detectChanges();
 
@@ -411,12 +412,12 @@ describe('nxContextMenu', () => {
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.nx-context-menu');
-    const items = Array.from(panel.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+    const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
 
     spyOn(items[items.length - 1], 'focus').and.callThrough();
 
     const event = createKeyboardEvent('keydown', END);
-    panel.dispatchEvent(event);
+    panel!.dispatchEvent(event);
 
     fixture.detectChanges();
 
@@ -433,13 +434,13 @@ describe('nxContextMenu', () => {
     fixture.detectChanges();
 
     const panel = overlayContainerElement.querySelector('.nx-context-menu');
-    const items = Array.from(panel.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
+    const items = Array.from(panel!.querySelectorAll('.nx-context-menu-item')) as HTMLElement[];
 
     spyOn(items[items.length - 1], 'focus').and.callThrough();
 
     const event = createKeyboardEvent('keydown', END);
     Object.defineProperty(event, 'altKey', { get: () => true });
-    panel.dispatchEvent(event);
+    panel!.dispatchEvent(event);
 
     fixture.detectChanges();
 
@@ -473,7 +474,7 @@ describe('nxContextMenu', () => {
       const panel = overlayContainerElement.querySelector('.nx-context-menu');
 
       expect(panel).toBeTruthy('Expected panel to be defined');
-      expect(panel.textContent).toContain('Another item', 'Expected panel to have correct content');
+      expect(panel!.textContent).toContain('Another item', 'Expected panel to have correct content');
       expect(fixture.componentInstance.trigger.contextMenuOpen).toBe(true, 'Expected menu to be open');
     }));
 
@@ -521,7 +522,7 @@ describe('nxContextMenu', () => {
       }));
 
     it('should focus the first menu item when opening a lazy menu via keyboard', fakeAsync(() => {
-      let zone: MockNgZone;
+      let zone!: MockNgZone;
       const fixture = createComponent(SimpleLazyMenu, [{
         provide: NgZone, useFactory: () => zone = new MockNgZone()
       }]);
@@ -552,7 +553,7 @@ describe('nxContextMenu', () => {
 
       let item = overlayContainerElement.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-      expect(item.textContent.trim()).toBe('one');
+      expect(item!.textContent!.trim()).toBe('one');
 
       fixture.componentInstance.triggerOne.openContextMenu();
       fixture.detectChanges();
@@ -563,7 +564,7 @@ describe('nxContextMenu', () => {
       tick(500);
       item = overlayContainerElement.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-      expect(item.textContent.trim()).toBe('two');
+      expect(item!.textContent!.trim()).toBe('two');
     }));
   });
 
@@ -795,21 +796,21 @@ describe('nxContextMenu', () => {
       const items = Array.from(overlay.querySelectorAll('.nx-context-menu [nxContextMenuItem]'));
       const levelOneTrigger = overlay.querySelector('#level-one-trigger');
 
-      dispatchMouseEvent(levelOneTrigger, 'mouseenter');
+      dispatchMouseEvent(levelOneTrigger as Node, 'mouseenter');
       fixture.detectChanges();
       tick();
       fixture.detectChanges();
 
-      expect(levelOneTrigger.classList)
+      expect(levelOneTrigger!.classList)
         .toContain('is-highlighted', 'Expected the trigger to be highlighted');
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
 
-      dispatchMouseEvent(items[items.indexOf(levelOneTrigger) + 1], 'mouseenter');
+      dispatchMouseEvent(items[items.indexOf(levelOneTrigger as Element) + 1], 'mouseenter');
       fixture.detectChanges();
       tick(500);
 
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
-      expect(levelOneTrigger.classList)
+      expect(levelOneTrigger!.classList)
         .not.toContain('is-highlighted', 'Expected the trigger to not be highlighted');
     }));
 
@@ -822,7 +823,7 @@ describe('nxContextMenu', () => {
         const items = Array.from(overlay.querySelectorAll('.nx-context-menu [nxContextMenuItem]'));
         const levelOneTrigger = overlay.querySelector('#level-one-trigger');
 
-        dispatchMouseEvent(levelOneTrigger, 'mouseenter');
+        dispatchMouseEvent(levelOneTrigger as Node, 'mouseenter');
         fixture.detectChanges();
         tick();
 
@@ -834,7 +835,7 @@ describe('nxContextMenu', () => {
         expect(overlay.querySelectorAll('.nx-context-menu').length)
           .toBe(3, 'Expected three open menus');
 
-        dispatchMouseEvent(items[items.indexOf(levelOneTrigger) + 1], 'mouseenter');
+        dispatchMouseEvent(items[items.indexOf(levelOneTrigger as Element) + 1], 'mouseenter');
         fixture.detectChanges();
         tick(500);
 
@@ -959,12 +960,12 @@ describe('nxContextMenu', () => {
 
       const menu = overlay.querySelector('.nx-context-menu');
 
-      dispatchKeyboardEvent(menu, 'keydown', RIGHT_ARROW);
+      dispatchKeyboardEvent(menu as Node, 'keydown', RIGHT_ARROW);
       fixture.detectChanges();
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(1, 'Expected one menu to remain open');
 
-      dispatchKeyboardEvent(menu, 'keydown', LEFT_ARROW);
+      dispatchKeyboardEvent(menu as Node, 'keydown', LEFT_ARROW);
       fixture.detectChanges();
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(1, 'Expected one menu to remain open');
@@ -996,7 +997,7 @@ describe('nxContextMenu', () => {
       instance.rootTrigger.openContextMenu();
       fixture.detectChanges();
 
-      expect(overlay.querySelector('.nx-context-menu').contains(document.activeElement))
+      expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
         .toBe(true, 'Expected focus to be inside the root menu');
 
       instance.levelOneTrigger.openContextMenu();
@@ -1020,7 +1021,7 @@ describe('nxContextMenu', () => {
       instance.levelOneTrigger.closeContextMenu();
       fixture.detectChanges();
 
-      expect(overlay.querySelector('.nx-context-menu').contains(document.activeElement))
+      expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
         .toBe(true, 'Expected focus to be back inside the root menu');
     });
 
@@ -1035,7 +1036,7 @@ describe('nxContextMenu', () => {
       instance.levelOneTrigger.openContextMenu();
       fixture.detectChanges();
 
-      const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
+      const triggerRect = overlay.querySelector('#level-one-trigger')!.getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
       expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left) - MENU_PANEL_OFFSET_X);
@@ -1053,7 +1054,7 @@ describe('nxContextMenu', () => {
       instance.levelOneTrigger.openContextMenu();
       fixture.detectChanges();
 
-      const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
+      const triggerRect = overlay.querySelector('#level-one-trigger')!.getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
       expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right) + MENU_PANEL_OFFSET_X);
@@ -1071,7 +1072,7 @@ describe('nxContextMenu', () => {
       instance.levelOneTrigger.openContextMenu();
       fixture.detectChanges();
 
-      const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
+      const triggerRect = overlay.querySelector('#level-one-trigger')!.getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
       expect(Math.round(triggerRect.left)).toBe(Math.round(panelRect.right) + MENU_PANEL_OFFSET_X);
@@ -1091,7 +1092,7 @@ describe('nxContextMenu', () => {
       fixture.detectChanges();
       tick(500);
 
-      const triggerRect = overlay.querySelector('#level-one-trigger').getBoundingClientRect();
+      const triggerRect = overlay.querySelector('#level-one-trigger')!.getBoundingClientRect();
       const panelRect = overlay.querySelectorAll('.cdk-overlay-pane')[1].getBoundingClientRect();
 
       expect(Math.round(triggerRect.right)).toBe(Math.round(panelRect.left) - MENU_PANEL_OFFSET_X);
@@ -1192,12 +1193,12 @@ describe('nxContextMenu', () => {
 
       const lazyTrigger = overlay.querySelector('#lazy-trigger');
 
-      dispatchMouseEvent(lazyTrigger, 'mouseenter');
+      dispatchMouseEvent(lazyTrigger as Node, 'mouseenter');
       fixture.detectChanges();
       tick(500);
       fixture.detectChanges();
 
-      expect(lazyTrigger.classList)
+      expect(lazyTrigger!.classList)
         .toContain('is-highlighted', 'Expected the trigger to be highlighted');
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
     }));
@@ -1212,7 +1213,7 @@ describe('nxContextMenu', () => {
       Object.defineProperty(event, 'buttons', { get: () => 1 });
       event.preventDefault = jasmine.createSpy('preventDefault spy');
 
-      dispatchMouseEvent(overlay.querySelector('[nxContextMenuItem]'), 'mousedown', 0, 0, event);
+      dispatchMouseEvent(overlay.querySelector('[nxContextMenuItem]') as Node, 'mousedown', 0, 0, event);
       expect(event.preventDefault).toHaveBeenCalled();
     });
 
@@ -1227,7 +1228,7 @@ describe('nxContextMenu', () => {
       tick(500);
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
 
-      dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
+      dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
       repeaterFixture.detectChanges();
       tick(500);
       expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
@@ -1290,7 +1291,7 @@ describe('nxContextMenu', () => {
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(1, 'Expected one open menu');
 
-      dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
+      dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
       nestedFixture.detectChanges();
       tick(500);
 
@@ -1309,14 +1310,14 @@ describe('nxContextMenu', () => {
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(1, 'Expected one open menu');
 
-      dispatchMouseEvent(overlay.querySelector('.level-one-trigger'), 'mouseenter');
+      dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
       nestedFixture.detectChanges();
       tick(500);
 
       expect(overlay.querySelectorAll('.nx-context-menu').length)
         .toBe(2, 'Expected two open menus');
 
-      dispatchMouseEvent(overlay.querySelector('.level-two-item'), 'mouseenter');
+      dispatchMouseEvent(overlay.querySelector('.level-two-item') as Node, 'mouseenter');
       nestedFixture.detectChanges();
       tick(500);
 
@@ -1394,11 +1395,11 @@ describe('nxContextMenu', () => {
   `
 })
 class SimpleMenu {
-  @ViewChild(NxContextMenuTriggerDirective) trigger: NxContextMenuTriggerDirective;
-  @ViewChild('triggerEl', {read: ElementRef}) triggerEl: ElementRef<HTMLElement>;
-  @ViewChild(NxButtonComponent) button: NxButtonComponent;
-  @ViewChild(NxContextMenuComponent) menu: NxContextMenuComponent;
-  @ViewChildren(NxContextMenuItemComponent) items: QueryList<NxContextMenuItemComponent>;
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+  @ViewChild('triggerEl', {read: ElementRef}) triggerEl!: ElementRef<HTMLElement>;
+  @ViewChild(NxButtonComponent) button!: NxButtonComponent;
+  @ViewChild(NxContextMenuComponent) menu!: NxContextMenuComponent;
+  @ViewChildren(NxContextMenuItemComponent) items!: QueryList<NxContextMenuItemComponent>;
   extraItems: string[] = [];
   closeCallback = jasmine.createSpy('menu closed callback');
 }
@@ -1450,23 +1451,23 @@ class SimpleMenu {
   `
 })
 class NestedMenu {
-  @ViewChild('root') rootMenu: NxContextMenuComponent;
-  @ViewChild('rootTrigger') rootTrigger: NxContextMenuTriggerDirective;
-  @ViewChild('rootTriggerEl', { read: ElementRef }) rootTriggerEl: ElementRef<HTMLElement>;
-  @ViewChild('rootTriggerEl', { read: NxButtonComponent }) rootButtonEl: NxButtonComponent;
-  @ViewChild('alternateTrigger') alternateTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('root') rootMenu!: NxContextMenuComponent;
+  @ViewChild('rootTrigger') rootTrigger!: NxContextMenuTriggerDirective;
+  @ViewChild('rootTriggerEl', { read: ElementRef }) rootTriggerEl!: ElementRef<HTMLElement>;
+  @ViewChild('rootTriggerEl', { read: NxButtonComponent }) rootButtonEl!: NxButtonComponent;
+  @ViewChild('alternateTrigger') alternateTrigger!: NxContextMenuTriggerDirective;
   readonly rootCloseCallback = jasmine.createSpy('root menu closed callback');
 
-  @ViewChild('levelOne') levelOneMenu: NxContextMenuComponent;
-  @ViewChild('levelOneTrigger') levelOneTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('levelOne') levelOneMenu!: NxContextMenuComponent;
+  @ViewChild('levelOneTrigger') levelOneTrigger!: NxContextMenuTriggerDirective;
   readonly levelOneCloseCallback = jasmine.createSpy('level one menu closed callback');
 
-  @ViewChild('levelTwo') levelTwoMenu: NxContextMenuComponent;
-  @ViewChild('levelTwoTrigger') levelTwoTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('levelTwo') levelTwoMenu!: NxContextMenuComponent;
+  @ViewChild('levelTwoTrigger') levelTwoTrigger!: NxContextMenuTriggerDirective;
   readonly levelTwoCloseCallback = jasmine.createSpy('level one menu closed callback');
 
-  @ViewChild('lazy') lazyMenu: NxContextMenuComponent;
-  @ViewChild('lazyTrigger') lazyTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('lazy') lazyMenu!: NxContextMenuComponent;
+  @ViewChild('lazyTrigger') lazyTrigger!: NxContextMenuTriggerDirective;
   showLazy = false;
 }
 
@@ -1486,8 +1487,8 @@ class NestedMenu {
   `
 })
 class NestedMenuCustomElevation {
-  @ViewChild('rootTrigger') rootTrigger: NxContextMenuTriggerDirective;
-  @ViewChild('levelOneTrigger') levelOneTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('rootTrigger') rootTrigger!: NxContextMenuTriggerDirective;
+  @ViewChild('levelOneTrigger') levelOneTrigger!: NxContextMenuTriggerDirective;
 }
 
 @Component({
@@ -1508,8 +1509,8 @@ class NestedMenuCustomElevation {
   `
 })
 class NestedMenuRepeater {
-  @ViewChild('rootTriggerEl') rootTriggerEl: ElementRef<HTMLElement>;
-  @ViewChild('levelOneTrigger') levelOneTrigger: NxContextMenuTriggerDirective;
+  @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef<HTMLElement>;
+  @ViewChild('levelOneTrigger') levelOneTrigger!: NxContextMenuTriggerDirective;
 
   items = ['one', 'two', 'three'];
 }
@@ -1528,7 +1529,7 @@ class NestedMenuRepeater {
   `
 })
 class SubmenuDeclaredInsideParentMenu {
-  @ViewChild('rootTriggerEl') rootTriggerEl: ElementRef;
+  @ViewChild('rootTriggerEl') rootTriggerEl!: ElementRef;
 }
 
 @Component({
@@ -1544,9 +1545,9 @@ class SubmenuDeclaredInsideParentMenu {
   `
 })
 class SimpleLazyMenu {
-  @ViewChild(NxContextMenuTriggerDirective) trigger: NxContextMenuTriggerDirective;
-  @ViewChild('triggerEl') triggerEl: ElementRef<HTMLElement>;
-  @ViewChildren(NxContextMenuItemComponent) items: QueryList<NxContextMenuItemComponent>;
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+  @ViewChild('triggerEl') triggerEl!: ElementRef<HTMLElement>;
+  @ViewChildren(NxContextMenuItemComponent) items!: QueryList<NxContextMenuItemComponent>;
 }
 
 @Component({
@@ -1569,8 +1570,8 @@ class SimpleLazyMenu {
   `
 })
 class LazyMenuWithContext {
-  @ViewChild('triggerOne') triggerOne: NxContextMenuTriggerDirective;
-  @ViewChild('triggerTwo') triggerTwo: NxContextMenuTriggerDirective;
+  @ViewChild('triggerOne') triggerOne!: NxContextMenuTriggerDirective;
+  @ViewChild('triggerTwo') triggerTwo!: NxContextMenuTriggerDirective;
 }
 
 @Component({
@@ -1586,7 +1587,7 @@ class LazyMenuWithContext {
   `
 })
 class DynamicPanelMenu {
-  @ViewChild(NxContextMenuTriggerDirective) trigger: NxContextMenuTriggerDirective;
-  @ViewChild('one') firstMenu: NxContextMenuComponent;
-  @ViewChild('two') secondMenu: NxContextMenuComponent;
+  @ViewChild(NxContextMenuTriggerDirective) trigger!: NxContextMenuTriggerDirective;
+  @ViewChild('one') firstMenu!: NxContextMenuComponent;
+  @ViewChild('two') secondMenu!: NxContextMenuComponent;
 }

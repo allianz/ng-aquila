@@ -17,7 +17,7 @@ import {
 })
 export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
 
-  @HostBinding('style.width.px') width: number;
+  @HostBinding('style.width.px') width!: number;
 
   private _resize: boolean = true;
   @Input('nxAutoResize')
@@ -83,12 +83,8 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
     this._element.nativeElement.removeEventListener('change', this.updateInputWidth, true);
   }
 
-  sumStyles(left, right) {
-    left = parseInt(left, 10);
-    right = parseInt(right, 10);
-    left = Number.isNaN(left) ? 0 : left;
-    right = Number.isNaN(right) ? 0 : right;
-    return left + right;
+  sumStyles(left: string, right: string) {
+    return (parseInt(left, 10) || 0) + (parseInt(right, 10) || 0);
   }
 
   static ngAcceptInputType_resize: BooleanInput;

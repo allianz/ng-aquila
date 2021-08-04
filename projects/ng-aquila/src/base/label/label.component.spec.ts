@@ -11,8 +11,8 @@ const customDefaultOptions: LabelDefaultOptions = { size: 'small' };
 
 @Directive()
 abstract class LabelTest {
-  @ViewChild(NxLabelComponent) labelInstance: NxLabelComponent;
-  size: LABEL_SIZE_TYPE;
+  @ViewChild(NxLabelComponent) labelInstance!: NxLabelComponent;
+  size!: LABEL_SIZE_TYPE;
 }
 
 describe('NxLabelComponent', () => {

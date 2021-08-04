@@ -13,7 +13,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 export class CodeInputSixCharExampleComponent implements OnInit {
   inputValue: string = '';
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   ngOnInit() {
     this.codeForm = new FormGroup({

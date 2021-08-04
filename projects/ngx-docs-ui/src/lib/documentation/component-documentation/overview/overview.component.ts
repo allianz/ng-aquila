@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 
 export class NxvOverviewComponent implements OnInit {
-  components: Category[];
+  components!: Category[];
   issueBoardLink: string;
 
   constructor(
@@ -29,7 +29,7 @@ export class NxvOverviewComponent implements OnInit {
 
   ngOnInit() { }
 
-  navigateToComponent(component) {
+  navigateToComponent(component: { component: { id: string | number } } ) {
     this._router.navigate(['/documentation', component.component.id]);
   }
 }

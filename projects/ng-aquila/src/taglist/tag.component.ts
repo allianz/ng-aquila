@@ -15,7 +15,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   }
 })
 export class NxTagComponent implements OnDestroy {
-  private _removable: boolean;
+  private _removable!: boolean;
 
   /** Whether the tag is removeable. */
   @Input()
@@ -42,7 +42,7 @@ export class NxTagComponent implements OnDestroy {
     return this.removable ? 0 : this._tabindex;
   }
 
-  private _value: string;
+  private _value!: string;
   /** Sets the value of the tag. */
   @Input()
   set value(value: string) {

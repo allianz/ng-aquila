@@ -11,13 +11,13 @@ import { NxWordComponent } from './word.component';
 @Directive()
 abstract class NaturalLanguageFormTest {
   public size: string = 'regular';
-  public value: string;
+  public value!: string;
 
-  @ViewChild(NxNaturalLanguageFormComponent) formInstance: NxNaturalLanguageFormComponent;
-  @ViewChild(NxNaturalLanguageFormComponent,  { read: ElementRef }) formInstanceNative: ElementRef;
-  @ViewChild(NgControl) control: NgControl;
-  @ViewChildren(NxInputDirective) inputs: QueryList<NxInputDirective>;
-  @ViewChildren(NxWordComponent, {read: ElementRef}) words: QueryList<ElementRef>;
+  @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
+  @ViewChild(NxNaturalLanguageFormComponent,  { read: ElementRef }) formInstanceNative!: ElementRef;
+  @ViewChild(NgControl) control!: NgControl;
+  @ViewChildren(NxInputDirective) inputs!: QueryList<NxInputDirective>;
+  @ViewChildren(NxWordComponent, {read: ElementRef}) words!: QueryList<ElementRef>;
 }
 
 describe('NxNaturalLanguageFormComponent', () => {
@@ -114,7 +114,7 @@ describe('NxNaturalLanguageFormComponent', () => {
       (testInstance as FormWithPreviousFormfieldComponent).nlfInput.markAsTouched();
       fixture.detectChanges();
       tick();
-      const popover: HTMLElement = overlayContainer.getContainerElement().querySelector('.nx-popover__content');
+      const popover: HTMLElement = overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLElement;
       const yAfterTouch = popover.getBoundingClientRect().y;
 
       // get position of popover after submit

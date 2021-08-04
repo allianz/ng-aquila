@@ -68,7 +68,7 @@ describe('NxMultiYearView', () => {
       fixture.detectChanges();
 
       const selectedEl = multiYearViewNativeElement.querySelector('.nx-calendar-body-selected');
-      expect(selectedEl.innerHTML.trim()).toBe('2019');
+      expect(selectedEl!.innerHTML.trim()).toBe('2019');
     });
 
     it('should emit the selected year on cell clicked', () => {
@@ -104,7 +104,7 @@ describe('NxMultiYearView', () => {
           fixture.detectChanges();
         });
 
-        const activeDateEquals = (year, month, day) => {
+        const activeDateEquals = (year: any, month: any, day: any) => {
           expect(calendarInstance.date).toEqual(new Date(year, month, day));
         };
 
@@ -237,9 +237,9 @@ describe('NxMultiYearView', () => {
 class StandardMultiYearView {
   date = new Date(2017, JAN, 1);
   selected = new Date(2020, JAN, 1);
-  selectedYear: Date;
+  selectedYear!: Date;
 
-  @ViewChild(NxMultiYearViewComponent) multiYearView: NxMultiYearViewComponent<Date>;
+  @ViewChild(NxMultiYearViewComponent) multiYearView!: NxMultiYearViewComponent<Date>;
 }
 
 @Component({

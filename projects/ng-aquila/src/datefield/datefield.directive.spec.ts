@@ -19,16 +19,16 @@ import { NxIsoDateModule } from '../iso-date-adapter';
 abstract class DatefieldTest {
   public disabled: boolean = false;
   public strict: boolean = true;
-  public displayFormat: string;
-  public parseFormat: string|string[];
-  public value: Moment;
+  public displayFormat!: string;
+  public parseFormat!: string|string[];
+  public value!: Moment;
 
-  public min: Moment;
-  public max: Moment;
+  public min!: Moment;
+  public max!: Moment;
 
-  public form: FormGroup;
+  public form!: FormGroup;
 
-  @ViewChild(NxDatefieldDirective) textInstance: NxDatefieldDirective<Date>;
+  @ViewChild(NxDatefieldDirective) textInstance!: NxDatefieldDirective<Date>;
 }
 
 describe('NxDatefieldDirective with Moment', () => {
@@ -78,6 +78,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
     fixture.detectChanges();
     tick();
+    // @ts-ignore
     expect(nativeElement.attributes['disabled']).toBeTruthy();
   }));
 
@@ -176,7 +177,7 @@ describe('NxDatefieldDirective with Moment', () => {
     createTestComponent(ReactiveDatefield);
     fixture.detectChanges();
     tick();
-    expect(testInstance.form.get('datefield').dirty).toBeFalse();
+    expect(testInstance.form.get('datefield')!.dirty).toBeFalse();
   }));
 
   it('should not remove the value of the input on blur', () => {
@@ -243,7 +244,7 @@ describe('NxDatefieldDirective with Moment', () => {
       nativeElement.value = '';
       nativeElement.dispatchEvent(new Event('input'));
       fixture.detectChanges();
-      expect(testInstance.form.get('datefield').valid).toBe(true);
+      expect(testInstance.form.get('datefield')!.valid).toBe(true);
     });
 
     it('should have no error on custom date format', () => {
@@ -260,7 +261,7 @@ describe('NxDatefieldDirective with Moment', () => {
       fixture.detectChanges();
 
       expect(nativeElement.value).toBe('10--31--2019');
-      expect(testInstance.form.get('datefield').valid).toBe(true);
+      expect(testInstance.form.get('datefield')!.valid).toBe(true);
     });
 
     it('should reflect the value in the native input element', () => {
@@ -335,8 +336,8 @@ class ReactiveDatefield extends DatefieldTest {
 
 @Directive()
 abstract class DatefieldIsoTest {
-  public form: FormGroup;
-  @ViewChild(NxDatefieldDirective) datefieldInstance: NxDatefieldDirective<Date>;
+  public form!: FormGroup;
+  @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
 }
 
 describe('NxDatefieldDirective with IsoAdapter', () => {
@@ -373,7 +374,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
 
   it('has no error for a correct date', () => {
     createTestComponent(ReactiveIsoDatefield);
-    expect(testInstance.form.get('datefield').valid).toBeTrue();
+    expect(testInstance.form.get('datefield')!.valid).toBeTrue();
   });
 
   it('has an parsing error for an incorrect date', () => {
@@ -382,8 +383,8 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     nativeElement.value = 'this is no date';
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(datefield.valid).toBeFalse();
-    expect(datefield.errors['nxDatefieldParse']).toBeDefined();
+    expect(datefield!.valid).toBeFalse();
+    expect(datefield!.errors!['nxDatefieldParse']).toBeDefined();
   });
 
   it('has no error if input is empty', () => {
@@ -391,7 +392,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     nativeElement.value = '';
     nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
-    expect(testInstance.form.get('datefield').valid).toBeTrue();
+    expect(testInstance.form.get('datefield')!.valid).toBeTrue();
   });
 
 });

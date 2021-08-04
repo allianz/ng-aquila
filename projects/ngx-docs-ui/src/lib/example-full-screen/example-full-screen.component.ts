@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class ExampleFullScreenComponent implements OnInit {
 
-  example: string;
+  example!: string;
 
   constructor(
     private _route: ActivatedRoute,
@@ -20,7 +20,7 @@ export class ExampleFullScreenComponent implements OnInit {
     const routeSnapshot = this._route.snapshot;
     const themeName = routeSnapshot.queryParamMap.get('theme');
     this.example = routeSnapshot.params.id;
-    const selectedTheme = this._themeSwitcherService.get(themeName);
+    const selectedTheme = this._themeSwitcherService.get(themeName as string);
     if (selectedTheme) {
       this._themeSwitcherService.switchTheme(selectedTheme);
     }

@@ -22,29 +22,29 @@ export class NxIconToggleButtonComponent {
   inGroup: boolean = true;
 
   @Input()
-  hint: string;
+  hint: string = '';
 
   @Input()
-  label: string;
+  label: string = '';
 
   @Input()
-  checked: boolean;
+  checked: boolean = false;
 
   @Input()
-  icon: string;
+  icon: string = '';
 
   @Input('svg')
-  svgUrl: string;
+  svgUrl: string = '';
 
   @Input()
-  disabled: boolean;
+  disabled: boolean = false;
 
   @Input()
-  negative: boolean;
+  negative: boolean = false;
 
   @Input()
-  touched: boolean;
+  touched: boolean = false;
 
   @Input()
-  circleText: string;
+  circleText: string = '';
 }

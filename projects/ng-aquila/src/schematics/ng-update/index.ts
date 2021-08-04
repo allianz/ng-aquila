@@ -2,7 +2,6 @@ import { MiscTemplateMigration } from './migrations/misc-template';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 import {
   createMigrationSchematicRule,
-  NullableDevkitMigration,
   TargetVersion,
   UpgradeData
 } from '@angular/cdk/schematics';
@@ -31,7 +30,7 @@ export const upgradeData: UpgradeData = {
   propertyNames,
 };
 
-const customMigrations = [
+const customMigrations: any = [
   MiscTemplateMigration
 ];
 

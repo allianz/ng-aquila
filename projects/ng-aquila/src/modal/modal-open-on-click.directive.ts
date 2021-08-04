@@ -1,4 +1,5 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 
 import { NxModalService } from './modal.service';
@@ -7,9 +8,9 @@ import { NxModalService } from './modal.service';
 export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
 
   /** @docs-private */
-  elements: any[];
+  elements!: any[];
 
-  private subscription: ISubscription;
+  private subscription!: ISubscription;
 
   constructor(private templateRef: TemplateRef<any>,
               private viewContainer: ViewContainerRef,
@@ -31,7 +32,7 @@ export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
   }
 
   /** @docs-private */
-  clickHandler = (event: any) => {
+  clickHandler = (event: Event) => {
     this.viewContainer.clear();
     // instantiate the template onto which this directive is applied
     const viewRef = this.viewContainer.createEmbeddedView(this.templateRef);
@@ -49,9 +50,9 @@ export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
    * Value: A single template reference variable or an array of template reference variables.
    */
   @Input()
-  set nxOpenModalOnClick(elements) {
+  set nxOpenModalOnClick(elements: NxButtonBase | NxButtonBase[]) {
     // also support the case where only one element is passed, check for the length property to be sure elements is an array
-    if (elements.length) {
+    if (Array.isArray(elements)) {
       this.elements = elements;
     } else {
       this.elements = [ elements ];

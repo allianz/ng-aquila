@@ -12,7 +12,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@ang
 export class PopoverHoverExampleComponent implements AfterViewInit, OnDestroy {
   popoverManualOpenFlag = false;
 
-  @ViewChild('hoverTriggerIcon') _hoverTriggerIcon: ElementRef<HTMLElement>;
+  @ViewChild('hoverTriggerIcon') _hoverTriggerIcon!: ElementRef<HTMLElement>;
 
   constructor(private _focusMonitor: FocusMonitor) {}
 

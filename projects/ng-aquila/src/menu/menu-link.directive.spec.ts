@@ -8,7 +8,7 @@ import { NxMenuModule } from './menu.module';
 
 @Directive()
 abstract class MenuLinkTest {
-  @ViewChild(NxMenuLinkDirective) menuLinkInstance: NxMenuLinkDirective;
+  @ViewChild(NxMenuLinkDirective) menuLinkInstance!: NxMenuLinkDirective;
 }
 
 describe(NxMenuLinkDirective.name, () => {

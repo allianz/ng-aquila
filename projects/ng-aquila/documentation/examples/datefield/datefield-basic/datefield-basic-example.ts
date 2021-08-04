@@ -11,5 +11,5 @@ import { Moment } from 'moment';
 })
 
 export class DatefieldBasicExampleComponent {
-  currentDate: Moment = null;
+  currentDate: Moment | null = null;
 }

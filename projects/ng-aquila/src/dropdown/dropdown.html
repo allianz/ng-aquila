@@ -27,7 +27,7 @@
   [cdkConnectedOverlayOrigin]="origin"
   [cdkConnectedOverlayOpen]="panelOpen"
   [cdkConnectedOverlayPositions]="_positions"
-  [cdkConnectedOverlayMinWidth]="_triggerRect?.width"
+  [cdkConnectedOverlayMinWidth]="$any(_triggerRect?.width)"
   [cdkConnectedOverlayFlexibleDimensions]="true"
   [cdkConnectedOverlayViewportMargin]="_overlayViewportMargin"
   [cdkConnectedOverlayPush]="true"

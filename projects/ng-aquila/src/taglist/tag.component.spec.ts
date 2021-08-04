@@ -12,7 +12,7 @@ import { NxTaglistModule } from './taglist.module';
 
 @Directive()
 abstract class TagTest {
-  @ViewChild(NxTagComponent) tagInstance: NxTagComponent;
+  @ViewChild(NxTagComponent) tagInstance!: NxTagComponent;
 }
 
 describe('NxTagComponent', () => {
@@ -49,7 +49,7 @@ describe('NxTagComponent', () => {
   it('should bind the value', () => {
     createTestComponent(BasicTag);
     expect(tagInstance.value).toBe('foo');
-    expect(tagNativeElement.textContent.trim()).toBe('foo');
+    expect(tagNativeElement.textContent?.trim()).toBe('foo');
   });
 
   it('should show close icon when removable is set to true', () => {
@@ -98,7 +98,7 @@ describe('NxTagComponent', () => {
       createTestComponent(BasicTag);
       testInstance.tagInstance.value = 'programmatic value';
       fixture.detectChanges();
-      expect(tagNativeElement.textContent.trim()).toBe('programmatic value');
+      expect(tagNativeElement.textContent?.trim()).toBe('programmatic value');
     });
 
     it('should update on removable change', () => {

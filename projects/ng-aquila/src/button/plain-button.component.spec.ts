@@ -7,9 +7,9 @@ import { NxPlainButtonComponent } from './plain-button.component';
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class ButtonTest {
-  @ViewChild('button') buttonInstance: NxPlainButtonComponent;
+  @ViewChild('button') buttonInstance!: NxPlainButtonComponent;
 
-  classNames: string;
+  classNames!: string;
 }
 
 describe('NxBreadcrumbComponent', () => {

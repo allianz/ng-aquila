@@ -22,14 +22,14 @@ abstract class RowGroupTest {
   labelExpanded: string = 'To be closed';
   isExpanded: boolean = false;
   useFullRowForExpandableArea: boolean = false;
-  @ViewChild(NxComparisonTableRowGroupDirective) rowGroupDirective: NxComparisonTableRowGroupDirective;
+  @ViewChild(NxComparisonTableRowGroupDirective) rowGroupDirective!: NxComparisonTableRowGroupDirective;
 }
 
 describe('NxComparisonTableRowGroupDirective', () => {
   let fixture: ComponentFixture<RowGroupTest>;
   let testInstance: RowGroupTest;
   let rowGroupElement: DebugElement;
-  let flexRowElements: DebugElement[];
+  let flexRowElements: DebugElement[] | null;
 
   function createTestComponent(component: Type<RowGroupTest>) {
     fixture = TestBed.createComponent(component);
@@ -56,7 +56,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
     it('should show 5 rows by default', () => {
       createTestComponent(BasicComponent);
-      expect(flexRowElements.length).toBe(5);
+      expect(flexRowElements?.length).toBe(5);
     });
 
     it('should not show expandable button area if the number of rows is less than visibleRows', () => {
@@ -70,7 +70,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
     it('correctly changes visibleRows', () => {
       createTestComponent(ConfigurableComponent);
-      expect(flexRowElements.length).toBe(2);
+      expect(flexRowElements?.length).toBe(2);
 
       testInstance.visibleRows = 4;
       fixture.detectChanges();
@@ -118,7 +118,7 @@ describe('NxComparisonTableRowGroupDirective', () => {
 
       const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
       expect(expandableButtonElement.nativeElement.textContent.trim()).toBe('More services');
-      expect(flexRowElements.length).toBe(5);
+      expect(flexRowElements?.length).toBe(5);
     });
 
     it('sets useFullRowForExpandableArea to false by default', () => {

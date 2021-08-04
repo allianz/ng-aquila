@@ -108,7 +108,7 @@ describe('NxAccordion', () => {
     </nx-expansion-panel>
   </nx-accordion>`})
 class SetOfItems {
-  @ViewChild(NxAccordionDirective) accordion: NxAccordionDirective;
+  @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
 
   multi: boolean = false;
   firstPanelExpanded: boolean = false;
@@ -127,6 +127,6 @@ class SetOfItems {
     </nx-expansion-panel>
   </nx-accordion>`})
 class NestedPanel {
-  @ViewChild('outerPanel', {static: true}) outerPanel: NxExpansionPanelComponent;
-  @ViewChild('innerPanel', {static: true}) innerPanel: NxExpansionPanelComponent;
+  @ViewChild('outerPanel', {static: true}) outerPanel!: NxExpansionPanelComponent;
+  @ViewChild('innerPanel', {static: true}) innerPanel!: NxExpansionPanelComponent;
 }

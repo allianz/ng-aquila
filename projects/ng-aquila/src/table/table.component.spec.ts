@@ -11,7 +11,7 @@ import { NxTableRowComponent } from './table-row.component';
 
 @Directive()
 abstract class TableTest {
-  @ViewChild(NxTableComponent) tableInstance: NxTableComponent;
+  @ViewChild(NxTableComponent) tableInstance!: NxTableComponent;
 }
 
 describe(NxTableComponent.name, () => {
@@ -114,13 +114,13 @@ describe(NxTableComponent.name, () => {
 
     it('sticky set to first should add a corresponding class', () => {
       createTestComponent(SimpleTableComponent);
-      tableInstance.sticky = "first";
+      tableInstance.sticky = 'first';
       fixture.detectChanges();
       expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
-      tableInstance.sticky = "last";
+      tableInstance.sticky = 'last';
       fixture.detectChanges();
       expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();
-      tableInstance.sticky = "both";
+      tableInstance.sticky = 'both';
       fixture.detectChanges();
       expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
       expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();

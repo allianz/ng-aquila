@@ -4,7 +4,7 @@
     <ng-template nxTabLabel>
       <span class="tab-header-content">
         {{ tab.label }}
-        <nx-indicator *ngIf="tab.notification" position="over-text" [attr.aria-label]="getAriaLabel(tab.notificationCount)">{{ getIndicatorText(tab.notificationCount) }}</nx-indicator>
+        <nx-indicator *ngIf="tab.notification" position="over-text" [attr.aria-label]="getAriaLabel(tab.notificationCount!)">{{ getIndicatorText(tab.notificationCount!) }}</nx-indicator>
       </span>
     </ng-template>
     <p class="nx-margin-top-s">Content of {{ tab.label }}</p>

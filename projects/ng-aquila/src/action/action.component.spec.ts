@@ -8,10 +8,10 @@ import { NxActionModule } from './action.module';
 
 @Directive()
 abstract class ActionTest {
-  selected: boolean;
-  expandable: boolean;
-  expanded: boolean;
-  @ViewChild(NxActionComponent) actionInstance: NxActionComponent;
+  selected!: boolean;
+  expandable!: boolean;
+  expanded!: boolean;
+  @ViewChild(NxActionComponent) actionInstance!: NxActionComponent;
 }
 
 describe(NxActionComponent.name, () => {

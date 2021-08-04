@@ -10,10 +10,10 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   styleUrls: ['./modal-content-actions-example.css']
 })
 export class ModalContentActionsExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
-  actionResult: string;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
+  actionResult!: string;
 
-  dialogRef: NxModalRef<any, any>;
+  dialogRef!: NxModalRef<any, any>;
 
   constructor(public dialogService: NxDialogService) {
   }

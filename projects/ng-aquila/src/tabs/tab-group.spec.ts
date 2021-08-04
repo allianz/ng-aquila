@@ -19,16 +19,16 @@ const tabsDefaultOptions: TabGroupDefaultOptions = {
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class TabsTest {
-  @ViewChildren(NxAccordionDirective) accordion: QueryList<NxAccordionDirective>;
+  @ViewChildren(NxAccordionDirective) accordion!: QueryList<NxAccordionDirective>;
 
-  selectedIndex;
-  autoselect;
+  selectedIndex: any;
+  autoselect: any;
   negative = false;
   customLabel = 'First label';
   showAccordion = true;
   appearance = 'expert';
 
-  @ViewChild(NxTabGroupComponent) tabGroupInstance: NxTabGroupComponent;
+  @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
 }
 
 describe('NxTabGroupComponent', () => {
@@ -580,6 +580,7 @@ describe('NxTabGroupComponent', () => {
     it('changes appearance on injection token change',
       inject([TAB_GROUP_DEFAULT_OPTIONS], (defaultOptions: TabGroupDefaultOptions) => {
         createTestComponent(BasicTabs);
+        // @ts-ignore
         testInstance.appearance = undefined;
         fixture.detectChanges();
         expect(tabGroupInstance.appearance).toBe('expert');
@@ -636,7 +637,7 @@ class ConfigurableTabs extends TabsTest {}
   `
 })
 class BindingTabs extends TabsTest {
-  selectedIndex;
+  selectedIndex: any;
 }
 
 @Component({
@@ -650,10 +651,10 @@ class BindingTabs extends TabsTest {
   `
 })
 class EventTabsTest extends TabsTest {
-  selectedIndex;
-  tabChangeEvent;
+  selectedIndex: any;
+  tabChangeEvent: any;
 
-  tabChanged(event) {
+  tabChanged(event: Event) {
     this.tabChangeEvent = event;
   }
 }
@@ -716,8 +717,8 @@ class TestComponent implements OnDestroy {
   `
 })
 class CustomElementTest extends TabsTest {
-  @ViewChild('customElement', { read: TestComponent }) customElement: TestComponent;
-  @ViewChildren(TestComponent) customElementInHeader: QueryList<TestComponent>;
+  @ViewChild('customElement', { read: TestComponent }) customElement!: TestComponent;
+  @ViewChildren(TestComponent) customElementInHeader!: QueryList<TestComponent>;
 }
 
 @Component({
@@ -752,5 +753,5 @@ class DisabledTabs extends TabsTest {
  })
  class TemplateTabs extends TabsTest {
    selectedIndex = 0;
-   @ViewChildren(TestComponent) testComponents: QueryList<TestComponent>;
+   @ViewChildren(TestComponent) testComponents!: QueryList<TestComponent>;
  }

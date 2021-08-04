@@ -8,7 +8,7 @@ import { NxActionModule } from './action.module';
 
 @Directive()
 abstract class ActionIconTest {
-  @ViewChild(NxActionIconDirective) actionIconInstance: NxActionIconDirective;
+  @ViewChild(NxActionIconDirective) actionIconInstance!: NxActionIconDirective;
 }
 
 describe(NxActionIconDirective.name, () => {

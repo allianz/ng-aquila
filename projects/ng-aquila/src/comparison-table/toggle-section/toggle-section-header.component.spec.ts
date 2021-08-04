@@ -12,7 +12,7 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class ToggleSectionTest {
-  @ViewChildren(NxToggleSectionHeaderComponent) headerInstances: QueryList<NxToggleSectionHeaderComponent>;
+  @ViewChildren(NxToggleSectionHeaderComponent) headerInstances!: QueryList<NxToggleSectionHeaderComponent>;
 
   headerId = 'toggle-header';
 }

@@ -10,8 +10,8 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class PopularCellTest {
-  @ViewChild(NxComparisonTablePopularCell) popularCellInstance: NxComparisonTablePopularCell;
-  @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
+  @ViewChild(NxComparisonTablePopularCell) popularCellInstance!: NxComparisonTablePopularCell;
+  @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
   popularCellId = 'popular-cell';
 }

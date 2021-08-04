@@ -19,7 +19,7 @@ import {
   styleUrls: ['./doc-viewer.component.css']
 })
 export class DocViewerComponent implements OnInit {
-  private _loadedContent;
+  private _loadedContent: any;
   @Output() contentLoaded = new EventEmitter<any>();
 
   constructor(
@@ -44,7 +44,7 @@ export class DocViewerComponent implements OnInit {
     );
   }
 
-  updateContent(content) {
+  updateContent(content: string) {
     if (!content) {
       const codeType = (this.id) ? this.id : 'code';
       this._elementRef.nativeElement.innerHTML =
@@ -64,7 +64,7 @@ export class DocViewerComponent implements OnInit {
     return this._elementRef.nativeElement.id;
   }
 
-  handleError(url, error) {
+  handleError(url: string, error: any) {
     console.log('error', url, error);
   }
 

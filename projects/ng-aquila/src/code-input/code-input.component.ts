@@ -83,7 +83,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     this._changeDetectorRef.markForCheck();
   }
   get convertTo() {
-    return this._convertTo;
+    return this._convertTo!;
   }
   private _convertTo?: NxConversionTypes;
 
@@ -155,7 +155,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Converts to upper or lowercase when enabled. */
-  _convertLetterSize(value: any): string {
+  _convertLetterSize(value: any): string | undefined {
     if (value === 'ß') {
       return value;
     }
@@ -172,16 +172,17 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Reacts to keydown event. */
-  _keydownAction(event): void | false {
-    const previousInputField: HTMLInputElement = event.target.previousElementSibling;
-    const nextInputField: HTMLInputElement = event.target.nextElementSibling;
+  _keydownAction(event: KeyboardEvent): void | false {
+    const targetElement: HTMLInputElement = event.target as HTMLInputElement;
+    const previousInputField: HTMLInputElement = targetElement.previousElementSibling as HTMLInputElement;
+    const nextInputField: HTMLInputElement = targetElement.nextElementSibling as HTMLInputElement;
 
     switch (event.keyCode) {
       case SPACE:
         return false;
 
       case BACKSPACE:
-        if (event.target.value === '') {
+        if (targetElement.value === '') {
           if (previousInputField && previousInputField.tagName === TAG_NAME_INPUT) {
             this.selectInput(previousInputField);
           }
@@ -204,14 +205,14 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
       case DOWN_ARROW:
         this._isUpDown = true;
-        if (this._type === 'number' && (event.target.value === '' || event.target.value === '0')) {
+        if (this._type === 'number' && (targetElement.value === '' || targetElement.value === '0')) {
           event.preventDefault();
         }
         break;
 
       case UP_ARROW:
         this._isUpDown = true;
-        if (this._type === 'number' && event.target.value === '9') {
+        if (this._type === 'number' && targetElement.value === '9') {
           event.preventDefault();
         }
         break;
@@ -222,23 +223,24 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Selects the value on click of an input field. */
-  _selectText(event): void {
-    this.selectInput(event.target);
+  _selectText(event: Event): void {
+    this.selectInput(event.target as HTMLInputElement);
   }
 
   /** Automatically focuses and selects the next input on key input. */
-  _selectNextInput(event): void {
-    event.target.value = this._convertLetterSize(event.target.value.slice(0, 1));
-    const currentIndex = this._getFocusedInputIndex(event);
+  _selectNextInput(event: Event): void {
+    const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
+    eventTarget.value = this._convertLetterSize(eventTarget.value.slice(0, 1)) as string;
+    const currentIndex: number = Number(this._getFocusedInputIndex(event));
     // save in model with uppercase if needed
-    this._keyCode[currentIndex] = event.target.value;
+    this._keyCode[currentIndex] = eventTarget.value;
     this.propagateChange(this._keyCode.join(''));
 
     // don't jump to next input if the user uses UP/DOWn arrow (native behaviour)
     const focusNextInput = !(this._isUpDown && this.type === 'number');
 
-    if (event.target.value && focusNextInput) {
-      const nextInputField = event.target.nextSibling;
+    if (eventTarget.value && focusNextInput) {
+      const nextInputField = eventTarget.nextSibling as HTMLInputElement;
 
       if (nextInputField !== null && nextInputField.tagName === TAG_NAME_INPUT) {
         nextInputField.focus();
@@ -252,15 +254,15 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Paste event to distribute content in input fields. */
-  _pasteClipboard(event): void {
+  _pasteClipboard(event: ClipboardEvent): void {
     let copiedText = (event.clipboardData || (window as any).clipboardData).getData('text');
     let copiedTextIndex = 0;
-    const inputIndex = this._getFocusedInputIndex(event);
+    const inputIndex: number = Number(this._getFocusedInputIndex(event));
 
     copiedText = this.type === 'number' ? this._formatNumberInput(copiedText) : copiedText;
 
-    for (let i = inputIndex; i < this.codeLength; i++) {
-      this._keyCode[i] = this._convertLetterSize(copiedText[copiedTextIndex]);
+    for (let i: number = inputIndex; i < this.codeLength; i++) {
+      this._keyCode[i] = this._convertLetterSize(copiedText[copiedTextIndex]) as string;
       copiedTextIndex++;
     }
 
@@ -276,7 +278,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Returns the index of the code input, which is currently focused. */
-  private _getFocusedInputIndex(event) {
+  private _getFocusedInputIndex(event: Event) {
     let inputIndex;
     for (let i = 0; i < this._el.nativeElement.children.length; i++) {
       if (event.srcElement === this._el.nativeElement.children.item(i)) {
@@ -345,18 +347,18 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
   }
 
   /** Adds a gap to input fields when appropriate. */
-  _inputGap(index): string {
+  _inputGap(index: number): string {
     switch (this.codeLength) {
       case 4:
       case 6:
       case 8:
         if (index === this.codeLength / 2) {
           return INPUT_FIELD_GAP;
+        } else {
+          return '';
         }
-
-        break;
       default:
-        return;
+        return '';
     }
   }
 

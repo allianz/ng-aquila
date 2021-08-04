@@ -17,7 +17,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxActionComponent implements OnDestroy {
-  @ContentChild(NxActionIconDirective) _iconChild: NxActionIconDirective;
+  @ContentChild(NxActionIconDirective) _iconChild!: NxActionIconDirective;
 
   /** Whether this action is selected or not.  */
   @Input()

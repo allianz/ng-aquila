@@ -65,23 +65,23 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
   }
 })
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnInit {
-  private overlayRef: OverlayRef;
-  private portal: TemplatePortal<any>;
+  private overlayRef!: OverlayRef | null;
+  private portal!: TemplatePortal<any>;
   private _destroyed = new Subject<void>();
   private _overlayDestroyed = new Subject<void>();
   private _show: boolean = false;
-  private _closeable: boolean = null;
-  private _positionStrategy: PositionStrategy;
-  private _embeddedViewRef: EmbeddedViewRef<any>;
+  private _closeable: boolean | null = null;
+  private _positionStrategy!: PositionStrategy;
+  private _embeddedViewRef!: EmbeddedViewRef<any> | null;
   private _modal: boolean = false;
   /** The class that traps and manages focus within the popover. */
-  private _focusTrap: FocusTrap;
+  private _focusTrap!: FocusTrap;
   /** Element that was focused before the Popover was opened. Save this to restore upon close. */
   private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
   private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
   private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
   private _dirChangeSubscription: Subscription;
-  private _removeEventListener: Function = undefined;
+  private _removeEventListener!: Function;
   /** @docs-private */
   id = 'nx-popover-' + nextId++;
 
@@ -117,7 +117,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }
   }
   get closeable(): boolean {
-    return this._closeable;
+    return this._closeable as boolean;
   }
 
   /** Whether the popover should be closed on click outside of the popover in the trigger modes 'manual' and 'click'. */
@@ -133,7 +133,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   /** Links the trigger with the popover to open. */
   @Input('nxPopoverTriggerFor')
-  popover: NxPopoverComponent;
+  popover!: NxPopoverComponent;
 
   /** Sets the desired direction to open the popover. E.g., right, left, bottom, top */
   @Input('nxPopoverDirection')
@@ -190,7 +190,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             this.show = false;
           }
         })
-        .set('keydown', (event: KeyboardEvent) => {
+        .set('keydown', (event: any) => {
           switch (event.keyCode) {
             case SPACE:
             case ENTER:
@@ -266,8 +266,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   }
 
   /** @docs-private */
-  isCloseable() {
-    return (this.trigger === 'click' && this._closeable === null) || this._closeable;
+  isCloseable(): boolean {
+    return (this.trigger === 'click' && this._closeable === null) || !!this._closeable;
   }
 
   /** Update the popover with the given position strategy. */
@@ -309,8 +309,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
       this._focusTrap = this._focusTrapFactory.create(element);
       this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
 
-      this._focusMonitor.monitor(element.querySelector('.nx-popover__content'));
-      const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon');
+      this._focusMonitor.monitor(element.querySelector('.nx-popover__content') as HTMLElement);
+      const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon') as HTMLElement;
       if (closeIcon) {
         this._focusMonitor.monitor(closeIcon);
       }
@@ -342,13 +342,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   // we are listening to the detachments observable which will then emit the nxClosed event
   // on the popover component
   private closePopover(): void {
-    if (this.overlayRef.hasAttached()) {
+    if (this.overlayRef!.hasAttached()) {
       const element = this.getPopoverContainer();
-      this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__content'));
-      this._focusMonitor.stopMonitoring(element.querySelector('.nx-popover__close-icon'));
+      this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content') as HTMLElement);
+      this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon') as HTMLElement);
 
       this._returnFocusAfterPopover();
-      this.overlayRef.detach();
+      this.overlayRef!.detach();
       this._embeddedViewRef = null;
       this._focusTrap.destroy();
     }
@@ -403,14 +403,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   // for modal popovers close the popover on backdrop clicks
   private _subscribeToBackdropClick() {
-    this.overlayRef.backdropClick().pipe(takeUntil(this._overlayDestroyed)).subscribe((event) => {
+    this.overlayRef!.backdropClick().pipe(takeUntil(this._overlayDestroyed)).subscribe((event) => {
       this.show = false;
     });
   }
 
   // Emit the nxClosed and the show status change event on the popover component when the overlay detaches
   private _subscribeToDetach() {
-    this.overlayRef.detachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
+    this.overlayRef!.detachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
       // This is an exception: when the popover is closed by a scrolling event,
       // then only the detached method is called but the show state variable remains unchanged.
       if (this.show) {
@@ -422,14 +422,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   }
 
   private _subscribeToAttach() {
-    this.overlayRef.attachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
+    this.overlayRef!.attachments().pipe(takeUntil(this._overlayDestroyed)).subscribe(data => {
       this.changeShow.emit(this._show);
     });
   }
 
   // subscribe to document clicks when trigger='click' to close the popover on clicks on the background
   private waitForClose() {
-    return this.overlayRef.outsidePointerEvents()
+    return this.overlayRef!.outsidePointerEvents()
       .pipe(
         map(event => event.target),
         filter(target => !this.elementRef.nativeElement.contains(target)),
@@ -455,14 +455,14 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     const parentElementPositionX = this.elementRef.nativeElement.getBoundingClientRect().left;
     const parentElementWidth = this.elementRef.nativeElement.getBoundingClientRect().width / 2;
-    const parentElementLeftOffset = this.overlayRef.overlayElement.parentElement.offsetLeft;
-    const overlayElementLeftOffset = this.overlayRef.overlayElement.offsetLeft;
+    const parentElementLeftOffset = this.overlayRef!.overlayElement.parentElement!.offsetLeft;
+    const overlayElementLeftOffset = this.overlayRef!.overlayElement.offsetLeft;
 
     // calculation for x position of the parent element. In this case, overlay left offset is the one thing to consider.
     const targetPosition = (parentElementPositionX + parentElementWidth) - (parentElementLeftOffset + overlayElementLeftOffset);
     if (pair.originX === pair.overlayX) {
       const direction = 'left';
-      const arrowStyle = {};
+      const arrowStyle = { left: '0' };
 
       arrowStyle[direction] = targetPosition + 'px';
       this.popover.arrowStyle = arrowStyle;
@@ -500,7 +500,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   /** Returns the main popover container of the injected content. */
   private getPopoverContainer(): HTMLElement | null {
-    return this.overlayRef.overlayElement.querySelector('.nx-popover');
+    return this.overlayRef!.overlayElement.querySelector('.nx-popover');
   }
 
   /**
@@ -603,7 +603,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
   /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */
   private _getInversePosition(position: string): VerticalConnectionPos | HorizontalConnectionPos {
-    const positionPairs = {
+    const positionPairs: { [k: string]: VerticalConnectionPos | HorizontalConnectionPos } = {
       top: 'bottom',
       bottom: 'top',
       start: 'end',

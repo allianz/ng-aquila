@@ -60,7 +60,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _closeButtonLabel: string = 'Close dialog';
 
-  @ViewChild('closeButton') _closeButton: ElementRef;
+  @ViewChild('closeButton') _closeButton!: ElementRef;
 
   /** Sets the 'aria-label' of the modal close button needed for accessibility.
    *
@@ -81,7 +81,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
    * A template reference variable pointing to the template
    * which contains the content of the modal view.
    */
-  @Input('nxBody') body: TemplateRef<any>;
+  @Input('nxBody') body!: TemplateRef<any>;
 
   /**
    * Whether the modal view should close when the user hits the escape key.
@@ -105,7 +105,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
    * Controls the width of the dialog.
    * On `auto` the width is controlled by the content width,
    * on `fixed` the dialog gets a fixed width of 736px if the viewport is big enough. */
-  @Input('nxSize') size: 'fixed' | 'auto';
+  @Input('nxSize') size: 'fixed' | 'auto' = 'auto';
 
   /**
    * An event emitted when the user clicks on the backdrop or uses the built-in close button.
@@ -115,7 +115,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output('nxClose') closeEvent = new EventEmitter<void>();
 
   private closeSubscription: Subscription = Subscription.EMPTY;
-  private removeEventListener: Function = undefined;
+  private removeEventListener!: Function;
 
   constructor(
     private modalService: NxModalService,

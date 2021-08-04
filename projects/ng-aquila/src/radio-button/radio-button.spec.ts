@@ -11,16 +11,16 @@ import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@aposin/ng-aquil
 
 @Directive()
 abstract class RadioTest {
-  @ViewChildren(NxRadioComponent) radioInstances: QueryList<NxRadioComponent>;
-  @ViewChild(NxRadioGroupComponent) radioGroup: NxRadioGroupComponent;
+  @ViewChildren(NxRadioComponent) radioInstances!: QueryList<NxRadioComponent>;
+  @ViewChild(NxRadioGroupComponent) radioGroup!: NxRadioGroupComponent;
 
   templateModel = '1';
-  testForm;
+  testForm: any;
   disabled = false;
-  negative;
+  negative: any;
 
-  groupNegative;
-  radioNegative;
+  groupNegative: any;
+  radioNegative: any;
 }
 
 describe('NxRadioComponent', () => {
@@ -68,11 +68,11 @@ describe('NxRadioComponent', () => {
   }));
 
   function getRadioLabelElement(radioElement: HTMLElement): HTMLLabelElement {
-    return radioElement.querySelector('label');
+    return radioElement.querySelector('label')!;
   }
 
   function getRadioInputElement(radioElement: HTMLElement): HTMLInputElement {
-    return radioElement.querySelector('input');
+    return radioElement.querySelector('input')!;
   }
 
   function assertChecked(index: number, checked: boolean) {
@@ -92,7 +92,7 @@ describe('NxRadioComponent', () => {
 
     it('displays a radio without a label', () => {
       createTestComponent(LabellessRadio);
-      expect(labelElements.item(0).textContent.trim()).toBe('');
+      expect(labelElements.item(0).textContent!.trim()).toBe('');
 
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
       expect(labelElements.item(0).classList).not.toContain('has-label');
@@ -100,7 +100,7 @@ describe('NxRadioComponent', () => {
 
     it('sets the given label', () => {
       createTestComponent(BasicRadio);
-      expect(labelElements.item(0).textContent.trim()).toBe('Label');
+      expect(labelElements.item(0).textContent?.trim()).toBe('Label');
 
       const radioElement = fixture.nativeElement.querySelector('nx-radio');
       expect(labelElements.item(0).classList).toContain('has-label');
@@ -256,7 +256,7 @@ describe('NxRadioComponent', () => {
       const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
       expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
-      radioElementsNative.forEach(radio => {
+      radioElementsNative.forEach( (radio: any) => {
         expect(radio.classList).not.toContain('nx-radio--negative');
       });
       expect(testInstance.radioGroup.negative).toBe(false);
@@ -270,7 +270,7 @@ describe('NxRadioComponent', () => {
       const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
       expect(radioGroupNative.classList).toContain('nx-radio-group--negative');
-      radioElementsNative.forEach(radio => {
+      radioElementsNative.forEach( (radio: any) => {
         expect(radio.classList).toContain('nx-radio--negative');
       });
       expect(testInstance.radioGroup.negative).toBe(true);
@@ -282,7 +282,7 @@ describe('NxRadioComponent', () => {
       fixture.detectChanges();
 
       expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
-      radioElementsNative.forEach(radio => {
+      radioElementsNative.forEach( (radio: any) => {
         expect(radio.classList).not.toContain('nx-radio--negative');
       });
       expect(testInstance.radioGroup.negative).toBe(false);
@@ -300,7 +300,7 @@ describe('NxRadioComponent', () => {
       const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
       expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
-      radioElementsNative.forEach(radio => {
+      radioElementsNative.forEach( (radio: any) => {
         expect(radio.classList).not.toContain('nx-radio--negative');
       });
       expect(testInstance.radioGroup.negative).toBe(false);
@@ -452,13 +452,13 @@ describe('NxRadioComponent', () => {
       const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
       const radioButtonsNative = fixture.nativeElement.querySelectorAll('nx-radio');
       expect(radioGroupNative.classList.contains('nx-radio-group--negative')).toBeFalsy();
-      radioButtonsNative.forEach(radio => {
+      radioButtonsNative.forEach( (radio: any) => {
         expect(radio.classList.contains('nx-radio--negative')).toBeFalsy();
       });
       testInstance.radioGroup.negative = true;
       fixture.detectChanges();
       expect(radioGroupNative.classList.contains('nx-radio-group--negative')).toBeTruthy();
-      radioButtonsNative.forEach(radio => {
+      radioButtonsNative.forEach( (radio: any) => {
         expect(radio.classList.contains('nx-radio--negative')).toBeTruthy();
       });
     });
@@ -692,9 +692,9 @@ class GroupWithNgModel extends RadioTest { }
   `
 })
 class RadioGroupValidation extends RadioTest {
-  testForm: FormGroup;
+  testForm!: FormGroup;
   submitted = false;
-  @ViewChild(NxErrorComponent) radioGroupError: NxErrorComponent;
+  @ViewChild(NxErrorComponent) radioGroupError!: NxErrorComponent;
 
   constructor(private formBuilder: FormBuilder) {
     super();
@@ -732,7 +732,7 @@ class RadioGroupValidation extends RadioTest {
   `
 })
 class RadioGroupValidationTouched extends RadioTest {
-  testForm: FormGroup;
+  testForm!: FormGroup;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder) {
@@ -742,7 +742,7 @@ class RadioGroupValidationTouched extends RadioTest {
 
     Object.keys(this.testForm.controls).forEach(field => {
       const control = this.testForm.get(field);
-      control.markAsTouched({ onlySelf: true });
+      control!.markAsTouched({ onlySelf: true });
     });
   }
 

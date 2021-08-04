@@ -7,7 +7,7 @@ import { NxGridModule } from './grid.module';
 
 @Directive()
 abstract class DirectiveTest {
-    @ViewChild(NxLayoutComponent) layoutInstance: NxLayoutComponent;
+    @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;
 }
 
 describe('NxLayoutDirective', () => {
@@ -64,7 +64,7 @@ describe('NxLayoutDirective', () => {
     it('should test with input nxLayout="grid nogutters"', () => {
         expect(getClassesCreated(BasicNoGutters)).toEqual('nx-grid nx-grid--no-gutters');
     });
-  
+
     it('should test with input nxLayout="grid nopadding"', () => {
         expect(getClassesCreated(BasicNoPadding)).toEqual('nx-grid nx-grid--no-padding');
     });

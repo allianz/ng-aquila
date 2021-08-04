@@ -41,10 +41,10 @@ export const TAB_GROUP_DEFAULT_OPTIONS = new InjectionToken<TabGroupDefaultOptio
 
 export class NxTabChangeEvent {
   /** The index of the selected or focused tab. */
-  index: number;
+  index!: number;
 
   /** The component instance of the selected or focused tab. */
-  tab: NxTabComponent;
+  tab!: NxTabComponent;
 }
 
 let nextId: number = 0;
@@ -69,33 +69,33 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
   private _indexToSelect: number | null = 0;
   private _autoselect: boolean = true;
   private _mobileAccordion: boolean = true;
-  private _appearance: NxTabsAppearance;
+  private _appearance!: NxTabsAppearance;
   _showAccordion: boolean = false;
 
   /** @docs-private */
-  @ContentChildren(NxTabComponent) tabs: QueryList<NxTabComponent>;
+  @ContentChildren(NxTabComponent) tabs!: QueryList<NxTabComponent>;
 
   /** @docs-private */
-  @ViewChildren(NxTabBodyComponent) tabBodyChildren: QueryList<NxTabBodyComponent>;
+  @ViewChildren(NxTabBodyComponent) tabBodyChildren!: QueryList<NxTabBodyComponent>;
 
   /** @docs-private */
-  @ViewChild('tabHeader') tabHeader: NxTabHeaderComponent;
+  @ViewChild('tabHeader') tabHeader!: NxTabHeaderComponent;
 
   /** @docs-private */
-  @ViewChildren(NxExpansionPanelComponent) panels: QueryList<NxExpansionPanelComponent>;
+  @ViewChildren(NxExpansionPanelComponent) panels!: QueryList<NxExpansionPanelComponent>;
 
   /** @docs-private */
-  @ViewChild('accordion', { read: NxAccordionDirective }) accordion: NxAccordionDirective;
+  @ViewChild('accordion', { read: NxAccordionDirective }) accordion!: NxAccordionDirective;
 
-  @ViewChildren('tabButton') _tabButtons: QueryList<ElementRef>;
+  @ViewChildren('tabButton') _tabButtons!: QueryList<ElementRef>;
 
   /** Preserves the current value of the _tabButtons ViewChildren in case it changes. */
-  private _tabButtonsPrevious: QueryList<ElementRef>;
+  private _tabButtonsPrevious!: QueryList<ElementRef>;
 
   /** Sets the selected tab. */
   @Input()
   get selectedIndex(): number {
-    return this._selectedIndex;
+    return this._selectedIndex as number;
   }
   set selectedIndex(value: number) {
     this._indexToSelect = coerceNumberProperty(value, null);
@@ -181,7 +181,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
   /** Subscription to viewport changes. */
   private _viewportSubscription = Subscription.EMPTY;
 
-  private _disabledTabsCache = [];
+  private _disabledTabsCache: boolean[] = [];
 
   _appearanceChange = new Subject<void>();
 
@@ -287,7 +287,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     this._tabButtons.changes.subscribe(tabButtons => {
       this._tabButtonsPrevious.forEach(button => this._focusMonitor.stopMonitoring(button));
       this._tabButtonsPrevious = tabButtons;
-      tabButtons.forEach(button => this._focusMonitor.monitor(button));
+      tabButtons.forEach( (button: HTMLElement) => this._focusMonitor.monitor(button));
     });
   }
 

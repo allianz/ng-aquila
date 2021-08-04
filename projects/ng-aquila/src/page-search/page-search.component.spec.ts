@@ -93,7 +93,7 @@ describe('NxPageSearchComponent', () => {
 
 @Directive()
 class PageSearchTestComponent {
-  @ViewChild(NxPageSearchComponent) pageSearch: NxPageSearchComponent;
+  @ViewChild(NxPageSearchComponent) pageSearch!: NxPageSearchComponent;
 }
 
 @Component({

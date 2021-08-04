@@ -8,8 +8,8 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
 
 @Directive()
 abstract class ToggleSectionTest {
-  @ViewChildren(NxToggleSectionDirective) toggleSectionInstances: QueryList<NxToggleSectionDirective>;
-  @ViewChildren(NxComparisonTableRowDirective) rowInstances: QueryList<NxComparisonTableRowDirective>;
+  @ViewChildren(NxToggleSectionDirective) toggleSectionInstances!: QueryList<NxToggleSectionDirective>;
+  @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
   expandSecondSection: boolean = false;
 }

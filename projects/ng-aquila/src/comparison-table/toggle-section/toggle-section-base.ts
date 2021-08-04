@@ -8,9 +8,9 @@ export abstract class NxToggleSectionBase {
   /** Whether the toggle section is expanded. */
   abstract isExpanded: boolean;
 
-  toggleSectionHeader: NxToggleSectionHeaderComponent;
+  toggleSectionHeader!: NxToggleSectionHeaderComponent;
   /** @docs-private */
-  abstract _numberOfRows();
+  abstract _numberOfRows(): number;
 
   /** Toggles the toggle section. */
   toggleExpanded() {

@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./natural-language-form-extended-example.css']
 })
 export class NaturalLanguageFormExtendedExampleComponent {
-  naturalForm: FormGroup;
+  naturalForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.buildForm();
@@ -44,7 +44,7 @@ export class NaturalLanguageFormExtendedExampleComponent {
   validate() {
     Object.keys(this.naturalForm.controls).forEach(field => {
       const control = this.naturalForm.get(field);
-      control.markAsTouched({ onlySelf: true });
+      control?.markAsTouched({ onlySelf: true });
     });
   }
 }

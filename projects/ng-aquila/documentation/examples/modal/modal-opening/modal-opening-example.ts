@@ -21,11 +21,11 @@ export class SimpleModalComponent { }
   styleUrls: ['./modal-opening-example.css']
 })
 export class ModalOpeningExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
-  @ViewChild('template2') templateRef2: TemplateRef<any>;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
+  @ViewChild('template2') templateRef2!: TemplateRef<any>;
 
-  templateDialogRef: NxModalRef<any>;
-  componentDialogRef: NxModalRef<SimpleModalComponent>;
+  templateDialogRef!: NxModalRef<any>;
+  componentDialogRef!: NxModalRef<SimpleModalComponent>;
 
   constructor(public dialogService: NxDialogService) {}
 

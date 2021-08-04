@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 // tslint:disable:component-class-suffix
 @Directive()
 abstract class PasswordToggleTest {
-  @ViewChild(NxPasswordToggleComponent) passwordToggle: NxPasswordToggleComponent;
+  @ViewChild(NxPasswordToggleComponent) passwordToggle!: NxPasswordToggleComponent;
 }
 
 describe('NxPasswordToggleComponent', () => {
@@ -90,7 +90,7 @@ describe('NxPasswordToggleComponent', () => {
       passwordToggle.ariaLabel = 'custom label';
       fixture.detectChanges();
 
-      const label = nativeElement.attributes.getNamedItem('aria-label').value;
+      const label = nativeElement.attributes.getNamedItem('aria-label')!.value;
       expect(label).toBe('custom label');
     });
 
@@ -112,7 +112,7 @@ describe('NxPasswordToggleComponent', () => {
   `
 })
 class BasicPasswordToggle extends PasswordToggleTest {
-  inputValue;
+  inputValue: any;
 }
 
 @Component({
@@ -127,7 +127,7 @@ class BasicPasswordToggle extends PasswordToggleTest {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 class BasicPasswordToggleOnPush extends PasswordToggleTest {
-  inputValue;
+  inputValue: any;
 }
 
 @Component({

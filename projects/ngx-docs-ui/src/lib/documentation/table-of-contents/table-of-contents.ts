@@ -44,7 +44,7 @@ export interface Link {
 })
 export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
 
-  @Input() container: string;
+  @Input() container!: string;
 
   links: Link[] = [];
   headerSelectors =

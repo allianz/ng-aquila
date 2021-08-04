@@ -15,9 +15,9 @@ import { NxTabsModule } from './tabs.module';
 abstract class TabHeaderTest {
   selectedIndex: number = 0;
   autoselect: boolean = true;
-  tabs;
+  tabs: any;
 
-  @ViewChild(NxTabHeaderComponent) tabHeaderInstance: NxTabHeaderComponent;
+  @ViewChild(NxTabHeaderComponent) tabHeaderInstance!: NxTabHeaderComponent;
 }
 
 describe('NxTabHeaderComponent', () => {
@@ -202,9 +202,9 @@ describe('NxTabHeaderComponent', () => {
 })
 class BasicHeader extends TabHeaderTest {
   tabs = [{label: 'First'}, {label: 'Second'}, {label: 'Third'}];
-  focusEvent;
+  focusEvent: any;
 
-  onFocus(event) {
+  onFocus(event: Event) {
     this.focusEvent = event;
   }
 }

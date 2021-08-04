@@ -10,7 +10,7 @@ export class SortEvent {
   /** The sort direction. */
   direction: SortDirection;
 
-  constructor(active, direction) {
+  constructor(active: string, direction: SortDirection) {
     this.active = active;
     this.direction = direction;
   }
@@ -24,7 +24,7 @@ export class NxSortDirective implements OnDestroy {
 
   readonly _stateChanges = new Subject<void>();
 
-  private _active: string;
+  private _active!: string;
 
   /** Sets the key of the most recently sorted column. */
   @Input()

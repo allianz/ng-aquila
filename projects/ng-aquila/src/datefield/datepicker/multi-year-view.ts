@@ -62,7 +62,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     this._selectedYear = this._selected && this._dateAdapter.getYear(this._selected);
   }
-  private _selected: D | null;
+  private _selected!: D | null;
 
   /** The minimum selectable date. */
   @Input()
@@ -70,7 +70,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
   set minDate(value: D | null) {
     this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _minDate: D | null;
+  private _minDate!: D | null;
 
   /** The maximum selectable date. */
   @Input()
@@ -78,10 +78,10 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
   set maxDate(value: D | null) {
     this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
   }
-  private _maxDate: D | null;
+  private _maxDate!: D | null;
 
   /** A function used to filter which dates are selectable. */
-  @Input() dateFilter: (date: D) => boolean;
+  @Input() dateFilter!: (date: D) => boolean;
 
   /** Emits when a new year is selected. */
   @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
@@ -93,16 +93,16 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
   @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
 
   /** The body of calendar table */
-  @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody;
+  @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody: any;
 
   /** Grid of calendar cells representing the currently displayed years. */
-  _years: NxCalendarCell[][];
+  _years!: NxCalendarCell[][];
 
   /** The year that today falls on. */
-  _todayYear: number;
+  _todayYear!: number;
 
   /** The year of the selected date. Null if the selected date is null. */
-  _selectedYear: number | null;
+  _selectedYear!: number | null;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
               @Optional() public _dateAdapter: NxDateAdapter<D>,

@@ -299,7 +299,7 @@ class TestData {
   pizzaTopping: string;
   pizzaCheese: string;
   pizzaBase: string;
-  level: number;
+  level!: number;
   children: TestData[];
   observableChildren: BehaviorSubject<TestData[]>;
   isSpecial: boolean;
@@ -474,7 +474,7 @@ class SimpleNxTreeApp {
 
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe(data => {
@@ -503,7 +503,7 @@ class NxTreeAppWithToggle {
   dataSource = new NxTreeFlatDataSource(this.treeControl);
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe(data => {
@@ -535,7 +535,7 @@ class WhenNodeNxTreeApp {
   dataSource = new NxTreeFlatDataSource(this.treeControl);
   underlyingDataSource = new FakeDataSource();
 
-  @ViewChild(NxTreeComponent) tree: NxTreeComponent<TestData>;
+  @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
 
   constructor() {
     this.underlyingDataSource.connect().subscribe(data => {

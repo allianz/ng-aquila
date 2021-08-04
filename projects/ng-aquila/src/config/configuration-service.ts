@@ -28,9 +28,9 @@ export class NxConfigurationService {
 
   clearOptions() {
     delete datepickerOptions.toggleIconTabindex;
-    datepickerOptions.changes.next();
+    datepickerOptions.changes!.next();
     delete errorOptions.appearance;
-    errorOptions.changes.next();
+    errorOptions.changes!.next();
     delete formfieldOptions.appearance;
     delete formfieldOptions.nxFloatLabel;
     delete labelOptions.size;
@@ -43,9 +43,9 @@ export class NxConfigurationService {
 
   switchToExpert() {
     datepickerOptions.toggleIconTabindex = -1;
-    datepickerOptions.changes.next();
+    datepickerOptions.changes!.next();
     errorOptions.appearance = 'text';
-    errorOptions.changes.next();
+    errorOptions.changes!.next();
     formfieldOptions.appearance = 'outline';
     formfieldOptions.nxFloatLabel = 'always';
     labelOptions.size = 'small';
@@ -58,9 +58,9 @@ export class NxConfigurationService {
 
   switchToRetail() {
     datepickerOptions.toggleIconTabindex = 0;
-    datepickerOptions.changes.next();
+    datepickerOptions.changes!.next();
     errorOptions.appearance = 'message';
-    errorOptions.changes.next();
+    errorOptions.changes!.next();
     formfieldOptions.appearance = 'auto';
     formfieldOptions.nxFloatLabel = 'auto';
     labelOptions.size = 'large';

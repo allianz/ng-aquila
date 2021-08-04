@@ -28,7 +28,7 @@ const visibilityIcons = {
 export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
 
   /** Input element using the toggle functionality. */
-  @Input() control: HTMLInputElement;
+  @Input() control!: HTMLInputElement;
 
   /**@docs-private */
   _currentIcon: string = visibilityIcons['show'];
@@ -89,14 +89,14 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
   }
 
   /**@docs-private */
-  _onKeydown($event) {
+  _onKeydown($event: KeyboardEvent) {
     if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
       this.toggleInputType();
     }
   }
 
   /**@docs-private */
-  get tabindex(): number {
+  get tabindex(): number | null {
     if (this.control) {
       return this.control.disabled ? -1 : 0;
     }

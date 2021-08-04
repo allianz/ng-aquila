@@ -22,8 +22,8 @@ class MyIntl extends NxSortHeaderIntl {
 
 @Directive()
 abstract class SortHeaderTest {
-  @ViewChild('nameHeader') nameHeader: NxSortHeaderComponent;
-  @ViewChild('countHeader') countHeader: NxSortHeaderComponent;
+  @ViewChild('nameHeader') nameHeader!: NxSortHeaderComponent;
+  @ViewChild('countHeader') countHeader!: NxSortHeaderComponent;
 
   active: string = 'name';
   direction: SortDirection = 'desc';

@@ -24,7 +24,7 @@ export class NxIconRegistry implements OnDestroy {
   private _icons = new Map<string, NxSvgIcon | NxFontIcon>();
   private _fonts = new Map<string, NxIconFontDefinition>();
 
-  private _defaultFont: NxIconFontDefinition;
+  private _defaultFont?: NxIconFontDefinition;
 
   constructor(
     @Optional() private _httpClient: HttpClient,
@@ -32,7 +32,7 @@ export class NxIconRegistry implements OnDestroy {
     @Optional() @Inject(DOCUMENT) document: any) {
     this._document = document;
     // register default icons
-    Object.keys(DEFAULT_ICONS).forEach(icon => {
+    Object.keys(DEFAULT_ICONS).forEach( (icon) => {
       this.addSvgIconLiteral(icon, _sanitizer.bypassSecurityTrustHtml(DEFAULT_ICONS[icon]));
     });
   }
@@ -83,11 +83,11 @@ export class NxIconRegistry implements OnDestroy {
       throw Error(`Could not find a registered font with name ${fontName}.`);
     }
 
-    this._icons.set(iconName, new NxFontIcon(alias, fontDefinition));
+    this._icons.set(iconName, new NxFontIcon(alias as string, fontDefinition));
   }
 
   /** Returns the icon from the registry or undefined if not found. */
-  getIcon(iconName: string): NxSvgIcon | NxFontIcon {
+  getIcon(iconName: string): NxSvgIcon | NxFontIcon | undefined {
     const icon = this._icons.get(iconName);
     return icon;
   }
@@ -121,7 +121,7 @@ export class NxIconRegistry implements OnDestroy {
   /**
    * Returns the registered CSS class name.
    */
-  getDefaultFont(): NxIconFontDefinition {
+  getDefaultFont(): NxIconFontDefinition| undefined {
     return this._defaultFont;
   }
 

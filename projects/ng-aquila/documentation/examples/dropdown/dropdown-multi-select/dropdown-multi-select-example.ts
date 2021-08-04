@@ -14,11 +14,7 @@ export class DropdownMultiSelectExampleComponent {
     'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
   ];
 
-  toText(value): string {
-    return value ? value.toUpperCase() : null;
-  }
-
-  toTextMulti(value): any {
+  toTextMulti(value: string | string[]): string {
     if (value) {
       if (Array.isArray(value)) {
         return value.map(item => item.toUpperCase()).join(', ');
@@ -27,9 +23,5 @@ export class DropdownMultiSelectExampleComponent {
       }
     }
     return '';
-  }
-
-  myFilter(search, itemValue) {
-    return itemValue.match(new RegExp('^' + search, 'g')) !== null;
   }
 }

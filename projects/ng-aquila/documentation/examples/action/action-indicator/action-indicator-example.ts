@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+type Action = {
+  icon: string;
+  label: string;
+  notification?: boolean;
+  notificationCount?: number;
+}
+
 /**
 * @title Indicator Example
 */
@@ -9,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './action-indicator-example.html'
 })
 export class ActionIndicatorExampleComponent implements OnInit {
-  actions = [
+  actions: Action[] = [
     {
       icon: 'file-text',
       label: 'All Files',
@@ -38,13 +45,13 @@ export class ActionIndicatorExampleComponent implements OnInit {
     }
   ];
 
-  selectedAction;
+  selectedAction!: Action;
 
   ngOnInit() {
     this.selectedAction = this.actions[0];
   }
 
-  onSelect(action) {
+  onSelect(action: Action) {
     this.selectedAction = action;
     if (this.selectedAction.notification) {
       this.selectedAction.notification = false;

@@ -5,7 +5,7 @@ import { NxTabsAppearance } from './tab-group';
 /** @docs-private */
 @Directive()
 export class NxTabGroupBase {
-  disabled: boolean;
-  appearance: NxTabsAppearance;
-  _appearanceChange: Subject<void>;
+  disabled!: boolean;
+  appearance!: NxTabsAppearance;
+  _appearanceChange!: Subject<void>;
 }
