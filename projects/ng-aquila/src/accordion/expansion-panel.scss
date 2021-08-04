@@ -1,6 +1,6 @@
 @import "../shared-styles/index";
 
-$mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
+$mobile-body-padding: nx-spacer(m) nx-spacer(s);
 
 :host {
   display: block;
@@ -23,14 +23,6 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 
   @include media-breakpoint-down(small) {
     padding: $mobile-body-padding;
-  }
-
-  :host-context([dir="rtl"]) & {
-    padding: v(accordion-regular-body-padding-rtl);
-
-    @include media-breakpoint-down(small) {
-      padding: $mobile-body-padding;
-    }
   }
 }
 
@@ -77,14 +69,6 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s) nx-spacer(2m) nx-spacer(s);
 
     @include media-breakpoint-down(small) {
       padding: $mobile-body-padding;
-    }
-
-    [dir="rtl"] & {
-      padding: v(accordion-light-body-padding-rtl);
-
-      @include media-breakpoint-down(small) {
-        padding: $mobile-body-padding;
-      }
     }
   }
 }
