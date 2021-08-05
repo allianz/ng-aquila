@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "ng-high-memory": "NODE_OPTIONS=--max-old-space-size=5120 ng",
+    "ng-high-memory": "cross-env NODE_OPTIONS=--max-old-space-size=5120 ng",
     "release": "standard-version -n",
     "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation --port=4200",
     "build": "ng build",
@@ -93,6 +93,7 @@
     "axe-core": "^4.2.0",
     "codelyzer": "^6.0.2",
     "cpx": "^1.5.0",
+    "cross-env": "^7.0.3",
     "husky": "^4.3.8",
     "jasmine": "^3.7.0",
     "jasmine-core": "~3.6.0",
