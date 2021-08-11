@@ -1,7 +1,7 @@
 @import '../shared-styles/index';
 
 $popover-arrow-size: nx-spacer(xs);
-$popover-arrow-offset: -#{$popover-arrow-size / 2 - nx-border-size(xs)};
+$popover-arrow-offset: -#{$popover-arrow-size * 0.5 - nx-border-size(xs)};
 $popover-border-radius: nx-border-radius(s);
 $popover-border-size: nx-border-size(xs);
 

@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { CdkStep, CdkStepper } from '@angular/cdk/stepper';
+import { CdkStep, CdkStepHeader, CdkStepper } from '@angular/cdk/stepper';
 import {
   AfterContentInit,
   ChangeDetectionStrategy,
@@ -42,7 +42,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
   constructor(
       @Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective,
       @SkipSelf() private _errorStateMatcher: ErrorStateMatcher) {
-    super(stepper);
+    super(stepper as CdkStepper);
 
     this.interacted = false;
   }
@@ -113,7 +113,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
   /** Steps that belong to the current stepper, excluding ones from nested steppers. */
   readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
 
-  _stepHeader: QueryList<FocusableOption> = new QueryList();
+  _stepHeader: QueryList<CdkStepHeader> = new QueryList();
 
   /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
   @Input() currentStepLabel!: string;

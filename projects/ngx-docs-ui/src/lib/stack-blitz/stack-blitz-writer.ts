@@ -55,8 +55,8 @@ const TEST_TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['aposin', 'aquila', 'example'];
-const angularVersion = '^11.0.0';
-const materialVersion = '^11.0.0';
+const angularVersion = '^12.2.0';
+const materialVersion = '^12.2.0';
 const aquilaVersion = '^11.0.0';
 
 const dependencies = {
@@ -70,15 +70,15 @@ const dependencies = {
   '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
   '@aposin/ng-aquila': aquilaVersion,
-  'css-vars-ponyfill': '^2.4.2',
-  'dayjs': '^1.10.2',
+  'css-vars-ponyfill': '^2.4.6',
+  'dayjs': '^1.10.6',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
   'object-fit-images': '^3.2.4',
   'rxjs': '~6.6.0',
-  'tslib': '^2.1.0',
+  'tslib': '^2.3.0',
   'zone.js': '~0.10.2',
-  'libphonenumber-js': '^1.9.11',
+  'libphonenumber-js': '^1.9.23',
   'i18n-iso-countries': '^6.5.0'
 };
 
@@ -93,16 +93,16 @@ const testDependencies = {
   '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
   '@aposin/ng-aquila': aquilaVersion,
-  '@types/jasmine': '^3.6.2',
+  '@types/jasmine': '^3.8.2',
   'jasmine-core': '^3.6.0',
-  'css-vars-ponyfill': '^2.4.2',
-  'dayjs': '^1.10.2',
+  'css-vars-ponyfill': '^2.4.6',
+  'dayjs': '^1.10.6',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
   'object-fit-images': '^3.2.4',
   'rxjs': '~6.6.0',
-  'tslib': '^2.1.0',
-  'zone.js': '~0.10.2'
+  'tslib': '^2.3.0',
+  'zone.js': '~0.11.4'
 };
 
 /**

@@ -132,20 +132,20 @@ $vertical-line-height: nx-spacer(s);
       @include var(border-left-color, multi-stepper-line-color);
       height: $vertical-line-height;
       flex: 0 0 auto;
-      margin-left: (($dot-size - nx-border-size(xl)) / 2);
+      margin-left: (($dot-size - nx-border-size(xl)) * 0.5);
 
       [dir="rtl"] & {
         border-right-width: nx-border-size(xl);
         border-right-style: dotted;
         @include var(border-right-color, multi-stepper-line-color);
-        margin-right: (($dot-size - nx-border-size(xl)) / 2);
+        margin-right: (($dot-size - nx-border-size(xl)) * 0.5);
         margin-left: initial;
         border-left: none;
       }
     }
 
     &.is-active .line {
-      $offset: (($label-line-height - $dot-size) / 2) + 1px; // 1px is to visually close the tiny gap to the dot
+      $offset: (($label-line-height - $dot-size) * 0.5) + 1px; // 1px is to visually close the tiny gap to the dot
       border-left-style: solid;
       @include var(border-left-color, multi-stepper-line-filled-color);
       margin-top: -$offset;
@@ -238,7 +238,7 @@ $vertical-line-height: nx-spacer(s);
 
 .label {
   position: absolute;
-  top: calc(#{$dot-size/2} + #{nx-spacer(s)});
+  top: calc(#{$dot-size*0.5} + #{nx-spacer(s)});
   text-align: center;
   @include var(color, multi-stepper-step-color);
   left: 0;

@@ -72,7 +72,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     });
 
     this._route.fragment.pipe(takeUntil(this._destroyed)).subscribe(fragment => {
-      this._urlFragment = fragment;
+      this._urlFragment = fragment as string;
 
       const target = this._document.getElementById(this._urlFragment);
       if (target) {

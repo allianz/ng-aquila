@@ -109,7 +109,6 @@
               "iban",
               "color-convert"
             ],
-            "aot": true,
             "outputPath": "dist/opensource-documentation",
             "index": "projects/opensource-documentation/src/index.html",
             "main": "projects/opensource-documentation/src/main.ts",
@@ -152,7 +151,13 @@
               "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
               "node_modules/highlight.js/styles/tomorrow-night-blue.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -172,7 +177,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,

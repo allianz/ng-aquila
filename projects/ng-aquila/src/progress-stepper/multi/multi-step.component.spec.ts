@@ -147,12 +147,12 @@ describe('NxMultiStepperComponent', () => {
       let stepToClick = fixture.nativeElement.querySelectorAll('nx-multi-step-item')[1];
       stepToClick.click();
       fixture.detectChanges();
-      expect(multiStepInstance.selected.label).toBe('Step 2');
+      expect(multiStepInstance.selected?.label).toBe('Step 2');
 
       stepToClick = fixture.nativeElement.querySelectorAll('nx-multi-step-item')[0];
       stepToClick.click();
       fixture.detectChanges();
-      expect(multiStepInstance.selected.label).toBe('Step 1');
+      expect(multiStepInstance.selected?.label).toBe('Step 1');
     });
 
   });
@@ -172,7 +172,7 @@ describe('NxMultiStepperComponent', () => {
       const stepToClick = getSteps()[1];
       stepToClick.click();
       fixture.detectChanges();
-      expect(multiStepInstance.selected.label).toBe('Step1');
+      expect(multiStepInstance.selected?.label).toBe('Step1');
     });
   });
 
@@ -288,12 +288,12 @@ describe('NxMultiStepperComponent', () => {
         let stepToClick = fixture.nativeElement.querySelectorAll('nx-multi-step-item')[1];
         stepToClick.click();
         fixture.detectChanges();
-        expect(multiStepInstance.selected.label).toBe('Step 2');
+        expect(multiStepInstance.selected?.label).toBe('Step 2');
 
         stepToClick = fixture.nativeElement.querySelectorAll('nx-multi-step-item')[0];
         stepToClick.click();
         fixture.detectChanges();
-        expect(multiStepInstance.selected.label).toBe('Step 1');
+        expect(multiStepInstance.selected?.label).toBe('Step 1');
       });
     });
 

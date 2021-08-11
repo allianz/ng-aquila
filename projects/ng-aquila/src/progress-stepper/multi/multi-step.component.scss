@@ -31,7 +31,7 @@
     .nx-multi-stepper__group-label {
       $border-size: nx-border-size(xl);
       $dot-size: nx-spacer(s);
-      $margin-start: ($dot-size - $border-size) / 2;
+      $margin-start: ($dot-size - $border-size) * 0.5;
       $padding-start: $dot-size + nx-spacer(s) - $margin-start - $border-size;
 
       transform: none;

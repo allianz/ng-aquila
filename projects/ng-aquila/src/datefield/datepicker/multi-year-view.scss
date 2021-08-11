@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import '../../shared-styles/index';
 
 $item-size: nx-spacer(3m);
@@ -6,13 +8,13 @@ $item-size: nx-spacer(3m);
 $total-calendar-width: 7 * $item-size;
 $item-outer-margin: nx-spacer(2xs);
 $total-margin-width: $total-calendar-width - 4 * $item-size - 2 * $item-outer-margin;
-$item-side-margin: $total-margin-width / 6;
+$item-side-margin: math.div($total-margin-width, 6);
 
 // calculate margins for mobile
 $total-calendar-width-mobile: 264px;
 $item-outer-margin-mobile: nx-spacer(s);
 $total-margin-width-mobile: $total-calendar-width-mobile - 4 * $item-size - 2 * $item-outer-margin-mobile;
-$item-side-margin-mobile: $total-margin-width-mobile / 6;
+$item-side-margin-mobile: math.div($total-margin-width-mobile, 6);
 
 .nx-calendar-table {
   border-spacing: 0;

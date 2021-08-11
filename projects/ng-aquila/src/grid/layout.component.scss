@@ -27,12 +27,12 @@
   padding-right: 0;
 
   .nx-grid__row {
-    margin-left: -$grid-gutter-width-base / 2;
-    margin-right: -$grid-gutter-width-base / 2;
+    margin-left: -$grid-gutter-width-base * 0.5;
+    margin-right: -$grid-gutter-width-base * 0.5;
 
     @include media-breakpoint-down(small) {
-      margin-left: -$grid-gutter-width-mobile / 2;
-      margin-right: -$grid-gutter-width-mobile / 2;
+      margin-left: -$grid-gutter-width-mobile * 0.5;
+      margin-right: -$grid-gutter-width-mobile * 0.5;
     }
   }
 }
