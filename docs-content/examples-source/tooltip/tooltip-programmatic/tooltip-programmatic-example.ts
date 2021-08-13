@@ -10,7 +10,7 @@ import { NxTooltipDirective } from '@aposin/ng-aquila/tooltip';
   styleUrls: ['./tooltip-programmatic-example.css']
 })
 export class TooltipProgrammaticExampleComponent {
-  @ViewChild(NxTooltipDirective, { static: true }) tooltip: NxTooltipDirective;
+  @ViewChild(NxTooltipDirective, { static: true }) tooltip!: NxTooltipDirective;
 
   toggle() {
     this.tooltip.toggle();

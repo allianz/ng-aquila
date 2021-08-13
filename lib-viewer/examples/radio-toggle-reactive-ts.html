@@ -12,7 +12,7 @@
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RadioToggleReactiveExampleComponent</span> </span>{
 
   data = [<span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>];
-  testForm: FormGroup;
+  testForm!: FormGroup;
   disabledToggleForm: FormGroup;
   isToggleDisabled: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
@@ -32,9 +32,9 @@
   <span class="hljs-function"><span class="hljs-title">toggleDisabled</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-built_in">this</span>.isToggleDisabled = !<span class="hljs-built_in">this</span>.isToggleDisabled;
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.isToggleDisabled) {
-      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>).disable();
+      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>)?.disable();
     } <span class="hljs-keyword">else</span> {
-      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>).enable();
+      <span class="hljs-built_in">this</span>.testForm.get(<span class="hljs-string">&#x27;testToggle&#x27;</span>)?.enable();
     }
   }
 

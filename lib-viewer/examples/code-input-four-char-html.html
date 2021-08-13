@@ -5,13 +5,13 @@
       <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;keyCode&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-code-input</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;codeInput.errorState&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode.hasError(&#x27;required&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;required&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
       Entry is required.
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode.hasError(&#x27;pattern&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;pattern&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
       Entry must match pattern.
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode.hasError(&#x27;minlength&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;minlength&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
       Entry is too short.
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

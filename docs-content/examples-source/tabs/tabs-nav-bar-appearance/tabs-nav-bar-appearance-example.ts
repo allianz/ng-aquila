@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+interface Link {
+  label: string;
+  path: string;
+  disabled: boolean;
+}
+
 /**
  * @title Appearance for Tabs Navbar
  */
@@ -10,7 +16,7 @@ import { Component } from '@angular/core';
 })
 export class TabsNavBarAppearanceExampleComponent {
 
-  links = [
+  links: Link[] = [
     {
       label: 'Subpage 1',
       path: '...',
@@ -30,7 +36,7 @@ export class TabsNavBarAppearanceExampleComponent {
 
   currentLink = this.links[0];
 
-  setActiveLink(link) {
+  setActiveLink(link: Link) {
     if (!link.disabled) {
       this.currentLink = link;
     }

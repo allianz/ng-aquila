@@ -10,10 +10,10 @@ import { Component } from '@angular/core';
 })
 
 export class CheckboxOutputsExampleComponent {
-  public logMessage: string;
-  public messages = [];
+  public logMessage: string = '';
+  public messages: Array<string> = [];
 
-  public log(value) {
+  public log(value: string) {
     this.messages.push(value);
     this.logMessage = this.messages.join('\n');
   }

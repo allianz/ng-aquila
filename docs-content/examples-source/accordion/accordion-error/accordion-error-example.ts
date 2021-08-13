@@ -14,8 +14,8 @@ export class AccordionErrorExampleComponent {
   public showErrorPayment: boolean = true;
   public showErrorInfo: boolean = false;
 
-  formGroupInfo: FormGroup;
-  formGroupPayment: FormGroup;
+  formGroupInfo!: FormGroup;
+  formGroupPayment!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -32,10 +32,10 @@ export class AccordionErrorExampleComponent {
   }
 
   get infoHasError() {
-    return this.formGroupInfo.get('surname').hasError('required');
+    return this.formGroupInfo.get('surname')?.hasError('required');
   }
 
   get paymentHasError() {
-    return this.formGroupPayment.get('input').hasError('required');
+    return this.formGroupPayment.get('input')?.hasError('required');
   }
 }

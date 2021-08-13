@@ -7,10 +7,10 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./comparison-table-hidden-columns-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ComparisonTableHiddenColumnsExampleComponent</span> </span>{
-  hiddenIndexes = [];
+  <span class="hljs-attr">hiddenIndexes</span>: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [];
   selectedColumnIndex = <span class="hljs-number">1</span>;
 
-  isHiddenIndex = <span class="hljs-function"><span class="hljs-params">index</span> =&gt;</span> <span class="hljs-built_in">this</span>.hiddenIndexes.indexOf(index) !== -<span class="hljs-number">1</span>;
+  isHiddenIndex = <span class="hljs-function">(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>) =&gt;</span> <span class="hljs-built_in">this</span>.hiddenIndexes.indexOf(index) !== -<span class="hljs-number">1</span>;
 
   <span class="hljs-function"><span class="hljs-title">toggleHiddenIndexes</span>(<span class="hljs-params">index:<span class="hljs-built_in">number</span></span>)</span>{
     <span class="hljs-keyword">if</span>(index === <span class="hljs-built_in">this</span>.selectedColumnIndex){
@@ -26,7 +26,7 @@
     }
   }
 
-  <span class="hljs-function"><span class="hljs-title">selectedIndexChange</span>(<span class="hljs-params">selectedColumnIndex: <span class="hljs-built_in">any</span></span>)</span>{
+  <span class="hljs-function"><span class="hljs-title">selectedIndexChange</span>(<span class="hljs-params">selectedColumnIndex: <span class="hljs-built_in">number</span></span>)</span>{
     <span class="hljs-built_in">this</span>.selectedColumnIndex = selectedColumnIndex;
   }
 }

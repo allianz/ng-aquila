@@ -149,18 +149,19 @@ export class TableFilterSortPaginateExampleComponent {
     }
   ];
 
-  currentlyShownPageElements: Contract[];
+  currentlyShownPageElements!: Contract[];
   currentlyAvailableElements: Contract[];
 
   page: number = 1;
-  filterValue: string;
+  filterValue: string = '';
   elementsPerPage: number = 5;
 
   /**
    * Sorts the table data by a certain category.
    */
   sortTable(sort: SortEvent) {
-    this.currentlyAvailableElements = this.currentlyAvailableElements.sort((a, b) => {
+    this.currentlyAvailableElements = this.currentlyAvailableElements
+      .sort((a: { [key: string]: any }, b: { [key: string]: any} ) => {
       if (sort.active in a && sort.active in b) {
         return this.compare(a[sort.active], b[sort.active], sort.direction);
       }
@@ -184,7 +185,7 @@ export class TableFilterSortPaginateExampleComponent {
     this.updatePage();
   }
 
-  onFilterValueChange(value) {
+  onFilterValueChange(value: string) {
     this.filterData(value);
   }
 

@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+type Action = {
+  icon: string;
+  label: string;
+  notification?: boolean;
+  notificationCount?: number;
+}
+
 /**
 * @title Action Example
 */
@@ -9,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './action-example.html'
 })
 export class ActionExampleComponent implements OnInit {
-  actions = [
+  actions: Action[] = [
     {
       icon: 'file-text',
       label: 'All Files'
@@ -32,7 +39,7 @@ export class ActionExampleComponent implements OnInit {
     }
   ];
 
-  selectedAction;
+  selectedAction!: Action;
 
   constructor() {}
 
@@ -40,7 +47,7 @@ export class ActionExampleComponent implements OnInit {
     this.selectedAction = this.actions[1];
   }
 
-  onSelect(action) {
+  onSelect(action: Action) {
     this.selectedAction = action;
   }
 }

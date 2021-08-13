@@ -17,8 +17,8 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageToastCustomSettingsExampleComponent</span> </span>{
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
-  toastRef: NxMessageToastRef;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  toastRef!: NxMessageToastRef;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> messageToastService: NxMessageToastService</span>)</span> { }
 

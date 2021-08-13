@@ -8,7 +8,7 @@
     constructor(private compiler: Compiler, private injector: Injector) {}
 
     getComponent(id: string, moduleId: string) {
-      return this.load(moduleId).then(moduleClass => {
+      return this.load(moduleId).then( (moduleClass: any) => {
         return this.compiler.compileModuleAsync(moduleClass).then(ngModuleFactory => {
           const ngModuleRef = ngModuleFactory.create(this.injector);
           const componentClass = moduleClass.components()[id];
@@ -19,7 +19,7 @@
       })
     }
 
-    load(moduleId: string) {
+    load(moduleId: string): any {
       switch (moduleId) {
         case 'accessibility': return import('../examples/accessibility/accessibility-examples.module').then(m => m.AccessibilityExamplesModule);
   

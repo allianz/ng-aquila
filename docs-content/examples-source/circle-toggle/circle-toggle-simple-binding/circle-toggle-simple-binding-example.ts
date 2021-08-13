@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class CircleToggleSimpleBindingExampleComponent {
 
-  simpleBinding;
+  simpleBinding!: string;
   currentChar = 'D';
 
   sampleValues = [{value: 'A', icon: 'product-heart', hint: 'Hint A', label: 'Label A', selected: false},

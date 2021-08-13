@@ -2,13 +2,17 @@
 <span class="hljs-keyword">import</span> { NxTreeFlatDataSource, NxFlatTreeControl, NxTreeNode, NxFlatTreeNode } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tree&#x27;</span>;
 <span class="hljs-keyword">import</span> { Observable, <span class="hljs-keyword">of</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 
+<span class="hljs-keyword">interface</span> Query {
+  <span class="hljs-attr">a</span>: <span class="hljs-built_in">string</span>;
+}
+
 <span class="hljs-comment">/**
   This interface defines a single node of the trees data structure.
 */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> MyTreeNode <span class="hljs-keyword">extends</span> NxTreeNode {
   <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
   icon?: <span class="hljs-built_in">string</span>;
-  query?: <span class="hljs-built_in">any</span>;
+  query?: Query;
   children?: MyTreeNode[];
 }
 
@@ -16,7 +20,7 @@
 <span class="hljs-keyword">interface</span> MyFlatTreeNode <span class="hljs-keyword">extends</span> NxFlatTreeNode {
   <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
   icon?: <span class="hljs-built_in">string</span>;
-  query?: <span class="hljs-built_in">any</span>;
+  query?: Query;
 }
 
 <span class="hljs-comment">/**
@@ -99,8 +103,8 @@
 
   _treeControl: NxFlatTreeControl&lt;MyFlatTreeNode&gt;;
 
-  logMessage: <span class="hljs-built_in">string</span>;
-  messages = [];
+  logMessage!: <span class="hljs-built_in">string</span>;
+  messages: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">string</span>&gt; = [];
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-built_in">this</span>._treeControl = <span class="hljs-keyword">new</span> NxFlatTreeControl();
@@ -109,7 +113,7 @@
 
   _hasChild = <span class="hljs-function">(<span class="hljs-params">_: <span class="hljs-built_in">number</span>, node: NxFlatTreeNode</span>) =&gt;</span> node.expandable;
 
-  <span class="hljs-function"><span class="hljs-title">log</span>(<span class="hljs-params">value</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">log</span>(<span class="hljs-params">value: <span class="hljs-built_in">number</span></span>)</span> {
     <span class="hljs-built_in">this</span>.messages.push(<span class="hljs-string">&#x27;New width value: &#x27;</span> + value);
     <span class="hljs-built_in">this</span>.logMessage = <span class="hljs-built_in">this</span>.messages.join(<span class="hljs-string">&#x27;\n&#x27;</span>);
   }

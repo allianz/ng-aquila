@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RadioToggleReactiveExampleComponent {
 
   data = ['A', 'B', 'C'];
-  testForm: FormGroup;
+  testForm!: FormGroup;
   disabledToggleForm: FormGroup;
   isToggleDisabled: boolean = false;
 
@@ -32,9 +32,9 @@ export class RadioToggleReactiveExampleComponent {
   toggleDisabled() {
     this.isToggleDisabled = !this.isToggleDisabled;
     if (this.isToggleDisabled) {
-      this.testForm.get('testToggle').disable();
+      this.testForm.get('testToggle')?.disable();
     } else {
-      this.testForm.get('testToggle').enable();
+      this.testForm.get('testToggle')?.enable();
     }
   }
 

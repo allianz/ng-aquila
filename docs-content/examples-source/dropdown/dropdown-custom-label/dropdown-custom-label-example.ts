@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+interface TelephonePrefixData {
+  prefix: string;
+  countryId: string;
+}
+
 /**
 * @title Custom label example
 */
@@ -9,9 +14,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./dropdown-custom-label-example.css']
 })
 export class DropdownCustomLabelExampleComponent {
-  customLabelDropdownValue;
+  customLabelDropdownValue: TelephonePrefixData | undefined;
 
-  telPrefixDemoData = [
+  telPrefixDemoData: Array<TelephonePrefixData> = [
     {
       prefix: '+1',
       countryId: 'United States of America'

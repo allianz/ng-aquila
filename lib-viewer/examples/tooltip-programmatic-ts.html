@@ -10,7 +10,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tooltip-programmatic-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TooltipProgrammaticExampleComponent</span> </span>{
-  <span class="hljs-meta">@ViewChild</span>(NxTooltipDirective, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) tooltip: NxTooltipDirective;
+  <span class="hljs-meta">@ViewChild</span>(NxTooltipDirective, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) tooltip!: NxTooltipDirective;
 
   <span class="hljs-function"><span class="hljs-title">toggle</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-built_in">this</span>.tooltip.toggle();

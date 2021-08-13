@@ -149,18 +149,19 @@
     }
   ];
 
-  currentlyShownPageElements: Contract[];
+  currentlyShownPageElements!: Contract[];
   currentlyAvailableElements: Contract[];
 
   page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
-  filterValue: <span class="hljs-built_in">string</span>;
+  filterValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
   elementsPerPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
 
   <span class="hljs-comment">/**
    * Sorts the table data by a certain category.
    */</span>
   <span class="hljs-function"><span class="hljs-title">sortTable</span>(<span class="hljs-params">sort: SortEvent</span>)</span> {
-    <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+    <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements
+      .sort(<span class="hljs-function">(<span class="hljs-params">a: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, b: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>} </span>) =&gt;</span> {
       <span class="hljs-keyword">if</span> (sort.active <span class="hljs-keyword">in</span> a &amp;&amp; sort.active <span class="hljs-keyword">in</span> b) {
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.compare(a[sort.active], b[sort.active], sort.direction);
       }
@@ -184,7 +185,7 @@
     <span class="hljs-built_in">this</span>.updatePage();
   }
 
-  <span class="hljs-function"><span class="hljs-title">onFilterValueChange</span>(<span class="hljs-params">value</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">onFilterValueChange</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>)</span> {
     <span class="hljs-built_in">this</span>.filterData(value);
   }
 

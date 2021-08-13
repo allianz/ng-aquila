@@ -14,9 +14,9 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ContextMenuProgrammaticExampleComponent</span> </span>{
   <span class="hljs-meta">@ViewChild</span>(NxContextMenuTriggerDirective)
-  <span class="hljs-attr">trigger</span>: NxContextMenuTriggerDirective;
+  trigger!: NxContextMenuTriggerDirective;
 
-  <span class="hljs-function"><span class="hljs-title">openContextMenu</span>(<span class="hljs-params">$event</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">openContextMenu</span>(<span class="hljs-params">$event: Event</span>)</span> {
     $event.preventDefault();
     <span class="hljs-built_in">this</span>.trigger.toggleContextMenu();
   }

@@ -10,7 +10,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./selectable-card-states-example.css']
 })
 export class SelectableCardStatesExampleComponent {
-  formGroup: FormGroup;
+  formGroup!: FormGroup;
   constructor(private fb: FormBuilder) {
     this.createForm();
   }

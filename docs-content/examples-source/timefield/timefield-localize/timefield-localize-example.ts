@@ -21,7 +21,7 @@ export class MyIntl extends NxTimefieldIntl {
 })
 
 export class TimefieldLocalizeExampleComponent implements OnInit {
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   ngOnInit() {
     this.testForm = new FormGroup({

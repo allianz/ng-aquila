@@ -14,7 +14,7 @@
     <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Ferrari&#x27;</span>
   ];
 
-  <span class="hljs-function"><span class="hljs-title">myFilter</span>(<span class="hljs-params">search, itemValue</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">myFilter</span>(<span class="hljs-params">search: <span class="hljs-built_in">any</span>, itemValue: <span class="hljs-built_in">any</span></span>)</span> {
     <span class="hljs-keyword">return</span> itemValue.match(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + search, <span class="hljs-string">&#x27;g&#x27;</span>)) !== <span class="hljs-literal">null</span>;
   }
 }

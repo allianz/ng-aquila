@@ -213,23 +213,6 @@
   ],
   "components": [
     {
-      "id": "accessibility",
-      "title": "Accessibility",
-      "examples": [
-        {
-          "name": "accessibility-high-contrast-svg",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/accessibility.html",
-      "overviewFile": "lib-viewer/overview/accessibility.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
       "id": "accordion",
       "title": "Accordion",
       "examples": [
@@ -282,6 +265,63 @@
       "stable": "done"
     },
     {
+      "id": "video",
+      "title": "Video",
+      "examples": [
+        {
+          "name": "video",
+          "config": {}
+        },
+        {
+          "name": "video-custom",
+          "config": {}
+        },
+        {
+          "name": "video-advanced",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/video.html",
+      "overviewFile": "lib-viewer/overview/video.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "tree",
+      "title": "Tree",
+      "examples": [
+        {
+          "name": "tree",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/tree.html",
+      "overviewFile": "lib-viewer/overview/tree.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "typography",
+      "title": "Typography",
+      "examples": [
+        {
+          "name": "headline-font-weights",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/typography.html",
+      "overviewFile": "lib-viewer/overview/typography.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
+    },
+    {
       "id": "action",
       "title": "Action",
       "examples": [
@@ -304,6 +344,23 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "examples": [
+        {
+          "name": "accessibility-high-contrast-svg",
+          "config": {}
+        }
+      ],
+      "category": "general",
+      "apiFile": "lib-viewer/api/accessibility.html",
+      "overviewFile": "lib-viewer/overview/accessibility.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
     },
     {
       "id": "autocomplete",
@@ -366,21 +423,25 @@
       "stable": "progress"
     },
     {
-      "id": "badge",
-      "title": "Badge",
+      "id": "breadcrumb",
+      "title": "Breadcrumb",
       "examples": [
         {
-          "name": "badge",
+          "name": "breadcrumb",
           "config": {}
         },
         {
-          "name": "badge-vibrant",
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-negative",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/badge.html",
-      "overviewFile": "lib-viewer/overview/badge.html",
+      "apiFile": "lib-viewer/api/breadcrumb.html",
+      "overviewFile": "lib-viewer/overview/breadcrumb.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -406,25 +467,73 @@
       "stable": "done"
     },
     {
-      "id": "breadcrumb",
-      "title": "Breadcrumb",
+      "id": "badge",
+      "title": "Badge",
       "examples": [
         {
-          "name": "breadcrumb",
+          "name": "badge",
           "config": {}
         },
         {
-          "name": "breadcrumb-link",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-negative",
+          "name": "badge-vibrant",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/breadcrumb.html",
-      "overviewFile": "lib-viewer/overview/breadcrumb.html",
+      "apiFile": "lib-viewer/api/badge.html",
+      "overviewFile": "lib-viewer/overview/badge.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "circle-toggle",
+      "title": "Circle Toggle",
+      "examples": [
+        {
+          "name": "circle-toggle-standalone",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-responsive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-text",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group-expert",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-template-driven",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/circle-toggle.html",
+      "overviewFile": "lib-viewer/overview/circle-toggle.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -489,46 +598,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/button.html",
       "overviewFile": "lib-viewer/overview/button.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "card",
-      "title": "Cards",
-      "examples": [
-        {
-          "name": "card",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-basic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-product",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-states",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-reactive",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-dynamic",
-          "config": {}
-        },
-        {
-          "name": "selectable-card-expert",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/card.html",
-      "overviewFile": "lib-viewer/overview/card.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -602,53 +671,41 @@
       "stable": "done"
     },
     {
-      "id": "circle-toggle",
-      "title": "Circle Toggle",
+      "id": "card",
+      "title": "Cards",
       "examples": [
         {
-          "name": "circle-toggle-standalone",
+          "name": "card",
           "config": {}
         },
         {
-          "name": "circle-toggle-group",
+          "name": "selectable-card-basic",
           "config": {}
         },
         {
-          "name": "circle-toggle-responsive",
+          "name": "selectable-card-product",
           "config": {}
         },
         {
-          "name": "circle-toggle-text",
+          "name": "selectable-card-states",
           "config": {}
         },
         {
-          "name": "circle-toggle-negative",
+          "name": "selectable-card-reactive",
           "config": {}
         },
         {
-          "name": "circle-toggle-group-expert",
+          "name": "selectable-card-dynamic",
           "config": {}
         },
         {
-          "name": "circle-toggle-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-template-driven",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive-disabled",
+          "name": "selectable-card-expert",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/circle-toggle.html",
-      "overviewFile": "lib-viewer/overview/circle-toggle.html",
+      "apiFile": "lib-viewer/api/card.html",
+      "overviewFile": "lib-viewer/overview/card.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -1191,6 +1248,34 @@
       "stable": "done"
     },
     {
+      "id": "header",
+      "title": "Header",
+      "examples": [
+        {
+          "name": "header",
+          "config": {}
+        },
+        {
+          "name": "header-two-rows",
+          "config": {}
+        },
+        {
+          "name": "header-icons",
+          "config": {}
+        },
+        {
+          "name": "header-cobranding",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/header.html",
+      "overviewFile": "lib-viewer/overview/header.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "grid",
       "title": "Grid",
       "examples": [
@@ -1243,34 +1328,6 @@
       "apiFile": "lib-viewer/api/grid.html",
       "overviewFile": "lib-viewer/overview/grid.html",
       "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "header",
-      "title": "Header",
-      "examples": [
-        {
-          "name": "header",
-          "config": {}
-        },
-        {
-          "name": "header-two-rows",
-          "config": {}
-        },
-        {
-          "name": "header-icons",
-          "config": {}
-        },
-        {
-          "name": "header-cobranding",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/header.html",
-      "overviewFile": "lib-viewer/overview/header.html",
-      "b2c": false,
       "expert": true,
       "stable": "done"
     },
@@ -1339,34 +1396,6 @@
       "stable": "done"
     },
     {
-      "id": "image",
-      "title": "Images",
-      "examples": [
-        {
-          "name": "image-default",
-          "config": {}
-        },
-        {
-          "name": "image-fixed-ratios",
-          "config": {}
-        },
-        {
-          "name": "image-attribute",
-          "config": {}
-        },
-        {
-          "name": "image-rounded",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/image.html",
-      "overviewFile": "lib-viewer/overview/image.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "indicator",
       "title": "Indicator",
       "examples": [
@@ -1401,6 +1430,34 @@
       "b2c": true,
       "expert": true,
       "stable": "progress"
+    },
+    {
+      "id": "image",
+      "title": "Images",
+      "examples": [
+        {
+          "name": "image-default",
+          "config": {}
+        },
+        {
+          "name": "image-fixed-ratios",
+          "config": {}
+        },
+        {
+          "name": "image-attribute",
+          "config": {}
+        },
+        {
+          "name": "image-rounded",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/image.html",
+      "overviewFile": "lib-viewer/overview/image.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "input",
@@ -1474,6 +1531,46 @@
       "expert": true,
       "stable": "done",
       "noApi": true
+    },
+    {
+      "id": "link",
+      "title": "Link",
+      "examples": [
+        {
+          "name": "link-default",
+          "config": {}
+        },
+        {
+          "name": "link-size",
+          "config": {}
+        },
+        {
+          "name": "link-icons",
+          "config": {}
+        },
+        {
+          "name": "link-black",
+          "config": {}
+        },
+        {
+          "name": "link-negative",
+          "config": {}
+        },
+        {
+          "name": "link-multiple",
+          "config": {}
+        },
+        {
+          "name": "link-within-text",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/link.html",
+      "overviewFile": "lib-viewer/overview/link.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "list",
@@ -1592,90 +1689,6 @@
       "stable": "done"
     },
     {
-      "id": "message",
-      "title": "Notifications",
-      "examples": [
-        {
-          "name": "message-info",
-          "config": {}
-        },
-        {
-          "name": "message-error",
-          "config": {}
-        },
-        {
-          "name": "message-success",
-          "config": {}
-        },
-        {
-          "name": "message-warning",
-          "config": {}
-        },
-        {
-          "name": "message-closable",
-          "config": {}
-        },
-        {
-          "name": "message-banner",
-          "config": {}
-        },
-        {
-          "name": "message-toast-opening",
-          "config": {}
-        },
-        {
-          "name": "message-toast-custom-settings",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/message.html",
-      "overviewFile": "lib-viewer/overview/message.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "link",
-      "title": "Link",
-      "examples": [
-        {
-          "name": "link-default",
-          "config": {}
-        },
-        {
-          "name": "link-size",
-          "config": {}
-        },
-        {
-          "name": "link-icons",
-          "config": {}
-        },
-        {
-          "name": "link-black",
-          "config": {}
-        },
-        {
-          "name": "link-negative",
-          "config": {}
-        },
-        {
-          "name": "link-multiple",
-          "config": {}
-        },
-        {
-          "name": "link-within-text",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/link.html",
-      "overviewFile": "lib-viewer/overview/link.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "modal",
       "title": "Modal",
       "examples": [
@@ -1770,6 +1783,50 @@
       "b2c": false,
       "expert": true,
       "stable": "progress"
+    },
+    {
+      "id": "message",
+      "title": "Notifications",
+      "examples": [
+        {
+          "name": "message-info",
+          "config": {}
+        },
+        {
+          "name": "message-error",
+          "config": {}
+        },
+        {
+          "name": "message-success",
+          "config": {}
+        },
+        {
+          "name": "message-warning",
+          "config": {}
+        },
+        {
+          "name": "message-closable",
+          "config": {}
+        },
+        {
+          "name": "message-banner",
+          "config": {}
+        },
+        {
+          "name": "message-toast-opening",
+          "config": {}
+        },
+        {
+          "name": "message-toast-custom-settings",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/message.html",
+      "overviewFile": "lib-viewer/overview/message.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
     },
     {
       "id": "number-stepper",
@@ -1968,60 +2025,6 @@
       "stable": "progress"
     },
     {
-      "id": "popover",
-      "title": "Popover",
-      "examples": [
-        {
-          "name": "popover-trigger",
-          "config": {}
-        },
-        {
-          "name": "popover-click-outside",
-          "config": {}
-        },
-        {
-          "name": "popover-positioning",
-          "config": {}
-        },
-        {
-          "name": "popover-table",
-          "config": {
-            "hideHeader": true
-          }
-        },
-        {
-          "name": "popover-custom",
-          "config": {}
-        },
-        {
-          "name": "popover-lazyload",
-          "config": {}
-        },
-        {
-          "name": "popover-modal",
-          "config": {}
-        },
-        {
-          "name": "popover-scroll",
-          "config": {}
-        },
-        {
-          "name": "popover-scrollable",
-          "config": {}
-        },
-        {
-          "name": "popover-hover",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/popover.html",
-      "overviewFile": "lib-viewer/overview/popover.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "progress-stepper",
       "title": "Progress Indicator",
       "examples": [
@@ -2077,6 +2080,60 @@
       "category": "components",
       "apiFile": "lib-viewer/api/progress-stepper.html",
       "overviewFile": "lib-viewer/overview/progress-stepper.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "popover",
+      "title": "Popover",
+      "examples": [
+        {
+          "name": "popover-trigger",
+          "config": {}
+        },
+        {
+          "name": "popover-click-outside",
+          "config": {}
+        },
+        {
+          "name": "popover-positioning",
+          "config": {}
+        },
+        {
+          "name": "popover-table",
+          "config": {
+            "hideHeader": true
+          }
+        },
+        {
+          "name": "popover-custom",
+          "config": {}
+        },
+        {
+          "name": "popover-lazyload",
+          "config": {}
+        },
+        {
+          "name": "popover-modal",
+          "config": {}
+        },
+        {
+          "name": "popover-scroll",
+          "config": {}
+        },
+        {
+          "name": "popover-scrollable",
+          "config": {}
+        },
+        {
+          "name": "popover-hover",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/popover.html",
+      "overviewFile": "lib-viewer/overview/popover.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -2291,38 +2348,6 @@
       "stable": "done"
     },
     {
-      "id": "sidepanel",
-      "title": "Sidepanel",
-      "examples": [
-        {
-          "name": "sidepanel-dark",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-light",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-floating",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-static",
-          "config": {}
-        },
-        {
-          "name": "sidepanel-with-tabs",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/sidepanel.html",
-      "overviewFile": "lib-viewer/overview/sidepanel.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "progress"
-    },
-    {
       "id": "slider",
       "title": "Slider",
       "examples": [
@@ -2383,34 +2408,34 @@
       "stable": "done"
     },
     {
-      "id": "small-stage",
-      "title": "Small stage",
+      "id": "sidepanel",
+      "title": "Sidepanel",
       "examples": [
         {
-          "name": "small-stage-default",
+          "name": "sidepanel-dark",
           "config": {}
         },
         {
-          "name": "small-stage-content-variation",
+          "name": "sidepanel-light",
           "config": {}
         },
         {
-          "name": "small-stage-w-bg",
+          "name": "sidepanel-floating",
           "config": {}
         },
         {
-          "name": "small-stage-expert-default",
+          "name": "sidepanel-static",
           "config": {}
         },
         {
-          "name": "small-stage-expert-content-narrow",
+          "name": "sidepanel-with-tabs",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/small-stage.html",
-      "overviewFile": "lib-viewer/overview/small-stage.html",
-      "b2c": true,
+      "apiFile": "lib-viewer/api/sidepanel.html",
+      "overviewFile": "lib-viewer/overview/sidepanel.html",
+      "b2c": false,
       "expert": true,
       "stable": "progress"
     },
@@ -2675,6 +2700,26 @@
       "noApi": true
     },
     {
+      "id": "toolbar",
+      "title": "Toolbar",
+      "examples": [
+        {
+          "name": "toolbar",
+          "config": {}
+        },
+        {
+          "name": "toolbar-positioning-content",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/toolbar.html",
+      "overviewFile": "lib-viewer/overview/toolbar.html",
+      "b2c": false,
+      "expert": true,
+      "stable": "progress"
+    },
+    {
       "id": "timefield",
       "title": "Timefield",
       "examples": [
@@ -2707,26 +2752,6 @@
       "apiFile": "lib-viewer/api/timefield.html",
       "overviewFile": "lib-viewer/overview/timefield.html",
       "b2c": true,
-      "expert": true,
-      "stable": "progress"
-    },
-    {
-      "id": "toolbar",
-      "title": "Toolbar",
-      "examples": [
-        {
-          "name": "toolbar",
-          "config": {}
-        },
-        {
-          "name": "toolbar-positioning-content",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/toolbar.html",
-      "overviewFile": "lib-viewer/overview/toolbar.html",
-      "b2c": false,
       "expert": true,
       "stable": "progress"
     },
@@ -2773,61 +2798,36 @@
       "stable": "done"
     },
     {
-      "id": "tree",
-      "title": "Tree",
+      "id": "small-stage",
+      "title": "Small stage",
       "examples": [
         {
-          "name": "tree",
+          "name": "small-stage-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-content-variation",
+          "config": {}
+        },
+        {
+          "name": "small-stage-w-bg",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-default",
+          "config": {}
+        },
+        {
+          "name": "small-stage-expert-content-narrow",
           "config": {}
         }
       ],
       "category": "components",
-      "apiFile": "lib-viewer/api/tree.html",
-      "overviewFile": "lib-viewer/overview/tree.html",
-      "b2c": false,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "typography",
-      "title": "Typography",
-      "examples": [
-        {
-          "name": "headline-font-weights",
-          "config": {}
-        }
-      ],
-      "category": "general",
-      "apiFile": "lib-viewer/api/typography.html",
-      "overviewFile": "lib-viewer/overview/typography.html",
+      "apiFile": "lib-viewer/api/small-stage.html",
+      "overviewFile": "lib-viewer/overview/small-stage.html",
       "b2c": true,
       "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
-      "id": "video",
-      "title": "Video",
-      "examples": [
-        {
-          "name": "video",
-          "config": {}
-        },
-        {
-          "name": "video-custom",
-          "config": {}
-        },
-        {
-          "name": "video-advanced",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/video.html",
-      "overviewFile": "lib-viewer/overview/video.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
+      "stable": "progress"
     }
   ],
   "examples": [

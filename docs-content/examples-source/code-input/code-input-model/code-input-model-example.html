@@ -6,10 +6,10 @@
   </nx-code-input>
 
   <div *ngIf="codeInput.errorState">
-    <nx-error *ngIf="keyCode.hasError('required')" class="nx-margin-y-xs">
+    <nx-error *ngIf="keyCode?.hasError('required')" class="nx-margin-y-xs">
       Entry is required.
     </nx-error>
-    <nx-error *ngIf="keyCode.hasError('minlength')" class="nx-margin-y-xs">
+    <nx-error *ngIf="keyCode?.hasError('minlength')" class="nx-margin-y-xs">
       Entry is too short.
     </nx-error>
   </div>
@@ -19,6 +19,6 @@
   <button nxButton="secondary small" (click)="form.resetForm()" type="button">Clear</button>
 
   <p>
-    Code input value: '{{ keyCode.value }}'
+    Code input value: '{{ keyCode?.value }}'
   </p>
 </form>

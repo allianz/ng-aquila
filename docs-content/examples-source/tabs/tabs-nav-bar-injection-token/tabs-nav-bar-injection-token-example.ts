@@ -38,7 +38,7 @@ export class TabsNavBarInjectionTokenExampleComponent {
 
   currentLink = this.links[0];
 
-  setActiveLink(link) {
+  setActiveLink(link: any) {
     if (!link.disabled) {
       this.currentLink = link;
     }

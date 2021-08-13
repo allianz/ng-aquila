@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./formfield-note-example.css']
 })
 export class FormfieldNoteExampleComponent {
-  public valueSupplementNote;
+  public valueSupplementNote!: string;
 }

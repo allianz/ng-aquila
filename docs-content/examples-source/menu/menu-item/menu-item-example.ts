@@ -1,5 +1,15 @@
 import { Component } from '@angular/core';
 
+type MenuChild = {
+  label: string;
+}
+
+type MenuItem = {
+  label: string,
+  expanded?: boolean,
+  children?: MenuChild[]
+}
+
 /**
 * @title Menu item
 */
@@ -9,7 +19,7 @@ import { Component } from '@angular/core';
   styleUrls: ['menu-item-example.css']
 })
 export class MenuItemExampleComponent {
-  menuData = [
+  menuData: MenuItem[] = [
     {
       label: 'Option 1',
       expanded: false,
@@ -45,7 +55,7 @@ export class MenuItemExampleComponent {
     }
   ];
 
-  onClick(item) {
+  onClick(item: any) {
     item.expanded = !item.expanded;
   }
 }

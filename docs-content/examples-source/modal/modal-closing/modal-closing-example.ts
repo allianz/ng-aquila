@@ -10,9 +10,9 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   styleUrls: ['./modal-closing-example.css']
 })
 export class ModalClosingExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
-  dialogRef: NxModalRef<any>;
-  actionResult: string;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
+  dialogRef!: NxModalRef<any>;
+  actionResult!: string;
 
   constructor(public dialogService: NxDialogService) {}
 

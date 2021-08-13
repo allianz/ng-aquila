@@ -12,7 +12,7 @@
 })
 
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldLocalizeDateExampleComponent</span> </span>{
-  <span class="hljs-keyword">public</span> currentDate: Moment = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">public</span> currentDate: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
   <span class="hljs-keyword">public</span> currentLocale;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
@@ -25,7 +25,7 @@
     });
   }
 
-  <span class="hljs-function"><span class="hljs-title">changeLocal</span>(<span class="hljs-params">value</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">changeLocal</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>)</span> {
     <span class="hljs-built_in">this</span>.nxDateAdapter.setLocale(value);
   }
 }

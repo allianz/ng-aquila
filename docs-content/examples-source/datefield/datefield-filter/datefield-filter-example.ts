@@ -11,5 +11,5 @@ import { Moment } from 'moment';
 })
 
 export class DatefieldFilterExampleComponent {
-  onlyDaysWith6 = (date: Moment) => date.date() === 6;
+  onlyDaysWith6 = (date: Moment | null) => date?.date() === 6;
 }

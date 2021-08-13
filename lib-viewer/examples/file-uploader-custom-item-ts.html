@@ -12,7 +12,7 @@
 <span class="hljs-keyword">import</span> { NgModel } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomFileItem</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FileItem</span> </span>{
-  <span class="hljs-keyword">public</span> formData: FormData;
+  <span class="hljs-keyword">public</span> formData!: FormData;
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
@@ -30,10 +30,10 @@
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderCustomItemExampleComponent</span> </span>{
   <span class="hljs-attr">myFiles</span>: CustomFileItem[] = [];
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>) documentUpload: NxFileUploaderComponent;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>) documentUpload!: NxFileUploaderComponent;
   <span class="hljs-keyword">public</span> showUploadError: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;ngModel&#x27;</span>) ngModel: NgModel;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;ngModel&#x27;</span>) ngModel!: NgModel;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
     <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
@@ -67,7 +67,7 @@
     <span class="hljs-built_in">this</span>.myFiles.forEach(<span class="hljs-function">(<span class="hljs-params">file: CustomFileItem</span>) =&gt;</span> {
       <span class="hljs-keyword">if</span> (!file.isUploaded) {
         file.setUploadingState();
-        formData.set(file.name, file.file, file.name);
+        formData.set(file.name, file.file <span class="hljs-keyword">as</span> Blob, file.name);
         formData.set(<span class="hljs-string">`<span class="hljs-subst">${file.name}</span>-form`</span>, file.formData.toString());
       }
     });
@@ -80,7 +80,7 @@
 
     <span class="hljs-built_in">this</span>.http.post(url, formData, options).subscribe(
       <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> {
-        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: CustomFileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value!.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           fileItem.setUploadedState();
         });
         <span class="hljs-built_in">this</span>.messageToastService.open(
@@ -89,7 +89,7 @@
         );
       },
       <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
-        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: CustomFileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value!.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           <span class="hljs-keyword">if</span> (!fileItem.isUploaded) {
             fileItem.setErrorState();
           }

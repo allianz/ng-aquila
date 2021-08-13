@@ -1,4 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxTabChangeEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/tabs&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Output events
@@ -10,15 +11,15 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsOutputEventsExampleComponent</span> </span>{
 
-  messages = [];
-  logMessage: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">messages</span>: <span class="hljs-built_in">Array</span>&lt;<span class="hljs-built_in">any</span>&gt; = [];
+  logMessage: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
 
-  <span class="hljs-function"><span class="hljs-title">tabChanged</span>(<span class="hljs-params">$event</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">tabChanged</span>(<span class="hljs-params">$event: NxTabChangeEvent</span>)</span> {
     <span class="hljs-built_in">this</span>.messages.push(<span class="hljs-string">`Selected Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>);
     <span class="hljs-built_in">Promise</span>.resolve().then( <span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.logMessage = <span class="hljs-built_in">this</span>.messages.join(<span class="hljs-string">&#x27;\n&#x27;</span>));
   }
 
-  <span class="hljs-function"><span class="hljs-title">tabFocused</span>(<span class="hljs-params">$event</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">tabFocused</span>(<span class="hljs-params">$event: NxTabChangeEvent</span>)</span> {
     <span class="hljs-built_in">this</span>.messages.push(<span class="hljs-string">`Focused Index: <span class="hljs-subst">${$event.index}</span> Label: <span class="hljs-subst">${$event.tab.label}</span>`</span>);
     <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.logMessage = <span class="hljs-built_in">this</span>.messages.join(<span class="hljs-string">&#x27;\n&#x27;</span>));
   }

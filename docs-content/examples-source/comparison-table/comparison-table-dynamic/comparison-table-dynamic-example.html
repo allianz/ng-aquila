@@ -25,7 +25,6 @@
         <nx-comparison-table-cell *ngFor="let cell of element['cells']">
           {{ cell }}
         </nx-comparison-table-cell>
-        <nx-comparison-table-intersection-cell *ngIf="element['intersection']">{{ element['intersection'] }}</nx-comparison-table-intersection-cell>
       </ng-container>
 
       <!-- footer row -->
@@ -53,7 +52,6 @@
             </div>
           </nx-comparison-table-description-cell>>
           <nx-comparison-table-cell *ngFor="let cell of row['cells']">{{ cell }}</nx-comparison-table-cell>
-          <nx-comparison-table-intersection-cell *ngIf="row['intersection']">{{ row['intersection'] }}</nx-comparison-table-intersection-cell>
         </ng-container>
       </ng-container>
 

@@ -1,5 +1,16 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
+<span class="hljs-keyword">type</span> MenuChild = {
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">type</span> MenuItem = {
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>,
+  expanded?: <span class="hljs-built_in">boolean</span>,
+  <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>,
+  children?: MenuChild[]
+}
+
 <span class="hljs-comment">/**
 * <span class="hljs-doctag">@title </span>Menu item with large indentation and button icons
 */</span>
@@ -9,7 +20,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;menu-item-with-icons-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MenuItemWithIconsExampleComponent</span> </span>{
-  menuData = [
+  <span class="hljs-attr">menuData</span>: MenuItem[] = [
     {
       <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Option 1&#x27;</span>,
       <span class="hljs-attr">expanded</span>: <span class="hljs-literal">false</span>,
@@ -47,7 +58,7 @@
     }
   ];
 
-  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params">item</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">onClick</span>(<span class="hljs-params">item: MenuItem</span>)</span> {
     item.expanded = !item.expanded;
   }
 }

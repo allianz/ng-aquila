@@ -14,11 +14,7 @@
     <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Ferrari&#x27;</span>
   ];
 
-  toText(value): <span class="hljs-built_in">string</span> {
-    <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
-  }
-
-  toTextMulti(value): <span class="hljs-built_in">any</span> {
+  toTextMulti(value: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">string</span> {
     <span class="hljs-keyword">if</span> (value) {
       <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(value)) {
         <span class="hljs-keyword">return</span> value.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.toUpperCase()).join(<span class="hljs-string">&#x27;, &#x27;</span>);
@@ -27,9 +23,5 @@
       }
     }
     <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
-  }
-
-  <span class="hljs-function"><span class="hljs-title">myFilter</span>(<span class="hljs-params">search, itemValue</span>)</span> {
-    <span class="hljs-keyword">return</span> itemValue.match(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;^&#x27;</span> + search, <span class="hljs-string">&#x27;g&#x27;</span>)) !== <span class="hljs-literal">null</span>;
   }
 }

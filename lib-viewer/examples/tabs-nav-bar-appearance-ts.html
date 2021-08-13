@@ -1,5 +1,11 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
+<span class="hljs-keyword">interface</span> Link {
+  <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+  path: <span class="hljs-built_in">string</span>;
+  disabled: <span class="hljs-built_in">boolean</span>;
+}
+
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Appearance for Tabs Navbar
  */</span>
@@ -10,7 +16,7 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsNavBarAppearanceExampleComponent</span> </span>{
 
-  links = [
+  <span class="hljs-attr">links</span>: Link[] = [
     {
       <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Subpage 1&#x27;</span>,
       <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;...&#x27;</span>,
@@ -30,7 +36,7 @@
 
   currentLink = <span class="hljs-built_in">this</span>.links[<span class="hljs-number">0</span>];
 
-  <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link: Link</span>)</span> {
     <span class="hljs-keyword">if</span> (!link.disabled) {
       <span class="hljs-built_in">this</span>.currentLink = link;
     }

@@ -12,7 +12,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./viewport-change-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ViewportChangeExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;sidebar&#x27;</span>) sidebar: NxSidebarComponent;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;sidebar&#x27;</span>) sidebar!: NxSidebarComponent;
   actions = [
     {
       <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,

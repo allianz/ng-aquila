@@ -12,7 +12,7 @@ export class SwitcherDisabledExampleComponent {
 
   checked: boolean = true;
   templateModel: boolean = false;
-  testForm: FormGroup;
+  testForm!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();

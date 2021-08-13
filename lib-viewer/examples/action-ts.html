@@ -1,5 +1,12 @@
 <span class="hljs-keyword">import</span> { Component, OnInit } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
+<span class="hljs-keyword">type</span> Action = {
+  <span class="hljs-attr">icon</span>: <span class="hljs-built_in">string</span>;
+  label: <span class="hljs-built_in">string</span>;
+  notification?: <span class="hljs-built_in">boolean</span>;
+  notificationCount?: <span class="hljs-built_in">number</span>;
+}
+
 <span class="hljs-comment">/**
 * <span class="hljs-doctag">@title </span>Action Example
 */</span>
@@ -9,7 +16,7 @@
   <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./action-example.html&#x27;</span>
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ActionExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
-  actions = [
+  <span class="hljs-attr">actions</span>: Action[] = [
     {
       <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;file-text&#x27;</span>,
       <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;All Files&#x27;</span>
@@ -32,7 +39,7 @@
     }
   ];
 
-  selectedAction;
+  selectedAction!: Action;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
 
@@ -40,7 +47,7 @@
     <span class="hljs-built_in">this</span>.selectedAction = <span class="hljs-built_in">this</span>.actions[<span class="hljs-number">1</span>];
   }
 
-  <span class="hljs-function"><span class="hljs-title">onSelect</span>(<span class="hljs-params">action</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">onSelect</span>(<span class="hljs-params">action: Action</span>)</span> {
     <span class="hljs-built_in">this</span>.selectedAction = action;
   }
 }

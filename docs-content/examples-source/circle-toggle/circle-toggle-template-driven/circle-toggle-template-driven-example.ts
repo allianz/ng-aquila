@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class CircleToggleTemplateDrivenExampleComponent {
 
-  toggleGroupModel;
+  toggleGroupModel!: string;
 
   sampleValues = [{value: 'A', icon: 'product-heart', hint: 'Hint A', label: 'Label A', selected: false},
     {value: 'B', icon: 'product-car', hint: 'Hint B', label: 'Label B', selected: true},

@@ -11,14 +11,14 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldErrorExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterContentInit</span> </span>{
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModel: NxInputDirective;
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModelHint&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModelHint: NxInputDirective;
-  <span class="hljs-keyword">public</span> valueSupplementError;
-  <span class="hljs-keyword">public</span> valueSupplementErrorHint;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModel!: NxInputDirective;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;exampleErrorNgModelHint&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) exampleErrorNgModelHint!: NxInputDirective;
+  <span class="hljs-keyword">public</span> valueSupplementError!: <span class="hljs-built_in">string</span>;
+  <span class="hljs-keyword">public</span> valueSupplementErrorHint!: <span class="hljs-built_in">string</span>;
 
   <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.exampleErrorNgModel.ngControl.control.markAsTouched();
-    <span class="hljs-built_in">this</span>.exampleErrorNgModelHint.ngControl.control.markAsTouched();
+    <span class="hljs-built_in">this</span>.exampleErrorNgModel.ngControl.control?.markAsTouched();
+    <span class="hljs-built_in">this</span>.exampleErrorNgModelHint.ngControl.control?.markAsTouched();
   }
 
 }

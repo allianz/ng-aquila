@@ -12,7 +12,7 @@
 
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodeInputModelExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
   <span class="hljs-attr">inputValue</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-built_in">this</span>.codeForm = <span class="hljs-keyword">new</span> FormGroup({
@@ -25,8 +25,8 @@
       })
     });
 
-    <span class="hljs-built_in">this</span>.keyCode.valueChanges.subscribe(<span class="hljs-function">() =&gt;</span> {
-      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.keyCode.valid &amp;&amp; <span class="hljs-built_in">this</span>.keyCode.value !== <span class="hljs-string">&#x27;1234&#x27;</span>) {
+    <span class="hljs-built_in">this</span>.keyCode?.valueChanges.subscribe(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.keyCode?.valid &amp;&amp; <span class="hljs-built_in">this</span>.keyCode.value !== <span class="hljs-string">&#x27;1234&#x27;</span>) {
         <span class="hljs-built_in">this</span>.codeForm.setValue({<span class="hljs-string">&#x27;keyCode&#x27;</span>: <span class="hljs-string">&#x27;1234&#x27;</span>});
       }
     });

@@ -1,5 +1,5 @@
 <span class="hljs-keyword">import</span> { NxOverlayDirection, NxOverlayService, NxOverlayRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/overlay&#x27;</span>;
-<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component, ViewChild, TemplateRef, ElementRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
 * <span class="hljs-doctag">@title </span>Notification Panel
@@ -11,13 +11,13 @@
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OverlayPositioningExampleComponent</span> </span>{
 
-  <span class="hljs-attr">currentOverlay</span>: NxOverlayRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  currentOverlay!: NxOverlayRef&lt;<span class="hljs-built_in">any</span>&gt;;
 
-  <span class="hljs-meta">@ViewChild</span>(TemplateRef) template: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(TemplateRef) template!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> nxOverlay: NxOverlayService</span>)</span> {}
 
-  <span class="hljs-function"><span class="hljs-title">open</span>(<span class="hljs-params">element, direction: NxOverlayDirection</span>)</span> {
+  <span class="hljs-function"><span class="hljs-title">open</span>(<span class="hljs-params">element: ElementRef, direction: NxOverlayDirection</span>)</span> {
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.currentOverlay) {
       <span class="hljs-built_in">this</span>.currentOverlay.close();
     }

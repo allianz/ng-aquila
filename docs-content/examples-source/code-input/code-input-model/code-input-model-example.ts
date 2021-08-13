@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CodeInputModelExampleComponent implements OnInit {
   inputValue: string = '';
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   ngOnInit() {
     this.codeForm = new FormGroup({
@@ -25,8 +25,8 @@ export class CodeInputModelExampleComponent implements OnInit {
       })
     });
 
-    this.keyCode.valueChanges.subscribe(() => {
-      if (this.keyCode.valid && this.keyCode.value !== '1234') {
+    this.keyCode?.valueChanges.subscribe(() => {
+      if (this.keyCode?.valid && this.keyCode.value !== '1234') {
         this.codeForm.setValue({'keyCode': '1234'});
       }
     });

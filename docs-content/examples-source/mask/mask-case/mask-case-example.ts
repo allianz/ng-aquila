@@ -10,6 +10,6 @@ import { MaskConversionTypes } from '@aposin/ng-aquila/mask';
   styleUrls: ['./mask-case-example.css']
 })
 export class MaskCaseExampleComponent {
-  modelVal;
+  modelVal!: string;
   templateModel: MaskConversionTypes = 'upper';
 }

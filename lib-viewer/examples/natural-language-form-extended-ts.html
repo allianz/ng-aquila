@@ -10,7 +10,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./natural-language-form-extended-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NaturalLanguageFormExtendedExampleComponent</span> </span>{
-  <span class="hljs-attr">naturalForm</span>: FormGroup;
+  naturalForm!: FormGroup;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
     <span class="hljs-built_in">this</span>.buildForm();
@@ -44,7 +44,7 @@
   <span class="hljs-function"><span class="hljs-title">validate</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-built_in">Object</span>.keys(<span class="hljs-built_in">this</span>.naturalForm.controls).forEach(<span class="hljs-function"><span class="hljs-params">field</span> =&gt;</span> {
       <span class="hljs-keyword">const</span> control = <span class="hljs-built_in">this</span>.naturalForm.get(field);
-      control.markAsTouched({ <span class="hljs-attr">onlySelf</span>: <span class="hljs-literal">true</span> });
+      control?.markAsTouched({ <span class="hljs-attr">onlySelf</span>: <span class="hljs-literal">true</span> });
     });
   }
 }

@@ -16,7 +16,7 @@ export const myCustomConfig: NxMessageToastConfig = {
   styleUrls: ['./file-uploader-auto-example.css']
 })
 export class FileUploaderAutoExampleComponent {
-  @ViewChild('documentUpload', {static: false}) documentUpload: NxFileUploaderComponent;
+  @ViewChild('documentUpload', {static: false}) documentUpload!: NxFileUploaderComponent;
   myFiles: FileItem[] = [];
   uploader: NxFileUploader;
   uploadConfig: NxFileUploadConfig = {

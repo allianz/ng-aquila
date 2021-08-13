@@ -11,8 +11,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 
 export class CheckboxGroupInheritanceExampleComponent {
-  public optionsForm: FormGroup;
-  public myFormGroup: FormGroup;
+  public optionsForm!: FormGroup;
+  public myFormGroup!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -34,19 +34,19 @@ export class CheckboxGroupInheritanceExampleComponent {
 
   toggleDisabled() {
     const checkboxGroup = this.myFormGroup.get('terms');
-    if (checkboxGroup.disabled) {
-      this.myFormGroup.get('terms').enable();
+    if (checkboxGroup?.disabled) {
+      this.myFormGroup.get('terms')?.enable();
     } else {
-      this.myFormGroup.get('terms').disable();
+      this.myFormGroup.get('terms')?.disable();
     }
   }
 
   toggleRequired() {
     const checkboxGroup = this.myFormGroup.get('terms');
-    if (checkboxGroup.validator === Validators.required) {
+    if (checkboxGroup?.validator === Validators.required) {
       checkboxGroup.clearValidators();
     } else {
-      checkboxGroup.setValidators(Validators.required);
+      checkboxGroup?.setValidators(Validators.required);
     }
   }
 }

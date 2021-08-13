@@ -14,9 +14,9 @@ export class OverlayLimitingFallbacksExampleComponent {
   fallbacks: NxOverlayDirection[] = ['top', 'bottom'];
   config: NxOverlayConfig = { width: 250, height: 250, fallbackOrientation: 'vertical', direction: 'left'};
 
-  currentOverlay: NxOverlayRef<any>;
+  currentOverlay!: NxOverlayRef<any>;
 
-  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
   constructor(public nxOverlay: NxOverlayService) {}
 

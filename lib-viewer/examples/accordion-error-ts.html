@@ -14,8 +14,8 @@
   <span class="hljs-keyword">public</span> showErrorPayment: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
   <span class="hljs-keyword">public</span> showErrorInfo: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
-  formGroupInfo: FormGroup;
-  formGroupPayment: FormGroup;
+  formGroupInfo!: FormGroup;
+  formGroupPayment!: FormGroup;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
     <span class="hljs-built_in">this</span>.createForm();
@@ -32,10 +32,10 @@
   }
 
   <span class="hljs-keyword">get</span> <span class="hljs-title">infoHasError</span>() {
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formGroupInfo.get(<span class="hljs-string">&#x27;surname&#x27;</span>).hasError(<span class="hljs-string">&#x27;required&#x27;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formGroupInfo.get(<span class="hljs-string">&#x27;surname&#x27;</span>)?.hasError(<span class="hljs-string">&#x27;required&#x27;</span>);
   }
 
   <span class="hljs-keyword">get</span> <span class="hljs-title">paymentHasError</span>() {
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formGroupPayment.get(<span class="hljs-string">&#x27;input&#x27;</span>).hasError(<span class="hljs-string">&#x27;required&#x27;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.formGroupPayment.get(<span class="hljs-string">&#x27;input&#x27;</span>)?.hasError(<span class="hljs-string">&#x27;required&#x27;</span>);
   }
 }

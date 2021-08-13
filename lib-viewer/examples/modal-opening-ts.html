@@ -21,11 +21,11 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./modal-opening-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModalOpeningExampleComponent</span> </span>{
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template2&#x27;</span>) templateRef2: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template&#x27;</span>) templateRef!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;template2&#x27;</span>) templateRef2!: TemplateRef&lt;<span class="hljs-built_in">any</span>&gt;;
 
-  templateDialogRef: NxModalRef&lt;<span class="hljs-built_in">any</span>&gt;;
-  componentDialogRef: NxModalRef&lt;SimpleModalComponent&gt;;
+  templateDialogRef!: NxModalRef&lt;<span class="hljs-built_in">any</span>&gt;;
+  componentDialogRef!: NxModalRef&lt;SimpleModalComponent&gt;;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> dialogService: NxDialogService</span>)</span> {}
 

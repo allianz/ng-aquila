@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-search-input-example.css']
 })
 export class PageSearchInputExampleComponent {
-  searchTerm: string;
+  searchTerm: string = '';
 }

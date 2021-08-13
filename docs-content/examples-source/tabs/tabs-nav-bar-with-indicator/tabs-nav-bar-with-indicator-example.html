@@ -5,7 +5,7 @@
       [routerLink]="link.path">
     <span class="link-content">
       {{link.label}}
-      <nx-indicator *ngIf="link.notification" position="over-text" [attr.aria-label]="getAriaLabel(link.notificationCount)">{{ link.notificationCount }}</nx-indicator>
+      <nx-indicator *ngIf="link.notification" position="over-text" [attr.aria-label]="getAriaLabel(link.notificationCount!)">{{ link.notificationCount }}</nx-indicator>
     </span>
   </a>
 </nx-tab-nav-bar>

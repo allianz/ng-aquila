@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./formfield-password-visibility-example.css']
 })
 export class FormfieldPasswordVisibilityExampleComponent {
-  inputValue;
+  inputValue!: string;
 }

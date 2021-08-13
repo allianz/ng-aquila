@@ -1,5 +1,10 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
+<span class="hljs-keyword">interface</span> TelephonePrefixData {
+  <span class="hljs-attr">prefix</span>: <span class="hljs-built_in">string</span>;
+  countryId: <span class="hljs-built_in">string</span>;
+}
+
 <span class="hljs-comment">/**
 * <span class="hljs-doctag">@title </span>Custom label example
 */</span>
@@ -9,9 +14,9 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-custom-label-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownCustomLabelExampleComponent</span> </span>{
-  customLabelDropdownValue;
+  <span class="hljs-attr">customLabelDropdownValue</span>: TelephonePrefixData | <span class="hljs-literal">undefined</span>;
 
-  telPrefixDemoData = [
+  telPrefixDemoData: <span class="hljs-built_in">Array</span>&lt;TelephonePrefixData&gt; = [
     {
       <span class="hljs-attr">prefix</span>: <span class="hljs-string">&#x27;+1&#x27;</span>,
       <span class="hljs-attr">countryId</span>: <span class="hljs-string">&#x27;United States of America&#x27;</span>

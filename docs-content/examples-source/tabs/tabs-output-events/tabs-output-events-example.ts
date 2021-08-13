@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxTabChangeEvent } from '@aposin/ng-aquila/tabs';
 
 /**
  * @title Output events
@@ -10,15 +11,15 @@ import { Component } from '@angular/core';
 })
 export class TabsOutputEventsExampleComponent {
 
-  messages = [];
-  logMessage: string;
+  messages: Array<any> = [];
+  logMessage: string = '';
 
-  tabChanged($event) {
+  tabChanged($event: NxTabChangeEvent) {
     this.messages.push(`Selected Index: ${$event.index} Label: ${$event.tab.label}`);
     Promise.resolve().then( () => this.logMessage = this.messages.join('\n'));
   }
 
-  tabFocused($event) {
+  tabFocused($event: NxTabChangeEvent) {
     this.messages.push(`Focused Index: ${$event.index} Label: ${$event.tab.label}`);
     Promise.resolve().then(() => this.logMessage = this.messages.join('\n'));
   }

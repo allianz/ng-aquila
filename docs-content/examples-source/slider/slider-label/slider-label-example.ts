@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
 })
 export class SliderLabelExampleComponent {
   euroSliderDemoValue: number = 0;
-  euroValueFormatter: Function = (value) => `${Number(value).toFixed(2)} €`;
-  minEuroFormatter: Function = (value) => `min. ${value} €`;
-  maxEuroFormatter: Function = (value) => `max. ${value} €`;
+  euroValueFormatter: Function = (value: string | number) => `${Number(value).toFixed(2)} €`;
+  minEuroFormatter: Function = (value: number) => `min. ${value} €`;
+  maxEuroFormatter: Function = (value: number) => `max. ${value} €`;
 
 }

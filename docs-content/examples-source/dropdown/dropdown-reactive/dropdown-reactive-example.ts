@@ -14,7 +14,7 @@ export class DropdownReactiveExampleComponent {
     dropdown: ['BMW', Validators.required]
   });
 
-  patch(value) {
+  patch(value: string) {
     this.form.patchValue({'dropdown': value});
   }
 }

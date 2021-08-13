@@ -25,10 +25,10 @@
   ]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FormfieldGlobalExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterContentInit</span> </span>{
-  <span class="hljs-keyword">public</span> modelValue;
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;errorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) errorNgModel: NxInputDirective;
+  <span class="hljs-keyword">public</span> modelValue!: <span class="hljs-built_in">string</span>;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;errorNgModel&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) errorNgModel!: NxInputDirective;
 
   <span class="hljs-function"><span class="hljs-title">ngAfterContentInit</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.errorNgModel.ngControl.control.markAsTouched();
+    <span class="hljs-built_in">this</span>.errorNgModel.ngControl.control?.markAsTouched();
   }
 }

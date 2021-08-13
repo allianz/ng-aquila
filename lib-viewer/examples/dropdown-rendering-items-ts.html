@@ -14,7 +14,7 @@
     <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Ferrari&#x27;</span>
   ];
 
-  toText(value): <span class="hljs-built_in">string</span> {
+  toText(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
     <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
   }
 }

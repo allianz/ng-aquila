@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./viewport-change-example.css']
 })
 export class ViewportChangeExampleComponent implements OnDestroy {
-  @ViewChild('sidebar') sidebar: NxSidebarComponent;
+  @ViewChild('sidebar') sidebar!: NxSidebarComponent;
   actions = [
     {
       icon: 'file-text',

@@ -13,10 +13,10 @@ import { NxDatepickerComponent } from '@aposin/ng-aquila/datefield';
 
 export class DatefieldRangeExampleComponent {
 
-  @ViewChild('endDatepicker', { static: true }) endDatepicker: NxDatepickerComponent<Moment>;
+  @ViewChild('endDatepicker', { static: true }) endDatepicker!: NxDatepickerComponent<Moment>;
 
-  startDate: Moment = null;
-  endDate: Moment = null;
+  startDate: Moment | null = null;
+  endDate: Moment | null = null;
 
   updateEndDatepicker() {
     this.endDate = this.startDate;

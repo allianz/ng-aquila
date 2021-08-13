@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./comparison-table-hidden-columns-example.css'],
 })
 export class ComparisonTableHiddenColumnsExampleComponent {
-  hiddenIndexes = [];
+  hiddenIndexes: Array<number> = [];
   selectedColumnIndex = 1;
 
-  isHiddenIndex = index => this.hiddenIndexes.indexOf(index) !== -1;
+  isHiddenIndex = (index: number) => this.hiddenIndexes.indexOf(index) !== -1;
 
   toggleHiddenIndexes(index:number){
     if(index === this.selectedColumnIndex){
@@ -26,7 +26,7 @@ export class ComparisonTableHiddenColumnsExampleComponent {
     }
   }
 
-  selectedIndexChange(selectedColumnIndex: any){
+  selectedIndexChange(selectedColumnIndex: number){
     this.selectedColumnIndex = selectedColumnIndex;
   }
 }

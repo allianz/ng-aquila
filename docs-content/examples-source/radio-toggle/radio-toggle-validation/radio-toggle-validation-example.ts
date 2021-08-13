@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class RadioToggleValidationExampleComponent {
 
   data = ['A', 'B', 'C'];
-  testForm: FormGroup;
+  testForm!: FormGroup;
   isSubmitted: boolean = false;
 
   constructor(private fb: FormBuilder) {

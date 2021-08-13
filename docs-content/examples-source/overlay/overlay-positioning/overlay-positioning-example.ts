@@ -1,5 +1,5 @@
 import { NxOverlayDirection, NxOverlayService, NxOverlayRef } from '@aposin/ng-aquila/overlay';
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 
 /**
 * @title Notification Panel
@@ -11,13 +11,13 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 })
 export class OverlayPositioningExampleComponent {
 
-  currentOverlay: NxOverlayRef<any>;
+  currentOverlay!: NxOverlayRef<any>;
 
-  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
   constructor(public nxOverlay: NxOverlayService) {}
 
-  open(element, direction: NxOverlayDirection) {
+  open(element: ElementRef, direction: NxOverlayDirection) {
     if (this.currentOverlay) {
       this.currentOverlay.close();
     }

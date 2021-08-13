@@ -1,5 +1,16 @@
 import { Component } from '@angular/core';
 
+type MenuChild = {
+  label: string;
+}
+
+type MenuItem = {
+  label: string,
+  expanded?: boolean,
+  icon: string,
+  children?: MenuChild[]
+}
+
 /**
 * @title Menu item with large indentation and button icons
 */
@@ -9,7 +20,7 @@ import { Component } from '@angular/core';
   styleUrls: ['menu-item-with-icons-example.css']
 })
 export class MenuItemWithIconsExampleComponent {
-  menuData = [
+  menuData: MenuItem[] = [
     {
       label: 'Option 1',
       expanded: false,
@@ -47,7 +58,7 @@ export class MenuItemWithIconsExampleComponent {
     }
   ];
 
-  onClick(item) {
+  onClick(item: MenuItem) {
     item.expanded = !item.expanded;
   }
 }

@@ -11,8 +11,8 @@
 })
 
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckboxGroupInheritanceExampleComponent</span> </span>{
-  <span class="hljs-keyword">public</span> optionsForm: FormGroup;
-  <span class="hljs-keyword">public</span> myFormGroup: FormGroup;
+  <span class="hljs-keyword">public</span> optionsForm!: FormGroup;
+  <span class="hljs-keyword">public</span> myFormGroup!: FormGroup;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
     <span class="hljs-built_in">this</span>.createForm();
@@ -34,19 +34,19 @@
 
   <span class="hljs-function"><span class="hljs-title">toggleDisabled</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-keyword">const</span> checkboxGroup = <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>);
-    <span class="hljs-keyword">if</span> (checkboxGroup.disabled) {
-      <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>).enable();
+    <span class="hljs-keyword">if</span> (checkboxGroup?.disabled) {
+      <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>)?.enable();
     } <span class="hljs-keyword">else</span> {
-      <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>).disable();
+      <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>)?.disable();
     }
   }
 
   <span class="hljs-function"><span class="hljs-title">toggleRequired</span>(<span class="hljs-params"></span>)</span> {
     <span class="hljs-keyword">const</span> checkboxGroup = <span class="hljs-built_in">this</span>.myFormGroup.get(<span class="hljs-string">&#x27;terms&#x27;</span>);
-    <span class="hljs-keyword">if</span> (checkboxGroup.validator === Validators.required) {
+    <span class="hljs-keyword">if</span> (checkboxGroup?.validator === Validators.required) {
       checkboxGroup.clearValidators();
     } <span class="hljs-keyword">else</span> {
-      checkboxGroup.setValidators(Validators.required);
+      checkboxGroup?.setValidators(Validators.required);
     }
   }
 }

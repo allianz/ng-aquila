@@ -7,7 +7,7 @@
 
 Form value: {{ validatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
 Testform: {{ validatedMaskForm.status | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-Validation errors: {{ validatedMaskForm.get(&#x27;maskInput&#x27;).errors | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Validation errors: {{ validatedMaskForm.get(&#x27;maskInput&#x27;)?.errors | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Try to enter some test IBANs:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>

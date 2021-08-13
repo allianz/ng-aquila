@@ -31,7 +31,7 @@ export class TabsNavBarWithIndicatorExampleComponent {
 
   currentLink = this.links[0];
 
-  setActiveLink(link) {
+  setActiveLink(link: any) {
     this.currentLink = link;
     this.currentLink.notification = false;
     if (this.currentLink.notificationCount) {

@@ -10,10 +10,10 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
   styleUrls: ['./modal-data-injection-example.css']
 })
 export class ModalDataInjectionExampleComponent {
-  @ViewChild('template') templateRef: TemplateRef<any>;
-  actionResult: string;
+  @ViewChild('template') templateRef!: TemplateRef<any>;
+  actionResult!: string;
 
-  dialogRef: NxModalRef<any, any>;
+  dialogRef!: NxModalRef<any, any>;
 
   constructor(public dialogService: NxDialogService) {
   }

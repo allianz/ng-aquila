@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CodeInputTypeExampleComponent implements OnInit {
   inputValue: string = '';
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   ngOnInit() {
     this.codeForm = new FormGroup({

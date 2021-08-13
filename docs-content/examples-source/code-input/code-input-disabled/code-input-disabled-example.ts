@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class CodeInputDisabledExampleComponent implements OnInit {
   inputValue: string = '';
-  codeForm: FormGroup;
+  codeForm!: FormGroup;
 
   ngOnInit() {
     this.codeForm = new FormGroup({
@@ -34,10 +34,10 @@ export class CodeInputDisabledExampleComponent implements OnInit {
   }
 
   toggleDisabled() {
-    if (this.keyCode.disabled) {
+    if (this.keyCode?.disabled) {
       this.keyCode.enable();
     } else {
-      this.keyCode.disable();
+      this.keyCode?.disable();
     }
   }
 }

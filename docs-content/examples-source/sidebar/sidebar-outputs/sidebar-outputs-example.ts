@@ -2,13 +2,17 @@ import { Component } from '@angular/core';
 import { NxTreeFlatDataSource, NxFlatTreeControl, NxTreeNode, NxFlatTreeNode } from '@aposin/ng-aquila/tree';
 import { Observable, of } from 'rxjs';
 
+interface Query {
+  a: string;
+}
+
 /**
   This interface defines a single node of the trees data structure.
 */
 export interface MyTreeNode extends NxTreeNode {
   label: string;
   icon?: string;
-  query?: any;
+  query?: Query;
   children?: MyTreeNode[];
 }
 
@@ -16,7 +20,7 @@ export interface MyTreeNode extends NxTreeNode {
 interface MyFlatTreeNode extends NxFlatTreeNode {
   label: string;
   icon?: string;
-  query?: any;
+  query?: Query;
 }
 
 /**
@@ -99,8 +103,8 @@ export class SidebarOutputsExampleComponent {
 
   _treeControl: NxFlatTreeControl<MyFlatTreeNode>;
 
-  logMessage: string;
-  messages = [];
+  logMessage!: string;
+  messages: Array<string> = [];
 
   constructor() {
     this._treeControl = new NxFlatTreeControl();
@@ -109,7 +113,7 @@ export class SidebarOutputsExampleComponent {
 
   _hasChild = (_: number, node: NxFlatTreeNode) => node.expandable;
 
-  log(value) {
+  log(value: number) {
     this.messages.push('New width value: ' + value);
     this.logMessage = this.messages.join('\n');
   }

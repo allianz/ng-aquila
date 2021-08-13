@@ -10,13 +10,13 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
   styleUrls: ['./formfield-expert-error-example.css']
 })
 export class FormfieldExpertErrorExampleComponent implements AfterContentInit {
-  @ViewChild('exampleErrorNgModel', { static: true }) exampleErrorNgModel: NxInputDirective;
-  @ViewChild('exampleErrorWithHintNgModel', { static: true }) exampleErrorWithHintNgModel: NxInputDirective;
-  public valueError;
-  public valueErrorWithHint;
+  @ViewChild('exampleErrorNgModel', { static: true }) exampleErrorNgModel!: NxInputDirective;
+  @ViewChild('exampleErrorWithHintNgModel', { static: true }) exampleErrorWithHintNgModel!: NxInputDirective;
+  public valueError!: string;
+  public valueErrorWithHint!: string;
 
   ngAfterContentInit() {
-    this.exampleErrorNgModel.ngControl.control.markAsTouched();
-    this.exampleErrorWithHintNgModel.ngControl.control.markAsTouched();
+    this.exampleErrorNgModel.ngControl.control?.markAsTouched();
+    this.exampleErrorWithHintNgModel.ngControl.control?.markAsTouched();
   }
 }

@@ -14,9 +14,9 @@ import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
 })
 export class ContextMenuProgrammaticExampleComponent {
   @ViewChild(NxContextMenuTriggerDirective)
-  trigger: NxContextMenuTriggerDirective;
+  trigger!: NxContextMenuTriggerDirective;
 
-  openContextMenu($event) {
+  openContextMenu($event: Event) {
     $event.preventDefault();
     this.trigger.toggleContextMenu();
   }

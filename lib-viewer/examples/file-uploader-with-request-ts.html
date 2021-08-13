@@ -16,7 +16,7 @@
   <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-with-request-example.css&#x27;</span>]
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderWithRequestExampleComponent</span> </span>{
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>,  { <span class="hljs-attr">static</span>: <span class="hljs-literal">false</span> }) documentUpload: NxFileUploaderComponent;
+  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;documentUpload&#x27;</span>,  { <span class="hljs-attr">static</span>: <span class="hljs-literal">false</span> }) documentUpload!: NxFileUploaderComponent;
   <span class="hljs-keyword">public</span> showUploadError: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
   <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
@@ -36,7 +36,7 @@
     <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
       <span class="hljs-keyword">if</span> (!fileItem.isUploaded) {
         fileItem.setUploadingState();
-        formData.append(<span class="hljs-string">&#x27;uploads[]&#x27;</span>, fileItem.file, fileItem.name);
+        formData.append(<span class="hljs-string">&#x27;uploads[]&#x27;</span>, fileItem.file <span class="hljs-keyword">as</span> Blob, fileItem.name);
       }
     });
 
@@ -48,13 +48,13 @@
 
     <span class="hljs-built_in">this</span>.http.post(url, formData, options).subscribe(
       <span class="hljs-function"><span class="hljs-params">data</span> =&gt;</span> {
-        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value!.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           fileItem.setUploadedState();
         });
         <span class="hljs-built_in">this</span>.messageToastService.open(<span class="hljs-string">&#x27;All files were uploaded successfully!&#x27;</span>, myCustomConfig);
       },
       <span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
-        <span class="hljs-built_in">this</span>.documentUpload.value.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
+        <span class="hljs-built_in">this</span>.documentUpload.value!.forEach(<span class="hljs-function">(<span class="hljs-params">fileItem: FileItem</span>) =&gt;</span> {
           <span class="hljs-keyword">if</span> (!fileItem.isUploaded) {
             fileItem.setErrorState();
           }

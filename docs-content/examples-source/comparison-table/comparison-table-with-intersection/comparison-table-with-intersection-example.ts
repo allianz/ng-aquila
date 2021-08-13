@@ -8,7 +8,7 @@ import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
   styleUrls: ['./comparison-table-with-intersection-example.css']
 })
 export class ComparisonTableWithIntersectionExampleComponent {
-  showOverviewSeparately: boolean;
+  showOverviewSeparately: boolean = false;
 
   constructor(
     private viewportService: NxViewportService

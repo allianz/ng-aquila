@@ -74,7 +74,8 @@ export class TableSortingExampleComponent {
    * Sorts the table data by a certain category.
    */
   sortTable(sort: SortEvent) {
-    this.tableElements = this.tableElements.sort((a, b) => {
+    this.tableElements = this.tableElements
+      .sort((a: { [key: string]: any }, b: { [key: string]: any} ) => {
       if (sort.active in a && sort.active in b) {
         return this.compare(a[sort.active], b[sort.active], sort.direction);
       }
