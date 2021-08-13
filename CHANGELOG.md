@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [12.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v11.7.3...v12.0.0-next.0) (2021-08-09)
+
+To install this version, run `npm install @aposin/ng-aquila@next`.
+
+### Features
+
+* update to angular12 ([caded36](https://github.com/aposin/ng-aquila/commit/caded36caf4f20c285162a1e3f5f8950024170ef))
+
+### Bug Fixes
+
+* **accordion:** unify content padding ([#306](https://github.com/aposin/ng-aquila/issues/306)) ([65e46cc](https://github.com/aposin/ng-aquila/commit/65e46ccef971adc04e4e7d7efba3b6608b3e210e))
+* **progress-stepper:** cdk typings change ([c82d7f2](https://github.com/aposin/ng-aquila/commit/c82d7f20b47d833d6ea85935eeca0efb2e1c04cd))
+
+
+
 ## [11.7.3](https://github.com/aposin/ng-aquila/compare/v11.7.2...v11.7.3) (2021-07-27)
 
 ### Bug Fixes

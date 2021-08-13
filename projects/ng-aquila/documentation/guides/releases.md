@@ -3,6 +3,24 @@ title: Releases und updating
 ---
 # Releases und updating
 
+## Updating to version 12
+
+With v12, we are upgrading to [Angular 12](https://blog.angular.io/angular-v12-is-now-available-32ed51fbfd49). To update your Angular installation please check the respective [update guide](https://angular.io/guide/updating-to-version-12). In most cases the following command should do the update:
+
+`ng update @angular/cli @angular/core`
+
+Things to consider for the Angular version 12 update:
+* Angular12 generates new applications in strict mode by default. This introduces much more strict type-checking within templates, see more details [here](https://angular.io/guide/strict-mode). It also enables Typescript [strict mode](https://www.typescriptlang.org/tsconfig#strict) that enforces much stricter type-checking in code, as well.
+* TypeScript is updated to version [4.2](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-2.html).
+
+It should be easy to update with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+**Important:** The visual padding of the Accordion component changes with this update in accordance with the design guidelines.
+**We are not providing an automatic update for this breaking change.**
+
+
 ## Updating to version 11
 ### Breaking Changes
 

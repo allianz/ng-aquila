@@ -1,25 +1,25 @@
 {
   "name": "@aposin/ng-aquila",
-  "version": "11.7.3",
+  "version": "12.0.0-next.0",
   "repository": {
     "type": "git",
     "url": "https://www.github.com/aposin/ng-aquila.git"
   },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": "^11.0.0",
-    "@angular/common": "^11.0.0",
-    "@angular/cdk": "^11.0.0",
-    "@angular/animations": "^11.0.0",
-    "@angular/router": "^11.0.0",
-    "moment": "^2.22.2",
+    "@angular/core": "^12.2.0",
+    "@angular/common": "^12.2.0",
+    "@angular/cdk": "^12.2.0",
+    "@angular/animations": "^12.2.0",
+    "@angular/router": "^12.2.0",
+    "moment": "^2.29.1",
     "object-fit-images": "^3.2.3",
-    "iban": "^0.0.12",
-    "css-vars-ponyfill": "^2.1.2",
-    "i18n-iso-countries": "^6.7.0"
+    "iban": "^0.0.14",
+    "css-vars-ponyfill": "^2.4.6",
+    "i18n-iso-countries": "^6.8.0"
   },
   "dependencies": {
-    "decimal.js": "^10.0.1"
+    "decimal.js": "^10.3.1"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {
