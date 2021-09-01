@@ -195,6 +195,6 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
 
     const label = step.stepLabel || step.label;
 
-    return `${this.currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}`;
+    return this.currentStepLabel && label ? `${this.currentStepLabel} ${this.selectedIndex + 1}/${this.count}: ${label}` : '';
   }
 }
