@@ -1,7 +1,7 @@
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { Component, Type, ViewChild, Directive, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { NxPopoverTriggerDirective } from './popover-trigger.directive';
 import { NxPopoverComponent } from './popover.component';
@@ -9,6 +9,7 @@ import { NxPopoverModule } from './popover.module';
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { By } from '@angular/platform-browser';
+import { NxPopoverIntl } from './popover-intl';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
@@ -68,7 +69,8 @@ describe('NxPopoverTriggerDirective', () => {
         ClickOnDocument,
         ScrollablePopover,
         PopoverWithinRTLContainer,
-        PopoverClickShadowDomComponent
+        PopoverClickShadowDomComponent,
+        I18nTest
       ]
     });
 
@@ -528,6 +530,15 @@ describe('NxPopoverTriggerDirective', () => {
     }));
   });
 
+  describe('i18n', () => {
+    it('should change the dropdown top label via provider', fakeAsync(() => {
+      createTestComponent(I18nTest);
+      click();
+      const closeIcon = overlayContainer.getContainerElement().querySelector('.nx-popover__close-icon') as Element;
+      expect(closeIcon.getAttribute('aria-label')).toBe('custom close label');
+    }));
+  });
+
   describe('fallbacks', () => {
 
     it('should support fallback position', fakeAsync(() => {
@@ -859,3 +870,13 @@ class ScrollablePopover extends PopoverTest {}
 class PopoverWithinRTLContainer extends PopoverTest {
   direction = 'rtl';
 }
+
+@Component({
+  template: `
+  <button [nxPopoverTriggerFor]="popover"></button>
+  <nx-popover #popover></nx-popover>`,
+  providers: [{
+    provide: NxPopoverIntl, useValue: { closeIconLabel: 'custom close label', changes: new Subject() }
+  }]
+})
+class I18nTest extends PopoverTest {}

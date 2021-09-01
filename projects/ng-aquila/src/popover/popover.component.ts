@@ -1,11 +1,11 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   EventEmitter,
   OnDestroy,
-  Optional,
+  OnInit,
   Output,
   TemplateRef,
   ViewChild
@@ -13,6 +13,8 @@ import {
 import { Subject } from 'rxjs';
 import {NxPopoverContentDirective} from './popover-content';
 import {ENTER, SPACE} from '@angular/cdk/keycodes';
+import { NxPopoverIntl } from './popover-intl';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'nx-popover',
@@ -21,7 +23,9 @@ import {ENTER, SPACE} from '@angular/cdk/keycodes';
   styleUrls: ['./popover.component.scss'],
   exportAs: 'nxPopover'
 })
-export class NxPopoverComponent implements OnDestroy {
+export class NxPopoverComponent implements OnDestroy, OnInit {
+  private _destroyed = new Subject();
+
   /** @docs-private */
   @ViewChild(TemplateRef)
   templateRef!: TemplateRef<any>;
@@ -48,19 +52,27 @@ export class NxPopoverComponent implements OnDestroy {
   /** @docs-private */
   arrowStyle = {};
 
-  /** The text direction of the containing app. */
-  get dir(): Direction {
-    return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+  constructor(
+    public _intl: NxPopoverIntl,
+    private _changeDetectorRef: ChangeDetectorRef) {
   }
 
-  constructor(@Optional() private _dir: Directionality) {}
+  ngOnInit() {
+    this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
+      this._changeDetectorRef.markForCheck();
+    });
+  }
 
   ngOnDestroy() {
     this.closed.complete();
+    this._destroyed.next();
+    this._destroyed.complete();
   }
 
-  // emit to notify the popover trigger directive that the close button was clicked
-  /** @docs-private */
+  /**
+   * Emits event to notify the popover trigger directive that the close button was clicked.
+   * @docs-private
+   */
   emitCloseButtonClick() {
     this.closeButtonClick.next();
   }

@@ -5,6 +5,7 @@ import {NxPopoverContentDirective} from './popover-content';
 import {OverlayModule} from '@angular/cdk/overlay';
 import {CommonModule} from '@angular/common';
 import {NxIconModule} from '@aposin/ng-aquila/icon';
+import { NxPopoverIntl } from './popover-intl';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {NxIconModule} from '@aposin/ng-aquila/icon';
     NxPopoverTriggerDirective,
     NxPopoverComponent,
     NxPopoverContentDirective
-  ]
+  ],
+  providers: [NxPopoverIntl],
 })
 export class NxPopoverModule {
 

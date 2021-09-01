@@ -83,6 +83,12 @@ Please note that the popover with hover is only suitable for optional informatio
 
 <!-- example(popover-hover) -->
 
+## Internationalization
+
+To set different translations of the countries and to change texts like the close icon aria label you can set these via the `NxPopoverIntl` class provider.
+
+<!-- example(popover-i18n) -->
+
 ### Accessibility
 
 The assigned trigger will always receive `aria-describedby` property to point screenreaders to the related content in the popover.
