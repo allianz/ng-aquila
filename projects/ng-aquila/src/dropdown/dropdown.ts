@@ -72,24 +72,6 @@ export class NxDropdownSelectChange<T = any> {
     public value: T) { }
 }
 
-function getPositions(): ConnectionPositionPair[] {
-  return [{
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'top'
-  }, {
-    originX: 'start',
-    originY: 'center',
-    overlayX: 'start',
-    overlayY: 'center'
-  }, {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'bottom'
-  }];
-}
 @Component({
   selector: 'nx-dropdown',
   templateUrl: 'dropdown.html',
@@ -139,6 +121,38 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /** Whether or not the overlay panel is open. */
   private _panelOpen = false;
+
+  private _defaultPositions: ConnectionPositionPair[] = [{
+    originX: 'start',
+    originY: 'top',
+    overlayX: 'start',
+    overlayY: 'top'
+  }, {
+    originX: 'start',
+    originY: 'center',
+    overlayX: 'start',
+    overlayY: 'center'
+  }, {
+    originX: 'start',
+    originY: 'bottom',
+    overlayX: 'start',
+    overlayY: 'bottom'
+  }];
+
+  private _outlinePositions: ConnectionPositionPair[] = [{
+    originX: 'start',
+    originY: 'bottom',
+    overlayX: 'start',
+    overlayY: 'top',
+    offsetY: 8
+  },
+  {
+    originX: 'start',
+    originY: 'top',
+    overlayX: 'start',
+    overlayY: 'bottom',
+    offsetY: -8
+  }];
 
   /** @docs-private */
   errorState: boolean = false;
@@ -297,7 +311,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
    * the trigger completely). If the panel cannot fit below the trigger, it
    * will fall back to a position above the trigger.
    */
-  _positions: ConnectionPositionPair[];
+  get _positions(): ConnectionPositionPair[] {
+    return this._isInOutlineField ? this._outlinePositions : this._defaultPositions;
+  }
 
   /**
    * @docs-private
@@ -367,6 +383,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /** @docs-private */
   get label(): string {
+    if (this._isInOutlineField) {
+      return '';
+    }
+
     return this.overlayLabel ? this.overlayLabel : (this.formFieldComponent ? this.formFieldComponent.label : '');
   }
 
@@ -453,7 +473,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       this.ngControl.valueAccessor = this;
     }
 
-    this._positions = getPositions();
     this.tabIndex = parseInt(tabIndex, 10) || 0;
   }
 
@@ -696,9 +715,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /** Adds a offset to the overlay position, so the formfield label and the dropdown panel header are vertically aligned. */
   private _updatePositionOffset() {
+    if (this._isInOutlineField) {
+      return;
+    }
+
     let offset = 0;
 
-    if (this.formFieldComponent !== null) {
+    if (this.formFieldComponent) {
       const formFieldRect = this.formFieldComponent.elementRef.nativeElement.getBoundingClientRect();
       const dropdownRect = this._elementRef.nativeElement.getBoundingClientRect();
       const panelHeader = this.overlayDir.overlayRef.overlayElement.querySelector('.nx-dropdown__panel-header');
@@ -706,7 +729,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       offset = formFieldRect.top - dropdownRect.top - panelHeaderPaddingTop;
     }
 
-    this._positions[0].offsetY = offset;
+    this._defaultPositions[0].offsetY = offset;
   }
 
   /** Focuses the select element. */

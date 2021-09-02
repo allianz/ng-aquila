@@ -59,10 +59,6 @@ $dropdown-border-size: nx-border-size(xs);
   }
 
   &--in-outline-field {
-    .nx-dropdown__panel-header {
-      @include type-style(formfield-outline-label);
-    }
-
     .nx-dropdown__panel-body {
       // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
       max-height: calc(6 * (#{v(dropdown-item-outline-line-height)} + 16px) + 16px);
