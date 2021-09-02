@@ -204,7 +204,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     return this._accept;
   }
 
-  /** The max file size in Kb used for validation */
+  /** The max file size in bytes used for validation */
   @Input()
   set maxFileSize(value: number) {
     this._maxFileSize = coerceNumberProperty(value);
