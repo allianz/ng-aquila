@@ -100,23 +100,11 @@
     }
   }
 
-  label:active {
-    background: var(--selectable-card-expert-background-active-color);
-
-    .checkmark {
-      color: var(--selectable-card-icon-color);
-    }
-  }
-
   input:checked + label {
     background: var(--selectable-card-expert-background-selected-color);
 
     &:hover {
       background: var(--selectable-card-expert-background-selected-hover-color);
-    }
-
-    &:active {
-      background: var(--selectable-card-expert-background-selected-active-color);
     }
   }
 }
@@ -164,8 +152,7 @@ label {
   border-radius: var(--selectable-card-border-radius);
   background: var(--selectable-card-background-color);
 
-  &:hover,
-  &:active {
+  &:hover {
     background: var(--selectable-card-background-hover-color);
     border-color: var(--selectable-card-border-hover-color);
   }
@@ -194,8 +181,7 @@ label {
     opacity: 40%;
   }
 
-  label:hover,
-  label:active {
+  label:hover {
     background: var(--selectable-card-background-disabled-color);
 
     .checkmark {
