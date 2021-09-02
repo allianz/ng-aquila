@@ -293,6 +293,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
     if (newState !== oldState) {
       this._errorState = newState;
+      this._changeDetectorRef.markForCheck();
     }
   }
 
