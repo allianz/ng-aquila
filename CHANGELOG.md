@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [12.0.0](https://github.com/aposin/ng-aquila/compare/v12.0.0-next.0...v12.0.0) (2021-09-02)
+
+We are officially releasing version 12 that is based on Angular12. For updating please see our update guide: https://aposin.github.io/ng-aquila/guides/releases
+
+### Bug Fixes
+
+* **accordion:** adjust expert body padding ([cb6d6f5](https://github.com/aposin/ng-aquila/commit/cb6d6f5929abc3eed21d77d8504528d1af08d7cd))
+* **selectable-card:** error state change ([b06db80](https://github.com/aposin/ng-aquila/commit/b06db80a79fdfb89ebc263529c46af7ceb3f3011))
+* **selectable-card:** remove expert active style ([f7e2f10](https://github.com/aposin/ng-aquila/commit/f7e2f1017fe25e2a250403f4188ce5d7048a8441))
+* **small-stage:** image alignment ([afc2cdc](https://github.com/aposin/ng-aquila/commit/afc2cdce6f66f0ba146278fef654ed7820c36404))
+
+
+### Features
+
+* **popover:** add i18n for close icon aria label ([92cb031](https://github.com/aposin/ng-aquila/commit/92cb03100e8c05d8d953c6ad220b85d5166c9cb0))
+* **dropdown:** adapt new expert styling ([edf2389](https://github.com/aposin/ng-aquila/commit/edf238910049398c4500eda6921ba7605a0ac73a))
+* **progress-stepper:** hide labels in mobile view when undefined ([bfedc4b](https://github.com/aposin/ng-aquila/commit/bfedc4be4a3542049e8370e39c3e4c30d607774c))
+
+
+
 # [12.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v11.7.3...v12.0.0-next.0) (2021-08-09)
 
 To install this version, run `npm install @aposin/ng-aquila@next`.
