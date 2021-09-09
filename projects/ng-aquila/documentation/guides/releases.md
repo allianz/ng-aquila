@@ -128,6 +128,8 @@ Our release strategy is naturally synchronized with [Angular's](https://github.c
 |------------------------|-----------------|----------------------|------------------|
 | September 2020         | 10              | 10                   | December 2021    |
 | January 2021           | 11              | 11                   | May 2022         |
+| September 2021         | 12              | 12                   | November2022     |
 
+Angular NDBX versions 9 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
