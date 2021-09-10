@@ -1,0 +1,10 @@
+<div nxLayout="grid maxwidth">
+  <div nxRow>
+    <div nxCol="12,12,10,6" nxColOffset="0,0,1,3">
+      <nx-formfield nxLabel="License Plate">
+        <input nxInput nxLicensePlate="other" [(ngModel)]="value" />
+        <nx-error nxFormfieldError>Please enter a license plate number.</nx-error>
+      </nx-formfield>
+    </div>
+  </div>
+</div>

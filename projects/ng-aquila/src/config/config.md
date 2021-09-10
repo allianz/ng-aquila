@@ -22,6 +22,7 @@ When imported, this module sets the injection tokens for a bunch of components. 
 - **SelectableCard**: `[appearance]` is set to `"expert"` (see [here](./documentation/card/overview#expert%253A-appearance)).
 - **SmallStage**: `[appearance]` is set to `"expert"` (see [here](./documentation/small-stage/overview#expert-specifics)).
 - **CircleToggle**: `[appearance]` is set to `"expert"` and `[responsive]` to `"false"` for the CircleToggleGroup component (see [here](./documentation/circle-toggle/overview#expert%253A-appearance)).
+- **LicencePlate:** `[appearance]` is set to `"outline"` and `nxFloatLabel` to `"always"` (see [here](./documentation/licence-plate/overview#expert)).
 
 If you use this module, you don't need to set these configurations explicitly for every component in your template anymore. This means instead of using the expert properties for the component `<nx-formfield nxFloatLabel="always" appearance="outline">` you only need to write `<nx-formfield>...</nx-formfield>` and `nxFloatLabel`, `appearance` are set for you automatically.
 

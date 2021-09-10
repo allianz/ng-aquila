@@ -21,7 +21,7 @@ import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
 import { NxFormfieldErrorDirective } from './error.directive';
 import { NxFormfieldControl } from './formfield-control';
-import { Subscription } from 'rxjs';
+import { merge, Subscription } from 'rxjs';
 import { NxFormfieldSuffixDirective } from './suffix.directive';
 import { NxFormfieldPrefixDirective } from './prefix.directive';
 import { NxFormfieldAppendixDirective } from './appendix.directive';
@@ -77,7 +77,7 @@ export type AppearanceType = 'outline' | 'auto';
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
   private _styles: string = '';
-  private _subscriptions: Subscription[] = [];
+  private _subscriptions: Subscription = new Subscription();
 
   /** Html id of the formfield label */
   readonly labelId: string = `nx-formfield-label-${nextUniqueId++}`;
@@ -178,7 +178,6 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
   ngAfterContentInit() {
     let subscription;
-    const subscriptions = [];
 
     this._validateControlChild();
 
@@ -194,13 +193,20 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
       });
     });
 
-    subscriptions.push(subscription);
+    this._subscriptions.add(subscription);
 
-    // Re-validate when the number of hints changes.
-    subscription = this._hintChildren.changes.pipe(startWith(null)).subscribe(() => {
-      this._changeDetectorRef.markForCheck();
-    });
-    subscriptions.push(subscription);
+    subscription = merge(
+        this._hintChildren.changes,
+        this._appendixChildren.changes,
+        this._prefixChildren.changes,
+        this._suffixChildren.changes,
+      )
+      .pipe(startWith(null))
+      .subscribe(() => {
+        this._changeDetectorRef.markForCheck();
+      });
+
+    this._subscriptions.add(subscription);
 
     // Update the aria-described by when the number of errors changes.
     subscription = this._errorChildren.changes.pipe(startWith(null)).subscribe(() => {
@@ -209,9 +215,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         this._changeDetectorRef.markForCheck();
       });
     });
-    subscriptions.push(subscription);
-
-    this._subscriptions = subscriptions;
+    this._subscriptions.add(subscription);
   }
 
   ngAfterContentChecked() {
@@ -219,7 +223,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
   }
 
   ngOnDestroy() {
-    this._subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
+    this._subscriptions.unsubscribe();
   }
 
   /** @docs-private */

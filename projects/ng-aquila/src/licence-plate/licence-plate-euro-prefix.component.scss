@@ -1,0 +1,30 @@
+@import "../shared-styles/index";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  overflow: hidden;
+  color: v(--negative);
+  background-color: #003399; // european union blue
+  height: 100%;
+  min-width: nx-spacer(m);
+  max-width: nx-spacer(3m);
+  border-radius: nx-border-radius(s);
+  padding: 0 nx-spacer(3xs);
+  @include type-style(paragraph-03);
+  color: v(text-01);
+}
+
+:host(.has-outline) {
+  margin-left: -7px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+:host(.is-disabled) {
+  -webkit-text-fill-color: v(negative);
+  color: v(negative);
+  background-color: v(formfield-disabled-border-color);
+}

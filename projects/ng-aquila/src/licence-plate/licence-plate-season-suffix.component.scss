@@ -1,0 +1,30 @@
+@import "../shared-styles/index";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include type-style(paragraph-05);
+  line-height: 14px;
+  color: v(text-01);
+}
+
+span {
+  width: 14px;
+}
+
+span:first-child {
+  border-bottom: nx-border-size(xs) solid;
+}
+
+:host(.has-outline) {
+  @include type-style(paragraph-04);
+  line-height: 16px;
+}
+
+:host(.is-disabled) {
+  span {
+    border-color: v(formfield-disabled-border-color);
+  }
+}
