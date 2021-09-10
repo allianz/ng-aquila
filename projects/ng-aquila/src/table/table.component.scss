@@ -151,7 +151,7 @@ $sticky-shadow-size: nx-spacer(m);
   }
 }
 
-:host(.nx-table--zebra) ::ng-deep {
+:host(.nx-table--zebra) ::ng-deep tbody {
   .nx-expandable-table-row {
     &:nth-child(4n) {
       @include var(background, zebra-table-even-row-background-color);
