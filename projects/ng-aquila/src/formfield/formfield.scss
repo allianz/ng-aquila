@@ -305,6 +305,7 @@ $outline-padding: 7px;
   .nx-formfield__input textarea.nx-input {
     line-height: nx-line-height(2xs);
     padding: $outline-padding;
+    min-height: v(formfield-outline-control-line-height);
   }
 
   .nx-formfield__appendix {
@@ -510,6 +511,8 @@ $outline-padding: 7px;
 
 .nx-formfield__input textarea.nx-input {
   vertical-align: bottom;
+  min-height: v(formfield-control-line-height);
+  resize: vertical;
 }
 
 // HIGH CONTRAST
@@ -523,7 +526,7 @@ $outline-padding: 7px;
   .nx-formfield.has-error:not(.nx-formfield--negative) .nx-formfield__input-container {
     border-bottom-color: buttonText;
   }
-  
+
 
   .nx-formfield.has-outline {
     .nx-formfield__input-container {

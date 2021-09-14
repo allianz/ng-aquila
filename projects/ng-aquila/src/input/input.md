@@ -27,7 +27,7 @@ Most of the native input field types are supported. You are not allowed to use n
 <!-- example(input) -->
 
 #### Textarea Autoresize
-You can resize `<textarea>` elements by using the `cdkTextareaAutosize` directive from CDK.
+You can resize `<textarea>` elements by using the `cdkTextareaAutosize` directive from the CDK `@angular/cdk/text-field` module.
 More information on this directive can be found [here](https://material.angular.io/cdk/text-field/overview#automatically-resizing-a-code-lt-textarea-gt-code-).
 
 <!-- example(input-autoresize) -->

@@ -8,6 +8,7 @@ import { InputStandaloneExampleComponent } from './input-standalone/input-standa
 import { InputTemplateDrivenExampleComponent } from './input-template-driven/input-template-driven-example';
 import { InputWithoutFormfieldExampleComponent } from './input-without-formfield/input-without-formfield-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
+ import { TextFieldModule } from '@angular/cdk/text-field';
 
 const EXAMPLES = [
   InputExampleComponent,
@@ -19,22 +20,19 @@ const EXAMPLES = [
 ];
 
  @NgModule({
-  imports: [
-    NxInputModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
-})
-export class InputExamplesModule {
-  static components() {
-    return {
-      'input': InputExampleComponent,
-      'input-autoresize': InputAutoresizeExampleComponent,
-      'input-reactive': InputReactiveExampleComponent,
-      'input-standalone': InputStandaloneExampleComponent,
-      'input-template-driven': InputTemplateDrivenExampleComponent,
-      'input-without-formfield': InputWithoutFormfieldExampleComponent,
-    };
-  }
-}
+   imports: [NxInputModule, ExamplesSharedModule, TextFieldModule],
+   declarations: [EXAMPLES],
+   exports: [EXAMPLES],
+ })
+ export class InputExamplesModule {
+   static components() {
+     return {
+       input: InputExampleComponent,
+       'input-autoresize': InputAutoresizeExampleComponent,
+       'input-reactive': InputReactiveExampleComponent,
+       'input-standalone': InputStandaloneExampleComponent,
+       'input-template-driven': InputTemplateDrivenExampleComponent,
+       'input-without-formfield': InputWithoutFormfieldExampleComponent,
+     };
+   }
+ }
