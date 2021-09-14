@@ -1,28 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ThemeSwitcherService } from '../documentation/theme-switcher/theme-switcher.service';
 import { Location } from '@angular/common';
+
+type ExampleBackgroundType = '' | 'blank';
 
 @Component({
   templateUrl: './example-full-screen.component.html',
   styleUrls: ['./example-full-screen.component.scss']
 })
-export class ExampleFullScreenComponent implements OnInit {
+export class ExampleFullScreenComponent {
 
-  example!: string;
+  example: string;
+
+  showNav: boolean = true;
+
+  @HostBinding('class')
+  background: ExampleBackgroundType = '';
 
   constructor(
-    private _route: ActivatedRoute,
-    private _themeSwitcherService: ThemeSwitcherService,
-    public _location: Location) {}
+    _route: ActivatedRoute,
+    _themeSwitcherService: ThemeSwitcherService,
+    public _location: Location) {
 
-  ngOnInit() {
-    const routeSnapshot = this._route.snapshot;
-    const themeName = routeSnapshot.queryParamMap.get('theme');
+    const routeSnapshot = _route.snapshot;
     this.example = routeSnapshot.params.id;
-    const selectedTheme = this._themeSwitcherService.get(themeName as string);
+
+    if (routeSnapshot.queryParamMap.has('nav')) {
+      this.showNav = routeSnapshot.queryParamMap.get('nav') === 'true';
+    }
+
+    if (routeSnapshot.queryParamMap.has('bg')) {
+      this.background = routeSnapshot.queryParamMap.get('bg') as ExampleBackgroundType;
+    }
+
+    const themeName = routeSnapshot.queryParamMap.get('theme');
+    const selectedTheme = _themeSwitcherService.get(themeName as string);
     if (selectedTheme) {
-      this._themeSwitcherService.switchTheme(selectedTheme);
+      _themeSwitcherService.switchTheme(selectedTheme);
     }
   }
 }

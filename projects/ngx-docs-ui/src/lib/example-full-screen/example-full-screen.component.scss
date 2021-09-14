@@ -13,7 +13,7 @@
     linear-gradient(-45deg, transparent 75%, v(documentation-fullscreen-background-02) 75%);
   background-size: 16px 16px;
   background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
-
+  
   .example-fullscreen__navigation-container {
     background: var(--header-background-color);
     border-bottom: 1px solid var(--header-border-color);
@@ -24,4 +24,8 @@
       margin: 8px;
     }
   }
+}
+
+:host(.blank) {
+  background: v(ui-01);
 }
