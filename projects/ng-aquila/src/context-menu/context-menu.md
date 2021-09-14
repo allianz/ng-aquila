@@ -63,6 +63,8 @@ When using lazy rendering, additional context data can be passed to the context 
 
 By default scroll strategy of the context `reposition`, which lets the menu stay open and reposition itself when scrolling. To close the context menu on scroll, the scroll strategy can be set to `close`.
 
+To use a custom scroll container instead of the body element, [add cdkScrollable to the container element](./documentation/popover/overview#cdkscrollable)
+
 <!-- example(context-menu-scroll-strategy) -->
 
 ### Keyboard interaction

@@ -75,12 +75,6 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage ("View Engine Build Library") {
-    shared.withNotification('ci/build/library/ve', "VE Build library") {
-      sh "npm run build:lib"
-    }
-  }
-
   stage ("Build documentation with Ivy artefacts") {
     echo "Running integration builds"
 
@@ -131,6 +125,12 @@ node('nodejs-with-browsers-latest') {
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --no-progress"
+    }
+  }
+
+  stage ("View Engine Build Library") {
+    shared.withNotification('ci/build/library/ve', "VE Build library") {
+      sh "npm run build:lib"
     }
   }
 }
