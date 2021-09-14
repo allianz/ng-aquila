@@ -299,17 +299,18 @@ export class NxPhoneInputComponent implements
     this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
   }
 
-  _onInput(event: Event) {
+  _onInput() {
     this.updateModel();
   }
 
   updateModel() {
-    let number = (this._inputValue && this._trimInputValue(this._inputValue)) || '';
-    number = this._removeLeadingZero(number);
-    if (!number) {
-      this._onChange(number);
-    } else {
+    const hasNumber = typeof this._inputValue === 'string'
+      && this._removeLeadingZero(this._trimInputValue(this._inputValue)).length > 0;
+
+    if (hasNumber) {
       this._onChange(this.getModelValue());
+    } else {
+      this._onChange('');
     }
   }
 
@@ -318,7 +319,7 @@ export class NxPhoneInputComponent implements
   }
 
   private _removeLeadingZero(value: string) {
-    return value[0] && value[0] === '0' ? value.slice(1) : value;
+    return value.replace(/^0/, '');
   }
 
   /** Returns the combined string of selected calling code + input number */
