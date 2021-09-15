@@ -139,7 +139,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
   }
 
   ngOnDestroy() {
-    this._linkElements.forEach(link => this._focusMonitor.stopMonitoring(link));
+    this._linkElements?.forEach(link => this._focusMonitor.stopMonitoring(link));
     this._dirChangeSubscription.unsubscribe();
   }
 
