@@ -86,3 +86,13 @@
 .check-icon {
   color: var(--success, #26AE31);
 }
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /** needs same dimensions as the price */
+  height: 32px;
+  margin-top: auto;
+  margin-bottom: 16px;
+}

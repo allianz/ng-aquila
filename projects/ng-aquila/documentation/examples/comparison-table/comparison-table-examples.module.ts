@@ -7,6 +7,7 @@ import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 
 import { NgModule } from '@angular/core';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
@@ -43,7 +44,8 @@ const EXAMPLES = [
     NxListModule,
     ExamplesSharedModule,
     NxAccordionModule,
-    NxContextMenuModule
+    NxContextMenuModule,
+    NxSpinnerModule
   ],
   declarations: [EXAMPLES],
   exports: [EXAMPLES]

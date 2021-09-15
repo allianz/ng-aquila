@@ -1,3 +1,9 @@
+
+<ng-template #spinner>
+  <div class="spinner">
+    <nx-spinner nxSize="medium"></nx-spinner>
+  </div>
+</ng-template>
 <div class="container">
 
   <nx-comparison-table selectedIndex="1">
@@ -18,21 +24,23 @@
       <nx-comparison-table-cell type="header">
         <div class="header-container">
           <p class="product-title">Product 1</p>
-          <p class="product-price">105,99 €</p>
+          <p class="product-price" *ngIf="!loading; else spinner">
+            105,99 €
+          </p>
           <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
         </div>
     </nx-comparison-table-cell>
       <nx-comparison-table-cell type="header">
         <div class="header-container">
           <p class="product-title">Product 2 with a very long name</p>
-          <p class="product-price">110,99 €</p>
+          <p class="product-price" *ngIf="!loading; else spinner">110,99 €</p>
           <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
         </div>
       </nx-comparison-table-cell>
       <nx-comparison-table-cell type="header">
         <div class="header-container">
           <p class="product-title">Product 3</p>
-          <p class="product-price">115,99 €</p>
+          <p class="product-price" *ngIf="!loading; else spinner"> 115,99 €</p>
           <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
         </div>
       </nx-comparison-table-cell>
@@ -98,3 +106,5 @@
   </nx-comparison-table>
 
 </div>
+
+<button (click)="reload()" [disabled]="loading" nxButton="secondary small" class="nx-margin-top-2m">Reload prices</button>
