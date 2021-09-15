@@ -110,3 +110,33 @@ Custom icons can be registered via the `NxIconRegistry` injectable service. With
 
 <!-- example(icon-registry) -->
 
+### Accessibility
+
+One important accessibility attribute for icons is `aria-label`, which is read by the screenreader when the user has focused the element.
+For standalone icons, like icon buttons or links, it is mandatory to add the `aria-label` value according to your use case. If the icon is just decorative to an already existing label it needs to be hidden from assistive technologies by adding `aria-hidden="true"` instead.
+
+- When using a variable for the `aria-label` use an attribute binding:
+
+```html
+<nx-icon [attr.aria-label]="myAriaLabelVariable"></nx-icon>
+
+```
+
+- In other cases you can simply assign the `aria-label` attribute:
+
+```html
+<nx-icon aria-label="My icon description string"></nx-icon>`
+
+```
+
+- Within an element that already has a label:
+
+```html
+  <button nxButton>
+    <nx-icon aria-hidden="true" name="plus"></nx-icon>
+    Add item
+  </button>
+```
+
+You can find more information on the `aria-label` attribute [here](https://www.w3.org/TR/wai-aria/#aria-label).
+
