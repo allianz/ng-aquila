@@ -100,10 +100,11 @@ export class NxIconComponent implements OnChanges {
       // here we fall back to the icon class so we look at the `font` input
       // or take the default font
       this._updateFontIconClasses();
+      this._clearSvgElement();
     } else {
       if (icon instanceof NxSvgIcon) {
         // add content
-        icon.getContent().pipe(take(1)).subscribe((content: SVGElement | undefined) => {
+        icon.getContent().pipe(take(1)).subscribe((content?: SVGElement) => {
           if (!content) {
             return;
           }
@@ -115,6 +116,7 @@ export class NxIconComponent implements OnChanges {
       } else {
         // here we have to look at the alias as well that could come from the registry
         this._updateFontIconClassesFromOverride(icon.alias, icon.font);
+        this._clearSvgElement();
       }
     }
   }
