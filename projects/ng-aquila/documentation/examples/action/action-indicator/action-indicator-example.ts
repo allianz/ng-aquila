@@ -15,7 +15,7 @@ type Action = {
   styleUrls: ['./action-indicator-example.css'],
   templateUrl: './action-indicator-example.html'
 })
-export class ActionIndicatorExampleComponent implements OnInit {
+export class ActionIndicatorExampleComponent {
   actions: Action[] = [
     {
       icon: 'file-text',
@@ -45,20 +45,11 @@ export class ActionIndicatorExampleComponent implements OnInit {
     }
   ];
 
-  selectedAction!: Action;
+  selectedAction: Action = this.actions[0];
 
-  ngOnInit() {
-    this.selectedAction = this.actions[0];
-  }
 
   onSelect(action: Action) {
     this.selectedAction = action;
-    if (this.selectedAction.notification) {
-      this.selectedAction.notification = false;
-    }
-    if (this.selectedAction.notificationCount) {
-      this.selectedAction.notificationCount = 0;
-    }
   }
 
   getIndicatorText(notificationCount: number) {
