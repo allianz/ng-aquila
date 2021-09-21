@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../../../ng-aquila/src/shared-styles/index";
 
 $cell-border-width: nx-border-size(xs);
@@ -6,8 +7,8 @@ $vertical-padding: nx-spacer(s);
 $condensed-vertical-padding: nx-spacer(2xs);
 $horizontal-padding: nx-spacer(s);
 $horizontal-padding-edges: nx-spacer(2xs);
-$sticky-shadow-offset: nx-spacer(s);
-$sticky-shadow-size: nx-spacer(m);
+$sticky-shadow-offset: nx-spacer(3xs);
+$sticky-shadow-size: nx-spacer(3xs);
 
 :host {
   border-spacing: 0;
@@ -304,7 +305,7 @@ $sticky-shadow-size: nx-spacer(m);
 
       &::before {
         box-shadow: $sticky-shadow-size 0 $sticky-shadow-offset
-          (-$sticky-shadow-size) v(shadow-large-color) inset;
+          (-$sticky-shadow-size) v(shadow-small-color) inset;
         right: -$sticky-shadow-size;
         width: $sticky-shadow-size;
         top: -1px;
@@ -320,7 +321,7 @@ $sticky-shadow-size: nx-spacer(m);
       &::before {
         left: -$sticky-shadow-size;
         box-shadow: -$sticky-shadow-size 0 $sticky-shadow-offset
-          (-$sticky-shadow-size) v(shadow-large-color) inset;
+          (-$sticky-shadow-size) v(shadow-small-color) inset;
       }
     }
   }
