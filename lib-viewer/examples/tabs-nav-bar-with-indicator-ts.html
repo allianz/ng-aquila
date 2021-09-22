@@ -33,10 +33,6 @@
 
   <span class="hljs-function"><span class="hljs-title">setActiveLink</span>(<span class="hljs-params">link: <span class="hljs-built_in">any</span></span>)</span> {
     <span class="hljs-built_in">this</span>.currentLink = link;
-    <span class="hljs-built_in">this</span>.currentLink.notification = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.currentLink.notificationCount) {
-      <span class="hljs-built_in">this</span>.currentLink.notificationCount = <span class="hljs-number">0</span>;
-    }
   }
 
   <span class="hljs-function"><span class="hljs-title">getAriaLabel</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {

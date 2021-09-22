@@ -134,7 +134,7 @@
   --button-large-letter-spacing: 1px;
   --shadow-small-color: rgba(0, 0, 0, 0.8);
   --shadow-large-color: rgba(0, 0, 0, 0.8);
-  --shadow-small: 0 2px 4px var(--shadow-color);
+  --shadow-small: 0 2px 4px var(--shadow-small-color);
   --shadow-large: 0 8px 24px var(--shadow-large-color);
   --accordion-regular-font-size: var(--heading-04-font-size);
   --accordion-regular-line-height: var(--heading-04-line-height);

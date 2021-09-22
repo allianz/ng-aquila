@@ -65,3 +65,27 @@ them with the icon registry.</p>
 <h3 id="register-icons-service" class="docs-markdown--h3">Register icons service</h3>
 <p class="docs-markdown--p">Custom icons can be registered via the <code>NxIconRegistry</code> injectable service. With the <code>NxIconRegistry</code> you can associate icon names with SVG, URL and HTML strings and define a CSS font class. When you are registering an icon by URL please make sure to import the <code>HttpClientModule</code> from <code>@angular/common/http</code>.</p>
 <div nx-docs-example="icon-registry" config="{}">exampleID: icon-registry</div>
+<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">One important accessibility attribute for icons is <code>aria-label</code>, which is read by the screenreader when the user has focused the element.
+For standalone icons, like icon buttons or links, it is mandatory to add the <code>aria-label</code> value according to your use case. If the icon is just decorative to an already existing label it needs to be hidden from assistive technologies by adding <code>aria-hidden=&quot;true&quot;</code> instead.</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">When using a variable for the <code>aria-label</code> use an attribute binding:</li>
+</ul>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;myAriaLabelVariable&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+
+</code></pre>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">In other cases you can simply assign the <code>aria-label</code> attribute:</li>
+</ul>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;My icon description string&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>`
+
+</code></pre>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">Within an element that already has a label:</li>
+</ul>
+<pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    Add item
+  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<p class="docs-markdown--p">You can find more information on the <code>aria-label</code> attribute <a href="https://www.w3.org/TR/wai-aria/#aria-label">here</a>.</p>

@@ -1,0 +1,29 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Licence plate seasonal (Germany)
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-seasonal-example.html&#x27;</span>,
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-seasonal-example&#x27;</span>,
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicencePlateSeasonalExampleComponent</span> </span>{
+  startMonth!: <span class="hljs-built_in">number</span>;
+  endMonth!: <span class="hljs-built_in">number</span>;
+  monthsOfYearList: { <span class="hljs-attr">month</span>: <span class="hljs-built_in">number</span>; monthName: <span class="hljs-built_in">string</span> }[] = [
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;January&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;February&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;March&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">4</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;April&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;May&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">6</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;June&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">7</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;July&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">8</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;August&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">9</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;September&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;October&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">11</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;November&#x27;</span> },
+    { <span class="hljs-attr">month</span>: <span class="hljs-number">12</span>, <span class="hljs-attr">monthName</span>: <span class="hljs-string">&#x27;December&#x27;</span> },
+  ];
+  value = <span class="hljs-string">&#x27;&#x27;</span>;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
+}

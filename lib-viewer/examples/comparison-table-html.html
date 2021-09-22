@@ -1,3 +1,9 @@
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">spinner</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;spinner&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-spinner</span> <span class="hljs-attr">nxSize</span>=<span class="hljs-string">&quot;medium&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-spinner</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
 
   <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span> <span class="hljs-attr">selectedIndex</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
@@ -18,21 +24,23 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>105,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>&gt;</span>
+            105,99 €
+          <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxComparisonTableSelectButton</span> <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span> <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 2 with a very long name<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>110,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>&gt;</span>110,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxComparisonTableSelectButton</span> <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span> <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>115,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>&gt;</span> 115,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
           <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxComparisonTableSelectButton</span> <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span> <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
@@ -98,3 +106,5 @@
   <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;reload()&quot;</span> [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;loading&quot;</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-2m&quot;</span>&gt;</span>Reload prices<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

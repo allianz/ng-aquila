@@ -33,10 +33,6 @@ export class TabsWithIndicatorExampleComponent {
 
   setSelectedTab(selectedTab: number) {
     let tab = this.tabs[selectedTab];
-    tab.notification = false;
-    if (tab.notificationCount) {
-      tab.notificationCount = 0;
-    }
   }
 
   getIndicatorText(notificationCount: number) {

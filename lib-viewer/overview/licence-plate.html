@@ -1,0 +1,45 @@
+<p class="docs-markdown--p">The licence plate module contains different components to create an input for european licence plate numbers.
+It constists of a prefix <code>&lt;nx-licence-plate-euro-prefix&gt;</code> for the european country code, a validator directive <code>nxLicencePlate</code> and a suffix <code>nx-licence-plate-season-suffix</code> for seasonal licence plates.
+The optional validator currently supports only german standard and special number formats. For other countries please use your own validation by providing a <code>pattern</code>.
+All parts are meant to be combined with the form field to create an individual input for different licence plate fromats.</p>
+<h2 id="validation-(germany)" class="docs-markdown--h2">Validation (Germany)</h2>
+<p class="docs-markdown--p">The validator directive <code>nxLicencePlate</code> provides validation for:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>de_standard</code>: german standard licence plate</li>
+<li class="docs-markdown--li"><code>de_season</code>: german seasonal licence plate</li>
+<li class="docs-markdown--li"><code>de_special</code>: german seasonal licence plate</li>
+<li class="docs-markdown--li"><code>euro</code>: choose for euro licence plate and supply your own pattern</li>
+<li class="docs-markdown--li"><code>other</code>: choose for any other licence plate and supply your own pattern</li>
+</ul>
+<p class="docs-markdown--p">Errors will be added to the control under the name <code>nxLicencePlateError</code>.</p>
+<h3 id="standard-type-(germany)" class="docs-markdown--h3">Standard type (Germany)</h3>
+<p class="docs-markdown--p">The german <code>de_standard</code> type handles the generally german licence plate, including the historical and the electric vehicle licence plates. Examples: <code>M-AB 1234</code>, <code>M-AB 1234E</code> and <code>M-AB 1234H</code>. It is recommended to use the hint feature for this component, as a format is specified.</p>
+<div nx-docs-example="licence-plate-standard" config="{}">exampleID: licence-plate-standard</div>
+<h3 id="seasonal-type-(germany)" class="docs-markdown--h3">Seasonal type (Germany)</h3>
+<p class="docs-markdown--p">The german <code>de_seasonal</code> licence plate field is identical to the standard type but shows also the start and end date of the registration. Examples: <code>M-AB 1234</code>, <code>M-AB 1234E</code> and <code>M-AB 1234H</code> with filled <code>startDate</code> and <code>endDate</code> attributes. It is recommended to use the hint feature for this component, as a format is specified.</p>
+<div nx-docs-example="licence-plate-seasonal" config="{}">exampleID: licence-plate-seasonal</div>
+<h3 id="special-type-(germany)" class="docs-markdown--h3">Special type (Germany)</h3>
+<p class="docs-markdown--p">The german <code>de_special</code> licence plate field treats specific purposes, such as military or diplomatic licence plate numbers. Examples:  <code>Y-687 548</code>, <code>B-12-345</code>, <code>0-123-1</code> and <code>0-17-1A</code>. It is recommended to use the hint feature for this component, as a format is specified.</p>
+<div nx-docs-example="licence-plate-special" config="{}">exampleID: licence-plate-special</div>
+<h2 id="additional-licence-plate-types" class="docs-markdown--h2">Additional licence plate types</h2>
+<p class="docs-markdown--p">The following licence plate types are used within an international or unknown context and provide no standard regular expression format (pattern). Please keep in mind that you need to specify your own regular expression pattern for the individual case you implement with these two types.</p>
+<h3 id="euro-type" class="docs-markdown--h3">Euro type</h3>
+<p class="docs-markdown--p">For other european countries (e.g. France and Spain) the validation can be disabled by choosing the <code>euro</code> type. This type enforces no format so you need to specify a regular expression with attribute <code>pattern</code> to specify a format for the specific country. In case you specify a pattern, it is also recommended to use the hint feature for this component to explain the format to the user.</p>
+<div nx-docs-example="licence-plate-euro" config="{}">exampleID: licence-plate-euro</div>
+<h3 id="other-type" class="docs-markdown--h3">Other type</h3>
+<p class="docs-markdown--p">The <code>other</code> type handles all unknown number formats and provides no format or nationality code. This type enforces no format so you need to specify a regular expression with attribute <code>pattern</code> to specify a format. In case you specify a pattern, it is also recommended to use the hint feature for this component to explain the format to the user.</p>
+<div nx-docs-example="licence-plate-other" config="{}">exampleID: licence-plate-other</div>
+<h2 id="ngmodel" class="docs-markdown--h2">NgModel</h2>
+<div nx-docs-example="licence-plate-ngmodel" config="{}">exampleID: licence-plate-ngmodel</div>
+<h2 id="reactive" class="docs-markdown--h2">Reactive</h2>
+<div nx-docs-example="licence-plate-reactive" config="{}">exampleID: licence-plate-reactive</div>
+<h2 id="disabled" class="docs-markdown--h2">Disabled</h2>
+<p class="docs-markdown--p">By adding the <code>disabled</code> attribute you can set the licence plate into disabled mode.</p>
+<div nx-docs-example="licence-plate-disabled" config="{}">exampleID: licence-plate-disabled</div>
+<div class="docs-expert-container">
+<h2 id="expert" class="docs-markdown--h2">Expert</h2>
+<p class="docs-markdown--p">You will automatically get the expert version of this component by using the <code>NxExpertModule</code> see the <a href="./documentation/config">Expert documentation</a>. In case you can not use this module, you need to switch the settings of the licence plate manually by using the <code>appearance</code> and <code>floatLabel</code> properties.</p>
+<div nx-docs-example="licence-plate-expert" config="{}">exampleID: licence-plate-expert</div>
+<h3 id="states" class="docs-markdown--h3">States</h3>
+<div nx-docs-example="licence-plate-expert-states" config="{}">exampleID: licence-plate-expert-states</div>
+</div>

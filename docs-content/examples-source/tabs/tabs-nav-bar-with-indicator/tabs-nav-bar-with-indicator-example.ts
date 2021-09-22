@@ -33,10 +33,6 @@ export class TabsNavBarWithIndicatorExampleComponent {
 
   setActiveLink(link: any) {
     this.currentLink = link;
-    this.currentLink.notification = false;
-    if (this.currentLink.notificationCount) {
-      this.currentLink.notificationCount = 0;
-    }
   }
 
   getAriaLabel(notificationCount: number) {

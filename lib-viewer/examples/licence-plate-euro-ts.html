@@ -1,0 +1,45 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Licence plate euro
+ */</span>
+<span class="hljs-meta">@Component</span>({
+  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;licence-plate-euro-example.html&#x27;</span>,
+  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;licence-plate-euro-example&#x27;</span>
+})
+
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicencePlateEuroExampleComponent</span> </span>{
+  <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;A&#x27;</span>;
+  countriesList: { <span class="hljs-attr">country</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-built_in">string</span> }[] = [
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Austria&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Belgium&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;BG&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Bulgaria&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;HR&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Croatia&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;CY&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Cyprus&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;CZ&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Czech Republic&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;DK&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Denmark&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;EST&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Estonia&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;FIN&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Finland&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;France&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;GR&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Greece&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;H&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Hungary&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;IRL&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Ireland&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;I&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Italy&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;LV&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Latvia&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;LT&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Lithuania&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;L&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Luxembourg&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Malta&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;NL&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Netherlands&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;N&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Norway&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;PL&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Poland&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;P&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Portugal&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;RO&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Romania&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;SK&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Slovakia&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;SLO&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Slovenia&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;E&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Spain&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;S&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Sweden&#x27;</span> },
+    { <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;UA&#x27;</span>, <span class="hljs-attr">countryName</span>: <span class="hljs-string">&#x27;Ukraine&#x27;</span> }
+  ];
+  value = <span class="hljs-string">&#x27;&#x27;</span>;
+  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
+}

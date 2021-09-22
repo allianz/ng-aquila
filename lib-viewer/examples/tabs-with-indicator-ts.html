@@ -33,10 +33,6 @@
 
   <span class="hljs-function"><span class="hljs-title">setSelectedTab</span>(<span class="hljs-params">selectedTab: <span class="hljs-built_in">number</span></span>)</span> {
     <span class="hljs-keyword">let</span> tab = <span class="hljs-built_in">this</span>.tabs[selectedTab];
-    tab.notification = <span class="hljs-literal">false</span>;
-    <span class="hljs-keyword">if</span> (tab.notificationCount) {
-      tab.notificationCount = <span class="hljs-number">0</span>;
-    }
   }
 
   <span class="hljs-function"><span class="hljs-title">getIndicatorText</span>(<span class="hljs-params">notificationCount: <span class="hljs-built_in">number</span></span>)</span> {

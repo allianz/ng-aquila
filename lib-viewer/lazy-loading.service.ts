@@ -114,6 +114,9 @@
   case 'layout': return import('../examples/layout/layout-examples.module').then(m => m.LayoutExamplesModule);
   
 
+  case 'licence-plate': return import('../examples/licence-plate/licence-plate-examples.module').then(m => m.LicencePlateExamplesModule);
+  
+
   case 'link': return import('../examples/link/link-examples.module').then(m => m.LinkExamplesModule);
   
 
