@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [12.1.0](https://github.com/aposin/ng-aquila/compare/v12.0.0...v12.1.0) (2021-09-22)
+
+
+### Bug Fixes
+
+* **formfield:** limit out of bounds resizing of textarea ([fd1edd9](https://github.com/aposin/ng-aquila/commit/fd1edd94d5280c5391387b9b61f8ff9c28c885ab))
+* **formfield:** remove label z-index ([bec95d7](https://github.com/aposin/ng-aquila/commit/bec95d709617af9777ed15b3dbfded57dfc7605f))
+* **icon:** clear svg when changing to icon font ([e322c61](https://github.com/aposin/ng-aquila/commit/e322c6129f56840b2d66a5cf075e1352472eb07c))
+* **pagination:** ondestroy check ([62eca10](https://github.com/aposin/ng-aquila/commit/62eca109f8d6ed97ee3113b3f8166c296cf2684e))
+* **phone-input:** change default dropdown label ([682f932](https://github.com/aposin/ng-aquila/commit/682f9329d269fc376b29ebce8bd9d4b2cd236a4a))
+* **phone-input:** update model when country changed ([20e2f3b](https://github.com/aposin/ng-aquila/commit/20e2f3b073268f056e2ffac94ca05bd0d101488a))
+* **table:** apply zebra color only to tbody ([8cd3006](https://github.com/aposin/ng-aquila/commit/8cd300684f98e7d94b21e3744f12767436581da6))
+* **table:** sticky column styles ([70451f6](https://github.com/aposin/ng-aquila/commit/70451f6d40d4630d2efaf532c7d47384a6e9947c))
+
+
+### Features
+
+* **licence-plate:** add component ([07594fd](https://github.com/aposin/ng-aquila/commit/07594fd5d03f3801961a85af38d09e8bd64df713))
+
+
+
 # [12.0.0](https://github.com/aposin/ng-aquila/compare/v12.0.0-next.0...v12.0.0) (2021-09-02)
 
 We are officially releasing version 12 that is based on Angular12. For updating please see our update guide: https://aposin.github.io/ng-aquila/guides/releases
