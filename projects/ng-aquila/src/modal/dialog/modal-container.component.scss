@@ -9,7 +9,7 @@ $action-bar-height: nx-spacer(2xl);
   @include var(color, modal-text-color);
   padding: nx-spacer(3m) nx-spacer(3m) nx-spacer(4m) nx-spacer(3m);
   border-radius: nx-border-radius(s);
-  box-shadow: nx-box-shadow(l);
+  box-shadow: v(shadow-large);
 
   display: block;
   position: relative;

@@ -13,7 +13,7 @@ $arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) v(shadow-gre
   @include var(color, popover-text-color);
   border: $popover-border-size solid v(popover-border-color);
   border-radius: $popover-border-radius;
-  box-shadow: nx-box-shadow(s);
+  box-shadow: v(shadow-small);
   padding: nx-spacer(m) - $popover-border-size;
   display: block;
 

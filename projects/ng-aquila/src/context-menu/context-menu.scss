@@ -11,7 +11,7 @@
   // Give the menu a minimum height so that the user can't
   // collapse it to zero when they scroll away.
   min-height: 56px;
-  box-shadow: map-get($shadows, s);
+  box-shadow: v(shadow-small);
   outline: none;
   overflow-y: auto;
 

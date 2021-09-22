@@ -52,7 +52,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   width: $handle-diameter;
   height: $handle-diameter;
   border-radius: 50%;
-  box-shadow: nx-box-shadow(s);
+  box-shadow: v(shadow-small);
   border-style: solid;
   border-width: nx-border-size(xs);
   @include var(border-color, slider-handle-border-color);
@@ -74,7 +74,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   }
 
   &:active {
-    box-shadow: nx-box-shadow(s), inset 0 0 0 4px v(slider-handle-background-color),
+    box-shadow: v(shadow-small), inset 0 0 0 4px v(slider-handle-background-color),
       inset 0 0 0 $handle-diameter v(slider-handle-active-inset-color);
     cursor: grabbing;
   }
@@ -91,7 +91,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
   border: $value-border;
   @include var(border-color, slider-handle-border-color);
   border-radius: nx-border-radius(s);
-  box-shadow: nx-box-shadow(s);
+  box-shadow: v(shadow-small);
   cursor: grab;
   height: $value-height;
   width: $value-width;

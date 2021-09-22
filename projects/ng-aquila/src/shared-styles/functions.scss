@@ -29,10 +29,6 @@
   @return map-get($font-weight, $key);
 }
 
-@function nx-box-shadow($key) {
-  @return map-get($shadows, $key);
-}
-
 // Helper for adjusting values for rtl
 // Should be used with shorthand properties accepting multiple values, i.e. margin, padding.
 // When passed a list of 4 values, returnes a list with values for right and left interchanged.

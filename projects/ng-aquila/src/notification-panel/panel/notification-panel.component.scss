@@ -8,7 +8,7 @@
     height: 100%;
     width: 400px;
     overflow-y: auto;
-    box-shadow: nx-box-shadow(l);
+    box-shadow: v(shadow-large);
     border-radius: 8px;
     &:focus {
         outline: none;

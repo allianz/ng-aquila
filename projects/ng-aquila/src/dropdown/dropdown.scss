@@ -44,7 +44,7 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 .nx-dropdown__panel {
-  box-shadow: map-get($shadows, s);
+  box-shadow: v(shadow-small);
   border-radius: $dropdown-border-radius;
   min-width: 100%;
 

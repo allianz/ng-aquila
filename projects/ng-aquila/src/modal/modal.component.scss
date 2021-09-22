@@ -50,7 +50,7 @@ $action-bar-height: nx-spacer(2xl);
 
 .nx-modal__container {
   border-radius: nx-border-radius(s);
-  box-shadow: nx-box-shadow(l);
+  box-shadow: v(shadow-large);
   @include var(background, modal-background-color);
   @include var(color, modal-text-color);
 }

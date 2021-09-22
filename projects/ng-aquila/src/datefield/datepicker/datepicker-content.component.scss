@@ -46,7 +46,7 @@ $calendar-width-mobile: calc(
   @include var(background, datefield-panel-background-color);
   display: flex;
   flex-flow: column nowrap;
-  box-shadow: nx-box-shadow(l);
+  box-shadow: v(shadow-large);
   border: $datepicker-border-width solid v(datefield-panel-border-color);
   border-radius: nx-border-radius(s);
 }

@@ -4,9 +4,9 @@
   display: block;
 
   .desktop-box {
-    background: var(--ui-01);
+    background: v(ui-01);
     width: 200px;
-    box-shadow: shadow-small;
+    box-shadow: v(shadow-small);
     border-radius: 4px;
     padding: 12px;
     text-align: center;
@@ -16,9 +16,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--interactive-primary);
-    color: var(--text-02);
-    box-shadow: shadow-small;
+    background: v(interactive-primary);
+    color: v(text-02);
+    box-shadow: v(shadow-small);
     border-radius: 50%;
     padding: 12px 0;
     height: 48px;
