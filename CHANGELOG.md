@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.1.1](https://github.com/aposin/ng-aquila/compare/v12.1.0...v12.1.1) (2021-09-30)
+
+
+### Bug Fixes
+
+* **comparison-table:** adjust checkmark color ([d218b95](https://github.com/aposin/ng-aquila/commit/d218b95ca17ba47205ed0c2808b315142c8fbba5))
+* **licence-plate:** fix prefix color ([86d1249](https://github.com/aposin/ng-aquila/commit/86d1249e2e264f59fb9e4999f3b5b00074cc7f40))
+
+
+
 # [12.1.0](https://github.com/aposin/ng-aquila/compare/v12.0.0...v12.1.0) (2021-09-22)
 
 
