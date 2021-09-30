@@ -1131,6 +1131,8 @@
   --timefield-label-line-height: var(--paragraph-05-line-height);
   --timefield-label-letter-spacing: var(--paragraph-05-letter-spacing);
   --timefield-label-font-weight: var(--paragraph-05-font-weight);
+  --licence-plate-prefix-background: #003399;
+  --licence-plate-prefix-color: var(--negative);
 }
 
 body {

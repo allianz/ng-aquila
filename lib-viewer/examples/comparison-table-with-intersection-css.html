@@ -1,6 +1,6 @@
 <span class="hljs-selector-class">.container</span> {
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-background-color, <span class="hljs-number">#0f2a3d</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-background-color);
 }
 
 <span class="hljs-selector-class">.product-title</span> {
@@ -83,13 +83,16 @@
 }
 
 <span class="hljs-selector-class">.minus-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-minus-color, <span class="hljs-number">#ada8a8</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--documentation-comparison-table-example-minus-color);
 }
 
 <span class="hljs-selector-class">.check-icon</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success, <span class="hljs-number">#26AE31</span>);
+  <span class="hljs-attribute">color</span>: <span class="hljs-built_in">var</span>(--success);
 }
 
+::ng-deep .is-selected .check-icon {
+  color: <span class="hljs-built_in">var</span>(--success-<span class="hljs-number">02</span>, --success);
+}
 <span class="hljs-selector-class">.service-lists</span> {
   <span class="hljs-attribute">display</span>: flex;
 }
@@ -99,7 +102,7 @@
 }
 
 <span class="hljs-selector-tag">ul</span><span class="hljs-selector-class">.benefits-list</span> ::ng-deep nx-icon {
-  color: <span class="hljs-built_in">var</span>(--success, <span class="hljs-number">#26AE31</span>);
+  color: <span class="hljs-built_in">var</span>(--success);
 }
 
 <span class="hljs-selector-class">.benefits-list</span> <span class="hljs-selector-tag">li</span> {

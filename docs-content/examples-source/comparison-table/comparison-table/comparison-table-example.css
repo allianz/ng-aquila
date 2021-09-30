@@ -80,11 +80,15 @@
 }
 
 .minus-icon {
-  color: var(--documentation-comparison-table-example-minus-color, #ada8a8);
+  color: var(--documentation-comparison-table-example-minus-color);
 }
 
 .check-icon {
-  color: var(--success, #26AE31);
+  color: var(--success);
+}
+
+::ng-deep .is-selected .check-icon {
+  color: var(--success-02, --success);
 }
 
 .spinner {
