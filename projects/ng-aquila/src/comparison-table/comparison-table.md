@@ -92,6 +92,12 @@ Depending on the colors you choose, it may be necessary to modify the default bu
 
 <!-- example(comparison-table-dynamic) -->
 
+#### Non-sticky header on Desktop
+
+You can opt-out of the sticky header row on Desktop by adding the attribute `[mayStick]="false"` to your header row.
+
+<!-- example(comparison-table-non-sticky-header) -->
+
 <div class="docs-expert-container">
 
 #### Expert: Form controls in a comparison table

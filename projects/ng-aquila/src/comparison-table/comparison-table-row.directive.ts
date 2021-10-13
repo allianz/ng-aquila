@@ -10,6 +10,7 @@ import { takeUntil } from 'rxjs/operators';
 import { NxComparisonTableRowType } from './comparison-table-row-base';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Directive({
   selector: '[nxComparisonTableRow]',
@@ -33,6 +34,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
   @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell!: NxComparisonTablePopularCell;
 
   private _type: NxComparisonTableRowType = 'content';
+  private _mayStick: boolean = true;
 
   private _destroyed = new Subject();
 
@@ -45,6 +47,16 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
   }
   get type(): NxComparisonTableRowType {
     return this._type;
+  }
+
+  @Input()
+  set mayStick(newValue: boolean) {
+    if (newValue !== this._mayStick) {
+      this._mayStick = coerceBooleanProperty(newValue);
+    }
+  }
+  get mayStick(): boolean {
+    return this._type === 'header' && this._mayStick;
   }
 
   constructor(
@@ -86,4 +98,6 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
   _isIntersectionRow(): boolean {
     return this.intersectionCell ? true : false;
   }
+
+  static ngAcceptInputType_mayStick: BooleanInput;
 }

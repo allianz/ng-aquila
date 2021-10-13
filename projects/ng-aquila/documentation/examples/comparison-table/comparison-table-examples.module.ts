@@ -19,6 +19,7 @@ import { ComparisonTableWithIntersectionExampleComponent } from './comparison-ta
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
 import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
+import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
@@ -30,7 +31,8 @@ const EXAMPLES = [
   ComparisonTableWithIntersectionExampleComponent,
   ComparisonTableWithToggleSectionsExampleComponent,
   ComparisonTableExpandableAreaExampleComponent,
-  ComparisonTableHiddenColumnsExampleComponent
+  ComparisonTableHiddenColumnsExampleComponent,
+  ComparisonTableNonStickyHeaderExampleComponent
 ];
 
  @NgModule({
@@ -62,6 +64,7 @@ export class ComparisonExamplesModule {
       'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
       'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent,
       'comparison-table-hidden-columns': ComparisonTableHiddenColumnsExampleComponent,
+      'comparison-table-non-sticky-header': ComparisonTableNonStickyHeaderExampleComponent,
     };
   }
 }

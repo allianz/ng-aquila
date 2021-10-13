@@ -15,6 +15,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
   styleUrls: ['./flex-row.component.scss'],
   host: {
     '[class.is-header-row]': 'row.type === "header"',
+    '[class.is-sticky-row]': 'row.type === "header" && row.mayStick',
     '[class.is-footer-row]': 'row.type === "footer"',
     '[class.is-content-row]': 'row.type === "content"',
     '[class.has-intersection]': 'row.intersectionCell'

@@ -30,7 +30,7 @@ describe('NxComparisonTableRowDirective', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [ NxComparisonTableModule ],
-      declarations: [ BasicComponent, DynamicTypeComponent ]
+      declarations: [ BasicComponent, DynamicTypeComponent, NonStickyHeaderComponent ]
     });
     TestBed.compileComponents();
   }));
@@ -63,6 +63,26 @@ describe('NxComparisonTableRowDirective', () => {
     });
   });
 
+  describe('sticky rows', () => {
+    it('should not be allowed to be sticky for non-header rows', () => {
+      createTestComponent(DynamicTypeComponent);
+
+      expect(rowInstances.toArray()[1].mayStick).toBe(false);
+      expect(rowInstances.toArray()[3].mayStick).toBe(false);
+    });
+
+    it('should be sticky for header rows by default', () => {
+      createTestComponent(DynamicTypeComponent);
+
+      expect(rowInstances.toArray()[0].mayStick).toBe(true);
+    });
+
+    it('should allow to prevent header from being sticky', () => {
+      createTestComponent(NonStickyHeaderComponent);
+
+      expect(rowInstances.toArray()[0].mayStick).toBe(false);
+    });
+  });
 });
 
 @Component({
@@ -101,3 +121,19 @@ class BasicComponent extends RowTest {
  `
 })
 class DynamicTypeComponent extends RowTest { }
+
+@Component({
+  template: `
+    <nx-comparison-table>
+      <ng-container nxComparisonTableRow type="header" [mayStick]="false">
+        <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
+        <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
+      </ng-container>
+      <ng-container nxComparisonTableRow>
+        <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
+        <nx-comparison-table-intersection-cell>This is a cell</nx-comparison-table-intersection-cell>
+      </ng-container>
+    </nx-comparison-table>
+ `
+})
+class NonStickyHeaderComponent extends RowTest { }
