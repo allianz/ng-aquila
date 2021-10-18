@@ -1,7 +1,5 @@
 @import "../shared-styles/index";
 
-$mobile-body-padding: nx-spacer(m) nx-spacer(s);
-
 :host {
   display: block;
 }
@@ -22,7 +20,7 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s);
   @include type-style(accordion-body);
 
   @include media-breakpoint-down(small) {
-    padding: $mobile-body-padding;
+    padding: nx-spacer(m) nx-spacer(s);
   }
 }
 
@@ -64,11 +62,15 @@ $mobile-body-padding: nx-spacer(m) nx-spacer(s);
 
 // Styles of the light version
 :host(.nx-expansion-panel--light) {
+  @include media-breakpoint-down(small) {
+    margin: 0 nx-spacer(s);
+  }
+
   .nx-expansion-panel__body {
     padding: v(accordion-light-body-padding);
 
     @include media-breakpoint-down(small) {
-      padding: $mobile-body-padding;
+      padding: 0 0 nx-spacer(m);
     }
   }
 }

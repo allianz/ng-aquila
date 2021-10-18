@@ -1,7 +1,5 @@
 @import "../shared-styles/index";
 
-$mobile-header-padding: nx-spacer(s);
-
 :host:focus {
   outline: none;
 }
@@ -20,7 +18,7 @@ $mobile-header-padding: nx-spacer(s);
   @include var(background, accordion-regular-header-background-color);
 
   @include media-breakpoint-down(small) {
-    padding: $mobile-header-padding;
+    padding: nx-spacer(s);
   }
 }
 
@@ -76,7 +74,7 @@ $header-title-small-screen-margin-after: nx-spacer(s);
     background: transparent;
 
     @include media-breakpoint-down(small) {
-      padding: $mobile-header-padding;
+      padding: nx-spacer(s) 0;
     }
   }
 
