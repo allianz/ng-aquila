@@ -57,7 +57,7 @@ const TEST_TEMPLATE_FILES = [
 const TAGS: string[] = ['aposin', 'aquila', 'example'];
 const angularVersion = '^12.2.0';
 const materialVersion = '^12.2.0';
-const aquilaVersion = '^12.1.1';
+const aquilaVersion = '^12.0.0';
 
 const dependencies = {
   '@angular/animations': angularVersion,
