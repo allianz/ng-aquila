@@ -16,13 +16,13 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
   },
   providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
 })
-export class NxPlainButtonComponent implements OnDestroy {
+export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
   /** @docs-private */
   @HostBinding('attr.disabled') get isDisabled(): boolean | null { return this.disabled || null; }
   /** @docs-private */
   @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
 
-  private _disabled: boolean = false;
+  private _disabled = false;
 
   @Input()
   set disabled(value: boolean) {
@@ -34,9 +34,9 @@ export class NxPlainButtonComponent implements OnDestroy {
 
   static ngAcceptInputType_disabled: BooleanInput;
 
-  private _classNames: string = '';
+  private _classNames = '';
 
-  danger: boolean = false;
+  danger = false;
 
   public set classNames(value: string) {
     if (this._classNames === value) {
@@ -50,6 +50,21 @@ export class NxPlainButtonComponent implements OnDestroy {
 
   public get classNames(): string {
     return this._classNames;
+  }
+
+  @HostBinding('class.nx-button--active')
+  active = false;
+  public setTriggerActive(): void {
+    if (!this.active) {
+      this.active = true;
+      this._changeDetectorRef.markForCheck();
+    }
+  }
+  public setTriggerInactive(): void {
+    if (this.active) {
+      this.active = false;
+      this._changeDetectorRef.markForCheck();
+    }
   }
 
   constructor(
