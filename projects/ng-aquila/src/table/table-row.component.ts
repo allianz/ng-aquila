@@ -76,7 +76,7 @@ export class NxTableRowComponent {
     let parent: HTMLElement = $event.target as HTMLElement;
 
     while (parent && parent !== this._elementRef.nativeElement) {
-      if (['A', 'INPUT', 'BUTTON'].indexOf(parent.tagName) >= 0) {
+      if (['A', 'INPUT', 'BUTTON', 'TEXTAREA'].indexOf(parent.tagName) >= 0) {
         return true;
       } else if (parent.tagName === 'LABEL' && parent.getAttribute('for')) {
         return true;

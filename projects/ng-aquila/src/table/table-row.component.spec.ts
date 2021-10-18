@@ -121,7 +121,7 @@ describe(NxTableRowComponent.name, () => {
       });
     });
 
-    ['a', 'button', 'input', 'label'].forEach((type) => {
+    ['a', 'button', 'input', 'label', 'textarea'].forEach((type) => {
       describe(`when clicking a "${type}" in the row`, () => {
         beforeEach(() => {
           tableRowElement.nativeElement.querySelector(type).click();
@@ -131,6 +131,37 @@ describe(NxTableRowComponent.name, () => {
         it('is not selected', () => {
           expect(tableRowInstance.selected).toBeFalsy();
           expect(hasClass(tableRowElement, 'is-selected')).toBeFalsy();
+        });
+      });
+    });
+
+    ['input', 'textarea'].forEach((type) => {
+      describe(`when typing inside "${type}"`, () => {
+        [true, false].forEach(selectable => {
+          describe(`for selectable being ${selectable}`, () => {
+            beforeEach(() => {
+              (testInstance as SelectableTableRowComponent).selectable = selectable;
+              fixture.detectChanges();
+              const element = tableRowElement.nativeElement.querySelector(type);
+                element.dispatchEvent(new KeyboardEvent('keydown', {cancelable: true, bubbles: true, key: 'Space'}));
+                fixture.detectChanges();
+            });
+
+            it('should not block space inputs', () => {
+              const element = tableRowElement.nativeElement.querySelector(type);
+              const event = new KeyboardEvent('keydown', {cancelable: true, bubbles: true, key: 'Space', keyCode: 32});
+              element.dispatchEvent(event);
+              fixture.detectChanges();
+
+              expect(event.defaultPrevented).toBe(false);
+
+            });
+
+            it ('is not selected', () => {
+              expect(tableRowInstance.selected).toBeFalsy();
+              expect(hasClass(tableRowElement, 'is-selected')).toBeFalsy();
+            });
+          });
         });
       });
     });
@@ -194,6 +225,9 @@ class BasicTableRowComponent extends TableRowTest { }
       </td>
       <td>
         <button>example button</button>
+      </td>
+      <td>
+        <textarea></textarea>
       </td>
     </tr>
  `,
