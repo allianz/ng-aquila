@@ -25,7 +25,7 @@ export class NxListComponent {
   private _classNames: string = '';
 
   /** @docs-private */
-  type: NxListSize | undefined;
+  type: NxListSize | undefined = DEFAULT_TYPE;
 
   /** @docs-private */
   negative: boolean = false;

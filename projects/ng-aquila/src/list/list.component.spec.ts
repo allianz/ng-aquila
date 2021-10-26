@@ -44,6 +44,7 @@ describe('NxListComponent', () => {
   it('creates the List', waitForAsync(() => {
     createTestComponent(BasicList);
     expect(listInstance).toBeTruthy();
+    expect(listInstance.type).toBe('normal');
   }));
 
   it('creates full modifier class from a correct keyword', waitForAsync(() => {
