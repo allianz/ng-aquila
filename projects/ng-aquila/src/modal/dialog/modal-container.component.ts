@@ -18,6 +18,7 @@ import { NxModalAnimations } from './modal-animations';
 import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal, DomPortal } from '@angular/cdk/portal';
 import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { NxModalConfig } from './modal-config';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 
 /**
  * Throws an exception for the case when a ComponentPortal is
@@ -180,7 +181,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     // We need the extra check, because IE can set the `activeElement` to null in some cases.
     if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
-      const activeElement = this._document.activeElement;
+      const activeElement = _getFocusedElementPierceShadowDom();
       const element = this._elementRef.nativeElement;
 
       // Make sure that focus is still inside the modal or is on the body (usually because a
@@ -201,7 +202,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   /** Saves a reference to the element that was focused before the modal was opened. */
   private _savePreviouslyFocusedElement() {
     if (this._document) {
-      this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;
+      this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
 
       // Note that there is no focus method when rendering on the server.
       if (this._elementRef.nativeElement.focus) {

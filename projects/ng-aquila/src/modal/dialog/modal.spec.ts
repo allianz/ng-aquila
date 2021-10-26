@@ -17,7 +17,8 @@ import {
   TemplateRef,
   ViewChild,
   ViewContainerRef,
-  ComponentFactoryResolver
+  ComponentFactoryResolver,
+  ViewEncapsulation
 } from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -39,6 +40,7 @@ import {
 } from '@aposin/ng-aquila/modal';
 import {Subject} from 'rxjs';
 import { dispatchKeyboardEvent, createKeyboardEvent } from '../../cdk-test-utils';
+import { _supportsShadowDom } from '@angular/cdk/platform';
 
 describe('NxDialog', () => {
   let dialog: NxDialogService;
@@ -1118,6 +1120,32 @@ describe('NxDialog', () => {
       document.body.removeChild(button);
     }));
 
+    it('should re-focus trigger element inside the shadow DOM when dialog closes', fakeAsync(() => {
+      if (!_supportsShadowDom()) {
+        return;
+      }
+
+      viewContainerFixture.destroy();
+      const fixture = TestBed.createComponent(ShadowDomComponent);
+      fixture.detectChanges();
+      const button = fixture.debugElement.query(By.css('button'))!.nativeElement;
+
+      button.focus();
+
+      const dialogRef = dialog.open(PizzaMsg);
+      flushMicrotasks();
+      fixture.detectChanges();
+      flushMicrotasks();
+
+      const spy = spyOn(button, 'focus').and.callThrough();
+      dialogRef.close();
+      flushMicrotasks();
+      fixture.detectChanges();
+      tick(500);
+
+      expect(spy).toHaveBeenCalled();
+    }));
+
     it('should allow the consumer to shift focus in afterClosed', fakeAsync(() => {
       // Create a element that has focus before the dialog is opened.
       const button = document.createElement('button');
@@ -1658,6 +1686,12 @@ class DialogWithInjectedData {
 @Component({template: '<p>Pasta</p>'})
 class DialogWithoutFocusableElements {}
 
+@Component({
+  template: `<button>I'm a button</button>`,
+  encapsulation: ViewEncapsulation.ShadowDom
+})
+class ShadowDomComponent {}
+
 // Create a real (non-test) NgModule as a workaround for
 // https://github.com/angular/angular/issues/10760
 const TEST_DIRECTIVES = [
@@ -1670,6 +1704,7 @@ const TEST_DIRECTIVES = [
   DialogWithInjectedData,
   DialogWithoutFocusableElements,
   ComponentWithContentElementTemplateRef,
+  ShadowDomComponent
 ];
 
 @NgModule({
