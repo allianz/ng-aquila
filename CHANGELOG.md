@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [12.2.0](https://github.com/aposin/ng-aquila/compare/v12.1.1...v12.2.0) (2021-10-27)
+
+
+### Bug Fixes
+
+* **accordion:** light mobile padding ([5607d47](https://github.com/aposin/ng-aquila/commit/5607d47c99f9428c683e0cc5ef0739e0457d97e3))
+* **dropdown:** check keymanager initialization ([14bb4d2](https://github.com/aposin/ng-aquila/commit/14bb4d27988dee45b29b634e815a669c70ba636e))
+* **licence-plate:** fix prefix radius ([189dd82](https://github.com/aposin/ng-aquila/commit/189dd82c59fab9a665872c32f18383ddf3b092db))
+* **list:** set default size when input is empty ([85f18f5](https://github.com/aposin/ng-aquila/commit/85f18f516e94282a67a0d7f7dd68e0a1e98443d6))
+* **modal:** restore focus in shadow dom ([85191d3](https://github.com/aposin/ng-aquila/commit/85191d3b77e33af3b711a48c1383cf09bc1985d5))
+* **plain-button:** implement nxtriggerbutton ([f2fb505](https://github.com/aposin/ng-aquila/commit/f2fb50551e323c870fd1f7a55a63d9c7947cc1ba))
+* **docs:** fix stackblitz examples ([baff785](https://github.com/aposin/ng-aquila/commit/baff7858c83ab018c10b194aef12d006626e5c57))
+* **table:** do not prevent space input on textarea ([66b0c9c](https://github.com/aposin/ng-aquila/commit/66b0c9c21fee75065f0e5b695365d6f89b743677))
+
+
+### Features
+
+* **comparison-table:** allow to opt-out of sticky header row ([b972561](https://github.com/aposin/ng-aquila/commit/b9725612cfe1bb2ed111e0ef73c2cd9968b28297))
+
+
+
 ## [12.1.1](https://github.com/aposin/ng-aquila/compare/v12.1.0...v12.1.1) (2021-09-30)
 
 
