@@ -33,18 +33,6 @@
               "tsConfig": "projects/ng-aquila/tsconfig.spec.viewengine.json"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tslintConfig": "projects/ng-aquila/tslint.json",
-            "tsConfig": [
-              "projects/ng-aquila/tsconfig.lib.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -77,18 +65,6 @@
             "viewengine": {
               "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.viewengine.json"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-docs-ui/tsconfig.lib.json",
-              "projects/ngx-docs-ui/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -199,17 +175,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "opensource-documentation:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/opensource-documentation/tsconfig.app.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
