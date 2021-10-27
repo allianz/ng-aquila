@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './formfield-prefix-suffix-appendix-example.html',
   styleUrls: ['./formfield-prefix-suffix-appendix-example.css']
 })
-export class FormfieldPrefixSuffixAppendixExampleComponent {}
+export class FormfieldPrefixSuffixAppendixExampleComponent {
+  value = 'Max';
+}
