@@ -1,5 +1,5 @@
-import { Directive, Input, Optional, Self } from '@angular/core';
-import { AbstractControl, NgControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
+import { Directive, Input } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms';
 
 /**
  * Type of supported license plates.
