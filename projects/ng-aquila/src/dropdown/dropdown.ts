@@ -604,7 +604,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       }
 
       if (isUserInput) {
-        this._keyManager.setActiveItem(option);
+        this._keyManager?.setActiveItem(option);
       }
 
       if (this.isMultiSelect) {
