@@ -2,8 +2,5 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "declarationMap": false
-  },
-  "angularCompilerOptions": {
-    "enableIvy": true
   }
 }
