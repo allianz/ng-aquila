@@ -27,11 +27,6 @@
             "main": "projects/ng-aquila/test.ts",
             "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
             "karmaConfig": "projects/ng-aquila/karma.conf.js"
-          },
-          "configurations": {
-            "viewengine": {
-              "tsConfig": "projects/ng-aquila/tsconfig.spec.viewengine.json"
-            }
           }
         }
       }
@@ -60,11 +55,6 @@
             "main": "projects/ngx-docs-ui/test.ts",
             "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
-          },
-          "configurations": {
-            "viewengine": {
-              "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.viewengine.json"
-            }
           }
         }
       }

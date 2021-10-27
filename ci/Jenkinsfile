@@ -69,14 +69,6 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage ("View Engine Tests Library") {
-    shared.withNotification('ci/test/library:ve', "VE Test library") {
-      echo 'Testing ng-aquila with view engine'
-
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ve -- --watch=false'
-    }
-  }
-
   stage ("Build documentation with Ivy artefacts") {
     echo "Running integration builds"
 
@@ -114,13 +106,14 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage("Ivy Build Library") {
+  stage("Build Library") {
     shared.withNotification('ci/build/library', "Build Library") {
       echo 'Building Library'
       sh 'npm run build:lib'
     }
   }
 
+  // TODO keep?
   // build against the ivy artifacts
   stage("Build documentation with Ivy artefacts") {
     shared.withNotification('ci/build/documentation/ivy', "Build Documentation") {
@@ -128,12 +121,6 @@ node('nodejs-with-browsers-latest') {
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --no-progress"
-    }
-  }
-
-  stage ("View Engine Build Library") {
-    shared.withNotification('ci/build/library/ve', "VE Build library") {
-      sh "npm run build:lib:ve"
     }
   }
 }
