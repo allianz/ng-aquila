@@ -7,14 +7,9 @@ module.exports = function (config) {
 
   config.set({
     ...baseConfig,
-    coverageIstanbulReporter: {
-      ...baseConfig.coverageIstanbulReporter,
-      dir: require('path').join(__dirname, 'coverage')
-    },
     junitReporter: {
       outputDir: '../../karma-test-results/ngx-docs-ui'
     },
-    browsers: ["Chrome_Headless"],
     files: [
       {pattern: '../../node_modules/@angular/cdk/overlay-prebuilt.css', watched: true, included: true, served: true},
       {pattern: '../../dist/ng-aquila/css/normalize.css', included: true, watched: false}

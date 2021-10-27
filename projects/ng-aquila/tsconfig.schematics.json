@@ -2,10 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "target": "es2019",
+    "lib": ["es2019"],
     "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -21,7 +19,6 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es2015",
     "types": [
       "jasmine",
       "node"

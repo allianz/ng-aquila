@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "angular-ng-aquila-ng-add",
+  "$id": "angular-ng-aquila-ng-add",
   "title": "Angular ng-aquila ng-add schematic",
   "type": "object",
   "properties": {

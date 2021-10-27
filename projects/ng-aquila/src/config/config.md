@@ -57,27 +57,3 @@ If you don't use the Angular CLI or just prefer another place you can use this C
 ```css
 @import "@aposin/ng-aquila/themes/expert.css";
 ```
-
-#### IE11 Support
-To support IE11 we have a fallback in place: if you want to use a theme for IE11 you need to use the [css vars ponyfill](https://github.com/jhildenbiddle/css-vars-ponyfill/)
-as a dependency.
-
-For that purpose you need to install the css-vars-ponyfill:
-
-```
-npm install css-vars-ponyfill
-```
-
-Then, import the ponyfill into your `polyfill.ts` and call it:
-
-```ts
-import cssVars from 'css-vars-ponyfill';
-
-cssVars({
-  watch: true,
-  onlyLegacy: true,
-  shadowDOM: true
-});
-```
-
-The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters [here](https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options).

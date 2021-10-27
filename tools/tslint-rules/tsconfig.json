@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./",
     "module": "commonjs",
-    "target": "es2015",
+    "target": "es2019",
+    "lib": ["es2019"],
     "types": ["jasmine", "node"],
     "rootDir": ".",
     "sourceMap": false

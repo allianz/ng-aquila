@@ -1,5 +1,7 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Input,
 } from '@angular/core';
@@ -20,6 +22,10 @@ export class NxMessageBannerComponent extends NxMessageComponent {
   _closable: boolean = true;
 
   _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
+
+  constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
+    super(_cdr, _fm);
+  }
 
   /**
   * Sets the context of the message banner.

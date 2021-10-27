@@ -4,7 +4,6 @@
     "outDir": "../../dist/out-tsc",
     "target": "es2015",
     "declarationMap": true,
-    "module": "es2015",
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
@@ -12,7 +11,6 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "types": [],
-    "lib": ["dom", "es2015"],
     "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {

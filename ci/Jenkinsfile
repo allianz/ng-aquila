@@ -8,7 +8,7 @@ properties([
   buildDiscarder([$class: 'EnhancedOldBuildDiscarder', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', discardOnlyOnSuccess: false, numToKeepStr: '3'])
 ])
 
-node('nodejs-with-browsers-latest') {
+node('nodejs-with-browsers-v12') {
   skipDefaultCheckout()
 
   scmVars = checkout scm
@@ -19,10 +19,11 @@ node('nodejs-with-browsers-latest') {
   env.GIT_COMMIT = scmVars.GIT_COMMIT
 
   branch = env.BRANCH_NAME
- 
+
 
   stage("Prepare") {
-    shared.withNotification('ci/install', "NPM Install") {
+    shared.withNotification('ci/install', "Package install") {
+      echo 'Installing packages'
       sh 'npm -v'
       sh 'node -v'
       sh "http_proxy=''"
@@ -35,20 +36,21 @@ node('nodejs-with-browsers-latest') {
 
   stage("Generate docs") {
     shared.withNotification('ci/generate-docs', "Generate docs") {
+      echo 'Generating docs'
       sh 'npm run library:generate:docs'
     }
   }
 
   stage("Lint") {
-    shared.withNotification('ci/test/lint', "Linter") {
-      echo 'Running Linter'
+    shared.withNotification('ci/lint', "Lint") {
+      echo 'Linting'
       sh 'npm run lint'
     }
   }
 
   stage("Test Docs-ui") {
-    shared.withNotification('ci/test/unit/ngx-docs-ui', "Unit Test docs-ui") {
-      echo 'Running Unit Tests'
+    shared.withNotification('ci/test/unit/ngx-docs-ui', "Test docs-ui") {
+      echo 'Testing docs-ui'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
       /*
@@ -67,28 +69,11 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage ("View Engine Tests Library") {
-    shared.withNotification('ci/test/library:ve', "VE Test library") {
-      echo 'Testing ng-aquila with view engine'
+  stage("Test Library") {
+    shared.withNotification('ci/test/library', "Test Library") {
+      echo 'Testing library'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false'
-    }
-  }
-
-  stage ("Build documentation with Ivy artefacts") {
-    echo "Running integration builds"
-
-    shared.withNotification('ci/build/documentation', "Smoke test of new docs") {
-      echo "Run documentation build"
-      sh "npm run build:docs -- --no-progress"
-    }
-  }
-
-  stage("Ivy Test Library") {
-    shared.withNotification('ci/test/library', "Unit Test Library") {
-      echo 'Running Unit Tests'
-
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ivy -- --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
           The unit test will generate some report files
           which we want to save in the jenkins job (junit log & coverage)
@@ -107,30 +92,24 @@ node('nodejs-with-browsers-latest') {
 
   stage("Test schematics") {
     shared.withNotification('ci/test/schematics', "Test schematics") {
+      echo 'Testing schematics'
       sh 'npm run test:schematics'
     }
   }
 
-  stage("Ivy Build Library") {
+  stage("Build Library") {
     shared.withNotification('ci/build/library', "Build Library") {
       echo 'Building Library'
-      sh 'npm run build:lib:ivy'
+      sh 'npm run build:lib'
     }
   }
 
-  // build against the ivy artifacts
-  stage("Build documentation with Ivy artefacts") {
-    shared.withNotification('ci/build/documentation/ivy', "Build Documentation") {
+  stage("Build documentation") {
+    shared.withNotification('ci/build/documentation', "Build Documentation") {
       echo "Building docs"
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --no-progress"
-    }
-  }
-
-  stage ("View Engine Build Library") {
-    shared.withNotification('ci/build/library/ve', "VE Build library") {
-      sh "npm run build:lib"
     }
   }
 }

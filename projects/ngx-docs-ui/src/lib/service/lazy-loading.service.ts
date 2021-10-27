@@ -1,5 +1,5 @@
 import { ComponentFactory, Injectable } from '@angular/core';
-import { NgModuleFactory } from '@angular/core/src/r3_symbols';
+import { NgModuleFactory, PlatformRef, createNgModuleRef } from '@angular/core';
 
 @Injectable()
 export abstract class BaseLazyLoadingService {

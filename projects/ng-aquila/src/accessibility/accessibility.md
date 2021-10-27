@@ -46,7 +46,7 @@ You can find more information on the `aria-label` attribute [here](https://www.w
 
 #### Setting high contrast colors for SVGs
 
-All components of this UI component library implement the high contrast mode for MS Edge and IE 11. However, if you use your own SVGs, you may need to add high contrast styling on your own.
+All components of this UI component library implement the high contrast mode for MS Edge. However, if you use your own SVGs, you may need to add high contrast styling on your own.
 
 This is the basic code snippet for setting the color of a svg in high contrast mode (also used in the example below):
 

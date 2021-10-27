@@ -15,6 +15,7 @@ import {
   methodCallChecks,
   outputNames,
   propertyNames,
+  symbolRemoval,
 } from './data';
 
 /** Upgrade data that will be used for the Angular Material ng-update schematic. */
@@ -28,6 +29,7 @@ export const upgradeData: UpgradeData = {
   methodCallChecks,
   outputNames,
   propertyNames,
+  symbolRemoval,
 };
 
 const customMigrations: any = [

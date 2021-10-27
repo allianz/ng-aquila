@@ -940,7 +940,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     // TODO: use event.code after removing IE11 support
-    // tslint:disable-next-line:deprecation
     const keyCode = event.keyCode;
     const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW ||
       keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;

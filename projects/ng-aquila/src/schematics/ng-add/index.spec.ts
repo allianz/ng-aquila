@@ -35,10 +35,6 @@ describe('ng-aquila ng add', () => {
         .toContain('@import "@angular/cdk/a11y-prebuilt.css";');
     });
 
-    it('should add css var ponyfill', async () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/polyfills.ts')).toContain('cssVars(');
-    });
-
     it('should not write Starter App files by default', () => {
       expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts'))
         .not.toContain('openConsentDialog()');

@@ -31,6 +31,7 @@ export class ThemeSwitcherService {
     // just change the href of the link element
     // instead we have to create a new one, append it and remove the old one that the ponyfill
     // registers the changes and gets triggered
+    // update: css-vars-ponyfill has been removed with angular 13 (ie11 no longer supported)
     const newEl = document.createElement('link');
     newEl.setAttribute('rel', 'stylesheet');
     newEl.setAttribute('href', newTheme.url);
