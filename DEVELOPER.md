@@ -316,7 +316,7 @@ This will build the library, the ngx-docs-ui package and the documentation appli
 You can build only the library with:
 
 ```shell
-$ npm run build:lib
+$ npm run build:lib:ve
 $ npm run build:lib:ivy
 ```
 

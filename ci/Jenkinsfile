@@ -130,7 +130,7 @@ node('nodejs-with-browsers-latest') {
 
   stage ("View Engine Build Library") {
     shared.withNotification('ci/build/library/ve', "VE Build library") {
-      sh "npm run build:lib"
+      sh "npm run build:lib:ve"
     }
   }
 }
