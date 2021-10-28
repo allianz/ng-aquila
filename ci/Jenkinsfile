@@ -88,7 +88,7 @@ node('nodejs-with-browsers-latest') {
     shared.withNotification('ci/test/library', "Unit Test Library") {
       echo 'Running Unit Tests'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ivy -- --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
           The unit test will generate some report files
           which we want to save in the jenkins job (junit log & coverage)

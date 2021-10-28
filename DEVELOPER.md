@@ -334,7 +334,7 @@ The unit tests are run with
 
 To also be already prepared for ivy we also run the tests with the ivy compiler. You can do this with
 
-`npm run test:lib:ivy`
+`npm run test:lib`
 
 ## Theming
 The library supports different use cases with different style philosophies that's why all components must be themable in a very flexible way. Because we use the default view encapsulation we decided to go for CSS custom properties (a.k.a CSS variables) to pierce through the encapsulation.
