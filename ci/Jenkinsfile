@@ -19,7 +19,7 @@ node('nodejs-with-browsers-latest') {
   env.GIT_COMMIT = scmVars.GIT_COMMIT
 
   branch = env.BRANCH_NAME
- 
+
 
   stage("Prepare") {
     shared.withNotification('ci/install', "NPM Install") {
@@ -71,7 +71,7 @@ node('nodejs-with-browsers-latest') {
     shared.withNotification('ci/test/library:ve', "VE Test library") {
       echo 'Testing ng-aquila with view engine'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ve -- --watch=false'
     }
   }
 

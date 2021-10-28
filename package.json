@@ -20,7 +20,7 @@
     "build:docs": "npm run ng-high-memory -- build opensource-documentation --configuration production",
     "build:tslint-rules": "tsc -p tools/tslint-rules/tsconfig.json",
     "postinstall": "node projects/ng-aquila/src/phone-input/extract-calling-codes.js",
-    "test:lib": "npm run build:package && npm run test -- ng-aquila --configuration viewengine",
+    "test:lib:ve": "npm run build:package && npm run test -- ng-aquila --configuration viewengine",
     "test:lib:ivy": "npm run build:package && npm run test -- ng-aquila",
     "test:schematics": "npm run build:package && npm run test:schematics:jasmine",
     "test:schematics:jasmine": "jasmine --config=projects/ng-aquila/src/schematics/test/jasmine.json",

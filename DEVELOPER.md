@@ -330,7 +330,7 @@ The library is built with [ng-packagr](https://github.com/dherges/ng-packagr) wh
 
 The unit tests are run with
 
-`npm run test:lib`
+`npm run test:lib:ve`
 
 To also be already prepared for ivy we also run the tests with the ivy compiler. You can do this with
 
