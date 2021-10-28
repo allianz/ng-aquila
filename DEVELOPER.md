@@ -317,7 +317,7 @@ You can build only the library with:
 
 ```shell
 $ npm run build:lib:ve
-$ npm run build:lib:ivy
+$ npm run build:lib
 ```
 
 Angular currently assumes libraries to still be shipped with the old compiler `View engine`. That's why we build the library with both compilers on the CI builds to be ready for ivy.

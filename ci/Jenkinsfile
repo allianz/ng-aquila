@@ -114,7 +114,7 @@ node('nodejs-with-browsers-latest') {
   stage("Ivy Build Library") {
     shared.withNotification('ci/build/library', "Build Library") {
       echo 'Building Library'
-      sh 'npm run build:lib:ivy'
+      sh 'npm run build:lib'
     }
   }
 
