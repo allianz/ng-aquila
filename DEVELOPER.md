@@ -316,8 +316,8 @@ This will build the library, the ngx-docs-ui package and the documentation appli
 You can build only the library with:
 
 ```shell
-$ npm run build:lib:ve
 $ npm run build:lib
+$ npm run build:lib:ve
 ```
 
 Angular currently assumes libraries to still be shipped with the old compiler `View engine`. That's why we build the library with both compilers on the CI builds to be ready for ivy.
