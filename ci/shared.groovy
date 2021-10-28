@@ -1,6 +1,5 @@
 import hudson.AbortException;
 
-
 def isPullRequest() {
     return (env.CHANGE_ID != null) && (env.CHANGE_TARGET != null)
 }
@@ -48,7 +47,6 @@ def updateCommitStatus(Map params = [:]) {
   step(stepAction)
 }
 
-
 // This will login the technical git user
 // so we can read refs and push tags
 def gitAuthenticate() {
@@ -83,8 +81,6 @@ def gitAuthenticate() {
   }
 }
 
-
-
 def withNotification(context, description, Closure closure) {
 
   updateCommitStatus([
@@ -115,6 +111,5 @@ def withNotification(context, description, Closure closure) {
 
   return true
 }
-
 
 return this
