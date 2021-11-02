@@ -5,11 +5,6 @@
     "preserveWhitespaces": false,
     "fullTemplateTypeCheck": true
   },
-  "compilerOptions": {
-    "outDir": "../out-tsc",
-    "module": "es2020",
-    "target": "es2015"
-  },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"

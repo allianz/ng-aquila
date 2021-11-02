@@ -3,16 +3,13 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declarationMap": true,
-    "target": "es2015",
-    "module": "es2015",
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
     "inlineSources": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "types": [],
-    "lib": ["dom", "es2018"]
+    "types": []
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,

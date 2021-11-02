@@ -9,15 +9,12 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "es2020",
+    "target": "es2017",
+    "lib": ["es2018", "dom"],
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
     ],
     "noImplicitAny": true,
     "noImplicitReturns": true,
