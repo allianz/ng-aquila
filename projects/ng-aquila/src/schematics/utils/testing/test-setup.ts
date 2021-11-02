@@ -1,7 +1,8 @@
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { Tree } from '@angular-devkit/schematics';
 import * as shx from 'shelljs';
-import { getSystemPath, normalize, virtualFs, JsonParseMode, parseJson } from '@angular-devkit/core';
+import { getSystemPath, normalize, virtualFs } from '@angular-devkit/core';
+import { parse as parseJson } from 'jsonc-parser';
 import { TempScopedNodeJsSyncHost } from '@angular-devkit/core/node/testing';
 import { HostTree } from '@angular-devkit/schematics';
 
@@ -117,7 +118,7 @@ export class SchematicTestSetup {
       this.appTree = await createTestApp(this.runner, { name: 'aquila-testing' }, this.hostTree);
       const testAppTsconfigPath = 'projects/aquila-testing/tsconfig.app.json';
       const testAppTsconfig =
-        parseJson(this.appTree.readContent(testAppTsconfigPath), JsonParseMode.Json5) as any;
+        parseJson(this.appTree.readContent(testAppTsconfigPath), [], { allowTrailingComma: true });
       // include all TypeScript files in the project. Otherwise all test input
       // files won't be part of the program and cannot be migrated.
       testAppTsconfig.include.push('src/**/*.ts');

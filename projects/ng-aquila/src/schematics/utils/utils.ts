@@ -10,7 +10,6 @@ import * as ts from 'typescript';
 
 import * as html from '@angular/compiler/src/ml_parser/ast';
 import { getHtmlTagDefinition } from '@angular/compiler/src/ml_parser/html_tags';
-import { JsonAstNode, JsonAstObject } from '@angular-devkit/core';
 import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
 
 class SerializerVisitor implements html.Visitor {
@@ -83,10 +82,6 @@ export function modifyProperty(node: ts.Node) {
     }
   }
   return { modify, propertyAssignment };
-}
-
-export function isJsonAstObject(node: JsonAstNode | null): node is JsonAstObject {
-  return !!node && node.kind === 'object';
 }
 
 export function isAngularApplicationProject(project: ProjectDefinition): boolean {
