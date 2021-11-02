@@ -79,7 +79,7 @@
     "@angular/compiler-cli": "^13.0.0-rc.3",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-angular": "^11.0.0",
-    "@schematics/angular": "^12.2.10",
+    "@schematics/angular": "^13.0.0-rc.2",
     "@types/fs-extra": "9.0.6",
     "@types/iban": "0.0.32",
     "@types/jasmine": "^3.10.0",
