@@ -22,7 +22,8 @@ node('nodejs-with-browsers-latest') {
 
 
   stage("Prepare") {
-    shared.withNotification('ci/install', "NPM Install") {
+    shared.withNotification('ci/install', "Package install") {
+      echo 'Installing packages'
       sh 'npm -v'
       sh 'node -v'
       sh "http_proxy=''"
@@ -35,20 +36,21 @@ node('nodejs-with-browsers-latest') {
 
   stage("Generate docs") {
     shared.withNotification('ci/generate-docs', "Generate docs") {
+      echo 'Generating docs'
       sh 'npm run library:generate:docs'
     }
   }
 
   stage("Lint") {
-    shared.withNotification('ci/test/lint', "Linter") {
-      echo 'Running Linter'
+    shared.withNotification('ci/test/lint', "Lint") {
+      echo 'Linting'
       sh 'npm run lint'
     }
   }
 
   stage("Test Docs-ui") {
-    shared.withNotification('ci/test/unit/ngx-docs-ui', "Unit Test docs-ui") {
-      echo 'Running Unit Tests'
+    shared.withNotification('ci/test/unit/ngx-docs-ui', "Test docs-ui") {
+      echo 'Testing docs-ui'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
       /*
@@ -85,8 +87,8 @@ node('nodejs-with-browsers-latest') {
   }
 
   stage("Ivy Test Library") {
-    shared.withNotification('ci/test/library', "Unit Test Library") {
-      echo 'Running Unit Tests'
+    shared.withNotification('ci/test/library', "Test Library") {
+      echo 'Testing library'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
@@ -107,6 +109,7 @@ node('nodejs-with-browsers-latest') {
 
   stage("Test schematics") {
     shared.withNotification('ci/test/schematics', "Test schematics") {
+      echo 'Testing schematics'
       sh 'npm run test:schematics'
     }
   }
