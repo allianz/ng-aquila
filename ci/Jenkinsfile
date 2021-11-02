@@ -69,18 +69,9 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage ("Build documentation with Ivy artefacts") {
-    echo "Running integration builds"
-
-    shared.withNotification('ci/build/documentation', "Smoke test of new docs") {
-      echo "Run documentation build"
-      sh "npm run build:docs -- --no-progress"
-    }
-  }
-
-  stage("Ivy Test Library") {
-    shared.withNotification('ci/test/library', "Test Library") {
-      echo 'Testing library'
+  stage("Test Library") {
+    shared.withNotification('ci/test/library', "Unit Test Library") {
+      echo 'Running Unit Tests'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
@@ -113,10 +104,8 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  // TODO keep?
-  // build against the ivy artifacts
-  stage("Build documentation with Ivy artefacts") {
-    shared.withNotification('ci/build/documentation/ivy', "Build Documentation") {
+  stage("Build documentation") {
+    shared.withNotification('ci/build/documentation', "Build Documentation") {
       echo "Building docs"
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
