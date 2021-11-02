@@ -64,7 +64,7 @@ Try to work in a TDD cycle. Do so by running Karma and let it run your Jasmine T
 
 Run your tests with
 ```bash
-npm run test:lib:ve
+npm run test:lib
 ```
 
 ### CSS

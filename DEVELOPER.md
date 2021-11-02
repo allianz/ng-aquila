@@ -319,8 +319,6 @@ You can build only the library with:
 $ npm run build:lib
 ```
 
-Angular currently assumes libraries to still be shipped with the old compiler `View engine`. That's why we build the library with both compilers on the CI builds to be ready for ivy.
-
 All build artifacts are placed into the `dist` folder.
 The library is built with [ng-packagr](https://github.com/dherges/ng-packagr) which generates the necessary bundles to be consumed by most build systems.
 
@@ -329,7 +327,7 @@ The library is built with [ng-packagr](https://github.com/dherges/ng-packagr) wh
 
 The unit tests are run with
 
-`npm run test:lib:ve`
+`npm run test:lib`
 
 ## Theming
 The library supports different use cases with different style philosophies that's why all components must be themable in a very flexible way. Because we use the default view encapsulation we decided to go for CSS custom properties (a.k.a CSS variables) to pierce through the encapsulation.
