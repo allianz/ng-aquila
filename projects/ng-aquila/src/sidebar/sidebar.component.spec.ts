@@ -39,7 +39,7 @@ describe('NxSidebarComponent', () => {
       mouseup.screenX = target;
       doc.dispatchEvent(mouseup);
     } catch (e) {
-      console.log(e.message);
+      console.error(e);
     }
   }
 
