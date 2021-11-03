@@ -5,12 +5,13 @@ import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/cor
 import { By } from '@angular/platform-browser';
 
 import { NxProgressStepperModule } from '../progress-stepper.module';
-import { NxMultiStepperComponent, NxMultiStepperDirection } from './multi-step.component';
+import { NxMultiStepperComponent } from './multi-step.component';
 
 import { Validators, FormBuilder, ReactiveFormsModule, FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
+import { NxMultiStepperDirection } from '../progress-stepper.models';
 
 // We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix

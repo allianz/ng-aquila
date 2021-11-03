@@ -1,8 +1,9 @@
 import { NxTabsModule } from './tabs.module';
 import { TestBed, ComponentFixture, inject, waitForAsync } from '@angular/core/testing';
 import { Type, Component, QueryList, ViewChildren, ChangeDetectionStrategy, ViewChild, Directive, DebugElement } from '@angular/core';
-import { NxTabLinkDirective, NxTabNavBarComponent, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tab-nav-bar';
+import { NxTabLinkDirective, NxTabNavBarComponent } from './tab-nav-bar';
 import { By } from '@angular/platform-browser';
+import { TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from './tabs.models';
 
 const tabsDefaultOptions: TabNavBarDefaultOptions = {
   appearance: 'expert'

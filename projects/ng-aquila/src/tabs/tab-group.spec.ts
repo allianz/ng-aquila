@@ -4,9 +4,10 @@ import { ComponentFixture, fakeAsync, TestBed, tick, flush, inject, waitForAsync
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NxTabGroupComponent, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tab-group';
+import { NxTabGroupComponent } from './tab-group';
 import { NxTabsModule } from './tabs.module';
 import { Subscription } from 'rxjs';
+import { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;
