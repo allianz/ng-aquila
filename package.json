@@ -14,7 +14,7 @@
     "lint:commitmsg": "commitlint -e",
     "lint-staged": "lint-staged --relative",
     "build:all": "npm-run-all build:lib build:docs",
-    "build:lib": "npm run ng-high-memory -- build ng-aquila && npm run build:package",
+    "build:lib": "npm run ng-high-memory -- build ng-aquila --configuration production && npm run build:package",
     "build:docs": "npm run ng-high-memory -- build opensource-documentation --configuration production",
     "build:tslint-rules": "tsc -p tools/tslint-rules/tsconfig.json",
     "postinstall": "node projects/ng-aquila/src/phone-input/extract-calling-codes.js",
