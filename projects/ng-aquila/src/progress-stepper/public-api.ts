@@ -1,3 +1,4 @@
+export * from './progress-stepper.models';
 export * from './progress-stepper.module';
 export * from './progress-stepper.component';
 

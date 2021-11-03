@@ -11,9 +11,7 @@ import {
 } from '@angular/core';
 import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
 import { NxMultiStepperGroupComponent } from './multi-step-group.component';
-
-/** Direction of the multi stepper */
-export type NxMultiStepperDirection = 'vertical' | 'horizontal';
+import { NxMultiStepperDirection } from '../progress-stepper.models';
 
 @Component({
   selector: 'nx-multi-stepper',

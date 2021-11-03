@@ -1,8 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, OnDestroy } from '@angular/core';
-import { NxMultiStepperDirection } from './multi-step.component';
 import { CdkStepHeader, CdkStepLabel } from '@angular/cdk/stepper';
+import { NxMultiStepperDirection } from '../progress-stepper.models';
 
 /** @docs-private */
 @Component({
