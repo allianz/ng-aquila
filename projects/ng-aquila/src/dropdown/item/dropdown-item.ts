@@ -13,10 +13,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { NxDropdownComponent } from '../dropdown';
 import { NxDropdownControl } from '../dropdown.control';
 import { NxDropdownGroupComponent } from '../group/dropdown-group';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
@@ -134,13 +133,21 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     @Optional() readonly group: NxDropdownGroupComponent,
     private _changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef) {
-    (this._dropdown as NxDropdownComponent).filterChanges.pipe(takeUntil(this._destroy)).subscribe((value) => {
-      this._showOrHideByFilter(value);
-    });
+    // workaround: casting as `unknown` because `NxDropdownControl` is improperly typed for the following use case
+    (this._dropdown as unknown as { filterChanges: Subject<any> }).filterChanges
+      .pipe(takeUntil(this._destroy))
+      .subscribe((value) => {
+        this._showOrHideByFilter(value);
+      });
     // reset the hidden state when dropdown closes that on next open the user is seeing the full list again
-    (this._dropdown as NxDropdownComponent)._closedStream.pipe(takeUntil(this._destroy)).subscribe(() => {
-      this._hidden = false;
-    });
+    // workaround: casting as `unknown` because `NxDropdownControl` is improperly typed for the following use case
+    (
+      this._dropdown as unknown as { _closedStream: Observable<void> }
+    )._closedStream
+      .pipe(takeUntil(this._destroy))
+      .subscribe(() => {
+        this._hidden = false;
+      });
   }
 
   ngAfterViewChecked() {
@@ -212,13 +219,22 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
   }
 
   private _showOrHideByFilter(search: string) {
-    const constraint = (this._dropdown as NxDropdownComponent).filterFn(search, this.viewValue);
+    const constraint =
+      // workaround: casting as `unknown` because `NxDropdownControl` is improperly typed for the following use case
+      (
+        this._dropdown as unknown as {
+          filterFn: (search: string, itemValue: string) => boolean;
+        }
+      ).filterFn(search, this.viewValue);
     this._hidden = constraint ? false : true;
     this._changeDetectorRef.markForCheck();
   }
 
   get _formattedValue() {
-    return (this._dropdown as NxDropdownComponent).valueFormatter(this.value);
+    // workaround: casting as `unknown` because `NxDropdownControl` is improperly typed for the following use case
+    return (
+      this._dropdown as unknown as { valueFormatter: (value: any) => string }
+    ).valueFormatter(this.value);
   }
 
   /** @docs-private */
