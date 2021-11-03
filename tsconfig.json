@@ -12,8 +12,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "resolveJsonModule": true,
-    "module": "es2020",
     "target": "es2017",
+    "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
       "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2019",
-    "lib": ["es2019"],
     "outDir": "../../dist/ngx-docs-cli",
+    "lib": ["es2019"],
     "sourceMap": true,
   },
   "files": ["src/main.ts"],
