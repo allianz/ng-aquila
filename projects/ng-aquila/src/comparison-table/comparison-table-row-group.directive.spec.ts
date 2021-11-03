@@ -5,8 +5,8 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
+import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;

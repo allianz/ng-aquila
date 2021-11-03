@@ -7,10 +7,10 @@ import { NxComparisonTableRowBase } from './comparison-table-row-base';
 import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NxComparisonTableRowType } from './comparison-table-row-base';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NxComparisonTableRowType } from './comparison-table.models';
 
 @Directive({
   selector: '[nxComparisonTableRow]',

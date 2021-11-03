@@ -4,7 +4,7 @@ import { NxTableContentElement } from './table-content-element.directive';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
 import { NumberInput, coerceNumberProperty, coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
-import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table-base';
+import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
 
 @Directive({
   selector: '[nxComparisonTableRowGroup]',

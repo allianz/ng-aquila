@@ -2,9 +2,7 @@ import { Directive, QueryList } from '@angular/core';
 import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
-
-/** The type of the row. */
-export type NxComparisonTableRowType = 'header' | 'content' | 'footer';
+import { NxComparisonTableRowType } from './comparison-table.models';
 
 /** @docs-private */
 @Directive()
