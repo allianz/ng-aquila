@@ -42,7 +42,7 @@ node('nodejs-with-browsers-latest') {
   }
 
   stage("Lint") {
-    shared.withNotification('ci/test/lint', "Lint") {
+    shared.withNotification('ci/lint', "Lint") {
       echo 'Linting'
       sh 'npm run lint'
     }
