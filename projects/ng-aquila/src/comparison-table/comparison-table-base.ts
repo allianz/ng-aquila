@@ -2,22 +2,9 @@ import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, Injectable, Inj
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
-import { NxComparisonTablePopularCell, NxComparisonTableCell } from './public-api';
-
-@Injectable()
-export class ComparisonTableDefaultOptions {
-  /** Sets if the expandable area of a row group uses the full width of the row or leaves out the first column. (optional) */
-  useFullRowForExpandableArea?: boolean;
-}
-
-export const COMPARISON_TABLE_DEFAULT_OPTIONS =
-  new InjectionToken<ComparisonTableDefaultOptions>('COMPARISON_TABLE_DEFAULT_OPTIONS');
-
-/**
- * @docs-private
- * The size of the window.
- */
-export type NxComparisonTableViewType = 'mobile' | 'tablet' | 'desktop';
+import { NxComparisonTableViewType } from './comparison-table.models';
+import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 
 /** @docs-private */
 @Directive()

@@ -8,6 +8,7 @@ export * from './description-cell/description-cell.component';
 export * from './popular-cell/popular-cell.component';
 export * from './toggle-section/toggle-section-header.component';
 export * from './toggle-section/toggle-section.directive';
+export * from './comparison-table.models';
 export * from './comparison-table.module';
 export * from './select-button/select-button.component';
 export * from './flex-row/flex-row.component';

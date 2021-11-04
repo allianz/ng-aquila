@@ -29,15 +29,7 @@ import { NxTabBodyComponent } from './tab-body';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxViewportService, NxBreakpoints } from '@aposin/ng-aquila/utils';
 import { FocusMonitor } from '@angular/cdk/a11y';
-
-export type NxTabsAppearance = 'expert' | 'default';
-
-export interface TabGroupDefaultOptions {
-  /** Sets the default appearance. */
-  appearance?: NxTabsAppearance;
-}
-
-export const TAB_GROUP_DEFAULT_OPTIONS = new InjectionToken<TabGroupDefaultOptions>('TAB_GROUP_DEFAULT_OPTIONS');
+import { NxTabsAppearance, TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
 
 export class NxTabChangeEvent {
   /** The index of the selected or focused tab. */

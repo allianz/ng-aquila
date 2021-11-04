@@ -1,3 +1,4 @@
+export * from './tabs.models';
 export * from './tabs.module';
 export * from './tab';
 export * from './tab-group';

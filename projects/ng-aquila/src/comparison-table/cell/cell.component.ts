@@ -2,10 +2,11 @@ import { Component, ViewChild, TemplateRef, Input, Optional, Output, EventEmitte
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
-import { NxComparisonTableRowType } from '../comparison-table-row-base';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NxComparisonTableRowType } from '../comparison-table.models';
 
 let nextId = 0;
+
 @Component({
   selector: 'nx-comparison-table-cell',
   styleUrls: ['./cell.component.scss'],

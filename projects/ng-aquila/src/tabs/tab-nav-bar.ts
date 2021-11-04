@@ -16,17 +16,10 @@ import {
   forwardRef
 } from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { NxTabsAppearance } from './tab-group';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { Directionality } from '@angular/cdk/bidi';
-
-export interface TabNavBarDefaultOptions {
-  /** Sets the default appearance. */
-  appearance?: NxTabsAppearance;
-}
-
-export const TAB_NAV_BAR_DEFAULT_OPTIONS = new InjectionToken<TabNavBarDefaultOptions>('TAB_NAV_BAR_DEFAULT_OPTIONS');
+import { NxTabsAppearance, TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from './tabs.models';
 
 @Component({
   selector: 'nx-tab-nav-bar',
