@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# These files should have specific line endings
+*.sh	text eol=lf
+*.bat	text eol=crlf
+
+# These files are binary and should be left untouched in case the auto-detection algorithm fails
+# (binary is a macro for -text -diff)
+*.{png,jpg,jpeg,gif,webp,woff,woff2} binary
