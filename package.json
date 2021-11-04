@@ -8,7 +8,7 @@
     "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation --port=4200",
     "build": "ng build",
     "test": "ng test",
-    "lint:ts": "npm run build:tslint-rules && tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.lib.json -e **/node_modules/**",
+    "lint:ts": "npm run build:tslint-rules && tslint -c projects/ng-aquila/tslint.json -p projects/ng-aquila/tsconfig.lib.json",
     "lint:scss": "sass-lint -c .sass-lint.yml -q -v",
     "lint": "npm-run-all lint:ts lint:scss",
     "lint:commitmsg": "commitlint -e",
