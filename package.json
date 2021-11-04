@@ -60,7 +60,6 @@
     "highlight.js": "^10.7.3",
     "i18n-iso-countries": "^6.8.0",
     "iban": "^0.0.14",
-    "jsonc-parser": "^3.0.0",
     "libphonenumber-js": "^1.9.38",
     "markdown-it": "^12.2.0",
     "markdown-it-anchor": "^6.0.1",
