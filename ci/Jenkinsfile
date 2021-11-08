@@ -8,7 +8,7 @@ properties([
   buildDiscarder([$class: 'EnhancedOldBuildDiscarder', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', discardOnlyOnSuccess: false, numToKeepStr: '3'])
 ])
 
-node('nodejs-with-browsers-latest') {
+node('nodejs-with-browsers-v12') {
   skipDefaultCheckout()
 
   scmVars = checkout scm
