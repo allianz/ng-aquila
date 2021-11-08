@@ -73,7 +73,7 @@ node('nodejs-with-browsers-v12') {
     shared.withNotification('ci/test/library', "Test Library") {
       echo 'Testing library'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false'
         /*
           The unit test will generate some report files
           which we want to save in the jenkins job (junit log & coverage)
