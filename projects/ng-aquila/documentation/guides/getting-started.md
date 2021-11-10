@@ -123,10 +123,6 @@ You can also install ng-aquila manually.
     cssVars({ watch: true, onlyLegacy: true, shadowDOM: true});
     ```
 
-    If you use the [image component](./documentation/image/overview), you also need the [object-fit-images](https://github.com/fregante/object-fit-images) polyfill (`npm install object-fit-images`).
-
-    You can check the supported versions of these polyfills [here](https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json).
-
 
 ### Device and Browser Support
 We fully support the following browsers:

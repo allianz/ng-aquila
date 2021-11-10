@@ -13,7 +13,6 @@
     "@angular/animations": "^12.2.0",
     "@angular/router": "^12.2.0",
     "moment": "^2.29.1",
-    "object-fit-images": "^3.2.3",
     "iban": "^0.0.14",
     "css-vars-ponyfill": "^2.4.6",
     "i18n-iso-countries": "^6.8.0"
