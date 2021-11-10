@@ -4,6 +4,8 @@
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
+ *
+ * modified: use constructor calls for events (remove ie11 support)
  */
 import { ModifierKeys } from '@angular/cdk/testing';
 
@@ -22,25 +24,22 @@ export const DEC = 11;
 
 /** Creates a browser MouseEvent with the specified options. */
 export function createMouseEvent(type: string, x = 0, y = 0) {
-  const event = document.createEvent('MouseEvent');
-
-  event.initMouseEvent(type,
-    false, /* canBubble */
-    false, /* cancelable */
-    window, /* view */
-    0, /* detail */
-    x, /* screenX */
-    y, /* screenY */
-    x, /* clientX */
-    y, /* clientY */
-    false, /* ctrlKey */
-    false, /* altKey */
-    false, /* shiftKey */
-    false, /* metaKey */
-    0, /* button */
-    null /* relatedTarget */);
-
-  return event;
+  return new MouseEvent(type, {
+    bubbles: false,
+    cancelable: false,
+    view:  window,
+    detail:  0,
+    screenX:  x,
+    screenY: y,
+    clientX:  x,
+    clientY: y,
+    ctrlKey:  false,
+    altKey: false,
+    shiftKey:  false,
+    metaKey: false,
+    button: 0,
+    relatedTarget:  null
+  });
 }
 
 /** Creates a browser TouchEvent with the specified pointer coordinates. */
@@ -62,65 +61,19 @@ export function createTouchEvent(type: string, pageX = 0, pageY = 0) {
 /** Dispatches a keydown event from an element. */
 export function createKeyboardEvent(type: string, keyCode: number = 0, key: string = '',
   modifiers: ModifierKeys = {}) {
-  const event = document.createEvent('KeyboardEvent');
-  const originalPreventDefault = event.preventDefault.bind(event);
-
-  // Firefox does not support `initKeyboardEvent`, but supports `initKeyEvent`.
-  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyEvent.
-  if ((event as any).initKeyEvent !== undefined) {
-    (event as any).initKeyEvent(type, true, true, window, modifiers.control, modifiers.alt,
-      modifiers.shift, modifiers.meta, keyCode);
-  } else {
-    // `initKeyboardEvent` expects to receive modifiers as a whitespace-delimited string
-    // See https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent
-    let modifiersList = '';
-
-    if (modifiers.control) {
-      modifiersList += 'Control ';
-    }
-
-    if (modifiers.alt) {
-      modifiersList += 'Alt ';
-    }
-
-    if (modifiers.shift) {
-      modifiersList += 'Shift ';
-    }
-
-    if (modifiers.meta) {
-      modifiersList += 'Meta ';
-    }
-
-    // TS3.6 removed the `initKeyboardEvent` method and suggested porting to
-    // `new KeyboardEvent()` constructor. We cannot use that as we support IE11.
-    // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent.
-    (event as any).initKeyboardEvent(type,
-      true, /* canBubble */
-      true, /* cancelable */
-      window, /* view */
-      0, /* char */
-      key, /* key */
-      0, /* location */
-      modifiersList.trim(), /* modifiersList */
-      false /* repeat */);
-  }
-
-  // Webkit Browsers don't set the keyCode when calling the init function.
-  // See related bug https://bugs.webkit.org/show_bug.cgi?id=16735
-  defineReadonlyEventProperty(event, 'keyCode', keyCode);
-  defineReadonlyEventProperty(event, 'key', key);
-  defineReadonlyEventProperty(event, 'ctrlKey', !!modifiers.control);
-  defineReadonlyEventProperty(event, 'altKey', !!modifiers.alt);
-  defineReadonlyEventProperty(event, 'shiftKey', !!modifiers.shift);
-  defineReadonlyEventProperty(event, 'metaKey', !!modifiers.meta);
-
-  // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
-  event.preventDefault = function () {
-    defineReadonlyEventProperty(event, 'defaultPrevented', true);
-    return originalPreventDefault();
-  };
-
-  return event;
+  return new KeyboardEvent(type, {
+    bubbles: true,
+    cancelable: true,
+    view: window,
+    charCode: keyCode,
+    key,
+    location: 0,
+    ctrlKey: modifiers.control,
+    altKey: modifiers.alt,
+    shiftKey: modifiers.shift,
+    metaKey: modifiers.meta,
+    repeat: false,
+  });
 }
 
 /** Creates a fake event object with any desired event type. */
@@ -161,12 +114,4 @@ export function dispatchTouchEvent(node: Node, type: string, x = 0, y = 0) {
 
 export function sortedClassNames(element: Element): string[] {
   return element.className.split(' ').sort();
-}
-
-/**
- * Defines a readonly property on the given event object. Readonly properties on an event object
- * are always set as configurable as that matches default readonly properties for DOM event objects.
- */
-function defineReadonlyEventProperty(event: Event, propertyName: string, value: any) {
-  Object.defineProperty(event, propertyName, { get: () => value, configurable: true });
 }
