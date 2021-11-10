@@ -492,8 +492,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
   /** Returns the focus to the element focused before the Popover was open. */
   private _returnFocusAfterPopover() {
     const toFocus = this._elementFocusedBeforePopoverWasOpened;
-    // We need the extra check, because IE can set the `activeElement` to null in some cases.
-    if (toFocus && typeof toFocus.focus === 'function') {
+    if (toFocus) {
       toFocus.focus();
     }
   }

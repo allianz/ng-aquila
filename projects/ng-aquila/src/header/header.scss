@@ -7,12 +7,6 @@ $header-link-border-width: nx-border-size(xl);
   @include type-style(header);
 }
 
-// this fixes vertical alignment of the .nx-header__row on IE11
-:host(.nx-header:not(.nx-header--single-row)) {
-  display: flex;
-  flex-direction: column;
-}
-
 :host(.nx-header.nx-header--single-row),
 ::ng-deep .nx-header__row {
   display: flex;

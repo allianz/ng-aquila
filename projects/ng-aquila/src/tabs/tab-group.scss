@@ -15,10 +15,6 @@
 }
 
 :host {
-  .nx-tab-header__item {
-    overflow: visible; // fix for IE, which cuts off the box-shadow of the focus style
-  }
-
   .nx-tab-header__item:first-child {
     margin-left: 0;
 

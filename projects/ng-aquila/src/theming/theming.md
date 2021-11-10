@@ -12,8 +12,6 @@ All components in this library are styled by using the style tokens listed [here
 
 The library provides an interface for extending and overwriting properties of our base theme to enable the creation of custom application themes. This is accomplished by using SCSS maps for merging your newly defined style tokens and our base theme tokens and then injecting those into the components by CSS variables.
 
-If you want your application to support IE11, please look at the [IE11 support section](./documentation/theming/overview#ie11-support).
-
 ### Customizing the base theme
 In order to define your custom theme first create a file `<your-theme>.scss`.
 
@@ -107,31 +105,6 @@ And then use them as stated before:
   background: nx-theme(my-new-token);
 }
 ```
-
-#### IE11 Support
-If you want to use theming, this required a [css vars ponyfill](https://github.com/jhildenbiddle/css-vars-ponyfill/) for IE11
-as a dependency.
-
-For that purpose you need to install the css-vars-ponyfill:
-
-```
-npm install css-vars-ponyfill
-```
-
-Then, import the ponyfill into your `polyfill.ts` and call it:
-
-```ts
-import cssVars from 'css-vars-ponyfill';
-
-cssVars({
-  watch: true,
-  onlyLegacy: true,
-  shadowDOM: true
-});
-```
-
-The passed parameters above work in most of the project setups and are our recommendation. You can find more information on the cssVars config parameters [here](https://jhildenbiddle.github.io/css-vars-ponyfill/#/?id=options).
-
 
 ### General Theming Tokens
 

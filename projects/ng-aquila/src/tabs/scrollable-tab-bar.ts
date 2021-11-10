@@ -182,11 +182,6 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
   }
 
   private _scrollTabListTo(scrollLeft: number) {
-    if (typeof this.scrollableTabsList?.nativeElement.scrollTo === 'function') {
-      this.scrollableTabsList?.nativeElement.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-    } else {
-      // scrollTo() is not defined on IE
-      this.scrollableTabsList.nativeElement.scrollLeft = scrollLeft;
-    }
+    this.scrollableTabsList?.nativeElement.scrollTo({ left: scrollLeft, behavior: 'smooth' });
   }
 }

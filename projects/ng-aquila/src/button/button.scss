@@ -53,9 +53,6 @@
   hyphens: none;
   vertical-align: middle;
 
-  // Fix for IE to make overflowing indicators visible
-  overflow: visible;
-
   // Expand every button on mobile to the full width
   @include media-breakpoint-response(mobile) {
     display: block;

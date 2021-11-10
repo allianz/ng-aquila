@@ -153,7 +153,6 @@
 
       &:last-child,
       &:only-child {
-        box-shadow: 0 1px 0 0 windowText;       // IE11
         border-bottom: 1px solid CanvasText;    // Chromium Edge
       }
     }

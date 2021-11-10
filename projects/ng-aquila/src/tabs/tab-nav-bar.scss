@@ -21,7 +21,6 @@
     position: relative;
     overflow-x: scroll;
     outline: none;
-    -ms-overflow-style: none;   // hide scrollbar on IE
     scrollbar-width: none;      // hide scrollbar on firefox
 
     // hide scrollbar on chrome, edge, safari

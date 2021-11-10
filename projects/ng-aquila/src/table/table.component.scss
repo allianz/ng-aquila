@@ -285,11 +285,6 @@ $sticky-shadow-size: nx-spacer(3xs);
       margin-bottom: 0;
     }
   }
-
-  // fix alignment on IE
-  nx-link a {
-    display: inline-flex;
-  }
 }
 
 // sticky columns

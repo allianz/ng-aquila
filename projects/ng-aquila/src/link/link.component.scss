@@ -85,11 +85,6 @@
   line-height: inherit;
   display: inline;
 
-  // fix text - link alignment in IE11
-  ::ng-deep a {
-    display: inline;
-  }
-
   ::ng-deep nx-icon.nx-link__icon {
     vertical-align: bottom;
   }

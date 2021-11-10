@@ -50,11 +50,6 @@
   width: 100%;
   max-width: 100%;
 
-  /* IE10+ Fix to remove the clear button that appears on input */
-  &::-ms-clear {
-    display: none;
-  }
-
   /* Chrome Fix to remove clear button that appears on input[type=search] */
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,

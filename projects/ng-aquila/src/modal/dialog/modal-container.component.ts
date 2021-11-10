@@ -179,8 +179,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
   private _restoreFocus() {
     const toFocus = this._elementFocusedBeforeDialogWasOpened;
 
-    // We need the extra check, because IE can set the `activeElement` to null in some cases.
-    if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
+    if (this._config.restoreFocus && toFocus) {
       const activeElement = _getFocusedElementPierceShadowDom();
       const element = this._elementRef.nativeElement;
 

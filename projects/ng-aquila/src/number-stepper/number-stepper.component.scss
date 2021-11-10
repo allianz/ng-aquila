@@ -98,8 +98,6 @@ $margin-default: nx-spacer(s);
 }
 
 .nx-stepper__inner-wrapper {
-  // IE11 height fix
-  height: nx-line-height(xs);
   display: flex;
   align-items: baseline;
 }
@@ -142,11 +140,6 @@ $margin-default: nx-spacer(s);
 
   .nx-stepper__input-underline {
     margin-top: - nx-spacer(4xs);
-  }
-
-  .nx-stepper__inner-wrapper {
-    // IE11 height fix
-    height: nx-line-height(l);
   }
 }
 

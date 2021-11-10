@@ -142,11 +142,6 @@ $dropdown-border-size: nx-border-size(xs);
   padding: $dropdown-filter-input-padding;
   font-weight: nx-font-weight(light);
 
-  /* IE10+ Fix to remove the clear button that appears on input */
-  &::-ms-clear {
-    display: none;
-  }
-
   [dir="rtl"] & {
     padding: nx-flip-for-rtl($dropdown-filter-input-padding);
   }

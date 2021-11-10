@@ -54,7 +54,6 @@ $border-size: nx-border-size(m);
       margin: 0;
       width: 100%;
       max-width: 100%;
-      height: auto; // IE fix
       box-shadow: none; // FF fix
       padding: 0 nx-spacer(2xs);
 
@@ -70,11 +69,6 @@ $border-size: nx-border-size(m);
 
       &.is-disabled {
         cursor: not-allowed;
-      }
-
-      /* IE10+ Fix to remove the clear button that appears on input */
-      &::-ms-clear {
-        display: none;
       }
     }
 

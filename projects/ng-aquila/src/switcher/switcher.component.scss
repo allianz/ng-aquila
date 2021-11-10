@@ -37,7 +37,6 @@ $switcher-border-radius: nx-border-radius(m);
   position: relative;
   display: inline-block;
   width: nx-spacer(4m);
-  min-width: nx-spacer(4m); // fix for IE11
   height: nx-spacer(m);
   @include var(background-color, switcher-unchecked-background-color);
   border-radius: $switcher-border-radius;
@@ -96,7 +95,6 @@ $switcher-border-radius: nx-border-radius(m);
 
   .nx-switcher__toggle {
     width: nx-spacer(l);
-    min-width: nx-spacer(l); // fix for IE11
     height: nx-spacer(2m);
   }
 

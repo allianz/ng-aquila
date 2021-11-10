@@ -343,12 +343,6 @@ Component tokens are the themable parts of components which typically reuse glob
 
 These component specific tokens are necessary to make the design language of the library changeable by the consumers. If we would use `interactive-primary` directly in the code of the button here, you would have to use other ways (css + ng-deep) to change the primary button to a different color than `interactive-primary`. This makes the theming feature a lot more complex but typically you only have to change a few tokens for a theme.
 
-### IE11 Support
-IE11 doesn't support CSS variables so projects have to use the css-var-ponyfill.
-A limitation of this ponyfill is that all declarations have to be done in the `:root` element.
-
-Historically we didn't want to break existing projects when we introduced theming. So you might find some css lines which use a `var()` mixin that automatically created an additional line of css for the property. That is considered and shouldn't be done anymore.
-
 ## High contrast support
 We strive to support the Windows high contrast mode and the newer forced colors mode in all components by using CSS system colors.
 

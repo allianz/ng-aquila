@@ -1,4 +1,4 @@
-import { chain, noop, Rule, Tree, SchematicContext, apply, mergeWith, url, MergeStrategy, SchematicsException, move, applyTemplates } from '@angular-devkit/schematics';
+import { chain, noop, Rule, Tree, SchematicContext, apply, mergeWith, url, MergeStrategy, SchematicsException, move } from '@angular-devkit/schematics';
 import {
   addModuleImportToRootModule,
   getProjectFromWorkspace,
@@ -9,7 +9,7 @@ import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import * as chalk from 'chalk';
 import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import { Schema } from './schema';
-import { JsonArray, template } from '@angular-devkit/core';
+import { JsonArray } from '@angular-devkit/core';
 import { isAngularApplicationProject } from '../utils/utils';
 
 export default function (options: Schema): Rule {
@@ -20,8 +20,7 @@ export default function (options: Schema): Rule {
       options && options.starter ? addStarterApp(options) : noop(),
       addAposinTheme(options),
       addCdkStyles(options),
-      addCdkA11yStyles(options),
-      addPonyfillToPolyfills(options)
+      addCdkA11yStyles(options)
     ]);
   };
 }
@@ -144,37 +143,6 @@ function addStyles(options: Schema, path: string, importString: string) {
     const recorder = host.beginUpdate(styleFilePath);
 
     recorder.insertLeft(htmlContent.length, insertion);
-    host.commitUpdate(recorder);
-  };
-}
-
-export function addPonyfillToPolyfills(options: Schema) {
-  return async (host: Tree) => {
-    const workspace = await getWorkspace(host);
-    const project = getProjectFromWorkspace(workspace, options.project);
-    const buildOptions = getProjectTargetOptions(project, 'build');
-
-    if (!buildOptions.polyfills) {
-      throw new Error(`Could not find polyfills.ts in ${project.sourceRoot}`);
-    }
-
-    const polyfillsTs = buildOptions.polyfills as string;
-    const polyfillsFile = host.read(polyfillsTs);
-
-    if (!polyfillsFile) {
-      throw new Error(`Failed to read ${polyfillsTs} content`);
-    }
-
-    const tsContent = polyfillsFile.toString();
-    const insertion = '\n' + `import cssVars from 'css-vars-ponyfill';` + '\n' + 'cssVars({ watch: true, onlyLegacy: true, shadowDOM: true});' + '\n';
-
-    if (tsContent.includes(insertion)) {
-      return;
-    }
-
-    const recorder = host.beginUpdate(polyfillsTs);
-
-    recorder.insertRight(tsContent.length, insertion);
     host.commitUpdate(recorder);
   };
 }

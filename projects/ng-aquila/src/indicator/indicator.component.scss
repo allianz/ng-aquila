@@ -89,13 +89,3 @@
   }
 
 }
-
-// Targeting IE11 inline-flex and absolute position troubles
-:host-context(_:-ms-fullscreen, :root) {
-  &.nx-indicator--over-icon,
-  &.nx-indicator--over-text {
-    display: block;
-    padding-top: 1px;
-    text-align: center;
-  }
-}
