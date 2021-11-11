@@ -1,11 +1,13 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-jasmine-rules"
+    "tslint-jasmine-rules",
+    "tslint-config-prettier"
   ],
   "rulesDirectory": [
-    "./tools/tslint-rules/",
-    "node_modules/codelyzer"
+    "node_modules/codelyzer",
+    "tslint-plugin-prettier",
+    "./tools/tslint-rules/"
   ],
   "linterOptions": {
     "exclude": [
@@ -13,6 +15,8 @@
     ]
   },
   "rules": {
+    "prettier": [true, ".prettierrc", { "editorconfig": false }],
+    
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
