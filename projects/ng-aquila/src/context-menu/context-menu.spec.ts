@@ -27,7 +27,6 @@ import {
 
 import { Subject } from 'rxjs';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxIconModule } from '../icon/public-api';
 import {
   dispatchKeyboardEvent,
@@ -72,7 +71,7 @@ describe('nxContextMenu', () => {
       providers
     }).compileComponents();
 
-    inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {
+    inject([OverlayContainer], (oc: OverlayContainer) => {
       overlayContainer = oc;
       overlayContainerElement = oc.getContainerElement();
     })();
@@ -1221,7 +1220,10 @@ describe('nxContextMenu', () => {
       const repeaterFixture = createComponent(NestedMenuRepeater);
       overlay = overlayContainerElement;
 
-      expect(() => repeaterFixture.detectChanges()).not.toThrow();
+      expect(() => {
+        repeaterFixture.detectChanges();
+        flush();
+      }).not.toThrow();
 
       repeaterFixture.componentInstance.rootTriggerEl.nativeElement.click();
       repeaterFixture.detectChanges();
@@ -1333,6 +1335,7 @@ describe('nxContextMenu', () => {
       const trigger = fixture.componentInstance.trigger;
       trigger.openContextMenu();
       fixture.detectChanges();
+      flush();
 
       const direction = (trigger as any)._overlayRef.getDirection();
       expect(direction).toBe('ltr');
@@ -1349,6 +1352,7 @@ describe('nxContextMenu', () => {
       const trigger = fixture.componentInstance.trigger;
       trigger.openContextMenu();
       fixture.detectChanges();
+      flush();
       const direction = (trigger as any)._overlayRef.getDirection();
       expect(direction).toBe('rtl');
     }));
@@ -1367,6 +1371,7 @@ describe('nxContextMenu', () => {
       spyOn(trigger, 'closeContextMenu');
       trigger.openContextMenu();
       fixture.detectChanges();
+      flush();
       changeEmitter.emit('ltr');
       expect(trigger.closeContextMenu).toHaveBeenCalledTimes(1);
       changeEmitter.complete();

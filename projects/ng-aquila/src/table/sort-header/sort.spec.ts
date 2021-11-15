@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ViewChild, Component, Type, Directive } from '@angular/core';
+import { ViewChild, Component, Type, Directive, Injectable } from '@angular/core';
 import { inject } from '@angular/core/testing';
 import { SortDirection, SortEvent } from './sort.directive';
 import { NxSortHeaderComponent } from './sort-header.component';
@@ -13,6 +13,7 @@ interface DataStructure {
   count: number;
 }
 
+@Injectable()
 class MyIntl extends NxSortHeaderIntl {
   sortAscendingAriaLabel = 'aufsteigend sortieren';
   sortDescendingAriaLabel = 'absteigend sortieren';

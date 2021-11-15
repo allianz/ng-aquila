@@ -1,4 +1,4 @@
-import { FocusKeyManager } from '@angular/cdk/a11y';
+import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import {
   ESCAPE,
@@ -19,8 +19,10 @@ import {
   Output,
   TemplateRef,
   ViewChild,
+  ContentChildren,
+  QueryList
 } from '@angular/core';
-import { merge, Observable, Subject, Subscription } from 'rxjs';
+import { merge, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { startWith, switchMap, take } from 'rxjs/operators';
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
@@ -41,14 +43,13 @@ export class NxContextMenuComponent
   implements AfterContentInit, OnDestroy {
   private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;
 
-  /** Menu items inside the current menu. */
-  private _items: NxContextMenuItemComponent[] = [];
-
-  /** Emits whenever the amount of menu items changes. */
-  private _itemChanges = new Subject<NxContextMenuItemComponent[]>();
+  @ContentChildren(NxContextMenuItemComponent)
+  private _items!: QueryList<NxContextMenuItemComponent>;
 
   /** Subscription to tab events on the menu panel */
   private _tabSubscription = Subscription.EMPTY;
+
+  private _init: ReplaySubject<void> = new ReplaySubject(1);
 
   /** Config object to be passed into the menu's ngClass */
   _classList: { [key: string]: boolean } = {};
@@ -92,22 +93,27 @@ export class NxContextMenuComponent
         this._items
       )
       .withWrap()
-      .withTypeAhead();
+      .withTypeAhead()
+      .setFocusOrigin('keyboard');
     this._tabSubscription = this._keyManager.tabOut.subscribe(() =>
       this.closed.emit('tab')
     );
+    this._init.next();
   }
 
   ngOnDestroy() {
     this._tabSubscription.unsubscribe();
     this.closed.complete();
+    this._init.complete();
   }
 
   /** Stream that emits whenever the hovered menu item changes. */
   _hovered(): Observable<NxContextMenuItemComponent> {
-    return this._itemChanges.pipe(
-      startWith(this._items),
-      switchMap(items => merge(...items.map(item => item._hovered)))
+    return this._init.pipe(
+      switchMap(() => this._items.changes.pipe(startWith(this._items))),
+      switchMap((items: QueryList<NxContextMenuItemComponent>) =>
+        merge(...items.map(item => item._hovered))
+      )
     );
   }
 
@@ -150,18 +156,15 @@ export class NxContextMenuComponent
   /**
    * Focus the first item in the menu.
    */
-  focusFirstItem(): void {
+  focusFirstItem(origin?: FocusOrigin): void {
     // When the content is rendered lazily, it takes a bit before the items are inside the DOM.
-    if (this.lazyContent) {
-      this._ngZone.onStable
-        .asObservable()
-        .pipe(take(1))
-        .subscribe(() =>
-          this._keyManager.setFirstItemActive()
-        );
-    } else {
-      this._keyManager.setFirstItemActive();
-    }
+    this._ngZone.onStable
+      .asObservable()
+      .pipe(take(1))
+      .subscribe(() => {
+        this._keyManager.setFirstItemActive();
+        this._keyManager.activeItem?.focus(origin);
+      });
   }
 
   /**
@@ -170,35 +173,6 @@ export class NxContextMenuComponent
    */
   resetActiveItem() {
     this._keyManager.setActiveItem(-1);
-  }
-
-  /**
-   * Registers a menu item with the context menu.
-   * @docs-private
-   */
-  addItem(item: NxContextMenuItemComponent) {
-    // We register the items through this method, rather than picking them up through
-    // `ContentChildren`, because we need the items to be picked up by their closest
-    // `nx-context-menu` ancestor. If we used `@ContentChildren(NxContextMenuItem, {descendants: true})`,
-    // all descendant items will bleed into the top-level menu in the case where the consumer
-    // has `nx-context-menu` instances nested inside each other.
-    if (this._items.indexOf(item) === -1) {
-      this._items.push(item);
-      this._itemChanges.next(this._items);
-    }
-  }
-
-  /**
-   * Removes an item from the context menu.
-   * @docs-private
-   */
-  removeItem(item: NxContextMenuItemComponent) {
-    const index = this._items.indexOf(item);
-
-    if (this._items.indexOf(item) > -1) {
-      this._items.splice(index, 1);
-      this._itemChanges.next(this._items);
-    }
   }
 
   /** Starts the enter animation. */

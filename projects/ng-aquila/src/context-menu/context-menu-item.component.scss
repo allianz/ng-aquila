@@ -84,7 +84,7 @@
     }
   }
 
-  &.cdk-keyboard-focused .nx-context-menu-item__content-wrapper {
+  &.cdk-keyboard-focused:focus .nx-context-menu-item__content-wrapper {
     border-radius: nx-border-radius(s);
     outline: 0;
     @include focus-style;

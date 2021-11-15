@@ -1,4 +1,6 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
+import { FocusOrigin } from '@angular/cdk/a11y';
+
 import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
   ConnectedPosition,
@@ -39,11 +41,6 @@ export const MENU_PANEL_OFFSET_Y = 8;
 export const MENU_PANEL_OFFSET_X = 8;
 
 export type NxContextMenuScrollStrategy = 'close' | 'reposition';
-
-/** Options for binding a passive event listener. */
-const passiveEventListenerOptions = normalizePassiveListenerOptions({
-  passive: true
-});
 
 /**
  * This directive is intended to be used in conjunction with an nx-context-menu tag.
@@ -180,14 +177,14 @@ export class NxContextMenuTriggerDirective
   }
 
   /** Toggles the context menu between the open and closed states. */
-  toggleContextMenu(): void {
+  toggleContextMenu(origin?: FocusOrigin): void {
     return this.contextMenuOpen
       ? this.closeContextMenu()
-      : this.openContextMenu();
+      : this.openContextMenu(origin);
   }
 
   /** Opens the context menu. */
-  openContextMenu(): void {
+  openContextMenu(origin?: FocusOrigin): void {
     if (this.contextMenuOpen) {
       return;
     }
@@ -209,7 +206,8 @@ export class NxContextMenuTriggerDirective
     this._closingActionsSubscription = this._contextMenuClosingActions().subscribe(
       () => this.closeContextMenu()
     );
-    this._initContextMenu();
+
+    this._initContextMenu(origin);
 
     if (this.contextMenu instanceof NxContextMenuComponent) {
       this.contextMenu._startAnimation();
@@ -265,13 +263,13 @@ export class NxContextMenuTriggerDirective
    * This method sets the context menu state to open and focuses the first item if
    * the context menu was opened via the keyboard.
    */
-  private _initContextMenu(): void {
+  private _initContextMenu(origin?: FocusOrigin): void {
     this.contextMenu.parentMenu = this.triggersSubmenu()
       ? this._parentMenu
       : undefined;
     this.contextMenu.direction = this.dir;
     this._setIsContextMenuOpen(true);
-    this.contextMenu.focusFirstItem();
+    this.contextMenu.focusFirstItem(origin);
   }
 
   /**
@@ -452,18 +450,20 @@ export class NxContextMenuTriggerDirective
       ((keyCode === RIGHT_ARROW && this.dir === 'ltr') ||
         (keyCode === LEFT_ARROW && this.dir === 'rtl'))
     ) {
-      this.openContextMenu();
+      this.openContextMenu('keyboard');
     }
   }
 
   /** Handles click events on the trigger. */
   _handleClick(event: MouseEvent): void {
+    const origin: FocusOrigin = event.detail ? 'program' : 'keyboard';
+
     if (this.triggersSubmenu()) {
       // Stop event propagation to avoid closing the parent menu.
       event.stopPropagation();
-      this.openContextMenu();
+      this.openContextMenu(origin);
     } else {
-      this.toggleContextMenu();
+      this.toggleContextMenu(origin);
     }
   }
 
@@ -508,9 +508,9 @@ export class NxContextMenuTriggerDirective
               delay(0, asapScheduler),
               takeUntil(this._parentMenu._hovered())
             )
-            .subscribe(() => this.openContextMenu());
+            .subscribe(() => this.openContextMenu('mouse'));
         } else {
-          this.openContextMenu();
+          this.openContextMenu('mouse');
         }
       });
   }

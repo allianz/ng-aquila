@@ -10,9 +10,8 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
-import { NxContextMenuComponent } from './context-menu.component';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 
 /**
  * This directive is intended to be used inside an nx-context-menu tag.
@@ -71,29 +70,23 @@ export class NxContextMenuItemComponent implements OnDestroy {
     private _elementRef: ElementRef<HTMLElement>,
     @Inject(DOCUMENT) document: any,
     private _changeDetectorRef: ChangeDetectorRef,
-    @Inject(NxContextMenuComponent)
-    @Optional() private _parentMenu: NxContextMenuComponent,
     private _focusMonitor: FocusMonitor
   ) {
-
-    if (_parentMenu && _parentMenu.addItem) {
-      _parentMenu.addItem(this);
-    }
 
     this._document = document;
     this._focusMonitor.monitor(this._elementRef);
   }
 
   /** Focuses this context menu item. */
-  focus(): void {
-    this._getHostElement().focus();
+  focus(origin?: FocusOrigin): void {
+    if (origin) {
+      this._focusMonitor.focusVia(this._getHostElement(), origin);
+    } else {
+      this._getHostElement().focus();
+    }
   }
 
   ngOnDestroy() {
-    if (this._parentMenu && this._parentMenu.removeItem) {
-      this._parentMenu.removeItem(this);
-    }
-
     this._hovered.complete();
     this._focusMonitor.stopMonitoring(this._elementRef);
   }
