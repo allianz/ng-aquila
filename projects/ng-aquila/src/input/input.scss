@@ -21,6 +21,8 @@
   // the user resized to will be overwritten once they start typing again.
   textarea.cdk-textarea-autosize {
     resize: none;
+    // This is necessary to avoid the vertical scrollbar that appears with border-box
+    box-sizing: content-box;
   }
 
   // This class is temporarily applied to the textarea when it is being measured. It is immediately
