@@ -19,11 +19,11 @@ We are building the following structure.
 
 
   <!-- Give a flex context to properly align suffix, input & postfix -->
-  <div class="nx-formfield__row" #connectionContainer>
+  <div class="nx-formfield__row">
     <div class="nx-formfield__flexfield">
 
 
-      <div class="nx-formfield__input-container">
+      <div class="nx-formfield__input-container" #connectionContainer>
         <div class="nx-formfield__prefix" *ngIf="_prefixChildren.length">
           <ng-content select="[nxFormfieldPrefix]"></ng-content>
         </div>
