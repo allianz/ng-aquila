@@ -20,7 +20,7 @@
   @include type-style(accordion-body);
 
   @include media-breakpoint-down(small) {
-    padding: nx-spacer(m) nx-spacer(s);
+    padding: v(accordion-regular-mobile-body-padding);
   }
 }
 
@@ -70,7 +70,7 @@
     padding: v(accordion-light-body-padding);
 
     @include media-breakpoint-down(small) {
-      padding: 0 0 nx-spacer(m);
+      padding: v(accordion-light-mobile-body-padding);
     }
   }
 }
