@@ -10,7 +10,7 @@
   }
 }
 
-button[class*="nx-button--"] {
+button[class*="nx-button--"]:not([nxSidebarToggle]) {
   margin: 0 0 24px;
 }
 
