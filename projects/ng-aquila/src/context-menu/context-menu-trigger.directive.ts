@@ -10,7 +10,7 @@ import {
   OverlayRef,
   ScrollStrategy,
 } from '@angular/cdk/overlay';
-import { normalizePassiveListenerOptions } from '@angular/cdk/platform';
+import { _getEventTarget } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
   AfterContentInit,
@@ -471,8 +471,8 @@ export class NxContextMenuTriggerDirective
   private _waitForClose() {
     return this._documentClickObservable
       .pipe(
-        map(event => event.target as Node),
-        filter((target: Node) => !this._element.nativeElement.contains(target)),
+        map(event => _getEventTarget(event)),
+        filter(target => !this._element.nativeElement.contains(target as Node | null)),
         takeUntil(this.contextMenu.closed))
       .subscribe(() => {
         this.closeContextMenu();

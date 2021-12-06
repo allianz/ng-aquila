@@ -10,6 +10,7 @@ import {
   ViewChildren,
   QueryList,
   Type,
+  ViewEncapsulation,
 } from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -39,6 +40,21 @@ import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
 // For better readablity here, We can safely ignore some conventions in our specs
 // tslint:disable:component-class-suffix
+
+@Component({
+    template: `
+      <nx-context-menu #menu="nxContextMenu">
+        <button nxContextMenuItem>Settings</button>
+        <button nxContextMenuItem>Preferences</button>
+      </nx-context-menu>
+      <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #trigger>Open</button>
+    `,
+    encapsulation: ViewEncapsulation.ShadowDom,
+})
+class ShadowDomTestComponent {
+    @ViewChild('trigger', { static: true, read: ElementRef }) trigger?: ElementRef<HTMLButtonElement>;
+    @ViewChild('menu', { static: true, read: NxContextMenuComponent }) menu?: NxContextMenuComponent;
+}
 
 class MockNgZone extends NgZone {
   onStable: EventEmitter<any> = new EventEmitter(false);
@@ -92,11 +108,29 @@ describe('nxContextMenu', () => {
 
   }
 
+  function getContextMenuElement(): HTMLDivElement | null {
+    return overlayContainer.getContainerElement().querySelector('.nx-context-menu');
+  }
+
   afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
     // Since we're resetting the testing module in some of the tests,
     // we can potentially have multiple overlay containers.
     currentOverlayContainer.ngOnDestroy();
     overlayContainer.ngOnDestroy();
+  }));
+
+  it('should open the menu in ShadowDom mode', fakeAsync(() => {
+    const fixture = createComponent(ShadowDomTestComponent);
+    fixture.detectChanges();
+    expect(getContextMenuElement()).toBeNull();
+    fixture.componentInstance.trigger!.nativeElement.click();
+    fixture.detectChanges();
+    flush();
+    expect(getContextMenuElement()).toBeTruthy();
+    fixture.componentInstance.trigger!.nativeElement.click();
+    fixture.detectChanges();
+    flush();
+    expect(getContextMenuElement()).toBeNull();
   }));
 
   it('should open the menu as an idempotent operation', () => {
