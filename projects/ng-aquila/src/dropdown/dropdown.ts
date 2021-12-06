@@ -40,6 +40,7 @@ import {
   ContentChild,
   ViewChildren,
   QueryList,
+  AfterViewInit,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { BehaviorSubject, merge, Observable, Subject, Subscription } from 'rxjs';
@@ -103,7 +104,7 @@ export class NxDropdownSelectChange<T = any> {
   }
 })
 export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor,
-  OnInit, AfterContentInit, OnDestroy, DoCheck {
+  OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck {
 
   // The dropdown currently doesn't support readonly of the NxFormfieldControl so we hardcode it here
   readonly readonly: boolean = false;
@@ -486,6 +487,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     this._selectionModel = new SelectionModel(this.isMultiSelect);
   }
 
+  ngAfterViewInit() {
+    this._initKeyManager();
+  }
+
   ngAfterContentInit() {
     this._closedDropdownLabel =
       this._customClosedDropdownLabel && this._customClosedDropdownLabel.templateRef || this._defaultClosedDropdownLabel;
@@ -541,6 +546,18 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       .withHorizontalOrientation('ltr')
       .skipPredicate(item => item._hidden || item.disabled);
 
+    this._keyManager.tabOut.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
+      // Restore focus to the trigger before closing. Ensures that the focus
+      // position won't be lost if the user got focus into the overlay.
+      this.closePanel();
+    });
+
+    this._keyManager.change.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
+      this._scrollActiveOptionIntoView();
+    });
+  }
+
+  private _initActiveItem() {
     if (!this.isMultiSelect && this._selectionModel.selected[0]) {
       const option = this.dropdownItems.find(o => o.value === this._selectionModel.selected[0].value);
 
@@ -551,16 +568,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     } else {
       this._keyManager.setFirstItemActive();
     }
-
-    this._keyManager.tabOut.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
-      // Restore focus to the trigger before closing. Ensures that the focus
-      // position won't be lost if the user got focus into the overlay.
-      this.closePanel();
-    });
-
-    this._keyManager.change.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
-      this._scrollActiveOptionIntoView();
-    });
   }
 
   private _subscribeToOptionChanges(): void {
@@ -746,13 +753,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     this._panelOpen = true;
 
     setTimeout(() => {
-      this._initKeyManager();
       this._selectionModel.selected.forEach((selectedOption) => {
         const option = this.dropdownItems.find(o => o.value === selectedOption.value);
         if (option) {
           option._initSelected(true);
         }
       });
+      this._initActiveItem();
     });
 
     this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
