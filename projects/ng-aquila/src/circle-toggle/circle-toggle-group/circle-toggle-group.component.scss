@@ -19,10 +19,3 @@
   }
 }
 
-:host(.is-expert) {
-  justify-content: flex-start;
-
-  ::ng-deep .nx-toggle-circle {
-    margin-right: nx-spacer(xl);
-  }
-}
