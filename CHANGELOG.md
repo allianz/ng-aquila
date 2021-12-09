@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [12.2.1](https://github.com/aposin/ng-aquila/compare/v12.2.0...v12.2.1) (2021-12-07)
+
+
+### Bug Fixes
+
+* **accordion:** correct paddings and add missing css variables ([0f7a231](https://github.com/aposin/ng-aquila/commit/0f7a23132ddc0d1a9e2e572490be03fa1c21a563))
+* **circle-toggle:** remove forced layout for expert style ([9c5bc54](https://github.com/aposin/ng-aquila/commit/9c5bc544b995b925386235f4b3454c72695593fd))
+* **context-menu:** fix keyboard focus ([f48e824](https://github.com/aposin/ng-aquila/commit/f48e82448809416497cb95995e3d7f8a2cf629ea))
+* **context-menu:** open by trigger in shadow dom ([97991e8](https://github.com/aposin/ng-aquila/commit/97991e81296661f27e3f6e0a3422be786b6899d4))
+* **dropdown:** prevent false focus visuals ([060c09f](https://github.com/aposin/ng-aquila/commit/060c09f16465af7152d9c0d93b83b7078109b7ca))
+* **formfield:** connection container position ([31d1fae](https://github.com/aposin/ng-aquila/commit/31d1fae419b5d990fa7875f5c34ce2fb3f7dc041))
+* **input:** change autosized textarea box sizing ([9febc8c](https://github.com/aposin/ng-aquila/commit/9febc8c8b569df34cfa0cf22594e5445b158580d))
+* **sidebar:** toggle button exception for compatibility stylesheet ([bac8599](https://github.com/aposin/ng-aquila/commit/bac85996c1240572ee2b78f8438246450dc67ddf))
+
+
+
 # [12.2.0](https://github.com/aposin/ng-aquila/compare/v12.1.1...v12.2.0) (2021-10-27)
 
 
