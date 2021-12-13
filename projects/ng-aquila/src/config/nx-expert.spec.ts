@@ -18,6 +18,7 @@ import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@ap
 import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
+import { NxDataDisplayComponent, NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
 
 @Directive()
 abstract class PresetTest {
@@ -39,6 +40,8 @@ abstract class PresetTest {
   smallStageInstance!: NxSmallStageComponent;
   @ViewChild(NxCircleToggleGroupComponent)
   circleToggleGroupInstance!: NxCircleToggleGroupComponent;
+  @ViewChild(NxDataDisplayComponent)
+  dataDisplayInstance!: NxDataDisplayComponent;
 }
 
 describe('NxExpertPreset', () => {
@@ -54,6 +57,7 @@ describe('NxExpertPreset', () => {
   let selectableCardInstance: NxSelectableCardComponent;
   let smallStageInstance: NxSmallStageComponent;
   let circleToggleGroupInstance: NxCircleToggleGroupComponent;
+  let dataDisplayInstance: NxDataDisplayComponent;
 
   function createTestComponent(component: Type<PresetTest>) {
     fixture = TestBed.createComponent(component);
@@ -69,6 +73,7 @@ describe('NxExpertPreset', () => {
     selectableCardInstance = testInstance.selectableCardInstance;
     smallStageInstance = testInstance.smallStageInstance;
     circleToggleGroupInstance = testInstance.circleToggleGroupInstance;
+    dataDisplayInstance = testInstance.dataDisplayInstance;
   }
 
   beforeEach(
@@ -85,7 +90,8 @@ describe('NxExpertPreset', () => {
           NxTabsModule,
           NxCardModule,
           NxSmallStageModule,
-          NxCircleToggleModule
+          NxCircleToggleModule,
+          NxDataDisplayModule
         ],
         declarations: [
           DatepickerPresetComponent,
@@ -97,7 +103,8 @@ describe('NxExpertPreset', () => {
           ComparisonTablePresetComponent,
           SelectableCardPresetComponent,
           SmallStagePresetComponent,
-          CircleToggleGroupPresetComponent
+          CircleToggleGroupPresetComponent,
+          DataDisplayPresetComponent
         ]
       }).compileComponents();
     })
@@ -173,6 +180,13 @@ describe('NxExpertPreset', () => {
     it('should set appearance to expert', () => {
       createTestComponent(CircleToggleGroupPresetComponent);
       expect(circleToggleGroupInstance.appearance).toBe('expert');
+    });
+  });
+
+  describe('data display presets', () => {
+    it('should set size to medium', () => {
+      createTestComponent(DataDisplayPresetComponent);
+      expect(dataDisplayInstance.size).toBe('medium');
     });
   });
 });
@@ -298,3 +312,10 @@ class SmallStagePresetComponent extends PresetTest {}
   `
 })
 class CircleToggleGroupPresetComponent extends PresetTest {}
+
+@Component({
+  template: `
+    <nx-data-display></nx-data-display>
+  `
+})
+class DataDisplayPresetComponent extends PresetTest {}

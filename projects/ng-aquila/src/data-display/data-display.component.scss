@@ -1,0 +1,29 @@
+@import '../shared-styles/index';
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  &.is-horizontal {
+    flex-direction: row;
+    
+    ::ng-deep > nx-data-display-label:after {
+      display: inline;
+      content: ':\a0';
+    }
+  }
+
+  &.is-small {
+    @include type-style(data-display-small);
+  }
+
+  &.is-medium {
+    @include type-style(data-display-medium);
+  }
+
+  &.is-large {
+    @include type-style(data-display-large);
+  }
+}
+
+
