@@ -317,10 +317,7 @@ You can build only the library with:
 
 ```shell
 $ npm run build:lib
-$ npm run build:lib:ivy
 ```
-
-Angular currently assumes libraries to still be shipped with the old compiler `View engine`. That's why we build the library with both compilers on the CI builds to be ready for ivy.
 
 All build artifacts are placed into the `dist` folder.
 The library is built with [ng-packagr](https://github.com/dherges/ng-packagr) which generates the necessary bundles to be consumed by most build systems.
@@ -331,10 +328,6 @@ The library is built with [ng-packagr](https://github.com/dherges/ng-packagr) wh
 The unit tests are run with
 
 `npm run test:lib`
-
-To also be already prepared for ivy we also run the tests with the ivy compiler. You can do this with
-
-`npm run test:lib:ivy`
 
 ## Theming
 The library supports different use cases with different style philosophies that's why all components must be themable in a very flexible way. Because we use the default view encapsulation we decided to go for CSS custom properties (a.k.a CSS variables) to pierce through the encapsulation.
@@ -349,12 +342,6 @@ Component tokens are the themable parts of components which typically reuse glob
 ```
 
 These component specific tokens are necessary to make the design language of the library changeable by the consumers. If we would use `interactive-primary` directly in the code of the button here, you would have to use other ways (css + ng-deep) to change the primary button to a different color than `interactive-primary`. This makes the theming feature a lot more complex but typically you only have to change a few tokens for a theme.
-
-### IE11 Support
-IE11 doesn't support CSS variables so projects have to use the css-var-ponyfill.
-A limitation of this ponyfill is that all declarations have to be done in the `:root` element.
-
-Historically we didn't want to break existing projects when we introduced theming. So you might find some css lines which use a `var()` mixin that automatically created an additional line of css for the property. That is considered and shouldn't be done anymore.
 
 ## High contrast support
 We strive to support the Windows high contrast mode and the newer forced colors mode in all components by using CSS system colors.

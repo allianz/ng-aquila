@@ -55,9 +55,9 @@ const TEST_TEMPLATE_FILES = [
 ];
 
 const TAGS: string[] = ['aposin', 'aquila', 'example'];
-const angularVersion = '^12.2.0';
-const materialVersion = '^12.2.0';
-const aquilaVersion = '^12.0.0';
+const angularVersion = '^13.0.0';
+const materialVersion = '^13.0.0';
+const aquilaVersion = '^13.0.0';
 
 const dependencies = {
   '@angular/animations': angularVersion,
@@ -70,16 +70,19 @@ const dependencies = {
   '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
   '@aposin/ng-aquila': aquilaVersion,
-  'css-vars-ponyfill': '^2.4.6',
-  'dayjs': '^1.10.6',
+  '@fortawesome/fontawesome-free': '^5.15.4',
+  'chalk': '^4.1.2',
+  'core-js': '^3.18.3',
+  'dayjs': '^1.10.7',
+  'decimal.js': '^10.3.1',
+  'fs-extra': '^9.1.0',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
-  'object-fit-images': '^3.2.4',
-  'rxjs': '~6.6.0',
-  'tslib': '^2.3.0',
-  'zone.js': '~0.10.2',
-  'libphonenumber-js': '^1.9.23',
-  'i18n-iso-countries': '^6.5.0'
+  'rxjs': '^6.6.7',
+  'tslib': '^2.3.1',
+  'zone.js': '~0.11.4',
+  'libphonenumber-js': '^1.9.38',
+  'i18n-iso-countries': '^6.8.0'
 };
 
 const testDependencies = {
@@ -93,16 +96,22 @@ const testDependencies = {
   '@angular/platform-browser-dynamic': angularVersion,
   '@angular/router': angularVersion,
   '@aposin/ng-aquila': aquilaVersion,
+  '@fortawesome/fontawesome-free': '^5.15.4',
   '@types/jasmine': '^3.8.2',
+  'jasmine': '^3.10.0',
   'jasmine-core': '^3.6.0',
-  'css-vars-ponyfill': '^2.4.6',
-  'dayjs': '^1.10.6',
+  'chalk': '^4.1.2',
+  'core-js': '^3.18.3',
+  'dayjs': '^1.10.7',
+  'decimal.js': '^10.3.1',
+  'fs-extra': '^9.1.0',
   'iban': '^0.0.14',
   'moment': '^2.29.1',
-  'object-fit-images': '^3.2.4',
-  'rxjs': '~6.6.0',
-  'tslib': '^2.3.0',
-  'zone.js': '~0.11.4'
+  'rxjs': '^6.6.7',
+  'tslib': '^2.3.1',
+  'zone.js': '~0.11.4',
+  'libphonenumber-js': '^1.9.38',
+  'i18n-iso-countries': '^6.8.0'
 };
 
 /**

@@ -1,12 +1,11 @@
 import { SchematicTestSetup, Collection } from '../utils/testing/test-setup';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
 import { getProjectFromWorkspace } from '@angular/cdk/schematics';
-import { ProjectDefinition } from '@angular-devkit/core/src/workspace';
-import { isJsonArray } from '@angular-devkit/core';
+import { workspaces } from '@angular-devkit/core';
 
 describe('ng-aquila ng add', () => {
   const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
-  let testProjectConfig: ProjectDefinition;
+  let testProjectConfig: workspaces.ProjectDefinition;
 
   async function getTestProjectConfig() {
     const workspace = await getWorkspace(testSetup.appTree);
@@ -33,10 +32,6 @@ describe('ng-aquila ng add', () => {
         .toContain('@import "@angular/cdk/overlay-prebuilt.css";');
       expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css'))
         .toContain('@import "@angular/cdk/a11y-prebuilt.css";');
-    });
-
-    it('should add css var ponyfill', async () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/polyfills.ts')).toContain('cssVars(');
     });
 
     it('should not write Starter App files by default', () => {

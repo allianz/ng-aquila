@@ -1,9 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc",
+    "outDir": "../../dist/out-tsc",
     "types": ["jasmine", "node", "karma-viewport"],
-    "target": "es5",
     "allowSyntheticDefaultImports": true
   },
   "files": ["test.ts"],

@@ -30,7 +30,6 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
   private _destroyed: Subject<void> = new Subject();
   selectedTheme: Theme;
   themes: Theme[];
-  private _ponyFillIsRunning = false;
 
   mobileSidebar: boolean = false;
 

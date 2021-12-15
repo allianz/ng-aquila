@@ -56,6 +56,9 @@ export class NxVersionSelectComponent {
 
   public changeVersion(event: Event) {
     const url = this.versions.channels.find(channel => channel.name === (event.target as HTMLInputElement).value)?.url;
-    window.top.location.href = url as string;
+
+    if (url && window.top) {
+      window.top.location.href = url;
+    }
   }
 }

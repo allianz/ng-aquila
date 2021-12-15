@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Directionality } from '@angular/cdk/bidi';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input } from '@angular/core';
 
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 
@@ -48,4 +50,7 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
     return null;
   }
 
+  constructor(_cdr: ChangeDetectorRef, _dir: Directionality, _el: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
+    super(_cdr, _dir, _el, _document);
+  }
 }

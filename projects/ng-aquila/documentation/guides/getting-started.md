@@ -10,10 +10,10 @@ You should have Node.js and the Angular CLI installed.
 
 ### Automatic setup with ng add
 
-1. **Create your project with [Angular CLI version 11](https://cli.angular.io/):**
+1. **Create your project with [Angular CLI](https://cli.angular.io/):**
 
     ```console
-    npm install -g @angular/cli@11
+    npm install -g @angular/cli
     ng new my-aposin-project
     ```
 
@@ -39,10 +39,10 @@ Now you can include components and start building your application.
 
 You can also install ng-aquila manually.
 
-1. **Create your project with [Angular CLI version 11](https://cli.angular.io/):**
+1. **Create your project with [Angular CLI](https://cli.angular.io/):**
 
     ```
-    npm install -g @angular/cli@11
+    npm install -g @angular/cli
     ng new my-aposin-project
     ```
 
@@ -108,26 +108,6 @@ You can also install ng-aquila manually.
     export class AppModule {}
     ```
 
-5. **Support for IE11 (optional)**
-
-    If you need to support IE11, a polyfill is needed:
-
-    ```
-    npm install css-vars-ponyfill
-    ```
-
-    To activate it, include these two lines in your `polyfills.ts`:
-
-    ```ts
-    import cssVars from 'css-vars-ponyfill';
-    cssVars({ watch: true, onlyLegacy: true, shadowDOM: true});
-    ```
-
-    If you use the [image component](./documentation/image/overview), you also need the [object-fit-images](https://github.com/fregante/object-fit-images) polyfill (`npm install object-fit-images`).
-
-    You can check the supported versions of these polyfills [here](https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json).
-
-
 ### Device and Browser Support
 We fully support the following browsers:
 
@@ -136,7 +116,7 @@ We fully support the following browsers:
 - MS Edge: 2 most recent major versions
 - Safari: 2 most recent major versions
 
-IE11 is deprecated and it is recommend to use modern browsers instead. Using IE11 can have a negative impact on UX and performance. With Angular NDBX v13 (expected in fall 2021) we will fully drop IE11 support, following the strategy of [Angular](https://github.com/angular/angular/issues/41840). 
+We do not support IE11 since version 13 and recommend to use modern browsers instead.
 
 ### Contributing
 We do not support external contributions yet, but hope we can in future. 

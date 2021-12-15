@@ -93,7 +93,7 @@ class Walker extends Lint.RuleWalker {
                 break;
             }
             const symbol = this._typeChecker.getTypeAtLocation(baseType).getSymbol();
-            currentClass = symbol && ts.isClassDeclaration(symbol.valueDeclaration) ?
+            currentClass = (symbol === null || symbol === void 0 ? void 0 : symbol.valueDeclaration) && ts.isClassDeclaration(symbol.valueDeclaration) ?
                 symbol.valueDeclaration : null;
             if (currentClass) {
                 // Acceptance members should not be re-declared in the derived class. This

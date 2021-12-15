@@ -7,11 +7,16 @@ import {
   QueryList,
   ContentChildren,
   ViewChildren,
-  AfterViewChecked
+  AfterViewChecked,
+  ChangeDetectorRef,
+  ElementRef,
+  Inject
 } from '@angular/core';
 import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
 import { NxMultiStepperGroupComponent } from './multi-step-group.component';
 import { NxMultiStepperDirection } from '../progress-stepper.models';
+import { Directionality } from '@angular/cdk/bidi';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'nx-multi-stepper',
@@ -54,6 +59,10 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective
     this._direction = value;
   }
   private _direction: NxMultiStepperDirection = 'horizontal';
+
+  constructor(_cdr: ChangeDetectorRef, _dir: Directionality, _el: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
+    super(_cdr, _dir, _el, _document);
+  }
 
   ngAfterViewChecked() {
     // the _keyManager is currently private in the CdkStepper and the CDK/Material way

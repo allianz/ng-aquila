@@ -8,7 +8,7 @@ properties([
   buildDiscarder([$class: 'EnhancedOldBuildDiscarder', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', discardOnlyOnSuccess: false, numToKeepStr: '3'])
 ])
 
-node('nodejs-with-browsers-latest') {
+node('nodejs-with-browsers-v12') {
   skipDefaultCheckout()
 
   scmVars = checkout scm
@@ -67,28 +67,11 @@ node('nodejs-with-browsers-latest') {
     }
   }
 
-  stage ("View Engine Tests Library") {
-    shared.withNotification('ci/test/library:ve', "VE Test library") {
-      echo 'Testing ng-aquila with view engine'
-
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false'
-    }
-  }
-
-  stage ("Build documentation with Ivy artefacts") {
-    echo "Running integration builds"
-
-    shared.withNotification('ci/build/documentation', "Smoke test of new docs") {
-      echo "Run documentation build"
-      sh "npm run build:docs -- --no-progress"
-    }
-  }
-
   stage("Ivy Test Library") {
     shared.withNotification('ci/test/library', "Unit Test Library") {
       echo 'Running Unit Tests'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:ivy -- --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
           The unit test will generate some report files
           which we want to save in the jenkins job (junit log & coverage)
@@ -114,7 +97,7 @@ node('nodejs-with-browsers-latest') {
   stage("Ivy Build Library") {
     shared.withNotification('ci/build/library', "Build Library") {
       echo 'Building Library'
-      sh 'npm run build:lib:ivy'
+      sh 'npm run build:lib'
     }
   }
 
@@ -125,12 +108,6 @@ node('nodejs-with-browsers-latest') {
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --no-progress"
-    }
-  }
-
-  stage ("View Engine Build Library") {
-    shared.withNotification('ci/build/library/ve', "VE Build library") {
-      sh "npm run build:lib"
     }
   }
 }

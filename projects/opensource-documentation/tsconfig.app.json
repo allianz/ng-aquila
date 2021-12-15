@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "target": "es5"
+    "outDir": "../../dist/out-tsc"
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true
