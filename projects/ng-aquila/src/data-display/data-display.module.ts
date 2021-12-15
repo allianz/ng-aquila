@@ -1,20 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {
-  NxDataDisplayComponent,
-  NxDataDisplayLabelComponent,
-  NxDataDisplayValueComponent
-} from './data-display.component';
+import { NxDataDisplayComponent, NxDataDisplayLabelComponent } from './data-display.component';
 
 @NgModule({
+  imports: [
+    CommonModule,
+  ],
   declarations: [
     NxDataDisplayComponent,
     NxDataDisplayLabelComponent,
-    NxDataDisplayValueComponent
   ],
   exports: [
     NxDataDisplayComponent,
     NxDataDisplayLabelComponent,
-    NxDataDisplayValueComponent
   ]
 })
 export class NxDataDisplayModule {}

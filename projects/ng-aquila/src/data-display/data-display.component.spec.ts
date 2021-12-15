@@ -1,16 +1,17 @@
 import { ComponentHarness } from '@angular/cdk/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
-import { NxDataDisplayComponent, NxDataDisplayDirection, NxDataDisplaySize } from './data-display.component';
+import { NxDataDisplayComponent } from './data-display.component';
 import { NxDataDisplayModule } from './data-display.module';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { NxDataDisplayOrientation, NxDataDisplaySize } from './data-display.models';
 
 class DataDisplayHarness extends ComponentHarness {
   static hostSelector = 'nx-data-display';
 
   getLabel = this.locatorFor('nx-data-display-label');
 
-  getValue = this.locatorFor('nx-data-display-value');
+  getValue = this.locatorFor('.nx-data-display__value');
 
   async getLabelText(): Promise<string> {
     const label = await this.getLabel();
@@ -44,6 +45,7 @@ describe('DataDisplayComponent', () => {
       imports: [NxDataDisplayModule],
       declarations: [
         BasicDataDisplayTestComponent,
+        CustomLabelDataDisplayTestComponent,
         ConfigurableDataDisplayTestComponent
       ]
     }).compileComponents();
@@ -81,10 +83,24 @@ describe('DataDisplayComponent', () => {
     });
   });
 
-  describe('when setting direction', () => {
+  describe('custom label', () => {
+    beforeEach(async () => {
+      await createComponent(CustomLabelDataDisplayTestComponent);
+    });
+
+    it('should create', () => {
+      expect(dataDisplay).toBeTruthy();
+    });
+
+    it('contains the label', async () => {
+      expect(await dataDisplayHarness.getLabelText()).toBe('Example label');
+    });
+  });
+
+  describe('when setting orientation', () => {
     beforeEach(async () => {
       await createComponent(ConfigurableDataDisplayTestComponent);
-      testInstance.direction = 'horizontal';
+      testInstance.orientation = 'horizontal';
       fixture.detectChanges();
     });
 
@@ -111,15 +127,14 @@ describe('DataDisplayComponent', () => {
 @Directive()
 abstract class DataDisplayTestComponent {
   @ViewChild(NxDataDisplayComponent) dataDisplay!: NxDataDisplayComponent;
-  direction: NxDataDisplayDirection = 'vertical';
+  orientation: NxDataDisplayOrientation = 'vertical';
   size: NxDataDisplaySize = 'small';
 }
 
 @Component({
   template: `
-  <nx-data-display>
-    <nx-data-display-label>Example label</nx-data-display-label>
-    <nx-data-display-value>Example value</nx-data-display-value>
+  <nx-data-display label="Example label">
+    Example value
   </nx-data-display>
    `
 })
@@ -127,9 +142,18 @@ class BasicDataDisplayTestComponent extends DataDisplayTestComponent {}
 
 @Component({
   template: `
-  <nx-data-display [direction]="direction" [size]="size">
+  <nx-data-display>
     <nx-data-display-label>Example label</nx-data-display-label>
-    <nx-data-display-value>Example value</nx-data-display-value>
+    Example value
+  </nx-data-display>
+   `
+})
+class CustomLabelDataDisplayTestComponent extends DataDisplayTestComponent {}
+
+@Component({
+  template: `
+  <nx-data-display label="Example label" [orientation]="orientation" [size]="size">
+    Example value
   </nx-data-display>
    `
 })

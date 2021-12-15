@@ -1,0 +1,11 @@
+<nx-data-display-label *ngIf="label; else labelTemplate">
+  {{ label }}
+</nx-data-display-label>
+
+<ng-template #labelTemplate>
+  <ng-content select="nx-data-display-label"></ng-content>
+</ng-template>
+
+<div class="nx-data-display__value">
+  <ng-content></ng-content>
+</div>
