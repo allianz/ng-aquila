@@ -277,7 +277,9 @@ $outline-padding: 7px;
     @include var(height, formfield-outline-control-height);
   }
 
-  input, nx-dropdown .nx-dropdown__container {
+  input, 
+  nx-dropdown .nx-dropdown__container,
+  nx-multi-select .value {
     padding: 0 $outline-padding;
   }
 
@@ -502,7 +504,8 @@ $outline-padding: 7px;
   }
 }
 
-.nx-formfield--type-nx-dropdown {
+.nx-formfield--type-nx-dropdown,
+.nx-formfield--type-nx-multi-select {
   .nx-formfield__label {
     width: calc(100% - #{v(formfield-icon-size)});
   }

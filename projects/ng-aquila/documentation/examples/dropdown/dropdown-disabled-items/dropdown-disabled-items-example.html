@@ -24,14 +24,12 @@
 
     <div nxCol="12, 12, 4">
       <nx-formfield nxLabel="With disabled multi item">
-        <nx-dropdown [nxIsMultiselect]="true">
-          <nx-dropdown-item disabled="true" nxValue="BMW"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
-        </nx-dropdown>
+        <nx-multi-select 
+          [options]="options" 
+          selectValue="id"
+          selectLabel="name"
+          [selectDisabled]="isOptionDisabled"></nx-multi-select>
       </nx-formfield>
     </div>
   </div>
-
 </div>

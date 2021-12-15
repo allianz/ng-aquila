@@ -2,7 +2,7 @@ import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
-import { ActiveDescendantKeyManager, Highlightable } from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import { SelectionModel } from '@angular/cdk/collections';
 import {
   DOWN_ARROW,
@@ -43,7 +43,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { BehaviorSubject, merge, Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 import { getNxDropdownNonArrayValueError, getNxDropdownNonFunctionValueError } from './dropdown-errors';
@@ -51,6 +51,7 @@ import { NxDropdownControl } from './dropdown.control';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
+import { getPositions, getPositionOffset } from './dropdown-position';
 
 let nextUniqueId = 0;
 
@@ -123,38 +124,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   /** Whether or not the overlay panel is open. */
   private _panelOpen = false;
 
-  private _defaultPositions: ConnectionPositionPair[] = [{
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'top'
-  }, {
-    originX: 'start',
-    originY: 'center',
-    overlayX: 'start',
-    overlayY: 'center'
-  }, {
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'bottom'
-  }];
-
-  private _outlinePositions: ConnectionPositionPair[] = [{
-    originX: 'start',
-    originY: 'bottom',
-    overlayX: 'start',
-    overlayY: 'top',
-    offsetY: 8
-  },
-  {
-    originX: 'start',
-    originY: 'top',
-    overlayX: 'start',
-    overlayY: 'bottom',
-    offsetY: -8
-  }];
-
   /** @docs-private */
   errorState: boolean = false;
 
@@ -175,6 +144,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /** Holds the panelWidth after panel was attached. */
   _panelWidth: number | undefined;
+
+  _positions: ConnectionPositionPair[] = getPositions('auto', 0);
 
   /**
    * @docs-private
@@ -233,8 +204,11 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
   /**
    * Whether the dropdown should allow multi selection and additional checkboxes are shown.
+   * Note: Please make sure the value you bind is an array.
    *
-   * Note: Please make sure the value you bind is an array. If not an error is thrown! */
+   * @throws Error if true and the bound value is not an array
+   * @deprecated Please use the new `<nx-multi-select>` component instead.
+   */
   @Input('nxIsMultiselect') isMultiSelect: boolean = false;
 
   /** The id of the input. */
@@ -305,16 +279,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   /** Event emitted when the selected value has been changed. */
   @Output() readonly selectionChange: EventEmitter<NxDropdownSelectChange> =
     new EventEmitter<NxDropdownSelectChange>();
-
-  /**
-   * This position config ensures that the top "start" corner of the overlay
-   * is aligned with with the top "start" of the origin by default (overlapping
-   * the trigger completely). If the panel cannot fit below the trigger, it
-   * will fall back to a position above the trigger.
-   */
-  get _positions(): ConnectionPositionPair[] {
-    return this._isInOutlineField ? this._outlinePositions : this._defaultPositions;
-  }
 
   /**
    * @docs-private
@@ -721,26 +685,16 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
   }
 
   /** Adds a offset to the overlay position, so the formfield label and the dropdown panel header are vertically aligned. */
-  private _updatePositionOffset() {
-    if (this._isInOutlineField) {
-      return;
-    }
-
-    let offset = 0;
-
+  private _updatePosition(): void {
     if (this.formFieldComponent) {
-      const formFieldRect = this.formFieldComponent.elementRef.nativeElement.getBoundingClientRect();
-      const dropdownRect = this._elementRef.nativeElement.getBoundingClientRect();
       const panelHeader = this.overlayDir.overlayRef.overlayElement.querySelector('.nx-dropdown__panel-header');
-      const panelHeaderPaddingTop = panelHeader ? parseInt(getComputedStyle(panelHeader).paddingTop, 10) : 0;
-      offset = formFieldRect.top - dropdownRect.top - panelHeaderPaddingTop;
+      const offset = getPositionOffset(this._elementRef.nativeElement, this.formFieldComponent.elementRef.nativeElement, panelHeader);
+      this._positions = getPositions(this.formFieldComponent.appearance, offset);
     }
-
-    this._defaultPositions[0].offsetY = offset;
   }
 
   /** Focuses the select element. */
-  focus(): void {
+  focus() {
     this._elementRef.nativeElement.focus();
   }
 
@@ -1065,8 +1019,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
       const positionStrategy = overlayRef.getConfig()
         .positionStrategy as FlexibleConnectedPositionStrategy;
 
-      this._updatePositionOffset();
-      positionStrategy.withPositions(this._positions.slice());
+      this._updatePosition();
+      positionStrategy.withPositions(this._positions);
       overlayRef.updatePosition();
 
       this._changeDetectorRef.markForCheck();

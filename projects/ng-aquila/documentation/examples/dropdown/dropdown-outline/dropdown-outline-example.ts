@@ -13,11 +13,23 @@ import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
   }]
 })
 export class DropdownOutlineExampleComponent {
-  demoData = [
-    'BMW', 'Audi', 'VW', 'Mercedes', 'Porsche', 'Tesla', 'Lada',
-    'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
+  options: string[] = [
+    'BMW', 
+    'Audi', 
+    'VW', 
+    'Mercedes', 
+    'Porsche', 
+    'Tesla', 
+    'Lada',
+    'Opel', 
+    'Fiat', 
+    'Ford', 
+    'Kia', 
+    'Toyota', 
+    'Ferrari'
   ];
-  demoGroupData = [{
+
+  groups = [{
     label: 'Birds',
     items: [
       'Parrot',
@@ -33,5 +45,7 @@ export class DropdownOutlineExampleComponent {
     ]
   }];
 
-  testBind: string = 'Catfish';
+  model: string = 'Catfish';
+
+  brands: string[] = [];
 }

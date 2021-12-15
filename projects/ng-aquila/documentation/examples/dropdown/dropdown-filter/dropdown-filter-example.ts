@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./dropdown-filter-example.css']
 })
 export class DropdownFilterExampleComponent {
-  demoData = [
+  options = [
     'BMW', 'Audi', 'VW', 'Mercedes', 'Porsche', 'Tesla', 'Lada',
     'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
   ];

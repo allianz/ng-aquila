@@ -5,6 +5,12 @@ b2c: true
 expert: true
 stable: done
 ---
+
+<div class="docs-deprecation-warning">
+  <strong>Important: </strong>
+  Please note that the <strong>nxIsMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
+</div>
+
 It is recommended to use the dropdown component in combination with NxFormField.
 Therefore, make sure to import this module as well:
 
@@ -69,10 +75,14 @@ case sensitive user input from the beginning of the string!
 
 ### Multi select dropdown
 
-The dropdown can be configured to allow multiple items to be selected. In this
-mode the dropdown stays open while selecting an item by keyboard or mouse.
-Moreover the dropdown renders checkboxes before each item to indicate the selection
-of the user.
+The multi select is a separate component from the dropdown. It supports selection on multiple items as well as filtering.
+Instead of a single value the model is an array of options.
+Options are passed into the component via the `options` input. 
+In the simplest case you can pass in a list of strings.
+That way the selected values and the displayed labels are the same. 
+If you need labels that are different to the values you can also pass in arbitrary complex objects as options.
+In that case the value and label can be selected by specifying `selectValue` and `selectLabel`.
+The optional filter can be enabled via the `filter` input.
 
 <!-- example(dropdown-multi-select) -->
 
@@ -106,6 +116,13 @@ In a formfield with an outline the styling of the dropdown will adjust according
 Please note that **this is an Expert styling option**. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.
 
 <!-- example(dropdown-outline) -->
+
+#### Multi Select Dropdown
+
+The multi select dropdown is a new component which is a replacement for the `<dropdown nxIsMultiselect ...>`.
+It offers a filter to quicky find items in long lists, improved accessibility and better performance.
+
+<!-- example(multi-select) -->
 
 </div>
 

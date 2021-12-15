@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+interface MyOption {
+  name: string;
+  id: number;
+}
+
 /**
 * @title Disabled items example
 */
@@ -9,4 +14,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./dropdown-disabled-items-example.css']
 })
 export class DropdownDisabledItemsExampleComponent {
+  options: MyOption[] = [{
+    name: 'BMW',
+    id: 1
+  },
+  {
+    name: 'Audi',
+    id: 2
+  },
+  {
+    name: 'Volvo',
+    id: 3
+  },
+  {
+    name: 'Mini',
+    id: 4
+  }];
+
+  isOptionDisabled(option: MyOption) {
+    return option.id % 2 === 0;
+  }
 }
