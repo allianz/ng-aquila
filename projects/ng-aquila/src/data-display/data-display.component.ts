@@ -43,7 +43,7 @@ export class NxDataDisplayComponent {
    * Size of this data display.
    */
   @Input()
-  size: NxDataDisplaySize = 'large';
+  size: NxDataDisplaySize = this._defaultOptions?.size ?? 'large';
 
   /**
    * Alignment of the label and value.
@@ -53,11 +53,7 @@ export class NxDataDisplayComponent {
   @Input()
   direction: NxDataDisplayDirection = 'vertical';
 
-  constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) options: DataDisplayDefaultOptions) {
-    if (options && options.size) {
-      this.size = options.size;
-    }
-  }
+  constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) private _defaultOptions: DataDisplayDefaultOptions | null) {}
 }
 
 /**

@@ -23,6 +23,10 @@
 
   &.is-large {
     @include type-style(data-display-large);
+
+    @include media-breakpoint-response(mobile) {
+      @include type-style(data-display-large-mobile);
+    }
   }
 }
 

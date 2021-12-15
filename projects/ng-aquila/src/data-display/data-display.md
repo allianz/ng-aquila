@@ -24,7 +24,7 @@ The orientation of the data display can be changed to horizontal using the `dire
 
 ### Expert: Variations and sizes
 
-By default expert the size of the data display is set to medium. There is a more condensed size that can be set using `size="small"`.
+By default, expert data display size is set to medium. There is a more condensed size that can be set using `size="small"`.
 
 <!-- example(data-display-expert) --> 
 </div>
