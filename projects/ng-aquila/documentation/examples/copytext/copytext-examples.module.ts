@@ -4,7 +4,10 @@ import { NgModule } from '@angular/core';
 import { CopytextNegativeExampleComponent } from './copytext-negative/copytext-negative-example';
 import { CopytextSizesExampleComponent } from './copytext-sizes/copytext-sizes-example';
 
-const EXAMPLES = [CopytextNegativeExampleComponent, CopytextSizesExampleComponent];
+const EXAMPLES = [
+    CopytextNegativeExampleComponent,
+    CopytextSizesExampleComponent,
+];
 
 @NgModule({
     imports: [NxCopytextModule],

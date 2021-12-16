@@ -247,17 +247,20 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
         }),
     );
 
-    it('changes useFullRowForExpandableArea on injection token change', inject([COMPARISON_TABLE_DEFAULT_OPTIONS], (defaultOptions: ComparisonTableDefaultOptions) => {
-        createTestComponent(BasicComponent);
-        expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
-        const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
-        expect(expandableButtonElement.nativeElement.classList).toContain('full-width');
+    it('changes useFullRowForExpandableArea on injection token change', inject(
+        [COMPARISON_TABLE_DEFAULT_OPTIONS],
+        (defaultOptions: ComparisonTableDefaultOptions) => {
+            createTestComponent(BasicComponent);
+            expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(true);
+            const expandableButtonElement = rowGroupElement.query(By.css('.nx-comparison-table__group-expansion-cell'));
+            expect(expandableButtonElement.nativeElement.classList).toContain('full-width');
 
-        defaultOptions.useFullRowForExpandableArea = false;
-        fixture.detectChanges();
-        expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
-        expect(expandableButtonElement.nativeElement.classList).not.toContain('full-width');
-    }));
+            defaultOptions.useFullRowForExpandableArea = false;
+            fixture.detectChanges();
+            expect(testInstance.rowGroupDirective.useFullRowForExpandableArea).toBe(false);
+            expect(expandableButtonElement.nativeElement.classList).not.toContain('full-width');
+        },
+    ));
 
     it('useFullRowForExpandableArea can be overwritten when injection token is used', () => {
         createTestComponent(ConfigurableComponent);
@@ -299,7 +302,14 @@ class BasicComponent extends RowGroupTest {}
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
             </ng-container>
-            <ng-container nxComparisonTableRowGroup [labelCollapsed]="labelCollapsed" [labelExpanded]="labelExpanded" [visibleRows]="visibleRows" [(isExpanded)]="isExpanded" [useFullRowForExpandableArea]="useFullRowForExpandableArea">
+            <ng-container
+                nxComparisonTableRowGroup
+                [labelCollapsed]="labelCollapsed"
+                [labelExpanded]="labelExpanded"
+                [visibleRows]="visibleRows"
+                [(isExpanded)]="isExpanded"
+                [useFullRowForExpandableArea]="useFullRowForExpandableArea"
+            >
                 <ng-container nxComparisonTableRow *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]">
                     <nx-comparison-table-description-cell>This is a description cell</nx-comparison-table-description-cell>
                     <nx-comparison-table-cell>This is a cell</nx-comparison-table-cell>

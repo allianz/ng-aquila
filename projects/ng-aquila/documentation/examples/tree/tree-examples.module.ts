@@ -10,7 +10,13 @@ import { TreeExampleComponent } from './tree/tree-example';
 const EXAMPLES = [TreeExampleComponent];
 
 @NgModule({
-    imports: [NxTreeModule, NxIconModule, NxActionModule, RouterModule, CommonModule],
+    imports: [
+        NxTreeModule,
+        NxIconModule,
+        NxActionModule,
+        RouterModule,
+        CommonModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

@@ -1,4 +1,17 @@
-import { Component, ComponentRef, ElementRef, EmbeddedViewRef, EventEmitter, Inject, Optional, ChangeDetectorRef, ViewChild, ChangeDetectionStrategy, OnDestroy, AfterViewInit } from '@angular/core';
+import {
+    Component,
+    ComponentRef,
+    ElementRef,
+    EmbeddedViewRef,
+    EventEmitter,
+    Inject,
+    Optional,
+    ChangeDetectorRef,
+    ViewChild,
+    ChangeDetectionStrategy,
+    OnDestroy,
+    AfterViewInit,
+} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { AnimationEvent } from '@angular/animations';
 import { NxModalAnimations } from './modal-animations';

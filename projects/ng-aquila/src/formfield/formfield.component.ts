@@ -1,5 +1,19 @@
 import { ViewChild, InjectionToken, Inject, Optional } from '@angular/core';
-import { AfterContentChecked, AfterContentInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ContentChildren, ElementRef, Input, QueryList, ViewEncapsulation, Renderer2 } from '@angular/core';
+import {
+    AfterContentChecked,
+    AfterContentInit,
+    OnDestroy,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    ContentChildren,
+    ElementRef,
+    Input,
+    QueryList,
+    ViewEncapsulation,
+    Renderer2,
+} from '@angular/core';
 import { startWith } from 'rxjs/operators';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
 

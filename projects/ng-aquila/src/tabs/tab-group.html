@@ -1,5 +1,11 @@
 <ng-container *ngIf="!_showAccordion">
-    <nx-tab-header #tabHeader [selectedIndex]="selectedIndex" (selectFocusedIndex)="selectedIndex = $event" (indexFocused)="focusChanged($event)" [autoselect]="autoselect">
+    <nx-tab-header
+        #tabHeader
+        [selectedIndex]="selectedIndex"
+        (selectFocusedIndex)="selectedIndex = $event"
+        (indexFocused)="focusChanged($event)"
+        [autoselect]="autoselect"
+    >
         <button
             #tabButton
             type="button"

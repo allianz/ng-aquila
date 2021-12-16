@@ -1,4 +1,12 @@
-<button #toggleButton class="nx-datepicker-toggle-button" [tabindex]="tabindex" type="button" [attr.aria-label]="_intl.openCalendarLabel" [disabled]="disabled" (click)="_open($event)">
+<button
+    #toggleButton
+    class="nx-datepicker-toggle-button"
+    [tabindex]="tabindex"
+    type="button"
+    [attr.aria-label]="_intl.openCalendarLabel"
+    [disabled]="disabled"
+    (click)="_open($event)"
+>
     <nx-icon name="calendar" *ngIf="!_customIcon"></nx-icon>
 
     <ng-content select="[nxDatepickerToggleIcon]"></ng-content>

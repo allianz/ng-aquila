@@ -2,7 +2,18 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inject, Input, Renderer2, OnDestroy, HostListener, AfterViewInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    forwardRef,
+    Inject,
+    Input,
+    Renderer2,
+    OnDestroy,
+    HostListener,
+    AfterViewInit,
+} from '@angular/core';
 
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 import { NxRadioToggleComponent } from './radio-toggle.component';

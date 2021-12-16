@@ -518,7 +518,14 @@ class BasicFileUpload extends FileUploaderTest {
 @Component({
     template: `
         <form [formGroup]="form">
-            <nx-file-uploader formControlName="documents" [required]="required" [maxFileSize]="maxFileSize" multiple [maxFileNumber]="maxFileNumber" [accept]="accept">
+            <nx-file-uploader
+                formControlName="documents"
+                [required]="required"
+                [maxFileSize]="maxFileSize"
+                multiple
+                [maxFileNumber]="maxFileNumber"
+                [accept]="accept"
+            >
                 <nx-label size="small">Required file to upload</nx-label>
                 <span nxFileUploadHint>maximum Filesize 2MB</span>
 
@@ -529,7 +536,8 @@ class BasicFileUpload extends FileUploaderTest {
 
                 <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
                 <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
-                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size limit!
+                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
+                    limit!
                 </nx-error>
             </nx-file-uploader>
 
@@ -587,12 +595,24 @@ class DynamicFileUpload extends FileUploaderTest {
             <section class="customWrapper">
                 <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
 
-                <nx-file-upload-size [size]="file?.size" [isUploading]="file.isUploading" [uploadingLabel]="templateContext.uploadingLabel"></nx-file-upload-size>
+                <nx-file-upload-size
+                    [size]="file?.size"
+                    [isUploading]="file.isUploading"
+                    [uploadingLabel]="templateContext.uploadingLabel"
+                ></nx-file-upload-size>
 
                 <div class="nx-file-uploader--file-row-actions">
-                    <nx-file-upload-status [isUploading]="file.isUploading" [isUploaded]="file.isUploaded" [uploadedLabel]="templateContext.uploadedLabel"></nx-file-upload-status>
+                    <nx-file-upload-status
+                        [isUploading]="file.isUploading"
+                        [isUploaded]="file.isUploaded"
+                        [uploadedLabel]="templateContext.uploadedLabel"
+                    ></nx-file-upload-status>
 
-                    <nx-file-upload-delete [deleteLabel]="templateContext.deleteLabel" [isUploading]="file.isUploading" (click)="templateContext.removeFile(file)"></nx-file-upload-delete>
+                    <nx-file-upload-delete
+                        [deleteLabel]="templateContext.deleteLabel"
+                        [isUploading]="file.isUploading"
+                        (click)="templateContext.removeFile(file)"
+                    ></nx-file-upload-delete>
                 </div>
             </section>
         </ng-template>

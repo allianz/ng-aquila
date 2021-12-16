@@ -11,7 +11,14 @@ import { BidiModule } from '@angular/cdk/bidi';
 const EXAMPLES = [RtlBasicExampleComponent, RtlDynamicExampleComponent];
 
 @NgModule({
-    imports: [BidiModule, CommonModule, NxHeadlineModule, NxButtonModule, NxCopytextModule, NxSliderModule],
+    imports: [
+        BidiModule,
+        CommonModule,
+        NxHeadlineModule,
+        NxButtonModule,
+        NxCopytextModule,
+        NxSliderModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

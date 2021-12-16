@@ -228,15 +228,36 @@ class BasicComponent extends ToggleTest {}
             <ng-container nxComparisonTableRow type="header">
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button" [selectedLabel]="selectedLabel" [unselectedLabel]="unselectedLabel" [unselectedClassNames]="unselectedClassNames" [selectedClassNames]="selectedClassNames"></button>
+                    <button
+                        nxComparisonTableSelectButton
+                        type="button"
+                        [selectedLabel]="selectedLabel"
+                        [unselectedLabel]="unselectedLabel"
+                        [unselectedClassNames]="unselectedClassNames"
+                        [selectedClassNames]="selectedClassNames"
+                    ></button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button" [selectedLabel]="selectedLabel" [unselectedLabel]="unselectedLabel" [unselectedClassNames]="unselectedClassNames" [selectedClassNames]="selectedClassNames"></button>
+                    <button
+                        nxComparisonTableSelectButton
+                        type="button"
+                        [selectedLabel]="selectedLabel"
+                        [unselectedLabel]="unselectedLabel"
+                        [unselectedClassNames]="unselectedClassNames"
+                        [selectedClassNames]="selectedClassNames"
+                    ></button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button" [selectedLabel]="selectedLabel" [unselectedLabel]="unselectedLabel" [unselectedClassNames]="unselectedClassNames" [selectedClassNames]="selectedClassNames"></button>
+                    <button
+                        nxComparisonTableSelectButton
+                        type="button"
+                        [selectedLabel]="selectedLabel"
+                        [unselectedLabel]="unselectedLabel"
+                        [unselectedClassNames]="unselectedClassNames"
+                        [selectedClassNames]="selectedClassNames"
+                    ></button>
                 </nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRow>
@@ -260,7 +281,9 @@ class ConfigurableComponent extends ToggleTest {}
         <nx-comparison-table [(selectedIndex)]="selectedIndex">
             <ng-container *ngFor="let element of data">
                 <ng-container *ngIf="element['type'] === 'header'" nxComparisonTableRow type="header">
-                    <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="header"> {{ cell }}<button nxComparisonTableSelectButton type="button"></button> </nx-comparison-table-cell>
+                    <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="header">
+                        {{ cell }}<button nxComparisonTableSelectButton type="button"></button>
+                    </nx-comparison-table-cell>
                 </ng-container>
 
                 <ng-container *ngIf="element['type'] === 'content'" nxComparisonTableRow>

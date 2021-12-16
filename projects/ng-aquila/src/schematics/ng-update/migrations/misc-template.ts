@@ -23,7 +23,9 @@ export class MiscTemplateMigration extends Migration<UpgradeData> {
                 this.failures.push({
                     filePath: template.filePath,
                     position: template.getCharacterAndLineOfPosition(start),
-                    message: `Found deprecated input "title" on nx-single-stepper, nx-multi-stepper or ` + `nx-progress-stepper. Please use a "nx-label" element inside the content instead.`,
+                    message:
+                        `Found deprecated input "title" on nx-single-stepper, nx-multi-stepper or ` +
+                        `nx-progress-stepper. Please use a "nx-label" element inside the content instead.`,
                 });
             });
 

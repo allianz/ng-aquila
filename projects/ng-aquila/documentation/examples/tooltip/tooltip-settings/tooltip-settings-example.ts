@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NX_TOOLTIP_DEFAULT_OPTIONS, NxTooltipDefaultOptions } from '@aposin/ng-aquila/tooltip';
+import {
+    NX_TOOLTIP_DEFAULT_OPTIONS,
+    NxTooltipDefaultOptions,
+} from '@aposin/ng-aquila/tooltip';
 
 const myDefaultOptions: NxTooltipDefaultOptions = {
     position: 'right',
@@ -15,6 +18,8 @@ const myDefaultOptions: NxTooltipDefaultOptions = {
     selector: 'tooltip-settings-example',
     templateUrl: './tooltip-settings-example.html',
     styleUrls: ['./tooltip-settings-example.css'],
-    providers: [{ provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions }],
+    providers: [
+        { provide: NX_TOOLTIP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+    ],
 })
 export class TooltipSettingsExampleComponent {}

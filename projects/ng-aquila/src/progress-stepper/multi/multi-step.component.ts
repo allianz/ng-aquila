@@ -1,5 +1,17 @@
 import { NxMultiStepItemComponent } from './multi-step-item.component';
-import { ChangeDetectionStrategy, Component, Input, AfterContentInit, QueryList, ContentChildren, ViewChildren, AfterViewChecked, ChangeDetectorRef, ElementRef, Inject } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    AfterContentInit,
+    QueryList,
+    ContentChildren,
+    ViewChildren,
+    AfterViewChecked,
+    ChangeDetectorRef,
+    ElementRef,
+    Inject,
+} from '@angular/core';
 import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
 import { NxMultiStepperGroupComponent } from './multi-step-group.component';
 import { NxMultiStepperDirection } from '../progress-stepper.models';

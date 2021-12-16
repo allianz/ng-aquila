@@ -1,5 +1,9 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
-import { NxMessageToastRef, NxMessageToastConfig, NxMessageToastService } from '@aposin/ng-aquila/message';
+import {
+    NxMessageToastRef,
+    NxMessageToastConfig,
+    NxMessageToastService,
+} from '@aposin/ng-aquila/message';
 
 export const myCustomConfig: NxMessageToastConfig = {
     duration: 0,
@@ -22,7 +26,10 @@ export class MessageToastCustomSettingsExampleComponent {
     constructor(private messageToastService: NxMessageToastService) {}
 
     open() {
-        this.toastRef = this.messageToastService.openFromTemplate(this.templateRef, myCustomConfig);
+        this.toastRef = this.messageToastService.openFromTemplate(
+            this.templateRef,
+            myCustomConfig,
+        );
     }
 
     close() {

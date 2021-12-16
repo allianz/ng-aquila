@@ -1,6 +1,19 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, OnDestroy, OnInit, Optional, Self, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    DoCheck,
+    ElementRef,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Self,
+    ViewChild,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxDropdownComponent, NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';

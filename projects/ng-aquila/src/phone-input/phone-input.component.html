@@ -1,5 +1,14 @@
 <div class="wrapper">
-    <nx-dropdown [class.hide]="readonly && !disabled" [nxValue]="countryCode" #dropdown [nxShowFilter]="true" [nxDisabled]="disabled" [nxOverlayLabel]="areaCodeLabel" (nxValueChange)="_onInput()" [options]="_sortedCountries">
+    <nx-dropdown
+        [class.hide]="readonly && !disabled"
+        [nxValue]="countryCode"
+        #dropdown
+        [nxShowFilter]="true"
+        [nxDisabled]="disabled"
+        [nxOverlayLabel]="areaCodeLabel"
+        (nxValueChange)="_onInput()"
+        [options]="_sortedCountries"
+    >
         <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
     </nx-dropdown>
 

@@ -182,7 +182,13 @@ describe('NxTabHeaderComponent', () => {
 @Component({
     template: `
         <nx-tab-header [selectedIndex]="selectedIndex" (selectFocusedIndex)="selectedIndex = $event" (indexFocused)="onFocus($event)" [autoselect]="autoselect">
-            <button nxTabLabelWrapper *ngFor="let tab of tabs; let i = index" (click)="selectedIndex = i" class="nx-tab-header__item" [class.nx-tab-header__item--active]="selectedIndex == i">
+            <button
+                nxTabLabelWrapper
+                *ngFor="let tab of tabs; let i = index"
+                (click)="selectedIndex = i"
+                class="nx-tab-header__item"
+                [class.nx-tab-header__item--active]="selectedIndex == i"
+            >
                 {{ tab.label }}
             </button>
         </nx-tab-header>
@@ -200,7 +206,13 @@ class BasicHeader extends TabHeaderTest {
 @Component({
     template: `
         <nx-tab-header (selectFocusedIndex)="selectedIndex = $event" [selectedIndex]="selectedIndex">
-            <button nxTabLabelWrapper *ngFor="let tab of tabs; let i = index" (click)="selectedIndex = i" class="nx-tab-header__item" [class.nx-tab-header__item--active]="selectedIndex == i">
+            <button
+                nxTabLabelWrapper
+                *ngFor="let tab of tabs; let i = index"
+                (click)="selectedIndex = i"
+                class="nx-tab-header__item"
+                [class.nx-tab-header__item--active]="selectedIndex == i"
+            >
                 {{ tab.label }}
             </button>
         </nx-tab-header>

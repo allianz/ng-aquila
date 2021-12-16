@@ -64,7 +64,14 @@
                     [attr.aria-labelledby]="_getAriaLabelledBy()"
                     [attr.aria-activedescendant]="_getAriaActiveDescendant()"
                 />
-                <nx-icon aria-hidden="true" nxFormfieldSuffix [class.hidden]="!_filterValue.length" class="clear" (click)="_clearFilter()" name="close"></nx-icon>
+                <nx-icon
+                    aria-hidden="true"
+                    nxFormfieldSuffix
+                    [class.hidden]="!_filterValue.length"
+                    class="clear"
+                    (click)="_clearFilter()"
+                    name="close"
+                ></nx-icon>
             </nx-formfield>
         </div>
         <div class="item actions" *ngIf="_isOutline">

@@ -26,7 +26,11 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
     feedbackLinkPositive!: string;
     feedbackLinkNegative!: string;
 
-    constructor(@Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any, private viewportService: NxViewportService, private focusMonitor: FocusMonitor) {
+    constructor(
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any,
+        private viewportService: NxViewportService,
+        private focusMonitor: FocusMonitor,
+    ) {
         this.viewportServiceSubscription = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).subscribe(isGreaterThanMedium => {
             if (isGreaterThanMedium && this.showMobileView) {
                 this.showMobileView = false;

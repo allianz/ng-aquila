@@ -16,7 +16,18 @@ import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { NxvFeedbackModule } from '../../feedback/feedback.module';
 
 @NgModule({
-    imports: [CommonModule, DocViewerModule, RouterModule, HttpClientModule, ExampleLoaderModule, NxvTableOfContentsModule, ScrollingModule, NxBadgeModule, NxTabsModule, NxvFeedbackModule],
+    imports: [
+        CommonModule,
+        DocViewerModule,
+        RouterModule,
+        HttpClientModule,
+        ExampleLoaderModule,
+        NxvTableOfContentsModule,
+        ScrollingModule,
+        NxBadgeModule,
+        NxTabsModule,
+        NxvFeedbackModule,
+    ],
     declarations: [NxvComponentPage, ComponentOverview, ComponentApi, ComponentExamples],
 })
 export class ComponentPageModule {}

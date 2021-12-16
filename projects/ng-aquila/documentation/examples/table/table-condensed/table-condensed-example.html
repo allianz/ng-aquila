@@ -19,7 +19,11 @@
                     <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
                 </td>
                 <td nxTableCell>{{item.endingAt}}</td>
-                <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
+                <td nxTableCell
+                    ><nx-badge [type]="item.status"
+                        >{{item.statusText}}</nx-badge
+                    ></td
+                >
             </tr>
         </tbody>
     </table>

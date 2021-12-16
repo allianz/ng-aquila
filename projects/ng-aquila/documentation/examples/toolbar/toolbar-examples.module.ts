@@ -7,10 +7,18 @@ import { NgModule } from '@angular/core';
 import { ToolbarExampleComponent } from './toolbar/toolbar-example';
 import { ToolbarPositioningContentExampleComponent } from './toolbar-positioning-content/toolbar-positioning-content-example';
 
-const EXAMPLES = [ToolbarExampleComponent, ToolbarPositioningContentExampleComponent];
+const EXAMPLES = [
+    ToolbarExampleComponent,
+    ToolbarPositioningContentExampleComponent,
+];
 
 @NgModule({
-    imports: [NxToolbarModule, NxContextMenuModule, NxIconModule, NxButtonModule],
+    imports: [
+        NxToolbarModule,
+        NxContextMenuModule,
+        NxIconModule,
+        NxButtonModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

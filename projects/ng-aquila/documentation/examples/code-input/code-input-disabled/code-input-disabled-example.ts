@@ -18,7 +18,11 @@ export class CodeInputDisabledExampleComponent implements OnInit {
             keyCode: new FormControl(
                 { value: this.inputValue, disabled: true },
                 {
-                    validators: [Validators.required, Validators.pattern('[A-Z]+'), Validators.minLength(4)],
+                    validators: [
+                        Validators.required,
+                        Validators.pattern('[A-Z]+'),
+                        Validators.minLength(4),
+                    ],
                     updateOn: 'submit',
                 },
             ),

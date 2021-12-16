@@ -354,7 +354,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
 
     private _parseAndSetTime(value: string): string | null {
         const valueInHoursAndMinutes = value.split(':');
-        if (valueInHoursAndMinutes && valueInHoursAndMinutes.length === 2 && this._isValidInput(valueInHoursAndMinutes[0]) && this._isValidInput(valueInHoursAndMinutes[1])) {
+        if (
+            valueInHoursAndMinutes &&
+            valueInHoursAndMinutes.length === 2 &&
+            this._isValidInput(valueInHoursAndMinutes[0]) &&
+            this._isValidInput(valueInHoursAndMinutes[1])
+        ) {
             let hours = Number(valueInHoursAndMinutes[0]);
             const minutes = Number(valueInHoursAndMinutes[1]);
             if (this.twelveHourFormat) {

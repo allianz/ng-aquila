@@ -52,7 +52,11 @@ export class AutocompleteDataBindingExampleComponent {
 
     constructor(public wikipediaService: WikipediaService) {
         this.dynamicBackendOptions = (term: string) =>
-            wikipediaService.search(term).pipe(map((items: any) => items.map((item: any) => item.value)));
+            wikipediaService
+                .search(term)
+                .pipe(
+                    map((items: any) => items.map((item: any) => item.value)),
+                );
     }
 
     simpleFilteredOptions(value: string): string[] {

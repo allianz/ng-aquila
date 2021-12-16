@@ -9,5 +9,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-templatedriven-example.css'],
 })
 export class TaglistTemplatedrivenExampleComponent {
-    templateModel = ['Apples', 'Oranges', 'Bananas', 'Strawberries', 'Melons', 'Lemons'];
+    templateModel = [
+        'Apples',
+        'Oranges',
+        'Bananas',
+        'Strawberries',
+        'Melons',
+        'Lemons',
+    ];
 }

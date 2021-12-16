@@ -11,7 +11,8 @@ import { NxDatepickerComponent } from '@aposin/ng-aquila/datefield';
     styleUrls: ['./datefield-range-example.css'],
 })
 export class DatefieldRangeExampleComponent {
-    @ViewChild('endDatepicker', { static: true }) endDatepicker!: NxDatepickerComponent<Moment>;
+    @ViewChild('endDatepicker', { static: true })
+    endDatepicker!: NxDatepickerComponent<Moment>;
 
     startDate: Moment | null = null;
     endDate: Moment | null = null;

@@ -104,14 +104,14 @@ This is also possible with the navigation bar:
 
 #### Keyboard support
 
-| Shortcut         | Action                                                                                                                                                                                                                  |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `LEFT_ARROW`     | Move focus to the previous tab. If focus is on the first tab move to the last tab.                                                                                                                                      |
-| `RIGHT_ARROW`    | Arrow Move focus to the next tab. If focus is on the last tab move to the first tab.                                                                                                                                    |
-| `TAB`            | When the focus moves into the tab header, places the focus on the active tab header element. When the tab header is already focused, moves focus to the next element in the tab sequence which is the tab-body element. |
-| `HOME`           | Move focus to the first tab.                                                                                                                                                                                            |
-| `END`            | Move focus to the last tab.                                                                                                                                                                                             |
-| `ENTER`, `SPACE` | Select the focused tab and show its content.                                                                                                                                                                            |
+| Shortcut | Action |
+| --- | --- |
+| `LEFT_ARROW` | Move focus to the previous tab. If focus is on the first tab move to the last tab. |
+| `RIGHT_ARROW` | Arrow Move focus to the next tab. If focus is on the last tab move to the first tab. |
+| `TAB` | When the focus moves into the tab header, places the focus on the active tab header element. When the tab header is already focused, moves focus to the next element in the tab sequence which is the tab-body element. |
+| `HOME` | Move focus to the first tab. |
+| `END` | Move focus to the last tab. |
+| `ENTER`, `SPACE` | Select the focused tab and show its content. |
 
 #### Auto select vs. manual select
 

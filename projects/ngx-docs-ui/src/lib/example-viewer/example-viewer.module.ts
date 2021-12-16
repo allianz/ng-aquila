@@ -18,7 +18,19 @@ import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 import { StackBlitzButtonModule } from './../stack-blitz/stack-blitz-button';
 
 @NgModule({
-    imports: [PortalModule, CommonModule, DocViewerModule, NxButtonModule, NxTabsModule, NxIconModule, RouterModule, NxLinkModule, NxTooltipModule, NxvLazyExampleOutletModule, StackBlitzButtonModule],
+    imports: [
+        PortalModule,
+        CommonModule,
+        DocViewerModule,
+        NxButtonModule,
+        NxTabsModule,
+        NxIconModule,
+        RouterModule,
+        NxLinkModule,
+        NxTooltipModule,
+        NxvLazyExampleOutletModule,
+        StackBlitzButtonModule,
+    ],
     exports: [ExampleViewerComponent],
     declarations: [ExampleViewerComponent],
     providers: [CopyService],

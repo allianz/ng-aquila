@@ -44,7 +44,13 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     private _urlFragment = '';
     scrollingSubscription: any;
 
-    constructor(private _router: Router, private _route: ActivatedRoute, private _element: ElementRef, @Inject(DOCUMENT) private _document: any, private _cdRef: ChangeDetectorRef) {
+    constructor(
+        private _router: Router,
+        private _route: ActivatedRoute,
+        private _element: ElementRef,
+        @Inject(DOCUMENT) private _document: any,
+        private _cdRef: ChangeDetectorRef,
+    ) {
         this._router.events.pipe(takeUntil(this._destroyed)).subscribe(event => {
             if (event instanceof NavigationEnd) {
                 const rootUrl = _router.url.split('#')[0];

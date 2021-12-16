@@ -1,6 +1,17 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    Optional,
+    Output,
+    ViewChild,
+} from '@angular/core';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
@@ -104,7 +115,12 @@ export class NxYearViewComponent<D> implements AfterContentInit {
 
     _numCols: number = 3;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats, @Optional() public _dateAdapter: NxDateAdapter<D>, @Optional() private _dir?: Directionality) {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
+        @Optional() public _dateAdapter: NxDateAdapter<D>,
+        @Optional() private _dir?: Directionality,
+    ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
@@ -128,7 +144,9 @@ export class NxYearViewComponent<D> implements AfterContentInit {
 
         const daysInMonth = this._dateAdapter.getNumDaysInMonth(normalizedDate);
 
-        this.selectedChange.emit(this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), month, Math.min(this._dateAdapter.getDate(this.activeDate), daysInMonth)));
+        this.selectedChange.emit(
+            this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), month, Math.min(this._dateAdapter.getDate(this.activeDate), daysInMonth)),
+        );
     }
 
     /** Handles keydown events on the calendar body when calendar is in year view. */
@@ -213,7 +231,10 @@ export class NxYearViewComponent<D> implements AfterContentInit {
 
     /** Creates an NxCalendarCell for the given month. */
     private _createCellForMonth(month: number, monthName: string) {
-        const ariaLabel = this._dateAdapter.format(this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), month, 1), this._dateFormats.display.monthYearA11yLabel);
+        const ariaLabel = this._dateAdapter.format(
+            this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), month, 1),
+            this._dateFormats.display.monthYearA11yLabel,
+        );
         return new NxCalendarCell(month, monthName, ariaLabel, this._shouldEnableMonth(month));
     }
 
@@ -221,7 +242,12 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     private _shouldEnableMonth(month: number) {
         const activeYear = this._dateAdapter.getYear(this.activeDate);
 
-        if (month === undefined || month === null || this._isYearAndMonthAfterMaxDate(activeYear, month) || this._isYearAndMonthBeforeMinDate(activeYear, month)) {
+        if (
+            month === undefined ||
+            month === null ||
+            this._isYearAndMonthAfterMaxDate(activeYear, month) ||
+            this._isYearAndMonthBeforeMinDate(activeYear, month)
+        ) {
             return false;
         }
 

@@ -4,7 +4,10 @@ import { NgModule } from '@angular/core';
 import { ProgressbarExampleComponent } from './progressbar/progressbar-example';
 import { ProgressbarBasicExampleComponent } from './progressbar-basic/progressbar-basic-example';
 
-const EXAMPLES = [ProgressbarExampleComponent, ProgressbarBasicExampleComponent];
+const EXAMPLES = [
+    ProgressbarExampleComponent,
+    ProgressbarBasicExampleComponent,
+];
 
 @NgModule({
     imports: [NxProgressbarModule],

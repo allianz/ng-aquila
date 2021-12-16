@@ -4,7 +4,9 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 @Component({
     template: ` <div class="u-text-center">
         <h3>Modal Dialog from a component </h3>
-        <p> Any content can be included in a modal view and styled as necessary. </p>
+        <p>
+            Any content can be included in a modal view and styled as necessary.
+        </p>
     </div>`,
 })
 export class SimpleModalComponent {}
@@ -27,14 +29,19 @@ export class ModalOpeningExampleComponent {
     constructor(public dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
-        this.templateDialogRef = this.dialogService.open(this.templateRef, { ariaLabel: 'A simple dialog' });
+        this.templateDialogRef = this.dialogService.open(this.templateRef, {
+            ariaLabel: 'A simple dialog',
+        });
     }
 
     openFromComponent(): void {
-        this.componentDialogRef = this.dialogService.open(SimpleModalComponent, {
-            ariaLabel: 'A simple dialog',
-            showCloseIcon: true,
-        });
+        this.componentDialogRef = this.dialogService.open(
+            SimpleModalComponent,
+            {
+                ariaLabel: 'A simple dialog',
+                showCloseIcon: true,
+            },
+        );
     }
 
     closeTemplateDialog() {

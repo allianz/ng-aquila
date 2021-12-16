@@ -56,7 +56,19 @@ describe('NxSliderComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
-                declarations: [BasicSlider, ConfigurableSlider, InvertedSlider, DisabledSlider, NegativeSlider, FloatSlider, TruncateTestSlider, SimpleBindingSlider, NgModelSlider, ReactiveFormsSlider, BasicSliderOnPush],
+                declarations: [
+                    BasicSlider,
+                    ConfigurableSlider,
+                    InvertedSlider,
+                    DisabledSlider,
+                    NegativeSlider,
+                    FloatSlider,
+                    TruncateTestSlider,
+                    SimpleBindingSlider,
+                    NgModelSlider,
+                    ReactiveFormsSlider,
+                    BasicSliderOnPush,
+                ],
             }).compileComponents();
         }),
     );
@@ -635,7 +647,17 @@ class BasicSliderOnPush extends SliderTest {}
 @Component({
     template: `
         <div class="slider-container" [style.width.px]="width">
-            <nx-slider id="testSlider" nxLabel="testLabel" [nxMin]="min" [nxMax]="max" [nxStep]="stepSize" [nxValue]="value" [thumbLabel]="thumblabel" [hideLabels]="hideLabels"> </nx-slider>
+            <nx-slider
+                id="testSlider"
+                nxLabel="testLabel"
+                [nxMin]="min"
+                [nxMax]="max"
+                [nxStep]="stepSize"
+                [nxValue]="value"
+                [thumbLabel]="thumblabel"
+                [hideLabels]="hideLabels"
+            >
+            </nx-slider>
         </div>
     `,
     styles: [styles],

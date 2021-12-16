@@ -18,7 +18,12 @@
                 <span nxFormfieldPrefix>
                     <nx-icon name="search" size="s"></nx-icon>
                 </span>
-                <span nxFormfieldSuffix *ngIf="searchTerm1" aria-hidden="true" (click)="searchTerm1=''">
+                <span
+                    nxFormfieldSuffix
+                    *ngIf="searchTerm1"
+                    aria-hidden="true"
+                    (click)="searchTerm1=''"
+                >
                     <nx-icon name="close" size="s"></nx-icon>
                 </span>
             </nx-formfield>
@@ -36,7 +41,12 @@
                 <span nxFormfieldPrefix>
                     <nx-icon name="search" size="s"></nx-icon>
                 </span>
-                <span nxFormfieldSuffix *ngIf="searchTerm2" aria-hidden="true" (click)="searchTerm2=''">
+                <span
+                    nxFormfieldSuffix
+                    *ngIf="searchTerm2"
+                    aria-hidden="true"
+                    (click)="searchTerm2=''"
+                >
                     <nx-icon name="close" size="s"></nx-icon>
                 </span>
             </nx-formfield>

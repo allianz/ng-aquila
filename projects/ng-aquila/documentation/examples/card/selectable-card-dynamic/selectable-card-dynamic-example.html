@@ -1,17 +1,37 @@
 <div nxLayout="grid">
     <div nxRow class="nx-margin-bottom-s">
         <div nxCol="12,12,3">
-            <button (click)="addNewCard()" nxButton="primary small" type="button"> Add new card </button>
+            <button
+                (click)="addNewCard()"
+                nxButton="primary small"
+                type="button"
+            >
+                Add new card
+            </button>
         </div>
         <div nxCol="12,12,3">
-            <button (click)="removeFirstCard()" nxButton="secondary small" type="button"> Remove first card </button>
+            <button
+                (click)="removeFirstCard()"
+                nxButton="secondary small"
+                type="button"
+            >
+                Remove first card
+            </button>
         </div>
     </div>
     <form [formGroup]="myFormGroup">
         <div nxRow formArrayName="cards">
-            <div *ngFor="let card of cards.controls; index as i" nxCol="12,12,12,4">
-                <nx-selectable-card [formControlName]="i" class="nx-margin-bottom-xs">
-                    <h3 nxCopytext class="nx-margin-bottom-2m">Card headline</h3>
+            <div
+                *ngFor="let card of cards.controls; index as i"
+                nxCol="12,12,12,4"
+            >
+                <nx-selectable-card
+                    [formControlName]="i"
+                    class="nx-margin-bottom-xs"
+                >
+                    <h3 nxCopytext class="nx-margin-bottom-2m"
+                        >Card headline</h3
+                    >
                 </nx-selectable-card>
             </div>
         </div>

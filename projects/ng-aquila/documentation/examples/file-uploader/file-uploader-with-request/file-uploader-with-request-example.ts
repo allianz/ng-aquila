@@ -1,6 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { NxFileUploaderComponent, FileItem } from '@aposin/ng-aquila/file-uploader';
-import { NxMessageToastConfig, NxMessageToastService } from '@aposin/ng-aquila/message';
+import {
+    NxFileUploaderComponent,
+    FileItem,
+} from '@aposin/ng-aquila/file-uploader';
+import {
+    NxMessageToastConfig,
+    NxMessageToastService,
+} from '@aposin/ng-aquila/message';
 import { HttpParams, HttpClient } from '@angular/common/http';
 
 const myCustomConfig: NxMessageToastConfig = {
@@ -16,10 +22,14 @@ const myCustomConfig: NxMessageToastConfig = {
     styleUrls: ['./file-uploader-with-request-example.css'],
 })
 export class FileUploaderWithRequestExampleComponent {
-    @ViewChild('documentUpload', { static: false }) documentUpload!: NxFileUploaderComponent;
+    @ViewChild('documentUpload', { static: false })
+    documentUpload!: NxFileUploaderComponent;
     public showUploadError: boolean = false;
 
-    constructor(private messageToastService: NxMessageToastService, private http: HttpClient) {}
+    constructor(
+        private messageToastService: NxMessageToastService,
+        private http: HttpClient,
+    ) {}
 
     upload(url: string) {
         this.showUploadError = false;
@@ -33,7 +43,11 @@ export class FileUploaderWithRequestExampleComponent {
         this.documentUpload.value.forEach((fileItem: FileItem) => {
             if (!fileItem.isUploaded) {
                 fileItem.setUploadingState();
-                formData.append('uploads[]', fileItem.file as Blob, fileItem.name);
+                formData.append(
+                    'uploads[]',
+                    fileItem.file as Blob,
+                    fileItem.name,
+                );
             }
         });
 
@@ -48,7 +62,10 @@ export class FileUploaderWithRequestExampleComponent {
                 this.documentUpload.value!.forEach((fileItem: FileItem) => {
                     fileItem.setUploadedState();
                 });
-                this.messageToastService.open('All files were uploaded successfully!', myCustomConfig);
+                this.messageToastService.open(
+                    'All files were uploaded successfully!',
+                    myCustomConfig,
+                );
             },
             error => {
                 this.documentUpload.value!.forEach((fileItem: FileItem) => {

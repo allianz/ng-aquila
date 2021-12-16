@@ -21,11 +21,11 @@ The date field requires the Angular CDK (incl. CSS). Learn [how to enable Angula
 
 You can choose between using the native date, an ISO string adapter that uses [dayjs](https://day.js.org/) under the hood, [Moment.js](https://momentjs.com/), or implement your own. This documentation is using the moment date adapter.
 
-| Module               | Date type                         | Supported locales                                                              | Dependencies                       | Import from                             |
-| -------------------- | --------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------- | --------------------------------------- |
-| `NxNativeDateModule` | `Date`                            | en-US                                                                          | None                               | `@aposin/ng-aquila/datefield`           |
-| `NxMomentDateModule` | `Moment`                          | [See moment project](https://github.com/moment/moment/tree/develop/src/locale) | [Moment.js](https://momentjs.com/) | `@aposin/ng-aquila/moment-date-adapter` |
-| `NxIsoDateModule`    | `string` in ISO format YYYY-MM-DD | [See dayjs project](https://github.com/iamkun/dayjs/tree/dev/src/locale)       | [dayjs](https://day.js.org/)       | `@aposin/ng-aquila/iso-date-adapter`    |
+| Module | Date type | Supported locales | Dependencies | Import from |
+| --- | --- | --- | --- | --- |
+| `NxNativeDateModule` | `Date` | en-US | None | `@aposin/ng-aquila/datefield` |
+| `NxMomentDateModule` | `Moment` | [See moment project](https://github.com/moment/moment/tree/develop/src/locale) | [Moment.js](https://momentjs.com/) | `@aposin/ng-aquila/moment-date-adapter` |
+| `NxIsoDateModule` | `string` in ISO format YYYY-MM-DD | [See dayjs project](https://github.com/iamkun/dayjs/tree/dev/src/locale) | [dayjs](https://day.js.org/) | `@aposin/ng-aquila/iso-date-adapter` |
 
 Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).
 

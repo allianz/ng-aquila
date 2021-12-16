@@ -16,7 +16,10 @@ export class SidepanelFloatingExampleComponent {
 
     viewportServiceSubscription: Subscription;
 
-    constructor(public viewportService: NxViewportService, private _cdRef: ChangeDetectorRef) {
+    constructor(
+        public viewportService: NxViewportService,
+        private _cdRef: ChangeDetectorRef,
+    ) {
         this.viewportServiceSubscription = this.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)
             .subscribe(isGreaterThanSmall => {

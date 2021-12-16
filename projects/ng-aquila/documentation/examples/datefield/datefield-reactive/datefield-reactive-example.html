@@ -1,9 +1,17 @@
 <form [formGroup]="testForm">
     <nx-formfield nxLabel="Birthday">
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker" formControlName="date" />
+        <input
+            nxDatefield
+            nxInput
+            [nxDatepicker]="myDatepicker"
+            formControlName="date"
+        />
         <span nxFormfieldHint>MM/DD/YYYY</span>
 
-        <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+        <nx-datepicker-toggle
+            [for]="myDatepicker"
+            nxFormfieldSuffix
+        ></nx-datepicker-toggle>
         <nx-datepicker #myDatepicker></nx-datepicker>
     </nx-formfield>
 </form>

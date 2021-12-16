@@ -1,8 +1,12 @@
 <form [formGroup]="myFormGroup">
     <nx-checkbox-group name="terms" formControlName="terms">
         <nx-label>Select your choices</nx-label>
-        <nx-checkbox value="Term 1" class="nx-margin-bottom-s">Checkbox 1</nx-checkbox>
-        <nx-checkbox value="Term 2" class="nx-margin-bottom-s">Checkbox 2</nx-checkbox>
+        <nx-checkbox value="Term 1" class="nx-margin-bottom-s"
+            >Checkbox 1</nx-checkbox
+        >
+        <nx-checkbox value="Term 2" class="nx-margin-bottom-s"
+            >Checkbox 2</nx-checkbox
+        >
         <nx-checkbox value="Term 3">Checkbox 3</nx-checkbox>
     </nx-checkbox-group>
     <p>Form value: {{ myFormGroup.value | json }}</p>

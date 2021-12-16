@@ -20,7 +20,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxSidepanelModule, NxRadioToggleModule, FormsModule, NxIconModule, NxTabsModule],
+    imports: [
+        NxSidepanelModule,
+        NxRadioToggleModule,
+        FormsModule,
+        NxIconModule,
+        NxTabsModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

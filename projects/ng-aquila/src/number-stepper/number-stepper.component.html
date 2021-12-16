@@ -7,7 +7,14 @@
     <ng-content></ng-content>
 </div>
 <div class="nx-stepper__input-container">
-    <button [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel" [nxButton]="_buttonType" class="nx-stepper__down nx-stepper__control" (click)="decrementOnClick()" [disabled]="disabled || $any(value) <= min" type="button">
+    <button
+        [attr.aria-label]="decrementAriaLabel || _intl.decrementAriaLabel"
+        [nxButton]="_buttonType"
+        class="nx-stepper__down nx-stepper__control"
+        (click)="decrementOnClick()"
+        [disabled]="disabled || $any(value) <= min"
+        type="button"
+    >
         <nx-icon name="minus" size="s"></nx-icon>
     </button>
     <div class="nx-stepper__input-wrapper">
@@ -35,7 +42,14 @@
         <div class="nx-stepper__input-underline"></div>
     </div>
 
-    <button [attr.aria-label]="incrementAriaLabel || _intl.incrementAriaLabel" [nxButton]="_buttonType" class="nx-stepper__up nx-stepper__control" (click)="incrementOnClick()" [disabled]="disabled || $any(value) >= max" type="button">
+    <button
+        [attr.aria-label]="incrementAriaLabel || _intl.incrementAriaLabel"
+        [nxButton]="_buttonType"
+        class="nx-stepper__up nx-stepper__control"
+        (click)="incrementOnClick()"
+        [disabled]="disabled || $any(value) >= max"
+        type="button"
+    >
         <nx-icon name="plus" size="s"></nx-icon>
     </button>
 </div>

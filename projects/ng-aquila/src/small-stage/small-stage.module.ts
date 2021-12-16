@@ -10,8 +10,22 @@ import { NxSmallStageImageDirective } from './directives/image.directive';
 
 @NgModule({
     imports: [CommonModule],
-    exports: [NxSmallStageImageDirective, NxSmallStageImageStartDirective, NxSmallStageImageEndDirective, NxSmallStageHeaderDirective, NxSmallStageComponent, NxSmallStageImageBottomDirective],
-    declarations: [NxSmallStageImageDirective, NxSmallStageImageStartDirective, NxSmallStageImageEndDirective, NxSmallStageHeaderDirective, NxSmallStageComponent, NxSmallStageImageBottomDirective],
+    exports: [
+        NxSmallStageImageDirective,
+        NxSmallStageImageStartDirective,
+        NxSmallStageImageEndDirective,
+        NxSmallStageHeaderDirective,
+        NxSmallStageComponent,
+        NxSmallStageImageBottomDirective,
+    ],
+    declarations: [
+        NxSmallStageImageDirective,
+        NxSmallStageImageStartDirective,
+        NxSmallStageImageEndDirective,
+        NxSmallStageHeaderDirective,
+        NxSmallStageComponent,
+        NxSmallStageImageBottomDirective,
+    ],
     providers: [],
 })
 export class NxSmallStageModule {}

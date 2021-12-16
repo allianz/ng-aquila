@@ -1,4 +1,18 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef, Optional, Self, DoCheck, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Optional,
+    Self,
+    DoCheck,
+    ViewChild,
+    ElementRef,
+    AfterViewInit,
+    OnDestroy,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';

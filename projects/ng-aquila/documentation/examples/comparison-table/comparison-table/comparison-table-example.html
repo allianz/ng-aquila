@@ -21,14 +21,18 @@
                         <nx-icon name="info-circle-o"></nx-icon>
                     </button>
                     <nx-popover #popover>
-                        <span>This product was chosen by most of the users</span>
+                        <span
+                            >This product was chosen by most of the users</span
+                        >
                     </nx-popover>
                 </div>
             </nx-comparison-table-popular-cell>
             <nx-comparison-table-cell type="header">
                 <div class="header-container">
                     <p class="product-title">Product 1</p>
-                    <p class="product-price" *ngIf="!loading; else spinner"> 105,99 € </p>
+                    <p class="product-price" *ngIf="!loading; else spinner">
+                        105,99 €
+                    </p>
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
@@ -40,7 +44,9 @@
             <nx-comparison-table-cell type="header">
                 <div class="header-container">
                     <p class="product-title">Product 2 with a very long name</p>
-                    <p class="product-price" *ngIf="!loading; else spinner">110,99 €</p>
+                    <p class="product-price" *ngIf="!loading; else spinner"
+                        >110,99 €</p
+                    >
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
@@ -52,7 +58,9 @@
             <nx-comparison-table-cell type="header">
                 <div class="header-container">
                     <p class="product-title">Product 3</p>
-                    <p class="product-price" *ngIf="!loading; else spinner"> 115,99 €</p>
+                    <p class="product-price" *ngIf="!loading; else spinner">
+                        115,99 €</p
+                    >
                     <button
                         nxComparisonTableSelectButton
                         unselectedLabel="Select"
@@ -107,13 +115,28 @@
                 </div>
             </nx-comparison-table-description-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
+                <nx-icon
+                    name="minus"
+                    size="s"
+                    aria-label="Not included"
+                    class="minus-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
         </ng-container>
 
@@ -152,6 +175,10 @@
     </nx-comparison-table>
 </div>
 
-<button (click)="reload()" [disabled]="loading" nxButton="secondary small" class="nx-margin-top-2m"
+<button
+    (click)="reload()"
+    [disabled]="loading"
+    nxButton="secondary small"
+    class="nx-margin-top-2m"
     >Reload prices</button
 >

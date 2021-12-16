@@ -42,5 +42,12 @@ const save = folder =>
     );
 
 export const build = ({ source, dest }) => {
-    return findAllFiles(source).pipe(showProcessingNotice('Processing Guides'), concatAll(), readMarkdownFileStream, transform, save(dest), manifest({ key: 'guides' }));
+    return findAllFiles(source).pipe(
+        showProcessingNotice('Processing Guides'),
+        concatAll(),
+        readMarkdownFileStream,
+        transform,
+        save(dest),
+        manifest({ key: 'guides' }),
+    );
 };

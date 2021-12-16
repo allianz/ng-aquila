@@ -1,6 +1,20 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, coerceArray, NumberInput } from '@angular/cdk/coercion';
-import { ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Optional, Output, QueryList, ViewChild } from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    QueryList,
+    ViewChild,
+} from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 
 import { NxComparisonTableCell } from './cell/cell.component';
@@ -69,7 +83,12 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         return this._hiddenIndexes;
     }
 
-    constructor(private _element: ElementRef, @Optional() private _dir: Directionality, viewportService: NxViewportService, protected _cdRef: ChangeDetectorRef) {
+    constructor(
+        private _element: ElementRef,
+        @Optional() private _dir: Directionality,
+        viewportService: NxViewportService,
+        protected _cdRef: ChangeDetectorRef,
+    ) {
         super(viewportService, _cdRef);
     }
 
@@ -171,7 +190,11 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         }
 
         // if first row after a section
-        if (this._isRow(elements[rowIndex]) && elements[rowIndex - 1] instanceof NxComparisonTableRowDirective && (elements[rowIndex - 1] as NxComparisonTableRowDirective)._isPartOfToggleSection()) {
+        if (
+            this._isRow(elements[rowIndex]) &&
+            elements[rowIndex - 1] instanceof NxComparisonTableRowDirective &&
+            (elements[rowIndex - 1] as NxComparisonTableRowDirective)._isPartOfToggleSection()
+        ) {
             return true;
         }
 
@@ -240,7 +263,8 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         if (!scrolledParent) {
             return;
         }
-        const headerBottom = this._headerRowElement.elementRef.nativeElement.offsetTop + this._headerRowElement.elementRef.nativeElement.getBoundingClientRect().height;
+        const headerBottom =
+            this._headerRowElement.elementRef.nativeElement.offsetTop + this._headerRowElement.elementRef.nativeElement.getBoundingClientRect().height;
         const elementTop = element.nativeElement.offsetTop;
 
         if (elementTop < headerBottom) {

@@ -63,7 +63,17 @@ import { CssVarSidebarModule } from './css-vars-sandbox/css-var-sandbox.module';
             multi: true,
         },
     ],
-    entryComponents: [DocumentationFrameComponent, NxvOverviewComponent, NxvGuidesComponent, NxvGuideViewComponent, NxvDocumentationComponent, NxvComponentPage, ComponentOverview, ComponentApi, ComponentExamples],
+    entryComponents: [
+        DocumentationFrameComponent,
+        NxvOverviewComponent,
+        NxvGuidesComponent,
+        NxvGuideViewComponent,
+        NxvDocumentationComponent,
+        NxvComponentPage,
+        ComponentOverview,
+        ComponentApi,
+        ComponentExamples,
+    ],
 })
 export class NxvDocumentationModule {
     static forRoot(args: NxvDocumentationConfig): ModuleWithProviders<NxvDocumentationModule> {

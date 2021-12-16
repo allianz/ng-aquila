@@ -248,7 +248,12 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     private _localeSubscription = Subscription.EMPTY;
 
-    constructor(private _elementRef: ElementRef, @Optional() public _dateAdapter: NxDateAdapter<D>, @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats, @Optional() private _formField: NxFormfieldComponent) {
+    constructor(
+        private _elementRef: ElementRef,
+        @Optional() public _dateAdapter: NxDateAdapter<D>,
+        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
+        @Optional() private _formField: NxFormfieldComponent,
+    ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }

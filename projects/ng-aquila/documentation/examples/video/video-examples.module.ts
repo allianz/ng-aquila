@@ -5,7 +5,11 @@ import { VideoExampleComponent } from './video/video-example';
 import { VideoAdvancedExampleComponent } from './video-advanced/video-advanced-example';
 import { VideoCustomExampleComponent } from './video-custom/video-custom-example';
 
-const EXAMPLES = [VideoExampleComponent, VideoAdvancedExampleComponent, VideoCustomExampleComponent];
+const EXAMPLES = [
+    VideoExampleComponent,
+    VideoAdvancedExampleComponent,
+    VideoCustomExampleComponent,
+];
 
 @NgModule({
     imports: [NxVideoModule],

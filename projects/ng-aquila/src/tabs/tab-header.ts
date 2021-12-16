@@ -1,7 +1,20 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { END, ENTER, HOME, SPACE } from '@angular/cdk/keycodes';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input, Optional, Output, QueryList, ViewChild } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Optional,
+    Output,
+    QueryList,
+    ViewChild,
+} from '@angular/core';
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';

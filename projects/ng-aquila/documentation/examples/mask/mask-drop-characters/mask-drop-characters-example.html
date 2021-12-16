@@ -2,7 +2,12 @@
     <div nxRow>
         <div nxCol="6">
             <nx-formfield nxLabel="Special characters dropped">
-                <input nxInput nxMask="00/00/00 00:00:00" [(ngModel)]="dateTimeDropped" dropSpecialCharacters="true" />
+                <input
+                    nxInput
+                    nxMask="00/00/00 00:00:00"
+                    [(ngModel)]="dateTimeDropped"
+                    dropSpecialCharacters="true"
+                />
                 <span nxFormfieldHint> 00/00/00 00:00:00 </span>
             </nx-formfield>
         </div>
@@ -14,7 +19,12 @@
     <div nxRow>
         <div nxCol="6">
             <nx-formfield nxLabel="Not dropped (default)">
-                <input nxInput nxMask="00/00/00 00:00:00" [(ngModel)]="dateTimeValue" dropSpecialCharacters="false" />
+                <input
+                    nxInput
+                    nxMask="00/00/00 00:00:00"
+                    [(ngModel)]="dateTimeValue"
+                    dropSpecialCharacters="false"
+                />
                 <span nxFormfieldHint> 00/00/00 00:00:00 </span>
             </nx-formfield>
         </div>

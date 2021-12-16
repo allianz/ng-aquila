@@ -1,4 +1,20 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Optional, Output, AfterContentInit, ViewChildren, QueryList, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    OnInit,
+    Optional,
+    Output,
+    AfterContentInit,
+    ViewChildren,
+    QueryList,
+    ElementRef,
+    AfterViewInit,
+    OnDestroy,
+} from '@angular/core';
 
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';

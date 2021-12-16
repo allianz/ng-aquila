@@ -1,6 +1,9 @@
 .container {
     padding: 12px;
-    background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
+    background: var(
+        --documentation-comparison-table-example-background-color,
+        #0f2a3d
+    );
 }
 
 .product-title {

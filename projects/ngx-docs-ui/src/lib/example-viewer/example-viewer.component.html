@@ -13,7 +13,13 @@
                 {{ showSourceCode == true ? 'hide' : 'show code' }}
             </button>
             <nx-link>
-                <a [routerLink]="'/examples/' + example" nxTooltip="View example in fullscreen" nxTooltipPosition="top" queryParamsHandling="preserve" class="nxv-fullscreen-button">
+                <a
+                    [routerLink]="'/examples/' + example"
+                    nxTooltip="View example in fullscreen"
+                    nxTooltipPosition="top"
+                    queryParamsHandling="preserve"
+                    class="nxv-fullscreen-button"
+                >
                     <nx-icon name="popout" aria-hidden="true"></nx-icon>
                 </a>
             </nx-link>

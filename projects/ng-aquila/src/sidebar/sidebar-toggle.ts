@@ -16,7 +16,12 @@ import { NxSidebarComponent } from './sidebar.component';
     },
 })
 export class NxSidebarToggleComponent extends NxButtonBase {
-    constructor(_changeDetectorRef: ChangeDetectorRef, _elementRef: ElementRef, _focusMonitor: FocusMonitor, @Optional() @Host() private _sidebar: NxSidebarComponent) {
+    constructor(
+        _changeDetectorRef: ChangeDetectorRef,
+        _elementRef: ElementRef,
+        _focusMonitor: FocusMonitor,
+        @Optional() @Host() private _sidebar: NxSidebarComponent,
+    ) {
         super(_changeDetectorRef, _elementRef, _focusMonitor);
         this.classNames = 'tertiary small-medium';
     }

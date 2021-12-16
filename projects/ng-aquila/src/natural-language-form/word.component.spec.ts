@@ -37,7 +37,13 @@ describe('NxNaturalLanguageFormComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
-                declarations: [NaturalLanguageFormBasicComponent, NaturalLanguageFormErrorComponent, NaturalLanguageFormSizesComponent, NaturalLanguageFormSmallComponent, FormWithPreviousFormfieldComponent],
+                declarations: [
+                    NaturalLanguageFormBasicComponent,
+                    NaturalLanguageFormErrorComponent,
+                    NaturalLanguageFormSizesComponent,
+                    NaturalLanguageFormSmallComponent,
+                    FormWithPreviousFormfieldComponent,
+                ],
             }).compileComponents();
         }),
     );

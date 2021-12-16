@@ -28,7 +28,16 @@ describe('NxExpansionPanelComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NoopAnimationsModule, NxAccordionModule],
-                declarations: [PanelWithContent, PanelWithContentInNgIf, PanelWithCustomMargin, LazyPanelWithContent, LazyPanelOpenOnLoad, PanelWithTwoWayBinding, PanelWithDifferentAppearances, PanelWithAccordion],
+                declarations: [
+                    PanelWithContent,
+                    PanelWithContentInNgIf,
+                    PanelWithCustomMargin,
+                    LazyPanelWithContent,
+                    LazyPanelOpenOnLoad,
+                    PanelWithTwoWayBinding,
+                    PanelWithDifferentAppearances,
+                    PanelWithAccordion,
+                ],
             });
             TestBed.compileComponents();
         }),
@@ -378,7 +387,10 @@ class PanelWithContentInNgIf extends PanelTest {
             }
         `,
     ],
-    template: ` <nx-expansion-panel [expanded]="expanded"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores officia, aliquam dicta corrupti maxime voluptate accusamus impedit atque incidunt pariatur. </nx-expansion-panel>`,
+    template: ` <nx-expansion-panel [expanded]="expanded">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores officia, aliquam dicta corrupti maxime voluptate accusamus impedit atque incidunt
+        pariatur.
+    </nx-expansion-panel>`,
 })
 class PanelWithCustomMargin extends PanelTest {}
 

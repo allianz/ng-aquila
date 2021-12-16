@@ -1,6 +1,14 @@
 <nx-icon *ngIf="_iconName" class="nx-message__icon" [name]="_iconName" size="s" aria-hidden="true"> </nx-icon>
 
-<button #closeButton *ngIf="closable" (click)="_emitCloseEvent()" [attr.aria-label]="closeButtonLabel" tabindex="0" class="nx-message__close-icon" type="button">
+<button
+    #closeButton
+    *ngIf="closable"
+    (click)="_emitCloseEvent()"
+    [attr.aria-label]="closeButtonLabel"
+    tabindex="0"
+    class="nx-message__close-icon"
+    type="button"
+>
     <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
 </button>
 

@@ -51,7 +51,11 @@ export class NxOverlayService implements OnDestroy {
      * @param config Extra configuration options.
      * @returns Reference to the newly-opened panel.
      */
-    open<T, D = any, R = any>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, origin: FlexibleConnectedPositionStrategyOrigin, config?: NxOverlayConfig<D>): NxOverlayRef<T, R> {
+    open<T, D = any, R = any>(
+        componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
+        origin: FlexibleConnectedPositionStrategyOrigin,
+        config?: NxOverlayConfig<D>,
+    ): NxOverlayRef<T, R> {
         config = _applyConfigDefaults(config, new NxOverlayConfig());
 
         if (config.id && this.getOverlayById(config.id)) {

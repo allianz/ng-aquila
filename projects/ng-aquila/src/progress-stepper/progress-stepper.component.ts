@@ -1,6 +1,21 @@
 import { DOCUMENT } from '@angular/common';
 import { CdkStep, CdkStepHeader, CdkStepper } from '@angular/cdk/stepper';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Directive, forwardRef, Inject, Input, QueryList, SkipSelf, OnDestroy, ElementRef, ChangeDetectorRef, OnChanges } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    Directive,
+    forwardRef,
+    Inject,
+    Input,
+    QueryList,
+    SkipSelf,
+    OnDestroy,
+    ElementRef,
+    ChangeDetectorRef,
+    OnChanges,
+} from '@angular/core';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
@@ -25,7 +40,10 @@ import { FocusableOption } from '@angular/cdk/a11y';
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
     _destroyed: Subject<boolean> = new Subject();
 
-    constructor(@Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective, @SkipSelf() private _errorStateMatcher: ErrorStateMatcher) {
+    constructor(
+        @Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective,
+        @SkipSelf() private _errorStateMatcher: ErrorStateMatcher,
+    ) {
         super(stepper as CdkStepper);
 
         this.interacted = false;

@@ -30,6 +30,11 @@
     The object could not be found.
 </nx-message-banner>
 
-<button [disabled]="infoBanner && warningBanner && errorBanner" nxButton type="button" (click)="showAllBanners()">
+<button
+    [disabled]="infoBanner && warningBanner && errorBanner"
+    nxButton
+    type="button"
+    (click)="showAllBanners()"
+>
     Show all message banners
 </button>

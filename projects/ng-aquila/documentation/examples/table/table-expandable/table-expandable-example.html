@@ -2,8 +2,15 @@
     <table nxTable nxExpandableTable #expandableTable="nxExpandableTable" zebra>
         <thead>
             <tr nxTableRow>
-                <th nxHeaderCell class="nx-table-cell--toggle" aria-label="Expand row">
-                    <nx-toggle-button [target]="expandableTable" ariaLabel="Toggle all rows"></nx-toggle-button>
+                <th
+                    nxHeaderCell
+                    class="nx-table-cell--toggle"
+                    aria-label="Expand row"
+                >
+                    <nx-toggle-button
+                        [target]="expandableTable"
+                        ariaLabel="Toggle all rows"
+                    ></nx-toggle-button>
                 </th>
                 <th nxHeaderCell> Product </th>
                 <th nxHeaderCell> Contract number </th>
@@ -23,12 +30,18 @@
                     <td nxTableCell>{{item.product}}</td>
                     <td nxTableCell>{{item.contractNumber}}</td>
                     <td nxTableCell>{{item.endingAt}}</td>
-                    <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
+                    <td nxTableCell
+                        ><nx-badge [type]="item.status"
+                            >{{item.statusText}}</nx-badge
+                        ></td
+                    >
                 </tr>
                 <tr nxExpandableTableRow #expandableRow>
                     <td nxExpandableTableCell></td>
                     <td nxExpandableTableCell>
-                        <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                        <nx-link
+                            ><a routerLink="#">{{item.website}}</a></nx-link
+                        >
                     </td>
                     <td nxExpandableTableCell colspan="3">{{item.desc}}</td>
                 </tr>

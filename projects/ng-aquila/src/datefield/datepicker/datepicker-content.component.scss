@@ -16,7 +16,9 @@ $spacing-sides-calendar-mobile: nx-spacer(xs);
 
 $calendar-height: calc(#{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar} - #{$datepicker-border-width});
 
-$calendar-height-mobile: calc(#{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar-mobile} - #{$datepicker-border-width});
+$calendar-height-mobile: calc(
+    #{$controls-height} + #{$spacing-above-calendar} + 7 * #{$item-size} + #{$spacing-beneath-calendar-mobile} - #{$datepicker-border-width}
+);
 
 $calendar-width: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar} - 2 * #{$datepicker-border-width});
 

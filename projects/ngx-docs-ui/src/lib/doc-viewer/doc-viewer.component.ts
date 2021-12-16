@@ -1,5 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import {
+    ApplicationRef,
+    Component,
+    ComponentFactoryResolver,
+    ElementRef,
+    EventEmitter,
+    Injector,
+    Input,
+    OnInit,
+    Output,
+    ViewContainerRef,
+} from '@angular/core';
 
 @Component({
     // tslint:disable-next-line:component-selector

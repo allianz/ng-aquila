@@ -12,7 +12,21 @@ import {
     OriginConnectionPosition,
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterViewInit, Directive, ElementRef, EmbeddedViewRef, EventEmitter, Inject, Input, OnDestroy, OnInit, Optional, Output, ViewContainerRef, NgZone } from '@angular/core';
+import {
+    AfterViewInit,
+    Directive,
+    ElementRef,
+    EmbeddedViewRef,
+    EventEmitter,
+    Inject,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    ViewContainerRef,
+    NgZone,
+} from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
@@ -622,7 +636,10 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
      * 3) Slightly alternate opposite position, i.e. 'bottom-start', 'bottom-end'
      * 4) All remaining positions from positions list
      */
-    private _getFallbackPositions(direction: PopoverDirection, possibleDirections: PopoverDirection[] = this._possiblePopoverDirections): ConnectionPositionPair[] {
+    private _getFallbackPositions(
+        direction: PopoverDirection,
+        possibleDirections: PopoverDirection[] = this._possiblePopoverDirections,
+    ): ConnectionPositionPair[] {
         if (!direction) {
             return [];
         }

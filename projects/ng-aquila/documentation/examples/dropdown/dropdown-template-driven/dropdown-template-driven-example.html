@@ -3,7 +3,11 @@
         <div nxCol="12,12,6">
             <form>
                 <nx-formfield nxLabel="Car brand">
-                    <nx-dropdown #ngModelDropdown name="test" [(ngModel)]="ngModelBinding">
+                    <nx-dropdown
+                        #ngModelDropdown
+                        name="test"
+                        [(ngModel)]="ngModelBinding"
+                    >
                         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
                         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
                         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -11,14 +15,18 @@
                     </nx-dropdown>
                 </nx-formfield>
             </form>
-            <p class="nx-margin-y-0">Current Value: {{ ngModelDropdown.value }}</p>
+            <p class="nx-margin-y-0"
+                >Current Value: {{ ngModelDropdown.value }}</p
+            >
             <p class="nx-margin-y-0">Model: {{ ngModelBinding | json }}</p>
         </div>
     </div>
 
     <div nxRow>
         <div nxCol="12">
-            <p class="nx-margin-top-0 nx-margin-bottom-xs">Try to set the value to BMW, Audi, Volvo or Mini.</p>
+            <p class="nx-margin-top-0 nx-margin-bottom-xs"
+                >Try to set the value to BMW, Audi, Volvo or Mini.</p
+            >
             <div class="update-container">
                 <input #templateInput type="text" />
                 <button

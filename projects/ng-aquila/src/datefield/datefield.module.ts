@@ -35,7 +35,17 @@ import { NxYearViewComponent } from './datepicker/year-view';
         NxMultiYearViewComponent,
         NxYearViewComponent,
     ],
-    exports: [NxDatefieldDirective, NxDatepickerComponent, NxDatepickerToggleIconComponent, NxDatepickerToggleComponent, NxCalendarComponent, NxCalendarBodyComponent, NxMonthViewComponent, NxMultiYearViewComponent, NxYearViewComponent],
+    exports: [
+        NxDatefieldDirective,
+        NxDatepickerComponent,
+        NxDatepickerToggleIconComponent,
+        NxDatepickerToggleComponent,
+        NxCalendarComponent,
+        NxCalendarBodyComponent,
+        NxMonthViewComponent,
+        NxMultiYearViewComponent,
+        NxYearViewComponent,
+    ],
     entryComponents: [NxDatepickerContentComponent],
 })
 export class NxDatefieldModule {}

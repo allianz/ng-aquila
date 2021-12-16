@@ -321,7 +321,18 @@ describe('NxPaginationComponent', () => {
 });
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" [nxType]="type" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"> </nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            [nxType]="type"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        >
+        </nx-pagination>
+    `,
 })
 class AdvancedPagination extends PaginationTest {
     count: number = 210;
@@ -330,7 +341,16 @@ class AdvancedPagination extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"></nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        ></nx-pagination>
+    `,
 })
 class SimplePagination extends PaginationTest {
     count: number = 210;
@@ -338,7 +358,18 @@ class SimplePagination extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" nxType="advanced" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"> </nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            nxType="advanced"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        >
+        </nx-pagination>
+    `,
 })
 class AdvancedPaginationLess10 extends PaginationTest {
     count: number = 30;
@@ -347,7 +378,18 @@ class AdvancedPaginationLess10 extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" nxType="advanced" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"> </nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            nxType="advanced"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        >
+        </nx-pagination>
+    `,
 })
 class AdvancedPaginationMore10 extends PaginationTest {
     count: number = 210;
@@ -356,7 +398,18 @@ class AdvancedPaginationMore10 extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" nxType="advanced" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"> </nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            nxType="advanced"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        >
+        </nx-pagination>
+    `,
 })
 class AdvancedPaginationBeginat10 extends PaginationTest {
     count: number = 210;
@@ -366,7 +419,16 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"></nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="page"
+            [nxPerPage]="perPage"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        ></nx-pagination>
+    `,
 })
 class SimplePaginationBeginat10 extends PaginationTest {
     count: number = 210;
@@ -375,7 +437,16 @@ class SimplePaginationBeginat10 extends PaginationTest {
 }
 
 @Component({
-    template: ` <nx-pagination [nxCount]="count" [nxPage]="2" [nxPerPage]="perPage" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"></nx-pagination> `,
+    template: `
+        <nx-pagination
+            [nxCount]="count"
+            [nxPage]="2"
+            [nxPerPage]="perPage"
+            (nxGoPrev)="prevPage()"
+            (nxGoNext)="nextPage()"
+            (nxGoPage)="goToPage($event)"
+        ></nx-pagination>
+    `,
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: customTexts }],
 })
 class LocalizationToken extends PaginationTest {
@@ -386,7 +457,14 @@ class LocalizationToken extends PaginationTest {
 @Component({
     template: `
         <div [dir]="direction">
-            <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"></nx-pagination>
+            <nx-pagination
+                [nxCount]="count"
+                [nxPage]="page"
+                [nxPerPage]="perPage"
+                (nxGoPrev)="prevPage()"
+                (nxGoNext)="nextPage()"
+                (nxGoPage)="goToPage($event)"
+            ></nx-pagination>
         </div>
     `,
 })
@@ -399,7 +477,16 @@ class SimplePaginationWithDirection extends PaginationTest {
 @Component({
     template: `
         <div [dir]="direction">
-            <nx-pagination [nxCount]="count" [nxPage]="page" [nxPerPage]="perPage" [nxType]="type" (nxGoPrev)="prevPage()" (nxGoNext)="nextPage()" (nxGoPage)="goToPage($event)"> </nx-pagination>
+            <nx-pagination
+                [nxCount]="count"
+                [nxPage]="page"
+                [nxPerPage]="perPage"
+                [nxType]="type"
+                (nxGoPrev)="prevPage()"
+                (nxGoNext)="nextPage()"
+                (nxGoPage)="goToPage($event)"
+            >
+            </nx-pagination>
         </div>
     `,
 })

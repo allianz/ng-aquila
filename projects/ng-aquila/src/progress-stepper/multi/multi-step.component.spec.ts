@@ -47,7 +47,14 @@ describe('NxMultiStepperComponent', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [MultiStepBasicTest, LinearStepBasicTest, MultiStepCompletionTest, MultiStepValidationTest, MultiStepDirectionTest, MultiStepGroupTest],
+                declarations: [
+                    MultiStepBasicTest,
+                    LinearStepBasicTest,
+                    MultiStepCompletionTest,
+                    MultiStepValidationTest,
+                    MultiStepDirectionTest,
+                    MultiStepGroupTest,
+                ],
                 imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
             }).compileComponents();
         }),

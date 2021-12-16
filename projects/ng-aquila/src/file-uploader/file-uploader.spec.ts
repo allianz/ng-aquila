@@ -3,7 +3,17 @@ import { Component, Type, ViewChild, Injectable, Directive } from '@angular/core
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
 import { NxLabelModule } from '@aposin/ng-aquila/base';
-import { HttpClientModule, HttpParams, HttpClient, HttpHandler, HttpInterceptor, HttpRequest, HttpEvent, HttpResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+    HttpClientModule,
+    HttpParams,
+    HttpClient,
+    HttpHandler,
+    HttpInterceptor,
+    HttpRequest,
+    HttpEvent,
+    HttpResponse,
+    HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { NxFileUploader } from './file-uploader';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';

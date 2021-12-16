@@ -54,7 +54,12 @@ export class NxContextMenuItemComponent implements OnDestroy {
     /** Whether the context menu item acts as a trigger for a sub-menu. */
     _triggersSubmenu: boolean = false;
 
-    constructor(private _elementRef: ElementRef<HTMLElement>, @Inject(DOCUMENT) document: any, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {
+    constructor(
+        private _elementRef: ElementRef<HTMLElement>,
+        @Inject(DOCUMENT) document: any,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _focusMonitor: FocusMonitor,
+    ) {
         this._document = document;
         this._focusMonitor.monitor(this._elementRef);
     }

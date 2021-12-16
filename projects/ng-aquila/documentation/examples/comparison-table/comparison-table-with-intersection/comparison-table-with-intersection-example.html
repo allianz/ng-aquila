@@ -1,7 +1,13 @@
 <div class="container">
-    <nx-expansion-panel *ngIf="showOverviewSeparately" nxStyle="extra-light" class="nx-margin-bottom-2m">
+    <nx-expansion-panel
+        *ngIf="showOverviewSeparately"
+        nxStyle="extra-light"
+        class="nx-margin-bottom-2m"
+    >
         <nx-expansion-panel-header>
-            <nx-expansion-panel-title>Overview of product benefits</nx-expansion-panel-title>
+            <nx-expansion-panel-title
+                >Overview of product benefits</nx-expansion-panel-title
+            >
         </nx-expansion-panel-header>
         <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
     </nx-expansion-panel>
@@ -23,7 +29,9 @@
                         <nx-icon name="info-circle-o"></nx-icon>
                     </button>
                     <nx-popover #popover>
-                        <span>This product was chosen by most of the users</span>
+                        <span
+                            >This product was chosen by most of the users</span
+                        >
                     </nx-popover>
                 </div>
             </nx-comparison-table-popular-cell>
@@ -162,77 +170,180 @@
                 </div>
             </nx-comparison-table-description-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
+                <nx-icon
+                    name="minus"
+                    size="s"
+                    aria-label="Not included"
+                    class="minus-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
             <nx-comparison-table-cell>
-                <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
+                <nx-icon
+                    name="minus"
+                    size="s"
+                    aria-label="Not included"
+                    class="minus-icon"
+                ></nx-icon>
             </nx-comparison-table-cell>
         </ng-container>
 
         <ng-container nxComparisonTableRowGroup visibleRows="2">
             <ng-container nxComparisonTableRow>
-                <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
                 <nx-comparison-table-cell>
-                    <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not included"
+                        class="minus-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="minus" size="s" aria-label="Not Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
             </ng-container>
 
             <ng-container nxComparisonTableRow>
-                <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
                 <nx-comparison-table-cell>
-                    <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not included"
+                        class="minus-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell>
-                    <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
                 </nx-comparison-table-cell>
             </ng-container>
 
             <ng-container nxComparisonTableRow>
-                <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-                <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>210 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>220 Mio. Euro</nx-comparison-table-cell>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell
+                    >100 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >150 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >200 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >210 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >220 Mio. Euro</nx-comparison-table-cell
+                >
             </ng-container>
 
             <ng-container nxComparisonTableRow>
-                <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-                <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>180 Mio. Euro</nx-comparison-table-cell>
-                <nx-comparison-table-cell>225 Mio. Euro</nx-comparison-table-cell>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell
+                    >100 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >150 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >200 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >180 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >225 Mio. Euro</nx-comparison-table-cell
+                >
             </ng-container>
         </ng-container>
 
@@ -294,20 +405,37 @@
 <ng-template #benefitsList>
     <div class="service-lists">
         <ul nxList="small" class="benefits-list nx-margin-bottom-0">
-            <li nxListIcon="check" class="nx-margin-bottom-2xs">Space for offered services, advantages</li>
-            <li nxListIcon="check" class="nx-margin-bottom-2xs">Third party damages</li>
-            <li nxListIcon="check" class="nx-margin-bottom-2xs">Service advantage</li>
-            <li nxListIcon="check" [class.nx-margin-bottom-2xs]="showOverviewSeparately"
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Space for offered services, advantages</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Third party damages</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Service advantage</li
+            >
+            <li
+                nxListIcon="check"
+                [class.nx-margin-bottom-2xs]="showOverviewSeparately"
                 >Burglary theft, robbery and vandalism</li
             >
         </ul>
         <ul nxList="small" class="benefits-list nx-margin-bottom-0">
-            <li nxListIcon="check" class="nx-margin-bottom-2xs">Services, advantages and features</li>
             <li nxListIcon="check" class="nx-margin-bottom-2xs"
-                >Services e.g. All third party damages, Glasses damages, etc.</li
+                >Services, advantages and features</li
             >
-            <li nxListIcon="check" class="nx-margin-bottom-2xs">Service advantage</li>
-            <li nxListIcon="check" [class.nx-margin-bottom-2xs]="showOverviewSeparately">Vandalism after burglary</li>
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Services e.g. All third party damages, Glasses damages,
+                etc.</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Service advantage</li
+            >
+            <li
+                nxListIcon="check"
+                [class.nx-margin-bottom-2xs]="showOverviewSeparately"
+                >Vandalism after burglary</li
+            >
         </ul>
     </div>
 </ng-template>

@@ -40,7 +40,16 @@ describe('NxInputDirective', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicInput, BasicTextarea, TypedAndRequiredInput, RequiredInput, NgModelInput, BasicInputWithFormControl, ConfigurableInput, InputWithLabelAndPlaceholder],
+                declarations: [
+                    BasicInput,
+                    BasicTextarea,
+                    TypedAndRequiredInput,
+                    RequiredInput,
+                    NgModelInput,
+                    BasicInputWithFormControl,
+                    ConfigurableInput,
+                    InputWithLabelAndPlaceholder,
+                ],
                 imports: [FormsModule, NxInputModule, ReactiveFormsModule],
             }).compileComponents();
         }),

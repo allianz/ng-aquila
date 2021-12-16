@@ -508,7 +508,12 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     /** @docs-private */
     _controlInvalid(): boolean {
         const form = this.radioGroup && (this.radioGroup._parentFormGroup || this.radioGroup._parentForm);
-        return !!(this.radioGroup && this.radioGroup.ngControl && this.radioGroup.ngControl.invalid && (this.radioGroup.ngControl.touched || (form && form.submitted)));
+        return !!(
+            this.radioGroup &&
+            this.radioGroup.ngControl &&
+            this.radioGroup.ngControl.invalid &&
+            (this.radioGroup.ngControl.touched || (form && form.submitted))
+        );
     }
 
     static ngAcceptInputType_negative: BooleanInput;

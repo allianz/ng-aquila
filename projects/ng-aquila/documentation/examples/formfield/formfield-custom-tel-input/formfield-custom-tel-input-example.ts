@@ -1,6 +1,19 @@
-import { Component, OnDestroy, Input, ElementRef, Optional, Self } from '@angular/core';
+import {
+    Component,
+    OnDestroy,
+    Input,
+    ElementRef,
+    Optional,
+    Self,
+} from '@angular/core';
 import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
-import { ControlValueAccessor, FormGroup, FormBuilder, NgControl, Validators } from '@angular/forms';
+import {
+    ControlValueAccessor,
+    FormGroup,
+    FormBuilder,
+    NgControl,
+    Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -11,7 +24,11 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** Data structure for holding telephone number. */
 export class MyTel {
-    constructor(public area: string, public exchange: string, public subscriber: string) {}
+    constructor(
+        public area: string,
+        public exchange: string,
+        public subscriber: string,
+    ) {}
 }
 
 /** Custom `NxFormFieldControl` for telephone number input. */
@@ -19,7 +36,12 @@ export class MyTel {
     selector: 'formfield-custom-tel-input-example',
     templateUrl: 'formfield-custom-tel-input-example.html',
     styleUrls: ['formfield-custom-tel-input-example.css'],
-    providers: [{ provide: NxFormfieldControl, useExisting: FormfieldCustomTelInputExampleComponent }],
+    providers: [
+        {
+            provide: NxFormfieldControl,
+            useExisting: FormfieldCustomTelInputExampleComponent,
+        },
+    ],
     host: {
         '[class.example-floating]': 'shouldLabelFloat',
         '[id]': 'id',
@@ -105,9 +127,30 @@ export class FormfieldCustomTelInputExampleComponent
         @Optional() @Self() public ngControl: NgControl,
     ) {
         this.parts = formBuilder.group({
-            area: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-            exchange: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-            subscriber: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+            area: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(3),
+                ],
+            ],
+            exchange: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(3),
+                ],
+            ],
+            subscriber: [
+                null,
+                [
+                    Validators.required,
+                    Validators.minLength(4),
+                    Validators.maxLength(4),
+                ],
+            ],
         });
 
         _focusMonitor.monitor(_elementRef, true).subscribe(origin => {

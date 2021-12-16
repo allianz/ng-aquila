@@ -52,8 +52,13 @@ program
     .option('-o, --output [path]', 'Where to save all generated files. By default `./generated` in your documentaiton folder .', parsePath)
     .option('-pe, --private-examples [path]', 'An additional private examples folder.', null)
 
-    .option('-m, --with-module [path]', 'Enable Example Module generation. \
-        Pass in path otherwise the file is generated in the example folder.', parsePath, 'true')
+    .option(
+        '-m, --with-module [path]',
+        'Enable Example Module generation. \
+        Pass in path otherwise the file is generated in the example folder.',
+        parsePath,
+        'true',
+    )
     .action((dir, cmd) => {
         const rootPath = dir; // required so we are safe to expect that value
         if (fs.existsSync(rootPath) === false) {

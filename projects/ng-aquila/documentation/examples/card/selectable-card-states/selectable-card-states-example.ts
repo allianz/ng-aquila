@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Selectable cards states example

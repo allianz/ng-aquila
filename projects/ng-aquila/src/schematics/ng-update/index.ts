@@ -1,7 +1,18 @@
 import { MiscTemplateMigration } from './migrations/misc-template';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 import { createMigrationSchematicRule, TargetVersion, UpgradeData } from '@angular/cdk/schematics';
-import { attributeSelectors, classNames, constructorChecks, cssSelectors, elementSelectors, inputNames, methodCallChecks, outputNames, propertyNames, symbolRemoval } from './data';
+import {
+    attributeSelectors,
+    classNames,
+    constructorChecks,
+    cssSelectors,
+    elementSelectors,
+    inputNames,
+    methodCallChecks,
+    outputNames,
+    propertyNames,
+    symbolRemoval,
+} from './data';
 
 /** Upgrade data that will be used for the Angular Material ng-update schematic. */
 export const upgradeData: UpgradeData = {
@@ -31,7 +42,9 @@ function onMigrationComplete(context: SchematicContext, targetVersion: TargetVer
     context.logger.info('');
 
     if (hasFailures) {
-        context.logger.warn('  ⚠  Some issues were detected but could not be fixed automatically. Please check the ' + 'output above and fix these issues manually.');
+        context.logger.warn(
+            '  ⚠  Some issues were detected but could not be fixed automatically. Please check the ' + 'output above and fix these issues manually.',
+        );
     }
 }
 

@@ -1,5 +1,9 @@
 import { Component, Injectable } from '@angular/core';
-import { SortEvent, SortDirection, NxSortHeaderIntl } from '@aposin/ng-aquila/table';
+import {
+    SortEvent,
+    SortDirection,
+    NxSortHeaderIntl,
+} from '@aposin/ng-aquila/table';
 
 interface Contract {
     product: string;
@@ -161,7 +165,11 @@ export class TableFilterSortPaginateExampleComponent {
         this.currentlyAvailableElements = this.currentlyAvailableElements.sort(
             (a: { [key: string]: any }, b: { [key: string]: any }) => {
                 if (sort.active in a && sort.active in b) {
-                    return this.compare(a[sort.active], b[sort.active], sort.direction);
+                    return this.compare(
+                        a[sort.active],
+                        b[sort.active],
+                        sort.direction,
+                    );
                 }
                 return 0;
             },
@@ -170,7 +178,11 @@ export class TableFilterSortPaginateExampleComponent {
         this.updatePage();
     }
 
-    compare(a: number | string | Date, b: number | string | Date, direction: SortDirection) {
+    compare(
+        a: number | string | Date,
+        b: number | string | Date,
+        direction: SortDirection,
+    ) {
         return (a < b ? -1 : 1) * (direction === 'asc' ? 1 : -1);
     }
 
@@ -185,11 +197,13 @@ export class TableFilterSortPaginateExampleComponent {
     }
 
     filterData(filterValue: string) {
-        this.currentlyAvailableElements = this.tableElements.filter(tableRowObject => {
-            return Object.values(tableRowObject).some(propertyValue =>
-                new RegExp(filterValue, 'i').test(String(propertyValue)),
-            );
-        });
+        this.currentlyAvailableElements = this.tableElements.filter(
+            tableRowObject => {
+                return Object.values(tableRowObject).some(propertyValue =>
+                    new RegExp(filterValue, 'i').test(String(propertyValue)),
+                );
+            },
+        );
 
         this.updatePage();
     }

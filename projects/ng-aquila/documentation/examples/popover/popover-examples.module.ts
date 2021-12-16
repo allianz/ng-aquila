@@ -32,7 +32,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxPopoverModule, NxButtonModule, NxIconModule, NxDynamicTableModule, CdkScrollableModule],
+    imports: [
+        NxPopoverModule,
+        NxButtonModule,
+        NxIconModule,
+        NxDynamicTableModule,
+        CdkScrollableModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

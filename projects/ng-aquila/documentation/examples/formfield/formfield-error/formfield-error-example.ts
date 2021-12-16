@@ -10,8 +10,10 @@ import { NxInputDirective } from '@aposin/ng-aquila/input';
     styleUrls: ['./formfield-error-example.css'],
 })
 export class FormfieldErrorExampleComponent implements AfterContentInit {
-    @ViewChild('exampleErrorNgModel', { static: true }) exampleErrorNgModel!: NxInputDirective;
-    @ViewChild('exampleErrorNgModelHint', { static: true }) exampleErrorNgModelHint!: NxInputDirective;
+    @ViewChild('exampleErrorNgModel', { static: true })
+    exampleErrorNgModel!: NxInputDirective;
+    @ViewChild('exampleErrorNgModelHint', { static: true })
+    exampleErrorNgModelHint!: NxInputDirective;
     public valueSupplementError!: string;
     public valueSupplementErrorHint!: string;
 

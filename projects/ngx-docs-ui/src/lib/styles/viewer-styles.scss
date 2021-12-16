@@ -510,43 +510,50 @@ a {
     text-overflow: ellipsis;
 
     @media only screen and (min-width: 0) and (max-width: 319px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-tiny-color) 0%, v(documentation-grid-tiny-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-tiny-color) 0%, v(documentation-grid-tiny-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 320px) and (max-width: 703px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-small-color) 0%, v(documentation-grid-small-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-small-color) 0%, v(documentation-grid-small-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 704px) and (max-width: 991px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-medium-color) 0%, v(documentation-grid-medium-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-medium-color) 0%, v(documentation-grid-medium-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-large-color) 0%, v(documentation-grid-large-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-large-color) 0%, v(documentation-grid-large-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-xlarge-color) 0%, v(documentation-grid-xlarge-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-xlarge-color) 0%, v(documentation-grid-xlarge-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-2xlarge-color) 0%, v(documentation-grid-2xlarge-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-2xlarge-color) 0%, v(documentation-grid-2xlarge-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }
 
     @media only screen and (min-width: 1760px) {
-        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%), linear-gradient(to bottom, v(documentation-grid-3xlarge-color) 0%, v(documentation-grid-3xlarge-color) 100%);
+        background-image: linear-gradient(to bottom, v(ui-01) 0%, v(ui-01) 100%),
+            linear-gradient(to bottom, v(documentation-grid-3xlarge-color) 0%, v(documentation-grid-3xlarge-color) 100%);
         background-clip: content-box, padding-box;
         outline: 2px dotted v(documentation-grid-examples-dotted-border-color);
     }

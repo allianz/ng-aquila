@@ -951,7 +951,17 @@ describe('NxMaskDirective', () => {
 class BasicMaskComponent extends MaskTest {}
 
 @Component({
-    template: ` <input [nxMask]="mask" [separators]="separators" [dropSpecialCharacters]="dropSpecialCharacters" [validateMask]="validateMask" [nxConvertTo]="convertTo" [deactivateMask]="deactivateMask" [(ngModel)]="modelVal" /> `,
+    template: `
+        <input
+            [nxMask]="mask"
+            [separators]="separators"
+            [dropSpecialCharacters]="dropSpecialCharacters"
+            [validateMask]="validateMask"
+            [nxConvertTo]="convertTo"
+            [deactivateMask]="deactivateMask"
+            [(ngModel)]="modelVal"
+        />
+    `,
 })
 class ConfigurableMaskComponent extends MaskTest {}
 

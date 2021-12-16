@@ -14,7 +14,9 @@ const { opensourceThemes } = require('./themes.js');
  */
 
 function compileTheme(theme) {
-    execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/theming/prebuilt/${theme}.scss dist/ng-aquila/themes/${theme}.css`, { stdio: 'inherit' });
+    execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/theming/prebuilt/${theme}.scss dist/ng-aquila/themes/${theme}.css`, {
+        stdio: 'inherit',
+    });
 }
 
 function compileSchematics() {

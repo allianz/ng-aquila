@@ -47,7 +47,9 @@
         <tr nxTableRow *ngFor="let contract of contracts">
             <td nxTableCell>{{ contract.id }}</td>
             <td nxTableCell>
-                <nx-badge [type]="contract.status">{{ contract.status }}</nx-badge>
+                <nx-badge [type]="contract.status"
+                    >{{ contract.status }}</nx-badge
+                >
             </td>
             <td nxTableCell>
                 <button

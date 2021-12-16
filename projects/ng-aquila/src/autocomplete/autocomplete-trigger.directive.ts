@@ -5,7 +5,22 @@ import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes'
 import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ViewportRuler } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, forwardRef, Host, Inject, Input, NgZone, OnChanges, OnDestroy, OnInit, Optional, ViewContainerRef } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
+    forwardRef,
+    Host,
+    Inject,
+    Input,
+    NgZone,
+    OnChanges,
+    OnDestroy,
+    OnInit,
+    Optional,
+    ViewContainerRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable, Subject, Subscription, defer, of, merge, fromEvent } from 'rxjs';
 import { delay, filter, switchMap, take, tap, debounceTime, first } from 'rxjs/operators';
@@ -28,7 +43,11 @@ export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
  * Creates an error to be thrown when attempting to use an autocomplete trigger without a panel.
  */
 export function getNxAutocompleteMissingPanelError(): Error {
-    return Error('Attempting to open an undefined instance of `nx-autocomplete`. ' + 'Make sure that the id passed to the `nxAutocomplete` is correct and that ' + "you're attempting to open it after the ngAfterContentInit hook.");
+    return Error(
+        'Attempting to open an undefined instance of `nx-autocomplete`. ' +
+            'Make sure that the id passed to the `nxAutocomplete` is correct and that ' +
+            "you're attempting to open it after the ngAfterContentInit hook.",
+    );
 }
 
 @Directive({
@@ -167,7 +186,13 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
                 const clickTarget = event.target as HTMLElement;
                 const formField = this._formField ? this._formField.elementRef.nativeElement : null;
 
-                return this._overlayAttached && clickTarget !== this._element.nativeElement && (!formField || !formField.contains(clickTarget)) && !!this._overlayRef && !this._overlayRef.overlayElement.contains(clickTarget);
+                return (
+                    this._overlayAttached &&
+                    clickTarget !== this._element.nativeElement &&
+                    (!formField || !formField.contains(clickTarget)) &&
+                    !!this._overlayRef &&
+                    !this._overlayRef.overlayElement.contains(clickTarget)
+                );
             }),
         );
     }
@@ -261,7 +286,10 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
             this.autocomplete.items = itemsSubject;
 
-            const valueChanges = this._formField && this._formField._control && this._formField._control.ngControl && this._formField._control.ngControl.valueChanges ? this._formField._control.ngControl.valueChanges : this._valueChanges;
+            const valueChanges =
+                this._formField && this._formField._control && this._formField._control.ngControl && this._formField._control.ngControl.valueChanges
+                    ? this._formField._control.ngControl.valueChanges
+                    : this._valueChanges;
 
             this._controlValueChangesSubscription = valueChanges.pipe(debounceTime(this._debounce)).subscribe(input => {
                 if (this._itemsSubscription) {
@@ -467,7 +495,12 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
         const panelOffsetTop = this.autocomplete.panel.nativeElement.offsetTop;
 
-        const newScrollPosition = _getOptionScrollPosition(optionOffset, optionHeight, this.autocomplete._getScrollTop() + panelOffsetTop, this.autocomplete.panel.nativeElement.offsetHeight);
+        const newScrollPosition = _getOptionScrollPosition(
+            optionOffset,
+            optionHeight,
+            this.autocomplete._getScrollTop() + panelOffsetTop,
+            this.autocomplete.panel.nativeElement.offsetHeight,
+        );
 
         this.autocomplete._setScrollTop(newScrollPosition - panelOffsetTop);
     }

@@ -1,5 +1,8 @@
 <nx-formfield nxLabel="Date of damage">
     <input nxInput nxDatefield [nxDatepicker]="picker1" ngModel />
-    <nx-datepicker-toggle [for]="picker1" nxFormfieldSuffix></nx-datepicker-toggle>
+    <nx-datepicker-toggle
+        [for]="picker1"
+        nxFormfieldSuffix
+    ></nx-datepicker-toggle>
     <nx-datepicker startView="year" #picker1></nx-datepicker>
 </nx-formfield>

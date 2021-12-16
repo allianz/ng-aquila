@@ -5,7 +5,14 @@
 <nx-menu #menu>
     <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
         <nx-tree-node *nxTreeNodeDef="let node; when: _isLink" nxMenuItem="l">
-            <a nxMenuLink nxTreeNodeActionItem routerLink="./" [queryParams]="node.query"> {{node.label}} </a>
+            <a
+                nxMenuLink
+                nxTreeNodeActionItem
+                routerLink="./"
+                [queryParams]="node.query"
+            >
+                {{node.label}}
+            </a>
         </nx-tree-node>
         <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
             <button
@@ -18,11 +25,18 @@
                 [nxType]="node.level === 0 ? 'root' : 'nested'"
                 type="button"
             >
-                <nx-icon *ngIf="node.icon" nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
+                <nx-icon
+                    *ngIf="node.icon"
+                    nxMenuButtonIcon
+                    [name]="node.icon"
+                    size="s"
+                ></nx-icon>
                 {{node.label}}
             </button>
         </nx-tree-node>
     </nx-tree>
 
-    <button nxButton (click)="menu.toggle()" class="close-menu" type="button">close menu</button>
+    <button nxButton (click)="menu.toggle()" class="close-menu" type="button"
+        >close menu</button
+    >
 </nx-menu>

@@ -13,6 +13,9 @@ export class ComparisonTableWithIntersectionExampleComponent {
     constructor(private viewportService: NxViewportService) {
         this.viewportService
             .max(NxBreakpoints.BREAKPOINT_MEDIUM)
-            .subscribe(isMaximumMedium => (this.showOverviewSeparately = isMaximumMedium));
+            .subscribe(
+                isMaximumMedium =>
+                    (this.showOverviewSeparately = isMaximumMedium),
+            );
     }
 }

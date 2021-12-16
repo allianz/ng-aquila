@@ -299,7 +299,9 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
      * @returns A Date object with its UTC representation based on the passed in date info
      */
     private _format(dtf: Intl.DateTimeFormat, date: Date) {
-        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
+        const d = new Date(
+            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()),
+        );
         return dtf.format(d);
     }
 }

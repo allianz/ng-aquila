@@ -307,7 +307,15 @@ class DefaultPhoneInput extends PhoneInputTest {}
 
 @Component({
     template: ` <nx-formfield nxLabel="Telephone number">
-        <nx-phone-input [(ngModel)]="value" [disabled]="disabled" [readonly]="readonly" [areaCodeLabel]="areaCodeLabel" [countryNames]="countries" [placeholder]="placeholder" [countryCode]="countryCode"></nx-phone-input>
+        <nx-phone-input
+            [(ngModel)]="value"
+            [disabled]="disabled"
+            [readonly]="readonly"
+            [areaCodeLabel]="areaCodeLabel"
+            [countryNames]="countries"
+            [placeholder]="placeholder"
+            [countryCode]="countryCode"
+        ></nx-phone-input>
     </nx-formfield>`,
 })
 class ConfigurablePhoneInput extends PhoneInputTest {

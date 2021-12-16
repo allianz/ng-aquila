@@ -37,7 +37,10 @@ describe('NxMomentDateAdapter', () => {
 
         assertValidDate = (d: moment.Moment | null, valid: boolean) => {
             expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
-            expect(adapter.isValid(d as moment.Moment)).toBe(valid, `Expected ${d} to be ${valid ? 'valid' : 'invalid'},` + ` but was ${valid ? 'invalid' : 'valid'}`);
+            expect(adapter.isValid(d as moment.Moment)).toBe(
+                valid,
+                `Expected ${d} to be ${valid ? 'valid' : 'invalid'},` + ` but was ${valid ? 'invalid' : 'valid'}`,
+            );
         };
     }));
 

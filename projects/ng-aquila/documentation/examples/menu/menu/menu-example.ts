@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { NxTreeFlatDataSource, NxFlatTreeControl, NxTreeNode, NxFlatTreeNode } from '@aposin/ng-aquila/tree';
+import {
+    NxTreeFlatDataSource,
+    NxFlatTreeControl,
+    NxTreeNode,
+    NxFlatTreeNode,
+} from '@aposin/ng-aquila/tree';
 
 interface Link {
     label: string;
@@ -172,7 +177,10 @@ export class MenuExampleComponent {
 
     constructor() {
         this._treeControl = new NxFlatTreeControl();
-        this._dataSource = new NxTreeFlatDataSource(this._treeControl, this.navigationData);
+        this._dataSource = new NxTreeFlatDataSource(
+            this._treeControl,
+            this.navigationData,
+        );
     }
 
     _hasChild = (_: number, node: NxFlatTreeNode) => node.expandable;

@@ -1,5 +1,17 @@
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
-import { Component, EventEmitter, forwardRef, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef, ViewChildren, ElementRef, QueryList, AfterContentInit } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    forwardRef,
+    Input,
+    Output,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    ViewChildren,
+    ElementRef,
+    QueryList,
+    AfterContentInit,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxTagComponent } from './tag.component';
 
@@ -140,7 +152,10 @@ export class NxTaglistComponent implements ControlValueAccessor {
         }
 
         // make sure tag is either string or has the configured label prop and is not yet in the list
-        if ((typeof tag === 'string' && this.tags.indexOf(tag) === -1) || (tag[this.labelProp] && this.tags.filter(t => t[this.labelProp] === tag[this.labelProp]).length < 1)) {
+        if (
+            (typeof tag === 'string' && this.tags.indexOf(tag) === -1) ||
+            (tag[this.labelProp] && this.tags.filter(t => t[this.labelProp] === tag[this.labelProp]).length < 1)
+        ) {
             this.tags = [...this.tags, tag];
             this._onChange(this.tags);
             this.tagsChange.emit(this.tags);

@@ -10,5 +10,8 @@ import { FormControl, Validators } from '@angular/forms';
     styleUrls: ['./formfield-multiple-errors-example.css'],
 })
 export class FormfieldMultipleErrorsExampleComponent {
-    emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+    emailFormControl = new FormControl('', [
+        Validators.required,
+        Validators.email,
+    ]);
 }

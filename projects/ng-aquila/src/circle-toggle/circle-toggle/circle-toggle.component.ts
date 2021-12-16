@@ -1,4 +1,19 @@
-import { Component, EventEmitter, forwardRef, Input, Output, ViewChild, Optional, OnInit, OnDestroy, AfterViewInit, HostListener, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    forwardRef,
+    Input,
+    Output,
+    ViewChild,
+    Optional,
+    OnInit,
+    OnDestroy,
+    AfterViewInit,
+    HostListener,
+    ChangeDetectorRef,
+    ChangeDetectionStrategy,
+    ElementRef,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 
@@ -273,7 +288,12 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     private onChangeCallback = (checked: boolean) => {};
     private onTouchedCallback = () => {};
 
-    constructor(/** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent, private _checkedDispatcher: UniqueSelectionDispatcher, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {
+    constructor(
+        /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent,
+        private _checkedDispatcher: UniqueSelectionDispatcher,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _focusMonitor: FocusMonitor,
+    ) {
         super();
 
         if (this.toggleGroup) {

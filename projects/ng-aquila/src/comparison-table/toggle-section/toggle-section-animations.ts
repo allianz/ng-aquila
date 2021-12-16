@@ -9,5 +9,9 @@ export const NxToggleSectionAnimations: {
         state('open', style({ height: '*', visibility: 'visible' })),
         transition('open <=> closed', animate('.5s cubic-bezier(0.86, 0, 0.07, 1)')),
     ]),
-    indicatorRotate: trigger('indicatorRotate', [state('closed', style({ transform: 'rotate(0deg)' })), state('open', style({ transform: 'rotate(180deg)' })), transition('open <=> closed', animate('.3s ease'))]),
+    indicatorRotate: trigger('indicatorRotate', [
+        state('closed', style({ transform: 'rotate(0deg)' })),
+        state('open', style({ transform: 'rotate(180deg)' })),
+        transition('open <=> closed', animate('.3s ease')),
+    ]),
 };

@@ -20,7 +20,14 @@
     >
         <div class="nx-comparison-table__cell-content">
             <span class="group-label">{{ _expanded ? group.labelExpanded : group.labelCollapsed }}</span>
-            <nx-icon [name]="_expanded ? 'chevron-up' : 'chevron-down'" aria-hidden="true" size="s" [class.nx-margin-left-2xs]="dir === 'ltr'" [class.nx-margin-right-2xs]="dir === 'rtl'"> </nx-icon>
+            <nx-icon
+                [name]="_expanded ? 'chevron-up' : 'chevron-down'"
+                aria-hidden="true"
+                size="s"
+                [class.nx-margin-left-2xs]="dir === 'ltr'"
+                [class.nx-margin-right-2xs]="dir === 'rtl'"
+            >
+            </nx-icon>
         </div>
     </div>
 </div>

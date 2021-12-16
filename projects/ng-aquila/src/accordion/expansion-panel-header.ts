@@ -30,8 +30,17 @@ import { NxExpansionPanelComponent } from './expansion-panel';
 export class NxExpansionPanelHeaderComponent implements OnDestroy {
     private _parentChangeSubscription = Subscription.EMPTY;
 
-    constructor(/** @docs-private */ @Host() public panel: NxExpansionPanelComponent, private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
-        this._parentChangeSubscription = merge(panel.opened, panel.closed, panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled)))).subscribe(() => this._changeDetectorRef.markForCheck());
+    constructor(
+        /** @docs-private */ @Host() public panel: NxExpansionPanelComponent,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _elementRef: ElementRef,
+        private _focusMonitor: FocusMonitor,
+    ) {
+        this._parentChangeSubscription = merge(
+            panel.opened,
+            panel.closed,
+            panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))),
+        ).subscribe(() => this._changeDetectorRef.markForCheck());
 
         this._focusMonitor.monitor(this._elementRef);
     }

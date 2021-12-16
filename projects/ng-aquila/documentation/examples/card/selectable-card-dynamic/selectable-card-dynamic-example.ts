@@ -12,7 +12,11 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class SelectableCardDynamicExampleComponent {
     public myFormGroup: FormGroup;
 
-    cardArray = new FormArray([new FormControl(false), new FormControl(false), new FormControl(false)]);
+    cardArray = new FormArray([
+        new FormControl(false),
+        new FormControl(false),
+        new FormControl(false),
+    ]);
 
     constructor(private fb: FormBuilder) {
         this.myFormGroup = this.fb.group({

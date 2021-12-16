@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
+import {
+    TabGroupDefaultOptions,
+    TAB_GROUP_DEFAULT_OPTIONS,
+} from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabGroupDefaultOptions = {
     appearance: 'expert',
@@ -12,7 +15,9 @@ const myDefaultOptions: TabGroupDefaultOptions = {
     selector: 'tabs-injection-token-example',
     templateUrl: './tabs-injection-token-example.html',
     styleUrls: ['./tabs-injection-token-example.css'],
-    providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions }],
+    providers: [
+        { provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+    ],
 })
 export class TabsInjectionTokenExampleComponent {
     currentIndex: number = 0;

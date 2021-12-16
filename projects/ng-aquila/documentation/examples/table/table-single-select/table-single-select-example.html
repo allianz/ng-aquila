@@ -12,7 +12,12 @@
         </thead>
         <tbody>
             <ng-container *ngFor="let item of tableElements">
-                <tr nxTableRow [selected]="selection.isSelected(item)" (select)="selection.select(item)" selectable>
+                <tr
+                    nxTableRow
+                    [selected]="selection.isSelected(item)"
+                    (select)="selection.select(item)"
+                    selectable
+                >
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-radio
                             (nxValueChange)="selection.select(item)"
@@ -23,11 +28,15 @@
                     <td nxTableCell>{{item.product}}</td>
                     <td nxTableCell>{{item.contractNumber}}</td>
                     <td nxTableCell>
-                        <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                        <nx-link
+                            ><a routerLink="#">{{item.website}}</a></nx-link
+                        >
                     </td>
                     <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
                     <td nxTableCell>
-                        <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
+                        <nx-badge [type]="item.status"
+                            >{{item.statusText}}</nx-badge
+                        >
                     </td>
                 </tr>
             </ng-container>

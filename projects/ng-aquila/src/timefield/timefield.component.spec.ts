@@ -64,7 +64,14 @@ describe('NxTimefieldComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
-                declarations: [SimpleTimefield, ConfigurableTimefield, ReactiveTimefield, TemplateDrivenTimefield, TemplateDrivenOnPushTimefield, OverrideDefaultLabelsTimefield],
+                declarations: [
+                    SimpleTimefield,
+                    ConfigurableTimefield,
+                    ReactiveTimefield,
+                    TemplateDrivenTimefield,
+                    TemplateDrivenOnPushTimefield,
+                    OverrideDefaultLabelsTimefield,
+                ],
             }).compileComponents();
         }),
     );
@@ -388,7 +395,9 @@ describe('NxTimefieldComponent', () => {
 class SimpleTimefield extends TimefieldTest {}
 
 @Component({
-    template: ` <nx-timefield [label]="label" [twelveHourFormat]="twelveHourFormat" [negative]="negative" [disabled]="disabled" [required]="required"></nx-timefield> `,
+    template: `
+        <nx-timefield [label]="label" [twelveHourFormat]="twelveHourFormat" [negative]="negative" [disabled]="disabled" [required]="required"></nx-timefield>
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfigurableTimefield extends TimefieldTest {}

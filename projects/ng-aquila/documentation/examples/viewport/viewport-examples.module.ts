@@ -10,7 +10,13 @@ import { ViewportChangeExampleComponent } from './viewport-change/viewport-chang
 const EXAMPLES = [ViewportChangeExampleComponent];
 
 @NgModule({
-    imports: [NxSidebarModule, NxIconModule, RouterModule, CommonModule, NxActionModule],
+    imports: [
+        NxSidebarModule,
+        NxIconModule,
+        RouterModule,
+        CommonModule,
+        NxActionModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

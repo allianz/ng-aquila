@@ -46,7 +46,15 @@ describe('NxSwitcherComponent', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicSwitcher, SwitcherTemplateDriven, SwitcherReactiveForm, BasicSwitcherOnPush, LabelSizeSwitcher, ValidationSwitcherForm, LabellessSwitcher],
+                declarations: [
+                    BasicSwitcher,
+                    SwitcherTemplateDriven,
+                    SwitcherReactiveForm,
+                    BasicSwitcherOnPush,
+                    LabelSizeSwitcher,
+                    ValidationSwitcherForm,
+                    LabellessSwitcher,
+                ],
                 imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
             }).compileComponents();
         }),

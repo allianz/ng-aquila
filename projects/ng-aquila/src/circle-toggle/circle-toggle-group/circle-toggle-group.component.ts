@@ -1,4 +1,20 @@
-import { Component, ContentChildren, EventEmitter, forwardRef, Input, Output, QueryList, AfterViewInit, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy, Optional, Inject, HostBinding, InjectionToken } from '@angular/core';
+import {
+    Component,
+    ContentChildren,
+    EventEmitter,
+    forwardRef,
+    Input,
+    Output,
+    QueryList,
+    AfterViewInit,
+    ChangeDetectorRef,
+    OnDestroy,
+    ChangeDetectionStrategy,
+    Optional,
+    Inject,
+    HostBinding,
+    InjectionToken,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { takeUntil, tap, startWith, filter } from 'rxjs/operators';
@@ -136,7 +152,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this.appearance === 'expert';
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions) {}
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions,
+    ) {}
 
     /** @docs-private */
     get selectedButton(): ToggleButton | null {

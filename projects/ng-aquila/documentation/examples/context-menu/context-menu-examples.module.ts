@@ -29,7 +29,14 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxContextMenuModule, NxIconModule, NxBadgeModule, NxIndicatorModule, NxTableModule, ExamplesSharedModule],
+    imports: [
+        NxContextMenuModule,
+        NxIconModule,
+        NxBadgeModule,
+        NxIndicatorModule,
+        NxTableModule,
+        ExamplesSharedModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

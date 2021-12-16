@@ -46,14 +46,21 @@ export class StackBlitzButton {
     openStackBlitz(): void {
         if (!this.stackBlitzForm) {
             // First click
-            this.stackBlitzWriter.constructStackBlitzForm(this.exampleDescriptor.id, this.exampleDescriptor.module, this.exampleData, this.exampleDescriptor.id.includes('harness')).then((stackBlitzForm: HTMLFormElement) => {
-                // This delay could trigger the browser's popup blocker if it takes too long
-                // The user can either allow the popup or do a second click, when the form is
-                // already constructed and set below
-                this.stackBlitzForm = stackBlitzForm;
+            this.stackBlitzWriter
+                .constructStackBlitzForm(
+                    this.exampleDescriptor.id,
+                    this.exampleDescriptor.module,
+                    this.exampleData,
+                    this.exampleDescriptor.id.includes('harness'),
+                )
+                .then((stackBlitzForm: HTMLFormElement) => {
+                    // This delay could trigger the browser's popup blocker if it takes too long
+                    // The user can either allow the popup or do a second click, when the form is
+                    // already constructed and set below
+                    this.stackBlitzForm = stackBlitzForm;
 
-                this.submitStackBlitzForm();
-            });
+                    this.submitStackBlitzForm();
+                });
         } else {
             // Second click
             this.submitStackBlitzForm();

@@ -20,7 +20,12 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
     _queryParamSubscription!: Subscription;
     directionQuery!: Direction;
 
-    constructor(private _lazyLoadingService: BaseLazyLoadingService, private _cdRef: ChangeDetectorRef, private _manifestService: ManifestService, private _route: ActivatedRoute) {
+    constructor(
+        private _lazyLoadingService: BaseLazyLoadingService,
+        private _cdRef: ChangeDetectorRef,
+        private _manifestService: ManifestService,
+        private _route: ActivatedRoute,
+    ) {
         this.subscribeToDirectionQueryParams();
     }
 

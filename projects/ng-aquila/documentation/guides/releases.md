@@ -55,20 +55,20 @@ With v11 there are some breaking changes:
     <details>
       <summary>Expand here to show a summary of the changes</summary>
 
-    | **Component**                 | **Changes**                                                                                                                                                                           |
-    | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **expansion-panel/accordion** | Removed `margin-top: 16px` before the first expansion-panel inside an accordion.                                                                                                      |
-    | **button**                    | Removed `margin: 0 0 24px 0` .                                                                                                                                                        |
-    | **cards**                     | Removed `margin-bottom: 24px` from the `nx-card` component and `margin-bottom: 8px` from the `nx-selectable-card` component.                                                          |
-    | **checkbox**                  | Removed `margin-bottom: 16px` .                                                                                                                                                       |
-    | **copytext**                  | Removed `margin: 0 0 32px 0` . The copytext now has a default `margin: 0` .                                                                                                           |
-    | **dynamic-table**             | Removed `margin: 32px 0` .                                                                                                                                                            |
-    | **headlines**                 | Removed `margin-bottom` from each headline size. The headlines now have a default `margin: 0` .                                                                                       |
-    | **lists**                     | Removed `margin-bottom: 32px` from the list and `margin-bottom: 16px` from the last list item.                                                                                        |
-    | **notifications and errors**  | Removed `margin: 12px 0` from `nx-message` , `nx-message-banner` and `nx-error` (of type `message` ). For the Message Toast the margin is still used.                                 |
-    | **number-stepper**            | Removed `margin-top: 12px` if there is no label set.                                                                                                                                  |
-    | **pagination**                | Removed `margin: 8px 0` from the Advanced Pagination (+ smaller screens: `margin: 8px 0 40px 0` ) and `margin: 16px 0` from the Simple Pagination (smaller screens: `margin: 40px 0). |
-    | **taglist**                   | Removed `margin-bottom: 32px` on the list. On the single tag items, there is still used a `margin-bottom` .                                                                           |
+    | **Component** | **Changes** |
+    | --- | --- |
+    | **expansion-panel/accordion** | Removed `margin-top: 16px` before the first expansion-panel inside an accordion. |
+    | **button** | Removed `margin: 0 0 24px 0` . |
+    | **cards** | Removed `margin-bottom: 24px` from the `nx-card` component and `margin-bottom: 8px` from the `nx-selectable-card` component. |
+    | **checkbox** | Removed `margin-bottom: 16px` . |
+    | **copytext** | Removed `margin: 0 0 32px 0` . The copytext now has a default `margin: 0` . |
+    | **dynamic-table** | Removed `margin: 32px 0` . |
+    | **headlines** | Removed `margin-bottom` from each headline size. The headlines now have a default `margin: 0` . |
+    | **lists** | Removed `margin-bottom: 32px` from the list and `margin-bottom: 16px` from the last list item. |
+    | **notifications and errors** | Removed `margin: 12px 0` from `nx-message` , `nx-message-banner` and `nx-error` (of type `message` ). For the Message Toast the margin is still used. |
+    | **number-stepper** | Removed `margin-top: 12px` if there is no label set. |
+    | **pagination** | Removed `margin: 8px 0` from the Advanced Pagination (+ smaller screens: `margin: 8px 0 40px 0` ) and `margin: 16px 0` from the Simple Pagination (smaller screens: `margin: 40px 0). |
+    | **taglist** | Removed `margin-bottom: 32px` on the list. On the single tag items, there is still used a `margin-bottom` . |
 
     </details>
 

@@ -48,7 +48,12 @@ describe('NxMessageBannerComponent', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicMessageBannerComponent, MessageBannerOnPushComponent, ClosableMessageBannerComponent, ClosableMessageBannerWithFormComponent],
+                declarations: [
+                    BasicMessageBannerComponent,
+                    MessageBannerOnPushComponent,
+                    ClosableMessageBannerComponent,
+                    ClosableMessageBannerWithFormComponent,
+                ],
                 imports: [NxMessageModule, FormsModule],
             }).compileComponents();
         }),

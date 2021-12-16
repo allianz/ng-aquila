@@ -11,7 +11,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ProgressStepperFormExampleComponent {
     lastStepCompleted = false;
-    manualCompletionForm = this._formBuilder.group({ name: ['', Validators.required] });
+    manualCompletionForm = this._formBuilder.group({
+        name: ['', Validators.required],
+    });
 
     constructor(private _formBuilder: FormBuilder) {}
 

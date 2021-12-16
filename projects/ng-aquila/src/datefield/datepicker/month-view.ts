@@ -1,6 +1,17 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Optional, Output, ViewChild } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    Optional,
+    Output,
+    ViewChild,
+} from '@angular/core';
 
 import { NxDateAdapter, NxDateFormats } from '../adapter/index';
 import { NX_DATE_FORMATS } from '../adapter/date-formats';
@@ -117,7 +128,12 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     /** Number of days that should be displayed in one row. */
     _numCols: number = 7;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats, @Optional() public _dateAdapter: NxDateAdapter<D>, @Optional() private _dir?: Directionality) {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
+        @Optional() public _dateAdapter: NxDateAdapter<D>,
+        @Optional() private _dir?: Directionality,
+    ) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
@@ -182,13 +198,20 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
                 this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, 1 - this._dateAdapter.getDate(this._activeDate));
                 break;
             case END:
-                this.activeDate = this._dateAdapter.addCalendarDays(this._activeDate, this._dateAdapter.getNumDaysInMonth(this._activeDate) - this._dateAdapter.getDate(this._activeDate));
+                this.activeDate = this._dateAdapter.addCalendarDays(
+                    this._activeDate,
+                    this._dateAdapter.getNumDaysInMonth(this._activeDate) - this._dateAdapter.getDate(this._activeDate),
+                );
                 break;
             case PAGE_UP:
-                this.activeDate = event.altKey ? this._dateAdapter.addCalendarYears(this._activeDate, -1) : this._dateAdapter.addCalendarMonths(this._activeDate, -1);
+                this.activeDate = event.altKey
+                    ? this._dateAdapter.addCalendarYears(this._activeDate, -1)
+                    : this._dateAdapter.addCalendarMonths(this._activeDate, -1);
                 break;
             case PAGE_DOWN:
-                this.activeDate = event.altKey ? this._dateAdapter.addCalendarYears(this._activeDate, 1) : this._dateAdapter.addCalendarMonths(this._activeDate, 1);
+                this.activeDate = event.altKey
+                    ? this._dateAdapter.addCalendarYears(this._activeDate, 1)
+                    : this._dateAdapter.addCalendarMonths(this._activeDate, 1);
                 break;
             case ENTER:
                 if (!this.dateFilter || this.dateFilter(this._activeDate)) {
@@ -249,7 +272,12 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
 
     /** Date filter for the month */
     private _shouldEnableDate(date: D): boolean {
-        return !!date && (!this.dateFilter || this.dateFilter(date)) && (!this.minDate || this._dateAdapter.compareDate(date, this.minDate) >= 0) && (!this.maxDate || this._dateAdapter.compareDate(date, this.maxDate) <= 0);
+        return (
+            !!date &&
+            (!this.dateFilter || this.dateFilter(date)) &&
+            (!this.minDate || this._dateAdapter.compareDate(date, this.minDate) >= 0) &&
+            (!this.maxDate || this._dateAdapter.compareDate(date, this.maxDate) <= 0)
+        );
     }
 
     /**
@@ -262,7 +290,12 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
 
     /** Checks whether the 2 dates are non-null and fall within the same month of the same year. */
     private _hasSameMonthAndYear(d1: D | null, d2: D | null): boolean {
-        return !!(d1 && d2 && this._dateAdapter.getMonth(d1) === this._dateAdapter.getMonth(d2) && this._dateAdapter.getYear(d1) === this._dateAdapter.getYear(d2));
+        return !!(
+            d1 &&
+            d2 &&
+            this._dateAdapter.getMonth(d1) === this._dateAdapter.getMonth(d2) &&
+            this._dateAdapter.getYear(d1) === this._dateAdapter.getYear(d2)
+        );
     }
 
     /**
@@ -299,7 +332,10 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     _getFirstDaysOfFollowingMonth(): NxCalendarCell[][] {
         const followingDays: NxCalendarCell[][] = [];
 
-        const firstDayOfNextMonth: D = this._dateAdapter.addCalendarMonths(this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), this._dateAdapter.getMonth(this.activeDate), 1), 1);
+        const firstDayOfNextMonth: D = this._dateAdapter.addCalendarMonths(
+            this._dateAdapter.createDate(this._dateAdapter.getYear(this.activeDate), this._dateAdapter.getMonth(this.activeDate), 1),
+            1,
+        );
 
         // there should be displayed a total of 7 * 6 items
         const followingDaysCount = TOTAL_DAYS_TO_DISPLAY - this._firstWeekOffset - this._dateAdapter.getNumDaysInMonth(this.activeDate);

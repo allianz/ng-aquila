@@ -62,7 +62,12 @@ export class NxSidepanelComponent {
         return this._appearance;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, protected _elementRef: ElementRef, private _dir: Directionality, @Optional() public _wrapper: NxSidepanelOuterContainerComponent) {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        protected _elementRef: ElementRef,
+        private _dir: Directionality,
+        @Optional() public _wrapper: NxSidepanelOuterContainerComponent,
+    ) {
         if (!this._wrapper) {
             console.warn(`NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`);
         }

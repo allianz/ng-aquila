@@ -66,7 +66,9 @@ export class NxColComponent implements OnInit {
     private _orderClasses: string = '';
 
     get _classNames() {
-        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes && classes.length).join(' ');
+        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class]
+            .filter(classes => classes && classes.length)
+            .join(' ');
     }
 
     /**

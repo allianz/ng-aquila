@@ -77,7 +77,9 @@ export class CssVarSidebarComponent {
 
     filterProperties() {
         this.displayedProperties = this.properties.filter(
-            (prop: { name: string; value: string }) => prop.name.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0 || prop.value.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0,
+            (prop: { name: string; value: string }) =>
+                prop.name.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0 ||
+                prop.value.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0,
         );
     }
 

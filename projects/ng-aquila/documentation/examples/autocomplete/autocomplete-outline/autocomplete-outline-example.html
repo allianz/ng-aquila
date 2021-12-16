@@ -1,8 +1,14 @@
 <div nxLayout="grid">
     <div nxRow>
         <div nxCol="12">
-            <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m">Autocomplete with appearance outline</h4>
-            <nx-formfield nxLabel="Animals" appearance="outline" nxFloatLabel="always">
+            <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-m"
+                >Autocomplete with appearance outline</h4
+            >
+            <nx-formfield
+                nxLabel="Animals"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
                 <input
                     nxInput
                     type="text"
@@ -11,7 +17,10 @@
                     (input)="filter(animalInput.value)"
                 />
                 <nx-autocomplete #animal1="nxAutocomplete">
-                    <nx-autocomplete-option *ngFor="let option of filteredOptions" [value]="option">
+                    <nx-autocomplete-option
+                        *ngFor="let option of filteredOptions"
+                        [value]="option"
+                    >
                         {{ option }}
                     </nx-autocomplete-option>
                 </nx-autocomplete>

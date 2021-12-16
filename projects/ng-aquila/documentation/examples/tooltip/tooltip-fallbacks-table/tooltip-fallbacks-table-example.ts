@@ -53,7 +53,11 @@ export class TooltipFallbacksTableExampleComponent {
     ];
     displayedColumns = [
         // HINT: \xa0 is a non-breaking space, so the table header looks nicer
-        { title: 'nxTooltipPosition', key: 'nxTooltipPosition', type: 'string' },
+        {
+            title: 'nxTooltipPosition',
+            key: 'nxTooltipPosition',
+            type: 'string',
+        },
         { title: 'fallback\xa01', key: 'fallback1', type: 'string' },
         { title: 'fallback\xa02', key: 'fallback2', type: 'string' },
         { title: 'fallback\xa03', key: 'fallback3', type: 'string' },

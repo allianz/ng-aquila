@@ -588,7 +588,12 @@ describe('NxDropdownComponent', () => {
 
     describe('multiselect dropdown', () => {
         beforeEach(fakeAsync(() => {
-            configureNxDropdownTestingModule([MultiSelectDropdownComponent, MultiselectReactiveBinding, MultiSelectDropdownContentProjectionComponent, MultiSelectDropdownRenderFunctionComponent]);
+            configureNxDropdownTestingModule([
+                MultiSelectDropdownComponent,
+                MultiselectReactiveBinding,
+                MultiSelectDropdownContentProjectionComponent,
+                MultiSelectDropdownRenderFunctionComponent,
+            ]);
         }));
 
         it('should render checkboxes in multiselect mode in the dropdown', fakeAsync(() => {
@@ -1370,7 +1375,8 @@ class DropdownInOutlineFieldComponent extends DropdownTest {}
 @Component({
     template: ` <nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="Lorem ipsum">
-            Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut
+            labore et dolore magna aliqua.
         </nx-dropdown-item>
     </nx-dropdown>`,
 })

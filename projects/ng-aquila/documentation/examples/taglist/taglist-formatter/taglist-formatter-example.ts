@@ -9,7 +9,14 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-formatter-example.css'],
 })
 export class TaglistFormatterExampleComponent {
-    public tags: string[] = ['Apples', 'Oranges', 'Bananas', 'Strawberries', 'Melons', 'Lemons'];
+    public tags: string[] = [
+        'Apples',
+        'Oranges',
+        'Bananas',
+        'Strawberries',
+        'Melons',
+        'Lemons',
+    ];
 
     myFormatter(value: string): string {
         return 'my ' + value;

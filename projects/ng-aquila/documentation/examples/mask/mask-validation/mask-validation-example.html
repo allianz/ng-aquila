@@ -5,10 +5,19 @@
 
             <form [formGroup]="validatedMaskForm">
                 <nx-formfield nxLabel="Time">
-                    <input nxInput nxMask="00:00:00" formControlName="maskInput" />
+                    <input
+                        nxInput
+                        nxMask="00:00:00"
+                        formControlName="maskInput"
+                    />
                     <span nxFormfieldHint> Mask: 00:00:00 </span>
                 </nx-formfield>
-                <button nxButton="primary small" type="submit" class="nx-margin-bottom-s">submit</button>
+                <button
+                    nxButton="primary small"
+                    type="submit"
+                    class="nx-margin-bottom-s"
+                    >submit</button
+                >
             </form>
 
             Form value: {{ validatedMaskForm.value | json }}<br />
@@ -19,10 +28,20 @@
 
             <form [formGroup]="unvalidatedMaskForm">
                 <nx-formfield nxLabel="Time">
-                    <input nxInput nxMask="00:00:00" formControlName="maskInput2" validateMask="false" />
+                    <input
+                        nxInput
+                        nxMask="00:00:00"
+                        formControlName="maskInput2"
+                        validateMask="false"
+                    />
                     <span nxFormfieldHint> Mask: 00:00:00 </span>
                 </nx-formfield>
-                <button nxButton="primary small" type="submit" class="nx-margin-bottom-s">submit</button>
+                <button
+                    nxButton="primary small"
+                    type="submit"
+                    class="nx-margin-bottom-s"
+                    >submit</button
+                >
             </form>
 
             Form value: {{ unvalidatedMaskForm.value | json }}<br />

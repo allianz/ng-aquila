@@ -1,4 +1,8 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 
 /** @title Basic example */
 @Component({

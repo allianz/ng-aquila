@@ -26,7 +26,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxMessageModule, NxErrorModule, NxButtonModule, CommonModule, NxHeadlineModule],
+    imports: [
+        NxMessageModule,
+        NxErrorModule,
+        NxButtonModule,
+        CommonModule,
+        NxHeadlineModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

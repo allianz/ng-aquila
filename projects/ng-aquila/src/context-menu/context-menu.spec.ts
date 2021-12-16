@@ -6,7 +6,15 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB, HOME, END } from '@angular/cdk/keycodes';
 
-import { NxContextMenuComponent, NxContextMenuModule, NxContextMenuTriggerDirective, NxContextMenuItemComponent, MENU_PANEL_OFFSET_X, MENU_PANEL_OFFSET_Y, MENU_PANEL_TOP_PADDING } from './public-api';
+import {
+    NxContextMenuComponent,
+    NxContextMenuModule,
+    NxContextMenuTriggerDirective,
+    NxContextMenuItemComponent,
+    MENU_PANEL_OFFSET_X,
+    MENU_PANEL_OFFSET_Y,
+    MENU_PANEL_TOP_PADDING,
+} from './public-api';
 
 import { Subject } from 'rxjs';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
@@ -601,7 +609,10 @@ describe('nxContextMenu', () => {
             expect(Math.floor(overlayRect.left)).toBe(Math.floor(expectedLeft), `Expected menu to open in "before" position if "after" position wouldn't fit.`);
 
             // The y-position of the overlay should be unaffected, as it can already fit vertically
-            expect(Math.floor(overlayRect.top)).toBe(Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET_Y), `Expected menu top position to be unchanged if it can fit in the viewport.`);
+            expect(Math.floor(overlayRect.top)).toBe(
+                Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET_Y),
+                `Expected menu top position to be unchanged if it can fit in the viewport.`,
+            );
         });
 
         it('should fall back to "above" mode if not fit on screen', () => {
@@ -620,7 +631,10 @@ describe('nxContextMenu', () => {
             const triggerRect = trigger.getBoundingClientRect();
             const overlayRect = overlayPane.getBoundingClientRect();
 
-            expect(Math.floor(overlayRect.bottom)).toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y), `Expected menu to open in "above" position if "below" position wouldn't fit.`);
+            expect(Math.floor(overlayRect.bottom)).toBe(
+                Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
+                `Expected menu to open in "above" position if "below" position wouldn't fit.`,
+            );
 
             // The x-position of the overlay should be unaffected, as it can already fit horizontally
             expect(Math.floor(overlayRect.left)).toBe(Math.floor(triggerRect.left), `Expected menu x position to be unchanged if it can fit in the viewport.`);
@@ -647,7 +661,10 @@ describe('nxContextMenu', () => {
 
             expect(Math.floor(overlayRect.left)).toBe(Math.floor(expectedLeft), `Expected menu to open in "before" position if "after" position wouldn't fit.`);
 
-            expect(Math.floor(overlayRect.bottom)).toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y), `Expected menu to open in "above" position if "below" position wouldn't fit.`);
+            expect(Math.floor(overlayRect.bottom)).toBe(
+                Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
+                `Expected menu to open in "above" position if "below" position wouldn't fit.`,
+            );
         });
 
         function getOverlayPane(): HTMLElement {
@@ -988,17 +1005,26 @@ describe('nxContextMenu', () => {
             instance.levelOneTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(true, 'Expected focus to be inside the first nested menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(
+                true,
+                'Expected focus to be inside the first nested menu',
+            );
 
             instance.levelTwoTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement)).toBe(true, 'Expected focus to be inside the second nested menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement)).toBe(
+                true,
+                'Expected focus to be inside the second nested menu',
+            );
 
             instance.levelTwoTrigger.closeContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(true, 'Expected focus to be back inside the first nested menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(
+                true,
+                'Expected focus to be back inside the first nested menu',
+            );
 
             instance.levelOneTrigger.closeContextMenu();
             fixture.detectChanges();
@@ -1383,7 +1409,9 @@ class SimpleMenu {
 
 @Component({
     template: `
-        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="root" #rootTrigger="nxContextMenuTrigger" #rootTriggerEl #rootTriggerButton>Toggle menu</button>
+        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="root" #rootTrigger="nxContextMenuTrigger" #rootTriggerEl #rootTriggerButton
+            >Toggle menu</button
+        >
 
         <button [nxContextMenuTriggerFor]="levelTwo" #alternateTrigger="nxContextMenuTrigger">Toggle alternate menu</button>
 

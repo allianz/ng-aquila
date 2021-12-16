@@ -22,7 +22,10 @@ const playSvg =
 export class IconEssentialOverrideExampleComponent {
     constructor(public iconRegistry: NxIconRegistry, sanitizer: DomSanitizer) {
         // override it with another SVG
-        this.iconRegistry.addSvgIconLiteral('play', sanitizer.bypassSecurityTrustHtml(playSvg));
+        this.iconRegistry.addSvgIconLiteral(
+            'play',
+            sanitizer.bypassSecurityTrustHtml(playSvg),
+        );
 
         // override an icon with a font, here we take font awesome
         // we register the font first and override the 'calendar' icon

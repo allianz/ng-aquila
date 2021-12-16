@@ -59,7 +59,16 @@ describe('NxCheckboxComponent', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicCheckbox, LabellessCheckbox, CheckboxTemplateDriven, CheckboxDisabled, ReactiveCheckbox, CheckboxLabelSize, CheckboxOnPush, CheckboxNegative],
+                declarations: [
+                    BasicCheckbox,
+                    LabellessCheckbox,
+                    CheckboxTemplateDriven,
+                    CheckboxDisabled,
+                    ReactiveCheckbox,
+                    CheckboxLabelSize,
+                    CheckboxOnPush,
+                    CheckboxNegative,
+                ],
                 imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
             }).compileComponents();
         }),

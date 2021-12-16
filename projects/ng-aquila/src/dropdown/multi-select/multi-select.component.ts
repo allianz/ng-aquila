@@ -1,7 +1,20 @@
 import { ActiveDescendantKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostBinding, Input, Optional, QueryList, Self, ViewChild, ViewChildren } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    HostBinding,
+    Input,
+    Optional,
+    QueryList,
+    Self,
+    ViewChild,
+    ViewChildren,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
@@ -141,7 +154,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     private get _isActiveItemFiltered(): boolean {
-        return typeof this._keyManager.activeItem !== 'undefined' && !this.listItems.some(option => this._selectValue(option) === this._keyManager.activeItem?.value);
+        return (
+            typeof this._keyManager.activeItem !== 'undefined' &&
+            !this.listItems.some(option => this._selectValue(option) === this._keyManager.activeItem?.value)
+        );
     }
 
     static ngAcceptInputType_filter: BooleanInput;
@@ -275,7 +291,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     private _updatePositions() {
         if (this._formFieldComponent) {
-            const offset = getPositionOffset(this._elementRef.nativeElement, this._formFieldComponent.elementRef.nativeElement, this._panelHeader?.nativeElement);
+            const offset = getPositionOffset(
+                this._elementRef.nativeElement,
+                this._formFieldComponent.elementRef.nativeElement,
+                this._panelHeader?.nativeElement,
+            );
             this._positions = getPositions(this._appearance, offset);
         }
     }

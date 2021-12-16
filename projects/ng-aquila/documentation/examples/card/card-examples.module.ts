@@ -25,7 +25,14 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxCardModule, NxIconModule, NxLinkModule, NxPopoverModule, ExamplesSharedModule, RouterModule],
+    imports: [
+        NxCardModule,
+        NxIconModule,
+        NxLinkModule,
+        NxPopoverModule,
+        ExamplesSharedModule,
+        RouterModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

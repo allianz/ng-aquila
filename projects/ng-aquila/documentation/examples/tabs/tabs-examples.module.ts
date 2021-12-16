@@ -44,7 +44,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxTabsModule, RouterModule, NxIconModule, NxIndicatorModule, ExamplesSharedModule],
+    imports: [
+        NxTabsModule,
+        RouterModule,
+        NxIconModule,
+        NxIndicatorModule,
+        ExamplesSharedModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

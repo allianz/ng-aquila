@@ -18,7 +18,17 @@ import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 
 @NgModule({
     imports: [CommonModule, PortalModule, NxAccordionModule, NxIconModule, NxButtonModule],
-    exports: [NxTabComponent, NxTabGroupComponent, NxTabLabelDirective, NxTabLabelWrapperDirective, NxTabHeaderComponent, NxTabBodyComponent, NxTabNavBarComponent, NxTabLinkDirective, NxTabContentDirective],
+    exports: [
+        NxTabComponent,
+        NxTabGroupComponent,
+        NxTabLabelDirective,
+        NxTabLabelWrapperDirective,
+        NxTabHeaderComponent,
+        NxTabBodyComponent,
+        NxTabNavBarComponent,
+        NxTabLinkDirective,
+        NxTabContentDirective,
+    ],
     declarations: [
         NxTabComponent,
         NxTabGroupComponent,

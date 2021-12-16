@@ -7,7 +7,13 @@
     https://www.w3schools.com/howto/howto_css_aspect_ratio.asp).
   -->
     <ng-container *ngIf="rowIndex === 0">
-        <td *ngFor="let item of previousItems" aria-hidden="true" class="nx-calendar-adjacent-cell" [class.nx-calendar-body-disabled]="!item.enabled" (click)="_previousCellClicked(item)">
+        <td
+            *ngFor="let item of previousItems"
+            aria-hidden="true"
+            class="nx-calendar-adjacent-cell"
+            [class.nx-calendar-body-disabled]="!item.enabled"
+            (click)="_previousCellClicked(item)"
+        >
             <div aria-hidden="true" class="nx-calendar-adjacent-cell-content"> {{ item.displayValue }} </div>
         </td>
     </ng-container>
@@ -25,11 +31,23 @@
         (click)="_cellClicked(item)"
         [style.width.%]="100 / numCols"
     >
-        <div class="nx-calendar-body-cell-content" [class.nx-calendar-body-selected]="selectedValue === item.value" [class.nx-calendar-body-today]="todayValue === item.value"> {{item.displayValue}} </div>
+        <div
+            class="nx-calendar-body-cell-content"
+            [class.nx-calendar-body-selected]="selectedValue === item.value"
+            [class.nx-calendar-body-today]="todayValue === item.value"
+        >
+            {{item.displayValue}}
+        </div>
     </td>
 
     <ng-container *ngIf="rowIndex === _lastRowIndex && _lastRowOffset">
-        <td *ngFor="let item of followingItems[0]" aria-hidden="true" class="nx-calendar-adjacent-cell" [class.nx-calendar-body-disabled]="!item.enabled" (click)="_followingCellClicked(item)">
+        <td
+            *ngFor="let item of followingItems[0]"
+            aria-hidden="true"
+            class="nx-calendar-adjacent-cell"
+            [class.nx-calendar-body-disabled]="!item.enabled"
+            (click)="_followingCellClicked(item)"
+        >
             <div aria-hidden="true" class="nx-calendar-adjacent-cell-content"> {{ item.displayValue }} </div>
         </td>
     </ng-container>

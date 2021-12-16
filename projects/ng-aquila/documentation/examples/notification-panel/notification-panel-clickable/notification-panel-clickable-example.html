@@ -1,4 +1,8 @@
-<button nxIconButton="small tertiary" [nxNotificationPanelTriggerFor]="panel1" title="Notifications">
+<button
+    nxIconButton="small tertiary"
+    [nxNotificationPanelTriggerFor]="panel1"
+    title="Notifications"
+>
     <nx-icon name="bell-o"></nx-icon>
 </button>
 
@@ -7,29 +11,39 @@
         <nx-notification-header>
             <h3 nxCopytext="large" class="nx-font-weight-semibold">Unread</h3>
             <button nxPlainButton="small" type="button"
-                >Mark all as read <nx-icon name="check" class="nx-margin-left-2xs"></nx-icon
+                >Mark all as read
+                <nx-icon name="check" class="nx-margin-left-2xs"></nx-icon
             ></button>
         </nx-notification-header>
 
         <a nxNotificationPanelItem routerLink="#clickable-notification1">
-            <nx-notification-item-metadata>Tasks &middot; 5 minutes ago </nx-notification-item-metadata>
+            <nx-notification-item-metadata
+                >Tasks &middot; 5 minutes ago
+            </nx-notification-item-metadata>
             <nx-notification-item-content>
-                <span class="nx-font-weight-semibold">Frank Loyd</span> - created new offer
+                <span class="nx-font-weight-semibold">Frank Loyd</span> -
+                created new offer
             </nx-notification-item-content>
         </a>
         <a nxNotificationPanelItem routerLink="#clickable-notification2">
-            <nx-notification-item-metadata>Offers &middot; 11:45 </nx-notification-item-metadata>
+            <nx-notification-item-metadata
+                >Offers &middot; 11:45
+            </nx-notification-item-metadata>
             <nx-notification-item-content>
-                <span class="nx-font-weight-semibold">Susi Müller</span> - Offer status has changed
+                <span class="nx-font-weight-semibold">Susi Müller</span> - Offer
+                status has changed
             </nx-notification-item-content>
         </a>
         <nx-notification-header>
             <h3 nxCopytext="large" class="nx-font-weight-semibold">Read</h3>
         </nx-notification-header>
         <a nxNotificationPanelItem read routerLink="#clickable-notification3">
-            <nx-notification-item-metadata>Offers &middot; Yesterday </nx-notification-item-metadata>
+            <nx-notification-item-metadata
+                >Offers &middot; Yesterday
+            </nx-notification-item-metadata>
             <nx-notification-item-content>
-                <span class="nx-font-weight-semibold">Mary London</span> - Note created
+                <span class="nx-font-weight-semibold">Mary London</span> - Note
+                created
             </nx-notification-item-content>
         </a>
     </nx-notification-panel>

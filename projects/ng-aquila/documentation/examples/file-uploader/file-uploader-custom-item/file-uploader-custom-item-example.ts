@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { FileItem, NxFileUploaderComponent } from '@aposin/ng-aquila/file-uploader';
-import { NxMessageToastConfig, NxMessageToastService } from '@aposin/ng-aquila/message';
+import {
+    FileItem,
+    NxFileUploaderComponent,
+} from '@aposin/ng-aquila/file-uploader';
+import {
+    NxMessageToastConfig,
+    NxMessageToastService,
+} from '@aposin/ng-aquila/message';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
@@ -29,14 +35,19 @@ export class FileUploaderCustomItemExampleComponent {
 
     @ViewChild('ngModel') ngModel!: NgModel;
 
-    constructor(private messageToastService: NxMessageToastService, private http: HttpClient) {}
+    constructor(
+        private messageToastService: NxMessageToastService,
+        private http: HttpClient,
+    ) {}
 
     onChange() {
         this.validate();
     }
 
     validate() {
-        const valid = this.myFiles.every(file => typeof file.formData === 'boolean');
+        const valid = this.myFiles.every(
+            file => typeof file.formData === 'boolean',
+        );
         this.ngModel.control.setErrors(valid ? {} : { required: true });
         return valid;
     }
@@ -72,7 +83,10 @@ export class FileUploaderCustomItemExampleComponent {
                 this.documentUpload.value!.forEach((fileItem: FileItem) => {
                     fileItem.setUploadedState();
                 });
-                this.messageToastService.open('All files were uploaded successfully!', myCustomConfig);
+                this.messageToastService.open(
+                    'All files were uploaded successfully!',
+                    myCustomConfig,
+                );
             },
             error => {
                 this.documentUpload.value!.forEach((fileItem: FileItem) => {

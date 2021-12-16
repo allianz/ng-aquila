@@ -1,4 +1,9 @@
-import { NxOverlayDirection, NxOverlayService, NxOverlayRef, NxOverlayConfig } from '@aposin/ng-aquila/overlay';
+import {
+    NxOverlayDirection,
+    NxOverlayService,
+    NxOverlayRef,
+    NxOverlayConfig,
+} from '@aposin/ng-aquila/overlay';
 import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 
 /**
@@ -11,7 +16,12 @@ import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 })
 export class OverlayLimitingFallbacksExampleComponent {
     fallbacks: NxOverlayDirection[] = ['top', 'bottom'];
-    config: NxOverlayConfig = { width: 250, height: 250, fallbackOrientation: 'vertical', direction: 'left' };
+    config: NxOverlayConfig = {
+        width: 250,
+        height: 250,
+        fallbackOrientation: 'vertical',
+        direction: 'left',
+    };
 
     currentOverlay!: NxOverlayRef<any>;
 
@@ -23,6 +33,10 @@ export class OverlayLimitingFallbacksExampleComponent {
         if (this.currentOverlay) {
             this.currentOverlay.close();
         }
-        this.currentOverlay = this.nxOverlay.open(this.template, element, this.config);
+        this.currentOverlay = this.nxOverlay.open(
+            this.template,
+            element,
+            this.config,
+        );
     }
 }

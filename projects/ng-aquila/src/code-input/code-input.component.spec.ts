@@ -44,7 +44,15 @@ describe('NxCodeInputComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
-                declarations: [CodeInputTest1, CodeInputTest2, CodeInputTest3, NumberCodeInput, ConfigurableCodeInput, OnPushCodeInput, OverrideDefaultLabelsCodeInput],
+                declarations: [
+                    CodeInputTest1,
+                    CodeInputTest2,
+                    CodeInputTest3,
+                    NumberCodeInput,
+                    ConfigurableCodeInput,
+                    OnPushCodeInput,
+                    OverrideDefaultLabelsCodeInput,
+                ],
                 providers: [NxCodeInputIntl],
             }).compileComponents();
         }),

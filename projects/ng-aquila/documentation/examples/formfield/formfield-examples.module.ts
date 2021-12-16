@@ -1,7 +1,10 @@
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { CommonModule } from '@angular/common';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxDatefieldModule, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
+import {
+    NxDatefieldModule,
+    NxNativeDateModule,
+} from '@aposin/ng-aquila/datefield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
+import {
+    TabNavBarDefaultOptions,
+    TAB_NAV_BAR_DEFAULT_OPTIONS,
+} from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabNavBarDefaultOptions = {
     appearance: 'expert',
@@ -12,7 +15,9 @@ const myDefaultOptions: TabNavBarDefaultOptions = {
     selector: 'tabs-nav-bar-injection-token-example',
     templateUrl: './tabs-nav-bar-injection-token-example.html',
     styleUrls: ['./tabs-nav-bar-injection-token-example.css'],
-    providers: [{ provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions }],
+    providers: [
+        { provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: myDefaultOptions },
+    ],
 })
 export class TabsNavBarInjectionTokenExampleComponent {
     links = [

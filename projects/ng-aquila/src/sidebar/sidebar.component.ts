@@ -1,5 +1,19 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { Input, Component, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy, Renderer2, ElementRef, OnInit, Output, EventEmitter, Optional, ViewChild, AfterViewInit } from '@angular/core';
+import {
+    Input,
+    Component,
+    ChangeDetectorRef,
+    OnDestroy,
+    ChangeDetectionStrategy,
+    Renderer2,
+    ElementRef,
+    OnInit,
+    Output,
+    EventEmitter,
+    Optional,
+    ViewChild,
+    AfterViewInit,
+} from '@angular/core';
 import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -124,7 +138,13 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
     private _unsubscribeListeners: (() => void)[] = [];
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private renderer: Renderer2, private _element: ElementRef, @Optional() private _dir: Directionality, private _focusMonitor: FocusMonitor) {
+    constructor(
+        private _changeDetectorRef: ChangeDetectorRef,
+        private renderer: Renderer2,
+        private _element: ElementRef,
+        @Optional() private _dir: Directionality,
+        private _focusMonitor: FocusMonitor,
+    ) {
         this._onResize = this._onResize.bind(this);
         this._onResizeEnd = this._onResizeEnd.bind(this);
     }

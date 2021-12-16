@@ -2,7 +2,14 @@
     <div class="nx-modal__backdrop" (click)="clickOutsideModal()">
         <div class="nx-modal__position">
             <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
-                <button #closeButton (click)="closeButtonClick()" *ngIf="showCloseIcon" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
+                <button
+                    #closeButton
+                    (click)="closeButtonClick()"
+                    *ngIf="showCloseIcon"
+                    [attr.aria-label]="closeButtonLabel"
+                    class="nx-modal__close"
+                    type="button"
+                >
                     <nx-icon name="close"></nx-icon>
                 </button>
 

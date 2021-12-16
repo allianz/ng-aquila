@@ -17,7 +17,12 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxNaturalLanguageFormModule, NxDropdownModule, NxInputModule, ExamplesSharedModule],
+    imports: [
+        NxNaturalLanguageFormModule,
+        NxDropdownModule,
+        NxInputModule,
+        ExamplesSharedModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

@@ -2,12 +2,20 @@
     <nav aria-label="Breadcrumb" nxSmallStageHeader>
         <ol nxBreadcrumb>
             <li *ngFor="let item of dynamicItems; let i = index">
-                <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#"> {{ item }} </a>
+                <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#">
+                    {{ item }}
+                </a>
             </li>
         </ol>
     </nav>
-    <nx-small-stage-image nxSmallStageImageStart src="assets/images/small-stage-image-start.svg"></nx-small-stage-image>
-    <nx-small-stage-image nxSmallStageImageEnd src="assets/images/small-stage-image-end.svg"></nx-small-stage-image>
+    <nx-small-stage-image
+        nxSmallStageImageStart
+        src="assets/images/small-stage-image-start.svg"
+    ></nx-small-stage-image>
+    <nx-small-stage-image
+        nxSmallStageImageEnd
+        src="assets/images/small-stage-image-end.svg"
+    ></nx-small-stage-image>
     <nx-small-stage-image
         nxSmallStageImageBottom
         src="assets/images/small-stage-image-narrow-screen.svg"

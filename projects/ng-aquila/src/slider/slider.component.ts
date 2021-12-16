@@ -2,7 +2,21 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { clamp } from '@aposin/ng-aquila/utils';
 import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input, OnDestroy, Optional, Output, ViewChild, NgZone, AfterViewInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Input,
+    OnDestroy,
+    Optional,
+    Output,
+    ViewChild,
+    NgZone,
+    AfterViewInit,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
@@ -196,7 +210,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
     @Input('nxLabelMaxFormatter') labelMaxFormatter: Function = (value: any) => value;
 
-    constructor(private elementRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef, private _ngZone: NgZone, @Optional() private _dir: Directionality, private _focusMonitor: FocusMonitor) {}
+    constructor(
+        private elementRef: ElementRef,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _ngZone: NgZone,
+        @Optional() private _dir: Directionality,
+        private _focusMonitor: FocusMonitor,
+    ) {}
 
     ngAfterViewInit() {
         this._focusMonitor.monitor(this.handleElement);

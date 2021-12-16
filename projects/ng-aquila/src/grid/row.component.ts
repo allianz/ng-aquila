@@ -64,7 +64,9 @@ export class NxRowComponent {
     private _rowClass: string = MAPPING_LAYOUT.row;
 
     get _classNames() {
-        return [this._rowClass, this._justifyClasses, this._alignContentClasses, this._alignItemsClasses, this._wrapClasses, this.class].filter(classes => classes && classes.length).join(' ');
+        return [this._rowClass, this._justifyClasses, this._alignContentClasses, this._alignItemsClasses, this._wrapClasses, this.class]
+            .filter(classes => classes && classes.length)
+            .join(' ');
     }
 
     /**

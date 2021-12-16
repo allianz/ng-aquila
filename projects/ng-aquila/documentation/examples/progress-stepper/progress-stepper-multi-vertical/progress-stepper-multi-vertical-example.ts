@@ -35,9 +35,21 @@ export class ProgressStepperMultiVerticalExampleComponent {
 
     animalTypes = ['cat', 'dog'];
 
-    dogBreeds = ['German Shepherd', 'Bulldog', 'Labrador Retriever', 'Beagle', 'Golden Retriever'];
+    dogBreeds = [
+        'German Shepherd',
+        'Bulldog',
+        'Labrador Retriever',
+        'Beagle',
+        'Golden Retriever',
+    ];
 
-    catBreeds = ['Maine Coon', 'Persian Cat', 'Siamese Cat', 'Ragdoll', 'British Shorthair'];
+    catBreeds = [
+        'Maine Coon',
+        'Persian Cat',
+        'Siamese Cat',
+        'Ragdoll',
+        'British Shorthair',
+    ];
 
     animalTypeForm = {
         label: 'Species',
@@ -66,17 +78,25 @@ export class ProgressStepperMultiVerticalExampleComponent {
     };
 
     constructor(private _formBuilder: FormBuilder) {
-        this.animalTypeForm.form.get('animalType')?.valueChanges.subscribe(value => {
-            if (value === 'dog') {
-                this.breedForm.form.removeControl('catBreed');
-                this.breedForm.form.addControl('dogBreed', new FormControl('', Validators.required));
-            } else if (value === 'cat') {
-                this.breedForm.form.removeControl('dogBreed');
-                this.breedForm.form.addControl('catBreed', new FormControl('', Validators.required));
-            }
+        this.animalTypeForm.form
+            .get('animalType')
+            ?.valueChanges.subscribe(value => {
+                if (value === 'dog') {
+                    this.breedForm.form.removeControl('catBreed');
+                    this.breedForm.form.addControl(
+                        'dogBreed',
+                        new FormControl('', Validators.required),
+                    );
+                } else if (value === 'cat') {
+                    this.breedForm.form.removeControl('dogBreed');
+                    this.breedForm.form.addControl(
+                        'catBreed',
+                        new FormControl('', Validators.required),
+                    );
+                }
 
-            this.breedForm.form.reset();
-        });
+                this.breedForm.form.reset();
+            });
     }
 
     onSubmit() {

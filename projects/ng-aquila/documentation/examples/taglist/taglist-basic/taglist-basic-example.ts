@@ -9,5 +9,12 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-basic-example.css'],
 })
 export class TaglistBasicExampleComponent {
-    public tags: string[] = ['Apples', 'Oranges', 'Bananas', 'Strawberries', 'Melons', 'Lemons'];
+    public tags: string[] = [
+        'Apples',
+        'Oranges',
+        'Bananas',
+        'Strawberries',
+        'Melons',
+        'Lemons',
+    ];
 }

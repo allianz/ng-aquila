@@ -1,5 +1,11 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    ViewChild,
+} from '@angular/core';
 
 /**
  * @title Popover Hover Example

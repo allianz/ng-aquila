@@ -19,10 +19,20 @@
                     type="button"
                     >Previous</button
                 >
-                <button nxButton="primary small" nxStepperNext class="nx-margin-bottom-s" type="button">Next</button>
+                <button
+                    nxButton="primary small"
+                    nxStepperNext
+                    class="nx-margin-bottom-s"
+                    type="button"
+                    >Next</button
+                >
             </div>
         </nx-step>
-        <nx-step label="Your Address" formGroupName="address" [stepControl]="formLinear.controls.address">
+        <nx-step
+            label="Your Address"
+            formGroupName="address"
+            [stepControl]="formLinear.controls.address"
+        >
             <div class="nx-margin-top-s">
                 <nx-formfield nxLabel="Street">
                     <input nxInput required formControlName="street" />
@@ -37,7 +47,9 @@
                     type="button"
                     >Previous</button
                 >
-                <button nxButton="primary small" nxStepperNext type="button">Next</button>
+                <button nxButton="primary small" nxStepperNext type="button"
+                    >Next</button
+                >
             </div>
         </nx-step>
     </nx-progress-stepper>

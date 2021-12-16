@@ -1,6 +1,10 @@
 <form [formGroup]="testForm">
     <nx-single-stepper currentStepLabel="Step">
-        <nx-step label="Your name and age" formGroupName="personalDetails" [stepControl]="testForm">
+        <nx-step
+            label="Your name and age"
+            formGroupName="personalDetails"
+            [stepControl]="testForm"
+        >
             <div class="nx-margin-top-s">
                 <nx-formfield nxLabel="Name">
                     <input nxInput required formControlName="name" />
@@ -15,10 +19,20 @@
                     type="button"
                     >Previous</button
                 >
-                <button nxButton="primary small" nxStepperNext class="nx-margin-bottom-s" type="button">Next</button>
+                <button
+                    nxButton="primary small"
+                    nxStepperNext
+                    class="nx-margin-bottom-s"
+                    type="button"
+                    >Next</button
+                >
             </div>
         </nx-step>
-        <nx-step label="Your Address" formGroupName="address" [stepControl]="testForm">
+        <nx-step
+            label="Your Address"
+            formGroupName="address"
+            [stepControl]="testForm"
+        >
             <div class="nx-margin-top-s">
                 <nx-formfield nxLabel="Street">
                     <input nxInput required formControlName="street" />
@@ -33,7 +47,13 @@
                     type="button"
                     >Previous</button
                 >
-                <button nxButton="primary small" nxStepperNext class="nx-margin-bottom-s" type="button">Next</button>
+                <button
+                    nxButton="primary small"
+                    nxStepperNext
+                    class="nx-margin-bottom-s"
+                    type="button"
+                    >Next</button
+                >
             </div>
         </nx-step>
     </nx-single-stepper>

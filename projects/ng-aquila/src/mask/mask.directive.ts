@@ -295,7 +295,11 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     }
 
     private _isStringAllowed(value: string, maskedValue: MASK_TYPE) {
-        if ((maskedValue === '0' && /^[0-9]{1}$/.test(value)) || (maskedValue === 'A' && /^[a-zA-Z0-9]{1}$/.test(value)) || (maskedValue === 'S' && /^[a-zA-Z]{1}$/.test(value))) {
+        if (
+            (maskedValue === '0' && /^[0-9]{1}$/.test(value)) ||
+            (maskedValue === 'A' && /^[a-zA-Z0-9]{1}$/.test(value)) ||
+            (maskedValue === 'S' && /^[a-zA-Z]{1}$/.test(value))
+        ) {
             return true;
         }
         return false;
@@ -328,7 +332,14 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         }
 
         // do nothing if mask is already filled up
-        if (oldVal.length === this._mask.length && newVal.length === this._mask.length && oldVal !== newVal && this._cursor && this._cursor.selectionStart !== undefined && this._cursor.selectionStart === this._cursor.selectionEnd) {
+        if (
+            oldVal.length === this._mask.length &&
+            newVal.length === this._mask.length &&
+            oldVal !== newVal &&
+            this._cursor &&
+            this._cursor.selectionStart !== undefined &&
+            this._cursor.selectionStart === this._cursor.selectionEnd
+        ) {
             this._elementRef.nativeElement.value = this.getMaskedString(oldVal);
             input.setSelectionRange(this._cursor.selectionStart, this._cursor.selectionEnd);
             this._cursor = null;
@@ -399,7 +410,9 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         // get the pasted unmasked value from the pasted string (to cut all the invalid characters and separators)
         const pastedUnmaskedValue = this.separators.reduce((unmasked, separator) => unmasked.split(separator).join(''), maskedString);
 
-        let newValue: string = this.getMaskedString(oldValue.substring(0, selectionStart as number) + pastedUnmaskedValue + oldValue.substring(selectionEnd as number, oldValue.length));
+        let newValue: string = this.getMaskedString(
+            oldValue.substring(0, selectionStart as number) + pastedUnmaskedValue + oldValue.substring(selectionEnd as number, oldValue.length),
+        );
 
         if (newValue.length >= this._mask.length) {
             // eslint-disable-next-line
@@ -407,7 +420,11 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
             let i = 1;
             do {
-                newValue = this.getMaskedString(oldValue.substring(0, selectionStart as number) + pastedUnmaskedValue.substring(0, i) + oldValue.substring(selectionEnd as number, oldValue.length));
+                newValue = this.getMaskedString(
+                    oldValue.substring(0, selectionStart as number) +
+                        pastedUnmaskedValue.substring(0, i) +
+                        oldValue.substring(selectionEnd as number, oldValue.length),
+                );
                 newPosition += this._calculateCursorShift(newPosition as number);
 
                 i++;

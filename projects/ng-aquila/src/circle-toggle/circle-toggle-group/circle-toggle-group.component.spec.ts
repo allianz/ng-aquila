@@ -293,7 +293,8 @@ class ReactiveCircleToggleGroupComponent extends ButtonToggleGroupTest {
 @Component({
     template: `
         <nx-circle-toggle-group>
-            <nx-circle-toggle *ngFor="let item of testButtons" [value]="item.value" [icon]="item.icon" [hint]="item.hint" [label]="item.label"> </nx-circle-toggle>
+            <nx-circle-toggle *ngFor="let item of testButtons" [value]="item.value" [icon]="item.icon" [hint]="item.hint" [label]="item.label">
+            </nx-circle-toggle>
         </nx-circle-toggle-group>
     `,
 })

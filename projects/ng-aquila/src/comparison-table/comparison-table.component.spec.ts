@@ -110,7 +110,14 @@ describe('NxComparisonTableComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicComponent, BasicOnPushComponent, DisabledColumnsComponent, SelectableIndexComponent, LongPageWithTableComponent, HiddenColumnsComponent],
+                declarations: [
+                    BasicComponent,
+                    BasicOnPushComponent,
+                    DisabledColumnsComponent,
+                    SelectableIndexComponent,
+                    LongPageWithTableComponent,
+                    HiddenColumnsComponent,
+                ],
             });
             TestBed.compileComponents();
         }),
@@ -502,7 +509,9 @@ describe('NxComparisonTableComponent', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
 
-            const toggleSectionHeaderCell = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row')).query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
+            const toggleSectionHeaderCell = tableElement
+                .query(By.css('.nx-comparison-table__toggle-section-header-row'))
+                .query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
             const descriptionCell = tableElement.query(By.css('.nx-comparison-table__description-row')).query(By.css('.nx-comparison-table__description-cell'));
             expect(descriptionCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
             expect(toggleSectionHeaderCell.styles['clip-path']).toMatch(/^inset\((0|0px)\)$/);
@@ -517,7 +526,9 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             const regex = /^inset\(0p?x? 0p?x? 0p?x? (.*)px\)$/;
-            const toggleSectionHeaderCell = tableElement.query(By.css('.nx-comparison-table__toggle-section-header-row')).query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
+            const toggleSectionHeaderCell = tableElement
+                .query(By.css('.nx-comparison-table__toggle-section-header-row'))
+                .query(By.css('.nx-comparison-table__mobile-toggle-section-header'));
             const descriptionCell = tableElement.query(By.css('.nx-comparison-table__description-row')).query(By.css('.nx-comparison-table__description-cell'));
 
             tableElement.nativeElement.scrollTo(50, 0);

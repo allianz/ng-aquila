@@ -163,7 +163,10 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
                 this.activeDate = this._dateAdapter.addCalendarYears(this._activeDate, -this._dateAdapter.getYear(this._activeDate) % yearsPerPage);
                 break;
             case END:
-                this.activeDate = this._dateAdapter.addCalendarYears(this._activeDate, yearsPerPage - (this._dateAdapter.getYear(this._activeDate) % yearsPerPage) - 1);
+                this.activeDate = this._dateAdapter.addCalendarYears(
+                    this._activeDate,
+                    yearsPerPage - (this._dateAdapter.getYear(this._activeDate) % yearsPerPage) - 1,
+                );
                 break;
             case PAGE_UP:
                 this.activeDate = this._dateAdapter.addCalendarYears(this._activeDate, event.altKey ? -yearsPerPage * 10 : -yearsPerPage);
@@ -206,7 +209,12 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     /** Whether the given year is enabled. */
     private _shouldEnableYear(year: number) {
         // disable if the year is greater than maxDate lower than minDate
-        if (year === undefined || year === null || (this.maxDate && year > this._dateAdapter.getYear(this.maxDate)) || (this.minDate && year < this._dateAdapter.getYear(this.minDate))) {
+        if (
+            year === undefined ||
+            year === null ||
+            (this.maxDate && year > this._dateAdapter.getYear(this.maxDate)) ||
+            (this.minDate && year < this._dateAdapter.getYear(this.minDate))
+        ) {
             return false;
         }
 

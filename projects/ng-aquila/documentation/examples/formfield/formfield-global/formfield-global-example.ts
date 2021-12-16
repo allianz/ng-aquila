@@ -1,6 +1,12 @@
 import { Component, ViewChild, AfterContentInit } from '@angular/core';
-import { FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
-import { ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions } from '@aposin/ng-aquila/base';
+import {
+    FORMFIELD_DEFAULT_OPTIONS,
+    FormfieldDefaultOptions,
+} from '@aposin/ng-aquila/formfield';
+import {
+    ERROR_DEFAULT_OPTIONS,
+    ErrorDefaultOptions,
+} from '@aposin/ng-aquila/base';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 const myDefaultOptions: FormfieldDefaultOptions = {
@@ -26,7 +32,8 @@ const myErrorOptions: ErrorDefaultOptions = {
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {
     public modelValue!: string;
-    @ViewChild('errorNgModel', { static: true }) errorNgModel!: NxInputDirective;
+    @ViewChild('errorNgModel', { static: true })
+    errorNgModel!: NxInputDirective;
 
     ngAfterContentInit() {
         this.errorNgModel.ngControl.control?.markAsTouched();

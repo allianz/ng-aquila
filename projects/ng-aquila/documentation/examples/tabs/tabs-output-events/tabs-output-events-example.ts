@@ -14,12 +14,20 @@ export class TabsOutputEventsExampleComponent {
     logMessage: string = '';
 
     tabChanged($event: NxTabChangeEvent) {
-        this.messages.push(`Selected Index: ${$event.index} Label: ${$event.tab.label}`);
-        Promise.resolve().then(() => (this.logMessage = this.messages.join('\n')));
+        this.messages.push(
+            `Selected Index: ${$event.index} Label: ${$event.tab.label}`,
+        );
+        Promise.resolve().then(
+            () => (this.logMessage = this.messages.join('\n')),
+        );
     }
 
     tabFocused($event: NxTabChangeEvent) {
-        this.messages.push(`Focused Index: ${$event.index} Label: ${$event.tab.label}`);
-        Promise.resolve().then(() => (this.logMessage = this.messages.join('\n')));
+        this.messages.push(
+            `Focused Index: ${$event.index} Label: ${$event.tab.label}`,
+        );
+        Promise.resolve().then(
+            () => (this.logMessage = this.messages.join('\n')),
+        );
     }
 }

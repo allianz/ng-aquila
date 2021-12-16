@@ -1,4 +1,16 @@
-<input #input type="checkbox" [id]="id" [attr.name]="name" [disabled]="disabled" [checked]="checked" (click)="toggle()" (blur)="touch()" role="switch" [attr.aria-checked]="checked" class="nx-switcher__input" />
+<input
+    #input
+    type="checkbox"
+    [id]="id"
+    [attr.name]="name"
+    [disabled]="disabled"
+    [checked]="checked"
+    (click)="toggle()"
+    (blur)="touch()"
+    role="switch"
+    [attr.aria-checked]="checked"
+    class="nx-switcher__input"
+/>
 <label [attr.for]="id" class="nx-switcher__label" [class.has-label]="labelHasContent">
     <div class="nx-switcher__toggle">
         <div class="nx-switcher__dot">

@@ -14,7 +14,16 @@ import { AquilaDocsExample } from './app/aquila-docs-example';
     bootstrap: [AquilaDocsExample],
     declarations: [AquilaDocsExample],
     entryComponents: [AquilaDocsExample],
-    imports: [BrowserModule, BrowserAnimationsModule, FormsModule, HttpClientJsonpModule, HttpClientModule, ReactiveFormsModule, RouterModule.forRoot([]), AquilaModule],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientJsonpModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([]),
+        AquilaModule,
+    ],
 })
 export class AppModule {}
 

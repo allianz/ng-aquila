@@ -36,7 +36,18 @@ describe('NxLayoutDirective', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicLayout, BasicGridLayout, BasicGridLayoutClassTest, BasicNoGutters, BasicNoPadding, BasicMaxWidth, BasicCombinate, Basic2Combinate, BasicCompleteReverse, DynamicLayout],
+                declarations: [
+                    BasicLayout,
+                    BasicGridLayout,
+                    BasicGridLayoutClassTest,
+                    BasicNoGutters,
+                    BasicNoPadding,
+                    BasicMaxWidth,
+                    BasicCombinate,
+                    Basic2Combinate,
+                    BasicCompleteReverse,
+                    DynamicLayout,
+                ],
                 imports: [NxGridModule],
             }).compileComponents();
         }),

@@ -37,7 +37,13 @@ export class NxOverlayRef<T, R = any> {
     /** Current state of the overlay. */
     private _state = NxOverlayState.OPEN;
 
-    constructor(private _overlayRef: OverlayRef, public _containerInstance: NxOverlayContainerComponent, public origin: FlexibleConnectedPositionStrategyOrigin, private _router: Router, readonly id: string = `nx-overlay-${nextId++}`) {
+    constructor(
+        private _overlayRef: OverlayRef,
+        public _containerInstance: NxOverlayContainerComponent,
+        public origin: FlexibleConnectedPositionStrategyOrigin,
+        private _router: Router,
+        readonly id: string = `nx-overlay-${nextId++}`,
+    ) {
         this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
         _overlayRef
             .backdropClick()

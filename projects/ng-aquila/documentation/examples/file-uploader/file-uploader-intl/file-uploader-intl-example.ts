@@ -5,7 +5,10 @@ import {
     NxFileUploader,
     NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
-import { NxMessageToastConfig, NxMessageToastService } from '@aposin/ng-aquila/message';
+import {
+    NxMessageToastConfig,
+    NxMessageToastService,
+} from '@aposin/ng-aquila/message';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
@@ -38,12 +41,18 @@ export class FileUploaderIntlExampleComponent {
         },
     };
 
-    constructor(private messageToastService: NxMessageToastService, private http: HttpClient) {
+    constructor(
+        private messageToastService: NxMessageToastService,
+        private http: HttpClient,
+    ) {
         this.uploader = new NxFileUploader(this.uploadConfig, this.http);
 
         this.uploader.response.subscribe((result: NxFileUploadResult) => {
             if (result.success) {
-                this.messageToastService.open('All files were uploaded successfully!', myCustomConfig);
+                this.messageToastService.open(
+                    'All files were uploaded successfully!',
+                    myCustomConfig,
+                );
             } else if (result.error) {
                 // error handling
                 console.log(result.error);

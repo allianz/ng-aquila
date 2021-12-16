@@ -10,7 +10,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr nxTableRow *ngFor="let control of formArray.controls; index as i" [formGroup]="getFormGroup(i)">
+            <tr
+                nxTableRow
+                *ngFor="let control of formArray.controls; index as i"
+                [formGroup]="getFormGroup(i)"
+            >
                 <td nxTableCell>
                     <nx-formfield>
                         <input nxInput formControlName="id" />
@@ -23,9 +27,17 @@
                 </td>
                 <td nxTableCell class="date-cell">
                     <nx-formfield>
-                        <input nxDatefield nxInput [nxDatepicker]="myDatepicker" formControlName="endingAt" />
+                        <input
+                            nxDatefield
+                            nxInput
+                            [nxDatepicker]="myDatepicker"
+                            formControlName="endingAt"
+                        />
 
-                        <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+                        <nx-datepicker-toggle
+                            [for]="myDatepicker"
+                            nxFormfieldSuffix
+                        ></nx-datepicker-toggle>
                         <nx-datepicker #myDatepicker></nx-datepicker>
                     </nx-formfield>
                 </td>
@@ -33,14 +45,24 @@
                     <nx-formfield>
                         <nx-dropdown formControlName="status">
                             <nx-dropdown-item nxValue="open"></nx-dropdown-item>
-                            <nx-dropdown-item nxValue="processing"></nx-dropdown-item>
-                            <nx-dropdown-item nxValue="accepted"></nx-dropdown-item>
-                            <nx-dropdown-item nxValue="rejected"></nx-dropdown-item>
+                            <nx-dropdown-item
+                                nxValue="processing"
+                            ></nx-dropdown-item>
+                            <nx-dropdown-item
+                                nxValue="accepted"
+                            ></nx-dropdown-item>
+                            <nx-dropdown-item
+                                nxValue="rejected"
+                            ></nx-dropdown-item>
                         </nx-dropdown>
                     </nx-formfield>
                 </td>
                 <td nxTableCell>
-                    <button nxPlainButton (click)="removeRow(i)" aria-label="Remove row">
+                    <button
+                        nxPlainButton
+                        (click)="removeRow(i)"
+                        aria-label="Remove row"
+                    >
                         <nx-icon name="trash-o"></nx-icon>
                     </button>
                 </td>
@@ -49,4 +71,6 @@
     </table>
 </nx-swipebar>
 
-<button nxPlainButton (click)="addRow()"> <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>Add row </button>
+<button nxPlainButton (click)="addRow()">
+    <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>Add row
+</button>

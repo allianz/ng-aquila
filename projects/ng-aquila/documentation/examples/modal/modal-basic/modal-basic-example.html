@@ -2,10 +2,14 @@
 
 <ng-template #basicModalBody>
     <div class="u-text-center">
-        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">Basic Modal Dialog</h3>
+        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m"
+            >Basic Modal Dialog</h3
+        >
         <p nxCopytext="small" class="nx-margin-bottom-s"
-            >Any content can be included in a modal view and styled as necessary. This example shows some arbitrary
-            components (<code>nxHeadline</code>, <code>nxCopytext</code> and <code>nx-formfield</code>) and styling
+            >Any content can be included in a modal view and styled as
+            necessary. This example shows some arbitrary components
+            (<code>nxHeadline</code>, <code>nxCopytext</code> and
+            <code>nx-formfield</code>) and styling
             (<code>u-text-center</code>).</p
         >
         <nx-formfield nxLabel="First Name">
@@ -26,4 +30,9 @@
         </nx-formfield>
     </div>
 </ng-template>
-<nx-modal #basicModal [nxBody]="basicModalBody" *nxOpenModalOnClick="basicModalButton"> </nx-modal>
+<nx-modal
+    #basicModal
+    [nxBody]="basicModalBody"
+    *nxOpenModalOnClick="basicModalButton"
+>
+</nx-modal>

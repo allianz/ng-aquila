@@ -94,7 +94,17 @@ export function createKeyboardEvent(type: string, keyCode: number = 0, key: stri
         // TS3.6 removed the `initKeyboardEvent` method and suggested porting to
         // `new KeyboardEvent()` constructor. We cannot use that as we support IE11.
         // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent.
-        (event as any).initKeyboardEvent(type, true /* canBubble */, true /* cancelable */, window /* view */, 0 /* char */, key /* key */, 0 /* location */, modifiersList.trim() /* modifiersList */, false /* repeat */);
+        (event as any).initKeyboardEvent(
+            type,
+            true /* canBubble */,
+            true /* cancelable */,
+            window /* view */,
+            0 /* char */,
+            key /* key */,
+            0 /* location */,
+            modifiersList.trim() /* modifiersList */,
+            false /* repeat */,
+        );
     }
 
     // Webkit Browsers don't set the keyCode when calling the init function.

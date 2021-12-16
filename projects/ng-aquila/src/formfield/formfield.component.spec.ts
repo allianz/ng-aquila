@@ -365,19 +365,25 @@ describe('NxFormfieldComponent', () => {
             }),
         );
 
-        it('should have an "auto" appearance if empty default options are provided', inject([FORMFIELD_DEFAULT_OPTIONS], (defaultOptions: FormfieldDefaultOptions) => {
-            delete defaultOptions.appearance;
-            createTestComponent(BasicFormfield);
-            expect(testInstance.textfieldInstance.appearance).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('has-outline');
-        }));
+        it('should have an "auto" appearance if empty default options are provided', inject(
+            [FORMFIELD_DEFAULT_OPTIONS],
+            (defaultOptions: FormfieldDefaultOptions) => {
+                delete defaultOptions.appearance;
+                createTestComponent(BasicFormfield);
+                expect(testInstance.textfieldInstance.appearance).toBe('auto');
+                expect(formfieldElement.classList).not.toContain('has-outline');
+            },
+        ));
 
-        it('should have an "auto" floatingLabel if empty default options are provided', inject([FORMFIELD_DEFAULT_OPTIONS], (defaultOptions: FormfieldDefaultOptions) => {
-            delete defaultOptions.nxFloatLabel;
-            createTestComponent(BasicFormfield);
-            expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('is-floating');
-        }));
+        it('should have an "auto" floatingLabel if empty default options are provided', inject(
+            [FORMFIELD_DEFAULT_OPTIONS],
+            (defaultOptions: FormfieldDefaultOptions) => {
+                delete defaultOptions.nxFloatLabel;
+                createTestComponent(BasicFormfield);
+                expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
+                expect(formfieldElement.classList).not.toContain('is-floating');
+            },
+        ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(BasicFormfield);

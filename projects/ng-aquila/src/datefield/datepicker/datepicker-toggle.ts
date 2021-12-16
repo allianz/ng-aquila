@@ -7,7 +7,23 @@ import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
  * found in the LICENSE file at https://angular.io/license
  */
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Directive, Input, OnChanges, OnDestroy, SimpleChanges, Optional, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    Directive,
+    Input,
+    OnChanges,
+    OnDestroy,
+    SimpleChanges,
+    Optional,
+    Inject,
+    ViewChild,
+    ElementRef,
+    AfterViewInit,
+} from '@angular/core';
 import { merge, of as observableOf, Subscription, Subject } from 'rxjs';
 
 import { NxDatepickerIntl } from './datepicker-intl';
@@ -90,7 +106,12 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         return 0;
     }
 
-    constructor(public _intl: NxDatepickerIntl, private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions, private _focusMonitor: FocusMonitor) {
+    constructor(
+        public _intl: NxDatepickerIntl,
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions,
+        private _focusMonitor: FocusMonitor,
+    ) {
         if (this._defaultOptions && this._defaultOptions.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._changeDetectorRef.markForCheck();
@@ -133,7 +154,9 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
 
         this._stateChanges.unsubscribe();
-        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled).subscribe(() => this._changeDetectorRef.markForCheck());
+        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled).subscribe(() =>
+            this._changeDetectorRef.markForCheck(),
+        );
     }
 
     static ngAcceptInputType_disabled: BooleanInput;

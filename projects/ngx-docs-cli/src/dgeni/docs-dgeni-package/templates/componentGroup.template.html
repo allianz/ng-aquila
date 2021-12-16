@@ -1,6 +1,8 @@
-{# Defines macros for reusable templates. #} {% macro method(method) -%} {% include 'method.template.html' %} {% endmacro %} {% macro property(property) -%} {% include 'property.template.html' %} {% endmacro %} {% macro
-methodList(methodList) -%} {% include 'method-list.template.html' %} {% endmacro %} {% macro propertyList(propertyList) -%} {% include 'property-list.template.html' %} {% endmacro %} {% macro class(class) -%} {% include
-'class.template.html' %} {% endmacro %} {% macro interface(interface) -%} {% include 'interface.template.html' %} {% endmacro %} {% macro typeAlias(alias) -%} {% include 'type-alias.template.html' %} {% endmacro %}
+{# Defines macros for reusable templates. #} {% macro method(method) -%} {% include 'method.template.html' %} {% endmacro %} {% macro property(property) -%} {%
+include 'property.template.html' %} {% endmacro %} {% macro methodList(methodList) -%} {% include 'method-list.template.html' %} {% endmacro %} {% macro
+propertyList(propertyList) -%} {% include 'property-list.template.html' %} {% endmacro %} {% macro class(class) -%} {% include 'class.template.html' %} {%
+endmacro %} {% macro interface(interface) -%} {% include 'interface.template.html' %} {% endmacro %} {% macro typeAlias(alias) -%} {% include
+'type-alias.template.html' %} {% endmacro %}
 
 <div class="docs-api">
     <p class="docs-api-module-import">
@@ -37,7 +39,8 @@ methodList(methodList) -%} {% include 'method-list.template.html' %} {% endmacro
         <span header-link="additional_functions"></span>
         Additional functions
     </h3>
-    {% for item in doc.additionalFunctions %} {# Since the function docs have a similar structure as method docs, we use the method template. #} {$ method(item) $} {% endfor %} {%- endif -%} {%- if doc.additionalTypeAliases.length -%}
+    {% for item in doc.additionalFunctions %} {# Since the function docs have a similar structure as method docs, we use the method template. #} {$ method(item)
+    $} {% endfor %} {%- endif -%} {%- if doc.additionalTypeAliases.length -%}
     <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
         <span header-link="additional_type_aliases"></span>
         Additional type aliases

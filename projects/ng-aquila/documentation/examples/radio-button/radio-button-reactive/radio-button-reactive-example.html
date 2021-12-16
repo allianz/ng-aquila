@@ -1,7 +1,9 @@
 <form [formGroup]="testForm">
     <nx-radio-group name="reactiveTest" formControlName="radioTestReactive">
         <nx-label class="nx-margin-bottom-m">What do you prefer?</nx-label>
-        <nx-radio nxValue="apples" class="nx-margin-bottom-m">I like Apples</nx-radio>
+        <nx-radio nxValue="apples" class="nx-margin-bottom-m"
+            >I like Apples</nx-radio
+        >
         <nx-radio nxValue="oranges">I like Oranges</nx-radio>
     </nx-radio-group>
     <p>Form value: {{ testForm.value | json }}</p>

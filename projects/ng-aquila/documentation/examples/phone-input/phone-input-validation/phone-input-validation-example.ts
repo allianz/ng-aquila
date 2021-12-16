@@ -1,4 +1,9 @@
-import { FormControl, AbstractControl, ValidatorFn, Validators } from '@angular/forms';
+import {
+    FormControl,
+    AbstractControl,
+    ValidatorFn,
+    Validators,
+} from '@angular/forms';
 import { Component } from '@angular/core';
 import { NumberType, parsePhoneNumber } from 'libphonenumber-js/max';
 
@@ -6,7 +11,11 @@ export type PhoneNumberType = 'landline' | 'mobile';
 
 const MOBILE_TYPES: NumberType[] = ['MOBILE', 'FIXED_LINE_OR_MOBILE'];
 
-const LANDLINE_TYPES: NumberType[] = ['FIXED_LINE', 'FIXED_LINE_OR_MOBILE', 'PERSONAL_NUMBER'];
+const LANDLINE_TYPES: NumberType[] = [
+    'FIXED_LINE',
+    'FIXED_LINE_OR_MOBILE',
+    'PERSONAL_NUMBER',
+];
 
 /**
  * Validates phone numbers. International numbers are accepted if they contain a country code.
@@ -17,7 +26,10 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
         let valid = false;
         // if the number is packed in an object, the entered value is the `original`field
-        const value = typeof control.value === 'object' ? control.value.original : control.value;
+        const value =
+            typeof control.value === 'object'
+                ? control.value.original
+                : control.value;
         let typeValid = true;
 
         try {
@@ -51,6 +63,12 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
     selector: 'phone-input-validation-example',
 })
 export class PhoneInputValidationExampleComponent {
-    phoneControl = new FormControl('', [Validators.required, phoneNumberValidator('landline')]);
-    mobilePhoneControl = new FormControl('', [Validators.required, phoneNumberValidator('mobile')]);
+    phoneControl = new FormControl('', [
+        Validators.required,
+        phoneNumberValidator('landline'),
+    ]);
+    mobilePhoneControl = new FormControl('', [
+        Validators.required,
+        phoneNumberValidator('mobile'),
+    ]);
 }

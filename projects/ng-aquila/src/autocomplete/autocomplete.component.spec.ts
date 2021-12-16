@@ -62,7 +62,16 @@ describe('NxAutocompleteComponent:', () => {
                     AutocompleteInModalComponent,
                     AutocompleteComponentWithDirection,
                 ],
-                imports: [CommonModule, OverlayModule, NxAutocompleteModule, NxInputModule, FormsModule, ReactiveFormsModule, NoopAnimationsModule, NxModalModule.forRoot()],
+                imports: [
+                    CommonModule,
+                    OverlayModule,
+                    NxAutocompleteModule,
+                    NxInputModule,
+                    FormsModule,
+                    ReactiveFormsModule,
+                    NoopAnimationsModule,
+                    NxModalModule.forRoot(),
+                ],
             }).compileComponents();
 
             inject([OverlayContainer], (oc: OverlayContainer) => {
@@ -313,7 +322,14 @@ class AutocompleteComponent {
 
 @Component({
     template: `
-        <input type="text" [nxAutocomplete]="auto1" [nxAutocompleteItems]="searchFunction" [nxAutocompleteDisabled]="autocompleteDisabled" nxAutocompleteDebounce="0" aria-label="atcmpl" />
+        <input
+            type="text"
+            [nxAutocomplete]="auto1"
+            [nxAutocompleteItems]="searchFunction"
+            [nxAutocompleteDisabled]="autocompleteDisabled"
+            nxAutocompleteDebounce="0"
+            aria-label="atcmpl"
+        />
         <nx-autocomplete #auto1></nx-autocomplete>
     `,
 })
@@ -404,7 +420,14 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
 @Component({
     template: `
         <div [dir]="direction">
-            <input type="text" [nxAutocomplete]="auto1" [nxAutocompleteItems]="searchFunction" [nxAutocompleteDisabled]="autocompleteDisabled" nxAutocompleteDebounce="0" aria-label="atcmpl" />
+            <input
+                type="text"
+                [nxAutocomplete]="auto1"
+                [nxAutocompleteItems]="searchFunction"
+                [nxAutocompleteDisabled]="autocompleteDisabled"
+                nxAutocompleteDebounce="0"
+                aria-label="atcmpl"
+            />
             <nx-autocomplete #auto1></nx-autocomplete>
         </div>
     `,

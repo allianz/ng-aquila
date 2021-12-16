@@ -89,7 +89,8 @@ $edge-margin: 4%;
 // negative styles
 :host(.nx-spinner--negative) {
     .nx-spinner__spin-block {
-        border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color) v(spinner-negative-background-color) v(spinner-negative-background-color);
+        border-color: v(spinner-negative-indicator-color) v(spinner-negative-background-color) v(spinner-negative-background-color)
+            v(spinner-negative-background-color);
     }
 
     .nx-spinner__edge-left,

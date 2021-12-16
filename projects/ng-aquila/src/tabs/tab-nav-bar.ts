@@ -1,4 +1,20 @@
-import { Component, Input, Directive, ChangeDetectionStrategy, Optional, SkipSelf, ChangeDetectorRef, InjectionToken, Inject, ElementRef, OnDestroy, ViewChild, ContentChildren, QueryList, forwardRef } from '@angular/core';
+import {
+    Component,
+    Input,
+    Directive,
+    ChangeDetectionStrategy,
+    Optional,
+    SkipSelf,
+    ChangeDetectorRef,
+    InjectionToken,
+    Inject,
+    ElementRef,
+    OnDestroy,
+    ViewChild,
+    ContentChildren,
+    QueryList,
+    forwardRef,
+} from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxScrollableTabBar } from './scrollable-tab-bar';
@@ -73,7 +89,12 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'default';
     }
 
-    constructor(public _changeDetectorRef: ChangeDetectorRef, _dir: Directionality, @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions, _element: ElementRef) {
+    constructor(
+        public _changeDetectorRef: ChangeDetectorRef,
+        _dir: Directionality,
+        @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions,
+        _element: ElementRef,
+    ) {
         super(_changeDetectorRef, _dir, _element);
     }
 

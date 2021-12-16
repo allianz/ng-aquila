@@ -5,12 +5,14 @@
         {%- if property.isDirectiveInput -%}
         <div class="docs-api-input-marker">
             {%- if property.directiveInputAlias -%}
-            <span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{$ property.directiveInputAlias $}</span>) {% else %} <span class="docs-api-input__keyword">@Input</span>() {%- endif -%}
+            <span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">{$ property.directiveInputAlias $}</span>) {% else %}
+            <span class="docs-api-input__keyword">@Input</span>() {%- endif -%}
         </div>
         {%- endif -%} {%- if property.isDirectiveOutput -%}
         <div class="docs-api-output-marker">
             {%- if property.directiveOutputAlias -%}
-            <span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">{$ property.directiveOutputAlias $}</span>) {% else %} <span class="docs-api-output__keyword">@Output</span>() {%- endif -%}
+            <span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">{$ property.directiveOutputAlias $}</span>) {% else %}
+            <span class="docs-api-output__keyword">@Output</span>() {%- endif -%}
         </div>
         {%- endif -%} {%- if property.isDeprecated -%}
         <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(property) $}> Deprecated </div>

@@ -49,7 +49,20 @@ describe('NxNativeDateAdapter', () => {
     });
 
     it('should get long month names', () => {
-        expect(adapter.getMonthNames('long')).toEqual(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+        expect(adapter.getMonthNames('long')).toEqual([
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ]);
     });
 
     it('should get long month names', () => {
@@ -70,12 +83,57 @@ describe('NxNativeDateAdapter', () => {
         if (SUPPORTS_INTL) {
             expect(adapter.getMonthNames('long')).toEqual(['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']);
         } else {
-            expect(adapter.getMonthNames('long')).toEqual(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
+            expect(adapter.getMonthNames('long')).toEqual([
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+            ]);
         }
     });
 
     it('should get date names', () => {
-        expect(adapter.getDateNames()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']);
+        expect(adapter.getDateNames()).toEqual([
+            '1',
+            '2',
+            '3',
+            '4',
+            '5',
+            '6',
+            '7',
+            '8',
+            '9',
+            '10',
+            '11',
+            '12',
+            '13',
+            '14',
+            '15',
+            '16',
+            '17',
+            '18',
+            '19',
+            '20',
+            '21',
+            '22',
+            '23',
+            '24',
+            '25',
+            '26',
+            '27',
+            '28',
+            '29',
+            '30',
+            '31',
+        ]);
     });
 
     it('should get date names in a different locale', () => {
@@ -115,7 +173,39 @@ describe('NxNativeDateAdapter', () => {
                 '31日',
             ]);
         } else {
-            expect(adapter.getDateNames()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31']);
+            expect(adapter.getDateNames()).toEqual([
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '10',
+                '11',
+                '12',
+                '13',
+                '14',
+                '15',
+                '16',
+                '17',
+                '18',
+                '19',
+                '20',
+                '21',
+                '22',
+                '23',
+                '24',
+                '25',
+                '26',
+                '27',
+                '28',
+                '29',
+                '30',
+                '31',
+            ]);
         }
     });
 
@@ -379,7 +469,9 @@ describe('NxNativeDateAdapter with MAT_DATE_LOCALE override', () => {
     }));
 
     it('should take the default locale id from the MAT_DATE_LOCALE injection token', () => {
-        const expectedValue = SUPPORTS_INTL ? ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'] : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const expectedValue = SUPPORTS_INTL
+            ? ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
+            : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         expect(adapter.getDayOfWeekNames('long')).toEqual(expectedValue);
     });
@@ -402,7 +494,9 @@ describe('NxNativeDateAdapter with LOCALE_ID override', () => {
     }));
 
     it('should cascade locale id from the LOCALE_ID injection token to MAT_DATE_LOCALE', () => {
-        const expectedValue = SUPPORTS_INTL ? ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag'] : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const expectedValue = SUPPORTS_INTL
+            ? ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
+            : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         expect(adapter.getDayOfWeekNames('long')).toEqual(expectedValue);
     });

@@ -71,7 +71,15 @@ When the menu components template could look like this:
 
 ```html
 <!-- 🚫 BAD EXAMPLE: don't do this -->
-<button class="menu-trigger" [nxButton]="buttonSize + ' ' + buttonType" (click)="toggleMenuAndEmitButtonClickEvent()" [nxTooltip]="tooltipText" [nxTooltipDelay]="tooltipDelay"> {{buttonText}} </button>
+<button
+    class="menu-trigger"
+    [nxButton]="buttonSize + ' ' + buttonType"
+    (click)="toggleMenuAndEmitButtonClickEvent()"
+    [nxTooltip]="tooltipText"
+    [nxTooltipDelay]="tooltipDelay"
+>
+    {{buttonText}}
+</button>
 
 <div class="menu-items">
     <ng-content></ng-content>
@@ -142,14 +150,14 @@ For a new component:
 1. Create a `<component-name>.md` file in your component folder. The name has to match the component folder name.
 2. Add metadata to the markdown file at the top and change it accordingly.
 
-| Attribute | Possible values                | Description                                                                                                                                    |
-| --------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| title     | `string`                       | The name of the component that is displayed.                                                                                                   |
-| category  | `components \| Expert (Alpha)` | The category in which the component is listed.                                                                                                 |
-| b2c       | `true \| **false**`            | Whether the component is allowed to be used in client facing applications (B2C).                                                               |
-| expert    | `true \| **false**`            | Whether the component is an expert option and can be used for internal applications (Expert).                                                  |
-| stable    | `done \| progress \| **na**`   | Describes the stable status of the component.                                                                                                  |
-| noApi     | `true \| **false**`            | If the API tab should be hidden. Useful for more general pages that don't belong to a specific component, e.g. 'Accessibility', 'Theming', ... |
+| Attribute | Possible values | Description |
+| --- | --- | --- |
+| title | `string` | The name of the component that is displayed. |
+| category | `components \| Expert (Alpha)` | The category in which the component is listed. |
+| b2c | `true \| **false**` | Whether the component is allowed to be used in client facing applications (B2C). |
+| expert | `true \| **false**` | Whether the component is an expert option and can be used for internal applications (Expert). |
+| stable | `done \| progress \| **na**` | Describes the stable status of the component. |
+| noApi | `true \| **false**` | If the API tab should be hidden. Useful for more general pages that don't belong to a specific component, e.g. 'Accessibility', 'Theming', ... |
 
 Button example:
 

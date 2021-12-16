@@ -1,5 +1,17 @@
 import { ComponentFixture, fakeAsync, flushMicrotasks, inject, TestBed, tick, flush } from '@angular/core/testing';
-import { ChangeDetectionStrategy, Component, Directive, Inject, Injector, NgModule, TemplateRef, ViewChild, ViewContainerRef, ComponentFactoryResolver, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    Inject,
+    Injector,
+    NgModule,
+    TemplateRef,
+    ViewChild,
+    ViewContainerRef,
+    ComponentFactoryResolver,
+    ViewEncapsulation,
+} from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Location } from '@angular/common';
@@ -123,7 +135,9 @@ describe('NxDialog', () => {
         const dialogInjector = dialogRef.componentInstance.dialogInjector;
 
         expect(dialogRef.componentInstance.dialogRef).toBe(dialogRef);
-        expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy('Expected the dialog component to be created with the injector from the viewContainerRef.');
+        expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy(
+            'Expected the dialog component to be created with the injector from the viewContainerRef.',
+        );
     });
 
     it('should open a dialog with a component and no ViewContainerRef', () => {
@@ -1649,6 +1663,13 @@ const TEST_DIRECTIVES = [
     imports: [NxModalModule, NoopAnimationsModule],
     exports: TEST_DIRECTIVES,
     declarations: TEST_DIRECTIVES,
-    entryComponents: [ComponentWithChildViewContainer, ComponentWithTemplateRef, PizzaMsg, ContentElementDialog, DialogWithInjectedData, DialogWithoutFocusableElements],
+    entryComponents: [
+        ComponentWithChildViewContainer,
+        ComponentWithTemplateRef,
+        PizzaMsg,
+        ContentElementDialog,
+        DialogWithInjectedData,
+        DialogWithoutFocusableElements,
+    ],
 })
 class DialogTestModule {}

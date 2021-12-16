@@ -67,6 +67,8 @@ export class TableSelectingExampleComponent {
 
     /** Selects all rows if they are not all selected; otherwise clear selection. */
     toggleAll() {
-        this.isAllSelected() ? this.selection.clear() : this.tableElements.forEach(row => this.selection.select(row));
+        this.isAllSelected()
+            ? this.selection.clear()
+            : this.tableElements.forEach(row => this.selection.select(row));
     }
 }

@@ -153,7 +153,9 @@ export class StackBlitzWriter {
         this._appendFormInput(form, 'dependencies', JSON.stringify(isTest ? testDependencies : dependencies));
 
         return new Promise(resolve => {
-            const templateContents = (isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES).map(file => this._readFile(form, data, file, isTest ? TEST_TEMPLATE_PATH : TEMPLATE_PATH, isTest));
+            const templateContents = (isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES).map(file =>
+                this._readFile(form, data, file, isTest ? TEST_TEMPLATE_PATH : TEMPLATE_PATH, isTest),
+            );
 
             const exampleContents = data.exampleFiles.map(file => this._readFile(form, data, file, baseExamplePath, isTest));
 

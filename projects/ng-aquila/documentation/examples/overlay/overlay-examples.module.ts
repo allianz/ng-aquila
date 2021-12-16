@@ -5,7 +5,10 @@ import { OverlayLimitingFallbacksExampleComponent } from './overlay-limiting-fal
 import { OverlayPositioningExampleComponent } from './overlay-positioning/overlay-positioning-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
-const EXAMPLES = [OverlayLimitingFallbacksExampleComponent, OverlayPositioningExampleComponent];
+const EXAMPLES = [
+    OverlayLimitingFallbacksExampleComponent,
+    OverlayPositioningExampleComponent,
+];
 
 @NgModule({
     imports: [NxOverlayModule, ExamplesSharedModule],

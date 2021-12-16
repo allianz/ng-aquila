@@ -20,7 +20,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxSmallStageModule, NxBreadcrumbModule, ExamplesSharedModule, NxLinkModule, NxIconModule],
+    imports: [
+        NxSmallStageModule,
+        NxBreadcrumbModule,
+        ExamplesSharedModule,
+        NxLinkModule,
+        NxIconModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

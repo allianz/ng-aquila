@@ -12,9 +12,21 @@
     (click)="toggle($event)"
 />
 <label class="nx-circle-toggle__label" [for]="id + '-input'" [id]="id + '-label'">
-    <nx-icon-toggle-button [label]="label" [hint]="hint" [checked]="checked" [icon]="iconName" [negative]="negative" [svg]="svgUrl" [disabled]="disabled" [inGroup]="inGroup" [touched]="_touched" [circleText]="circleText">
+    <nx-icon-toggle-button
+        [label]="label"
+        [hint]="hint"
+        [checked]="checked"
+        [icon]="iconName"
+        [negative]="negative"
+        [svg]="svgUrl"
+        [disabled]="disabled"
+        [inGroup]="inGroup"
+        [touched]="_touched"
+        [circleText]="circleText"
+    >
     </nx-icon-toggle-button>
     <!-- The mobile toggle button is needed for the responsive mobile version of the component.
     The display swtich is handled in the css. -->
-    <nx-mobile-toggle-button [label]="label" [hint]="hint" [checked]="checked" [negative]="negative" [disabled]="disabled" [circleText]="circleText"> </nx-mobile-toggle-button>
+    <nx-mobile-toggle-button [label]="label" [hint]="hint" [checked]="checked" [negative]="negative" [disabled]="disabled" [circleText]="circleText">
+    </nx-mobile-toggle-button>
 </label>

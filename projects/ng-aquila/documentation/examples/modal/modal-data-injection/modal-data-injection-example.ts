@@ -1,4 +1,9 @@
-import { Component, ViewChild, TemplateRef, AfterContentInit } from '@angular/core';
+import {
+    Component,
+    ViewChild,
+    TemplateRef,
+    AfterContentInit,
+} from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 /**

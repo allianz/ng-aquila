@@ -14,7 +14,11 @@
         <tr nxTableRow *ngFor="let breakpoint of breakpoints">
             <td nxTableCell><code>.nx-hidden-{{breakpoint.prefix}}</code></td>
             <ng-container *ngFor="let col of breakpoints">
-                <td *ngIf="breakpoint.prefix === col.prefix; else visible" nxTableCell>hidden</td>
+                <td
+                    *ngIf="breakpoint.prefix === col.prefix; else visible"
+                    nxTableCell
+                    >hidden</td
+                >
                 <ng-template #visible>
                     <td nxTableCell class="visible">visible</td>
                 </ng-template>

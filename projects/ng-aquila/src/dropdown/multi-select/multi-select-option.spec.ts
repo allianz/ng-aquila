@@ -109,7 +109,12 @@ describe('NxMultiSelectOptionComponent', () => {
         it('has the aria attributes', async () => {
             const option = await multiSelectOptionHarness.host();
 
-            const [role, id, ariaSelected, ariaDisabled] = await parallel(() => [option.getAttribute('role'), option.getAttribute('id'), option.getAttribute('aria-selected'), option.getAttribute('aria-disabled')]);
+            const [role, id, ariaSelected, ariaDisabled] = await parallel(() => [
+                option.getAttribute('role'),
+                option.getAttribute('id'),
+                option.getAttribute('aria-selected'),
+                option.getAttribute('aria-disabled'),
+            ]);
 
             expect(role).toBe('option');
             expect(id).toMatch(/^nx-multi-select-option-\d+$/);
@@ -218,7 +223,15 @@ abstract class MultiSelectOptionTest {
 @Component({
     template: `
         <div role="listbox" aria-label="exampleLabel">
-            <nx-multi-select-option [appearance]="appearance" [selected]="selected" [disabled]="disabled" [label]="label" [value]="value" (selectedChange)="onSelect()"> </nx-multi-select-option>
+            <nx-multi-select-option
+                [appearance]="appearance"
+                [selected]="selected"
+                [disabled]="disabled"
+                [label]="label"
+                [value]="value"
+                (selectedChange)="onSelect()"
+            >
+            </nx-multi-select-option>
         </div>
     `,
 })

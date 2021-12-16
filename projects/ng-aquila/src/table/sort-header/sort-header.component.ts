@@ -35,7 +35,12 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._key;
     }
 
-    constructor(@Optional() public _sort: NxSortDirective, public _intl: NxSortHeaderIntl, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {
+    constructor(
+        @Optional() public _sort: NxSortDirective,
+        public _intl: NxSortHeaderIntl,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _focusMonitor: FocusMonitor,
+    ) {
         this._intlSubscription = this._intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
     }
 

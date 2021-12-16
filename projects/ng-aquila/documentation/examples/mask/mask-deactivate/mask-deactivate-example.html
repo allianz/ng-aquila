@@ -2,7 +2,9 @@
     <div nxRow>
         <div nxCol="6">
             <nx-radio-group [(ngModel)]="templateModel">
-                <nx-radio nxValue="activate" class="nx-margin-bottom-m">Activate</nx-radio>
+                <nx-radio nxValue="activate" class="nx-margin-bottom-m"
+                    >Activate</nx-radio
+                >
                 <nx-radio nxValue="deactivate">De-activate</nx-radio>
             </nx-radio-group>
         </div>
@@ -15,7 +17,8 @@
                     [(ngModel)]="modelVal"
                 />
                 <span nxFormfieldHint>
-                    Mask: SS-AAAAA (mask deactivated: {{ templateModel === 'deactivate' ? true : false }})
+                    Mask: SS-AAAAA (mask deactivated: {{ templateModel ===
+                    'deactivate' ? true : false }})
                 </span>
             </nx-formfield>
             Model value: {{ modelVal }}<br />

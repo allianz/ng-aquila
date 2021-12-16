@@ -4,7 +4,9 @@
         <nx-word nxSize="long" nxLabel="Always a label">
             <nx-dropdown formControlName="who">
                 <nx-dropdown-item nxValue="student">a Student</nx-dropdown-item>
-                <nx-dropdown-item nxValue="philosopher">a Philosopher</nx-dropdown-item>
+                <nx-dropdown-item nxValue="philosopher"
+                    >a Philosopher</nx-dropdown-item
+                >
                 <nx-dropdown-item nxValue="sailor">a Sailor</nx-dropdown-item>
             </nx-dropdown>
             <div nxError>We need to know about the type of role you want.</div>
@@ -19,8 +21,12 @@
         <span>and see</span>
         <nx-word nxSize="regular" nxLabel="Always a label">
             <input nxInput formControlName="spots" />
-            <div nxError *ngIf="naturalForm.controls.spots.hasError('required')">This field is required.</div>
-            <div nxError *ngIf="naturalForm.controls.spots.hasError('pattern')">Only numbers are allowed.</div>
+            <div nxError *ngIf="naturalForm.controls.spots.hasError('required')"
+                >This field is required.</div
+            >
+            <div nxError *ngIf="naturalForm.controls.spots.hasError('pattern')"
+                >Only numbers are allowed.</div
+            >
         </nx-word>
         <span> nice spots.</span>
     </nx-natural-language-form>

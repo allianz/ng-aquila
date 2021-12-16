@@ -242,7 +242,12 @@ describe('NxMultiSelectComponent', () => {
 
             it('has the aria attributes on the panel', async () => {
                 const panel = (await multiSelectHarness.getPanel()) as TestElement;
-                const [role, ariaOwns, ariaExpanded, ariaLabelledBy] = await parallel(() => [panel.getAttribute('role'), panel.getAttribute('aria-owns'), panel.getAttribute('aria-expanded'), panel.getAttribute('aria-labelledby')]);
+                const [role, ariaOwns, ariaExpanded, ariaLabelledBy] = await parallel(() => [
+                    panel.getAttribute('role'),
+                    panel.getAttribute('aria-owns'),
+                    panel.getAttribute('aria-expanded'),
+                    panel.getAttribute('aria-labelledby'),
+                ]);
 
                 expect(role).toBe('combobox');
                 expect(ariaOwns).toBe(`${multiSelectInstance.id}-combobox`);

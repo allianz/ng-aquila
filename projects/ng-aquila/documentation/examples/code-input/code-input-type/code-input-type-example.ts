@@ -16,7 +16,11 @@ export class CodeInputTypeExampleComponent implements OnInit {
     ngOnInit() {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(this.inputValue, {
-                validators: [Validators.required, Validators.pattern(RegExp('^[0-9]*$')), Validators.minLength(4)],
+                validators: [
+                    Validators.required,
+                    Validators.pattern(RegExp('^[0-9]*$')),
+                    Validators.minLength(4),
+                ],
                 updateOn: 'submit',
             }),
         });

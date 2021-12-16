@@ -1,5 +1,21 @@
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, TemplateRef, ViewChild, ViewChildren, ContentChildren, QueryList, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, Optional } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    TemplateRef,
+    ViewChild,
+    ViewChildren,
+    ContentChildren,
+    QueryList,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    OnDestroy,
+    Optional,
+} from '@angular/core';
 
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';

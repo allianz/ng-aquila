@@ -8,7 +8,15 @@
         <h3 nxHeadline="subsection-medium">Clicked row</h3>
         <p nxCopytext="small">{{ basicModalBody }}</p>
         <br />
-        <button nxButton="primary" (click)="toggleModal()" type="button">Hide Modal</button>
+        <button nxButton="primary" (click)="toggleModal()" type="button"
+            >Hide Modal</button
+        >
     </div>
 </ng-template>
-<nx-modal #basicModal [nxBody]="ngIfModalBody" [nxShowCloseIcon]="false" *ngIf="modalOpen"> </nx-modal>
+<nx-modal
+    #basicModal
+    [nxBody]="ngIfModalBody"
+    [nxShowCloseIcon]="false"
+    *ngIf="modalOpen"
+>
+</nx-modal>

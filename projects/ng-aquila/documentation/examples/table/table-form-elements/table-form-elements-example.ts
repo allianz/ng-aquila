@@ -13,8 +13,14 @@ import moment from 'moment';
     styleUrls: ['./table-form-elements-example.css'],
     providers: [
         // Both provided with NxExpertModule
-        { provide: FORMFIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', nxFloatLabel: 'always' } },
-        { provide: DATEPICKER_DEFAULT_OPTIONS, useValue: { toggleIconTabindex: -1 } },
+        {
+            provide: FORMFIELD_DEFAULT_OPTIONS,
+            useValue: { appearance: 'outline', nxFloatLabel: 'always' },
+        },
+        {
+            provide: DATEPICKER_DEFAULT_OPTIONS,
+            useValue: { toggleIconTabindex: -1 },
+        },
     ],
 })
 export class TableFormElementsExampleComponent {

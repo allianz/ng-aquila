@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import {
+    FormGroup,
+    FormBuilder,
+    FormControl,
+    Validators,
+} from '@angular/forms';
 
 /**
  * @title Progress Indicator linear progress example

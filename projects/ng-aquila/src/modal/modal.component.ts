@@ -31,7 +31,10 @@ export class NxModalContentDirective {}
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./modal.component.scss'],
     animations: [
-        trigger('fadeInOut', [transition(':enter', [useAnimation(fadeIn), query('@scaleUpDown', [animateChild()])]), transition(':leave', [query('@scaleUpDown', [animateChild()]), useAnimation(fadeOut)])]),
+        trigger('fadeInOut', [
+            transition(':enter', [useAnimation(fadeIn), query('@scaleUpDown', [animateChild()])]),
+            transition(':leave', [query('@scaleUpDown', [animateChild()]), useAnimation(fadeOut)]),
+        ]),
         trigger('scaleUpDown', [transition(':enter', useAnimation(scaleDown)), transition(':leave', useAnimation(scaleUp))]),
     ],
     host: {
@@ -99,7 +102,12 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     private closeSubscription: Subscription = Subscription.EMPTY;
     private removeEventListener!: Function;
 
-    constructor(private modalService: NxModalService, private eventManager: EventManager, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(
+        private modalService: NxModalService,
+        private eventManager: EventManager,
+        private _changeDetectorRef: ChangeDetectorRef,
+        private _focusMonitor: FocusMonitor,
+    ) {}
 
     ngOnInit() {
         this.closeSubscription = this.modalService.close$.subscribe(() => this.closeEvent.emit());

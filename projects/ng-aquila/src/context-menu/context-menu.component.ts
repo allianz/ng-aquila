@@ -1,7 +1,20 @@
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
 import { ESCAPE, LEFT_ARROW, RIGHT_ARROW, HOME, END, hasModifierKey } from '@angular/cdk/keycodes';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, EventEmitter, NgZone, OnDestroy, Output, TemplateRef, ViewChild, ContentChildren, QueryList } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    EventEmitter,
+    NgZone,
+    OnDestroy,
+    Output,
+    TemplateRef,
+    ViewChild,
+    ContentChildren,
+    QueryList,
+} from '@angular/core';
 import { merge, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { startWith, switchMap, take } from 'rxjs/operators';
 import { nxContextMenuAnimations } from './context-menu-animations';

@@ -1,8 +1,17 @@
 <nx-formfield nxLabel="Template bound">
-    <input nxInput type="text" [nxAutocomplete]="auto3" nxAutocompleteDebounce="0" [(ngModel)]="modelBoundData" />
+    <input
+        nxInput
+        type="text"
+        [nxAutocomplete]="auto3"
+        nxAutocompleteDebounce="0"
+        [(ngModel)]="modelBoundData"
+    />
 </nx-formfield>
 <nx-autocomplete #auto3="nxAutocomplete">
-    <nx-autocomplete-option *ngFor="let item of simpleFilteredOptions(modelBoundData)" [value]="item">
+    <nx-autocomplete-option
+        *ngFor="let item of simpleFilteredOptions(modelBoundData)"
+        [value]="item"
+    >
         {{item | lowercase}}
     </nx-autocomplete-option>
 </nx-autocomplete>
@@ -25,7 +34,13 @@ Reactive form: {{ testForm.controls.autocomplete.value }}
 <nx-natural-language-form>
     Here is a word
     <nx-word nxLabel="Provide this required field">
-        <input nxInput ngModel required [nxAutocomplete]="auto5" [nxAutocompleteItems]="dynamicBackendOptions" />
+        <input
+            nxInput
+            ngModel
+            required
+            [nxAutocomplete]="auto5"
+            [nxAutocompleteItems]="dynamicBackendOptions"
+        />
         <div nxError>This field is required.</div>
         <nx-autocomplete #auto5="nxAutocomplete"></nx-autocomplete>
     </nx-word>

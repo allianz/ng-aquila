@@ -43,6 +43,8 @@ export class AutocompleteOutlineExampleComponent {
     }
 
     filter(value: any) {
-        this.filteredOptions = this.options.filter(s => new RegExp(value, 'gi').test(s));
+        this.filteredOptions = this.options.filter(s =>
+            new RegExp(value, 'gi').test(s),
+        );
     }
 }

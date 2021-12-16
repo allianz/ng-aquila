@@ -2,7 +2,11 @@
     <table nxTable>
         <thead>
             <tr nxTableRow>
-                <th nxHeaderCell class="nx-table-cell--checkbox" aria-label="Row selection">
+                <th
+                    nxHeaderCell
+                    class="nx-table-cell--checkbox"
+                    aria-label="Row selection"
+                >
                     <nx-checkbox
                         (checkedChange)="toggleAll()"
                         aria-label="Toggle selection of all rows"
@@ -20,7 +24,12 @@
         </thead>
         <tbody>
             <ng-container *ngFor="let item of tableElements">
-                <tr nxTableRow [selected]="selection.isSelected(item)" selectable (select)="selection.toggle(item)">
+                <tr
+                    nxTableRow
+                    [selected]="selection.isSelected(item)"
+                    selectable
+                    (select)="selection.toggle(item)"
+                >
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-checkbox
                             (checkedChange)="selection.toggle(item)"
@@ -31,11 +40,15 @@
                     <td nxTableCell>{{item.product}}</td>
                     <td nxTableCell>{{item.contractNumber}}</td>
                     <td nxTableCell>
-                        <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                        <nx-link
+                            ><a routerLink="#">{{item.website}}</a></nx-link
+                        >
                     </td>
                     <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
                     <td nxTableCell>
-                        <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
+                        <nx-badge [type]="item.status"
+                            >{{item.statusText}}</nx-badge
+                        >
                     </td>
                 </tr>
             </ng-container>

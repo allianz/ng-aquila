@@ -299,7 +299,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
      */
     private _getOverlayConfig(): OverlayConfig {
         return new OverlayConfig({
-            positionStrategy: this._overlay.position().flexibleConnectedTo(this._element).withLockedPosition().withFlexibleDimensions(false).withTransformOriginOn('.nx-context-menu'),
+            positionStrategy: this._overlay
+                .position()
+                .flexibleConnectedTo(this._element)
+                .withLockedPosition()
+                .withFlexibleDimensions(false)
+                .withTransformOriginOn('.nx-context-menu'),
             scrollStrategy: this._scrollStrategy(),
             direction: this._dir,
         });
@@ -459,7 +464,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
                 if (this.contextMenu._isAnimating) {
                     // We need the `delay(0)` here in order to avoid
                     // 'changed after checked' errors in some cases.
-                    this.contextMenu._animationDone.pipe(take(1), delay(0, asapScheduler), takeUntil(this._parentMenu._hovered())).subscribe(() => this.openContextMenu('mouse'));
+                    this.contextMenu._animationDone
+                        .pipe(take(1), delay(0, asapScheduler), takeUntil(this._parentMenu._hovered()))
+                        .subscribe(() => this.openContextMenu('mouse'));
                 } else {
                     this.openContextMenu('mouse');
                 }

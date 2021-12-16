@@ -521,7 +521,8 @@ describe('NxCalendarComponent', () => {
 });
 
 @Component({
-    template: ` <nx-calendar [startAt]="startDate" [(selected)]="selected" (yearSelected)="selectedYear = $event" (monthSelected)="selectedMonth = $event"> </nx-calendar>`,
+    template: ` <nx-calendar [startAt]="startDate" [(selected)]="selected" (yearSelected)="selectedYear = $event" (monthSelected)="selectedMonth = $event">
+    </nx-calendar>`,
 })
 class StandardCalendar {
     selected!: Date;

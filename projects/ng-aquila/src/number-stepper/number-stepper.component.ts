@@ -2,7 +2,20 @@ import { Subscription } from 'rxjs';
 import { NxNumberStepperIntl } from './number-stepper-intl';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, OnDestroy } from '@angular/core';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Input,
+    Output,
+    Renderer2,
+    ViewChild,
+    OnDestroy,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 
 import { MappedStyles } from '@aposin/ng-aquila/core';

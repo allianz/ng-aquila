@@ -14,7 +14,10 @@ export class LicencePlateReactiveExample {
 
     constructor() {
         this.licencePlateForm = new FormGroup({
-            licencePlateInput: new FormControl('', nxLicensePlateValidator('de_standard')),
+            licencePlateInput: new FormControl(
+                '',
+                nxLicensePlateValidator('de_standard'),
+            ),
         });
     }
 }

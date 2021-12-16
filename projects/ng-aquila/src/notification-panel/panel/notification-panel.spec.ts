@@ -93,7 +93,8 @@ describe('NxLinkComponent', () => {
         <ng-template #panel1>
             <nx-notification-panel>
                 <nx-notification-header>
-                    <h3 nxCopytext="large" class="nx-margin-0">Unread </h3><button nxPlainButton="small" type="button">Mark all as read <nx-icon name="check"></nx-icon></button>
+                    <h3 nxCopytext="large" class="nx-margin-0">Unread </h3
+                    ><button nxPlainButton="small" type="button">Mark all as read <nx-icon name="check"></nx-icon></button>
                 </nx-notification-header>
                 <a nx-notification-panel-item href="/documentation/button">
                     <nx-notification-item-metadata>Tasks &middot; 5 minutes ago </nx-notification-item-metadata>

@@ -20,7 +20,8 @@
         </code>
     </div>
     <div class="docs-api-method-description">
-        {%- if method.description -%} {$ method.description | marked | safe $} {%- endif -%} {%- if method.deprecated and method.deprecated !== '' -%} {$ method.deprecated | marked | safe $} {%- endif -%} {%- if method.deletionTarget -%}
+        {%- if method.description -%} {$ method.description | marked | safe $} {%- endif -%} {%- if method.deprecated and method.deprecated !== '' -%} {$
+        method.deprecated | marked | safe $} {%- endif -%} {%- if method.deletionTarget -%}
         <strong>Deletion target:</strong> {$ method.deletionTarget $} {%- endif -%}
     </div>
     {%- if method.params.length -%}

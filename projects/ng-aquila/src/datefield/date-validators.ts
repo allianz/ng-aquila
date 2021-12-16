@@ -7,7 +7,13 @@ import { NxDateAdapter, NxDateFormats } from './adapter';
  */
 export class NxDateValidators {
     /** The form control validator for whether the input parses. */
-    static parse<D>(dateAdapter: NxDateAdapter<D>, dateFormats: NxDateFormats, input: HTMLInputElement, strict: boolean, customParseFormat: string | string[]): ValidatorFn {
+    static parse<D>(
+        dateAdapter: NxDateAdapter<D>,
+        dateFormats: NxDateFormats,
+        input: HTMLInputElement,
+        strict: boolean,
+        customParseFormat: string | string[],
+    ): ValidatorFn {
         return (): ValidationErrors | null => {
             if (!input.value) {
                 return null;

@@ -57,12 +57,27 @@ describe(NxTreeComponent.name, () => {
                 expect(underlyingDataSource.data.length).toBe(3);
 
                 const data = underlyingDataSource.data;
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                );
 
                 underlyingDataSource.addChild(data[2]);
                 fixture.detectChanges();
 
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`], [`_, topping_4 - cheese_4 + base_4`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                    [`_, topping_4 - cheese_4 + base_4`],
+                );
             });
         });
 
@@ -91,13 +106,28 @@ describe(NxTreeComponent.name, () => {
                 underlyingDataSource.addChild(child);
                 fixture.detectChanges();
 
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
 
                 expect(component.treeControl.expansionModel.selected.length).toBe(1, `Expect node expanded one level`);
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`], [_, `topping_4 - cheese_4 + base_4`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                    [_, `topping_4 - cheese_4 + base_4`],
+                );
 
                 (getNodes(treeElement)[3] as HTMLElement).click();
                 fixture.detectChanges();
@@ -117,7 +147,14 @@ describe(NxTreeComponent.name, () => {
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
 
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                );
             });
 
             it('should expand/collapse the node recursively', () => {
@@ -130,7 +167,14 @@ describe(NxTreeComponent.name, () => {
                 underlyingDataSource.addChild(child);
                 fixture.detectChanges();
 
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
@@ -152,7 +196,14 @@ describe(NxTreeComponent.name, () => {
 
                 expect(component.treeControl.expansionModel.selected.length).toBe(0, `Expect node collapsed`);
 
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                );
             });
         });
 
@@ -171,7 +222,15 @@ describe(NxTreeComponent.name, () => {
             });
 
             it('with the right data', () => {
-                expectFlatTreeToNxch(treeElement, 24, 32, [`topping_1 - cheese_1 + base_1`], [`topping_2 - cheese_2 + base_2`], [`topping_3 - cheese_3 + base_3`], [`>>> topping_4 - cheese_4 + base_4`]);
+                expectFlatTreeToNxch(
+                    treeElement,
+                    24,
+                    32,
+                    [`topping_1 - cheese_1 + base_1`],
+                    [`topping_2 - cheese_2 + base_2`],
+                    [`topping_3 - cheese_3 + base_3`],
+                    [`>>> topping_4 - cheese_4 + base_4`],
+                );
             });
         });
 
@@ -415,7 +474,14 @@ function expectNestedTreeToNxch(treeElement: Element, ...expectedTree: any[]) {
 @Component({
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
-            <nx-tree-node *nxTreeNodeDef="let node" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingIndent]="24" [nxTreeNodePaddingOffset]="32" nxTreeNodeToggle>
+            <nx-tree-node
+                *nxTreeNodeDef="let node"
+                class="customNodeClass"
+                nxTreeNodePadding
+                [nxTreeNodePaddingIndent]="24"
+                [nxTreeNodePaddingOffset]="32"
+                nxTreeNodeToggle
+            >
                 {{ node.pizzaTopping }} - {{ node.pizzaCheese }} + {{ node.pizzaBase }}
             </nx-tree-node>
         </nx-tree>
@@ -439,7 +505,14 @@ class SimpleNxTreeApp {
 @Component({
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
-            <nx-tree-node *nxTreeNodeDef="let node" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingOffset]="32" nxTreeNodeToggle [nxTreeNodeToggleRecursive]="toggleRecursively">
+            <nx-tree-node
+                *nxTreeNodeDef="let node"
+                class="customNodeClass"
+                nxTreeNodePadding
+                [nxTreeNodePaddingOffset]="32"
+                nxTreeNodeToggle
+                [nxTreeNodeToggleRecursive]="toggleRecursively"
+            >
                 {{ node.pizzaTopping }} - {{ node.pizzaCheese }} + {{ node.pizzaBase }}
             </nx-tree-node>
         </nx-tree>
@@ -465,7 +538,9 @@ class NxTreeAppWithToggle {
 @Component({
     template: `
         <nx-tree [dataSource]="dataSource" [treeControl]="treeControl">
-            <nx-tree-node *nxTreeNodeDef="let node" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingIndent]="24" nxTreeNodeToggle> {{ node.pizzaTopping }} - {{ node.pizzaCheese }} + {{ node.pizzaBase }} </nx-tree-node>
+            <nx-tree-node *nxTreeNodeDef="let node" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingIndent]="24" nxTreeNodeToggle>
+                {{ node.pizzaTopping }} - {{ node.pizzaCheese }} + {{ node.pizzaBase }}
+            </nx-tree-node>
             <nx-tree-node *nxTreeNodeDef="let node; when: isSpecial" class="customNodeClass" nxTreeNodePadding [nxTreeNodePaddingIndent]="24" nxTreeNodeToggle>
                 >>> {{ node.pizzaTopping }} - {{ node.pizzaCheese }} + {{ node.pizzaBase }}
             </nx-tree-node>

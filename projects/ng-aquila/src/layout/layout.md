@@ -111,5 +111,7 @@ The example below shows a sidebar, which is expanded from 704px (BREAKPOINT_MEDI
 Per default, the viewport service catches window resize events with an interval of 200ms. If this default throttle time does not serve your needs you can change it by passing it as a parameter to the methods `min`, `max` and `between`:
 
 ```ts
-this.viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM, 500).subscribe(isMaximumLarge => (this.showComponentX = isMaximumLarge));
+this.viewportService
+    .between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM, 500)
+    .subscribe(isMaximumLarge => (this.showComponentX = isMaximumLarge));
 ```

@@ -64,7 +64,18 @@ describe('NxTabGroupComponent', () => {
             waitForAsync(() => {
                 TestBed.configureTestingModule({
                     imports: [NxTabsModule, BrowserAnimationsModule],
-                    declarations: [BasicTabs, OnPushTabs, ConfigurableTabs, DynamicTabTest, CustomElementTest, TestComponent, BindingTabs, EventTabsTest, DisabledTabs, TemplateTabs],
+                    declarations: [
+                        BasicTabs,
+                        OnPushTabs,
+                        ConfigurableTabs,
+                        DynamicTabTest,
+                        CustomElementTest,
+                        TestComponent,
+                        BindingTabs,
+                        EventTabsTest,
+                        DisabledTabs,
+                        TemplateTabs,
+                    ],
                 }).compileComponents();
             }),
         );
@@ -530,12 +541,15 @@ describe('NxTabGroupComponent', () => {
             }),
         );
 
-        it('should have an "default" appearance if empty default options are provided', inject([TAB_GROUP_DEFAULT_OPTIONS], (defaultOptions: TabGroupDefaultOptions) => {
-            delete defaultOptions.appearance;
-            createTestComponent(BasicTabs);
-            expect(tabGroupInstance.appearance).toBe('default');
-            expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
-        }));
+        it('should have an "default" appearance if empty default options are provided', inject(
+            [TAB_GROUP_DEFAULT_OPTIONS],
+            (defaultOptions: TabGroupDefaultOptions) => {
+                delete defaultOptions.appearance;
+                createTestComponent(BasicTabs);
+                expect(tabGroupInstance.appearance).toBe('default');
+                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+            },
+        ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(BasicTabs);
@@ -631,7 +645,13 @@ class EventTabsTest extends TabsTest {
 
 @Component({
     template: `
-        <nx-tab-group [autoselect]="autoselect" [(selectedIndex)]="selectedIndex" (focusChange)="handleFocus($event)" (selectedIndexChange)="onIndexChange($event)" (selectedTabChange)="handleSelection($event)">
+        <nx-tab-group
+            [autoselect]="autoselect"
+            [(selectedIndex)]="selectedIndex"
+            (focusChange)="handleFocus($event)"
+            (selectedIndexChange)="onIndexChange($event)"
+            (selectedTabChange)="handleSelection($event)"
+        >
             <nx-tab *ngFor="let tab of tabs" [label]="tab.label">
                 {{ tab.content }}
             </nx-tab>

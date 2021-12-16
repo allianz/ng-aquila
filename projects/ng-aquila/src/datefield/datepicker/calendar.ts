@@ -1,4 +1,20 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Inject, Input, OnChanges, OnDestroy, Optional, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+    AfterContentInit,
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Inject,
+    Input,
+    OnChanges,
+    OnDestroy,
+    Optional,
+    Output,
+    SimpleChanges,
+    ViewChild,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Directionality } from '@angular/cdk/bidi';
 
@@ -250,12 +266,18 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
 
     /** Handles user clicks on the previous button. */
     _previousClicked(): void {
-        this._activeDate = this._currentView === 'month' ? this._dateAdapter.addCalendarMonths(this._activeDate, -1) : this._dateAdapter.addCalendarYears(this._activeDate, this._currentView === 'year' ? -1 : -yearsPerPage);
+        this._activeDate =
+            this._currentView === 'month'
+                ? this._dateAdapter.addCalendarMonths(this._activeDate, -1)
+                : this._dateAdapter.addCalendarYears(this._activeDate, this._currentView === 'year' ? -1 : -yearsPerPage);
     }
 
     /** Handles user clicks on the next button. */
     _nextClicked(): void {
-        this._activeDate = this._currentView === 'month' ? this._dateAdapter.addCalendarMonths(this._activeDate, 1) : this._dateAdapter.addCalendarYears(this._activeDate, this._currentView === 'year' ? 1 : yearsPerPage);
+        this._activeDate =
+            this._currentView === 'month'
+                ? this._dateAdapter.addCalendarMonths(this._activeDate, 1)
+                : this._dateAdapter.addCalendarYears(this._activeDate, this._currentView === 'year' ? 1 : yearsPerPage);
     }
 
     /** Whether the previous period button is enabled. */
@@ -274,7 +296,9 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     /** Whether the two dates represent the same view in the current view mode (month or year). */
     private _isSameView(date1: D, date2: D): boolean {
         if (this._currentView === 'month') {
-            return this._dateAdapter.getYear(date1) === this._dateAdapter.getYear(date2) && this._dateAdapter.getMonth(date1) === this._dateAdapter.getMonth(date2);
+            return (
+                this._dateAdapter.getYear(date1) === this._dateAdapter.getYear(date2) && this._dateAdapter.getMonth(date1) === this._dateAdapter.getMonth(date2)
+            );
         }
         if (this._currentView === 'year') {
             return this._dateAdapter.getYear(date1) === this._dateAdapter.getYear(date2);

@@ -20,7 +20,11 @@
                     title="{{node.label}}"
                     type="button"
                 >
-                    <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
+                    <nx-icon
+                        *ngIf="node.icon"
+                        nxActionIcon
+                        [name]="node.icon"
+                    ></nx-icon>
                     {{node.label}}
                 </button>
             </nx-tree-node>
@@ -36,12 +40,18 @@
                     title="{{node.label}}"
                     type="button"
                 >
-                    <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
+                    <nx-icon
+                        *ngIf="node.icon"
+                        nxActionIcon
+                        [name]="node.icon"
+                    ></nx-icon>
                     {{node.label}}
                 </button>
             </nx-tree-node>
         </nx-tree>
     </nx-sidebar>
-    <button nxButton (click)="sidebar.toggle()" type="button">toggle expansion</button>
+    <button nxButton (click)="sidebar.toggle()" type="button"
+        >toggle expansion</button
+    >
 </div>
 <pre *ngIf="logMessage">{{logMessage}}</pre>

@@ -1,5 +1,9 @@
 <form [formGroup]="testForm">
-    <nx-timefield #timefield label="Time" formControlName="timefieldReactive"></nx-timefield>
+    <nx-timefield
+        #timefield
+        label="Time"
+        formControlName="timefieldReactive"
+    ></nx-timefield>
     <div *ngIf="timefield.errorState">
         <nx-error class="nx-margin-y-xs"> Invalid time input. </nx-error>
     </div>

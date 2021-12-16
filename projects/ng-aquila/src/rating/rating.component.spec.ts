@@ -29,7 +29,14 @@ describe('NxRatingComponent', () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
-                declarations: [SimpleRatingComponent, SimpleBindingRatingComponent, NgModelBindingRatingComponent, ReactiveBindingRatingComponent, RatingOnPushComponent, TemplateDrivenOnPushComponent],
+                declarations: [
+                    SimpleRatingComponent,
+                    SimpleBindingRatingComponent,
+                    NgModelBindingRatingComponent,
+                    ReactiveBindingRatingComponent,
+                    RatingOnPushComponent,
+                    TemplateDrivenOnPushComponent,
+                ],
             }).compileComponents();
         }),
     );

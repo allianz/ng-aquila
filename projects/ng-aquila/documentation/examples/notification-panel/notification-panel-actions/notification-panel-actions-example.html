@@ -12,17 +12,26 @@
         <nx-notification-header>
             <h3 nxCopytext="large" class="nx-font-weight-semibold">Unread</h3>
             <button nxPlainButton="small" type="button"
-                >Mark all as read <nx-icon name="check" class="nx-margin-left-2xs"></nx-icon
+                >Mark all as read
+                <nx-icon name="check" class="nx-margin-left-2xs"></nx-icon
             ></button>
         </nx-notification-header>
 
         <a nxNotificationPanelItem clickable="false" [attr.href]="null">
             <nx-notification-item-metadata>
-                <nx-icon size="s" class="nx-margin-right-2xs" name="lock-o" aria-hidden="true"></nx-icon>File lock
-                release &middot; 16:53
+                <nx-icon
+                    size="s"
+                    class="nx-margin-right-2xs"
+                    name="lock-o"
+                    aria-hidden="true"
+                ></nx-icon
+                >File lock release &middot; 16:53
             </nx-notification-item-metadata>
             <nx-notification-item-content>
-                <span class="nx-font-weight-semibold">The file you tried to edit (XY12345) is now available.</span>
+                <span class="nx-font-weight-semibold"
+                    >The file you tried to edit (XY12345) is now
+                    available.</span
+                >
             </nx-notification-item-content>
             <nx-notification-item-actions>
                 <nx-link><a href="#file-link">Edit file</a></nx-link>
@@ -33,12 +42,24 @@
         </a>
         <div nxNotificationPanelItem clickable="false">
             <nx-notification-item-metadata>
-                <nx-icon size="s" class="nx-margin-right-2xs" name="phone-o" aria-hidden="true"></nx-icon>Callback
-                &middot; 11:35
+                <nx-icon
+                    size="s"
+                    class="nx-margin-right-2xs"
+                    name="phone-o"
+                    aria-hidden="true"
+                ></nx-icon
+                >Callback &middot; 11:35
             </nx-notification-item-metadata>
             <nx-notification-item-content class="inline-delete">
-                <span class="nx-font-weight-semibold">Please call back James Erwin at 15:00</span>
-                <button nxPlainButton="small" class="" type="button" title="Delete">
+                <span class="nx-font-weight-semibold"
+                    >Please call back James Erwin at 15:00</span
+                >
+                <button
+                    nxPlainButton="small"
+                    class=""
+                    type="button"
+                    title="Delete"
+                >
                     <nx-icon name="trash-o" aria-hidden="true"></nx-icon>
                 </button>
             </nx-notification-item-content>
@@ -47,9 +68,12 @@
             <h3 nxCopytext="large" class="nx-font-weight-semibold">Read</h3>
         </nx-notification-header>
         <div nxNotificationPanelItem read clickable="false">
-            <nx-notification-item-metadata>Offers &middot; Yesterday </nx-notification-item-metadata>
+            <nx-notification-item-metadata
+                >Offers &middot; Yesterday
+            </nx-notification-item-metadata>
             <nx-notification-item-content>
-                <span class="nx-font-weight-semibold">Mary London</span> - Note created
+                <span class="nx-font-weight-semibold">Mary London</span> - Note
+                created
             </nx-notification-item-content>
         </div>
     </nx-notification-panel>

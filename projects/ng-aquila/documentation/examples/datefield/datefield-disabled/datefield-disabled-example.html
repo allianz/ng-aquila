@@ -2,6 +2,9 @@
     <input disabled nxDatefield nxInput [nxDatepicker]="picker1" />
 
     <span nxFormfieldHint>MM/DD/YYYY</span>
-    <nx-datepicker-toggle [for]="picker1" nxFormfieldSuffix></nx-datepicker-toggle>
+    <nx-datepicker-toggle
+        [for]="picker1"
+        nxFormfieldSuffix
+    ></nx-datepicker-toggle>
     <nx-datepicker #picker1></nx-datepicker>
 </nx-formfield>

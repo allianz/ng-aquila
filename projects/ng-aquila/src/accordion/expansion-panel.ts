@@ -1,7 +1,20 @@
 import { CdkAccordionItem } from '@angular/cdk/accordion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, Input, OnChanges, OnDestroy, Optional, SimpleChanges, SkipSelf, ViewContainerRef } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    Input,
+    OnChanges,
+    OnDestroy,
+    Optional,
+    SimpleChanges,
+    SkipSelf,
+    ViewContainerRef,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, take } from 'rxjs/operators';
 
@@ -86,7 +99,12 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     /** Stream that emits for changes in `@Input` properties. */
     readonly _inputChanges = new Subject<SimpleChanges>();
 
-    constructor(@Optional() @SkipSelf() accordion: NxAccordionDirective, _changeDetectorRef: ChangeDetectorRef, _expansionDispatcher: UniqueSelectionDispatcher, private _viewContainerRef: ViewContainerRef) {
+    constructor(
+        @Optional() @SkipSelf() accordion: NxAccordionDirective,
+        _changeDetectorRef: ChangeDetectorRef,
+        _expansionDispatcher: UniqueSelectionDispatcher,
+        private _viewContainerRef: ViewContainerRef,
+    ) {
         super(accordion, _changeDetectorRef, _expansionDispatcher);
         this.accordion = accordion;
     }

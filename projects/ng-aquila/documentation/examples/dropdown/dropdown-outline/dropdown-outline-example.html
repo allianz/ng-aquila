@@ -4,14 +4,21 @@
             <h4 nxHeadline="subsection-xsmall">Standard dropdown</h4>
             <nx-formfield nxLabel="Car brand">
                 <nx-dropdown>
-                    <nx-dropdown-item *ngFor="let brand of options" [nxValue]="brand"></nx-dropdown-item>
+                    <nx-dropdown-item
+                        *ngFor="let brand of options"
+                        [nxValue]="brand"
+                    ></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
         <div nxCol="12, 12, 6">
             <h4 nxHeadline="subsection-xsmall">Multi select dropdown</h4>
             <nx-formfield nxLabel="Car brand">
-                <nx-multi-select filter [(ngModel)]="brands" [options]="options"></nx-multi-select>
+                <nx-multi-select
+                    filter
+                    [(ngModel)]="brands"
+                    [options]="options"
+                ></nx-multi-select>
             </nx-formfield>
         </div>
     </div>
@@ -19,8 +26,14 @@
         <div nxCol="12,12,6">
             <h4 nxHeadline="subsection-xsmall">Filter dropdown</h4>
             <nx-formfield nxLabel="Car brand">
-                <nx-dropdown [nxShowFilter]="true" nxFilterPlaceholder="Type to search car">
-                    <nx-dropdown-item *ngFor="let brand of options" [nxValue]="brand"></nx-dropdown-item>
+                <nx-dropdown
+                    [nxShowFilter]="true"
+                    nxFilterPlaceholder="Type to search car"
+                >
+                    <nx-dropdown-item
+                        *ngFor="let brand of options"
+                        [nxValue]="brand"
+                    ></nx-dropdown-item>
                 </nx-dropdown>
             </nx-formfield>
         </div>
@@ -28,8 +41,14 @@
             <h4 nxHeadline="subsection-xsmall">Group dropdown</h4>
             <nx-formfield nxLabel="Animals">
                 <nx-dropdown [(nxValue)]="model">
-                    <nx-dropdown-group *ngFor="let group of groups" [nxLabel]="group.label">
-                        <nx-dropdown-item *ngFor="let item of group.items" [nxValue]="item"></nx-dropdown-item>
+                    <nx-dropdown-group
+                        *ngFor="let group of groups"
+                        [nxLabel]="group.label"
+                    >
+                        <nx-dropdown-item
+                            *ngFor="let item of group.items"
+                            [nxValue]="item"
+                        ></nx-dropdown-item>
                     </nx-dropdown-group>
                 </nx-dropdown>
             </nx-formfield>

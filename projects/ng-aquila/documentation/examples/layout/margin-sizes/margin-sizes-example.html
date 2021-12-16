@@ -7,11 +7,18 @@
         </tr>
     </thead>
     <tbody>
-        <tr nxTableRow *ngFor="let margin of marginSizes | keyvalue: returnZero">
+        <tr
+            nxTableRow
+            *ngFor="let margin of marginSizes | keyvalue: returnZero"
+        >
             <td nxTableCell>{{margin.key}}</td>
             <td nxTableCell>{{margin.value}}</td>
             <td nxTableCell>
-                <div class="margin-box" [style.width]="margin.value + 'px'" [style.height]="margin.value + 'px'"></div>
+                <div
+                    class="margin-box"
+                    [style.width]="margin.value + 'px'"
+                    [style.height]="margin.value + 'px'"
+                ></div>
             </td>
         </tr>
     </tbody>

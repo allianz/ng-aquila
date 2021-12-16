@@ -6,9 +6,13 @@
     inputAriaLabel="Number of travellers"
 ></nx-number-stepper>
 
-<nx-message nxContext="info" *ngIf="!stepperValidModel.errors" class="nx-margin-top-xs">
-    This is a hint. This message will disappear once you get an error from parsing or when the input is missing
-    altogether.
+<nx-message
+    nxContext="info"
+    *ngIf="!stepperValidModel.errors"
+    class="nx-margin-top-xs"
+>
+    This is a hint. This message will disappear once you get an error from
+    parsing or when the input is missing altogether.
 </nx-message>
 
 <nx-error

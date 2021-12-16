@@ -295,7 +295,10 @@ describe('NxViewportService', () => {
             let isMobile;
             let isMobilePlus;
             withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => (isMobile = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => (isMobilePlus = value));
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE),
+                (value: any) => (isMobilePlus = value),
+            );
 
             changeViewport('mobile'); // 320px
             tick(200);
@@ -309,8 +312,14 @@ describe('NxViewportService', () => {
             let isLargerThanTablet;
             let isSmallerThanTablet;
             withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE), (value: any) => (isTablet = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => (isLargerThanTablet = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => (isSmallerThanTablet = value));
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_3XLARGE),
+                (value: any) => (isLargerThanTablet = value),
+            );
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM),
+                (value: any) => (isSmallerThanTablet = value),
+            );
 
             changeViewport('tablet'); // 704px
             tick(200);
@@ -326,8 +335,14 @@ describe('NxViewportService', () => {
             let isLargerThanDesktop;
 
             withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_LARGE, NxBreakpoints.BREAKPOINT_2XLARGE), (value: any) => (isDesktop = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_2XLARGE, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => (isLargerThanDesktop = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_LARGE), (value: any) => (isSmallerThanDesktop = value));
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_2XLARGE, NxBreakpoints.BREAKPOINT_3XLARGE),
+                (value: any) => (isLargerThanDesktop = value),
+            );
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_LARGE),
+                (value: any) => (isSmallerThanDesktop = value),
+            );
 
             changeViewport('desktop'); // 1184px
             tick(200);
@@ -343,7 +358,10 @@ describe('NxViewportService', () => {
             let isMobile;
             let isMobilePlus;
             withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM), (value: any) => (isMobile = value));
-            withSubscription(viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE), (value: any) => (isMobilePlus = value));
+            withSubscription(
+                viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_3XLARGE),
+                (value: any) => (isMobilePlus = value),
+            );
 
             tick(200);
 

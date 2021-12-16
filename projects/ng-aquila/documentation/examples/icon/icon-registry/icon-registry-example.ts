@@ -11,7 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
     styleUrls: ['./icon-registry-example.css'],
 })
 export class IconRegistryExampleComponent {
-    constructor(private nxIconRegistry: NxIconRegistry, private domSanitizer: DomSanitizer) {
+    constructor(
+        private nxIconRegistry: NxIconRegistry,
+        private domSanitizer: DomSanitizer,
+    ) {
         this.nxIconRegistry.addSvgIconLiteral(
             'search',
             domSanitizer.bypassSecurityTrustHtml(
@@ -21,7 +24,9 @@ export class IconRegistryExampleComponent {
 
         this.nxIconRegistry.addSvgIcon(
             'setting',
-            domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/settings.svg'),
+            domSanitizer.bypassSecurityTrustResourceUrl(
+                'assets/icons/settings.svg',
+            ),
         );
 
         this.nxIconRegistry.registerFont('fa', 'fa', 'fa-');

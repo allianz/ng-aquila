@@ -10,8 +10,22 @@ import { NxExpansionPanelDescriptionDirective, NxExpansionPanelHeaderComponent, 
 
 @NgModule({
     imports: [CommonModule, PortalModule, NxIconModule],
-    exports: [NxAccordionDirective, NxExpansionPanelComponent, NxExpansionPanelHeaderComponent, NxExpansionPanelDescriptionDirective, NxExpansionPanelTitleDirective, NxExpansionPanelBodyDirective],
-    declarations: [NxAccordionDirective, NxExpansionPanelComponent, NxExpansionPanelHeaderComponent, NxExpansionPanelDescriptionDirective, NxExpansionPanelTitleDirective, NxExpansionPanelBodyDirective],
+    exports: [
+        NxAccordionDirective,
+        NxExpansionPanelComponent,
+        NxExpansionPanelHeaderComponent,
+        NxExpansionPanelDescriptionDirective,
+        NxExpansionPanelTitleDirective,
+        NxExpansionPanelBodyDirective,
+    ],
+    declarations: [
+        NxAccordionDirective,
+        NxExpansionPanelComponent,
+        NxExpansionPanelHeaderComponent,
+        NxExpansionPanelDescriptionDirective,
+        NxExpansionPanelTitleDirective,
+        NxExpansionPanelBodyDirective,
+    ],
     providers: [],
 })
 export class NxAccordionModule {}

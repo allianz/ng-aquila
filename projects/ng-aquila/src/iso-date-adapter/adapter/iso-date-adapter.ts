@@ -83,7 +83,9 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
     normalizeFormat(format: string | string[]): string[] {
         const availableLocalFormats: { [key: string]: any } = dayjs.Ls[this.locale]?.formats;
         if (!availableLocalFormats) {
-            throw new Error(`NxIsoDateAdapter: The used locale "${this.locale}" is not available in this day.js instance. Please make sure the locale is imported.`);
+            throw new Error(
+                `NxIsoDateAdapter: The used locale "${this.locale}" is not available in this day.js instance. Please make sure the locale is imported.`,
+            );
         }
         let normalizedFormat = format;
 

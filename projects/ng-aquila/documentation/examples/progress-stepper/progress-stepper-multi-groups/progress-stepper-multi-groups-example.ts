@@ -16,7 +16,11 @@ export class ProgressStepperMultiGroupsExampleComponent {
     groups = [
         {
             label: 'Group 1',
-            steps: [{ label: 'Step 1' }, { label: 'Step 2' }, { label: 'Step 3' }],
+            steps: [
+                { label: 'Step 1' },
+                { label: 'Step 2' },
+                { label: 'Step 3' },
+            ],
         },
         {
             label: 'Group 2',

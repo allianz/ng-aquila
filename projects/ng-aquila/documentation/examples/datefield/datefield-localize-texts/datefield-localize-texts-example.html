@@ -1,5 +1,13 @@
 <nx-formfield nxLabel="Date of damage">
-    <input nxDatefield nxInput [nxDatepicker]="myDatepicker" [(ngModel)]="currentDate" />
-    <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
+    <input
+        nxDatefield
+        nxInput
+        [nxDatepicker]="myDatepicker"
+        [(ngModel)]="currentDate"
+    />
+    <nx-datepicker-toggle
+        [for]="myDatepicker"
+        nxFormfieldSuffix
+    ></nx-datepicker-toggle>
     <nx-datepicker #myDatepicker></nx-datepicker>
 </nx-formfield>

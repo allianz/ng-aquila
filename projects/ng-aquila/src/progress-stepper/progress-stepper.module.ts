@@ -25,6 +25,15 @@ import { NxLabelModule } from '@aposin/ng-aquila/base';
         NxMultiStepItemComponent,
         NxMultiStepperGroupComponent,
     ],
-    exports: [NxProgressStepperDirective, NxSingleStepperComponent, NxProgressStepperComponent, NxMultiStepperComponent, NxStepComponent, NxStepperNextDirective, NxStepperPreviousDirective, NxMultiStepperGroupComponent],
+    exports: [
+        NxProgressStepperDirective,
+        NxSingleStepperComponent,
+        NxProgressStepperComponent,
+        NxMultiStepperComponent,
+        NxStepComponent,
+        NxStepperNextDirective,
+        NxStepperPreviousDirective,
+        NxMultiStepperGroupComponent,
+    ],
 })
 export class NxProgressStepperModule {}

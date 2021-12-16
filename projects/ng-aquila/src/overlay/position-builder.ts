@@ -1,5 +1,13 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { ConnectionPositionPair, FlexibleConnectedPositionStrategyOrigin, HorizontalConnectionPos, OriginConnectionPosition, Overlay, OverlayConnectionPosition, VerticalConnectionPos } from '@angular/cdk/overlay';
+import {
+    ConnectionPositionPair,
+    FlexibleConnectedPositionStrategyOrigin,
+    HorizontalConnectionPos,
+    OriginConnectionPosition,
+    Overlay,
+    OverlayConnectionPosition,
+    VerticalConnectionPos,
+} from '@angular/cdk/overlay';
 import { Injectable, Optional } from '@angular/core';
 
 import { BASE_OFFSET, CLOCKWISE_DIRECTIONS, HORIZONTAL_DIRECTIONS, NxOverlayConfig, NxOverlayDirection, VERTICAL_DIRECTIONS } from './overlay-config';
@@ -229,7 +237,11 @@ export class NxOverlayPositionBuilder {
             if (direction === 'top' || direction === 'bottom') {
                 if (addition) {
                     // if we have something like bottom-start we want to do bottom-end first
-                    resolved.push(`${direction}-${addition}` as NxOverlayDirection, `${direction}-${this._getInversePosition(addition)}` as NxOverlayDirection, direction);
+                    resolved.push(
+                        `${direction}-${addition}` as NxOverlayDirection,
+                        `${direction}-${this._getInversePosition(addition)}` as NxOverlayDirection,
+                        direction,
+                    );
                 } else {
                     resolved.push(direction, `${direction}-start` as NxOverlayDirection, `${direction}-end` as NxOverlayDirection);
                 }

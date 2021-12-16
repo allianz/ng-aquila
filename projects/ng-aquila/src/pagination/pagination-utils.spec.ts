@@ -177,54 +177,90 @@ describe('NxPaginationUtils', () => {
     });
 
     describe('getPages() Method: 21 elements example', () => {
-        it('should show first 3 elements, ellipsis and last two elements when current page is "1" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(1, 21);
-            assertCheck(pagesArray, 6, [1, 2, 3, '...', 20, 21]);
-        }));
-        it('should show first 3 elements, ellipsis and last two elements when current page is "2" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(2, 21);
-            assertCheck(pagesArray, 6, [1, 2, 3, '...', 20, 21]);
-        }));
-        it('should show first 4 elements, ellipsis and last two elements when current page is "3" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(3, 21);
-            assertCheck(pagesArray, 7, [1, 2, 3, 4, '...', 20, 21]);
-        }));
-        it('should show first 5 elements, ellipsis and last two elements when current page is "4" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(4, 21);
-            assertCheck(pagesArray, 8, [1, 2, 3, 4, 5, '...', 20, 21]);
-        }));
-        it('should show first 6 elements, ellipsis and last two elements when current page is "5" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(5, 21);
-            assertCheck(pagesArray, 9, [1, 2, 3, 4, 5, 6, '...', 20, 21]);
-        }));
-        it('should "1", "2", ellipsis, "5", "6", "7", ellipsis again and last two elements when current page is "6" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(6, 21);
-            assertCheck(pagesArray, 9, [1, 2, '...', 5, 6, 7, '...', 20, 21]);
-        }));
-        it('should show "1","2", ellipsis, "15", "16", "17", ellipsis again and last two elements when current page is "16" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(16, 21);
-            assertCheck(pagesArray, 9, [1, 2, '...', 15, 16, 17, '...', 20, 21]);
-        }));
-        it('should show "1","2", ellipsis and last six elements when current page is "17" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(17, 21);
-            assertCheck(pagesArray, 9, [1, 2, '...', 16, 17, 18, 19, 20, 21]);
-        }));
-        it('should show "1","2", ellipsis and last five elements when current page is "18" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(18, 21);
-            assertCheck(pagesArray, 8, [1, 2, '...', 17, 18, 19, 20, 21]);
-        }));
-        it('should show "1","2", ellipsis and last four elements when current page is "19" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(19, 21);
-            assertCheck(pagesArray, 7, [1, 2, '...', 18, 19, 20, 21]);
-        }));
-        it('should show "1","2", ellipsis and last three elements when current page is "20" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(20, 21);
-            assertCheck(pagesArray, 6, [1, 2, '...', 19, 20, 21]);
-        }));
-        it('should show "1","2", ellipsis and last three elements when current page is "16" and total "21"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(21, 21);
-            assertCheck(pagesArray, 6, [1, 2, '...', 19, 20, 21]);
-        }));
+        it('should show first 3 elements, ellipsis and last two elements when current page is "1" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(1, 21);
+                assertCheck(pagesArray, 6, [1, 2, 3, '...', 20, 21]);
+            },
+        ));
+        it('should show first 3 elements, ellipsis and last two elements when current page is "2" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(2, 21);
+                assertCheck(pagesArray, 6, [1, 2, 3, '...', 20, 21]);
+            },
+        ));
+        it('should show first 4 elements, ellipsis and last two elements when current page is "3" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(3, 21);
+                assertCheck(pagesArray, 7, [1, 2, 3, 4, '...', 20, 21]);
+            },
+        ));
+        it('should show first 5 elements, ellipsis and last two elements when current page is "4" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(4, 21);
+                assertCheck(pagesArray, 8, [1, 2, 3, 4, 5, '...', 20, 21]);
+            },
+        ));
+        it('should show first 6 elements, ellipsis and last two elements when current page is "5" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(5, 21);
+                assertCheck(pagesArray, 9, [1, 2, 3, 4, 5, 6, '...', 20, 21]);
+            },
+        ));
+        it('should "1", "2", ellipsis, "5", "6", "7", ellipsis again and last two elements when current page is "6" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(6, 21);
+                assertCheck(pagesArray, 9, [1, 2, '...', 5, 6, 7, '...', 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis, "15", "16", "17", ellipsis again and last two elements when current page is "16" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(16, 21);
+                assertCheck(pagesArray, 9, [1, 2, '...', 15, 16, 17, '...', 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis and last six elements when current page is "17" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(17, 21);
+                assertCheck(pagesArray, 9, [1, 2, '...', 16, 17, 18, 19, 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis and last five elements when current page is "18" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(18, 21);
+                assertCheck(pagesArray, 8, [1, 2, '...', 17, 18, 19, 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis and last four elements when current page is "19" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(19, 21);
+                assertCheck(pagesArray, 7, [1, 2, '...', 18, 19, 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis and last three elements when current page is "20" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(20, 21);
+                assertCheck(pagesArray, 6, [1, 2, '...', 19, 20, 21]);
+            },
+        ));
+        it('should show "1","2", ellipsis and last three elements when current page is "16" and total "21"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(21, 21);
+                assertCheck(pagesArray, 6, [1, 2, '...', 19, 20, 21]);
+            },
+        ));
     });
 
     describe('getPages() Method: smaller paginations', () => {
@@ -248,9 +284,12 @@ describe('NxPaginationUtils', () => {
             const pagesArray = utils.getPages(1, 5);
             assertCheck(pagesArray, 5, [1, 2, 3, 4, 5]);
         }));
-        it('should show first three elements, ellipsis and last two elements when current page is "1" and total is "6"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
-            const pagesArray = utils.getPages(1, 6);
-            assertCheck(pagesArray, 6, [1, 2, 3, '...', 5, 6]);
-        }));
+        it('should show first three elements, ellipsis and last two elements when current page is "1" and total is "6"', inject(
+            [NxPaginationUtils],
+            (utils: NxPaginationUtils) => {
+                const pagesArray = utils.getPages(1, 6);
+                assertCheck(pagesArray, 6, [1, 2, 3, '...', 5, 6]);
+            },
+        ));
     });
 });

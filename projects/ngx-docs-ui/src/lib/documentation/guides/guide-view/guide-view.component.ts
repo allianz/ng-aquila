@@ -16,7 +16,12 @@ export class NxvGuideViewComponent {
     public guide!: GuideDescriptor;
     public guides: string[] = [];
 
-    constructor(_route: ActivatedRoute, private manifestService: ManifestService, private router: Router, @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any) {
+    constructor(
+        _route: ActivatedRoute,
+        private manifestService: ManifestService,
+        private router: Router,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any,
+    ) {
         // Listen for changes in the route or our manifest
         combineLatest(manifestService.manifest, _route.params.pipe(map(params => params['id'])))
             .pipe(

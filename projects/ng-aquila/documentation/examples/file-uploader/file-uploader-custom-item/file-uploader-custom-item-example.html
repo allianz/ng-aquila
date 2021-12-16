@@ -1,7 +1,20 @@
-<nx-file-uploader #documentUpload #ngModel="ngModel" multiple [(ngModel)]="myFiles" [itemTemplate]="myItemTemplate">
-    <nx-label size="small" class="nx-margin-bottom-3xs">Please upload a file</nx-label>
+<nx-file-uploader
+    #documentUpload
+    #ngModel="ngModel"
+    multiple
+    [(ngModel)]="myFiles"
+    [itemTemplate]="myItemTemplate"
+>
+    <nx-label size="small" class="nx-margin-bottom-3xs"
+        >Please upload a file</nx-label
+    >
 
-    <button nxButton="primary" type="button" class="nx-margin-bottom-s" nxFileUploadButton>
+    <button
+        nxButton="primary"
+        type="button"
+        class="nx-margin-bottom-s"
+        nxFileUploadButton
+    >
         <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>
         Add File
     </button>
@@ -19,7 +32,11 @@
     Upload files
 </button>
 
-<ng-template #myItemTemplate let-templateContext="templateContext" let-file="file">
+<ng-template
+    #myItemTemplate
+    let-templateContext="templateContext"
+    let-file="file"
+>
     <nx-file-upload-name [name]="file?.name"></nx-file-upload-name>
 
     <nx-file-upload-size
@@ -48,10 +65,18 @@
             [(ngModel)]="file.formData"
             name="pictureRights"
         >
-            <nx-label class="nx-margin-bottom-m">Do you own all rights to this picture?</nx-label>
+            <nx-label class="nx-margin-bottom-m"
+                >Do you own all rights to this picture?</nx-label
+            >
             <div class="horizontal-buttons">
-                <nx-radio [nxValue]="true" class="nx-margin-bottom-m">Yes</nx-radio>
-                <nx-radio [nxValue]="false" class="nx-margin-left-s nx-margin-bottom-m">No</nx-radio>
+                <nx-radio [nxValue]="true" class="nx-margin-bottom-m"
+                    >Yes</nx-radio
+                >
+                <nx-radio
+                    [nxValue]="false"
+                    class="nx-margin-left-s nx-margin-bottom-m"
+                    >No</nx-radio
+                >
             </div>
         </nx-radio-group>
     </form>

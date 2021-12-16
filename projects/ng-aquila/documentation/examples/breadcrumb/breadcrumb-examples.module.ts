@@ -7,7 +7,11 @@ import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
 import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadcrumb-negative-example';
 import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';
 
-const EXAMPLES = [BreadcrumbExampleComponent, BreadcrumbNegativeExampleComponent, BreadcrumbLinkExampleComponent];
+const EXAMPLES = [
+    BreadcrumbExampleComponent,
+    BreadcrumbNegativeExampleComponent,
+    BreadcrumbLinkExampleComponent,
+];
 
 @NgModule({
     imports: [NxBreadcrumbModule, CommonModule, RouterModule],

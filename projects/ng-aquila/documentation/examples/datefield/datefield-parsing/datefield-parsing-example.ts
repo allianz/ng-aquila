@@ -19,7 +19,10 @@ export class DatefieldParsingExampleComponent {
     public currentLocale: string;
     public parseFormat = 'MM/DD/YYYY';
 
-    constructor(public nxDateAdapter: NxDateAdapter<Moment>, @Inject(NX_DATE_LOCALE) public nxDateLocale: string) {
+    constructor(
+        public nxDateAdapter: NxDateAdapter<Moment>,
+        @Inject(NX_DATE_LOCALE) public nxDateLocale: string,
+    ) {
         this.currentLocale = nxDateLocale;
 
         this.nxDateAdapter.localeChanges.subscribe(locale => {

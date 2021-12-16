@@ -59,19 +59,31 @@ describe('NxColDirective', () => {
 
     it('should test with input cols 8,3,5,7', () => {
         expect(
-            getClassesCreated(BasicTestNxColFourInputs, '.nx-grid__column-8.nx-grid__column-small-3.' + 'nx-grid__column-medium-5.nx-grid__column-large-7.nx-grid__column-xlarge-7.nx-grid__column-2xlarge-7.nx-grid__column-3xlarge-7'),
+            getClassesCreated(
+                BasicTestNxColFourInputs,
+                '.nx-grid__column-8.nx-grid__column-small-3.' +
+                    'nx-grid__column-medium-5.nx-grid__column-large-7.nx-grid__column-xlarge-7.nx-grid__column-2xlarge-7.nx-grid__column-3xlarge-7',
+            ),
         ).not.toBeNull();
     });
 
     it('should test with input cols 7,2', () => {
         expect(
-            getClassesCreated(BasicTestNxColTwoInputs, '.nx-grid__column-7.nx-grid__column-small-2' + '.nx-grid__column-medium-2.nx-grid__column-large-2.nx-grid__column-xlarge-2.nx-grid__column-2xlarge-2.nx-grid__column-3xlarge-2'),
+            getClassesCreated(
+                BasicTestNxColTwoInputs,
+                '.nx-grid__column-7.nx-grid__column-small-2' +
+                    '.nx-grid__column-medium-2.nx-grid__column-large-2.nx-grid__column-xlarge-2.nx-grid__column-2xlarge-2.nx-grid__column-3xlarge-2',
+            ),
         ).not.toBeNull();
     });
 
     it('should test with input cols 7,3,4', () => {
         expect(
-            getClassesCreated(BasicTestNxColTrheeInputs, '.nx-grid__column-7.nx-grid__column-small-3.' + 'nx-grid__column-medium-4.nx-grid__column-large-4.nx-grid__column-xlarge-4.nx-grid__column-2xlarge-4.nx-grid__column-3xlarge-4'),
+            getClassesCreated(
+                BasicTestNxColTrheeInputs,
+                '.nx-grid__column-7.nx-grid__column-small-3.' +
+                    'nx-grid__column-medium-4.nx-grid__column-large-4.nx-grid__column-xlarge-4.nx-grid__column-2xlarge-4.nx-grid__column-3xlarge-4',
+            ),
         ).not.toBeNull();
     });
 
@@ -90,7 +102,9 @@ describe('NxColDirective', () => {
     });
 
     it('should test order directive', () => {
-        expect(getClassesCreated(BasicTestNxOrderInputs, '.nx-grid__column-10.nx-flex-first.' + 'nx-flex-small-first.nx-flex-medium-last.nx-flex-large-first')).not.toBeNull();
+        expect(
+            getClassesCreated(BasicTestNxOrderInputs, '.nx-grid__column-10.nx-flex-first.' + 'nx-flex-small-first.nx-flex-medium-last.nx-flex-large-first'),
+        ).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignItems (nxAlignSelf="start")', () => {
@@ -98,7 +112,13 @@ describe('NxColDirective', () => {
     });
 
     it('should test with input row and nxRowAlignItems (nxColOrder="first")', () => {
-        expect(getClassesCreated(BasicTestColOrder, '.nx-flex-first.nx-flex-small-first.' + 'nx-flex-medium-first.nx-flex-large-first.nx-flex-xlarge-first.nx-flex-2xlarge-first.nx-flex-3xlarge-first')).not.toBeNull();
+        expect(
+            getClassesCreated(
+                BasicTestColOrder,
+                '.nx-flex-first.nx-flex-small-first.' +
+                    'nx-flex-medium-first.nx-flex-large-first.nx-flex-xlarge-first.nx-flex-2xlarge-first.nx-flex-3xlarge-first',
+            ),
+        ).not.toBeNull();
     });
 
     describe('nxColOffset', () => {

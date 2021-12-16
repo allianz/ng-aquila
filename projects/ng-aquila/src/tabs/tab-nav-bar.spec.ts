@@ -132,12 +132,15 @@ describe('NxTabBarNavComponent', () => {
             }),
         );
 
-        it('should have an "default" appearance if empty default options are provided', inject([TAB_NAV_BAR_DEFAULT_OPTIONS], (defaultOptions: TabNavBarDefaultOptions) => {
-            delete defaultOptions.appearance;
-            createTestComponent(SimpleTabNavBar);
-            expect(tabNavBar.appearance).toBe('default');
-            expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
-        }));
+        it('should have an "default" appearance if empty default options are provided', inject(
+            [TAB_NAV_BAR_DEFAULT_OPTIONS],
+            (defaultOptions: TabNavBarDefaultOptions) => {
+                delete defaultOptions.appearance;
+                createTestComponent(SimpleTabNavBar);
+                expect(tabNavBar.appearance).toBe('default');
+                expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+            },
+        ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(SimpleTabNavBar);

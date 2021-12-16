@@ -3,7 +3,11 @@
         <nx-expansion-panel-header>
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
-                    <nx-icon *ngIf="infoHasError" class="nx-error__icon" [name]="'exclamation-triangle'"></nx-icon>
+                    <nx-icon
+                        *ngIf="infoHasError"
+                        class="nx-error__icon"
+                        [name]="'exclamation-triangle'"
+                    ></nx-icon>
                     <span>General Information</span>
                 </div>
             </nx-expansion-panel-title>
@@ -15,7 +19,8 @@
                         <nx-formfield nxLabel="Surname">
                             <input required nxInput formControlName="surname" />
                             <nx-error nxFormfieldError>
-                                <strong> Please note: </strong> you have to fill out this field to continue.
+                                <strong> Please note: </strong> you have to fill
+                                out this field to continue.
                             </nx-error>
                         </nx-formfield>
                     </div>
@@ -27,7 +32,11 @@
         <nx-expansion-panel-header>
             <nx-expansion-panel-title>
                 <div class="expansion-title-with-icon">
-                    <nx-icon *ngIf="paymentHasError" class="nx-error__icon" [name]="'exclamation-triangle'"></nx-icon>
+                    <nx-icon
+                        *ngIf="paymentHasError"
+                        class="nx-error__icon"
+                        [name]="'exclamation-triangle'"
+                    ></nx-icon>
                     <span>Payment details</span>
                 </div>
             </nx-expansion-panel-title>
@@ -39,7 +48,8 @@
                         <nx-formfield nxLabel="Label">
                             <input required nxInput formControlName="input" />
                             <nx-error nxFormfieldError>
-                                <strong> Please note: </strong> you have to fill out this field to continue.
+                                <strong> Please note: </strong> you have to fill
+                                out this field to continue.
                             </nx-error>
                         </nx-formfield>
                     </div>
@@ -48,6 +58,10 @@
         </form>
     </nx-expansion-panel>
 </nx-accordion>
-<nx-message *ngIf="infoHasError || paymentHasError" nxContext="error" class="nx-margin-top-xs">
+<nx-message
+    *ngIf="infoHasError || paymentHasError"
+    nxContext="error"
+    class="nx-margin-top-xs"
+>
     <strong> Error: </strong> Please check the red marked areas.
 </nx-message>

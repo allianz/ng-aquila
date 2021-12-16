@@ -1,9 +1,13 @@
 <form [formGroup]="testForm" name="reactiveTest">
-    <nx-taglist #taglistReactive formControlName="tagsTestReactive">Sorry, you don't have any fruit.</nx-taglist>
+    <nx-taglist #taglistReactive formControlName="tagsTestReactive"
+        >Sorry, you don't have any fruit.</nx-taglist
+    >
 
     <nx-formfield nxLabel="Please provide a tag">
         <input nxInput #addTagInputReactive />
-        <span nxFormfieldHint> Note that the tag list will just ignore empty tag values. </span>
+        <span nxFormfieldHint>
+            Note that the tag list will just ignore empty tag values.
+        </span>
     </nx-formfield>
 </form>
 <button
@@ -13,7 +17,12 @@
     type="button"
     >Add tag</button
 >
-<button nxButton="secondary small" (click)="taglistReactive.clearTags()" type="button">Clear tags</button>
+<button
+    nxButton="secondary small"
+    (click)="taglistReactive.clearTags()"
+    type="button"
+    >Clear tags</button
+>
 <br />
 <p>Form value: {{ testForm.value | json }}</p>
 <p>Form status: {{ testForm.status | json }}</p>

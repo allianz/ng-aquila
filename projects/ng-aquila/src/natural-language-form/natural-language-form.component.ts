@@ -1,5 +1,16 @@
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, HostListener, Input, OnDestroy, QueryList, NgZone } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    HostListener,
+    Input,
+    OnDestroy,
+    QueryList,
+    NgZone,
+} from '@angular/core';
 import { merge, Observable, Subject, Subscription } from 'rxjs';
 import { delay, throttleTime, takeUntil } from 'rxjs/operators';
 

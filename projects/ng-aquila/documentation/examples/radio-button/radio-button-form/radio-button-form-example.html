@@ -1,7 +1,9 @@
 <form>
     <nx-radio-group [(ngModel)]="templateModel" name="templateTest">
         <nx-label class="nx-margin-bottom-m">What do you prefer?</nx-label>
-        <nx-radio nxValue="apples" class="nx-margin-bottom-m">I like Apples</nx-radio>
+        <nx-radio nxValue="apples" class="nx-margin-bottom-m"
+            >I like Apples</nx-radio
+        >
         <nx-radio nxValue="oranges">I like Oranges</nx-radio>
     </nx-radio-group>
     <p>Current Value: {{templateModel}}</p>

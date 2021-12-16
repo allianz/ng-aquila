@@ -48,7 +48,10 @@ export class NxPaginationUtils {
         const showEllipsis = currentPage < totalPages - 4;
 
         while (currentItemToShow <= totalPages) {
-            const endItem: PaginationItem = end.length === 0 && showEllipsis ? this.createPaginationItem(this._elipsisText, currentItemToShow, true) : this.createPaginationItem(currentItemToShow, currentItemToShow, true);
+            const endItem: PaginationItem =
+                end.length === 0 && showEllipsis
+                    ? this.createPaginationItem(this._elipsisText, currentItemToShow, true)
+                    : this.createPaginationItem(currentItemToShow, currentItemToShow, true);
             end.push(endItem);
             currentItemToShow++;
         }
@@ -61,7 +64,10 @@ export class NxPaginationUtils {
         const maxSizeArray = 3;
 
         while (counterPages < maxSizeArray && counterPages < totalPages) {
-            const startItem = counterPages === 2 && currentPage > 5 ? this.createPaginationItem(this._elipsisText, counterPages, true) : this.createPaginationItem(counterPages + 1, counterPages + 1, true);
+            const startItem =
+                counterPages === 2 && currentPage > 5
+                    ? this.createPaginationItem(this._elipsisText, counterPages, true)
+                    : this.createPaginationItem(counterPages + 1, counterPages + 1, true);
 
             start.push(startItem);
             counterPages++;

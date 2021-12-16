@@ -9,10 +9,20 @@ import { ActionExampleComponent } from './action/action-example';
 import { ActionWithRouterExampleComponent } from './action-with-router/action-with-router-example';
 import { ActionIndicatorExampleComponent } from './action-indicator/action-indicator-example';
 
-const EXAMPLES = [ActionExampleComponent, ActionWithRouterExampleComponent, ActionIndicatorExampleComponent];
+const EXAMPLES = [
+    ActionExampleComponent,
+    ActionWithRouterExampleComponent,
+    ActionIndicatorExampleComponent,
+];
 
 @NgModule({
-    imports: [NxActionModule, RouterModule, NxIconModule, NxIndicatorModule, CommonModule],
+    imports: [
+        NxActionModule,
+        RouterModule,
+        NxIconModule,
+        NxIndicatorModule,
+        CommonModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

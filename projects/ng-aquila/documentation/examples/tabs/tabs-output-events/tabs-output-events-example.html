@@ -1,6 +1,10 @@
 <pre *ngIf="logMessage">{{logMessage}}</pre>
 
-<nx-tab-group (selectedTabChange)="tabChanged($event)" (focusChange)="tabFocused($event)" autoselect="false">
+<nx-tab-group
+    (selectedTabChange)="tabChanged($event)"
+    (focusChange)="tabFocused($event)"
+    autoselect="false"
+>
     <nx-tab label="First tab">
         <div class="tab__content">
             <h2 nxHeadline="subsection-large">First</h2>

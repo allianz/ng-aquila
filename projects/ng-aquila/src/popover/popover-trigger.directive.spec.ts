@@ -714,13 +714,24 @@ class PopoverHideCloseForClick extends PopoverTest {}
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover </button>
         </div>
 
-        <nx-popover #popoverHover> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </nx-popover>`,
+        <nx-popover #popoverHover>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+            1500s.
+        </nx-popover>`,
 })
 class PopoverFallBackComponent extends PopoverTest {}
 
 @Component({
     template: ` <div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [nxPopoverCloseable]="false" [closeOnClickOutside]="closable" [nxPopoverModal]="true">Hover </button>
+            <button
+                [nxPopoverTriggerFor]="popoverHover"
+                nxPopoverDirection="right"
+                nxPopoverTrigger="click"
+                [nxPopoverCloseable]="false"
+                [closeOnClickOutside]="closable"
+                [nxPopoverModal]="true"
+                >Hover
+            </button>
         </div>
 
         <nx-popover #popoverHover>
@@ -793,7 +804,9 @@ class ScrollablePopover extends PopoverTest {}
 
 @Component({
     template: ` <div [dir]="direction">
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable"> Directionality </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable">
+                Directionality
+            </button>
         </div>
 
         <nx-popover #popoverHover> </nx-popover>`,

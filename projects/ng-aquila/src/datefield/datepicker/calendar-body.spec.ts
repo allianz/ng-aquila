@@ -178,7 +178,17 @@ describe('NxCalendarBodyComponent', () => {
 });
 
 @Component({
-    template: `<table nx-calendar-body [label]="label" [rows]="rows" [todayValue]="todayValue" [selectedValue]="selectedValue" [numCols]="numCols" [activeCell]="10" (selectedValueChange)="onSelect($event)"> </table>`,
+    template: `<table
+        nx-calendar-body
+        [label]="label"
+        [rows]="rows"
+        [todayValue]="todayValue"
+        [selectedValue]="selectedValue"
+        [numCols]="numCols"
+        [activeCell]="10"
+        (selectedValueChange)="onSelect($event)"
+    >
+    </table>`,
 })
 class StandardCalendarBody {
     label = 'Jan 2017';

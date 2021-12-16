@@ -1,5 +1,12 @@
 <ng-template>
-    <div class="nx-autocomplete-panel" role="listbox" [id]="id" [ngClass]="_classList" [class.nx-autocomplete-panel--in-outline-field]="_isInOutlineField" #panel>
+    <div
+        class="nx-autocomplete-panel"
+        role="listbox"
+        [id]="id"
+        [ngClass]="_classList"
+        [class.nx-autocomplete-panel--in-outline-field]="_isInOutlineField"
+        #panel
+    >
         <ng-container *ngIf="hasItems">
             <nx-autocomplete-option *ngFor="let item of $any(items)" [value]="item">
                 {{ item }}

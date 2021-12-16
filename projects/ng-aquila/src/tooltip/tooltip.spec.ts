@@ -180,7 +180,10 @@ describe('NxTooltipDirective', () => {
             const overlayRef = tooltipDirective._overlayRef;
 
             expect(!!overlayRef).toBeTruthy();
-            expect(overlayRef?.overlayElement.classList).toContain(NX_TOOLTIP_PANEL_CLASS, 'Expected the overlay panel element to have the tooltip panel class set.');
+            expect(overlayRef?.overlayElement.classList).toContain(
+                NX_TOOLTIP_PANEL_CLASS,
+                'Expected the overlay panel element to have the tooltip panel class set.',
+            );
         }));
 
         it('should not show if disabled', fakeAsync(() => {
@@ -1019,7 +1022,9 @@ class TooltipDemoWithoutPositionBinding {
 
 @Component({
     selector: 'nx-app',
-    template: ` <button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover> Delayed tooltip </button>`,
+    template: ` <button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover>
+        Delayed tooltip
+    </button>`,
 })
 class TooltipDispose {
     @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;

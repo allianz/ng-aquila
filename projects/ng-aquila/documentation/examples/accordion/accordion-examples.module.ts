@@ -30,7 +30,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxAccordionModule, NxInputModule, NxIconModule, NxMessageModule, ExamplesSharedModule],
+    imports: [
+        NxAccordionModule,
+        NxInputModule,
+        NxIconModule,
+        NxMessageModule,
+        ExamplesSharedModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

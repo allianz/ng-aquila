@@ -24,7 +24,13 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxTooltipModule, NxDynamicTableModule, CommonModule, NxButtonModule, NxBadgeModule],
+    imports: [
+        NxTooltipModule,
+        NxDynamicTableModule,
+        CommonModule,
+        NxButtonModule,
+        NxBadgeModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

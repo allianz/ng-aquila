@@ -7,7 +7,10 @@ import { NgModule } from '@angular/core';
 import { ErrorExampleComponent } from './error/error-example';
 import { ErrorCustomMatcherFormfieldExampleComponent } from './error-custom-matcher-formfield/error-custom-matcher-formfield-example';
 
-const EXAMPLES = [ErrorExampleComponent, ErrorCustomMatcherFormfieldExampleComponent];
+const EXAMPLES = [
+    ErrorExampleComponent,
+    ErrorCustomMatcherFormfieldExampleComponent,
+];
 
 @NgModule({
     imports: [NxErrorModule, NxInputModule, ReactiveFormsModule],

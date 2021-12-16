@@ -26,8 +26,22 @@
     <div *ngFor="let prop of displayedProperties; trackBy: trackProperties">
         <p class="property-title"> {{ prop.name.replace('--', '') }}</p>
         <div *ngIf="prop.type === 'color'" class="picker-container">
-            <input class="picker" cpOutputFormat="rgba" [(colorPicker)]="prop.value" (colorPickerChange)="updateProperty($event, prop)" [style.background-color]="prop.value" cpPosition="left" />
+            <input
+                class="picker"
+                cpOutputFormat="rgba"
+                [(colorPicker)]="prop.value"
+                (colorPickerChange)="updateProperty($event, prop)"
+                [style.background-color]="prop.value"
+                cpPosition="left"
+            />
         </div>
-        <input *ngIf="prop.type === 'text'" class="text-input" type="text" [attr.data-css-var]="prop.name" [(ngModel)]="prop.value" (ngModelChange)="updateProperty($event, prop)" />
+        <input
+            *ngIf="prop.type === 'text'"
+            class="text-input"
+            type="text"
+            [attr.data-css-var]="prop.name"
+            [(ngModel)]="prop.value"
+            (ngModelChange)="updateProperty($event, prop)"
+        />
     </div>
 </div>

@@ -1,25 +1,40 @@
-<button nxButton class="nx-margin-right-xs nx-margin-bottom-m" (click)="openFromTemplate()">open dialog</button>
+<button
+    nxButton
+    class="nx-margin-right-xs nx-margin-bottom-m"
+    (click)="openFromTemplate()"
+    >open dialog</button
+>
 <br />
 The user clicked on: {{actionResult}}
 
 <ng-template #template>
     <div nxModalContent>
-        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">Modal with Disclaimer</h3>
+        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m"
+            >Modal with Disclaimer</h3
+        >
 
-        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold">Conditions and Disclaimer</p>
+        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold"
+            >Conditions and Disclaimer</p
+        >
         <p nxCopytext class="nx-margin-bottom-m">
-            Some copy text that describes what this overlay is all about. This text provides the user with additional
-            information and lorem ipsum dolor is max. three lines long.
+            Some copy text that describes what this overlay is all about. This
+            text provides the user with additional information and lorem ipsum
+            dolor is max. three lines long.
         </p>
-        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold">In case of an accident</p>
+        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold"
+            >In case of an accident</p
+        >
         <p nxCopytext class="nx-margin-bottom-m">
-            Some copy text that describes what this overlay is all about. Tdiam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-            Lorem ipsum dolor sit amet, consetetur sadipscing et justo duo dolores et ea rebum. Lorem ipsum dolor sit
-            amet, consetetur sadipscing Some copy text that describes what this overlay is all about. Tdiam nonumy
-            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-            justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing et justo duo dolores et ea
-            rebum.
+            Some copy text that describes what this overlay is all about. Tdiam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing et
+            justo duo dolores et ea rebum. Lorem ipsum dolor sit amet,
+            consetetur sadipscing Some copy text that describes what this
+            overlay is all about. Tdiam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit
+            amet, consetetur sadipscing et justo duo dolores et ea rebum.
         </p>
     </div>
     <div nxModalActions>
@@ -30,6 +45,12 @@ The user clicked on: {{actionResult}}
             type="button"
             >Disagree</button
         >
-        <button nxModalClose="Agree" class="nx-margin-bottom-0" nxButton="small" type="button">Agree</button>
+        <button
+            nxModalClose="Agree"
+            class="nx-margin-bottom-0"
+            nxButton="small"
+            type="button"
+            >Agree</button
+        >
     </div>
 </ng-template>

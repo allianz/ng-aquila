@@ -13,7 +13,8 @@
 }
 
 .margin-box {
-    border: 1px solid var(--documentation-margin-example-background-color, #1c7997);
+    border: 1px solid
+        var(--documentation-margin-example-background-color, #1c7997);
     background-color: var(--ui-01, #0f2a3d);
     display: block;
     line-height: 20px;

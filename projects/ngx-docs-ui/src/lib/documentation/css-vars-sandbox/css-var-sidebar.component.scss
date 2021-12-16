@@ -52,8 +52,8 @@
 .property-container .picker-container {
     // this is a background pattern for the color picker inputs,
     // to see the opacity of the selected rgba color.
-    background-image: linear-gradient(90deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%), linear-gradient(0deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%),
-        linear-gradient(#ffffff, #ffffff);
+    background-image: linear-gradient(90deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%),
+        linear-gradient(0deg, transparent 50%, rgba(230, 230, 230, 0.5) 50%, rgba(150, 150, 150, 0.5) 50%), linear-gradient(#ffffff, #ffffff);
     background-size: 12px 12px;
     width: 96px;
     height: 24px;

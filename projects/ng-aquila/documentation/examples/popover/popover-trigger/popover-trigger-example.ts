@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    ViewChild,
+} from '@angular/core';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
@@ -10,11 +16,14 @@ import { FocusMonitor } from '@angular/cdk/a11y';
     templateUrl: './popover-trigger-example.html',
     styleUrls: ['./popover-trigger-example.css'],
 })
-export class PopoverTriggerExampleComponent implements AfterViewInit, OnDestroy {
+export class PopoverTriggerExampleComponent
+    implements AfterViewInit, OnDestroy {
     popoverManualOpenFlag = false;
 
     @ViewChild('clickTriggerIcon') _clickTriggerIcon!: ElementRef<HTMLElement>;
-    @ViewChild('manualTriggerIcon') _manualTriggerIcon!: ElementRef<HTMLElement>;
+    @ViewChild('manualTriggerIcon') _manualTriggerIcon!: ElementRef<
+        HTMLElement
+    >;
 
     constructor(private _focusMonitor: FocusMonitor) {}
 

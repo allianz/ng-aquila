@@ -15,6 +15,9 @@ export class ModalClosingBehaviourExampleComponent {
     constructor(public dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
-        this.dialogService.open(this.templateRef, { ariaLabel: 'A simple modal', disableClose: true });
+        this.dialogService.open(this.templateRef, {
+            ariaLabel: 'A simple modal',
+            disableClose: true,
+        });
     }
 }

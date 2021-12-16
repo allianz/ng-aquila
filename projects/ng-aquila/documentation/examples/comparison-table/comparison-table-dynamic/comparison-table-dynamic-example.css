@@ -1,5 +1,8 @@
 .container {
-    background: var(--documentation-comparison-table-example-background-color, #0f2a3d);
+    background: var(
+        --documentation-comparison-table-example-background-color,
+        #0f2a3d
+    );
     padding: 12px;
 }
 

@@ -2,7 +2,22 @@ import { FocusableOption, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, NUMPAD_MULTIPLY, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { CdkTree, CdkTreeNode } from '@angular/cdk/tree';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, IterableChangeRecord, IterableDiffer, IterableDiffers, OnDestroy, OnInit, Optional, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    Input,
+    IterableChangeRecord,
+    IterableDiffer,
+    IterableDiffers,
+    OnDestroy,
+    OnInit,
+    Optional,
+    ViewChild,
+    ViewContainerRef,
+    ViewEncapsulation,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NxTreeNodeOutletDirective } from './outlet';
@@ -66,7 +81,13 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
     /** Subject that emits when the component has been destroyed. */
     private _wrapperOnDestroy = new Subject<void>();
 
-    constructor(private _wrapperDiffers: IterableDiffers, private _wrapperChangeDetectorRef: ChangeDetectorRef, @Optional() private dir: Directionality, protected _elementRef: ElementRef, protected _focusMonitor: FocusMonitor) {
+    constructor(
+        private _wrapperDiffers: IterableDiffers,
+        private _wrapperChangeDetectorRef: ChangeDetectorRef,
+        @Optional() private dir: Directionality,
+        protected _elementRef: ElementRef,
+        protected _focusMonitor: FocusMonitor,
+    ) {
         super(_wrapperDiffers, _wrapperChangeDetectorRef);
     }
 
@@ -357,7 +378,12 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
      * If the method changes in cdk, our tree might break,
      * because this method is crucial for rendering.
      */
-    renderNodeChanges(data: T[], dataDiffer: IterableDiffer<T> = this['_dataDiffer'], viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer, parentData?: T) {
+    renderNodeChanges(
+        data: T[],
+        dataDiffer: IterableDiffer<T> = this['_dataDiffer'],
+        viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer,
+        parentData?: T,
+    ) {
         const changes = dataDiffer.diff(data);
         if (!changes) {
             return;

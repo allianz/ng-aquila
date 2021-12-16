@@ -1,4 +1,10 @@
-<nx-slider [nxMin]="0" [nxMax]="10" [nxStep]="step" [(nxValue)]="floatSliderDemoValue"> </nx-slider>
+<nx-slider
+    [nxMin]="0"
+    [nxMax]="10"
+    [nxStep]="step"
+    [(nxValue)]="floatSliderDemoValue"
+>
+</nx-slider>
 Slider value: {{floatSliderDemoValue}}
 <nx-formfield nxLabel="Stepsize">
     <input nxInput [(ngModel)]="step" />

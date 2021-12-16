@@ -45,7 +45,9 @@ describe('StackBlitzWriter', () => {
     });
 
     it('should create form element', () => {
-        expect(stackBlitzWriter._createFormElement('index.ts').outerHTML).toBe(`<form action="https://run.stackblitz.com/api/angular/v1?file=index.ts" ` + `method="post" target="_blank"></form>`);
+        expect(stackBlitzWriter._createFormElement('index.ts').outerHTML).toBe(
+            `<form action="https://run.stackblitz.com/api/angular/v1?file=index.ts" ` + `method="post" target="_blank"></form>`,
+        );
     });
 
     it('should add files to form input', () => {

@@ -224,6 +224,14 @@ describe('NxVideoComponent', () => {
 // careful, don't include an actual video id the test template, or your headless test browser might start
 // playing the video in the background spook you out real good ;-)
 @Component({
-    template: ` <nx-video [nxAltText]="altText" [nxPreviewImageSrc]="previewImageSrc" [nxVideoId]="videoId" [nxPlayButtonAriaLabel]="nxPlayButtonAriaLabel" [nxAllowFullScreen]="fullscreen"></nx-video> `,
+    template: `
+        <nx-video
+            [nxAltText]="altText"
+            [nxPreviewImageSrc]="previewImageSrc"
+            [nxVideoId]="videoId"
+            [nxPlayButtonAriaLabel]="nxPlayButtonAriaLabel"
+            [nxAllowFullScreen]="fullscreen"
+        ></nx-video>
+    `,
 })
 class BasicVideo extends VideoTest {}

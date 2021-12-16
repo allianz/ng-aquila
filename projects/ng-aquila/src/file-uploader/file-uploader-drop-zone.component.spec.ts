@@ -111,7 +111,8 @@ describe('NxFileUploaderComponent', () => {
                 </nx-file-uploader-drop-zone>
                 <nx-error *ngIf="form.controls['documents'].hasError('required')">Required!</nx-error>
                 <nx-error *ngIf="form.controls['documents'].hasError('NxFileUploadMaxFileSize')">
-                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size limit!
+                    File „ {{ form.controls['documents'].getError('NxFileUploadMaxFileSize').fileName | json }}“ can not be uploaded. File size exceeds size
+                    limit!
                 </nx-error>
             </nx-file-uploader>
 

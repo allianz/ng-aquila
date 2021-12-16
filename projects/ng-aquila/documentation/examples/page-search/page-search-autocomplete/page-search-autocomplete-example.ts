@@ -47,6 +47,10 @@ export class PageSearchAutocompleteExampleComponent {
 
     constructor(public wikipediaService: WikipediaService) {
         this.searchFunction = (term: string) =>
-            wikipediaService.search(term).pipe(map((items: any) => items.map((item: any) => item.value)));
+            wikipediaService
+                .search(term)
+                .pipe(
+                    map((items: any) => items.map((item: any) => item.value)),
+                );
     }
 }

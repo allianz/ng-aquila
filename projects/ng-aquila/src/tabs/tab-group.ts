@@ -177,10 +177,17 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
 
     _appearanceChange = new Subject<void>();
 
-    constructor(public viewportService: NxViewportService, private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions, private _focusMonitor: FocusMonitor) {
+    constructor(
+        public viewportService: NxViewportService,
+        private _changeDetectorRef: ChangeDetectorRef,
+        @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions,
+        private _focusMonitor: FocusMonitor,
+    ) {
         this._groupId = nextId++;
 
-        this._viewportSubscription = this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM).subscribe(isSmallTablet => this._switchAppearance(isSmallTablet));
+        this._viewportSubscription = this.viewportService
+            .max(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .subscribe(isSmallTablet => this._switchAppearance(isSmallTablet));
     }
 
     ngAfterContentInit() {

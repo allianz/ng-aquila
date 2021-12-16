@@ -16,7 +16,11 @@ const EXAMPLES = [
 ];
 
 @NgModule({
-    imports: [NxDynamicTableModule, NxModalModule.forRoot(), ExamplesSharedModule],
+    imports: [
+        NxDynamicTableModule,
+        NxModalModule.forRoot(),
+        ExamplesSharedModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })

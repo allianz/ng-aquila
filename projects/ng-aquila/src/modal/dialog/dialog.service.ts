@@ -63,7 +63,9 @@ export class NxDialogService implements OnDestroy {
      * Stream that emits when all open modal have finished closing.
      * Will emit on subscribe if there are no open modals to begin with.
      */
-    readonly afterAllClosed: Observable<void> = defer(() => (this.openModals.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined)))) as Observable<any>;
+    readonly afterAllClosed: Observable<void> = defer(() =>
+        this.openModals.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined)),
+    ) as Observable<any>;
 
     constructor(
         private _overlay: Overlay,
@@ -193,7 +195,12 @@ export class NxDialogService implements OnDestroy {
      * @param config The modal configuration.
      * @returns A promise resolving to the NxModalRef that should be returned to the user.
      */
-    private _attachModalContent<T, R>(componentOrTemplateRef: ComponentType<T> | TemplateRef<T>, modalContainer: NxModalContainer, overlayRef: OverlayRef, config: NxModalConfig): NxModalRef<T, R> {
+    private _attachModalContent<T, R>(
+        componentOrTemplateRef: ComponentType<T> | TemplateRef<T>,
+        modalContainer: NxModalContainer,
+        overlayRef: OverlayRef,
+        config: NxModalConfig,
+    ): NxModalRef<T, R> {
         // Create a reference to the modal we're creating in order to give the user a handle
         // to modify and close it.
         const modalRef = new NxModalRef<T, R>(overlayRef, modalContainer, config.id);

@@ -1,4 +1,8 @@
-import { NxOverlayDirection, NxOverlayService, NxOverlayRef } from '@aposin/ng-aquila/overlay';
+import {
+    NxOverlayDirection,
+    NxOverlayService,
+    NxOverlayRef,
+} from '@aposin/ng-aquila/overlay';
 import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 
 /**
@@ -20,6 +24,10 @@ export class OverlayPositioningExampleComponent {
         if (this.currentOverlay) {
             this.currentOverlay.close();
         }
-        this.currentOverlay = this.nxOverlay.open(this.template, element, { width: 150, height: 200, direction });
+        this.currentOverlay = this.nxOverlay.open(this.template, element, {
+            width: 150,
+            height: 200,
+            direction,
+        });
     }
 }

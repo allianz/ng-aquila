@@ -1,4 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, EventEmitter, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    EventEmitter,
+    OnDestroy,
+    OnInit,
+    Output,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { NxPopoverContentDirective } from './popover-content';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
