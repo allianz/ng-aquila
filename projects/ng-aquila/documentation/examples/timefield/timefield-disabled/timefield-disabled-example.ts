@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 /**
-* @title Timefield disabled example
-*/
+ * @title Timefield disabled example
+ */
 @Component({
-  selector: 'timefield-disabled-example',
-  templateUrl: './timefield-disabled-example.html',
-  styleUrls: ['./timefield-disabled-example.css']
+    selector: 'timefield-disabled-example',
+    templateUrl: './timefield-disabled-example.html',
+    styleUrls: ['./timefield-disabled-example.css'],
 })
 export class TimefieldDisabledExampleComponent {
-  templateModel: string = '12:54';
+    templateModel: string = '12:54';
 }

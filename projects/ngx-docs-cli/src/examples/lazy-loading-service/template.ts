@@ -1,9 +1,7 @@
+export const lazyServiceTemplate = modules => {
+    const resolvedImports = modules.map(m => buildImportForModule(m));
 
-
-export const lazyServiceTemplate = (modules) => {
-  const resolvedImports = modules.map(m => buildImportForModule(m));
-
-  return `
+    return `
   import { Injectable, Compiler, Injector } from '@angular/core';
   import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
 
@@ -31,14 +29,11 @@ export const lazyServiceTemplate = (modules) => {
       }
     }
   }
-  `
-}
-
-const buildImportForModule = (module) => {
-  return `
-  case '${module.name}': return import('${module.relativeImportPath
-    .replace('.ts', '')
-    .split('\\')
-    .join('/')}').then(m => m.${module.className});
   `;
-}
+};
+
+const buildImportForModule = module => {
+    return `
+  case '${module.name}': return import('${module.relativeImportPath.replace('.ts', '').split('\\').join('/')}').then(m => m.${module.className});
+  `;
+};

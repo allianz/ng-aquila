@@ -2,37 +2,36 @@ import { Component, ViewChild, TemplateRef, AfterContentInit } from '@angular/co
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 /**
-* @title Data injection example
-*/
+ * @title Data injection example
+ */
 @Component({
-  selector: 'modal-data-injection-example',
-  templateUrl: './modal-data-injection-example.html',
-  styleUrls: ['./modal-data-injection-example.css']
+    selector: 'modal-data-injection-example',
+    templateUrl: './modal-data-injection-example.html',
+    styleUrls: ['./modal-data-injection-example.css'],
 })
 export class ModalDataInjectionExampleComponent {
-  @ViewChild('template') templateRef!: TemplateRef<any>;
-  actionResult!: string;
+    @ViewChild('template') templateRef!: TemplateRef<any>;
+    actionResult!: string;
 
-  dialogRef!: NxModalRef<any, any>;
+    dialogRef!: NxModalRef<any, any>;
 
-  constructor(public dialogService: NxDialogService) {
-  }
+    constructor(public dialogService: NxDialogService) {}
 
-  openFromTemplate(): void {
-    this.dialogRef = this.dialogService.open(this.templateRef, {
-      showCloseIcon: true,
-      ariaLabel: 'A modal with injected data',
-      data: {
-        name: 'Max Mustermann'
-      }
-    });
+    openFromTemplate(): void {
+        this.dialogRef = this.dialogService.open(this.templateRef, {
+            showCloseIcon: true,
+            ariaLabel: 'A modal with injected data',
+            data: {
+                name: 'Max Mustermann',
+            },
+        });
 
-    this.dialogRef.afterClosed().subscribe(result => {
-      this.actionResult = result;
-    });
-  }
+        this.dialogRef.afterClosed().subscribe(result => {
+            this.actionResult = result;
+        });
+    }
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
+    closeDialog() {
+        this.dialogRef.close();
+    }
 }

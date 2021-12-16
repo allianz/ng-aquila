@@ -6,8 +6,8 @@ import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @NgModule({
-  declarations: [ NxRadioToggleComponent, NxRadioToggleButtonComponent ],
-  exports: [ NxRadioToggleComponent, NxRadioToggleButtonComponent ],
-  imports: [ CommonModule, FormsModule, NxIconModule ]
+    declarations: [NxRadioToggleComponent, NxRadioToggleButtonComponent],
+    exports: [NxRadioToggleComponent, NxRadioToggleButtonComponent],
+    imports: [CommonModule, FormsModule, NxIconModule],
 })
-export class NxRadioToggleModule { }
+export class NxRadioToggleModule {}

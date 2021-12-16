@@ -1,41 +1,33 @@
 <button nxIconButton="primary small" class="handle" (click)="toggle()" type="button">
-  <div *ngIf="shown; then shownPanelArrows else hiddenPanelArrows" class="handle__icons-container"></div>
-  <ng-template #shownPanelArrows>
-    <div class="handle__icons-container">
-      <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
-      <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
-    </div>
-  </ng-template>
-  <ng-template #hiddenPanelArrows>
-    <div class="handle__icons-container">
-      <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
-      <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
-    </div>
-  </ng-template>
+    <div *ngIf="shown; then shownPanelArrows; else hiddenPanelArrows" class="handle__icons-container"></div>
+    <ng-template #shownPanelArrows>
+        <div class="handle__icons-container">
+            <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
+            <nx-icon name="chevron-right-small" aria-hidden="true"></nx-icon>
+        </div>
+    </ng-template>
+    <ng-template #hiddenPanelArrows>
+        <div class="handle__icons-container">
+            <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
+            <nx-icon name="chevron-left-small" aria-hidden="true"></nx-icon>
+        </div>
+    </ng-template>
 </button>
 
 <div class="options-container">
-  <button nxButton="secondary small" class="nx-margin-0" type="button" (click)="reset()">Reset</button>
-  <input (input)="filterProperties()" class="filter-input" [(ngModel)]="filterValue"/>
-  <button nxIconButton="primary small" class="nx-margin-0" (click)="showAllProperties()" type="button">
-    <nx-icon name="close" aria-hidden="true"></nx-icon>
-  </button>
+    <button nxButton="secondary small" class="nx-margin-0" type="button" (click)="reset()">Reset</button>
+    <input (input)="filterProperties()" class="filter-input" [(ngModel)]="filterValue" />
+    <button nxIconButton="primary small" class="nx-margin-0" (click)="showAllProperties()" type="button">
+        <nx-icon name="close" aria-hidden="true"></nx-icon>
+    </button>
 </div>
 
 <div class="property-container">
-
-  <div *ngFor="let prop of displayedProperties; trackBy: trackProperties">
-    <p class="property-title">
-      {{prop.name.replace('--', '')}}</p>
-    <div *ngIf="prop.type === 'color'" class="picker-container">
-      <input class="picker" cpOutputFormat="rgba"
-        [(colorPicker)]="prop.value"
-        (colorPickerChange)="updateProperty($event, prop)"
-        [style.background-color]="prop.value" cpPosition="left">
+    <div *ngFor="let prop of displayedProperties; trackBy: trackProperties">
+        <p class="property-title"> {{ prop.name.replace('--', '') }}</p>
+        <div *ngIf="prop.type === 'color'" class="picker-container">
+            <input class="picker" cpOutputFormat="rgba" [(colorPicker)]="prop.value" (colorPickerChange)="updateProperty($event, prop)" [style.background-color]="prop.value" cpPosition="left" />
+        </div>
+        <input *ngIf="prop.type === 'text'" class="text-input" type="text" [attr.data-css-var]="prop.name" [(ngModel)]="prop.value" (ngModelChange)="updateProperty($event, prop)" />
     </div>
-    <input *ngIf="prop.type === 'text'" class="text-input" type="text"
-      [attr.data-css-var]="prop.name" [(ngModel)]="prop.value"
-      (ngModelChange)="updateProperty($event, prop)">
-  </div>
-
 </div>

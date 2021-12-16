@@ -6,13 +6,9 @@ import { LazyExampleOutletComponent } from './lazy-example-outlet.component';
 import { BidiModule } from '@angular/cdk/bidi';
 
 @NgModule({
-  imports: [
-    NxSpinnerModule,
-    CommonModule,
-    BidiModule,
-  ],
-  exports: [LazyExampleOutletComponent],
-  declarations: [LazyExampleOutletComponent],
-  providers: [],
+    imports: [NxSpinnerModule, CommonModule, BidiModule],
+    exports: [LazyExampleOutletComponent],
+    declarations: [LazyExampleOutletComponent],
+    providers: [],
 })
-export class NxvLazyExampleOutletModule { }
+export class NxvLazyExampleOutletModule {}

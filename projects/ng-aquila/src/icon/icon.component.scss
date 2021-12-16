@@ -1,4 +1,4 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 $icon-outline-size-s: nx-spacer(3m);
 $icon-outline-size-m: nx-spacer(3xl);
@@ -6,113 +6,113 @@ $icon-outline-size-l: 120px;
 $icon-outline-size-xl: 160px;
 
 :host {
-  speak: none;
-  text-transform: none;
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: normal;
-  text-align: center;
-  width: 1em;
-  height: 1em;
-
-  ::ng-deep svg {
+    speak: none;
+    text-transform: none;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: normal;
+    text-align: center;
     width: 1em;
     height: 1em;
-    fill: currentColor;
-    flex: 0 0 auto;
-  }
 
-  &:before {
-    font-size: inherit;
-    width: 1em;
-    height: 1em;
-  }
+    ::ng-deep svg {
+        width: 1em;
+        height: 1em;
+        fill: currentColor;
+        flex: 0 0 auto;
+    }
 
-  @media screen and (-ms-high-contrast: active) {
-    color: inherit !important;
-  }
+    &:before {
+        font-size: inherit;
+        width: 1em;
+        height: 1em;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+        color: inherit !important;
+    }
 }
 
 // Icon Sizes
 // -------------------------
 :host(.nx-icon--auto) {
-  font-size: inherit;
+    font-size: inherit;
 }
 
 // Since the font size basically controls the dimensions of the icon
 // we use the nx-spacer function here instead of font-sizes.
 // Font sizes are defined for text so sizes m, l and xl don't exist.
 :host(.nx-icon--s) {
-  font-size: nx-spacer(m);
+    font-size: nx-spacer(m);
 }
 
 :host(.nx-icon--m) {
-  font-size: nx-spacer(4m);
+    font-size: nx-spacer(4m);
 }
 
 :host(.nx-icon--l) {
-  font-size: nx-spacer(2xl);
+    font-size: nx-spacer(2xl);
 }
 
 :host(.nx-icon--xl) {
-  font-size: nx-spacer(5xl);
+    font-size: nx-spacer(5xl);
 }
 
 // Icon Variants
 // -------------------------
 :host(.nx-icon--outline) {
-  border-radius: 50%;
-  border: solid;
-  width: 2em;
-  height: 2em;
-  border-width: 1px;
+    border-radius: 50%;
+    border: solid;
+    width: 2em;
+    height: 2em;
+    border-width: 1px;
 
-  &.nx-icon--s {
-    border-width: nx-border-size(xs);
-    width: $icon-outline-size-s;
-    height: $icon-outline-size-s;
-  }
-  &.nx-icon--m {
-    border-width: nx-border-size(m);
-    width: $icon-outline-size-m;
-    height:$icon-outline-size-m;
-  }
-  &.nx-icon--l {
-    border-width: nx-border-size(l);
-    width: $icon-outline-size-l;
-    height: $icon-outline-size-l;
-  }
-  &.nx-icon--xl {
-    border-width: nx-border-size(xl);
-    width: $icon-outline-size-xl;
-    height: $icon-outline-size-xl;
-  }
+    &.nx-icon--s {
+        border-width: nx-border-size(xs);
+        width: $icon-outline-size-s;
+        height: $icon-outline-size-s;
+    }
+    &.nx-icon--m {
+        border-width: nx-border-size(m);
+        width: $icon-outline-size-m;
+        height: $icon-outline-size-m;
+    }
+    &.nx-icon--l {
+        border-width: nx-border-size(l);
+        width: $icon-outline-size-l;
+        height: $icon-outline-size-l;
+    }
+    &.nx-icon--xl {
+        border-width: nx-border-size(xl);
+        width: $icon-outline-size-xl;
+        height: $icon-outline-size-xl;
+    }
 }
 
 :host(.nx-icon--fill) {
-  border-radius: 50%;
-  border-color: transparent;
-  width: 2em;
-  height: 2em;
-  @include var(background, icon-filled-background-color);
-  @include var(color, icon-filled-color);
+    border-radius: 50%;
+    border-color: transparent;
+    width: 2em;
+    height: 2em;
+    @include var(background, icon-filled-background-color);
+    @include var(color, icon-filled-color);
 
-  &.nx-icon--s {
-    width: $icon-outline-size-s;
-    height: $icon-outline-size-s;
-  }
-  &.nx-icon--m {
-    width: $icon-outline-size-m;
-    height:$icon-outline-size-m;
-  }
-  &.nx-icon--l {
-    width: $icon-outline-size-l;
-    height: $icon-outline-size-l;
-  }
-  &.nx-icon--xl {
-    width: $icon-outline-size-xl;
-    height: $icon-outline-size-xl;
-  }
+    &.nx-icon--s {
+        width: $icon-outline-size-s;
+        height: $icon-outline-size-s;
+    }
+    &.nx-icon--m {
+        width: $icon-outline-size-m;
+        height: $icon-outline-size-m;
+    }
+    &.nx-icon--l {
+        width: $icon-outline-size-l;
+        height: $icon-outline-size-l;
+    }
+    &.nx-icon--xl {
+        width: $icon-outline-size-xl;
+        height: $icon-outline-size-xl;
+    }
 }

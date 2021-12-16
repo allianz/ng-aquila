@@ -1,51 +1,49 @@
 @import '../shared-styles/index';
 
-
 :host {
-  display: block;
-  @include type-style(natural-language-form-large);
-  @include var(color, natural-language-form-text-color);
-  padding-top: nx-spacer(2xl);
-  padding-bottom: nx-spacer(3xl);
+    display: block;
+    @include type-style(natural-language-form-large);
+    @include var(color, natural-language-form-text-color);
+    padding-top: nx-spacer(2xl);
+    padding-bottom: nx-spacer(3xl);
 
-
-  ::ng-deep .c-input {
-    font-size: inherit;
-    line-height: inherit;
-  }
-
-  ::ng-deep nx-word + nx-word {
-    margin-left: nx-spacer(4xs);
-
-    [dir="rtl"] & {
-      margin-right: nx-spacer(4xs);
-      margin-left: initial;
+    ::ng-deep .c-input {
+        font-size: inherit;
+        line-height: inherit;
     }
-  }
 
-  &.is-negative {
-    @include var(color, negative);
-  }
+    ::ng-deep nx-word + nx-word {
+        margin-left: nx-spacer(4xs);
 
-  @include media-breakpoint-down('medium') {
-    @include type-style(natural-language-form-small);
-  }
+        [dir='rtl'] & {
+            margin-right: nx-spacer(4xs);
+            margin-left: initial;
+        }
+    }
+
+    &.is-negative {
+        @include var(color, negative);
+    }
+
+    @include media-breakpoint-down('medium') {
+        @include type-style(natural-language-form-small);
+    }
 }
 
 .nx-natural-language-form__wrapper {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .nx-natural-language-form__wrapper > ::ng-deep * {
-  margin-bottom: nx-spacer(2xs);
+    margin-bottom: nx-spacer(2xs);
 }
 
 :host(.nx-natural-language-form--small) {
-  @include type-style(natural-language-form-small);
+    @include type-style(natural-language-form-small);
 
-  ::ng-deep .c-input {
-    font-size: inherit;
-    line-height: inherit;
-  }
+    ::ng-deep .c-input {
+        font-size: inherit;
+        line-height: inherit;
+    }
 }

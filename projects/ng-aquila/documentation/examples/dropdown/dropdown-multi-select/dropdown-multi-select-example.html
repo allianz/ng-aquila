@@ -1,27 +1,26 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="12, 12, 6">
-      <nx-formfield nxLabel="Fruits">
-        <nx-multi-select [options]="options"></nx-multi-select>
-      </nx-formfield>
+    <div nxRow>
+        <div nxCol="12, 12, 6">
+            <nx-formfield nxLabel="Fruits">
+                <nx-multi-select [options]="options"></nx-multi-select>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
-  <div nxRow>
-    <div nxCol="12, 12, 6">
-      <nx-formfield nxLabel="Fruits">
-        <nx-multi-select 
-          [options]="complexOptions"
-          selectLabel="name"
-          selectValue="id"></nx-multi-select>
-      </nx-formfield>
-    </div>
+    <div nxRow>
+        <div nxCol="12, 12, 6">
+            <nx-formfield nxLabel="Fruits">
+                <nx-multi-select [options]="complexOptions" selectLabel="name" selectValue="id"></nx-multi-select>
+            </nx-formfield>
+        </div>
 
-    <div nxCol="12, 12, 6">
-      <nx-formfield nxLabel="Fruits">
-        <nx-multi-select [options]="complexOptions" 
-          [selectLabel]="selectLabel"
-          [selectValue]="selectValue"></nx-multi-select>
-      </nx-formfield>
+        <div nxCol="12, 12, 6">
+            <nx-formfield nxLabel="Fruits">
+                <nx-multi-select
+                    [options]="complexOptions"
+                    [selectLabel]="selectLabel"
+                    [selectValue]="selectValue"
+                ></nx-multi-select>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
 </div>

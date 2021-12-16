@@ -1,13 +1,13 @@
 <nx-tab-group>
-  <nx-tab *ngFor="let tab of tabs; let i = index" [label]="tab">
-    <div class="tab__content nx-margin-bottom-m">
-      Content of tab {{tab}}
-      <button nxButton="small" class="nx-margin-left-s" (click)="removeTab(i)" type="button">Remove tab</button>
-    </div>
-  </nx-tab>
+    <nx-tab *ngFor="let tab of tabs; let i = index" [label]="tab">
+        <div class="tab__content nx-margin-bottom-m">
+            Content of tab {{tab}}
+            <button nxButton="small" class="nx-margin-left-s" (click)="removeTab(i)" type="button">Remove tab</button>
+        </div>
+    </nx-tab>
 </nx-tab-group>
 
 <div class="add-container">
-  New tab label: <input type="text" #newTabText class="nx-margin-left-s nx-margin-right-2xs"/>
-  <button nxButton="primary small" (click)="addTab(newTabText.value)" type="button">Add</button>
+    New tab label: <input type="text" #newTabText class="nx-margin-left-s nx-margin-right-2xs" />
+    <button nxButton="primary small" (click)="addTab(newTabText.value)" type="button">Add</button>
 </div>

@@ -11,11 +11,9 @@ stable: progress
   Please note that this is an Expert component. This means that it is intended for internal applications (B2B/B2E) and not for applications that are client facing (B2C).
 </div>
 
-The toolbar is a visual container for elements (e.g. icons, buttons, icon tooltips). It is recommended to keep the total number of icons as short as possible as well as to avoid combining a back button with breadcrumbs.
-The toolbar should only contain CTA elements that influence the content area. It is not used for information or global navigation (e.g progress bar).
+The toolbar is a visual container for elements (e.g. icons, buttons, icon tooltips). It is recommended to keep the total number of icons as short as possible as well as to avoid combining a back button with breadcrumbs. The toolbar should only contain CTA elements that influence the content area. It is not used for information or global navigation (e.g progress bar).
 
 <!-- example(toolbar) -->
-
 
 ### Positioning toolbar content
 

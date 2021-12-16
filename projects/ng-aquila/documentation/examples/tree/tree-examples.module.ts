@@ -7,25 +7,17 @@ import { NxTreeModule } from '@aposin/ng-aquila/tree';
 import { NgModule } from '@angular/core';
 import { TreeExampleComponent } from './tree/tree-example';
 
-const EXAMPLES = [
-  TreeExampleComponent
-];
+const EXAMPLES = [TreeExampleComponent];
 
- @NgModule({
-  imports: [
-    NxTreeModule,
-    NxIconModule,
-    NxActionModule,
-    RouterModule,
-    CommonModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxTreeModule, NxIconModule, NxActionModule, RouterModule, CommonModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class TreeExamplesModule {
-  static components() {
-    return {
-      'tree': TreeExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            tree: TreeExampleComponent,
+        };
+    }
 }

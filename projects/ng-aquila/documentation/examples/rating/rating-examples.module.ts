@@ -12,35 +12,30 @@ import { RatingSimpleExampleComponent } from './rating-simple/rating-simple-exam
 import { RatingTemplateExampleComponent } from './rating-template/rating-template-example';
 
 const EXAMPLES = [
-  RatingAccessibilityExampleComponent,
-  RatingBasicExampleComponent,
-  RatingDisabledExampleComponent,
-  RatingNegativeExampleComponent,
-  RatingReactiveExampleComponent,
-  RatingSimpleExampleComponent,
-  RatingTemplateExampleComponent
+    RatingAccessibilityExampleComponent,
+    RatingBasicExampleComponent,
+    RatingDisabledExampleComponent,
+    RatingNegativeExampleComponent,
+    RatingReactiveExampleComponent,
+    RatingSimpleExampleComponent,
+    RatingTemplateExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxRatingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    CommonModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxRatingModule, ReactiveFormsModule, FormsModule, CommonModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class RatingExamplesModule {
-  static components() {
-    return {
-      'rating-accessibility': RatingAccessibilityExampleComponent,
-      'rating-basic': RatingBasicExampleComponent,
-      'rating-disabled': RatingDisabledExampleComponent,
-      'rating-negative': RatingNegativeExampleComponent,
-      'rating-reactive': RatingReactiveExampleComponent,
-      'rating-simple': RatingSimpleExampleComponent,
-      'rating-template': RatingTemplateExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'rating-accessibility': RatingAccessibilityExampleComponent,
+            'rating-basic': RatingBasicExampleComponent,
+            'rating-disabled': RatingDisabledExampleComponent,
+            'rating-negative': RatingNegativeExampleComponent,
+            'rating-reactive': RatingReactiveExampleComponent,
+            'rating-simple': RatingSimpleExampleComponent,
+            'rating-template': RatingTemplateExampleComponent,
+        };
+    }
 }

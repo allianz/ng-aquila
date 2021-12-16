@@ -19,47 +19,44 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  CheckboxGroupBasicExampleComponent,
-  CheckboxGroupDynamicExampleComponent,
-  CheckboxGroupHorizontalExampleComponent,
-  CheckboxGroupInheritanceExampleComponent,
-  CheckboxGroupLabelSizeExampleComponent,
-  CheckboxGroupReactiveExampleComponent,
-  CheckboxGroupValidationExampleComponent,
-  CheckboxLabelSizeExampleComponent,
-  CheckboxNegativeExampleComponent,
-  CheckboxOutputsExampleComponent,
-  CheckboxReactiveExampleComponent,
-  CheckboxSimpleBindingExampleComponent,
-  CheckboxStatesExampleComponent,
-  CheckboxTemplateDrivenExampleComponent
+    CheckboxGroupBasicExampleComponent,
+    CheckboxGroupDynamicExampleComponent,
+    CheckboxGroupHorizontalExampleComponent,
+    CheckboxGroupInheritanceExampleComponent,
+    CheckboxGroupLabelSizeExampleComponent,
+    CheckboxGroupReactiveExampleComponent,
+    CheckboxGroupValidationExampleComponent,
+    CheckboxLabelSizeExampleComponent,
+    CheckboxNegativeExampleComponent,
+    CheckboxOutputsExampleComponent,
+    CheckboxReactiveExampleComponent,
+    CheckboxSimpleBindingExampleComponent,
+    CheckboxStatesExampleComponent,
+    CheckboxTemplateDrivenExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxCheckboxModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxCheckboxModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class CheckboxExamplesModule {
-  static components() {
-    return {
-      'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
-      'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
-      'checkbox-group-horizontal': CheckboxGroupHorizontalExampleComponent,
-      'checkbox-group-inheritance': CheckboxGroupInheritanceExampleComponent,
-      'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,
-      'checkbox-group-reactive': CheckboxGroupReactiveExampleComponent,
-      'checkbox-group-validation': CheckboxGroupValidationExampleComponent,
-      'checkbox-label-size': CheckboxLabelSizeExampleComponent,
-      'checkbox-negative': CheckboxNegativeExampleComponent,
-      'checkbox-outputs': CheckboxOutputsExampleComponent,
-      'checkbox-reactive': CheckboxReactiveExampleComponent,
-      'checkbox-simple-binding': CheckboxSimpleBindingExampleComponent,
-      'checkbox-states': CheckboxStatesExampleComponent,
-      'checkbox-template-driven': CheckboxTemplateDrivenExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
+            'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
+            'checkbox-group-horizontal': CheckboxGroupHorizontalExampleComponent,
+            'checkbox-group-inheritance': CheckboxGroupInheritanceExampleComponent,
+            'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,
+            'checkbox-group-reactive': CheckboxGroupReactiveExampleComponent,
+            'checkbox-group-validation': CheckboxGroupValidationExampleComponent,
+            'checkbox-label-size': CheckboxLabelSizeExampleComponent,
+            'checkbox-negative': CheckboxNegativeExampleComponent,
+            'checkbox-outputs': CheckboxOutputsExampleComponent,
+            'checkbox-reactive': CheckboxReactiveExampleComponent,
+            'checkbox-simple-binding': CheckboxSimpleBindingExampleComponent,
+            'checkbox-states': CheckboxStatesExampleComponent,
+            'checkbox-template-driven': CheckboxTemplateDrivenExampleComponent,
+        };
+    }
 }

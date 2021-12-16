@@ -1,14 +1,14 @@
 @import '../shared-styles/index';
 
 :host {
-  ::ng-deep{
-    nx-error {
-      margin-bottom: nx-spacer(2xs);
-    }
+    ::ng-deep {
+        nx-error {
+            margin-bottom: nx-spacer(2xs);
+        }
 
-    nx-label {
-      margin-bottom: nx-spacer(s);
-      display: block;
+        nx-label {
+            margin-bottom: nx-spacer(s);
+            display: block;
+        }
     }
-  }
 }

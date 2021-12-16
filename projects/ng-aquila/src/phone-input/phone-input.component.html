@@ -1,29 +1,32 @@
 <div class="wrapper">
-  <nx-dropdown [class.hide]="readonly && !disabled" [nxValue]="countryCode"
-    #dropdown [nxShowFilter]="true"
-    [nxDisabled]="disabled"
-    [nxOverlayLabel]="areaCodeLabel"
-    (nxValueChange)="_onInput()"
-    [options]="_sortedCountries">
-    <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
-  </nx-dropdown>
+    <nx-dropdown [class.hide]="readonly && !disabled" [nxValue]="countryCode" #dropdown [nxShowFilter]="true" [nxDisabled]="disabled" [nxOverlayLabel]="areaCodeLabel" (nxValueChange)="_onInput()" [options]="_sortedCountries">
+        <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
+    </nx-dropdown>
 
-  <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
-  <input class="c-input" [class.hide]="readonly && !disabled" type="tel" (blur)="_onInputBlur()"
-    [(ngModel)]="_inputValue" (ngModelChange)="_onInput()"
-    [attr.aria-describedby]="_describedBy"
-    [attr.aria-labelledby]="_ariaLabelledBy"
-    [attr.required]="required || null"
-    [attr.disabled]="disabled || null"
-    [attr.placeholder]="placeholder || null"
-    >
+    <!-- adding c-input for the styles and to not get the overhead of the nxInput directive -->
+    <input
+        class="c-input"
+        [class.hide]="readonly && !disabled"
+        type="tel"
+        (blur)="_onInputBlur()"
+        [(ngModel)]="_inputValue"
+        (ngModelChange)="_onInput()"
+        [attr.aria-describedby]="_describedBy"
+        [attr.aria-labelledby]="_ariaLabelledBy"
+        [attr.required]="required || null"
+        [attr.disabled]="disabled || null"
+        [attr.placeholder]="placeholder || null"
+    />
 
-    <input class="c-input" *ngIf="readonly && !disabled"
-      class="readonly-input"
-      type="tel"
-      [attr.readonly]="readonly || null"
-      [attr.aria-readonly]="readonly || null"
-      [value]="_getReadonlyValue()"
-      [attr.aria-describedby]="_describedBy"
-      [attr.aria-labelledby]="_ariaLabelledBy">
+    <input
+        class="c-input"
+        *ngIf="readonly && !disabled"
+        class="readonly-input"
+        type="tel"
+        [attr.readonly]="readonly || null"
+        [attr.aria-readonly]="readonly || null"
+        [value]="_getReadonlyValue()"
+        [attr.aria-describedby]="_describedBy"
+        [attr.aria-labelledby]="_ariaLabelledBy"
+    />
 </div>

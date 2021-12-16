@@ -1,11 +1,13 @@
-<button nxButton="primary small"
-        [nxPopoverTriggerFor]="modalPopover"
-        nxPopoverDirection="right"
-        nxPopoverTrigger="click"
-        nxPopoverModal="true">
-  Modal popover
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="modalPopover"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    nxPopoverModal="true"
+>
+    Modal popover
 </button>
 
 <nx-popover #modalPopover>
-  <span>Modal popover</span>
+    <span>Modal popover</span>
 </nx-popover>

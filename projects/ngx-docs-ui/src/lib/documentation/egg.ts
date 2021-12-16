@@ -18,132 +18,140 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
  */
 export class Egg {
-  eggs: any[] = [];
-  hooks: any[] = [];
-  kps: any[] = [];
-  activeEgg: string = '';
-  // for now we'll just ignore the shift key to allow capital letters
-  ignoredKeys: any[] = [16];
+    eggs: any[] = [];
+    hooks: any[] = [];
+    kps: any[] = [];
+    activeEgg: string = '';
+    // for now we'll just ignore the shift key to allow capital letters
+    ignoredKeys: any[] = [16];
 
-  constructor(...args: any) {
-    if (args.length) {
-      this.addCode.apply(this, args);
-    }
-  }
-
-  addCode(keys: any, fn: Function, metadata: any) {
-    this.eggs.push({keys: this.__toCharCodes(keys), fn, metadata});
-    return this;
-  }
-
-  addHook(fn: Function) {
-    this.hooks.push(fn);
-    return this;
-  }
-
-  listen(): any {
-    // Standards compliant only. Don't waste time on IE8.
-    if ( document.addEventListener !== void 0 ) {
-      // @ts-ignore
-      document.addEventListener( 'keydown', this, false );
-      // @ts-ignore
-      document.addEventListener( 'keyup', this, false );
+    constructor(...args: any) {
+        if (args.length) {
+            this.addCode.apply(this, args);
+        }
     }
 
-    return this;
-  }
+    addCode(keys: any, fn: Function, metadata: any) {
+        this.eggs.push({ keys: this.__toCharCodes(keys), fn, metadata });
+        return this;
+    }
 
-  handleEvent(e: { which: any; type: string; metaKey: any;
-    ctrlKey: any; altKey: any; shiftKey: any;
-    target: { tagName: any; }; preventDefault: () => void; }) {
-    let keyCode  = e.which;
-    const isLetter = keyCode >= 65 && keyCode <= 90;
-    /*
+    addHook(fn: Function) {
+        this.hooks.push(fn);
+        return this;
+    }
+
+    listen(): any {
+        // Standards compliant only. Don't waste time on IE8.
+        if (document.addEventListener !== void 0) {
+            // @ts-ignore
+            document.addEventListener('keydown', this, false);
+            // @ts-ignore
+            document.addEventListener('keyup', this, false);
+        }
+
+        return this;
+    }
+
+    handleEvent(e: { which: any; type: string; metaKey: any; ctrlKey: any; altKey: any; shiftKey: any; target: { tagName: any }; preventDefault: () => void }) {
+        let keyCode = e.which;
+        const isLetter = keyCode >= 65 && keyCode <= 90;
+        /*
       This prevents find as you type in Firefox.
       Only prevent default behavior for letters A-Z.
       I want keys like page up/down to still work.
     */
-    if ( e.type === 'keydown' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey ) {
-      const tag = e.target.tagName;
+        if (e.type === 'keydown' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+            const tag = e.target.tagName;
 
-      if ( ( tag === 'HTML' || tag === 'BODY' ) && isLetter ) {
-        e.preventDefault();
-        return;
-      }
-    }
-
-    if ( e.type === 'keyup' && this.eggs.length > 0 ) {
-      // keydown defaults all letters to uppercase
-      if (isLetter) {
-        if (!e.shiftKey) {
-          // convert to lower case letter
-          keyCode = keyCode + 32;
+            if ((tag === 'HTML' || tag === 'BODY') && isLetter) {
+                e.preventDefault();
+                return;
+            }
         }
-      }
 
-      // make sure that it's not an ignored key (shift for one)
-      if (this.ignoredKeys.indexOf(keyCode) === -1) {
-        this.kps.push(keyCode);
-      }
+        if (e.type === 'keyup' && this.eggs.length > 0) {
+            // keydown defaults all letters to uppercase
+            if (isLetter) {
+                if (!e.shiftKey) {
+                    // convert to lower case letter
+                    keyCode = keyCode + 32;
+                }
+            }
 
-      this.eggs.forEach(function(currentEgg, i) {
-        // @ts-ignore
-        const foundEgg = this.kps.toString().indexOf(currentEgg.keys) >= 0;
+            // make sure that it's not an ignored key (shift for one)
+            if (this.ignoredKeys.indexOf(keyCode) === -1) {
+                this.kps.push(keyCode);
+            }
 
-        if (foundEgg) {
-          // Reset keys; if more keypresses occur while the callback is executing, it could retrigger the match
-          // @ts-ignore
-          this.kps = [];
-          // Set the activeEgg to this one
-          // @ts-ignore
-          this.activeEgg = currentEgg;
-          // if callback is a function, call it
-          // @ts-ignore
-          this.__execute(currentEgg.fn, this);
-          // Call the hooks
-          // @ts-ignore
-          this.hooks.forEach(this.__execute, this);
-          // @ts-ignore
-          this.activeEgg = '';
+            this.eggs.forEach(function (currentEgg, i) {
+                // @ts-ignore
+                const foundEgg = this.kps.toString().indexOf(currentEgg.keys) >= 0;
+
+                if (foundEgg) {
+                    // Reset keys; if more keypresses occur while the callback is executing, it could retrigger the match
+                    // @ts-ignore
+                    this.kps = [];
+                    // Set the activeEgg to this one
+                    // @ts-ignore
+                    this.activeEgg = currentEgg;
+                    // if callback is a function, call it
+                    // @ts-ignore
+                    this.__execute(currentEgg.fn, this);
+                    // Call the hooks
+                    // @ts-ignore
+                    this.hooks.forEach(this.__execute, this);
+                    // @ts-ignore
+                    this.activeEgg = '';
+                }
+            }, this);
         }
-      }, this);
-    }
-  }
-
-  __execute(fn: any) {
-    return typeof fn === 'function' && fn.call(this);
-  }
-
-  __toCharCodes(keys: string[]) {
-    const special = {
-        'slash': 191, 'up': 38, 'down': 40, 'left': 37, 'right': 39, 'enter': 13, 'space': 32, 'ctrl': 17, 'alt': 18, 'tab': 9, 'esc': 27
-      },
-      specialKeys = Object.keys(special);
-
-    if (typeof keys === 'string') {
-      // make sure there isn't any whitespace
-      // @ts-ignore
-      keys = keys.split(',').map(function(key) {
-        return key.trim();
-      });
     }
 
-    const characterKeyCodes = keys.map(function(key: string | number) {
-      // check if it's already a keycode
-      if (key === parseInt(key.toString(), 10)) {
-        return key;
-      }
+    __execute(fn: any) {
+        return typeof fn === 'function' && fn.call(this);
+    }
 
-      // lookup in named key map
-      if (specialKeys.indexOf(key.toString()) > -1) {
-        // @ts-ignore
-        return special[key];
-      }
-      // it's a letter, return the char code for it
-      // @ts-ignore
-      return (key).charCodeAt(0);
-    });
+    __toCharCodes(keys: string[]) {
+        const special = {
+                slash: 191,
+                up: 38,
+                down: 40,
+                left: 37,
+                right: 39,
+                enter: 13,
+                space: 32,
+                ctrl: 17,
+                alt: 18,
+                tab: 9,
+                esc: 27,
+            },
+            specialKeys = Object.keys(special);
 
-    return characterKeyCodes.join(',');
-  }
+        if (typeof keys === 'string') {
+            // make sure there isn't any whitespace
+            // @ts-ignore
+            keys = keys.split(',').map(function (key) {
+                return key.trim();
+            });
+        }
+
+        const characterKeyCodes = keys.map(function (key: string | number) {
+            // check if it's already a keycode
+            if (key === parseInt(key.toString(), 10)) {
+                return key;
+            }
+
+            // lookup in named key map
+            if (specialKeys.indexOf(key.toString()) > -1) {
+                // @ts-ignore
+                return special[key];
+            }
+            // it's a letter, return the char code for it
+            // @ts-ignore
+            return key.charCodeAt(0);
+        });
+
+        return characterKeyCodes.join(',');
+    }
 }

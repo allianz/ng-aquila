@@ -5,18 +5,8 @@ import { NxLicencePlateEuroPrefixComponent } from './licence-plate-euro-prefix.c
 import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';
 
 @NgModule({
-  declarations: [
-    NxLicencePlateValidatorDirective,
-    NxLicencePlateEuroPrefixComponent,
-    NxLicencePlateSeasonSuffixComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    NxLicencePlateValidatorDirective,
-    NxLicencePlateEuroPrefixComponent,
-    NxLicencePlateSeasonSuffixComponent
-  ]
+    declarations: [NxLicencePlateValidatorDirective, NxLicencePlateEuroPrefixComponent, NxLicencePlateSeasonSuffixComponent],
+    imports: [CommonModule],
+    exports: [NxLicencePlateValidatorDirective, NxLicencePlateEuroPrefixComponent, NxLicencePlateSeasonSuffixComponent],
 })
 export class NxLicencePlateModule {}

@@ -1,18 +1,25 @@
 <nx-progress-stepper [progress]="progress" currentStepLabel="Step">
-  <ng-container *ngFor="let step of testStepsData">
-    <nx-step [label]="step">
-      <div class="nx-margin-top-s">
-        <div>
-          <nx-slider
-          [nxMin]="0"
-          [nxMax]="1"
-          [nxStep]="0.01"
-          lbel="Change the progress value"
-          [(nxValue)]="progress"></nx-slider>
-        </div>
-        <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs nx-margin-top-s" type="button">Previous</button>
-        <button nxButton="primary small" nxStepperNext class="nx-margin-top-s" type="button">Next</button>
-      </div>
-    </nx-step>
-  </ng-container>
+    <ng-container *ngFor="let step of testStepsData">
+        <nx-step [label]="step">
+            <div class="nx-margin-top-s">
+                <div>
+                    <nx-slider
+                        [nxMin]="0"
+                        [nxMax]="1"
+                        [nxStep]="0.01"
+                        lbel="Change the progress value"
+                        [(nxValue)]="progress"
+                    ></nx-slider>
+                </div>
+                <button
+                    nxButton="primary small"
+                    nxStepperPrevious
+                    class="nx-margin-right-2xs nx-margin-top-s"
+                    type="button"
+                    >Previous</button
+                >
+                <button nxButton="primary small" nxStepperNext class="nx-margin-top-s" type="button">Next</button>
+            </div>
+        </nx-step>
+    </ng-container>
 </nx-progress-stepper>

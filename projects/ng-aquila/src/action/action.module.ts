@@ -5,8 +5,8 @@ import { NxActionIconDirective } from './action-icon.directive';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @NgModule({
-  imports: [ NxIconModule, CommonModule ],
-  declarations: [ NxActionComponent, NxActionIconDirective ],
-  exports: [ NxActionComponent, NxActionIconDirective ]
+    imports: [NxIconModule, CommonModule],
+    declarations: [NxActionComponent, NxActionIconDirective],
+    exports: [NxActionComponent, NxActionIconDirective],
 })
-export class NxActionModule { }
+export class NxActionModule {}

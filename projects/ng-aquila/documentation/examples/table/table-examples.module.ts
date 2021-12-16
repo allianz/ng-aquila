@@ -27,52 +27,52 @@ import { TableStickyExampleComponent } from './table-sticky/table-sticky-example
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 const EXAMPLES = [
-  TableExampleComponent,
-  TableCondensedExampleComponent,
-  TableExpandableExampleComponent,
-  TableFilterSortPaginateExampleComponent,
-  TableSelectingExampleComponent,
-  TableSingleSelectExampleComponent,
-  TableSortingExampleComponent,
-  TableZebraExampleComponent,
-  TableFormElementsExampleComponent,
-  TableStickyExampleComponent
+    TableExampleComponent,
+    TableCondensedExampleComponent,
+    TableExpandableExampleComponent,
+    TableFilterSortPaginateExampleComponent,
+    TableSelectingExampleComponent,
+    TableSingleSelectExampleComponent,
+    TableSortingExampleComponent,
+    TableZebraExampleComponent,
+    TableFormElementsExampleComponent,
+    TableStickyExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxTableModule,
-    NxSwitcherModule,
-    NxCheckboxModule,
-    NxPaginationModule,
-    NxDropdownModule,
-    NxDatefieldModule,
-    NxMomentDateModule,
-    NxInputModule,
-    NxBadgeModule,
-    NxLinkModule,
-    NxRadioModule,
-    NxIconModule,
-    NxRadioToggleModule,
-    ExamplesSharedModule,
-    RouterModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxTableModule,
+        NxSwitcherModule,
+        NxCheckboxModule,
+        NxPaginationModule,
+        NxDropdownModule,
+        NxDatefieldModule,
+        NxMomentDateModule,
+        NxInputModule,
+        NxBadgeModule,
+        NxLinkModule,
+        NxRadioModule,
+        NxIconModule,
+        NxRadioToggleModule,
+        ExamplesSharedModule,
+        RouterModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class TableExamplesModule {
-  static components() {
-    return {
-      'table': TableExampleComponent,
-      'table-condensed': TableCondensedExampleComponent,
-      'table-expandable': TableExpandableExampleComponent,
-      'table-filter-sort-paginate': TableFilterSortPaginateExampleComponent,
-      'table-selecting': TableSelectingExampleComponent,
-      'table-single-select': TableSingleSelectExampleComponent,
-      'table-sorting': TableSortingExampleComponent,
-      'table-zebra': TableZebraExampleComponent,
-      'table-form-elements': TableFormElementsExampleComponent,
-      'table-sticky': TableStickyExampleComponent
-    };
-  }
+    static components() {
+        return {
+            table: TableExampleComponent,
+            'table-condensed': TableCondensedExampleComponent,
+            'table-expandable': TableExpandableExampleComponent,
+            'table-filter-sort-paginate': TableFilterSortPaginateExampleComponent,
+            'table-selecting': TableSelectingExampleComponent,
+            'table-single-select': TableSingleSelectExampleComponent,
+            'table-sorting': TableSortingExampleComponent,
+            'table-zebra': TableZebraExampleComponent,
+            'table-form-elements': TableFormElementsExampleComponent,
+            'table-sticky': TableStickyExampleComponent,
+        };
+    }
 }

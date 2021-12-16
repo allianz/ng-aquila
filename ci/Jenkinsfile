@@ -46,6 +46,13 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
+  stage("Format Check") {
+    shared.withNotification('ci/format', "Format Check") {
+      echo 'Checking Format'
+      sh 'npm run format'
+    }
+  }
+
   stage("Test Docs-ui") {
     shared.withNotification('ci/test/unit/ngx-docs-ui', "Unit Test docs-ui") {
       echo 'Running Unit Tests'

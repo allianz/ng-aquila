@@ -1,144 +1,143 @@
 @import '../shared-styles/index';
 
 :host(.nx-action) {
-  display: block;
-  @include type-style(action);
-  appearance: none;
-  outline: none;
-  box-shadow: none;
-  border: none;
-  margin: 0;
-  cursor: pointer;
-  padding: nx-spacer(2xs) nx-spacer(s) nx-spacer(2xs) 0;
-  width: 100%;
-  transition: all 0.2s ease, padding 0 none;
-  text-decoration: none;
-  @include var(color, action-color);
-  @include var(background-color, action-background-color);
+    display: block;
+    @include type-style(action);
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    padding: nx-spacer(2xs) nx-spacer(s) nx-spacer(2xs) 0;
+    width: 100%;
+    transition: all 0.2s ease, padding 0 none;
+    text-decoration: none;
+    @include var(color, action-color);
+    @include var(background-color, action-background-color);
 
-  &:hover {
-    @include var(color, action-hover-color);
-    @include var(background-color, action-hover-background-color);
-  }
-
-  &.is-expanded {
-    font-weight: nx-font-weight(bold);
-
-    .nx-action__expand-icon {
-      transform: rotateZ(90deg);
+    &:hover {
+        @include var(color, action-hover-color);
+        @include var(background-color, action-hover-background-color);
     }
-  }
 
-  &.is-expandable {
-    .nx-action__wrapper::before {
-      flex: 0 1 nx-spacer(2m);
-      max-width: nx-spacer(2xs);
-      min-width: nx-spacer(3xs);
+    &.is-expanded {
+        font-weight: nx-font-weight(bold);
+
+        .nx-action__expand-icon {
+            transform: rotateZ(90deg);
+        }
     }
-  }
 
-  &.is-selected {
-    @include var(color, action-selected-color);
-    @include var(background-color, action-selected-background-color);
-    font-weight: nx-font-weight(bold);
-  }
-
-  &.nx-tree-node--with-padding {
-    .nx-action__wrapper::before {
-      flex-shrink: 0;
+    &.is-expandable {
+        .nx-action__wrapper::before {
+            flex: 0 1 nx-spacer(2m);
+            max-width: nx-spacer(2xs);
+            min-width: nx-spacer(3xs);
+        }
     }
-  }
 
-  // don't show inner dotted border on firefox
-  &::-moz-focus-inner {
-    border: 0;
-  }
+    &.is-selected {
+        @include var(color, action-selected-color);
+        @include var(background-color, action-selected-background-color);
+        font-weight: nx-font-weight(bold);
+    }
 
-  [dir="rtl"] & {
-    padding: nx-spacer(2xs) 0 nx-spacer(2xs) nx-spacer(s);
-  }
+    &.nx-tree-node--with-padding {
+        .nx-action__wrapper::before {
+            flex-shrink: 0;
+        }
+    }
+
+    // don't show inner dotted border on firefox
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    [dir='rtl'] & {
+        padding: nx-spacer(2xs) 0 nx-spacer(2xs) nx-spacer(s);
+    }
 }
 
 :host.cdk-keyboard-focused {
-  @include focus-style-inset;
-  border-radius: 2 * nx-border-radius(s);
+    @include focus-style-inset;
+    border-radius: 2 * nx-border-radius(s);
 }
 
 .nx-action__expand-icon {
-  display: flex;
-  justify-content: center;
-  transition: all 0.2s ease;
-  transform: rotateZ(0);
-  margin-right: nx-spacer(2xs);
-  flex: 0 0 auto;
-  @include var(font-size, action-expand-icon-size);
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s ease;
+    transform: rotateZ(0);
+    margin-right: nx-spacer(2xs);
+    flex: 0 0 auto;
+    @include var(font-size, action-expand-icon-size);
 
-  :host-context([dir="rtl"]) & {
-    margin-right: initial;
-    margin-left: nx-spacer(2xs);
-    transform: rotateZ(180deg);
-  }
+    :host-context([dir='rtl']) & {
+        margin-right: initial;
+        margin-left: nx-spacer(2xs);
+        transform: rotateZ(180deg);
+    }
 }
 
 .nx-action__wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 
-  &::before {
-    content: '';
-    display: block;
-    flex: 0 1 nx-spacer(2m);
-    min-width: nx-spacer(s);
-    height: 1em;
-  }
+    &::before {
+        content: '';
+        display: block;
+        flex: 0 1 nx-spacer(2m);
+        min-width: nx-spacer(s);
+        height: 1em;
+    }
 }
 
 .nx-action-icon__container {
-  @include var(font-size, action-icon-size);
-  padding-right: nx-spacer(s);
-  flex: 0 0 auto;
-  position: relative;
-  justify-content: center;
-  display: flex;
+    @include var(font-size, action-icon-size);
+    padding-right: nx-spacer(s);
+    flex: 0 0 auto;
+    position: relative;
+    justify-content: center;
+    display: flex;
 
-  :host-context([dir="rtl"]) & {
-    padding-right: initial;
-    padding-left: nx-spacer(s);
-  }
+    :host-context([dir='rtl']) & {
+        padding-right: initial;
+        padding-left: nx-spacer(s);
+    }
 }
 
 ::ng-deep .nx-action__icon {
-  font-weight: nx-font-weight(regular);
+    font-weight: nx-font-weight(regular);
 }
 
 // this is to overwrite if icon size s is used for the action icon (previously used in examples)
 ::ng-deep .nx-action__icon.nx-icon--s {
-  font-size: inherit;
+    font-size: inherit;
 }
 
 .nx-action__label {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  flex: 1 1 50%;
-  text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1 1 50%;
+    text-align: left;
 
-  :host-context([dir="rtl"]) & {
-    text-align: right;
-  }
+    :host-context([dir='rtl']) & {
+        text-align: right;
+    }
 }
 
-
 @media screen and (-ms-high-contrast: active) {
-  :host(.nx-action) {
-    &.is-selected,
-    &:hover {
-      -ms-high-contrast-adjust: none;
-      background-color: highlight;
-      color: highlightText;
-      font-weight: nx-font-weight(regular);
+    :host(.nx-action) {
+        &.is-selected,
+        &:hover {
+            -ms-high-contrast-adjust: none;
+            background-color: highlight;
+            color: highlightText;
+            font-weight: nx-font-weight(regular);
+        }
     }
-  }
 }

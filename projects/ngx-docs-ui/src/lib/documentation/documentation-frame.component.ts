@@ -14,146 +14,139 @@ import { LogoPath, GithubLinkConfig } from '../core/types';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 export class NxDocFeatures {
-  themeSwitcher = false;
+    themeSwitcher = false;
 }
 
 export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_FEATURE_FLAGS');
 
 @Component({
-  selector: 'nxv-viewer',
-  templateUrl: 'documentation-frame.component.html',
-  styleUrls: ['./documentation-frame.scss']
+    selector: 'nxv-viewer',
+    templateUrl: 'documentation-frame.component.html',
+    styleUrls: ['./documentation-frame.scss'],
 })
-
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
-  public manifestFile!: Blob;
-  private _destroyed: Subject<void> = new Subject();
-  selectedTheme: Theme;
-  themes: Theme[];
+    public manifestFile!: Blob;
+    private _destroyed: Subject<void> = new Subject();
+    selectedTheme: Theme;
+    themes: Theme[];
 
-  mobileSidebar: boolean = false;
+    mobileSidebar: boolean = false;
 
-  showThemingSwitcher = false;
-  // TODO: set this according to the calling application (injection token?), always there right now
-  showThemingSidebar = false;
+    showThemingSwitcher = false;
+    // TODO: set this according to the calling application (injection token?), always there right now
+    showThemingSidebar = false;
 
-  showMobileMenuButton: boolean = false;
+    showMobileMenuButton: boolean = false;
 
-   @ViewChild(CssVarSidebarComponent)
-  cssVarSidebar!: CssVarSidebarComponent;
+    @ViewChild(CssVarSidebarComponent)
+    cssVarSidebar!: CssVarSidebarComponent;
 
-  constructor(
-    public manifestService: ManifestService,
-    private _rabbitHole: RabbitHole,
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _themeSwitcherService: ThemeSwitcherService,
-    private iconRegistry: NxIconRegistry,
-    @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures,
-    @Inject(NX_DOCS_LOGO_PATH) public logoPath: LogoPath,
-    @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig
-  ) {
+    constructor(
+        public manifestService: ManifestService,
+        private _rabbitHole: RabbitHole,
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private _themeSwitcherService: ThemeSwitcherService,
+        private iconRegistry: NxIconRegistry,
+        @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures,
+        @Inject(NX_DOCS_LOGO_PATH) public logoPath: LogoPath,
+        @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig,
+    ) {
+        this.themes = this._themeSwitcherService.themes();
+        this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
 
-    this.themes = this._themeSwitcherService.themes();
-    this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
-
-    const themeQuery = this._route.snapshot.queryParamMap.get('theme');
-    const themeFromQuery = this._themeSwitcherService.get(themeQuery as string);
-    if (themeFromQuery) {
-      this.selectedTheme = themeFromQuery;
-      this._themeSwitcherService.switchTheme(this.selectedTheme);
-    } else {
-      this.selectedTheme = this.themes[0];
-    }
-
-    this._rabbitHole.showThemeEgg.pipe(
-      takeUntil(this._destroyed)
-    ).subscribe((showTheming) => {
-      if (!showTheming) {
+        const themeQuery = this._route.snapshot.queryParamMap.get('theme');
+        const themeFromQuery = this._themeSwitcherService.get(themeQuery as string);
         if (themeFromQuery) {
-          this._themeSwitcherService.switchTheme(themeFromQuery);
+            this.selectedTheme = themeFromQuery;
+            this._themeSwitcherService.switchTheme(this.selectedTheme);
         } else {
-          this._themeSwitcherService.removeTheming();
+            this.selectedTheme = this.themes[0];
         }
-      } else {
-        this._themeSwitcherService.switchTheme(this.selectedTheme);
-      }
-      if (!this._featureFlags?.themeSwitcher) {
-        this.showThemingSwitcher = showTheming;
-      }
-      this.showThemingSidebar = showTheming;
 
-    });
+        this._rabbitHole.showThemeEgg.pipe(takeUntil(this._destroyed)).subscribe(showTheming => {
+            if (!showTheming) {
+                if (themeFromQuery) {
+                    this._themeSwitcherService.switchTheme(themeFromQuery);
+                } else {
+                    this._themeSwitcherService.removeTheming();
+                }
+            } else {
+                this._themeSwitcherService.switchTheme(this.selectedTheme);
+            }
+            if (!this._featureFlags?.themeSwitcher) {
+                this.showThemingSwitcher = showTheming;
+            }
+            this.showThemingSidebar = showTheming;
+        });
 
-    this._themeSwitcherService.themeChanged.pipe(
-      takeUntil(this._destroyed)
-    ).subscribe(theme => {
-      this.selectedTheme = theme;
-      if (this.cssVarSidebar) {
-        this.cssVarSidebar.reset();
-      }
-    });
+        this._themeSwitcherService.themeChanged.pipe(takeUntil(this._destroyed)).subscribe(theme => {
+            this.selectedTheme = theme;
+            if (this.cssVarSidebar) {
+                this.cssVarSidebar.reset();
+            }
+        });
 
-    this.iconRegistry.registerFont('fa', 'fas', 'fa-');
-    this.iconRegistry.addFontIcon('bars', 'bars', 'fa');
+        this.iconRegistry.registerFont('fa', 'fas', 'fa-');
+        this.iconRegistry.addFontIcon('bars', 'bars', 'fa');
 
-    this._router.events.forEach((event) => {
-      // hide the mobile sidebar every time the route changes
-      if (event instanceof NavigationStart) {
-        this.mobileSidebar = false;
-      }
-      // show the mobile menu button only when a documenation or a guide page is shown
-      if (event instanceof NavigationEnd) {
-        this.showMobileMenuButton = (this._router.url.match(/^\/documentation|guides\//)) ? true : false;
-      }
-    });
-  }
-
-  selectTheme(theme: Theme) {
-    this.selectedTheme = theme;
-    this._themeSwitcherService.switchTheme(theme);
-  }
-
-  ngAfterViewInit() {
-    this.hideEggs();
-  }
-
-  onSubmit() {
-    const reader = new FileReader();
-
-    reader.onload = result => {
-      const manifestData = JSON.parse(reader.result as string);
-      this.manifestService.update(manifestData);
-    };
-
-    reader.readAsText(this.manifestFile);
-  }
-
-  onFileChange(event: any) {
-    this.manifestFile = event.currentTarget.files[0];
-  }
-
-  hideEggs() {
-    new Egg('left,t,right', () => {
-      this._rabbitHole.toggleTheming();
-    }).listen();
-  }
-
-  clearStyleTags(tags: HTMLCollection) {
-    const attributes = ['data-cssvars', 'data-cssvars-job', 'data-cssvars-group'];
-    for (let i = 0; i < tags.length; i++) {
-      const el = tags[i];
-      const dataCssVarAttr = el.getAttribute('data-cssvars');
-      if (dataCssVarAttr && dataCssVarAttr === 'out') {
-        el.parentNode?.removeChild(el);
-      } else {
-        attributes.forEach(attr => el.removeAttribute(attr));
-      }
+        this._router.events.forEach(event => {
+            // hide the mobile sidebar every time the route changes
+            if (event instanceof NavigationStart) {
+                this.mobileSidebar = false;
+            }
+            // show the mobile menu button only when a documenation or a guide page is shown
+            if (event instanceof NavigationEnd) {
+                this.showMobileMenuButton = this._router.url.match(/^\/documentation|guides\//) ? true : false;
+            }
+        });
     }
-  }
 
-  ngOnDestroy() {
-    this._destroyed.next();
-    this._destroyed.complete();
-  }
+    selectTheme(theme: Theme) {
+        this.selectedTheme = theme;
+        this._themeSwitcherService.switchTheme(theme);
+    }
+
+    ngAfterViewInit() {
+        this.hideEggs();
+    }
+
+    onSubmit() {
+        const reader = new FileReader();
+
+        reader.onload = result => {
+            const manifestData = JSON.parse(reader.result as string);
+            this.manifestService.update(manifestData);
+        };
+
+        reader.readAsText(this.manifestFile);
+    }
+
+    onFileChange(event: any) {
+        this.manifestFile = event.currentTarget.files[0];
+    }
+
+    hideEggs() {
+        new Egg('left,t,right', () => {
+            this._rabbitHole.toggleTheming();
+        }).listen();
+    }
+
+    clearStyleTags(tags: HTMLCollection) {
+        const attributes = ['data-cssvars', 'data-cssvars-job', 'data-cssvars-group'];
+        for (let i = 0; i < tags.length; i++) {
+            const el = tags[i];
+            const dataCssVarAttr = el.getAttribute('data-cssvars');
+            if (dataCssVarAttr && dataCssVarAttr === 'out') {
+                el.parentNode?.removeChild(el);
+            } else {
+                attributes.forEach(attr => el.removeAttribute(attr));
+            }
+        }
+    }
+
+    ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
+    }
 }

@@ -3,44 +3,42 @@ import { Subject } from 'rxjs';
 
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.
 @Directive({
-  selector: '[nxFileUploadButton]',
-  host: {
-    '[attr.aria-describedby]': '_ariaDescribedby || null',
-    '[attr.disabled]': 'disabled || null',
-    '[class.nx-file-upload-button]': 'true'
-  }
+    selector: '[nxFileUploadButton]',
+    host: {
+        '[attr.aria-describedby]': '_ariaDescribedby || null',
+        '[attr.disabled]': 'disabled || null',
+        '[class.nx-file-upload-button]': 'true',
+    },
 })
 export class NxFileUploaderButtonDirective implements OnDestroy {
-  _clicked = new Subject();
-  _ariaDescribedby: string | undefined;
-  private _disabled: boolean = false;
+    _clicked = new Subject();
+    _ariaDescribedby: string | undefined;
+    private _disabled: boolean = false;
 
-  constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-  ) { }
+    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
-  /** Whether the file uploader is disabled */
-  @Input()
-  set disabled(value: boolean) {
-    this._disabled = value;
-    this._changeDetectorRef.markForCheck();
-  }
+    /** Whether the file uploader is disabled */
+    @Input()
+    set disabled(value: boolean) {
+        this._disabled = value;
+        this._changeDetectorRef.markForCheck();
+    }
 
-  get disabled(): boolean {
-    return this._disabled;
-  }
+    get disabled(): boolean {
+        return this._disabled;
+    }
 
-  /** @docs-private */
-  setDescribedByIds(ids: string[]): void {
-    this._ariaDescribedby = ids.join(' ');
-  }
+    /** @docs-private */
+    setDescribedByIds(ids: string[]): void {
+        this._ariaDescribedby = ids.join(' ');
+    }
 
-  /** @docs-private */
-  @HostListener('click') onClick() {
-    this._clicked.next();
-  }
+    /** @docs-private */
+    @HostListener('click') onClick() {
+        this._clicked.next();
+    }
 
-  ngOnDestroy(): void {
-    this._clicked.complete();
-  }
+    ngOnDestroy(): void {
+        this._clicked.complete();
+    }
 }

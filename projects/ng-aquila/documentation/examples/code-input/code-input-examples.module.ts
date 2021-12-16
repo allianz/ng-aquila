@@ -13,36 +13,32 @@ import { CodeInputTypeExampleComponent } from './code-input-type/code-input-type
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  CodeInputDisabledExampleComponent,
-  CodeInputFourCharExampleComponent,
-  CodeInputLocalizeExampleComponent,
-  CodeInputModelExampleComponent,
-  CodeInputNegativeExampleComponent,
-  CodeInputSevenCharExampleComponent,
-  CodeInputSixCharExampleComponent,
-  CodeInputTypeExampleComponent
+    CodeInputDisabledExampleComponent,
+    CodeInputFourCharExampleComponent,
+    CodeInputLocalizeExampleComponent,
+    CodeInputModelExampleComponent,
+    CodeInputNegativeExampleComponent,
+    CodeInputSevenCharExampleComponent,
+    CodeInputSixCharExampleComponent,
+    CodeInputTypeExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxCodeInputModule,
-    NxErrorModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxCodeInputModule, NxErrorModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class CodeExamplesModule {
-  static components() {
-    return {
-      'code-input-disabled': CodeInputDisabledExampleComponent,
-      'code-input-four-char': CodeInputFourCharExampleComponent,
-      'code-input-localize': CodeInputLocalizeExampleComponent,
-      'code-input-model': CodeInputModelExampleComponent,
-      'code-input-negative': CodeInputNegativeExampleComponent,
-      'code-input-seven-char': CodeInputSevenCharExampleComponent,
-      'code-input-six-char': CodeInputSixCharExampleComponent,
-      'code-input-type': CodeInputTypeExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'code-input-disabled': CodeInputDisabledExampleComponent,
+            'code-input-four-char': CodeInputFourCharExampleComponent,
+            'code-input-localize': CodeInputLocalizeExampleComponent,
+            'code-input-model': CodeInputModelExampleComponent,
+            'code-input-negative': CodeInputNegativeExampleComponent,
+            'code-input-seven-char': CodeInputSevenCharExampleComponent,
+            'code-input-six-char': CodeInputSixCharExampleComponent,
+            'code-input-type': CodeInputTypeExampleComponent,
+        };
+    }
 }

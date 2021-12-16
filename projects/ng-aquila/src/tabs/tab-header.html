@@ -1,15 +1,5 @@
-<nx-tab-scroll-indicator 
-    *ngIf="scrollable"
-    scrollDirection="start"
-    [isScrolledToStart]="_isScrolledToStart"
-    (buttonClicked)="scrollToStart()">
-</nx-tab-scroll-indicator>
+<nx-tab-scroll-indicator *ngIf="scrollable" scrollDirection="start" [isScrolledToStart]="_isScrolledToStart" (buttonClicked)="scrollToStart()"> </nx-tab-scroll-indicator>
 <div #tabsList class="nx-tab-header" (keydown)="handleKeydown($event)" role="tablist" tabindex="-1">
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </div>
-<nx-tab-scroll-indicator
-    *ngIf="scrollable"
-    scrollDirection="end"
-    [isScrolledToEnd]="_isScrolledToEnd"
-    (buttonClicked)="scrollToEnd()">
-</nx-tab-scroll-indicator>
+<nx-tab-scroll-indicator *ngIf="scrollable" scrollDirection="end" [isScrolledToEnd]="_isScrolledToEnd" (buttonClicked)="scrollToEnd()"> </nx-tab-scroll-indicator>

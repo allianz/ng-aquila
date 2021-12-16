@@ -1,19 +1,20 @@
-<div class="nx-sidebar__box"
-  [attr.aria-expanded]="open">
-  <div class="nx-sidebar__content">
-    <ng-content></ng-content>
-  </div>
-  <ng-content select="nx-sidebar-footer"></ng-content>
+<div class="nx-sidebar__box" [attr.aria-expanded]="open">
+    <div class="nx-sidebar__content">
+        <ng-content></ng-content>
+    </div>
+    <ng-content select="nx-sidebar-footer"></ng-content>
 </div>
 
-<button #resizeHandle
-  class="nx-sidebar__handle"
-  *ngIf="resizeable"
-  tabindex="0"
-  type="button"
-  (mousedown)="_onResizeStart($event)"
-  (keydown)="_onSidebarKeydown($event)"
-  (touchstart)="_onResizeStart($event)"
-  (click)="_onResizeHandleClick($event)"
-  [attr.aria-label]="resizeHandleAriaLabel">
+<button
+    #resizeHandle
+    class="nx-sidebar__handle"
+    *ngIf="resizeable"
+    tabindex="0"
+    type="button"
+    (mousedown)="_onResizeStart($event)"
+    (keydown)="_onSidebarKeydown($event)"
+    (touchstart)="_onResizeStart($event)"
+    (click)="_onResizeHandleClick($event)"
+    [attr.aria-label]="resizeHandleAriaLabel"
+>
 </button>

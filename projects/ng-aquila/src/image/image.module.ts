@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { NxFigureComponent } from './figure.component';
 
 @NgModule({
-  declarations: [ NxFigureComponent, NxImageDirective ],
-  exports: [ NxFigureComponent, NxImageDirective ]
+    declarations: [NxFigureComponent, NxImageDirective],
+    exports: [NxFigureComponent, NxImageDirective],
 })
-export class NxImageModule {
-}
+export class NxImageModule {}

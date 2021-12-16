@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import { Manifest } from './manifest';
 import { DocVersions, LogoPath, GithubLinkConfig } from './types';
 
-export const NXV_MANIFEST_TOKEN = new InjectionToken<{value: Manifest}>('NXV_MANIFEST_TOKEN');
+export const NXV_MANIFEST_TOKEN = new InjectionToken<{ value: Manifest }>('NXV_MANIFEST_TOKEN');
 export const NX_DOC_VERSIONS = new InjectionToken<DocVersions>('NX_DOC_VERSIONS');
 export const NX_DOCS_LOGO_PATH = new InjectionToken<LogoPath>('NX_DOCS_LOGO_PATH');
 export const NXV_FOOTER = new InjectionToken<any>('NXV_FOOTER');

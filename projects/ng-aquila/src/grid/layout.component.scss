@@ -1,43 +1,43 @@
 @import './mixins.scss';
 
 :host(.nx-grid) {
-  @include make-container($gutters: $grid-gutter-widths);
+    @include make-container($gutters: $grid-gutter-widths);
 }
 
 // Use to remove all spacing between cells
 :host(.nx-grid--no-gutters) ::ng-deep {
-  padding-left: 0;
-  padding-right: 0;
-
-  .nx-grid__row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  // only from all immediate children columns (to prevent runaway style inheritance).
-  .nx-grid__row > [class*="nx-grid__column"] {
     padding-left: 0;
     padding-right: 0;
-  }
+
+    .nx-grid__row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    // only from all immediate children columns (to prevent runaway style inheritance).
+    .nx-grid__row > [class*='nx-grid__column'] {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 // Use to remove the outer spacing, for "edge to edge container" components
 :host(.nx-grid--no-padding) ::ng-deep {
-  padding-left: 0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 
-  .nx-grid__row {
-    margin-left: -$grid-gutter-width-base * 0.5;
-    margin-right: -$grid-gutter-width-base * 0.5;
+    .nx-grid__row {
+        margin-left: -$grid-gutter-width-base * 0.5;
+        margin-right: -$grid-gutter-width-base * 0.5;
 
-    @include media-breakpoint-down(small) {
-      margin-left: -$grid-gutter-width-mobile * 0.5;
-      margin-right: -$grid-gutter-width-mobile * 0.5;
+        @include media-breakpoint-down(small) {
+            margin-left: -$grid-gutter-width-mobile * 0.5;
+            margin-right: -$grid-gutter-width-mobile * 0.5;
+        }
     }
-  }
 }
 
 :host(.nx-grid--max-width) {
-  max-width: 100%;
-  @include var(width, grid-max-width);
+    max-width: 100%;
+    @include var(width, grid-max-width);
 }

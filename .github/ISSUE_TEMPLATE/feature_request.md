@@ -4,7 +4,6 @@ about: Suggest a component or feature
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ## Title <component name>

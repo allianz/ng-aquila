@@ -9,26 +9,27 @@ countries.registerLocale(fr);
 
 @Injectable()
 export class MyPhoneInputIntl extends NxPhoneInputIntl {
-  areaCodeLabel = 'Ländervorwahl';
-  countryNames = countries.getNames('de', { select: 'official' })
+    areaCodeLabel = 'Ländervorwahl';
+    countryNames = countries.getNames('de', { select: 'official' });
 }
 
 /** @title Phone Input Internationalization */
 @Component({
-  templateUrl: 'phone-input-i18n-example.html',
-  styleUrls: ['./phone-input-i18n-example.html'],
-  selector: 'phone-input-i18n-example',
-  providers: [
-    {
-      provide: NxPhoneInputIntl, useClass: MyPhoneInputIntl
-    }
-  ]
+    templateUrl: 'phone-input-i18n-example.html',
+    styleUrls: ['./phone-input-i18n-example.html'],
+    selector: 'phone-input-i18n-example',
+    providers: [
+        {
+            provide: NxPhoneInputIntl,
+            useClass: MyPhoneInputIntl,
+        },
+    ],
 })
 export class PhoneInputI18nExampleComponent implements OnInit {
-  value = '';
-  frenchCountries = countries.getNames('fr', { select: 'official' });
-  overlayLabel = 'my overlay label'
-  constructor() { }
+    value = '';
+    frenchCountries = countries.getNames('fr', { select: 'official' });
+    overlayLabel = 'my overlay label';
+    constructor() {}
 
-  ngOnInit() { }
+    ngOnInit() {}
 }

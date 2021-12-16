@@ -12,41 +12,25 @@ import { NxTabGroupComponent } from './tab-group';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxTabLabelDirective } from './tab-label';
 import { NxTabNavBarComponent, NxTabLinkDirective } from './tab-nav-bar';
-import { NxTabContentDirective} from './tab-content';
+import { NxTabContentDirective } from './tab-content';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PortalModule,
-    NxAccordionModule,
-    NxIconModule,
-    NxButtonModule
-  ],
-  exports: [
-    NxTabComponent,
-    NxTabGroupComponent,
-    NxTabLabelDirective,
-    NxTabLabelWrapperDirective,
-    NxTabHeaderComponent,
-    NxTabBodyComponent,
-    NxTabNavBarComponent,
-    NxTabLinkDirective,
-    NxTabContentDirective
-  ],
-  declarations: [
-    NxTabComponent,
-    NxTabGroupComponent,
-    NxTabLabelDirective,
-    NxTabLabelWrapperDirective,
-    NxTabHeaderComponent,
-    NxTabBodyComponent,
-    NxTabNavBarComponent,
-    NxTabLinkDirective,
-    NxTabContentDirective,
-    NxTabHeaderOutletComponent,
-    NxTabScrollIndicator
-  ]
+    imports: [CommonModule, PortalModule, NxAccordionModule, NxIconModule, NxButtonModule],
+    exports: [NxTabComponent, NxTabGroupComponent, NxTabLabelDirective, NxTabLabelWrapperDirective, NxTabHeaderComponent, NxTabBodyComponent, NxTabNavBarComponent, NxTabLinkDirective, NxTabContentDirective],
+    declarations: [
+        NxTabComponent,
+        NxTabGroupComponent,
+        NxTabLabelDirective,
+        NxTabLabelWrapperDirective,
+        NxTabHeaderComponent,
+        NxTabBodyComponent,
+        NxTabNavBarComponent,
+        NxTabLinkDirective,
+        NxTabContentDirective,
+        NxTabHeaderOutletComponent,
+        NxTabScrollIndicator,
+    ],
 })
-export class NxTabsModule { }
+export class NxTabsModule {}

@@ -1,32 +1,31 @@
 <nx-checkbox class="nx-margin-bottom-s">
-  Default<br>
-  The box is left unchecked.
+    Default<br />
+    The box is left unchecked.
 </nx-checkbox>
 
 <nx-checkbox [checked]="true" class="nx-margin-bottom-s">
-  Checked<br>
-  An action or item is selected.
+    Checked<br />
+    An action or item is selected.
 </nx-checkbox>
 
 <nx-checkbox [disabled]="true" class="nx-margin-bottom-s">
-  Disabled<br>
-  The checkbox is inactive due to previously checked or unchecked boxes.
+    Disabled<br />
+    The checkbox is inactive due to previously checked or unchecked boxes.
 </nx-checkbox>
 
 <nx-checkbox [checked]="true" [disabled]="true" class="nx-margin-bottom-s">
-  Checked & disabled<br>
-  An action or item has been pre-selected due to previously checked or unchecked boxes.
+    Checked & disabled<br />
+    An action or item has been pre-selected due to previously checked or unchecked boxes.
 </nx-checkbox>
 
 <nx-checkbox [indeterminate]="true" class="nx-margin-bottom-s">
-  Indeterminate<br>
-  If all subordinate boxes are checked, the "mother checkbox" may be as well.
-  But if only _some_ of them are, it's state is indeterminate, i.e. partially checked.
-  This may come in handy if you work with nested checkboxes.
+    Indeterminate<br />
+    If all subordinate boxes are checked, the "mother checkbox" may be as well. But if only _some_ of them are, it's
+    state is indeterminate, i.e. partially checked. This may come in handy if you work with nested checkboxes.
 </nx-checkbox>
 
 <nx-checkbox [indeterminate]="true" [disabled]="true">
-  Indeterminate & disabled<br>
-  The box is indeterminate and can not be interacted with directly,
-  but only via checking all of the subordinate boxes nested below.
+    Indeterminate & disabled<br />
+    The box is indeterminate and can not be interacted with directly, but only via checking all of the subordinate boxes
+    nested below.
 </nx-checkbox>

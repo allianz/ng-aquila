@@ -1,7 +1,7 @@
 <nx-icon class="nx-toggle-button__mobile-check" name="check" aria-hidden="true"></nx-icon>
 <!-- If there is no label defined, use the circleText instead -->
-<span class="nx-toggle-button__label-text"><ng-template *ngIf="label; then labelContent else circleTextContent"></ng-template></span>
-<span *ngIf="hint" class="nx-toggle-button__label-hint">({{hint}})</span>
+<span class="nx-toggle-button__label-text"><ng-template *ngIf="label; then labelContent; else circleTextContent"></ng-template></span>
+<span *ngIf="hint" class="nx-toggle-button__label-hint">({{ hint }})</span>
 
-<ng-template #labelContent>{{label}}</ng-template>
-<ng-template #circleTextContent>{{circleText}}</ng-template>
+<ng-template #labelContent>{{ label }}</ng-template>
+<ng-template #circleTextContent>{{ circleText }}</ng-template>

@@ -18,35 +18,8 @@ import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option
 import { NxMultiSelectComponent } from './multi-select/multi-select.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxFormfieldModule,
-    NxCheckboxModule,
-    OverlayModule,
-    A11yModule,
-    NxIconModule,
-    ObserversModule,
-    FormsModule,
-    NxTooltipModule,
-    NxButtonModule,
-    NxInputModule
-  ],
-  declarations: [
-    NxDropdownComponent,
-    NxDropdownItemComponent,
-    NxDropdownGroupComponent,
-    NxDropdownClosedLabelDirective,
-    NxMultiSelectComponent,
-    NxMultiSelectOptionComponent
-  ],
-  exports: [
-    NxDropdownComponent,
-    NxDropdownItemComponent,
-    NxDropdownGroupComponent,
-    NxDropdownClosedLabelDirective,
-    NxMultiSelectComponent
-  ]
+    imports: [CommonModule, NxFormfieldModule, NxCheckboxModule, OverlayModule, A11yModule, NxIconModule, ObserversModule, FormsModule, NxTooltipModule, NxButtonModule, NxInputModule],
+    declarations: [NxDropdownComponent, NxDropdownItemComponent, NxDropdownGroupComponent, NxDropdownClosedLabelDirective, NxMultiSelectComponent, NxMultiSelectOptionComponent],
+    exports: [NxDropdownComponent, NxDropdownItemComponent, NxDropdownGroupComponent, NxDropdownClosedLabelDirective, NxMultiSelectComponent],
 })
-export class NxDropdownModule {
-
-}
+export class NxDropdownModule {}

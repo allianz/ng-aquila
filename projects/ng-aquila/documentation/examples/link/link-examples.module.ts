@@ -13,35 +13,30 @@ import { LinkSizeExampleComponent } from './link-size/link-size-example';
 import { LinkWithinTextExampleComponent } from './link-within-text/link-within-text-example';
 
 const EXAMPLES = [
-  LinkBlackExampleComponent,
-  LinkDefaultExampleComponent,
-  LinkIconsExampleComponent,
-  LinkMultipleExampleComponent,
-  LinkNegativeExampleComponent,
-  LinkSizeExampleComponent,
-  LinkWithinTextExampleComponent
+    LinkBlackExampleComponent,
+    LinkDefaultExampleComponent,
+    LinkIconsExampleComponent,
+    LinkMultipleExampleComponent,
+    LinkNegativeExampleComponent,
+    LinkSizeExampleComponent,
+    LinkWithinTextExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxLinkModule,
-    NxIconModule,
-    NxCopytextModule,
-    RouterModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxLinkModule, NxIconModule, NxCopytextModule, RouterModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class LinkExamplesModule {
-  static components() {
-    return {
-      'link-black': LinkBlackExampleComponent,
-      'link-default': LinkDefaultExampleComponent,
-      'link-icons': LinkIconsExampleComponent,
-      'link-multiple': LinkMultipleExampleComponent,
-      'link-negative': LinkNegativeExampleComponent,
-      'link-size': LinkSizeExampleComponent,
-      'link-within-text': LinkWithinTextExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'link-black': LinkBlackExampleComponent,
+            'link-default': LinkDefaultExampleComponent,
+            'link-icons': LinkIconsExampleComponent,
+            'link-multiple': LinkMultipleExampleComponent,
+            'link-negative': LinkNegativeExampleComponent,
+            'link-size': LinkSizeExampleComponent,
+            'link-within-text': LinkWithinTextExampleComponent,
+        };
+    }
 }

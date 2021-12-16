@@ -5,17 +5,9 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxPaginationUtils } from './pagination-utils';
 
 @NgModule({
-  imports: [
-    CommonModule, NxIconModule
-  ],
-  declarations: [
-    NxPaginationComponent
-  ],
-  exports: [
-    NxPaginationComponent
-  ],
-  providers: [
-    NxPaginationUtils
-  ]
+    imports: [CommonModule, NxIconModule],
+    declarations: [NxPaginationComponent],
+    exports: [NxPaginationComponent],
+    providers: [NxPaginationUtils],
 })
-export class NxPaginationModule { }
+export class NxPaginationModule {}

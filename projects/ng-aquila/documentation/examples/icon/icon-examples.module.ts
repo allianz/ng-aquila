@@ -11,30 +11,30 @@ import { IconRegistryExampleComponent } from './icon-registry/icon-registry-exam
 import { IconSizesExampleComponent } from './icon-sizes/icon-sizes-example';
 
 const EXAMPLES = [
-  IconEssentialIconsExampleComponent,
-  IconEssentialOverrideExampleComponent,
-  IconFilledExampleComponent,
-  IconGeneralExampleComponent,
-  IconOutlineExampleComponent,
-  IconRegistryExampleComponent,
-  IconSizesExampleComponent
+    IconEssentialIconsExampleComponent,
+    IconEssentialOverrideExampleComponent,
+    IconFilledExampleComponent,
+    IconGeneralExampleComponent,
+    IconOutlineExampleComponent,
+    IconRegistryExampleComponent,
+    IconSizesExampleComponent,
 ];
 
- @NgModule({
-  imports: [NxIconModule, CommonModule],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxIconModule, CommonModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class IconExamplesModule {
-  static components() {
-    return {
-      'icon-essential-icons': IconEssentialIconsExampleComponent,
-      'icon-essential-override': IconEssentialOverrideExampleComponent,
-      'icon-filled': IconFilledExampleComponent,
-      'icon-general': IconGeneralExampleComponent,
-      'icon-outline': IconOutlineExampleComponent,
-      'icon-registry': IconRegistryExampleComponent,
-      'icon-sizes': IconSizesExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'icon-essential-icons': IconEssentialIconsExampleComponent,
+            'icon-essential-override': IconEssentialOverrideExampleComponent,
+            'icon-filled': IconFilledExampleComponent,
+            'icon-general': IconGeneralExampleComponent,
+            'icon-outline': IconOutlineExampleComponent,
+            'icon-registry': IconRegistryExampleComponent,
+            'icon-sizes': IconSizesExampleComponent,
+        };
+    }
 }

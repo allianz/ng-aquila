@@ -5,49 +5,47 @@ import { NxToolbarModule } from './toolbar.module';
 
 @Directive()
 abstract class ToolbarTest {
-  @ViewChild(NxToolbarComponent) toolbarInstance!: NxToolbarComponent;
+    @ViewChild(NxToolbarComponent) toolbarInstance!: NxToolbarComponent;
 }
 
 describe('NxToolbarComponent', () => {
-  let fixture: ComponentFixture<NxToolbarComponent>;
-  let testInstance: ToolbarTest;
-  let toolbarInstance: NxToolbarComponent;
+    let fixture: ComponentFixture<NxToolbarComponent>;
+    let testInstance: ToolbarTest;
+    let toolbarInstance: NxToolbarComponent;
 
-  const createTestComponent = (component: Type<ToolbarTest>) => {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.debugElement.componentInstance;
-    toolbarInstance = testInstance.toolbarInstance;
-  };
+    const createTestComponent = (component: Type<ToolbarTest>) => {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.debugElement.componentInstance;
+        toolbarInstance = testInstance.toolbarInstance;
+    };
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        BasicToolbar
-      ],
-      imports: [
-        NxToolbarModule
-      ]
-    }).compileComponents();
-  }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [BasicToolbar],
+                imports: [NxToolbarModule],
+            }).compileComponents();
+        }),
+    );
 
-  it('should create toolbar component', waitForAsync(() => {
-    createTestComponent(BasicToolbar);
-    expect(toolbarInstance).toBeTruthy();
-  }));
+    it(
+        'should create toolbar component',
+        waitForAsync(() => {
+            createTestComponent(BasicToolbar);
+            expect(toolbarInstance).toBeTruthy();
+        }),
+    );
 
-  describe('a11y', () => {
-    it('has no accessibility violations', async () => {
-      createTestComponent(BasicToolbar);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+    describe('a11y', () => {
+        it('has no accessibility violations', async () => {
+            createTestComponent(BasicToolbar);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
     });
-  });
 });
 
 @Component({
-  template: `
-      <nx-toolbar></nx-toolbar>
-  `
+    template: ` <nx-toolbar></nx-toolbar> `,
 })
-class BasicToolbar extends ToolbarTest {
-}
+class BasicToolbar extends ToolbarTest {}

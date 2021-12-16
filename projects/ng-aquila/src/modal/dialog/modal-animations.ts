@@ -14,9 +14,7 @@ export const NxModalAnimations: {
         // decimate the animation performance. Leaving it as `none` solves both issues.
         state('void, exit', style({ opacity: 0, transform: 'scale(1.3)' })),
         state('enter', style({ transform: 'none' })),
-        transition('* => enter', animate('200ms cubic-bezier(0, 0, 0.2, 1)',
-            style({ transform: 'scale(1)', opacity: 1 }))),
-        transition('* => void, * => exit',
-            animate('200ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({ opacity: 0, transform: 'scale(1.3)' }))),
-    ])
+        transition('* => enter', animate('200ms cubic-bezier(0, 0, 0.2, 1)', style({ transform: 'scale(1)', opacity: 1 }))),
+        transition('* => void, * => exit', animate('200ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({ opacity: 0, transform: 'scale(1.3)' }))),
+    ]),
 };

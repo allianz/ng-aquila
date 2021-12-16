@@ -1,5 +1,5 @@
 export interface ExampleItem {
-  id: string;
-  title: string;
-  component: any;
+    id: string;
+    title: string;
+    component: any;
 }

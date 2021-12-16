@@ -4,349 +4,347 @@ $check-icon-border-size: nx-border-size(m);
 $check-icon-size: nx-spacer(2m);
 
 :host-context(.is-responsive) {
-  @include media-breakpoint-down("small") {
-    display: none;
-  }
+    @include media-breakpoint-down('small') {
+        display: none;
+    }
 }
 
 :host {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-
-  .nx-toggle-circle__label-text {
-    @include type-style(circle-toggle-label);
-    @include var(color, circle-toggle-label-color);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+    cursor: pointer;
     position: relative;
-    display: inline-block;
-    padding-top: nx-spacer(xs);
-    max-width: 16rem;
-    z-index: 1;
+    text-align: center;
 
-    @include media-breakpoint-response(mobile) {
-      @include type-style(circle-toggle-label-mobile);
-    }
-  }
+    .nx-toggle-circle__label-text {
+        @include type-style(circle-toggle-label);
+        @include var(color, circle-toggle-label-color);
+        position: relative;
+        display: inline-block;
+        padding-top: nx-spacer(xs);
+        max-width: 16rem;
+        z-index: 1;
 
-  .is-label-bold {
-    font-weight: nx-font-weight(bold);
-
-    @include media-breakpoint-down("small") {
-      font-weight: nx-font-weight(regular);
-    }
-  }
-
-  .nx-toggle-circle__icon-wrapper {
-    height: nx-spacer(3xl);
-    width: nx-spacer(3xl);
-    border-radius: 50%;
-    border-width: $check-icon-border-size;
-    border-style: solid;
-    border-color: var(--circle-toggle-border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
-
-    @include media-breakpoint-response(mobile) {
-      height: nx-spacer(xl);
-      width: nx-spacer(xl);
-
-      .nx-toggle-circle__icon nx-icon {
-        font-size: nx-font-size(l);
-      }
-    }
-  }
-
-  .nx-toggle-circle__check-icon {
-    @include var(background-color, circle-toggle-checkmark-background-color);
-    @include var(color, circle-toggle-checkmark-color);
-    @include var(border-color, circle-toggle-checkmark-border-color);
-    border-radius: 50%;
-    border-width: $check-icon-border-size;
-    border-style: solid;
-    font-size: nx-font-size(s);
-    width: $check-icon-size;
-    height: $check-icon-size;
-    position: absolute;
-    top: - nx-spacer(2xs);
-    right: calc(50% - #{nx-spacer(4m)});
-    transition: opacity .3s;
-    z-index: 1;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    [dir="rtl"] & {
-      left: calc(50% - #{nx-spacer(4m)});
-      right: auto;
-    }
-  }
-
-  .nx-toggle-circle__check-focus {
-    border-radius: 50%;
-    width: $check-icon-size - 2 * $check-icon-border-size;
-    height: $check-icon-size - 2 * $check-icon-border-size;
-    position: absolute;
-    top: - nx-spacer(2xs) + $check-icon-border-size;
-    right: calc(50% - #{nx-spacer(4m)} + #{$check-icon-border-size});
-    z-index: -1;
-    opacity: 0;
-    transition: box-shadow .2s ease;
-
-    [dir="rtl"] & {
-      left: calc(50% - #{nx-spacer(4m)} + #{$check-icon-border-size});
-      right: auto;
-    }
-  }
-
-  .nx-toggle-circle__content-text {
-    @include type-style(circle-toggle-content-text);
-    @include var(color, circle-toggle-content-text-color);
-
-    @include media-breakpoint-response(mobile) {
-      @include type-style(circle-toggle-content-text-mobile);
-    }
-  }
-
-  .nx-toggle-circle__label-hint {
-    @include type-style(circle-toggle-hint);
-    @include var(color, circle-toggle-hint-color);
-    display: inline-block;
-    transition: color 0.2s ease;
-    z-index: 1;
-    max-width: 16rem;
-
-    // mobile styles (not responsive version -> circle icons just get smaller)
-    @include media-breakpoint-down("small") {
-
-      .nx-toggle-circle__icon-wrapper {
-        width: nx-spacer(xl);
-        height: nx-spacer(xl);
-      }
-
-      .nx-toggle-circle__icon nx-icon {
-        font-size: nx-spacer(2m);
-      }
-
-      .nx-toggle-circle__check-icon {
-        right: calc(50% - #{nx-spacer(3m)});
-
-        [dir="rtl"] & {
-          left: calc(50% - #{nx-spacer(3m)});
-          right: auto;
+        @include media-breakpoint-response(mobile) {
+            @include type-style(circle-toggle-label-mobile);
         }
-      }
-
-      .nx-toggle-circle__icon-image {
-        width: nx-spacer(xl);
-        height: nx-spacer(xl);
-      }
     }
 
-    @include media-breakpoint-response(mobile) {
-      @include type-style(circle-toggle-hint-mobile);
+    .is-label-bold {
+        font-weight: nx-font-weight(bold);
+
+        @include media-breakpoint-down('small') {
+            font-weight: nx-font-weight(regular);
+        }
     }
-  }
-
-  .nx-toggle-circle__icon {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  }
-
-  .nx-toggle-circle__icon nx-icon {
-    @include var(color, circle-toggle-icon-color);
-
-  }
-
-  .nx-toggle-circle__icon-image {
-    pointer-events: none;
-    position: relative;
-    user-select: none;
-  }
-}
-
-:host-context(.is-expert) {
-  .nx-toggle-circle__icon-wrapper {
-    height: nx-spacer(xl);
-    width: nx-spacer(xl);
-
-    .nx-toggle-circle__icon nx-icon {
-      font-size: nx-font-size(l);
-    }
-  }
-
-  .nx-toggle-circle__label-text {
-    @include type-style(circle-toggle-label-mobile);
-  }
-
-  .is-label-bold {
-    font-weight: nx-font-weight(regular);
-  }
-
-  .nx-toggle-circle__content-text {
-    @include type-style(circle-toggle-content-text-mobile);
-  }
-
-  .nx-toggle-circle__label-hint {
-    @include type-style(circle-toggle-hint-mobile);
 
     .nx-toggle-circle__icon-wrapper {
-      width: nx-spacer(xl);
-      height: nx-spacer(xl);
-    }
+        height: nx-spacer(3xl);
+        width: nx-spacer(3xl);
+        border-radius: 50%;
+        border-width: $check-icon-border-size;
+        border-style: solid;
+        border-color: var(--circle-toggle-border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
-    .nx-toggle-circle__icon nx-icon {
-      font-size: nx-spacer(2m);
+        @include media-breakpoint-response(mobile) {
+            height: nx-spacer(xl);
+            width: nx-spacer(xl);
+
+            .nx-toggle-circle__icon nx-icon {
+                font-size: nx-font-size(l);
+            }
+        }
     }
 
     .nx-toggle-circle__check-icon {
-      right: calc(50% - #{nx-spacer(3m)});
+        @include var(background-color, circle-toggle-checkmark-background-color);
+        @include var(color, circle-toggle-checkmark-color);
+        @include var(border-color, circle-toggle-checkmark-border-color);
+        border-radius: 50%;
+        border-width: $check-icon-border-size;
+        border-style: solid;
+        font-size: nx-font-size(s);
+        width: $check-icon-size;
+        height: $check-icon-size;
+        position: absolute;
+        top: -nx-spacer(2xs);
+        right: calc(50% - #{nx-spacer(4m)});
+        transition: opacity 0.3s;
+        z-index: 1;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-      [dir="rtl"] & {
-        left: calc(50% - #{nx-spacer(3m)});
-        right: auto;
-      }
+        [dir='rtl'] & {
+            left: calc(50% - #{nx-spacer(4m)});
+            right: auto;
+        }
+    }
+
+    .nx-toggle-circle__check-focus {
+        border-radius: 50%;
+        width: $check-icon-size - 2 * $check-icon-border-size;
+        height: $check-icon-size - 2 * $check-icon-border-size;
+        position: absolute;
+        top: -nx-spacer(2xs) + $check-icon-border-size;
+        right: calc(50% - #{nx-spacer(4m)} + #{$check-icon-border-size});
+        z-index: -1;
+        opacity: 0;
+        transition: box-shadow 0.2s ease;
+
+        [dir='rtl'] & {
+            left: calc(50% - #{nx-spacer(4m)} + #{$check-icon-border-size});
+            right: auto;
+        }
+    }
+
+    .nx-toggle-circle__content-text {
+        @include type-style(circle-toggle-content-text);
+        @include var(color, circle-toggle-content-text-color);
+
+        @include media-breakpoint-response(mobile) {
+            @include type-style(circle-toggle-content-text-mobile);
+        }
+    }
+
+    .nx-toggle-circle__label-hint {
+        @include type-style(circle-toggle-hint);
+        @include var(color, circle-toggle-hint-color);
+        display: inline-block;
+        transition: color 0.2s ease;
+        z-index: 1;
+        max-width: 16rem;
+
+        // mobile styles (not responsive version -> circle icons just get smaller)
+        @include media-breakpoint-down('small') {
+            .nx-toggle-circle__icon-wrapper {
+                width: nx-spacer(xl);
+                height: nx-spacer(xl);
+            }
+
+            .nx-toggle-circle__icon nx-icon {
+                font-size: nx-spacer(2m);
+            }
+
+            .nx-toggle-circle__check-icon {
+                right: calc(50% - #{nx-spacer(3m)});
+
+                [dir='rtl'] & {
+                    left: calc(50% - #{nx-spacer(3m)});
+                    right: auto;
+                }
+            }
+
+            .nx-toggle-circle__icon-image {
+                width: nx-spacer(xl);
+                height: nx-spacer(xl);
+            }
+        }
+
+        @include media-breakpoint-response(mobile) {
+            @include type-style(circle-toggle-hint-mobile);
+        }
+    }
+
+    .nx-toggle-circle__icon {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .nx-toggle-circle__icon nx-icon {
+        @include var(color, circle-toggle-icon-color);
     }
 
     .nx-toggle-circle__icon-image {
-      width: nx-spacer(xl);
-      height: nx-spacer(xl);
+        pointer-events: none;
+        position: relative;
+        user-select: none;
     }
-  }
+}
+
+:host-context(.is-expert) {
+    .nx-toggle-circle__icon-wrapper {
+        height: nx-spacer(xl);
+        width: nx-spacer(xl);
+
+        .nx-toggle-circle__icon nx-icon {
+            font-size: nx-font-size(l);
+        }
+    }
+
+    .nx-toggle-circle__label-text {
+        @include type-style(circle-toggle-label-mobile);
+    }
+
+    .is-label-bold {
+        font-weight: nx-font-weight(regular);
+    }
+
+    .nx-toggle-circle__content-text {
+        @include type-style(circle-toggle-content-text-mobile);
+    }
+
+    .nx-toggle-circle__label-hint {
+        @include type-style(circle-toggle-hint-mobile);
+
+        .nx-toggle-circle__icon-wrapper {
+            width: nx-spacer(xl);
+            height: nx-spacer(xl);
+        }
+
+        .nx-toggle-circle__icon nx-icon {
+            font-size: nx-spacer(2m);
+        }
+
+        .nx-toggle-circle__check-icon {
+            right: calc(50% - #{nx-spacer(3m)});
+
+            [dir='rtl'] & {
+                left: calc(50% - #{nx-spacer(3m)});
+                right: auto;
+            }
+        }
+
+        .nx-toggle-circle__icon-image {
+            width: nx-spacer(xl);
+            height: nx-spacer(xl);
+        }
+    }
 }
 
 :host(.is-flipped) {
-  .nx-toggle-circle__icon-wrapper {
-    @include var(background-color, circle-toggle-selected-background-color);
-    @include var(border-color, circle-toggle-selected-border-color);
-  }
+    .nx-toggle-circle__icon-wrapper {
+        @include var(background-color, circle-toggle-selected-background-color);
+        @include var(border-color, circle-toggle-selected-border-color);
+    }
 
-  .nx-toggle-circle__icon nx-icon {
-    @include var(color, circle-toggle-selected-icon-color);
-  }
+    .nx-toggle-circle__icon nx-icon {
+        @include var(color, circle-toggle-selected-icon-color);
+    }
 
-  .nx-toggle-circle__content-text {
-    @include var(color, circle-toggle-selected-content-text-color);
-  }
+    .nx-toggle-circle__content-text {
+        @include var(color, circle-toggle-selected-content-text-color);
+    }
 
-  .nx-toggle-circle__check-icon,
-  .nx-toggle-circle__check-focus {
-    opacity: 1;
-  }
+    .nx-toggle-circle__check-icon,
+    .nx-toggle-circle__check-focus {
+        opacity: 1;
+    }
 }
 
 //HOVER STYLES
 :host:not(.is-disabled):not(.is-negative):not(.is-touched):hover {
-  .nx-toggle-circle__icon-wrapper {
-    @include var(border-color, circle-toggle-hover-border-color);
-    @include var(background-color, circle-toggle-hover-background-color);
-  }
-
-  // if button is not checked, the hover color is a little lighter
-  &:not(.is-flipped) {
     .nx-toggle-circle__icon-wrapper {
-      // use -selected- tokens because the unchecked toggles should have selected color on hover
-      @include var(border-color, circle-toggle-selected-border-color);
-      @include var(background-color, circle-toggle-selected-background-color);
+        @include var(border-color, circle-toggle-hover-border-color);
+        @include var(background-color, circle-toggle-hover-background-color);
     }
-  }
 
-  .nx-toggle-circle__content-text {
-    @include var(color, circle-toggle-hover-icon-color);
-  }
+    // if button is not checked, the hover color is a little lighter
+    &:not(.is-flipped) {
+        .nx-toggle-circle__icon-wrapper {
+            // use -selected- tokens because the unchecked toggles should have selected color on hover
+            @include var(border-color, circle-toggle-selected-border-color);
+            @include var(background-color, circle-toggle-selected-background-color);
+        }
+    }
 
-  .nx-toggle-circle__icon nx-icon {
-    @include var(color, circle-toggle-hover-icon-color);
-  }
+    .nx-toggle-circle__content-text {
+        @include var(color, circle-toggle-hover-icon-color);
+    }
+
+    .nx-toggle-circle__icon nx-icon {
+        @include var(color, circle-toggle-hover-icon-color);
+    }
 }
 
 :host:hover.is-flipped:not(.has-checkmark) {
-  cursor: auto;
+    cursor: auto;
 }
 
 // DISABLED
 :host(.is-disabled) {
-  opacity: 0.4;
-  cursor: not-allowed;
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 // negative styles
 :host(.is-negative) {
-  .nx-toggle-circle__icon-wrapper {
-    @include var(border-color, negative);
-    background-color: transparent;
-  }
+    .nx-toggle-circle__icon-wrapper {
+        @include var(border-color, negative);
+        background-color: transparent;
+    }
 
-  .nx-toggle-circle__icon nx-icon,
-  .nx-toggle-circle__label-text,
-  .nx-toggle-circle__label-hint,
-  .nx-toggle-circle__content-text {
-    @include var(color, negative);
-  }
+    .nx-toggle-circle__icon nx-icon,
+    .nx-toggle-circle__label-text,
+    .nx-toggle-circle__label-hint,
+    .nx-toggle-circle__content-text {
+        @include var(color, negative);
+    }
 }
 
 :host(.is-negative.is-flipped),
 :host(.is-negative):not(.is-disabled):not(.is-touched):hover {
-  .nx-toggle-circle__icon-wrapper {
-    @include var(border-color, negative);
-    @include var(background-color, negative);
-  }
+    .nx-toggle-circle__icon-wrapper {
+        @include var(border-color, negative);
+        @include var(background-color, negative);
+    }
 
-  .nx-toggle-circle__icon nx-icon {
-    @include var(color, negative-accent);
-  }
+    .nx-toggle-circle__icon nx-icon {
+        @include var(color, negative-accent);
+    }
 
-  .nx-toggle-circle__content-text {
-    @include var(color, negative-accent);
-  }
+    .nx-toggle-circle__content-text {
+        @include var(color, negative-accent);
+    }
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host {
-    forced-color-adjust: none;
+    :host {
+        forced-color-adjust: none;
 
-    .nx-toggle-circle__icon-wrapper,
-    .nx-toggle-circle__check-icon {
-      border-color: buttonText !important;
-      color: buttonText !important;
-      background: buttonFace !important;
+        .nx-toggle-circle__icon-wrapper,
+        .nx-toggle-circle__check-icon {
+            border-color: buttonText !important;
+            color: buttonText !important;
+            background: buttonFace !important;
+        }
+
+        .nx-toggle-circle__content-text,
+        .nx-toggle-circle__label-text,
+        .nx-toggle-circle__label-hint {
+            color: buttonText !important;
+        }
+
+        &.is-flipped {
+            .nx-toggle-circle__icon-wrapper {
+                background: highlight !important;
+                border-color: highlight !important;
+                color: highlightText !important;
+            }
+        }
+
+        &.is-disabled {
+            opacity: 1;
+
+            .nx-toggle-circle__icon-wrapper,
+            .nx-toggle-circle__check-icon {
+                background: window !important;
+                border-color: GrayText !important;
+                color: GrayText !important;
+            }
+
+            .nx-toggle-circle__label-text,
+            .nx-toggle-circle__label-hint {
+                color: GrayText !important;
+            }
+        }
     }
-
-    .nx-toggle-circle__content-text,
-    .nx-toggle-circle__label-text,
-    .nx-toggle-circle__label-hint {
-      color: buttonText !important;
-    }
-
-    &.is-flipped {
-      .nx-toggle-circle__icon-wrapper {
-        background: highlight !important;
-        border-color: highlight !important;
-        color: highlightText !important;
-      }
-    }
-
-    &.is-disabled {
-      opacity: 1;
-
-      .nx-toggle-circle__icon-wrapper,
-      .nx-toggle-circle__check-icon {
-        background: window !important;
-        border-color: GrayText !important;
-        color: GrayText !important;
-      }
-
-      .nx-toggle-circle__label-text,
-      .nx-toggle-circle__label-hint {
-        color: GrayText !important;
-      }
-    }
-  }
 }

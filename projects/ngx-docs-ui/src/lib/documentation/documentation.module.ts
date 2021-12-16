@@ -35,61 +35,47 @@ import { UploadInterceptor } from './http-interceptors/upload-interceptor';
 import { CssVarSidebarModule } from './css-vars-sandbox/css-var-sandbox.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    ComponentPageModule,
-    NxvGuidesModule,
-    NxvGuideViewModule,
-    NxvTableOfContentsModule,
-    NxvOverviewModule,
-    NxvDocumentationPageModule,
-    NxHeaderModule,
-    NxIconModule,
-    NxButtonModule,
-    NxLinkModule,
-    FormsModule,
-    NxvVersionSelectModule,
-    NxvThemeSwitcherModule,
-    CssVarSidebarModule,
-    ExampleFullScreenModule
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: [
-    DocumentationFrameComponent
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UploadInterceptor,
-      multi: true
-    }
-  ],
-  entryComponents: [
-    DocumentationFrameComponent,
-    NxvOverviewComponent,
-    NxvGuidesComponent,
-    NxvGuideViewComponent,
-    NxvDocumentationComponent,
-    NxvComponentPage,
-    ComponentOverview,
-    ComponentApi,
-    ComponentExamples
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        ComponentPageModule,
+        NxvGuidesModule,
+        NxvGuideViewModule,
+        NxvTableOfContentsModule,
+        NxvOverviewModule,
+        NxvDocumentationPageModule,
+        NxHeaderModule,
+        NxIconModule,
+        NxButtonModule,
+        NxLinkModule,
+        FormsModule,
+        NxvVersionSelectModule,
+        NxvThemeSwitcherModule,
+        CssVarSidebarModule,
+        ExampleFullScreenModule,
+    ],
+    exports: [RouterModule],
+    declarations: [DocumentationFrameComponent],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: UploadInterceptor,
+            multi: true,
+        },
+    ],
+    entryComponents: [DocumentationFrameComponent, NxvOverviewComponent, NxvGuidesComponent, NxvGuideViewComponent, NxvDocumentationComponent, NxvComponentPage, ComponentOverview, ComponentApi, ComponentExamples],
 })
 export class NxvDocumentationModule {
-  static forRoot(args: NxvDocumentationConfig): ModuleWithProviders<NxvDocumentationModule> {
-    return {
-      ngModule: NxvDocumentationModule,
-      providers: [
-        ManifestService,
-        ComponentService,
-      { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
-      { provide: NXV_FOOTER, useValue: args.footerComponent },
-      { provide: NXV_TOP_INFO, useValue: args.topInfoComponent }
-      ]
-    };
-  }
+    static forRoot(args: NxvDocumentationConfig): ModuleWithProviders<NxvDocumentationModule> {
+        return {
+            ngModule: NxvDocumentationModule,
+            providers: [
+                ManifestService,
+                ComponentService,
+                { provide: ROUTES, useValue: createViewerRoutes(args), multi: true },
+                { provide: NXV_FOOTER, useValue: args.footerComponent },
+                { provide: NXV_TOP_INFO, useValue: args.topInfoComponent },
+            ],
+        };
+    }
 }

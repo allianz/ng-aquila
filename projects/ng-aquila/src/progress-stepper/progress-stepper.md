@@ -64,9 +64,10 @@ The progress indicator can be switched to a vertical layout, by setting the `dir
 
 <!-- example(progress-stepper-multi-vertical) -->
 
-
 ### Expert: Multi Indicator Groups
+
 Steps can be grouped by wrapping them in `nx-stepper-group` tags. Each group needs a label and at least one step inside of it. Groups are currently limited to the vertical multi stepper.
+
 <!-- example(progress-stepper-multi-groups) -->
 
 </div>

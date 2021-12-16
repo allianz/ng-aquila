@@ -12,25 +12,9 @@ import { NxNumberStepperPrefixDirective } from './number-stepper-prefix.directiv
 import { NxNumberStepperSuffixDirective } from './number-stepper-suffix.directive';
 
 @NgModule({
-  imports: [
-    NxInputModule,
-    FormsModule,
-    NxIconModule,
-    NxButtonModule,
-    CommonModule
-  ],
-  exports: [
-    NxNumberStepperComponent,
-    NxAutoResizeDirective,
-    NxNumberStepperPrefixDirective,
-    NxNumberStepperSuffixDirective
-  ],
-  declarations: [
-    NxNumberStepperComponent,
-    NxAutoResizeDirective,
-    NxNumberStepperPrefixDirective,
-    NxNumberStepperSuffixDirective
-  ],
-  providers: [NxNumberStepperIntl],
+    imports: [NxInputModule, FormsModule, NxIconModule, NxButtonModule, CommonModule],
+    exports: [NxNumberStepperComponent, NxAutoResizeDirective, NxNumberStepperPrefixDirective, NxNumberStepperSuffixDirective],
+    declarations: [NxNumberStepperComponent, NxAutoResizeDirective, NxNumberStepperPrefixDirective, NxNumberStepperSuffixDirective],
+    providers: [NxNumberStepperIntl],
 })
-export class NxNumberStepperModule { }
+export class NxNumberStepperModule {}

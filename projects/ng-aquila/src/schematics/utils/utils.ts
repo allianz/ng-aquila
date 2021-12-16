@@ -9,14 +9,13 @@
 import { workspaces } from '@angular-devkit/core';
 
 export function isAngularApplicationProject(project: workspaces.ProjectDefinition): boolean {
-  if (project.extensions.projectType !== 'application') {
-    return false;
-  }
+    if (project.extensions.projectType !== 'application') {
+        return false;
+    }
 
-  const builder = project.targets?.get('build')?.builder.toString();
-  if (builder && (builder.includes('@angular-devkit/build-angular:browser')
-  || builder.includes('@angular-builders/custom-webpack:browser'))) {
-    return true;
-  }
-  return false;
+    const builder = project.targets?.get('build')?.builder.toString();
+    if (builder && (builder.includes('@angular-devkit/build-angular:browser') || builder.includes('@angular-builders/custom-webpack:browser'))) {
+        return true;
+    }
+    return false;
 }

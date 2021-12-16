@@ -5,18 +5,8 @@ import { CommonModule } from '@angular/common';
 import { NxRowComponent } from './row.component';
 
 @NgModule({
-  declarations: [
-      NxLayoutComponent,
-      NxRowComponent,
-      NxColComponent
-   ],
-  exports: [
-    NxLayoutComponent,
-    NxRowComponent,
-    NxColComponent
-   ],
-   imports: [
-     CommonModule
-   ]
+    declarations: [NxLayoutComponent, NxRowComponent, NxColComponent],
+    exports: [NxLayoutComponent, NxRowComponent, NxColComponent],
+    imports: [CommonModule],
 })
-export class NxGridModule { }
+export class NxGridModule {}

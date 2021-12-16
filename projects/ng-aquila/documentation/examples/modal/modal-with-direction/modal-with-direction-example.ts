@@ -3,28 +3,28 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 /**
-* @title Modal with direction example
-*/
+ * @title Modal with direction example
+ */
 @Component({
-  selector: 'modal-with-direction-example',
-  templateUrl: './modal-with-direction-example.html',
-  styleUrls: ['./modal-with-direction-example.css']
+    selector: 'modal-with-direction-example',
+    templateUrl: './modal-with-direction-example.html',
+    styleUrls: ['./modal-with-direction-example.css'],
 })
 export class ModalWithDirectionExampleComponent {
-  @ViewChild('template') templateRef!: TemplateRef<any>;
+    @ViewChild('template') templateRef!: TemplateRef<any>;
 
-  templateDialogRef!: NxModalRef<any>;
+    templateDialogRef!: NxModalRef<any>;
 
-  constructor(
-    public dialogService: NxDialogService,
-    private dir: Directionality,
-  ) {}
+    constructor(public dialogService: NxDialogService, private dir: Directionality) {}
 
-  openFromTemplate(): void {
-    this.templateDialogRef = this.dialogService.open(this.templateRef, {ariaLabel: 'Dialog with direction', direction: this.dir.value} );
-  }
+    openFromTemplate(): void {
+        this.templateDialogRef = this.dialogService.open(this.templateRef, {
+            ariaLabel: 'Dialog with direction',
+            direction: this.dir.value,
+        });
+    }
 
-  closeTemplateDialog() {
-    this.templateDialogRef.close();
-  }
+    closeTemplateDialog() {
+        this.templateDialogRef.close();
+    }
 }

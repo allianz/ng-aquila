@@ -1,18 +1,18 @@
 <ng-template #content>
-  <ng-container *ngIf="((_table.viewType === 'desktop' || _table.viewType === 'tablet'))">
-    <div class="nx-comparison-table__popular-cell" [class.is-hidden]="_table._hiddenIndexes.indexOf(forColumn -1) !== -1" role="cell" [attr.id]="id">
-      <div class="nx-comparison-table__cell-content">
-        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="_table.viewType === 'mobile'">
-    <td class="nx-comparison-table__mobile-popular-cell" [class.is-hidden]="_table._hiddenIndexes.indexOf(forColumn -1) !== -1" [attr.id]="id">
-      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-    </td>
-  </ng-container>
+    <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
+        <div class="nx-comparison-table__popular-cell" [class.is-hidden]="_table._hiddenIndexes.indexOf(forColumn - 1) !== -1" role="cell" [attr.id]="id">
+            <div class="nx-comparison-table__cell-content">
+                <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="_table.viewType === 'mobile'">
+        <td class="nx-comparison-table__mobile-popular-cell" [class.is-hidden]="_table._hiddenIndexes.indexOf(forColumn - 1) !== -1" [attr.id]="id">
+            <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+        </td>
+    </ng-container>
 </ng-template>
 
 <ng-template #ngContent>
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </ng-template>

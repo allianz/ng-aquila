@@ -1,12 +1,12 @@
-@import "../../shared-styles/index";
+@import '../../shared-styles/index';
 
 .nx-comparison-table__mobile-header-cell.is-selected,
 .nx-comparison-table__cell.is-selected {
-  @include var(background-color, comparison-table-selected-column-background-color);
-  @include var(color, comparison-table-selected-column-text-color);
+    @include var(background-color, comparison-table-selected-column-background-color);
+    @include var(color, comparison-table-selected-column-text-color);
 }
 
 .nx-comparison-table__mobile-header-cell.is-hidden,
 .nx-comparison-table__cell.is-hidden {
-  display: none;
+    display: none;
 }

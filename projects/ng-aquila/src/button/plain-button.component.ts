@@ -4,78 +4,78 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'button[nxPlainButton]',
-  templateUrl: './plain-button.component.html',
-  styleUrls: ['plain-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  inputs: ['classNames:nxPlainButton'],
-  host: {
-    '[class.nx-plain-button]': 'true',
-    '[class.nx-plain-button--danger]': 'danger',
-  },
-  providers: [{provide: NxTriggerButton, useExisting: NxPlainButtonComponent}]
+    // tslint:disable-next-line:component-selector
+    selector: 'button[nxPlainButton]',
+    templateUrl: './plain-button.component.html',
+    styleUrls: ['plain-button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    inputs: ['classNames:nxPlainButton'],
+    host: {
+        '[class.nx-plain-button]': 'true',
+        '[class.nx-plain-button--danger]': 'danger',
+    },
+    providers: [{ provide: NxTriggerButton, useExisting: NxPlainButtonComponent }],
 })
 export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
-  /** @docs-private */
-  @HostBinding('attr.disabled') get isDisabled(): boolean | null { return this.disabled || null; }
-  /** @docs-private */
-  @HostBinding('attr.aria-disabled') get isAriaDisabled(): string { return this.disabled.toString(); }
-
-  private _disabled = false;
-
-  @Input()
-  set disabled(value: boolean) {
-    this._disabled = coerceBooleanProperty(value);
-  }
-  get disabled(): boolean {
-    return this._disabled;
-  }
-
-  static ngAcceptInputType_disabled: BooleanInput;
-
-  private _classNames = '';
-
-  danger = false;
-
-  public set classNames(value: string) {
-    if (this._classNames === value) {
-      return;
+    /** @docs-private */
+    @HostBinding('attr.disabled') get isDisabled(): boolean | null {
+        return this.disabled || null;
+    }
+    /** @docs-private */
+    @HostBinding('attr.aria-disabled') get isAriaDisabled(): string {
+        return this.disabled.toString();
     }
 
-    this._classNames = value;
-    this.danger = /danger/.test(this._classNames);
-    this._changeDetectorRef.markForCheck();
-  }
+    private _disabled = false;
 
-  public get classNames(): string {
-    return this._classNames;
-  }
-
-  @HostBinding('class.nx-button--active')
-  active = false;
-  public setTriggerActive(): void {
-    if (!this.active) {
-      this.active = true;
-      this._changeDetectorRef.markForCheck();
+    @Input()
+    set disabled(value: boolean) {
+        this._disabled = coerceBooleanProperty(value);
     }
-  }
-  public setTriggerInactive(): void {
-    if (this.active) {
-      this.active = false;
-      this._changeDetectorRef.markForCheck();
+    get disabled(): boolean {
+        return this._disabled;
     }
-  }
 
-  constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-    private _elementRef: ElementRef,
-    private _focusMonitor: FocusMonitor
-  ) {
-    this._focusMonitor.monitor(this._elementRef);
-  }
+    static ngAcceptInputType_disabled: BooleanInput;
 
-  ngOnDestroy() {
-    this._focusMonitor.stopMonitoring(this._elementRef);
-  }
+    private _classNames = '';
+
+    danger = false;
+
+    public set classNames(value: string) {
+        if (this._classNames === value) {
+            return;
+        }
+
+        this._classNames = value;
+        this.danger = /danger/.test(this._classNames);
+        this._changeDetectorRef.markForCheck();
+    }
+
+    public get classNames(): string {
+        return this._classNames;
+    }
+
+    @HostBinding('class.nx-button--active')
+    active = false;
+    public setTriggerActive(): void {
+        if (!this.active) {
+            this.active = true;
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+    public setTriggerInactive(): void {
+        if (this.active) {
+            this.active = false;
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+
+    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+        this._focusMonitor.monitor(this._elementRef);
+    }
+
+    ngOnDestroy() {
+        this._focusMonitor.stopMonitoring(this._elementRef);
+    }
 }

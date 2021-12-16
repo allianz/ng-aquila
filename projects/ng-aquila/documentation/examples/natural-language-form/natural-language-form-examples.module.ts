@@ -10,29 +10,24 @@ import { NaturalLanguageFormSizesExampleComponent } from './natural-language-for
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  NaturalLanguageFormBasicExampleComponent,
-  NaturalLanguageFormExtendedExampleComponent,
-  NaturalLanguageFormNegativeExampleComponent,
-  NaturalLanguageFormSizesExampleComponent
+    NaturalLanguageFormBasicExampleComponent,
+    NaturalLanguageFormExtendedExampleComponent,
+    NaturalLanguageFormNegativeExampleComponent,
+    NaturalLanguageFormSizesExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxNaturalLanguageFormModule,
-    NxDropdownModule,
-    NxInputModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxNaturalLanguageFormModule, NxDropdownModule, NxInputModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class NaturalExamplesModule {
-  static components() {
-    return {
-      'natural-language-form-basic': NaturalLanguageFormBasicExampleComponent,
-      'natural-language-form-extended': NaturalLanguageFormExtendedExampleComponent,
-      'natural-language-form-negative': NaturalLanguageFormNegativeExampleComponent,
-      'natural-language-form-sizes': NaturalLanguageFormSizesExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'natural-language-form-basic': NaturalLanguageFormBasicExampleComponent,
+            'natural-language-form-extended': NaturalLanguageFormExtendedExampleComponent,
+            'natural-language-form-negative': NaturalLanguageFormNegativeExampleComponent,
+            'natural-language-form-sizes': NaturalLanguageFormSizesExampleComponent,
+        };
+    }
 }

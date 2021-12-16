@@ -8,17 +8,9 @@ import { CommonModule } from '@angular/common';
 import { NxvFeedbackModule } from '../../feedback/feedback.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    DocViewerModule,
-    NxvTableOfContentsModule,
-    NxvFeedbackModule
-  ],
-  exports: [],
-  declarations: [
-    NxvGuideViewComponent
-  ],
-  providers: []
+    imports: [CommonModule, RouterModule, DocViewerModule, NxvTableOfContentsModule, NxvFeedbackModule],
+    exports: [],
+    declarations: [NxvGuideViewComponent],
+    providers: [],
 })
-export class NxvGuideViewModule { }
+export class NxvGuideViewModule {}

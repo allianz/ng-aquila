@@ -3,26 +3,25 @@ import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Theme } from './theme-switcher.service';
 
 @Component({
-  selector: 'nxv-theme-switch',
-  templateUrl: 'theme-switcher.component.html',
-  styleUrls: ['theme-switcher.component.scss']
+    selector: 'nxv-theme-switch',
+    templateUrl: 'theme-switcher.component.html',
+    styleUrls: ['theme-switcher.component.scss'],
 })
 export class NxvThemeSwitcherComponent {
+    _themeSwitchIsOpened: boolean = false;
 
-  _themeSwitchIsOpened: boolean = false;
+    @Input() themes: Theme[] = [];
 
-  @Input() themes: Theme[] = [];
+    @Input() selected!: Theme;
+    @Output() readonly selectedChange = new EventEmitter<Theme>();
 
-  @Input() selected!: Theme;
-  @Output() readonly selectedChange = new EventEmitter<Theme>();
+    constructor(private iconRegistry: NxIconRegistry) {
+        this.iconRegistry.registerFont('fa', 'fas', 'fa-');
+        this.iconRegistry.addFontIcon('fill-drip', 'fill-drip', 'fa');
+    }
 
-  constructor(private iconRegistry: NxIconRegistry) {
-    this.iconRegistry.registerFont('fa', 'fas', 'fa-');
-    this.iconRegistry.addFontIcon('fill-drip', 'fill-drip', 'fa');
-  }
-
-  select(theme: Theme) {
-    this.selected = theme;
-    this.selectedChange.emit(theme);
-  }
+    select(theme: Theme) {
+        this.selected = theme;
+        this.selectedChange.emit(theme);
+    }
 }

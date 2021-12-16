@@ -8,31 +8,31 @@ noApi: true
 ---
 
 ## Custom theming - release candidate
+
 All components in this library are styled by using the style tokens listed [here](./documentation/theming/overview#general-theming-tokens). You can create your own custom theme by overwriting the values of these style tokens.
 
 The library provides an interface for extending and overwriting properties of our base theme to enable the creation of custom application themes. This is accomplished by using SCSS maps for merging your newly defined style tokens and our base theme tokens and then injecting those into the components by CSS variables.
 
 ### Customizing the base theme
+
 In order to define your custom theme first create a file `<your-theme>.scss`.
 
 To register your theme import the theming utilities:
 
 ```scss
-@import "@aposin/ng-aquila/styles/theming";
+@import '@aposin/ng-aquila/styles/theming';
 ```
 
 Then, you should define your new theme as a `scss-map` which overwrites all default theming tokens you want to change:
 
 ```scss
 $my-theme: (
-  interactive-primary: green,
-
-  link-color: interactive-primary,
-
-  heading-01-font-size: 58px,
-  heading-01-line-height: 64px,
-  heading-01-font-weight: 500,
-  heading-01-letter-spacing: 0.2px
+    interactive-primary: green,
+    link-color: interactive-primary,
+    heading-01-font-size: 58px,
+    heading-01-line-height: 64px,
+    heading-01-font-weight: 500,
+    heading-01-letter-spacing: 0.2px,
 );
 
 $nx-themes: nx-register-theme($my-theme, themeName);
@@ -54,62 +54,66 @@ Currently the following internal themes are available as a base theme: **aposin*
 </div>
 
 ### Enabling (building) a new theme
+
 In order to inject the newly defined custom theme tokens into the components you have to build your new theme by using the `nx-buid-theme` mixin.
 
 ```scss
 @include nx-build-theme(themeName);
 ```
 
-**Important:** Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application.
-We recommend the following import in your global scss file:
+**Important:** Keep in mind the theme building should happen after you have registered your custom theme and preferably only once in the whole application. We recommend the following import in your global scss file:
+
 ```scss
-@import "@aposin/ng-aquila/styles/theming";
-@import "<path-to-theme-file>/<your-theme>.scss";
+@import '@aposin/ng-aquila/styles/theming';
+@import '<path-to-theme-file>/<your-theme>.scss';
 
 @include nx-build-theme(themeName);
 ```
 
 ### Using your new theme
+
 In order to have access to the newly defined tokens you have to import `<your-theme>.scss` into every SCSS file where you want to use your tokens. You can also import it to a global SCSS stylesheet and import this one wherever needed.
 
 We provide you with two utility helpers:
-* **nx-theme(token)** for getting a css variable value
-* **type-style(token)** for getting the defined typography properties of an element. here you have to prefix these tokens in the same way and define font-size, font-weight, letter-spacing and line-height as shown in the snippet with *headline-01* above.
+
+-   **nx-theme(token)** for getting a css variable value
+-   **type-style(token)** for getting the defined typography properties of an element. here you have to prefix these tokens in the same way and define font-size, font-weight, letter-spacing and line-height as shown in the snippet with _headline-01_ above.
 
 ```scss
-@import "<path-to-theme-file>/<your-theme>.scss";
+@import '<path-to-theme-file>/<your-theme>.scss';
 
 .test-class {
-  @include type-style(heading-01);
-  background: nx-theme(interactive-primary);
+    @include type-style(heading-01);
+    background: nx-theme(interactive-primary);
 }
 ```
 
 ### Advanced
+
 You can also add new tokens when creating your custom theme as well as use exisiting token values for your new tokens:
 
 ```scss
 $my-theme: (
-  my-new-token: pink,
-  my-new-token-2: primary-action,
+    my-new-token: pink,
+    my-new-token-2: primary-action,
 );
 
 $nx-themes: nx-register-theme($my-theme, themeName);
 ```
 
 And then use them as stated before:
+
 ```scss
-@import "<path-to-theme-file>/<your-theme>.scss";
+@import '<path-to-theme-file>/<your-theme>.scss';
 
 .test-class {
-  background: nx-theme(my-new-token);
+    background: nx-theme(my-new-token);
 }
 ```
 
 ### General Theming Tokens
 
-Our components are themed by the following general tokens. You can overwrite their values in your custom theme.
-A full list of the current style tokens can be found [here](https://www.github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss).
+Our components are themed by the following general tokens. You can overwrite their values in your custom theme. A full list of the current style tokens can be found [here](https://www.github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss).
 
 ```scss
   ui-background: #0f2A3D,

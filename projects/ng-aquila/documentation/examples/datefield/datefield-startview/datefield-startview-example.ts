@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 /**
-* @title Start view example
-*/
+ * @title Start view example
+ */
 @Component({
-  selector: 'datefield-startview-example',
-  templateUrl: './datefield-startview-example.html',
-  styleUrls: ['./datefield-startview-example.css']
+    selector: 'datefield-startview-example',
+    templateUrl: './datefield-startview-example.html',
+    styleUrls: ['./datefield-startview-example.css'],
 })
-
-export class DatefieldStartviewExampleComponent {
-}
+export class DatefieldStartviewExampleComponent {}

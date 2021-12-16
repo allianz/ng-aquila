@@ -20,42 +20,42 @@ import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/but
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
 
 const EXAMPLES = [
-  ButtonExampleComponent,
-  ButtonBlockExampleComponent,
-  ButtonDangerExampleComponent,
-  ButtonIconExampleComponent,
-  ButtonLargeExampleComponent,
-  ButtonMediumExampleComponent,
-  ButtonNegativeExampleComponent,
-  ButtonPlainExampleComponent,
-  ButtonSmallExampleComponent,
-  ButtonSmallMediumExampleComponent,
-  ButtonWithIconExampleComponent,
-  ButtonIconIndicatorExampleComponent,
-  AnchorButtonExampleComponent
+    ButtonExampleComponent,
+    ButtonBlockExampleComponent,
+    ButtonDangerExampleComponent,
+    ButtonIconExampleComponent,
+    ButtonLargeExampleComponent,
+    ButtonMediumExampleComponent,
+    ButtonNegativeExampleComponent,
+    ButtonPlainExampleComponent,
+    ButtonSmallExampleComponent,
+    ButtonSmallMediumExampleComponent,
+    ButtonWithIconExampleComponent,
+    ButtonIconIndicatorExampleComponent,
+    AnchorButtonExampleComponent,
 ];
 
- @NgModule({
-  imports: [NxButtonModule, CommonModule, NxIconModule, NxIndicatorModule ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxButtonModule, CommonModule, NxIconModule, NxIndicatorModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ButtonExamplesModule implements LazyLoadedModule {
-  static components() {
-    return {
-      'button': ButtonExampleComponent,
-      'button-block': ButtonBlockExampleComponent,
-      'button-danger': ButtonDangerExampleComponent,
-      'button-icon': ButtonIconExampleComponent,
-      'button-large': ButtonLargeExampleComponent,
-      'button-medium': ButtonMediumExampleComponent,
-      'button-negative': ButtonNegativeExampleComponent,
-      'button-plain': ButtonPlainExampleComponent,
-      'button-small': ButtonSmallExampleComponent,
-      'button-small-medium': ButtonSmallMediumExampleComponent,
-      'button-with-icon': ButtonWithIconExampleComponent,
-      'button-icon-indicator': ButtonIconIndicatorExampleComponent,
-      'anchor-button': AnchorButtonExampleComponent
-    };
-  }
+    static components() {
+        return {
+            button: ButtonExampleComponent,
+            'button-block': ButtonBlockExampleComponent,
+            'button-danger': ButtonDangerExampleComponent,
+            'button-icon': ButtonIconExampleComponent,
+            'button-large': ButtonLargeExampleComponent,
+            'button-medium': ButtonMediumExampleComponent,
+            'button-negative': ButtonNegativeExampleComponent,
+            'button-plain': ButtonPlainExampleComponent,
+            'button-small': ButtonSmallExampleComponent,
+            'button-small-medium': ButtonSmallMediumExampleComponent,
+            'button-with-icon': ButtonWithIconExampleComponent,
+            'button-icon-indicator': ButtonIconIndicatorExampleComponent,
+            'anchor-button': AnchorButtonExampleComponent,
+        };
+    }
 }

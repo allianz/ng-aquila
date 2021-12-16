@@ -25,6 +25,7 @@ stable: done
 <!-- example(radio-toggle-form) -->
 
 ### Reactive form
+
 When using reactive forms you have to disable the control with the form control and not the `nxDisabled` property!
 
 <!-- example(radio-toggle-reactive) -->

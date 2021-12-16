@@ -1,37 +1,37 @@
-@import "../../../../../ng-aquila/src/shared-styles/index";
+@import '../../../../../ng-aquila/src/shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 
-  .desktop-box {
-    background: v(ui-01);
-    width: 200px;
-    box-shadow: v(shadow-small);
-    border-radius: 4px;
-    padding: 12px;
-    text-align: center;
-  }
-
-  .mobile-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: v(interactive-primary);
-    color: v(text-02);
-    box-shadow: v(shadow-small);
-    border-radius: 50%;
-    padding: 12px 0;
-    height: 48px;
-    width: 48px;
-    border: none;
-    cursor: pointer;
-
-    &:focus {
-      outline: none;
+    .desktop-box {
+        background: v(ui-01);
+        width: 200px;
+        box-shadow: v(shadow-small);
+        border-radius: 4px;
+        padding: 12px;
+        text-align: center;
     }
 
-    &.cdk-keyboard-focused {
-      @include focus-style();
+    .mobile-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: v(interactive-primary);
+        color: v(text-02);
+        box-shadow: v(shadow-small);
+        border-radius: 50%;
+        padding: 12px 0;
+        height: 48px;
+        width: 48px;
+        border: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+
+        &.cdk-keyboard-focused {
+            @include focus-style();
+        }
     }
-  }
 }

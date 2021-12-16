@@ -28,8 +28,7 @@ The textual representation of tags can be customized through a formatter functio
 
 If the option `nxAllowTagDeletion` is not set to false, tags can be deleted from the list on click.
 
-Note that tags can be added and the list can be cleared by calling the respective methods `addTag` and `clearTags` on the component. The respective buttons and input in this example are independent of the component and only included in this example to show that they can be placed anywhere on the page and that any custom business logic and validation can be used.
-Any content of the element will be used as empty state and is displayed in case the tags array is empty.
+Note that tags can be added and the list can be cleared by calling the respective methods `addTag` and `clearTags` on the component. The respective buttons and input in this example are independent of the component and only included in this example to show that they can be placed anywhere on the page and that any custom business logic and validation can be used. Any content of the element will be used as empty state and is displayed in case the tags array is empty.
 
 <!-- example(taglist-delete) -->
 
@@ -62,6 +61,7 @@ You should also set `tabindex="0"` for the taglist, so the tags are reachable vi
 <!-- example(taglist-output) -->
 
 ### Accessibility
+
 The default value of the `tabindex` of the tag items is `-1`. If the tags are removable then the default value is `0` so that they are focusable. In all other cases please take care of setting an appropriate tab-index via the input `tabindex` on the taglist (please check the [output example](./documentation/taglist/overview#output)).
 
 In oder to improve accessibility, please consider **linking a label** to the tag list component, for example like this:
@@ -69,5 +69,5 @@ In oder to improve accessibility, please consider **linking a label** to the tag
 <!-- example(taglist-a11y) -->
 
 #### Keybord navigation
-If `nxAllowTagDeletion` is set to `true`, you can remove selected tags using BACKSPACE.
-If your tags trigger actions on click, these actions will be also triggered on ENTER click.
+
+If `nxAllowTagDeletion` is set to `true`, you can remove selected tags using BACKSPACE. If your tags trigger actions on click, these actions will be also triggered on ENTER click.

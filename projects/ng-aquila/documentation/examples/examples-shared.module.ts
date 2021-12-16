@@ -7,16 +7,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [
-  ],
-  exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxButtonModule,
-    NxHeadlineModule,
-    NxCopytextModule,
-    NxGridModule
-  ],
+    imports: [],
+    exports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NxButtonModule,
+        NxHeadlineModule,
+        NxCopytextModule,
+        NxGridModule,
+    ],
 })
 export class ExamplesSharedModule {}

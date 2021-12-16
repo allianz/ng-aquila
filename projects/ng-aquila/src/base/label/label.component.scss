@@ -1,24 +1,24 @@
 @import '../../shared-styles/index';
 
 :host {
-  display: block;
-  @include var(color, text-01);
+    display: block;
+    @include var(color, text-01);
 
-  &.nx-label--small {
-    @include type-style(base-label-small);
-  }
-
-  &.nx-label--large {
-    @include type-style(base-label-large);
-  }
-
-  &[disabled=true] {
-    label {
-      cursor: not-allowed;
+    &.nx-label--small {
+        @include type-style(base-label-small);
     }
-  }
 
-  &.nx-label--negative {
-    @include var(color, negative);
-  }
+    &.nx-label--large {
+        @include type-style(base-label-large);
+    }
+
+    &[disabled='true'] {
+        label {
+            cursor: not-allowed;
+        }
+    }
+
+    &.nx-label--negative {
+        @include var(color, negative);
+    }
 }

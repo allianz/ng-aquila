@@ -1,36 +1,36 @@
 @import '../shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 }
 
 .nx-progress-stepper__content {
-  &[aria-expanded='false'] {
-    height: 0;
-    overflow: hidden;
-    // needed that tabbing doesn't focus any focusable elements
-    // inside the content if the step isn't active
-    visibility: hidden;
-  }
+    &[aria-expanded='false'] {
+        height: 0;
+        overflow: hidden;
+        // needed that tabbing doesn't focus any focusable elements
+        // inside the content if the step isn't active
+        visibility: hidden;
+    }
 }
 
 .nx-progress-stepper__mobile-label {
-  display: none;
-  @include var(color, progress-indicator-mobile-color);
-  @include type-style(progress-indicator-mobile);
+    display: none;
+    @include var(color, progress-indicator-mobile-color);
+    @include type-style(progress-indicator-mobile);
 }
 
 @include media-breakpoint-down(small) {
-  .nx-progress-stepper__mobile-label {
-    display: block;
-    text-align: center;
-  }
+    .nx-progress-stepper__mobile-label {
+        display: block;
+        text-align: center;
+    }
 }
 
 .nx-progress-stepper__title {
-  display: block;
+    display: block;
 
-  ::ng-deep nx-label {
-    margin-bottom: nx-spacer(m);
-  }
+    ::ng-deep nx-label {
+        margin-bottom: nx-spacer(m);
+    }
 }

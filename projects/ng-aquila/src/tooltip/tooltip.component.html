@@ -1,7 +1,4 @@
-<div class="nx-tooltip"
-    [@state]="visibility"
-    (@state.start)="_animationStart()"
-    (@state.done)="_animationDone($event)">
-  <div [ngClass]="arrowClass" class="nx-tooltip__arrow" [ngStyle]="arrowStyle"></div>
-  {{ message }}
+<div class="nx-tooltip" [@state]="visibility" (@state.start)="_animationStart()" (@state.done)="_animationDone($event)">
+    <div [ngClass]="arrowClass" class="nx-tooltip__arrow" [ngStyle]="arrowStyle"></div>
+    {{ message }}
 </div>

@@ -1,4 +1,4 @@
-import { Directive} from '@angular/core';
+import { Directive } from '@angular/core';
 import { CdkPortal } from '@angular/cdk/portal';
 
 /** @docs-private */

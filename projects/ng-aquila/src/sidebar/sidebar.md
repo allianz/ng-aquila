@@ -8,22 +8,22 @@ stable: done
 
 The `<nx-sidebar>` provides a collapsible container for side content (often navigation, though it can be any content) alongside some primary content.
 
-Please note that all the following examples use the [NxActionComponent](./documentation/action) for the side navigation items.
-The `NxActionModule` **is not automatically imported** when you import the `NxSidebarModule`. Therefore you have to import the `NxActionModule` yourself, if you want the same sidebar look:
+Please note that all the following examples use the [NxActionComponent](./documentation/action) for the side navigation items. The `NxActionModule` **is not automatically imported** when you import the `NxSidebarModule`. Therefore you have to import the `NxActionModule` yourself, if you want the same sidebar look:
 
 ```ts
 import { NxActionModule } from '@aposin/ng-aquila/action';
 ```
 
-
 ### Static Sidebar with Actions
-One possible content for the sidebar is a list of navigation links, in this case a list of `nxAction` items.
-The default width of `280px` can be overwritten by your own css like in the following example.
+
+One possible content for the sidebar is a list of navigation links, in this case a list of `nxAction` items. The default width of `280px` can be overwritten by your own css like in the following example.
+
 <!-- example(sidebar) -->
 
 ### Resizeable Side navigation with Tree
 
 A `<nx-sidebar>` can be resized by dragging the right edge when the option `resizeable` is set.
+
 <!-- example(sidebar-resizeable) -->
 
 A `<nx-sidebar>` can be expanded or closed using the `expand()`, `close()` and `toggle()` methods.
@@ -39,7 +39,7 @@ For placing some view shortcuts on the bottom of the sidebar, a `<nx-sidebar-foo
 <!-- example(sidebar-footer) -->
 
 ### Output events
+
 You can use the `widthChange` output event in order to subscribe to changes of the sidebar width.
+
 <!-- example(sidebar-outputs) -->
-
-

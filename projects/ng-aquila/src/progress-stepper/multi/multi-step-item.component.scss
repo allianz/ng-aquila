@@ -8,291 +8,290 @@ $label-line-height: nx-line-height(2xs);
 $vertical-line-height: nx-spacer(s);
 
 :host {
-  flex: 1 1 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding-bottom: nx-spacer(2xs);
-  cursor: pointer;
-  max-width: 100%;
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: nx-spacer(2xs);
+    cursor: pointer;
+    max-width: 100%;
 
-  &:focus {
-    outline: none;
-  }
-
-  &.cdk-keyboard-focused {
-    .dot {
-      @include focus-style;
-    }
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    .dot {
-      border-color: buttonText;
+    &:focus {
+        outline: none;
     }
 
-    .small-dot {
-      background-color: buttonText;
-    }
-  }
-
-  &.is-disabled {
-    cursor: not-allowed;
-
-    .dot {
-      @include var(border-color, multi-stepper-dot-disabled-color);
+    &.cdk-keyboard-focused {
+        .dot {
+            @include focus-style;
+        }
     }
 
     @media screen and (-ms-high-contrast: active) {
-      .label {
-        color: GrayText;
-      }
-
-      .dot {
-        border-color: GrayText;
-      }
-    }
-  }
-
-  &.is-completed:not(.is-disabled) {
-    .dot {
-      @include var(background-color, multi-stepper-dot-touched-color);
-    }
-  }
-
-  &.nx-multi-step-item--vertical {
-    flex: 0 0 auto;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-
-    .label-box {
-      display: flex;
-      align-items: center;
-    }
-
-    .label {
-      position: static;
-      transform: none;
-      margin-left: nx-spacer(s);
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      text-align: left;
-      min-width: 0;
-      @include type-style(multi-stepper-step);
-
-      [dir="rtl"] & {
-        margin-right: nx-spacer(s);
-        margin-left: initial;
-      }
-
-      // This creates a hidden label with bold text, so the label will not jump when it's beeing hovered.
-      &:before {
-        content: attr(label);
-        height: 0;
-        overflow: hidden;
-        display: block;
-      }
-
-      @media screen and (-ms-high-contrast: active) {
-        -ms-high-contrast-adjust: none;
-        background-color: buttonFace;
-        border-radius: 4px;
-        box-shadow: 0 0 0 2px buttonFace;
-        color: buttonText;
-      }
-    }
-
-    &.is-disabled .label {
-      @include var(color, multi-stepper-step-disabled-color);
-
-      @media screen and (-ms-high-contrast: active) {
-        color: GrayText;
-      }
-    }
-
-    &.is-selected .label {
-      // still not themed because vertical and horizontal differ (horizontal does not get bold)
-      font-weight: nx-font-weight(bold);
-
-      @media screen and (-ms-high-contrast: active) {
-        background-color: highlight;
-        border-radius: 4px;
-        box-shadow: 0 0 0 2px highlight;
-        color: highlightText;
-      }
-    }
-
-    .line {
-      border-top: 0;
-      border-left-width: nx-border-size(xl);
-      border-left-style: dotted;
-      @include var(border-left-color, multi-stepper-line-color);
-      height: $vertical-line-height;
-      flex: 0 0 auto;
-      margin-left: (($dot-size - nx-border-size(xl)) * 0.5);
-
-      [dir="rtl"] & {
-        border-right-width: nx-border-size(xl);
-        border-right-style: dotted;
-        @include var(border-right-color, multi-stepper-line-color);
-        margin-right: (($dot-size - nx-border-size(xl)) * 0.5);
-        margin-left: initial;
-        border-left: none;
-      }
-    }
-
-    &.is-active .line {
-      $offset: (($label-line-height - $dot-size) * 0.5) + 1px; // 1px is to visually close the tiny gap to the dot
-      border-left-style: solid;
-      @include var(border-left-color, multi-stepper-line-filled-color);
-      margin-top: -$offset;
-      margin-bottom: -$offset;
-      height: $vertical-line-height + $offset * 2;
-
-      [dir="rtl"] & {
-        border-right-style: solid;
-        @include var(border-right-color, multi-stepper-line-filled-color);
-        border-left: none;
-      }
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: windowText;
-      }
-    }
-
-
-    &.is-last {
-      flex: 0 0 auto;
-    }
-  }
-
-  &:not(.nx-multi-step-item--vertical) {
-    .line {
-      border-top-width: nx-border-size(xl);
-      border-top-style: dotted;
-      @include var(border-top-color, multi-stepper-line-color);
-      margin: 0 nx-spacer(3xs);
-      position: absolute;
-      left: calc(#{$dot-size} + #{nx-spacer(3xs)});
-      width: calc(100% - (#{$dot-size} + (#{nx-spacer(3xs)} * 2)));
-      transform: translateX(50%);
-      top: calc(#{$dot-size} / 2 - #{nx-border-size(xl)} / 2);
-
-      [dir="rtl"] & {
-        right: calc(#{$dot-size} + #{nx-spacer(3xs)});
-        left: auto;
-        transform: translateX(-50%);
-      }
-    }
-
-    &.is-active {
-      .line {
-        @include var(border-top-color, multi-stepper-line-filled-color);
-        border-top-style: solid;
-        margin: 0;
-        left: calc(#{$dot-size} - 1px);
-        width: calc(100% - (#{$dot-size} - 2px));
-
-        [dir="rtl"] & {
-          right: calc(#{$dot-size} - 1px);
-          left: auto;
+        .dot {
+            border-color: buttonText;
         }
-      }
+
+        .small-dot {
+            background-color: buttonText;
+        }
     }
-  }
 
-  &:not(:first-child)::before {
-    content: '';
-  }
+    &.is-disabled {
+        cursor: not-allowed;
 
-  &.nx-multi-step-item--active {
-    &::after {
-      @include var(border-top-color, multi-stepper-line-filled-color);
-      border-top-style: solid;
-      border-image-source: none;
-      transition: border-style 0.1s ease-in;
-      margin: 0;
-      left: calc(#{nx-spacer(3xs)} * 2);
-      width: calc(100% - #{nx-spacer(3xs)});
+        .dot {
+            @include var(border-color, multi-stepper-dot-disabled-color);
+        }
 
-      [dir="rtl"] & {
-        right: calc(#{nx-spacer(3xs)} * 2);
-        left: auto;
-      }
+        @media screen and (-ms-high-contrast: active) {
+            .label {
+                color: GrayText;
+            }
+
+            .dot {
+                border-color: GrayText;
+            }
+        }
     }
-  }
+
+    &.is-completed:not(.is-disabled) {
+        .dot {
+            @include var(background-color, multi-stepper-dot-touched-color);
+        }
+    }
+
+    &.nx-multi-step-item--vertical {
+        flex: 0 0 auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+
+        .label-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .label {
+            position: static;
+            transform: none;
+            margin-left: nx-spacer(s);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-align: left;
+            min-width: 0;
+            @include type-style(multi-stepper-step);
+
+            [dir='rtl'] & {
+                margin-right: nx-spacer(s);
+                margin-left: initial;
+            }
+
+            // This creates a hidden label with bold text, so the label will not jump when it's beeing hovered.
+            &:before {
+                content: attr(label);
+                height: 0;
+                overflow: hidden;
+                display: block;
+            }
+
+            @media screen and (-ms-high-contrast: active) {
+                -ms-high-contrast-adjust: none;
+                background-color: buttonFace;
+                border-radius: 4px;
+                box-shadow: 0 0 0 2px buttonFace;
+                color: buttonText;
+            }
+        }
+
+        &.is-disabled .label {
+            @include var(color, multi-stepper-step-disabled-color);
+
+            @media screen and (-ms-high-contrast: active) {
+                color: GrayText;
+            }
+        }
+
+        &.is-selected .label {
+            // still not themed because vertical and horizontal differ (horizontal does not get bold)
+            font-weight: nx-font-weight(bold);
+
+            @media screen and (-ms-high-contrast: active) {
+                background-color: highlight;
+                border-radius: 4px;
+                box-shadow: 0 0 0 2px highlight;
+                color: highlightText;
+            }
+        }
+
+        .line {
+            border-top: 0;
+            border-left-width: nx-border-size(xl);
+            border-left-style: dotted;
+            @include var(border-left-color, multi-stepper-line-color);
+            height: $vertical-line-height;
+            flex: 0 0 auto;
+            margin-left: (($dot-size - nx-border-size(xl)) * 0.5);
+
+            [dir='rtl'] & {
+                border-right-width: nx-border-size(xl);
+                border-right-style: dotted;
+                @include var(border-right-color, multi-stepper-line-color);
+                margin-right: (($dot-size - nx-border-size(xl)) * 0.5);
+                margin-left: initial;
+                border-left: none;
+            }
+        }
+
+        &.is-active .line {
+            $offset: (($label-line-height - $dot-size) * 0.5) + 1px; // 1px is to visually close the tiny gap to the dot
+            border-left-style: solid;
+            @include var(border-left-color, multi-stepper-line-filled-color);
+            margin-top: -$offset;
+            margin-bottom: -$offset;
+            height: $vertical-line-height + $offset * 2;
+
+            [dir='rtl'] & {
+                border-right-style: solid;
+                @include var(border-right-color, multi-stepper-line-filled-color);
+                border-left: none;
+            }
+
+            @media screen and (-ms-high-contrast: active) {
+                border-color: windowText;
+            }
+        }
+
+        &.is-last {
+            flex: 0 0 auto;
+        }
+    }
+
+    &:not(.nx-multi-step-item--vertical) {
+        .line {
+            border-top-width: nx-border-size(xl);
+            border-top-style: dotted;
+            @include var(border-top-color, multi-stepper-line-color);
+            margin: 0 nx-spacer(3xs);
+            position: absolute;
+            left: calc(#{$dot-size} + #{nx-spacer(3xs)});
+            width: calc(100% - (#{$dot-size} + (#{nx-spacer(3xs)} * 2)));
+            transform: translateX(50%);
+            top: calc(#{$dot-size} / 2 - #{nx-border-size(xl)} / 2);
+
+            [dir='rtl'] & {
+                right: calc(#{$dot-size} + #{nx-spacer(3xs)});
+                left: auto;
+                transform: translateX(-50%);
+            }
+        }
+
+        &.is-active {
+            .line {
+                @include var(border-top-color, multi-stepper-line-filled-color);
+                border-top-style: solid;
+                margin: 0;
+                left: calc(#{$dot-size} - 1px);
+                width: calc(100% - (#{$dot-size} - 2px));
+
+                [dir='rtl'] & {
+                    right: calc(#{$dot-size} - 1px);
+                    left: auto;
+                }
+            }
+        }
+    }
+
+    &:not(:first-child)::before {
+        content: '';
+    }
+
+    &.nx-multi-step-item--active {
+        &::after {
+            @include var(border-top-color, multi-stepper-line-filled-color);
+            border-top-style: solid;
+            border-image-source: none;
+            transition: border-style 0.1s ease-in;
+            margin: 0;
+            left: calc(#{nx-spacer(3xs)} * 2);
+            width: calc(100% - #{nx-spacer(3xs)});
+
+            [dir='rtl'] & {
+                right: calc(#{nx-spacer(3xs)} * 2);
+                left: auto;
+            }
+        }
+    }
 }
 
 .label-box {
-  outline: none;
-  appearance: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  max-width: 100%;
+    outline: none;
+    appearance: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    max-width: 100%;
 }
 
 .label {
-  position: absolute;
-  top: calc(#{$dot-size*0.5} + #{nx-spacer(s)});
-  text-align: center;
-  @include var(color, multi-stepper-step-color);
-  left: 0;
-  width: 100%;
+    position: absolute;
+    top: calc(#{$dot-size * 0.5} + #{nx-spacer(s)});
+    text-align: center;
+    @include var(color, multi-stepper-step-color);
+    left: 0;
+    width: 100%;
 
-  :host-context([dir="rtl"]) & {
-    right: 0;
-    left: auto;
-  }
+    :host-context([dir='rtl']) & {
+        right: 0;
+        left: auto;
+    }
 }
 
 .dot {
-  width: $dot-size;
-  height: $dot-size;
-  border-width: $dot-border-size;
-  border-style: solid;
-  @include var(border-color, multi-stepper-dot-touched-color);
-  @include var(color, multi-stepper-dot-checkmark-color);
-  border-radius: 50%;
-  flex: 0 0 auto;
-  position: relative;
+    width: $dot-size;
+    height: $dot-size;
+    border-width: $dot-border-size;
+    border-style: solid;
+    @include var(border-color, multi-stepper-dot-touched-color);
+    @include var(color, multi-stepper-dot-checkmark-color);
+    border-radius: 50%;
+    flex: 0 0 auto;
+    position: relative;
 
-  nx-icon {
-    font-size: nx-font-size(3xs);
+    nx-icon {
+        font-size: nx-font-size(3xs);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        :host-context([dir='rtl']) & {
+            right: 50%;
+            left: auto;
+            transform: translate(50%, -50%);
+        }
+    }
+}
+
+.small-dot {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: nx-spacer(2xs);
+    height: nx-spacer(2xs);
+    border-radius: 50%;
+    @include var(background-color, multi-stepper-dot-touched-color);
 
-    :host-context([dir="rtl"]) & {
-      right: 50%;
-      left: auto;
-      transform: translate(50%, -50%);
+    :host-context([dir='rtl']) & {
+        right: 50%;
+        left: auto;
+        transform: translate(50%, -50%);
     }
-  }
-}
 
-.small-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: nx-spacer(2xs);
-  height: nx-spacer(2xs);
-  border-radius: 50%;
-  @include var(background-color, multi-stepper-dot-touched-color);
-
-  :host-context([dir="rtl"]) & {
-    right: 50%;
-    left: auto;
-    transform: translate(50%, -50%);
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    background-color: windowText;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        background-color: windowText;
+    }
 }

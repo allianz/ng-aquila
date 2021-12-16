@@ -1,39 +1,39 @@
 @import '../shared-styles/index';
 
 :host {
-  margin: 0 0 0 auto;
+    margin: 0 0 0 auto;
 
-  [dir="rtl"] & {
-    margin: 0 auto 0 0;
-  }
-
-  // always place toggle on the right
-  order: 100;
-
-  .nx-sidebar__toggle-icons-container {
-    display: flex;
-
-    nx-icon {
-      font-size: nx-font-size(s);
-      margin-left: 2px;
+    [dir='rtl'] & {
+        margin: 0 auto 0 0;
     }
 
-    nx-icon:last-child {
-      margin-left: -18px;
+    // always place toggle on the right
+    order: 100;
+
+    .nx-sidebar__toggle-icons-container {
+        display: flex;
+
+        nx-icon {
+            font-size: nx-font-size(s);
+            margin-left: 2px;
+        }
+
+        nx-icon:last-child {
+            margin-left: -18px;
+        }
+
+        [dir='rtl'] & {
+            transform: rotate(180deg);
+
+            nx-icon {
+                margin-right: 2px;
+                margin-left: initial;
+            }
+
+            nx-icon:last-child {
+                margin-right: -18px;
+                margin-left: initial;
+            }
+        }
     }
-
-    [dir="rtl"] & {
-      transform: rotate(180deg);
-
-      nx-icon {
-        margin-right: 2px;
-        margin-left: initial;
-      }
-
-      nx-icon:last-child {
-        margin-right: -18px;
-        margin-left: initial;
-      }
-    }
-  }
 }

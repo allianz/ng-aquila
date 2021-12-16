@@ -1,70 +1,49 @@
 {% import "macros.html" as macros %}
 
-
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">
-        {%- if method.isDeprecated -%}
-          <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(method) $}>
-            Deprecated
-          </div>
-        {%- endif -%}
-        {$ method.name $}(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">
+                {%- if method.isDeprecated -%}
+                <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(method) $}> Deprecated </div>
+                {%- endif -%} {$ method.name $}(<!--
      -->{%- if method.params.length -%}<!--
        -->{% for parameter in method.params %}<!--
-         -->{$ parameter.name $}
-            {%- if parameter.type %}:
-              <span class="docs-api-property__type">{$ parameter.type $}</span><!--
+         -->{$ parameter.name $} {%- if parameter.type %}: <span class="docs-api-property__type">{$ parameter.type $}</span
+                ><!--
          -->{%- endif %}<!--
          -->{%- if not loop.last %}, {%- endif %}<!--
        -->{% endfor %}<!--
-       -->{%- endif %})
-        {%- if method.type and method.type !== "void" -%}
-          : <span class="docs-api-method-returns-type">{$ method.type $}</span>
-        {%- endif -%}
-      </span>
-    </code>
-  </div>
-  <div class="docs-api-method-description">
-    {%- if method.description -%}
-      {$ method.description | marked | safe $}
-    {%- endif -%}
-    {%- if method.deprecated and method.deprecated !== '' -%}
-      {$ method.deprecated | marked | safe $}
-    {%- endif -%}
-    {%- if method.deletionTarget -%}
-      <strong>Deletion target:</strong> {$ method.deletionTarget $}
-    {%- endif -%}
-  </div>
-  {%- if method.params.length -%}
+       -->{%- endif %}) {%- if method.type and method.type !== "void" -%} : <span class="docs-api-method-returns-type">{$ method.type $}</span>
+                {%- endif -%}
+            </span>
+        </code>
+    </div>
+    <div class="docs-api-method-description">
+        {%- if method.description -%} {$ method.description | marked | safe $} {%- endif -%} {%- if method.deprecated and method.deprecated !== '' -%} {$ method.deprecated | marked | safe $} {%- endif -%} {%- if method.deletionTarget -%}
+        <strong>Deletion target:</strong> {$ method.deletionTarget $} {%- endif -%}
+    </div>
+    {%- if method.params.length -%}
     <div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      {% for parameter in method.params %}
+        <p class="docs-api-method-param-title">Parameters:</p>
+        {% for parameter in method.params %}
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            {$ parameter.name $}
-            {%- if parameter.isOptional -%}
-              <span class="docs-api-method-parameter-optional-marker">?</span>
-            {%- endif -%}:
-            <span class="docs-api-method-parameter-type">{$ parameter.type $}</span>
-          </code>
-          {%- if parameter.description %}
-            <p class="docs-api-method-parameter-description">
-              {$ parameter.description | safe $}
-            </p>
-          {%- endif %}
+            <code class="docs-api-parameter-name">
+                {$ parameter.name $} {%- if parameter.isOptional -%}
+                <span class="docs-api-method-parameter-optional-marker">?</span>
+                {%- endif -%}:
+                <span class="docs-api-method-parameter-type">{$ parameter.type $}</span>
+            </code>
+            {%- if parameter.description %}
+            <p class="docs-api-method-parameter-description"> {$ parameter.description | safe $} </p>
+            {%- endif %}
         </div>
-      {% endfor %}
+        {% endfor %}
     </div>
-  {%- endif -%}
-
-  {%- if method.type and method.returns.description and method.type !== "void" -%}
+    {%- endif -%} {%- if method.type and method.returns.description and method.type !== "void" -%}
     <div class="docs-api-method-returns">
-      <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">{$ method.type $}</code></p>
-      <p class="docs-api-method-returns-description">
-        {$ method.returns.description | marked | safe $}
-      </p>
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">{$ method.type $}</code></p>
+        <p class="docs-api-method-returns-description"> {$ method.returns.description | marked | safe $} </p>
     </div>
-  {%- endif -%}
+    {%- endif -%}
 </div>

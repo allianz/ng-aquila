@@ -1,37 +1,37 @@
 .container {
-  background: var(--documentation-comparison-table-example-background-color);
-  padding: 12px;
+    background: var(--documentation-comparison-table-example-background-color);
+    padding: 12px;
 }
 
 .product-title {
-  font-weight: 600;
-  margin: 0;
+    font-weight: 600;
+    margin: 0;
 }
 
 .product-price {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 32px;
-  letter-spacing: 0.2px;
-  margin: 12px 0 0 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0.2px;
+    margin: 12px 0 0 0;
 }
 
 .product-underline {
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.2px;
-  font-weight: 400;
-  margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    margin: 0;
 }
 
 .minus-icon {
-  color: var(--documentation-comparison-table-example-minus-color);
+    color: var(--documentation-comparison-table-example-minus-color);
 }
 
 .check-icon {
-  color: var(--success);
+    color: var(--success);
 }
 
 ::ng-deep .is-selected .check-icon {
-  color: var(--success-02, --success);
+    color: var(--success-02, --success);
 }

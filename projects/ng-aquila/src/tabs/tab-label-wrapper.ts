@@ -5,26 +5,26 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 /** @docs-private */
 @Directive({ selector: '[nxTabLabelWrapper]' })
 export class NxTabLabelWrapperDirective implements FocusableOption {
-  private _disabled: boolean = false;
+    private _disabled: boolean = false;
 
-  constructor(public elementRef: ElementRef) {}
+    constructor(public elementRef: ElementRef) {}
 
-  /** Whether the tab group is disabled. Default: false. */
-  @Input()
-  get disabled(): boolean {
-    return this._disabled;
-  }
-
-  set disabled(value: boolean) {
-    const newValue = coerceBooleanProperty(value);
-    if (this.disabled !== newValue) {
-      this._disabled = newValue;
+    /** Whether the tab group is disabled. Default: false. */
+    @Input()
+    get disabled(): boolean {
+        return this._disabled;
     }
-  }
 
-  focus(): void {
-    this.elementRef.nativeElement.focus();
-  }
+    set disabled(value: boolean) {
+        const newValue = coerceBooleanProperty(value);
+        if (this.disabled !== newValue) {
+            this._disabled = newValue;
+        }
+    }
 
-  static ngAcceptInputType_disabled: BooleanInput;
+    focus(): void {
+        this.elementRef.nativeElement.focus();
+    }
+
+    static ngAcceptInputType_disabled: BooleanInput;
 }

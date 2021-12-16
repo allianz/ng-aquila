@@ -1,64 +1,66 @@
 @import '../shared-styles/index';
 
 @mixin headline-typography($size) {
-  @include type-style($size);
+    @include type-style($size);
 
-  @include media-breakpoint-down(small) {
-    @include type-style(#{$size}-mobile);
-  }
+    @include media-breakpoint-down(small) {
+        @include type-style(#{$size}-mobile);
+    }
 }
 
 :host {
-  margin: 0;
-  ::ng-deep .nx-link, ::ng-deep nx-link a, a {
-    @include var(color, link-color);
-    font-size: inherit;
-    font-weight: nx-font-weight(semibold);
-    line-height: inherit;
-    letter-spacing: inherit;
-    text-decoration: none;
-  }
+    margin: 0;
+    ::ng-deep .nx-link,
+    ::ng-deep nx-link a,
+    a {
+        @include var(color, link-color);
+        font-size: inherit;
+        font-weight: nx-font-weight(semibold);
+        line-height: inherit;
+        letter-spacing: inherit;
+        text-decoration: none;
+    }
 }
 
 :host(.nx-heading--page) {
-  @include headline-typography('heading-01');
+    @include headline-typography('heading-01');
 }
 
 :host(.nx-heading--section) {
-  @include headline-typography('heading-02');
+    @include headline-typography('heading-02');
 }
 
 :host(.nx-heading--subsection-large) {
-  @include headline-typography('heading-03');
+    @include headline-typography('heading-03');
 }
 
 :host(.nx-heading--subsection-medium) {
-  @include headline-typography('heading-04');
+    @include headline-typography('heading-04');
 }
 
 :host(.nx-heading--subsection-small) {
-  @include headline-typography('heading-05');
+    @include headline-typography('heading-05');
 }
 
 :host(.nx-heading--subsection-xsmall) {
-  @include headline-typography('heading-06');
+    @include headline-typography('heading-06');
 }
 
 :host(.nx-heading--negative) {
-  @include var(color, negative);
-
-  ::ng-deep a {
     @include var(color, negative);
-  }
+
+    ::ng-deep a {
+        @include var(color, negative);
+    }
 }
 
 :host(.nx-heading--page-bold-caps) {
-  @include headline-typography('heading-01');
-  font-weight: nx-font-weight(bold);
-  text-transform: uppercase;
-
-  @include media-breakpoint-down(small) {
+    @include headline-typography('heading-01');
     font-weight: nx-font-weight(bold);
     text-transform: uppercase;
-  }
+
+    @include media-breakpoint-down(small) {
+        font-weight: nx-font-weight(bold);
+        text-transform: uppercase;
+    }
 }

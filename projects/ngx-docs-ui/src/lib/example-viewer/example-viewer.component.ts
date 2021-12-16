@@ -9,79 +9,78 @@ import { DocViewerComponent } from '../doc-viewer/doc-viewer.component';
 import { ManifestService } from './../service/manifest.service';
 
 interface ExampleConfig {
-  hideHeader?: boolean;
-  hideStackblitzButton?: boolean;
-  privateExample?: boolean;
+    hideHeader?: boolean;
+    hideStackblitzButton?: boolean;
+    privateExample?: boolean;
 }
 
 @Component({
-  selector: 'nxv-example-viewer',
-  templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'nxv-example-viewer',
+    templateUrl: './example-viewer.component.html',
+    styleUrls: ['./example-viewer.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleViewerComponent {
-  constructor(
-    public manifestService: ManifestService,
-    public copyService: CopyService,
-  ) {
-  }
+    constructor(public manifestService: ManifestService, public copyService: CopyService) {}
 
-  moduleId!: string;
-  showSourceCode = false;
-  _example!: string;
-  exampleData!: ComponentExample;
-  exampleDescriptor!: ExampleDescriptor;
-  examplePortal!: ComponentPortal<any>;
-  exampleDescriptorTypes = [
-    { type: 'html', label: 'html' },
-    { type: 'ts', label: 'typescript' },
-    { type: 'css', label: 'css' }
-  ];
-  copyButtonText = 'copy';
+    moduleId!: string;
+    showSourceCode = false;
+    _example!: string;
+    exampleData!: ComponentExample;
+    exampleDescriptor!: ExampleDescriptor;
+    examplePortal!: ComponentPortal<any>;
+    exampleDescriptorTypes = [
+        { type: 'html', label: 'html' },
+        { type: 'ts', label: 'typescript' },
+        { type: 'css', label: 'css' },
+    ];
+    copyButtonText = 'copy';
 
-  @ViewChildren(DocViewerComponent)
-  docViewers!: QueryList<DocViewerComponent>;
-  @ViewChild(NxTabGroupComponent)
-  tabGroup!: NxTabGroupComponent;
+    @ViewChildren(DocViewerComponent)
+    docViewers!: QueryList<DocViewerComponent>;
+    @ViewChild(NxTabGroupComponent)
+    tabGroup!: NxTabGroupComponent;
 
-  exampleComponent = null;
-  exampleModuleFactory = null;
+    exampleComponent = null;
+    exampleModuleFactory = null;
 
-  @Input()
-  set example(id: string) {
-    this._example = id;
+    @Input()
+    set example(id: string) {
+        this._example = id;
 
-    if (this.manifestService.hasExample(id)) {
-      this.exampleDescriptor = this.manifestService.getExample(id);
+        if (this.manifestService.hasExample(id)) {
+            this.exampleDescriptor = this.manifestService.getExample(id);
+        }
     }
-  }
 
-  get example() {
-    return this._example;
-  }
+    get example() {
+        return this._example;
+    }
 
-  @Input()
-  config!: ExampleConfig;
+    @Input()
+    config!: ExampleConfig;
 
-  toggleSourceView() {
-    this.showSourceCode = !this.showSourceCode;
-  }
+    toggleSourceView() {
+        this.showSourceCode = !this.showSourceCode;
+    }
 
-  copySourceCode() {
-    const currentTab = this.tabGroup.tabs.toArray()[this.tabGroup.selectedIndex].label;
-    const currentContent = this.docViewers.toArray().filter(viewer => viewer.id === currentTab).pop()?.content;
-    this.copyButtonText = 'copied!';
+    copySourceCode() {
+        const currentTab = this.tabGroup.tabs.toArray()[this.tabGroup.selectedIndex].label;
+        const currentContent = this.docViewers
+            .toArray()
+            .filter(viewer => viewer.id === currentTab)
+            .pop()?.content;
+        this.copyButtonText = 'copied!';
 
-    setTimeout(() => {
-      this.copyButtonText = 'copy';
-    }, 500);
+        setTimeout(() => {
+            this.copyButtonText = 'copy';
+        }, 500);
 
-    this.copyService.copyText(currentContent);
-  }
+        this.copyService.copyText(currentContent);
+    }
 
-  getExampleSourceUrl(type: string, url: string) {
-    const file = url.split('###TYPE###').join(type);
-    return file;
-  }
+    getExampleSourceUrl(type: string, url: string) {
+        const file = url.split('###TYPE###').join(type);
+        return file;
+    }
 }

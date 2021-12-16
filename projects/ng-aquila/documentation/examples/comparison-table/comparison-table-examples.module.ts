@@ -23,48 +23,48 @@ import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-tab
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  ComparisonTableExampleComponent,
-  ComparisonTableDisabledColumnsExampleComponent,
-  ComparisonTableDynamicExampleComponent,
-  ComparisonTableFormElementsExampleComponent,
-  ComparisonTableRowGroupExampleComponent,
-  ComparisonTableWithIntersectionExampleComponent,
-  ComparisonTableWithToggleSectionsExampleComponent,
-  ComparisonTableExpandableAreaExampleComponent,
-  ComparisonTableHiddenColumnsExampleComponent,
-  ComparisonTableNonStickyHeaderExampleComponent
+    ComparisonTableExampleComponent,
+    ComparisonTableDisabledColumnsExampleComponent,
+    ComparisonTableDynamicExampleComponent,
+    ComparisonTableFormElementsExampleComponent,
+    ComparisonTableRowGroupExampleComponent,
+    ComparisonTableWithIntersectionExampleComponent,
+    ComparisonTableWithToggleSectionsExampleComponent,
+    ComparisonTableExpandableAreaExampleComponent,
+    ComparisonTableHiddenColumnsExampleComponent,
+    ComparisonTableNonStickyHeaderExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxComparisonTableModule,
-    NxIconModule,
-    NxPopoverModule,
-    NxRadioToggleModule,
-    NxDropdownModule,
-    NxFormfieldModule,
-    NxListModule,
-    ExamplesSharedModule,
-    NxAccordionModule,
-    NxContextMenuModule,
-    NxSpinnerModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxComparisonTableModule,
+        NxIconModule,
+        NxPopoverModule,
+        NxRadioToggleModule,
+        NxDropdownModule,
+        NxFormfieldModule,
+        NxListModule,
+        ExamplesSharedModule,
+        NxAccordionModule,
+        NxContextMenuModule,
+        NxSpinnerModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ComparisonExamplesModule {
-  static components() {
-    return {
-      'comparison-table': ComparisonTableExampleComponent,
-      'comparison-table-disabled-columns': ComparisonTableDisabledColumnsExampleComponent,
-      'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
-      'comparison-table-form-elements': ComparisonTableFormElementsExampleComponent,
-      'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
-      'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
-      'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
-      'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent,
-      'comparison-table-hidden-columns': ComparisonTableHiddenColumnsExampleComponent,
-      'comparison-table-non-sticky-header': ComparisonTableNonStickyHeaderExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'comparison-table': ComparisonTableExampleComponent,
+            'comparison-table-disabled-columns': ComparisonTableDisabledColumnsExampleComponent,
+            'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
+            'comparison-table-form-elements': ComparisonTableFormElementsExampleComponent,
+            'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
+            'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
+            'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
+            'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent,
+            'comparison-table-hidden-columns': ComparisonTableHiddenColumnsExampleComponent,
+            'comparison-table-non-sticky-header': ComparisonTableNonStickyHeaderExampleComponent,
+        };
+    }
 }

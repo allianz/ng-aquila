@@ -1,24 +1,14 @@
 <form #form="ngForm" [formGroup]="codeForm">
-  <nx-code-input #codeInput
-      [length]="4"
-      nxConvertTo="upper"
-      formControlName="keyCode"></nx-code-input>
+    <nx-code-input #codeInput [length]="4" nxConvertTo="upper" formControlName="keyCode"></nx-code-input>
 
-  <div *ngIf="codeInput.errorState">
-    <nx-error *ngIf="keyCode?.hasError('required')" class="nx-margin-y-xs">
-      Entry is required.
-    </nx-error>
-    <nx-error *ngIf="keyCode?.hasError('pattern')" class="nx-margin-y-xs">
-      Entry must match pattern.
-    </nx-error>
-    <nx-error *ngIf="keyCode?.hasError('minlength')" class="nx-margin-y-xs">
-      Entry is too short.
-    </nx-error>
-  </div>
+    <div *ngIf="codeInput.errorState">
+        <nx-error *ngIf="keyCode?.hasError('required')" class="nx-margin-y-xs"> Entry is required. </nx-error>
+        <nx-error *ngIf="keyCode?.hasError('pattern')" class="nx-margin-y-xs"> Entry must match pattern. </nx-error>
+        <nx-error *ngIf="keyCode?.hasError('minlength')" class="nx-margin-y-xs"> Entry is too short. </nx-error>
+    </div>
 
-  <p>Disabled: {{ this.keyCode?.disabled }}</p>
-  <button nxButton="primary small" type="submit">Submit</button>
-  <button nxButton="secondary small" (click)="form.resetForm()" type="button">Clear</button>
-  <button nxButton="primary small" (click)="toggleDisabled()" type="button">Toggle disabled</button>
-
+    <p>Disabled: {{ this.keyCode?.disabled }}</p>
+    <button nxButton="primary small" type="submit">Submit</button>
+    <button nxButton="secondary small" (click)="form.resetForm()" type="button">Clear</button>
+    <button nxButton="primary small" (click)="toggleDisabled()" type="button">Toggle disabled</button>
 </form>

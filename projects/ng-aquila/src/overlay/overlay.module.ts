@@ -8,18 +8,10 @@ import { NgModule } from '@angular/core';
 import { NxOverlayService } from './overlay-service';
 
 @NgModule({
-  imports: [
-    OverlayModule,
-    A11yModule,
-    PortalModule,
-    RouterModule
-  ],
-  exports: [NxOverlayContainerComponent, OverlayModule],
-  declarations: [NxOverlayContainerComponent],
-  entryComponents: [NxOverlayContainerComponent],
-  providers: [
-    NxOverlayService,
-    NxOverlayPositionBuilder
-  ]
+    imports: [OverlayModule, A11yModule, PortalModule, RouterModule],
+    exports: [NxOverlayContainerComponent, OverlayModule],
+    declarations: [NxOverlayContainerComponent],
+    entryComponents: [NxOverlayContainerComponent],
+    providers: [NxOverlayService, NxOverlayPositionBuilder],
 })
-export class NxOverlayModule { }
+export class NxOverlayModule {}

@@ -1,7 +1,7 @@
 {
-  "current": "stable",
-  "channels": ["stable"],
-  "urls": {
-    "stable": "https://github.com/aposin/ng-aquila"
-  }
+    "current": "stable",
+    "channels": ["stable"],
+    "urls": {
+        "stable": "https://github.com/aposin/ng-aquila"
+    }
 }

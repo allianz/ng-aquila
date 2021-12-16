@@ -1,174 +1,169 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "ng-aquila": {
-      "root": "projects/ng-aquila",
-      "sourceRoot": "projects/ng-aquila/src",
-      "projectType": "library",
-      "prefix": "nx",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/ng-aquila/tsconfig.build.json",
-            "project": "projects/ng-aquila/src/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ng-aquila/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ng-aquila/test.ts",
-            "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-aquila/karma.conf.js"
-          }
-        }
-      }
-    },
-    "ngx-docs-ui": {
-      "root": "projects/ngx-docs-ui",
-      "sourceRoot": "projects/ngx-docs-ui/src",
-      "projectType": "library",
-      "prefix": "nxv",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/ngx-docs-ui/tsconfig.build.json",
-            "project": "projects/ngx-docs-ui/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ngx-docs-ui/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngx-docs-ui/test.ts",
-            "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
-          }
-        }
-      }
-    },
-    "opensource-documentation": {
-      "root": "projects/opensource-documentation/",
-      "sourceRoot": "projects/opensource-documentation/src",
-      "projectType": "application",
-      "prefix": "doc",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "allowedCommonJsDependencies": [
-              "parse-color",
-              "decimal.js",
-              "iban",
-              "color-convert"
-            ],
-            "outputPath": "dist/opensource-documentation",
-            "index": "projects/opensource-documentation/src/index.html",
-            "main": "projects/opensource-documentation/src/main.ts",
-            "polyfills": "projects/opensource-documentation/src/polyfills.ts",
-            "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
-            "assets": [
-              "projects/opensource-documentation/src/favicon.png",
-              "projects/opensource-documentation/src/assets",
-              {
-                "glob": "**/*",
-                "input": "projects/ng-aquila/documentation/examples/",
-                "output": "/docs-content/examples-source/"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/ng-aquila/documentation/generated",
-                "output": "/lib-viewer/"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/ng-aquila/documentation/assets/",
-                "output": "/assets/"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/ngx-docs-ui/src/lib/assets/",
-                "output": "/docs-assets/"
-              },
-              {
-                "glob": "**/*",
-                "input": "dist/ng-aquila/themes/",
-                "output": "/assets/"
-              }
-            ],
-            "styles": [
-              "node_modules/@angular/cdk/overlay-prebuilt.css",
-              "projects/opensource-documentation/src/styles.scss",
-              "projects/ng-aquila/src/shared-styles/utilities.scss",
-              "projects/ngx-docs-ui/src/lib/styles/global-styles.scss",
-              "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
-              "node_modules/highlight.js/styles/tomorrow-night-blue.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "ng-aquila": {
+            "root": "projects/ng-aquila",
+            "sourceRoot": "projects/ng-aquila/src",
+            "projectType": "library",
+            "prefix": "nx",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/ng-aquila/tsconfig.build.json",
+                        "project": "projects/ng-aquila/src/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/ng-aquila/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ng-aquila/test.ts",
+                        "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
+                        "karmaConfig": "projects/ng-aquila/karma.conf.js"
+                    }
                 }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/opensource-documentation/src/environments/environment.ts",
-                  "with": "projects/opensource-documentation/src/environments/environment.prod.ts"
+            }
+        },
+        "ngx-docs-ui": {
+            "root": "projects/ngx-docs-ui",
+            "sourceRoot": "projects/ngx-docs-ui/src",
+            "projectType": "library",
+            "prefix": "nxv",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "tsConfig": "projects/ngx-docs-ui/tsconfig.build.json",
+                        "project": "projects/ngx-docs-ui/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/ngx-docs-ui/tsconfig.lib.prod.json"
+                        }
+                    }
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "main": "projects/ngx-docs-ui/test.ts",
+                        "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
+                        "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
+                    }
                 }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "tsConfig": "projects/opensource-documentation/tsconfig.build.json"
             }
-          }
         },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "opensource-documentation:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "opensource-documentation:build:production"
+        "opensource-documentation": {
+            "root": "projects/opensource-documentation/",
+            "sourceRoot": "projects/opensource-documentation/src",
+            "projectType": "application",
+            "prefix": "doc",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "allowedCommonJsDependencies": ["parse-color", "decimal.js", "iban", "color-convert"],
+                        "outputPath": "dist/opensource-documentation",
+                        "index": "projects/opensource-documentation/src/index.html",
+                        "main": "projects/opensource-documentation/src/main.ts",
+                        "polyfills": "projects/opensource-documentation/src/polyfills.ts",
+                        "tsConfig": "projects/opensource-documentation/tsconfig.app.json",
+                        "assets": [
+                            "projects/opensource-documentation/src/favicon.png",
+                            "projects/opensource-documentation/src/assets",
+                            {
+                                "glob": "**/*",
+                                "input": "projects/ng-aquila/documentation/examples/",
+                                "output": "/docs-content/examples-source/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "projects/ng-aquila/documentation/generated",
+                                "output": "/lib-viewer/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "projects/ng-aquila/documentation/assets/",
+                                "output": "/assets/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "projects/ngx-docs-ui/src/lib/assets/",
+                                "output": "/docs-assets/"
+                            },
+                            {
+                                "glob": "**/*",
+                                "input": "dist/ng-aquila/themes/",
+                                "output": "/assets/"
+                            }
+                        ],
+                        "styles": [
+                            "node_modules/@angular/cdk/overlay-prebuilt.css",
+                            "projects/opensource-documentation/src/styles.scss",
+                            "projects/ng-aquila/src/shared-styles/utilities.scss",
+                            "projects/ngx-docs-ui/src/lib/styles/global-styles.scss",
+                            "projects/ngx-docs-ui/src/lib/styles/viewer-styles.scss",
+                            "node_modules/highlight.js/styles/tomorrow-night-blue.css",
+                            "node_modules/@fortawesome/fontawesome-free/css/all.css"
+                        ],
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "buildOptimizer": false,
+                        "sourceMap": true,
+                        "optimization": false,
+                        "namedChunks": true
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/opensource-documentation/src/environments/environment.ts",
+                                    "with": "projects/opensource-documentation/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "tsConfig": "projects/opensource-documentation/tsconfig.build.json"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "opensource-documentation:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "opensource-documentation:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "opensource-documentation:build"
+                    }
+                }
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "opensource-documentation:build"
-          }
         }
-      }
-    }
-  },
-  "defaultProject": "opensource-documentation"
+    },
+    "defaultProject": "opensource-documentation"
 }

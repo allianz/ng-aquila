@@ -1,30 +1,30 @@
 <nx-file-uploader #documentUpload [uploader]="uploader" multiple>
-  <nx-label size="small" class="nx-margin-bottom-3xs">Select a file to upload</nx-label>
-  <span class="nx-margin-bottom-s" nxFileUploadHint>Multiple files can be selected</span>
+    <nx-label size="small" class="nx-margin-bottom-3xs">Select a file to upload</nx-label>
+    <span class="nx-margin-bottom-s" nxFileUploadHint>Multiple files can be selected</span>
 
-  <button nxButton="primary" type="button" class="nx-margin-bottom-s" nxFileUploadButton>
-    <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>
-    Add File
-  </button>
-
+    <button nxButton="primary" type="button" class="nx-margin-bottom-s" nxFileUploadButton>
+        <nx-icon name="plus" class="nx-margin-right-2xs"></nx-icon>
+        Add File
+    </button>
 </nx-file-uploader>
 
-<nx-error *ngIf="showUploadError">
-  An error occured while uploading.
-</nx-error>
+<nx-error *ngIf="showUploadError"> An error occured while uploading. </nx-error>
 
 <p>Set url for testing the upload: {{ uploadConfig['requestUrl'] === 'file-upload' ? 'Valid url' : 'Invalid url' }}</p>
 
 <nx-radio-toggle nxStyle="small" [(ngModel)]="uploadConfig['requestUrl']">
-  <nx-radio-toggle-button nxValue="file-upload">Valid url</nx-radio-toggle-button>
-  <nx-radio-toggle-button nxValue="file-upload-error">Invalid url</nx-radio-toggle-button>
+    <nx-radio-toggle-button nxValue="file-upload">Valid url</nx-radio-toggle-button>
+    <nx-radio-toggle-button nxValue="file-upload-error">Invalid url</nx-radio-toggle-button>
 </nx-radio-toggle>
 
-<br>
+<br />
 
-<button nxButton="secondary small" type="button"
-        [disabled]="!documentUpload.value?.length"
-        [nxFileUploadTriggerFor]="documentUpload"
-        (click)="showUploadError = false">
-  Upload files
+<button
+    nxButton="secondary small"
+    type="button"
+    [disabled]="!documentUpload.value?.length"
+    [nxFileUploadTriggerFor]="documentUpload"
+    (click)="showUploadError = false"
+>
+    Upload files
 </button>

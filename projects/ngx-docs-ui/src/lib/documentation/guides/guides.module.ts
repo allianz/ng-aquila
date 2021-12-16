@@ -10,19 +10,9 @@ import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxvTopInfoModule } from '../component-documentation/top-info/top-info.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NxGridModule,
-    NxvFooterModule,
-    NxSidebarModule,
-    NxActionModule,
-    NxvTopInfoModule
-  ],
-  exports: [],
-  declarations: [
-    NxvGuidesComponent
-  ],
-  providers: []
+    imports: [CommonModule, RouterModule, NxGridModule, NxvFooterModule, NxSidebarModule, NxActionModule, NxvTopInfoModule],
+    exports: [],
+    declarations: [NxvGuidesComponent],
+    providers: [],
 })
-export class NxvGuidesModule { }
+export class NxvGuidesModule {}

@@ -1,101 +1,87 @@
 import { Component } from '@angular/core';
-import {
-  FileItem,
-  NxFileUploaderComponent,
-} from '@aposin/ng-aquila/file-uploader';
-import {
-  NxMessageToastConfig,
-  NxMessageToastService,
-} from '@aposin/ng-aquila/message';
+import { FileItem, NxFileUploaderComponent } from '@aposin/ng-aquila/file-uploader';
+import { NxMessageToastConfig, NxMessageToastService } from '@aposin/ng-aquila/message';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 export class CustomFileItem extends FileItem {
-  public formData!: FormData;
+    public formData!: FormData;
 }
 
 export const myCustomConfig: NxMessageToastConfig = {
-  duration: 3000,
-  context: 'success',
-  announcementMessage: 'File was uploaded successfully!',
+    duration: 3000,
+    context: 'success',
+    announcementMessage: 'File was uploaded successfully!',
 };
 
 /** @title File uploader custom-item example */
 @Component({
-  selector: 'file-uploader-custom-item-example',
-  templateUrl: './file-uploader-custom-item-example.html',
-  styleUrls: ['./file-uploader-custom-item-example.css'],
+    selector: 'file-uploader-custom-item-example',
+    templateUrl: './file-uploader-custom-item-example.html',
+    styleUrls: ['./file-uploader-custom-item-example.css'],
 })
 export class FileUploaderCustomItemExampleComponent {
-  myFiles: CustomFileItem[] = [];
+    myFiles: CustomFileItem[] = [];
 
-  @ViewChild('documentUpload') documentUpload!: NxFileUploaderComponent;
-  public showUploadError: boolean = false;
+    @ViewChild('documentUpload') documentUpload!: NxFileUploaderComponent;
+    public showUploadError: boolean = false;
 
-  @ViewChild('ngModel') ngModel!: NgModel;
+    @ViewChild('ngModel') ngModel!: NgModel;
 
-  constructor(
-    private messageToastService: NxMessageToastService,
-    private http: HttpClient
-  ) {}
+    constructor(private messageToastService: NxMessageToastService, private http: HttpClient) {}
 
-  onChange() {
-    this.validate();
-  }
-
-  validate() {
-    const valid = this.myFiles.every(
-      (file) => typeof file.formData === 'boolean'
-    );
-    this.ngModel.control.setErrors(valid ? {} : { required: true });
-    return valid;
-  }
-
-  upload(url: string) {
-    this.showUploadError = false;
-
-    if (!this.documentUpload.value) {
-      return;
+    onChange() {
+        this.validate();
     }
 
-    if (!this.validate()) {
-      return;
+    validate() {
+        const valid = this.myFiles.every(file => typeof file.formData === 'boolean');
+        this.ngModel.control.setErrors(valid ? {} : { required: true });
+        return valid;
     }
 
-    const formData = new FormData();
-    this.myFiles.forEach((file: CustomFileItem) => {
-      if (!file.isUploaded) {
-        file.setUploadingState();
-        formData.set(file.name, file.file as Blob, file.name);
-        formData.set(`${file.name}-form`, file.formData.toString());
-      }
-    });
+    upload(url: string) {
+        this.showUploadError = false;
 
-    const params = new HttpParams();
-    const options = {
-      params,
-      reportProgress: true,
-    };
+        if (!this.documentUpload.value) {
+            return;
+        }
 
-    this.http.post(url, formData, options).subscribe(
-      (data) => {
-        this.documentUpload.value!.forEach((fileItem: FileItem) => {
-          fileItem.setUploadedState();
+        if (!this.validate()) {
+            return;
+        }
+
+        const formData = new FormData();
+        this.myFiles.forEach((file: CustomFileItem) => {
+            if (!file.isUploaded) {
+                file.setUploadingState();
+                formData.set(file.name, file.file as Blob, file.name);
+                formData.set(`${file.name}-form`, file.formData.toString());
+            }
         });
-        this.messageToastService.open(
-          'All files were uploaded successfully!',
-          myCustomConfig
+
+        const params = new HttpParams();
+        const options = {
+            params,
+            reportProgress: true,
+        };
+
+        this.http.post(url, formData, options).subscribe(
+            data => {
+                this.documentUpload.value!.forEach((fileItem: FileItem) => {
+                    fileItem.setUploadedState();
+                });
+                this.messageToastService.open('All files were uploaded successfully!', myCustomConfig);
+            },
+            error => {
+                this.documentUpload.value!.forEach((fileItem: FileItem) => {
+                    if (!fileItem.isUploaded) {
+                        fileItem.setErrorState();
+                    }
+                });
+                this.showUploadError = true;
+            },
         );
-      },
-      (error) => {
-        this.documentUpload.value!.forEach((fileItem: FileItem) => {
-          if (!fileItem.isUploaded) {
-            fileItem.setErrorState();
-          }
-        });
-        this.showUploadError = true;
-      }
-    );
-  }
+    }
 }

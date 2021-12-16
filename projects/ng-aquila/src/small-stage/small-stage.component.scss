@@ -1,253 +1,253 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host {
-  display: flex;
-  color: var(--small-stage-text-color);
-  background-color: var(--small-stage-default-background-color);
-  justify-content: center;
+    display: flex;
+    color: var(--small-stage-text-color);
+    background-color: var(--small-stage-default-background-color);
+    justify-content: center;
 }
 
 .container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 2fr 8fr 2fr;
-  grid-template-columns: 2fr 8fr 2fr;
-  column-gap: $grid-gutter-width-base;
-  padding: 0 $grid-gutter-width-base;
-  flex: 1 1 auto;
-  width: 100%;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 2fr 8fr 2fr;
+    grid-template-columns: 2fr 8fr 2fr;
+    column-gap: $grid-gutter-width-base;
+    padding: 0 $grid-gutter-width-base;
+    flex: 1 1 auto;
+    width: 100%;
 }
 
 .content {
-  -ms-grid-row: 2;
-  grid-row: 2;
-  flex: 1 1 auto;
+    -ms-grid-row: 2;
+    grid-row: 2;
+    flex: 1 1 auto;
 }
 
 .image-start,
 .image-end {
-  -ms-grid-row: 2;
-  grid-row: 2;
+    -ms-grid-row: 2;
+    grid-row: 2;
 }
 
 .image-start,
 .image-end,
 .image-bottom {
-  display: flex;
-  align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
 }
 
 ::ng-deep nx-small-stage-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: var(--small-stage-image-min-height);
-  max-height: var(--small-stage-image-max-height);
-  background-size: contain;
-  background-repeat: no-repeat;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: var(--small-stage-image-min-height);
+    max-height: var(--small-stage-image-max-height);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 ::ng-deep [nxSmallStageImageEnd] {
-  background-position: bottom right;
+    background-position: bottom right;
 }
 
 ::ng-deep [nxSmallStageImageBottom] {
-  background-position: bottom center;
-  height: var(--small-stage-image-bottom-height);
+    background-position: bottom center;
+    height: var(--small-stage-image-bottom-height);
 }
 
 ::ng-deep [nxSmallStageImageStart] {
-  background-position: bottom left;
+    background-position: bottom left;
 }
 
 .header {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-column: 1 / -1;
-  min-height: var(--small-stage-header-height);
-  padding: var(--small-stage-header-padding);
-  display: flex;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    grid-column: 1 / -1;
+    min-height: var(--small-stage-header-height);
+    padding: var(--small-stage-header-padding);
+    display: flex;
 }
 
 :host(:not(.is-expert)) {
-  .container {
-    max-width: var(--grid-max-width);
-  }
-
-  .content {
-    -ms-grid-column: 2;
-    grid-column: 2;
-    text-align: center;
-    margin-bottom: var(--small-stage-content-margin-bottom);
-  }
-
-  .image-start {
-    -ms-grid-column: 1;
-    grid-column: 1;
-  }
-
-  .image-end {
-    -ms-grid-column: 3;
-    grid-column: 3;
-  }
-
-  .image-bottom {
-    display: none;
-    -ms-grid-row: 3;
-    grid-row: 3;
-  }
-
-  @include media-breakpoint-up(medium) {
     .container {
-      min-height: var(--small-stage-min-height);
-    }
-  }
-
-  @include media-breakpoint-down(medium) {
-    .container {
-      -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-    }
-
-    .image-start,
-    .image-end {
-      display: none;
+        max-width: var(--grid-max-width);
     }
 
     .content {
-      -ms-grid-column: 1;
-      grid-column: 1;
-      margin-bottom: var(--small-stage-content-margin-bottom);
+        -ms-grid-column: 2;
+        grid-column: 2;
+        text-align: center;
+        margin-bottom: var(--small-stage-content-margin-bottom);
+    }
+
+    .image-start {
+        -ms-grid-column: 1;
+        grid-column: 1;
+    }
+
+    .image-end {
+        -ms-grid-column: 3;
+        grid-column: 3;
     }
 
     .image-bottom {
-      display: block;
+        display: none;
+        -ms-grid-row: 3;
+        grid-row: 3;
     }
 
-    ::ng-deep [nxSmallStageImageBottom] {
-      margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-content-margin-bottom));
-    }
-  }
-
-  @include media-breakpoint-down(small) {
-    .content {
-      margin-bottom: var(--small-stage-mobile-content-margin-bottom);
+    @include media-breakpoint-up(medium) {
+        .container {
+            min-height: var(--small-stage-min-height);
+        }
     }
 
-    .header {
-      min-height: var(--small-stage-mobile-header-height);
-      padding: 0;
+    @include media-breakpoint-down(medium) {
+        .container {
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+        }
 
-      &:not(:empty) {
-        min-height: auto;
-        padding: var(--small-stage-mobile-header-padding);
-      }
+        .image-start,
+        .image-end {
+            display: none;
+        }
+
+        .content {
+            -ms-grid-column: 1;
+            grid-column: 1;
+            margin-bottom: var(--small-stage-content-margin-bottom);
+        }
+
+        .image-bottom {
+            display: block;
+        }
+
+        ::ng-deep [nxSmallStageImageBottom] {
+            margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-content-margin-bottom));
+        }
     }
 
-    ::ng-deep [nxSmallStageImageBottom] {
-      margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-mobile-content-margin-bottom));
+    @include media-breakpoint-down(small) {
+        .content {
+            margin-bottom: var(--small-stage-mobile-content-margin-bottom);
+        }
+
+        .header {
+            min-height: var(--small-stage-mobile-header-height);
+            padding: 0;
+
+            &:not(:empty) {
+                min-height: auto;
+                padding: var(--small-stage-mobile-header-padding);
+            }
+        }
+
+        ::ng-deep [nxSmallStageImageBottom] {
+            margin-top: calc(var(--small-stage-image-bottom-margin-top) - var(--small-stage-mobile-content-margin-bottom));
+        }
     }
-  }
 }
 
 :host(.is-expert) {
-  .container {
-    -ms-grid-columns: 8fr 3fr 1fr;
-    grid-template-columns: 8fr 3fr 1fr;
-    -ms-grid-rows: auto 1fr;
-    grid-template-rows: auto 1fr;
-  }
-
-  .image-start {
-    display: none;
-  }
-
-  .image-end {
-    -ms-grid-column: 2;
-    grid-column: 2;
-  }
-
-  ::ng-deep [nxSmallStageImageEnd] {
-    :host-context([dir="rtl"]) & {
-      background-position: bottom left;
-    }
-  }
-
-  .content {
-    -ms-grid-column: 1;
-    grid-column: 1;
-    margin-top: var(--small-stage-expert-content-margin-top);
-    margin-bottom: var(--small-stage-expert-content-margin-bottom);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .header {
-    min-height: var(--small-stage-expert-header-height);
-    padding: var(--small-stage-expert-header-padding);
-  }
-
-  @include media-breakpoint-up(medium) {
-    .content {
-      min-height: var(--small-stage-expert-content-min-height);
-    }
-  }
-
-  @include media-breakpoint-down(medium) {
     .container {
-      -ms-grid-columns: 8fr 4fr;
-      grid-template-columns: 8fr 4fr;
+        -ms-grid-columns: 8fr 3fr 1fr;
+        grid-template-columns: 8fr 3fr 1fr;
+        -ms-grid-rows: auto 1fr;
+        grid-template-rows: auto 1fr;
     }
 
-    ::ng-deep [nxSmallStageImageEnd] {
-      background-position: bottom center;
-    }
-  }
-
-  @media (max-width: 450px) {
-    .container {
-      -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-    }
-
-    .content {
-      margin-top: 0;
-      margin-bottom: var(--small-stage-expert-mobile-content-margin-bottom);
-    }
-
-    .header {
-      padding: var(--small-stage-expert-mobile-header-padding);
+    .image-start {
+        display: none;
     }
 
     .image-end {
-      -ms-grid-row: 3;
-      grid-row: 3;
-      -ms-grid-column: 1;
-      grid-column: 1;
-      margin: 0;
-      height: var(--small-stage-expert-image-min-height);
-      min-height: var(--small-stage-image-min-height);
+        -ms-grid-column: 2;
+        grid-column: 2;
     }
 
     ::ng-deep [nxSmallStageImageEnd] {
-      background-position: bottom right;
+        :host-context([dir='rtl']) & {
+            background-position: bottom left;
+        }
     }
-  }
+
+    .content {
+        -ms-grid-column: 1;
+        grid-column: 1;
+        margin-top: var(--small-stage-expert-content-margin-top);
+        margin-bottom: var(--small-stage-expert-content-margin-bottom);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .header {
+        min-height: var(--small-stage-expert-header-height);
+        padding: var(--small-stage-expert-header-padding);
+    }
+
+    @include media-breakpoint-up(medium) {
+        .content {
+            min-height: var(--small-stage-expert-content-min-height);
+        }
+    }
+
+    @include media-breakpoint-down(medium) {
+        .container {
+            -ms-grid-columns: 8fr 4fr;
+            grid-template-columns: 8fr 4fr;
+        }
+
+        ::ng-deep [nxSmallStageImageEnd] {
+            background-position: bottom center;
+        }
+    }
+
+    @media (max-width: 450px) {
+        .container {
+            -ms-grid-columns: 1fr;
+            grid-template-columns: 1fr;
+        }
+
+        .content {
+            margin-top: 0;
+            margin-bottom: var(--small-stage-expert-mobile-content-margin-bottom);
+        }
+
+        .header {
+            padding: var(--small-stage-expert-mobile-header-padding);
+        }
+
+        .image-end {
+            -ms-grid-row: 3;
+            grid-row: 3;
+            -ms-grid-column: 1;
+            grid-column: 1;
+            margin: 0;
+            height: var(--small-stage-expert-image-min-height);
+            min-height: var(--small-stage-image-min-height);
+        }
+
+        ::ng-deep [nxSmallStageImageEnd] {
+            background-position: bottom right;
+        }
+    }
 }
 
 :host(.is-expert.is-narrow) {
-  @include media-breakpoint-up(large) {
-    .container {
-      -ms-grid-columns: 6fr 5fr 1fr;
-      grid-template-columns: 6fr 5fr 1fr;
+    @include media-breakpoint-up(large) {
+        .container {
+            -ms-grid-columns: 6fr 5fr 1fr;
+            grid-template-columns: 6fr 5fr 1fr;
+        }
     }
-  }
 }
 
 @include media-breakpoint-down(small) {
-  .container {
-    padding: 0 $grid-gutter-width-mobile;
-    column-gap: $grid-gutter-width-mobile;
-  }
+    .container {
+        padding: 0 $grid-gutter-width-mobile;
+        column-gap: $grid-gutter-width-mobile;
+    }
 }

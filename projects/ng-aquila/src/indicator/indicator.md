@@ -12,9 +12,7 @@ The indicator is a small badge that can be used to mark an element or page as un
 
 ### Usage inside other components
 
-The indicator can be placed inside other components. You are free to position the indicator as needed with css or use `position` input to turn on one of our positioning presets.
-Note, that since most of our presets rely on absolute positioning, you might need to add `position: relative` style to the container element of indicator for best results.
-Here are a few examples.
+The indicator can be placed inside other components. You are free to position the indicator as needed with css or use `position` input to turn on one of our positioning presets. Note, that since most of our presets rely on absolute positioning, you might need to add `position: relative` style to the container element of indicator for best results. Here are a few examples.
 
 #### Action
 

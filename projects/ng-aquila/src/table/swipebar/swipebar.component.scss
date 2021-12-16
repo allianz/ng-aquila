@@ -1,38 +1,38 @@
 @import '../../shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 }
 
 label {
-  display: block;
-  margin-bottom: nx-spacer(xs);
+    display: block;
+    margin-bottom: nx-spacer(xs);
 }
 
 .scrollable {
-  overflow: auto;
-  padding: var(--swipebar-padding);
+    overflow: auto;
+    padding: var(--swipebar-padding);
 }
 
 .bar {
-  background: var(--swipebar-background-color);
+    background: var(--swipebar-background-color);
 }
 
 .indicator {
-  position: relative;
-  height: nx-spacer(2xs);
-  background: var(--swipebar-color);
-  cursor: grab;
-  transform: translateX(0);
+    position: relative;
+    height: nx-spacer(2xs);
+    background: var(--swipebar-color);
+    cursor: grab;
+    transform: translateX(0);
 
-  // larger click area
-  &::before {
-    content: '';
-    position: absolute;
-    display: block;
-    top: -nx-spacer(2xs);
-    bottom: -nx-spacer(2xs);
-    left: 0;
-    right: 0;
-  }
+    // larger click area
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: -nx-spacer(2xs);
+        bottom: -nx-spacer(2xs);
+        left: 0;
+        right: 0;
+    }
 }

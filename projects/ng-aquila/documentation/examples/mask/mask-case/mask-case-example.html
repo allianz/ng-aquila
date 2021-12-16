@@ -1,19 +1,17 @@
-<div nxLayout='grid'>
-  <div nxRow>
-    <div nxCol='6'>
-      <nx-radio-group [(ngModel)]="templateModel">
-        <nx-radio nxValue="upper" class="nx-margin-bottom-m">Upper case</nx-radio>
-        <nx-radio nxValue="lower">Lower case</nx-radio>
-      </nx-radio-group>
+<div nxLayout="grid">
+    <div nxRow>
+        <div nxCol="6">
+            <nx-radio-group [(ngModel)]="templateModel">
+                <nx-radio nxValue="upper" class="nx-margin-bottom-m">Upper case</nx-radio>
+                <nx-radio nxValue="lower">Lower case</nx-radio>
+            </nx-radio-group>
+        </div>
+        <div nxCol="6">
+            <nx-formfield nxLabel="Input">
+                <input nxInput nxMask="AAAA" [nxConvertTo]="templateModel" [(ngModel)]="modelVal" />
+                <span nxFormfieldHint> Mask: AAAA </span>
+            </nx-formfield>
+            Model value: {{ modelVal }}<br />
+        </div>
     </div>
-    <div nxCol='6'>
-      <nx-formfield nxLabel="Input">
-        <input nxInput nxMask="AAAA" [nxConvertTo]="templateModel" [(ngModel)]="modelVal" />
-        <span nxFormfieldHint>
-          Mask: AAAA
-        </span>
-      </nx-formfield>
-      Model value: {{ modelVal }}<br>
-    </div>
-  </div>
 </div>

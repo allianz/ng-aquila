@@ -20,68 +20,69 @@ import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
 import { TopInfoComponent } from './top-info/top-info.component';
 
 const ROUTES = [
-  {
-    path: '', pathMatch: 'full', redirectTo: '/welcome'
-  },
-  {
-    path: 'my-viewer', pathMatch: 'full', redirectTo: ''
-  }
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/welcome',
+    },
+    {
+        path: 'my-viewer',
+        pathMatch: 'full',
+        redirectTo: '',
+    },
 ];
 
-const channels = environment.VERSIONS.channels.map( (channel: any) => {
-  return { name: channel, url: environment.VERSIONS.urls[channel]};
+const channels = environment.VERSIONS.channels.map((channel: any) => {
+    return { name: channel, url: environment.VERSIONS.urls[channel] };
 });
 
 const VERSIONS: DocVersions = {
-  currentVersion: environment.CURRENT_VERSION,
-  currentChannel: environment.CURRENT_CHANNEL,
-  channels
+    currentVersion: environment.CURRENT_VERSION,
+    currentChannel: environment.CURRENT_CHANNEL,
+    channels,
 };
 
 const LOGO_PATH: LogoPath = {
-  logoWithTitlePath: 'assets/logos/aposin_logo_with_text.svg',
+    logoWithTitlePath: 'assets/logos/aposin_logo_with_text.svg',
 };
 
 const GITHUB_REPO_LINK: GithubLinkConfig = {
-  repoLink: 'https://github.com/aposin/ng-aquila',
-  logoAltText: 'Github Brand Logo'
+    repoLink: 'https://github.com/aposin/ng-aquila',
+    logoAltText: 'Github Brand Logo',
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WelcomeComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(ROUTES, { enableTracing: false, relativeLinkResolution: 'legacy' }),
-    NxvDocumentationModule.forRoot(
-      {
-        welcomeComponent: WelcomeComponent,
-        footerComponent: FooterComponent,
-        topInfoComponent: TopInfoComponent
-      }
-    ),
-    BrowserAnimationsModule,
-    ColorPickerModule,
-    NxDocumentationIconModule,
-    NxFooterModule,
-    NxButtonModule,
-    NxGridModule
-  ],
-  providers: [
-    { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
-    { provide: NXV_MANIFEST_TOKEN, useValue: MANIFEST },
-    { provide: NX_DOC_VERSIONS, useValue: VERSIONS},
-    { provide: NX_DOCS_SELECTABLE_THEMES, useValue: [
-      { name: 'docs-dark', displayName: 'Default', url: 'assets/aposin.css' },
-      { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' }
-    ]},
-    { provide: NX_DOCS_FEATURE_FLAGS, useValue: { themeSwitcher: true} },
-    { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
-    { provide: BaseLazyLoadingService, useExisting: LazyLoadingService }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, WelcomeComponent, FooterComponent],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(ROUTES, { enableTracing: false, relativeLinkResolution: 'legacy' }),
+        NxvDocumentationModule.forRoot({
+            welcomeComponent: WelcomeComponent,
+            footerComponent: FooterComponent,
+            topInfoComponent: TopInfoComponent,
+        }),
+        BrowserAnimationsModule,
+        ColorPickerModule,
+        NxDocumentationIconModule,
+        NxFooterModule,
+        NxButtonModule,
+        NxGridModule,
+    ],
+    providers: [
+        { provide: NX_DOCS_LOGO_PATH, useValue: LOGO_PATH },
+        { provide: NXV_MANIFEST_TOKEN, useValue: MANIFEST },
+        { provide: NX_DOC_VERSIONS, useValue: VERSIONS },
+        {
+            provide: NX_DOCS_SELECTABLE_THEMES,
+            useValue: [
+                { name: 'docs-dark', displayName: 'Default', url: 'assets/aposin.css' },
+                { name: 'expert', displayName: 'Expert', url: 'assets/expert.css' },
+            ],
+        },
+        { provide: NX_DOCS_FEATURE_FLAGS, useValue: { themeSwitcher: true } },
+        { provide: NX_DOCS_GITHUB_LINK, useValue: GITHUB_REPO_LINK },
+        { provide: BaseLazyLoadingService, useExisting: LazyLoadingService },
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

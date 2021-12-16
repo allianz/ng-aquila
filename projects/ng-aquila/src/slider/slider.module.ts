@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NxSliderComponent } from './slider.component';
 
 @NgModule({
-  imports: [ CommonModule, NxGridModule ],
-  declarations: [ NxSliderComponent ],
-  exports: [ NxSliderComponent ]
+    imports: [CommonModule, NxGridModule],
+    declarations: [NxSliderComponent],
+    exports: [NxSliderComponent],
 })
-export class NxSliderModule { }
+export class NxSliderModule {}

@@ -6,18 +6,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxInputModule,
-    NxPopoverModule
-  ],
-  declarations: [
-    NxNaturalLanguageFormComponent,
-    NxWordComponent
-  ],
-  exports: [
-    NxNaturalLanguageFormComponent,
-    NxWordComponent
-  ]
+    imports: [CommonModule, NxInputModule, NxPopoverModule],
+    declarations: [NxNaturalLanguageFormComponent, NxWordComponent],
+    exports: [NxNaturalLanguageFormComponent, NxWordComponent],
 })
 export class NxNaturalLanguageFormModule {}

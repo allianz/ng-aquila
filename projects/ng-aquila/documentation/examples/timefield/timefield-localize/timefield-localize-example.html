@@ -1,9 +1,6 @@
 <form #form="ngForm" [formGroup]="testForm">
-  <nx-timefield #timefield formControlName="today">
-  </nx-timefield>
-  <div *ngIf="timefield.errorState">
-    <nx-error class="nx-margin-y-xs">
-      Invalid time input.
-    </nx-error>
-  </div>
+    <nx-timefield #timefield formControlName="today"> </nx-timefield>
+    <div *ngIf="timefield.errorState">
+        <nx-error class="nx-margin-y-xs"> Invalid time input. </nx-error>
+    </div>
 </form>

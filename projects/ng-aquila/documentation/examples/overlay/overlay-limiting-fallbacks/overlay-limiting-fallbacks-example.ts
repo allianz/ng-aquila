@@ -2,30 +2,27 @@ import { NxOverlayDirection, NxOverlayService, NxOverlayRef, NxOverlayConfig } f
 import { Component, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 
 /**
-* @title Notification Panel
-*/
+ * @title Notification Panel
+ */
 @Component({
-  selector: 'overlay-limiting-fallbacks-example',
-  templateUrl: './overlay-limiting-fallbacks-example.html',
-  styleUrls: ['./overlay-limiting-fallbacks-example.css']
+    selector: 'overlay-limiting-fallbacks-example',
+    templateUrl: './overlay-limiting-fallbacks-example.html',
+    styleUrls: ['./overlay-limiting-fallbacks-example.css'],
 })
 export class OverlayLimitingFallbacksExampleComponent {
+    fallbacks: NxOverlayDirection[] = ['top', 'bottom'];
+    config: NxOverlayConfig = { width: 250, height: 250, fallbackOrientation: 'vertical', direction: 'left' };
 
-  fallbacks: NxOverlayDirection[] = ['top', 'bottom'];
-  config: NxOverlayConfig = { width: 250, height: 250, fallbackOrientation: 'vertical', direction: 'left'};
+    currentOverlay!: NxOverlayRef<any>;
 
-  currentOverlay!: NxOverlayRef<any>;
+    @ViewChild(TemplateRef) template!: TemplateRef<any>;
 
-  @ViewChild(TemplateRef) template!: TemplateRef<any>;
+    constructor(public nxOverlay: NxOverlayService) {}
 
-  constructor(public nxOverlay: NxOverlayService) {}
-
-  open(element: ElementRef) {
-    if (this.currentOverlay) {
-      this.currentOverlay.close();
+    open(element: ElementRef) {
+        if (this.currentOverlay) {
+            this.currentOverlay.close();
+        }
+        this.currentOverlay = this.nxOverlay.open(this.template, element, this.config);
     }
-    this.currentOverlay =
-      this.nxOverlay.open(this.template, element, this.config);
-  }
-
 }

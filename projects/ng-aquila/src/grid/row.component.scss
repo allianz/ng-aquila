@@ -1,7 +1,7 @@
 @import './mixins.scss';
 
 :host {
-  @include make-row();
+    @include make-row();
 }
 
 /**

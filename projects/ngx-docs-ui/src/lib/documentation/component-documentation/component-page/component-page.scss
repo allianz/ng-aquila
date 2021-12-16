@@ -1,32 +1,32 @@
 $toc-width: 200px;
 
 :host {
-  display: block;
+    display: block;
 }
 
 ::ng-deep .docs-component-page-content {
-  font-size: 16px;
-  line-height: 24px;
-  width: calc(100% - #{$toc-width});
-  // Remove this when the sidebar issues on mobile are solved.
-  @media (max-width: 991px) {
-    width: 100%;
-  }
+    font-size: 16px;
+    line-height: 24px;
+    width: calc(100% - #{$toc-width});
+    // Remove this when the sidebar issues on mobile are solved.
+    @media (max-width: 991px) {
+        width: 100%;
+    }
 }
 
 .component-overview__navigation {
-  padding: 0;
-  margin-bottom: 24px;
-  justify-content: flex-start;
+    padding: 0;
+    margin-bottom: 24px;
+    justify-content: flex-start;
 }
 
 .component-overview__header-container {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
 
-  nx-badge {
-    top: -6px;
-    position: relative;
-  }
+    nx-badge {
+        top: -6px;
+        position: relative;
+    }
 }

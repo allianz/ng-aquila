@@ -4,31 +4,31 @@ $grid-gutter-width-mobile: 16px;
 // $grid-gutter-width-big: 40px;
 
 $grid-gutter-widths: (
-  xsmall: $grid-gutter-width-mobile,
-  small: $grid-gutter-width-mobile,
-  medium: $grid-gutter-width-base,
-  large: $grid-gutter-width-base,
-  xlarge: $grid-gutter-width-base,
-  2xlarge: $grid-gutter-width-base,
-  3xlarge: $grid-gutter-width-base
+    xsmall: $grid-gutter-width-mobile,
+    small: $grid-gutter-width-mobile,
+    medium: $grid-gutter-width-base,
+    large: $grid-gutter-width-base,
+    xlarge: $grid-gutter-width-base,
+    2xlarge: $grid-gutter-width-base,
+    3xlarge: $grid-gutter-width-base,
 );
 
 $grid-breakpoints: (
-  xsmall: 0,
-  small: 320px,
-  medium: 704px,
-  large: 992px,
-  xlarge: 1280px,
-  2xlarge: 1472px,
-  3xlarge: 1760px
+    xsmall: 0,
+    small: 320px,
+    medium: 704px,
+    large: 992px,
+    xlarge: 1280px,
+    2xlarge: 1472px,
+    3xlarge: 1760px,
 );
 
 $grid-breakpoints-short: (
-  xs: map-get($grid-breakpoints, xsmall),
-  s: map-get($grid-breakpoints, small),
-  m: map-get($grid-breakpoints, medium),
-  l: map-get($grid-breakpoints, large),
-  xl: map-get($grid-breakpoints, xlarge),
-  2xl: map-get($grid-breakpoints, 2xlarge),
-  3xl: map-get($grid-breakpoints, 3xlarge)
+    xs: map-get($grid-breakpoints, xsmall),
+    s: map-get($grid-breakpoints, small),
+    m: map-get($grid-breakpoints, medium),
+    l: map-get($grid-breakpoints, large),
+    xl: map-get($grid-breakpoints, xlarge),
+    2xl: map-get($grid-breakpoints, 2xlarge),
+    3xl: map-get($grid-breakpoints, 3xlarge),
 );

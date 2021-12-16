@@ -5,8 +5,8 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [ NxDynamicTableComponent ],
-  exports: [ NxDynamicTableComponent ],
-  imports: [ CommonModule, CdkTableModule, ScrollingModule ]
+    declarations: [NxDynamicTableComponent],
+    exports: [NxDynamicTableComponent],
+    imports: [CommonModule, CdkTableModule, ScrollingModule],
 })
-export class NxDynamicTableModule { }
+export class NxDynamicTableModule {}

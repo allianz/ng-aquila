@@ -14,46 +14,36 @@ import { NxModalCloseDirective } from './dialog/modal-close.directive';
 import { NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER } from './dialog/dialog.service';
 
 @NgModule({
-  imports: [
-    A11yModule,
-    OverlayModule,
-    PortalModule,
-    CommonModule,
-    NxIconModule
-  ],
-  declarations: [
-    NxModalComponent,
-    NxOpenModalOnClickDirective,
-    NxModalActionsDirective,
-    NxModalContentDirective,
-    /* new modal implementation */
-    NxModalContainer,
-    NxModalCloseDirective
-  ],
-  exports: [
-    NxModalComponent,
-    NxOpenModalOnClickDirective,
-    NxModalActionsDirective,
-    NxModalContentDirective,
-    /* new modal implementation */
-    NxModalContainer,
-    NxModalCloseDirective
-  ],
-  providers: [
-    NxDialogService,
-    NX_MODAL_SCROLL_STRATEGY_PROVIDER
-  ],
-  entryComponents: [NxModalContainer]
+    imports: [A11yModule, OverlayModule, PortalModule, CommonModule, NxIconModule],
+    declarations: [
+        NxModalComponent,
+        NxOpenModalOnClickDirective,
+        NxModalActionsDirective,
+        NxModalContentDirective,
+        /* new modal implementation */
+        NxModalContainer,
+        NxModalCloseDirective,
+    ],
+    exports: [
+        NxModalComponent,
+        NxOpenModalOnClickDirective,
+        NxModalActionsDirective,
+        NxModalContentDirective,
+        /* new modal implementation */
+        NxModalContainer,
+        NxModalCloseDirective,
+    ],
+    providers: [NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER],
+    entryComponents: [NxModalContainer],
 })
-
 export class NxModalModule {
-  // define the modal service on root level as an application wide singleton,
-  // assuming that we only display one modal at a time, which seems quite reasonable
-  // this is static and named "forRoot" by convention
-  static forRoot(): ModuleWithProviders<NxModalModule> {
-    return {
-      ngModule: NxModalModule,
-      providers: [NxModalService]
-    };
-  }
+    // define the modal service on root level as an application wide singleton,
+    // assuming that we only display one modal at a time, which seems quite reasonable
+    // this is static and named "forRoot" by convention
+    static forRoot(): ModuleWithProviders<NxModalModule> {
+        return {
+            ngModule: NxModalModule,
+            providers: [NxModalService],
+        };
+    }
 }

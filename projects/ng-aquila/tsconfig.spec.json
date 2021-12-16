@@ -1,11 +1,11 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "types": ["jasmine", "node", "karma-viewport"],
-    "allowSyntheticDefaultImports": true
-  },
-  "files": ["test.ts"],
-  "include": ["**/*.spec.ts", "**/*.d.ts"],
-  "exclude": ["src/schematics"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../dist/out-tsc",
+        "types": ["jasmine", "node", "karma-viewport"],
+        "allowSyntheticDefaultImports": true
+    },
+    "files": ["test.ts"],
+    "include": ["**/*.spec.ts", "**/*.d.ts"],
+    "exclude": ["src/schematics"]
 }

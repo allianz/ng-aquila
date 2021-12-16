@@ -1,15 +1,5 @@
 import { NxIconComponent } from '@aposin/ng-aquila/icon';
-import {
-  AfterContentInit,
-  ChangeDetectionStrategy,
-  Component,
-  ContentChild,
-  ElementRef,
-  Renderer2,
-  Input,
-  ChangeDetectorRef,
-  OnDestroy
-} from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, Renderer2, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 import { MappedStyles } from '@aposin/ng-aquila/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
@@ -18,78 +8,73 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 export type NxLinkSize = 'small' | 'large';
 
 const MAPPING = {
-  'black': 'nx-link--black',
-  'negative': 'nx-link--negative',
-  'text': 'nx-link--text',
-  'icon-right': 'nx-link--icon-right',
-  'icon-only': 'nx-link--icon-only',
+    black: 'nx-link--black',
+    negative: 'nx-link--negative',
+    text: 'nx-link--text',
+    'icon-right': 'nx-link--icon-right',
+    'icon-only': 'nx-link--icon-only',
 };
 
-const DEFAULT_CLASSES = [ 'nx-link' ];
+const DEFAULT_CLASSES = ['nx-link'];
 
 /**
  * `Input('nxStyle') classNames` sets the style of the link, thereby altering the visual appearance.
  * You can use any combination of 'black', 'icon-right', 'icon-only', 'negative' or 'text'.
  */
 @Component({
-  selector: 'nx-link',
-  styleUrls: [ './link.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  inputs: ['classNames: nxStyle'],
-  host: {
-    '[class.nx-link--small]': 'this.size === "small"',
-    '[class.nx-link--large]': 'this.size === "large"'
-  }
+    selector: 'nx-link',
+    styleUrls: ['./link.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: '<ng-content></ng-content>',
+    inputs: ['classNames: nxStyle'],
+    host: {
+        '[class.nx-link--small]': 'this.size === "small"',
+        '[class.nx-link--large]': 'this.size === "large"',
+    },
 })
-
 export class NxLinkComponent extends MappedStyles implements AfterContentInit, OnDestroy {
-  private _size: NxLinkSize = 'small';
+    private _size: NxLinkSize = 'small';
 
-  /** @docs-private */
-  @ContentChild(NxIconComponent) icon!: NxIconComponent;
+    /** @docs-private */
+    @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
-  /** Sets the size of the link. Default: 'small'. */
-  @Input()
-  set size(value: NxLinkSize) {
-    if (this._size !== value) {
-      this._size = value;
-      this._changeDetectorRef.markForCheck();
+    /** Sets the size of the link. Default: 'small'. */
+    @Input()
+    set size(value: NxLinkSize) {
+        if (this._size !== value) {
+            this._size = value;
+            this._changeDetectorRef.markForCheck();
+        }
     }
-  }
-  get size(): NxLinkSize {
-    return this._size;
-  }
-
-  constructor(_elementRef: ElementRef,
-              protected _renderer: Renderer2,
-              private _changeDetectorRef: ChangeDetectorRef,
-              private _focusMonitor: FocusMonitor) {
-
-    super(MAPPING, DEFAULT_CLASSES, _elementRef, _renderer);
-    this._focusMonitor.monitor(this._elementRef, true);
-  }
-
-  ngAfterContentInit() {
-    // Add a specific link class that the css gets more specific than the nx-icon css
-    const icons = this.elementRef.nativeElement.querySelectorAll('nx-icon');
-    for (let i = 0; i < icons.length; i++) {
-      this._renderer.addClass(icons[i], 'nx-link__icon');
+    get size(): NxLinkSize {
+        return this._size;
     }
-  }
 
-  ngOnDestroy() {
-    this._focusMonitor.stopMonitoring(this._elementRef);
-  }
+    constructor(_elementRef: ElementRef, protected _renderer: Renderer2, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {
+        super(MAPPING, DEFAULT_CLASSES, _elementRef, _renderer);
+        this._focusMonitor.monitor(this._elementRef, true);
+    }
 
-  /**
-   * @docs-private
-   * getter used for the modal component as a quickfix
-   * since button got changed from directive to component the reference used by the ngOpenModelOnClick directive
-   * for nxButtons is a reference to component instance instead of an element reference. As a workaround we need a
-   * way to reach the elementRef of the component until the modal gets refactored.
-   */
-  get elementRef() {
-    return this._elementRef;
-  }
+    ngAfterContentInit() {
+        // Add a specific link class that the css gets more specific than the nx-icon css
+        const icons = this.elementRef.nativeElement.querySelectorAll('nx-icon');
+        for (let i = 0; i < icons.length; i++) {
+            this._renderer.addClass(icons[i], 'nx-link__icon');
+        }
+    }
+
+    ngOnDestroy() {
+        this._focusMonitor.stopMonitoring(this._elementRef);
+    }
+
+    /**
+     * @docs-private
+     * getter used for the modal component as a quickfix
+     * since button got changed from directive to component the reference used by the ngOpenModelOnClick directive
+     * for nxButtons is a reference to component instance instead of an element reference. As a workaround we need a
+     * way to reach the elementRef of the component until the modal gets refactored.
+     */
+    get elementRef() {
+        return this._elementRef;
+    }
 }

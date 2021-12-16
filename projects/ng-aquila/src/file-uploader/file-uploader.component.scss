@@ -1,94 +1,91 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 
-  ::ng-deep nx-error.nx-error--message {
-    margin: nx-spacer(xs) 0;
-  }
+    ::ng-deep nx-error.nx-error--message {
+        margin: nx-spacer(xs) 0;
+    }
 }
 
 .nx-file-uploader--file-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  border-bottom-width: nx-border-size(xs);
-  border-bottom-style: solid;
-  padding: nx-spacer(2xs) nx-spacer(xs);
-  @include var(border-bottom-color, file-uploader-file-row-border-bottom-color);
-  @include var(color, file-uploader-file-row-text-color);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom-width: nx-border-size(xs);
+    border-bottom-style: solid;
+    padding: nx-spacer(2xs) nx-spacer(xs);
+    @include var(border-bottom-color, file-uploader-file-row-border-bottom-color);
+    @include var(color, file-uploader-file-row-text-color);
 
-  &:hover {
-    @include var(
-      background-color,
-      file-uploader-file-row-hover-background-color
-    );
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  ::ng-deep {
-    .nx-file-uploader--file-row-actions {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      min-width: 120px;
-      flex: none;
-
-      :host-context([dir="rtl"]) & {
-        margin-left: initial;
-        margin-right: auto;
-      }
-    }
-  }
-
-  &.nx-file-uploader--default-template {
-    nx-file-upload-name {
-      flex: 1;
-
-      @include media-breakpoint-down("small") {
-        flex: 100%;
-      }
+    &:hover {
+        @include var(background-color, file-uploader-file-row-hover-background-color);
     }
 
-    nx-file-upload-size {
-      flex: none;
+    &:focus {
+        outline: none;
     }
 
-    nx-file-upload-status {
-      flex: 0 1 auto;
-      padding: 0 nx-spacer(s);
+    ::ng-deep {
+        .nx-file-uploader--file-row-actions {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-width: 120px;
+            flex: none;
+
+            :host-context([dir='rtl']) & {
+                margin-left: initial;
+                margin-right: auto;
+            }
+        }
     }
 
-    nx-file-upload-delete {
-      flex: 0 1 auto;
-    }
-  }
+    &.nx-file-uploader--default-template {
+        nx-file-upload-name {
+            flex: 1;
 
-  &.nx-file-uploader--file-state-uploading {
-    .file-name {
-      @include var(color, file-uploader-file-row-uploading-file-name-color);
+            @include media-breakpoint-down('small') {
+                flex: 100%;
+            }
+        }
+
+        nx-file-upload-size {
+            flex: none;
+        }
+
+        nx-file-upload-status {
+            flex: 0 1 auto;
+            padding: 0 nx-spacer(s);
+        }
+
+        nx-file-upload-delete {
+            flex: 0 1 auto;
+        }
     }
-  }
+
+    &.nx-file-uploader--file-state-uploading {
+        .file-name {
+            @include var(color, file-uploader-file-row-uploading-file-name-color);
+        }
+    }
 }
 
-::ng-deep input[type="file"] {
-  display: none;
+::ng-deep input[type='file'] {
+    display: none;
 }
 
 ::ng-deep .nx-file-upload-button {
-  display: block;
+    display: block;
 }
 
 ::ng-deep .nx-file-upload-hint {
-  @include type-style(file-uploader-hint);
+    @include type-style(file-uploader-hint);
 
-  display: block;
+    display: block;
 }
 
 .nx-file-uploader--file-row.cdk-keyboard-focused {
-  @include focus-style;
+    @include focus-style;
 }

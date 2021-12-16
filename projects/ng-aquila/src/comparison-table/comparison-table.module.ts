@@ -16,37 +16,34 @@ import { NxComparisonTableDesktopGroup } from './desktop-group/desktop-group.com
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxIconModule,
-  ],
-  declarations: [
-    NxComparisonTableComponent,
-    NxComparisonTableCell,
-    NxComparisonTableDescriptionCell,
-    NxComparisonTableIntersectionCell,
-    NxToggleSectionDirective,
-    NxToggleSectionHeaderComponent,
-    NxComparisonTableRowDirective,
-    NxComparisonTableSelectButton,
-    NxComparisonTableFlexRow,
-    NxComparisonTableRowGroupDirective,
-    NxComparisonTableDesktopGroup,
-    NxComparisonTablePopularCell
-  ],
-  exports: [
-    NxComparisonTableComponent,
-    NxComparisonTableCell,
-    NxComparisonTableDescriptionCell,
-    NxComparisonTableIntersectionCell,
-    NxToggleSectionDirective,
-    NxToggleSectionHeaderComponent,
-    NxComparisonTableRowDirective,
-    NxComparisonTableSelectButton,
-    NxComparisonTableFlexRow,
-    NxComparisonTableRowGroupDirective,
-    NxComparisonTableDesktopGroup,
-    NxComparisonTablePopularCell
-  ],
+    imports: [CommonModule, NxIconModule],
+    declarations: [
+        NxComparisonTableComponent,
+        NxComparisonTableCell,
+        NxComparisonTableDescriptionCell,
+        NxComparisonTableIntersectionCell,
+        NxToggleSectionDirective,
+        NxToggleSectionHeaderComponent,
+        NxComparisonTableRowDirective,
+        NxComparisonTableSelectButton,
+        NxComparisonTableFlexRow,
+        NxComparisonTableRowGroupDirective,
+        NxComparisonTableDesktopGroup,
+        NxComparisonTablePopularCell,
+    ],
+    exports: [
+        NxComparisonTableComponent,
+        NxComparisonTableCell,
+        NxComparisonTableDescriptionCell,
+        NxComparisonTableIntersectionCell,
+        NxToggleSectionDirective,
+        NxToggleSectionHeaderComponent,
+        NxComparisonTableRowDirective,
+        NxComparisonTableSelectButton,
+        NxComparisonTableFlexRow,
+        NxComparisonTableRowGroupDirective,
+        NxComparisonTableDesktopGroup,
+        NxComparisonTablePopularCell,
+    ],
 })
 export class NxComparisonTableModule {}

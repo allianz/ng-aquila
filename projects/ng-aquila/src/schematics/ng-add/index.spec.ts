@@ -4,82 +4,76 @@ import { getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { workspaces } from '@angular-devkit/core';
 
 describe('ng-aquila ng add', () => {
-  const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
-  let testProjectConfig: workspaces.ProjectDefinition;
+    const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);
+    let testProjectConfig: workspaces.ProjectDefinition;
 
-  async function getTestProjectConfig() {
-    const workspace = await getWorkspace(testSetup.appTree);
-    return getProjectFromWorkspace(workspace, 'aquila-testing');
-  }
+    async function getTestProjectConfig() {
+        const workspace = await getWorkspace(testSetup.appTree);
+        return getProjectFromWorkspace(workspace, 'aquila-testing');
+    }
 
-  describe('general and b2c', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration();
-      testProjectConfig = await getTestProjectConfig();
+    describe('general and b2c', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration();
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should add normalize.css', async () => {
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/css/normalize.css');
+        });
+
+        it('should add aposin theme', async () => {
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets?.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+        });
+
+        it('should add CDK styles', async () => {
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css')).toContain('@import "@angular/cdk/overlay-prebuilt.css";');
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css')).toContain('@import "@angular/cdk/a11y-prebuilt.css";');
+        });
+
+        it('should not write Starter App files by default', () => {
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).not.toContain('openConsentDialog()');
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).not.toContain('Aquila Insurance App');
+        });
     });
 
-    it('should add normalize.css', async () => {
-      expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/css/normalize.css');
+    describe('expert', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ type: 'b2b' });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should add expert theme', async () => {
+            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+            expect(testProjectConfig.targets.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+        });
+
+        it('should add Expert Module', async () => {
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
+        });
     });
 
-    it('should add aposin theme', async () => {
-      expect(testProjectConfig.targets?.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
-      expect(testProjectConfig.targets?.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
+    describe('no theme', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ type: 'b2c', noTheme: true });
+            testProjectConfig = await getTestProjectConfig();
+        });
+
+        it('should not add a theme file if no-theme is set to true', () => {
+            expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
+        });
     });
 
-    it('should add CDK styles', async () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css'))
-        .toContain('@import "@angular/cdk/overlay-prebuilt.css";');
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/styles.css'))
-        .toContain('@import "@angular/cdk/a11y-prebuilt.css";');
-    });
+    describe('starter app', () => {
+        beforeEach(async () => {
+            await testSetup.runMigration({ starter: true });
+            testProjectConfig = await getTestProjectConfig();
+        });
 
-    it('should not write Starter App files by default', () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts'))
-        .not.toContain('openConsentDialog()');
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html'))
-        .not.toContain('Aquila Insurance App');
+        it('should update Starter App files', () => {
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain('openConsentDialog()');
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain('Aquila Insurance App');
+        });
     });
-  });
-
-  describe('expert', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration({ type: 'b2b' });
-      testProjectConfig = await getTestProjectConfig();
-    });
-
-    it('should add expert theme', async () => {
-      expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
-      expect(testProjectConfig.targets.get('build')?.options?.styles).toContain('node_modules/@aposin/ng-aquila/themes/expert.css');
-    });
-
-    it('should add Expert Module', async () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.module.ts')).toContain('NxExpertModule');
-    });
-  });
-
-  describe('no theme', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration({ type: 'b2c', noTheme: true });
-      testProjectConfig = await getTestProjectConfig();
-    });
-
-    it('should not add a theme file if no-theme is set to true', () => {
-      expect(testProjectConfig.targets.get('build')?.options?.styles).not.toContain('node_modules/@aposin/ng-aquila/themes/aposin.css');
-    });
-  });
-
-  describe('starter app', () => {
-    beforeEach(async () => {
-      await testSetup.runMigration({ starter: true });
-      testProjectConfig = await getTestProjectConfig();
-    });
-
-    it('should update Starter App files', () => {
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts'))
-        .toContain('openConsentDialog()');
-      expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html'))
-        .toContain('Aquila Insurance App');
-    });
-  });
 });

@@ -1,10 +1,7 @@
 <div class="docs-component-page-content">
-  <nxv-example-loader
-    (contentLoaded)="toc.refresh()"
-    file='{{(componentService.current | async)?.overviewFile}}'>
-  </nxv-example-loader>
+    <nxv-example-loader (contentLoaded)="toc.refresh()" file="{{(componentService.current | async)?.overviewFile}}"> </nxv-example-loader>
 </div>
 
 <div class="docs-toc">
-  <nxv-table-of-contents #toc container="main"></nxv-table-of-contents>
+    <nxv-table-of-contents #toc container="main"></nxv-table-of-contents>
 </div>

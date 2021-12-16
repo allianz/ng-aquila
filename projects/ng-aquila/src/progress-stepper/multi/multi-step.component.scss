@@ -1,166 +1,166 @@
 @import '../../shared-styles/index';
 
 :host {
-  width: 100%;
-
-  &.nx-multi-stepper--vertical {
-    @include media-breakpoint-up(medium) {
-      display: flex;
-    }
-
-    .nx-progress-stepper__content[aria-expanded="false"] {
-      width: 0;
-    }
-
-    .nx-multi-stepper__items {
-      $multi-stepper-items-margin: 0 nx-spacer(l) 0 0;
-      align-items: flex-start;
-      flex-direction: column;
-      margin: $multi-stepper-items-margin;
-      max-width: 100%;
-
-      [dir="rtl"] & {
-        margin: nx-flip-for-rtl($multi-stepper-items-margin);
-      }
-    }
-    .nx-multi-stepper__group-items {
-      flex-direction: column;
-      max-width: 100%;
-    };
-
-    .nx-multi-stepper__group-label {
-      $border-size: nx-border-size(xl);
-      $dot-size: nx-spacer(s);
-      $margin-start: ($dot-size - $border-size) * 0.5;
-      $padding-start: $dot-size + nx-spacer(s) - $margin-start - $border-size;
-
-      transform: none;
-      border-left: $border-size solid transparent;
-      margin-bottom: nx-spacer(s);
-      margin-left: $margin-start;
-      padding-left: $padding-start;
-
-      [dir="rtl"] & {
-        margin-left: initial;
-        padding-left: initial;
-        margin-right: $margin-start;
-        padding-right: $padding-start;
-      }
-    }
-
-    .nx-multi-stepper__group:nth-child(n+2) .nx-multi-stepper__group-label {
-      padding-top: nx-spacer(s);
-      margin-top: nx-spacer(s);
-      border-left-style: dotted;
-      @include var(border-left-color, multi-stepper-line-color);
-
-      &.is-active {
-        padding-top: nx-spacer(2m) + nx-spacer(3xs);
-        padding-bottom: nx-spacer(s) + nx-spacer(3xs);
-        margin-top: - nx-spacer(3xs);
-        margin-bottom: - nx-spacer(3xs);
-        border-left-style: solid;
-        @include var(border-left-color, multi-stepper-line-filled-color);
-      }
-
-      [dir="rtl"] & {
-        border-left-style: none;
-        border-right-style: dotted;
-        @include var(border-right-color, multi-stepper-line-color);
-
-        &.is-active {
-          border-left-style: none;
-          border-right-style: solid;
-          @include var(border-right-color, multi-stepper-line-filled-color);
-        }
-      }
-    }
-  }
-
-  .labels-container {
     width: 100%;
-    flex: 1 1 100%;
-    display: flex;
-    margin: 0 auto;
-    vertical-align: top;
-    align-self: flex-start;
-    align-items: flex-start;
 
-    @include media-breakpoint-down(small) {
-      display: none;
+    &.nx-multi-stepper--vertical {
+        @include media-breakpoint-up(medium) {
+            display: flex;
+        }
+
+        .nx-progress-stepper__content[aria-expanded='false'] {
+            width: 0;
+        }
+
+        .nx-multi-stepper__items {
+            $multi-stepper-items-margin: 0 nx-spacer(l) 0 0;
+            align-items: flex-start;
+            flex-direction: column;
+            margin: $multi-stepper-items-margin;
+            max-width: 100%;
+
+            [dir='rtl'] & {
+                margin: nx-flip-for-rtl($multi-stepper-items-margin);
+            }
+        }
+        .nx-multi-stepper__group-items {
+            flex-direction: column;
+            max-width: 100%;
+        }
+
+        .nx-multi-stepper__group-label {
+            $border-size: nx-border-size(xl);
+            $dot-size: nx-spacer(s);
+            $margin-start: ($dot-size - $border-size) * 0.5;
+            $padding-start: $dot-size + nx-spacer(s) - $margin-start - $border-size;
+
+            transform: none;
+            border-left: $border-size solid transparent;
+            margin-bottom: nx-spacer(s);
+            margin-left: $margin-start;
+            padding-left: $padding-start;
+
+            [dir='rtl'] & {
+                margin-left: initial;
+                padding-left: initial;
+                margin-right: $margin-start;
+                padding-right: $padding-start;
+            }
+        }
+
+        .nx-multi-stepper__group:nth-child(n + 2) .nx-multi-stepper__group-label {
+            padding-top: nx-spacer(s);
+            margin-top: nx-spacer(s);
+            border-left-style: dotted;
+            @include var(border-left-color, multi-stepper-line-color);
+
+            &.is-active {
+                padding-top: nx-spacer(2m) + nx-spacer(3xs);
+                padding-bottom: nx-spacer(s) + nx-spacer(3xs);
+                margin-top: -nx-spacer(3xs);
+                margin-bottom: -nx-spacer(3xs);
+                border-left-style: solid;
+                @include var(border-left-color, multi-stepper-line-filled-color);
+            }
+
+            [dir='rtl'] & {
+                border-left-style: none;
+                border-right-style: dotted;
+                @include var(border-right-color, multi-stepper-line-color);
+
+                &.is-active {
+                    border-left-style: none;
+                    border-right-style: solid;
+                    @include var(border-right-color, multi-stepper-line-filled-color);
+                }
+            }
+        }
     }
 
-    .label {
-      flex: 1 1 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      @include type-style(multi-stepper-step);
-      @include var(color, multi-stepper-step-color);
-      cursor: pointer;
-      text-align: center;
+    .labels-container {
+        width: 100%;
+        flex: 1 1 100%;
+        display: flex;
+        margin: 0 auto;
+        vertical-align: top;
+        align-self: flex-start;
+        align-items: flex-start;
 
-      &.is-disabled {
-        @include var(color, multi-stepper-step-disabled-color);
-        cursor: not-allowed;
-      }
-
-      @media screen and (-ms-high-contrast: active) {
-        color: buttonText;
-
-        &.is-disabled {
-          color: GrayText;
+        @include media-breakpoint-down(small) {
+            display: none;
         }
 
-        &:not(.is-disabled) {
-          color: buttonText;
-        }
+        .label {
+            flex: 1 1 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            @include type-style(multi-stepper-step);
+            @include var(color, multi-stepper-step-color);
+            cursor: pointer;
+            text-align: center;
 
-        span {
-          -ms-high-contrast-adjust: none;
-          background-color: buttonFace;
-          border-radius: 4px;
-          box-shadow: 0 0 0 2px buttonFace;
-        }
+            &.is-disabled {
+                @include var(color, multi-stepper-step-disabled-color);
+                cursor: not-allowed;
+            }
 
-        &.is-selected span {
-          background-color: highlight;
-          border-radius: 4px;
-          box-shadow: 0 0 0 2px highlight;
-          color: highlightText;
+            @media screen and (-ms-high-contrast: active) {
+                color: buttonText;
+
+                &.is-disabled {
+                    color: GrayText;
+                }
+
+                &:not(.is-disabled) {
+                    color: buttonText;
+                }
+
+                span {
+                    -ms-high-contrast-adjust: none;
+                    background-color: buttonFace;
+                    border-radius: 4px;
+                    box-shadow: 0 0 0 2px buttonFace;
+                }
+
+                &.is-selected span {
+                    background-color: highlight;
+                    border-radius: 4px;
+                    box-shadow: 0 0 0 2px highlight;
+                    color: highlightText;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 .nx-multi-stepper__items {
-  display: flex;
-  margin: 0 auto;
-  align-items: center;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
 
-  @include media-breakpoint-down(small) {
-    display: none;
-  }
+    @include media-breakpoint-down(small) {
+        display: none;
+    }
 }
 
 .nx-multi-stepper__group-items {
-  display: flex;
+    display: flex;
 }
 
 .nx-multi-stepper__group {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    max-width: 100%;
 }
 
 .nx-multi-stepper__group-label {
-  @include type-style(multi-stepper-group);
-  @include var(color, multi-stepper-group-color);
+    @include type-style(multi-stepper-group);
+    @include var(color, multi-stepper-group-color);
 
-  &.is-disabled {
-    @include var(color, multi-stepper-group-disabled-color);
-  }
+    &.is-disabled {
+        @include var(color, multi-stepper-group-disabled-color);
+    }
 }

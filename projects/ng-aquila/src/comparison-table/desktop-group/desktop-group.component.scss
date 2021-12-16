@@ -1,36 +1,36 @@
-@import "../../shared-styles/index";
+@import '../../shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 
-  .nx-comparison-table__group-expansion-cell {
-    cursor: pointer;
-    @include var(color, comparison-table-expansion-cell-color);
+    .nx-comparison-table__group-expansion-cell {
+        cursor: pointer;
+        @include var(color, comparison-table-expansion-cell-color);
 
-    &:focus {
-        // don't show inner dotted border on firefox
-        outline: 0;
+        &:focus {
+            // don't show inner dotted border on firefox
+            outline: 0;
+        }
+
+        .nx-comparison-table__cell-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        .group-label {
+            @include type-style(comparison-table-group-label);
+        }
+
+        @media screen and (-ms-high-contrast: active) {
+            color: buttonText;
+            background: buttonFace;
+            border-color: buttonText;
+        }
     }
-
-    .nx-comparison-table__cell-content {
-      display: flex;
-      justify-content: center;
-    }
-
-    .group-label {
-      @include type-style(comparison-table-group-label);
-    }
-
-    @media screen and (-ms-high-contrast: active) {
-      color: buttonText;
-      background: buttonFace;
-      border-color: buttonText;
-    }
-  }
 }
 
 .nx-comparison-table__group-expansion-cell.cdk-keyboard-focused {
-  .nx-comparison-table__cell-content {
-    @include focus-style;
-  }
+    .nx-comparison-table__cell-content {
+        @include focus-style;
+    }
 }

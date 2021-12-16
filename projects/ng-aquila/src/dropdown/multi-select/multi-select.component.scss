@@ -1,118 +1,118 @@
-@import "../../shared-styles/index";
+@import '../../shared-styles/index';
 
 :host {
-  display: block;
-  width: 100%;
-  height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .panel {
-  width: 100%;
-  border-radius: 4px;
-  box-shadow: v(shadow-small);
-  border-radius: nx-border-radius(s);
-  background: v(ui-01);
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: v(shadow-small);
+    border-radius: nx-border-radius(s);
+    background: v(ui-01);
 
-  &.is-outline {
-    .filter {
-      --formfield-label-height: 8px;
-      --formfield-bottom-padding: 8px;
-    }
+    &.is-outline {
+        .filter {
+            --formfield-label-height: 8px;
+            --formfield-bottom-padding: 8px;
+        }
 
-    .items {
-      padding-bottom: 8px;
-      max-height: 200px;
+        .items {
+            padding-bottom: 8px;
+            max-height: 200px;
+        }
     }
-  }
 }
 
 .value {
-  display: grid;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  cursor: pointer;
-  grid-template-columns: auto min-content min-content;
+    display: grid;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    cursor: pointer;
+    grid-template-columns: auto min-content min-content;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 
-  &::-moz-focus-inner {
-    border: 0;
-  }
+    &::-moz-focus-inner {
+        border: 0;
+    }
 }
 
 .value-text {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  padding-right: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 8px;
 }
 
 .panel-header {
-  @include type-style(formfield-label);
-  color: v(dropdown-panel-header-text-color);
-  background-color: v(dropdown-panel-header-background-color);
-  padding: 8px 32px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+    @include type-style(formfield-label);
+    color: v(dropdown-panel-header-text-color);
+    background-color: v(dropdown-panel-header-background-color);
+    padding: 8px 32px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .label span:nth-child(2) {
-  font-weight: 600;
-  margin-left: auto;
-  padding-right: 12px;
-  flex: 0 0 auto;
+    font-weight: 600;
+    margin-left: auto;
+    padding-right: 12px;
+    flex: 0 0 auto;
 }
 
 .indicator {
-  transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
 
-  :host(.is-open) & {
-    transform: rotateZ(180deg);
-  }
+    :host(.is-open) & {
+        transform: rotateZ(180deg);
+    }
 }
 
 .items {
-  list-style: none;
-  max-height: 272px;
-  overflow-y: auto;
-  position: relative;
-  padding: 0 32px 12px;
+    list-style: none;
+    max-height: 272px;
+    overflow-y: auto;
+    position: relative;
+    padding: 0 32px 12px;
 }
 
 .filter-wrapper {
-  padding: 0px 32px;
+    padding: 0px 32px;
 }
 
 .filter {
-  width: 100%;
+    width: 100%;
 }
 
 .border {
-  padding-top: 8px;
-  margin-top: 8px;
-  border-top: 1px solid lightgrey;
+    padding-top: 8px;
+    margin-top: 8px;
+    border-top: 1px solid lightgrey;
 }
 
 .toggle {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .actions {
-  display: flex;
-  justify-content: space-between;
-  white-space: nowrap;
-  padding: 8px 32px;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+    padding: 8px 32px;
 }
 
 .clear {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }

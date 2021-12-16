@@ -6,8 +6,8 @@ import { Directive } from '@angular/core';
  */
 @Directive()
 export abstract class NxTriggerButton {
-  /** Applies active styles to the button. */
-  abstract setTriggerActive(): void;
-  /** Applies or unsets inactive styles to the button. */
-  abstract setTriggerInactive(): void;
+    /** Applies active styles to the button. */
+    abstract setTriggerActive(): void;
+    /** Applies or unsets inactive styles to the button. */
+    abstract setTriggerInactive(): void;
 }

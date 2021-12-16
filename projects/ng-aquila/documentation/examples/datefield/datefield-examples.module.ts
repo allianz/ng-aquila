@@ -24,55 +24,55 @@ import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/d
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  DatefieldBasicExampleComponent,
-  DatefieldDisabledExampleComponent,
-  DatefieldFilterExampleComponent,
-  DatefieldFormatInjectionExampleComponent,
-  DatefieldFormattingExampleComponent,
-  DatefieldInjectionTokenExampleComponent,
-  DatefieldIsoExampleComponent,
-  DatefieldLocalizeDateExampleComponent,
-  DatefieldLocalizeTextsExampleComponent,
-  DatefieldManualExampleComponent,
-  DatefieldMinMaxExampleComponent,
-  DatefieldParsingExampleComponent,
-  DatefieldRangeExampleComponent,
-  DatefieldReactiveExampleComponent,
-  DatefieldStartviewExampleComponent,
-  DatefieldToggleFocusExampleComponent
+    DatefieldBasicExampleComponent,
+    DatefieldDisabledExampleComponent,
+    DatefieldFilterExampleComponent,
+    DatefieldFormatInjectionExampleComponent,
+    DatefieldFormattingExampleComponent,
+    DatefieldInjectionTokenExampleComponent,
+    DatefieldIsoExampleComponent,
+    DatefieldLocalizeDateExampleComponent,
+    DatefieldLocalizeTextsExampleComponent,
+    DatefieldManualExampleComponent,
+    DatefieldMinMaxExampleComponent,
+    DatefieldParsingExampleComponent,
+    DatefieldRangeExampleComponent,
+    DatefieldReactiveExampleComponent,
+    DatefieldStartviewExampleComponent,
+    DatefieldToggleFocusExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxDatefieldModule,
-    NxMomentDateModule,
-    NxInputModule,
-    NxSwitcherModule,
-    NxMessageModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxDatefieldModule,
+        NxMomentDateModule,
+        NxInputModule,
+        NxSwitcherModule,
+        NxMessageModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class DatefieldExamplesModule {
-  static components() {
-    return {
-      'datefield-basic': DatefieldBasicExampleComponent,
-      'datefield-disabled': DatefieldDisabledExampleComponent,
-      'datefield-filter': DatefieldFilterExampleComponent,
-      'datefield-format-injection': DatefieldFormatInjectionExampleComponent,
-      'datefield-formatting': DatefieldFormattingExampleComponent,
-      'datefield-injection-token': DatefieldInjectionTokenExampleComponent,
-      'datefield-iso': DatefieldIsoExampleComponent,
-      'datefield-localize-date': DatefieldLocalizeDateExampleComponent,
-      'datefield-localize-texts': DatefieldLocalizeTextsExampleComponent,
-      'datefield-manual': DatefieldManualExampleComponent,
-      'datefield-min-max': DatefieldMinMaxExampleComponent,
-      'datefield-parsing': DatefieldParsingExampleComponent,
-      'datefield-range': DatefieldRangeExampleComponent,
-      'datefield-reactive': DatefieldReactiveExampleComponent,
-      'datefield-startview': DatefieldStartviewExampleComponent,
-      'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'datefield-basic': DatefieldBasicExampleComponent,
+            'datefield-disabled': DatefieldDisabledExampleComponent,
+            'datefield-filter': DatefieldFilterExampleComponent,
+            'datefield-format-injection': DatefieldFormatInjectionExampleComponent,
+            'datefield-formatting': DatefieldFormattingExampleComponent,
+            'datefield-injection-token': DatefieldInjectionTokenExampleComponent,
+            'datefield-iso': DatefieldIsoExampleComponent,
+            'datefield-localize-date': DatefieldLocalizeDateExampleComponent,
+            'datefield-localize-texts': DatefieldLocalizeTextsExampleComponent,
+            'datefield-manual': DatefieldManualExampleComponent,
+            'datefield-min-max': DatefieldMinMaxExampleComponent,
+            'datefield-parsing': DatefieldParsingExampleComponent,
+            'datefield-range': DatefieldRangeExampleComponent,
+            'datefield-reactive': DatefieldReactiveExampleComponent,
+            'datefield-startview': DatefieldStartviewExampleComponent,
+            'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
+        };
+    }
 }

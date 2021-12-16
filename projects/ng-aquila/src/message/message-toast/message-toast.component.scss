@@ -1,10 +1,10 @@
 @import '../../shared-styles/index';
 
 nx-message {
-  @include var(box-shadow, message-box-shadow);
-  max-width: 352px;
+    @include var(box-shadow, message-box-shadow);
+    max-width: 352px;
 
-  @include media-breakpoint-down(small) {
-    max-width: calc(100vw - #{nx-spacer(s)});
-  }
+    @include media-breakpoint-down(small) {
+        max-width: calc(100vw - #{nx-spacer(s)});
+    }
 }

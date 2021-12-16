@@ -4,155 +4,155 @@ $header-height: 60px;
 $header-link-border-width: nx-border-size(xl);
 
 :host {
-  @include type-style(header);
+    @include type-style(header);
 }
 
 // this fixes vertical alignment of the .nx-header__row on IE11
 :host(.nx-header:not(.nx-header--single-row)) {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 :host(.nx-header.nx-header--single-row),
 ::ng-deep .nx-header__row {
-  display: flex;
-  align-items: center;
-  padding: nx-border-size(xs) nx-spacer(2m) 0 nx-spacer(2m);
-  border-bottom: nx-border-size(xs) solid v(header-border-color);
-  height: $header-height;
-  justify-content: space-between;
-  @include var(background, header-background-color);
+    display: flex;
+    align-items: center;
+    padding: nx-border-size(xs) nx-spacer(2m) 0 nx-spacer(2m);
+    border-bottom: nx-border-size(xs) solid v(header-border-color);
+    height: $header-height;
+    justify-content: space-between;
+    @include var(background, header-background-color);
 
-  @media screen and (-ms-high-contrast: active) {
-    background-color: window;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        background-color: window;
+    }
 }
 
 ::ng-deep .nx-header__link {
-  border-bottom: nx-border-size(xl) solid transparent;
-  padding-top: $header-link-border-width;
-  text-decoration: none;
-  display: block;
-  margin-right: nx-spacer(2m);
-  white-space: nowrap;
-
-  :host-context([dir="rtl"]) & {
-    margin-right: initial;
-    margin-left: nx-spacer(2m);
-  }
-
-  &::after {
+    border-bottom: nx-border-size(xl) solid transparent;
+    padding-top: $header-link-border-width;
+    text-decoration: none;
     display: block;
-    content: attr(text-content);
-    @include var(font-weight, header-link-active-font-weight);
-    height: 1px;
-    overflow: hidden;
-    visibility: hidden;
-  }
+    margin-right: nx-spacer(2m);
+    white-space: nowrap;
 
-  &.is-active {
-    @include var(color, header-link-active-color);
-    border-color: currentColor;
-
-    .nx-header__link-title {
-      @include var(font-weight, header-link-active-font-weight);
+    :host-context([dir='rtl']) & {
+        margin-right: initial;
+        margin-left: nx-spacer(2m);
     }
-  }
 
-  &:hover,
-  &:active {
-    @include var(color, header-link-active-color);
-    @include var(border-color, header-link-active-color);
-  }
+    &::after {
+        display: block;
+        content: attr(text-content);
+        @include var(font-weight, header-link-active-font-weight);
+        height: 1px;
+        overflow: hidden;
+        visibility: hidden;
+    }
 
-  @media screen and (forced-colors: active) {
-    color: LinkText !important;
-  }
+    &.is-active {
+        @include var(color, header-link-active-color);
+        border-color: currentColor;
+
+        .nx-header__link-title {
+            @include var(font-weight, header-link-active-font-weight);
+        }
+    }
+
+    &:hover,
+    &:active {
+        @include var(color, header-link-active-color);
+        @include var(border-color, header-link-active-color);
+    }
+
+    @media screen and (forced-colors: active) {
+        color: LinkText !important;
+    }
 }
 
 @media screen and (-ms-high-contrast: active) {
-  ::ng-deep .nx-header__link {
-    border-bottom: none;
+    ::ng-deep .nx-header__link {
+        border-bottom: none;
 
-    &.is-active {
-      border-bottom: 4px solid;
+        &.is-active {
+            border-bottom: 4px solid;
+        }
     }
-  }
 }
 
 ::ng-deep .nx-header__link-title {
-  line-height: 0;
+    line-height: 0;
 }
 
 ::ng-deep .nx-header__brand {
-  margin-right: nx-spacer(2m);
-  display: flex;
-  align-items: stretch;
+    margin-right: nx-spacer(2m);
+    display: flex;
+    align-items: stretch;
 
-  :host-context([dir="rtl"]) & {
-    margin-right: initial;
-    margin-left: nx-spacer(2m);
-  }
+    :host-context([dir='rtl']) & {
+        margin-right: initial;
+        margin-left: nx-spacer(2m);
+    }
 }
 
 ::ng-deep .nx-header__actions {
-  display: flex;
-  align-items: center;
-  margin-left: nx-spacer(m);
-
-  &.nx-header__actions--show-separator {
-    padding-left: nx-spacer(s);
-    border-left-width: nx-border-size(xs);
-    border-left-style: solid;
-    @include var(border-left-color, header-border-color);
-  }
-
-  :host-context([dir="rtl"]) & {
-    margin-right: nx-spacer(m);
-    margin-left: initial;
+    display: flex;
+    align-items: center;
+    margin-left: nx-spacer(m);
 
     &.nx-header__actions--show-separator {
-      padding-right: nx-spacer(s);
-      padding-left: initial;
-      border-right-width: nx-border-size(xs);
-      border-right-style: solid;
-      @include var(border-right-color, header-border-color);
-      border-left: none;
+        padding-left: nx-spacer(s);
+        border-left-width: nx-border-size(xs);
+        border-left-style: solid;
+        @include var(border-left-color, header-border-color);
     }
-  }
+
+    :host-context([dir='rtl']) & {
+        margin-right: nx-spacer(m);
+        margin-left: initial;
+
+        &.nx-header__actions--show-separator {
+            padding-right: nx-spacer(s);
+            padding-left: initial;
+            border-right-width: nx-border-size(xs);
+            border-right-style: solid;
+            @include var(border-right-color, header-border-color);
+            border-left: none;
+        }
+    }
 }
 
 ::ng-deep .nx-header__link.cdk-keyboard-focused {
-  @include focus-style;
-  border-radius: nx-border-radius(s);
+    @include focus-style;
+    border-radius: nx-border-radius(s);
 }
 
 ::ng-deep a:focus {
-  outline: none;
+    outline: none;
 }
 
 ::ng-deep .nx-header__app-title {
-  display: flex;
+    display: flex;
 
-  font-size: nx-font-size(3xs);
-  font-weight: bold;
-  align-items: center;
-  padding-left: nx-spacer(s);
-  margin-left: nx-spacer(s);
-  white-space: nowrap;
+    font-size: nx-font-size(3xs);
+    font-weight: bold;
+    align-items: center;
+    padding-left: nx-spacer(s);
+    margin-left: nx-spacer(s);
+    white-space: nowrap;
 
-  border-left-width: nx-border-size(xs);
-  border-left-style: solid;
-  @include var(border-left-color, header-border-color);
+    border-left-width: nx-border-size(xs);
+    border-left-style: solid;
+    @include var(border-left-color, header-border-color);
 
-  :host-context([dir="rtl"]) & {
-    padding-right: nx-spacer(s);
-    padding-left: initial;
-    margin-right: nx-spacer(s);
-    margin-left: initial;
-    border-right-width: nx-border-size(xs);
-    border-right-style: solid;
-    @include var(border-right-color, header-border-color);
-    border-left: none;
-  }
+    :host-context([dir='rtl']) & {
+        padding-right: nx-spacer(s);
+        padding-left: initial;
+        margin-right: nx-spacer(s);
+        margin-left: initial;
+        border-right-width: nx-border-size(xs);
+        border-right-style: solid;
+        @include var(border-right-color, header-border-color);
+        border-left: none;
+    }
 }

@@ -5,597 +5,593 @@ $margin-to-message: nx-spacer(3xs);
 $outline-padding: 7px;
 
 .nx-formfield {
-  display: block;
-  //default theme is white and gets overwritten depending of the focus, error state or given modifiers
-  @include var(color, text-01);
+    display: block;
+    //default theme is white and gets overwritten depending of the focus, error state or given modifiers
+    @include var(color, text-01);
 
-  nx-message {
-    margin-top: nx-spacer(xs);
-  }
+    nx-message {
+        margin-top: nx-spacer(xs);
+    }
 }
 
 .nx-formfield__wrapper {
-  @include var(padding-bottom, formfield-bottom-padding);
-  @include var(padding-top, formfield-label-height);
+    @include var(padding-bottom, formfield-bottom-padding);
+    @include var(padding-top, formfield-label-height);
 }
 
 // the hint should not push the other content down
 .has-hint .nx-formfield__wrapper {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 .nx-formfield__row {
-  @include var(min-height, formfield-control-height);
-  @include var(background-color, formfield-background-color);
-  display: flex;
-  align-items: stretch;
-  width: 100%;
+    @include var(min-height, formfield-control-height);
+    @include var(background-color, formfield-background-color);
+    display: flex;
+    align-items: stretch;
+    width: 100%;
 
-  // IE hack: IE has problems with align-items: stretch
-  // and min-heights, but this trick does it nicely.
-  // I tried it first to have it on the flexfield, but for some reason
-  // the after element doesn't respect the border-box and adds up the borders
-  // resulting in wrong heights. Using the __row container now for the min-height
-  // of the inner element works fine :)
-  &:after {
-    content: '';
-    font-size: 0;
-    display: block;
-    min-height: inherit;
-  }
+    // IE hack: IE has problems with align-items: stretch
+    // and min-heights, but this trick does it nicely.
+    // I tried it first to have it on the flexfield, but for some reason
+    // the after element doesn't respect the border-box and adds up the borders
+    // resulting in wrong heights. Using the __row container now for the min-height
+    // of the inner element works fine :)
+    &:after {
+        content: '';
+        font-size: 0;
+        display: block;
+        min-height: inherit;
+    }
 }
 
 // Flex Layout of prefix, input, postfix
 .nx-formfield__flexfield {
-  @include type-style(formfield-control);
-  align-items: stretch;
-  flex-direction: column;
-  display: inline-flex;
-  width: 100%;
-  position: relative;
-  min-width: 0;
-  flex: 0 1 auto;
+    @include type-style(formfield-control);
+    align-items: stretch;
+    flex-direction: column;
+    display: inline-flex;
+    width: 100%;
+    position: relative;
+    min-width: 0;
+    flex: 0 1 auto;
 }
 
 .nx-formfield__input-container {
-  display: flex;
-  border-bottom: v(formfield-border-width) solid v(formfield-border-color);
-  @include var(height, formfield-control-height);
-  flex: auto;
-  @include var(padding, formfield-input-padding);
+    display: flex;
+    border-bottom: v(formfield-border-width) solid v(formfield-border-color);
+    @include var(height, formfield-control-height);
+    flex: auto;
+    @include var(padding, formfield-input-padding);
 }
 
 .nx-formfield__input {
-  position: relative;
-  flex: auto;
-  min-width: 0;
-  display: flex;
-  text-align: left;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    display: flex;
+    text-align: left;
 
-  [dir="rtl"] & {
-    text-align: right;
-  }
+    [dir='rtl'] & {
+        text-align: right;
+    }
 }
 
 .nx-formfield__label-holder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 
-  [dir="rtl"] & {
-    right: 0;
-    left: auto;
-  }
+    [dir='rtl'] & {
+        right: 0;
+        left: auto;
+    }
 }
 
 .nx-formfield__label {
-  @include type-style(formfield-placeholder-label);
-  @include var(color, formfield-label-color);
-  display: block;
-  position: absolute;
-  left: 0;
-  pointer-events: none;
-  width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  transform-origin: 0 0;
-  transition: transform 0.15s ease-out, font-size 0.15s ease-out;
-  text-size-adjust: 100%;
-  text-align: left;
+    @include type-style(formfield-placeholder-label);
+    @include var(color, formfield-label-color);
+    display: block;
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transform-origin: 0 0;
+    transition: transform 0.15s ease-out, font-size 0.15s ease-out;
+    text-size-adjust: 100%;
+    text-align: left;
 
-  [dir="rtl"] & {
-    right: 0;
-    left: auto;
-    text-align: right;
-  }
+    [dir='rtl'] & {
+        right: 0;
+        left: auto;
+        text-align: right;
+    }
 }
 
 .nx-formfield__appendix,
 .nx-formfield__prefix,
 .nx-formfield__suffix {
-  align-items: center;
-  flex: none;
-  white-space: nowrap;
-  @include var(color, formfield-control-color);
+    align-items: center;
+    flex: none;
+    white-space: nowrap;
+    @include var(color, formfield-control-color);
 
-  // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
-  nx-icon.nx-icon--auto {
-    @include var(font-size, formfield-icon-size);
-  }
+    // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
+    nx-icon.nx-icon--auto {
+        @include var(font-size, formfield-icon-size);
+    }
 
-  nx-icon {
-    display: block;
-  }
+    nx-icon {
+        display: block;
+    }
 }
 
 .nx-formfield__prefix,
 .nx-formfield__suffix {
-  display: inline-flex;
+    display: inline-flex;
 }
 
 .nx-formfield__appendix {
-  @include var(height, formfield-control-height);
-  margin-left: nx-spacer(2xs);
-  display: flex;
-  border-bottom-style: solid;
-  border-bottom-color: transparent;
-  @include var(border-bottom-width, formfield-border-width);
-  @include var(padding, formfield-input-padding);
+    @include var(height, formfield-control-height);
+    margin-left: nx-spacer(2xs);
+    display: flex;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    @include var(border-bottom-width, formfield-border-width);
+    @include var(padding, formfield-input-padding);
 
-  [dir="rtl"] & {
-    margin-right: nx-spacer(2xs);
-    margin-left: initial;
-  }
+    [dir='rtl'] & {
+        margin-right: nx-spacer(2xs);
+        margin-left: initial;
+    }
 }
 
 .nx-formfield__prefix {
-  margin-right: nx-spacer(2xs);
+    margin-right: nx-spacer(2xs);
 
-  [dir="rtl"] & {
-    margin-right: initial;
-    margin-left: nx-spacer(2xs);
-  }
+    [dir='rtl'] & {
+        margin-right: initial;
+        margin-left: nx-spacer(2xs);
+    }
 }
 
 .nx-formfield__suffix {
-  margin-left: nx-spacer(2xs);
+    margin-left: nx-spacer(2xs);
 
-  [dir="rtl"] & {
-    margin-right: nx-spacer(2xs);
-    margin-left: initial;
-  }
+    [dir='rtl'] & {
+        margin-right: nx-spacer(2xs);
+        margin-left: initial;
+    }
 }
 
 // Hints
 .nx-formfield__hints {
-  @include var(color, text-01);
-  @include type-style(formfield-hint);
-  padding-top: 8px;
-  text-align: right;
+    @include var(color, text-01);
+    @include type-style(formfield-hint);
+    padding-top: 8px;
+    text-align: right;
 
-  [dir="rtl"] & {
-    text-align: left;
-  }
+    [dir='rtl'] & {
+        text-align: left;
+    }
 }
 
 .nx-formfield-hint {
-  display: block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 // Messages
 .nx-formfield__message {
-  margin-top: $margin-to-message;
+    margin-top: $margin-to-message;
 }
-
 
 .nx-formfield:not(.nx-formfield--negative) {
-  // ensure all icons gets colored blueish.
-  .nx-formfield__appendix nx-icon {
-    @include var(color, formfield-active-color);
-  }
+    // ensure all icons gets colored blueish.
+    .nx-formfield__appendix nx-icon {
+        @include var(color, formfield-active-color);
+    }
 }
-
-
 
 // States
 .nx-formfield.is-focused {
-  .nx-formfield__label {
-    text-overflow: ellipsis;
-  }
+    .nx-formfield__label {
+        text-overflow: ellipsis;
+    }
 }
 
 .nx-formfield.is-focused:not(.nx-formfield--negative):not(.has-error) {
-  @include var(color, formfield-active-color);
+    @include var(color, formfield-active-color);
 
-  .nx-formfield__input-container {
-    @include var(border-bottom-color, formfield-active-border-color);
-  }
+    .nx-formfield__input-container {
+        @include var(border-bottom-color, formfield-active-border-color);
+    }
 
-  // overwrite with white to maintain contrast
-  &.nx-formfield--negative {
-    @include var(color, negative);
-  }
+    // overwrite with white to maintain contrast
+    &.nx-formfield--negative {
+        @include var(color, negative);
+    }
 }
 
 // direct needs a hover color for border-bottom line
 .nx-formfield:not(.nx-formfield--negative):not(.has-error):not(.is-disabled):not(.is-focused):not(.has-outline) {
-  .nx-formfield__row:hover .nx-formfield__input-container {
-    @include var(border-bottom-color, formfield-hover-border-color);
-  }
+    .nx-formfield__row:hover .nx-formfield__input-container {
+        @include var(border-bottom-color, formfield-hover-border-color);
+    }
 }
 
 // focus style for outline formfield
 .nx-formfield.is-focused:not(.nx-formfield--negative).has-outline {
-  .nx-formfield__input-container {
-    @include var(border-color, formfield-outline-active-border-color);
-    @include formfield-outline-focus-styles;
-  }
-
-  &.has-error {
     .nx-formfield__input-container {
-      @include var(border-bottom-color, danger);
+        @include var(border-color, formfield-outline-active-border-color);
+        @include formfield-outline-focus-styles;
     }
-  }
+
+    &.has-error {
+        .nx-formfield__input-container {
+            @include var(border-bottom-color, danger);
+        }
+    }
 }
 
 .nx-formfield.has-outline {
-  @include type-style(formfield-outline-control);
-
-  &.nx-formfield--type-textarea {
-    .nx-formfield__input-container {
-      height: auto;
-    }
-  }
-
-  .nx-formfield__wrapper {
-    @include var(padding-top, formfield-outline-label-height);
-  }
-
-  .nx-formfield__row {
-    @include var(min-height, formfield-outline-control-height);
-  }
-
-  .nx-formfield__flexfield {
     @include type-style(formfield-outline-control);
-    padding: 0;
-  }
 
-  .nx-formfield__input-container {
-    padding: 0;
-    @include var(border-width, formfield-border-width);
-    @include var(border-color, formfield-outline-border-color);
-    @include var(background-color, formfield-outline-background-color);
-    border-style: solid;
-    border-radius: nx-border-radius(s);
-    @include var(height, formfield-outline-control-height);
-  }
-
-  input, 
-  nx-dropdown .nx-dropdown__container,
-  nx-multi-select .value {
-    padding: 0 $outline-padding;
-  }
-
-  .nx-formfield__suffix {
-    margin-right: $outline-padding;
-    margin-left: 0;
-
-    [dir="rtl"] & {
-      margin-right: 0;
-      margin-left: $outline-padding;
-    }
-  }
-
-  .nx-formfield__prefix {
-    margin-left: $outline-padding;
-    margin-right: 0;
-
-    [dir="rtl"] & {
-      margin-right: $outline-padding;
-      margin-left: 0;
-    }
-  }
-
-  .nx-formfield__input textarea.nx-input {
-    line-height: nx-line-height(2xs);
-    padding: $outline-padding;
-    min-height: v(formfield-outline-control-line-height);
-  }
-
-  .nx-formfield__appendix {
-    @include var(height, formfield-outline-control-height);
-    margin-left: nx-spacer(2xs);
-    display: flex;
-    border-top: v(formfield-border-width) solid transparent;
-    border-bottom: v(formfield-border-width) solid transparent;
-    padding: 0;
-
-    [dir="rtl"] & {
-      margin-left: initial;
-      margin-right: nx-spacer(2xs);
-    }
-  }
-
-  .nx-formfield__hints {
-    text-align: left;
-    @include type-style(formfield-outline-hint);
-
-    [dir="rtl"] & {
-      text-align: right;
-    }
-  }
-
-  input, textarea {
-    @include input-placeholder {
-      @include type-style(formfield-outline-input-native-placeholder);
-      @include var(color, formfield-input-native-placeholder-color);
+    &.nx-formfield--type-textarea {
+        .nx-formfield__input-container {
+            height: auto;
+        }
     }
 
-    &::placeholder {
-      opacity: 1;
+    .nx-formfield__wrapper {
+        @include var(padding-top, formfield-outline-label-height);
     }
-  }
 
-  input {
-    // to align the placeholder vertically inside the element on firefox the line height
-    // needs to equal the element height.
-    // the formfield-outline-control-height tokens are the outer element
-    // so we need to take the border into account
-    &::-moz-placeholder {
-      line-height: calc(#{v(formfield-outline-control-height)} - 2 * #{v(formfield-border-width)});
+    .nx-formfield__row {
+        @include var(min-height, formfield-outline-control-height);
     }
-  }
+
+    .nx-formfield__flexfield {
+        @include type-style(formfield-outline-control);
+        padding: 0;
+    }
+
+    .nx-formfield__input-container {
+        padding: 0;
+        @include var(border-width, formfield-border-width);
+        @include var(border-color, formfield-outline-border-color);
+        @include var(background-color, formfield-outline-background-color);
+        border-style: solid;
+        border-radius: nx-border-radius(s);
+        @include var(height, formfield-outline-control-height);
+    }
+
+    input,
+    nx-dropdown .nx-dropdown__container,
+    nx-multi-select .value {
+        padding: 0 $outline-padding;
+    }
+
+    .nx-formfield__suffix {
+        margin-right: $outline-padding;
+        margin-left: 0;
+
+        [dir='rtl'] & {
+            margin-right: 0;
+            margin-left: $outline-padding;
+        }
+    }
+
+    .nx-formfield__prefix {
+        margin-left: $outline-padding;
+        margin-right: 0;
+
+        [dir='rtl'] & {
+            margin-right: $outline-padding;
+            margin-left: 0;
+        }
+    }
+
+    .nx-formfield__input textarea.nx-input {
+        line-height: nx-line-height(2xs);
+        padding: $outline-padding;
+        min-height: v(formfield-outline-control-line-height);
+    }
+
+    .nx-formfield__appendix {
+        @include var(height, formfield-outline-control-height);
+        margin-left: nx-spacer(2xs);
+        display: flex;
+        border-top: v(formfield-border-width) solid transparent;
+        border-bottom: v(formfield-border-width) solid transparent;
+        padding: 0;
+
+        [dir='rtl'] & {
+            margin-left: initial;
+            margin-right: nx-spacer(2xs);
+        }
+    }
+
+    .nx-formfield__hints {
+        text-align: left;
+        @include type-style(formfield-outline-hint);
+
+        [dir='rtl'] & {
+            text-align: right;
+        }
+    }
+
+    input,
+    textarea {
+        @include input-placeholder {
+            @include type-style(formfield-outline-input-native-placeholder);
+            @include var(color, formfield-input-native-placeholder-color);
+        }
+
+        &::placeholder {
+            opacity: 1;
+        }
+    }
+
+    input {
+        // to align the placeholder vertically inside the element on firefox the line height
+        // needs to equal the element height.
+        // the formfield-outline-control-height tokens are the outer element
+        // so we need to take the border into account
+        &::-moz-placeholder {
+            line-height: calc(#{v(formfield-outline-control-height)} - 2 * #{v(formfield-border-width)});
+        }
+    }
 }
 
 .nx-formfield.has-outline.is-readonly:not(.is-disabled) {
-  .nx-formfield__input-container {
-    @include var(border-color, formfield-readonly-border-color);
-    @include var(background-color, formfield-readonly-background-color);
-  }
+    .nx-formfield__input-container {
+        @include var(border-color, formfield-readonly-border-color);
+        @include var(background-color, formfield-readonly-background-color);
+    }
 }
 
 // Provide the floating behavior
 .nx-formfield.is-floating {
-  .nx-formfield__label {
-    transform: translateY(v(formfield-floating-distance));
-    @include type-style(formfield-label);
-  }
-
-  &.is-filled .nx-formfield__label {
-    // Remove the transition when the input is filled
-    transition: none;
-  }
-
-  &.has-outline {
     .nx-formfield__label {
-      padding-top: 0;
-      transform: translateY(v(formfield-outline-floating-distance));
-      @include type-style(formfield-outline-label);
+        transform: translateY(v(formfield-floating-distance));
+        @include type-style(formfield-label);
     }
 
-    .nx-formfield__prefix ~ .nx-formfield__input {
-      .nx-formfield__label {
-        padding: 0;
-      }
+    &.is-filled .nx-formfield__label {
+        // Remove the transition when the input is filled
+        transition: none;
     }
 
-    .nx-formfield__input-container {
-      position: relative;
-    }
+    &.has-outline {
+        .nx-formfield__label {
+            padding-top: 0;
+            transform: translateY(v(formfield-outline-floating-distance));
+            @include type-style(formfield-outline-label);
+        }
 
-    .nx-formfield__input {
-      position: unset;
+        .nx-formfield__prefix ~ .nx-formfield__input {
+            .nx-formfield__label {
+                padding: 0;
+            }
+        }
+
+        .nx-formfield__input-container {
+            position: relative;
+        }
+
+        .nx-formfield__input {
+            position: unset;
+        }
     }
-  }
 }
 
 // error styles (non-color changes)
 .nx-formfield.has-error {
+    &:not(.has-outline) {
+        &:not(.is-floating) .nx-formfield__label {
+            @include var(font-weight, formfield-error-input-font-weight);
+        }
 
-  &:not(.has-outline) {
-    &:not(.is-floating) .nx-formfield__label {
-      @include var(font-weight, formfield-error-input-font-weight);
-    }
+        .nx-formfield__prefix,
+        .nx-formfield__suffix {
+            @include var(font-weight, formfield-error-input-font-weight);
+        }
 
-    .nx-formfield__prefix,
-    .nx-formfield__suffix {
-      @include var(font-weight, formfield-error-input-font-weight);
+        .nx-formfield__input input.nx-input {
+            @include var(font-weight, formfield-error-input-font-weight);
+        }
     }
-
-    .nx-formfield__input input.nx-input {
-      @include var(font-weight, formfield-error-input-font-weight);
-    }
-  }
 }
 
 // error styles (color changes)
 .nx-formfield.has-error:not(.nx-formfield--negative) {
-  @include var(color, danger);
+    @include var(color, danger);
 
-  &:not(.has-outline) {
-    .nx-formfield__prefix,
-    .nx-formfield__suffix,
-    .nx-formfield__label {
-      @include var(color, danger);
+    &:not(.has-outline) {
+        .nx-formfield__prefix,
+        .nx-formfield__suffix,
+        .nx-formfield__label {
+            @include var(color, danger);
+        }
     }
-  }
-
-  .nx-formfield__input-container {
-    @include var(border-bottom-color, danger);
-  }
-
-  &.is-floating {
-    .nx-formfield__label {
-      @include var(color, formfield-label-color);
-    }
-  }
-
-  &.has-outline {
-    @include var(color, text-01);
 
     .nx-formfield__input-container {
-      @include var(border-color, danger);
+        @include var(border-bottom-color, danger);
     }
-  }
+
+    &.is-floating {
+        .nx-formfield__label {
+            @include var(color, formfield-label-color);
+        }
+    }
+
+    &.has-outline {
+        @include var(color, text-01);
+
+        .nx-formfield__input-container {
+            @include var(border-color, danger);
+        }
+    }
 }
 
 // Provide the disabled behavior
 .nx-formfield.is-disabled {
-  @include var(color, formfield-disabled-text-color);
-  @include var(-webkit-text-fill-color, formfield-disabled-text-color);
-  cursor: not-allowed;
-
-  .nx-formfield__hints {
-    color: inherit;
-  }
-
-  .nx-formfield__input-container {
-    @include var(border-bottom-color, formfield-disabled-border-color);
-  }
-
-  &.has-outline .nx-formfield__input-container {
-    @include var(border-color, formfield-disabled-border-color);
-  }
-
-  nx-datepicker-toggle button {
     @include var(color, formfield-disabled-text-color);
-  }
+    @include var(-webkit-text-fill-color, formfield-disabled-text-color);
+    cursor: not-allowed;
+
+    .nx-formfield__hints {
+        color: inherit;
+    }
+
+    .nx-formfield__input-container {
+        @include var(border-bottom-color, formfield-disabled-border-color);
+    }
+
+    &.has-outline .nx-formfield__input-container {
+        @include var(border-color, formfield-disabled-border-color);
+    }
+
+    nx-datepicker-toggle button {
+        @include var(color, formfield-disabled-text-color);
+    }
 }
 
 // Readonly color
 .nx-formfield.is-readonly:not(.is-disabled) {
-  nx-datepicker-toggle button {
-    @include var(color, formfield-disabled-text-color);
-  }
+    nx-datepicker-toggle button {
+        @include var(color, formfield-disabled-text-color);
+    }
 }
 
 // Modifiers
 .nx-formfield--negative {
-  @include var(color, negative);
-
-  .nx-formfield__hints {
-    color: inherit;
-  }
-
-  // this has currently no effect on the outline elements, so the next block for .has-outline is needed
-  .nx-formfield__input-container {
-    @include var(border-color, negative);
-  }
-
-  &.has-outline .nx-formfield__input-container {
-    @include var(border-color, negative);
-  }
-
-  .nx-formfield__appendix,
-  .nx-formfield__prefix,
-  .nx-formfield__suffix {
     @include var(color, negative);
-  }
 
-  .nx-formfield__label {
-    @include var(color, negative);
-  }
+    .nx-formfield__hints {
+        color: inherit;
+    }
+
+    // this has currently no effect on the outline elements, so the next block for .has-outline is needed
+    .nx-formfield__input-container {
+        @include var(border-color, negative);
+    }
+
+    &.has-outline .nx-formfield__input-container {
+        @include var(border-color, negative);
+    }
+
+    .nx-formfield__appendix,
+    .nx-formfield__prefix,
+    .nx-formfield__suffix {
+        @include var(color, negative);
+    }
+
+    .nx-formfield__label {
+        @include var(color, negative);
+    }
 }
 
 .nx-formfield--type-nx-dropdown,
 .nx-formfield--type-nx-multi-select {
-  .nx-formfield__label {
-    width: calc(100% - #{v(formfield-icon-size)});
-  }
+    .nx-formfield__label {
+        width: calc(100% - #{v(formfield-icon-size)});
+    }
 }
 
 .nx-formfield__input textarea.nx-input {
-  vertical-align: bottom;
-  min-height: v(formfield-control-line-height);
-  resize: vertical;
+    vertical-align: bottom;
+    min-height: v(formfield-control-line-height);
+    resize: vertical;
 }
 
 // HIGH CONTRAST
 @media screen and (-ms-high-contrast: active) {
-  .nx-formfield__input-container,
+    .nx-formfield__input-container,
   .nx-formfield.nx-formfield--negative .nx-formfield__input-container,
   // overwrite hover in chromium edge:
   .nx-formfield:not(.nx-formfield--negative):not(.has-error):not(.is-disabled):not(.is-focused):not(.has-outline)
       .nx-formfield__row:hover .nx-formfield__input-container,
   // overwrite error color
   .nx-formfield.has-error:not(.nx-formfield--negative) .nx-formfield__input-container {
-    border-bottom-color: buttonText;
-  }
-
-
-  .nx-formfield.has-outline {
-    .nx-formfield__input-container {
-      border-color: buttonText;
+        border-bottom-color: buttonText;
     }
 
-    .nx-formfield__appendix {
-      border-bottom-color: window;
-      border-top-color: window;
-    }
-  }
+    .nx-formfield.has-outline {
+        .nx-formfield__input-container {
+            border-color: buttonText;
+        }
 
-  .nx-formfield.is-disabled {
-    color: GrayText;
-    -webkit-text-fill-color: GrayText;
-
-    .nx-formfield__input-container {
-      border-bottom-color: GrayText;
+        .nx-formfield__appendix {
+            border-bottom-color: window;
+            border-top-color: window;
+        }
     }
 
-    .nx-formfield__hints {
-      color: windowText;
+    .nx-formfield.is-disabled {
+        color: GrayText;
+        -webkit-text-fill-color: GrayText;
+
+        .nx-formfield__input-container {
+            border-bottom-color: GrayText;
+        }
+
+        .nx-formfield__hints {
+            color: windowText;
+        }
+
+        &.has-outline .nx-formfield__input-container {
+            border-color: GrayText;
+        }
     }
 
-    &.has-outline .nx-formfield__input-container {
-      border-color: GrayText;
+    .nx-formfield.is-focused:not(.has-outline) .nx-formfield__input-container,
+    .nx-formfield.is-focused:not(.nx-formfield--negative):not(.has-error) .nx-formfield__input-container {
+        border-bottom-color: highlight;
     }
-  }
 
-  .nx-formfield.is-focused:not(.has-outline) .nx-formfield__input-container,
-  .nx-formfield.is-focused:not(.nx-formfield--negative):not(.has-error) .nx-formfield__input-container {
-    border-bottom-color: highlight;
-  }
-
-  .nx-formfield:not(.nx-formfield--negative) {
-    .nx-formfield__appendix nx-icon {
-      color: inherit;
+    .nx-formfield:not(.nx-formfield--negative) {
+        .nx-formfield__appendix nx-icon {
+            color: inherit;
+        }
     }
-  }
 }
 
 .nx-formfield--type-textarea {
-  // the flexfield has left and right padding so that
-  // controls don't have to be styled accordingly.
-  // but the textarea should fill out the whole container and it will
-  // bring its own padding so we need to reset it here
-  .nx-formfield__flexfield {
-    padding: 0;
-  }
+    // the flexfield has left and right padding so that
+    // controls don't have to be styled accordingly.
+    // but the textarea should fill out the whole container and it will
+    // bring its own padding so we need to reset it here
+    .nx-formfield__flexfield {
+        padding: 0;
+    }
 
-  .nx-formfield__input-container {
-    height: auto;
-  }
+    .nx-formfield__input-container {
+        height: auto;
+    }
 }
 
 // overwrites default background color and font-size of autofilled input fields
 input:-webkit-autofill {
-  transition: background-color 5000s ease-in-out 0s;
-  &::first-line {
-    @include type-style(formfield-control);
-    font-family: v(font-family);
-    @include var(color, formfield-control-color);
-  }
+    transition: background-color 5000s ease-in-out 0s;
+    &::first-line {
+        @include type-style(formfield-control);
+        font-family: v(font-family);
+        @include var(color, formfield-control-color);
+    }
 }
 
 .nx-formfield.has-outline {
-  input:-webkit-autofill::first-line {
-    @include type-style(formfield-outline-control);
-  }
+    input:-webkit-autofill::first-line {
+        @include type-style(formfield-outline-control);
+    }
 }

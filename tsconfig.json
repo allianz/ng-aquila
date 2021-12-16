@@ -1,34 +1,32 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "strict": true,
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "resolveJsonModule": true,
-    "target": "es2017",
-    "module": "es2020",
-    "lib": ["es2020", "dom"],
-    "paths": {
-      "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
-      "@aposin/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
-      "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
-      "@aposin/ng-aquila/documentation/*": [
-        "projects/ng-aquila/documentation/generated/*"
-      ]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "strict": true,
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "resolveJsonModule": true,
+        "target": "es2017",
+        "module": "es2020",
+        "lib": ["es2020", "dom"],
+        "paths": {
+            "@aposin/ng-aquila": ["projects/ng-aquila/src/public-api.ts"],
+            "@aposin/ng-aquila/*": ["projects/ng-aquila/src/*/public-api.ts"],
+            "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
+            "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
+        },
+        "allowSyntheticDefaultImports": true
     },
-    "allowSyntheticDefaultImports": true
-  },
-  "angularCompilerOptions": {
-    "strictTemplates": true,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "fullTemplateTypeCheck": true
-  }
+    "angularCompilerOptions": {
+        "strictTemplates": true,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "fullTemplateTypeCheck": true
+    }
 }

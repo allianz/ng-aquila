@@ -1,19 +1,11 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "@aposin/ng-aquila": [
-        "dist/ng-aquila"
-      ],
-      "@aposin/ng-aquila/*": [
-        "dist/ng-aquila/*"
-      ],
-      "@aposin/ngx-docs-ui": [
-        "projects/ngx-docs-ui/src/public-api.ts"
-      ],
-      "@aposin/ng-aquila/documentation/*": [
-        "projects/ng-aquila/documentation/generated/*"
-      ]
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "@aposin/ng-aquila": ["dist/ng-aquila"],
+            "@aposin/ng-aquila/*": ["dist/ng-aquila/*"],
+            "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
+            "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
+        }
     }
-  }
 }

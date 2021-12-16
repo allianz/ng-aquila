@@ -9,63 +9,62 @@ import { NxExpandable } from './toggle-button.component';
  * Requires the table cells to have the `[nxExpandableTableCell]` component.
  */
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'tr[nxExpandableTableRow]',
-  host: {
-   'class': 'nx-expandable-table-row'
-  },
-  template: `<ng-content></ng-content>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    // tslint:disable-next-line:component-selector
+    selector: 'tr[nxExpandableTableRow]',
+    host: {
+        class: 'nx-expandable-table-row',
+    },
+    template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxExpandableTableRowComponent implements NxExpandable {
+    private _isExpanded!: boolean;
 
-  private _isExpanded!: boolean;
-
-  /* Whether the row is expanded. */
-  @Input()
-  set isExpanded(value: boolean) {
-    this._isExpanded = coerceBooleanProperty(value);
-    this.expanded.next(this._isExpanded);
-    this._changeDetectorRef.markForCheck();
-  }
-  get isExpanded() {
-    return this._isExpanded;
-  }
-
-  expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {}
-
-  /**
-   * Toggles the expansion of this row.
-   */
-  toggle() {
-    if (this.expanded.value) {
-      this.close();
-    } else {
-      this.expand();
+    /* Whether the row is expanded. */
+    @Input()
+    set isExpanded(value: boolean) {
+        this._isExpanded = coerceBooleanProperty(value);
+        this.expanded.next(this._isExpanded);
+        this._changeDetectorRef.markForCheck();
     }
-  }
-
-  /**
-   * Expands this row.
-   */
-  expand() {
-    if (!this.expanded.value) {
-      this.expanded.next(true);
-      this._changeDetectorRef.markForCheck();
+    get isExpanded() {
+        return this._isExpanded;
     }
-  }
 
-  /**
-   * Closes this row.
-   */
-  close() {
-    if (this.expanded.value) {
-      this.expanded.next(false);
-      this._changeDetectorRef.markForCheck();
+    expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+
+    /**
+     * Toggles the expansion of this row.
+     */
+    toggle() {
+        if (this.expanded.value) {
+            this.close();
+        } else {
+            this.expand();
+        }
     }
-  }
 
-  static ngAcceptInputType_isExpanded: BooleanInput;
+    /**
+     * Expands this row.
+     */
+    expand() {
+        if (!this.expanded.value) {
+            this.expanded.next(true);
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+
+    /**
+     * Closes this row.
+     */
+    close() {
+        if (this.expanded.value) {
+            this.expanded.next(false);
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+
+    static ngAcceptInputType_isExpanded: BooleanInput;
 }

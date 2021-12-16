@@ -1,21 +1,21 @@
 :host {
-  display: block;
+    display: block;
 
-  ::ng-deep code {
-    white-space: pre-wrap;
-  }
+    ::ng-deep code {
+        white-space: pre-wrap;
+    }
 }
 
 .container {
-  display: flex;
-  flex-flow: row nowrap;
-  max-width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    max-width: 100%;
 }
 
 .content {
-  width: 80%;
+    width: 80%;
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }

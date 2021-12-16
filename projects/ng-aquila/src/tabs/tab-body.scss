@@ -1,14 +1,14 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host {
-  display: block;
+    display: block;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 
-  &.cdk-keyboard-focused {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
-  }
+    &.cdk-keyboard-focused {
+        @include focus-style;
+        border-radius: nx-border-radius(s);
+    }
 }

@@ -1,11 +1,11 @@
 :host {
-  display: block;
+    display: block;
 }
 
 .nx-table {
-  width: 2000px;
+    width: 2000px;
 }
 
 .table-container {
-  overflow-x: auto;
+    overflow-x: auto;
 }

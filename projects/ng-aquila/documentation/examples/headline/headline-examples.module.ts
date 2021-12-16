@@ -8,27 +8,24 @@ import { HeadlineNegativeExampleComponent } from './headline-negative/headline-n
 import { HeadlineSizesExampleComponent } from './headline-sizes/headline-sizes-example';
 
 const EXAMPLES = [
-  HeadlineFontWeightsExampleComponent,
-  HeadlineLinksExampleComponent,
-  HeadlineNegativeExampleComponent,
-  HeadlineSizesExampleComponent
+    HeadlineFontWeightsExampleComponent,
+    HeadlineLinksExampleComponent,
+    HeadlineNegativeExampleComponent,
+    HeadlineSizesExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxHeadlineModule,
-    NxLinkModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxHeadlineModule, NxLinkModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class HeadlineExamplesModule {
-  static components() {
-    return {
-      'headline-font-weights': HeadlineFontWeightsExampleComponent,
-      'headline-links': HeadlineLinksExampleComponent,
-      'headline-negative': HeadlineNegativeExampleComponent,
-      'headline-sizes': HeadlineSizesExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'headline-font-weights': HeadlineFontWeightsExampleComponent,
+            'headline-links': HeadlineLinksExampleComponent,
+            'headline-negative': HeadlineNegativeExampleComponent,
+            'headline-sizes': HeadlineSizesExampleComponent,
+        };
+    }
 }

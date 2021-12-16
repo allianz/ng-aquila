@@ -3,9 +3,11 @@ title: Getting started
 ---
 
 # Getting started
+
 With ng-aquila we are providing an Angular powered user interface (UI) library.
 
 ### Prerequisite
+
 You should have Node.js and the Angular CLI installed.
 
 ### Automatic setup with ng add
@@ -27,11 +29,11 @@ You should have Node.js and the Angular CLI installed.
 
     ```scss
     body {
-      background: #0f2a3d;
+        background: #0f2a3d;
     }
     ```
 
-Congratulations you're done 💪 
+Congratulations you're done 💪
 
 Now you can include components and start building your application.
 
@@ -86,7 +88,7 @@ You can also install ng-aquila manually.
 
     ```css
     body {
-      background: #0f2a3d;
+        background: #0f2a3d;
     }
     ```
 
@@ -99,24 +101,26 @@ You can also install ng-aquila manually.
     import { NxExpertModule } from '@aposin/ng-aquila/config';
 
     @NgModule({
-      imports: [
+        imports: [
+            // ...
+            NxExpertModule,
+        ],
         // ...
-        NxExpertModule
-      ],
-      // ...
     })
     export class AppModule {}
     ```
 
 ### Device and Browser Support
+
 We fully support the following browsers:
 
-- Chrome: latest
-- Firefox: latest and extended support release (ESR)
-- MS Edge: 2 most recent major versions
-- Safari: 2 most recent major versions
+-   Chrome: latest
+-   Firefox: latest and extended support release (ESR)
+-   MS Edge: 2 most recent major versions
+-   Safari: 2 most recent major versions
 
 We do not support IE11 since version 13 and recommend to use modern browsers instead.
 
 ### Contributing
-We do not support external contributions yet, but hope we can in future. 
+
+We do not support external contributions yet, but hope we can in future.

@@ -12,30 +12,19 @@ import { NxFormfieldLabelDirective } from './label.directive';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    NxFormfieldComponent,
-    NxFormfieldHintDirective,
-    NxFormfieldErrorDirective,
-    NxFormfieldNoteDirective,
-    NxFormfieldPrefixDirective,
-    NxFormfieldSuffixDirective,
-    NxFormfieldAppendixDirective,
-    NxFormfieldLabelDirective
-  ],
-  exports: [
-    NxFormfieldComponent,
-    NxFormfieldHintDirective,
-    NxFormfieldErrorDirective,
-    NxFormfieldNoteDirective,
-    NxFormfieldPrefixDirective,
-    NxFormfieldSuffixDirective,
-    NxFormfieldAppendixDirective,
-    NxFormfieldLabelDirective,
-    NxErrorModule,
-    NxLabelModule
-  ]
+    imports: [CommonModule],
+    declarations: [NxFormfieldComponent, NxFormfieldHintDirective, NxFormfieldErrorDirective, NxFormfieldNoteDirective, NxFormfieldPrefixDirective, NxFormfieldSuffixDirective, NxFormfieldAppendixDirective, NxFormfieldLabelDirective],
+    exports: [
+        NxFormfieldComponent,
+        NxFormfieldHintDirective,
+        NxFormfieldErrorDirective,
+        NxFormfieldNoteDirective,
+        NxFormfieldPrefixDirective,
+        NxFormfieldSuffixDirective,
+        NxFormfieldAppendixDirective,
+        NxFormfieldLabelDirective,
+        NxErrorModule,
+        NxLabelModule,
+    ],
 })
-export class NxFormfieldModule { }
+export class NxFormfieldModule {}

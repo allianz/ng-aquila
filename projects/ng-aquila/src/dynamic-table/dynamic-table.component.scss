@@ -1,4 +1,4 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 $padding-vertical: nx-spacer(m);
 $padding-sides: nx-spacer(s);
@@ -7,78 +7,76 @@ $border-size-large: nx-border-size(m);
 $border-size-small: nx-border-size(xs);
 
 .nx-table {
-  // we include the cell typography here that it also gets set for the appendix
-  @include type-style(table-cell);
-  @include var(color, table-cell-color);
-  text-align: left;
-  width: 100%;
-  display: table;
+    // we include the cell typography here that it also gets set for the appendix
+    @include type-style(table-cell);
+    @include var(color, table-cell-color);
+    text-align: left;
+    width: 100%;
+    display: table;
 
-  :host-context([dir="rtl"]) & {
-    text-align: right;
-  }
+    :host-context([dir='rtl']) & {
+        text-align: right;
+    }
 }
 
 .nx-table__scroll {
-  max-width: 100%;
-  overflow: hidden;
-  overflow-x: auto;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
 .nx-table__header-cell {
-  @include type-style(table-header-cell);
-  @include var(color, table-header-cell-color);
-  @include var(background, table-header-cell-background-color);
-  border-top: $border-size-small solid v(table-cell-border-top-color);
-  border-bottom: $border-size-large solid v(table-header-border-bottom-color);
-  padding: ($padding-vertical - $border-size-small)
-            $padding-sides
-           ($padding-vertical - $border-size-large);
-  position: relative;
+    @include type-style(table-header-cell);
+    @include var(color, table-header-cell-color);
+    @include var(background, table-header-cell-background-color);
+    border-top: $border-size-small solid v(table-cell-border-top-color);
+    border-bottom: $border-size-large solid v(table-header-border-bottom-color);
+    padding: ($padding-vertical - $border-size-small) $padding-sides ($padding-vertical - $border-size-large);
+    position: relative;
 }
 
 .nx-table__header-cell--number {
-  display: flex;
-  position: relative;
+    display: flex;
+    position: relative;
 }
 
 .nx-table__header-cell--number .nx-table__header-title--block {
-  justify-content: flex-end;
+    justify-content: flex-end;
 }
 
 .nx-table__cell--number,
 .nx-table__header-cell--number {
-  text-align: right;
+    text-align: right;
 
-  :host-context([dir="rtl"]) & {
-    text-align: left;
-  }
+    :host-context([dir='rtl']) & {
+        text-align: left;
+    }
 }
 
 .nx-table__header-row,
 .nx-table__row {
-  display: table-row;
-  vertical-align: inherit;
-  background-color: transparent;
+    display: table-row;
+    vertical-align: inherit;
+    background-color: transparent;
 }
 
 .nx-table__row {
-  @include var(background, table-row-background-color);
+    @include var(background, table-row-background-color);
 }
 
 .nx-table__cell {
-  border-bottom: $border-size-small solid v(table-header-border-top-color);
-  padding: $padding-vertical $padding-sides ($padding-vertical - $border-size-small) $padding-sides;
-  vertical-align: top;
+    border-bottom: $border-size-small solid v(table-header-border-top-color);
+    padding: $padding-vertical $padding-sides ($padding-vertical - $border-size-small) $padding-sides;
+    vertical-align: top;
 }
 
 .nx-table__row:last-child .nx-table__cell {
-  padding-bottom: $padding-vertical - $border-size-large;
-  border-bottom: $border-size-large solid v(table-header-border-bottom-color);
+    padding-bottom: $padding-vertical - $border-size-large;
+    border-bottom: $border-size-large solid v(table-header-border-bottom-color);
 }
 
 .nx-table__header-cell,
 .nx-table__cell {
-  display: table-cell;
-  vertical-align: inherit;
+    display: table-cell;
+    vertical-align: inherit;
 }

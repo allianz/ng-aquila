@@ -1,12 +1,10 @@
-<p>The example simply adds a whitespace character after two characters.
-  This is a very simple example. For more advanced formatting you probably want
-  to use libraries
-  that properly parse the phone number to take local area codes or prefixes into
-  account.
+<p
+    >The example simply adds a whitespace character after two characters. This is a very simple example. For more
+    advanced formatting you probably want to use libraries that properly parse the phone number to take local area codes
+    or prefixes into account.
 </p>
 
 <nx-formfield>
-  <nx-formfield-label>Telephone number</nx-formfield-label>
-  <nx-phone-input [(ngModel)]="value" name="test"
-    [inputFormatter]="whitespaceFormatter"></nx-phone-input>
+    <nx-formfield-label>Telephone number</nx-formfield-label>
+    <nx-phone-input [(ngModel)]="value" name="test" [inputFormatter]="whitespaceFormatter"></nx-phone-input>
 </nx-formfield>

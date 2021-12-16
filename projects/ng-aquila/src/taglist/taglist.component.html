@@ -1,6 +1,6 @@
-  <ul class="nx-taglist" *ngIf="tags.length > 0">
+<ul class="nx-taglist" *ngIf="tags.length > 0">
     <li class="nx-taglist__list-item" tabindex="-1" *ngFor="let tag of tags; let i = index">
-      <nx-tag [value]="renderTag(tag)" [removable]="allowTagDeletion" [tabindex]="tabindex" (clicked)="tagClick(i, $event)" (removed)="delete(i, $event)"></nx-tag>
-  </li>
-  </ul>
-  <ng-content *ngIf="tags.length < 1"></ng-content>
+        <nx-tag [value]="renderTag(tag)" [removable]="allowTagDeletion" [tabindex]="tabindex" (clicked)="tagClick(i, $event)" (removed)="delete(i, $event)"></nx-tag>
+    </li>
+</ul>
+<ng-content *ngIf="tags.length < 1"></ng-content>

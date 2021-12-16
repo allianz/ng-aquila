@@ -3,20 +3,18 @@ import { ComponentService } from '../../../service/component.service';
 import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-contents';
 
 @Component({
-  selector: 'nxv-component-api',
-  templateUrl: 'component-api.html',
-  styleUrls: ['./component-api.scss']
+    selector: 'nxv-component-api',
+    templateUrl: 'component-api.html',
+    styleUrls: ['./component-api.scss'],
 })
 
 // tslint:disable-next-line:component-class-suffix
 export class ComponentApi {
-  @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;
-  constructor(
-    public componentService: ComponentService
-  ) {}
+    @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;
+    constructor(public componentService: ComponentService) {}
 
     onAPIloaded() {
-      // update the toc when the api table is loaded
-      this.tableOfContents.refresh();
+        // update the toc when the api table is loaded
+        this.tableOfContents.refresh();
     }
 }

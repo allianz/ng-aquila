@@ -16,28 +16,24 @@ import { NxSwipebarComponent } from './swipebar/swipebar.component';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 
 const EXPORTED_DECLARED_ELEMENTS = [
-  NxHeaderCellDirective,
-  NxTableComponent,
-  NxTableCellComponent,
-  NxTableComponent,
-  NxTableRowComponent,
-  NxToggleButtonComponent,
-  NxExpandableTableDirective,
-  NxExpandableTableRowComponent,
-  NxExpandableTableCellComponent,
-  NxSortHeaderComponent,
-  NxSortDirective,
-  NxSwipebarComponent
+    NxHeaderCellDirective,
+    NxTableComponent,
+    NxTableCellComponent,
+    NxTableComponent,
+    NxTableRowComponent,
+    NxToggleButtonComponent,
+    NxExpandableTableDirective,
+    NxExpandableTableRowComponent,
+    NxExpandableTableCellComponent,
+    NxSortHeaderComponent,
+    NxSortDirective,
+    NxSwipebarComponent,
 ];
 
 @NgModule({
-  declarations: EXPORTED_DECLARED_ELEMENTS,
-  exports: EXPORTED_DECLARED_ELEMENTS,
-  imports: [
-    CommonModule,
-    NxIconModule,
-    NxCopytextModule
-  ],
-  providers: [ NxSortHeaderIntl ],
+    declarations: EXPORTED_DECLARED_ELEMENTS,
+    exports: EXPORTED_DECLARED_ELEMENTS,
+    imports: [CommonModule, NxIconModule, NxCopytextModule],
+    providers: [NxSortHeaderIntl],
 })
-export class NxTableModule { }
+export class NxTableModule {}

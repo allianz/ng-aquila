@@ -6,42 +6,41 @@ import { AccordionStyle } from './expansion-panel';
 const DEFAULT_TYPE: AccordionStyle = 'regular';
 
 @Directive({
-  // tslint:disable-next-line:directive-selector
-  selector: 'nx-accordion',
-  host: {
-    '[class.nx-accordion]': 'true',
-    'role': 'presentation'
-  }
+    // tslint:disable-next-line:directive-selector
+    selector: 'nx-accordion',
+    host: {
+        '[class.nx-accordion]': 'true',
+        role: 'presentation',
+    },
 })
 export class NxAccordionDirective extends CdkAccordion {
+    private _style: AccordionStyle = 'regular';
 
-  private _style: AccordionStyle = 'regular';
+    /**
+     * Value for the styling that should be chosen.
+     * Default value: 'regular'
+     */
+    @Input('nxStyle')
+    set style(value: AccordionStyle) {
+        value = value ? value : DEFAULT_TYPE;
 
-  /**
-   * Value for the styling that should be chosen.
-   * Default value: 'regular'
-   */
-  @Input('nxStyle')
-  set style(value: AccordionStyle) {
-    value = value ? value : DEFAULT_TYPE;
+        const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
+        this._style = newValue as AccordionStyle;
+    }
+    get style(): AccordionStyle {
+        return this._style;
+    }
 
-    const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
-    this._style = newValue as AccordionStyle;
-  }
-  get style(): AccordionStyle {
-    return this._style;
-  }
+    private _negative: boolean | undefined;
 
-  private _negative: boolean | undefined;
+    /** Whether the negative set of styles should be used. */
+    @Input()
+    set negative(value: boolean) {
+        this._negative = coerceBooleanProperty(value);
+    }
+    get negative(): boolean {
+        return !!this._negative;
+    }
 
-  /** Whether the negative set of styles should be used. */
-  @Input()
-  set negative(value: boolean) {
-    this._negative = coerceBooleanProperty(value);
-  }
-  get negative(): boolean {
-    return !!this._negative;
-  }
-
-  static ngAcceptInputType_negative: BooleanInput;
+    static ngAcceptInputType_negative: BooleanInput;
 }

@@ -7,12 +7,12 @@ import { NxComparisonTableRowType } from './comparison-table.models';
 /** @docs-private */
 @Directive()
 export abstract class NxComparisonTableRowBase {
-  cells!: QueryList<NxComparisonTableCell>;
-  descriptionCell!: NxComparisonTableDescriptionCell;
-  popularCell?: NxComparisonTablePopularCell;
-  abstract type: NxComparisonTableRowType;
-  abstract mayStick: boolean;
-  abstract _isPartOfToggleSection(): boolean;
-  abstract _isPartOfRowGroup(): boolean;
-  abstract _isIntersectionRow(): boolean;
+    cells!: QueryList<NxComparisonTableCell>;
+    descriptionCell!: NxComparisonTableDescriptionCell;
+    popularCell?: NxComparisonTablePopularCell;
+    abstract type: NxComparisonTableRowType;
+    abstract mayStick: boolean;
+    abstract _isPartOfToggleSection(): boolean;
+    abstract _isPartOfRowGroup(): boolean;
+    abstract _isIntersectionRow(): boolean;
 }

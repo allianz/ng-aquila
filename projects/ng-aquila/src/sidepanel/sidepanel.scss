@@ -1,75 +1,75 @@
 @import '../shared-styles/index';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  overflow: hidden;
-  @include var(background, sidepanel-background-color);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    @include var(background, sidepanel-background-color);
 
-  [dir="rtl"] & {
-    right: auto;
-    left: 0;
-  }
-
-  &.is-floating {
-    z-index: 1;
-    @include var(box-shadow, sidepanel-floating-shadow);
-  }
-
-  .is-closed {
-    transform: translateX(100%);
-
-    [dir="rtl"] & {
-      transform: translateX(-100%);
+    [dir='rtl'] & {
+        right: auto;
+        left: 0;
     }
-  }
 
-  &.light {
-    @include var(background, sidepanel-light-background-color);
-    border-left: 1px solid var(--sidepanel-light-border-color);
-
-    [dir="rtl"] & {
-      border-left: unset;
-      border-right: 1px solid var(--sidepanel-light-border-color);
+    &.is-floating {
+        z-index: 1;
+        @include var(box-shadow, sidepanel-floating-shadow);
     }
-  }
 
-  @media screen and (-ms-high-contrast: active) {
-    border-left: 1px solid windowText;
+    .is-closed {
+        transform: translateX(100%);
 
-    [dir="rtl"] & {
-      border-left: none;
-      border-right: 1px solid windowText;
+        [dir='rtl'] & {
+            transform: translateX(-100%);
+        }
     }
-  }
+
+    &.light {
+        @include var(background, sidepanel-light-background-color);
+        border-left: 1px solid var(--sidepanel-light-border-color);
+
+        [dir='rtl'] & {
+            border-left: unset;
+            border-right: 1px solid var(--sidepanel-light-border-color);
+        }
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+        border-left: 1px solid windowText;
+
+        [dir='rtl'] & {
+            border-left: none;
+            border-right: 1px solid windowText;
+        }
+    }
 }
 
 // Deprecated: styles for a nx-sidepanel without a wrapping nx-sidepanel-outer-container.
 // if no wrapper is used, the sidepanel currently is not animated when opening closing,
 // since a controlled environment is needed so that the animation works as expected.
 :host.without-wrapper {
-  &.is-floating {
-    position: fixed;
-    right: 0;
-    z-index: 1;
-    @include var(box-shadow, sidepanel-floating-shadow);
+    &.is-floating {
+        position: fixed;
+        right: 0;
+        z-index: 1;
+        @include var(box-shadow, sidepanel-floating-shadow);
 
-    [dir="rtl"] & {
-      right: auto;
-      left: 0;
+        [dir='rtl'] & {
+            right: auto;
+            left: 0;
+        }
     }
-  }
 
-  &.is-static {
-    position: sticky;
-    top: 0;
-  }
+    &.is-static {
+        position: sticky;
+        top: 0;
+    }
 
-  &.is-closed {
-    display: none;
-  }
+    &.is-closed {
+        display: none;
+    }
 }

@@ -7,158 +7,137 @@ import { NxBreadcrumbModule } from './breadcrumb.module';
 
 @Directive()
 abstract class BreadcrumbTest {
-  @ViewChild(NxBreadcrumbComponent) breadcrumbInstance!: NxBreadcrumbComponent;
-  @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
+    @ViewChild(NxBreadcrumbComponent) breadcrumbInstance!: NxBreadcrumbComponent;
+    @ViewChildren(NxBreadcrumbItemComponent) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
 }
 
 describe('NxBreadcrumbComponent', () => {
-  let fixture: ComponentFixture<BreadcrumbTest>;
-  let testInstance: BreadcrumbTest;
-  let breadcrumbItemInstances: QueryList<HTMLElement>;
+    let fixture: ComponentFixture<BreadcrumbTest>;
+    let testInstance: BreadcrumbTest;
+    let breadcrumbItemInstances: QueryList<HTMLElement>;
 
-  function createTestComponent(component: Type<BreadcrumbTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
-    breadcrumbItemInstances = (fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item') as QueryList<HTMLElement>);
-  }
+    function createTestComponent(component: Type<BreadcrumbTest>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item') as QueryList<HTMLElement>;
+    }
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        NxBreadcrumbModule
-      ],
-      declarations: [
-        BasicBreadcrumbComponent,
-        BreadcrumbOnPushComponent,
-        DynamicBreadcrumbComponent,
-        LinkBreadcrumbComponent
-      ]
-    }).compileComponents();
-  }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [NxBreadcrumbModule],
+                declarations: [BasicBreadcrumbComponent, BreadcrumbOnPushComponent, DynamicBreadcrumbComponent, LinkBreadcrumbComponent],
+            }).compileComponents();
+        }),
+    );
 
-  it('should create the breadcrumb component', () => {
-    createTestComponent(BasicBreadcrumbComponent);
-    expect(testInstance.breadcrumbInstance).toBeTruthy();
-    expect(testInstance.breadcrumbItems).toBeTruthy();
-  });
+    it('should create the breadcrumb component', () => {
+        createTestComponent(BasicBreadcrumbComponent);
+        expect(testInstance.breadcrumbInstance).toBeTruthy();
+        expect(testInstance.breadcrumbItems).toBeTruthy();
+    });
 
-  it('should apply negative style on programmatic change', () => {
-    createTestComponent(BreadcrumbOnPushComponent);
-    expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
-    testInstance.breadcrumbInstance.negative = false;
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.is-negative')).toBeFalsy();
-  });
+    it('should apply negative style on programmatic change', () => {
+        createTestComponent(BreadcrumbOnPushComponent);
+        expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
+        testInstance.breadcrumbInstance.negative = false;
+        fixture.detectChanges();
+        expect(fixture.nativeElement.querySelector('.is-negative')).toBeFalsy();
+    });
 
-  it('should change negative style via input', () => {
-    createTestComponent(BasicBreadcrumbComponent);
-    expect(fixture.nativeElement.querySelector('.is-negative')).toBeFalsy();
-    (testInstance as BasicBreadcrumbComponent).negative = true;
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
-    expect(testInstance.breadcrumbInstance.negative).toBe(true);
-  });
+    it('should change negative style via input', () => {
+        createTestComponent(BasicBreadcrumbComponent);
+        expect(fixture.nativeElement.querySelector('.is-negative')).toBeFalsy();
+        (testInstance as BasicBreadcrumbComponent).negative = true;
+        fixture.detectChanges();
+        expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
+        expect(testInstance.breadcrumbInstance.negative).toBe(true);
+    });
 
-  it('should have appearence "link"', () => {
-    createTestComponent(LinkBreadcrumbComponent);
-    expect(fixture.nativeElement.querySelector('ol')).toHaveClass('is-link');
-  });
+    it('should have appearence "link"', () => {
+        createTestComponent(LinkBreadcrumbComponent);
+        expect(fixture.nativeElement.querySelector('ol')).toHaveClass('is-link');
+    });
 
-  it('sets aria-current to last item', () => {
-    createTestComponent(DynamicBreadcrumbComponent);
-    // @ts-ignore
-    expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-    // @ts-ignore
-    expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBeFalsy();
-    // @ts-ignore
-    expect(breadcrumbItemInstances[2].getAttribute('aria-current')).toBe('page');
+    it('sets aria-current to last item', () => {
+        createTestComponent(DynamicBreadcrumbComponent);
+        // @ts-ignore
+        expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
+        // @ts-ignore
+        expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBeFalsy();
+        // @ts-ignore
+        expect(breadcrumbItemInstances[2].getAttribute('aria-current')).toBe('page');
 
-    (testInstance as DynamicBreadcrumbComponent).items = ['test', 'test2'];
-    fixture.detectChanges();
-    breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
+        (testInstance as DynamicBreadcrumbComponent).items = ['test', 'test2'];
+        fixture.detectChanges();
+        breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
 
-    // @ts-ignore
-    expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-    // @ts-ignore
-    expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBe('page');
-  });
+        // @ts-ignore
+        expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
+        // @ts-ignore
+        expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBe('page');
+    });
 });
 
 @Component({
-  template: `
-    <ol nxBreadcrumb [negative]="negative">
-       <li>
-        <a nxBreadcrumbItem>
-          test
-        </a>
-        <a nxBreadcrumbItem>
-          test 2
-        </a>
-      </li>
-    </ol>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    template: `
+        <ol nxBreadcrumb [negative]="negative">
+            <li>
+                <a nxBreadcrumbItem> test </a>
+                <a nxBreadcrumbItem> test 2 </a>
+            </li>
+        </ol>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BreadcrumbOnPushComponent extends BreadcrumbTest {
-  negative = true;
+    negative = true;
 }
 
 @Component({
-  template: `
-    <ol nxBreadcrumb [negative]="negative">
-      <li>
-        <a nxBreadcrumbItem>
-          test
-        </a>
-      </li>
-      <li>
-        <a nxBreadcrumbItem>
-          test 2
-        </a>
-      </li>
-    </ol>
-  `
+    template: `
+        <ol nxBreadcrumb [negative]="negative">
+            <li>
+                <a nxBreadcrumbItem> test </a>
+            </li>
+            <li>
+                <a nxBreadcrumbItem> test 2 </a>
+            </li>
+        </ol>
+    `,
 })
 class BasicBreadcrumbComponent extends BreadcrumbTest {
-  negative = false;
+    negative = false;
 }
 
 @Component({
-  template: `
-    <ol nxBreadcrumb>
-      <li *ngFor="let item of items">
-        <a nxBreadcrumbItem>
-          {{item}}
-        </a>
-      </li>
-    </ol>
-  `
+    template: `
+        <ol nxBreadcrumb>
+            <li *ngFor="let item of items">
+                <a nxBreadcrumbItem>
+                    {{ item }}
+                </a>
+            </li>
+        </ol>
+    `,
 })
 class DynamicBreadcrumbComponent extends BreadcrumbTest {
-  items = [
-    'Home',
-    'Test',
-    'Test2'
-  ];
+    items = ['Home', 'Test', 'Test2'];
 }
 
 @Component({
-  template: `
-    <ol nxBreadcrumb [appearance]="appearance">
-      <li>
-        <a nxBreadcrumbItem>
-          test
-        </a>
-      </li>
-      <li>
-        <a nxBreadcrumbItem>
-          test 2
-        </a>
-      </li>
-    </ol>
-  `
+    template: `
+        <ol nxBreadcrumb [appearance]="appearance">
+            <li>
+                <a nxBreadcrumbItem> test </a>
+            </li>
+            <li>
+                <a nxBreadcrumbItem> test 2 </a>
+            </li>
+        </ol>
+    `,
 })
 class LinkBreadcrumbComponent extends BreadcrumbTest {
-  appearance = 'link';
+    appearance = 'link';
 }

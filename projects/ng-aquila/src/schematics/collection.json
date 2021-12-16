@@ -1,22 +1,22 @@
 {
-  "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {
-    "ng-add": {
-      "description": "Adds NG Aquila to the application",
-      "factory": "./ng-add/index",
-      "schema": "./ng-add/schema.json"
-    },
-    "ng-add-peer-dependencies": {
-      "description": "Installs the peer dependencies.",
-      "private": true,
-      "factory": "./ng-add/install-dependencies",
-      "schema": "./ng-add/schema.json"
-    },
-    "ng-add-setup-project": {
-      "description": "Sets up the specified project after the ng-add dependencies have been installed.",
-      "private": true,
-      "factory": "./ng-add/setup-project",
-      "schema": "./ng-add/schema.json"
+    "$schema": "../../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "ng-add": {
+            "description": "Adds NG Aquila to the application",
+            "factory": "./ng-add/index",
+            "schema": "./ng-add/schema.json"
+        },
+        "ng-add-peer-dependencies": {
+            "description": "Installs the peer dependencies.",
+            "private": true,
+            "factory": "./ng-add/install-dependencies",
+            "schema": "./ng-add/schema.json"
+        },
+        "ng-add-setup-project": {
+            "description": "Sets up the specified project after the ng-add dependencies have been installed.",
+            "private": true,
+            "factory": "./ng-add/setup-project",
+            "schema": "./ng-add/schema.json"
+        }
     }
-  }
 }

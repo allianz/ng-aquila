@@ -9,28 +9,24 @@ import { DynamicTableWithoutDataExampleComponent } from './dynamic-table-without
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  DynamicTableExampleComponent,
-  DynamicTableDataExampleComponent,
-  DynamicTableEventExampleComponent,
-  DynamicTableWithoutDataExampleComponent
+    DynamicTableExampleComponent,
+    DynamicTableDataExampleComponent,
+    DynamicTableEventExampleComponent,
+    DynamicTableWithoutDataExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxDynamicTableModule,
-    NxModalModule.forRoot(),
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxDynamicTableModule, NxModalModule.forRoot(), ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class DynamicExamplesModule {
-  static components() {
-    return {
-      'dynamic-table': DynamicTableExampleComponent,
-      'dynamic-table-data': DynamicTableDataExampleComponent,
-      'dynamic-table-event': DynamicTableEventExampleComponent,
-      'dynamic-table-without-data': DynamicTableWithoutDataExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'dynamic-table': DynamicTableExampleComponent,
+            'dynamic-table-data': DynamicTableDataExampleComponent,
+            'dynamic-table-event': DynamicTableEventExampleComponent,
+            'dynamic-table-without-data': DynamicTableWithoutDataExampleComponent,
+        };
+    }
 }

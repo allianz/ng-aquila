@@ -1,39 +1,35 @@
-<input #input
-  type="checkbox"
-  [checked]="checked"
-  [value]="value || null"
-  [attr.disabled]="disabled || null"
-  (change)="_onInteractionEvent($event)"
-  (blur)="onTouchedCallback($event)"
-  [attr.id]="id"
-  [attr.name]="name"
-  (click)="_onInputClick($event)"
-  [required]="required"
-  [attr.aria-required]="required"
-  [attr.tabindex]="tabindex"
-  [attr.aria-invalid]="_errorState"
-  [attr.aria-describedby]="_errorListIds || null"
->
+<input
+    #input
+    type="checkbox"
+    [checked]="checked"
+    [value]="value || null"
+    [attr.disabled]="disabled || null"
+    (change)="_onInteractionEvent($event)"
+    (blur)="onTouchedCallback($event)"
+    [attr.id]="id"
+    [attr.name]="name"
+    (click)="_onInputClick($event)"
+    [required]="required"
+    [attr.aria-required]="required"
+    [attr.tabindex]="tabindex"
+    [attr.aria-invalid]="_errorState"
+    [attr.aria-describedby]="_errorListIds || null"
+/>
 
 <label [attr.for]="id">
-  <span class="checkbox" *ngIf="appearance === 'default'; else expert">
-    <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
-  </span>
+    <span class="checkbox" *ngIf="appearance === 'default'; else expert">
+        <nx-icon *ngIf="checked" name="check" aria-hidden="true"></nx-icon>
+    </span>
 
-  <div class="content">
-    <ng-content select="nx-card-header"></ng-content>
-    <ng-content></ng-content>
-    <ng-content select="nx-card-footer"></ng-content>
-  </div>
+    <div class="content">
+        <ng-content select="nx-card-header"></ng-content>
+        <ng-content></ng-content>
+        <ng-content select="nx-card-footer"></ng-content>
+    </div>
 </label>
 
 <ng-content *ngIf="_errorState" select="nx-error"></ng-content>
 
 <ng-template #expert>
-  <nx-icon
-    name="check-circle"
-    size="s"
-    aria-hidden="true"
-    class="checkmark">
-  </nx-icon>
+    <nx-icon name="check-circle" size="s" aria-hidden="true" class="checkmark"> </nx-icon>
 </ng-template>

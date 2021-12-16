@@ -10,371 +10,342 @@ import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '
 
 @Directive()
 abstract class CheckboxGroupTest {
-  @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance!: NxCheckboxGroupComponent;
-  @ViewChildren(NxCheckboxComponent) checkboxInstances!: QueryList<NxCheckboxComponent>;
+    @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance!: NxCheckboxGroupComponent;
+    @ViewChildren(NxCheckboxComponent) checkboxInstances!: QueryList<NxCheckboxComponent>;
 
-  checked: boolean = false;
-  myFormGroup!: FormGroup;
-  labelSize!: string;
-  disabled: boolean = false;
-  negative: boolean = false;
+    checked: boolean = false;
+    myFormGroup!: FormGroup;
+    labelSize!: string;
+    disabled: boolean = false;
+    negative: boolean = false;
 }
 
 describe('NxCheckboxGroupComponent', () => {
-  let fixture: ComponentFixture<CheckboxGroupTest>;
-  let testInstance: CheckboxGroupTest;
-  let checkboxGroupInstance: NxCheckboxGroupComponent;
-  let checkboxInstances: QueryList<NxCheckboxComponent>;
-  let checkboxElements: NodeListOf<HTMLInputElement>;
+    let fixture: ComponentFixture<CheckboxGroupTest>;
+    let testInstance: CheckboxGroupTest;
+    let checkboxGroupInstance: NxCheckboxGroupComponent;
+    let checkboxInstances: QueryList<NxCheckboxComponent>;
+    let checkboxElements: NodeListOf<HTMLInputElement>;
 
-  function createTestComponent(component: Type<CheckboxGroupTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
-    checkboxGroupInstance = testInstance.checkboxGroupInstance;
-    checkboxInstances = testInstance.checkboxInstances;
-    checkboxElements = (fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>);
-  }
+    function createTestComponent(component: Type<CheckboxGroupTest>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        checkboxGroupInstance = testInstance.checkboxGroupInstance;
+        checkboxInstances = testInstance.checkboxInstances;
+        checkboxElements = fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
+    }
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        BasicCheckboxGroup,
-        CheckboxGroupValidation,
-        CheckboxGroupDynamic,
-        CheckboxGroupReactive,
-        ConditionalCheckboxGroupReactive
-      ],
-      imports: [
-        NxCheckboxModule,
-        FormsModule,
-        NxErrorModule,
-        NxLabelModule,
-        ReactiveFormsModule
-      ]
-    }).compileComponents();
-  }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [BasicCheckboxGroup, CheckboxGroupValidation, CheckboxGroupDynamic, CheckboxGroupReactive, ConditionalCheckboxGroupReactive],
+                imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+            }).compileComponents();
+        }),
+    );
 
-  it('should displays a checkbox-group with a checkboxes', () => {
-    createTestComponent(BasicCheckboxGroup);
-    expect(testInstance).toBeTruthy();
-  });
-
-  it('should inherit the same name as the checkbox-group', () => {
-    createTestComponent(BasicCheckboxGroup);
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.name).toBe('terms');
+    it('should displays a checkbox-group with a checkboxes', () => {
+        createTestComponent(BasicCheckboxGroup);
+        expect(testInstance).toBeTruthy();
     });
-  });
 
-  it('should disable every checkbox inside a disabled checkbox group', () => {
-    createTestComponent(BasicCheckboxGroup);
-    checkboxGroupInstance.disabled = true;
-    fixture.detectChanges();
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.disabled).toBe(true);
+    it('should inherit the same name as the checkbox-group', () => {
+        createTestComponent(BasicCheckboxGroup);
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.name).toBe('terms');
+        });
     });
-  });
 
-  it('should update disabled on formGroup update', () => {
-    createTestComponent(CheckboxGroupValidation);
-    expect(testInstance.myFormGroup.get('terms')!.disabled).toBe(false);
-    expect(checkboxGroupInstance.disabled).toBe(false);
-
-    testInstance.myFormGroup.get('terms')!.disable();
-    expect(testInstance.myFormGroup.disabled).toBe(true);
-    expect(checkboxGroupInstance.disabled).toBe(true);
-
-    testInstance.myFormGroup.get('terms')!.enable();
-    expect(testInstance.myFormGroup.disabled).toBe(false);
-    expect(checkboxGroupInstance.disabled).toBe(false);
-  });
-
-  it('Every checkbox should be negative', () => {
-    createTestComponent(BasicCheckboxGroup);
-    checkboxGroupInstance.negative = true;
-    fixture.detectChanges();
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.negative).toBe(true);
+    it('should disable every checkbox inside a disabled checkbox group', () => {
+        createTestComponent(BasicCheckboxGroup);
+        checkboxGroupInstance.disabled = true;
+        fixture.detectChanges();
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.disabled).toBe(true);
+        });
     });
-  });
 
-  it('should have nx-error children on error', fakeAsync(() => {
-    createTestComponent(CheckboxGroupValidation);
-    tick();
+    it('should update disabled on formGroup update', () => {
+        createTestComponent(CheckboxGroupValidation);
+        expect(testInstance.myFormGroup.get('terms')!.disabled).toBe(false);
+        expect(checkboxGroupInstance.disabled).toBe(false);
 
-    // none of the checkboxes should be selected for an error
-    [1, 2].forEach(i => checkboxElements[i].click());
-    fixture.detectChanges();
+        testInstance.myFormGroup.get('terms')!.disable();
+        expect(testInstance.myFormGroup.disabled).toBe(true);
+        expect(checkboxGroupInstance.disabled).toBe(true);
 
-    let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
-    expect(errors.length).toBe(1);
-    expect(checkboxGroupInstance.errorState).toBeTruthy();
-
-    [0, 1, 2].forEach(i => checkboxElements[i].click());
-    fixture.detectChanges();
-
-    errors = (fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>);
-    expect(errors.length).toBe(0);
-    expect(checkboxGroupInstance.errorState).toBeFalsy();
-  }));
-
-  it('should mark as checked the passed values', fakeAsync(() => {
-    createTestComponent(CheckboxGroupValidation);
-    const checkedValues = [
-      'Term 2',
-      'Term 3'
-    ];
-    fixture.detectChanges();
-    tick();
-    checkboxInstances.toArray().map(checkbox => {
-      if (checkedValues.indexOf(checkbox.value) !== -1) {
-        expect(checkbox.checked).toBe(true);
-      }
+        testInstance.myFormGroup.get('terms')!.enable();
+        expect(testInstance.myFormGroup.disabled).toBe(false);
+        expect(checkboxGroupInstance.disabled).toBe(false);
     });
-  }));
 
-  it('should unset the entire set of passed values correctly', fakeAsync(() => {
-    createTestComponent(CheckboxGroupValidation);
-    testInstance.myFormGroup.get('terms')?.setValue(['Term 2', 'Term 3']);
-    testInstance.myFormGroup.get('terms')?.setValue([]);
-    fixture.detectChanges();
-    tick();
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.checked).toBe(false);
+    it('Every checkbox should be negative', () => {
+        createTestComponent(BasicCheckboxGroup);
+        checkboxGroupInstance.negative = true;
+        fixture.detectChanges();
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.negative).toBe(true);
+        });
     });
-  }));
 
-  it('should add the checkboxes dynamically', fakeAsync(() => {
-    createTestComponent(CheckboxGroupDynamic);
-    fixture.detectChanges();
-    tick();
-    expect(checkboxInstances.toArray().length).toBe(3);
-  }));
+    it('should have nx-error children on error', fakeAsync(() => {
+        createTestComponent(CheckboxGroupValidation);
+        tick();
 
-  it('should add the checkboxes dynamically and checked', fakeAsync(() => {
-    createTestComponent(CheckboxGroupDynamic);
-    fixture.detectChanges();
-    tick();
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.checked).toBe(true);
+        // none of the checkboxes should be selected for an error
+        [1, 2].forEach(i => checkboxElements[i].click());
+        fixture.detectChanges();
+
+        let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
+        expect(errors.length).toBe(1);
+        expect(checkboxGroupInstance.errorState).toBeTruthy();
+
+        [0, 1, 2].forEach(i => checkboxElements[i].click());
+        fixture.detectChanges();
+
+        errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
+        expect(errors.length).toBe(0);
+        expect(checkboxGroupInstance.errorState).toBeFalsy();
+    }));
+
+    it('should mark as checked the passed values', fakeAsync(() => {
+        createTestComponent(CheckboxGroupValidation);
+        const checkedValues = ['Term 2', 'Term 3'];
+        fixture.detectChanges();
+        tick();
+        checkboxInstances.toArray().map(checkbox => {
+            if (checkedValues.indexOf(checkbox.value) !== -1) {
+                expect(checkbox.checked).toBe(true);
+            }
+        });
+    }));
+
+    it('should unset the entire set of passed values correctly', fakeAsync(() => {
+        createTestComponent(CheckboxGroupValidation);
+        testInstance.myFormGroup.get('terms')?.setValue(['Term 2', 'Term 3']);
+        testInstance.myFormGroup.get('terms')?.setValue([]);
+        fixture.detectChanges();
+        tick();
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.checked).toBe(false);
+        });
+    }));
+
+    it('should add the checkboxes dynamically', fakeAsync(() => {
+        createTestComponent(CheckboxGroupDynamic);
+        fixture.detectChanges();
+        tick();
+        expect(checkboxInstances.toArray().length).toBe(3);
+    }));
+
+    it('should add the checkboxes dynamically and checked', fakeAsync(() => {
+        createTestComponent(CheckboxGroupDynamic);
+        fixture.detectChanges();
+        tick();
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.checked).toBe(true);
+        });
+    }));
+
+    it('should add new checkbox and checked', fakeAsync(() => {
+        createTestComponent(CheckboxGroupDynamic);
+        const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
+        dynamicTest.addNewCb();
+        fixture.detectChanges();
+        tick();
+        expect(checkboxInstances.toArray().length).toBe(4);
+    }));
+
+    it('should remove one checkbox', fakeAsync(() => {
+        createTestComponent(CheckboxGroupDynamic);
+        const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
+        dynamicTest.removeCB();
+        fixture.detectChanges();
+        tick();
+        expect(checkboxInstances.toArray().length).toBe(2);
+    }));
+
+    it('should emit an event on checked changed', fakeAsync(() => {
+        createTestComponent(BasicCheckboxGroup);
+
+        const spy = jasmine.createSpy('checkbox selection');
+        const subscription = fixture.componentInstance.checkboxGroupInstance.selectionChange.subscribe(spy);
+        checkboxElements[0].click();
+        fixture.detectChanges();
+        tick();
+        expect(spy).toHaveBeenCalledWith(jasmine.any(NxCheckboxGroupChangeEvent));
+        expect(spy).toHaveBeenCalledTimes(1);
+        subscription.unsubscribe();
+    }));
+
+    it('sets checked state of the children on initialisation', fakeAsync(() => {
+        createTestComponent(CheckboxGroupReactive);
+        const checkedValues = ['Term 1', 'Term 2'];
+        fixture.detectChanges();
+        tick();
+        checkboxInstances.toArray().map(checkbox => {
+            expect(checkbox.checked).toBe(checkedValues.indexOf(checkbox.value) !== -1);
+        });
+    }));
+
+    it('initializes correctly in a conditionally displayed checkbox group', fakeAsync(() => {
+        createTestComponent(ConditionalCheckboxGroupReactive);
+        tick();
+        expect(checkboxInstances.toArray()[0].checked).toBeTrue();
+        expect(checkboxInstances.toArray()[1].checked).toBeTrue();
+        expect(checkboxInstances.toArray()[2].checked).toBeFalse();
+    }));
+
+    it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
+        createTestComponent(CheckboxGroupReactive);
+        const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
+
+        submitButton.click();
+        tick();
+        fixture.detectChanges();
+
+        expect(testInstance.myFormGroup.get('terms')!.dirty).toEqual(false, `Expected control to start out pristine.`);
+
+        checkboxElements[0].click();
+        tick();
+        fixture.detectChanges();
+
+        expect(testInstance.myFormGroup.get('terms')!.dirty).toEqual(true, `Expected control to be dirty.`);
+    }));
+
+    describe('a11y', () => {
+        it('has no accessibility violations', async () => {
+            createTestComponent(BasicCheckboxGroup);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
     });
-  }));
-
-  it('should add new checkbox and checked', fakeAsync(() => {
-    createTestComponent(CheckboxGroupDynamic);
-    const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
-    dynamicTest.addNewCb();
-    fixture.detectChanges();
-    tick();
-    expect(checkboxInstances.toArray().length).toBe(4);
-  }));
-
-  it('should remove one checkbox', fakeAsync(() => {
-    createTestComponent(CheckboxGroupDynamic);
-    const dynamicTest = fixture.componentInstance as CheckboxGroupDynamic;
-    dynamicTest.removeCB();
-    fixture.detectChanges();
-    tick();
-    expect(checkboxInstances.toArray().length).toBe(2);
-  }));
-
-  it('should emit an event on checked changed', fakeAsync(() => {
-    createTestComponent(BasicCheckboxGroup);
-
-    const spy = jasmine.createSpy('checkbox selection');
-    const subscription = fixture.componentInstance.checkboxGroupInstance.selectionChange.subscribe(spy);
-    checkboxElements[0].click();
-    fixture.detectChanges();
-    tick();
-    expect(spy).toHaveBeenCalledWith(jasmine.any(NxCheckboxGroupChangeEvent));
-    expect(spy).toHaveBeenCalledTimes(1);
-    subscription.unsubscribe();
-  }));
-
-  it('sets checked state of the children on initialisation', fakeAsync(() => {
-    createTestComponent(CheckboxGroupReactive);
-    const checkedValues = [
-      'Term 1',
-      'Term 2'
-    ];
-    fixture.detectChanges();
-    tick();
-    checkboxInstances.toArray().map(checkbox => {
-      expect(checkbox.checked).toBe(checkedValues.indexOf(checkbox.value) !== -1);
-    });
-  }));
-
-  it('initializes correctly in a conditionally displayed checkbox group', fakeAsync(() => {
-    createTestComponent(ConditionalCheckboxGroupReactive);
-    tick();
-    expect(checkboxInstances.toArray()[0].checked).toBeTrue();
-    expect(checkboxInstances.toArray()[1].checked).toBeTrue();
-    expect(checkboxInstances.toArray()[2].checked).toBeFalse();
-  }));
-
-  it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
-    createTestComponent(CheckboxGroupReactive);
-    const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
-
-    submitButton.click();
-    tick();
-    fixture.detectChanges();
-
-    expect(testInstance.myFormGroup.get('terms')!.dirty)
-      .toEqual(false, `Expected control to start out pristine.`);
-
-    checkboxElements[0].click();
-    tick();
-    fixture.detectChanges();
-
-    expect(testInstance.myFormGroup.get('terms')!.dirty)
-      .toEqual(true, `Expected control to be dirty.`);
-  }));
-
-  describe('a11y', () => {
-    it('has no accessibility violations', async () => {
-      createTestComponent(BasicCheckboxGroup);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
-    });
-  });
 });
 
 @Component({
-  template: `
-    <nx-checkbox-group name="terms">
-      <nx-label id="'terms-label'">Accept terms</nx-label>
-      <nx-checkbox>Term 1</nx-checkbox>
-      <nx-checkbox>Term 2</nx-checkbox>
-      <nx-checkbox>Term 3</nx-checkbox>
-    </nx-checkbox-group>
-  `
+    template: `
+        <nx-checkbox-group name="terms">
+            <nx-label id="'terms-label'">Accept terms</nx-label>
+            <nx-checkbox>Term 1</nx-checkbox>
+            <nx-checkbox>Term 2</nx-checkbox>
+            <nx-checkbox>Term 3</nx-checkbox>
+        </nx-checkbox-group>
+    `,
 })
-class BasicCheckboxGroup extends CheckboxGroupTest {
-}
+class BasicCheckboxGroup extends CheckboxGroupTest {}
 
 @Component({
-  template: `
-    <form [formGroup]="myFormGroup">
-      <nx-checkbox-group name="terms" formControlName="terms" required>
-        <nx-label>Accept terms</nx-label>
-        <nx-checkbox value="Term 1">Term 1</nx-checkbox>
-        <nx-checkbox value="Term 2">Term 2</nx-checkbox>
-        <nx-checkbox value="Term 3">Term 3</nx-checkbox>
-        <nx-error appearance="text">
-          Please accept all our terms and conditions
-        </nx-error>
-
-      </nx-checkbox-group>
-    </form>
-  `
+    template: `
+        <form [formGroup]="myFormGroup">
+            <nx-checkbox-group name="terms" formControlName="terms" required>
+                <nx-label>Accept terms</nx-label>
+                <nx-checkbox value="Term 1">Term 1</nx-checkbox>
+                <nx-checkbox value="Term 2">Term 2</nx-checkbox>
+                <nx-checkbox value="Term 3">Term 3</nx-checkbox>
+                <nx-error appearance="text"> Please accept all our terms and conditions </nx-error>
+            </nx-checkbox-group>
+        </form>
+    `,
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
-  public myFormGroup!: FormGroup;
+    public myFormGroup!: FormGroup;
 
-  checkboxGroupCheckedValues = [
-    'Term 2',
-    'Term 3'
-  ];
+    checkboxGroupCheckedValues = ['Term 2', 'Term 3'];
 
-  constructor(private fb: FormBuilder) {
-    super();
-    this.createForm();
-  }
+    constructor(private fb: FormBuilder) {
+        super();
+        this.createForm();
+    }
 
-  createForm() {
-    this.myFormGroup = this.fb.group({
-      'terms': [this.checkboxGroupCheckedValues, Validators.required]
-    });
-  }
+    createForm() {
+        this.myFormGroup = this.fb.group({
+            terms: [this.checkboxGroupCheckedValues, Validators.required],
+        });
+    }
 }
 
 @Component({
-  template: `
-    <form [formGroup]="myFormGroup">
-      <nx-checkbox-group name="terms" formControlName="terms" required>
-        <nx-label [id]="'terms'">Select your choices</nx-label>
-        <nx-error appearance="text">
-          Please select at least one checkbox.
-        </nx-error>
-        <nx-checkbox *ngFor="let key of data" [value]="key" checked>{{key}}</nx-checkbox>
-      </nx-checkbox-group>
-    </form>
-  `
+    template: `
+        <form [formGroup]="myFormGroup">
+            <nx-checkbox-group name="terms" formControlName="terms" required>
+                <nx-label [id]="'terms'">Select your choices</nx-label>
+                <nx-error appearance="text"> Please select at least one checkbox. </nx-error>
+                <nx-checkbox *ngFor="let key of data" [value]="key" checked>{{ key }}</nx-checkbox>
+            </nx-checkbox-group>
+        </form>
+    `,
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
-  public myFormGroup!: FormGroup;
+    public myFormGroup!: FormGroup;
 
-  data = [
-    'one', 'two', 'three'
-  ];
-  i = 1;
+    data = ['one', 'two', 'three'];
+    i = 1;
 
-  constructor(private fb: FormBuilder) {
-    super();
-    this.createForm();
-  }
+    constructor(private fb: FormBuilder) {
+        super();
+        this.createForm();
+    }
 
-  createForm() {
-    this.myFormGroup = this.fb.group({
-      'terms': [[], Validators.required]
-    });
-  }
+    createForm() {
+        this.myFormGroup = this.fb.group({
+            terms: [[], Validators.required],
+        });
+    }
 
-  public addNewCb() {
-    this.data.push('New Value ' + this.i);
-    this.i++;
-  }
+    public addNewCb() {
+        this.data.push('New Value ' + this.i);
+        this.i++;
+    }
 
-  public removeCB() {
-    this.data.shift();
-  }
+    public removeCB() {
+        this.data.shift();
+    }
 }
 
 @Component({
-  template: `
-    <form [formGroup]="myFormGroup">
-      <nx-checkbox-group name="terms" formControlName="terms">
-        <nx-label>Select your choices</nx-label>
-        <nx-checkbox value="Term 1">Checkbox 1</nx-checkbox>
-        <nx-checkbox value="Term 2">Checkbox 2</nx-checkbox>
-        <nx-checkbox value="Term 3">Checkbox 3</nx-checkbox>
-      </nx-checkbox-group>
-      <p>Form value: {{ myFormGroup.value | json }}</p>
-      <p>Form status: {{ myFormGroup.status | json }}</p>
-      <button nxButton='primary small' id="submit-button" type="submit"></button>
-    </form>
-  `
+    template: `
+        <form [formGroup]="myFormGroup">
+            <nx-checkbox-group name="terms" formControlName="terms">
+                <nx-label>Select your choices</nx-label>
+                <nx-checkbox value="Term 1">Checkbox 1</nx-checkbox>
+                <nx-checkbox value="Term 2">Checkbox 2</nx-checkbox>
+                <nx-checkbox value="Term 3">Checkbox 3</nx-checkbox>
+            </nx-checkbox-group>
+            <p>Form value: {{ myFormGroup.value | json }}</p>
+            <p>Form status: {{ myFormGroup.status | json }}</p>
+            <button nxButton="primary small" id="submit-button" type="submit"></button>
+        </form>
+    `,
 })
 export class CheckboxGroupReactive extends CheckboxGroupTest {
-  public myFormGroup: FormGroup;
+    public myFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    super();
-    this.myFormGroup = this.fb.group({
-      terms: [['Term 1', 'Term 2'], null]
-    });
-  }
+    constructor(private fb: FormBuilder) {
+        super();
+        this.myFormGroup = this.fb.group({
+            terms: [['Term 1', 'Term 2'], null],
+        });
+    }
 }
 
 @Component({
-  template: `
-    <form [formGroup]="myFormGroup">
-      <nx-checkbox-group formControlName="checkboxes">
-        <nx-checkbox *ngFor="let checkbox of checkboxes" [value]="checkbox">{{ checkbox }}</nx-checkbox>
-      </nx-checkbox-group>
-    </form>
-  `
+    template: `
+        <form [formGroup]="myFormGroup">
+            <nx-checkbox-group formControlName="checkboxes">
+                <nx-checkbox *ngFor="let checkbox of checkboxes" [value]="checkbox">{{ checkbox }}</nx-checkbox>
+            </nx-checkbox-group>
+        </form>
+    `,
 })
 export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
-  public myFormGroup: FormGroup;
-  showCheckboxes: boolean = true;
-  checkboxes: string[] = [ 'Term 1', 'Term 2', 'Term 3' ];
+    public myFormGroup: FormGroup;
+    showCheckboxes: boolean = true;
+    checkboxes: string[] = ['Term 1', 'Term 2', 'Term 3'];
 
-  constructor(private readonly fb: FormBuilder) {
-    super();
-    this.myFormGroup = this.fb.group({
-      'checkboxes': [ ['Term 1', 'Term 2'] ]
-    });
-  }
+    constructor(private readonly fb: FormBuilder) {
+        super();
+        this.myFormGroup = this.fb.group({
+            checkboxes: [['Term 1', 'Term 2']],
+        });
+    }
 }

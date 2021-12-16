@@ -9,14 +9,8 @@ import { NxTreeNodeOutletDirective } from './outlet';
 import { NxTreeNodeActionItem } from './action-item.directive';
 
 @NgModule({
-  imports: [ CdkTreeModule, CommonModule ],
-  declarations: [ NxTreeComponent, NxTreeNodeComponent, NxTreeNodeDefDirective,
-    NxTreeNodePaddingDirective, NxTreeNodeToggleDirective, NxTreeNodeOutletDirective,
-    NxTreeNodeActionItem,
-  ],
-  exports: [ NxTreeComponent, NxTreeNodeComponent, NxTreeNodeDefDirective,
-    NxTreeNodePaddingDirective, NxTreeNodeToggleDirective, NxTreeNodeOutletDirective,
-    NxTreeNodeActionItem,
-  ]
+    imports: [CdkTreeModule, CommonModule],
+    declarations: [NxTreeComponent, NxTreeNodeComponent, NxTreeNodeDefDirective, NxTreeNodePaddingDirective, NxTreeNodeToggleDirective, NxTreeNodeOutletDirective, NxTreeNodeActionItem],
+    exports: [NxTreeComponent, NxTreeNodeComponent, NxTreeNodeDefDirective, NxTreeNodePaddingDirective, NxTreeNodeToggleDirective, NxTreeNodeOutletDirective, NxTreeNodeActionItem],
 })
-export class NxTreeModule { }
+export class NxTreeModule {}

@@ -1,91 +1,79 @@
 import { getFontShorthand } from '@aposin/ng-aquila/utils';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  HostBinding,
-  Input,
-  OnDestroy,
-  Renderer2,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, HostBinding, Input, OnDestroy, Renderer2 } from '@angular/core';
 
 /** @docs-private */
 @Directive({
-  selector: 'input[nxAutoResize]'
+    selector: 'input[nxAutoResize]',
 })
 export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
+    @HostBinding('style.width.px') width!: number;
 
-  @HostBinding('style.width.px') width!: number;
-
-  private _resize: boolean = true;
-  @Input('nxAutoResize')
-  set resize(value: boolean) {
-    this._resize = coerceBooleanProperty(value);
-    if (this._resize) {
-      this._addEventListener();
-      this.updateInputWidth();
-    } else {
-      this._removeEventListener();
+    private _resize: boolean = true;
+    @Input('nxAutoResize')
+    set resize(value: boolean) {
+        this._resize = coerceBooleanProperty(value);
+        if (this._resize) {
+            this._addEventListener();
+            this.updateInputWidth();
+        } else {
+            this._removeEventListener();
+        }
     }
-  }
-  get resize(): boolean {
-    return this._resize;
-  }
-
-  constructor(private _element: ElementRef,
-              private _renderer: Renderer2,
-              private _cdr: ChangeDetectorRef) {
-    this.updateInputWidth = this.updateInputWidth.bind(this);
-  }
-
-  ngAfterViewInit() {
-    if (this.resize) {
-      this._addEventListener();
+    get resize(): boolean {
+        return this._resize;
     }
-  }
 
-  ngOnDestroy() {
-    this._removeEventListener();
-  }
+    constructor(private _element: ElementRef, private _renderer: Renderer2, private _cdr: ChangeDetectorRef) {
+        this.updateInputWidth = this.updateInputWidth.bind(this);
+    }
 
-  updateInputWidth() {
-    const measureCanvas = this._renderer.createElement('canvas');
+    ngAfterViewInit() {
+        if (this.resize) {
+            this._addEventListener();
+        }
+    }
 
-    const ctx = measureCanvas.getContext('2d');
-    const styles = window.getComputedStyle(this._element.nativeElement);
+    ngOnDestroy() {
+        this._removeEventListener();
+    }
 
-    ctx.font = getFontShorthand(styles);
+    updateInputWidth() {
+        const measureCanvas = this._renderer.createElement('canvas');
 
-    const metrics = ctx.measureText(this._element.nativeElement.value);
+        const ctx = measureCanvas.getContext('2d');
+        const styles = window.getComputedStyle(this._element.nativeElement);
 
-    const padding = this.sumStyles(styles.paddingLeft, styles.paddingRight);
-    const border = this.sumStyles(styles.borderLeftWidth, styles.borderRightWidth);
-    // the pixels are needed, because despite the correct calculation the last pixels of a number are always cut
-    const newWidth = metrics.width + padding + border + 16;
+        ctx.font = getFontShorthand(styles);
 
-    // Limit to own given minimal width
-    const parsed = parseFloat(styles.minWidth);
-    this.width = Math.max(Number.isNaN(parsed) ? 0 : parsed, newWidth);
+        const metrics = ctx.measureText(this._element.nativeElement.value);
 
-    // needed when the outer component is onPush
-    this._cdr.markForCheck();
-  }
+        const padding = this.sumStyles(styles.paddingLeft, styles.paddingRight);
+        const border = this.sumStyles(styles.borderLeftWidth, styles.borderRightWidth);
+        // the pixels are needed, because despite the correct calculation the last pixels of a number are always cut
+        const newWidth = metrics.width + padding + border + 16;
 
-  _addEventListener() {
-    this._element.nativeElement.addEventListener('input', this.updateInputWidth, true);
-    this._element.nativeElement.addEventListener('change', this.updateInputWidth, true);
-  }
+        // Limit to own given minimal width
+        const parsed = parseFloat(styles.minWidth);
+        this.width = Math.max(Number.isNaN(parsed) ? 0 : parsed, newWidth);
 
-  _removeEventListener() {
-    this._element.nativeElement.removeEventListener('input', this.updateInputWidth, true);
-    this._element.nativeElement.removeEventListener('change', this.updateInputWidth, true);
-  }
+        // needed when the outer component is onPush
+        this._cdr.markForCheck();
+    }
 
-  sumStyles(left: string, right: string) {
-    return (parseInt(left, 10) || 0) + (parseInt(right, 10) || 0);
-  }
+    _addEventListener() {
+        this._element.nativeElement.addEventListener('input', this.updateInputWidth, true);
+        this._element.nativeElement.addEventListener('change', this.updateInputWidth, true);
+    }
 
-  static ngAcceptInputType_resize: BooleanInput;
+    _removeEventListener() {
+        this._element.nativeElement.removeEventListener('input', this.updateInputWidth, true);
+        this._element.nativeElement.removeEventListener('change', this.updateInputWidth, true);
+    }
+
+    sumStyles(left: string, right: string) {
+        return (parseInt(left, 10) || 0) + (parseInt(right, 10) || 0);
+    }
+
+    static ngAcceptInputType_resize: BooleanInput;
 }

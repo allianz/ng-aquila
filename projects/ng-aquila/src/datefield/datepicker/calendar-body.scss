@@ -4,116 +4,116 @@ $item-size: nx-spacer(3m);
 
 .nx-calendar-body-cell,
 .nx-calendar-adjacent-cell {
-  position: relative;
-  height: 0;
-  line-height: 0;
-  text-align: center;
-  outline: none;
-  vertical-align: text-bottom;
-  cursor: pointer;
+    position: relative;
+    height: 0;
+    line-height: 0;
+    text-align: center;
+    outline: none;
+    vertical-align: text-bottom;
+    cursor: pointer;
 }
 
 .nx-calendar-body-disabled {
-  cursor: default;
+    cursor: default;
 }
 
 .nx-calendar-body-cell-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  box-sizing: border-box;
-  width: $item-size;
-  height: $item-size;
+    box-sizing: border-box;
+    width: $item-size;
+    height: $item-size;
 
-  margin: 0 auto;
-  @include type-style(datefield-cell);
-  @include var(color, datefield-cell-color);
-  border-radius: 50%;
+    margin: 0 auto;
+    @include type-style(datefield-cell);
+    @include var(color, datefield-cell-color);
+    border-radius: 50%;
 
-  // Prevents text being off-center on Android.
-  line-height: 1;
+    // Prevents text being off-center on Android.
+    line-height: 1;
 
-  // Prevents that focus-style is "splitting up" and spreading over items
-  box-shadow: 0 0 0 6px transparent;
-
-  @media screen and (-ms-high-contrast: active) {
-    color: buttonText;
-  }
-
-  &.nx-calendar-body-selected {
-    @include var(color, datefield-cell-selected-color);
-    @include var(background-color, datefield-cell-selected-background-color);
+    // Prevents that focus-style is "splitting up" and spreading over items
+    box-shadow: 0 0 0 6px transparent;
 
     @media screen and (-ms-high-contrast: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: highlight;
-      color: highlightText;
+        color: buttonText;
     }
-  }
 
-  .nx-calendar-body-disabled > &:not(.nx-calendar-body-selected) {
-    @include var(color, datefield-cell-disabled-color);
-    font-weight: nx-font-weight(regular);
+    &.nx-calendar-body-selected {
+        @include var(color, datefield-cell-selected-color);
+        @include var(background-color, datefield-cell-selected-background-color);
 
-    @media screen and (-ms-high-contrast: active) {
-      color: GrayText;
+        @media screen and (-ms-high-contrast: active) {
+            -ms-high-contrast-adjust: none;
+            background-color: highlight;
+            color: highlightText;
+        }
     }
-  }
+
+    .nx-calendar-body-disabled > &:not(.nx-calendar-body-selected) {
+        @include var(color, datefield-cell-disabled-color);
+        font-weight: nx-font-weight(regular);
+
+        @media screen and (-ms-high-contrast: active) {
+            color: GrayText;
+        }
+    }
 }
 
 :not(.nx-calendar-body-disabled):hover,
 .nx-calendar-body-active:not(.nx-calendar-body-disabled) {
-  & > .nx-calendar-body-cell-content:not(.nx-calendar-body-selected),
-  & > .nx-calendar-adjacent-cell-content {
-    @include var(color, datefield-cell-hover-color);
-    @include var(background-color, datefield-cell-hover-background-color);
+    & > .nx-calendar-body-cell-content:not(.nx-calendar-body-selected),
+    & > .nx-calendar-adjacent-cell-content {
+        @include var(color, datefield-cell-hover-color);
+        @include var(background-color, datefield-cell-hover-background-color);
 
-    @media screen and (-ms-high-contrast: active) {
-      -ms-high-contrast-adjust: none;
-      background-color: highlight;
-      color: highlightText;
+        @media screen and (-ms-high-contrast: active) {
+            -ms-high-contrast-adjust: none;
+            background-color: highlight;
+            color: highlightText;
+        }
     }
-  }
 }
 
 .nx-calendar-body-cell.cdk-keyboard-focused {
-  .nx-calendar-body-cell-content {
-    @include focus-style;
-  }
-
-  &.nx-calendar-body-disabled .nx-calendar-body-cell-content {
-    @include var(color, datefield-cell-disabled-color);
-  }
-
-  .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
-    @include var(background-color, datefield-cell-focused-background-color);
-
-    @media screen and (-ms-high-contrast: active) {
-      background-color: highlight;
+    .nx-calendar-body-cell-content {
+        @include focus-style;
     }
-  }
+
+    &.nx-calendar-body-disabled .nx-calendar-body-cell-content {
+        @include var(color, datefield-cell-disabled-color);
+    }
+
+    .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
+        @include var(background-color, datefield-cell-focused-background-color);
+
+        @media screen and (-ms-high-contrast: active) {
+            background-color: highlight;
+        }
+    }
 }
 
 .nx-calendar-adjacent-cell-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  box-sizing: border-box;
-  width: $item-size;
-  height: $item-size;
+    box-sizing: border-box;
+    width: $item-size;
+    height: $item-size;
 
-  margin: 0 auto;
-  @include type-style(datefield-cell);
-  font-weight: nx-font-weight(regular);
-  @include var(color, datefield-cell-disabled-color);
-  border-radius: 50%;
+    margin: 0 auto;
+    @include type-style(datefield-cell);
+    font-weight: nx-font-weight(regular);
+    @include var(color, datefield-cell-disabled-color);
+    border-radius: 50%;
 
-  // Prevents text being off-center on Android.
-  line-height: 1;
+    // Prevents text being off-center on Android.
+    line-height: 1;
 
-  @media screen and (-ms-high-contrast: active) {
-    color: GrayText;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        color: GrayText;
+    }
 }

@@ -1,19 +1,24 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol='6'>
-      <nx-radio-group [(ngModel)]="templateModel">
-        <nx-radio nxValue="activate" class="nx-margin-bottom-m">Activate</nx-radio>
-        <nx-radio nxValue="deactivate">De-activate</nx-radio>
-      </nx-radio-group>
+    <div nxRow>
+        <div nxCol="6">
+            <nx-radio-group [(ngModel)]="templateModel">
+                <nx-radio nxValue="activate" class="nx-margin-bottom-m">Activate</nx-radio>
+                <nx-radio nxValue="deactivate">De-activate</nx-radio>
+            </nx-radio-group>
+        </div>
+        <div nxCol="6">
+            <nx-formfield nxLabel="ID">
+                <input
+                    nxInput
+                    nxMask="SS-AAAAA"
+                    [deactivateMask]="templateModel === 'deactivate' ? true : false"
+                    [(ngModel)]="modelVal"
+                />
+                <span nxFormfieldHint>
+                    Mask: SS-AAAAA (mask deactivated: {{ templateModel === 'deactivate' ? true : false }})
+                </span>
+            </nx-formfield>
+            Model value: {{ modelVal }}<br />
+        </div>
     </div>
-    <div nxCol="6">
-      <nx-formfield nxLabel="ID">
-        <input nxInput nxMask="SS-AAAAA" [deactivateMask]="templateModel === 'deactivate' ? true : false" [(ngModel)]="modelVal"/>
-        <span nxFormfieldHint>
-          Mask: SS-AAAAA (mask deactivated: {{ templateModel === 'deactivate' ? true : false }})
-        </span>
-      </nx-formfield>
-      Model value: {{ modelVal }}<br>
-    </div>
-  </div>
 </div>

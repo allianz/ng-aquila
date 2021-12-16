@@ -6,34 +6,12 @@ import { NgModule } from '@angular/core';
 import { NxAccordionDirective } from './accordion';
 import { NxExpansionPanelComponent } from './expansion-panel';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
-import {
-  NxExpansionPanelDescriptionDirective,
-  NxExpansionPanelHeaderComponent,
-  NxExpansionPanelTitleDirective,
-} from './expansion-panel-header';
+import { NxExpansionPanelDescriptionDirective, NxExpansionPanelHeaderComponent, NxExpansionPanelTitleDirective } from './expansion-panel-header';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    PortalModule,
-    NxIconModule
-  ],
-  exports: [
-    NxAccordionDirective,
-    NxExpansionPanelComponent,
-    NxExpansionPanelHeaderComponent,
-    NxExpansionPanelDescriptionDirective,
-    NxExpansionPanelTitleDirective,
-    NxExpansionPanelBodyDirective
-  ],
-  declarations: [
-    NxAccordionDirective,
-    NxExpansionPanelComponent,
-    NxExpansionPanelHeaderComponent,
-    NxExpansionPanelDescriptionDirective,
-    NxExpansionPanelTitleDirective,
-    NxExpansionPanelBodyDirective
-  ],
-  providers: [],
+    imports: [CommonModule, PortalModule, NxIconModule],
+    exports: [NxAccordionDirective, NxExpansionPanelComponent, NxExpansionPanelHeaderComponent, NxExpansionPanelDescriptionDirective, NxExpansionPanelTitleDirective, NxExpansionPanelBodyDirective],
+    declarations: [NxAccordionDirective, NxExpansionPanelComponent, NxExpansionPanelHeaderComponent, NxExpansionPanelDescriptionDirective, NxExpansionPanelTitleDirective, NxExpansionPanelBodyDirective],
+    providers: [],
 })
-export class NxAccordionModule { }
+export class NxAccordionModule {}

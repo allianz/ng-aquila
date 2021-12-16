@@ -4,50 +4,49 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class WikipediaService {
+    private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
 
-  private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+    constructor(private client: HttpClient) {}
 
-  constructor(private client: HttpClient) {}
+    search(term: string): Observable<any[]> {
+        const url = searchUrl(term, this.WIKIPEDIA_URL);
+        return this.client.jsonp(url, 'callback').pipe(
+            map((response: any) =>
+                response[1].map((item: any) => {
+                    return { value: item };
+                }),
+            ),
+        );
 
-  search (term: string): Observable<any[]> {
-    const url = searchUrl(term, this.WIKIPEDIA_URL);
-    return this.client.jsonp(url, 'callback')
-      .pipe(map((response: any) => response[1].map((item: any) => {
-        return {value: item};
-      })));
-
-    function searchUrl(searchTeam: string, base: string) {
-      const params = new HttpParams()
-        .append('action', 'opensearch')
-        .append('search', encodeURIComponent(searchTeam))
-        .append('format', 'json');
-      return `${base}?${params.toString()}`;
+        function searchUrl(searchTeam: string, base: string) {
+            const params = new HttpParams()
+                .append('action', 'opensearch')
+                .append('search', encodeURIComponent(searchTeam))
+                .append('format', 'json');
+            return `${base}?${params.toString()}`;
+        }
     }
-  }
 }
 
 /**
-* @title Autocomplete Example
-*/
+ * @title Autocomplete Example
+ */
 @Component({
-  selector: 'page-search-autocomplete-example',
-  templateUrl: './page-search-autocomplete-example.html',
-  styleUrls: ['./page-search-autocomplete-example.css'],
-  providers: [ WikipediaService ]
+    selector: 'page-search-autocomplete-example',
+    templateUrl: './page-search-autocomplete-example.html',
+    styleUrls: ['./page-search-autocomplete-example.css'],
+    providers: [WikipediaService],
 })
 export class PageSearchAutocompleteExampleComponent {
+    searchFunction: (term: string) => Observable<string[]>;
+    searchTerm1 = '';
+    searchTerm2 = '';
 
-  searchFunction: (term: string) => Observable<string[]>;
-  searchTerm1 = '';
-  searchTerm2 = '';
-
-  constructor(public wikipediaService: WikipediaService) {
-    this.searchFunction = (term: string) => wikipediaService
-      .search(term)
-      .pipe(map((items: any) => items.map((item: any) => item.value)));
-  }
-
+    constructor(public wikipediaService: WikipediaService) {
+        this.searchFunction = (term: string) =>
+            wikipediaService.search(term).pipe(map((items: any) => items.map((item: any) => item.value)));
+    }
 }

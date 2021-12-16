@@ -8,24 +8,9 @@ import { NxMessageToastComponent } from './message-toast/message-toast.component
 import { NxMessageBannerComponent } from './message-banner/message-banner.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxIconModule,
-    OverlayModule,
-    PortalModule
-  ],
-  declarations: [
-    NxMessageComponent,
-    NxMessageToastComponent,
-    NxMessageBannerComponent
-  ],
-  exports: [
-    NxMessageComponent,
-    NxMessageBannerComponent
-  ],
-  entryComponents: [
-    NxMessageToastComponent
-  ]
+    imports: [CommonModule, NxIconModule, OverlayModule, PortalModule],
+    declarations: [NxMessageComponent, NxMessageToastComponent, NxMessageBannerComponent],
+    exports: [NxMessageComponent, NxMessageBannerComponent],
+    entryComponents: [NxMessageToastComponent],
 })
-export class NxMessageModule {
-}
+export class NxMessageModule {}

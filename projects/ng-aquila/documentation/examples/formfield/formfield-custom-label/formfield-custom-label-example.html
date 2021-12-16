@@ -1,14 +1,15 @@
 <nx-formfield nxLabel="Label" class="nx-margin-bottom-s">
-  <nx-formfield-label> Favourite Animal <nx-icon name="product-heart"></nx-icon> {{isOptional}}</nx-formfield-label>
-  <input nxInput />
-  <span nxFormfieldHint>
-    some additional information
-  </span>
+    <nx-formfield-label> Favourite Animal <nx-icon name="product-heart"></nx-icon> {{isOptional}}</nx-formfield-label>
+    <input nxInput />
+    <span nxFormfieldHint> some additional information </span>
 </nx-formfield>
 
 <nx-formfield nxLabel="Label" appearance="outline" nxFloatLabel="always">
-  <nx-formfield-label> Favourite Animal <nx-icon name="product-heart"></nx-icon> <span class="nx-font-weight-regular"> {{isOptional}}</span></nx-formfield-label>
-  <input nxInput />
+    <nx-formfield-label>
+        Favourite Animal <nx-icon name="product-heart"></nx-icon>
+        <span class="nx-font-weight-regular"> {{isOptional}}</span></nx-formfield-label
+    >
+    <input nxInput />
 </nx-formfield>
 
 <button nxButton="primary small" (click)="addOptionalSuffix()" type="button"> Toggle Optional Suffix </button>

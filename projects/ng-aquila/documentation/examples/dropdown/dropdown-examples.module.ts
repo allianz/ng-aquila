@@ -21,52 +21,48 @@ import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-exam
 import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
 
 const EXAMPLES = [
-  DropdownCustomLabelExampleComponent,
-  DropdownDisabledItemsExampleComponent,
-  DropdownFilterExampleComponent,
-  DropdownFilterCustomExampleComponent,
-  DropdownGroupExampleComponent,
-  DropdownMultiSelectExampleComponent,
-  DropdownNegativeExampleComponent,
-  DropdownOutlineExampleComponent,
-  DropdownPlaceholderExampleComponent,
-  DropdownReactiveExampleComponent,
-  DropdownRenderingItemsExampleComponent,
-  DropdownSimpleBindingExampleComponent,
-  DropdownStandardExampleComponent,
-  DropdownTemplateDrivenExampleComponent,
-  DropdownLazyExampleComponent,
-  MultiSelectExampleComponent
+    DropdownCustomLabelExampleComponent,
+    DropdownDisabledItemsExampleComponent,
+    DropdownFilterExampleComponent,
+    DropdownFilterCustomExampleComponent,
+    DropdownGroupExampleComponent,
+    DropdownMultiSelectExampleComponent,
+    DropdownNegativeExampleComponent,
+    DropdownOutlineExampleComponent,
+    DropdownPlaceholderExampleComponent,
+    DropdownReactiveExampleComponent,
+    DropdownRenderingItemsExampleComponent,
+    DropdownSimpleBindingExampleComponent,
+    DropdownStandardExampleComponent,
+    DropdownTemplateDrivenExampleComponent,
+    DropdownLazyExampleComponent,
+    MultiSelectExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxDropdownModule,
-    NxFormfieldModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxDropdownModule, NxFormfieldModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class DropdownExamplesModule {
-  static components() {
-    return {
-      'dropdown-custom-label': DropdownCustomLabelExampleComponent,
-      'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
-      'dropdown-filter': DropdownFilterExampleComponent,
-      'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
-      'dropdown-group': DropdownGroupExampleComponent,
-      'dropdown-multi-select': DropdownMultiSelectExampleComponent,
-      'dropdown-negative': DropdownNegativeExampleComponent,
-      'dropdown-outline': DropdownOutlineExampleComponent,
-      'dropdown-placeholder': DropdownPlaceholderExampleComponent,
-      'dropdown-reactive': DropdownReactiveExampleComponent,
-      'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
-      'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
-      'dropdown-standard': DropdownStandardExampleComponent,
-      'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
-      'dropdown-lazy': DropdownLazyExampleComponent,
-      'multi-select': MultiSelectExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'dropdown-custom-label': DropdownCustomLabelExampleComponent,
+            'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
+            'dropdown-filter': DropdownFilterExampleComponent,
+            'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
+            'dropdown-group': DropdownGroupExampleComponent,
+            'dropdown-multi-select': DropdownMultiSelectExampleComponent,
+            'dropdown-negative': DropdownNegativeExampleComponent,
+            'dropdown-outline': DropdownOutlineExampleComponent,
+            'dropdown-placeholder': DropdownPlaceholderExampleComponent,
+            'dropdown-reactive': DropdownReactiveExampleComponent,
+            'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
+            'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
+            'dropdown-standard': DropdownStandardExampleComponent,
+            'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
+            'dropdown-lazy': DropdownLazyExampleComponent,
+            'multi-select': MultiSelectExampleComponent,
+        };
+    }
 }

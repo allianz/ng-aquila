@@ -1,108 +1,108 @@
-@import "../../shared-styles/index";
+@import '../../shared-styles/index';
 
 :host {
-  position: relative;
-  border-color: var(--tab-item-border-color);
-  border-bottom-width: nx-border-size(xs);
-  border-bottom-style: solid;
-  flex: 0 0 auto;
-  height: 44px;
+    position: relative;
+    border-color: var(--tab-item-border-color);
+    border-bottom-width: nx-border-size(xs);
+    border-bottom-style: solid;
+    flex: 0 0 auto;
+    height: 44px;
 
-  .nx-tab-scroll-indicator__divider {
-    width: 1px;
-    height: 32px;
-    background: var(--tab-item-border-color);
-    position: absolute;
-    top: 4px;
-  }
-
-  &.start-button.is-scrolled-to-start,
-  &.end-button.is-scrolled-to-end {
     .nx-tab-scroll-indicator__divider {
-      display: none;
+        width: 1px;
+        height: 32px;
+        background: var(--tab-item-border-color);
+        position: absolute;
+        top: 4px;
     }
-  
-    button {
-      display: none;
+
+    &.start-button.is-scrolled-to-start,
+    &.end-button.is-scrolled-to-end {
+        .nx-tab-scroll-indicator__divider {
+            display: none;
+        }
+
+        button {
+            display: none;
+        }
     }
-  }
 }
 
 :host.is-desktop-button {
-  padding: 8px 8px 10px 8px;
-  width: 40px;
+    padding: 8px 8px 10px 8px;
+    width: 40px;
 
-  &.start-button.is-scrolled-to-start {
-    display: none;
-  }
-
-  button {
-    vertical-align: bottom;
-  }
-
-  &.start-button {
-    .nx-tab-scroll-indicator__divider {
-      right: 0;
-
-      [dir="rtl"] & {
-        right: initial;
-        left: 0;
-      }
+    &.start-button.is-scrolled-to-start {
+        display: none;
     }
-  }
 
-  &.end-button {
-    .nx-tab-scroll-indicator__divider {
-      left: 0;
-
-      [dir="rtl"] & {
-        left: initial;
-        right: 0;
-      }
+    button {
+        vertical-align: bottom;
     }
-  }
+
+    &.start-button {
+        .nx-tab-scroll-indicator__divider {
+            right: 0;
+
+            [dir='rtl'] & {
+                right: initial;
+                left: 0;
+            }
+        }
+    }
+
+    &.end-button {
+        .nx-tab-scroll-indicator__divider {
+            left: 0;
+
+            [dir='rtl'] & {
+                left: initial;
+                right: 0;
+            }
+        }
+    }
 }
 
 :host.is-mobile {
-  width: 16px;
+    width: 16px;
 
-  &.start-button:not(.is-scrolled-to-start) {
-    .nx-tab-scroll-indicator__divider {
-      right: 0;
+    &.start-button:not(.is-scrolled-to-start) {
+        .nx-tab-scroll-indicator__divider {
+            right: 0;
 
-      [dir="rtl"] & {
-        right: initial;
-        left: 0;
-      }
+            [dir='rtl'] & {
+                right: initial;
+                left: 0;
+            }
+        }
     }
-  }
 
-  &.end-button:not(.is-scrolled-to-end) {
-    .nx-tab-scroll-indicator__divider {
-      left: 0;
+    &.end-button:not(.is-scrolled-to-end) {
+        .nx-tab-scroll-indicator__divider {
+            left: 0;
 
-      [dir="rtl"] & {
-        left: initial;
-        right: 0;
-      }
+            [dir='rtl'] & {
+                left: initial;
+                right: 0;
+            }
+        }
     }
-  }
 }
 
 :host-context(nx-tab-group.is-expert),
 :host-context(nx-tab-nav-bar.is-expert) {
-  border-bottom: none;
-  height: 40px;
+    border-bottom: none;
+    height: 40px;
 
-  .nx-tab-scroll-indicator__divider {
-    height: 24px;
-    top: 8px;
-  }
+    .nx-tab-scroll-indicator__divider {
+        height: 24px;
+        top: 8px;
+    }
 }
 
 :host-context(nx-tab-group.is-negative),
 :host-context(nx-tab-nav-bar.is-negative) {
-  button {
-    color: var(--negative);
-  }
+    button {
+        color: var(--negative);
+    }
 }

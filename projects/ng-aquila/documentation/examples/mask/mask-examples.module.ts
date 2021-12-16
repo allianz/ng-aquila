@@ -13,35 +13,30 @@ import { IbanMaskExampleComponent } from './iban-mask/iban-mask-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  MaskExampleComponent,
-  MaskCaseExampleComponent,
-  MaskDeactivateExampleComponent,
-  MaskDropCharactersExampleComponent,
-  MaskSeparatorsExampleComponent,
-  MaskValidationExampleComponent,
-  IbanMaskExampleComponent
+    MaskExampleComponent,
+    MaskCaseExampleComponent,
+    MaskDeactivateExampleComponent,
+    MaskDropCharactersExampleComponent,
+    MaskSeparatorsExampleComponent,
+    MaskValidationExampleComponent,
+    IbanMaskExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxMaskModule,
-    NxRadioModule,
-    NxInputModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxMaskModule, NxRadioModule, NxInputModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class MaskExamplesModule {
-  static components() {
-    return {
-      'mask': MaskExampleComponent,
-      'mask-case': MaskCaseExampleComponent,
-      'mask-deactivate': MaskDeactivateExampleComponent,
-      'mask-drop-characters': MaskDropCharactersExampleComponent,
-      'mask-separators': MaskSeparatorsExampleComponent,
-      'mask-validation': MaskValidationExampleComponent,
-      'iban-mask': IbanMaskExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            mask: MaskExampleComponent,
+            'mask-case': MaskCaseExampleComponent,
+            'mask-deactivate': MaskDeactivateExampleComponent,
+            'mask-drop-characters': MaskDropCharactersExampleComponent,
+            'mask-separators': MaskSeparatorsExampleComponent,
+            'mask-validation': MaskValidationExampleComponent,
+            'iban-mask': IbanMaskExampleComponent,
+        };
+    }
 }

@@ -1,7 +1,4 @@
-<button nxAction
-  *ngFor="let action of actions"
-  (click)="onSelect(action)"
-  [selected]="action === selectedAction">
-  <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
-  {{action.label}}
+<button nxAction *ngFor="let action of actions" (click)="onSelect(action)" [selected]="action === selectedAction">
+    <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+    {{action.label}}
 </button>

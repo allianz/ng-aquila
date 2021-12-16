@@ -1,37 +1,30 @@
 <ng-template #content>
-  <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
-    <div #wrapper
-         class="nx-comparison-table-toggle-section__header-wrapper"
-         role="columnheader"
-         [attr.aria-colspan]="_table.viewType === 'desktop' ? _table._getHeaderCells().length + 1 : _table._getHeaderCells().length"
-         [attr.aria-expanded]="_toggleSection.isExpanded"
-         [attr.id]="id"
-         (click)="toggle()"
-         [attr.tabindex]="0"
-         (keydown)="_onKeydown($event)">
-      <div class="nx-comparison-table-toggle-section__header-content">
-        <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-        <nx-icon class="nx-expansion-panel__chevron"
-                 [@indicatorRotate]="_toggleSection.getOpenState()"
-                 name="chevron-down"
-                 aria-hidden="true">
-        </nx-icon>
-      </div>
-    </div>
-  </ng-container>
+    <ng-container *ngIf="_table.viewType === 'desktop' || _table.viewType === 'tablet'">
+        <div
+            #wrapper
+            class="nx-comparison-table-toggle-section__header-wrapper"
+            role="columnheader"
+            [attr.aria-colspan]="_table.viewType === 'desktop' ? _table._getHeaderCells().length + 1 : _table._getHeaderCells().length"
+            [attr.aria-expanded]="_toggleSection.isExpanded"
+            [attr.id]="id"
+            (click)="toggle()"
+            [attr.tabindex]="0"
+            (keydown)="_onKeydown($event)"
+        >
+            <div class="nx-comparison-table-toggle-section__header-content">
+                <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+                <nx-icon class="nx-expansion-panel__chevron" [@indicatorRotate]="_toggleSection.getOpenState()" name="chevron-down" aria-hidden="true"> </nx-icon>
+            </div>
+        </div>
+    </ng-container>
 
-  <ng-container *ngIf="_table.viewType === 'mobile'">
-    <th #mobileCell
-        class="nx-comparison-table__mobile-toggle-section-header"
-        scope="col"
-        [attr.colspan]="_toggleSection._numberOfRows()"
-        [attr.id]="id"
-        [ngStyle]="{ 'clip-path': 'inset(' + _getMobileClipPathInset() + ')' }">
-      <ng-container *ngTemplateOutlet="ngContent"></ng-container>
-    </th>
-  </ng-container>
+    <ng-container *ngIf="_table.viewType === 'mobile'">
+        <th #mobileCell class="nx-comparison-table__mobile-toggle-section-header" scope="col" [attr.colspan]="_toggleSection._numberOfRows()" [attr.id]="id" [ngStyle]="{ 'clip-path': 'inset(' + _getMobileClipPathInset() + ')' }">
+            <ng-container *ngTemplateOutlet="ngContent"></ng-container>
+        </th>
+    </ng-container>
 </ng-template>
 
 <ng-template #ngContent>
-  <ng-content></ng-content>
+    <ng-content></ng-content>
 </ng-template>

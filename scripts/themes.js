@@ -1,6 +1,3 @@
 module.exports = {
-  opensourceThemes: [
-    'aposin',
-    'expert'
-  ]
-}
+    opensourceThemes: ['aposin', 'expert'],
+};

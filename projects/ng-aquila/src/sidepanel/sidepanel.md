@@ -22,12 +22,11 @@ The `nx-sidepanel` is a container that is fixed to the right edge of the viewpor
 
 ```html
 <nx-sidepanel-outer-container>
+    <!-- Main content of the page -->
 
-  <!-- Main content of the page -->
-
-  <nx-sidepanel>
-    <!-- Content besides the main area of the page -->
-  </nx-sidepanel>
+    <nx-sidepanel>
+        <!-- Content besides the main area of the page -->
+    </nx-sidepanel>
 </nx-sidepanel-outer-container>
 ```
 
@@ -71,7 +70,6 @@ With `appearance="light"` you get a white version of the sidepanel.
 
 </div>
 
-
 <!-- example(sidepanel-light) -->
 
 ### Positioning
@@ -90,6 +88,6 @@ With `[static]="true"` the sidepanel can be used as a static element on the page
 
 ### Including tabs with a fixed tabs-header
 
-The sidepanel can contain a lot of different content. This is an example how tabs with a fixed tab-header can be used: 
+The sidepanel can contain a lot of different content. This is an example how tabs with a fixed tab-header can be used:
 
 <!-- example(sidepanel-with-tabs) -->

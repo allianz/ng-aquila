@@ -1,15 +1,15 @@
 :host {
-  display: block;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
+    display: block;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
 
-  &:focus {
-    outline: none;
-  }
+    &:focus {
+        outline: none;
+    }
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid windowText;
-    background: window;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        border: 1px solid windowText;
+        background: window;
+    }
 }

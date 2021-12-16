@@ -12,19 +12,9 @@ import { NxvFeedbackModule } from '../feedback/feedback.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-    imports: [
-      NxSidebarModule,
-      NavigationModule,
-      RouterModule,
-      CommonModule,
-      NxGridModule,
-      NxvFooterModule,
-      NxvTopInfoModule,
-      NxvFeedbackModule,
-      ScrollingModule
-    ],
-  exports: [],
-  declarations: [NxvDocumentationComponent],
-  providers: []
+    imports: [NxSidebarModule, NavigationModule, RouterModule, CommonModule, NxGridModule, NxvFooterModule, NxvTopInfoModule, NxvFeedbackModule, ScrollingModule],
+    exports: [],
+    declarations: [NxvDocumentationComponent],
+    providers: [],
 })
-export class NxvDocumentationPageModule { }
+export class NxvDocumentationPageModule {}

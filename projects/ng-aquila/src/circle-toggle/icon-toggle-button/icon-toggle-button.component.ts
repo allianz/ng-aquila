@@ -1,50 +1,48 @@
-
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 /** @docs-private */
 @Component({
-  selector: 'nx-icon-toggle-button',
-  templateUrl: 'icon-toggle-button.component.html',
-  styleUrls: ['icon-toggle-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '[class.nx-circle-button]': 'true',
-    '[class.is-flipped]': 'checked',
-    '[class.has-checkmark]': '!inGroup',
-    '[class.is-disabled]': 'disabled',
-    '[class.is-negative]': 'negative',
-    '[class.is-touched]': 'touched'
-  }
+    selector: 'nx-icon-toggle-button',
+    templateUrl: 'icon-toggle-button.component.html',
+    styleUrls: ['icon-toggle-button.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        '[class.nx-circle-button]': 'true',
+        '[class.is-flipped]': 'checked',
+        '[class.has-checkmark]': '!inGroup',
+        '[class.is-disabled]': 'disabled',
+        '[class.is-negative]': 'negative',
+        '[class.is-touched]': 'touched',
+    },
 })
 export class NxIconToggleButtonComponent {
+    @Input()
+    inGroup: boolean = true;
 
-  @Input()
-  inGroup: boolean = true;
+    @Input()
+    hint: string = '';
 
-  @Input()
-  hint: string = '';
+    @Input()
+    label: string = '';
 
-  @Input()
-  label: string = '';
+    @Input()
+    checked: boolean = false;
 
-  @Input()
-  checked: boolean = false;
+    @Input()
+    icon: string = '';
 
-  @Input()
-  icon: string = '';
+    @Input('svg')
+    svgUrl: string = '';
 
-  @Input('svg')
-  svgUrl: string = '';
+    @Input()
+    disabled: boolean = false;
 
-  @Input()
-  disabled: boolean = false;
+    @Input()
+    negative: boolean = false;
 
-  @Input()
-  negative: boolean = false;
+    @Input()
+    touched: boolean = false;
 
-  @Input()
-  touched: boolean = false;
-
-  @Input()
-  circleText: string = '';
+    @Input()
+    circleText: string = '';
 }

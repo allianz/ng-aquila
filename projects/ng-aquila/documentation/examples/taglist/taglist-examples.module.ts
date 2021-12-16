@@ -15,40 +15,36 @@ import { TaglistTemplatedrivenExampleComponent } from './taglist-templatedriven/
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  TaglistExampleComponent,
-  TaglistA11yExampleComponent,
-  TaglistBasicExampleComponent,
-  TaglistDeleteExampleComponent,
-  TaglistFormatterExampleComponent,
-  TaglistKeywordExampleComponent,
-  TaglistObjectsExampleComponent,
-  TaglistOutputExampleComponent,
-  TaglistReactiveExampleComponent,
-  TaglistTemplatedrivenExampleComponent
+    TaglistExampleComponent,
+    TaglistA11yExampleComponent,
+    TaglistBasicExampleComponent,
+    TaglistDeleteExampleComponent,
+    TaglistFormatterExampleComponent,
+    TaglistKeywordExampleComponent,
+    TaglistObjectsExampleComponent,
+    TaglistOutputExampleComponent,
+    TaglistReactiveExampleComponent,
+    TaglistTemplatedrivenExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxTaglistModule,
-    NxInputModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxTaglistModule, NxInputModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class TaglistExamplesModule {
-  static components() {
-    return {
-      'taglist': TaglistExampleComponent,
-      'taglist-a11y': TaglistA11yExampleComponent,
-      'taglist-basic': TaglistBasicExampleComponent,
-      'taglist-delete': TaglistDeleteExampleComponent,
-      'taglist-formatter': TaglistFormatterExampleComponent,
-      'taglist-keyword': TaglistKeywordExampleComponent,
-      'taglist-objects': TaglistObjectsExampleComponent,
-      'taglist-output': TaglistOutputExampleComponent,
-      'taglist-reactive': TaglistReactiveExampleComponent,
-      'taglist-templatedriven': TaglistTemplatedrivenExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            taglist: TaglistExampleComponent,
+            'taglist-a11y': TaglistA11yExampleComponent,
+            'taglist-basic': TaglistBasicExampleComponent,
+            'taglist-delete': TaglistDeleteExampleComponent,
+            'taglist-formatter': TaglistFormatterExampleComponent,
+            'taglist-keyword': TaglistKeywordExampleComponent,
+            'taglist-objects': TaglistObjectsExampleComponent,
+            'taglist-output': TaglistOutputExampleComponent,
+            'taglist-reactive': TaglistReactiveExampleComponent,
+            'taglist-templatedriven': TaglistTemplatedrivenExampleComponent,
+        };
+    }
 }

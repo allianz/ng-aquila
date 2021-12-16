@@ -1,98 +1,100 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host {
-  @include var(color, plain-button-color);
-  display: inline-block;
-  cursor: pointer;
-  user-select: none;
-  width: auto;
-  hyphens: none;
-  vertical-align: middle;
-  background: transparent;
-  border: none;
-  padding: 0;
-  @include type-style(plain-button);
+    @include var(color, plain-button-color);
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    width: auto;
+    hyphens: none;
+    vertical-align: middle;
+    background: transparent;
+    border: none;
+    padding: 0;
+    @include type-style(plain-button);
 
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    @include var(color, plain-button-hover-color);
-  }
-
-  // reset hover styles for devices that don't support hover
-  @media (hover: none) {
-    &:hover {
-      @include var(color, plain-button-color);
+    &:focus {
+        outline: none;
     }
-  }
 
-  &:active, &.nx-button--active {
-    @include var(color, plain-button-active-color);
-  }
+    &:hover {
+        @include var(color, plain-button-hover-color);
+    }
 
-  &[disabled] {
-    @include var(color, plain-button-disabled-color);
-    cursor: not-allowed;
-  }
+    // reset hover styles for devices that don't support hover
+    @media (hover: none) {
+        &:hover {
+            @include var(color, plain-button-color);
+        }
+    }
 
-  .nx-plain-button__content-wrapper {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: bottom;
-  }
+    &:active,
+    &.nx-button--active {
+        @include var(color, plain-button-active-color);
+    }
+
+    &[disabled] {
+        @include var(color, plain-button-disabled-color);
+        cursor: not-allowed;
+    }
+
+    .nx-plain-button__content-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: bottom;
+    }
 }
 
 :host.nx-plain-button--danger {
-  @include var(color, plain-button-danger-color);
+    @include var(color, plain-button-danger-color);
 
-  &:hover {
-    @include var(color, plain-button-danger-hover-color);
-  }
-
-  // reset hover styles for devices that don't support hover
-  @media (hover: none) {
     &:hover {
-      @include var(color, plain-button-danger-color);
+        @include var(color, plain-button-danger-hover-color);
     }
-  }
 
-  &:active, &.nx-button--active {
-    @include var(color, plain-button-danger-active-color);
-  }
+    // reset hover styles for devices that don't support hover
+    @media (hover: none) {
+        &:hover {
+            @include var(color, plain-button-danger-color);
+        }
+    }
 
-  &[disabled] {
-    @include var(color, plain-button-danger-disabled-color);
-  }
+    &:active,
+    &.nx-button--active {
+        @include var(color, plain-button-danger-active-color);
+    }
+
+    &[disabled] {
+        @include var(color, plain-button-danger-disabled-color);
+    }
 }
 
 :host(.nx-plain-button) {
-  ::ng-deep nx-icon {
-    @include var(font-size, plain-button-icon-size);
-  }
+    ::ng-deep nx-icon {
+        @include var(font-size, plain-button-icon-size);
+    }
 }
 
 // focus styling
 :host.cdk-keyboard-focused {
-  border-radius: nx-border-radius(s);
-  outline: 0;
-  @include focus-style;
+    border-radius: nx-border-radius(s);
+    outline: 0;
+    @include focus-style;
 }
 
 :host(a) {
-  height: fit-content;
-  text-align: center;
-  text-decoration: none;
+    height: fit-content;
+    text-align: center;
+    text-decoration: none;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host {
-    color: buttonText!important;
-  }
+    :host {
+        color: buttonText !important;
+    }
 
-  :host[disabled] {
-    color: GrayText!important;
-  }
+    :host[disabled] {
+        color: GrayText !important;
+    }
 }

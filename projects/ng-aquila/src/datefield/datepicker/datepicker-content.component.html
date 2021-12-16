@@ -4,7 +4,8 @@
     </button>
 </div>
 
-<nx-calendar cdkTrapFocus
+<nx-calendar
+    cdkTrapFocus
     [id]="datepicker.id"
     [ngClass]="datepicker.panelClass"
     [startAt]="datepicker.startAt"
@@ -16,5 +17,6 @@
     (selectedChange)="datepicker.select($event)"
     (yearSelected)="datepicker.selectYear($event)"
     (monthSelected)="datepicker.selectMonth($event)"
-    (_userSelection)="datepicker.close()">
+    (_userSelection)="datepicker.close()"
+>
 </nx-calendar>

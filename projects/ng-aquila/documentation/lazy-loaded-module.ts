@@ -1,3 +1,3 @@
 export abstract class LazyLoadedModule {
-  static components() {}
+    static components() {}
 }

@@ -6,17 +6,11 @@ import { NxMenuLinkDirective } from './menu-link.directive';
 import { NxMenuItemDirective } from './menu-item.directive';
 import { NxMenuButtonComponent, NxMenuButtonIconDirective } from './menu-button.component';
 
-const EXPORTED_MODULES = [
-  NxMenuComponent,
-  NxMenuLinkDirective,
-  NxMenuItemDirective,
-  NxMenuButtonComponent,
-  NxMenuButtonIconDirective,
-];
+const EXPORTED_MODULES = [NxMenuComponent, NxMenuLinkDirective, NxMenuItemDirective, NxMenuButtonComponent, NxMenuButtonIconDirective];
 
 @NgModule({
-  imports: [ CommonModule, NxIconModule ],
-  declarations: EXPORTED_MODULES,
-  exports: EXPORTED_MODULES
+    imports: [CommonModule, NxIconModule],
+    declarations: EXPORTED_MODULES,
+    exports: EXPORTED_MODULES,
 })
-export class NxMenuModule { }
+export class NxMenuModule {}

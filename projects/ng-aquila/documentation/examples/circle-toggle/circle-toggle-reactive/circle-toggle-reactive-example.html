@@ -1,8 +1,13 @@
 <form novalidate [formGroup]="testForm">
-  <nx-circle-toggle-group formControlName="reactiveToggle" responsive="false">
-    <nx-circle-toggle *ngFor="let item of sampleValues" [value]="item.value" [icon]="item.icon" [hint]="item.hint"
-      [label]="item.label"></nx-circle-toggle>
-  </nx-circle-toggle-group>
+    <nx-circle-toggle-group formControlName="reactiveToggle" responsive="false">
+        <nx-circle-toggle
+            *ngFor="let item of sampleValues"
+            [value]="item.value"
+            [icon]="item.icon"
+            [hint]="item.hint"
+            [label]="item.label"
+        ></nx-circle-toggle>
+    </nx-circle-toggle-group>
 </form>
 
 <p>Form value: {{ testForm.value | json }}</p>
@@ -10,10 +15,6 @@
 
 <p>Try to set the value to A, B or C</p>
 <div class="patch-container">
-  <input #inputReactive type="text">
-  <button nxButton="primary small"
-          (click)="patch(inputReactive.value)"
-          type="button">
-    Patch
-  </button>
+    <input #inputReactive type="text" />
+    <button nxButton="primary small" (click)="patch(inputReactive.value)" type="button"> Patch </button>
 </div>

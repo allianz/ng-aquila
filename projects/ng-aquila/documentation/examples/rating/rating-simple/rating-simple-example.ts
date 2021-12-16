@@ -4,11 +4,10 @@ import { Component } from '@angular/core';
  * @title Rating Simple Bindig Example
  */
 @Component({
-  selector: 'rating-simple-example',
-  templateUrl: './rating-simple-example.html',
-  styleUrls: ['./rating-simple-example.css']
+    selector: 'rating-simple-example',
+    templateUrl: './rating-simple-example.html',
+    styleUrls: ['./rating-simple-example.css'],
 })
 export class RatingSimpleExampleComponent {
-
-  simpleBinding: number = 1;
+    simpleBinding: number = 1;
 }

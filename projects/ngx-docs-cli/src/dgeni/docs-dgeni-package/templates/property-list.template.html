@@ -1,12 +1,10 @@
 {%- if propertyList.length -%}
-  <h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    {% for p in propertyList %}
-      {$ property(p) $}
-    {% endfor %}
-  </table>
+    {% for p in propertyList %} {$ property(p) $} {% endfor %}
+</table>
 {%- endif -%}

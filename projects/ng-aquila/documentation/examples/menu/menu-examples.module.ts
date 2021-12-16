@@ -13,33 +13,26 @@ import { MenuItemWithIconsExampleComponent } from './menu-item-with-icons/menu-i
 import { MenuLinkExampleComponent } from './menu-link/menu-link-example';
 
 const EXAMPLES = [
-  MenuExampleComponent,
-  MenuButtonExampleComponent,
-  MenuItemExampleComponent,
-  MenuItemWithIconsExampleComponent,
-  MenuLinkExampleComponent
+    MenuExampleComponent,
+    MenuButtonExampleComponent,
+    MenuItemExampleComponent,
+    MenuItemWithIconsExampleComponent,
+    MenuLinkExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxButtonModule,
-    NxMenuModule,
-    NxIconModule,
-    NxTreeModule,
-    RouterModule,
-    CommonModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxButtonModule, NxMenuModule, NxIconModule, NxTreeModule, RouterModule, CommonModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class MenuExamplesModule {
-  static components() {
-    return {
-      'menu': MenuExampleComponent,
-      'menu-button': MenuButtonExampleComponent,
-      'menu-item': MenuItemExampleComponent,
-      'menu-item-with-icons': MenuItemWithIconsExampleComponent,
-      'menu-link': MenuLinkExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            menu: MenuExampleComponent,
+            'menu-button': MenuButtonExampleComponent,
+            'menu-item': MenuItemExampleComponent,
+            'menu-item-with-icons': MenuItemWithIconsExampleComponent,
+            'menu-link': MenuLinkExampleComponent,
+        };
+    }
 }

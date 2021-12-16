@@ -12,35 +12,32 @@ import { SwitcherTemplateDrivenExampleComponent } from './switcher-template-driv
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  SwitcherDefaultExampleComponent,
-  SwitcherDisabledExampleComponent,
-  SwitcherLabelLeftExampleComponent,
-  SwitcherLabelSmallExampleComponent,
-  SwitcherLargeExampleComponent,
-  SwitcherNegativeExampleComponent,
-  SwitcherReactiveFormExampleComponent,
-  SwitcherTemplateDrivenExampleComponent
+    SwitcherDefaultExampleComponent,
+    SwitcherDisabledExampleComponent,
+    SwitcherLabelLeftExampleComponent,
+    SwitcherLabelSmallExampleComponent,
+    SwitcherLargeExampleComponent,
+    SwitcherNegativeExampleComponent,
+    SwitcherReactiveFormExampleComponent,
+    SwitcherTemplateDrivenExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxSwitcherModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxSwitcherModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class SwitcherExamplesModule {
-  static components() {
-    return {
-      'switcher-default': SwitcherDefaultExampleComponent,
-      'switcher-disabled': SwitcherDisabledExampleComponent,
-      'switcher-label-left': SwitcherLabelLeftExampleComponent,
-      'switcher-label-small': SwitcherLabelSmallExampleComponent,
-      'switcher-large': SwitcherLargeExampleComponent,
-      'switcher-negative': SwitcherNegativeExampleComponent,
-      'switcher-reactive-form': SwitcherReactiveFormExampleComponent,
-      'switcher-template-driven': SwitcherTemplateDrivenExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'switcher-default': SwitcherDefaultExampleComponent,
+            'switcher-disabled': SwitcherDisabledExampleComponent,
+            'switcher-label-left': SwitcherLabelLeftExampleComponent,
+            'switcher-label-small': SwitcherLabelSmallExampleComponent,
+            'switcher-large': SwitcherLargeExampleComponent,
+            'switcher-negative': SwitcherNegativeExampleComponent,
+            'switcher-reactive-form': SwitcherReactiveFormExampleComponent,
+            'switcher-template-driven': SwitcherTemplateDrivenExampleComponent,
+        };
+    }
 }

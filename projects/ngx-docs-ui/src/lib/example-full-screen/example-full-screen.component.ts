@@ -6,38 +6,33 @@ import { Location } from '@angular/common';
 type ExampleBackgroundType = '' | 'blank';
 
 @Component({
-  templateUrl: './example-full-screen.component.html',
-  styleUrls: ['./example-full-screen.component.scss']
+    templateUrl: './example-full-screen.component.html',
+    styleUrls: ['./example-full-screen.component.scss'],
 })
 export class ExampleFullScreenComponent {
+    example: string;
 
-  example: string;
+    showNav: boolean = true;
 
-  showNav: boolean = true;
+    @HostBinding('class')
+    background: ExampleBackgroundType = '';
 
-  @HostBinding('class')
-  background: ExampleBackgroundType = '';
+    constructor(_route: ActivatedRoute, _themeSwitcherService: ThemeSwitcherService, public _location: Location) {
+        const routeSnapshot = _route.snapshot;
+        this.example = routeSnapshot.params.id;
 
-  constructor(
-    _route: ActivatedRoute,
-    _themeSwitcherService: ThemeSwitcherService,
-    public _location: Location) {
+        if (routeSnapshot.queryParamMap.has('nav')) {
+            this.showNav = routeSnapshot.queryParamMap.get('nav') === 'true';
+        }
 
-    const routeSnapshot = _route.snapshot;
-    this.example = routeSnapshot.params.id;
+        if (routeSnapshot.queryParamMap.has('bg')) {
+            this.background = routeSnapshot.queryParamMap.get('bg') as ExampleBackgroundType;
+        }
 
-    if (routeSnapshot.queryParamMap.has('nav')) {
-      this.showNav = routeSnapshot.queryParamMap.get('nav') === 'true';
+        const themeName = routeSnapshot.queryParamMap.get('theme');
+        const selectedTheme = _themeSwitcherService.get(themeName as string);
+        if (selectedTheme) {
+            _themeSwitcherService.switchTheme(selectedTheme);
+        }
     }
-
-    if (routeSnapshot.queryParamMap.has('bg')) {
-      this.background = routeSnapshot.queryParamMap.get('bg') as ExampleBackgroundType;
-    }
-
-    const themeName = routeSnapshot.queryParamMap.get('theme');
-    const selectedTheme = _themeSwitcherService.get(themeName as string);
-    if (selectedTheme) {
-      _themeSwitcherService.switchTheme(selectedTheme);
-    }
-  }
 }

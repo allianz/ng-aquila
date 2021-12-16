@@ -1,224 +1,224 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host:focus {
-  outline: none;
+    outline: none;
 }
 
 .nx-expansion-panel__header-content {
-  width: 100%;
-  cursor: pointer;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  outline: none;
-  border: none;
-  padding: v(accordion-regular-header-padding);
-  @include var(color, accordion-regular-header-text-color);
-  @include var(background, accordion-regular-header-background-color);
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    outline: none;
+    border: none;
+    padding: v(accordion-regular-header-padding);
+    @include var(color, accordion-regular-header-text-color);
+    @include var(background, accordion-regular-header-background-color);
 
-  @include media-breakpoint-down(small) {
-    padding: v(accordion-regular-mobile-header-padding);
-  }
+    @include media-breakpoint-down(small) {
+        padding: v(accordion-regular-mobile-header-padding);
+    }
 }
 
 // hover style for regular
 :host-context(.nx-expansion-panel--regular):not(.is-disabled) {
-  .nx-expansion-panel__header-content:hover {
-    @include var(color, accordion-regular-header-hover-text-color);
+    .nx-expansion-panel__header-content:hover {
+        @include var(color, accordion-regular-header-hover-text-color);
 
-    .nx-expansion-panel__chevron {
-      @include var(color, accordion-regular-hover-chevron-color);
+        .nx-expansion-panel__chevron {
+            @include var(color, accordion-regular-hover-chevron-color);
+        }
     }
-  }
 }
 
 $header-title-margin-after: nx-spacer(2m);
 $header-title-small-screen-margin-after: nx-spacer(s);
 ::ng-deep .nx-expansion-panel__header-title {
-  @include type-style(accordion-regular);
-  text-align: left;
-  margin-right: $header-title-margin-after;
-
-  @include media-breakpoint-down(small) {
-    @include type-style(accordion-regular-mobile);
-    margin-right: $header-title-small-screen-margin-after;
-  }
-
-  :host-context([dir="rtl"]) & {
-    text-align: right;
-    margin-right: initial;
-    margin-left: $header-title-margin-after;
+    @include type-style(accordion-regular);
+    text-align: left;
+    margin-right: $header-title-margin-after;
 
     @include media-breakpoint-down(small) {
-      margin-right: initial;
-      margin-left: $header-title-small-screen-margin-after;
+        @include type-style(accordion-regular-mobile);
+        margin-right: $header-title-small-screen-margin-after;
     }
-  }
+
+    :host-context([dir='rtl']) & {
+        text-align: right;
+        margin-right: initial;
+        margin-left: $header-title-margin-after;
+
+        @include media-breakpoint-down(small) {
+            margin-right: initial;
+            margin-left: $header-title-small-screen-margin-after;
+        }
+    }
 }
 
 :host .nx-expansion-panel__chevron {
-  pointer-events: none;
-  @include var(font-size, accordion-chevron-size);
+    pointer-events: none;
+    @include var(font-size, accordion-chevron-size);
 }
 
 :host(:not(.is-disabled)) .nx-expansion-panel__chevron {
-  @include var(color, accordion-regular-chevron-color);
+    @include var(color, accordion-regular-chevron-color);
 }
 
 // light styles
 :host-context(.nx-expansion-panel--light) {
-  .nx-expansion-panel__header-content {
-    padding: v(accordion-light-header-padding);
-    margin-top: 0;
-    background: transparent;
+    .nx-expansion-panel__header-content {
+        padding: v(accordion-light-header-padding);
+        margin-top: 0;
+        background: transparent;
 
-    @include media-breakpoint-down(small) {
-      padding: v(accordion-light-mobile-header-padding);
+        @include media-breakpoint-down(small) {
+            padding: v(accordion-light-mobile-header-padding);
+        }
     }
-  }
 
-  .nx-expansion-panel__chevron {
-    @include var(color, accordion-light-chevron-color);
-  }
-
-  ::ng-deep .nx-expansion-panel__header-title {
-    @include type-style(accordion-light);
-
-    @include media-breakpoint-down(small) {
-      @include type-style(accordion-light-mobile);
+    .nx-expansion-panel__chevron {
+        @include var(color, accordion-light-chevron-color);
     }
-  }
+
+    ::ng-deep .nx-expansion-panel__header-title {
+        @include type-style(accordion-light);
+
+        @include media-breakpoint-down(small) {
+            @include type-style(accordion-light-mobile);
+        }
+    }
 }
 
 :host-context(.nx-expansion-panel--light:not(.nx-expansion-panel--negative)) {
-  .nx-expansion-panel__header-content {
-    @include var(color, accordion-light-header-text-color);
-  }
-
-  &:not(.is-disabled) .nx-expansion-panel__header-content:hover {
-    @include var(color, accordion-light-header-hover-text-color);
-
-    .nx-expansion-panel__chevron {
-      @include var(color, accordion-light-hover-chevron-color);
+    .nx-expansion-panel__header-content {
+        @include var(color, accordion-light-header-text-color);
     }
-  }
+
+    &:not(.is-disabled) .nx-expansion-panel__header-content:hover {
+        @include var(color, accordion-light-header-hover-text-color);
+
+        .nx-expansion-panel__chevron {
+            @include var(color, accordion-light-hover-chevron-color);
+        }
+    }
 }
 
 // light and negative
 :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative) {
-  .nx-expansion-panel__header-content {
-    @include var(color, negative);
-  }
+    .nx-expansion-panel__header-content {
+        @include var(color, negative);
+    }
 
-  .nx-expansion-panel__chevron {
-    @include var(color, negative);
-  }
+    .nx-expansion-panel__chevron {
+        @include var(color, negative);
+    }
 }
 
 // extra light
 $extra-light-header-title-margin-after: 8px;
 :host-context(.nx-expansion-panel--extra-light) {
-  .nx-expansion-panel__header-content {
-    padding: 0;
-    margin-top: 0;
-    background: transparent;
-    justify-content: flex-start;
-    width: max-content;
-    max-width: 100%;
-    @include var(color, accordion-extra-light-header-text-color);
+    .nx-expansion-panel__header-content {
+        padding: 0;
+        margin-top: 0;
+        background: transparent;
+        justify-content: flex-start;
+        width: max-content;
+        max-width: 100%;
+        @include var(color, accordion-extra-light-header-text-color);
 
-    border-radius: 4px;     // get a focus style with round edges
-  }
+        border-radius: 4px; // get a focus style with round edges
+    }
 
-  .nx-expansion-panel__chevron {
-    @include var(color, accordion-extra-light-chevron-color);
-  }
+    .nx-expansion-panel__chevron {
+        @include var(color, accordion-extra-light-chevron-color);
+    }
 
-  ::ng-deep .nx-expansion-panel__header-title {
-    @include type-style(accordion-extra-light);
-    margin-right: $extra-light-header-title-margin-after;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+    ::ng-deep .nx-expansion-panel__header-title {
+        @include type-style(accordion-extra-light);
+        margin-right: $extra-light-header-title-margin-after;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 
 :host-context([dir='rtl'] .nx-expansion-panel--extra-light) {
-  ::ng-deep .nx-expansion-panel__header-title {
-    margin-left: $extra-light-header-title-margin-after;
-    margin-right: 0;
-  }
+    ::ng-deep .nx-expansion-panel__header-title {
+        margin-left: $extra-light-header-title-margin-after;
+        margin-right: 0;
+    }
 }
 
 :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
-  .nx-expansion-panel__header-content {
-    @include var(color, negative);
-  }
-
-  .nx-expansion-panel__chevron {
-    @include var(color, negative);
-  }
-
-  &.is-disabled {
     .nx-expansion-panel__header-content {
-      @include var(color, negative-dimmed);
+        @include var(color, negative);
     }
-  
+
     .nx-expansion-panel__chevron {
-      @include var(color, negative-dimmed);
+        @include var(color, negative);
     }
-  }
+
+    &.is-disabled {
+        .nx-expansion-panel__header-content {
+            @include var(color, negative-dimmed);
+        }
+
+        .nx-expansion-panel__chevron {
+            @include var(color, negative-dimmed);
+        }
+    }
 }
 
 // disabled styles
 :host.is-disabled.is-disabled {
-  .nx-expansion-panel__chevron, .nx-expansion-panel__header-content {
-    cursor: not-allowed;
-    @include var(color, accordion-disabled-color);
-  }
+    .nx-expansion-panel__chevron,
+    .nx-expansion-panel__header-content {
+        cursor: not-allowed;
+        @include var(color, accordion-disabled-color);
+    }
 }
 
 // a11y styles
 :host.cdk-keyboard-focused {
-  .nx-expansion-panel__header-content {
-    @include focus-style;
-    z-index: 1;     // otherwise top border of next panel is displayed in focused element
-  }
+    .nx-expansion-panel__header-content {
+        @include focus-style;
+        z-index: 1; // otherwise top border of next panel is displayed in focused element
+    }
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host {
-    // needed to prevent edge from using the normal text background behind text instead
-    // of button text
-    // important: you have to mirror all stylesheets from the normal styles that they
-    // get preferred in IE11 then
-    -ms-high-contrast-adjust: none;
-  }
-
-  :host-context(.nx-expansion-panel--regular):not(.is-disabled),
-  :host-context(.nx-expansion-panel--light:not(.nx-expansion-panel--negative)),
-  :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative),
-  :host-context(.nx-expansion-panel--extra-light),
-  :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
-
-    .nx-expansion-panel__header-content,
-    &:not(.is-disabled) .nx-expansion-panel__header-content:hover {
-      color: buttonText;
-      background-color: buttonFace;
-
-      .nx-expansion-panel__chevron {
-        color: buttonText;
-      }
+    :host {
+        // needed to prevent edge from using the normal text background behind text instead
+        // of button text
+        // important: you have to mirror all stylesheets from the normal styles that they
+        // get preferred in IE11 then
+        -ms-high-contrast-adjust: none;
     }
-  }
 
-  :host.is-disabled.is-disabled .nx-expansion-panel__header-content {
-    color: GrayText !important;
-    background-color: buttonFace;
+    :host-context(.nx-expansion-panel--regular):not(.is-disabled),
+    :host-context(.nx-expansion-panel--light:not(.nx-expansion-panel--negative)),
+    :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative),
+    :host-context(.nx-expansion-panel--extra-light),
+    :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
+        .nx-expansion-panel__header-content,
+        &:not(.is-disabled) .nx-expansion-panel__header-content:hover {
+            color: buttonText;
+            background-color: buttonFace;
 
-    .nx-expansion-panel__chevron {
-      color: GrayText!important;
+            .nx-expansion-panel__chevron {
+                color: buttonText;
+            }
+        }
     }
-  }
+
+    :host.is-disabled.is-disabled .nx-expansion-panel__header-content {
+        color: GrayText !important;
+        background-color: buttonFace;
+
+        .nx-expansion-panel__chevron {
+            color: GrayText !important;
+        }
+    }
 }

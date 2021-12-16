@@ -1,19 +1,19 @@
-@import "../shared-styles/index";
+@import '../shared-styles/index';
 
 :host {
-  height: 48px;
-  border-bottom: nx-border-size(xs) solid;
-  @include var(border-bottom-color, toolbar-border-bottom-color);
-  @include var(background, toolbar-background);
-  display: flex;
-  box-sizing: border-box;
-  padding: 0 nx-spacer(2m);
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  white-space: nowrap;
+    height: 48px;
+    border-bottom: nx-border-size(xs) solid;
+    @include var(border-bottom-color, toolbar-border-bottom-color);
+    @include var(background, toolbar-background);
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 nx-spacer(2m);
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid windowText;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        border: 1px solid windowText;
+    }
 }

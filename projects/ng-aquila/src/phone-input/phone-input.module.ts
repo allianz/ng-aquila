@@ -7,17 +7,9 @@ import { NxPhoneInputComponent } from './phone-input.component';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [
-    NxDropdownModule,
-    CommonModule,
-    FormsModule,
-    NxInputModule
-  ],
-  exports: [
-    NxPhoneInputComponent,
-    NxFormfieldModule
-  ],
-  declarations: [NxPhoneInputComponent],
-  providers: [],
+    imports: [NxDropdownModule, CommonModule, FormsModule, NxInputModule],
+    exports: [NxPhoneInputComponent, NxFormfieldModule],
+    declarations: [NxPhoneInputComponent],
+    providers: [],
 })
-export class NxPhoneInputModule { }
+export class NxPhoneInputModule {}

@@ -3,24 +3,20 @@ import { ComponentService } from '../../service/component.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 
 @Component({
-  selector: 'nxv-documentation',
-  templateUrl: 'documentation-page.component.html',
-  styleUrls: ['./documentation-page.component.scss']
+    selector: 'nxv-documentation',
+    templateUrl: 'documentation-page.component.html',
+    styleUrls: ['./documentation-page.component.scss'],
 })
-
 export class NxvDocumentationComponent implements OnInit, OnDestroy {
-  constructor(
-    public componentService: ComponentService,
-    public documentationFrame: DocumentationFrameComponent
-  ) { }
+    constructor(public componentService: ComponentService, public documentationFrame: DocumentationFrameComponent) {}
 
-  ngOnInit() { }
+    ngOnInit() {}
 
-  ngOnDestroy() {
-    this.componentService.current.next();
-  }
+    ngOnDestroy() {
+        this.componentService.current.next();
+    }
 
-  mainContentClicked() {
-    this.documentationFrame.mobileSidebar = false;
-  }
+    mainContentClicked() {
+        this.documentationFrame.mobileSidebar = false;
+    }
 }

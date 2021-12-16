@@ -1,34 +1,34 @@
 nx-file-upload-name {
-  flex: 1;
+    flex: 1;
 }
 
 nx-file-upload-size {
-  flex: none;
+    flex: none;
 }
 
 nx-file-upload-status {
-  flex: 0 1 auto;
-  padding: 0 16px;
+    flex: 0 1 auto;
+    padding: 0 16px;
 }
 
 nx-file-upload-delete {
-  flex: 0 1 auto;
+    flex: 0 1 auto;
 }
 
 form {
-  padding-top: 16px;
-  width: 100%;
+    padding-top: 16px;
+    width: 100%;
 }
 
 .horizontal-buttons {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 @media (max-width: 703px) {
-  nx-file-upload-name {
-    flex: 100%;
-    order: -1;
-    margin-bottom: 16px;
-  }
+    nx-file-upload-name {
+        flex: 100%;
+        order: -1;
+        margin-bottom: 16px;
+    }
 }

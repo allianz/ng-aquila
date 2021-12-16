@@ -1,27 +1,21 @@
 <div class="nx-modal" role="dialog" cdkTrapFocus cdkTrapFocusAutoCapture cdkFocusInitial>
-  <div class="nx-modal__backdrop" (click)="clickOutsideModal()">
-    <div class="nx-modal__position">
-      <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
+    <div class="nx-modal__backdrop" (click)="clickOutsideModal()">
+        <div class="nx-modal__position">
+            <div class="nx-modal__container" (click)="cancelClick($event)" [@scaleUpDown]>
+                <button #closeButton (click)="closeButtonClick()" *ngIf="showCloseIcon" [attr.aria-label]="closeButtonLabel" class="nx-modal__close" type="button">
+                    <nx-icon name="close"></nx-icon>
+                </button>
 
-        <button #closeButton
-          (click)="closeButtonClick()"
-          *ngIf="showCloseIcon"
-          [attr.aria-label]="closeButtonLabel"
-          class="nx-modal__close"
-          type="button">
-          <nx-icon name="close"></nx-icon>
-        </button>
+                <div class="nx-modal__content-wrapper" cdkScrollable>
+                    <ng-container *ngIf="body; else projectContent">
+                        <ng-container *ngTemplateOutlet="body"></ng-container>
+                    </ng-container>
 
-        <div class="nx-modal__content-wrapper" cdkScrollable>
-          <ng-container *ngIf="body else projectContent">
-            <ng-container *ngTemplateOutlet="body"></ng-container>
-          </ng-container>
-
-          <ng-template #projectContent>
-            <ng-content></ng-content>
-          </ng-template>
+                    <ng-template #projectContent>
+                        <ng-content></ng-content>
+                    </ng-template>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

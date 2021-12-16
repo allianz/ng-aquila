@@ -7,14 +7,8 @@ import { CommonModule } from '@angular/common';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    ColorPickerModule,
-    NxIconModule,
-    NxButtonModule
-  ],
-  exports: [CssVarSidebarComponent],
-  declarations: [CssVarSidebarComponent],
+    imports: [CommonModule, FormsModule, ColorPickerModule, NxIconModule, NxButtonModule],
+    exports: [CssVarSidebarComponent],
+    declarations: [CssVarSidebarComponent],
 })
-export class CssVarSidebarModule { }
+export class CssVarSidebarModule {}

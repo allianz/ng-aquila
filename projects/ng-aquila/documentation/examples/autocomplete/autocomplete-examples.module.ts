@@ -12,33 +12,33 @@ import { AutocompleteFilteringExampleComponent } from './autocomplete-filtering/
 import { AutocompleteOutlineExampleComponent } from './autocomplete-outline/autocomplete-outline-example';
 
 const EXAMPLES = [
-  AutocompleteBasicExampleComponent,
-  AutocompleteDataBindingExampleComponent,
-  AutocompleteDefaultRenderingExampleComponent,
-  AutocompleteFilteringExampleComponent,
-  AutocompleteOutlineExampleComponent
+    AutocompleteBasicExampleComponent,
+    AutocompleteDataBindingExampleComponent,
+    AutocompleteDefaultRenderingExampleComponent,
+    AutocompleteFilteringExampleComponent,
+    AutocompleteOutlineExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxAutocompleteModule,
-    NxInputModule,
-    NxNaturalLanguageFormModule,
-    ExamplesSharedModule,
-    HttpClientJsonpModule,
-    HttpClientModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxAutocompleteModule,
+        NxInputModule,
+        NxNaturalLanguageFormModule,
+        ExamplesSharedModule,
+        HttpClientJsonpModule,
+        HttpClientModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class AutocompleteExamplesModule {
-  static components() {
-    return {
-      'autocomplete-basic': AutocompleteBasicExampleComponent,
-      'autocomplete-data-binding': AutocompleteDataBindingExampleComponent,
-      'autocomplete-default-rendering': AutocompleteDefaultRenderingExampleComponent,
-      'autocomplete-filtering': AutocompleteFilteringExampleComponent,
-      'autocomplete-outline': AutocompleteOutlineExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'autocomplete-basic': AutocompleteBasicExampleComponent,
+            'autocomplete-data-binding': AutocompleteDataBindingExampleComponent,
+            'autocomplete-default-rendering': AutocompleteDefaultRenderingExampleComponent,
+            'autocomplete-filtering': AutocompleteFilteringExampleComponent,
+            'autocomplete-outline': AutocompleteOutlineExampleComponent,
+        };
+    }
 }

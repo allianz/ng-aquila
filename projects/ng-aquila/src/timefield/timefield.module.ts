@@ -6,10 +6,9 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxTimefieldIntl } from './timefield-intl';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, NxRadioModule],
-  declarations: [NxTimefieldComponent],
-  exports: [NxTimefieldComponent],
-  providers: [NxTimefieldIntl],
-
+    imports: [CommonModule, FormsModule, NxRadioModule],
+    declarations: [NxTimefieldComponent],
+    exports: [NxTimefieldComponent],
+    providers: [NxTimefieldIntl],
 })
-export class NxTimefieldModule { }
+export class NxTimefieldModule {}

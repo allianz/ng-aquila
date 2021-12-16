@@ -1,4 +1,3 @@
-import {OutputNameUpgradeData, TargetVersion, VersionChanges} from '@angular/cdk/schematics';
+import { OutputNameUpgradeData, TargetVersion, VersionChanges } from '@angular/cdk/schematics';
 
-export const outputNames: VersionChanges<OutputNameUpgradeData> = {
-};
+export const outputNames: VersionChanges<OutputNameUpgradeData> = {};

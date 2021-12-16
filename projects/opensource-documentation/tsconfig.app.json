@@ -1,16 +1,13 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../dist/out-tsc"
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true
-  },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "typeRoots": ["node_modules/@types", "typings.d.ts"],
-  "types": ["node"],
-  "include": ["**/*.d.ts"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../dist/out-tsc"
+    },
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true
+    },
+    "files": ["src/main.ts", "src/polyfills.ts"],
+    "typeRoots": ["node_modules/@types", "typings.d.ts"],
+    "types": ["node"],
+    "include": ["**/*.d.ts"]
 }

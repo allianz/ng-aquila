@@ -1,27 +1,24 @@
 <nav>
-  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
-    <nx-tree-node *nxTreeNodeDef="let node">
-       <button class="docs-action" nxAction
-           nxTreeNodePadding
-           nxTreeNodeActionItem
-           nxTreeNodePaddingIndent="16"
-           routerLinkActive="is-selected"
-           routerLink="{{node.component.id}}"
-           queryParamsHandling="preserve"
-           title="{{node.label}}">
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
-       <button class="docs-action" nxAction
-           nxTreeNodeToggle
-           nxTreeNodeActionItem
-           nxTreeNodePadding
-           expandable
-           [expanded]="_treeControl.isExpanded(node)"
-           title="{{node.label}}">
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-  </nx-tree>
+    <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+        <nx-tree-node *nxTreeNodeDef="let node">
+            <button
+                class="docs-action"
+                nxAction
+                nxTreeNodePadding
+                nxTreeNodeActionItem
+                nxTreeNodePaddingIndent="16"
+                routerLinkActive="is-selected"
+                routerLink="{{ node.component.id }}"
+                queryParamsHandling="preserve"
+                title="{{ node.label }}"
+            >
+                {{ node.label }}
+            </button>
+        </nx-tree-node>
+        <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+            <button class="docs-action" nxAction nxTreeNodeToggle nxTreeNodeActionItem nxTreeNodePadding expandable [expanded]="_treeControl.isExpanded(node)" title="{{ node.label }}">
+                {{ node.label }}
+            </button>
+        </nx-tree-node>
+    </nx-tree>
 </nav>

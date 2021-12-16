@@ -34,10 +34,10 @@ Use this component to present a card with different options.
 
 <!-- example(selectable-card-dynamic) -->
 
-
 <div class="docs-expert-container">
 
 ### Expert: Appearance
+
 With `appearance` you can change the styling of the card to expert.
 
 <!-- example(selectable-card-expert) -->

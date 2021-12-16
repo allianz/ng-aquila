@@ -10,312 +10,291 @@ import { NxWordComponent } from './word.component';
 
 @Directive()
 abstract class NaturalLanguageFormTest {
-  public size: string = 'regular';
-  public value!: string;
+    public size: string = 'regular';
+    public value!: string;
 
-  @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
-  @ViewChild(NxNaturalLanguageFormComponent,  { read: ElementRef }) formInstanceNative!: ElementRef;
-  @ViewChild(NgControl) control!: NgControl;
-  @ViewChildren(NxInputDirective) inputs!: QueryList<NxInputDirective>;
-  @ViewChildren(NxWordComponent, {read: ElementRef}) words!: QueryList<ElementRef>;
+    @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
+    @ViewChild(NxNaturalLanguageFormComponent, { read: ElementRef }) formInstanceNative!: ElementRef;
+    @ViewChild(NgControl) control!: NgControl;
+    @ViewChildren(NxInputDirective) inputs!: QueryList<NxInputDirective>;
+    @ViewChildren(NxWordComponent, { read: ElementRef }) words!: QueryList<ElementRef>;
 }
 
 describe('NxNaturalLanguageFormComponent', () => {
-  let fixture: ComponentFixture<NaturalLanguageFormTest>;
-  let testInstance: NaturalLanguageFormTest;
-  let formInstance: NxNaturalLanguageFormComponent;
-  let overlayContainer: OverlayContainer;
+    let fixture: ComponentFixture<NaturalLanguageFormTest>;
+    let testInstance: NaturalLanguageFormTest;
+    let formInstance: NxNaturalLanguageFormComponent;
+    let overlayContainer: OverlayContainer;
 
-  function createTestComponent(component: Type<NaturalLanguageFormTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
-    formInstance = testInstance.formInstance;
-  }
-
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-          NxNaturalLanguageFormModule,
-          FormsModule,
-          ReactiveFormsModule,
-          NxInputModule
-      ],
-      declarations: [
-        NaturalLanguageFormBasicComponent,
-        NaturalLanguageFormErrorComponent,
-        NaturalLanguageFormSizesComponent,
-        NaturalLanguageFormSmallComponent,
-        FormWithPreviousFormfieldComponent
-      ]
-    }).compileComponents();
-  }));
-
-  beforeEach(waitForAsync(() => {
-    inject([OverlayContainer], (oc: OverlayContainer) => {
-      overlayContainer = oc;
-    })();
-  }));
-
-  afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
-    // Since we're resetting the testing module in some of the tests,
-    // we can potentially have multiple overlay containers.
-    currentOverlayContainer.ngOnDestroy();
-    overlayContainer.ngOnDestroy();
-  }));
-
-  describe('basic natural language form', () => {
-
-    it(
-      'should create the component',
-      fakeAsync(() => {
-        createTestComponent(NaturalLanguageFormBasicComponent);
-        expect(formInstance).toBeTruthy();
-      })
-    );
-
-    it('should show an error in a popover', fakeAsync(() => {
-        createTestComponent(NaturalLanguageFormBasicComponent);
-        const formControl = testInstance.inputs.first.ngControl.control as FormControl;
-        formControl.markAsTouched();
-
+    function createTestComponent(component: Type<NaturalLanguageFormTest>) {
+        fixture = TestBed.createComponent(component);
         fixture.detectChanges();
-        tick();
+        testInstance = fixture.componentInstance;
+        formInstance = testInstance.formInstance;
+    }
 
-        const popover: HTMLElement = overlayContainer.getContainerElement();
-        expect(popover.innerText.trim()).toBe('This field is required.');
-      })
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
+                declarations: [NaturalLanguageFormBasicComponent, NaturalLanguageFormErrorComponent, NaturalLanguageFormSizesComponent, NaturalLanguageFormSmallComponent, FormWithPreviousFormfieldComponent],
+            }).compileComponents();
+        }),
     );
 
-    it('should dispose overlay container for word popover upon destroy', fakeAsync(() => {
-      createTestComponent(NaturalLanguageFormBasicComponent);
-      const formControl = testInstance.inputs.first.ngControl.control as FormControl;
-      formControl.markAsTouched();
+    beforeEach(
+        waitForAsync(() => {
+            inject([OverlayContainer], (oc: OverlayContainer) => {
+                overlayContainer = oc;
+            })();
+        }),
+    );
 
-      fixture.detectChanges();
-      tick();
-
-      const popover: HTMLElement = overlayContainer.getContainerElement();
-      expect(popover.innerText.trim()).toBe('This field is required.');
-
-      fixture.destroy();
-
-      expect(overlayContainer.getContainerElement().childElementCount).toBe(0);
-      expect(overlayContainer.getContainerElement().textContent).toBe('');
-    })
-  );
-
-    it('should update the positions of error popovers when everything is stable', fakeAsync(() => {
-      // on submit, a nx-error pops up for the formfield on top of the nlf.
-      // this needs additional space and the error-popover should reposition itself.
-      createTestComponent(FormWithPreviousFormfieldComponent);
-
-      // get position of popover after touch
-      (testInstance as FormWithPreviousFormfieldComponent).nlfInput.markAsTouched();
-      fixture.detectChanges();
-      tick();
-      const popover: HTMLElement = overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLElement;
-      const yAfterTouch = popover.getBoundingClientRect().y;
-
-      // get position of popover after submit
-      const button = fixture.debugElement.nativeElement.querySelector('button') as HTMLButtonElement;
-      button.click();
-      fixture.detectChanges();
-      tick();
-      const yAfterSubmit = popover.getBoundingClientRect().y;
-      const errorDiv = fixture.debugElement.nativeElement.querySelector('nx-error');
-
-      expect(popover.innerText.trim()).toBe('This word is required!');
-      // use lessThan because margin is not included in height of errorDiv
-      expect(yAfterTouch + errorDiv.getBoundingClientRect().height).toBeLessThan(yAfterSubmit);
+    afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
+        // Since we're resetting the testing module in some of the tests,
+        // we can potentially have multiple overlay containers.
+        currentOverlayContainer.ngOnDestroy();
+        overlayContainer.ngOnDestroy();
     }));
-  });
 
-  describe('with errors', () => {
+    describe('basic natural language form', () => {
+        it('should create the component', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormBasicComponent);
+            expect(formInstance).toBeTruthy();
+        }));
 
-    it('should throw an error if a word has no input', fakeAsync(() => {
-      expect(() => {
-        createTestComponent(NaturalLanguageFormErrorComponent);
-      }).toThrowError('NxWordComponent requires an NxFormfieldControl compatible input.');
-    })
-  );
-  });
+        it('should show an error in a popover', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormBasicComponent);
+            const formControl = testInstance.inputs.first.ngControl.control as FormControl;
+            formControl.markAsTouched();
 
-  describe('sizing', () => {
+            fixture.detectChanges();
+            tick();
 
-    it('words should apply different sizes', fakeAsync(() => {
-      let word: ElementRef;
+            const popover: HTMLElement = overlayContainer.getContainerElement();
+            expect(popover.innerText.trim()).toBe('This field is required.');
+        }));
 
-      createTestComponent(NaturalLanguageFormSizesComponent);
+        it('should dispose overlay container for word popover upon destroy', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormBasicComponent);
+            const formControl = testInstance.inputs.first.ngControl.control as FormControl;
+            formControl.markAsTouched();
 
-      testInstance.size = 'long';
-      fixture.detectChanges();
-      tick();
+            fixture.detectChanges();
+            tick();
 
-      word = testInstance.words.first;
-      expect(word.nativeElement.classList.contains('size-long')).toBe(true);
+            const popover: HTMLElement = overlayContainer.getContainerElement();
+            expect(popover.innerText.trim()).toBe('This field is required.');
 
-      testInstance.size = 'short';
-      fixture.detectChanges();
-      tick();
+            fixture.destroy();
 
-      expect(word.nativeElement.classList.contains('size-short')).toBe(true);
-      })
-    );
+            expect(overlayContainer.getContainerElement().childElementCount).toBe(0);
+            expect(overlayContainer.getContainerElement().textContent).toBe('');
+        }));
 
-    it('should grow and shrink words with input', fakeAsync(() => {
-        let word: ElementRef;
+        it('should update the positions of error popovers when everything is stable', fakeAsync(() => {
+            // on submit, a nx-error pops up for the formfield on top of the nlf.
+            // this needs additional space and the error-popover should reposition itself.
+            createTestComponent(FormWithPreviousFormfieldComponent);
 
-        createTestComponent(NaturalLanguageFormSizesComponent);
+            // get position of popover after touch
+            (testInstance as FormWithPreviousFormfieldComponent).nlfInput.markAsTouched();
+            fixture.detectChanges();
+            tick();
+            const popover: HTMLElement = overlayContainer.getContainerElement().querySelector('.nx-popover__content') as HTMLElement;
+            const yAfterTouch = popover.getBoundingClientRect().y;
 
-        fixture.detectChanges();
-        tick();
+            // get position of popover after submit
+            const button = fixture.debugElement.nativeElement.querySelector('button') as HTMLButtonElement;
+            button.click();
+            fixture.detectChanges();
+            tick();
+            const yAfterSubmit = popover.getBoundingClientRect().y;
+            const errorDiv = fixture.debugElement.nativeElement.querySelector('nx-error');
 
-        word = testInstance.words.first;
-        const dimensionA = (word.nativeElement as HTMLElement).getBoundingClientRect();
-
-        // let's test if it's growing
-        testInstance.value = 'lorem ipsum dolar sit amet';
-        fixture.detectChanges();
-        tick();
-        fixture.detectChanges();
-        const dimensionB = (word.nativeElement as HTMLElement).getBoundingClientRect();
-        expect(dimensionB.width).toBeGreaterThan(dimensionA.width);
-
-        // should shrink too
-        testInstance.value = '';
-        fixture.detectChanges();
-        tick();
-        fixture.detectChanges();
-
-        const dimensionC = (word.nativeElement as HTMLElement).getBoundingClientRect();
-        expect(dimensionC.width).toBeCloseTo(dimensionA.width);
-      })
-    );
-
-    it('never grow larger than the container', fakeAsync(() => {
-      let word: ElementRef;
-
-      createTestComponent(NaturalLanguageFormSizesComponent);
-      testInstance.value = 'lorem ipsum dolar sit amet lorem  ipsum dolar sit amet';
-
-      fixture.detectChanges();
-      tick();
-      fixture.detectChanges();
-
-      word = testInstance.words.first;
-      const dimensionWord = (word.nativeElement as HTMLElement).getBoundingClientRect();
-      const dimensionForm = (testInstance.formInstanceNative.nativeElement as HTMLElement).getBoundingClientRect();
-
-      expect(dimensionWord.width).toBeLessThanOrEqual(dimensionForm.width);
-    }));
-  });
-
-  describe('a11y', () => {
-    it('has no accessibility violations', async () => {
-      createTestComponent(NaturalLanguageFormBasicComponent);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+            expect(popover.innerText.trim()).toBe('This word is required!');
+            // use lessThan because margin is not included in height of errorDiv
+            expect(yAfterTouch + errorDiv.getBoundingClientRect().height).toBeLessThan(yAfterSubmit);
+        }));
     });
 
-    it('assigns given nxLabel to the control via aria-label', fakeAsync(() => {
-      createTestComponent(NaturalLanguageFormBasicComponent);
-      fixture.detectChanges();
-      tick();
-
-      const input = testInstance.inputs.first.elementRef.nativeElement;
-      expect(input.attributes.getNamedItem('aria-label').value).toBe('Label for the form');
-    }));
-  });
-
-  describe('NLF Sizes', () => {
-
-    it('NLF should apply the change of size', () => {
-      createTestComponent(NaturalLanguageFormSmallComponent);
-      const nlfElement = fixture.nativeElement.querySelector('nx-natural-language-form') as HTMLButtonElement;
-
-      expect(testInstance.formInstance.size).toBe('small');
-      expect(nlfElement.classList).toContain('nx-natural-language-form--small');
-
-      testInstance.formInstance.size = 'large';
-      fixture.detectChanges();
-
-      expect(testInstance.formInstance.size).toBe('large');
-      expect(nlfElement.classList.contains('nx-natural-language-form--large')).toBe(true);
+    describe('with errors', () => {
+        it('should throw an error if a word has no input', fakeAsync(() => {
+            expect(() => {
+                createTestComponent(NaturalLanguageFormErrorComponent);
+            }).toThrowError('NxWordComponent requires an NxFormfieldControl compatible input.');
+        }));
     });
-  });
+
+    describe('sizing', () => {
+        it('words should apply different sizes', fakeAsync(() => {
+            let word: ElementRef;
+
+            createTestComponent(NaturalLanguageFormSizesComponent);
+
+            testInstance.size = 'long';
+            fixture.detectChanges();
+            tick();
+
+            word = testInstance.words.first;
+            expect(word.nativeElement.classList.contains('size-long')).toBe(true);
+
+            testInstance.size = 'short';
+            fixture.detectChanges();
+            tick();
+
+            expect(word.nativeElement.classList.contains('size-short')).toBe(true);
+        }));
+
+        it('should grow and shrink words with input', fakeAsync(() => {
+            let word: ElementRef;
+
+            createTestComponent(NaturalLanguageFormSizesComponent);
+
+            fixture.detectChanges();
+            tick();
+
+            word = testInstance.words.first;
+            const dimensionA = (word.nativeElement as HTMLElement).getBoundingClientRect();
+
+            // let's test if it's growing
+            testInstance.value = 'lorem ipsum dolar sit amet';
+            fixture.detectChanges();
+            tick();
+            fixture.detectChanges();
+            const dimensionB = (word.nativeElement as HTMLElement).getBoundingClientRect();
+            expect(dimensionB.width).toBeGreaterThan(dimensionA.width);
+
+            // should shrink too
+            testInstance.value = '';
+            fixture.detectChanges();
+            tick();
+            fixture.detectChanges();
+
+            const dimensionC = (word.nativeElement as HTMLElement).getBoundingClientRect();
+            expect(dimensionC.width).toBeCloseTo(dimensionA.width);
+        }));
+
+        it('never grow larger than the container', fakeAsync(() => {
+            let word: ElementRef;
+
+            createTestComponent(NaturalLanguageFormSizesComponent);
+            testInstance.value = 'lorem ipsum dolar sit amet lorem  ipsum dolar sit amet';
+
+            fixture.detectChanges();
+            tick();
+            fixture.detectChanges();
+
+            word = testInstance.words.first;
+            const dimensionWord = (word.nativeElement as HTMLElement).getBoundingClientRect();
+            const dimensionForm = (testInstance.formInstanceNative.nativeElement as HTMLElement).getBoundingClientRect();
+
+            expect(dimensionWord.width).toBeLessThanOrEqual(dimensionForm.width);
+        }));
+    });
+
+    describe('a11y', () => {
+        it('has no accessibility violations', async () => {
+            createTestComponent(NaturalLanguageFormBasicComponent);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
+
+        it('assigns given nxLabel to the control via aria-label', fakeAsync(() => {
+            createTestComponent(NaturalLanguageFormBasicComponent);
+            fixture.detectChanges();
+            tick();
+
+            const input = testInstance.inputs.first.elementRef.nativeElement;
+            expect(input.attributes.getNamedItem('aria-label').value).toBe('Label for the form');
+        }));
+    });
+
+    describe('NLF Sizes', () => {
+        it('NLF should apply the change of size', () => {
+            createTestComponent(NaturalLanguageFormSmallComponent);
+            const nlfElement = fixture.nativeElement.querySelector('nx-natural-language-form') as HTMLButtonElement;
+
+            expect(testInstance.formInstance.size).toBe('small');
+            expect(nlfElement.classList).toContain('nx-natural-language-form--small');
+
+            testInstance.formInstance.size = 'large';
+            fixture.detectChanges();
+
+            expect(testInstance.formInstance.size).toBe('large');
+            expect(nlfElement.classList.contains('nx-natural-language-form--large')).toBe(true);
+        });
+    });
 });
 
 @Component({
-  template: `
-    <nx-natural-language-form>
-      A Word
-      <nx-word nxLabel='Label for the form'>
-        <input nxInput ngModel required />
-        <div nxError>This field is required.</div>
-      </nx-word>
-      with copy.
-    </nx-natural-language-form>
-  `
+    template: `
+        <nx-natural-language-form>
+            A Word
+            <nx-word nxLabel="Label for the form">
+                <input nxInput ngModel required />
+                <div nxError>This field is required.</div>
+            </nx-word>
+            with copy.
+        </nx-natural-language-form>
+    `,
 })
 class NaturalLanguageFormBasicComponent extends NaturalLanguageFormTest {}
 
 @Component({
-  template: `
-    <nx-natural-language-form>
-      <nx-word></nx-word>
-    </nx-natural-language-form>
-  `
+    template: `
+        <nx-natural-language-form>
+            <nx-word></nx-word>
+        </nx-natural-language-form>
+    `,
 })
 class NaturalLanguageFormErrorComponent extends NaturalLanguageFormTest {}
 
 @Component({
-  template: `
-    <nx-natural-language-form [ngStyle]="{'width':'500px'}">
-      <nx-word [nxSize]="size">
-        <input nxInput [(ngModel)]="value" required />
-      </nx-word>
-    </nx-natural-language-form>
-  `
+    template: `
+        <nx-natural-language-form [ngStyle]="{ width: '500px' }">
+            <nx-word [nxSize]="size">
+                <input nxInput [(ngModel)]="value" required />
+            </nx-word>
+        </nx-natural-language-form>
+    `,
 })
 class NaturalLanguageFormSizesComponent extends NaturalLanguageFormTest {}
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <nx-natural-language-form size="small">
-      <nx-word>
-        <input nxInput [(ngModel)]="value" required />
-      </nx-word>
-    </nx-natural-language-form>
-  `
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
+        <nx-natural-language-form size="small">
+            <nx-word>
+                <input nxInput [(ngModel)]="value" required />
+            </nx-word>
+        </nx-natural-language-form>
+    `,
 })
 class NaturalLanguageFormSmallComponent extends NaturalLanguageFormTest {}
 
 @Component({
-  template: `
-    <form [formGroup]="form">
-      <nx-formfield [nxLabel]="'some label'">
-        <input nxInput [formControl]='input'/>
-        <nx-error nxFormfieldError>
-          This field is required!
-        </nx-error>
-      </nx-formfield>
-      <nx-natural-language-form>
-        <span>text text text text text text text text</span>
-        <nx-word nxSize='short' nxLabel='Always a label'>
-          <input nxInput [formControl]='nlfInput'/>
-          <div nxError>This word is required!</div>
-        </nx-word>
-      </nx-natural-language-form>
-      <button type="submit">submit</button>
-    </form>
-  `
+    template: `
+        <form [formGroup]="form">
+            <nx-formfield [nxLabel]="'some label'">
+                <input nxInput [formControl]="input" />
+                <nx-error nxFormfieldError> This field is required! </nx-error>
+            </nx-formfield>
+            <nx-natural-language-form>
+                <span>text text text text text text text text</span>
+                <nx-word nxSize="short" nxLabel="Always a label">
+                    <input nxInput [formControl]="nlfInput" />
+                    <div nxError>This word is required!</div>
+                </nx-word>
+            </nx-natural-language-form>
+            <button type="submit">submit</button>
+        </form>
+    `,
 })
 class FormWithPreviousFormfieldComponent extends NaturalLanguageFormTest {
-  input = new FormControl(null, Validators.required);
-  nlfInput = new FormControl(null, Validators.required);
-  form = new FormGroup({
-    input: this.input,
-    nlfInput: this.nlfInput
-  });
+    input = new FormControl(null, Validators.required);
+    nlfInput = new FormControl(null, Validators.required);
+    form = new FormGroup({
+        input: this.input,
+        nlfInput: this.nlfInput,
+    });
 }

@@ -9,58 +9,61 @@ import { NxMenuModule } from './menu.module';
 
 @Directive()
 abstract class MenuItemTest {
-  @ViewChild(NxMenuItemDirective) menuGroupInstance!: NxMenuItemDirective;
+    @ViewChild(NxMenuItemDirective) menuGroupInstance!: NxMenuItemDirective;
 }
 
 describe(NxMenuItemDirective.name, () => {
-  let fixture: ComponentFixture<MenuItemTest>;
-  let testInstance: MenuItemTest;
-  let menuGroupInstance: NxMenuItemDirective;
-  let menuGroupNativeElement: HTMLElement;
+    let fixture: ComponentFixture<MenuItemTest>;
+    let testInstance: MenuItemTest;
+    let menuGroupInstance: NxMenuItemDirective;
+    let menuGroupNativeElement: HTMLElement;
 
-  function createTestComponent(component: Type<MenuItemTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
-    menuGroupInstance = testInstance.menuGroupInstance;
-    menuGroupNativeElement = (fixture.nativeElement.querySelector('[nxMenuItem]') as HTMLElement);
-  }
+    function createTestComponent(component: Type<MenuItemTest>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        menuGroupInstance = testInstance.menuGroupInstance;
+        menuGroupNativeElement = fixture.nativeElement.querySelector('[nxMenuItem]') as HTMLElement;
+    }
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        BasicMenuItem
-      ],
-      imports: [
-        NxMenuModule,
-        NoopAnimationsModule
-      ]
-    }).compileComponents();
-  }));
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [BasicMenuItem],
+                imports: [NxMenuModule, NoopAnimationsModule],
+            }).compileComponents();
+        }),
+    );
 
-  describe('basic menu item', () => {
-    beforeEach(() => {
-      createTestComponent(BasicMenuItem);
+    describe('basic menu item', () => {
+        beforeEach(() => {
+            createTestComponent(BasicMenuItem);
+        });
+
+        it(
+            'creates the menu item',
+            waitForAsync(() => {
+                expect(menuGroupInstance).toBeTruthy();
+            }),
+        );
+
+        it(
+            'menu item includes the bem block element',
+            waitForAsync(() => {
+                expect(menuGroupNativeElement.classList.contains('nx-menu__item')).toBe(true);
+            }),
+        );
     });
 
-    it('creates the menu item', waitForAsync(() => {
-      expect(menuGroupInstance).toBeTruthy();
-    }));
-
-    it('menu item includes the bem block element', waitForAsync(() => {
-      expect(menuGroupNativeElement.classList.contains('nx-menu__item')).toBe(true);
-    }));
-  });
-
-  describe('a11y', () => {
-    it('has no accessibility violations', async () => {
-      createTestComponent(BasicMenuItem);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
+    describe('a11y', () => {
+        it('has no accessibility violations', async () => {
+            createTestComponent(BasicMenuItem);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
     });
-  });
 });
 
 @Component({
-  template: `<div nxMenuItem></div>`
+    template: `<div nxMenuItem></div>`,
 })
 class BasicMenuItem extends MenuItemTest {}

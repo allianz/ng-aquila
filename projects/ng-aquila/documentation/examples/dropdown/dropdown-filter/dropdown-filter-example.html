@@ -1,18 +1,16 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="12,12,6">
-      <nx-formfield nxLabel="Car brand">
-        <nx-dropdown [nxShowFilter]="true" nxFilterPlaceholder="Type to search car">
-          <nx-dropdown-item
-            *ngFor="let brand of options" [nxValue]="brand"></nx-dropdown-item>
-        </nx-dropdown>
-      </nx-formfield>
+    <div nxRow>
+        <div nxCol="12,12,6">
+            <nx-formfield nxLabel="Car brand">
+                <nx-dropdown [nxShowFilter]="true" nxFilterPlaceholder="Type to search car">
+                    <nx-dropdown-item *ngFor="let brand of options" [nxValue]="brand"></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+        <div nxCol="12,12,6">
+            <nx-formfield nxLabel="Car brand">
+                <nx-multi-select filter filterPlaceholder="Type to search car" [options]="options"> </nx-multi-select>
+            </nx-formfield>
+        </div>
     </div>
-    <div nxCol="12,12,6">
-      <nx-formfield nxLabel="Car brand">
-        <nx-multi-select filter filterPlaceholder="Type to search car" [options]="options">
-        </nx-multi-select>
-      </nx-formfield>
-    </div>
-  </div>
 </div>

@@ -7,19 +7,8 @@ import { NxPasswordToggleComponent } from './password-toggle.component';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxFormfieldModule,
-    NxIconModule
-  ],
-  declarations: [
-    NxInputDirective,
-    NxPasswordToggleComponent
-  ],
-  exports: [
-    NxFormfieldModule,
-    NxInputDirective,
-    NxPasswordToggleComponent
-  ]
+    imports: [CommonModule, NxFormfieldModule, NxIconModule],
+    declarations: [NxInputDirective, NxPasswordToggleComponent],
+    exports: [NxFormfieldModule, NxInputDirective, NxPasswordToggleComponent],
 })
-export class NxInputModule { }
+export class NxInputModule {}

@@ -1,16 +1,7 @@
-<input [attr.id]="toggleButtonId"
-    #toggleInput
-    [attr.name]="toggleId"
-    [checked]="selected"
-    class="nx-radio-toggle__input"
-    type="radio"
-    (click)="selected = true"
-    [disabled]="disabled">
+<input [attr.id]="toggleButtonId" #toggleInput [attr.name]="toggleId" [checked]="selected" class="nx-radio-toggle__input" type="radio" (click)="selected = true" [disabled]="disabled" />
 <div (click)="triggerInputClick($event)" #toggleButtonLabelContainer class="nx-radio-toggle__label-container">
-  <label [attr.for]="toggleButtonId" class="nx-radio-toggle__label">
-      <nx-icon class="nx-toggle-button__mobile-check" name="check" aria-hidden="true"></nx-icon>
-      <ng-content></ng-content>
-  </label>
+    <label [attr.for]="toggleButtonId" class="nx-radio-toggle__label">
+        <nx-icon class="nx-toggle-button__mobile-check" name="check" aria-hidden="true"></nx-icon>
+        <ng-content></ng-content>
+    </label>
 </div>
-
-

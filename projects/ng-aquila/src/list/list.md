@@ -5,6 +5,7 @@ b2c: true
 expert: true
 stable: done
 ---
+
 The component library supports three types of lists: unordered lists, ordered lists and lists with icons.
 
 ### Different list types
@@ -22,11 +23,13 @@ The component library supports three types of lists: unordered lists, ordered li
 <!-- example(list-circles) -->
 
 #### Lists with Icons
+
 Custom icons are supported by means of the nxListIcon directive, which can be configured to display individual icons for each item of the list.
 
 <!-- example(list-icons) -->
 
 ### List with different copytext sizes
+
 The size can be one of these values: `xsmall`, `small`, `normal`. The default value is `normal`.
 
 <!-- example(list-copytext) -->
@@ -36,6 +39,7 @@ The size can be one of these values: `xsmall`, `small`, `normal`. The default va
 <!-- example(list-negative) -->
 
 ### Custom color of list items
+
 You can change the color of the list item circles by overwriting the default color as shown in the example below.
 
 **Please make sure that your color scheme is in line with branding.**
@@ -43,6 +47,7 @@ You can change the color of the list item circles by overwriting the default col
 <!-- example(list-custom-color) -->
 
 #### List Nesting
+
 You can also nest different type of lists in each other, as shown in the example below.
 
 <!-- example(list-nesting) -->

@@ -8,15 +8,9 @@ import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxTreeModule } from '@aposin/ng-aquila/tree';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    CdkAccordionModule,
-    NxActionModule,
-    NxTreeModule,
-  ],
-  exports: [NavigationComponent],
-  declarations: [NavigationComponent],
-  providers: []
+    imports: [CommonModule, RouterModule, CdkAccordionModule, NxActionModule, NxTreeModule],
+    exports: [NavigationComponent],
+    declarations: [NavigationComponent],
+    providers: [],
 })
-export class NavigationModule { }
+export class NavigationModule {}

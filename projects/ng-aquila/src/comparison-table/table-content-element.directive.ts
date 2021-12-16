@@ -5,5 +5,4 @@ import { Directive } from '@angular/core';
  * This is a base class for NxToggleSectionDirective and NxComparisonTableRowDirective.
  */
 @Directive()
-export class NxTableContentElement {
-}
+export class NxTableContentElement {}

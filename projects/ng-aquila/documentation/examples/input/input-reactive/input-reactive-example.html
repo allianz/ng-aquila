@@ -1,8 +1,8 @@
 <form [formGroup]="testForm">
-  <nx-formfield nxLabel="Label">
-    <input required nxInput formControlName="textfield">
-  </nx-formfield>
+    <nx-formfield nxLabel="Label">
+        <input required nxInput formControlName="textfield" />
+    </nx-formfield>
 </form>
 
-Form value: {{ testForm.value | json }}<br>
+Form value: {{ testForm.value | json }}<br />
 Form status: {{ testForm.status | json }}

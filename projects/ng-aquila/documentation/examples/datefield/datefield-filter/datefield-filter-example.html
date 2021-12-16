@@ -1,14 +1,17 @@
 <nx-formfield nxLabel="Date of damage">
-  <input
-    [nxDatefieldFilter]="onlyDaysWith6"
-    ngModel #dateFilterModel="ngModel"
-    nxDatefield nxInput [nxDatepicker]="picker3"/>
-  <span nxFormfieldHint>MM/DD/YYYY</span>
-  <nx-datepicker-toggle [for]="picker3" nxFormfieldSuffix></nx-datepicker-toggle>
-  <nx-datepicker #picker3></nx-datepicker>
+    <input
+        [nxDatefieldFilter]="onlyDaysWith6"
+        ngModel
+        #dateFilterModel="ngModel"
+        nxDatefield
+        nxInput
+        [nxDatepicker]="picker3"
+    />
+    <span nxFormfieldHint>MM/DD/YYYY</span>
+    <nx-datepicker-toggle [for]="picker3" nxFormfieldSuffix></nx-datepicker-toggle>
+    <nx-datepicker #picker3></nx-datepicker>
 
-  <nx-error nxFormfieldError
-            *ngIf="dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter">
-    That's not the 6th of a month.
-  </nx-error>
+    <nx-error nxFormfieldError *ngIf="dateFilterModel.errors && dateFilterModel.errors.nxDatefieldFilter">
+        That's not the 6th of a month.
+    </nx-error>
 </nx-formfield>

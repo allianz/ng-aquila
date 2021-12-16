@@ -6,13 +6,8 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxIconModule,
-    NxButtonModule,
-    NxPopoverModule
-  ],
-  declarations: [ NxvFeedbackComponent ],
-  exports: [ NxvFeedbackComponent ]
+    imports: [CommonModule, NxIconModule, NxButtonModule, NxPopoverModule],
+    declarations: [NxvFeedbackComponent],
+    exports: [NxvFeedbackComponent],
 })
-export class NxvFeedbackModule { }
+export class NxvFeedbackModule {}

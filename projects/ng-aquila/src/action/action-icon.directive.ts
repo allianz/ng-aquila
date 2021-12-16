@@ -1,9 +1,9 @@
-import {Directive} from '@angular/core';
+import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[nxActionIcon]',
-  host: {
-    'class': 'nx-action__icon'
-  }
+    selector: '[nxActionIcon]',
+    host: {
+        class: 'nx-action__icon',
+    },
 })
 export class NxActionIconDirective {}

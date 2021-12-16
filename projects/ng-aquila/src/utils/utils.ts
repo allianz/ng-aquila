@@ -2,35 +2,27 @@ import { ElementRef, Injectable } from '@angular/core';
 import { Renderer2 } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 export function isString(value: any) {
-  return typeof value === 'string';
+    return typeof value === 'string';
 }
 
 export function pad(str: string, length: number = 2, padCharacter: string = '0'): string {
     if (!isString(str) || str.length >= length) {
-      return str;
+        return str;
     }
     while (str.length < length) {
-      str = padCharacter + str;
+        str = padCharacter + str;
     }
     return str;
-  }
+}
 
 // DATE -> YYYY-MM-DD
 export function formatDate(date: Date) {
-    const dateOfBirth =  [
-        String (date.getFullYear()),
-        pad(String(date.getMonth() + 1)),
-        pad(String(date.getDate()))
-      ].join('-');
+    const dateOfBirth = [String(date.getFullYear()), pad(String(date.getMonth() + 1)), pad(String(date.getDate()))].join('-');
 
     return dateOfBirth;
 }
 export function formatDateHuman(date: Date) {
-    const dateOfBirth =  [
-        pad(String(date.getDate())),
-        pad(String(date.getMonth() + 1)),
-        String (date.getFullYear())
-      ].join('-');
+    const dateOfBirth = [pad(String(date.getDate())), pad(String(date.getMonth() + 1)), String(date.getFullYear())].join('-');
 
     return dateOfBirth;
 }
@@ -44,90 +36,88 @@ export function formatDateHuman(date: Date) {
 */
 
 export function mapClassNames(value: string, DEFAULTS: string[] = [], MAPPING = {}) {
-  let sanitizedList: string[] = [ ...DEFAULTS ];
+    let sanitizedList: string[] = [...DEFAULTS];
 
-  if (typeof value === 'string') {
-    const mappedClasses = getClassNameList(value, MAPPING);
-    sanitizedList = [...sanitizedList, ...mappedClasses];
-  }
+    if (typeof value === 'string') {
+        const mappedClasses = getClassNameList(value, MAPPING);
+        sanitizedList = [...sanitizedList, ...mappedClasses];
+    }
 
-  return sanitizedList.join(' ').trim();
+    return sanitizedList.join(' ').trim();
 }
 
-export function getClassNameList(value: string, MAPPING: { [k: string]: string} = {}) {
-  let mappedClasses: string[] = [];
+export function getClassNameList(value: string, MAPPING: { [k: string]: string } = {}) {
+    let mappedClasses: string[] = [];
 
-  if (typeof value === 'string') {
-    const classNames = value.split(' ');
-    const keys = Object.keys(MAPPING);
+    if (typeof value === 'string') {
+        const classNames = value.split(' ');
+        const keys = Object.keys(MAPPING);
 
-    mappedClasses = classNames.map(className => {
-      if (keys.indexOf(className) > -1) {
-        return MAPPING[className];
-      } else {
-        return className;
-      }
-    });
-  }
+        mappedClasses = classNames.map(className => {
+            if (keys.indexOf(className) > -1) {
+                return MAPPING[className];
+            } else {
+                return className;
+            }
+        });
+    }
 
-  return mappedClasses;
+    return mappedClasses;
 }
 
 export function appendClasses(renderer: Renderer2, element: ElementRef, classes: string) {
-  if (renderer && element && classes) {
-    classes.split(' ').forEach(item => {
-      renderer.addClass(element.nativeElement, item);
-    });
-  }
+    if (renderer && element && classes) {
+        classes.split(' ').forEach(item => {
+            renderer.addClass(element.nativeElement, item);
+        });
+    }
 }
 
 export function removeClasses(renderer: Renderer2, element: ElementRef, classes: string) {
-  if (renderer && element && classes) {
-    classes.split(' ').forEach(item => {
-      renderer.removeClass(element.nativeElement, item);
-    });
-  }
+    if (renderer && element && classes) {
+        classes.split(' ').forEach(item => {
+            renderer.removeClass(element.nativeElement, item);
+        });
+    }
 }
 
 // YYYY-MM-DD -> DATE
 export function parseDate(dateString: string | number | Date) {
-  return new Date(dateString);
+    return new Date(dateString);
 }
 
 // Manually compose a font shorthand defintion as it's not
 // guaranteed to be given by the computed style object.
 export function getFontShorthand(style: CSSStyleDeclaration) {
-  const {
-    font, fontStyle, fontVariant, fontWeight, fontSize, lineHeight, fontFamily
-  } = style;
+    const { font, fontStyle, fontVariant, fontWeight, fontSize, lineHeight, fontFamily } = style;
 
-  if (font.length > 0) {
-    return font;
-  }
+    if (font.length > 0) {
+        return font;
+    }
 
-  return `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`;
+    return `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`;
 }
 
 export function numberOfDecimals(number: string | number) {
-  const parsed = Number(number);
-  if (Number.isNaN(parsed) || Number.isInteger(parsed)) {
-    return 0;
-  }
-  const match = (parsed.toString()).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
-  if (!match || !match[1]) {
-      return 0;
-  }
-  return match[1].length;
+    const parsed = Number(number);
+    if (Number.isNaN(parsed) || Number.isInteger(parsed)) {
+        return 0;
+    }
+    const match = parsed.toString().match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
+    if (!match || !match[1]) {
+        return 0;
+    }
+    return match[1].length;
 }
 
 export function clamp(value: number, min = 0, max = 1) {
-  return Math.max(min, Math.min(max, value));
+    return Math.max(min, Math.min(max, value));
 }
 
 /** Provider that defines when form controls have an error. */
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.touched || (form && form.submitted)));
-  }
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        return !!(control && control.invalid && (control.touched || (form && form.submitted)));
+    }
 }

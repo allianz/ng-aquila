@@ -1,31 +1,28 @@
-@import "../../../../ng-aquila/src/shared-styles/theming/theming";
+@import '../../../../ng-aquila/src/shared-styles/theming/theming';
 @import '../styles/themes/docs-theme';
 
 :host {
-  min-height: 100vh;
-  display: block;
-  overflow: auto;
-  @include var(background-color, documentation-fullscreen-background-01);
-  background-image:
-    linear-gradient(45deg, v(documentation-fullscreen-background-02) 25%, transparent 25%),
-    linear-gradient(-45deg, v(documentation-fullscreen-background-02) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, v(documentation-fullscreen-background-02) 75%),
-    linear-gradient(-45deg, transparent 75%, v(documentation-fullscreen-background-02) 75%);
-  background-size: 16px 16px;
-  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
-  
-  .example-fullscreen__navigation-container {
-    background: var(--header-background-color);
-    border-bottom: 1px solid var(--header-border-color);
-    text-align: right;
-    margin-bottom: 24px;
+    min-height: 100vh;
+    display: block;
+    overflow: auto;
+    @include var(background-color, documentation-fullscreen-background-01);
+    background-image: linear-gradient(45deg, v(documentation-fullscreen-background-02) 25%, transparent 25%), linear-gradient(-45deg, v(documentation-fullscreen-background-02) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, v(documentation-fullscreen-background-02) 75%), linear-gradient(-45deg, transparent 75%, v(documentation-fullscreen-background-02) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
 
-    button {
-      margin: 8px;
+    .example-fullscreen__navigation-container {
+        background: var(--header-background-color);
+        border-bottom: 1px solid var(--header-border-color);
+        text-align: right;
+        margin-bottom: 24px;
+
+        button {
+            margin: 8px;
+        }
     }
-  }
 }
 
 :host(.blank) {
-  background: v(ui-01);
+    background: v(ui-01);
 }

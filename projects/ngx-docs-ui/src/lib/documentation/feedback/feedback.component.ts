@@ -5,51 +5,45 @@ import { Subscription } from 'rxjs';
 import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'nxv-feedback',
-  templateUrl: './feedback.component.html',
-  styleUrls: [ './feedback.component.scss' ],
-  host: {
-    '[class.is-mobile]': 'showMobileView',
-    '[class.is-desktop]': '!showMobileView'
-  }
+    // tslint:disable-next-line:component-selector
+    selector: 'nxv-feedback',
+    templateUrl: './feedback.component.html',
+    styleUrls: ['./feedback.component.scss'],
+    host: {
+        '[class.is-mobile]': 'showMobileView',
+        '[class.is-desktop]': '!showMobileView',
+    },
 })
 export class NxvFeedbackComponent implements OnInit, OnDestroy {
+    @ViewChild('mobileButton') mobileButton!: ElementRef;
 
-  @ViewChild('mobileButton') mobileButton!: ElementRef;
+    @Input() page!: string;
 
-  @Input() page!: string;
+    viewportServiceSubscription: Subscription;
 
-  viewportServiceSubscription: Subscription;
+    showMobileView: boolean = false;
 
-  showMobileView: boolean = false;
+    feedbackLinkPositive!: string;
+    feedbackLinkNegative!: string;
 
-  feedbackLinkPositive!: string;
-  feedbackLinkNegative!: string;
+    constructor(@Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any, private viewportService: NxViewportService, private focusMonitor: FocusMonitor) {
+        this.viewportServiceSubscription = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).subscribe(isGreaterThanMedium => {
+            if (isGreaterThanMedium && this.showMobileView) {
+                this.showMobileView = false;
+                this.focusMonitor.stopMonitoring(this.mobileButton);
+            } else if (!isGreaterThanMedium && !this.showMobileView) {
+                this.showMobileView = true;
+                setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
+            }
+        });
+    }
 
-  constructor(
-    @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any,
-    private viewportService: NxViewportService,
-    private focusMonitor: FocusMonitor
-  ) {
-    this.viewportServiceSubscription = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).subscribe(isGreaterThanMedium => {
-      if (isGreaterThanMedium && this.showMobileView) {
-        this.showMobileView = false;
-        this.focusMonitor.stopMonitoring(this.mobileButton);
-      } else if (!isGreaterThanMedium && !this.showMobileView) {
-        this.showMobileView = true;
-        setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
-      }
-    });
-  }
+    ngOnInit() {
+        this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
+        this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
+    }
 
-  ngOnInit() {
-    this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
-    this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
-  }
-
-  ngOnDestroy() {
-    this.viewportServiceSubscription.unsubscribe();
-  }
-
+    ngOnDestroy() {
+        this.viewportServiceSubscription.unsubscribe();
+    }
 }

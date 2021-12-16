@@ -1,123 +1,127 @@
 @import '../shared-styles/index';
 
 // Keyframes that apply no styles, but allow us to monitor when an text field becomes autofilled
-  // by watching for the animation events that are fired when they start. Note: the /*!*/ comment is
-  // needed to prevent LibSass from stripping the keyframes out.
-  // Based on: https://medium.com/@brunn/detecting-autofilled-fields-in-javascript-aed598d25da7
-  @keyframes cdk-text-field-autofill-start {/*!*/}
-  @keyframes cdk-text-field-autofill-end {/*!*/}
+// by watching for the animation events that are fired when they start. Note: the /*!*/ comment is
+// needed to prevent LibSass from stripping the keyframes out.
+// Based on: https://medium.com/@brunn/detecting-autofilled-fields-in-javascript-aed598d25da7
+@keyframes cdk-text-field-autofill-start {
+    /*!*/
+}
+@keyframes cdk-text-field-autofill-end {
+    /*!*/
+}
 
-  .cdk-text-field-autofill-monitored:-webkit-autofill {
+.cdk-text-field-autofill-monitored:-webkit-autofill {
     // Since Chrome 80 we need a 1ms delay, or the animationstart event won't fire.
     animation: cdk-text-field-autofill-start 0s 1ms;
-  }
+}
 
-  .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
     // Since Chrome 80 we need a 1ms delay, or the animationstart event won't fire.
     animation: cdk-text-field-autofill-end 0s 1ms;
-  }
+}
 
-  // Remove the resize handle on autosizing textareas, because whatever height
-  // the user resized to will be overwritten once they start typing again.
-  textarea.cdk-textarea-autosize {
+// Remove the resize handle on autosizing textareas, because whatever height
+// the user resized to will be overwritten once they start typing again.
+textarea.cdk-textarea-autosize {
     resize: none;
     // This is necessary to avoid the vertical scrollbar that appears with border-box
     box-sizing: content-box;
-  }
+}
 
-  // This class is temporarily applied to the textarea when it is being measured. It is immediately
-  // removed when measuring is complete. We use `!important` rules here to make sure user-specified
-  // rules do not interfere with the measurement.
-  textarea.cdk-textarea-autosize-measuring {
+// This class is temporarily applied to the textarea when it is being measured. It is immediately
+// removed when measuring is complete. We use `!important` rules here to make sure user-specified
+// rules do not interfere with the measurement.
+textarea.cdk-textarea-autosize-measuring {
     height: auto !important;
     overflow: hidden !important;
     // Having 2px top and bottom padding seems to fix a bug where Chrome gets an incorrect
     // measurement. We just have to account for it later and subtract it off the final result.
     padding: 2px 0 !important;
     box-sizing: content-box !important;
-  }
+}
 
 // These styles are being loaded by the formfield component as the directive can't provide styles.
 // That's some nasty tight coupling. They are actually tight coupled so it's okay.
 .c-input {
-  text-align: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  background: 0 0;
-  color: inherit;
-  border: none;
-  outline: 0;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
+    text-align: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background: 0 0;
+    color: inherit;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
 
-  /* IE10+ Fix to remove the clear button that appears on input */
-  &::-ms-clear {
-    display: none;
-  }
-
-  /* Chrome Fix to remove clear button that appears on input[type=search] */
-  &::-webkit-search-decoration,
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
-    display: none;
-    -webkit-appearance: none;
-  }
-
-  @include input-placeholder {
-    user-select: none;
-    @include type-style(formfield-input-native-placeholder);
-    @include var(color, formfield-input-native-placeholder-color);
-
-    &:-ms-input-placeholder {
-      -ms-user-select: text;
+    /* IE10+ Fix to remove the clear button that appears on input */
+    &::-ms-clear {
+        display: none;
     }
 
-    // Delay the transition until the label has animated about a third of the way through, in
-    // order to prevent the placeholder from overlapping for a split second.
-    transition: color ease-in 100ms 200ms; // Delay the transition until the label has animated
-  }
+    /* Chrome Fix to remove clear button that appears on input[type=search] */
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        display: none;
+        -webkit-appearance: none;
+    }
 
-  // to align the placeholder vertically inside the element on firefox the line height
-  // needs to equal the element height.
-  // this will still be slightly off in cases where the B2C formfield has some bottom
-  // padding instead of the input being centered.
-  &::-moz-placeholder {
-    line-height: calc(#{v(formfield-control-height)} - #{v(formfield-border-width)});
-  }
+    @include input-placeholder {
+        user-select: none;
+        @include type-style(formfield-input-native-placeholder);
+        @include var(color, formfield-input-native-placeholder-color);
+
+        &:-ms-input-placeholder {
+            -ms-user-select: text;
+        }
+
+        // Delay the transition until the label has animated about a third of the way through, in
+        // order to prevent the placeholder from overlapping for a split second.
+        transition: color ease-in 100ms 200ms; // Delay the transition until the label has animated
+    }
+
+    // to align the placeholder vertically inside the element on firefox the line height
+    // needs to equal the element height.
+    // this will still be slightly off in cases where the B2C formfield has some bottom
+    // padding instead of the input being centered.
+    &::-moz-placeholder {
+        line-height: calc(#{v(formfield-control-height)} - #{v(formfield-border-width)});
+    }
 }
 
 textarea.c-input {
-  height: auto;
-  font-family: inherit;
+    height: auto;
+    font-family: inherit;
 }
 
 .c-input.is-focused {
-  border: none;
-  outline: none;
-  box-shadow: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
 
-  @include input-placeholder {
-    opacity: 1;
-    transition: opacity ease-in 200ms 150ms; // Delay the transition until the label has animated
-  }
+    @include input-placeholder {
+        opacity: 1;
+        transition: opacity ease-in 200ms 150ms; // Delay the transition until the label has animated
+    }
 }
 
 .c-input.is-disabled {
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 // Prevents IE from always adding a scrollbar by default.
 textarea.nx-input-element {
-  // Only allow resizing along the Y axis.
-  resize: vertical;
-  overflow: auto;
+    // Only allow resizing along the Y axis.
+    resize: vertical;
+    overflow: auto;
 }
 
 // hide red box-shadow that is shown on default
 .c-input:invalid,
 .c-input:required {
-  box-shadow: none;
+    box-shadow: none;
 }

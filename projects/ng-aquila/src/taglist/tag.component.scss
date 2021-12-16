@@ -3,63 +3,65 @@
 $border-size: nx-border-size(m);
 
 @function tag-padding($padding) {
-  @return $padding - $border-size;
+    @return $padding - $border-size;
 }
 
 :host {
-  @include type-style(taglist);
-  height: auto;
-  max-width: 100%;
-  @include var(color, taglist-color);
-  @include var(background-color, taglist-background-color);
-  padding: tag-padding(nx-spacer(2xs)) tag-padding(nx-spacer(s));
-  display: flex;
-  align-items: center;
-  border: $border-size solid v(taglist-border-color);
-  border-radius: nx-border-radius(s);
-  user-select: none;
-  transition: background-color .2s ease, box-shadow .2s ease;
-  cursor: pointer;
+    @include type-style(taglist);
+    height: auto;
+    max-width: 100%;
+    @include var(color, taglist-color);
+    @include var(background-color, taglist-background-color);
+    padding: tag-padding(nx-spacer(2xs)) tag-padding(nx-spacer(s));
+    display: flex;
+    align-items: center;
+    border: $border-size solid v(taglist-border-color);
+    border-radius: nx-border-radius(s);
+    user-select: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
 
-  &:hover {
-    @include var(border-color, taglist-hover-border-color);
-    @include var(color, taglist-hover-color);
-    @include var(background-color, taglist-hover-background-color);
-  }
+    &:hover {
+        @include var(border-color, taglist-hover-border-color);
+        @include var(color, taglist-hover-color);
+        @include var(background-color, taglist-hover-background-color);
+    }
 
-  &:focus {
-    outline: 2px solid transparent;
-  }
+    &:focus {
+        outline: 2px solid transparent;
+    }
 }
 
 :host.cdk-keyboard-focused {
-  @include focus-style;
+    @include focus-style;
 }
 
 .nx-tag__close-icon {
-  outline: none;
-  display: block;
-  @include var(font-size, taglist-close-icon-size);
+    outline: none;
+    display: block;
+    @include var(font-size, taglist-close-icon-size);
 }
 
 .nx-tag__close {
-  margin-left: nx-spacer(2xs);
+    margin-left: nx-spacer(2xs);
 
-  :host-context([dir="rtl"]) & {
-    margin-right: nx-spacer(2xs);
-    margin-left: initial;
-  }
+    :host-context([dir='rtl']) & {
+        margin-right: nx-spacer(2xs);
+        margin-left: initial;
+    }
 }
 
 :host-context(.nx-taglist--keyword) {
-  padding: tag-padding(nx-spacer(s)) tag-padding(nx-spacer(m));
+    padding: tag-padding(nx-spacer(s)) tag-padding(nx-spacer(m));
 }
 
 @media screen and (-ms-high-contrast: active) {
-  :host, :host:hover, :host:focus {
-    color: buttonText;
-    background-color: buttonFace;
-    border-color: buttonText;
-    -ms-high-contrast-adjust: none;
-  }
+    :host,
+    :host:hover,
+    :host:focus {
+        color: buttonText;
+        background-color: buttonFace;
+        border-color: buttonText;
+        -ms-high-contrast-adjust: none;
+    }
 }

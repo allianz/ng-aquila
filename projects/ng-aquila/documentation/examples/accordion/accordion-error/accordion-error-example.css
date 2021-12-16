@@ -1,9 +1,9 @@
 .expansion-title-with-icon {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 nx-accordion ::ng-deep .nx-error__icon {
-  color: var(--danger, #ED6F7C);
-  margin-right: 16px;
+    color: var(--danger, #ed6f7c);
+    margin-right: 16px;
 }

@@ -4,8 +4,8 @@ import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxvTopInfoComponent } from './top-info.component';
 
 @NgModule({
-  imports: [ CommonModule, NxLinkModule ],
-  declarations: [ NxvTopInfoComponent ],
-  exports: [ NxvTopInfoComponent ]
+    imports: [CommonModule, NxLinkModule],
+    declarations: [NxvTopInfoComponent],
+    exports: [NxvTopInfoComponent],
 })
-export class NxvTopInfoModule { }
+export class NxvTopInfoModule {}

@@ -1,16 +1,16 @@
-import {InputNameUpgradeData, TargetVersion, VersionChanges} from '@angular/cdk/schematics';
+import { InputNameUpgradeData, TargetVersion, VersionChanges } from '@angular/cdk/schematics';
 
 export const inputNames: VersionChanges<InputNameUpgradeData> = {
-  [TargetVersion.V11]: [
-    {
-      pr: '',
-      changes: [
+    [TargetVersion.V11]: [
         {
-          replace: 'label',
-          replaceWith: 'labelCollapsed',
-          limitedTo: { attributes: ['nxComparisonTableRowGroup']}
-        }
-      ]
-    }
-  ]
+            pr: '',
+            changes: [
+                {
+                    replace: 'label',
+                    replaceWith: 'labelCollapsed',
+                    limitedTo: { attributes: ['nxComparisonTableRowGroup'] },
+                },
+            ],
+        },
+    ],
 };

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 /**
-* @title Vibrant badge example
-*/
+ * @title Vibrant badge example
+ */
 @Component({
-  selector: 'badge-vibrant-example',
-  templateUrl: './badge-vibrant-example.html',
-  styleUrls: ['./badge-vibrant-example.css']
+    selector: 'badge-vibrant-example',
+    templateUrl: './badge-vibrant-example.html',
+    styleUrls: ['./badge-vibrant-example.css'],
 })
-export class BadgeVibrantExampleComponent { }
+export class BadgeVibrantExampleComponent {}

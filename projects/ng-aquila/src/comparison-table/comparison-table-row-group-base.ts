@@ -3,5 +3,5 @@ import { Directive } from '@angular/core';
 /** @docs-private */
 @Directive()
 export abstract class NxComparisonTableRowGroupBase {
-  abstract _isPartOfToggleSection(): boolean;
+    abstract _isPartOfToggleSection(): boolean;
 }

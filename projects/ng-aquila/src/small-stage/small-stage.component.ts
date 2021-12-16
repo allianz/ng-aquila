@@ -11,61 +11,60 @@ export type NxSmallStageAppearance = 'default' | 'expert';
  * It can be configured using the `NX_SMALL_STAGE_DEFAULT_OPTIONS` injection token.
  */
 export interface SmallStageDefaultOptions {
-  /**
-   * Sets the default appearance. (optional)
-   */
-  appearance?: NxSmallStageAppearance;
+    /**
+     * Sets the default appearance. (optional)
+     */
+    appearance?: NxSmallStageAppearance;
 }
 
-export const SMALL_STAGE_DEFAULT_OPTIONS =
-  new InjectionToken<SmallStageDefaultOptions>('SMALL_STAGE_DEFAULT_OPTIONS');
+export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultOptions>('SMALL_STAGE_DEFAULT_OPTIONS');
 
 @Component({
-  selector: 'nx-small-stage',
-  templateUrl: './small-stage.component.html',
-  styleUrls: ['./small-stage.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'nx-small-stage',
+    templateUrl: './small-stage.component.html',
+    styleUrls: ['./small-stage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSmallStageComponent {
-  static ngAcceptInputType_narrow: BooleanInput;
+    static ngAcceptInputType_narrow: BooleanInput;
 
-  private _narrow: boolean = false;
+    private _narrow: boolean = false;
 
-  private _appearance: NxSmallStageAppearance | undefined;
-  /**
-   * ** Expert option **
-   *
-   * Sets the appearance of the small stage. Default: 'default'
-   */
-  @Input()
-  set appearance(value: NxSmallStageAppearance) {
-    if (this._appearance !== value) {
-      this._appearance = value;
+    private _appearance: NxSmallStageAppearance | undefined;
+    /**
+     * ** Expert option **
+     *
+     * Sets the appearance of the small stage. Default: 'default'
+     */
+    @Input()
+    set appearance(value: NxSmallStageAppearance) {
+        if (this._appearance !== value) {
+            this._appearance = value;
+        }
     }
-   }
 
-   get appearance(): NxSmallStageAppearance {
-     return this._appearance || this._defaultOptions?.appearance || 'default';
-   }
+    get appearance(): NxSmallStageAppearance {
+        return this._appearance || this._defaultOptions?.appearance || 'default';
+    }
 
-  /**
-   * Reduces the width of the text to 6/12 instead of 8/12.
-   *
-   * **Only works with appearance = 'expert'.**
-   */
-  @Input()
-  @HostBinding('class.is-narrow')
-  set narrow(value: boolean) {
-    this._narrow = coerceBooleanProperty(value);
-  }
-  get narrow() {
-    return this._narrow;
-  }
+    /**
+     * Reduces the width of the text to 6/12 instead of 8/12.
+     *
+     * **Only works with appearance = 'expert'.**
+     */
+    @Input()
+    @HostBinding('class.is-narrow')
+    set narrow(value: boolean) {
+        this._narrow = coerceBooleanProperty(value);
+    }
+    get narrow() {
+        return this._narrow;
+    }
 
-  @HostBinding('class.is-expert')
-  get _isExpert(): boolean {
-    return this.appearance === 'expert';
-  }
+    @HostBinding('class.is-expert')
+    get _isExpert(): boolean {
+        return this.appearance === 'expert';
+    }
 
-  constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) private _defaultOptions: SmallStageDefaultOptions) {}
+    constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) private _defaultOptions: SmallStageDefaultOptions) {}
 }

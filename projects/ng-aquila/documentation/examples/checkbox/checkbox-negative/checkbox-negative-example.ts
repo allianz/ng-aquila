@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Negative styling example
-*/
+ * @title Negative styling example
+ */
 @Component({
-  selector: 'checkbox-negative-example',
-  templateUrl: './checkbox-negative-example.html',
-  styleUrls: ['./checkbox-negative-example.css']
+    selector: 'checkbox-negative-example',
+    templateUrl: './checkbox-negative-example.html',
+    styleUrls: ['./checkbox-negative-example.css'],
 })
 export class CheckboxNegativeExampleComponent {
-  checkboxes = ['checkbox 1'];
+    checkboxes = ['checkbox 1'];
 }

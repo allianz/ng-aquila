@@ -12,9 +12,9 @@ Input masks can be used to provide guidance to users when inputing long strings 
 
 The mask formatting is defined though a combination of the following values and additional separators:
 
-- **0**: digits (0 to 9 numbers)
-- **A**: letters (uppercase and lowercase), digits
-- **S**: letters (uppercase and lowercase)
+-   **0**: digits (0 to 9 numbers)
+-   **A**: letters (uppercase and lowercase), digits
+-   **S**: letters (uppercase and lowercase)
 
 Thus, if you write `000-AAA` this specifies a mask that consists of three numbers and then three letters, with a separator in the middle.
 
@@ -59,7 +59,6 @@ The validation can be turned off via the `[validateMask]` input. In both cases y
 Optionally you can use the `nxConvertTo` input to automatically capitalize or lower the mask input value.
 
 <!-- example(mask-case) -->
-
 
 ### Deactivate mask
 

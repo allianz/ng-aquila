@@ -2,6 +2,5 @@
   "projects/ng-aquila/!(documentation)/**/*.ts": "tslint -c projects/ng-aquila/tslint.json --fix",
   "projects/ngx-docs-cli/**/*.ts": "tslint -c tslint.json --fix",
   "projects/ngx-docs-ui/**/*.ts": "tslint -c projects/ngx-docs-ui/tslint.json --fix",
-  "projects/opensource-documentation/**/*.ts": "tslint -c projects/opensource-documentation/tslint.json --fix",
-  "*.scss": "npm run lint:scss"
+  "projects/opensource-documentation/**/*.ts": "tslint -c projects/opensource-documentation/tslint.json --fix"
 }

@@ -1,6 +1,4 @@
-<input type='text' [nxAutocomplete]='auto1'/>
-<nx-autocomplete #auto1='nxAutocomplete'>
-  <nx-autocomplete-option *ngFor='let option of options' [value]='option'>
-    {{ option }}
-  </nx-autocomplete-option>
+<input type="text" [nxAutocomplete]="auto1" />
+<nx-autocomplete #auto1="nxAutocomplete">
+    <nx-autocomplete-option *ngFor="let option of options" [value]="option"> {{ option }} </nx-autocomplete-option>
 </nx-autocomplete>

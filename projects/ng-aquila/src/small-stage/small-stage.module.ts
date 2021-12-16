@@ -1,4 +1,3 @@
-
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
@@ -10,25 +9,9 @@ import { NxSmallStageImageBottomDirective } from './directives/bottom-image.dire
 import { NxSmallStageImageDirective } from './directives/image.directive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    NxSmallStageImageDirective,
-    NxSmallStageImageStartDirective,
-    NxSmallStageImageEndDirective,
-    NxSmallStageHeaderDirective,
-    NxSmallStageComponent,
-    NxSmallStageImageBottomDirective
-  ],
-  declarations: [
-    NxSmallStageImageDirective,
-    NxSmallStageImageStartDirective,
-    NxSmallStageImageEndDirective,
-    NxSmallStageHeaderDirective,
-    NxSmallStageComponent,
-    NxSmallStageImageBottomDirective
-  ],
-  providers: [],
+    imports: [CommonModule],
+    exports: [NxSmallStageImageDirective, NxSmallStageImageStartDirective, NxSmallStageImageEndDirective, NxSmallStageHeaderDirective, NxSmallStageComponent, NxSmallStageImageBottomDirective],
+    declarations: [NxSmallStageImageDirective, NxSmallStageImageStartDirective, NxSmallStageImageEndDirective, NxSmallStageHeaderDirective, NxSmallStageComponent, NxSmallStageImageBottomDirective],
+    providers: [],
 })
 export class NxSmallStageModule {}

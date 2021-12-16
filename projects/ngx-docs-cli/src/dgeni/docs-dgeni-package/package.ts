@@ -11,11 +11,7 @@ const nunjucksPackage = require('dgeni-packages/nunjucks');
 const typescriptPackage = require('dgeni-packages/typescript');
 import * as path from 'path';
 
-export const apiDocsPackage = new Package('ng-aquila-api-docs', [
-  jsdocPackage,
-  nunjucksPackage,
-  typescriptPackage
-]);
+export const apiDocsPackage = new Package('ng-aquila-api-docs', [jsdocPackage, nunjucksPackage, typescriptPackage]);
 
 // Processor that filters out duplicate exports that should not be shown in the docs.
 apiDocsPackage.processor(new FilterDuplicateExports());
@@ -32,14 +28,7 @@ apiDocsPackage.processor(new Categorizer());
 // Processor to group components into top-level groups such as "Tabs", "Sidenav", etc.
 apiDocsPackage.processor(new ComponentGrouper());
 
-apiDocsPackage.config(
-  (log,
-    readFilesProcessor,
-    readTypeScriptModules,
-    templateFinder,
-    templateEngine,
-    writeFilesProcessor) => {
-
+apiDocsPackage.config((log, readFilesProcessor, readTypeScriptModules, templateFinder, templateEngine, writeFilesProcessor) => {
     log.level = 'warn';
 
     /** disable readFilesProcessor as we are using readTypeScriptModules */
@@ -48,9 +37,9 @@ apiDocsPackage.config(
 
     // Specify collections of source files that should contain the documentation to extract
     readTypeScriptModules.sourceFiles = [
-      {
-        include: '**/*.ts'
-      }
+        {
+            include: '**/*.ts',
+        },
     ];
 
     // Add a folder to search for our own templates to use when rendering docs
@@ -59,38 +48,36 @@ apiDocsPackage.config(
     // Specify how to match docs to templates.
     // In this case we just use the same static template for all docs
     templateFinder.templatePatterns = [
-      '${ doc.template }',
-      '${ doc.id }.${ doc.docType }.template.html',
-      '${ doc.id }.template.html',
-      '${ doc.docType }.template.html',
-      '${ doc.id }.${ doc.docType }.template.js',
-      '${ doc.id }.template.js',
-      '${ doc.docType }.template.js',
-      '${ doc.id }.${ doc.docType }.template.json',
-      '${ doc.id }.template.json',
-      '${ doc.docType }.template.json',
-      'common.template.html'
+        '${ doc.template }',
+        '${ doc.id }.${ doc.docType }.template.html',
+        '${ doc.id }.template.html',
+        '${ doc.docType }.template.html',
+        '${ doc.id }.${ doc.docType }.template.js',
+        '${ doc.id }.template.js',
+        '${ doc.docType }.template.js',
+        '${ doc.id }.${ doc.docType }.template.json',
+        '${ doc.id }.template.json',
+        '${ doc.docType }.template.json',
+        'common.template.html',
     ];
 
     templateEngine.config.tags = {
-      variableStart: '{$',
-      variableEnd: '$}'
+        variableStart: '{$',
+        variableEnd: '$}',
     };
-
-  });
+});
 
 // Configure custom JsDoc tags.
 apiDocsPackage.config((parseTagsProcessor: any) => {
-  parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat([
-    { name: 'docs-private' },
-    { name: 'deletion-target' }
-  ]);
+    parseTagsProcessor.tagDefinitions = parseTagsProcessor.tagDefinitions.concat([{ name: 'docs-private' }, { name: 'deletion-target' }]);
 });
 
-apiDocsPackage.config((computePathsProcessor) => {
-  computePathsProcessor.pathTemplates = [{
-    docTypes: ['componentGroup'],
-    pathTemplate: '${name}',
-    outputPathTemplate: '${name}.html'
-  }];
+apiDocsPackage.config(computePathsProcessor => {
+    computePathsProcessor.pathTemplates = [
+        {
+            docTypes: ['componentGroup'],
+            pathTemplate: '${name}',
+            outputPathTemplate: '${name}.html',
+        },
+    ];
 });

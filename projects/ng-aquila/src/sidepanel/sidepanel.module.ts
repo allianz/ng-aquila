@@ -9,20 +9,8 @@ import { NxSidepanelContentComponent } from './sidepanel-content';
 import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
 @NgModule({
-  imports: [ CommonModule, NxIconModule, NxButtonModule ],
-  declarations: [
-    NxSidepanelComponent,
-    NxSidepanelHeaderComponent,
-    NxSidepanelContentComponent,
-    NxSidepanelCloseButtonComponent,
-    NxSidepanelOuterContainerComponent
-  ],
-  exports: [
-    NxSidepanelComponent,
-    NxSidepanelHeaderComponent,
-    NxSidepanelContentComponent,
-    NxSidepanelCloseButtonComponent,
-    NxSidepanelOuterContainerComponent
-  ]
+    imports: [CommonModule, NxIconModule, NxButtonModule],
+    declarations: [NxSidepanelComponent, NxSidepanelHeaderComponent, NxSidepanelContentComponent, NxSidepanelCloseButtonComponent, NxSidepanelOuterContainerComponent],
+    exports: [NxSidepanelComponent, NxSidepanelHeaderComponent, NxSidepanelContentComponent, NxSidepanelCloseButtonComponent, NxSidepanelOuterContainerComponent],
 })
-export class NxSidepanelModule { }
+export class NxSidepanelModule {}

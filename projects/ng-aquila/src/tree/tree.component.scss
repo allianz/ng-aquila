@@ -1,14 +1,14 @@
 @import '../shared-styles/index';
 
 :host.nx-tree {
-  display: block;
+    display: block;
 }
 
 .nx-tree__node {
-  display: block;
-  overflow: hidden;
-  &.cdk-keyboard-focused {
-    @include focus-style-inset;
-    border-radius: 2 * nx-border-radius(s);
-  }
+    display: block;
+    overflow: hidden;
+    &.cdk-keyboard-focused {
+        @include focus-style-inset;
+        border-radius: 2 * nx-border-radius(s);
+    }
 }

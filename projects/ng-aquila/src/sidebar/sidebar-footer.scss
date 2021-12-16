@@ -1,11 +1,9 @@
 @import '../shared-styles/index';
 
-
 .nx-sidebar__footer-container {
-
-  ::ng-deep .nx-button,
-  ::ng-deep .nx-icon-button,
-  ::ng-deep .nx-sidebar__toggle-button {
-    @include var(color, sidebar-footer-button-color)
-  }
+    ::ng-deep .nx-button,
+    ::ng-deep .nx-icon-button,
+    ::ng-deep .nx-sidebar__toggle-button {
+        @include var(color, sidebar-footer-button-color);
+    }
 }

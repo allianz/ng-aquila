@@ -4,74 +4,69 @@ import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'nx-notification-panel-item, [nxNotificationPanelItem]',
-  templateUrl: 'notification-item.component.html',
-  styleUrls: ['./notification-item.component.scss'],
-  host: {
-    '[class.nx-notification-item--read]': 'read',
-    '[class.nx-notification-item--clickable]': 'clickable',
-    'tabindex': '0',
-    '(focus)': 'focus()',
-    '(blur)': '_blur()'
-  }
+    selector: 'nx-notification-panel-item, [nxNotificationPanelItem]',
+    templateUrl: 'notification-item.component.html',
+    styleUrls: ['./notification-item.component.scss'],
+    host: {
+        '[class.nx-notification-item--read]': 'read',
+        '[class.nx-notification-item--clickable]': 'clickable',
+        tabindex: '0',
+        '(focus)': 'focus()',
+        '(blur)': '_blur()',
+    },
 })
-
 export class NxNotificationPanelItemComponent implements FocusableOption, OnDestroy {
+    private _read: boolean = false;
+    private _clickable: boolean = true;
+    private _hasFocus = false;
 
-  private _read: boolean = false;
-  private _clickable: boolean = true;
-  private _hasFocus = false;
+    focused = new Subject<NxNotificationPanelItemComponent>();
 
-  focused = new Subject<NxNotificationPanelItemComponent>();
-
-  @Input()
-  set read(value: boolean) {
-    this._read = coerceBooleanProperty(value);
-  }
-  get read() {
-    return this._read;
-  }
-
-  @Input()
-  set clickable(value: boolean) {
-    this._clickable = coerceBooleanProperty(value);
-  }
-  get clickable() {
-    return this._clickable;
-  }
-
-  constructor(
-    private _elementRef: ElementRef,
-    private _focusMonitor: FocusMonitor
-  ) {
-    this._focusMonitor.monitor(this._elementRef);
-  }
-
-  ngOnDestroy() {
-    this._focusMonitor.stopMonitoring(this._elementRef);
-  }
-
-  focus(focusOrigin?: FocusOrigin) {
-    // the focus key manager calls this method with the focusOrigin
-    // property. if it is not set we know the focus comes from another source
-    // like the user using TAB to go through the list. Then we want to notify
-    // the focus manager about this change of focus.
-    if (typeof focusOrigin === 'undefined' && !this._hasFocus) {
-      this.focused.next(this);
-      this._hasFocus = true;
-      this._focusMonitor.focusVia(this._elementRef, 'keyboard');
+    @Input()
+    set read(value: boolean) {
+        this._read = coerceBooleanProperty(value);
+    }
+    get read() {
+        return this._read;
     }
 
-    if (!this._hasFocus) {
-      this._elementRef.nativeElement.focus();
-      this._hasFocus = true;
+    @Input()
+    set clickable(value: boolean) {
+        this._clickable = coerceBooleanProperty(value);
     }
-  }
+    get clickable() {
+        return this._clickable;
+    }
 
-  _blur() {
-    this._hasFocus = false;
-  }
+    constructor(private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+        this._focusMonitor.monitor(this._elementRef);
+    }
 
-  static ngAcceptInputType_read: BooleanInput;
-  static ngAcceptInputType_clickable: BooleanInput;
+    ngOnDestroy() {
+        this._focusMonitor.stopMonitoring(this._elementRef);
+    }
+
+    focus(focusOrigin?: FocusOrigin) {
+        // the focus key manager calls this method with the focusOrigin
+        // property. if it is not set we know the focus comes from another source
+        // like the user using TAB to go through the list. Then we want to notify
+        // the focus manager about this change of focus.
+        if (typeof focusOrigin === 'undefined' && !this._hasFocus) {
+            this.focused.next(this);
+            this._hasFocus = true;
+            this._focusMonitor.focusVia(this._elementRef, 'keyboard');
+        }
+
+        if (!this._hasFocus) {
+            this._elementRef.nativeElement.focus();
+            this._hasFocus = true;
+        }
+    }
+
+    _blur() {
+        this._hasFocus = false;
+    }
+
+    static ngAcceptInputType_read: BooleanInput;
+    static ngAcceptInputType_clickable: BooleanInput;
 }

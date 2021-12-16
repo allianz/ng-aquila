@@ -1,9 +1,8 @@
 <ng-content select="nx-expansion-panel-header"></ng-content>
 
-<div class="nx-expansion-panel__content" role="region" [@bodyExpansion]="getOpenState()"
-  [attr.aria-labelledby]="_headerId" [id]="id">
-  <div class="nx-expansion-panel__body">
-    <ng-content></ng-content>
-    <ng-template [cdkPortalOutlet]="portal"></ng-template>
-  </div>
+<div class="nx-expansion-panel__content" role="region" [@bodyExpansion]="getOpenState()" [attr.aria-labelledby]="_headerId" [id]="id">
+    <div class="nx-expansion-panel__body">
+        <ng-content></ng-content>
+        <ng-template [cdkPortalOutlet]="portal"></ng-template>
+    </div>
 </div>

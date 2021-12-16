@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 /**
-* @title Indicator example
-*/
+ * @title Indicator example
+ */
 @Component({
-  selector: 'indicator-example',
-  templateUrl: './indicator-example.html',
-  styleUrls: ['./indicator-example.css']
+    selector: 'indicator-example',
+    templateUrl: './indicator-example.html',
+    styleUrls: ['./indicator-example.css'],
 })
-export class IndicatorExampleComponent { }
+export class IndicatorExampleComponent {}

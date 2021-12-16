@@ -1,103 +1,87 @@
 <div
-  [nxTooltip]="_tooltipText"
-  class="value"
-  (click)="_open($event, 'mouse')"
-  (keydown.enter)="_open($event, 'keyboard')"
-  (keydown.space)="_open($event, 'keyboard')"
-  cdkOverlayOrigin
-  #trigger
-  #origin="cdkOverlayOrigin"
-  role="combobox"
-  tabindex="0"
-  aria-haspopup="listbox"
-  [attr.aria-controls]="_comboboxId"
-  (blur)="_onTriggerBlur()"
-  [attr.aria-expanded]="_isOpen"
-  [attr.aria-labelledby]="_getAriaLabelledBy()"
-  [id]="id"
-  (focus)="_inputFocused = true"
-  (blur)="_inputFocused = false"
-  (keydown)="_onKeydown($event)"
+    [nxTooltip]="_tooltipText"
+    class="value"
+    (click)="_open($event, 'mouse')"
+    (keydown.enter)="_open($event, 'keyboard')"
+    (keydown.space)="_open($event, 'keyboard')"
+    cdkOverlayOrigin
+    #trigger
+    #origin="cdkOverlayOrigin"
+    role="combobox"
+    tabindex="0"
+    aria-haspopup="listbox"
+    [attr.aria-controls]="_comboboxId"
+    (blur)="_onTriggerBlur()"
+    [attr.aria-expanded]="_isOpen"
+    [attr.aria-labelledby]="_getAriaLabelledBy()"
+    [id]="id"
+    (focus)="_inputFocused = true"
+    (blur)="_inputFocused = false"
+    (keydown)="_onKeydown($event)"
 >
-  <span class="value-text">{{_getValueText()}}</span>
-  <span>{{ selectedItems.size ? '(' + selectedItems.size + ')' : '' }}</span>
-  <nx-icon size="s" aria-hidden="true" class="indicator" name="chevron-down"></nx-icon>
+    <span class="value-text">{{ _getValueText() }}</span>
+    <span>{{ selectedItems.size ? '(' + selectedItems.size + ')' : '' }}</span>
+    <nx-icon size="s" aria-hidden="true" class="indicator" name="chevron-down"></nx-icon>
 </div>
 <ng-template
-  cdkConnectedOverlay
-  cdkConnectedOverlayHasBackdrop
-  cdkConnectedOverlayPush
-  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-  [cdkConnectedOverlayPositions]="_positions"
-  [cdkConnectedOverlayWidth]="_width"
-  [cdkConnectedOverlayOrigin]="origin"
-  [cdkConnectedOverlayOpen]="_isOpen"
-  (overlayOutsideClick)="_close()"
-  (attach)="_onAttach()"
-  (detach)="_onDetach()"
+    cdkConnectedOverlay
+    cdkConnectedOverlayHasBackdrop
+    cdkConnectedOverlayPush
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    [cdkConnectedOverlayPositions]="_positions"
+    [cdkConnectedOverlayWidth]="_width"
+    [cdkConnectedOverlayOrigin]="origin"
+    [cdkConnectedOverlayOpen]="_isOpen"
+    (overlayOutsideClick)="_close()"
+    (attach)="_onAttach()"
+    (detach)="_onDetach()"
 >
-  <div class="panel"
-      [class.is-outline]="_isOutline"
-      (keydown)="_onKeydown($event)"
-      [attr.aria-owns]="_comboboxId"
-      aria-expanded="true"
-      (focusin)="_onFocusWithinOverlay($event)"
-      role="combobox"
-      [attr.aria-activedescendant]="_getAriaActiveDescendant()"
-      tabindex="-1"
-      [attr.aria-labelledby]="_getAriaLabelledBy()">
-    <div *ngIf="!_isOutline && _overlayLabel" class="panel-header" #panelHeader>
-      {{_overlayLabel}}
+    <div
+        class="panel"
+        [class.is-outline]="_isOutline"
+        (keydown)="_onKeydown($event)"
+        [attr.aria-owns]="_comboboxId"
+        aria-expanded="true"
+        (focusin)="_onFocusWithinOverlay($event)"
+        role="combobox"
+        [attr.aria-activedescendant]="_getAriaActiveDescendant()"
+        tabindex="-1"
+        [attr.aria-labelledby]="_getAriaLabelledBy()"
+    >
+        <div *ngIf="!_isOutline && _overlayLabel" class="panel-header" #panelHeader>
+            {{ _overlayLabel }}
+        </div>
+        <div *ngIf="filter" class="filter-wrapper">
+            <nx-formfield class="filter" appearance="auto">
+                <input
+                    nxInput
+                    #filterInput
+                    [(ngModel)]="_filterValue"
+                    (ngModelChange)="_onFilterChange($event)"
+                    [placeholder]="filterPlaceholder"
+                    autocomplete="off"
+                    [attr.aria-controls]="_comboboxId"
+                    [attr.aria-labelledby]="_getAriaLabelledBy()"
+                    [attr.aria-activedescendant]="_getAriaActiveDescendant()"
+                />
+                <nx-icon aria-hidden="true" nxFormfieldSuffix [class.hidden]="!_filterValue.length" class="clear" (click)="_clearFilter()" name="close"></nx-icon>
+            </nx-formfield>
+        </div>
+        <div class="item actions" *ngIf="_isOutline">
+            <nx-checkbox [ngModel]="_allSelected" (ngModelChange)="_onSelectAll()" [indeterminate]="_someSelected"> Select all </nx-checkbox>
+            <button type="button" nxPlainButton (click)="_clear()" [disabled]="selectedItems.size === 0"> Clear all </button>
+        </div>
+        <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
+            <nx-multi-select-option
+                *ngFor="let option of listItems"
+                class="item"
+                (selectedChange)="_onSelect(option, $event)"
+                [value]="_selectValue(option)"
+                [label]="_selectLabel(option)"
+                [selected]="this.selectedItems.has(option)"
+                [disabled]="this._isDisabled(option)"
+                [appearance]="_appearance"
+            ></nx-multi-select-option>
+        </div>
     </div>
-    <div *ngIf="filter" class="filter-wrapper">
-      <nx-formfield class="filter"
-          appearance="auto">
-        <input
-          nxInput
-          #filterInput
-          [(ngModel)]="_filterValue"
-          (ngModelChange)="_onFilterChange($event)"
-          [placeholder]="filterPlaceholder"
-          autocomplete="off"
-          [attr.aria-controls]="_comboboxId"
-          [attr.aria-labelledby]="_getAriaLabelledBy()"
-          [attr.aria-activedescendant]="_getAriaActiveDescendant()"
-        />
-        <nx-icon
-          aria-hidden="true"
-          nxFormfieldSuffix
-          [class.hidden]="!_filterValue.length"
-          class="clear"
-          (click)="_clearFilter()"
-          name="close"></nx-icon>
-      </nx-formfield>
-    </div>
-    <div class="item actions" *ngIf="_isOutline">
-      <nx-checkbox
-          [ngModel]="_allSelected"
-          (ngModelChange)="_onSelectAll()"
-          [indeterminate]="_someSelected">
-        Select all
-      </nx-checkbox>
-      <button
-          type="button"
-          nxPlainButton
-          (click)="_clear()"
-          [disabled]="selectedItems.size === 0">
-        Clear all
-      </button>
-    </div>
-    <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
-      <nx-multi-select-option
-        *ngFor="let option of listItems"
-        class="item"
-        (selectedChange)="_onSelect(option, $event)"
-        [value]="_selectValue(option)"
-        [label]="_selectLabel(option)"
-        [selected]="this.selectedItems.has(option)"
-        [disabled]="this._isDisabled(option)"
-        [appearance]="_appearance"
-        ></nx-multi-select-option>
-    </div>
-  </div>
 </ng-template>

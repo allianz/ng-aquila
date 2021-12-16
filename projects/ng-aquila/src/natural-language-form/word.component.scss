@@ -8,174 +8,177 @@ $long-word-min-width--mobile: 248px;
 $border-size: nx-border-size(m);
 
 :host {
-  display: inline-block;
-  position: relative;
-  font-weight: nx-font-weight(regular);
-  text-align: center;
-  hyphens: none;
-  width: 100%;
-  margin: 0 nx-spacer(3xs);
+    display: inline-block;
+    position: relative;
+    font-weight: nx-font-weight(regular);
+    text-align: center;
+    hyphens: none;
+    width: 100%;
+    margin: 0 nx-spacer(3xs);
 
-  .nx-word__inner-wrapper {
-    border-bottom-width: $border-size;
-    border-bottom-style: solid;
-    @include var(border-bottom-color, natural-language-form-border-color);
-  }
-
-  &.size-short {
-    min-width: $short-word-min-width;
-  }
-
-  &.size-regular {
-    min-width: $regular-word-min-width;
-  }
-
-  &.size-long {
-    min-width: $long-word-min-width;
-
-    @include media-breakpoint-down(medium) {
-      min-width: $long-word-min-width--tablet;
-    }
-    @include media-breakpoint-response(mobile) {
-      min-width: $long-word-min-width--mobile;
-    }
-  }
-
-  ::ng-deep {
-    .c-input {
-      display: inline-block;
-      text-align: inherit;
-      font-size: inherit;
-      line-height: inherit;
-      background: 0 0;
-      color: inherit;
-      border: none;
-      outline: 0;
-      margin: 0;
-      width: 100%;
-      max-width: 100%;
-      height: auto; // IE fix
-      box-shadow: none; // FF fix
-      padding: 0 nx-spacer(2xs);
-
-      &.is-focused {
-        outline: none;
-        box-shadow: none;
-      }
-
-      &.is-filled, &.is-focused {
-        @include var(color, natural-language-form-active-color);
-        font-weight: nx-font-weight(regular);
-      }
-
-      &.is-disabled {
-        cursor: not-allowed;
-      }
-
-      /* IE10+ Fix to remove the clear button that appears on input */
-      &::-ms-clear {
-        display: none;
-      }
+    .nx-word__inner-wrapper {
+        border-bottom-width: $border-size;
+        border-bottom-style: solid;
+        @include var(border-bottom-color, natural-language-form-border-color);
     }
 
-    nx-dropdown {
-      position: relative;
-      border-bottom-width: $border-size;
-      border-bottom-style: solid;
-      @include var(border-bottom-color, natural-language-form-border-color);
+    &.size-short {
+        min-width: $short-word-min-width;
+    }
 
-      .nx-dropdown__container {
-        font-size: inherit;
-        margin-bottom: - nx-spacer(4xs);
+    &.size-regular {
+        min-width: $regular-word-min-width;
+    }
+
+    &.size-long {
+        min-width: $long-word-min-width;
 
         @include media-breakpoint-down(medium) {
-          font-size: nx-font-size(m);
+            min-width: $long-word-min-width--tablet;
         }
-      }
-
-      &.is-filled, &.has-focus {
-        @include var(color, natural-language-form-active-color);
-        @include var(border-color, natural-language-form-active-border-color);
-      }
-
-      .nx-dropdown__icon {
-        line-height: inherit;
-      }
+        @include media-breakpoint-response(mobile) {
+            min-width: $long-word-min-width--mobile;
+        }
     }
 
-    .nx-word__input-wrapper {
-      width: 100%;
+    ::ng-deep {
+        .c-input {
+            display: inline-block;
+            text-align: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            background: 0 0;
+            color: inherit;
+            border: none;
+            outline: 0;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+            height: auto; // IE fix
+            box-shadow: none; // FF fix
+            padding: 0 nx-spacer(2xs);
+
+            &.is-focused {
+                outline: none;
+                box-shadow: none;
+            }
+
+            &.is-filled,
+            &.is-focused {
+                @include var(color, natural-language-form-active-color);
+                font-weight: nx-font-weight(regular);
+            }
+
+            &.is-disabled {
+                cursor: not-allowed;
+            }
+
+            /* IE10+ Fix to remove the clear button that appears on input */
+            &::-ms-clear {
+                display: none;
+            }
+        }
+
+        nx-dropdown {
+            position: relative;
+            border-bottom-width: $border-size;
+            border-bottom-style: solid;
+            @include var(border-bottom-color, natural-language-form-border-color);
+
+            .nx-dropdown__container {
+                font-size: inherit;
+                margin-bottom: -nx-spacer(4xs);
+
+                @include media-breakpoint-down(medium) {
+                    font-size: nx-font-size(m);
+                }
+            }
+
+            &.is-filled,
+            &.has-focus {
+                @include var(color, natural-language-form-active-color);
+                @include var(border-color, natural-language-form-active-border-color);
+            }
+
+            .nx-dropdown__icon {
+                line-height: inherit;
+            }
+        }
+
+        .nx-word__input-wrapper {
+            width: 100%;
+        }
     }
-  }
 }
 
 :host(.is-focused),
 :host(.is-filled) {
-  .nx-word__inner-wrapper {
-    @include var(border-color, natural-language-form-active-border-color);
-  }
+    .nx-word__inner-wrapper {
+        @include var(border-color, natural-language-form-active-border-color);
+    }
 }
 
 :host(.has-error) {
-  .nx-word__inner-wrapper{
-    @include var(border-color, natural-language-form-error-border-color);
-  }
+    .nx-word__inner-wrapper {
+        @include var(border-color, natural-language-form-error-border-color);
+    }
 }
 
-
 :host.has-error ::ng-deep {
-  nx-dropdown {
-    @include var(color, natural-language-form-error-color);
-    @include var(border-color, natural-language-form-error-border-color);
-  }
+    nx-dropdown {
+        @include var(color, natural-language-form-error-color);
+        @include var(border-color, natural-language-form-error-border-color);
+    }
 
-  .c-input.has-error {
-    @include var(color, natural-language-form-error-color);
-  }
+    .c-input.has-error {
+        @include var(color, natural-language-form-error-color);
+    }
 }
 
 :host-context(.is-negative) ::ng-deep {
-  .nx-dropdown, nx-dropdown, nx-dropdown.is-filled {
-    @include var(border-color, negative);
-    @include var(color, negative);
-  }
+    .nx-dropdown,
+    nx-dropdown,
+    nx-dropdown.is-filled {
+        @include var(border-color, negative);
+        @include var(color, negative);
+    }
 
-  .c-input,
-  .c-input.has-error {
-    @include var(color, negative);
-  }
+    .c-input,
+    .c-input.has-error {
+        @include var(color, negative);
+    }
 }
 
 :host-context(.is-negative) {
-  .nx-word__inner-wrapper {
-    @include var(border-color, negative);
-  }
+    .nx-word__inner-wrapper {
+        @include var(border-color, negative);
+    }
 }
 
 .nx-word__inner-wrapper {
-  @include var(height, natural-language-form-large-line-height);
+    @include var(height, natural-language-form-large-line-height);
 
-  @include media-breakpoint-down('medium') {
-    @include var(height, natural-language-form-small-line-height);
-  }
+    @include media-breakpoint-down('medium') {
+        @include var(height, natural-language-form-small-line-height);
+    }
 }
 
 :host-context(.nx-natural-language-form--small) {
-  .nx-word__inner-wrapper {
-    @include var(height, natural-language-form-small-line-height);
-  }
+    .nx-word__inner-wrapper {
+        @include var(height, natural-language-form-small-line-height);
+    }
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .nx-word__inner-wrapper,
-  ::ng-deep nx-dropdown {
-    border-bottom-color: buttonText !important;
-  }
-
-  :host(.is-focused) {
     .nx-word__inner-wrapper,
     ::ng-deep nx-dropdown {
-      border-bottom-color: highlight !important;
+        border-bottom-color: buttonText !important;
     }
-  }
+
+    :host(.is-focused) {
+        .nx-word__inner-wrapper,
+        ::ng-deep nx-dropdown {
+            border-bottom-color: highlight !important;
+        }
+    }
 }

@@ -1,192 +1,193 @@
-@import "../../../../ng-aquila/src/shared-styles/index.scss";
-@import "../styles/viewer-styles.scss";
+@import '../../../../ng-aquila/src/shared-styles/index.scss';
+@import '../styles/viewer-styles.scss';
 
 $toc-width: 200px;
 
 :host {
-  display: block;
-  font-size: 16px;
-  height: 100vh;
-  line-height: 24px;
-  @include var(background, ui-background);
-  @include var(color, text-01);
+    display: block;
+    font-size: 16px;
+    height: 100vh;
+    line-height: 24px;
+    @include var(background, ui-background);
+    @include var(color, text-01);
 
-  @media (max-width: 785px) {
-    padding-top: 120px;
-  }
+    @media (max-width: 785px) {
+        padding-top: 120px;
+    }
 
-  @media (min-width: 786px) {
-    padding-top: 60px;
-  }
+    @media (min-width: 786px) {
+        padding-top: 60px;
+    }
 }
 
 .nx-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  font-size: 16px;
-  line-height: 24px;
-  z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    z-index: 2;
 
-  .nx-header__brand {
-    margin-right: 32px;
+    .nx-header__brand {
+        margin-right: 32px;
+
+        img {
+            @include var(filter, documentation-svg-filter);
+        }
+
+        @media (max-width: 703px) {
+            margin-right: 0;
+        }
+    }
+
+    figure {
+        display: flex;
+        align-items: center;
+    }
 
     img {
-      @include var(filter, documentation-svg-filter)
+        width: 120px;
     }
 
-    @media (max-width: 703px) {
-      margin-right: 0;
+    ul {
+        list-style-type: none;
+        display: flex;
     }
-  }
-
-  figure {
-    display: flex;
-    align-items: center;
-  }
-
-  img {
-    width: 120px;
-  }
-
-  ul {
-    list-style-type: none;
-    display: flex;
-  }
 }
 
 .nx-desktop-navigation {
-  @media (max-width: 785px) {
-    display: none;
-  }
+    @media (max-width: 785px) {
+        display: none;
+    }
 }
 
 .nx-header__row {
-  @media (max-width: 703px) {
-    padding: 1px 16px 0 16px;
-  }
+    @media (max-width: 703px) {
+        padding: 1px 16px 0 16px;
+    }
 }
 
 .nx-header__actions {
-  @media (max-width: 703px) {
-    margin-left: 0;
-  }
+    @media (max-width: 703px) {
+        margin-left: 0;
+    }
 }
 
 .nx-mobile-navigation {
-  @media (min-width: 786px) {
-    display: none;
-  }
-
-  @media (max-width: 785px) {
-    ul, li {
-      display: flex;
-      flex: 1;
+    @media (min-width: 786px) {
+        display: none;
     }
 
-    li {
-      justify-content: center;
+    @media (max-width: 785px) {
+        ul,
+        li {
+            display: flex;
+            flex: 1;
+        }
 
-      a {
-        margin-left: 3px;
-        margin-right: 3px;
-      }
+        li {
+            justify-content: center;
 
-      &:first-child a {
-        margin-left: 0;
-      }
+            a {
+                margin-left: 3px;
+                margin-right: 3px;
+            }
 
-      &:last-child a {
-        margin-right: 0;
-      }
+            &:first-child a {
+                margin-left: 0;
+            }
+
+            &:last-child a {
+                margin-right: 0;
+            }
+        }
     }
-  }
 }
 
 .toc {
-  position: relative;
-  width: $toc-width;
+    position: relative;
+    width: $toc-width;
 
-  nxv-table-of-contents {
-    position: sticky;
-    top: 24px;
+    nxv-table-of-contents {
+        position: sticky;
+        top: 24px;
+
+        @media (max-width: 785px) {
+            display: none;
+        }
+    }
 
     @media (max-width: 785px) {
-      display: none;
+        display: none;
     }
-  }
-
-  @media (max-width: 785px) {
-    display: none;
-  }
 }
 
 .documentation-header__github-logo {
-  margin: 4px;
-  vertical-align: middle;
+    margin: 4px;
+    vertical-align: middle;
 }
 
 ::ng-deep nx-sidebar.docs-sidebar {
-  width: 240px;
+    width: 240px;
 
-  .nx-sidebar__toggle-button {
-    display: none;
-  }
-
-  &.mobile-sidebar--visible {
-    position: absolute;
-    z-index: 1;
-  }
-
-  &:not(.mobile-sidebar--visible) {
-    @media (max-width: 785px) {
-      display: none!important;
+    .nx-sidebar__toggle-button {
+        display: none;
     }
-  }
+
+    &.mobile-sidebar--visible {
+        position: absolute;
+        z-index: 1;
+    }
+
+    &:not(.mobile-sidebar--visible) {
+        @media (max-width: 785px) {
+            display: none !important;
+        }
+    }
 }
 
 ::ng-deep .docs-toc {
-  position: relative;
-  width: $toc-width;
-  margin-left: 16px;
-
-  nxv-table-of-contents {
-    position: sticky;
-    display: inline-flex;
-    top: 24px;
+    position: relative;
     width: $toc-width;
-    height: calc(100vh - 84px);
-    overflow-y: auto;
+    margin-left: 16px;
+
+    nxv-table-of-contents {
+        position: sticky;
+        display: inline-flex;
+        top: 24px;
+        width: $toc-width;
+        height: calc(100vh - 84px);
+        overflow-y: auto;
+
+        @media (max-width: 991px) {
+            display: none;
+        }
+    }
 
     @media (max-width: 991px) {
-      display: none;
+        display: none;
     }
-  }
-
-  @media (max-width: 991px) {
-    display: none;
-  }
 }
 
 .docs-version-select {
-  margin-right: 8px;
+    margin-right: 8px;
 
-  @media (max-width: 703px) {
-    margin-right: 0;
-  }
+    @media (max-width: 703px) {
+        margin-right: 0;
+    }
 }
 
 ::ng-deep nxv-feedback {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .documentation-header__main-logo,
-  .documentation-header__github-logo {
-    g {
-      fill: buttonText;
+    .documentation-header__main-logo,
+    .documentation-header__github-logo {
+        g {
+            fill: buttonText;
+        }
     }
-  }
 }

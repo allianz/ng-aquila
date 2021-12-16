@@ -1,65 +1,46 @@
 <div class="nx-calendar-header">
-  <div class="nx-calendar-controls">
-
-    <button #previousButton
-            class="nx-calendar-previous-button"
-            [disabled]="!_previousEnabled()" (click)="_previousClicked()"
-            [attr.aria-label]="_prevButtonLabel">
+    <div class="nx-calendar-controls">
+        <button #previousButton class="nx-calendar-previous-button" [disabled]="!_previousEnabled()" (click)="_previousClicked()" [attr.aria-label]="_prevButtonLabel">
             <nx-icon [name]="this._isRtl ? 'chevron-right' : 'chevron-left'"></nx-icon>
-    </button>
+        </button>
 
-    <span class="nx-calendar-period-label">
-      {{_periodButtonText}}
-    </span>
+        <span class="nx-calendar-period-label"> {{_periodButtonText}} </span>
 
-    <button #nextButton
-            class="nx-calendar-next-button"
-            [disabled]="!_nextEnabled()" (click)="_nextClicked()"
-            [attr.aria-label]="_nextButtonLabel">
+        <button #nextButton class="nx-calendar-next-button" [disabled]="!_nextEnabled()" (click)="_nextClicked()" [attr.aria-label]="_nextButtonLabel">
             <nx-icon [name]="this._isRtl ? 'chevron-left' : 'chevron-right'"></nx-icon>
-    </button>
-  </div>
+        </button>
+    </div>
 
-  <div class="nx-calendar-view-controls">
-    <button #changeViewButton
-        class="nx-calendar-change-view-button"
-        (click)="_changeViewClicked()" [attr.aria-label]="_periodButtonLabel">
-      {{_periodButtonLabel}}
-    </button>
-  </div>
+    <div class="nx-calendar-view-controls">
+        <button #changeViewButton class="nx-calendar-change-view-button" (click)="_changeViewClicked()" [attr.aria-label]="_periodButtonLabel"> {{_periodButtonLabel}} </button>
+    </div>
 </div>
 
 <div class="nx-calendar-content" [ngSwitch]="_currentView" cdkMonitorSubtreeFocus tabindex="-1">
-  <nx-month-view
-      *ngSwitchCase="'month'"
-      [(activeDate)]="_activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      (selectedChange)="_dateSelected($event!)"
-      (_userSelection)="_userSelected()">
-  </nx-month-view>
+    <nx-month-view *ngSwitchCase="'month'" [(activeDate)]="_activeDate" [selected]="selected" [dateFilter]="dateFilter" [maxDate]="maxDate" [minDate]="minDate" (selectedChange)="_dateSelected($event!)" (_userSelection)="_userSelected()">
+    </nx-month-view>
 
-  <nx-year-view
-      *ngSwitchCase="'year'"
-      [(activeDate)]="_activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      (monthSelected)="_monthSelectedInYearView($event)"
-      (selectedChange)="_goToDateInView($event, 'month')">
-  </nx-year-view>
+    <nx-year-view
+        *ngSwitchCase="'year'"
+        [(activeDate)]="_activeDate"
+        [selected]="selected"
+        [dateFilter]="dateFilter"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+        (monthSelected)="_monthSelectedInYearView($event)"
+        (selectedChange)="_goToDateInView($event, 'month')"
+    >
+    </nx-year-view>
 
-  <nx-multi-year-view
-      *ngSwitchCase="'multi-year'"
-      [(activeDate)]="_activeDate"
-      [selected]="selected"
-      [dateFilter]="dateFilter"
-      [maxDate]="maxDate"
-      [minDate]="minDate"
-      (yearSelected)="_yearSelectedInMultiYearView($event)"
-      (selectedChange)="_goToDateInView($event, 'year')">
-  </nx-multi-year-view>
+    <nx-multi-year-view
+        *ngSwitchCase="'multi-year'"
+        [(activeDate)]="_activeDate"
+        [selected]="selected"
+        [dateFilter]="dateFilter"
+        [maxDate]="maxDate"
+        [minDate]="minDate"
+        (yearSelected)="_yearSelectedInMultiYearView($event)"
+        (selectedChange)="_goToDateInView($event, 'year')"
+    >
+    </nx-multi-year-view>
 </div>

@@ -1,14 +1,17 @@
 <button nxButton class="nx-margin-right-xs" (click)="openFromTemplate()">open modal</button>
-<br>
+<br />
 
 <ng-template #template>
-  <div nxModalContent>
-    <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">No close on click outside</h3>
-    <p nxCopytext="small" class="nx-margin-bottom-2m">This modal view will not close on click outside or ESC. You need to use the action buttons.</p>
-  </div>
-  <div nxModalActions>
-    <button nxModalClose class="nx-margin-bottom-0 nx-margin-right-xs" nxButton="small secondary" type="button">Cancel</button>
-    <button nxModalClose class="nx-margin-bottom-0" nxButton="small" type="button">Proceed</button>
-  </div>
-
+    <div nxModalContent>
+        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">No close on click outside</h3>
+        <p nxCopytext="small" class="nx-margin-bottom-2m"
+            >This modal view will not close on click outside or ESC. You need to use the action buttons.</p
+        >
+    </div>
+    <div nxModalActions>
+        <button nxModalClose class="nx-margin-bottom-0 nx-margin-right-xs" nxButton="small secondary" type="button"
+            >Cancel</button
+        >
+        <button nxModalClose class="nx-margin-bottom-0" nxButton="small" type="button">Proceed</button>
+    </div>
 </ng-template>

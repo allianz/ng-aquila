@@ -1,33 +1,26 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es2019",
-    "lib": ["es2019"],
-    "declaration": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedParameters": false,
-    "noUnusedLocals": false,
-    "rootDir": "src/schematics",
-    "outDir": "../../dist/ng-aquila/schematics",
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "types": [
-      "jasmine",
-      "node"
-    ]
-  },
-  "include": [
-    "src/schematics/**/*"
-  ],
-  "exclude": [
-    "src/schematics/*/files/**/*"
-  ]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es2019",
+        "lib": ["es2019"],
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": false,
+        "noUnusedLocals": false,
+        "rootDir": "src/schematics",
+        "outDir": "../../dist/ng-aquila/schematics",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "types": ["jasmine", "node"]
+    },
+    "include": ["src/schematics/**/*"],
+    "exclude": ["src/schematics/*/files/**/*"]
 }

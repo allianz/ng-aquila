@@ -11,202 +11,183 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxOverlayModule } from './overlay.module';
 
 describe('NxOverlayService', () => {
-  let overlayContainer: OverlayContainer;
-  let overlayContainerElement: HTMLElement;
-  let overlayService: NxOverlayService;
-  let fixture: ComponentFixture<ComponentWithTemplateRef>;
+    let overlayContainer: OverlayContainer;
+    let overlayContainerElement: HTMLElement;
+    let overlayService: NxOverlayService;
+    let fixture: ComponentFixture<ComponentWithTemplateRef>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        NxOverlayModule,
-        OverlayTestModule,
-        RouterTestingModule.withRoutes([]),
-        NxButtonModule
-      ],
-      declarations: [TestRootComponent],
-      providers: [
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [NxOverlayModule, OverlayTestModule, RouterTestingModule.withRoutes([]), NxButtonModule],
+            declarations: [TestRootComponent],
+            providers: [],
+        });
 
-      ]
+        TestBed.compileComponents();
+
+        inject([OverlayContainer, NxOverlayService], (oc: OverlayContainer, o: NxOverlayService) => {
+            overlayContainer = oc;
+            overlayContainerElement = oc.getContainerElement();
+            overlayService = o;
+        })();
     });
 
-    TestBed.compileComponents();
+    beforeEach(() => {
+        fixture = TestBed.createComponent(ComponentWithTemplateRef);
+        fixture.detectChanges();
+    });
 
-    inject([OverlayContainer, NxOverlayService],
-      (oc: OverlayContainer, o: NxOverlayService) => {
-        overlayContainer = oc;
-        overlayContainerElement = oc.getContainerElement();
-        overlayService = o;
-      })();
-  });
+    afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
+        currentOverlayContainer.ngOnDestroy();
+        overlayContainer.ngOnDestroy();
+        overlayService.openOverlays.forEach(o => o.close());
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ComponentWithTemplateRef);
-    fixture.detectChanges();
-  });
+    it('should open a template', fakeAsync(() => {
+        const template = fixture.componentInstance.templateRef;
+        const trigger = fixture.componentInstance.trigger;
+        const overlayRef = overlayService.open(template, trigger, { direction: 'bottom' });
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.textContent).toContain('Hello');
+    }));
 
-  afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
-    currentOverlayContainer.ngOnDestroy();
-    overlayContainer.ngOnDestroy();
-    overlayService.openOverlays.forEach(o => o.close());
-  }));
+    it('should open a component', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.textContent).toContain('Hello World');
+    }));
 
-  it('should open a template', fakeAsync(() => {
-    const template = fixture.componentInstance.templateRef;
-    const trigger = fixture.componentInstance.trigger;
-    const overlayRef = overlayService.open(template, trigger, { direction: 'bottom' });
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.textContent).toContain('Hello');
+    it('should close overlays when service is destroyed', fakeAsync(() => {
+        overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(2);
+        overlayService.ngOnDestroy();
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(0);
+    }));
 
-  }));
+    it('should show backdrop', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true });
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelector('.cdk-overlay-backdrop')).toBeTruthy();
+    }));
 
-  it('should open a component', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.textContent).toContain('Hello World');
-  }));
+    it('should not show backdrop by default', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelector('.cdk-overlay-backdrop')).toBeFalsy();
+    }));
 
-  it('should close overlays when service is destroyed', fakeAsync(() => {
-    overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(2);
-    overlayService.ngOnDestroy();
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(0);
-  }));
+    it('should close on escape', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        fixture.detectChanges();
+        flush();
+        const containerElement = overlayContainerElement.querySelector('.nx-overlay-container');
+        dispatchKeyboardEvent(containerElement as Node, 'keydown', ESCAPE, 'Escape');
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
+        flush();
+    }));
 
-  it('should show backdrop', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true });
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelector('.cdk-overlay-backdrop')).toBeTruthy();
-  }));
+    it('should close on click outside the overlay', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelector('.nx-overlay-container')).toBeTruthy();
+        document.dispatchEvent(new MouseEvent('click'));
 
-  it('should not show backdrop by default', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelector('.cdk-overlay-backdrop')).toBeFalsy();
-  }));
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
+    }));
 
-  it('should close on escape', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    fixture.detectChanges();
-    flush();
-    const containerElement = overlayContainerElement.querySelector('.nx-overlay-container');
-    dispatchKeyboardEvent(containerElement as Node, 'keydown', ESCAPE, 'Escape');
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
-    flush();
-  }));
+    it('should not close on click outside when closeOnClickOutside is false', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { closeOnClickOutside: false });
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
+        document.dispatchEvent(new MouseEvent('click'));
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
+    }));
 
-  it('should close on click outside the overlay', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger);
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelector('.nx-overlay-container')).toBeTruthy();
-    document.dispatchEvent(new MouseEvent('click'));
+    it('should close on backdrop click', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true });
+        fixture.detectChanges();
+        flush();
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
+        const backdrop = overlayContainerElement.querySelector('.cdk-overlay-backdrop') as HTMLElement;
+        backdrop.click();
+        fixture.detectChanges();
+        flush();
 
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
-  }));
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
+    }));
 
-  it('should not close on click outside when closeOnClickOutside is false', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { closeOnClickOutside: false });
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
-    document.dispatchEvent(new MouseEvent('click'));
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
-  }));
+    it('should not close on backdrop click when closeOnClickOutside is false ', fakeAsync(() => {
+        overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true, closeOnClickOutside: false });
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
+        fixture.detectChanges();
+        flush();
+        const backdrop = overlayContainerElement.querySelector('.cdk-overlay-backdrop') as HTMLElement;
+        backdrop.click();
+        fixture.detectChanges();
+        flush();
 
-  it('should close on backdrop click', fakeAsync(() => {
-    const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true });
-    fixture.detectChanges();
-    flush();
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
-    const backdrop = overlayContainerElement.querySelector('.cdk-overlay-backdrop') as HTMLElement;
-    backdrop.click();
-    fixture.detectChanges();
-    flush();
+        expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
+    }));
 
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeFalsy();
-  }));
-
-  it('should not close on backdrop click when closeOnClickOutside is false ', fakeAsync(() => {
-    overlayService.open(PlainComponent, fixture.componentInstance.trigger, { hasBackdrop: true, closeOnClickOutside: false });
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
-    fixture.detectChanges();
-    flush();
-    const backdrop = overlayContainerElement.querySelector('.cdk-overlay-backdrop') as HTMLElement;
-    backdrop.click();
-    fixture.detectChanges();
-    flush();
-
-    expect(overlayContainerElement.querySelector('nx-overlay-container')).toBeTruthy();
-  }));
-
-  it('should set active styles on trigger button', fakeAsync(() => {
-    const overlayRef =
-      overlayService.open(PlainComponent, fixture.componentInstance.trigger, {triggerButton: fixture.componentInstance.button});
-    fixture.detectChanges();
-    flush();
-    expect(fixture.componentInstance.button.active).toBe(true);
-    overlayRef.close();
-    fixture.detectChanges();
-    flush();
-    expect(fixture.componentInstance.button.active).toBe(false);
-  }));
+    it('should set active styles on trigger button', fakeAsync(() => {
+        const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { triggerButton: fixture.componentInstance.button });
+        fixture.detectChanges();
+        flush();
+        expect(fixture.componentInstance.button.active).toBe(true);
+        overlayRef.close();
+        fixture.detectChanges();
+        flush();
+        expect(fixture.componentInstance.button.active).toBe(false);
+    }));
 });
 
 @Component({
-  template: `
+    template: ` <button #button nxButton="tertiary small">Trigger</button>
 
-  <button #button nxButton="tertiary small">Trigger</button>
-
-  <ng-template let-data let-overlayRef="overlayRef">
-      Hello {{localValue}} {{data?.value}}{{setDialogRef(overlayRef)}}</ng-template>`,
+        <ng-template let-data let-overlayRef="overlayRef"> Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template>`,
 })
 class ComponentWithTemplateRef {
-  localValue!: string;
-  overlayRef!: NxOverlayRef<any>;
+    localValue!: string;
+    overlayRef!: NxOverlayRef<any>;
 
-  @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
-  @ViewChild('button') trigger!: ElementRef;
-  @ViewChild(NxButtonComponent) button!: NxButtonComponent;
+    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
+    @ViewChild('button') trigger!: ElementRef;
+    @ViewChild(NxButtonComponent) button!: NxButtonComponent;
 
-  setDialogRef(overlayRef: NxOverlayRef<any>): string {
-    this.overlayRef = overlayRef;
-    return '';
-  }
+    setDialogRef(overlayRef: NxOverlayRef<any>): string {
+        this.overlayRef = overlayRef;
+        return '';
+    }
 }
 
 @Component({
-  template: `
-  <button #button>Trigger</button>
-  <router-outlet></router-outlet>`
+    template: ` <button #button>Trigger</button>
+        <router-outlet></router-outlet>`,
 })
 export class TestRootComponent {
-  @ViewChild('button') trigger!: ElementRef;
+    @ViewChild('button') trigger!: ElementRef;
 }
 
 @Component({
-  template: `
-  <div class="hello">Hello World</div>
-`,
+    template: ` <div class="hello">Hello World</div> `,
 })
-class PlainComponent { }
+class PlainComponent {}
 
 @NgModule({
-  imports: [NxOverlayModule, NxButtonModule],
-  exports: [ComponentWithTemplateRef, PlainComponent],
-  declarations: [ComponentWithTemplateRef, PlainComponent],
-  entryComponents: [
-    ComponentWithTemplateRef,
-    PlainComponent
-  ]
+    imports: [NxOverlayModule, NxButtonModule],
+    exports: [ComponentWithTemplateRef, PlainComponent],
+    declarations: [ComponentWithTemplateRef, PlainComponent],
+    entryComponents: [ComponentWithTemplateRef, PlainComponent],
 })
-class OverlayTestModule { }
+class OverlayTestModule {}

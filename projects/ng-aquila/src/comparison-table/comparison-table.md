@@ -70,7 +70,7 @@ You can disable certain columns of the comparison table via the input `disabledC
 
 #### Hidden table columns
 
-You can hide certain columns of the comparison table via the input `hiddenIndexes` on table `nx-comparison-table` as shown in the example below. Keep in mind that `hiddenIndexes` will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time. 
+You can hide certain columns of the comparison table via the input `hiddenIndexes` on table `nx-comparison-table` as shown in the example below. Keep in mind that `hiddenIndexes` will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time.
 
 Please note that **this example is using the `nx-context-menu` component which is an Expert component**. This means that this combination is currently only intended for internal and not for client-facing applications.
 
@@ -80,7 +80,7 @@ Please note that **this example is using the `nx-context-menu` component which i
 
 #### Theming variations
 
-By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the [theming page](./documentation/theming). 
+By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the [theming page](./documentation/theming).
 
 Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set `unselectedClassNames="secondary small negative"` for `nxComparisonTableSelectButton`.
 
@@ -113,4 +113,5 @@ Switch the theme to "EXPERT" at the top of the page to see the correct expert co
 </div>
 
 ### Accessibility
+
 When using an icon-only cell it is important that the `nx-icon` has an `aria-label`. To learn more about the usage of an aria-label [click here](./documentation/accessibility/overview#usage-of-aria-label).

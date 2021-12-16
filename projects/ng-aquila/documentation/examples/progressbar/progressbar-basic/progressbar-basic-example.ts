@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Progress Bar Basic Example
-*/
+ * @title Progress Bar Basic Example
+ */
 @Component({
-  selector: 'progressbar-basic-example',
-  templateUrl: './progressbar-basic-example.html',
-  styleUrls: ['./progressbar-basic-example.css']
+    selector: 'progressbar-basic-example',
+    templateUrl: './progressbar-basic-example.html',
+    styleUrls: ['./progressbar-basic-example.css'],
 })
 export class ProgressbarBasicExampleComponent {
-  myProgress: number = 0.3;
+    myProgress: number = 0.3;
 }

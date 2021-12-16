@@ -9,28 +9,24 @@ import { ImageFixedRatiosExampleComponent } from './image-fixed-ratios/image-fix
 import { ImageRoundedExampleComponent } from './image-rounded/image-rounded-example';
 
 const EXAMPLES = [
-  ImageAttributeExampleComponent,
-  ImageDefaultExampleComponent,
-  ImageFixedRatiosExampleComponent,
-  ImageRoundedExampleComponent
+    ImageAttributeExampleComponent,
+    ImageDefaultExampleComponent,
+    ImageFixedRatiosExampleComponent,
+    ImageRoundedExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxImageModule,
-    NxGridModule,
-    NxCopytextModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxImageModule, NxGridModule, NxCopytextModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ImageExamplesModule {
-  static components() {
-    return {
-      'image-attribute': ImageAttributeExampleComponent,
-      'image-default': ImageDefaultExampleComponent,
-      'image-fixed-ratios': ImageFixedRatiosExampleComponent,
-      'image-rounded': ImageRoundedExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'image-attribute': ImageAttributeExampleComponent,
+            'image-default': ImageDefaultExampleComponent,
+            'image-fixed-ratios': ImageFixedRatiosExampleComponent,
+            'image-rounded': ImageRoundedExampleComponent,
+        };
+    }
 }

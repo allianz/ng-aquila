@@ -11,217 +11,188 @@ import { NxDynamicTableModule } from './dynamic-table.module';
 
 @Directive()
 abstract class DynamicTableTest {
-  @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;
-  data: any[] = [
-    { name: 'Mateo', email: 'mateo@email.com', phone: '678543129' },
-    { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
-    { name: 'Adrian', email: 'adrian@email.com', phone: '987654321' },
-  ];
-  displayedColumns: NxDisplayedColumns[] = [
-    { title: 'User Name', key: 'name', type: 'string' },
-    { title: 'Phone Number', key: 'phone', type: 'string' }
-  ];
-  handleRowClick = jasmine.createSpy('handleRowClickSpy');
-  style = '';
+    @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;
+    data: any[] = [
+        { name: 'Mateo', email: 'mateo@email.com', phone: '678543129' },
+        { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
+        { name: 'Adrian', email: 'adrian@email.com', phone: '987654321' },
+    ];
+    displayedColumns: NxDisplayedColumns[] = [
+        { title: 'User Name', key: 'name', type: 'string' },
+        { title: 'Phone Number', key: 'phone', type: 'string' },
+    ];
+    handleRowClick = jasmine.createSpy('handleRowClickSpy');
+    style = '';
 }
 
 describe('NxDynamicTableComponent', () => {
+    let fixture: ComponentFixture<DynamicTableTest>;
+    let testInstance: DynamicTableTest;
+    let rowDebugElement: HTMLElement;
+    let table: HTMLElement;
+    let ngContent: HTMLElement;
+    let rowElements: HTMLElement[];
+    let headerCellElements: HTMLElement[];
 
-  let fixture: ComponentFixture<DynamicTableTest>;
-  let testInstance: DynamicTableTest;
-  let rowDebugElement: HTMLElement;
-  let table: HTMLElement;
-  let ngContent: HTMLElement;
-  let rowElements: HTMLElement[];
-  let headerCellElements: HTMLElement[];
+    function createTestComponent(component: Type<DynamicTableTest>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
 
-  function createTestComponent(component: Type<DynamicTableTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
+        ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
+        rowDebugElement = fixture.nativeElement.querySelector('cdk-row');
+        table = fixture.nativeElement.querySelector('cdk-table');
+        rowElements = fixture.nativeElement.querySelectorAll('cdk-row');
+        headerCellElements = fixture.nativeElement.querySelectorAll('cdk-header-cell');
+    }
 
-    ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
-    rowDebugElement = fixture.nativeElement.querySelector('cdk-row');
-    table = fixture.nativeElement.querySelector('cdk-table');
-    rowElements = fixture.nativeElement.querySelectorAll('cdk-row');
-    headerCellElements = fixture.nativeElement.querySelectorAll('cdk-header-cell');
-  }
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [NxDynamicTableModule, CdkTableModule],
+                declarations: [BasicDynamicTable, TableEmptyRows, TableWrongRows, DynamicTableEvent, EmptyDynamicTable, ProgrammaticTable],
+            }).compileComponents();
+        }),
+    );
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        NxDynamicTableModule,
-        CdkTableModule
-      ],
-      declarations: [
-        BasicDynamicTable,
-        TableEmptyRows,
-        TableWrongRows,
-        DynamicTableEvent,
-        EmptyDynamicTable,
-        ProgrammaticTable,
+    function getRows() {
+        return fixture.nativeElement.querySelectorAll('cdk-row');
+    }
 
-      ]
-    }).compileComponents();
-  }));
+    function getHeaderRow() {
+        return fixture.nativeElement.querySelector('cdk-header-row');
+    }
 
-  function getRows() {
-    return fixture.nativeElement.querySelectorAll('cdk-row');
-  }
+    describe('basic', () => {
+        it('displays a table', () => {
+            createTestComponent(BasicDynamicTable);
+            expect(headerCellElements && rowElements).not.toBeNull();
+        });
 
-  function getHeaderRow() {
-    return fixture.nativeElement.querySelector('cdk-header-row');
-  }
+        it('should render two columns', () => {
+            createTestComponent(BasicDynamicTable);
+            fixture.detectChanges();
+            expect(headerCellElements.length).toBe(2);
+        });
 
-  describe('basic', () => {
+        it('should render three rows', () => {
+            createTestComponent(BasicDynamicTable);
+            fixture.detectChanges();
+            expect(rowElements.length).toBe(3);
+        });
 
-    it('displays a table', () => {
-      createTestComponent(BasicDynamicTable);
-      expect(headerCellElements && rowElements).not.toBeNull();
+        it('should render 2 rows empty', () => {
+            createTestComponent(TableEmptyRows);
+            fixture.detectChanges();
+            expect(rowElements.length).toBe(2);
+        });
+
+        it('should render 0 rows due to rows are null or undefined', () => {
+            createTestComponent(TableWrongRows);
+            fixture.detectChanges();
+            expect(rowElements.length).toBe(0);
+        });
     });
 
-    it('should render two columns', () => {
-      createTestComponent(BasicDynamicTable);
-      fixture.detectChanges();
-      expect(headerCellElements.length).toBe(2);
+    describe('with events', () => {
+        it('should emit new event', () => {
+            createTestComponent(DynamicTableEvent);
+            fixture.detectChanges();
+            rowDebugElement.dispatchEvent(new MouseEvent('dblclick'));
+            fixture.detectChanges();
+            expect(testInstance.handleRowClick).toHaveBeenCalled();
+        });
     });
 
-    it('should render three rows', () => {
-      createTestComponent(BasicDynamicTable);
-      fixture.detectChanges();
-      expect(rowElements.length).toBe(3);
+    describe('empty table', () => {
+        it('displays a empty table with info: no data to display', () => {
+            createTestComponent(EmptyDynamicTable);
+            expect(headerCellElements && rowElements).not.toBeNull();
+            expect(ngContent.textContent).toContain('Information: No data to display');
+        });
+
+        it('should hide empty message when data changes', () => {
+            createTestComponent(EmptyDynamicTable);
+            fixture.componentInstance.data = [
+                { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
+                { name: 'Adrian', email: 'adrian@email.com', phone: '987654321' },
+            ];
+            fixture.detectChanges();
+            rowElements = getRows();
+            ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
+            expect(ngContent).toBeFalsy();
+            expect(rowElements.length).toBe(2);
+        });
     });
 
-    it('should render 2 rows empty', () => {
-      createTestComponent(TableEmptyRows);
-      fixture.detectChanges();
-      expect(rowElements.length).toBe(2);
+    describe('programmatic change', () => {
+        it('should update on data property change', () => {
+            createTestComponent(ProgrammaticTable);
+            // because the data setter also sets displayColumns if they are not set we test with some completely different
+            // data
+            testInstance.dynamicTableInstance.data = [{ car: 'Tesla', year: 2018, price: '1 €' }];
+            fixture.detectChanges();
+            const rows = getRows();
+            const headerRow = getHeaderRow();
+            expect(rows.length).toBe(1);
+            expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('car');
+            expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('Tesla');
+        });
+
+        it('should update on displayedColumns property change', () => {
+            createTestComponent(ProgrammaticTable);
+            testInstance.dynamicTableInstance.data = testInstance.data;
+            testInstance.dynamicTableInstance.displayedColumns = [{ title: 'Email', key: 'email', type: 'string' }];
+            fixture.detectChanges();
+            const rows = getRows();
+            const headerRow = getHeaderRow();
+            expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('Email');
+            expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('mateo@email.com');
+        });
     });
 
-    it('should render 0 rows due to rows are null or undefined', () => {
-      createTestComponent(TableWrongRows);
-      fixture.detectChanges();
-      expect(rowElements.length).toBe(0);
+    describe('a11y', () => {
+        it('has no accessibility violations', async () => {
+            createTestComponent(BasicDynamicTable);
+            await expectAsync(fixture.nativeElement).toBeAccessible();
+        });
     });
-  });
-
-  describe('with events', () => {
-
-    it('should emit new event', () => {
-      createTestComponent(DynamicTableEvent);
-      fixture.detectChanges();
-      rowDebugElement.dispatchEvent(new MouseEvent('dblclick'));
-      fixture.detectChanges();
-      expect(testInstance.handleRowClick).toHaveBeenCalled();
-    });
-  });
-
-  describe('empty table', () => {
-
-    it('displays a empty table with info: no data to display', () => {
-      createTestComponent(EmptyDynamicTable);
-      expect(headerCellElements && rowElements).not.toBeNull();
-      expect(ngContent.textContent).toContain('Information: No data to display');
-    });
-
-    it('should hide empty message when data changes', () => {
-      createTestComponent(EmptyDynamicTable);
-      fixture.componentInstance.data = [
-        { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
-        { name: 'Adrian', email: 'adrian@email.com', phone: '987654321' }
-      ];
-      fixture.detectChanges();
-      rowElements = getRows();
-      ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
-      expect(ngContent).toBeFalsy();
-      expect(rowElements.length).toBe(2);
-    });
-  });
-
-  describe('programmatic change', () => {
-
-    it('should update on data property change', () => {
-      createTestComponent(ProgrammaticTable);
-      // because the data setter also sets displayColumns if they are not set we test with some completely different
-      // data
-      testInstance.dynamicTableInstance.data = [{ car: 'Tesla', year: 2018, price: '1 €' }];
-      fixture.detectChanges();
-      const rows = getRows();
-      const headerRow = getHeaderRow();
-      expect(rows.length).toBe(1);
-      expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('car');
-      expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('Tesla');
-    });
-
-    it('should update on displayedColumns property change', () => {
-      createTestComponent(ProgrammaticTable);
-      testInstance.dynamicTableInstance.data = testInstance.data;
-      testInstance.dynamicTableInstance.displayedColumns = [{ title: 'Email', key: 'email', type: 'string' }];
-      fixture.detectChanges();
-      const rows = getRows();
-      const headerRow = getHeaderRow();
-      expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('Email');
-      expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('mateo@email.com');
-    });
-  });
-
-  describe('a11y', () => {
-    it('has no accessibility violations', async () => {
-      createTestComponent(BasicDynamicTable);
-      await expectAsync(fixture.nativeElement).toBeAccessible();
-    });
-  });
 });
 
 @Component({
-  template: `
-  <nx-dynamic-table [nxData]="data">
-  </nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table [nxData]="data"> </nx-dynamic-table> `,
 })
 class TableEmptyRows extends DynamicTableTest {
-  data = [{}, {}];
+    data = [{}, {}];
 }
 
 @Component({
-  template: `
-  <nx-dynamic-table  [nxData]="data">
-  </nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table [nxData]="data"> </nx-dynamic-table> `,
 })
 class TableWrongRows extends DynamicTableTest {
-  data = [null, undefined];
+    data = [null, undefined];
 }
 
 @Component({
-  template: `
-  <nx-dynamic-table  [nxData]="data" [nxDisplayedColumns]="displayedColumns"></nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns"></nx-dynamic-table> `,
 })
 class BasicDynamicTable extends DynamicTableTest {
-  style = 'border';
+    style = 'border';
 }
 
 @Component({
-  template: `
-  <nx-dynamic-table  [nxData]="data" [nxDisplayedColumns]="displayedColumns"
-  (nxRowClick) = "handleRowClick($event)"></nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns" (nxRowClick)="handleRowClick($event)"></nx-dynamic-table> `,
 })
-class DynamicTableEvent extends DynamicTableTest { }
+class DynamicTableEvent extends DynamicTableTest {}
 
 @Component({
-  template: `
-  <nx-dynamic-table [nxData]="data">Information: No data to display</nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table [nxData]="data">Information: No data to display</nx-dynamic-table> `,
 })
 class EmptyDynamicTable extends DynamicTableTest {
-  data = [];
+    data = [];
 }
 
 @Component({
-  template: `
-  <nx-dynamic-table></nx-dynamic-table>
-  `
+    template: ` <nx-dynamic-table></nx-dynamic-table> `,
 })
-class ProgrammaticTable extends DynamicTableTest { }
+class ProgrammaticTable extends DynamicTableTest {}

@@ -7,24 +7,24 @@ import { PaginationLocalizeAdvancedExampleComponent } from './pagination-localiz
 import { PaginationSimpleExampleComponent } from './pagination-simple/pagination-simple-example';
 
 const EXAMPLES = [
-  PaginationAdvancedExampleComponent,
-  PaginationLocalizeExampleComponent,
-  PaginationLocalizeAdvancedExampleComponent,
-  PaginationSimpleExampleComponent
+    PaginationAdvancedExampleComponent,
+    PaginationLocalizeExampleComponent,
+    PaginationLocalizeAdvancedExampleComponent,
+    PaginationSimpleExampleComponent,
 ];
 
- @NgModule({
-  imports: [NxPaginationModule],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxPaginationModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class PaginationExamplesModule {
-  static components() {
-    return {
-      'pagination-advanced': PaginationAdvancedExampleComponent,
-      'pagination-localize': PaginationLocalizeExampleComponent,
-      'pagination-localize-advanced': PaginationLocalizeAdvancedExampleComponent,
-      'pagination-simple': PaginationSimpleExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'pagination-advanced': PaginationAdvancedExampleComponent,
+            'pagination-localize': PaginationLocalizeExampleComponent,
+            'pagination-localize-advanced': PaginationLocalizeAdvancedExampleComponent,
+            'pagination-simple': PaginationSimpleExampleComponent,
+        };
+    }
 }

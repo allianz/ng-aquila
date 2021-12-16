@@ -1,20 +1,10 @@
 <nx-icon class="nx-message-banner__icon" [name]="icon" size="s"></nx-icon>
-<button #closeButton
-  *ngIf="closable"
-  (click)="_emitCloseEvent()"
-  [attr.aria-label]="closeButtonLabel"
-  tabindex="0"
-  class="nx-message-banner__close-icon"
-  type="button">
-    <nx-icon
-      name="close"
-      size="s"
-      aria-hidden="true">
-    </nx-icon>
+<button #closeButton *ngIf="closable" (click)="_emitCloseEvent()" [attr.aria-label]="closeButtonLabel" tabindex="0" class="nx-message-banner__close-icon" type="button">
+    <nx-icon name="close" size="s" aria-hidden="true"> </nx-icon>
 </button>
 
 <div class="nx-message-banner__content-wrapper">
-  <div class="nx-message-banner__content">
-    <ng-content></ng-content>
-  </div>
+    <div class="nx-message-banner__content">
+        <ng-content></ng-content>
+    </div>
 </div>

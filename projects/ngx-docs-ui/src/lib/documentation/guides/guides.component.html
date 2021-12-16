@@ -1,25 +1,24 @@
-<nx-sidebar class="docs-sidebar" minWidth="240"
-            [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
-  <button nxAction *ngFor="let guide of availableGuides" routerLink="{{guide.id}}" routerLinkActive="is-selected" type="button">
-    {{guide.title}}
-  </button>
+<nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
+    <button nxAction *ngFor="let guide of availableGuides" routerLink="{{ guide.id }}" routerLinkActive="is-selected" type="button">
+        {{ guide.title }}
+    </button>
 </nx-sidebar>
 
 <main (click)="mainContentClicked()">
-  <div nxLayout="grid maxwidth" class="guide__wrapper">
-    <div nxRow>
-      <div nxCol="12">
-        <nxv-top-info></nxv-top-info>
-      </div>
-    </div>
-
-    <div nxRow>
-      <div nxCol="12">
-        <div class="guide__content">
-          <router-outlet></router-outlet>
+    <div nxLayout="grid maxwidth" class="guide__wrapper">
+        <div nxRow>
+            <div nxCol="12">
+                <nxv-top-info></nxv-top-info>
+            </div>
         </div>
-      </div>
+
+        <div nxRow>
+            <div nxCol="12">
+                <div class="guide__content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <nxv-footer></nxv-footer>
+    <nxv-footer></nxv-footer>
 </main>

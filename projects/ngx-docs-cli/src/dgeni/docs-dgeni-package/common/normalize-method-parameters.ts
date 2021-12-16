@@ -1,13 +1,13 @@
-import {MethodMemberDoc} from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
+import { MethodMemberDoc } from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
 
 export class NormalizedMethodMemberDoc extends MethodMemberDoc {
-  params?: MethodParameterInfo[];
+    params?: MethodParameterInfo[];
 }
 
 export interface MethodParameterInfo {
-  name: string;
-  type: string;
-  isOptional: boolean;
+    name: string;
+    type: string;
+    isOptional: boolean;
 }
 
 /**
@@ -21,40 +21,39 @@ export interface MethodParameterInfo {
  * an object.
  */
 export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
-  if (method.parameters) {
-    method.parameters.forEach(parameter => {
-      let [parameterName, parameterType] = parameter.split(':');
+    if (method.parameters) {
+        method.parameters.forEach(parameter => {
+            let [parameterName, parameterType] = parameter.split(':');
 
-      // If the parameter is optional, the name here will contain a '?'. We store whether the
-      // parameter is optional and remove the '?' for comparison.
-      let isOptional = false;
-      if (parameterName.includes('?')) {
-        isOptional = true;
-        parameterName = parameterName.replace('?', '');
-      }
+            // If the parameter is optional, the name here will contain a '?'. We store whether the
+            // parameter is optional and remove the '?' for comparison.
+            let isOptional = false;
+            if (parameterName.includes('?')) {
+                isOptional = true;
+                parameterName = parameterName.replace('?', '');
+            }
 
-      if (!method.params) {
-        method.params = [];
-      }
+            if (!method.params) {
+                method.params = [];
+            }
 
-      if (!parameterType) {
-        console.warn(`Missing parameter type information (${parameterName}) in ` +
-          `${method.fileInfo.relativePath}:${method.startingLine}`);
-        return;
-      }
+            if (!parameterType) {
+                console.warn(`Missing parameter type information (${parameterName}) in ` + `${method.fileInfo.relativePath}:${method.startingLine}`);
+                return;
+            }
 
-      const existingParameterInfo = method.params.find(p => p.name == parameterName);
+            const existingParameterInfo = method.params.find(p => p.name == parameterName);
 
-      if (!existingParameterInfo) {
-        method.params.push({
-          name: parameterName,
-          type: parameterType.trim(),
-          isOptional: isOptional
+            if (!existingParameterInfo) {
+                method.params.push({
+                    name: parameterName,
+                    type: parameterType.trim(),
+                    isOptional: isOptional,
+                });
+            } else {
+                existingParameterInfo.type = parameterType.trim();
+                existingParameterInfo.isOptional = isOptional;
+            }
         });
-      } else {
-        existingParameterInfo.type = parameterType.trim();
-        existingParameterInfo.isOptional = isOptional;
-      }
-    });
-  }
+    }
 }

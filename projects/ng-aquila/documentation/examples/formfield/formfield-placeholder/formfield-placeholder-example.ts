@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Placeholder example
-*/
+ * @title Placeholder example
+ */
 @Component({
-  selector: 'formfield-placeholder-example',
-  templateUrl: './formfield-placeholder-example.html',
-  styleUrls: ['./formfield-placeholder-example.css']
+    selector: 'formfield-placeholder-example',
+    templateUrl: './formfield-placeholder-example.html',
+    styleUrls: ['./formfield-placeholder-example.css'],
 })
-export class FormfieldPlaceholderExampleComponent { }
+export class FormfieldPlaceholderExampleComponent {}

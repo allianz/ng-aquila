@@ -16,53 +16,53 @@ $total-margin-width-mobile: $total-calendar-width-mobile - 3 * $item-size;
 $item-side-margin-mobile: math.div($total-margin-width, 6);
 
 .nx-calendar-table {
-  border-spacing: 0;
-  border-collapse: collapse;
-  width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 :host ::ng-deep .nx-calendar-body {
-  .nx-calendar-body-cell-content {
-    margin: 0 $item-side-margin nx-spacer(2xs);
+    .nx-calendar-body-cell-content {
+        margin: 0 $item-side-margin nx-spacer(2xs);
 
-    @include media-breakpoint-response(mobile) {
-      margin: 0 $item-side-margin-mobile nx-spacer(2xs);
-    }
-  }
-
-  tr .nx-calendar-body-cell:first-child .nx-calendar-body-cell-content {
-    margin-left: $item-outer-margin;
-
-    @include media-breakpoint-response(mobile) {
-      margin-left: $item-side-margin-mobile;
+        @include media-breakpoint-response(mobile) {
+            margin: 0 $item-side-margin-mobile nx-spacer(2xs);
+        }
     }
 
-    [dir="rtl"] & {
-      margin-right: $item-outer-margin;
-      margin-left: $item-side-margin;
+    tr .nx-calendar-body-cell:first-child .nx-calendar-body-cell-content {
+        margin-left: $item-outer-margin;
 
-      @include media-breakpoint-response(mobile) {
-        margin-right: $item-side-margin-mobile;
-        margin-left: $item-side-margin-mobile;
-      }
+        @include media-breakpoint-response(mobile) {
+            margin-left: $item-side-margin-mobile;
+        }
+
+        [dir='rtl'] & {
+            margin-right: $item-outer-margin;
+            margin-left: $item-side-margin;
+
+            @include media-breakpoint-response(mobile) {
+                margin-right: $item-side-margin-mobile;
+                margin-left: $item-side-margin-mobile;
+            }
+        }
     }
-  }
 
-  tr .nx-calendar-body-cell:last-child .nx-calendar-body-cell-content {
-    margin-right: $item-outer-margin;
+    tr .nx-calendar-body-cell:last-child .nx-calendar-body-cell-content {
+        margin-right: $item-outer-margin;
 
-    @include media-breakpoint-response(mobile) {
-      margin-right: $item-side-margin-mobile;
+        @include media-breakpoint-response(mobile) {
+            margin-right: $item-side-margin-mobile;
+        }
+
+        [dir='rtl'] & {
+            margin-right: $item-side-margin;
+            margin-left: $item-outer-margin;
+
+            @include media-breakpoint-response(mobile) {
+                margin-right: $item-side-margin-mobile;
+                margin-left: $item-side-margin-mobile;
+            }
+        }
     }
-
-    [dir="rtl"] & {
-      margin-right: $item-side-margin;
-      margin-left: $item-outer-margin;
-
-      @include media-breakpoint-response(mobile) {
-        margin-right: $item-side-margin-mobile;
-        margin-left: $item-side-margin-mobile;
-      }
-    }
-  }
 }

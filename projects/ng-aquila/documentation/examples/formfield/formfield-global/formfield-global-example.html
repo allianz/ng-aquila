@@ -1,31 +1,26 @@
 <h3>Use default global settings</h3>
 
 <nx-formfield nxLabel="Label">
-  <input nxInput value="prefilled">
+    <input nxInput value="prefilled" />
 </nx-formfield>
 
 <nx-formfield nxLabel="Label">
-  <span nxFormfieldPrefix>$</span>
-  <input nxInput>
-  <nx-icon
-    nxFormfieldAppendix
-    name="info-circle-o">
-  </nx-icon>
+    <span nxFormfieldPrefix>$</span>
+    <input nxInput />
+    <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
 </nx-formfield>
 
 <nx-formfield nxLabel="Formfield with error">
-  <input nxInput required [(ngModel)]="modelValue" #errorNgModel="nxInput">
-  <nx-error nxFormfieldError>
-    This is a mandatory field
-  </nx-error>
+    <input nxInput required [(ngModel)]="modelValue" #errorNgModel="nxInput" />
+    <nx-error nxFormfieldError> This is a mandatory field </nx-error>
 </nx-formfield>
 
 <h3>Override default global settings</h3>
 
 <nx-formfield nxLabel="Override appearance" appearance="auto">
-  <input nxInput>
+    <input nxInput />
 </nx-formfield>
 
 <nx-formfield nxLabel="Override appearance and nxFloatLabel" appearance="auto" nxFloatLabel="auto">
-  <input nxInput>
+    <input nxInput />
 </nx-formfield>

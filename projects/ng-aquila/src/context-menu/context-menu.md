@@ -36,6 +36,7 @@ Using the [`<nx-indicator>`](./documentation/indicator/overview), certain entrie
 <!-- example(context-menu-indicator) -->
 
 ### Nested context menu
+
 The context menu has the ability to open a sub-menu. To do so, you have to define your root menu and sub-menus, in addition to setting the `nxContextMenuTriggerFor` on the `nxContextMenuItem` that should trigger the sub-menu:
 
 <!-- example(context-menu-nested) -->
@@ -48,8 +49,7 @@ Menu items can be disabled by adding a `disabled` attribute to the `nxContextMen
 
 ### Lazy rendering
 
-By default, the context menu content will be initialized even when the panel is closed.
-To defer initialization until the context menu is open, the content can be provided as an ng-template with the `nxContextMenuContent` attribute:
+By default, the context menu content will be initialized even when the panel is closed. To defer initialization until the context menu is open, the content can be provided as an ng-template with the `nxContextMenuContent` attribute:
 
 <!-- example(context-menu-lazy) -->
 
@@ -69,9 +69,9 @@ To use a custom scroll container instead of the body element, [add cdkScrollable
 
 ### Keyboard interaction
 
-* DOWN_ARROW: Focuses the next menu item
-* UP_ARROW: Focuses previous menu item
-* RIGHT_ARROW: Opens the menu item's sub-menu
-* LEFT_ARROW: Closes the current menu, if it is a sub-menu
-* ENTER: Activates the focused menu item
-* ESCAPE: Closes the menu
+-   DOWN_ARROW: Focuses the next menu item
+-   UP_ARROW: Focuses previous menu item
+-   RIGHT_ARROW: Opens the menu item's sub-menu
+-   LEFT_ARROW: Closes the current menu, if it is a sub-menu
+-   ENTER: Activates the focused menu item
+-   ESCAPE: Closes the menu

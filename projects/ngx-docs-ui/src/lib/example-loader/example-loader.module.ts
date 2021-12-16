@@ -6,21 +6,10 @@ import { ExampleViewerComponent } from '../example-viewer/example-viewer.compone
 import { ExampleViewerModule } from '../example-viewer/example-viewer.module';
 import { ExampleLoaderComponent } from './example-loader.component';
 @NgModule({
-  imports: [
-    DocViewerModule,
-    PortalModule,
-    ExampleViewerModule
-  ],
-  exports: [
-    ExampleLoaderComponent,
-    ExampleViewerModule
-  ],
-  declarations: [
-    ExampleLoaderComponent
-  ],
-  providers: [],
-  entryComponents: [
-    ExampleViewerComponent
-  ]
+    imports: [DocViewerModule, PortalModule, ExampleViewerModule],
+    exports: [ExampleLoaderComponent, ExampleViewerModule],
+    declarations: [ExampleLoaderComponent],
+    providers: [],
+    entryComponents: [ExampleViewerComponent],
 })
-export class ExampleLoaderModule { }
+export class ExampleLoaderModule {}

@@ -1,21 +1,17 @@
 <nx-formfield nxLabel="Label">
-  <input nxInput />
-  <span nxFormfieldHint>
-    some additional information
-  </span>
-  <span nxFormfieldAppendix>
-    <a [nxPopoverTriggerFor]='popoverAppendixExample' nxPopoverDirection="top"
-      nxPopoverTrigger="hover">
-      <nx-icon name="info-circle-o"></nx-icon>
-    </a>
-  </span>
+    <input nxInput />
+    <span nxFormfieldHint> some additional information </span>
+    <span nxFormfieldAppendix>
+        <a [nxPopoverTriggerFor]="popoverAppendixExample" nxPopoverDirection="top" nxPopoverTrigger="hover">
+            <nx-icon name="info-circle-o"></nx-icon>
+        </a>
+    </span>
 </nx-formfield>
 
 <nx-popover #popoverAppendixExample>
-  <div style="max-width: 300px;">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
-    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
-    perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa.
-    Nemo, eius exercitationem?
-  </div>
+    <div style="max-width: 300px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum. Obcaecati cupiditate numquam, fugit
+        illo incidunt molestiae ipsam perferendis officia accusamus. Enim magnam recusandae velit accusamus ipsa. Nemo,
+        eius exercitationem?
+    </div>
 </nx-popover>

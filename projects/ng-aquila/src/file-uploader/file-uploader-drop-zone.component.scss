@@ -1,22 +1,22 @@
 @import '../shared-styles/index';
 
 :host {
-  height: 104px;
-  border: nx-border-size(xs) dashed v(file-uploader-drop-zone-border-color);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  @include var(color, file-uploader-drop-zone-text-color);
+    height: 104px;
+    border: nx-border-size(xs) dashed v(file-uploader-drop-zone-border-color);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    @include var(color, file-uploader-drop-zone-text-color);
 
-  &.is-active {
-    border-style: solid;
-  }
+    &.is-active {
+        border-style: solid;
+    }
 
-  &.is-disabled {
-    cursor: no-drop;
-  }
+    &.is-disabled {
+        cursor: no-drop;
+    }
 
-  ::ng-deep button {
-    margin-bottom: 0;
-  }
+    ::ng-deep button {
+        margin-bottom: 0;
+    }
 }

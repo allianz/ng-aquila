@@ -6,18 +6,8 @@ import { NxMaskDirective } from './mask.directive';
 import { NxIbanMaskDirective } from './iban-mask.directive';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NxFormfieldModule
-  ],
-  declarations: [
-    NxMaskDirective,
-    NxIbanMaskDirective
-  ],
-  exports: [
-    NxFormfieldModule,
-    NxMaskDirective,
-    NxIbanMaskDirective
-  ]
+    imports: [CommonModule, NxFormfieldModule],
+    declarations: [NxMaskDirective, NxIbanMaskDirective],
+    exports: [NxFormfieldModule, NxMaskDirective, NxIbanMaskDirective],
 })
-export class NxMaskModule { }
+export class NxMaskModule {}

@@ -1,114 +1,94 @@
 <aside>
-  <nx-multi-stepper currentStepLabel="Step"
-     [direction]="direction"
-     linear>
-    <nx-step [label]="animalTypeForm.label" [stepControl]="animalTypeForm.form">
-    </nx-step>
+    <nx-multi-stepper currentStepLabel="Step" [direction]="direction" linear>
+        <nx-step [label]="animalTypeForm.label" [stepControl]="animalTypeForm.form"> </nx-step>
 
-    <nx-step [label]="nameForm.label" [stepControl]="nameForm.form">
-    </nx-step>
+        <nx-step [label]="nameForm.label" [stepControl]="nameForm.form"> </nx-step>
 
-    <nx-step [label]="breedForm.label" [stepControl]="breedForm.form">
-    </nx-step>
+        <nx-step [label]="breedForm.label" [stepControl]="breedForm.form"> </nx-step>
 
-    <nx-step [label]="ageForm.label" [stepControl]="ageForm.form">
-    </nx-step>
-  </nx-multi-stepper>
+        <nx-step [label]="ageForm.label" [stepControl]="ageForm.form"> </nx-step>
+    </nx-multi-stepper>
 </aside>
 
 <main nxLayout="grid maxwidth">
-  <div nxRow>
-    <div nxCol="12" [ngSwitch]="stepper.selectedIndex">
-      <form *ngSwitchCase="0" [formGroup]="animalTypeForm.form">
-        <nx-formfield [nxLabel]="animalTypeForm.label"
-            nxFloatLabel="always"
-            appearance="outline">
-          <nx-dropdown formControlName="animalType">
-            <nx-dropdown-item *ngFor="let animalType of animalTypes"
-                [nxValue]="animalType"></nx-dropdown-item>
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please choose an animal species!
-          </nx-error>
-        </nx-formfield>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
-      </form>
+    <div nxRow>
+        <div nxCol="12" [ngSwitch]="stepper.selectedIndex">
+            <form *ngSwitchCase="0" [formGroup]="animalTypeForm.form">
+                <nx-formfield [nxLabel]="animalTypeForm.label" nxFloatLabel="always" appearance="outline">
+                    <nx-dropdown formControlName="animalType">
+                        <nx-dropdown-item
+                            *ngFor="let animalType of animalTypes"
+                            [nxValue]="animalType"
+                        ></nx-dropdown-item>
+                    </nx-dropdown>
+                    <nx-error appearance="text" nxFormfieldError> Please choose an animal species! </nx-error>
+                </nx-formfield>
+                <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
+            </form>
 
-      <form *ngSwitchCase="1" [formGroup]="nameForm.form">
-        <nx-formfield [nxLabel]="nameForm.label"
-            nxFloatLabel="always"
-            appearance="outline">
-          <input nxInput formControlName="name" type="text">
-          <nx-error appearance="text" nxFormfieldError>
-            Please enter a name!
-          </nx-error>
-        </nx-formfield>
-        <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
-      </form>
+            <form *ngSwitchCase="1" [formGroup]="nameForm.form">
+                <nx-formfield [nxLabel]="nameForm.label" nxFloatLabel="always" appearance="outline">
+                    <input nxInput formControlName="name" type="text" />
+                    <nx-error appearance="text" nxFormfieldError> Please enter a name! </nx-error>
+                </nx-formfield>
+                <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
+                <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
+            </form>
 
-      <form *ngSwitchCase="2" [formGroup]="breedForm.form">
-        <nx-formfield *ngIf="breedForm.form.get('dogBreed')"
-            [nxLabel]="breedForm.label"
-            nxFloatLabel="always"
-            appearance="outline">
-          <nx-dropdown formControlName="dogBreed">
-            <nx-dropdown-item *ngFor="let breed of dogBreeds"
-                [nxValue]="breed"></nx-dropdown-item>
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please select a breed!
-          </nx-error>
-        </nx-formfield>
+            <form *ngSwitchCase="2" [formGroup]="breedForm.form">
+                <nx-formfield
+                    *ngIf="breedForm.form.get('dogBreed')"
+                    [nxLabel]="breedForm.label"
+                    nxFloatLabel="always"
+                    appearance="outline"
+                >
+                    <nx-dropdown formControlName="dogBreed">
+                        <nx-dropdown-item *ngFor="let breed of dogBreeds" [nxValue]="breed"></nx-dropdown-item>
+                    </nx-dropdown>
+                    <nx-error appearance="text" nxFormfieldError> Please select a breed! </nx-error>
+                </nx-formfield>
 
-        <nx-formfield *ngIf="breedForm.form.get('catBreed')"
-            [nxLabel]="breedForm.label"
-            nxFloatLabel="always"
-            appearance="outline">
-          <nx-dropdown formControlName="catBreed">
-            <nx-dropdown-item *ngFor="let breed of catBreeds"
-                [nxValue]="breed"></nx-dropdown-item>
-          </nx-dropdown>
-          <nx-error appearance="text" nxFormfieldError>
-            Please select a breed!
-          </nx-error>
-        </nx-formfield>
+                <nx-formfield
+                    *ngIf="breedForm.form.get('catBreed')"
+                    [nxLabel]="breedForm.label"
+                    nxFloatLabel="always"
+                    appearance="outline"
+                >
+                    <nx-dropdown formControlName="catBreed">
+                        <nx-dropdown-item *ngFor="let breed of catBreeds" [nxValue]="breed"></nx-dropdown-item>
+                    </nx-dropdown>
+                    <nx-error appearance="text" nxFormfieldError> Please select a breed! </nx-error>
+                </nx-formfield>
 
-        <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
-        <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
-      </form>
+                <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
+                <button nxButton="primary small" (click)="stepper.next()" type="button">Next</button>
+            </form>
 
-      <form *ngSwitchCase="3" [formGroup]="ageForm.form" (submit)="onSubmit()">
-        <nx-formfield [nxLabel]="ageForm.label"
-            nxFloatLabel="always"
-            appearance="outline">
-          <input nxInput formControlName="age" type="number">
-          <nx-error appearance="text" nxFormfieldError>
-            Please enter an age!
-          </nx-error>
-        </nx-formfield>
-        <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
-        <button nxButton="primary small" type="submit" [disabled]="ageForm.form.invalid">Submit</button>
-      </form>
+            <form *ngSwitchCase="3" [formGroup]="ageForm.form" (submit)="onSubmit()">
+                <nx-formfield [nxLabel]="ageForm.label" nxFloatLabel="always" appearance="outline">
+                    <input nxInput formControlName="age" type="number" />
+                    <nx-error appearance="text" nxFormfieldError> Please enter an age! </nx-error>
+                </nx-formfield>
+                <button nxButton="secondary small" (click)="stepper.previous()" type="button">Previous</button>
+                <button nxButton="primary small" type="submit" [disabled]="ageForm.form.invalid">Submit</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <div nxRow>
-    <div nxCol="12">
-      <code>
-        {{ value| json }}
-      </code>
+    <div nxRow>
+        <div nxCol="12">
+            <code> {{ value| json }} </code>
+        </div>
     </div>
-  </div>
 
-  <div nxRow class="nx-margin-top-l">
-    <div nxCol="12" class="action-container">
-        <button nxButton="secondary small" (click)="reset()" type="button">Reset</button>
+    <div nxRow class="nx-margin-top-l">
+        <div nxCol="12" class="action-container">
+            <button nxButton="secondary small" (click)="reset()" type="button">Reset</button>
 
-        <nx-radio-toggle [(ngModel)]="direction" nxStyle="small">
-          <nx-radio-toggle-button nxValue="vertical">Vertical</nx-radio-toggle-button>
-          <nx-radio-toggle-button nxValue="horizontal">Horizontal</nx-radio-toggle-button>
-        </nx-radio-toggle>
+            <nx-radio-toggle [(ngModel)]="direction" nxStyle="small">
+                <nx-radio-toggle-button nxValue="vertical">Vertical</nx-radio-toggle-button>
+                <nx-radio-toggle-button nxValue="horizontal">Horizontal</nx-radio-toggle-button>
+            </nx-radio-toggle>
+        </div>
     </div>
-  </div>
 </main>

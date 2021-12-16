@@ -1,24 +1,23 @@
 <table class="nx-calendar-table">
-  <thead class="nx-calendar-table-head">
-    <tr>
-      <th
-        class="nx-calendar-table-header"
-        *ngFor="let day of _weekdays"
-        [attr.aria-label]="day.long">{{day.narrow}}</th></tr>
-    <tr>
-  </thead>
-  <tbody nx-calendar-body
-         [label]="_monthLabel"
-         [rows]="_weeks"
-         [previousItems]="_getLastDaysOfPreviousMonth()"
-         [followingItems]="_getFirstDaysOfFollowingMonth()"
-         [todayValue]="_todayDate!"
-         [numCols]="_numCols"
-         [selectedValue]="_selectedDate!"
-         [activeCell]="_dateAdapter.getDate(activeDate) - 1"
-         (selectedValueChange)="_dateSelected($event)"
-         (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
-         (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
-         (keydown)="_handleCalendarBodyKeydown($event)">
-  </tbody>
+    <thead class="nx-calendar-table-head">
+        <tr> <th class="nx-calendar-table-header" *ngFor="let day of _weekdays" [attr.aria-label]="day.long">{{day.narrow}}</th></tr>
+        <tr> </tr
+    ></thead>
+
+    <tbody
+        nx-calendar-body
+        [label]="_monthLabel"
+        [rows]="_weeks"
+        [previousItems]="_getLastDaysOfPreviousMonth()"
+        [followingItems]="_getFirstDaysOfFollowingMonth()"
+        [todayValue]="_todayDate!"
+        [numCols]="_numCols"
+        [selectedValue]="_selectedDate!"
+        [activeCell]="_dateAdapter.getDate(activeDate) - 1"
+        (selectedValueChange)="_dateSelected($event)"
+        (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
+        (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
+        (keydown)="_handleCalendarBodyKeydown($event)"
+    >
+    </tbody>
 </table>

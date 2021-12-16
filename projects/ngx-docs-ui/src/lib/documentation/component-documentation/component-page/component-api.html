@@ -1,8 +1,8 @@
 <div class="docs-component-page-content">
-  <h2 class="component-api__header">Component API for {{(componentService.current | async)?.title}}</h2>
-  <nxv-doc-viewer (contentLoaded)="onAPIloaded()" fileUrl='{{(componentService.current | async)?.apiFile}}'></nxv-doc-viewer>
+    <h2 class="component-api__header">Component API for {{(componentService.current | async)?.title}}</h2>
+    <nxv-doc-viewer (contentLoaded)="onAPIloaded()" fileUrl="{{(componentService.current | async)?.apiFile}}"></nxv-doc-viewer>
 </div>
 
 <div class="docs-toc">
-  <nxv-table-of-contents #toc container="main"></nxv-table-of-contents>
+    <nxv-table-of-contents #toc container="main"></nxv-table-of-contents>
 </div>

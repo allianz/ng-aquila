@@ -10,60 +10,56 @@ import { NxProgressbarModule } from './progressbar.module';
 
 @Directive()
 abstract class ProgressBarTest {
-  @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;
-  @ViewChild(NxProgressbarComponent,  { read: ElementRef })
-  componentInstanceRef!: ElementRef;
+    @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;
+    @ViewChild(NxProgressbarComponent, { read: ElementRef })
+    componentInstanceRef!: ElementRef;
 }
 
 describe('NxProgressbarComponent', () => {
-  let fixture: ComponentFixture<ProgressBarTest>;
-  let testInstance: ProgressBarTest;
-  let componentInstance: NxProgressbarComponent;
-  let componentInstanceRef: ElementRef;
+    let fixture: ComponentFixture<ProgressBarTest>;
+    let testInstance: ProgressBarTest;
+    let componentInstance: NxProgressbarComponent;
+    let componentInstanceRef: ElementRef;
 
-  function createTestComponent(component: Type<ProgressBarTest>) {
-    fixture = TestBed.createComponent(component);
-    fixture.detectChanges();
-    testInstance = fixture.componentInstance;
-    componentInstance = testInstance.componentInstance;
-    componentInstanceRef = testInstance.componentInstanceRef;
-  }
+    function createTestComponent(component: Type<ProgressBarTest>) {
+        fixture = TestBed.createComponent(component);
+        fixture.detectChanges();
+        testInstance = fixture.componentInstance;
+        componentInstance = testInstance.componentInstance;
+        componentInstanceRef = testInstance.componentInstanceRef;
+    }
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
-        imports: [NxProgressbarModule, FormsModule]
-      }).compileComponents();
-    })
-  );
+    beforeEach(
+        waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
+                imports: [NxProgressbarModule, FormsModule],
+            }).compileComponents();
+        }),
+    );
 
-  it('should create the component', fakeAsync(() => {
-      createTestComponent(ProgressBarBasicComponent);
-      expect(componentInstance).toBeTruthy();
-    })
-  );
+    it('should create the component', fakeAsync(() => {
+        createTestComponent(ProgressBarBasicComponent);
+        expect(componentInstance).toBeTruthy();
+    }));
 
-  it('value should default to 0', fakeAsync(() => {
-      createTestComponent(ProgressBarBasicComponent);
-      expect(componentInstance.value).toBe(0);
-    })
-  );
+    it('value should default to 0', fakeAsync(() => {
+        createTestComponent(ProgressBarBasicComponent);
+        expect(componentInstance.value).toBe(0);
+    }));
 
-  it('value should reflect binding', fakeAsync(() => {
-    createTestComponent(ProgressBarValueComponent);
-    expect(componentInstance.value).toBe(0.5);
-  }));
+    it('value should reflect binding', fakeAsync(() => {
+        createTestComponent(ProgressBarValueComponent);
+        expect(componentInstance.value).toBe(0.5);
+    }));
 });
 
 @Component({
-  template: `
-    <nx-progressbar></nx-progressbar>`
+    template: ` <nx-progressbar></nx-progressbar>`,
 })
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
-  template: `
-    <nx-progressbar value="0.5"></nx-progressbar>`
+    template: ` <nx-progressbar value="0.5"></nx-progressbar>`,
 })
 class ProgressBarValueComponent extends ProgressBarTest {}

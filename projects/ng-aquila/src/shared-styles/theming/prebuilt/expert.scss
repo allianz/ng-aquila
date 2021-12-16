@@ -1,4 +1,4 @@
-@import "../theming";
-@import "../themes/expert";
+@import '../theming';
+@import '../themes/expert';
 
 @include nx-build-theme(expert);

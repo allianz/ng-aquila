@@ -7,7 +7,6 @@ stable: done
 noApi: true
 ---
 
-
 ### Error component
 
 The `<nx-error>` is a base component to display error messages.
@@ -32,20 +31,20 @@ The module is auto-imported when you use the [formfield](./documentation/formfie
 Our form control components use `ErrorStateMatcher` for determining when error messages should be shown. Using the `ErrorStateMatcher`, `nx-errors` are automatically managed by the component, you don't need to handle showing and hiding them manually in the markup anymore (except for when you have multiple errors on one input).
 
 The `ErrorStateMatcher` is used in the following components:
-- Checkbox Group
-- Code Input
-- Dropdown
-- File Uploader
-- Input Directive
-- Progress Stepper
-- Radio Button Group
-- Selectable Card
-- Switcher
-- Toggle Button
-- Timefield
 
-Per default a state is erroneous, if a control is **invalid and touched** or **invalid and its parent form submitted**.
-To change the default error state matching you can implement the `ErrorStateMatcher` interface in your component and use it instead of the default one:
+-   Checkbox Group
+-   Code Input
+-   Dropdown
+-   File Uploader
+-   Input Directive
+-   Progress Stepper
+-   Radio Button Group
+-   Selectable Card
+-   Switcher
+-   Toggle Button
+-   Timefield
+
+Per default a state is erroneous, if a control is **invalid and touched** or **invalid and its parent form submitted**. To change the default error state matching you can implement the `ErrorStateMatcher` interface in your component and use it instead of the default one:
 
 ```ts
 @Component({
@@ -74,28 +73,28 @@ You can import the `ErrorStateMatcher` with:
 </p>
 
 The example below shows an **error while the user is typing (dirty)** and not until he blurrs the input field as in the default case.
+
 <!-- example(error-custom-matcher-formfield) -->
 
 ### Global custom ErrorStateMatcher
+
 You can also set a custom error matching behaviour globally by defining your custom error state matcher:
 
 ```ts
 @Injectable()
 export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
-  /** Custom error state matcher that checks for validity of the formfield. */
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.invalid && (control.dirty || (form && form.submitted)));
-  }
+    /** Custom error state matcher that checks for validity of the formfield. */
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        return !!(control && control.invalid && (control.dirty || (form && form.submitted)));
+    }
 }
 ```
 
 and then providing it globaly, for example in your `app.module.ts`:
+
 ```ts
 @NgModule({
-  providers: [
-    { provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher }
-  ]
+    providers: [{ provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher }],
 })
-
-export class ApplicationModule { }
+export class ApplicationModule {}
 ```

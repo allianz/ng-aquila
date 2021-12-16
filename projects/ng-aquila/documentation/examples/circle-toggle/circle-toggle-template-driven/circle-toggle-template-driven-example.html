@@ -1,16 +1,17 @@
 <nx-circle-toggle-group [(ngModel)]="toggleGroupModel">
-  <nx-circle-toggle *ngFor="let item of sampleValues" [value]="item.value" [icon]="item.icon" [hint]="item.hint"
-    [label]="item.label"></nx-circle-toggle>
+    <nx-circle-toggle
+        *ngFor="let item of sampleValues"
+        [value]="item.value"
+        [icon]="item.icon"
+        [hint]="item.hint"
+        [label]="item.label"
+    ></nx-circle-toggle>
 </nx-circle-toggle-group>
 
 <p>Try to set the value to A, B or C</p>
 <div class="patch-container">
-  <input #inputNgModel type="text">
-  <button nxButton="primary small"
-          (click)="toggleGroupModel = inputNgModel.value"
-          type="button">
-    Patch
-  </button>
+    <input #inputNgModel type="text" />
+    <button nxButton="primary small" (click)="toggleGroupModel = inputNgModel.value" type="button"> Patch </button>
 </div>
 
 <p>Selected value: {{toggleGroupModel}}</p>

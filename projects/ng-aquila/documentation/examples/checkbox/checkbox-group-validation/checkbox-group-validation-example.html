@@ -1,16 +1,13 @@
 <form [formGroup]="myFormGroup">
-  <nx-checkbox-group name="terms" formControlName="terms" required>
-    <nx-label [size]="'small'">Select your choices</nx-label>
-    <nx-error appearance="text">
-      Please select at least 3 checkboxes.
-    </nx-error>
-    <nx-checkbox value="Term 1" class="nx-margin-bottom-s">Checkbox 1</nx-checkbox>
-    <nx-checkbox value="Term 2" class="nx-margin-bottom-s">Checkbox 2</nx-checkbox>
-    <nx-checkbox value="Term 3" class="nx-margin-bottom-s">Checkbox 3</nx-checkbox>
-    <nx-checkbox value="Term 4" class="nx-margin-bottom-s">Checkbox 4</nx-checkbox>
-    <nx-checkbox value="Term 5">Checkbox 5</nx-checkbox>
-  </nx-checkbox-group>
-  <p>Form value: {{ myFormGroup.value | json }}</p>
-  <p>Form status: {{ myFormGroup.status | json }}</p>
+    <nx-checkbox-group name="terms" formControlName="terms" required>
+        <nx-label [size]="'small'">Select your choices</nx-label>
+        <nx-error appearance="text"> Please select at least 3 checkboxes. </nx-error>
+        <nx-checkbox value="Term 1" class="nx-margin-bottom-s">Checkbox 1</nx-checkbox>
+        <nx-checkbox value="Term 2" class="nx-margin-bottom-s">Checkbox 2</nx-checkbox>
+        <nx-checkbox value="Term 3" class="nx-margin-bottom-s">Checkbox 3</nx-checkbox>
+        <nx-checkbox value="Term 4" class="nx-margin-bottom-s">Checkbox 4</nx-checkbox>
+        <nx-checkbox value="Term 5">Checkbox 5</nx-checkbox>
+    </nx-checkbox-group>
+    <p>Form value: {{ myFormGroup.value | json }}</p>
+    <p>Form status: {{ myFormGroup.status | json }}</p>
 </form>
-

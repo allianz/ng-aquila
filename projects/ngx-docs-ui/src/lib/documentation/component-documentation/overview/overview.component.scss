@@ -1,78 +1,78 @@
-@import "../../../../../../ng-aquila/src/shared-styles/theming/theming";
+@import '../../../../../../ng-aquila/src/shared-styles/theming/theming';
 @import '../../../styles/themes/docs-theme';
 
 .nxv-status__container {
-  display: flex;
-  margin-bottom: 32px;
-  margin-top: 8px;
-  flex-wrap: wrap;
+    display: flex;
+    margin-bottom: 32px;
+    margin-top: 8px;
+    flex-wrap: wrap;
 }
 
 .nxv-status {
-  margin-right: 36px;
-  white-space: nowrap;
-  margin-top: 16px;
+    margin-right: 36px;
+    white-space: nowrap;
+    margin-top: 16px;
 
-  @media (max-width: 703px) {
-    margin-right: 24px;
-  }
+    @media (max-width: 703px) {
+        margin-right: 24px;
+    }
 }
 
 .nxv-status-deprecated {
-  display: flex;
-  margin-top: 16px;
+    display: flex;
+    margin-top: 16px;
 }
 
 .nxv-status-text {
-  line-height: 24px;
-  font-size: 18px;
-  vertical-align: top;
+    line-height: 24px;
+    font-size: 18px;
+    vertical-align: top;
 }
 
 .nxv-status-icon {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 .nxv-status-deprecated-color {
-  @include var(background, documentation-deprecated-color);
-  width: 24px;
-  height: 24px;
-  margin-right: 8px
+    @include var(background, documentation-deprecated-color);
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
 }
 
 .nxv-components-table {
-  font-size: 16px;
-  line-height: 24px;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .nxv-component-category__container {
-  margin-bottom: 64px;
+    margin-bottom: 64px;
 }
 
 .nxv-components-table__status-header,
 .nxv-components-table__status-cell,
 .nxv-components-table__support-cell {
-  text-align: center;
+    text-align: center;
 
-  &.hide-if-empty {
-    padding-left: 0;
-    padding-right: 0;
-  }
+    &.hide-if-empty {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .nxv-components-table__support-cell {
-  width: 100px;
+    width: 100px;
 }
 
 .nxv-components-table__component-row {
-  cursor: pointer;
+    cursor: pointer;
 
-  &.is-deprecated {
-    @include var(background, documentation-deprecated-color);
-  }
+    &.is-deprecated {
+        @include var(background, documentation-deprecated-color);
+    }
 }
 
 .nxv-components-table__status-badge {
-  margin-left: 4px;
-  margin-right: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
 }

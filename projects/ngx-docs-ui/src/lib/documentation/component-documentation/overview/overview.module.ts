@@ -11,20 +11,9 @@ import { CommonModule } from '@angular/common';
 import { NxvStatusDotComponent } from './status-dot.component';
 
 @NgModule({
-    imports: [
-      RouterModule,
-      CommonModule,
-      NxIconModule,
-      NxTableModule,
-      NxHeadlineModule,
-      NxGridModule,
-      NxBadgeModule
-    ],
-  exports: [],
-  declarations: [
-    NxvOverviewComponent,
-    NxvStatusDotComponent
-  ],
-  providers: []
+    imports: [RouterModule, CommonModule, NxIconModule, NxTableModule, NxHeadlineModule, NxGridModule, NxBadgeModule],
+    exports: [],
+    declarations: [NxvOverviewComponent, NxvStatusDotComponent],
+    providers: [],
 })
-export class NxvOverviewModule { }
+export class NxvOverviewModule {}

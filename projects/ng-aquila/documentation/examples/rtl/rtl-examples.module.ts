@@ -8,28 +8,18 @@ import { RtlDynamicExampleComponent } from './rtl-dynamic/rtl-dynamic-example';
 import { CommonModule } from '@angular/common';
 import { BidiModule } from '@angular/cdk/bidi';
 
-const EXAMPLES = [
-  RtlBasicExampleComponent,
-  RtlDynamicExampleComponent,
-];
+const EXAMPLES = [RtlBasicExampleComponent, RtlDynamicExampleComponent];
 
- @NgModule({
-  imports: [
-    BidiModule,
-    CommonModule,
-    NxHeadlineModule,
-    NxButtonModule,
-    NxCopytextModule,
-    NxSliderModule,
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [BidiModule, CommonModule, NxHeadlineModule, NxButtonModule, NxCopytextModule, NxSliderModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class RtlExamplesModule {
-  static components() {
-    return {
-      'rtl-basic': RtlBasicExampleComponent,
-      'rtl-dynamic': RtlDynamicExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'rtl-basic': RtlBasicExampleComponent,
+            'rtl-dynamic': RtlDynamicExampleComponent,
+        };
+    }
 }

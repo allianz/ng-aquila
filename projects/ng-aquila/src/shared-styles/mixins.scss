@@ -1,5 +1,5 @@
-@import "grid";
-@import "breakpoint";
+@import 'grid';
+@import 'breakpoint';
 
 $dropdown-overlay__focus-line-width: nx-border-size(xl);
 $dropdown-overlay__option-margin: -(nx-spacer(2xs) + $dropdown-overlay__focus-line-width);
@@ -7,266 +7,263 @@ $dropdown-overlay__option-margin: -(nx-spacer(2xs) + $dropdown-overlay__focus-li
 $border-size: nx-border-size(xs);
 
 @function message-padding($padding) {
-  @return $padding - $border-size;
+    @return $padding - $border-size;
 }
 
 @mixin focus-style {
-  @include var(box-shadow, focus-box-shadow);
+    @include var(box-shadow, focus-box-shadow);
 
-  @media screen and (-ms-high-contrast: active) {
-    box-shadow: 0 0 0 2px background, 0 0 0 6px windowText;
-    outline: 4px solid CanvasText;    // Chromium Edge
-    outline-offset: 2px;              // Chromium Edge
-  }
+    @media screen and (-ms-high-contrast: active) {
+        box-shadow: 0 0 0 2px background, 0 0 0 6px windowText;
+        outline: 4px solid CanvasText; // Chromium Edge
+        outline-offset: 2px; // Chromium Edge
+    }
 }
 
 @mixin formfield-outline-focus-styles {
-  @include var(box-shadow, formfield-outline-focus-box-shadow);
+    @include var(box-shadow, formfield-outline-focus-box-shadow);
 
-  @media screen and (-ms-high-contrast: active) {
-    box-shadow: 0 0 0 2px highlight;
-    border: 1px solid highlight;    // Chromium Edge
-  }
+    @media screen and (-ms-high-contrast: active) {
+        box-shadow: 0 0 0 2px highlight;
+        border: 1px solid highlight; // Chromium Edge
+    }
 }
 
 @mixin focus-style-inset {
-  @include var(box-shadow, focus-inset-box-shadow);
+    @include var(box-shadow, focus-inset-box-shadow);
 
-  @media screen and (-ms-high-contrast: active) {
-    box-shadow: inset 0 0 0 4px windowText, inset 0 0 0 6px background;
-    border: 4px solid CanvasText;     // Chromium Edge
-  }
+    @media screen and (-ms-high-contrast: active) {
+        box-shadow: inset 0 0 0 4px windowText, inset 0 0 0 6px background;
+        border: 4px solid CanvasText; // Chromium Edge
+    }
 }
 
 @mixin create-font-weight-classes() {
-  @each $key, $value in $font-weight {
-    .nx-font-weight-#{$key} {
-      font-weight: $value !important;
+    @each $key, $value in $font-weight {
+        .nx-font-weight-#{$key} {
+            font-weight: $value !important;
+        }
     }
-  }
 }
 
-
 @mixin create-margin-classes() {
-  $positions: 'top', 'bottom', 'left', 'right';
+    $positions: 'top', 'bottom', 'left', 'right';
 
-  @each $key, $value in $margins {
-    .nx-margin-#{$key} {
-      margin: $value !important;
-    }
+    @each $key, $value in $margins {
+        .nx-margin-#{$key} {
+            margin: $value !important;
+        }
 
-    .nx-margin-x-#{$key} {
-      margin-right: $value !important;
-      margin-left: $value !important;
-    }
+        .nx-margin-x-#{$key} {
+            margin-right: $value !important;
+            margin-left: $value !important;
+        }
 
-    .nx-margin-y-#{$key} {
-      margin-top: $value !important;
-      margin-bottom: $value !important;
+        .nx-margin-y-#{$key} {
+            margin-top: $value !important;
+            margin-bottom: $value !important;
+        }
+
+        @each $position in $positions {
+            .nx-margin-#{$position}-#{$key} {
+                margin-#{$position}: $value !important;
+            }
+        }
     }
 
     @each $position in $positions {
-      .nx-margin-#{$position}-#{$key} {
-        margin-#{$position}: $value !important;
-      }
+        .nx-margin-#{$position}-0 {
+            margin-#{$position}: 0 !important;
+        }
     }
-  }
 
-  @each $position in $positions {
-    .nx-margin-#{$position}-0 {
-      margin-#{$position}: 0 !important;
+    .nx-margin-x-0 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
-  }
 
-  .nx-margin-x-0 {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
+    .nx-margin-y-0 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
 
-  .nx-margin-y-0 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .nx-margin-0 {
-    margin: 0 !important;
-  }
+    .nx-margin-0 {
+        margin: 0 !important;
+    }
 }
 
 @mixin create-hidden-classes() {
-  @each $key, $value in $grid-breakpoints-short {
-
-    @include media-breakpoint-only($key, $grid-breakpoints-short) {
-      .nx-hidden-#{$key} {
-        display: none !important;
-      }
+    @each $key, $value in $grid-breakpoints-short {
+        @include media-breakpoint-only($key, $grid-breakpoints-short) {
+            .nx-hidden-#{$key} {
+                display: none !important;
+            }
+        }
     }
-  }
 }
 
 @mixin dropdown-overlay__option {
-  $dropdown-overlay__option-padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2xs);
-  @include type-style(dropdown-item);
-  padding: $dropdown-overlay__option-padding;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  max-width: 100%;
-  white-space: nowrap;
+    $dropdown-overlay__option-padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2xs);
+    @include type-style(dropdown-item);
+    padding: $dropdown-overlay__option-padding;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    white-space: nowrap;
 
-  :host-context([dir="rtl"]) & {
-    padding: nx-flip-for-rtl($dropdown-overlay__option-padding);
-  }
+    :host-context([dir='rtl']) & {
+        padding: nx-flip-for-rtl($dropdown-overlay__option-padding);
+    }
 }
 
 @mixin dropdown-overlay__option-label {
-  padding: 0 nx-spacer(2xs) + $dropdown-overlay__focus-line-width;
-  margin: 0 $dropdown-overlay__option-margin;
-  @include var(color, dropdown-item-text-color);
+    padding: 0 nx-spacer(2xs) + $dropdown-overlay__focus-line-width;
+    margin: 0 $dropdown-overlay__option-margin;
+    @include var(color, dropdown-item-text-color);
 
-  @media screen and (-ms-high-contrast: active) {
-    -ms-high-contrast-adjust: none;
-    color: buttonText;
-    background-color: buttonFace;
-    border-radius: nx-border-radius(s);
-  }
+    @media screen and (-ms-high-contrast: active) {
+        -ms-high-contrast-adjust: none;
+        color: buttonText;
+        background-color: buttonFace;
+        border-radius: nx-border-radius(s);
+    }
 }
 
 @mixin dropdown-overlay__option--outline {
-  @include type-style(dropdown-item-outline);
+    @include type-style(dropdown-item-outline);
 }
 
 @mixin tab__item {
-  @include type-style(tab-item);
-  text-decoration: none;
-  border: none;
-  background: transparent;
-  color: var(--tab-item-color);
-  padding: nx-spacer(3xs) 0 nx-spacer(xs) 0;
-  margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
-  outline: none;
-  position: relative;
-  cursor: pointer;
+    @include type-style(tab-item);
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    color: var(--tab-item-color);
+    padding: nx-spacer(3xs) 0 nx-spacer(xs) 0;
+    margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
+    outline: none;
+    position: relative;
+    cursor: pointer;
 
-  @media screen and (-ms-high-contrast: active) {
-    background-color: buttonFace;
-    border-color: buttonText;
-    color: buttonText;
-    -ms-high-contrast-adjust: none;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        background-color: buttonFace;
+        border-color: buttonText;
+        color: buttonText;
+        -ms-high-contrast-adjust: none;
+    }
 
-  &:hover {
-    color: var(--tab-item-hover-color);
-  }
+    &:hover {
+        color: var(--tab-item-hover-color);
+    }
 
-  &:active {
-    color: var(--tab-item-active-color);
-  }
+    &:active {
+        color: var(--tab-item-active-color);
+    }
 }
 
 @mixin tab__item--active {
-  border-width: nx-border-size(xl);
-  font-weight: nx-font-weight(bold);
-  border-bottom-style: solid;
-  border-color: var(--tab-item-active-border-color);
-  padding-bottom: 8px;
-  cursor: default;
+    border-width: nx-border-size(xl);
+    font-weight: nx-font-weight(bold);
+    border-bottom-style: solid;
+    border-color: var(--tab-item-active-border-color);
+    padding-bottom: 8px;
+    cursor: default;
 
-  &:hover,
-  &:active {
-    color: var(--tab-item-color);
-  }
+    &:hover,
+    &:active {
+        color: var(--tab-item-color);
+    }
 
-  @media screen and (-ms-high-contrast: active) {
-    background-color: highlight;
-    color: highlightText;
-    border-color: highlight;
-  }
+    @media screen and (-ms-high-contrast: active) {
+        background-color: highlight;
+        color: highlightText;
+        border-color: highlight;
+    }
 }
 
 @mixin tab__item--disabled {
-  border-color: var(--tab-item-disabled-border-color);
-  color: var(--tab-item-disabled-color);
-  cursor: not-allowed;
-
-  &:hover,
-  &:active {
+    border-color: var(--tab-item-disabled-border-color);
     color: var(--tab-item-disabled-color);
-  }
+    cursor: not-allowed;
 
-  @media screen and (-ms-high-contrast: active) {
-    border-color: GrayText;
-    background-color: buttonFace;
-    color: GrayText;
-  }
+    &:hover,
+    &:active {
+        color: var(--tab-item-disabled-color);
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+        border-color: GrayText;
+        background-color: buttonFace;
+        color: GrayText;
+    }
 }
 
 @mixin message-layout {
-
-  /* used for:
+    /* used for:
    * message
    * toast message
    * banner message
    */
 
-  @include type-style(message);
-  @include var(color, message-text-color);
-  @include var(border-radius, message-border-radius);
+    @include type-style(message);
+    @include var(color, message-text-color);
+    @include var(border-radius, message-border-radius);
 
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  text-align: left;
-  position: relative;
-  border: $border-size solid;
-  padding: message-padding(nx-spacer(m));
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    position: relative;
+    border: $border-size solid;
+    padding: message-padding(nx-spacer(m));
 
-  @include media-breakpoint-response(mobile) {
-    display: block;
-  }
+    @include media-breakpoint-response(mobile) {
+        display: block;
+    }
 
-  // HINT: this will work only if mixin is included directly inside :host
-  [dir="rtl"] & {
-    text-align: right;
-  }
+    // HINT: this will work only if mixin is included directly inside :host
+    [dir='rtl'] & {
+        text-align: right;
+    }
 }
 
 @mixin message__close-icon {
-  position: absolute;
-  top: nx-spacer(s);
-  right: nx-spacer(s);
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-  display: flex;
-  align-items: center;
+    position: absolute;
+    top: nx-spacer(s);
+    right: nx-spacer(s);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
 
-  nx-icon {
-    @include var(color, message-close-icon-color);
-  }
+    nx-icon {
+        @include var(color, message-close-icon-color);
+    }
 
-  :host-context([dir="rtl"]) & {
-    right: auto;
-    left: nx-spacer(s);
-  }
+    :host-context([dir='rtl']) & {
+        right: auto;
+        left: nx-spacer(s);
+    }
 }
 
 @mixin input-placeholder {
-  &::placeholder {
-    @content;
-  }
+    &::placeholder {
+        @content;
+    }
 
-  &::-moz-placeholder {
-    @content;
-  }
+    &::-moz-placeholder {
+        @content;
+    }
 
-  &::-webkit-input-placeholder {
-    @content;
-  }
+    &::-webkit-input-placeholder {
+        @content;
+    }
 
-  &:-ms-input-placeholder {
-    @content;
-  }
+    &:-ms-input-placeholder {
+        @content;
+    }
 }

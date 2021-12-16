@@ -1,5 +1,5 @@
-@import "../../shared-styles/index";
+@import '../../shared-styles/index';
 
 :host {
-  @include type-style(file-uploader-file-name);
+    @include type-style(file-uploader-file-name);
 }

@@ -7,25 +7,18 @@ import { NgModule } from '@angular/core';
 import { ErrorExampleComponent } from './error/error-example';
 import { ErrorCustomMatcherFormfieldExampleComponent } from './error-custom-matcher-formfield/error-custom-matcher-formfield-example';
 
-const EXAMPLES = [
-  ErrorExampleComponent,
-  ErrorCustomMatcherFormfieldExampleComponent
-];
+const EXAMPLES = [ErrorExampleComponent, ErrorCustomMatcherFormfieldExampleComponent];
 
- @NgModule({
-  imports: [
-    NxErrorModule,
-    NxInputModule,
-    ReactiveFormsModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxErrorModule, NxInputModule, ReactiveFormsModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ErrorExamplesModule {
-  static components() {
-    return {
-      'error': ErrorExampleComponent,
-      'error-custom-matcher-formfield': ErrorCustomMatcherFormfieldExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            error: ErrorExampleComponent,
+            'error-custom-matcher-formfield': ErrorCustomMatcherFormfieldExampleComponent,
+        };
+    }
 }

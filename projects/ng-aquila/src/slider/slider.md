@@ -20,7 +20,6 @@ If no input is provided, the default values of `nxMin=0`, `nxMax=100` and `nxSte
 
 <!-- example(slider-default) -->
 
-
 ### Decimal handling
 
 To mitigate floating point precision erros the value of the slider gets rounded to the closest value based on the step size. For integer step sizes the value will be integers. For decimal step sizes the value will be rounded to the number of decimal places. So for `nxStep=0.1` the value will have a maximum of 1 decimal place (1, 1.1 etc.). For `nxStep=0.01` the value will have a maximum of 2 decimal places (1, 1.01, etc.) and so on.
@@ -31,8 +30,7 @@ Try to change the step size below to 0.01 and move the slider again to see the e
 
 ### Label Formatters
 
-By default, the minimum value is displayed in a label on the bottom left- and the maximum value on the bottom right-hand side of the slider. The current value is displayed above the slider handle. All three of these labels can be completely customized by providing formatter functions as input.
-By default, the values are rendered unchanged. In the following example, a Euro symbol is attached to the respective value, which is rounded to two decimal places.
+By default, the minimum value is displayed in a label on the bottom left- and the maximum value on the bottom right-hand side of the slider. The current value is displayed above the slider handle. All three of these labels can be completely customized by providing formatter functions as input. By default, the values are rendered unchanged. In the following example, a Euro symbol is attached to the respective value, which is rounded to two decimal places.
 
 <!-- example(slider-label) -->
 

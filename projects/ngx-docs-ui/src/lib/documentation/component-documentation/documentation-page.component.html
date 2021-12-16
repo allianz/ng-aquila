@@ -1,23 +1,22 @@
-<nx-sidebar class="docs-sidebar" minWidth="240"
-            [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
-  <nxv-navigation></nxv-navigation>
+<nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
+    <nxv-navigation></nxv-navigation>
 </nx-sidebar>
 
 <main cdkScrollable (click)="mainContentClicked()">
-  <div nxLayout="grid maxwidth" class="documentation__wrapper">
-    <div nxRow>
-      <div nxCol="12">
-        <nxv-top-info></nxv-top-info>
-      </div>
-    </div>
-
-    <div nxRow>
-      <div nxCol="12">
-        <div class="documentation__content">
-          <router-outlet></router-outlet>
+    <div nxLayout="grid maxwidth" class="documentation__wrapper">
+        <div nxRow>
+            <div nxCol="12">
+                <nxv-top-info></nxv-top-info>
+            </div>
         </div>
-      </div>
+
+        <div nxRow>
+            <div nxCol="12">
+                <div class="documentation__content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <nxv-footer></nxv-footer>
+    <nxv-footer></nxv-footer>
 </main>

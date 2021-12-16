@@ -1,37 +1,32 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "../dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "es2020",
-    "target": "es2017",
-    "lib": ["es2020", "dom"],
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": true,
-    "strictBindCallApply": true,
-    "strictFunctionTypes": true
-  },
-  "exclude": [
-    "src/assets",
-    "dist"
-  ],
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "../dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "module": "es2020",
+        "target": "es2017",
+        "lib": ["es2020", "dom"],
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "typeRoots": ["node_modules/@types"],
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "strictNullChecks": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true
+    },
+    "exclude": ["src/assets", "dist"],
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
+    }
 }

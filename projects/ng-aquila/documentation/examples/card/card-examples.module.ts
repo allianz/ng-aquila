@@ -15,37 +15,30 @@ import { SelectableCardProductExampleComponent } from './selectable-card-product
 import { SelectableCardExpertExampleComponent } from './selectable-card-expert/selectable-card-expert-example';
 
 const EXAMPLES = [
-  CardExampleComponent,
-  SelectableCardBasicExampleComponent,
-  SelectableCardDynamicExampleComponent,
-  SelectableCardReactiveExampleComponent,
-  SelectableCardStatesExampleComponent,
-  SelectableCardProductExampleComponent,
-  SelectableCardExpertExampleComponent
+    CardExampleComponent,
+    SelectableCardBasicExampleComponent,
+    SelectableCardDynamicExampleComponent,
+    SelectableCardReactiveExampleComponent,
+    SelectableCardStatesExampleComponent,
+    SelectableCardProductExampleComponent,
+    SelectableCardExpertExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxCardModule,
-    NxIconModule,
-    NxLinkModule,
-    NxPopoverModule,
-    ExamplesSharedModule,
-    RouterModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxCardModule, NxIconModule, NxLinkModule, NxPopoverModule, ExamplesSharedModule, RouterModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class CardExamplesModule {
-  static components() {
-    return {
-      'card': CardExampleComponent,
-      'selectable-card-basic': SelectableCardBasicExampleComponent,
-      'selectable-card-dynamic': SelectableCardDynamicExampleComponent,
-      'selectable-card-reactive': SelectableCardReactiveExampleComponent,
-      'selectable-card-states': SelectableCardStatesExampleComponent,
-      'selectable-card-product': SelectableCardProductExampleComponent,
-      'selectable-card-expert': SelectableCardExpertExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            card: CardExampleComponent,
+            'selectable-card-basic': SelectableCardBasicExampleComponent,
+            'selectable-card-dynamic': SelectableCardDynamicExampleComponent,
+            'selectable-card-reactive': SelectableCardReactiveExampleComponent,
+            'selectable-card-states': SelectableCardStatesExampleComponent,
+            'selectable-card-product': SelectableCardProductExampleComponent,
+            'selectable-card-expert': SelectableCardExpertExampleComponent,
+        };
+    }
 }

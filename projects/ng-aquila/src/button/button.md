@@ -6,8 +6,7 @@ expert: true
 stable: done
 ---
 
-Buttons are used to make common actions immediately visible and easy to perform. This component allows users to trigger an action – either by clicking on or tapping the button, or by pressing certain keyboard keys (such as Enter or the space bar). Depending on the use case, buttons contain a label and/or an icon. There are multiple styles, sizes, and variations that can be used for different situations.
-We attach buttons through a directive so that we can rely on the native abilities of a real **`<button>`** tag.
+Buttons are used to make common actions immediately visible and easy to perform. This component allows users to trigger an action – either by clicking on or tapping the button, or by pressing certain keyboard keys (such as Enter or the space bar). Depending on the use case, buttons contain a label and/or an icon. There are multiple styles, sizes, and variations that can be used for different situations. We attach buttons through a directive so that we can rely on the native abilities of a real **`<button>`** tag.
 
 We work with five different types of buttons. The primary's heavy appearance is intended to direct the user to take a suggested primary action; the secondary's lighter design best works to compliment a primary action or to reduce visual noise if there are several hierarchically equal actions on the same page. Emphasis, call-to-action and disabled should be self-explanatory.
 
@@ -44,6 +43,7 @@ We work with five different types of buttons. The primary's heavy appearance is 
 <!-- example(button-negative) -->
 
 ### Icons
+
 A button with an icon is particularily useful whenever the interface space is limited. Users may even recognize them more quickly than a text if the icon represents the connected action adequately.
 
 **Please add a margin** between icon and text. You can use the [utility classes](./documentation/margins/overview) `nx-margin-right-2xs` and `nx-margin-left-2xs`.
@@ -52,8 +52,7 @@ A button with an icon is particularily useful whenever the interface space is li
 
 ### Icon Button
 
-Use the `nxIconButton` component if your button contains only an icon and no text.
-Please be aware that icons are not accessible, and you need to provide an additional description. This can be done using an `aria-label` or a tooltip.
+Use the `nxIconButton` component if your button contains only an icon and no text. Please be aware that icons are not accessible, and you need to provide an additional description. This can be done using an `aria-label` or a tooltip.
 
 <!-- example(button-icon) -->
 

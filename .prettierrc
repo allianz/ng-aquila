@@ -1,0 +1,20 @@
+{
+    "tabWidth": 4,
+    "proseWrap": "never",
+    "useTabs": false,
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "strict",
+    "printWidth": 240,
+    "trailingComma": "all",
+    "semi": true,
+    "singleQuote": true,
+    "quoteProps": "as-needed",
+    "endOfLine": "lf",
+    "overrides": [
+        { "files": ["projects/ng-aquila/documentation/examples/**/*.html"], "options": { "printWidth": 120 } },
+        { "files": ["projects/ng-aquila/documentation/examples/**/*.scss"], "options": { "printWidth": 120 } },
+        { "files": ["projects/ng-aquila/documentation/examples/**/*.css"], "options": { "printWidth": 120 } },
+        { "files": ["projects/ng-aquila/documentation/examples/**/*.ts"], "options": { "printWidth": 120 } }
+    ]
+}

@@ -1,18 +1,23 @@
 import { SchematicTestSetup, Collection } from '../../utils/testing/test-setup';
 
 describe('ng-aquila ng add', () => {
-  const testSetup = new SchematicTestSetup('migration-v11', Collection.MIGRATIONS);
+    const testSetup = new SchematicTestSetup('migration-v11', Collection.MIGRATIONS);
 
-  it('should replace label with labelCollapsed', async () => {
-    testSetup.writeFile('./projects/aquila-testing/src/app/app.component.html', `
+    it('should replace label with labelCollapsed', async () => {
+        testSetup.writeFile(
+            './projects/aquila-testing/src/app/app.component.html',
+            `
       <div nxComparisonTableRowGroup [label]="myLabel" >
-    `);
-    await testSetup.runMigration();
-    expect(testSetup.appTree.readContent('./projects/aquila-testing/src/app/app.component.html')).toContain('[labelCollapsed]="myLabel"');
-  });
+    `,
+        );
+        await testSetup.runMigration();
+        expect(testSetup.appTree.readContent('./projects/aquila-testing/src/app/app.component.html')).toContain('[labelCollapsed]="myLabel"');
+    });
 
-  it('should replace getPopupConnectionElementRef on NxDatefieldDirective', async () => {
-    testSetup.writeFile('./projects/aquila-testing/src/app/app.component.ts', `
+    it('should replace getPopupConnectionElementRef on NxDatefieldDirective', async () => {
+        testSetup.writeFile(
+            './projects/aquila-testing/src/app/app.component.ts',
+            `
     import { Component } from '@angular/core';
 
     // fake class that the typechecker finds the type in the test
@@ -32,9 +37,10 @@ describe('ng-aquila ng add', () => {
         this.datepicker.getPopupConnectionElementRef();
       }
     }
-    `);
-    await testSetup.runMigration();
+    `,
+        );
+        await testSetup.runMigration();
 
-    expect(testSetup.appTree.readContent('./projects/aquila-testing/src/app/app.component.ts')).toContain('getConnectedOverlayOrigin');
-  });
+        expect(testSetup.appTree.readContent('./projects/aquila-testing/src/app/app.component.ts')).toContain('getConnectedOverlayOrigin');
+    });
 });

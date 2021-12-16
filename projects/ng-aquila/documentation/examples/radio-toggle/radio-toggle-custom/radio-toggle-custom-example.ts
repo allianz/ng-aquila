@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Custom Example
-*/
+ * @title Custom Example
+ */
 @Component({
-  selector: 'radio-toggle-custom-example',
-  templateUrl: './radio-toggle-custom-example.html',
-  styleUrls: ['./radio-toggle-custom-example.css']
+    selector: 'radio-toggle-custom-example',
+    templateUrl: './radio-toggle-custom-example.html',
+    styleUrls: ['./radio-toggle-custom-example.css'],
 })
-export class RadioToggleCustomExampleComponent {
-}
+export class RadioToggleCustomExampleComponent {}

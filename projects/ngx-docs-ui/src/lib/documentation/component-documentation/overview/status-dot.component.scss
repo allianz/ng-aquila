@@ -1,20 +1,20 @@
-@import "../../../../../../ng-aquila/src/shared-styles/theming/theming";
+@import '../../../../../../ng-aquila/src/shared-styles/theming/theming';
 @import '../../../styles/themes/docs-theme';
 
 :host {
-  height: 24px;
-  display: inline-block;
-  vertical-align: bottom;
+    height: 24px;
+    display: inline-block;
+    vertical-align: bottom;
 
-  &.checkmark {
-    @include var(color, success);
-  }
+    &.checkmark {
+        @include var(color, success);
+    }
 
-  nx-icon.fa-hourglass-half {
-    @include var(color, interactive-primary);
-  }
+    nx-icon.fa-hourglass-half {
+        @include var(color, interactive-primary);
+    }
 
-  nx-icon.fa-minus {
-    @include var(color, disabled-01);
-  }
+    nx-icon.fa-minus {
+        @include var(color, disabled-01);
+    }
 }

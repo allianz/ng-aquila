@@ -1,23 +1,15 @@
 <nx-context-menu #menu="nxContextMenu">
-  <button nxContextMenuItem type="button">Settings</button>
-  <button nxContextMenuItem disabled type="button">Download</button>
-  <button nxContextMenuItem
-      disabled
-      [nxContextMenuTriggerFor]="archiveSubMenu"
-      type="button">
-    Move
-  </button>
-  <button nxContextMenuItem type="button">Help</button>
+    <button nxContextMenuItem type="button">Settings</button>
+    <button nxContextMenuItem disabled type="button">Download</button>
+    <button nxContextMenuItem disabled [nxContextMenuTriggerFor]="archiveSubMenu" type="button"> Move </button>
+    <button nxContextMenuItem type="button">Help</button>
 </nx-context-menu>
 
 <nx-context-menu #archiveSubMenu="nxContextMenu">
-  <button nxContextMenuItem type="button">To Folder</button>
-  <button nxContextMenuItem type="button">Archive</button>
+    <button nxContextMenuItem type="button">To Folder</button>
+    <button nxContextMenuItem type="button">Archive</button>
 </nx-context-menu>
 
-<button nxIconButton="tertiary small"
-    [nxContextMenuTriggerFor]="menu"
-    aria-label="Open menu"
-    type="button">
-  <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+<button nxIconButton="tertiary small" [nxContextMenuTriggerFor]="menu" aria-label="Open menu" type="button">
+    <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
 </button>

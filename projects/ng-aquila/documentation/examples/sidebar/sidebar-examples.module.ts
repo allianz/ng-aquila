@@ -14,34 +14,34 @@ import { SidebarResizeableExampleComponent } from './sidebar-resizeable/sidebar-
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  SidebarExampleComponent,
-  SidebarFooterExampleComponent,
-  SidebarMethodsExampleComponent,
-  SidebarOutputsExampleComponent,
-  SidebarResizeableExampleComponent
+    SidebarExampleComponent,
+    SidebarFooterExampleComponent,
+    SidebarMethodsExampleComponent,
+    SidebarOutputsExampleComponent,
+    SidebarResizeableExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxSidebarModule,
-    NxTreeModule,
-    NxInputModule,
-    NxIconModule,
-    RouterModule,
-    NxActionModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxSidebarModule,
+        NxTreeModule,
+        NxInputModule,
+        NxIconModule,
+        RouterModule,
+        NxActionModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class SidebarExamplesModule {
-  static components() {
-    return {
-      'sidebar': SidebarExampleComponent,
-      'sidebar-footer': SidebarFooterExampleComponent,
-      'sidebar-methods': SidebarMethodsExampleComponent,
-      'sidebar-outputs': SidebarOutputsExampleComponent,
-      'sidebar-resizeable': SidebarResizeableExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            sidebar: SidebarExampleComponent,
+            'sidebar-footer': SidebarFooterExampleComponent,
+            'sidebar-methods': SidebarMethodsExampleComponent,
+            'sidebar-outputs': SidebarOutputsExampleComponent,
+            'sidebar-resizeable': SidebarResizeableExampleComponent,
+        };
+    }
 }
