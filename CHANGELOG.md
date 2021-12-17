@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v12.2.1...v13.0.0-next.0) (2021-12-17)
+
+To install this version, run `npm install @aposin/ng-aquila@next`.
+
+### Features
+
+-   **multi-select:** add new component ([ee85087](https://github.com/aposin/ng-aquila/commit/ee85087bc46cc57d0d2e74dffcc6c298813738c0))
+-   **data-display:** add new component ([e71281b](https://github.com/aposin/ng-aquila/commit/e71281bbc3f0171cc28a6b52c280c894af74ad5b))
+
 ## [12.2.1](https://github.com/aposin/ng-aquila/compare/v12.2.0...v12.2.1) (2021-12-07)
 
 ### Bug Fixes
