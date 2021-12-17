@@ -10,28 +10,28 @@ import { ActionWithRouterExampleComponent } from './action-with-router/action-wi
 import { ActionIndicatorExampleComponent } from './action-indicator/action-indicator-example';
 
 const EXAMPLES = [
-  ActionExampleComponent,
-  ActionWithRouterExampleComponent,
-  ActionIndicatorExampleComponent
+    ActionExampleComponent,
+    ActionWithRouterExampleComponent,
+    ActionIndicatorExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxActionModule,
-    RouterModule,
-    NxIconModule,
-    NxIndicatorModule,
-    CommonModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxActionModule,
+        RouterModule,
+        NxIconModule,
+        NxIndicatorModule,
+        CommonModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ActionExamplesModule {
-  static components() {
-    return {
-      'action': ActionExampleComponent,
-      'action-with-router': ActionWithRouterExampleComponent,
-      'action-indicator': ActionIndicatorExampleComponent
-    };
-  }
+    static components() {
+        return {
+            action: ActionExampleComponent,
+            'action-with-router': ActionWithRouterExampleComponent,
+            'action-indicator': ActionIndicatorExampleComponent,
+        };
+    }
 }

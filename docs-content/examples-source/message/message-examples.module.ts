@@ -15,38 +15,38 @@ import { MessageToastOpeningExampleComponent } from './message-toast-opening/mes
 import { MessageWarningExampleComponent } from './message-warning/message-warning-example';
 
 const EXAMPLES = [
-  MessageBannerExampleComponent,
-  MessageClosableExampleComponent,
-  MessageErrorExampleComponent,
-  MessageInfoExampleComponent,
-  MessageSuccessExampleComponent,
-  MessageToastCustomSettingsExampleComponent,
-  MessageToastOpeningExampleComponent,
-  MessageWarningExampleComponent
+    MessageBannerExampleComponent,
+    MessageClosableExampleComponent,
+    MessageErrorExampleComponent,
+    MessageInfoExampleComponent,
+    MessageSuccessExampleComponent,
+    MessageToastCustomSettingsExampleComponent,
+    MessageToastOpeningExampleComponent,
+    MessageWarningExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxMessageModule,
-    NxErrorModule,
-    NxButtonModule,
-    CommonModule,
-    NxHeadlineModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxMessageModule,
+        NxErrorModule,
+        NxButtonModule,
+        CommonModule,
+        NxHeadlineModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class MessageExamplesModule {
-  static components() {
-    return {
-      'message-banner': MessageBannerExampleComponent,
-      'message-closable': MessageClosableExampleComponent,
-      'message-error': MessageErrorExampleComponent,
-      'message-info': MessageInfoExampleComponent,
-      'message-success': MessageSuccessExampleComponent,
-      'message-toast-custom-settings': MessageToastCustomSettingsExampleComponent,
-      'message-toast-opening': MessageToastOpeningExampleComponent,
-      'message-warning': MessageWarningExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'message-banner': MessageBannerExampleComponent,
+            'message-closable': MessageClosableExampleComponent,
+            'message-error': MessageErrorExampleComponent,
+            'message-info': MessageInfoExampleComponent,
+            'message-success': MessageSuccessExampleComponent,
+            'message-toast-custom-settings': MessageToastCustomSettingsExampleComponent,
+            'message-toast-opening': MessageToastOpeningExampleComponent,
+            'message-warning': MessageWarningExampleComponent,
+        };
+    }
 }

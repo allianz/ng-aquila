@@ -1,52 +1,66 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-swipebar</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Scroll to see more&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--checkbox&quot;</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Row selection&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleAll()&quot;</span>
-            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle selection of all rows&quot;</span>
-            [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; isAllSelected()&quot;</span>
-            [<span class="hljs-attr">indeterminate</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; !isAllSelected()&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Product<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Contract Number<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>
-            [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;selection.isSelected(item)&quot;</span>
-            <span class="hljs-attr">selectable</span>
-            (<span class="hljs-attr">select</span>)=<span class="hljs-string">&quot;selection.toggle(item)&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--checkbox&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;selection.toggle(item)&quot;</span>
-              <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle row selection&quot;</span>
-              [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;selection.isSelected(item)&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&#x27;#&#x27;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.endingAt | date: &#x27;dd/MM/yyyy&#x27;}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>&gt;</span>{{item.statusText}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span>
+                    <span class="hljs-attr">nxHeaderCell</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--checkbox&quot;</span>
+                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Row selection&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
+                        (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;toggleAll()&quot;</span>
+                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle selection of all rows&quot;</span>
+                        [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; isAllSelected()&quot;</span>
+                        [<span class="hljs-attr">indeterminate</span>]=<span class="hljs-string">&quot;selection.hasValue() &amp;&amp; !isAllSelected()&quot;</span>
+                    &gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Product<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Contract Number<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>
+                    <span class="hljs-attr">nxTableRow</span>
+                    [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;selection.isSelected(item)&quot;</span>
+                    <span class="hljs-attr">selectable</span>
+                    (<span class="hljs-attr">select</span>)=<span class="hljs-string">&quot;selection.toggle(item)&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--checkbox&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>
+                            (<span class="hljs-attr">checkedChange</span>)=<span class="hljs-string">&quot;selection.toggle(item)&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Toggle row selection&quot;</span>
+                            [<span class="hljs-attr">checked</span>]=<span class="hljs-string">&quot;selection.isSelected(item)&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>
+                            &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>&lt;/nx-link
+                        &gt;
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.endingAt | date: &#x27;dd/MM/yyyy&#x27;}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>
+                            &gt;</span>{{item.statusText}}&lt;/nx-badge
+                        &gt;
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-swipebar</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-m&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;showSelected&quot;</span>&gt;</span>Debug selected value<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;showSelected&quot;</span>&gt;</span>Debug selected value<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showSelected&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected value:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{{ selection.selected | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showSelected&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Selected value:<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{{ selection.selected | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

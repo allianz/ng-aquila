@@ -1,23 +1,39 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Label&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">required</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;valueError&quot;</span> #<span class="hljs-attr">exampleErrorNgModel</span>=<span class="hljs-string">&quot;nxInput&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-          Please enter your name!
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+                <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Label&quot;</span>
+                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+                <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">required</span>
+                    <span class="hljs-attr">nxInput</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;valueError&quot;</span>
+                    #<span class="hljs-attr">exampleErrorNgModel</span>=<span class="hljs-string">&quot;nxInput&quot;</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                    Please enter your name!
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>
+                <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Label&quot;</span>
+                <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span>
+                <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>
+            &gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">required</span>
+                    <span class="hljs-attr">nxInput</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;valueErrorWithHint&quot;</span>
+                    #<span class="hljs-attr">exampleErrorWithHintNgModel</span>=<span class="hljs-string">&quot;nxInput&quot;</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span> some additional information <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
+                    Please enter your name!
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Label&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;outline&quot;</span> <span class="hljs-attr">nxFloatLabel</span>=<span class="hljs-string">&quot;always&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">required</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;valueErrorWithHint&quot;</span> #<span class="hljs-attr">exampleErrorWithHintNgModel</span>=<span class="hljs-string">&quot;nxInput&quot;</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
-          some additional information
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>
-          Please enter your name!
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

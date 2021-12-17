@@ -1,5 +1,4 @@
-.popover-demo__scroll-panel
-{
+.popover-demo__scroll-panel {
     border: 1px solid;
     overflow: scroll;
     width: 200px;

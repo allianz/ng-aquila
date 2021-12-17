@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Large Size Example
-*/
+ * @title Large Size Example
+ */
 @Component({
-  selector: 'button-large-example',
-  templateUrl: './button-large-example.html',
-  styleUrls: ['./button-large-example.css']
+    selector: 'button-large-example',
+    templateUrl: './button-large-example.html',
+    styleUrls: ['./button-large-example.css'],
 })
-export class ButtonLargeExampleComponent {
-}
+export class ButtonLargeExampleComponent {}

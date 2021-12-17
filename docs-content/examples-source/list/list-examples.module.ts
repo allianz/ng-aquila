@@ -11,32 +11,32 @@ import { ListOrderedExampleComponent } from './list-ordered/list-ordered-example
 import { ListUnorderedExampleComponent } from './list-unordered/list-unordered-example';
 
 const EXAMPLES = [
-  ListCirclesExampleComponent,
-  ListCopytextExampleComponent,
-  ListCustomColorExampleComponent,
-  ListIconsExampleComponent,
-  ListNegativeExampleComponent,
-  ListNestingExampleComponent,
-  ListOrderedExampleComponent,
-  ListUnorderedExampleComponent
+    ListCirclesExampleComponent,
+    ListCopytextExampleComponent,
+    ListCustomColorExampleComponent,
+    ListIconsExampleComponent,
+    ListNegativeExampleComponent,
+    ListNestingExampleComponent,
+    ListOrderedExampleComponent,
+    ListUnorderedExampleComponent,
 ];
 
- @NgModule({
-  imports: [NxListModule],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxListModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ListExamplesModule {
-  static components() {
-    return {
-      'list-circles': ListCirclesExampleComponent,
-      'list-copytext': ListCopytextExampleComponent,
-      'list-custom-color': ListCustomColorExampleComponent,
-      'list-icons': ListIconsExampleComponent,
-      'list-negative': ListNegativeExampleComponent,
-      'list-nesting': ListNestingExampleComponent,
-      'list-ordered': ListOrderedExampleComponent,
-      'list-unordered': ListUnorderedExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'list-circles': ListCirclesExampleComponent,
+            'list-copytext': ListCopytextExampleComponent,
+            'list-custom-color': ListCustomColorExampleComponent,
+            'list-icons': ListIconsExampleComponent,
+            'list-negative': ListNegativeExampleComponent,
+            'list-nesting': ListNestingExampleComponent,
+            'list-ordered': ListOrderedExampleComponent,
+            'list-unordered': ListUnorderedExampleComponent,
+        };
+    }
 }

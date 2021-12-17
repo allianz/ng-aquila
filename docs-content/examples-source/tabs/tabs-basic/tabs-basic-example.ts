@@ -4,11 +4,10 @@ import { Component } from '@angular/core';
  * @title Basic tab group
  */
 @Component({
-  selector: 'tabs-basic-example',
-  templateUrl: './tabs-basic-example.html',
-  styleUrls: ['./tabs-basic-example.css']
+    selector: 'tabs-basic-example',
+    templateUrl: './tabs-basic-example.html',
+    styleUrls: ['./tabs-basic-example.css'],
 })
 export class TabsBasicExampleComponent {
-
-  currentIndex: number = 0;
+    currentIndex: number = 0;
 }

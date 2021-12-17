@@ -1,21 +1,21 @@
 .example-container {
-  height: 400px;
+    height: 400px;
 }
 
 .my-sidepanel {
-  width: 240px;
+    width: 240px;
 }
 
 .my-sidepanel-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 32px 32px 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 32px 24px 32px;
 }
 
 .my-sidepanel-content {
-  padding: 0 32px 32px 32px;
+    padding: 0 32px 32px 32px;
 }
 
 .example-hint nx-icon {
-  vertical-align: bottom;
+    vertical-align: bottom;
 }

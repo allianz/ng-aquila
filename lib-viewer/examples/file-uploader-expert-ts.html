@@ -1,40 +1,52 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxFileUploadResult, NxFileUploader } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxMessageToastConfig, NxMessageToastService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    NxFileUploadResult,
+    NxFileUploader,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    NxMessageToastConfig,
+    NxMessageToastService,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
 <span class="hljs-keyword">import</span> { HttpParams, HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
-  <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
-  <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
-  <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;File was uploaded successfully!&#x27;</span>
+    <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
+    <span class="hljs-attr">context</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+    <span class="hljs-attr">announcementMessage</span>: <span class="hljs-string">&#x27;File was uploaded successfully!&#x27;</span>,
 };
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title </span>File uploader expert example */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;file-uploader-expert-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./file-uploader-expert-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-expert-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;file-uploader-expert-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./file-uploader-expert-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./file-uploader-expert-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FileUploaderExpertExampleComponent</span> </span>{
-  <span class="hljs-attr">uploader</span>: NxFileUploader;
-  uploadConfig = {
-    <span class="hljs-attr">requestUrl</span>: <span class="hljs-string">&#x27;file-upload&#x27;</span>,
-    <span class="hljs-attr">options</span>: {
-      <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> HttpParams(),
-      <span class="hljs-attr">reportProgress</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">uploader</span>: NxFileUploader;
+    uploadConfig = {
+        <span class="hljs-attr">requestUrl</span>: <span class="hljs-string">&#x27;file-upload&#x27;</span>,
+        <span class="hljs-attr">options</span>: {
+            <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> HttpParams(),
+            <span class="hljs-attr">reportProgress</span>: <span class="hljs-literal">true</span>,
+        },
+    };
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
+        <span class="hljs-keyword">private</span> messageToastService: NxMessageToastService,
+        <span class="hljs-keyword">private</span> http: HttpClient,
+    </span>)</span> {
+        <span class="hljs-built_in">this</span>.uploader = <span class="hljs-keyword">new</span> NxFileUploader(<span class="hljs-built_in">this</span>.uploadConfig, <span class="hljs-built_in">this</span>.http);
+
+        <span class="hljs-built_in">this</span>.uploader.response.subscribe(<span class="hljs-function">(<span class="hljs-params">result: NxFileUploadResult</span>) =&gt;</span> {
+            <span class="hljs-keyword">if</span> (result.success) {
+                <span class="hljs-built_in">this</span>.messageToastService.open(
+                    <span class="hljs-string">&#x27;All files were uploaded successfully!&#x27;</span>,
+                    myCustomConfig,
+                );
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (result.error) {
+                <span class="hljs-comment">// error handling</span>
+                <span class="hljs-built_in">console</span>.log(result.error);
+            }
+        });
     }
-  };
-
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> messageToastService: NxMessageToastService, <span class="hljs-keyword">private</span> http: HttpClient</span>)</span> {
-    <span class="hljs-built_in">this</span>.uploader = <span class="hljs-keyword">new</span> NxFileUploader(<span class="hljs-built_in">this</span>.uploadConfig, <span class="hljs-built_in">this</span>.http);
-
-    <span class="hljs-built_in">this</span>.uploader.response.subscribe(<span class="hljs-function">(<span class="hljs-params">result: NxFileUploadResult</span>) =&gt;</span> {
-      <span class="hljs-keyword">if</span> (result.success) {
-        <span class="hljs-built_in">this</span>.messageToastService.open(<span class="hljs-string">&#x27;All files were uploaded successfully!&#x27;</span>, myCustomConfig);
-      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (result.error) {
-        <span class="hljs-comment">// error handling</span>
-        <span class="hljs-built_in">console</span>.log(result.error);
-      }
-    });
-  }
 }

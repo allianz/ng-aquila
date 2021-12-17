@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 /**
-* @title Avatar example
-*/
+ * @title Avatar example
+ */
 @Component({
-  selector: 'avatar-example',
-  templateUrl: './avatar-example.html',
-  styleUrls: ['./avatar-example.css']
+    selector: 'avatar-example',
+    templateUrl: './avatar-example.html',
+    styleUrls: ['./avatar-example.css'],
 })
-export class AvatarExampleComponent { }
+export class AvatarExampleComponent {}

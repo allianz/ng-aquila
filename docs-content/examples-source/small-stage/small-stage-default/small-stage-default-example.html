@@ -1,17 +1,26 @@
 <nx-small-stage>
-  <nav aria-label="Breadcrumb" nxSmallStageHeader>
-    <ol nxBreadcrumb>
-      <li *ngFor="let item of dynamicItems; let i = index">
-        <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#">
-          {{ item }}
-        </a>
-      </li>
-    </ol>
-  </nav>
-  <nx-small-stage-image nxSmallStageImageStart src="assets/images/small-stage-image-start.svg"></nx-small-stage-image>
-  <nx-small-stage-image nxSmallStageImageEnd src="assets/images/small-stage-image-end.svg"></nx-small-stage-image>
-  <nx-small-stage-image nxSmallStageImageBottom src="assets/images/small-stage-image-narrow-screen.svg"></nx-small-stage-image>
+    <nav aria-label="Breadcrumb" nxSmallStageHeader>
+        <ol nxBreadcrumb>
+            <li *ngFor="let item of dynamicItems; let i = index">
+                <a nxBreadcrumbItem (click)="goToItem(i)" routerLink="#">
+                    {{ item }}
+                </a>
+            </li>
+        </ol>
+    </nav>
+    <nx-small-stage-image
+        nxSmallStageImageStart
+        src="assets/images/small-stage-image-start.svg"
+    ></nx-small-stage-image>
+    <nx-small-stage-image
+        nxSmallStageImageEnd
+        src="assets/images/small-stage-image-end.svg"
+    ></nx-small-stage-image>
+    <nx-small-stage-image
+        nxSmallStageImageBottom
+        src="assets/images/small-stage-image-narrow-screen.svg"
+    ></nx-small-stage-image>
 
-  <h2 nxHeadline="page" class="nx-margin-bottom-m">Headline text</h2>
-  <p nxCopytext="large">Subline text</p>
+    <h2 nxHeadline="page" class="nx-margin-bottom-m">Headline text</h2>
+    <p nxCopytext="large">Subline text</p>
 </nx-small-stage>

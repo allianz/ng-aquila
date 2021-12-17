@@ -1,37 +1,38 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="12, 12, 4">
-      <nx-formfield nxLabel="Disabled dropdown">
-        <nx-dropdown nxDisabled="true">
-          <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
-        </nx-dropdown>
-      </nx-formfield>
-    </div>
+    <div nxRow>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="Disabled dropdown">
+                <nx-dropdown nxDisabled="true">
+                    <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
 
-    <div nxCol="12, 12, 4">
-      <nx-formfield nxLabel="With disabled item">
-        <nx-dropdown>
-          <nx-dropdown-item disabled="true" nxValue="BMW">B</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
-          <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
-        </nx-dropdown>
-      </nx-formfield>
-    </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="With disabled item">
+                <nx-dropdown>
+                    <nx-dropdown-item disabled="true" nxValue="BMW"
+                        >B</nx-dropdown-item
+                    >
+                    <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
 
-    <div nxCol="12, 12, 4">
-      <nx-formfield nxLabel="With disabled multi item">
-        <nx-dropdown [nxIsMultiselect]="true">
-          <nx-dropdown-item disabled="true" nxValue="BMW"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
-        </nx-dropdown>
-      </nx-formfield>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="With disabled multi item">
+                <nx-multi-select
+                    [options]="options"
+                    selectValue="id"
+                    selectLabel="name"
+                    [selectDisabled]="isOptionDisabled"
+                ></nx-multi-select>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
-
 </div>

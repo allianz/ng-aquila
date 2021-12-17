@@ -1,18 +1,23 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-group</span>
-  <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;singleRadioOutputTest&quot;</span>
-  (<span class="hljs-attr">nxGroupValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxGroupValueChange occured: &#x27;+$event.value)&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>This is a nx-radio-group label<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
-    <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;option1&quot;</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
-    (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxValueChange occured: &#x27;+$event.value)&quot;</span>&gt;</span>
-    Option 1
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
-    <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;option2&quot;</span>
-    (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxValueChange occured: &#x27;+$event.value)&quot;</span>&gt;</span>
-    Option 2
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;singleRadioOutputTest&quot;</span>
+    (<span class="hljs-attr">nxGroupValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxGroupValueChange occured: &#x27;+$event.value)&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+        &gt;</span>This is a nx-radio-group label&lt;/nx-label
+    &gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
+        <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;option1&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>
+        (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxValueChange occured: &#x27;+$event.value)&quot;</span>
+    &gt;</span>
+        Option 1
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio</span>
+        <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;option2&quot;</span>
+        (<span class="hljs-attr">nxValueChange</span>)=<span class="hljs-string">&quot;log(&#x27;nxValueChange occured: &#x27;+$event.value)&quot;</span>
+    &gt;</span>
+        Option 2
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-group</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">pre</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;logMessage&quot;</span>&gt;</span>{{logMessage}}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>

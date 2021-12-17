@@ -1,222 +1,233 @@
 <span class="hljs-keyword">import</span> { Component, Injectable } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { SortEvent, SortDirection, NxSortHeaderIntl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    SortEvent,
+    SortDirection,
+    NxSortHeaderIntl,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/table&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> Contract {
-  <span class="hljs-attr">product</span>: <span class="hljs-built_in">string</span>;
-  contractNumber: <span class="hljs-built_in">number</span>;
-  desc: <span class="hljs-built_in">string</span>;
-  website: <span class="hljs-built_in">string</span>;
-  endingAt: <span class="hljs-built_in">Date</span>;
-  status: <span class="hljs-built_in">string</span>;
-  statusText: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">product</span>: <span class="hljs-built_in">string</span>;
+    contractNumber: <span class="hljs-built_in">number</span>;
+    desc: <span class="hljs-built_in">string</span>;
+    website: <span class="hljs-built_in">string</span>;
+    endingAt: <span class="hljs-built_in">Date</span>;
+    status: <span class="hljs-built_in">string</span>;
+    statusText: <span class="hljs-built_in">string</span>;
 }
 
 <span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxSortHeaderIntl</span> </span>{
-  sortAscendingAriaLabel = <span class="hljs-string">&#x27;sort ascending by&#x27;</span>;
-  sortDescendingAriaLabel = <span class="hljs-string">&#x27;sort descending by&#x27;</span>;
+    sortAscendingAriaLabel = <span class="hljs-string">&#x27;sort ascending by&#x27;</span>;
+    sortDescendingAriaLabel = <span class="hljs-string">&#x27;sort descending by&#x27;</span>;
 }
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Advanced example for sorting, filtering and pagination
-*/</span>
+ * <span class="hljs-doctag">@title </span>Advanced example for sorting, filtering and pagination
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-filter-sort-paginate-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-filter-sort-paginate-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-filter-sort-paginate-example.css&#x27;</span>],
-  <span class="hljs-attr">providers</span>: [
-    { <span class="hljs-attr">provide</span>: NxSortHeaderIntl, <span class="hljs-attr">useClass</span>: MyIntl },
-  ],
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-filter-sort-paginate-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-filter-sort-paginate-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-filter-sort-paginate-example.css&#x27;</span>],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NxSortHeaderIntl, <span class="hljs-attr">useClass</span>: MyIntl }],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableFilterSortPaginateExampleComponent</span> </span>{
-  <span class="hljs-attr">tableElements</span>: Contract[] = [
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;AA&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">334</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2019&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;BB&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">6643</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DD&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1288</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/12/2018&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DDE&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1456</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/11/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;GG&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">122</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;12/6/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;JK&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1422</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;M&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1225</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/5/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;L&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1313</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/4/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Legal&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is another contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/2/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;processing&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;CC&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">4356</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/9/2020&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;6/2/2017&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>
-    },
-    {
-      <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
-      <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
-      <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a description of a contract&#x27;</span>,
-      <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
-      <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/20/2027&#x27;</span>),
-      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
-      <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>
+    <span class="hljs-attr">tableElements</span>: Contract[] = [
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;AA&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">334</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2019&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;BB&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">6643</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DD&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1288</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/12/2018&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;DDE&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1456</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/11/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;GG&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">122</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;12/6/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;JK&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1422</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/3/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;M&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1225</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/5/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;L&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1313</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/4/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Legal&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is another contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;4/2/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;processing&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;CC&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">4356</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/9/2020&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.aposin.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;6/2/2017&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a description of a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">&#x27;1/20/2027&#x27;</span>),
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>,
+        },
+    ];
+
+    currentlyShownPageElements!: Contract[];
+    currentlyAvailableElements: Contract[];
+
+    page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+    filterValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    elementsPerPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
+
+    <span class="hljs-comment">/**
+     * Sorts the table data by a certain category.
+     */</span>
+    <span class="hljs-function"><span class="hljs-title">sortTable</span>(<span class="hljs-params">sort: SortEvent</span>)</span> {
+        <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements.sort(
+            <span class="hljs-function">(<span class="hljs-params">a: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, b: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }</span>) =&gt;</span> {
+                <span class="hljs-keyword">if</span> (sort.active <span class="hljs-keyword">in</span> a &amp;&amp; sort.active <span class="hljs-keyword">in</span> b) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.compare(
+                        a[sort.active],
+                        b[sort.active],
+                        sort.direction,
+                    );
+                }
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+            },
+        );
+
+        <span class="hljs-built_in">this</span>.updatePage();
     }
-  ];
 
-  currentlyShownPageElements!: Contract[];
-  currentlyAvailableElements: Contract[];
+    <span class="hljs-function"><span class="hljs-title">compare</span>(<span class="hljs-params">
+        a: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
+        b: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
+        direction: SortDirection,
+    </span>)</span> {
+        <span class="hljs-keyword">return</span> (a &lt; b ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>) * (direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>);
+    }
 
-  page: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
-  filterValue: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
-  elementsPerPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements;
+        <span class="hljs-comment">// init first page on page load</span>
+        <span class="hljs-built_in">this</span>.updatePage();
+    }
 
-  <span class="hljs-comment">/**
-   * Sorts the table data by a certain category.
-   */</span>
-  <span class="hljs-function"><span class="hljs-title">sortTable</span>(<span class="hljs-params">sort: SortEvent</span>)</span> {
-    <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements
-      .sort(<span class="hljs-function">(<span class="hljs-params">a: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> }, b: { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>} </span>) =&gt;</span> {
-      <span class="hljs-keyword">if</span> (sort.active <span class="hljs-keyword">in</span> a &amp;&amp; sort.active <span class="hljs-keyword">in</span> b) {
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.compare(a[sort.active], b[sort.active], sort.direction);
-      }
-      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    });
+    <span class="hljs-function"><span class="hljs-title">onFilterValueChange</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.filterData(value);
+    }
 
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
+    <span class="hljs-function"><span class="hljs-title">filterData</span>(<span class="hljs-params">filterValue: <span class="hljs-built_in">string</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements.filter(
+            <span class="hljs-function"><span class="hljs-params">tableRowObject</span> =&gt;</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.values(tableRowObject).some(<span class="hljs-function"><span class="hljs-params">propertyValue</span> =&gt;</span>
+                    <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>).test(<span class="hljs-built_in">String</span>(propertyValue)),
+                );
+            },
+        );
 
-  <span class="hljs-function"><span class="hljs-title">compare</span>(<span class="hljs-params">
-    a: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
-    b: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span> | <span class="hljs-built_in">Date</span>,
-    direction: SortDirection</span>)</span> {
+        <span class="hljs-built_in">this</span>.updatePage();
+    }
 
-    <span class="hljs-keyword">return</span> (a &lt; b ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span>) * (direction === <span class="hljs-string">&#x27;asc&#x27;</span> ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>);
-  }
+    <span class="hljs-function"><span class="hljs-title">updatePage</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-keyword">const</span> indexMin = (<span class="hljs-built_in">this</span>.page - <span class="hljs-number">1</span>) * <span class="hljs-built_in">this</span>.elementsPerPage;
+        <span class="hljs-keyword">const</span> indexMax = indexMin + <span class="hljs-built_in">this</span>.elementsPerPage;
+        <span class="hljs-built_in">this</span>.currentlyShownPageElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements.filter(
+            <span class="hljs-function">(<span class="hljs-params">x, index</span>) =&gt;</span> index &gt;= indexMin &amp;&amp; index &lt; indexMax,
+        );
+    }
 
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements;
-    <span class="hljs-comment">// init first page on page load</span>
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
+    <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.page--;
+        <span class="hljs-built_in">this</span>.updatePage();
+    }
 
-  <span class="hljs-function"><span class="hljs-title">onFilterValueChange</span>(<span class="hljs-params">value: <span class="hljs-built_in">string</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.filterData(value);
-  }
+    <span class="hljs-function"><span class="hljs-title">nextPage</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.page++;
+        <span class="hljs-built_in">this</span>.updatePage();
+    }
 
-  <span class="hljs-function"><span class="hljs-title">filterData</span>(<span class="hljs-params">filterValue: <span class="hljs-built_in">string</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.currentlyAvailableElements = <span class="hljs-built_in">this</span>.tableElements.filter(<span class="hljs-function"><span class="hljs-params">tableRowObject</span> =&gt;</span> {
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.values(tableRowObject).some(<span class="hljs-function"><span class="hljs-params">propertyValue</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(filterValue, <span class="hljs-string">&#x27;i&#x27;</span>).test(<span class="hljs-built_in">String</span>(propertyValue)));
-    });
-
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">updatePage</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">const</span> indexMin = (<span class="hljs-built_in">this</span>.page - <span class="hljs-number">1</span>) * <span class="hljs-built_in">this</span>.elementsPerPage;
-    <span class="hljs-keyword">const</span> indexMax = indexMin + <span class="hljs-built_in">this</span>.elementsPerPage;
-    <span class="hljs-built_in">this</span>.currentlyShownPageElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements.filter(
-      <span class="hljs-function">(<span class="hljs-params">x, index</span>) =&gt;</span> index &gt;= indexMin &amp;&amp; index &lt; indexMax
-    );
-  }
-
-  <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.page--;
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">nextPage</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.page++;
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.page = n;
-    <span class="hljs-built_in">this</span>.updatePage();
-  }
+    <span class="hljs-function"><span class="hljs-title">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.page = n;
+        <span class="hljs-built_in">this</span>.updatePage();
+    }
 }

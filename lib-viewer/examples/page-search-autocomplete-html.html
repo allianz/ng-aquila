@@ -1,44 +1,55 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-page-search</span>
-  <span class="hljs-attr">nxButtonLabel</span>=<span class="hljs-string">&quot;Search&quot;</span>
-  <span class="hljs-attr">nxButtonLayout</span>=<span class="hljs-string">&quot;12,12,12,4&quot;</span>
-  <span class="hljs-attr">nxContentLayout</span>=<span class="hljs-string">&quot;12,12,12,8&quot;</span>
-  <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Search autocomplete example&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-          <span class="hljs-attr">nxInput</span>
-          [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto1&quot;</span>
-          [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&quot;searchFunction&quot;</span>
-          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm1&quot;</span>
-          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
-        &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto1</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldSuffix</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm1&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm1=&#x27;&#x27;&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-attr">nxButtonLabel</span>=<span class="hljs-string">&quot;Search&quot;</span>
+    <span class="hljs-attr">nxButtonLayout</span>=<span class="hljs-string">&quot;12,12,12,4&quot;</span>
+    <span class="hljs-attr">nxContentLayout</span>=<span class="hljs-string">&quot;12,12,12,8&quot;</span>
+    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Search autocomplete example&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxInput</span>
+                    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto1&quot;</span>
+                    [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&quot;searchFunction&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm1&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto1</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                    <span class="hljs-attr">nxFormfieldSuffix</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm1&quot;</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm1=&#x27;&#x27;&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxInput</span>
+                    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto2&quot;</span>
+                    [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&quot;searchFunction&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm2&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto2</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                    <span class="hljs-attr">nxFormfieldSuffix</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm2&quot;</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm2=&#x27;&#x27;&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-          <span class="hljs-attr">nxInput</span>
-          [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto2&quot;</span>
-          [<span class="hljs-attr">nxAutocompleteItems</span>]=<span class="hljs-string">&quot;searchFunction&quot;</span>
-          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;searchTerm2&quot;</span>
-          <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;search&quot;</span>
-        &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto2</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;search&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldSuffix</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;searchTerm2&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;searchTerm2=&#x27;&#x27;&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;close&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-page-search</span>&gt;</span>

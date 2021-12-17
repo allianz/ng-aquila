@@ -15,39 +15,39 @@ import { PhoneInputRetailExampleComponent } from './phone-input-retail/phone-inp
 import { PhoneInputDisabledExampleComponent } from './phone-input-disabled/phone-input-disabled-example';
 
 const EXAMPLES = [
-  PhoneInputRetailExampleComponent,
-  PhoneInputExpertExampleComponent,
-  PhoneInputDisabledExampleComponent,
-  PhoneInputI18nExampleComponent,
-  PhoneInputValidationExampleComponent,
-  PhoneInputFormattingExampleComponent,
-  PhoneInputFormsExampleComponent,
-  PhoneInputCountryCodeExampleComponent
+    PhoneInputRetailExampleComponent,
+    PhoneInputExpertExampleComponent,
+    PhoneInputDisabledExampleComponent,
+    PhoneInputI18nExampleComponent,
+    PhoneInputValidationExampleComponent,
+    PhoneInputFormattingExampleComponent,
+    PhoneInputFormsExampleComponent,
+    PhoneInputCountryCodeExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxPhoneInputModule,
-    ExamplesSharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NxHeadlineModule,
-    NxCheckboxModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxPhoneInputModule,
+        ExamplesSharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NxHeadlineModule,
+        NxCheckboxModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class PhoneInputExamplesModule {
-  static components() {
-    return {
-      'phone-input-retail': PhoneInputRetailExampleComponent,
-      'phone-input-expert': PhoneInputExpertExampleComponent,
-      'phone-input-disabled': PhoneInputDisabledExampleComponent,
-      'phone-input-i18n': PhoneInputI18nExampleComponent,
-      'phone-input-validation': PhoneInputValidationExampleComponent,
-      'phone-input-formatting': PhoneInputFormattingExampleComponent,
-      'phone-input-forms': PhoneInputFormsExampleComponent,
-      'phone-input-country-code': PhoneInputCountryCodeExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'phone-input-retail': PhoneInputRetailExampleComponent,
+            'phone-input-expert': PhoneInputExpertExampleComponent,
+            'phone-input-disabled': PhoneInputDisabledExampleComponent,
+            'phone-input-i18n': PhoneInputI18nExampleComponent,
+            'phone-input-validation': PhoneInputValidationExampleComponent,
+            'phone-input-formatting': PhoneInputFormattingExampleComponent,
+            'phone-input-forms': PhoneInputFormsExampleComponent,
+            'phone-input-country-code': PhoneInputCountryCodeExampleComponent,
+        };
+    }
 }

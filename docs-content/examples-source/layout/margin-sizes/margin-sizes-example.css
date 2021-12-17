@@ -1,9 +1,9 @@
 .margin-box {
-  background: var(--documentation-margin-example-background-color, #1c7997);
+    background: var(--documentation-margin-example-background-color, #1c7997);
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .margin-box {
-    background-color: windowText;
-  }
+    .margin-box {
+        background-color: windowText;
+    }
 }

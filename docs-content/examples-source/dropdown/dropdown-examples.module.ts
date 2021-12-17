@@ -18,52 +18,51 @@ import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-s
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
+import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
 
 const EXAMPLES = [
-  DropdownCustomLabelExampleComponent,
-  DropdownDisabledItemsExampleComponent,
-  DropdownFilterExampleComponent,
-  DropdownFilterCustomExampleComponent,
-  DropdownGroupExampleComponent,
-  DropdownMultiSelectExampleComponent,
-  DropdownNegativeExampleComponent,
-  DropdownOutlineExampleComponent,
-  DropdownPlaceholderExampleComponent,
-  DropdownReactiveExampleComponent,
-  DropdownRenderingItemsExampleComponent,
-  DropdownSimpleBindingExampleComponent,
-  DropdownStandardExampleComponent,
-  DropdownTemplateDrivenExampleComponent,
-  DropdownLazyExampleComponent
+    DropdownCustomLabelExampleComponent,
+    DropdownDisabledItemsExampleComponent,
+    DropdownFilterExampleComponent,
+    DropdownFilterCustomExampleComponent,
+    DropdownGroupExampleComponent,
+    DropdownMultiSelectExampleComponent,
+    DropdownNegativeExampleComponent,
+    DropdownOutlineExampleComponent,
+    DropdownPlaceholderExampleComponent,
+    DropdownReactiveExampleComponent,
+    DropdownRenderingItemsExampleComponent,
+    DropdownSimpleBindingExampleComponent,
+    DropdownStandardExampleComponent,
+    DropdownTemplateDrivenExampleComponent,
+    DropdownLazyExampleComponent,
+    MultiSelectExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxDropdownModule,
-    NxFormfieldModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxDropdownModule, NxFormfieldModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class DropdownExamplesModule {
-  static components() {
-    return {
-      'dropdown-custom-label': DropdownCustomLabelExampleComponent,
-      'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
-      'dropdown-filter': DropdownFilterExampleComponent,
-      'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
-      'dropdown-group': DropdownGroupExampleComponent,
-      'dropdown-multi-select': DropdownMultiSelectExampleComponent,
-      'dropdown-negative': DropdownNegativeExampleComponent,
-      'dropdown-outline': DropdownOutlineExampleComponent,
-      'dropdown-placeholder': DropdownPlaceholderExampleComponent,
-      'dropdown-reactive': DropdownReactiveExampleComponent,
-      'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
-      'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
-      'dropdown-standard': DropdownStandardExampleComponent,
-      'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
-      'dropdown-lazy': DropdownLazyExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'dropdown-custom-label': DropdownCustomLabelExampleComponent,
+            'dropdown-disabled-items': DropdownDisabledItemsExampleComponent,
+            'dropdown-filter': DropdownFilterExampleComponent,
+            'dropdown-filter-custom': DropdownFilterCustomExampleComponent,
+            'dropdown-group': DropdownGroupExampleComponent,
+            'dropdown-multi-select': DropdownMultiSelectExampleComponent,
+            'dropdown-negative': DropdownNegativeExampleComponent,
+            'dropdown-outline': DropdownOutlineExampleComponent,
+            'dropdown-placeholder': DropdownPlaceholderExampleComponent,
+            'dropdown-reactive': DropdownReactiveExampleComponent,
+            'dropdown-rendering-items': DropdownRenderingItemsExampleComponent,
+            'dropdown-simple-binding': DropdownSimpleBindingExampleComponent,
+            'dropdown-standard': DropdownStandardExampleComponent,
+            'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
+            'dropdown-lazy': DropdownLazyExampleComponent,
+            'multi-select': MultiSelectExampleComponent,
+        };
+    }
 }

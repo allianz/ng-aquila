@@ -17,44 +17,40 @@ import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-exam
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  SliderBasicExampleComponent,
-  SliderDecimalExampleComponent,
-  SliderDefaultExampleComponent,
-  SliderDisabledExampleComponent,
-  SliderInvertedExampleComponent,
-  SliderLabelExampleComponent,
-  SliderNegativeExampleComponent,
-  SliderReactiveExampleComponent,
-  SliderTemplateExampleComponent,
-  SliderTextualExampleComponent,
-  SliderThumbExampleComponent,
-  SliderLabelsExampleComponent
+    SliderBasicExampleComponent,
+    SliderDecimalExampleComponent,
+    SliderDefaultExampleComponent,
+    SliderDisabledExampleComponent,
+    SliderInvertedExampleComponent,
+    SliderLabelExampleComponent,
+    SliderNegativeExampleComponent,
+    SliderReactiveExampleComponent,
+    SliderTemplateExampleComponent,
+    SliderTextualExampleComponent,
+    SliderThumbExampleComponent,
+    SliderLabelsExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxSliderModule,
-    NxInputModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxSliderModule, NxInputModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class SliderExamplesModule {
-  static components() {
-    return {
-      'slider-basic': SliderBasicExampleComponent,
-      'slider-decimal': SliderDecimalExampleComponent,
-      'slider-default': SliderDefaultExampleComponent,
-      'slider-disabled': SliderDisabledExampleComponent,
-      'slider-inverted': SliderInvertedExampleComponent,
-      'slider-label': SliderLabelExampleComponent,
-      'slider-negative': SliderNegativeExampleComponent,
-      'slider-reactive': SliderReactiveExampleComponent,
-      'slider-template': SliderTemplateExampleComponent,
-      'slider-textual': SliderTextualExampleComponent,
-      'slider-thumb': SliderThumbExampleComponent,
-      'slider-labels': SliderLabelsExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'slider-basic': SliderBasicExampleComponent,
+            'slider-decimal': SliderDecimalExampleComponent,
+            'slider-default': SliderDefaultExampleComponent,
+            'slider-disabled': SliderDisabledExampleComponent,
+            'slider-inverted': SliderInvertedExampleComponent,
+            'slider-label': SliderLabelExampleComponent,
+            'slider-negative': SliderNegativeExampleComponent,
+            'slider-reactive': SliderReactiveExampleComponent,
+            'slider-template': SliderTemplateExampleComponent,
+            'slider-textual': SliderTextualExampleComponent,
+            'slider-thumb': SliderThumbExampleComponent,
+            'slider-labels': SliderLabelsExampleComponent,
+        };
+    }
 }

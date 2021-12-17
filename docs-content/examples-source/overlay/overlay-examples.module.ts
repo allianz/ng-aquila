@@ -6,23 +6,20 @@ import { OverlayPositioningExampleComponent } from './overlay-positioning/overla
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  OverlayLimitingFallbacksExampleComponent,
-  OverlayPositioningExampleComponent
+    OverlayLimitingFallbacksExampleComponent,
+    OverlayPositioningExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxOverlayModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxOverlayModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class OverlayExamplesModule {
-  static components() {
-    return {
-      'overlay-limiting-fallbacks': OverlayLimitingFallbacksExampleComponent,
-      'overlay-positioning': OverlayPositioningExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'overlay-limiting-fallbacks': OverlayLimitingFallbacksExampleComponent,
+            'overlay-positioning': OverlayPositioningExampleComponent,
+        };
+    }
 }

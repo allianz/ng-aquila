@@ -91,8 +91,7 @@
 <p class="docs-markdown--p">The following example shows two datefields with both strict and non-strict formatting. The <code>[parseFormat]</code> is set to MM-DD-YYYY. In your implementation you can also use a list of strings for <code>[parseFormat]</code>.</p>
 <div nx-docs-example="datefield-parsing" config="{}">exampleID: datefield-parsing</div>
 <h4 id="formatting" class="docs-markdown--h4">Formatting</h4>
-<p class="docs-markdown--p">The formatting of the date is not initiated through user input. Therefore, the field will only trigger the formatting step if you enter a new value through the model. The default for the moment adapter is <code>L</code> given through display.dateInput. You can override that value by injecting your own <code>NxDateFormats</code> object or locally per datepicker with the property <code>nxDisplayFormat</code>.
-Here is an example: Provide a valid input like 01/01/2018, then click somewhere outside of the input field. The recognized date will be written into the model, now forcing a formatting step on <code>blur</code>.</p>
+<p class="docs-markdown--p">The formatting of the date is not initiated through user input. Therefore, the field will only trigger the formatting step if you enter a new value through the model. The default for the moment adapter is <code>L</code> given through display.dateInput. You can override that value by injecting your own <code>NxDateFormats</code> object or locally per datepicker with the property <code>nxDisplayFormat</code>. Here is an example: Provide a valid input like 01/01/2018, then click somewhere outside of the input field. The recognized date will be written into the model, now forcing a formatting step on <code>blur</code>.</p>
 <p class="docs-markdown--p">You will see a change in format. If this format is not covered by your set of parsing functions, the value won't validate when the user tries to change it. That's why we have two parse formats in place: <code>['MM/DD/YYYY', 'MM--DD--&gt;YYYY']</code></p>
 <div nx-docs-example="datefield-formatting" config="{}">exampleID: datefield-formatting</div>
 <h3 id="start-view" class="docs-markdown--h3">Start View</h3>
@@ -106,11 +105,9 @@ Here is an example: Provide a valid input like 01/01/2018, then click somewhere 
 <p class="docs-markdown--p">The ability to localize the datepicker <strong>depends on the chosen date implementation</strong>. The native date adapter supports only en-US and you can't change the values. The Iso and moment adapters support a variety of locales.</p>
 <p class="docs-markdown--p">The Datepicker falls back on the Application token <code>LOCALE_ID</code> and can be overwritten through the <code>NX_DATE_LOCALE</code> if necessary:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
-  <span class="hljs-attr">providers</span>: [
-    {<span class="hljs-attr">provide</span>: NX_DATE_LOCALE, <span class="hljs-attr">useValue</span>: <span class="hljs-string">&#x27;en-GB&#x27;</span>}
-  ]
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NX_DATE_LOCALE, <span class="hljs-attr">useValue</span>: <span class="hljs-string">&#x27;en-GB&#x27;</span> }],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> </span>{ }
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyApp</span> </span>{}
 </code></pre>
 <p class="docs-markdown--p">If you want to <strong>change the locale during runtime</strong> you can use the <code>setLocale()</code> method of the used DateAdapter implementation. This is shown in the following example.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the locale setting does not change all labels and texts in the datepicker, only the date related parts are translated. You need to provide your own translation for texts like the header. You can find an example in the next chapter <a href="./documentation/datefield/overview#localizing-labels-and-messages">Localizing labels and messages</a>.</p>

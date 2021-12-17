@@ -14,40 +14,38 @@ import { GridOffsetExampleComponent } from './grid-offset/grid-offset-example';
 import { GridOneInputExampleComponent } from './grid-one-input/grid-one-input-example';
 
 const EXAMPLES = [
-  GridAlignContentExampleComponent,
-  GridAlignItemsExampleComponent,
-  GridAlignSelfExampleComponent,
-  GridColOrderExampleComponent,
-  GridJustifyExampleComponent,
-  GridMaxwidthExampleComponent,
-  GridMultiInputs1ExampleComponent,
-  GridMultiInputs2ExampleComponent,
-  GridNogutterExampleComponent,
-  GridOffsetExampleComponent,
-  GridOneInputExampleComponent
+    GridAlignContentExampleComponent,
+    GridAlignItemsExampleComponent,
+    GridAlignSelfExampleComponent,
+    GridColOrderExampleComponent,
+    GridJustifyExampleComponent,
+    GridMaxwidthExampleComponent,
+    GridMultiInputs1ExampleComponent,
+    GridMultiInputs2ExampleComponent,
+    GridNogutterExampleComponent,
+    GridOffsetExampleComponent,
+    GridOneInputExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxGridModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxGridModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class GridExamplesModule {
-  static components() {
-    return {
-      'grid-align-content': GridAlignContentExampleComponent,
-      'grid-align-items': GridAlignItemsExampleComponent,
-      'grid-align-self': GridAlignSelfExampleComponent,
-      'grid-col-order': GridColOrderExampleComponent,
-      'grid-justify': GridJustifyExampleComponent,
-      'grid-maxwidth': GridMaxwidthExampleComponent,
-      'grid-multi-inputs-1': GridMultiInputs1ExampleComponent,
-      'grid-multi-inputs-2': GridMultiInputs2ExampleComponent,
-      'grid-nogutter': GridNogutterExampleComponent,
-      'grid-offset': GridOffsetExampleComponent,
-      'grid-one-input': GridOneInputExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'grid-align-content': GridAlignContentExampleComponent,
+            'grid-align-items': GridAlignItemsExampleComponent,
+            'grid-align-self': GridAlignSelfExampleComponent,
+            'grid-col-order': GridColOrderExampleComponent,
+            'grid-justify': GridJustifyExampleComponent,
+            'grid-maxwidth': GridMaxwidthExampleComponent,
+            'grid-multi-inputs-1': GridMultiInputs1ExampleComponent,
+            'grid-multi-inputs-2': GridMultiInputs2ExampleComponent,
+            'grid-nogutter': GridNogutterExampleComponent,
+            'grid-offset': GridOffsetExampleComponent,
+            'grid-one-input': GridOneInputExampleComponent,
+        };
+    }
 }

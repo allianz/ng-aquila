@@ -1,22 +1,38 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="6">
-      <nx-formfield nxLabel="Start date">
-        <input nxDatefield nxInput [nxDatepicker]="startDatepicker" [(ngModel)]="startDate"
-              (dateChange)="updateEndDatepicker()"/>
-        <span nxFormfieldHint>MM/DD/YYYY</span>
-        <nx-datepicker-toggle [for]="startDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
-        <nx-datepicker #startDatepicker></nx-datepicker>
-      </nx-formfield>
-    </div>
+    <div nxRow>
+        <div nxCol="6">
+            <nx-formfield nxLabel="Start date">
+                <input
+                    nxDatefield
+                    nxInput
+                    [nxDatepicker]="startDatepicker"
+                    [(ngModel)]="startDate"
+                    (dateChange)="updateEndDatepicker()"
+                />
+                <span nxFormfieldHint>MM/DD/YYYY</span>
+                <nx-datepicker-toggle
+                    [for]="startDatepicker"
+                    nxFormfieldSuffix
+                ></nx-datepicker-toggle>
+                <nx-datepicker #startDatepicker></nx-datepicker>
+            </nx-formfield>
+        </div>
 
-    <div nxCol="6">
-      <nx-formfield nxLabel="End date">
-        <input nxDatefield nxInput [nxDatepicker]="endDatepicker" [(ngModel)]="endDate"/>
-        <span nxFormfieldHint>MM/DD/YYYY</span>
-        <nx-datepicker-toggle [for]="endDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
-        <nx-datepicker #endDatepicker></nx-datepicker>
-      </nx-formfield>
+        <div nxCol="6">
+            <nx-formfield nxLabel="End date">
+                <input
+                    nxDatefield
+                    nxInput
+                    [nxDatepicker]="endDatepicker"
+                    [(ngModel)]="endDate"
+                />
+                <span nxFormfieldHint>MM/DD/YYYY</span>
+                <nx-datepicker-toggle
+                    [for]="endDatepicker"
+                    nxFormfieldSuffix
+                ></nx-datepicker-toggle>
+                <nx-datepicker #endDatepicker></nx-datepicker>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
 </div>

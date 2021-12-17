@@ -1,36 +1,57 @@
 <div class="top">
-<nx-sidebar #sidebar resizeHandleAriaLabel="Toggle sidebar width" resizeable minWidth="140" (widthChange)="log($event)" class="my-sidebar">
-  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
-    <nx-tree-node *nxTreeNodeDef="let node">
-       <button nxAction
-            nxTreeNodePadding
-            nxTreeNodeActionItem
-            nxTreeNodePaddingOffset="40"
-            routerLink="./"
-            [queryParams]="node.query"
-            routerLinkActive="is-selected"
-            title="{{node.label}}"
-            type="button">
-         <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
-       <button nxAction
-           nxTreeNodeToggle
-           nxTreeNodeActionItem
-           nxTreeNodePadding
-           nxTreeNodePaddingOffset="40"
-           expandable
-           [expanded]="_treeControl.isExpanded(node)"
-           title="{{node.label}}"
-           type="button">
-         <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-  </nx-tree>
-</nx-sidebar>
-  <button nxButton (click)="sidebar.toggle()" type="button">toggle expansion</button>
+    <nx-sidebar
+        #sidebar
+        resizeHandleAriaLabel="Toggle sidebar width"
+        resizeable
+        minWidth="140"
+        (widthChange)="log($event)"
+        class="my-sidebar"
+    >
+        <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+            <nx-tree-node *nxTreeNodeDef="let node">
+                <button
+                    nxAction
+                    nxTreeNodePadding
+                    nxTreeNodeActionItem
+                    nxTreeNodePaddingOffset="40"
+                    routerLink="./"
+                    [queryParams]="node.query"
+                    routerLinkActive="is-selected"
+                    title="{{node.label}}"
+                    type="button"
+                >
+                    <nx-icon
+                        *ngIf="node.icon"
+                        nxActionIcon
+                        [name]="node.icon"
+                    ></nx-icon>
+                    {{node.label}}
+                </button>
+            </nx-tree-node>
+            <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+                <button
+                    nxAction
+                    nxTreeNodeToggle
+                    nxTreeNodeActionItem
+                    nxTreeNodePadding
+                    nxTreeNodePaddingOffset="40"
+                    expandable
+                    [expanded]="_treeControl.isExpanded(node)"
+                    title="{{node.label}}"
+                    type="button"
+                >
+                    <nx-icon
+                        *ngIf="node.icon"
+                        nxActionIcon
+                        [name]="node.icon"
+                    ></nx-icon>
+                    {{node.label}}
+                </button>
+            </nx-tree-node>
+        </nx-tree>
+    </nx-sidebar>
+    <button nxButton (click)="sidebar.toggle()" type="button"
+        >toggle expansion</button
+    >
 </div>
 <pre *ngIf="logMessage">{{logMessage}}</pre>

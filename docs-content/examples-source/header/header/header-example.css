@@ -1,12 +1,12 @@
 nx-header-brand img {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 figure {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .logo-text {
-  color: var(--text-01, #ffffff);
+    color: var(--text-01, #ffffff);
 }

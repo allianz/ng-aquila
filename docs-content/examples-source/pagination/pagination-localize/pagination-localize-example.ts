@@ -1,38 +1,39 @@
 import { Component } from '@angular/core';
-import { IPaginationTexts, NX_PAGINATION_TEXTS } from '@aposin/ng-aquila/pagination';
+import {
+    IPaginationTexts,
+    NX_PAGINATION_TEXTS,
+} from '@aposin/ng-aquila/pagination';
 
 const myPaginationTexts: IPaginationTexts = {
-  previous: 'myPreviousText',
-  next: 'myNextText',
-  ofLabel: 'myOf',
-  ariaLabel: 'myAriaLabelText'
+    previous: 'myPreviousText',
+    next: 'myNextText',
+    ofLabel: 'myOf',
+    ariaLabel: 'myAriaLabelText',
 };
 
 /**
-* @title Localization Example
-*/
+ * @title Localization Example
+ */
 @Component({
-  selector: 'pagination-localize-example',
-  templateUrl: './pagination-localize-example.html',
-  styleUrls: ['./pagination-localize-example.css'],
-  providers: [
-    { provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }
-  ]
+    selector: 'pagination-localize-example',
+    templateUrl: './pagination-localize-example.html',
+    styleUrls: ['./pagination-localize-example.css'],
+    providers: [{ provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }],
 })
 export class PaginationLocalizeExampleComponent {
-  page: number = 1;
-  count: number = 210;
-  perPage: number = 10;
+    page: number = 1;
+    count: number = 210;
+    perPage: number = 10;
 
-  prevPage() {
-    this.page--;
-  }
+    prevPage() {
+        this.page--;
+    }
 
-  nextPage() {
-    this.page++;
-  }
+    nextPage() {
+        this.page++;
+    }
 
-  goToPage(n: number) {
-    this.page = n;
-  }
+    goToPage(n: number) {
+        this.page = n;
+    }
 }

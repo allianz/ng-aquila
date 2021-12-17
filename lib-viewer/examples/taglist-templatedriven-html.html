@@ -1,15 +1,31 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-taglist</span> #<span class="hljs-attr">taglistNgModel</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;templateModel&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;taglistNgModel&quot;</span>&gt;</span>
-  Sorry, you don&#x27;t have any fruit.
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-taglist</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Please provide a tag&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">addTagInputNgModel</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
-      Note that the tag list will just ignore empty tag values.
-    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-taglist</span>
+        #<span class="hljs-attr">taglistNgModel</span>
+        [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;templateModel&quot;</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;taglistNgModel&quot;</span>
+    &gt;</span>
+        Sorry, you don&#x27;t have any fruit.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-taglist</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Please provide a tag&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">addTagInputNgModel</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+            Note that the tag list will just ignore empty tag values.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;taglistNgModel.addTag(addTagInputNgModel.value)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-s&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Add tag<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;taglistNgModel.clearTags()&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Clear tags<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;taglistNgModel.addTag(addTagInputNgModel.value)&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-s&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>Add tag&lt;/button
+&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;taglistNgModel.clearTags()&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>Clear tags&lt;/button
+&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 Current Value: {{templateModel}}

@@ -1,13 +1,21 @@
-<span class="hljs-keyword">import</span> { FormControl, AbstractControl, ValidatorFn, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    FormControl,
+    AbstractControl,
+    ValidatorFn,
+    Validators,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NumberType, parsePhoneNumber } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;libphonenumber-js/max&#x27;</span>;
-
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> PhoneNumberType = <span class="hljs-string">&#x27;landline&#x27;</span> | <span class="hljs-string">&#x27;mobile&#x27;</span>;
 
 <span class="hljs-keyword">const</span> MOBILE_TYPES: NumberType[] = [<span class="hljs-string">&#x27;MOBILE&#x27;</span>, <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>];
 
-<span class="hljs-keyword">const</span> LANDLINE_TYPES: NumberType[] = [<span class="hljs-string">&#x27;FIXED_LINE&#x27;</span>, <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>, <span class="hljs-string">&#x27;PERSONAL_NUMBER&#x27;</span>];
+<span class="hljs-keyword">const</span> LANDLINE_TYPES: NumberType[] = [
+    <span class="hljs-string">&#x27;FIXED_LINE&#x27;</span>,
+    <span class="hljs-string">&#x27;FIXED_LINE_OR_MOBILE&#x27;</span>,
+    <span class="hljs-string">&#x27;PERSONAL_NUMBER&#x27;</span>,
+];
 
 <span class="hljs-comment">/**
  * Validates phone numbers. International numbers are accepted if they contain a country code.
@@ -15,45 +23,52 @@
  * <span class="hljs-doctag">@param </span>type (optional) Type of number, can be `mobile` or `landline`
  */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">phoneNumberValidator</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>?: PhoneNumberType</span>): <span class="hljs-title">ValidatorFn</span> </span>{
-  <span class="hljs-keyword">return</span> (control: AbstractControl): { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
-    <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">false</span>;
-    <span class="hljs-comment">// if the number is packed in an object, the entered value is the `original`field</span>
-    <span class="hljs-keyword">const</span> value = <span class="hljs-keyword">typeof</span> control.value === <span class="hljs-string">&#x27;object&#x27;</span> ? control.value.original : control.value;
-    <span class="hljs-keyword">let</span> typeValid = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">return</span> (control: AbstractControl): { [key: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span> } | <span class="hljs-function"><span class="hljs-params">null</span> =&gt;</span> {
+        <span class="hljs-keyword">let</span> valid = <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// if the number is packed in an object, the entered value is the `original`field</span>
+        <span class="hljs-keyword">const</span> value =
+            <span class="hljs-keyword">typeof</span> control.value === <span class="hljs-string">&#x27;object&#x27;</span>
+                ? control.value.original
+                : control.value;
+        <span class="hljs-keyword">let</span> typeValid = <span class="hljs-literal">true</span>;
 
-    <span class="hljs-keyword">try</span> {
-      <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span>) {
-        <span class="hljs-keyword">const</span> parsed = parsePhoneNumber(value);
-        <span class="hljs-keyword">const</span> parsedType = parsed.getType();
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> (value != <span class="hljs-literal">null</span>) {
+                <span class="hljs-keyword">const</span> parsed = parsePhoneNumber(value);
+                <span class="hljs-keyword">const</span> parsedType = parsed.getType();
 
-        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;mobile&#x27;</span>) {
-          typeValid = MOBILE_TYPES.includes(parsedType);
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;landline&#x27;</span>) {
-          typeValid = LANDLINE_TYPES.includes(parsedType);
-        }
-        <span class="hljs-built_in">console</span>.log(parsed)
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;mobile&#x27;</span>) {
+                    typeValid = MOBILE_TYPES.includes(parsedType);
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">type</span> === <span class="hljs-string">&#x27;landline&#x27;</span>) {
+                    typeValid = LANDLINE_TYPES.includes(parsedType);
+                }
+                <span class="hljs-built_in">console</span>.log(parsed);
 
-        valid = parsed.isValid() &amp;&amp; typeValid;
-      }
-    } <span class="hljs-keyword">catch</span> (e) {}
+                valid = parsed.isValid() &amp;&amp; typeValid;
+            }
+        } <span class="hljs-keyword">catch</span> (e) {}
 
-    <span class="hljs-keyword">return</span> valid
-      ? <span class="hljs-literal">null</span>
-      : {
-          <span class="hljs-attr">phoneNumber</span>: { value, typeValid }
-        };
-  };
+        <span class="hljs-keyword">return</span> valid
+            ? <span class="hljs-literal">null</span>
+            : {
+                  <span class="hljs-attr">phoneNumber</span>: { value, typeValid },
+              };
+    };
 }
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Phone input validation */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-validation-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-validation-example.html&#x27;</span>],
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-validation-example&#x27;</span>
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-validation-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-validation-example.html&#x27;</span>],
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-validation-example&#x27;</span>,
 })
-
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputValidationExampleComponent</span> </span>{
-  phoneControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [Validators.required, phoneNumberValidator(<span class="hljs-string">&#x27;landline&#x27;</span>)]);
-  mobilePhoneControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [Validators.required, phoneNumberValidator(<span class="hljs-string">&#x27;mobile&#x27;</span>)]);
-
+    phoneControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [
+        Validators.required,
+        phoneNumberValidator(<span class="hljs-string">&#x27;landline&#x27;</span>),
+    ]);
+    mobilePhoneControl = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, [
+        Validators.required,
+        phoneNumberValidator(<span class="hljs-string">&#x27;mobile&#x27;</span>),
+    ]);
 }

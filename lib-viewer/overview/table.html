@@ -1,6 +1,5 @@
 <p class="docs-markdown--p">This component is implemented on top of the native HTML table <code>&lt;table&gt;&lt;/table&gt;</code> and adds the needed styling. In addition, there is an expandable table option for advanced use cases.</p>
-<p class="docs-markdown--p">We provide the following  directives: <code>nxTableCell</code>, <code>nxTableRow</code> and <code>nxHeaderCell</code> to apply our style respectively on the top of <code>td</code>, <code>tr</code> and <code>th</code>.
-This setup maintains the capabilities of the native table such as accessibility and native HTML markups within cells.</p>
+<p class="docs-markdown--p">We provide the following directives: <code>nxTableCell</code>, <code>nxTableRow</code> and <code>nxHeaderCell</code> to apply our style respectively on the top of <code>td</code>, <code>tr</code> and <code>th</code>. This setup maintains the capabilities of the native table such as accessibility and native HTML markups within cells.</p>
 <p class="docs-markdown--p">For better mobile side-to-side scrolling user experience the table should be placed in a horizontal scroll indicator <code>&lt;nx-swipebar&gt;</code> component.</p>
 <div nx-docs-example="table" config="{}">exampleID: table</div>
 <h3 id="condensed-mode" class="docs-markdown--h3">Condensed mode</h3>
@@ -21,18 +20,14 @@ This setup maintains the capabilities of the native table such as accessibility 
 <p class="docs-markdown--p">By using the <code>nx-pagination</code> and <code>nx-formfield</code> you can filter and paginate the table items as shown in the example below:</p>
 <div nx-docs-example="table-filter-sort-paginate" config="{}">exampleID: table-filter-sort-paginate</div>
 <h3 id="selecting-rows" class="docs-markdown--h3">Selecting rows</h3>
-<p class="docs-markdown--p">The following example shows how you can implement a selection functionality with the <code>SelectionModel</code> of Angular CDK. To show the selected values, you can toggle 'Debug selected value' under the table.
-To be able to interact and select a table row, the <code>selectable</code> option needs to be set on the <code>NxTableRow</code>.</p>
+<p class="docs-markdown--p">The following example shows how you can implement a selection functionality with the <code>SelectionModel</code> of Angular CDK. To show the selected values, you can toggle 'Debug selected value' under the table. To be able to interact and select a table row, the <code>selectable</code> option needs to be set on the <code>NxTableRow</code>.</p>
 <div nx-docs-example="table-single-select" config="{}">exampleID: table-single-select</div>
 <p class="docs-markdown--p">Multi selection can be implemented by switching on the multi select flag on the <code>SelectionModel</code>.</p>
 <div nx-docs-example="table-selecting" config="{}">exampleID: table-selecting</div>
 <div class="docs-expert-container">
 <h3 id="expert%3A-expandable-mode" class="docs-markdown--h3">Expert: Expandable mode</h3>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the expandable feature is only intended for internal applications and not for applications that are client facing.</p>
-<p class="docs-markdown--p">Table rows can be expanded by adding <code>[nxExpandableTableRow]</code> and <code>[nxExpandableTableCell]</code> to the table.
-For convenience the <code>&lt;nx-toggle-button&gt;</code> component can be used to expand and close the rows.
-The rows can also be toggled directly by calling their <code>toggle</code>, <code>expand</code> or <code>close</code> methods.
-The table also supports expanding all rows at the same time. The <code>[nxExpandableTable]</code> directive handles the expandion of all rows by conbining it with the <code>&lt;nx-toggle-button&gt;</code> as in this example.</p>
+<p class="docs-markdown--p">Table rows can be expanded by adding <code>[nxExpandableTableRow]</code> and <code>[nxExpandableTableCell]</code> to the table. For convenience the <code>&lt;nx-toggle-button&gt;</code> component can be used to expand and close the rows. The rows can also be toggled directly by calling their <code>toggle</code>, <code>expand</code> or <code>close</code> methods. The table also supports expanding all rows at the same time. The <code>[nxExpandableTable]</code> directive handles the expandion of all rows by conbining it with the <code>&lt;nx-toggle-button&gt;</code> as in this example.</p>
 <div nx-docs-example="table-expandable" config="{}">exampleID: table-expandable</div>
 <h3 id="expert%3A-form-elements" class="docs-markdown--h3">Expert: Form elements</h3>
 <p class="docs-markdown--p">Form elements can also be added to the table:</p>

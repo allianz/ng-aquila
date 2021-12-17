@@ -1,0 +1,95 @@
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-keyword">interface</span> MyOption {
+    <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
+    id: <span class="hljs-built_in">number</span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOptions</span>(<span class="hljs-params"></span>): <span class="hljs-title">MyOption</span>[] </span>{
+    <span class="hljs-keyword">return</span> [
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Banana&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Strawberry&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Lemon&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">5</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Grapefruit&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">6</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Mango&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">7</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Pineapple&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">8</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Kiwi&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">9</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Cherry&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">10</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Blueberry&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">11</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Avocado&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">12</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Watermelon&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">13</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Raspberry&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">14</span>,
+        },
+        {
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Papaya&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">15</span>,
+        },
+    ];
+}
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Basic multi select example
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;multi-select-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./multi-select-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./multi-select-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MultiSelectExampleComponent</span> </span>{
+    <span class="hljs-attr">model</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">3</span>];
+
+    modelWithFilter: <span class="hljs-built_in">number</span>[] = [];
+
+    options: MyOption[] = getOptions();
+
+    <span class="hljs-function"><span class="hljs-title">selectLabel</span>(<span class="hljs-params">option: MyOption</span>)</span> {
+        <span class="hljs-keyword">return</span> option.label;
+    }
+
+    <span class="hljs-function"><span class="hljs-title">selectValue</span>(<span class="hljs-params">option: MyOption</span>)</span> {
+        <span class="hljs-keyword">return</span> option.id;
+    }
+}

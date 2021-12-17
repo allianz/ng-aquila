@@ -1,7 +1,7 @@
 .tab__content {
-  padding-top: 16px;
+    padding-top: 16px;
 }
 
 :host ::ng-deep nx-tab-header {
-  justify-content: flex-start!important;
+    justify-content: flex-start !important;
 }

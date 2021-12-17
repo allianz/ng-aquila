@@ -1,23 +1,39 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="12,12,6,6">
-      <nx-formfield nxLabel="Label" appearance="outline" nxFloatLabel="always">
-        <input required nxInput [(ngModel)]="valueError" #exampleErrorNgModel="nxInput" />
-        <nx-error appearance="text" nxFormfieldError>
-          Please enter your name!
-        </nx-error>
-      </nx-formfield>
+    <div nxRow>
+        <div nxCol="12,12,6,6">
+            <nx-formfield
+                nxLabel="Label"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <input
+                    required
+                    nxInput
+                    [(ngModel)]="valueError"
+                    #exampleErrorNgModel="nxInput"
+                />
+                <nx-error appearance="text" nxFormfieldError>
+                    Please enter your name!
+                </nx-error>
+            </nx-formfield>
+        </div>
+        <div nxCol="12,12,6,6">
+            <nx-formfield
+                nxLabel="Label"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <input
+                    required
+                    nxInput
+                    [(ngModel)]="valueErrorWithHint"
+                    #exampleErrorWithHintNgModel="nxInput"
+                />
+                <span nxFormfieldHint> some additional information </span>
+                <nx-error appearance="text" nxFormfieldError>
+                    Please enter your name!
+                </nx-error>
+            </nx-formfield>
+        </div>
     </div>
-    <div nxCol="12,12,6,6">
-      <nx-formfield nxLabel="Label" appearance="outline" nxFloatLabel="always">
-        <input required nxInput [(ngModel)]="valueErrorWithHint" #exampleErrorWithHintNgModel="nxInput" />
-        <span nxFormfieldHint>
-          some additional information
-        </span>
-        <nx-error appearance="text" nxFormfieldError>
-          Please enter your name!
-        </nx-error>
-      </nx-formfield>
-    </div>
-  </div>
 </div>

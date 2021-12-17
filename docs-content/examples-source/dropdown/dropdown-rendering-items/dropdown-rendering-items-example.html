@@ -1,32 +1,35 @@
 <div nxLayout="grid">
     <div nxRow>
-      <div nxCol="12, 12, 4">
-        <nx-formfield nxLabel="Car brand">
-          <nx-dropdown [nxValueFormatter]="toText">
-            <nx-dropdown-item *ngFor="let brand of demoData" [nxValue]="brand"></nx-dropdown-item>
-          </nx-dropdown>
-        </nx-formfield>
-      </div>
-      <div nxCol="12, 12, 4">
-        <nx-formfield nxLabel="Car brand">
-          <nx-dropdown>
-            <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
-            <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
-            <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
-            <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
-          </nx-dropdown>
-        </nx-formfield>
-      </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="Car brand">
+                <nx-dropdown [nxValueFormatter]="toText">
+                    <nx-dropdown-item
+                        *ngFor="let brand of demoData"
+                        [nxValue]="brand"
+                    ></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="Car brand">
+                <nx-dropdown>
+                    <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Mini">M</nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
 
-      <div nxCol="12, 12, 4">
-        <nx-formfield nxLabel="Car brand">
-          <nx-dropdown>
-            <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-            <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-            <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-            <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
-          </nx-dropdown>
-        </nx-formfield>
-      </div>
+        <div nxCol="12, 12, 4">
+            <nx-formfield nxLabel="Car brand">
+                <nx-dropdown>
+                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
+</div>

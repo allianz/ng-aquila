@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Custom formfield label example
-*/
+ * @title Custom formfield label example
+ */
 @Component({
-  selector: 'formfield-custom-label-example',
-  templateUrl: './formfield-custom-label-example.html',
-  styleUrls: ['./formfield-custom-label-example.css']
+    selector: 'formfield-custom-label-example',
+    templateUrl: './formfield-custom-label-example.html',
+    styleUrls: ['./formfield-custom-label-example.css'],
 })
 export class FormfieldCustomLabelExampleComponent {
+    isOptional = '(optional)';
 
-  isOptional = '(optional)';
-
-  addOptionalSuffix() {
-    this.isOptional = this.isOptional === '' ? '(optional)' : '';
-  }
+    addOptionalSuffix() {
+        this.isOptional = this.isOptional === '' ? '(optional)' : '';
+    }
 }

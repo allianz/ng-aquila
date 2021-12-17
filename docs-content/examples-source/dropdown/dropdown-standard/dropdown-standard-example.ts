@@ -4,27 +4,27 @@ import { Component } from '@angular/core';
  * @title Standard dropdown example
  */
 @Component({
-  selector: 'dropdown-standard-example',
-  templateUrl: './dropdown-standard-example.html'
+    selector: 'dropdown-standard-example',
+    templateUrl: './dropdown-standard-example.html',
 })
 export class DropdownStandardExampleComponent {
-  options = [
-    'BMW',
-    'Audi',
-    'VW',
-    'Mercedes',
-    'Porsche',
-    'Tesla',
-    'Lada',
-    'Opel',
-    'Fiat',
-    'Ford',
-    'Kia',
-    'Toyota',
-    'Ferrari'
-  ];
+    options = [
+        'BMW',
+        'Audi',
+        'VW',
+        'Mercedes',
+        'Porsche',
+        'Tesla',
+        'Lada',
+        'Opel',
+        'Fiat',
+        'Ford',
+        'Kia',
+        'Toyota',
+        'Ferrari',
+    ];
 
-  toText(value: string): string | null {
-    return value ? value.toUpperCase() : null;
-  }
+    toText(value: string): string | null {
+        return value ? value.toUpperCase() : null;
+    }
 }

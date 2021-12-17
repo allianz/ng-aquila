@@ -1,7 +1,10 @@
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { CommonModule } from '@angular/common';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxDatefieldModule, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
+import {
+    NxDatefieldModule,
+    NxNativeDateModule,
+} from '@aposin/ng-aquila/datefield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
@@ -32,64 +35,64 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  FormfieldAppearanceExampleComponent,
-  FormfieldBasicExampleComponent,
-  FormfieldCharacterCountExampleComponent,
-  FormfieldCustomExampleComponent,
-  FormfieldCustomLabelExampleComponent,
-  FormfieldCustomTelInputExampleComponent,
-  FormfieldErrorExampleComponent,
-  FormfieldExpertErrorExampleComponent,
-  FormfieldFloatingExampleComponent,
-  FormfieldGlobalExampleComponent,
-  FormfieldHintExampleComponent,
-  FormfieldMultipleErrorsExampleComponent,
-  FormfieldNegativeExampleComponent,
-  FormfieldNoteExampleComponent,
-  FormfieldNoteAndErrorExampleComponent,
-  FormfieldPasswordVisibilityExampleComponent,
-  FormfieldPlaceholderExampleComponent,
-  FormfieldPrefixSuffixAppendixExampleComponent,
-  FormfieldSimpleFormExampleComponent
+    FormfieldAppearanceExampleComponent,
+    FormfieldBasicExampleComponent,
+    FormfieldCharacterCountExampleComponent,
+    FormfieldCustomExampleComponent,
+    FormfieldCustomLabelExampleComponent,
+    FormfieldCustomTelInputExampleComponent,
+    FormfieldErrorExampleComponent,
+    FormfieldExpertErrorExampleComponent,
+    FormfieldFloatingExampleComponent,
+    FormfieldGlobalExampleComponent,
+    FormfieldHintExampleComponent,
+    FormfieldMultipleErrorsExampleComponent,
+    FormfieldNegativeExampleComponent,
+    FormfieldNoteExampleComponent,
+    FormfieldNoteAndErrorExampleComponent,
+    FormfieldPasswordVisibilityExampleComponent,
+    FormfieldPlaceholderExampleComponent,
+    FormfieldPrefixSuffixAppendixExampleComponent,
+    FormfieldSimpleFormExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxFormfieldModule,
-    NxPopoverModule,
-    NxDropdownModule,
-    NxIconModule,
-    NxDatefieldModule,
-    NxInputModule,
-    NxNativeDateModule,
-    NxMessageModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxFormfieldModule,
+        NxPopoverModule,
+        NxDropdownModule,
+        NxIconModule,
+        NxDatefieldModule,
+        NxInputModule,
+        NxNativeDateModule,
+        NxMessageModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class FormfieldExamplesModule {
-  static components() {
-    return {
-      'formfield-appearance': FormfieldAppearanceExampleComponent,
-      'formfield-basic': FormfieldBasicExampleComponent,
-      'formfield-character-count': FormfieldCharacterCountExampleComponent,
-      'formfield-custom': FormfieldCustomExampleComponent,
-      'formfield-custom-label': FormfieldCustomLabelExampleComponent,
-      'formfield-custom-tel-input': FormfieldCustomTelInputExampleComponent,
-      'formfield-error': FormfieldErrorExampleComponent,
-      'formfield-expert-error': FormfieldExpertErrorExampleComponent,
-      'formfield-floating': FormfieldFloatingExampleComponent,
-      'formfield-global': FormfieldGlobalExampleComponent,
-      'formfield-hint': FormfieldHintExampleComponent,
-      'formfield-multiple-errors': FormfieldMultipleErrorsExampleComponent,
-      'formfield-negative': FormfieldNegativeExampleComponent,
-      'formfield-note': FormfieldNoteExampleComponent,
-      'formfield-note-and-error': FormfieldNoteAndErrorExampleComponent,
-      'formfield-password-visibility': FormfieldPasswordVisibilityExampleComponent,
-      'formfield-placeholder': FormfieldPlaceholderExampleComponent,
-      'formfield-prefix-suffix-appendix': FormfieldPrefixSuffixAppendixExampleComponent,
-      'formfield-simple-form': FormfieldSimpleFormExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'formfield-appearance': FormfieldAppearanceExampleComponent,
+            'formfield-basic': FormfieldBasicExampleComponent,
+            'formfield-character-count': FormfieldCharacterCountExampleComponent,
+            'formfield-custom': FormfieldCustomExampleComponent,
+            'formfield-custom-label': FormfieldCustomLabelExampleComponent,
+            'formfield-custom-tel-input': FormfieldCustomTelInputExampleComponent,
+            'formfield-error': FormfieldErrorExampleComponent,
+            'formfield-expert-error': FormfieldExpertErrorExampleComponent,
+            'formfield-floating': FormfieldFloatingExampleComponent,
+            'formfield-global': FormfieldGlobalExampleComponent,
+            'formfield-hint': FormfieldHintExampleComponent,
+            'formfield-multiple-errors': FormfieldMultipleErrorsExampleComponent,
+            'formfield-negative': FormfieldNegativeExampleComponent,
+            'formfield-note': FormfieldNoteExampleComponent,
+            'formfield-note-and-error': FormfieldNoteAndErrorExampleComponent,
+            'formfield-password-visibility': FormfieldPasswordVisibilityExampleComponent,
+            'formfield-placeholder': FormfieldPlaceholderExampleComponent,
+            'formfield-prefix-suffix-appendix': FormfieldPrefixSuffixAppendixExampleComponent,
+            'formfield-simple-form': FormfieldSimpleFormExampleComponent,
+        };
+    }
 }

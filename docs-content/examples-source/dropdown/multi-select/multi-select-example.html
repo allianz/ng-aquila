@@ -1,0 +1,30 @@
+<h3>With filter</h3>
+<nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
+    <nx-multi-select
+        filter
+        [(ngModel)]="modelWithFilter"
+        [options]="options"
+        selectValue="id"
+        selectLabel="label"
+    ></nx-multi-select>
+</nx-formfield>
+
+<div>
+    Selected options:
+    <pre>[{{ modelWithFilter.join(', ') }}]</pre>
+</div>
+
+<h3>Without filter</h3>
+<nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
+    <nx-multi-select
+        [(ngModel)]="model"
+        [options]="options"
+        [selectLabel]="selectLabel"
+        [selectValue]="selectValue"
+    ></nx-multi-select>
+</nx-formfield>
+
+<div>
+    Selected options:
+    <pre>[{{ model.join(', ') }}]</pre>
+</div>

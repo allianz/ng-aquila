@@ -1,38 +1,39 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { IPaginationTexts, NX_PAGINATION_TEXTS } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/pagination&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    IPaginationTexts,
+    NX_PAGINATION_TEXTS,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/pagination&#x27;</span>;
 
 <span class="hljs-keyword">const</span> myPaginationTexts: IPaginationTexts = {
-  <span class="hljs-attr">previous</span>: <span class="hljs-string">&#x27;myPreviousText&#x27;</span>,
-  <span class="hljs-attr">next</span>: <span class="hljs-string">&#x27;myNextText&#x27;</span>,
-  <span class="hljs-attr">ofLabel</span>: <span class="hljs-string">&#x27;myOf&#x27;</span>,
-  <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;myAriaLabelText&#x27;</span>
+    <span class="hljs-attr">previous</span>: <span class="hljs-string">&#x27;myPreviousText&#x27;</span>,
+    <span class="hljs-attr">next</span>: <span class="hljs-string">&#x27;myNextText&#x27;</span>,
+    <span class="hljs-attr">ofLabel</span>: <span class="hljs-string">&#x27;myOf&#x27;</span>,
+    <span class="hljs-attr">ariaLabel</span>: <span class="hljs-string">&#x27;myAriaLabelText&#x27;</span>,
 };
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Localization Example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Localization Example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;pagination-localize-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-localize-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./pagination-localize-example.css&#x27;</span>],
-  <span class="hljs-attr">providers</span>: [
-    { <span class="hljs-attr">provide</span>: NX_PAGINATION_TEXTS, <span class="hljs-attr">useValue</span>: myPaginationTexts }
-  ]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;pagination-localize-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./pagination-localize-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./pagination-localize-example.css&#x27;</span>],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NX_PAGINATION_TEXTS, <span class="hljs-attr">useValue</span>: myPaginationTexts }],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PaginationLocalizeExampleComponent</span> </span>{
-  <span class="hljs-attr">page</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
-  count: <span class="hljs-built_in">number</span> = <span class="hljs-number">210</span>;
-  perPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
+    <span class="hljs-attr">page</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">1</span>;
+    count: <span class="hljs-built_in">number</span> = <span class="hljs-number">210</span>;
+    perPage: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>;
 
-  <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.page--;
-  }
+    <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.page--;
+    }
 
-  <span class="hljs-function"><span class="hljs-title">nextPage</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.page++;
-  }
+    <span class="hljs-function"><span class="hljs-title">nextPage</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.page++;
+    }
 
-  <span class="hljs-function"><span class="hljs-title">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.page = n;
-  }
+    <span class="hljs-function"><span class="hljs-title">goToPage</span>(<span class="hljs-params">n: <span class="hljs-built_in">number</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.page = n;
+    }
 }

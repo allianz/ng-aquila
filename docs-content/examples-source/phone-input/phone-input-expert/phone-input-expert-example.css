@@ -1,8 +1,8 @@
 .controls {
-  display: flex;
-  margin-bottom: 16px;
+    display: flex;
+    margin-bottom: 16px;
 }
 
 .controls nx-checkbox:first-child {
-  margin-right: 16px;
+    margin-right: 16px;
 }

@@ -1,13 +1,20 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-group</span> (<span class="hljs-attr">selectedIndexChange</span>)=<span class="hljs-string">&quot;setSelectedTab($event)&quot;</span> <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;expert&quot;</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let tab of tabs&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxTabLabel</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-header-content&quot;</span>&gt;</span>
-        {{ tab.label }}
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;tab.notification&quot;</span> <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;over-text&quot;</span> [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;getAriaLabel(tab.notificationCount!)&quot;</span>&gt;</span>{{ getIndicatorText(tab.notificationCount!) }}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-indicator</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>Content of {{ tab.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab</span>&gt;</span>
-
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-tab-group</span>
+    (<span class="hljs-attr">selectedIndexChange</span>)=<span class="hljs-string">&quot;setSelectedTab($event)&quot;</span>
+    <span class="hljs-attr">appearance</span>=<span class="hljs-string">&quot;expert&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-tab</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let tab of tabs&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> <span class="hljs-attr">nxTabLabel</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tab-header-content&quot;</span>&gt;</span>
+                {{ tab.label }}
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-indicator</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;tab.notification&quot;</span>
+                    <span class="hljs-attr">position</span>=<span class="hljs-string">&quot;over-text&quot;</span>
+                    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;getAriaLabel(tab.notificationCount!)&quot;</span>
+                    &gt;</span>{{ getIndicatorText(tab.notificationCount!)
+                    }}&lt;/nx-indicator
+                &gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s&quot;</span>&gt;</span>Content of {{ tab.label }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-tab-group</span>&gt;</span>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Header with functional icons example
-*/
+ * @title Header with functional icons example
+ */
 @Component({
-  selector: 'header-icons-example',
-  templateUrl: './header-icons-example.html',
-  styleUrls: ['./header-icons-example.css']
+    selector: 'header-icons-example',
+    templateUrl: './header-icons-example.html',
+    styleUrls: ['./header-icons-example.css'],
 })
-export class HeaderIconsExampleComponent { }
+export class HeaderIconsExampleComponent {}

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title One input example
-*/
+ * @title One input example
+ */
 @Component({
-  selector: 'grid-one-input-example',
-  templateUrl: './grid-one-input-example.html',
-  styleUrls: ['./grid-one-input-example.css']
+    selector: 'grid-one-input-example',
+    templateUrl: './grid-one-input-example.html',
+    styleUrls: ['./grid-one-input-example.css'],
 })
-export class GridOneInputExampleComponent {
-}
+export class GridOneInputExampleComponent {}

@@ -12,32 +12,32 @@ import { SidepanelDarkExampleComponent } from './sidepanel-dark/sidepanel-dark-e
 import { FormsModule } from '@angular/forms';
 
 const EXAMPLES = [
-  SidepanelFloatingExampleComponent,
-  SidepanelStaticExampleComponent,
-  SidepanelLightExampleComponent,
-  SidepanelWithTabsExampleComponent,
-  SidepanelDarkExampleComponent
+    SidepanelFloatingExampleComponent,
+    SidepanelStaticExampleComponent,
+    SidepanelLightExampleComponent,
+    SidepanelWithTabsExampleComponent,
+    SidepanelDarkExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxSidepanelModule,
-    NxRadioToggleModule,
-    FormsModule,
-    NxIconModule,
-    NxTabsModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxSidepanelModule,
+        NxRadioToggleModule,
+        FormsModule,
+        NxIconModule,
+        NxTabsModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class SidepanelExamplesModule {
-  static components() {
-    return {
-      'sidepanel-floating': SidepanelFloatingExampleComponent,
-      'sidepanel-static': SidepanelStaticExampleComponent,
-      'sidepanel-light': SidepanelLightExampleComponent,
-      'sidepanel-with-tabs': SidepanelWithTabsExampleComponent,
-      'sidepanel-dark': SidepanelDarkExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'sidepanel-floating': SidepanelFloatingExampleComponent,
+            'sidepanel-static': SidepanelStaticExampleComponent,
+            'sidepanel-light': SidepanelLightExampleComponent,
+            'sidepanel-with-tabs': SidepanelWithTabsExampleComponent,
+            'sidepanel-dark': SidepanelDarkExampleComponent,
+        };
+    }
 }

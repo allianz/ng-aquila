@@ -1,28 +1,56 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs nx-margin-bottom-m&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate()&quot;</span>&gt;</span>open dialog<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-xs nx-margin-bottom-m&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;openFromTemplate()&quot;</span>
+    &gt;</span>open dialog&lt;/button
+&gt;
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 The user clicked on: {{actionResult}}
 
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">template</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalContent</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-3m&quot;</span>&gt;</span>Modal with Disclaimer<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalContent</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-medium&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-3m&quot;</span>
+            &gt;</span>Modal with Disclaimer&lt;/h3
+        &gt;
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-font-weight-bold&quot;</span>&gt;</span>Conditions and Disclaimer<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
-    Some copy text that describes what this overlay is all about. This text provides the user with additional
-    information and lorem ipsum dolor is max. three lines long.
-  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-font-weight-bold&quot;</span>&gt;</span>In case of an accident<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
-    Some copy text that describes what this overlay is all about. Tdiam nonumy eirmod tempor invidunt ut labore et
-    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem
-    ipsum dolor sit amet, consetetur sadipscing et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet,
-    consetetur sadipscing Some copy text that describes what this overlay is all about. Tdiam nonumy eirmod tempor invidunt ut labore et
-    dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem
-    ipsum dolor sit amet, consetetur sadipscing et justo duo dolores et ea rebum.
-  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalActions</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;Disagree&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0 nx-margin-right-xs&quot;</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Disagree<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;Agree&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0&quot;</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Agree<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-font-weight-bold&quot;</span>
+            &gt;</span>Conditions and Disclaimer&lt;/p
+        &gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+            Some copy text that describes what this overlay is all about. This
+            text provides the user with additional information and lorem ipsum
+            dolor is max. three lines long.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s nx-font-weight-bold&quot;</span>
+            &gt;</span>In case of an accident&lt;/p
+        &gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-m&quot;</span>&gt;</span>
+            Some copy text that describes what this overlay is all about. Tdiam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing et
+            justo duo dolores et ea rebum. Lorem ipsum dolor sit amet,
+            consetetur sadipscing Some copy text that describes what this
+            overlay is all about. Tdiam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit
+            amet, consetetur sadipscing et justo duo dolores et ea rebum.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxModalActions</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;Disagree&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0 nx-margin-right-xs&quot;</span>
+            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small secondary&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>Disagree&lt;/button
+        &gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">nxModalClose</span>=<span class="hljs-string">&quot;Agree&quot;</span>
+            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-0&quot;</span>
+            <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+            &gt;</span>Agree&lt;/button
+        &gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

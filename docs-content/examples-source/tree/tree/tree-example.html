@@ -1,32 +1,44 @@
 <div class="container">
-  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
-    <nx-tree-node *nxTreeNodeDef="let node">
-       <button nxAction
-           nxTreeNodeActionItem
-           nxTreeNodePadding
-           nxTreeNodePaddingOffset="40"
-           routerLinkActive="is-selected"
-           routerLink="./"
-           [queryParams]="node.query"
-           title="{{node.label}}"
-           type="button">
-         <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
-       <button nxAction
-           nxTreeNodeActionItem
-           nxTreeNodeToggle
-           nxTreeNodePadding
-           nxTreeNodePaddingOffset="40"
-           expandable
-           [expanded]="_treeControl.isExpanded(node)"
-           title="{{node.label}}"
-           type="button">
-         <nx-icon *ngIf="node.icon" nxActionIcon [name]="node.icon"></nx-icon>
-         {{node.label}}
-       </button>
-    </nx-tree-node>
-  </nx-tree>
+    <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+        <nx-tree-node *nxTreeNodeDef="let node">
+            <button
+                nxAction
+                nxTreeNodeActionItem
+                nxTreeNodePadding
+                nxTreeNodePaddingOffset="40"
+                routerLinkActive="is-selected"
+                routerLink="./"
+                [queryParams]="node.query"
+                title="{{node.label}}"
+                type="button"
+            >
+                <nx-icon
+                    *ngIf="node.icon"
+                    nxActionIcon
+                    [name]="node.icon"
+                ></nx-icon>
+                {{node.label}}
+            </button>
+        </nx-tree-node>
+        <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+            <button
+                nxAction
+                nxTreeNodeActionItem
+                nxTreeNodeToggle
+                nxTreeNodePadding
+                nxTreeNodePaddingOffset="40"
+                expandable
+                [expanded]="_treeControl.isExpanded(node)"
+                title="{{node.label}}"
+                type="button"
+            >
+                <nx-icon
+                    *ngIf="node.icon"
+                    nxActionIcon
+                    [name]="node.icon"
+                ></nx-icon>
+                {{node.label}}
+            </button>
+        </nx-tree-node>
+    </nx-tree>
 </div>

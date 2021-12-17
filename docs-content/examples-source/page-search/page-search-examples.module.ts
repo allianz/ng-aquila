@@ -12,32 +12,32 @@ import { PageSearchInputExampleComponent } from './page-search-input/page-search
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  PageSearchAutocompleteExampleComponent,
-  PageSearchClickExampleComponent,
-  PageSearchHiddenExampleComponent,
-  PageSearchInputExampleComponent
+    PageSearchAutocompleteExampleComponent,
+    PageSearchClickExampleComponent,
+    PageSearchHiddenExampleComponent,
+    PageSearchInputExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxPageSearchModule,
-    NxInputModule,
-    NxAutocompleteModule,
-    NxIconModule,
-    ExamplesSharedModule,
-    HttpClientJsonpModule,
-    HttpClientModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxPageSearchModule,
+        NxInputModule,
+        NxAutocompleteModule,
+        NxIconModule,
+        ExamplesSharedModule,
+        HttpClientJsonpModule,
+        HttpClientModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class PageExamplesModule {
-  static components() {
-    return {
-      'page-search-autocomplete': PageSearchAutocompleteExampleComponent,
-      'page-search-click': PageSearchClickExampleComponent,
-      'page-search-hidden': PageSearchHiddenExampleComponent,
-      'page-search-input': PageSearchInputExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'page-search-autocomplete': PageSearchAutocompleteExampleComponent,
+            'page-search-click': PageSearchClickExampleComponent,
+            'page-search-hidden': PageSearchHiddenExampleComponent,
+            'page-search-input': PageSearchInputExampleComponent,
+        };
+    }
 }

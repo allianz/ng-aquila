@@ -11,21 +11,22 @@ import { AquilaModule } from './app/aquila-module';
 import { AquilaDocsExample } from './app/aquila-docs-example';
 
 @NgModule({
-  bootstrap: [AquilaDocsExample],
-  declarations: [AquilaDocsExample],
-  entryComponents: [AquilaDocsExample],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientJsonpModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([]),
-    AquilaModule,
-  ],
+    bootstrap: [AquilaDocsExample],
+    declarations: [AquilaDocsExample],
+    entryComponents: [AquilaDocsExample],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientJsonpModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([]),
+        AquilaModule,
+    ],
 })
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));

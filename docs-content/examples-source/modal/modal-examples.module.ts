@@ -16,39 +16,39 @@ import { ModalOpeningExampleComponent } from './modal-opening/modal-opening-exam
 import { ModalWithDirectionExampleComponent } from './modal-with-direction/modal-with-direction-example';
 
 const EXAMPLES = [
-  ModalBasicExampleComponent,
-  ModalClosingExampleComponent,
-  ModalClosingBehaviourExampleComponent,
-  ModalContentActionsExampleComponent,
-  ModalDataInjectionExampleComponent,
-  ModalFixedWidthExampleComponent,
-  ModalOpeningExampleComponent,
-  ModalWithDirectionExampleComponent,
+    ModalBasicExampleComponent,
+    ModalClosingExampleComponent,
+    ModalClosingBehaviourExampleComponent,
+    ModalContentActionsExampleComponent,
+    ModalDataInjectionExampleComponent,
+    ModalFixedWidthExampleComponent,
+    ModalOpeningExampleComponent,
+    ModalWithDirectionExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxModalModule.forRoot(),
-    NxDropdownModule,
-    NxInputModule,
-    NxButtonModule,
-    NxCopytextModule,
-    NxHeadlineModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxModalModule.forRoot(),
+        NxDropdownModule,
+        NxInputModule,
+        NxButtonModule,
+        NxCopytextModule,
+        NxHeadlineModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ModalExamplesModule {
-  static components() {
-    return {
-      'modal-basic': ModalBasicExampleComponent,
-      'modal-closing': ModalClosingExampleComponent,
-      'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,
-      'modal-content-actions': ModalContentActionsExampleComponent,
-      'modal-data-injection': ModalDataInjectionExampleComponent,
-      'modal-fixed-width': ModalFixedWidthExampleComponent,
-      'modal-opening': ModalOpeningExampleComponent,
-      'modal-with-direction': ModalWithDirectionExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'modal-basic': ModalBasicExampleComponent,
+            'modal-closing': ModalClosingExampleComponent,
+            'modal-closing-behaviour': ModalClosingBehaviourExampleComponent,
+            'modal-content-actions': ModalContentActionsExampleComponent,
+            'modal-data-injection': ModalDataInjectionExampleComponent,
+            'modal-fixed-width': ModalFixedWidthExampleComponent,
+            'modal-opening': ModalOpeningExampleComponent,
+            'modal-with-direction': ModalWithDirectionExampleComponent,
+        };
+    }
 }

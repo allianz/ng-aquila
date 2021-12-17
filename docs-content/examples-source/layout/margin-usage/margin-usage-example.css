@@ -1,22 +1,23 @@
 .wrapper {
-  background: var(--documentation-margin-example-background-color, #1c7997);
-  display: table;
-  align-items: center;
-  height: 100%;
-  min-height: 100%;
+    background: var(--documentation-margin-example-background-color, #1c7997);
+    display: table;
+    align-items: center;
+    height: 100%;
+    min-height: 100%;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .wrapper {
-    background-color: windowText;
-  }
+    .wrapper {
+        background-color: windowText;
+    }
 }
 
 .margin-box {
-  border: 1px solid var(--documentation-margin-example-background-color, #1c7997);
-  background-color: var(--ui-01, #0f2a3d);
-  display: block;
-  line-height: 20px;
-  padding: 8px;
-  width: 400px;
+    border: 1px solid
+        var(--documentation-margin-example-background-color, #1c7997);
+    background-color: var(--ui-01, #0f2a3d);
+    display: block;
+    line-height: 20px;
+    padding: 8px;
+    width: 400px;
 }

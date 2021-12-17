@@ -1,40 +1,57 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Standard dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of demoData&quot;</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Standard dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of options&quot;</span>
+                        [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;brand&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Multi select dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-multi-select</span>
+                    <span class="hljs-attr">filter</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;brands&quot;</span>
+                    [<span class="hljs-attr">options</span>]=<span class="hljs-string">&quot;options&quot;</span>
+                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-multi-select</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12, 12, 6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Multi select dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">nxIsMultiselect</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of demoData&quot;</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Filter dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span>
+                    [<span class="hljs-attr">nxShowFilter</span>]=<span class="hljs-string">&quot;true&quot;</span>
+                    <span class="hljs-attr">nxFilterPlaceholder</span>=<span class="hljs-string">&quot;Type to search car&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of options&quot;</span>
+                        [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;brand&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Group dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Animals&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">nxValue</span>)]=<span class="hljs-string">&quot;model&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-group</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let group of groups&quot;</span>
+                        [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;group.label&quot;</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span>
+                            *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of group.items&quot;</span>
+                            [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;item&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-group</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Filter dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Car brand&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [<span class="hljs-attr">nxShowFilter</span>]=<span class="hljs-string">&quot;true&quot;</span> <span class="hljs-attr">nxFilterPlaceholder</span>=<span class="hljs-string">&quot;Type to search car&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let brand of demoData&quot;</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;brand&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Group dropdown<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Animals&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown</span> [(<span class="hljs-attr">nxValue</span>)]=<span class="hljs-string">&quot;testBind&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-group</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let group of demoGroupData&quot;</span> [<span class="hljs-attr">nxLabel</span>]=<span class="hljs-string">&quot;group.label&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-dropdown-item</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of group.items&quot;</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-item</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown-group</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-dropdown</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,22 +1,30 @@
 <nx-sidebar class="my-sidebar" resizeable #sidebar>
-  <button nxAction
-      *ngFor="let action of actions"
-      routerLink="./"
-      [queryParams]="action.query"
-      routerLinkActive="is-selected"
-      type="button">
-    <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
-    {{action.label}}
-  </button>
-
-  <nx-sidebar-footer>
-    <button nxIconButton="tertiary small-medium" 
-        aria-label="Open settings"
-        nxTooltip="Open settings"
-        class="nx-margin-0"
-        type="button">
-      <nx-icon name="setting"></nx-icon>
+    <button
+        nxAction
+        *ngFor="let action of actions"
+        routerLink="./"
+        [queryParams]="action.query"
+        routerLinkActive="is-selected"
+        type="button"
+    >
+        <nx-icon nxActionIcon [name]="action.icon"></nx-icon>
+        {{action.label}}
     </button>
-    <button nxSidebarToggle aria-label="Toggle sidebar" type="button"></button>
-  </nx-sidebar-footer>
+
+    <nx-sidebar-footer>
+        <button
+            nxIconButton="tertiary small-medium"
+            aria-label="Open settings"
+            nxTooltip="Open settings"
+            class="nx-margin-0"
+            type="button"
+        >
+            <nx-icon name="setting"></nx-icon>
+        </button>
+        <button
+            nxSidebarToggle
+            aria-label="Toggle sidebar"
+            type="button"
+        ></button>
+    </nx-sidebar-footer>
 </nx-sidebar>

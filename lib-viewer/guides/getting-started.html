@@ -5,8 +5,8 @@
 <h3 class="docs-markdown--h3" id="automatic-setup-with-ng-add">Automatic setup with ng add</h3>
 <ol>
 <li class="docs-markdown--li">
-<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI version 11</a>:</strong></p>
-<pre><code class="language-console">npm install -g @angular/cli@11
+<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI</a>:</strong></p>
+<pre><code class="language-console">npm install -g @angular/cli
 ng new my-aposin-project
 </code></pre>
 </li>
@@ -16,7 +16,7 @@ ng new my-aposin-project
 </code></pre>
 <p class="docs-markdown--p">Add the background color of the default theme to your styles file:</p>
 <pre><code class="language-scss"><span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
 }
 </code></pre>
 </li>
@@ -27,8 +27,8 @@ ng new my-aposin-project
 <p class="docs-markdown--p">You can also install ng-aquila manually.</p>
 <ol>
 <li class="docs-markdown--li">
-<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI version 11</a>:</strong></p>
-<pre><code>npm install -g @angular/cli@11
+<p class="docs-markdown--p"><strong>Create your project with <a href="https://cli.angular.io/">Angular CLI</a>:</strong></p>
+<pre><code>npm install -g @angular/cli
 ng new my-aposin-project
 </code></pre>
 </li>
@@ -68,7 +68,7 @@ npm install @angular/cdk
 </code></pre>
 <p class="docs-markdown--p">Add the background color of the default theme to your styles file:</p>
 <pre><code class="language-css"><span class="hljs-selector-tag">body</span> {
-  <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2a3d</span>;
 }
 </code></pre>
 </li>
@@ -79,26 +79,14 @@ npm install @angular/cdk
 <span class="hljs-keyword">import</span> { NxExpertModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/config&#x27;</span>;
 
 <span class="hljs-meta">@NgModule</span>({
-  <span class="hljs-attr">imports</span>: [
+    <span class="hljs-attr">imports</span>: [
+        <span class="hljs-comment">// ...</span>
+        NxExpertModule,
+    ],
     <span class="hljs-comment">// ...</span>
-    NxExpertModule
-  ],
-  <span class="hljs-comment">// ...</span>
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
 </code></pre>
-</li>
-<li class="docs-markdown--li">
-<p class="docs-markdown--p"><strong>Support for IE11 (optional)</strong></p>
-<p class="docs-markdown--p">If you need to support IE11, a polyfill is needed:</p>
-<pre><code>npm install css-vars-ponyfill
-</code></pre>
-<p class="docs-markdown--p">To activate it, include these two lines in your <code>polyfills.ts</code>:</p>
-<pre><code class="language-ts"><span class="hljs-keyword">import</span> cssVars <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;css-vars-ponyfill&#x27;</span>;
-cssVars({ <span class="hljs-attr">watch</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">onlyLegacy</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">shadowDOM</span>: <span class="hljs-literal">true</span>});
-</code></pre>
-<p class="docs-markdown--p">If you use the <a href="./documentation/image/overview">image component</a>, you also need the <a href="https://github.com/fregante/object-fit-images">object-fit-images</a> polyfill (<code>npm install object-fit-images</code>).</p>
-<p class="docs-markdown--p">You can check the supported versions of these polyfills <a href="https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json">here</a>.</p>
 </li>
 </ol>
 <h3 class="docs-markdown--h3" id="device-and-browser-support">Device and Browser Support</h3>
@@ -109,6 +97,6 @@ cssVars({ <span class="hljs-attr">watch</span>: <span class="hljs-literal">true<
 <li class="docs-markdown--li">MS Edge: 2 most recent major versions</li>
 <li class="docs-markdown--li">Safari: 2 most recent major versions</li>
 </ul>
-<p class="docs-markdown--p">IE11 is deprecated and it is recommend to use modern browsers instead. Using IE11 can have a negative impact on UX and performance. With Angular NDBX v13 (expected in fall 2021) we will fully drop IE11 support, following the strategy of <a href="https://github.com/angular/angular/issues/41840">Angular</a>.</p>
+<p class="docs-markdown--p">We do not support IE11 since version 13 and recommend to use modern browsers instead.</p>
 <h3 class="docs-markdown--h3" id="contributing">Contributing</h3>
 <p class="docs-markdown--p">We do not support external contributions yet, but hope we can in future.</p>

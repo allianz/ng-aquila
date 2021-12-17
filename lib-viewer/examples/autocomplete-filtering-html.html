@@ -1,6 +1,14 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text&#x27;</span> #<span class="hljs-attr">animalInput</span> [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&#x27;auto1&#x27;</span> (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;filter(animalInput.value)&quot;</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto1</span>=<span class="hljs-string">&#x27;nxAutocomplete&#x27;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&#x27;let option of filteredOptions&#x27;</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&#x27;option&#x27;</span>&gt;</span>
-    {{ option }}
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>
+    #<span class="hljs-attr">animalInput</span>
+    [<span class="hljs-attr">nxAutocomplete</span>]=<span class="hljs-string">&quot;auto1&quot;</span>
+    (<span class="hljs-attr">input</span>)=<span class="hljs-string">&quot;filter(animalInput.value)&quot;</span>
+/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete</span> #<span class="hljs-attr">auto1</span>=<span class="hljs-string">&quot;nxAutocomplete&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-autocomplete-option</span>
+        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let option of filteredOptions&quot;</span>
+        [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option&quot;</span>
+    &gt;</span>
+        {{ option }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete-option</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-autocomplete</span>&gt;</span>

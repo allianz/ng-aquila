@@ -1,8 +1,17 @@
-<nx-number-stepper nxSize="big" name="testStepper" inputAriaLabel="Number of travellers">
-  <label>Number of travellers</label>
-  <nx-icon class="info-icon nx-margin-left-2xs" [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover"
-    name="info-circle-o" size="s"></nx-icon>
+<nx-number-stepper
+    nxSize="big"
+    name="testStepper"
+    inputAriaLabel="Number of travellers"
+>
+    <label>Number of travellers</label>
+    <nx-icon
+        class="info-icon nx-margin-left-2xs"
+        [nxPopoverTriggerFor]="popoverHover"
+        nxPopoverTrigger="hover"
+        name="info-circle-o"
+        size="s"
+    ></nx-icon>
 </nx-number-stepper>
 <nx-popover #popoverHover>
-  <div><span>Custom help text as popover</span></div>
+    <div><span>Custom help text as popover</span></div>
 </nx-popover>

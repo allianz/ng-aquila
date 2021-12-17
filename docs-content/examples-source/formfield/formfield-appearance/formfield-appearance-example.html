@@ -1,57 +1,85 @@
 <div nxLayout="grid">
-  <div nxRow>
-    <div nxCol="6">
-      <nx-formfield appearance="outline" nxLabel="Prefilled field" nxFloatLabel="always">
-        <input nxInput value="prefilled">
-      </nx-formfield>
-    </div>
-    <div nxCol="6">
-      <nx-formfield nxLabel="Readonly field" appearance="outline" nxFloatLabel="always">
-        <span nxFormfieldPrefix>$</span>
-        <input nxInput readonly value="500">
-        <nx-icon
-          nxFormfieldAppendix
-          name="info-circle-o">
-        </nx-icon>
-      </nx-formfield>
-    </div>
-  </div>
-
-  <div nxRow>
-    <div nxCol="6">
-      <nx-formfield nxLabel="Dropdown Label" appearance="outline" nxFloatLabel="always">
-        <nx-dropdown>
-          <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
-          <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
-        </nx-dropdown>
-      </nx-formfield>
-    </div>
-    <div nxCol="6">
-      <nx-formfield nxLabel="Label" appearance="outline" nxFloatLabel="always">
-        <input nxInput disabled value="Disabled input"/>
-      </nx-formfield>
-    </div>
-  </div>
-
-  <div nxRow>
-    <div nxCol="6">
-      <nx-formfield nxLabel="Birthday" appearance="outline" nxFloatLabel="always">
-        <input nxDatefield nxInput [nxDatepicker]="myDatepicker" [(ngModel)]="currentDate" />
-        <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
-        <nx-datepicker #myDatepicker></nx-datepicker>
-        <span nxFormfieldHint>
-            mm/dd/yyyy
-        </span>
-      </nx-formfield>
+    <div nxRow>
+        <div nxCol="6">
+            <nx-formfield
+                appearance="outline"
+                nxLabel="Prefilled field"
+                nxFloatLabel="always"
+            >
+                <input nxInput value="prefilled" />
+            </nx-formfield>
+        </div>
+        <div nxCol="6">
+            <nx-formfield
+                nxLabel="Readonly field"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <span nxFormfieldPrefix>$</span>
+                <input nxInput readonly value="500" />
+                <nx-icon nxFormfieldAppendix name="info-circle-o"> </nx-icon>
+            </nx-formfield>
+        </div>
     </div>
 
-    <div nxCol="6">
-      <nx-formfield appearance="outline" nxFloatLabel="always">
-        <nx-formfield-label>Textarea Label <span class="nx-font-weight-regular">(optional)</span></nx-formfield-label>
-        <textarea nxInput type="text"></textarea>
-      </nx-formfield>
+    <div nxRow>
+        <div nxCol="6">
+            <nx-formfield
+                nxLabel="Dropdown Label"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <nx-dropdown>
+                    <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
+                    <nx-dropdown-item nxValue="Mini"></nx-dropdown-item>
+                </nx-dropdown>
+            </nx-formfield>
+        </div>
+        <div nxCol="6">
+            <nx-formfield
+                nxLabel="Label"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <input nxInput disabled value="Disabled input" />
+            </nx-formfield>
+        </div>
     </div>
-  </div>
+
+    <div nxRow>
+        <div nxCol="6">
+            <nx-formfield
+                nxLabel="Birthday"
+                appearance="outline"
+                nxFloatLabel="always"
+            >
+                <input
+                    nxDatefield
+                    nxInput
+                    [nxDatepicker]="myDatepicker"
+                    [(ngModel)]="currentDate"
+                />
+                <nx-datepicker-toggle
+                    [for]="myDatepicker"
+                    nxFormfieldSuffix
+                ></nx-datepicker-toggle>
+                <nx-datepicker #myDatepicker></nx-datepicker>
+                <span nxFormfieldHint> mm/dd/yyyy </span>
+            </nx-formfield>
+        </div>
+
+        <div nxCol="6">
+            <nx-formfield appearance="outline" nxFloatLabel="always">
+                <nx-formfield-label
+                    >Textarea Label
+                    <span class="nx-font-weight-regular"
+                        >(optional)</span
+                    ></nx-formfield-label
+                >
+                <textarea nxInput type="text"></textarea>
+            </nx-formfield>
+        </div>
+    </div>
 </div>

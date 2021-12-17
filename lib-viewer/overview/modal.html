@@ -7,13 +7,12 @@
 <h3 id="modal-opening" class="docs-markdown--h3">Modal Opening</h3>
 <p class="docs-markdown--p">A modal can be opened by using the <code>open</code> method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> myDialogRef = dialogService.open(MyModalComponent, {
-  <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;600px&#x27;</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;600px&#x27;</span>,
 });
 
 myDialogRef.close();
 </code></pre>
-<p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>.
-If you use a specific component for your modal you have to include it in the list of <code>entryComponents</code> in your <code>NgModule</code>, as it gets instantiated at run-time and won't be found otherwise.</p>
+<p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>. If you use a specific component for your modal you have to include it in the list of <code>entryComponents</code> in your <code>NgModule</code>, as it gets instantiated at run-time and won't be found otherwise.</p>
 <div nx-docs-example="modal-opening" config="{}">exampleID: modal-opening</div>
 <h3 id="modal-closing" class="docs-markdown--h3">Modal Closing</h3>
 <p class="docs-markdown--p">You can close a dialog in three different ways:</p>
@@ -22,8 +21,7 @@ If you use a specific component for your modal you have to include it in the lis
 <li class="docs-markdown--li">by using the <code>myDialog.close()</code> method on a <code>NxModalRef</code> to close the dialog programatically</li>
 <li class="docs-markdown--li">by using the <code>nxModalClose</code> directive on an action button</li>
 </ul>
-<p class="docs-markdown--p">When using the last two options you can also pass a result object/string on close.
-The three different closing variants are demonstrated in the example below:</p>
+<p class="docs-markdown--p">When using the last two options you can also pass a result object/string on close. The three different closing variants are demonstrated in the example below:</p>
 <div nx-docs-example="modal-closing" config="{}">exampleID: modal-closing</div>
 <h3 id="closing-behaviour" class="docs-markdown--h3">Closing behaviour</h3>
 <p class="docs-markdown--p">By default, the modal will close if the user clicks on the backdrop or hits the ESC key. These options can be disabled by using the <code>disableClose</code> parameter of the <code>NxModalConfig</code> as shown in the example below:</p>
@@ -38,7 +36,7 @@ The three different closing variants are demonstrated in the example below:</p>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> dialogRef = dialog.open(YourDialog, {
-  <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Max Mustermann&#x27;</span> },
+    <span class="hljs-attr">data</span>: { <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Max Mustermann&#x27;</span> },
 });
 </code></pre>
 <p class="docs-markdown--p">In your dialog you can access this data by injecting the <code>NX_MODAL_DATA</code> token:</p>
@@ -46,11 +44,11 @@ The three different closing variants are demonstrated in the example below:</p>
 <span class="hljs-keyword">import</span> { NX_MODAL_DATA } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;
 
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;your-dialog&#x27;</span>,
-  <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;passed in {{ data.name }}&#x27;</span>,
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;your-dialog&#x27;</span>,
+    <span class="hljs-attr">template</span>: <span class="hljs-string">&#x27;passed in {{ data.name }}&#x27;</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourDialog</span> </span>{
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">public</span> data: <span class="hljs-built_in">any</span></span>)</span> { }
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-meta">@Inject</span>(NX_MODAL_DATA) <span class="hljs-keyword">public</span> data: <span class="hljs-built_in">any</span></span>)</span> {}
 }
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
@@ -66,8 +64,7 @@ The three different closing variants are demonstrated in the example below:</p>
   ]
 </code></pre>
 <h3 id="directionality" class="docs-markdown--h3">Directionality</h3>
-<p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction.
-If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
+<p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction. If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
 <p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>
 <div nx-docs-example="modal-with-direction" config="{}">exampleID: modal-with-direction</div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>

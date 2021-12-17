@@ -15,8 +15,7 @@
 </ul>
 <h3 id="guidelines" class="docs-markdown--h3">Guidelines</h3>
 <h4 id="usage-of-aria-label" class="docs-markdown--h4">Usage of aria-label</h4>
-<p class="docs-markdown--p">One important accessibility attribute is <code>aria-label</code>, which describes a certain element and is read by the screenreader when the user has focused its element.
-We provide our components with default placeholders. In most cases, you need to adjust the <code>aria-label</code> value according to your use case.</p>
+<p class="docs-markdown--p">One important accessibility attribute is <code>aria-label</code>, which describes a certain element and is read by the screenreader when the user has focused its element. We provide our components with default placeholders. In most cases, you need to adjust the <code>aria-label</code> value according to your use case.</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">
 <p class="docs-markdown--p">When using a variable as value for the <code>aria-label</code> you need to use attribute binding:</p>
@@ -29,19 +28,18 @@ We provide our components with default placeholders. In most cases, you need to 
 </code></pre>
 </li>
 <li class="docs-markdown--li">
-<p class="docs-markdown--p">If the aria labels are needed inside the component template we usually have specific inputs for that or make use of an injection token like in the datepicker:
-<a href="./documentation/datefield/overview#localizing-labels-and-messages">datepicker localization example</a>.</p>
+<p class="docs-markdown--p">If the aria labels are needed inside the component template we usually have specific inputs for that or make use of an injection token like in the datepicker: <a href="./documentation/datefield/overview#localizing-labels-and-messages">datepicker localization example</a>.</p>
 </li>
 </ul>
 <p class="docs-markdown--p">You can find more information on the <code>aria-label</code> attribute <a href="https://www.w3.org/TR/wai-aria/#aria-label">here</a>.</p>
 <h4 id="setting-high-contrast-colors-for-svgs" class="docs-markdown--h4">Setting high contrast colors for SVGs</h4>
-<p class="docs-markdown--p">All components of this UI component library implement the high contrast mode for MS Edge and IE 11. However, if you use your own SVGs, you may need to add high contrast styling on your own.</p>
+<p class="docs-markdown--p">All components of this UI component library implement the high contrast mode for MS Edge. However, if you use your own SVGs, you may need to add high contrast styling on your own.</p>
 <p class="docs-markdown--p">This is the basic code snippet for setting the color of a svg in high contrast mode (also used in the example below):</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@media</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">-ms-high-contrast</span>: active) {
-  <span class="hljs-selector-class">.g-inside-svg</span> {
-    <span class="hljs-comment">/* proprietary Windows system color value; IE/Edge only */</span>
-    fill: windowText;
-  }
+    <span class="hljs-selector-class">.g-inside-svg</span> {
+        <span class="hljs-comment">/* proprietary Windows system color value; IE/Edge only */</span>
+        fill: windowText;
+    }
 }
 </code></pre>
 <p class="docs-markdown--p">For more information on which colors to use in the high contrast mode, please visit <a href="https://docs.microsoft.com/en-us/windows/uwp/design/accessibility/high-contrast-themes#high-contrast-colors">this explanation</a>.</p>

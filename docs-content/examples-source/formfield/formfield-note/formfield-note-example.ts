@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Note example
-*/
+ * @title Note example
+ */
 @Component({
-  selector: 'formfield-note-example',
-  templateUrl: './formfield-note-example.html',
-  styleUrls: ['./formfield-note-example.css']
+    selector: 'formfield-note-example',
+    templateUrl: './formfield-note-example.html',
+    styleUrls: ['./formfield-note-example.css'],
 })
 export class FormfieldNoteExampleComponent {
-  public valueSupplementNote!: string;
+    public valueSupplementNote!: string;
 }

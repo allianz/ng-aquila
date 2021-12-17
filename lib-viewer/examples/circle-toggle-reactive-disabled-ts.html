@@ -2,34 +2,51 @@
 <span class="hljs-keyword">import</span> { FormBuilder, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Reactive disabled example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Reactive disabled example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-reactive-disabled-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-reactive-disabled-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-reactive-disabled-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;circle-toggle-reactive-disabled-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./circle-toggle-reactive-disabled-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./circle-toggle-reactive-disabled-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CircleToggleReactiveDisabledExampleComponent</span> </span>{
+    testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
+        <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+    });
 
-  testForm = <span class="hljs-built_in">this</span>.formBuilder.group({
-    <span class="hljs-attr">reactiveToggle</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
-  });
+    sampleValues = [
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>,
+            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>,
+            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint A&#x27;</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label A&#x27;</span>,
+            <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
+        },
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>,
+            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span>,
+            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint B&#x27;</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label B&#x27;</span>,
+            <span class="hljs-attr">selected</span>: <span class="hljs-literal">true</span>,
+        },
+        {
+            <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;C&#x27;</span>,
+            <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span>,
+            <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint C&#x27;</span>,
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label C&#x27;</span>,
+            <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>,
+        },
+    ];
 
-  sampleValues = [{<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;A&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-heart&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint A&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label A&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>},
-    {<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;B&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-car&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint B&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label B&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">true</span>},
-    {<span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;C&#x27;</span>, <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;product-plane&#x27;</span>, <span class="hljs-attr">hint</span>: <span class="hljs-string">&#x27;Hint C&#x27;</span>, <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Label C&#x27;</span>, <span class="hljs-attr">selected</span>: <span class="hljs-literal">false</span>},
-  ];
-
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>)</span> {
-    <span class="hljs-built_in">this</span>.testForm.disable();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">switchStatusClick</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.testForm.disabled) {
-      <span class="hljs-built_in">this</span>.testForm.enable();
-    } <span class="hljs-keyword">else</span> {
-      <span class="hljs-built_in">this</span>.testForm.disable();
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> formBuilder: FormBuilder</span>)</span> {
+        <span class="hljs-built_in">this</span>.testForm.disable();
     }
-  }
 
+    <span class="hljs-function"><span class="hljs-title">switchStatusClick</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.testForm.disabled) {
+            <span class="hljs-built_in">this</span>.testForm.enable();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">this</span>.testForm.disable();
+        }
+    }
 }

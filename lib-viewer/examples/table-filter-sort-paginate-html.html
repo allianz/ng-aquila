@@ -1,46 +1,62 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wrapper&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Type in here to filter (e.g. 2019, Auto)&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [<span class="hljs-attr">ngModel</span>]=<span class="hljs-string">&quot;filterValue&quot;</span> (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;onFilterValueChange($event)&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Type in here to filter (e.g. 2019, Auto)&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+            <span class="hljs-attr">nxInput</span>
+            [<span class="hljs-attr">ngModel</span>]=<span class="hljs-string">&quot;filterValue&quot;</span>
+            (<span class="hljs-attr">ngModelChange</span>)=<span class="hljs-string">&quot;onFilterValueChange($event)&quot;</span>
+        /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 
- <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>&gt;</span>Matching items: {{currentlyAvailableElements.length}}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>
+        &gt;</span>Matching items: {{currentlyAvailableElements.length}}&lt;/p
+    &gt;
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-swipebar</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Scroll to see more&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">nxSort</span> (<span class="hljs-attr">sortChange</span>)=<span class="hljs-string">&quot;sortTable($event)&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;product&quot;</span>&gt;</span>Product<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;contractNumber&quot;</span>&gt;</span>Contract Number<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;endingAt&quot;</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;statusText&quot;</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of currentlyShownPageElements&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.desc}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&#x27;#&#x27;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{ item.endingAt | date: &#x27;dd/MM/yyyy&#x27; }}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>&gt;</span>{{item.statusText}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-swipebar</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-swipebar</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Scroll to see more&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">nxSort</span> (<span class="hljs-attr">sortChange</span>)=<span class="hljs-string">&quot;sortTable($event)&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;product&quot;</span>&gt;</span>Product<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;contractNumber&quot;</span>
+                        &gt;</span>Contract Number&lt;/th
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Description<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span>&gt;</span>Website<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;endingAt&quot;</span>&gt;</span>Ending At<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> <span class="hljs-attr">nxSortHeaderCell</span>=<span class="hljs-string">&quot;statusText&quot;</span>&gt;</span>Status<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of currentlyShownPageElements&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.product}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.contractNumber}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>{{item.desc}}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>
+                            &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>&lt;/nx-link
+                        &gt;
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>
+                        &gt;</span>{{ item.endingAt | date: &#x27;dd/MM/yyyy&#x27; }}&lt;/td
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span>
+                        &gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>
+                            &gt;</span>{{item.statusText}}&lt;/nx-badge
+                        &gt;&lt;/td
+                    &gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-swipebar</span>&gt;</span>
 
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
-    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination&quot;</span>
-    [<span class="hljs-attr">nxCount</span>]=<span class="hljs-string">&quot;currentlyAvailableElements.length&quot;</span>
-    [<span class="hljs-attr">nxPage</span>]=<span class="hljs-string">&quot;page&quot;</span>
-    <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;advanced&quot;</span>
-    [<span class="hljs-attr">nxPerPage</span>]=<span class="hljs-string">&quot;elementsPerPage&quot;</span>
-    (<span class="hljs-attr">nxGoPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
-    (<span class="hljs-attr">nxGoNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
-    (<span class="hljs-attr">nxGoPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-pagination</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;pagination&quot;</span>
+        [<span class="hljs-attr">nxCount</span>]=<span class="hljs-string">&quot;currentlyAvailableElements.length&quot;</span>
+        [<span class="hljs-attr">nxPage</span>]=<span class="hljs-string">&quot;page&quot;</span>
+        <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;advanced&quot;</span>
+        [<span class="hljs-attr">nxPerPage</span>]=<span class="hljs-string">&quot;elementsPerPage&quot;</span>
+        (<span class="hljs-attr">nxGoPrev</span>)=<span class="hljs-string">&quot;prevPage()&quot;</span>
+        (<span class="hljs-attr">nxGoNext</span>)=<span class="hljs-string">&quot;nextPage()&quot;</span>
+        (<span class="hljs-attr">nxGoPage</span>)=<span class="hljs-string">&quot;goToPage($event)&quot;</span>
+    &gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-pagination</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

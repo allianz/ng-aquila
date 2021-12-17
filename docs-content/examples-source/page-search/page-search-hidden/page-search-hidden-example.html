@@ -1,17 +1,26 @@
-<nx-page-search nxButtonLabel="Search" [nxHideSearchButton]="true" aria-label="Search hidden example">
-  <div nxRow>
-    <div nxCol="12">
-      <nx-formfield>
-        <input
-          nxInput
-          placeholder="Enter Keyword"
-          [(ngModel)]="searchTerm"
-          type="search"
-        >
-        <span nxFormfieldSuffix *ngIf="searchTerm" aria-hidden="true" (click)="searchTerm=''">
-          <nx-icon name="close" size="s"></nx-icon>
-        </span>
-      </nx-formfield>
+<nx-page-search
+    nxButtonLabel="Search"
+    [nxHideSearchButton]="true"
+    aria-label="Search hidden example"
+>
+    <div nxRow>
+        <div nxCol="12">
+            <nx-formfield>
+                <input
+                    nxInput
+                    placeholder="Enter Keyword"
+                    [(ngModel)]="searchTerm"
+                    type="search"
+                />
+                <span
+                    nxFormfieldSuffix
+                    *ngIf="searchTerm"
+                    aria-hidden="true"
+                    (click)="searchTerm=''"
+                >
+                    <nx-icon name="close" size="s"></nx-icon>
+                </span>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
 </nx-page-search>

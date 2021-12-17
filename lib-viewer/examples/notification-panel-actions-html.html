@@ -1,52 +1,80 @@
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;small tertiary&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-0&quot;</span>
-  [<span class="hljs-attr">nxNotificationPanelTriggerFor</span>]=<span class="hljs-string">&quot;panel1&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Notifications&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bell-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxIconButton</span>=<span class="hljs-string">&quot;small tertiary&quot;</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-0&quot;</span>
+    [<span class="hljs-attr">nxNotificationPanelTriggerFor</span>]=<span class="hljs-string">&quot;panel1&quot;</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Notifications&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;bell-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">panel1</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-panel</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-header</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Unread<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Mark all as read <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-          <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-2xs&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-panel</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Unread<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                &gt;</span>Mark all as read
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-left-2xs&quot;</span>&gt;</span>&lt;/nx-icon
+            &gt;<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-header</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span> [<span class="hljs-attr">attr.href</span>]=<span class="hljs-string">&quot;null&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lock-o&quot;</span>
-          <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>File lock release <span class="hljs-symbol">&amp;middot;</span> 16:53
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>The file you tried to edit (XY12345) is now available.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-actions</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#file-link&quot;</span>&gt;</span>Edit file<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Delete&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-actions</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;phone-o&quot;</span>
-          <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>Callback <span class="hljs-symbol">&amp;middot;</span> 11:35
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inline-delete&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Please call back James Erwin at 15:00<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Delete&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-header</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Read<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">read</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>Offers <span class="hljs-symbol">&amp;middot;</span> Yesterday
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Mary London<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> - Note created
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-panel</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span> [<span class="hljs-attr">attr.href</span>]=<span class="hljs-string">&quot;null&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lock-o&quot;</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                &gt;</span>&lt;/nx-icon
+                &gt;File lock release <span class="hljs-symbol">&amp;middot;</span> 16:53
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>
+                    &gt;</span>The file you tried to edit (XY12345) is now
+                    available.&lt;/span
+                &gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-actions</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#file-link&quot;</span>&gt;</span>Edit file<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Delete&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-actions</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;phone-o&quot;</span>
+                    <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>
+                &gt;</span>&lt;/nx-icon
+                &gt;Callback <span class="hljs-symbol">&amp;middot;</span> 11:35
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;inline-delete&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>
+                    &gt;</span>Please call back James Erwin at 15:00&lt;/span
+                &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">nxPlainButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;&quot;</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Delete&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trash-o&quot;</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-header</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">nxCopytext</span>=<span class="hljs-string">&quot;large&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Read<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxNotificationPanelItem</span> <span class="hljs-attr">read</span> <span class="hljs-attr">clickable</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-metadata</span>
+                &gt;</span>Offers <span class="hljs-symbol">&amp;middot;</span> Yesterday
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-metadata</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-font-weight-semibold&quot;</span>&gt;</span>Mary London<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> - Note
+                created
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-item-content</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-notification-panel</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-template</span>&gt;</span>

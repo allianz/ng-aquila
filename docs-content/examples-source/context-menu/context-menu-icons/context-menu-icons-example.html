@@ -1,21 +1,23 @@
 <nx-context-menu #menu="nxContextMenu">
-  <button nxContextMenuItem type="button">
-    <nx-icon aria-hidden="true" name="setting"></nx-icon>
-    Settings
-  </button>
-  <button nxContextMenuItem type="button">
-    <nx-icon aria-hidden="true" name="download"></nx-icon>
-    Download
-  </button>
-  <button nxContextMenuItem type="button">
-    <nx-icon aria-hidden="true" name="info-circle-o"></nx-icon>
-    Help
-  </button>
+    <button nxContextMenuItem type="button">
+        <nx-icon aria-hidden="true" name="setting"></nx-icon>
+        Settings
+    </button>
+    <button nxContextMenuItem type="button">
+        <nx-icon aria-hidden="true" name="download"></nx-icon>
+        Download
+    </button>
+    <button nxContextMenuItem type="button">
+        <nx-icon aria-hidden="true" name="info-circle-o"></nx-icon>
+        Help
+    </button>
 </nx-context-menu>
 
- <button nxIconButton="tertiary small"
+<button
+    nxIconButton="tertiary small"
     [nxContextMenuTriggerFor]="menu"
     aria-label="Open menu"
-    type="button">
-  <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
+    type="button"
+>
+    <nx-icon aria-hidden="true" name="ellipsis-h"></nx-icon>
 </button>

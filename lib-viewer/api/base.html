@@ -1,92 +1,67 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
 <div class="docs-api">
-  <p class="docs-api-module-import">
-    <code>
-      <span class="docs-api-module-import__import-span">import</span>
-      { NxLabelModule }
-      <span class="docs-api-module-import__from-span">from</span>
-      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/base'</span>;
-    </code>
-  </p><h3 id="services" class="docs-header-link docs-api-h3">
-      <span header-link="services"></span>
-      Services
+    <p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import</span>
+            { NxLabelModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/base'</span>;
+        </code>
+    </p><h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
     </h3>
-    
-      
+     
 
 <h4 id="ErrorDefaultOptions" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="ErrorDefaultOptions"></span>
   <code>ErrorDefaultOptions</code></h4><p class="docs-api-class-description"><p>Represents the default options for the error notification that can be configured
 using the <code>ERROR_DEFAULT_OPTIONS</code> injection token.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">appearance</span>:
-        <span class="docs-api-property__type">ErrorStyleType</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Defines the style type of the error notification.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appearance</span>:
+                <span class="docs-api-property__type">ErrorStyleType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Defines the style type of the error notification.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">changes</span>:
-        <span class="docs-api-property__type">Subject<void></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Stream that emits whenever the default options are changed. Use this to notify
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the default options are changed. Use this to notify
 components if the default options have changed after initialization.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="directives" class="docs-header-link docs-api-h3">
-      <span header-link="directives"></span>
-      Directives
+ 
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
     </h3>
-    
-      
+     
 
 <h4 id="NxErrorComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxErrorComponent"></span>
@@ -98,77 +73,63 @@ components if the default options have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">appearance</span>:
-        <span class="docs-api-property__type">ErrorStyleType</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the error should have message or text styling.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">appearance</span>:
+                <span class="docs-api-property__type">ErrorStyleType</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the error should have message or text styling.</p>
 <p>Default is &#39;message&#39;.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Id of the nx-error.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Id of the nx-error.</p>
 <p>If not set, the selectable card gets an incremented value by default.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">showIcon</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether an icon should be displayed. Only has an effect for type &#39;text&#39;</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">showIcon</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether an icon should be displayed. Only has an effect for type &#39;text&#39;</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxLabelComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxLabelComponent"></span>
@@ -180,160 +141,128 @@ components if the default options have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">disabled</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the label to disabled</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the label to disabled</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the Id of the label</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the Id of the label</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">negative</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the label to disabled</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">negative</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the label to disabled</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">size</span>:
-        <span class="docs-api-property__type">LABEL_SIZE_TYPE</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p><strong>Expert option</strong>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__type">LABEL_SIZE_TYPE</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p><strong>Expert option</strong>
 Sets the appearance of the label</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
-      <span header-link="additional_interfaces"></span>
-      Additional interfaces
+ 
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
     </h3>
-    
-      
+     
 
 <h4 id="LabelDefaultOptions" class="docs-header-link docs-api-h4 docs-api-interface-name">
-  <span header-link="LabelDefaultOptions"></span>
-  <code>LabelDefaultOptions</code>
+    <span header-link="LabelDefaultOptions"></span>
+    <code>LabelDefaultOptions</code>
 </h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">size</span>:
-        <span class="docs-api-property__type">LABEL_SIZE_TYPE</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the default appearance. (optional)</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__type">LABEL_SIZE_TYPE</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the default appearance. (optional)</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
-      <span header-link="additional_type_aliases"></span>
-      Additional type aliases
+  
+</table>   
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
     </h3>
-    
-      
+     
 
 <h4 id="ErrorStyleType" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="ErrorStyleType"></span>
-  <code>ErrorStyleType</code>
+    <span header-link="ErrorStyleType"></span>
+    <code>ErrorStyleType</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'message' | 'text'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'message' | 'text'</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="LABEL_SIZE_TYPE" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="LABEL_SIZE_TYPE"></span>
-  <code>LABEL_SIZE_TYPE</code>
+    <span header-link="LABEL_SIZE_TYPE"></span>
+    <code>LABEL_SIZE_TYPE</code>
 </h4><p class="docs-api-type-alias-description"><p>Options for sizing of the label.</p>
 </p><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'small' | 'large'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'small' | 'large'</code>
 </p>
-
-
-    </div>
+  </div>

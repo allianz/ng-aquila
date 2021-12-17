@@ -1,26 +1,42 @@
 <nx-multi-stepper [linear]="true" currentStepLabel="Step">
-  <nx-step label="Your name" [stepControl]="stepOneForm">
-    <div class="nx-margin-top-s">
-      <form [formGroup]="stepOneForm">
-        <nx-formfield nxLabel="Name">
-          <input nxInput formControlName="name">
-        </nx-formfield>
-      </form>
-      <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
-      <button nxButton="primary small" nxStepperNext type="button">Next</button>
-    </div>
-  </nx-step>
-  <nx-step label="Your age" [stepControl]="stepTwoForm">
-    <div class="nx-margin-top-s">
-      <form [formGroup]="stepTwoForm">
-        <nx-formfield nxLabel="Age">
-          <input nxInput formControlName="age">
-        </nx-formfield>
-      </form>
-      <button nxButton="primary small" nxStepperPrevious class="nx-margin-right-2xs" type="button">Previous</button>
-      <button nxButton="primary small" nxStepperNext type="button">Next</button>
-    </div>
-  </nx-step>
+    <nx-step label="Your name" [stepControl]="stepOneForm">
+        <div class="nx-margin-top-s">
+            <form [formGroup]="stepOneForm">
+                <nx-formfield nxLabel="Name">
+                    <input nxInput formControlName="name" />
+                </nx-formfield>
+            </form>
+            <button
+                nxButton="primary small"
+                nxStepperPrevious
+                class="nx-margin-right-2xs"
+                type="button"
+                >Previous</button
+            >
+            <button nxButton="primary small" nxStepperNext type="button"
+                >Next</button
+            >
+        </div>
+    </nx-step>
+    <nx-step label="Your age" [stepControl]="stepTwoForm">
+        <div class="nx-margin-top-s">
+            <form [formGroup]="stepTwoForm">
+                <nx-formfield nxLabel="Age">
+                    <input nxInput formControlName="age" />
+                </nx-formfield>
+            </form>
+            <button
+                nxButton="primary small"
+                nxStepperPrevious
+                class="nx-margin-right-2xs"
+                type="button"
+                >Previous</button
+            >
+            <button nxButton="primary small" nxStepperNext type="button"
+                >Next</button
+            >
+        </div>
+    </nx-step>
 </nx-multi-stepper>
 <p>stepOneForm: {{stepOneForm.value | json}}</p>
 <p>stepTwoForm: {{stepTwoForm.value | json}}</p>

@@ -1,18 +1,23 @@
 <nx-radio-group
-  name="singleRadioOutputTest"
-  (nxGroupValueChange)="log('nxGroupValueChange occured: '+$event.value)">
-  <nx-label class="nx-margin-bottom-m">This is a nx-radio-group label</nx-label>
-  <nx-radio
-    nxValue="option1"
-    class="nx-margin-bottom-m"
-    (nxValueChange)="log('nxValueChange occured: '+$event.value)">
-    Option 1
-  </nx-radio>
-  <nx-radio
-    nxValue="option2"
-    (nxValueChange)="log('nxValueChange occured: '+$event.value)">
-    Option 2
-  </nx-radio>
+    name="singleRadioOutputTest"
+    (nxGroupValueChange)="log('nxGroupValueChange occured: '+$event.value)"
+>
+    <nx-label class="nx-margin-bottom-m"
+        >This is a nx-radio-group label</nx-label
+    >
+    <nx-radio
+        nxValue="option1"
+        class="nx-margin-bottom-m"
+        (nxValueChange)="log('nxValueChange occured: '+$event.value)"
+    >
+        Option 1
+    </nx-radio>
+    <nx-radio
+        nxValue="option2"
+        (nxValueChange)="log('nxValueChange occured: '+$event.value)"
+    >
+        Option 2
+    </nx-radio>
 </nx-radio-group>
-<br>
+<br />
 <pre *ngIf="logMessage">{{logMessage}}</pre>

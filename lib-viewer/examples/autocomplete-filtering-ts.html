@@ -1,26 +1,50 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Autocomplete filtering example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Autocomplete filtering example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-filtering-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-filtering-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-filtering-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;autocomplete-filtering-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./autocomplete-filtering-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./autocomplete-filtering-example.css&#x27;</span>],
 })
-
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutocompleteFilteringExampleComponent</span> </span>{
+    <span class="hljs-attr">filteredOptions</span>: <span class="hljs-built_in">string</span>[];
+    options = [
+        <span class="hljs-string">&#x27;Chimpanzee&#x27;</span>,
+        <span class="hljs-string">&#x27;Chinchilla&#x27;</span>,
+        <span class="hljs-string">&#x27;Chipmunk&#x27;</span>,
+        <span class="hljs-string">&#x27;Coati&#x27;</span>,
+        <span class="hljs-string">&#x27;Cicada&#x27;</span>,
+        <span class="hljs-string">&#x27;Clam&#x27;</span>,
+        <span class="hljs-string">&#x27;Clownfish&#x27;</span>,
+        <span class="hljs-string">&#x27;Cobra&#x27;</span>,
+        <span class="hljs-string">&#x27;Cockroach&#x27;</span>,
+        <span class="hljs-string">&#x27;Cod&#x27;</span>,
+        <span class="hljs-string">&#x27;Condor&#x27;</span>,
+        <span class="hljs-string">&#x27;Constrictor&#x27;</span>,
+        <span class="hljs-string">&#x27;Coral&#x27;</span>,
+        <span class="hljs-string">&#x27;Cougar&#x27;</span>,
+        <span class="hljs-string">&#x27;Cow&#x27;</span>,
+        <span class="hljs-string">&#x27;Coyote&#x27;</span>,
+        <span class="hljs-string">&#x27;Coypu&#x27;</span>,
+        <span class="hljs-string">&#x27;Crab&#x27;</span>,
+        <span class="hljs-string">&#x27;Crane&#x27;</span>,
+        <span class="hljs-string">&#x27;Crane fly&#x27;</span>,
+        <span class="hljs-string">&#x27;Crawdad&#x27;</span>,
+        <span class="hljs-string">&#x27;Crayfish&#x27;</span>,
+        <span class="hljs-string">&#x27;Cricket&#x27;</span>,
+        <span class="hljs-string">&#x27;Crocodile&#x27;</span>,
+        <span class="hljs-string">&#x27;Crow&#x27;</span>,
+    ];
 
-  <span class="hljs-attr">filteredOptions</span>: <span class="hljs-built_in">string</span>[];
-  options = [<span class="hljs-string">&#x27;Chimpanzee&#x27;</span>, <span class="hljs-string">&#x27;Chinchilla&#x27;</span>, <span class="hljs-string">&#x27;Chipmunk&#x27;</span>, <span class="hljs-string">&#x27;Coati&#x27;</span>, <span class="hljs-string">&#x27;Cicada&#x27;</span>, <span class="hljs-string">&#x27;Clam&#x27;</span>,
-    <span class="hljs-string">&#x27;Clownfish&#x27;</span>, <span class="hljs-string">&#x27;Cobra&#x27;</span>, <span class="hljs-string">&#x27;Cockroach&#x27;</span>, <span class="hljs-string">&#x27;Cod&#x27;</span>, <span class="hljs-string">&#x27;Condor&#x27;</span>, <span class="hljs-string">&#x27;Constrictor&#x27;</span>, <span class="hljs-string">&#x27;Coral&#x27;</span>, <span class="hljs-string">&#x27;Cougar&#x27;</span>, <span class="hljs-string">&#x27;Cow&#x27;</span>,
-    <span class="hljs-string">&#x27;Coyote&#x27;</span>, <span class="hljs-string">&#x27;Coypu&#x27;</span>, <span class="hljs-string">&#x27;Crab&#x27;</span>, <span class="hljs-string">&#x27;Crane&#x27;</span>, <span class="hljs-string">&#x27;Crane fly&#x27;</span>, <span class="hljs-string">&#x27;Crawdad&#x27;</span>, <span class="hljs-string">&#x27;Crayfish&#x27;</span>, <span class="hljs-string">&#x27;Cricket&#x27;</span>, <span class="hljs-string">&#x27;Crocodile&#x27;</span>, <span class="hljs-string">&#x27;Crow&#x27;</span>];
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.slice();
+    }
 
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.slice();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">filter</span>(<span class="hljs-params">value: <span class="hljs-built_in">any</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.filter(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).test(s));
-  }
+    <span class="hljs-function"><span class="hljs-title">filter</span>(<span class="hljs-params">value: <span class="hljs-built_in">any</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.filteredOptions = <span class="hljs-built_in">this</span>.options.filter(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span>
+            <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(value, <span class="hljs-string">&#x27;gi&#x27;</span>).test(s),
+        );
+    }
 }

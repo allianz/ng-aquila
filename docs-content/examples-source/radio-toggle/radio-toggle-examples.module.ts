@@ -11,32 +11,28 @@ import { RadioToggleValidationExampleComponent } from './radio-toggle-validation
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  RadioToggleExampleComponent,
-  RadioToggleCustomExampleComponent,
-  RadioToggleFormExampleComponent,
-  RadioToggleNegativeExampleComponent,
-  RadioToggleReactiveExampleComponent,
-  RadioToggleValidationExampleComponent
+    RadioToggleExampleComponent,
+    RadioToggleCustomExampleComponent,
+    RadioToggleFormExampleComponent,
+    RadioToggleNegativeExampleComponent,
+    RadioToggleReactiveExampleComponent,
+    RadioToggleValidationExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxRadioToggleModule,
-    NxIconModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxRadioToggleModule, NxIconModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class RadioToggleExamplesModule {
-  static components() {
-    return {
-      'radio-toggle': RadioToggleExampleComponent,
-      'radio-toggle-custom': RadioToggleCustomExampleComponent,
-      'radio-toggle-form': RadioToggleFormExampleComponent,
-      'radio-toggle-negative': RadioToggleNegativeExampleComponent,
-      'radio-toggle-reactive': RadioToggleReactiveExampleComponent,
-      'radio-toggle-validation': RadioToggleValidationExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'radio-toggle': RadioToggleExampleComponent,
+            'radio-toggle-custom': RadioToggleCustomExampleComponent,
+            'radio-toggle-form': RadioToggleFormExampleComponent,
+            'radio-toggle-negative': RadioToggleNegativeExampleComponent,
+            'radio-toggle-reactive': RadioToggleReactiveExampleComponent,
+            'radio-toggle-validation': RadioToggleValidationExampleComponent,
+        };
+    }
 }

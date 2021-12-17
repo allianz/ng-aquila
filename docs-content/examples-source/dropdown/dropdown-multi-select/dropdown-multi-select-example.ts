@@ -1,27 +1,45 @@
 import { Component } from '@angular/core';
 
+interface MyOption {
+    name: string;
+    id: number;
+}
+
 /**
  * @title Multi select example
  */
 @Component({
-  selector: 'dropdown-multi-select-example',
-  templateUrl: './dropdown-multi-select-example.html',
-  styleUrls: ['./dropdown-multi-select-example.css']
+    selector: 'dropdown-multi-select-example',
+    templateUrl: './dropdown-multi-select-example.html',
+    styleUrls: ['./dropdown-multi-select-example.css'],
 })
 export class DropdownMultiSelectExampleComponent {
-  demoData = [
-    'BMW', 'Audi', 'VW', 'Mercedes', 'Porsche', 'Tesla', 'Lada',
-    'Opel', 'Fiat', 'Ford', 'Kia', 'Toyota', 'Ferrari'
-  ];
+    options: string[] = ['Apple', 'Orange', 'Plum', 'Cherry'];
 
-  toTextMulti(value: string | string[]): string {
-    if (value) {
-      if (Array.isArray(value)) {
-        return value.map(item => item.toUpperCase()).join(', ');
-      } else {
-        return value.toUpperCase();
-      }
+    complexOptions: MyOption[] = [
+        {
+            name: 'Apple',
+            id: 1,
+        },
+        {
+            name: 'Orange',
+            id: 2,
+        },
+        {
+            name: 'Plum',
+            id: 3,
+        },
+        {
+            name: 'Cherry',
+            id: 4,
+        },
+    ];
+
+    selectLabel(option: MyOption): string {
+        return option.name;
     }
-    return '';
-  }
+
+    selectValue(option: MyOption): number {
+        return option.id;
+    }
 }

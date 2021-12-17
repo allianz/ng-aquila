@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Progress Indicator example
-*/
+ * @title Progress Indicator example
+ */
 @Component({
-  selector: 'progress-stepper-example',
-  templateUrl: './progress-stepper-example.html',
-  styleUrls: ['./progress-stepper-example.css']
+    selector: 'progress-stepper-example',
+    templateUrl: './progress-stepper-example.html',
+    styleUrls: ['./progress-stepper-example.css'],
 })
-export class ProgressStepperExampleComponent {
-}
+export class ProgressStepperExampleComponent {}

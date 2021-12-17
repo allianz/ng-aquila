@@ -4,32 +4,27 @@
 
 <span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxTimefieldIntl</span> </span>{
-  inputFieldHoursAriaLabel = <span class="hljs-string">&#x27;stunden&#x27;</span>;
-  inputFieldMinutesAriaLabel = <span class="hljs-string">&#x27;minuten&#x27;</span>;
+    inputFieldHoursAriaLabel = <span class="hljs-string">&#x27;stunden&#x27;</span>;
+    inputFieldMinutesAriaLabel = <span class="hljs-string">&#x27;minuten&#x27;</span>;
 }
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Localization example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Localization example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;timefield-localize-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./timefield-localize-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./timefield-localize-example.css&#x27;</span>],
-  <span class="hljs-attr">providers</span>: [
-    { <span class="hljs-attr">provide</span>: NxTimefieldIntl, <span class="hljs-attr">useClass</span>: MyIntl },
-  ],
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;timefield-localize-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./timefield-localize-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./timefield-localize-example.css&#x27;</span>],
+    <span class="hljs-attr">providers</span>: [{ <span class="hljs-attr">provide</span>: NxTimefieldIntl, <span class="hljs-attr">useClass</span>: MyIntl }],
 })
-
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TimefieldLocalizeExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
-  testForm!: FormGroup;
+    testForm!: FormGroup;
 
-  <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.testForm = <span class="hljs-keyword">new</span> FormGroup({
-      <span class="hljs-attr">today</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
-        <span class="hljs-attr">validators</span>: [
-          Validators.required,
-        ]
-      })
-    });
-  }
+    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.testForm = <span class="hljs-keyword">new</span> FormGroup({
+            <span class="hljs-attr">today</span>: <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, {
+                <span class="hljs-attr">validators</span>: [Validators.required],
+            }),
+        });
+    }
 }

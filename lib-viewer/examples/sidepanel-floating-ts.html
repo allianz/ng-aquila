@@ -3,32 +3,36 @@
 <span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Floating sidepanel example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Floating sidepanel example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidepanel-floating-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-floating-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-floating-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;sidepanel-floating-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-floating-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-floating-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SidepanelFloatingExampleComponent</span> </span>{
-  <span class="hljs-attr">opened</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
-  isGreaterThanSmall: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+    <span class="hljs-attr">opened</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+    isGreaterThanSmall: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
 
-  viewportServiceSubscription: Subscription;
+    viewportServiceSubscription: Subscription;
 
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> viewportService: NxViewportService, <span class="hljs-keyword">private</span> _cdRef: ChangeDetectorRef</span>)</span> {
-    <span class="hljs-built_in">this</span>.viewportServiceSubscription = <span class="hljs-built_in">this</span>.viewportService.min(NxBreakpoints.BREAKPOINT_SMALL)
-      .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanSmall</span> =&gt;</span> {
-        <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
-        <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-built_in">this</span>.isGreaterThanSmall) {
-          <span class="hljs-built_in">this</span>.isGreaterThanSmall = isGreaterThanSmall;
-          <span class="hljs-keyword">if</span> (isGreaterThanSmall &amp;&amp; !<span class="hljs-built_in">this</span>.opened) {
-            <span class="hljs-built_in">this</span>.opened = <span class="hljs-literal">true</span>;
-          } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-built_in">this</span>.opened) {
-            <span class="hljs-built_in">this</span>.opened = <span class="hljs-literal">false</span>;
-          }
-          <span class="hljs-built_in">this</span>._cdRef.detectChanges();
-        }
-      });
-  }
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
+        <span class="hljs-keyword">public</span> viewportService: NxViewportService,
+        <span class="hljs-keyword">private</span> _cdRef: ChangeDetectorRef,
+    </span>)</span> {
+        <span class="hljs-built_in">this</span>.viewportServiceSubscription = <span class="hljs-built_in">this</span>.viewportService
+            .min(NxBreakpoints.BREAKPOINT_SMALL)
+            .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanSmall</span> =&gt;</span> {
+                <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
+                <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-built_in">this</span>.isGreaterThanSmall) {
+                    <span class="hljs-built_in">this</span>.isGreaterThanSmall = isGreaterThanSmall;
+                    <span class="hljs-keyword">if</span> (isGreaterThanSmall &amp;&amp; !<span class="hljs-built_in">this</span>.opened) {
+                        <span class="hljs-built_in">this</span>.opened = <span class="hljs-literal">true</span>;
+                    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-built_in">this</span>.opened) {
+                        <span class="hljs-built_in">this</span>.opened = <span class="hljs-literal">false</span>;
+                    }
+                    <span class="hljs-built_in">this</span>._cdRef.detectChanges();
+                }
+            });
+    }
 }

@@ -1,32 +1,42 @@
 <button nxPlainButton (click)="menu.toggle()" aria-label="open menu">
-  <nx-icon name="bars"></nx-icon>
+    <nx-icon name="bars"></nx-icon>
 </button>
 
 <nx-menu #menu>
-  <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
-    <nx-tree-node *nxTreeNodeDef="let node; when: _isLink" nxMenuItem="l">
-      <a
-          nxMenuLink
-          nxTreeNodeActionItem
-          routerLink="./"
-          [queryParams]="node.query">
-        {{node.label}}
-      </a>
-    </nx-tree-node>
-    <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
-      <button nxMenuButton
-          nxTreeNodeToggle
-          nxTreeNodeActionItem
-          [nxMenuItem]="node.icon ? 's' : 'l'"
-          expandable
-          [expanded]="_treeControl.isExpanded(node)"
-          [nxType]="node.level === 0 ? 'root' : 'nested'"
-          type="button">
-        <nx-icon *ngIf="node.icon" nxMenuButtonIcon [name]="node.icon" size="s"></nx-icon>
-        {{node.label}}
-      </button>
-    </nx-tree-node>
-  </nx-tree>
+    <nx-tree [dataSource]="_dataSource" [treeControl]="_treeControl">
+        <nx-tree-node *nxTreeNodeDef="let node; when: _isLink" nxMenuItem="l">
+            <a
+                nxMenuLink
+                nxTreeNodeActionItem
+                routerLink="./"
+                [queryParams]="node.query"
+            >
+                {{node.label}}
+            </a>
+        </nx-tree-node>
+        <nx-tree-node *nxTreeNodeDef="let node; when: _hasChild">
+            <button
+                nxMenuButton
+                nxTreeNodeToggle
+                nxTreeNodeActionItem
+                [nxMenuItem]="node.icon ? 's' : 'l'"
+                expandable
+                [expanded]="_treeControl.isExpanded(node)"
+                [nxType]="node.level === 0 ? 'root' : 'nested'"
+                type="button"
+            >
+                <nx-icon
+                    *ngIf="node.icon"
+                    nxMenuButtonIcon
+                    [name]="node.icon"
+                    size="s"
+                ></nx-icon>
+                {{node.label}}
+            </button>
+        </nx-tree-node>
+    </nx-tree>
 
-  <button nxButton (click)="menu.toggle()" class="close-menu" type="button">close menu</button>
+    <button nxButton (click)="menu.toggle()" class="close-menu" type="button"
+        >close menu</button
+    >
 </nx-menu>

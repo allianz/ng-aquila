@@ -18,44 +18,44 @@ import { PopoverI18nExampleComponent } from './popover-i18n/popover-i18n-example
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
 
 const EXAMPLES = [
-  PopoverClickOutsideExampleComponent,
-  PopoverCustomExampleComponent,
-  PopoverHoverExampleComponent,
-  PopoverLazyloadExampleComponent,
-  PopoverModalExampleComponent,
-  PopoverPositioningExampleComponent,
-  PopoverScrollExampleComponent,
-  PopoverScrollableExampleComponent,
-  PopoverTableExampleComponent,
-  PopoverTriggerExampleComponent,
-  PopoverI18nExampleComponent
+    PopoverClickOutsideExampleComponent,
+    PopoverCustomExampleComponent,
+    PopoverHoverExampleComponent,
+    PopoverLazyloadExampleComponent,
+    PopoverModalExampleComponent,
+    PopoverPositioningExampleComponent,
+    PopoverScrollExampleComponent,
+    PopoverScrollableExampleComponent,
+    PopoverTableExampleComponent,
+    PopoverTriggerExampleComponent,
+    PopoverI18nExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxPopoverModule,
-    NxButtonModule,
-    NxIconModule,
-    NxDynamicTableModule,
-    CdkScrollableModule,
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxPopoverModule,
+        NxButtonModule,
+        NxIconModule,
+        NxDynamicTableModule,
+        CdkScrollableModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class PopoverExamplesModule {
-  static components() {
-    return {
-      'popover-click-outside': PopoverClickOutsideExampleComponent,
-      'popover-custom': PopoverCustomExampleComponent,
-      'popover-hover': PopoverHoverExampleComponent,
-      'popover-lazyload': PopoverLazyloadExampleComponent,
-      'popover-modal': PopoverModalExampleComponent,
-      'popover-positioning': PopoverPositioningExampleComponent,
-      'popover-scroll': PopoverScrollExampleComponent,
-      'popover-scrollable': PopoverScrollableExampleComponent,
-      'popover-table': PopoverTableExampleComponent,
-      'popover-trigger': PopoverTriggerExampleComponent,
-      'popover-i18n': PopoverI18nExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'popover-click-outside': PopoverClickOutsideExampleComponent,
+            'popover-custom': PopoverCustomExampleComponent,
+            'popover-hover': PopoverHoverExampleComponent,
+            'popover-lazyload': PopoverLazyloadExampleComponent,
+            'popover-modal': PopoverModalExampleComponent,
+            'popover-positioning': PopoverPositioningExampleComponent,
+            'popover-scroll': PopoverScrollExampleComponent,
+            'popover-scrollable': PopoverScrollableExampleComponent,
+            'popover-table': PopoverTableExampleComponent,
+            'popover-trigger': PopoverTriggerExampleComponent,
+            'popover-i18n': PopoverI18nExampleComponent,
+        };
+    }
 }

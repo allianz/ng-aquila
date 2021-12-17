@@ -1,397 +1,329 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
 <div class="docs-api">
-  <p class="docs-api-module-import">
-    <code>
-      <span class="docs-api-module-import__import-span">import</span>
-      { NxOverlayModule }
-      <span class="docs-api-module-import__from-span">from</span>
-      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/overlay'</span>;
-    </code>
-  </p><h3 id="services" class="docs-header-link docs-api-h3">
-      <span header-link="services"></span>
-      Services
+    <p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import</span>
+            { NxOverlayModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/overlay'</span>;
+        </code>
+    </p><h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
     </h3>
-    
-      
+     
 
 <h4 id="NxOverlayService" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxOverlayService"></span>
   <code>NxOverlayService</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">dir</span>:
-        <span class="docs-api-property__type">Direction</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The text direction of the containing app.</p>
-</td>
-</tr>
-
-
-    
-      
-
-<tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isRtl</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">dir</span>:
+                <span class="docs-api-property__type">Direction</span>
+            </code>
+        </p>
     </td>
-</tr>
-
-
-    
-      
-
-<tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">openOverlays</span>:
-        <span class="docs-api-property__type">NxOverlayRef<any>[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Keeps track of the currently-open overlays.</p>
+    <td class="docs-api-property-description">
+        <p>The text direction of the containing app.</p>
 </td>
 </tr>
+   
 
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isRtl</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
 
-    
-  </table>
-
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">openOverlays</span>:
+                <span class="docs-api-property__type">NxOverlayRef<any>[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Keeps track of the currently-open overlays.</p>
+</td>
+</tr>
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">getOverlayById(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOverlayById(<!--
      --><!--
        --><!--
-         -->id:
-              <span class="docs-api-property__type">string</span><!--
+         -->id: <span class="docs-api-property__type">string</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">NxOverlayRef<any> | undefined</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Finds an open overlay by its id.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Finds an open overlay by its id.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            id:
-            <span class="docs-api-method-parameter-type">string</span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              ID to use when looking up the overlay.
-            </p>
+            <code class="docs-api-parameter-name">
+                id:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> ID to use when looking up the overlay. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">open(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">open(<!--
      --><!--
        --><!--
-         -->componentOrTemplateRef:
-              <span class="docs-api-property__type">ComponentType<T> | TemplateRef<T></span><!--
+         -->componentOrTemplateRef: <span class="docs-api-property__type">ComponentType<T> | TemplateRef<T></span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->config:
-              <span class="docs-api-property__type">NxOverlayConfig<D></span><!--
+         -->config: <span class="docs-api-property__type">NxOverlayConfig<D></span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->origin:
-              <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span><!--
+         -->origin: <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">NxOverlayRef<T, R></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Opens a panel containing the given component and attaches it to an element.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Opens a panel containing the given component and attaches it to an element.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            componentOrTemplateRef:
-            <span class="docs-api-method-parameter-type">ComponentType<T> | TemplateRef<T></span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Type of the component to load into the dialog,
-    or a TemplateRef to instantiate as the panel content.
-            </p>
+            <code class="docs-api-parameter-name">
+                componentOrTemplateRef:
+                <span class="docs-api-method-parameter-type">ComponentType<T> | TemplateRef<T></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Type of the component to load into the dialog,
+    or a TemplateRef to instantiate as the panel content. </p>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            config<span class="docs-api-method-parameter-optional-marker">?</span>:
-            <span class="docs-api-method-parameter-type">NxOverlayConfig<D></span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Extra configuration options.
-            </p>
+            <code class="docs-api-parameter-name">
+                config<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">NxOverlayConfig<D></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Extra configuration options. </p>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            origin:
-            <span class="docs-api-method-parameter-type">FlexibleConnectedPositionStrategyOrigin</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                origin:
+                <span class="docs-api-method-parameter-type">FlexibleConnectedPositionStrategyOrigin</span>
+            </code>
         </div>
-      
+        
     </div><div class="docs-api-method-returns">
-      <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxOverlayRef<T, R></code></p>
-      <p class="docs-api-method-returns-description">
-        <p>Reference to the newly-opened panel.</p>
-
-      </p>
+        <p><span class="docs-api-method-returns-title">Returns:</span> <code class="docs-api-method-returns-type">NxOverlayRef<T, R></code></p>
+        <p class="docs-api-method-returns-description"> <p>Reference to the newly-opened panel.</p>
+ </p>
     </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="NxOverlayPositionBuilder" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxOverlayPositionBuilder"></span>
   <code>NxOverlayPositionBuilder</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isRtl</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isRtl</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">createPositionStrategy(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">createPositionStrategy(<!--
      --><!--
        --><!--
-         -->element:
-              <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span><!--
+         -->element: <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->config:
-              <span class="docs-api-property__type">NxOverlayConfig<any></span><!--
+         -->config: <span class="docs-api-property__type">NxOverlayConfig<any></span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"></div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            element:
-            <span class="docs-api-method-parameter-type">FlexibleConnectedPositionStrategyOrigin</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                element:
+                <span class="docs-api-method-parameter-type">FlexibleConnectedPositionStrategyOrigin</span>
+            </code>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            config:
-            <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
-          </code>
+            <code class="docs-api-parameter-name">
+                config:
+                <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">getOffset(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOffset(<!--
      --><!--
        --><!--
-         -->direction:
-              <span class="docs-api-property__type">NxOverlayDirection</span><!--
+         -->direction: <span class="docs-api-property__type">NxOverlayDirection</span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->config:
-              <span class="docs-api-property__type">NxOverlayConfig<any></span><!--
+         -->config: <span class="docs-api-property__type">NxOverlayConfig<any></span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Returns the overlay offset required by the user&#39;s direction preference</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Returns the overlay offset required by the user&#39;s direction preference</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            direction:
-            <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                direction:
+                <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
+            </code>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            config:
-            <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
-          </code>
+            <code class="docs-api-parameter-name">
+                config:
+                <span class="docs-api-method-parameter-type">NxOverlayConfig<any></span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">getOrigin(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOrigin(<!--
      --><!--
        --><!--
-         -->direction:
-              <span class="docs-api-property__type">NxOverlayDirection</span><!--
+         -->direction: <span class="docs-api-property__type">NxOverlayDirection</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">OriginConnectionPosition</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Returns the origin position based on the user&#39;s direction preference.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Returns the origin position based on the user&#39;s direction preference.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            direction:
-            <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                direction:
+                <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">getOverlayPosition(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getOverlayPosition(<!--
      --><!--
        --><!--
-         -->direction:
-              <span class="docs-api-property__type">NxOverlayDirection</span><!--
+         -->direction: <span class="docs-api-property__type">NxOverlayDirection</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">OverlayConnectionPosition</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Returns the overlay position based on the user&#39;s direction preference</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Returns the overlay position based on the user&#39;s direction preference</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            direction:
-            <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                direction:
+                <span class="docs-api-method-parameter-type">NxOverlayDirection</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-
-
-
-    <h3 id="directives" class="docs-header-link docs-api-h3">
-      <span header-link="directives"></span>
-      Directives
+   
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
     </h3>
-    
-      
+     
 
 <h4 id="NxOverlayContainerComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxOverlayContainerComponent"></span>
@@ -407,1050 +339,844 @@
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">elementRef</span>:
-        <span class="docs-api-property__type"></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">elementRef</span>:
+                <span class="docs-api-property__type"></span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" >
-        Deprecated
-      </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">attachDomPortal</span>:
-        <span class="docs-api-property__type">(portal: DomPortal) => {
+    <td class="docs-api-properties-name-cell"><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">attachDomPortal</span>:
+                <span class="docs-api-property__type">(portal: DomPortal) => {
     if (this._portalOutlet.hasAttached()) {
         throwNxOverlayContentAlreadyAttachedError();
     }
     this._savePreviouslyFocusedElement();
     return this._portalOutlet.attachDomPortal(portal);
 }</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Attaches a DOM portal to the overlay container.</p>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Attaches a DOM portal to the overlay container.</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">attachComponentPortal(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">attachComponentPortal(<!--
      --><!--
        --><!--
-         -->portal:
-              <span class="docs-api-property__type">ComponentPortal<T></span><!--
+         -->portal: <span class="docs-api-property__type">ComponentPortal<T></span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">ComponentRef<T></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Attach a ComponentPortal as content to this overlay container.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Attach a ComponentPortal as content to this overlay container.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            portal:
-            <span class="docs-api-method-parameter-type">ComponentPortal<T></span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Portal to be attached as the overlay content.
-            </p>
+            <code class="docs-api-parameter-name">
+                portal:
+                <span class="docs-api-method-parameter-type">ComponentPortal<T></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Portal to be attached as the overlay content. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">attachTemplatePortal(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">attachTemplatePortal(<!--
      --><!--
        --><!--
-         -->portal:
-              <span class="docs-api-property__type">TemplatePortal<C></span><!--
+         -->portal: <span class="docs-api-property__type">TemplatePortal<C></span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">EmbeddedViewRef<C></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Attach a TemplatePortal as content to this overlay container.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Attach a TemplatePortal as content to this overlay container.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            portal:
-            <span class="docs-api-method-parameter-type">TemplatePortal<C></span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Portal to be attached as the overlay content.
-            </p>
+            <code class="docs-api-parameter-name">
+                portal:
+                <span class="docs-api-method-parameter-type">TemplatePortal<C></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Portal to be attached as the overlay content. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">restoreFocus(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">restoreFocus(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Restores focus to the element that was focused before the overlay opened.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Restores focus to the element that was focused before the overlay opened.</p>
 </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="TestRootComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="TestRootComponent"></span>
   <code>TestRootComponent</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">trigger</span>:
-        <span class="docs-api-property__type">ElementRef</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">trigger</span>:
+                <span class="docs-api-property__type">ElementRef</span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
-      <span header-link="additional_classes"></span>
-      Additional classes
+ 
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
     </h3>
-    
-      
+     
 
 <h4 id="NxOverlayConfig" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxOverlayConfig"></span>
   <code>NxOverlayConfig</code></h4><p class="docs-api-class-description"><p>Configuration for opening a overlay  with the NxDialogService.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">ariaDescribedBy</span>:
-        <span class="docs-api-property__type">string | null</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>ID of the element that describes the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaDescribedBy</span>:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ID of the element that describes the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">ariaLabel</span>:
-        <span class="docs-api-property__type">string | null</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Aria label to assign to the overlay element.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaLabel</span>:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Aria label to assign to the overlay element.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">ariaLabelledBy</span>:
-        <span class="docs-api-property__type">string | null</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>ID of the element that labels the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">ariaLabelledBy</span>:
+                <span class="docs-api-property__type">string | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ID of the element that labels the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">autoFocus</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the overlay should focus the first focusable element on open.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">autoFocus</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the overlay should focus the first focusable element on open.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">backdropClass</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Custom class for the backdrop.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">backdropClass</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Custom class for the backdrop.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeOnClickOutside</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the user can use escape or clicking on the backdrop to close the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeOnClickOutside</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the user can use escape or clicking on the backdrop to close the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeOnNavigation</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the overlay should close when the user goes backwards/forwards in history.
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeOnNavigation</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the overlay should close when the user goes backwards/forwards in history.
 Note that this usually doesn&#39;t include clicking on links (unless the user is using
 the <code>HashLocationStrategy</code>).</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">componentFactoryResolver</span>:
-        <span class="docs-api-property__type">ComponentFactoryResolver</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Alternate <code>ComponentFactoryResolver</code> to use when resolving the associated component.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">componentFactoryResolver</span>:
+                <span class="docs-api-property__type">ComponentFactoryResolver</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Alternate <code>ComponentFactoryResolver</code> to use when resolving the associated component.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">direction</span>:
-        <span class="docs-api-property__type">NxOverlayDirection</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Position overrides.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">direction</span>:
+                <span class="docs-api-property__type">NxOverlayDirection</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Position overrides.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">fallbackOrientation</span>:
-        <span class="docs-api-property__type">NxOverlayFallbackOrientation</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The fallbacks that are chosen.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">fallbackOrientation</span>:
+                <span class="docs-api-property__type">NxOverlayFallbackOrientation</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The fallbacks that are chosen.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">hasBackdrop</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the overlay has a backdrop.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">hasBackdrop</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the overlay has a backdrop.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">height</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Height of the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">height</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Height of the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>ID for the overlay. If omitted, a unique one will be generated.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>ID for the overlay. If omitted, a unique one will be generated.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">maxHeight</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Max-height of the overlay. If a number is provided, assumes pixel units.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">maxHeight</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Max-height of the overlay. If a number is provided, assumes pixel units.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">maxWidth</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Max-width of the overlay. If a number is provided, assumes pixel units. Defaults to 100vw.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">maxWidth</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Max-width of the overlay. If a number is provided, assumes pixel units. Defaults to 100vw.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">minHeight</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Min-height of the overlay. If a number is provided, assumes pixel units.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">minHeight</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Min-height of the overlay. If a number is provided, assumes pixel units.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">minWidth</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Min-width of the overlay. If a number is provided, assumes pixel units.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">minWidth</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Min-width of the overlay. If a number is provided, assumes pixel units.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">offset</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The distance from the trigger to the overlay in pixels.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">offset</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The distance from the trigger to the overlay in pixels.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">panelClass</span>:
-        <span class="docs-api-property__type">string | string[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Custom class for the overlay pane.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">panelClass</span>:
+                <span class="docs-api-property__type">string | string[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Custom class for the overlay pane.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">positionStrategy</span>:
-        <span class="docs-api-property__type">FlexibleConnectedPositionStrategy</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Scroll strategy to be used for the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">positionStrategy</span>:
+                <span class="docs-api-property__type">FlexibleConnectedPositionStrategy</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Scroll strategy to be used for the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">restoreFocus</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the overlay should restore focus to the
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">restoreFocus</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the overlay should restore focus to the
 previously-focused element, after it&#39;s closed.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">role</span>:
-        <span class="docs-api-property__type">NxOverlayRole | null</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The ARIA role of the overlay element.</p>
-</td>
-</tr>
-
-
-    
-      
-
-<tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">scrollStrategy</span>:
-        <span class="docs-api-property__type">ScrollStrategy</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Scroll strategy to be used for the overlay.</p>
-</td>
-</tr>
-
-
-    
-      
-
-<tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">triggerButton</span>:
-        <span class="docs-api-property__type">NxTriggerButton</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">role</span>:
+                <span class="docs-api-property__type">NxOverlayRole | null</span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        <p>The ARIA role of the overlay element.</p>
+</td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">viewContainerRef</span>:
-        <span class="docs-api-property__type">ViewContainerRef</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Where the attached component should live in Angular&#39;s <em>logical</em> component tree.
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">scrollStrategy</span>:
+                <span class="docs-api-property__type">ScrollStrategy</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Scroll strategy to be used for the overlay.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">triggerButton</span>:
+                <span class="docs-api-property__type">NxTriggerButton</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">viewContainerRef</span>:
+                <span class="docs-api-property__type">ViewContainerRef</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Where the attached component should live in Angular&#39;s <em>logical</em> component tree.
 This affects what is available for injection and the change detection order for the
 component instantiated inside of the overlay. This does not affect where the overlay
 content will be rendered.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">width</span>:
-        <span class="docs-api-property__type">number | string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Width of the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">width</span>:
+                <span class="docs-api-property__type">number | string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Width of the overlay.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxOverlayRef" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxOverlayRef"></span>
   <code>NxOverlayRef</code></h4><p class="docs-api-class-description"><p>Reference to a overlay opened via the NxDialogService.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeOnClickOutside</span>:
-        <span class="docs-api-property__type">boolean | undefined</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the user is allowed to close the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeOnClickOutside</span>:
+                <span class="docs-api-property__type">boolean | undefined</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the user is allowed to close the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">componentInstance</span>:
-        <span class="docs-api-property__type">T</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The instance of component opened into the overlay.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">componentInstance</span>:
+                <span class="docs-api-property__type">T</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The instance of component opened into the overlay.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">origin</span>:
-        <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">origin</span>:
+                <span class="docs-api-property__type">FlexibleConnectedPositionStrategyOrigin</span>
+            </code>
+        </p>
     </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">addPanelClass(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">addPanelClass(<!--
      --><!--
        --><!--
-         -->classes:
-              <span class="docs-api-property__type">string | string[]</span><!--
+         -->classes: <span class="docs-api-property__type">string | string[]</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">this</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Add a CSS class or an array of classes to the overlay pane.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Add a CSS class or an array of classes to the overlay pane.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            classes:
-            <span class="docs-api-method-parameter-type">string | string[]</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                classes:
+                <span class="docs-api-method-parameter-type">string | string[]</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">afterClosed(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">afterClosed(<!--
      -->): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished closing.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished closing.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">afterOpened(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">afterOpened(<!--
      -->): <span class="docs-api-method-returns-type">Observable<void></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished opening.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay is finished opening.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">backdropClick(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">backdropClick(<!--
      -->): <span class="docs-api-method-returns-type">Observable<MouseEvent></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that emits when the overlay&#39;s backdrop has been clicked.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">beforeClosed(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">beforeClosed(<!--
      -->): <span class="docs-api-method-returns-type">Observable<R | undefined></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay has started closing.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the overlay has started closing.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">close(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">close(<!--
      --><!--
        --><!--
-         -->overlayResult:
-              <span class="docs-api-property__type">R</span><!--
+         -->overlayResult: <span class="docs-api-property__type">R</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Close the overlay.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Close the overlay.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            overlayResult<span class="docs-api-method-parameter-optional-marker">?</span>:
-            <span class="docs-api-method-parameter-type">R</span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Optional result to return to the overlay opener.
-            </p>
+            <code class="docs-api-parameter-name">
+                overlayResult<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">R</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Optional result to return to the overlay opener. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">getState(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">getState(<!--
      -->): <span class="docs-api-method-returns-type">NxOverlayState</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets the current state of the overlay&#39;s lifecycle.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets the current state of the overlay&#39;s lifecycle.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">keydownEvents(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">keydownEvents(<!--
      -->): <span class="docs-api-method-returns-type">Observable<KeyboardEvent></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that emits when keydown events are targeted on the overlay.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that emits when keydown events are targeted on the overlay.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">removePanelClass(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">removePanelClass(<!--
      --><!--
        --><!--
-         -->classes:
-              <span class="docs-api-property__type">string | string[]</span><!--
+         -->classes: <span class="docs-api-property__type">string | string[]</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">this</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Remove a CSS class or an array of classes from the overlay pane.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Remove a CSS class or an array of classes from the overlay pane.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            classes:
-            <span class="docs-api-method-parameter-type">string | string[]</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                classes:
+                <span class="docs-api-method-parameter-type">string | string[]</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">waitForClose(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">waitForClose(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"></div></div>
-
-
-  
-
-
-
-    
-      
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div></div>
+   
+   
 
 <h4 id="NxTriggerButton" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxTriggerButton"></span>
   <code>NxTriggerButton</code></h4><p class="docs-api-class-description"><p>Interface for any kind of button that should be active while
 an overlay is open.</p>
-</p>
-
+</p> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">setTriggerActive(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setTriggerActive(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Applies active styles to the button.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Applies active styles to the button.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">setTriggerInactive(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setTriggerInactive(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Applies or unsets inactive styles to the button.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Applies or unsets inactive styles to the button.</p>
 </div></div>
-
-
-  
-
-
-
-    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
-      <span header-link="additional_type_aliases"></span>
-      Additional type aliases
+   
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
     </h3>
-    
-      
+     
 
 <h4 id="NxOverlayRole" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxOverlayRole"></span>
-  <code>NxOverlayRole</code>
+    <span header-link="NxOverlayRole"></span>
+    <code>NxOverlayRole</code>
 </h4><p class="docs-api-type-alias-description"><p>The ARIA role of the overlay.</p>
 </p><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">string</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">string</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="NxOverlayDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxOverlayDirection"></span>
-  <code>NxOverlayDirection</code>
+    <span header-link="NxOverlayDirection"></span>
+    <code>NxOverlayDirection</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">NxOverlayVerticalDirection | NxOverlayHorizontalDirection</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">NxOverlayVerticalDirection | NxOverlayHorizontalDirection</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="NxOverlayVerticalDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxOverlayVerticalDirection"></span>
-  <code>NxOverlayVerticalDirection</code>
+    <span header-link="NxOverlayVerticalDirection"></span>
+    <code>NxOverlayVerticalDirection</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end'</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="NxOverlayHorizontalDirection" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxOverlayHorizontalDirection"></span>
-  <code>NxOverlayHorizontalDirection</code>
+    <span header-link="NxOverlayHorizontalDirection"></span>
+    <code>NxOverlayHorizontalDirection</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'left' | 'right'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'left' | 'right'</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="NxOverlayFallbackOrientation" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxOverlayFallbackOrientation"></span>
-  <code>NxOverlayFallbackOrientation</code>
+    <span header-link="NxOverlayFallbackOrientation"></span>
+    <code>NxOverlayFallbackOrientation</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'vertical' | 'horizontal' | 'clockwise'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'vertical' | 'horizontal' | 'clockwise'</code>
 </p>
-
-
-    </div>
+  </div>

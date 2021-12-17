@@ -7,22 +7,22 @@ import { MarginUsageExampleComponent } from './margin-usage/margin-usage-example
 import { HiddenClassesExampleComponent } from './hidden-classes/hidden-classes-example';
 
 const EXAMPLES = [
-  MarginSizesExampleComponent,
-  MarginUsageExampleComponent,
-  HiddenClassesExampleComponent
+    MarginSizesExampleComponent,
+    MarginUsageExampleComponent,
+    HiddenClassesExampleComponent,
 ];
 
- @NgModule({
-  imports: [CommonModule, NxTableModule],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [CommonModule, NxTableModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class LayoutExamplesModule {
-  static components() {
-    return {
-      'margin-sizes': MarginSizesExampleComponent,
-      'hidden-classes': HiddenClassesExampleComponent,
-      'margin-usage': MarginUsageExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'margin-sizes': MarginSizesExampleComponent,
+            'hidden-classes': HiddenClassesExampleComponent,
+            'margin-usage': MarginUsageExampleComponent,
+        };
+    }
 }

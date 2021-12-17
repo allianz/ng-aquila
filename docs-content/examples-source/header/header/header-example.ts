@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Single Row Header Example
-*/
+ * @title Single Row Header Example
+ */
 @Component({
-  selector: 'header-example',
-  templateUrl: './header-example.html',
-  styleUrls: ['./header-example.css']
+    selector: 'header-example',
+    templateUrl: './header-example.html',
+    styleUrls: ['./header-example.css'],
 })
-export class HeaderExampleComponent { }
+export class HeaderExampleComponent {}

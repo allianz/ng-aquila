@@ -1,7 +1,4 @@
-<p class="docs-markdown--p">The video component only supports YouTube videos.
-We embedded the YouTube player as iframe tag. For detailed information about this technique, please check out the official <a href="https://developers.google.com/youtube/player_parameters?hl=en">documentation</a>.
-In order to save bandwidth, the iframe will only be loaded after the user has selected the preview image.
-Please note that the width of the video depends on the enclosing element and that the player has a fixed aspect ratio of 16:9. YouTube recommends that players should be at least 480px wide and 270px tall.</p>
+<p class="docs-markdown--p">The video component only supports YouTube videos. We embedded the YouTube player as iframe tag. For detailed information about this technique, please check out the official <a href="https://developers.google.com/youtube/player_parameters?hl=en">documentation</a>. In order to save bandwidth, the iframe will only be loaded after the user has selected the preview image. Please note that the width of the video depends on the enclosing element and that the player has a fixed aspect ratio of 16:9. YouTube recommends that players should be at least 480px wide and 270px tall.</p>
 <h2 id="examples" class="docs-markdown--h2">Examples</h2>
 <h3 id="basic-use-case" class="docs-markdown--h3">Basic use case</h3>
 <p class="docs-markdown--p">Videos on YouTube have a unique id which needs to be provided as input nxVideoId. You should also add descriptive values for <code>nxAltText</code> and <code>nxPlayButtonAriaLabel</code>.</p>
@@ -11,16 +8,12 @@ Please note that the width of the video depends on the enclosing element and tha
 <p class="docs-markdown--p">Based on the <code>nxVideoId</code>, YouTube provides a preview image. You can use <code>nxPreviewImageSrc</code> to override this.</p>
 <div nx-docs-example="video-custom" config="{}">exampleID: video-custom</div>
 <h3 id="advanced-configuration" class="docs-markdown--h3">Advanced Configuration</h3>
-<p class="docs-markdown--p">All videos are configured to start playing automatically (query parameter &quot;autoplay&quot;), to not show related videos (&quot;rel&quot;) and to not display information like the video title and uploader before the video starts playing (&quot;showinfo&quot;).
-Some additional configuration parameters can be passed to the YouTube iframe. For more information on the effect of the respective query parameters, consult the <a href="https://developers.google.com/youtube/player_parameters?hl=en#Parameters">Youtube documentation</a>. The following parameters are available:</p>
+<p class="docs-markdown--p">All videos are configured to start playing automatically (query parameter &quot;autoplay&quot;), to not show related videos (&quot;rel&quot;) and to not display information like the video title and uploader before the video starts playing (&quot;showinfo&quot;). Some additional configuration parameters can be passed to the YouTube iframe. For more information on the effect of the respective query parameters, consult the <a href="https://developers.google.com/youtube/player_parameters?hl=en#Parameters">Youtube documentation</a>. The following parameters are available:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><code>nxShowPlayerControls</code>: Setting this to false causes the player controls to be hidden (query param &quot;controls&quot;).</li>
 <li class="docs-markdown--li"><code>nxAllowFullScreen</code>: Setting this to false hides the fullscreen option while the rest of the controls remain visible (query param &quot;fs&quot;).</li>
-<li class="docs-markdown--li"><code>nxInterfaceLanguage</code>: Use this to override the interface language with a fully specified locale or ISO 639-1 two-letter language code (query param &quot;hl&quot;).
-In the following example, the fullscreen option is disabled and the interface language is set to French.</li>
+<li class="docs-markdown--li"><code>nxInterfaceLanguage</code>: Use this to override the interface language with a fully specified locale or ISO 639-1 two-letter language code (query param &quot;hl&quot;). In the following example, the fullscreen option is disabled and the interface language is set to French.</li>
 </ul>
 <div nx-docs-example="video-advanced" config="{}">exampleID: video-advanced</div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
-<p class="docs-markdown--p">Please remember to provide a descriptive alt-text for the preview image via the <code>nxAltText</code> input. If no alt text is provided, screen readers and other assistive technology will ignore the image.
-You can also set a value for the <code>aria-label</code> attribute on the play button (<code>nxPlayButtonAriaLabel</code>). If no label attribute is provided, the value of the preview image alt attribute is used together with the suffix &quot;Play Video&quot;.
-For the video iframe itself, YouTube will take care of accessibility.</p>
+<p class="docs-markdown--p">Please remember to provide a descriptive alt-text for the preview image via the <code>nxAltText</code> input. If no alt text is provided, screen readers and other assistive technology will ignore the image. You can also set a value for the <code>aria-label</code> attribute on the play button (<code>nxPlayButtonAriaLabel</code>). If no label attribute is provided, the value of the preview image alt attribute is used together with the suffix &quot;Play Video&quot;. For the video iframe itself, YouTube will take care of accessibility.</p>

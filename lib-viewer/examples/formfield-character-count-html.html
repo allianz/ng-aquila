@@ -1,11 +1,11 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Label&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">inputToCount</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;15&quot;</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;inputToCount.value?.length === 0&quot;</span>&gt;</span>
-    max. 15 characters
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> #<span class="hljs-attr">inputToCount</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;15&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;inputToCount.value?.length === 0&quot;</span>&gt;</span>
+            max. 15 characters
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;inputToCount.value.length &gt; 0&quot;</span>&gt;</span>
+            {{15 - (inputToCount.value.length || 0)}} characters remaining
+        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;inputToCount.value.length &gt; 0&quot;</span>&gt;</span>
-    {{15 - (inputToCount.value.length || 0)}} characters remaining
-    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

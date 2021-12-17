@@ -5,22 +5,20 @@ import { CopytextNegativeExampleComponent } from './copytext-negative/copytext-n
 import { CopytextSizesExampleComponent } from './copytext-sizes/copytext-sizes-example';
 
 const EXAMPLES = [
-  CopytextNegativeExampleComponent,
-  CopytextSizesExampleComponent
+    CopytextNegativeExampleComponent,
+    CopytextSizesExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxCopytextModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxCopytextModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class CopytextExamplesModule {
-  static components() {
-    return {
-      'copytext-negative': CopytextNegativeExampleComponent,
-      'copytext-sizes': CopytextSizesExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'copytext-negative': CopytextNegativeExampleComponent,
+            'copytext-sizes': CopytextSizesExampleComponent,
+        };
+    }
 }

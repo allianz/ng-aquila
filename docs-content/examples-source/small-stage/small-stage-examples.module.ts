@@ -12,32 +12,32 @@ import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 const EXAMPLES = [
-  SmallStageContentVariationExampleComponent,
-  SmallStageDefaultExampleComponent,
-  SmallStageExpertContentNarrowExampleComponent,
-  SmallStageWithBackgroundExampleComponent,
-  SmallStageExpertDefaultExampleComponent,
+    SmallStageContentVariationExampleComponent,
+    SmallStageDefaultExampleComponent,
+    SmallStageExpertContentNarrowExampleComponent,
+    SmallStageWithBackgroundExampleComponent,
+    SmallStageExpertDefaultExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxSmallStageModule,
-    NxBreadcrumbModule,
-    ExamplesSharedModule,
-    NxLinkModule,
-    NxIconModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxSmallStageModule,
+        NxBreadcrumbModule,
+        ExamplesSharedModule,
+        NxLinkModule,
+        NxIconModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class SmallExamplesModule {
-  static components() {
-    return {
-      'small-stage-default': SmallStageDefaultExampleComponent,
-      'small-stage-content-variation': SmallStageContentVariationExampleComponent,
-      'small-stage-w-bg': SmallStageWithBackgroundExampleComponent,
-      'small-stage-expert-default': SmallStageExpertDefaultExampleComponent,
-      'small-stage-expert-content-narrow': SmallStageExpertContentNarrowExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'small-stage-default': SmallStageDefaultExampleComponent,
+            'small-stage-content-variation': SmallStageContentVariationExampleComponent,
+            'small-stage-w-bg': SmallStageWithBackgroundExampleComponent,
+            'small-stage-expert-default': SmallStageExpertDefaultExampleComponent,
+            'small-stage-expert-content-narrow': SmallStageExpertContentNarrowExampleComponent,
+        };
+    }
 }

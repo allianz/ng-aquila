@@ -2,16 +2,13 @@
 <p class="docs-markdown--p">The phone input component depends on the <code>i18n-iso-countries</code> package. Please install it, e.g. for npm run <code>npm install i18n-iso-countries --save</code>.</p>
 <p class="docs-markdown--p">The phone input is implemented as an <code>NxFormfieldControl</code> so you can use it like an input or dropdown inside the formfield component.</p>
 <h2 id="retail" class="docs-markdown--h2">Retail</h2>
-<p class="docs-markdown--p">The retail version with a placeholder.
-Please note: the floating label is fixed to the top currently for the phone input. This is only visible if you do not use a placeholder value.</p>
+<p class="docs-markdown--p">The retail version with a placeholder. Please note: the floating label is fixed to the top currently for the phone input. This is only visible if you do not use a placeholder value.</p>
 <div nx-docs-example="phone-input-retail" config="{}">exampleID: phone-input-retail</div>
 <h2 id="initial-selected-country" class="docs-markdown--h2">Initial selected country</h2>
-<p class="docs-markdown--p">You can set the initial country code via the <code>countryCode</code> input. The input expects an internal country code like <code>DE</code>, <code>US</code> or <code>AT</code>.
-If there is already a number in the input field changing <code>countryCode</code> programmatically has no effect.</p>
+<p class="docs-markdown--p">You can set the initial country code via the <code>countryCode</code> input. The input expects an internal country code like <code>DE</code>, <code>US</code> or <code>AT</code>. If there is already a number in the input field changing <code>countryCode</code> programmatically has no effect.</p>
 <div nx-docs-example="phone-input-country-code" config="{}">exampleID: phone-input-country-code</div>
 <h2 id="forms" class="docs-markdown--h2">Forms</h2>
-<p class="docs-markdown--p">When using <code>ngModel</code> or reactive forms the component expects the control value to be in the format of
-<code>+&lt;country-calling-code&gt;&lt;local number&gt;</code>, e.g. <code>+4989123456</code> as the initial value. It is important that the country calling code is in the beginning of the string that the component can parse it correctly.</p>
+<p class="docs-markdown--p">When using <code>ngModel</code> or reactive forms the component expects the control value to be in the format of <code>+&lt;country-calling-code&gt;&lt;local number&gt;</code>, e.g. <code>+4989123456</code> as the initial value. It is important that the country calling code is in the beginning of the string that the component can parse it correctly.</p>
 <div nx-docs-example="phone-input-forms" config="{}">exampleID: phone-input-forms</div>
 <h2 id="disabled" class="docs-markdown--h2">Disabled</h2>
 <p class="docs-markdown--p">By adding the <code>disabled</code> attribute you can set the phone input into disabled mode. Alternatively you can disable the form control via the reactive forms form control.</p>
@@ -21,14 +18,11 @@ If there is already a number in the input field changing <code>countryCode</code
 <p class="docs-markdown--p">We will look into providing validators separated from the component later on. If you need client side validation this example should be a good starting point. For the example to work please install libphonenumber-js.</p>
 <div nx-docs-example="phone-input-validation" config="{}">exampleID: phone-input-validation</div>
 <h2 id="formatting" class="docs-markdown--h2">Formatting</h2>
-<p class="docs-markdown--p">Similar to validation the component doesn't provide formatting out of the box to not include the heavy dependency on libphonenumber-js. You can set a custom formatting function via the <code>inputFormatter</code> input property. The function is called on the blur event of the input field.
-To have a clean model the component removes whitespace, parenthesis and dash characters. If you use any kind of additional formatting characters you have to clean these yourself.</p>
+<p class="docs-markdown--p">Similar to validation the component doesn't provide formatting out of the box to not include the heavy dependency on libphonenumber-js. You can set a custom formatting function via the <code>inputFormatter</code> input property. The function is called on the blur event of the input field. To have a clean model the component removes whitespace, parenthesis and dash characters. If you use any kind of additional formatting characters you have to clean these yourself.</p>
 <div nx-docs-example="phone-input-formatting" config="{}">exampleID: phone-input-formatting</div>
 <h2 id="internationalization" class="docs-markdown--h2">Internationalization</h2>
-<p class="docs-markdown--p">To set different translations of the countries and to change texts like the overlay label you can either override it via inputs
-in the template or set these via the <code>NxPhoneInputIntl</code> class provider.</p>
-<p class="docs-markdown--p">To get translations for the countries you can import a different locale from the <code>i18n-iso-countries</code> package.
-Please note: if you provide the <code>NxPhoneInputIntl</code> class and use the inputs of the component as well, the input values take precedence.</p>
+<p class="docs-markdown--p">To set different translations of the countries and to change texts like the overlay label you can either override it via inputs in the template or set these via the <code>NxPhoneInputIntl</code> class provider.</p>
+<p class="docs-markdown--p">To get translations for the countries you can import a different locale from the <code>i18n-iso-countries</code> package. Please note: if you provide the <code>NxPhoneInputIntl</code> class and use the inputs of the component as well, the input values take precedence.</p>
 <div nx-docs-example="phone-input-i18n" config="{}">exampleID: phone-input-i18n</div>
 <div class="docs-expert-container">
 <h2 id="expert" class="docs-markdown--h2">Expert</h2>

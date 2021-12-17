@@ -1,70 +1,79 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h6</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Strict parsing:<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-          <span class="hljs-attr">nxDatefield</span> <span class="hljs-attr">nxInput</span>
-          <span class="hljs-attr">nxStrict</span>=<span class="hljs-string">&quot;true&quot;</span>
-          [<span class="hljs-attr">nxParseFormat</span>]=<span class="hljs-string">&quot;parseFormat&quot;</span>
-          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;strictDate&quot;</span>
-          #<span class="hljs-attr">strictDatefield</span>=<span class="hljs-string">&quot;nxDatefield&quot;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h6</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Strict parsing:<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;openedStrict&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-switcher&quot;</span>&gt;</span>Debug date<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxDatefield</span>
+                    <span class="hljs-attr">nxInput</span>
+                    <span class="hljs-attr">nxStrict</span>=<span class="hljs-string">&quot;true&quot;</span>
+                    [<span class="hljs-attr">nxParseFormat</span>]=<span class="hljs-string">&quot;parseFormat&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;strictDate&quot;</span>
+                    #<span class="hljs-attr">strictDatefield</span>=<span class="hljs-string">&quot;nxDatefield&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
-      Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      Formatted value: {{ strictDatefield.currentFormattedDate }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      Moment Object: {{ strictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">h6</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Non-strict parsing:<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-          <span class="hljs-attr">nxDatefield</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxStrict</span>=<span class="hljs-string">&quot;false&quot;</span>
-          [<span class="hljs-attr">nxParseFormat</span>]=<span class="hljs-string">&quot;parseFormat&quot;</span>
-          [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;nonStrictDate&quot;</span>
-          #<span class="hljs-attr">nonStrictDatefield</span>=<span class="hljs-string">&quot;nxDatefield&quot;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;openedStrict&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-switcher&quot;</span>
+                &gt;</span>Debug date&lt;/nx-switcher
+            &gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;openedNonStrict&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-switcher&quot;</span>&gt;</span>Debug date<span class="hljs-tag">&lt;/<span class="hljs-name">nx-switcher</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
+            Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Formatted value: {{ strictDatefield.currentFormattedDate }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Moment Object: {{ strictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedNonStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
-      Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-      Moment Object: {{ nonStrictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Parse Pattern&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;parseFormat&quot;</span> /&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h6</span> <span class="hljs-attr">nxHeadline</span>=<span class="hljs-string">&quot;subsection-xsmall&quot;</span>&gt;</span>Non-strict parsing:<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">nxDatefield</span>
+                    <span class="hljs-attr">nxInput</span>
+                    <span class="hljs-attr">nxStrict</span>=<span class="hljs-string">&quot;false&quot;</span>
+                    [<span class="hljs-attr">nxParseFormat</span>]=<span class="hljs-string">&quot;parseFormat&quot;</span>
+                    [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;nonStrictDate&quot;</span>
+                    #<span class="hljs-attr">nonStrictDatefield</span>=<span class="hljs-string">&quot;nxDatefield&quot;</span>
+                /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;6&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-switcher</span> [(<span class="hljs-attr">checked</span>)]=<span class="hljs-string">&quot;openedNonStrict&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-switcher&quot;</span>
+                &gt;</span>Debug date&lt;/nx-switcher
+            &gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;openedNonStrict&quot;</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;debug-container&quot;</span>&gt;</span>
+            Current Locale: {{ currentLocale }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Formatted value: {{ nonStrictDatefield.currentFormattedDate }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+            Moment Object: {{ nonStrictDatefield.value }} <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Parse Pattern&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;parseFormat&quot;</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,165 +1,126 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
 <div class="docs-api">
-  <p class="docs-api-module-import">
-    <code>
-      <span class="docs-api-module-import__import-span">import</span>
-      { NxMessageModule }
-      <span class="docs-api-module-import__from-span">from</span>
-      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/message'</span>;
-    </code>
-  </p><h3 id="services" class="docs-header-link docs-api-h3">
-      <span header-link="services"></span>
-      Services
+    <p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import</span>
+            { NxMessageModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/message'</span>;
+        </code>
+    </p><h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
     </h3>
-    
-      
+     
 
 <h4 id="NxMessageToastService" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxMessageToastService"></span>
   <code>NxMessageToastService</code></h4><p class="docs-api-class-description"><p>A service for dispatching and displaying toast messages.</p>
-</p>
-
+</p> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">dismiss(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">dismiss(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Dismisses the currently visible message toast.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Dismisses the currently visible message toast.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">open(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">open(<!--
      --><!--
        --><!--
-         -->text:
-              <span class="docs-api-property__type">string</span><!--
+         -->text: <span class="docs-api-property__type">string</span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->config:
-              <span class="docs-api-property__type">NxMessageToastConfig</span><!--
+         -->config: <span class="docs-api-property__type">NxMessageToastConfig</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom text.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom text.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            text:
-            <span class="docs-api-method-parameter-type">string</span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Text to be used for the message toast.
-            </p>
+            <code class="docs-api-parameter-name">
+                text:
+                <span class="docs-api-method-parameter-type">string</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Text to be used for the message toast. </p>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            config<span class="docs-api-method-parameter-optional-marker">?</span>:
-            <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Extra configuration for the message toast.
-            </p>
+            <code class="docs-api-parameter-name">
+                config<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">openFromTemplate(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">openFromTemplate(<!--
      --><!--
        --><!--
-         -->template:
-              <span class="docs-api-property__type">TemplateRef<any></span><!--
+         -->template: <span class="docs-api-property__type">TemplateRef<any></span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->config:
-              <span class="docs-api-property__type">NxMessageToastConfig</span><!--
+         -->config: <span class="docs-api-property__type">NxMessageToastConfig</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">NxMessageToastRef</span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom template for the content.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Creates and dispatches a message toastwith a custom template for the content.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            template:
-            <span class="docs-api-method-parameter-type">TemplateRef<any></span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Template to be used for the message toast.
-            </p>
+            <code class="docs-api-parameter-name">
+                template:
+                <span class="docs-api-method-parameter-type">TemplateRef<any></span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Template to be used for the message toast. </p>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            config<span class="docs-api-method-parameter-optional-marker">?</span>:
-            <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
-          </code>
-            <p class="docs-api-method-parameter-description">
-              Extra configuration for the message toast.
-            </p>
+            <code class="docs-api-parameter-name">
+                config<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">NxMessageToastConfig</span>
+            </code>
+            <p class="docs-api-method-parameter-description"> Extra configuration for the message toast. </p>
         </div>
-      
+        
     </div></div>
-
-
-  
-
-
-
-    <h3 id="directives" class="docs-header-link docs-api-h3">
-      <span header-link="directives"></span>
-      Directives
+   
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
     </h3>
-    
-      
+     
 
 <h4 id="NxMessageComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxMessageComponent"></span>
@@ -172,94 +133,75 @@
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">nxMessage</span><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closable</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether a message should have a close icon in order to be dismissed.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closable</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether a message should have a close icon in order to be dismissed.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeButtonLabel</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the label of the close button of the message.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeButtonLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the label of the close button of the message.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContext'</span>)
-        </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">context</span>:
-        <span class="docs-api-property__type">CONTEXT</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the context of the message.
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContext'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">context</span>:
+                <span class="docs-api-property__type">CONTEXT</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the context of the message.
 The message box will color accordingly. Default: &#39;regular&#39;</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'close'</span>)
-        </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeEvent</span>:
-        <span class="docs-api-property__type">EventEmitter<void></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Event emitted when the close icon of the message has been clicked.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'close'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeEvent</span>:
+                <span class="docs-api-property__type">EventEmitter<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Event emitted when the close icon of the message has been clicked.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxMessageBannerComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxMessageBannerComponent"></span>
@@ -275,287 +217,226 @@ The message box will color accordingly. Default: &#39;regular&#39;</p>
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">nxMessageBanner</span><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closable</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether a message should have a close icon in order to be dismissed.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closable</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether a message should have a close icon in order to be dismissed.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeButtonLabel</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the label of the close button of the message.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeButtonLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the label of the close button of the message.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'context'</span>)
-        </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">context</span>:
-        <span class="docs-api-property__type">BANNER_CONTEXT</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the context of the message banner.
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'context'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">context</span>:
+                <span class="docs-api-property__type">BANNER_CONTEXT</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the context of the message banner.
 The message box will color accordingly. Default: &#39;info&#39;</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'close'</span>)
-        </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">closeEvent</span>:
-        <span class="docs-api-property__type">EventEmitter<void></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Event emitted when the close icon of the message has been clicked.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker"><span class="docs-api-output__keyword">@Output</span>(<span class="docs-api-output-alias">'close'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">closeEvent</span>:
+                <span class="docs-api-property__type">EventEmitter<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Event emitted when the close icon of the message has been clicked.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
-      <span header-link="additional_classes"></span>
-      Additional classes
+ 
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
     </h3>
-    
-      
+     
 
 <h4 id="NxMessageToastRef" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxMessageToastRef"></span>
-  <code>NxMessageToastRef</code></h4>
-
+  <code>NxMessageToastRef</code></h4> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">afterDismissed(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">afterDismissed(<!--
      -->): <span class="docs-api-method-returns-type">Observable<any></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toastis finished closing.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toastis finished closing.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">afterOpened(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">afterOpened(<!--
      -->): <span class="docs-api-method-returns-type">Observable<void></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toasthas opened and appeared.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Gets an observable that is notified when the message toasthas opened and appeared.</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">dismiss(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">dismiss(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Dismisses the message toast.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Dismisses the message toast.</p>
 </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="NxMessageToastConfig" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxMessageToastConfig"></span>
   <code>NxMessageToastConfig</code></h4><p class="docs-api-class-description"><p>Configuration used when opening a message toast.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">announcementMessage</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Message to be announced by the LiveAnnouncer. When opening a toast message without a custom
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">announcementMessage</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Message to be announced by the LiveAnnouncer. When opening a toast message without a custom
 component or template, the announcement message will default to the specified message.</p>
 <p>Default value: &#39;&#39;.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">context</span>:
-        <span class="docs-api-property__type">NxMessageToastContext</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Context of the message toast.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">context</span>:
+                <span class="docs-api-property__type">NxMessageToastContext</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Context of the message toast.</p>
 <p>Default value: &#39;info&#39;.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">duration</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The length of time in milliseconds to wait before automatically dismissing the message toast.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">duration</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The length of time in milliseconds to wait before automatically dismissing the message toast.</p>
 <p>Default value: 3000.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">politeness</span>:
-        <span class="docs-api-property__type">AriaLivePoliteness</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The politeness level for the LiveAnnouncer announcement.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">politeness</span>:
+                <span class="docs-api-property__type">AriaLivePoliteness</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The politeness level for the LiveAnnouncer announcement.</p>
 <p> Default value: &#39;polite&#39;.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
-      <span header-link="additional_type_aliases"></span>
-      Additional type aliases
+ 
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
     </h3>
-    
-      
+     
 
 <h4 id="CONTEXT" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="CONTEXT"></span>
-  <code>CONTEXT</code>
+    <span header-link="CONTEXT"></span>
+    <code>CONTEXT</code>
 </h4><p class="docs-api-type-alias-description"><p>The contextual type of a message.</p>
 </p><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'regular' | 'info' | 'error' | 'success' | 'warning'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'regular' | 'info' | 'error' | 'success' | 'warning'</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="BANNER_CONTEXT" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="BANNER_CONTEXT"></span>
-  <code>BANNER_CONTEXT</code>
+    <span header-link="BANNER_CONTEXT"></span>
+    <code>BANNER_CONTEXT</code>
 </h4><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'info' | 'error' | 'warning'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'info' | 'error' | 'warning'</code>
 </p>
-
-
-    
-      
+   
 
 <h4 id="NxMessageToastContext" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
-  <span header-link="NxMessageToastContext"></span>
-  <code>NxMessageToastContext</code>
+    <span header-link="NxMessageToastContext"></span>
+    <code>NxMessageToastContext</code>
 </h4><p class="docs-api-type-alias-description"><p>The contextual type of a message.</p>
 </p><p class="docs-api-type-alias-value">
-  <span class="docs-api-type-alias-value-label">Type:</span>
-  <code class="docs-api-type-alias-value">'info' | 'success'</code>
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'info' | 'success'</code>
 </p>
-
-
-    </div>
+  </div>

@@ -1,6 +1,14 @@
-<input type='text' #animalInput [nxAutocomplete]='auto1' (input)="filter(animalInput.value)"/>
-<nx-autocomplete #auto1='nxAutocomplete'>
-  <nx-autocomplete-option *ngFor='let option of filteredOptions' [value]='option'>
-    {{ option }}
-  </nx-autocomplete-option>
+<input
+    type="text"
+    #animalInput
+    [nxAutocomplete]="auto1"
+    (input)="filter(animalInput.value)"
+/>
+<nx-autocomplete #auto1="nxAutocomplete">
+    <nx-autocomplete-option
+        *ngFor="let option of filteredOptions"
+        [value]="option"
+    >
+        {{ option }}
+    </nx-autocomplete-option>
 </nx-autocomplete>

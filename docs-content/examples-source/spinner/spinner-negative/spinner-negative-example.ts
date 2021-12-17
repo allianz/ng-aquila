@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Negative styling example
-*/
+ * @title Negative styling example
+ */
 @Component({
-  selector: 'spinner-negative-example',
-  templateUrl: './spinner-negative-example.html',
-  styleUrls: ['./spinner-negative-example.css']
+    selector: 'spinner-negative-example',
+    templateUrl: './spinner-negative-example.html',
+    styleUrls: ['./spinner-negative-example.css'],
 })
-export class SpinnerNegativeExampleComponent {
-}
+export class SpinnerNegativeExampleComponent {}

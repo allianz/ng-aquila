@@ -1,14 +1,23 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Date of damage&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
-    [<span class="hljs-attr">nxDatefieldFilter</span>]=<span class="hljs-string">&quot;onlyDaysWith6&quot;</span>
-    <span class="hljs-attr">ngModel</span> #<span class="hljs-attr">dateFilterModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
-    <span class="hljs-attr">nxDatefield</span> <span class="hljs-attr">nxInput</span> [<span class="hljs-attr">nxDatepicker</span>]=<span class="hljs-string">&quot;picker3&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>MM/DD/YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span> [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;picker3&quot;</span> <span class="hljs-attr">nxFormfieldSuffix</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">picker3</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        [<span class="hljs-attr">nxDatefieldFilter</span>]=<span class="hljs-string">&quot;onlyDaysWith6&quot;</span>
+        <span class="hljs-attr">ngModel</span>
+        #<span class="hljs-attr">dateFilterModel</span>=<span class="hljs-string">&quot;ngModel&quot;</span>
+        <span class="hljs-attr">nxDatefield</span>
+        <span class="hljs-attr">nxInput</span>
+        [<span class="hljs-attr">nxDatepicker</span>]=<span class="hljs-string">&quot;picker3&quot;</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>MM/DD/YYYY<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker-toggle</span>
+        [<span class="hljs-attr">for</span>]=<span class="hljs-string">&quot;picker3&quot;</span>
+        <span class="hljs-attr">nxFormfieldSuffix</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker-toggle</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-datepicker</span> #<span class="hljs-attr">picker3</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-datepicker</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
-            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;dateFilterModel.errors &amp;&amp; dateFilterModel.errors.nxDatefieldFilter&quot;</span>&gt;</span>
-    That&#x27;s not the 6th of a month.
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span>
+        <span class="hljs-attr">nxFormfieldError</span>
+        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;dateFilterModel.errors &amp;&amp; dateFilterModel.errors.nxDatefieldFilter&quot;</span>
+    &gt;</span>
+        That&#x27;s not the 6th of a month.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>

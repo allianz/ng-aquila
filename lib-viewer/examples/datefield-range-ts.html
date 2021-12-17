@@ -3,23 +3,22 @@
 <span class="hljs-keyword">import</span> { NxDatepickerComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Date range example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Date range example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-range-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-range-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-range-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;datefield-range-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./datefield-range-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./datefield-range-example.css&#x27;</span>],
 })
-
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatefieldRangeExampleComponent</span> </span>{
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;endDatepicker&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
+    endDatepicker!: NxDatepickerComponent&lt;Moment&gt;;
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;endDatepicker&#x27;</span>, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> }) endDatepicker!: NxDatepickerComponent&lt;Moment&gt;;
+    startDate: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
+    endDate: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
 
-  startDate: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
-  endDate: Moment | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>;
-
-  <span class="hljs-function"><span class="hljs-title">updateEndDatepicker</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.endDate = <span class="hljs-built_in">this</span>.startDate;
-    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.endDatepicker.open());
-  }
+    <span class="hljs-function"><span class="hljs-title">updateEndDatepicker</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.endDate = <span class="hljs-built_in">this</span>.startDate;
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-built_in">this</span>.endDatepicker.open());
+    }
 }

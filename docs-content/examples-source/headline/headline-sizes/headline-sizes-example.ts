@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Headline Sizes Example
-*/
+ * @title Headline Sizes Example
+ */
 @Component({
-  selector: 'headline-sizes-example',
-  templateUrl: './headline-sizes-example.html',
-  styleUrls: ['./headline-sizes-example.css']
+    selector: 'headline-sizes-example',
+    templateUrl: './headline-sizes-example.html',
+    styleUrls: ['./headline-sizes-example.css'],
 })
-export class HeadlineSizesExampleComponent  {}
+export class HeadlineSizesExampleComponent {}

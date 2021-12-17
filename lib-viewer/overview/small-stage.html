@@ -5,9 +5,7 @@ considered stable.
 </div>
 <h3 id="overview" class="docs-markdown--h3">Overview</h3>
 <p class="docs-markdown--p">Small stage is designed to be used at the top of your page or section to serve as a heading with illustrations.</p>
-<p class="docs-markdown--p">Although, small stage does not restrict the content that can be placed within the content section of the stage, it is recommended to use a heading and topline or subline when needed.
-The images of small stage fluidly grow or shrink, adapting to the viewport size and available space.
-On smaller screens only one image is displayed below the content section.</p>
+<p class="docs-markdown--p">Although, small stage does not restrict the content that can be placed within the content section of the stage, it is recommended to use a heading and topline or subline when needed. The images of small stage fluidly grow or shrink, adapting to the viewport size and available space. On smaller screens only one image is displayed below the content section.</p>
 <p class="docs-markdown--p">Since small stage is designed to take 100% width of a page or a container, it's recommended to open the examples in a new window to get a better feeling of how it is intended to look and behave.</p>
 <p class="docs-markdown--p">Examples here feature both short and long headlines side by side in order to better outline the small stage behavior.</p>
 <h3 id="basic-layout" class="docs-markdown--h3">Basic Layout</h3>
@@ -29,15 +27,12 @@ On smaller screens only one image is displayed below the content section.</p>
 <li class="docs-markdown--li"><code>[nxSmallStageImageEnd]</code></li>
 <li class="docs-markdown--li"><code>[nxSmallStageImageBottom]</code></li>
 </ul>
-<p class="docs-markdown--p">Images can be placed in all three slots using the <code>nx-small-stage-image</code> tag.
-It accepts an <code>src</code> input, where you should pass a url address of the image to be loaded.
-Notice that start and end images an used around the content on bigger screens, but when viewport gets narrower than 704px only the bottom image is displayed.</p>
+<p class="docs-markdown--p">Images can be placed in all three slots using the <code>nx-small-stage-image</code> tag. It accepts an <code>src</code> input, where you should pass a url address of the image to be loaded. Notice that start and end images an used around the content on bigger screens, but when viewport gets narrower than 704px only the bottom image is displayed.</p>
 <h4 id="header" class="docs-markdown--h4">Header</h4>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li"><code>[nxSmallStageHeader]</code></li>
 </ul>
-<p class="docs-markdown--p">In some cases you might need to add some data to the small stage that should not be in the content section, for example, breadcrumbs or links.
-The header should contain only one line of text so it will not change the height of the stage.</p>
+<p class="docs-markdown--p">In some cases you might need to add some data to the small stage that should not be in the content section, for example, breadcrumbs or links. The header should contain only one line of text so it will not change the height of the stage.</p>
 <div class="docs-private">
 <h4 id="backgrounds" class="docs-markdown--h4">Backgrounds</h4>
 <p class="docs-markdown--p">If you need to add some background images to the small stage, you can do it through css on the main small stage container:</p>
@@ -54,6 +49,5 @@ The header should contain only one line of text so it will not change the height
 <div nx-docs-example="small-stage-expert-content-narrow" config="{}">exampleID: small-stage-expert-content-narrow</div>
 </div>
 <h2 id="accessibility" class="docs-markdown--h2">Accessibility</h2>
-<p class="docs-markdown--p">In order to achieve responsive behavior and fluid scaling of the small stage, we're leveraging the css background image functionality under the hood to display the image.
-Since background images are intended solely for decorative purposes, they are ignored by assistive technologies and there's no way to provide alternative description as with html <code>&lt;img&gt;</code> tag.</p>
+<p class="docs-markdown--p">In order to achieve responsive behavior and fluid scaling of the small stage, we're leveraging the css background image functionality under the hood to display the image. Since background images are intended solely for decorative purposes, they are ignored by assistive technologies and there's no way to provide alternative description as with html <code>&lt;img&gt;</code> tag.</p>
 <p class="docs-markdown--p">Please, refrain from presenting meaningful content or convey information through the image in the small stage component. Image section should be used for decoration and the content of the page should not depend on the image being loaded or accessible.</p>

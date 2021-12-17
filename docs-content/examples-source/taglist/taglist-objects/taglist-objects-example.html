@@ -1,12 +1,26 @@
-<nx-taglist #taglistObjects [(nxTags)]="tags">Sorry, you don't have any fruit.</nx-taglist>
+<nx-taglist #taglistObjects [(nxTags)]="tags"
+    >Sorry, you don't have any fruit.</nx-taglist
+>
 
 <nx-formfield nxLabel="Please provide a tag">
-  <input nxInput #addTagInputObjects/>
+    <input nxInput #addTagInputObjects />
     <span nxFormfieldHint>
-      Note that the tag list will just ignore empty tag values.
+        Note that the tag list will just ignore empty tag values.
     </span>
 </nx-formfield>
-<button nxButton="primary small" (click)="taglistObjects.addTag({nxTaglistLabel:addTagInputObjects.value})" class="nx-margin-right-2xs nx-margin-bottom-s" type="button">Add tag</button>
-<button nxButton="secondary small" (click)="taglistObjects.clearTags()" class="nx-margin-bottom-s" type="button">Clear tags</button>
-<br>
+<button
+    nxButton="primary small"
+    (click)="taglistObjects.addTag({nxTaglistLabel:addTagInputObjects.value})"
+    class="nx-margin-right-2xs nx-margin-bottom-s"
+    type="button"
+    >Add tag</button
+>
+<button
+    nxButton="secondary small"
+    (click)="taglistObjects.clearTags()"
+    class="nx-margin-bottom-s"
+    type="button"
+    >Clear tags</button
+>
+<br />
 Current Value: {{tags | json}}

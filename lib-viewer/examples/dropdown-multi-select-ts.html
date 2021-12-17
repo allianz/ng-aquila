@@ -1,27 +1,45 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
+<span class="hljs-keyword">interface</span> MyOption {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    id: <span class="hljs-built_in">number</span>;
+}
+
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Multi select example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-multi-select-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-multi-select-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-multi-select-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-multi-select-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-multi-select-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dropdown-multi-select-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownMultiSelectExampleComponent</span> </span>{
-  demoData = [
-    <span class="hljs-string">&#x27;BMW&#x27;</span>, <span class="hljs-string">&#x27;Audi&#x27;</span>, <span class="hljs-string">&#x27;VW&#x27;</span>, <span class="hljs-string">&#x27;Mercedes&#x27;</span>, <span class="hljs-string">&#x27;Porsche&#x27;</span>, <span class="hljs-string">&#x27;Tesla&#x27;</span>, <span class="hljs-string">&#x27;Lada&#x27;</span>,
-    <span class="hljs-string">&#x27;Opel&#x27;</span>, <span class="hljs-string">&#x27;Fiat&#x27;</span>, <span class="hljs-string">&#x27;Ford&#x27;</span>, <span class="hljs-string">&#x27;Kia&#x27;</span>, <span class="hljs-string">&#x27;Toyota&#x27;</span>, <span class="hljs-string">&#x27;Ferrari&#x27;</span>
-  ];
+    <span class="hljs-attr">options</span>: <span class="hljs-built_in">string</span>[] = [<span class="hljs-string">&#x27;Apple&#x27;</span>, <span class="hljs-string">&#x27;Orange&#x27;</span>, <span class="hljs-string">&#x27;Plum&#x27;</span>, <span class="hljs-string">&#x27;Cherry&#x27;</span>];
 
-  toTextMulti(value: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">string</span>[]): <span class="hljs-built_in">string</span> {
-    <span class="hljs-keyword">if</span> (value) {
-      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(value)) {
-        <span class="hljs-keyword">return</span> value.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.toUpperCase()).join(<span class="hljs-string">&#x27;, &#x27;</span>);
-      } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">return</span> value.toUpperCase();
-      }
+    complexOptions: MyOption[] = [
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Apple&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+        },
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Orange&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>,
+        },
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Plum&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">3</span>,
+        },
+        {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Cherry&#x27;</span>,
+            <span class="hljs-attr">id</span>: <span class="hljs-number">4</span>,
+        },
+    ];
+
+    selectLabel(option: MyOption): <span class="hljs-built_in">string</span> {
+        <span class="hljs-keyword">return</span> option.name;
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;
-  }
+
+    selectValue(option: MyOption): <span class="hljs-built_in">number</span> {
+        <span class="hljs-keyword">return</span> option.id;
+    }
 }

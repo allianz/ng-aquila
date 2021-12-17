@@ -8,26 +8,22 @@ import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadc
 import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';
 
 const EXAMPLES = [
-  BreadcrumbExampleComponent,
-  BreadcrumbNegativeExampleComponent,
-  BreadcrumbLinkExampleComponent
+    BreadcrumbExampleComponent,
+    BreadcrumbNegativeExampleComponent,
+    BreadcrumbLinkExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxBreadcrumbModule,
-    CommonModule,
-    RouterModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxBreadcrumbModule, CommonModule, RouterModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class BreadcrumbExamplesModule {
-  static components() {
-    return {
-      'breadcrumb': BreadcrumbExampleComponent,
-      'breadcrumb-negative': BreadcrumbNegativeExampleComponent,
-      'breadcrumb-link': BreadcrumbLinkExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            breadcrumb: BreadcrumbExampleComponent,
+            'breadcrumb-negative': BreadcrumbNegativeExampleComponent,
+            'breadcrumb-link': BreadcrumbLinkExampleComponent,
+        };
+    }
 }

@@ -1,27 +1,31 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+    Component,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+} from '@angular/core';
 
 /** @title Basic example */
 @Component({
-  selector: 'comparison-table-example',
-  templateUrl: './comparison-table-example.html',
-  styleUrls: ['./comparison-table-example.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'comparison-table-example',
+    templateUrl: './comparison-table-example.html',
+    styleUrls: ['./comparison-table-example.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComparisonTableExampleComponent {
-  loading = true;
+    loading = true;
 
-  constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-    this.reload();
-  }
+    ngOnInit() {
+        this.reload();
+    }
 
-  reload() {
-    this.loading = true;
+    reload() {
+        this.loading = true;
 
-    setTimeout(() => {
-      this.loading = false;
-      this._cdr.markForCheck();
-    }, 2000);
-  }
+        setTimeout(() => {
+            this.loading = false;
+            this._cdr.markForCheck();
+        }, 2000);
+    }
 }

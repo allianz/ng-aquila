@@ -2,19 +2,22 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { NxDialogService } from '@aposin/ng-aquila/modal';
 
 /**
-* @title Closing behaviour example
-*/
+ * @title Closing behaviour example
+ */
 @Component({
-  selector: 'modal-closing-behaviour-example',
-  templateUrl: './modal-closing-behaviour-example.html',
-  styleUrls: ['./modal-closing-behaviour-example.css']
+    selector: 'modal-closing-behaviour-example',
+    templateUrl: './modal-closing-behaviour-example.html',
+    styleUrls: ['./modal-closing-behaviour-example.css'],
 })
 export class ModalClosingBehaviourExampleComponent {
-  @ViewChild('template') templateRef!: TemplateRef<any>;
+    @ViewChild('template') templateRef!: TemplateRef<any>;
 
-  constructor(public dialogService: NxDialogService) {}
+    constructor(public dialogService: NxDialogService) {}
 
-  openFromTemplate(): void {
-    this.dialogService.open(this.templateRef, { ariaLabel: 'A simple modal', disableClose: true });
-  }
+    openFromTemplate(): void {
+        this.dialogService.open(this.templateRef, {
+            ariaLabel: 'A simple modal',
+            disableClose: true,
+        });
+    }
 }

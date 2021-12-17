@@ -1,29 +1,34 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { AbstractControl, FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    AbstractControl,
+    FormBuilder,
+    FormGroup,
+    Validators,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Selectable cards states example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Selectable cards states example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-states-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-states-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-states-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;selectable-card-states-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./selectable-card-states-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./selectable-card-states-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SelectableCardStatesExampleComponent</span> </span>{
-  formGroup!: FormGroup;
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
-    <span class="hljs-built_in">this</span>.createForm();
-  }
+    formGroup!: FormGroup;
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> fb: FormBuilder</span>)</span> {
+        <span class="hljs-built_in">this</span>.createForm();
+    }
 
-  <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.formGroup = <span class="hljs-built_in">this</span>.fb.group({
-      <span class="hljs-attr">errorCard</span>: [<span class="hljs-literal">false</span>, Validators.requiredTrue],
-      <span class="hljs-attr">errorCard2</span>: [<span class="hljs-literal">true</span>, validateSecondCard]
-    });
-    <span class="hljs-built_in">this</span>.formGroup.markAllAsTouched();
-  }
+    <span class="hljs-function"><span class="hljs-title">createForm</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.formGroup = <span class="hljs-built_in">this</span>.fb.group({
+            <span class="hljs-attr">errorCard</span>: [<span class="hljs-literal">false</span>, Validators.requiredTrue],
+            <span class="hljs-attr">errorCard2</span>: [<span class="hljs-literal">true</span>, validateSecondCard],
+        });
+        <span class="hljs-built_in">this</span>.formGroup.markAllAsTouched();
+    }
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validateSecondCard</span>(<span class="hljs-params">control: AbstractControl</span>) </span>{
-  <span class="hljs-keyword">return</span> !!control.value ? { <span class="hljs-attr">invalid</span>: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">return</span> !!control.value ? { <span class="hljs-attr">invalid</span>: <span class="hljs-literal">true</span> } : <span class="hljs-literal">null</span>;
 }

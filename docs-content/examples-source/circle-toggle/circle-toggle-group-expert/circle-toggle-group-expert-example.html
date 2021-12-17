@@ -1,5 +1,11 @@
 <nx-circle-toggle-group class="nx-margin-bottom-m" appearance="expert">
-  <nx-circle-toggle *ngFor="let item of sampleValues" [value]="item.value" [icon]="item.icon"
-      [hint]="item.hint" [label]="item.label" [checked]="item.selected">
-  </nx-circle-toggle>
+    <nx-circle-toggle
+        *ngFor="let item of sampleValues"
+        [value]="item.value"
+        [icon]="item.icon"
+        [hint]="item.hint"
+        [label]="item.label"
+        [checked]="item.selected"
+    >
+    </nx-circle-toggle>
 </nx-circle-toggle-group>

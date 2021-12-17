@@ -1,46 +1,62 @@
 <div class="wrapper">
-  <nx-formfield nxLabel="Type in here to filter (e.g. 2019, Auto)">
-    <input nxInput [ngModel]="filterValue" (ngModelChange)="onFilterValueChange($event)"/>
-  </nx-formfield>
+    <nx-formfield nxLabel="Type in here to filter (e.g. 2019, Auto)">
+        <input
+            nxInput
+            [ngModel]="filterValue"
+            (ngModelChange)="onFilterValueChange($event)"
+        />
+    </nx-formfield>
 
- <p nxCopytext class="nx-margin-bottom-2xs">Matching items: {{currentlyAvailableElements.length}}</p>
+    <p nxCopytext class="nx-margin-bottom-2xs"
+        >Matching items: {{currentlyAvailableElements.length}}</p
+    >
 
-  <nx-swipebar label="Scroll to see more">
-    <table nxTable nxSort (sortChange)="sortTable($event)">
-      <thead>
-        <tr nxTableRow>
-          <th nxHeaderCell nxSortHeaderCell="product">Product</th>
-          <th nxHeaderCell nxSortHeaderCell="contractNumber">Contract Number</th>
-          <th nxHeaderCell>Description</th>
-          <th nxHeaderCell>Website</th>
-          <th nxHeaderCell nxSortHeaderCell="endingAt">Ending At</th>
-          <th nxHeaderCell nxSortHeaderCell="statusText">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr nxTableRow *ngFor="let item of currentlyShownPageElements">
-          <td nxTableCell>{{item.product}}</td>
-          <td nxTableCell>{{item.contractNumber}}</td>
-          <td nxTableCell>{{item.desc}}</td>
-          <td nxTableCell>
-            <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
-          </td>
-          <td nxTableCell>{{ item.endingAt | date: 'dd/MM/yyyy' }}</td>
-          <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
-        </tr>
-      </tbody>
-    </table>
-  </nx-swipebar>
+    <nx-swipebar label="Scroll to see more">
+        <table nxTable nxSort (sortChange)="sortTable($event)">
+            <thead>
+                <tr nxTableRow>
+                    <th nxHeaderCell nxSortHeaderCell="product">Product</th>
+                    <th nxHeaderCell nxSortHeaderCell="contractNumber"
+                        >Contract Number</th
+                    >
+                    <th nxHeaderCell>Description</th>
+                    <th nxHeaderCell>Website</th>
+                    <th nxHeaderCell nxSortHeaderCell="endingAt">Ending At</th>
+                    <th nxHeaderCell nxSortHeaderCell="statusText">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr nxTableRow *ngFor="let item of currentlyShownPageElements">
+                    <td nxTableCell>{{item.product}}</td>
+                    <td nxTableCell>{{item.contractNumber}}</td>
+                    <td nxTableCell>{{item.desc}}</td>
+                    <td nxTableCell>
+                        <nx-link
+                            ><a routerLink="#">{{item.website}}</a></nx-link
+                        >
+                    </td>
+                    <td nxTableCell
+                        >{{ item.endingAt | date: 'dd/MM/yyyy' }}</td
+                    >
+                    <td nxTableCell
+                        ><nx-badge [type]="item.status"
+                            >{{item.statusText}}</nx-badge
+                        ></td
+                    >
+                </tr>
+            </tbody>
+        </table>
+    </nx-swipebar>
 
-
-  <nx-pagination
-    class="pagination"
-    [nxCount]="currentlyAvailableElements.length"
-    [nxPage]="page"
-    nxType="advanced"
-    [nxPerPage]="elementsPerPage"
-    (nxGoPrev)="prevPage()"
-    (nxGoNext)="nextPage()"
-    (nxGoPage)="goToPage($event)">
-  </nx-pagination>
+    <nx-pagination
+        class="pagination"
+        [nxCount]="currentlyAvailableElements.length"
+        [nxPage]="page"
+        nxType="advanced"
+        [nxPerPage]="elementsPerPage"
+        (nxGoPrev)="prevPage()"
+        (nxGoNext)="nextPage()"
+        (nxGoPage)="goToPage($event)"
+    >
+    </nx-pagination>
 </div>

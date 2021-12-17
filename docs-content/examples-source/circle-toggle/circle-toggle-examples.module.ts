@@ -14,39 +14,36 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-expert/circle-toggle-group-expert-example';
 
 const EXAMPLES = [
-  CircleToggleGroupExampleComponent,
-  CircleToggleNegativeExampleComponent,
-  CircleToggleReactiveExampleComponent,
-  CircleToggleReactiveDisabledExampleComponent,
-  CircleToggleResponsiveExampleComponent,
-  CircleToggleSimpleBindingExampleComponent,
-  CircleToggleStandaloneExampleComponent,
-  CircleToggleTemplateDrivenExampleComponent,
-  CircleToggleTextExampleComponent,
-  CircleToggleGroupExpertExampleComponent
+    CircleToggleGroupExampleComponent,
+    CircleToggleNegativeExampleComponent,
+    CircleToggleReactiveExampleComponent,
+    CircleToggleReactiveDisabledExampleComponent,
+    CircleToggleResponsiveExampleComponent,
+    CircleToggleSimpleBindingExampleComponent,
+    CircleToggleStandaloneExampleComponent,
+    CircleToggleTemplateDrivenExampleComponent,
+    CircleToggleTextExampleComponent,
+    CircleToggleGroupExpertExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxCircleToggleModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxCircleToggleModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class CircleExamplesModule {
-  static components() {
-    return {
-      'circle-toggle-group': CircleToggleGroupExampleComponent,
-      'circle-toggle-negative': CircleToggleNegativeExampleComponent,
-      'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
-      'circle-toggle-reactive-disabled': CircleToggleReactiveDisabledExampleComponent,
-      'circle-toggle-responsive': CircleToggleResponsiveExampleComponent,
-      'circle-toggle-simple-binding': CircleToggleSimpleBindingExampleComponent,
-      'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
-      'circle-toggle-template-driven': CircleToggleTemplateDrivenExampleComponent,
-      'circle-toggle-text': CircleToggleTextExampleComponent,
-      'circle-toggle-group-expert': CircleToggleGroupExpertExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'circle-toggle-group': CircleToggleGroupExampleComponent,
+            'circle-toggle-negative': CircleToggleNegativeExampleComponent,
+            'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
+            'circle-toggle-reactive-disabled': CircleToggleReactiveDisabledExampleComponent,
+            'circle-toggle-responsive': CircleToggleResponsiveExampleComponent,
+            'circle-toggle-simple-binding': CircleToggleSimpleBindingExampleComponent,
+            'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
+            'circle-toggle-template-driven': CircleToggleTemplateDrivenExampleComponent,
+            'circle-toggle-text': CircleToggleTextExampleComponent,
+            'circle-toggle-group-expert': CircleToggleGroupExpertExampleComponent,
+        };
+    }
 }

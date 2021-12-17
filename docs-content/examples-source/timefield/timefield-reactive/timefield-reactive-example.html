@@ -1,10 +1,12 @@
 <form [formGroup]="testForm">
-  <nx-timefield #timefield label="Time" formControlName="timefieldReactive"></nx-timefield>
-  <div *ngIf="timefield.errorState">
-    <nx-error class="nx-margin-y-xs">
-      Invalid time input.
-    </nx-error>
-  </div>
+    <nx-timefield
+        #timefield
+        label="Time"
+        formControlName="timefieldReactive"
+    ></nx-timefield>
+    <div *ngIf="timefield.errorState">
+        <nx-error class="nx-margin-y-xs"> Invalid time input. </nx-error>
+    </div>
 </form>
 
 <p class="nx-margin-bottom-0">Form value (24h): {{ testForm.value | json }}</p>

@@ -1,26 +1,32 @@
 <span class="hljs-keyword">import</span> { FocusMonitor } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
-<span class="hljs-keyword">import</span> { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    ViewChild,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Popover Hover Example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Popover Hover Example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;popover-hover-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./popover-hover-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./popover-hover-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;popover-hover-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./popover-hover-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./popover-hover-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PopoverHoverExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">AfterViewInit</span>, <span class="hljs-title">OnDestroy</span> </span>{
-  popoverManualOpenFlag = <span class="hljs-literal">false</span>;
+    popoverManualOpenFlag = <span class="hljs-literal">false</span>;
 
-  <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;hoverTriggerIcon&#x27;</span>) _hoverTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
+    <span class="hljs-meta">@ViewChild</span>(<span class="hljs-string">&#x27;hoverTriggerIcon&#x27;</span>) _hoverTriggerIcon!: ElementRef&lt;HTMLElement&gt;;
 
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _focusMonitor: FocusMonitor</span>)</span> {}
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _focusMonitor: FocusMonitor</span>)</span> {}
 
-  <span class="hljs-function"><span class="hljs-title">ngAfterViewInit</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._hoverTriggerIcon);
-  }
+    <span class="hljs-function"><span class="hljs-title">ngAfterViewInit</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>._focusMonitor.monitor(<span class="hljs-built_in">this</span>._hoverTriggerIcon);
+    }
 
-  <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._hoverTriggerIcon);
-  }
+    <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>._focusMonitor.stopMonitoring(<span class="hljs-built_in">this</span>._hoverTriggerIcon);
+    }
 }

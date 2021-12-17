@@ -1,181 +1,141 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+       
 
 <div class="docs-api">
-  <p class="docs-api-module-import">
-    <code>
-      <span class="docs-api-module-import__import-span">import</span>
-      { NxFileUploaderModule }
-      <span class="docs-api-module-import__from-span">from</span>
-      <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/file-uploader'</span>;
-    </code>
-  </p><h3 id="services" class="docs-header-link docs-api-h3">
-      <span header-link="services"></span>
-      Services
+    <p class="docs-api-module-import">
+        <code>
+            <span class="docs-api-module-import__import-span">import</span>
+            { NxFileUploaderModule }
+            <span class="docs-api-module-import__from-span">from</span>
+            <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/file-uploader'</span>;
+        </code>
+    </p><h3 id="services" class="docs-header-link docs-api-h3">
+        <span header-link="services"></span>
+        Services
     </h3>
-    
-      
+     
 
 <h4 id="NxFileUploaderIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderIntl"></span>
   <code>NxFileUploaderIntl</code></h4><p class="docs-api-class-description"><p>File uploader data that requires internationalization.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">changes</span>:
-        <span class="docs-api-property__type">Subject<void></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Stream that emits whenever the labels here are changed. Use this to notify
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the labels here are changed. Use this to notify
 components if the labels have changed after initialization.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">deleteLabel</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Aria-label for the delete icon.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">deleteLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Aria-label for the delete icon.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploadedStateLabel</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Aria-label for the &#39;successfully-uploaded&#39; icon.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploadedStateLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Aria-label for the &#39;successfully-uploaded&#39; icon.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploadingLabel</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>A label for the uploading state used in the queue.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploadingLabel</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the uploading state used in the queue.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="UploadInterceptor" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="UploadInterceptor"></span>
-  <code>UploadInterceptor</code></h4>
-
+  <code>UploadInterceptor</code></h4> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">intercept(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">intercept(<!--
      --><!--
        --><!--
-         -->req:
-              <span class="docs-api-property__type">HttpRequest<any></span><!--
+         -->req: <span class="docs-api-property__type">HttpRequest<any></span
+                ><!--
          --><!--
          -->,<!--
        --><!--
-         -->next:
-              <span class="docs-api-property__type">HttpHandler</span><!--
+         -->next: <span class="docs-api-property__type">HttpHandler</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->): <span class="docs-api-method-returns-type">Observable<HttpEvent<any>></span></span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"></div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        </code>
+    </div>
+    <div class="docs-api-method-description"></div><div class="docs-api-method-params">
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            req:
-            <span class="docs-api-method-parameter-type">HttpRequest<any></span>
-          </code>
+            <code class="docs-api-parameter-name">
+                req:
+                <span class="docs-api-method-parameter-type">HttpRequest<any></span>
+            </code>
         </div>
-      
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            next:
-            <span class="docs-api-method-parameter-type">HttpHandler</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                next:
+                <span class="docs-api-method-parameter-type">HttpHandler</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-
-
-
-    <h3 id="directives" class="docs-header-link docs-api-h3">
-      <span header-link="directives"></span>
-      Directives
+   
+  <h3 id="directives" class="docs-header-link docs-api-h3">
+        <span header-link="directives"></span>
+        Directives
     </h3>
-    
-      
+     
 
 <h4 id="NxFileUploaderButtonDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderButtonDirective"></span>
@@ -187,39 +147,31 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">disabled</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file uploader is disabled</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file uploader is disabled</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderDropZoneComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderDropZoneComponent"></span>
@@ -231,57 +183,46 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">disabled</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file uploader is disabled.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file uploader is disabled.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">fileDropped</span>:
-        <span class="docs-api-property__type">EventEmitter<File[]></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>An event emitted when files were dropped.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">fileDropped</span>:
+                <span class="docs-api-property__type">EventEmitter<File[]></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event emitted when files were dropped.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderHintDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderHintDirective"></span>
@@ -293,39 +234,31 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the id of the file upload hint.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the id of the file upload hint.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderTriggerDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderTriggerDirective"></span>
@@ -338,39 +271,30 @@ components if the labels have changed after initialization.</p>
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">nxFileUploadTrigger</span><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxFileUploadTriggerFor'</span>)
-        </div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">fileUpload</span>:
-        <span class="docs-api-property__type">NxFileUploaderComponent</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>References the file upload component instance that the trigger is associated with.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxFileUploadTriggerFor'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">fileUpload</span>:
+                <span class="docs-api-property__type">NxFileUploaderComponent</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>References the file upload component instance that the trigger is associated with.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderComponent"></span>
@@ -383,305 +307,253 @@ components if the labels have changed after initialization.</p>
     </div>
 </p><span class="docs-api-class-export-label">Exported as:</span>
 <span class="docs-api-class-export-name">NxFileUploaderComponent</span><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">accept</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The accepted file types</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">accept</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The accepted file types</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">disabled</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file uploader is disabled.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disabled</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file uploader is disabled.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">id</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the id of the file uploader.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">id</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the id of the file uploader.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">itemTemplate</span>:
-        <span class="docs-api-property__type">TemplateRef<any></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the template for the file items.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">itemTemplate</span>:
+                <span class="docs-api-property__type">TemplateRef<any></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the template for the file items.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">maxFileNumber</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The max number of files that is accepted.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">maxFileNumber</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The max number of files that is accepted.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">maxFileSize</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The max file size in bytes used for validation</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">maxFileSize</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The max file size in bytes used for validation</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">multiple</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file uploader accepts multiple files to be added.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">multiple</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file uploader accepts multiple files to be added.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">name</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Name that is used for accessibility.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">name</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Name that is used for accessibility.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">required</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file uploader is required.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">required</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file uploader is required.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploader</span>:
-        <span class="docs-api-property__type">NxFileUploader</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the file uploader for the component.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploader</span>:
+                <span class="docs-api-property__type">NxFileUploader</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the file uploader for the component.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">value</span>:
-        <span class="docs-api-property__type">FileItem[] | undefined</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The value of the file upload.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">value</span>:
+                <span class="docs-api-property__type">FileItem[] | undefined</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The value of the file upload.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">fileDeleted</span>:
-        <span class="docs-api-property__type">EventEmitter<FileItem></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>An event emitted when a file is deleted from the queue</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">fileDeleted</span>:
+                <span class="docs-api-property__type">EventEmitter<FileItem></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event emitted when a file is deleted from the queue</p>
 <p>Emits the deleted FileItem.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
-          <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">filesSelected</span>:
-        <span class="docs-api-property__type">EventEmitter<FileItem[]></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>An event emitted when one or more files were added to the file input.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-output-marker">
+            <span class="docs-api-output__keyword">@Output</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">filesSelected</span>:
+                <span class="docs-api-property__type">EventEmitter<FileItem[]></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>An event emitted when one or more files were added to the file input.</p>
 <p>Emits the selected FileItem | FileItem[]</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">removeFile(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">removeFile(<!--
      --><!--
        --><!--
-         -->file:
-              <span class="docs-api-property__type">any</span><!--
+         -->file: <span class="docs-api-property__type">any</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Removes a file from the value list of the file upload input.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Removes a file from the value list of the file upload input.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            file:
-            <span class="docs-api-method-parameter-type">any</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                file:
+                <span class="docs-api-method-parameter-type">any</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">uploadFiles(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">uploadFiles(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Uploads the files via the defined uploader.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Uploads the files via the defined uploader.</p>
 </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="NxFileUploaderItemDelete" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderItemDelete"></span>
@@ -694,57 +566,46 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">deleteLabel</span>:
-        <span class="docs-api-property__type">String</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The label that is used for the delete button (used by screen readers).</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">deleteLabel</span>:
+                <span class="docs-api-property__type">String</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The label that is used for the delete button (used by screen readers).</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploading</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file is uploading at the moment. If true, the button is disabled. Default: false.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploading</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file is uploading at the moment. If true, the button is disabled. Default: false.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderItemName" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderItemName"></span>
@@ -757,39 +618,31 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">name</span>:
-        <span class="docs-api-property__type">String</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The filename.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">name</span>:
+                <span class="docs-api-property__type">String</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The filename.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderItemSize" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderItemSize"></span>
@@ -802,75 +655,61 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploading</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file is uploading at the moment. Default: false.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploading</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file is uploading at the moment. Default: false.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">size</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The size of the file in bytes.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The size of the file in bytes.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploadingLabel</span>:
-        <span class="docs-api-property__type">String</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The label that is shown while uploading the file.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploadingLabel</span>:
+                <span class="docs-api-property__type">String</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The label that is shown while uploading the file.</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploaderItemStatus" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderItemStatus"></span>
@@ -883,646 +722,515 @@ components if the labels have changed after initialization.</p>
       
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploaded</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file was uploaded. If this is true, a <code>check-circle</code> icon is shown. Default: false.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploaded</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file was uploaded. If this is true, a <code>check-circle</code> icon is shown. Default: false.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploading</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploading</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
-          <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploadedLabel</span>:
-        <span class="docs-api-property__type">String</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The label that is used once the file has been uploaded (used by screen readers).</p>
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploadedLabel</span>:
+                <span class="docs-api-property__type">String</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The label that is used once the file has been uploaded (used by screen readers).</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    <h3 id="additional_classes" class="docs-header-link docs-api-h3">
-      <span header-link="additional_classes"></span>
-      Additional classes
+ 
+  <h3 id="additional_classes" class="docs-header-link docs-api-h3">
+        <span header-link="additional_classes"></span>
+        Additional classes
     </h3>
-    
-      
+     
 
 <h4 id="FileItem" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="FileItem"></span>
   <code>FileItem</code></h4><p class="docs-api-class-description"><p>Class used to keep track of the current states of the file</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">file</span>:
-        <span class="docs-api-property__type">File | null</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The actual file data.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">file</span>:
+                <span class="docs-api-property__type">File | null</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The actual file data.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">index</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the index of the file.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">index</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the index of the file.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isError</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether an error occured when uploading the file.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isError</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether an error occured when uploading the file.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploaded</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file was successfully uploaded.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploaded</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file was successfully uploaded.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">isUploading</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the file is being uploaded at the moment.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">isUploading</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the file is being uploaded at the moment.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">name</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the name of the file.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">name</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the name of the file.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">onChange</span>:
-        <span class="docs-api-property__type">EventEmitter<FileItem></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>emits the FileItem on changed</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">onChange</span>:
+                <span class="docs-api-property__type">EventEmitter<FileItem></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>emits the FileItem on changed</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">size</span>:
-        <span class="docs-api-property__type">number</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Returns the file size in bytes</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">size</span>:
+                <span class="docs-api-property__type">number</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Returns the file size in bytes</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">type</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Returns the file type</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">type</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Returns the file type</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">setErrorState(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setErrorState(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>sets the file to an error state</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>sets the file to an error state</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">setUploadedState(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setUploadedState(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>sets the file to a uploaded state</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>sets the file to a uploaded state</p>
 </div></div>
-
-
-  
-    
-
+   
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">setUploadingState(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">setUploadingState(<!--
      -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>sets the file to a &#39;upload-in-progress&#39; state</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>sets the file to a &#39;upload-in-progress&#39; state</p>
 </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="NxFileUploadSuccess" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploadSuccess"></span>
   <code>NxFileUploadSuccess</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">files</span>:
-        <span class="docs-api-property__type">FileItem[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The files that were successfully uploaded.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">files</span>:
+                <span class="docs-api-property__type">FileItem[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The files that were successfully uploaded.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">requests</span>:
-        <span class="docs-api-property__type">Object[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The results of the request(s).</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">requests</span>:
+                <span class="docs-api-property__type">Object[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The results of the request(s).</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploadError" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploadError"></span>
   <code>NxFileUploadError</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">files</span>:
-        <span class="docs-api-property__type">FileItem[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The files that had an error while uploading.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">files</span>:
+                <span class="docs-api-property__type">FileItem[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The files that had an error while uploading.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">requests</span>:
-        <span class="docs-api-property__type">Object[]</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>The returned errors of the request(s).</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">requests</span>:
+                <span class="docs-api-property__type">Object[]</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>The returned errors of the request(s).</p>
 </td>
 </tr>
+  
+</table> 
 
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+ 
+   
 
 <h4 id="NxFileUploader" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploader"></span>
   <code>NxFileUploader</code></h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">config</span>:
-        <span class="docs-api-property__type">NxFileUploadConfig</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the config options for http requests for uploading the files.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">config</span>:
+                <span class="docs-api-property__type">NxFileUploadConfig</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the config options for http requests for uploading the files.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">response</span>:
-        <span class="docs-api-property__type">Subject<NxFileUploadResult></span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Stream that emits the result of an upload request.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">response</span>:
+                <span class="docs-api-property__type">Subject<NxFileUploadResult></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits the result of an upload request.</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
+  
+</table> 
 
 <h5 class="docs-api-method-header">Methods</h5>
-  
-    
-
+ 
 
 <div class="docs-api-method-card">
-  <div class="docs-api-method-card-header">
-    <code>
-      <span class="docs-api-method-name">uploadFiles(<!--
+    <div class="docs-api-method-card-header">
+        <code>
+            <span class="docs-api-method-name">uploadFiles(<!--
      --><!--
        --><!--
-         -->files:
-              <span class="docs-api-property__type">FileItem[]</span><!--
+         -->files: <span class="docs-api-property__type">FileItem[]</span
+                ><!--
          --><!--
          --><!--
        --><!--
        -->)</span>
-    </code>
-  </div>
-  <div class="docs-api-method-description"><p>Uploads the files to the url specified in config.</p>
+        </code>
+    </div>
+    <div class="docs-api-method-description"><p>Uploads the files to the url specified in config.</p>
 </div><div class="docs-api-method-params">
-      <p class="docs-api-method-param-title">Parameters:</p>
-      
+        <p class="docs-api-method-param-title">Parameters:</p>
+        
         <div class="docs-api-parameter-container">
-          <code class="docs-api-parameter-name">
-            files:
-            <span class="docs-api-method-parameter-type">FileItem[]</span>
-          </code>
+            <code class="docs-api-parameter-name">
+                files:
+                <span class="docs-api-method-parameter-type">FileItem[]</span>
+            </code>
         </div>
-      
+        
     </div></div>
-
-
-  
-
-
-
-    
-      
+   
+   
 
 <h4 id="NxFileUploaderValidators" class="docs-header-link docs-api-h4 docs-api-class-name">
   <span header-link="NxFileUploaderValidators"></span>
   <code>NxFileUploaderValidators</code></h4><p class="docs-api-class-description"><p>Provides a set of file uploader validators that can be used by form controls.</p>
 <p>Currently <code>maxFileSize</code> and <code>fileType</code> are available.</p>
-</p>
+</p> 
 
-
-
-
-
-
-    <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
-      <span header-link="additional_interfaces"></span>
-      Additional interfaces
+ 
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
     </h3>
-    
-      
+     
 
 <h4 id="NxFileUploadConfig" class="docs-header-link docs-api-h4 docs-api-interface-name">
-  <span header-link="NxFileUploadConfig"></span>
-  <code>NxFileUploadConfig</code>
+    <span header-link="NxFileUploadConfig"></span>
+    <code>NxFileUploadConfig</code>
 </h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">options</span>:
-        <span class="docs-api-property__type">{}</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the options for http upload requests. HttpParams</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">options</span>:
+                <span class="docs-api-property__type">{}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the options for http upload requests. HttpParams</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">requestUrl</span>:
-        <span class="docs-api-property__type">string</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Sets the url for uploading requests.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">requestUrl</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the url for uploading requests.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">uploadSeparately</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether the files should be uploaded separately. Default: false.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">uploadSeparately</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the files should be uploaded separately. Default: false.</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
-
-
-
-
-
-    
-      
+  
+</table>   
+   
 
 <h4 id="NxFileUploadResult" class="docs-header-link docs-api-h4 docs-api-interface-name">
-  <span header-link="NxFileUploadResult"></span>
-  <code>NxFileUploadResult</code>
+    <span header-link="NxFileUploadResult"></span>
+    <code>NxFileUploadResult</code>
 </h4><h5 class="docs-api-method-header">Properties</h5>
-  <table class="docs-api-properties-table">
+<table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
-      <th class="docs-api-properties-th">Name</th>
-      <th class="docs-api-properties-th">Description</th>
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
     </tr>
-    
-      
+     
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">allSucessful</span>:
-        <span class="docs-api-property__type">boolean</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>Whether all files were successfully uploaded.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">allSucessful</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether all files were successfully uploaded.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">error</span>:
-        <span class="docs-api-property__type">NxFileUploadError</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>All results with errors.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">error</span>:
+                <span class="docs-api-property__type">NxFileUploadError</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>All results with errors.</p>
 </td>
 </tr>
-
-
-    
-      
+   
 
 <tr class="docs-api-properties-row">
-  <td class="docs-api-properties-name-cell"><p class="docs-api-property">
-      <code>
-        <span class="docs-api-property__name">success</span>:
-        <span class="docs-api-property__type">NxFileUploadSuccess</span>
-      </code>
-    </p>
-  </td>
-  <td class="docs-api-property-description">
-    <p>All successfully uploaded results.</p>
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">success</span>:
+                <span class="docs-api-property__type">NxFileUploadSuccess</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>All successfully uploaded results.</p>
 </td>
 </tr>
-
-
-    
-  </table>
-
-
-
-
-
-
-    </div>
+  
+</table>   
+  </div>

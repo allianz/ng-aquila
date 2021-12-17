@@ -1,10 +1,17 @@
-<button nxButton="primary small" [nxPopoverTriggerFor]="popoverCustomContent"
-        nxPopoverDirection="right" nxPopoverTrigger="click" type="button">
-  Click
+<button
+    nxButton="primary small"
+    [nxPopoverTriggerFor]="popoverCustomContent"
+    nxPopoverDirection="right"
+    nxPopoverTrigger="click"
+    type="button"
+>
+    Click
 </button>
 
 <nx-popover #popoverCustomContent>
-  <img src="docs-assets/images/adli-wahid-eagle-unsplash.jpg"
-       alt="An eagle sitting on a branch and thinking. Photo made by Adli Wahid"
-       class="popover-demo__img">
+    <img
+        src="docs-assets/images/adli-wahid-eagle-unsplash.jpg"
+        alt="An eagle sitting on a branch and thinking. Photo made by Adli Wahid"
+        class="popover-demo__img"
+    />
 </nx-popover>

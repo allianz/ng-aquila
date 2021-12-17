@@ -1,14 +1,14 @@
 <form novalidate [formGroup]="testForm">
+    <nx-radio-toggle formControlName="testToggle">
+        <nx-radio-toggle-button *ngFor="let item of data" [nxValue]="item"
+            >{{item}}
+        </nx-radio-toggle-button>
+    </nx-radio-toggle>
 
-  <nx-radio-toggle formControlName="testToggle">
-    <nx-radio-toggle-button *ngFor="let item of data" [nxValue]="item">{{item}}
-    </nx-radio-toggle-button>
-  </nx-radio-toggle>
-
-  <p>Form value: {{ testForm.value | json }}</p>
-  <p>Form status: {{ testForm.status | json }}</p>
+    <p>Form value: {{ testForm.value | json }}</p>
+    <p>Form status: {{ testForm.status | json }}</p>
 </form>
 
 <button nxButton="primary small" type="button" (click)="toggleDisabled()">
-  {{ isToggleDisabled ? 'Enable' : 'Disable' }} Toggle
+    {{ isToggleDisabled ? 'Enable' : 'Disable' }} Toggle
 </button>

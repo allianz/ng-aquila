@@ -1,5 +1,8 @@
-<p class="docs-markdown--p">It is recommended to use the dropdown component in combination with NxFormField.
-Therefore, make sure to import this module as well:</p>
+<div class="docs-deprecation-warning">
+  <strong>Important: </strong>
+  Please note that the <strong>nxIsMultiselect</strong> option of the dropdown is deprecated. Use the new <strong>nx-multi-select</strong> component instead.
+</div>
+<p class="docs-markdown--p">It is recommended to use the dropdown component in combination with NxFormField. Therefore, make sure to import this module as well:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxFormfieldModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 </code></pre>
 <p class="docs-markdown--p">Dropdown requires Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
@@ -21,24 +24,16 @@ Therefore, make sure to import this module as well:</p>
 <p class="docs-markdown--p">See below for an example of a dropdown with negative styling wrapped by a formfield in different states.</p>
 <div nx-docs-example="dropdown-negative" config="{}">exampleID: dropdown-negative</div>
 <h3 id="group-dropdown" class="docs-markdown--h3">Group Dropdown</h3>
-<p class="docs-markdown--p">It might be necessary for your use case to group the items inside of a dropdown.
-This is how it's done:</p>
+<p class="docs-markdown--p">It might be necessary for your use case to group the items inside of a dropdown. This is how it's done:</p>
 <div nx-docs-example="dropdown-group" config="{}">exampleID: dropdown-group</div>
 <h3 id="filter-dropdown" class="docs-markdown--h3">Filter dropdown</h3>
 <p class="docs-markdown--p">The dropdown can show an additional filter input, as demonstrated in this example:</p>
 <div nx-docs-example="dropdown-filter" config="{}">exampleID: dropdown-filter</div>
 <h3 id="filter-dropdown-with-custom-filter-function" class="docs-markdown--h3">Filter dropdown with custom filter function</h3>
-<p class="docs-markdown--p">The default filter function is comparing the lower case dropdown label with the lower case string
-from the search filter via <code>String.indexOf()</code>.
-You can alter the default filter function by setting the <code>[filterFn]</code> input.
-In this case we want to be really strict and only have a match if a dropdown item contains the
-case sensitive user input from the beginning of the string!</p>
+<p class="docs-markdown--p">The default filter function is comparing the lower case dropdown label with the lower case string from the search filter via <code>String.indexOf()</code>. You can alter the default filter function by setting the <code>[filterFn]</code> input. In this case we want to be really strict and only have a match if a dropdown item contains the case sensitive user input from the beginning of the string!</p>
 <div nx-docs-example="dropdown-filter-custom" config="{}">exampleID: dropdown-filter-custom</div>
 <h3 id="multi-select-dropdown" class="docs-markdown--h3">Multi select dropdown</h3>
-<p class="docs-markdown--p">The dropdown can be configured to allow multiple items to be selected. In this
-mode the dropdown stays open while selecting an item by keyboard or mouse.
-Moreover the dropdown renders checkboxes before each item to indicate the selection
-of the user.</p>
+<p class="docs-markdown--p">The multi select is a separate component from the dropdown. It supports selection on multiple items as well as filtering. Instead of a single value the model is an array of options. Options are passed into the component via the <code>options</code> input. In the simplest case you can pass in a list of strings. That way the selected values and the displayed labels are the same. If you need labels that are different to the values you can also pass in arbitrary complex objects as options. In that case the value and label can be selected by specifying <code>selectValue</code> and <code>selectLabel</code>. The optional filter can be enabled via the <code>filter</code> input.</p>
 <div nx-docs-example="dropdown-multi-select" config="{}">exampleID: dropdown-multi-select</div>
 <h3 id="disabling-items" class="docs-markdown--h3">Disabling items</h3>
 <p class="docs-markdown--p">You can disable the whole dropdown as well as single dropdown items by setting their <code>disabled</code> property as shown in the example below:</p>
@@ -57,11 +52,13 @@ of the user.</p>
 <p class="docs-markdown--p">In a formfield with an outline the styling of the dropdown will adjust accordingly.</p>
 <p class="docs-markdown--p">Please note that <strong>this is an Expert styling option</strong>. This means that the outline appearance is only intended for internal applications and not for applications that are client facing.</p>
 <div nx-docs-example="dropdown-outline" config="{}">exampleID: dropdown-outline</div>
+<h4 id="multi-select-dropdown-1" class="docs-markdown--h4">Multi Select Dropdown</h4>
+<p class="docs-markdown--p">The multi select dropdown is a new component which is a replacement for the <code>&lt;dropdown nxIsMultiselect ...&gt;</code>. It offers a filter to quicky find items in long lists, improved accessibility and better performance.</p>
+<div nx-docs-example="multi-select" config="{}">exampleID: multi-select</div>
 </div>
 <h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The dropdown can be accessed via keyboard. If the component owns the focus, the dropdown will open when you hit ENTER. Pressing ESC while the dropdown is open will close it. To select a value while the dropdown is open, use ARROW-UP and ARROW-DOWN. You can quickly navigate to the first item with the HOME key and to the last item with the END key. Pressing the ALT key plus either the ARROW_UP or ARROW_DOWN key opens or closes the dropdown.</p>
-<p class="docs-markdown--p">In order to mimic the native <code>&lt;select&gt;</code> element accessibility, the library is using <code>aria-labelledby</code> attribute to describe the dropdown. Under the hood, html ids of the element containing the rendered dropdown value and the element containing the formfield label are passed to the <code>aria-labelledby</code>. This allows assistive technology to read out currently selected value or placeholder of the dropdown together with the label displayed on the screen. If no formfield label is
-present, only the dropdown value is read.</p>
+<p class="docs-markdown--p">In order to mimic the native <code>&lt;select&gt;</code> element accessibility, the library is using <code>aria-labelledby</code> attribute to describe the dropdown. Under the hood, html ids of the element containing the rendered dropdown value and the element containing the formfield label are passed to the <code>aria-labelledby</code>. This allows assistive technology to read out currently selected value or placeholder of the dropdown together with the label displayed on the screen. If no formfield label is present, only the dropdown value is read.</p>
 <h4 id="in-single-select-mode" class="docs-markdown--h4">In single select mode</h4>
 <p class="docs-markdown--p">Hitting SPACE or ENTER closes the dropdown and commit the selected value to the model.</p>
 <h4 id="in-multi-select-mode" class="docs-markdown--h4">In multi select mode</h4>

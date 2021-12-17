@@ -1,17 +1,19 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;validatedMaskForm&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;IBAN&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxMask</span> <span class="hljs-attr">nxIbanMask</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;maskInput&quot;</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;IBAN&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span> <span class="hljs-attr">nxMask</span> <span class="hljs-attr">nxIbanMask</span> <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;maskInput&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+        &gt;</span>submit&lt;/button
+    &gt;
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
 
-Form value: {{ validatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-Testform: {{ validatedMaskForm.status | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-Validation errors: {{ validatedMaskForm.get(&#x27;maskInput&#x27;)?.errors | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+Form value: {{ validatedMaskForm.value | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+Testform: {{ validatedMaskForm.status | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+Validation errors: {{ validatedMaskForm.get(&#x27;maskInput&#x27;)?.errors | json }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Try to enter some test IBANs:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Germany:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> DE89 3704 0044 0532 0130 00<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Norway:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> NO93 8601 1117 947<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Malta:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> MT84 MALT 0110 0001 2345 MTLC AST0 01S
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Germany:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> DE89 3704 0044 0532 0130 00<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Norway:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> NO93 8601 1117 947<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>Malta:<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span> MT84 MALT 0110 0001 2345 MTLC AST0 01S
 <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>

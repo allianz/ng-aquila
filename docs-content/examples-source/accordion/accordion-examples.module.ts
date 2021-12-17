@@ -17,42 +17,42 @@ import { AccordionNegativeExampleComponent } from './accordion-negative/accordio
 import { AccordionStandaloneExampleComponent } from './accordion-standalone/accordion-standalone-example';
 
 const EXAMPLES = [
-  AccordionExampleComponent,
-  AccordionErrorExampleComponent,
-  AccordionExtraLightExampleComponent,
-  AccordionExtraLightNegativeExampleComponent,
-  AccordionLazyExampleComponent,
-  AccordionLightExampleComponent,
-  AccordionLightNegativeExampleComponent,
-  AccordionMultiExampleComponent,
-  AccordionNegativeExampleComponent,
-  AccordionStandaloneExampleComponent
+    AccordionExampleComponent,
+    AccordionErrorExampleComponent,
+    AccordionExtraLightExampleComponent,
+    AccordionExtraLightNegativeExampleComponent,
+    AccordionLazyExampleComponent,
+    AccordionLightExampleComponent,
+    AccordionLightNegativeExampleComponent,
+    AccordionMultiExampleComponent,
+    AccordionNegativeExampleComponent,
+    AccordionStandaloneExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxAccordionModule,
-    NxInputModule,
-    NxIconModule,
-    NxMessageModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [
+        NxAccordionModule,
+        NxInputModule,
+        NxIconModule,
+        NxMessageModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class AccordionExamplesModule {
-  static components() {
-    return {
-      'accordion': AccordionExampleComponent,
-      'accordion-error': AccordionErrorExampleComponent,
-      'accordion-extra-light': AccordionExtraLightExampleComponent,
-      'accordion-extra-light-negative': AccordionExtraLightNegativeExampleComponent,
-      'accordion-lazy': AccordionLazyExampleComponent,
-      'accordion-light': AccordionLightExampleComponent,
-      'accordion-light-negative': AccordionLightNegativeExampleComponent,
-      'accordion-multi': AccordionMultiExampleComponent,
-      'accordion-negative': AccordionNegativeExampleComponent,
-      'accordion-standalone': AccordionStandaloneExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            accordion: AccordionExampleComponent,
+            'accordion-error': AccordionErrorExampleComponent,
+            'accordion-extra-light': AccordionExtraLightExampleComponent,
+            'accordion-extra-light-negative': AccordionExtraLightNegativeExampleComponent,
+            'accordion-lazy': AccordionLazyExampleComponent,
+            'accordion-light': AccordionLightExampleComponent,
+            'accordion-light-negative': AccordionLightNegativeExampleComponent,
+            'accordion-multi': AccordionMultiExampleComponent,
+            'accordion-negative': AccordionNegativeExampleComponent,
+            'accordion-standalone': AccordionStandaloneExampleComponent,
+        };
+    }
 }

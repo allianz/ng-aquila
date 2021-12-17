@@ -1,11 +1,11 @@
 :host {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -4px;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -4px;
+    align-items: center;
+    width: 100%;
 }
 
 button {
-  margin: 0 4px 16px;
+    margin: 0 4px 16px;
 }

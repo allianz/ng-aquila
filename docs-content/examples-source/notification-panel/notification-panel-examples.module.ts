@@ -11,29 +11,29 @@ import { NotificationPanelMixedExampleComponent } from './notification-panel-mix
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  NotificationPanelActionsExampleComponent,
-  NotificationPanelClickableExampleComponent,
-  NotificationPanelMixedExampleComponent
+    NotificationPanelActionsExampleComponent,
+    NotificationPanelClickableExampleComponent,
+    NotificationPanelMixedExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxMessageModule,
-    NxNotificationPanelModule,
-    NxIconModule,
-    RouterModule,
-    NxLinkModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxMessageModule,
+        NxNotificationPanelModule,
+        NxIconModule,
+        RouterModule,
+        NxLinkModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class NotificationExamplesModule {
-  static components() {
-    return {
-      'notification-panel-actions': NotificationPanelActionsExampleComponent,
-      'notification-panel-clickable': NotificationPanelClickableExampleComponent,
-      'notification-panel-mixed': NotificationPanelMixedExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'notification-panel-actions': NotificationPanelActionsExampleComponent,
+            'notification-panel-clickable': NotificationPanelClickableExampleComponent,
+            'notification-panel-mixed': NotificationPanelMixedExampleComponent,
+        };
+    }
 }

@@ -1,26 +1,32 @@
 <nx-swipebar label="Scroll to see more">
-  <table nxTable nxSort (sortChange)="sortTable($event)">
-    <thead>
-      <tr nxTableRow>
-        <th nxHeaderCell nxSortHeaderCell="product">Product</th>
-        <th nxHeaderCell nxSortHeaderCell="contractNumber">Contract Number</th>
-        <th nxHeaderCell>Description</th>
-        <th nxHeaderCell>Website</th>
-        <th nxHeaderCell nxSortHeaderCell="endingAt">Ending At</th>
-        <th nxHeaderCell nxSortHeaderCell="statusText">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr nxTableRow *ngFor="let item of tableElements">
-        <td nxTableCell>{{item.product}}</td>
-        <td nxTableCell>{{item.contractNumber}}</td>
-        <td nxTableCell>{{item.desc}}</td>
-        <td nxTableCell>
-          <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
-        </td>
-        <td nxTableCell>{{ item.endingAt | date: 'dd/MM/yyyy' }}</td>
-        <td nxTableCell><nx-badge [type]="item.status">{{item.statusText}}</nx-badge></td>
-      </tr>
-    </tbody>
-  </table>
+    <table nxTable nxSort (sortChange)="sortTable($event)">
+        <thead>
+            <tr nxTableRow>
+                <th nxHeaderCell nxSortHeaderCell="product">Product</th>
+                <th nxHeaderCell nxSortHeaderCell="contractNumber"
+                    >Contract Number</th
+                >
+                <th nxHeaderCell>Description</th>
+                <th nxHeaderCell>Website</th>
+                <th nxHeaderCell nxSortHeaderCell="endingAt">Ending At</th>
+                <th nxHeaderCell nxSortHeaderCell="statusText">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow *ngFor="let item of tableElements">
+                <td nxTableCell>{{item.product}}</td>
+                <td nxTableCell>{{item.contractNumber}}</td>
+                <td nxTableCell>{{item.desc}}</td>
+                <td nxTableCell>
+                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                </td>
+                <td nxTableCell>{{ item.endingAt | date: 'dd/MM/yyyy' }}</td>
+                <td nxTableCell
+                    ><nx-badge [type]="item.status"
+                        >{{item.statusText}}</nx-badge
+                    ></td
+                >
+            </tr>
+        </tbody>
+    </table>
 </nx-swipebar>

@@ -17,8 +17,7 @@
 <p class="docs-markdown--p">By default the label will float once the input is focused or filled. By specifying <code>nxFloatLabel</code> with a value of always you can make this formfield appear as a static input + label combination.</p>
 <div nx-docs-example="formfield-floating" config="{}">exampleID: formfield-floating</div>
 <h3 id="custom-formfield-label" class="docs-markdown--h3">Custom formfield label</h3>
-<p class="docs-markdown--p">You can pass text label content via the input <code>nxLabel</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below.
-If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
+<p class="docs-markdown--p">You can pass text label content via the input <code>nxLabel</code>. If you need a more complex label you an use the directive <code>nx-formfield-label</code> as shown in the code example below. If both are defined, then <code>nx-formfield-label</code> will take precedence.</p>
 <div nx-docs-example="formfield-custom-label" config="{}">exampleID: formfield-custom-label</div>
 <h3 id="negative-styling" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">The negative modifier can be used whenever the component is used on a dark background.</p>
@@ -44,7 +43,7 @@ If both are defined, then <code>nx-formfield-label</code> will take precedence.<
 <div nx-docs-example="formfield-note-and-error" config="{}">exampleID: formfield-note-and-error</div>
 <h3 id="prefix%2C-suffix%2C-appendix" class="docs-markdown--h3">Prefix, Suffix, Appendix</h3>
 <p class="docs-markdown--p">Provide additional information like the unit or icons with popovers by using additional spaces before and after the input. Both prefix and suffix are visually inside the input, the appendix is located outside to display elements like info icons as they need to be placed outside.</p>
-<p class="docs-markdown--p">Projected content is automatically colored in  a secondary color, auto-sized icons get a size of 24px (s) and a primary action dark color.</p>
+<p class="docs-markdown--p">Projected content is automatically colored in a secondary color, auto-sized icons get a size of 24px (s) and a primary action dark color.</p>
 <p class="docs-markdown--p">Please note that the prefix and suffix are not read out by the screenreader, so you would have to set an explicit <code>aria-label</code> (which includes the prefix/suffix information) via the <code>nxAriaLabel</code> input on <code>nxInput</code> as shown in the example below.</p>
 <div nx-docs-example="formfield-prefix-suffix-appendix" config="{}">exampleID: formfield-prefix-suffix-appendix</div>
 <h3 id="placeholder" class="docs-markdown--h3">Placeholder</h3>
@@ -52,8 +51,7 @@ If both are defined, then <code>nx-formfield-label</code> will take precedence.<
 <p class="docs-markdown--p">Please note that placeholders are not fully accessible because their color contrast is usually lower than the one of actual text input. In addition, placeholders are <strong>not supported by all screen readers</strong>. Therefore, a placeholder should provide <strong>only non-essential information</strong>.</p>
 <div nx-docs-example="formfield-placeholder" config="{}">exampleID: formfield-placeholder</div>
 <h3 id="password-visibility-toggle" class="docs-markdown--h3">Password visibility toggle</h3>
-<p class="docs-markdown--p">In order to hide/show characters on inputs of type password you can use the <code>nx-password-toggle</code> component in combination with a <code>nxFormFieldSuffix</code> as shown in the example below.
-The input field has to be passed as a <code>control</code> to the <code>nx-password-toggle</code> component.</p>
+<p class="docs-markdown--p">In order to hide/show characters on inputs of type password you can use the <code>nx-password-toggle</code> component in combination with a <code>nxFormFieldSuffix</code> as shown in the example below. The input field has to be passed as a <code>control</code> to the <code>nx-password-toggle</code> component.</p>
 <p class="docs-markdown--p"><strong>Important:</strong> When using a formfield with a visibility toggle please pass an <code>aria-label</code> to the password toggle via the <code>ariaLabel</code> input. If you don't set it explicitly it will have 'Show password' as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">For more information on the password toggle component have a look at the <a href="./documentation/input/api">Input API</a>.</p>
 <div nx-docs-example="formfield-password-visibility" config="{}">exampleID: formfield-password-visibility</div>
@@ -72,11 +70,10 @@ The input field has to be passed as a <code>control</code> to the <code>nx-passw
 <p class="docs-markdown--p">The same is valid for the formfield error notifications (<code>nx-error</code>). The default error style is 'message', but you can use the <code>ERROR_DEFAULT_OPTIONS</code> injection token to overwrite it, as shown in the example below.</p>
 <div nx-docs-example="formfield-global" config="{}">exampleID: formfield-global</div>
 <h3 id="creating-a-custom-form-field-control" class="docs-markdown--h3">Creating a custom form field control</h3>
-<p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>.
-Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
+<p class="docs-markdown--p">If you want you can create custom form field controls and add custom logic to it. Your custom form field control then should be wrapped inside <code>nx-formfield</code>. Let's start simple and check how it looks once you implement the necessary interfaces. Our goal is to implement custom form field controls for phone numbers.</p>
 <p class="docs-markdown--p">The HTML code below shows how we can consume our custom control.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;Phone number&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">formfield-custom-tel-input-example</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
 </code></pre>
 <div nx-docs-example="formfield-custom" config="{}">exampleID: formfield-custom</div>

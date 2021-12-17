@@ -1,53 +1,77 @@
-<p class="nx-margin-top-0 nx-margin-bottom-xs">Watch it changing for <span class="docs-grid-text-tiny">tiny</span>,
-  <span class="docs-grid-text-small">small</span>,
-  <span class="docs-grid-text-medium">medium</span>,
-  <span class="docs-grid-text-large">large</span>,
-  <span class="docs-grid-text-xlarge">xlarge</span>,
-  <span class="docs-grid-text-2xlarge">2xlarge</span> and
-  <span class="docs-grid-text-3xlarge">3xlarge</span> widths!
+<p class="nx-margin-top-0 nx-margin-bottom-xs"
+    >Watch it changing for <span class="docs-grid-text-tiny">tiny</span>,
+    <span class="docs-grid-text-small">small</span>,
+    <span class="docs-grid-text-medium">medium</span>,
+    <span class="docs-grid-text-large">large</span>,
+    <span class="docs-grid-text-xlarge">xlarge</span>,
+    <span class="docs-grid-text-2xlarge">2xlarge</span> and
+    <span class="docs-grid-text-3xlarge">3xlarge</span> widths!
 </p>
 
-<p><strong class="nx-margin-top-0 nx-margin-bottom-xs">Use one order for all four screen sizes:</strong></p>
+<p
+    ><strong class="nx-margin-top-0 nx-margin-bottom-xs"
+        >Use one order for all four screen sizes:</strong
+    ></p
+>
 <div nxLayout="grid" class="docs-grid-colored-grid">
-  <div nxRow>
-    <div nxCol="3" nxColOrder="last" class="docs-grid-colored-col">
-      Column <strong>1</strong><br>
-      <code>nxColOrder=<wbr>"last"</code>
+    <div nxRow>
+        <div nxCol="3" nxColOrder="last" class="docs-grid-colored-col">
+            Column <strong>1</strong><br />
+            <code>nxColOrder=<wbr />"last"</code>
+        </div>
+        <div nxCol="3" nxColOrder="first" class="docs-grid-colored-col">
+            Column <strong>2</strong><br />
+            <code>nxColOrder=<wbr />"first"</code>
+        </div>
+        <div nxCol="3" nxColOrder="unordered" class="docs-grid-colored-col">
+            Column <strong>3</strong><br />
+            <code>nxColOrder=<wbr />"unordered"</code>
+        </div>
+        <div nxCol="3" nxColOrder="unordered" class="docs-grid-colored-col">
+            Column <strong>4</strong><br />
+            <code>nxColOrder=<wbr />"unordered"</code>
+        </div>
     </div>
-    <div nxCol="3" nxColOrder="first" class="docs-grid-colored-col">
-      Column <strong>2</strong><br>
-      <code>nxColOrder=<wbr>"first"</code>
-    </div>
-    <div nxCol="3" nxColOrder="unordered" class="docs-grid-colored-col">
-      Column <strong>3</strong><br>
-      <code>nxColOrder=<wbr>"unordered"</code>
-    </div>
-    <div nxCol="3" nxColOrder="unordered" class="docs-grid-colored-col">
-      Column <strong>4</strong><br>
-      <code>nxColOrder=<wbr>"unordered"</code>
-    </div>
-  </div>
 </div>
 
-<p><strong class="nx-margin-top-0 nx-margin-bottom-xs">Changing the order for <span class="docs-grid-text-tiny">tiny</span> size:</strong></p>
+<p
+    ><strong class="nx-margin-top-0 nx-margin-bottom-xs"
+        >Changing the order for
+        <span class="docs-grid-text-tiny">tiny</span> size:</strong
+    ></p
+>
 <div nxLayout="grid" class="docs-grid-colored-grid">
-  <div nxRow>
-    <div nxCol="5" nxColOrder="last,first" class="docs-grid-colored-col">
-      Column <strong>1</strong>
+    <div nxRow>
+        <div nxCol="5" nxColOrder="last,first" class="docs-grid-colored-col">
+            Column <strong>1</strong>
+        </div>
+        <div nxCol="5" nxColOrder="first,last" class="docs-grid-colored-col">
+            Column <strong>2</strong>
+        </div>
     </div>
-    <div nxCol="5" nxColOrder="first,last" class="docs-grid-colored-col">
-      Column <strong>2</strong>
-    </div>
-  </div>
 </div>
-<p><strong class="nx-margin-top-0 nx-margin-bottom-xs">Changing the order for <span class="docs-grid-text-tiny">tiny</span> and <span class="docs-grid-text-small">small</span> size:</strong></p>
+<p
+    ><strong class="nx-margin-top-0 nx-margin-bottom-xs"
+        >Changing the order for
+        <span class="docs-grid-text-tiny">tiny</span> and
+        <span class="docs-grid-text-small">small</span> size:</strong
+    ></p
+>
 <div nxLayout="grid" class="docs-grid-colored-grid">
-  <div nxRow>
-    <div nxCol="5" nxColOrder="last,last,first,first" class="docs-grid-colored-col">
-      Column <strong>1</strong>
+    <div nxRow>
+        <div
+            nxCol="5"
+            nxColOrder="last,last,first,first"
+            class="docs-grid-colored-col"
+        >
+            Column <strong>1</strong>
+        </div>
+        <div
+            nxCol="5"
+            nxColOrder="first,first,last,last"
+            class="docs-grid-colored-col"
+        >
+            Column <strong>2</strong>
+        </div>
     </div>
-    <div nxCol="5" nxColOrder="first,first,last,last" class="docs-grid-colored-col">
-      Column <strong>2</strong>
-    </div>
-  </div>
 </div>

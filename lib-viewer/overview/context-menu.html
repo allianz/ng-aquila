@@ -21,8 +21,7 @@
 <p class="docs-markdown--p">Menu items can be disabled by adding a <code>disabled</code> attribute to the <code>nxContextMenuItem</code>.</p>
 <div nx-docs-example="context-menu-disabled" config="{}">exampleID: context-menu-disabled</div>
 <h3 id="lazy-rendering" class="docs-markdown--h3">Lazy rendering</h3>
-<p class="docs-markdown--p">By default, the context menu content will be initialized even when the panel is closed.
-To defer initialization until the context menu is open, the content can be provided as an ng-template with the <code>nxContextMenuContent</code> attribute:</p>
+<p class="docs-markdown--p">By default, the context menu content will be initialized even when the panel is closed. To defer initialization until the context menu is open, the content can be provided as an ng-template with the <code>nxContextMenuContent</code> attribute:</p>
 <div nx-docs-example="context-menu-lazy" config="{}">exampleID: context-menu-lazy</div>
 <h3 id="passing-in-data-to-a-menu" class="docs-markdown--h3">Passing in data to a menu</h3>
 <p class="docs-markdown--p">When using lazy rendering, additional context data can be passed to the context menu panel via the <code>nxContextMenuTriggerData</code> input. This allows for a single context menu instance to be rendered with a different set of data, depending on the trigger that opened it:</p>

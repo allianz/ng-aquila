@@ -14,36 +14,36 @@ import { TooltipProgrammaticExampleComponent } from './tooltip-programmatic/tool
 import { TooltipSettingsExampleComponent } from './tooltip-settings/tooltip-settings-example';
 
 const EXAMPLES = [
-  TooltipBasicExampleComponent,
-  TooltipDelayExampleComponent,
-  TooltipDisabledExampleComponent,
-  TooltipFallbacksTableExampleComponent,
-  TooltipPositionsExampleComponent,
-  TooltipProgrammaticExampleComponent,
-  TooltipSettingsExampleComponent
+    TooltipBasicExampleComponent,
+    TooltipDelayExampleComponent,
+    TooltipDisabledExampleComponent,
+    TooltipFallbacksTableExampleComponent,
+    TooltipPositionsExampleComponent,
+    TooltipProgrammaticExampleComponent,
+    TooltipSettingsExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxTooltipModule,
-    NxDynamicTableModule,
-    CommonModule,
-    NxButtonModule,
-    NxBadgeModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxTooltipModule,
+        NxDynamicTableModule,
+        CommonModule,
+        NxButtonModule,
+        NxBadgeModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class TooltipExamplesModule {
-  static components() {
-    return {
-      'tooltip-basic': TooltipBasicExampleComponent,
-      'tooltip-delay': TooltipDelayExampleComponent,
-      'tooltip-disabled': TooltipDisabledExampleComponent,
-      'tooltip-fallbacks-table': TooltipFallbacksTableExampleComponent,
-      'tooltip-positions': TooltipPositionsExampleComponent,
-      'tooltip-programmatic': TooltipProgrammaticExampleComponent,
-      'tooltip-settings': TooltipSettingsExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'tooltip-basic': TooltipBasicExampleComponent,
+            'tooltip-delay': TooltipDelayExampleComponent,
+            'tooltip-disabled': TooltipDisabledExampleComponent,
+            'tooltip-fallbacks-table': TooltipFallbacksTableExampleComponent,
+            'tooltip-positions': TooltipPositionsExampleComponent,
+            'tooltip-programmatic': TooltipProgrammaticExampleComponent,
+            'tooltip-settings': TooltipSettingsExampleComponent,
+        };
+    }
 }

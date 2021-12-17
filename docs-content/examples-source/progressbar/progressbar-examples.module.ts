@@ -5,20 +5,20 @@ import { ProgressbarExampleComponent } from './progressbar/progressbar-example';
 import { ProgressbarBasicExampleComponent } from './progressbar-basic/progressbar-basic-example';
 
 const EXAMPLES = [
-  ProgressbarExampleComponent,
-  ProgressbarBasicExampleComponent
+    ProgressbarExampleComponent,
+    ProgressbarBasicExampleComponent,
 ];
 
- @NgModule({
-  imports: [NxProgressbarModule],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxProgressbarModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ProgressbarExamplesModule {
-  static components() {
-    return {
-      'progressbar': ProgressbarExampleComponent,
-      'progressbar-basic': ProgressbarBasicExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            progressbar: ProgressbarExampleComponent,
+            'progressbar-basic': ProgressbarBasicExampleComponent,
+        };
+    }
 }

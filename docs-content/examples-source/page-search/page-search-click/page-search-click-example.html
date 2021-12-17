@@ -1,25 +1,31 @@
 <nx-page-search
-      nxButtonLabel="Search"
-      (nxButtonClick)="onButtonClick(clickExampleInput.value)"
-      nxButtonLayout="12,12,12,4"
-      nxContentLayout="12,12,12,8"
-      aria-label="Search click example">
-  <div nxRow>
-    <div nxCol="12">
-      <nx-formfield>
-        <input
-            #clickExampleInput
-            nxInput
-            placeholder="Enter Keyword"
-            [(ngModel)]="searchTerm"
-            type="search"
-        >
-        <span nxFormfieldSuffix *ngIf="searchTerm" aria-hidden="true" (click)="searchTerm=''">
-          <nx-icon name="close" size="s"></nx-icon>
-        </span>
-      </nx-formfield>
+    nxButtonLabel="Search"
+    (nxButtonClick)="onButtonClick(clickExampleInput.value)"
+    nxButtonLayout="12,12,12,4"
+    nxContentLayout="12,12,12,8"
+    aria-label="Search click example"
+>
+    <div nxRow>
+        <div nxCol="12">
+            <nx-formfield>
+                <input
+                    #clickExampleInput
+                    nxInput
+                    placeholder="Enter Keyword"
+                    [(ngModel)]="searchTerm"
+                    type="search"
+                />
+                <span
+                    nxFormfieldSuffix
+                    *ngIf="searchTerm"
+                    aria-hidden="true"
+                    (click)="searchTerm=''"
+                >
+                    <nx-icon name="close" size="s"></nx-icon>
+                </span>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
 </nx-page-search>
-<br>
+<br />
 <div *ngFor="let value of valuesByClick">Value at click: {{value}}</div>

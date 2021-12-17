@@ -1,30 +1,46 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-file-uploader</span> #<span class="hljs-attr">documentUpload</span> [<span class="hljs-attr">uploader</span>]=<span class="hljs-string">&quot;uploader&quot;</span> <span class="hljs-attr">multiple</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-3xs&quot;</span>&gt;</span>Select a file to upload<span class="hljs-tag">&lt;/<span class="hljs-name">nx-label</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span> <span class="hljs-attr">nxFileUploadHint</span>&gt;</span>Multiple files can be selected<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-label</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-3xs&quot;</span>
+        &gt;</span>Select a file to upload&lt;/nx-label
+    &gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span> <span class="hljs-attr">nxFileUploadHint</span>
+        &gt;</span>Multiple files can be selected&lt;/span
+    &gt;
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span> <span class="hljs-attr">nxFileUploadButton</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-    Add File
-  <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary&quot;</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+        <span class="hljs-attr">nxFileUploadButton</span>
+    &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;plus&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+        Add File
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-file-uploader</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showUploadError&quot;</span>&gt;</span>
-  An error occured while uploading.
-<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;showUploadError&quot;</span>&gt;</span> An error occured while uploading. <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Set url for testing the upload: {{ uploadConfig[&#x27;requestUrl&#x27;] === &#x27;file-upload&#x27; ? &#x27;Valid url&#x27; : &#x27;Invalid url&#x27; }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>
+    &gt;</span>Set url for testing the upload: {{ uploadConfig[&#x27;requestUrl&#x27;] ===
+    &#x27;file-upload&#x27; ? &#x27;Valid url&#x27; : &#x27;Invalid url&#x27; }}&lt;/p
+&gt;
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> <span class="hljs-attr">nxStyle</span>=<span class="hljs-string">&quot;small&quot;</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;uploadConfig[&#x27;requestUrl&#x27;]&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;file-upload&quot;</span>&gt;</span>Valid url<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;file-upload-error&quot;</span>&gt;</span>Invalid url<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;file-upload&quot;</span>
+        &gt;</span>Valid url&lt;/nx-radio-toggle-button
+    &gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> <span class="hljs-attr">nxValue</span>=<span class="hljs-string">&quot;file-upload-error&quot;</span>
+        &gt;</span>Invalid url&lt;/nx-radio-toggle-button
+    &gt;
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-        [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;!documentUpload.value?.length&quot;</span>
-        [<span class="hljs-attr">nxFileUploadTriggerFor</span>]=<span class="hljs-string">&quot;documentUpload&quot;</span>
-        (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showUploadError = false&quot;</span>&gt;</span>
-  Upload files
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span>
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    [<span class="hljs-attr">disabled</span>]=<span class="hljs-string">&quot;!documentUpload.value?.length&quot;</span>
+    [<span class="hljs-attr">nxFileUploadTriggerFor</span>]=<span class="hljs-string">&quot;documentUpload&quot;</span>
+    (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;showUploadError = false&quot;</span>
+&gt;</span>
+    Upload files
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

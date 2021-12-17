@@ -1,8 +1,8 @@
 :host {
-  overflow-x: scroll;
-  display: block;
+    overflow-x: scroll;
+    display: block;
 }
 
 .nx-table-cell--toggle {
-  padding-right: 0;
+    padding-right: 0;
 }

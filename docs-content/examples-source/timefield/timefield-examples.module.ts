@@ -11,32 +11,28 @@ import { TimefieldTemplateDrivenExampleComponent } from './timefield-template-dr
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  TimefieldDisabledExampleComponent,
-  TimefieldFormatTogglerExampleComponent,
-  TimefieldLocalizeExampleComponent,
-  TimefieldNegativeExampleComponent,
-  TimefieldReactiveExampleComponent,
-  TimefieldTemplateDrivenExampleComponent
+    TimefieldDisabledExampleComponent,
+    TimefieldFormatTogglerExampleComponent,
+    TimefieldLocalizeExampleComponent,
+    TimefieldNegativeExampleComponent,
+    TimefieldReactiveExampleComponent,
+    TimefieldTemplateDrivenExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxTimefieldModule,
-    ExamplesSharedModule,
-    NxErrorModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [NxTimefieldModule, ExamplesSharedModule, NxErrorModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class TimefieldExamplesModule {
-  static components() {
-    return {
-      'timefield-disabled': TimefieldDisabledExampleComponent,
-      'timefield-format-toggler': TimefieldFormatTogglerExampleComponent,
-      'timefield-localize': TimefieldLocalizeExampleComponent,
-      'timefield-negative': TimefieldNegativeExampleComponent,
-      'timefield-reactive': TimefieldReactiveExampleComponent,
-      'timefield-template-driven': TimefieldTemplateDrivenExampleComponent,
-    };
-  }
+    static components() {
+        return {
+            'timefield-disabled': TimefieldDisabledExampleComponent,
+            'timefield-format-toggler': TimefieldFormatTogglerExampleComponent,
+            'timefield-localize': TimefieldLocalizeExampleComponent,
+            'timefield-negative': TimefieldNegativeExampleComponent,
+            'timefield-reactive': TimefieldReactiveExampleComponent,
+            'timefield-template-driven': TimefieldTemplateDrivenExampleComponent,
+        };
+    }
 }

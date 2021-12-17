@@ -1,10 +1,18 @@
 <nx-formfield nxLabel="Birthday">
-  <input nxDatefield nxInput [nxDatepicker]="myDatepicker" [(ngModel)]="currentDate" />
-  <span nxFormfieldHint>MM/DD/YYYY</span>
-  <nx-message nxContext="info" nxFormfieldNote>
-    Provide your birthday date. Match the format or use the date picker.
-  </nx-message>
+    <input
+        nxDatefield
+        nxInput
+        [nxDatepicker]="myDatepicker"
+        [(ngModel)]="currentDate"
+    />
+    <span nxFormfieldHint>MM/DD/YYYY</span>
+    <nx-message nxContext="info" nxFormfieldNote>
+        Provide your birthday date. Match the format or use the date picker.
+    </nx-message>
 
-  <nx-datepicker-toggle [for]="myDatepicker" nxFormfieldSuffix></nx-datepicker-toggle>
-  <nx-datepicker #myDatepicker></nx-datepicker>
+    <nx-datepicker-toggle
+        [for]="myDatepicker"
+        nxFormfieldSuffix
+    ></nx-datepicker-toggle>
+    <nx-datepicker #myDatepicker></nx-datepicker>
 </nx-formfield>

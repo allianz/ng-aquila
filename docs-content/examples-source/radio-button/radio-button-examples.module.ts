@@ -17,44 +17,40 @@ import { RadioButtonSizesExampleComponent } from './radio-button-sizes/radio-but
 import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
-  RadioButtonExampleComponent,
-  RadioButtonDisabledExampleComponent,
-  RadioButtonEventExampleComponent,
-  RadioButtonFormExampleComponent,
-  RadioButtonGroupExampleComponent,
-  RadioButtonGroupHorizontalExampleComponent,
-  RadioButtonGroupLabelSizeExampleComponent,
-  RadioButtonGroupValidationExampleComponent,
-  RadioButtonNegativeExampleComponent,
-  RadioButtonReactiveExampleComponent,
-  RadioButtonSampleExampleComponent,
-  RadioButtonSizesExampleComponent
+    RadioButtonExampleComponent,
+    RadioButtonDisabledExampleComponent,
+    RadioButtonEventExampleComponent,
+    RadioButtonFormExampleComponent,
+    RadioButtonGroupExampleComponent,
+    RadioButtonGroupHorizontalExampleComponent,
+    RadioButtonGroupLabelSizeExampleComponent,
+    RadioButtonGroupValidationExampleComponent,
+    RadioButtonNegativeExampleComponent,
+    RadioButtonReactiveExampleComponent,
+    RadioButtonSampleExampleComponent,
+    RadioButtonSizesExampleComponent,
 ];
 
 @NgModule({
-  imports: [
-    NxRadioModule,
-    NxIconModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+    imports: [NxRadioModule, NxIconModule, ExamplesSharedModule],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class RadioExamplesModule {
-  static components() {
-    return {
-      'radio-button': RadioButtonExampleComponent,
-      'radio-button-disabled': RadioButtonDisabledExampleComponent,
-      'radio-button-event': RadioButtonEventExampleComponent,
-      'radio-button-form': RadioButtonFormExampleComponent,
-      'radio-button-group': RadioButtonGroupExampleComponent,
-      'radio-button-group-horizontal': RadioButtonGroupHorizontalExampleComponent,
-      'radio-button-group-label-size': RadioButtonGroupLabelSizeExampleComponent,
-      'radio-button-group-validation': RadioButtonGroupValidationExampleComponent,
-      'radio-button-negative': RadioButtonNegativeExampleComponent,
-      'radio-button-reactive': RadioButtonReactiveExampleComponent,
-      'radio-button-sample': RadioButtonSampleExampleComponent,
-      'radio-button-sizes': RadioButtonSizesExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'radio-button': RadioButtonExampleComponent,
+            'radio-button-disabled': RadioButtonDisabledExampleComponent,
+            'radio-button-event': RadioButtonEventExampleComponent,
+            'radio-button-form': RadioButtonFormExampleComponent,
+            'radio-button-group': RadioButtonGroupExampleComponent,
+            'radio-button-group-horizontal': RadioButtonGroupHorizontalExampleComponent,
+            'radio-button-group-label-size': RadioButtonGroupLabelSizeExampleComponent,
+            'radio-button-group-validation': RadioButtonGroupValidationExampleComponent,
+            'radio-button-negative': RadioButtonNegativeExampleComponent,
+            'radio-button-reactive': RadioButtonReactiveExampleComponent,
+            'radio-button-sample': RadioButtonSampleExampleComponent,
+            'radio-button-sizes': RadioButtonSizesExampleComponent,
+        };
+    }
 }

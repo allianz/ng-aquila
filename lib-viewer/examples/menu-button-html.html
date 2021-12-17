@@ -1,28 +1,31 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span> <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;root&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-  Option 1 (root level)
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    Option 1 (root level)
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxMenuButton</span>
     <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;root&quot;</span>
     <span class="hljs-attr">expandable</span>
     [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;primaryExpanded&quot;</span>
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;primaryExpanded=!primaryExpanded&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-  Option 2 (root level, expandable)
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span> <span class="hljs-attr">nxMenuButtonIcon</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+    Option 2 (root level, expandable)
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-
 
 <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span> <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;nested&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  Option 2.1 (nested level)
+    Option 2.1 (nested level)
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxMenuButton</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxMenuButton</span>
     <span class="hljs-attr">nxType</span>=<span class="hljs-string">&quot;nested&quot;</span>
     <span class="hljs-attr">expandable</span>
     [<span class="hljs-attr">expanded</span>]=<span class="hljs-string">&quot;secondaryExpanded&quot;</span>
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;secondaryExpanded=!secondaryExpanded&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  Option 2.2 (nested level, expandable)
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+    Option 2.2 (nested level, expandable)
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>

@@ -17,41 +17,41 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 
 const EXAMPLES = [
-  ContextMenuBasicExampleComponent,
-  ContextMenuDataExampleComponent,
-  ContextMenuDisabledExampleComponent,
-  ContextMenuIconsExampleComponent,
-  ContextMenuLazyExampleComponent,
-  ContextMenuNestedExampleComponent,
-  ContextMenuProgrammaticExampleComponent,
-  ContextMenuScrollStrategyExampleComponent,
-  ContextMenuIndicatorExampleComponent
+    ContextMenuBasicExampleComponent,
+    ContextMenuDataExampleComponent,
+    ContextMenuDisabledExampleComponent,
+    ContextMenuIconsExampleComponent,
+    ContextMenuLazyExampleComponent,
+    ContextMenuNestedExampleComponent,
+    ContextMenuProgrammaticExampleComponent,
+    ContextMenuScrollStrategyExampleComponent,
+    ContextMenuIndicatorExampleComponent,
 ];
 
- @NgModule({
-  imports: [
-    NxContextMenuModule,
-    NxIconModule,
-    NxBadgeModule,
-    NxIndicatorModule,
-    NxTableModule,
-    ExamplesSharedModule
-  ],
-  declarations: [EXAMPLES],
-  exports: [EXAMPLES]
+@NgModule({
+    imports: [
+        NxContextMenuModule,
+        NxIconModule,
+        NxBadgeModule,
+        NxIndicatorModule,
+        NxTableModule,
+        ExamplesSharedModule,
+    ],
+    declarations: [EXAMPLES],
+    exports: [EXAMPLES],
 })
 export class ContextExamplesModule {
-  static components() {
-    return {
-      'context-menu-basic': ContextMenuBasicExampleComponent,
-      'context-menu-data': ContextMenuDataExampleComponent,
-      'context-menu-disabled': ContextMenuDisabledExampleComponent,
-      'context-menu-icons': ContextMenuIconsExampleComponent,
-      'context-menu-lazy': ContextMenuLazyExampleComponent,
-      'context-menu-nested': ContextMenuNestedExampleComponent,
-      'context-menu-programmatic': ContextMenuProgrammaticExampleComponent,
-      'context-menu-scroll-strategy': ContextMenuScrollStrategyExampleComponent,
-      'context-menu-indicator': ContextMenuIndicatorExampleComponent
-    };
-  }
+    static components() {
+        return {
+            'context-menu-basic': ContextMenuBasicExampleComponent,
+            'context-menu-data': ContextMenuDataExampleComponent,
+            'context-menu-disabled': ContextMenuDisabledExampleComponent,
+            'context-menu-icons': ContextMenuIconsExampleComponent,
+            'context-menu-lazy': ContextMenuLazyExampleComponent,
+            'context-menu-nested': ContextMenuNestedExampleComponent,
+            'context-menu-programmatic': ContextMenuProgrammaticExampleComponent,
+            'context-menu-scroll-strategy': ContextMenuScrollStrategyExampleComponent,
+            'context-menu-indicator': ContextMenuIndicatorExampleComponent,
+        };
+    }
 }

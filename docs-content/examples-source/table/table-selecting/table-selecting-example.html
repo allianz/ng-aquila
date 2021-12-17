@@ -1,52 +1,66 @@
 <nx-swipebar label="Scroll to see more">
-  <table nxTable>
-    <thead>
-      <tr nxTableRow>
-        <th nxHeaderCell class="nx-table-cell--checkbox" aria-label="Row selection">
-          <nx-checkbox (checkedChange)="toggleAll()"
-            aria-label="Toggle selection of all rows"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()">
-          </nx-checkbox>
-        </th>
-        <th nxHeaderCell>Product</th>
-        <th nxHeaderCell>Contract Number</th>
-        <th nxHeaderCell>Website</th>
-        <th nxHeaderCell>Ending At</th>
-        <th nxHeaderCell>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let item of tableElements">
-        <tr nxTableRow
-            [selected]="selection.isSelected(item)"
-            selectable
-            (select)="selection.toggle(item)">
-          <td nxTableCell class="nx-table-cell--checkbox">
-            <nx-checkbox (checkedChange)="selection.toggle(item)"
-              aria-label="Toggle row selection"
-              [checked]="selection.isSelected(item)"></nx-checkbox>
-          </td>
-          <td nxTableCell>{{item.product}}</td>
-          <td nxTableCell>{{item.contractNumber}}</td>
-          <td nxTableCell>
-            <nx-link><a routerLink='#'>{{item.website}}</a></nx-link>
-          </td>
-          <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
-          <td nxTableCell>
-            <nx-badge [type]="item.status">{{item.statusText}}</nx-badge>
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+    <table nxTable>
+        <thead>
+            <tr nxTableRow>
+                <th
+                    nxHeaderCell
+                    class="nx-table-cell--checkbox"
+                    aria-label="Row selection"
+                >
+                    <nx-checkbox
+                        (checkedChange)="toggleAll()"
+                        aria-label="Toggle selection of all rows"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    >
+                    </nx-checkbox>
+                </th>
+                <th nxHeaderCell>Product</th>
+                <th nxHeaderCell>Contract Number</th>
+                <th nxHeaderCell>Website</th>
+                <th nxHeaderCell>Ending At</th>
+                <th nxHeaderCell>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of tableElements">
+                <tr
+                    nxTableRow
+                    [selected]="selection.isSelected(item)"
+                    selectable
+                    (select)="selection.toggle(item)"
+                >
+                    <td nxTableCell class="nx-table-cell--checkbox">
+                        <nx-checkbox
+                            (checkedChange)="selection.toggle(item)"
+                            aria-label="Toggle row selection"
+                            [checked]="selection.isSelected(item)"
+                        ></nx-checkbox>
+                    </td>
+                    <td nxTableCell>{{item.product}}</td>
+                    <td nxTableCell>{{item.contractNumber}}</td>
+                    <td nxTableCell>
+                        <nx-link
+                            ><a routerLink="#">{{item.website}}</a></nx-link
+                        >
+                    </td>
+                    <td nxTableCell>{{item.endingAt | date: 'dd/MM/yyyy'}}</td>
+                    <td nxTableCell>
+                        <nx-badge [type]="item.status"
+                            >{{item.statusText}}</nx-badge
+                        >
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
 </nx-swipebar>
 
 <div class="nx-margin-top-m">
-  <nx-switcher [(checked)]="showSelected">Debug selected value</nx-switcher>
+    <nx-switcher [(checked)]="showSelected">Debug selected value</nx-switcher>
 
-  <ng-container *ngIf="showSelected">
-    <p>Selected value:</p>
-    <code>{{ selection.selected | json }}</code>
-  </ng-container>
+    <ng-container *ngIf="showSelected">
+        <p>Selected value:</p>
+        <code>{{ selection.selected | json }}</code>
+    </ng-container>
 </div>

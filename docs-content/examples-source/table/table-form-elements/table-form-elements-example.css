@@ -1,8 +1,9 @@
 :host {
-  overflow-x: auto;
-  display: block;
+    overflow-x: auto;
+    display: block;
 }
 
-.date-cell, .status-cell {
-  min-width: 160px;
+.date-cell,
+.status-cell {
+    min-width: 160px;
 }

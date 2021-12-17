@@ -4,20 +4,18 @@
  * <span class="hljs-doctag">@title </span>Dynamically adding and removing tabs
  */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-dynamic-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-dynamic-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-dynamic-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;tabs-dynamic-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./tabs-dynamic-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./tabs-dynamic-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TabsDynamicExampleComponent</span> </span>{
+    tabs = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];
 
-  tabs = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];
+    <span class="hljs-function"><span class="hljs-title">addTab</span>(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.tabs = [...this.tabs, text];
+    }
 
-  <span class="hljs-function"><span class="hljs-title">addTab</span>(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.tabs = [...this.tabs, text];
-  }
-
-  <span class="hljs-function"><span class="hljs-title">removeTab</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>)</span> {
-    <span class="hljs-built_in">this</span>.tabs.splice(index, <span class="hljs-number">1</span>);
-  }
-
+    <span class="hljs-function"><span class="hljs-title">removeTab</span>(<span class="hljs-params">index: <span class="hljs-built_in">number</span></span>)</span> {
+        <span class="hljs-built_in">this</span>.tabs.splice(index, <span class="hljs-number">1</span>);
+    }
 }

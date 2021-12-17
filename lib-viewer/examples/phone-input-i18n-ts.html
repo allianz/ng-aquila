@@ -9,26 +9,27 @@ countries.registerLocale(fr);
 
 <span class="hljs-meta">@Injectable</span>()
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPhoneInputIntl</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">NxPhoneInputIntl</span> </span>{
-  areaCodeLabel = <span class="hljs-string">&#x27;Ländervorwahl&#x27;</span>;
-  countryNames = countries.getNames(<span class="hljs-string">&#x27;de&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> })
+    areaCodeLabel = <span class="hljs-string">&#x27;Ländervorwahl&#x27;</span>;
+    countryNames = countries.getNames(<span class="hljs-string">&#x27;de&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> });
 }
 
 <span class="hljs-comment">/** <span class="hljs-doctag">@title </span>Phone Input Internationalization */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-i18n-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-i18n-example.html&#x27;</span>],
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-i18n-example&#x27;</span>,
-  <span class="hljs-attr">providers</span>: [
-    {
-      <span class="hljs-attr">provide</span>: NxPhoneInputIntl, <span class="hljs-attr">useClass</span>: MyPhoneInputIntl
-    }
-  ]
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;phone-input-i18n-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./phone-input-i18n-example.html&#x27;</span>],
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;phone-input-i18n-example&#x27;</span>,
+    <span class="hljs-attr">providers</span>: [
+        {
+            <span class="hljs-attr">provide</span>: NxPhoneInputIntl,
+            <span class="hljs-attr">useClass</span>: MyPhoneInputIntl,
+        },
+    ],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PhoneInputI18nExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnInit</span> </span>{
-  value = <span class="hljs-string">&#x27;&#x27;</span>;
-  frenchCountries = countries.getNames(<span class="hljs-string">&#x27;fr&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> });
-  overlayLabel = <span class="hljs-string">&#x27;my overlay label&#x27;</span>
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> { }
+    value = <span class="hljs-string">&#x27;&#x27;</span>;
+    frenchCountries = countries.getNames(<span class="hljs-string">&#x27;fr&#x27;</span>, { <span class="hljs-attr">select</span>: <span class="hljs-string">&#x27;official&#x27;</span> });
+    overlayLabel = <span class="hljs-string">&#x27;my overlay label&#x27;</span>;
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> {}
 
-  <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> { }
+    <span class="hljs-function"><span class="hljs-title">ngOnInit</span>(<span class="hljs-params"></span>)</span> {}
 }

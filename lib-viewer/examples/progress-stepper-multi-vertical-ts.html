@@ -1,113 +1,117 @@
 <span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { FormBuilder, Validators, FormControl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxMultiStepperComponent, NxProgressStepperDirective, NxMultiStepperDirection } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progress-stepper&#x27;</span>;
+<span class="hljs-keyword">import</span> {
+    NxMultiStepperComponent,
+    NxProgressStepperDirective,
+    NxMultiStepperDirection,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/progress-stepper&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> Animal {
-  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;dog&#x27;</span> | <span class="hljs-string">&#x27;cat&#x27;</span>;
-  name: <span class="hljs-built_in">string</span>;
-  dogBreed?: <span class="hljs-built_in">string</span>;
-  catBreed?: <span class="hljs-built_in">string</span>;
-  age: <span class="hljs-built_in">number</span>;
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;dog&#x27;</span> | <span class="hljs-string">&#x27;cat&#x27;</span>;
+    name: <span class="hljs-built_in">string</span>;
+    dogBreed?: <span class="hljs-built_in">string</span>;
+    catBreed?: <span class="hljs-built_in">string</span>;
+    age: <span class="hljs-built_in">number</span>;
 }
 
 <span class="hljs-comment">/**
-* <span class="hljs-doctag">@title </span>Progress Indicator Multi Vertical Example
-*/</span>
+ * <span class="hljs-doctag">@title </span>Progress Indicator Multi Vertical Example
+ */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progress-stepper-multi-vertical-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-multi-vertical-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-multi-vertical-example.css&#x27;</span>],
-  <span class="hljs-attr">host</span>: {
-    <span class="hljs-string">&#x27;[class.is-vertical]&#x27;</span>: <span class="hljs-string">&#x27;direction === &quot;vertical&quot;&#x27;</span>
-  }
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;progress-stepper-multi-vertical-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./progress-stepper-multi-vertical-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./progress-stepper-multi-vertical-example.css&#x27;</span>],
+    <span class="hljs-attr">host</span>: {
+        <span class="hljs-string">&#x27;[class.is-vertical]&#x27;</span>: <span class="hljs-string">&#x27;direction === &quot;vertical&quot;&#x27;</span>,
+    },
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProgressStepperMultiVerticalExampleComponent</span> </span>{
-  <span class="hljs-meta">@ViewChild</span>(NxProgressStepperDirective, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
-  stepper!: NxMultiStepperComponent;
+    <span class="hljs-meta">@ViewChild</span>(NxProgressStepperDirective, { <span class="hljs-attr">static</span>: <span class="hljs-literal">true</span> })
+    stepper!: NxMultiStepperComponent;
 
-  direction: NxMultiStepperDirection = <span class="hljs-string">&#x27;vertical&#x27;</span>;
+    direction: NxMultiStepperDirection = <span class="hljs-string">&#x27;vertical&#x27;</span>;
 
-  value: Animal | <span class="hljs-literal">undefined</span>;
+    value: Animal | <span class="hljs-literal">undefined</span>;
 
-  animalTypes = [<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>];
+    animalTypes = [<span class="hljs-string">&#x27;cat&#x27;</span>, <span class="hljs-string">&#x27;dog&#x27;</span>];
 
-  dogBreeds = [
-    <span class="hljs-string">&#x27;German Shepherd&#x27;</span>,
-    <span class="hljs-string">&#x27;Bulldog&#x27;</span>,
-    <span class="hljs-string">&#x27;Labrador Retriever&#x27;</span>,
-    <span class="hljs-string">&#x27;Beagle&#x27;</span>,
-    <span class="hljs-string">&#x27;Golden Retriever&#x27;</span>
-  ];
+    dogBreeds = [
+        <span class="hljs-string">&#x27;German Shepherd&#x27;</span>,
+        <span class="hljs-string">&#x27;Bulldog&#x27;</span>,
+        <span class="hljs-string">&#x27;Labrador Retriever&#x27;</span>,
+        <span class="hljs-string">&#x27;Beagle&#x27;</span>,
+        <span class="hljs-string">&#x27;Golden Retriever&#x27;</span>,
+    ];
 
-  catBreeds = [
-    <span class="hljs-string">&#x27;Maine Coon&#x27;</span>,
-    <span class="hljs-string">&#x27;Persian Cat&#x27;</span>,
-    <span class="hljs-string">&#x27;Siamese Cat&#x27;</span>,
-    <span class="hljs-string">&#x27;Ragdoll&#x27;</span>,
-    <span class="hljs-string">&#x27;British Shorthair&#x27;</span>
-  ];
+    catBreeds = [
+        <span class="hljs-string">&#x27;Maine Coon&#x27;</span>,
+        <span class="hljs-string">&#x27;Persian Cat&#x27;</span>,
+        <span class="hljs-string">&#x27;Siamese Cat&#x27;</span>,
+        <span class="hljs-string">&#x27;Ragdoll&#x27;</span>,
+        <span class="hljs-string">&#x27;British Shorthair&#x27;</span>,
+    ];
 
-  animalTypeForm = {
-    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Species&#x27;</span>,
-    <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
-      <span class="hljs-attr">animalType</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
-    })
-  };
-
-  breedForm = {
-    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Breed&#x27;</span>,
-    <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({})
-  };
-
-  ageForm = {
-    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Age&#x27;</span>,
-    <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
-      <span class="hljs-attr">age</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
-    })
-  };
-
-  nameForm = {
-    <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Name&#x27;</span>,
-    <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
-      <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required]
-    })
-  };
-
-  <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
-    <span class="hljs-built_in">this</span>.animalTypeForm.form
-      .get(<span class="hljs-string">&#x27;animalType&#x27;</span>)?.valueChanges
-      .subscribe(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
-        <span class="hljs-keyword">if</span> (value === <span class="hljs-string">&#x27;dog&#x27;</span>) {
-          <span class="hljs-built_in">this</span>.breedForm.form.removeControl(<span class="hljs-string">&#x27;catBreed&#x27;</span>);
-          <span class="hljs-built_in">this</span>.breedForm.form.addControl(
-            <span class="hljs-string">&#x27;dogBreed&#x27;</span>,
-            <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, Validators.required)
-          );
-        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value === <span class="hljs-string">&#x27;cat&#x27;</span>) {
-          <span class="hljs-built_in">this</span>.breedForm.form.removeControl(<span class="hljs-string">&#x27;dogBreed&#x27;</span>);
-          <span class="hljs-built_in">this</span>.breedForm.form.addControl(
-            <span class="hljs-string">&#x27;catBreed&#x27;</span>,
-            <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, Validators.required)
-          );
-        }
-
-        <span class="hljs-built_in">this</span>.breedForm.form.reset();
-      });
-  }
-
-  <span class="hljs-function"><span class="hljs-title">onSubmit</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.value = {
-      ...this.animalTypeForm.form.value,
-      ...this.ageForm.form.value,
-      ...this.breedForm.form.value,
-      ...this.nameForm.form.value
+    animalTypeForm = {
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Species&#x27;</span>,
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+            <span class="hljs-attr">animalType</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+        }),
     };
 
-    <span class="hljs-built_in">this</span>.stepper.steps.last.interacted = <span class="hljs-literal">true</span>;
-  }
+    breedForm = {
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Breed&#x27;</span>,
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({}),
+    };
 
-  <span class="hljs-function"><span class="hljs-title">reset</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.stepper.reset();
-    <span class="hljs-built_in">this</span>.value = <span class="hljs-literal">undefined</span>;
-  }
+    ageForm = {
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Age&#x27;</span>,
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+            <span class="hljs-attr">age</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+        }),
+    };
+
+    nameForm = {
+        <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Name&#x27;</span>,
+        <span class="hljs-attr">form</span>: <span class="hljs-built_in">this</span>._formBuilder.group({
+            <span class="hljs-attr">name</span>: [<span class="hljs-string">&#x27;&#x27;</span>, Validators.required],
+        }),
+    };
+
+    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> _formBuilder: FormBuilder</span>)</span> {
+        <span class="hljs-built_in">this</span>.animalTypeForm.form
+            .get(<span class="hljs-string">&#x27;animalType&#x27;</span>)
+            ?.valueChanges.subscribe(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> {
+                <span class="hljs-keyword">if</span> (value === <span class="hljs-string">&#x27;dog&#x27;</span>) {
+                    <span class="hljs-built_in">this</span>.breedForm.form.removeControl(<span class="hljs-string">&#x27;catBreed&#x27;</span>);
+                    <span class="hljs-built_in">this</span>.breedForm.form.addControl(
+                        <span class="hljs-string">&#x27;dogBreed&#x27;</span>,
+                        <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, Validators.required),
+                    );
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value === <span class="hljs-string">&#x27;cat&#x27;</span>) {
+                    <span class="hljs-built_in">this</span>.breedForm.form.removeControl(<span class="hljs-string">&#x27;dogBreed&#x27;</span>);
+                    <span class="hljs-built_in">this</span>.breedForm.form.addControl(
+                        <span class="hljs-string">&#x27;catBreed&#x27;</span>,
+                        <span class="hljs-keyword">new</span> FormControl(<span class="hljs-string">&#x27;&#x27;</span>, Validators.required),
+                    );
+                }
+
+                <span class="hljs-built_in">this</span>.breedForm.form.reset();
+            });
+    }
+
+    <span class="hljs-function"><span class="hljs-title">onSubmit</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.value = {
+            ...this.animalTypeForm.form.value,
+            ...this.ageForm.form.value,
+            ...this.breedForm.form.value,
+            ...this.nameForm.form.value,
+        };
+
+        <span class="hljs-built_in">this</span>.stepper.steps.last.interacted = <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-title">reset</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.stepper.reset();
+        <span class="hljs-built_in">this</span>.value = <span class="hljs-literal">undefined</span>;
+    }
 }

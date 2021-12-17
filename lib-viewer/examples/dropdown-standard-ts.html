@@ -4,27 +4,27 @@
  * <span class="hljs-doctag">@title </span>Standard dropdown example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-standard-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-standard-example.html&#x27;</span>
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dropdown-standard-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dropdown-standard-example.html&#x27;</span>,
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DropdownStandardExampleComponent</span> </span>{
-  options = [
-    <span class="hljs-string">&#x27;BMW&#x27;</span>,
-    <span class="hljs-string">&#x27;Audi&#x27;</span>,
-    <span class="hljs-string">&#x27;VW&#x27;</span>,
-    <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
-    <span class="hljs-string">&#x27;Porsche&#x27;</span>,
-    <span class="hljs-string">&#x27;Tesla&#x27;</span>,
-    <span class="hljs-string">&#x27;Lada&#x27;</span>,
-    <span class="hljs-string">&#x27;Opel&#x27;</span>,
-    <span class="hljs-string">&#x27;Fiat&#x27;</span>,
-    <span class="hljs-string">&#x27;Ford&#x27;</span>,
-    <span class="hljs-string">&#x27;Kia&#x27;</span>,
-    <span class="hljs-string">&#x27;Toyota&#x27;</span>,
-    <span class="hljs-string">&#x27;Ferrari&#x27;</span>
-  ];
+    options = [
+        <span class="hljs-string">&#x27;BMW&#x27;</span>,
+        <span class="hljs-string">&#x27;Audi&#x27;</span>,
+        <span class="hljs-string">&#x27;VW&#x27;</span>,
+        <span class="hljs-string">&#x27;Mercedes&#x27;</span>,
+        <span class="hljs-string">&#x27;Porsche&#x27;</span>,
+        <span class="hljs-string">&#x27;Tesla&#x27;</span>,
+        <span class="hljs-string">&#x27;Lada&#x27;</span>,
+        <span class="hljs-string">&#x27;Opel&#x27;</span>,
+        <span class="hljs-string">&#x27;Fiat&#x27;</span>,
+        <span class="hljs-string">&#x27;Ford&#x27;</span>,
+        <span class="hljs-string">&#x27;Kia&#x27;</span>,
+        <span class="hljs-string">&#x27;Toyota&#x27;</span>,
+        <span class="hljs-string">&#x27;Ferrari&#x27;</span>,
+    ];
 
-  toText(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
-    <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
-  }
+    toText(value: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> {
+        <span class="hljs-keyword">return</span> value ? value.toUpperCase() : <span class="hljs-literal">null</span>;
+    }
 }

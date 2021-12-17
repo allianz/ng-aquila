@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 /**
-* @title Basic formfield example
-*/
+ * @title Basic formfield example
+ */
 @Component({
-  selector: 'formfield-basic-example',
-  templateUrl: './formfield-basic-example.html',
-  styleUrls: ['./formfield-basic-example.css']
+    selector: 'formfield-basic-example',
+    templateUrl: './formfield-basic-example.html',
+    styleUrls: ['./formfield-basic-example.css'],
 })
-export class FormfieldBasicExampleComponent { }
+export class FormfieldBasicExampleComponent {}

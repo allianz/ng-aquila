@@ -1,64 +1,68 @@
 <form class="form-example" [formGroup]="formGroup">
-  <div nxLayout="grid">
-    <div nxRow>
-      <div nxCol="12,6">
-        <nx-formfield nxLabel="First Name">
-          <input nxInput formControlName="firstName" />
-          <nx-error nxFormfieldError>
-            <strong>Please note:</strong> this field is required!
-          </nx-error>
-        </nx-formfield>
-      </div>
+    <div nxLayout="grid">
+        <div nxRow>
+            <div nxCol="12,6">
+                <nx-formfield nxLabel="First Name">
+                    <input nxInput formControlName="firstName" />
+                    <nx-error nxFormfieldError>
+                        <strong>Please note:</strong> this field is required!
+                    </nx-error>
+                </nx-formfield>
+            </div>
 
-      <div nxCol="12,6">
-        <nx-formfield nxLabel="Number of items">
-          <nx-dropdown formControlName="items">
-            <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
-            <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
-            <nx-dropdown-item nxValue="3">3</nx-dropdown-item>
-          </nx-dropdown>
-          <nx-error nxFormfieldError>
-            Please select an option.
-          </nx-error>
-        </nx-formfield>
-      </div>
-    </div>
-    <div nxRow>
-      <div nxCol="12,6">
-        <nx-formfield nxLabel="Last Name">
-          <input nxInput formControlName="lastName" />
-          <nx-error nxFormfieldError>
-            Your name is missing.
-          </nx-error>
-        </nx-formfield>
-      </div>
+            <div nxCol="12,6">
+                <nx-formfield nxLabel="Number of items">
+                    <nx-dropdown formControlName="items">
+                        <nx-dropdown-item nxValue="1">1</nx-dropdown-item>
+                        <nx-dropdown-item nxValue="2">2</nx-dropdown-item>
+                        <nx-dropdown-item nxValue="3">3</nx-dropdown-item>
+                    </nx-dropdown>
+                    <nx-error nxFormfieldError>
+                        Please select an option.
+                    </nx-error>
+                </nx-formfield>
+            </div>
+        </div>
+        <div nxRow>
+            <div nxCol="12,6">
+                <nx-formfield nxLabel="Last Name">
+                    <input nxInput formControlName="lastName" />
+                    <nx-error nxFormfieldError>
+                        Your name is missing.
+                    </nx-error>
+                </nx-formfield>
+            </div>
 
-      <div nxCol="12,6">
-        <nx-formfield nxLabel="E-Mail">
-          <input nxInput formControlName="email" />
+            <div nxCol="12,6">
+                <nx-formfield nxLabel="E-Mail">
+                    <input nxInput formControlName="email" />
 
-          <nx-icon nxFormfieldAppendix name="info-circle-o"
-            [nxPopoverTriggerFor]="popoverEmail" nxPopoverTrigger="hover">
-          </nx-icon>
-          <nx-error nxFormfieldError>
-            Your email is missing.
-          </nx-error>
-        </nx-formfield>
-      </div>
+                    <nx-icon
+                        nxFormfieldAppendix
+                        name="info-circle-o"
+                        [nxPopoverTriggerFor]="popoverEmail"
+                        nxPopoverTrigger="hover"
+                    >
+                    </nx-icon>
+                    <nx-error nxFormfieldError>
+                        Your email is missing.
+                    </nx-error>
+                </nx-formfield>
+            </div>
+        </div>
+        <div nxRow>
+            <div nxCol="12,6">
+                <button nxButton type="submit">Submit</button>
+            </div>
+        </div>
     </div>
-    <div nxRow>
-      <div nxCol="12,6">
-        <button nxButton type="submit">Submit</button>
-      </div>
-    </div>
-  </div>
 </form>
 
 <nx-popover #popoverEmail>
-  <div style="max-width: 200px;">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, nostrum.
-    Obcaecati cupiditate numquam, fugit illo incidunt molestiae ipsam
-    perferendis officia accusamus.
-    Enim magnam recusandae velit accusamus ipsa. Nemo, eius exercitationem?
-  </div>
+    <div style="max-width: 200px">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni,
+        nostrum. Obcaecati cupiditate numquam, fugit illo incidunt molestiae
+        ipsam perferendis officia accusamus. Enim magnam recusandae velit
+        accusamus ipsa. Nemo, eius exercitationem?
+    </div>
 </nx-popover>

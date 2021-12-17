@@ -1,8 +1,17 @@
-<nx-message *ngIf="!closed" nxContext="info" closable="true" (close)="closed = true" class="nx-margin-bottom-xs">
-  <span class="nx-font-weight-bold">Notification title:</span><br/>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-  Distinctio odit voluptas assumenda iure ab quaerat aliquid harum facere rerum
-  excepturi accusantium commodi vel libero, nesciunt maxime minus exercitationem iste quod.
+<nx-message
+    *ngIf="!closed"
+    nxContext="info"
+    closable="true"
+    (close)="closed = true"
+    class="nx-margin-bottom-xs"
+>
+    <span class="nx-font-weight-bold">Notification title:</span><br />
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio odit
+    voluptas assumenda iure ab quaerat aliquid harum facere rerum excepturi
+    accusantium commodi vel libero, nesciunt maxime minus exercitationem iste
+    quod.
 </nx-message>
 <p *ngIf="closed"> A close event was emitted!</p>
-<button nxButton (click)="closed = !closed" type="button"> Toggle closed</button>
+<button nxButton (click)="closed = !closed" type="button">
+    Toggle closed</button
+>

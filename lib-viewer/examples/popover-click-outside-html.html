@@ -1,18 +1,21 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-0&quot;</span>&gt;</span>Close on document click: {{ closeOnDocClick }}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-right-2xs nx-margin-bottom-s&quot;</span>
     [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverClick&quot;</span>
     <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
     [<span class="hljs-attr">closeOnClickOutside</span>]=<span class="hljs-string">&quot;closeOnDocClick&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  Click
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+    Click
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverClick</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger by click<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger by click<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> #<span class="hljs-attr">popoverTrigger</span>=<span class="hljs-string">&quot;nxPopoverTrigger&quot;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+    #<span class="hljs-attr">popoverTrigger</span>=<span class="hljs-string">&quot;nxPopoverTrigger&quot;</span>
     <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span>
     <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
     [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverManual&quot;</span>
@@ -21,13 +24,16 @@
     (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;popoverManualOpenFlag = !popoverManualOpenFlag&quot;</span>
     [<span class="hljs-attr">closeOnClickOutside</span>]=<span class="hljs-string">&quot;closeOnDocClick&quot;</span>
     <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;manual&quot;</span>
-    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>
-  Manual
+    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+&gt;</span>
+    Manual
 <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverManual</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger manually<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Trigger manually<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;closeOnClickOutside()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Toggle closing on click outside<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;closeOnClickOutside()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+    &gt;</span>Toggle closing on click outside&lt;/button
+&gt;

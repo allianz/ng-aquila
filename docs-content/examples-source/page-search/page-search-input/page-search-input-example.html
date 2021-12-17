@@ -1,21 +1,27 @@
 <nx-page-search
-  nxButtonLabel="Search"
-  nxButtonLayout="12,12,12,4"
-  nxContentLayout="12,12,12,8"
-  aria-label="Search input example">
-  <div nxRow>
-    <div nxCol="12">
-      <nx-formfield>
-        <input
-          nxInput
-          placeholder="Enter Keyword"
-          [(ngModel)]="searchTerm"
-          type="search"
-        >
-        <span nxFormfieldSuffix *ngIf="searchTerm" aria-hidden="true" (click)="searchTerm=''">
-          <nx-icon name="close" size="s"></nx-icon>
-        </span>
-      </nx-formfield>
+    nxButtonLabel="Search"
+    nxButtonLayout="12,12,12,4"
+    nxContentLayout="12,12,12,8"
+    aria-label="Search input example"
+>
+    <div nxRow>
+        <div nxCol="12">
+            <nx-formfield>
+                <input
+                    nxInput
+                    placeholder="Enter Keyword"
+                    [(ngModel)]="searchTerm"
+                    type="search"
+                />
+                <span
+                    nxFormfieldSuffix
+                    *ngIf="searchTerm"
+                    aria-hidden="true"
+                    (click)="searchTerm=''"
+                >
+                    <nx-icon name="close" size="s"></nx-icon>
+                </span>
+            </nx-formfield>
+        </div>
     </div>
-  </div>
 </nx-page-search>

@@ -1,22 +1,26 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">form</span> #<span class="hljs-attr">form</span>=<span class="hljs-string">&quot;ngForm&quot;</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;codeForm&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">nx-code-input</span> #<span class="hljs-attr">codeInput</span>
-      [<span class="hljs-attr">length</span>]=<span class="hljs-string">&quot;4&quot;</span>
-      <span class="hljs-attr">nxConvertTo</span>=<span class="hljs-string">&quot;upper&quot;</span>
-      <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;keyCode&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-code-input</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-code-input</span>
+        #<span class="hljs-attr">codeInput</span>
+        [<span class="hljs-attr">length</span>]=<span class="hljs-string">&quot;4&quot;</span>
+        <span class="hljs-attr">nxConvertTo</span>=<span class="hljs-string">&quot;upper&quot;</span>
+        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;keyCode&quot;</span>
+    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-code-input</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;codeInput.errorState&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;required&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
-      Entry is required.
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;pattern&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
-      Entry must match pattern.
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;minlength&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
-      Entry is too short.
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;codeInput.errorState&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;required&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+            Entry is required.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;pattern&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+            Entry must match pattern.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;keyCode?.hasError(&#x27;minlength&#x27;)&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-y-xs&quot;</span>&gt;</span>
+            Entry is too short.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;form.resetForm()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>&gt;</span>Clear<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;primary small&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;secondary small&quot;</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&quot;form.resetForm()&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+        &gt;</span>Clear&lt;/button
+    &gt;
 <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>

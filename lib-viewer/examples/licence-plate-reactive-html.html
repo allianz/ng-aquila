@@ -1,21 +1,30 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid maxwidth&quot;</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,6&quot;</span> <span class="hljs-attr">nxColOffset</span>=<span class="hljs-string">&quot;0,0,1,3&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;licencePlateForm&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;License Plate&quot;</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-euro-prefix</span> <span class="hljs-attr">nxFormfieldPrefix</span>&gt;</span>D<span class="hljs-tag">&lt;/<span class="hljs-name">nx-licence-plate-euro-prefix</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">nxInput</span>
-            <span class="hljs-attr">nxLicensePlate</span>=<span class="hljs-string">&quot;de_standard&quot;</span>
-            <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;licencePlateInput&quot;</span> /&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>M-AA 1234<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>&gt;</span>Please enter a license plate number in the format &quot;M-AA 1234&quot;.<span class="hljs-tag">&lt;/<span class="hljs-name">nx-error</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,6&quot;</span> <span class="hljs-attr">nxColOffset</span>=<span class="hljs-string">&quot;0,0,1,3&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> [<span class="hljs-attr">formGroup</span>]=<span class="hljs-string">&quot;licencePlateForm&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-formfield</span> <span class="hljs-attr">nxLabel</span>=<span class="hljs-string">&quot;License Plate&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-licence-plate-euro-prefix</span> <span class="hljs-attr">nxFormfieldPrefix</span>
+                        &gt;</span>D&lt;/nx-licence-plate-euro-prefix
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                        <span class="hljs-attr">nxInput</span>
+                        <span class="hljs-attr">nxLicensePlate</span>=<span class="hljs-string">&quot;de_standard&quot;</span>
+                        <span class="hljs-attr">formControlName</span>=<span class="hljs-string">&quot;licencePlateInput&quot;</span>
+                    /&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">nxFormfieldHint</span>&gt;</span>M-AA 1234<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-error</span> <span class="hljs-attr">nxFormfieldError</span>
+                        &gt;</span>Please enter a license plate number in the format &quot;M-AA
+                        1234&quot;.&lt;/nx-error
+                    &gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-formfield</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-controls nx-margin-top-s&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,6&quot;</span> <span class="hljs-attr">nxColOffset</span>=<span class="hljs-string">&quot;0,0,1,3&quot;</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>Licence plate value: {{ licencePlateForm.get(&#x27;licencePlateInput&#x27;)?.value | json }}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;example-controls nx-margin-top-s&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxCol</span>=<span class="hljs-string">&quot;12,12,10,6&quot;</span> <span class="hljs-attr">nxColOffset</span>=<span class="hljs-string">&quot;0,0,1,3&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+Licence plate value: {{ licencePlateForm.get(&#x27;licencePlateInput&#x27;)?.value | json }}&lt;/pre
+            &gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

@@ -1,243 +1,441 @@
 <div class="container">
-  <nx-expansion-panel *ngIf="showOverviewSeparately" nxStyle="extra-light" class="nx-margin-bottom-2m">
-    <nx-expansion-panel-header>
-      <nx-expansion-panel-title>Overview of product benefits</nx-expansion-panel-title>
-    </nx-expansion-panel-header>
-    <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
-  </nx-expansion-panel>
-
-  <nx-comparison-table selectedIndex="1">
-    <ng-container nxComparisonTableRow type="header">
-      <nx-comparison-table-popular-cell forColumn="2">
-        <div class="popular-cell__content-wrapper">
-          <p class="popular-cell__title">Most popular</p>
-          <button nxPlainButton class="popular-info-icon" aria-label="More information" 
-                  #popoverTrigger="nxPopoverTrigger" [nxPopoverTriggerFor]="popover"
-                  nxPopoverTrigger="click" type="button">
-            <nx-icon name="info-circle-o"></nx-icon>
-          </button>
-          <nx-popover #popover>
-            <span>This product was chosen by most of the users</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-popular-cell>
-      <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product 1</p>
-          <p class="product-price">105,99 €</p>
-          <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-            type="button"></button>
-        </div>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product 2</p>
-          <p class="product-price">110,99 €</p>
-          <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-            type="button"></button>
-        </div>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product 3</p>
-          <p class="product-price">115,99 €</p>
-          <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-            type="button"></button>
-        </div>
-      </nx-comparison-table-cell>
-
-      <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product 4</p>
-          <p class="product-price">139,99 €</p>
-          <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-            type="button"></button>
-        </div>
-      </nx-comparison-table-cell>
-
-      <nx-comparison-table-cell type="header">
-        <div class="header-container">
-          <p class="product-title">Product 5</p>
-          <p class="product-price">89,99 €</p>
-          <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-            type="button"></button>
-        </div>
-      </nx-comparison-table-cell>
-    </ng-container>
-
-    <ng-container *ngIf="!showOverviewSeparately" nxComparisonTableRow>
-      <nx-comparison-table-description-cell>
-        <div class="has-popover">
-          <span>Overview of product benefits</span>
-          <button nxPlainButton class="info-icon" aria-label="more-information"
-                  [nxPopoverTriggerFor]="popoverContent1" nxPopoverTrigger="click"
-                  tabindex="0" type="button">
-            <nx-icon name="info-circle-o"></nx-icon>
-          </button>
-          <nx-popover #popoverContent1>
-            <span>Summary of what all services include</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-description-cell>
-      <nx-comparison-table-intersection-cell>
+    <nx-expansion-panel
+        *ngIf="showOverviewSeparately"
+        nxStyle="extra-light"
+        class="nx-margin-bottom-2m"
+    >
+        <nx-expansion-panel-header>
+            <nx-expansion-panel-title
+                >Overview of product benefits</nx-expansion-panel-title
+            >
+        </nx-expansion-panel-header>
         <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
-      </nx-comparison-table-intersection-cell>
-    </ng-container>
+    </nx-expansion-panel>
 
-    <ng-container nxComparisonTableRow>
-      <nx-comparison-table-description-cell>
-        <div class="has-popover">
-          <span>Service headline</span>
-          <button nxPlainButton class="info-icon" aria-label="More information"
-                  [nxPopoverTriggerFor]="popoverContent1" nxPopoverTrigger="click" type="button">
-            <nx-icon name="info-circle-o"></nx-icon>
-          </button>
-          <nx-popover #popoverContent1>
-            <span>Service headline popover content</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-description-cell>
-      <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-      <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-      <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-      <nx-comparison-table-cell>300 Mio. Euro</nx-comparison-table-cell>
-      <nx-comparison-table-cell>50 Mio. Euro</nx-comparison-table-cell>
-    </ng-container>
+    <nx-comparison-table selectedIndex="1">
+        <ng-container nxComparisonTableRow type="header">
+            <nx-comparison-table-popular-cell forColumn="2">
+                <div class="popular-cell__content-wrapper">
+                    <p class="popular-cell__title">Most popular</p>
+                    <button
+                        nxPlainButton
+                        class="popular-info-icon"
+                        aria-label="More information"
+                        #popoverTrigger="nxPopoverTrigger"
+                        [nxPopoverTriggerFor]="popover"
+                        nxPopoverTrigger="click"
+                        type="button"
+                    >
+                        <nx-icon name="info-circle-o"></nx-icon>
+                    </button>
+                    <nx-popover #popover>
+                        <span
+                            >This product was chosen by most of the users</span
+                        >
+                    </nx-popover>
+                </div>
+            </nx-comparison-table-popular-cell>
+            <nx-comparison-table-cell type="header">
+                <div class="header-container">
+                    <p class="product-title">Product 1</p>
+                    <p class="product-price">105,99 €</p>
+                    <button
+                        nxComparisonTableSelectButton
+                        unselectedLabel="Select"
+                        selectedLabel="Selected"
+                        type="button"
+                    ></button>
+                </div>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell type="header">
+                <div class="header-container">
+                    <p class="product-title">Product 2</p>
+                    <p class="product-price">110,99 €</p>
+                    <button
+                        nxComparisonTableSelectButton
+                        unselectedLabel="Select"
+                        selectedLabel="Selected"
+                        type="button"
+                    ></button>
+                </div>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell type="header">
+                <div class="header-container">
+                    <p class="product-title">Product 3</p>
+                    <p class="product-price">115,99 €</p>
+                    <button
+                        nxComparisonTableSelectButton
+                        unselectedLabel="Select"
+                        selectedLabel="Selected"
+                        type="button"
+                    ></button>
+                </div>
+            </nx-comparison-table-cell>
 
-    <ng-container nxComparisonTableRow>
-      <nx-comparison-table-description-cell>
-        <div class="has-popover">
-          <span>Service headline</span>
-          <button nxPlainButton class="info-icon" aria-label="More information"
-                  [nxPopoverTriggerFor]="popoverContent2" nxPopoverTrigger="click" type="button">
-            <nx-icon name="info-circle-o"></nx-icon>
-          </button>
-          <nx-popover #popoverContent2>
-            <span>Service headline popover content</span>
-          </nx-popover>
-        </div>
-      </nx-comparison-table-description-cell>
-      <nx-comparison-table-cell>
-        <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
-      </nx-comparison-table-cell>
-    </ng-container>
+            <nx-comparison-table-cell type="header">
+                <div class="header-container">
+                    <p class="product-title">Product 4</p>
+                    <p class="product-price">139,99 €</p>
+                    <button
+                        nxComparisonTableSelectButton
+                        unselectedLabel="Select"
+                        selectedLabel="Selected"
+                        type="button"
+                    ></button>
+                </div>
+            </nx-comparison-table-cell>
 
-    <ng-container nxComparisonTableRowGroup visibleRows="2">
-      <ng-container nxComparisonTableRow>
-        <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="minus" size="s" aria-label="Not Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-      </ng-container>
+            <nx-comparison-table-cell type="header">
+                <div class="header-container">
+                    <p class="product-title">Product 5</p>
+                    <p class="product-price">89,99 €</p>
+                    <button
+                        nxComparisonTableSelectButton
+                        unselectedLabel="Select"
+                        selectedLabel="Selected"
+                        type="button"
+                    ></button>
+                </div>
+            </nx-comparison-table-cell>
+        </ng-container>
 
-      <ng-container nxComparisonTableRow>
-        <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="minus" size="s" aria-label="Not included" class="minus-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-        <nx-comparison-table-cell>
-          <nx-icon name="check" size="s" aria-label="Included" class="check-icon"></nx-icon>
-        </nx-comparison-table-cell>
-      </ng-container>
+        <ng-container *ngIf="!showOverviewSeparately" nxComparisonTableRow>
+            <nx-comparison-table-description-cell>
+                <div class="has-popover">
+                    <span>Overview of product benefits</span>
+                    <button
+                        nxPlainButton
+                        class="info-icon"
+                        aria-label="more-information"
+                        [nxPopoverTriggerFor]="popoverContent1"
+                        nxPopoverTrigger="click"
+                        tabindex="0"
+                        type="button"
+                    >
+                        <nx-icon name="info-circle-o"></nx-icon>
+                    </button>
+                    <nx-popover #popoverContent1>
+                        <span>Summary of what all services include</span>
+                    </nx-popover>
+                </div>
+            </nx-comparison-table-description-cell>
+            <nx-comparison-table-intersection-cell>
+                <ng-container *ngTemplateOutlet="benefitsList"></ng-container>
+            </nx-comparison-table-intersection-cell>
+        </ng-container>
 
-      <ng-container nxComparisonTableRow>
-        <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-        <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>210 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>220 Mio. Euro</nx-comparison-table-cell>
-      </ng-container>
+        <ng-container nxComparisonTableRow>
+            <nx-comparison-table-description-cell>
+                <div class="has-popover">
+                    <span>Service headline</span>
+                    <button
+                        nxPlainButton
+                        class="info-icon"
+                        aria-label="More information"
+                        [nxPopoverTriggerFor]="popoverContent1"
+                        nxPopoverTrigger="click"
+                        type="button"
+                    >
+                        <nx-icon name="info-circle-o"></nx-icon>
+                    </button>
+                    <nx-popover #popoverContent1>
+                        <span>Service headline popover content</span>
+                    </nx-popover>
+                </div>
+            </nx-comparison-table-description-cell>
+            <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
+            <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
+            <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
+            <nx-comparison-table-cell>300 Mio. Euro</nx-comparison-table-cell>
+            <nx-comparison-table-cell>50 Mio. Euro</nx-comparison-table-cell>
+        </ng-container>
 
-      <ng-container nxComparisonTableRow>
-        <nx-comparison-table-description-cell>Service headline</nx-comparison-table-description-cell>
-        <nx-comparison-table-cell>100 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>150 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>200 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>180 Mio. Euro</nx-comparison-table-cell>
-        <nx-comparison-table-cell>225 Mio. Euro</nx-comparison-table-cell>
+        <ng-container nxComparisonTableRow>
+            <nx-comparison-table-description-cell>
+                <div class="has-popover">
+                    <span>Service headline</span>
+                    <button
+                        nxPlainButton
+                        class="info-icon"
+                        aria-label="More information"
+                        [nxPopoverTriggerFor]="popoverContent2"
+                        nxPopoverTrigger="click"
+                        type="button"
+                    >
+                        <nx-icon name="info-circle-o"></nx-icon>
+                    </button>
+                    <nx-popover #popoverContent2>
+                        <span>Service headline popover content</span>
+                    </nx-popover>
+                </div>
+            </nx-comparison-table-description-cell>
+            <nx-comparison-table-cell>
+                <nx-icon
+                    name="minus"
+                    size="s"
+                    aria-label="Not included"
+                    class="minus-icon"
+                ></nx-icon>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <nx-icon
+                    name="check"
+                    size="s"
+                    aria-label="Included"
+                    class="check-icon"
+                ></nx-icon>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <nx-icon
+                    name="minus"
+                    size="s"
+                    aria-label="Not included"
+                    class="minus-icon"
+                ></nx-icon>
+            </nx-comparison-table-cell>
+        </ng-container>
 
-      </ng-container>
-    </ng-container>
+        <ng-container nxComparisonTableRowGroup visibleRows="2">
+            <ng-container nxComparisonTableRow>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not included"
+                        class="minus-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+            </ng-container>
 
-    <ng-container nxComparisonTableRow type="footer">
-      <nx-comparison-table-cell>
-        <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-          class="nx-margin-bottom-s" type="button"></button>
-        <p class="product-underline">Some short information</p>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-          class="nx-margin-bottom-s" type="button"></button>
-        <p class="product-underline">Some short information</p>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-          class="nx-margin-bottom-s" type="button"></button>
-        <p class="product-underline">Some short information</p>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-          class="nx-margin-bottom-s" type="button"></button>
-        <p class="product-underline">Some short information</p>
-      </nx-comparison-table-cell>
-      <nx-comparison-table-cell>
-        <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected"
-          class="nx-margin-bottom-s" type="button"></button>
-        <p class="product-underline">Some short information</p>
-      </nx-comparison-table-cell>
-    </ng-container>
-  </nx-comparison-table>
+            <ng-container nxComparisonTableRow>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="minus"
+                        size="s"
+                        aria-label="Not included"
+                        class="minus-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+                <nx-comparison-table-cell>
+                    <nx-icon
+                        name="check"
+                        size="s"
+                        aria-label="Included"
+                        class="check-icon"
+                    ></nx-icon>
+                </nx-comparison-table-cell>
+            </ng-container>
 
+            <ng-container nxComparisonTableRow>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell
+                    >100 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >150 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >200 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >210 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >220 Mio. Euro</nx-comparison-table-cell
+                >
+            </ng-container>
+
+            <ng-container nxComparisonTableRow>
+                <nx-comparison-table-description-cell
+                    >Service headline</nx-comparison-table-description-cell
+                >
+                <nx-comparison-table-cell
+                    >100 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >150 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >200 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >180 Mio. Euro</nx-comparison-table-cell
+                >
+                <nx-comparison-table-cell
+                    >225 Mio. Euro</nx-comparison-table-cell
+                >
+            </ng-container>
+        </ng-container>
+
+        <ng-container nxComparisonTableRow type="footer">
+            <nx-comparison-table-cell>
+                <button
+                    nxComparisonTableSelectButton
+                    unselectedLabel="Select"
+                    selectedLabel="Selected"
+                    class="nx-margin-bottom-s"
+                    type="button"
+                ></button>
+                <p class="product-underline">Some short information</p>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <button
+                    nxComparisonTableSelectButton
+                    unselectedLabel="Select"
+                    selectedLabel="Selected"
+                    class="nx-margin-bottom-s"
+                    type="button"
+                ></button>
+                <p class="product-underline">Some short information</p>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <button
+                    nxComparisonTableSelectButton
+                    unselectedLabel="Select"
+                    selectedLabel="Selected"
+                    class="nx-margin-bottom-s"
+                    type="button"
+                ></button>
+                <p class="product-underline">Some short information</p>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <button
+                    nxComparisonTableSelectButton
+                    unselectedLabel="Select"
+                    selectedLabel="Selected"
+                    class="nx-margin-bottom-s"
+                    type="button"
+                ></button>
+                <p class="product-underline">Some short information</p>
+            </nx-comparison-table-cell>
+            <nx-comparison-table-cell>
+                <button
+                    nxComparisonTableSelectButton
+                    unselectedLabel="Select"
+                    selectedLabel="Selected"
+                    class="nx-margin-bottom-s"
+                    type="button"
+                ></button>
+                <p class="product-underline">Some short information</p>
+            </nx-comparison-table-cell>
+        </ng-container>
+    </nx-comparison-table>
 </div>
 
 <ng-template #benefitsList>
-  <div class="service-lists">
-    <ul nxList="small" class="benefits-list nx-margin-bottom-0">
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Space for offered services, advantages</li>
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Third party damages</li>
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Service advantage</li>
-      <li nxListIcon="check" [class.nx-margin-bottom-2xs]="showOverviewSeparately">Burglary theft, robbery and vandalism</li>
-    </ul>
-    <ul nxList="small" class="benefits-list nx-margin-bottom-0">
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Services, advantages and features</li>
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Services e.g. All third party damages, Glasses damages,
-        etc.</li>
-      <li nxListIcon="check" class="nx-margin-bottom-2xs">Service advantage</li>
-      <li nxListIcon="check" [class.nx-margin-bottom-2xs]="showOverviewSeparately">Vandalism after burglary</li>
-    </ul>
-  </div>
+    <div class="service-lists">
+        <ul nxList="small" class="benefits-list nx-margin-bottom-0">
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Space for offered services, advantages</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Third party damages</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Service advantage</li
+            >
+            <li
+                nxListIcon="check"
+                [class.nx-margin-bottom-2xs]="showOverviewSeparately"
+                >Burglary theft, robbery and vandalism</li
+            >
+        </ul>
+        <ul nxList="small" class="benefits-list nx-margin-bottom-0">
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Services, advantages and features</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Services e.g. All third party damages, Glasses damages,
+                etc.</li
+            >
+            <li nxListIcon="check" class="nx-margin-bottom-2xs"
+                >Service advantage</li
+            >
+            <li
+                nxListIcon="check"
+                [class.nx-margin-bottom-2xs]="showOverviewSeparately"
+                >Vandalism after burglary</li
+            >
+        </ul>
+    </div>
 </ng-template>

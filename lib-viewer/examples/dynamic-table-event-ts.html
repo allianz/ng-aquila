@@ -4,77 +4,77 @@
  * <span class="hljs-doctag">@title </span>Table Event Example
  */</span>
 <span class="hljs-meta">@Component</span>({
-  <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dynamic-table-event-example&#x27;</span>,
-  <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dynamic-table-event-example.html&#x27;</span>,
-  <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dynamic-table-event-example.css&#x27;</span>]
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;dynamic-table-event-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./dynamic-table-event-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./dynamic-table-event-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DynamicTableEventExampleComponent</span> </span>{
-  data = [
-    {
-      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Honda&#x27;</span>,
-      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.38 &#x27;</span>,
-      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-0.36% &#x27;</span>,
-      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab lreom &#x27;</span>
-    },
-    {
-      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAD &#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Abacus&#x27;</span>,
-      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.15 &#x27;</span>,
-      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;+2.01 &#x27;</span>,
-      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+45.00% &#x27;</span>,
-      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab ipsum &#x27;</span>
-    },
-    {
-      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Aditya&#x27;</span>,
-      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$2.22 &#x27;</span>,
-      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-1.21 &#x27;</span>,
-      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+5.00% &#x27;</span>,
-      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>
-    },
-    {
-      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;ABC &#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Acrux Limited&#x27;</span>,
-      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.50 &#x27;</span>,
-      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;±0% &#x27;</span>,
-      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;mad&lt;br&gt;abdi &#x27;</span>
-    },
-    {
-      <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AGK &#x27;</span>,
-      <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Adamus&#x27;</span>,
-      <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$3.12 &#x27;</span>,
-      <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
-      <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-1.00% &#x27;</span>,
-      <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
-      <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>
+    data = [
+        {
+            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
+            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Honda&#x27;</span>,
+            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.38 &#x27;</span>,
+            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-0.36% &#x27;</span>,
+            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab lreom &#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAD &#x27;</span>,
+            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Abacus&#x27;</span>,
+            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.15 &#x27;</span>,
+            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;+2.01 &#x27;</span>,
+            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+45.00% &#x27;</span>,
+            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab ipsum &#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AAC &#x27;</span>,
+            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Aditya&#x27;</span>,
+            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$2.22 &#x27;</span>,
+            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-1.21 &#x27;</span>,
+            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;+5.00% &#x27;</span>,
+            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;ABC &#x27;</span>,
+            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Acrux Limited&#x27;</span>,
+            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$1.50 &#x27;</span>,
+            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;±0% &#x27;</span>,
+            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;mad&lt;br&gt;abdi &#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">code</span>: <span class="hljs-string">&#x27;AGK &#x27;</span>,
+            <span class="hljs-attr">company</span>: <span class="hljs-string">&#x27;Adamus&#x27;</span>,
+            <span class="hljs-attr">price</span>: <span class="hljs-string">&#x27;$3.12 &#x27;</span>,
+            <span class="hljs-attr">change</span>: <span class="hljs-string">&#x27;-0.01 &#x27;</span>,
+            <span class="hljs-attr">changePercent</span>: <span class="hljs-string">&#x27;-1.00% &#x27;</span>,
+            <span class="hljs-attr">sample</span>: <span class="hljs-string">&#x27;$0.00 &#x27;</span>,
+            <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
+        },
+    ];
+
+    displayedColumns: <span class="hljs-built_in">any</span>[] = [
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change Percent&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
+        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;lorem&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    ];
+
+    modalOpen: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
+    basicModalBody: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+
+    handleRowClick(row: <span class="hljs-built_in">Object</span>): <span class="hljs-built_in">void</span> {
+        <span class="hljs-built_in">this</span>.basicModalBody = <span class="hljs-built_in">JSON</span>.stringify(row);
+        <span class="hljs-built_in">this</span>.toggleModal();
     }
-  ];
 
-  displayedColumns: <span class="hljs-built_in">any</span>[] = [
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change Percent&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
-    { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Lorem Ipsum&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;lorem&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> }
-  ];
-
-  modalOpen: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
-  basicModalBody: <span class="hljs-built_in">string</span> = <span class="hljs-string">&#x27;&#x27;</span>;
-
-  handleRowClick(row: <span class="hljs-built_in">Object</span>): <span class="hljs-built_in">void</span> {
-    <span class="hljs-built_in">this</span>.basicModalBody = <span class="hljs-built_in">JSON</span>.stringify(row);
-    <span class="hljs-built_in">this</span>.toggleModal();
-  }
-
-  <span class="hljs-function"><span class="hljs-title">toggleModal</span>(<span class="hljs-params"></span>)</span> {
-    <span class="hljs-built_in">this</span>.modalOpen = !<span class="hljs-built_in">this</span>.modalOpen;
-  }
+    <span class="hljs-function"><span class="hljs-title">toggleModal</span>(<span class="hljs-params"></span>)</span> {
+        <span class="hljs-built_in">this</span>.modalOpen = !<span class="hljs-built_in">this</span>.modalOpen;
+    }
 }
