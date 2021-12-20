@@ -14,7 +14,8 @@ const EXAMPLES = [AccessibilityHighContrastSvgExampleComponent];
 export class AccessibilityExamplesModule {
     static components() {
         return {
-            'accessibility-high-contrast-svg': AccessibilityHighContrastSvgExampleComponent,
+            'accessibility-high-contrast-svg':
+                AccessibilityHighContrastSvgExampleComponent,
         };
     }
 }

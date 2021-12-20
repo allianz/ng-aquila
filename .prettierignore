@@ -59,3 +59,4 @@ Thumbs.db
 
 # Component specific
 projects/ng-aquila/src/phone-input/metadata.json
+projects/ngx-docs-cli/**/class.template.html

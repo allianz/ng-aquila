@@ -215,9 +215,7 @@ export class NxDialogService implements OnDestroy {
         }
 
         if (componentOrTemplateRef instanceof TemplateRef) {
-            modalContainer.attachTemplatePortal(
-                new TemplatePortal<T>(componentOrTemplateRef, null!, { $implicit: config.data, modalRef } as any),
-            );
+            modalContainer.attachTemplatePortal(new TemplatePortal<T>(componentOrTemplateRef, null!, { $implicit: config.data, modalRef } as any));
         } else {
             const injector = this._createInjector<T>(config, modalRef, modalContainer);
             const contentRef = modalContainer.attachComponentPortal<T>(new ComponentPortal(componentOrTemplateRef, config.viewContainerRef, injector));

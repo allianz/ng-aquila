@@ -8,7 +8,7 @@
         "start": "npm run build:package && npm run library:generate:docs && ng serve opensource-documentation --port=4200",
         "build": "ng build",
         "test": "ng test",
-        "format": "pretty-quick --check",
+        "format": "prettier . --check",
         "build:all": "npm-run-all build:lib build:docs",
         "build:lib": "npm run ng-high-memory -- build ng-aquila --configuration production && npm run build:package",
         "build:docs": "npm run ng-high-memory -- build opensource-documentation --configuration production",

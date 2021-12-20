@@ -56,15 +56,23 @@ export class ComparisonExamplesModule {
     static components() {
         return {
             'comparison-table': ComparisonTableExampleComponent,
-            'comparison-table-disabled-columns': ComparisonTableDisabledColumnsExampleComponent,
+            'comparison-table-disabled-columns':
+                ComparisonTableDisabledColumnsExampleComponent,
             'comparison-table-dynamic': ComparisonTableDynamicExampleComponent,
-            'comparison-table-form-elements': ComparisonTableFormElementsExampleComponent,
-            'comparison-table-row-group': ComparisonTableRowGroupExampleComponent,
-            'comparison-table-with-intersection': ComparisonTableWithIntersectionExampleComponent,
-            'comparison-table-with-toggle-sections': ComparisonTableWithToggleSectionsExampleComponent,
-            'comparison-table-expandable-area': ComparisonTableExpandableAreaExampleComponent,
-            'comparison-table-hidden-columns': ComparisonTableHiddenColumnsExampleComponent,
-            'comparison-table-non-sticky-header': ComparisonTableNonStickyHeaderExampleComponent,
+            'comparison-table-form-elements':
+                ComparisonTableFormElementsExampleComponent,
+            'comparison-table-row-group':
+                ComparisonTableRowGroupExampleComponent,
+            'comparison-table-with-intersection':
+                ComparisonTableWithIntersectionExampleComponent,
+            'comparison-table-with-toggle-sections':
+                ComparisonTableWithToggleSectionsExampleComponent,
+            'comparison-table-expandable-area':
+                ComparisonTableExpandableAreaExampleComponent,
+            'comparison-table-hidden-columns':
+                ComparisonTableHiddenColumnsExampleComponent,
+            'comparison-table-non-sticky-header':
+                ComparisonTableNonStickyHeaderExampleComponent,
         };
     }
 }

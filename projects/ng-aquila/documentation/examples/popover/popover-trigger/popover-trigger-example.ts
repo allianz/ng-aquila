@@ -17,13 +17,13 @@ import { FocusMonitor } from '@angular/cdk/a11y';
     styleUrls: ['./popover-trigger-example.css'],
 })
 export class PopoverTriggerExampleComponent
-    implements AfterViewInit, OnDestroy {
+    implements AfterViewInit, OnDestroy
+{
     popoverManualOpenFlag = false;
 
     @ViewChild('clickTriggerIcon') _clickTriggerIcon!: ElementRef<HTMLElement>;
-    @ViewChild('manualTriggerIcon') _manualTriggerIcon!: ElementRef<
-        HTMLElement
-    >;
+    @ViewChild('manualTriggerIcon')
+    _manualTriggerIcon!: ElementRef<HTMLElement>;
 
     constructor(private _focusMonitor: FocusMonitor) {}
 

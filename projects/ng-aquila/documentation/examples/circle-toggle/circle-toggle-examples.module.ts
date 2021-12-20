@@ -37,13 +37,17 @@ export class CircleExamplesModule {
             'circle-toggle-group': CircleToggleGroupExampleComponent,
             'circle-toggle-negative': CircleToggleNegativeExampleComponent,
             'circle-toggle-reactive': CircleToggleReactiveExampleComponent,
-            'circle-toggle-reactive-disabled': CircleToggleReactiveDisabledExampleComponent,
+            'circle-toggle-reactive-disabled':
+                CircleToggleReactiveDisabledExampleComponent,
             'circle-toggle-responsive': CircleToggleResponsiveExampleComponent,
-            'circle-toggle-simple-binding': CircleToggleSimpleBindingExampleComponent,
+            'circle-toggle-simple-binding':
+                CircleToggleSimpleBindingExampleComponent,
             'circle-toggle-standalone': CircleToggleStandaloneExampleComponent,
-            'circle-toggle-template-driven': CircleToggleTemplateDrivenExampleComponent,
+            'circle-toggle-template-driven':
+                CircleToggleTemplateDrivenExampleComponent,
             'circle-toggle-text': CircleToggleTextExampleComponent,
-            'circle-toggle-group-expert': CircleToggleGroupExpertExampleComponent,
+            'circle-toggle-group-expert':
+                CircleToggleGroupExpertExampleComponent,
         };
     }
 }

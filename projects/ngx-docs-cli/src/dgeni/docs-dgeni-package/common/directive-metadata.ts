@@ -26,7 +26,7 @@ export function getDirectiveMetadata(classDoc: CategorizedClassDoc): Map<string,
 
     const expression = declaration.decorators
         .filter(decorator => decorator.expression)
-        .map(decorator => (decorator.expression as any) as CallExpression)
+        .map(decorator => decorator.expression as any as CallExpression)
         .find(callExpression => callExpression.expression.getText() === 'Component' || callExpression.expression.getText() === 'Directive');
 
     if (!expression) {

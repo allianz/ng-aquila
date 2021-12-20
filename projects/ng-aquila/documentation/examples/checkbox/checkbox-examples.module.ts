@@ -45,11 +45,14 @@ export class CheckboxExamplesModule {
         return {
             'checkbox-group-basic': CheckboxGroupBasicExampleComponent,
             'checkbox-group-dynamic': CheckboxGroupDynamicExampleComponent,
-            'checkbox-group-horizontal': CheckboxGroupHorizontalExampleComponent,
-            'checkbox-group-inheritance': CheckboxGroupInheritanceExampleComponent,
+            'checkbox-group-horizontal':
+                CheckboxGroupHorizontalExampleComponent,
+            'checkbox-group-inheritance':
+                CheckboxGroupInheritanceExampleComponent,
             'checkbox-group-label-size': CheckboxGroupLabelSizeExampleComponent,
             'checkbox-group-reactive': CheckboxGroupReactiveExampleComponent,
-            'checkbox-group-validation': CheckboxGroupValidationExampleComponent,
+            'checkbox-group-validation':
+                CheckboxGroupValidationExampleComponent,
             'checkbox-label-size': CheckboxLabelSizeExampleComponent,
             'checkbox-negative': CheckboxNegativeExampleComponent,
             'checkbox-outputs': CheckboxOutputsExampleComponent,

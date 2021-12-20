@@ -34,10 +34,13 @@ export class SmallExamplesModule {
     static components() {
         return {
             'small-stage-default': SmallStageDefaultExampleComponent,
-            'small-stage-content-variation': SmallStageContentVariationExampleComponent,
+            'small-stage-content-variation':
+                SmallStageContentVariationExampleComponent,
             'small-stage-w-bg': SmallStageWithBackgroundExampleComponent,
-            'small-stage-expert-default': SmallStageExpertDefaultExampleComponent,
-            'small-stage-expert-content-narrow': SmallStageExpertContentNarrowExampleComponent,
+            'small-stage-expert-default':
+                SmallStageExpertDefaultExampleComponent,
+            'small-stage-expert-content-narrow':
+                SmallStageExpertContentNarrowExampleComponent,
         };
     }
 }

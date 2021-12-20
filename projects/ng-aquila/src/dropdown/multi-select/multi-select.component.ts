@@ -267,7 +267,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _selectValue(option: S): T {
         if (!this.selectValue) {
-            return (option as unknown) as T;
+            return option as unknown as T;
         }
 
         if (typeof this.selectValue === 'string') {

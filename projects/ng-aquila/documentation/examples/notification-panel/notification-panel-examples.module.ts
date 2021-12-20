@@ -31,8 +31,10 @@ const EXAMPLES = [
 export class NotificationExamplesModule {
     static components() {
         return {
-            'notification-panel-actions': NotificationPanelActionsExampleComponent,
-            'notification-panel-clickable': NotificationPanelClickableExampleComponent,
+            'notification-panel-actions':
+                NotificationPanelActionsExampleComponent,
+            'notification-panel-clickable':
+                NotificationPanelClickableExampleComponent,
             'notification-panel-mixed': NotificationPanelMixedExampleComponent,
         };
     }

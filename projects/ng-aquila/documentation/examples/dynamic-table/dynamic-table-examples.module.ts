@@ -30,7 +30,8 @@ export class DynamicExamplesModule {
             'dynamic-table': DynamicTableExampleComponent,
             'dynamic-table-data': DynamicTableDataExampleComponent,
             'dynamic-table-event': DynamicTableEventExampleComponent,
-            'dynamic-table-without-data': DynamicTableWithoutDataExampleComponent,
+            'dynamic-table-without-data':
+                DynamicTableWithoutDataExampleComponent,
         };
     }
 }

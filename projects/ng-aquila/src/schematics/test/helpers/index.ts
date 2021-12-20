@@ -2,10 +2,10 @@ import { SpecReporter } from 'jasmine-spec-reporter';
 
 jasmine.getEnv().clearReporters(); // remove default reporter logs
 jasmine.getEnv().addReporter(
-    (new SpecReporter({
+    new SpecReporter({
         // add jasmine-spec-reporter
         spec: {
             displayPending: true,
         },
-    }) as unknown) as jasmine.CustomReporter,
+    }) as unknown as jasmine.CustomReporter,
 );

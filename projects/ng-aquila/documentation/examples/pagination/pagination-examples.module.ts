@@ -23,7 +23,8 @@ export class PaginationExamplesModule {
         return {
             'pagination-advanced': PaginationAdvancedExampleComponent,
             'pagination-localize': PaginationLocalizeExampleComponent,
-            'pagination-localize-advanced': PaginationLocalizeAdvancedExampleComponent,
+            'pagination-localize-advanced':
+                PaginationLocalizeAdvancedExampleComponent,
             'pagination-simple': PaginationSimpleExampleComponent,
         };
     }

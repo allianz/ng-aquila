@@ -49,7 +49,8 @@ export class MyTel {
     },
 })
 export class FormfieldCustomTelInputExampleComponent
-    implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy {
+    implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy
+{
     static nextId = 0;
     private _placeholder: string = '';
     private _required = false;

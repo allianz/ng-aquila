@@ -211,9 +211,10 @@ export class TableFilterSortPaginateExampleComponent {
     updatePage() {
         const indexMin = (this.page - 1) * this.elementsPerPage;
         const indexMax = indexMin + this.elementsPerPage;
-        this.currentlyShownPageElements = this.currentlyAvailableElements.filter(
-            (x, index) => index >= indexMin && index < indexMax,
-        );
+        this.currentlyShownPageElements =
+            this.currentlyAvailableElements.filter(
+                (x, index) => index >= indexMin && index < indexMax,
+            );
     }
 
     prevPage() {

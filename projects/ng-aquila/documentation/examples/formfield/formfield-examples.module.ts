@@ -76,22 +76,27 @@ export class FormfieldExamplesModule {
         return {
             'formfield-appearance': FormfieldAppearanceExampleComponent,
             'formfield-basic': FormfieldBasicExampleComponent,
-            'formfield-character-count': FormfieldCharacterCountExampleComponent,
+            'formfield-character-count':
+                FormfieldCharacterCountExampleComponent,
             'formfield-custom': FormfieldCustomExampleComponent,
             'formfield-custom-label': FormfieldCustomLabelExampleComponent,
-            'formfield-custom-tel-input': FormfieldCustomTelInputExampleComponent,
+            'formfield-custom-tel-input':
+                FormfieldCustomTelInputExampleComponent,
             'formfield-error': FormfieldErrorExampleComponent,
             'formfield-expert-error': FormfieldExpertErrorExampleComponent,
             'formfield-floating': FormfieldFloatingExampleComponent,
             'formfield-global': FormfieldGlobalExampleComponent,
             'formfield-hint': FormfieldHintExampleComponent,
-            'formfield-multiple-errors': FormfieldMultipleErrorsExampleComponent,
+            'formfield-multiple-errors':
+                FormfieldMultipleErrorsExampleComponent,
             'formfield-negative': FormfieldNegativeExampleComponent,
             'formfield-note': FormfieldNoteExampleComponent,
             'formfield-note-and-error': FormfieldNoteAndErrorExampleComponent,
-            'formfield-password-visibility': FormfieldPasswordVisibilityExampleComponent,
+            'formfield-password-visibility':
+                FormfieldPasswordVisibilityExampleComponent,
             'formfield-placeholder': FormfieldPlaceholderExampleComponent,
-            'formfield-prefix-suffix-appendix': FormfieldPrefixSuffixAppendixExampleComponent,
+            'formfield-prefix-suffix-appendix':
+                FormfieldPrefixSuffixAppendixExampleComponent,
             'formfield-simple-form': FormfieldSimpleFormExampleComponent,
         };
     }

@@ -35,8 +35,10 @@ export class AutocompleteExamplesModule {
     static components() {
         return {
             'autocomplete-basic': AutocompleteBasicExampleComponent,
-            'autocomplete-data-binding': AutocompleteDataBindingExampleComponent,
-            'autocomplete-default-rendering': AutocompleteDefaultRenderingExampleComponent,
+            'autocomplete-data-binding':
+                AutocompleteDataBindingExampleComponent,
+            'autocomplete-default-rendering':
+                AutocompleteDefaultRenderingExampleComponent,
             'autocomplete-filtering': AutocompleteFilteringExampleComponent,
             'autocomplete-outline': AutocompleteOutlineExampleComponent,
         };

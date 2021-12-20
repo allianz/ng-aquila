@@ -174,9 +174,7 @@ export class NxOverlayService implements OnDestroy {
         const overlayRef = new NxOverlayRef<T, R>(cdkOverlayRef, overlayContainer, origin, this._router, config.id);
 
         if (componentOrTemplateRef instanceof TemplateRef) {
-            overlayContainer.attachTemplatePortal(
-                new TemplatePortal<T>(componentOrTemplateRef, null!, { $implicit: overlayRef } as any),
-            );
+            overlayContainer.attachTemplatePortal(new TemplatePortal<T>(componentOrTemplateRef, null!, { $implicit: overlayRef } as any));
         } else {
             const injector = this._createInjector<T>(config, overlayRef, overlayContainer);
             const contentRef = overlayContainer.attachComponentPortal<T>(new ComponentPortal(componentOrTemplateRef, config.viewContainerRef, injector));

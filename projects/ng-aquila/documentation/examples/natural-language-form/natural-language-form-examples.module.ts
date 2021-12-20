@@ -29,10 +29,14 @@ const EXAMPLES = [
 export class NaturalExamplesModule {
     static components() {
         return {
-            'natural-language-form-basic': NaturalLanguageFormBasicExampleComponent,
-            'natural-language-form-extended': NaturalLanguageFormExtendedExampleComponent,
-            'natural-language-form-negative': NaturalLanguageFormNegativeExampleComponent,
-            'natural-language-form-sizes': NaturalLanguageFormSizesExampleComponent,
+            'natural-language-form-basic':
+                NaturalLanguageFormBasicExampleComponent,
+            'natural-language-form-extended':
+                NaturalLanguageFormExtendedExampleComponent,
+            'natural-language-form-negative':
+                NaturalLanguageFormNegativeExampleComponent,
+            'natural-language-form-sizes':
+                NaturalLanguageFormSizesExampleComponent,
         };
     }
 }
