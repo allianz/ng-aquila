@@ -11,8 +11,6 @@ import { NxDropdownModule } from '../dropdown.module';
 import { MultiSelectOptionHarness } from './multi-select-option.spec';
 import { NxMultiSelectComponent } from './multi-select.component';
 
-// tslint:disable:component-class-suffix
-
 class MultiSelectHarness extends ComponentHarness {
     static hostSelector = 'nx-multi-select';
 

@@ -4,7 +4,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'button[nxPlainButton]',
     templateUrl: './plain-button.component.html',
     styleUrls: ['plain-button.component.scss'],

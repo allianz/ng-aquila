@@ -5,7 +5,6 @@ import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
  * The table supports a `zebra` and a `condensed` mode.
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'table[nxTable]',
     template: '<ng-content></ng-content>',
     styleUrls: ['./table.component.scss'],

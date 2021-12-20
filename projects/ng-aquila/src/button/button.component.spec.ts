@@ -8,9 +8,6 @@ import { NxIconButtonComponent } from './icon-button.component';
 import { NxButtonSize, NxButtonType, NxButtonBase } from './button-base';
 import { By } from '@angular/platform-browser';
 
-// For better readability here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class ButtonTest {
     @ViewChild('button') buttonInstance!: NxButtonBase;

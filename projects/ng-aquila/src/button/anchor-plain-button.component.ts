@@ -6,7 +6,6 @@ import { NxPlainButtonComponent } from './plain-button.component';
 @Component({
     templateUrl: './plain-button.component.html',
     styleUrls: ['plain-button.component.scss'],
-    // tslint:disable-next-line:component-selector
     selector: 'a[nxPlainButton]',
     inputs: ['classNames:nxPlainButton'],
     changeDetection: ChangeDetectionStrategy.OnPush,

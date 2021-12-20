@@ -11,8 +11,6 @@ import { dispatchFakeEvent } from '../cdk-test-utils';
 declare var viewport: any;
 const THROTTLE_TIME = 200;
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class TabHeaderScrollableTest {
     direction: any;

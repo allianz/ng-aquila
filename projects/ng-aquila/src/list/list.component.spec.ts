@@ -5,9 +5,6 @@ import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/cor
 import { NxListComponent } from './list.component';
 import { NxListModule } from './list.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class ListTest {
     @ViewChild(NxListComponent) listInstance!: NxListComponent;

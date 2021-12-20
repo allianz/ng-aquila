@@ -7,8 +7,6 @@ import { ComponentService } from '../../../service/component.service';
     templateUrl: 'component-overview.html',
     styleUrls: ['component-overview.scss'],
 })
-
-// tslint:disable-next-line:component-class-suffix
 export class ComponentOverview {
     componentDescriptor!: ComponentDescriptor;
 

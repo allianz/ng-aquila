@@ -7,7 +7,6 @@ import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'button[nxComparisonTableSelectButton]',
     templateUrl: './select-button.component.html',
     styleUrls: ['../../button/button.scss', './select-button.component.scss'],

@@ -4,7 +4,6 @@ import { NxActionIconDirective } from './action-icon.directive';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxAction]',
     templateUrl: 'action.component.html',
     styleUrls: ['action.component.scss'],

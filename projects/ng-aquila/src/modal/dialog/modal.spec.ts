@@ -1543,7 +1543,6 @@ describe('NxDialog with default options', () => {
     }));
 });
 
-// tslint:disable-next-line:directive-selector
 @Directive({ selector: 'nx-with-view-container' })
 class DirectiveWithViewContainer {
     constructor(public viewContainerRef: ViewContainerRef) {}

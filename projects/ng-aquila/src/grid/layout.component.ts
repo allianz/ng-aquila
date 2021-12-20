@@ -1,7 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxLayout]',
     template: '<ng-content></ng-content>',
     changeDetection: ChangeDetectionStrategy.OnPush,

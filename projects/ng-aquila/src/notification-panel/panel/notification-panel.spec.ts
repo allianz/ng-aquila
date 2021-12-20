@@ -7,8 +7,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 
 import { NxNotificationPanelModule } from '../notification-panel.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class NotificationPanelTest {}
 

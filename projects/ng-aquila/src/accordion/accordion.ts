@@ -6,7 +6,6 @@ import { AccordionStyle } from './expansion-panel';
 const DEFAULT_TYPE: AccordionStyle = 'regular';
 
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-accordion',
     host: {
         '[class.nx-accordion]': 'true',

@@ -7,8 +7,6 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
     templateUrl: 'component-api.html',
     styleUrls: ['./component-api.scss'],
 })
-
-// tslint:disable-next-line:component-class-suffix
 export class ComponentApi {
     @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;
     constructor(public componentService: ComponentService) {}

@@ -13,7 +13,6 @@ import { Component } from '@angular/core';
 
 import { JAN, JUN, JUL, DEC } from '../../cdk-test-utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
-// tslint:disable component-class-suffix
 
 describe('NxDatepicker', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';

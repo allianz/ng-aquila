@@ -16,8 +16,6 @@ const tabsDefaultOptions: TabGroupDefaultOptions = {
     appearance: 'expert',
 };
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class TabsTest {
     @ViewChildren(NxAccordionDirective) accordion!: QueryList<NxAccordionDirective>;
@@ -681,7 +679,6 @@ class DynamicTabTest extends TabsTest {
 
 @Component({
     template: '<span>I am a test component</span>',
-    // tslint:disable-next-line:component-selector
     selector: 'my-test-component',
 })
 class TestComponent implements OnDestroy {

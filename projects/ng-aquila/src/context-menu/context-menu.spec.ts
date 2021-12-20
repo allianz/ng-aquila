@@ -22,9 +22,6 @@ import { NxIconModule } from '../icon/public-api';
 import { dispatchKeyboardEvent, dispatchMouseEvent, dispatchFakeEvent, createMouseEvent, createKeyboardEvent } from '../cdk-test-utils';
 import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Component({
     template: `
         <nx-context-menu #menu="nxContextMenu">

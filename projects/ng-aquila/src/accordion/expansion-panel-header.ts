@@ -89,7 +89,6 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
  * This directive is to be used inside of the NxExpansionPanelHeader component.
  */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-expansion-panel-description',
     host: {
         class: 'nx-expansion-panel__header-description',
@@ -101,7 +100,6 @@ export class NxExpansionPanelDescriptionDirective {}
  * This directive is to be used inside of the NxExpansionPanelHeader component.
  */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-expansion-panel-title',
     host: {
         class: 'nx-expansion-panel__header-title',

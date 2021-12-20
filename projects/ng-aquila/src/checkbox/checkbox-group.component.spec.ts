@@ -5,9 +5,6 @@ import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxCheckboxGroupComponent, NxCheckboxComponent, NxCheckboxGroupChangeEvent } from './checkbox.component';
 import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '@angular/core';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class CheckboxGroupTest {
     @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance!: NxCheckboxGroupComponent;

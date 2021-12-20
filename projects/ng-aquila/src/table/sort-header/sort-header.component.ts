@@ -6,7 +6,6 @@ import { NxSortHeaderIntl } from './sort-header-intl';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'th[nxSortHeaderCell]',
     exportAs: 'nxSortHeaderComponent',
     templateUrl: 'sort-header.component.html',

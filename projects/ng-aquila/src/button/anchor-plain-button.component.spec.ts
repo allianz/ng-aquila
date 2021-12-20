@@ -4,7 +4,6 @@ import { NxAnchorPlainButtonComponent } from './anchor-plain-button.component';
 
 import { NxButtonModule } from './button.module';
 
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class ButtonTest {
     @ViewChild('button') buttonInstance!: NxAnchorPlainButtonComponent;

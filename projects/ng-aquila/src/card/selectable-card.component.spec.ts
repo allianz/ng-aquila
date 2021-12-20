@@ -8,9 +8,6 @@ import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 import { By } from '@angular/platform-browser';
 import { NxErrorComponent, NxErrorModule } from '@aposin/ng-aquila/base';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SelectableCardTest {
     @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;

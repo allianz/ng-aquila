@@ -6,9 +6,6 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxProgressStepperComponent } from './progress.component';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class ProgressTest {
     @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;

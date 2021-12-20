@@ -6,9 +6,6 @@ import { NxLinkComponent, NxLinkSize } from './link.component';
 import { NxLinkModule } from './link.module';
 import { By } from '@angular/platform-browser';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class LinkTest {
     @ViewChild(NxLinkComponent) linkInstance!: NxLinkComponent;

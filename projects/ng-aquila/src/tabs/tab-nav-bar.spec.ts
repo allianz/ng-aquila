@@ -180,7 +180,6 @@ describe('NxTabBarNavComponent', () => {
         </nx-tab-nav-bar>
     `,
 })
-// tslint:disable-next-line:component-class-suffix
 class SimpleTabNavBar extends TabNavBarTest {
     links = [
         { label: 'Label1', active: true },
@@ -197,7 +196,6 @@ class SimpleTabNavBar extends TabNavBarTest {
         </nx-tab-nav-bar>
     `,
 })
-// tslint:disable-next-line:component-class-suffix
 class ConfigurableTabNavBar extends TabNavBarTest {
     links = [
         { label: 'Label1', active: true },
@@ -215,7 +213,6 @@ class ConfigurableTabNavBar extends TabNavBarTest {
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// tslint:disable-next-line:component-class-suffix
 class TabNavBarOnPush extends TabNavBarTest {
     links = [
         { label: 'Label1', active: true, disabled: false },

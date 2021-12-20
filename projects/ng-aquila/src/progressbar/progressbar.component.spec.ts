@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { NxProgressbarComponent } from './progressbar.component';
 import { NxProgressbarModule } from './progressbar.module';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class ProgressBarTest {
     @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;

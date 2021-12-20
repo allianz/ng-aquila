@@ -7,9 +7,6 @@ import { By } from '@angular/platform-browser';
 import { NxSliderComponent } from './slider.component';
 import { NxSliderModule } from './slider.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 const createKeyboardEvent = (keyCode: number) => {
     const event = document.createEvent('KeyboardEvent') as any;
     Object.defineProperties(event, {

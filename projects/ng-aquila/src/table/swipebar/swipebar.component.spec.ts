@@ -4,9 +4,6 @@ import * as axe from 'axe-core';
 import { NxTableModule } from '../table.module';
 import { NxSwipebarComponent } from './swipebar.component';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 const screenWidth = document.body.offsetWidth;
 
 @Directive()

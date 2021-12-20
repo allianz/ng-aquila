@@ -2,7 +2,6 @@ import { Component, ComponentFactoryResolver, Inject, OnInit, ViewContainerRef }
 import { NXV_FOOTER } from './../../../core/tokens';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'nxv-footer',
     templateUrl: './footer.component.html',
     styles: [

@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NxvTableOfContentsModule } from './table-of-contents.module';
 
-// tslint:disable:component-class-suffix
 describe('NxvTableOfContentsComponent', () => {
     let fixture: ComponentFixture<TableOfContentsTest>;
 

@@ -4,8 +4,6 @@ import { By } from '@angular/platform-browser';
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-// tslint:disable component-class-suffix
-
 describe('NxCalendarBodyComponent', () => {
     beforeEach(
         waitForAsync(() => {

@@ -8,9 +8,6 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxTabsModule } from './tabs.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class TabHeaderTest {
     selectedIndex: number = 0;

@@ -8,7 +8,6 @@ export type NxMenuButtonType = 'root' | 'nested';
  * @title MenuButton
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxMenuButton]',
     templateUrl: 'menu-button.component.html',
     styleUrls: ['menu-button.component.scss'],

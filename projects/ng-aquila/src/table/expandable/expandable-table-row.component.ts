@@ -9,7 +9,6 @@ import { NxExpandable } from './toggle-button.component';
  * Requires the table cells to have the `[nxExpandableTableCell]` component.
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'tr[nxExpandableTableRow]',
     host: {
         class: 'nx-expandable-table-row',

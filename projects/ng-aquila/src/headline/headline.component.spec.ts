@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxHeadlineComponent } from './headline.component';
 import { NxHeadlineModule } from './headline.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class HeadlineTest {
     @ViewChild(NxHeadlineComponent) headlineInstance!: NxHeadlineComponent;

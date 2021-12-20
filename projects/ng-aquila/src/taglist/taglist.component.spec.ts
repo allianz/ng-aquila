@@ -7,9 +7,6 @@ import { By } from '@angular/platform-browser';
 import { DELETE, BACKSPACE } from '@angular/cdk/keycodes';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class TaglistTest {
     @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;

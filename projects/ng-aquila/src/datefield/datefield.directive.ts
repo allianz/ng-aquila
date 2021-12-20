@@ -1,3 +1,11 @@
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
@@ -11,15 +19,6 @@ import { createMissingDateImplError } from './datefield-errors';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
 import { NxDateValidators } from './date-validators';
 
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-// tslint:disable:member-ordering
 export const NX_DATEFIELD_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NxDatefieldDirective),

@@ -5,9 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTreeComponent, NxTreeFlatDataSource, NxTreeModule, NxFlatTreeControl } from './public-api';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix no-non-null-assertion member-ordering
-
 describe(NxTreeComponent.name, () => {
     /** Represents an indent for expectNestedTreeToNxch */
     const _ = {};

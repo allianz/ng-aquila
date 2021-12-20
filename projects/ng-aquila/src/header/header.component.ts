@@ -4,7 +4,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** This directive defines a header row within the `<nx-header>` component. */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-header-row',
     exportAs: 'NxHeaderRow',
     host: {
@@ -17,7 +16,6 @@ export class NxHeaderRowDirective {}
 @Component({
     templateUrl: './header.component.html',
     styleUrls: ['header.scss'],
-    // tslint:disable-next-line:component-selector
     selector: 'nx-header, [nx-header]',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -31,7 +29,6 @@ export class NxHeaderComponent {
 
 /** This directive defines the header brand section within the `<nx-header>` component. */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-header-brand',
     exportAs: 'NxHeaderBrand',
     host: {
@@ -42,7 +39,6 @@ export class NxHeaderBrandDirective {}
 
 /** This directive defines the header actions section within the `<nx-header>` component. */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-header-actions',
     exportAs: 'NxHeaderActions',
     host: {
@@ -81,7 +77,6 @@ export class NxHeaderNavigationComponent {}
 
 /** This directive defines a header navigation item within the `<nx-header-navigation>`. */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-header-navigation-item',
     exportAs: 'NxHeaderNavigation',
     host: {
@@ -93,7 +88,6 @@ export class NxHeaderNavigationItemDirective {}
 
 /** This component defines a header link within the `<nx-header>` component. */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'a[nxHeaderLink]',
     exportAs: 'NxHeaderLink',
     host: {
@@ -118,7 +112,6 @@ export class NxHeaderLinkComponent implements OnDestroy {
 
 /** This directive defines the application title within the `<nx-header>` component. */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-header-app-title',
     exportAs: 'NxHeaderAppTitle',
     host: {

@@ -6,9 +6,6 @@ import { NxSwitcherModule } from './switcher.module';
 import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SwitcherTest {
     @ViewChild(NxSwitcherComponent) switcherInstance!: NxSwitcherComponent;

@@ -5,7 +5,6 @@ import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { NxSidebarComponent } from './sidebar.component';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'button[nxSidebarToggle]',
     templateUrl: './sidebar-toggle.html',
     styleUrls: ['../button/button.scss', './sidebar-toggle.scss'],

@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'nxv-feedback',
     templateUrl: './feedback.component.html',
     styleUrls: ['./feedback.component.scss'],

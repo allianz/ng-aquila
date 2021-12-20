@@ -7,9 +7,6 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 describe('NxRadioToggleComponent', () => {
     let fixture: ComponentFixture<RadioToggleTest>;
     let radioElements: NodeListOf<HTMLInputElement>;

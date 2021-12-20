@@ -23,8 +23,6 @@ import { Subject, Subscription } from 'rxjs';
 import { Directionality } from '@angular/cdk/bidi';
 import { FocusableOption } from '@angular/cdk/a11y';
 
-// tslint:disable:use-input-property-decorator
-
 // We need to reference steps in stepper and stepper in steps. To prevent circular depenedency errors
 // Provide both components in a single file. Otherwise we would have to introduce interface/abstract classes
 // shared between both implementations.

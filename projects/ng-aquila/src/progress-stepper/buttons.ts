@@ -3,8 +3,6 @@ import { ChangeDetectorRef, Directive, DoCheck } from '@angular/core';
 
 import { NxProgressStepperDirective } from './progress-stepper.component';
 
-// tslint:disable:use-input-property-decorator
-
 @Directive({
     selector: 'button[nxStepperNext]',
     host: {
@@ -31,7 +29,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
      * in the error.
      */
     ngDoCheck() {
-        const stepper = (this._stepper as any) as NxProgressStepperDirective;
+        const stepper = this._stepper as any as NxProgressStepperDirective;
         if (this.disabled !== !stepper.hasNext) {
             this.disabled = !stepper.hasNext;
             this.changeDetectorRef.markForCheck();

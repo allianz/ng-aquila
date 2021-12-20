@@ -318,13 +318,11 @@ describe('NxMessageToast with parent and child service', () => {
 @Component({
     template: ``,
 })
-// tslint:disable-next-line:component-class-suffix
 class BasicMessageToastTest {}
 
 @Component({
     template: ` <ng-template> Testing template </ng-template> `,
 })
-// tslint:disable-next-line:component-class-suffix
 class ComponentWithTemplateRef {
     @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 }
@@ -333,7 +331,6 @@ class ComponentWithTemplateRef {
     template: '',
     providers: [NxMessageToastService],
 })
-// tslint:disable-next-line:component-class-suffix
 class ComponentProvidingService {
     constructor(public messageToastService: NxMessageToastService) {}
 }

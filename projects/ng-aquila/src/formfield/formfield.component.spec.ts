@@ -15,8 +15,6 @@ const formfieldDefaultOptions: FormfieldDefaultOptions = {
 };
 
 // NxInputModule also imports NxFormfieldModule
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class FormfieldTest {
     @ViewChild(NxFormfieldComponent) textfieldInstance!: NxFormfieldComponent;

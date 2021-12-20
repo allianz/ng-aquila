@@ -5,8 +5,6 @@ import { By } from '@angular/platform-browser';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { sortedClassNames } from '../cdk-test-utils';
 
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class DirectiveTest {
     @ViewChild(NxColComponent) column!: NxColComponent;

@@ -9,7 +9,6 @@ import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
  * It exists mostly to set the role attribute, disabled state and styling.
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxContextMenuItem]',
     exportAs: 'nxContextMenuItem',
     host: {

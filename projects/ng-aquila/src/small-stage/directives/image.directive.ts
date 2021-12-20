@@ -4,7 +4,6 @@ import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
  * This is an image that can be placed into the small stage component.
  */
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-small-stage-image',
 })
 export class NxSmallStageImageDirective {

@@ -6,7 +6,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 @Component({
     templateUrl: './button.html',
     styleUrls: ['button.scss'],
-    // tslint:disable-next-line:component-selector
     selector: 'button[nxButton]',
     changeDetection: ChangeDetectionStrategy.OnPush,
     inputs: ['classNames:nxButton'],

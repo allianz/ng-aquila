@@ -6,9 +6,6 @@ import { NxSidepanelModule } from './sidepanel.module';
 import { NxSidepanelComponent, PositionType } from './sidepanel';
 import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SidepanelCloseButtonTest {
     @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;

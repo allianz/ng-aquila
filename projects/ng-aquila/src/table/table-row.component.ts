@@ -7,7 +7,6 @@ import { SPACE } from '@angular/cdk/keycodes';
  * This is a table row.
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'tr[nxTableRow]',
     host: {
         class: 'nx-table-row',

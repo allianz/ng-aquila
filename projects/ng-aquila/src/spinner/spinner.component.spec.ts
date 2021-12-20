@@ -3,9 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { Component, ViewChild, Type, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SpinnerTest {
     @ViewChild(NxSpinnerComponent) spinnerInstance!: NxSpinnerComponent;

@@ -4,9 +4,6 @@ import { NxVideoComponent } from './video.component';
 import { NxVideoModule } from './video.module';
 import { By } from '@angular/platform-browser';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class VideoTest {
     @ViewChild(NxVideoComponent) videoInstance!: NxVideoComponent;

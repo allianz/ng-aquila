@@ -35,7 +35,6 @@ export class NxCalendarCell {
  * @docs-private
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nx-calendar-body]',
     templateUrl: 'calendar-body.html',
     styleUrls: ['calendar-body.scss'],

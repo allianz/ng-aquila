@@ -6,9 +6,6 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxInputModule, NxInputDirective } from '@aposin/ng-aquila/input';
 import { createFakeEvent } from '../cdk-test-utils';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class InputTest {
     @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;

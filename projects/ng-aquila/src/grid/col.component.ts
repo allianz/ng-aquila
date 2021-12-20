@@ -50,7 +50,6 @@ export type ColSelfAlignment = 'auto' | 'start' | 'end' | 'center' | 'baseline' 
 export type ColOrder = 'first' | 'last' | 'unordered';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxCol]',
     template: '<ng-content></ng-content>',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxCardComponent } from './card.component';
 import { NxCardModule } from './card.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class CardTest {
     @ViewChild(NxCardComponent) cardInstance!: NxCardComponent;

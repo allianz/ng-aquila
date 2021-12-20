@@ -13,8 +13,6 @@ class MyIntl extends NxCodeInputIntl {
     ofLabel = 'testOf';
 }
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class CodeInputTest {
     @ViewChild(NxCodeInputComponent) codeInputInstance!: NxCodeInputComponent;

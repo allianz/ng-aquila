@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Directive } from '@angular/core';
 
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-footer-copyright',
     exportAs: 'NxFooterCopyright',
     host: {
@@ -11,7 +10,6 @@ import { Component, ChangeDetectionStrategy, Directive } from '@angular/core';
 export class NxFooterCopyrightDirective {}
 
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-footer-navigation',
     exportAs: 'NxFooterNavigation',
     host: {
@@ -21,7 +19,6 @@ export class NxFooterCopyrightDirective {}
 })
 export class NxFooterNavigationDirective {}
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: 'nx-footer-link',
     exportAs: 'NxFooterLink',
     host: {

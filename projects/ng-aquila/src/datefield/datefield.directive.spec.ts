@@ -12,9 +12,6 @@ import { NxDatefieldModule } from './datefield.module';
 import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NxIsoDateModule } from '../iso-date-adapter';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class DatefieldTest {
     public disabled: boolean = false;

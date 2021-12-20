@@ -9,8 +9,6 @@ import { NxNativeDateModule } from '../adapter';
 import { NxCalendarBodyComponent } from './calendar-body';
 import { NxMultiYearViewComponent, yearsPerPage, yearsPerRow } from './multi-year-view';
 
-// tslint:disable component-class-suffix
-
 describe('NxMultiYearView', () => {
     let dir: { value: Direction };
 

@@ -4,7 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxButtonModule } from './button.module';
 import { NxPlainButtonComponent } from './plain-button.component';
 
-// tslint:disable:component-class-suffix
 @Directive()
 abstract class ButtonTest {
     @ViewChild('button') buttonInstance!: NxPlainButtonComponent;

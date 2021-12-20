@@ -9,7 +9,6 @@ import { takeUntil } from 'rxjs/operators';
  * Only works in conjunction with the `[nxExpandableTableRow]` component.
  */
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'td[nxExpandableTableCell]',
     templateUrl: './expandable-table-cell.component.html',
     host: {

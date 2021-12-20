@@ -5,7 +5,6 @@ import { Component, ChangeDetectionStrategy, Directive, ElementRef, OnDestroy, C
 export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'large' | 'xlarge';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxAvatar]',
     template: ` <div class="nx-avatar__content-wrapper">
         <ng-content></ng-content>

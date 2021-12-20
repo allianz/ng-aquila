@@ -5,9 +5,6 @@ import { NxErrorComponent, ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, ErrorStyl
 import { NxErrorModule } from './error.module';
 import { Subject } from 'rxjs';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 const errorOptions: ErrorDefaultOptions = {
     changes: new Subject<void>(),
     appearance: 'text',

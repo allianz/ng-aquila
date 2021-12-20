@@ -115,7 +115,6 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     private readonly _destroy = new Subject<void>();
 
     /** Event emitted when the option is selected or deselected. */
-    // tslint:disable-next-line:no-output-on-prefix
     @Output() readonly onSelectionChange = new EventEmitter<NxDropdownItemChange>();
 
     /** Emits when the state of the option changes and any parents have to be notified. */

@@ -7,9 +7,6 @@ import { NxIconRegistry } from './icon-registry';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 
-// For better readability here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class IconTest {
     @ViewChild(NxIconComponent) buttonInstance!: NxIconComponent;

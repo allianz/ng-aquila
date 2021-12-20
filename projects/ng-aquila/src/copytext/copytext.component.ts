@@ -6,7 +6,6 @@ export type NxCopytextType = 'small' | 'medium' | 'normal' | 'large';
 const DEFAULT_TYPE = 'normal';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxCopytext]',
     styleUrls: ['copytext.component.scss'],
     template: `<ng-content></ng-content>`,

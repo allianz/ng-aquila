@@ -5,8 +5,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionModule, NxExpansionPanelComponent } from './index';
 import { SPACE, ENTER } from '@angular/cdk/keycodes';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
 
 describe('NxExpansionPanelComponent', () => {
     let fixture: ComponentFixture<PanelTest>;

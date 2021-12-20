@@ -75,5 +75,4 @@ describe(NxFooterComponent.name, () => {
         </nx-footer>
     `,
 })
-// tslint:disable-next-line:component-class-suffix
 class BasicFooter extends FooterTest {}

@@ -81,7 +81,7 @@ class NxTreeFlattener<T extends NxTreeNode, F extends NxFlatTreeNode> {
     _flattenChildren(children: T[], level: number, resultNodes: F[], parentMap: boolean[]): void {
         children.forEach((child, index) => {
             const childParentMap: boolean[] = parentMap.slice();
-            childParentMap.push(index != children.length - 1); // tslint:disable-line
+            childParentMap.push(index != children.length - 1);
             this._flattenNode(child, level + 1, resultNodes, childParentMap);
         });
     }

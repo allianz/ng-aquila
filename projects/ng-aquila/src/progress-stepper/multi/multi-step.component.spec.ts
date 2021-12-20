@@ -13,9 +13,6 @@ import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxMultiStepperDirection } from '../progress-stepper.models';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class MultiStepTest {
     @ViewChild(NxMultiStepperComponent) componentInstance!: NxMultiStepperComponent;

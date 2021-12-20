@@ -7,9 +7,6 @@ import { NX_PAGINATION_TEXTS, IPaginationTexts } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
 import { Direction, BidiModule } from '@angular/cdk/bidi';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 const customTexts: IPaginationTexts = {
     previous: 'myPrevious',
     next: 'myNext',

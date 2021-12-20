@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/t
 import { NxLabelComponent, LabelDefaultOptions, LABEL_DEFAULT_OPTIONS, LABEL_SIZE_TYPE } from './label.component';
 import { NxLabelModule } from './label.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 const customDefaultOptions: LabelDefaultOptions = { size: 'small' };
 
 @Directive()

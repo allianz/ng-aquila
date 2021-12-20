@@ -3,8 +3,6 @@ import { Component, ViewChild, Type, Directive } from '@angular/core';
 import { NxLayoutComponent } from './layout.component';
 import { NxGridModule } from './grid.module';
 
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class DirectiveTest {
     @ViewChild(NxLayoutComponent) layoutInstance!: NxLayoutComponent;

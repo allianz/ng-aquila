@@ -7,7 +7,6 @@ export type HeadlineType = 'page' | 'page-bold-caps' | 'section' | 'subsection-l
 const DEFAULT_TYPE = 'section';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxHeadline]',
     template: `<ng-content></ng-content>`,
     styleUrls: ['headline.component.scss'],

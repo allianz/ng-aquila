@@ -29,7 +29,6 @@ const TEMPLATE_FILES = [
     'tsconfig.json',
     'tsconfig.app.json',
     'tsconfig.spec.json',
-    'tslint.json',
 ];
 
 const ASSETS_BASE_PATH = 'https://aposin.github.io/ng-aquila/';
@@ -51,7 +50,6 @@ const TEST_TEMPLATE_FILES = [
     'tsconfig.app.json',
     'tsconfig.json',
     'tsconfig.spec.json',
-    'tslint.json',
 ];
 
 const TAGS: string[] = ['aposin', 'aquila', 'example'];

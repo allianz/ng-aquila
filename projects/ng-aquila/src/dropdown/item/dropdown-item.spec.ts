@@ -4,8 +4,6 @@ import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/cor
 import { NxDropdownModule } from '../dropdown.module';
 import { NxDropdownItemComponent } from './dropdown-item';
 
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class DropdownItemTest {
     @ViewChild(NxDropdownItemComponent) item: any;

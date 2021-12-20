@@ -8,7 +8,6 @@ import { NxCalendarBodyComponent } from './calendar-body';
 import { NxYearViewComponent } from './year-view';
 import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { dispatchKeyboardEvent, dispatchFakeEvent } from '../../cdk-test-utils';
-// tslint:disable component-class-suffix
 
 const JAN = 0;
 const FEB = 1;

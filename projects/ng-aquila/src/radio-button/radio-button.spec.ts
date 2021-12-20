@@ -6,9 +6,6 @@ import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 import { NxRadioModule } from './radio-button.module';
 import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class RadioTest {
     @ViewChildren(NxRadioComponent) radioInstances!: QueryList<NxRadioComponent>;

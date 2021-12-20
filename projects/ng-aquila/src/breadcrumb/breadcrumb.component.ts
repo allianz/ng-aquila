@@ -10,7 +10,6 @@ import { Subject } from 'rxjs';
 export type NxBreadcrumpAppearance = 'default' | 'link';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'ol[nxBreadcrumb]',
     templateUrl: './breadcrumb.component.html',
     styleUrls: ['./breadcrumb.component.scss'],

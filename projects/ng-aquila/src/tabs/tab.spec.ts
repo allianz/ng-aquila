@@ -45,7 +45,6 @@ describe('NxTabComponent', () => {
 @Component({
     template: ` <nx-tab>Some content</nx-tab> `,
 })
-// tslint:disable-next-line:component-class-suffix
 class NoGroupTest extends TabTest {}
 
 @Component({
@@ -55,5 +54,4 @@ class NoGroupTest extends TabTest {}
         </nx-tab-group>
     `,
 })
-// tslint:disable-next-line:component-class-suffix
 class WithGroup extends TabTest {}

@@ -11,9 +11,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { By } from '@angular/platform-browser';
 import { NxPopoverIntl } from './popover-intl';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Component({
     selector: 'nx-test-component',
     template: '<span>This is a test component</span>',

@@ -8,7 +8,6 @@ export type figureSizes = 'auto' | '1by1' | '1dot8by1' | '1dot2by1' | '1by1dot1'
 const DEFAULT_SIZE = 'auto';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'figure[nxFigure]',
     template: '<ng-content></ng-content>',
     changeDetection: ChangeDetectionStrategy.OnPush,

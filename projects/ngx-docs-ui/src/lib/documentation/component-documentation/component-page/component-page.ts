@@ -19,7 +19,6 @@ export interface DocItem {
     templateUrl: 'component-page.html',
     styleUrls: ['component-page.scss'],
 })
-// tslint:disable-next-line:component-class-suffix
 export class NxvComponentPage {
     componentDescriptor!: ComponentDescriptor;
 

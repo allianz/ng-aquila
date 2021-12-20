@@ -47,12 +47,12 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
-  stage("Lint check") {
+  /* stage("Lint check") {
     shared.withNotification('ci/lint', "Lint check") {
       echo 'Lint checking'
       sh 'npm run lint'
     }
-  }
+  } */
 
   stage("Format check") {
     shared.withNotification('ci/format', "Format check") {

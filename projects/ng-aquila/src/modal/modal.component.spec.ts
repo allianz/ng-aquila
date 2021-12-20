@@ -6,9 +6,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxModalComponent } from './modal.component';
 import { NxModalModule } from './modal.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class ModalTest {
     public open = false;

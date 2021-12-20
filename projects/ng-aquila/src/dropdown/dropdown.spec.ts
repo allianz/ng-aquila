@@ -14,7 +14,6 @@ import { dispatchFakeEvent, dispatchKeyboardEvent, createFakeEvent } from '../cd
 import { NxDropdownComponent } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
 import { NxDropdownItemComponent } from './item/dropdown-item';
-// tslint:disable:component-class-suffix
 
 describe('NxDropdownComponent', () => {
     let fixture: ComponentFixture<DropdownTest>;

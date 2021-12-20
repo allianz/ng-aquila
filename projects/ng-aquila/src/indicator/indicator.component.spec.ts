@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxIndicatorComponent } from './indicator.component';
 import { NxIndicatorModule } from './indicator.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class IndicatorTest {
     @ViewChild(NxIndicatorComponent) indicatorInstance!: NxIndicatorComponent;

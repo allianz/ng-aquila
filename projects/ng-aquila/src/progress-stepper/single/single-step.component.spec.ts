@@ -8,9 +8,6 @@ import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxSingleStepperComponent } from './single-step.component';
 import { NxLabelModule } from '@aposin/ng-aquila/base';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SingleStepTest {
     @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;

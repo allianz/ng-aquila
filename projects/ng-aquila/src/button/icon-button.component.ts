@@ -4,7 +4,6 @@ import { NxButtonBase } from './button-base';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'button[nxIconButton]',
     templateUrl: './button.html',
     styleUrls: ['button.scss'],

@@ -5,9 +5,6 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';
 import { NxLicencePlateModule } from './licence-plate.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class LicencePlateSeasonSuffixTest {
     @ViewChild(NxLicencePlateSeasonSuffixComponent)

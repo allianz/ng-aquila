@@ -6,9 +6,6 @@ import { NxDisplayedColumns } from './displayedColumns';
 import { NxDynamicTableComponent } from './dynamic-table.component';
 import { NxDynamicTableModule } from './dynamic-table.module';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class DynamicTableTest {
     @ViewChild(NxDynamicTableComponent) dynamicTableInstance!: NxDynamicTableComponent;

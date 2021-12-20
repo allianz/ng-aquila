@@ -17,8 +17,6 @@ import { JAN, FEB, NOV, DEC, dispatchMouseEvent, dispatchKeyboardEvent, dispatch
 
 import { NxCalendarComponent } from './calendar';
 
-// tslint:disable component-class-suffix
-
 describe('NxCalendarComponent', () => {
     let dir: { value: Direction };
 

@@ -5,9 +5,6 @@ import { NxSmallStageComponent } from './small-stage.component';
 import { NxSmallStageModule } from './small-stage.module';
 import { By } from '@angular/platform-browser';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SmallStageTest {
     @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;

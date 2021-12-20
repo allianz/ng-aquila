@@ -5,8 +5,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
-// tslint:disable:component-class-suffix
-
 /**
  * @docs-private
  */

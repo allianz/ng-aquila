@@ -2,7 +2,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'a[nxBreadcrumbItem]',
     templateUrl: 'breadcrumb-item.component.html',
     styleUrls: ['breadcrumb-item.component.scss'],

@@ -5,8 +5,6 @@ import { ComponentService } from '../../../service/component.service';
     selector: 'nxv-component-examples',
     templateUrl: 'component-examples.html',
 })
-
-// tslint:disable-next-line:component-class-suffix
 export class ComponentExamples {
     constructor(public componentService: ComponentService) {}
 }

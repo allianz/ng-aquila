@@ -6,9 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxSidebarComponent, MAX_WIDTH, MIN_WIDTH, RESIZE_STEP_SIZE } from './sidebar.component';
 import { NxSidebarModule } from './sidebar.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SidebarTest {
     @ViewChild(NxSidebarComponent) sidebarInstance!: NxSidebarComponent;

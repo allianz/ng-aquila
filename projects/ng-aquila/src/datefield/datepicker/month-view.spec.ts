@@ -10,7 +10,6 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC, dispatchKeyboardEvent, dispatchFakeEvent } from '../../cdk-test-utils';
 
-// tslint:disable component-class-suffix
 describe('NxMonthView', () => {
     let dir: { value: Direction };
 

@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxMenuItemDirective } from './menu-item.directive';
 import { NxMenuModule } from './menu.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class MenuItemTest {
     @ViewChild(NxMenuItemDirective) menuGroupInstance!: NxMenuItemDirective;

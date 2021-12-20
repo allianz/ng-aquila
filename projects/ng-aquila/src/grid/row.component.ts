@@ -47,7 +47,6 @@ export type RowItemsAlignment = 'start' | 'end' | 'center' | 'between' | 'stretc
 export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: '[nxRow]',
     template: '<ng-content></ng-content>',
     changeDetection: ChangeDetectionStrategy.OnPush,

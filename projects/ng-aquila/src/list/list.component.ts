@@ -6,7 +6,6 @@ const DEFAULT_TYPE = 'normal';
 export type NxListSize = 'xsmall' | 'small' | 'normal';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'ul[nxList], ol[nxList]',
     template: '<ng-content></ng-content>',
     changeDetection: ChangeDetectionStrategy.OnPush,

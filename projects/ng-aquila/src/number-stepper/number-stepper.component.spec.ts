@@ -7,9 +7,6 @@ import { By } from '@angular/platform-browser';
 import { NxNumberStepperComponent } from './number-stepper.component';
 import { NxNumberStepperModule } from './number-stepper.module';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Injectable()
 class MyIntl extends NxNumberStepperIntl {
     decrementAriaLabel = 'verringern';

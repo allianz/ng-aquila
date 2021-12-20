@@ -35,7 +35,6 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 @Directive({
     selector: '[nxDatepickerToggleIcon]',
 })
-// tslint:disable-next-line:directive-class-suffix
 export class NxDatepickerToggleIconComponent {}
 
 @Component({

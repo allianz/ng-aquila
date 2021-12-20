@@ -3,7 +3,6 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
-    // tslint:disable-next-line
     selector: 'app-root',
     templateUrl: './app.component.html',
 })

@@ -7,9 +7,6 @@ import { NxCheckboxChangeEvent } from './checkbox.component';
 import { NxCheckboxModule } from './checkbox.module';
 import { By } from '@angular/platform-browser';
 
-// We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class CheckboxTest {
     @ViewChild(NxCheckboxComponent) checkboxInstance!: NxCheckboxComponent;

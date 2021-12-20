@@ -7,9 +7,6 @@ import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTagComponent } from './tag.component';
 import { NxTaglistModule } from './taglist.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class TagTest {
     @ViewChild(NxTagComponent) tagInstance!: NxTagComponent;

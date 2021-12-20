@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionModule, NxAccordionDirective, NxExpansionPanelComponent } from './index';
 
-// tslint:disable:component-class-suffix
 describe('NxAccordion', () => {
     beforeEach(
         waitForAsync(() => {

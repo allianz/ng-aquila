@@ -3,9 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxMenuButtonComponent, NxMenuButtonType } from './menu-button.component';
 import { NxMenuModule } from './menu.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class MenuButtonTest {
     expandable!: boolean;

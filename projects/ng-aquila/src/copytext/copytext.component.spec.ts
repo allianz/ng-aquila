@@ -4,9 +4,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxCopytextComponent } from './copytext.component';
 import { NxCopytextModule } from './copytext.module';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class CopytextTest {
     @ViewChild(NxCopytextComponent) textInstance!: NxCopytextComponent;

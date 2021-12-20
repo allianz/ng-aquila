@@ -7,9 +7,6 @@ import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class VersionSelectTest {
     versions: DocVersions = {

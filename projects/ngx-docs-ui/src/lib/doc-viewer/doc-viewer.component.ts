@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'nxv-doc-viewer',
     template: 'Loading document...',
     styleUrls: ['./doc-viewer.component.css'],

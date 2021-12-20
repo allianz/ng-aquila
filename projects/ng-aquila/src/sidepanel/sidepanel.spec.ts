@@ -6,9 +6,6 @@ import { NxSidepanelModule } from './sidepanel.module';
 import { Appearance, NxSidepanelOuterContainerComponent, NxSidepanelComponent, PositionType } from './sidepanel';
 import { BidiModule } from '@angular/cdk/bidi';
 
-// For better readablity here, We can safely ignore some conventions in our specs
-// tslint:disable:component-class-suffix
-
 @Directive()
 abstract class SidepanelTest {
     @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;

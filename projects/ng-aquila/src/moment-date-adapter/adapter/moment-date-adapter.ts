@@ -8,7 +8,6 @@ import { NgModule, Optional, Inject } from '@angular/core';
 // the `default as` syntax.
 // https://github.com/angular/components/blob/master/src/material-moment-adapter/adapter/moment-date-adapter.ts
 import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment } from 'moment';
 
 const moment = _rollupMoment || _moment;
