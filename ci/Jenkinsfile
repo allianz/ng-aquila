@@ -22,40 +22,48 @@ node('nodejs-with-browsers-v12') {
  
 
   stage("Prepare") {
-    shared.withNotification('ci/install', "NPM Install") {
+    shared.withNotification('ci/prepare', "Prepare") {
+      echo 'Preparing'
       sh 'npm -v'
       sh 'node -v'
       sh "http_proxy=''"
       sh 'npm config set fetch-retries 3'
       sh 'npm config set fetch-retry-mintimeout 15000'
       sh 'npm config set fetch-retry-maxtimeout 90000'
+    }
+  }
+
+  stage("Package install") {
+    shared.withNotification('ci/install', "Package install") {
+      echo 'Installing packages'
       sh 'npm ci'
     }
   }
 
-  stage("Generate docs") {
-    shared.withNotification('ci/generate-docs', "Generate docs") {
+  stage("Generate documentation") {
+    shared.withNotification('ci/generate-documentation', "Generate documentation") {
+      echo 'Generating documentation'
       sh 'npm run library:generate:docs'
     }
   }
 
-  stage("Lint") {
-    shared.withNotification('ci/test/lint', "Linter") {
-      echo 'Running Linter'
+  stage("Lint check") {
+    shared.withNotification('ci/lint', "Lint check") {
+      echo 'Lint checking'
       sh 'npm run lint'
     }
   }
 
-  stage("Format Check") {
-    shared.withNotification('ci/format', "Format Check") {
-      echo 'Checking Format'
+  stage("Format check") {
+    shared.withNotification('ci/format', "Format check") {
+      echo 'Format checking '
       sh 'npm run format'
     }
   }
 
-  stage("Test Docs-ui") {
-    shared.withNotification('ci/test/unit/ngx-docs-ui', "Unit Test docs-ui") {
-      echo 'Running Unit Tests'
+  stage("Test ngx-docs-ui") {
+    shared.withNotification('ci/test/ngx-docs-ui', "Test ngx-docs-ui") {
+      echo 'Testing ngx-docs-ui'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
       /*
@@ -74,9 +82,9 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
-  stage("Ivy Test Library") {
-    shared.withNotification('ci/test/library', "Unit Test Library") {
-      echo 'Running Unit Tests'
+  stage("Test ng-aquila") {
+    shared.withNotification('ci/test/ng-aquila', "Test ng-aquila") {
+      echo 'Testing ng-aquila'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
         /*
@@ -95,23 +103,23 @@ node('nodejs-with-browsers-v12') {
     }
   }
 
-  stage("Test schematics") {
-    shared.withNotification('ci/test/schematics', "Test schematics") {
+  stage("Test ng-aquila/schematics") {
+    shared.withNotification('ci/test/ng-aquila/schematics', "Test ng-aquila/schematics") {
+      echo 'Testing ng-aquila/schematics'
       sh 'npm run test:schematics'
     }
   }
 
-  stage("Ivy Build Library") {
-    shared.withNotification('ci/build/library', "Build Library") {
-      echo 'Building Library'
+  stage("Build ng-aquila") {
+    shared.withNotification('ci/build/ng-aquila', "Build ng-aquila") {
+      echo 'Building ng-aquila'
       sh 'npm run build:lib'
     }
   }
 
-  // build against the ivy artifacts
-  stage("Build documentation with Ivy artefacts") {
-    shared.withNotification('ci/build/documentation/ivy', "Build Documentation") {
-      echo "Building docs"
+  stage("Build documentation") {
+    shared.withNotification('ci/build/documentation', "Build documentation") {
+      echo "Building documentation"
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
       sh "npm run build:docs -- --no-progress"
