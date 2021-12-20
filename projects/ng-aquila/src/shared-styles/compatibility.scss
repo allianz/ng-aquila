@@ -10,8 +10,12 @@
     }
 }
 
-button[class*='nx-button--']:not([nxSidebarToggle]) {
+button[class*='nx-button--'] {
     margin: 0 0 24px;
+}
+
+[nxSidebarToggle] {
+    margin: 0;
 }
 
 .nx-card {
