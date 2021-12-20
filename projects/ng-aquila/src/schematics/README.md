@@ -21,7 +21,7 @@ schematics --help
 To publish, simply do:
 
 ```bash
-npm run build
+npm run build:docs
 npm publish
 ```
 
