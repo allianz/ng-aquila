@@ -18,6 +18,7 @@ export class NxFooterCopyrightDirective {}
     },
 })
 export class NxFooterNavigationDirective {}
+
 @Directive({
     selector: 'nx-footer-link',
     exportAs: 'NxFooterLink',

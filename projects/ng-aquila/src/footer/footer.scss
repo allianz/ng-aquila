@@ -1,19 +1,16 @@
 @import '../shared-styles/index';
 
-$padding-desktop-tablet: $grid-gutter-width-base;
-$padding-mobile: $grid-gutter-width-mobile;
-
 :host(.nx-footer) {
     @include type-style(footer);
     @include var(color, footer-color);
     display: flex;
     flex-direction: row;
     background: transparent;
-    padding: nx-spacer(2xl) $padding-desktop-tablet nx-spacer(m) $padding-desktop-tablet;
+    padding: v(footer-padding-top) $grid-gutter-width-base v(footer-padding-bottom) $grid-gutter-width-base;
 
     @include media-breakpoint-response(mobile) {
         flex-direction: column-reverse;
-        padding: nx-spacer(2xl) $padding-mobile nx-spacer(3m) $padding-mobile;
+        padding: v(footer-mobile-padding-top) $grid-gutter-width-mobile v(footer-mobile-padding-bottom) $grid-gutter-width-mobile;
     }
 }
 
