@@ -66,16 +66,13 @@ node('nodejs-with-browsers-v12') {
       echo 'Testing ngx-docs-ui'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
-      /*
-        The unit test will generate some report files
-        which we want to save in the jenkins job (junit log & coverage)
-      */
-      junit 'karma-test-results/ngx-docs-ui/*.xml'
+      // The unit test will generate some report files which we want to save in the jenkins job (junit log & coverage)
+      junit 'reports/ngx-docs-ui/junit/*.xml'
       publishHTML target: [
           allowMissing: false,
           alwaysLinkToLastBuild: false,
           keepAll: true,
-          reportDir: 'projects/ngx-docs-ui/coverage',
+          reportDir: 'reports/ngx-docs-ui/coverage',
           reportFiles: 'index.html',
           reportName: 'Coverage Report ngx-docs-ui (Istanbul)'
         ]
@@ -87,16 +84,13 @@ node('nodejs-with-browsers-v12') {
       echo 'Testing ng-aquila'
 
       sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
-        /*
-          The unit test will generate some report files
-          which we want to save in the jenkins job (junit log & coverage)
-        */
-      junit 'karma-test-results/ng-aquila/*.xml'
+      // The unit test will generate some report files which we want to save in the jenkins job (junit log & coverage)
+      junit 'reports/ng-aquila/junit/*.xml'
       publishHTML target: [
         allowMissing: false,
         alwaysLinkToLastBuild: false,
         keepAll: true,
-        reportDir: 'projects/ng-aquila/coverage',
+        reportDir: 'reports/ng-aquila/coverage',
         reportFiles: 'index.html',
         reportName: 'Coverage Report Aquila (Istanbul)'
       ]

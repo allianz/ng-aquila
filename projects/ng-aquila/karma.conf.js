@@ -8,11 +8,11 @@ module.exports = function (config) {
     config.set({
         ...baseConfig,
         coverageReporter: {
-            ...baseConfig.coverageReporter,
-            dir: require('path').join(__dirname, 'coverage'),
+            ...baseConfig.coverageIstanbulReporter,
+            dir: '../../reports/ng-aquila/coverage',
         },
         junitReporter: {
-            outputDir: '../../karma-test-results/ng-aquila',
+            outputDir: '../../reports/ng-aquila/junit',
         },
         files: [
             { pattern: '../../node_modules/@angular/cdk/overlay-prebuilt.css', watched: true, included: true, served: true },

@@ -18,8 +18,7 @@ speed-measure-plugin*.json
 **/*/documentation/generated/
 
 # karma generated junit test results
-**/karma-test-results
-**/coverage
+/reports
 
 # backstop
 /tests
