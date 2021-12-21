@@ -48,7 +48,7 @@ export class NxTableRowComponent {
     constructor(protected _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef) {}
 
     _onSelect($event: KeyboardEvent) {
-        if (!this._selectable || this.isActionEvent($event)) {
+        if (!this._selectable || this.isSelectionPrevented($event)) {
             return;
         }
 
@@ -60,10 +60,14 @@ export class NxTableRowComponent {
     }
 
     /**
-     * Checks if the event would trigger an action.
-     * Return `true` if a button, link, input or label are clicked.
+     * Checks if the event would trigger an action or if default action is prevented.
+     * Returns `true` if a button, link, input or label are clicked.
      */
-    private isActionEvent($event: Event) {
+    private isSelectionPrevented($event: Event) {
+        if ($event.defaultPrevented) {
+            return true;
+        }
+
         let parent: HTMLElement = $event.target as HTMLElement;
 
         while (parent && parent !== this._elementRef.nativeElement) {

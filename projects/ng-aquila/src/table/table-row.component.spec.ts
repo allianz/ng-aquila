@@ -4,6 +4,7 @@ import { NxTableModule } from './table.module';
 import { NxTableRowComponent } from './table-row.component';
 import { By } from '@angular/platform-browser';
 import { dispatchMouseEvent } from '../cdk-test-utils';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 
 @Directive()
 class TableRowTest {
@@ -32,7 +33,7 @@ describe(NxTableRowComponent.name, () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 declarations: [BasicTableRowComponent, SelectableTableRowComponent],
-                imports: [NxTableModule],
+                imports: [NxTableModule, NxDropdownModule],
             }).compileComponents();
         }),
     );
@@ -120,7 +121,7 @@ describe(NxTableRowComponent.name, () => {
             });
         });
 
-        ['a', 'button', 'input', 'label', 'textarea'].forEach(type => {
+        ['a', 'button', 'input', 'label', 'textarea', 'nx-dropdown', 'nx-multi-select .value'].forEach(type => {
             describe(`when clicking a "${type}" in the row`, () => {
                 beforeEach(() => {
                     tableRowElement.nativeElement.querySelector(type).click();
@@ -215,6 +216,14 @@ class BasicTableRowComponent extends TableRowTest {}
             <td>
                 <input id="input" type="text" />
                 <label for="input">example label</label>
+            </td>
+            <td>
+                <nx-dropdown>
+                    <nx-dropdown-item>1</nx-dropdown-item>
+                </nx-dropdown>
+            </td>
+            <td>
+                <nx-multi-select [options]="[1, 2, 3]"></nx-multi-select>
             </td>
             <td>
                 <button>example button</button>

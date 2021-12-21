@@ -91,7 +91,7 @@ export class NxDropdownSelectChange<T = any> {
         '(keydown)': '_handleKeydown($event)',
         '(focus)': '_onFocus()',
         '(blur)': '_onBlur()',
-        '(click)': 'openPanel()',
+        '(click)': 'openPanel($event)',
     },
 })
 export class NxDropdownComponent implements NxDropdownControl, ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy, DoCheck {
@@ -693,11 +693,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /** Opens the panel of the dropdown. */
-    openPanel() {
+    openPanel($event: Event) {
         if (this.disabled || !((this.dropdownItems && this.dropdownItems.length) || (this.options && this.options.length)) || this._panelOpen) {
             return;
         }
 
+        $event.preventDefault();
         this._panelOpen = true;
 
         setTimeout(() => {
@@ -901,7 +902,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         // Open the select on ALT + arrow key to match the native <select>
         if (isOpenKey || ((this.isMultiSelect || event.altKey) && isArrowKey)) {
             event.preventDefault(); // prevents the page from scrolling down when pressing space
-            this.openPanel();
+            this.openPanel(event);
         } else if (!this.isMultiSelect) {
             switch (keyCode) {
                 case DOWN_ARROW:

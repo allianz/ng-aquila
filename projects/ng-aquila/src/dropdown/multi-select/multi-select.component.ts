@@ -199,7 +199,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /** @docs-private */
     errorState: boolean = false;
 
-    _positions: ConnectionPositionPair[] = [];
+    _positions: ConnectionPositionPair[] = getPositions('auto', 0);
 
     _inputFocused = false;
 
