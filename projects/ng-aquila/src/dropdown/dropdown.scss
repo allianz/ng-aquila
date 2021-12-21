@@ -24,6 +24,12 @@ $dropdown-border-size: nx-border-size(xs);
     @include var(color, negative);
 }
 
+:host([aria-expanded='true']) {
+    .nx-dropdown__chevron {
+        transform: rotateZ(180deg);
+    }
+}
+
 .nx-dropdown__container {
     display: flex;
     justify-content: flex-end;
