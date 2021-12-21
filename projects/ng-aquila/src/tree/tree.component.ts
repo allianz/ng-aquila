@@ -366,17 +366,16 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
      */
     insertNode(nodeData: T, index: number, viewContainer?: ViewContainerRef, parentData?: T) {
         super.insertNode(nodeData, index, viewContainer, parentData);
+
         if (CdkTreeNode.mostRecentTreeNode) {
             this.insertToA11yNodeTracking(index, nodeData, CdkTreeNode.mostRecentTreeNode as CdkTreeNode<T>, parentData);
             CdkTreeNode.mostRecentTreeNode.focus();
         }
     }
+
     /**
-     * ⚠️ Here we override the method from cdk tree ⚠️
-     * Basically it's the copy-paste of current method in cdk codebase
-     * plus some extra method calls to update the a11y node tracking.
-     * If the method changes in cdk, our tree might break,
-     * because this method is crucial for rendering.
+     * ⚠️  Here we override the method from cdk tree ⚠️
+     * Adds some extra method calls to update the a11y node tracking.
      */
     renderNodeChanges(
         data: T[],
@@ -384,25 +383,21 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer,
         parentData?: T,
     ) {
+        super.renderNodeChanges(data, dataDiffer, viewContainer, parentData);
+
         const changes = dataDiffer.diff(data);
+
         if (!changes) {
             return;
         }
+
         changes.forEachOperation((item: IterableChangeRecord<T>, adjustedPreviousIndex: number | null, currentIndex: number | null) => {
-            if (item.previousIndex == null && currentIndex !== null) {
-                this.insertNode(data[currentIndex], currentIndex, viewContainer, parentData);
-            } else if (currentIndex == null) {
-                viewContainer.remove(adjustedPreviousIndex as number);
-                this['_levels'].delete(item.item);
+            if (currentIndex == null) {
                 this.removeFromA11yNodeTracking(adjustedPreviousIndex as number, parentData);
-            } else {
-                const view = viewContainer.get(adjustedPreviousIndex as number);
-                viewContainer.move(view!, currentIndex);
+            } else if (item.previousIndex !== null) {
                 this.moveInA11yNodeTracking(adjustedPreviousIndex as number, currentIndex, parentData);
             }
         });
-
-        this._wrapperChangeDetectorRef.detectChanges();
     }
 
     /**
