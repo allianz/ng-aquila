@@ -54,12 +54,11 @@ const TEST_TEMPLATE_FILES = [
 
 const TAGS: string[] = ['aposin', 'aquila', 'example'];
 const angularVersion = '^13.0.0';
-const materialVersion = '^13.0.0';
 const aquilaVersion = '^13.0.0-next.0';
 
 const dependencies = {
     '@angular/animations': angularVersion,
-    '@angular/cdk': materialVersion,
+    '@angular/cdk': angularVersion,
     '@angular/common': angularVersion,
     '@angular/compiler': angularVersion,
     '@angular/core': angularVersion,
@@ -84,7 +83,7 @@ const dependencies = {
 };
 
 const testDependencies = {
-    '@angular/cdk': materialVersion,
+    '@angular/cdk': angularVersion,
     '@angular/animations': angularVersion,
     '@angular/common': angularVersion,
     '@angular/compiler': angularVersion,
@@ -95,9 +94,9 @@ const testDependencies = {
     '@angular/router': angularVersion,
     '@aposin/ng-aquila': aquilaVersion,
     '@fortawesome/fontawesome-free': '^5.15.4',
-    '@types/jasmine': '^3.8.2',
+    '@types/jasmine': '^3.10.2',
     jasmine: '^3.10.0',
-    'jasmine-core': '^3.6.0',
+    'jasmine-core': '^3.10.1',
     chalk: '^4.1.2',
     'core-js': '^3.18.3',
     dayjs: '^1.10.7',
