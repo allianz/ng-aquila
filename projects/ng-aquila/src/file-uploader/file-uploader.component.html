@@ -9,17 +9,17 @@
     [attr.disabled]="disabled || null"
     [attr.accept]="accept"
     (change)="_onFileChange($event)"
+    [id]="_inputId"
 />
 <ng-container *ngIf="value">
-    <div class="nx-file-uploader--file-list nx-margin-bottom-m" role="listbox">
+    <div class="nx-file-uploader--file-list nx-margin-bottom-m" role="list" [attr.aria-labelledby]="_labelId">
         <div
             #fileRowElement
             class="nx-file-uploader--file-row"
             [class.nx-file-uploader--file-state-uploading]="file.isUploading"
             [class.nx-file-uploader--default-template]="!_itemTemplate"
             *ngFor="let file of value"
-            role="option"
-            tabindex="0"
+            role="listitem"
             (keydown)="_handleKeydownListRow($event)"
         >
             <ng-container

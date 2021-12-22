@@ -108,6 +108,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     private _controlValidators: ValidatorFn | null = null;
     private _uploader!: NxFileUploader;
     private _maxFileNumber: number | null = null;
+    _inputId: string = `${this.id}-input`;
+    _labelId: string = `${this.id}-label`;
     _itemTemplate!: TemplateRef<any>;
     _templateContext;
 
@@ -367,7 +369,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
 
         if (this._label) {
-            this._label.id = this.id + '_label';
+            this._label.for = this._inputId;
+            this._label.id = this._labelId;
         }
 
         subscription = this.stateChanges.subscribe(() => {

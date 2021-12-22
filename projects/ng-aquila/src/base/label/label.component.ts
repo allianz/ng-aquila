@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Optional, Inject, InjectionToken } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Optional, Inject, InjectionToken, ChangeDetectorRef } from '@angular/core';
 import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs';
 
@@ -21,11 +21,9 @@ export const LABEL_DEFAULT_OPTIONS = new InjectionToken<LabelDefaultOptions>('LA
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.disabled]': 'disabled',
-        '[attr.aria-labelledby]': 'id || null',
         '[class.nx-label--negative]': 'negative',
         '[class.nx-label--large]': 'size === "large"',
         '[class.nx-label--small]': 'size === "small"',
-        '[attr.id]': 'id',
     },
 })
 export class NxLabelComponent {
@@ -33,6 +31,8 @@ export class NxLabelComponent {
     private _disabled: boolean = false;
     private _negative: boolean = false;
     private _size: LABEL_SIZE_TYPE | undefined;
+    private _for: string | null = null;
+    private _id: string = `nx-label-${nextId++}`;
 
     /** Sets the label to disabled */
     @Input()
@@ -56,13 +56,10 @@ export class NxLabelComponent {
         return this._negative;
     }
 
-    private _id: string = `nx-label-${nextId++}`;
     /** Sets the Id of the label */
     @Input()
     set id(value: string) {
-        if (this._id !== value) {
-            this._id = value;
-        }
+        this._id = value;
     }
 
     get id(): string {
@@ -82,7 +79,20 @@ export class NxLabelComponent {
         return this._size || (this._defaultOptions && this._defaultOptions.size) || DEFAULT_SIZE;
     }
 
-    constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions) {}
+    /**
+     * Sets the html `for` attribute on the label.
+     */
+    @Input()
+    set for(value: string | null) {
+        this._for = value;
+        this._changeDetectorRef.markForCheck();
+        this._stateChanges.next();
+    }
+    get for() {
+        return this._for;
+    }
+
+    constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions, private _changeDetectorRef: ChangeDetectorRef) {}
 
     static ngAcceptInputType_disabled: BooleanInput;
     static ngAcceptInputType_negative: BooleanInput;

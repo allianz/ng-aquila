@@ -222,7 +222,7 @@ describe('NxCheckboxGroupComponent', () => {
 @Component({
     template: `
         <nx-checkbox-group name="terms">
-            <nx-label id="'terms-label'">Accept terms</nx-label>
+            <nx-label [id]="'terms-label'">Accept terms</nx-label>
             <nx-checkbox>Term 1</nx-checkbox>
             <nx-checkbox>Term 2</nx-checkbox>
             <nx-checkbox>Term 3</nx-checkbox>

@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Component, Type, ViewChild, Directive } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { NxFileUploaderModule } from './file-uploader.module';
@@ -6,8 +6,6 @@ import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FileItem } from './file-uploader.model';
-import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { DOWN_ARROW, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { HttpClientModule } from '@angular/common/http';
 
 @Directive()
@@ -46,7 +44,7 @@ describe('NxFileUploaderComponent', () => {
     function createAndAddFile(name: string, type: string) {
         let fakeFile = new File(['3555'], name, { type });
         fakeFile = Object.defineProperty(fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
-        const fileList = { 0: fakeFile, length: 1, item: (index: number) => fakeFile };
+        const fileList = { 0: fakeFile, length: 1, item: () => fakeFile };
         fileUploaderInstance._onFileChange({ type: 'change', target: { files: fileList } });
         fixture.detectChanges();
     }
@@ -182,7 +180,7 @@ describe('NxFileUploaderComponent', () => {
                 0: fakeFile,
                 1: fakeFile,
                 length: 2,
-                item: (index: number) => fakeFile,
+                item: () => fakeFile,
             };
 
             fileUploaderInstance._onFileChange({
@@ -208,7 +206,7 @@ describe('NxFileUploaderComponent', () => {
                 0: fakeFile,
                 1: fakeFile,
                 length: 2,
-                item: (index: number) => fakeFile,
+                item: () => fakeFile,
             };
 
             fileUploaderInstance._onFileChange({
@@ -251,7 +249,7 @@ describe('NxFileUploaderComponent', () => {
             const fileList = {
                 0: fakeFile,
                 length: 1,
-                item: (index: number) => fakeFile,
+                item: () => fakeFile,
             };
 
             fileUploaderInstance._onFileChange({
@@ -284,7 +282,7 @@ describe('NxFileUploaderComponent', () => {
                 0: fakeFile,
                 1: fakeFile,
                 length: 2,
-                item: (index: number) => fakeFile,
+                item: () => fakeFile,
             };
 
             fileUploaderInstance._onFileChange({
@@ -409,44 +407,6 @@ describe('NxFileUploaderComponent', () => {
         });
     });
 
-    describe('keyboard support', () => {
-        it('should move over the file list', fakeAsync(() => {
-            createTestComponent(ReactiveFileUpload);
-
-            let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
-            fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
-            const fileList = {
-                0: fakeFile,
-                1: fakeFile,
-                2: fakeFile,
-                3: fakeFile,
-                length: 4,
-                item: (index: number) => fakeFile,
-            };
-
-            fileUploaderInstance._onFileChange({
-                type: 'change',
-                target: {
-                    files: fileList,
-                },
-            });
-            fixture.detectChanges();
-            const fileRowList = fixture.nativeElement.querySelectorAll('.nx-file-uploader--file-row') as HTMLElement[];
-            tick();
-            fileRowList[0].focus();
-
-            dispatchKeyboardEvent(fileRowList[0], 'keydown', DOWN_ARROW);
-            expect(document.activeElement).toEqual(fileRowList[1]);
-
-            dispatchKeyboardEvent(fileRowList[1], 'keydown', UP_ARROW);
-            expect(document.activeElement).toEqual(fileRowList[0]);
-
-            dispatchKeyboardEvent(fileRowList[0], 'keydown', TAB);
-            expect(document.activeElement).toEqual(fileRowList[0]);
-            flush();
-        }));
-    });
-
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(BasicFileUpload);
@@ -463,8 +423,8 @@ describe('NxFileUploaderComponent', () => {
             tick();
             fixture.detectChanges();
 
-            expect(ariaDescribedBy).toContain(hintElement.getAttribute('id'));
-            expect(ariaDescribedBy).toContain(labelElm.getAttribute('id'));
+            expect(ariaDescribedBy).toContain(hintElement.id);
+            expect(ariaDescribedBy).toContain(labelElm.id);
         }));
 
         it('should set described by with the error ids', fakeAsync(() => {
@@ -491,14 +451,16 @@ describe('NxFileUploaderComponent', () => {
 
 @Component({
     template: `
-        <nx-file-uploader>
-            <nx-label>Required file to upload</nx-label>
-            <span nxFileUploadHint>All files are accepted</span>
-            <button nxButton="primary" type="button" nxFileUploadButton>
-                <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
-                Add Files
-            </button>
-        </nx-file-uploader>
+        <form>
+            <nx-file-uploader>
+                <nx-label>Required file to upload</nx-label>
+                <span nxFileUploadHint>All files are accepted</span>
+                <button nxButton="primary" type="button" nxFileUploadButton>
+                    <nx-icon name="download" class="nx-margin-right-2xs"></nx-icon>
+                    Add Files
+                </button>
+            </nx-file-uploader>
+        </form>
     `,
 })
 class BasicFileUpload extends FileUploaderTest {
