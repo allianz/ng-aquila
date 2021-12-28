@@ -6,15 +6,9 @@
             <span class="docs-api-method-name">
                 {%- if method.isDeprecated -%}
                 <div class="docs-api-deprecated-marker" {$ macros.deprecationTitle(method) $}> Deprecated </div>
-                {%- endif -%} {$ method.name $}(<!--
-     -->{%- if method.params.length -%}<!--
-       -->{% for parameter in method.params %}<!--
-         -->{$ parameter.name $} {%- if parameter.type %}: <span class="docs-api-property__type">{$ parameter.type $}</span
-                ><!--
-         -->{%- endif %}<!--
-         -->{%- if not loop.last %}, {%- endif %}<!--
-       -->{% endfor %}<!--
-       -->{%- endif %}) {%- if method.type and method.type !== "void" -%} : <span class="docs-api-method-returns-type">{$ method.type $}</span>
+                {%- endif -%} {$ method.name $}({%- if method.params.length -%}{% for parameter in method.params %}{$ parameter.name $} {%- if parameter.type
+                %}: <span class="docs-api-property__type">{$ parameter.type $}</span>{%- endif %}{%- if not loop.last %}, {%- endif %}{% endfor %}{%- endif %})
+                {%- if method.type and method.type !== "void" -%} : <span class="docs-api-method-returns-type">{$ method.type $}</span>
                 {%- endif -%}
             </span>
         </code>

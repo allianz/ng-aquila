@@ -10,10 +10,18 @@
             "projectType": "library",
             "prefix": "nx",
             "schematics": {
-                "@schematics/angular:component": { "skipTests": false },
-                "@schematics/angular:directive": { "skipTests": false },
-                "@schematics/angular:pipe": { "skipTests": false },
-                "@schematics/angular:service": { "skipTests": false }
+                "@schematics/angular:component": {
+                    "skipTests": false
+                },
+                "@schematics/angular:directive": {
+                    "skipTests": false
+                },
+                "@schematics/angular:pipe": {
+                    "skipTests": false
+                },
+                "@schematics/angular:service": {
+                    "skipTests": false
+                }
             },
             "architect": {
                 "build": {
@@ -172,24 +180,53 @@
         }
     },
     "schematics": {
-        "@schematics/angular:component": { "skipTests": true, "changeDetection": "OnPush", "style": "scss" },
-        "@schematics/angular:directive": { "skipTests": true },
-        "@schematics/angular:pipe": { "skipTests": true },
-        "@schematics/angular:service": { "skipTests": true },
-        "@schematics/angular:interceptor": { "skipTests": true },
-        "@schematics/angular:resolver": { "skipTests": true },
-        "@schematics/angular:guard": { "skipTests": true },
-        "@schematics/angular:module": { "skipTests": true },
-        "@schematics/angular:application": { "skipTests": true, "prefix": "nx", "style": "scss" },
-        "@schematics/angular:library": { "prefix": "nx" },
-        "@schematics/angular:class": { "skipTests": true, "type": "models" },
-        "@schematics/angular:enum": { "type": "models" },
-        "@schematics/angular:interface": { "type": "models" }
+        "@schematics/angular:component": {
+            "skipTests": true,
+            "changeDetection": "OnPush",
+            "style": "scss"
+        },
+        "@schematics/angular:directive": {
+            "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+            "skipTests": true
+        },
+        "@schematics/angular:service": {
+            "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+            "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+            "skipTests": true
+        },
+        "@schematics/angular:guard": {
+            "skipTests": true
+        },
+        "@schematics/angular:module": {
+            "skipTests": true
+        },
+        "@schematics/angular:application": {
+            "skipTests": true,
+            "style": "scss"
+        },
+        "@schematics/angular:class": {
+            "skipTests": true,
+            "type": "models"
+        },
+        "@schematics/angular:enum": {
+            "type": "models"
+        },
+        "@schematics/angular:interface": {
+            "type": "models"
+        }
     },
     "cli": {
         "defaultCollection": "@schematics/angular",
         "packageManager": "npm",
         "analytics": false,
-        "warnings": { "versionMismatch": false }
+        "warnings": {
+            "versionMismatch": false
+        }
     }
 }

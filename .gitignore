@@ -8,21 +8,11 @@
 /bazel-out
 
 # dependencies
-**/node_modules
+/node_modules
 
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
-
-# ignore cli generated files
-**/*/documentation/generated/
-
-# karma generated junit test results
-/reports
-
-# backstop
-/tests
-
 
 # IDEs and editors
 /.idea
@@ -56,5 +46,13 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Component specific
-projects/ng-aquila/src/phone-input/metadata.json
+# ==== CUSTOM ====
+
+# karma test results
+/reports
+
+# ngx-docs-cli generated files
+/projects/ng-aquila/documentation/generated
+
+# component-specific
+/projects/ng-aquila/src/phone-input/metadata.json

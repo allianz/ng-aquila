@@ -1,14 +1,14 @@
 {% import "macros.html" as macros %}
 
 <h4 id="{$ class.name $}" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="{$ class.name $}"></span>
-  <code>{$ class.name $}</code>
-  {%- if class.extendedDoc -%}
-  <span class="docs-api-class-extends-clauses">
-    <span class="docs-api-class-extends-label">extends</span>
-    <span class="docs-api-class-extends-type">{$ class.extendedDoc.text $}</span>
-  </span>
-  {%- endif -%}
+    <span header-link="{$ class.name $}"></span>
+    <code>{$ class.name $}</code>
+    {%- if class.extendedDoc -%}
+    <span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">{$ class.extendedDoc.text $}</span>
+    </span>
+    {%- endif -%}
 </h4>
 
 {%- if class.description -%}
@@ -17,11 +17,11 @@
 
 {%- if class.directiveSelectors -%}
 <p class="docs-api-directive-selectors">
-  <span class="docs-api-class-selector-label">Selector:</span>
+    <span class="docs-api-class-selector-label">Selector:</span>
     <div class="docs-api__selector-container">
-      {% for selector in class.directiveSelectors %}
+        {% for selector in class.directiveSelectors %}
         <span class="docs-api-class-selector-name">{$ selector $}</span>
-      {% endfor %}
+        {% endfor %}
     </div>
 </p>
 {%- endif -%}
@@ -33,7 +33,7 @@
 
 {%- if class.isDeprecated -%}
 <div class="docs-api-class-deprecated-marker" {$ macros.deprecationTitle(class) $}>
-  Deprecated
+    Deprecated
 </div>
 {%- endif -%}
 
