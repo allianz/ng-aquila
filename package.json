@@ -13,6 +13,7 @@
         "build:lib": "npm run ng-high-memory -- build ng-aquila --configuration production && npm run build:package",
         "build:docs": "npm run ng-high-memory -- build opensource-documentation --configuration production",
         "postinstall": "node projects/ng-aquila/src/phone-input/extract-calling-codes.js",
+        "prepare": "husky install",
         "test:lib": "npm run build:package && npm run test -- ng-aquila",
         "test:schematics": "npm run build:package && npm run test:schematics:jasmine",
         "test:schematics:jasmine": "jasmine --config=projects/ng-aquila/src/schematics/test/jasmine.json",
@@ -24,12 +25,6 @@
     "repository": {
         "type": "git",
         "url": "https://www.github.com/aposin/ng-aquila.git"
-    },
-    "husky": {
-        "hooks": {
-            "commit-msg": "commitlint -e",
-            "pre-commit": "lint-staged --relative && pretty-quick --staged"
-        }
     },
     "private": true,
     "dependencies": {
