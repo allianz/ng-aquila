@@ -11,7 +11,6 @@ import { NxOverlayService } from './overlay-service';
     imports: [OverlayModule, A11yModule, PortalModule, RouterModule],
     exports: [NxOverlayContainerComponent, OverlayModule],
     declarations: [NxOverlayContainerComponent],
-    entryComponents: [NxOverlayContainerComponent],
     providers: [NxOverlayService, NxOverlayPositionBuilder],
 })
 export class NxOverlayModule {}

@@ -34,7 +34,6 @@ import { NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER } from './dialog/dia
         NxModalCloseDirective,
     ],
     providers: [NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER],
-    entryComponents: [NxModalContainer],
 })
 export class NxModalModule {
     // define the modal service on root level as an application wide singleton,

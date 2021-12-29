@@ -46,6 +46,5 @@ import { NxYearViewComponent } from './datepicker/year-view';
         NxMultiYearViewComponent,
         NxYearViewComponent,
     ],
-    entryComponents: [NxDatepickerContentComponent],
 })
 export class NxDatefieldModule {}

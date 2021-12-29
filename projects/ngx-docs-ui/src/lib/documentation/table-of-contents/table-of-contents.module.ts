@@ -7,6 +7,5 @@ import { RouterModule } from '@angular/router';
     imports: [CommonModule, RouterModule],
     declarations: [NxvTableOfContentsComponent],
     exports: [NxvTableOfContentsComponent],
-    entryComponents: [NxvTableOfContentsComponent],
 })
 export class NxvTableOfContentsModule {}

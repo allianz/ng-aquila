@@ -11,6 +11,5 @@ import { NxMessageBannerComponent } from './message-banner/message-banner.compon
     imports: [CommonModule, NxIconModule, OverlayModule, PortalModule],
     declarations: [NxMessageComponent, NxMessageToastComponent, NxMessageBannerComponent],
     exports: [NxMessageComponent, NxMessageBannerComponent],
-    entryComponents: [NxMessageToastComponent],
 })
 export class NxMessageModule {}

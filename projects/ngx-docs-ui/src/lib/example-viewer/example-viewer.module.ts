@@ -34,6 +34,5 @@ import { StackBlitzButtonModule } from './../stack-blitz/stack-blitz-button';
     exports: [ExampleViewerComponent],
     declarations: [ExampleViewerComponent],
     providers: [CopyService],
-    entryComponents: [],
 })
 export class ExampleViewerModule {}

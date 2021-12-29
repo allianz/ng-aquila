@@ -188,6 +188,5 @@ class PlainComponent {}
     imports: [NxOverlayModule, NxButtonModule],
     exports: [ComponentWithTemplateRef, PlainComponent],
     declarations: [ComponentWithTemplateRef, PlainComponent],
-    entryComponents: [ComponentWithTemplateRef, PlainComponent],
 })
 class OverlayTestModule {}

@@ -10,6 +10,5 @@ import { NxTooltipDirective } from './tooltip.directive';
     imports: [A11yModule, CommonModule, OverlayModule],
     exports: [NxTooltipDirective, NxTooltipComponent],
     declarations: [NxTooltipDirective, NxTooltipComponent],
-    entryComponents: [NxTooltipComponent],
 })
 export class NxTooltipModule {}

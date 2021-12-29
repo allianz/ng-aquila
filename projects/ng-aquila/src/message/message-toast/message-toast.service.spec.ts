@@ -339,6 +339,5 @@ class ComponentProvidingService {
     imports: [CommonModule, NxMessageModule],
     exports: [BasicMessageToastTest, ComponentWithTemplateRef],
     declarations: [BasicMessageToastTest, ComponentWithTemplateRef],
-    entryComponents: [BasicMessageToastTest],
 })
 class NxMessageToastTestModule {}

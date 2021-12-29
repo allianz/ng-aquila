@@ -10,6 +10,5 @@ import { ExampleLoaderComponent } from './example-loader.component';
     exports: [ExampleLoaderComponent, ExampleViewerModule],
     declarations: [ExampleLoaderComponent],
     providers: [],
-    entryComponents: [ExampleViewerComponent],
 })
 export class ExampleLoaderModule {}

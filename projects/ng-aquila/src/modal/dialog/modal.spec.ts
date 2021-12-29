@@ -1662,13 +1662,5 @@ const TEST_DIRECTIVES = [
     imports: [NxModalModule, NoopAnimationsModule],
     exports: TEST_DIRECTIVES,
     declarations: TEST_DIRECTIVES,
-    entryComponents: [
-        ComponentWithChildViewContainer,
-        ComponentWithTemplateRef,
-        PizzaMsg,
-        ContentElementDialog,
-        DialogWithInjectedData,
-        DialogWithoutFocusableElements,
-    ],
 })
 class DialogTestModule {}

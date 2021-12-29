@@ -9,6 +9,5 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
     imports: [RouterModule, NxButtonModule, NxvLazyExampleOutletModule, CommonModule],
     exports: [ExampleFullScreenComponent],
     declarations: [ExampleFullScreenComponent],
-    entryComponents: [ExampleFullScreenComponent],
 })
 export class ExampleFullScreenModule {}
