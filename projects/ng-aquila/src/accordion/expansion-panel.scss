@@ -62,10 +62,6 @@
 
 // Styles of the light version
 :host(.nx-expansion-panel--light) {
-    @include media-breakpoint-down(small) {
-        margin: 0 nx-spacer(s);
-    }
-
     .nx-expansion-panel__body {
         padding: v(accordion-light-body-padding);
 
