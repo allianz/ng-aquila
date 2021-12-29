@@ -10,12 +10,14 @@ import {
     Input,
     OnDestroy,
     OnInit,
+    AfterViewInit,
     Optional,
     Output,
     QueryList,
     ViewChild,
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
+import { delay, takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableBase } from './comparison-table-base';
@@ -34,7 +36,7 @@ import { NxToggleSectionDirective } from './toggle-section/toggle-section.direct
     animations: [NxToggleSectionAnimations.bodyExpansion],
     providers: [{ provide: NxComparisonTableBase, useExisting: NxComparisonTableComponent }],
 })
-export class NxComparisonTableComponent extends NxComparisonTableBase implements OnInit, OnDestroy {
+export class NxComparisonTableComponent extends NxComparisonTableBase implements OnInit, AfterViewInit, OnDestroy {
     // Attention: this contains all rows and toggle sections, AND all rows contained in a toggle section!
     /** @docs-private */
     @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
@@ -103,8 +105,16 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         setTimeout(() => this._updateCellClipping());
     }
 
+    ngAfterViewInit() {
+        this._getHeaderRow()
+            ?._requestCellClippingUpdate$.pipe(delay(0), takeUntil(this._destroyed))
+            .subscribe(() => this._updateCellClipping());
+    }
+
     ngOnDestroy() {
         window.removeEventListener('scroll', this._scrollHandler, true);
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     private _scrollHandler = (event: Event): void => {

@@ -566,6 +566,26 @@ describe('NxComparisonTableComponent', () => {
             expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
         }));
 
+        it('should update clipping-path when header row requests it', fakeAsync(() => {
+            createTestComponent(LongPageWithTableComponent);
+            tick(THROTTLE_TIME);
+
+            const wrapperDiv = fixture.debugElement.query(By.css('div'));
+            wrapperDiv.nativeElement.scrollTop = 50;
+            tableInstance._getHeaderRow()._requestCellClippingUpdate$.next(undefined);
+            tick();
+            fixture.detectChanges();
+            const tableBody = fixture.debugElement.query(By.css('.nx-comparison-table__table-body'));
+            const regex = /^inset\((.*)px -12px -1px\)$/;
+            expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeGreaterThan(0);
+
+            wrapperDiv.nativeElement.scrollTop = 0;
+            tableInstance._getHeaderRow()._requestCellClippingUpdate$.next(undefined);
+            tick();
+            fixture.detectChanges();
+            expect(parseInt(regex.exec(tableBody.styles['clip-path'] as string)![1], 10)).toBeLessThanOrEqual(0);
+        }));
+
         afterEach(() => {
             viewport.reset();
         });

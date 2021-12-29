@@ -84,6 +84,20 @@ describe('NxComparisonTableRowDirective', () => {
 
             expect(rowInstances.toArray()[0].mayStick).toBe(false);
         });
+
+        it('should request a cell clipping update on changes to mayStick', () => {
+            createTestComponent(NonStickyHeaderComponent);
+            let emitCount = 0;
+            rowInstances.toArray()[0]._requestCellClippingUpdate$.subscribe(() => emitCount++);
+
+            (testInstance as NonStickyHeaderComponent).mayStick = true;
+            fixture.detectChanges();
+            expect(emitCount).toBe(1);
+
+            (testInstance as NonStickyHeaderComponent).mayStick = false;
+            fixture.detectChanges();
+            expect(emitCount).toBe(2);
+        });
     });
 });
 
@@ -127,7 +141,7 @@ class DynamicTypeComponent extends RowTest {}
 @Component({
     template: `
         <nx-comparison-table>
-            <ng-container nxComparisonTableRow type="header" [mayStick]="false">
+            <ng-container nxComparisonTableRow type="header" [mayStick]="mayStick">
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">This is a header cell</nx-comparison-table-cell>
             </ng-container>
@@ -138,4 +152,6 @@ class DynamicTypeComponent extends RowTest {}
         </nx-comparison-table>
     `,
 })
-class NonStickyHeaderComponent extends RowTest {}
+class NonStickyHeaderComponent extends RowTest {
+    mayStick = false;
+}

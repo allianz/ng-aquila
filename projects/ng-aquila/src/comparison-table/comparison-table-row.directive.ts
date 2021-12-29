@@ -34,6 +34,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
 
     private _type: NxComparisonTableRowType = 'content';
     private _mayStick: boolean = true;
+    public _requestCellClippingUpdate$ = new Subject<void>();
 
     private _destroyed = new Subject();
 
@@ -52,6 +53,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     set mayStick(newValue: boolean) {
         if (newValue !== this._mayStick) {
             this._mayStick = coerceBooleanProperty(newValue);
+            this._requestCellClippingUpdate$.next(undefined);
         }
     }
     get mayStick(): boolean {
