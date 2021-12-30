@@ -44,7 +44,8 @@ export class MessageExamplesModule {
             'message-error': MessageErrorExampleComponent,
             'message-info': MessageInfoExampleComponent,
             'message-success': MessageSuccessExampleComponent,
-            'message-toast-custom-settings': MessageToastCustomSettingsExampleComponent,
+            'message-toast-custom-settings':
+                MessageToastCustomSettingsExampleComponent,
             'message-toast-opening': MessageToastOpeningExampleComponent,
             'message-warning': MessageWarningExampleComponent,
         };

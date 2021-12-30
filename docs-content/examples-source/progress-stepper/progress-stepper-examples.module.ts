@@ -53,12 +53,18 @@ export class ProgressExamplesModule {
             'progress-stepper-custom': ProgressStepperCustomExampleComponent,
             'progress-stepper-form': ProgressStepperFormExampleComponent,
             'progress-stepper-multi': ProgressStepperMultiExampleComponent,
-            'progress-stepper-multi-groups': ProgressStepperMultiGroupsExampleComponent,
-            'progress-stepper-multi-vertical': ProgressStepperMultiVerticalExampleComponent,
-            'progress-stepper-nonlinear': ProgressStepperNonlinearExampleComponent,
-            'progress-stepper-progress': ProgressStepperProgressExampleComponent,
-            'progress-stepper-reactivemulti': ProgressStepperReactivemultiExampleComponent,
-            'progress-stepper-reactivesingle': ProgressStepperReactivesingleExampleComponent,
+            'progress-stepper-multi-groups':
+                ProgressStepperMultiGroupsExampleComponent,
+            'progress-stepper-multi-vertical':
+                ProgressStepperMultiVerticalExampleComponent,
+            'progress-stepper-nonlinear':
+                ProgressStepperNonlinearExampleComponent,
+            'progress-stepper-progress':
+                ProgressStepperProgressExampleComponent,
+            'progress-stepper-reactivemulti':
+                ProgressStepperReactivemultiExampleComponent,
+            'progress-stepper-reactivesingle':
+                ProgressStepperReactivesingleExampleComponent,
             'progress-stepper-step': ProgressStepperStepExampleComponent,
             'progress-stepper-title': ProgressStepperTitleExampleComponent,
         };

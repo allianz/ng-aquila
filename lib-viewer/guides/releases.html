@@ -1,4 +1,26 @@
 <h1 class="docs-markdown--h1" id="releases-und-updating">Releases und updating</h1>
+<h2 class="docs-markdown--h2" id="updating-to-version-13">Updating to version 13</h2>
+<p class="docs-markdown--p">With v13, we are upgrading to <a href="https://blog.angular.io/angular-v13-is-now-available-cce66f7bc296">Angular 13</a>. In most cases the following command should do the Angular update for you:</p>
+<p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
+<p class="docs-markdown--p">Then it should be easy to update Aquila with the following command:</p>
+<p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
+<p class="docs-markdown--p"><strong>Important:</strong></p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li">With this release we are dropping support of Internet Explorer and removing all the code that was meant to support IE-only functionality and fix its issues. Make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using LTS v12.</li>
+<li class="docs-markdown--li">Following Angular development, the library is now distributed in ivy partial compilation mode.</li>
+</ul>
+<h3 class="docs-markdown--h3" id="breaking-changes">Breaking Changes</h3>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>footer:</strong> spacing - to restore previous values, override the following new variables:
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><code>footer-padding-top: 24px</code> (retail only)</li>
+<li class="docs-markdown--li"><code>footer-padding-bottom: 72px</code></li>
+<li class="docs-markdown--li"><code>footer-mobile-padding-top: 40px</code> (retail only)</li>
+<li class="docs-markdown--li"><code>footer-mobile-padding-bottom: 72px</code></li>
+</ul>
+</li>
+</ul>
+<p class="docs-markdown--p"><strong>We are not providing automatic updates for these breaking changes.</strong></p>
 <h2 class="docs-markdown--h2" id="updating-to-version-12">Updating to version 12</h2>
 <p class="docs-markdown--p">With v12, we are upgrading to <a href="https://blog.angular.io/angular-v12-is-now-available-32ed51fbfd49">Angular 12</a>. To update your Angular installation please check the respective <a href="https://angular.io/guide/updating-to-version-12">update guide</a>. In most cases the following command should do the update:</p>
 <p class="docs-markdown--p"><code>ng update @angular/cli @angular/core</code></p>
@@ -11,7 +33,7 @@
 <p class="docs-markdown--p"><code>ng update @aposin/ng-aquila --force</code></p>
 <p class="docs-markdown--p"><strong>Important:</strong> The visual padding of the Accordion component changes with this update in accordance with the design guidelines. <strong>We are not providing an automatic update for this breaking change.</strong></p>
 <h2 class="docs-markdown--h2" id="updating-to-version-11">Updating to version 11</h2>
-<h3 class="docs-markdown--h3" id="breaking-changes">Breaking Changes</h3>
+<h3 class="docs-markdown--h3" id="breaking-changes-1">Breaking Changes</h3>
 <p class="docs-markdown--p">With v11 there are some breaking changes:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">

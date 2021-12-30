@@ -372,6 +372,70 @@
       "stable": "progress"
     },
     {
+      "id": "badge",
+      "title": "Badge",
+      "examples": [
+        {
+          "name": "badge",
+          "config": {}
+        },
+        {
+          "name": "badge-vibrant",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/badge.html",
+      "overviewFile": "lib-viewer/overview/badge.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "base",
+      "title": "Base Components",
+      "examples": [
+        {
+          "name": "error",
+          "config": {}
+        },
+        {
+          "name": "label",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/base.html",
+      "overviewFile": "lib-viewer/overview/base.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "breadcrumb",
+      "title": "Breadcrumb",
+      "examples": [
+        {
+          "name": "breadcrumb",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-link",
+          "config": {}
+        },
+        {
+          "name": "breadcrumb-negative",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/breadcrumb.html",
+      "overviewFile": "lib-viewer/overview/breadcrumb.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "button",
       "title": "Button",
       "examples": [
@@ -476,58 +540,6 @@
       "stable": "done"
     },
     {
-      "id": "circle-toggle",
-      "title": "Circle Toggle",
-      "examples": [
-        {
-          "name": "circle-toggle-standalone",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-group",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-responsive",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-text",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-negative",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-group-expert",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-simple-binding",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-template-driven",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "circle-toggle-reactive-disabled",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/circle-toggle.html",
-      "overviewFile": "lib-viewer/overview/circle-toggle.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "checkbox",
       "title": "Checkbox",
       "examples": [
@@ -591,6 +603,58 @@
       "category": "components",
       "apiFile": "lib-viewer/api/checkbox.html",
       "overviewFile": "lib-viewer/overview/checkbox.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "circle-toggle",
+      "title": "Circle Toggle",
+      "examples": [
+        {
+          "name": "circle-toggle-standalone",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-responsive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-text",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-group-expert",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-simple-binding",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-template-driven",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "circle-toggle-reactive-disabled",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/circle-toggle.html",
+      "overviewFile": "lib-viewer/overview/circle-toggle.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -804,46 +868,6 @@
       "stable": "done"
     },
     {
-      "id": "badge",
-      "title": "Badge",
-      "examples": [
-        {
-          "name": "badge",
-          "config": {}
-        },
-        {
-          "name": "badge-vibrant",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/badge.html",
-      "overviewFile": "lib-viewer/overview/badge.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "base",
-      "title": "Base Components",
-      "examples": [
-        {
-          "name": "error",
-          "config": {}
-        },
-        {
-          "name": "label",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/base.html",
-      "overviewFile": "lib-viewer/overview/base.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "datefield",
       "title": "Date Field",
       "examples": [
@@ -915,30 +939,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/datefield.html",
       "overviewFile": "lib-viewer/overview/datefield.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "breadcrumb",
-      "title": "Breadcrumb",
-      "examples": [
-        {
-          "name": "breadcrumb",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-link",
-          "config": {}
-        },
-        {
-          "name": "breadcrumb-negative",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/breadcrumb.html",
-      "overviewFile": "lib-viewer/overview/breadcrumb.html",
       "b2c": true,
       "expert": true,
       "stable": "done"

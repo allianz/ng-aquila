@@ -60,12 +60,17 @@ export class FileExamplesModule {
             'file-uploader-drop-zone': FileUploaderDropZoneExampleComponent,
             'file-uploader-intl': FileUploaderIntlExampleComponent,
             'file-uploader-reactive': FileUploaderReactiveExampleComponent,
-            'file-uploader-separate-requests': FileUploaderSeparateRequestsExampleComponent,
-            'file-uploader-template-driven': FileUploaderTemplateDrivenExampleComponent,
-            'file-uploader-type-validation': FileUploaderTypeValidationExampleComponent,
+            'file-uploader-separate-requests':
+                FileUploaderSeparateRequestsExampleComponent,
+            'file-uploader-template-driven':
+                FileUploaderTemplateDrivenExampleComponent,
+            'file-uploader-type-validation':
+                FileUploaderTypeValidationExampleComponent,
             'file-uploader-validation': FileUploaderValidationExampleComponent,
-            'file-uploader-with-request': FileUploaderWithRequestExampleComponent,
-            'file-uploader-max-file-number': FileUploaderMaxFileNumberExampleComponent,
+            'file-uploader-with-request':
+                FileUploaderWithRequestExampleComponent,
+            'file-uploader-max-file-number':
+                FileUploaderMaxFileNumberExampleComponent,
             'file-uploader-custom-item': FileUploaderCustomItemExampleComponent,
             'file-uploader-expert': FileUploaderExpertExampleComponent,
         };

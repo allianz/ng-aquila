@@ -49,8 +49,10 @@ export class ContextExamplesModule {
             'context-menu-icons': ContextMenuIconsExampleComponent,
             'context-menu-lazy': ContextMenuLazyExampleComponent,
             'context-menu-nested': ContextMenuNestedExampleComponent,
-            'context-menu-programmatic': ContextMenuProgrammaticExampleComponent,
-            'context-menu-scroll-strategy': ContextMenuScrollStrategyExampleComponent,
+            'context-menu-programmatic':
+                ContextMenuProgrammaticExampleComponent,
+            'context-menu-scroll-strategy':
+                ContextMenuScrollStrategyExampleComponent,
             'context-menu-indicator': ContextMenuIndicatorExampleComponent,
         };
     }

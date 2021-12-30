@@ -649,6 +649,10 @@
   --footer-letter-spacing: var(--paragraph-03-letter-spacing);
   --footer-color: var(--ui-05);
   --footer-copyright-font-weight: 700;
+  --footer-padding-top: 24px;
+  --footer-padding-bottom: 24px;
+  --footer-mobile-padding-top: 40px;
+  --footer-mobile-padding-bottom: 40px;
   --formfield-bottom-padding: 24px;
   --formfield-icon-size: 24px;
   --formfield-label-color: var(--text-01);

@@ -66,7 +66,8 @@ export class TableExamplesModule {
             table: TableExampleComponent,
             'table-condensed': TableCondensedExampleComponent,
             'table-expandable': TableExpandableExampleComponent,
-            'table-filter-sort-paginate': TableFilterSortPaginateExampleComponent,
+            'table-filter-sort-paginate':
+                TableFilterSortPaginateExampleComponent,
             'table-selecting': TableSelectingExampleComponent,
             'table-single-select': TableSingleSelectExampleComponent,
             'table-sorting': TableSortingExampleComponent,

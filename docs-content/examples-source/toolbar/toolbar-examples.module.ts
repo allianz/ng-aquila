@@ -26,7 +26,8 @@ export class ToolbarExamplesModule {
     static components() {
         return {
             toolbar: ToolbarExampleComponent,
-            'toolbar-positioning-content': ToolbarPositioningContentExampleComponent,
+            'toolbar-positioning-content':
+                ToolbarPositioningContentExampleComponent,
         };
     }
 }

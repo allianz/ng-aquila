@@ -21,7 +21,8 @@ export class ErrorExamplesModule {
     static components() {
         return {
             error: ErrorExampleComponent,
-            'error-custom-matcher-formfield': ErrorCustomMatcherFormfieldExampleComponent,
+            'error-custom-matcher-formfield':
+                ErrorCustomMatcherFormfieldExampleComponent,
         };
     }
 }

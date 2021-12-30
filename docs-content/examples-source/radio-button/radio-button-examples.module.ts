@@ -44,9 +44,12 @@ export class RadioExamplesModule {
             'radio-button-event': RadioButtonEventExampleComponent,
             'radio-button-form': RadioButtonFormExampleComponent,
             'radio-button-group': RadioButtonGroupExampleComponent,
-            'radio-button-group-horizontal': RadioButtonGroupHorizontalExampleComponent,
-            'radio-button-group-label-size': RadioButtonGroupLabelSizeExampleComponent,
-            'radio-button-group-validation': RadioButtonGroupValidationExampleComponent,
+            'radio-button-group-horizontal':
+                RadioButtonGroupHorizontalExampleComponent,
+            'radio-button-group-label-size':
+                RadioButtonGroupLabelSizeExampleComponent,
+            'radio-button-group-validation':
+                RadioButtonGroupValidationExampleComponent,
             'radio-button-negative': RadioButtonNegativeExampleComponent,
             'radio-button-reactive': RadioButtonReactiveExampleComponent,
             'radio-button-sample': RadioButtonSampleExampleComponent,

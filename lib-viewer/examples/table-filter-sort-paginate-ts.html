@@ -211,9 +211,10 @@
     <span class="hljs-function"><span class="hljs-title">updatePage</span>(<span class="hljs-params"></span>)</span> {
         <span class="hljs-keyword">const</span> indexMin = (<span class="hljs-built_in">this</span>.page - <span class="hljs-number">1</span>) * <span class="hljs-built_in">this</span>.elementsPerPage;
         <span class="hljs-keyword">const</span> indexMax = indexMin + <span class="hljs-built_in">this</span>.elementsPerPage;
-        <span class="hljs-built_in">this</span>.currentlyShownPageElements = <span class="hljs-built_in">this</span>.currentlyAvailableElements.filter(
-            <span class="hljs-function">(<span class="hljs-params">x, index</span>) =&gt;</span> index &gt;= indexMin &amp;&amp; index &lt; indexMax,
-        );
+        <span class="hljs-built_in">this</span>.currentlyShownPageElements =
+            <span class="hljs-built_in">this</span>.currentlyAvailableElements.filter(
+                <span class="hljs-function">(<span class="hljs-params">x, index</span>) =&gt;</span> index &gt;= indexMin &amp;&amp; index &lt; indexMax,
+            );
     }
 
     <span class="hljs-function"><span class="hljs-title">prevPage</span>(<span class="hljs-params"></span>)</span> {

@@ -32,7 +32,8 @@ export class TimefieldExamplesModule {
             'timefield-localize': TimefieldLocalizeExampleComponent,
             'timefield-negative': TimefieldNegativeExampleComponent,
             'timefield-reactive': TimefieldReactiveExampleComponent,
-            'timefield-template-driven': TimefieldTemplateDrivenExampleComponent,
+            'timefield-template-driven':
+                TimefieldTemplateDrivenExampleComponent,
         };
     }
 }

@@ -15,8 +15,8 @@
      
 
 <h4 id="NxIconRegistry" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxIconRegistry"></span>
-  <code>NxIconRegistry</code></h4> 
+    <span header-link="NxIconRegistry"></span>
+    <code>NxIconRegistry</code></h4> 
 
 <h5 class="docs-api-method-header">Methods</h5>
  
@@ -24,25 +24,7 @@
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addFontIcon(<!--
-     --><!--
-       --><!--
-         -->iconName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->alias: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->fontName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">addFontIcon(iconName: <span class="docs-api-property__type">string</span>,alias: <span class="docs-api-property__type">string</span>,fontName: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Only necessary to override an existing svg icon in the registry
@@ -86,23 +68,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addSvgIcon(<!--
-     --><!--
-       --><!--
-         -->iconName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->url<!--
-         -->,<!--
-       --><!--
-         -->safeUrl: <span class="docs-api-property__type">SafeResourceUrl</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">addSvgIcon(iconName: <span class="docs-api-property__type">string</span>,url,safeUrl: <span class="docs-api-property__type">SafeResourceUrl</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Registers an icon by URL.</p>
@@ -137,20 +103,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">addSvgIconLiteral(<!--
-     --><!--
-       --><!--
-         -->iconName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->literal: <span class="docs-api-property__type">SafeHtml</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">addSvgIconLiteral(iconName: <span class="docs-api-property__type">string</span>,literal: <span class="docs-api-property__type">SafeHtml</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Registers an icon using an HTML string.</p>
@@ -177,8 +130,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getDefaultFont(<!--
-     -->): <span class="docs-api-method-returns-type">NxIconFontDefinition | undefined</span></span>
+            <span class="docs-api-method-name">getDefaultFont(): <span class="docs-api-method-returns-type">NxIconFontDefinition | undefined</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the registered CSS class name.</p>
@@ -188,15 +140,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getFont(<!--
-     --><!--
-       --><!--
-         -->fontName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">getFont(fontName: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the registered font by name.</p>
@@ -216,15 +160,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getIcon(<!--
-     --><!--
-       --><!--
-         -->iconName: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->): <span class="docs-api-method-returns-type">NxSvgIcon | NxFontIcon | undefined</span></span>
+            <span class="docs-api-method-name">getIcon(iconName: <span class="docs-api-property__type">string</span>): <span class="docs-api-method-returns-type">NxSvgIcon | NxFontIcon | undefined</span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the icon from the registry or undefined if not found.</p>
@@ -244,25 +180,7 @@ and then override the chevron-down icon in the registry:
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">registerFont(<!--
-     --><!--
-       --><!--
-         -->name: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->hostClass: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         -->,<!--
-       --><!--
-         -->prefix: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">registerFont(name: <span class="docs-api-property__type">string</span>,hostClass: <span class="docs-api-property__type">string</span>,prefix: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Register an icon font which can be used by the font input on the icon component.</p>
@@ -300,15 +218,7 @@ e.g. my-icons--heart but you still want to only use the name
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">setDefaultFont(<!--
-     --><!--
-       --><!--
-         -->name: <span class="docs-api-property__type">string</span
-                ><!--
-         --><!--
-         --><!--
-       --><!--
-       -->)</span>
+            <span class="docs-api-method-name">setDefaultFont(name: <span class="docs-api-property__type">string</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Sets the font as the default font that is used when the font input
@@ -332,13 +242,13 @@ is omitted.</p>
      
 
 <h4 id="NxIconComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxIconComponent"></span>
-  <code>NxIconComponent</code></h4><p class="docs-api-directive-selectors">
-  <span class="docs-api-class-selector-label">Selector:</span>
+    <span header-link="NxIconComponent"></span>
+    <code>NxIconComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
     <div class="docs-api__selector-container">
-      
+        
         <span class="docs-api-class-selector-name">nx-icon</span>
-      
+        
     </div>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
@@ -432,8 +342,8 @@ is omitted.</p>
      
 
 <h4 id="NxDefaultIcons" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxDefaultIcons"></span>
-  <code>NxDefaultIcons</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxDefaultIcons"></span>
+    <code>NxDefaultIcons</code></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -823,8 +733,8 @@ is omitted.</p>
    
 
 <h4 id="NxIconFontDefinition" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxIconFontDefinition"></span>
-  <code>NxIconFontDefinition</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxIconFontDefinition"></span>
+    <code>NxIconFontDefinition</code></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -863,8 +773,8 @@ is omitted.</p>
    
 
 <h4 id="NxSvgIcon" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxSvgIcon"></span>
-  <code>NxSvgIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxSvgIcon"></span>
+    <code>NxSvgIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -892,8 +802,7 @@ is omitted.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getContent(<!--
-     -->): <span class="docs-api-method-returns-type">Observable<SVGElement | undefined></span></span>
+            <span class="docs-api-method-name">getContent(): <span class="docs-api-method-returns-type">Observable<SVGElement | undefined></span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the content.</p>
@@ -902,11 +811,11 @@ is omitted.</p>
    
 
 <h4 id="NxSvgIconLiteral" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxSvgIconLiteral"></span>
-  <code>NxSvgIconLiteral</code><span class="docs-api-class-extends-clauses">
-    <span class="docs-api-class-extends-label">extends</span>
-    <span class="docs-api-class-extends-type">NxSvgIcon</span>
-  </span></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxSvgIconLiteral"></span>
+    <code>NxSvgIconLiteral</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">NxSvgIcon</span>
+    </span></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -934,8 +843,7 @@ is omitted.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getContent(<!--
-     -->): <span class="docs-api-method-returns-type">Observable<SVGElement | undefined></span></span>
+            <span class="docs-api-method-name">getContent(): <span class="docs-api-method-returns-type">Observable<SVGElement | undefined></span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the content.</p>
@@ -944,11 +852,11 @@ is omitted.</p>
    
 
 <h4 id="NxSvgIconFromUrl" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxSvgIconFromUrl"></span>
-  <code>NxSvgIconFromUrl</code><span class="docs-api-class-extends-clauses">
-    <span class="docs-api-class-extends-label">extends</span>
-    <span class="docs-api-class-extends-type">NxSvgIcon</span>
-  </span></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxSvgIconFromUrl"></span>
+    <code>NxSvgIconFromUrl</code><span class="docs-api-class-extends-clauses">
+        <span class="docs-api-class-extends-label">extends</span>
+        <span class="docs-api-class-extends-type">NxSvgIcon</span>
+    </span></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -989,8 +897,7 @@ is omitted.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getContent(<!--
-     -->): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
+            <span class="docs-api-method-name">getContent(): <span class="docs-api-method-returns-type">Observable<SVGElement></span></span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Returns the content. If the SVG is not already loaded it fetches the SVG from icons&#39; URL</p>
@@ -999,8 +906,8 @@ is omitted.</p>
    
 
 <h4 id="NxFontIcon" class="docs-header-link docs-api-h4 docs-api-class-name">
-  <span header-link="NxFontIcon"></span>
-  <code>NxFontIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
+    <span header-link="NxFontIcon"></span>
+    <code>NxFontIcon</code></h4><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
         <th class="docs-api-properties-th">Name</th>
@@ -1041,8 +948,7 @@ is omitted.</p>
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">getClasses(<!--
-     -->)</span>
+            <span class="docs-api-method-name">getClasses()</span>
         </code>
     </div>
     <div class="docs-api-method-description"></div></div>

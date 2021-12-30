@@ -60,9 +60,11 @@ export class DatefieldExamplesModule {
             'datefield-basic': DatefieldBasicExampleComponent,
             'datefield-disabled': DatefieldDisabledExampleComponent,
             'datefield-filter': DatefieldFilterExampleComponent,
-            'datefield-format-injection': DatefieldFormatInjectionExampleComponent,
+            'datefield-format-injection':
+                DatefieldFormatInjectionExampleComponent,
             'datefield-formatting': DatefieldFormattingExampleComponent,
-            'datefield-injection-token': DatefieldInjectionTokenExampleComponent,
+            'datefield-injection-token':
+                DatefieldInjectionTokenExampleComponent,
             'datefield-iso': DatefieldIsoExampleComponent,
             'datefield-localize-date': DatefieldLocalizeDateExampleComponent,
             'datefield-localize-texts': DatefieldLocalizeTextsExampleComponent,

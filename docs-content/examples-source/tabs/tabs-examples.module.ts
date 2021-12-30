@@ -66,14 +66,16 @@ export class TabsExamplesModule {
             'tabs-lazy': TabsLazyExampleComponent,
             'tabs-nav-bar': TabsNavBarExampleComponent,
             'tabs-nav-bar-appearance': TabsNavBarAppearanceExampleComponent,
-            'tabs-nav-bar-injection-token': TabsNavBarInjectionTokenExampleComponent,
+            'tabs-nav-bar-injection-token':
+                TabsNavBarInjectionTokenExampleComponent,
             'tabs-negative': TabsNegativeExampleComponent,
             'tabs-output-events': TabsOutputEventsExampleComponent,
             'tabs-responsive': TabsResponsiveExampleComponent,
             'tabs-styling': TabsStylingExampleComponent,
             'tabs-template': TabsTemplateExampleComponent,
             'tabs-with-indicator': TabsWithIndicatorExampleComponent,
-            'tabs-nav-bar-with-indicator': TabsNavBarWithIndicatorExampleComponent,
+            'tabs-nav-bar-with-indicator':
+                TabsNavBarWithIndicatorExampleComponent,
         };
     }
 }

@@ -18,7 +18,8 @@ const EXAMPLES = [
 export class OverlayExamplesModule {
     static components() {
         return {
-            'overlay-limiting-fallbacks': OverlayLimitingFallbacksExampleComponent,
+            'overlay-limiting-fallbacks':
+                OverlayLimitingFallbacksExampleComponent,
             'overlay-positioning': OverlayPositioningExampleComponent,
         };
     }

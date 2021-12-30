@@ -46,7 +46,8 @@ export class AccordionExamplesModule {
             accordion: AccordionExampleComponent,
             'accordion-error': AccordionErrorExampleComponent,
             'accordion-extra-light': AccordionExtraLightExampleComponent,
-            'accordion-extra-light-negative': AccordionExtraLightNegativeExampleComponent,
+            'accordion-extra-light-negative':
+                AccordionExtraLightNegativeExampleComponent,
             'accordion-lazy': AccordionLazyExampleComponent,
             'accordion-light': AccordionLightExampleComponent,
             'accordion-light-negative': AccordionLightNegativeExampleComponent,

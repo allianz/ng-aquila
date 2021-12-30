@@ -59,20 +59,30 @@ export class NumberExamplesModule {
         return {
             'number-stepper-a11y': NumberStepperAccessibilityExampleComponent,
             'number-stepper-additions': NumberStepperAdditionsExampleComponent,
-            'number-stepper-auto-resizing': NumberStepperAutoResizingExampleComponent,
-            'number-stepper-custom-label': NumberStepperCustomLabelExampleComponent,
-            'number-stepper-disabled-explicit': NumberStepperDisabledExplicitExampleComponent,
-            'number-stepper-disabled-implicit': NumberStepperDisabledImplicitExampleComponent,
-            'number-stepper-floating-point': NumberStepperFloatingPointExampleComponent,
-            'number-stepper-formatting': NumberStepperFormattingExampleComponent,
+            'number-stepper-auto-resizing':
+                NumberStepperAutoResizingExampleComponent,
+            'number-stepper-custom-label':
+                NumberStepperCustomLabelExampleComponent,
+            'number-stepper-disabled-explicit':
+                NumberStepperDisabledExplicitExampleComponent,
+            'number-stepper-disabled-implicit':
+                NumberStepperDisabledImplicitExampleComponent,
+            'number-stepper-floating-point':
+                NumberStepperFloatingPointExampleComponent,
+            'number-stepper-formatting':
+                NumberStepperFormattingExampleComponent,
             'number-stepper-localize': NumberStepperLocalizeExampleComponent,
             'number-stepper-negative': NumberStepperNegativeExampleComponent,
             'number-stepper-reactive': NumberStepperReactiveExampleComponent,
-            'number-stepper-simple-binding': NumberStepperSimpleBindingExampleComponent,
+            'number-stepper-simple-binding':
+                NumberStepperSimpleBindingExampleComponent,
             'number-stepper-sizes': NumberStepperSizesExampleComponent,
-            'number-stepper-standalone': NumberStepperStandaloneExampleComponent,
-            'number-stepper-template-driven': NumberStepperTemplateDrivenExampleComponent,
-            'number-stepper-validation': NumberStepperValidationExampleComponent,
+            'number-stepper-standalone':
+                NumberStepperStandaloneExampleComponent,
+            'number-stepper-template-driven':
+                NumberStepperTemplateDrivenExampleComponent,
+            'number-stepper-validation':
+                NumberStepperValidationExampleComponent,
         };
     }
 }
