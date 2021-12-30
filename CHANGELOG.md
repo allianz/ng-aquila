@@ -2,7 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-# [13.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v12.2.1...v13.0.0-next.0) (2021-12-17)
+# [13.0.0](https://github.com/aposin/ng-aquila/compare/v13.0.0-next.0...v13.0.0) (2021-12-30)
+
+We are officially releasing version 13 that is based on Angular 13. For updating please see our update guide: https://aposin.github.io/ng-aquila/guides/releases
+
+### Highlights
+
+#### Removal of IE support
+
+Following the official Angular guidelines, with this release we are dropping support of Internet Explorer and removing all the code that was meant to support IE-only functionality and fix its issues.
+
+#### Ivy compilation mode
+
+Following the official Angular guidelines, starting with this release, the library is now being compiled with the ivy partial compilation mode.
+
+#### Multi Select component
+
+The new `nx-multi-select` supports selection of multiple items as well as filtering.
+
+#### Data Display component
+
+The new `nx-data-display` provides a description component that consists of a label and a value.
+
+### BREAKING CHANGES
+
+-   We have removed JS code and CSS specific to Internet Explorer, so make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using our LTS v12.
+-   **footer:** default paddings changed (to restore previous values, please refer to our release notes)
+
+### Features
+
+-   **footer:** variable paddings ([442fad4](https://github.com/aposin/ng-aquila/commit/442fad4ef8ca9978ae34a3d3b49da2b398b77383))
+
+### Bug Fixes
+
+-   **accordion:** remove outside spacing from mobile light accordion ([360f5dc](https://github.com/aposin/ng-aquila/commit/360f5dcf0b7abefd6c9ad4adb6d7ddb37963d5c9))
+-   **comparison-table:** update cell clipping if mayStick property of header row changes ([b338b03](https://github.com/aposin/ng-aquila/commit/b338b03a5d8e0a0adac3cc507a6418f4f9872ae2))
+-   **dropdown:** flip chevron when open ([1c52a95](https://github.com/aposin/ng-aquila/commit/1c52a95ddd271879329a63646de3c2e5c5201404))
+-   **file-uploader:** fix a11y by adding missing label references ([74b23e1](https://github.com/aposin/ng-aquila/commit/74b23e1f15b459994906bf049644a3359485a3f7))
+-   **table:** prevent clicks on interactive elements to select row ([09b3d6a](https://github.com/aposin/ng-aquila/commit/09b3d6ae572b6370fdca0079176dcc7906538aa3))
+-   **tree:** freezing when collapsing focused item ([7e8f824](https://github.com/aposin/ng-aquila/commit/7e8f824c50efe0e2dd0c9b8e27e42071d6d5a9f1))
+
+# [13.0.0-next.0](https://github.com/aposin/ng-aquila/compare/v12.2.2...v13.0.0-next.0) (2021-12-17)
 
 To install this version, run `npm install @aposin/ng-aquila@next`.
 
@@ -10,6 +50,12 @@ To install this version, run `npm install @aposin/ng-aquila@next`.
 
 -   **multi-select:** add new component ([ee85087](https://github.com/aposin/ng-aquila/commit/ee85087bc46cc57d0d2e74dffcc6c298813738c0))
 -   **data-display:** add new component ([e71281b](https://github.com/aposin/ng-aquila/commit/e71281bbc3f0171cc28a6b52c280c894af74ad5b))
+
+## [12.2.2](https://github.com/aposin/ng-aquila/compare/v12.2.1...v12.2.2) (2021-12-21)
+
+### Bug Fixes
+
+-   **sidebar:** adapt compatibility sidebar toggle margin fix ([dc5d293](https://github.com/aposin/ng-aquila/commit/dc5d2935ca3191a04eaf1891f74ac033d3c4f411))
 
 ## [12.2.1](https://github.com/aposin/ng-aquila/compare/v12.2.0...v12.2.1) (2021-12-07)
 
@@ -88,7 +134,7 @@ To install this version, run `npm install @aposin/ng-aquila@next`.
 
 ### Features
 
--   update to angular12 ([caded36](https://github.com/aposin/ng-aquila/commit/caded36caf4f20c285162a1e3f5f8950024170ef))
+-   update to angular 12 ([caded36](https://github.com/aposin/ng-aquila/commit/caded36caf4f20c285162a1e3f5f8950024170ef))
 
 ### Bug Fixes
 

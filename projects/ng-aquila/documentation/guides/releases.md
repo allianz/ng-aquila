@@ -4,6 +4,31 @@ title: Releases und updating
 
 # Releases und updating
 
+## Updating to version 13
+
+With v13, we are upgrading to [Angular 13](https://blog.angular.io/angular-v13-is-now-available-cce66f7bc296). In most cases the following command should do the Angular update for you:
+
+`ng update @angular/cli @angular/core`
+
+Then it should be easy to update Aquila with the following command:
+
+`ng update @aposin/ng-aquila --force`
+
+**Important:**
+
+-   With this release we are dropping support of Internet Explorer and removing all the code that was meant to support IE-only functionality and fix its issues. Make sure your project doesn't need IE support before migrating to v13. In case you still need to support IE, consider using LTS v12.
+-   Following Angular development, the library is now distributed in ivy partial compilation mode.
+
+### Breaking Changes
+
+-   **footer:** spacing - to restore previous values, override the following new variables:
+    -   `footer-padding-top: 24px` (retail only)
+    -   `footer-padding-bottom: 72px`
+    -   `footer-mobile-padding-top: 40px` (retail only)
+    -   `footer-mobile-padding-bottom: 72px`
+
+**We are not providing automatic updates for these breaking changes.**
+
 ## Updating to version 12
 
 With v12, we are upgrading to [Angular 12](https://blog.angular.io/angular-v12-is-now-available-32ed51fbfd49). To update your Angular installation please check the respective [update guide](https://angular.io/guide/updating-to-version-12). In most cases the following command should do the update:
