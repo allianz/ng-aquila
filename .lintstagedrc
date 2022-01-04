@@ -1,6 +1,0 @@
-{
-  "projects/ng-aquila/!(documentation)/**/*.ts": [],
-  "projects/ngx-docs-cli/**/*.ts": [],
-  "projects/ngx-docs-ui/**/*.ts": [],
-  "projects/opensource-documentation/**/*.ts": []
-}

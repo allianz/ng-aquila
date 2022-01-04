@@ -46,6 +46,12 @@
                         "tsConfig": "projects/ng-aquila/tsconfig.spec.json",
                         "karmaConfig": "projects/ng-aquila/karma.conf.js"
                     }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["projects/ng-aquila/**/*.ts", "projects/ng-aquila/**/*.html"]
+                    }
                 }
             }
         },
@@ -76,6 +82,12 @@
                         "main": "projects/ngx-docs-ui/test.ts",
                         "tsConfig": "projects/ngx-docs-ui/tsconfig.spec.json",
                         "karmaConfig": "projects/ngx-docs-ui/karma.conf.js"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["projects/ngx-docs-ui/**/*.ts", "projects/ngx-docs-ui/**/*.html"]
                     }
                 }
             }
@@ -179,6 +191,12 @@
                     "options": {
                         "browserTarget": "opensource-documentation:build"
                     }
+                },
+                "lint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["projects/opensource-documentation/**/*.ts", "projects/opensource-documentation/**/*.html"]
+                    }
                 }
             }
         }
@@ -226,7 +244,7 @@
         }
     },
     "cli": {
-        "defaultCollection": "@schematics/angular",
+        "defaultCollection": "@angular-eslint/schematics",
         "packageManager": "npm",
         "analytics": false,
         "warnings": {

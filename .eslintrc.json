@@ -1,0 +1,32 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "plugins": [],
+            "extends": [
+                "plugin:@typescript-eslint/base",
+                "plugin:@angular-eslint/base",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "prettier"
+            ],
+            "rules": {
+                // eslint rules go here
+                // @typescript-eslint rules go here
+                // @angular-eslint rules go here
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/base"],
+            "rules": {
+                // @angular-eslint/template rules go here
+            }
+        }
+    ]
+}

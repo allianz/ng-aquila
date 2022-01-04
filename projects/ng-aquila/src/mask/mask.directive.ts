@@ -415,7 +415,6 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         );
 
         if (newValue.length >= this._mask.length) {
-            // eslint-disable-next-line
             let newPosition = selectionStart as number;
 
             let i = 1;
