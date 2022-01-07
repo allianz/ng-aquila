@@ -147,12 +147,12 @@ You can use the Angular CLI's `--allowDirty` flag if you don't want to commit be
 
 Our release strategy is naturally synchronized with [Angular's](https://github.com/angular/angular/blob/master/docs/RELEASE_SCHEDULE.md). The main reason for this is to minimize the frequency of breaking changes. The Angular team releases a major version every six months, whenever we update to this version we expect breaking changes. Thus, we will release any breaking change within Angular NDBX along with the major release of Angular. Consequently, you can expect breaking changes (major update) within ng-aquila about every six months. As the Angular team does no longer provide concrete release dates, we also cannot provide concrete release dates any more for major releases. We trigger minor or bug fix releases if they provide a meaningful delivery (fix or feature). This is usually decided in our weekly refinement meeting.
 
-| Date           | Angular version | ng-aquila version | LTS end       |
-| -------------- | --------------- | ----------------- | ------------- |
-| September 2020 | 10              | 10                | December 2021 |
-| January 2021   | 11              | 11                | May 2022      |
-| September 2021 | 12              | 12                | November2022  |
+| Date           | Angular version | ng-aquila version | LTS end      |
+| -------------- | --------------- | ----------------- | ------------ |
+| January 2021   | 11              | 11                | May 2022     |
+| September 2021 | 12              | 12                | November2022 |
+| December 2021  | 13              | 13                | May 2022     |
 
-Angular NDBX versions 9 and older are no longer supported.
+Angular NDBX versions 10 and older are no longer supported.
 
 During Long-Term Support (LTS) only critical fixes and security patches will be released. LTS of a major version starts as soon as the successor is released. If your applications are running of the LTS, you may (at your own discretion) fork your respective version and support it within your organization.
