@@ -40,15 +40,21 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     @ViewChild(NxDropdownComponent, { static: true }) dropdown!: NxDropdownComponent;
 
     value: any;
+
     _inputValue: string = '';
+
     _describedBy = '';
+
     readonly stateChanges = new Subject<any>();
+
     get empty() {
         return !!this._inputValue;
     }
+
     focused: boolean = false;
 
     private _uid = 'phone-input-' + next++;
+
     private _id!: string;
 
     /** Sets the id of the phone input component. */
@@ -87,22 +93,22 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     private _countryCode = 'DE';
-    private _previousCountryCode = 'DE';
+    private _initialCountryCode = 'DE';
 
     /** Sets the initial country to be selected in the dropdown. Format is the international
      * country code like DE, US.
      * If there is already a number in the input field changing this property has no effect.
      */
     @Input()
-    get countryCode() {
-        return this._countryCode;
-    }
     set countryCode(value: string) {
         if (this._inputValue) {
             return;
         }
-        this._previousCountryCode = this._countryCode;
+        this._initialCountryCode = value;
         this._countryCode = value;
+    }
+    get countryCode() {
+        return this._countryCode;
     }
 
     private _areaCodeLabel!: string;
@@ -249,7 +255,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         } else {
             this.value = '';
             this._inputValue = '';
-            this._countryCode = this._previousCountryCode;
+            this._countryCode = this._initialCountryCode;
         }
         this._changeDetectorRef.markForCheck();
     }

@@ -29,6 +29,14 @@ describe('PhoneInputComponent', () => {
         dropdown = getDropdown();
     }
 
+    function getPanel(): HTMLElement {
+        return overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel') as HTMLElement;
+    }
+
+    function getRenderedValue(): HTMLElement {
+        return dropdown.nativeElement.querySelector('.nx-dropdown__rendered') as HTMLElement;
+    }
+
     function getDropdown() {
         return fixture.debugElement.query(By.directive(NxDropdownComponent));
     }
@@ -113,14 +121,14 @@ describe('PhoneInputComponent', () => {
         flush();
         fixture.detectChanges();
         expect(getInput().nativeElement.value).toBe('666');
-        expect(dropdown.nativeElement.textContent).toContain('+49');
+        expect(dropdown.nativeElement.innerText).toContain('+49');
 
         formControl.patchValue('+1456');
         fixture.detectChanges();
         flush();
         fixture.detectChanges();
         expect(getInput().nativeElement.value).toBe('456');
-        expect(dropdown.nativeElement.textContent).toContain('+1');
+        expect(dropdown.nativeElement.innerText).toContain('+1');
 
         formControl.patchValue('');
         fixture.detectChanges();
@@ -128,7 +136,16 @@ describe('PhoneInputComponent', () => {
         fixture.detectChanges();
         expect(getInput().nativeElement.value).toBe('');
         // should fall back to what previous country code was set, by default +49
-        expect(dropdown.nativeElement.textContent.trim()).toBe('+49');
+        expect(dropdown.nativeElement.innerText).toBe('+33');
+    }));
+
+    it('should reset country code after reset of form', fakeAsync(() => {
+        createTestComponent(ReactiveFormsPhoneInput);
+
+        const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
+        formControl.reset();
+        fixture.detectChanges();
+        expect(dropdown.nativeElement.innerText).toContain('+33');
     }));
 
     it('should disable from form control', () => {
@@ -190,28 +207,28 @@ describe('PhoneInputComponent', () => {
         createTestComponent(ConfigurablePhoneInput);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
-        expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('My area code');
+        expect(getPanel().innerText).toContain('My area code');
     });
 
     it('should change the country translations via input', () => {
         createTestComponent(ConfigurablePhoneInput);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
-        expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Deutschland');
+        expect(getPanel().innerText).toContain('Deutschland');
     });
 
     it('should change the dropdown top label via provider', () => {
         createTestComponent(I18nProviderTest);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
-        expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Custom area code label');
+        expect(getPanel().innerText).toContain('Custom area code label');
     });
 
     it('should change the country translations via provider', () => {
         createTestComponent(I18nProviderTest);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
-        expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Deutschland');
+        expect(getPanel().innerText).toContain('Deutschland');
     });
 
     it('should use default error state matcher', fakeAsync(() => {
@@ -230,7 +247,7 @@ describe('PhoneInputComponent', () => {
         (testInstance as ReactiveFormsPhoneInput).formControl.setValue('+177777');
         fixture.detectChanges();
         flush();
-        expect(fixture.nativeElement.querySelector('nx-phone-input').textContent).toContain('+1');
+        expect(fixture.nativeElement.querySelector('nx-phone-input').innerText).toContain('+1');
     }));
 
     it('should have countries', () => {
@@ -238,7 +255,7 @@ describe('PhoneInputComponent', () => {
         expect(Object.keys(phoneInputInstance.countryNames).length).toBeGreaterThan(0);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
-        expect(overlayContainer.getContainerElement().querySelector('.nx-dropdown__panel')?.textContent).toContain('Germany');
+        expect(getPanel().innerText).toContain('Germany');
     });
 
     it('should accept a custom formatter', fakeAsync(() => {
@@ -266,7 +283,7 @@ describe('PhoneInputComponent', () => {
         flush();
         fixture.detectChanges();
         flush();
-        expect(dropdown.nativeElement.querySelector('.nx-dropdown__rendered').textContent).toBe('+33');
+        expect(getRenderedValue().innerText).toBe('+33');
     }));
 
     it('should not override country code from model', fakeAsync(() => {
@@ -274,7 +291,7 @@ describe('PhoneInputComponent', () => {
         flush();
         fixture.detectChanges();
         flush();
-        expect(dropdown.nativeElement.querySelector('.nx-dropdown__rendered').textContent).toBe('+49');
+        expect(getRenderedValue().innerText).toBe('+49');
     }));
 
     it('should not override country code if input is filled', fakeAsync(() => {
@@ -283,7 +300,7 @@ describe('PhoneInputComponent', () => {
         testInstance.countryCode = 'AT';
         fixture.detectChanges();
         flush();
-        expect(dropdown.nativeElement.querySelector('.nx-dropdown__rendered').textContent).toBe('+49');
+        expect(getRenderedValue().innerText).toBe('+49');
     }));
 });
 
@@ -324,7 +341,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
 
 @Component({
     template: ` <nx-formfield nxLabel="Telephone number">
-        <nx-phone-input [formControl]="formControl" [readonly]="readonly"></nx-phone-input>
+        <nx-phone-input [formControl]="formControl" [readonly]="readonly" [countryCode]="countryCode"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
 })
