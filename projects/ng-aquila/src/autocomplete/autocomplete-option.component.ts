@@ -66,7 +66,7 @@ export class NxAutocompleteOptionComponent {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
@@ -178,6 +178,4 @@ export class NxAutocompleteOptionComponent {
             element.focus();
         }
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

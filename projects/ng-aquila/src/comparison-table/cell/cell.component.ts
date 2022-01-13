@@ -40,7 +40,7 @@ export class NxComparisonTableCell {
      *  Important: this property can be set only on header cells.
      */
     @Input()
-    set disabledColumn(value: boolean) {
+    set disabledColumn(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._type === 'header' && newValue !== this.disabledColumn) {
             this._disabledColumn = newValue;
@@ -117,6 +117,4 @@ export class NxComparisonTableCell {
 
         return headers;
     }
-
-    static ngAcceptInputType_disabledColumn: BooleanInput;
 }

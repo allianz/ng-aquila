@@ -74,7 +74,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     /** Whether a message should have a close icon in order to be dismissed. */
     @HostBinding('class.nx-message--closable')
     @Input()
-    set closable(value: boolean) {
+    set closable(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._closable) {
             this._closable = newValue;
@@ -130,6 +130,4 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
             this._changeDetectorRef.markForCheck();
         }
     }
-
-    static ngAcceptInputType_closable: BooleanInput;
 }

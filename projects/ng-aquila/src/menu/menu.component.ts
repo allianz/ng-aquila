@@ -19,7 +19,7 @@ export class NxMenuComponent {
 
     /** Whether the menu is open or closed. */
     @Input()
-    set open(value: boolean) {
+    set open(value: BooleanInput) {
         const open = coerceBooleanProperty(value);
         if (open !== this._open) {
             this._open = open;
@@ -37,6 +37,4 @@ export class NxMenuComponent {
     }
 
     constructor(private _changeDetectorRef: ChangeDetectorRef) {}
-
-    static ngAcceptInputType_open: BooleanInput;
 }

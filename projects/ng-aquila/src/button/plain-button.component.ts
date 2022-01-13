@@ -28,14 +28,12 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
     private _disabled = false;
 
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
         return this._disabled;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 
     private _classNames = '';
 

@@ -26,8 +26,6 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSmallStageComponent {
-    static ngAcceptInputType_narrow: BooleanInput;
-
     private _narrow: boolean = false;
 
     private _appearance: NxSmallStageAppearance | undefined;
@@ -54,7 +52,7 @@ export class NxSmallStageComponent {
      */
     @Input()
     @HostBinding('class.is-narrow')
-    set narrow(value: boolean) {
+    set narrow(value: BooleanInput) {
         this._narrow = coerceBooleanProperty(value);
     }
     get narrow() {

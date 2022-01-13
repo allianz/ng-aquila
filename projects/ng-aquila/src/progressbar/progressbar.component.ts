@@ -22,8 +22,8 @@ export class NxProgressbarComponent {
     get value(): number {
         return this._value;
     }
-    set value(value: number) {
-        this._value = clamp(value || 0);
+    set value(value: NumberInput) {
+        this._value = clamp((value as any) || 0); // TODO properly coerce input value
     }
     private _value: number = 0;
 
@@ -31,6 +31,4 @@ export class NxProgressbarComponent {
         const scale = this.value;
         return { transform: `scaleX(${scale})` };
     }
-
-    static ngAcceptInputType_value: NumberInput;
 }

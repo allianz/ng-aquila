@@ -77,7 +77,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     private _disabled: boolean = false;
 
     /** Whether the dropdown item is disabled. */
-    @Input() set disabled(value: boolean) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
@@ -299,6 +299,4 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     _getTabIndex(): string {
         return this.disabled ? '-1' : '0';
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

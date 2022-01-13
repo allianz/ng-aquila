@@ -11,7 +11,7 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
 
     private _resize: boolean = true;
     @Input('nxAutoResize')
-    set resize(value: boolean) {
+    set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
         if (this._resize) {
             this._addEventListener();
@@ -74,6 +74,4 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
     sumStyles(left: string, right: string) {
         return (parseInt(left, 10) || 0) + (parseInt(right, 10) || 0);
     }
-
-    static ngAcceptInputType_resize: BooleanInput;
 }

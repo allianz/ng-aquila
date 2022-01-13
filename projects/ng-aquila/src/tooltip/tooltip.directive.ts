@@ -125,7 +125,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
 
         // If tooltip is disabled, hide immediately.
@@ -141,7 +141,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     get selectable(): boolean {
         return this._selectable;
     }
-    set selectable(value) {
+    set selectable(value: BooleanInput) {
         const oldValue = this._selectable;
         this._selectable = coerceBooleanProperty(value);
         if (this._selectable !== oldValue) {
@@ -641,7 +641,4 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     get _isLtr(): boolean {
         return !this._dir || this._dir.value === 'ltr';
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_selectable: BooleanInput;
 }

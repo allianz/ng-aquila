@@ -83,7 +83,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 
     /** Whether every radio button in this group should be disabled. */
     @Input('nxDisabled')
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         // inform childs about the change where CD should be triggered
         this._stateChanges.next();
@@ -95,7 +95,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     private _negative: boolean = false;
     /** Whether the radio group should have negative styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -106,7 +106,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     private _required: boolean = false;
     /** Sets if at least an option should be selected. */
     @Input()
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
         this._stateChanges.next();
     }
@@ -250,10 +250,6 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
             this._changeDetectorRef.markForCheck();
         }
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
 }
 
 @Component({
@@ -343,7 +339,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
      * is overwritten by the group's negative value.
      */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
@@ -408,7 +404,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     /** Whether the radio button should be disabled or not. */
     @Input('nxDisabled')
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -515,7 +511,4 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
             (this.radioGroup.ngControl.touched || (form && form.submitted))
         );
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

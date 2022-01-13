@@ -53,7 +53,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
 
     /** Whether the negative set of stylings should be used. */
     @Input('nxNegative')
-    set negative(value) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
 
@@ -126,6 +126,4 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
             });
         }
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
 }

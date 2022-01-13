@@ -42,7 +42,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     get selected(): boolean {
         return this._selected;
     }
-    set selected(value: boolean) {
+    set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -53,7 +53,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     get active(): boolean {
         return this._active;
     }
-    set active(value: boolean) {
+    set active(value: BooleanInput) {
         this._active = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -63,7 +63,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -74,7 +74,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     get last(): boolean {
         return this._last;
     }
-    set last(value: boolean) {
+    set last(value: BooleanInput) {
         this._last = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -85,7 +85,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     get completed(): boolean {
         return this._completed;
     }
-    set completed(value: boolean) {
+    set completed(value: BooleanInput) {
         this._completed = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -99,10 +99,4 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     ngOnDestroy() {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
-
-    static ngAcceptInputType_selected: BooleanInput;
-    static ngAcceptInputType_active: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_last: BooleanInput;
-    static ngAcceptInputType_completed: BooleanInput;
 }

@@ -93,14 +93,14 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     /** Whether the circle toggle group is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
             this._changeDetectorRef.markForCheck();
         }
         if (this.buttons) {
-            this.buttons.forEach(button => (button.disabled = value));
+            this.buttons.forEach(button => (button.disabled = newValue));
         }
     }
     get disabled(): boolean {
@@ -108,13 +108,13 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
     /** Whether the circle toggle group uses the negative styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.negative !== newValue) {
             this._negative = newValue;
         }
         if (this.buttons) {
-            this.buttons.forEach(button => (button.negative = value));
+            this.buttons.forEach(button => (button.negative = newValue));
         }
     }
     get negative(): boolean {
@@ -131,7 +131,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
     /** Whether the circle toggle group has a responsive behavior. */
     @Input()
-    set responsive(value: boolean) {
+    set responsive(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.responsive) {
             this._responsive = newValue;
@@ -166,10 +166,6 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get buttons() {
         return this._buttons;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_responsive: BooleanInput;
 
     @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
 

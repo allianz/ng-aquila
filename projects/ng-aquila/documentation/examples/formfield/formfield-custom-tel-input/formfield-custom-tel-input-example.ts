@@ -15,7 +15,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
@@ -90,7 +90,7 @@ export class FormfieldCustomTelInputExampleComponent
     get required(): boolean {
         return this._required;
     }
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
@@ -99,7 +99,7 @@ export class FormfieldCustomTelInputExampleComponent
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._disabled ? this.parts.disable() : this.parts.enable();
         this.stateChanges.next();
@@ -208,7 +208,4 @@ export class FormfieldCustomTelInputExampleComponent
     _handleInput(): void {
         this.onChange(this.value);
     }
-
-    static ngAcceptInputType_disabled: boolean | string | null | undefined;
-    static ngAcceptInputType_required: boolean | string | null | undefined;
 }

@@ -106,7 +106,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
     /** Disables all checkboxes inside the nx-checkbox-group. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         if (this._label) {
             this._label.disabled = this._disabled;
@@ -121,7 +121,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     private _negative: boolean = false;
     /** Set the negative styles for all the checkboxes inside the nx-checkbox-group */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
         this._stateChanges.next();
@@ -149,7 +149,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         return !!this._required;
     }
 
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
 
@@ -261,10 +261,6 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             this._changeDetectorRef.markForCheck();
         }
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
 }
 
 @Component({
@@ -310,7 +306,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         }
     }
 
-    get id() {
+    get id(): string {
         return `nx-checkbox-${this._id}`;
     }
 
@@ -326,7 +322,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     /** Whether the checkbox is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
@@ -355,7 +351,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
      * Whether the checkbox has negative styling.
      */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
@@ -369,7 +365,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     /** Whether the checkbox is checked. */
     @Input()
-    set checked(value: boolean) {
+    set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._checked) {
             if (this._indeterminate) {
@@ -379,7 +375,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         }
     }
 
-    get checked() {
+    get checked(): boolean {
         return this._checked;
     }
 
@@ -387,7 +383,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     /** Whether the checkbox is indeterminated. */
     @Input()
-    set indeterminate(value: boolean) {
+    set indeterminate(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._indeterminate !== newValue) {
             if (this._checked) {
@@ -398,7 +394,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         this._changeDetectorRef.markForCheck();
     }
 
-    get indeterminate() {
+    get indeterminate(): boolean {
         return this._indeterminate;
     }
 
@@ -408,7 +404,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         return !!this._required;
     }
 
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
 
@@ -446,7 +442,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     checkboxChange: EventEmitter<NxCheckboxChangeEvent> = new EventEmitter<NxCheckboxChangeEvent>();
 
     /** @docs-private */
-    get labelHasContent() {
+    get labelHasContent(): boolean {
         return !!this._checkboxLabelWrapper.nativeElement.innerHTML.trim();
     }
 
@@ -583,10 +579,4 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         event.checkbox = this;
         return event;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_checked: BooleanInput;
-    static ngAcceptInputType_indeterminate: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
 }

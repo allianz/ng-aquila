@@ -59,7 +59,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
     /** Sets which info column is selected. */
     @Input()
-    set selectedIndex(value: number) {
+    set selectedIndex(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (this._selectedIndex !== newValue) {
             this._selectedIndex = newValue;
@@ -311,6 +311,4 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         };
         return scrollParent(node);
     }
-
-    static ngAcceptInputType_selectedIndex: NumberInput;
 }

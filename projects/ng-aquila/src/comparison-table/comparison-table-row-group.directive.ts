@@ -49,7 +49,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
 
     /** Sets the number of rows that are visible when loading the component. Default: 5. */
     @Input()
-    set visibleRows(value: number) {
+    set visibleRows(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (newValue !== this._visibleRows) {
             this._visibleRows = newValue;
@@ -63,7 +63,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
 
     /** Sets the expanded state of the row group */
     @Input()
-    set isExpanded(value: boolean) {
+    set isExpanded(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._isExpanded) {
             this._isExpanded = newValue;
@@ -82,7 +82,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
      * Sets if the expandable area uses the full width of the row or leaves out the first column. Default: false.
      */
     @Input()
-    set useFullRowForExpandableArea(value: boolean) {
+    set useFullRowForExpandableArea(value: BooleanInput) {
         this._useFullRowForExpandableArea = coerceBooleanProperty(value);
     }
     get useFullRowForExpandableArea(): boolean {
@@ -113,8 +113,4 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         this.isExpanded = value;
         this.isExpandedChange.emit(this.isExpanded);
     }
-
-    static ngAcceptInputType_visibleRows: NumberInput;
-    static ngAcceptInputType_useFullRowForExpandableArea: BooleanInput;
-    static ngAcceptInputType_isExpanded: BooleanInput;
 }

@@ -89,7 +89,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get selectedIndex(): number {
         return this._selectedIndex as number;
     }
-    set selectedIndex(value: number) {
+    set selectedIndex(value: NumberInput) {
         this._indexToSelect = coerceNumberProperty(value, null);
     }
 
@@ -98,7 +98,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get negative(): boolean {
         return this._negative;
     }
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
             this._changeDetectorRef.markForCheck();
@@ -110,7 +110,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         if (value !== this._disabled) {
             this._disabled = coerceBooleanProperty(value);
             this._changeDetectorRef.markForCheck();
@@ -122,7 +122,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get autoselect(): boolean {
         return this._autoselect;
     }
-    set autoselect(value: boolean) {
+    set autoselect(value: BooleanInput) {
         this._autoselect = coerceBooleanProperty(value);
     }
 
@@ -131,7 +131,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get mobileAccordion(): boolean {
         return this._mobileAccordion;
     }
-    set mobileAccordion(value: boolean) {
+    set mobileAccordion(value: BooleanInput) {
         this._mobileAccordion = coerceBooleanProperty(value);
     }
 
@@ -379,10 +379,4 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     _panelOpened(index: number) {
         this.selectedIndex = index;
     }
-
-    static ngAcceptInputType_selectedIndex: NumberInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_autoselect: BooleanInput;
-    static ngAcceptInputType_mobileAccordion: BooleanInput;
 }

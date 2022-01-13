@@ -100,7 +100,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _big: boolean = false;
     /** Whether the big switcher is used */
     @Input('nxBig')
-    set big(value: boolean) {
+    set big(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._big = newValue;
         this._changeDetectorRef.markForCheck();
@@ -123,7 +123,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _negative: boolean = false;
     /** Whether the style for a dark background is used */
     @Input('nxNegative')
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._negative = newValue;
         this._changeDetectorRef.markForCheck();
@@ -135,7 +135,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private _disabled: boolean = false;
     /** Whether the switcher is in the disabled state */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._disabled = newValue;
         this._changeDetectorRef.markForCheck();
@@ -243,8 +243,4 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     labelContentChanged() {
         this._changeDetectorRef.detectChanges();
     }
-
-    static ngAcceptInputType_big: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

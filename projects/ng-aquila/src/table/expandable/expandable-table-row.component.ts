@@ -21,7 +21,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
 
     /* Whether the row is expanded. */
     @Input()
-    set isExpanded(value: boolean) {
+    set isExpanded(value: BooleanInput) {
         this._isExpanded = coerceBooleanProperty(value);
         this.expanded.next(this._isExpanded);
         this._changeDetectorRef.markForCheck();
@@ -64,6 +64,4 @@ export class NxExpandableTableRowComponent implements NxExpandable {
             this._changeDetectorRef.markForCheck();
         }
     }
-
-    static ngAcceptInputType_isExpanded: BooleanInput;
 }

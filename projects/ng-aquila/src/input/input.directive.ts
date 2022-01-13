@@ -101,7 +101,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     get readonly(): boolean {
         return this._readonly;
     }
-    set readonly(value: boolean) {
+    set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
@@ -114,7 +114,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         }
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
 
         // Browsers may not fire the blur event if the input is disabled too quickly.
@@ -309,7 +309,4 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
             this.stateChanges.next();
         }
     }
-
-    static ngAcceptInputType_readonly: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

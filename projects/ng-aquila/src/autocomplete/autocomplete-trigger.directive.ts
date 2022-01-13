@@ -130,7 +130,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
     /** Debounce in ms before items callback is triggered. Defaults to 400 */
     @Input('nxAutocompleteDebounce')
-    set debounce(val: number) {
+    set debounce(val: NumberInput) {
         this._debounce = coerceNumberProperty(val);
     }
     private _debounce: number = 400;
@@ -700,8 +700,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         this._overlayRef?.setDirection(this._dir.value);
         this._overlayRef?.updatePositionStrategy(this._getOverlayPosition());
     }
-
-    static ngAcceptInputType_debounce: NumberInput;
 }
 
 /**

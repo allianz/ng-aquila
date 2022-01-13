@@ -23,7 +23,7 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
     focused = new Subject<NxNotificationPanelItemComponent>();
 
     @Input()
-    set read(value: boolean) {
+    set read(value: BooleanInput) {
         this._read = coerceBooleanProperty(value);
     }
     get read() {
@@ -31,7 +31,7 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
     }
 
     @Input()
-    set clickable(value: boolean) {
+    set clickable(value: BooleanInput) {
         this._clickable = coerceBooleanProperty(value);
     }
     get clickable() {
@@ -66,7 +66,4 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
     _blur() {
         this._hasFocus = false;
     }
-
-    static ngAcceptInputType_read: BooleanInput;
-    static ngAcceptInputType_clickable: BooleanInput;
 }

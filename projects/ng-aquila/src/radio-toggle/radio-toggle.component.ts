@@ -54,7 +54,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
 
     /** Sets the component to the disabled state.*/
     @Input('nxDisabled')
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const coerced = coerceBooleanProperty(value);
         if (this._disabled !== coerced) {
             this._disabled = coerced;
@@ -218,6 +218,4 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
             this.errorState = newState;
         }
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

@@ -32,7 +32,7 @@ export class NxPageSearchComponent {
 
     /** Whether the search button should be hidden. */
     @Input('nxHideSearchButton')
-    set hideSearchButton(value: boolean) {
+    set hideSearchButton(value: BooleanInput) {
         this._hideSearchButton = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -77,6 +77,4 @@ export class NxPageSearchComponent {
     onButtonClick() {
         this.buttonClick.emit();
     }
-
-    static ngAcceptInputType_hideSearchButton: BooleanInput;
 }

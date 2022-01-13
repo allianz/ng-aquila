@@ -83,13 +83,13 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     get disabled(): boolean {
         return this._disabled === undefined ? this.datepicker.disabled : !!this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
 
     /** Sets the tabindex for the toggle button. Default: 0. */
     @Input()
-    set tabindex(value: number) {
+    set tabindex(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (this._tabindex !== newValue) {
             this._tabindex = newValue;
@@ -157,7 +157,4 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
             this._changeDetectorRef.markForCheck(),
         );
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_tabindex: NumberInput;
 }

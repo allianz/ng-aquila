@@ -187,10 +187,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** Whether the dropdown is disabled. */
     @Input('nxDisabled')
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
 
@@ -1068,6 +1068,4 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
         return null;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

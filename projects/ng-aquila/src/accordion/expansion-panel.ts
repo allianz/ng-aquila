@@ -53,7 +53,7 @@ const DEFAULT_TYPE = 'regular';
 export class NxExpansionPanelComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {
     /** Whether the negative set of styles should be used. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
     get negative(): boolean {
@@ -148,6 +148,4 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     getOpenState() {
         return this.expanded ? 'open' : 'closed';
     }
-
-    static ngAcceptInputType_negative: BooleanInput | '';
 }

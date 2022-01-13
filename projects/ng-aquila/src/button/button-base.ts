@@ -90,14 +90,12 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
     private _disabled: boolean = false;
 
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
         return this._disabled;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 
     constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);

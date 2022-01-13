@@ -32,7 +32,7 @@ export class NxComparisonTablePopularCell {
      * Note: counting starts from 1. If set to 1 the popular cell will appear above the first header column of the table.
      */
     @Input()
-    set forColumn(value: number) {
+    set forColumn(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (this._forColumn !== newValue) {
             this._forColumn = newValue;
@@ -47,6 +47,4 @@ export class NxComparisonTablePopularCell {
             console.warn('A popular cell should be only in a header row.');
         }
     }
-
-    static ngAcceptInputType_forColumn: NumberInput;
 }

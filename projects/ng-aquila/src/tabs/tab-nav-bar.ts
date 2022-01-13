@@ -43,7 +43,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
 
     /** Whether the tab nav bar has negative styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.negative) {
             this._negative = newValue;
@@ -51,7 +51,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         }
     }
 
-    get negative() {
+    get negative(): boolean {
         return this._negative;
     }
 
@@ -59,7 +59,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
 
     /** Whether the tab nav bar has disabled styling. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.disabled) {
             this._disabled = newValue;
@@ -67,7 +67,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         }
     }
 
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
 
@@ -97,9 +97,6 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     ) {
         super(_changeDetectorRef, _dir, _element);
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }
 
 @Directive({
@@ -122,10 +119,10 @@ export class NxTabLinkDirective implements OnDestroy {
     get active(): boolean {
         return this._active;
     }
-    set active(value: boolean) {
+    set active(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._active) {
-            this._active = value;
+            this._active = newValue;
         }
     }
 
@@ -134,10 +131,10 @@ export class NxTabLinkDirective implements OnDestroy {
     get disabled(): boolean {
         return this._tabNavBar && this._tabNavBar.disabled ? this._tabNavBar.disabled : this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
-            this._disabled = value;
+            this._disabled = newValue;
         }
     }
 
@@ -156,7 +153,4 @@ export class NxTabLinkDirective implements OnDestroy {
     _getTabIndex(): string {
         return this.disabled ? '-1' : '0';
     }
-
-    static ngAcceptInputType_active: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

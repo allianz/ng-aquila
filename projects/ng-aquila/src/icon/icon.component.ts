@@ -37,7 +37,7 @@ export class NxIconComponent implements OnChanges {
     private _outline = false;
     /** Whether the icon has an outline. */
     @Input()
-    set outline(value: boolean) {
+    set outline(value: BooleanInput) {
         this._outline = coerceBooleanProperty(value);
     }
     get outline(): boolean {
@@ -47,7 +47,7 @@ export class NxIconComponent implements OnChanges {
     private _fill = false;
     /** Whether the icon is filled. */
     @Input()
-    set fill(value: boolean) {
+    set fill(value: BooleanInput) {
         this._fill = coerceBooleanProperty(value);
     }
     get fill(): boolean {
@@ -182,7 +182,4 @@ export class NxIconComponent implements OnChanges {
             this.el.nativeElement.classList.remove(cl);
         });
     }
-
-    static ngAcceptInputType_outline: BooleanInput;
-    static ngAcceptInputType_fill: BooleanInput;
 }

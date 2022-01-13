@@ -45,7 +45,7 @@ export class NxErrorComponent implements OnDestroy {
 
     /** Whether an icon should be displayed. Only has an effect for type 'text' */
     @Input()
-    set showIcon(value: boolean) {
+    set showIcon(value: BooleanInput) {
         this._showIcon = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -98,6 +98,4 @@ export class NxErrorComponent implements OnDestroy {
         this._destroyed.next();
         this._destroyed.complete();
     }
-
-    static ngAcceptInputType_showIcon: BooleanInput;
 }

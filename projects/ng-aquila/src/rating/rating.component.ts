@@ -39,7 +39,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _value: number = 0;
     /** Sets the selected rating 1 - 5. */
     @Input('nxValue')
-    set value(newValue: number) {
+    set value(newValue: NumberInput) {
         this._value = coerceNumberProperty(newValue);
         this._changeDetectorRef.markForCheck();
     }
@@ -50,7 +50,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _disabled: boolean = false;
     /** Whether the rating component should be disabled. */
     @Input('nxDisabled')
-    set disabled(newValue: boolean) {
+    set disabled(newValue: BooleanInput) {
         if (this._disabled === newValue) {
             return;
         }
@@ -64,7 +64,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private _negative: boolean = false;
     /** Whether the negative colors be used. */
     @Input('nxNegative')
-    set negative(newValue: boolean) {
+    set negative(newValue: BooleanInput) {
         if (this._negative === newValue) {
             return;
         }
@@ -188,8 +188,4 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     getIconName(rating: number) {
         return 'star' + (!this.isSelected(rating) ? '-o' : '');
     }
-
-    static ngAcceptInputType_value: NumberInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
 }

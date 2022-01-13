@@ -51,7 +51,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
 
     /** @docs-private */
     @Input('nxDisabled')
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -167,6 +167,4 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     _controlInvalid(): boolean {
         return !!(this.radioToggle && this.radioToggle.errorState);
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

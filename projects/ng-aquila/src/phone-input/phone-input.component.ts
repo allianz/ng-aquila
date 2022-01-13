@@ -68,26 +68,37 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     /** Whether the component should be required. */
-    @Input() required!: boolean;
+    @Input() set required(value: BooleanInput) {
+        const coercedValue = coerceBooleanProperty(value);
+        if (this.#required !== coercedValue) {
+            this.#required = coercedValue;
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+    get required(): boolean {
+        return this.#required;
+    }
+    #required = false;
+
     private _disabled: boolean = false;
 
     /** Whether the component should be disabled. */
     @Input()
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: boolean) {
-        this._disabled = value;
+    set disabled(value: BooleanInput) {
+        this._disabled = value! as any; // TODO properly coerce input value
     }
 
     private _readonly = false;
 
     /** Whether the component should be read only. */
     @Input()
-    get readonly() {
+    get readonly(): boolean {
         return this._readonly;
     }
-    set readonly(value: boolean) {
+    set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
@@ -341,8 +352,4 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     _getReadonlyValue() {
         return this.getModelValue();
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_readonly: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
 }

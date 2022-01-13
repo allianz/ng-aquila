@@ -38,7 +38,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
 
     /** Whether the context menu item is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -121,6 +121,4 @@ export class NxContextMenuItemComponent implements OnDestroy {
 
         return output.trim();
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

@@ -105,7 +105,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     /** Whether the mask validation should be deactivated. */
     @Input()
-    set deactivateMask(value: boolean) {
+    set deactivateMask(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._deactivateMask) {
             this._deactivateMask = newValue;
@@ -156,8 +156,8 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     /** Sets the case sensitivity of the mask. */
     @Input('nxConvertTo')
-    set convertTo(value: MaskConversionTypes) {
-        this._convertTo = value;
+    set convertTo(value: MaskConversionTypes | null | undefined) {
+        this._convertTo = value!; // TODO properly coerce input value
         this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
         this._callOnChangeCallback();
     }
@@ -182,7 +182,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     /** Whether the separators should be dropped in the control value accessor. */
     @Input()
-    set dropSpecialCharacters(value: boolean) {
+    set dropSpecialCharacters(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._dropSpecialCharacters) {
             this._dropSpecialCharacters = newValue;
@@ -196,7 +196,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     /** Whether the mask validation should be applied on the input. Default: true. */
     @Input()
-    set validateMask(value: boolean) {
+    set validateMask(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._validateMask) {
             this._validateMask = newValue;
@@ -538,9 +538,4 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     _touch() {
         this._onTouchedCallback();
     }
-
-    static ngAcceptInputType_dropSpecialCharacters: BooleanInput;
-    static ngAcceptInputType_validateMask: BooleanInput;
-    static ngAcceptInputType_convertTo: MaskConversionTypes | null | undefined;
-    static ngAcceptInputType_deactivateMask: BooleanInput;
 }

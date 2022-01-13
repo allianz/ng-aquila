@@ -40,7 +40,7 @@ export class NxSpinnerComponent {
 
     /** Whether the spinner should use a negative styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
             this._changeDetectorRef.markForCheck();
@@ -51,6 +51,4 @@ export class NxSpinnerComponent {
     }
 
     constructor(private _changeDetectorRef: ChangeDetectorRef) {}
-
-    static ngAcceptInputType_negative: BooleanInput;
 }

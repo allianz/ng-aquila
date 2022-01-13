@@ -24,9 +24,9 @@ export class NxBadgeComponent {
 
     /** Sets the class name for the badge element.  */
     @Input()
-    set type(value: NxBadgeType) {
+    set type(value: NxBadgeType | string | null | undefined) {
         if (value !== this._type) {
-            this._type = value;
+            this._type = value! as NxBadgeType; // TODO properly coerce input value
             this._changeDetRef.markForCheck();
         }
     }
@@ -35,7 +35,7 @@ export class NxBadgeComponent {
     }
     /** Change badge style to vibrant. */
     @Input()
-    set vibrant(value: boolean) {
+    set vibrant(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (value !== this._vibrant) {
@@ -46,7 +46,4 @@ export class NxBadgeComponent {
     get vibrant(): boolean {
         return this._vibrant;
     }
-
-    static ngAcceptInputType_vibrant: BooleanInput;
-    static ngAcceptInputType_type: BooleanInput;
 }

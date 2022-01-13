@@ -50,7 +50,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     }
 
     @Input()
-    set mayStick(newValue: boolean) {
+    set mayStick(newValue: BooleanInput) {
         if (newValue !== this._mayStick) {
             this._mayStick = coerceBooleanProperty(newValue);
             this._requestCellClippingUpdate$.next(undefined);
@@ -94,6 +94,4 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     _isIntersectionRow(): boolean {
         return this.intersectionCell ? true : false;
     }
-
-    static ngAcceptInputType_mayStick: BooleanInput;
 }

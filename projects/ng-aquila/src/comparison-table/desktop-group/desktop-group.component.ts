@@ -30,7 +30,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
     /** Sets if the row group is expanded. Default: false. */
     @Input()
-    set isExpanded(value: boolean) {
+    set isExpanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
     }
     get isExpanded(): boolean {
@@ -39,7 +39,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
     /** Sets if the expansion cell uses the full row of the table or leaves out the first column. Default: false. */
     @Input()
-    set useFullRowForExpandableArea(value: boolean) {
+    set useFullRowForExpandableArea(value: BooleanInput) {
         this._useFullRowForExpandableArea = coerceBooleanProperty(value);
     }
     get useFullRowForExpandableArea(): boolean {
@@ -117,7 +117,4 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
         }
         return this._table._infoColumnCount();
     }
-
-    static ngAcceptInputType_isExpanded: BooleanInput;
-    static ngAcceptInputType_useFullRowForExpandableArea: BooleanInput;
 }

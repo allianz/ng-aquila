@@ -188,7 +188,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     get disabled(): boolean {
         return !!this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (this._disabled !== newValue) {
@@ -212,7 +212,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     get readonly(): boolean {
         return !!this._readonly;
     }
-    set readonly(value: boolean) {
+    set readonly(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (this._readonly !== newValue) {
@@ -392,7 +392,4 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_readonly: BooleanInput;
 }

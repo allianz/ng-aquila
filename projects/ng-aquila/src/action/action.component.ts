@@ -20,7 +20,7 @@ export class NxActionComponent implements OnDestroy {
 
     /** Whether this action is selected or not.  */
     @Input()
-    set selected(value: boolean) {
+    set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -31,7 +31,7 @@ export class NxActionComponent implements OnDestroy {
 
     /** Whether this action is expandable or not. Will add a caret icon. */
     @Input()
-    set expandable(value: boolean) {
+    set expandable(value: BooleanInput) {
         this._expandable = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -44,7 +44,7 @@ export class NxActionComponent implements OnDestroy {
     Only works in combination with the `expandable` option set to `true`.
    */
     @Input()
-    set expanded(value: boolean) {
+    set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -60,8 +60,4 @@ export class NxActionComponent implements OnDestroy {
     ngOnDestroy() {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
-
-    static ngAcceptInputType_selected: BooleanInput;
-    static ngAcceptInputType_expandable: BooleanInput;
-    static ngAcceptInputType_expanded: BooleanInput;
 }

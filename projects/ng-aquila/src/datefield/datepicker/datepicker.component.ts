@@ -144,7 +144,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     get disabled(): boolean {
         return this._disabled === undefined && this._datepickerInput ? this._datepickerInput.disabled || this._datepickerInput.readonly : !!this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (newValue !== this._disabled) {
@@ -493,6 +493,4 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

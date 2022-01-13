@@ -55,11 +55,9 @@ export class NxHeaderActionsDirective {
         return this._showSeparator;
     }
 
-    set showSeparator(value: boolean) {
+    set showSeparator(value: BooleanInput) {
         this._showSeparator = coerceBooleanProperty(value);
     }
-
-    static ngAcceptInputType_showSeparator: BooleanInput;
 }
 
 /** This component defines the header navigation section within the `<nx-header>` component. */

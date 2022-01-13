@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
 import { NxNumberStepperIntl } from './number-stepper-intl';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { coerceBooleanProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import {
     AfterViewInit,
@@ -103,7 +103,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Whether the input should be resized. Default: false */
     @Input('nxResize')
-    set resize(value: boolean) {
+    set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -156,7 +156,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Sets the step size. Default: 1 */
     @Input('nxStep')
-    set step(value: number) {
+    set step(value: NumberInput) {
         // only internal changes no need to call markForCheck
         this._step = Number(value);
     }
@@ -167,7 +167,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Sets the minimum accepted number. Default: 0 */
     @Input('nxMin')
-    set min(value: number) {
+    set min(value: NumberInput) {
         this._min = Number(value);
     }
 
@@ -177,7 +177,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Sets the maximum accepted number. Default: 100 */
     @Input('nxMax')
-    set max(value: number) {
+    set max(value: NumberInput) {
         this._max = Number(value);
     }
 
@@ -203,7 +203,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Whether the negative set of styling should be used. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         if (this._negative !== value) {
             this._negative = coerceBooleanProperty(value);
             this._changeDetectorRef.markForCheck();
@@ -218,7 +218,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
      * Default value is true.
      */
     @Input()
-    set leadingZero(value: boolean) {
+    set leadingZero(value: BooleanInput) {
         if (this._leadingZero !== value) {
             this._leadingZero = coerceBooleanProperty(value);
             this.setInputValue(this.value);
@@ -234,7 +234,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
      * Default value is false.
      */
     @Input('nxDisabled')
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
 
@@ -481,12 +481,4 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     get _buttonType(): string {
         return 'secondary' + (this.negative ? ' negative' : '');
     }
-
-    static ngAcceptInputType_resize: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_leadingZero: BooleanInput;
-    static ngAcceptInputType_min: number | string | null | undefined;
-    static ngAcceptInputType_max: number | string | null | undefined;
-    static ngAcceptInputType_step: number | string | null | undefined;
 }

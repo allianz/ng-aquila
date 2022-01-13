@@ -31,7 +31,7 @@ export type Appearance = 'light' | 'dark';
 export class NxSidepanelComponent {
     /** Whether the sidepanel should be opened and visible. */
     @Input()
-    set opened(value: boolean) {
+    set opened(value: BooleanInput) {
         this._opened = coerceBooleanProperty(value);
         this._setOpenState(this._opened);
         this._wrapper?._update();
@@ -72,8 +72,6 @@ export class NxSidepanelComponent {
             console.warn(`NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`);
         }
     }
-
-    static ngAcceptInputType_opened: BooleanInput;
 
     private _opened: boolean = true;
 

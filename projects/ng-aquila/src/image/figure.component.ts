@@ -37,12 +37,12 @@ export class NxFigureComponent {
      * The default value  is 'auto'.
      */
     @Input('nxFigure')
-    set classNames(value: FigureType) {
+    set classNames(value: FigureType | string | null | undefined) {
         if (this._classNames === value) {
             return;
         }
 
-        this._classNames = value;
+        this._classNames = value as FigureType; // TODO properly coerce input value
         const sizeRegex = /^(auto|1by1|1dot8by1|1dot2by1|1by1dot1|2dot6by1)$/;
         const [size = null] = this._classNames.match(sizeRegex) || [DEFAULT_SIZE];
         this.size = size as any;
@@ -53,6 +53,4 @@ export class NxFigureComponent {
     get classNames(): FigureType {
         return this._classNames;
     }
-
-    static ngAcceptInputType_classNames: FigureType | string | null | undefined;
 }

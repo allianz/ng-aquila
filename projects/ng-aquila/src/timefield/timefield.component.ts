@@ -84,7 +84,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     private _twelveHourFormat: boolean = false;
     /** Whether to show the time in 12-hour format with AM/PM toggle. Default: false. */
     @Input()
-    set twelveHourFormat(value: boolean) {
+    set twelveHourFormat(value: BooleanInput) {
         this._twelveHourFormat = coerceBooleanProperty(value);
         if (this._twelveHourFormat) {
             this._maxHours = 12;
@@ -172,14 +172,14 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get required(): boolean {
         return this._required;
     }
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
 
     private _negative: boolean = false;
     /** Whether the timefield uses the negative set of styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
@@ -194,14 +194,14 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
 
     /** Whether the timefield is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
             this._changeDetectorRef.markForCheck();
         }
     }
-    get disabled() {
+    get disabled(): boolean {
         return this._disabled;
     }
 
@@ -407,9 +407,4 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
     }
-
-    static ngAcceptInputType_twelveHourFormat: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

@@ -77,7 +77,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     get disabled(): boolean {
         return this._tabGroup && this._tabGroup.disabled ? this._tabGroup.disabled : this._disabled;
     }
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const coercedValue = coerceBooleanProperty(value);
 
         if (this._disabled !== coercedValue) {
@@ -134,6 +134,4 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
             this._headerViewRef.destroy();
         }
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

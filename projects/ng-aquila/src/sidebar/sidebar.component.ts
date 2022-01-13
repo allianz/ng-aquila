@@ -42,7 +42,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
     /** If set to `true` this will enable dynamic resizing of the sidebar. */
     @Input()
-    set resizeable(value: boolean) {
+    set resizeable(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (newValue !== this._resizeable) {
@@ -57,20 +57,20 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
     /** Sets the minimal width (in pixel) of the sidebar. */
     @Input()
-    set minWidth(value: number) {
+    set minWidth(value: NumberInput) {
         this._minWidth = coerceNumberProperty(value) || MIN_WIDTH;
     }
-    get minWidth() {
+    get minWidth(): number {
         return this._minWidth;
     }
     private _minWidth: number = MIN_WIDTH;
 
     /** Sets the maximal width (in pixel) of the sidebar. */
     @Input()
-    set maxWidth(value: number) {
+    set maxWidth(value: NumberInput) {
         this._maxWidth = coerceNumberProperty(value) || MAX_WIDTH;
     }
-    get maxWidth() {
+    get maxWidth(): number {
         return this._maxWidth;
     }
     private _maxWidth: number = MAX_WIDTH;
@@ -91,7 +91,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     /** This reflects the current open state of the sidebar.
       It will be `true` if the sidebar is expanded and `false` if the sidebar is closed.
   */
-    set open(value: boolean) {
+    set open(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (newValue !== this._open) {
@@ -290,9 +290,4 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _removeDragEventListeners() {
         this._unsubscribeListeners.forEach(unsubscribe => unsubscribe());
     }
-
-    static ngAcceptInputType_resizeable: BooleanInput;
-    static ngAcceptInputType_minWidth: NumberInput;
-    static ngAcceptInputType_maxWidth: NumberInput;
-    static ngAcceptInputType_open: BooleanInput;
 }

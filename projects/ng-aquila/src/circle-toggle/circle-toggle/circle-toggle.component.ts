@@ -111,7 +111,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     _checked: boolean = false;
     /** Whether the circle toggle is checked. */
     @Input()
-    set checked(value: boolean) {
+    set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.checked !== newValue) {
             this._checked = newValue;
@@ -211,7 +211,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
 
     /** Whether the circle toggle uses the negative set of styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.negative !== newValue) {
             this._negative = newValue;
@@ -219,7 +219,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
 
-    get negative() {
+    get negative(): boolean {
         return !!this._negative;
     }
 
@@ -227,7 +227,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
 
     /** Whether the circle toggle has a responsive behavior. */
     @Input()
-    set responsive(value: boolean) {
+    set responsive(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.responsive !== newValue) {
             this._responsive = newValue;
@@ -235,7 +235,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
 
-    get responsive() {
+    get responsive(): boolean {
         return !!this._responsive;
     }
 
@@ -243,7 +243,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
 
     /** Whether the circle toggle is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
@@ -251,7 +251,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
 
-    get disabled() {
+    get disabled(): boolean {
         return !!this._disabled;
     }
 
@@ -415,9 +415,4 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
             this.toggle(event);
         }
     }
-
-    static ngAcceptInputType_checked: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_responsive: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

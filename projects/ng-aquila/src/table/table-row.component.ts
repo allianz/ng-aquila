@@ -22,7 +22,7 @@ import { SPACE } from '@angular/cdk/keycodes';
 export class NxTableRowComponent {
     /** Whether this table row is selectable */
     @Input()
-    set selectable(value: boolean) {
+    set selectable(value: BooleanInput) {
         this._selectable = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -33,7 +33,7 @@ export class NxTableRowComponent {
 
     /** Whether this table row is selected */
     @Input()
-    set selected(value: boolean) {
+    set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -82,7 +82,4 @@ export class NxTableRowComponent {
 
         return false;
     }
-
-    static ngAcceptInputType_selectable: BooleanInput;
-    static ngAcceptInputType_selected: BooleanInput;
 }

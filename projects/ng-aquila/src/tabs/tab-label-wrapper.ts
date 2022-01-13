@@ -15,7 +15,7 @@ export class NxTabLabelWrapperDirective implements FocusableOption {
         return this._disabled;
     }
 
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
@@ -25,6 +25,4 @@ export class NxTabLabelWrapperDirective implements FocusableOption {
     focus(): void {
         this.elementRef.nativeElement.focus();
     }
-
-    static ngAcceptInputType_disabled: BooleanInput;
 }

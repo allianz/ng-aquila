@@ -34,7 +34,7 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     @Input()
-    set active(value: boolean) {
+    set active(value: BooleanInput) {
         this._active = coerceBooleanProperty(value);
     }
     get active(): boolean {
@@ -66,6 +66,4 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
             this._outlet.detach(index);
         }
     }
-
-    static ngAcceptInputType_active: BooleanInput;
 }

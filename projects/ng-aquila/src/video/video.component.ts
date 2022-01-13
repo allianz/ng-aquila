@@ -74,7 +74,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
 
     /** Sets player controls. If set to false, player controls are not available. */
     @Input('nxShowPlayerControls')
-    set showPlayerControls(value: boolean) {
+    set showPlayerControls(value: BooleanInput) {
         this._showPlayerControls = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -86,7 +86,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
 
     /** Sets fullscreen option. If set to false, fullscreen option is not available. */
     @Input('nxAllowFullScreen')
-    set allowFullScreen(value: boolean) {
+    set allowFullScreen(value: BooleanInput) {
         this._allowFullScreen = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -152,7 +152,4 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         const defaultLabel = this.altText ? `${this.altText} - Play Video` : 'Play Video';
         return this.nxPlayButtonAriaLabel ? this.nxPlayButtonAriaLabel : defaultLabel;
     }
-
-    static ngAcceptInputType_showPlayerControls: BooleanInput;
-    static ngAcceptInputType_allowFullScreen: BooleanInput;
 }

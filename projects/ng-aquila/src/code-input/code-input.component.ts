@@ -81,7 +81,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
     /** Whether the code input uses the negative set of styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
@@ -96,7 +96,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
     /** Whether the code input is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
@@ -396,7 +396,4 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
             }
         }
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
 }

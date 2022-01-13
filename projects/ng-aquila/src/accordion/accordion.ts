@@ -34,12 +34,10 @@ export class NxAccordionDirective extends CdkAccordion {
 
     /** Whether the negative set of styles should be used. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
     get negative(): boolean {
         return !!this._negative;
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
 }

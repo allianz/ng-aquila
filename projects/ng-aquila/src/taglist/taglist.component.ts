@@ -57,7 +57,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _tabindex: number = -1;
     /** Sets the tabindex of the contained tags. Default value: -1. */
     @Input()
-    set tabindex(value: number) {
+    set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -68,7 +68,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _allowTagDeletion: boolean = true;
     /** Whether the tags can be removed from the list. Default: true. */
     @Input('nxAllowTagDeletion')
-    set allowTagDeletion(value: boolean) {
+    set allowTagDeletion(value: BooleanInput) {
         this._allowTagDeletion = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -79,7 +79,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _isKeywordList: boolean = false;
     /** Whether the tags can be styled as keywords. */
     @Input('nxIsKeywordList')
-    set isKeywordList(value: boolean) {
+    set isKeywordList(value: BooleanInput) {
         this._isKeywordList = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -192,8 +192,4 @@ export class NxTaglistComponent implements ControlValueAccessor {
     tagClick(index: number, value: any) {
         this.tagClickEvent.emit(this.tags[index]);
     }
-
-    static ngAcceptInputType_tabindex: NumberInput;
-    static ngAcceptInputType_allowTagDeletion: BooleanInput;
-    static ngAcceptInputType_isKeywordList: BooleanInput;
 }

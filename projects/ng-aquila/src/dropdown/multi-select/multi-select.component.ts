@@ -89,10 +89,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     /** Whether the multi select should be read only. */
     @Input()
-    get readonly() {
+    get readonly(): boolean {
         return this._readonly;
     }
-    set readonly(value: boolean) {
+    set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
@@ -111,10 +111,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
      * Whether this multi select can be filtered.
      */
     @Input()
-    set filter(value: boolean) {
+    set filter(value: BooleanInput) {
         this._filter = coerceBooleanProperty(value);
     }
-    get filter() {
+    get filter(): boolean {
         return this._filter;
     }
 
@@ -159,9 +159,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             !this.listItems.some(option => this._selectValue(option) === this._keyManager.activeItem?.value)
         );
     }
-
-    static ngAcceptInputType_filter: BooleanInput;
-    static ngAcceptInputType_readonly: BooleanInput;
 
     @ViewChildren(NxMultiSelectOptionComponent)
     private _options!: QueryList<NxMultiSelectOptionComponent<T>>;

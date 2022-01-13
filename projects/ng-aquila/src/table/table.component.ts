@@ -28,7 +28,7 @@ export class NxTableComponent {
     constructor(private _changeDetectorRef: ChangeDetectorRef) {}
 
     /** Change the table mode to condensed  */
-    @Input() set condensed(value: boolean) {
+    @Input() set condensed(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (value !== this._condensed) {
@@ -42,7 +42,7 @@ export class NxTableComponent {
     }
 
     /** Change the table mode to zebra  */
-    @Input() set zebra(value: boolean) {
+    @Input() set zebra(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (value !== this._zebra) {
             this._zebra = newValue;
@@ -67,7 +67,4 @@ export class NxTableComponent {
     get sticky(): string {
         return this._sticky;
     }
-
-    static ngAcceptInputType_condensed: BooleanInput;
-    static ngAcceptInputType_zebra: BooleanInput;
 }

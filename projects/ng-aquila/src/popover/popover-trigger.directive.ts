@@ -91,7 +91,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Whether to show or hide the popover. */
     @Input('nxPopoverShow')
-    set show(value: boolean) {
+    set show(value: BooleanInput) {
         value = coerceBooleanProperty(value);
         if (this._show !== value) {
             this._show = value;
@@ -109,7 +109,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Whether to show a close button. By default a close icon is only shown for trigger type click. */
     @Input('nxPopoverCloseable')
-    set closeable(value: boolean) {
+    set closeable(value: BooleanInput) {
         this._closeable = coerceBooleanProperty(value);
 
         if (this.popover) {
@@ -122,7 +122,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Whether the popover should be closed on click outside of the popover in the trigger modes 'manual' and 'click'. */
     @Input()
-    set closeOnClickOutside(value: boolean) {
+    set closeOnClickOutside(value: BooleanInput) {
         this._closeOnClickOutside = coerceBooleanProperty(value);
     }
     get closeOnClickOutside(): boolean {
@@ -149,7 +149,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Whether the popover opens in modal state. */
     @Input('nxPopoverModal')
-    set modal(value: boolean) {
+    set modal(value: BooleanInput) {
         this._modal = coerceBooleanProperty(value);
     }
     get modal(): boolean {
@@ -717,9 +717,4 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     get isRtl(): boolean {
         return this._dir?.value === 'rtl';
     }
-
-    static ngAcceptInputType_show: BooleanInput;
-    static ngAcceptInputType_closeable: BooleanInput;
-    static ngAcceptInputType_closeOnClickOutside: BooleanInput;
-    static ngAcceptInputType_modal: BooleanInput;
 }

@@ -136,7 +136,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** Whether the file uploader is required. */
     @Input()
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
     get required(): boolean {
@@ -163,7 +163,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** Whether the file uploader is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         if (this.button) {
             this.button.disabled = this._disabled;
@@ -181,7 +181,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** Whether the file uploader accepts multiple files to be added. */
     @Input()
-    set multiple(value: boolean) {
+    set multiple(value: BooleanInput) {
         this._multiple = coerceBooleanProperty(value);
     }
     get multiple(): boolean {
@@ -199,7 +199,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** The max file size in bytes used for validation */
     @Input()
-    set maxFileSize(value: number) {
+    set maxFileSize(value: NumberInput) {
         this._maxFileSize = coerceNumberProperty(value);
     }
     get maxFileSize(): number {
@@ -219,7 +219,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** The max number of files that is accepted. */
     @Input()
-    set maxFileNumber(value: number) {
+    set maxFileNumber(value: NumberInput) {
         this._maxFileNumber = coerceNumberProperty(value);
     }
     get maxFileNumber(): number {
@@ -567,11 +567,4 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             });
         }
     }
-
-    static ngAcceptInputType_maxFileSize: NumberInput;
-    static ngAcceptInputType_multiple: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
-    static ngAcceptInputType_uploadSeparately: BooleanInput;
-    static ngAcceptInputType_maxFileNumber: NumberInput;
 }

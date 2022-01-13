@@ -36,7 +36,7 @@ export class NxLabelComponent {
 
     /** Sets the label to disabled */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._stateChanges.next();
     }
@@ -47,7 +47,7 @@ export class NxLabelComponent {
 
     /** Sets the label to disabled */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._stateChanges.next();
     }
@@ -93,7 +93,4 @@ export class NxLabelComponent {
     }
 
     constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions, private _changeDetectorRef: ChangeDetectorRef) {}
-
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
 }

@@ -41,7 +41,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
 
     /** Whether the component uses the negative styling. */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -77,6 +77,4 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
         this._destroyed.next();
         this._destroyed.complete();
     }
-
-    static ngAcceptInputType_negative: BooleanInput;
 }

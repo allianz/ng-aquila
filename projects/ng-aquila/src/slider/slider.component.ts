@@ -77,7 +77,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _tabIndex: number = 0;
     /** Sets the tabindex of the slider. */
     @Input()
-    set tabindex(value: number) {
+    set tabindex(value: NumberInput) {
         this._tabIndex = coerceNumberProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -88,7 +88,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _min: number = DEFAULT_MIN;
     /** Sets the minimum value (Default: 0). */
     @Input('nxMin')
-    set min(value: number) {
+    set min(value: NumberInput) {
         this._min = coerceNumberProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -99,7 +99,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _max: number = DEFAULT_MAX;
     /** Sets the maximum value (Default: 100). */
     @Input('nxMax')
-    set max(value: number) {
+    set max(value: NumberInput) {
         this._max = coerceNumberProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -112,7 +112,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     get step(): number {
         return this._step;
     }
-    set step(value: number) {
+    set step(value: NumberInput) {
         this._step = coerceNumberProperty(value, this._step);
 
         if (this._step % 1 !== 0) {
@@ -136,7 +136,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _disabled: boolean = false;
     /** Whether the input to the control of the slider should be disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -147,7 +147,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _inverted: boolean = false;
     /** Whether the max value is to the right (false) or left (true).*/
     @Input('nxInverted')
-    set inverted(value: boolean) {
+    set inverted(value: BooleanInput) {
         this._inverted = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -158,7 +158,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _thumbLabel: boolean = true;
     /** Whether to display the thumb label on top of the slider.*/
     @Input()
-    set thumbLabel(value: boolean) {
+    set thumbLabel(value: BooleanInput) {
         this._thumbLabel = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -169,7 +169,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _negative: boolean = false;
     /** Whether the negative set of styles is applied (Default: 'false').*/
     @Input('negative')
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -180,7 +180,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _hideLabels: boolean = false;
     /** Hides the min/max labels (Default: 'false'). */
     @Input('hideLabels')
-    set hideLabels(value: boolean) {
+    set hideLabels(value: BooleanInput) {
         this._hideLabels = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -224,7 +224,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** Sets the current value of the slider. */
     @Input('nxValue')
-    set value(value: number) {
+    set value(value: NumberInput) {
         this.writeValue(Number(value));
     }
 
@@ -525,15 +525,4 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     _focusHandleElement() {
         this.handleElement.nativeElement.focus();
     }
-
-    static ngAcceptInputType_tabindex: NumberInput;
-    static ngAcceptInputType_min: NumberInput;
-    static ngAcceptInputType_max: NumberInput;
-    static ngAcceptInputType_step: NumberInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_inverted: BooleanInput;
-    static ngAcceptInputType_thumbLabel: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_value: NumberInput;
-    static ngAcceptInputType_hideLabels: BooleanInput;
 }

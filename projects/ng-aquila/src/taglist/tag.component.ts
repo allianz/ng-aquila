@@ -19,7 +19,7 @@ export class NxTagComponent implements OnDestroy {
 
     /** Whether the tag is removeable. */
     @Input()
-    set removable(value: boolean) {
+    set removable(value: BooleanInput) {
         this._removable = coerceBooleanProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -34,7 +34,7 @@ export class NxTagComponent implements OnDestroy {
      * If `nxAllowTagDeletion` of the taglist is set to true, the default value is 0.
      */
     @Input()
-    set tabindex(value: number) {
+    set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
         this._changeDetectorRef.markForCheck();
     }
@@ -92,7 +92,4 @@ export class NxTagComponent implements OnDestroy {
     tagClickHandler() {
         this.clicked.emit(this.value);
     }
-
-    static ngAcceptInputType_removable: BooleanInput;
-    static ngAcceptInputType_tabindex: NumberInput;
 }

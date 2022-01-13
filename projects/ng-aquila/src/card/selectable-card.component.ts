@@ -118,7 +118,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
     /** Whether the selectable card  is checked. */
     @Input()
-    set checked(value: boolean) {
+    set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._checked) {
             this._checked = newValue;
@@ -126,7 +126,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         }
     }
 
-    get checked() {
+    get checked(): boolean {
         return this._checked;
     }
 
@@ -146,7 +146,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
     /** Whether the selectable card is disabled. */
     @Input()
-    set disabled(value: boolean) {
+    set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
@@ -164,7 +164,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
      * @deletion-target 12.0.0
      */
     @Input()
-    set negative(value: boolean) {
+    set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
@@ -181,8 +181,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     get required(): boolean {
         return !!this._required;
     }
-
-    set required(value: boolean) {
+    set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
 
@@ -326,9 +325,4 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     private _getErrorListIds(): string {
         return this._errorList.map((errorItem: NxErrorComponent) => errorItem.id).join(' ');
     }
-
-    static ngAcceptInputType_checked: BooleanInput;
-    static ngAcceptInputType_disabled: BooleanInput;
-    static ngAcceptInputType_negative: BooleanInput;
-    static ngAcceptInputType_required: BooleanInput;
 }

@@ -33,7 +33,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     get level(): number {
         return this._level;
     }
-    set level(value: number) {
+    set level(value: NumberInput) {
         this._level = coerceNumberProperty(value);
         this._setPadding();
     }
@@ -44,7 +44,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     get offset(): number {
         return this._offset;
     }
-    set offset(value: number) {
+    set offset(value: NumberInput) {
         this._offset = coerceNumberProperty(value);
         this._setPadding();
     }
@@ -55,10 +55,10 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
      * Default number 24px from material design menu sub-menu spec.
      */
     @Input('nxTreeNodePaddingIndent')
-    get indent(): number | string {
+    get indent(): number {
         return this._indent;
     }
-    set indent(indent: number | string) {
+    set indent(indent: NumberInput) {
         let value = indent;
         let units = 'px';
 
@@ -116,8 +116,4 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
             this._currentPadding = padding;
         }
     }
-
-    static ngAcceptInputType_level: NumberInput;
-    static ngAcceptInputType_offset: NumberInput;
-    static ngAcceptInputType_indent: NumberInput;
 }
