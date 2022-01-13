@@ -47,7 +47,7 @@ export class NxErrorComponent implements OnDestroy {
     @Input()
     set showIcon(value: BooleanInput) {
         this._showIcon = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get showIcon(): boolean {
         return this._showIcon;
@@ -62,7 +62,7 @@ export class NxErrorComponent implements OnDestroy {
     set id(value: string) {
         if (value && value !== this._id) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -79,17 +79,17 @@ export class NxErrorComponent implements OnDestroy {
     set appearance(value: ErrorStyleType) {
         if (value !== this.appearance) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get appearance(): ErrorStyleType {
         return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'message';
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions) {
+    constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions) {
         if (this._defaultOptions && this._defaultOptions.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         }
     }

@@ -24,7 +24,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
     set isExpanded(value: BooleanInput) {
         this._isExpanded = coerceBooleanProperty(value);
         this.expanded.next(this._isExpanded);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get isExpanded() {
         return this._isExpanded;
@@ -32,7 +32,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
 
     expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /**
      * Toggles the expansion of this row.
@@ -51,7 +51,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
     expand() {
         if (!this.expanded.value) {
             this.expanded.next(true);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -61,7 +61,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
     close() {
         if (this.expanded.value) {
             this.expanded.next(false);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 }

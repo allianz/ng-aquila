@@ -22,7 +22,7 @@ export class NxActionComponent implements OnDestroy {
     @Input()
     set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get selected() {
         return this._selected;
@@ -33,7 +33,7 @@ export class NxActionComponent implements OnDestroy {
     @Input()
     set expandable(value: BooleanInput) {
         this._expandable = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get expandable() {
         return this._expandable;
@@ -46,14 +46,14 @@ export class NxActionComponent implements OnDestroy {
     @Input()
     set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get expanded() {
         return this._expanded;
     }
     private _expanded: boolean = false;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

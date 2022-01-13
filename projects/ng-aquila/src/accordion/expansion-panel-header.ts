@@ -32,7 +32,7 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
 
     constructor(
         /** @docs-private */ @Host() public panel: NxExpansionPanelComponent,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _focusMonitor: FocusMonitor,
     ) {
@@ -40,7 +40,7 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
             panel.opened,
             panel.closed,
             panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))),
-        ).subscribe(() => this._changeDetectorRef.markForCheck());
+        ).subscribe(() => this._cdr.markForCheck());
 
         this._focusMonitor.monitor(this._elementRef);
     }

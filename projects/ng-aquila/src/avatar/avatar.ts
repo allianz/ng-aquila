@@ -28,14 +28,14 @@ export class NxAvatarComponent {
     set size(size: NxAvatarSize) {
         if (this._size !== size) {
             this._size = size;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get size(): NxAvatarSize {
         return this._size;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 }
 
 @Directive({

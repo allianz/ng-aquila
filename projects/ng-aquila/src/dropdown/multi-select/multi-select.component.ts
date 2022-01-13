@@ -139,7 +139,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     constructor(
         private _elementRef: ElementRef,
         private _errorStateMatcher: ErrorStateMatcher,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() private _formFieldComponent: NxFormfieldComponent,
         @Self() @Optional() public ngControl: NgControl,
         @Optional() private _parentForm: NgForm,
@@ -457,7 +457,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
                 this._keyManager.setFirstItemActive();
                 this._scrollActiveOptionIntoView();
             }
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
@@ -497,7 +497,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
                 }
             }
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     registerOnChange(fn: any): void {

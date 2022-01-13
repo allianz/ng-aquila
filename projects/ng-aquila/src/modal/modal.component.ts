@@ -55,7 +55,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     set closeButtonLabel(value: string) {
         if (value !== this._closeButtonLabel) {
             this._closeButtonLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get closeButtonLabel(): string {
@@ -105,7 +105,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private modalService: NxModalService,
         private eventManager: EventManager,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {}
 

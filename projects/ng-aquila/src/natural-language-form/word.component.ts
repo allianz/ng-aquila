@@ -80,7 +80,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     constructor(
         /** @docs-private */
         public elementRef: ElementRef,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _renderer: Renderer2,
         private _overlay: Overlay,
         private _viewContainerRef: ViewContainerRef,
@@ -96,7 +96,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         this.subscription = this._control.stateChanges.pipe(startWith(null)).subscribe(() => {
             this._hasErrors = this._control.errorState;
             this.updateErrorPopoverState();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
 
         // if we have a ngcontrol available stick to its valueChanges subject

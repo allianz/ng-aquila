@@ -81,7 +81,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -130,7 +130,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         @Inject(NxDropdownControl) private _dropdown: NxDropdownControl,
         /** @docs-private */
         @Optional() readonly group: NxDropdownGroupComponent,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _elementRef: ElementRef,
     ) {
         this._dropdown.filterChanges.pipe(takeUntil(this._destroy)).subscribe(value => {
@@ -183,7 +183,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         if (!this.disabled) {
             this._selected = this.multiselect ? !this._selected : true;
             this._updateViewValue();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this._emitSelectionChangeEvent(true);
         }
     }
@@ -201,19 +201,19 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     /** @docs-private */
     show() {
         this._hidden = false;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
     hide() {
         this._hidden = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     private _showOrHideByFilter(search: string) {
         const constraint = this._dropdown.filterFn(search, this.viewValue);
         this._hidden = constraint ? false : true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get _formattedValue() {
@@ -233,7 +233,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     select() {
         if (!this._selected && !this.disabled) {
             this._selected = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this._emitSelectionChangeEvent();
         }
     }
@@ -242,14 +242,14 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     deselect() {
         if (this._selected) {
             this._selected = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this._emitSelectionChangeEvent();
         }
     }
 
     _initSelected(selected: boolean) {
         this._selected = selected;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
@@ -264,13 +264,13 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     /** @docs-private */
     setActiveStyles(): void {
         this._active = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
     setInactiveStyles(): void {
         this._active = false;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /**
@@ -292,7 +292,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         // gets hidden again.
         // Notice(!): the event of (cdkObserveContent) is run outside of the ngZone
         // We run detectChanges directly here as markForCheck wasn't enough to always trigger change detection correctly
-        this._changeDetectorRef.detectChanges();
+        this._cdr.detectChanges();
     }
 
     /** Returns the correct tabindex for the option depending on disabled state. */

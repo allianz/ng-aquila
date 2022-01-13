@@ -419,7 +419,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _elementRef: ElementRef,
         private _ngZone: NgZone,
         @Attribute('tabindex') tabIndex: string,
@@ -548,7 +548,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
                 // the combination of dropdown-item notifying parent and when the parent
                 // tries to fetch the triggerValue from the child throws these errors
                 setTimeout(() => {
-                    this._changeDetectorRef.markForCheck();
+                    this._cdr.markForCheck();
                     this.stateChanges.next();
                 });
             });
@@ -622,7 +622,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             this._selectValue(value);
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /**
@@ -666,7 +666,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this.valueChange.emit(valueToEmit);
         this._onChange(valueToEmit);
         this.selectionChange.emit(new NxDropdownSelectChange(this, valueToEmit));
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Sorts the selected values in the selected based on their order in the panel. */
@@ -712,14 +712,14 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         });
 
         this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Closes the panel of the dropdown. */
     closePanel() {
         if (this._panelOpen) {
             this._panelOpen = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this._onTouched();
             this.openedChange.emit(false);
             // defer the focus if the dropdown triggers actions that detach
@@ -862,7 +862,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      */
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this.stateChanges.next();
     }
     /** End ControlValueAccessor */
@@ -1013,7 +1013,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             positionStrategy.withPositions(this._positions);
             overlayRef.updatePosition();
 
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this.openedChange.emit(true);
 
             if (this.showFilter) {
@@ -1044,7 +1044,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
         if (!this.disabled && !this.panelOpen) {
             this._onTouched();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this.stateChanges.next();
         }
     }

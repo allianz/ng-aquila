@@ -49,7 +49,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
         return this._viewType;
     }
 
-    constructor(private viewportService: NxViewportService, protected _cdRef: ChangeDetectorRef) {
+    constructor(private viewportService: NxViewportService, protected _cdr: ChangeDetectorRef) {
         const mobile$ = this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM);
         const tablet$ = this.viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE);
         const desktop$ = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE);
@@ -80,7 +80,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
                 // viewType but because the description cell is part of ng-content it is not checked
                 // when the comparison table view is checked but only when the component where the ng-content
                 // gets declared is checked
-                this._cdRef.markForCheck();
+                this._cdr.markForCheck();
             });
     }
 

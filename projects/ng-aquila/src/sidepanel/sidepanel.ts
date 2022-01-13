@@ -35,7 +35,7 @@ export class NxSidepanelComponent {
         this._opened = coerceBooleanProperty(value);
         this._setOpenState(this._opened);
         this._wrapper?._update();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get opened(): boolean {
         return this._opened;
@@ -45,7 +45,7 @@ export class NxSidepanelComponent {
     @Input()
     set position(value: PositionType) {
         this._position = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this._wrapper?._update();
     }
     get position(): PositionType {
@@ -56,14 +56,14 @@ export class NxSidepanelComponent {
     @Input()
     set appearance(value: Appearance) {
         this._appearance = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get appearance(): Appearance {
         return this._appearance;
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         protected _elementRef: ElementRef,
         private _dir: Directionality,
         @Optional() public _wrapper: NxSidepanelOuterContainerComponent,
@@ -151,14 +151,14 @@ export class NxSidepanelComponent {
 export class NxSidepanelOuterContainerComponent {
     @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;
 
-    constructor(@Optional() private _dir: Directionality, private _changeDetectorRef: ChangeDetectorRef) {
+    constructor(@Optional() private _dir: Directionality, private _cdr: ChangeDetectorRef) {
         this._dir.change.subscribe(() => {
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
     _update() {
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** The text direction of the containing app. */

@@ -83,12 +83,12 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
 
     constructor(
         private _wrapperDiffers: IterableDiffers,
-        private _wrapperChangeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() private dir: Directionality,
         protected _elementRef: ElementRef,
         protected _focusMonitor: FocusMonitor,
     ) {
-        super(_wrapperDiffers, _wrapperChangeDetectorRef);
+        super(_wrapperDiffers, _cdr);
     }
 
     ngOnInit() {
@@ -412,7 +412,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
                 const newTabIndex = origin ? -1 : this._userTabIndex || 0;
                 if (this._tabIndex !== newTabIndex) {
                     this._tabIndex = newTabIndex;
-                    this._wrapperChangeDetectorRef.markForCheck();
+                    this._cdr.markForCheck();
                 }
             });
     }

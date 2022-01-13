@@ -81,7 +81,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
             }
             this._itemsSubscription = val.subscribe(itms => {
                 this._items = itms;
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
                 // and check visibility in next cycle, when options are set
                 setTimeout(() => this._setVisibility());
             });
@@ -154,7 +154,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     @Input('nxValueFormatter')
     public valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent) {}
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent) {}
 
     ngAfterViewInit(): void {
         this._keyManager = new ActiveDescendantKeyManager<NxAutocompleteOptionComponent>(this.options).withWrap();
@@ -187,7 +187,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
         this.showPanel = !!(this.options && this.options.length);
         this._classList['nx-autocomplete-visible'] = this.showPanel;
         this._classList['nx-autocomplete-hidden'] = !this.showPanel;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Emits the `select` event. */

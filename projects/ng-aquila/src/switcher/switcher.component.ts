@@ -58,7 +58,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @Input()
     set id(value: string) {
         this._id = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
@@ -69,7 +69,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @Input()
     set labelPosition(value: POSITION) {
         this._labelPosition = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get labelPosition(): POSITION {
         return this._labelPosition;
@@ -80,7 +80,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @Input()
     set name(value: string) {
         this._name = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get name(): string {
         return this._name as string;
@@ -91,7 +91,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @Input()
     set checked(value: boolean) {
         this._checked = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get checked(): boolean {
         return this._checked;
@@ -103,7 +103,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     set big(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._big = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get big(): boolean {
         return this._big;
@@ -114,7 +114,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @Input()
     set labelSize(value: LABEL_SIZE) {
         this._labelSize = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get labelSize(): LABEL_SIZE {
         return this._labelSize;
@@ -126,7 +126,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._negative = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get negative(): boolean {
         return this._negative;
@@ -138,7 +138,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._disabled = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -151,7 +151,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     private onTouchedCallback = () => {};
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Self() public ngControl: NgControl,
         private _errorStateMatcher: ErrorStateMatcher,
         @Optional() private _parentForm: NgForm,
@@ -241,6 +241,6 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
      * Callback for when the content of the label has changed.
      */
     labelContentChanged() {
-        this._changeDetectorRef.detectChanges();
+        this._cdr.detectChanges();
     }
 }

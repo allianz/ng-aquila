@@ -107,7 +107,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     set floatLabel(value: FloatLabelType) {
         if (value !== this._floatLabel) {
             this._floatLabel = value || 'auto';
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     private _floatLabel!: FloatLabelType;
@@ -142,7 +142,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     set appearance(value: AppearanceType) {
         if (this._appearance !== value) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get appearance(): AppearanceType {
@@ -162,7 +162,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         /** @docs-private */
         public elementRef: ElementRef,
         private renderer: Renderer2,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions,
     ) {}
 
@@ -184,7 +184,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         subscription = this._control.stateChanges.pipe(startWith(null)).subscribe(() => {
             Promise.resolve().then(() => {
                 this._syncDescribedByIds();
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         });
 
@@ -193,7 +193,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         subscription = merge(this._hintChildren.changes, this._appendixChildren.changes, this._prefixChildren.changes, this._suffixChildren.changes)
             .pipe(startWith(null))
             .subscribe(() => {
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
 
         this._subscriptions.add(subscription);
@@ -202,7 +202,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         subscription = this._errorChildren.changes.pipe(startWith(null)).subscribe(() => {
             Promise.resolve().then(() => {
                 this._syncDescribedByIds();
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         });
         this._subscriptions.add(subscription);

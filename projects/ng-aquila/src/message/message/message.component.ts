@@ -78,7 +78,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._closable) {
             this._closable = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get closable(): boolean {
@@ -92,7 +92,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     set closeButtonLabel(value: string) {
         if (value !== this._closeButtonLabel) {
             this._closeButtonLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get closeButtonLabel(): string {
@@ -102,7 +102,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     /** Event emitted when the close icon of the message has been clicked. */
     @Output('close') closeEvent = new EventEmitter<void>();
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit() {
         if (this.closable) {
@@ -127,7 +127,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     _updateContext(value: CONTEXT) {
         if (value !== this._context) {
             this._context = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 }

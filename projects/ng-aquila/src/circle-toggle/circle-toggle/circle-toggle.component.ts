@@ -77,7 +77,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
      */
     set id(value: string) {
         this._id = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
@@ -89,7 +89,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set name(value: string) {
         this._name = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get name(): string {
         return this._name as string;
@@ -115,7 +115,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         const newValue = coerceBooleanProperty(value);
         if (this.checked !== newValue) {
             this._checked = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get checked(): boolean {
@@ -128,7 +128,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set value(newValue: string) {
         this._value = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get value(): string {
         return this._value as string;
@@ -139,7 +139,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input('icon')
     set iconName(name: string) {
         this._iconName = name;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get iconName(): string {
         return this._iconName as string;
@@ -151,7 +151,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set svg(src: string) {
         this._svg = src;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get svg(): string {
         return this._svg as string;
@@ -163,7 +163,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set svgChecked(src: string) {
         this._svgChecked = src;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get svgChecked(): string {
         return this._svgChecked as string;
@@ -176,7 +176,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     set circleText(value: string) {
         if (value !== this._circleText) {
             this._circleText = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get circleText(): string {
@@ -189,7 +189,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set label(value: string) {
         this._label = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get label(): string {
         return this._label as string;
@@ -201,7 +201,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Input()
     set hint(value: string) {
         this._hint = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get hint(): string {
         return this._hint as string;
@@ -215,7 +215,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         const newValue = coerceBooleanProperty(value);
         if (this.negative !== newValue) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -231,7 +231,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         const newValue = coerceBooleanProperty(value);
         if (this.responsive !== newValue) {
             this._responsive = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -247,7 +247,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -291,7 +291,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     constructor(
         /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent,
         private _checkedDispatcher: UniqueSelectionDispatcher,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
         super();

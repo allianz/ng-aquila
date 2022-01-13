@@ -16,7 +16,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
     /** @docs-private */
     disabled = false;
 
-    constructor(_stepper: CdkStepper, private changeDetectorRef: ChangeDetectorRef) {
+    constructor(_stepper: CdkStepper, private _cdr: ChangeDetectorRef) {
         super(_stepper);
     }
 
@@ -32,7 +32,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
         const stepper = this._stepper as any as NxProgressStepperDirective;
         if (this.disabled !== !stepper.hasNext) {
             this.disabled = !stepper.hasNext;
-            this.changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 }

@@ -74,15 +74,15 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
 
     @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 
-    constructor(public _changeDetectorRef: ChangeDetectorRef, _dir: Directionality, @Optional() public _tabGroup: NxTabGroupBase, _element: ElementRef) {
-        super(_changeDetectorRef, _dir, _element);
+    constructor(public _cdr: ChangeDetectorRef, _dir: Directionality, @Optional() public _tabGroup: NxTabGroupBase, _element: ElementRef) {
+        super(_cdr, _dir, _element);
     }
 
     ngAfterContentInit() {
         super.ngAfterContentInit();
         this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels).withHorizontalOrientation('ltr').withWrap();
         this._keyManager.updateActiveItem(0);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _isValidIndex(idx: number) {
         if (!this.labels) {

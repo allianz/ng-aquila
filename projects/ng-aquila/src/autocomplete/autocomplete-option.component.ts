@@ -80,7 +80,7 @@ export class NxAutocompleteOptionComponent {
     /** Event emitted when the option is selected or deselected. */
     @Output() readonly onSelectionChange = new EventEmitter<NxAutocompleteOptionSelected>();
 
-    constructor(/** @docs-private */ public elementRef: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(/** @docs-private */ public elementRef: ElementRef, private _cdr: ChangeDetectorRef) {}
 
     /** Ensures the option is selected when activated from the keyboard. */
     _handleKeydown(event: KeyboardEvent): void {
@@ -99,7 +99,7 @@ export class NxAutocompleteOptionComponent {
     _selectViaInteraction(): void {
         if (!this.disabled) {
             this._selected = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this._emitSelectionChangeEvent(true);
         }
     }
@@ -128,7 +128,7 @@ export class NxAutocompleteOptionComponent {
     setActiveStyles(): void {
         if (!this._active) {
             this._active = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -141,7 +141,7 @@ export class NxAutocompleteOptionComponent {
     setInactiveStyles(): void {
         if (this._active) {
             this._active = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -156,14 +156,14 @@ export class NxAutocompleteOptionComponent {
     /** Selects the option. */
     select(): void {
         this._selected = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this._emitSelectionChangeEvent();
     }
 
     /** Deselects the option. */
     deselect(): void {
         this._selected = false;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this._emitSelectionChangeEvent();
     }
 

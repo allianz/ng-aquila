@@ -105,7 +105,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     @Input('nxResize')
     set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get resize(): boolean {
         return this._resize;
@@ -120,7 +120,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     set label(value: string) {
         if (this._label !== value) {
             this._label = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -198,7 +198,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         } else {
             this.setInputValue(0);
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Whether the negative set of styling should be used. */
@@ -206,7 +206,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     set negative(value: BooleanInput) {
         if (this._negative !== value) {
             this._negative = coerceBooleanProperty(value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get negative(): boolean {
@@ -222,7 +222,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         if (this._leadingZero !== value) {
             this._leadingZero = coerceBooleanProperty(value);
             this.setInputValue(this.value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get leadingZero(): boolean {
@@ -242,9 +242,9 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         return this._disabled;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, public _intl: NxNumberStepperIntl) {
+    constructor(private _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, public _intl: NxNumberStepperIntl) {
         super(SIZE_MAPPING, DEFAULT_CLASSES, _elementRef, _renderer);
-        this._intlSubscription = this._intl.changes.subscribe(() => this._changeDetectorRef.markForCheck());
+        this._intlSubscription = this._intl.changes.subscribe(() => this._cdr.markForCheck());
     }
 
     ngAfterViewInit() {
@@ -303,7 +303,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
      */
     setDisabledState(isDisabled: boolean): void {
         this._disabled = isDisabled;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
@@ -358,7 +358,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     triggerResize() {
         if (this.resize) {
             this.autoResize.updateInputWidth();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

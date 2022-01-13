@@ -188,7 +188,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         @Optional() private _dateAdapter: NxDateAdapter<D>,
         @Optional() private _dir: Directionality,
         @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
-        changeDetectorRef: ChangeDetectorRef,
+        _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
         if (!this._dateAdapter) {
@@ -199,7 +199,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
             throw createMissingDateImplError('MAT_DATE_FORMATS');
         }
 
-        this._intlChanges = _intl.changes.subscribe(() => changeDetectorRef.markForCheck());
+        this._intlChanges = _intl.changes.subscribe(() => _cdr.markForCheck());
     }
 
     ngAfterContentInit() {

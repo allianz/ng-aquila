@@ -101,11 +101,11 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
 
     constructor(
         @Optional() @SkipSelf() accordion: NxAccordionDirective,
-        _changeDetectorRef: ChangeDetectorRef,
+        _cdr: ChangeDetectorRef,
         _expansionDispatcher: UniqueSelectionDispatcher,
         private _viewContainerRef: ViewContainerRef,
     ) {
-        super(accordion, _changeDetectorRef, _expansionDispatcher);
+        super(accordion, _cdr, _expansionDispatcher);
         this.accordion = accordion;
     }
 

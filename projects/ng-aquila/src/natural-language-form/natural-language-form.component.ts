@@ -67,13 +67,13 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     @Input()
     set size(value: NxNaturalLanguageFormSize) {
         this._size = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get size(): NxNaturalLanguageFormSize {
         return this._size;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _ngZone: NgZone) {
+    constructor(private _cdr: ChangeDetectorRef, private _ngZone: NgZone) {
         // Normally we wouldn't have to explicitly run this outside the `NgZone`, however
         // if the consumer is using `zone-patch-rxjs`, the call throws `Maximum call stack size exceeded` error.
         this._ngZone.runOutsideAngular(() => {

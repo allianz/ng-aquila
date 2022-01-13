@@ -128,7 +128,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     @Input()
     set id(value: string) {
         this._id = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
@@ -173,7 +173,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             this._dropZone.disabled = this._disabled;
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -238,7 +238,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         public _intl: NxFileUploaderIntl,
         @Optional() private _parentForm: NgForm,
@@ -262,7 +262,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
 
         this._intlChanges = this._intl.changes.subscribe(() => {
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
             this.stateChanges.next();
         });
 
@@ -375,21 +375,21 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
         subscription = this.stateChanges.subscribe(() => {
             this._syncDescribedByIds();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
         subscriptions.push(subscription);
 
         // Re-validate when the number of hints changes.
         subscription = this._hintChildren.changes.pipe(startWith(null)).subscribe(() => {
             this._syncDescribedByIds();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
         subscriptions.push(subscription);
 
         // Re-validate when the number of hints changes.
         subscription = this._errorList.changes.pipe(startWith(null)).subscribe(() => {
             this._syncDescribedByIds();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
         subscriptions.push(subscription);
 
@@ -424,7 +424,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
                     } else {
                         this.value = [tmp];
                     }
-                    this._changeDetectorRef.markForCheck();
+                    this._cdr.markForCheck();
                 }
             });
             this._subscribeToFileChanges();
@@ -443,7 +443,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         this._subscribeToFileChanges();
 
         this._resetValidators(true);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
 
         this.valueChange.emit(this.value);
         this.fileDeleted.emit(file);
@@ -551,7 +551,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         const target = event.target as HTMLInputElement;
         this._addFilesToQueue(Array.from(target.files as FileList));
         this.stateChanges.next();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this.nativeInputFile.nativeElement.value = '';
     }
 
@@ -561,7 +561,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             let subscription;
             this.value.map(file => {
                 subscription = file.onChange.subscribe(() => {
-                    this._changeDetectorRef.markForCheck();
+                    this._cdr.markForCheck();
                 });
                 this._filesSubscriptions.push(subscription);
             });

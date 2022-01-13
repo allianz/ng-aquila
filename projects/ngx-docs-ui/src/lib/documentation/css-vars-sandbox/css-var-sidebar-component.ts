@@ -19,7 +19,7 @@ export class CssVarSidebarComponent {
     displayedProperties: any;
     filterValue: string = '';
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     getCustomProperties() {
         return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet) => {
@@ -93,7 +93,7 @@ export class CssVarSidebarComponent {
         properties.forEach(p => document.documentElement.style.removeProperty(p));
         this.properties = this.parseProperties(properties);
         this.filterProperties();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     trackProperties(index: unknown, element: HTMLInputElement) {

@@ -45,7 +45,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
         if (this._target) {
             this._subscription = this._target.expanded.subscribe(expanded => {
                 this._expanded = expanded;
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         }
     }
@@ -54,13 +54,13 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     @Input()
     set ariaLabel(value: string) {
         this._ariaLabel = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     _ariaLabel: string = '';
 
     private _subscription!: Subscription;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit() {
         this._focusMonitor.monitor(this._buttonElement);

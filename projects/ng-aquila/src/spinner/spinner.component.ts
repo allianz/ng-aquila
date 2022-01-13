@@ -29,7 +29,7 @@ export class NxSpinnerComponent {
     set size(value: SpinnerSize) {
         if (value !== this._size) {
             this._size = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get size(): SpinnerSize {
@@ -43,12 +43,12 @@ export class NxSpinnerComponent {
     set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get negative(): boolean {
         return this._negative;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 }

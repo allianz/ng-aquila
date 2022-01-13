@@ -23,7 +23,7 @@ export class NxMenuComponent {
         const open = coerceBooleanProperty(value);
         if (open !== this._open) {
             this._open = open;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -36,5 +36,5 @@ export class NxMenuComponent {
         this.open = !this.open;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 }

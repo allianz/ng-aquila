@@ -30,7 +30,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set direction(value: NxMultiStepperDirection) {
         this._direction = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _direction: NxMultiStepperDirection = 'horizontal';
 
@@ -44,7 +44,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _selected!: boolean;
 
@@ -55,7 +55,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set active(value: BooleanInput) {
         this._active = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _active!: boolean;
 
@@ -65,7 +65,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _disabled!: boolean;
 
@@ -76,7 +76,7 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set last(value: BooleanInput) {
         this._last = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _last!: boolean;
 
@@ -87,11 +87,11 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     set completed(value: BooleanInput) {
         this._completed = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     private _completed!: boolean;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, public _elementRef: ElementRef<HTMLElement>, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, public _elementRef: ElementRef<HTMLElement>, private _focusMonitor: FocusMonitor) {
         super(_elementRef);
         this._focusMonitor.monitor(this._elementRef);
     }

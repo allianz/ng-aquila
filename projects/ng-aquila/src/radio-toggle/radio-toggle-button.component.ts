@@ -53,7 +53,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     @Input('nxDisabled')
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled || (this.radioToggle && this.radioToggle.disabled);
@@ -71,7 +71,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
                 this._emitCheckedEvent();
             }
 
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get selected(): boolean {
@@ -85,7 +85,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
         @Inject(forwardRef(() => NxRadioToggleComponent)) private radioToggle: NxRadioToggleComponent,
         /** @docs-private */
         renderer: Renderer2,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _toggleDispatcher: UniqueSelectionDispatcher,
         private _focusMonitor: FocusMonitor,
     ) {
@@ -95,12 +95,12 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
             if (this.radioToggle && this.radioToggle.id === radioToggleId && this.id !== id) {
                 this._selected = false;
                 // need to let change detector know in case that the select() function was called on another button
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             }
         });
 
         this.radioToggle._disableChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
@@ -144,7 +144,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
             this._notifySiblings();
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
@@ -153,7 +153,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
             this._selected = false;
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */

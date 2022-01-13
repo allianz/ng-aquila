@@ -18,13 +18,13 @@ export class NxFileUploaderDropZoneComponent {
     private _active: boolean = false;
     private _disabled: boolean = false;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** Whether the file uploader is disabled. */
     @Input()
     set disabled(value: boolean) {
         this._disabled = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get disabled(): boolean {
@@ -70,7 +70,7 @@ export class NxFileUploaderDropZoneComponent {
         } else {
             event.dataTransfer!.dropEffect = 'copy';
             this._active = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -79,7 +79,7 @@ export class NxFileUploaderDropZoneComponent {
     onDragLeave(event: DragEvent) {
         this._active = false;
         event.dataTransfer!.dropEffect = 'none';
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */

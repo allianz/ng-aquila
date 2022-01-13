@@ -24,7 +24,7 @@ export class NxTableRowComponent {
     @Input()
     set selectable(value: BooleanInput) {
         this._selectable = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get selectable(): boolean {
         return this._selectable;
@@ -35,7 +35,7 @@ export class NxTableRowComponent {
     @Input()
     set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get selected(): boolean {
         return this._selected;
@@ -45,7 +45,7 @@ export class NxTableRowComponent {
     @Output()
     select: EventEmitter<void> = new EventEmitter();
 
-    constructor(protected _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef) {}
+    constructor(protected _cdr: ChangeDetectorRef, private _elementRef: ElementRef) {}
 
     _onSelect($event: KeyboardEvent) {
         if (!this._selectable || this.isSelectionPrevented($event)) {

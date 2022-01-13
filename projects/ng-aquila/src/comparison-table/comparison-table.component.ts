@@ -85,13 +85,8 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         return this._hiddenIndexes;
     }
 
-    constructor(
-        private _element: ElementRef,
-        @Optional() private _dir: Directionality,
-        viewportService: NxViewportService,
-        protected _cdRef: ChangeDetectorRef,
-    ) {
-        super(viewportService, _cdRef);
+    constructor(private _element: ElementRef, @Optional() private _dir: Directionality, viewportService: NxViewportService, protected _cdr: ChangeDetectorRef) {
+        super(viewportService, _cdr);
     }
 
     /** @docs-private */
@@ -128,14 +123,14 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
             const newContentClip = headerRect.bottom - contentRect.top;
             if (this._desktopContentClip !== newContentClip) {
                 this._desktopContentClip = newContentClip;
-                this._cdRef.markForCheck();
+                this._cdr.markForCheck();
             }
         } else if (this.viewType === 'mobile') {
             if (this._stickyMobileCell) {
                 const stickyRect = this._stickyMobileCell.nativeElement.getBoundingClientRect();
                 const isRTL = this._dir && this._dir.value === 'rtl';
                 this._mobileStickyEdge = isRTL ? stickyRect.left : stickyRect.right;
-                this._cdRef.markForCheck();
+                this._cdr.markForCheck();
 
                 // clip paths for placeholder cells with borders
                 const placeholderCells = this._element.nativeElement.getElementsByClassName('needs-clipping');

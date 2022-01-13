@@ -73,7 +73,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     set id(value: string) {
         if (this._id !== value) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get id(): string {
@@ -97,7 +97,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     @Input()
     set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get negative(): boolean {
         return this._negative;
@@ -156,7 +156,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Self() public ngControl: NgControl,
         @Optional() public _parentForm: NgForm,
         @Optional() public _parentFormGroup: FormGroupDirective,
@@ -247,7 +247,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 
         if (newState !== oldState) {
             this.errorState = newState;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 }
@@ -285,7 +285,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     set id(value: string) {
         if (this._id !== value) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get id(): string {
@@ -309,7 +309,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     set name(value: string) {
         if (this._name !== value) {
             this._name = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get name(): string {
@@ -324,7 +324,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     set labelSize(value: LabelSize) {
         if (this._labelSize !== value) {
             this._labelSize = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get labelSize(): LabelSize {
@@ -343,7 +343,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get negative(): boolean {
@@ -371,7 +371,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
      * Callback for when the content of the label has changed.
      */
     labelContentChanged() {
-        this._changeDetectorRef.detectChanges();
+        this._cdr.detectChanges();
     }
 
     /** Sets the value of the form control element (Default: null). */
@@ -393,7 +393,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     set checked(value: boolean) {
         if (this._checked !== value) {
             this._checked = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -406,7 +406,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @Input('nxDisabled')
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
@@ -420,10 +420,10 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._required = value;
         // needed when the outer component is set to onPush because it is a native property
         // on the host element
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
-    constructor(@Optional() public radioGroup: NxRadioGroupComponent, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(@Optional() public radioGroup: NxRadioGroupComponent, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngOnInit() {
         if (this.radioGroup) {
@@ -431,7 +431,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
             // when relevant properties of the parent like name and disabled change
             // we need to let change detection know that the template needs an update
             this._parentChangeSubscription = this.radioGroup._stateChanges.subscribe(() => {
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
 
             if (this.radioGroup.value === this._value) {
@@ -454,7 +454,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     writeValue(value: any): void {
         if (value === this._value) {
             this._checked = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

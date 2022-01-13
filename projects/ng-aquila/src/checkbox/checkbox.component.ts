@@ -82,7 +82,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     set id(value: string) {
         if (this._id !== value) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -95,7 +95,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     @Input()
     set name(value: string) {
         this._name = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get name(): string {
@@ -123,7 +123,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     @Input()
     set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this._stateChanges.next();
     }
 
@@ -158,7 +158,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     private _value: any[] | undefined;
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         @Optional() private _parentForm: NgForm,
         @Optional() private _parentFormGroup: FormGroupDirective,
@@ -258,7 +258,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
         if (newState !== oldState) {
             this.errorState = newState;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 }
@@ -302,7 +302,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     set id(value: string) {
         if (value !== this._id) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -326,7 +326,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -340,7 +340,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     @Input()
     set labelSize(value: NxCheckboxLabelSize) {
         this._labelSize = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get labelSize(): NxCheckboxLabelSize {
@@ -355,7 +355,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -391,7 +391,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
             }
             this._setIndeterminate(newValue);
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get indeterminate(): boolean {
@@ -418,7 +418,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     set value(value: string) {
         this._value = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     private _value: string = '';
@@ -450,11 +450,11 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
      * Callback for when the content of the label has changed.
      */
     labelContentChanged() {
-        this._changeDetectorRef.detectChanges();
+        this._cdr.detectChanges();
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         @Optional() public checkboxGroup: NxCheckboxGroupComponent,
         @Self() @Optional() public ngControl: NgControl,
@@ -489,7 +489,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
             // when relevant properties of the parent like name and disabled change
             // we need to let change detection know that the template needs an update
             this._parentChangeSubscription = this.checkboxGroup._stateChanges.subscribe(() => {
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         }
     }
@@ -508,12 +508,12 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     private _setIndeterminate(value: boolean) {
         this._indeterminate = value;
         this.indeterminateChange.emit(this._indeterminate);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     private _setChecked(value: boolean) {
         this._checked = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Toggles the checked state of the checkbox. */

@@ -34,7 +34,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     set codeLength(value: number) {
         this._codeLength = value;
         this.setInputLength();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get codeLength() {
         return this._codeLength;
@@ -45,7 +45,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     @Input()
     set type(value: string) {
         this._type = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get type() {
         return this._type;
@@ -57,7 +57,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     @Input()
     set tabindex(value: number) {
         this._tabindex = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this._tabindex;
@@ -68,7 +68,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     @Input('nxConvertTo')
     set convertTo(value: NxConversionTypes) {
         this._convertTo = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get convertTo() {
         return this._convertTo!;
@@ -85,7 +85,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get negative() {
@@ -100,7 +100,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get disabled() {
@@ -110,7 +110,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _disabled: boolean = false;
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _el: ElementRef,
         @Self() @Optional() public _control: NgControl,
         public _intl: NxCodeInputIntl,
@@ -296,7 +296,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
             if (!this._focused) {
                 this.propagateTouch(this._keyCode.join(''));
             }
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
@@ -313,7 +313,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
      */
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Sets initial value, used by ControlValueAccessor. */
@@ -328,7 +328,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
             this.setInputLength();
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     _trackByKeyCode(index: number, item: string): number {

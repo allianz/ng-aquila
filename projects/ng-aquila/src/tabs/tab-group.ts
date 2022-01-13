@@ -101,7 +101,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -113,7 +113,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     set disabled(value: BooleanInput) {
         if (value !== this._disabled) {
             this._disabled = coerceBooleanProperty(value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -144,7 +144,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     set appearance(value: NxTabsAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get appearance(): NxTabsAppearance {
@@ -179,7 +179,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
 
     constructor(
         public viewportService: NxViewportService,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions,
         private _focusMonitor: FocusMonitor,
     ) {
@@ -213,7 +213,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
                 }
             }
 
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
@@ -265,7 +265,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
 
         if (this._selectedIndex !== indexToSelect) {
             this._selectedIndex = indexToSelect;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
 
         // cache the previous disabled status of all tabs
@@ -304,7 +304,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
             this._tabLabelSubscription.unsubscribe();
         }
 
-        this._tabLabelSubscription = merge(...this.tabs.map(tab => tab._stateChanges)).subscribe(() => this._changeDetectorRef.markForCheck());
+        this._tabLabelSubscription = merge(...this.tabs.map(tab => tab._stateChanges)).subscribe(() => this._cdr.markForCheck());
     }
 
     /** Clamps the given index to the bounds of 0 and the tabs length. */
@@ -368,7 +368,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
             // once so that they do not get destroyed during the switch
             this._appearanceChange.next();
             this._showAccordion = isSmallTablet;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

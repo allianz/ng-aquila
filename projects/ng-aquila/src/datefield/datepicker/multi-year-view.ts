@@ -100,7 +100,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     /** The year of the selected date. Null if the selected date is null. */
     _selectedYear!: number | null;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, @Optional() public _dateAdapter: NxDateAdapter<D>, @Optional() private _dir?: Directionality) {
+    constructor(private _cdr: ChangeDetectorRef, @Optional() public _dateAdapter: NxDateAdapter<D>, @Optional() private _dir?: Directionality) {
         if (!this._dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
@@ -126,7 +126,7 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
                 row = [];
             }
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Handles when a new year is selected. */

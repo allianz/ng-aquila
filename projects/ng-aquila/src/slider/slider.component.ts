@@ -67,7 +67,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     set id(value: string) {
         if (this._id !== value) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get id(): string {
@@ -79,7 +79,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input()
     set tabindex(value: NumberInput) {
         this._tabIndex = coerceNumberProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this._disabled ? -1 : this._tabIndex;
@@ -90,7 +90,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxMin')
     set min(value: NumberInput) {
         this._min = coerceNumberProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get min(): number {
         return this._min;
@@ -101,7 +101,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxMax')
     set max(value: NumberInput) {
         this._max = coerceNumberProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get max(): number {
         return this._max;
@@ -126,7 +126,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     set label(value: string) {
         if (this._label !== value) {
             this._label = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get label(): string {
@@ -138,7 +138,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input()
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -149,7 +149,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxInverted')
     set inverted(value: BooleanInput) {
         this._inverted = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get inverted(): boolean {
         return this._inverted;
@@ -160,7 +160,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input()
     set thumbLabel(value: BooleanInput) {
         this._thumbLabel = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get thumbLabel(): boolean {
         return this._thumbLabel;
@@ -171,7 +171,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('negative')
     set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get negative(): boolean {
         return this._negative;
@@ -182,7 +182,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('hideLabels')
     set hideLabels(value: BooleanInput) {
         this._hideLabels = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get hideLabels(): boolean {
         return this._hideLabels;
@@ -212,7 +212,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
     constructor(
         private elementRef: ElementRef,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _ngZone: NgZone,
         @Optional() private _dir: Directionality,
         private _focusMonitor: FocusMonitor,
@@ -241,7 +241,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         if (value !== this._value) {
             this._value = value;
             this.valueChange.emit(value);
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

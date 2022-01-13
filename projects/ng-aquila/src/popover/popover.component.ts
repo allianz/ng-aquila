@@ -52,11 +52,11 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */
     arrowStyle = {};
 
-    constructor(public _intl: NxPopoverIntl, private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(public _intl: NxPopoverIntl, private _cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 

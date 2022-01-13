@@ -41,7 +41,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxValue')
     set value(newValue: NumberInput) {
         this._value = coerceNumberProperty(newValue);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get value(): number {
         return this._value;
@@ -55,7 +55,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
             return;
         }
         this._disabled = coerceBooleanProperty(newValue);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -69,7 +69,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
             return;
         }
         this._negative = coerceBooleanProperty(newValue);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get negative(): boolean {
         return this._negative;
@@ -80,7 +80,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxStartLabel')
     set startLabel(newValue: string) {
         this._startLabel = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get startLabel(): string {
         return this._startLabel;
@@ -91,7 +91,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     @Input('nxEndLabel')
     set endLabel(newValue: string) {
         this._endLabel = newValue;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get endLabel(): string {
         return this._endLabel as string;
@@ -102,7 +102,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */
     set ariaLabel(newAriaLabels: string[]) {
         this._ariaLabel = newAriaLabels;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get ariaLabel(): string[] {
         return this._ariaLabel;
@@ -115,7 +115,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     private onTouchedCallback: Function = () => {};
     private onChangeCallback: (option: any) => any = (option: any) => {};
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit() {
         this.icons.forEach(icon => this._focusMonitor.monitor(icon));

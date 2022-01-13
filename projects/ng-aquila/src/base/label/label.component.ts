@@ -85,12 +85,12 @@ export class NxLabelComponent {
     @Input()
     set for(value: string | null) {
         this._for = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this._stateChanges.next();
     }
     get for() {
         return this._for;
     }
 
-    constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions, private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions, private _cdr: ChangeDetectorRef) {}
 }

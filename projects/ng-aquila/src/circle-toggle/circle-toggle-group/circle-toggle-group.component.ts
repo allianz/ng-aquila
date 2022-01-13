@@ -74,7 +74,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
      */
     set id(value: string) {
         this._id = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
@@ -85,7 +85,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     set name(value: string) {
         this._name = value;
         this.updateToggleButtonsNames();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get name(): string {
         return this._name;
@@ -97,7 +97,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
         if (this.buttons) {
             this.buttons.forEach(button => (button.disabled = newValue));
@@ -135,7 +135,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.responsive) {
             this._responsive = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -153,7 +153,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions,
     ) {}
 
@@ -197,7 +197,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     set appearance(value: NxCircleToggleGroupAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

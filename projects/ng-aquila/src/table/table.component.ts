@@ -25,7 +25,7 @@ export class NxTableComponent {
 
     private _sticky!: string;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** Change the table mode to condensed  */
     @Input() set condensed(value: BooleanInput) {
@@ -33,7 +33,7 @@ export class NxTableComponent {
 
         if (value !== this._condensed) {
             this._condensed = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -46,7 +46,7 @@ export class NxTableComponent {
         const newValue = coerceBooleanProperty(value);
         if (value !== this._zebra) {
             this._zebra = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -61,7 +61,7 @@ export class NxTableComponent {
      */
     @Input() set sticky(value: string) {
         this._sticky = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get sticky(): string {

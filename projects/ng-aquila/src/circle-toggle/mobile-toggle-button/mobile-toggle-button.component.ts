@@ -39,24 +39,24 @@ export class NxMobileToggleButtonComponent {
     /** @docs-private */
     isLast: boolean = false;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     setFirstButton() {
         this.isFirst = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
     setLastButton() {
         this.isLast = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** @docs-private */
     resetClasses() {
         this.isFirst = false;
         this.isLast = false;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 }

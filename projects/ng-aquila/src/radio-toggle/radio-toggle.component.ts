@@ -73,7 +73,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
     set name(value: string) {
         if (this._name !== value) {
             this._name = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get name(): string {
@@ -89,7 +89,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
     private onChangeCallback = (option: any) => {};
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         /** @docs-private */
         @Optional() @Self() public ngControl: NgControl,
         private _errorStateMatcher: ErrorStateMatcher,

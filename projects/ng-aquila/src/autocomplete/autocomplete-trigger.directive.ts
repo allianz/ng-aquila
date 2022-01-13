@@ -229,7 +229,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         private _overlay: Overlay,
         private _viewContainerRef: ViewContainerRef,
         private _zone: NgZone,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _dir: Directionality,
         @Optional() @Host() private _nxFormField: NxFormfieldComponent,
         @Optional() @Host() private _nxWordField: NxWordComponent,
@@ -246,7 +246,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     ngOnInit() {
         this._dirChangeSubscription = this._dir.change.subscribe(() => {
             this._flipDirection();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 
@@ -346,7 +346,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
             // `fromEvent` doesn't seem to do it at the proper time.
             // This ensures that the label is reset when the
             // user clicks outside.
-            this._changeDetectorRef.detectChanges();
+            this._cdr.detectChanges();
         }
     }
 

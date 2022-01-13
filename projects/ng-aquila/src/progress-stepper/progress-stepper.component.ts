@@ -118,8 +118,8 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
     @Input() currentStepLabel!: string;
 
-    constructor(private _cdRef: ChangeDetectorRef, _dir: Directionality, _elementRef: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
-        super(_dir, _cdRef, _elementRef, _document);
+    constructor(private _cdr: ChangeDetectorRef, _dir: Directionality, _elementRef: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
+        super(_dir, _cdr, _elementRef, _document);
     }
 
     ngAfterContentInit() {
@@ -141,7 +141,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
         // we need to defer change detection that the nxStepperNext and NxStepperPrevious buttons
         // can run change detection again, because they are initialized before the stepper content
         Promise.resolve().then(() => {
-            this._cdRef.detectChanges();
+            this._cdr.detectChanges();
         });
     }
 

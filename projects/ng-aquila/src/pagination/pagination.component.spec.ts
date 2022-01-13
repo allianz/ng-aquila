@@ -270,10 +270,10 @@ describe('NxPaginationComponent', () => {
         it('triggers change detection', () => {
             createTestComponent(SimplePaginationWithDirection);
             fixture.detectChanges();
-            spyOn((paginationInstance as any)._changeDetectorRef, 'detectChanges');
+            spyOn((paginationInstance as any)._cdr, 'detectChanges');
             (testInstance as SimplePaginationWithDirection).direction = 'rtl';
             fixture.detectChanges();
-            expect((paginationInstance as any)._changeDetectorRef.detectChanges).toHaveBeenCalledTimes(1);
+            expect((paginationInstance as any)._cdr.detectChanges).toHaveBeenCalledTimes(1);
         });
 
         it('updates arrow icons for simple pagination', () => {

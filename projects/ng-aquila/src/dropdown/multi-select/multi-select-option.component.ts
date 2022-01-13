@@ -66,14 +66,14 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
      */
     set active(value: boolean) {
         this._active = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get active() {
         return this._active;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, public elementRef: ElementRef) {}
+    constructor(private _cdr: ChangeDetectorRef, public elementRef: ElementRef) {}
 
     setActiveStyles(): void {
         this.active = true;
@@ -94,6 +94,6 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
      */
     selectViaInteraction() {
         this._onClick();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 }

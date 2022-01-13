@@ -25,7 +25,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     @Input()
     set expandable(value: BooleanInput) {
         this._expandable = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get expandable(): boolean {
         return this._expandable;
@@ -39,7 +39,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     @Input()
     set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get expanded() {
         return this._expanded;
@@ -54,7 +54,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     set type(value: NxMenuButtonType) {
         if (value === 'root' || value === 'nested') {
             this._type = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get type(): NxMenuButtonType {
@@ -62,7 +62,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     }
     private _type: NxMenuButtonType = 'root';
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
+    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

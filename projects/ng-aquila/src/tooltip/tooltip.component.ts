@@ -36,7 +36,7 @@ export class NxTooltipComponent implements OnDestroy {
 
     set message(value: string) {
         this._message = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get message(): string {
         return this._message;
@@ -54,7 +54,7 @@ export class NxTooltipComponent implements OnDestroy {
     /* @docs-private */
     set position(value: TooltipPosition) {
         this._position = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /* @docs-private */
@@ -67,7 +67,7 @@ export class NxTooltipComponent implements OnDestroy {
     /* @docs-private */
     set arrowStyle(value) {
         this._arrowStyle = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /* @docs-private */
@@ -86,7 +86,7 @@ export class NxTooltipComponent implements OnDestroy {
     /** Subject for notifying that the tooltip has been hidden from the view */
     private readonly _onHide: Subject<any> = new Subject();
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, public elementRef: ElementRef) {}
+    constructor(private _cdr: ChangeDetectorRef, public elementRef: ElementRef) {}
 
     /**
      * Shows the tooltip with an aninxion originating from the provided origin
@@ -107,7 +107,7 @@ export class NxTooltipComponent implements OnDestroy {
 
             // Mark for check so if any parent component has set the
             // ChangeDetectionStrategy to OnPush it will be checked anyways
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }, delay);
     }
 
@@ -132,7 +132,7 @@ export class NxTooltipComponent implements OnDestroy {
 
             // Mark for check so if any parent component has set the
             // ChangeDetectionStrategy to OnPush it will be checked anyways
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }, delay);
     }
 

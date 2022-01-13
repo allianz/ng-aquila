@@ -33,17 +33,17 @@ export class NxTabScrollIndicator implements OnDestroy {
     private _viewportServiceSubscription: Subscription = Subscription.EMPTY;
     private _dirChangeSubscription = Subscription.EMPTY;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _viewportService: NxViewportService, private _dir: Directionality) {
+    constructor(private _cdr: ChangeDetectorRef, private _viewportService: NxViewportService, private _dir: Directionality) {
         this._viewportServiceSubscription = this._viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).subscribe(isGreaterThanMedium => {
             if (isGreaterThanMedium) {
                 this._view = 'desktop';
             } else if (!isGreaterThanMedium) {
                 this._view = 'mobile';
             }
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
 
-        this._dirChangeSubscription = this._dir.change.subscribe(() => this._changeDetectorRef.markForCheck());
+        this._dirChangeSubscription = this._dir.change.subscribe(() => this._cdr.markForCheck());
     }
 
     ngOnDestroy() {

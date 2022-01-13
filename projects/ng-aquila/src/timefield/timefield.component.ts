@@ -75,7 +75,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set time(value: string) {
         this._time = value;
         this._onChangeCallback(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get time(): string {
         return this._time as string;
@@ -95,7 +95,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
             this._minHours = 0;
             this._toggleAMPM = null;
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get twelveHourFormat(): boolean {
         return this._twelveHourFormat;
@@ -107,7 +107,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set label(value: string) {
         if (this._label !== value) {
             this._label = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get label(): string {
@@ -120,7 +120,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set labelAM(value: string) {
         if (this._labelAM !== value) {
             this._labelAM = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get labelAM(): string {
@@ -133,7 +133,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set labelPM(value: string) {
         if (this._labelPM !== value) {
             this._labelPM = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get labelPM(): string {
@@ -146,7 +146,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set placeholderHours(value: string) {
         if (this._placeholderHours !== value) {
             this._placeholderHours = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get placeholderHours(): string {
@@ -159,7 +159,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     set placeholderMinutes(value: string) {
         if (this._placeholderMinutes !== value) {
             this._placeholderMinutes = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get placeholderMinutes(): string {
@@ -183,7 +183,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get negative() {
@@ -198,7 +198,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get disabled(): boolean {
@@ -209,7 +209,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     /** @docs-private */
     set hours(value: string) {
         this._hours = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get hours(): string {
         return this._hours;
@@ -219,7 +219,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     /** @docs-private */
     set minutes(value: string) {
         this._minutes = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get minutes(): string {
         return this._minutes;
@@ -232,7 +232,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         /** @docs-private */ @Optional() @Self() public ngControl: NgControl,
         private _errorStateMatcher: ErrorStateMatcher,
         @Optional() private _parentForm: NgForm,

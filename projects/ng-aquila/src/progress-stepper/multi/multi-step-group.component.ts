@@ -14,12 +14,12 @@ export class NxMultiStepperGroupComponent {
     @Input()
     set label(value: string) {
         this._label = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get label(): string {
         return this._label;
     }
     private _label!: string;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 }

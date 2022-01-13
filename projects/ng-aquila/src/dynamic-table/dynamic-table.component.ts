@@ -39,7 +39,7 @@ export class NxDynamicTableComponent implements OnInit {
             // need to call markForCheck as the setter changes displayedColumns here
             // sidenote: isn't needed for the data itself as it gets passed to the cdk-table
             // by the datasource observable
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
         this._dataChange.next(this._data);
     }
@@ -52,7 +52,7 @@ export class NxDynamicTableComponent implements OnInit {
     set displayedColumns(value: NxDisplayedColumns[] | undefined) {
         this._displayedColumns = value as NxDisplayedColumns[];
         this._columnKeys = value ? value.map(column => column.key) : [];
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get displayedColumns(): NxDisplayedColumns[] | undefined {
         return this._displayedColumns;
@@ -71,7 +71,7 @@ export class NxDynamicTableComponent implements OnInit {
         return this._columnKeys;
     }
 
-    constructor(private el: ElementRef, private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private el: ElementRef, private _cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (!this._data) {

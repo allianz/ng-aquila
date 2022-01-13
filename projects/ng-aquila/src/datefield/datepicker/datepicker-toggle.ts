@@ -107,13 +107,13 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
 
     constructor(
         public _intl: NxDatepickerIntl,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions,
         private _focusMonitor: FocusMonitor,
     ) {
         if (this._defaultOptions && this._defaultOptions.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             });
         }
     }
@@ -154,7 +154,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
 
         this._stateChanges.unsubscribe();
         this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled).subscribe(() =>
-            this._changeDetectorRef.markForCheck(),
+            this._cdr.markForCheck(),
         );
     }
 }

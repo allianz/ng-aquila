@@ -21,7 +21,7 @@ export class NxAnchorPlainButtonComponent extends NxPlainButtonComponent {
         }
     }
 
-    constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
-        super(changeDetectorRef, elementRef, focusMonitor);
+    constructor(_cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+        super(_cdr, elementRef, focusMonitor);
     }
 }

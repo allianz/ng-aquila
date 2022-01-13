@@ -72,7 +72,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         const coercedValue = coerceBooleanProperty(value);
         if (this.#required !== coercedValue) {
             this.#required = coercedValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get required(): boolean {
@@ -199,7 +199,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     constructor(
         private _elementRef: ElementRef,
         private _focusMonitor: FocusMonitor,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         private _intl: NxPhoneInputIntl,
         @Optional() private formFieldComponent: NxFormfieldComponent,
@@ -216,7 +216,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
         const intlSubscription = _intl.changes.subscribe(_ => {
             this._sortCountries();
-            this._changeDetectorRef.detectChanges();
+            this._cdr.detectChanges();
         });
 
         this._subscriptions.add(intlSubscription);
@@ -268,7 +268,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
             this._inputValue = '';
             this._countryCode = this._initialCountryCode;
         }
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     registerOnChange(fn: any): void {
@@ -281,7 +281,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
         this.stateChanges.next();
     }
 

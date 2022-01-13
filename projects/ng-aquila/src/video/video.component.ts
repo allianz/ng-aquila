@@ -21,7 +21,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     set videoId(value: string) {
         if (this._videoId !== value) {
             this._videoId = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get videoId(): string {
@@ -35,7 +35,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     set altText(value: string) {
         if (this._altText !== value) {
             this._altText = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get altText(): string {
@@ -49,7 +49,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     set nxPlayButtonAriaLabel(value: string) {
         if (this._playButtonAriaLabel !== value) {
             this._playButtonAriaLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get nxPlayButtonAriaLabel(): string {
@@ -63,7 +63,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     set previewImageSrc(value: string) {
         if (this._previewImageSrc !== value) {
             this._previewImageSrc = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get previewImageSrc(): string {
@@ -76,7 +76,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     @Input('nxShowPlayerControls')
     set showPlayerControls(value: BooleanInput) {
         this._showPlayerControls = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get showPlayerControls(): boolean {
         return this._showPlayerControls;
@@ -88,7 +88,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     @Input('nxAllowFullScreen')
     set allowFullScreen(value: BooleanInput) {
         this._allowFullScreen = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get allowFullScreen(): boolean {
         return this._allowFullScreen;
@@ -101,7 +101,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     set interfaceLanguage(value: string) {
         if (this._interfaceLanguage !== value) {
             this._interfaceLanguage = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get interfaceLanguage(): string {
@@ -111,7 +111,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     /** @docs-private */
     showPlayer = false;
 
-    constructor(private sanitizer: DomSanitizer, private _changeDetectorRef: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(private sanitizer: DomSanitizer, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit() {
         this._focusMonitor.monitor(this._playButton);
@@ -124,7 +124,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     /** @docs-private */
     select(): void {
         this.showPlayer = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Returns the safe resource URL of the YouTube video, given video id.  */

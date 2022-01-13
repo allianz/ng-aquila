@@ -20,14 +20,14 @@ export class NxBadgeComponent {
     private _type!: NxBadgeType;
     private _vibrant: boolean = false;
 
-    constructor(private _changeDetRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** Sets the class name for the badge element.  */
     @Input()
     set type(value: NxBadgeType | string | null | undefined) {
         if (value !== this._type) {
             this._type = value! as NxBadgeType; // TODO properly coerce input value
-            this._changeDetRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get type(): NxBadgeType {
@@ -40,7 +40,7 @@ export class NxBadgeComponent {
 
         if (value !== this._vibrant) {
             this._vibrant = newValue;
-            this._changeDetRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get vibrant(): boolean {

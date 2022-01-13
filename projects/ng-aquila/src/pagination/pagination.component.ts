@@ -61,7 +61,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     @Input('nxPage') // the current page
     set page(value: number) {
         this._page = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get count(): number {
         return this._count;
@@ -72,7 +72,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     set count(value: number) {
         this._count = value;
         this.totalNumberPages = this.calculateTotalPages();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get perPage(): number {
         return this._perPage;
@@ -83,7 +83,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     set perPage(value: number) {
         this._perPage = value;
         this.totalNumberPages = this.calculateTotalPages();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get type(): string {
         return this._type;
@@ -98,7 +98,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     set type(value: string) {
         // type advanced or simple
         this._type = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** An event emitted when the previous page button is clicked. */
@@ -117,12 +117,12 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts,
         @Optional() private _dir: Directionality,
         private paginationUtilsService: NxPaginationUtils,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
         this.paginationTexts = paginationTexts || DefaultPaginationTexts;
         this._dirChangeSubscription = this._dir.change.subscribe(() => {
-            this._changeDetectorRef.detectChanges();
+            this._cdr.detectChanges();
         });
     }
 

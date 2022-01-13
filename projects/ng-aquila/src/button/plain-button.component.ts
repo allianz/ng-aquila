@@ -46,7 +46,7 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
 
         this._classNames = value;
         this.danger = /danger/.test(this._classNames);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     public get classNames(): string {
@@ -58,17 +58,17 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
     public setTriggerActive(): void {
         if (!this.active) {
             this.active = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     public setTriggerInactive(): void {
         if (this.active) {
             this.active = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

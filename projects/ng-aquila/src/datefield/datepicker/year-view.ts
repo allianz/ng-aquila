@@ -116,7 +116,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
     _numCols: number = 3;
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
         @Optional() public _dateAdapter: NxDateAdapter<D>,
         @Optional() private _dir?: Directionality,
@@ -213,7 +213,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
             [6, 7, 8],
             [9, 10, 11],
         ].map(row => row.map(month => this._createCellForMonth(month, monthNames[month])));
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Focuses the active cell after the microtask queue is empty. */

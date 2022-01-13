@@ -40,14 +40,14 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     set ariaLabel(value: string) {
         if (value !== this._ariaLabel) {
             this._ariaLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get ariaLabel(): string {
         return this._ariaLabel;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 
@@ -70,7 +70,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
             this.control.type = this.control.type === 'password' ? 'text' : 'password';
             this._pressed = !this._pressed;
             this.toggleIcon();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

@@ -40,7 +40,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     @Input()
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
@@ -56,7 +56,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     constructor(
         private _elementRef: ElementRef<HTMLElement>,
         @Inject(DOCUMENT) document: any,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
         this._document = document;

@@ -49,7 +49,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
         private _route: ActivatedRoute,
         private _element: ElementRef,
         @Inject(DOCUMENT) private _document: any,
-        private _cdRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
     ) {
         this._router.events.pipe(takeUntil(this._destroyed)).subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -86,7 +86,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
         if (target) {
             target.scrollIntoView();
         }
-        this._cdRef.detectChanges();
+        this._cdr.detectChanges();
     }
 
     private createLinks(): Link[] {

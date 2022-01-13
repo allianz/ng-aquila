@@ -74,13 +74,13 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     }
 
     constructor(
-        _changeDetectorRef: ChangeDetectorRef,
+        _cdr: ChangeDetectorRef,
         _elementRef: ElementRef,
         public _cell: NxComparisonTableCell,
         private _table: NxComparisonTableBase,
         _focusMonitor: FocusMonitor,
     ) {
-        super(_changeDetectorRef, _elementRef, _focusMonitor);
+        super(_cdr, _elementRef, _focusMonitor);
         this._setClassNames();
 
         this._cell.indexChange.pipe(takeUntil(this._destroyed)).subscribe(index => {

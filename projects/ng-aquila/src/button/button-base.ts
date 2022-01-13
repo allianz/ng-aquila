@@ -97,7 +97,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         return this._disabled;
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 
@@ -122,7 +122,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         this.negative = /negative/.test(this._classNames);
         this.block = /block/.test(this._classNames);
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     public get classNames(): string {
@@ -142,11 +142,11 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
 
     setTriggerActive() {
         this.active = true;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     setTriggerInactive() {
         this.active = false;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 }

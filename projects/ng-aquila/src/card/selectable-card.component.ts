@@ -91,7 +91,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     set appearance(value: NxSelectableCardAppearance) {
         if (value !== this.appearance) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -108,7 +108,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     set id(value: string) {
         if (value !== this._id) {
             this._id = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -122,7 +122,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._checked) {
             this._checked = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -141,7 +141,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
             this._value = value;
         }
 
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Whether the selectable card is disabled. */
@@ -150,7 +150,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -168,7 +168,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -215,7 +215,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     }
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         @Self() @Optional() public ngControl: NgControl,
         @Optional() private _parentForm: NgForm,
@@ -237,7 +237,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     ngAfterContentInit() {
         this._errorList.changes.subscribe(() => {
             this._errorListIds = this._getErrorListIds();
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
 
         this._errorListIds = this._getErrorListIds();
@@ -285,7 +285,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
 
         if (newState !== oldState) {
             this._errorState = newState;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

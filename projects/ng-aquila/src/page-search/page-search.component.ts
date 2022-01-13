@@ -21,7 +21,7 @@ export class NxPageSearchComponent {
     set buttonLabel(value: string) {
         if (this._buttonLabel !== value) {
             this._buttonLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get buttonLabel(): string {
@@ -34,7 +34,7 @@ export class NxPageSearchComponent {
     @Input('nxHideSearchButton')
     set hideSearchButton(value: BooleanInput) {
         this._hideSearchButton = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get hideSearchButton(): boolean {
         return this._hideSearchButton;
@@ -47,7 +47,7 @@ export class NxPageSearchComponent {
     set buttonLayout(value: string) {
         if (this._buttonLayout !== value) {
             this._buttonLayout = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get buttonLayout(): string {
@@ -61,7 +61,7 @@ export class NxPageSearchComponent {
     set contentLayout(value: string) {
         if (this._contentLayout !== value) {
             this._contentLayout = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get contentLayout(): string {
@@ -71,7 +71,7 @@ export class NxPageSearchComponent {
         return !this.hideSearchButton ? '12,12,12,10' : '12';
     }
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     onButtonClick() {

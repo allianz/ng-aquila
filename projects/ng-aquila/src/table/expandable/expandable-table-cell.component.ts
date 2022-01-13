@@ -40,10 +40,10 @@ export class NxExpandableTableCellComponent implements OnDestroy {
 
     _open: boolean = false;
 
-    constructor(_row: NxExpandableTableRowComponent, private _changeDetectorRef: ChangeDetectorRef) {
+    constructor(_row: NxExpandableTableRowComponent, private _cdr: ChangeDetectorRef) {
         _row.expanded.pipe(takeUntil(this._destroyed)).subscribe(open => {
             this._open = open;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         });
     }
 

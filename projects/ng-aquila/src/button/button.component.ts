@@ -15,7 +15,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
     },
 })
 export class NxButtonComponent extends NxButtonBase {
-    constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
-        super(changeDetectorRef, elementRef, focusMonitor);
+    constructor(_cdr: ChangeDetectorRef, elementRef: ElementRef, focusMonitor: FocusMonitor) {
+        super(_cdr, elementRef, focusMonitor);
     }
 }

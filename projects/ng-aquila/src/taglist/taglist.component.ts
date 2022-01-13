@@ -48,7 +48,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input('nxTags')
     set tags(value: any[]) {
         this._tags = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get tags(): any[] {
         return this._tags;
@@ -59,7 +59,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input()
     set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this.allowTagDeletion ? 0 : this._tabindex;
@@ -70,7 +70,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input('nxAllowTagDeletion')
     set allowTagDeletion(value: BooleanInput) {
         this._allowTagDeletion = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get allowTagDeletion(): boolean {
         return this._allowTagDeletion;
@@ -81,7 +81,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input('nxIsKeywordList')
     set isKeywordList(value: BooleanInput) {
         this._isKeywordList = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get isKeywordList(): boolean {
         return this._isKeywordList;
@@ -93,7 +93,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     set labelProp(value: string) {
         if (this._labelProperty !== value) {
             this._labelProperty = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get labelProp(): string {
@@ -106,7 +106,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     set labelledby(value: string) {
         if (this._ariaLabelledBy !== value) {
             this._ariaLabelledBy = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get labelledby(): string {
@@ -118,7 +118,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     @Input('nxValueFormatter')
     set valueFormatter(fn: (value: any) => string) {
         this._valueFormatterFn = fn;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get valueFormatter(): (value: any) => string {
         return this._valueFormatterFn;
@@ -127,7 +127,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _onChange: (value: any) => void = () => {};
     private _onTouched: () => any = () => {};
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** Allows to delete a tag given index. Takes index of the tag to be deleted as a parameter */
     delete(index: number, value: any) {

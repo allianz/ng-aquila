@@ -16,7 +16,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     _isScrolledToEnd: boolean = true;
     private _dirChangeSubscription = Subscription.EMPTY;
 
-    constructor(public _changeDetectorRef: ChangeDetectorRef, private _dir: Directionality, private _element: ElementRef) {
+    constructor(public _cdr: ChangeDetectorRef, private _dir: Directionality, private _element: ElementRef) {
         this._dirChangeSubscription = this._dir.change.subscribe(() => {
             if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
                 const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);
@@ -145,7 +145,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
             if (!this._isScrolledToStart || !this._isScrolledToEnd) {
                 this._isScrolledToStart = true;
                 this._isScrolledToEnd = true;
-                this._changeDetectorRef.markForCheck();
+                this._cdr.markForCheck();
             }
             return;
         }
@@ -153,20 +153,20 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
         // scrollable
         if (this.scrollableTabsList?.nativeElement.scrollLeft === 0 && this._isScrolledToStart !== true) {
             this._isScrolledToStart = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         } else if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0 && this._isScrolledToStart !== false) {
             this._isScrolledToStart = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
 
         const scrollRight = Math.round(Math.abs(scrollListElement.scrollLeft) + scrollListElement.getBoundingClientRect().width);
 
         if (scrollRight === scrollListElement.scrollWidth && this._isScrolledToEnd !== true) {
             this._isScrolledToEnd = true;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         } else if (scrollRight !== scrollListElement.scrollWidth && this._isScrolledToEnd !== false) {
             this._isScrolledToEnd = false;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 

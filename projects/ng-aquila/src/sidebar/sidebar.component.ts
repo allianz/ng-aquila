@@ -47,7 +47,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
         if (newValue !== this._resizeable) {
             this._resizeable = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get resizeable() {
@@ -80,7 +80,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     set resizeHandleAriaLabel(value: string) {
         if (value !== this._resizeHandleAriaLabel) {
             this._resizeHandleAriaLabel = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get resizeHandleAriaLabel() {
@@ -96,7 +96,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
         if (newValue !== this._open) {
             this._open = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get open(): boolean {
@@ -110,7 +110,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
         if (newValue !== this._width) {
             this._width = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get width(): number {
@@ -139,7 +139,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _unsubscribeListeners: (() => void)[] = [];
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private renderer: Renderer2,
         private _element: ElementRef,
         @Optional() private _dir: Directionality,
@@ -221,7 +221,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
         this._resizeWidth = Math.max(this.minWidth, this._resizeStartWidth + dx);
         this.open = this._resizeWidth > this.minWidth;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     _onResizeEnd(event: MouseEvent) {

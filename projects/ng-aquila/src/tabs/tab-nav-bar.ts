@@ -47,7 +47,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.negative) {
             this._negative = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -63,7 +63,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.disabled) {
             this._disabled = newValue;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
 
@@ -82,7 +82,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     set appearance(value: NxTabsAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get appearance(): NxTabsAppearance {
@@ -90,12 +90,12 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     }
 
     constructor(
-        public _changeDetectorRef: ChangeDetectorRef,
+        public _cdr: ChangeDetectorRef,
         _dir: Directionality,
         @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions,
         _element: ElementRef,
     ) {
-        super(_changeDetectorRef, _dir, _element);
+        super(_cdr, _dir, _element);
     }
 }
 

@@ -15,13 +15,13 @@ export class NxFileUploaderButtonDirective implements OnDestroy {
     _ariaDescribedby: string | undefined;
     private _disabled: boolean = false;
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     /** Whether the file uploader is disabled */
     @Input()
     set disabled(value: boolean) {
         this._disabled = value;
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     get disabled(): boolean {

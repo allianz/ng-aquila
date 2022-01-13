@@ -87,7 +87,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     constructor(
         private _elementRef: ElementRef,
         private _focusTrapFactory: FocusTrapFactory,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(DOCUMENT) _document: any,
         /** The modal configuration. */
         public _config: NxModalConfig,
@@ -235,7 +235,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
         // Mark the container for check so it can react if the
         // view container is using OnPush change detection.
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     _closeButtonClick() {

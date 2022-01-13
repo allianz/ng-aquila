@@ -129,7 +129,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     _numCols: number = 7;
 
     constructor(
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
         @Optional() public _dateAdapter: NxDateAdapter<D>,
         @Optional() private _dir?: Directionality,
@@ -245,7 +245,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
         this._firstWeekOffset = (DAYS_PER_WEEK + this._dateAdapter.getDayOfWeek(firstOfMonth) - this._dateAdapter.getFirstDayOfWeek()) % DAYS_PER_WEEK;
 
         this._createWeekCells();
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
 
     /** Focuses the active cell after the microtask queue is empty. */

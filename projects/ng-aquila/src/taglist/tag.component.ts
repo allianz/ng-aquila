@@ -21,7 +21,7 @@ export class NxTagComponent implements OnDestroy {
     @Input()
     set removable(value: BooleanInput) {
         this._removable = coerceBooleanProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get removable() {
         return this._removable;
@@ -36,7 +36,7 @@ export class NxTagComponent implements OnDestroy {
     @Input()
     set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
-        this._changeDetectorRef.markForCheck();
+        this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this.removable ? 0 : this._tabindex;
@@ -48,7 +48,7 @@ export class NxTagComponent implements OnDestroy {
     set value(value: string) {
         if (this._value !== value) {
             this._value = value;
-            this._changeDetectorRef.markForCheck();
+            this._cdr.markForCheck();
         }
     }
     get value(): string {
@@ -60,7 +60,7 @@ export class NxTagComponent implements OnDestroy {
     /** An event is dispatched each time when the tag is removed. */
     @Output() readonly removed: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(private _changeDetectorRef: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

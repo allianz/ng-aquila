@@ -44,7 +44,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
 
     constructor(
         private _ngZone: NgZone,
-        private _changeDetectorRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         /** The message toastconfiguration. */
         public config: NxMessageToastConfig,
         /** Injected data into the notifciation. */
@@ -92,7 +92,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     enter(): void {
         if (!this._destroyed) {
             this._animationState = 'visible';
-            this._changeDetectorRef.detectChanges();
+            this._cdr.detectChanges();
         }
     }
 

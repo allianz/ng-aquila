@@ -22,7 +22,7 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
 
     constructor(
         private _lazyLoadingService: BaseLazyLoadingService,
-        private _cdRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
         private _manifestService: ManifestService,
         private _route: ActivatedRoute,
     ) {
@@ -39,7 +39,7 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
         this._lazyLoadingService.getComponent(this.exampleDescriptor.id, this.exampleDescriptor.module).then(({ componentFactory, ngModuleFactory }) => {
             this.exampleComponent = componentFactory;
             this.exampleModuleFactory = ngModuleFactory;
-            this._cdRef.detectChanges();
+            this._cdr.detectChanges();
         });
     }
 
