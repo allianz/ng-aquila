@@ -1,8 +1,8 @@
-import { CategorizedClassDoc } from '../common/dgeni-definitions';
-import { Processor, Document } from 'dgeni';
+import { Document, Processor } from 'dgeni';
 import { InterfaceExportDoc } from 'dgeni-packages/typescript/api-doc-types/InterfaceExportDoc';
 import { TypeAliasExportDoc } from 'dgeni-packages/typescript/api-doc-types/TypeAliasExportDoc';
 import * as path from 'path';
+import { CategorizedClassDoc } from '../common/dgeni-definitions';
 
 const fs = require('fs');
 

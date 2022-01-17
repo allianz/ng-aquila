@@ -1,16 +1,15 @@
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
     EventEmitter,
     forwardRef,
     Input,
     Output,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    ViewChildren,
-    ElementRef,
     QueryList,
-    AfterContentInit,
+    ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxTagComponent } from './tag.component';

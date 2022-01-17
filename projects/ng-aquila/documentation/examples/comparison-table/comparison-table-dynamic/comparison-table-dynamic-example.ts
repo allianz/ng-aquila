@@ -1,5 +1,5 @@
-import { NxComparisonTableRowType } from '@aposin/ng-aquila/comparison-table';
 import { Component } from '@angular/core';
+import { NxComparisonTableRowType } from '@aposin/ng-aquila/comparison-table';
 
 type ContentCell = {
     type: NxComparisonTableRowType;

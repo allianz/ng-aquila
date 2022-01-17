@@ -1,35 +1,26 @@
-import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
     Directive,
+    ElementRef,
+    Inject,
     Input,
     OnChanges,
     OnDestroy,
-    SimpleChanges,
     Optional,
-    Inject,
+    SimpleChanges,
     ViewChild,
-    ElementRef,
-    AfterViewInit,
 } from '@angular/core';
-import { merge, of as observableOf, Subscription, Subject } from 'rxjs';
-
-import { NxDatepickerIntl } from './datepicker-intl';
-import { NxDatepickerComponent, DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from './datepicker.component';
+import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { NxDatepickerIntl } from './datepicker-intl';
+import { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS, NxDatepickerComponent } from './datepicker.component';
 
 /** Can be used to override the icon of a `nxDatepickerToggle`. */
 @Directive({

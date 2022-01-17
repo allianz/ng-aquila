@@ -1,23 +1,32 @@
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxFooterModule } from '@aposin/ng-aquila/footer';
-import { NxGridModule } from '@aposin/ng-aquila/grid';
-import { NX_DOCS_SELECTABLE_THEMES, NX_DOCS_FEATURE_FLAGS, NX_DOCS_LOGO_PATH, LogoPath, NX_DOCS_GITHUB_LINK, GithubLinkConfig } from '@aposin/ngx-docs-ui';
-import { DocVersions, NXV_MANIFEST_TOKEN, NxvDocumentationModule, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
+import { NxFooterModule } from '@aposin/ng-aquila/footer';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
+import {
+    BaseLazyLoadingService,
+    DocVersions,
+    GithubLinkConfig,
+    LogoPath,
+    NxvDocumentationModule,
+    NXV_MANIFEST_TOKEN,
+    NX_DOCS_FEATURE_FLAGS,
+    NX_DOCS_GITHUB_LINK,
+    NX_DOCS_LOGO_PATH,
+    NX_DOCS_SELECTABLE_THEMES,
+    NX_DOC_VERSIONS,
+} from '@aposin/ngx-docs-ui';
 import { ColorPickerModule } from 'ngx-color-picker';
-
+import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
+import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
-import { NxDocumentationIconModule } from '@aposin/ng-aquila/documentation-icons';
-import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
-import { BaseLazyLoadingService } from '@aposin/ngx-docs-ui';
 import { TopInfoComponent } from './top-info/top-info.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const ROUTES = [
     {

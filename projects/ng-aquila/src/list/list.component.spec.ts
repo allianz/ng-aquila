@@ -1,7 +1,6 @@
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
-
 import { NxListComponent } from './list.component';
 import { NxListModule } from './list.module';
 

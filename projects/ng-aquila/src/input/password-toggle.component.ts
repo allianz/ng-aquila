@@ -1,6 +1,6 @@
-import { Input, Component, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy, ElementRef, OnDestroy } from '@angular/core';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 
 const visibilityIcons = {
     show: 'password-show-o',

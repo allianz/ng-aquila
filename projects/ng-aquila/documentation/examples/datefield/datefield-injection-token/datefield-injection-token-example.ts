@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Moment } from 'moment';
 import {
     DatepickerDefaultOptions,
     DATEPICKER_DEFAULT_OPTIONS,
 } from '@aposin/ng-aquila/datefield';
+import { Moment } from 'moment';
 
 const datepickerExpertOptions: DatepickerDefaultOptions = {
     toggleIconTabindex: -1,

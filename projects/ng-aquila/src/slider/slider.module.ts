@@ -1,6 +1,6 @@
-import { NxGridModule } from '@aposin/ng-aquila/grid';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxSliderComponent } from './slider.component';
 
 @NgModule({

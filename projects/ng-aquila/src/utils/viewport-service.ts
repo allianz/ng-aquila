@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { fromEvent, Subject, Observable, asyncScheduler } from 'rxjs';
-import { takeUntil, map, startWith, throttleTime } from 'rxjs/operators';
+import { asyncScheduler, fromEvent, Observable, Subject } from 'rxjs';
+import { map, startWith, takeUntil, throttleTime } from 'rxjs/operators';
 
 /** Available breakpoints to subscribe to. */
 export enum NxBreakpoints {

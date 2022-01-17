@@ -1,10 +1,10 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef, Input, OnDestroy } from '@angular/core';
-import { NxButtonBase } from '@aposin/ng-aquila/button';
-import { NxComparisonTableBase } from '../comparison-table-base';
-import { NxComparisonTableCell } from '../cell/cell.component';
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { NxButtonBase } from '@aposin/ng-aquila/button';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { NxComparisonTableCell } from '../cell/cell.component';
+import { NxComparisonTableBase } from '../comparison-table-base';
 
 @Component({
     selector: 'button[nxComparisonTableSelectButton]',

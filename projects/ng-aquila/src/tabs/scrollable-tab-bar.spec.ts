@@ -1,12 +1,11 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { NxTabGroupComponent } from './tab-group';
-import { NxTabsModule } from './tabs.module';
-import { NxTabNavBarComponent } from './tab-nav-bar';
 import { dispatchFakeEvent } from '../cdk-test-utils';
+import { NxTabGroupComponent } from './tab-group';
+import { NxTabNavBarComponent } from './tab-nav-bar';
+import { NxTabsModule } from './tabs.module';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;

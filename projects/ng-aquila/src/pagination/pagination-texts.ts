@@ -1,4 +1,4 @@
-import { InjectionToken, LOCALE_ID } from '@angular/core';
+import { InjectionToken } from '@angular/core';
 
 /**
  * Interface for providing custom labels in a simple pagination.

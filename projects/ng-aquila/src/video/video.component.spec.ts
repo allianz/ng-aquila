@@ -1,8 +1,8 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { NxVideoComponent } from './video.component';
 import { NxVideoModule } from './video.module';
-import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class VideoTest {

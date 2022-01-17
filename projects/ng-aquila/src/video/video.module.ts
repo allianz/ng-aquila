@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { NxVideoComponent } from './video.component';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxVideoComponent } from './video.component';
 
 @NgModule({
     declarations: [NxVideoComponent],

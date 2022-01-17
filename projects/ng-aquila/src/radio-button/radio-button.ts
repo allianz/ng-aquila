@@ -1,11 +1,14 @@
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
     ContentChildren,
+    DoCheck,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -17,14 +20,11 @@ import {
     QueryList,
     Self,
     ViewChild,
-    DoCheck,
-    AfterViewInit,
 } from '@angular/core';
-import { ControlValueAccessor, FormGroupDirective, NG_VALUE_ACCESSOR, NgControl, NgForm, FormControl } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { Subject, Subscription } from 'rxjs';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {

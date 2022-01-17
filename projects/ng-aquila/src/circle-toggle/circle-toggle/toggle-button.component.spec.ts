@@ -1,10 +1,10 @@
-import { By } from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { NxCircleToggleModule } from '../circle-toggle.module';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { dispatchFakeEvent, dispatchTouchEvent } from '../../cdk-test-utils';
+import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleComponent } from './circle-toggle.component';
-import { dispatchTouchEvent, dispatchFakeEvent } from '../../cdk-test-utils';
 
 describe('NxToggleButton', () => {
     let fixture: ComponentFixture<AbstractButtonToggleComponent>;

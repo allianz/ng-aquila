@@ -1,22 +1,22 @@
 import { AriaDescriber, FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import {
+    ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
+    HorizontalConnectionPos,
     OriginConnectionPosition,
     Overlay,
     OverlayConnectionPosition,
     OverlayRef,
     ScrollStrategy,
-    ConnectionPositionPair,
     VerticalConnectionPos,
-    HorizontalConnectionPos,
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { Directive, ElementRef, Inject, InjectionToken, Input, NgZone, OnDestroy, Optional, ViewContainerRef, ComponentRef, OnInit } from '@angular/core';
+import { ComponentRef, Directive, ElementRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 import { NxTooltipComponent } from './tooltip.component';

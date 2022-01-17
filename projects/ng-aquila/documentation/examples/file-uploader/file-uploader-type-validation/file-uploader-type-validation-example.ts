@@ -1,15 +1,15 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
     FileItem,
-    NxFileUploadResult,
     NxFileUploader,
+    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
-import { HttpClient, HttpParams } from '@angular/common/http';
 
 export const myCustomConfig: NxMessageToastConfig = {
     duration: 3000,

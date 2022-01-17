@@ -1,5 +1,4 @@
-import { ComponentFactory, Injectable } from '@angular/core';
-import { NgModuleFactory } from '@angular/core';
+import { ComponentFactory, Injectable, NgModuleFactory } from '@angular/core';
 
 @Injectable()
 export abstract class BaseLazyLoadingService {

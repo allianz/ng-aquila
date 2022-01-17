@@ -1,8 +1,8 @@
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { Component, ContentChildren, QueryList, Input, AfterContentInit, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
-import { startWith, takeUntil, filter } from 'rxjs/operators';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, OnDestroy, QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
+import { filter, startWith, takeUntil } from 'rxjs/operators';
+import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
 /**
  * The appearance of the breadcrumb.

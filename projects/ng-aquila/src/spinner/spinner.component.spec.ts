@@ -1,7 +1,7 @@
-import { NxSpinnerModule } from './spinner.module';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Component, ViewChild, Type, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { NxSpinnerComponent, SpinnerSize } from './spinner.component';
+import { NxSpinnerModule } from './spinner.module';
 
 @Directive()
 abstract class SpinnerTest {

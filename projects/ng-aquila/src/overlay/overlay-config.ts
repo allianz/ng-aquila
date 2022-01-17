@@ -1,5 +1,5 @@
-import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { ScrollStrategy, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { FlexibleConnectedPositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { NxTriggerButton } from './trigger-button';
 
 /** The ARIA role of the overlay. */

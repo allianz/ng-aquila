@@ -1,12 +1,12 @@
-import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
-import { DebugElement, Type, Component, ViewChild, Directive, QueryList, ViewChildren } from '@angular/core';
+import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxComparisonTableModule } from '../comparison-table.module';
-import { NxComparisonTableIntersectionCell } from './intersection-cell.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
+import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';
 import { NxToggleSectionDirective } from '../toggle-section/toggle-section.directive';
-import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
+import { NxComparisonTableIntersectionCell } from './intersection-cell.component';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;

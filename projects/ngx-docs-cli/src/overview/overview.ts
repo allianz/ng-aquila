@@ -1,5 +1,5 @@
-import { build } from './run-overview';
 import * as path from 'path';
+import { build } from './run-overview';
 
 function run(source, dest, { ignorePrivateExamples }) {
     return build({

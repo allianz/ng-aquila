@@ -1,26 +1,25 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
 import {
+    AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ElementRef,
     EventEmitter,
     Inject,
     Input,
+    OnDestroy,
     OnInit,
     Optional,
     Output,
-    AfterContentInit,
-    ViewChildren,
     QueryList,
-    ElementRef,
-    AfterViewInit,
-    OnDestroy,
+    ViewChildren,
 } from '@angular/core';
-
+import { Subscription } from 'rxjs';
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
-import { Directionality } from '@angular/cdk/bidi';
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { Subscription } from 'rxjs';
 
 /** @docs-private */
 export interface Page {

@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
-import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class ExpandableTableRowTest {

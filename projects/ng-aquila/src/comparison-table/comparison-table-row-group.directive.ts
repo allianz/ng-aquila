@@ -1,10 +1,10 @@
-import { Directive, Input, QueryList, ContentChildren, Optional, EventEmitter, Output, Inject } from '@angular/core';
-import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
-import { NxTableContentElement } from './table-content-element.directive';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { ContentChildren, Directive, EventEmitter, Inject, Input, Optional, Output, QueryList } from '@angular/core';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
-import { NumberInput, coerceNumberProperty, coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
+import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
+import { NxTableContentElement } from './table-content-element.directive';
+import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 
 @Directive({
     selector: '[nxComparisonTableRowGroup]',

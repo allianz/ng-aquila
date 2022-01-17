@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxTreeComponent, NxTreeFlatDataSource, NxTreeModule, NxFlatTreeControl } from './public-api';
+import { NxFlatTreeControl, NxTreeComponent, NxTreeFlatDataSource, NxTreeModule } from './public-api';
 
 describe(NxTreeComponent.name, () => {
     /** Represents an indent for expectNestedTreeToNxch */

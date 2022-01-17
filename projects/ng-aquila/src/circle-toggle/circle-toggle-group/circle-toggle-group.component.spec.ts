@@ -1,8 +1,8 @@
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { NxCircleToggleModule } from '../circle-toggle.module';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Type, ViewChild, Component, ChangeDetectionStrategy, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleGroupComponent } from './circle-toggle-group.component';
 
 describe('NxToggleButtonGroup', () => {

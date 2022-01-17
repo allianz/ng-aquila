@@ -1,18 +1,14 @@
-import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
-
-import { NgModule, Optional, Inject } from '@angular/core';
-
+import { Inject, Optional } from '@angular/core';
+import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
 // the `default as` syntax.
 // https://github.com/angular/components/blob/master/src/material-moment-adapter/adapter/moment-date-adapter.ts
 import * as _moment from 'moment';
-import { default as _rollupMoment } from 'moment';
+import { default as _rollupMoment, Moment } from 'moment';
 
 const moment = _rollupMoment || _moment;
-
-import { Moment } from 'moment';
 
 /** Creates an array and fills it with values. */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {

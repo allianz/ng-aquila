@@ -1,4 +1,4 @@
-import { Directive, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import { Directive, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 
 export type SortDirection = 'asc' | 'desc';

@@ -1,4 +1,4 @@
-import { AnimationTriggerMetadata, trigger, state, transition, style, animate } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 /**
  * Animations used by the Message Toast.

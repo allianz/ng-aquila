@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Moment } from 'moment';
 import { NxDatepickerComponent } from '@aposin/ng-aquila/datefield';
+import { Moment } from 'moment';
 
 /**
  * @title Date range example

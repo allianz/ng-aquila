@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
 import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxAutocompleteModule } from '@aposin/ng-aquila/autocomplete';

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ComponentService } from '../../service/component.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 

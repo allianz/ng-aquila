@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxTableComponent } from './table.component';
-import { NxTableModule } from './table.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxHeaderCellDirective } from './header-cell.directive';
 import { NxTableCellComponent } from './table-cell.component';
 import { NxTableRowComponent } from './table-row.component';
+import { NxTableComponent } from './table.component';
+import { NxTableModule } from './table.module';
 
 @Directive()
 abstract class TableTest {

@@ -1,6 +1,6 @@
-import { Directive, Input } from '@angular/core';
 import { CdkAccordion } from '@angular/cdk/accordion';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { Directive, Input } from '@angular/core';
 import { AccordionStyle } from './expansion-panel';
 
 const DEFAULT_TYPE: AccordionStyle = 'regular';

@@ -1,5 +1,4 @@
 import { ArrayLiteralExpression, CallExpression, NodeArray, ObjectLiteralExpression, PropertyAssignment, StringLiteral, SyntaxKind } from 'typescript';
-
 import { CategorizedClassDoc } from './dgeni-definitions';
 
 /**

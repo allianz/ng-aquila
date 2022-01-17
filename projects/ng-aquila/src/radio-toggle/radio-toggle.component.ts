@@ -1,23 +1,22 @@
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { mapClassNames } from '@aposin/ng-aquila/utils';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
     AfterViewInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
+    DoCheck,
     Input,
     OnDestroy,
-    QueryList,
-    ChangeDetectorRef,
     Optional,
+    QueryList,
     Self,
-    DoCheck,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { Subject, merge } from 'rxjs';
+import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
+import { merge, Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 import { NxRadioToggleButtonChange, NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 

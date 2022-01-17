@@ -1,5 +1,5 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NxCodeInputIntl } from '@aposin/ng-aquila/code-input';
 
 @Injectable()

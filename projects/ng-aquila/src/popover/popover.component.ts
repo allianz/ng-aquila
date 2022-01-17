@@ -1,3 +1,4 @@
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -11,10 +12,9 @@ import {
     ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { NxPopoverContentDirective } from './popover-content';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { NxPopoverIntl } from './popover-intl';
 import { takeUntil } from 'rxjs/operators';
+import { NxPopoverContentDirective } from './popover-content';
+import { NxPopoverIntl } from './popover-intl';
 
 @Component({
     selector: 'nx-popover',

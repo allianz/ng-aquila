@@ -1,8 +1,8 @@
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { DebugElement, Component, ViewChild, Type, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { NxLayoutComponent } from './layout.component';
 import { NxGridModule } from './grid.module';
+import { NxLayoutComponent } from './layout.component';
 
 @Directive()
 abstract class DirectiveTest {

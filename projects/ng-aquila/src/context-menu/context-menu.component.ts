@@ -1,26 +1,26 @@
+import { AnimationEvent } from '@angular/animations';
 import { FocusKeyManager, FocusOrigin } from '@angular/cdk/a11y';
 import { Direction } from '@angular/cdk/bidi';
-import { ESCAPE, LEFT_ARROW, RIGHT_ARROW, HOME, END, hasModifierKey } from '@angular/cdk/keycodes';
+import { END, ESCAPE, hasModifierKey, HOME, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ContentChildren,
     EventEmitter,
     NgZone,
     OnDestroy,
     Output,
+    QueryList,
     TemplateRef,
     ViewChild,
-    ContentChildren,
-    QueryList,
 } from '@angular/core';
 import { merge, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { startWith, switchMap, take } from 'rxjs/operators';
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
-import { AnimationEvent } from '@angular/animations';
 
 @Component({
     selector: 'nx-context-menu',

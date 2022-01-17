@@ -1,10 +1,10 @@
-import { generateLazyLoadingService } from './lazy-loading-service/generate-service';
-
 import { of } from 'rxjs';
-import chalk = require('chalk');
 import { highlightSourceFiles } from './highlight-files';
+import { generateLazyLoadingService } from './lazy-loading-service/generate-service';
 import { createManifestData } from './manifest';
 import { collectMetadata } from './metadata';
+
+import chalk = require('chalk');
 
 function run(source, { outputExampleSources, serviceOutputPath, additionalSourcePath }) {
     console.log(chalk.green('Processing Examples'));

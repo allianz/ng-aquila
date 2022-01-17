@@ -1,12 +1,9 @@
-import { DomSanitizer } from '@angular/platform-browser';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
-import { Component, ElementRef, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxMessageComponent, CONTEXT } from './message.component';
-import { NxMessageModule } from '../message.module';
-import { dispatchMouseEvent } from '../../cdk-test-utils';
 import { FormsModule } from '@angular/forms';
+import { dispatchMouseEvent } from '../../cdk-test-utils';
+import { NxMessageModule } from '../message.module';
+import { CONTEXT, NxMessageComponent } from './message.component';
 
 @Directive()
 abstract class MessageTest {

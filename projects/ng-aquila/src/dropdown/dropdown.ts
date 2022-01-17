@@ -1,17 +1,17 @@
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW, SHIFT, TAB } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
 import {
     AfterContentInit,
+    AfterViewInit,
     Attribute,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    ContentChild,
     ContentChildren,
     DoCheck,
     ElementRef,
@@ -23,24 +23,23 @@ import {
     OnInit,
     Optional,
     Output,
-    Self,
-    ViewChild,
-    TemplateRef,
-    ContentChild,
-    ViewChildren,
     QueryList,
-    AfterViewInit,
+    Self,
+    TemplateRef,
+    ViewChild,
+    ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
-
+import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { getNxDropdownNonArrayValueError, getNxDropdownNonFunctionValueError } from './dropdown-errors';
+import { getPositionOffset, getPositions } from './dropdown-position';
 import { NxDropdownControl } from './dropdown.control';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
-import { NxDropdownClosedLabelDirective } from './closed-label.directive';
-import { getPositions, getPositionOffset } from './dropdown-position';
 
 let nextUniqueId = 0;
 

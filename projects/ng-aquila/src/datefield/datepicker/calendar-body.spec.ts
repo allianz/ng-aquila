@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
-import { By } from '@angular/platform-browser';
-
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
 describe('NxCalendarBodyComponent', () => {
     beforeEach(

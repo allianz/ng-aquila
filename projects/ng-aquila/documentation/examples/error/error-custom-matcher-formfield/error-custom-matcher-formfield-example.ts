@@ -1,11 +1,11 @@
 import { Component, Injectable } from '@angular/core';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import {
     FormControl,
     FormGroupDirective,
     NgForm,
     Validators,
 } from '@angular/forms';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 
 @Injectable()
 export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {

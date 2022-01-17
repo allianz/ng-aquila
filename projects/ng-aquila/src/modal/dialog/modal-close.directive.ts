@@ -1,6 +1,6 @@
-import { ElementRef, Optional, Directive, Input, SimpleChanges, OnInit, OnChanges } from '@angular/core';
-import { NxModalRef } from './modal-ref';
+import { Directive, ElementRef, Input, OnChanges, OnInit, Optional, SimpleChanges } from '@angular/core';
 import { NxDialogService } from './dialog.service';
+import { NxModalRef } from './modal-ref';
 
 /**
  * Button that will close the current modal.

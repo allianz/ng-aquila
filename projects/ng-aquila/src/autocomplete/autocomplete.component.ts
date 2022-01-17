@@ -1,25 +1,24 @@
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
 import {
     AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ContentChildren,
     ElementRef,
     EventEmitter,
     Input,
+    OnDestroy,
+    Optional,
     Output,
+    QueryList,
     TemplateRef,
     ViewChild,
     ViewChildren,
-    ContentChildren,
-    QueryList,
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    OnDestroy,
-    Optional,
 } from '@angular/core';
-
-import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { Observable, Subscription } from 'rxjs';
+import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 
 /**
  * Autocomplete IDs need to be unique across components, so this counter exists outside of

@@ -1,9 +1,8 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
-import { Tree } from '@angular-devkit/schematics';
-import * as shx from 'shelljs';
 import { getSystemPath, normalize, virtualFs } from '@angular-devkit/core';
 import { TempScopedNodeJsSyncHost } from '@angular-devkit/core/node/testing';
-import { HostTree } from '@angular-devkit/schematics';
+import { HostTree, Tree } from '@angular-devkit/schematics';
+import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import * as shx from 'shelljs';
 
 export enum Collection {
     SCHEMATICS = 1,

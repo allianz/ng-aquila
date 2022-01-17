@@ -1,26 +1,25 @@
-import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
-import { NxListModule } from '@aposin/ng-aquila/list';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
-import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
-
 import { NgModule } from '@angular/core';
-import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
+import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
+import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxListModule } from '@aposin/ng-aquila/list';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
+import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
+import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
+import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
 import { ComparisonTableFormElementsExampleComponent } from './comparison-table-form-elements/comparison-table-form-elements-example';
+import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
+import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
-import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
-import { ComparisonTableHiddenColumnsExampleComponent } from './comparison-table-hidden-columns/comparison-table-hidden-columns-example';
-import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-table-non-sticky-header/comparison-table-non-sticky-header-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
+import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 
 const EXAMPLES = [
     ComparisonTableExampleComponent,

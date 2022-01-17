@@ -1,11 +1,11 @@
-import { NxIsoDateModule } from './iso-date-adapter.module';
-import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
+import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import dayjs from 'dayjs';
+import 'dayjs/locale/de';
 import localeData from 'dayjs/plugin/localeData';
 import { NxIsoDateAdapter } from './iso-date-adapter';
+import { NxIsoDateModule } from './iso-date-adapter.module';
 
-import 'dayjs/locale/de';
 dayjs.extend(localeData);
 
 describe('NxIsoDateAdapter', () => {

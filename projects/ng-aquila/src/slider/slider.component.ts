@@ -1,8 +1,9 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import { clamp } from '@aposin/ng-aquila/utils';
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -10,17 +11,16 @@ import {
     EventEmitter,
     forwardRef,
     Input,
+    NgZone,
     OnDestroy,
     Optional,
     Output,
     ViewChild,
-    NgZone,
-    AfterViewInit,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { clamp } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 interface Position {
     x: number;

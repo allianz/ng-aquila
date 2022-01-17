@@ -1,11 +1,11 @@
+import { BidiModule, Direction } from '@angular/cdk/bidi';
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
+import { NxPaginationUtils } from './pagination-utils';
 import { NxPaginationComponent } from './pagination.component';
 import { NxPaginationModule } from './pagination.module';
-import { By } from '@angular/platform-browser';
-import { NX_PAGINATION_TEXTS, IPaginationTexts } from './pagination-texts';
-import { NxPaginationUtils } from './pagination-utils';
-import { Direction, BidiModule } from '@angular/cdk/bidi';
 
 const customTexts: IPaginationTexts = {
     previous: 'myPrevious',

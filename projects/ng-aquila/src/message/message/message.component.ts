@@ -1,17 +1,17 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    ChangeDetectorRef,
-    EventEmitter,
-    ViewChild,
-    Output,
-    HostBinding,
-    Input,
-    ElementRef,
     AfterViewInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
+    EventEmitter,
+    HostBinding,
+    Input,
     OnDestroy,
+    Output,
+    ViewChild,
 } from '@angular/core';
 
 /** The contextual type of a message. */

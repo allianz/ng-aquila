@@ -1,7 +1,7 @@
-import { coerceBooleanProperty, coerceNumberProperty, NumberInput, BooleanInput } from '@angular/cdk/coercion';
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ElementRef } from '@angular/core';
-import { DELETE, BACKSPACE, ENTER } from '@angular/cdk/keycodes';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { BACKSPACE, DELETE, ENTER } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 
 @Component({
     selector: 'nx-tag',

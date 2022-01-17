@@ -1,9 +1,9 @@
-import { NxColComponent } from './col.component';
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { DebugElement, Component, ViewChild, Type, Directive } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { sortedClassNames } from '../cdk-test-utils';
+import { NxColComponent } from './col.component';
 
 @Directive()
 abstract class DirectiveTest {

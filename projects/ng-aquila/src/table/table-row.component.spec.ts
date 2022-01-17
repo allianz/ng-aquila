@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, ElementRef, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxTableModule } from './table.module';
-import { NxTableRowComponent } from './table-row.component';
 import { By } from '@angular/platform-browser';
-import { dispatchMouseEvent } from '../cdk-test-utils';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { dispatchMouseEvent } from '../cdk-test-utils';
+import { NxTableRowComponent } from './table-row.component';
+import { NxTableModule } from './table.module';
 
 @Directive()
 class TableRowTest {

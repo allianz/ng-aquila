@@ -1,4 +1,4 @@
-import { isEmpty, addStyles, addStylesFromDimensions, processSplit } from './utils';
+import { addStyles, addStylesFromDimensions, isEmpty, processSplit } from './utils';
 
 const MAP = {
     xs: 'xstest--{tier}',

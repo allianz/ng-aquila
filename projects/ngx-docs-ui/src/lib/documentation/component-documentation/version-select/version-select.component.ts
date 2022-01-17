@@ -1,7 +1,7 @@
-import { DocVersions } from './../../../core/types';
-import { Component, Input, Optional, Inject, ViewChild } from '@angular/core';
-import { NX_DOC_VERSIONS } from '../../../core/tokens';
+import { Component, Inject, Input, Optional, ViewChild } from '@angular/core';
 import { NxContextMenuTriggerDirective } from '@aposin/ng-aquila/context-menu';
+import { NX_DOC_VERSIONS } from '../../../core/tokens';
+import { DocVersions } from './../../../core/types';
 
 @Component({
     selector: 'nxv-version-select',

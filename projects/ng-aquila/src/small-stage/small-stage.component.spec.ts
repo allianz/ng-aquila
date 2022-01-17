@@ -1,9 +1,8 @@
-import { Component, DebugElement, Type, ViewChild, Directive } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { NxSmallStageComponent } from './small-stage.component';
 import { NxSmallStageModule } from './small-stage.module';
-import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class SmallStageTest {

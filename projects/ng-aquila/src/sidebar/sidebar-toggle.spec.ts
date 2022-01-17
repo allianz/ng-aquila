@@ -1,9 +1,8 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxSidebarToggleComponent } from './sidebar-toggle';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
+import { NxSidebarToggleComponent } from './sidebar-toggle';
 
 @Directive()
 abstract class ToggleTest {

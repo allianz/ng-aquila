@@ -1,6 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, Attribute, Directive, ElementRef, OnDestroy } from '@angular/core';
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Input, OnDestroy } from '@angular/core';
 
 export type NxMenuButtonType = 'root' | 'nested';
 

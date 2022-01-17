@@ -1,6 +1,6 @@
-import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
-
 import { NgModule } from '@angular/core';
+import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { SwitcherDefaultExampleComponent } from './switcher-default/switcher-default-example';
 import { SwitcherDisabledExampleComponent } from './switcher-disabled/switcher-disabled-example';
 import { SwitcherLabelLeftExampleComponent } from './switcher-label-left/switcher-label-left-example';
@@ -9,7 +9,6 @@ import { SwitcherLargeExampleComponent } from './switcher-large/switcher-large-e
 import { SwitcherNegativeExampleComponent } from './switcher-negative/switcher-negative-example';
 import { SwitcherReactiveFormExampleComponent } from './switcher-reactive-form/switcher-reactive-form-example';
 import { SwitcherTemplateDrivenExampleComponent } from './switcher-template-driven/switcher-template-driven-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     SwitcherDefaultExampleComponent,

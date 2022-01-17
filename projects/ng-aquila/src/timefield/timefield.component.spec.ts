@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
-import { NxTimefieldComponent } from './timefield.component';
-import { Directive, ViewChild, Type, Component, ChangeDetectionStrategy, Injectable } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { NxTimefieldModule } from './timefield.module';
+import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxTimefieldIntl } from './timefield-intl';
+import { NxTimefieldComponent } from './timefield.component';
+import { NxTimefieldModule } from './timefield.module';
 
 @Directive()
 abstract class TimefieldTest {

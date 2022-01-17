@@ -1,12 +1,11 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ViewChild, Component, Type, Directive, Injectable } from '@angular/core';
-import { inject } from '@angular/core/testing';
-import { SortDirection, SortEvent } from './sort.directive';
-import { NxSortHeaderComponent } from './sort-header.component';
-import { NxTableModule } from '../table.module';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
+import { NxTableModule } from '../table.module';
 import { NxSortHeaderIntl } from './sort-header-intl';
+import { NxSortHeaderComponent } from './sort-header.component';
+import { SortDirection, SortEvent } from './sort.directive';
 
 interface DataStructure {
     name: string;

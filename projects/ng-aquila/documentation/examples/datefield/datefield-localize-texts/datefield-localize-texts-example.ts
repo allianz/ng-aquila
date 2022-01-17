@@ -1,6 +1,6 @@
 import { Component, Injectable } from '@angular/core';
-import { Moment } from 'moment';
 import { NxDatepickerIntl } from '@aposin/ng-aquila/datefield';
+import { Moment } from 'moment';
 
 @Injectable()
 export class MyIntl extends NxDatepickerIntl {

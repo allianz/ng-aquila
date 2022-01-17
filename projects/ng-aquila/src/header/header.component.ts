@@ -1,6 +1,6 @@
-import { Directive, Component, ChangeDetectionStrategy, QueryList, ContentChildren, ElementRef, Input, OnDestroy } from '@angular/core';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, Component, ContentChildren, Directive, ElementRef, Input, OnDestroy, QueryList } from '@angular/core';
 
 /** This directive defines a header row within the `<nx-header>` component. */
 @Directive({

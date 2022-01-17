@@ -2,12 +2,11 @@ import * as fs from 'fs-extra';
 import * as glob from 'glob';
 import * as path from 'path';
 import { bindNodeCallback, pipe } from 'rxjs';
-import { concatAll, map, mergeMap, take, filter } from 'rxjs/operators';
-
+import { concatAll, filter, map, mergeMap, take } from 'rxjs/operators';
+import { showProcessingNotice } from '../shared/logging';
+import { MarkdownFile } from '../shared/markdown-file';
 import { manifest } from './manifest';
 import { transform } from './transform';
-import { MarkdownFile } from '../shared/markdown-file';
-import { showProcessingNotice } from '../shared/logging';
 
 // prepare callback functions to use in rxjs
 const mdFiles$ = bindNodeCallback(glob);

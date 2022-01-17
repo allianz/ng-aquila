@@ -1,4 +1,3 @@
-import { Subject } from 'rxjs';
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -6,8 +5,8 @@ import { Subject } from 'rxjs';
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 /** Datepicker data that requires internationalization. */
 @Injectable()

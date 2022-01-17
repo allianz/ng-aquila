@@ -1,10 +1,9 @@
+import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { Component, Type, ViewChildren, Directive, QueryList } from '@angular/core';
-import { NxComparisonTableModule } from '../comparison-table.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NxToggleSectionDirective } from './toggle-section.directive';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
+import { NxComparisonTableModule } from '../comparison-table.module';
+import { NxToggleSectionDirective } from './toggle-section.directive';
 
 @Directive()
 abstract class ToggleSectionTest {

@@ -1,9 +1,9 @@
-import { NxIconFontDefinition } from './icon-registry';
-import { map, finalize, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { SafeResourceUrl, DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Observable, of } from 'rxjs';
 import { SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+import { Observable, of } from 'rxjs';
+import { finalize, map, share } from 'rxjs/operators';
+import { NxIconFontDefinition } from './icon-registry';
 
 export class NxSvgIcon {
     svgElement: SVGElement | undefined;

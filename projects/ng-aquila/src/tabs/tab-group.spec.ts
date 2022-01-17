@@ -1,13 +1,12 @@
-import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
-import { Component, DebugElement, OnDestroy, Type, ViewChild, ViewChildren, QueryList, Directive, ChangeDetectionStrategy } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, flush, inject, waitForAsync } from '@angular/core/testing';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, OnDestroy, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { NxTabGroupComponent } from './tab-group';
-import { NxTabsModule } from './tabs.module';
+import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
 import { Subscription } from 'rxjs';
+import { NxTabGroupComponent } from './tab-group';
 import { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
+import { NxTabsModule } from './tabs.module';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { NxListComponent } from './list.component';
+import { NxIconComponent, NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxListIconComponent } from './list-icon.component';
-import { NxIconModule, NxIconComponent } from '@aposin/ng-aquila/icon';
+import { NxListComponent } from './list.component';
 
 @NgModule({
     declarations: [NxListComponent, NxListIconComponent],

@@ -1,12 +1,10 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxButtonBase, NxButtonSize, NxButtonType } from './button-base';
 import { NxButtonComponent } from './button.component';
 import { NxButtonModule } from './button.module';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIconButtonComponent } from './icon-button.component';
-import { NxButtonSize, NxButtonType, NxButtonBase } from './button-base';
-import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class ButtonTest {

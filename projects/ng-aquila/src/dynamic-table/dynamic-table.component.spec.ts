@@ -1,7 +1,6 @@
 import { CdkTableModule } from '@angular/cdk/table';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { NxDisplayedColumns } from './displayedColumns';
 import { NxDynamicTableComponent } from './dynamic-table.component';
 import { NxDynamicTableModule } from './dynamic-table.module';

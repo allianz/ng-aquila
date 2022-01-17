@@ -1,7 +1,7 @@
-import { GroupedComponentMetadata } from './types';
 import * as path from 'path';
-import fs = require('fs-extra');
 import * as ts from 'typescript';
+import { GroupedComponentMetadata } from './types';
+import fs = require('fs-extra');
 
 function findExampleFolders(source) {
     if (!fs.existsSync(source)) {

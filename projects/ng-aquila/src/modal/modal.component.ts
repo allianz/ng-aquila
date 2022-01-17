@@ -1,11 +1,24 @@
-import { OnDestroy, ChangeDetectionStrategy, Directive, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Component, Input, OnInit, TemplateRef, Output, EventEmitter } from '@angular/core';
-import { NxModalService } from './modal.service';
-import { EventManager } from '@angular/platform-browser';
-import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
 import { animateChild, query, transition, trigger, useAnimation } from '@angular/animations';
-import { Subscription } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
+import { EventManager } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
+import { NxModalService } from './modal.service';
 
 /** Container for the action buttons in a modal. Has a fixed position at the bottom of the modal on scroll. */
 @Directive({

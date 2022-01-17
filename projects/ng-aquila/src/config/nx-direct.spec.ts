@@ -1,9 +1,8 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxDirectModule } from './nx-direct.module';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxDirectModule } from './nx-direct.module';
 
 @Directive()
 abstract class PresetTest {

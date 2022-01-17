@@ -2,7 +2,6 @@ import { Component, Inject, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { GuideDescriptor } from '../../../core/manifest';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 import { ManifestService } from '../../../service/manifest.service';

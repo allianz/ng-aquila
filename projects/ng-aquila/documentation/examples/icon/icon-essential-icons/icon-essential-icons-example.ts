@@ -1,5 +1,5 @@
+import { Component } from '@angular/core';
 import { DEFAULT_ICONS } from '@aposin/ng-aquila/icon';
-import { Component, OnInit } from '@angular/core';
 
 /**
  * @title Essential Icons Example

@@ -1,7 +1,7 @@
-import { Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal, DomPortal } from '@angular/cdk/portal';
 import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild } from '@angular/core';
 import { NxOverlayConfig } from './overlay-config';
 
 /**

@@ -1,10 +1,9 @@
-import { Component, ElementRef, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxMessageModule } from '../message.module';
-import { dispatchMouseEvent } from '../../cdk-test-utils';
-import { NxMessageBannerComponent, BANNER_CONTEXT } from './message-banner.component';
 import { FormsModule } from '@angular/forms';
+import { dispatchMouseEvent } from '../../cdk-test-utils';
+import { NxMessageModule } from '../message.module';
+import { BANNER_CONTEXT, NxMessageBannerComponent } from './message-banner.component';
 
 @Directive()
 abstract class MessageBannerTest {

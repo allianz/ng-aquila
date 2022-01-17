@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectorRef, ContentChild, ElementRef, ChangeDetectionStrategy, Optional } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { NxSidepanelHeaderComponent } from './sidepanel-header';
-import { nxSidepanelAnimations } from './sidepanel-animations';
 import { Direction, Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, Optional, Output } from '@angular/core';
+import { nxSidepanelAnimations } from './sidepanel-animations';
+import { NxSidepanelHeaderComponent } from './sidepanel-header';
 
 /** Type for the available position values. */
 export type PositionType = 'floating' | 'static';

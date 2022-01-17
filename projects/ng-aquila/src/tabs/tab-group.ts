@@ -1,34 +1,31 @@
-import { NxTabGroupBase } from './tab-group-base';
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
     AfterContentChecked,
     AfterContentInit,
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    ElementRef,
     EventEmitter,
+    Inject,
     Input,
     OnDestroy,
+    Optional,
     Output,
     QueryList,
     ViewChild,
     ViewChildren,
-    InjectionToken,
-    Inject,
-    Optional,
-    ElementRef,
-    AfterViewInit,
 } from '@angular/core';
-import { merge, Subscription, Subject } from 'rxjs';
-
-import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
-import { NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
+import { NxAccordionDirective, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
+import { merge, Subject, Subscription } from 'rxjs';
 import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';
+import { NxTabGroupBase } from './tab-group-base';
 import { NxTabHeaderComponent } from './tab-header';
-import { NxViewportService, NxBreakpoints } from '@aposin/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxTabsAppearance, TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
 
 export class NxTabChangeEvent {

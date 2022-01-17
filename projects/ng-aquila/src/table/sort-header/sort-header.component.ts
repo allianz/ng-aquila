@@ -1,9 +1,9 @@
-import { Component, Input, Optional, ChangeDetectionStrategy, OnInit, ChangeDetectorRef, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { NxSortDirective } from './sort.directive';
-import { Subscription } from 'rxjs';
-import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { NxSortHeaderIntl } from './sort-header-intl';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { NxSortHeaderIntl } from './sort-header-intl';
+import { NxSortDirective } from './sort.directive';
 
 @Component({
     selector: 'th[nxSortHeaderCell]',

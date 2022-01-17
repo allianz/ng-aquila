@@ -1,12 +1,11 @@
-import { Component, Type, ViewChild, DebugElement, ViewChildren, QueryList, Directive } from '@angular/core';
+import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-
-import { NxSelectableCardComponent } from './selectable-card.component';
-import { NxCardModule } from './card.module';
-import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxErrorComponent, NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxCardModule } from './card.module';
+import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
+import { NxSelectableCardComponent } from './selectable-card.component';
 
 @Directive()
 abstract class SelectableCardTest {

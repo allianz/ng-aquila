@@ -12,8 +12,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-
-import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
+import { NxDateAdapter, NxDateFormats, NX_DATE_FORMATS } from '../adapter/index';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 import { createMissingDateImplError } from './datepicker-errors';
 

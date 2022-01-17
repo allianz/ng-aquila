@@ -1,3 +1,5 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import {
     AfterViewInit,
     Component,
@@ -5,8 +7,6 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
-import { SPACE, ENTER } from '@angular/cdk/keycodes';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
  * @title Popover Trigger Example

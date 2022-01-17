@@ -1,27 +1,26 @@
-import { DOCUMENT } from '@angular/common';
+import { Directionality } from '@angular/cdk/bidi';
 import { CdkStep, CdkStepHeader, CdkStepper } from '@angular/cdk/stepper';
+import { DOCUMENT } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     Directive,
+    ElementRef,
     forwardRef,
     Inject,
     Input,
+    OnChanges,
+    OnDestroy,
     QueryList,
     SkipSelf,
-    OnDestroy,
-    ElementRef,
-    ChangeDetectorRef,
-    OnChanges,
 } from '@angular/core';
-import { takeUntil, takeWhile } from 'rxjs/operators';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
-import { Directionality } from '@angular/cdk/bidi';
-import { FocusableOption } from '@angular/cdk/a11y';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { Subject } from 'rxjs';
+import { takeUntil, takeWhile } from 'rxjs/operators';
 
 // We need to reference steps in stepper and stepper in steps. To prevent circular depenedency errors
 // Provide both components in a single file. Otherwise we would have to introduce interface/abstract classes

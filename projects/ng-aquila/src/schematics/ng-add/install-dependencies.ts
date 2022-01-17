@@ -1,6 +1,6 @@
-import { RunSchematicTask, NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { Schema } from './schema';
-import { Tree, Rule, SchematicContext } from '@angular-devkit/schematics';
 import { installAllPeerDependencies } from './version-names';
 
 // this should run after the initial ng-add schematic so that the

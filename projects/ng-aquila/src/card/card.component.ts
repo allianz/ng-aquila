@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef, Attribute, ElementRef, OnDestroy } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
 
 @Component({
     template: '<ng-content></ng-content>',

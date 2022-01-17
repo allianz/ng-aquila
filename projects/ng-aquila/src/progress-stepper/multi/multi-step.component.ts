@@ -1,22 +1,22 @@
-import { NxMultiStepItemComponent } from './multi-step-item.component';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Input,
-    AfterContentInit,
-    QueryList,
-    ContentChildren,
-    ViewChildren,
-    AfterViewChecked,
-    ChangeDetectorRef,
-    ElementRef,
-    Inject,
-} from '@angular/core';
-import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
-import { NxMultiStepperGroupComponent } from './multi-step-group.component';
-import { NxMultiStepperDirection } from '../progress-stepper.models';
 import { Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
+import {
+    AfterContentInit,
+    AfterViewChecked,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    ElementRef,
+    Inject,
+    Input,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
+import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
+import { NxMultiStepperDirection } from '../progress-stepper.models';
+import { NxMultiStepperGroupComponent } from './multi-step-group.component';
+import { NxMultiStepItemComponent } from './multi-step-item.component';
 
 @Component({
     selector: 'nx-multi-stepper',

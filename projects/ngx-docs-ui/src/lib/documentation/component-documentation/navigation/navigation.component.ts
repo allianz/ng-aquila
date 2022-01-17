@@ -1,7 +1,6 @@
-import { NxFlatTreeControl, NxFlatTreeNode, NxTreeFlatDataSource } from '@aposin/ng-aquila/tree';
 import { Component } from '@angular/core';
-
-import { ComponentDescriptor, Manifest } from '../../../core/manifest';
+import { NxFlatTreeControl, NxFlatTreeNode, NxTreeFlatDataSource } from '@aposin/ng-aquila/tree';
+import { ComponentDescriptor } from '../../../core/manifest';
 import { ManifestService } from '../../../service/manifest.service';
 
 export interface NxTreeNode {

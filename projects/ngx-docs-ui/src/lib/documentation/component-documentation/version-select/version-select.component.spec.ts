@@ -1,11 +1,10 @@
-import { DocVersions, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DocVersions, NX_DOC_VERSIONS } from '@aposin/ngx-docs-ui';
 import { NxVersionSelectComponent } from './version-select.component';
 import { NxvVersionSelectModule } from './version-select.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Directive()
 abstract class VersionSelectTest {

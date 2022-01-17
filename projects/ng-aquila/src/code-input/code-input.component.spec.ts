@@ -1,11 +1,11 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Injectable, Directive } from '@angular/core';
+import { DOWN_ARROW, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxCodeInputIntl } from './code-input-intl';
 import { NxCodeInputComponent } from './code-input.component';
 import { NxCodeInputModule } from './code-input.module';
-import { UP_ARROW, DOWN_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
-import { dispatchKeyboardEvent, createKeyboardEvent } from '../cdk-test-utils';
-import { NxCodeInputIntl } from './code-input-intl';
 
 @Injectable()
 class MyIntl extends NxCodeInputIntl {

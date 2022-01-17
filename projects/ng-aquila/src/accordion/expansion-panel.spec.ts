@@ -1,10 +1,10 @@
-import { TestBed, fakeAsync, tick, ComponentFixture, flush, waitForAsync } from '@angular/core/testing';
-import { Component, ViewChild, Type, Directive } from '@angular/core';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NxAccordionModule, NxExpansionPanelComponent } from './index';
-import { SPACE, ENTER } from '@angular/cdk/keycodes';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxAccordionModule, NxExpansionPanelComponent } from './index';
 
 describe('NxExpansionPanelComponent', () => {
     let fixture: ComponentFixture<PanelTest>;

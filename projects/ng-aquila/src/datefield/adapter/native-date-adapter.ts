@@ -8,7 +8,6 @@
 
 import { Platform } from '@angular/cdk/platform';
 import { Inject, Injectable, Optional } from '@angular/core';
-
 import { NxDateAdapter } from './date-adapter';
 import { NX_DATE_LOCALE } from './date-token';
 

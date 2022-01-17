@@ -1,8 +1,7 @@
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, Renderer2, Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
-
-import { MappedStyles } from '@aposin/ng-aquila/core';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { AfterContentInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, Renderer2 } from '@angular/core';
+import { MappedStyles } from '@aposin/ng-aquila/core';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 /** The size of the link. */
 export type NxLinkSize = 'small' | 'large';

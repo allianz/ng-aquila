@@ -1,24 +1,23 @@
-import {
-    Component,
-    Input,
-    Directive,
-    ChangeDetectionStrategy,
-    Optional,
-    SkipSelf,
-    ChangeDetectorRef,
-    InjectionToken,
-    Inject,
-    ElementRef,
-    OnDestroy,
-    ViewChild,
-    ContentChildren,
-    QueryList,
-    forwardRef,
-} from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChildren,
+    Directive,
+    ElementRef,
+    forwardRef,
+    Inject,
+    Input,
+    OnDestroy,
+    Optional,
+    QueryList,
+    SkipSelf,
+    ViewChild,
+} from '@angular/core';
+import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabsAppearance, TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from './tabs.models';
 
 @Component({

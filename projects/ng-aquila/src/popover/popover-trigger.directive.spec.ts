@@ -1,15 +1,14 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
-import { Component, Type, ViewChild, Directive, ViewEncapsulation } from '@angular/core';
+import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
-
+import { dispatchFakeEvent } from '../cdk-test-utils';
+import { NxPopoverIntl } from './popover-intl';
 import { NxPopoverTriggerDirective } from './popover-trigger.directive';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
-import { dispatchFakeEvent } from '../cdk-test-utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
-import { By } from '@angular/platform-browser';
-import { NxPopoverIntl } from './popover-intl';
 
 @Component({
     selector: 'nx-test-component',

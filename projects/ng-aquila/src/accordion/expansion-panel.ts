@@ -1,4 +1,5 @@
 import { CdkAccordionItem } from '@angular/cdk/accordion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import { TemplatePortal } from '@angular/cdk/portal';
 import {
@@ -17,11 +18,9 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, take } from 'rxjs/operators';
-
 import { NxAccordionDirective } from './accordion';
 import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 let nextId = 0;
 

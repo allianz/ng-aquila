@@ -1,6 +1,5 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, waitForAsync } from '@angular/core/testing';
-
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxDropdownModule } from '../dropdown.module';
 import { NxDropdownItemComponent } from './dropdown-item';
 

@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Subscription, BehaviorSubject } from 'rxjs';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 export interface NxExpandable {
     /** Indicates if this expandable instance is open or not.  */

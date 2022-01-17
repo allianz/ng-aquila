@@ -1,4 +1,4 @@
-import { TargetVersion, VersionChanges } from '@angular/cdk/schematics';
+import { VersionChanges } from '@angular/cdk/schematics';
 
 export interface AquilaCssSelectorData {
     /** The CSS selector to replace. */

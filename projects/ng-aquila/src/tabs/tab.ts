@@ -1,24 +1,24 @@
-import { NxTabGroupBase } from './tab-group-base';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+    AfterContentInit,
     ChangeDetectionStrategy,
     Component,
+    ContentChild,
+    EmbeddedViewRef,
+    Host,
+    Inject,
     Input,
     OnChanges,
     OnDestroy,
+    Optional,
     SimpleChanges,
     TemplateRef,
     ViewChild,
-    Optional,
-    Inject,
-    Host,
-    ContentChild,
-    EmbeddedViewRef,
-    AfterContentInit,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { NxTabLabelDirective } from './tab-label';
 import { NxTabContentDirective } from './tab-content';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { NxTabGroupBase } from './tab-group-base';
+import { NxTabLabelDirective } from './tab-label';
 
 @Component({
     selector: 'nx-tab',

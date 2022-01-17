@@ -1,10 +1,9 @@
-import { Component, QueryList, Type, ViewChild, ViewChildren, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, flush, waitForAsync } from '@angular/core/testing';
+import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxRadioComponent, NxRadioGroupComponent } from './radio-button';
 import { NxRadioModule } from './radio-button.module';
-import { NxErrorComponent, NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 
 @Directive()
 abstract class RadioTest {

@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { NxMessageComponent, CONTEXT } from '../message/message.component';
+import { CONTEXT, NxMessageComponent } from '../message/message.component';
 
 export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
 

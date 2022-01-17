@@ -1,9 +1,8 @@
-import { By } from '@angular/platform-browser';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { NxInputModule, NxInputDirective } from '@aposin/ng-aquila/input';
+import { By } from '@angular/platform-browser';
+import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 import { createFakeEvent } from '../cdk-test-utils';
 
 @Directive()

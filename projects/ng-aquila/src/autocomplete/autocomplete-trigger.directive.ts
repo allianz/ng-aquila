@@ -1,4 +1,3 @@
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
@@ -22,10 +21,10 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Observable, Subject, Subscription, defer, of, merge, fromEvent } from 'rxjs';
-import { delay, filter, switchMap, take, tap, debounceTime, first } from 'rxjs/operators';
-
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxWordComponent } from '@aposin/ng-aquila/natural-language-form';
+import { defer, fromEvent, merge, Observable, of, Subject, Subscription } from 'rxjs';
+import { debounceTime, delay, filter, first, switchMap, take, tap } from 'rxjs/operators';
 import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
 import { NxAutocompleteComponent } from './autocomplete.component';
 

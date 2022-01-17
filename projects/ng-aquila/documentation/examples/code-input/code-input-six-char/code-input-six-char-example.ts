@@ -1,5 +1,5 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 /**
  * @title Six character code input example

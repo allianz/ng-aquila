@@ -1,5 +1,4 @@
-import { ElementRef, Injectable } from '@angular/core';
-import { Renderer2 } from '@angular/core';
+import { ElementRef, Injectable, Renderer2 } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 export function isString(value: any) {
     return typeof value === 'string';

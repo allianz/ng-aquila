@@ -1,5 +1,5 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Component, Input, ChangeDetectionStrategy, HostBinding, InjectionToken, Optional, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Inject, InjectionToken, Input, Optional } from '@angular/core';
 
 /**
  * Appearance options for the small stage component.

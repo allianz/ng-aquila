@@ -1,5 +1,4 @@
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-
 import { NxPaginationUtils } from './pagination-utils';
 import { NxPaginationModule } from './pagination.module';
 

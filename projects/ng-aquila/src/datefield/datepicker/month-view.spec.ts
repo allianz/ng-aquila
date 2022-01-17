@@ -1,14 +1,13 @@
-import { NxNativeDateAdapter } from '../adapter/native-date-adapter';
-import { NxDateAdapter, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
-import { NxMonthViewComponent } from './month-view';
-import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { By } from '@angular/platform-browser';
-import { Component, ViewChild } from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
-
-import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
-import { JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC, dispatchKeyboardEvent, dispatchFakeEvent } from '../../cdk-test-utils';
+import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, PAGE_DOWN, PAGE_UP, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { NxDateAdapter, NxNativeDateModule } from '@aposin/ng-aquila/datefield';
+import { APR, AUG, DEC, dispatchFakeEvent, dispatchKeyboardEvent, FEB, JAN, JUN, MAR, MAY, NOV, SEP } from '../../cdk-test-utils';
+import { NxNativeDateAdapter } from '../adapter/native-date-adapter';
+import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
+import { NxMonthViewComponent } from './month-view';
 
 describe('NxMonthView', () => {
     let dir: { value: Direction };

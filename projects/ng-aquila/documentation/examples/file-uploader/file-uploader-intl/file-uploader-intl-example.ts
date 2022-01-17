@@ -1,15 +1,14 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import {
-    NxFileUploaderComponent,
-    NxFileUploaderIntl,
     NxFileUploader,
+    NxFileUploaderIntl,
     NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
-import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class FileUploaderIntl extends NxFileUploaderIntl {

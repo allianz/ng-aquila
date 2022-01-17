@@ -1,11 +1,11 @@
-import { NX_DATE_LOCALE } from './date-token';
-import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
-import { NxNativeDateModule } from './index';
-import { NxNativeDateAdapter } from './native-date-adapter';
 import { Platform } from '@angular/cdk/platform';
 import { LOCALE_ID } from '@angular/core';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-import { JAN, FEB, MAR, DEC } from '../../cdk-test-utils';
+import { NxDateAdapter } from '@aposin/ng-aquila/datefield';
+import { DEC, FEB, JAN, MAR } from '../../cdk-test-utils';
+import { NX_DATE_LOCALE } from './date-token';
+import { NxNativeDateModule } from './index';
+import { NxNativeDateAdapter } from './native-date-adapter';
 
 const SUPPORTS_INTL = typeof Intl !== 'undefined';
 

@@ -1,9 +1,9 @@
-import { NxCheckboxModule } from './checkbox.module';
-import { FormGroup, FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
-import { NxCheckboxGroupComponent, NxCheckboxComponent, NxCheckboxGroupChangeEvent } from './checkbox.component';
-import { ViewChild, ViewChildren, QueryList, Component, Type, Directive } from '@angular/core';
+import { NxCheckboxComponent, NxCheckboxGroupChangeEvent, NxCheckboxGroupComponent } from './checkbox.component';
+import { NxCheckboxModule } from './checkbox.module';
 
 @Directive()
 abstract class CheckboxGroupTest {

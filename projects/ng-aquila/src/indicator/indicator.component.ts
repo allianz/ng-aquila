@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'with-overlap';
 @Component({

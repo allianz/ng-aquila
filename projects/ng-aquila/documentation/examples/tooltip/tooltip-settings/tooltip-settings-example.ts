@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-    NX_TOOLTIP_DEFAULT_OPTIONS,
     NxTooltipDefaultOptions,
+    NX_TOOLTIP_DEFAULT_OPTIONS,
 } from '@aposin/ng-aquila/tooltip';
 
 const myDefaultOptions: NxTooltipDefaultOptions = {

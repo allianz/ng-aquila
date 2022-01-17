@@ -1,7 +1,6 @@
-import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 import { NxProgressStepperModule } from '../progress-stepper.module';
 import { NxProgressStepperComponent } from './progress.component';

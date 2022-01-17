@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxAvatarComponent, NxAvatarButtonDirective } from './avatar';
+import { NgModule } from '@angular/core';
+import { NxAvatarButtonDirective, NxAvatarComponent } from './avatar';
 
 @NgModule({
     imports: [CommonModule],

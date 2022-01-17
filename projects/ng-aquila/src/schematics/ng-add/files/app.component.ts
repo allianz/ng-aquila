@@ -1,5 +1,5 @@
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({

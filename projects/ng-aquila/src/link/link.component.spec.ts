@@ -1,10 +1,9 @@
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { Component, DebugElement, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkComponent, NxLinkSize } from './link.component';
 import { NxLinkModule } from './link.module';
-import { By } from '@angular/platform-browser';
 
 @Directive()
 abstract class LinkTest {

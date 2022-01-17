@@ -1,5 +1,5 @@
-import { FormGroup, FormControl } from '@angular/forms';
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * @title Disabled as part of disabled form example

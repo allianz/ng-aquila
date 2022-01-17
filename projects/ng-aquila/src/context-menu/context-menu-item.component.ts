@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, Optional, Input, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Subject } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 /**
  * This directive is intended to be used inside an nx-context-menu tag.

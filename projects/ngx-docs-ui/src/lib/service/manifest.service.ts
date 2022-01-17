@@ -1,7 +1,7 @@
-import { Injectable, Inject, Optional } from '@angular/core';
-import { NXV_MANIFEST_TOKEN } from '../core/tokens';
-import { Manifest, ComponentDescriptor, GuideDescriptor, ExampleDescriptor } from '../core/manifest';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
+import { ComponentDescriptor, ExampleDescriptor, GuideDescriptor, Manifest } from '../core/manifest';
+import { NXV_MANIFEST_TOKEN } from '../core/tokens';
 
 class CategoryChild {
     label!: string;

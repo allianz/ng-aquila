@@ -1,6 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { coerceNumberProperty, coerceArray, NumberInput } from '@angular/cdk/coercion';
+import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import {
+    AfterViewInit,
     ChangeDetectorRef,
     Component,
     ContentChildren,
@@ -10,7 +11,6 @@ import {
     Input,
     OnDestroy,
     OnInit,
-    AfterViewInit,
     Optional,
     Output,
     QueryList,
@@ -18,7 +18,6 @@ import {
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 import { delay, takeUntil } from 'rxjs/operators';
-
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableBase } from './comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';

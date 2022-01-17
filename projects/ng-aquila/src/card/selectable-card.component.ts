@@ -1,8 +1,11 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
     AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
+    Component,
     ContentChildren,
     DoCheck,
     ElementRef,
@@ -18,14 +21,10 @@ import {
     Self,
     ViewChild,
 } from '@angular/core';
-import { Component } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 
 let nextId = 0;
 

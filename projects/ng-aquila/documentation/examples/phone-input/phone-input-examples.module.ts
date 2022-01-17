@@ -1,18 +1,17 @@
-import { PhoneInputCountryCodeExampleComponent } from './phone-input-country-code/phone-input-country-code-example';
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { PhoneInputFormsExampleComponent } from './phone-input-forms/phone-input-forms-example';
-import { PhoneInputFormattingExampleComponent } from './phone-input-formatting/phone-input-formatting-example';
-import { PhoneInputValidationExampleComponent } from './phone-input-validation/phone-input-validation-example';
-import { PhoneInputI18nExampleComponent } from './phone-input-i18n/phone-input-i18n-example';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxPhoneInputModule } from '@aposin/ng-aquila/phone-input';
-
 import { ExamplesSharedModule } from '../examples-shared.module';
-import { PhoneInputExpertExampleComponent } from './phone-input-expert/phone-input-expert-example';
-import { PhoneInputRetailExampleComponent } from './phone-input-retail/phone-input-retail-example';
+import { PhoneInputCountryCodeExampleComponent } from './phone-input-country-code/phone-input-country-code-example';
 import { PhoneInputDisabledExampleComponent } from './phone-input-disabled/phone-input-disabled-example';
+import { PhoneInputExpertExampleComponent } from './phone-input-expert/phone-input-expert-example';
+import { PhoneInputFormattingExampleComponent } from './phone-input-formatting/phone-input-formatting-example';
+import { PhoneInputFormsExampleComponent } from './phone-input-forms/phone-input-forms-example';
+import { PhoneInputI18nExampleComponent } from './phone-input-i18n/phone-input-i18n-example';
+import { PhoneInputRetailExampleComponent } from './phone-input-retail/phone-input-retail-example';
+import { PhoneInputValidationExampleComponent } from './phone-input-validation/phone-input-validation-example';
 
 const EXAMPLES = [
     PhoneInputRetailExampleComponent,

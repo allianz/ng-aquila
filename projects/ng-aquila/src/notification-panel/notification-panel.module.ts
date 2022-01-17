@@ -1,7 +1,6 @@
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxOverlayModule } from '@aposin/ng-aquila/overlay';
-import { NgModule } from '@angular/core';
-
 import {
     NxNotificationItemActionsDirective,
     NxNotificationItemContentDirective,

@@ -1,4 +1,5 @@
 import { Highlightable } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterViewChecked,
     ChangeDetectionStrategy,
@@ -13,12 +14,10 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
 import { NxDropdownControl } from '../dropdown.control';
 import { NxDropdownGroupComponent } from '../group/dropdown-group';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 export class NxDropdownItemChange {
     constructor(

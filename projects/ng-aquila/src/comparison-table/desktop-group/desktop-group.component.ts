@@ -1,10 +1,10 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy, Optional, Inject } from '@angular/core';
-import { NxComparisonTableBase } from '../comparison-table-base';
-import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-group.directive';
-import { SPACE, ENTER } from '@angular/cdk/keycodes';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, Optional, Output, ViewChild } from '@angular/core';
+import { NxComparisonTableBase } from '../comparison-table-base';
+import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-group.directive';
 import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from '../comparison-table.models';
 
 /**

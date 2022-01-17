@@ -1,11 +1,9 @@
-import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, flush, waitForAsync } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-
-import { NxCheckboxComponent } from './checkbox.component';
-import { NxCheckboxChangeEvent } from './checkbox.component';
-import { NxCheckboxModule } from './checkbox.module';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxCheckboxChangeEvent, NxCheckboxComponent } from './checkbox.component';
+import { NxCheckboxModule } from './checkbox.module';
 
 @Directive()
 abstract class CheckboxTest {

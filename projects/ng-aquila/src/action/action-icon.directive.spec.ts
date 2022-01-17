@@ -1,4 +1,4 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxActionIconDirective } from './action-icon.directive';
 import { NxActionModule } from './action.module';

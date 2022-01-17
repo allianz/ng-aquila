@@ -1,11 +1,10 @@
-import { Component, Type, ViewChild, OnInit, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
-
-import { NxMaskModule } from './mask.module';
-import { NxMaskDirective } from './mask.directive';
-import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { BACKSPACE, DELETE, ZERO, ONE, NUMPAD_ONE, NUMPAD_ZERO, NINE, A, EIGHT, SEMICOLON } from '@angular/cdk/keycodes';
+import { A, BACKSPACE, DELETE, EIGHT, NINE, NUMPAD_ONE, NUMPAD_ZERO, ONE, SEMICOLON, ZERO } from '@angular/cdk/keycodes';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { createKeyboardEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxMaskDirective } from './mask.directive';
+import { NxMaskModule } from './mask.module';
 
 export function assertInputValue(nativeElement: HTMLInputElement, inputValue: string, asserted: string) {
     let selectionPosition: number;

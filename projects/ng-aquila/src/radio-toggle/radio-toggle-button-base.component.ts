@@ -1,4 +1,4 @@
-import { ElementRef, Input, Renderer2, ViewChild, Directive } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { removeClasses } from '@aposin/ng-aquila/utils';
 
 let nextId = 0;

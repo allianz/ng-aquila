@@ -1,6 +1,6 @@
 import { FocusableOption, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
-import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, NUMPAD_MULTIPLY, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
+import { DOWN_ARROW, END, HOME, LEFT_ARROW, NUMPAD_MULTIPLY, RIGHT_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import { CdkTree, CdkTreeNode } from '@angular/cdk/tree';
 import {
     ChangeDetectionStrategy,

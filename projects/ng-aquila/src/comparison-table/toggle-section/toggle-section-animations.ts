@@ -1,4 +1,4 @@
-import { AnimationTriggerMetadata, trigger, state, style, transition, animate } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 export const NxToggleSectionAnimations: {
     readonly bodyExpansion: AnimationTriggerMetadata;

@@ -1,8 +1,7 @@
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-
 import { NgModule } from '@angular/core';
-import { BadgeExampleComponent } from './badge/badge-example';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { BadgeVibrantExampleComponent } from './badge-vibrant/badge-vibrant-example';
+import { BadgeExampleComponent } from './badge/badge-example';
 
 const EXAMPLES = [BadgeExampleComponent, BadgeVibrantExampleComponent];
 

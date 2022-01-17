@@ -1,27 +1,25 @@
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChildren,
     EventEmitter,
     forwardRef,
+    HostBinding,
+    Inject,
+    InjectionToken,
     Input,
+    OnDestroy,
+    Optional,
     Output,
     QueryList,
-    AfterViewInit,
-    ChangeDetectorRef,
-    OnDestroy,
-    ChangeDetectionStrategy,
-    Optional,
-    Inject,
-    HostBinding,
-    InjectionToken,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { takeUntil, tap, startWith, filter } from 'rxjs/operators';
 import { merge, Subject } from 'rxjs';
-
+import { filter, startWith, takeUntil, tap } from 'rxjs/operators';
 import { ToggleButton } from '../circle-toggle/toggle-button';
-import { ToggleChangeEvent } from '../circle-toggle/circle-toggle.component';
 
 /**
  * Appearance options for the circle toggle group component.

@@ -1,5 +1,4 @@
-import { Directionality } from '@angular/cdk/bidi';
-import { Component, ViewChild, TemplateRef, Input, ElementRef, Optional } from '@angular/core';
+import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 

@@ -1,4 +1,4 @@
-import { ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { NxDateAdapter, NxDateFormats } from './adapter';
 
 /**

@@ -1,9 +1,8 @@
 import { END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
-import { Component, DebugElement, Type, ViewChild, Directive } from '@angular/core';
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxTabsModule } from './tabs.module';

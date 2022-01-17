@@ -1,23 +1,22 @@
-import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     forwardRef,
+    HostListener,
     Inject,
     Input,
-    Renderer2,
     OnDestroy,
-    HostListener,
-    AfterViewInit,
+    Renderer2,
 } from '@angular/core';
-
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 import { NxRadioToggleComponent } from './radio-toggle.component';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 /** @docs-private */
 export class NxRadioToggleButtonChange {

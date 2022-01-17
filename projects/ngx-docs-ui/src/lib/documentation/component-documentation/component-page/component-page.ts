@@ -1,11 +1,11 @@
-import { map, takeUntil, filter } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 import { Component, Inject, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ManifestService } from '../../../service/manifest.service';
+import { Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { ComponentDescriptor } from '../../../core/manifest';
-import { ComponentService } from '../../../service/component.service';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
+import { ComponentService } from '../../../service/component.service';
+import { ManifestService } from '../../../service/manifest.service';
 
 export interface DocItem {
     id: string;

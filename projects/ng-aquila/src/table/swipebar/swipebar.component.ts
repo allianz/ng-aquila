@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ElementRef, ViewChild, NgZone, HostListener, AfterViewInit, Input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, NgZone, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'nx-swipebar',

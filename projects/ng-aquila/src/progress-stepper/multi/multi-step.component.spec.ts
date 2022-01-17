@@ -1,17 +1,15 @@
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { RIGHT_ARROW, ENTER, SPACE, LEFT_ARROW, DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
+import { DOWN_ARROW, ENTER, LEFT_ARROW, RIGHT_ARROW, SPACE, UP_ARROW } from '@angular/cdk/keycodes';
+import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-
-import { NxProgressStepperModule } from '../progress-stepper.module';
-import { NxMultiStepperComponent } from './multi-step.component';
-
-import { Validators, FormBuilder, ReactiveFormsModule, FormsModule, FormGroup, FormControl } from '@angular/forms';
-import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxMultiStepperDirection } from '../progress-stepper.models';
+import { NxProgressStepperModule } from '../progress-stepper.module';
+import { NxMultiStepperComponent } from './multi-step.component';
 
 @Directive()
 abstract class MultiStepTest {

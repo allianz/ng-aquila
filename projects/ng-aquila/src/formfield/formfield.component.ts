@@ -1,31 +1,33 @@
-import { ViewChild, InjectionToken, Inject, Optional } from '@angular/core';
 import {
     AfterContentChecked,
     AfterContentInit,
-    OnDestroy,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
     ContentChildren,
     ElementRef,
+    Inject,
+    InjectionToken,
     Input,
+    OnDestroy,
+    Optional,
     QueryList,
-    ViewEncapsulation,
     Renderer2,
+    ViewChild,
+    ViewEncapsulation,
 } from '@angular/core';
-import { startWith } from 'rxjs/operators';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
-
-import { NxFormfieldHintDirective } from './hint.directive';
-import { NxFormfieldNoteDirective } from './note.directive';
+import { merge, Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { NxFormfieldAppendixDirective } from './appendix.directive';
 import { NxFormfieldErrorDirective } from './error.directive';
 import { NxFormfieldControl } from './formfield-control';
-import { merge, Subscription } from 'rxjs';
-import { NxFormfieldSuffixDirective } from './suffix.directive';
-import { NxFormfieldPrefixDirective } from './prefix.directive';
-import { NxFormfieldAppendixDirective } from './appendix.directive';
+import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldLabelDirective } from './label.directive';
+import { NxFormfieldNoteDirective } from './note.directive';
+import { NxFormfieldPrefixDirective } from './prefix.directive';
+import { NxFormfieldSuffixDirective } from './suffix.directive';
 
 const NX_STYLES = {
     negative: 'nx-formfield--negative',

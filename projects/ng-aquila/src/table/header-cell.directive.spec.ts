@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxTableModule } from './table.module';
-import { NxHeaderCellDirective } from './header-cell.directive';
 import { By } from '@angular/platform-browser';
+import { NxHeaderCellDirective } from './header-cell.directive';
+import { NxTableModule } from './table.module';
 
 @Directive()
 abstract class HeaderCellTest {

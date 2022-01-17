@@ -1,21 +1,18 @@
+import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ENTER, RIGHT_ARROW } from '@angular/cdk/keycodes';
-
+import { Component } from '@angular/core';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Directionality, Direction } from '@angular/cdk/bidi';
-import { NxDatepickerIntl } from './datepicker-intl';
-import { NxMultiYearViewComponent, yearsPerPage } from './multi-year-view';
-import { NxYearViewComponent } from './year-view';
-import { NxMonthViewComponent } from './month-view';
-import { NxCalendarBodyComponent } from './calendar-body';
-import { NxNativeDateModule } from '../adapter/index';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { TestBed, ComponentFixture, inject, waitForAsync } from '@angular/core/testing';
-import { Component } from '@angular/core';
-
-import { JAN, FEB, NOV, DEC, dispatchMouseEvent, dispatchKeyboardEvent, dispatchFakeEvent } from '../../cdk-test-utils';
-
+import { DEC, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent, FEB, JAN, NOV } from '../../cdk-test-utils';
+import { NxNativeDateModule } from '../adapter/index';
 import { NxCalendarComponent } from './calendar';
+import { NxCalendarBodyComponent } from './calendar-body';
+import { NxDatepickerIntl } from './datepicker-intl';
+import { NxMonthViewComponent } from './month-view';
+import { NxMultiYearViewComponent, yearsPerPage } from './multi-year-view';
+import { NxYearViewComponent } from './year-view';
 
 describe('NxCalendarComponent', () => {
     let dir: { value: Direction };

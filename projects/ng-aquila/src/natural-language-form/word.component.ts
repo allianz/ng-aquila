@@ -1,6 +1,5 @@
-import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
-import { getFontShorthand } from '@aposin/ng-aquila/utils';
-import { Overlay, OverlayConfig, OverlayPositionBuilder, OverlayRef, FlexibleConnectedPositionStrategy, ConnectionPositionPair } from '@angular/cdk/overlay';
+import { ConnectionPositionPair, FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -9,22 +8,22 @@ import {
     ContentChild,
     ContentChildren,
     ElementRef,
+    EmbeddedViewRef,
     HostBinding,
     Input,
     OnDestroy,
+    OnInit,
     QueryList,
     Renderer2,
     ViewChild,
     ViewContainerRef,
-    EmbeddedViewRef,
-    OnInit,
 } from '@angular/core';
-import { startWith } from 'rxjs/operators';
-import { Subject, Subscription } from 'rxjs';
-
-import { NxPopoverComponent } from '@aposin/ng-aquila/popover';
 import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
-import { TemplatePortal } from '@angular/cdk/portal';
+import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
+import { NxPopoverComponent } from '@aposin/ng-aquila/popover';
+import { getFontShorthand } from '@aposin/ng-aquila/utils';
+import { Subject, Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 /** Type to determine the minimal width of a word. */
 export type SIZES = 'regular' | 'short' | 'long';

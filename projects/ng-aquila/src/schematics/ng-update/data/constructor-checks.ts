@@ -1,4 +1,4 @@
-import { ConstructorChecksUpgradeData, TargetVersion, VersionChanges } from '@angular/cdk/schematics';
+import { ConstructorChecksUpgradeData, VersionChanges } from '@angular/cdk/schematics';
 
 /**
  * List of class names for which the constructor signature has been changed. The new constructor

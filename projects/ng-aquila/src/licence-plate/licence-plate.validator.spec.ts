@@ -1,5 +1,5 @@
-import { NxLicencePlateType, nxLicensePlateValidator } from './licence-plate.validator';
 import { AbstractControl } from '@angular/forms';
+import { NxLicencePlateType, nxLicensePlateValidator } from './licence-plate.validator';
 
 const EXAMPLE_LICENCE_PLATE_NUMBERS = {
     de_standard: {

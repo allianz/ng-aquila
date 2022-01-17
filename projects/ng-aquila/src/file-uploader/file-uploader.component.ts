@@ -1,3 +1,6 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -21,22 +24,18 @@ import {
     ViewChild,
     ViewChildren,
 } from '@angular/core';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm, ValidatorFn } from '@angular/forms';
+import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject, Subscription } from 'rxjs';
-import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
-import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
-import { FileItem } from './file-uploader.model';
-import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { NxFileUploaderIntl } from './file-uploader-intl';
-import { NxLabelComponent } from '@aposin/ng-aquila/base';
-import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
 import { startWith } from 'rxjs/operators';
-import { NxErrorComponent } from '@aposin/ng-aquila/base';
-import { DOWN_ARROW, UP_ARROW } from '@angular/cdk/keycodes';
-import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploader } from './file-uploader';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
+import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
+import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
+import { NxFileUploaderIntl } from './file-uploader-intl';
+import { FileItem } from './file-uploader.model';
+import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
 
 let nextId = 0;
 

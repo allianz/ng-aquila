@@ -1,15 +1,15 @@
-import { DocsPrivateFilter } from './processors/docs-private-filter';
-import { MergeInheritedProperties } from './processors/merge-inherited-properties';
-import { FilterDuplicateExports } from './processors/filter-duplicate-exports';
+import { Package } from 'dgeni';
+import * as path from 'path';
 import { Categorizer } from './processors/categorizer';
 import { ComponentGrouper } from './processors/component-grouper';
-import { Package } from 'dgeni';
+import { DocsPrivateFilter } from './processors/docs-private-filter';
+import { FilterDuplicateExports } from './processors/filter-duplicate-exports';
+import { MergeInheritedProperties } from './processors/merge-inherited-properties';
 
 // Dgeni packages that the Material docs package depends on.
 const jsdocPackage = require('dgeni-packages/jsdoc');
 const nunjucksPackage = require('dgeni-packages/nunjucks');
 const typescriptPackage = require('dgeni-packages/typescript');
-import * as path from 'path';
 
 export const apiDocsPackage = new Package('ng-aquila-api-docs', [jsdocPackage, nunjucksPackage, typescriptPackage]);
 

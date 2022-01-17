@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NxPaginationComponent } from './pagination.component';
+import { NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxPaginationUtils } from './pagination-utils';
+import { NxPaginationComponent } from './pagination.component';
 
 @NgModule({
     imports: [CommonModule, NxIconModule],

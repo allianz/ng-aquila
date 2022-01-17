@@ -1,9 +1,9 @@
-import { CdkTree, CdkTreeNode } from '@angular/cdk/tree';
-import { Directive, Input, Renderer2, ElementRef, Optional, OnDestroy } from '@angular/core';
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
-import { takeUntil } from 'rxjs/operators';
+import { CdkTree, CdkTreeNode } from '@angular/cdk/tree';
+import { Directive, ElementRef, Input, OnDestroy, Optional, Renderer2 } from '@angular/core';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /** Regex used to split a string on its CSS units. */
 const cssUnitPattern = /([A-Za-z%]+)$/;

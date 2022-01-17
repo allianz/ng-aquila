@@ -1,9 +1,9 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnDestroy } from '@angular/core';
-import { ManifestService } from '../../service/manifest.service';
-import { Manifest, GuideDescriptor } from '../../core/manifest';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GuideDescriptor, Manifest } from '../../core/manifest';
+import { ManifestService } from '../../service/manifest.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 
 @Component({

@@ -1,22 +1,22 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     Component,
-    OnDestroy,
-    Input,
     ElementRef,
+    Input,
+    OnDestroy,
     Optional,
     Self,
 } from '@angular/core';
-import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import {
     ControlValueAccessor,
-    FormGroup,
     FormBuilder,
+    FormGroup,
     NgControl,
     Validators,
 } from '@angular/forms';
+import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { Subject } from 'rxjs';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
  * @title Implementing Custom Formfield Control example

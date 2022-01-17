@@ -1,7 +1,6 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input } from '@angular/core';
-
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 
 @Component({

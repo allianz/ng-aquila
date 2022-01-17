@@ -1,11 +1,11 @@
-import { inject, ComponentFixture, TestBed, fakeAsync, flush, tick } from '@angular/core/testing';
-import { NgModule, Component, ViewChild, TemplateRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { NxMessageToastService } from './message-toast.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { CommonModule } from '@angular/common';
+import { Component, NgModule, TemplateRef, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxMessageModule } from '../message.module';
+import { NxMessageToastService } from './message-toast.service';
 
 describe('NxMessageToast', () => {
     let messageToastService: NxMessageToastService;

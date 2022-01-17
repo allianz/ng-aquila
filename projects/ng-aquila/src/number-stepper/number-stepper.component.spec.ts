@@ -1,9 +1,8 @@
-import { NxNumberStepperIntl } from './number-stepper-intl';
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive, Injectable } from '@angular/core';
-import { ComponentFixture, fakeAsync, flush, TestBed, tick, inject, waitForAsync } from '@angular/core/testing';
-import { FormsModule, FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-
+import { NxNumberStepperIntl } from './number-stepper-intl';
 import { NxNumberStepperComponent } from './number-stepper.component';
 import { NxNumberStepperModule } from './number-stepper.module';
 

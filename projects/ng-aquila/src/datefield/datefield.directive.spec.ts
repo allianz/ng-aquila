@@ -1,16 +1,14 @@
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NX_DATE_LOCALE } from './adapter/date-token';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, flush, waitForAsync } from '@angular/core/testing';
-
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-
+import { NxIsoDateModule } from '../iso-date-adapter';
+import { NX_DATE_LOCALE } from './adapter/date-token';
 import { NxDatefieldDirective } from './datefield.directive';
 import { NxDatefieldModule } from './datefield.module';
-import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { NxIsoDateModule } from '../iso-date-adapter';
 
 @Directive()
 abstract class DatefieldTest {

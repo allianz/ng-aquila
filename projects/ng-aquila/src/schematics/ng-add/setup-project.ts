@@ -1,11 +1,11 @@
-import { chain, noop, Rule, Tree, SchematicContext, apply, mergeWith, url, MergeStrategy, SchematicsException, move } from '@angular-devkit/schematics';
-import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import * as chalk from 'chalk';
-import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
-import { Schema } from './schema';
 import { JsonArray } from '@angular-devkit/core';
+import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicContext, SchematicsException, Tree, url } from '@angular-devkit/schematics';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
+import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
+import * as chalk from 'chalk';
 import { isAngularApplicationProject } from '../utils/utils';
+import { Schema } from './schema';
 
 export default function (options: Schema): Rule {
     return async (host: Tree, context: SchematicContext) => {

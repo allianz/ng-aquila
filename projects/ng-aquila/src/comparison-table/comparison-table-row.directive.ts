@@ -1,16 +1,16 @@
-import { ContentChildren, QueryList, Directive, ContentChild, Input, Optional, AfterContentInit, OnDestroy } from '@angular/core';
-import { NxComparisonTableCell } from './cell/cell.component';
-import { NxComparisonTableIntersectionCell } from './intersection-cell/intersection-cell.component';
-import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';
-import { NxTableContentElement } from './table-content-element.directive';
-import { NxComparisonTableRowBase } from './comparison-table-row-base';
-import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { AfterContentInit, ContentChild, ContentChildren, Directive, Input, OnDestroy, Optional, QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTableRowBase } from './comparison-table-row-base';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
-import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { NxComparisonTableRowType } from './comparison-table.models';
+import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';
+import { NxComparisonTableIntersectionCell } from './intersection-cell/intersection-cell.component';
+import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
+import { NxTableContentElement } from './table-content-element.directive';
+import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 
 @Directive({
     selector: '[nxComparisonTableRow]',

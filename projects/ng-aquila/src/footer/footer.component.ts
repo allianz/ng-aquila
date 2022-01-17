@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive } from '@angular/core';
 
 @Directive({
     selector: 'nx-footer-copyright',

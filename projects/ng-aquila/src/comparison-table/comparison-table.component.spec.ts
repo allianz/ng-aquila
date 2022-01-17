@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList,
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';

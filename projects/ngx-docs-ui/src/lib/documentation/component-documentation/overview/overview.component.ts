@@ -1,8 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { ManifestService, Category } from '../../../service/manifest.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
-import { Router } from '@angular/router';
+import { Category, ManifestService } from '../../../service/manifest.service';
 
 @Component({
     selector: 'nxv-overview',

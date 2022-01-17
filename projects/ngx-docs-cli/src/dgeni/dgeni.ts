@@ -1,5 +1,5 @@
-import { build } from './run-dgeni';
 import * as path from 'path';
+import { build } from './run-dgeni';
 
 function run(source, dest) {
     return build({

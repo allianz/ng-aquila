@@ -1,11 +1,11 @@
-import { NxDatepickerToggleComponent } from './datepicker-toggle';
-import { NxDatepickerComponent, DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions } from './datepicker.component';
-import { ComponentFixture, TestBed, flush, fakeAsync, inject, waitForAsync } from '@angular/core/testing';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { NxDatefieldModule } from '../datefield.module';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import { Subject } from 'rxjs';
+import { NxDatefieldModule } from '../datefield.module';
+import { NxDatepickerToggleComponent } from './datepicker-toggle';
+import { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS, NxDatepickerComponent } from './datepicker.component';
 
 const datepickerOptions: DatepickerDefaultOptions = {
     changes: new Subject<void>(),

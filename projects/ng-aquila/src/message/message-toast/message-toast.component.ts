@@ -1,10 +1,10 @@
-import { Component, OnDestroy, ViewChild, NgZone, ChangeDetectorRef, ComponentRef, EmbeddedViewRef } from '@angular/core';
-import { messageToastAnimations } from './message-toast-animations';
-import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import { Subject } from 'rxjs';
-import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from './message-toast-config';
-import { take } from 'rxjs/operators';
 import { AnimationEvent } from '@angular/animations';
+import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { ChangeDetectorRef, Component, ComponentRef, EmbeddedViewRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { messageToastAnimations } from './message-toast-animations';
+import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from './message-toast-config';
 
 /**
  * Internal component that wraps user-provided message toastcontent.

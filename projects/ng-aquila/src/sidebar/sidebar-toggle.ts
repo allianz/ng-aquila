@@ -1,7 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, ElementRef, ChangeDetectorRef, Optional, Host, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Host, Optional } from '@angular/core';
 import { NxButtonBase } from '@aposin/ng-aquila/button';
-
 import { NxSidebarComponent } from './sidebar.component';
 
 @Component({

@@ -1,6 +1,6 @@
+import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
-import { Component } from '@angular/core';
 
 // play-circle-fill from https://remixicon.com/
 const playSvg =

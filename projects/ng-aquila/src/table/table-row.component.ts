@@ -1,7 +1,6 @@
-import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, Output, ElementRef } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { EventEmitter } from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SPACE } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 /**
  * This is a table row.

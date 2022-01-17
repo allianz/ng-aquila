@@ -1,7 +1,7 @@
-import { FileItem } from './file-uploader.model';
 import { HttpClient } from '@angular/common/http';
-import { Subject, of, Observable, forkJoin } from 'rxjs';
+import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { FileItem } from './file-uploader.model';
 
 export interface NxFileUploadConfig {
     /** Sets the url for uploading requests. */

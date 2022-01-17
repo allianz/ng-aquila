@@ -1,19 +1,16 @@
-import { NX_NATIVE_DATE_FORMATS } from './native-date-formats';
-import { NxNativeDateAdapter } from './native-date-adapter';
-import { NX_DATE_FORMATS } from './date-formats';
-import { NgModule } from '@angular/core';
-import { InjectionToken, LOCALE_ID } from '@angular/core';
-import { NxDateAdapter } from './date-adapter';
-import { NX_DATE_LOCALE } from './date-token';
-
 import { PlatformModule } from '@angular/cdk/platform';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { NxDateAdapter } from './date-adapter';
+import { NX_DATE_FORMATS } from './date-formats';
+import { NX_DATE_LOCALE } from './date-token';
+import { NxNativeDateAdapter } from './native-date-adapter';
+import { NX_NATIVE_DATE_FORMATS } from './native-date-formats';
 
 export const NX_DATE_LOCALE_PROVIDER = { provide: NX_DATE_LOCALE, useExisting: LOCALE_ID };
 
-export * from './date-token';
 export * from './date-adapter';
 export * from './date-formats';
-
+export * from './date-token';
 export * from './native-date-adapter';
 export * from './native-date-formats';
 

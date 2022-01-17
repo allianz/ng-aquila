@@ -1,4 +1,4 @@
-import { Directive, Input, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import { NxFileUploaderComponent } from './file-uploader.component';
 
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.

@@ -1,3 +1,3 @@
-import { MethodCallUpgradeData, TargetVersion, VersionChanges } from '@angular/cdk/schematics';
+import { MethodCallUpgradeData, VersionChanges } from '@angular/cdk/schematics';
 
 export const methodCallChecks: VersionChanges<MethodCallUpgradeData> = {};

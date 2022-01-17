@@ -1,26 +1,24 @@
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { END, ESCAPE, HOME, LEFT_ARROW, RIGHT_ARROW, TAB } from '@angular/cdk/keycodes';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { ScrollDispatcher } from '@angular/cdk/scrolling';
+import { Component, ElementRef, EventEmitter, NgZone, QueryList, Type, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Component, ElementRef, EventEmitter, NgZone, ViewChild, ViewChildren, QueryList, Type, ViewEncapsulation } from '@angular/core';
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { ESCAPE, LEFT_ARROW, RIGHT_ARROW, TAB, HOME, END } from '@angular/cdk/keycodes';
-
+import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
+import { Subject } from 'rxjs';
+import { createKeyboardEvent, createMouseEvent, dispatchFakeEvent, dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
+import { NxIconModule } from '../icon/public-api';
 import {
-    NxContextMenuComponent,
-    NxContextMenuModule,
-    NxContextMenuTriggerDirective,
-    NxContextMenuItemComponent,
     MENU_PANEL_OFFSET_X,
     MENU_PANEL_OFFSET_Y,
     MENU_PANEL_TOP_PADDING,
+    NxContextMenuComponent,
+    NxContextMenuItemComponent,
+    NxContextMenuModule,
+    NxContextMenuTriggerDirective,
 } from './public-api';
-
-import { Subject } from 'rxjs';
-import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { NxIconModule } from '../icon/public-api';
-import { dispatchKeyboardEvent, dispatchMouseEvent, dispatchFakeEvent, createMouseEvent, createKeyboardEvent } from '../cdk-test-utils';
-import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
 
 @Component({
     template: `

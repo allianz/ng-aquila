@@ -1,12 +1,12 @@
-import { Component, ViewChild, AfterContentInit } from '@angular/core';
+import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import {
-    FORMFIELD_DEFAULT_OPTIONS,
-    FormfieldDefaultOptions,
-} from '@aposin/ng-aquila/formfield';
-import {
-    ERROR_DEFAULT_OPTIONS,
     ErrorDefaultOptions,
+    ERROR_DEFAULT_OPTIONS,
 } from '@aposin/ng-aquila/base';
+import {
+    FormfieldDefaultOptions,
+    FORMFIELD_DEFAULT_OPTIONS,
+} from '@aposin/ng-aquila/formfield';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 const myDefaultOptions: FormfieldDefaultOptions = {

@@ -1,7 +1,6 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
 import { AfterContentInit, Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';
 import { merge } from 'rxjs';
-
 import { NxNotificationPanelItemComponent } from './../notification-item/notification-item.component';
 
 @Component({

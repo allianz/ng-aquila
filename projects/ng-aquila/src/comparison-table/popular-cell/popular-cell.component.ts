@@ -1,7 +1,7 @@
-import { Component, ViewChild, TemplateRef, Input } from '@angular/core';
+import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
-import { NumberInput, coerceNumberProperty } from '@angular/cdk/coercion';
 
 let nextId = 0;
 

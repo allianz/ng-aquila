@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
 import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base';
-import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
-import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
-import { Subject } from 'rxjs';
 import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
 import { CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
+import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
+import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
 import { SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
+import { TabGroupDefaultOptions, TabNavBarDefaultOptions } from '@aposin/ng-aquila/tabs';
+import { Subject } from 'rxjs';
 
 export const datepickerOptions: DatepickerDefaultOptions = { changes: new Subject<void>() };
 export const errorOptions: ErrorDefaultOptions = { changes: new Subject<void>() };

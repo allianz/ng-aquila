@@ -1,20 +1,15 @@
-import { ViewChild, Directive } from '@angular/core';
-import { ElementRef } from '@angular/core';
-
-import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
-import { Component, Type } from '@angular/core';
-import { NxAutocompleteModule } from './autocomplete.module';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-
-import { NxAutocompleteComponent } from '.';
-import { NxAutocompleteTriggerDirective } from '.';
-import { NxInputModule } from '../input';
+import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
+import { Observable, of } from 'rxjs';
+import { NxAutocompleteComponent, NxAutocompleteTriggerDirective } from '.';
 import { dispatchFakeEvent } from '../cdk-test-utils';
+import { NxInputModule } from '../input';
+import { NxAutocompleteModule } from './autocomplete.module';
 
 describe('NxAutocompleteComponent:', () => {
     let fixture: ComponentFixture<AutocompleteComponent>;

@@ -1,7 +1,6 @@
 import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, ApplicationRef, Component, ComponentFactoryResolver, ElementRef, Injector, Input, ViewContainerRef, Output } from '@angular/core';
-
+import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, Output, ViewContainerRef } from '@angular/core';
 import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
 
 const EXAMPLE_SELECTOR = 'nx-docs-example';

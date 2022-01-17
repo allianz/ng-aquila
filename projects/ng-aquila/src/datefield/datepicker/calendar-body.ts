@@ -8,17 +8,17 @@
 
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
+    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     EventEmitter,
     Input,
-    Output,
     NgZone,
-    ViewChildren,
-    QueryList,
-    AfterViewInit,
     OnDestroy,
+    Output,
+    QueryList,
+    ViewChildren,
 } from '@angular/core';
 import { take } from 'rxjs/operators';
 

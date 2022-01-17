@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NxDynamicTableComponent } from './dynamic-table.component';
-import { CdkTableModule } from '@angular/cdk/table';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NxDynamicTableComponent } from './dynamic-table.component';
 
 @NgModule({
     declarations: [NxDynamicTableComponent],

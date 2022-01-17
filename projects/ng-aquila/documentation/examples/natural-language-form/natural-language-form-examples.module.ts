@@ -1,13 +1,12 @@
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxNaturalLanguageFormModule } from '@aposin/ng-aquila/natural-language-form';
-
 import { NgModule } from '@angular/core';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxNaturalLanguageFormModule } from '@aposin/ng-aquila/natural-language-form';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { NaturalLanguageFormBasicExampleComponent } from './natural-language-form-basic/natural-language-form-basic-example';
 import { NaturalLanguageFormExtendedExampleComponent } from './natural-language-form-extended/natural-language-form-extended-example';
 import { NaturalLanguageFormNegativeExampleComponent } from './natural-language-form-negative/natural-language-form-negative-example';
 import { NaturalLanguageFormSizesExampleComponent } from './natural-language-form-sizes/natural-language-form-sizes-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     NaturalLanguageFormBasicExampleComponent,

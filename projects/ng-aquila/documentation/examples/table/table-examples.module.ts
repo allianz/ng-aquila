@@ -1,30 +1,29 @@
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
+import { NxPaginationModule } from '@aposin/ng-aquila/pagination';
+import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
+import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 import { NxTableModule } from '@aposin/ng-aquila/table';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
-import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
-
-import { NgModule } from '@angular/core';
-import { TableExampleComponent } from './table/table-example';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
+import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
 import { TableSelectingExampleComponent } from './table-selecting/table-selecting-example';
 import { TableSingleSelectExampleComponent } from './table-single-select/table-single-select-example';
 import { TableSortingExampleComponent } from './table-sorting/table-sorting-example';
-import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
-import { TableFormElementsExampleComponent } from './table-form-elements/table-form-elements-example';
 import { TableStickyExampleComponent } from './table-sticky/table-sticky-example';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
+import { TableExampleComponent } from './table/table-example';
 
 const EXAMPLES = [
     TableExampleComponent,

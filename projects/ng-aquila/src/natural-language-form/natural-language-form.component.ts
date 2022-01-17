@@ -1,4 +1,4 @@
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -7,13 +7,12 @@ import {
     ContentChildren,
     HostListener,
     Input,
+    NgZone,
     OnDestroy,
     QueryList,
-    NgZone,
 } from '@angular/core';
 import { merge, Observable, Subject, Subscription } from 'rxjs';
-import { delay, throttleTime, takeUntil } from 'rxjs/operators';
-
+import { delay, takeUntil, throttleTime } from 'rxjs/operators';
 import { NxWordComponent } from './word.component';
 
 /** Size of the NLF. */

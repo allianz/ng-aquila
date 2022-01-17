@@ -1,24 +1,24 @@
-import { ComponentFixture, TestBed, fakeAsync, tick, flush, waitForAsync } from '@angular/core/testing';
-import { Component, Type, ViewChild, Injectable, Directive } from '@angular/core';
-import { NxFileUploaderComponent } from './file-uploader.component';
-import { NxFileUploaderModule } from './file-uploader.module';
-import { NxLabelModule } from '@aposin/ng-aquila/base';
 import {
-    HttpClientModule,
-    HttpParams,
     HttpClient,
+    HttpClientModule,
+    HttpEvent,
     HttpHandler,
     HttpInterceptor,
+    HttpParams,
     HttpRequest,
-    HttpEvent,
     HttpResponse,
     HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { NxFileUploader } from './file-uploader';
+import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder } from '@angular/forms';
+import { NxFileUploader } from './file-uploader';
+import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';
+import { NxFileUploaderModule } from './file-uploader.module';
 
 @Injectable()
 export class UploadInterceptor implements HttpInterceptor {

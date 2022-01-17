@@ -1,7 +1,7 @@
-import { ContentChildren, QueryList, AfterViewInit, Directive } from '@angular/core';
+import { AfterViewInit, ContentChildren, Directive, QueryList } from '@angular/core';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { distinctUntilChanged, flatMap, map, startWith } from 'rxjs/operators';
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
-import { flatMap, startWith, map, distinctUntilChanged } from 'rxjs/operators';
-import { combineLatest, BehaviorSubject } from 'rxjs';
 import { NxExpandable } from './toggle-button.component';
 
 /**

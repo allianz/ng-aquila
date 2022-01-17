@@ -4,7 +4,6 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } fro
 import { RouterTestingModule } from '@angular/router/testing';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-
 import { NxNotificationPanelModule } from '../notification-panel.module';
 
 @Directive()

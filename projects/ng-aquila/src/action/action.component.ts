@@ -1,7 +1,7 @@
-import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef, ContentChild, ElementRef, OnDestroy } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { NxActionIconDirective } from './action-icon.directive';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy } from '@angular/core';
+import { NxActionIconDirective } from './action-icon.directive';
 
 @Component({
     selector: '[nxAction]',

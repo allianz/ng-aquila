@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition, query, group, AnimationTriggerMetadata } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, group, query, state, style, transition, trigger } from '@angular/animations';
 
 /**
  * Animations used by the NxContextMenuComponent.

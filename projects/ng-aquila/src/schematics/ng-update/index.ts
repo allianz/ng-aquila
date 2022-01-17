@@ -1,4 +1,3 @@
-import { MiscTemplateMigration } from './migrations/misc-template';
 import { Rule, SchematicContext } from '@angular-devkit/schematics';
 import { createMigrationSchematicRule, TargetVersion, UpgradeData } from '@angular/cdk/schematics';
 import {
@@ -13,6 +12,7 @@ import {
     propertyNames,
     symbolRemoval,
 } from './data';
+import { MiscTemplateMigration } from './migrations/misc-template';
 
 /** Upgrade data that will be used for the Angular Material ng-update schematic. */
 export const upgradeData: UpgradeData = {

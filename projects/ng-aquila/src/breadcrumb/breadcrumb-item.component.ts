@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { Component, Renderer2, ElementRef, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
     selector: 'a[nxBreadcrumbItem]',

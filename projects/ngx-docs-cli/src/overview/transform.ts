@@ -1,14 +1,13 @@
 import * as fmImport from 'front-matter';
-// front-matter 4.0.2 exports the type declarations incorrectly
-// use this until that is fixed
-const fm = fmImport as any;
 import * as hljs from 'highlight.js';
 import { pipe } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { logFile } from '../shared/logging';
 import { markdownDocsClasses } from '../shared/markdown-docs';
 import { MarkdownFile } from '../shared/markdown-file';
-import { logFile } from '../shared/logging';
+// front-matter 4.0.2 exports the type declarations incorrectly
+// use this until that is fixed
+const fm = fmImport as any;
 
 const md = require('markdown-it')({
     html: true,

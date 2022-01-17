@@ -1,18 +1,16 @@
-import { NxDatefieldModule } from '../datefield.module';
-import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { NxNativeDateModule } from '../adapter/index';
-import { flush, fakeAsync, ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { NxDatepickerComponent } from './datepicker.component';
-import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
-import { EventEmitter, ViewChild } from '@angular/core';
-import { Component } from '@angular/core';
-
-import { JAN, JUN, JUL, DEC } from '../../cdk-test-utils';
 import { Direction, Directionality } from '@angular/cdk/bidi';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { Component, EventEmitter, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NxDatefieldDirective } from '@aposin/ng-aquila/datefield';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { JAN } from '../../cdk-test-utils';
+import { NxNativeDateModule } from '../adapter/index';
+import { NxDatefieldModule } from '../datefield.module';
+import { NxDatepickerComponent } from './datepicker.component';
 
 describe('NxDatepicker', () => {
     const SUPPORTS_INTL = typeof Intl !== 'undefined';

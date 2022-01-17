@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { ExampleData } from './example-data';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';

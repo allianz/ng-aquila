@@ -1,5 +1,5 @@
-import { NxDateAdapter, NX_DATE_LOCALE, NX_DATE_FORMATS, NX_DATE_LOCALE_PROVIDER } from '@aposin/ng-aquila/datefield';
 import { NgModule } from '@angular/core';
+import { NxDateAdapter, NX_DATE_FORMATS, NX_DATE_LOCALE, NX_DATE_LOCALE_PROVIDER } from '@aposin/ng-aquila/datefield';
 import { NxMomentDateAdapter } from './moment-date-adapter';
 import { NX_MOMENT_DATE_FORMATS } from './moment-date-formats';
 

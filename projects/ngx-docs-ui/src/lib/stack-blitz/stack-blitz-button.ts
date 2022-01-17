@@ -2,11 +2,10 @@ import { Component, HostListener, Input, NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
-
-import { ExampleData } from './example-data';
 import { ExampleDescriptor } from './../core/manifest';
-import { StackBlitzWriter } from './stack-blitz-writer';
 import { ManifestService } from './../service/manifest.service';
+import { ExampleData } from './example-data';
+import { StackBlitzWriter } from './stack-blitz-writer';
 
 @Component({
     selector: 'nxv-stack-blitz-button',

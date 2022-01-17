@@ -1,9 +1,8 @@
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxAvatarComponent, NxAvatarSize } from './avatar';
-import { Component, ViewChild, Type, Directive } from '@angular/core';
-import { NxAvatarModule } from './avatar.module';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxAvatarComponent, NxAvatarSize } from './avatar';
+import { NxAvatarModule } from './avatar.module';
 
 @Directive()
 abstract class AvatarTest {

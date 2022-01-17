@@ -1,16 +1,15 @@
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { DOWN_ARROW, ENTER, SPACE, UP_ARROW, TAB, D, V, B } from '@angular/cdk/keycodes';
+import { B, D, DOWN_ARROW, ENTER, SPACE, TAB, UP_ARROW, V } from '@angular/cdk/keycodes';
 import { MutationObserverFactory } from '@angular/cdk/observers';
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { Component, Type, ViewChild, ViewChildren, Directive, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-
-import { dispatchFakeEvent, dispatchKeyboardEvent, createFakeEvent } from '../cdk-test-utils';
+import { createFakeEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxDropdownComponent } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';
 import { NxDropdownItemComponent } from './item/dropdown-item';

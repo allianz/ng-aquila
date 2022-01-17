@@ -1,12 +1,13 @@
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-
 import { NgModule } from '@angular/core';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { DropdownCustomLabelExampleComponent } from './dropdown-custom-label/dropdown-custom-label-example';
 import { DropdownDisabledItemsExampleComponent } from './dropdown-disabled-items/dropdown-disabled-items-example';
-import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filter-example';
 import { DropdownFilterCustomExampleComponent } from './dropdown-filter-custom/dropdown-filter-custom-example';
+import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filter-example';
 import { DropdownGroupExampleComponent } from './dropdown-group/dropdown-group-example';
+import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
 import { DropdownNegativeExampleComponent } from './dropdown-negative/dropdown-negative-example';
 import { DropdownOutlineExampleComponent } from './dropdown-outline/dropdown-outline-example';
@@ -16,8 +17,6 @@ import { DropdownRenderingItemsExampleComponent } from './dropdown-rendering-ite
 import { DropdownSimpleBindingExampleComponent } from './dropdown-simple-binding/dropdown-simple-binding-example';
 import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-standard-example';
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
-import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
 import { MultiSelectExampleComponent } from './multi-select/multi-select-example';
 
 const EXAMPLES = [

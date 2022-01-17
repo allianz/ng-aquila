@@ -1,19 +1,18 @@
-import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { ChangeDetectionStrategy, Component, DebugElement, ElementRef, ViewChild, NgZone, EventEmitter } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
-import { By } from '@angular/platform-browser';
-import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import { OverlayContainer, OverlayModule, CdkScrollable } from '@angular/cdk/overlay';
-import { Platform } from '@angular/cdk/platform';
-import { ESCAPE } from '@angular/cdk/keycodes';
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { NxTooltipDirective } from './tooltip.directive';
-import { NxTooltipModule } from './tooltip.module';
-import { NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS } from './tooltip.directive';
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { ESCAPE } from '@angular/cdk/keycodes';
+import { CdkScrollable, OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
+import { Platform } from '@angular/cdk/platform';
 import { Location } from '@angular/common';
 import { SpyLocation } from '@angular/common/testing';
+import { ChangeDetectionStrategy, Component, DebugElement, ElementRef, EventEmitter, NgZone, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { createKeyboardEvent } from '../cdk-test-utils';
+import { NxTooltipDirective, NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS } from './tooltip.directive';
+import { NxTooltipModule } from './tooltip.module';
 
 function createFakeEvent(type: string, canBubble = false, cancelable = true) {
     const event = document.createEvent('Event');

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, Optional, Inject, InjectionToken, ChangeDetectorRef } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, InjectionToken, Input, Optional } from '@angular/core';
 import { Subject } from 'rxjs';
 
 let nextId = 0;

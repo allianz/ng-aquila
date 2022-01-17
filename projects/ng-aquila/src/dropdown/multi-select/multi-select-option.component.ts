@@ -1,6 +1,5 @@
 import { Highlightable } from '@angular/cdk/a11y';
-import { Component, HostListener, Input } from '@angular/core';
-import { EventEmitter, Output, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AppearanceType } from '@aposin/ng-aquila/formfield';
 
 let optionId = 0;

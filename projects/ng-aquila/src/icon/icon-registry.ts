@@ -1,9 +1,9 @@
-import { Inject, Injectable, OnDestroy, Optional } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { NxFontIcon, NxSvgIcon, NxSvgIconLiteral, NxSvgIconFromUrl } from './icons';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable, OnDestroy, Optional } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { DEFAULT_ICONS } from './default-icons';
+import { NxFontIcon, NxSvgIcon, NxSvgIconFromUrl, NxSvgIconLiteral } from './icons';
 
 export function throwNxIconNotFoundError(iconName: string) {
     throw Error(`Could not find icon with name ${iconName}`);

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 /** Types of headlines */
 export type HeadlineType = 'page' | 'page-bold-caps' | 'section' | 'subsection-large' | 'subsection-medium' | 'subsection-small' | 'subsection-xsmall';

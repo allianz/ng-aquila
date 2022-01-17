@@ -1,6 +1,6 @@
-import { Directive, TemplateRef, ComponentFactoryResolver, ApplicationRef, Injector, ViewContainerRef, Inject, OnDestroy } from '@angular/core';
-import { TemplatePortal, DomPortalOutlet } from '@angular/cdk/portal';
+import { DomPortalOutlet, TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
+import { ApplicationRef, ComponentFactoryResolver, Directive, Inject, Injector, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
 
 /**

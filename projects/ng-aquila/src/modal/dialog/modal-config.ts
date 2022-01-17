@@ -1,6 +1,6 @@
-import { ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { ScrollStrategy } from '@angular/cdk/overlay';
 import { Direction } from '@angular/cdk/bidi';
+import { ScrollStrategy } from '@angular/cdk/overlay';
+import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 /** Valid ARIA roles for a modal element. */
 export type NxModalRole = 'dialog' | 'alertdialog';

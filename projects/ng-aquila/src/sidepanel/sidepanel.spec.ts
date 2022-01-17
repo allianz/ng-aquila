@@ -1,10 +1,10 @@
-import { Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { BidiModule } from '@angular/cdk/bidi';
+import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Appearance, NxSidepanelComponent, NxSidepanelOuterContainerComponent, PositionType } from './sidepanel';
 import { NxSidepanelModule } from './sidepanel.module';
-import { Appearance, NxSidepanelOuterContainerComponent, NxSidepanelComponent, PositionType } from './sidepanel';
-import { BidiModule } from '@angular/cdk/bidi';
 
 @Directive()
 abstract class SidepanelTest {

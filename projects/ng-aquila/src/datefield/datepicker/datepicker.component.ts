@@ -1,5 +1,3 @@
-import { NxDatepickerIntl } from './datepicker-intl';
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -7,13 +5,12 @@ import { NxDatepickerIntl } from './datepicker-intl';
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-
 import { Directionality } from '@angular/cdk/bidi';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, RepositionScrollStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { take, filter } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -22,6 +19,7 @@ import {
     ElementRef,
     EventEmitter,
     Inject,
+    Injectable,
     InjectionToken,
     Input,
     NgZone,
@@ -30,14 +28,14 @@ import {
     Output,
     ViewChild,
     ViewContainerRef,
-    Injectable,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Subject, Subscription, merge } from 'rxjs';
-import { createMissingDateImplError } from './datepicker-errors';
-import { NxCalendarComponent } from './calendar';
+import { merge, Subject, Subscription } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
 import { NxDateAdapter } from '../adapter/date-adapter';
 import { NxDatefieldDirective } from '../datefield.directive';
+import { NxCalendarComponent } from './calendar';
+import { createMissingDateImplError } from './datepicker-errors';
+import { NxDatepickerIntl } from './datepicker-intl';
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
 
 /** Used to generate a unique ID for each datepicker instance. */

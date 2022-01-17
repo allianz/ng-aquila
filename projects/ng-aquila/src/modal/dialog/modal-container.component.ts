@@ -1,24 +1,24 @@
+import { AnimationEvent } from '@angular/animations';
+import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
+import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
 import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ComponentRef,
     ElementRef,
     EmbeddedViewRef,
     EventEmitter,
     Inject,
-    Optional,
-    ChangeDetectorRef,
-    ViewChild,
-    ChangeDetectionStrategy,
     OnDestroy,
-    AfterViewInit,
+    Optional,
+    ViewChild,
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { AnimationEvent } from '@angular/animations';
 import { NxModalAnimations } from './modal-animations';
-import { BasePortalOutlet, ComponentPortal, CdkPortalOutlet, TemplatePortal, DomPortal } from '@angular/cdk/portal';
-import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
 import { NxModalConfig } from './modal-config';
-import { _getFocusedElementPierceShadowDom } from '@angular/cdk/platform';
 
 /**
  * Throws an exception for the case when a ComponentPortal is

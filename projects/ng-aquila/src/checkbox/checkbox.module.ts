@@ -1,10 +1,9 @@
+import { ObserversModule } from '@angular/cdk/observers';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxCheckboxComponent } from './checkbox.component';
-import { NxCheckboxGroupComponent } from './checkbox.component';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
-import { ObserversModule } from '@angular/cdk/observers';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxCheckboxComponent, NxCheckboxGroupComponent } from './checkbox.component';
 
 @NgModule({
     declarations: [NxCheckboxComponent, NxCheckboxGroupComponent],

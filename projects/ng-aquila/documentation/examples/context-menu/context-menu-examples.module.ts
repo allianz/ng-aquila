@@ -1,20 +1,19 @@
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxBadgeModule } from '@aposin/ng-aquila/badge';
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxTableModule } from '@aposin/ng-aquila/table';
-
 import { NgModule } from '@angular/core';
+import { NxBadgeModule } from '@aposin/ng-aquila/badge';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
+import { NxTableModule } from '@aposin/ng-aquila/table';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { ContextMenuBasicExampleComponent } from './context-menu-basic/context-menu-basic-example';
 import { ContextMenuDataExampleComponent } from './context-menu-data/context-menu-data-example';
 import { ContextMenuDisabledExampleComponent } from './context-menu-disabled/context-menu-disabled-example';
 import { ContextMenuIconsExampleComponent } from './context-menu-icons/context-menu-icons-example';
+import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
 import { ContextMenuNestedExampleComponent } from './context-menu-nested/context-menu-nested-example';
 import { ContextMenuProgrammaticExampleComponent } from './context-menu-programmatic/context-menu-programmatic-example';
 import { ContextMenuScrollStrategyExampleComponent } from './context-menu-scroll-strategy/context-menu-scroll-strategy-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
-import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/context-menu-indicator-example';
 
 const EXAMPLES = [
     ContextMenuBasicExampleComponent,

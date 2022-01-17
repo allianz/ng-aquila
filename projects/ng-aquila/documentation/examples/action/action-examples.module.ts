@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxActionModule } from '@aposin/ng-aquila/action';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-
-import { NgModule } from '@angular/core';
-import { ActionExampleComponent } from './action/action-example';
-import { ActionWithRouterExampleComponent } from './action-with-router/action-with-router-example';
 import { ActionIndicatorExampleComponent } from './action-indicator/action-indicator-example';
+import { ActionWithRouterExampleComponent } from './action-with-router/action-with-router-example';
+import { ActionExampleComponent } from './action/action-example';
 
 const EXAMPLES = [
     ActionExampleComponent,

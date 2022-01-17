@@ -1,17 +1,22 @@
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import {
     ConnectionPositionPair,
     FlexibleConnectedPositionStrategy,
+    HorizontalConnectionPos,
+    OriginConnectionPosition,
     Overlay,
     OverlayConfig,
+    OverlayConnectionPosition,
     OverlayRef,
     PositionStrategy,
     VerticalConnectionPos,
-    HorizontalConnectionPos,
-    OverlayConnectionPosition,
-    OriginConnectionPosition,
 } from '@angular/cdk/overlay';
+import { Platform } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     Directive,
@@ -20,23 +25,17 @@ import {
     EventEmitter,
     Inject,
     Input,
+    NgZone,
     OnDestroy,
     OnInit,
     Optional,
     Output,
     ViewContainerRef,
-    NgZone,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
-import { FocusMonitor } from '@angular/cdk/a11y';
 import { NxPopoverComponent } from './popover.component';
-import { FocusTrapFactory, FocusTrap } from '@angular/cdk/a11y';
-import { DOCUMENT } from '@angular/common';
-import { Platform } from '@angular/cdk/platform';
-import { SPACE, ENTER } from '@angular/cdk/keycodes';
-import { Directionality } from '@angular/cdk/bidi';
 
 export declare type PopoverVerticalDirection = 'top' | 'bottom';
 export declare type PopoverHorizontalDirection = 'left' | 'right';

@@ -1,8 +1,8 @@
-import { Directive, ContentChildren, QueryList, ContentChild, AfterContentInit, Input } from '@angular/core';
+import { ContentChild, ContentChildren, Directive, Input, QueryList } from '@angular/core';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
-import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 import { NxTableContentElement } from '../table-content-element.directive';
 import { NxToggleSectionBase } from './toggle-section-base';
+import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
 @Directive({
     selector: '[nxComparisonTableToggleSection]',

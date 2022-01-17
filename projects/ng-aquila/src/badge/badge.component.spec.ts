@@ -1,7 +1,7 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxBadgeModule } from './badge.module';
 import { NxBadgeComponent, NxBadgeType } from './badge.component';
+import { NxBadgeModule } from './badge.module';
 
 @Directive()
 abstract class BadgeTest {

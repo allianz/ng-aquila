@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { STATUS_TYPE } from '../../../core/manifest';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { STATUS_TYPE } from '../../../core/manifest';
 
 @Component({
     selector: 'nxv-status-dot',

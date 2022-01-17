@@ -1,6 +1,6 @@
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-
 import { NgModule } from '@angular/core';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { CheckboxGroupBasicExampleComponent } from './checkbox-group-basic/checkbox-group-basic-example';
 import { CheckboxGroupDynamicExampleComponent } from './checkbox-group-dynamic/checkbox-group-dynamic-example';
 import { CheckboxGroupHorizontalExampleComponent } from './checkbox-group-horizontal/checkbox-group-horizontal-example';
@@ -15,8 +15,6 @@ import { CheckboxReactiveExampleComponent } from './checkbox-reactive/checkbox-r
 import { CheckboxSimpleBindingExampleComponent } from './checkbox-simple-binding/checkbox-simple-binding-example';
 import { CheckboxStatesExampleComponent } from './checkbox-states/checkbox-states-example';
 import { CheckboxTemplateDrivenExampleComponent } from './checkbox-template-driven/checkbox-template-driven-example';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     CheckboxGroupBasicExampleComponent,

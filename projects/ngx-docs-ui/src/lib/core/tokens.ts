@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Manifest } from './manifest';
-import { DocVersions, LogoPath, GithubLinkConfig } from './types';
+import { DocVersions, GithubLinkConfig, LogoPath } from './types';
 
 export const NXV_MANIFEST_TOKEN = new InjectionToken<{ value: Manifest }>('NXV_MANIFEST_TOKEN');
 export const NX_DOC_VERSIONS = new InjectionToken<DocVersions>('NX_DOC_VERSIONS');

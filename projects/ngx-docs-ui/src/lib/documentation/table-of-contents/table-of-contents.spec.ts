@@ -1,8 +1,7 @@
-import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
-import { TestBed, ComponentFixture, flush, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { NxvTableOfContentsModule } from './table-of-contents.module';
 
 describe('NxvTableOfContentsComponent', () => {

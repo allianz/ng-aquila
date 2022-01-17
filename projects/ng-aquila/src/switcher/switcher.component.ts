@@ -1,22 +1,22 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
-    Component,
-    EventEmitter,
-    Input,
-    Output,
+    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Optional,
-    Self,
+    Component,
     DoCheck,
-    ViewChild,
     ElementRef,
-    AfterViewInit,
+    EventEmitter,
+    Input,
     OnDestroy,
+    Optional,
+    Output,
+    Self,
+    ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 let nextId = 0;
 /** Options for placement of the label */

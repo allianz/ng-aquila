@@ -1,7 +1,14 @@
-import { ComponentFixture, fakeAsync, flushMicrotasks, inject, TestBed, tick, flush } from '@angular/core/testing';
+import { Directionality } from '@angular/cdk/bidi';
+import { A, ESCAPE } from '@angular/cdk/keycodes';
+import { Overlay, OverlayContainer, ScrollStrategy } from '@angular/cdk/overlay';
+import { _supportsShadowDom } from '@angular/cdk/platform';
+import { ScrollDispatcher } from '@angular/cdk/scrolling';
+import { Location } from '@angular/common';
+import { SpyLocation } from '@angular/common/testing';
 import {
     ChangeDetectionStrategy,
     Component,
+    ComponentFactoryResolver,
     Directive,
     Inject,
     Injector,
@@ -9,23 +16,15 @@ import {
     TemplateRef,
     ViewChild,
     ViewContainerRef,
-    ComponentFactoryResolver,
     ViewEncapsulation,
 } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Location } from '@angular/common';
-import { SpyLocation } from '@angular/common/testing';
-import { Directionality } from '@angular/cdk/bidi';
-import { NxModalContainer } from './modal-container.component';
-import { OverlayContainer, ScrollStrategy, Overlay } from '@angular/cdk/overlay';
-import { ScrollDispatcher } from '@angular/cdk/scrolling';
-import { A, ESCAPE } from '@angular/cdk/keycodes';
-
-import { NX_MODAL_DATA, NxDialogService, NxModalModule, NxModalRef, NX_MODAL_DEFAULT_OPTIONS, NxModalState } from '@aposin/ng-aquila/modal';
+import { NxDialogService, NxModalModule, NxModalRef, NxModalState, NX_MODAL_DATA, NX_MODAL_DEFAULT_OPTIONS } from '@aposin/ng-aquila/modal';
 import { Subject } from 'rxjs';
-import { dispatchKeyboardEvent, createKeyboardEvent } from '../../cdk-test-utils';
-import { _supportsShadowDom } from '@angular/cdk/platform';
+import { createKeyboardEvent, dispatchKeyboardEvent } from '../../cdk-test-utils';
+import { NxModalContainer } from './modal-container.component';
 
 describe('NxDialog', () => {
     let dialog: NxDialogService;

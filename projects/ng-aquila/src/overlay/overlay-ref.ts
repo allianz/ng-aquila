@@ -2,8 +2,7 @@ import { ESCAPE, hasModifierKey } from '@angular/cdk/keycodes';
 import { FlexibleConnectedPositionStrategyOrigin, OverlayRef } from '@angular/cdk/overlay';
 import { NavigationEnd, Router } from '@angular/router';
 import { fromEvent, Observable, Subject } from 'rxjs';
-import { filter, map, takeUntil, tap } from 'rxjs/operators';
-
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NxOverlayState } from './overlay-service';
 

@@ -1,15 +1,13 @@
 import { ExampleFullScreenComponent } from './../example-full-screen/example-full-screen.component';
-import { DocumentationFrameComponent } from './documentation-frame.component';
-
-import { NxvComponentPage } from './component-documentation/component-page/component-page';
-import { ComponentOverview } from './component-documentation/component-page/component-overview';
 import { ComponentApi } from './component-documentation/component-page/component-api';
 import { ComponentExamples } from './component-documentation/component-page/component-examples';
-import { NxvGuidesComponent } from './guides/guides.component';
-
-import { NxvOverviewComponent } from './component-documentation/overview/overview.component';
-import { NxvGuideViewComponent } from './guides/guide-view/guide-view.component';
+import { ComponentOverview } from './component-documentation/component-page/component-overview';
+import { NxvComponentPage } from './component-documentation/component-page/component-page';
 import { NxvDocumentationComponent } from './component-documentation/documentation-page.component';
+import { NxvOverviewComponent } from './component-documentation/overview/overview.component';
+import { DocumentationFrameComponent } from './documentation-frame.component';
+import { NxvGuideViewComponent } from './guides/guide-view/guide-view.component';
+import { NxvGuidesComponent } from './guides/guides.component';
 
 export const createViewerRoutes = (args: any) => [
     {

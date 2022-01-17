@@ -1,15 +1,14 @@
-import { NxNumberStepperIntl } from './number-stepper-intl';
-import { NxAutoResizeDirective } from './auto-resize.directive';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NgModule } from '@angular/core';
-
-import { NxNumberStepperComponent } from './number-stepper.component';
-import { FormsModule } from '@angular/forms';
+import { NxAutoResizeDirective } from './auto-resize.directive';
+import { NxNumberStepperIntl } from './number-stepper-intl';
 import { NxNumberStepperPrefixDirective } from './number-stepper-prefix.directive';
 import { NxNumberStepperSuffixDirective } from './number-stepper-suffix.directive';
+import { NxNumberStepperComponent } from './number-stepper.component';
 
 @NgModule({
     imports: [NxInputModule, FormsModule, NxIconModule, NxButtonModule, CommonModule],

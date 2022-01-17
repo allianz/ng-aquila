@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { NxFooterComponent, NxFooterCopyrightDirective, NxFooterLinkDirective, NxFooterNavigationDirective } from './footer.component';
 
 @NgModule({

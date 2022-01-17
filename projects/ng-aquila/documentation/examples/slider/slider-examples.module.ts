@@ -1,20 +1,19 @@
+import { NgModule } from '@angular/core';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxSliderModule } from '@aposin/ng-aquila/slider';
-
-import { NgModule } from '@angular/core';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { SliderBasicExampleComponent } from './slider-basic/slider-basic-example';
 import { SliderDecimalExampleComponent } from './slider-decimal/slider-decimal-example';
 import { SliderDefaultExampleComponent } from './slider-default/slider-default-example';
 import { SliderDisabledExampleComponent } from './slider-disabled/slider-disabled-example';
 import { SliderInvertedExampleComponent } from './slider-inverted/slider-inverted-example';
 import { SliderLabelExampleComponent } from './slider-label/slider-label-example';
+import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-example';
 import { SliderNegativeExampleComponent } from './slider-negative/slider-negative-example';
 import { SliderReactiveExampleComponent } from './slider-reactive/slider-reactive-example';
 import { SliderTemplateExampleComponent } from './slider-template/slider-template-example';
 import { SliderTextualExampleComponent } from './slider-textual/slider-textual-example';
 import { SliderThumbExampleComponent } from './slider-thumb/slider-thumb-example';
-import { SliderLabelsExampleComponent } from './slider-labels/slider-labels-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     SliderBasicExampleComponent,

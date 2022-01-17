@@ -1,17 +1,16 @@
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { NxModalComponent, NxModalActionsDirective, NxModalContentDirective } from './modal.component';
-import { CommonModule } from '@angular/common';
-import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
-import { NxModalService } from './modal.service';
 import { A11yModule } from '@angular/cdk/a11y';
-
 /* new modal implementation */
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
-import { NxModalContainer } from './dialog/modal-container.component';
-import { NxModalCloseDirective } from './dialog/modal-close.directive';
+import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER } from './dialog/dialog.service';
+import { NxModalCloseDirective } from './dialog/modal-close.directive';
+import { NxModalContainer } from './dialog/modal-container.component';
+import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
+import { NxModalActionsDirective, NxModalComponent, NxModalContentDirective } from './modal.component';
+import { NxModalService } from './modal.service';
 
 @NgModule({
     imports: [A11yModule, OverlayModule, PortalModule, CommonModule, NxIconModule],

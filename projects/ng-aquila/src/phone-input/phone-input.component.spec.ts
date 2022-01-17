@@ -1,17 +1,17 @@
-import { NxPhoneInputIntl } from './phone-input-intl';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
-import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
-import { By } from '@angular/platform-browser';
-import { NxPhoneInputModule } from './phone-input.module';
+import { Component, DebugElement, Directive, Injectable, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Component, Directive, ViewChild, Type, DebugElement, Injectable } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, flush, inject } from '@angular/core/testing';
-
-import { NxPhoneInputComponent } from './phone-input.component';
-import { dispatchFakeEvent } from '../cdk-test-utils';
-import de from 'i18n-iso-countries/langs/de.json';
+import { By } from '@angular/platform-browser';
+import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import countries from 'i18n-iso-countries';
+import de from 'i18n-iso-countries/langs/de.json';
+import { dispatchFakeEvent } from '../cdk-test-utils';
+import { NxPhoneInputIntl } from './phone-input-intl';
+import { NxPhoneInputComponent } from './phone-input.component';
+import { NxPhoneInputModule } from './phone-input.module';
+
 countries.registerLocale(de);
 
 describe('PhoneInputComponent', () => {

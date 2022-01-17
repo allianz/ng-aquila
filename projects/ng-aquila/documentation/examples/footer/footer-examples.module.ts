@@ -1,7 +1,6 @@
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
-
-import { NgModule } from '@angular/core';
 import { FooterExampleComponent } from './footer/footer-example';
 
 const EXAMPLES = [FooterExampleComponent];

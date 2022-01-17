@@ -1,7 +1,4 @@
-import { Subscription } from 'rxjs';
-import { NxNumberStepperIntl } from './number-stepper-intl';
-import { coerceBooleanProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
-import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
+import { BooleanInput, coerceBooleanProperty, NumberInput } from '@angular/cdk/coercion';
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -11,16 +8,18 @@ import {
     EventEmitter,
     forwardRef,
     Input,
+    OnDestroy,
     Output,
     Renderer2,
     ViewChild,
-    OnDestroy,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
-
 import { MappedStyles } from '@aposin/ng-aquila/core';
-import { NxAutoResizeDirective } from './auto-resize.directive';
+import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
+import { Subscription } from 'rxjs';
+import { NxAutoResizeDirective } from './auto-resize.directive';
+import { NxNumberStepperIntl } from './number-stepper-intl';
 
 const SIZE_MAPPING = {
     big: 'nx-stepper--big',

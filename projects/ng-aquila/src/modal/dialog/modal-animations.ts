@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger, AnimationTriggerMetadata } from '@angular/animations';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 
 /**
  * Animations used by the NxModalContainer.

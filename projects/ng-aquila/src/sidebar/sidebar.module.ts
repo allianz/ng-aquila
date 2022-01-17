@@ -1,11 +1,10 @@
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxSidebarToggleComponent } from './sidebar-toggle';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { NxSidebarComponent } from './sidebar.component';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxSidebarFooterComponent } from './sidebar-footer';
+import { NxSidebarToggleComponent } from './sidebar-toggle';
+import { NxSidebarComponent } from './sidebar.component';
 
 @NgModule({
     imports: [CommonModule, NxIconModule, NxButtonModule],

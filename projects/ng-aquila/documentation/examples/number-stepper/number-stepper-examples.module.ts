@@ -1,10 +1,10 @@
-import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxPopoverModule } from '@aposin/ng-aquila/popover';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
-
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { NxNumberStepperModule } from '@aposin/ng-aquila/number-stepper';
+import { NxPopoverModule } from '@aposin/ng-aquila/popover';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { NumberStepperAccessibilityExampleComponent } from './number-stepper-a11y/number-stepper-a11y-example';
 import { NumberStepperAdditionsExampleComponent } from './number-stepper-additions/number-stepper-additions-example';
 import { NumberStepperAutoResizingExampleComponent } from './number-stepper-auto-resizing/number-stepper-auto-resizing-example';
@@ -21,7 +21,6 @@ import { NumberStepperSizesExampleComponent } from './number-stepper-sizes/numbe
 import { NumberStepperStandaloneExampleComponent } from './number-stepper-standalone/number-stepper-standalone-example';
 import { NumberStepperTemplateDrivenExampleComponent } from './number-stepper-template-driven/number-stepper-template-driven-example';
 import { NumberStepperValidationExampleComponent } from './number-stepper-validation/number-stepper-validation-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     NumberStepperAccessibilityExampleComponent,

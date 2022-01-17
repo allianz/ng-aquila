@@ -1,9 +1,9 @@
-import { Component, Type, ViewChild, DebugElement, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NxSidebarComponent, MAX_WIDTH, MIN_WIDTH, RESIZE_STEP_SIZE } from './sidebar.component';
+import { MAX_WIDTH, MIN_WIDTH, NxSidebarComponent, RESIZE_STEP_SIZE } from './sidebar.component';
 import { NxSidebarModule } from './sidebar.module';
 
 @Directive()

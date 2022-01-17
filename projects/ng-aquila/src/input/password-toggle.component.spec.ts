@@ -1,8 +1,8 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxPasswordToggleComponent } from './password-toggle.component';
-import { NxInputModule } from '@aposin/ng-aquila/input';
 import { FormsModule } from '@angular/forms';
+import { NxInputModule } from '@aposin/ng-aquila/input';
+import { NxPasswordToggleComponent } from './password-toggle.component';
 
 @Directive()
 abstract class PasswordToggleTest {

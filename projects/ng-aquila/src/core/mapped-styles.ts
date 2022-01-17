@@ -1,5 +1,4 @@
-import { ElementRef, Renderer2, Input } from '@angular/core';
-
+import { ElementRef, Renderer2 } from '@angular/core';
 import { appendClasses, mapClassNames, removeClasses } from '@aposin/ng-aquila/utils';
 
 export type MappingObject = {

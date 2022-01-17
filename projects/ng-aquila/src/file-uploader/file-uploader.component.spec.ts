@@ -1,12 +1,12 @@
+import { HttpClientModule } from '@angular/common/http';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { NxFileUploaderComponent } from './file-uploader.component';
-import { NxFileUploaderModule } from './file-uploader.module';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';
-import { HttpClientModule } from '@angular/common/http';
+import { NxFileUploaderModule } from './file-uploader.module';
 
 @Directive()
 abstract class FileUploaderTest {

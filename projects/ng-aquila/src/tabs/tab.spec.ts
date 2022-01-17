@@ -1,7 +1,7 @@
-import { NxTabsModule } from './tabs.module';
-import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
-import { Type, Component, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxTabComponent } from './tab';
+import { NxTabsModule } from './tabs.module';
 
 @Directive()
 abstract class TabTest {

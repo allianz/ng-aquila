@@ -1,11 +1,10 @@
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
+import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
+import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTaglistComponent } from './taglist.component';
 import { NxTaglistModule } from './taglist.module';
-import { By } from '@angular/platform-browser';
-import { DELETE, BACKSPACE } from '@angular/cdk/keycodes';
-import { dispatchKeyboardEvent } from '../cdk-test-utils';
 
 @Directive()
 abstract class TaglistTest {

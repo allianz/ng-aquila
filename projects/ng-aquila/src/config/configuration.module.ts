@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
-
-import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
-import { LABEL_DEFAULT_OPTIONS } from '@aposin/ng-aquila/base';
-import { DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng-aquila/datefield';
-import { ERROR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/base';
-import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
-import {
-    formfieldOptions,
-    errorOptions,
-    labelOptions,
-    datepickerOptions,
-    tabGroupOptions,
-    tabNavBarOptions,
-    selectableCardOptions,
-    smallStageOptions,
-    circleToggleGroupOptions,
-} from './configuration-service';
+import { ERROR_DEFAULT_OPTIONS, LABEL_DEFAULT_OPTIONS } from '@aposin/ng-aquila/base';
 import { SELECTABLE_CARD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/card';
 import { CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS } from '@aposin/ng-aquila/circle-toggle';
+import { DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng-aquila/datefield';
+import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 import { SMALL_STAGE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/small-stage';
+import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
+import {
+    circleToggleGroupOptions,
+    datepickerOptions,
+    errorOptions,
+    formfieldOptions,
+    labelOptions,
+    selectableCardOptions,
+    smallStageOptions,
+    tabGroupOptions,
+    tabNavBarOptions,
+} from './configuration-service';
 
 @NgModule({
     providers: [

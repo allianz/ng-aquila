@@ -1,9 +1,9 @@
-import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
-import { Type, Component, ViewChildren, Directive, QueryList } from '@angular/core';
-import { NxComparisonTableModule } from './comparison-table.module';
-import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from './comparison-table.component.spec';
+import { NxComparisonTableModule } from './comparison-table.module';
 
 @Directive()
 abstract class RowTest {

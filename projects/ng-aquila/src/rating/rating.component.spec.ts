@@ -1,11 +1,11 @@
-import { By } from '@angular/platform-browser';
+import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
+import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { Component, Type, ViewChild, ChangeDetectionStrategy, Directive } from '@angular/core';
-import { NxRatingModule } from './rating.module';
-import { NxRatingComponent } from './rating.component';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { RIGHT_ARROW, ENTER, LEFT_ARROW } from '@angular/cdk/keycodes';
+import { NxRatingComponent } from './rating.component';
+import { NxRatingModule } from './rating.module';
 
 describe('NxRatingComponent', () => {
     let fixture: ComponentFixture<RatingTest>;

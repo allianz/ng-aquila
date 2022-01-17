@@ -1,8 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef, SimpleChanges, OnChanges, ElementRef } from '@angular/core';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-
 import { NxTabComponent } from './tab';
 import { NxTabGroupBase } from './tab-group-base';
 

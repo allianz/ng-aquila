@@ -1,6 +1,6 @@
-import { filter, map, pairwise, startWith } from 'rxjs/operators';
-import { Router, NavigationEnd, Event } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Event, NavigationEnd, Router } from '@angular/router';
+import { filter, map, pairwise, startWith } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NxvNavigationService {

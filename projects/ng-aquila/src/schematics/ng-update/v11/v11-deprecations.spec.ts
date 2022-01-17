@@ -1,4 +1,4 @@
-import { SchematicTestSetup, Collection } from '../../utils/testing/test-setup';
+import { Collection, SchematicTestSetup } from '../../utils/testing/test-setup';
 
 describe('ng-aquila ng add', () => {
     const testSetup = new SchematicTestSetup('migration-v11', Collection.MIGRATIONS);

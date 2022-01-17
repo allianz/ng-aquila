@@ -1,4 +1,5 @@
-import { NxIconComponent } from '@aposin/ng-aquila/icon';
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { ENTER, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import {
     AfterViewInit,
@@ -15,8 +16,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
-import { FocusMonitor } from '@angular/cdk/a11y';
+import { NxIconComponent } from '@aposin/ng-aquila/icon';
 
 @Component({
     selector: 'nx-rating',

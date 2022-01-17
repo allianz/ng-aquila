@@ -1,8 +1,6 @@
-import { Directive, ElementRef, Inject, forwardRef, OnInit } from '@angular/core';
+import { Directive, ElementRef, forwardRef, Inject, OnInit } from '@angular/core';
+import { NG_VALIDATORS, Validator } from '@angular/forms';
 import * as IBAN from 'iban';
-import { NG_VALIDATORS } from '@angular/forms';
-import { Validator } from '@angular/forms';
-
 import { NxMaskDirective } from './mask.directive';
 
 export const NX_IBAN_MASK_VALIDATORS: any = {

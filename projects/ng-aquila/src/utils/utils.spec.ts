@@ -1,6 +1,6 @@
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { ElementRef, Renderer2, Component } from '@angular/core';
-import { mapClassNames, numberOfDecimals, appendClasses, removeClasses, clamp } from './utils';
+import { appendClasses, clamp, mapClassNames, numberOfDecimals, removeClasses } from './utils';
 
 describe('shared utils', () => {
     describe('mapClassNames', () => {

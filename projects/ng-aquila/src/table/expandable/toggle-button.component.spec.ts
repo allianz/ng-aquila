@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Type, ViewChild, DebugElement, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxTableModule } from '../table.module';
 import { By } from '@angular/platform-browser';
-import { NxToggleButtonComponent, NxExpandable } from './toggle-button.component';
 import { BehaviorSubject } from 'rxjs';
+import { NxTableModule } from '../table.module';
+import { NxExpandable, NxToggleButtonComponent } from './toggle-button.component';
 
 @Directive()
 abstract class ToggleButtonTest {

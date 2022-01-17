@@ -1,6 +1,6 @@
 import { basename, dirname } from 'path';
-import { toArray, map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
+import { map, toArray } from 'rxjs/operators';
 import { MarkdownFile } from '../shared/markdown-file';
 
 const DEFAULT_CATEGORY = 'none';

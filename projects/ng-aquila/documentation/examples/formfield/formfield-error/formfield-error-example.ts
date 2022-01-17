@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterContentInit } from '@angular/core';
+import { AfterContentInit, Component, ViewChild } from '@angular/core';
 import { NxInputDirective } from '@aposin/ng-aquila/input';
 
 /**

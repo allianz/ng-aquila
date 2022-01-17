@@ -1,10 +1,10 @@
+import { NgModule } from '@angular/core';
+import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
-import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
-
-import { NgModule } from '@angular/core';
+import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { DatefieldBasicExampleComponent } from './datefield-basic/datefield-basic-example';
 import { DatefieldDisabledExampleComponent } from './datefield-disabled/datefield-disabled-example';
 import { DatefieldFilterExampleComponent } from './datefield-filter/datefield-filter-example';
@@ -21,7 +21,6 @@ import { DatefieldRangeExampleComponent } from './datefield-range/datefield-rang
 import { DatefieldReactiveExampleComponent } from './datefield-reactive/datefield-reactive-example';
 import { DatefieldStartviewExampleComponent } from './datefield-startview/datefield-startview-example';
 import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/datefield-toggle-focus-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
 
 const EXAMPLES = [
     DatefieldBasicExampleComponent,

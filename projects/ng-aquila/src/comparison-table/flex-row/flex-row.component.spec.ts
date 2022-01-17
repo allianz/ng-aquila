@@ -1,8 +1,8 @@
-import { TestBed, ComponentFixture, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
-import { DebugElement, Type, Component, Directive } from '@angular/core';
+import { Component, DebugElement, Directive, Type } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxComparisonTableModule } from '../comparison-table.module';
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
+import { NxComparisonTableModule } from '../comparison-table.module';
 
 declare var viewport: any;
 const THROTTLE_TIME = 200;

@@ -1,22 +1,22 @@
-import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-import { NxLicencePlateModule } from '@aposin/ng-aquila/licence-plate';
-import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
-import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ExamplesSharedModule } from '../examples-shared.module';
-import { LicencePlateStandardExampleComponent } from './licence-plate-standard/licence-plate-standard-example';
+import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { LicencePlateSeasonalExampleComponent } from './licence-plate-seasonal/licence-plate-seasonal-example';
-import { LicencePlateEuroExampleComponent } from './licence-plate-euro/licence-plate-euro-example';
-import { LicencePlateNgmodelExample } from './licence-plate-ngmodel/licence-plate-ngmodel-example';
-import { LicencePlateReactiveExample } from './licence-plate-reactive/licence-plate-reactive-example';
-import { LicencePlateExpertStatesExample } from './licence-plate-expert-states/licence-plate-expert-states-example';
+import { NxLicencePlateModule } from '@aposin/ng-aquila/licence-plate';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { LicencePlateDisabledExample } from './licence-plate-disabled/licence-plate-disabled-example';
+import { LicencePlateEuroExampleComponent } from './licence-plate-euro/licence-plate-euro-example';
+import { LicencePlateExpertStatesExample } from './licence-plate-expert-states/licence-plate-expert-states-example';
 import { LicencePlateExpertExample } from './licence-plate-expert/licence-plate-expert-example';
-import { LicencePlateSpecialExampleComponent } from './licence-plate-special/licence-plate-special-example';
+import { LicencePlateNgmodelExample } from './licence-plate-ngmodel/licence-plate-ngmodel-example';
 import { LicencePlateOtherExampleComponent } from './licence-plate-other/licence-plate-other-example';
+import { LicencePlateReactiveExample } from './licence-plate-reactive/licence-plate-reactive-example';
+import { LicencePlateSeasonalExampleComponent } from './licence-plate-seasonal/licence-plate-seasonal-example';
+import { LicencePlateSpecialExampleComponent } from './licence-plate-special/licence-plate-special-example';
+import { LicencePlateStandardExampleComponent } from './licence-plate-standard/licence-plate-standard-example';
 
 const EXAMPLES = [
     LicencePlateStandardExampleComponent,

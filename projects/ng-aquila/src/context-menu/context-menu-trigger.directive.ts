@@ -1,6 +1,5 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
 import { FocusOrigin } from '@angular/cdk/a11y';
-
+import { Direction, Directionality } from '@angular/cdk/bidi';
 import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { ConnectedPosition, FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
 import { _getEventTarget } from '@angular/cdk/platform';
@@ -9,7 +8,6 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, Input, OnDestroy
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subscription } from 'rxjs';
 import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
-
 import { throwNxContextMenuMissingError } from './context-menu-errors';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
 import { NxContextMenuComponent } from './context-menu.component';

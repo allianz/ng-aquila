@@ -1,7 +1,6 @@
 import { PortalModule } from '@angular/cdk/portal';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
 import { DocViewerComponent } from './doc-viewer.component';
 
 @NgModule({

@@ -1,19 +1,17 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
-import { NxExpertModule } from './nx-expert.module';
+import { NxErrorComponent, NxErrorModule, NxLabelComponent, NxLabelModule } from '@aposin/ng-aquila/base';
+import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
+import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
+import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
+import { NxDataDisplayComponent, NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
+import { NxDatefieldModule, NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
-import { NxErrorComponent, NxErrorModule, NxLabelComponent, NxLabelModule } from '@aposin/ng-aquila/base';
-import { NxDatepickerToggleComponent } from '@aposin/ng-aquila/datefield';
-import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
-import { NxComparisonTableModule, NxComparisonTableRowGroupDirective } from '@aposin/ng-aquila/comparison-table';
-import { NxCardModule, NxSelectableCardComponent } from '@aposin/ng-aquila/card';
 import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
-import { NxCircleToggleGroupComponent, NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
-import { NxDataDisplayComponent, NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
+import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
+import { NxExpertModule } from './nx-expert.module';
 
 @Directive()
 abstract class PresetTest {

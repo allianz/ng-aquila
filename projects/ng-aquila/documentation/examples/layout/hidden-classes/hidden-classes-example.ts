@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NxBreakpoints } from '@aposin/ng-aquila/utils';
 
 /**
  * @title Hidden classes

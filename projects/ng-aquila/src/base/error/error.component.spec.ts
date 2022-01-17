@@ -1,9 +1,8 @@
-import { Component, Type, ViewChild, Directive } from '@angular/core';
-import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
-
-import { NxErrorComponent, ERROR_DEFAULT_OPTIONS, ErrorDefaultOptions, ErrorStyleType } from './error.component';
-import { NxErrorModule } from './error.module';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { Subject } from 'rxjs';
+import { ErrorDefaultOptions, ErrorStyleType, ERROR_DEFAULT_OPTIONS, NxErrorComponent } from './error.component';
+import { NxErrorModule } from './error.module';
 
 const errorOptions: ErrorDefaultOptions = {
     changes: new Subject<void>(),

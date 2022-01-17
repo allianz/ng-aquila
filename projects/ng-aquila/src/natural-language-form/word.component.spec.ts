@@ -1,9 +1,8 @@
-import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { ChangeDetectionStrategy, Component, ElementRef, QueryList, Type, ViewChild, ViewChildren, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, ElementRef, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
-import { FormControl, FormsModule, NgControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
-
+import { FormControl, FormGroup, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
 import { NxWordComponent } from './word.component';

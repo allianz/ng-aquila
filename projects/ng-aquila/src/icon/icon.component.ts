@@ -1,8 +1,8 @@
-import { NxSvgIcon } from './icons';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
-import { ElementRef, Component, Input, ChangeDetectionStrategy, SimpleChanges, OnChanges } from '@angular/core';
-import { NxIconRegistry, NxIconFontDefinition, cloneSvg } from './icon-registry';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { cloneSvg, NxIconFontDefinition, NxIconRegistry } from './icon-registry';
+import { NxSvgIcon } from './icons';
 
 /** Types of icon sizes */
 export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';

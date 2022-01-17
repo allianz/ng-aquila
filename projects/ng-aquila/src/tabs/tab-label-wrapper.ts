@@ -1,6 +1,6 @@
 import { FocusableOption } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Directive, ElementRef, Input } from '@angular/core';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 
 /** @docs-private */
 @Directive({ selector: '[nxTabLabelWrapper]' })

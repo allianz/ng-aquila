@@ -1,7 +1,7 @@
-import { Directive, ViewChild, Component, Type } from '@angular/core';
-import { ComponentFixture, waitForAsync, TestBed, fakeAsync } from '@angular/core/testing';
-import { NxButtonModule } from '.';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
+import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxButtonModule } from '.';
 import { NxAnchorButtonComponent } from './anchor-button.component';
 
 @Directive()

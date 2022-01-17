@@ -1,6 +1,6 @@
-import { ViewChild, Type, Component, Directive } from '@angular/core';
-import { NxFooterComponent } from './footer.component';
+import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { NxFooterComponent } from './footer.component';
 import { NxFooterModule } from './footer.module';
 
 @Directive()

@@ -1,7 +1,7 @@
-import { SchematicTestSetup, Collection } from '../utils/testing/test-setup';
-import { getWorkspace } from '@schematics/angular/utility/workspace';
-import { getProjectFromWorkspace } from '@angular/cdk/schematics';
 import { workspaces } from '@angular-devkit/core';
+import { getProjectFromWorkspace } from '@angular/cdk/schematics';
+import { getWorkspace } from '@schematics/angular/utility/workspace';
+import { Collection, SchematicTestSetup } from '../utils/testing/test-setup';
 
 describe('ng-aquila ng add', () => {
     const testSetup = new SchematicTestSetup('ng-add-setup-project', Collection.SCHEMATICS);

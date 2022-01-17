@@ -1,3 +1,5 @@
+import { FocusMonitor } from '@angular/cdk/a11y';
+import { Directionality } from '@angular/cdk/bidi';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -16,15 +18,12 @@ import {
     ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Directionality } from '@angular/cdk/bidi';
-
-import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
+import { NxDateAdapter, NxDateFormats, NX_DATE_FORMATS } from '../adapter/index';
 import { createMissingDateImplError } from './datepicker-errors';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxMonthViewComponent } from './month-view';
 import { NxMultiYearViewComponent } from './multi-year-view';
 import { NxYearViewComponent } from './year-view';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 /**
  * @license

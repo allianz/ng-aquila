@@ -1,6 +1,7 @@
 import { ApiDoc } from 'dgeni-packages/typescript/api-doc-types/ApiDoc';
 import { ClassExportDoc } from 'dgeni-packages/typescript/api-doc-types/ClassExportDoc';
 import { ClassLikeExportDoc, HeritageInfo } from 'dgeni-packages/typescript/api-doc-types/ClassLikeExportDoc';
+import { MethodMemberDoc } from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
 import { PropertyMemberDoc } from 'dgeni-packages/typescript/api-doc-types/PropertyMemberDoc';
 import { ParsedDecorator } from 'dgeni-packages/typescript/services/TsParser/getDecorators';
 
@@ -45,8 +46,6 @@ export interface CategorizedPropertyMemberDoc extends PropertyMemberDoc, Depreca
 export interface CategorizedMethodMemberDoc {
     [x: string]: any;
 }
-
-import { MethodMemberDoc } from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
 
 export class NormalizedMethodMemberDoc extends MethodMemberDoc {
     params?: MethodParameterInfo[];

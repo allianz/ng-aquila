@@ -1,22 +1,22 @@
-import { Direction, Directionality } from '@angular/cdk/bidi';
-import {
-    Input,
-    Component,
-    ChangeDetectorRef,
-    OnDestroy,
-    ChangeDetectionStrategy,
-    Renderer2,
-    ElementRef,
-    OnInit,
-    Output,
-    EventEmitter,
-    Optional,
-    ViewChild,
-    AfterViewInit,
-} from '@angular/core';
-import { SPACE, LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
-import { coerceBooleanProperty, coerceNumberProperty, BooleanInput, NumberInput } from '@angular/cdk/coercion';
 import { FocusMonitor } from '@angular/cdk/a11y';
+import { Direction, Directionality } from '@angular/cdk/bidi';
+import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { LEFT_ARROW, RIGHT_ARROW, SPACE } from '@angular/cdk/keycodes';
+import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    Renderer2,
+    ViewChild,
+} from '@angular/core';
 
 export const MAX_WIDTH = 400;
 export const MIN_WIDTH = 56;

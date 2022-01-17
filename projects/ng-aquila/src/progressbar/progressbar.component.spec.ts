@@ -1,7 +1,6 @@
-import { Component, ElementRef, Type, ViewChild, Directive } from '@angular/core';
+import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-
 import { NxProgressbarComponent } from './progressbar.component';
 import { NxProgressbarModule } from './progressbar.module';
 

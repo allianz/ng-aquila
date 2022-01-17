@@ -1,10 +1,10 @@
-import { ManifestService } from './../service/manifest.service';
-import { ExampleDescriptor } from './../core/manifest';
-import { Component, Input, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { BaseLazyLoadingService } from '../service/lazy-loading.service';
-import { Subscription } from 'rxjs';
 import { Direction } from '@angular/cdk/bidi';
+import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { BaseLazyLoadingService } from '../service/lazy-loading.service';
+import { ExampleDescriptor } from './../core/manifest';
+import { ManifestService } from './../service/manifest.service';
 
 @Component({
     selector: 'nxv-lazy-example',

@@ -1,28 +1,26 @@
+import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
 import {
+    AfterViewInit,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
+    ElementRef,
     EventEmitter,
     forwardRef,
+    HostListener,
     Input,
+    OnDestroy,
+    OnInit,
+    Optional,
     Output,
     ViewChild,
-    Optional,
-    OnInit,
-    OnDestroy,
-    AfterViewInit,
-    HostListener,
-    ChangeDetectorRef,
-    ChangeDetectionStrategy,
-    ElementRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { UniqueSelectionDispatcher } from '@angular/cdk/collections';
-
-import { ToggleButton } from './toggle-button';
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
-import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
-import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
-import { FileItem } from '@aposin/ng-aquila/file-uploader';
+import { ToggleButton } from './toggle-button';
 
 export class ToggleChangeEvent {
     /** A toggle button */

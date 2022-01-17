@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, DebugElement, QueryList, Type, ViewChild, ViewChildren, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NxModalComponent } from './modal.component';
 import { NxModalModule } from './modal.module';
 
