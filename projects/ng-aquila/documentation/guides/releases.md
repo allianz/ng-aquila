@@ -151,7 +151,7 @@ Our release strategy is naturally synchronized with [Angular's](https://github.c
 | -------------- | --------------- | ----------------- | ------------ |
 | January 2021   | 11              | 11                | May 2022     |
 | September 2021 | 12              | 12                | November2022 |
-| December 2021  | 13              | 13                | May 2022     |
+| December 2021  | 13              | 13                | May 2023     |
 
 Angular NDBX versions 10 and older are no longer supported.
 
