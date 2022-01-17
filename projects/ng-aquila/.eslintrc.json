@@ -1,6 +1,6 @@
 {
     "extends": "../../.eslintrc.json",
-    "ignorePatterns": ["!**/*"],
+    "ignorePatterns": ["!**/*", "src/schematics/**/*"],
     "overrides": [
         {
             "files": ["*.ts"],

@@ -1,6 +1,3 @@
 {
-    "projects/ng-aquila/**/*.{ts,html}": "eslint --fix",
-    "projects/ngx-docs-cli/**/*.ts": "eslint --fix",
-    "projects/ngx-docs-ui/**/*.{ts,html}": "eslint --fix",
-    "projects/opensource-documentation/**/*.{ts,html}": "eslint --fix"
+    "**/*.{ts,html}": "eslint --fix"
 }

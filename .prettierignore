@@ -59,3 +59,4 @@ Thumbs.db
 
 # template html files seem to have hard time with prettier sometimes
 /projects/ngx-docs-cli/**/*.template.html
+/projects/ngx-docs-cli/**/macros.html

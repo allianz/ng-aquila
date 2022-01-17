@@ -8,13 +8,13 @@
                 "project": ["tsconfig.json"],
                 "createDefaultProgram": true
             },
-            "plugins": [],
             "extends": [
                 "plugin:@typescript-eslint/base",
                 "plugin:@angular-eslint/base",
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "prettier"
             ],
+            "plugins": [],
             "rules": {
                 // eslint rules go here
                 // @typescript-eslint rules go here

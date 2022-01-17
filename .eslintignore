@@ -59,6 +59,7 @@ Thumbs.db
 
 # template html files seem to have hard time with prettier sometimes
 /projects/ngx-docs-cli/**/*.template.html
+/projects/ngx-docs-cli/**/macros.html
 
 # exclude any other non-angular-template html files
 /projects/ng-aquila/documentation/assets/stack-blitz/src/index.html
