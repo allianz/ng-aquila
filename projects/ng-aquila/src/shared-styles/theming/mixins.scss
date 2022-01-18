@@ -32,7 +32,8 @@
 @mixin nx-build-theme($theme-name: aposin) {
     $theme: map-get($nx-themes, $theme-name);
 
-    :root {
+    :root,
+    :host {
         @each $name, $value in $theme {
             $parentValue: map-get($theme, $value);
             @if ($parentValue != null) {
@@ -42,7 +43,8 @@
         }
     }
 
-    body {
+    body,
+    :host {
         background-color: v(ui-background);
         color: v(text-01);
     }
