@@ -61,20 +61,20 @@ describe('NxBreadcrumbComponent', () => {
 
     it('sets aria-current to last item', () => {
         createTestComponent(DynamicBreadcrumbComponent);
-        // @ts-ignore
+        // @ts-expect-error
         expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-        // @ts-ignore
+        // @ts-expect-error
         expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBeFalsy();
-        // @ts-ignore
+        // @ts-expect-error
         expect(breadcrumbItemInstances[2].getAttribute('aria-current')).toBe('page');
 
         (testInstance as DynamicBreadcrumbComponent).items = ['test', 'test2'];
         fixture.detectChanges();
         breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
 
-        // @ts-ignore
+        // @ts-expect-error
         expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-        // @ts-ignore
+        // @ts-expect-error
         expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBe('page');
     });
 });

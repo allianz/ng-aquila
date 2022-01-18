@@ -42,7 +42,7 @@ export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
                 return;
             }
 
-            const existingParameterInfo = method.params.find(p => p.name == parameterName);
+            const existingParameterInfo = method.params.find(p => p.name === parameterName);
 
             if (!existingParameterInfo) {
                 method.params.push({

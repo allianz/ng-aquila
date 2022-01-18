@@ -25,18 +25,18 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
     styleUrls: ['./documentation-frame.scss'],
 })
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
-    public manifestFile!: Blob;
+    manifestFile!: Blob;
     private _destroyed: Subject<void> = new Subject();
     selectedTheme: Theme;
     themes: Theme[];
 
-    mobileSidebar: boolean = false;
+    mobileSidebar = false;
 
     showThemingSwitcher = false;
     // TODO: set this according to the calling application (injection token?), always there right now
     showThemingSidebar = false;
 
-    showMobileMenuButton: boolean = false;
+    showMobileMenuButton = false;
 
     @ViewChild(CssVarSidebarComponent)
     cssVarSidebar!: CssVarSidebarComponent;
@@ -97,7 +97,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
             }
             // show the mobile menu button only when a documenation or a guide page is shown
             if (event instanceof NavigationEnd) {
-                this.showMobileMenuButton = this._router.url.match(/^\/documentation|guides\//) ? true : false;
+                this.showMobileMenuButton = !!this._router.url.match(/^\/documentation|guides\//);
             }
         });
     }

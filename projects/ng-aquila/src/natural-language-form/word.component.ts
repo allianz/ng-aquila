@@ -51,7 +51,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     /** @docs-private */
     inputChanges = new Subject<any>();
 
-    _hasErrors: boolean = false;
+    _hasErrors = false;
     private _overlayRef!: OverlayRef;
     private _embeddedViewRef!: EmbeddedViewRef<any>;
     private _overlayState!: OverlayConfig;
@@ -63,7 +63,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     /** @docs-private */
     @HostBinding('style.width.px')
-    currentTextWidth: number = 0;
+    currentTextWidth = 0;
 
     // this will apply different min-widths to our component through our styles
     /** Provide a hint for a minimal width. The actual size will be determined for inputs for each change. */
@@ -74,7 +74,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
      * In order to be accessible, you have to provide a label with this property.
      * It will be attached to the given input through `aria-label`.
      */
-    @Input('nxLabel') label: string = '';
+    @Input('nxLabel') label = '';
 
     constructor(
         /** @docs-private */

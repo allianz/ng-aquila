@@ -7,7 +7,7 @@ import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 @Directive()

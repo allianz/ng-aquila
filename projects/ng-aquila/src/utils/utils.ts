@@ -4,7 +4,7 @@ export function isString(value: any) {
     return typeof value === 'string';
 }
 
-export function pad(str: string, length: number = 2, padCharacter: string = '0'): string {
+export function pad(str: string, length = 2, padCharacter = '0'): string {
     if (!isString(str) || str.length >= length) {
         return str;
     }
@@ -55,9 +55,8 @@ export function getClassNameList(value: string, MAPPING: { [k: string]: string }
         mappedClasses = classNames.map(className => {
             if (keys.indexOf(className) > -1) {
                 return MAPPING[className];
-            } else {
-                return className;
             }
+            return className;
         });
     }
 

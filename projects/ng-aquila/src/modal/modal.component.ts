@@ -56,7 +56,7 @@ export class NxModalContentDirective {}
     },
 })
 export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
-    private _closeButtonLabel: string = 'Close dialog';
+    private _closeButtonLabel = 'Close dialog';
 
     @ViewChild('closeButton') _closeButton!: ElementRef;
 
@@ -85,19 +85,19 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
      * Whether the modal view should close when the user hits the escape key.
      * Default is true.
      */
-    @Input('nxHideOnEsc') hideOnEsc: boolean = true;
+    @Input('nxHideOnEsc') hideOnEsc = true;
 
     /**
      * Whether the modal view should close when the user clicks on the backdrop.
      * Default is true.
      */
-    @Input('nxHideOnClickOutside') hideOnClickOutside: boolean = true;
+    @Input('nxHideOnClickOutside') hideOnClickOutside = true;
 
     /**
      * Whether the modal view should have a close icon in the upper right corner.
      * Default is true.
      */
-    @Input('nxShowCloseIcon') showCloseIcon: boolean = true;
+    @Input('nxShowCloseIcon') showCloseIcon = true;
 
     /**
      * Controls the width of the dialog.

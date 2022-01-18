@@ -12,16 +12,16 @@ import { NxDatefieldModule } from './datefield.module';
 
 @Directive()
 abstract class DatefieldTest {
-    public disabled: boolean = false;
-    public strict: boolean = true;
-    public displayFormat!: string;
-    public parseFormat!: string | string[];
-    public value!: Moment;
+    disabled = false;
+    strict = true;
+    displayFormat!: string;
+    parseFormat!: string | string[];
+    value!: Moment;
 
-    public min!: Moment;
-    public max!: Moment;
+    min!: Moment;
+    max!: Moment;
 
-    public form!: FormGroup;
+    form!: FormGroup;
 
     @ViewChild(NxDatefieldDirective) textInstance!: NxDatefieldDirective<Date>;
 }
@@ -64,7 +64,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
         fixture.detectChanges();
         tick();
-        // @ts-ignore
+        // @ts-expect-error
         expect(nativeElement.attributes['disabled']).toBeTruthy();
     }));
 
@@ -289,7 +289,7 @@ class MinMaxDatefield extends DatefieldTest {}
     `,
 })
 class ReactiveDatefield extends DatefieldTest {
-    public fb;
+    fb;
 
     constructor() {
         super();
@@ -304,7 +304,7 @@ class ReactiveDatefield extends DatefieldTest {
 
 @Directive()
 abstract class DatefieldIsoTest {
-    public form!: FormGroup;
+    form!: FormGroup;
     @ViewChild(NxDatefieldDirective) datefieldInstance!: NxDatefieldDirective<Date>;
 }
 
@@ -366,7 +366,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
     `,
 })
 class ReactiveIsoDatefield extends DatefieldIsoTest {
-    public fb;
+    fb;
 
     constructor() {
         super();

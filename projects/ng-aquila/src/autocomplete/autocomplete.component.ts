@@ -51,13 +51,13 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     _keyManager!: ActiveDescendantKeyManager<NxAutocompleteOptionComponent>;
 
     /** Whether the autocomplete panel should be visible, depending on option length. */
-    showPanel: boolean = false;
+    showPanel = false;
 
     /** Whether the autocomplete panel is open. */
     get isOpen(): boolean {
         return this._isOpen && this.showPanel;
     }
-    _isOpen: boolean = false;
+    _isOpen = false;
 
     /** @docs-private */
     @ViewChild(TemplateRef) template!: TemplateRef<any>;
@@ -100,7 +100,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      * @docs-private
      * Is items observable set
      */
-    public get hasItems(): boolean {
+    get hasItems(): boolean {
         return this._hasItems;
     }
     private _hasItems = false;
@@ -123,7 +123,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options */
-    public get options(): QueryList<NxAutocompleteOptionComponent> {
+    get options(): QueryList<NxAutocompleteOptionComponent> {
         return this.hasItems ? this._vOptions : this._cOptions;
     }
 
@@ -141,7 +141,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     _classList: { [key: string]: boolean } = {};
 
     /** Unique ID to be used by autocomplete trigger's "aria-owns" property. */
-    id: string = `nx-autocomplete-${_uniqueAutocompleteIdCounter++}`;
+    id = `nx-autocomplete-${_uniqueAutocompleteIdCounter++}`;
 
     /**
      * Value to string converter function.
@@ -151,7 +151,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      * Default: value ? value.toString() : null.
      */
     @Input('nxValueFormatter')
-    public valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
+    valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
     constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent) {}
 

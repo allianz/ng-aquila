@@ -20,13 +20,13 @@ const DEFAULT_TYPE = 'normal';
     },
 })
 export class NxCopytextComponent {
-    private _classNames: string = '';
+    private _classNames = '';
 
     /** @docs-private */
     type: NxCopytextType = DEFAULT_TYPE;
 
     /** @docs-private */
-    negative: boolean = false;
+    negative = false;
 
     /**
      * Sets the type and whether the negative set of styling should be used.

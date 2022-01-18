@@ -22,7 +22,7 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
     _destroyed: Subject<void> = new Subject();
 
-    private _negative: boolean = false;
+    private _negative = false;
 
     private _appeareance: NxBreadcrumpAppearance = 'default';
 

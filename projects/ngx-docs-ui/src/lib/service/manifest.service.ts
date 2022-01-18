@@ -30,7 +30,7 @@ const sortByLabel = function (a: { label: string }, b: { label: string }) {
 @Injectable()
 export class ManifestService {
     protected _manifestChanges = new ReplaySubject<Manifest>(1);
-    public available = new ReplaySubject<Boolean>(1);
+    available = new ReplaySubject<Boolean>(1);
     protected _current!: Manifest;
 
     constructor(
@@ -55,7 +55,7 @@ export class ManifestService {
     }
 
     getGuide(id: string): GuideDescriptor {
-        if (this.hasGuide(id) === false) {
+        if (!this.hasGuide(id)) {
             throw new Error(`Could not find Guide with id ${id}`);
         }
 
@@ -67,7 +67,7 @@ export class ManifestService {
     }
 
     getComponent(id: string): ComponentDescriptor {
-        if (this.hasComponent(id) === false) {
+        if (!this.hasComponent(id)) {
             throw new Error(`Could not find Component with id ${id}`);
         }
 
@@ -108,7 +108,7 @@ export class ManifestService {
     }
 
     getExample(id: string): ExampleDescriptor {
-        if (this.hasExample(id) === false) {
+        if (!this.hasExample(id)) {
             throw new Error(`Could not find Example with id ${id}`);
         }
 
@@ -118,7 +118,7 @@ export class ManifestService {
     update(value: Manifest) {
         this._current = value;
 
-        if (this.isEmpty() === false) {
+        if (!this.isEmpty()) {
             this._manifestChanges.next(this._current);
             this.available.next(true);
         } else {

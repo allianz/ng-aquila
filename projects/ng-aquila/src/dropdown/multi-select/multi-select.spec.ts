@@ -111,7 +111,7 @@ describe('NxMultiSelectComponent', () => {
     let loader: HarnessLoader;
     let multiSelectHarness: MultiSelectHarness;
 
-    function configureTestingModule() {
+    async function configureTestingModule() {
         return TestBed.configureTestingModule({
             imports: [CommonModule, OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
             declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent],

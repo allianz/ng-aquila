@@ -9,8 +9,8 @@ import { NxWordComponent } from './word.component';
 
 @Directive()
 abstract class NaturalLanguageFormTest {
-    public size: string = 'regular';
-    public value!: string;
+    size = 'regular';
+    value!: string;
 
     @ViewChild(NxNaturalLanguageFormComponent) formInstance!: NxNaturalLanguageFormComponent;
     @ViewChild(NxNaturalLanguageFormComponent, { read: ElementRef }) formInstanceNative!: ElementRef;
@@ -133,15 +133,13 @@ describe('NxNaturalLanguageFormComponent', () => {
 
     describe('sizing', () => {
         it('words should apply different sizes', fakeAsync(() => {
-            let word: ElementRef;
-
             createTestComponent(NaturalLanguageFormSizesComponent);
 
             testInstance.size = 'long';
             fixture.detectChanges();
             tick();
 
-            word = testInstance.words.first;
+            const word = testInstance.words.first;
             expect(word.nativeElement.classList.contains('size-long')).toBe(true);
 
             testInstance.size = 'short';
@@ -152,14 +150,12 @@ describe('NxNaturalLanguageFormComponent', () => {
         }));
 
         it('should grow and shrink words with input', fakeAsync(() => {
-            let word: ElementRef;
-
             createTestComponent(NaturalLanguageFormSizesComponent);
 
             fixture.detectChanges();
             tick();
 
-            word = testInstance.words.first;
+            const word = testInstance.words.first;
             const dimensionA = (word.nativeElement as HTMLElement).getBoundingClientRect();
 
             // let's test if it's growing
@@ -181,8 +177,6 @@ describe('NxNaturalLanguageFormComponent', () => {
         }));
 
         it('never grow larger than the container', fakeAsync(() => {
-            let word: ElementRef;
-
             createTestComponent(NaturalLanguageFormSizesComponent);
             testInstance.value = 'lorem ipsum dolar sit amet lorem  ipsum dolar sit amet';
 
@@ -190,7 +184,7 @@ describe('NxNaturalLanguageFormComponent', () => {
             tick();
             fixture.detectChanges();
 
-            word = testInstance.words.first;
+            const word = testInstance.words.first;
             const dimensionWord = (word.nativeElement as HTMLElement).getBoundingClientRect();
             const dimensionForm = (testInstance.formInstanceNative.nativeElement as HTMLElement).getBoundingClientRect();
 

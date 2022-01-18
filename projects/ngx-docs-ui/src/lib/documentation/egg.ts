@@ -21,7 +21,7 @@ export class Egg {
     eggs: any[] = [];
     hooks: any[] = [];
     kps: any[] = [];
-    activeEgg: string = '';
+    activeEgg = '';
     // for now we'll just ignore the shift key to allow capital letters
     ignoredKeys: any[] = [16];
 
@@ -44,16 +44,16 @@ export class Egg {
     listen(): any {
         // Standards compliant only. Don't waste time on IE8.
         if (document.addEventListener !== void 0) {
-            // @ts-ignore
+            // @ts-expect-error
             document.addEventListener('keydown', this, false);
-            // @ts-ignore
+            // @ts-expect-error
             document.addEventListener('keyup', this, false);
         }
 
         return this;
     }
 
-    handleEvent(e: { which: any; type: string; metaKey: any; ctrlKey: any; altKey: any; shiftKey: any; target: { tagName: any }; preventDefault: () => void }) {
+    handleEvent(e: { which: any; type: string; metaKey: any; ctrlKey: any; altKey: any; shiftKey: any; target: { tagName: any }; preventDefault(): void }) {
         let keyCode = e.which;
         const isLetter = keyCode >= 65 && keyCode <= 90;
         /*
@@ -75,7 +75,7 @@ export class Egg {
             if (isLetter) {
                 if (!e.shiftKey) {
                     // convert to lower case letter
-                    keyCode = keyCode + 32;
+                    keyCode += 32;
                 }
             }
 
@@ -85,23 +85,23 @@ export class Egg {
             }
 
             this.eggs.forEach(function (currentEgg, i) {
-                // @ts-ignore
+                // @ts-expect-error
                 const foundEgg = this.kps.toString().indexOf(currentEgg.keys) >= 0;
 
                 if (foundEgg) {
                     // Reset keys; if more keypresses occur while the callback is executing, it could retrigger the match
-                    // @ts-ignore
+                    // @ts-expect-error
                     this.kps = [];
                     // Set the activeEgg to this one
-                    // @ts-ignore
+                    // @ts-expect-error
                     this.activeEgg = currentEgg;
                     // if callback is a function, call it
-                    // @ts-ignore
+                    // @ts-expect-error
                     this.__execute(currentEgg.fn, this);
                     // Call the hooks
-                    // @ts-ignore
+                    // @ts-expect-error
                     this.hooks.forEach(this.__execute, this);
-                    // @ts-ignore
+                    // @ts-expect-error
                     this.activeEgg = '';
                 }
             }, this);
@@ -130,7 +130,7 @@ export class Egg {
 
         if (typeof keys === 'string') {
             // make sure there isn't any whitespace
-            // @ts-ignore
+            // @ts-expect-error
             keys = keys.split(',').map(function (key) {
                 return key.trim();
             });
@@ -144,11 +144,11 @@ export class Egg {
 
             // lookup in named key map
             if (specialKeys.indexOf(key.toString()) > -1) {
-                // @ts-ignore
+                // @ts-expect-error
                 return special[key];
             }
             // it's a letter, return the char code for it
-            // @ts-ignore
+            // @ts-expect-error
             return key.charCodeAt(0);
         });
 

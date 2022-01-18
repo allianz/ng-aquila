@@ -9,8 +9,8 @@ import { NxTabsModule } from './tabs.module';
 
 @Directive()
 abstract class TabHeaderTest {
-    selectedIndex: number = 0;
-    autoselect: boolean = true;
+    selectedIndex = 0;
+    autoselect = true;
     tabs: any;
 
     @ViewChild(NxTabHeaderComponent) tabHeaderInstance!: NxTabHeaderComponent;

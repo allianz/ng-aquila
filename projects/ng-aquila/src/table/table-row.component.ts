@@ -28,7 +28,7 @@ export class NxTableRowComponent {
     get selectable(): boolean {
         return this._selectable;
     }
-    private _selectable: boolean = false;
+    private _selectable = false;
 
     /** Whether this table row is selected */
     @Input()
@@ -39,7 +39,7 @@ export class NxTableRowComponent {
     get selected(): boolean {
         return this._selected;
     }
-    private _selected: boolean = false;
+    private _selected = false;
 
     @Output()
     select: EventEmitter<void> = new EventEmitter();

@@ -47,7 +47,7 @@ describe('NxDatepicker', () => {
             let fixture: ComponentFixture<StandardDatepicker>;
             let testComponent: StandardDatepicker;
 
-            function compileTestComponent(providers: Array<any> = []) {
+            function compileTestComponent(providers: any[] = []) {
                 fixture = createComponent(StandardDatepicker, [NxNativeDateModule], providers);
                 fixture.detectChanges();
 

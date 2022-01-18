@@ -22,7 +22,7 @@ const DEFAULT_THROTTLE_TIME = 200;
 @Injectable({ providedIn: 'root' })
 export class NxViewportService implements OnDestroy {
     private _destroyed: Subject<void> = new Subject();
-    initialViewportWidth: number = 0;
+    initialViewportWidth = 0;
     viewportChange$: Observable<number>;
 
     constructor() {

@@ -132,7 +132,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     set debounce(val: NumberInput) {
         this._debounce = coerceNumberProperty(val);
     }
-    private _debounce: number = 400;
+    private _debounce = 400;
 
     /** Whether autocomplete functionality is disabled. */
     @Input('nxAutocompleteDisabled')
@@ -149,7 +149,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     get panelOpen(): boolean {
         return this._overlayAttached && this.autocomplete.showPanel;
     }
-    private _overlayAttached: boolean = false;
+    private _overlayAttached = false;
 
     /** Stream of autocomplete option selections. */
     readonly optionSelections: Observable<NxAutocompleteOptionSelected> = defer<Observable<NxAutocompleteOptionSelected>>(() => {
@@ -218,9 +218,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private get _formField(): NxFormfieldComponent | NxWordComponent {
         if (this._nxFormField) {
             return this._nxFormField;
-        } else {
-            return this._nxWordField;
         }
+        return this._nxWordField;
     }
 
     constructor(

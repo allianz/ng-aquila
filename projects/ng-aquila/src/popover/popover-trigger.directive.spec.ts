@@ -22,7 +22,7 @@ abstract class PopoverTest {
     @ViewChild(NxPopoverTriggerDirective) triggerInstance!: NxPopoverTriggerDirective;
     @ViewChild(NxTestComponent) testComponentInstance!: NxTestComponent;
 
-    closeable: boolean = false;
+    closeable = false;
 }
 
 describe('NxPopoverTriggerDirective', () => {

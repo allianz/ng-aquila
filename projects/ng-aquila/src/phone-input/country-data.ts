@@ -45,7 +45,7 @@ export const getCountryCallingCodeFromNumber = function (number: string) {
     // but as we don't want the dependency on it we only accept numbers with + sign and calling code
     // in the beginning. this can later be done better once we introduce an adapter and then a libphonenumber adapter
     // could have additional capabilities here.
-    if (number[0] !== '+') {
+    if (!number.startsWith('+')) {
         throw Error('Expected phone number to start with "+" sign followed by the calling code');
     }
 

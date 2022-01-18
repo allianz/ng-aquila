@@ -73,7 +73,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         return this._id;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether the dropdown item is disabled. */
     @Input() set disabled(value: BooleanInput) {
@@ -88,7 +88,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         return this._disabled;
     }
 
-    private _selected: boolean = false;
+    private _selected = false;
 
     /** Whether the item is selected. */
     get selected(): boolean {
@@ -211,7 +211,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     private _showOrHideByFilter(search: string) {
         const constraint = this._dropdown.filterFn(search, this.viewValue);
-        this._hidden = constraint ? false : true;
+        this._hidden = !constraint;
         this._cdr.markForCheck();
     }
 
@@ -256,7 +256,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         this._elementRef.nativeElement.focus();
     }
 
-    private _emitSelectionChangeEvent(isUserInput: boolean = false) {
+    private _emitSelectionChangeEvent(isUserInput = false) {
         this.onSelectionChange.emit(new NxDropdownItemChange(this, isUserInput));
     }
 

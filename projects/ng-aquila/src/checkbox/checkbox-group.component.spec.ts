@@ -10,11 +10,11 @@ abstract class CheckboxGroupTest {
     @ViewChild(NxCheckboxGroupComponent) checkboxGroupInstance!: NxCheckboxGroupComponent;
     @ViewChildren(NxCheckboxComponent) checkboxInstances!: QueryList<NxCheckboxComponent>;
 
-    checked: boolean = false;
+    checked = false;
     myFormGroup!: FormGroup;
     labelSize!: string;
-    disabled: boolean = false;
-    negative: boolean = false;
+    disabled = false;
+    negative = false;
 }
 
 describe('NxCheckboxGroupComponent', () => {
@@ -245,7 +245,7 @@ class BasicCheckboxGroup extends CheckboxGroupTest {}
     `,
 })
 class CheckboxGroupValidation extends CheckboxGroupTest {
-    public myFormGroup!: FormGroup;
+    myFormGroup!: FormGroup;
 
     checkboxGroupCheckedValues = ['Term 2', 'Term 3'];
 
@@ -273,7 +273,7 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
     `,
 })
 class CheckboxGroupDynamic extends CheckboxGroupTest {
-    public myFormGroup!: FormGroup;
+    myFormGroup!: FormGroup;
 
     data = ['one', 'two', 'three'];
     i = 1;
@@ -289,12 +289,12 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
         });
     }
 
-    public addNewCb() {
+    addNewCb() {
         this.data.push('New Value ' + this.i);
         this.i++;
     }
 
-    public removeCB() {
+    removeCB() {
         this.data.shift();
     }
 }
@@ -315,7 +315,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
     `,
 })
 export class CheckboxGroupReactive extends CheckboxGroupTest {
-    public myFormGroup: FormGroup;
+    myFormGroup: FormGroup;
 
     constructor(private fb: FormBuilder) {
         super();
@@ -335,8 +335,8 @@ export class CheckboxGroupReactive extends CheckboxGroupTest {
     `,
 })
 export class ConditionalCheckboxGroupReactive extends CheckboxGroupTest {
-    public myFormGroup: FormGroup;
-    showCheckboxes: boolean = true;
+    myFormGroup: FormGroup;
+    showCheckboxes = true;
     checkboxes: string[] = ['Term 1', 'Term 2', 'Term 3'];
 
     constructor(private readonly fb: FormBuilder) {

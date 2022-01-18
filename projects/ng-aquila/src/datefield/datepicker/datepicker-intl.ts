@@ -18,32 +18,32 @@ export class NxDatepickerIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** A label for the calendar popup (used by screen readers). */
-    calendarLabel: string = 'Calendar';
+    calendarLabel = 'Calendar';
 
     /** A label for the button used to open the calendar popup (used by screen readers). */
-    openCalendarLabel: string = 'Open calendar';
+    openCalendarLabel = 'Open calendar';
 
     /** A label for the previous month button (used by screen readers). */
-    prevMonthLabel: string = 'Previous month';
+    prevMonthLabel = 'Previous month';
 
     /** A label for the next month button (used by screen readers). */
-    nextMonthLabel: string = 'Next month';
+    nextMonthLabel = 'Next month';
 
     /** A label for the previous year button (used by screen readers). */
-    prevYearLabel: string = 'Previous year';
+    prevYearLabel = 'Previous year';
 
     /** A label for the next year button (used by screen readers). */
-    nextYearLabel: string = 'Next year';
+    nextYearLabel = 'Next year';
 
     /** A label for the previous multi-year button (used by screen readers). */
-    prevMultiYearLabel: string = 'Previous 20 years';
+    prevMultiYearLabel = 'Previous 20 years';
 
     /** A label for the next multi-year button (used by screen readers). */
-    nextMultiYearLabel: string = 'Next 20 years';
+    nextMultiYearLabel = 'Next 20 years';
 
     /** A label for the 'switch to month view' button (used by screen readers). */
-    switchToMonthViewLabel: string = 'Choose date';
+    switchToMonthViewLabel = 'Choose date';
 
     /** A label for the 'switch to year view' button (used by screen readers). */
-    switchToMultiYearViewLabel: string = 'Choose month and year';
+    switchToMultiYearViewLabel = 'Choose month and year';
 }

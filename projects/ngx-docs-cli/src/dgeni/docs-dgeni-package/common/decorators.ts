@@ -67,15 +67,15 @@ export function getDirectiveSelectors(classDoc: CategorizedClassDoc) {
 }
 
 export function hasMemberDecorator(doc: MemberDoc, decoratorName: string) {
-    return doc.docType == 'member' && hasDecorator(doc, decoratorName);
+    return doc.docType === 'member' && hasDecorator(doc, decoratorName);
 }
 
 export function hasClassDecorator(doc: ClassExportDoc, decoratorName: string) {
-    return doc.docType == 'class' && hasDecorator(doc, decoratorName);
+    return doc.docType === 'class' && hasDecorator(doc, decoratorName);
 }
 
 export function hasDecorator(doc: HasDecoratorsDoc, decoratorName: string) {
-    return !!doc.decorators && doc.decorators.length > 0 && doc.decorators.some(d => d.name == decoratorName);
+    return !!doc.decorators && doc.decorators.length > 0 && doc.decorators.some(d => d.name === decoratorName);
 }
 
 export function getDeletionTarget(doc: any): string | null {

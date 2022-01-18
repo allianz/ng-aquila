@@ -11,5 +11,5 @@ export class NxPopoverIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** Aria-label for the delete icon. */
-    closeIconLabel: string = 'close';
+    closeIconLabel = 'close';
 }

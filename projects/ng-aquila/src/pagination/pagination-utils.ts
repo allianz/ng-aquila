@@ -11,8 +11,8 @@ interface PaginationItem {
 @Injectable()
 export class NxPaginationUtils {
     private _pagesMobile = 3;
-    private _elipsisText: string = '...';
-    private _classExpanded: string = 'expanded-view';
+    private _elipsisText = '...';
+    private _classExpanded = 'expanded-view';
 
     getPages(currentPage: number, totalPages: number): Page[] {
         let pages = [];

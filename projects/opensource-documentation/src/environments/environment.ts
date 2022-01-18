@@ -1,4 +1,4 @@
-declare var require: any;
+declare let require: any;
 
 export const environment = {
     production: false,

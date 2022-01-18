@@ -58,6 +58,6 @@ export class DocsPrivateFilter implements Processor {
     /** Whether the given doc has a @docs-private tag set. */
     private hasDocsPrivateTag(doc: any) {
         const tags = doc.tags && doc.tags.tags;
-        return tags ? tags.find((d: any) => d.tagName == 'docs-private') : false;
+        return tags ? tags.find((d: any) => d.tagName === 'docs-private') : false;
     }
 }

@@ -59,34 +59,34 @@ let nextUniqueId = 0;
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
 })
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {
-    private _step: number = 1;
-    private _min: number = 0;
-    private _max: number = 100;
+    private _step = 1;
+    private _min = 0;
+    private _max = 100;
     private _value: number | null = 0;
     private _label!: string;
     private _incrementAriaLabel = '';
     private _decrementAriaLabel = '';
     private _inputAriaLabel = '';
-    private _resize: boolean = false;
+    private _resize = false;
     private _intlSubscription: Subscription;
-    private _negative: boolean = false;
-    private _leadingZero: boolean = true;
-    private _disabled: boolean = false;
+    private _negative = false;
+    private _leadingZero = true;
+    private _disabled = false;
 
     /** @docs-private */
     numberInputValue!: string;
 
     /** @docs-private */
-    public inputClassNames: string = mapClassNames('regular', INPUT_CLASSES);
+    inputClassNames: string = mapClassNames('regular', INPUT_CLASSES);
 
     /** @docs-private */
-    public inputId = `nx-number-stepper-${nextUniqueId++}`;
+    inputId = `nx-number-stepper-${nextUniqueId++}`;
 
     /** @docs-private */
-    public inputWidth!: number;
+    inputWidth!: number;
 
     /** @docs-private */
-    public ariaDescribedBy: string | null = null;
+    ariaDescribedBy: string | null = null;
 
     /** @docs-private */
     @ViewChild('customLabel') ngContentWrapper!: ElementRef;

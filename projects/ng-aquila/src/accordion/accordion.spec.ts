@@ -105,10 +105,10 @@ describe('NxAccordion', () => {
 class SetOfItems {
     @ViewChild(NxAccordionDirective) accordion!: NxAccordionDirective;
 
-    multi: boolean = false;
-    firstPanelExpanded: boolean = false;
-    secondPanelExpanded: boolean = false;
-    secondPanelDisabled: boolean = false;
+    multi = false;
+    firstPanelExpanded = false;
+    secondPanelExpanded = false;
+    secondPanelDisabled = false;
 }
 
 @Component({

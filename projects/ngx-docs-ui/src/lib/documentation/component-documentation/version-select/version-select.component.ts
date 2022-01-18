@@ -9,9 +9,9 @@ import { DocVersions } from './../../../core/types';
     styleUrls: ['version-select.component.scss'],
 })
 export class NxVersionSelectComponent {
-    _selected: string = '';
+    _selected = '';
     private _versions: DocVersions | null = null;
-    _versionSelectIsOpened: boolean = false;
+    _versionSelectIsOpened = false;
 
     @Input()
     set versions(value: DocVersions) {
@@ -32,7 +32,7 @@ export class NxVersionSelectComponent {
         this.formatVersion = this.formatVersion.bind(this);
     }
 
-    public formatVersion(channel: string) {
+    formatVersion(channel: string) {
         // Only show the version when the current one is selected.
         // We won't know the opposite version, as we don't maintain them
         // in both directions
@@ -43,7 +43,7 @@ export class NxVersionSelectComponent {
         return `${channel}`;
     }
 
-    public mobileFormatVersion(channel: string) {
+    mobileFormatVersion(channel: string) {
         // Only show the version when the current one is selected.
         // We won't know the opposite version, as we don't maintain them
         // in both directions
@@ -54,7 +54,7 @@ export class NxVersionSelectComponent {
         return `${channel}`;
     }
 
-    public changeVersion(event: Event) {
+    changeVersion(event: Event) {
         const url = this.versions.channels.find(channel => channel.name === (event.target as HTMLInputElement).value)?.url;
 
         if (url && window.top) {

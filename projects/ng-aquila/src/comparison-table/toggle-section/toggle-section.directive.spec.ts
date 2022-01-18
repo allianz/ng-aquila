@@ -10,7 +10,7 @@ abstract class ToggleSectionTest {
     @ViewChildren(NxToggleSectionDirective) toggleSectionInstances!: QueryList<NxToggleSectionDirective>;
     @ViewChildren(NxComparisonTableRowDirective) rowInstances!: QueryList<NxComparisonTableRowDirective>;
 
-    expandSecondSection: boolean = false;
+    expandSecondSection = false;
 }
 
 describe('ToggleSectionHeaderComponent', () => {

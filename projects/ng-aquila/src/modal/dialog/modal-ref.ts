@@ -192,7 +192,7 @@ export class NxModalRef<T, R = any> {
      * @param width New width of the modal.
      * @param height New height of the modal.
      */
-    updateSize(width: string = '', height: string = ''): this {
+    updateSize(width = '', height = ''): this {
         this._getPositionStrategy().width(width).height(height);
         this._overlayRef.updatePosition();
         return this;

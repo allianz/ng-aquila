@@ -28,7 +28,7 @@ import { NxTabLabelDirective } from './tab-label';
 })
 export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     private _label!: string;
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Emits whenever the internal state of the tab changes. */
     readonly _stateChanges = new Subject<void>();

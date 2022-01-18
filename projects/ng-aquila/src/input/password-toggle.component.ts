@@ -28,8 +28,8 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     /**@docs-private */
     _currentIcon: string = visibilityIcons['show'];
     /**@docs-private */
-    _pressed: boolean = false;
-    private _ariaLabel: string = 'Show password';
+    _pressed = false;
+    private _ariaLabel = 'Show password';
 
     /** Sets the aria-label needed for accessibility.
      * Notice that this `aria-label` should describe the initial action according to the status of the visibility.

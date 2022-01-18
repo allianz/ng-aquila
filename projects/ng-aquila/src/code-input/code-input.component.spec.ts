@@ -17,8 +17,8 @@ class MyIntl extends NxCodeInputIntl {
 abstract class CodeInputTest {
     @ViewChild(NxCodeInputComponent) codeInputInstance!: NxCodeInputComponent;
 
-    negative: boolean = false;
-    disabled: boolean = false;
+    negative = false;
+    disabled = false;
 
     onSubmit() {}
 }
@@ -166,7 +166,7 @@ describe('NxCodeInputComponent', () => {
             expect(input.value).toBe(char);
         });
 
-        // @ts-ignore
+        // @ts-expect-error
         expect(testInstance.codeInputInstance._keyCode).toEqual(['1', '2', '3', undefined]);
     }));
 
@@ -384,7 +384,7 @@ describe('NxCodeInputComponent', () => {
     `,
 })
 class CodeInputTest1 extends CodeInputTest {
-    inputValue: string = '';
+    inputValue = '';
     codeForm: FormGroup = new FormGroup({
         keyCode: new FormControl(this.inputValue, {
             validators: [Validators.required, Validators.pattern('[A-Z]+'), Validators.minLength(4)],
@@ -401,7 +401,7 @@ class CodeInputTest1 extends CodeInputTest {
     `,
 })
 class CodeInputTest2 extends CodeInputTest {
-    inputValue2: string = '';
+    inputValue2 = '';
     codeForm2: FormGroup = new FormGroup({
         keyCode2: new FormControl(this.inputValue2, {
             validators: [Validators.required, Validators.minLength(6)],
@@ -421,7 +421,7 @@ class CodeInputTest2 extends CodeInputTest {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class CodeInputTest3 extends CodeInputTest {
-    inputValue3: string = '';
+    inputValue3 = '';
     codeForm3: FormGroup = new FormGroup({
         keyCode3: new FormControl(this.inputValue3, {
             validators: [Validators.required, Validators.minLength(6)],

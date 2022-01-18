@@ -12,5 +12,5 @@ let uniqueId = 0;
 export class NxFormfieldErrorDirective {
     // create a unique id to be used by aria-described-by
     /** Sets the id of the formfield error. */
-    @Input() id: string = `nx-formfield-error-${uniqueId++}`;
+    @Input() id = `nx-formfield-error-${uniqueId++}`;
 }

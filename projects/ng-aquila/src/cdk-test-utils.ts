@@ -59,7 +59,7 @@ export function createTouchEvent(type: string, pageX = 0, pageY = 0) {
 }
 
 /** Dispatches a keydown event from an element. */
-export function createKeyboardEvent(type: string, keyCode: number = 0, key: string = '', modifiers: ModifierKeys = {}) {
+export function createKeyboardEvent(type: string, keyCode = 0, key = '', modifiers: ModifierKeys = {}) {
     return new KeyboardEvent(type, {
         bubbles: true,
         cancelable: true,

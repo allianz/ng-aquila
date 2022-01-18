@@ -18,7 +18,7 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
 })
 export class NxBadgeComponent {
     private _type!: NxBadgeType;
-    private _vibrant: boolean = false;
+    private _vibrant = false;
 
     constructor(private _cdr: ChangeDetectorRef) {}
 

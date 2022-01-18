@@ -6,7 +6,7 @@ import { NxMenuModule } from './menu.module';
 
 @Directive()
 abstract class MenuTest {
-    open: boolean = false;
+    open = false;
     @ViewChild(NxMenuComponent) menuInstance!: NxMenuComponent;
 }
 

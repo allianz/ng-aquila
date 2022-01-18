@@ -48,7 +48,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         this._offset = coerceNumberProperty(value);
         this._setPadding();
     }
-    _offset: number = 0;
+    _offset = 0;
 
     /**
      * The indent for each level. Can be a number or a CSS string.
@@ -72,7 +72,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         this._indent = coerceNumberProperty(value);
         this._setPadding();
     }
-    _indent: number = 24;
+    _indent = 24;
 
     constructor(
         private _treeNode: CdkTreeNode<T>,

@@ -17,7 +17,7 @@ export class CssVarSidebarComponent {
 
     properties!: any[];
     displayedProperties: any;
-    filterValue: string = '';
+    filterValue = '';
 
     constructor(private _cdr: ChangeDetectorRef) {}
 

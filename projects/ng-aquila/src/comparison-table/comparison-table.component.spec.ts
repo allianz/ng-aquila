@@ -8,7 +8,7 @@ import { NxComparisonTableRowDirective } from './comparison-table-row.directive'
 import { NxComparisonTableComponent } from './comparison-table.component';
 import { NxComparisonTableModule } from './comparison-table.module';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 export const BASIC_COMPARISON_TABLE_TEMPLATE = `

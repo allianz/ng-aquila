@@ -112,7 +112,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
      */
     _selectedMonth!: number | null;
 
-    _numCols: number = 3;
+    _numCols = 3;
 
     constructor(
         private _cdr: ChangeDetectorRef,

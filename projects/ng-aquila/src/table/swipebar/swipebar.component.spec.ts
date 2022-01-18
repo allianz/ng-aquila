@@ -98,7 +98,7 @@ describe(NxSwipebarComponent.name, () => {
     });
 });
 
-function nextFrame() {
+async function nextFrame() {
     return new Promise(resolve => requestAnimationFrame(resolve));
 }
 

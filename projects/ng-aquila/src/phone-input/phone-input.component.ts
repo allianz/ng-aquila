@@ -40,7 +40,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     value: any;
 
-    _inputValue: string = '';
+    _inputValue = '';
 
     _describedBy = '';
 
@@ -50,7 +50,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         return !!this._inputValue;
     }
 
-    focused: boolean = false;
+    focused = false;
 
     private _uid = 'phone-input-' + next++;
 
@@ -79,7 +79,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
     #required = false;
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether the component should be disabled. */
     @Input()
@@ -144,7 +144,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         this._sortCountries();
     }
 
-    private _placeholder: string = '';
+    private _placeholder = '';
 
     /** The placeholder to be shown in the input field. */
     @Input()
@@ -177,11 +177,11 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     // but for capacity reasons this has to be done at a later stage.
     readonly shouldLabelFloat?: boolean = true;
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
     readonly controlType?: string = 'nx-phone-input';
 
     _sortedCountries!: NxDropdownOption[];
-    _countryCallingCode: string = '';
+    _countryCallingCode = '';
 
     private _subscriptions = new Subscription();
 

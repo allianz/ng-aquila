@@ -57,7 +57,7 @@ export class ComponentGroup {
 }
 
 export class ComponentGrouper implements Processor {
-    name: string = 'component-grouper';
+    name = 'component-grouper';
     $runBefore = ['docs-processed'];
     $process(docs: any[]): void | any[] | PromiseLike<any[]> {
         const groups = new Map<string, ComponentGroup>();
@@ -123,7 +123,7 @@ function getDocumentPackageInfo(doc: Document) {
     //[ 'lib', 'button', 'button.component.spec.ts' ]
     //vs
     //[ 'button', 'button.component.spec.ts' ]
-    let groupName = pathSegments[0];
+    const groupName = pathSegments[0];
 
     return {
         name: groupName,

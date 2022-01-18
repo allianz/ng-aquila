@@ -17,32 +17,32 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class NxIconToggleButtonComponent {
     @Input()
-    inGroup: boolean = true;
+    inGroup = true;
 
     @Input()
-    hint: string = '';
+    hint = '';
 
     @Input()
-    label: string = '';
+    label = '';
 
     @Input()
-    checked: boolean = false;
+    checked = false;
 
     @Input()
-    icon: string = '';
+    icon = '';
 
     @Input('svg')
-    svgUrl: string = '';
+    svgUrl = '';
 
     @Input()
-    disabled: boolean = false;
+    disabled = false;
 
     @Input()
-    negative: boolean = false;
+    negative = false;
 
     @Input()
-    touched: boolean = false;
+    touched = false;
 
     @Input()
-    circleText: string = '';
+    circleText = '';
 }

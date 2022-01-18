@@ -135,6 +135,6 @@ class ListWithIcons extends ListTest {}
     `,
 })
 class ConfigurableList extends ListTest {
-    type: string = 'small';
-    iconName: string = 'check';
+    type = 'small';
+    iconName = 'check';
 }

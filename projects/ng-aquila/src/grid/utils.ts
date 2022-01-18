@@ -68,7 +68,7 @@ export function addStylesFromDimensions(input: string, map: {}): string {
 }
 
 // Simple split
-export function processSplit(aux: string, char: string = ','): string[] {
+export function processSplit(aux: string, char = ','): string[] {
     return aux.split(char).map(item => item.trim());
 }
 

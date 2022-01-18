@@ -74,7 +74,7 @@ export type AppearanceType = 'outline' | 'auto';
     encapsulation: ViewEncapsulation.None,
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
-    private _styles: string = '';
+    private _styles = '';
     private _subscriptions: Subscription = new Subscription();
 
     /** Html id of the formfield label */
@@ -268,6 +268,6 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      *  - The label is not floated
      * */
     _hideControlPlaceholder() {
-        return (!this.shouldLabelFloat && this._hasLabel()) || this._control.empty === false;
+        return (!this.shouldLabelFloat && this._hasLabel()) || !this._control.empty;
     }
 }

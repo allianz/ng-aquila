@@ -36,7 +36,7 @@ export class NxSpinnerComponent {
         return this._size;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
 
     /** Whether the spinner should use a negative styling. */
     @Input()

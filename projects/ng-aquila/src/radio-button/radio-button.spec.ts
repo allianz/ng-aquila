@@ -623,7 +623,7 @@ class MultipleRadioDisabled extends RadioTest {
     `,
 })
 class ReactiveRadio extends RadioTest {
-    public fb;
+    fb;
 
     constructor() {
         super();

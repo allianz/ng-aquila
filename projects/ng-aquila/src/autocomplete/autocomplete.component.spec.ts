@@ -298,9 +298,9 @@ class AutocompleteComponent {
     @ViewChild(NxAutocompleteComponent) autocompleteInstance!: NxAutocompleteComponent;
     @ViewChild(NxAutocompleteTriggerDirective) autocompleteTrigger!: NxAutocompleteTriggerDirective;
 
-    public inputVal: any;
+    inputVal: any;
 
-    public autocompleteDisabled = false;
+    autocompleteDisabled = false;
 
     searchData(value: string): string[] {
         return DATA.filter(item => item.indexOf(value) >= 0);

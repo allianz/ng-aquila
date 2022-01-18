@@ -57,22 +57,22 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
     },
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
-    private _id: string = `nx-selectable-card-${nextId++}`;
+    private _id = `nx-selectable-card-${nextId++}`;
     private _checked = false;
-    private _disabled: boolean = false;
-    private _value: string = '';
-    private _name: string = '';
-    private _negative: boolean = false;
-    private _tabindex: string = '0';
+    private _disabled = false;
+    private _value = '';
+    private _name = '';
+    private _negative = false;
+    private _tabindex = '0';
     private _required: boolean | undefined;
     private _appearance: NxSelectableCardAppearance | undefined;
 
-    _errorListIds: string = '';
+    _errorListIds = '';
 
     @ContentChildren(NxErrorComponent) _errorList!: QueryList<NxErrorComponent>;
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
-    _errorState: boolean = false;
+    _errorState = false;
 
     /** An event is dispatched each time the selectable card value is changed */
     @Output()
@@ -289,7 +289,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     }
 
     /** Toggles the checked state of the selectable card . */
-    public toggle() {
+    toggle() {
         if (!this.disabled) {
             this.checked = !this.checked;
         }

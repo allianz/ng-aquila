@@ -7,13 +7,13 @@ export interface NxExpandable {
     expanded: BehaviorSubject<boolean>;
 
     /** Toggles the open state. */
-    toggle: () => void;
+    toggle(): void;
 
     /** Expands this component. */
-    expand: () => void;
+    expand(): void;
 
     /** Closes this component. */
-    close: () => void;
+    close(): void;
 }
 
 /**
@@ -27,7 +27,7 @@ export interface NxExpandable {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
-    _expanded: boolean = false;
+    _expanded = false;
 
     @ViewChild('button') _buttonElement!: ElementRef;
 
@@ -56,7 +56,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
         this._ariaLabel = value;
         this._cdr.markForCheck();
     }
-    _ariaLabel: string = '';
+    _ariaLabel = '';
 
     private _subscription!: Subscription;
 

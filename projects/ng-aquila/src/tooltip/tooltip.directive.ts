@@ -91,8 +91,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     private _portal!: ComponentPortal<NxTooltipComponent>;
     private _position: TooltipPosition = 'bottom';
-    private _disabled: boolean = false;
-    private _selectable: boolean = false;
+    private _disabled = false;
+    private _selectable = false;
     private _scrollStrategy: () => ScrollStrategy;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
     private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
@@ -155,7 +155,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     /** The default delay in ms before hiding the tooltip after hide is called */
     @Input('nxTooltipHideDelay') hideDelay: number = this._defaultOptions.hideDelay;
 
-    private _message: string = '';
+    private _message = '';
 
     /** The message to be displayed in the tooltip */
     @Input('nxTooltip')

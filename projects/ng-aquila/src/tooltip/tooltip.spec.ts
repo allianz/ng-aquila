@@ -282,7 +282,7 @@ describe('NxTooltipDirective', () => {
 
             assertTooltipInstance(tooltipDirective, true);
 
-            // @ts-ignore
+            // @ts-expect-error
             spyOn(tooltipDirective._overlayRef, 'updatePosition').and.callThrough();
 
             tooltipDirective.position = 'top';
@@ -579,7 +579,7 @@ describe('NxTooltipDirective', () => {
 
             const overlayRef = tooltipDirective._overlayRef;
 
-            // @ts-ignore
+            // @ts-expect-error
             spyOn(overlayRef, 'detach').and.callThrough();
 
             tooltipDirective.show();
@@ -934,9 +934,9 @@ describe('NxTooltipComponent', () => {
     template: ` <button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
 })
 class BasicTooltipDemo {
-    position: string = 'bottom';
+    position = 'bottom';
     message: any = initialTooltipMessage;
-    showButton: boolean = true;
+    showButton = true;
     showTooltipClass = false;
     @ViewChild(NxTooltipDirective) tooltip!: NxTooltipDirective;
     @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
@@ -953,9 +953,9 @@ class BasicTooltipDemo {
     </div>`,
 })
 class ScrollableTooltipDemo {
-    position: string = 'bottom';
+    position = 'bottom';
     message: string = initialTooltipMessage;
-    showButton: boolean = true;
+    showButton = true;
 
     @ViewChild(CdkScrollable) scrollingContainer!: CdkScrollable;
 
@@ -976,7 +976,7 @@ class ScrollableTooltipDemo {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class OnPushTooltipDemo {
-    position: string = 'bottom';
+    position = 'bottom';
     message: string = initialTooltipMessage;
 }
 
@@ -1038,7 +1038,7 @@ class TooltipDispose {
 })
 class SelectableTooltip {
     message: any = initialTooltipMessage;
-    selectable: boolean = true;
+    selectable = true;
     @ViewChild('button') button!: ElementRef<HTMLButtonElement>;
     @ViewChild('input') input!: ElementRef<HTMLInputElement>;
     @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;

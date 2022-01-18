@@ -15,7 +15,7 @@ export async function createTestApp(runner: SchematicTestRunner, appOptions = {}
     return createApp(runner, appOptions, workspaceTree);
 }
 
-export function createWorkspace(runner: SchematicTestRunner, tree?: Tree) {
+export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree) {
     return runner
         .runExternalSchematicAsync(
             '@schematics/angular',
@@ -30,11 +30,11 @@ export function createWorkspace(runner: SchematicTestRunner, tree?: Tree) {
         .toPromise();
 }
 
-export function createApp(runner: SchematicTestRunner, options = {}, tree: Tree) {
+export async function createApp(runner: SchematicTestRunner, options = {}, tree: Tree) {
     return runner.runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree).toPromise();
 }
 
-export function createTestLibrary(runner: SchematicTestRunner, options = {}, tree?: Tree): Promise<UnitTestTree> {
+export async function createTestLibrary(runner: SchematicTestRunner, options = {}, tree?: Tree): Promise<UnitTestTree> {
     return runner.runExternalSchematicAsync('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree).toPromise();
 }
 
@@ -195,7 +195,7 @@ export class SchematicTestSetup {
     /**
      * Run your migration.
      */
-    runMigration = (options = {}) => {
+    runMigration = async (options = {}) => {
         return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
     };
 }

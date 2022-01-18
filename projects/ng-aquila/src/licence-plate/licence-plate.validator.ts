@@ -29,9 +29,8 @@ export function nxLicensePlateValidator(type: NxLicencePlateType): ValidatorFn {
 
         if (valid) {
             return null;
-        } else {
-            return { nxLicensePlateError: true };
         }
+        return { nxLicensePlateError: true };
     };
 }
 

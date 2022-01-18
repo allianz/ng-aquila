@@ -47,7 +47,7 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     direction!: string;
 
     /** @docs-private */
-    showCloseButton: boolean = false;
+    showCloseButton = false;
 
     /** @docs-private */
     arrowStyle = {};
@@ -95,9 +95,8 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
             // As it doesn't make sense to return an array for a single value anyway
             // changed it to a string and that seems to work.
             return `nx-popover--${this.direction}`;
-        } else {
-            return '';
         }
+        return '';
     }
 
     /** Prevent the popover from closing when the user clicks on the popover content. */

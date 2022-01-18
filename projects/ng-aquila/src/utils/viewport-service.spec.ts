@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { NxBreakpoints, NxViewportService } from './viewport-service';
 
-declare var viewport: any;
+declare let viewport: any;
 
 describe('NxViewportService', () => {
     let viewportService: NxViewportService;

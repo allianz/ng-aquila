@@ -33,8 +33,8 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell!: NxComparisonTablePopularCell;
 
     private _type: NxComparisonTableRowType = 'content';
-    private _mayStick: boolean = true;
-    public _requestCellClippingUpdate$ = new Subject<void>();
+    private _mayStick = true;
+    _requestCellClippingUpdate$ = new Subject<void>();
 
     private _destroyed = new Subject();
 
@@ -84,14 +84,14 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     }
 
     _isPartOfToggleSection(): boolean {
-        return this._toggleSection ? true : false;
+        return !!this._toggleSection;
     }
 
     _isPartOfRowGroup(): boolean {
-        return this._rowGroup ? true : false;
+        return !!this._rowGroup;
     }
 
     _isIntersectionRow(): boolean {
-        return this.intersectionCell ? true : false;
+        return !!this.intersectionCell;
     }
 }

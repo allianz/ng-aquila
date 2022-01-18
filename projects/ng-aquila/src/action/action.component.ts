@@ -27,7 +27,7 @@ export class NxActionComponent implements OnDestroy {
     get selected() {
         return this._selected;
     }
-    private _selected: boolean = false;
+    private _selected = false;
 
     /** Whether this action is expandable or not. Will add a caret icon. */
     @Input()
@@ -38,7 +38,7 @@ export class NxActionComponent implements OnDestroy {
     get expandable() {
         return this._expandable;
     }
-    private _expandable: boolean = false;
+    private _expandable = false;
 
     /** Whether this action is expanded or not.
     Only works in combination with the `expandable` option set to `true`.
@@ -51,7 +51,7 @@ export class NxActionComponent implements OnDestroy {
     get expanded() {
         return this._expanded;
     }
-    private _expanded: boolean = false;
+    private _expanded = false;
 
     constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);

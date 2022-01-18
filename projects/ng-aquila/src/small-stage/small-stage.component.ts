@@ -26,7 +26,7 @@ export const SMALL_STAGE_DEFAULT_OPTIONS = new InjectionToken<SmallStageDefaultO
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSmallStageComponent {
-    private _narrow: boolean = false;
+    private _narrow = false;
 
     private _appearance: NxSmallStageAppearance | undefined;
     /**

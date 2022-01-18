@@ -134,7 +134,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
     }
 
     /** Restores focus to the element that was focused before the overlay opened. */
-    public restoreFocus() {
+    restoreFocus() {
         const toFocus = this._elementFocusedBeforeDialogWasOpened;
 
         // We need the extra check, because IE can set the `activeElement` to null in some cases.

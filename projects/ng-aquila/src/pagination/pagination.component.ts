@@ -43,14 +43,14 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _page!: number;
     private _count!: number;
     private _perPage!: number;
-    private _type: string = 'simple';
+    private _type = 'simple';
     private _dirChangeSubscription: Subscription;
 
     /** @docs-private */
     paginationTexts: IPaginationTexts;
 
     /** @docs-private */
-    totalNumberPages: number = 0;
+    totalNumberPages = 0;
 
     get page(): number {
         return this._page;

@@ -10,5 +10,5 @@ let uniqueId = 0;
 })
 export class NxFormfieldAppendixDirective {
     /** Sets the id of the formfield appendix. */
-    @Input() id: string = `nx-formfield-appendix-${uniqueId++}`;
+    @Input() id = `nx-formfield-appendix-${uniqueId++}`;
 }

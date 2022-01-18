@@ -21,7 +21,7 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
         this._rightLabel = v;
     }
 
-    private _rightLabel: string = 'Next step:';
+    private _rightLabel = 'Next step:';
 
     /** @docs-private */
     get progress() {

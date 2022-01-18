@@ -18,12 +18,12 @@ abstract class NumberStepperTest {
     min: Number = 0;
     max: Number = 2;
     step: Number = 1;
-    negative: boolean = false;
-    leadingZero: boolean = true;
-    disabled: boolean = false;
-    inputAriaLabel: string = 'input label';
-    incrementAriaLabel: string = 'increase number';
-    decrementAriaLabel: string = 'decrease number';
+    negative = false;
+    leadingZero = true;
+    disabled = false;
+    inputAriaLabel = 'input label';
+    incrementAriaLabel = 'increase number';
+    decrementAriaLabel = 'decrease number';
     testForm: FormGroup = new FormBuilder().group({ stepper: 3 });
     @ViewChild(NxNumberStepperComponent) stepperInstance!: NxNumberStepperComponent;
 
@@ -314,7 +314,7 @@ describe('NxNumberStepperComponent', () => {
             inputElement.value = '0.33aa';
             inputElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
-            // @ts-ignore
+            // @ts-expect-error
             expect(testInstance.value).toBe(null);
             clickUp();
             expect(testInstance.value).toBe(1);

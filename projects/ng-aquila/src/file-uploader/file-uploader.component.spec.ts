@@ -12,13 +12,13 @@ import { NxFileUploaderModule } from './file-uploader.module';
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false })
     fileUploaderInstance!: NxFileUploaderComponent;
-    public form!: FormGroup;
-    public queueList!: null | FileItem[];
-    public required: boolean = false;
-    public multiple: boolean = false;
-    public maxFileSize!: number;
-    public maxFileNumber!: number;
-    public accept: any;
+    form!: FormGroup;
+    queueList!: null | FileItem[];
+    required = false;
+    multiple = false;
+    maxFileSize!: number;
+    maxFileNumber!: number;
+    accept: any;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -43,7 +43,7 @@ describe('NxFileUploaderComponent', () => {
 
     function createAndAddFile(name: string, type: string) {
         let fakeFile = new File(['3555'], name, { type });
-        fakeFile = Object.defineProperty(fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
+        fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024 ** 3, writable: false });
         const fileList = { 0: fakeFile, length: 1, item: () => fakeFile };
         fileUploaderInstance._onFileChange({ type: 'change', target: { files: fileList } });
         fixture.detectChanges();
@@ -118,7 +118,7 @@ describe('NxFileUploaderComponent', () => {
             const outputTemplateContextOutput = (fixture.componentInstance as any).outputTemplateContext;
             expect(expectedContextClassName).toBe(outputTemplateContextOutput);
 
-            // @ts-ignore
+            // @ts-expect-error
             const expectedFirstFileClassName = fixture.componentInstance.queueList[0];
             const outputFileOutput = (fixture.componentInstance as any).outputFile;
             expect(expectedFirstFileClassName).toBe(outputFileOutput);
@@ -277,7 +277,7 @@ describe('NxFileUploaderComponent', () => {
             fixture.detectChanges();
 
             let fakeFile = new File(['3555'], 'fake file', { type: 'text/html' });
-            fakeFile = Object.defineProperty(fakeFile, 'size', { value: Math.pow(1024, 3), writable: false });
+            fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024 ** 3, writable: false });
             const fileList = {
                 0: fakeFile,
                 1: fakeFile,
@@ -418,8 +418,7 @@ describe('NxFileUploaderComponent', () => {
             tick();
             fixture.detectChanges();
 
-            let ariaDescribedBy;
-            ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
+            const ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
             tick();
             fixture.detectChanges();
 
@@ -428,8 +427,6 @@ describe('NxFileUploaderComponent', () => {
         }));
 
         it('should set described by with the error ids', fakeAsync(() => {
-            let ariaDescribedBy;
-
             createTestComponent(ReactiveFileUpload);
             const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
             testInstance.required = true;
@@ -439,7 +436,7 @@ describe('NxFileUploaderComponent', () => {
             fixture.detectChanges();
             tick();
 
-            ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
+            const ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
             expect(ariaDescribedBy).toContain(
                 testInstance.fileUploaderInstance._errorList.map(error => {
                     return error.id;
@@ -464,7 +461,7 @@ describe('NxFileUploaderComponent', () => {
     `,
 })
 class BasicFileUpload extends FileUploaderTest {
-    public fb;
+    fb;
 
     constructor() {
         super();
@@ -508,11 +505,11 @@ class BasicFileUpload extends FileUploaderTest {
     `,
 })
 class ReactiveFileUpload extends FileUploaderTest {
-    public fb;
-    public required: any;
-    public maxFileSize: any;
-    public queueList: any;
-    public maxFileNumber: any;
+    fb;
+    required: any;
+    maxFileSize: any;
+    queueList: any;
+    maxFileNumber: any;
 
     constructor() {
         super();
@@ -536,7 +533,7 @@ class ReactiveFileUpload extends FileUploaderTest {
     `,
 })
 class DynamicFileUpload extends FileUploaderTest {
-    public queueList: any;
+    queueList: any;
 }
 
 @Component({
@@ -581,7 +578,7 @@ class DynamicFileUpload extends FileUploaderTest {
     `,
 })
 class CustomItemTemplateFileUpload extends FileUploaderTest {
-    public queueList: any;
+    queueList: any;
     outputTemplateContext: any;
     outputFile: any;
 

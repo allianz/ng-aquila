@@ -10,7 +10,7 @@ export class NxNumberStepperIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** The aria label for the decrement '-' button */
-    decrementAriaLabel: string = 'Decrement';
+    decrementAriaLabel = 'Decrement';
     /** The aria label for the increment '+' button */
-    incrementAriaLabel: string = 'Increment';
+    incrementAriaLabel = 'Increment';
 }

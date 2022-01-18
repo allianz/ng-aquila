@@ -12,8 +12,8 @@ abstract class SelectableCardTest {
     @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
     @ViewChildren(NxErrorComponent) errors!: QueryList<NxErrorComponent>;
 
-    checked: boolean = false;
-    disabled: boolean = false;
+    checked = false;
+    disabled = false;
     testForm!: FormGroup;
     customError!: boolean;
 }

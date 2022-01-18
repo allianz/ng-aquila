@@ -13,10 +13,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     },
 })
 export class NxLayoutComponent {
-    private _classNames: string = '';
+    private _classNames = '';
 
     /** @docs-private */
-    grid: boolean = true;
+    grid = true;
 
     /** @docs-private */
     noGutters!: boolean;

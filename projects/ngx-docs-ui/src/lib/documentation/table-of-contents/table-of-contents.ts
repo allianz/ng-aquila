@@ -4,8 +4,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-const DOCS_PRIVATE_CLASS_SELECTOR: string = '.docs-private';
-const DOCS_PUBLIC_CLASS_SELECTOR: string = '.docs-public';
+const DOCS_PRIVATE_CLASS_SELECTOR = '.docs-private';
+const DOCS_PUBLIC_CLASS_SELECTOR = '.docs-public';
 
 export interface Link {
     /* id of the section*/

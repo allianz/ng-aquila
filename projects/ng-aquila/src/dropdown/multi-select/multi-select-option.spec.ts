@@ -60,7 +60,7 @@ describe('NxMultiSelectOptionComponent', () => {
     let loader: HarnessLoader;
     let multiSelectOptionHarness: MultiSelectOptionHarness;
 
-    function configureTestingModule(declarations: any[]) {
+    async function configureTestingModule(declarations: any[]) {
         return TestBed.configureTestingModule({
             imports: [NxDropdownModule],
             declarations,

@@ -18,8 +18,8 @@ import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from 
     styleUrls: ['./desktop-group.component.scss'],
 })
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
-    _expanded: boolean = false;
-    _useFullRowForExpandableArea: boolean = false;
+    _expanded = false;
+    _useFullRowForExpandableArea = false;
 
     @Input() group!: NxComparisonTableRowGroupDirective;
 

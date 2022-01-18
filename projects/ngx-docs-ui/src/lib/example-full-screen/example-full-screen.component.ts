@@ -12,7 +12,7 @@ type ExampleBackgroundType = '' | 'blank';
 export class ExampleFullScreenComponent {
     example: string;
 
-    showNav: boolean = true;
+    showNav = true;
 
     @HostBinding('class')
     background: ExampleBackgroundType = '';

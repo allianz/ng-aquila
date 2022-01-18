@@ -7,7 +7,7 @@ import { NxButtonModule } from './button.module';
 abstract class ButtonTest {
     @ViewChild('button') buttonInstance!: NxAnchorPlainButtonComponent;
 
-    disabled: boolean = false;
+    disabled = false;
 }
 
 @Component({

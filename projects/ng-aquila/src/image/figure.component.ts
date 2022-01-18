@@ -27,7 +27,7 @@ export class NxFigureComponent {
     private _classNames!: FigureType;
 
     /** @docs-private */
-    rounded: boolean = false;
+    rounded = false;
 
     /** @docs-private */
     size: figureSizes = DEFAULT_SIZE;

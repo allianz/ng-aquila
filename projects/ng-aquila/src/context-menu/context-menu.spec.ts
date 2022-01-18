@@ -319,7 +319,7 @@ describe('nxContextMenu', () => {
         const fixture = createComponent(SimpleMenu);
         fixture.detectChanges();
 
-        // @ts-ignore
+        // @ts-expect-error
         fixture.componentInstance.trigger.contextMenu = null;
         fixture.detectChanges();
 

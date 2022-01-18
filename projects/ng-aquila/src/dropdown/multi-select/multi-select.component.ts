@@ -163,13 +163,13 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     @ViewChildren(NxMultiSelectOptionComponent)
     private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
 
-    private _required: boolean = false;
+    private _required = false;
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     private _readonly = false;
 
-    private _placeholder: string = '';
+    private _placeholder = '';
 
     private _filter = false;
 
@@ -194,13 +194,13 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     readonly controlType: string = 'nx-multi-select';
 
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     _positions: ConnectionPositionPair[] = getPositions('auto', 0);
 
     _inputFocused = false;
 
-    _ariaDescribedby: string = '';
+    _ariaDescribedby = '';
 
     _width = 0;
 

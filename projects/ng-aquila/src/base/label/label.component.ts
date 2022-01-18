@@ -28,11 +28,11 @@ export const LABEL_DEFAULT_OPTIONS = new InjectionToken<LabelDefaultOptions>('LA
 })
 export class NxLabelComponent {
     readonly _stateChanges = new Subject<void>();
-    private _disabled: boolean = false;
-    private _negative: boolean = false;
+    private _disabled = false;
+    private _negative = false;
     private _size: LABEL_SIZE_TYPE | undefined;
     private _for: string | null = null;
-    private _id: string = `nx-label-${nextId++}`;
+    private _id = `nx-label-${nextId++}`;
 
     /** Sets the label to disabled */
     @Input()

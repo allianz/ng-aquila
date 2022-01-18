@@ -18,8 +18,8 @@ export class GithubLinkConfig {
     logoAltText!: string;
 }
 
-export type NxvDocumentationConfig = {
+export interface NxvDocumentationConfig {
     welcomeComponent: any;
     footerComponent: any;
     topInfoComponent: any;
-};
+}

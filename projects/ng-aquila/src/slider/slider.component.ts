@@ -61,7 +61,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** @docs-private */
     @ViewChild('handle', { static: true }) handleElement!: ElementRef;
 
-    private _id: string = `nx-slider-${nextId++}`;
+    private _id = `nx-slider-${nextId++}`;
     /** Sets the id of the slider. */
     @Input('id')
     set id(value: string) {
@@ -74,7 +74,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._id;
     }
 
-    private _tabIndex: number = 0;
+    private _tabIndex = 0;
     /** Sets the tabindex of the slider. */
     @Input()
     set tabindex(value: NumberInput) {
@@ -133,7 +133,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._label;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
     /** Whether the input to the control of the slider should be disabled. */
     @Input()
     set disabled(value: BooleanInput) {
@@ -144,7 +144,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._disabled;
     }
 
-    private _inverted: boolean = false;
+    private _inverted = false;
     /** Whether the max value is to the right (false) or left (true).*/
     @Input('nxInverted')
     set inverted(value: BooleanInput) {
@@ -155,7 +155,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._inverted;
     }
 
-    private _thumbLabel: boolean = true;
+    private _thumbLabel = true;
     /** Whether to display the thumb label on top of the slider.*/
     @Input()
     set thumbLabel(value: BooleanInput) {
@@ -166,7 +166,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._thumbLabel;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Whether the negative set of styles is applied (Default: 'false').*/
     @Input('negative')
     set negative(value: BooleanInput) {
@@ -177,7 +177,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._negative;
     }
 
-    private _hideLabels: boolean = false;
+    private _hideLabels = false;
     /** Hides the min/max labels (Default: 'false'). */
     @Input('hideLabels')
     set hideLabels(value: BooleanInput) {
@@ -195,10 +195,10 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private dragSubscriptions: Subscription[] = [];
     private frameId!: number;
     private position: Position | null = null;
-    private _value: number = 0;
+    private _value = 0;
     private _roundToDecimal!: number;
     private _step: number = DEFAULT_STEP;
-    private _currentValue: number = 0;
+    private _currentValue = 0;
 
     private _onChange: (value: any) => void = () => {};
     private _onTouched: () => any = () => {};
@@ -341,7 +341,6 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** @docs-private */
     blur(): void {
         if (this.disabled) {
-            return;
         }
     }
 

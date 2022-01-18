@@ -17,7 +17,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     /** @docs-private */
     @ContentChildren(NxComparisonTableRowDirective) rows!: QueryList<NxComparisonTableRowDirective>;
 
-    private _labelCollapsed: string = 'More services';
+    private _labelCollapsed = 'More services';
 
     /**
      * Sets the label of the expandable area that is shown when the row group is collapsed.
@@ -32,7 +32,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         return this._labelCollapsed;
     }
 
-    private _labelExpanded: string = 'Less services';
+    private _labelExpanded = 'Less services';
 
     /** Sets the label of the expandable area that is shown when the row group is expanded. */
     @Input()
@@ -45,7 +45,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         return this._labelExpanded;
     }
 
-    private _visibleRows: number = 5;
+    private _visibleRows = 5;
 
     /** Sets the number of rows that are visible when loading the component. Default: 5. */
     @Input()
@@ -59,7 +59,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         return this._visibleRows;
     }
 
-    private _isExpanded: boolean = false;
+    private _isExpanded = false;
 
     /** Sets the expanded state of the row group */
     @Input()
@@ -106,7 +106,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     }
 
     _isPartOfToggleSection(): boolean {
-        return this._toggleSection ? true : false;
+        return !!this._toggleSection;
     }
 
     _handleIsExpandedChange(value: boolean) {

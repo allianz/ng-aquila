@@ -28,7 +28,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         return this._videoId as string;
     }
 
-    private _altText: string = '';
+    private _altText = '';
 
     /** Sets the value of the alt attribute for the preview image. */
     @Input('nxAltText')
@@ -42,7 +42,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         return this._altText;
     }
 
-    private _playButtonAriaLabel: string = '';
+    private _playButtonAriaLabel = '';
 
     /** Sets the value of the aria-label attribute on the play button (Default: Play Video). */
     @Input('nxPlayButtonAriaLabel')
@@ -70,7 +70,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         return this._previewImageSrc as string;
     }
 
-    private _showPlayerControls: boolean = true;
+    private _showPlayerControls = true;
 
     /** Sets player controls. If set to false, player controls are not available. */
     @Input('nxShowPlayerControls')
@@ -82,7 +82,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         return this._showPlayerControls;
     }
 
-    private _allowFullScreen: boolean = true;
+    private _allowFullScreen = true;
 
     /** Sets fullscreen option. If set to false, fullscreen option is not available. */
     @Input('nxAllowFullScreen')

@@ -61,12 +61,12 @@ let nextId = 0;
     },
 })
 export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
-    private _id: string = `toggle-button-${nextId++}`;
+    private _id = `toggle-button-${nextId++}`;
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** @docs-private */
-    inGroup: boolean = false;
+    inGroup = false;
 
     /**
      * Id of the circle toggle.
@@ -106,7 +106,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @Output()
     selectionChange = new EventEmitter<ToggleChangeEvent>();
 
-    _checked: boolean = false;
+    _checked = false;
     /** Whether the circle toggle is checked. */
     @Input()
     set checked(value: BooleanInput) {
@@ -257,10 +257,10 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     @ViewChild(NxMobileToggleButtonComponent, { static: true })
     toggleButton!: NxMobileToggleButtonComponent;
 
-    private _hover: boolean = false;
+    private _hover = false;
 
     /** touched is set to true on touch devices. */
-    _touched: boolean = false;
+    _touched = false;
 
     /** @docs-private */
     @HostListener('mouseenter') onMouseEnter() {
@@ -361,7 +361,6 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         event.stopPropagation();
 
         if ((this.toggleGroup && this.checked) || this.disabled) {
-            return;
         } else {
             this.checked = !this.checked;
             this.onChangeCallback(this.checked);

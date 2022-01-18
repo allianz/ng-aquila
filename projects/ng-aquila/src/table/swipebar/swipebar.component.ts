@@ -30,7 +30,7 @@ export class NxSwipebarComponent implements AfterViewInit {
      * The label for this swipebar. Default: ''
      */
     @Input()
-    label: string = '';
+    label = '';
 
     constructor(private zone: NgZone) {
         this._onMousedown = this._onMousedown.bind(this);

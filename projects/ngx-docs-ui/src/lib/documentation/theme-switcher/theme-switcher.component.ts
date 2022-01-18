@@ -8,7 +8,7 @@ import { Theme } from './theme-switcher.service';
     styleUrls: ['theme-switcher.component.scss'],
 })
 export class NxvThemeSwitcherComponent {
-    _themeSwitchIsOpened: boolean = false;
+    _themeSwitchIsOpened = false;
 
     @Input() themes: Theme[] = [];
 

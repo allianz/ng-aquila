@@ -53,7 +53,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         return this._tags;
     }
 
-    private _tabindex: number = -1;
+    private _tabindex = -1;
     /** Sets the tabindex of the contained tags. Default value: -1. */
     @Input()
     set tabindex(value: NumberInput) {
@@ -64,7 +64,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         return this.allowTagDeletion ? 0 : this._tabindex;
     }
 
-    private _allowTagDeletion: boolean = true;
+    private _allowTagDeletion = true;
     /** Whether the tags can be removed from the list. Default: true. */
     @Input('nxAllowTagDeletion')
     set allowTagDeletion(value: BooleanInput) {
@@ -75,7 +75,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         return this._allowTagDeletion;
     }
 
-    private _isKeywordList: boolean = false;
+    private _isKeywordList = false;
     /** Whether the tags can be styled as keywords. */
     @Input('nxIsKeywordList')
     set isKeywordList(value: BooleanInput) {
@@ -86,7 +86,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
         return this._isKeywordList;
     }
 
-    private _labelProperty: string = 'nxTaglistLabel';
+    private _labelProperty = 'nxTaglistLabel';
     /** Sets the label property, in case tags represent objects. */
     @Input('nxLabelProperty')
     set labelProp(value: string) {

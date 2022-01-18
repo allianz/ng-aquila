@@ -30,7 +30,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     get expandable(): boolean {
         return this._expandable;
     }
-    private _expandable: boolean = false;
+    private _expandable = false;
 
     /**
      * Whether this menu button is expanded or not.
@@ -44,7 +44,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     get expanded() {
         return this._expanded;
     }
-    private _expanded: boolean = false;
+    private _expanded = false;
 
     /**
      * The type of this menu button.

@@ -25,7 +25,7 @@ let optionId = 0;
 export class NxMultiSelectOptionComponent<T> implements Highlightable {
     private _active = false;
 
-    id: string = `nx-multi-select-option-${optionId++}`;
+    id = `nx-multi-select-option-${optionId++}`;
 
     @Input()
     appearance: AppearanceType = 'auto';
@@ -40,7 +40,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
      * Label of this option.
      */
     @Input()
-    label: string = '';
+    label = '';
 
     /**
      * Whether this option is selected.

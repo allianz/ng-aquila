@@ -99,20 +99,20 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 
-    protected _disabled: boolean = false;
+    protected _disabled = false;
 
     /** The ID of rendered dropdown html element. */
     readonly renderedValueId: string = `nx-dropdown-rendered-${nextUniqueId++}`;
 
-    private _placeholder: string = '';
+    private _placeholder = '';
 
-    private _focused: boolean = false;
+    private _focused = false;
 
     /** Whether or not the overlay panel is open. */
     private _panelOpen = false;
 
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     /**
      * Name of this control that is used inside the formfield component
@@ -143,12 +143,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** @docs-private */
     ariaDescribedby: string | undefined;
 
-    private _tabIndex: number = 0;
+    private _tabIndex = 0;
 
     /** @docs-private */
-    currentFilter: string = '';
+    currentFilter = '';
 
-    // @ts-ignore TODO: refactor to be TS compatible
+    // @ts-expect-error TODO: refactor to be TS compatible
     private _options: BehaviorSubject<NxDropdownOption[]> = new BehaviorSubject(null);
 
     /**
@@ -200,7 +200,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * @throws Error if true and the bound value is not an array
      * @deprecated Please use the new `<nx-multi-select>` component instead.
      */
-    @Input('nxIsMultiselect') isMultiSelect: boolean = false;
+    @Input('nxIsMultiselect') isMultiSelect = false;
 
     /** The id of the input. */
     get id() {
@@ -210,9 +210,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** Whether the component is required. This adds an aria-required label to the component. */
     @Input('nxRequired') required!: boolean;
 
-    private _style: string = '';
+    private _style = '';
     /** Whether the dropdown should render in its negative style or not. */
-    _negative: boolean = false;
+    _negative = false;
 
     /** If set to 'negative', the component is displayed with the negative set of styles. */
     @Input('nxStyle')
@@ -236,10 +236,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /** Whether the dropdown should be shown with an additional filter input. */
-    @Input('nxShowFilter') showFilter: boolean = false;
+    @Input('nxShowFilter') showFilter = false;
 
     /** Text displayed as placeholder for the filter. */
-    @Input('nxFilterPlaceholder') filterPlaceholder: string = '';
+    @Input('nxFilterPlaceholder') filterPlaceholder = '';
 
     /** Text that is displayed at the top of the overlay. If not set the formfield label is used by default. */
     @Input('nxOverlayLabel') overlayLabel = '';
@@ -628,7 +628,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * Finds and selects and option based on its value.
      */
     private _selectValue(value: any) {
-        let option: NxDropdownOption;
         const filterFn = (o: NxDropdownOption) => {
             try {
                 // Treat null as a special reset value.
@@ -643,7 +642,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         };
 
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        option = options.find(filterFn) as NxDropdownOption;
+        const option = options.find(filterFn) as NxDropdownOption;
 
         if (option) {
             this._selectionModel.select(option);
@@ -971,7 +970,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this.filterChanges.next((event.target as HTMLInputElement).value);
         const allHidden = this.dropdownItems.toArray().every(option => option._hidden);
         if (allHidden) {
-            // @ts-ignore: not possible according to TS, but has been working already
+            // @ts-expect-error: not possible according to TS, but has been working already
             this._keyManager.setActiveItem(null);
         } else {
             this._keyManager.setFirstItemActive();

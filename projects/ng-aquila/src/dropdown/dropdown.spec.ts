@@ -1327,22 +1327,25 @@ describe('NxDropdownComponent', () => {
     });
 });
 
-type DropdownTestItem = { value: string; label?: string };
+interface DropdownTestItem {
+    value: string;
+    label?: string;
+}
 
 @Directive()
 abstract class DropdownTest {
     @ViewChild(NxDropdownComponent) dropdown!: NxDropdownComponent;
     @ViewChildren(NxDropdownItemComponent) dropdownItems!: {
-        forEach: (arg0: (item: any, itemIndex: any) => void) => void;
-        filter: (arg0: { (item: any): any; (item: any): boolean }) => any;
+        forEach(arg0: (item: any, itemIndex: any) => void): void;
+        filter(arg0: { (item: any): any; (item: any): boolean }): any;
         length: jasmine.Expected<number>;
-        toArray: () => { selected: any }[];
+        toArray(): { selected: any }[];
     };
 
     items: DropdownTestItem[] = [{ value: 'BMW' }, { value: 'Audi' }, { value: 'Volvo' }, { value: 'Mini' }];
     label: String = '';
-    multiselect: boolean = false;
-    showFilter: boolean = false;
+    multiselect = false;
+    showFilter = false;
     selected: any = 'BMW';
     placeholder = 'Choose a car';
 }
@@ -1470,13 +1473,12 @@ class MultiSelectDropdownContentProjectionComponent extends DropdownTest {}
     </nx-dropdown>`,
 })
 class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
-    toTextMulti(value: { map: (arg0: (item: any) => any) => any[]; toUpperCase: () => any }): any {
+    toTextMulti(value: { map(arg0: (item: any) => any): any[]; toUpperCase(): any }): any {
         if (value) {
             if (Array.isArray(value)) {
                 return value.map(item => item.toUpperCase()).join(', ');
-            } else {
-                return value.toUpperCase();
             }
+            return value.toUpperCase();
         }
         return '';
     }
@@ -1527,7 +1529,7 @@ class FilterDropdownNoLabelComponent extends DropdownTest {}
     </nx-dropdown>`,
 })
 class CustomFilterDropdownComponent extends DropdownTest {
-    myFilter(search: string, itemValue: { match: (arg0: RegExp) => null }) {
+    myFilter(search: string, itemValue: { match(arg0: RegExp): null }) {
         return itemValue.match(new RegExp('^' + search)) !== null;
     }
 }
@@ -1626,8 +1628,8 @@ class ScrollingTestComponent extends DropdownTest {
     </nx-dropdown>`,
 })
 class TabIndexTestComponent extends DropdownTest {
-    tabIndex: number = 0;
-    disabled: boolean = false;
+    tabIndex = 0;
+    disabled = false;
 }
 
 @Component({

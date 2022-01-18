@@ -1,9 +1,9 @@
 import { ElementRef, Renderer2 } from '@angular/core';
 import { appendClasses, mapClassNames, removeClasses } from '@aposin/ng-aquila/utils';
 
-export type MappingObject = {
+export interface MappingObject {
     [key: string]: string;
-};
+}
 
 export class MappedStyles {
     private _classNames: string | undefined;

@@ -68,11 +68,11 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private portal!: TemplatePortal<any>;
     private _destroyed = new Subject<void>();
     private _overlayDestroyed = new Subject<void>();
-    private _show: boolean = false;
+    private _show = false;
     private _closeable: boolean | null = null;
     private _positionStrategy!: PositionStrategy;
     private _embeddedViewRef!: EmbeddedViewRef<any> | null;
-    private _modal: boolean = false;
+    private _modal = false;
     /** The class that traps and manages focus within the popover. */
     private _focusTrap!: FocusTrap;
     /** Element that was focused before the Popover was opened. Save this to restore upon close. */
@@ -128,7 +128,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         return this._closeOnClickOutside;
     }
 
-    private _closeOnClickOutside: boolean = true;
+    private _closeOnClickOutside = true;
 
     /** Links the trigger with the popover to open. */
     @Input('nxPopoverTriggerFor')
@@ -140,7 +140,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Whether the popover will be opened automatically. */
     @Input('nxPopoverInitialVisible')
-    popoverInitialVisible: boolean = false;
+    popoverInitialVisible = false;
 
     /** An event is emitted when the visibility of the popopver changes. */
     @Input('nxPopoverVisibleChange')
@@ -198,7 +198,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                             this.handleClick();
                             break;
                         default:
-                            return;
                     }
                 });
         } else {

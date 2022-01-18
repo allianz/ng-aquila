@@ -36,7 +36,7 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     },
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
-    private _value: number = 0;
+    private _value = 0;
     /** Sets the selected rating 1 - 5. */
     @Input('nxValue')
     set value(newValue: NumberInput) {
@@ -47,7 +47,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return this._value;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
     /** Whether the rating component should be disabled. */
     @Input('nxDisabled')
     set disabled(newValue: BooleanInput) {
@@ -61,7 +61,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return this._disabled;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Whether the negative colors be used. */
     @Input('nxNegative')
     set negative(newValue: BooleanInput) {
@@ -75,7 +75,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return this._negative;
     }
 
-    private _startLabel: string = '';
+    private _startLabel = '';
     /** Sets the label painted at the start of the rating component. */
     @Input('nxStartLabel')
     set startLabel(newValue: string) {

@@ -125,7 +125,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     _weekdays: { long: string; narrow: string }[];
 
     /** Number of days that should be displayed in one row. */
-    _numCols: number = 7;
+    _numCols = 7;
 
     constructor(
         private _cdr: ChangeDetectorRef,
@@ -159,7 +159,7 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     }
 
     /** Handles when a new date is selected. */
-    _dateSelected(date: number, monthsToAdd: number = 0) {
+    _dateSelected(date: number, monthsToAdd = 0) {
         if (this._selectedDate !== date) {
             const selectedYear = this._dateAdapter.getYear(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));
             const selectedMonth = this._dateAdapter.getMonth(this._dateAdapter.addCalendarMonths(this.activeDate, monthsToAdd));

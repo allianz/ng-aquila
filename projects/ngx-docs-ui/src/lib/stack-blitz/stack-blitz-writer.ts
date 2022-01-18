@@ -137,7 +137,7 @@ export class StackBlitzWriter {
      * Returns an HTMLFormElement that will open a new StackBlitz template with the example data when
      * called with submit().
      */
-    constructStackBlitzForm(exampleId: string, module: string, data: ExampleData, isTest: boolean): Promise<HTMLFormElement> {
+    async constructStackBlitzForm(exampleId: string, module: string, data: ExampleData, isTest: boolean): Promise<HTMLFormElement> {
         // Default file to show in StackBlitz
         const indexFile = `src%2Fapp%2F${data.indexFilename}`;
         const form = this._createFormElement(indexFile);
@@ -149,11 +149,11 @@ export class StackBlitzWriter {
         this._appendFormInput(form, 'dependencies', JSON.stringify(isTest ? testDependencies : dependencies));
 
         return new Promise(resolve => {
-            const templateContents = (isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES).map(file =>
+            const templateContents = (isTest ? TEST_TEMPLATE_FILES : TEMPLATE_FILES).map(async file =>
                 this._readFile(form, data, file, isTest ? TEST_TEMPLATE_PATH : TEMPLATE_PATH, isTest),
             );
 
-            const exampleContents = data.exampleFiles.map(file => this._readFile(form, data, file, baseExamplePath, isTest));
+            const exampleContents = data.exampleFiles.map(async file => this._readFile(form, data, file, baseExamplePath, isTest));
 
             const allContents = templateContents.concat(exampleContents);
 
@@ -194,7 +194,7 @@ export class StackBlitzWriter {
      * @param isTest whether file is part of a test example
      * @param prependApp whether to prepend the 'app' prefix to the path
      */
-    _readFile(form: HTMLFormElement, data: ExampleData, filename: string, path: string, isTest: boolean, prependApp = true): Promise<string> {
+    async _readFile(form: HTMLFormElement, data: ExampleData, filename: string, path: string, isTest: boolean, prependApp = true): Promise<string> {
         return new Promise(resolve => {
             this._http.get(path + filename, { responseType: 'text' }).subscribe(
                 response => {

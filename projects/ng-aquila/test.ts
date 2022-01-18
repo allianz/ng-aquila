@@ -43,7 +43,7 @@ afterEach(() => {
 const customMatchers: jasmine.CustomAsyncMatcherFactories = {
     toBeAccessible(): jasmine.CustomAsyncMatcher {
         return {
-            compare(actual: any): Promise<jasmine.CustomMatcherResult> {
+            async compare(actual: any): Promise<jasmine.CustomMatcherResult> {
                 return new Promise((resolve, reject) => {
                     const result: jasmine.CustomMatcherResult = {
                         pass: false,

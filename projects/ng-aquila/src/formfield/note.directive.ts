@@ -11,5 +11,5 @@ let uniqueId = 0;
 })
 export class NxFormfieldNoteDirective {
     /** Sets the id of the formfield note. */
-    @Input() id: string = `nx-formfield-note-${uniqueId++}`;
+    @Input() id = `nx-formfield-note-${uniqueId++}`;
 }

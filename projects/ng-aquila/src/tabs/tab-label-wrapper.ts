@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 /** @docs-private */
 @Directive({ selector: '[nxTabLabelWrapper]' })
 export class NxTabLabelWrapperDirective implements FocusableOption {
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     constructor(public elementRef: ElementRef) {}
 

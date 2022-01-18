@@ -19,5 +19,5 @@ export class NxMenuItemDirective {
     get size(): string {
         return this._size;
     }
-    private _size: string = 's';
+    private _size = 's';
 }

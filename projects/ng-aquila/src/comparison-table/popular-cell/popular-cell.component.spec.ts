@@ -5,7 +5,7 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTablePopularCell } from './popular-cell.component';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 @Directive()

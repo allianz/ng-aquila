@@ -39,7 +39,7 @@ export type NxContextMenuScrollStrategy = 'close' | 'reposition';
 export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, OnDestroy {
     private _portal!: TemplatePortal;
     private _overlayRef: OverlayRef | null = null;
-    private _contextMenuOpen: boolean = false;
+    private _contextMenuOpen = false;
     private _closingActionsSubscription = Subscription.EMPTY;
     private _hoverSubscription = Subscription.EMPTY;
     private _contextMenuCloseSubscription = Subscription.EMPTY;

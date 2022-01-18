@@ -47,7 +47,7 @@ export class NxHeaderBrandDirective {}
     },
 })
 export class NxHeaderActionsDirective {
-    private _showSeparator: boolean = false;
+    private _showSeparator = false;
 
     /* Whenever to show the left separator*/
     @Input()

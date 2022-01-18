@@ -38,7 +38,7 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
 export class NxExpandableTableCellComponent implements OnDestroy {
     private _destroyed = new Subject();
 
-    _open: boolean = false;
+    _open = false;
 
     constructor(_row: NxExpandableTableRowComponent, private _cdr: ChangeDetectorRef) {
         _row.expanded.pipe(takeUntil(this._destroyed)).subscribe(open => {

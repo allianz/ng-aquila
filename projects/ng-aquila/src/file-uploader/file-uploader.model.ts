@@ -6,32 +6,32 @@ import { EventEmitter } from '@angular/core';
 
 export class FileItem {
     /** The actual file data. */
-    public file: File | null;
+    file: File | null;
 
     /** Sets the name of the file. */
-    public name: string;
+    name: string;
 
     private _size: number;
     private _type: string;
 
     /** Whether the file is being uploaded at the moment. */
-    public isUploading: boolean = false;
+    isUploading = false;
 
     /** Whether the file was successfully uploaded. */
-    public isUploaded: boolean = false;
+    isUploaded = false;
 
     /** Whether an error occured when uploading the file. */
-    public isError: boolean = false;
+    isError = false;
 
     /** Sets the index of the file. */
-    public index: number = 0;
+    index = 0;
 
     /**
      * emits the FileItem on changed
      */
-    public onChange: EventEmitter<FileItem> = new EventEmitter<FileItem>();
+    onChange: EventEmitter<FileItem> = new EventEmitter<FileItem>();
 
-    public constructor(file: File, index: number = 0) {
+    constructor(file: File, index = 0) {
         this.file = file;
         this.name = file.name;
         this._size = file.size;

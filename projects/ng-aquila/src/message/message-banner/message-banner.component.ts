@@ -14,7 +14,7 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
 export class NxMessageBannerComponent extends NxMessageComponent {
     _context: CONTEXT = 'info';
 
-    _closable: boolean = true;
+    _closable = true;
 
     _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
 

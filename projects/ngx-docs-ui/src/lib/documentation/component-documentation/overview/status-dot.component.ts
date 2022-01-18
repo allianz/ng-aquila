@@ -11,8 +11,8 @@ import { STATUS_TYPE } from '../../../core/manifest';
     },
 })
 export class NxvStatusDotComponent {
-    message: string = 'Not applicable';
-    iconName: string = '';
+    message = 'Not applicable';
+    iconName = '';
 
     constructor(public iconRegistry: NxIconRegistry) {
         this.iconRegistry.registerFont('fa', 'fas', 'fa-');

@@ -22,11 +22,11 @@ const DEFAULT_TYPE = 'section';
     },
 })
 export class NxHeadlineComponent {
-    private _classNames: string = '';
+    private _classNames = '';
     /** @docs-private */
-    public type: HeadlineType = DEFAULT_TYPE;
+    type: HeadlineType = DEFAULT_TYPE;
     /** @docs-private */
-    public negative: boolean = false;
+    negative = false;
 
     /** Changes the type of the headline which affects the visual appearance.
      * You can combine a HeadlineType and 'negative'. */

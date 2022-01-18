@@ -11,9 +11,9 @@ export class NxFileUploaderIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** A label for the uploading state used in the queue. */
-    uploadingLabel: string = 'uploading';
+    uploadingLabel = 'uploading';
     /** Aria-label for the delete icon. */
-    deleteLabel: string = 'Delete';
+    deleteLabel = 'Delete';
     /** Aria-label for the 'successfully-uploaded' icon. */
-    uploadedStateLabel: string = 'uploaded';
+    uploadedStateLabel = 'uploaded';
 }

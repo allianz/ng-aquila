@@ -36,7 +36,7 @@ export class NxTabChangeEvent {
     tab!: NxTabComponent;
 }
 
-let nextId: number = 0;
+let nextId = 0;
 
 @Component({
     selector: 'nx-tab-group',
@@ -53,13 +53,13 @@ let nextId: number = 0;
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
     private _selectedIndex: number | null = null;
     private _groupId: number;
-    private _negative: boolean = false;
-    private _disabled: boolean = false;
+    private _negative = false;
+    private _disabled = false;
     private _indexToSelect: number | null = 0;
-    private _autoselect: boolean = true;
-    private _mobileAccordion: boolean = true;
+    private _autoselect = true;
+    private _mobileAccordion = true;
     private _appearance!: NxTabsAppearance;
-    _showAccordion: boolean = false;
+    _showAccordion = false;
 
     /** @docs-private */
     @ContentChildren(NxTabComponent) tabs!: QueryList<NxTabComponent>;

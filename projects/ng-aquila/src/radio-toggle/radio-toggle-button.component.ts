@@ -45,8 +45,8 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
 
     private _destroyed: Subject<void> = new Subject();
-    private _disabled: boolean = false;
-    private _selected: boolean = false;
+    private _disabled = false;
+    private _selected = false;
 
     /** @docs-private */
     @Input('nxDisabled')

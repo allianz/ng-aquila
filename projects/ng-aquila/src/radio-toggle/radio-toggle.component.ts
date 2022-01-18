@@ -42,14 +42,14 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
 
     private _destroyed: Subject<void> = new Subject();
 
-    private _disabled: boolean = false;
+    private _disabled = false;
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
     // emits to signal children to run change detection
     _disableChange = new Subject<void>();
 
     /** @docs-private */
-    additionalClasses: string = '';
+    additionalClasses = '';
 
     /** Sets the component to the disabled state.*/
     @Input('nxDisabled')

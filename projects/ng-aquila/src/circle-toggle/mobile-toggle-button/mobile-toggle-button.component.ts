@@ -16,28 +16,28 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 })
 export class NxMobileToggleButtonComponent {
     @Input()
-    checked: boolean = false;
+    checked = false;
 
     @Input()
-    negative: boolean = false;
+    negative = false;
 
     @Input()
-    disabled: boolean = false;
+    disabled = false;
 
     @Input()
-    hint: string = '';
+    hint = '';
 
     @Input()
-    label: string = '';
+    label = '';
 
     @Input()
-    circleText: string = '';
+    circleText = '';
 
     /** @docs-private */
-    isFirst: boolean = false;
+    isFirst = false;
 
     /** @docs-private */
-    isLast: boolean = false;
+    isLast = false;
 
     constructor(private _cdr: ChangeDetectorRef) {}
 

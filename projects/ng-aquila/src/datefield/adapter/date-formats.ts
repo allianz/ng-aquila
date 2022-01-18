@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 /** @docs-private */
-export type NxDateFormats = {
+export interface NxDateFormats {
     parse: {
         dateInput: any;
     };
@@ -11,6 +11,6 @@ export type NxDateFormats = {
         dateA11yLabel: any;
         monthYearA11yLabel: any;
     };
-};
+}
 
 export const NX_DATE_FORMATS = new InjectionToken<NxDateFormats>('nx-date-formats');

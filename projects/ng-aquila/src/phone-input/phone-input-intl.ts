@@ -13,7 +13,7 @@ export class NxPhoneInputIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** The label that is shown at the top of the opened overlay. */
-    areaCodeLabel: string = 'Country code';
+    areaCodeLabel = 'Country code';
 
     /** The object providing the country name translations. */
     countryNames: LocalizedCountryNames<any> = countries.getNames('en');

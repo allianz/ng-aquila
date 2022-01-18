@@ -6,7 +6,7 @@ import { NxExpandableTableRowComponent } from './expandable-table-row.component'
 
 @Directive()
 abstract class ExpandableTableRowTest {
-    isExpanded: boolean = true;
+    isExpanded = true;
     @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
 
     constructor(public cdr: ChangeDetectorRef) {}

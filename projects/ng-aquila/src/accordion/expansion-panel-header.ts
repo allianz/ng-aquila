@@ -79,7 +79,6 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
                 this.toggle();
                 break;
             default:
-                return;
         }
     }
 }

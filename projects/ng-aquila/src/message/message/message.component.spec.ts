@@ -7,7 +7,7 @@ import { CONTEXT, NxMessageComponent } from './message.component';
 
 @Directive()
 abstract class MessageTest {
-    public context: CONTEXT = 'regular';
+    context: CONTEXT = 'regular';
 
     @ViewChild(NxMessageComponent)
     componentInstance!: NxMessageComponent;

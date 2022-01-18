@@ -19,7 +19,7 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
 
     @Input() tab!: NxTabComponent;
 
-    private _active: boolean = false;
+    private _active = false;
 
     ngOnChanges(changes: SimpleChanges) {
         if ('active' in changes) {

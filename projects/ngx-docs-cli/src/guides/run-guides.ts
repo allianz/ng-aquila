@@ -19,17 +19,16 @@ const findAllFiles = filePaths => {
     if (Array.isArray(filePaths)) {
         // if a file does not exist throw an errror
         filePaths.forEach(filePath => {
-            if (fs.existsSync(filePath) === false) {
+            if (!fs.existsSync(filePath)) {
                 console.error(chalk.red(`Given path '${filePath}' for a guide file doesn't exist!`));
                 process.exit(1);
             }
         });
         return of(filePaths);
-    } else {
-        // glob with path to the md folder (default)
-        const mdSearchGlob = path.join(filePaths, '**/*.md');
-        return mdFiles$(mdSearchGlob).pipe(take(1));
     }
+    // glob with path to the md folder (default)
+    const mdSearchGlob = path.join(filePaths, '**/*.md');
+    return mdFiles$(mdSearchGlob).pipe(take(1));
 };
 
 const save = folder =>

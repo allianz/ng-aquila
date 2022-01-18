@@ -81,7 +81,7 @@ export class NxTooltipComponent implements OnDestroy {
     }
 
     /** Whether interactions on the page should close the tooltip */
-    private _closeOnInteraction: boolean = false;
+    private _closeOnInteraction = false;
 
     /** Subject for notifying that the tooltip has been hidden from the view */
     private readonly _onHide: Subject<any> = new Subject();

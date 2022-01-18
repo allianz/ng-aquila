@@ -8,7 +8,7 @@ import { NxComparisonTableDescriptionCell } from '../description-cell/descriptio
 import { NxToggleSectionDirective } from '../toggle-section/toggle-section.directive';
 import { NxComparisonTableCell } from './cell.component';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 @Directive()

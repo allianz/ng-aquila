@@ -10,5 +10,5 @@ let nextId = 0;
 })
 export class NxFileUploaderHintDirective {
     /** Sets the id of the file upload hint. */
-    @Input() id: string = `nx-formfield-hint-${nextId++}`;
+    @Input() id = `nx-formfield-hint-${nextId++}`;
 }

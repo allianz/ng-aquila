@@ -12,7 +12,7 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
     styleUrls: ['guides.component.scss'],
 })
 export class NxvGuidesComponent implements OnDestroy {
-    public availableGuides!: GuideDescriptor[];
+    availableGuides!: GuideDescriptor[];
     private guideSubscription: Subscription;
 
     constructor(

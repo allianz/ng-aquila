@@ -328,7 +328,7 @@ class TestData {
     observableChildren: BehaviorSubject<TestData[]>;
     isSpecial: boolean;
 
-    constructor(pizzaTopping: string, pizzaCheese: string, pizzaBase: string, children: TestData[] = [], isSpecial: boolean = false) {
+    constructor(pizzaTopping: string, pizzaCheese: string, pizzaBase: string, children: TestData[] = [], isSpecial = false) {
         this.pizzaTopping = pizzaTopping;
         this.pizzaCheese = pizzaCheese;
         this.pizzaBase = pizzaBase;
@@ -360,7 +360,7 @@ class FakeDataSource {
         }
     }
 
-    addChild(parent: TestData, isSpecial: boolean = false) {
+    addChild(parent: TestData, isSpecial = false) {
         const nextIndex = ++this.dataIndex;
         const child = new TestData(`topping_${nextIndex}`, `cheese_${nextIndex}`, `base_${nextIndex}`);
 
@@ -379,7 +379,7 @@ class FakeDataSource {
         return child;
     }
 
-    addData(isSpecial: boolean = false) {
+    addData(isSpecial = false) {
         const nextIndex = ++this.dataIndex;
         const copiedData = this.data.slice();
         copiedData.push(new TestData(`topping_${nextIndex}`, `cheese_${nextIndex}`, `base_${nextIndex}`, [], isSpecial));
@@ -392,7 +392,7 @@ function getNodes(treeElement: Element): Element[] {
     return [].slice.call(treeElement.querySelectorAll('.nx-tree__node'))!;
 }
 
-function expectFlatTreeToNxch(treeElement: Element, expectedPaddingIndent: number = 24, expectedPaddingOffset: number = 32, ...expectedTree: any[]) {
+function expectFlatTreeToNxch(treeElement: Element, expectedPaddingIndent = 24, expectedPaddingOffset = 32, ...expectedTree: any[]) {
     const missedExpectations: string[] = [];
 
     function checkNode(node: Element, expectedNode: any[]) {
@@ -516,7 +516,7 @@ class SimpleNxTreeApp {
     `,
 })
 class NxTreeAppWithToggle {
-    toggleRecursively: boolean = true;
+    toggleRecursively = true;
 
     treeControl = new NxFlatTreeControl();
 

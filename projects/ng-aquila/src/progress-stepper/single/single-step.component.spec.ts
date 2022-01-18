@@ -12,7 +12,7 @@ abstract class SingleStepTest {
     @ViewChild(NxProgressStepperDirective) componentInstance!: NxProgressStepperDirective;
     @ViewChild(NxProgressStepperDirective, { read: ElementRef }) componentInstanceRef!: ElementRef;
 
-    selectedIndex: number = 0;
+    selectedIndex = 0;
 }
 
 describe('NxSingleStepperComponent', () => {

@@ -9,16 +9,79 @@
                 "createDefaultProgram": true
             },
             "extends": [
-                "plugin:@typescript-eslint/base",
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/base",
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "prettier"
             ],
             "plugins": [],
             "rules": {
-                // eslint rules go here
-                // @typescript-eslint rules go here
-                // @angular-eslint rules go here
+                // ==== eslint: possible problems ====
+
+                "no-self-compare": "error",
+                "no-unreachable-loop": "error",
+
+                // ==== eslint: suggestions ====
+
+                "curly": ["error", "all"],
+                "eqeqeq": ["error", "always", { "null": "ignore" }],
+                "no-else-return": "error",
+                "no-empty": "off", // TODO resolve and kick
+                "no-extra-label": "error",
+                "no-lonely-if": "error",
+                "no-prototype-builtins": "off", // TODO resolve and kick
+                "no-undef-init": "error",
+                "no-unneeded-ternary": "error",
+                "no-useless-computed-key": ["error", { "enforceForClassMembers": true }],
+                "no-useless-escape": "off", // TODO resolve and kick
+                "no-useless-rename": "error",
+                "no-useless-return": "error",
+                "operator-assignment": "error",
+                "prefer-const": ["error", { "destructuring": "all" }], // TODO resolve and kick
+                "prefer-exponentiation-operator": "error",
+                "prefer-numeric-literals": "error",
+                "prefer-object-spread": "off", // TODO enable as eror
+                "prefer-spread": "off", // TODO resolve and kick
+                "yoda": ["error", "never", { "exceptRange": true }],
+
+                // ==== @typescript-eslint: supported rules ====
+
+                "@typescript-eslint/array-type": "error",
+                "@typescript-eslint/ban-ts-comment": ["off", { "ts-expect-error": "allow-with-description" }], // TODO enable es warn
+                "@typescript-eslint/ban-types": "off", // TODO resolve and kick
+                "@typescript-eslint/class-literal-property-style": ["error", "fields"],
+                "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+                "@typescript-eslint/consistent-type-exports": "error",
+                "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
+                "@typescript-eslint/member-ordering": "off", // TODO specify options
+                "@typescript-eslint/method-signature-style": ["error", "method"],
+                "@typescript-eslint/no-confusing-non-null-assertion": "error",
+                "@typescript-eslint/no-empty-interface": ["error", { "allowSingleExtends": true }],
+                "@typescript-eslint/no-explicit-any": "off", // TODO test, if viable for this project
+                "@typescript-eslint/no-non-null-assertion": "off", // TODO create ticket
+                "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+                "@typescript-eslint/no-var-requires": "off", // TODO replace occurrences with proper imports
+                "@typescript-eslint/non-nullable-type-assertion-style": "off", // TODO problematic with current specs
+                "@typescript-eslint/prefer-function-type": "error",
+                "@typescript-eslint/prefer-readonly": "off", // TODO check with others
+                "@typescript-eslint/prefer-reduce-type-parameter": "error",
+                "@typescript-eslint/prefer-return-this-type": "error",
+                "@typescript-eslint/prefer-string-starts-ends-with": "error",
+                "@typescript-eslint/prefer-ts-expect-error": "error",
+                "@typescript-eslint/promise-function-async": "error",
+                "@typescript-eslint/triple-slash-reference": "off", // TODO resolve and kick
+
+                // ==== @typescript-eslint: extension rules ====
+
+                "no-array-constructor": "off",
+                "@typescript-eslint/no-array-constructor": "error",
+                "no-dupe-class-members": "off",
+                "@typescript-eslint/no-dupe-class-members": "error",
+                "no-empty-function": "off",
+                "@typescript-eslint/no-empty-function": "off", // recommended override: empty event callbacks are used frequently
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": "off" // TODO enable with custom options
             }
         },
         {

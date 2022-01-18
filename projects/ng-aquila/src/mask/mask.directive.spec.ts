@@ -22,7 +22,7 @@ export function assertInputValue(nativeElement: HTMLInputElement, inputValue: st
         dispatchKeyboardEvent(nativeElement, 'keydown', A);
 
         // input event
-        nativeElement.value = nativeElement.value + inputValue[i];
+        nativeElement.value += inputValue[i];
         nativeElement.dispatchEvent(new Event('input'));
     }
 
@@ -35,11 +35,11 @@ abstract class MaskTest {
 
     mask!: string;
     separators: string[] = ['(', ')', ':', '-'];
-    dropSpecialCharacters: boolean = false;
-    validateMask: boolean = true;
+    dropSpecialCharacters = false;
+    validateMask = true;
     modelVal!: string;
     convertTo!: string;
-    deactivateMask: boolean = false;
+    deactivateMask = false;
 
     testForm: FormGroup = new FormGroup({
         maskInput: new FormControl('', {}),

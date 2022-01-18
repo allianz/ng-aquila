@@ -73,10 +73,10 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     _label!: NxLabelComponent;
 
     readonly _stateChanges = new Subject<void>();
-    errorState: boolean = false;
+    errorState = false;
     @Output() selectionChange: EventEmitter<NxCheckboxGroupChangeEvent> = new EventEmitter<NxCheckboxGroupChangeEvent>();
 
-    private _id: string = `nx-checkbox-group-${nextId++}`;
+    private _id = `nx-checkbox-group-${nextId++}`;
     /** Sets the Id of the checkbox group. */
     @Input()
     set id(value: string) {
@@ -90,7 +90,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         return this._id;
     }
 
-    private _name: string = '';
+    private _name = '';
     /** Sets the name of the checkboxes inside the nx-checkbox-group. */
     @Input()
     set name(value: string) {
@@ -102,7 +102,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         return this._name;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Disables all checkboxes inside the nx-checkbox-group. */
     @Input()
@@ -118,7 +118,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         return this._disabled;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Set the negative styles for all the checkboxes inside the nx-checkbox-group */
     @Input()
     set negative(value: BooleanInput) {
@@ -222,7 +222,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
     private _onTouched: () => any = () => {};
 
-    private _updateSelectedCheckboxFromValue(initialisation: boolean = false): void {
+    private _updateSelectedCheckboxFromValue(initialisation = false): void {
         // prevent reset of class values with empty array during initialisation
         const isValueSet = initialisation ? !!this._value && this._value.length : !!this._value;
         if (this._checkboxes && this._checkboxes.length && isValueSet) {
@@ -282,8 +282,8 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
     private _parentChangeSubscription!: Subscription;
     private _id: string = (nextId++).toString();
-    private _disabled: boolean = false;
-    private _negative: boolean = false;
+    private _disabled = false;
+    private _negative = false;
     private _labelSize: NxCheckboxLabelSize = 'small';
     private _checked = false;
     private _name: string | null = null;
@@ -421,7 +421,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         this._cdr.markForCheck();
     }
 
-    private _value: string = '';
+    private _value = '';
 
     /** An event emitted when the indeterminate value has changed */
     @Output()
@@ -517,7 +517,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     /** Toggles the checked state of the checkbox. */
-    public toggle() {
+    toggle() {
         this.checked = !this.checked;
         this.onChangeCallback(this.checked);
         if (this.checkboxGroup !== null) {

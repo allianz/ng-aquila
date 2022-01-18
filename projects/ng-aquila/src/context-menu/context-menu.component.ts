@@ -51,7 +51,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     _animationDone = new Subject<AnimationEvent>();
 
     /** Whether the menu is animating. */
-    _isAnimating: boolean = false;
+    _isAnimating = false;
 
     /** Parent menu of the current menu panel. */
     parentMenu: NxContextMenuComponent | undefined;

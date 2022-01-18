@@ -348,7 +348,7 @@ describe('NxExpansionPanelComponent', () => {
 
 @Directive()
 abstract class PanelTest {
-    expanded: boolean = false;
+    expanded = false;
     disabled = false;
 
     @ViewChild(NxExpansionPanelComponent) panel!: NxExpansionPanelComponent;

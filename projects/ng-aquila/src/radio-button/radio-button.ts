@@ -61,13 +61,13 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     _label!: NxLabelComponent;
 
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     // emits when the internal state changes on properties which are relevant
     // for the radio buttons so that they can mark themself for check
     readonly _stateChanges = new Subject<void>();
 
-    private _id: string = `nx-radio-group-${nextId++}`;
+    private _id = `nx-radio-group-${nextId++}`;
     /** Sets the Id of the radio group. */
     @Input('id')
     set id(value: string) {
@@ -79,7 +79,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     get id(): string {
         return this._id;
     }
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether every radio button in this group should be disabled. */
     @Input('nxDisabled')
@@ -92,7 +92,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         return this._disabled;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Whether the radio group should have negative styling. */
     @Input()
     set negative(value: BooleanInput) {
@@ -103,7 +103,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         return this._negative;
     }
 
-    private _required: boolean = false;
+    private _required = false;
     /** Sets if at least an option should be selected. */
     @Input()
     set required(value: BooleanInput) {
@@ -116,7 +116,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 
     /** An event is dispatched on each group value change. */
     @Output('nxGroupValueChange') groupValueChange: EventEmitter<NxRadioChange> = new EventEmitter<NxRadioChange>();
-    private _name: string = `nx-radio-group-${nextId++}`;
+    private _name = `nx-radio-group-${nextId++}`;
     private _value: any = null;
     // The currently selected radio button; should match _value
     private _selected: NxRadioComponent | null = null;
@@ -279,7 +279,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
     private _parentChangeSubscription!: Subscription;
 
-    private _id: string = `nx-radio-${nextId++}`;
+    private _id = `nx-radio-${nextId++}`;
     /** Sets the id of the radio component. */
     @Input('id')
     set id(value: string) {
@@ -331,7 +331,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         return this._labelSize;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /**
      * Whether the negative set of styles should be used.
      *
@@ -354,13 +354,9 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     @Output('nxValueChange') valueChange: EventEmitter<NxRadioChange> = new EventEmitter<NxRadioChange>();
 
     private _value: any = null;
-    private _checked: boolean = false;
-    private _disabled: boolean = false;
-    private _required: boolean = false;
-
-    get value(): any {
-        return this._value;
-    }
+    private _checked = false;
+    private _disabled = false;
+    private _required = false;
 
     /** @docs-private */
     get labelHasContent(): boolean {
@@ -381,6 +377,10 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
             this._value = value;
             this.onChangeCallback(value);
         }
+    }
+
+    get value(): any {
+        return this._value;
     }
 
     /** @docs-private */

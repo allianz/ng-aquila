@@ -15,7 +15,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     },
 })
 export class NxMenuComponent {
-    private _open: boolean = false;
+    private _open = false;
 
     /** Whether the menu is open or closed. */
     @Input()

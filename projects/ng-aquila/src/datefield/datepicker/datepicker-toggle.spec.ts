@@ -14,7 +14,7 @@ const datepickerOptions: DatepickerDefaultOptions = {
 
 @Directive()
 abstract class DatepickerToggleTest {
-    public tabindex!: number;
+    tabindex!: number;
 
     @ViewChild(NxDatepickerComponent) datepickerInstance!: NxDatepickerComponent<Date>;
     @ViewChild(NxDatepickerToggleComponent) toggleInstance!: NxDatepickerToggleComponent<Date>;

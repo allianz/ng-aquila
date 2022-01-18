@@ -55,10 +55,10 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
     },
 })
 export class NxRowComponent {
-    private _justifyClasses: string = '';
-    private _alignContentClasses: string = '';
-    private _alignItemsClasses: string = '';
-    private _wrapClasses: string = '';
+    private _justifyClasses = '';
+    private _alignContentClasses = '';
+    private _alignItemsClasses = '';
+    private _wrapClasses = '';
     private _rowClass: string = MAPPING_LAYOUT.row;
 
     get _classNames() {
@@ -114,5 +114,5 @@ export class NxRowComponent {
      * @docs-private
      */
     @Input()
-    class: string = '';
+    class = '';
 }

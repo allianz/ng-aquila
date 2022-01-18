@@ -39,7 +39,7 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
 
     danger = false;
 
-    public set classNames(value: string) {
+    set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -49,19 +49,19 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         this._cdr.markForCheck();
     }
 
-    public get classNames(): string {
+    get classNames(): string {
         return this._classNames;
     }
 
     @HostBinding('class.nx-button--active')
     active = false;
-    public setTriggerActive(): void {
+    setTriggerActive(): void {
         if (!this.active) {
             this.active = true;
             this._cdr.markForCheck();
         }
     }
-    public setTriggerInactive(): void {
+    setTriggerInactive(): void {
         if (this.active) {
             this.active = false;
             this._cdr.markForCheck();

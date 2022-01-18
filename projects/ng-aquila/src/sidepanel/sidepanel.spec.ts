@@ -10,7 +10,7 @@ import { NxSidepanelModule } from './sidepanel.module';
 abstract class SidepanelTest {
     @ViewChild(NxSidepanelComponent) sidebarInstance!: NxSidepanelComponent;
     @ViewChild(NxSidepanelOuterContainerComponent) wrapperInstance!: NxSidepanelOuterContainerComponent;
-    opened: boolean = true;
+    opened = true;
     position: PositionType = 'floating';
     appearance: Appearance = 'dark';
 }

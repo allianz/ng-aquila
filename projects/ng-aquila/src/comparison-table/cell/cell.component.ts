@@ -34,7 +34,7 @@ export class NxComparisonTableCell {
         return this._index;
     }
 
-    private _disabledColumn: boolean = false;
+    private _disabledColumn = false;
 
     /** Sets all cells below a header cell to be disabled (disabled column).
      *  Important: this property can be set only on header cells.
@@ -87,7 +87,7 @@ export class NxComparisonTableCell {
     constructor(public _table: NxComparisonTableBase, private _row: NxComparisonTableRowBase, @Optional() private _toggleSection: NxToggleSectionBase) {}
 
     _isSelected(): boolean {
-        return this.index !== undefined && this.index === this._table.selectedIndex ? true : false;
+        return this.index !== undefined && this.index === this._table.selectedIndex;
     }
 
     _isCellHidden(): boolean {

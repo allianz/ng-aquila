@@ -96,24 +96,24 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
      */
     @Output() filesSelected = new EventEmitter<FileItem[]>();
 
-    private _id: string = `nx-file-uploader-${nextId++}`;
+    private _id = `nx-file-uploader-${nextId++}`;
     private _name!: string;
     private _value!: FileItem[] | null;
-    private _maxFileSize: number = 0;
-    private _required: boolean = false;
-    private _disabled: boolean = false;
-    private _multiple: boolean = false;
+    private _maxFileSize = 0;
+    private _required = false;
+    private _disabled = false;
+    private _multiple = false;
     private _accept!: string;
     private _controlValidators: ValidatorFn | null = null;
     private _uploader!: NxFileUploader;
     private _maxFileNumber: number | null = null;
-    _inputId: string = `${this.id}-input`;
-    _labelId: string = `${this.id}-label`;
+    _inputId = `${this.id}-input`;
+    _labelId = `${this.id}-label`;
     _itemTemplate!: TemplateRef<any>;
     _templateContext;
 
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     /** @docs-private */
     stateChanges = new Subject<void>();
@@ -319,7 +319,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     writeValue(value: FileItem[]) {
         if (this._value !== value) {
-            if (!!value) {
+            if (value) {
                 if (this._filesSubscriptions) {
                     this._filesSubscriptions.forEach((fileSubscription: Subscription) => fileSubscription.unsubscribe());
                     this._filesSubscriptions = [];
@@ -332,7 +332,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
     }
 
-    _resetValidators(clear: boolean = false) {
+    _resetValidators(clear = false) {
         if (this.ngControl && this.ngControl.control) {
             if (clear) {
                 this.ngControl.control.clearValidators();

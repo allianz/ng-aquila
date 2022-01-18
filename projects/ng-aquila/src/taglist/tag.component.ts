@@ -27,7 +27,7 @@ export class NxTagComponent implements OnDestroy {
         return this._removable;
     }
 
-    private _tabindex: number = -1;
+    private _tabindex = -1;
     /**
      * Sets the tab-index of a tag. Default value: -1.
      *

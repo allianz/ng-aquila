@@ -13,7 +13,7 @@ let nextId = 0;
 export class NxComparisonTablePopularCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
-    private _id: string = `nx-comparison-table-popular-cell-${nextId++}`;
+    private _id = `nx-comparison-table-popular-cell-${nextId++}`;
     private _forColumn: number | undefined;
 
     /** Sets the Id of the popular cell. */

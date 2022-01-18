@@ -38,7 +38,7 @@ let _uniqueIdCounter = 0;
 })
 export class NxAutocompleteOptionComponent {
     /** Id of the autocomplete option. By default it is set to an incremented value. */
-    public get id(): string {
+    get id(): string {
         return this._id;
     }
     private _id = `nx-autocomplete-option-${_uniqueIdCounter++}`;

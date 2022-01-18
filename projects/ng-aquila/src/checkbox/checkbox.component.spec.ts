@@ -9,12 +9,12 @@ import { NxCheckboxModule } from './checkbox.module';
 abstract class CheckboxTest {
     @ViewChild(NxCheckboxComponent) checkboxInstance!: NxCheckboxComponent;
 
-    checked: boolean = false;
-    indeterminate: boolean = false;
+    checked = false;
+    indeterminate = false;
     testForm!: FormGroup;
     labelSize!: string;
-    disabled: boolean = false;
-    negative: boolean = false;
+    disabled = false;
+    negative = false;
 }
 
 describe('NxCheckboxComponent', () => {
@@ -325,7 +325,7 @@ class CheckboxNegative extends CheckboxTest {}
     `,
 })
 class ReactiveCheckbox extends CheckboxTest {
-    public fb;
+    fb;
     constructor() {
         super();
 

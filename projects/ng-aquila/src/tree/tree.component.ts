@@ -245,7 +245,6 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
                 event.preventDefault();
                 break;
             default:
-                return;
         }
     }
 

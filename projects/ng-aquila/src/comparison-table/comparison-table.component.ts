@@ -46,7 +46,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     @ViewChild('desktopContent') _desktopContentDiv!: ElementRef;
 
     /** The top value for the clip-path of the _desktopContentDiv. */
-    _desktopContentClip: number = 0;
+    _desktopContentClip = 0;
 
     @ViewChild('stickyMobileCell') _stickyMobileCell!: ElementRef;
 
@@ -149,10 +149,9 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         if (this._dir && this._dir.value === 'rtl') {
             const clip = cellRect.right - this._mobileStickyEdge;
             return clip > 0 ? `0 ${clip}px 0 0` : '0';
-        } else {
-            const clip = this._mobileStickyEdge - cellRect.left;
-            return clip > 0 ? `0 0 0 ${clip}px` : '0';
         }
+        const clip = this._mobileStickyEdge - cellRect.left;
+        return clip > 0 ? `0 0 0 ${clip}px` : '0';
     }
 
     /** Whether the element is a row. */
@@ -235,7 +234,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     _getMobileColumnCount() {
-        return !!this._getFooterCells().length ? this.elements.length - 1 : this.elements.length;
+        return this._getFooterCells().length ? this.elements.length - 1 : this.elements.length;
     }
 
     _isMobileRowDisabled(i: number) {
@@ -260,7 +259,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         return headerRow as NxComparisonTableRowDirective;
     }
 
-    _scrollElementIntoView(element: ElementRef, additionalSpacing: number = 0): void {
+    _scrollElementIntoView(element: ElementRef, additionalSpacing = 0): void {
         // check if element starts above the bottom of the header
         // if yes: modify scrollTop position
         const scrolledParent = this._getScrollParent(element.nativeElement);

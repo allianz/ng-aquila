@@ -9,7 +9,7 @@ import { NxIconModule } from './icon.module';
 @Directive()
 abstract class IconTest {
     @ViewChild(NxIconComponent) buttonInstance!: NxIconComponent;
-    name: string = '';
+    name = '';
     font = 'custom-font';
 }
 

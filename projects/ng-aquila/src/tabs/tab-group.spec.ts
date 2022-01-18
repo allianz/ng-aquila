@@ -8,7 +8,7 @@ import { NxTabGroupComponent } from './tab-group';
 import { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 const tabsDefaultOptions: TabGroupDefaultOptions = {
@@ -566,7 +566,7 @@ describe('NxTabGroupComponent', () => {
 
         it('changes appearance on injection token change', inject([TAB_GROUP_DEFAULT_OPTIONS], (defaultOptions: TabGroupDefaultOptions) => {
             createTestComponent(BasicTabs);
-            // @ts-ignore
+            // @ts-expect-error
             testInstance.appearance = undefined;
             fixture.detectChanges();
             expect(tabGroupInstance.appearance).toBe('expert');

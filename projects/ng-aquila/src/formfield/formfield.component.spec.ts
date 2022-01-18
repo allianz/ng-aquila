@@ -25,8 +25,8 @@ abstract class FormfieldTest {
     currentValue: any;
     appearance!: AppearanceType;
     floatLabel!: FloatLabelType;
-    disabled: boolean = false;
-    readonly: boolean = false;
+    disabled = false;
+    readonly = false;
 }
 
 describe('NxFormfieldComponent', () => {
@@ -287,8 +287,7 @@ describe('NxFormfieldComponent', () => {
                 tick();
                 fixture.detectChanges();
 
-                let ariaDescribedBy;
-                ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
+                const ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
                 tick();
                 fixture.detectChanges();
 

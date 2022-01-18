@@ -1,10 +1,10 @@
 const chokidar = require('chokidar');
 import { Observable } from 'rxjs';
 
-export type RxWatchData = {
+export interface RxWatchData {
     event: string;
     name: string;
-};
+}
 
 export function rxWatcher(pattern, options) {
     const watcher = chokidar.watch(pattern, options);

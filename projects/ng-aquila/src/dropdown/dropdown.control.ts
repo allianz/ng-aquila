@@ -6,7 +6,7 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
      * Whether the dropdown should allow multi selection and additional checkboxes are shown.
      *
      * Note: Please make sure the value you bind is an array. If not an error is thrown! */
-    isMultiSelect: boolean = false;
+    isMultiSelect = false;
 
     readonly filterChanges!: Subject<any>;
 

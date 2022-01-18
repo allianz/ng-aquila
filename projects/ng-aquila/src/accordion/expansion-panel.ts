@@ -123,7 +123,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         }
 
         // Inherit appearance given by the accordion (if any).
-        if (Boolean(this.accordion)) {
+        if (this.accordion) {
             if (this.style === null && this.accordion.style !== null) {
                 this.style = this.accordion.style;
             }

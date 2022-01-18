@@ -73,7 +73,7 @@ export class NxSidepanelComponent {
         }
     }
 
-    private _opened: boolean = true;
+    private _opened = true;
 
     @ContentChild(NxSidepanelHeaderComponent, { read: ElementRef, static: false }) _header!: ElementRef;
 
@@ -88,7 +88,7 @@ export class NxSidepanelComponent {
 
     private _appearance: Appearance = 'dark';
 
-    private _openState: string = 'open-instant';
+    private _openState = 'open-instant';
 
     /** Toggles the opened state of the sidepanel. */
     toggle() {

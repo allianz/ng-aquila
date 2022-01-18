@@ -36,7 +36,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
     @ContentChildren('tabButton') tabButtons!: QueryList<HTMLElement>;
 
-    private _selectedIndex: number = 0;
+    private _selectedIndex = 0;
 
     @Input()
     get selectedIndex(): number {
@@ -59,7 +59,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         this._keyManager.setActiveItem(value);
     }
 
-    private _autoselect: boolean = true;
+    private _autoselect = true;
 
     @Input()
     get autoselect(): boolean {

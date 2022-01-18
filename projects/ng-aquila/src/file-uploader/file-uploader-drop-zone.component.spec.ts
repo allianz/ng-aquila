@@ -14,12 +14,12 @@ import { NxFileUploaderModule } from './file-uploader.module';
 abstract class FileUploaderTest {
     @ViewChild(NxFileUploaderComponent, { static: false })
     fileUploaderInstance!: NxFileUploaderComponent;
-    public form!: FormGroup;
-    public queueList!: null | FileItem[];
-    public required: boolean = false;
-    public multiple: boolean = false;
-    public disabled: boolean = false;
-    public maxFileSize!: number;
+    form!: FormGroup;
+    queueList!: null | FileItem[];
+    required = false;
+    multiple = false;
+    disabled = false;
+    maxFileSize!: number;
 }
 
 describe('NxFileUploaderComponent', () => {
@@ -121,10 +121,10 @@ describe('NxFileUploaderComponent', () => {
     `,
 })
 class DropZoneFileUpload extends FileUploaderTest {
-    public fb;
-    public required: any;
-    public queueList: any;
-    public disabled: any;
+    fb;
+    required: any;
+    queueList: any;
+    disabled: any;
 
     constructor() {
         super();

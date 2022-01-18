@@ -18,13 +18,13 @@ export class NxLicencePlateSeasonSuffixComponent {
      * Start month of the licence plate.
      */
     @Input()
-    startMonth: number = 1;
+    startMonth = 1;
 
     /**
      * End month of the licence plate.
      */
     @Input()
-    endMonth: number = 1;
+    endMonth = 1;
 
     @HostBinding('class.is-disabled')
     get _disabled(): boolean {

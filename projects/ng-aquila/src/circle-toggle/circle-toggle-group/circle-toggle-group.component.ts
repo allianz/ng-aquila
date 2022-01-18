@@ -140,9 +140,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get responsive(): boolean {
         if (this._isExpert) {
             return false;
-        } else {
-            return this._responsive;
         }
+        return this._responsive;
     }
 
     @HostBinding('class.is-expert')
@@ -174,15 +173,15 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     @Output()
     valueChange: EventEmitter<any> = new EventEmitter();
 
-    private _name: string = `toggle-group-${nextId++}`;
+    private _name = `toggle-group-${nextId++}`;
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
-    _negative: boolean = false;
+    _negative = false;
 
     private _value!: string;
 
-    private _responsive: boolean = true;
+    private _responsive = true;
 
     private _appearance: NxCircleToggleGroupAppearance | undefined;
 
@@ -226,7 +225,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
             .pipe(
                 startWith(this.buttons),
                 filter(toggles => toggles.length > 0),
-                tap(toggles =>
+                tap(async toggles =>
                     Promise.resolve().then(() => {
                         toggles.forEach((toggle: any) => toggle.toggleButton.resetClasses());
                         this.buttons.first.toggleButton.setFirstButton();

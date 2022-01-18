@@ -24,7 +24,7 @@ export class NxProgressbarComponent {
     set value(value: NumberInput) {
         this._value = clamp((value as any) || 0); // TODO properly coerce input value
     }
-    private _value: number = 0;
+    private _value = 0;
 
     _primaryTransform() {
         const scale = this.value;

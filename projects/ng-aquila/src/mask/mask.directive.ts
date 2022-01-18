@@ -43,8 +43,8 @@ interface CursorInfo {
 export class NxMaskDirective implements ControlValueAccessor, Validator {
     private _mask!: string;
     private _separators = ['/', '(', ')', '.', ':', '-', ' ', '+', ','];
-    private _dropSpecialCharacters: boolean = false;
-    private _validateMask: boolean = true;
+    private _dropSpecialCharacters = false;
+    private _validateMask = true;
     private _convertTo?: MaskConversionTypes;
     private _deactivateMask?: boolean = false;
     /**
@@ -459,7 +459,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     }
 
     /** @docs-private */
-    getMaskedString(inputValue: string, maskStartIndex: number = 0): string {
+    getMaskedString(inputValue: string, maskStartIndex = 0): string {
         let formattedValue = '';
         let maskIndex = maskStartIndex;
         let inputIndex = 0;

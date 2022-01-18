@@ -124,7 +124,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
             }
         }
 
-        if (obj?.isValid() === false) {
+        if (!obj?.isValid()) {
             return '';
         }
 

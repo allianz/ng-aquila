@@ -58,10 +58,10 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     },
 })
 export class NxColComponent implements OnInit {
-    private _columnClasses: string = '';
-    private _offsetClasses: string = '';
-    private _alignSelfClasses: string = '';
-    private _orderClasses: string = '';
+    private _columnClasses = '';
+    private _offsetClasses = '';
+    private _alignSelfClasses = '';
+    private _orderClasses = '';
 
     get _classNames() {
         return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class]

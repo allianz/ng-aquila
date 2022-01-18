@@ -69,7 +69,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
         return this._context as CONTEXT;
     }
 
-    _closable: boolean = false;
+    _closable = false;
 
     /** Whether a message should have a close icon in order to be dismissed. */
     @HostBinding('class.nx-message--closable')
@@ -85,7 +85,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
         return this._closable;
     }
 
-    private _closeButtonLabel: string = 'Close dialog';
+    private _closeButtonLabel = 'Close dialog';
 
     /** Sets the label of the close button of the message. */
     @Input()

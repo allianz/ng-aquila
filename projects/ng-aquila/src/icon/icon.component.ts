@@ -21,7 +21,7 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 export class NxIconComponent implements OnChanges {
     /** Keeps track of the elements and attributes that we've prefixed with the current path. */
     private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
-    private _name: string = '';
+    private _name = '';
     private _previousFontClasses: string[] = [];
 
     /** Sets the name for specifying the icon.*/
@@ -71,7 +71,7 @@ export class NxIconComponent implements OnChanges {
     }
 
     /** Sets the font name that should be used. */
-    @Input() font: string = '';
+    @Input() font = '';
 
     constructor(
         /**@docs-private */
@@ -92,25 +92,23 @@ export class NxIconComponent implements OnChanges {
             // or take the default font
             this._updateFontIconClasses();
             this._clearSvgElement();
-        } else {
-            if (icon instanceof NxSvgIcon) {
-                // add content
-                icon.getContent()
-                    .pipe(take(1))
-                    .subscribe((content?: SVGElement) => {
-                        if (!content) {
-                            return;
-                        }
+        } else if (icon instanceof NxSvgIcon) {
+            // add content
+            icon.getContent()
+                .pipe(take(1))
+                .subscribe((content?: SVGElement) => {
+                    if (!content) {
+                        return;
+                    }
 
-                        // we need to clone the svg here otherwise when you have the same icon
-                        // multiple times it would end up only in the last icon that got created
-                        this._setSvgElement(cloneSvg(content));
-                    });
-            } else {
-                // here we have to look at the alias as well that could come from the registry
-                this._updateFontIconClassesFromOverride(icon.alias, icon.font);
-                this._clearSvgElement();
-            }
+                    // we need to clone the svg here otherwise when you have the same icon
+                    // multiple times it would end up only in the last icon that got created
+                    this._setSvgElement(cloneSvg(content));
+                });
+        } else {
+            // here we have to look at the alias as well that could come from the registry
+            this._updateFontIconClassesFromOverride(icon.alias, icon.font);
+            this._clearSvgElement();
         }
     }
 

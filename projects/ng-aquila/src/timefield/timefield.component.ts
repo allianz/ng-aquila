@@ -19,26 +19,26 @@ let nextId = 0;
 })
 export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     _toggleAMPM!: string | null;
 
     /** Event that emits the time in 24h ISO format. */
     @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-    private _idHours: string = `nx-timefield__hours-${nextId++}`;
+    private _idHours = `nx-timefield__hours-${nextId++}`;
     /** @docs-private */
     get idHours(): string {
         return this._idHours;
     }
 
-    private _idMinutes: string = `nx-timefield__minutes-${nextId++}`;
+    private _idMinutes = `nx-timefield__minutes-${nextId++}`;
     /** @docs-private */
     get idMinutes(): string {
         return this._idMinutes;
     }
 
-    private _idRadioGroup: string = `nx-timefield__radio-group-${nextId++}`;
+    private _idRadioGroup = `nx-timefield__radio-group-${nextId++}`;
     /** @docs-private */
     get idRadioGroup(): string {
         return this._idRadioGroup;
@@ -80,7 +80,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._time as string;
     }
 
-    private _twelveHourFormat: boolean = false;
+    private _twelveHourFormat = false;
     /** Whether to show the time in 12-hour format with AM/PM toggle. Default: false. */
     @Input()
     set twelveHourFormat(value: BooleanInput) {
@@ -113,7 +113,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._label;
     }
 
-    private _labelAM: string = 'AM';
+    private _labelAM = 'AM';
     /** Sets the AM radio button label which is displayed in radio group. */
     @Input()
     set labelAM(value: string) {
@@ -126,7 +126,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._labelAM;
     }
 
-    private _labelPM: string = 'PM';
+    private _labelPM = 'PM';
     /** Sets the PM radio button label which is displayed in radio group. */
     @Input()
     set labelPM(value: string) {
@@ -139,7 +139,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._labelPM;
     }
 
-    private _placeholderHours: string = 'hh';
+    private _placeholderHours = 'hh';
     /** Sets the placeholder of hours field. Default: 'hh' */
     @Input()
     set placeholderHours(value: string) {
@@ -152,7 +152,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._placeholderHours;
     }
 
-    private _placeholderMinutes: string = 'mm';
+    private _placeholderMinutes = 'mm';
     /** Sets the placeholder of minutes field. Default: 'mm' */
     @Input()
     set placeholderMinutes(value: string) {
@@ -175,7 +175,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         this._required = coerceBooleanProperty(value);
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Whether the timefield uses the negative set of styling. */
     @Input()
     set negative(value: BooleanInput) {
@@ -189,7 +189,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._negative;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether the timefield is disabled. */
     @Input()
@@ -344,9 +344,9 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         let valid = false;
         const numVal = Number(value);
         if (type === 'minutes') {
-            valid = numVal >= this._minMinutes && numVal <= this._maxMinutes ? true : false;
+            valid = !!(numVal >= this._minMinutes && numVal <= this._maxMinutes);
         } else if (type === 'hours') {
-            valid = numVal >= this._minHours && numVal <= this._maxHours ? true : false;
+            valid = !!(numVal >= this._minHours && numVal <= this._maxHours);
         }
         return valid;
     }

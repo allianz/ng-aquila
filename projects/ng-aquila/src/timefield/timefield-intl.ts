@@ -10,8 +10,8 @@ export class NxTimefieldIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** Label that should replace the 'hours' aria-label of the input field. */
-    inputFieldHoursAriaLabel: string = 'hours';
+    inputFieldHoursAriaLabel = 'hours';
 
     /** Label that should replace the 'minutes' input field of the aria-label. */
-    inputFieldMinutesAriaLabel: string = 'minutes';
+    inputFieldMinutesAriaLabel = 'minutes';
 }

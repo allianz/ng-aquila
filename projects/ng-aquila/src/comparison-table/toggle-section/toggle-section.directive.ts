@@ -18,7 +18,7 @@ export class NxToggleSectionDirective extends NxToggleSectionBase implements NxT
     /** @docs-private */
     @ContentChildren(NxTableContentElement) rows!: QueryList<NxTableContentElement>;
 
-    private _isExpanded: boolean = true;
+    private _isExpanded = true;
 
     /** Whether the toggle section is expanded. Default: true. */
     @Input()

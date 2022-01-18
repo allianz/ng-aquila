@@ -76,7 +76,7 @@ export class NxDatepickerInputEvent<D> {
 })
 export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAccessor, OnDestroy, Validator {
     /** @docs-private */
-    public currentFormattedDate: string | null = null;
+    currentFormattedDate: string | null = null;
 
     /** Whether the component has been initialized. */
     private _isInitialized: boolean | undefined;
@@ -155,7 +155,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     set strict(value: any) {
         this._strict = coerceBooleanProperty(value);
     }
-    private _strict: boolean = true;
+    private _strict = true;
 
     /**
      * Override the parse format given with parse.dateInput with the token NX_DATE_FORMATS.
@@ -261,7 +261,8 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
         // Update the displayed date when the locale changes.
         this._localeSubscription = _dateAdapter.localeChanges.subscribe(() => {
-            this.value = this.value;
+            const value = this.value;
+            this.value = value; // invoke setter
         });
     }
 

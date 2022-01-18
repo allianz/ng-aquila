@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { NxMessageToastComponent } from './message-toast.component';
 
 /** Maximum amount of milliseconds that can be passed into setTimeout. */
-const MAX_TIMEOUT = Math.pow(2, 31) - 1;
+const MAX_TIMEOUT = 2 ** 31 - 1;
 
 export class NxMessageToastRef {
     /**

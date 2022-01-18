@@ -8,15 +8,15 @@ import { createFakeEvent } from '../cdk-test-utils';
 @Directive()
 abstract class InputTest {
     @ViewChild(NxInputDirective) inputInstance!: NxInputDirective;
-    public type = 'text';
-    public required = false;
-    public disabled = false;
-    public readonly = false;
-    public currentValue: any;
-    public formControl: any;
-    public floatLabel: any;
-    public appearance: any;
-    public placeholderText!: string;
+    type = 'text';
+    required = false;
+    disabled = false;
+    readonly = false;
+    currentValue: any;
+    formControl: any;
+    floatLabel: any;
+    appearance: any;
+    placeholderText!: string;
 }
 
 describe('NxInputDirective', () => {

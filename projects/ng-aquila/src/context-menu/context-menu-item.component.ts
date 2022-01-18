@@ -45,13 +45,13 @@ export class NxContextMenuItemComponent implements OnDestroy {
     get disabled(): boolean {
         return this._disabled;
     }
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether the context menu item is highlighted. */
-    _highlighted: boolean = false;
+    _highlighted = false;
 
     /** Whether the context menu item acts as a trigger for a sub-menu. */
-    _triggersSubmenu: boolean = false;
+    _triggersSubmenu = false;
 
     constructor(
         private _elementRef: ElementRef<HTMLElement>,

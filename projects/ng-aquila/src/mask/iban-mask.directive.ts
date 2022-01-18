@@ -85,17 +85,17 @@ export class NxIbanMaskDirective implements OnInit, Validator {
             switch (character) {
                 // [0-9]
                 case 'F':
-                    mask = mask + '0'.repeat(count);
+                    mask += '0'.repeat(count);
                     break;
                 // [0-9A-Za-z]
                 case 'A':
-                    mask = mask + 'A'.repeat(count);
+                    mask += 'A'.repeat(count);
                     break;
                 // [A-Z]
                 // 'S' in nxMask does accept also [a-z].
                 // There is no option for only accepting capital letters at the moment.
                 case 'U':
-                    mask = mask + 'S'.repeat(count);
+                    mask += 'S'.repeat(count);
                     break;
             }
         });

@@ -45,9 +45,9 @@ export type LABEL_SIZE = 'small' | 'large';
     },
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
-    private _id: string = `nx-switcher-${nextId++}`;
+    private _id = `nx-switcher-${nextId++}`;
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     /** @docs-private */
     @ViewChild('switcherLabelWrapper', { static: true }) _switcherLabelWrapper!: ElementRef;
@@ -86,7 +86,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         return this._name as string;
     }
 
-    private _checked: boolean = false;
+    private _checked = false;
     /** Whether the switcher is checked (on) or unchecked (off) */
     @Input()
     set checked(value: boolean) {
@@ -97,7 +97,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         return this._checked;
     }
 
-    private _big: boolean = false;
+    private _big = false;
     /** Whether the big switcher is used */
     @Input('nxBig')
     set big(value: BooleanInput) {
@@ -120,7 +120,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         return this._labelSize;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
     /** Whether the style for a dark background is used */
     @Input('nxNegative')
     set negative(value: BooleanInput) {
@@ -132,7 +132,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         return this._negative;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
     /** Whether the switcher is in the disabled state */
     @Input()
     set disabled(value: BooleanInput) {

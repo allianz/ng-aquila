@@ -73,7 +73,7 @@ export class NxvComponentPage {
             .subscribe(component => {
                 const apiTab = this.tabs.find(tab => tab.label === 'api');
                 if (apiTab) {
-                    apiTab.show = component.noApi ? false : true;
+                    apiTab.show = !component.noApi;
                 }
             });
     }

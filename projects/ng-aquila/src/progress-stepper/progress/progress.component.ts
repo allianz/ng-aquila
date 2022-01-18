@@ -21,7 +21,7 @@ export class NxProgressStepperComponent extends NxProgressStepperDirective {
     set progress(value: number) {
         this._progress = clamp(value || 0);
     }
-    private _progress: number = 0;
+    private _progress = 0;
 
     constructor(_cdr: ChangeDetectorRef, _dir: Directionality, _el: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
         super(_cdr, _dir, _el, _document);

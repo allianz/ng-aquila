@@ -53,7 +53,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     get resizeable() {
         return this._resizeable;
     }
-    private _resizeable: boolean = false;
+    private _resizeable = false;
 
     /** Sets the minimal width (in pixel) of the sidebar. */
     @Input()
@@ -86,7 +86,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     get resizeHandleAriaLabel() {
         return this._resizeHandleAriaLabel;
     }
-    private _resizeHandleAriaLabel: string = '';
+    private _resizeHandleAriaLabel = '';
 
     /** This reflects the current open state of the sidebar.
       It will be `true` if the sidebar is expanded and `false` if the sidebar is closed.
@@ -102,7 +102,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     get open(): boolean {
         return this._open;
     }
-    private _open: boolean = true;
+    private _open = true;
 
     /** This sets the width of the sidebar in an expanded state. */
     set width(value: number) {
@@ -122,15 +122,15 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
         return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
     }
 
-    _width: number = 0;
+    _width = 0;
 
-    _resizing: boolean = false;
+    _resizing = false;
 
-    _previousWidth: number = 0;
+    _previousWidth = 0;
 
-    _isMobile: boolean = false;
+    _isMobile = false;
 
-    _resizeWidth: number = 0;
+    _resizeWidth = 0;
 
     private _resizeStartX!: number;
 
@@ -216,7 +216,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
         let dx = event.screenX - this._resizeStartX;
         if (this.dir === 'rtl') {
-            dx = dx * -1;
+            dx *= -1;
         }
 
         this._resizeWidth = Math.max(this.minWidth, this._resizeStartWidth + dx);
@@ -254,7 +254,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
             event.preventDefault();
             this.toggle();
         } else if (event.which === LEFT_ARROW) {
-            this.width = this.width - RESIZE_STEP_SIZE;
+            this.width -= RESIZE_STEP_SIZE;
 
             if (this.width <= AUTO_COLLAPSE_WIDTH) {
                 this.open = false;

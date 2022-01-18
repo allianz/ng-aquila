@@ -20,16 +20,16 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
     },
 })
 export class NxListComponent {
-    private _classNames: string = '';
+    private _classNames = '';
 
     /** @docs-private */
     type: NxListSize | undefined = DEFAULT_TYPE;
 
     /** @docs-private */
-    negative: boolean = false;
+    negative = false;
 
     /** @docs-private */
-    orderedCircle: boolean = false;
+    orderedCircle = false;
 
     /**
      * Sets the visual appearance of the list. You can combine different values:

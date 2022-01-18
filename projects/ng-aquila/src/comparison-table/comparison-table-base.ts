@@ -56,15 +56,15 @@ export abstract class NxComparisonTableBase implements OnDestroy {
 
         merge(
             mobile$.pipe(
-                filter(value => value === true),
+                filter(value => value),
                 mapTo('mobile' as NxComparisonTableViewType),
             ),
             tablet$.pipe(
-                filter(value => value === true),
+                filter(value => value),
                 mapTo('tablet' as NxComparisonTableViewType),
             ),
             desktop$.pipe(
-                filter(value => value === true),
+                filter(value => value),
                 mapTo('desktop' as NxComparisonTableViewType),
             ),
         )

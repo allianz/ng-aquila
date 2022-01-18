@@ -17,7 +17,7 @@ const customTexts: IPaginationTexts = {
 @Directive()
 abstract class PaginationTest {
     @ViewChild(NxPaginationComponent) paginationInstance!: NxPaginationComponent;
-    page: number = 1;
+    page = 1;
     prevPage = jasmine.createSpy('prevPageSpy');
     nextPage = jasmine.createSpy('nextPageSpy');
     goToPage = jasmine.createSpy('goToPageSpy');
@@ -332,9 +332,9 @@ describe('NxPaginationComponent', () => {
     `,
 })
 class AdvancedPagination extends PaginationTest {
-    count: number = 210;
-    perPage: number = 10;
-    type: string = 'advanced';
+    count = 210;
+    perPage = 10;
+    type = 'advanced';
 }
 
 @Component({
@@ -350,8 +350,8 @@ class AdvancedPagination extends PaginationTest {
     `,
 })
 class SimplePagination extends PaginationTest {
-    count: number = 210;
-    perPage: number = 10;
+    count = 210;
+    perPage = 10;
 }
 
 @Component({
@@ -369,9 +369,9 @@ class SimplePagination extends PaginationTest {
     `,
 })
 class AdvancedPaginationLess10 extends PaginationTest {
-    count: number = 30;
-    perPage: number = 10;
-    type: string = 'advanced';
+    count = 30;
+    perPage = 10;
+    type = 'advanced';
 }
 
 @Component({
@@ -389,9 +389,9 @@ class AdvancedPaginationLess10 extends PaginationTest {
     `,
 })
 class AdvancedPaginationMore10 extends PaginationTest {
-    count: number = 210;
-    perPage: number = 10;
-    type: string = 'advanced';
+    count = 210;
+    perPage = 10;
+    type = 'advanced';
 }
 
 @Component({
@@ -409,10 +409,10 @@ class AdvancedPaginationMore10 extends PaginationTest {
     `,
 })
 class AdvancedPaginationBeginat10 extends PaginationTest {
-    count: number = 210;
-    page: number = 10;
-    perPage: number = 10;
-    type: string = 'advanced';
+    count = 210;
+    page = 10;
+    perPage = 10;
+    type = 'advanced';
 }
 
 @Component({
@@ -428,9 +428,9 @@ class AdvancedPaginationBeginat10 extends PaginationTest {
     `,
 })
 class SimplePaginationBeginat10 extends PaginationTest {
-    count: number = 210;
-    page: number = 10;
-    perPage: number = 10;
+    count = 210;
+    page = 10;
+    perPage = 10;
 }
 
 @Component({
@@ -447,8 +447,8 @@ class SimplePaginationBeginat10 extends PaginationTest {
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: customTexts }],
 })
 class LocalizationToken extends PaginationTest {
-    count: number = 210;
-    perPage: number = 10;
+    count = 210;
+    perPage = 10;
 }
 
 @Component({
@@ -467,8 +467,8 @@ class LocalizationToken extends PaginationTest {
 })
 class SimplePaginationWithDirection extends PaginationTest {
     direction: Direction = 'ltr';
-    count: number = 210;
-    perPage: number = 10;
+    count = 210;
+    perPage = 10;
 }
 
 @Component({
@@ -489,7 +489,7 @@ class SimplePaginationWithDirection extends PaginationTest {
 })
 class AdvancedPaginationWithDirection extends PaginationTest {
     direction: Direction = 'ltr';
-    count: number = 210;
-    perPage: number = 10;
-    type: string = 'advanced';
+    count = 210;
+    perPage = 10;
+    type = 'advanced';
 }

@@ -15,7 +15,7 @@ const DEFAULT_TYPE = 'primary';
 /** @docs-private */
 @Directive()
 export class NxButtonBase implements NxTriggerButton, OnDestroy {
-    private _classNames: string = '';
+    private _classNames = '';
 
     /** @docs-private */
     @HostBinding('class.nx-button--primary') get isPrimary(): boolean {
@@ -82,12 +82,12 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
     /** @docs-private */
     size: NxButtonSize = DEFAULT_SIZE;
 
-    danger: boolean = false;
-    negative: boolean = false;
-    block: boolean = false;
+    danger = false;
+    negative = false;
+    block = false;
     @HostBinding('class.nx-button--active')
-    active: boolean = false;
-    private _disabled: boolean = false;
+    active = false;
+    private _disabled = false;
 
     @Input()
     set disabled(value: BooleanInput) {
@@ -105,7 +105,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 
-    public set classNames(value: string) {
+    set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -125,7 +125,7 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         this._cdr.markForCheck();
     }
 
-    public get classNames(): string {
+    get classNames(): string {
         return this._classNames;
     }
 

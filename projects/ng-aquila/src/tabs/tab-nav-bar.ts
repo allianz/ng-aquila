@@ -38,7 +38,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
     @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons!: QueryList<HTMLElement>;
 
-    private _negative: boolean = false;
+    private _negative = false;
 
     /** Whether the tab nav bar has negative styling. */
     @Input()
@@ -54,7 +54,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         return this._negative;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     /** Whether the tab nav bar has disabled styling. */
     @Input()
@@ -110,8 +110,8 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     },
 })
 export class NxTabLinkDirective implements OnDestroy {
-    private _active: boolean = false;
-    private _disabled: boolean = false;
+    private _active = false;
+    private _disabled = false;
 
     /** Whether the tab link is active and has the active styling. */
     @Input()

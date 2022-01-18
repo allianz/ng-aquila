@@ -12,8 +12,8 @@ import { ManifestService } from '../../../service/manifest.service';
     styleUrls: ['guide-view.component.scss'],
 })
 export class NxvGuideViewComponent {
-    public guide!: GuideDescriptor;
-    public guides: string[] = [];
+    guide!: GuideDescriptor;
+    guides: string[] = [];
 
     constructor(
         _route: ActivatedRoute,

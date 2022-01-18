@@ -68,7 +68,7 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
      * it here for sometime, just for precaution, in case we decide to revert some of these changes
      * though.
      */
-    useUtcForDisplay: boolean = true;
+    useUtcForDisplay = true;
 
     constructor(@Optional() @Inject(NX_DATE_LOCALE) matDateLocale: string, platform: Platform) {
         super();

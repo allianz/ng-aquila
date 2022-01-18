@@ -11,5 +11,5 @@ let uniqueId = 0;
 })
 export class NxFormfieldHintDirective {
     /** Sets the id of the formfield hint. */
-    @Input() id: string = `nx-formfield-hint-${uniqueId++}`;
+    @Input() id = `nx-formfield-hint-${uniqueId++}`;
 }

@@ -10,7 +10,7 @@ export class NxCodeInputIntl {
     readonly changes: Subject<void> = new Subject<void>();
 
     /** Label that should replace the 'Enter key' of the aria-label. */
-    inputFieldAriaLabel: string = 'Enter Key';
+    inputFieldAriaLabel = 'Enter Key';
 
     /** Label that should replace the 'of' of the aria-label. */
     ofLabel?: string = 'of';

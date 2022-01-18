@@ -20,7 +20,7 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
 
     viewportServiceSubscription: Subscription;
 
-    showMobileView: boolean = false;
+    showMobileView = false;
 
     feedbackLinkPositive!: string;
     feedbackLinkNegative!: string;

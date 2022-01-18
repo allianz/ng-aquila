@@ -6,7 +6,7 @@ import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.s
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 @Directive()

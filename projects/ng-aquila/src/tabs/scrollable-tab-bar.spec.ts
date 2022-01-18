@@ -7,7 +7,7 @@ import { NxTabGroupComponent } from './tab-group';
 import { NxTabNavBarComponent } from './tab-nav-bar';
 import { NxTabsModule } from './tabs.module';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 @Directive()

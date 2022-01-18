@@ -190,7 +190,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      * The id for the datepicker calendar.
      */
-    id: string = `nx-datepicker-${datepickerUid++}`;
+    id = `nx-datepicker-${datepickerUid++}`;
 
     /**
      * @docs-private

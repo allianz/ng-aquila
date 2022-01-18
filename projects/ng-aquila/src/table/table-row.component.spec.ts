@@ -236,8 +236,8 @@ class BasicTableRowComponent extends TableRowTest {}
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class SelectableTableRowComponent extends TableRowTest {
-    selectable: boolean = true;
-    selected: boolean = false;
+    selectable = true;
+    selected = false;
 
     onSelect() {
         this.selected = !this.selected;

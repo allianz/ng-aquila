@@ -15,8 +15,8 @@ export class NxFileUploaderDropZoneComponent {
     @Output() fileDropped: EventEmitter<File[]> = new EventEmitter<File[]>();
 
     // flag when the drop zone is hovered
-    private _active: boolean = false;
-    private _disabled: boolean = false;
+    private _active = false;
+    private _disabled = false;
 
     constructor(private _cdr: ChangeDetectorRef) {}
 
@@ -33,7 +33,7 @@ export class NxFileUploaderDropZoneComponent {
 
     /** @docs-private */
     @HostListener('drop', ['$event'])
-    public onDrop(event: any): void {
+    onDrop(event: any): void {
         event.preventDefault();
 
         if (this.disabled) {

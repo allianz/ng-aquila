@@ -18,19 +18,19 @@ const createKeyboardEvent = (keyCode: number) => {
 @Directive()
 abstract class SliderTest {
     @ViewChild(NxSliderComponent) sliderInstance!: NxSliderComponent;
-    stepSize: number = 1;
-    min: number = 0;
-    max: number = 10;
-    value: number = 0;
-    width: number = 100;
-    thumbLabel: boolean = false;
-    hideLabels: boolean = true;
+    stepSize = 1;
+    min = 0;
+    max = 10;
+    value = 0;
+    width = 100;
+    thumbLabel = false;
+    hideLabels = true;
 }
 
-declare type Coordinates = {
+interface Coordinates {
     x: number;
     y: number;
-};
+}
 
 describe('NxSliderComponent', () => {
     let fixture: ComponentFixture<SliderTest>;

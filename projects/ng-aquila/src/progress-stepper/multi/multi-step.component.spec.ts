@@ -237,7 +237,7 @@ describe('NxMultiStepperComponent', () => {
         });
 
         it('renders the groups', () => {
-            const groups: Array<any> = Array.from(multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'));
+            const groups: any[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'));
 
             expect(groups.length).toBe(2);
 
@@ -248,7 +248,7 @@ describe('NxMultiStepperComponent', () => {
         });
 
         it('renders the steps', () => {
-            const steps: Array<any> = Array.from(multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
+            const steps: any[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
 
             steps.forEach((step: HTMLElement) => {
                 expect(step.classList.contains('.nx-multi-step-item--vertical'));
@@ -456,5 +456,5 @@ class MultiStepBasicTest extends MultiStepTest {}
     `,
 })
 class MultiStepGroupTest extends MultiStepTest {
-    completedOne: boolean = false;
+    completedOne = false;
 }

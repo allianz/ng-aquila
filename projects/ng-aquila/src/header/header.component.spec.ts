@@ -6,7 +6,7 @@ import { NxHeaderModule } from './header.module';
 @Directive()
 abstract class HeaderTest {
     @ViewChild(NxHeaderComponent) headerInstance!: NxHeaderComponent;
-    showSeparator: boolean = false;
+    showSeparator = false;
 }
 
 describe(NxHeaderComponent.name, () => {

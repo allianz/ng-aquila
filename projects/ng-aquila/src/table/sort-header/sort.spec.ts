@@ -25,7 +25,7 @@ abstract class SortHeaderTest {
     @ViewChild('nameHeader') nameHeader!: NxSortHeaderComponent;
     @ViewChild('countHeader') countHeader!: NxSortHeaderComponent;
 
-    active: string = 'name';
+    active = 'name';
     direction: SortDirection = 'desc';
     data: DataStructure[] = [
         { name: 'rabbit', count: 5 },

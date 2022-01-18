@@ -7,7 +7,7 @@ import { BANNER_CONTEXT, NxMessageBannerComponent } from './message-banner.compo
 
 @Directive()
 abstract class MessageBannerTest {
-    public context: BANNER_CONTEXT = 'info';
+    context: BANNER_CONTEXT = 'info';
 
     @ViewChild(NxMessageBannerComponent) componentInstance!: NxMessageBannerComponent;
     @ViewChild(NxMessageBannerComponent, { read: ElementRef }) formInscomponentInstanceRef!: ElementRef;

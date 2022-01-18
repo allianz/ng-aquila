@@ -48,21 +48,21 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     protected _previousNativeValue: any;
     protected _disabled = false;
     protected _required = false;
-    private _readonly: boolean = false;
+    private _readonly = false;
     private _inputValueAccessor: { value: any };
-    public _ariaDescribedby!: string;
+    _ariaDescribedby!: string;
     private _placeholder!: string;
 
     @Input('nxAriaLabel') _ariaLabel!: string;
 
     /** @docs-private */
-    errorState: boolean = false;
+    errorState = false;
 
     /**
      * Name of this control that is used inside the formfield component
      * @docs-private
      */
-    controlType: string = 'nx-input';
+    controlType = 'nx-input';
 
     /**
      * @docs-private
@@ -172,7 +172,8 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         @Optional() @Self() @Inject(NX_INPUT_VALUE_ACCESSOR) inputValueAccessor: any,
         private _autofillMonitor: AutofillMonitor,
     ) {
-        this.id = this.id;
+        const id = this.id;
+        this.id = id; // invoke setter
 
         // This will enable other directives to plugin itself as the value accessor
         // by using the NX_INPUT_VALUE_ACCESSOR Token. Default is the given input field.

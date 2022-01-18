@@ -21,9 +21,9 @@ import { NxComparisonTableBase } from '../comparison-table-base';
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
     private _destroyed = new Subject();
 
-    private _selectedLabel: string = 'Selected';
+    private _selectedLabel = 'Selected';
 
-    _ariaPressed: boolean = false;
+    _ariaPressed = false;
 
     /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */
     @Input()
@@ -34,7 +34,7 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
         return this._selectedLabel;
     }
 
-    private _unselectedLabel: string = 'Select';
+    private _unselectedLabel = 'Select';
 
     /** Sets the label that is displayed when the column is not selected. Default: 'Select'. */
     @Input()
@@ -45,7 +45,7 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
         return this._unselectedLabel;
     }
 
-    private _unselectedClassNames: string = 'secondary small';
+    private _unselectedClassNames = 'secondary small';
 
     /** Sets the classNames (style, size and negative) of the unselected button. Default: 'secondary small'. */
     @Input()
@@ -59,7 +59,7 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
         return this._unselectedClassNames;
     }
 
-    private _selectedClassNames: string = 'primary small';
+    private _selectedClassNames = 'primary small';
 
     /** Sets the classNames (style, size and negative) of the selected button. Default: 'primary small'. */
     @Input()

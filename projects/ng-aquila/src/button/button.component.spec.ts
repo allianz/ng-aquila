@@ -12,9 +12,9 @@ abstract class ButtonTest {
 
     buttonType: NxButtonType = 'primary';
     buttonSize: NxButtonSize = 'medium';
-    danger: string = '';
-    negative: string = '';
-    block: string = '';
+    danger = '';
+    negative = '';
+    block = '';
 
     get classNames(): string {
         return `${this.buttonType} ${this.buttonSize} ${this.danger} ${this.negative} ${this.block}`;

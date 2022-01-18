@@ -27,7 +27,7 @@ export type NxConversionTypes = 'lower' | 'upper';
 })
 export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     /** Whether the current input of the component has an error. */
-    errorState: boolean = false;
+    errorState = false;
 
     /** The length of the code input. Default: 6. */
     @Input('length')
@@ -50,8 +50,8 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     get type() {
         return this._type;
     }
-    private _type: string = 'text';
-    private _isUpDown: boolean = false;
+    private _type = 'text';
+    private _isUpDown = false;
 
     /** Sets the tabindex of the contained input elements. */
     @Input()
@@ -62,7 +62,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     get tabindex(): number {
         return this._tabindex;
     }
-    private _tabindex: number = 0;
+    private _tabindex = 0;
 
     /** Whether the form should auto capitalize or lowercase (optional). */
     @Input('nxConvertTo')
@@ -77,7 +77,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
     /** The user input in array form */
     _keyCode: string[] = new Array(DEFAULT_INPUT_LENGTH);
-    private _focused: boolean = false;
+    private _focused = false;
 
     /** Whether the code input uses the negative set of styling. */
     @Input()
@@ -92,7 +92,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         return this._negative;
     }
 
-    private _negative: boolean = false;
+    private _negative = false;
 
     /** Whether the code input is disabled. */
     @Input()
@@ -107,7 +107,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         return this._disabled;
     }
 
-    private _disabled: boolean = false;
+    private _disabled = false;
 
     constructor(
         private _cdr: ChangeDetectorRef,
@@ -220,7 +220,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     _selectNextInput(event: Event): void {
         const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
         eventTarget.value = this._convertLetterSize(eventTarget.value.slice(0, 1)) as string;
-        const currentIndex: number = Number(this._getFocusedInputIndex(event));
+        const currentIndex = Number(this._getFocusedInputIndex(event));
         // save in model with uppercase if needed
         this._keyCode[currentIndex] = eventTarget.value;
         this.propagateChange(this._keyCode.join(''));
@@ -246,7 +246,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     _pasteClipboard(event: ClipboardEvent): void {
         let copiedText = (event.clipboardData || (window as any).clipboardData).getData('text');
         let copiedTextIndex = 0;
-        const inputIndex: number = Number(this._getFocusedInputIndex(event));
+        const inputIndex = Number(this._getFocusedInputIndex(event));
 
         copiedText = this.type === 'number' ? this._formatNumberInput(copiedText) : copiedText;
 
@@ -343,9 +343,9 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
             case 8:
                 if (index === this.codeLength / 2) {
                     return INPUT_FIELD_GAP;
-                } else {
-                    return '';
                 }
+                return '';
+
             default:
                 return '';
         }

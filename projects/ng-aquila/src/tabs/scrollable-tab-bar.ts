@@ -2,8 +2,8 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, OnDestroy, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-const SPACE_BETWEEN_TABS: number = 32;
-const START_BUTTON_WIDTH: number = 40;
+const SPACE_BETWEEN_TABS = 32;
+const START_BUTTON_WIDTH = 40;
 
 /** @docs-private */
 @Directive()
@@ -12,8 +12,8 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     scrollableTabsList!: ElementRef<HTMLElement>;
     tabButtons!: QueryList<HTMLElement>;
 
-    _isScrolledToStart: boolean = true;
-    _isScrolledToEnd: boolean = true;
+    _isScrolledToStart = true;
+    _isScrolledToEnd = true;
     private _dirChangeSubscription = Subscription.EMPTY;
 
     constructor(public _cdr: ChangeDetectorRef, private _dir: Directionality, private _element: ElementRef) {
@@ -93,10 +93,9 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
                 newPosition -= currentChildWidth;
                 this._scrollTabListTo(this.direction === 'ltr' ? newPosition : -newPosition);
                 return;
-            } else {
-                // current and previous child fit: continue
-                newPosition -= currentChildWidth + SPACE_BETWEEN_TABS;
             }
+            // current and previous child fit: continue
+            newPosition -= currentChildWidth + SPACE_BETWEEN_TABS;
         }
     }
 
@@ -131,10 +130,9 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
                 }
                 this._scrollTabListTo(this.direction === 'ltr' ? newPosition : -newPosition);
                 return;
-            } else {
-                // current and next element are fully visible: add width of current element and continue
-                newPosition += currentChildWidth + SPACE_BETWEEN_TABS;
             }
+            // current and next element are fully visible: add width of current element and continue
+            newPosition += currentChildWidth + SPACE_BETWEEN_TABS;
         }
     }
 
@@ -151,20 +149,20 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
         }
 
         // scrollable
-        if (this.scrollableTabsList?.nativeElement.scrollLeft === 0 && this._isScrolledToStart !== true) {
+        if (this.scrollableTabsList?.nativeElement.scrollLeft === 0 && !this._isScrolledToStart) {
             this._isScrolledToStart = true;
             this._cdr.markForCheck();
-        } else if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0 && this._isScrolledToStart !== false) {
+        } else if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0 && this._isScrolledToStart) {
             this._isScrolledToStart = false;
             this._cdr.markForCheck();
         }
 
         const scrollRight = Math.round(Math.abs(scrollListElement.scrollLeft) + scrollListElement.getBoundingClientRect().width);
 
-        if (scrollRight === scrollListElement.scrollWidth && this._isScrolledToEnd !== true) {
+        if (scrollRight === scrollListElement.scrollWidth && !this._isScrolledToEnd) {
             this._isScrolledToEnd = true;
             this._cdr.markForCheck();
-        } else if (scrollRight !== scrollListElement.scrollWidth && this._isScrolledToEnd !== false) {
+        } else if (scrollRight !== scrollListElement.scrollWidth && this._isScrolledToEnd) {
             this._isScrolledToEnd = false;
             this._cdr.markForCheck();
         }

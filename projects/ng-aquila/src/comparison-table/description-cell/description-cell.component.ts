@@ -12,7 +12,7 @@ export class NxComparisonTableDescriptionCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
     @ViewChild('mobileCell') _mobileCell!: ElementRef;
 
-    private _id: string = `nx-comparison-table-description-cell-${nextId++}`;
+    private _id = `nx-comparison-table-description-cell-${nextId++}`;
 
     /** Sets the Id of the description cell. */
     @Input()

@@ -8,7 +8,7 @@ import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group
 import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
 import { NxComparisonTableModule } from './comparison-table.module';
 
-declare var viewport: any;
+declare let viewport: any;
 const THROTTLE_TIME = 200;
 
 const comparisonTableDefaultOptions: ComparisonTableDefaultOptions = {
@@ -17,11 +17,11 @@ const comparisonTableDefaultOptions: ComparisonTableDefaultOptions = {
 
 @Directive()
 abstract class RowGroupTest {
-    visibleRows: number = 2;
-    labelCollapsed: string = 'To be opened';
-    labelExpanded: string = 'To be closed';
-    isExpanded: boolean = false;
-    useFullRowForExpandableArea: boolean = false;
+    visibleRows = 2;
+    labelCollapsed = 'To be opened';
+    labelExpanded = 'To be closed';
+    isExpanded = false;
+    useFullRowForExpandableArea = false;
     @ViewChild(NxComparisonTableRowGroupDirective) rowGroupDirective!: NxComparisonTableRowGroupDirective;
 }
 
