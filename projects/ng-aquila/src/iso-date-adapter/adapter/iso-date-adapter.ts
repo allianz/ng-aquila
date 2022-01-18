@@ -6,6 +6,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import localeData from 'dayjs/plugin/localeData';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
+import { convertToDayjsLocale } from './dayjs-locale-utils';
 
 dayjs.extend(localeData);
 dayjs.extend(customParseFormat);
@@ -38,6 +39,8 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         narrowDaysOfWeek: string[];
     };
 
+    private _dayjsLocale!: string;
+
     constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string) {
         super();
         this.setLocale(dateLocale || dayjs.locale());
@@ -52,17 +55,17 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
 
         // TODO should we accept that or only take strings?
         if (value instanceof Date) {
-            date = dayjs(value).locale(this.locale);
+            date = dayjs(value).locale(this._dayjsLocale);
         }
         if (typeof value === 'string') {
             if (!value) {
                 return null;
             }
-            date = dayjs(value).locale(this.locale);
+            date = dayjs(value).locale(this._dayjsLocale);
         }
 
         if (date && this.isValid(date.toString())) {
-            return dayjs(date).locale(this.locale).format(ISO_STRING_FORMAT);
+            return dayjs(date).locale(this._dayjsLocale).format(ISO_STRING_FORMAT);
         }
 
         return super.deserialize(value);
@@ -79,10 +82,10 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
      * see https://github.com/iamkun/dayjs/issues/694#issuecomment-543209946
      */
     normalizeFormat(format: string | string[]): string[] {
-        const availableLocalFormats: { [key: string]: any } = dayjs.Ls[this.locale]?.formats;
+        const availableLocalFormats: { [key: string]: any } = dayjs.Ls[this._dayjsLocale]?.formats;
         if (!availableLocalFormats) {
             throw new Error(
-                `NxIsoDateAdapter: The used locale "${this.locale}" is not available in this day.js instance. Please make sure the locale is imported.`,
+                `NxIsoDateAdapter: The used locale "${this._dayjsLocale}" is not available in this day.js instance. Please make sure the locale is imported.`,
             );
         }
         let normalizedFormat = format;
@@ -108,7 +111,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         const normalizedFormats = this.normalizeFormat(format);
         if (value && typeof value === 'string') {
             if (strict) {
-                obj = dayjs(value, normalizedFormats, this.locale, true);
+                obj = dayjs(value, normalizedFormats, this._dayjsLocale, true);
             } else {
                 // The non strict parsing of day.js is rather strict when it comes to separators.
                 // For example, this format: YYYY-MM-DD still requires the user to type in the -
@@ -117,7 +120,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
                 const formatsWithoutSeparators = [...normalizedFormats].map(normalizedformat => {
                     return normalizedformat.replace(/[^\w]/g, '');
                 });
-                obj = dayjs(value, [...formatsWithoutSeparators, ...normalizedFormats], this.locale, false);
+                obj = dayjs(value, [...formatsWithoutSeparators, ...normalizedFormats], this._dayjsLocale, false);
             }
         }
 
@@ -228,7 +231,8 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
     }
 
     setLocale(locale: string) {
-        const data = dayjs().locale(locale).localeData();
+        this._dayjsLocale = convertToDayjsLocale(locale);
+        const data = dayjs().locale(this._dayjsLocale).localeData();
 
         this._localeData = {
             firstDayOfWeek: data.firstDayOfWeek(),
@@ -244,7 +248,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
     }
 
     private _createDayjs(value: string) {
-        return dayjs.utc(value).locale(this.locale);
+        return dayjs.utc(value).locale(this._dayjsLocale);
     }
 
     private _createString(year: number, month: number, date: number) {

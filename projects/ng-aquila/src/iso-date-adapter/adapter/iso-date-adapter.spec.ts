@@ -53,6 +53,15 @@ describe('NxIsoDateAdapter', () => {
         });
     });
 
+    describe('Localization with locale id that is unknown to dayjs', () => {
+        it('should automatically fall back to a locale that is known to dayjs', () => {
+            // 'de-BY' is unknwon to dayjs (and the world). The IsoDateAdapter should fall back to 'de'.
+            adapter.setLocale('de-BY');
+            const date = adapter.parse('01.12.2020', 'MM.DD.YYYY', true);
+            expect(date).toBe('2020-01-12');
+        });
+    });
+
     describe('Localization with a different format between global day.js and the adapter', () => {
         beforeEach(() => {
             adapter.setLocale('de');
