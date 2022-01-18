@@ -23,32 +23,34 @@ function compileSchematics() {
     rimraf.sync('./dist/ng-aquila/schematics');
 
     execSync(`tsc -p ./projects/ng-aquila/tsconfig.schematics.json`, { stdio: 'inherit' });
-    console.log('Copying schematic assets');
+    console.log('============================');
+    console.log('  Copying schematic assets');
     cpx.copySync('./projects/ng-aquila/src/schematics/**/*.json', './dist/ng-aquila/schematics');
 }
 
-console.log('====================');
+console.log('============================');
 console.log('  Building themes');
 opensourceThemes.forEach(theme => {
     compileTheme(theme);
 });
 
-console.log('========================');
+console.log('============================');
 console.log('  Building utility css');
 ['utilities', 'normalize', 'compatibility'].forEach(file => {
     execSync(`sass --no-source-map projects/ng-aquila/src/shared-styles/${file}.scss dist/ng-aquila/css/${file}.css`, { stdio: 'inherit' });
 });
 
-console.log('========================');
+console.log('============================');
 console.log('  Building schematics');
 compileSchematics();
 
-console.log('========================');
+console.log('============================');
 console.log('  Copying scss sources');
 cpx.copy(`projects/ng-aquila/src/shared-styles/theming/**/*`, `dist/ng-aquila/styles`);
 
-console.log('========================');
+console.log('============================');
 console.log('  Copying other assets');
+
 cpx.copy('README.md', 'dist/ng-aquila');
 cpx.copy('LICENSE', 'dist/ng-aquila');
 cpx.copy('./projects/ng-aquila/src/schematics/*/files/**', './dist/ng-aquila/schematics');
