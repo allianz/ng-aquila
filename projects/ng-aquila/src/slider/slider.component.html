@@ -1,33 +1,33 @@
 <label class="nx-slider__label" [id]="id + '-label'" [attr.for]="id + '-handle'" (click)="_focusHandleElement()">{{ label }}</label>
 
-<div class="nx-slider__wrapper" (click)="sliderClick($event)">
+<div class="nx-slider__wrapper" (click)="_sliderClick($event)">
     <span class="nx-slider__background">
-        <span class="nx-slider__filler" [style.width.%]="percentageValue"></span>
-
-        <div
-            class="nx-slider__handle"
-            [id]="id + '-handle'"
-            [attr.tabindex]="tabindex"
-            [attr.aria-labelledby]="id + '-label'"
-            role="slider"
-            [attr.aria-valuemin]="formatLabelMin()"
-            [attr.aria-valuemax]="formatLabelMax()"
-            [attr.aria-valuetext]="formatValue(value)"
-            [attr.aria-valuenow]="formatValue(value)"
-            (mousedown)="dragStart($event)"
-            (touchstart)="dragStart($event)"
-            (selectstart)="selectStart()"
-            #handle
-        >
-            <span *ngIf="thumbLabel" class="nx-slider__value"
-                >{{ formatValue(value) }}
-                <div class="nx-slider__arrow"> </div>
-            </span>
-        </div>
+        <span class="nx-slider__filler" [style.width.%]="_percentageValue">
+            <div
+                class="nx-slider__handle"
+                [id]="id + '-handle'"
+                [attr.tabindex]="tabindex"
+                [attr.aria-labelledby]="id + '-label'"
+                role="slider"
+                [attr.aria-valuemin]="_formatLabelMin()"
+                [attr.aria-valuemax]="_formatLabelMax()"
+                [attr.aria-valuetext]="_formatValue(value)"
+                [attr.aria-valuenow]="_formatValue(value)"
+                (mousedown)="_dragStart()"
+                (touchstart)="_dragStart()"
+                (selectstart)="_selectStart()"
+                #handle
+            >
+                <ng-container *ngIf="thumbLabel">
+                    <span [style.transform]="_labelPosition" class="nx-slider__value">{{ _formatValue(value) }} </span>
+                    <div class="nx-slider__arrow"> </div>
+                </ng-container>
+            </div>
+        </span>
     </span>
 </div>
 
 <div *ngIf="!hideLabels" class="nx-slider__label-container">
-    <span class="nx-slider__value-label">{{ formatLabelLeft() }}</span>
-    <span class="nx-slider__value-label">{{ formatLabelRight() }}</span>
+    <span class="nx-slider__value-label">{{ _formatLabelLeft() }}</span>
+    <span class="nx-slider__value-label">{{ _formatLabelRight() }}</span>
 </div>

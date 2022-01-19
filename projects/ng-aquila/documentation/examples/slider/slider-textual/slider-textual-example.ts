@@ -20,7 +20,7 @@ export class SliderTextualExampleComponent {
     fruitPreferenceFormatter: Function = (value: FruitPreferenceType) => {
         switch (value) {
             case FruitPreferenceType.NEVER:
-                return 'never';
+                return 'I never prefer apples';
             case FruitPreferenceType.RARELY:
                 return 'rarely';
             case FruitPreferenceType.SOMETIMES:
@@ -28,7 +28,7 @@ export class SliderTextualExampleComponent {
             case FruitPreferenceType.OFTEN:
                 return 'often';
             case FruitPreferenceType.ALWAYS:
-                return 'always';
+                return 'I always prefer apples';
         }
     };
     minFruitPreferenceFormatter: Function = () => `never`;

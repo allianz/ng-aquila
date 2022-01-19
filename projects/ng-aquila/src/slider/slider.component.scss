@@ -16,7 +16,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
 .nx-slider__label {
     @include type-style(slider-label);
-    @include var(color, slider-label-color);
+    color: v(slider-label-color);
 }
 
 .nx-slider__wrapper {
@@ -26,7 +26,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
 .nx-slider__background {
     position: relative;
-    @include var(background-color, slider-background-color);
+    background-color: v(slider-background-color);
     display: block;
     height: nx-spacer(3xs);
     border-radius: nx-border-radius(xs);
@@ -38,8 +38,9 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     display: inline-block;
     height: $background-height;
     border-radius: nx-border-radius(xs);
-    @include var(background-color, slider-indicator-color);
+    background-color: v(slider-indicator-color);
     float: left;
+    position: relative;
 
     :host-context([dir='rtl']) & {
         float: right;
@@ -47,30 +48,31 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 }
 
 .nx-slider__handle {
-    display: inline-block;
-    position: relative;
+    position: absolute;
     width: $handle-diameter;
     height: $handle-diameter;
+    right: 0;
+    transform: translateX(50%);
     border-radius: 50%;
     box-shadow: v(shadow-small);
     border-style: solid;
     border-width: nx-border-size(xs);
-    @include var(border-color, slider-handle-border-color);
-    @include var(background, slider-handle-background-color);
+    border-color: v(slider-handle-border-color);
+    background: v(slider-handle-background-color);
     box-sizing: border-box;
-    margin-left: -(nx-spacer(xs));
     top: -(($handle-diameter - $background-height) * 0.5);
     z-index: 2;
     cursor: grab;
 
     :host-context([dir='rtl']) & {
-        margin-right: -(nx-spacer(xs));
-        margin-left: initial;
+        left: 0;
+        right: auto;
+        transform: translateX(-50%);
     }
 
     &:focus {
         outline: none;
-        @include var(border-color, slider-handle-focus-border-color);
+        border-color: v(slider-handle-focus-border-color);
     }
 
     &:active {
@@ -79,38 +81,30 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     }
 
     &.cdk-keyboard-focused {
-        @include var(border-color, slider-handle-focus-border-color);
+        border-color: v(slider-handle-focus-border-color);
         @include focus-style;
     }
 }
 
 .nx-slider__value {
+    display: block;
+    position: absolute;
     @include type-style(slider-handle-value);
-    @include var(color, slider-handle-value-color);
+    color: v(slider-handle-value-color);
     border: $value-border;
-    @include var(border-color, slider-handle-border-color);
+    border-color: v(slider-handle-border-color);
     border-radius: nx-border-radius(s);
     box-shadow: v(shadow-small);
     cursor: grab;
     height: $value-height;
-    width: $value-width;
+    min-width: $value-width;
     text-align: center;
-    right: nx-spacer(2xs);
     $padding-top-bottom: (nx-spacer(3xs) - nx-border-size(xs));
     padding: $padding-top-bottom nx-spacer(2xs);
-    position: relative;
     top: $value-top;
-    // legacy-browser friendly alternative to "width: fit-content"
-    display: table;
-    left: 50%;
+    background: v(slider-value-background-color);
+    left: $handle-diameter / 2;
     transform: translateX(-50%);
-    @include var(background, slider-value-background-color);
-
-    :host-context([dir='rtl']) & {
-        right: 50%;
-        left: nx-spacer(2xs);
-        transform: translateX(50%);
-    }
 
     &:active {
         cursor: grabbing;
@@ -123,11 +117,12 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     border-right: $value-border;
     border-bottom: $value-border;
     left: 50%;
-    transform: translate(-50%, 1px) rotate(45deg);
+    top: $value-top + $value-height - $arrow-size;
+    transform: translate(-50%, 3px) rotate(45deg);
     position: absolute;
     box-shadow: -2px -2px 1px 1px v(slider-value-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) v(shadow-grey-color);
-    @include var(background, slider-value-background-color);
-    @include var(border-color, slider-handle-border-color);
+    background: v(slider-value-background-color);
+    border-color: v(slider-handle-border-color);
 }
 
 .nx-slider__label-container {
@@ -135,7 +130,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     width: 100%;
     justify-content: space-between;
     @include type-style(slider-value-label);
-    @include var(color, slider-value-label-color);
+    color: v(slider-value-label-color);
 }
 
 .nx-slider__max-value-label {
@@ -156,28 +151,28 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
     .nx-slider__value,
     .nx-slider__handle {
-        @include var(background-color, slider-value-disabled-background-color);
+        background-color: v(slider-value-disabled-background-color);
     }
 
     .nx-slider__filler {
-        @include var(background-color, slider-indicator-disabled-color);
+        background-color: v(slider-indicator-disabled-color);
     }
 
     .nx-slider__value {
-        @include var(color, slider-handle-value-disabled-color);
+        color: v(slider-handle-value-disabled-color);
     }
 
     .nx-slider__label-container {
-        @include var(color, slider-value-label-disabled-color);
+        color: v(slider-value-label-disabled-color);
     }
 
     .nx-slider__arrow {
-        @include var(background, slider-value-disabled-background-color);
+        background: v(slider-value-disabled-background-color);
         box-shadow: -2px -2px 1px 1px v(slider-value-disabled-background-color), nx-spacer(4xs) nx-spacer(4xs) nx-spacer(3xs) rgba(65, 65, 65, 0.5);
     }
 
     .nx-slider__background {
-        @include var(background, slider-disabled-background-color);
+        background: v(slider-disabled-background-color);
     }
 }
 
@@ -185,15 +180,15 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 :host(.nx-slider--negative) {
     .nx-slider__label,
     .nx-slider__value-label {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-slider__filler {
-        @include var(background-color, negative);
+        background-color: v(negative);
     }
 
     .nx-slider__background {
-        @include var(background-color, slider-negative-background-color);
+        background-color: v(slider-negative-background-color);
     }
 }
 
@@ -201,11 +196,11 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 :host(.nx-slider--negative.nx-slider--disabled) {
     .nx-slider__label,
     .nx-slider__value-label {
-        @include var(color, negative-01);
+        color: v(negative-01);
     }
 
     .nx-slider__filler {
-        @include var(background-color, negative-01);
+        background-color: v(negative-01);
     }
 }
 

@@ -73,14 +73,8 @@ describe('NxSliderComponent', () => {
      * Helper function to fake a slide event
      * Creates all relevant mouse events and dispatches them
      */
-    const dispatchSlideEvent = (start: Coordinates, finish: Coordinates) => {
-        const event = new MouseEvent('mousedown', {
-            screenX: start.x,
-            clientX: start.x,
-            screenY: start.y,
-            clientY: start.y,
-        });
-        sliderInstance.dragStart(event);
+    const dispatchSlideEvent = (finish: Coordinates) => {
+        sliderInstance._dragStart();
         const dragEvent = new MouseEvent('mousemove', {
             screenX: finish.x,
             clientX: finish.x,
@@ -146,17 +140,17 @@ describe('NxSliderComponent', () => {
             testInstance.max = 110;
             testInstance.value = 60;
             fixture.detectChanges();
-            expect(sliderInstance.percentageValue).toBe(50);
+            expect(sliderInstance._percentageValue).toBe(50);
         });
 
         it('should clamp the percentage', () => {
             createTestComponent(ConfigurableSlider);
             testInstance.value = 1000;
             fixture.detectChanges();
-            expect(sliderInstance.percentageValue).toBe(100);
+            expect(sliderInstance._percentageValue).toBe(100);
             testInstance.value = -1000;
             fixture.detectChanges();
-            expect(sliderInstance.percentageValue).toBe(0);
+            expect(sliderInstance._percentageValue).toBe(0);
         });
 
         it('should correctly set the value on click', () => {
@@ -167,12 +161,11 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             const value = sliderInstance.value;
             expect(value).toBe(20);
-            expect(sliderInstance.percentageValue).toBe(20);
+            expect(sliderInstance._percentageValue).toBe(20);
         });
 
         it('should stay within range', () => {
@@ -181,13 +174,13 @@ describe('NxSliderComponent', () => {
             expect(sliderInstance.value).toBe(0);
 
             const leftArrowEvent = createKeyboardEvent(LEFT_ARROW);
-            sliderInstance.handleKeypress(leftArrowEvent);
+            sliderInstance._handleKeypress(leftArrowEvent);
             expect(sliderInstance.value).toBe(0);
 
             sliderInstance.value = 100;
 
             const rightArrowEvent = createKeyboardEvent(RIGHT_ARROW);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             expect(sliderInstance.value).toBe(100);
         });
 
@@ -197,24 +190,24 @@ describe('NxSliderComponent', () => {
             // minimum is valid step
             testInstance.value = 1;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(true);
+            expect(sliderInstance._isValidStep()).toBe(true);
             // all multitudes are valid
             testInstance.value = 3;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(true);
+            expect(sliderInstance._isValidStep()).toBe(true);
             testInstance.value = 2.5;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(false);
+            expect(sliderInstance._isValidStep()).toBe(false);
             testInstance.stepSize = 0.28;
             testInstance.value = 1.28;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(true);
+            expect(sliderInstance._isValidStep()).toBe(true);
             testInstance.value = 2.12;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(true);
+            expect(sliderInstance._isValidStep()).toBe(true);
             testInstance.value = 1.5;
             fixture.detectChanges();
-            expect(sliderInstance.isValidStep()).toBe(false);
+            expect(sliderInstance._isValidStep()).toBe(false);
         });
 
         it('should snap to the nearest valid step on click', () => {
@@ -230,12 +223,11 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             let value = sliderInstance.value;
             expect(value).toBe(30);
-            expect(sliderInstance.percentageValue).toBe(30);
+            expect(sliderInstance._percentageValue).toBe(30);
 
             event = new MouseEvent('MouseEvent', {
                 screenX: 230,
@@ -243,12 +235,11 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             value = sliderInstance.value;
             expect(value).toBe(20);
-            expect(sliderInstance.percentageValue).toBe(20);
+            expect(sliderInstance._percentageValue).toBe(20);
         });
 
         it('should snap to the nearest valid step on keyboard event', () => {
@@ -260,7 +251,7 @@ describe('NxSliderComponent', () => {
             fixture.detectChanges();
 
             const leftArrowEvent = createKeyboardEvent(LEFT_ARROW);
-            sliderInstance.handleKeypress(leftArrowEvent);
+            sliderInstance._handleKeypress(leftArrowEvent);
             expect(sliderInstance.value).toBe(9.96);
         });
 
@@ -272,21 +263,20 @@ describe('NxSliderComponent', () => {
             testInstance.width = 1000;
             fixture.detectChanges();
 
-            dispatchSlideEvent({ x: 0, y: 10 }, { x: 260, y: 10 });
-            sliderInstance.valueByPosition();
+            dispatchSlideEvent({ x: 260, y: 10 });
 
             expect(sliderInstance.value).toBe(30);
         });
 
-        it('isMinimum is true when the value equals nxMin', () => {
+        it('_isMinimum is true when the value equals nxMin', () => {
             createTestComponent(ConfigurableSlider);
             testInstance.min = 2;
             testInstance.value = 2;
             fixture.detectChanges();
-            expect(sliderInstance.isMinimum()).toBe(true);
+            expect(sliderInstance._isMinimum()).toBe(true);
             testInstance.value = 3;
             fixture.detectChanges();
-            expect(sliderInstance.isMinimum()).toBe(false);
+            expect(sliderInstance._isMinimum()).toBe(false);
         });
     });
 
@@ -299,12 +289,11 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             const value = sliderInstance.value;
             expect(value).toBe(80);
-            expect(sliderInstance.percentageValue).toBe(20);
+            expect(sliderInstance._percentageValue).toBe(20);
         });
     });
 
@@ -315,7 +304,7 @@ describe('NxSliderComponent', () => {
             expect(sliderInstance.value).toBe(42);
 
             const rightArrowEvent = createKeyboardEvent(RIGHT_ARROW);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             // value of disabled slider should not have changed
             expect(sliderInstance.value).toBe(42);
             expect(sliderNativeElement.hasAttribute('aria-disabled')).toBe(true);
@@ -349,12 +338,11 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             const value = sliderInstance.value;
             expect(value).toBe(-30);
-            expect(sliderInstance.percentageValue).toBe(20);
+            expect(sliderInstance._percentageValue).toBe(20);
         });
     });
 
@@ -367,20 +355,18 @@ describe('NxSliderComponent', () => {
                 screenY: 10,
                 clientY: 10,
             });
-            sliderInstance.sliderClick(event);
-            sliderInstance.valueByPosition();
+            sliderInstance._sliderClick(event);
 
             const value = sliderInstance.value;
             expect(value).toBe(0.2);
-            expect(sliderInstance.percentageValue).toBe(20);
+            expect(sliderInstance._percentageValue).toBe(20);
         });
 
         it('should truncate long decimal values based on step', () => {
             createTestComponent(TruncateTestSlider);
 
             // simulate the dragging of the slider
-            dispatchSlideEvent({ x: 0, y: 10 }, { x: 85, y: 85 });
-            sliderInstance.valueByPosition();
+            dispatchSlideEvent({ x: 85, y: 85 });
 
             const value = sliderInstance.value;
             // 1.7 is one of the first values that break
@@ -390,11 +376,11 @@ describe('NxSliderComponent', () => {
         it('should truncate long decimal values by keyboard events', () => {
             createTestComponent(FloatSlider);
             const rightArrowEvent = createKeyboardEvent(RIGHT_ARROW);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             expect(sliderInstance.value).toBe(0.1);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             expect(sliderInstance.value).toBe(0.2);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             // 0.3 usually breaks to 0.30000000000000004 if not handled correctly
             expect(sliderInstance.value).toBe(0.3);
         });
@@ -547,8 +533,7 @@ describe('NxSliderComponent', () => {
             createTestComponent(BasicSlider);
             const onChangeSpy = jasmine.createSpy('slider onChange');
             sliderInstance.valueChange.subscribe(onChangeSpy);
-            dispatchSlideEvent({ x: 30, y: 10 }, { x: 260, y: 10 });
-            sliderInstance.valueByPosition();
+            dispatchSlideEvent({ x: 260, y: 10 });
             fixture.detectChanges();
             expect(onChangeSpy).toHaveBeenCalledTimes(1);
         });
@@ -561,19 +546,19 @@ describe('NxSliderComponent', () => {
             expect(sliderInstance.value).toBe(0);
 
             const rightArrowEvent = createKeyboardEvent(RIGHT_ARROW);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             expect(sliderInstance.value).toBe(1);
 
             const upArrowEvent = createKeyboardEvent(UP_ARROW);
-            sliderInstance.handleKeypress(upArrowEvent);
+            sliderInstance._handleKeypress(upArrowEvent);
             expect(sliderInstance.value).toBe(2);
 
             const leftArrowEvent = createKeyboardEvent(LEFT_ARROW);
-            sliderInstance.handleKeypress(leftArrowEvent);
+            sliderInstance._handleKeypress(leftArrowEvent);
             expect(sliderInstance.value).toBe(1);
 
             const downArrowEvent = createKeyboardEvent(DOWN_ARROW);
-            sliderInstance.handleKeypress(downArrowEvent);
+            sliderInstance._handleKeypress(downArrowEvent);
             expect(sliderInstance.value).toBe(0);
         });
 
@@ -583,19 +568,19 @@ describe('NxSliderComponent', () => {
             expect(sliderInstance.value).toBe(0);
 
             const leftArrowEvent = createKeyboardEvent(LEFT_ARROW);
-            sliderInstance.handleKeypress(leftArrowEvent);
+            sliderInstance._handleKeypress(leftArrowEvent);
             expect(sliderInstance.value).toBe(1);
 
             const upArrowEvent = createKeyboardEvent(UP_ARROW);
-            sliderInstance.handleKeypress(upArrowEvent);
+            sliderInstance._handleKeypress(upArrowEvent);
             expect(sliderInstance.value).toBe(2);
 
             const rightArrowEvent = createKeyboardEvent(RIGHT_ARROW);
-            sliderInstance.handleKeypress(rightArrowEvent);
+            sliderInstance._handleKeypress(rightArrowEvent);
             expect(sliderInstance.value).toBe(1);
 
             const downArrowEvent = createKeyboardEvent(DOWN_ARROW);
-            sliderInstance.handleKeypress(downArrowEvent);
+            sliderInstance._handleKeypress(downArrowEvent);
             expect(sliderInstance.value).toBe(0);
         });
 
