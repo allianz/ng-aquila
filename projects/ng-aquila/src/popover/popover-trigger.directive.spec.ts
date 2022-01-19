@@ -637,7 +637,7 @@ describe('NxPopoverTriggerDirective', () => {
 });
 
 @Component({
-    template: ` <div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
+    template: `<div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover" [nxPopoverCloseable]="closeable">Hover </button>
         </div>
 
@@ -648,7 +648,7 @@ describe('NxPopoverTriggerDirective', () => {
 class PopoverHoverComponent extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover </button>
         </div>
 
@@ -659,7 +659,7 @@ class PopoverHoverComponent extends PopoverTest {}
 class PopoverClickComponent extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover </button>
         </div>
 
@@ -673,7 +673,7 @@ class PopoverClickComponent extends PopoverTest {}
 class PopoverClickShadowDomComponent extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="true">Hover </button>
         </div>
 
@@ -684,7 +684,7 @@ class PopoverClickShadowDomComponent extends PopoverTest {}
 class PopoverShowClose extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover </button>
         </div>
 
@@ -695,7 +695,7 @@ class PopoverShowClose extends PopoverTest {}
 class PopoverHideClose extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [nxPopoverCloseable]="false">Hover </button>
         </div>
 
@@ -706,7 +706,7 @@ class PopoverHideClose extends PopoverTest {}
 class PopoverHideCloseForClick extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover </button>
         </div>
 
@@ -718,7 +718,7 @@ class PopoverHideCloseForClick extends PopoverTest {}
 class PopoverFallBackComponent extends PopoverTest {}
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button
                 [nxPopoverTriggerFor]="popoverHover"
                 nxPopoverDirection="right"
@@ -779,7 +779,7 @@ class ManualTrigger extends PopoverTest {
 }
 
 @Component({
-    template: ` <div>
+    template: `<div>
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable"> Hover </button>
         </div>
 
@@ -790,7 +790,7 @@ class ClickOnDocument extends PopoverTest {
 }
 
 @Component({
-    template: ` <div cdkScrollable class="scrollWindow" style="padding: 100px; margin: 300px;height: 200px; width: 200px; overflow: auto;">
+    template: `<div cdkScrollable class="scrollWindow" style="padding: 100px; margin: 300px;height: 200px; width: 200px; overflow: auto;">
             <button [nxPopoverTriggerFor]="popoverInScrollableContainer" nxPopoverTrigger="click"> Click </button>
         </div>
 
@@ -799,7 +799,7 @@ class ClickOnDocument extends PopoverTest {
 class ScrollablePopover extends PopoverTest {}
 
 @Component({
-    template: ` <div [dir]="direction">
+    template: `<div [dir]="direction">
             <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable">
                 Directionality
             </button>
@@ -812,8 +812,7 @@ class PopoverWithinRTLContainer extends PopoverTest {
 }
 
 @Component({
-    template: ` <button [nxPopoverTriggerFor]="popover"></button>
-        <nx-popover #popover></nx-popover>`,
+    template: `<button [nxPopoverTriggerFor]="popover"></button> <nx-popover #popover></nx-popover>`,
     providers: [
         {
             provide: NxPopoverIntl,

@@ -6,7 +6,7 @@ export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'lar
 
 @Component({
     selector: '[nxAvatar]',
-    template: ` <div class="nx-avatar__content-wrapper">
+    template: `<div class="nx-avatar__content-wrapper">
         <ng-content></ng-content>
     </div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,

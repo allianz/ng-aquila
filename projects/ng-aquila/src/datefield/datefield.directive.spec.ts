@@ -271,11 +271,11 @@ describe('NxDatefieldDirective with Moment', () => {
 class BasicDatefield extends DatefieldTest {}
 
 @Component({
-    template: ` <input nxInput nxDatefield [(ngModel)]="value" [nxParseFormat]="parseFormat" [nxDisplayFormat]="displayFormat" [nxStrict]="strict" /> `,
+    template: `<input nxInput nxDatefield [(ngModel)]="value" [nxParseFormat]="parseFormat" [nxDisplayFormat]="displayFormat" [nxStrict]="strict" />`,
 })
 class AdvancedDatefield extends DatefieldTest {}
 @Component({
-    template: ` <input nxInput nxDatefield [(ngModel)]="value" [nxMin]="min" [nxMax]="max" /> `,
+    template: `<input nxInput nxDatefield [(ngModel)]="value" [nxMin]="min" [nxMax]="max" />`,
 })
 class MinMaxDatefield extends DatefieldTest {}
 

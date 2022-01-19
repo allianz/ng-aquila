@@ -152,7 +152,7 @@ describe('NxOverlayService', () => {
 });
 
 @Component({
-    template: ` <button #button nxButton="tertiary small">Trigger</button>
+    template: `<button #button nxButton="tertiary small">Trigger</button>
 
         <ng-template let-data let-overlayRef="overlayRef"> Hello {{ localValue }} {{ data?.value }}{{ setDialogRef(overlayRef) }}</ng-template>`,
 })
@@ -171,15 +171,14 @@ class ComponentWithTemplateRef {
 }
 
 @Component({
-    template: ` <button #button>Trigger</button>
-        <router-outlet></router-outlet>`,
+    template: `<button #button>Trigger</button> <router-outlet></router-outlet>`,
 })
 export class TestRootComponent {
     @ViewChild('button') trigger!: ElementRef;
 }
 
 @Component({
-    template: ` <div class="hello">Hello World</div> `,
+    template: `<div class="hello">Hello World</div>`,
 })
 class PlainComponent {}
 

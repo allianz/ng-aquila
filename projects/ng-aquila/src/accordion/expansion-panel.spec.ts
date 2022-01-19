@@ -355,7 +355,7 @@ abstract class PanelTest {
 }
 
 @Component({
-    template: ` <nx-expansion-panel [expanded]="expanded" [disabled]="disabled" (opened)="openCallback()" (closed)="closeCallback()">
+    template: `<nx-expansion-panel [expanded]="expanded" [disabled]="disabled" (opened)="openCallback()" (closed)="closeCallback()">
         <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
         <p>Some content</p>
         <button id="test-button">I am a button</button>
@@ -367,7 +367,7 @@ class PanelWithContent extends PanelTest {
 }
 
 @Component({
-    template: ` <div *ngIf="expansionShown">
+    template: `<div *ngIf="expansionShown">
         <nx-expansion-panel>
             <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
         </nx-expansion-panel>
@@ -385,7 +385,7 @@ class PanelWithContentInNgIf extends PanelTest {
             }
         `,
     ],
-    template: ` <nx-expansion-panel [expanded]="expanded">
+    template: `<nx-expansion-panel [expanded]="expanded">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores officia, aliquam dicta corrupti maxime voluptate accusamus impedit atque incidunt
         pariatur.
     </nx-expansion-panel>`,
@@ -393,7 +393,7 @@ class PanelWithContentInNgIf extends PanelTest {
 class PanelWithCustomMargin extends PanelTest {}
 
 @Component({
-    template: ` <nx-expansion-panel [expanded]="expanded">
+    template: `<nx-expansion-panel [expanded]="expanded">
         <nx-expansion-panel-header><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header>
 
         <ng-template nxExpansionPanelBody>
@@ -405,7 +405,7 @@ class PanelWithCustomMargin extends PanelTest {}
 class LazyPanelWithContent extends PanelTest {}
 
 @Component({
-    template: ` <nx-expansion-panel [expanded]="true">
+    template: `<nx-expansion-panel [expanded]="true">
         <nx-expansion-panel-header><nx-expansion-panel-title>Panel Title</nx-expansion-panel-title></nx-expansion-panel-header>
 
         <ng-template nxExpansionPanelBody>
@@ -416,14 +416,14 @@ class LazyPanelWithContent extends PanelTest {}
 class LazyPanelOpenOnLoad extends PanelTest {}
 
 @Component({
-    template: ` <nx-expansion-panel [(expanded)]="expanded">
+    template: `<nx-expansion-panel [(expanded)]="expanded">
         <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
     </nx-expansion-panel>`,
 })
 class PanelWithTwoWayBinding extends PanelTest {}
 
 @Component({
-    template: ` <nx-expansion-panel [negative]="negative" [nxStyle]="style">
+    template: `<nx-expansion-panel [negative]="negative" [nxStyle]="style">
         <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
     </nx-expansion-panel>`,
 })
@@ -433,7 +433,7 @@ class PanelWithDifferentAppearances extends PanelTest {
 }
 
 @Component({
-    template: ` <nx-accordion negative="true" nxStyle="light">
+    template: `<nx-accordion negative="true" nxStyle="light">
         <nx-expansion-panel>
             <nx-expansion-panel-header>Panel Title</nx-expansion-panel-header>
         </nx-expansion-panel>

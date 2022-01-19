@@ -119,13 +119,13 @@ describe(NxExpandableTableRowComponent.name, () => {
 });
 
 @Component({
-    template: ` <tr nxExpandableTableRow>example content</tr> `,
+    template: `<tr nxExpandableTableRow>example content</tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
 
 @Component({
-    template: ` <tr nxExpandableTableRow [isExpanded]="isExpanded">example content</tr> `,
+    template: `<tr nxExpandableTableRow [isExpanded]="isExpanded">example content</tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfigurableExpandableTableRowComponent extends ExpandableTableRowTest {}

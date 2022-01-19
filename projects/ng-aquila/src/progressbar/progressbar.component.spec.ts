@@ -51,11 +51,11 @@ describe('NxProgressbarComponent', () => {
 });
 
 @Component({
-    template: ` <nx-progressbar></nx-progressbar>`,
+    template: `<nx-progressbar></nx-progressbar>`,
 })
 class ProgressBarBasicComponent extends ProgressBarTest {}
 
 @Component({
-    template: ` <nx-progressbar value="0.5"></nx-progressbar>`,
+    template: `<nx-progressbar value="0.5"></nx-progressbar>`,
 })
 class ProgressBarValueComponent extends ProgressBarTest {}

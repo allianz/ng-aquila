@@ -151,12 +151,12 @@ describe(NxMenuButtonComponent.name, () => {
 });
 
 @Component({
-    template: ` <button nxMenuButton> example menu button </button> `,
+    template: `<button nxMenuButton> example menu button </button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class DefaultMenuButton extends MenuButtonTest {}
 
 @Component({
-    template: ` <a nxMenuButton [nxType]="type" [expandable]="expandable" [expanded]="expanded"> example menuButton </a> `,
+    template: `<a nxMenuButton [nxType]="type" [expandable]="expandable" [expanded]="expanded"> example menuButton </a>`,
 })
 class BasicMenuButton extends MenuButtonTest {}

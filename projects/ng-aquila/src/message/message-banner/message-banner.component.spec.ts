@@ -148,18 +148,18 @@ describe('NxMessageBannerComponent', () => {
 });
 
 @Component({
-    template: ` <nx-message-banner [context]="context"> lorem ipsum </nx-message-banner> `,
+    template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
 })
 class BasicMessageBannerComponent extends MessageBannerTest {}
 
 @Component({
-    template: ` <nx-message-banner [context]="context"> lorem ipsum </nx-message-banner> `,
+    template: `<nx-message-banner [context]="context"> lorem ipsum </nx-message-banner>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class MessageBannerOnPushComponent extends MessageBannerTest {}
 
 @Component({
-    template: ` <nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner> `,
+    template: `<nx-message-banner [closable]="closable"> lorem ipsum </nx-message-banner>`,
 })
 class ClosableMessageBannerComponent extends MessageBannerTest {
     closable = true;

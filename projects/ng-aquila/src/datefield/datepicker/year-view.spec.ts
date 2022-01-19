@@ -319,7 +319,7 @@ describe('NxYearView', () => {
 });
 
 @Component({
-    template: ` <nx-year-view [(activeDate)]="date" [(selected)]="selected" (monthSelected)="selectedMonth = $event"></nx-year-view>`,
+    template: `<nx-year-view [(activeDate)]="date" [(selected)]="selected" (monthSelected)="selectedMonth = $event"></nx-year-view>`,
 })
 class StandardYearView {
     date = new Date(2017, JAN, 5);

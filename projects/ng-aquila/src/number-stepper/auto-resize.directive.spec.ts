@@ -131,38 +131,38 @@ describe('NxAutoResizeDirective', () => {
 });
 
 @Component({
-    template: ` <input [nxAutoResize] class="testinput" /> `,
+    template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; }'],
 })
 class DefaultResize extends ResizeTest {}
 
 @Component({
-    template: ` <input [nxAutoResize] class="testinput" [(value)]="value" /> `,
+    template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
     styles: ['.testinput { width: 22px; }'],
 })
 class InitTest extends ResizeTest {}
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: ` <input [nxAutoResize] class="testinput" [(value)]="value" /> `,
+    template: `<input [nxAutoResize] class="testinput" [(value)]="value" />`,
     styles: ['.testinput { width: 22px; }'],
 })
 class InitOnPushTest extends ResizeTest {}
 
 @Component({
-    template: ` <input [nxAutoResize]="false" class="testinput" /> `,
+    template: `<input [nxAutoResize]="false" class="testinput" />`,
     styles: ['.testinput { width: 22px; }'],
 })
 class DisabledResize extends ResizeTest {}
 
 @Component({
-    template: ` <input [nxAutoResize] class="testinput" /> `,
+    template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; min-width: 22px; }'],
 })
 class MinWidthResize extends ResizeTest {}
 
 @Component({
-    template: ` <input [nxAutoResize] class="testinput" /> `,
+    template: `<input [nxAutoResize] class="testinput" />`,
     styles: ['.testinput { width: 22px; padding: 1px; border: 1px solid black}'],
 })
 class BorderPaddingResize extends ResizeTest {}

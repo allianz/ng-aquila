@@ -58,7 +58,7 @@ describe('NxCardComponent', () => {
 });
 
 @Component({
-    template: ` <nx-card>Hello Text</nx-card> `,
+    template: `<nx-card>Hello Text</nx-card>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicCard extends CardTest {}

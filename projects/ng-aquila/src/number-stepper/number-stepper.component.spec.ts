@@ -606,17 +606,17 @@ describe('NxNumberStepperComponent', () => {
 });
 
 @Component({
-    template: ` <nx-number-stepper nxLabel="Test"></nx-number-stepper> `,
+    template: `<nx-number-stepper nxLabel="Test"></nx-number-stepper>`,
 })
 class BasicStepper extends NumberStepperTest {}
 
 @Component({
-    template: ` <nx-number-stepper [(nxValue)]="value"></nx-number-stepper> `,
+    template: `<nx-number-stepper [(nxValue)]="value"></nx-number-stepper>`,
 })
 class SimpleBindingStepper extends NumberStepperTest {}
 
 @Component({
-    template: ` <nx-number-stepper nxMax="10000000" nxStep="1000000" [(nxValue)]="value" nxResize="true"></nx-number-stepper> `,
+    template: `<nx-number-stepper nxMax="10000000" nxStep="1000000" [(nxValue)]="value" nxResize="true"></nx-number-stepper>`,
 })
 class ResizeOnInitTest extends NumberStepperTest {
     value = 100000;
@@ -624,14 +624,14 @@ class ResizeOnInitTest extends NumberStepperTest {
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: ` <nx-number-stepper [(nxValue)]="value" [nxResize]="true"></nx-number-stepper> `,
+    template: `<nx-number-stepper [(nxValue)]="value" [nxResize]="true"></nx-number-stepper>`,
 })
 class ResizeOnInitTestOnPush extends NumberStepperTest {
     value = 1000000;
 }
 
 @Component({
-    template: ` <nx-number-stepper [(ngModel)]="value"></nx-number-stepper> `,
+    template: `<nx-number-stepper [(ngModel)]="value"></nx-number-stepper>`,
 })
 class NgModelStepper extends NumberStepperTest {}
 
@@ -652,13 +652,13 @@ class NgModelStepper extends NumberStepperTest {}
 class ConfigurableStepper extends NumberStepperTest {}
 
 @Component({
-    template: ` <nx-number-stepper [nxDisabled]="disabled" [nxMin]="-10"></nx-number-stepper> `,
+    template: `<nx-number-stepper [nxDisabled]="disabled" [nxMin]="-10"></nx-number-stepper>`,
 })
 class DisableableStepper extends NumberStepperTest {}
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: ` <nx-number-stepper [negative]="negative"></nx-number-stepper> `,
+    template: `<nx-number-stepper [negative]="negative"></nx-number-stepper>`,
 })
 class StepperOnPush extends NumberStepperTest {}
 

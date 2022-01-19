@@ -249,7 +249,7 @@ class SimpleCircleToggleGroupComponent extends ButtonToggleGroupTest {}
 class CircleToggleOnPushComponent extends ButtonToggleGroupTest {}
 
 @Component({
-    template: ` <nx-circle-toggle-group> </nx-circle-toggle-group> `,
+    template: `<nx-circle-toggle-group> </nx-circle-toggle-group>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class EmptyToggleOnPushComponent extends ButtonToggleGroupTest {}

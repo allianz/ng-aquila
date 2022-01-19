@@ -143,7 +143,7 @@ describe(NxTableComponent.name, () => {
 });
 
 @Component({
-    template: ` <table nxTable nxExpandableTable #expandableTable="nxExpandableTable">
+    template: `<table nxTable nxExpandableTable #expandableTable="nxExpandableTable">
         <thead>
             <tr nxTableRow>
                 <td nxHeaderCell>

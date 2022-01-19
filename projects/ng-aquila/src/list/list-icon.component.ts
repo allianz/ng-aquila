@@ -5,7 +5,7 @@ import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
     host: {
         '[class.nx-list__icon-wrapper]': 'true',
     },
-    template: ` <span class="nx-list__icon">
+    template: `<span class="nx-list__icon">
             <nx-icon [name]="name"></nx-icon>
         </span>
         <ng-content></ng-content>`,

@@ -11,7 +11,7 @@ abstract class ButtonTest {
 }
 
 @Component({
-    template: ` <a [nxPlainButton]="classNames" #button>Hello Button</a> `,
+    template: `<a [nxPlainButton]="classNames" #button>Hello Button</a>`,
 })
 class BasicButton extends ButtonTest {}
 

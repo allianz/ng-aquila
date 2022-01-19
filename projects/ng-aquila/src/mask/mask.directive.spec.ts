@@ -945,7 +945,7 @@ describe('NxMaskDirective', () => {
 });
 
 @Component({
-    template: ` <input [nxMask]="mask" /> `,
+    template: `<input [nxMask]="mask" />`,
 })
 class BasicMaskComponent extends MaskTest {}
 
@@ -974,7 +974,7 @@ class ConfigurableMaskComponent extends MaskTest {}
 class ValidationMaskComponent extends MaskTest {}
 
 @Component({
-    template: ` <input [nxMask]="mask" [separators]="separators" /> `,
+    template: `<input [nxMask]="mask" [separators]="separators" />`,
 })
 class HookedMaskComponent extends MaskTest {
     customInputHook = () => {};

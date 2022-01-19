@@ -327,17 +327,17 @@ describe('NxInputDirective', () => {
 class BasicInput extends InputTest {}
 
 @Component({
-    template: ` <input nxInput [type]="type" /> `,
+    template: `<input nxInput [type]="type" />`,
 })
 class TypedAndRequiredInput extends InputTest {}
 
 @Component({
-    template: ` <input nxInput required /> `,
+    template: `<input nxInput required />`,
 })
 class RequiredInput extends InputTest {}
 
 @Component({
-    template: ` <input nxInput [(ngModel)]="currentValue" required /> `,
+    template: `<input nxInput [(ngModel)]="currentValue" required />`,
 })
 class NgModelInput extends InputTest {}
 
@@ -362,7 +362,7 @@ class BasicInputWithFormControl extends InputTest {
 }
 
 @Component({
-    template: ` <input nxInput [required]="required" [disabled]="disabled" [readonly]="readonly" /> `,
+    template: `<input nxInput [required]="required" [disabled]="disabled" [readonly]="readonly" />`,
 })
 class ConfigurableInput extends InputTest {}
 

@@ -59,7 +59,7 @@ describe(NxTableCellComponent.name, () => {
 });
 
 @Component({
-    template: ` <td nxTableCell>example content</td> `,
+    template: `<td nxTableCell>example content</td>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicTableCellComponent extends TableCellTest {}

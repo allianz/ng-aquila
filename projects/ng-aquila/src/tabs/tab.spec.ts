@@ -43,7 +43,7 @@ describe('NxTabComponent', () => {
 });
 
 @Component({
-    template: ` <nx-tab>Some content</nx-tab> `,
+    template: `<nx-tab>Some content</nx-tab>`,
 })
 class NoGroupTest extends TabTest {}
 

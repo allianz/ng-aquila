@@ -91,7 +91,7 @@ describe('NxAccordion', () => {
 });
 
 @Component({
-    template: ` <nx-accordion [multi]="multi">
+    template: `<nx-accordion [multi]="multi">
         <nx-expansion-panel [expanded]="firstPanelExpanded">
             <nx-expansion-panel-header>Summary</nx-expansion-panel-header>
             <p>Content</p>
@@ -112,7 +112,7 @@ class SetOfItems {
 }
 
 @Component({
-    template: ` <nx-accordion>
+    template: `<nx-accordion>
         <nx-expansion-panel #outerPanel="NxExpansionPanelComponent">
             <nx-expansion-panel-header>Outer Panel</nx-expansion-panel-header>
             <nx-expansion-panel #innerPanel="NxExpansionPanelComponent">

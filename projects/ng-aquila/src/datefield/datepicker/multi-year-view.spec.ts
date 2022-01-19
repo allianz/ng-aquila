@@ -222,7 +222,7 @@ describe('NxMultiYearView', () => {
 });
 
 @Component({
-    template: ` <nx-multi-year-view [(activeDate)]="date" [(selected)]="selected" (yearSelected)="selectedYear = $event"></nx-multi-year-view>`,
+    template: `<nx-multi-year-view [(activeDate)]="date" [(selected)]="selected" (yearSelected)="selectedYear = $event"></nx-multi-year-view>`,
 })
 class StandardMultiYearView {
     date = new Date(2017, JAN, 1);
@@ -233,7 +233,7 @@ class StandardMultiYearView {
 }
 
 @Component({
-    template: ` <nx-multi-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-multi-year-view> `,
+    template: `<nx-multi-year-view [(activeDate)]="activeDate" [dateFilter]="dateFilter"></nx-multi-year-view>`,
 })
 class MultiYearViewWithDateFilter {
     activeDate = new Date(2001, JAN, 1);

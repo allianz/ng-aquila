@@ -10,7 +10,7 @@ abstract class AnchorButtonTest {
 }
 
 @Component({
-    template: ` <a nxButton #button href="#" class="some-arbitray-class-name">Hello Anchor Button</a> `,
+    template: `<a nxButton #button href="#" class="some-arbitray-class-name">Hello Anchor Button</a>`,
 })
 class AnchorButton extends AnchorButtonTest {}
 

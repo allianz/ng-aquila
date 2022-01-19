@@ -428,7 +428,7 @@ describe('NxIbanMaskDirective', () => {
 });
 
 @Component({
-    template: ` <input nxMask nxIbanMask /> `,
+    template: `<input nxMask nxIbanMask />`,
 })
 class BasicIbanMaskComponent extends IbanMaskTest {}
 

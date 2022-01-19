@@ -445,7 +445,7 @@ describe('NxFormfieldComponent', () => {
 })
 class BasicFormfield extends FormfieldTest {}
 @Component({
-    template: ` <nx-formfield></nx-formfield> `,
+    template: `<nx-formfield></nx-formfield>`,
 })
 class NoInputFormfield extends FormfieldTest {}
 
@@ -547,7 +547,7 @@ class CustomLabelAndInputFormfield extends FormfieldTest {}
 class OutlineFormfield extends FormfieldTest {}
 
 @Component({
-    template: ` <nx-formfield [appearance]="appearance">
+    template: `<nx-formfield [appearance]="appearance">
         <input nxInput />
     </nx-formfield>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -555,7 +555,7 @@ class OutlineFormfield extends FormfieldTest {}
 class OnPushFormfield extends FormfieldTest {}
 
 @Component({
-    template: ` <nx-formfield nxLabel="IBAN">
+    template: `<nx-formfield nxLabel="IBAN">
         <input *ngIf="true" nxInput />
         <span nxFormfieldHint>my hint</span>
     </nx-formfield>`,

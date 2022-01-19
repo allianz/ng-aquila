@@ -194,7 +194,7 @@ describe('NxExpertPreset', () => {
 class DatepickerPresetComponent extends PresetTest {}
 
 @Component({
-    template: ` <nx-error>This is a preset error</nx-error> `,
+    template: `<nx-error>This is a preset error</nx-error>`,
 })
 class ErrorPresetComponent extends PresetTest {}
 
@@ -208,7 +208,7 @@ class ErrorPresetComponent extends PresetTest {}
 class FormfieldPresetComponent extends PresetTest {}
 
 @Component({
-    template: ` <nx-label>I am a preset label</nx-label> `,
+    template: `<nx-label>I am a preset label</nx-label>`,
 })
 class LabelPresetComponent extends PresetTest {}
 
@@ -270,21 +270,21 @@ class ComparisonTablePresetComponent extends PresetTest {
 }
 
 @Component({
-    template: ` <nx-selectable-card></nx-selectable-card> `,
+    template: `<nx-selectable-card></nx-selectable-card>`,
 })
 class SelectableCardPresetComponent extends PresetTest {}
 
 @Component({
-    template: ` <nx-small-stage></nx-small-stage> `,
+    template: `<nx-small-stage></nx-small-stage>`,
 })
 class SmallStagePresetComponent extends PresetTest {}
 
 @Component({
-    template: ` <nx-circle-toggle-group></nx-circle-toggle-group> `,
+    template: `<nx-circle-toggle-group></nx-circle-toggle-group>`,
 })
 class CircleToggleGroupPresetComponent extends PresetTest {}
 
 @Component({
-    template: ` <nx-data-display></nx-data-display> `,
+    template: `<nx-data-display></nx-data-display>`,
 })
 class DataDisplayPresetComponent extends PresetTest {}

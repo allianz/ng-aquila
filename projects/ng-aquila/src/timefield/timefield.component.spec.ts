@@ -388,7 +388,7 @@ describe('NxTimefieldComponent', () => {
     });
 });
 @Component({
-    template: ` <nx-timefield label="Time"></nx-timefield> `,
+    template: `<nx-timefield label="Time"></nx-timefield>`,
 })
 class SimpleTimefield extends TimefieldTest {}
 
@@ -423,14 +423,14 @@ class ReactiveTimefield extends TimefieldTest {
     }
 }
 @Component({
-    template: ` <nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield> `,
+    template: `<nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield>`,
 })
 class TemplateDrivenTimefield extends TimefieldTest {
     today = '00:00';
 }
 
 @Component({
-    template: ` <nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield> `,
+    template: `<nx-timefield [twelveHourFormat]="twelveHourFormat" [(ngModel)]="today"></nx-timefield>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TemplateDrivenOnPushTimefield extends TimefieldTest {
@@ -438,7 +438,7 @@ class TemplateDrivenOnPushTimefield extends TimefieldTest {
 }
 
 @Component({
-    template: ` <nx-timefield twelveHourFormat></nx-timefield> `,
+    template: `<nx-timefield twelveHourFormat></nx-timefield>`,
     providers: [{ provide: NxTimefieldIntl, useClass: MyIntl }],
 })
 class OverrideDefaultLabelsTimefield extends TimefieldTest {}

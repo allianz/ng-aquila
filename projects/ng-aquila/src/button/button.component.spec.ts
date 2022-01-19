@@ -21,7 +21,7 @@ abstract class ButtonTest {
     }
 }
 @Component({
-    template: ` <button nxButton #button class="some-arbitray-class-name">Hello Button</button> `,
+    template: `<button nxButton #button class="some-arbitray-class-name">Hello Button</button>`,
 })
 class BasicButton extends ButtonTest {}
 
@@ -35,7 +35,7 @@ class BasicButton extends ButtonTest {}
 class BasicIconButton extends ButtonTest {}
 
 @Component({
-    template: ` <button [nxButton]="classNames" #button>Configurable button</button> `,
+    template: `<button [nxButton]="classNames" #button>Configurable button</button>`,
 })
 class ConfigurableButton extends ButtonTest {}
 
@@ -49,7 +49,7 @@ class ConfigurableButton extends ButtonTest {}
 class ConfigurableIconButton extends ButtonTest {}
 
 @Component({
-    template: ` <button [nxButton]="classNames" #button>Configurable button</button> `,
+    template: `<button [nxButton]="classNames" #button>Configurable button</button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfigurableOnPushButton extends ButtonTest {}

@@ -135,11 +135,11 @@ describe('NxTagComponent', () => {
 });
 
 @Component({
-    template: ` <nx-tag value="foo"></nx-tag> `,
+    template: `<nx-tag value="foo"></nx-tag>`,
 })
 class BasicTag extends TagTest {}
 
 @Component({
-    template: ` <nx-tag value="bar" removable="true"></nx-tag> `,
+    template: `<nx-tag value="bar" removable="true"></nx-tag>`,
 })
 class RemovableTag extends TagTest {}

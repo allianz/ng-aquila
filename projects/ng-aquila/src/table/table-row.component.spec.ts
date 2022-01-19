@@ -202,7 +202,7 @@ describe(NxTableRowComponent.name, () => {
 });
 
 @Component({
-    template: ` <tr nxTableRow>example content</tr> `,
+    template: `<tr nxTableRow>example content</tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicTableRowComponent extends TableRowTest {}

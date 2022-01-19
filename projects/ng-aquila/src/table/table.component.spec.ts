@@ -125,7 +125,7 @@ describe(NxTableComponent.name, () => {
 });
 
 @Component({
-    template: ` <table nxTable>
+    template: `<table nxTable>
         <thead>
             <tr nxTableRow>
                 <th nxHeaderCell></th>
@@ -142,7 +142,7 @@ describe(NxTableComponent.name, () => {
 class SimpleTableComponent extends TableTest {}
 
 @Component({
-    template: ` <table nxTable zebra>
+    template: `<table nxTable zebra>
         <thead>
             <tr nxTableRow>
                 <th nxHeaderCell></th>
@@ -159,7 +159,7 @@ class SimpleTableComponent extends TableTest {}
 class ZebraTableComponent extends TableTest {}
 
 @Component({
-    template: ` <table nxTable condensed>
+    template: `<table nxTable condensed>
         <thead>
             <tr nxTableRow>
                 <th nxHeaderCell></th>

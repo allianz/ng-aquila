@@ -120,6 +120,6 @@ class BasicPasswordToggleOnPush extends PasswordToggleTest {
 }
 
 @Component({
-    template: ` <nx-password-toggle></nx-password-toggle> `,
+    template: `<nx-password-toggle></nx-password-toggle>`,
 })
 class NoControlToggle extends PasswordToggleTest {}

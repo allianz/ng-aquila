@@ -270,27 +270,27 @@ describe('NxIconComponent', () => {
 });
 
 @Component({
-    template: ` <nx-icon name="heart"></nx-icon> `,
+    template: `<nx-icon name="heart"></nx-icon>`,
 })
 class BasicIcon extends IconTest {}
 
 @Component({
-    template: ` <nx-icon name="heart" size="m"></nx-icon> `,
+    template: `<nx-icon name="heart" size="m"></nx-icon>`,
 })
 class SizeIcon extends IconTest {}
 
 @Component({
-    template: ` <nx-icon name="heart" outline="true"></nx-icon> `,
+    template: `<nx-icon name="heart" outline="true"></nx-icon>`,
 })
 class OutlineIcon extends IconTest {}
 
 @Component({
-    template: ` <nx-icon name="heart" fill="true"></nx-icon> `,
+    template: `<nx-icon name="heart" fill="true"></nx-icon>`,
 })
 class FillIcon extends IconTest {}
 
 @Component({
-    template: ` <nx-icon [name]="name" [size]="size" fill="true"></nx-icon> `,
+    template: `<nx-icon [name]="name" [size]="size" fill="true"></nx-icon>`,
 })
 class DynamicIcon extends IconTest {
     name = 'heart';
@@ -298,7 +298,7 @@ class DynamicIcon extends IconTest {
 }
 
 @Component({
-    template: ` <nx-icon [name]="name" [font]="font"></nx-icon> `,
+    template: `<nx-icon [name]="name" [font]="font"></nx-icon>`,
 })
 class FontIcon extends IconTest {
     font = 'custom-font';

@@ -85,7 +85,7 @@ describe('NxLabelComponent', () => {
 });
 
 @Component({
-    template: ` <nx-label>I am a label</nx-label> `,
+    template: `<nx-label>I am a label</nx-label>`,
 })
 class BasicLabel extends LabelTest {}
 

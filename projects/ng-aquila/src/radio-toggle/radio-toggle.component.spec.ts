@@ -453,7 +453,7 @@ abstract class RadioToggleTest {
 }
 
 @Component({
-    template: ` <nx-radio-toggle [nxName]="'tst'">
+    template: `<nx-radio-toggle [nxName]="'tst'">
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="C">C</nx-radio-toggle-button>
@@ -462,7 +462,7 @@ abstract class RadioToggleTest {
 class NoSelectionRadioToggle extends RadioToggleTest {}
 
 @Component({
-    template: ` <nx-radio-toggle>
+    template: `<nx-radio-toggle>
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
         <nx-radio-toggle-button [nxSelected]="true" nxValue="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="C">C</nx-radio-toggle-button>
@@ -471,14 +471,14 @@ class NoSelectionRadioToggle extends RadioToggleTest {}
 class SelectionRadioToggle extends RadioToggleTest {}
 
 @Component({
-    template: ` <nx-radio-toggle [nxStyle]="'small negative'">
+    template: `<nx-radio-toggle [nxStyle]="'small negative'">
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
     </nx-radio-toggle>`,
 })
 class ModifiedRadioToggle extends RadioToggleTest {}
 
 @Component({
-    template: ` <nx-radio-toggle>
+    template: `<nx-radio-toggle>
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="B" [nxDisabled]="true">B</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="C">C</nx-radio-toggle-button>
@@ -487,7 +487,7 @@ class ModifiedRadioToggle extends RadioToggleTest {}
 class SingleDisableRadioToggle extends RadioToggleTest {}
 
 @Component({
-    template: ` <nx-radio-toggle [nxDisabled]="true">
+    template: `<nx-radio-toggle [nxDisabled]="true">
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="C">C</nx-radio-toggle-button>
@@ -495,7 +495,7 @@ class SingleDisableRadioToggle extends RadioToggleTest {}
 })
 class AllDisableRadioToggle extends RadioToggleTest {}
 @Component({
-    template: ` <nx-radio-toggle [(ngModel)]="value" (ngModelChange)="changeSpy($event)">
+    template: `<nx-radio-toggle [(ngModel)]="value" (ngModelChange)="changeSpy($event)">
         <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="B">B</nx-radio-toggle-button>
         <nx-radio-toggle-button nxValue="C">C</nx-radio-toggle-button>
@@ -506,7 +506,7 @@ class ModelRadioToggle extends RadioToggleTest {
 }
 
 @Component({
-    template: ` <nx-radio-toggle [(ngModel)]="value">
+    template: `<nx-radio-toggle [(ngModel)]="value">
         <nx-radio-toggle-button *ngFor="let value of data" [nxValue]="value"> {{ value }} </nx-radio-toggle-button>
     </nx-radio-toggle>`,
 })
@@ -515,7 +515,7 @@ class LoopedRadioToggle extends RadioToggleTest {
 }
 
 @Component({
-    template: ` <nx-radio-toggle> </nx-radio-toggle>`,
+    template: `<nx-radio-toggle> </nx-radio-toggle>`,
 })
 class EmptyRadioToggle extends RadioToggleTest {}
 
@@ -534,7 +534,7 @@ class EmptyRadioToggle extends RadioToggleTest {}
 class MultiRadioToggle extends RadioToggleTest {}
 
 @Component({
-    template: ` <form novalidate [formGroup]="testForm">
+    template: `<form novalidate [formGroup]="testForm">
         <nx-radio-toggle formControlName="reactiveToggle">
             <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
             <nx-radio-toggle-button nxValue="B">B</nx-radio-toggle-button>
@@ -561,7 +561,7 @@ class ReactiveFormToggle extends RadioToggleTest {
 }
 
 @Component({
-    template: ` <form [formGroup]="testForm">
+    template: `<form [formGroup]="testForm">
         <nx-radio-toggle formControlName="testToggle">
             <nx-radio-toggle-button nxValue="A">A</nx-radio-toggle-button>
             <nx-radio-toggle-button nxValue="B">B</nx-radio-toggle-button>

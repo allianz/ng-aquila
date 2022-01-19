@@ -267,19 +267,19 @@ class RatingTest {
 }
 
 @Component({
-    template: ` <nx-rating nxStartLabel="poor" nxEndLabel="great"></nx-rating> `,
+    template: `<nx-rating nxStartLabel="poor" nxEndLabel="great"></nx-rating>`,
 })
 class SimpleRatingComponent extends RatingTest {}
 
 @Component({
-    template: ` <nx-rating [(nxValue)]="theValue"></nx-rating> `,
+    template: `<nx-rating [(nxValue)]="theValue"></nx-rating>`,
 })
 class SimpleBindingRatingComponent extends RatingTest {
     theValue: any;
 }
 
 @Component({
-    template: ` <nx-rating [(ngModel)]="theValue"></nx-rating> `,
+    template: `<nx-rating [(ngModel)]="theValue"></nx-rating>`,
 })
 class NgModelBindingRatingComponent extends RatingTest {
     theValue: any;
@@ -299,7 +299,7 @@ class ReactiveBindingRatingComponent extends RatingTest {
 }
 
 @Component({
-    template: ` <nx-rating [nxValue]="currentValue" [nxStartLabel]="startLabel" [nxEndLabel]="endLabel"></nx-rating> `,
+    template: `<nx-rating [nxValue]="currentValue" [nxStartLabel]="startLabel" [nxEndLabel]="endLabel"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class RatingOnPushComponent extends RatingTest {
@@ -309,7 +309,7 @@ class RatingOnPushComponent extends RatingTest {
 }
 
 @Component({
-    template: ` <nx-rating [(ngModel)]="ngModelValue"></nx-rating> `,
+    template: `<nx-rating [(ngModel)]="ngModelValue"></nx-rating>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TemplateDrivenOnPushComponent extends RatingTest {

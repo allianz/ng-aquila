@@ -53,6 +53,6 @@ describe(NxActionIconDirective.name, () => {
 });
 
 @Component({
-    template: ` <span nxActionIcon></span> `,
+    template: `<span nxActionIcon></span>`,
 })
 class BasicActionIcon extends ActionIconTest {}

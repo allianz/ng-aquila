@@ -931,7 +931,7 @@ describe('NxTooltipComponent', () => {
 
 @Component({
     selector: 'nx-app',
-    template: ` <button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
+    template: `<button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
 })
 class BasicTooltipDemo {
     position = 'bottom';
@@ -944,7 +944,7 @@ class BasicTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: ` <div
+    template: `<div
         cdk-scrollable
         style="padding: 100px; margin: 300px;
                                height: 200px; width: 200px; overflow: auto;"
@@ -972,7 +972,7 @@ class ScrollableTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: ` <button [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
+    template: `<button [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class OnPushTooltipDemo {
@@ -982,7 +982,7 @@ class OnPushTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: ` <button *ngFor="let tooltip of tooltips" [nxTooltip]="tooltip"> Button {{ tooltip }} </button>`,
+    template: `<button *ngFor="let tooltip of tooltips" [nxTooltip]="tooltip"> Button {{ tooltip }} </button>`,
 })
 class DynamicTooltipsDemo {
     tooltips: string[] = [];
@@ -1018,7 +1018,7 @@ class TooltipDemoWithoutPositionBinding {
 
 @Component({
     selector: 'nx-app',
-    template: ` <button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover>
+    template: `<button nxButton [nxTooltipShowDelay]="1000" [nxTooltipHideDelay]="1500" nxTooltip="This message appears after 1 second" type="button" #hover>
         Delayed tooltip
     </button>`,
 })

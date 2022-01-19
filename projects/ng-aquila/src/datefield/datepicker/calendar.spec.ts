@@ -516,7 +516,7 @@ describe('NxCalendarComponent', () => {
 });
 
 @Component({
-    template: ` <nx-calendar [startAt]="startDate" [(selected)]="selected" (yearSelected)="selectedYear = $event" (monthSelected)="selectedMonth = $event">
+    template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" (yearSelected)="selectedYear = $event" (monthSelected)="selectedMonth = $event">
     </nx-calendar>`,
 })
 class StandardCalendar {
@@ -527,7 +527,7 @@ class StandardCalendar {
 }
 
 @Component({
-    template: ` <nx-calendar [startAt]="startAt" [minDate]="minDate" [maxDate]="maxDate"></nx-calendar> `,
+    template: `<nx-calendar [startAt]="startAt" [minDate]="minDate" [maxDate]="maxDate"></nx-calendar>`,
 })
 class CalendarWithMinMax {
     startAt!: Date;
@@ -536,7 +536,7 @@ class CalendarWithMinMax {
 }
 
 @Component({
-    template: ` <nx-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter"> </nx-calendar> `,
+    template: `<nx-calendar [startAt]="startDate" [(selected)]="selected" [dateFilter]="dateFilter"> </nx-calendar>`,
 })
 class CalendarWithDateFilter {
     selected!: Date;

@@ -92,52 +92,52 @@ describe('NxLayoutDirective', () => {
 });
 
 @Component({
-    template: `<div nxLayout=""></div> `,
+    template: `<div nxLayout=""></div>`,
 })
 class BasicLayout extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid"></div> `,
+    template: `<div nxLayout="grid"></div>`,
 })
 class BasicGridLayout extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid" class="test"></div> `,
+    template: `<div nxLayout="grid" class="test"></div>`,
 })
 class BasicGridLayoutClassTest extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid nogutters"></div> `,
+    template: `<div nxLayout="grid nogutters"></div>`,
 })
 class BasicNoGutters extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid maxwidth"></div> `,
+    template: `<div nxLayout="grid maxwidth"></div>`,
 })
 class BasicMaxWidth extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid maxwidth nogutters"></div> `,
+    template: `<div nxLayout="grid maxwidth nogutters"></div>`,
 })
 class BasicCombinate extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid nogutters maxwidth"></div> `,
+    template: `<div nxLayout="grid nogutters maxwidth"></div>`,
 })
 class Basic2Combinate extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="maxwidth grid nogutters"></div> `,
+    template: `<div nxLayout="maxwidth grid nogutters"></div>`,
 })
 class BasicCompleteReverse extends DirectiveTest {}
 
 @Component({
-    template: `<div nxLayout="grid nopadding"></div> `,
+    template: `<div nxLayout="grid nopadding"></div>`,
 })
 class BasicNoPadding extends DirectiveTest {}
 
 @Component({
-    template: `<div [nxLayout]="layout"></div> `,
+    template: `<div [nxLayout]="layout"></div>`,
 })
 class DynamicLayout extends DirectiveTest {
     layout = 'grid';

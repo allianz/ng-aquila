@@ -265,24 +265,24 @@ describe('NxTaglistComponent', () => {
 });
 
 @Component({
-    template: ` <nx-taglist [nxTags]="tags">empty</nx-taglist> `,
+    template: `<nx-taglist [nxTags]="tags">empty</nx-taglist>`,
 })
 class BasicTaglist extends TaglistTest {}
 
 @Component({
-    template: ` <nx-taglist [nxTags]="tags" [nxAllowTagDeletion]="false"></nx-taglist> `,
+    template: `<nx-taglist [nxTags]="tags" [nxAllowTagDeletion]="false"></nx-taglist>`,
 })
 class TaglistNoDelete extends TaglistTest {}
 
 @Component({
-    template: ` <nx-taglist [nxTags]="tags" nxLabelProperty="testLabelProp"></nx-taglist> `,
+    template: `<nx-taglist [nxTags]="tags" nxLabelProperty="testLabelProp"></nx-taglist>`,
 })
 class TaglistObjects extends TaglistTest {
     tags = [{ testLabelProp: 'foo' }, { testLabelProp: 'bar' }];
 }
 
 @Component({
-    template: ` <nx-taglist [nxTags]="tags" [nxValueFormatter]="myFormatter">empty</nx-taglist> `,
+    template: `<nx-taglist [nxTags]="tags" [nxValueFormatter]="myFormatter">empty</nx-taglist>`,
 })
 class TaglistWithFormatter extends TaglistTest {
     myFormatter: Function = (value: any) => `my ${value}`;
@@ -290,7 +290,7 @@ class TaglistWithFormatter extends TaglistTest {
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: ` <nx-taglist [nxTags]="tags">empty</nx-taglist> `,
+    template: `<nx-taglist [nxTags]="tags">empty</nx-taglist>`,
 })
 class TaglistOnPush extends TaglistTest {}
 

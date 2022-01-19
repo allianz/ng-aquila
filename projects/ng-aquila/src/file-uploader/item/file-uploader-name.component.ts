@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
 @Component({
     selector: 'nx-file-upload-name',
     styleUrls: ['./file-uploader-name.component.scss'],
-    template: ` {{ name }} `,
+    template: `{{ name }}`,
 })
 export class NxFileUploaderItemName {
     /** The filename.*/

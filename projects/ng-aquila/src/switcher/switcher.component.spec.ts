@@ -258,18 +258,18 @@ describe('NxSwitcherComponent', () => {
 });
 
 @Component({
-    template: ` <nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher> `,
+    template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
 })
 class BasicSwitcher extends SwitcherTest {}
 
 @Component({
-    template: ` <nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher> `,
+    template: `<nx-switcher [(checked)]="checked" id="testSwitcher">basicLabel</nx-switcher>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicSwitcherOnPush extends SwitcherTest {}
 
 @Component({
-    template: ` <nx-switcher [(ngModel)]="checked">templateLabel</nx-switcher> `,
+    template: `<nx-switcher [(ngModel)]="checked">templateLabel</nx-switcher>`,
 })
 class SwitcherTemplateDriven extends SwitcherTest {}
 
@@ -287,7 +287,7 @@ class SwitcherReactiveForm extends SwitcherTest {
 }
 
 @Component({
-    template: ` <nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher> `,
+    template: `<nx-switcher [labelSize]="labelSize" id="testSwitcher">basicLabel</nx-switcher>`,
 })
 class LabelSizeSwitcher extends SwitcherTest {}
 
@@ -314,6 +314,6 @@ class ValidationSwitcherForm extends SwitcherTest {
 }
 
 @Component({
-    template: ` <nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher> `,
+    template: `<nx-switcher [(checked)]="checked" id="testSwitcher"></nx-switcher>`,
 })
 class LabellessSwitcher extends SwitcherTest {}

@@ -431,24 +431,24 @@ class CodeInputTest3 extends CodeInputTest {
 }
 
 @Component({
-    template: ` <nx-code-input [length]="4" type="number"></nx-code-input> `,
+    template: `<nx-code-input [length]="4" type="number"></nx-code-input>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class NumberCodeInput extends CodeInputTest {}
 
 @Component({
-    template: ` <nx-code-input [negative]="negative" [disabled]="disabled" [length]="4"> </nx-code-input> `,
+    template: `<nx-code-input [negative]="negative" [disabled]="disabled" [length]="4"> </nx-code-input>`,
 })
 class ConfigurableCodeInput extends CodeInputTest {}
 
 @Component({
-    template: ` <nx-code-input [negative]="negative" [length]="4"> </nx-code-input> `,
+    template: `<nx-code-input [negative]="negative" [length]="4"> </nx-code-input>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class OnPushCodeInput extends CodeInputTest {}
 
 @Component({
-    template: ` <nx-code-input [length]="4"></nx-code-input> `,
+    template: `<nx-code-input [length]="4"></nx-code-input>`,
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
 })
 class OverrideDefaultLabelsCodeInput extends CodeInputTest {}

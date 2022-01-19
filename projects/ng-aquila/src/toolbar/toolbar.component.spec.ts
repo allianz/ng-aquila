@@ -46,6 +46,6 @@ describe('NxToolbarComponent', () => {
 });
 
 @Component({
-    template: ` <nx-toolbar></nx-toolbar> `,
+    template: `<nx-toolbar></nx-toolbar>`,
 })
 class BasicToolbar extends ToolbarTest {}

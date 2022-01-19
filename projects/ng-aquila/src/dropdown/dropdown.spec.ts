@@ -1351,7 +1351,7 @@ abstract class DropdownTest {
 }
 
 @Component({
-    template: ` <nx-formfield nxLabel="Car brand">
+    template: `<nx-formfield nxLabel="Car brand">
         <nx-dropdown [nxOverlayLabel]="overlayLabel">
             <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
             <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
@@ -1365,7 +1365,7 @@ class SimpleDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-formfield nxLabel="Car brand" appearance="outline">
+    template: `<nx-formfield nxLabel="Car brand" appearance="outline">
         <nx-dropdown [placeholder]="placeholder">
             <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
         </nx-dropdown>
@@ -1374,7 +1374,7 @@ class SimpleDropdownComponent extends DropdownTest {
 class DropdownInOutlineFieldComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="Lorem ipsum">
             Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua, sed eiusmod tempor incidunt ut
             labore et dolore magna aliqua.
@@ -1398,14 +1398,14 @@ class CustomClosedLabelComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown [(ngModel)]="selected" [placeholder]="placeholder">
+    template: `<nx-dropdown [(ngModel)]="selected" [placeholder]="placeholder">
         <nx-dropdown-item *ngFor="let item of items" [nxValue]="item.value">{{ item.label }}</nx-dropdown-item>
     </nx-dropdown>`,
 })
 class DynamicDropdownComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown [nxIsMultiselect]="true" [placeholder]="placeholder">
+    template: `<nx-dropdown [nxIsMultiselect]="true" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -1415,7 +1415,7 @@ class DynamicDropdownComponent extends DropdownTest {}
 class MultiSelectDropdownComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown [nxIsMultiselect]="true" [(nxValue)]="value" [placeholder]="placeholder">
+    template: `<nx-dropdown [nxIsMultiselect]="true" [(nxValue)]="value" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -1427,7 +1427,7 @@ class MultiSelectSimpleBinding extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown [nxIsMultiselect]="true" [(ngModel)]="value" [placeholder]="placeholder">
+    template: `<nx-dropdown [nxIsMultiselect]="true" [(ngModel)]="value" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -1439,7 +1439,7 @@ class MultiSelectTemplateBinding extends DropdownTest {
 }
 
 @Component({
-    template: ` <form [formGroup]="testForm">
+    template: `<form [formGroup]="testForm">
         <nx-dropdown nxLabel="Car brand" formControlName="dropdown" [nxIsMultiselect]="true" [placeholder]="placeholder">
             <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
             <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
@@ -1455,7 +1455,7 @@ class MultiselectReactiveBinding extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown [nxIsMultiselect]="true" [placeholder]="placeholder">
+    template: `<nx-dropdown [nxIsMultiselect]="true" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">B</nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi">A</nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo">V</nx-dropdown-item>
@@ -1465,7 +1465,7 @@ class MultiselectReactiveBinding extends DropdownTest {
 class MultiSelectDropdownContentProjectionComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown [nxIsMultiselect]="true" [nxValueFormatter]="toTextMulti" [placeholder]="placeholder">
+    template: `<nx-dropdown [nxIsMultiselect]="true" [nxValueFormatter]="toTextMulti" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -1484,7 +1484,7 @@ class MultiSelectDropdownRenderFunctionComponent extends DropdownTest {
     }
 }
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [nxValueFormatter]="toText" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [nxValueFormatter]="toText" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi"></nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo"></nx-dropdown-item>
@@ -1498,7 +1498,7 @@ class DropdownCustomToTextFunctionComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxShowFilter="true" nxLabel="Car brand" [placeholder]="placeholder" (filterResult)="filterResultChanged($event)">
+    template: `<nx-dropdown nxShowFilter="true" nxLabel="Car brand" [placeholder]="placeholder" (filterResult)="filterResultChanged($event)">
         <nx-dropdown-item nxValue="DE">Germany</nx-dropdown-item>
         <nx-dropdown-item nxValue="IRL">Ireland</nx-dropdown-item>
         <nx-dropdown-item nxValue="SWE">Sweden</nx-dropdown-item>
@@ -1511,7 +1511,7 @@ class FilterDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxShowFilter="true" nxLabel="Car brand" [placeholder]="placeholder">
+    template: `<nx-dropdown nxShowFilter="true" nxLabel="Car brand" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="DE"></nx-dropdown-item>
         <nx-dropdown-item nxValue="IRL"></nx-dropdown-item>
         <nx-dropdown-item nxValue="SWE"></nx-dropdown-item>
@@ -1521,7 +1521,7 @@ class FilterDropdownComponent extends DropdownTest {
 class FilterDropdownNoLabelComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown nxShowFilter="true" nxLabel="Car brand" [filterFn]="myFilter" [placeholder]="placeholder">
+    template: `<nx-dropdown nxShowFilter="true" nxLabel="Car brand" [filterFn]="myFilter" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo">Volvo</nx-dropdown-item>
@@ -1535,7 +1535,7 @@ class CustomFilterDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [placeholder]="placeholder">
         <nx-dropdown-group nxLabel="German">
             <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
         </nx-dropdown-group>
@@ -1547,7 +1547,7 @@ class CustomFilterDropdownComponent extends DropdownTest {
 class GroupDropdownComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [(nxValue)]="theValue" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [(nxValue)]="theValue" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo">Volvo</nx-dropdown-item>
@@ -1559,7 +1559,7 @@ class SimpleBindingDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <form [formGroup]="testForm">
+    template: `<form [formGroup]="testForm">
         <nx-dropdown nxLabel="Car brand" formControlName="dropdown" [placeholder]="placeholder">
             <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
             <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
@@ -1575,7 +1575,7 @@ class ReactiveBindingDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <form [formGroup]="testForm">
+    template: `<form [formGroup]="testForm">
         <nx-formfield nxLabel="Car brand">
             <nx-dropdown nxInput nxLabel="Car brand" formControlName="dropdown" [placeholder]="placeholder">
                 <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
@@ -1603,7 +1603,7 @@ class FormFieldDropdownComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
         <nx-dropdown-item nxValue="Audi">Audi</nx-dropdown-item>
         <nx-dropdown-item nxValue="Volvo">Volvo</nx-dropdown-item>
@@ -1623,7 +1623,7 @@ class ScrollingTestComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" [tabIndex]="tabIndex" [nxDisabled]="disabled" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" [tabIndex]="tabIndex" [nxDisabled]="disabled" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
     </nx-dropdown>`,
 })
@@ -1633,14 +1633,14 @@ class TabIndexTestComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" tabindex="5" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Car brand" [(nxValue)]="selectedValue" tabindex="5" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="BMW">BMW</nx-dropdown-item>
     </nx-dropdown>`,
 })
 class PlainTabIndexTestComponent extends DropdownTest {}
 
 @Component({
-    template: ` <nx-dropdown [(ngModel)]="preselectedValue" [placeholder]="placeholder">
+    template: `<nx-dropdown [(ngModel)]="preselectedValue" [placeholder]="placeholder">
         <nx-dropdown-item nxValue="monarch">a Monarch</nx-dropdown-item>
         <nx-dropdown-item nxValue="dictator">a Dictator</nx-dropdown-item>
     </nx-dropdown>`,
@@ -1652,7 +1652,7 @@ class PreselectedTestComponent extends DropdownTest {
 const mutationCallbacks: Function[] = [];
 
 @Component({
-    template: ` <nx-dropdown nxLabel="Deferred" [placeholder]="placeholder">
+    template: `<nx-dropdown nxLabel="Deferred" [placeholder]="placeholder">
         <nx-dropdown-item [nxValue]="value">{{ asyncLabel | async }}</nx-dropdown-item>
     </nx-dropdown>`,
     providers: [
@@ -1680,7 +1680,7 @@ class DeferredTestComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-dropdown [(ngModel)]="customLabelDropdownValue" [placeholder]="placeholder">
+    template: `<nx-dropdown [(ngModel)]="customLabelDropdownValue" [placeholder]="placeholder">
         <ng-template nxClosedLabel>
             <span>{{ customLabelDropdownValue?.prefix }}</span>
         </ng-template>
@@ -1707,7 +1707,7 @@ class DropdownCustomLabelComponent extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-formfield>
+    template: `<nx-formfield>
         <nx-dropdown>
             <nx-dropdown-item [disabled]="disabled" nxValue="test"><span>label</span></nx-dropdown-item>
         </nx-dropdown>
@@ -1718,7 +1718,7 @@ class DisabledItemDropdown extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-formfield>
+    template: `<nx-formfield>
         <nx-dropdown nxIsMultiselect="true">
             <nx-dropdown-item [disabled]="disabled" nxValue="test"><span>label</span></nx-dropdown-item>
         </nx-dropdown>
@@ -1729,7 +1729,7 @@ class DisabledItemMultiDropdown extends DropdownTest {
 }
 
 @Component({
-    template: ` <nx-formfield>
+    template: `<nx-formfield>
         <nx-dropdown>
             <nx-dropdown-item nxValue="test"><span>label</span></nx-dropdown-item>
         </nx-dropdown>
@@ -1739,7 +1739,7 @@ class DisabledItemMultiDropdown extends DropdownTest {
 class DropdownOnPush extends DropdownTest {}
 
 @Component({
-    template: ` <nx-formfield>
+    template: `<nx-formfield>
         <nx-dropdown [options]="options" [(ngModel)]="model" name="dropdown"></nx-dropdown>
     </nx-formfield>`,
 })

@@ -156,39 +156,39 @@ describe('NxDynamicTableComponent', () => {
 });
 
 @Component({
-    template: ` <nx-dynamic-table [nxData]="data"> </nx-dynamic-table> `,
+    template: `<nx-dynamic-table [nxData]="data"> </nx-dynamic-table>`,
 })
 class TableEmptyRows extends DynamicTableTest {
     data = [{}, {}];
 }
 
 @Component({
-    template: ` <nx-dynamic-table [nxData]="data"> </nx-dynamic-table> `,
+    template: `<nx-dynamic-table [nxData]="data"> </nx-dynamic-table>`,
 })
 class TableWrongRows extends DynamicTableTest {
     data = [null, undefined];
 }
 
 @Component({
-    template: ` <nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns"></nx-dynamic-table> `,
+    template: `<nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns"></nx-dynamic-table>`,
 })
 class BasicDynamicTable extends DynamicTableTest {
     style = 'border';
 }
 
 @Component({
-    template: ` <nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns" (nxRowClick)="handleRowClick($event)"></nx-dynamic-table> `,
+    template: `<nx-dynamic-table [nxData]="data" [nxDisplayedColumns]="displayedColumns" (nxRowClick)="handleRowClick($event)"></nx-dynamic-table>`,
 })
 class DynamicTableEvent extends DynamicTableTest {}
 
 @Component({
-    template: ` <nx-dynamic-table [nxData]="data">Information: No data to display</nx-dynamic-table> `,
+    template: `<nx-dynamic-table [nxData]="data">Information: No data to display</nx-dynamic-table>`,
 })
 class EmptyDynamicTable extends DynamicTableTest {
     data = [];
 }
 
 @Component({
-    template: ` <nx-dynamic-table></nx-dynamic-table> `,
+    template: `<nx-dynamic-table></nx-dynamic-table>`,
 })
 class ProgrammaticTable extends DynamicTableTest {}

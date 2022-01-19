@@ -83,7 +83,7 @@ describe('NxvVersionSelectComponent', () => {
 });
 
 @Component({
-    template: ` <nxv-version-select [versions]="versions"> </nxv-version-select> `,
+    template: `<nxv-version-select [versions]="versions"> </nxv-version-select>`,
 })
 class BasicVersionSelect extends VersionSelectTest {}
 
@@ -98,7 +98,7 @@ const versions: DocVersions = {
 };
 
 @Component({
-    template: ` <nxv-version-select> </nxv-version-select> `,
+    template: `<nxv-version-select> </nxv-version-select>`,
     providers: [{ provide: NX_DOC_VERSIONS, useValue: versions }],
 })
 class VersionSelectWithToken extends VersionSelectTest {}

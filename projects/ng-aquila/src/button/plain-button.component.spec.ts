@@ -61,6 +61,6 @@ describe('NxBreadcrumbComponent', () => {
 });
 
 @Component({
-    template: ` <button [nxPlainButton]="classNames" #button>Hello Button</button> `,
+    template: `<button [nxPlainButton]="classNames" #button>Hello Button</button>`,
 })
 class BasicButton extends ButtonTest {}

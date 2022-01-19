@@ -321,7 +321,7 @@ describe('NxMessageToast with parent and child service', () => {
 class BasicMessageToastTest {}
 
 @Component({
-    template: ` <ng-template> Testing template </ng-template> `,
+    template: `<ng-template> Testing template </ng-template>`,
 })
 class ComponentWithTemplateRef {
     @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;

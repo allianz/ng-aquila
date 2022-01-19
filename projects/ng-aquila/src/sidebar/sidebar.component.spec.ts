@@ -410,13 +410,13 @@ describe('NxSidebarComponent', () => {
 });
 
 @Component({
-    template: ` <nx-sidebar>Hello sidebar</nx-sidebar> `,
+    template: `<nx-sidebar>Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicSidebar extends SidebarTest {}
 
 @Component({
-    template: ` <nx-sidebar resizeable resizeHandleAriaLabel="example label">Hello sidebar</nx-sidebar> `,
+    template: `<nx-sidebar resizeable resizeHandleAriaLabel="example label">Hello sidebar</nx-sidebar>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ResizeableSidebar extends SidebarTest {}

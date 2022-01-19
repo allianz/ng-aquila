@@ -282,37 +282,37 @@ describe('NxCheckboxComponent', () => {
 });
 
 @Component({
-    template: ` <nx-checkbox [(checked)]="checked" [(indeterminate)]="indeterminate">Hello NX</nx-checkbox> `,
+    template: `<nx-checkbox [(checked)]="checked" [(indeterminate)]="indeterminate">Hello NX</nx-checkbox>`,
 })
 class BasicCheckbox extends CheckboxTest {}
 
 @Component({
-    template: ` <nx-checkbox></nx-checkbox> `,
+    template: `<nx-checkbox></nx-checkbox>`,
 })
 class LabellessCheckbox extends CheckboxTest {}
 
 @Component({
-    template: ` <nx-checkbox disabled="true">Label</nx-checkbox> `,
+    template: `<nx-checkbox disabled="true">Label</nx-checkbox>`,
 })
 class CheckboxDisabled extends CheckboxTest {}
 @Component({
-    template: ` <nx-checkbox [labelSize]="labelSize">Label</nx-checkbox> `,
+    template: `<nx-checkbox [labelSize]="labelSize">Label</nx-checkbox>`,
 })
 class CheckboxLabelSize extends CheckboxTest {}
 
 @Component({
-    template: ` <nx-checkbox [disabled]="disabled" [negative]="negative" [labelSize]="labelSize">Label</nx-checkbox> `,
+    template: `<nx-checkbox [disabled]="disabled" [negative]="negative" [labelSize]="labelSize">Label</nx-checkbox>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class CheckboxOnPush extends CheckboxTest {}
 
 @Component({
-    template: ` <nx-checkbox [(ngModel)]="checked"></nx-checkbox> `,
+    template: `<nx-checkbox [(ngModel)]="checked"></nx-checkbox>`,
 })
 class CheckboxTemplateDriven extends CheckboxTest {}
 
 @Component({
-    template: ` <nx-checkbox [negative]="negative"></nx-checkbox> `,
+    template: `<nx-checkbox [negative]="negative"></nx-checkbox>`,
 })
 class CheckboxNegative extends CheckboxTest {}
 

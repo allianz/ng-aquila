@@ -59,7 +59,7 @@ describe(NxHeaderCellDirective.name, () => {
 });
 
 @Component({
-    template: ` <td nxHeaderCell>example content</td> `,
+    template: `<td nxHeaderCell>example content</td>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicHeaderCellComponent extends HeaderCellTest {}

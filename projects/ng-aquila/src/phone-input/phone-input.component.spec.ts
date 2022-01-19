@@ -316,14 +316,14 @@ abstract class PhoneInputTest {
 }
 
 @Component({
-    template: ` <nx-formfield nxLabel="Telephone number">
+    template: `<nx-formfield nxLabel="Telephone number">
         <nx-phone-input [countryCode]="countryCode"></nx-phone-input>
     </nx-formfield>`,
 })
 class DefaultPhoneInput extends PhoneInputTest {}
 
 @Component({
-    template: ` <nx-formfield nxLabel="Telephone number">
+    template: `<nx-formfield nxLabel="Telephone number">
         <nx-phone-input
             [(ngModel)]="value"
             [disabled]="disabled"
@@ -340,7 +340,7 @@ class ConfigurablePhoneInput extends PhoneInputTest {
 }
 
 @Component({
-    template: ` <nx-formfield nxLabel="Telephone number">
+    template: `<nx-formfield nxLabel="Telephone number">
         <nx-phone-input [formControl]="formControl" [readonly]="readonly" [countryCode]="countryCode"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,
@@ -356,7 +356,7 @@ class MyIntl extends NxPhoneInputIntl {
 }
 
 @Component({
-    template: ` <nx-formfield nxLabel="Telephone number">
+    template: `<nx-formfield nxLabel="Telephone number">
         <nx-phone-input></nx-phone-input>
     </nx-formfield>`,
     providers: [{ provide: NxPhoneInputIntl, useClass: MyIntl }],
@@ -364,7 +364,7 @@ class MyIntl extends NxPhoneInputIntl {
 class I18nProviderTest extends PhoneInputTest {}
 
 @Component({
-    template: ` <nx-formfield nxLabel="Telephone number">
+    template: `<nx-formfield nxLabel="Telephone number">
         <nx-phone-input [inputFormatter]="formatter" [formControl]="formControl"></nx-phone-input>
         <nx-error nxFormfieldError>Error message</nx-error>
     </nx-formfield>`,

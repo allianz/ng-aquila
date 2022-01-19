@@ -4,7 +4,7 @@ import { STATUS_TYPE } from '../../../core/manifest';
 
 @Component({
     selector: 'nxv-status-dot',
-    template: ` <nx-icon name="{{ iconName }}" attr.alt="{{ message }}" size="s"></nx-icon> `,
+    template: `<nx-icon name="{{ iconName }}" attr.alt="{{ message }}" size="s"></nx-icon>`,
     styleUrls: ['./status-dot.component.scss'],
     host: {
         '[class.checkmark]': 'iconName === "check"',

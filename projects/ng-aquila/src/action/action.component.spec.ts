@@ -149,12 +149,12 @@ describe(NxActionComponent.name, () => {
 });
 
 @Component({
-    template: ` <a nxAction> example action </a> `,
+    template: `<a nxAction> example action </a>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class DefaultAction extends ActionTest {}
 
 @Component({
-    template: ` <a nxAction [expandable]="expandable" [expanded]="expanded" [selected]="selected"> example action </a> `,
+    template: `<a nxAction [expandable]="expandable" [expanded]="expanded" [selected]="selected"> example action </a>`,
 })
 class BasicAction extends ActionTest {}

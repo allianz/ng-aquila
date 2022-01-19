@@ -67,7 +67,7 @@ describe('NxIndicatorComponent', () => {
 });
 
 @Component({
-    template: ` <nx-indicator [position]="position">1</nx-indicator> `,
+    template: `<nx-indicator [position]="position">1</nx-indicator>`,
 })
 class BasicIndicator extends IndicatorTest {
     position = '';

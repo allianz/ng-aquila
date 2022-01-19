@@ -529,25 +529,25 @@ describe('NxRadioComponent', () => {
 });
 
 @Component({
-    template: ` <nx-radio>Label</nx-radio> `,
+    template: `<nx-radio>Label</nx-radio>`,
 })
 class BasicRadio extends RadioTest {}
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: ` <nx-radio>Label</nx-radio> `,
+    template: `<nx-radio>Label</nx-radio>`,
 })
 class BasicRadioOnPush extends RadioTest {}
 
 @Component({
-    template: ` <nx-radio [negative]="negative">Label</nx-radio> `,
+    template: `<nx-radio [negative]="negative">Label</nx-radio>`,
 })
 class ConfigurableRadio extends RadioTest {
     negative = true;
 }
 
 @Component({
-    template: ` <nx-radio></nx-radio> `,
+    template: `<nx-radio></nx-radio>`,
 })
 class LabellessRadio extends RadioTest {}
 

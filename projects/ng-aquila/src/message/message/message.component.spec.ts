@@ -155,18 +155,18 @@ describe('NxMessageComponent', () => {
 });
 
 @Component({
-    template: ` <nx-message [nxContext]="context"> lorem ipsum </nx-message> `,
+    template: `<nx-message [nxContext]="context"> lorem ipsum </nx-message>`,
 })
 class MessageBasicComponent extends MessageTest {}
 
 @Component({
-    template: ` <nx-message [nxContext]="context"> lorem ipsum </nx-message> `,
+    template: `<nx-message [nxContext]="context"> lorem ipsum </nx-message>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class MessageOnPushComponent extends MessageTest {}
 
 @Component({
-    template: ` <nx-message [closable]="closable"> lorem ipsum </nx-message> `,
+    template: `<nx-message [closable]="closable"> lorem ipsum </nx-message>`,
 })
 class ClosableMessageComponent extends MessageTest {
     closable = true;
