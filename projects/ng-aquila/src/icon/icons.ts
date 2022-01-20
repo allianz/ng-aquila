@@ -34,7 +34,7 @@ export class NxSvgIconLiteral extends NxSvgIcon {
         const sanitizedLiteral = this._sanitizer.sanitize(SecurityContext.HTML, data);
 
         if (!sanitizedLiteral) {
-            throw Error(`The literal provided to NxIconRegistry was not trusted as safe HTML by ` + `Angular's DomSanitizer. Attempted literal was "${data}".`);
+            throw Error(`The literal provided to NxIconRegistry was not trusted as safe HTML by Angular's DomSanitizer. Attempted literal was "${data}".`);
         }
 
         this.svgElement = this._svgElementFromString(sanitizedLiteral);
@@ -53,9 +53,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
         this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
 
         if (!this.url) {
-            throw Error(
-                `The URL provided to NxIconRegistry was not trusted as a resource URL ` + `via Angular's DomSanitizer. Attempted URL was "${safeUrl}".`,
-            );
+            throw Error(`The URL provided to NxIconRegistry was not trusted as a resource URL via Angular's DomSanitizer. Attempted URL was "${safeUrl}".`);
         }
         if (!this._httpClient) {
             throw Error(

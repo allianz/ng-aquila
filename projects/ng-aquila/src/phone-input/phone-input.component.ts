@@ -171,7 +171,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         this._inputValue = this._inputFormatter(this._inputValue, this._countryCallingCode);
     }
 
-    // TODO: we are disabling the floating label for now. the problem is: the label
+    // TODO we are disabling the floating label for now. the problem is: the label
     // is supposed to float next to the dropdown. we could introduce some changes to the
     // formfield that a control can also give something like an offset for the floating label
     // but for capacity reasons this has to be done at a later stage.
@@ -316,7 +316,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     private _trimInputValue(value: string) {
-        return value.replace(/[()\-\/\s]/g, '');
+        return value.replace(/[()\-/\s]/g, '');
     }
 
     private _removeLeadingZero(value: string) {

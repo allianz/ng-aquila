@@ -12,7 +12,7 @@ export class Category {
     children!: CategoryChild[];
 }
 
-const sortByLabel = function (a: { label: string }, b: { label: string }) {
+function sortByLabel(a: { label: string }, b: { label: string }) {
     const labelA = a.label.toLowerCase();
     const labelB = b.label.toLowerCase();
 
@@ -25,7 +25,7 @@ const sortByLabel = function (a: { label: string }, b: { label: string }) {
     }
 
     return labelA > labelB ? 1 : labelA < labelB ? -1 : 0;
-};
+}
 
 @Injectable()
 export class ManifestService {
@@ -42,7 +42,7 @@ export class ManifestService {
     }
 
     init() {
-        this.update(Object.assign({}, this.initialManifest));
+        this.update({ ...this.initialManifest });
     }
 
     isEmpty() {

@@ -120,9 +120,7 @@ function getDocumentPackageInfo(doc: Document) {
     // All of the component documentation is under either `src/lib` or `src/cdk`.
     // We group the docs up by the directory immediately under that root.
     const pathSegments = path.relative(basePath, filePath).split(path.sep);
-    //[ 'lib', 'button', 'button.component.spec.ts' ]
-    //vs
-    //[ 'button', 'button.component.spec.ts' ]
+    // [ 'lib', 'button', 'button.component.spec.ts' ] vs [ 'button', 'button.component.spec.ts' ]
     const groupName = pathSegments[0];
 
     return {

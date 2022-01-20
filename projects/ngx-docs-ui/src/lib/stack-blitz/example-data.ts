@@ -35,7 +35,7 @@ export class ExampleData {
         this.exampleFiles = [`${example}-example.html`, `${example}-example.ts`, `${example}-example.css`];
         this.selectorName = `${example}-example`;
         this.indexFilename = `${example}-example.html`;
-        this.description = title || exampleName.replace(/[\-]+/g, ' ') + ' Example';
+        this.description = title || exampleName.replace(/[-]+/g, ' ') + ' Example';
         this.componentNames = [`${componentName}ExampleComponent`];
     }
 }

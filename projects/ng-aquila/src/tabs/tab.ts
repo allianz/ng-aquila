@@ -116,7 +116,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (changes.hasOwnProperty('label') || changes.hasOwnProperty('disabled')) {
+        if ({}.hasOwnProperty.call(changes, 'label') || {}.hasOwnProperty.call(changes, 'disabled')) {
             this._stateChanges.next();
         }
     }

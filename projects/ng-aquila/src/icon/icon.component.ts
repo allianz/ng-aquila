@@ -74,7 +74,7 @@ export class NxIconComponent implements OnChanges {
     @Input() font = '';
 
     constructor(
-        /**@docs-private */
+        /** @docs-private */
         public el: ElementRef,
         private _iconRegistry: NxIconRegistry,
     ) {}

@@ -195,29 +195,26 @@ describe('NxDialog', () => {
         expect(overlayContainerElement.querySelector('nx-modal-container')).toBeNull();
     }));
 
-    it(
-        'should dispatch the beforeClosed and afterClosed events when the ' + 'overlay is detached externally',
-        fakeAsync(
-            inject([Overlay], (overlay: Overlay) => {
-                const dialogRef = dialog.open(PizzaMsg, {
-                    viewContainerRef: testViewContainerRef,
-                    scrollStrategy: overlay.scrollStrategies.close(),
-                });
-                const beforeClosedCallback = jasmine.createSpy('beforeClosed callback');
-                const afterCloseCallback = jasmine.createSpy('afterClosed callback');
+    it('should dispatch the beforeClosed and afterClosed events when the overlay is detached externally', fakeAsync(
+        inject([Overlay], (overlay: Overlay) => {
+            const dialogRef = dialog.open(PizzaMsg, {
+                viewContainerRef: testViewContainerRef,
+                scrollStrategy: overlay.scrollStrategies.close(),
+            });
+            const beforeClosedCallback = jasmine.createSpy('beforeClosed callback');
+            const afterCloseCallback = jasmine.createSpy('afterClosed callback');
 
-                dialogRef.beforeClosed().subscribe(beforeClosedCallback);
-                dialogRef.afterClosed().subscribe(afterCloseCallback);
+            dialogRef.beforeClosed().subscribe(beforeClosedCallback);
+            dialogRef.afterClosed().subscribe(afterCloseCallback);
 
-                scrolledSubject.next();
-                viewContainerFixture.detectChanges();
-                flush();
+            scrolledSubject.next();
+            viewContainerFixture.detectChanges();
+            flush();
 
-                expect(beforeClosedCallback).toHaveBeenCalledTimes(1);
-                expect(afterCloseCallback).toHaveBeenCalledTimes(1);
-            }),
-        ),
-    );
+            expect(beforeClosedCallback).toHaveBeenCalledTimes(1);
+            expect(afterCloseCallback).toHaveBeenCalledTimes(1);
+        }),
+    ));
 
     it('should apply ltr direction to the modal if none provided', fakeAsync(() => {
         const dialogRef = dialog.open(PizzaMsg, { viewContainerRef: testViewContainerRef });
@@ -1322,22 +1319,19 @@ describe('NxDialog', () => {
             expect(container.getAttribute('aria-labelledby')).toBe('Labelled By');
         });
 
-        it(
-            'should not set the aria-labelledby automatically if it has an aria-label ' + 'and an aria-labelledby',
-            fakeAsync(() => {
-                dialog.open(ContentElementDialog, {
-                    ariaLabel: 'Hello there',
-                    ariaLabelledBy: 'Labelled By',
-                    viewContainerRef: testViewContainerRef,
-                });
-                viewContainerFixture.detectChanges();
-                tick();
-                viewContainerFixture.detectChanges();
+        it('should not set the aria-labelledby automatically if it has an aria-label and an aria-labelledby', fakeAsync(() => {
+            dialog.open(ContentElementDialog, {
+                ariaLabel: 'Hello there',
+                ariaLabelledBy: 'Labelled By',
+                viewContainerRef: testViewContainerRef,
+            });
+            viewContainerFixture.detectChanges();
+            tick();
+            viewContainerFixture.detectChanges();
 
-                const container = overlayContainerElement.querySelector('nx-modal-container')!;
-                expect(container.hasAttribute('aria-labelledby')).toBe(false);
-            }),
-        );
+            const container = overlayContainerElement.querySelector('nx-modal-container')!;
+            expect(container.hasAttribute('aria-labelledby')).toBe(false);
+        }));
     });
 
     describe('aria-label', () => {

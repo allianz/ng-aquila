@@ -11,7 +11,7 @@ const fm = fmImport as any;
 
 const md = require('markdown-it')({
     html: true,
-    highlight: function (str, lang) {
+    highlight(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
                 return hljs.highlight(lang, str).value;
@@ -69,7 +69,7 @@ function getAllExamples(value: string, ignorePrivateExamples) {
 
         // add id if example is not private and private examples should be ignored
         if (!(config && config.indexOf('privateExample') !== -1 && ignorePrivateExamples)) {
-            examples.push({ name: name, config: JSON.parse(config) });
+            examples.push({ name, config: JSON.parse(config) });
         }
 
         match = EXAMPLE_PATTERN.exec(value);

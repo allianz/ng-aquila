@@ -1,5 +1,5 @@
 export const markdownDocsClasses = md => {
-    md.core.ruler.push('add-docs-classes', function (state) {
+    md.core.ruler.push('add-docs-classes', state => {
         // these opening tags should be decorated with an additonal class
         // so we can target them during styling
         const targetTags = ['h1', 'h2', 'h3', 'h4', 'h5', 'p', 'ul', 'li', 'a', 'code', 'dl', 'dt', 'dd', 'abbr', 'strong', 'table'];

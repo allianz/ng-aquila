@@ -84,7 +84,7 @@ describe(NxSwipebarComponent.name, () => {
     });
 
     describe('a11y', () => {
-        it('has no accessibility violations', function (done) {
+        it('has no accessibility violations', done => {
             createTestComponent(BasicSwipebar);
 
             axe.run(fixture.nativeElement, {}, (error: Error, results: axe.AxeResults) => {

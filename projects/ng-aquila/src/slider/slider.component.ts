@@ -324,8 +324,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     }
 
     _focus(): void {
-        if (this.disabled) {
-        }
+        // if (this.disabled) {}
         this._focusHandleElement();
     }
 
@@ -341,6 +340,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
             return;
         }
 
+        // TODO return statement should not substitute break keyword
         switch (event.keyCode) {
             case DOWN_ARROW:
             case this.inverted ? RIGHT_ARROW : LEFT_ARROW:
@@ -435,10 +435,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
             percent = 1 - percent;
         }
 
-        /**
-         * edge case handling because of float precision errors
-         * you couldn't reach the maximum
-         */
+        // edge case handling because of float precision errors you couldn't reach the maximum
         let closestValue;
 
         if (percent === 1) {

@@ -14,17 +14,15 @@ export const manifest = ({ key }) =>
             const id = basename(dirname(file.filename));
 
             // establish some defaults then assign what is given by frontmatter
-            attributes = Object.assign(
-                {
-                    id: id,
-                    title: id,
-                    examples: file.examples,
-                    category: DEFAULT_CATEGORY,
-                    apiFile: `lib-viewer/api/${id}.html`,
-                    overviewFile: `lib-viewer/overview/${id}.html`,
-                },
-                attributes,
-            );
+            attributes = {
+                id,
+                title: id,
+                examples: file.examples,
+                category: DEFAULT_CATEGORY,
+                apiFile: `lib-viewer/api/${id}.html`,
+                overviewFile: `lib-viewer/overview/${id}.html`,
+                ...attributes,
+            };
 
             return attributes;
         }),

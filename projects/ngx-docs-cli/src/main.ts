@@ -53,8 +53,7 @@ program
 
     .option(
         '-m, --with-module [path]',
-        'Enable Example Module generation. \
-        Pass in path otherwise the file is generated in the example folder.',
+        'Enable Example Module generation. Pass in path otherwise the file is generated in the example folder.',
         parsePath,
         'true',
     )
@@ -79,7 +78,7 @@ program
 
             const rawdata = fs.readFileSync(cmd.config);
             const guideConfig = JSON.parse(rawdata);
-            // TODO: check if guides exists
+            // TODO check if guides exists
             guideFiles = guideConfig.guides;
 
             // resolve relative guide file paths against the current directory

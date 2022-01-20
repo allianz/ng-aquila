@@ -16,17 +16,17 @@ class CountryMetadata {
 const metadata = new CountryMetadata(rawMetadata);
 
 /** Get dial code by country code */
-export const getDialCodeByCountryCode = function (countryCode: string): string {
+export const getDialCodeByCountryCode = (countryCode: string): string => {
     return metadata.countries[countryCode];
 };
 
 /** Get the country name by country code */
-export const getCountryNameByCountryCode = function (countryNames: LocalizedCountryNames<any>, countryCode: string): string {
+export const getCountryNameByCountryCode = (countryNames: LocalizedCountryNames<any>, countryCode: string): string => {
     const name = countryNames[countryCode];
     return Array.isArray(name) ? name[0] : name;
 };
 
-export const getCountryCodeforCallingCode = function (callingCode: string) {
+export const getCountryCodeforCallingCode = (callingCode: string) => {
     const countries = metadata.callingCodes[callingCode];
     if (countries && countries.length > 0) {
         return countries[0];
@@ -38,7 +38,7 @@ export const getCountryCodeforCallingCode = function (callingCode: string) {
 // Extract the country calling code from a number string
 // Returns the country calling code and the rest of the string with the calling code removed
 // Throws an error if the input is not correctly formatted.
-export const getCountryCallingCodeFromNumber = function (number: string) {
+export const getCountryCallingCodeFromNumber = (number: string) => {
     // there are a lot of cases a phone number could have, e.g. with a "IDD prefix"
     // e.g. instead of +49 123 it could be 0049 123 if you are calling from european countries
     // this IDD prefix is specific to countries/areas. libphonenumber has all the metadata for it
@@ -67,7 +67,7 @@ export const getCountryCallingCodeFromNumber = function (number: string) {
 };
 
 /** Get sorted country code */
-export const getSortedCountryCodes = function (countryNames: LocalizedCountryNames<any>) {
+export const getSortedCountryCodes = (countryNames: LocalizedCountryNames<any>) => {
     return Object.keys(countryNames)
         .filter(countryCode => countryCode in metadata.countries)
         .sort((a, b) => {

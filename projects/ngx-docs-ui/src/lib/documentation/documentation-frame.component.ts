@@ -33,7 +33,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     mobileSidebar = false;
 
     showThemingSwitcher = false;
-    // TODO: set this according to the calling application (injection token?), always there right now
+    // TODO set this according to the calling application (injection token?), always there right now
     showThemingSidebar = false;
 
     showMobileMenuButton = false;
@@ -127,9 +127,15 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     }
 
     hideEggs() {
-        new Egg('left,t,right', () => {
-            this._rabbitHole.toggleTheming();
-        }).listen();
+        new Egg()
+            .addCode(
+                'left,t,right',
+                () => {
+                    this._rabbitHole.toggleTheming();
+                },
+                undefined,
+            )
+            .listen();
     }
 
     clearStyleTags(tags: HTMLCollection) {

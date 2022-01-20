@@ -25,12 +25,6 @@ export class Egg {
     // for now we'll just ignore the shift key to allow capital letters
     ignoredKeys: any[] = [16];
 
-    constructor(...args: any) {
-        if (args.length) {
-            this.addCode.apply(this, args);
-        }
-    }
-
     addCode(keys: any, fn: Function, metadata: any) {
         this.eggs.push({ keys: this.__toCharCodes(keys), fn, metadata });
         return this;
@@ -84,24 +78,19 @@ export class Egg {
                 this.kps.push(keyCode);
             }
 
-            this.eggs.forEach(function (currentEgg, i) {
-                // @ts-expect-error
+            this.eggs.forEach((currentEgg, i) => {
                 const foundEgg = this.kps.toString().indexOf(currentEgg.keys) >= 0;
 
                 if (foundEgg) {
                     // Reset keys; if more keypresses occur while the callback is executing, it could retrigger the match
-                    // @ts-expect-error
                     this.kps = [];
                     // Set the activeEgg to this one
-                    // @ts-expect-error
                     this.activeEgg = currentEgg;
                     // if callback is a function, call it
                     // @ts-expect-error
                     this.__execute(currentEgg.fn, this);
                     // Call the hooks
-                    // @ts-expect-error
                     this.hooks.forEach(this.__execute, this);
-                    // @ts-expect-error
                     this.activeEgg = '';
                 }
             }, this);
@@ -131,12 +120,12 @@ export class Egg {
         if (typeof keys === 'string') {
             // make sure there isn't any whitespace
             // @ts-expect-error
-            keys = keys.split(',').map(function (key) {
+            keys = keys.split(',').map(key => {
                 return key.trim();
             });
         }
 
-        const characterKeyCodes = keys.map(function (key: string | number) {
+        const characterKeyCodes = keys.map((key: string | number) => {
             // check if it's already a keycode
             if (key === parseInt(key.toString(), 10)) {
                 return key;

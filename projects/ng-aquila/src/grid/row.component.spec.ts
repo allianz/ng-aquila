@@ -53,7 +53,7 @@ describe('NxRowDirective', () => {
     );
 
     it('should test with any input', () => {
-        expect(function () {
+        expect(() => {
             TestBed.createComponent(BasicRowIncorrect).detectChanges();
         }).toThrow(new Error('nxRow is incorrect'));
     });
@@ -87,7 +87,7 @@ describe('NxRowDirective', () => {
     it('should test with input row and nxWrap (nxWrap="nowrap,nowrap,wrap,reverse")', () => {
         createTestComponent(BasicRowNoWrap);
 
-        expect(getElementByClass('.nx-grid__row.nx-flex-nowrap.nx-flex-small-nowrap' + '.nx-flex-medium-wrap.nx-flex-large-wrap-reverse')).not.toBeNull();
+        expect(getElementByClass('.nx-grid__row.nx-flex-nowrap.nx-flex-small-nowrap.nx-flex-medium-wrap.nx-flex-large-wrap-reverse')).not.toBeNull();
     });
 
     it('should test with input row and nxWrap (nxWrap="wrap,reverse")', () => {
@@ -102,7 +102,7 @@ describe('NxRowDirective', () => {
         createTestComponent(BasicRowJustifyStart);
         expect(
             getElementByClass(
-                '.nx-grid__row.nx-justify-content-start.nx-justify-content-small-start' + '.nx-justify-content-medium-start.nx-justify-content-large-start',
+                '.nx-grid__row.nx-justify-content-start.nx-justify-content-small-start.nx-justify-content-medium-start.nx-justify-content-large-start',
             ),
         ).not.toBeNull();
     });
@@ -111,7 +111,7 @@ describe('NxRowDirective', () => {
         createTestComponent(BasicRowJustifyEnd);
         expect(
             getElementByClass(
-                '.nx-grid__row.nx-justify-content-around.nx-justify-content-small-end' + '.nx-justify-content-medium-end.nx-justify-content-large-end',
+                '.nx-grid__row.nx-justify-content-around.nx-justify-content-small-end.nx-justify-content-medium-end.nx-justify-content-large-end',
             ),
         ).not.toBeNull();
     });
@@ -119,30 +119,28 @@ describe('NxRowDirective', () => {
     it('should test with input row and nxRowAlignContent (nxRowAlignContent="start,start,end,around")', () => {
         createTestComponent(BasicRowContentStart);
         expect(
-            getElementByClass(
-                '.nx-grid__row.nx-align-content-start.nx-align-content-small-start' + '.nx-align-content-medium-end.nx-align-content-large-around',
-            ),
+            getElementByClass('.nx-grid__row.nx-align-content-start.nx-align-content-small-start.nx-align-content-medium-end.nx-align-content-large-around'),
         ).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignContent (nxRowAlignContent="end")', () => {
         createTestComponent(BasicRowContentEnd);
         expect(
-            getElementByClass('.nx-grid__row.nx-align-content-end.nx-align-content-small-end' + '.nx-align-content-medium-end.nx-align-content-large-end'),
+            getElementByClass('.nx-grid__row.nx-align-content-end.nx-align-content-small-end.nx-align-content-medium-end.nx-align-content-large-end'),
         ).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignItems (nxRowAlignItems="start,start,stretch")', () => {
         createTestComponent(BasicRowItemsStart);
         expect(
-            getElementByClass('.nx-grid__row.nx-align-items-start.nx-align-items-small-start' + '.nx-align-items-medium-stretch.nx-align-items-large-stretch'),
+            getElementByClass('.nx-grid__row.nx-align-items-start.nx-align-items-small-start.nx-align-items-medium-stretch.nx-align-items-large-stretch'),
         ).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignItems (nxRowAlignItems="end")', () => {
         createTestComponent(BasicRowItemsEnd);
         expect(
-            getElementByClass('.nx-grid__row.nx-align-items-end.nx-align-items-small-end.nx-align-items-medium-end' + '.nx-align-items-large-end'),
+            getElementByClass('.nx-grid__row.nx-align-items-end.nx-align-items-small-end.nx-align-items-medium-end.nx-align-items-large-end'),
         ).not.toBeNull();
     });
 

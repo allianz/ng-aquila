@@ -17,7 +17,7 @@ export function installAllPeerDependencies(host: Tree) {
     try {
         const peerDependencies = require(`@aposin/ng-aquila/package.json`).peerDependencies;
         for (const packageName in peerDependencies) {
-            if (peerDependencies.hasOwnProperty(packageName)) {
+            if ({}.hasOwnProperty.call(peerDependencies, packageName)) {
                 addPackageToPackageJson(host, packageName, peerDependencies[packageName]);
             }
         }

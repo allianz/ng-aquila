@@ -90,7 +90,7 @@ describe('NxColDirective', () => {
     });
 
     it('should test with empty input cols', () => {
-        expect(function () {
+        expect(() => {
             TestBed.createComponent(BasicTestNxColEmptyInputs).detectChanges();
         }).toThrow();
     });
@@ -101,12 +101,12 @@ describe('NxColDirective', () => {
 
     it('should test order directive', () => {
         expect(
-            getClassesCreated(BasicTestNxOrderInputs, '.nx-grid__column-10.nx-flex-first.' + 'nx-flex-small-first.nx-flex-medium-last.nx-flex-large-first'),
+            getClassesCreated(BasicTestNxOrderInputs, '.nx-grid__column-10.nx-flex-first.nx-flex-small-first.nx-flex-medium-last.nx-flex-large-first'),
         ).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignItems (nxAlignSelf="start")', () => {
-        expect(getClassesCreated(BasicTestColAlignSelf, '.nx-align-self-small-start.' + 'nx-align-self-medium-start.nx-align-self-large-start')).not.toBeNull();
+        expect(getClassesCreated(BasicTestColAlignSelf, '.nx-align-self-small-start.nx-align-self-medium-start.nx-align-self-large-start')).not.toBeNull();
     });
 
     it('should test with input row and nxRowAlignItems (nxColOrder="first")', () => {

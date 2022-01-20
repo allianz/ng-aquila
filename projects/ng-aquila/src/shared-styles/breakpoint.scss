@@ -79,7 +79,7 @@
     }
 }
 
-// TODO: This is for backwards compaitibility, Remove respond-to calls with corresponding media-breakpoint-up.
+// TODO This is for backwards compaitibility, Remove respond-to calls with corresponding media-breakpoint-up.
 $screen-small-1: 685px;
 
 @mixin respond-to($size) {

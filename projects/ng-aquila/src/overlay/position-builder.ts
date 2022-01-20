@@ -23,19 +23,19 @@ export const OVERLAY_POSITIONS: { [key in NxOverlayDirection]: (isRtl: boolean) 
     top(isRtl) {
         return { overlayX: 'center', overlayY: 'bottom' };
     },
-    'top-start'(isRtl) {
+    'top-start': function (isRtl) {
         return { overlayX: isRtl ? 'end' : 'start', overlayY: 'bottom' };
     },
-    'top-end'(isRtl) {
+    'top-end': function (isRtl) {
         return { overlayX: isRtl ? 'start' : 'end', overlayY: 'bottom' };
     },
     bottom(isRtl) {
         return { overlayX: 'center', overlayY: 'top' };
     },
-    'bottom-start'(isRtl) {
+    'bottom-start': function (isRtl) {
         return { overlayX: isRtl ? 'end' : 'start', overlayY: 'top' };
     },
-    'bottom-end'(isRtl) {
+    'bottom-end': function (isRtl) {
         return { overlayX: isRtl ? 'start' : 'end', overlayY: 'top' };
     },
     left(isRtl) {
@@ -49,19 +49,19 @@ export const ORIGIN_POSITIONS: { [key in NxOverlayDirection]: (arg0: boolean) =>
     top(isRtl) {
         return { originX: 'center', originY: 'top' };
     },
-    'top-start'(isRtl) {
+    'top-start': function (isRtl) {
         return { originX: isRtl ? 'end' : 'start', originY: 'top' };
     },
-    'top-end'(isRtl) {
+    'top-end': function (isRtl) {
         return { originX: isRtl ? 'start' : 'end', originY: 'top' };
     },
     bottom(isRtl) {
         return { originX: 'center', originY: 'bottom' };
     },
-    'bottom-start'(isRtl) {
+    'bottom-start': function (isRtl) {
         return { originX: isRtl ? 'end' : 'start', originY: 'bottom' };
     },
-    'bottom-end'(isRtl) {
+    'bottom-end': function (isRtl) {
         return { originX: isRtl ? 'start' : 'end', originY: 'bottom' };
     },
     left(isRtl) {

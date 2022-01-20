@@ -892,7 +892,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             return;
         }
 
-        // TODO: use event.code after removing IE11 support
+        // TODO use event.code after removing IE11 support
         const keyCode = event.keyCode;
         const isArrowKey = keyCode === DOWN_ARROW || keyCode === UP_ARROW || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW;
         const isOpenKey = keyCode === ENTER || keyCode === SPACE;
@@ -916,7 +916,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     private _handleOpenKeydown(event: KeyboardEvent) {
-        // TODO: use event.code after removing IE11 support
+        // TODO use event.code after removing IE11 support
         const keyCode = event.keyCode;
         // if has filter all events other than the listed ones should be ignored or handled in _onFilter()
         if (!([DOWN_ARROW, UP_ARROW, HOME, END, ENTER, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB].indexOf(keyCode) >= 0) && this.showFilter) {

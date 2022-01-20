@@ -9,7 +9,7 @@ const fm = fmImport as any;
 
 const md = require('markdown-it')({
     html: true,
-    highlight: function (str, lang) {
+    highlight(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
                 return hljs.highlight(lang, str).value;

@@ -301,7 +301,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
                         },
                         err => {
                             // On error reset
-                            // TODO: Log error?
+                            // TODO Log error?
                             itemsSubject.next([]);
                         },
                     );

@@ -27,7 +27,7 @@ export class NxComparisonTableDescriptionCell {
 
     constructor(public _table: NxComparisonTableBase, public _row: NxComparisonTableRowBase) {
         if (this._row.type === 'header' || this._row.type === 'footer') {
-            console.warn('`nxComparisonTableRow` should not contain ' + 'a `nx-comparison-table-description-cell` for type === "header" or type === "footer".');
+            console.warn('`nxComparisonTableRow` should not contain a `nx-comparison-table-description-cell` for type === "header" or type === "footer".');
         }
     }
 

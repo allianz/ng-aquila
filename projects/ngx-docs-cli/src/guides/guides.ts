@@ -3,7 +3,7 @@ import { build } from './run-guides';
 
 function run(source, dest) {
     return build({
-        source: source,
+        source,
         dest: path.resolve(dest),
     });
 }

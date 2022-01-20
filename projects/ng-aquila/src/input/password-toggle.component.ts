@@ -25,9 +25,9 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     /** Input element using the toggle functionality. */
     @Input() control!: HTMLInputElement;
 
-    /**@docs-private */
+    /** @docs-private */
     _currentIcon: string = visibilityIcons['show'];
-    /**@docs-private */
+    /** @docs-private */
     _pressed = false;
     private _ariaLabel = 'Show password';
 
@@ -74,19 +74,19 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-    /**@docs-private */
+    /** @docs-private */
     toggleIcon(): void {
         this._currentIcon = this._currentIcon === visibilityIcons['show'] ? visibilityIcons['hide'] : visibilityIcons['show'];
     }
 
-    /**@docs-private */
+    /** @docs-private */
     _onKeydown($event: KeyboardEvent) {
         if ($event && ($event.keyCode === ENTER || $event.keyCode === SPACE)) {
             this.toggleInputType();
         }
     }
 
-    /**@docs-private */
+    /** @docs-private */
     get tabindex(): number | null {
         if (this.control) {
             return this.control.disabled ? -1 : 0;

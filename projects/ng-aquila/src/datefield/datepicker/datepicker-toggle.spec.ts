@@ -51,7 +51,7 @@ describe('NxDatepickerToggleComponent', () => {
     });
 
     it('should return an error when two toggles are associated', () => {
-        expect(function () {
+        expect(() => {
             createTestComponent(DoubleToggleErrorComponent);
         }).toThrow(new Error('A NxDatepicker can only be associated with a single toggle button.'));
     });

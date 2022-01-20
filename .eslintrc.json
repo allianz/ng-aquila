@@ -21,28 +21,59 @@
 
                 "no-self-compare": "error",
                 "no-unreachable-loop": "error",
+                "no-unused-private-class-members": "warn",
 
                 // ==== eslint: suggestions ====
 
-                "curly": ["error", "all"],
+                "arrow-body-style": "off", // TODO check with others
+                "curly": "error",
+                "default-case-last": "error",
                 "eqeqeq": ["error", "always", { "null": "ignore" }],
+                "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+                "grouped-accessor-pairs": ["off", "setBeforeGet"], // TODO resolve and set warn
+                "guard-for-in": "error",
+                "no-alert": "off", // TODO in-line with design?
+                "no-bitwise": "error",
+                "no-caller": "error",
+                "no-console": ["off", { "allow": ["warn", "error"] }], // TODO check with others
+                "no-continue": "error",
                 "no-else-return": "error",
-                "no-empty": "off", // TODO resolve and kick
+                "no-empty": ["error", { "allowEmptyCatch": true }], // recommended override: allow empty catch block
+                "no-eval": "error",
+                "no-extend-native": "error",
+                "no-extra-bind": "error",
                 "no-extra-label": "error",
+                "no-iterator": "error",
+                "no-lone-blocks": "error",
                 "no-lonely-if": "error",
-                "no-prototype-builtins": "off", // TODO resolve and kick
+                "no-multi-str": "error",
+                "no-negated-condition": "off", // TODO check with others
+                "no-new-func": "error",
+                "no-new-object": "error",
+                "no-new-wrappers": "error",
+                "no-octal-escape": "error",
+                "no-param-reassign": "off", // TODO resolve and set error
+                "no-proto": "error",
+                "no-script-url": "error",
                 "no-undef-init": "error",
                 "no-unneeded-ternary": "error",
                 "no-useless-computed-key": ["error", { "enforceForClassMembers": true }],
-                "no-useless-escape": "off", // TODO resolve and kick
+                "no-useless-concat": "error",
                 "no-useless-rename": "error",
                 "no-useless-return": "error",
+                "no-warning-comments": ["warn", { "terms": ["todo"] }],
+                "object-shorthand": ["error", "always", { "avoidQuotes": true }],
                 "operator-assignment": "error",
-                "prefer-const": ["error", { "destructuring": "all" }], // TODO resolve and kick
+                "prefer-arrow-callback": ["error", { "allowUnboundThis": false }],
                 "prefer-exponentiation-operator": "error",
                 "prefer-numeric-literals": "error",
-                "prefer-object-spread": "off", // TODO enable as eror
-                "prefer-spread": "off", // TODO resolve and kick
+                "prefer-object-spread": "error",
+                "prefer-regex-literals": "off", // TODO check with others
+                "radix": "error",
+                "require-unicode-regexp": "off", // TODO check with others
+                "sort-imports": ["off", { "memberSyntaxSortOrder": ["multiple", "all", "single", "none"], "allowSeparatedGroups": true }], // TODO test
+                "spaced-comment": ["error", "always", { "markers": ["/"], "exceptions": ["*"] }],
+                "symbol-description": "error",
                 "yoda": ["error", "never", { "exceptRange": true }],
 
                 // ==== @typescript-eslint: supported rules ====

@@ -38,7 +38,7 @@ export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
             }
 
             if (!parameterType) {
-                console.warn(`Missing parameter type information (${parameterName}) in ` + `${method.fileInfo.relativePath}:${method.startingLine}`);
+                console.warn(`Missing parameter type information (${parameterName}) in ${method.fileInfo.relativePath}:${method.startingLine}`);
                 return;
             }
 
@@ -48,7 +48,7 @@ export function normalizeMethodParameters(method: NormalizedMethodMemberDoc) {
                 method.params.push({
                     name: parameterName,
                     type: parameterType.trim(),
-                    isOptional: isOptional,
+                    isOptional,
                 });
             } else {
                 existingParameterInfo.type = parameterType.trim();

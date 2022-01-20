@@ -571,7 +571,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         }
     }
 
-    /**@docs-private */
+    /** @docs-private */
     private _createChangeEvent(checkedValue: boolean): NxCheckboxChangeEvent {
         const event = new NxCheckboxChangeEvent(checkedValue, this.value, this);
         event.checked = checkedValue;

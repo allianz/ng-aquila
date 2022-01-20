@@ -115,13 +115,13 @@ function addStyles(options: Schema, path: string, importString: string) {
         const buffer = host.read(styleFilePath);
 
         if (!buffer) {
-            console.warn(chalk.red(`Could not read the default style file within the project ` + `(${chalk.italic(styleFilePath)})`));
+            console.warn(chalk.red(`Could not read the default style file within the project (${chalk.italic(styleFilePath)})`));
             console.warn(chalk.red(`Please import '${path}' file in your CSS.`));
             return;
         }
 
         const htmlContent = buffer.toString();
-        const insertion = '\n' + `${importString}`;
+        const insertion = `\n${importString}`;
 
         if (htmlContent.includes(insertion)) {
             return;

@@ -360,8 +360,8 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         event.preventDefault();
         event.stopPropagation();
 
-        if ((this.toggleGroup && this.checked) || this.disabled) {
-        } else {
+        // TODO simplify if statement
+        if (!((this.toggleGroup && this.checked) || this.disabled)) {
             this.checked = !this.checked;
             this.onChangeCallback(this.checked);
             this.checkedChange.emit(this.checked);

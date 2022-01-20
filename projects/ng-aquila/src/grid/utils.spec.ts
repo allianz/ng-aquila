@@ -32,7 +32,7 @@ describe('Grid utils', () => {
     });
 
     it('should test processSplit', () => {
-        expect(function () {
+        expect(() => {
             // @ts-expect-error
             processSplit(undefined);
         }).toThrow();

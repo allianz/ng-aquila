@@ -19,12 +19,12 @@ export class NxBreadcrumbItemComponent implements OnDestroy {
         this._focusMonitor.stopMonitoring(this._elemRef);
     }
 
-    /**@docs-private */
+    /** @docs-private */
     setAsLast() {
         this._renderer.setAttribute(this._elemRef.nativeElement, 'aria-current', 'page');
     }
 
-    /**@docs-private */
+    /** @docs-private */
     resetAriaLabel() {
         this._renderer.removeAttribute(this._elemRef.nativeElement, 'aria-current');
     }

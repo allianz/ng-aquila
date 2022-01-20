@@ -12,14 +12,12 @@ export const manifest = ({ key }) =>
             const defaultID = basename(file.filename, extname(file.filename));
 
             // establish some defaults then assign what is given by frontmatter
-            attributes = Object.assign(
-                {
-                    id: defaultID,
-                    title: defaultID,
-                    file: `lib-viewer/guides/${defaultID}.html`,
-                },
-                attributes,
-            );
+            attributes = {
+                id: defaultID,
+                title: defaultID,
+                file: `lib-viewer/guides/${defaultID}.html`,
+                ...attributes,
+            };
 
             return attributes;
         }),

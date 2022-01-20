@@ -50,7 +50,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
         return this._negative;
     }
 
-    /**@docs-private */
+    /** @docs-private */
     @ContentChildren(NxBreadcrumbItemComponent, { descendants: true })
     breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
 

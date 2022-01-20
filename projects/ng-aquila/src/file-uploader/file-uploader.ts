@@ -118,7 +118,7 @@ export class NxFileUploader {
         });
 
         forkJoin(responses).subscribe(results => {
-            const mergedResults = results.reduce(function (acc, result: NxFileUploadResult) {
+            const mergedResults = results.reduce((acc, result: NxFileUploadResult) => {
                 if (result.success) {
                     if (!acc.success) {
                         acc.success = new NxFileUploadSuccess([], []);

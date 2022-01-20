@@ -85,7 +85,7 @@ describe('NxInputDirective', () => {
     );
 
     it('reject forbidden types', fakeAsync(() => {
-        expect(function () {
+        expect(() => {
             createTestComponent(TypedAndRequiredInput);
             testInstance.type = 'button';
 
