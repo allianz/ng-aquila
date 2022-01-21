@@ -7,7 +7,7 @@
 :host(.nx-rating--negative) {
     .nx-rating__label,
     .nx-rating__icon {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
@@ -16,11 +16,11 @@
     outline: none;
 
     .nx-rating__label {
-        @include var(color, rating-disabled-label-color);
+        color: v(rating-disabled-label-color);
     }
 
     .nx-rating__icon {
-        @include var(color, rating-disabled-icon-color);
+        color: v(rating-disabled-icon-color);
         cursor: not-allowed;
     }
 }
@@ -32,7 +32,7 @@
 .nx-rating__label {
     display: flex;
     @include type-style(rating-label);
-    @include var(color, rating-label-color);
+    color: v(rating-label-color);
 }
 
 .nx-rating__label--end {
@@ -45,8 +45,8 @@
 }
 
 .nx-rating__icon {
-    @include var(font-size, rating-icon-size);
-    @include var(color, rating-icon-color);
+    font-size: v(rating-icon-size);
+    color: v(rating-icon-color);
     width: auto;
     background: none;
     border: none;

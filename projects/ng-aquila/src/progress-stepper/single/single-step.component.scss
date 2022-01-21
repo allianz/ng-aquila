@@ -9,7 +9,7 @@ $margin-bottom: nx-spacer(2xs);
 .nx-single-step__infos {
     display: flex;
     @include type-style(single-stepper-step);
-    @include var(color, single-stepper-step-color);
+    color: v(single-stepper-step-color);
     margin-top: nx-spacer(2xs);
 }
 

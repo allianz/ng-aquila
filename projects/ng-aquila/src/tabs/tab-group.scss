@@ -45,7 +45,7 @@
     height: 1px;
     bottom: 0;
     left: -(nx-spacer(2m));
-    background-color: var(--tab-item-border-color);
+    background-color: v(tab-item-border-color);
 }
 
 .nx-tab-header__item:first-child::before {
@@ -87,14 +87,14 @@
 
 :host(.is-expert):not(.is-negative) {
     .nx-tab-header__item:not(.nx-tab-header__item--active):not(.nx-tab-header__item--disabled) {
-        @include var(color, tab-expert-color);
+        color: v(tab-expert-color);
 
         &:hover {
-            color: var(--tab-item-hover-color);
+            color: v(tab-item-hover-color);
         }
 
         &:active {
-            color: var(--tab-item-active-color);
+            color: v(tab-item-active-color);
         }
 
         @media screen and (-ms-high-contrast: active) {
@@ -129,11 +129,11 @@
 }
 
 :host(.is-negative) {
-    @include var(color, negative);
+    color: v(negative);
 
     .nx-tab-header__item {
-        @include var(color, negative);
-        @include var(border-bottom-color, negative);
+        color: v(negative);
+        border-bottom-color: v(negative);
 
         &:hover,
         &:active {
@@ -143,8 +143,8 @@
 
     .nx-tab-header__item.nx-tab-header__item--disabled {
         @include tab__item--disabled;
-        @include var(color, tab-item-disabled-negative-color);
-        @include var(border-color, tab-item-disabled-negative-color);
+        color: v(tab-item-disabled-negative-color);
+        border-color: v(tab-item-disabled-negative-color);
     }
 }
 
@@ -160,8 +160,8 @@
 
 :host(.is-disabled.is-negative) {
     .nx-tab-header__item {
-        @include var(color, tab-item-disabled-negative-color);
-        @include var(border-color, tab-item-disabled-negative-color);
+        color: v(tab-item-disabled-negative-color);
+        border-color: v(tab-item-disabled-negative-color);
     }
 }
 

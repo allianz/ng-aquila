@@ -2,7 +2,7 @@
 
 :host(.nx-footer) {
     @include type-style(footer);
-    @include var(color, footer-color);
+    color: v(footer-color);
     display: flex;
     flex-direction: row;
     background: transparent;
@@ -19,7 +19,7 @@
 }
 
 ::ng-deep .nx-footer__copyright {
-    @include var(font-weight, footer-copyright-font-weight);
+    font-weight: v(footer-copyright-font-weight);
     align-self: flex-end;
     font-size: inherit;
     line-height: inherit;

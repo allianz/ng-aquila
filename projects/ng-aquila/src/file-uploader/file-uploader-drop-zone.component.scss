@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    @include var(color, file-uploader-drop-zone-text-color);
+    color: v(file-uploader-drop-zone-text-color);
 
     &.is-active {
         border-style: solid;

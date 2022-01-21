@@ -39,5 +39,5 @@
 
 :host(.nx-grid--max-width) {
     max-width: 100%;
-    @include var(width, grid-max-width);
+    width: v(grid-max-width);
 }

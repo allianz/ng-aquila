@@ -13,7 +13,7 @@
 }
 
 :host(.nx-copy--negative) {
-    @include var(color, negative);
+    color: v(negative);
 }
 
 :host(.nx-copy--small) {

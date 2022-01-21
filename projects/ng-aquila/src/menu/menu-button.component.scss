@@ -3,8 +3,8 @@
 :host {
     display: flex;
     align-items: center;
-    @include var(background, menu-button-background-color);
-    @include var(color, menu-button-text-color);
+    background: v(menu-button-background-color);
+    color: v(menu-button-text-color);
     appearance: none;
     outline: none;
     box-shadow: none;
@@ -20,14 +20,14 @@
     padding: nx-spacer(m);
 
     &:hover {
-        @include var(background, menu-button-hover-background-color);
+        background: v(menu-button-hover-background-color);
     }
 
     &.is-expanded {
         font-weight: nx-font-weight(bold);
-        @include var(background, menu-button-expanded-background-color);
-        @include var(color, menu-button-expanded-text-color);
-        @include var(border-color, menu-button-expanded-border-color);
+        background: v(menu-button-expanded-background-color);
+        color: v(menu-button-expanded-text-color);
+        border-color: v(menu-button-expanded-border-color);
 
         .nx-menu-button__expand-icon {
             transform: rotateZ(180deg);
@@ -35,12 +35,12 @@
     }
 
     &.nx-menu-button--nested {
-        @include var(background, menu-button-nested-background-color);
+        background: v(menu-button-nested-background-color);
 
         &.is-expanded {
-            @include var(background, menu-button-nested-expanded-background-color);
-            @include var(border-color, menu-button-nested-expanded-border-color);
-            @include var(color, menu-button-nested-expanded-color);
+            background: v(menu-button-nested-expanded-background-color);
+            border-color: v(menu-button-nested-expanded-border-color);
+            color: v(menu-button-nested-expanded-color);
         }
     }
 

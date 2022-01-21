@@ -64,7 +64,7 @@ $edge-margin: 4%;
     width: 12%;
     height: 12%;
     border-radius: 50%;
-    @include var(background-color, spinner-indicator-color);
+    background-color: v(spinner-indicator-color);
     position: absolute;
     top: $edge-margin;
 }
@@ -95,7 +95,7 @@ $edge-margin: 4%;
 
     .nx-spinner__edge-left,
     .nx-spinner__edge-right {
-        @include var(background-color, spinner-negative-indicator-color);
+        background-color: v(spinner-negative-indicator-color);
     }
 }
 

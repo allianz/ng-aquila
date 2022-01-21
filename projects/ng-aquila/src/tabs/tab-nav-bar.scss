@@ -9,7 +9,7 @@
         justify-content: flex-start;
         border-bottom-width: nx-border-size(xs);
         border-bottom-style: solid;
-        border-bottom-color: var(--tab-expert-bottom-border-color);
+        border-bottom-color: v(tab-expert-bottom-border-color);
 
         .nx-tab-nav-bar {
             width: 100%;
@@ -74,7 +74,7 @@
         position: absolute;
         width: calc(100% + 64px);
         height: 1px;
-        background-color: var(--tab-item-border-color);
+        background-color: v(tab-item-border-color);
         bottom: 0;
         left: -32px;
     }
@@ -131,7 +131,7 @@
 
 :host.is-expert:not(.is-negative) ::ng-deep {
     a.nx-tab-link:not(.is-disabled):not(.is-active) {
-        color: var(--tab-expert-color);
+        color: v(tab-expert-color);
 
         @media screen and (-ms-high-contrast: active) {
             color: buttonText;
@@ -139,21 +139,21 @@
     }
 
     a.nx-tab-link.is-active {
-        border-color: var(--tab-item-active-border-color);
+        border-color: v(tab-item-active-border-color);
     }
 }
 
 :host(.is-negative) {
-    color: var(--negative);
+    color: v(negative);
 
     ::ng-deep a.nx-tab-link {
-        color: var(--negative);
-        border-bottom-color: var(--negative);
+        color: v(negative);
+        border-bottom-color: v(negative);
     }
 
     ::ng-deep a.nx-tab-link.is-disabled {
-        color: var(--tab-item-disabled-negative-color);
-        border-color: var(--tab-item-disabled-negative-color);
+        color: v(tab-item-disabled-negative-color);
+        border-color: v(tab-item-disabled-negative-color);
     }
 
     @media screen and (-ms-high-contrast: active) {
@@ -181,8 +181,8 @@
 
 :host(.is-disabled.is-negative) {
     ::ng-deep a.nx-tab-link {
-        color: var(--tab-item-disabled-negative-color);
-        border-color: var(--tab-item-disabled-negative-color);
+        color: v(tab-item-disabled-negative-color);
+        border-color: v(tab-item-disabled-negative-color);
     }
 }
 
@@ -193,7 +193,7 @@
         content: '';
         display: block;
         position: absolute;
-        height: var(--tab-item-line-height);
+        height: v(tab-item-line-height);
         width: 100%;
         top: 4px;
 

@@ -3,12 +3,12 @@
 :host {
     display: flex;
     flex-direction: column;
-    background-color: var(--notification-panel-item-unread-background-color);
+    background-color: v(notification-panel-item-unread-background-color);
     padding: 16px 24px;
     margin: 0 -24px;
 
     &.nx-notification-item--read {
-        background-color: var(--notification-panel-item-read-background-color);
+        background-color: v(notification-panel-item-read-background-color);
     }
 
     &:focus {
@@ -51,16 +51,16 @@
 :host(.nx-notification-item--clickable) {
     cursor: pointer;
     &:hover {
-        background-color: var(--notification-panel-item-unread-hover-background-color);
+        background-color: v(notification-panel-item-unread-hover-background-color);
     }
 
     &:active {
-        background-color: var(--notification-panel-item-unread-active-background-color);
+        background-color: v(notification-panel-item-unread-active-background-color);
     }
 
     &.nx-notification-item--read {
         &:hover {
-            background-color: var(--notification-panel-item-read-hover-background-color);
+            background-color: v(notification-panel-item-read-hover-background-color);
         }
 
         &:active {

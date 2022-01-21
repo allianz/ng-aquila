@@ -9,16 +9,16 @@
 
 :host(.is-link) {
     ::ng-deep .nx-breadcrumb-item {
-        color: var(--breadcrumb-link-color);
+        color: v(breadcrumb-link-color);
     }
 
     ::ng-deep .nx-breadcrumb-item__text {
         &:hover {
-            color: var(--breadcrumb-link-hover-color);
+            color: v(breadcrumb-link-hover-color);
         }
 
         &:active {
-            color: var(--breadcrumb-link-active-color);
+            color: v(breadcrumb-link-active-color);
         }
     }
 }
@@ -43,7 +43,7 @@
 
 :host(.is-negative) {
     ::ng-deep .nx-breadcrumb-item {
-        color: var(--negative);
+        color: v(negative);
     }
 }
 

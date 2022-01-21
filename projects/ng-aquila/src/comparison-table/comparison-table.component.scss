@@ -36,8 +36,8 @@
 
         .nx-comparison-table__popular-cell .nx-comparison-table__cell-content {
             @include type-style(comparison-table-popular-cell);
-            @include var(background-color, comparison-table-popular-cell-background-color);
-            @include var(color, comparison-table-popular-cell-text-color);
+            background-color: v(comparison-table-popular-cell-background-color);
+            color: v(comparison-table-popular-cell-text-color);
             width: 100%;
             padding: nx-spacer(2xs) nx-spacer(xs);
 
@@ -87,7 +87,7 @@
             .nx-comparison-table__cell-content {
                 padding: 16px;
                 height: 100%;
-                @include var(background-color, comparison-table-cell-background-color);
+                background-color: v(comparison-table-cell-background-color);
             }
         }
 
@@ -98,12 +98,12 @@
         }
 
         .nx-comparison-table__cell.is-selected .nx-comparison-table__cell-content {
-            @include var(background-color, comparison-table-selected-column-background-color);
+            background-color: v(comparison-table-selected-column-background-color);
         }
 
         // DESKTOP  +  TABLET disabled styles
         .nx-comparison-table__cell.is-disabled {
-            @include var(color, comparison-table-disabled-text-color);
+            color: v(comparison-table-disabled-text-color);
 
             ::ng-deep nx-icon:not(.nx-comparison-table__select-button) {
                 opacity: 40%;
@@ -113,11 +113,11 @@
 
     ::ng-deep .nx-comparison-table-toggle-section__header-content {
         @include break-out(&, 'ltr') {
-            @include var(padding, comparison-table-toggle-section-header-padding);
+            padding: v(comparison-table-toggle-section-header-padding);
         }
 
         @include break-out(&, 'rtl') {
-            @include var(padding, comparison-table-toggle-section-header-padding-rtl);
+            padding: v(comparison-table-toggle-section-header-padding-rtl);
         }
     }
 
@@ -129,11 +129,11 @@
     ::ng-deep nx-comparison-table-flex-row.is-footer-row {
         .nx-comparison-table__cell .nx-comparison-table__cell-content {
             padding: 16px 4px;
-            @include var(background-color, comparison-table-header-background-color);
+            background-color: v(comparison-table-header-background-color);
         }
 
         .nx-comparison-table__row:last-child .nx-comparison-table__placeholder-cell .nx-comparison-table__cell-content {
-            @include var(background-color, comparison-table-placeholder-cell-background-color);
+            background-color: v(comparison-table-placeholder-cell-background-color);
             border-bottom: 1px solid v(comparison-table-placeholder-cell-border-color);
             border-top: 1px solid v(comparison-table-placeholder-cell-border-color);
 
@@ -147,18 +147,18 @@
         }
 
         .nx-comparison-table__cell:not(.is-selected) .nx-comparison-table__cell-content {
-            @include var(color, comparison-table-header-text-color);
+            color: v(comparison-table-header-text-color);
         }
 
         .nx-comparison-table__cell.is-disabled .nx-comparison-table__cell-content {
-            @include var(color, comparison-table-disabled-column-header-text-color);
+            color: v(comparison-table-disabled-column-header-text-color);
         }
     }
 
     ::ng-deep nx-comparison-table-flex-row.has-intersection {
         .nx-comparison-table__description-cell .nx-comparison-table__cell-content,
         .nx-comparison-table__intersection-cell .nx-comparison-table__cell-content {
-            @include var(background, comparison-table-intersection-cell-background-color);
+            background: v(comparison-table-intersection-cell-background-color);
         }
     }
 
@@ -330,13 +330,13 @@
         .nx-comparison-table__cell,
         .nx-comparison-table__description-cell {
             padding: 8px;
-            @include var(background-color, comparison-table-cell-background-color);
+            background-color: v(comparison-table-cell-background-color);
         }
 
         .nx-comparison-table__mobile-popular-cell {
             @include type-style(comparison-table-popular-cell);
-            @include var(background-color, comparison-table-popular-cell-background-color);
-            @include var(color, comparison-table-popular-cell-text-color);
+            background-color: v(comparison-table-popular-cell-background-color);
+            color: v(comparison-table-popular-cell-text-color);
             padding: 4px;
         }
 
@@ -344,12 +344,12 @@
             padding: 8px 4px;
 
             &:not(.is-selected) {
-                @include var(background-color, comparison-table-header-background-color);
-                @include var(color, comparison-table-header-text-color);
+                background-color: v(comparison-table-header-background-color);
+                color: v(comparison-table-header-text-color);
             }
 
             &.is-disabled {
-                @include var(color, comparison-table-disabled-column-header-text-color);
+                color: v(comparison-table-disabled-column-header-text-color);
             }
         }
 
@@ -408,11 +408,11 @@
         .nx-comparison-table__intersection-cell {
             min-width: 256px;
             width: 256px;
-            @include var(background, comparison-table-intersection-cell-background-color);
+            background: v(comparison-table-intersection-cell-background-color);
         }
 
         .nx-comparison-table__description-cell.is-intersection-column {
-            @include var(background, comparison-table-intersection-cell-background-color);
+            background: v(comparison-table-intersection-cell-background-color);
         }
 
         .nx-comparison-table__description-cell {
@@ -480,7 +480,7 @@
         tr.is-disabled {
             ::ng-deep .nx-comparison-table__mobile-header-cell,
             ::ng-deep .nx-comparison-table__cell {
-                @include var(color, comparison-table-disabled-text-color);
+                color: v(comparison-table-disabled-text-color);
 
                 ::ng-deep nx-icon:not(.nx-comparison-table__select-button) {
                     opacity: 40%;

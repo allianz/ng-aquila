@@ -55,7 +55,10 @@
 /// @param {String} $name - the name of the token to get the styles for
 /// @example -  @include type-style('body-short-01');
 @mixin type-style($name) {
-    @include nx--type-style($name);
+    font-size: v(#{$name}-font-size);
+    line-height: v(#{$name}-line-height);
+    font-weight: v(#{$name}-font-weight);
+    letter-spacing: v(#{$name}-letter-spacing);
 }
 
 // Create a custom property declaration
@@ -64,34 +67,15 @@
     #{"--"+$name}: #{$value};
 }
 
-/// Helper mixin to include the styles for a given token in any selector in your
-/// project.
-/// @access public
-/// @param {String} $name - the name of the token to get the styles for
-/// @param {?Map} $breakpoints - if set provides media queries for the given breakpoints
-@mixin nx--type-style($name) {
-    @include var(font-size, #{$name}-font-size);
-    @include var(line-height, #{$name}-line-height);
-    @include var(font-weight, #{$name}-font-weight);
-    @include var(letter-spacing, #{$name}-letter-spacing);
-}
-
-// LEGACY
-// was used because we created fallback values for IE11
-// but now we do not add any fallback values anymore
-// users of the library have to import a theme file now
-/// @access public
-/// @param {String} $property - css tyle property (e.g. background)
-/// @param {String} $token - token key to be applied to the $property
-/// @returns a css style definition (e.g. background: var(--button-background);)
-/// @example - @include(background, button-background)
-@mixin var($property, $token) {
-    #{$property}: var(--#{$token});
-}
-
 // Retired helper to get css var with a fallback value
 // Now basically a wrapper for css var function.
 @function v($token) {
+    $value: _nx-deep-find-value($nx-theme, $token, map-get($nx-theme, $token));
+
+    @if ($value == null) {
+        @error 'Theme: cannot find value for key `' + $token + '`';
+    }
+
     @return var(--#{$token});
 }
 
@@ -102,18 +86,6 @@
 /// @example - background: nx-theme(primary-action)
 @function nx-theme($token) {
     @return v($token);
-}
-
-/// @access private
-// Checks if the token exists.
-@function _get-fallback-value($token) {
-    $fallbackValue: _nx-deep-find-value($nx-theme, $token, map-get($nx-theme, $token));
-
-    @if ($fallbackValue == null) {
-        @error 'Theme: cannot find value for key `' + $token + '`';
-    }
-
-    @return $fallbackValue;
 }
 
 // Helper function to make it possible to reuse keys from the same map.

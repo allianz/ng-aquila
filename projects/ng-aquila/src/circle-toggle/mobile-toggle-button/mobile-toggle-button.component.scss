@@ -6,7 +6,7 @@
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     flex-direction: row;
     border-width: nx-border-size(xs) nx-border-size(m);
-    @include var(border-color, circle-toggle-border-color);
+    border-color: v(circle-toggle-border-color);
     border-style: solid;
     padding: nx-spacer(xs) - nx-border-size(xs) nx-spacer(2m) - nx-border-size(xs);
     width: 100%;
@@ -16,12 +16,12 @@
 }
 
 :host:not(.is-flipped):not(.is-disabled):hover {
-    @include var(background-color, circle-toggle-hover-background-color);
-    @include var(border-color, circle-toggle-hover-border-color);
+    background-color: v(circle-toggle-hover-background-color);
+    border-color: v(circle-toggle-hover-border-color);
 
     .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text {
-        @include var(color, circle-toggle-hover-icon-color);
+        color: v(circle-toggle-hover-icon-color);
     }
 }
 
@@ -32,12 +32,12 @@
 }
 
 .nx-toggle-button__label-hint {
-    @include var(color, circle-toggle-icon-color);
+    color: v(circle-toggle-icon-color);
     @include type-style(circle-toggle-hint-mobile);
 }
 
 .nx-toggle-button__label-text {
-    @include var(color, circle-toggle-icon-color);
+    color: v(circle-toggle-icon-color);
     @include type-style(circle-toggle-label-mobile);
     padding-top: 0;
     padding-right: nx-spacer(3xs);
@@ -56,7 +56,7 @@
     display: inline-block;
     opacity: 0;
     margin-right: nx-spacer(2xs);
-    @include var(color, circle-toggle-checkmark-color);
+    color: v(circle-toggle-checkmark-color);
 
     :host-context([dir='rtl']) & {
         margin-right: initial;
@@ -75,11 +75,11 @@
 }
 
 :host(.is-flipped) {
-    @include var(background-color, circle-toggle-selected-background-color);
+    background-color: v(circle-toggle-selected-background-color);
 
     .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text {
-        @include var(color, circle-toggle-selected-icon-color);
+        color: v(circle-toggle-selected-icon-color);
     }
 
     .nx-toggle-button__mobile-check {
@@ -88,32 +88,32 @@
 }
 
 :host(.is-negative) {
-    @include var(border-color, negative);
+    border-color: v(negative);
 
     .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text,
     .nx-toggle-button__mobile-check {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     &:not(.is-flipped):not(.is-disabled):hover {
-        @include var(background-color, negative-01);
-        @include var(border-color, negative-01);
+        background-color: v(negative-01);
+        border-color: v(negative-01);
 
         .nx-toggle-button__label-hint,
         .nx-toggle-button__label-text {
-            @include var(color, negative-accent);
+            color: v(negative-accent);
         }
     }
 }
 
 :host(.is-negative.is-flipped) {
-    @include var(background-color, negative);
+    background-color: v(negative);
 
     .nx-toggle-button__label-hint,
     .nx-toggle-button__label-text,
     .nx-toggle-button__mobile-check {
-        @include var(color, negative-accent);
+        color: v(negative-accent);
     }
 }
 

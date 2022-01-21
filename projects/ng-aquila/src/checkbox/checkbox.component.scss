@@ -8,16 +8,16 @@ $checkbox-size: nx-spacer(m);
 
     &.has-error {
         .nx-checkbox__input:checked + .nx-checkbox__label .nx-checkbox__control {
-            @include var(background-color, danger);
-            @include var(border-color, danger);
+            background-color: v(danger);
+            border-color: v(danger);
         }
 
         .nx-checkbox__control {
-            @include var(border-color, danger);
+            border-color: v(danger);
         }
 
         .nx-checkbox__indeterminate-indicator {
-            @include var(background-color, danger);
+            background-color: v(danger);
         }
     }
 }
@@ -29,7 +29,7 @@ $checkbox-size: nx-spacer(m);
 
 .nx-checkbox__label {
     @include type-style(checkbox-small-label);
-    @include var(color, checkbox-label-color);
+    color: v(checkbox-label-color);
     cursor: pointer;
     display: flex;
 }
@@ -41,20 +41,20 @@ $checkbox-size: nx-spacer(m);
 
     .has-label {
         .nx-checkbox__label-text {
-            @include var(margin-top, checkbox-large-label-text-margin-top);
+            margin-top: v(checkbox-large-label-text-margin-top);
         }
 
         .nx-checkbox__control {
-            @include var(margin-top, checkbox-large-label-control-margin-top);
+            margin-top: v(checkbox-large-label-control-margin-top);
         }
     }
 
     .nx-checkbox__label-text {
-        @include var(margin-left, checkbox-large-label-text-margin-left);
+        margin-left: v(checkbox-large-label-text-margin-left);
 
         [dir='rtl'] & {
             margin-left: initial;
-            @include var(margin-right, checkbox-large-label-text-margin-left);
+            margin-right: v(checkbox-large-label-text-margin-left);
         }
     }
 }
@@ -62,18 +62,18 @@ $checkbox-size: nx-spacer(m);
 :host(.nx-checkbox--label-small) {
     .has-label {
         .nx-checkbox__label-text {
-            @include var(margin-top, checkbox-small-label-text-margin-top);
+            margin-top: v(checkbox-small-label-text-margin-top);
         }
 
         .nx-checkbox__control {
-            @include var(margin-top, checkbox-small-label-control-margin-top);
+            margin-top: v(checkbox-small-label-control-margin-top);
         }
     }
 }
 
 .nx-checkbox__label-text {
     padding: 0;
-    @include var(margin-left, checkbox-small-label-text-margin-left);
+    margin-left: v(checkbox-small-label-text-margin-left);
 
     &:empty {
         display: none;
@@ -81,21 +81,21 @@ $checkbox-size: nx-spacer(m);
 
     :host-context([dir='rtl']) & {
         margin-left: initial;
-        @include var(margin-right, checkbox-small-label-text-margin-left);
+        margin-right: v(checkbox-small-label-text-margin-left);
     }
 }
 
 .nx-checkbox__control {
-    @include var(background-color, checkbox-background-color);
+    background-color: v(checkbox-background-color);
     border-style: solid;
-    @include var(border-width, checkbox-border-width);
-    @include var(border-color, checkbox-border-color);
-    @include var(border-radius, checkbox-border-radius);
-    @include var(color, checkbox-icon-color);
-    @include var(font-size, checkbox-icon-size);
-    @include var(height, checkbox-control-size);
-    @include var(width, checkbox-control-size);
-    @include var(min-width, checkbox-control-size);
+    border-width: v(checkbox-border-width);
+    border-color: v(checkbox-border-color);
+    border-radius: v(checkbox-border-radius);
+    color: v(checkbox-icon-color);
+    font-size: v(checkbox-icon-size);
+    height: v(checkbox-control-size);
+    width: v(checkbox-control-size);
+    min-width: v(checkbox-control-size);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,8 +104,8 @@ $checkbox-size: nx-spacer(m);
 }
 
 .nx-checkbox__indeterminate-indicator {
-    @include var(color, checkbox-indeterminate-color);
-    @include var(background-color, checkbox-indeterminate-color);
+    color: v(checkbox-indeterminate-color);
+    background-color: v(checkbox-indeterminate-color);
     box-sizing: content-box;
     height: 0;
     width: nx-spacer(2xs);
@@ -114,98 +114,98 @@ $checkbox-size: nx-spacer(m);
 }
 
 .nx-checkbox__input:checked + .nx-checkbox__label .nx-checkbox__control {
-    @include var(background-color, checkbox-selected-background-color);
-    @include var(border-color, checkbox-selected-border-color);
+    background-color: v(checkbox-selected-background-color);
+    border-color: v(checkbox-selected-border-color);
 }
 
 .nx-checkbox__input:disabled + .nx-checkbox__label .nx-checkbox__control {
-    @include var(background-color, checkbox-disabled-background-color);
-    @include var(border-color, checkbox-disabled-border-color);
-    @include var(color, checkbox-disabled-icon-color);
+    background-color: v(checkbox-disabled-background-color);
+    border-color: v(checkbox-disabled-border-color);
+    color: v(checkbox-disabled-icon-color);
     cursor: not-allowed;
 }
 
 .nx-checkbox__input:checked:disabled + .nx-checkbox__label .nx-checkbox__control {
-    @include var(background-color, checkbox-disabled-selected-background-color);
+    background-color: v(checkbox-disabled-selected-background-color);
 }
 
 .nx-checkbox__input:disabled + .nx-checkbox__label {
     cursor: not-allowed;
-    @include var(color, checkbox-label-disabled-color);
+    color: v(checkbox-label-disabled-color);
 
     .nx-checkbox__indeterminate-indicator {
-        @include var(color, checkbox-disabled-border-color);
-        @include var(background-color, checkbox-disabled-border-color);
+        color: v(checkbox-disabled-border-color);
+        background-color: v(checkbox-disabled-border-color);
     }
 }
 
 :host(.nx-checkbox--negative) {
     .nx-checkbox__control {
-        @include var(border-color, negative);
+        border-color: v(negative);
         background-color: transparent;
     }
 
     .nx-checkbox__label {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-checkbox__input:checked + .nx-checkbox__label .nx-checkbox__control {
-        @include var(color, negative-accent);
-        @include var(background-color, negative);
-        @include var(border-color, negative);
+        color: v(negative-accent);
+        background-color: v(negative);
+        border-color: v(negative);
     }
 
     .nx-checkbox__input:checked:disabled + .nx-checkbox__label .nx-checkbox__control {
-        @include var(color, negative-dimmed);
+        color: v(negative-dimmed);
         border-color: transparent;
-        @include var(background-color, negative-02-dimmed);
+        background-color: v(negative-02-dimmed);
     }
 
     .nx-checkbox__indeterminate-indicator {
-        @include var(color, negative);
-        @include var(background-color, negative);
+        color: v(negative);
+        background-color: v(negative);
     }
 
     .nx-checkbox__input:disabled + .nx-checkbox__label {
-        @include var(color, negative-dimmed);
+        color: v(negative-dimmed);
 
         .nx-checkbox__control {
-            @include var(background-color, checkbox-disabled-negative-background-color);
-            @include var(border-color, negative-01-dimmed);
+            background-color: v(checkbox-disabled-negative-background-color);
+            border-color: v(negative-01-dimmed);
         }
 
         .nx-checkbox__indeterminate-indicator {
-            @include var(color, negative-01-dimmed);
-            @include var(background-color, negative-01-dimmed);
+            color: v(negative-01-dimmed);
+            background-color: v(negative-01-dimmed);
         }
     }
 }
 
 :host:not(.nx-checkbox--negative):not(.has-error):hover {
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__control {
-        @include var(background-color, checkbox-hover-background-color);
+        background-color: v(checkbox-hover-background-color);
     }
 
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__indeterminate-indicator {
-        @include var(background-color, checkbox-hover-background-color);
+        background-color: v(checkbox-hover-background-color);
     }
 
     .nx-checkbox__input:not([disabled]) + .nx-checkbox__label .nx-checkbox__control {
-        @include var(border-color, checkbox-hover-border-color);
+        border-color: v(checkbox-hover-border-color);
     }
 }
 
 :host:not(.nx-checkbox--negative):active {
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__control {
-        @include var(background-color, checkbox-active-background-color);
+        background-color: v(checkbox-active-background-color);
     }
 
     .nx-checkbox__input:not([disabled]):checked + .nx-checkbox__label .nx-checkbox__indeterminate-indicator {
-        @include var(background-color, checkbox-active-background-color);
+        background-color: v(checkbox-active-background-color);
     }
 
     .nx-checkbox__input:not([disabled]) + .nx-checkbox__label .nx-checkbox__control {
-        @include var(border-color, checkbox-active-border-color);
+        border-color: v(checkbox-active-border-color);
     }
 }
 

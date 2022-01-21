@@ -52,7 +52,7 @@
             padding-top: nx-spacer(s);
             margin-top: nx-spacer(s);
             border-left-style: dotted;
-            @include var(border-left-color, multi-stepper-line-color);
+            border-left-color: v(multi-stepper-line-color);
 
             &.is-active {
                 padding-top: nx-spacer(2m) + nx-spacer(3xs);
@@ -60,18 +60,18 @@
                 margin-top: -nx-spacer(3xs);
                 margin-bottom: -nx-spacer(3xs);
                 border-left-style: solid;
-                @include var(border-left-color, multi-stepper-line-filled-color);
+                border-left-color: v(multi-stepper-line-filled-color);
             }
 
             [dir='rtl'] & {
                 border-left-style: none;
                 border-right-style: dotted;
-                @include var(border-right-color, multi-stepper-line-color);
+                border-right-color: v(multi-stepper-line-color);
 
                 &.is-active {
                     border-left-style: none;
                     border-right-style: solid;
-                    @include var(border-right-color, multi-stepper-line-filled-color);
+                    border-right-color: v(multi-stepper-line-filled-color);
                 }
             }
         }
@@ -97,12 +97,12 @@
             justify-content: center;
             position: relative;
             @include type-style(multi-stepper-step);
-            @include var(color, multi-stepper-step-color);
+            color: v(multi-stepper-step-color);
             cursor: pointer;
             text-align: center;
 
             &.is-disabled {
-                @include var(color, multi-stepper-step-disabled-color);
+                color: v(multi-stepper-step-disabled-color);
                 cursor: not-allowed;
             }
 
@@ -158,9 +158,9 @@
 
 .nx-multi-stepper__group-label {
     @include type-style(multi-stepper-group);
-    @include var(color, multi-stepper-group-color);
+    color: v(multi-stepper-group-color);
 
     &.is-disabled {
-        @include var(color, multi-stepper-group-disabled-color);
+        color: v(multi-stepper-group-disabled-color);
     }
 }

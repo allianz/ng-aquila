@@ -20,7 +20,7 @@ $check-icon-size: nx-spacer(2m);
 
     .nx-toggle-circle__label-text {
         @include type-style(circle-toggle-label);
-        @include var(color, circle-toggle-label-color);
+        color: v(circle-toggle-label-color);
         position: relative;
         display: inline-block;
         padding-top: nx-spacer(xs);
@@ -46,7 +46,7 @@ $check-icon-size: nx-spacer(2m);
         border-radius: 50%;
         border-width: $check-icon-border-size;
         border-style: solid;
-        border-color: var(--circle-toggle-border-color);
+        border-color: v(circle-toggle-border-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -63,9 +63,9 @@ $check-icon-size: nx-spacer(2m);
     }
 
     .nx-toggle-circle__check-icon {
-        @include var(background-color, circle-toggle-checkmark-background-color);
-        @include var(color, circle-toggle-checkmark-color);
-        @include var(border-color, circle-toggle-checkmark-border-color);
+        background-color: v(circle-toggle-checkmark-background-color);
+        color: v(circle-toggle-checkmark-color);
+        border-color: v(circle-toggle-checkmark-border-color);
         border-radius: 50%;
         border-width: $check-icon-border-size;
         border-style: solid;
@@ -107,7 +107,7 @@ $check-icon-size: nx-spacer(2m);
 
     .nx-toggle-circle__content-text {
         @include type-style(circle-toggle-content-text);
-        @include var(color, circle-toggle-content-text-color);
+        color: v(circle-toggle-content-text-color);
 
         @include media-breakpoint-response(mobile) {
             @include type-style(circle-toggle-content-text-mobile);
@@ -116,7 +116,7 @@ $check-icon-size: nx-spacer(2m);
 
     .nx-toggle-circle__label-hint {
         @include type-style(circle-toggle-hint);
-        @include var(color, circle-toggle-hint-color);
+        color: v(circle-toggle-hint-color);
         display: inline-block;
         transition: color 0.2s ease;
         z-index: 1;
@@ -160,7 +160,7 @@ $check-icon-size: nx-spacer(2m);
     }
 
     .nx-toggle-circle__icon nx-icon {
-        @include var(color, circle-toggle-icon-color);
+        color: v(circle-toggle-icon-color);
     }
 
     .nx-toggle-circle__icon-image {
@@ -222,16 +222,16 @@ $check-icon-size: nx-spacer(2m);
 
 :host(.is-flipped) {
     .nx-toggle-circle__icon-wrapper {
-        @include var(background-color, circle-toggle-selected-background-color);
-        @include var(border-color, circle-toggle-selected-border-color);
+        background-color: v(circle-toggle-selected-background-color);
+        border-color: v(circle-toggle-selected-border-color);
     }
 
     .nx-toggle-circle__icon nx-icon {
-        @include var(color, circle-toggle-selected-icon-color);
+        color: v(circle-toggle-selected-icon-color);
     }
 
     .nx-toggle-circle__content-text {
-        @include var(color, circle-toggle-selected-content-text-color);
+        color: v(circle-toggle-selected-content-text-color);
     }
 
     .nx-toggle-circle__check-icon,
@@ -243,25 +243,25 @@ $check-icon-size: nx-spacer(2m);
 //HOVER STYLES
 :host:not(.is-disabled):not(.is-negative):not(.is-touched):hover {
     .nx-toggle-circle__icon-wrapper {
-        @include var(border-color, circle-toggle-hover-border-color);
-        @include var(background-color, circle-toggle-hover-background-color);
+        border-color: v(circle-toggle-hover-border-color);
+        background-color: v(circle-toggle-hover-background-color);
     }
 
     // if button is not checked, the hover color is a little lighter
     &:not(.is-flipped) {
         .nx-toggle-circle__icon-wrapper {
             // use -selected- tokens because the unchecked toggles should have selected color on hover
-            @include var(border-color, circle-toggle-selected-border-color);
-            @include var(background-color, circle-toggle-selected-background-color);
+            border-color: v(circle-toggle-selected-border-color);
+            background-color: v(circle-toggle-selected-background-color);
         }
     }
 
     .nx-toggle-circle__content-text {
-        @include var(color, circle-toggle-hover-icon-color);
+        color: v(circle-toggle-hover-icon-color);
     }
 
     .nx-toggle-circle__icon nx-icon {
-        @include var(color, circle-toggle-hover-icon-color);
+        color: v(circle-toggle-hover-icon-color);
     }
 }
 
@@ -278,7 +278,7 @@ $check-icon-size: nx-spacer(2m);
 // negative styles
 :host(.is-negative) {
     .nx-toggle-circle__icon-wrapper {
-        @include var(border-color, negative);
+        border-color: v(negative);
         background-color: transparent;
     }
 
@@ -286,23 +286,23 @@ $check-icon-size: nx-spacer(2m);
     .nx-toggle-circle__label-text,
     .nx-toggle-circle__label-hint,
     .nx-toggle-circle__content-text {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
 :host(.is-negative.is-flipped),
 :host(.is-negative):not(.is-disabled):not(.is-touched):hover {
     .nx-toggle-circle__icon-wrapper {
-        @include var(border-color, negative);
-        @include var(background-color, negative);
+        border-color: v(negative);
+        background-color: v(negative);
     }
 
     .nx-toggle-circle__icon nx-icon {
-        @include var(color, negative-accent);
+        color: v(negative-accent);
     }
 
     .nx-toggle-circle__content-text {
-        @include var(color, negative-accent);
+        color: v(negative-accent);
     }
 }
 

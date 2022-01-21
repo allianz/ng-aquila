@@ -27,19 +27,19 @@ a {
 .docs-deprecation-warning {
     border-width: $message-border-width;
     border-style: solid;
-    @include var(border-color, message-warning-border-color);
+    border-color: v(message-warning-border-color);
     padding: 24px - $message-border-width;
-    @include var(border-radius, message-border-radius);
-    @include var(background-color, documentation-message-warning-background-color);
+    border-radius: v(message-border-radius);
+    background-color: v(documentation-message-warning-background-color);
     margin-bottom: 16px;
 }
 
 .docs-danger-text {
-    @include var(color, danger);
+    color: v(danger);
 }
 
 .docs-inverse-container {
-    @include var(background, documentation-inverse-container-background);
+    background: v(documentation-inverse-container-background);
     padding: 24px;
 
     h1,
@@ -48,12 +48,12 @@ a {
     h4,
     h5,
     h6 {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
 .docs-expert-container {
-    @include var(background, documentation-expert-container-background);
+    background: v(documentation-expert-container-background);
     padding: 24px;
 }
 
@@ -81,7 +81,7 @@ a {
 ::ng-deep .docs-api__selector-container {
     border-width: 1px;
     border-style: solid;
-    @include var(border-color, documentation-api-codebox-border-color);
+    border-color: v(documentation-api-codebox-border-color);
     border-radius: 5px;
     letter-spacing: 0.2px;
     padding: 12px;
@@ -92,7 +92,7 @@ a {
     width: 100%;
     border-top-width: 1px;
     border-top-style: solid;
-    @include var(border-top-color, table-header-border-top-color);
+    border-top-color: v(table-header-border-top-color);
     border-collapse: collapse;
     font-size: 16px;
     line-height: 24px;
@@ -113,11 +113,11 @@ a {
     tr:last-child td {
         border-bottom-width: 2px;
         border-bottom-style: solid;
-        @include var(border-bottom-color, table-border-bottom-color);
+        border-bottom-color: v(table-border-bottom-color);
     }
 
     tr td {
-        @include var(border-bottom-color, table-cell-border-top-color);
+        border-bottom-color: v(table-cell-border-top-color);
         border-bottom-width: 1px;
         border-bottom-style: solid;
     }
@@ -125,11 +125,11 @@ a {
 
 ::ng-deep .docs-api-module-import__import-span,
 ::ng-deep .docs-api-module-import__from-span {
-    @include var(color, documentation-api-code-import-text-color);
+    color: v(documentation-api-code-import-text-color);
 }
 
 ::ng-deep .docs-api-module-import__path-span {
-    @include var(color, documentation-api-code-path-text-color);
+    color: v(documentation-api-code-path-text-color);
 }
 
 ::ng-deep .docs-link,
@@ -137,32 +137,32 @@ a {
 ::ng-deep .docs-markdown--li a,
 ::ng-deep .docs-markdown--table a,
 ::ng-deep .docs-deprecation-warning a {
-    @include var(color, interactive-text);
+    color: v(interactive-text);
     font-weight: 600;
 
     &:hover {
-        @include var(color, hover-link);
+        color: v(hover-link);
     }
 
     &:active {
-        @include var(color, active-primary);
+        color: v(active-primary);
     }
 }
 
 ::ng-deep .docs-api-property__type,
 ::ng-deep .docs-api-method-parameter-type,
 ::ng-deep .docs-api-method-returns-type {
-    @include var(color, documentation-api-code-types-text-color);
+    color: v(documentation-api-code-types-text-color);
 }
 
 ::ng-deep .docs-api-input__keyword,
 ::ng-deep .docs-api-output__keyword {
-    @include var(color, documentation-api-code-keywords-text-color);
+    color: v(documentation-api-code-keywords-text-color);
 }
 
 ::ng-deep .docs-api-input-alias,
 ::ng-deep .docs-api-output-alias {
-    @include var(color, documentation-api-code-alias-text-color);
+    color: v(documentation-api-code-alias-text-color);
 }
 
 // Docs headings
@@ -219,7 +219,7 @@ a {
 }
 
 ::ng-deep pre {
-    background: var(--documentation-codeblock-background-color);
+    background: v(documentation-codeblock-background-color);
     padding: 16px;
     border-radius: 2px;
     display: inline-block;
@@ -237,7 +237,7 @@ a {
 ::ng-deep .docs-markdown--table code {
     padding: 2px;
     margin: 0;
-    @include var(background-color, documentation-markdown-code-background-color);
+    background-color: v(documentation-markdown-code-background-color);
     border-radius: 4px;
 }
 
@@ -254,7 +254,7 @@ a {
 ::ng-deep .docs-api-method-card {
     border-width: 1px;
     border-style: solid;
-    @include var(border-color, documentation-api-methodbox-border-color);
+    border-color: v(documentation-api-methodbox-border-color);
     width: 100%;
     border-radius: 4px;
     margin-bottom: 24px;
@@ -268,9 +268,9 @@ a {
 ::ng-deep .docs-api-method-card-header {
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    @include var(border-bottom-color, documentation-api-methodbox-border-color);
+    border-bottom-color: v(documentation-api-methodbox-border-color);
     padding: 12px;
-    @include var(background-color, documentation-api-methodbox-header-background-color);
+    background-color: v(documentation-api-methodbox-header-background-color);
 }
 
 ::ng-deep .docs-api-method-description {
@@ -289,7 +289,7 @@ a {
 ::ng-deep .docs-api-method-returns {
     border-top-width: 1px;
     border-top-style: solid;
-    @include var(border-top-color, documentation-api-methodbox-border-color);
+    border-top-color: v(documentation-api-methodbox-border-color);
     padding: 12px;
 }
 
@@ -301,7 +301,7 @@ a {
 ::ng-deep .docs-api-method-params .docs-api-parameter-container:not(:last-child) {
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    @include var(border-bottom-color, documentation-api-methodbox-border-color);
+    border-bottom-color: v(documentation-api-methodbox-border-color);
     padding-bottom: 8px;
 }
 
@@ -339,43 +339,43 @@ a {
     justify-content: center;
 
     &.tier-tiny {
-        @include var(background, documentation-grid-tiny-color);
+        background: v(documentation-grid-tiny-color);
     }
 
     &.tier-small {
-        @include var(background, documentation-grid-small-color);
+        background: v(documentation-grid-small-color);
     }
 
     &.tier-medium {
-        @include var(background, documentation-grid-medium-color);
+        background: v(documentation-grid-medium-color);
     }
 
     &.tier-large {
-        @include var(background, documentation-grid-large-color);
+        background: v(documentation-grid-large-color);
     }
 
     &.tier-xlarge {
-        @include var(background, documentation-grid-xlarge-color);
+        background: v(documentation-grid-xlarge-color);
     }
 
     &.tier-2xlarge {
-        @include var(background, documentation-grid-2xlarge-color);
+        background: v(documentation-grid-2xlarge-color);
     }
 
     &.tier-3xlarge {
-        @include var(background, documentation-grid-3xlarge-color);
+        background: v(documentation-grid-3xlarge-color);
     }
 }
 
 .grid-tiers-example__label {
-    @include var(color, documentation-grid-text-color);
+    color: v(documentation-grid-text-color);
     font-weight: 600;
 }
 
 .grid-tiers-example__pixel-value {
     position: absolute;
     display: block;
-    @include var(color, text-01);
+    color: v(text-01);
     width: 64px;
     top: 64px;
     left: -32px;
@@ -386,7 +386,7 @@ a {
     position: -webkit-sticky;
     top: 0;
     z-index: 1;
-    @include var(color, documentation-grid-text-color);
+    color: v(documentation-grid-text-color);
     padding: 8px;
     text-align: center;
     font-size: 16px;
@@ -394,31 +394,31 @@ a {
     font-weight: 600;
 
     @media only screen and (min-width: 0) and (max-width: 319px) {
-        @include var(background-color, documentation-grid-tiny-color);
+        background-color: v(documentation-grid-tiny-color);
     }
 
     @media only screen and (min-width: 320px) and (max-width: 703px) {
-        @include var(background-color, documentation-grid-small-color);
+        background-color: v(documentation-grid-small-color);
     }
 
     @media only screen and (min-width: 704px) and (max-width: 991px) {
-        @include var(background-color, documentation-grid-medium-color);
+        background-color: v(documentation-grid-medium-color);
     }
 
     @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        @include var(background-color, documentation-grid-large-color);
+        background-color: v(documentation-grid-large-color);
     }
 
     @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        @include var(background-color, documentation-grid-xlarge-color);
+        background-color: v(documentation-grid-xlarge-color);
     }
 
     @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        @include var(background-color, documentation-grid-2xlarge-color);
+        background-color: v(documentation-grid-2xlarge-color);
     }
 
     @media only screen and (min-width: 1760px) {
-        @include var(background-color, documentation-grid-3xlarge-color);
+        background-color: v(documentation-grid-3xlarge-color);
     }
 
     .current-grid__tier {
@@ -476,31 +476,31 @@ a {
 
 .docs-grid-colored-grid {
     @media only screen and (min-width: 0) and (max-width: 319px) {
-        @include var(background-color, documentation-grid-tiny-color-02);
+        background-color: v(documentation-grid-tiny-color-02);
     }
 
     @media only screen and (min-width: 320px) and (max-width: 703px) {
-        @include var(background-color, documentation-grid-small-color-02);
+        background-color: v(documentation-grid-small-color-02);
     }
 
     @media only screen and (min-width: 704px) and (max-width: 991px) {
-        @include var(background-color, documentation-grid-medium-color-02);
+        background-color: v(documentation-grid-medium-color-02);
     }
 
     @media only screen and (min-width: 992px) and (max-width: 1279px) {
-        @include var(background-color, documentation-grid-large-color-02);
+        background-color: v(documentation-grid-large-color-02);
     }
 
     @media only screen and (min-width: 1280px) and (max-width: 1471px) {
-        @include var(background-color, documentation-grid-xlarge-color-02);
+        background-color: v(documentation-grid-xlarge-color-02);
     }
 
     @media only screen and (min-width: 1472px) and (max-width: 1759px) {
-        @include var(background-color, documentation-grid-2xlarge-color-02);
+        background-color: v(documentation-grid-2xlarge-color-02);
     }
 
     @media only screen and (min-width: 1760px) {
-        @include var(background-color, documentation-grid-3xlarge-color-02);
+        background-color: v(documentation-grid-3xlarge-color-02);
     }
 }
 
@@ -593,41 +593,41 @@ a {
 
 .docs-grid-text-tiny {
     font-weight: 700;
-    @include var(color, documentation-grid-tiny-color);
+    color: v(documentation-grid-tiny-color);
 }
 
 .docs-grid-text-small {
     font-weight: 700;
-    @include var(color, documentation-grid-small-color);
+    color: v(documentation-grid-small-color);
 }
 
 .docs-grid-text-medium {
     font-weight: 700;
-    @include var(color, documentation-grid-medium-color);
+    color: v(documentation-grid-medium-color);
 }
 
 .docs-grid-text-large {
     font-weight: 700;
-    @include var(color, documentation-grid-large-color);
+    color: v(documentation-grid-large-color);
 }
 
 .docs-grid-text-xlarge {
     font-weight: 700;
-    @include var(color, documentation-grid-xlarge-color);
+    color: v(documentation-grid-xlarge-color);
 }
 
 .docs-grid-text-2xlarge {
     font-weight: 700;
-    @include var(color, documentation-grid-2xlarge-color);
+    color: v(documentation-grid-2xlarge-color);
 }
 
 .docs-grid-text-3xlarge {
     font-weight: 700;
-    @include var(color, documentation-grid-3xlarge-color);
+    color: v(documentation-grid-3xlarge-color);
 }
 
 summary {
-    @include var(color, accordion-extra-light-header-text-color);
+    color: v(accordion-extra-light-header-text-color);
     @include type-style(accordion-extra-light);
     cursor: pointer;
 }

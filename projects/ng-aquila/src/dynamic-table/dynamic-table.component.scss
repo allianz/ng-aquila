@@ -9,7 +9,7 @@ $border-size-small: nx-border-size(xs);
 .nx-table {
     // we include the cell typography here that it also gets set for the appendix
     @include type-style(table-cell);
-    @include var(color, table-cell-color);
+    color: v(table-cell-color);
     text-align: left;
     width: 100%;
     display: table;
@@ -27,8 +27,8 @@ $border-size-small: nx-border-size(xs);
 
 .nx-table__header-cell {
     @include type-style(table-header-cell);
-    @include var(color, table-header-cell-color);
-    @include var(background, table-header-cell-background-color);
+    color: v(table-header-cell-color);
+    background: v(table-header-cell-background-color);
     border-top: $border-size-small solid v(table-cell-border-top-color);
     border-bottom: $border-size-large solid v(table-header-border-bottom-color);
     padding: ($padding-vertical - $border-size-small) $padding-sides ($padding-vertical - $border-size-large);
@@ -61,7 +61,7 @@ $border-size-small: nx-border-size(xs);
 }
 
 .nx-table__row {
-    @include var(background, table-row-background-color);
+    background: v(table-row-background-color);
 }
 
 .nx-table__cell {

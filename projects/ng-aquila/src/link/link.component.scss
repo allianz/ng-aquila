@@ -2,7 +2,7 @@
 
 // General style
 :host {
-    @include var(color, link-color);
+    color: v(link-color);
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -11,11 +11,11 @@
     hyphens: none;
 
     &:hover {
-        @include var(color, link-hover-color);
+        color: v(link-hover-color);
     }
 
     &::ng-deep a:active {
-        @include var(color, link-active-color);
+        color: v(link-active-color);
     }
 
     &::ng-deep a {
@@ -41,37 +41,37 @@
 
 // negative
 :host(.nx-link--negative) {
-    @include var(color, negative);
+    color: v(negative);
 
     &:hover {
-        @include var(color, negative-01);
+        color: v(negative-01);
     }
 
     &::ng-deep a:active {
-        @include var(color, negative-02);
+        color: v(negative-02);
     }
 
     &::ng-deep a[disabled],
     &::ng-deep a[aria-disabled] {
-        @include var(color, negative-dimmed);
+        color: v(negative-dimmed);
     }
 }
 
 // black
 :host(.nx-link--black) {
-    @include var(color, link-black-color);
+    color: v(link-black-color);
 
     &:hover {
-        @include var(color, link-black-hover-color);
+        color: v(link-black-hover-color);
     }
 
     &::ng-deep a:active {
-        @include var(color, link-black-active-color);
+        color: v(link-black-active-color);
     }
 
     &::ng-deep a[disabled],
     &::ng-deep a[aria-disabled] {
-        @include var(color, link-black-disabled-color);
+        color: v(link-black-disabled-color);
     }
 }
 
@@ -107,14 +107,14 @@
 :host.nx-link--small ::ng-deep {
     .c-icon,
     nx-icon.nx-link__icon {
-        @include var(font-size, link-small-icon-size);
+        font-size: v(link-small-icon-size);
     }
 }
 
 :host.nx-link--large ::ng-deep {
     .c-icon,
     nx-icon.nx-link__icon {
-        @include var(font-size, link-large-icon-size);
+        font-size: v(link-large-icon-size);
     }
 }
 
@@ -160,7 +160,7 @@
 :host::ng-deep a[disabled],
 :host::ng-deep a[aria-disabled] {
     cursor: not-allowed;
-    @include var(color, link-disabled-color);
+    color: v(link-disabled-color);
 
     &:focus {
         outline: none;

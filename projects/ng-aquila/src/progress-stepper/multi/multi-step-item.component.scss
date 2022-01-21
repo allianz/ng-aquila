@@ -41,7 +41,7 @@ $vertical-line-height: nx-spacer(s);
         cursor: not-allowed;
 
         .dot {
-            @include var(border-color, multi-stepper-dot-disabled-color);
+            border-color: v(multi-stepper-dot-disabled-color);
         }
 
         @media screen and (-ms-high-contrast: active) {
@@ -57,7 +57,7 @@ $vertical-line-height: nx-spacer(s);
 
     &.is-completed:not(.is-disabled) {
         .dot {
-            @include var(background-color, multi-stepper-dot-touched-color);
+            background-color: v(multi-stepper-dot-touched-color);
         }
     }
 
@@ -106,7 +106,7 @@ $vertical-line-height: nx-spacer(s);
         }
 
         &.is-disabled .label {
-            @include var(color, multi-stepper-step-disabled-color);
+            color: v(multi-stepper-step-disabled-color);
 
             @media screen and (-ms-high-contrast: active) {
                 color: GrayText;
@@ -129,7 +129,7 @@ $vertical-line-height: nx-spacer(s);
             border-top: 0;
             border-left-width: nx-border-size(xl);
             border-left-style: dotted;
-            @include var(border-left-color, multi-stepper-line-color);
+            border-left-color: v(multi-stepper-line-color);
             height: $vertical-line-height;
             flex: 0 0 auto;
             margin-left: (($dot-size - nx-border-size(xl)) * 0.5);
@@ -137,7 +137,7 @@ $vertical-line-height: nx-spacer(s);
             [dir='rtl'] & {
                 border-right-width: nx-border-size(xl);
                 border-right-style: dotted;
-                @include var(border-right-color, multi-stepper-line-color);
+                border-right-color: v(multi-stepper-line-color);
                 margin-right: (($dot-size - nx-border-size(xl)) * 0.5);
                 margin-left: initial;
                 border-left: none;
@@ -147,14 +147,14 @@ $vertical-line-height: nx-spacer(s);
         &.is-active .line {
             $offset: (($label-line-height - $dot-size) * 0.5) + 1px; // 1px is to visually close the tiny gap to the dot
             border-left-style: solid;
-            @include var(border-left-color, multi-stepper-line-filled-color);
+            border-left-color: v(multi-stepper-line-filled-color);
             margin-top: -$offset;
             margin-bottom: -$offset;
             height: $vertical-line-height + $offset * 2;
 
             [dir='rtl'] & {
                 border-right-style: solid;
-                @include var(border-right-color, multi-stepper-line-filled-color);
+                border-right-color: v(multi-stepper-line-filled-color);
                 border-left: none;
             }
 
@@ -172,7 +172,7 @@ $vertical-line-height: nx-spacer(s);
         .line {
             border-top-width: nx-border-size(xl);
             border-top-style: dotted;
-            @include var(border-top-color, multi-stepper-line-color);
+            border-top-color: v(multi-stepper-line-color);
             margin: 0 nx-spacer(3xs);
             position: absolute;
             left: calc(#{$dot-size} + #{nx-spacer(3xs)});
@@ -189,7 +189,7 @@ $vertical-line-height: nx-spacer(s);
 
         &.is-active {
             .line {
-                @include var(border-top-color, multi-stepper-line-filled-color);
+                border-top-color: v(multi-stepper-line-filled-color);
                 border-top-style: solid;
                 margin: 0;
                 left: calc(#{$dot-size} - 1px);
@@ -209,7 +209,7 @@ $vertical-line-height: nx-spacer(s);
 
     &.nx-multi-step-item--active {
         &::after {
-            @include var(border-top-color, multi-stepper-line-filled-color);
+            border-top-color: v(multi-stepper-line-filled-color);
             border-top-style: solid;
             border-image-source: none;
             transition: border-style 0.1s ease-in;
@@ -239,7 +239,7 @@ $vertical-line-height: nx-spacer(s);
     position: absolute;
     top: calc(#{$dot-size * 0.5} + #{nx-spacer(s)});
     text-align: center;
-    @include var(color, multi-stepper-step-color);
+    color: v(multi-stepper-step-color);
     left: 0;
     width: 100%;
 
@@ -254,9 +254,9 @@ $vertical-line-height: nx-spacer(s);
     height: $dot-size;
     border-width: $dot-border-size;
     border-style: solid;
-    @include var(border-color, multi-stepper-dot-touched-color);
-    @include var(color, multi-stepper-dot-checkmark-color);
-    @include var(background, multi-stepper-dot-background-color);
+    border-color: v(multi-stepper-dot-touched-color);
+    color: v(multi-stepper-dot-checkmark-color);
+    background: v(multi-stepper-dot-background-color);
     border-radius: 50%;
     flex: 0 0 auto;
     position: relative;
@@ -284,7 +284,7 @@ $vertical-line-height: nx-spacer(s);
     width: nx-spacer(2xs);
     height: nx-spacer(2xs);
     border-radius: 50%;
-    @include var(background-color, multi-stepper-dot-touched-color);
+    background-color: v(multi-stepper-dot-touched-color);
 
     :host-context([dir='rtl']) & {
         right: 50%;

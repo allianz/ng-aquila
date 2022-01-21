@@ -15,11 +15,11 @@
     border-bottom-width: nx-border-size(xs);
     border-bottom-style: solid;
     padding: nx-spacer(2xs) nx-spacer(xs);
-    @include var(border-bottom-color, file-uploader-file-row-border-bottom-color);
-    @include var(color, file-uploader-file-row-text-color);
+    border-bottom-color: v(file-uploader-file-row-border-bottom-color);
+    color: v(file-uploader-file-row-text-color);
 
     &:hover {
-        @include var(background-color, file-uploader-file-row-hover-background-color);
+        background-color: v(file-uploader-file-row-hover-background-color);
     }
 
     &:focus {
@@ -67,7 +67,7 @@
 
     &.nx-file-uploader--file-state-uploading {
         .file-name {
-            @include var(color, file-uploader-file-row-uploading-file-name-color);
+            color: v(file-uploader-file-row-uploading-file-name-color);
         }
     }
 }

@@ -2,8 +2,8 @@
 
 :host {
     display: flex;
-    color: var(--small-stage-text-color);
-    background-color: var(--small-stage-default-background-color);
+    color: v(small-stage-text-color);
+    background-color: v(small-stage-default-background-color);
     justify-content: center;
 }
 
@@ -41,8 +41,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    min-height: var(--small-stage-image-min-height);
-    max-height: var(--small-stage-image-max-height);
+    min-height: v(small-stage-image-min-height);
+    max-height: v(small-stage-image-max-height);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -53,7 +53,7 @@
 
 ::ng-deep [nxSmallStageImageBottom] {
     background-position: bottom center;
-    height: var(--small-stage-image-bottom-height);
+    height: v(small-stage-image-bottom-height);
 }
 
 ::ng-deep [nxSmallStageImageStart] {
@@ -64,21 +64,21 @@
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-column: 1 / -1;
-    min-height: var(--small-stage-header-height);
-    padding: var(--small-stage-header-padding);
+    min-height: v(small-stage-header-height);
+    padding: v(small-stage-header-padding);
     display: flex;
 }
 
 :host(:not(.is-expert)) {
     .container {
-        max-width: var(--grid-max-width);
+        max-width: v(grid-max-width);
     }
 
     .content {
         -ms-grid-column: 2;
         grid-column: 2;
         text-align: center;
-        margin-bottom: var(--small-stage-content-margin-bottom);
+        margin-bottom: v(small-stage-content-margin-bottom);
     }
 
     .image-start {
@@ -99,7 +99,7 @@
 
     @include media-breakpoint-up(medium) {
         .container {
-            min-height: var(--small-stage-min-height);
+            min-height: v(small-stage-min-height);
         }
     }
 
@@ -117,7 +117,7 @@
         .content {
             -ms-grid-column: 1;
             grid-column: 1;
-            margin-bottom: var(--small-stage-content-margin-bottom);
+            margin-bottom: v(small-stage-content-margin-bottom);
         }
 
         .image-bottom {
@@ -131,16 +131,16 @@
 
     @include media-breakpoint-down(small) {
         .content {
-            margin-bottom: var(--small-stage-mobile-content-margin-bottom);
+            margin-bottom: v(small-stage-mobile-content-margin-bottom);
         }
 
         .header {
-            min-height: var(--small-stage-mobile-header-height);
+            min-height: v(small-stage-mobile-header-height);
             padding: 0;
 
             &:not(:empty) {
                 min-height: auto;
-                padding: var(--small-stage-mobile-header-padding);
+                padding: v(small-stage-mobile-header-padding);
             }
         }
 
@@ -176,21 +176,21 @@
     .content {
         -ms-grid-column: 1;
         grid-column: 1;
-        margin-top: var(--small-stage-expert-content-margin-top);
-        margin-bottom: var(--small-stage-expert-content-margin-bottom);
+        margin-top: v(small-stage-expert-content-margin-top);
+        margin-bottom: v(small-stage-expert-content-margin-bottom);
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
 
     .header {
-        min-height: var(--small-stage-expert-header-height);
-        padding: var(--small-stage-expert-header-padding);
+        min-height: v(small-stage-expert-header-height);
+        padding: v(small-stage-expert-header-padding);
     }
 
     @include media-breakpoint-up(medium) {
         .content {
-            min-height: var(--small-stage-expert-content-min-height);
+            min-height: v(small-stage-expert-content-min-height);
         }
     }
 
@@ -213,11 +213,11 @@
 
         .content {
             margin-top: 0;
-            margin-bottom: var(--small-stage-expert-mobile-content-margin-bottom);
+            margin-bottom: v(small-stage-expert-mobile-content-margin-bottom);
         }
 
         .header {
-            padding: var(--small-stage-expert-mobile-header-padding);
+            padding: v(small-stage-expert-mobile-header-padding);
         }
 
         .image-end {
@@ -226,8 +226,8 @@
             -ms-grid-column: 1;
             grid-column: 1;
             margin: 0;
-            height: var(--small-stage-expert-image-min-height);
-            min-height: var(--small-stage-image-min-height);
+            height: v(small-stage-expert-image-min-height);
+            min-height: v(small-stage-image-min-height);
         }
 
         ::ng-deep [nxSmallStageImageEnd] {

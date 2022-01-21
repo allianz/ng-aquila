@@ -1,19 +1,19 @@
 @import '../shared-styles/index';
 
 @mixin avatar-size($size) {
-    @include var(height, avatar-#{$size}-size);
-    @include var(width, avatar-#{$size}-size);
-    @include var(min-width, avatar-#{$size}-size);
+    height: v(avatar-#{$size}-size);
+    width: v(avatar-#{$size}-size);
+    min-width: v(avatar-#{$size}-size);
     @include type-style(avatar-#{$size});
 
     ::ng-deep nx-icon {
-        @include var(font-size, avatar-#{$size}-icon-size);
+        font-size: v(avatar-#{$size}-icon-size);
     }
 }
 
 :host {
-    background: var(--avatar-background-color);
-    color: var(--avatar-color);
+    background: v(avatar-background-color);
+    color: v(avatar-color);
     border-radius: 50%;
     text-align: center;
 
@@ -99,7 +99,7 @@
 
     &:disabled {
         cursor: not-allowed;
-        @include var(opacity, avatar-disabled-opacity);
+        opacity: v(avatar-disabled-opacity);
     }
 
     &:focus {

@@ -29,7 +29,7 @@ $selected-box-shadow: 0 -2px 0 0;
     .nx-timefield-input__field__minutes,
     .nx-timefield-hours-separator {
         @include type-style(timefield);
-        @include var(color, timefield-color);
+        color: v(timefield-color);
         margin: 0 nx-spacer(3xs);
         text-align: center;
         border: 0;
@@ -41,11 +41,11 @@ $selected-box-shadow: 0 -2px 0 0;
         box-sizing: border-box;
 
         &:focus {
-            @include var(color, timefield-active-color);
+            color: v(timefield-active-color);
             outline: none;
         }
         &.has-focus {
-            @include var(color, timefield-active-color);
+            color: v(timefield-active-color);
         }
     }
 
@@ -76,7 +76,7 @@ $selected-box-shadow: 0 -2px 0 0;
         .nx-timefield-input__field__hours,
         .nx-timefield-input__field__minutes,
         .nx-timefield-hours-separator {
-            @include var(color, danger);
+            color: v(danger);
         }
         .nx-timefield-input__fields {
             box-shadow: inset $default-box-shadow v(danger);
@@ -94,7 +94,7 @@ $selected-box-shadow: 0 -2px 0 0;
     .nx-timefield-hours-separator,
     .nx-timefield-input__fields {
         cursor: not-allowed;
-        @include var(color, timefield-disabled-color);
+        color: v(timefield-disabled-color);
     }
 
     .nx-timefield-input__fields {
@@ -115,7 +115,7 @@ $selected-box-shadow: 0 -2px 0 0;
     .nx-timefield-input__field__minutes,
     .nx-timefield-hours-separator,
     .nx-timefield-input__fields {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
@@ -128,7 +128,7 @@ $selected-box-shadow: 0 -2px 0 0;
     .nx-timefield-hours-separator,
     .nx-timefield-input__fields {
         cursor: not-allowed;
-        @include var(color, timefield-disabled-color);
+        color: v(timefield-disabled-color);
     }
 
     .nx-timefield-input__fields {

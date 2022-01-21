@@ -5,8 +5,8 @@ $horizontal-offset: 48px;
 $action-bar-height: nx-spacer(2xl);
 
 :host {
-    @include var(background, modal-background-color);
-    @include var(color, modal-text-color);
+    background: v(modal-background-color);
+    color: v(modal-text-color);
     padding: nx-spacer(3m) nx-spacer(3m) nx-spacer(4m) nx-spacer(3m);
     border-radius: nx-border-radius(s);
     box-shadow: v(shadow-large);
@@ -74,7 +74,7 @@ $action-bar-height: nx-spacer(2xl);
     height: nx-spacer(m);
     outline: none;
     padding: 0;
-    @include var(color, modal-close-icon-color);
+    color: v(modal-close-icon-color);
 
     nx-icon {
         font-size: nx-font-size(s);

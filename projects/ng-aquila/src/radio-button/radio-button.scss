@@ -18,17 +18,17 @@ $radio-border-radius: 50%;
 
         &.has-label {
             .nx-radio__circle {
-                @include var(margin-top, radio-button-small-circle-margin-top);
+                margin-top: v(radio-button-small-circle-margin-top);
             }
         }
     }
 
     .nx-radio__label--text:not(:empty) {
-        @include var(margin-left, radio-button-small-label-margin-left);
-        @include var(margin-top, radio-button-small-label-margin-top);
+        margin-left: v(radio-button-small-label-margin-left);
+        margin-top: v(radio-button-small-label-margin-top);
 
         [dir='rtl'] & {
-            @include var(margin-right, radio-button-small-label-margin-left);
+            margin-right: v(radio-button-small-label-margin-left);
             margin-left: initial;
         }
     }
@@ -40,17 +40,17 @@ $radio-border-radius: 50%;
 
         &.has-label {
             .nx-radio__circle {
-                @include var(margin-top, radio-button-large-circle-margin-top);
+                margin-top: v(radio-button-large-circle-margin-top);
             }
         }
     }
 
     .nx-radio__label--text:not(:empty) {
-        @include var(margin-left, radio-button-large-label-margin-left);
-        @include var(margin-top, radio-button-large-label-margin-top);
+        margin-left: v(radio-button-large-label-margin-left);
+        margin-top: v(radio-button-large-label-margin-top);
 
         [dir='rtl'] & {
-            @include var(margin-right, radio-button-large-label-margin-left);
+            margin-right: v(radio-button-large-label-margin-left);
             margin-left: initial;
         }
     }
@@ -58,21 +58,21 @@ $radio-border-radius: 50%;
 
 :host.nx-radio--negative {
     .nx-radio__label--text {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-radio__circle {
-        @include var(border-color, negative);
+        border-color: v(negative);
     }
 
     .nx-radio__input:checked + .nx-radio__label {
         .nx-radio__circle {
-            @include var(border-color, negative);
+            border-color: v(negative);
             background-color: transparent;
         }
 
         .nx-radio__dot {
-            @include var(background, negative);
+            background: v(negative);
         }
     }
 
@@ -82,7 +82,7 @@ $radio-border-radius: 50%;
 }
 
 .nx-radio__label {
-    @include var(color, radio-button-label-color);
+    color: v(radio-button-label-color);
     cursor: pointer;
     display: flex;
     position: relative;
@@ -91,7 +91,7 @@ $radio-border-radius: 50%;
 .nx-radio__circle {
     border-width: nx-border-size(m);
     border-style: solid;
-    @include var(border-color, radio-button-circle-color);
+    border-color: v(radio-button-circle-color);
     border-radius: $radio-border-radius;
     width: nx-spacer(m);
     min-width: nx-spacer(m);
@@ -103,40 +103,40 @@ $radio-border-radius: 50%;
 }
 
 .nx-radio__dot {
-    @include var(width, radio-button-dot-size);
-    @include var(height, radio-button-dot-size);
-    @include var(background-color, radio-button-dot-background-color);
+    width: v(radio-button-dot-size);
+    height: v(radio-button-dot-size);
+    background-color: v(radio-button-dot-background-color);
     border-radius: $radio-border-radius;
     transition: background-color 0.2s ease;
 }
 
 .nx-radio__input:checked + .nx-radio__label {
     .nx-radio__circle {
-        @include var(border-color, radio-button-selected-circle-color);
-        @include var(background-color, radio-button-selected-background-color);
+        border-color: v(radio-button-selected-circle-color);
+        background-color: v(radio-button-selected-background-color);
     }
 
     .nx-radio__dot {
-        @include var(background-color, radio-button-selected-dot-color);
+        background-color: v(radio-button-selected-dot-color);
     }
 }
 
 .nx-radio__input:disabled + .nx-radio__label {
     cursor: not-allowed;
-    @include var(color, radio-button-disabled-text-color);
+    color: v(radio-button-disabled-text-color);
 
     .nx-radio__circle {
-        @include var(border-color, radio-button-disabled-border-color);
+        border-color: v(radio-button-disabled-border-color);
     }
 }
 
 .nx-radio__input:checked:disabled + .nx-radio__label {
     .nx-radio__circle {
-        @include var(background-color, radio-button-disabled-selected-background-color);
+        background-color: v(radio-button-disabled-selected-background-color);
     }
 
     .nx-radio__dot {
-        @include var(background-color, radio-button-disabled-selected-dot-color);
+        background-color: v(radio-button-disabled-selected-dot-color);
     }
 }
 
@@ -144,11 +144,11 @@ $radio-border-radius: 50%;
 :host.has-error {
     .nx-radio__input + .nx-radio__label {
         .nx-radio__circle {
-            @include var(border-color, danger);
+            border-color: v(danger);
         }
 
         .nx-radio__dot {
-            @include var(background-color, danger);
+            background-color: v(danger);
         }
     }
 }
@@ -161,22 +161,22 @@ $radio-border-radius: 50%;
 // hover styling
 :host:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:hover .nx-radio__circle {
-        @include var(border-color, radio-button-hover-circle-color);
+        border-color: v(radio-button-hover-circle-color);
     }
 
     &:checked + .nx-radio__label:hover .nx-radio__dot {
-        @include var(background-color, radio-button-hover-dot-color);
+        background-color: v(radio-button-hover-dot-color);
     }
 }
 
 // active styling
 :host:not(.nx-radio--negative):not(.has-error) .nx-radio__input:not(:disabled) {
     & + .nx-radio__label:active .nx-radio__circle {
-        @include var(border-color, radio-button-hover-circle-color);
+        border-color: v(radio-button-hover-circle-color);
     }
 
     &:checked + .nx-radio__label:active .nx-radio__dot {
-        @include var(background-color, radio-button-hover-dot-color);
+        background-color: v(radio-button-hover-dot-color);
     }
 }
 

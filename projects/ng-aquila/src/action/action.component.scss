@@ -13,12 +13,12 @@
     width: 100%;
     transition: all 0.2s ease, padding 0 none;
     text-decoration: none;
-    @include var(color, action-color);
-    @include var(background-color, action-background-color);
+    color: v(action-color);
+    background-color: v(action-background-color);
 
     &:hover {
-        @include var(color, action-hover-color);
-        @include var(background-color, action-hover-background-color);
+        color: v(action-hover-color);
+        background-color: v(action-hover-background-color);
     }
 
     &.is-expanded {
@@ -38,8 +38,8 @@
     }
 
     &.is-selected {
-        @include var(color, action-selected-color);
-        @include var(background-color, action-selected-background-color);
+        color: v(action-selected-color);
+        background-color: v(action-selected-background-color);
         font-weight: nx-font-weight(bold);
     }
 
@@ -71,7 +71,7 @@
     transform: rotateZ(0);
     margin-right: nx-spacer(2xs);
     flex: 0 0 auto;
-    @include var(font-size, action-expand-icon-size);
+    font-size: v(action-expand-icon-size);
 
     :host-context([dir='rtl']) & {
         margin-right: initial;
@@ -96,7 +96,7 @@
 }
 
 .nx-action-icon__container {
-    @include var(font-size, action-icon-size);
+    font-size: v(action-icon-size);
     padding-right: nx-spacer(s);
     flex: 0 0 auto;
     position: relative;

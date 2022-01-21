@@ -6,7 +6,7 @@
 
 :host(.nx-expansion-panel--negative) ::ng-deep {
     div.nx-expansion-panel__body * {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
@@ -26,7 +26,7 @@
 
 :host(.nx-expansion-panel--regular) {
     &:not(:first-child) {
-        @include var(margin-top, accordion-regular-header-top-margin);
+        margin-top: v(accordion-regular-header-top-margin);
     }
 
     ::ng-deep .nx-expansion-panel__header-content {
@@ -103,7 +103,7 @@
 }
 
 :host(.nx-expansion-panel--light.nx-expansion-panel--negative) {
-    @include var(color, negative);
+    color: v(negative);
 
     ::ng-deep .nx-expansion-panel__header-content {
         box-shadow: inset 0 1px 0 0 v(negative);
@@ -117,11 +117,11 @@
 
 :host(.nx-expansion-panel--extra-light) {
     &:not(:first-child) {
-        @include var(margin-top, accordion-extra-light-header-top-margin);
+        margin-top: v(accordion-extra-light-header-top-margin);
     }
 
     .nx-expansion-panel__body {
-        @include var(padding, accordion-extra-light-body-padding);
+        padding: v(accordion-extra-light-body-padding);
     }
 }
 

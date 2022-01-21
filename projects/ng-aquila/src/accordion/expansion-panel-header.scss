@@ -14,8 +14,8 @@
     outline: none;
     border: none;
     padding: v(accordion-regular-header-padding);
-    @include var(color, accordion-regular-header-text-color);
-    @include var(background, accordion-regular-header-background-color);
+    color: v(accordion-regular-header-text-color);
+    background: v(accordion-regular-header-background-color);
 
     @include media-breakpoint-down(small) {
         padding: v(accordion-regular-mobile-header-padding);
@@ -25,10 +25,10 @@
 // hover style for regular
 :host-context(.nx-expansion-panel--regular):not(.is-disabled) {
     .nx-expansion-panel__header-content:hover {
-        @include var(color, accordion-regular-header-hover-text-color);
+        color: v(accordion-regular-header-hover-text-color);
 
         .nx-expansion-panel__chevron {
-            @include var(color, accordion-regular-hover-chevron-color);
+            color: v(accordion-regular-hover-chevron-color);
         }
     }
 }
@@ -59,11 +59,11 @@ $header-title-small-screen-margin-after: nx-spacer(s);
 
 :host .nx-expansion-panel__chevron {
     pointer-events: none;
-    @include var(font-size, accordion-chevron-size);
+    font-size: v(accordion-chevron-size);
 }
 
 :host(:not(.is-disabled)) .nx-expansion-panel__chevron {
-    @include var(color, accordion-regular-chevron-color);
+    color: v(accordion-regular-chevron-color);
 }
 
 // light styles
@@ -79,7 +79,7 @@ $header-title-small-screen-margin-after: nx-spacer(s);
     }
 
     .nx-expansion-panel__chevron {
-        @include var(color, accordion-light-chevron-color);
+        color: v(accordion-light-chevron-color);
     }
 
     ::ng-deep .nx-expansion-panel__header-title {
@@ -93,14 +93,14 @@ $header-title-small-screen-margin-after: nx-spacer(s);
 
 :host-context(.nx-expansion-panel--light:not(.nx-expansion-panel--negative)) {
     .nx-expansion-panel__header-content {
-        @include var(color, accordion-light-header-text-color);
+        color: v(accordion-light-header-text-color);
     }
 
     &:not(.is-disabled) .nx-expansion-panel__header-content:hover {
-        @include var(color, accordion-light-header-hover-text-color);
+        color: v(accordion-light-header-hover-text-color);
 
         .nx-expansion-panel__chevron {
-            @include var(color, accordion-light-hover-chevron-color);
+            color: v(accordion-light-hover-chevron-color);
         }
     }
 }
@@ -108,11 +108,11 @@ $header-title-small-screen-margin-after: nx-spacer(s);
 // light and negative
 :host-context(.nx-expansion-panel--light.nx-expansion-panel--negative) {
     .nx-expansion-panel__header-content {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-expansion-panel__chevron {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
@@ -126,13 +126,13 @@ $extra-light-header-title-margin-after: 8px;
         justify-content: flex-start;
         width: max-content;
         max-width: 100%;
-        @include var(color, accordion-extra-light-header-text-color);
+        color: v(accordion-extra-light-header-text-color);
 
         border-radius: 4px; // get a focus style with round edges
     }
 
     .nx-expansion-panel__chevron {
-        @include var(color, accordion-extra-light-chevron-color);
+        color: v(accordion-extra-light-chevron-color);
     }
 
     ::ng-deep .nx-expansion-panel__header-title {
@@ -153,20 +153,20 @@ $extra-light-header-title-margin-after: 8px;
 
 :host-context(.nx-expansion-panel--extra-light.nx-expansion-panel--negative) {
     .nx-expansion-panel__header-content {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-expansion-panel__chevron {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     &.is-disabled {
         .nx-expansion-panel__header-content {
-            @include var(color, negative-dimmed);
+            color: v(negative-dimmed);
         }
 
         .nx-expansion-panel__chevron {
-            @include var(color, negative-dimmed);
+            color: v(negative-dimmed);
         }
     }
 }
@@ -176,7 +176,7 @@ $extra-light-header-title-margin-after: 8px;
     .nx-expansion-panel__chevron,
     .nx-expansion-panel__header-content {
         cursor: not-allowed;
-        @include var(color, accordion-disabled-color);
+        color: v(accordion-disabled-color);
     }
 }
 

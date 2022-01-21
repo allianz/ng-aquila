@@ -10,8 +10,8 @@ $calendar-content-width: 7 * $item-size;
 
 .nx-calendar-previous-button,
 .nx-calendar-next-button {
-    @include var(color, datefield-controls-color);
-    @include var(font-size, datefield-controls-icon-size);
+    color: v(datefield-controls-color);
+    font-size: v(datefield-controls-icon-size);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -24,7 +24,7 @@ $calendar-content-width: 7 * $item-size;
     }
 
     &:hover {
-        @include var(color, datefield-controls-hover-color);
+        color: v(datefield-controls-hover-color);
     }
 }
 
@@ -37,7 +37,7 @@ $calendar-content-width: 7 * $item-size;
 
 .nx-calendar-period-label {
     @include type-style(datefield-period-label);
-    @include var(color, datefield-period-label-color);
+    color: v(datefield-period-label-color);
     text-align: center;
 }
 
@@ -48,7 +48,7 @@ $calendar-content-width: 7 * $item-size;
 
 .nx-calendar-change-view-button {
     @include type-style(datefield-change-view);
-    @include var(color, datefield-change-view-color);
+    color: v(datefield-change-view-color);
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -60,7 +60,7 @@ $calendar-content-width: 7 * $item-size;
     }
 
     &:hover {
-        @include var(color, datefield-change-view-hover-color);
+        color: v(datefield-change-view-hover-color);
     }
 }
 

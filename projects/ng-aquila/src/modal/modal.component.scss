@@ -51,8 +51,8 @@ $action-bar-height: nx-spacer(2xl);
 .nx-modal__container {
     border-radius: nx-border-radius(s);
     box-shadow: v(shadow-large);
-    @include var(background, modal-background-color);
-    @include var(color, modal-text-color);
+    background: v(modal-background-color);
+    color: v(modal-text-color);
 }
 
 .nx-modal__content-wrapper {
@@ -77,7 +77,7 @@ $action-bar-height: nx-spacer(2xl);
     outline: none;
     padding: 0;
 
-    @include var(color, modal-close-icon-color);
+    color: v(modal-close-icon-color);
 
     nx-icon {
         font-size: nx-font-size(s);
@@ -132,7 +132,7 @@ $action-bar-height: nx-spacer(2xl);
     width: 100%;
     border-bottom-left-radius: nx-border-radius(s);
     border-bottom-right-radius: nx-border-radius(s);
-    @include var(background, modal-actions-background-color);
+    background: v(modal-actions-background-color);
 }
 
 ::ng-deep .nx-modal__content {

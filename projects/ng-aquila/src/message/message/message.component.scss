@@ -12,43 +12,43 @@ $border-size: nx-border-size(xs);
 
 :host,
 :host(.context-regular) {
-    @include var(border-color, message-regular-border-color);
-    @include var(background-color, message-regular-background-color);
+    border-color: v(message-regular-border-color);
+    background-color: v(message-regular-background-color);
 }
 
 :host(.context-info) {
-    @include var(border-color, message-info-border-color);
-    @include var(background-color, message-info-background-color);
+    border-color: v(message-info-border-color);
+    background-color: v(message-info-background-color);
 
     .nx-message__icon {
-        @include var(color, message-info-icon-color);
+        color: v(message-info-icon-color);
     }
 }
 
 :host(.context-error) {
-    @include var(border-color, message-error-border-color);
-    @include var(background-color, message-error-background-color);
+    border-color: v(message-error-border-color);
+    background-color: v(message-error-background-color);
 
     .nx-message__icon {
-        @include var(color, message-error-icon-color);
+        color: v(message-error-icon-color);
     }
 }
 
 :host(.context-success) {
-    @include var(border-color, message-success-border-color);
-    @include var(background-color, message-success-background-color);
+    border-color: v(message-success-border-color);
+    background-color: v(message-success-background-color);
 
     .nx-message__icon {
-        @include var(color, message-success-icon-color);
+        color: v(message-success-icon-color);
     }
 }
 
 :host(.context-warning) {
-    @include var(border-color, message-warning-border-color);
-    @include var(background-color, message-warning-background-color);
+    border-color: v(message-warning-border-color);
+    background-color: v(message-warning-background-color);
 
     .nx-message__icon {
-        @include var(color, message-warning-icon-color);
+        color: v(message-warning-icon-color);
     }
 }
 

@@ -2,7 +2,7 @@
 
 .nx-context-menu {
     border-radius: nx-border-radius(s);
-    @include var(background, context-menu-background-color);
+    background: v(context-menu-background-color);
 
     @media screen and (-ms-high-contrast: active) {
         border: nx-border-size(xs) solid windowText;

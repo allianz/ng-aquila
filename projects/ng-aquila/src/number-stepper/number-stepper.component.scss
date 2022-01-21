@@ -55,8 +55,8 @@ $margin-default: nx-spacer(s);
     min-width: nx-spacer(l);
 
     &:disabled {
-        @include var(color, number-stepper-disabled-color);
-        @include var(-webkit-text-fill-color, number-stepper-disabled-color);
+        color: v(number-stepper-disabled-color);
+        -webkit-text-fill-color: v(number-stepper-disabled-color);
         cursor: not-allowed;
     }
 }
@@ -65,7 +65,7 @@ $margin-default: nx-spacer(s);
 ::ng-deep .nx-stepper__prefix,
 ::ng-deep .nx-stepper__suffix {
     @include type-style(number-stepper-small);
-    @include var(color, number-stepper-color);
+    color: v(number-stepper-color);
     background: 0 0;
     outline: 0;
     border: 0;
@@ -108,10 +108,10 @@ $margin-default: nx-spacer(s);
     width: 100%;
     margin-top: nx-spacer(4xs);
     height: $border-size;
-    @include var(background, number-stepper-underline-color);
+    background: v(number-stepper-underline-color);
 
     &--disabled {
-        @include var(background, number-stepper-disabled-underline-color);
+        background: v(number-stepper-disabled-underline-color);
     }
 }
 
@@ -154,25 +154,25 @@ $margin-default: nx-spacer(s);
     .nx-stepper__label,
     ::ng-deep .nx-stepper__prefix,
     ::ng-deep .nx-stepper__suffix {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-stepper__input {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-stepper__input-underline {
-        @include var(background, negative);
+        background: v(negative);
     }
 }
 
 :host.is-disabled {
     .nx-stepper__input-underline {
-        @include var(background, number-stepper-disabled-underline-color);
+        background: v(number-stepper-disabled-underline-color);
     }
     ::ng-deep .nx-stepper__prefix,
     ::ng-deep .nx-stepper__suffix {
-        @include var(color, number-stepper-disabled-color);
+        color: v(number-stepper-disabled-color);
     }
 }
 

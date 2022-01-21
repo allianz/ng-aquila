@@ -3,7 +3,7 @@
 @import './index';
 
 .nx-expansion-panel--regular {
-    @include var(margin-top, accordion-regular-header-top-margin);
+    margin-top: v(accordion-regular-header-top-margin);
 
     @include media-breakpoint-down(small) {
         margin-top: 0;

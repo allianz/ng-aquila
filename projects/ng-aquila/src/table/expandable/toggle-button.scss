@@ -18,7 +18,7 @@
     .nx-toggle-button__icon {
         transform: rotateZ(0);
         transition: transform 200ms ease;
-        @include var(color, expandable-table-arrow-icon-color);
+        color: v(expandable-table-arrow-icon-color);
     }
 
     &.is-expanded {

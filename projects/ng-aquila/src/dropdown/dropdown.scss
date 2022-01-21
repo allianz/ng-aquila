@@ -21,7 +21,7 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 :host(.nx-dropdown--negative) {
-    @include var(color, negative);
+    color: v(negative);
 }
 
 :host([aria-expanded='true']) {
@@ -82,7 +82,7 @@ $dropdown-border-size: nx-border-size(xs);
                 @include dropdown-overlay__option--outline;
             }
             .nx-dropdown-results__option-checkicon {
-                @include var(height, dropdown-item-outline-line-height);
+                height: v(dropdown-item-outline-line-height);
             }
         }
 
@@ -97,7 +97,7 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 .nx-dropdown__icon {
-    @include var(font-size, dropdown-chevron-size);
+    font-size: v(dropdown-chevron-size);
     line-height: 0;
 }
 
@@ -107,8 +107,8 @@ $dropdown-border-size: nx-border-size(xs);
 
 .nx-dropdown__panel-header {
     @include type-style(formfield-label);
-    @include var(color, dropdown-panel-header-text-color);
-    @include var(background-color, dropdown-panel-header-background-color);
+    color: v(dropdown-panel-header-text-color);
+    background-color: v(dropdown-panel-header-background-color);
     padding: nx-spacer(2xs) nx-spacer(2m);
     border-top-left-radius: $dropdown-border-radius;
     border-top-right-radius: $dropdown-border-radius;
@@ -116,7 +116,7 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 .nx-dropdown__panel-body {
-    @include var(background-color, dropdown-panel-background-color);
+    background-color: v(dropdown-panel-background-color);
     // (6 * line-height of item + padding of item) + 16px for top and bottom padding of first and last element
     max-height: calc(6 * (#{v(dropdown-item-line-height)} + 16px) + 16px);
     overflow-y: auto;
@@ -128,7 +128,7 @@ $dropdown-border-size: nx-border-size(xs);
 
     position: relative;
     padding: $dropdown-filter-padding;
-    @include var(background-color, dropdown-panel-background-color);
+    background-color: v(dropdown-panel-background-color);
 
     [dir='rtl'] & {
         padding: nx-flip-for-rtl($dropdown-filter-padding);
@@ -141,7 +141,7 @@ $dropdown-border-size: nx-border-size(xs);
     @include type-style(formfield-control);
     border: 0;
     border-bottom: $dropdown-border-size v(dropdown-filter-input-border-color) solid;
-    @include var(color, dropdown-filter-input-text-color);
+    color: v(dropdown-filter-input-text-color);
     width: 100%;
     outline: none;
     background-color: transparent;
@@ -180,17 +180,17 @@ $dropdown-border-size: nx-border-size(xs);
 }
 
 .nx-dropdown__filter-input:focus {
-    @include var(border-color, dropdown-filter-input-active-border-color);
+    border-color: v(dropdown-filter-input-active-border-color);
 }
 
 .nx-dropdown__filter-input.is-filled:focus {
     font-weight: nx-font-weight(semibold);
 
-    @include var(color, dropdown-filter-input-active-text-color);
-    @include var(border-color, dropdown-filter-input-active-border-color);
+    color: v(dropdown-filter-input-active-text-color);
+    border-color: v(dropdown-filter-input-active-border-color);
 
     & + .nx-dropdown__filter-icon {
-        @include var(color, dropdown-filter-input-active-text-color);
+        color: v(dropdown-filter-input-active-text-color);
     }
 }
 

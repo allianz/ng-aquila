@@ -5,45 +5,45 @@
 }
 
 @mixin button-theme($type) {
-    @include var(color, button-#{$type}-text-color);
-    @include var(background-color, button-#{$type}-background-color);
-    @include var(border-color, button-#{$type}-border-color);
+    color: v(button-#{$type}-text-color);
+    background-color: v(button-#{$type}-background-color);
+    border-color: v(button-#{$type}-border-color);
 
     &:hover:not([disabled]):not(:active) {
-        @include var(background-color, button-#{$type}-hover-background-color);
-        @include var(color, button-#{$type}-hover-text-color);
-        @include var(border-color, button-#{$type}-hover-border-color);
+        background-color: v(button-#{$type}-hover-background-color);
+        color: v(button-#{$type}-hover-text-color);
+        border-color: v(button-#{$type}-hover-border-color);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover:not([disabled]):not(:active) {
-            @include var(color, button-#{$type}-text-color);
-            @include var(background-color, button-#{$type}-background-color);
-            @include var(border-color, button-#{$type}-border-color);
+            color: v(button-#{$type}-text-color);
+            background-color: v(button-#{$type}-background-color);
+            border-color: v(button-#{$type}-border-color);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(background-color, button-#{$type}-active-background-color);
-        @include var(color, button-#{$type}-active-text-color);
-        @include var(border-color, button-#{$type}-active-border-color);
+        background-color: v(button-#{$type}-active-background-color);
+        color: v(button-#{$type}-active-text-color);
+        border-color: v(button-#{$type}-active-border-color);
     }
 
     &[disabled] {
-        @include var(background-color, button-#{$type}-disabled-background-color);
-        @include var(color, button-#{$type}-disabled-text-color);
-        @include var(border-color, button-#{$type}-disabled-border-color);
+        background-color: v(button-#{$type}-disabled-background-color);
+        color: v(button-#{$type}-disabled-text-color);
+        border-color: v(button-#{$type}-disabled-border-color);
     }
 }
 
 :host {
     @include type-style('button-medium');
-    @include var(min-height, button-medium-height);
-    @include var(text-transform, button-text-transform);
-    @include var(border-width, button-border-width);
-    @include var(border-radius, button-border-radius);
+    min-height: v(button-medium-height);
+    text-transform: v(button-text-transform);
+    border-width: v(button-border-width);
+    border-radius: v(button-border-radius);
     border-style: solid;
     border-color: transparent;
     cursor: pointer;
@@ -94,36 +94,36 @@
 }
 
 :host(.nx-button--primary.nx-button--negative) {
-    @include var(background-color, negative);
-    @include var(border-color, negative);
-    @include var(color, negative-accent);
+    background-color: v(negative);
+    border-color: v(negative);
+    color: v(negative-accent);
 
     &:hover:not([disabled]):not(:active) {
-        @include var(background-color, negative-01);
-        @include var(border-color, negative-01);
-        @include var(color, negative-accent);
+        background-color: v(negative-01);
+        border-color: v(negative-01);
+        color: v(negative-accent);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover:not([disabled]):not(:active) {
-            @include var(background-color, negative);
-            @include var(border-color, negative);
-            @include var(color, negative-accent);
+            background-color: v(negative);
+            border-color: v(negative);
+            color: v(negative-accent);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(background-color, negative-02);
-        @include var(border-color, negative-02);
-        @include var(color, negative-accent);
+        background-color: v(negative-02);
+        border-color: v(negative-02);
+        color: v(negative-accent);
     }
 
     &[disabled] {
-        @include var(background-color, negative-dimmed);
+        background-color: v(negative-dimmed);
         border-color: transparent;
-        @include var(color, negative-background-dimmed);
+        color: v(negative-background-dimmed);
     }
 }
 
@@ -136,35 +136,35 @@
 }
 
 :host(.nx-button--secondary.nx-button--negative) {
-    @include var(color, negative);
-    @include var(border-color, negative);
+    color: v(negative);
+    border-color: v(negative);
 
     &:hover:not([disabled]):not(:active) {
-        @include var(background-color, negative-01);
-        @include var(border-color, negative-01);
-        @include var(color, button-secondary-text-color);
+        background-color: v(negative-01);
+        border-color: v(negative-01);
+        color: v(button-secondary-text-color);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover:not([disabled]):not(:active) {
             background-color: transparent;
-            @include var(border-color, negative);
-            @include var(color, negative);
+            border-color: v(negative);
+            color: v(negative);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(background-color, negative-02);
-        @include var(border-color, negative-02);
-        @include var(color, button-secondary-text-color);
+        background-color: v(negative-02);
+        border-color: v(negative-02);
+        color: v(button-secondary-text-color);
     }
 
     &[disabled] {
         background-color: transparent;
-        @include var(border-color, negative-dimmed);
-        @include var(color, negative-dimmed);
+        border-color: v(negative-dimmed);
+        color: v(negative-dimmed);
     }
 }
 
@@ -177,37 +177,37 @@
 }
 
 :host(.nx-button--tertiary.nx-button--negative) {
-    @include var(color, negative);
+    color: v(negative);
 
     &:hover:not([disabled]):not(:active) {
-        @include var(background-color, negative-01);
-        @include var(color, button-secondary-text-color);
+        background-color: v(negative-01);
+        color: v(button-secondary-text-color);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover:not([disabled]):not(:active) {
             background-color: transparent;
-            @include var(color, negative);
+            color: v(negative);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(background-color, negative-02);
-        @include var(color, button-secondary-text-color);
+        background-color: v(negative-02);
+        color: v(button-secondary-text-color);
     }
 
     &[disabled] {
         background-color: transparent;
-        @include var(color, negative-dimmed);
+        color: v(negative-dimmed);
     }
 }
 
 // Define the available size. small & small-medium & medium & large. Medium is the default
 :host(.nx-button--large) {
     @include type-style('button-large');
-    @include var(min-height, button-large-height);
+    min-height: v(button-large-height);
     padding: button-padding(nx-spacer(m)) button-padding(nx-spacer(4m));
 
     @include media-breakpoint-response(mobile) {
@@ -221,12 +221,12 @@
     padding: button-padding(nx-spacer(2xs)) button-padding(nx-spacer(m));
     text-transform: none;
     width: auto;
-    @include var(min-height, button-small-medium-height);
+    min-height: v(button-small-medium-height);
 }
 
 :host(.nx-button--small) {
     @include type-style('button-small');
-    @include var(min-height, button-small-height);
+    min-height: v(button-small-height);
     display: inline-block;
     padding: button-padding(nx-spacer(2xs)) button-padding(nx-spacer(s));
     text-transform: none;
@@ -263,41 +263,41 @@
     flex: 0 0 auto;
 
     &.nx-button--small {
-        @include var(width, button-small-height);
-        @include var(font-size, icon-button-small-icon-size);
+        width: v(button-small-height);
+        font-size: v(icon-button-small-icon-size);
     }
 
     &.nx-button--small-medium {
-        @include var(width, button-small-medium-height);
-        @include var(font-size, icon-button-small-medium-icon-size);
+        width: v(button-small-medium-height);
+        font-size: v(icon-button-small-medium-icon-size);
     }
 
     &.nx-button--medium {
-        @include var(width, button-medium-height);
-        @include var(font-size, icon-button-medium-icon-size);
+        width: v(button-medium-height);
+        font-size: v(icon-button-medium-icon-size);
     }
 
     &.nx-button--large {
-        @include var(width, button-large-height);
-        @include var(font-size, icon-button-large-icon-size);
+        width: v(button-large-height);
+        font-size: v(icon-button-large-icon-size);
     }
 }
 
 :host(.nx-button) {
     &.nx-button--small ::ng-deep nx-icon {
-        @include var(font-size, button-small-icon-size);
+        font-size: v(button-small-icon-size);
     }
 
     &.nx-button--small-medium ::ng-deep nx-icon {
-        @include var(font-size, button-small-medium-icon-size);
+        font-size: v(button-small-medium-icon-size);
     }
 
     &.nx-button--medium ::ng-deep nx-icon {
-        @include var(font-size, button-medium-icon-size);
+        font-size: v(button-medium-icon-size);
     }
 
     &.nx-button--large ::ng-deep nx-icon {
-        @include var(font-size, button-large-icon-size);
+        font-size: v(button-large-icon-size);
     }
 }
 

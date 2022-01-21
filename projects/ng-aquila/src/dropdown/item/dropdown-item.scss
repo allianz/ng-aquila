@@ -49,7 +49,7 @@ nx-checkbox {
 :host:hover .nx-dropdown-results__option-label,
 :host(.nx-selected):hover .nx-dropdown-results__option-label,
 :host(.nx-selected):hover .nx-dropdown-results__option-checkicon {
-    @include var(color, dropdown-item-hover-color);
+    color: v(dropdown-item-hover-color);
 }
 
 :host(.nx-selected) .nx-dropdown-results__option-checkicon {
@@ -57,17 +57,17 @@ nx-checkbox {
 }
 
 :host(.nx-selected) .nx-dropdown-results__option-label {
-    @include var(color, dropdown-item-selected-color);
+    color: v(dropdown-item-selected-color);
 }
 
 .nx-dropdown-results__option-checkicon {
     opacity: 0;
     margin-right: nx-spacer(2xs);
-    @include var(height, dropdown-item-line-height);
-    @include var(color, dropdown-item-checkmark-color);
+    height: v(dropdown-item-line-height);
+    color: v(dropdown-item-checkmark-color);
 
     nx-icon {
-        @include var(line-height, dropdown-item-line-height);
+        line-height: v(dropdown-item-line-height);
         font-size: nx-font-size(3xs);
     }
 
@@ -128,7 +128,7 @@ nx-checkbox {
     }
 
     .nx-dropdown-results__option-label {
-        @include var(color, dropdown-item-text-color-disabled);
+        color: v(dropdown-item-text-color-disabled);
     }
 }
 

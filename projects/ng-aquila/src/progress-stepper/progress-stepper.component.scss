@@ -16,7 +16,7 @@
 
 .nx-progress-stepper__mobile-label {
     display: none;
-    @include var(color, progress-indicator-mobile-color);
+    color: v(progress-indicator-mobile-color);
     @include type-style(progress-indicator-mobile);
 }
 

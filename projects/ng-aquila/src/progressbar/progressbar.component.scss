@@ -9,7 +9,7 @@
 }
 
 .nx-progress__track {
-    @include var(background-color, progressbar-background-color);
+    background-color: v(progressbar-background-color);
     height: 100%;
 }
 
@@ -33,7 +33,7 @@
     content: '';
     display: inline-block;
     left: 0;
-    @include var(background-color, progressbar-indicator-color);
+    background-color: v(progressbar-indicator-color);
 
     :host-context([dir='rtl']) & {
         right: 0;

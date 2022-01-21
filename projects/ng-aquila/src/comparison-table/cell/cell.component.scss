@@ -2,8 +2,8 @@
 
 .nx-comparison-table__mobile-header-cell.is-selected,
 .nx-comparison-table__cell.is-selected {
-    @include var(background-color, comparison-table-selected-column-background-color);
-    @include var(color, comparison-table-selected-column-text-color);
+    background-color: v(comparison-table-selected-column-background-color);
+    color: v(comparison-table-selected-column-text-color);
 }
 
 .nx-comparison-table__mobile-header-cell.is-hidden,

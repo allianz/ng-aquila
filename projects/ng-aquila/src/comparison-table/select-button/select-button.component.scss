@@ -2,8 +2,8 @@
 
 :host {
     .nx-comparison-table__select-button-icon ::ng-deep {
-        @include var(background, button-primary-text-color);
-        @include var(color, button-primary-background-color);
+        background: v(button-primary-text-color);
+        color: v(button-primary-background-color);
         width: 16px;
         height: 16px;
 

@@ -12,7 +12,7 @@
     outline: none;
     background: transparent;
     padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
-    @include var(color, context-menu-item-text-color);
+    color: v(context-menu-item-text-color);
 
     [dir='rtl'] & {
         padding: nx-spacer(2xs) nx-spacer(2m) nx-spacer(2xs) nx-spacer(2m);
@@ -28,7 +28,7 @@
         &:hover,
         &:active,
         &.is-highlighted {
-            @include var(color, context-menu-item-active-color);
+            color: v(context-menu-item-active-color);
 
             @media screen and (-ms-high-contrast: active) {
                 background-color: highlight;
@@ -39,7 +39,7 @@
 
     &:disabled {
         cursor: not-allowed;
-        @include var(color, context-menu-item-disabled-color);
+        color: v(context-menu-item-disabled-color);
 
         @media screen and (-ms-high-contrast: active) {
             color: GrayText;
@@ -62,7 +62,7 @@
 
     .nx-context-menu-item__content-wrapper ::ng-deep > nx-icon:not(.nx-context-menu-item__expand) {
         margin-right: nx-spacer(2xs);
-        @include var(font-size, context-menu-item-icon-size);
+        font-size: v(context-menu-item-icon-size);
 
         [dir='rtl'] & {
             margin-right: initial;
@@ -71,7 +71,7 @@
     }
 
     .nx-context-menu-item__expand {
-        @include var(font-size, context-menu-item-expand-icon-size);
+        font-size: v(context-menu-item-expand-icon-size);
         padding-left: nx-spacer(2xs);
         margin-left: auto;
         margin-right: 0;

@@ -25,7 +25,7 @@ $calendar-width: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar} - 2 * #
 $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-mobile} - 2 * #{$datepicker-border-width});
 
 :host {
-    @include var(background, datefield-panel-background-color);
+    background: v(datefield-panel-background-color);
     display: flex;
     flex-flow: column nowrap;
     box-shadow: v(shadow-large);
@@ -34,7 +34,7 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
 }
 
 .nx-datepicker-header {
-    @include var(background, datefield-panel-header-background-color);
+    background: v(datefield-panel-header-background-color);
     padding: calc(#{$header-padding} - #{$datepicker-border-width}) $header-padding $header-padding $header-padding;
     display: flex;
     height: $header-height - $datepicker-border-width;
@@ -51,8 +51,8 @@ $calendar-width-mobile: calc(7 * #{$item-size} + 2 * #{$spacing-sides-calendar-m
     margin-left: auto;
     cursor: pointer;
     padding: 0;
-    @include var(font-size, datefield-controls-icon-size);
-    @include var(color, datefield-controls-color);
+    font-size: v(datefield-controls-icon-size);
+    color: v(datefield-controls-color);
     outline: none;
 
     :host-context([dir='rtl']) & {

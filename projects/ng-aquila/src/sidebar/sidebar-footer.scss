@@ -4,6 +4,6 @@
     ::ng-deep .nx-button,
     ::ng-deep .nx-icon-button,
     ::ng-deep .nx-sidebar__toggle-button {
-        @include var(color, sidebar-footer-button-color);
+        color: v(sidebar-footer-button-color);
     }
 }

@@ -8,12 +8,12 @@ $default-box-shadow: 0 -1px 0 0;
 
     .nx-code-input__field {
         @include type-style(code-input);
-        @include var(color, code-input-color);
+        color: v(code-input-color);
         margin: 0 nx-spacer(3xs);
         text-align: center;
         border: 0;
         outline: 0;
-        @include var(caret-color, code-input-active-color);
+        caret-color: v(code-input-active-color);
         box-shadow: inset $default-box-shadow v(code-input-color);
         //this is needed for the box-shadow to be visible on iOS
         -webkit-appearance: none;
@@ -25,7 +25,7 @@ $default-box-shadow: 0 -1px 0 0;
 
         &:focus {
             margin-bottom: -nx-border-size(xs);
-            @include var(color, code-input-active-color);
+            color: v(code-input-active-color);
             box-shadow: inset $selected-box-shadow v(code-input-active-color);
         }
     }
@@ -67,9 +67,9 @@ $default-box-shadow: 0 -1px 0 0;
 
 :host.is-negative {
     .nx-code-input__field {
-        @include var(caret-color, negative);
+        caret-color: v(negative);
         box-shadow: inset $default-box-shadow v(negative);
-        @include var(color, negative);
+        color: v(negative);
 
         &:focus {
             box-shadow: inset $selected-box-shadow v(negative);
@@ -82,7 +82,7 @@ $default-box-shadow: 0 -1px 0 0;
         .nx-code-input__field {
             margin-bottom: -nx-border-size(xs);
             font-weight: nx-font-weight(bold);
-            @include var(color, code-input-error-color);
+            color: v(code-input-error-color);
             box-shadow: inset $default-box-shadow v(code-input-error-color);
 
             &:focus {
@@ -103,7 +103,7 @@ $default-box-shadow: 0 -1px 0 0;
 
     .nx-code-input__field {
         cursor: not-allowed;
-        @include var(color, code-input-disabled-color);
+        color: v(code-input-disabled-color);
         box-shadow: inset $default-box-shadow nx-theme-color(code-input-disabled-color);
         box-shadow: inset $default-box-shadow v(code-input-disabled-color);
     }
@@ -111,7 +111,7 @@ $default-box-shadow: 0 -1px 0 0;
 
 :host.is-disabled.is-negative {
     .nx-code-input__field {
-        @include var(color, negative-02-dimmed);
+        color: v(negative-02-dimmed);
         box-shadow: inset $default-box-shadow v(negative-02-dimmed);
     }
 }

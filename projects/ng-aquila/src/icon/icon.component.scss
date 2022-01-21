@@ -96,8 +96,8 @@ $icon-outline-size-xl: 160px;
     border-color: transparent;
     width: 2em;
     height: 2em;
-    @include var(background, icon-filled-background-color);
-    @include var(color, icon-filled-color);
+    background: v(icon-filled-background-color);
+    color: v(icon-filled-color);
 
     &.nx-icon--s {
         width: $icon-outline-size-s;

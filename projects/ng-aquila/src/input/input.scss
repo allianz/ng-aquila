@@ -73,7 +73,7 @@ textarea.cdk-textarea-autosize-measuring {
     @include input-placeholder {
         user-select: none;
         @include type-style(formfield-input-native-placeholder);
-        @include var(color, formfield-input-native-placeholder-color);
+        color: v(formfield-input-native-placeholder-color);
 
         &:-ms-input-placeholder {
             -ms-user-select: text;

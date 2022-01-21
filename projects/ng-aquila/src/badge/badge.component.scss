@@ -18,24 +18,24 @@
         $prefix: 'badge-#{$variation}-';
     }
 
-    @include var(color, $prefix + color);
-    @include var(background-color, $prefix + 'background-color');
+    color: v($prefix + color);
+    background-color: v($prefix + 'background-color');
 
     &.nx-badge--active {
-        @include var(background-color, $prefix + active-background-color);
-        @include var(color, $prefix + active-color);
+        background-color: v($prefix + active-background-color);
+        color: v($prefix + active-color);
     }
     &.nx-badge--positive {
-        @include var(background-color, $prefix + positive-background-color);
-        @include var(color, $prefix + positive-color);
+        background-color: v($prefix + positive-background-color);
+        color: v($prefix + positive-color);
     }
     &.nx-badge--critical {
-        @include var(background-color, $prefix + critical-background-color);
-        @include var(color, $prefix + critical-color);
+        background-color: v($prefix + critical-background-color);
+        color: v($prefix + critical-color);
     }
     &.nx-badge--negative {
-        @include var(background-color, $prefix + negative-background-color);
-        @include var(color, $prefix + negative-color);
+        background-color: v($prefix + negative-background-color);
+        color: v($prefix + negative-color);
     }
 }
 

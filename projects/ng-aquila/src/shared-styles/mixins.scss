@@ -11,7 +11,7 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin focus-style {
-    @include var(box-shadow, focus-box-shadow);
+    box-shadow: v(focus-box-shadow);
 
     @media screen and (-ms-high-contrast: active) {
         box-shadow: 0 0 0 2px background, 0 0 0 6px windowText;
@@ -21,7 +21,7 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin formfield-outline-focus-styles {
-    @include var(box-shadow, formfield-outline-focus-box-shadow);
+    box-shadow: v(formfield-outline-focus-box-shadow);
 
     @media screen and (-ms-high-contrast: active) {
         box-shadow: 0 0 0 2px highlight;
@@ -30,7 +30,7 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin focus-style-inset {
-    @include var(box-shadow, focus-inset-box-shadow);
+    box-shadow: v(focus-inset-box-shadow);
 
     @media screen and (-ms-high-contrast: active) {
         box-shadow: inset 0 0 0 4px windowText, inset 0 0 0 6px background;
@@ -120,7 +120,7 @@ $border-size: nx-border-size(xs);
 @mixin dropdown-overlay__option-label {
     padding: 0 nx-spacer(2xs) + $dropdown-overlay__focus-line-width;
     margin: 0 $dropdown-overlay__option-margin;
-    @include var(color, dropdown-item-text-color);
+    color: v(dropdown-item-text-color);
 
     @media screen and (-ms-high-contrast: active) {
         -ms-high-contrast-adjust: none;
@@ -139,7 +139,7 @@ $border-size: nx-border-size(xs);
     text-decoration: none;
     border: none;
     background: transparent;
-    color: var(--tab-item-color);
+    color: v(tab-item-color);
     padding: nx-spacer(3xs) 0 nx-spacer(xs) 0;
     margin: nx-spacer(3xs) nx-spacer(s) 0 nx-spacer(s);
     outline: none;
@@ -154,11 +154,11 @@ $border-size: nx-border-size(xs);
     }
 
     &:hover {
-        color: var(--tab-item-hover-color);
+        color: v(tab-item-hover-color);
     }
 
     &:active {
-        color: var(--tab-item-active-color);
+        color: v(tab-item-active-color);
     }
 }
 
@@ -166,13 +166,13 @@ $border-size: nx-border-size(xs);
     border-width: nx-border-size(xl);
     font-weight: nx-font-weight(bold);
     border-bottom-style: solid;
-    border-color: var(--tab-item-active-border-color);
+    border-color: v(tab-item-active-border-color);
     padding-bottom: 8px;
     cursor: default;
 
     &:hover,
     &:active {
-        color: var(--tab-item-color);
+        color: v(tab-item-color);
     }
 
     @media screen and (-ms-high-contrast: active) {
@@ -183,13 +183,13 @@ $border-size: nx-border-size(xs);
 }
 
 @mixin tab__item--disabled {
-    border-color: var(--tab-item-disabled-border-color);
-    color: var(--tab-item-disabled-color);
+    border-color: v(tab-item-disabled-border-color);
+    color: v(tab-item-disabled-color);
     cursor: not-allowed;
 
     &:hover,
     &:active {
-        color: var(--tab-item-disabled-color);
+        color: v(tab-item-disabled-color);
     }
 
     @media screen and (-ms-high-contrast: active) {
@@ -207,8 +207,8 @@ $border-size: nx-border-size(xs);
    */
 
     @include type-style(message);
-    @include var(color, message-text-color);
-    @include var(border-radius, message-border-radius);
+    color: v(message-text-color);
+    border-radius: v(message-border-radius);
 
     width: 100%;
     display: flex;
@@ -241,7 +241,7 @@ $border-size: nx-border-size(xs);
     align-items: center;
 
     nx-icon {
-        @include var(color, message-close-icon-color);
+        color: v(message-close-icon-color);
     }
 
     :host-context([dir='rtl']) & {

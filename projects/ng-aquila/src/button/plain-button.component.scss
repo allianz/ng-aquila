@@ -1,7 +1,7 @@
 @import '../shared-styles/index';
 
 :host {
-    @include var(color, plain-button-color);
+    color: v(plain-button-color);
     display: inline-block;
     cursor: pointer;
     user-select: none;
@@ -18,23 +18,23 @@
     }
 
     &:hover {
-        @include var(color, plain-button-hover-color);
+        color: v(plain-button-hover-color);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover {
-            @include var(color, plain-button-color);
+            color: v(plain-button-color);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(color, plain-button-active-color);
+        color: v(plain-button-active-color);
     }
 
     &[disabled] {
-        @include var(color, plain-button-disabled-color);
+        color: v(plain-button-disabled-color);
         cursor: not-allowed;
     }
 
@@ -47,32 +47,32 @@
 }
 
 :host.nx-plain-button--danger {
-    @include var(color, plain-button-danger-color);
+    color: v(plain-button-danger-color);
 
     &:hover {
-        @include var(color, plain-button-danger-hover-color);
+        color: v(plain-button-danger-hover-color);
     }
 
     // reset hover styles for devices that don't support hover
     @media (hover: none) {
         &:hover {
-            @include var(color, plain-button-danger-color);
+            color: v(plain-button-danger-color);
         }
     }
 
     &:active,
     &.nx-button--active {
-        @include var(color, plain-button-danger-active-color);
+        color: v(plain-button-danger-active-color);
     }
 
     &[disabled] {
-        @include var(color, plain-button-danger-disabled-color);
+        color: v(plain-button-danger-disabled-color);
     }
 }
 
 :host(.nx-plain-button) {
     ::ng-deep nx-icon {
-        @include var(font-size, plain-button-icon-size);
+        font-size: v(plain-button-icon-size);
     }
 }
 

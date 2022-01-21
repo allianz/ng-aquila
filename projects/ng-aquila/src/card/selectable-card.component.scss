@@ -21,7 +21,7 @@
 .checkmark {
     float: right;
     position: relative;
-    color: var(--selectable-card-icon-color);
+    color: v(selectable-card-icon-color);
 
     :host-context([dir='rtl']) & {
         float: left;
@@ -39,23 +39,23 @@
         position: absolute;
         width: 22px;
         height: 22px;
-        border: 1px solid var(--selectable-card-icon-placeholder-border-color);
+        border: 1px solid v(selectable-card-icon-placeholder-border-color);
         border-radius: 50%;
     }
 }
 
 .checkbox {
     float: left;
-    background-color: var(--checkbox-background-color);
+    background-color: v(checkbox-background-color);
     border-style: solid;
-    border-width: var(--checkbox-border-width);
-    border-color: var(--checkbox-border-color);
-    border-radius: var(--checkbox-border-radius);
-    color: var(--checkbox-icon-color);
-    font-size: var(--checkbox-icon-size);
-    height: var(--checkbox-control-size);
-    width: var(--checkbox-control-size);
-    min-width: var(--checkbox-control-size);
+    border-width: v(checkbox-border-width);
+    border-color: v(checkbox-border-color);
+    border-radius: v(checkbox-border-radius);
+    color: v(checkbox-icon-color);
+    font-size: v(checkbox-icon-size);
+    height: v(checkbox-control-size);
+    width: v(checkbox-control-size);
+    min-width: v(checkbox-control-size);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,10 +88,10 @@
 
 :host(.is-expert) {
     label:hover {
-        background: var(--selectable-card-expert-background-hover-color);
+        background: v(selectable-card-expert-background-hover-color);
 
         .checkmark {
-            color: var(--selectable-card-unchecked-icon-hover-color);
+            color: v(selectable-card-unchecked-icon-hover-color);
 
             &::before,
             ::ng-deep svg {
@@ -101,10 +101,10 @@
     }
 
     input:checked + label {
-        background: var(--selectable-card-expert-background-selected-color);
+        background: v(selectable-card-expert-background-selected-color);
 
         &:hover {
-            background: var(--selectable-card-expert-background-selected-hover-color);
+            background: v(selectable-card-expert-background-selected-hover-color);
         }
     }
 }
@@ -117,8 +117,8 @@ input {
     opacity: 0;
 
     &:checked + label {
-        background: var(--selectable-card-background-selected-color);
-        border-color: var(--selectable-card-border-selected-color);
+        background: v(selectable-card-background-selected-color);
+        border-color: v(selectable-card-border-selected-color);
 
         .checkmark {
             &::before,
@@ -128,52 +128,52 @@ input {
         }
 
         &:hover {
-            background: var(--selectable-card-background-selected-hover-color);
+            background: v(selectable-card-background-selected-hover-color);
 
             .checkmark {
-                color: var(--selectable-card-icon-color);
+                color: v(selectable-card-icon-color);
             }
         }
 
         .checkbox {
-            background-color: var(--checkbox-selected-background-color);
-            border-color: var(--checkbox-selected-border-color);
+            background-color: v(checkbox-selected-background-color);
+            border-color: v(checkbox-selected-border-color);
         }
     }
 }
 
 label {
-    border: var(--selectable-card-border-width) solid var(--selectable-card-border-color);
+    border: var(--selectable-card-border-width) solid v(selectable-card-border-color);
     display: block;
     position: relative;
     padding: nx-spacer(s);
     cursor: pointer;
     width: 100%;
     min-height: nx-spacer(l);
-    border-radius: var(--selectable-card-border-radius);
-    background: var(--selectable-card-background-color);
+    border-radius: v(selectable-card-border-radius);
+    background: v(selectable-card-background-color);
 
     &:hover {
-        background: var(--selectable-card-background-hover-color);
-        border-color: var(--selectable-card-border-hover-color);
+        background: v(selectable-card-background-hover-color);
+        border-color: v(selectable-card-border-hover-color);
     }
 }
 
 // reset hover styles for devices that don't support hover
 @media (hover: none) {
     label:hover {
-        background: var(--selectable-card-background-color);
-        border-color: var(--selectable-card-border-color);
+        background: v(selectable-card-background-color);
+        border-color: v(selectable-card-border-color);
     }
 
     input:checked + label:hover {
-        background: var(--selectable-card-background-selected-color);
+        background: v(selectable-card-background-selected-color);
     }
 }
 
 :host(.is-disabled) {
     label {
-        border-color: var(--selectable-card-border-disabled-color);
+        border-color: v(selectable-card-border-disabled-color);
         cursor: not-allowed;
     }
 
@@ -182,7 +182,7 @@ label {
     }
 
     label:hover {
-        background: var(--selectable-card-background-disabled-color);
+        background: v(selectable-card-background-disabled-color);
 
         .checkmark {
             &::before,
@@ -193,13 +193,13 @@ label {
     }
 
     input:checked + label {
-        background: var(--selectable-card-background-disabled-selected-color);
-        border-color: var(--selectable-card-border-disabled-selected-color);
+        background: v(selectable-card-background-disabled-selected-color);
+        border-color: v(selectable-card-border-disabled-selected-color);
 
         .checkbox {
-            background-color: var(--checkbox-disabled-selected-background-color);
-            border-color: var(--checkbox-disabled-border-color);
-            color: var(--checkbox-disabled-icon-color);
+            background-color: v(checkbox-disabled-selected-background-color);
+            border-color: v(checkbox-disabled-border-color);
+            color: v(checkbox-disabled-icon-color);
         }
 
         .checkmark {
@@ -212,14 +212,14 @@ label {
 
     &.is-expert {
         input:checked + label {
-            background: var(--selectable-card-expert-background-disabled-selected-color);
+            background: v(selectable-card-expert-background-disabled-selected-color);
         }
     }
 
     .checkbox {
-        background-color: var(--checkbox-disabled-background-color);
-        border-color: var(--checkbox-disabled-border-color);
-        color: var(--checkbox-disabled-icon-color);
+        background-color: v(checkbox-disabled-background-color);
+        border-color: v(checkbox-disabled-border-color);
+        color: v(checkbox-disabled-icon-color);
     }
 }
 
@@ -228,7 +228,7 @@ label {
     label:hover,
     input:checked + label,
     input:checked + label:hover {
-        border-color: var(--selectable-card-border-error-color);
+        border-color: v(selectable-card-border-error-color);
     }
 }
 

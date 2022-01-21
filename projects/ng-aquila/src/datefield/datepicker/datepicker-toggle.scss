@@ -12,7 +12,7 @@ $icon-size: nx-spacer(m);
     }
 
     &:hover {
-        @include var(color, hover-primary);
+        color: v(hover-primary);
     }
 }
 
@@ -37,8 +37,8 @@ $icon-size: nx-spacer(m);
 
 .default-icon {
     display: block;
-    @include var(height, datefield-toggle-icon-size);
-    @include var(width, datefield-toggle-icon-size);
+    height: v(datefield-toggle-icon-size);
+    width: v(datefield-toggle-icon-size);
 }
 
 :host(.nx-datepicker-toggle--disabled) .nx-datepicker-toggle-button {

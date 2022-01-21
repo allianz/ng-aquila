@@ -2,7 +2,7 @@
 
 :host {
     display: block;
-    @include var(color, text-01);
+    color: v(text-01);
 
     &.nx-label--small {
         @include type-style(base-label-small);
@@ -19,6 +19,6 @@
     }
 
     &.nx-label--negative {
-        @include var(color, negative);
+        color: v(negative);
     }
 }

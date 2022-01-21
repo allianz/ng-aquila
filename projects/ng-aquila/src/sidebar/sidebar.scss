@@ -39,7 +39,7 @@ $sidebar-width: 280px;
     padding-bottom: 8px;
     display: flex;
     justify-content: flex-end;
-    @include var(color, sidebar-footer-button-color);
+    color: v(sidebar-footer-button-color);
 
     &::before,
     &::after {
@@ -78,7 +78,7 @@ $sidebar-width: 280px;
     cursor: col-resize;
     outline: none;
     z-index: 1;
-    @include var(color, sidebar-handle-color);
+    color: v(sidebar-handle-color);
 
     :host-context([dir='rtl']) & {
         right: auto;
@@ -125,7 +125,7 @@ $sidebar-width: 280px;
     display: flex;
     overflow: hidden;
     flex-direction: column;
-    @include var(background, sidebar-background-color);
+    background: v(sidebar-background-color);
 
     @media screen and (-ms-high-contrast: active) {
         border-right: nx-border-size(xs) solid windowText;

@@ -45,6 +45,6 @@ nav a:last-child {
 }
 
 .docs-link:hover {
-    @include var(color, hover-link);
+    color: v(hover-link);
     font-weight: 600;
 }

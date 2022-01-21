@@ -21,7 +21,7 @@ $header-link-border-width: nx-border-size(xl);
     border-bottom: nx-border-size(xs) solid v(header-border-color);
     height: $header-height;
     justify-content: space-between;
-    @include var(background, header-background-color);
+    background: v(header-background-color);
 
     @media screen and (-ms-high-contrast: active) {
         background-color: window;
@@ -44,25 +44,25 @@ $header-link-border-width: nx-border-size(xl);
     &::after {
         display: block;
         content: attr(text-content);
-        @include var(font-weight, header-link-active-font-weight);
+        font-weight: v(header-link-active-font-weight);
         height: 1px;
         overflow: hidden;
         visibility: hidden;
     }
 
     &.is-active {
-        @include var(color, header-link-active-color);
+        color: v(header-link-active-color);
         border-color: currentColor;
 
         .nx-header__link-title {
-            @include var(font-weight, header-link-active-font-weight);
+            font-weight: v(header-link-active-font-weight);
         }
     }
 
     &:hover,
     &:active {
-        @include var(color, header-link-active-color);
-        @include var(border-color, header-link-active-color);
+        color: v(header-link-active-color);
+        border-color: v(header-link-active-color);
     }
 
     @media screen and (forced-colors: active) {
@@ -104,7 +104,7 @@ $header-link-border-width: nx-border-size(xl);
         padding-left: nx-spacer(s);
         border-left-width: nx-border-size(xs);
         border-left-style: solid;
-        @include var(border-left-color, header-border-color);
+        border-left-color: v(header-border-color);
     }
 
     :host-context([dir='rtl']) & {
@@ -116,7 +116,7 @@ $header-link-border-width: nx-border-size(xl);
             padding-left: initial;
             border-right-width: nx-border-size(xs);
             border-right-style: solid;
-            @include var(border-right-color, header-border-color);
+            border-right-color: v(header-border-color);
             border-left: none;
         }
     }
@@ -143,7 +143,7 @@ $header-link-border-width: nx-border-size(xl);
 
     border-left-width: nx-border-size(xs);
     border-left-style: solid;
-    @include var(border-left-color, header-border-color);
+    border-left-color: v(header-border-color);
 
     :host-context([dir='rtl']) & {
         padding-right: nx-spacer(s);
@@ -152,7 +152,7 @@ $header-link-border-width: nx-border-size(xl);
         margin-left: initial;
         border-right-width: nx-border-size(xs);
         border-right-style: solid;
-        @include var(border-right-color, header-border-color);
+        border-right-color: v(header-border-color);
         border-left: none;
     }
 }

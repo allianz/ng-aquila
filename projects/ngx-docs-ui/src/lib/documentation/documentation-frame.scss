@@ -8,8 +8,8 @@ $toc-width: 200px;
     font-size: 16px;
     height: 100vh;
     line-height: 24px;
-    @include var(background, ui-background);
-    @include var(color, text-01);
+    background: v(ui-background);
+    color: v(text-01);
 
     @media (max-width: 785px) {
         padding-top: 120px;
@@ -32,7 +32,7 @@ $toc-width: 200px;
         margin-right: 32px;
 
         img {
-            @include var(filter, documentation-svg-filter);
+            filter: v(documentation-svg-filter);
         }
 
         @media (max-width: 703px) {

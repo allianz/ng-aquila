@@ -53,7 +53,7 @@
     justify-content: flex-start;
     border-bottom-width: nx-border-size(xs);
     border-bottom-style: solid;
-    border-bottom-color: var(--tab-expert-bottom-border-color);
+    border-bottom-color: v(tab-expert-bottom-border-color);
 
     .nx-tab-header {
         width: 100%;

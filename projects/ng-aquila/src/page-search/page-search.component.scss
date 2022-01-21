@@ -2,8 +2,8 @@
 
 .nx-pagesearch {
     padding: nx-spacer(2m) 0;
-    @include var(background, page-search-background-color);
-    @include var(box-shadow, page-search-box-shadow);
+    background: v(page-search-background-color);
+    box-shadow: v(page-search-box-shadow);
 
     ::ng-deep {
         .nx-formfield__wrapper {
@@ -29,7 +29,7 @@
 
         .nx-formfield__prefix,
         .nx-formfield__suffix {
-            @include var(color, page-search-icon-color);
+            color: v(page-search-icon-color);
         }
 
         .nx-formfield__suffix {

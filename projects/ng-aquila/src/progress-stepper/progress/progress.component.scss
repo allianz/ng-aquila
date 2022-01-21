@@ -48,12 +48,12 @@ $counter-circle-size: nx-spacer(m);
         background-color: transparent;
         border-width: nx-border-size(m);
         border-style: solid;
-        @include var(border-color, progress-stepper-dot-disabled-background-color);
-        @include var(color, progress-stepper-dot-disabled-background-color);
+        border-color: v(progress-stepper-dot-disabled-background-color);
+        color: v(progress-stepper-dot-disabled-background-color);
     }
 
     .nx-subprogress__label {
-        @include var(color, progress-stepper-step-disabled-color);
+        color: v(progress-stepper-step-disabled-color);
     }
 }
 
@@ -61,7 +61,7 @@ $counter-circle-size: nx-spacer(m);
     flex: 1 1 auto;
     white-space: nowrap;
     text-overflow: ellipsis;
-    @include var(color, progress-stepper-step-color);
+    color: v(progress-stepper-step-color);
     @include type-style(progress-stepper-step);
 }
 
@@ -70,8 +70,8 @@ $counter-circle-size: nx-spacer(m);
     display: flex;
     align-items: center;
     justify-content: center;
-    @include var(background-color, progress-stepper-dot-background-color);
-    @include var(color, progress-stepper-dot-color);
+    background-color: v(progress-stepper-dot-background-color);
+    color: v(progress-stepper-dot-color);
     width: $counter-circle-size;
     height: $counter-circle-size;
     text-align: center;

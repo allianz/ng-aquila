@@ -13,9 +13,9 @@ $tooltip-arrow-offset: -$tooltip-arrow-size * 0.5;
 
 .nx-tooltip {
     @include type-style(tooltip);
-    @include var(color, tooltip-text-color);
-    @include var(background-color, tooltip-background-color);
-    @include var(border-radius, tooltip-border-radius);
+    color: v(tooltip-text-color);
+    background-color: v(tooltip-background-color);
+    border-radius: v(tooltip-border-radius);
     max-width: $tooltip-max-width;
     padding: 4px 8px;
 }

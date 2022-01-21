@@ -3,7 +3,7 @@
 .nx-comparison-table__mobile-toggle-section-header {
     @include type-style(comparison-table-mobile-section-header);
 
-    @include var(background-color, comparison-table-toggle-section-header-background-color);
+    background-color: v(comparison-table-toggle-section-header-background-color);
     padding: 8px 16px;
 
     border-top: nx-border-size(xs) solid v(comparison-table-border-color);
@@ -23,7 +23,7 @@
 .nx-comparison-table-toggle-section__header-content {
     @include type-style(comparison-table-toggle-section-header);
     border: nx-border-size(xs) solid v(comparison-table-border-color);
-    @include var(background-color, comparison-table-toggle-section-header-background-color);
+    background-color: v(comparison-table-toggle-section-header-background-color);
 
     display: flex;
     justify-content: space-between;
@@ -38,6 +38,6 @@
 
 .nx-expansion-panel__chevron {
     pointer-events: none;
-    @include var(font-size, comparison-table-toggle-section-chevron-size);
-    @include var(color, comparison-table-toggle-section-chevron-color);
+    font-size: v(comparison-table-toggle-section-chevron-size);
+    color: v(comparison-table-toggle-section-chevron-color);
 }

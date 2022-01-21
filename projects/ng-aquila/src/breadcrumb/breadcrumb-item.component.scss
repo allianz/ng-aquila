@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     cursor: auto;
-    @include var(color, breadcrumb-color);
+    color: v(breadcrumb-color);
     @include type-style(breadcrumb);
 }
 

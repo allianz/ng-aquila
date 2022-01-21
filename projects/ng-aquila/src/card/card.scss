@@ -1,11 +1,11 @@
 @import '../shared-styles/index';
 
 :host {
-    @include var(background, card-background-color);
-    @include var(border-color, card-border-color);
-    @include var(border-width, card-border-width);
+    background: v(card-background-color);
+    border-color: v(card-border-color);
+    border-width: v(card-border-width);
     border-style: solid;
-    @include var(border-radius, card-border-radius);
+    border-radius: v(card-border-radius);
     box-shadow: none;
     display: inline-block;
     padding: nx-spacer(m) - nx-border-size(xs);

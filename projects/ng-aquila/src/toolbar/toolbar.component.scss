@@ -3,8 +3,8 @@
 :host {
     height: 48px;
     border-bottom: nx-border-size(xs) solid;
-    @include var(border-bottom-color, toolbar-border-bottom-color);
-    @include var(background, toolbar-background);
+    border-bottom-color: v(toolbar-border-bottom-color);
+    background: v(toolbar-background);
     display: flex;
     box-sizing: border-box;
     padding: 0 nx-spacer(2m);

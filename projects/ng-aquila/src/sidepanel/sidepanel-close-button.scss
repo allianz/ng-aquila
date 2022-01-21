@@ -10,7 +10,7 @@
     align-items: center;
 
     nx-icon {
-        @include var(color, sidepanel-close-icon-color);
+        color: v(sidepanel-close-icon-color);
 
         @media screen and (-ms-high-contrast: active) {
             color: buttonText;

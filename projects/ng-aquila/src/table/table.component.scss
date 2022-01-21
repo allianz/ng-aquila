@@ -22,8 +22,8 @@ $sticky-shadow-size: nx-spacer(3xs);
 
 ::ng-deep .nx-header-cell {
     @include type-style(table-header-cell);
-    @include var(color, table-header-cell-color);
-    @include var(background, table-header-cell-background-color);
+    color: v(table-header-cell-color);
+    background: v(table-header-cell-background-color);
     border-top: $cell-border-width solid v(table-header-border-top-color);
     border-bottom: $border-bottom-width solid v(table-header-border-bottom-color);
     padding-top: $vertical-padding;
@@ -58,12 +58,12 @@ $sticky-shadow-size: nx-spacer(3xs);
 }
 
 ::ng-deep .nx-table-row {
-    @include var(background, table-row-background-color);
+    background: v(table-row-background-color);
 }
 
 ::ng-deep .nx-table-cell {
     @include type-style(table-cell);
-    @include var(color, table-cell-color);
+    color: v(table-cell-color);
     padding-top: $vertical-padding;
     padding-bottom: $vertical-padding - $cell-border-width;
     padding-left: $horizontal-padding;
@@ -116,7 +116,7 @@ $sticky-shadow-size: nx-spacer(3xs);
 
 ::ng-deep .nx-expandable-table-cell {
     @include type-style(table-cell);
-    @include var(color, table-cell-color);
+    color: v(table-cell-color);
 
     &__content {
         overflow: hidden;
@@ -155,39 +155,39 @@ $sticky-shadow-size: nx-spacer(3xs);
 :host(.nx-table--zebra) ::ng-deep tbody {
     .nx-expandable-table-row {
         &:nth-child(4n) {
-            @include var(background, zebra-table-even-row-background-color);
+            background: v(zebra-table-even-row-background-color);
 
             + .nx-table-row:not(.is-selected) {
-                @include var(background, zebra-table-odd-row-background-color);
+                background: v(zebra-table-odd-row-background-color);
             }
         }
 
         &:nth-child(4n + 2) {
-            @include var(background, zebra-table-odd-row-background-color);
+            background: v(zebra-table-odd-row-background-color);
 
             + .nx-table-row:not(.is-selected) {
-                @include var(background, zebra-table-even-row-background-color);
+                background: v(zebra-table-even-row-background-color);
             }
         }
     }
 
     .nx-table-row {
         &:nth-child(2n) {
-            @include var(background, zebra-table-even-row-background-color);
+            background: v(zebra-table-even-row-background-color);
         }
 
         &.nx-table-row--selectable:not(.is-selected) {
             &:hover {
-                @include var(background, zebra-table-row-hover-background-color);
+                background: v(zebra-table-row-hover-background-color);
             }
 
             &:active {
-                @include var(background, zebra-table-row-active-background-color);
+                background: v(zebra-table-row-active-background-color);
             }
         }
 
         &.nx-table-row--selectable.is-selected:hover {
-            @include var(background, selectable-table-row-selected-hover-background-color);
+            background: v(selectable-table-row-selected-hover-background-color);
         }
     }
 }
@@ -212,30 +212,30 @@ $sticky-shadow-size: nx-spacer(3xs);
 
     &.nx-table-row--selectable:not(.is-selected) {
         &:hover {
-            @include var(background, selectable-table-row-hover-background-color);
+            background: v(selectable-table-row-hover-background-color);
         }
 
         &:active {
-            @include var(background, selectable-table-row-active-background-color);
+            background: v(selectable-table-row-active-background-color);
         }
     }
 
     &.nx-table-row--selectable.is-selected:hover {
-        @include var(background, selectable-table-row-selected-hover-background-color);
+        background: v(selectable-table-row-selected-hover-background-color);
     }
 
     &.is-selected,
     :host(.nx-table--zebra) &.is-selected {
-        @include var(background, zebra-table-row-selected-background-color);
+        background: v(zebra-table-row-selected-background-color);
 
         + .nx-expandable-table-row {
-            @include var(background, zebra-table-row-selected-background-color);
+            background: v(zebra-table-row-selected-background-color);
         }
 
         > .nx-table-cell,
         + .nx-table-row > .nx-table-cell,
         + .nx-expandable-table-row + .nx-table-row > .nx-table-cell {
-            @include var(border-color, selectable-table-row-selected-border-color);
+            border-color: v(selectable-table-row-selected-border-color);
         }
     }
 }
@@ -295,7 +295,7 @@ $sticky-shadow-size: nx-spacer(3xs);
             position: sticky;
             left: 0;
             z-index: 1;
-            background-color: var(--table-sticky-column-background-color);
+            background-color: v(table-sticky-column-background-color);
 
             &::before {
                 box-shadow: $sticky-shadow-size 0 $sticky-shadow-offset (-$sticky-shadow-size) v(shadow-small-color) inset;

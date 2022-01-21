@@ -1,7 +1,7 @@
 @import '../../shared-styles/index';
 
 nx-message {
-    @include var(box-shadow, message-box-shadow);
+    box-shadow: v(message-box-shadow);
     max-width: 352px;
 
     @include media-breakpoint-down(small) {

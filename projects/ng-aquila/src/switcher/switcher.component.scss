@@ -39,7 +39,7 @@ $switcher-border-radius: nx-border-radius(m);
     width: nx-spacer(4m);
     min-width: nx-spacer(4m); // fix for IE11
     height: nx-spacer(m);
-    @include var(background-color, switcher-unchecked-background-color);
+    background-color: v(switcher-unchecked-background-color);
     border-radius: $switcher-border-radius;
     transition: background-color 0.2s ease;
 }
@@ -59,7 +59,7 @@ $switcher-border-radius: nx-border-radius(m);
     width: nx-spacer(m) - nx-spacer(3xs);
     left: nx-spacer(4xs);
     bottom: nx-spacer(4xs);
-    @include var(background-color, switcher-dot-background-color);
+    background-color: v(switcher-dot-background-color);
     border-radius: $switcher-border-radius;
     transform: translate(0);
     transition: transform 0.2s ease;
@@ -81,13 +81,13 @@ $switcher-border-radius: nx-border-radius(m);
     }
 
     .nx-switcher__toggle {
-        @include var(background-color, switcher-checked-background-color);
+        background-color: v(switcher-checked-background-color);
     }
 }
 
 :host(.is-checked.is-negative) {
     .nx-switcher__toggle {
-        @include var(background-color, negative-dimmed);
+        background-color: v(negative-dimmed);
     }
 }
 
@@ -110,7 +110,7 @@ $switcher-border-radius: nx-border-radius(m);
         left: nx-spacer(4xs);
         font-size: nx-font-size(s);
         opacity: 0;
-        @include var(color, switcher-checked-icon-color);
+        color: v(switcher-checked-icon-color);
 
         [dir='rtl'] & {
             right: nx-spacer(4xs);
@@ -126,11 +126,11 @@ $switcher-border-radius: nx-border-radius(m);
     &.nx-switcher--large-label {
         .has-label {
             .nx-switcher__label-text {
-                @include var(margin-top, switcher-big-large-label-text-margin-top);
+                margin-top: v(switcher-big-large-label-text-margin-top);
             }
 
             .nx-switcher__toggle {
-                @include var(margin-top, switcher-big-large-label-control-margin-top);
+                margin-top: v(switcher-big-large-label-control-margin-top);
             }
         }
     }
@@ -138,11 +138,11 @@ $switcher-border-radius: nx-border-radius(m);
     &.nx-switcher--small-label {
         .has-label {
             .nx-switcher__label-text {
-                @include var(margin-top, switcher-big-small-label-text-margin-top);
+                margin-top: v(switcher-big-small-label-text-margin-top);
             }
 
             .nx-switcher__toggle {
-                @include var(margin-top, switcher-big-small-label-control-margin-top);
+                margin-top: v(switcher-big-small-label-control-margin-top);
             }
         }
     }
@@ -152,11 +152,11 @@ $switcher-border-radius: nx-border-radius(m);
 :host(.nx-switcher--large-label) {
     .has-label {
         .nx-switcher__label-text {
-            @include var(margin-top, switcher-large-label-text-margin-top);
+            margin-top: v(switcher-large-label-text-margin-top);
         }
 
         .nx-switcher__toggle {
-            @include var(margin-top, switcher-large-label-control-margin-top);
+            margin-top: v(switcher-large-label-control-margin-top);
         }
     }
 }
@@ -169,11 +169,11 @@ $switcher-border-radius: nx-border-radius(m);
 
     .has-label {
         .nx-switcher__label-text {
-            @include var(margin-top, switcher-small-label-text-margin-top);
+            margin-top: v(switcher-small-label-text-margin-top);
         }
 
         .nx-switcher__toggle {
-            @include var(margin-top, switcher-small-label-control-margin-top);
+            margin-top: v(switcher-small-label-control-margin-top);
         }
     }
 }
@@ -181,15 +181,15 @@ $switcher-border-radius: nx-border-radius(m);
 // NEGATIVE
 :host(.is-negative) {
     .nx-switcher__label {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-switcher__dot {
-        @include var(background-color, negative);
+        background-color: v(negative);
     }
 
     .nx-switcher__toggle {
-        @include var(background-color, negative-dimmed);
+        background-color: v(negative-dimmed);
     }
 }
 
@@ -201,27 +201,27 @@ $switcher-border-radius: nx-border-radius(m);
 // DISABLED
 :host(.is-disabled) {
     .nx-switcher__toggle {
-        @include var(background-color, switcher-disabled-background-color);
+        background-color: v(switcher-disabled-background-color);
     }
 
     .nx-switcher__dot {
-        @include var(background-color, switcher-disabled-dot-background-color);
+        background-color: v(switcher-disabled-dot-background-color);
     }
 
     .nx-switcher__label {
         cursor: not-allowed;
-        @include var(color, switcher-disabled-text-color);
+        color: v(switcher-disabled-text-color);
     }
 
     nx-icon {
-        @include var(color, switcher-disabled-icon-color);
+        color: v(switcher-disabled-icon-color);
     }
 }
 
 // ERROR
 :host(.has-error) {
     .nx-switcher__toggle {
-        @include var(background-color, danger);
+        background-color: v(danger);
     }
 }
 

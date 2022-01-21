@@ -34,7 +34,7 @@
 }
 
 .nxv-status-deprecated-color {
-    @include var(background, documentation-deprecated-color);
+    background: v(documentation-deprecated-color);
     width: 24px;
     height: 24px;
     margin-right: 8px;
@@ -68,7 +68,7 @@
     cursor: pointer;
 
     &.is-deprecated {
-        @include var(background, documentation-deprecated-color);
+        background: v(documentation-deprecated-color);
     }
 }
 

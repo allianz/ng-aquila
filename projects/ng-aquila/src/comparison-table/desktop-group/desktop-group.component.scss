@@ -5,7 +5,7 @@
 
     .nx-comparison-table__group-expansion-cell {
         cursor: pointer;
-        @include var(color, comparison-table-expansion-cell-color);
+        color: v(comparison-table-expansion-cell-color);
 
         &:focus {
             // don't show inner dotted border on firefox

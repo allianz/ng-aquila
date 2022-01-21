@@ -13,7 +13,7 @@
     ::ng-deep .nx-link,
     ::ng-deep nx-link a,
     a {
-        @include var(color, link-color);
+        color: v(link-color);
         font-size: inherit;
         font-weight: nx-font-weight(semibold);
         line-height: inherit;
@@ -47,10 +47,10 @@
 }
 
 :host(.nx-heading--negative) {
-    @include var(color, negative);
+    color: v(negative);
 
     ::ng-deep a {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 

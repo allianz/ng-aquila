@@ -7,7 +7,7 @@ $outline-padding: 7px;
 .nx-formfield {
     display: block;
     //default theme is white and gets overwritten depending of the focus, error state or given modifiers
-    @include var(color, text-01);
+    color: v(text-01);
 
     nx-message {
         margin-top: nx-spacer(xs);
@@ -15,8 +15,8 @@ $outline-padding: 7px;
 }
 
 .nx-formfield__wrapper {
-    @include var(padding-bottom, formfield-bottom-padding);
-    @include var(padding-top, formfield-label-height);
+    padding-bottom: v(formfield-bottom-padding);
+    padding-top: v(formfield-label-height);
 }
 
 // the hint should not push the other content down
@@ -25,8 +25,8 @@ $outline-padding: 7px;
 }
 
 .nx-formfield__row {
-    @include var(min-height, formfield-control-height);
-    @include var(background-color, formfield-background-color);
+    min-height: v(formfield-control-height);
+    background-color: v(formfield-background-color);
     display: flex;
     align-items: stretch;
     width: 100%;
@@ -60,9 +60,9 @@ $outline-padding: 7px;
 .nx-formfield__input-container {
     display: flex;
     border-bottom: v(formfield-border-width) solid v(formfield-border-color);
-    @include var(height, formfield-control-height);
+    height: v(formfield-control-height);
     flex: auto;
-    @include var(padding, formfield-input-padding);
+    padding: v(formfield-input-padding);
 }
 
 .nx-formfield__input {
@@ -93,7 +93,7 @@ $outline-padding: 7px;
 
 .nx-formfield__label {
     @include type-style(formfield-placeholder-label);
-    @include var(color, formfield-label-color);
+    color: v(formfield-label-color);
     display: block;
     position: absolute;
     left: 0;
@@ -120,11 +120,11 @@ $outline-padding: 7px;
     align-items: center;
     flex: none;
     white-space: nowrap;
-    @include var(color, formfield-control-color);
+    color: v(formfield-control-color);
 
     // ensure auto sized icons get 24px and don't inherit 20px from the base font size of this component
     nx-icon.nx-icon--auto {
-        @include var(font-size, formfield-icon-size);
+        font-size: v(formfield-icon-size);
     }
 
     nx-icon {
@@ -138,13 +138,13 @@ $outline-padding: 7px;
 }
 
 .nx-formfield__appendix {
-    @include var(height, formfield-control-height);
+    height: v(formfield-control-height);
     margin-left: nx-spacer(2xs);
     display: flex;
     border-bottom-style: solid;
     border-bottom-color: transparent;
-    @include var(border-bottom-width, formfield-border-width);
-    @include var(padding, formfield-input-padding);
+    border-bottom-width: v(formfield-border-width);
+    padding: v(formfield-input-padding);
 
     [dir='rtl'] & {
         margin-right: nx-spacer(2xs);
@@ -172,7 +172,7 @@ $outline-padding: 7px;
 
 // Hints
 .nx-formfield__hints {
-    @include var(color, text-01);
+    color: v(text-01);
     @include type-style(formfield-hint);
     padding-top: 8px;
     text-align: right;
@@ -197,7 +197,7 @@ $outline-padding: 7px;
 .nx-formfield:not(.nx-formfield--negative) {
     // ensure all icons gets colored blueish.
     .nx-formfield__appendix nx-icon {
-        @include var(color, formfield-active-color);
+        color: v(formfield-active-color);
     }
 }
 
@@ -209,35 +209,35 @@ $outline-padding: 7px;
 }
 
 .nx-formfield.is-focused:not(.nx-formfield--negative):not(.has-error) {
-    @include var(color, formfield-active-color);
+    color: v(formfield-active-color);
 
     .nx-formfield__input-container {
-        @include var(border-bottom-color, formfield-active-border-color);
+        border-bottom-color: v(formfield-active-border-color);
     }
 
     // overwrite with white to maintain contrast
     &.nx-formfield--negative {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
 // direct needs a hover color for border-bottom line
 .nx-formfield:not(.nx-formfield--negative):not(.has-error):not(.is-disabled):not(.is-focused):not(.has-outline) {
     .nx-formfield__row:hover .nx-formfield__input-container {
-        @include var(border-bottom-color, formfield-hover-border-color);
+        border-bottom-color: v(formfield-hover-border-color);
     }
 }
 
 // focus style for outline formfield
 .nx-formfield.is-focused:not(.nx-formfield--negative).has-outline {
     .nx-formfield__input-container {
-        @include var(border-color, formfield-outline-active-border-color);
+        border-color: v(formfield-outline-active-border-color);
         @include formfield-outline-focus-styles;
     }
 
     &.has-error {
         .nx-formfield__input-container {
-            @include var(border-bottom-color, danger);
+            border-bottom-color: v(danger);
         }
     }
 }
@@ -252,11 +252,11 @@ $outline-padding: 7px;
     }
 
     .nx-formfield__wrapper {
-        @include var(padding-top, formfield-outline-label-height);
+        padding-top: v(formfield-outline-label-height);
     }
 
     .nx-formfield__row {
-        @include var(min-height, formfield-outline-control-height);
+        min-height: v(formfield-outline-control-height);
     }
 
     .nx-formfield__flexfield {
@@ -266,12 +266,12 @@ $outline-padding: 7px;
 
     .nx-formfield__input-container {
         padding: 0;
-        @include var(border-width, formfield-border-width);
-        @include var(border-color, formfield-outline-border-color);
-        @include var(background-color, formfield-outline-background-color);
+        border-width: v(formfield-border-width);
+        border-color: v(formfield-outline-border-color);
+        background-color: v(formfield-outline-background-color);
         border-style: solid;
         border-radius: nx-border-radius(s);
-        @include var(height, formfield-outline-control-height);
+        height: v(formfield-outline-control-height);
     }
 
     input,
@@ -307,7 +307,7 @@ $outline-padding: 7px;
     }
 
     .nx-formfield__appendix {
-        @include var(height, formfield-outline-control-height);
+        height: v(formfield-outline-control-height);
         margin-left: nx-spacer(2xs);
         display: flex;
         border-top: v(formfield-border-width) solid transparent;
@@ -333,7 +333,7 @@ $outline-padding: 7px;
     textarea {
         @include input-placeholder {
             @include type-style(formfield-outline-input-native-placeholder);
-            @include var(color, formfield-input-native-placeholder-color);
+            color: v(formfield-input-native-placeholder-color);
         }
 
         &::placeholder {
@@ -354,8 +354,8 @@ $outline-padding: 7px;
 
 .nx-formfield.has-outline.is-readonly:not(.is-disabled) {
     .nx-formfield__input-container {
-        @include var(border-color, formfield-readonly-border-color);
-        @include var(background-color, formfield-readonly-background-color);
+        border-color: v(formfield-readonly-border-color);
+        background-color: v(formfield-readonly-background-color);
     }
 }
 
@@ -398,55 +398,55 @@ $outline-padding: 7px;
 .nx-formfield.has-error {
     &:not(.has-outline) {
         &:not(.is-floating) .nx-formfield__label {
-            @include var(font-weight, formfield-error-input-font-weight);
+            font-weight: v(formfield-error-input-font-weight);
         }
 
         .nx-formfield__prefix,
         .nx-formfield__suffix {
-            @include var(font-weight, formfield-error-input-font-weight);
+            font-weight: v(formfield-error-input-font-weight);
         }
 
         .nx-formfield__input input.nx-input {
-            @include var(font-weight, formfield-error-input-font-weight);
+            font-weight: v(formfield-error-input-font-weight);
         }
     }
 }
 
 // error styles (color changes)
 .nx-formfield.has-error:not(.nx-formfield--negative) {
-    @include var(color, danger);
+    color: v(danger);
 
     &:not(.has-outline) {
         .nx-formfield__prefix,
         .nx-formfield__suffix,
         .nx-formfield__label {
-            @include var(color, danger);
+            color: v(danger);
         }
     }
 
     .nx-formfield__input-container {
-        @include var(border-bottom-color, danger);
+        border-bottom-color: v(danger);
     }
 
     &.is-floating {
         .nx-formfield__label {
-            @include var(color, formfield-label-color);
+            color: v(formfield-label-color);
         }
     }
 
     &.has-outline {
-        @include var(color, text-01);
+        color: v(text-01);
 
         .nx-formfield__input-container {
-            @include var(border-color, danger);
+            border-color: v(danger);
         }
     }
 }
 
 // Provide the disabled behavior
 .nx-formfield.is-disabled {
-    @include var(color, formfield-disabled-text-color);
-    @include var(-webkit-text-fill-color, formfield-disabled-text-color);
+    color: v(formfield-disabled-text-color);
+    -webkit-text-fill-color: v(formfield-disabled-text-color);
     cursor: not-allowed;
 
     .nx-formfield__hints {
@@ -454,28 +454,28 @@ $outline-padding: 7px;
     }
 
     .nx-formfield__input-container {
-        @include var(border-bottom-color, formfield-disabled-border-color);
+        border-bottom-color: v(formfield-disabled-border-color);
     }
 
     &.has-outline .nx-formfield__input-container {
-        @include var(border-color, formfield-disabled-border-color);
+        border-color: v(formfield-disabled-border-color);
     }
 
     nx-datepicker-toggle button {
-        @include var(color, formfield-disabled-text-color);
+        color: v(formfield-disabled-text-color);
     }
 }
 
 // Readonly color
 .nx-formfield.is-readonly:not(.is-disabled) {
     nx-datepicker-toggle button {
-        @include var(color, formfield-disabled-text-color);
+        color: v(formfield-disabled-text-color);
     }
 }
 
 // Modifiers
 .nx-formfield--negative {
-    @include var(color, negative);
+    color: v(negative);
 
     .nx-formfield__hints {
         color: inherit;
@@ -483,21 +483,21 @@ $outline-padding: 7px;
 
     // this has currently no effect on the outline elements, so the next block for .has-outline is needed
     .nx-formfield__input-container {
-        @include var(border-color, negative);
+        border-color: v(negative);
     }
 
     &.has-outline .nx-formfield__input-container {
-        @include var(border-color, negative);
+        border-color: v(negative);
     }
 
     .nx-formfield__appendix,
     .nx-formfield__prefix,
     .nx-formfield__suffix {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     .nx-formfield__label {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
@@ -586,7 +586,7 @@ input:-webkit-autofill {
     &::first-line {
         @include type-style(formfield-control);
         font-family: v(font-family);
-        @include var(color, formfield-control-color);
+        color: v(formfield-control-color);
     }
 }
 

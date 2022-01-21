@@ -11,17 +11,17 @@ label {
 
 .scrollable {
     overflow: auto;
-    padding: var(--swipebar-padding);
+    padding: v(swipebar-padding);
 }
 
 .bar {
-    background: var(--swipebar-background-color);
+    background: v(swipebar-background-color);
 }
 
 .indicator {
     position: relative;
     height: nx-spacer(2xs);
-    background: var(--swipebar-color);
+    background: v(swipebar-color);
     cursor: grab;
     transform: translateX(0);
 

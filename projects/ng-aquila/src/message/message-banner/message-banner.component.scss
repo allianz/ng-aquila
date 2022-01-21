@@ -1,5 +1,5 @@
 @import '../../shared-styles/index';
 
 :host {
-    @include var(border-radius, message-banner-border-radius);
+    border-radius: v(message-banner-border-radius);
 }

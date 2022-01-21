@@ -19,7 +19,7 @@ $border-size: nx-border-size(m);
     .nx-word__inner-wrapper {
         border-bottom-width: $border-size;
         border-bottom-style: solid;
-        @include var(border-bottom-color, natural-language-form-border-color);
+        border-bottom-color: v(natural-language-form-border-color);
     }
 
     &.size-short {
@@ -65,7 +65,7 @@ $border-size: nx-border-size(m);
 
             &.is-filled,
             &.is-focused {
-                @include var(color, natural-language-form-active-color);
+                color: v(natural-language-form-active-color);
                 font-weight: nx-font-weight(regular);
             }
 
@@ -83,7 +83,7 @@ $border-size: nx-border-size(m);
             position: relative;
             border-bottom-width: $border-size;
             border-bottom-style: solid;
-            @include var(border-bottom-color, natural-language-form-border-color);
+            border-bottom-color: v(natural-language-form-border-color);
 
             .nx-dropdown__container {
                 font-size: inherit;
@@ -96,8 +96,8 @@ $border-size: nx-border-size(m);
 
             &.is-filled,
             &.has-focus {
-                @include var(color, natural-language-form-active-color);
-                @include var(border-color, natural-language-form-active-border-color);
+                color: v(natural-language-form-active-color);
+                border-color: v(natural-language-form-active-border-color);
             }
 
             .nx-dropdown__icon {
@@ -114,24 +114,24 @@ $border-size: nx-border-size(m);
 :host(.is-focused),
 :host(.is-filled) {
     .nx-word__inner-wrapper {
-        @include var(border-color, natural-language-form-active-border-color);
+        border-color: v(natural-language-form-active-border-color);
     }
 }
 
 :host(.has-error) {
     .nx-word__inner-wrapper {
-        @include var(border-color, natural-language-form-error-border-color);
+        border-color: v(natural-language-form-error-border-color);
     }
 }
 
 :host.has-error ::ng-deep {
     nx-dropdown {
-        @include var(color, natural-language-form-error-color);
-        @include var(border-color, natural-language-form-error-border-color);
+        color: v(natural-language-form-error-color);
+        border-color: v(natural-language-form-error-border-color);
     }
 
     .c-input.has-error {
-        @include var(color, natural-language-form-error-color);
+        color: v(natural-language-form-error-color);
     }
 }
 
@@ -139,33 +139,33 @@ $border-size: nx-border-size(m);
     .nx-dropdown,
     nx-dropdown,
     nx-dropdown.is-filled {
-        @include var(border-color, negative);
-        @include var(color, negative);
+        border-color: v(negative);
+        color: v(negative);
     }
 
     .c-input,
     .c-input.has-error {
-        @include var(color, negative);
+        color: v(negative);
     }
 }
 
 :host-context(.is-negative) {
     .nx-word__inner-wrapper {
-        @include var(border-color, negative);
+        border-color: v(negative);
     }
 }
 
 .nx-word__inner-wrapper {
-    @include var(height, natural-language-form-large-line-height);
+    height: v(natural-language-form-large-line-height);
 
     @include media-breakpoint-down('medium') {
-        @include var(height, natural-language-form-small-line-height);
+        height: v(natural-language-form-small-line-height);
     }
 }
 
 :host-context(.nx-natural-language-form--small) {
     .nx-word__inner-wrapper {
-        @include var(height, natural-language-form-small-line-height);
+        height: v(natural-language-form-small-line-height);
     }
 }
 

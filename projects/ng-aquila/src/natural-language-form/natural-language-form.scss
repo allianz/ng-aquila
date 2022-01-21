@@ -3,7 +3,7 @@
 :host {
     display: block;
     @include type-style(natural-language-form-large);
-    @include var(color, natural-language-form-text-color);
+    color: v(natural-language-form-text-color);
     padding-top: nx-spacer(2xl);
     padding-bottom: nx-spacer(3xl);
 
@@ -22,7 +22,7 @@
     }
 
     &.is-negative {
-        @include var(color, negative);
+        color: v(negative);
     }
 
     @include media-breakpoint-down('medium') {

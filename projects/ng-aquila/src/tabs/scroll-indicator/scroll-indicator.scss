@@ -2,7 +2,7 @@
 
 :host {
     position: relative;
-    border-color: var(--tab-item-border-color);
+    border-color: v(tab-item-border-color);
     border-bottom-width: nx-border-size(xs);
     border-bottom-style: solid;
     flex: 0 0 auto;
@@ -11,7 +11,7 @@
     .nx-tab-scroll-indicator__divider {
         width: 1px;
         height: 32px;
-        background: var(--tab-item-border-color);
+        background: v(tab-item-border-color);
         position: absolute;
         top: 4px;
     }
@@ -103,6 +103,6 @@
 :host-context(nx-tab-group.is-negative),
 :host-context(nx-tab-nav-bar.is-negative) {
     button {
-        color: var(--negative);
+        color: v(negative);
     }
 }

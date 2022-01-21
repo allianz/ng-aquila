@@ -6,7 +6,7 @@
     margin-bottom: 0;
     padding: 0 24px;
     min-height: 150px;
-    @include var(background, ui-01);
+    background: v(ui-01);
 }
 
 .nvx-tab__content {
@@ -17,7 +17,7 @@
     border: 1px solid lightgrey;
     margin-bottom: 32px;
     width: 100%;
-    @include var(background, ui-01);
+    background: v(ui-01);
 }
 
 .nxv-example-viewer__show-code-button,
@@ -38,7 +38,7 @@
 }
 
 .nxv-example-viewer__header {
-    @include var(background, documentation-header-background);
+    background: v(documentation-header-background);
     padding: 16px;
     display: flex;
     justify-content: space-between;

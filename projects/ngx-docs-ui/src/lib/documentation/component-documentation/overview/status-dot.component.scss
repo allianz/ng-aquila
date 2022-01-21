@@ -7,14 +7,14 @@
     vertical-align: bottom;
 
     &.checkmark {
-        @include var(color, success);
+        color: v(success);
     }
 
     nx-icon.fa-hourglass-half {
-        @include var(color, interactive-primary);
+        color: v(interactive-primary);
     }
 
     nx-icon.fa-minus {
-        @include var(color, disabled-01);
+        color: v(disabled-01);
     }
 }

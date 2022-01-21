@@ -8,7 +8,7 @@
 
 .nx-calendar-table-header {
     @include type-style(datefield-cell);
-    @include var(color, datefield-header-cell-color);
+    color: v(datefield-header-cell-color);
     text-align: center;
     height: nx-spacer(3m);
 }

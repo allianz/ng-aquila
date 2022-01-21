@@ -4,6 +4,6 @@
     display: flex;
 
     nx-icon {
-        @include var(color, file-uploader-file-row-icon-color);
+        color: v(file-uploader-file-row-icon-color);
     }
 }

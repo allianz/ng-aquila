@@ -10,8 +10,8 @@ $border-size: nx-border-size(m);
     @include type-style(taglist);
     height: auto;
     max-width: 100%;
-    @include var(color, taglist-color);
-    @include var(background-color, taglist-background-color);
+    color: v(taglist-color);
+    background-color: v(taglist-background-color);
     padding: tag-padding(nx-spacer(2xs)) tag-padding(nx-spacer(s));
     display: flex;
     align-items: center;
@@ -22,9 +22,9 @@ $border-size: nx-border-size(m);
     cursor: pointer;
 
     &:hover {
-        @include var(border-color, taglist-hover-border-color);
-        @include var(color, taglist-hover-color);
-        @include var(background-color, taglist-hover-background-color);
+        border-color: v(taglist-hover-border-color);
+        color: v(taglist-hover-color);
+        background-color: v(taglist-hover-background-color);
     }
 
     &:focus {
@@ -39,7 +39,7 @@ $border-size: nx-border-size(m);
 .nx-tag__close-icon {
     outline: none;
     display: block;
-    @include var(font-size, taglist-close-icon-size);
+    font-size: v(taglist-close-icon-size);
 }
 
 .nx-tag__close {

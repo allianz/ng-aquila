@@ -8,7 +8,7 @@
     top: 0;
     height: 100%;
     overflow: hidden;
-    @include var(background, sidepanel-background-color);
+    background: v(sidepanel-background-color);
 
     [dir='rtl'] & {
         right: auto;
@@ -17,7 +17,7 @@
 
     &.is-floating {
         z-index: 1;
-        @include var(box-shadow, sidepanel-floating-shadow);
+        box-shadow: v(sidepanel-floating-shadow);
     }
 
     .is-closed {
@@ -29,12 +29,12 @@
     }
 
     &.light {
-        @include var(background, sidepanel-light-background-color);
-        border-left: 1px solid var(--sidepanel-light-border-color);
+        background: v(sidepanel-light-background-color);
+        border-left: 1px solid v(sidepanel-light-border-color);
 
         [dir='rtl'] & {
             border-left: unset;
-            border-right: 1px solid var(--sidepanel-light-border-color);
+            border-right: 1px solid v(sidepanel-light-border-color);
         }
     }
 
@@ -56,7 +56,7 @@
         position: fixed;
         right: 0;
         z-index: 1;
-        @include var(box-shadow, sidepanel-floating-shadow);
+        box-shadow: v(sidepanel-floating-shadow);
 
         [dir='rtl'] & {
             right: auto;

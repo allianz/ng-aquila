@@ -17,7 +17,7 @@
             nx-error,
             nx-label,
             nx-icon.nx-error__icon {
-                @include var(color, negative);
+                color: v(negative);
             }
         }
     }

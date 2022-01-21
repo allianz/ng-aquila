@@ -20,7 +20,7 @@
 .nx-pagination__item {
     margin: 0 nx-spacer(s);
     list-style: none;
-    @include var(font-weight, pagination-item-font-weight);
+    font-weight: v(pagination-item-font-weight);
 }
 
 .nx-pagination__item:first-child {
@@ -32,7 +32,7 @@
 }
 
 .nx-pagination__item.is-ellipsis {
-    @include var(color, pagination-text-color);
+    color: v(pagination-text-color);
 }
 
 .nx-pagination__item--expanded-view {
@@ -40,7 +40,7 @@
 }
 
 .nx-pagination__link {
-    @include var(color, pagination-link-color);
+    color: v(pagination-link-color);
     padding: 0;
     text-decoration: none;
     background-color: transparent;
@@ -49,7 +49,7 @@
 }
 
 .nx-pagination__link.is-active {
-    @include var(color, pagination-text-color);
+    color: v(pagination-text-color);
     font-weight: nx-font-weight(bold);
     cursor: default;
 
@@ -60,7 +60,7 @@
 
 nx-icon.nx-pagination__arrow,
 nx-icon.nx-pagination__arrow {
-    @include var(font-size, pagination-icon-size);
+    font-size: v(pagination-icon-size);
 }
 
 .nx-pagination-compact {
@@ -70,7 +70,7 @@ nx-icon.nx-pagination__arrow {
 }
 
 .nx-pagination-compact__display {
-    @include var(color, pagination-text-color);
+    color: v(pagination-text-color);
     display: flex;
 }
 
@@ -97,8 +97,8 @@ nx-icon.nx-pagination__arrow {
 .nx-pagination-compact__previous,
 .nx-pagination__arrow-last,
 .nx-pagination__arrow-first {
-    @include var(color, pagination-link-color);
-    @include var(font-weight, pagination-icon-font-weight);
+    color: v(pagination-link-color);
+    font-weight: v(pagination-icon-font-weight);
     text-decoration: none;
     text-transform: uppercase;
     display: flex;
@@ -153,7 +153,7 @@ nx-icon.nx-pagination__arrow {
 .nx-pagination-compact__previous.is-disabled,
 .nx-pagination-compact__next.is-disabled,
 .nx-pagination__link.is-disabled {
-    @include var(color, pagination-link-disabled-color);
+    color: v(pagination-link-disabled-color);
     cursor: not-allowed;
 
     @media screen and (-ms-high-contrast: active) {

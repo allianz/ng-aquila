@@ -5,12 +5,12 @@ $popover-arrow-offset: -#{$popover-arrow-size * 0.5 - nx-border-size(xs)};
 $popover-border-radius: nx-border-radius(s);
 $popover-border-size: nx-border-size(xs);
 
-$arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) v(shadow-grey-color);
+$arrow-shadow: -2px -2px -4px v(shadow-small-color);
 
 .nx-popover__content {
     @include type-style(popover-content);
-    @include var(background-color, popover-background-color);
-    @include var(color, popover-text-color);
+    background-color: v(popover-background-color);
+    color: v(popover-text-color);
     border: $popover-border-size solid v(popover-border-color);
     border-radius: $popover-border-radius;
     box-shadow: v(shadow-small);
@@ -33,8 +33,8 @@ $arrow-shadow: -#{nx-spacer(4xs)} -#{nx-spacer(4xs)} nx-spacer(3xs) v(shadow-gre
     top: nx-spacer(3xs);
     right: nx-spacer(3xs);
     cursor: pointer;
-    @include var(font-size, popover-close-icon-size);
-    @include var(color, popover-close-icon-color);
+    font-size: v(popover-close-icon-size);
+    color: v(popover-close-icon-color);
 
     border-radius: 2px;
 

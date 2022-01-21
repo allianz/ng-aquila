@@ -5,7 +5,7 @@
 }
 
 :host:first-child .nx-dropdown-results__group {
-    @include var(background, dropdown-group-section-background-color);
+    background: v(dropdown-group-section-background-color);
 }
 
 :host:first-child .nx-dropdown-results__group-label {

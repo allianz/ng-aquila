@@ -10,8 +10,8 @@
     padding-right: 3px;
     height: 16px;
     @include type-style(indicator);
-    @include var(color, indicator-color);
-    @include var(background-color, indicator-background-color);
+    color: v(indicator-color);
+    background-color: v(indicator-background-color);
     border: 1px solid v(indicator-border-color);
 
     &:empty {

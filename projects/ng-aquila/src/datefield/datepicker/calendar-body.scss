@@ -28,7 +28,7 @@ $item-size: nx-spacer(3m);
 
     margin: 0 auto;
     @include type-style(datefield-cell);
-    @include var(color, datefield-cell-color);
+    color: v(datefield-cell-color);
     border-radius: 50%;
 
     // Prevents text being off-center on Android.
@@ -42,8 +42,8 @@ $item-size: nx-spacer(3m);
     }
 
     &.nx-calendar-body-selected {
-        @include var(color, datefield-cell-selected-color);
-        @include var(background-color, datefield-cell-selected-background-color);
+        color: v(datefield-cell-selected-color);
+        background-color: v(datefield-cell-selected-background-color);
 
         @media screen and (-ms-high-contrast: active) {
             -ms-high-contrast-adjust: none;
@@ -53,7 +53,7 @@ $item-size: nx-spacer(3m);
     }
 
     .nx-calendar-body-disabled > &:not(.nx-calendar-body-selected) {
-        @include var(color, datefield-cell-disabled-color);
+        color: v(datefield-cell-disabled-color);
         font-weight: nx-font-weight(regular);
 
         @media screen and (-ms-high-contrast: active) {
@@ -66,8 +66,8 @@ $item-size: nx-spacer(3m);
 .nx-calendar-body-active:not(.nx-calendar-body-disabled) {
     & > .nx-calendar-body-cell-content:not(.nx-calendar-body-selected),
     & > .nx-calendar-adjacent-cell-content {
-        @include var(color, datefield-cell-hover-color);
-        @include var(background-color, datefield-cell-hover-background-color);
+        color: v(datefield-cell-hover-color);
+        background-color: v(datefield-cell-hover-background-color);
 
         @media screen and (-ms-high-contrast: active) {
             -ms-high-contrast-adjust: none;
@@ -83,11 +83,11 @@ $item-size: nx-spacer(3m);
     }
 
     &.nx-calendar-body-disabled .nx-calendar-body-cell-content {
-        @include var(color, datefield-cell-disabled-color);
+        color: v(datefield-cell-disabled-color);
     }
 
     .nx-calendar-body-cell-content:not(.nx-calendar-body-selected) {
-        @include var(background-color, datefield-cell-focused-background-color);
+        background-color: v(datefield-cell-focused-background-color);
 
         @media screen and (-ms-high-contrast: active) {
             background-color: highlight;
@@ -107,7 +107,7 @@ $item-size: nx-spacer(3m);
     margin: 0 auto;
     @include type-style(datefield-cell);
     font-weight: nx-font-weight(regular);
-    @include var(color, datefield-cell-disabled-color);
+    color: v(datefield-cell-disabled-color);
     border-radius: 50%;
 
     // Prevents text being off-center on Android.
