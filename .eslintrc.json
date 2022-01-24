@@ -15,8 +15,10 @@
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "prettier"
             ],
-            "plugins": [],
+            "plugins": ["deprecation"],
             "rules": {
+                "deprecation/deprecation": "warn",
+
                 // ==== eslint: possible problems ====
 
                 "no-self-compare": "error",
