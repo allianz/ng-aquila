@@ -17,7 +17,7 @@
                 "plugin:regexp/recommended",
                 "prettier"
             ],
-            "plugins": ["deprecation"],
+            "plugins": ["deprecation", "rxjs"],
             "rules": {
                 "deprecation/deprecation": "warn",
 
@@ -25,6 +25,21 @@
 
                 "regexp/no-unused-capturing-group": "off", // TODO check with others
                 "regexp/sort-character-class-elements": "warn",
+
+                // ==== rxjs ====
+
+                "rxjs/no-async-subscribe": "warn",
+                "rxjs/no-create": "error",
+                "rxjs/no-ignored-replay-buffer": "warn",
+                "rxjs/no-ignored-takewhile-value": "warn",
+                "rxjs/no-index": "error",
+                "rxjs/no-internal": "error",
+                "rxjs/no-nested-subscribe": "warn",
+                "rxjs/no-redundant-notify": "error",
+                "rxjs/no-sharereplay": ["error", { "allowConfig": true }],
+                "rxjs/no-subject-unsubscribe": "warn",
+                "rxjs/no-unbound-methods": "error",
+                "rxjs/no-unsafe-takeuntil": "warn",
 
                 // ==== eslint: possible problems ====
 

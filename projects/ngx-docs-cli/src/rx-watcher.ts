@@ -9,7 +9,7 @@ export interface RxWatchData {
 export function rxWatcher(pattern, options) {
     const watcher = chokidar.watch(pattern, options);
 
-    const chokidarObservable = Observable.create(observer => {
+    const chokidarObservable = new Observable(observer => {
         const nextItem = event => name =>
             observer.next({
                 event,
