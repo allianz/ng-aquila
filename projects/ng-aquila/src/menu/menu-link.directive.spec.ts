@@ -60,6 +60,6 @@ describe(NxMenuLinkDirective.name, () => {
 });
 
 @Component({
-    template: `<a nxMenuLink></a>`,
+    template: `<a nxMenuLink>Link</a>`,
 })
 class BasicMenuLink extends MenuLinkTest {}

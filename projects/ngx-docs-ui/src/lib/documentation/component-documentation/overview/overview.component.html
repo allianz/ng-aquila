@@ -47,13 +47,13 @@
                         <a [routerLink]="['/documentation', component.component.id]">{{ component.label }}</a>
                     </td>
                     <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                        <nx-badge *ngIf="component.component.b2c == true" class="nxv-components-table__status-badge" vibrant type="active"> b2c </nx-badge>
+                        <nx-badge *ngIf="component.component.b2c" class="nxv-components-table__status-badge" vibrant type="active"> b2c </nx-badge>
                     </td>
                     <td nxCell class="nxv-components-table__support-cell hide-if-empty">
-                        <nx-badge *ngIf="component.component.expert == true" class="nxv-components-table__status-badge" type="positive"> expert </nx-badge>
+                        <nx-badge *ngIf="component.component.expert" class="nxv-components-table__status-badge" type="positive"> expert </nx-badge>
                     </td>
                     <td nxCell class="nxv-components-table__status-cell">
-                        <nxv-status-dot [status]="$any(component).component.stable"></nxv-status-dot>
+                        <nxv-status-dot [status]="component.component.stable"></nxv-status-dot>
                     </td>
                 </tr>
             </tbody>

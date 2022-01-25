@@ -90,8 +90,8 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
             throw new Error('Invalid argument for autocomplete items. It has to be Array<string> or Observable<Array<string>>');
         }
     }
-    get items(): string[] | Observable<string[]> {
-        return this._items as string[];
+    get items(): string[] {
+        return this._items as string[]; // TODO properly coerce input as empty array
     }
     private _items: string[] | null = null;
     private _itemsSubscription!: Subscription;

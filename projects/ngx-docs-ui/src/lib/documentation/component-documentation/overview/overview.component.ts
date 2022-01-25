@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
@@ -9,7 +9,7 @@ import { Category, ManifestService } from '../../../service/manifest.service';
     templateUrl: 'overview.component.html',
     styleUrls: ['overview.component.scss'],
 })
-export class NxvOverviewComponent implements OnInit {
+export class NxvOverviewComponent {
     components!: Category[];
     issueBoardLink: string;
 
@@ -20,8 +20,6 @@ export class NxvOverviewComponent implements OnInit {
 
         this.issueBoardLink = `${githubLinkConfig.repoLink}/issues`;
     }
-
-    ngOnInit() {}
 
     navigateToComponent(component: { component: { id: string | number } }) {
         this._router.navigate(['/documentation', component.component.id]);

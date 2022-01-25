@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ComponentService } from '../../service/component.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 
@@ -7,10 +7,8 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
     templateUrl: 'documentation-page.component.html',
     styleUrls: ['./documentation-page.component.scss'],
 })
-export class NxvDocumentationComponent implements OnInit, OnDestroy {
+export class NxvDocumentationComponent implements OnDestroy {
     constructor(public componentService: ComponentService, public documentationFrame: DocumentationFrameComponent) {}
-
-    ngOnInit() {}
 
     ngOnDestroy() {
         this.componentService.current.next();

@@ -54,8 +54,6 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _value = 0;
     private _decimalPlaces = 0;
     private _step: number = DEFAULT_STEP;
-    private _onChange: (value: any) => void = () => {};
-    private _onTouched: () => any = () => {};
     private _id = `nx-slider-${nextId++}`;
     private _tabIndex = 0;
     private _min = DEFAULT_MIN;
@@ -199,6 +197,9 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
     @Input('nxLabelMaxFormatter') labelMaxFormatter = (value: any) => value;
+
+    private _onChange: (value: any) => void = () => {};
+    private _onTouched: () => any = () => {};
 
     constructor(
         private elementRef: ElementRef,

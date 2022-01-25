@@ -16,7 +16,7 @@
                 </div>
             </div>
 
-            <label class="nx-subprogress__label">{{ step.stepLabel || step.label }}</label>
+            <div class="nx-subprogress__label">{{ step.stepLabel || step.label }}</div>
 
             <div class="nx-subprogress__progress" *ngIf="selectedIndex === i">
                 <nx-progressbar [value]="progress"></nx-progressbar>

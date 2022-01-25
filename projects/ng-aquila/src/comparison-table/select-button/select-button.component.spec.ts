@@ -194,15 +194,15 @@ describe('NxComparisonTableSelectButton', () => {
             <ng-container nxComparisonTableRow type="header">
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button"></button>
+                    <button nxComparisonTableSelectButton type="button">Click</button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button"></button>
+                    <button nxComparisonTableSelectButton type="button">Click</button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
-                    <button nxComparisonTableSelectButton type="button"></button>
+                    <button nxComparisonTableSelectButton type="button">Click</button>
                 </nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRow>
@@ -234,7 +234,8 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                    ></button>
+                        >Click</button
+                    >
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
@@ -245,7 +246,8 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                    ></button>
+                        >Click</button
+                    >
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
@@ -256,7 +258,8 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                    ></button>
+                        >Click</button
+                    >
                 </nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRow>
@@ -281,7 +284,7 @@ class ConfigurableComponent extends ToggleTest {}
             <ng-container *ngFor="let element of data">
                 <ng-container *ngIf="element['type'] === 'header'" nxComparisonTableRow type="header">
                     <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="header">
-                        {{ cell }}<button nxComparisonTableSelectButton type="button"></button>
+                        {{ cell }}<button nxComparisonTableSelectButton type="button">Click</button>
                     </nx-comparison-table-cell>
                 </ng-container>
 
@@ -297,7 +300,7 @@ class ConfigurableComponent extends ToggleTest {}
 
                 <ng-container *ngIf="element['type'] === 'footer'" nxComparisonTableRow type="footer">
                     <nx-comparison-table-cell *ngFor="let cell of element['cells']" type="footer">
-                        <button nxComparisonTableSelectButton type="button"></button>
+                        <button nxComparisonTableSelectButton type="button">Click</button>
                         {{ cell }}
                     </nx-comparison-table-cell>
                 </ng-container>

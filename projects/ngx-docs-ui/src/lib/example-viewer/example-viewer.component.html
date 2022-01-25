@@ -10,7 +10,7 @@
                 {{ copyButtonText }}
             </button>
             <button nxButton="small secondary" class="nxv-example-viewer__show-code-button" (click)="toggleSourceView()">
-                {{ showSourceCode == true ? 'hide' : 'show code' }}
+                {{ showSourceCode ? 'hide' : 'show code' }}
             </button>
             <nx-link>
                 <a

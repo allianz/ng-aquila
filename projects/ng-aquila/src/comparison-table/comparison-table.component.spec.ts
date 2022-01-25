@@ -766,15 +766,15 @@ class SelectableIndexComponent extends TableTest {
         <nx-comparison-table>
             <ng-container nxComparisonTableRow type="header">
                 <nx-comparison-table-cell type="header">
-                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
+                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button">Click</button>
                     Product 1
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header" [disabledColumn]="disabledColumn1">
-                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
+                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button">Click</button>
                     Product 2 with a very long name</nx-comparison-table-cell
                 >
                 <nx-comparison-table-cell type="header" [disabledColumn]="disabledColumn2">
-                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button"></button>
+                    <button nxComparisonTableSelectButton unselectedLabel="Select" selectedLabel="Selected" type="button">Click</button>
                     Product 3</nx-comparison-table-cell
                 >
             </ng-container>

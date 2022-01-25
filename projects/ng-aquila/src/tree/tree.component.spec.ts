@@ -545,13 +545,13 @@ class NxTreeAppWithToggle {
     `,
 })
 class WhenNodeNxTreeApp {
-    isSpecial = (_: number, node: TestData) => node.isSpecial;
-
     treeControl = new NxFlatTreeControl();
     dataSource = new NxTreeFlatDataSource(this.treeControl);
     underlyingDataSource = new FakeDataSource();
 
     @ViewChild(NxTreeComponent) tree!: NxTreeComponent<TestData>;
+
+    isSpecial = (_: number, node: TestData) => node.isSpecial;
 
     constructor() {
         this.underlyingDataSource.connect().subscribe(data => {

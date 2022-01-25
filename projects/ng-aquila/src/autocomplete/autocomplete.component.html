@@ -8,7 +8,7 @@
         #panel
     >
         <ng-container *ngIf="hasItems">
-            <nx-autocomplete-option *ngFor="let item of $any(items)" [value]="item">
+            <nx-autocomplete-option *ngFor="let item of items" [value]="item">
                 {{ item }}
             </nx-autocomplete-option>
         </ng-container>

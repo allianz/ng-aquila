@@ -25,7 +25,7 @@ const readFileStream = pipe(
         filename => readFile$(filename, 'utf8'),
         // return not only the new content, keep the filename
         (filename: string, content: any) => {
-            return <MarkdownFile>{ filename, content, rawData: content, yaml: {} };
+            return { filename, content, rawData: content, yaml: {} } as MarkdownFile;
         },
     ),
 );

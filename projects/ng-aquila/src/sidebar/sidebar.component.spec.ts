@@ -426,7 +426,7 @@ class ResizeableSidebar extends SidebarTest {}
         <nx-sidebar minWidth="140" resizeable
             >Hello sidebar
             <nx-sidebar-footer>
-                <button nxSidebarToggle></button>
+                <button nxSidebarToggle>Toggle</button>
             </nx-sidebar-footer>
         </nx-sidebar>
     `,

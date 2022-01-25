@@ -812,7 +812,7 @@ class PopoverWithinRTLContainer extends PopoverTest {
 }
 
 @Component({
-    template: `<button [nxPopoverTriggerFor]="popover"></button> <nx-popover #popover></nx-popover>`,
+    template: `<button [nxPopoverTriggerFor]="popover">Click</button><nx-popover #popover></nx-popover>`,
     providers: [
         {
             provide: NxPopoverIntl,

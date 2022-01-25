@@ -1,23 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import {
-    ApplicationRef,
-    Component,
-    ComponentFactoryResolver,
-    ElementRef,
-    EventEmitter,
-    Injector,
-    Input,
-    OnInit,
-    Output,
-    ViewContainerRef,
-} from '@angular/core';
+import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, Output, ViewContainerRef } from '@angular/core';
 
 @Component({
     selector: 'nxv-doc-viewer',
     template: 'Loading document...',
     styleUrls: ['./doc-viewer.component.css'],
 })
-export class DocViewerComponent implements OnInit {
+export class DocViewerComponent {
     private _loadedContent: any;
     @Output() contentLoaded = new EventEmitter<any>();
 
@@ -29,8 +18,6 @@ export class DocViewerComponent implements OnInit {
         private _viewContainerRef: ViewContainerRef,
         private _injector: Injector,
     ) {}
-
-    ngOnInit() {}
 
     private _fetchDocument(url: string) {
         const httpRequest$ = this._http.get(url, { responseType: 'text' });

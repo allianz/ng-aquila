@@ -78,8 +78,8 @@ export class Categorizer implements Processor {
      * will be normalized, so that they can be easily used inside of dgeni templates.
      */
     private decorateMethodDoc(methodDoc: CategorizedMethodMemberDoc) {
-        normalizeMethodParameters(<any>methodDoc);
-        decorateDeprecatedDoc(<any>methodDoc);
+        normalizeMethodParameters(methodDoc as any);
+        decorateDeprecatedDoc(methodDoc as any);
 
         // Mark methods with a `void` return type so we can omit show the return type in the docs.
         methodDoc.showReturns = methodDoc.type ? methodDoc.type !== 'void' : false;

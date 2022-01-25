@@ -310,7 +310,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
             </nx-checkbox-group>
             <p>Form value: {{ myFormGroup.value | json }}</p>
             <p>Form status: {{ myFormGroup.status | json }}</p>
-            <button nxButton="primary small" id="submit-button" type="submit"></button>
+            <button nxButton="primary small" id="submit-button" type="submit">Click</button>
         </form>
     `,
 })

@@ -11,12 +11,11 @@
     tabindex="0"
     aria-haspopup="listbox"
     [attr.aria-controls]="_comboboxId"
-    (blur)="_onTriggerBlur()"
+    (blur)="_onTriggerBlur(); _inputFocused = false"
     [attr.aria-expanded]="_isOpen"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
     [id]="id"
     (focus)="_inputFocused = true"
-    (blur)="_inputFocused = false"
     (keydown)="_onKeydown($event)"
 >
     <span class="value-text">{{ _getValueText() }}</span>

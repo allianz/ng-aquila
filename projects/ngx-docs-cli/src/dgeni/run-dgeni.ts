@@ -17,7 +17,7 @@ export const build = ({ source, dest }) => {
         // Create new instance in here to prevent a memory leak
         const dgeni = new Dgeni([apiDocsPackage]);
         console.log(chalk.green('Generating API docs'));
-        return await dgeni.generate();
+        return dgeni.generate();
     }).pipe(
         // travers received documents to populate a list of generated api files
         // so we can determine if a module has an api table available

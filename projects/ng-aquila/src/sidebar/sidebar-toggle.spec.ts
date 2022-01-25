@@ -45,7 +45,7 @@ describe('NxSidebarToggleButton', () => {
     template: `
         <nx-sidebar>
             <nx-sidebar-footer>
-                <button nxSidebarToggle></button>
+                <button nxSidebarToggle>Toggle</button>
             </nx-sidebar-footer>
         </nx-sidebar>
     `,

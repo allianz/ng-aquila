@@ -12,6 +12,7 @@
                 "eslint:recommended",
                 "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/base",
+                "plugin:@angular-eslint/recommended--extra",
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "plugin:regexp/recommended",
                 "prettier"
@@ -73,6 +74,7 @@
                 "object-shorthand": ["error", "always", { "avoidQuotes": true }],
                 "operator-assignment": "error",
                 "prefer-arrow-callback": ["error", { "allowUnboundThis": false }],
+                "prefer-const": ["error", { "destructuring": "all" }], // recommended override: loosen destructuring sensitivity to avoid workarounds
                 "prefer-exponentiation-operator": "error",
                 "prefer-numeric-literals": "error",
                 "prefer-object-spread": "error",
@@ -142,14 +144,40 @@
                 "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": ["warn", { "args": "none", "varsIgnorePattern": "^_+$" }], // recommended override: provide special options
                 "no-return-await": "off",
-                "@typescript-eslint/return-await": "error"
+                "@typescript-eslint/return-await": "error",
+
+                // ==== @angular-eslint: typescript ====
+
+                "@angular-eslint/contextual-lifecycle": "error",
+                "@angular-eslint/no-conflicting-lifecycle": "warn", // TODO resolve 2 occurrences and enable as error
+                "@angular-eslint/no-empty-lifecycle-method": "warn",
+                "@angular-eslint/no-output-native": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3464
+                "@angular-eslint/no-output-on-prefix": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
+                "@angular-eslint/use-lifecycle-interface": "warn",
+                "@angular-eslint/use-pipe-transform-interface": "error"
             }
         },
         {
             "files": ["*.html"],
-            "extends": ["plugin:@angular-eslint/template/base"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {
-                // @angular-eslint/template rules go here
+                // ==== @angular-eslint: template ====
+
+                "@angular-eslint/template/accessibility-alt-text": "warn",
+                "@angular-eslint/template/accessibility-elements-content": "warn",
+                "@angular-eslint/template/accessibility-label-for": "warn",
+                "@angular-eslint/template/accessibility-label-has-associated-control": "warn",
+                "@angular-eslint/template/accessibility-table-scope": "off", // TODO resolve 1 occurrence and enable as error
+                "@angular-eslint/template/accessibility-valid-aria": "warn",
+                "@angular-eslint/template/click-events-have-key-events": "off", // TODO resolve and enable as error
+                "@angular-eslint/template/eqeqeq": ["error", { "allowNullOrUndefined": true }],
+                "@angular-eslint/template/mouse-events-have-key-events": "error",
+                "@angular-eslint/template/no-any": "warn",
+                "@angular-eslint/template/no-autofocus": "error",
+                "@angular-eslint/template/no-distracting-elements": "error",
+                "@angular-eslint/template/no-duplicate-attributes": "warn", // TODO resolve 1 issue and set as error (timefield default required validator)
+                "@angular-eslint/template/no-positive-tabindex": "warn",
+                "@angular-eslint/template/use-track-by-function": "off" // TODO maybe later?
             }
         }
     ]

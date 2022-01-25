@@ -16,11 +16,11 @@
             class="nx-tab-header__item"
             [id]="_getTabLabelId(i)"
             [attr.aria-controls]="_getTabContentId(i)"
-            [attr.aria-selected]="selectedIndex == i"
+            [attr.aria-selected]="selectedIndex === i"
             [attr.tabindex]="getTabIndex(tab, i)"
             [disabled]="tab.disabled"
             [class.nx-tab-header__item--disabled]="tab.disabled"
-            [class.nx-tab-header__item--active]="selectedIndex == i"
+            [class.nx-tab-header__item--active]="selectedIndex === i"
         >
             <div class="nx-tab-label__content">
                 <nx-tab-header-outlet *ngIf="tab.templateLabel" [content]="tab.headerViewRef"></nx-tab-header-outlet>
@@ -34,12 +34,12 @@
             *ngFor="let tab of tabs; let i = index"
             [id]="_getTabContentId(i)"
             role="tabpanel"
-            [attr.tabindex]="(selectedIndex == i) ? 0 : -1"
+            [attr.tabindex]="(selectedIndex === i) ? 0 : -1"
             class="nx-tab__body"
             [attr.aria-labelledby]="_getTabContentId(i)"
-            [class.nx-tab__body--active]="selectedIndex == i"
+            [class.nx-tab__body--active]="selectedIndex === i"
             [tab]="tab"
-            [active]="selectedIndex == i"
+            [active]="selectedIndex === i"
         ></nx-tab-body>
     </div>
 </ng-container>

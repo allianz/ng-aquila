@@ -320,7 +320,7 @@ class CheckboxNegative extends CheckboxTest {}
     template: `
         <form [formGroup]="testForm">
             <nx-checkbox formControlName="checkbox"> Hello NX </nx-checkbox>
-            <button nxButton="primary small" type="submit" id="submit-button"></button>
+            <button nxButton="primary small" type="submit" id="submit-button">Click</button>
         </form>
     `,
 })

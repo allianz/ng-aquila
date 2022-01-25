@@ -4,7 +4,9 @@
     "overrides": [
         {
             "files": ["*.ts"],
-            "rules": {}
+            "rules": {
+                "@typescript-eslint/prefer-includes": "off" // not supported by tsconfig target of 'es5'
+            }
         }
     ]
 }

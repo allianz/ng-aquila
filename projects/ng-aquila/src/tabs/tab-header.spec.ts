@@ -183,7 +183,7 @@ describe('NxTabHeaderComponent', () => {
                 *ngFor="let tab of tabs; let i = index"
                 (click)="selectedIndex = i"
                 class="nx-tab-header__item"
-                [class.nx-tab-header__item--active]="selectedIndex == i"
+                [class.nx-tab-header__item--active]="selectedIndex === i"
             >
                 {{ tab.label }}
             </button>
@@ -207,7 +207,7 @@ class BasicHeader extends TabHeaderTest {
                 *ngFor="let tab of tabs; let i = index"
                 (click)="selectedIndex = i"
                 class="nx-tab-header__item"
-                [class.nx-tab-header__item--active]="selectedIndex == i"
+                [class.nx-tab-header__item--active]="selectedIndex === i"
             >
                 {{ tab.label }}
             </button>

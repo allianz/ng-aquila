@@ -11,7 +11,7 @@ import { CategorizedClassDoc, DeprecationDoc, HasDecoratorsDoc } from './dgeni-d
 const SELECTOR_BLACKLIST = new Set(['[portal]', '[portalHost]', 'textarea[mat-autosize]', '[overlay-origin]', '[connected-overlay]']);
 
 export function isMethod(doc: MemberDoc) {
-    return doc.hasOwnProperty('parameters') && !doc.isGetAccessor && !doc.isSetAccessor;
+    return {}.hasOwnProperty.call(doc, 'parameters') && !doc.isGetAccessor && !doc.isSetAccessor;
 }
 
 export function isGenericTypeParameter(doc: MemberDoc) {

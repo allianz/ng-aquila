@@ -88,21 +88,12 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     }
     _datepicker!: NxDatepickerComponent<D>;
 
-    private registerDatepicker(value: NxDatepickerComponent<D>) {
-        if (value) {
-            this._datepicker = value;
-            this._datepicker.registerInput(this);
-        }
-    }
-
     /** Function that can be used to filter out dates within the datepicker and invalidate values in the datefield. */
     @Input('nxDatefieldFilter')
     set datefieldFilter(value: (date: D | null) => boolean) {
         this._dateFilter = value;
         this._validatorOnChange();
     }
-
-    _dateFilter!: (date: D | null) => boolean;
 
     /** Provide or read the current date. It's type <D> depends on the chosen date implementation */
     @Input()
@@ -236,15 +227,17 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     /** Emits when the readonly state has changed. */
     _readonlyChange = new EventEmitter<boolean>();
 
+    private _datepickerSubscription = Subscription.EMPTY;
+
+    private _localeSubscription = Subscription.EMPTY;
+
+    _dateFilter!: (date: D | null) => boolean;
+
     _onTouched = () => {};
 
     private _cvaOnChange: (value: any) => void = () => {};
 
     private _validatorOnChange = () => {};
-
-    private _datepickerSubscription = Subscription.EMPTY;
-
-    private _localeSubscription = Subscription.EMPTY;
 
     constructor(
         private _elementRef: ElementRef,
@@ -391,5 +384,12 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
      */
     private _getValidDateOrNull(obj: any): D | null {
         return this._dateAdapter.isDateInstance(obj) && this._dateAdapter.isValid(obj) ? obj : null;
+    }
+
+    private registerDatepicker(value: NxDatepickerComponent<D>) {
+        if (value) {
+            this._datepicker = value;
+            this._datepicker.registerInput(this);
+        }
     }
 }
