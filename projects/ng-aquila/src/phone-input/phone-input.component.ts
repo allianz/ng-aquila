@@ -316,7 +316,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     private _trimInputValue(value: string) {
-        return value.replace(/[()\-/\s]/g, '');
+        return value.replace(/[\s()\-/]/g, '');
     }
 
     private _removeLeadingZero(value: string) {

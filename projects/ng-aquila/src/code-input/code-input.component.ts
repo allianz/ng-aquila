@@ -281,7 +281,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _formatNumberInput(copiedText: string) {
         let formattedInput = '';
         for (let i = 0; i < copiedText.length; i++) {
-            if (copiedText[i].match(/[0-9]{1}$/)) {
+            if (copiedText[i].match(/\d$/)) {
                 formattedInput += copiedText[i];
             }
         }

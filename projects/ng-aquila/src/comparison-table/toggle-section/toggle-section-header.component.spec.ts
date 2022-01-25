@@ -52,9 +52,9 @@ describe('ToggleSectionHeaderComponent', () => {
 
         it('should set ids correctly', () => {
             createTestComponent(BasicComponent);
-            expect(headerInstances.toArray()[0].id).toMatch(/^nx-comparison-table-toggle-section-header-[0-9]+$/);
+            expect(headerInstances.toArray()[0].id).toMatch(/^nx-comparison-table-toggle-section-header-\d+$/);
             const wrapper = headerElements[0].nativeElement.querySelector('.nx-comparison-table-toggle-section__header-wrapper');
-            expect(wrapper.id).toMatch(/^nx-comparison-table-toggle-section-header-[0-9]+$/);
+            expect(wrapper.id).toMatch(/^nx-comparison-table-toggle-section-header-\d+$/);
         });
 
         it('should set id on input change', () => {
@@ -109,7 +109,7 @@ describe('ToggleSectionHeaderComponent', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
             mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
-            expect(mobileHeaderElements[0].nativeElement.id).toMatch(/^nx-comparison-table-toggle-section-header-[0-9]+$/);
+            expect(mobileHeaderElements[0].nativeElement.id).toMatch(/^nx-comparison-table-toggle-section-header-\d+$/);
         }));
 
         it('should not call toggle() on mobile', fakeAsync(() => {

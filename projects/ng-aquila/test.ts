@@ -24,7 +24,7 @@ getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDyn
     teardown: { destroyAfterEach: false },
 });
 // Then we find all the tests.
-const context = require.context('./src/', true, /\.\/(?!schematics).*\/.*\.spec\.ts$/);
+const context = require.context('./src/', true, /\.\/(?!schematics)[^\n\r/\u2028\u2029]*\/.*\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
 

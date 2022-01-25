@@ -28,7 +28,7 @@ const SIZE_MAPPING = {
 const DEFAULT_CLASSES = ['nx-stepper'];
 const INPUT_CLASSES = ['nx-stepper__input'];
 
-const ALLOWED_CHARACTERS = new RegExp(/^-?[0-9]\d*(\.\d+)?$/g);
+const ALLOWED_CHARACTERS = new RegExp(/^-?\d+(\.\d+)?$/g);
 const CUSTOM_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NxNumberStepperComponent),

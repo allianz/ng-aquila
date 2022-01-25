@@ -296,9 +296,9 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     private _isStringAllowed(value: string, maskedValue: MASK_TYPE) {
         if (
-            (maskedValue === '0' && /^[0-9]{1}$/.test(value)) ||
-            (maskedValue === 'A' && /^[a-zA-Z0-9]{1}$/.test(value)) ||
-            (maskedValue === 'S' && /^[a-zA-Z]{1}$/.test(value))
+            (maskedValue === '0' && /^\d$/.test(value)) ||
+            (maskedValue === 'A' && /^[\dA-Za-z]$/.test(value)) ||
+            (maskedValue === 'S' && /^[A-Za-z]$/.test(value))
         ) {
             return true;
         }

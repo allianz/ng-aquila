@@ -6,8 +6,8 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorF
  */
 export type NxLicencePlateType = 'de_standard' | 'de_season' | 'de_special' | 'other' | 'euro';
 
-const DE_SPECIAL_PATTERN = /^[a-zäöüA-ZÄÖÜ0-9]{1,3}[- ]{0,1}[0-9a-zA-Z]{1,5}[- ]{0,1}[0-9a-zA-Z]{1,5}$/;
-const DE_STANDARD_PATTERN = /^[a-zäöüA-ZÄÖÜ]{1,3}-[a-zA-Z]{1,2} [0-9]{1,4}[ehEH]{0,1}$/;
+const DE_SPECIAL_PATTERN = /^[\dA-Za-zÄÖÜäöü]{1,3}[ -]?[\dA-Za-z]{1,5}[ -]?[\dA-Za-z]{1,5}$/;
+const DE_STANDARD_PATTERN = /^[A-Za-zÄÖÜäöü]{1,3}-[A-Za-z]{1,2} \d{1,4}[EHeh]?$/;
 const OTHER_PATTERN = /^.+$/;
 
 const LICENCE_PLATE_PATTERNS: { [key in NxLicencePlateType]: RegExp } = {

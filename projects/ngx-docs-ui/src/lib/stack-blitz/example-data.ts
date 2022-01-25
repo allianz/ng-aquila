@@ -23,7 +23,7 @@ export class ExampleData {
             return;
         }
 
-        const exampleName = example.replace(/(?:^\w|\b\w)/g, letter => letter.toUpperCase());
+        const exampleName = example.replace(/^\w|\b\w/g, letter => letter.toUpperCase());
         // Capitalize the first letter of each word in a string
         // For example, button-small will be replaced as
         // ButtonSmall
@@ -35,7 +35,7 @@ export class ExampleData {
         this.exampleFiles = [`${example}-example.html`, `${example}-example.ts`, `${example}-example.css`];
         this.selectorName = `${example}-example`;
         this.indexFilename = `${example}-example.html`;
-        this.description = title || exampleName.replace(/[-]+/g, ' ') + ' Example';
+        this.description = title || exampleName.replace(/-+/g, ' ') + ' Example';
         this.componentNames = [`${componentName}ExampleComponent`];
     }
 }

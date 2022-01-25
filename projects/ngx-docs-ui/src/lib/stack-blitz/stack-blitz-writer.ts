@@ -211,7 +211,7 @@ export class StackBlitzWriter {
     }
 
     _replaceImagePaths(fileContents: string) {
-        const regex = /(["'])((?:docs-|)assets\/(?:images|logos)\/.*?)(['"])/gm;
+        const regex = /(["'])((?:docs-)?assets\/(?:images|logos)\/.*?)(["'])/g;
         return fileContents.replace(regex, (_, prefix, url, suffix) => `${prefix}${ASSETS_BASE_PATH}${url}${suffix}`);
     }
 
@@ -248,26 +248,26 @@ export class StackBlitzWriter {
             // For example, <aquila-docs-example></aquila-docs-example> will be replaced as
             // <button-example></button-example>
             fileContent = fileContent.replace(/aquila-docs-example/g, data.selectorName);
-            fileContent = fileContent.replace(/{{version}}/g, aquilaVersion);
+            fileContent = fileContent.replace(/\{\{version\}\}/g, aquilaVersion);
         } else if (fileName === 'src/main.ts') {
             const joinedComponentNames = data.componentNames.join(', ');
             // Replace the component name in `main.ts`.
             // Replace `import { AquilaDocsExampleComponent } from 'aquila-docs-example'`
             // will be replaced as `import { ButtonExampleComponent } from './button-example'`
-            fileContent = fileContent.replace(/{ AquilaDocsExample }/g, `{ ${joinedComponentNames} }`);
+            fileContent = fileContent.replace(/\{ AquilaDocsExample \}/g, `{ ${joinedComponentNames} }`);
 
             // Replace `declarations: [AquilaDocsExample]`
             // will be replaced as `declarations: [ButtonExampleComponent]`
-            fileContent = fileContent.replace(/declarations: \[AquilaDocsExample]/g, `declarations: [${joinedComponentNames}]`);
+            fileContent = fileContent.replace(/declarations: \[AquilaDocsExample\]/g, `declarations: [${joinedComponentNames}]`);
 
             // Replace `entryComponents: [AquilaDocsExample]`
             // will be replaced as `entryComponents: [ButtonExampleComponent]`
-            fileContent = fileContent.replace(/entryComponents: \[AquilaDocsExample]/g, `entryComponents: [${joinedComponentNames}]`);
+            fileContent = fileContent.replace(/entryComponents: \[AquilaDocsExample\]/g, `entryComponents: [${joinedComponentNames}]`);
 
             // Replace `bootstrap: [AquilaDocsExample]`
             // will be replaced as `bootstrap: [ButtonExampleComponent]`
             // This assumes the first component listed in the main component
-            fileContent = fileContent.replace(/bootstrap: \[AquilaDocsExample]/g, `bootstrap: [${data.componentNames[0]}]`);
+            fileContent = fileContent.replace(/bootstrap: \[AquilaDocsExample\]/g, `bootstrap: [${data.componentNames[0]}]`);
 
             // Replace import ... from `aquila-docs-example`
             // will be replaced as `button-example`

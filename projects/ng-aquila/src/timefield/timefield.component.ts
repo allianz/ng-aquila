@@ -336,7 +336,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     }
 
     private _isValidInput(value: string) {
-        const numExp = new RegExp('^[\\d]{1,2}$');
+        const numExp = /^\d{1,2}$/;
         return numExp.test(value);
     }
 

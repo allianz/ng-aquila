@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 /** Regex used to split a string on its CSS units. */
-const cssUnitPattern = /([A-Za-z%]+)$/;
+const cssUnitPattern = /([%A-Za-z]+)$/;
 
 /**
  * Indent for the children tree dataNodes.

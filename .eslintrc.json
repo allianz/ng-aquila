@@ -13,11 +13,17 @@
                 "plugin:@typescript-eslint/recommended",
                 "plugin:@angular-eslint/base",
                 "plugin:@angular-eslint/template/process-inline-templates",
+                "plugin:regexp/recommended",
                 "prettier"
             ],
             "plugins": ["deprecation"],
             "rules": {
                 "deprecation/deprecation": "warn",
+
+                // ==== regexp ====
+
+                "regexp/no-unused-capturing-group": "off", // TODO check with others
+                "regexp/sort-character-class-elements": "warn",
 
                 // ==== eslint: possible problems ====
 
@@ -70,7 +76,6 @@
                 "prefer-exponentiation-operator": "error",
                 "prefer-numeric-literals": "error",
                 "prefer-object-spread": "error",
-                "prefer-regex-literals": "off", // TODO check with others
                 "radix": "error",
                 "require-unicode-regexp": "off", // TODO check with others
                 "sort-imports": ["off", { "memberSyntaxSortOrder": ["multiple", "all", "single", "none"], "allowSeparatedGroups": true }], // TODO test

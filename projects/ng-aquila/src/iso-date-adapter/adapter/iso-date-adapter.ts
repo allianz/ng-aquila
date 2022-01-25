@@ -14,7 +14,7 @@ dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 
 const ISO_STRING_FORMAT = 'YYYY-MM-DD';
-const ISO_REGEX = /^([0-9]{4})(-?)(1[0-2]|0[1-9])\2(3[01]|0[1-9]|[12][0-9])$/;
+const ISO_REGEX = /^(\d{4})(-?)(1[0-2]|0[1-9])\2(3[01]|0[1-9]|[12]\d)$/;
 
 /** Creates an array and fills it with values. */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
@@ -118,7 +118,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
                 // To get a little closer to the behavior of momentjs, the following code extends
                 // the list of given formats with versions were all the separators were removed
                 const formatsWithoutSeparators = [...normalizedFormats].map(normalizedformat => {
-                    return normalizedformat.replace(/[^\w]/g, '');
+                    return normalizedformat.replace(/\W/g, '');
                 });
                 obj = dayjs(value, [...formatsWithoutSeparators, ...normalizedFormats], this._dayjsLocale, false);
             }
