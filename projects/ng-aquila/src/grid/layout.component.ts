@@ -37,12 +37,13 @@ export class NxLayoutComponent {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value;
-        this.grid = /grid/.test(this._classNames);
-        this.noGutters = /nogutters/.test(this._classNames);
-        this.maxWidth = /maxwidth/.test(this._classNames);
-        this.noPadding = /nopadding/.test(this._classNames);
+
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
+        this.grid = !!this._classNames?.includes('grid');
+        this.noGutters = !!this._classNames?.includes('nogutters');
+        this.maxWidth = !!this._classNames?.includes('maxwidth');
+        this.noPadding = !!this._classNames?.includes('nopadding');
     }
 
     get classNames(): string {

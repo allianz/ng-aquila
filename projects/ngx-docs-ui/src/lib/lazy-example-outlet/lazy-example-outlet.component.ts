@@ -57,5 +57,5 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
 
 function isAllowedDir(dir: string) {
     const dirs = ['rtl', 'ltr', 'auto'];
-    return dirs.indexOf(dir) > -1;
+    return dirs.includes(dir);
 }

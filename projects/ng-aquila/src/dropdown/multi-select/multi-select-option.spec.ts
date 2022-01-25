@@ -49,7 +49,7 @@ export class MultiSelectOptionHarness extends ComponentHarness {
 
     async getId() {
         const host = await this.host();
-        return await host.getAttribute('id');
+        return host.getAttribute('id');
     }
 }
 

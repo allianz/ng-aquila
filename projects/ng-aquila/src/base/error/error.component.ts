@@ -83,11 +83,11 @@ export class NxErrorComponent implements OnDestroy {
         }
     }
     get appearance(): ErrorStyleType {
-        return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'message';
+        return this._appearance || this._defaultOptions?.appearance || 'message';
     }
 
     constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions) {
-        if (this._defaultOptions && this._defaultOptions.changes) {
+        if (this._defaultOptions?.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._cdr.markForCheck();
             });

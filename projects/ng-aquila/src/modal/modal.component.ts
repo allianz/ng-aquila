@@ -113,7 +113,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     @Output('nxClose') closeEvent = new EventEmitter<void>();
 
     private closeSubscription: Subscription = Subscription.EMPTY;
-    private removeEventListener!: Function;
+    private removeEventListener!: () => void;
 
     constructor(
         private modalService: NxModalService,
@@ -129,7 +129,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
             if (this.hideOnEsc) {
                 this.modalService.close();
             }
-        });
+        }) as () => void;
     }
 
     ngAfterViewInit() {

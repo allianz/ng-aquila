@@ -108,7 +108,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     /** Whether the input is disabled. */
     @Input()
     get disabled(): boolean {
-        if (this.ngControl && this.ngControl.disabled !== null) {
+        if (this.ngControl?.disabled != null) {
             return this.ngControl.disabled;
         }
         return this._disabled;
@@ -273,7 +273,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     protected _isBadInput() {
         // The `validity` property won't be present on platform-server.
         const validity = (this._elementRef.nativeElement as HTMLInputElement).validity;
-        return validity && validity.badInput;
+        return validity?.badInput;
     }
 
     /** @docs-private */
@@ -282,7 +282,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
 
     protected _isNeverEmpty() {
-        return NEVER_EMPTY.indexOf(this._type) > -1;
+        return NEVER_EMPTY.includes(this._type);
     }
 
     protected _isTextarea() {
@@ -291,7 +291,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
 
     protected _validateType() {
-        if (INVALID_TYPES.indexOf(this._type) > -1) {
+        if (INVALID_TYPES.includes(this._type)) {
             throw new Error(`Input of type '${this._type}' is not supported`);
         }
     }

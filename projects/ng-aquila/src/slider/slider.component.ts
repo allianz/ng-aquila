@@ -192,13 +192,13 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     @Output('nxValueChange') valueChange: EventEmitter<number> = new EventEmitter<number>();
 
     /** Sets the customization function for the value which is displayed above the slider handle (Default:(value) => value). ). */
-    @Input('nxValueFormatter') valueFormatter: Function = (value: any) => value;
+    @Input('nxValueFormatter') valueFormatter = (value: any) => value;
 
     /** Sets the customization function for the label on the min-side of the slider (Default:(value) => value). */
-    @Input('nxLabelMinFormatter') labelMinFormatter: Function = (value: any) => value;
+    @Input('nxLabelMinFormatter') labelMinFormatter = (value: any) => value;
 
     /** Sets the customization function for the label on the max-side of the slider (Default:(value) => value). */
-    @Input('nxLabelMaxFormatter') labelMaxFormatter: Function = (value: any) => value;
+    @Input('nxLabelMaxFormatter') labelMaxFormatter = (value: any) => value;
 
     constructor(
         private elementRef: ElementRef,

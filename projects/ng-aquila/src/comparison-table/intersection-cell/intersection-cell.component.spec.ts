@@ -32,10 +32,10 @@ describe('NxComparisonTableIntersectionCell', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        intersectionCellInstances = (testInstance as IntersectionCellTest).intersectionCellInstances;
+        intersectionCellInstances = testInstance.intersectionCellInstances;
         intersectionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__intersection-cell'));
-        descriptionCellInstance = (testInstance as IntersectionCellTest).descriptionCellInstance;
-        toggleSectionInstance = (testInstance as IntersectionCellTest).toggleSectionInstance;
+        descriptionCellInstance = testInstance.descriptionCellInstance;
+        toggleSectionInstance = testInstance.toggleSectionInstance;
     }
 
     beforeEach(

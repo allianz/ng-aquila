@@ -27,7 +27,7 @@ export class NxDynamicTableComponent implements OnInit {
             // For catch keys of data Objects and assing title, key and type string by default to displayedColumns
             this._data.forEach(element => {
                 for (const key in element) {
-                    if (keys.indexOf(key) === -1) {
+                    if (!keys.includes(key)) {
                         keys.push(key);
                         cArray.push({ title: key, key, type: 'string' });
                     }
@@ -81,7 +81,7 @@ export class NxDynamicTableComponent implements OnInit {
     }
 
     /** @docs-private */
-    handleRowClick(row: Object): void {
+    handleRowClick(row: object): void {
         this.nxRowClick.emit(row);
     }
 

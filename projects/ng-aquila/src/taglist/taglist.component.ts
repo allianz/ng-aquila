@@ -152,7 +152,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
 
         // make sure tag is either string or has the configured label prop and is not yet in the list
         if (
-            (typeof tag === 'string' && this.tags.indexOf(tag) === -1) ||
+            (typeof tag === 'string' && !this.tags.includes(tag)) ||
             (tag[this.labelProp] && this.tags.filter(t => t[this.labelProp] === tag[this.labelProp]).length < 1)
         ) {
             this.tags = [...this.tags, tag];

@@ -22,5 +22,5 @@ export class NxFileUploaderItemSize {
 
     /** The label that is shown while uploading the file.*/
     @Input()
-    uploadingLabel!: String;
+    uploadingLabel!: string;
 }

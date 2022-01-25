@@ -109,18 +109,18 @@ export class NxButtonBase implements NxTriggerButton, OnDestroy {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value;
 
-        const [type = null] = this._classNames.match(/primary|secondary|tertiary|cta|emphasis/) || [DEFAULT_TYPE];
+        // TODO kick null safeguards after setter value is properly coerced
+        const [type = null] = this._classNames?.match(/primary|secondary|tertiary|cta|emphasis/) ?? [DEFAULT_TYPE];
         this.type = type as NxButtonType;
 
-        const [size = null] = this._classNames.match(/small-medium|small|medium|large/) || [DEFAULT_SIZE];
+        const [size = null] = this._classNames?.match(/small-medium|small|medium|large/) ?? [DEFAULT_SIZE];
         this.size = size as NxButtonSize;
 
-        this.danger = /danger/.test(this._classNames);
-        this.negative = /negative/.test(this._classNames);
-        this.block = /block/.test(this._classNames);
+        this.danger = !!this._classNames?.includes('danger');
+        this.negative = !!this._classNames?.includes('negative');
+        this.block = !!this._classNames?.includes('block');
 
         this._cdr.markForCheck();
     }

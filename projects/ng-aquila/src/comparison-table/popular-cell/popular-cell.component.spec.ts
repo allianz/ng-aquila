@@ -26,7 +26,7 @@ describe('NxComparisonTablePopularCell', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        popularCellInstance = (testInstance as PopularCellTest).popularCellInstance;
+        popularCellInstance = testInstance.popularCellInstance;
         popularCellElement = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell');
     }
 

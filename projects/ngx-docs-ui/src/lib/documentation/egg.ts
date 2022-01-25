@@ -25,12 +25,12 @@ export class Egg {
     // for now we'll just ignore the shift key to allow capital letters
     ignoredKeys: any[] = [16];
 
-    addCode(keys: any, fn: Function, metadata: any) {
+    addCode(keys: any, fn: () => void, metadata: any) {
         this.eggs.push({ keys: this.__toCharCodes(keys), fn, metadata });
         return this;
     }
 
-    addHook(fn: Function) {
+    addHook(fn: () => void) {
         this.hooks.push(fn);
         return this;
     }
@@ -74,12 +74,12 @@ export class Egg {
             }
 
             // make sure that it's not an ignored key (shift for one)
-            if (this.ignoredKeys.indexOf(keyCode) === -1) {
+            if (!this.ignoredKeys.includes(keyCode)) {
                 this.kps.push(keyCode);
             }
 
             this.eggs.forEach((currentEgg, i) => {
-                const foundEgg = this.kps.toString().indexOf(currentEgg.keys) >= 0;
+                const foundEgg = this.kps.toString().includes(currentEgg.keys);
 
                 if (foundEgg) {
                     // Reset keys; if more keypresses occur while the callback is executing, it could retrigger the match
@@ -132,7 +132,7 @@ export class Egg {
             }
 
             // lookup in named key map
-            if (specialKeys.indexOf(key.toString()) > -1) {
+            if (specialKeys.includes(key.toString())) {
                 // @ts-expect-error
                 return special[key];
             }

@@ -46,14 +46,14 @@ export class NxListComponent {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value;
 
-        const [type = null] = this._classNames.match(/xsmall|small|normal/) || [DEFAULT_TYPE];
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
+        const [type = null] = this._classNames?.match(/xsmall|small|normal/) || [DEFAULT_TYPE];
         this.type = type as any;
 
-        this.negative = !!this._classNames.match(/negative/);
-        this.orderedCircle = !!this._classNames.match(/ordered-circle/);
+        this.negative = !!this._classNames?.match(/negative/);
+        this.orderedCircle = !!this._classNames?.match(/ordered-circle/);
     }
 
     get classNames(): string {

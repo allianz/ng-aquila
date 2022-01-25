@@ -36,9 +36,9 @@ describe('NxComparisonTableCell', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        cellInstances = (testInstance as CellTest).cellInstances;
-        descriptionCellInstance = (testInstance as CellTest).descriptionCellInstance;
-        toggleSectionInstance = (testInstance as CellTest).toggleSectionInstance;
+        cellInstances = testInstance.cellInstances;
+        descriptionCellInstance = testInstance.descriptionCellInstance;
+        toggleSectionInstance = testInstance.toggleSectionInstance;
         cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
     }
 

@@ -128,24 +128,24 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     /** The number of blank cells to put at the beginning for the first row. */
     get _firstRowOffset(): number {
-        return this.rows && this.rows.length && this.rows[0].length ? this.numCols - this.rows[0].length : 0;
+        return this.rows?.length && this.rows[0].length ? this.numCols - this.rows[0].length : 0;
     }
 
     /** The number of blank cells to put at the end of the last filled row. */
     get _lastRowOffset(): number {
-        return this.rows && this.rows.length && this.rows[this.rows.length - 1].length ? this.numCols - this.rows[this.rows.length - 1].length : 0;
+        return this.rows?.length && this.rows[this.rows.length - 1].length ? this.numCols - this.rows[this.rows.length - 1].length : 0;
     }
 
     /** The index of the last row. */
     get _lastRowIndex(): number {
-        return this.rows && this.rows.length ? this.rows.length - 1 : 0;
+        return this.rows?.length ? this.rows.length - 1 : 0;
     }
 
     /**
      * The following full rows to display and fill up the calendar.
      */
     get _followingRows(): NxCalendarCell[][] {
-        if (this.followingItems && this.followingItems.length) {
+        if (this.followingItems?.length) {
             // if first row is not a full row => display them in offset space
             if (this.followingItems[0].length < this.numCols) {
                 return this.followingItems.slice(1, this.followingItems.length);

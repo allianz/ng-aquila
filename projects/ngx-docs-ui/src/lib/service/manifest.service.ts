@@ -30,7 +30,7 @@ function sortByLabel(a: { label: string }, b: { label: string }) {
 @Injectable()
 export class ManifestService {
     protected _manifestChanges = new ReplaySubject<Manifest>(1);
-    available = new ReplaySubject<Boolean>(1);
+    available = new ReplaySubject<boolean>(1);
     protected _current!: Manifest;
 
     constructor(

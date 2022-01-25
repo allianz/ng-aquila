@@ -140,7 +140,7 @@ export class NxOverlayService implements OnDestroy {
      * @returns A promise resolving to a ComponentRef for the attached container.
      */
     private _attachOverlayContainer(cdkOverlay: OverlayRef, config: NxOverlayConfig): NxOverlayContainerComponent {
-        const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+        const userInjector = config?.viewContainerRef?.injector;
         const injector = Injector.create({
             parent: userInjector || this._injector,
             providers: [{ provide: NxOverlayConfig, useValue: config }],

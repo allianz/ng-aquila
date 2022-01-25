@@ -10,14 +10,14 @@ export function isEmptyArray(value: any[]): boolean {
 }
 
 /** add space and return mapClassNames (css) */
-export function addStyles(aux: string, map: {}): string {
+export function addStyles(aux: string, map: object): string {
     return ' ' + mapClassNames(aux, [], map);
 }
 
 /** input='small,medium,large, xlarge, 2xlarge, 3xlarge'
  *  map = MAPPING
  */
-export function addStylesFromDimensions(input: string, map: {}): string {
+export function addStylesFromDimensions(input: string, map: object): string {
     const aux = processSplit(input);
     let output = '';
     if (aux.length >= 1 && aux.length <= 7) {

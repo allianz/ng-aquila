@@ -279,9 +279,9 @@ export class StackBlitzWriter {
     }
 
     _appendCopyright(filename: string, content: string) {
-        if (filename.indexOf('.ts') > -1 || filename.indexOf('.scss') > -1) {
+        if (filename.includes('.ts') || filename.includes('.scss')) {
             content = `${content}\n\n/**  ${COPYRIGHT} */`;
-        } else if (filename.indexOf('.html') > -1) {
+        } else if (filename.includes('.html')) {
             content = `${content}\n\n<!-- ${COPYRIGHT} -->`;
         }
         return content;

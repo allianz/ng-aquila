@@ -14,10 +14,10 @@ class MyIntl extends NxNumberStepperIntl {
 
 @Directive()
 abstract class NumberStepperTest {
-    value: Number = 0;
-    min: Number = 0;
-    max: Number = 2;
-    step: Number = 1;
+    value = 0;
+    min = 0;
+    max = 2;
+    step = 1;
     negative = false;
     leadingZero = true;
     disabled = false;

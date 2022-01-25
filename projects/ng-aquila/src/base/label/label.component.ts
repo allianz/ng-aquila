@@ -76,7 +76,7 @@ export class NxLabelComponent {
     }
 
     get size(): LABEL_SIZE_TYPE {
-        return this._size || (this._defaultOptions && this._defaultOptions.size) || DEFAULT_SIZE;
+        return this._size || this._defaultOptions?.size || DEFAULT_SIZE;
     }
 
     /**

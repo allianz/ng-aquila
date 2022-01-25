@@ -43,9 +43,10 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value;
-        this.danger = /danger/.test(this._classNames);
+
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
+        this.danger = !!this._classNames?.includes('danger');
         this._cdr.markForCheck();
     }
 

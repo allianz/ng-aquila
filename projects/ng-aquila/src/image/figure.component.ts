@@ -41,13 +41,14 @@ export class NxFigureComponent {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value as FigureType; // TODO properly coerce input value
+
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
         const sizeRegex = /^(auto|1by1|1dot8by1|1dot2by1|1by1dot1|2dot6by1)$/;
-        const [size = null] = this._classNames.match(sizeRegex) || [DEFAULT_SIZE];
+        const [size = null] = this._classNames?.match(sizeRegex) || [DEFAULT_SIZE];
         this.size = size as any;
 
-        this.rounded = !!this._classNames.match(/rounded/);
+        this.rounded = !!this._classNames?.match(/rounded/);
     }
 
     get classNames(): FigureType {

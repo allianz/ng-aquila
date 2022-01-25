@@ -90,7 +90,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
     /** @docs-private */
     @HostBinding('attr.dir') get dir() {
-        return (this._dir && this._dir.value) || 'ltr';
+        return this._dir?.value || 'ltr';
     }
 
     ngOnInit() {
@@ -210,17 +210,17 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     _getHeaderCells(): NxComparisonTableCell[] {
-        const row = this.elements.find(element => this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header');
+        const row = this.elements.find(element => this._isRow(element) && element.type === 'header');
         return (row as NxComparisonTableRowDirective).cells.toArray();
     }
 
     _getPopularCell(): NxComparisonTablePopularCell {
-        const row = this.elements.find(element => this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header');
+        const row = this.elements.find(element => this._isRow(element) && element.type === 'header');
         return (row as NxComparisonTableRowDirective).popularCell;
     }
 
     _getFooterCells(): NxComparisonTableCell[] {
-        const row = this.elements.find(element => this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'footer');
+        const row = this.elements.find(element => this._isRow(element) && element.type === 'footer');
 
         return row ? (row as NxComparisonTableRowDirective).cells.toArray() : [];
     }
@@ -242,7 +242,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     _addDisabledColumn(disabledColumn: number): void {
-        if (this._disabledIndexes.indexOf(disabledColumn) === -1) {
+        if (!this._disabledIndexes.includes(disabledColumn)) {
             this._disabledIndexes.push(disabledColumn);
         }
     }
@@ -255,7 +255,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     _getHeaderRow(): NxComparisonTableRowDirective {
-        const headerRow = this.elements.find(element => this._isRow(element) && (element as NxComparisonTableRowDirective).type === 'header');
+        const headerRow = this.elements.find(element => this._isRow(element) && element.type === 'header');
         return headerRow as NxComparisonTableRowDirective;
     }
 

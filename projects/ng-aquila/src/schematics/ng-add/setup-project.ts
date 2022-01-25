@@ -9,10 +9,10 @@ import { Schema } from './schema';
 
 export default function (options: Schema): Rule {
     return async (host: Tree, context: SchematicContext) => {
-        const installTaskId = context.addTask(new NodePackageInstallTask());
+        context.addTask(new NodePackageInstallTask());
         return chain([
-            options && options.type && options.type === 'b2b' ? addExpertModule(options) : noop(),
-            options && options.starter ? addStarterApp(options) : noop(),
+            options?.type === 'b2b' ? addExpertModule(options) : noop(),
+            options?.starter ? addStarterApp(options) : noop(),
             addAposinTheme(options),
             addCdkStyles(options),
             addCdkA11yStyles(options),

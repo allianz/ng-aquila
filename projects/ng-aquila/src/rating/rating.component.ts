@@ -112,7 +112,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** @docs-private */
     @ViewChildren(NxIconComponent, { read: ElementRef }) icons!: QueryList<ElementRef>;
-    private onTouchedCallback: Function = () => {};
+    private onTouchedCallback: () => void = () => {};
     private onChangeCallback: (option: any) => any = (option: any) => {};
 
     constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
@@ -171,7 +171,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         this.onChangeCallback = callback;
     }
 
-    registerOnTouched(callback: Function): void {
+    registerOnTouched(callback: () => void): void {
         this.onTouchedCallback = callback;
     }
 

@@ -373,7 +373,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     private _filterFn = (search: string, itemValue: string) => {
-        return itemValue.toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) >= 0;
+        return itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
     };
 
     /**
@@ -454,7 +454,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     ngAfterContentInit() {
-        this._closedDropdownLabel = (this._customClosedDropdownLabel && this._customClosedDropdownLabel.templateRef) || this._defaultClosedDropdownLabel;
+        this._closedDropdownLabel = this._customClosedDropdownLabel?.templateRef || this._defaultClosedDropdownLabel;
 
         this._selectionModel.changed.pipe(takeUntil(this._destroy)).subscribe(event => {
             event.added.forEach(({ value }) => {
@@ -692,7 +692,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** Opens the panel of the dropdown. */
     openPanel($event: Event) {
-        if (this.disabled || !((this.dropdownItems && this.dropdownItems.length) || (this.options && this.options.length)) || this._panelOpen) {
+        if (this.disabled || !(this.dropdownItems?.length || this.options?.length) || this._panelOpen) {
             return;
         }
 
@@ -919,7 +919,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         // TODO use event.code after removing IE11 support
         const keyCode = event.keyCode;
         // if has filter all events other than the listed ones should be ignored or handled in _onFilter()
-        if (!([DOWN_ARROW, UP_ARROW, HOME, END, ENTER, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB].indexOf(keyCode) >= 0) && this.showFilter) {
+        if (![DOWN_ARROW, UP_ARROW, HOME, END, ENTER, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB].includes(keyCode) && this.showFilter) {
             return;
         }
 

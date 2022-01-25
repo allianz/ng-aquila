@@ -570,7 +570,7 @@ describe('NxMaskDirective', () => {
 
             // try to delete letter
             nativeElement.setSelectionRange(4, 4);
-            nativeElement.dispatchEvent(keydownEvent as KeyboardEvent);
+            nativeElement.dispatchEvent(keydownEvent);
             nativeElement.value = '12:4:56';
             nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();

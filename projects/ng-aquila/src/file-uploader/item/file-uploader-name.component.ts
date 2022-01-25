@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
 export class NxFileUploaderItemName {
     /** The filename.*/
     @Input()
-    name!: String;
+    name!: string;
 }

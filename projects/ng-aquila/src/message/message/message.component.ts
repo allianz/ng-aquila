@@ -66,7 +66,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
         this._updateContext(value);
     }
     get context(): CONTEXT {
-        return this._context as CONTEXT;
+        return this._context;
     }
 
     _closable = false;
@@ -119,7 +119,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     }
 
     get _iconName(): string {
-        const context = this._allowedContexts.indexOf(this._context) >= 0 ? this._context : this._allowedContexts[0];
+        const context = this._allowedContexts.includes(this._context) ? this._context : this._allowedContexts[0];
 
         return ICONS[context];
     }

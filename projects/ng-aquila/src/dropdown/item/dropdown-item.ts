@@ -107,7 +107,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
      * Whether the parent dropdown is in multiselect mode.
      */
     get multiselect(): boolean {
-        return this._dropdown && this._dropdown.isMultiSelect;
+        return this._dropdown?.isMultiSelect;
     }
 
     /** Emits whenever the component is destroyed. */

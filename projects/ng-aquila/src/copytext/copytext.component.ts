@@ -41,10 +41,12 @@ export class NxCopytextComponent {
             return;
         }
         this._classNames = value;
-        const [type = null] = this._classNames.match(/small|medium|normal|large/) || [DEFAULT_TYPE];
+
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
+        const [type = null] = this._classNames?.match(/small|medium|normal|large/) ?? [DEFAULT_TYPE];
         this.type = type as NxCopytextType;
 
-        this.negative = !!this._classNames.match(/negative/);
+        this.negative = !!this._classNames?.match(/negative/);
     }
 
     get classNames(): string {

@@ -39,10 +39,10 @@ export class ExampleLoaderComponent {
             const portalHost = new DomPortalHost(exampleElement, this._componentFactoryResolver, this._appRef, this._injector);
             const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
             const exampleViewer = portalHost.attach(examplePortal);
-            (exampleViewer.instance as ExampleViewerComponent).example = example as string;
+            exampleViewer.instance.example = example as string;
 
             const config = exampleElement.getAttribute('config')?.replace(/'/g, `"`);
-            (exampleViewer.instance as ExampleViewerComponent).config = config ? JSON.parse(config) : {};
+            exampleViewer.instance.config = config ? JSON.parse(config) : {};
         });
     }
 }

@@ -153,7 +153,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
     /** Stream of autocomplete option selections. */
     readonly optionSelections: Observable<NxAutocompleteOptionSelected> = defer<Observable<NxAutocompleteOptionSelected>>(() => {
-        if (this.autocomplete && this.autocomplete.options) {
+        if (this.autocomplete?.options) {
             return merge(...this.autocomplete.options.map(option => option.onSelectionChange));
         }
 
@@ -167,7 +167,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
     /** The currently active option, coerced to NxAutocompleteOptionComponent type. */
     get activeOption(): NxAutocompleteOptionComponent | null {
-        if (this.autocomplete && this.autocomplete._keyManager) {
+        if (this.autocomplete?._keyManager) {
             return this.autocomplete._keyManager.activeItem;
         }
 
@@ -284,10 +284,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
             this.autocomplete.items = itemsSubject;
 
-            const valueChanges =
-                this._formField && this._formField._control && this._formField._control.ngControl && this._formField._control.ngControl.valueChanges
-                    ? this._formField._control.ngControl.valueChanges
-                    : this._valueChanges;
+            const valueChanges = this._formField?._control?.ngControl?.valueChanges || this._valueChanges;
 
             this._controlValueChangesSubscription = valueChanges.pipe(debounceTime(this._debounce)).subscribe(input => {
                 if (this._itemsSubscription) {
@@ -332,7 +329,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
         this.autocomplete._isOpen = this._overlayAttached = false;
 
-        if (this._overlayRef && this._overlayRef.hasAttached()) {
+        if (this._overlayRef?.hasAttached()) {
             this._overlayRef.detach();
             this._closingActionsSubscription.unsubscribe();
         }
@@ -368,12 +365,12 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     // Implemented as part of ControlValueAccessor.
-    registerOnChange(fn: (value: any) => {}): void {
+    registerOnChange(fn: (value: any) => void): void {
         this._onChange = fn;
     }
 
     // Implemented as part of ControlValueAccessor.
-    registerOnTouched(fn: () => {}) {
+    registerOnTouched(fn: () => void) {
         this._onTouched = fn;
     }
 
@@ -545,7 +542,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     private _setTriggerValue(value: any): void {
-        const toDisplay = this.autocomplete && this.autocomplete.valueFormatter ? this.autocomplete.valueFormatter(value) : value;
+        const toDisplay = this.autocomplete?.valueFormatter ? this.autocomplete.valueFormatter(value) : value;
 
         // Simply falling back to an empty string if the display value is falsy does not work properly.
         // The display value can also be the number zero and shouldn't fall back to an empty string.
@@ -566,7 +563,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      * stemmed from the user.
      */
     private _setValueAndClose(event: NxAutocompleteOptionSelected | null): void {
-        if (event && event.source) {
+        if (event?.source) {
             this._clearPreviousSelectedOption(event.source);
             this._setTriggerValue(event.source.value);
             this._onChange(event.source.value);

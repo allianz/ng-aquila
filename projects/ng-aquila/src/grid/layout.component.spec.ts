@@ -22,12 +22,12 @@ describe('NxLayoutDirective', () => {
         divNativeElement = fixture.nativeElement.querySelector('div') as HTMLButtonElement;
     }
 
-    function getClassesCreated(component: Type<DirectiveTest>): String {
+    function getClassesCreated(component: Type<DirectiveTest>): string {
         createTestComponent(component);
         return sortedClassNames(divNativeElement);
     }
 
-    function sortedClassNames(element: Element): String {
+    function sortedClassNames(element: Element): string {
         return element.className.split(' ').sort().join(' ');
     }
 

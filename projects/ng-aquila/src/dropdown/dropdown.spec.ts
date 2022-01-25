@@ -135,10 +135,10 @@ describe('NxDropdownComponent', () => {
         let check = true;
 
         testInstance.dropdownItems.forEach((item: { active: any }, itemIndex: number) => {
-            if (highlightedIndexes.indexOf(itemIndex) > -1 && !item.active) {
+            if (highlightedIndexes.includes(itemIndex) && !item.active) {
                 check = false;
             }
-            if (highlightedIndexes.indexOf(itemIndex) === -1 && item.active) {
+            if (!highlightedIndexes.includes(itemIndex) && item.active) {
                 check = false;
             }
         });
@@ -370,7 +370,7 @@ describe('NxDropdownComponent', () => {
                             useValue: {
                                 // Stub out the factory that creates mutation observers for the underlying directive
                                 // to allows us to flush out the callbacks asynchronously.
-                                create: (callback: Function) => {
+                                create: (callback: () => void) => {
                                     mutationCallbacks.push(callback);
 
                                     return {
@@ -1004,7 +1004,7 @@ describe('NxDropdownComponent', () => {
             expect(dropdownItem.getAttribute('tabindex')).toBe('0');
             expect(dropdownItem.getAttribute('aria-disabled')).toBe('false');
 
-            (Array.from(dropdownInstance.dropdownItems)[0] as NxDropdownItemComponent).disabled = true;
+            Array.from(dropdownInstance.dropdownItems)[0].disabled = true;
             fixture.detectChanges();
             expect(dropdownItem.classList.contains('nx-dropdown-item--disabled')).toBeTruthy();
             expect(dropdownItem.getAttribute('tabindex')).toBe('-1');
@@ -1343,7 +1343,7 @@ abstract class DropdownTest {
     };
 
     items: DropdownTestItem[] = [{ value: 'BMW' }, { value: 'Audi' }, { value: 'Volvo' }, { value: 'Mini' }];
-    label: String = '';
+    label = '';
     multiselect = false;
     showFilter = false;
     selected: any = 'BMW';
@@ -1649,7 +1649,7 @@ class PreselectedTestComponent extends DropdownTest {
     preselectedValue = 'dictator';
 }
 
-const mutationCallbacks: Function[] = [];
+const mutationCallbacks: (() => void)[] = [];
 
 @Component({
     template: `<nx-dropdown nxLabel="Deferred" [placeholder]="placeholder">
@@ -1661,7 +1661,7 @@ const mutationCallbacks: Function[] = [];
             useValue: {
                 // Stub out the factory that creates mutation observers for the underlying directive
                 // to allows us to flush out the callbacks asynchronously.
-                create: (callback: Function) => {
+                create: (callback: () => void) => {
                     mutationCallbacks.push(callback);
 
                     return {
@@ -1744,7 +1744,7 @@ class DropdownOnPush extends DropdownTest {}
     </nx-formfield>`,
 })
 class DropdownLazy extends DropdownTest {
-    model: Number | null = null;
+    model: number | null = null;
 
     options = [
         {

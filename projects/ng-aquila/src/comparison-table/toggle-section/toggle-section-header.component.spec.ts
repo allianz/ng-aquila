@@ -28,7 +28,7 @@ describe('ToggleSectionHeaderComponent', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        headerInstances = (testInstance as ToggleSectionTest).headerInstances;
+        headerInstances = testInstance.headerInstances;
         headerElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__toggle-section-header'));
         mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
     }

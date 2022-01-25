@@ -133,7 +133,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      */
     @Input('class')
     set classList(value: string) {
-        if (value && value.length) {
+        if (value?.length) {
             value.split(' ').forEach(className => (this._classList[className.trim()] = true));
             this._elementRef.nativeElement.className = '';
         }
@@ -183,7 +183,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
     /** Panel should hide itself when the option list is empty. */
     _setVisibility() {
-        this.showPanel = !!(this.options && this.options.length);
+        this.showPanel = !!this.options?.length;
         this._classList['nx-autocomplete-visible'] = this.showPanel;
         this._classList['nx-autocomplete-hidden'] = !this.showPanel;
         this._cdr.markForCheck();

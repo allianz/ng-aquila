@@ -95,7 +95,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         }
 
         normalizedFormat = normalizedFormat.map(formatString => {
-            if (Object.keys(availableLocalFormats).indexOf(formatString) !== -1) {
+            if (Object.keys(availableLocalFormats).includes(formatString)) {
                 return availableLocalFormats[formatString];
             }
 

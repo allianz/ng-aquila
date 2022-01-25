@@ -104,7 +104,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      */
     @Input('nxFloatLabel')
     get floatLabel(): FloatLabelType {
-        return this._floatLabel || (this._defaultOptions && this._defaultOptions.nxFloatLabel) || 'auto';
+        return this._floatLabel || this._defaultOptions?.nxFloatLabel || 'auto';
     }
     set floatLabel(value: FloatLabelType) {
         if (value !== this._floatLabel) {
@@ -148,7 +148,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         }
     }
     get appearance(): AppearanceType {
-        return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'auto';
+        return this._appearance || this._defaultOptions?.appearance || 'auto';
     }
 
     get _shouldAlwaysFloat(): boolean {

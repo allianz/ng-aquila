@@ -173,7 +173,7 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
         return value ? new Date(Date.parse(value)) : null;
     }
 
-    format(date: Date, displayFormat: Object): string {
+    format(date: Date, displayFormat: object): string {
         if (!this.isValid(date)) {
             throw Error('NxNativeDateAdapter: Cannot format invalid date.');
         }

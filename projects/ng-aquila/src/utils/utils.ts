@@ -53,7 +53,7 @@ export function getClassNameList(value: string, MAPPING: { [k: string]: string }
         const keys = Object.keys(MAPPING);
 
         mappedClasses = classNames.map(className => {
-            if (keys.indexOf(className) > -1) {
+            if (keys.includes(className)) {
                 return MAPPING[className];
             }
             return className;
@@ -116,6 +116,6 @@ export function clamp(value: number, min = 0, max = 1) {
 @Injectable({ providedIn: 'root' })
 export class ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        return !!(control && control.invalid && (control.touched || (form && form.submitted)));
+        return !!(control?.invalid && (control.touched || form?.submitted));
     }
 }

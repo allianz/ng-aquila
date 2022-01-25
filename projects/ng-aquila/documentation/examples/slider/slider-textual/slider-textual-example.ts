@@ -17,7 +17,7 @@ enum FruitPreferenceType {
     styleUrls: ['./slider-textual-example.css'],
 })
 export class SliderTextualExampleComponent {
-    fruitPreferenceFormatter: Function = (value: FruitPreferenceType) => {
+    fruitPreferenceFormatter = (value: FruitPreferenceType) => {
         switch (value) {
             case FruitPreferenceType.NEVER:
                 return 'I never prefer apples';
@@ -31,6 +31,6 @@ export class SliderTextualExampleComponent {
                 return 'I always prefer apples';
         }
     };
-    minFruitPreferenceFormatter: Function = () => `never`;
-    maxFruitPreferenceFormatter: Function = () => `always`;
+    minFruitPreferenceFormatter = () => `never`;
+    maxFruitPreferenceFormatter = () => `always`;
 }

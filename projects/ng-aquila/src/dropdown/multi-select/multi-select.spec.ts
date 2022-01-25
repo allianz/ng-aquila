@@ -43,7 +43,7 @@ class MultiSelectHarness extends ComponentHarness {
 
     async getValueText() {
         const label = await this.getValue();
-        return await label.text();
+        return label.text();
     }
 
     async setFilter(query: string) {

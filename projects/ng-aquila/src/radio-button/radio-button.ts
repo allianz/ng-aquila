@@ -125,7 +125,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     _radios!: QueryList<NxRadioComponent>;
 
     private _onChange: (value: any) => void = () => {};
-    private _onTouched: Function = () => {};
+    private _onTouched: () => void = () => {};
 
     get name(): string {
         return this._name;
@@ -195,7 +195,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         this._onChange = fn;
     }
 
-    registerOnTouched(fn: Function): void {
+    registerOnTouched(fn: () => void): void {
         this._onTouched = fn;
     }
 
@@ -313,7 +313,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         }
     }
     get name(): string {
-        return this.radioGroup && this.radioGroup.name ? this.radioGroup.name : (this._name as string);
+        return this.radioGroup?.name || (this._name as string);
     }
 
     private _labelSize: LabelSize = 'big';
@@ -399,7 +399,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     /** @docs-private */
     get disabled(): boolean {
-        return this._disabled || (this.radioGroup && this.radioGroup.disabled);
+        return this._disabled || this.radioGroup?.disabled;
     }
 
     /** Whether the radio button should be disabled or not. */
@@ -411,7 +411,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     /** @docs-private */
     get required(): boolean {
-        return this._required || (this.radioGroup && this.radioGroup.required);
+        return this._required || this.radioGroup?.required;
     }
 
     /** Sets if at least a radio button should be selected. */
@@ -458,15 +458,15 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         }
     }
 
-    private onChangeCallback: Function = () => {};
+    private onChangeCallback: (value: any) => void = () => {};
 
-    registerOnChange(onChange: Function): void {
+    registerOnChange(onChange: (value: any) => void): void {
         this.onChangeCallback = onChange;
     }
 
-    private onTouchedCallback: Function = () => {};
+    private onTouchedCallback: () => void = () => {};
 
-    registerOnTouched(onTouched: Function): void {
+    registerOnTouched(onTouched: () => void): void {
         this.onTouchedCallback = onTouched;
     }
 
@@ -504,11 +504,6 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     /** @docs-private */
     _controlInvalid(): boolean {
         const form = this.radioGroup && (this.radioGroup._parentFormGroup || this.radioGroup._parentForm);
-        return !!(
-            this.radioGroup &&
-            this.radioGroup.ngControl &&
-            this.radioGroup.ngControl.invalid &&
-            (this.radioGroup.ngControl.touched || (form && form.submitted))
-        );
+        return !!(this.radioGroup?.ngControl?.invalid && (this.radioGroup.ngControl.touched || form?.submitted));
     }
 }

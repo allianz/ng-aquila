@@ -9,7 +9,7 @@ export class MappedStyles {
     private _classNames: string | undefined;
     private _classNamesSanitized: string | undefined;
 
-    constructor(private mapping: MappingObject, private baseClasses: string[] = [], protected _elementRef: ElementRef, protected _renderer: Renderer2) {
+    constructor(private mapping: MappingObject, protected _elementRef: ElementRef, protected _renderer: Renderer2, private baseClasses: string[] = []) {
         this.classNames = '';
     }
 

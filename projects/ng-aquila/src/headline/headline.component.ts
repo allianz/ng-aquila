@@ -35,13 +35,14 @@ export class NxHeadlineComponent {
         if (this._classNames === value) {
             return;
         }
-
         this._classNames = value;
+
+        // TODO kick null safe-guards after setter value or any calling input values are properly coerced as string
         const typeRegex = /page-bold-caps|page|section|subsection-large|subsection-medium|subsection-small|subsection-xsmall/;
-        const [type = null] = this._classNames.match(typeRegex) || [DEFAULT_TYPE];
+        const [type = null] = this._classNames?.match(typeRegex) || [DEFAULT_TYPE];
         this.type = type as any;
 
-        this.negative = !!this._classNames.match(/negative/);
+        this.negative = !!this._classNames?.match(/negative/);
     }
 
     get classNames(): string {

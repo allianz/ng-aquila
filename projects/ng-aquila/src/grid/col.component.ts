@@ -64,9 +64,7 @@ export class NxColComponent implements OnInit {
     private _orderClasses = '';
 
     get _classNames() {
-        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class]
-            .filter(classes => classes && classes.length)
-            .join(' ');
+        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
     }
 
     /**
@@ -122,14 +120,14 @@ export class NxColComponent implements OnInit {
         }
     }
 
-    private _mapTiers(input: string, defaults?: any[], mapping?: {}, exclude?: string[]): string {
+    private _mapTiers(input: string, defaults?: any[], mapping?: object, exclude?: string[]): string {
         const givenTiers = processSplit(input);
         let mappedClasses: string[] = [];
         if (input && !isEmptyArray(givenTiers) && this.checkNotAllowedValues(givenTiers, exclude!)) {
             switch (givenTiers.length) {
                 case 1:
                     this.validateInput(givenTiers);
-                    mappedClasses = [mapClassNames('', defaults!, mapping) + givenTiers[0]];
+                    mappedClasses = [mapClassNames('', defaults, mapping) + givenTiers[0]];
                     break;
                 case 2:
                     this.validateInput(givenTiers);
@@ -228,7 +226,7 @@ export class NxColComponent implements OnInit {
         if (!excludes) {
             return true;
         }
-        const found = values.find(val => excludes.indexOf(val) > -1);
+        const found = values.find(val => excludes.includes(val));
         if (found) {
             this.generateError(`Exception: NxColDirective. Incorrect parameter. ${found} is not allowed here`);
         }

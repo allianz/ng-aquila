@@ -1,7 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import parseColor from 'parse-color';
-import { ChangeDetectionStrategy } from '@angular/core';
-import { CssSelector } from '@angular/compiler';
 
 @Component({
     selector: 'nxv-css-var-sidebar',
@@ -78,8 +76,8 @@ export class CssVarSidebarComponent {
     filterProperties() {
         this.displayedProperties = this.properties.filter(
             (prop: { name: string; value: string }) =>
-                prop.name.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0 ||
-                prop.value.toLocaleLowerCase().indexOf(this.filterValue.toLocaleLowerCase()) >= 0,
+                prop.name.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()) ||
+                prop.value.toLocaleLowerCase().includes(this.filterValue.toLocaleLowerCase()),
         );
     }
 

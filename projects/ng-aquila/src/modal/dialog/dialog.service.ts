@@ -174,7 +174,7 @@ export class NxDialogService implements OnDestroy {
      * @returns A promise resolving to a ComponentRef for the attached container.
      */
     private _attachModalContainer(overlay: OverlayRef, config: NxModalConfig): NxModalContainer {
-        const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+        const userInjector = config?.viewContainerRef?.injector;
         const injector = Injector.create({
             parent: userInjector || this._injector,
             providers: [{ provide: NxModalConfig, useValue: config }],
@@ -236,7 +236,7 @@ export class NxDialogService implements OnDestroy {
      * @returns The custom injector that can be used inside the modal.
      */
     private _createInjector<T>(config: NxModalConfig, modalRef: NxModalRef<T>, modalContainer: NxModalContainer): Injector {
-        const userInjector = config && config.viewContainerRef && config.viewContainerRef.injector;
+        const userInjector = config?.viewContainerRef?.injector;
 
         // The NxModalContainer is injected in the portal as the NxModalContainer and the dialog's
         // content are created out of the same ViewContainerRef and as such, are siblings for injector

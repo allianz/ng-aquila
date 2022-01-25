@@ -255,7 +255,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     ngOnInit(): void {
-        if (this.ngControl && this.ngControl.control) {
+        if (this.ngControl?.control) {
             // we need to save the control validators.
             this._controlValidators = this.ngControl.control.validator;
         }
@@ -333,7 +333,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     _resetValidators(clear = false) {
-        if (this.ngControl && this.ngControl.control) {
+        if (this.ngControl?.control) {
             if (clear) {
                 this.ngControl.control.clearValidators();
             }
@@ -526,13 +526,13 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     _handleKeydownListRow(event: KeyboardEvent) {
         if (event.keyCode === DOWN_ARROW) {
             const nextFileItemRow = (event.target as HTMLElement).nextSibling as HTMLElement;
-            if (nextFileItemRow && nextFileItemRow.classList && nextFileItemRow.classList.contains('nx-file-uploader--file-row')) {
+            if (nextFileItemRow?.classList?.contains('nx-file-uploader--file-row')) {
                 event.preventDefault();
                 nextFileItemRow.focus();
             }
         } else if (event.keyCode === UP_ARROW) {
             const previousFileItemRow = (event.target as HTMLElement).previousSibling as HTMLElement;
-            if (previousFileItemRow && previousFileItemRow.classList && previousFileItemRow.classList.contains('nx-file-uploader--file-row')) {
+            if (previousFileItemRow?.classList?.contains('nx-file-uploader--file-row')) {
                 event.preventDefault();
                 previousFileItemRow.focus();
             }
@@ -556,7 +556,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** Listens to changes in each file. */
     _subscribeToFileChanges() {
-        if (this.value && this.value.length) {
+        if (this.value?.length) {
             let subscription;
             this.value.map(file => {
                 subscription = file.onChange.subscribe(() => {

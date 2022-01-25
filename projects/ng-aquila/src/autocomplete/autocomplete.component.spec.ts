@@ -42,7 +42,7 @@ describe('NxAutocompleteComponent:', () => {
     }
 
     function getAutocompleteItems(): NodeListOf<HTMLElement> {
-        return getAutocompletePanel().querySelectorAll('.nx-autocomplete-option') as NodeListOf<HTMLElement>;
+        return getAutocompletePanel().querySelectorAll('.nx-autocomplete-option');
     }
 
     beforeEach(
@@ -303,15 +303,15 @@ class AutocompleteComponent {
     autocompleteDisabled = false;
 
     searchData(value: string): string[] {
-        return DATA.filter(item => item.indexOf(value) >= 0);
+        return DATA.filter(item => item.includes(value));
     }
 
     searchComplexData(value: string): any[] {
-        return COMPLEX_DATA.filter(item => item.desc.indexOf(value) >= 0);
+        return COMPLEX_DATA.filter(item => item.desc.includes(value));
     }
 
     searchFunction(value: string): Observable<any[]> {
-        return of(DATA.filter(item => item.indexOf(value) >= 0));
+        return of(DATA.filter(item => item.includes(value)));
     }
 }
 

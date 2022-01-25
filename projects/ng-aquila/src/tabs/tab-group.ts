@@ -145,7 +145,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
         }
     }
     get appearance(): NxTabsAppearance {
-        return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'default';
+        return this._appearance || this._defaultOptions?.appearance || 'default';
     }
 
     /** An event emitted when the selected tab has changed. */
@@ -320,7 +320,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     private _createChangeEvent(index: number): NxTabChangeEvent {
         const event = new NxTabChangeEvent();
         event.index = index;
-        if (this.tabs && this.tabs.length) {
+        if (this.tabs?.length) {
             event.tab = this.tabs.toArray()[index];
         }
         return event;

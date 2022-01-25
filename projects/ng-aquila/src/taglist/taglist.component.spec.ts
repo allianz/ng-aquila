@@ -9,7 +9,7 @@ import { NxTaglistModule } from './taglist.module';
 @Directive()
 abstract class TaglistTest {
     @ViewChild(NxTaglistComponent) taglistInstance!: NxTaglistComponent;
-    tags: (string | Object)[] = ['foo', 'bar'];
+    tags: (string | object)[] = ['foo', 'bar'];
 }
 
 describe('NxTaglistComponent', () => {
@@ -285,7 +285,7 @@ class TaglistObjects extends TaglistTest {
     template: `<nx-taglist [nxTags]="tags" [nxValueFormatter]="myFormatter">empty</nx-taglist>`,
 })
 class TaglistWithFormatter extends TaglistTest {
-    myFormatter: Function = (value: any) => `my ${value}`;
+    myFormatter = (value: any) => `my ${value}`;
 }
 
 @Component({

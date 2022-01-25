@@ -225,9 +225,9 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     private _updateSelectedCheckboxFromValue(initialisation = false): void {
         // prevent reset of class values with empty array during initialisation
         const isValueSet = initialisation ? !!this._value && this._value.length : !!this._value;
-        if (this._checkboxes && this._checkboxes.length && isValueSet) {
+        if (this._checkboxes?.length && isValueSet) {
             this._checkboxes.map(checkbox => {
-                checkbox.checked = this._value!.indexOf(checkbox.value) !== -1;
+                checkbox.checked = this._value!.includes(checkbox.value);
             });
         }
     }
@@ -317,7 +317,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     get name(): string {
-        return (this.checkboxGroup && this.checkboxGroup.name ? this.checkboxGroup.name : this._name) as string;
+        return (this.checkboxGroup?.name || this._name) as string;
     }
 
     /** Whether the checkbox is disabled. */
@@ -331,7 +331,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     get disabled(): boolean {
-        return this.checkboxGroup && this.checkboxGroup.disabled ? this.checkboxGroup.disabled : this._disabled;
+        return this.checkboxGroup?.disabled || this._disabled;
     }
 
     /**
@@ -344,7 +344,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     get labelSize(): NxCheckboxLabelSize {
-        return this.checkboxGroup && this.checkboxGroup.labelSize ? this.checkboxGroup.labelSize : this._labelSize;
+        return this.checkboxGroup?.labelSize || this._labelSize;
     }
 
     /**
@@ -360,7 +360,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     get negative(): boolean {
-        return this.checkboxGroup && this.checkboxGroup.negative ? this.checkboxGroup.negative : this._negative;
+        return this.checkboxGroup?.negative || this._negative;
     }
 
     /** Whether the checkbox is checked. */
@@ -474,7 +474,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         const parent = this._parentFormGroup || this._parentForm;
         let control = null;
 
-        if (this.checkboxGroup && this.checkboxGroup.ngControl) {
+        if (this.checkboxGroup?.ngControl) {
             control = this.checkboxGroup.ngControl;
         } else {
             control = this.ngControl ? (this.ngControl.control as FormControl) : null;

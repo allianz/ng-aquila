@@ -223,7 +223,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
                 }
             });
 
-        if (_defaultOptions && _defaultOptions.position) {
+        if (_defaultOptions?.position) {
             this.position = _defaultOptions.position;
         }
     }
@@ -363,7 +363,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     /** Detaches the currently-attached tooltip. */
     private _detach() {
-        if (this._overlayRef && this._overlayRef.hasAttached()) {
+        if (this._overlayRef?.hasAttached()) {
             this._overlayRef.detach();
         }
 
@@ -527,7 +527,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         }
 
         const inversePosition = this._getInverseTooltipPosition(position);
-        const nextFallbackPosition = remainigPositions.indexOf(inversePosition) > -1 ? inversePosition : possiblePositions[0];
+        const nextFallbackPosition = remainigPositions.includes(inversePosition) ? inversePosition : possiblePositions[0];
         return [...fallbackPositions, ...this._getFallbackPositions(nextFallbackPosition, remainigPositions)];
     }
 

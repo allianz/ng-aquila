@@ -171,7 +171,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
             (correspondingButton as NxRadioToggleButtonComponent).select();
             return;
         }
-        if (RESET_VALUES.indexOf(value) > -1) {
+        if (RESET_VALUES.includes(value)) {
             this.toggleButtons.map((button: NxRadioToggleButtonBaseComponent) => (button as NxRadioToggleButtonComponent).deselect());
         }
     }

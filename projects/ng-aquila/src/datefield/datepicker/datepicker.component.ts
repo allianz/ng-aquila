@@ -209,7 +209,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * The minimum selectable date.
      */
     get minDate(): D | null {
-        return this._datepickerInput && this._datepickerInput.min;
+        return this._datepickerInput?.min;
     }
 
     /**
@@ -217,12 +217,12 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * The maximum selectable date.
      */
     get maxDate(): D | null {
-        return this._datepickerInput && this._datepickerInput.max;
+        return this._datepickerInput?.max;
     }
 
     /** @docs-private */
     get dateFilter(): (date: D | null) => boolean {
-        return this._datepickerInput && this._datepickerInput._dateFilter;
+        return this._datepickerInput?._dateFilter;
     }
 
     /** A reference to the overlay when the calendar is opened as a popup. */
@@ -362,11 +362,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             return;
         }
 
-        if (this._popupRef && this._popupRef.hasAttached()) {
+        if (this._popupRef?.hasAttached()) {
             this._popupRef.detach();
         }
 
-        if (this._calendarPortal && this._calendarPortal.isAttached) {
+        if (this._calendarPortal?.isAttached) {
             this._calendarPortal.detach();
         }
 

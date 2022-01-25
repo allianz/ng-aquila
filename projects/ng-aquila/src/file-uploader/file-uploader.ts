@@ -7,7 +7,7 @@ export interface NxFileUploadConfig {
     /** Sets the url for uploading requests. */
     requestUrl: string;
     /** Sets the options for http upload requests. HttpParams */
-    options?: {};
+    options?: object;
     /** Whether the files should be uploaded separately. Default: false. */
     uploadSeparately?: boolean;
 }
@@ -17,7 +17,7 @@ export class NxFileUploadSuccess {
         /** The files that were successfully uploaded. */
         public files: FileItem[],
         /** The results of the request(s). */
-        public requests: Object[],
+        public requests: object[],
     ) {}
 }
 
@@ -26,7 +26,7 @@ export class NxFileUploadError {
         /** The files that had an error while uploading. */
         public files: FileItem[],
         /** The returned errors of the request(s). */
-        public requests: Object[],
+        public requests: object[],
     ) {}
 }
 

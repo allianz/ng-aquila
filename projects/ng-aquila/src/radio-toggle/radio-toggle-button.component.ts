@@ -55,7 +55,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
         this._cdr.markForCheck();
     }
     get disabled(): boolean {
-        return this._disabled || (this.radioToggle && this.radioToggle.disabled);
+        return this._disabled || this.radioToggle?.disabled;
     }
 
     /** Sets the checked state and notify siblings and the parent group about the change */
@@ -164,6 +164,6 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
 
     /** @docs-private */
     _controlInvalid(): boolean {
-        return !!(this.radioToggle && this.radioToggle.errorState);
+        return !!this.radioToggle?.errorState;
     }
 }

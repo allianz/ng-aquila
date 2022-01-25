@@ -27,7 +27,7 @@ describe('NxColDirective', () => {
 
     function getColumn(index = 0): HTMLElement {
         const column = fixture.debugElement.queryAll(By.directive(NxColComponent))[index];
-        return column && column.nativeElement;
+        return column?.nativeElement;
     }
 
     beforeEach(

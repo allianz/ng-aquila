@@ -9,10 +9,10 @@ export enum Collection {
     MIGRATIONS = 2,
 }
 
-export async function createTestApp(runner: SchematicTestRunner, appOptions = {}, tree?: Tree): Promise<UnitTestTree> {
+export async function createTestApp(runner: SchematicTestRunner, tree?: Tree, appOptions = {}): Promise<UnitTestTree> {
     const workspaceTree = await createWorkspace(runner, tree);
 
-    return createApp(runner, appOptions, workspaceTree);
+    return createApp(runner, workspaceTree, appOptions);
 }
 
 export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree) {
@@ -30,11 +30,11 @@ export async function createWorkspace(runner: SchematicTestRunner, tree?: Tree) 
         .toPromise();
 }
 
-export async function createApp(runner: SchematicTestRunner, options = {}, tree: Tree) {
+export async function createApp(runner: SchematicTestRunner, tree: Tree, options = {}) {
     return runner.runExternalSchematicAsync('@schematics/angular', 'application', { name: 'aquila-testing', ...options }, tree).toPromise();
 }
 
-export async function createTestLibrary(runner: SchematicTestRunner, options = {}, tree?: Tree): Promise<UnitTestTree> {
+export async function createTestLibrary(runner: SchematicTestRunner, tree?: Tree, options = {}): Promise<UnitTestTree> {
     return runner.runExternalSchematicAsync('@schematics/angular', 'library', { name: 'aquila-testing-library' }, tree).toPromise();
 }
 
@@ -113,7 +113,7 @@ export class SchematicTestSetup {
             this.tempFileSystemHost = new TempScopedNodeJsSyncHost();
             this.hostTree = new HostTree(this.tempFileSystemHost);
             // create whole test app
-            this.appTree = await createTestApp(this.runner, { name: 'aquila-testing' }, this.hostTree);
+            this.appTree = await createTestApp(this.runner, this.hostTree, { name: 'aquila-testing' });
             const testAppTsconfigPath = 'projects/aquila-testing/tsconfig.app.json';
 
             // remove comments and parse json

@@ -29,6 +29,6 @@ export class NxIndicatorComponent {
     }
 
     _hasPosition(position: NxIndicatorPosition) {
-        return this._position.indexOf(position) > -1;
+        return this._position.includes(position);
     }
 }

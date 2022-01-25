@@ -93,7 +93,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     }
 
     /** Data to be passed along to any lazily-rendered content. */
-    @Input('nxContextMenuTriggerData') contextMenuData!: Object;
+    @Input('nxContextMenuTriggerData') contextMenuData!: object;
 
     /** Event emitted when the associated context menu is opened. */
     @Output() readonly contextMenuOpened: EventEmitter<void> = new EventEmitter<void>();
@@ -219,7 +219,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
                     takeUntil(contextMenu.lazyContent._attached),
                 )
                 .subscribe({
-                    next: () => contextMenu.lazyContent && contextMenu.lazyContent.detach(),
+                    next: () => contextMenu.lazyContent?.detach(),
                     // No matter whether the content got re-attached, reset the menu.
                     complete: () => this._resetContextMenu(),
                 });

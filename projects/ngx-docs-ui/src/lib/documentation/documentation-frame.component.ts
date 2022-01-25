@@ -1,17 +1,15 @@
-import { Theme } from './theme-switcher/theme-switcher.service';
-import { Component, ViewChild, OnDestroy, AfterViewInit, InjectionToken, Inject, Optional } from '@angular/core';
+import { AfterViewInit, Component, Inject, InjectionToken, OnDestroy, Optional, ViewChild } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import { NX_DOCS_GITHUB_LINK, NX_DOCS_LOGO_PATH } from '../core/tokens';
+import { GithubLinkConfig, LogoPath } from '../core/types';
 import { ManifestService } from '../service/manifest.service';
-import { RabbitHole } from './rabbit-hole.service';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 import { CssVarSidebarComponent } from './css-vars-sandbox/css-var-sidebar-component';
 import { Egg } from './egg';
-import { NX_DOCS_LOGO_PATH, NX_DOCS_GITHUB_LINK } from '../core/tokens';
-import { LogoPath, GithubLinkConfig } from '../core/types';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+import { RabbitHole } from './rabbit-hole.service';
+import { Theme, ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 
 export class NxDocFeatures {
     themeSwitcher = false;

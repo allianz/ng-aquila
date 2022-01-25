@@ -23,8 +23,8 @@ describe('ToggleSectionHeaderComponent', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        toggleSectionInstances = (testInstance as ToggleSectionTest).toggleSectionInstances;
-        rowInstances = (testInstance as ToggleSectionTest).rowInstances;
+        toggleSectionInstances = testInstance.toggleSectionInstances;
+        rowInstances = testInstance.rowInstances;
     }
 
     beforeEach(

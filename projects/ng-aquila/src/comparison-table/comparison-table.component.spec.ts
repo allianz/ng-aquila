@@ -97,11 +97,11 @@ describe('NxComparisonTableComponent', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        tableInstance = (testInstance as TableTest).tableInstance;
+        tableInstance = testInstance.tableInstance;
         tableElement = fixture.debugElement.query(By.css('nx-comparison-table'));
-        cellInstances = (testInstance as TableTest).cellInstances;
+        cellInstances = testInstance.cellInstances;
         cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
-        rowInstances = (testInstance as TableTest).rowInstances;
+        rowInstances = testInstance.rowInstances;
         rowElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__row'));
     }
 

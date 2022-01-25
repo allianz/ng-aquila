@@ -218,7 +218,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     /** @docs-private */
-    getPaginationItemClasses(page: Page): Object {
+    getPaginationItemClasses(page: Page): object {
         const classes = {
             'is-ellipsis': page.label === '...',
             'nx-pagination__item--expanded-view': page.class === 'expanded-view',
@@ -227,7 +227,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     /** @docs-private */
-    getPaginationNumberClasses(page: Page): Object {
+    getPaginationNumberClasses(page: Page): object {
         const classes = {
             'is-active': page.value === this.page,
             'nx-pagination__ellipsis': page.label === '...',

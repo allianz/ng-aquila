@@ -112,7 +112,7 @@ describe('NxCheckboxGroupComponent', () => {
         fixture.detectChanges();
         tick();
         checkboxInstances.toArray().map(checkbox => {
-            if (checkedValues.indexOf(checkbox.value) !== -1) {
+            if (checkedValues.includes(checkbox.value)) {
                 expect(checkbox.checked).toBe(true);
             }
         });
@@ -182,7 +182,7 @@ describe('NxCheckboxGroupComponent', () => {
         fixture.detectChanges();
         tick();
         checkboxInstances.toArray().map(checkbox => {
-            expect(checkbox.checked).toBe(checkedValues.indexOf(checkbox.value) !== -1);
+            expect(checkbox.checked).toBe(checkedValues.includes(checkbox.value));
         });
     }));
 

@@ -271,7 +271,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             return (option as any)[this.selectValue] as T;
         }
 
-        return this.selectValue(option) as T;
+        return this.selectValue(option);
     }
 
     _selectLabel(option: S): string {
@@ -423,7 +423,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         if (!query) {
             this.listItems = this.options.slice();
         } else {
-            this.listItems = this.options.filter(item => this._selectLabel(item).toLowerCase().indexOf(query.toLowerCase()) >= 0);
+            this.listItems = this.options.filter(item => this._selectLabel(item).toLowerCase().includes(query.toLowerCase()));
         }
 
         if (this._isActiveItemFiltered) {

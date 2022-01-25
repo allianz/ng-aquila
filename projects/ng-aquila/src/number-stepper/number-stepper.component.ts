@@ -242,7 +242,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
 
     constructor(private _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, public _intl: NxNumberStepperIntl) {
-        super(SIZE_MAPPING, DEFAULT_CLASSES, _elementRef, _renderer);
+        super(SIZE_MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
         this._intlSubscription = this._intl.changes.subscribe(() => this._cdr.markForCheck());
     }
 
@@ -282,15 +282,15 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         this.value = value;
     }
 
-    private onChangeCallback: Function = () => {};
+    private onChangeCallback: (value: number | null) => void = () => {};
 
-    registerOnChange(onChange: Function): void {
+    registerOnChange(onChange: (value: number | null) => void): void {
         this.onChangeCallback = onChange;
     }
     /** @docs-private */
-    onTouchedCallback: Function = () => {};
+    onTouchedCallback: () => void = () => {};
 
-    registerOnTouched(onTouched: Function): void {
+    registerOnTouched(onTouched: () => void): void {
         this.onTouchedCallback = onTouched;
     }
 

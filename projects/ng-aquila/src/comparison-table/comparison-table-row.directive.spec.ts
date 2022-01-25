@@ -23,8 +23,8 @@ describe('NxComparisonTableRowDirective', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        rowInstances = (testInstance as RowTest).rowInstances;
-        cellInstances = (testInstance as RowTest).cellInstances;
+        rowInstances = testInstance.rowInstances;
+        cellInstances = testInstance.cellInstances;
     }
 
     beforeEach(

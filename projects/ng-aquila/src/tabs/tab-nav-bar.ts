@@ -85,7 +85,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
         }
     }
     get appearance(): NxTabsAppearance {
-        return this._appearance || (this._defaultOptions && this._defaultOptions.appearance) || 'default';
+        return this._appearance || this._defaultOptions?.appearance || 'default';
     }
 
     constructor(
@@ -128,7 +128,7 @@ export class NxTabLinkDirective implements OnDestroy {
     /** Whether the tab link is disabled. Default: false. */
     @Input()
     get disabled(): boolean {
-        return this._tabNavBar && this._tabNavBar.disabled ? this._tabNavBar.disabled : this._disabled;
+        return this._tabNavBar?.disabled || this._disabled;
     }
     set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);

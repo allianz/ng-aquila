@@ -6,7 +6,7 @@ export class TableDataSource extends DataSource<any> {
         super();
     }
     /** @docs-private Connect function called by the table to retrieve one stream containing the data to render. */
-    connect(): Observable<Object[]> {
+    connect(): Observable<object[]> {
         return this._datachange;
     }
     /** @docs-private */

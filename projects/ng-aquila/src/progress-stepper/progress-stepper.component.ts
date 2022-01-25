@@ -59,7 +59,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
 
         // Checks for the validity of a step form that is not submitted or touched,
         // e.g when the user directly clicks the "next" button or directly on the step
-        const customErrorState = !!(control && control.invalid && this.interacted);
+        const customErrorState = !!(control?.invalid && this.interacted);
         return originalErrorState || customErrorState;
     }
 

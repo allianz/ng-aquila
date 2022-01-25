@@ -20,5 +20,5 @@ export class NxFileUploaderItemStatus {
 
     /** The label that is used once the file has been uploaded (used by screen readers).*/
     @Input()
-    uploadedLabel!: String;
+    uploadedLabel!: string;
 }

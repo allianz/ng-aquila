@@ -89,7 +89,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         if (this._useFullRowForExpandableArea !== undefined) {
             return this._useFullRowForExpandableArea;
         }
-        if (this._defaultOptions && this._defaultOptions.useFullRowForExpandableArea !== undefined) {
+        if (this._defaultOptions?.useFullRowForExpandableArea !== undefined) {
             return this._defaultOptions.useFullRowForExpandableArea;
         }
         return false;

@@ -91,7 +91,7 @@ export class NxComparisonTableCell {
     }
 
     _isCellHidden(): boolean {
-        return Array.isArray(this._table._hiddenIndexes) && this._table._hiddenIndexes.indexOf(this.index) !== -1;
+        return Array.isArray(this._table._hiddenIndexes) && this._table._hiddenIndexes.includes(this.index);
     }
 
     _selectCell() {
@@ -99,7 +99,7 @@ export class NxComparisonTableCell {
     }
 
     get _isCellDisabled(): boolean {
-        return this._table._disabledIndexes.indexOf(this.index) !== -1;
+        return this._table._disabledIndexes.includes(this.index);
     }
 
     _getHeaderIds(): string {

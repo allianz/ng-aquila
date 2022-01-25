@@ -17,5 +17,5 @@ export class NxFileUploaderItemDelete {
 
     /** The label that is used for the delete button (used by screen readers). */
     @Input()
-    deleteLabel!: String;
+    deleteLabel!: string;
 }

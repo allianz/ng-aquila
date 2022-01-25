@@ -28,9 +28,9 @@ describe('NxComparisonTableDescriptionCell', () => {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        descriptionCellInstances = (testInstance as DescriptionCellTest).descriptionCellInstances;
+        descriptionCellInstances = testInstance.descriptionCellInstances;
         descriptionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__description-cell'));
-        rowInstances = (testInstance as DescriptionCellTest).rowInstances;
+        rowInstances = testInstance.rowInstances;
     }
 
     beforeEach(

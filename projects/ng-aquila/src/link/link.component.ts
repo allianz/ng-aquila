@@ -50,7 +50,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
     }
 
     constructor(_elementRef: ElementRef, protected _renderer: Renderer2, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {
-        super(MAPPING, DEFAULT_CLASSES, _elementRef, _renderer);
+        super(MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
         this._focusMonitor.monitor(this._elementRef, true);
     }
 

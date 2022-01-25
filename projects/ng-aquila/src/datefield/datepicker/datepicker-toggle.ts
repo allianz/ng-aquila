@@ -90,7 +90,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         if (this._tabindex !== undefined) {
             return this._tabindex;
         }
-        if (this._defaultOptions && this._defaultOptions.toggleIconTabindex !== undefined) {
+        if (this._defaultOptions?.toggleIconTabindex !== undefined) {
             return this._defaultOptions.toggleIconTabindex;
         }
         return 0;
@@ -102,7 +102,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions,
         private _focusMonitor: FocusMonitor,
     ) {
-        if (this._defaultOptions && this._defaultOptions.changes) {
+        if (this._defaultOptions?.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._cdr.markForCheck();
             });
@@ -139,8 +139,8 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
 
     private _watchStateChanges() {
         const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange : observableOf();
-        const inputDisabled = this.datepicker && this.datepicker._datepickerInput ? this.datepicker._datepickerInput._disabledChange : observableOf();
-        const inputReadonly = this.datepicker && this.datepicker._datepickerInput ? this.datepicker._datepickerInput._readonlyChange : observableOf();
+        const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange : observableOf();
+        const inputReadonly = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._readonlyChange : observableOf();
         const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
 
         this._stateChanges.unsubscribe();

@@ -75,7 +75,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     /** Sets the tab to disabled. */
     @Input()
     get disabled(): boolean {
-        return this._tabGroup && this._tabGroup.disabled ? this._tabGroup.disabled : this._disabled;
+        return this._tabGroup?.disabled || this._disabled;
     }
     set disabled(value: BooleanInput) {
         const coercedValue = coerceBooleanProperty(value);

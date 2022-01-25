@@ -80,7 +80,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
     private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
     private _dirChangeSubscription: Subscription;
-    private _removeEventListener!: Function;
+    private _removeEventListener!: () => void;
     /** @docs-private */
     id = 'nx-popover-' + nextId++;
 
@@ -233,7 +233,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             if (this.isOpen) {
                 this.show = false;
             }
-        });
+        }) as () => void;
 
         this.popover.closeButtonClick.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.show = false;
@@ -657,7 +657,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         }
 
         const inverseDirection = this._getInversePopoverDirection(direction);
-        const nextFallbackPosition = remainigDirections.indexOf(inverseDirection) > -1 ? inverseDirection : possibleDirections[0];
+        const nextFallbackPosition = remainigDirections.includes(inverseDirection) ? inverseDirection : possibleDirections[0];
         return [...fallbackPositions, ...this._getFallbackPositions(nextFallbackPosition, remainigDirections)];
     }
 

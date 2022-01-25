@@ -28,7 +28,7 @@ export function isFileTypeValid(file: File, accept: string): boolean {
  */
 export class NxFileUploaderValidators {
     /** The form control validator for the max file size. */
-    static maxFileSize<D>(max: Number | undefined, file: File): ValidatorFn {
+    static maxFileSize<D>(max: number | undefined, file: File): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             return !max || max > file.size
                 ? null
