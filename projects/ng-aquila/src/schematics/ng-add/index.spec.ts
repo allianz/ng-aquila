@@ -1,6 +1,7 @@
-import { workspaces } from '@angular-devkit/core';
 import { getProjectFromWorkspace } from '@angular/cdk/schematics';
+import { workspaces } from '@angular-devkit/core';
 import { getWorkspace } from '@schematics/angular/utility/workspace';
+
 import { Collection, SchematicTestSetup } from '../utils/testing/test-setup';
 
 describe('ng-aquila ng add', () => {

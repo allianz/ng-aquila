@@ -18,6 +18,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, startWith, take } from 'rxjs/operators';
+
 import { NxAccordionDirective } from './accordion';
 import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';

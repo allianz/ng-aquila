@@ -1,4 +1,5 @@
 import { ContentChild, ContentChildren, Directive, Input, QueryList } from '@angular/core';
+
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxTableContentElement } from '../table-content-element.directive';
 import { NxToggleSectionBase } from './toggle-section-base';

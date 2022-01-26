@@ -2,8 +2,9 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';
+
 import { NxLicencePlateModule } from './licence-plate.module';
+import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suffix.component';
 
 @Directive()
 abstract class LicencePlateSeasonSuffixTest {

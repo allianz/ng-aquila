@@ -3,9 +3,10 @@
 import 'core-js/es';
 import 'zone.js';
 import 'zone.js/testing';
+
 import { getTestBed } from '@angular/core/testing';
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ɵDomSharedStylesHost } from '@angular/platform-browser';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import axe from 'axe-core';
 
 declare const require: {

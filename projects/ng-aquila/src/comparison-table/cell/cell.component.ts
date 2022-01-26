@@ -1,8 +1,9 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Component, EventEmitter, Input, Optional, Output, TemplateRef, ViewChild } from '@angular/core';
+
+import { NxComparisonTableRowType } from '../comparison-table.models';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
-import { NxComparisonTableRowType } from '../comparison-table.models';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 
 let nextId = 0;

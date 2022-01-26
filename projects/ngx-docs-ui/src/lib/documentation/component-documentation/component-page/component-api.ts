@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+
 import { ComponentService } from '../../../service/component.service';
 import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-contents';
 

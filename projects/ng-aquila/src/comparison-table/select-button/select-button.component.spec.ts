@@ -1,6 +1,7 @@
 import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableSelectButton } from './select-button.component';
 

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+
 import { NxSmallStageImageBottomDirective } from './directives/bottom-image.directive';
 import { NxSmallStageImageEndDirective } from './directives/end-image.directive';
 import { NxSmallStageHeaderDirective } from './directives/header.directive';

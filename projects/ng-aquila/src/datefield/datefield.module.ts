@@ -3,13 +3,14 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
 import { NX_DATE_LOCALE_PROVIDER } from './adapter/index';
 import { NxDatefieldDirective } from './datefield.directive';
 import { NxCalendarComponent } from './datepicker/calendar';
 import { NxCalendarBodyComponent } from './datepicker/calendar-body';
+import { NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER, NxDatepickerComponent, NxDatepickerContentComponent } from './datepicker/datepicker.component';
 import { NxDatepickerIntl } from './datepicker/datepicker-intl';
 import { NxDatepickerToggleComponent, NxDatepickerToggleIconComponent } from './datepicker/datepicker-toggle';
-import { NxDatepickerComponent, NxDatepickerContentComponent, NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER } from './datepicker/datepicker.component';
 import { NxMonthViewComponent } from './datepicker/month-view';
 import { NxMultiYearViewComponent } from './datepicker/multi-year-view';
 import { NxYearViewComponent } from './datepicker/year-view';

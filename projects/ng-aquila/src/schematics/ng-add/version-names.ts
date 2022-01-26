@@ -1,4 +1,5 @@
 import { Tree } from '@angular-devkit/schematics';
+
 import { addPackageToPackageJson } from './package-config';
 
 export const aquilaVersion = loadPackageVersionGracefully('@aposin/ng-aquila');

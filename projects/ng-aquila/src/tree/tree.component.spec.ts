@@ -2,6 +2,7 @@ import { DOWN_ARROW, END, HOME, LEFT_ARROW, RIGHT_ARROW, UP_ARROW } from '@angul
 import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxFlatTreeControl, NxTreeComponent, NxTreeFlatDataSource, NxTreeModule } from './public-api';
 

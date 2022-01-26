@@ -18,15 +18,16 @@ import {
 } from '@angular/core';
 import { NxViewportService } from '@aposin/ng-aquila/utils';
 import { delay, takeUntil } from 'rxjs/operators';
+
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableBase } from './comparison-table-base';
-import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
+import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 import { NxComparisonTableFlexRow } from './flex-row/flex-row.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';
 import { NxTableContentElement } from './table-content-element.directive';
-import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
 import { NxToggleSectionDirective } from './toggle-section/toggle-section.directive';
+import { NxToggleSectionAnimations } from './toggle-section/toggle-section-animations';
 
 @Component({
     selector: 'nx-comparison-table',

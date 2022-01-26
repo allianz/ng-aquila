@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList,
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxModalComponent } from './modal.component';
 import { NxModalModule } from './modal.module';
 

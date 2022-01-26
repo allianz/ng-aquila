@@ -2,6 +2,7 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { FlatTreeControl, TreeControl } from '@angular/cdk/tree';
 import { BehaviorSubject, merge, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+
 import { NxFlatTreeNode, NxTreeNode } from './tree-node';
 
 /**

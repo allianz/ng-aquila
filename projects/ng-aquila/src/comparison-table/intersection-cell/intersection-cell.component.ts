@@ -1,4 +1,5 @@
 import { Component, Optional, TemplateRef, ViewChild } from '@angular/core';
+
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';

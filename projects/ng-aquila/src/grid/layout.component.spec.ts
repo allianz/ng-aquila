@@ -1,5 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxGridModule } from './grid.module';
 import { NxLayoutComponent } from './layout.component';
 

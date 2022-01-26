@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxTableComponent } from '../table.component';
 import { NxTableModule } from '../table.module';
 import { NxExpandableTableDirective } from './expandable-table.directive';

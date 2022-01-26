@@ -3,6 +3,7 @@ import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/por
 import { Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { defer, Observable, Subject } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+
 import { NxModalConfig } from './modal-config';
 import { NxModalContainer } from './modal-container.component';
 import { NxModalRef } from './modal-ref';

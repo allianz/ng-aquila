@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
+
 import { NxvFeedbackModule } from '../feedback/feedback.module';
 import { NxvDocumentationComponent } from './documentation-page.component';
 import { NxvFooterModule } from './footer/footer.module';

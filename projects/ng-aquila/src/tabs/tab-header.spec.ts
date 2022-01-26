@@ -3,6 +3,7 @@ import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/co
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTabHeaderComponent } from './tab-header';
 import { NxTabsModule } from './tabs.module';

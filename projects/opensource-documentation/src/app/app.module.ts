@@ -11,17 +11,18 @@ import {
     DocVersions,
     GithubLinkConfig,
     LogoPath,
-    NxvDocumentationModule,
-    NXV_MANIFEST_TOKEN,
+    NX_DOC_VERSIONS,
     NX_DOCS_FEATURE_FLAGS,
     NX_DOCS_GITHUB_LINK,
     NX_DOCS_LOGO_PATH,
     NX_DOCS_SELECTABLE_THEMES,
-    NX_DOC_VERSIONS,
+    NXV_MANIFEST_TOKEN,
+    NxvDocumentationModule,
 } from '@aposin/ngx-docs-ui';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { LazyLoadingService } from 'projects/ng-aquila/documentation/generated/lazy-loading.service';
 import MANIFEST from 'projects/ng-aquila/documentation/generated/manifest.json';
+
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';

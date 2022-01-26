@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as ts from 'typescript';
+
 import { GroupedComponentMetadata } from './types';
 import fs = require('fs-extra');
 

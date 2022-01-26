@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { NxCopytextComponent } from './copytext.component';
 
 @NgModule({

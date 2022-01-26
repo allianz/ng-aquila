@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { MAX_WIDTH, MIN_WIDTH, NxSidebarComponent, RESIZE_STEP_SIZE } from './sidebar.component';
 import { NxSidebarModule } from './sidebar.module';
 

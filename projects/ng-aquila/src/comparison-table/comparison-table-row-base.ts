@@ -1,4 +1,5 @@
 import { Directive, QueryList } from '@angular/core';
+
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableRowType } from './comparison-table.models';
 import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';

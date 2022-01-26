@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
+
 import { DocViewerModule } from '../../../doc-viewer/doc-viewer.module';
 import { ExampleLoaderModule } from '../../../example-loader/example-loader.module';
 import { NxvFeedbackModule } from '../../feedback/feedback.module';

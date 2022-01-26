@@ -1,6 +1,7 @@
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+
 import { NxModalService } from './modal.service';
 
 @Directive({ selector: '[nxOpenModalOnClick]' })

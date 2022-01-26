@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, OnDestroy, Optional } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+
 import { DEFAULT_ICONS } from './default-icons';
 import { NxFontIcon, NxSvgIcon, NxSvgIconFromUrl, NxSvgIconLiteral } from './icons';
 

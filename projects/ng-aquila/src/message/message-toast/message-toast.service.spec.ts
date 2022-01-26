@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, TemplateRef, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxMessageModule } from '../message.module';
 import { NxMessageToastService } from './message-toast.service';
 

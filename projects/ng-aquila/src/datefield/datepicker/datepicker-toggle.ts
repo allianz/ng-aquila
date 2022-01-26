@@ -19,8 +19,9 @@ import {
 } from '@angular/core';
 import { merge, of as observableOf, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions, NxDatepickerComponent } from './datepicker.component';
 import { NxDatepickerIntl } from './datepicker-intl';
-import { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS, NxDatepickerComponent } from './datepicker.component';
 
 /** Can be used to override the icon of a `nxDatepickerToggle`. */
 @Directive({

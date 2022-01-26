@@ -4,8 +4,9 @@ import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionDirective } from '@aposin/ng-aquila/accordion';
 import { Subscription } from 'rxjs';
+
 import { NxTabGroupComponent } from './tab-group';
-import { TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
+import { TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
 declare let viewport: any;

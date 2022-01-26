@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, Input, QueryList } from '@angular/core';
+
 import { NxStepComponent } from '../progress-stepper.component';
 
 @Component({

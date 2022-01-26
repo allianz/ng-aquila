@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, View
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
+
 import { NxTableModule } from '../table.module';
 import { NxExpandable, NxToggleButtonComponent } from './toggle-button.component';
 

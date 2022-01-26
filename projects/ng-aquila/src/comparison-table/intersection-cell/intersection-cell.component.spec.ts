@@ -2,6 +2,7 @@ import { Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChi
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
 import { NxComparisonTableDescriptionCell } from '../description-cell/description-cell.component';

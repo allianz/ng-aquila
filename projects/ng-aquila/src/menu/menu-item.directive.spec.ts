@@ -1,8 +1,9 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NxMenuItemDirective } from './menu-item.directive';
+
 import { NxMenuModule } from './menu.module';
+import { NxMenuItemDirective } from './menu-item.directive';
 
 @Directive()
 abstract class MenuItemTest {

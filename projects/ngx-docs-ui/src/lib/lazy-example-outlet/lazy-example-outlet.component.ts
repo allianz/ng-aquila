@@ -2,6 +2,7 @@ import { Direction } from '@angular/cdk/bidi';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { BaseLazyLoadingService } from '../service/lazy-loading.service';
 import { ExampleDescriptor } from './../core/manifest';
 import { ManifestService } from './../service/manifest.service';

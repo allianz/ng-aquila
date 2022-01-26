@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
 import { NxTabScrollIndicator } from './scroll-indicator/scroll-indicator';
 import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';

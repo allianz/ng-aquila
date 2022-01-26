@@ -1,11 +1,12 @@
 import { Inject, Optional } from '@angular/core';
-import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
+import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import { pad } from '@aposin/ng-aquila/utils';
 import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import localeData from 'dayjs/plugin/localeData';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import utc from 'dayjs/plugin/utc';
+
 import { convertToDayjsLocale } from './dayjs-locale-utils';
 
 dayjs.extend(localeData);

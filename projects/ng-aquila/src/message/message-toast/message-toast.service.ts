@@ -2,10 +2,11 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, TemplateRef } from '@angular/core';
+
 import { NxMessageModule } from '../message.module';
+import { NxMessageToastComponent } from './message-toast.component';
 import { NxMessageToastConfig, NxMessageToastData } from './message-toast-config';
 import { NxMessageToastRef } from './message-toast-ref';
-import { NxMessageToastComponent } from './message-toast.component';
 
 /** Injection token that can be used to specify default message toast. */
 export const NX_MESSAGE_TOAST_DEFAULT_CONFIG = new InjectionToken<NxMessageToastConfig>('NX_MESSAGE_TOAST_DEFAULT_CONFIG');

@@ -18,6 +18,7 @@ import {
 } from '@angular/core';
 import { merge, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { startWith, switchMap, take } from 'rxjs/operators';
+
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
 import { NxContextMenuItemComponent } from './context-menu-item.component';

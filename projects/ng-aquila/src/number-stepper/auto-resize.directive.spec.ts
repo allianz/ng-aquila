@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+
 import { NxAutoResizeDirective } from './auto-resize.directive';
 import { NxNumberStepperModule } from './number-stepper.module';
 

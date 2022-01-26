@@ -1,4 +1,5 @@
 import { of } from 'rxjs';
+
 import { highlightSourceFiles } from './highlight-files';
 import { generateLazyLoadingService } from './lazy-loading-service/generate-service';
 import { createManifestData } from './manifest';

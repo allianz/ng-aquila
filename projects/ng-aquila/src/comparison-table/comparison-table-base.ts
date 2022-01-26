@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Directive, ElementRef, EventEmitter, OnDestroy } fro
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, mapTo, takeUntil } from 'rxjs/operators';
+
 import { NxComparisonTableCell } from './cell/cell.component';
 import { NxComparisonTableViewType } from './comparison-table.models';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';

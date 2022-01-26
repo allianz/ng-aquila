@@ -9,6 +9,7 @@ import { By } from '@angular/platform-browser';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+
 import { createFakeEvent, dispatchFakeEvent, dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxDropdownComponent } from './dropdown';
 import { NxDropdownModule } from './dropdown.module';

@@ -1,6 +1,7 @@
 import { fakeAsync, inject, tick } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
+
 import { NxBreakpoints, NxViewportService } from './viewport-service';
 
 declare let viewport: any;

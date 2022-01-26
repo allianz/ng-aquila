@@ -2,6 +2,7 @@ import chalk = require('chalk');
 import { Dgeni } from 'dgeni';
 import { defer } from 'rxjs';
 import { catchError, concatAll, filter, map, toArray } from 'rxjs/operators';
+
 import { apiDocsPackage } from './docs-dgeni-package/package';
 
 export const build = ({ source, dest }) => {

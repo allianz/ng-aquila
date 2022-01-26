@@ -2,6 +2,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
 import { NxAccordionDirective } from './accordion';
 import { NxExpansionPanelComponent } from './expansion-panel';
 import { NxExpansionPanelBodyDirective } from './expansion-panel-body';

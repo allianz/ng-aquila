@@ -3,6 +3,7 @@ import { FlexibleConnectedPositionStrategyOrigin, OverlayRef } from '@angular/cd
 import { NavigationEnd, Router } from '@angular/router';
 import { fromEvent, Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
+
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NxOverlayState } from './overlay-service';
 

@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList,
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxComparisonTableCell } from './cell/cell.component';
-import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 import { NxComparisonTableComponent } from './comparison-table.component';
 import { NxComparisonTableModule } from './comparison-table.module';
+import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;

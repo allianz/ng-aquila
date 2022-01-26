@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NxTimefieldIntl } from './timefield-intl';
+
 import { NxTimefieldComponent } from './timefield.component';
 import { NxTimefieldModule } from './timefield.module';
+import { NxTimefieldIntl } from './timefield-intl';
 
 @Directive()
 abstract class TimefieldTest {

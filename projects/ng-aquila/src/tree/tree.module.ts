@@ -1,6 +1,7 @@
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+
 import { NxTreeNodeActionItem } from './action-item.directive';
 import { NxTreeNodeComponent, NxTreeNodeDefDirective } from './node';
 import { NxTreeNodeOutletDirective } from './outlet';

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxMenuButtonComponent, NxMenuButtonType } from './menu-button.component';
+
 import { NxMenuModule } from './menu.module';
+import { NxMenuButtonComponent, NxMenuButtonType } from './menu-button.component';
 
 @Directive()
 abstract class MenuButtonTest {

@@ -1,6 +1,7 @@
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxPaginationUtils } from './pagination-utils';
+
 import { NxPaginationModule } from './pagination.module';
+import { NxPaginationUtils } from './pagination-utils';
 
 describe('NxPaginationUtils', () => {
     function assertCheck(collection: any, length: any, values: any) {

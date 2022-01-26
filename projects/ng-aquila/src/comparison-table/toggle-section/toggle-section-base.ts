@@ -1,4 +1,5 @@
 import { Directive } from '@angular/core';
+
 import { NxToggleSectionHeaderComponent } from './toggle-section-header.component';
 
 /** @docs-private */

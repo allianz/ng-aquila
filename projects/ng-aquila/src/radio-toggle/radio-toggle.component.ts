@@ -17,8 +17,9 @@ import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgFor
 import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, startWith, takeUntil } from 'rxjs/operators';
-import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
+
 import { NxRadioToggleButtonChange, NxRadioToggleButtonComponent } from './radio-toggle-button.component';
+import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 
 let nextId = 0;
 

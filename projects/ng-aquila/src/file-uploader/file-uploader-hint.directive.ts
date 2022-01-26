@@ -1,4 +1,5 @@
 import { Directive, Input } from '@angular/core';
+
 let nextId = 0;
 // This Directive solely purpose is to mark given ng-content and project it into the required destination.
 @Directive({

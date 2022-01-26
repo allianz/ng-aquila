@@ -1,5 +1,6 @@
-import { Rule, SchematicContext } from '@angular-devkit/schematics';
 import { createMigrationSchematicRule, TargetVersion, UpgradeData } from '@angular/cdk/schematics';
+import { Rule, SchematicContext } from '@angular-devkit/schematics';
+
 import {
     attributeSelectors,
     classNames,

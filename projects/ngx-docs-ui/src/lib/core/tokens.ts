@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+
 import { Manifest } from './manifest';
 import { DocVersions, GithubLinkConfig, LogoPath } from './types';
 

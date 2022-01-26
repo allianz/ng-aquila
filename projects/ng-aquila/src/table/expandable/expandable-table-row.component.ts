@@ -1,6 +1,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
 import { NxExpandable } from './toggle-button.component';
 
 /**

@@ -2,9 +2,10 @@ import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/co
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxSidepanelComponent } from './sidepanel';
-import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 import { NxSidepanelModule } from './sidepanel.module';
+import { NxSidepanelCloseButtonComponent } from './sidepanel-close-button';
 
 @Directive()
 abstract class SidepanelCloseButtonTest {

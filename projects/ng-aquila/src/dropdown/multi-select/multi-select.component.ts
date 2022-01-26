@@ -20,6 +20,7 @@ import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/form
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
+
 import { getPositionOffset, getPositions } from '../dropdown-position';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 

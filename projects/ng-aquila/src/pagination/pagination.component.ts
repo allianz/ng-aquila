@@ -18,6 +18,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
 

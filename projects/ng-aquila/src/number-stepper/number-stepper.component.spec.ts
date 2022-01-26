@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, Injectable
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { NxNumberStepperIntl } from './number-stepper-intl';
+
 import { NxNumberStepperComponent } from './number-stepper.component';
 import { NxNumberStepperModule } from './number-stepper.module';
+import { NxNumberStepperIntl } from './number-stepper-intl';
 
 @Injectable()
 class MyIntl extends NxNumberStepperIntl {

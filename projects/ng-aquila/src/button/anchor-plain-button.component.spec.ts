@@ -1,5 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxAnchorPlainButtonComponent } from './anchor-plain-button.component';
 import { NxButtonModule } from './button.module';
 

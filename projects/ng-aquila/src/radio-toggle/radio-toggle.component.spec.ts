@@ -2,9 +2,10 @@ import { Component, Directive, QueryList, Type, ViewChildren } from '@angular/co
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
+
 import { NxRadioToggleComponent, RESET_VALUES } from './radio-toggle.component';
 import { NxRadioToggleModule } from './radio-toggle.module';
+import { NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 
 describe('NxRadioToggleComponent', () => {
     let fixture: ComponentFixture<RadioToggleTest>;

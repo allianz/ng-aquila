@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
+
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxToggleSectionAnimations } from './toggle-section-animations';
 import { NxToggleSectionBase } from './toggle-section-base';

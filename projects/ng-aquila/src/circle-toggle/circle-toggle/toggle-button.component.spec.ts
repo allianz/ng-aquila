@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { dispatchFakeEvent, dispatchTouchEvent } from '../../cdk-test-utils';
 import { NxCircleToggleModule } from '../circle-toggle.module';
 import { NxCircleToggleComponent } from './circle-toggle.component';

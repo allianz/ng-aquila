@@ -17,6 +17,7 @@ import {
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+
 import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
 import { NxModalService } from './modal.service';
 

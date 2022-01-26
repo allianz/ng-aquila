@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { NxTabLinkDirective, NxTabNavBarComponent } from './tab-nav-bar';
-import { TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from './tabs.models';
+import { TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tabs.models';
 import { NxTabsModule } from './tabs.module';
 
 const tabsDefaultOptions: TabNavBarDefaultOptions = {

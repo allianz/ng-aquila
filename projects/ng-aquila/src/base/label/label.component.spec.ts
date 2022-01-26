@@ -1,6 +1,7 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
-import { LabelDefaultOptions, LABEL_DEFAULT_OPTIONS, LABEL_SIZE_TYPE, NxLabelComponent } from './label.component';
+
+import { LABEL_DEFAULT_OPTIONS, LABEL_SIZE_TYPE, LabelDefaultOptions, NxLabelComponent } from './label.component';
 import { NxLabelModule } from './label.module';
 
 const customDefaultOptions: LabelDefaultOptions = { size: 'small' };

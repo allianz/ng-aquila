@@ -22,11 +22,12 @@ import {
 import { NxAccordionDirective, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject, Subscription } from 'rxjs';
+
 import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabHeaderComponent } from './tab-header';
-import { NxTabsAppearance, TabGroupDefaultOptions, TAB_GROUP_DEFAULT_OPTIONS } from './tabs.models';
+import { NxTabsAppearance, TAB_GROUP_DEFAULT_OPTIONS, TabGroupDefaultOptions } from './tabs.models';
 
 export class NxTabChangeEvent {
     /** The index of the selected or focused tab. */

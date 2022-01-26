@@ -1,9 +1,10 @@
 import { Component, DebugElement, Directive, QueryList, Type, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
+
 import { BASIC_COMPARISON_TABLE_TEMPLATE } from '../comparison-table.component.spec';
 import { NxComparisonTableModule } from '../comparison-table.module';
+import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTableDescriptionCell } from './description-cell.component';
 
 declare let viewport: any;

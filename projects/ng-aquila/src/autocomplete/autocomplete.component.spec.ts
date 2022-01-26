@@ -6,9 +6,10 @@ import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NxModalModule } from '@aposin/ng-aquila/modal';
 import { Observable, of } from 'rxjs';
-import { NxAutocompleteComponent, NxAutocompleteTriggerDirective } from '.';
+
 import { dispatchFakeEvent } from '../cdk-test-utils';
 import { NxInputModule } from '../input';
+import { NxAutocompleteComponent, NxAutocompleteTriggerDirective } from '.';
 import { NxAutocompleteModule } from './autocomplete.module';
 
 describe('NxAutocompleteComponent:', () => {

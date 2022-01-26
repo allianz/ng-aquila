@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
+
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 

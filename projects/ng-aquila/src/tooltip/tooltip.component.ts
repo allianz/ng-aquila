@@ -1,8 +1,9 @@
 import { AnimationEvent } from '@angular/animations';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { nxTooltipAnimations } from './tooltip-animations';
+
 import { TooltipPosition } from './tooltip.directive';
+import { nxTooltipAnimations } from './tooltip-animations';
 
 type TooltipVisibility = 'initial' | 'visible' | 'hidden';
 

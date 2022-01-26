@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
+
 import { NxBreadcrumbComponent } from './breadcrumb.component';
 import { NxBreadcrumbModule } from './breadcrumb.module';
+import { NxBreadcrumbItemComponent } from './breadcrumb-item.component';
 
 @Directive()
 abstract class BreadcrumbTest {

@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
+
 import { NxStepperNextDirective, NxStepperPreviousDirective } from './buttons';
+import { NxMultiStepperComponent } from './multi/multi-step.component';
 import { NxMultiStepperGroupComponent } from './multi/multi-step-group.component';
 import { NxMultiStepItemComponent } from './multi/multi-step-item.component';
-import { NxMultiStepperComponent } from './multi/multi-step.component';
-import { NxProgressStepperDirective, NxStepComponent } from './progress-stepper.component';
 import { NxProgressStepperComponent } from './progress/progress.component';
+import { NxProgressStepperDirective, NxStepComponent } from './progress-stepper.component';
 import { NxSingleStepperComponent } from './single/single-step.component';
 
 @NgModule({

@@ -5,10 +5,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { By } from '@angular/platform-browser';
 import { NxErrorModule, NxLabelModule } from '@aposin/ng-aquila/base';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
+
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';
 import { NxFileUploaderModule } from './file-uploader.module';
+import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 
 @Directive()
 abstract class FileUploaderTest {

@@ -16,6 +16,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { Subject } from 'rxjs';
+
 import { NxTabContentDirective } from './tab-content';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabLabelDirective } from './tab-label';

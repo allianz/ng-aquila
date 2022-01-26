@@ -17,8 +17,9 @@ import {
     SkipSelf,
     ViewChild,
 } from '@angular/core';
+
 import { NxScrollableTabBar } from './scrollable-tab-bar';
-import { NxTabsAppearance, TabNavBarDefaultOptions, TAB_NAV_BAR_DEFAULT_OPTIONS } from './tabs.models';
+import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions } from './tabs.models';
 
 @Component({
     selector: 'nx-tab-nav-bar',

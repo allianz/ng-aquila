@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxCardComponent } from './card.component';
 import { NxCardModule } from './card.module';
 

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { NxIconComponent } from './icon.component';
 
 @NgModule({

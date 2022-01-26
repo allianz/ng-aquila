@@ -19,6 +19,7 @@ import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { ComponentRef, Directive, ElementRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
+
 import { NxTooltipComponent } from './tooltip.component';
 
 const BASE_OFFSET = 12;

@@ -1,5 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
+
 import { ComponentDescriptor, ExampleDescriptor, GuideDescriptor, Manifest } from '../core/manifest';
 import { NXV_MANIFEST_TOKEN } from '../core/tokens';
 

@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
+
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 

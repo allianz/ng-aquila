@@ -18,6 +18,7 @@ import { MappedStyles } from '@aposin/ng-aquila/core';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { Subscription } from 'rxjs';
+
 import { NxAutoResizeDirective } from './auto-resize.directive';
 import { NxNumberStepperIntl } from './number-stepper-intl';
 

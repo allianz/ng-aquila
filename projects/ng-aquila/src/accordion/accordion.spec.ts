@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } from './index';
 
 describe('NxAccordion', () => {

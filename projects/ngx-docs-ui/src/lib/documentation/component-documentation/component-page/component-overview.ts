@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { ComponentDescriptor } from '../../../core/manifest';
 import { ComponentService } from '../../../service/component.service';
 

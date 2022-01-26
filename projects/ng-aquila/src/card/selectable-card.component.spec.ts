@@ -3,9 +3,10 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { NxErrorComponent, NxErrorModule } from '@aposin/ng-aquila/base';
+
 import { NxCardModule } from './card.module';
-import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 import { NxSelectableCardComponent } from './selectable-card.component';
+import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 
 @Directive()
 abstract class SelectableCardTest {

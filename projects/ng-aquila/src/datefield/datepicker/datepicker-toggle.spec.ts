@@ -3,9 +3,10 @@ import { ComponentFixture, fakeAsync, flush, inject, TestBed, waitForAsync } fro
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import { Subject } from 'rxjs';
+
 import { NxDatefieldModule } from '../datefield.module';
+import { DATEPICKER_DEFAULT_OPTIONS, DatepickerDefaultOptions, NxDatepickerComponent } from './datepicker.component';
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
-import { DatepickerDefaultOptions, DATEPICKER_DEFAULT_OPTIONS, NxDatepickerComponent } from './datepicker.component';
 
 const datepickerOptions: DatepickerDefaultOptions = {
     changes: new Subject<void>(),

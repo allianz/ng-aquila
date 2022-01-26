@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inpu
 import { NxButtonBase } from '@aposin/ng-aquila/button';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { NxComparisonTableCell } from '../cell/cell.component';
 import { NxComparisonTableBase } from '../comparison-table-base';
 

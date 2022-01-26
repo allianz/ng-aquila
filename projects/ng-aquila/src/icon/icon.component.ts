@@ -1,6 +1,7 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { take } from 'rxjs/operators';
+
 import { cloneSvg, NxIconFontDefinition, NxIconRegistry } from './icon-registry';
 import { NxSvgIcon } from './icons';
 

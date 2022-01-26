@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxRatingComponent } from './rating.component';
 import { NxRatingModule } from './rating.module';

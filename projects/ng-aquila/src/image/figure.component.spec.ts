@@ -1,5 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxFigureComponent } from './figure.component';
 import { NxImageModule } from './image.module';
 

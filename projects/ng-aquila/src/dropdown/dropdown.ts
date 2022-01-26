@@ -34,10 +34,11 @@ import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/form
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
 import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
+
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
+import { NxDropdownControl } from './dropdown.control';
 import { getNxDropdownNonArrayValueError, getNxDropdownNonFunctionValueError } from './dropdown-errors';
 import { getPositionOffset, getPositions } from './dropdown-position';
-import { NxDropdownControl } from './dropdown.control';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 

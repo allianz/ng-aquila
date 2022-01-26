@@ -1,7 +1,8 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { NxMenuLinkDirective } from './menu-link.directive';
+
 import { NxMenuModule } from './menu.module';
+import { NxMenuLinkDirective } from './menu-link.directive';
 
 @Directive()
 abstract class MenuLinkTest {

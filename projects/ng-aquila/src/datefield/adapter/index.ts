@@ -1,5 +1,6 @@
 import { PlatformModule } from '@angular/cdk/platform';
 import { LOCALE_ID, NgModule } from '@angular/core';
+
 import { NxDateAdapter } from './date-adapter';
 import { NX_DATE_FORMATS } from './date-formats';
 import { NX_DATE_LOCALE } from './date-token';

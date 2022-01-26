@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { merge, Observable, Subject, Subscription } from 'rxjs';
 import { delay, takeUntil, throttleTime } from 'rxjs/operators';
+
 import { NxWordComponent } from './word.component';
 
 /** Size of the NLF. */

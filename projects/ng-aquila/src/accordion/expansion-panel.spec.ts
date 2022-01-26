@@ -3,6 +3,7 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxAccordionModule, NxExpansionPanelComponent } from './index';
 

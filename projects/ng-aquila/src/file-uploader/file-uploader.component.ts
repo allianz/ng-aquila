@@ -29,13 +29,14 @@ import { NxErrorComponent, NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject, Subscription } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+
 import { NxFileUploader } from './file-uploader';
+import { FileItem } from './file-uploader.model';
+import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
 import { NxFileUploaderButtonDirective } from './file-uploader-button.directive';
 import { NxFileUploaderDropZoneComponent } from './file-uploader-drop-zone.component';
 import { NxFileUploaderHintDirective } from './file-uploader-hint.directive';
 import { NxFileUploaderIntl } from './file-uploader-intl';
-import { FileItem } from './file-uploader.model';
-import { isFileTypeValid, NxFileUploaderValidators } from './file-uploader.validations';
 
 let nextId = 0;
 

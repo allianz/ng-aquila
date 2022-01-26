@@ -3,6 +3,7 @@ import * as glob from 'glob';
 import * as path from 'path';
 import { bindNodeCallback, of, pipe } from 'rxjs';
 import { concatAll, map, mergeMap, take } from 'rxjs/operators';
+
 import { showProcessingNotice } from '../shared/logging';
 import { MarkdownFile } from '../shared/markdown-file';
 import { readMarkdownFileStream } from '../shared/read-markdown-file';

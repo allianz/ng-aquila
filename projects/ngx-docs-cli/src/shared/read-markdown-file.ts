@@ -1,6 +1,7 @@
 import * as fs from 'fs-extra';
 import { bindNodeCallback, pipe } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+
 import { MarkdownFile } from './markdown-file';
 
 const readFile$ = bindNodeCallback(fs.readFile);

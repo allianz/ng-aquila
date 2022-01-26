@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxActionComponent } from './action.component';
 import { NxActionModule } from './action.module';
 

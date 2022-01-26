@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
+
 import { NxFormfieldErrorDirective } from './error.directive';
-import { AppearanceType, FloatLabelType, FormfieldDefaultOptions, FORMFIELD_DEFAULT_OPTIONS, NxFormfieldComponent } from './formfield.component';
+import { AppearanceType, FloatLabelType, FORMFIELD_DEFAULT_OPTIONS, FormfieldDefaultOptions, NxFormfieldComponent } from './formfield.component';
 import { NxFormfieldHintDirective } from './hint.directive';
 import { NxFormfieldNoteDirective } from './note.directive';
 

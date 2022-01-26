@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
-import { DataDisplayDefaultOptions, DATA_DISPLAY_DEFAULT_OPTIONS, NxDataDisplayOrientation, NxDataDisplaySize } from './data-display.models';
+
+import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayOrientation, NxDataDisplaySize } from './data-display.models';
 
 /**
  * Data display component.

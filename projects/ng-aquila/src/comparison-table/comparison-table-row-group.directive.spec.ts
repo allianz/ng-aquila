@@ -3,10 +3,11 @@ import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/co
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
-import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
-import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
+import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from './comparison-table.models';
 import { NxComparisonTableModule } from './comparison-table.module';
+import { NxComparisonTableRowGroupDirective } from './comparison-table-row-group.directive';
 
 declare let viewport: any;
 const THROTTLE_TIME = 200;

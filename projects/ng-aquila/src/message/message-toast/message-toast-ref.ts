@@ -1,5 +1,6 @@
 import { OverlayRef } from '@angular/cdk/overlay';
 import { Observable, Subject } from 'rxjs';
+
 import { NxMessageToastComponent } from './message-toast.component';
 
 /** Maximum amount of milliseconds that can be passed into setTimeout. */

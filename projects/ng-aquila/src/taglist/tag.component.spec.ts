@@ -2,6 +2,7 @@ import { BACKSPACE, DELETE } from '@angular/cdk/keycodes';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
 import { NxTagComponent } from './tag.component';
 import { NxTaglistModule } from './taglist.module';

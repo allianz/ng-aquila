@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Directive, ElementRef, QueryList, T
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormControl, FormGroup, FormsModule, NgControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NxInputDirective, NxInputModule } from '@aposin/ng-aquila/input';
+
 import { NxNaturalLanguageFormComponent } from './natural-language-form.component';
 import { NxNaturalLanguageFormModule } from './natural-language-form.module';
 import { NxWordComponent } from './word.component';

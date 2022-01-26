@@ -13,7 +13,8 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
 import { Subscription } from 'rxjs';
-import { NxDateAdapter, NxDateFormats, NX_DATE_FORMATS } from './adapter/index';
+
+import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from './adapter/index';
 import { NxDateValidators } from './date-validators';
 import { createMissingDateImplError } from './datefield-errors';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';

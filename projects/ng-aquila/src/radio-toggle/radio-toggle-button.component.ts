@@ -15,8 +15,9 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
+
 import { NxRadioToggleComponent } from './radio-toggle.component';
+import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
 
 /** @docs-private */
 export class NxRadioToggleButtonChange {

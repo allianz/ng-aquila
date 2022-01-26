@@ -7,9 +7,10 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
+
 import { NxDropdownModule } from '../dropdown.module';
-import { MultiSelectOptionHarness } from './multi-select-option.spec';
 import { NxMultiSelectComponent } from './multi-select.component';
+import { MultiSelectOptionHarness } from './multi-select-option.spec';
 
 class MultiSelectHarness extends ComponentHarness {
     static hostSelector = 'nx-multi-select';

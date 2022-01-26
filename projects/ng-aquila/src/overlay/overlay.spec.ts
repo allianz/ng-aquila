@@ -4,10 +4,11 @@ import { Component, ElementRef, NgModule, TemplateRef, ViewChild } from '@angula
 import { ComponentFixture, fakeAsync, flush, inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NxButtonComponent, NxButtonModule } from '@aposin/ng-aquila/button';
+
 import { dispatchKeyboardEvent } from '../cdk-test-utils';
+import { NxOverlayModule } from './overlay.module';
 import { NxOverlayRef } from './overlay-ref';
 import { NxOverlayService } from './overlay-service';
-import { NxOverlayModule } from './overlay.module';
 
 describe('NxOverlayService', () => {
     let overlayContainer: OverlayContainer;

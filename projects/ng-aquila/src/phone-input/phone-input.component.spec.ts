@@ -7,10 +7,11 @@ import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import countries from 'i18n-iso-countries';
 import de from 'i18n-iso-countries/langs/de.json';
+
 import { dispatchFakeEvent } from '../cdk-test-utils';
-import { NxPhoneInputIntl } from './phone-input-intl';
 import { NxPhoneInputComponent } from './phone-input.component';
 import { NxPhoneInputModule } from './phone-input.module';
+import { NxPhoneInputIntl } from './phone-input-intl';
 
 countries.registerLocale(de);
 

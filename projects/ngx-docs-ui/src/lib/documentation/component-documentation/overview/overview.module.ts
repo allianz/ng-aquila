@@ -6,6 +6,7 @@ import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxTableModule } from '@aposin/ng-aquila/table';
+
 import { NxvOverviewComponent } from './overview.component';
 import { NxvStatusDotComponent } from './status-dot.component';
 

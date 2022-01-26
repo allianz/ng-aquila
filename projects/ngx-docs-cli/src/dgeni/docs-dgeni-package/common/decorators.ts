@@ -1,6 +1,7 @@
 import { ClassExportDoc } from 'dgeni-packages/typescript/api-doc-types/ClassExportDoc';
 import { MemberDoc } from 'dgeni-packages/typescript/api-doc-types/MemberDoc';
 import { PropertyMemberDoc } from 'dgeni-packages/typescript/api-doc-types/PropertyMemberDoc';
+
 import { CategorizedClassDoc, DeprecationDoc, HasDecoratorsDoc } from './dgeni-definitions';
 
 /**
@@ -60,7 +61,7 @@ export function getDirectiveSelectors(classDoc: CategorizedClassDoc) {
     if (directiveSelectors) {
         // Filter blacklisted selectors and remove line-breaks in resolved selectors.
         return directiveSelectors
-            .replace(/[\r\n]/g, '')
+            .replace(/[\n\r]/g, '')
             .split(/\s*,\s*/)
             .filter(s => s !== '' && !s.includes('md') && !SELECTOR_BLACKLIST.has(s));
     }

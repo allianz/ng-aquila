@@ -4,6 +4,7 @@ import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/por
 import { Injectable, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+
 import { NxOverlayConfig } from './overlay-config';
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NxOverlayRef } from './overlay-ref';

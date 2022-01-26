@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+
 import { ComponentService } from '../../service/component.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
 

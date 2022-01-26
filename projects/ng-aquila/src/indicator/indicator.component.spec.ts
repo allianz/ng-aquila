@@ -1,5 +1,6 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { NxIndicatorComponent } from './indicator.component';
 import { NxIndicatorModule } from './indicator.module';
 

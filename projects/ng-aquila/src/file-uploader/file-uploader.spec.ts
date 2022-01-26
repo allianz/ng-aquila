@@ -1,4 +1,5 @@
 import {
+    HTTP_INTERCEPTORS,
     HttpClient,
     HttpClientModule,
     HttpEvent,
@@ -7,7 +8,6 @@ import {
     HttpParams,
     HttpRequest,
     HttpResponse,
-    HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+
 import { NxFileUploader } from './file-uploader';
 import { NxFileUploaderComponent } from './file-uploader.component';
 import { FileItem } from './file-uploader.model';

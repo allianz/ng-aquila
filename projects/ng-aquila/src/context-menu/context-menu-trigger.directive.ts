@@ -8,9 +8,10 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, Input, OnDestroy
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subscription } from 'rxjs';
 import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
+
+import { NxContextMenuComponent } from './context-menu.component';
 import { throwNxContextMenuMissingError } from './context-menu-errors';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
-import { NxContextMenuComponent } from './context-menu.component';
 
 /** Default top padding of the menu panel. */
 export const MENU_PANEL_TOP_PADDING = 8;

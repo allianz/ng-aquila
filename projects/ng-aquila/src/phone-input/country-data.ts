@@ -1,4 +1,5 @@
 import { LocalizedCountryNames } from 'i18n-iso-countries';
+
 // This file gets created in the postinstall hook, see extract-calling-codes.js script
 import rawMetadata from './metadata.json';
 

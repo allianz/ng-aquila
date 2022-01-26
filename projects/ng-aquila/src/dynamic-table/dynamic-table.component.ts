@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
 import { NxDisplayedColumns } from './displayedColumns';
 import { TableDataSource } from './tabledata-source';
 

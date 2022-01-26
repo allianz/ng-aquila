@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { addStylesFromDimensions } from './utils';
 
 const MAPPING_JUSTIFY = {

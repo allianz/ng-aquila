@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxTreeModule } from '@aposin/ng-aquila/tree';
+
 import { NavigationComponent } from './navigation.component';
 
 @NgModule({

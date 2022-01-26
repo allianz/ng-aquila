@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { FileItem } from './file-uploader.model';
 
 export interface NxFileUploadConfig {

@@ -1,5 +1,6 @@
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowBase } from '../comparison-table-row-base';
 

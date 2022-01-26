@@ -3,9 +3,10 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, Optional, Output, ViewChild } from '@angular/core';
+
+import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '../comparison-table.models';
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-group.directive';
-import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from '../comparison-table.models';
 
 /**
  * @docs-private

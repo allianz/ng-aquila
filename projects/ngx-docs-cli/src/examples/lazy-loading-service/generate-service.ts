@@ -1,5 +1,6 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
+
 import { lazyServiceTemplate } from './template';
 
 export const generateLazyLoadingService = (groupedMetadata, serviceOutputPath) => {

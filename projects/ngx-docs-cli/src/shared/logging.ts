@@ -1,6 +1,7 @@
 import { basename } from 'path';
 import { pipe } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
 import { MarkdownFile } from './markdown-file';
 import chalk = require('chalk');
 

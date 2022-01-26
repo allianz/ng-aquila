@@ -10,8 +10,9 @@ import { ChangeDetectionStrategy, Component, DebugElement, ElementRef, EventEmit
 import { ComponentFixture, fakeAsync, flush, flushMicrotasks, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { createKeyboardEvent } from '../cdk-test-utils';
-import { NxTooltipDirective, NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS } from './tooltip.directive';
+import { NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS, NxTooltipDirective } from './tooltip.directive';
 import { NxTooltipModule } from './tooltip.module';
 
 function createFakeEvent(type: string, canBubble = false, cancelable = true) {

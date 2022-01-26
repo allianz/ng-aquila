@@ -1,6 +1,7 @@
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ChangeDetectionStrategy, Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { NxTabGroupComponent } from '@aposin/ng-aquila/tabs';
+
 import { CopyService } from '../core/copy.service';
 import { ExampleDescriptor } from '../core/manifest';
 import { ComponentExample } from '../doc-viewer/component-example';

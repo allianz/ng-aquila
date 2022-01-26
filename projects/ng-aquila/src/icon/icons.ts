@@ -3,6 +3,7 @@ import { SecurityContext } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { finalize, map, share } from 'rxjs/operators';
+
 import { NxIconFontDefinition } from './icon-registry';
 
 export class NxSvgIcon {

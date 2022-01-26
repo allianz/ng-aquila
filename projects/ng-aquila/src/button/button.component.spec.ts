@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxButtonBase, NxButtonSize, NxButtonType } from './button-base';
+
 import { NxButtonComponent } from './button.component';
 import { NxButtonModule } from './button.module';
+import { NxButtonBase, NxButtonSize, NxButtonType } from './button-base';
 import { NxIconButtonComponent } from './icon-button.component';
 
 @Directive()

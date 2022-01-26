@@ -11,6 +11,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMomentDateModule } from '@aposin/ng-aquila/moment-date-adapter';
 import { NxSmallStageComponent, NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
 import { NxTabGroupComponent, NxTabNavBarComponent, NxTabsModule } from '@aposin/ng-aquila/tabs';
+
 import { NxExpertModule } from './nx-expert.module';
 
 @Directive()

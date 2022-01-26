@@ -8,6 +8,7 @@
 
 import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
+
 import { addPackageToPackageJson } from './package-config';
 import { Schema } from './schema';
 import { aquilaVersion } from './version-names';

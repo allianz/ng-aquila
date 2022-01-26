@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
+
 import { NxvFooterModule } from '../component-documentation/footer/footer.module';
 import { NxvTopInfoModule } from '../component-documentation/top-info/top-info.module';
 import { NxvGuidesComponent } from './guides.component';

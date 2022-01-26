@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, Inject, OnInit, ViewContainerRef } from '@angular/core';
+
 import { NXV_TOP_INFO } from './../../../core/tokens';
 
 @Component({

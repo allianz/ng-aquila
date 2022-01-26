@@ -2,8 +2,9 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NxSortHeaderIntl } from './sort-header-intl';
+
 import { NxSortDirective } from './sort.directive';
+import { NxSortHeaderIntl } from './sort-header-intl';
 
 @Component({
     selector: 'th[nxSortHeaderCell]',

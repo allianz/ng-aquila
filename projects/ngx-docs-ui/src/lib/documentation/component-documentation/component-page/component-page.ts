@@ -2,6 +2,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
+
 import { ComponentDescriptor } from '../../../core/manifest';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
 import { ComponentService } from '../../../service/component.service';

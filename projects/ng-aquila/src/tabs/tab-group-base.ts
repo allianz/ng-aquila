@@ -1,5 +1,6 @@
 import { Directive } from '@angular/core';
 import { Subject } from 'rxjs';
+
 import { NxTabsAppearance } from './tabs.models';
 
 /** @docs-private */

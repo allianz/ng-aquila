@@ -4,11 +4,12 @@ import { Component, Directive, Type, ViewChild, ViewEncapsulation } from '@angul
 import { ComponentFixture, fakeAsync, flush, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
+
 import { dispatchFakeEvent } from '../cdk-test-utils';
-import { NxPopoverIntl } from './popover-intl';
-import { NxPopoverTriggerDirective } from './popover-trigger.directive';
 import { NxPopoverComponent } from './popover.component';
 import { NxPopoverModule } from './popover.module';
+import { NxPopoverIntl } from './popover-intl';
+import { NxPopoverTriggerDirective } from './popover-trigger.directive';
 
 @Component({
     selector: 'nx-test-component',

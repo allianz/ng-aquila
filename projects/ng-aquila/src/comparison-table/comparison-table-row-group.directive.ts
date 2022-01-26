@@ -1,8 +1,9 @@
 import { BooleanInput, coerceBooleanProperty, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { ContentChildren, Directive, EventEmitter, Inject, Input, Optional, Output, QueryList } from '@angular/core';
-import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
+
+import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from './comparison-table.models';
 import { NxComparisonTableRowDirective } from './comparison-table-row.directive';
-import { ComparisonTableDefaultOptions, COMPARISON_TABLE_DEFAULT_OPTIONS } from './comparison-table.models';
+import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
 import { NxTableContentElement } from './table-content-element.directive';
 import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 

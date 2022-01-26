@@ -2,10 +2,11 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { AfterContentInit, ContentChild, ContentChildren, Directive, Input, OnDestroy, Optional, QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { NxComparisonTableCell } from './cell/cell.component';
+import { NxComparisonTableRowType } from './comparison-table.models';
 import { NxComparisonTableRowBase } from './comparison-table-row-base';
 import { NxComparisonTableRowGroupBase } from './comparison-table-row-group-base';
-import { NxComparisonTableRowType } from './comparison-table.models';
 import { NxComparisonTableDescriptionCell } from './description-cell/description-cell.component';
 import { NxComparisonTableIntersectionCell } from './intersection-cell/intersection-cell.component';
 import { NxComparisonTablePopularCell } from './popular-cell/popular-cell.component';

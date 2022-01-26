@@ -7,6 +7,7 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
+
 import { ExampleFullScreenModule } from '../example-full-screen/example-full-screen.module';
 import { ComponentService } from '../service/component.service';
 import { ManifestService } from '../service/manifest.service';

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { ColorPickerModule } from 'ngx-color-picker';
+
 import { CssVarSidebarComponent } from './css-var-sidebar-component';
 
 @NgModule({

@@ -5,7 +5,7 @@ export * from './dialog/modal-config';
 /* new modal implementation */
 export * from './dialog/modal-container.component';
 export * from './dialog/modal-ref';
-export * from './modal-open-on-click.directive';
 export * from './modal.component';
 export * from './modal.module';
 export * from './modal.service';
+export * from './modal-open-on-click.directive';

@@ -17,6 +17,7 @@ import {
     Optional,
     ViewChild,
 } from '@angular/core';
+
 import { NxModalAnimations } from './modal-animations';
 import { NxModalConfig } from './modal-config';
 

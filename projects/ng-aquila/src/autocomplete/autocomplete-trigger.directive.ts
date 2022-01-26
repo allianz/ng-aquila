@@ -25,8 +25,9 @@ import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxWordComponent } from '@aposin/ng-aquila/natural-language-form';
 import { defer, fromEvent, merge, Observable, of, Subject, Subscription } from 'rxjs';
 import { debounceTime, delay, filter, first, switchMap, take, tap } from 'rxjs/operators';
-import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
+
 import { NxAutocompleteComponent } from './autocomplete.component';
+import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
 
 /**
  * Provider that allows the autocomplete to register as a ControlValueAccessor.

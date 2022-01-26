@@ -9,6 +9,7 @@ import {
     VerticalConnectionPos,
 } from '@angular/cdk/overlay';
 import { Injectable, Optional } from '@angular/core';
+
 import { BASE_OFFSET, CLOCKWISE_DIRECTIONS, HORIZONTAL_DIRECTIONS, NxOverlayConfig, NxOverlayDirection, VERTICAL_DIRECTIONS } from './overlay-config';
 
 /**

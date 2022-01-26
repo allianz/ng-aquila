@@ -18,7 +18,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { NxDateAdapter, NxDateFormats, NX_DATE_FORMATS } from '../adapter/index';
+
+import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
 import { createMissingDateImplError } from './datepicker-errors';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxMonthViewComponent } from './month-view';

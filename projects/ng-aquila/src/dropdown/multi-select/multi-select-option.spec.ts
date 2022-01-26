@@ -2,6 +2,7 @@ import { ComponentHarness, HarnessLoader, parallel } from '@angular/cdk/testing'
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { NxDropdownModule } from '../dropdown.module';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 

@@ -3,6 +3,7 @@ import { Component, DebugElement, Directive, Type, ViewChild } from '@angular/co
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { Appearance, NxSidepanelComponent, NxSidepanelOuterContainerComponent, PositionType } from './sidepanel';
 import { NxSidepanelModule } from './sidepanel.module';
 

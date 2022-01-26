@@ -1,5 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy } from '@angular/core';
+
 import { NxSidepanelComponent } from './sidepanel';
 
 @Component({

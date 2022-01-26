@@ -1,11 +1,12 @@
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { Component, Directive, Injectable, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
+
 import { dispatchKeyboardEvent } from '../../cdk-test-utils';
 import { NxTableModule } from '../table.module';
-import { NxSortHeaderIntl } from './sort-header-intl';
-import { NxSortHeaderComponent } from './sort-header.component';
 import { SortDirection, SortEvent } from './sort.directive';
+import { NxSortHeaderComponent } from './sort-header.component';
+import { NxSortHeaderIntl } from './sort-header-intl';
 
 interface DataStructure {
     name: string;

@@ -1,5 +1,6 @@
-const chokidar = require('chokidar');
 import { Observable } from 'rxjs';
+
+const chokidar = require('chokidar');
 
 export interface RxWatchData {
     event: string;

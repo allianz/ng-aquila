@@ -2,6 +2,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input } from '@angular/core';
 import { clamp } from '@aposin/ng-aquila/utils';
+
 import { NxProgressStepperDirective } from '../progress-stepper.component';
 
 @Component({

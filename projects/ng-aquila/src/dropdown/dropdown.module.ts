@@ -10,12 +10,13 @@ import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
+
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { NxDropdownComponent } from './dropdown';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
-import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option.component';
 import { NxMultiSelectComponent } from './multi-select/multi-select.component';
+import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option.component';
 
 @NgModule({
     imports: [

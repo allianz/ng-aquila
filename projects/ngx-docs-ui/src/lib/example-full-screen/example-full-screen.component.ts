@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
 import { ThemeSwitcherService } from '../documentation/theme-switcher/theme-switcher.service';
 
 type ExampleBackgroundType = '' | 'blank';

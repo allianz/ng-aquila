@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, DebugElement, Directive, ElementRef
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
+
 import { dispatchMouseEvent } from '../cdk-test-utils';
-import { NxTableRowComponent } from './table-row.component';
 import { NxTableModule } from './table.module';
+import { NxTableRowComponent } from './table-row.component';
 
 @Directive()
 class TableRowTest {

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@angular/core';
 import { mapClassNames } from '@aposin/ng-aquila/utils';
+
 import { addStylesFromDimensions, isEmptyArray, processSplit, validateClassInElement } from './utils';
 
 const MAPPING = {

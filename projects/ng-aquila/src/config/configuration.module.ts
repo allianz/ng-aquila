@@ -6,6 +6,7 @@ import { DATEPICKER_DEFAULT_OPTIONS } from '@aposin/ng-aquila/datefield';
 import { FORMFIELD_DEFAULT_OPTIONS } from '@aposin/ng-aquila/formfield';
 import { SMALL_STAGE_DEFAULT_OPTIONS } from '@aposin/ng-aquila/small-stage';
 import { TAB_GROUP_DEFAULT_OPTIONS, TAB_NAV_BAR_DEFAULT_OPTIONS } from '@aposin/ng-aquila/tabs';
+
 import {
     circleToggleGroupOptions,
     datepickerOptions,

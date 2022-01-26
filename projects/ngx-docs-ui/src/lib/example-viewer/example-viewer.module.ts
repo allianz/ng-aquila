@@ -7,6 +7,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
+
 import { CopyService } from '../core/copy.service';
 import { DocViewerModule } from '../doc-viewer/public_api';
 import { NxvLazyExampleOutletModule } from './../lazy-example-outlet/lazy-example-outlet.module';

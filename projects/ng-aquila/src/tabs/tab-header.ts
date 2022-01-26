@@ -15,6 +15,7 @@ import {
     QueryList,
     ViewChild,
 } from '@angular/core';
+
 import { NxScrollableTabBar } from './scrollable-tab-bar';
 import { NxTabGroupBase } from './tab-group-base';
 import { NxTabLabelWrapperDirective } from './tab-label-wrapper';

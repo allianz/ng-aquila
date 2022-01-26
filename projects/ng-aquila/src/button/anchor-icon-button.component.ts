@@ -1,6 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
+
 import { NxIconButtonComponent } from './icon-button.component';
 
 @Component({

@@ -35,6 +35,7 @@ import {
 import { EventManager } from '@angular/platform-browser';
 import { Subject, Subscription } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
+
 import { NxPopoverComponent } from './popover.component';
 
 export declare type PopoverVerticalDirection = 'top' | 'bottom';

@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { NX_DOCS_GITHUB_LINK, NX_DOCS_LOGO_PATH } from '../core/tokens';
 import { GithubLinkConfig, LogoPath } from '../core/types';
 import { ManifestService } from '../service/manifest.service';

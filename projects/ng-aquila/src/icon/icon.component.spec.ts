@@ -2,9 +2,10 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-import { NxIconRegistry } from './icon-registry';
+
 import { NxIconComponent } from './icon.component';
 import { NxIconModule } from './icon.module';
+import { NxIconRegistry } from './icon-registry';
 
 @Directive()
 abstract class IconTest {

@@ -1,8 +1,9 @@
 import { Component, Directive, QueryList, Type, ViewChild, ViewChildren } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
+
 import { NxComparisonTableModule } from '../comparison-table.module';
+import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
 import { NxComparisonTablePopularCell } from './popular-cell.component';
 
 declare let viewport: any;

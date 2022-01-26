@@ -2,6 +2,7 @@ import { ComponentHarness } from '@angular/cdk/testing';
 import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { NxDataDisplayComponent } from './data-display.component';
 import { NxDataDisplayOrientation, NxDataDisplaySize } from './data-display.models';
 import { NxDataDisplayModule } from './data-display.module';

@@ -17,9 +17,17 @@
                 "plugin:regexp/recommended",
                 "prettier"
             ],
-            "plugins": ["deprecation", "rxjs"],
+            "plugins": ["deprecation", "import", "rxjs", "simple-import-sort"],
             "rules": {
                 "deprecation/deprecation": "warn",
+
+                // ==== import / simple-import-sort ====
+
+                "import/first": "error",
+                "import/newline-after-import": "error",
+                "import/no-duplicates": "error",
+                "simple-import-sort/imports": "error",
+                "simple-import-sort/exports": "error",
 
                 // ==== regexp ====
 
@@ -94,7 +102,6 @@
                 "prefer-object-spread": "error",
                 "radix": "error",
                 "require-unicode-regexp": "off", // TODO check with others
-                "sort-imports": ["off", { "memberSyntaxSortOrder": ["multiple", "all", "single", "none"], "allowSeparatedGroups": true }], // TODO test
                 "spaced-comment": ["error", "always", { "markers": ["/"], "exceptions": ["*"] }],
                 "symbol-description": "error",
                 "yoda": ["error", "never", { "exceptRange": true }],

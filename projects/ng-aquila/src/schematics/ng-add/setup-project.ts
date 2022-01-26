@@ -1,9 +1,10 @@
+import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
 import { JsonArray } from '@angular-devkit/core';
 import { apply, chain, MergeStrategy, mergeWith, move, noop, Rule, SchematicContext, SchematicsException, Tree, url } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { addModuleImportToRootModule, getProjectFromWorkspace, getProjectStyleFile, getProjectTargetOptions } from '@angular/cdk/schematics';
 import { buildDefaultPath, getWorkspace, updateWorkspace } from '@schematics/angular/utility/workspace';
 import * as chalk from 'chalk';
+
 import { isAngularApplicationProject } from '../utils/utils';
 import { Schema } from './schema';
 

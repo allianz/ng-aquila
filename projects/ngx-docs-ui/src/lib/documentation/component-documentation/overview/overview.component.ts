@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
 import { Category, ManifestService } from '../../../service/manifest.service';

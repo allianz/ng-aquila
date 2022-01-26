@@ -1,5 +1,6 @@
 import { Package } from 'dgeni';
 import * as path from 'path';
+
 import { Categorizer } from './processors/categorizer';
 import { ComponentGrouper } from './processors/component-grouper';
 import { DocsPrivateFilter } from './processors/docs-private-filter';

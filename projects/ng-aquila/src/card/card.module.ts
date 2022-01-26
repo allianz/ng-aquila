@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
+import { NxCardComponent } from './card.component';
 import { NxCardFooterComponent } from './card-footer.component';
 import { NxCardHeaderComponent } from './card-header.component';
-import { NxCardComponent } from './card.component';
 import { NxSelectableCardComponent } from './selectable-card.component';
 
 @NgModule({

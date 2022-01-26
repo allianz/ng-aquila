@@ -18,6 +18,7 @@ import {
 } from '@angular/core';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { Observable, Subscription } from 'rxjs';
+
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 
 /**

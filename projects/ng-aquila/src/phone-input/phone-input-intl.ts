@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import countries, { LocalizedCountryNames } from 'i18n-iso-countries';
 import en from 'i18n-iso-countries/langs/en.json';
 import { Subject } from 'rxjs';
+
 countries.registerLocale(en);
 
 @Injectable({ providedIn: 'root' })

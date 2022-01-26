@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NxIconRegistry } from '@aposin/ng-aquila/icon';
+
 import { STATUS_TYPE } from '../../../core/manifest';
 
 @Component({

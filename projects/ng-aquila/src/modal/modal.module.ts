@@ -5,12 +5,13 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxDialogService, NX_MODAL_SCROLL_STRATEGY_PROVIDER } from './dialog/dialog.service';
+
+import { NX_MODAL_SCROLL_STRATEGY_PROVIDER, NxDialogService } from './dialog/dialog.service';
 import { NxModalCloseDirective } from './dialog/modal-close.directive';
 import { NxModalContainer } from './dialog/modal-container.component';
-import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
 import { NxModalActionsDirective, NxModalComponent, NxModalContentDirective } from './modal.component';
 import { NxModalService } from './modal.service';
+import { NxOpenModalOnClickDirective } from './modal-open-on-click.directive';
 
 @NgModule({
     imports: [A11yModule, OverlayModule, PortalModule, CommonModule, NxIconModule],

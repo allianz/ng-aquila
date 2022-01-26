@@ -4,6 +4,7 @@ import * as program from 'commander';
 import * as path from 'path';
 import { concat } from 'rxjs';
 import { auditTime, filter, switchMap, take, tap, toArray } from 'rxjs/operators';
+
 import dgeni from './dgeni/dgeni';
 import examples from './examples/examples';
 import guides from './guides/guides';

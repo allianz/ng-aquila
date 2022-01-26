@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
+
 import { NxvThemeSwitcherComponent } from './theme-switcher.component';
 
 @NgModule({

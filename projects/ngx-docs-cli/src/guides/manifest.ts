@@ -1,6 +1,7 @@
 import { basename, extname } from 'path';
 import { pipe } from 'rxjs';
 import { map, toArray } from 'rxjs/operators';
+
 import { MarkdownFile } from '../shared/markdown-file';
 
 // Generate a json with all component folders we found in lib/

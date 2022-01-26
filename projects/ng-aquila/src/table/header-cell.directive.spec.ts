@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, DebugElement, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
 import { NxHeaderCellDirective } from './header-cell.directive';
 import { NxTableModule } from './table.module';
 

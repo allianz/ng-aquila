@@ -2,6 +2,7 @@ import { Component, HostListener, Input, NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
+
 import { ExampleDescriptor } from './../core/manifest';
 import { ManifestService } from './../service/manifest.service';
 import { ExampleData } from './example-data';

@@ -1,6 +1,7 @@
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NxMenuComponent } from './menu.component';
 import { NxMenuModule } from './menu.module';
 

@@ -3,6 +3,7 @@ import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } fr
 import { ChangeDetectorRef, Component, ComponentRef, EmbeddedViewRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
+
 import { messageToastAnimations } from './message-toast-animations';
 import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from './message-toast-config';
 

@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { NxDropdownControl } from '../dropdown.control';
 import { NxDropdownGroupComponent } from '../group/dropdown-group';
 

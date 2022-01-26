@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { GuideDescriptor, Manifest } from '../../core/manifest';
 import { ManifestService } from '../../service/manifest.service';
 import { DocumentationFrameComponent } from '../documentation-frame.component';
