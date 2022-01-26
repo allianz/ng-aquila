@@ -103,7 +103,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     padding: $padding-top-bottom nx-spacer(2xs);
     top: $value-top;
     background: v(slider-value-background-color);
-    left: $handle-diameter / 2;
+    left: calc(#{$handle-diameter} / 2);
     transform: translateX(-50%);
 
     &:active {
