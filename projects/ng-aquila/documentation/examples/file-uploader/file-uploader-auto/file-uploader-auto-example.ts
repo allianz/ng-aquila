@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import {
     FileItem,
@@ -33,6 +33,9 @@ export class FileUploaderAutoExampleComponent {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
+            headers: new HttpHeaders({
+                'My-Custom-Header': 'custom-header-value',
+            }),
             reportProgress: true,
         },
     };
