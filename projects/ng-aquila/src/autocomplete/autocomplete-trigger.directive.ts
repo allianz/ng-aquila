@@ -546,7 +546,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
         // Simply falling back to an empty string if the display value is falsy does not work properly.
         // The display value can also be the number zero and shouldn't fall back to an empty string.
-        const inputValue = toDisplay != null ? toDisplay : '';
+        const inputValue = toDisplay ?? '';
 
         // If it's used within a `NxFormField` or `NxWord`, we should set it through the property so it can go
         // through change detection.
@@ -590,7 +590,10 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
             throw getNxAutocompleteMissingPanelError();
         }
 
-        if (!this._overlayRef) {
+        if (this._overlayRef) {
+            /** Update the panel width, in case the host width has changed */
+            this._overlayRef.updateSize({ minWidth: this._getHostWidth() });
+        } else {
             this._portal = new TemplatePortal(this.autocomplete.template, this._viewContainerRef);
             this._overlayRef = this._overlay.create(this._getOverlayConfig());
 
@@ -601,9 +604,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
                     }
                 });
             }
-        } else {
-            /** Update the panel width, in case the host width has changed */
-            this._overlayRef.updateSize({ minWidth: this._getHostWidth() });
         }
 
         if (this._overlayRef && !this._overlayRef.hasAttached()) {

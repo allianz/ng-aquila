@@ -185,10 +185,10 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
     /** Expand the current node if it's not expanded. Otherwise move to its first child. */
     expandCurrentFocusedNode() {
         if (this._focusedData && this.treeControl) {
-            if (!this.treeControl.isExpanded(this._focusedData)) {
-                this.treeControl.expand(this._focusedData);
-            } else {
+            if (this.treeControl.isExpanded(this._focusedData)) {
                 this._changeFocusedData(this._getNextVisibleNode());
+            } else {
+                this.treeControl.expand(this._focusedData);
             }
         }
     }

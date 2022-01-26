@@ -43,7 +43,10 @@ export class StackBlitzButton {
     constructor(public manifestService: ManifestService, private stackBlitzWriter: StackBlitzWriter) {}
 
     openStackBlitz(): void {
-        if (!this.stackBlitzForm) {
+        if (this.stackBlitzForm) {
+            // Second click
+            this.submitStackBlitzForm();
+        } else {
             // First click
             this.stackBlitzWriter
                 .constructStackBlitzForm(
@@ -60,9 +63,6 @@ export class StackBlitzButton {
 
                     this.submitStackBlitzForm();
                 });
-        } else {
-            // Second click
-            this.submitStackBlitzForm();
         }
     }
 

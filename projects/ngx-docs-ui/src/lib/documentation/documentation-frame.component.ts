@@ -63,14 +63,12 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         }
 
         this._rabbitHole.showThemeEgg.pipe(takeUntil(this._destroyed)).subscribe(showTheming => {
-            if (!showTheming) {
-                if (themeFromQuery) {
-                    this._themeSwitcherService.switchTheme(themeFromQuery);
-                } else {
-                    this._themeSwitcherService.removeTheming();
-                }
-            } else {
+            if (showTheming) {
                 this._themeSwitcherService.switchTheme(this.selectedTheme);
+            } else if (themeFromQuery) {
+                this._themeSwitcherService.switchTheme(themeFromQuery);
+            } else {
+                this._themeSwitcherService.removeTheming();
             }
             if (!this._featureFlags?.themeSwitcher) {
                 this.showThemingSwitcher = showTheming;

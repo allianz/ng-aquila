@@ -68,7 +68,7 @@ export class NxPageSearchComponent {
         if (this._contentLayout) {
             return this._contentLayout;
         }
-        return !this.hideSearchButton ? '12,12,12,10' : '12';
+        return this.hideSearchButton ? '12' : '12,12,12,10';
     }
 
     constructor(private _cdr: ChangeDetectorRef) {}

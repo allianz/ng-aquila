@@ -29,11 +29,11 @@ export class DocViewerComponent {
     }
 
     updateContent(content: string) {
-        if (!content) {
+        if (content) {
+            this._elementRef.nativeElement.innerHTML = content;
+        } else {
             const codeType = this.id ? this.id : 'code';
             this._elementRef.nativeElement.innerHTML = `<span class="hljs-comment">/** no ${codeType} available for this example. */</span>`;
-        } else {
-            this._elementRef.nativeElement.innerHTML = content;
         }
         this._loadedContent = this._elementRef.nativeElement.textContent;
         this.contentLoaded.emit();

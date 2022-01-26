@@ -54,10 +54,10 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     ngAfterViewInit() {
         if (!this.control) {
             console.warn('You need to pass an input as a control to the password toggle.');
-        } else {
-            // show the right icon according to the initial type of the input
-            this._currentIcon = this.control.type === 'password' ? visibilityIcons['show'] : visibilityIcons['hide'];
+            return;
         }
+        // show the right icon according to the initial type of the input
+        this._currentIcon = this.control.type === 'password' ? visibilityIcons['show'] : visibilityIcons['hide'];
     }
 
     ngOnDestroy() {

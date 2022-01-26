@@ -420,10 +420,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onFilterChange(query: string) {
-        if (!query) {
-            this.listItems = this.options.slice();
-        } else {
+        if (query) {
             this.listItems = this.options.filter(item => this._selectLabel(item).toLowerCase().includes(query.toLowerCase()));
+        } else {
+            this.listItems = this.options.slice();
         }
 
         if (this._isActiveItemFiltered) {

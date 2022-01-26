@@ -307,10 +307,10 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** @docs-private */
     onInputChange(event: Event) {
-        if (!this.validateUserInput((event.target as HTMLInputElement).value)) {
-            this._value = null;
-        } else {
+        if (this.validateUserInput((event.target as HTMLInputElement).value)) {
             this._value = Number((event.target as HTMLInputElement).value);
+        } else {
+            this._value = null;
         }
 
         // setInputValue() should be called so that numberInputValue is updated with the user input

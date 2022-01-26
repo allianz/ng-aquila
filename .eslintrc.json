@@ -71,7 +71,6 @@
                 "no-lone-blocks": "error",
                 "no-lonely-if": "error",
                 "no-multi-str": "error",
-                "no-negated-condition": "off", // TODO check with others
                 "no-new-func": "error",
                 "no-new-object": "error",
                 "no-new-wrappers": "error",

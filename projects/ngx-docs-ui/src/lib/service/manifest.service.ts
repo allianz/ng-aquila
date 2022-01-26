@@ -118,11 +118,11 @@ export class ManifestService {
     update(value: Manifest) {
         this._current = value;
 
-        if (!this.isEmpty()) {
+        if (this.isEmpty()) {
+            this.available.next(false);
+        } else {
             this._manifestChanges.next(this._current);
             this.available.next(true);
-        } else {
-            this.available.next(false);
         }
     }
 

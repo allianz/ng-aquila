@@ -186,6 +186,6 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** @docs-private */
     getIconName(rating: number) {
-        return 'star' + (!this.isSelected(rating) ? '-o' : '');
+        return 'star' + (this.isSelected(rating) ? '' : '-o');
     }
 }

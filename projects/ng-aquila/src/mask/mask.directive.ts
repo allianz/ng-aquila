@@ -74,10 +74,10 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     private _validatorOnChange = () => {};
 
     private _callOnChangeCallback() {
-        if (!this.dropSpecialCharacters) {
-            this._onChangeCallback(this._elementRef.nativeElement.value);
-        } else {
+        if (this.dropSpecialCharacters) {
             this._onChangeCallback(this.getUnmaskedValue());
+        } else {
+            this._onChangeCallback(this._elementRef.nativeElement.value);
         }
     }
 
@@ -354,11 +354,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
             this._cursor = null;
         } else if (this._cursor?.selectionStart !== undefined) {
             // only one character can be entered (except pasting, this is calculated in _onPaste())
-            if (oldVal !== input.value) {
-                const newPosition = this._cursor.selectionStart + this._calculateCursorShift(this._cursor.selectionStart);
-                input.setSelectionRange(newPosition, newPosition);
-                this._cursor = null;
-            } else {
+            if (oldVal === input.value) {
                 // we always have to set the cursor position here even if nothing changed
                 // because otherwise the cursor would jump to the end of the input.
                 // if the cursor is placed in front of a separator and the user types a non-allowed character,
@@ -368,6 +364,10 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
                     currentPosition++;
                 }
                 input.setSelectionRange(currentPosition, currentPosition);
+                this._cursor = null;
+            } else {
+                const newPosition = this._cursor.selectionStart + this._calculateCursorShift(this._cursor.selectionStart);
+                input.setSelectionRange(newPosition, newPosition);
                 this._cursor = null;
             }
         }
