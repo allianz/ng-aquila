@@ -23,9 +23,7 @@ describe('NxIsoDateAdapter', () => {
     );
 
     beforeEach(inject([NxDateAdapter], (dateAdapter: NxIsoDateAdapter) => {
-        dayjs.locale('en');
         adapter = dateAdapter;
-        adapter.setLocale('en');
 
         assertValidDate = (d: string | null, valid: boolean) => {
             expect(adapter.isDateInstance(d)).not.toBeNull();
@@ -34,9 +32,8 @@ describe('NxIsoDateAdapter', () => {
     }));
 
     describe('Localization', () => {
-        beforeEach(() => {
-            adapter.setLocale('de');
-            dayjs.locale('de');
+        beforeEach(async () => {
+            await adapter.setLocale('de');
         });
 
         it('should parse locale date with explicit format', () => {
@@ -56,17 +53,17 @@ describe('NxIsoDateAdapter', () => {
     });
 
     describe('Localization with locale id that is unknown to dayjs', () => {
-        it('should automatically fall back to a locale that is known to dayjs', () => {
+        it('should automatically fall back to a locale that is known to dayjs', async () => {
             // 'de-BY' is unknwon to dayjs (and the world). The IsoDateAdapter should fall back to 'de'.
-            adapter.setLocale('de-BY');
+            await adapter.setLocale('de-BY');
             const date = adapter.parse('01.12.2020', 'MM.DD.YYYY', true);
             expect(date).toBe('2020-01-12');
         });
     });
 
     describe('Localization with a different format between global day.js and the adapter', () => {
-        beforeEach(() => {
-            adapter.setLocale('de');
+        beforeEach(async () => {
+            await adapter.setLocale('de');
             dayjs.locale('en');
         });
 
@@ -105,9 +102,9 @@ describe('NxIsoDateAdapter', () => {
         assertValidDate(adapter.deserialize('2017-01-01'), true);
     });
 
-    it('setLocale should not modify global moment locale', () => {
+    it('setLocale should not modify global moment locale', async () => {
         expect(dayjs.locale()).toBe('en');
-        adapter.setLocale('de');
+        await adapter.setLocale('de');
         expect(dayjs.locale()).toBe('en');
     });
 

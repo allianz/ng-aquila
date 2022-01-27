@@ -33,8 +33,6 @@ Momentjs ships with every locale thus significantly increasing the bundle size. 
 
 The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.
 
-For localization you have to import the locales yourself. `en` is the default locale. To add e.g. german you use `import 'dayjs/locale/de'`.
-
 Please install the `dayjs` package to use this adapter.
 
 #### Native Date
