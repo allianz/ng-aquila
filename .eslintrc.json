@@ -17,17 +17,18 @@
                 "plugin:regexp/recommended",
                 "prettier"
             ],
-            "plugins": ["deprecation", "import", "rxjs", "simple-import-sort"],
+            "plugins": ["deprecation", "import", "rxjs", "simple-import-sort", "unused-imports"],
             "rules": {
                 "deprecation/deprecation": "warn",
 
-                // ==== import / simple-import-sort ====
+                // ==== imports ====
 
                 "import/first": "error",
                 "import/newline-after-import": "error",
                 "import/no-duplicates": "error",
                 "simple-import-sort/imports": "error",
                 "simple-import-sort/exports": "error",
+                "unused-imports/no-unused-imports": "error",
 
                 // ==== regexp ====
 
