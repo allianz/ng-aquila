@@ -9,6 +9,7 @@ import {
     ContentChild,
     ContentChildren,
     EventEmitter,
+    HostListener,
     NgZone,
     OnDestroy,
     Output,
@@ -76,6 +77,11 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     /** Event emitted when the menu is closed. */
     @Output() readonly closed: EventEmitter<void | 'click' | 'keydown' | 'tab'> = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
+
+    @HostListener('click')
+    private _onClick(event: Event) {
+        event.preventDefault();
+    }
 
     constructor(private _ngZone: NgZone) {}
 

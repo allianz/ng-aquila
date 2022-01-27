@@ -22,6 +22,13 @@ export const MENU_PANEL_OFFSET_X = 8;
 
 export type NxContextMenuScrollStrategy = 'close' | 'reposition';
 
+export type NxContextMenuMode = 'button' | 'cursor';
+
+interface Point {
+    x: number;
+    y: number;
+}
+
 /**
  * This directive is intended to be used in conjunction with an nx-context-menu tag.
  * It is responsible for toggling the display of the provided context menu instance.
@@ -34,6 +41,7 @@ export type NxContextMenuScrollStrategy = 'close' | 'reposition';
         '(mousedown)': '_handleMousedown($event)',
         '(keydown)': '_handleKeydown($event)',
         '(click)': '_handleClick($event)',
+        '(contextmenu)': '_handleRightClick($event)',
     },
     exportAs: 'nxContextMenuTrigger',
 })
@@ -95,6 +103,14 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
 
     /** Data to be passed along to any lazily-rendered content. */
     @Input('nxContextMenuTriggerData') contextMenuData!: object;
+
+    /**
+     * Sets the mode of this context menu trigger.
+     * 'button' (default): Opens by clicking the trigger
+     * 'cursor': Opens at the cursor position by right clicking anywhere on the trigger.
+     */
+    @Input('nxContextMenuTriggerMode')
+    mode: NxContextMenuMode = 'button';
 
     /** Event emitted when the associated context menu is opened. */
     @Output() readonly contextMenuOpened: EventEmitter<void> = new EventEmitter<void>();
@@ -159,7 +175,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     }
 
     /** Opens the context menu. */
-    openContextMenu(origin?: FocusOrigin): void {
+    openContextMenu(origin?: FocusOrigin, position?: Point): void {
         if (this.contextMenuOpen) {
             return;
         }
@@ -169,7 +185,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
         const overlayRef = this._createOverlay();
         const overlayConfig = overlayRef.getConfig();
 
-        this._setPosition(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy);
+        if (position) {
+            this._setPositionToCursor(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy, position);
+        } else {
+            this._setPosition(overlayConfig.positionStrategy as FlexibleConnectedPositionStrategy);
+        }
+
         overlayRef.attach(this._getPortal());
 
         if (this.contextMenu.lazyContent) {
@@ -310,6 +331,41 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     }
 
     /**
+     * Sets the position on a position strategy so the overlay is placed at the cursor.
+     * @param positionStrategy Strategy whose position to update.
+     * @param position Position of the cursor.
+     */
+    private _setPositionToCursor(positionStrategy: FlexibleConnectedPositionStrategy, cursorPosition: Point) {
+        positionStrategy.setOrigin(cursorPosition);
+        positionStrategy.withPositions([
+            {
+                overlayX: 'start',
+                overlayY: 'top',
+                originX: 'center',
+                originY: 'center',
+            },
+            {
+                overlayX: 'start',
+                overlayY: 'bottom',
+                originX: 'center',
+                originY: 'center',
+            },
+            {
+                overlayX: 'end',
+                overlayY: 'top',
+                originX: 'center',
+                originY: 'center',
+            },
+            {
+                overlayX: 'end',
+                overlayY: 'bottom',
+                originX: 'center',
+                originY: 'center',
+            },
+        ]);
+    }
+
+    /**
      * Sets the appropriate positions on a position strategy
      * so the overlay connects with the trigger correctly.
      * @param positionStrategy Strategy whose position to update.
@@ -405,8 +461,28 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
         }
     }
 
+    _handleRightClick(event: MouseEvent) {
+        if (this.mode !== 'cursor') {
+            return;
+        }
+
+        event.preventDefault();
+        if (this._contextMenuOpen) {
+            this.closeContextMenu();
+        }
+        const position = {
+            x: event.clientX,
+            y: event.clientY,
+        };
+        this.openContextMenu('mouse', position);
+    }
+
     /** Handles key presses on the trigger. */
     _handleKeydown(event: KeyboardEvent): void {
+        if (this.mode !== 'button') {
+            return;
+        }
+
         const keyCode = event.keyCode;
 
         if (this.triggersSubmenu() && ((keyCode === RIGHT_ARROW && this.dir === 'ltr') || (keyCode === LEFT_ARROW && this.dir === 'rtl'))) {
@@ -416,6 +492,11 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
 
     /** Handles click events on the trigger. */
     _handleClick(event: MouseEvent): void {
+        if (this.mode !== 'button') {
+            return;
+        }
+        event.preventDefault();
+
         const origin: FocusOrigin = event.detail ? 'program' : 'keyboard';
 
         if (this.triggersSubmenu()) {
@@ -431,8 +512,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     private _waitForClose() {
         return this._documentClickObservable
             .pipe(
+                filter(event => !event.defaultPrevented),
                 map(event => _getEventTarget(event)),
-                filter(target => !this._element.nativeElement.contains(target as Node | null)),
                 takeUntil(this.contextMenu.closed),
             )
             .subscribe(() => {

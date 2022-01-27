@@ -67,6 +67,12 @@ To use a custom scroll container instead of the body element, [add cdkScrollable
 
 <!-- example(context-menu-scroll-strategy) -->
 
+### Right click
+
+You can set the mode of the context menu to `cursor` to be able to open it via right click. Be aware that this can cause usability issues and it is only recommended to use this in combination with a visible button.
+
+<!-- example(context-menu-cursor-mode) -->
+
 ### Keyboard interaction
 
 -   DOWN_ARROW: Focuses the next menu item
