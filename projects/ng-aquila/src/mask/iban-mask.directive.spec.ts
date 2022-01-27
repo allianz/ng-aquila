@@ -52,7 +52,7 @@ describe('NxIbanMaskDirective', () => {
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BasicIbanMaskComponent, FormIbanMaskComponent, FormWithInitalIbanMaskComponent],
+                declarations: [BasicIbanMaskComponent, FormIbanMaskComponent, FormWithInitalIbanMaskComponent, FormIbanOnBlurMaskComponent],
                 imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
             }).compileComponents();
         }),
@@ -283,6 +283,20 @@ describe('NxIbanMaskDirective', () => {
             expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
         });
 
+        it('should set nxIbanInvalidCountryError error for non-existing country code (on-blur validation mode)', () => {
+            createTestComponent(FormIbanOnBlurMaskComponent);
+            const maskInput = testInstance.testForm.controls.maskInput;
+            const invalidIbanErrorKey = 'nxIbanInvalidCountryError';
+
+            assertInputValue(nativeElement, 'G', 'G');
+
+            expect(maskInput.getError(invalidIbanErrorKey)).toBeUndefined();
+
+            assertInputValue(nativeElement, 'GD', 'GD');
+
+            expect(maskInput.getError(invalidIbanErrorKey)).toBeTruthy();
+        });
+
         it('should mark as invalid if iban is not valid', () => {
             createTestComponent(FormIbanMaskComponent);
 
@@ -452,5 +466,18 @@ class FormIbanMaskComponent extends IbanMaskTest {}
 class FormWithInitalIbanMaskComponent extends IbanMaskTest {
     testForm: FormGroup = new FormGroup({
         maskInput: new FormControl('NL91 ABNA 0417 1643 00', {}),
+    });
+}
+
+@Component({
+    template: `
+        <form [formGroup]="testForm">
+            <input nxMask nxIbanMask formControlName="maskInput" [validateMask]="validateMask" />
+        </form>
+    `,
+})
+class FormIbanOnBlurMaskComponent extends IbanMaskTest {
+    testForm: FormGroup = new FormGroup({
+        maskInput: new FormControl('', { updateOn: 'blur' }),
     });
 }
