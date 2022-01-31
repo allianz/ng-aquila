@@ -1,8 +1,8 @@
 @import '../../../../ng-aquila/src/shared-styles/index';
 
-$icon-diameter: nx-spacer(m);
-$up-icon-shift: -3px;
-$down-icon-shift: $up-icon-shift + nx-spacer(2xs);
+$icon-width: 9px; // approximation: chevron icon svg path
+$up-icon-shift: -4px; // approximation: icon position
+$down-icon-shift: 5px; // approximation: icon position
 
 :host {
     cursor: pointer;
@@ -10,22 +10,21 @@ $down-icon-shift: $up-icon-shift + nx-spacer(2xs);
 
 .nx-sort-header__icons-container {
     display: inline-block;
-    margin-right: nx-spacer(2xs);
+    margin-right: nx-spacer(s);
     vertical-align: bottom;
-    width: $icon-diameter;
+    width: $icon-width;
     position: relative;
-    height: $icon-diameter;
 
     :host-context([dir='rtl']) & {
         margin-right: initial;
-        margin-left: nx-spacer(2xs);
+        margin-left: nx-spacer(s);
     }
 
     nx-icon {
         font-size: nx-font-size(xs);
         position: absolute;
         font-weight: nx-font-weight(semibold);
-        width: $icon-diameter;
+        width: $icon-width;
     }
 
     .nx-sort-header__icon-up {
