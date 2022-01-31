@@ -442,6 +442,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
         this._subscribeToFileChanges();
 
+        this.validatorFnArray = []; // bugfix: kick invalid type error on file remove
         this._resetValidators(true);
         this._cdr.markForCheck();
 
