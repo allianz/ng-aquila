@@ -18,7 +18,7 @@
     (focus)="_inputFocused = true"
     (keydown)="_onKeydown($event)"
 >
-    <span class="value-text">{{ _getValueText() }}</span>
+    <span class="value-text">{{ empty ? placeholder : _getValueText() }}</span>
     <span>{{ selectedItems.size ? '(' + selectedItems.size + ')' : '' }}</span>
     <nx-icon size="s" aria-hidden="true" class="indicator" name="chevron-down"></nx-icon>
 </div>
