@@ -251,9 +251,7 @@ describe('NxMultiStepperComponent', () => {
         it('renders the steps', () => {
             const steps: any[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
 
-            steps.forEach((step: HTMLElement) => {
-                expect(step.classList.contains('.nx-multi-step-item--vertical'));
-            });
+            steps.forEach((step: HTMLElement) => expect(step.classList.contains('.nx-multi-step-item--vertical')));
         });
 
         it('should set tabindexes correctly', () => {

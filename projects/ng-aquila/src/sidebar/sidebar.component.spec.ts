@@ -206,6 +206,7 @@ describe('NxSidebarComponent', () => {
                     expect(sidebarInstance.open).toBe(false);
                 });
             });
+
             describe('and pressing LEFT_ARROW', () => {
                 beforeEach(() => {
                     sidebarHandleElement.nativeElement.focus();

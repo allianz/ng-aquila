@@ -160,34 +160,45 @@ describe('NxAutocompleteComponent:', () => {
 
     it('should support binding by ngModel', done => {
         createTestComponent(NgModelBindingAutocompleteComponent);
-        fixture.whenStable().then(() => {
-            typeInput('A');
-            fixture.whenStable().then(() => {
-                getAutocompleteItems().item(1).click();
-                const component = testInstance as NgModelBindingAutocompleteComponent;
-                expect(component.aValue).toBe('AA');
-                done();
-            });
-        });
+        fixture
+            .whenStable()
+            .then(() => {
+                typeInput('A');
+                fixture
+                    .whenStable()
+                    .then(() => {
+                        getAutocompleteItems().item(1).click();
+                        const component = testInstance as NgModelBindingAutocompleteComponent;
+                        expect(component.aValue).toBe('AA');
+                        done();
+                    })
+                    .catch(done.fail);
+            })
+            .catch(done.fail);
     });
 
     it('should support reactive forms', done => {
         createTestComponent(ReactiveAutocompleteComponent);
         typeInput('A');
-        fixture.whenStable().then(() => {
-            getAutocompleteItems().item(1).click();
-            const component = testInstance as ReactiveAutocompleteComponent;
-            expect(component.testForm.get('autocomplete')!.value).toBe('AA');
-            done();
-        });
+        fixture
+            .whenStable()
+            .then(() => {
+                getAutocompleteItems().item(1).click();
+                const component = testInstance as ReactiveAutocompleteComponent;
+                expect(component.testForm.get('autocomplete')!.value).toBe('AA');
+                done();
+            })
+            .catch(done.fail);
     });
 
     it('Should fit to content width', fakeAsync(() => {
         createTestComponent(BasicAutocompleteComponent);
         typeInput('A');
         flush();
+
+        const contentWidth = fixture.elementRef.nativeElement.getBoundingClientRect().width;
         getAutocompleteItems().forEach(item => {
-            expect(item.offsetWidth < fixture.elementRef.nativeElement.getBoundingClientRect().width).toBe(true);
+            expect(item.offsetWidth).toBeLessThan(contentWidth);
         });
     }));
 

@@ -395,7 +395,7 @@ describe('NxTooltipDirective', () => {
             tick(150);
 
             const spy = jasmine.createSpy('complete spy');
-            const subscription = tooltipDirective._tooltipInstance?.afterHidden().subscribe(undefined, undefined, spy);
+            const subscription = tooltipDirective._tooltipInstance?.afterHidden().subscribe({ complete: spy });
 
             tooltipDirective.hide(0);
             tick(200);
@@ -679,7 +679,6 @@ describe('NxTooltipDirective', () => {
             tick(100);
             fixture.detectChanges();
 
-            expect(inZoneSpy).toHaveBeenCalled();
             expect(inZoneSpy).toHaveBeenCalledWith(true);
         }));
     });

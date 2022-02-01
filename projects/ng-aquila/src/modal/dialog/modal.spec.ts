@@ -782,7 +782,7 @@ describe('NxDialog', () => {
         });
         viewContainerFixture.detectChanges();
 
-        expect(resolver.resolveComponentFactory).toHaveBeenCalled();
+        expect(resolver.resolveComponentFactory).toHaveBeenCalledWith(PizzaMsg);
     }));
 
     it('should return the current state of the dialog', fakeAsync(() => {
@@ -1043,6 +1043,7 @@ describe('NxDialog', () => {
     describe('focus management', () => {
         // When testing focus, all of the elements must be in the DOM.
         beforeEach(() => document.body.appendChild(overlayContainerElement));
+
         afterEach(() => document.body.removeChild(overlayContainerElement));
 
         it('should focus the first tabbable element of the dialog on open', fakeAsync(() => {

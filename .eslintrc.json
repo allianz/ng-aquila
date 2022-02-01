@@ -180,6 +180,21 @@
             }
         },
         {
+            "files": ["*.spec.ts"],
+            "extends": ["plugin:jasmine/recommended"],
+            "plugins": ["jasmine"],
+            "rules": {
+                // ==== jasmine ====
+
+                "jasmine/new-line-before-expect": "off", // does not ignore arrow fuctions
+                "jasmine/no-suite-dupes": "off", // false positives
+                "jasmine/no-spec-dupes": "off", // false positives
+                "jasmine/no-unsafe-spy": "off", // TODO check with others
+                "jasmine/prefer-toBeUndefined": "warn",
+                "jasmine/prefer-toHaveBeenCalledWith": "off" // TODO check with others, sometimes not intuitive undefined
+            }
+        },
+        {
             "files": ["*.html"],
             "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {

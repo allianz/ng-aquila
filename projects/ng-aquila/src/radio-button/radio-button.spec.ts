@@ -124,7 +124,7 @@ describe('NxRadioComponent', () => {
             const latestCall = changeHandler.calls.mostRecent();
             const returnValue = latestCall.args[0];
 
-            expect(changeHandler).toHaveBeenCalled();
+            expect(changeHandler).toHaveBeenCalledWith(returnValue);
             expect(returnValue.source).toEqual(instance);
 
             subscription.unsubscribe();

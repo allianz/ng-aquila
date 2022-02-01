@@ -20,7 +20,14 @@ const JAN = 0,
 
 describe('NxMomentDateAdapter', () => {
     let adapter: NxMomentDateAdapter;
-    let assertValidDate: (d: moment.Moment | null, valid: boolean) => void;
+
+    function assertValidDate(date: moment.Moment | null, valid: boolean): void {
+        expect(adapter.isDateInstance(date)).not.toBeNull(`Expected ${date} to be a date instance`);
+        expect(adapter.isValid(date as moment.Moment)).toBe(
+            valid,
+            `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`,
+        );
+    }
 
     beforeEach(
         waitForAsync(() => {
@@ -34,14 +41,6 @@ describe('NxMomentDateAdapter', () => {
         moment.locale('en');
         adapter = dateAdapter;
         adapter.setLocale('en');
-
-        assertValidDate = (d: moment.Moment | null, valid: boolean) => {
-            expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
-            expect(adapter.isValid(d as moment.Moment)).toBe(
-                valid,
-                `Expected ${d} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`,
-            );
-        };
     }));
 
     it('should get year', () => {

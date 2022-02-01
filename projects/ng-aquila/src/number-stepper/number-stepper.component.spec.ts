@@ -535,15 +535,19 @@ describe('NxNumberStepperComponent', () => {
                 testInstance.disabled = true;
                 fixture.detectChanges();
             });
+
             it('disables up button', () => {
                 expect(upButton.disabled).toBe(true);
             });
+
             it('disables down button', () => {
                 expect(downButton.disabled).toBe(true);
             });
+
             it('disables input', () => {
                 expect(inputElement.disabled).toBe(true);
             });
+
             it('sets host class to .is-disabled', () => {
                 expect(stepperNativeElement.classList).toContain('is-disabled');
             });

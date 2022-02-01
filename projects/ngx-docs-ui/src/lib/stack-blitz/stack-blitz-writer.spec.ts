@@ -108,6 +108,7 @@ describe('StackBlitzWriter', () => {
             const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
             expect(result).toBe('<img src="https://aposin.github.io/ng-aquila/assets/images/blah.jpeg" />');
         });
+
         it('converts path to absolute for logos', () => {
             const fakeFileContents = '<img src="assets/logos/blah.svg" />';
             const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);

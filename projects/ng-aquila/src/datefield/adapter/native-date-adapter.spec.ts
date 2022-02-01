@@ -13,7 +13,11 @@ const SUPPORTS_INTL = typeof Intl !== 'undefined';
 describe('NxNativeDateAdapter', () => {
     let platform: any;
     let adapter: NxNativeDateAdapter;
-    let assertValidDate: (d: Date | null, valid: boolean) => void;
+
+    function assertValidDate(date: Date | null, valid: boolean): void {
+        expect(adapter.isDateInstance(date)).not.toBeNull(`Expected ${date} to be a date instance`);
+        expect(adapter.isValid(date as Date)).toBe(valid, `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`);
+    }
 
     beforeEach(
         waitForAsync(() => {
@@ -26,11 +30,6 @@ describe('NxNativeDateAdapter', () => {
     beforeEach(inject([NxDateAdapter, Platform], (dateAdapter: NxNativeDateAdapter, _platform: Platform) => {
         adapter = dateAdapter;
         platform = _platform;
-
-        assertValidDate = (d: Date | null, valid: boolean) => {
-            expect(adapter.isDateInstance(d)).not.toBeNull(`Expected ${d} to be a date instance`);
-            expect(adapter.isValid(d as Date)).toBe(valid, `Expected ${d} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`);
-        };
     }));
 
     it('should get year', () => {

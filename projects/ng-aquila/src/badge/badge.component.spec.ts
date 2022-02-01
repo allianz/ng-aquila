@@ -35,22 +35,26 @@ describe('NxBadgeComponent', () => {
             }).compileComponents();
         }),
     );
+
     describe('basic', () => {
         it('should create', () => {
             createTestComponent(DefaultBadgeComponent);
             expect(badgeInstance).toBeTruthy();
         });
+
         it('should change the className according to the input', () => {
             createTestComponent(DefaultBadgeComponent);
             expect(badgeNativeElement.classList.contains('nx-badge--active')).toBe(true);
             setType('critical');
             expect(badgeNativeElement.classList.contains('nx-badge--critical')).toBe(true);
         });
+
         it('should provide vibrant styling', () => {
             createTestComponent(VibrantBadgeComponent);
             expect(badgeNativeElement.classList.contains('nx-badge--vibrant'));
         });
     });
+
     describe('programmatic changes', () => {
         it('should change the type', () => {
             createTestComponent(BasicBadgeComponent);

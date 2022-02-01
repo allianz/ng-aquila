@@ -220,8 +220,6 @@ describe('NxCalendarComponent', () => {
 
                 beforeEach(() => {
                     calendarBodyEl = calendarElement.querySelector('.nx-calendar-content') as HTMLElement;
-                    expect(calendarBodyEl).not.toBeNull();
-
                     dispatchFakeEvent(calendarBodyEl, 'focus');
                     fixture.detectChanges();
                 });
@@ -239,11 +237,11 @@ describe('NxCalendarComponent', () => {
                         dispatchMouseEvent(periodButton, 'click');
                         fixture.detectChanges();
 
-                        expect(calendarInstance._currentView).toBe('multi-year');
-
                         (calendarBodyEl.querySelector('.nx-calendar-body-active') as HTMLElement).click();
                         fixture.detectChanges();
+                    });
 
+                    it('should set current view to year', () => {
                         expect(calendarInstance._currentView).toBe('year');
                     });
 
@@ -266,7 +264,9 @@ describe('NxCalendarComponent', () => {
                     beforeEach(() => {
                         dispatchMouseEvent(periodButton, 'click');
                         fixture.detectChanges();
+                    });
 
+                    it('should set current view to multi-year', () => {
                         expect(calendarInstance._currentView).toBe('multi-year');
                     });
 
@@ -476,7 +476,6 @@ describe('NxCalendarComponent', () => {
 
             beforeEach(() => {
                 tableBodyEl = calendarElement.querySelector('.nx-calendar-body') as HTMLElement;
-                expect(tableBodyEl).not.toBeNull();
 
                 dispatchFakeEvent(tableBodyEl, 'focus');
                 fixture.detectChanges();

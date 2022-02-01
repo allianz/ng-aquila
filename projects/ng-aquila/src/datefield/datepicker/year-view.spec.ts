@@ -106,7 +106,7 @@ describe('NxYearView', () => {
             testComponent.date = new Date(2017, JUL, 31);
             fixture.detectChanges();
 
-            expect(testComponent.yearView._monthSelected(JUN));
+            testComponent.yearView._monthSelected(JUN);
             fixture.detectChanges();
 
             expect(adapter.sameDate(testComponent.selected, new Date(2017, JUN, 30))).toBeTruthy();
@@ -130,7 +130,6 @@ describe('NxYearView', () => {
                 beforeEach(() => {
                     calendarInstance = fixture.componentInstance;
                     calendarBodyEl = fixture.debugElement.nativeElement.querySelector('.nx-calendar-body') as HTMLElement;
-                    expect(calendarBodyEl).not.toBeNull();
                     dir.value = 'ltr';
                     fixture.componentInstance.date = new Date(2017, JAN, 5);
                     dispatchFakeEvent(calendarBodyEl, 'focus');

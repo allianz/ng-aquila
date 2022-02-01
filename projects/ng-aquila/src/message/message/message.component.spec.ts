@@ -98,6 +98,7 @@ describe('NxMessageComponent', () => {
         it('should emit a `close` event on click', () => {
             createTestComponent(ClosableMessageComponent);
             spyOn(componentInstance.closeEvent, 'emit');
+
             const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
             dispatchMouseEvent(closeButton, 'click');
             fixture.detectChanges();

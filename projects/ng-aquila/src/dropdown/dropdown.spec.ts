@@ -611,7 +611,7 @@ describe('NxDropdownComponent', () => {
         it('should not check the checkboxes in multiselect if nothing is selected', fakeAsync(() => {
             createTestComponent(MultiSelectDropdownComponent);
             openDropdownByClick();
-            getMultiselectCheckboxeStates().every(state => expect(state).toBeFalsy() as any);
+            getMultiselectCheckboxeStates().forEach(state => expect(state).toBeFalsy());
         }));
 
         it('should select and deselect the checkboxes correctly in multiselect', fakeAsync(() => {

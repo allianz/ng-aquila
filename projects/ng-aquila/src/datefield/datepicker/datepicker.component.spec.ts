@@ -90,6 +90,7 @@ describe('NxDatepicker', () => {
                     expect(direction).toBe('rtl');
                 }));
             });
+
             describe('when ancestor directionality changes', () => {
                 it('closes datepicker popup and removes ref', fakeAsync(() => {
                     const [fakeDirectionality, changeEmitter] = fakeDirectionalityFactory('ltr', true);

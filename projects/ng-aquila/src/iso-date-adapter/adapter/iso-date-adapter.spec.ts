@@ -12,7 +12,11 @@ dayjs.extend(localeData);
 
 describe('NxIsoDateAdapter', () => {
     let adapter: NxIsoDateAdapter;
-    let assertValidDate: (d: string | null, valid: boolean) => void;
+
+    function assertValidDate(date: string | null, valid: boolean): void {
+        expect(adapter.isDateInstance(date)).not.toBeNull();
+        expect(adapter.isValid(date as string)).toBe(valid);
+    }
 
     beforeEach(
         waitForAsync(() => {
@@ -24,11 +28,6 @@ describe('NxIsoDateAdapter', () => {
 
     beforeEach(inject([NxDateAdapter], (dateAdapter: NxIsoDateAdapter) => {
         adapter = dateAdapter;
-
-        assertValidDate = (d: string | null, valid: boolean) => {
-            expect(adapter.isDateInstance(d)).not.toBeNull();
-            expect(adapter.isValid(d as string)).toBe(valid);
-        };
     }));
 
     describe('Localization', () => {

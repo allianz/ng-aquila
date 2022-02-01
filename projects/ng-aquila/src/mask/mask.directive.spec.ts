@@ -852,6 +852,7 @@ describe('NxMaskDirective', () => {
             setMask('AAAA');
             assertInputValue(nativeElement, 'TeSt', 'TeSt');
         });
+
         it('should change the user input', () => {
             createTestComponent(ConfigurableMaskComponent);
             setMask('AAAA');

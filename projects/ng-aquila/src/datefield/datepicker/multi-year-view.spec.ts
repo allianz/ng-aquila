@@ -92,7 +92,6 @@ describe('NxMultiYearView', () => {
                 beforeEach(() => {
                     calendarInstance = fixture.componentInstance;
                     calendarBodyEl = fixture.debugElement.nativeElement.querySelector('.nx-calendar-body') as HTMLElement;
-                    expect(calendarBodyEl).not.toBeNull();
                     dir.value = 'ltr';
                     fixture.componentInstance.date = new Date(2017, JAN, 1);
                     dispatchFakeEvent(calendarBodyEl, 'focus');

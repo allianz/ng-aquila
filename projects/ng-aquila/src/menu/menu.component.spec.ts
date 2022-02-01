@@ -31,7 +31,7 @@ describe(NxMenuComponent.name, () => {
 
     function expectOpenMenu(open: boolean) {
         expect(menuInstance.open).toBe(open);
-        expect(getMenuWrapper() !== null).toBe(open);
+        expect(!!getMenuWrapper()).toBe(open);
     }
 
     beforeEach(

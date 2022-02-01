@@ -333,6 +333,7 @@ describe('NxTimefieldComponent', () => {
             expect(timefieldInstance.hours).toBe('00');
             expect(inputElementHours.value).toBe('00');
         }));
+
         it('should zero pad the minutes field if the value is <10', fakeAsync(() => {
             createTestComponent(SimpleTimefield);
             inputElementMinutes.value = '0';
@@ -375,6 +376,7 @@ describe('NxTimefieldComponent', () => {
             expect(reactInstance.testForm.status).toBe('VALID');
         }));
     });
+
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(SimpleTimefield);

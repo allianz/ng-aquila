@@ -57,7 +57,7 @@ describe('NxSingleStepperComponent', () => {
 
     it('should show a title', fakeAsync(() => {
         createTestComponent(SingleStepTitleTest);
-        expect(fixture.nativeElement.innerText.indexOf('MyTitle') > -1).toBeTruthy();
+        expect(fixture.nativeElement.innerText.indexOf('MyTitle')).toBeGreaterThan(-1);
     }));
 
     it('should move to the next step on click', fakeAsync(() => {
