@@ -10,7 +10,6 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
     templateUrl: 'progress.component.html',
     styleUrls: ['../progress-stepper.component.scss', './progress.component.scss'],
     providers: [{ provide: NxProgressStepperDirective, useExisting: NxProgressStepperComponent }],
-    preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxProgressStepperComponent extends NxProgressStepperDirective {

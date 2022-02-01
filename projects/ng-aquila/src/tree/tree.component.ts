@@ -284,6 +284,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         } else if (index > 0) {
             return this._getLastChild(nodeList![index - 1]);
         }
+        return undefined;
     }
 
     /** Returns the next visible tree node data of current focused data. */
@@ -332,6 +333,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
                 }
             }
         }
+        return undefined;
     }
 
     /**

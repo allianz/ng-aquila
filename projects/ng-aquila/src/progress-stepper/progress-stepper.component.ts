@@ -31,7 +31,6 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
     templateUrl: 'progress-stepper.component.html',
     exportAs: 'nxStep',
     providers: [{ provide: ErrorStateMatcher, useExisting: NxStepComponent }],
-    preserveWhitespaces: false,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {

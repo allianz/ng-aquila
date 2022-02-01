@@ -1,10 +1,7 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "../../dist/out-tsc"
-    },
-    "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true
+        "outDir": "../../out-tsc/app"
     },
     "files": ["src/main.ts", "src/polyfills.ts"],
     "typeRoots": ["node_modules/@types", "typings.d.ts"],

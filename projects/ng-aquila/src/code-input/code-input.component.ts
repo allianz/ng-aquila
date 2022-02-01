@@ -159,6 +159,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
 
             return value;
         }
+        return undefined;
     }
 
     /** Reacts to keydown event. */

@@ -2,9 +2,9 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "strict": true,
         "baseUrl": "./",
-        "outDir": "./dist/out-tsc",
+        "outDir": "./out-tsc",
+        "forceConsistentCasingInFileNames": true,
         "sourceMap": true,
         "declaration": false,
         "downlevelIteration": true,
@@ -21,12 +21,16 @@
             "@aposin/ngx-docs-ui": ["projects/ngx-docs-ui/src/public-api.ts"],
             "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
         },
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "noPropertyAccessFromIndexSignature": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "strict": true
     },
     "angularCompilerOptions": {
-        "strictTemplates": true,
+        "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
-        "fullTemplateTypeCheck": true
+        "strictTemplates": true
     }
 }

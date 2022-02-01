@@ -472,7 +472,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     /** @docs-private */
     _controlInvalid(): boolean {
         const parent = this._parentFormGroup || this._parentForm;
-        let control = null;
+        let control: FormControl | NgControl | null = null; // TODO this doesn't seem correct
 
         if (this.checkboxGroup?.ngControl) {
             control = this.checkboxGroup.ngControl;

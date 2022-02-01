@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
+        "outDir": "../../dist/ngx-docs-cli",
         "module": "commonjs",
         "target": "es5",
-        "outDir": "../../dist/ngx-docs-cli",
         "lib": ["es2017", "es2019"],
         "sourceMap": true
     },

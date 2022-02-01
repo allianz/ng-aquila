@@ -23,13 +23,7 @@ import { NxMultiStepItemComponent } from './multi-step-item.component';
     selector: 'nx-multi-stepper',
     templateUrl: './multi-step.component.html',
     styleUrls: ['../progress-stepper.component.scss', './multi-step.component.scss'],
-    providers: [
-        {
-            provide: NxProgressStepperDirective,
-            useExisting: NxMultiStepperComponent,
-        },
-    ],
-    preserveWhitespaces: false,
+    providers: [{ provide: NxProgressStepperDirective, useExisting: NxMultiStepperComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.nx-multi-stepper--vertical]': 'direction === "vertical"',
