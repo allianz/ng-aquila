@@ -32,8 +32,6 @@ export const lazyServiceTemplate = modules => {
   `;
 };
 
-const buildImportForModule = module => {
-    return `
+const buildImportForModule = module => `
   case '${module.name}': return import('${module.relativeImportPath.replace('.ts', '').split('\\').join('/')}').then(m => m.${module.className});
   `;
-};

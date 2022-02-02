@@ -17,9 +17,7 @@ class CountryMetadata {
 const metadata = new CountryMetadata(rawMetadata);
 
 /** Get dial code by country code */
-export const getDialCodeByCountryCode = (countryCode: string): string => {
-    return metadata.countries[countryCode];
-};
+export const getDialCodeByCountryCode = (countryCode: string): string => metadata.countries[countryCode];
 
 /** Get the country name by country code */
 export const getCountryNameByCountryCode = (countryNames: LocalizedCountryNames<any>, countryCode: string): string => {
@@ -68,8 +66,8 @@ export const getCountryCallingCodeFromNumber = (number: string) => {
 };
 
 /** Get sorted country code */
-export const getSortedCountryCodes = (countryNames: LocalizedCountryNames<any>) => {
-    return Object.keys(countryNames)
+export const getSortedCountryCodes = (countryNames: LocalizedCountryNames<any>) =>
+    Object.keys(countryNames)
         .filter(countryCode => countryCode in metadata.countries)
         .sort((a, b) => {
             // There are arrays and strings provided for locals. For example (en):
@@ -80,4 +78,3 @@ export const getSortedCountryCodes = (countryNames: LocalizedCountryNames<any>) 
 
             return localA.localeCompare(localB);
         });
-};

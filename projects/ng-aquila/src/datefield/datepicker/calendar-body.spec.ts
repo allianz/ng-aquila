@@ -139,11 +139,7 @@ describe('NxCalendarBodyComponent', () => {
         });
 
         it('should have the correct number of adjacent items', () => {
-            const followingItemsCount =
-                testComponent.previousItems.length +
-                testComponent.followingItems.reduce((prev, next) => {
-                    return prev.concat(next);
-                }).length;
+            const followingItemsCount = testComponent.previousItems.length + testComponent.followingItems.reduce((prev, next) => prev.concat(next)).length;
             let adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
             expect(adjacentCells.length).toBe(followingItemsCount);
 

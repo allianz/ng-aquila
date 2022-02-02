@@ -31,33 +31,30 @@ export class NxFileUploaderValidators {
     /** The form control validator for the max file size. */
     static maxFileSize<D>(max: number | undefined, file: File): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            return !max || max > file.size
-                ? null
-                : {
-                      NxFileUploadMaxFileSize: { max, fileName: file.name, actual: file.size },
-                  };
+            if (!max || max > file.size) {
+                return null;
+            }
+            return { NxFileUploadMaxFileSize: { max, fileName: file.name, actual: file.size } };
         };
     }
 
     /** The form control validator for the accepted file type. */
     static fileType<D>(file: File, accept: string | undefined): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            return isFileTypeValid(file, accept as string)
-                ? null
-                : {
-                      NxFileUploadFileTypeNotAccepted: { fileName: file.name },
-                  };
+            if (isFileTypeValid(file, accept as string)) {
+                return null;
+            }
+            return { NxFileUploadFileTypeNotAccepted: { fileName: file.name } };
         };
     }
 
     /** The form control validator for the max file number that is accepted. */
     static maxFileNumber<D>(files: FileItem[], max: number | undefined): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            return !files || !files.length || !max || files.length <= max
-                ? null
-                : {
-                      NxFileUploadMaxFileNumber: { max, actual: files.length },
-                  };
+            if (!files || !files.length || !max || files.length <= max) {
+                return null;
+            }
+            return { NxFileUploadMaxFileNumber: { max, actual: files.length } };
         };
     }
 }

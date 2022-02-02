@@ -337,9 +337,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * This function is used for displaying and filtering the content
      * ( Default: (value) => value ? value.toString() : null; ).
      */
-    @Input('nxValueFormatter') valueFormatter = (value: any) => {
-        return value == null ? '' : value.toString();
-    };
+    @Input('nxValueFormatter') valueFormatter = (value: any) => (value == null ? '' : value.toString());
 
     /** @docs-private */
     get label(): string {
@@ -373,9 +371,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         }
     }
 
-    private _filterFn = (search: string, itemValue: string) => {
-        return itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
-    };
+    private _filterFn = (search: string, itemValue: string) => itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
 
     /**
      * Function to be used when the user types into the search filter. The first argument is the user input,

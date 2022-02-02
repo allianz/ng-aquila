@@ -56,11 +56,7 @@ const customMatchers: jasmine.CustomAsyncMatcherFactories = {
                         }
 
                         if (results.violations.length) {
-                            result.message = results.violations
-                                .map(violation => {
-                                    return `* ${violation.description}\n  ${violation.helpUrl}`;
-                                })
-                                .join('\n');
+                            result.message = results.violations.map(violation => `* ${violation.description}\n  ${violation.helpUrl}`).join('\n');
                         } else {
                             result.pass = true;
                         }

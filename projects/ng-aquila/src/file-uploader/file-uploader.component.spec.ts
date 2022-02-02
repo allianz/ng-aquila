@@ -438,11 +438,7 @@ describe('NxFileUploaderComponent', () => {
             tick();
 
             const ariaDescribedBy = buttonElm.attributes.getNamedItem('aria-describedby')?.value;
-            expect(ariaDescribedBy).toContain(
-                testInstance.fileUploaderInstance._errorList.map(error => {
-                    return error.id;
-                }),
-            );
+            expect(ariaDescribedBy).toContain(testInstance.fileUploaderInstance._errorList.map(error => error.id));
         }));
     });
 });

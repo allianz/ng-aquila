@@ -59,9 +59,7 @@ describe('NxTooltipDirective', () => {
                 { provide: Platform, useFactory: () => platform },
                 {
                     provide: Directionality,
-                    useFactory: () => {
-                        return (dir = { value: 'ltr', change: new EventEmitter() });
-                    },
+                    useFactory: () => (dir = { value: 'ltr', change: new EventEmitter() }),
                 },
             ],
         });

@@ -10,8 +10,6 @@ export const readMarkdownFileStream = pipe(
     mergeMap(
         filename => readFile$(filename, 'utf8'),
         // return not only the new content, keep the filename
-        (filename: string, content: any) => {
-            return { filename, content, rawData: content, yaml: {} } as MarkdownFile;
-        },
+        (filename: string, content: any) => ({ filename, content, rawData: content, yaml: {} } as MarkdownFile),
     ),
 );

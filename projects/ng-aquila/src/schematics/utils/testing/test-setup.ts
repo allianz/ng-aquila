@@ -195,7 +195,5 @@ export class SchematicTestSetup {
     /**
      * Run your migration.
      */
-    runMigration = async (options = {}) => {
-        return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
-    };
+    runMigration = async (options = {}) => this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
 }

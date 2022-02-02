@@ -19,10 +19,10 @@
             ],
             "plugins": ["deprecation", "import", "rxjs", "simple-import-sort", "unused-imports"],
             "rules": {
+                // ==== deprecation ====
                 "deprecation/deprecation": "warn",
 
                 // ==== imports ====
-
                 "import/first": "error",
                 "import/newline-after-import": "error",
                 "import/no-duplicates": "error",
@@ -31,12 +31,10 @@
                 "unused-imports/no-unused-imports": "error",
 
                 // ==== regexp ====
-
                 "regexp/no-unused-capturing-group": "off", // TODO check with others
                 "regexp/sort-character-class-elements": "warn",
 
                 // ==== rxjs ====
-
                 "rxjs/no-async-subscribe": "warn",
                 "rxjs/no-create": "error",
                 "rxjs/no-ignored-replay-buffer": "warn",
@@ -51,21 +49,19 @@
                 "rxjs/no-unsafe-takeuntil": "warn",
 
                 // ==== eslint: possible problems ====
-
                 "no-self-compare": "error",
                 "no-unreachable-loop": "error",
                 "no-unused-private-class-members": "warn",
 
                 // ==== eslint: suggestions ====
-
-                "arrow-body-style": "off", // TODO check with others
+                "arrow-body-style": "error",
                 "curly": "error",
                 "default-case-last": "error",
                 "eqeqeq": ["error", "always", { "null": "ignore" }],
                 "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
-                "grouped-accessor-pairs": ["off", "setBeforeGet"], // TODO resolve and set warn
+                "grouped-accessor-pairs": ["warn", "setBeforeGet"],
                 "guard-for-in": "error",
-                "no-alert": "off", // TODO in-line with design?
+                "no-alert": "off", // TODO check with others
                 "no-bitwise": "error",
                 "no-caller": "error",
                 "no-console": ["off", { "allow": ["warn", "error"] }], // TODO check with others
@@ -84,7 +80,6 @@
                 "no-new-object": "error",
                 "no-new-wrappers": "error",
                 "no-octal-escape": "error",
-                "no-param-reassign": "off", // TODO resolve and set error
                 "no-proto": "error",
                 "no-script-url": "error",
                 "no-undef-init": "error",
@@ -108,18 +103,17 @@
                 "yoda": ["error", "never", { "exceptRange": true }],
 
                 // ==== @typescript-eslint: supported rules ====
-
                 "@typescript-eslint/array-type": "error",
-                "@typescript-eslint/ban-ts-comment": "warn", // TODO resolve and kick
+                "@typescript-eslint/ban-ts-comment": "error", // TODO resolve and kick
                 "@typescript-eslint/class-literal-property-style": ["error", "fields"],
                 "@typescript-eslint/consistent-indexed-object-style": ["off", "index-signature"], // TODO test
                 "@typescript-eslint/consistent-type-assertions": "error",
                 "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
                 "@typescript-eslint/consistent-type-exports": "error",
-                "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "no-type-imports" }], // TODO test
+                "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "no-type-imports" }],
                 "@typescript-eslint/explicit-function-return-type": "off", // TODO test, check options
                 "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
-                "@typescript-eslint/explicit-module-boundary-types": "off", // TODO test, check options (important)
+                "@typescript-eslint/explicit-module-boundary-types": "off", // TODO test, check options
                 "@typescript-eslint/method-signature-style": ["error", "method"],
                 "@typescript-eslint/no-confusing-non-null-assertion": "error",
                 "@typescript-eslint/no-empty-interface": "off", // recommended overide: useful with certain libraries
@@ -127,12 +121,12 @@
                 "@typescript-eslint/no-non-null-assertion": "off", // recommended override: used frequently
                 "@typescript-eslint/no-meaningless-void-operator": ["error", {}], // TODO check options
                 "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
-                "@typescript-eslint/no-parameter-properties": ["off", { "allows": ["readonly", "protected readonly", "private readonly"] }], // TODO enable separately
+                "@typescript-eslint/no-parameter-properties": ["off", { "allows": ["readonly", "protected readonly", "private readonly"] }], // TODO check with others
                 "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
-                "@typescript-eslint/no-var-requires": "warn", // TODO resolve and set as error
-                "@typescript-eslint/non-nullable-type-assertion-style": "off", // TODO problematic with current specs
+                "@typescript-eslint/no-var-requires": "warn", // recommended overide: used frequently
+                "@typescript-eslint/non-nullable-type-assertion-style": "off", // problematic with jasmine specs
                 "@typescript-eslint/prefer-function-type": "error",
-                "@typescript-eslint/prefer-includes": "error", // TODO enable only for >= 2016
+                "@typescript-eslint/prefer-includes": "error", // requires ES2016
                 "@typescript-eslint/prefer-literal-enum-member": "warn",
                 "@typescript-eslint/prefer-optional-chain": "warn",
                 "@typescript-eslint/prefer-readonly": "off", // TODO check with others
@@ -141,12 +135,11 @@
                 "@typescript-eslint/prefer-string-starts-ends-with": "error",
                 "@typescript-eslint/prefer-ts-expect-error": "error",
                 "@typescript-eslint/promise-function-async": "error",
-                "@typescript-eslint/require-array-sort-compare": ["error", { "ignoreStringArrays": true }], // TODO test
-                "@typescript-eslint/triple-slash-reference": "error", // TODO resolve and kick
-                "@typescript-eslint/typedef": "off", // TODO research
+                "@typescript-eslint/require-array-sort-compare": ["error", { "ignoreStringArrays": true }],
+                "@typescript-eslint/triple-slash-reference": "error",
+                "@typescript-eslint/typedef": "off", // TODO check viability
 
                 // ==== @typescript-eslint: extension rules ====
-
                 "default-param-last": "off",
                 "@typescript-eslint/default-param-last": "error",
                 "no-dupe-class-members": "off",
@@ -156,7 +149,7 @@
                 "no-empty-function": "off",
                 "@typescript-eslint/no-empty-function": "off", // recommended override: empty event callbacks are used frequently
                 "no-invalid-this": "off",
-                "@typescript-eslint/no-invalid-this": "error", // TODO test
+                "@typescript-eslint/no-invalid-this": "error",
                 "no-redeclare": "off",
                 "@typescript-eslint/no-redeclare": "error",
                 "no-shadow": "off",
@@ -169,12 +162,11 @@
                 "@typescript-eslint/return-await": "error",
 
                 // ==== @angular-eslint: typescript ====
-
                 "@angular-eslint/contextual-lifecycle": "error",
-                "@angular-eslint/no-conflicting-lifecycle": "warn", // TODO resolve 2 occurrences and enable as error
+                "@angular-eslint/no-conflicting-lifecycle": "error",
                 "@angular-eslint/no-empty-lifecycle-method": "warn",
                 "@angular-eslint/no-output-native": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3464
-                "@angular-eslint/no-output-on-prefix": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
+                "@angular-eslint/no-output-on-prefix": "error",
                 "@angular-eslint/use-lifecycle-interface": "warn",
                 "@angular-eslint/use-pipe-transform-interface": "error"
             }
@@ -185,13 +177,10 @@
             "plugins": ["jasmine"],
             "rules": {
                 // ==== jasmine ====
-
-                "jasmine/new-line-before-expect": "off", // does not ignore arrow fuctions
-                "jasmine/no-suite-dupes": "off", // false positives
-                "jasmine/no-spec-dupes": "off", // false positives
+                "jasmine/new-line-before-expect": "off", // does not ignore arrow fuction bodies
                 "jasmine/no-unsafe-spy": "off", // TODO check with others
                 "jasmine/prefer-toBeUndefined": "warn",
-                "jasmine/prefer-toHaveBeenCalledWith": "off" // TODO check with others, sometimes not intuitive undefined
+                "jasmine/prefer-toHaveBeenCalledWith": "off" // TODO check with others (undefined param not intuitive)
             }
         },
         {
@@ -199,22 +188,21 @@
             "extends": ["plugin:@angular-eslint/template/recommended"],
             "rules": {
                 // ==== @angular-eslint: template ====
-
                 "@angular-eslint/template/accessibility-alt-text": "warn",
                 "@angular-eslint/template/accessibility-elements-content": "warn",
                 "@angular-eslint/template/accessibility-label-for": "warn",
                 "@angular-eslint/template/accessibility-label-has-associated-control": "warn",
-                "@angular-eslint/template/accessibility-table-scope": "off", // TODO resolve 1 occurrence and enable as error
+                "@angular-eslint/template/accessibility-table-scope": "error",
                 "@angular-eslint/template/accessibility-valid-aria": "warn",
-                "@angular-eslint/template/click-events-have-key-events": "off", // TODO resolve and enable as error
+                "@angular-eslint/template/click-events-have-key-events": "warn",
                 "@angular-eslint/template/eqeqeq": ["error", { "allowNullOrUndefined": true }],
-                "@angular-eslint/template/mouse-events-have-key-events": "error",
+                "@angular-eslint/template/mouse-events-have-key-events": "warn",
                 "@angular-eslint/template/no-any": "warn",
                 "@angular-eslint/template/no-autofocus": "error",
                 "@angular-eslint/template/no-distracting-elements": "error",
-                "@angular-eslint/template/no-duplicate-attributes": "warn", // TODO resolve 1 issue and set as error (timefield default required validator)
+                "@angular-eslint/template/no-duplicate-attributes": "error",
                 "@angular-eslint/template/no-positive-tabindex": "warn",
-                "@angular-eslint/template/use-track-by-function": "off" // TODO maybe later?
+                "@angular-eslint/template/use-track-by-function": "off" // TODO check with others
             }
         }
     ]

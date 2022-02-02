@@ -9,13 +9,29 @@
                 "createDefaultProgram": true
             },
             "rules": {
+                "@typescript-eslint/ban-ts-comment": "warn", // TODO resolve and kick
+
+                "@angular-eslint/no-conflicting-lifecycle": "warn", // TODO resolve 2 occurrences and enable as error
+                "@angular-eslint/no-output-on-prefix": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
+
                 "@angular-eslint/directive-selector": "off",
                 "@angular-eslint/component-selector": "off"
             }
         },
         {
+            "files": ["*.spec.ts"],
+            "rules": {
+                "jasmine/no-suite-dupes": "off", // false positives
+                "jasmine/no-spec-dupes": "off" // false positives
+            }
+        },
+        {
             "files": ["*.html"],
-            "rules": {}
+            "rules": {
+                "@angular-eslint/template/accessibility-table-scope": "off", // TODO resolve 1 occurrence and kick
+                "@angular-eslint/template/click-events-have-key-events": "off", // TODO check occurrences
+                "@angular-eslint/template/no-duplicate-attributes": "warn" // TODO resolve 1 issue and kick
+            }
         }
     ]
 }

@@ -216,9 +216,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
     /** Returns the unmasked value. */
     getUnmaskedValue(): string {
-        const unmaskedValue = this.separators.reduce((unmasked, separator) => {
-            return unmasked.split(separator).join('');
-        }, this._elementRef.nativeElement.value);
+        const unmaskedValue = this.separators.reduce((unmasked, separator) => unmasked.split(separator).join(''), this._elementRef.nativeElement.value);
 
         return unmaskedValue;
     }

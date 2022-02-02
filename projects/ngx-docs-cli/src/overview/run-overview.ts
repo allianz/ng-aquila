@@ -25,9 +25,7 @@ const readFileStream = pipe(
     mergeMap(
         filename => readFile$(filename, 'utf8'),
         // return not only the new content, keep the filename
-        (filename: string, content: any) => {
-            return { filename, content, rawData: content, yaml: {} } as MarkdownFile;
-        },
+        (filename: string, content: any) => ({ filename, content, rawData: content, yaml: {} } as MarkdownFile),
     ),
 );
 
@@ -40,18 +38,18 @@ const save = folder =>
         }),
     );
 
-export const build = ({ source, dest, ignorePrivateExamples }) => {
-    return findAllFiles(source).pipe(
+export const build = ({ source, dest, ignorePrivateExamples }) =>
+    findAllFiles(source).pipe(
         showProcessingNotice('Processing Overview'),
         take(1),
         concatAll(),
-        filter((file: string) => {
-            // we are only interested in markdown files with the same name as the folder (by convention)
-            return path.basename(file, '.md') === path.basename(path.dirname(file));
-        }),
+        filter(
+            (file: string) =>
+                // we are only interested in markdown files with the same name as the folder (by convention)
+                path.basename(file, '.md') === path.basename(path.dirname(file)),
+        ),
         readFileStream,
         transform(ignorePrivateExamples),
         save(dest),
         manifest({ key: 'components' }),
     );
-};

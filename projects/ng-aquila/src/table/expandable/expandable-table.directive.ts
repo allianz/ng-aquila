@@ -22,9 +22,7 @@ export class NxExpandableTableDirective implements AfterViewInit, NxExpandable {
         this.rows.changes
             .pipe(
                 startWith(this.rows),
-                flatMap((rows: NxExpandableTableRowComponent[]) => {
-                    return combineLatest(rows.map(row => row.expanded));
-                }),
+                flatMap((rows: NxExpandableTableRowComponent[]) => combineLatest(rows.map(row => row.expanded))),
                 map((values: boolean[]) => values.reduce((a, x) => a && x, true)),
                 distinctUntilChanged(),
             )

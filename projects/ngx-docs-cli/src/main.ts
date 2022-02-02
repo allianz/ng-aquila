@@ -100,9 +100,7 @@ program
 
         // include the parent folder when displaying the relative path.
         // this way we can repeat the folder name of the librayr which is the given source root
-        const generateDisplayPath = pathValue => {
-            return path.relative(path.resolve(rootPath, '../'), pathValue);
-        };
+        const generateDisplayPath = pathValue => path.relative(path.resolve(rootPath, '../'), pathValue);
 
         // REMOVE, it is unused, or print it out? :)
         const processingMessage = [

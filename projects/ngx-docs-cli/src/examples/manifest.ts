@@ -41,8 +41,8 @@ function getComponentTitle(exampleName: string, module: string, source: string) 
 }
 
 export function createManifestData(metadata: GroupedComponentMetadata[], source: string) {
-    return metadata.flatMap(group => {
-        return group.examples.map(example => {
+    return metadata.flatMap(group =>
+        group.examples.map(example => {
             const title = getComponentTitle(example, group.name, source);
             return {
                 id: example,
@@ -51,6 +51,6 @@ export function createManifestData(metadata: GroupedComponentMetadata[], source:
                 types: ['ts', 'html', 'css'],
                 url: `lib-viewer/examples/${example}-###TYPE###.html`,
             };
-        });
-    });
+        }),
+    );
 }

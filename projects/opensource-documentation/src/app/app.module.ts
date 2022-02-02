@@ -42,9 +42,10 @@ const ROUTES = [
     },
 ];
 
-const channels = environment.VERSIONS.channels.map((channel: any) => {
-    return { name: channel, url: environment.VERSIONS.urls[channel] };
-});
+const channels = environment.VERSIONS.channels.map((channel: any) => ({
+    name: channel,
+    url: environment.VERSIONS.urls[channel],
+}));
 
 const VERSIONS: DocVersions = {
     currentVersion: environment.CURRENT_VERSION,

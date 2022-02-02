@@ -186,9 +186,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     private _subscriptions = new Subscription();
 
-    private _inputFormatter = (inputValue: string, countryCode: string) => {
-        return this._removeLeadingZero(inputValue);
-    };
+    private _inputFormatter = (inputValue: string, countryCode: string) => this._removeLeadingZero(inputValue);
 
     /** `View -> model callback called when value changes` */
     _onChange: (value: any) => void = () => {};

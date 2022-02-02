@@ -118,9 +118,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
                 // For example, this format: YYYY-MM-DD still requires the user to type in the -
                 // To get a little closer to the behavior of momentjs, the following code extends
                 // the list of given formats with versions were all the separators were removed
-                const formatsWithoutSeparators = [...normalizedFormats].map(normalizedformat => {
-                    return normalizedformat.replace(/\W/g, '');
-                });
+                const formatsWithoutSeparators = [...normalizedFormats].map(normalizedformat => normalizedformat.replace(/\W/g, ''));
                 obj = dayjs(value, [...formatsWithoutSeparators, ...normalizedFormats], this._dayjsLocale, false);
             }
         }

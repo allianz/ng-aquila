@@ -43,9 +43,7 @@ describe('NxRadioToggleComponent', () => {
     );
 
     function checkSelection(a: boolean, b: boolean, c: boolean) {
-        const checked = (index: number): boolean => {
-            return radioElements.item(index).checked;
-        };
+        const checked = (index: number): boolean => radioElements.item(index).checked;
 
         expect(checked(0)).toBe(a);
         expect(checked(1)).toBe(b);
@@ -53,9 +51,7 @@ describe('NxRadioToggleComponent', () => {
     }
 
     function checkDisabled(a: boolean, b: boolean, c: boolean) {
-        const disabled = (index: number): boolean => {
-            return !!radioElements.item(index).attributes.getNamedItem('disabled');
-        };
+        const disabled = (index: number): boolean => !!radioElements.item(index).attributes.getNamedItem('disabled');
 
         expect(disabled(0)).toBe(a);
         expect(disabled(1)).toBe(b);

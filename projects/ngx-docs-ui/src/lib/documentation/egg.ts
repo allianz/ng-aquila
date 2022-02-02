@@ -120,9 +120,7 @@ export class Egg {
         if (typeof keys === 'string') {
             // make sure there isn't any whitespace
             // @ts-expect-error
-            keys = keys.split(',').map(key => {
-                return key.trim();
-            });
+            keys = keys.split(',').map(key => key.trim());
         }
 
         const characterKeyCodes = keys.map((key: string | number) => {

@@ -24,11 +24,7 @@ export class NxvGuideViewComponent {
     ) {
         // Listen for changes in the route or our manifest
         combineLatest(manifestService.manifest, _route.params.pipe(map(params => params['id'])))
-            .pipe(
-                map(([manifest, id]: any) => {
-                    return { manifest, id };
-                }),
-            )
+            .pipe(map(([manifest, id]: any) => ({ manifest, id })))
             .subscribe(result => {
                 // check if there is a guide with the specified id
                 if (this.manifestService.hasGuide(result.id)) {
