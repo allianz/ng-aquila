@@ -9,8 +9,6 @@
                 "createDefaultProgram": true
             },
             "rules": {
-                "@typescript-eslint/ban-ts-comment": "warn", // TODO resolve and kick
-
                 "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "nxv", "style": "camelCase" }],
                 "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "nxv", "style": "kebab-case" }]
             }

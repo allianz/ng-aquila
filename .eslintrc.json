@@ -61,11 +61,10 @@
                 "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
                 "grouped-accessor-pairs": ["warn", "setBeforeGet"],
                 "guard-for-in": "error",
-                "no-alert": "off", // TODO check with others
-                "no-bitwise": "error",
+                "no-alert": "warn", // TODO check with others
+                "no-bitwise": "warn",
                 "no-caller": "error",
-                "no-console": ["off", { "allow": ["warn", "error"] }], // TODO check with others
-                "no-continue": "error",
+                "no-console": ["warn", { "allow": ["warn", "error"] }], // TODO check with others
                 "no-else-return": "error",
                 "no-empty": ["error", { "allowEmptyCatch": true }], // recommended override: allow empty catch block
                 "no-eval": "error",
@@ -75,7 +74,6 @@
                 "no-iterator": "error",
                 "no-lone-blocks": "error",
                 "no-lonely-if": "error",
-                "no-multi-str": "error",
                 "no-new-func": "error",
                 "no-new-object": "error",
                 "no-new-wrappers": "error",
@@ -85,7 +83,7 @@
                 "no-undef-init": "error",
                 "no-unneeded-ternary": "error",
                 "no-useless-computed-key": ["error", { "enforceForClassMembers": true }],
-                "no-useless-concat": "error",
+                "no-useless-concat": "warn",
                 "no-useless-rename": "error",
                 "no-useless-return": "error",
                 "no-warning-comments": ["warn", { "terms": ["todo"] }],
@@ -99,12 +97,11 @@
                 "radix": "error",
                 "require-unicode-regexp": "off", // TODO check with others
                 "spaced-comment": ["error", "always", { "markers": ["/"], "exceptions": ["*"] }],
-                "symbol-description": "error",
                 "yoda": ["error", "never", { "exceptRange": true }],
 
                 // ==== @typescript-eslint: supported rules ====
                 "@typescript-eslint/array-type": "error",
-                "@typescript-eslint/ban-ts-comment": "error", // TODO resolve and kick
+                "@typescript-eslint/ban-ts-comment": "warn",
                 "@typescript-eslint/class-literal-property-style": ["error", "fields"],
                 "@typescript-eslint/consistent-indexed-object-style": ["off", "index-signature"], // TODO test
                 "@typescript-eslint/consistent-type-assertions": "error",
