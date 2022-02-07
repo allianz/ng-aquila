@@ -3,7 +3,7 @@ title: Right-to-left support
 category: general
 b2c: true
 expert: true
-stable: progress
+stable: done
 noApi: true
 ---
 

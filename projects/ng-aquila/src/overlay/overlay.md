@@ -3,7 +3,7 @@ title: Overlay
 category: components
 b2c: true
 expert: true
-stable: progress
+stable: done
 ---
 
 <div class="docs-deprecation-warning">

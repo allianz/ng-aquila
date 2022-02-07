@@ -3,7 +3,7 @@ title: Toolbar
 category: components
 b2c: false
 expert: true
-stable: progress
+stable: done
 ---
 
 <div class="docs-deprecation-warning">

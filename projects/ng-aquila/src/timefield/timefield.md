@@ -3,7 +3,7 @@ title: Timefield
 category: components
 b2c: true
 expert: true
-stable: progress
+stable: done
 ---
 
 The timefield component makes it easier for users to enter time inputs. Maximum character length per input field is 2 and by default it accepts time inputs in 24h format (ex: 23:00, 12:35,...). Programmatic time input is always accepted in `ISO 24h` time format.

@@ -3,7 +3,7 @@ title: Comparison Table
 category: components
 b2c: true
 expert: true
-stable: progress
+stable: done
 ---
 
 ### Notes about the usage of the component

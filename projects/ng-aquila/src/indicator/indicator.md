@@ -3,7 +3,7 @@ title: Indicator
 category: components
 b2c: true
 expert: true
-stable: progress
+stable: done
 ---
 
 The indicator is a small badge that can be used to mark an element or page as unread for the user.
