@@ -1,6 +1,18 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, EventEmitter, Input, Optional, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    ContentChild,
+    ElementRef,
+    EventEmitter,
+    forwardRef,
+    Inject,
+    Input,
+    Optional,
+    Output,
+} from '@angular/core';
 
 import { nxSidepanelAnimations } from './sidepanel-animations';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
@@ -67,9 +79,9 @@ export class NxSidepanelComponent {
         private _cdr: ChangeDetectorRef,
         protected _elementRef: ElementRef,
         private _dir: Directionality,
-        @Optional() public _wrapper: NxSidepanelOuterContainerComponent,
+        @Optional() @Inject(forwardRef(() => NxSidepanelOuterContainerComponent)) public _wrapper: NxSidepanelOuterContainerComponent | null,
     ) {
-        if (!this._wrapper) {
+        if (this._wrapper == null) {
             console.warn(`NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`);
         }
     }
