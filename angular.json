@@ -34,7 +34,7 @@
                             "tsConfig": "projects/ng-aquila/tsconfig.lib.prod.json"
                         },
                         "development": {
-                            "tsConfig": "projects/ng-aquila/tsconfig.build.json"
+                            "tsConfig": "projects/ng-aquila/tsconfig.lib.json"
                         }
                     },
                     "defaultConfiguration": "production"
@@ -71,7 +71,7 @@
                             "tsConfig": "projects/ngx-docs-ui/tsconfig.lib.prod.json"
                         },
                         "development": {
-                            "tsConfig": "projects/ngx-docs-ui/tsconfig.build.json"
+                            "tsConfig": "projects/ngx-docs-ui/tsconfig.lib.json"
                         }
                     },
                     "defaultConfiguration": "production"
@@ -160,8 +160,8 @@
                                     "with": "projects/opensource-documentation/src/environments/environment.prod.ts"
                                 }
                             ],
-                            "outputHashing": "all",
-                            "tsConfig": "projects/opensource-documentation/tsconfig.build.json"
+                            "tsConfig": "projects/opensource-documentation/tsconfig.build.json",
+                            "outputHashing": "all"
                         },
                         "development": {
                             "buildOptimizer": false,
