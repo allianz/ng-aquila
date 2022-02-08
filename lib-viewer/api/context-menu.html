@@ -137,12 +137,28 @@ It is responsible for toggling the display of the provided context menu instance
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContextMenuTriggerData'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">contextMenuData</span>:
-                <span class="docs-api-property__type">Object</span>
+                <span class="docs-api-property__type">object</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
         <p>Data to be passed along to any lazily-rendered content.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxContextMenuTriggerMode'</span>) </div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">mode</span>:
+                <span class="docs-api-property__type">NxContextMenuMode</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Sets the mode of this context menu trigger.
+&#39;button&#39; (default): Opens by clicking the trigger
+&#39;cursor&#39;: Opens at the cursor position by right clicking anywhere on the trigger.</p>
 </td>
 </tr>
    
@@ -232,7 +248,7 @@ It is responsible for toggling the display of the provided context menu instance
 <div class="docs-api-method-card">
     <div class="docs-api-method-card-header">
         <code>
-            <span class="docs-api-method-name">openContextMenu(origin: <span class="docs-api-property__type">FocusOrigin</span>)</span>
+            <span class="docs-api-method-name">openContextMenu(origin: <span class="docs-api-property__type">FocusOrigin</span>,position: <span class="docs-api-property__type">Point</span>)</span>
         </code>
     </div>
     <div class="docs-api-method-description"><p>Opens the context menu.</p>
@@ -243,6 +259,13 @@ It is responsible for toggling the display of the provided context menu instance
             <code class="docs-api-parameter-name">
                 origin<span class="docs-api-method-parameter-optional-marker">?</span>:
                 <span class="docs-api-method-parameter-type">FocusOrigin</span>
+            </code>
+        </div>
+        
+        <div class="docs-api-parameter-container">
+            <code class="docs-api-parameter-name">
+                position<span class="docs-api-method-parameter-optional-marker">?</span>:
+                <span class="docs-api-method-parameter-type">Point</span>
             </code>
         </div>
         
@@ -373,5 +396,14 @@ the user to start from the first option when pressing the down arrow.</p>
 </h4><p class="docs-api-type-alias-value">
     <span class="docs-api-type-alias-value-label">Type:</span>
     <code class="docs-api-type-alias-value">'close' | 'reposition'</code>
+</p>
+   
+
+<h4 id="NxContextMenuMode" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxContextMenuMode"></span>
+    <code>NxContextMenuMode</code>
+</h4><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'button' | 'cursor'</code>
 </p>
   </div>

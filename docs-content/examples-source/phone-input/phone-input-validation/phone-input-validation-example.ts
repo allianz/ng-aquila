@@ -1,10 +1,10 @@
+import { Component } from '@angular/core';
 import {
-    FormControl,
     AbstractControl,
+    FormControl,
     ValidatorFn,
     Validators,
 } from '@angular/forms';
-import { Component } from '@angular/core';
 import { NumberType, parsePhoneNumber } from 'libphonenumber-js/max';
 
 export type PhoneNumberType = 'landline' | 'mobile';

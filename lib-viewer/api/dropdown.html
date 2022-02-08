@@ -118,7 +118,7 @@ A boolean should be returned.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxFilterPlaceholder'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">filterPlaceholder</span>:
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">''</span>
             </code>
         </p>
     </td>
@@ -190,7 +190,7 @@ A boolean should be returned.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxShowFilter'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">showFilter</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">false</span>
             </code>
         </p>
     </td>
@@ -232,9 +232,7 @@ A boolean should be returned.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxValueFormatter'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">valueFormatter</span>:
-                <span class="docs-api-property__type">(value: any) => {
-    return value == null ? '' : value.toString();
-}</span>
+                <span class="docs-api-property__type">(value: any) => (value == null ? '' : value.toString())</span>
             </code>
         </p>
     </td>
@@ -376,7 +374,7 @@ This function is used for displaying and filtering the content
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxIsMultiselect'</span>) </div><div class="docs-api-deprecated-marker" > Deprecated </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">isMultiSelect</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">false</span>
             </code>
         </p>
     </td>
@@ -924,7 +922,7 @@ When empty the whole option is treated as the value.</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">isMultiSelect</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">false</span>
             </code>
         </p>
     </td>

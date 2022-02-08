@@ -1,8 +1,7 @@
-import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-
-import { NgModule } from '@angular/core';
-import { IndicatorExampleComponent } from './indicator/indicator-example';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
+import { IndicatorExampleComponent } from './indicator/indicator-example';
 
 const EXAMPLES = [IndicatorExampleComponent];
 

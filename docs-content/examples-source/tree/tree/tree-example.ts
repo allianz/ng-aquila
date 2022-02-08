@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {
-    NxTreeFlatDataSource,
     NxFlatTreeControl,
-    NxTreeNode,
     NxFlatTreeNode,
+    NxTreeFlatDataSource,
+    NxTreeNode,
 } from '@aposin/ng-aquila/tree';
 
 /**

@@ -1,22 +1,22 @@
+<span class="hljs-keyword">import</span> { FocusMonitor } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
+<span class="hljs-keyword">import</span> { BooleanInput, coerceBooleanProperty } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/coercion&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     Component,
-    OnDestroy,
-    Input,
     ElementRef,
+    Input,
+    OnDestroy,
     Optional,
     Self,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { NxFormfieldControl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     ControlValueAccessor,
-    FormGroup,
     FormBuilder,
+    FormGroup,
     NgControl,
     Validators,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxFormfieldControl } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/formfield&#x27;</span>;
 <span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
-<span class="hljs-keyword">import</span> { coerceBooleanProperty } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/coercion&#x27;</span>;
-<span class="hljs-keyword">import</span> { FocusMonitor } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/a11y&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Implementing Custom Formfield Control example
@@ -90,7 +90,7 @@
     <span class="hljs-keyword">get</span> <span class="hljs-title">required</span>(): <span class="hljs-title">boolean</span> {
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._required;
     }
-    <span class="hljs-keyword">set</span> <span class="hljs-title">required</span>(<span class="hljs-params">value: <span class="hljs-built_in">boolean</span></span>) {
+    <span class="hljs-keyword">set</span> <span class="hljs-title">required</span>(<span class="hljs-params">value: BooleanInput</span>) {
         <span class="hljs-built_in">this</span>._required = coerceBooleanProperty(value);
         <span class="hljs-built_in">this</span>.stateChanges.next();
     }
@@ -99,7 +99,7 @@
     <span class="hljs-keyword">get</span> <span class="hljs-title">disabled</span>(): <span class="hljs-title">boolean</span> {
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>._disabled;
     }
-    <span class="hljs-keyword">set</span> <span class="hljs-title">disabled</span>(<span class="hljs-params">value: <span class="hljs-built_in">boolean</span></span>) {
+    <span class="hljs-keyword">set</span> <span class="hljs-title">disabled</span>(<span class="hljs-params">value: BooleanInput</span>) {
         <span class="hljs-built_in">this</span>._disabled = coerceBooleanProperty(value);
         <span class="hljs-built_in">this</span>._disabled ? <span class="hljs-built_in">this</span>.parts.disable() : <span class="hljs-built_in">this</span>.parts.enable();
         <span class="hljs-built_in">this</span>.stateChanges.next();
@@ -208,7 +208,4 @@
     _handleInput(): <span class="hljs-built_in">void</span> {
         <span class="hljs-built_in">this</span>.onChange(<span class="hljs-built_in">this</span>.value);
     }
-
-    <span class="hljs-keyword">static</span> ngAcceptInputType_disabled: <span class="hljs-built_in">boolean</span> | <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>;
-    <span class="hljs-keyword">static</span> ngAcceptInputType_required: <span class="hljs-built_in">boolean</span> | <span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span> | <span class="hljs-literal">undefined</span>;
 }

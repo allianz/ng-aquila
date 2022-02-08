@@ -2,6 +2,7 @@
 <nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
     <nx-multi-select
         filter
+        placeholder="Choose options"
         [(ngModel)]="modelWithFilter"
         [options]="options"
         selectValue="id"
@@ -17,6 +18,7 @@
 <h3>Without filter</h3>
 <nx-formfield appearance="outline" nxFloatLabel="always" nxLabel="Multi select">
     <nx-multi-select
+        placeholder="Choose options"
         [(ngModel)]="model"
         [options]="options"
         [selectLabel]="selectLabel"

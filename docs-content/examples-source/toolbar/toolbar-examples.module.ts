@@ -1,11 +1,10 @@
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
-import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
-import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
-
 import { NgModule } from '@angular/core';
-import { ToolbarExampleComponent } from './toolbar/toolbar-example';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxToolbarModule } from '@aposin/ng-aquila/toolbar';
 import { ToolbarPositioningContentExampleComponent } from './toolbar-positioning-content/toolbar-positioning-content-example';
+import { ToolbarExampleComponent } from './toolbar/toolbar-example';
 
 const EXAMPLES = [
     ToolbarExampleComponent,

@@ -1,4 +1,4 @@
-<span class="hljs-keyword">import</span> { Component, ChangeDetectorRef } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { ChangeDetectorRef, Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
 <span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
 
@@ -18,7 +18,7 @@
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
         <span class="hljs-keyword">public</span> viewportService: NxViewportService,
-        <span class="hljs-keyword">private</span> _cdRef: ChangeDetectorRef,
+        <span class="hljs-keyword">private</span> _cdr: ChangeDetectorRef,
     </span>)</span> {
         <span class="hljs-built_in">this</span>.viewportServiceSubscription = <span class="hljs-built_in">this</span>.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)
@@ -31,7 +31,7 @@
                     } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (!isGreaterThanSmall &amp;&amp; <span class="hljs-built_in">this</span>.opened) {
                         <span class="hljs-built_in">this</span>.opened = <span class="hljs-literal">false</span>;
                     }
-                    <span class="hljs-built_in">this</span>._cdRef.detectChanges();
+                    <span class="hljs-built_in">this</span>._cdr.detectChanges();
                 }
             });
     }

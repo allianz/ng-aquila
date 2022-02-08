@@ -1,15 +1,14 @@
-import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
-import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
-
 import { NgModule } from '@angular/core';
+import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
+import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { NxLinkModule } from '@aposin/ng-aquila/link';
+import { NxSmallStageModule } from '@aposin/ng-aquila/small-stage';
+import { ExamplesSharedModule } from '../examples-shared.module';
 import { SmallStageContentVariationExampleComponent } from './small-stage-content-variation/small-stage-content-variation-example';
 import { SmallStageDefaultExampleComponent } from './small-stage-default/small-stage-default-example';
 import { SmallStageExpertContentNarrowExampleComponent } from './small-stage-expert-content-narrow/small-stage-expert-content-narrow-example';
-import { SmallStageWithBackgroundExampleComponent } from './small-stage-w-bg/small-stage-w-bg-example';
 import { SmallStageExpertDefaultExampleComponent } from './small-stage-expert-default/small-stage-expert-default-example';
-import { ExamplesSharedModule } from '../examples-shared.module';
-import { NxLinkModule } from '@aposin/ng-aquila/link';
-import { NxIconModule } from '@aposin/ng-aquila/icon';
+import { SmallStageWithBackgroundExampleComponent } from './small-stage-w-bg/small-stage-w-bg-example';
 
 const EXAMPLES = [
     SmallStageContentVariationExampleComponent,

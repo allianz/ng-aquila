@@ -319,9 +319,7 @@ at that time</p>
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">runMigration</span>:
-                <span class="docs-api-property__type">(options = {}) => {
-    return this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise();
-}</span>
+                <span class="docs-api-property__type">async (options = {}) => this.runner.runSchematicAsync(this.schematicName, options, this.appTree).toPromise()</span>
             </code>
         </p>
     </td>

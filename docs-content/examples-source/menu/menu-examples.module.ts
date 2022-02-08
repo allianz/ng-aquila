@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxTreeModule } from '@aposin/ng-aquila/tree';
+import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxMenuModule } from '@aposin/ng-aquila/menu';
-import { NxButtonModule } from '@aposin/ng-aquila/button';
-
-import { NgModule } from '@angular/core';
-import { MenuExampleComponent } from './menu/menu-example';
+import { NxTreeModule } from '@aposin/ng-aquila/tree';
 import { MenuButtonExampleComponent } from './menu-button/menu-button-example';
-import { MenuItemExampleComponent } from './menu-item/menu-item-example';
 import { MenuItemWithIconsExampleComponent } from './menu-item-with-icons/menu-item-with-icons-example';
+import { MenuItemExampleComponent } from './menu-item/menu-item-example';
 import { MenuLinkExampleComponent } from './menu-link/menu-link-example';
+import { MenuExampleComponent } from './menu/menu-example';
 
 const EXAMPLES = [
     MenuExampleComponent,

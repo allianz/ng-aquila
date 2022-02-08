@@ -1,15 +1,15 @@
+<span class="hljs-keyword">import</span> { HttpClient, HttpParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { FormBuilder, FormGroup, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     FileItem,
-    NxFileUploadResult,
     NxFileUploader,
+    NxFileUploadResult,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     NxMessageToastConfig,
     NxMessageToastService,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
-<span class="hljs-keyword">import</span> { HttpClient, HttpParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
     <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,

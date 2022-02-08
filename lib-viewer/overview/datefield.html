@@ -43,7 +43,6 @@
 <p class="docs-markdown--p">Momentjs ships with every locale thus significantly increasing the bundle size. The iso date adapter uses dayjs where you have to import the locales you want to support manually. So you are under control and have huge potential bundle size savings. With en and de locales you save around 300KB (pre gzip).</p>
 <h4 id="iso-date-adapter" class="docs-markdown--h4">ISO Date Adapter</h4>
 <p class="docs-markdown--p">The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it uses dayjs to support formatting, parsing and localization. With this adapter you don't have to create a proper Date, Dayjs or Moment Object first to bind it with ngModel or reactive forms.</p>
-<p class="docs-markdown--p">For localization you have to import the locales yourself. <code>en</code> is the default locale. To add e.g. german you use <code>import 'dayjs/locale/de'</code>.</p>
 <p class="docs-markdown--p">Please install the <code>dayjs</code> package to use this adapter.</p>
 <h4 id="native-date" class="docs-markdown--h4">Native Date</h4>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxNativeDateModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/datefield&#x27;</span>;

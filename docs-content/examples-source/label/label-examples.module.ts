@@ -1,6 +1,5 @@
-import { NxLabelModule } from '@aposin/ng-aquila/base';
-
 import { NgModule } from '@angular/core';
+import { NxLabelModule } from '@aposin/ng-aquila/base';
 import { LabelExampleComponent } from './label/label-example';
 
 const EXAMPLES = [LabelExampleComponent];

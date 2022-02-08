@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxRatingModule } from '@aposin/ng-aquila/rating';
-
-import { NgModule } from '@angular/core';
 import { RatingAccessibilityExampleComponent } from './rating-accessibility/rating-accessibility-example';
 import { RatingBasicExampleComponent } from './rating-basic/rating-basic-example';
 import { RatingDisabledExampleComponent } from './rating-disabled/rating-disabled-example';

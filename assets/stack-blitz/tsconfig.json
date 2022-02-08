@@ -24,7 +24,6 @@
     },
     "exclude": ["src/assets", "dist"],
     "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
         "strictTemplates": true

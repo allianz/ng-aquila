@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { Moment } from 'moment';
 import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
+import { Moment } from 'moment';
 
 /**
  * @title Localizing date example

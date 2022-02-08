@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { NxErrorModule } from '@aposin/ng-aquila/base';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
-
-import { NgModule } from '@angular/core';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { MessageBannerExampleComponent } from './message-banner/message-banner-example';
 import { MessageClosableExampleComponent } from './message-closable/message-closable-example';
 import { MessageErrorExampleComponent } from './message-error/message-error-example';

@@ -1,9 +1,8 @@
-import { NxVideoModule } from '@aposin/ng-aquila/video';
-
 import { NgModule } from '@angular/core';
-import { VideoExampleComponent } from './video/video-example';
+import { NxVideoModule } from '@aposin/ng-aquila/video';
 import { VideoAdvancedExampleComponent } from './video-advanced/video-advanced-example';
 import { VideoCustomExampleComponent } from './video-custom/video-custom-example';
+import { VideoExampleComponent } from './video/video-example';
 
 const EXAMPLES = [
     VideoExampleComponent,

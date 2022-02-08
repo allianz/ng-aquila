@@ -1,20 +1,19 @@
-import { ExamplesSharedModule } from './../examples-shared.module';
-import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { NgModule } from '@angular/core';
+import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
-
-import { NgModule } from '@angular/core';
-import { AccordionExampleComponent } from './accordion/accordion-example';
+import { NxMessageModule } from '@aposin/ng-aquila/message';
+import { ExamplesSharedModule } from './../examples-shared.module';
 import { AccordionErrorExampleComponent } from './accordion-error/accordion-error-example';
-import { AccordionExtraLightExampleComponent } from './accordion-extra-light/accordion-extra-light-example';
 import { AccordionExtraLightNegativeExampleComponent } from './accordion-extra-light-negative/accordion-extra-light-negative-example';
+import { AccordionExtraLightExampleComponent } from './accordion-extra-light/accordion-extra-light-example';
 import { AccordionLazyExampleComponent } from './accordion-lazy/accordion-lazy-example';
-import { AccordionLightExampleComponent } from './accordion-light/accordion-light-example';
 import { AccordionLightNegativeExampleComponent } from './accordion-light-negative/accordion-light-negative-example';
+import { AccordionLightExampleComponent } from './accordion-light/accordion-light-example';
 import { AccordionMultiExampleComponent } from './accordion-multi/accordion-multi-example';
 import { AccordionNegativeExampleComponent } from './accordion-negative/accordion-negative-example';
 import { AccordionStandaloneExampleComponent } from './accordion-standalone/accordion-standalone-example';
+import { AccordionExampleComponent } from './accordion/accordion-example';
 
 const EXAMPLES = [
     AccordionExampleComponent,

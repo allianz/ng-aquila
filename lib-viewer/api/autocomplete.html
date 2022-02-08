@@ -198,7 +198,7 @@ for components like autocomplete where focus must remain on the input.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxAutocompleteDebounce'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">debounce</span>:
-                <span class="docs-api-property__type">number</span>
+                <span class="docs-api-property__type">NumberInput</span>
             </code>
         </p>
     </td>
@@ -342,7 +342,7 @@ inside the overlay container to allow for easy styling.</p>
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">items</span>:
-                <span class="docs-api-property__type">string[] | Observable<string[]></span>
+                <span class="docs-api-property__type">string[]</span>
             </code>
         </p>
     </td>
@@ -418,7 +418,7 @@ to get a string representation of the value, which can be stored in the input.</
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">id</span>:
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">`nx-autocomplete-${_uniqueAutocompleteIdCounter++}`</span>
             </code>
         </p>
     </td>
@@ -460,7 +460,7 @@ to get a string representation of the value, which can be stored in the input.</
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">showPanel</span>:
-                <span class="docs-api-property__type">boolean</span>
+                <span class="docs-api-property__type">false</span>
             </code>
         </p>
     </td>

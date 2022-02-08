@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
+import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 
 /**
  * @title Parsing example

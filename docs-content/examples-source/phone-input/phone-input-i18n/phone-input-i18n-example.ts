@@ -1,10 +1,10 @@
-import { NxPhoneInputIntl } from '@aposin/ng-aquila/phone-input';
 import { Component, Injectable, OnInit } from '@angular/core';
-import de from 'i18n-iso-countries/langs/de.json';
+import { NxPhoneInputIntl } from '@aposin/ng-aquila/phone-input';
 import countries from 'i18n-iso-countries';
+import de from 'i18n-iso-countries/langs/de.json';
+import fr from 'i18n-iso-countries/langs/fr.json';
 countries.registerLocale(de);
 
-import fr from 'i18n-iso-countries/langs/fr.json';
 countries.registerLocale(fr);
 
 @Injectable()

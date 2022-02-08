@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
     NxMultiStepperComponent,
-    NxProgressStepperDirective,
     NxMultiStepperDirection,
+    NxProgressStepperDirective,
 } from '@aposin/ng-aquila/progress-stepper';
 
 interface Animal {

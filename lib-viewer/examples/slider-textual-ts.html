@@ -17,10 +17,10 @@
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./slider-textual-example.css&#x27;</span>],
 })
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SliderTextualExampleComponent</span> </span>{
-    <span class="hljs-attr">fruitPreferenceFormatter</span>: <span class="hljs-built_in">Function</span> = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
+    fruitPreferenceFormatter = <span class="hljs-function">(<span class="hljs-params">value: FruitPreferenceType</span>) =&gt;</span> {
         <span class="hljs-keyword">switch</span> (value) {
             <span class="hljs-keyword">case</span> FruitPreferenceType.NEVER:
-                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;never&#x27;</span>;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I never prefer apples&#x27;</span>;
             <span class="hljs-keyword">case</span> FruitPreferenceType.RARELY:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;rarely&#x27;</span>;
             <span class="hljs-keyword">case</span> FruitPreferenceType.SOMETIMES:
@@ -28,9 +28,9 @@
             <span class="hljs-keyword">case</span> FruitPreferenceType.OFTEN:
                 <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;often&#x27;</span>;
             <span class="hljs-keyword">case</span> FruitPreferenceType.ALWAYS:
-                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;always&#x27;</span>;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;I always prefer apples&#x27;</span>;
         }
     };
-    minFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`never`</span>;
-    maxFruitPreferenceFormatter: <span class="hljs-built_in">Function</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`always`</span>;
+    minFruitPreferenceFormatter = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`never`</span>;
+    maxFruitPreferenceFormatter = <span class="hljs-function">() =&gt;</span> <span class="hljs-string">`always`</span>;
 }

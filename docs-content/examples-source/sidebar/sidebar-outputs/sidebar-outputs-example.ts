@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {
-    NxTreeFlatDataSource,
     NxFlatTreeControl,
-    NxTreeNode,
     NxFlatTreeNode,
+    NxTreeFlatDataSource,
+    NxTreeNode,
 } from '@aposin/ng-aquila/tree';
-import { Observable, of } from 'rxjs';
 
 interface Query {
     a: string;

@@ -1,5 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 /**

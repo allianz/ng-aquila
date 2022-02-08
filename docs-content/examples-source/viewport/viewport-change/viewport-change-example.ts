@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnDestroy } from '@angular/core';
-import { NxViewportService, NxBreakpoints } from '@aposin/ng-aquila/utils';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
+import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subscription } from 'rxjs';
 
 /**

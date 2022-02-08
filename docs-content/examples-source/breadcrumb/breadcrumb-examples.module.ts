@@ -1,11 +1,10 @@
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
-
 import { NgModule } from '@angular/core';
-import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
-import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadcrumb-negative-example';
+import { RouterModule } from '@angular/router';
+import { NxBreadcrumbModule } from '@aposin/ng-aquila/breadcrumb';
 import { BreadcrumbLinkExampleComponent } from './breadcrumb-link/breadcrumb-link-example';
+import { BreadcrumbNegativeExampleComponent } from './breadcrumb-negative/breadcrumb-negative-example';
+import { BreadcrumbExampleComponent } from './breadcrumb/breadcrumb-example';
 
 const EXAMPLES = [
     BreadcrumbExampleComponent,

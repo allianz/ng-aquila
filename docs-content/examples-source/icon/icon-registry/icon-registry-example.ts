@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NxIconRegistry } from '@aposin/ng-aquila/icon';
 
 /**
  * @title Register Icons Example

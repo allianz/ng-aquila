@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subscription } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class SidepanelFloatingExampleComponent {
 
     constructor(
         public viewportService: NxViewportService,
-        private _cdRef: ChangeDetectorRef,
+        private _cdr: ChangeDetectorRef,
     ) {
         this.viewportServiceSubscription = this.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)
@@ -31,7 +31,7 @@ export class SidepanelFloatingExampleComponent {
                     } else if (!isGreaterThanSmall && this.opened) {
                         this.opened = false;
                     }
-                    this._cdRef.detectChanges();
+                    this._cdr.detectChanges();
                 }
             });
     }

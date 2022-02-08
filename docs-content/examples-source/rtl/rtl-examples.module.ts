@@ -1,12 +1,12 @@
+import { BidiModule } from '@angular/cdk/bidi';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
+import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxSliderModule } from '@aposin/ng-aquila/slider';
 import { RtlBasicExampleComponent } from './rtl-basic/rtl-basic-example';
 import { RtlDynamicExampleComponent } from './rtl-dynamic/rtl-dynamic-example';
-import { CommonModule } from '@angular/common';
-import { BidiModule } from '@angular/cdk/bidi';
 
 const EXAMPLES = [RtlBasicExampleComponent, RtlDynamicExampleComponent];
 

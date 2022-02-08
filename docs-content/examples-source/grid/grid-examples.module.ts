@@ -1,6 +1,5 @@
-import { NxGridModule } from '@aposin/ng-aquila/grid';
-
 import { NgModule } from '@angular/core';
+import { NxGridModule } from '@aposin/ng-aquila/grid';
 import { GridAlignContentExampleComponent } from './grid-align-content/grid-align-content-example';
 import { GridAlignItemsExampleComponent } from './grid-align-items/grid-align-items-example';
 import { GridAlignSelfExampleComponent } from './grid-align-self/grid-align-self-example';

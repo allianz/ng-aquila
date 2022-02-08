@@ -1,16 +1,16 @@
+<span class="hljs-keyword">import</span> { HttpClient, HttpHeaders, HttpParams } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 <span class="hljs-keyword">import</span> { Component, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     FileItem,
+    NxFileUploadConfig,
+    NxFileUploader,
     NxFileUploaderComponent,
     NxFileUploadResult,
-    NxFileUploader,
-    NxFileUploadConfig,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/file-uploader&#x27;</span>;
 <span class="hljs-keyword">import</span> {
     NxMessageToastConfig,
     NxMessageToastService,
 } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/message&#x27;</span>;
-<span class="hljs-keyword">import</span> { HttpParams, HttpClient } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/common/http&#x27;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomConfig: NxMessageToastConfig = {
     <span class="hljs-attr">duration</span>: <span class="hljs-number">3000</span>,
@@ -33,6 +33,9 @@
         <span class="hljs-attr">requestUrl</span>: <span class="hljs-string">&#x27;file-upload&#x27;</span>,
         <span class="hljs-attr">options</span>: {
             <span class="hljs-attr">params</span>: <span class="hljs-keyword">new</span> HttpParams(),
+            <span class="hljs-attr">headers</span>: <span class="hljs-keyword">new</span> HttpHeaders({
+                <span class="hljs-string">&#x27;My-Custom-Header&#x27;</span>: <span class="hljs-string">&#x27;custom-header-value&#x27;</span>,
+            }),
             <span class="hljs-attr">reportProgress</span>: <span class="hljs-literal">true</span>,
         },
     };

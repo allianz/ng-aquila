@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Component } from '@angular/core';
 
 interface Contract {
     product: string;

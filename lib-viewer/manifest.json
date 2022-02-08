@@ -369,7 +369,7 @@
       "overviewFile": "lib-viewer/overview/avatar.html",
       "b2c": false,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "badge",
@@ -753,7 +753,7 @@
       "overviewFile": "lib-viewer/overview/comparison-table.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "config",
@@ -805,6 +805,10 @@
         },
         {
           "name": "context-menu-scroll-strategy",
+          "config": {}
+        },
+        {
+          "name": "context-menu-cursor-mode",
           "config": {}
         }
       ],
@@ -1446,7 +1450,7 @@
       "overviewFile": "lib-viewer/overview/indicator.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "input",
@@ -1867,7 +1871,7 @@
       "overviewFile": "lib-viewer/overview/notification-panel.html",
       "b2c": false,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "number-stepper",
@@ -1963,7 +1967,7 @@
       "overviewFile": "lib-viewer/overview/overlay.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "page-search",
@@ -2357,7 +2361,7 @@
       "overviewFile": "lib-viewer/overview/rtl.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress",
+      "stable": "done",
       "noApi": true
     },
     {
@@ -2422,7 +2426,7 @@
       "overviewFile": "lib-viewer/overview/sidepanel.html",
       "b2c": false,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "slider",
@@ -2514,7 +2518,7 @@
       "overviewFile": "lib-viewer/overview/small-stage.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "spinner",
@@ -2773,7 +2777,7 @@
       "overviewFile": "lib-viewer/overview/theming.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress",
+      "stable": "done",
       "noApi": true
     },
     {
@@ -2810,7 +2814,7 @@
       "overviewFile": "lib-viewer/overview/timefield.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "toolbar",
@@ -2830,7 +2834,7 @@
       "overviewFile": "lib-viewer/overview/toolbar.html",
       "b2c": false,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "tooltip",
@@ -3933,6 +3937,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/context-menu-basic-###TYPE###.html"
+    },
+    {
+      "id": "context-menu-cursor-mode",
+      "title": "Cursor Mode Context Menu Example",
+      "module": "context-menu",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-cursor-mode-###TYPE###.html"
     },
     {
       "id": "context-menu-data",

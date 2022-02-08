@@ -1,9 +1,15 @@
-<nx-slider
-    nxLabel="Do you prefer apples over oranges?"
-    [nxMin]="0"
-    [nxMax]="4"
-    [nxLabelMinFormatter]="minFruitPreferenceFormatter"
-    [nxLabelMaxFormatter]="maxFruitPreferenceFormatter"
-    [nxValueFormatter]="fruitPreferenceFormatter"
->
-</nx-slider>
+<div nxLayout="grid">
+    <div nxRow>
+        <div nxCol="12">
+            <nx-slider
+                nxLabel="Do you prefer apples over oranges?"
+                [nxMin]="0"
+                [nxMax]="4"
+                [nxLabelMinFormatter]="minFruitPreferenceFormatter"
+                [nxLabelMaxFormatter]="maxFruitPreferenceFormatter"
+                [nxValueFormatter]="fruitPreferenceFormatter"
+            >
+            </nx-slider>
+        </div>
+    </div>
+</div>

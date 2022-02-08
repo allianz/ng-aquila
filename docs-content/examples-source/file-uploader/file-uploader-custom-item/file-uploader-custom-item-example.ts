@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, ViewChild } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import {
     FileItem,
     NxFileUploaderComponent,
@@ -7,9 +9,6 @@ import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
-import { HttpParams, HttpClient } from '@angular/common/http';
-import { ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
 
 export class CustomFileItem extends FileItem {
     public formData!: FormData;
