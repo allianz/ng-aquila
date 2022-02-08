@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.1.0](https://github.com/aposin/ng-aquila/compare/v13.0.0...v13.1.0) (2022-02-08)
+
+### Bug Fixes
+
+-   **dropdown:** add missing multi-select placeholder ([c64da50](https://github.com/aposin/ng-aquila/commit/c64da50c3fabbaea07769429d34ee5afd881c615))
+-   **file-upload:** update errors on file remove ([59681ca](https://github.com/aposin/ng-aquila/commit/59681ca3842f03d1cb74396826580866707f2074))
+-   **input-mask:** iban on-blur infinite validation loop ([0dff959](https://github.com/aposin/ng-aquila/commit/0dff9597ab2f515c92cdc830af240592a9e5ed1a))
+-   **phone-input:** reset country code to correct initial value ([723a9d2](https://github.com/aposin/ng-aquila/commit/723a9d29096e14ab234196e2d00260ecd2ab8a00))
+-   **radio-group:** move error message to bottom of group ([37e42cb](https://github.com/aposin/ng-aquila/commit/37e42cbe18c5247aa26a9d24686d550bda138d9e))
+-   **sidepanel:** resolve circular dependency ([9474a14](https://github.com/aposin/ng-aquila/commit/9474a142292a4cb24744ecc3ffb59e6322190d7f))
+-   **slider:** prevent clipping of value label ([557f16e](https://github.com/aposin/ng-aquila/commit/557f16ef993aa2b1c6ef929f9b91e0371a64fbd9))
+-   **stepper:** add background to dot ([bc47d28](https://github.com/aposin/ng-aquila/commit/bc47d28c1c2b09e0a1ac478b31385f9ddff23391))
+-   **table:** sort header icon spacing ([c37c045](https://github.com/aposin/ng-aquila/commit/c37c045d8bbc4ca1aa62109bb511fd9f52bf05fa))
+
+### Features
+
+-   **context-menu:** add possibility to open via right click ([c87c0b6](https://github.com/aposin/ng-aquila/commit/c87c0b6d4844d1d637c696e457735b754f754770))
+-   **iso-date-adapter:** automatically fall back to valid dayjs locales ([75ed494](https://github.com/aposin/ng-aquila/commit/75ed494503d779d3543677b754bbb0d1f652044c))
+-   **iso-date-adapter:** automatically lazy-load dayjs locales ([74fbbe1](https://github.com/aposin/ng-aquila/commit/74fbbe1284377c6963d0947bf3068d60ca714a6d))
+-   **theming:** add support for web components ([53b171d](https://github.com/aposin/ng-aquila/commit/53b171dd585159b1b15133040a1a968cb414488a))
+
 # [13.0.0](https://github.com/aposin/ng-aquila/compare/v13.0.0-next.0...v13.0.0) (2021-12-30)
 
 We are officially releasing version 13 that is based on Angular 13. For updating please see our update guide: https://aposin.github.io/ng-aquila/guides/releases
