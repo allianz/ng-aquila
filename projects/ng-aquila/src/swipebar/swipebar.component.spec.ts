@@ -2,8 +2,8 @@ import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import * as axe from 'axe-core';
 
-import { NxTableModule } from '../table.module';
 import { NxSwipebarComponent } from './swipebar.component';
+import { NxSwipebarModule } from './swipebar.module';
 
 const screenWidth = document.body.offsetWidth;
 
@@ -31,7 +31,7 @@ describe(NxSwipebarComponent.name, () => {
         waitForAsync(() => {
             TestBed.configureTestingModule({
                 declarations: [BasicSwipebar],
-                imports: [NxTableModule],
+                imports: [NxSwipebarModule],
             }).compileComponents();
         }),
     );
