@@ -24,7 +24,7 @@ We are building the following structure.
                     <ng-content select="[nxFormfieldPrefix]"></ng-content>
                 </div>
 
-                <div class="nx-formfield__input">
+                <div class="nx-formfield__input" [title]="label">
                     <!-- This handles the floating whole behavior -->
                     <span class="nx-formfield__label-holder">
                         <label class="nx-formfield__label" [id]="labelId" [attr.aria-owns]="_control.id" [attr.for]="_control.id">
