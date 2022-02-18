@@ -1,8 +1,9 @@
-declare let require: any;
+import PACKAGE from 'projects/ng-aquila/src/package.json';
+import VERSIONS from 'versions.json';
 
 export const environment = {
-    CURRENT_CHANNEL: 'stable',
-    CURRENT_VERSION: require('projects/ng-aquila/src/package.json').version,
-    VERSIONS: require('../../../../versions.json'),
     production: true,
+    CURRENT_VERSION: PACKAGE.version,
+    CURRENT_CHANNEL: 'stable',
+    VERSIONS,
 };

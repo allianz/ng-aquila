@@ -44,7 +44,7 @@ const ROUTES = [
 
 const channels = environment.VERSIONS.channels.map((channel: any) => ({
     name: channel,
-    url: environment.VERSIONS.urls[channel],
+    url: (environment.VERSIONS.urls as Record<string, string>)[channel],
 }));
 
 const VERSIONS: DocVersions = {

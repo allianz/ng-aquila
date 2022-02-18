@@ -5,6 +5,7 @@
         {
             "files": ["*.ts"],
             "rules": {
+                "@typescript-eslint/no-var-requires": "off", // recommended overide: used frequently
                 "@typescript-eslint/prefer-includes": "off" // not supported by tsconfig target of 'es5'
             }
         }

@@ -4,7 +4,9 @@
     "overrides": [
         {
             "files": ["*.ts"],
-            "rules": {}
+            "rules": {
+                "@typescript-eslint/no-var-requires": "off" // recommended overide: used once
+            }
         }
     ]
 }
