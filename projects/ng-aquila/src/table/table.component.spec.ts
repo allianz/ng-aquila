@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NxExpandableTableDirective } from './expandable/expandable-table.directive';
 import { NxHeaderCellDirective } from './header-cell.directive';
 import { NxTableComponent } from './table.component';
 import { NxTableModule } from './table.module';
@@ -30,13 +31,13 @@ describe(NxTableComponent.name, () => {
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
         tableInstance = testInstance.tableInstance;
-        tableElement = fixture.debugElement.query(By.directive(NxTableComponent));
+        tableElement = fixture.debugElement.query(By.css('table'));
     }
 
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [SimpleTableComponent, ZebraTableComponent, CondensedTableComponent],
+                declarations: [SimpleTableComponent, ZebraTableComponent, CondensedTableComponent, NxExpandableTableDirective],
                 imports: [NxTableModule, NoopAnimationsModule],
             }).compileComponents();
         }),
@@ -58,6 +59,11 @@ describe(NxTableComponent.name, () => {
         it('has zebra styling', () => {
             createTestComponent(ZebraTableComponent);
             expect(tableElement.nativeElement.classList.contains(ZEBRA_CSS_CLASS)).toBeTruthy();
+        });
+
+        it('should ignore zebra styling in expandable mode', () => {
+            createTestComponent(ExpandableNonZebraTableComponent);
+            expect(tableElement.nativeElement).not.toHaveClass(ZEBRA_CSS_CLASS);
         });
 
         it('has condensed styling', () => {
@@ -158,6 +164,23 @@ class SimpleTableComponent extends TableTest {}
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ZebraTableComponent extends TableTest {}
+
+@Component({
+    template: `<table nxTable nxExpandableTable zebra>
+        <thead>
+            <tr nxTableRow>
+                <th nxHeaderCell></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow>
+                <td nxTableCell></td>
+            </tr>
+        </tbody>
+    </table>`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+})
+class ExpandableNonZebraTableComponent extends TableTest {}
 
 @Component({
     template: `<table nxTable condensed>

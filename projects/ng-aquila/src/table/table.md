@@ -66,6 +66,8 @@ Please note that **this is an Expert styling option**. This means that the expan
 
 Table rows can be expanded by adding `[nxExpandableTableRow]` and `[nxExpandableTableCell]` to the table. For convenience the `<nx-toggle-button>` component can be used to expand and close the rows. The rows can also be toggled directly by calling their `toggle`, `expand` or `close` methods. The table also supports expanding all rows at the same time. The `[nxExpandableTable]` directive handles the expandion of all rows by conbining it with the `<nx-toggle-button>` as in this example.
 
+However, zebra mode using the attribute `zebra` is not available for tables with expandable rows for stylistic reasons.
+
 <!-- example(table-expandable) -->
 
 ### Expert: Form elements

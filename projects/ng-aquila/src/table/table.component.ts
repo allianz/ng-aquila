@@ -1,5 +1,8 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional } from '@angular/core';
+
+import { NxExpandableTableDirective } from './expandable/expandable-table.directive';
+
 /**
  * This is a table.
  * The table supports a `zebra` and a `condensed` mode.
@@ -25,7 +28,7 @@ export class NxTableComponent {
 
     private _sticky!: string;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef, @Optional() private _expandableTableDirective: NxExpandableTableDirective | null) {}
 
     /** Change the table mode to condensed  */
     @Input() set condensed(value: BooleanInput) {
@@ -51,7 +54,7 @@ export class NxTableComponent {
     }
 
     get zebra(): boolean {
-        return this._zebra;
+        return this._expandableTableDirective ? false : this._zebra;
     }
 
     /**
