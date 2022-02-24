@@ -359,6 +359,12 @@ $outline-padding: 7px;
     }
 }
 
+.nx-formfield:not(.has-outline).is-readonly:not(.is-disabled) {
+    .nx-formfield__input-container {
+        border-bottom-color: v(formfield-readonly-border-color);
+    }
+}
+
 // Provide the floating behavior
 .nx-formfield.is-floating {
     .nx-formfield__label {
