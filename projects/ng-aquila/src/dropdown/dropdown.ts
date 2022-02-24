@@ -993,7 +993,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     _getLabel(option: NxDropdownOption) {
-        return this.formatValue(option.label || option.value);
+        return option.label || this.formatValue(option.value);
     }
 
     /**
