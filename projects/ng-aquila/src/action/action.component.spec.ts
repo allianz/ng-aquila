@@ -50,20 +50,20 @@ describe(NxActionComponent.name, () => {
         it(
             'default action includes the bem block element',
             waitForAsync(() => {
-                expect(actionElement.classList.contains('nx-action')).toBeTruthy();
+                expect(actionElement).toHaveClass('nx-action');
             }),
         );
 
         it('is not selected', () => {
-            expect(actionElement.classList.contains('is-selected')).toBeFalsy();
+            expect(actionElement).not.toHaveClass('is-selected');
         });
 
         it('is not expandable', () => {
-            expect(actionElement.classList.contains('is-expandable')).toBeFalsy();
+            expect(actionElement).not.toHaveClass('is-expandable');
         });
 
         it('is not expanded', () => {
-            expect(actionElement.classList.contains('is-expanded')).toBeFalsy();
+            expect(actionElement).not.toHaveClass('is-expanded');
         });
 
         describe('selected action', () => {
@@ -73,7 +73,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is selected', () => {
-                expect(actionElement.classList.contains('is-selected')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-selected');
             });
         });
 
@@ -84,7 +84,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is expandable', () => {
-                expect(actionElement.classList.contains('is-expandable')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-expandable');
             });
         });
 
@@ -96,7 +96,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(actionElement.classList.contains('is-expanded')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-expanded');
             });
         });
     });
@@ -113,7 +113,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is selected', () => {
-                expect(actionElement.classList.contains('is-selected')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-selected');
             });
         });
 
@@ -124,7 +124,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is expandable', () => {
-                expect(actionElement.classList.contains('is-expandable')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-expandable');
             });
         });
 
@@ -136,7 +136,7 @@ describe(NxActionComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(actionElement.classList.contains('is-expanded')).toBeTruthy();
+                expect(actionElement).toHaveClass('is-expanded');
             });
         });
     });

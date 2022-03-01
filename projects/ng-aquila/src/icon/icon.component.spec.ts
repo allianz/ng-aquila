@@ -49,7 +49,7 @@ describe('NxIconComponent', () => {
         'adds the class name for a icon',
         waitForAsync(() => {
             createTestComponent(BasicIcon);
-            expect(iconNativeElement.classList).toContain('heart');
+            expect(iconNativeElement).toHaveClass('heart');
         }),
     );
 
@@ -57,7 +57,7 @@ describe('NxIconComponent', () => {
         'adds the class name for size',
         waitForAsync(() => {
             createTestComponent(SizeIcon);
-            expect(iconNativeElement.classList).toContain('nx-icon--m');
+            expect(iconNativeElement).toHaveClass('nx-icon--m');
         }),
     );
 
@@ -65,7 +65,7 @@ describe('NxIconComponent', () => {
         'adds the class name for outline',
         waitForAsync(() => {
             createTestComponent(OutlineIcon);
-            expect(iconNativeElement.classList).toContain('nx-icon--outline');
+            expect(iconNativeElement).toHaveClass('nx-icon--outline');
         }),
     );
 
@@ -73,7 +73,7 @@ describe('NxIconComponent', () => {
         'adds the class name for fill',
         waitForAsync(() => {
             createTestComponent(FillIcon);
-            expect(iconNativeElement.classList).toContain('nx-icon--fill');
+            expect(iconNativeElement).toHaveClass('nx-icon--fill');
         }),
     );
 
@@ -81,14 +81,14 @@ describe('NxIconComponent', () => {
         createTestComponent(DynamicIcon);
         (testInstance as DynamicIcon).name = 'setting';
         fixture.detectChanges();
-        expect(iconNativeElement.classList).toContain('setting');
+        expect(iconNativeElement).toHaveClass('setting');
     });
 
     it('should change size on binding changes', () => {
         createTestComponent(DynamicIcon);
         (testInstance as DynamicIcon).size = 's';
         fixture.detectChanges();
-        expect(iconNativeElement.classList).toContain('nx-icon--s');
+        expect(iconNativeElement).toHaveClass('nx-icon--s');
     });
 
     describe('a11y', () => {
@@ -118,7 +118,7 @@ describe('NxIconComponent', () => {
          */
         function verifyAndGetSingleSvgChild(element: HTMLElement): SVGElement {
             expect(element.id).toBeFalsy();
-            expect(element.childNodes.length).toBe(1);
+            expect(element.childNodes).toHaveSize(1);
             const svgChild = element.childNodes[0] as SVGElement;
             expect(svgChild.tagName.toLowerCase()).toBe('svg');
             return svgChild;
@@ -137,7 +137,7 @@ describe('NxIconComponent', () => {
                 testInstance.name = 'custom-icon-name';
                 fixture.detectChanges();
                 http.expectOne('custom-svg-icon.svg').flush(FAKE_SVG_ICON);
-                expect(iconNativeElement.classList).not.toContain('nx-icon--custom-icon-name');
+                expect(iconNativeElement).not.toHaveClass('nx-icon--custom-icon-name');
                 verifyAndGetSingleSvgChild(iconNativeElement);
             }));
 
@@ -165,7 +165,7 @@ describe('NxIconComponent', () => {
                 iconRegistry.addSvgIconLiteral('custom-icon-name', trustHtml('<svg><path class="my-svg" id="fake-icon" name="fake-icon"></path></svg>'));
                 testInstance.name = 'custom-icon-name';
                 fixture.detectChanges();
-                expect(iconNativeElement.classList).not.toContain('nx-icon--custom-icon-name');
+                expect(iconNativeElement).not.toHaveClass('nx-icon--custom-icon-name');
                 const svg = verifyAndGetSingleSvgChild(iconNativeElement);
                 expect(svg.querySelector('.my-svg')).toBeTruthy();
             }));
@@ -210,27 +210,27 @@ describe('NxIconComponent', () => {
                 iconRegistry.setDefaultFont('custom-font');
                 testInstance.name = 'custom-icon-name';
                 fixture.detectChanges();
-                expect(iconNativeElement.classList).toContain('custom-font--custom-icon-name');
+                expect(iconNativeElement).toHaveClass('custom-font--custom-icon-name');
             });
 
             it('should add font host class', () => {
                 iconRegistry.registerFont('custom-font', 'custom-font');
                 iconRegistry.setDefaultFont('custom-font');
                 createTestComponent(DynamicIcon);
-                expect(iconNativeElement.classList).toContain('custom-font');
+                expect(iconNativeElement).toHaveClass('custom-font');
             });
 
             it('should add font prefix', () => {
                 iconRegistry.registerFont('custom-font', 'custom-font', 'custom-prefix--');
                 iconRegistry.setDefaultFont('custom-font');
                 createTestComponent(DynamicIcon);
-                expect(iconNativeElement.classList).toContain('custom-prefix--heart');
+                expect(iconNativeElement).toHaveClass('custom-prefix--heart');
             });
 
             it('should use font input if present', () => {
                 iconRegistry.registerFont('custom-font', 'custom-font', 'custom-prefix--');
                 createTestComponent(FontIcon);
-                expect(iconNativeElement.classList).toContain('custom-font');
+                expect(iconNativeElement).toHaveClass('custom-font');
             });
 
             it('should throw if font is unkown', () => {
@@ -252,8 +252,8 @@ describe('NxIconComponent', () => {
                 createTestComponent(DynamicIcon);
                 testInstance.name = 'chevron-down';
                 fixture.detectChanges();
-                expect(iconNativeElement.classList).toContain('my-font');
-                expect(iconNativeElement.classList).toContain('chevron-down');
+                expect(iconNativeElement).toHaveClass('my-font');
+                expect(iconNativeElement).toHaveClass('chevron-down');
             });
 
             it('should override essential icon with font alias', () => {
@@ -262,9 +262,9 @@ describe('NxIconComponent', () => {
                 createTestComponent(DynamicIcon);
                 testInstance.name = 'chevron-down';
                 fixture.detectChanges();
-                expect(iconNativeElement.classList).toContain('my-font');
-                expect(iconNativeElement.classList).not.toContain('chevron-down');
-                expect(iconNativeElement.classList).toContain('arrow-up');
+                expect(iconNativeElement).toHaveClass('my-font');
+                expect(iconNativeElement).not.toHaveClass('chevron-down');
+                expect(iconNativeElement).toHaveClass('arrow-up');
             });
         });
     });

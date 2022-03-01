@@ -74,7 +74,7 @@ describe('ToggleSectionHeaderComponent', () => {
         it('should call toggle() on desktop', fakeAsync(() => {
             createTestComponent(BasicComponent);
             tick(THROTTLE_TIME);
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
 
             const spy = spyOn(headerInstances.toArray()[0], 'toggle').and.callThrough();
             const wrapper = headerElements[0].nativeElement.querySelector('.nx-comparison-table-toggle-section__header-wrapper');
@@ -84,7 +84,7 @@ describe('ToggleSectionHeaderComponent', () => {
             tick();
 
             expect(spy).toHaveBeenCalledTimes(1);
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(false);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
         }));
     });
 
@@ -122,7 +122,7 @@ describe('ToggleSectionHeaderComponent', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
 
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
             const spy = spyOn(headerInstances.toArray()[0], 'toggle').and.callThrough();
             mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
             mobileHeaderElements[0].nativeElement.click();
@@ -131,7 +131,7 @@ describe('ToggleSectionHeaderComponent', () => {
             tick();
 
             expect(spy).not.toHaveBeenCalled();
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
         }));
 
         afterEach(() => {
@@ -189,16 +189,16 @@ describe('ToggleSectionHeaderComponent', () => {
 
         it('should toggle the section on ENTER and SPACE', () => {
             createTestComponent(BasicComponent);
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
 
             const wrapper = headerElements[0].nativeElement.querySelector('.nx-comparison-table-toggle-section__header-wrapper') as HTMLElement;
             dispatchKeyboardEvent(wrapper, 'keydown', ENTER);
             fixture.detectChanges();
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(false);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeFalse();
 
             dispatchKeyboardEvent(wrapper, 'keydown', SPACE);
             fixture.detectChanges();
-            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBe(true);
+            expect(headerInstances.toArray()[0]._toggleSection.isExpanded).toBeTrue();
         });
 
         afterEach(() => {

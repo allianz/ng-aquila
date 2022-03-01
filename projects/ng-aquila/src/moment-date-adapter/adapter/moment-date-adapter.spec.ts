@@ -22,11 +22,10 @@ describe('NxMomentDateAdapter', () => {
     let adapter: NxMomentDateAdapter;
 
     function assertValidDate(date: moment.Moment | null, valid: boolean): void {
-        expect(adapter.isDateInstance(date)).not.toBeNull(`Expected ${date} to be a date instance`);
-        expect(adapter.isValid(date as moment.Moment)).toBe(
-            valid,
-            `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`,
-        );
+        expect(adapter.isDateInstance(date)).withContext(`Expected ${date} to be a date instance`).not.toBeNull();
+        expect(adapter.isValid(date as moment.Moment))
+            .withContext(`Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`)
+            .toBe(valid);
     }
 
     beforeEach(

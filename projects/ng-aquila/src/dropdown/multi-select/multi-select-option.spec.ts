@@ -89,7 +89,7 @@ describe('NxMultiSelectOptionComponent', () => {
         });
 
         it('is not active', async () => {
-            expect(await multiSelectOptionHarness.isActive()).toBe(false);
+            expect(await multiSelectOptionHarness.isActive()).toBeFalse();
         });
 
         it('shows no check icon', async () => {
@@ -98,11 +98,11 @@ describe('NxMultiSelectOptionComponent', () => {
         });
 
         it('is not selected', async () => {
-            expect(await multiSelectOptionHarness.isSelected()).toBe(false);
+            expect(await multiSelectOptionHarness.isSelected()).toBeFalse();
         });
 
         it('is not disabled', async () => {
-            expect(await multiSelectOptionHarness.isDisabled()).toBe(false);
+            expect(await multiSelectOptionHarness.isDisabled()).toBeFalse();
         });
 
         it('has the aria attributes', async () => {
@@ -127,7 +127,7 @@ describe('NxMultiSelectOptionComponent', () => {
             });
 
             it('is selected', async () => {
-                expect(await multiSelectOptionHarness.isSelected()).toBe(true);
+                expect(await multiSelectOptionHarness.isSelected()).toBeTrue();
             });
 
             it('shows check icon', async () => {
@@ -154,7 +154,7 @@ describe('NxMultiSelectOptionComponent', () => {
             });
 
             it('is disabled', async () => {
-                expect(await multiSelectOptionHarness.isDisabled()).toBe(true);
+                expect(await multiSelectOptionHarness.isDisabled()).toBeTrue();
             });
 
             it('has the aria attributes', async () => {
@@ -172,7 +172,7 @@ describe('NxMultiSelectOptionComponent', () => {
             });
 
             it('is active', async () => {
-                expect(await multiSelectOptionHarness.isActive()).toBe(true);
+                expect(await multiSelectOptionHarness.isActive()).toBeTrue();
             });
 
             describe('and set inactive', () => {
@@ -182,7 +182,7 @@ describe('NxMultiSelectOptionComponent', () => {
                 });
 
                 it('is active', async () => {
-                    expect(await multiSelectOptionHarness.isActive()).toBe(false);
+                    expect(await multiSelectOptionHarness.isActive()).toBeFalse();
                 });
             });
         });
@@ -194,7 +194,7 @@ describe('NxMultiSelectOptionComponent', () => {
             });
 
             it('has appearance outline', async () => {
-                expect(await multiSelectOptionHarness.isOutline()).toBe(true);
+                expect(await multiSelectOptionHarness.isOutline()).toBeTrue();
             });
         });
     });

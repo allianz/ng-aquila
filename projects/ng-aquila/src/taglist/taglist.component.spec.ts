@@ -54,7 +54,7 @@ describe('NxTaglistComponent', () => {
     it('renders given tags', () => {
         createTestComponent(BasicTaglist);
 
-        expect(tagElements.length).toBe(2);
+        expect(tagElements).toHaveSize(2);
 
         const item0 = tagElements.item(0);
         expect(item0.textContent?.trim()).toBe('foo');
@@ -64,13 +64,13 @@ describe('NxTaglistComponent', () => {
 
     it('deletes tags on delete button click', () => {
         createTestComponent(BasicTaglist);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         const closeIcons = fixture.debugElement.queryAll(By.css('.nx-tag__close'));
         closeIcons[0].nativeElement.click();
-        expect(taglistInstance.tags.length).toBe(1);
-        expect(taglistInstance.tags.indexOf('foo')).toBe(-1);
-        expect(taglistInstance.tags.indexOf('bar')).toBe(0);
+        expect(taglistInstance.tags).toHaveSize(1);
+        expect(taglistInstance.tags).not.toContain('foo');
+        expect(taglistInstance.tags).toContain('bar');
     });
 
     it('deletes tags on delete button click and focuses the next one', () => {
@@ -81,7 +81,7 @@ describe('NxTaglistComponent', () => {
 
         fixture.detectChanges();
 
-        expect(taglistInstance.tags.length).toBe(1);
+        expect(taglistInstance.tags).toHaveSize(1);
         expect(document.activeElement).toEqual(tagElements.item(1));
     });
 
@@ -105,7 +105,7 @@ describe('NxTaglistComponent', () => {
 
     it('no delete icon in list mode', () => {
         createTestComponent(TaglistNoDelete);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
         expect(closeIcon).toBeNull();
@@ -113,26 +113,26 @@ describe('NxTaglistComponent', () => {
 
     it('can add tags', () => {
         createTestComponent(BasicTaglist);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         taglistInstance.addTag('baz');
-        expect(taglistInstance.tags.length).toBe(3);
+        expect(taglistInstance.tags).toHaveSize(3);
     });
 
     it('cannot add duplicate tags', () => {
         createTestComponent(BasicTaglist);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         taglistInstance.addTag('foo');
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
     });
 
     it('can clear tags', () => {
         createTestComponent(BasicTaglist);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         taglistInstance.clearTags();
-        expect(taglistInstance.tags.length).toBe(0);
+        expect(taglistInstance.tags).toHaveSize(0);
     });
 
     it('shows content as empty state', () => {
@@ -145,10 +145,10 @@ describe('NxTaglistComponent', () => {
 
     it('displays label property in case input is an array of objects', () => {
         createTestComponent(TaglistObjects);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-        expect(listItems.length).toBe(2);
+        expect(listItems).toHaveSize(2);
 
         const item0 = listItems.item(0).querySelector('nx-tag');
         expect(item0?.textContent?.trim()).toBe('foo');
@@ -158,10 +158,10 @@ describe('NxTaglistComponent', () => {
 
     it('can add objects as tags', () => {
         createTestComponent(TaglistObjects);
-        expect(taglistInstance.tags.length).toBe(2);
+        expect(taglistInstance.tags).toHaveSize(2);
 
         taglistInstance.addTag({ testLabelProp: 'baz' });
-        expect(taglistInstance.tags.length).toBe(3);
+        expect(taglistInstance.tags).toHaveSize(3);
         expect(taglistInstance.tags[2].testLabelProp).toBe('baz');
     });
 
@@ -182,7 +182,7 @@ describe('NxTaglistComponent', () => {
             testInstance.taglistInstance.tags = ['a', 'b', 'c'];
             fixture.detectChanges();
             tagElements = getTagElements();
-            expect(tagElements.length).toBe(3);
+            expect(tagElements).toHaveSize(3);
             expect(tagElements.item(0).textContent?.trim()).toBe('a');
         });
 
@@ -197,7 +197,7 @@ describe('NxTaglistComponent', () => {
             createTestComponent(TaglistOnPush);
             testInstance.taglistInstance.isKeywordList = true;
             fixture.detectChanges();
-            expect(fixture.nativeElement.querySelector('nx-taglist').classList).toContain('nx-taglist--keyword');
+            expect(fixture.nativeElement.querySelector('nx-taglist')).toHaveClass('nx-taglist--keyword');
         });
 
         it('should update on labelProp change', () => {

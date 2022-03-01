@@ -102,7 +102,7 @@ describe('NxDatepicker', () => {
                     changeEmitter.emit('rtl');
 
                     expect(testComponent.datepicker.close).toHaveBeenCalledTimes(1);
-                    expect((testComponent.datepicker as any)._popupRef).toBe(null);
+                    expect((testComponent.datepicker as any)._popupRef).toBeNull();
                     changeEmitter.complete();
                 }));
             });

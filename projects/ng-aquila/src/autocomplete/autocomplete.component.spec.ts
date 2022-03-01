@@ -131,7 +131,7 @@ describe('NxAutocompleteComponent:', () => {
         typeInput('A');
         flush();
         expect(getAutocompletePanel()).toBeTruthy();
-        expect(getAutocompleteItems().length).toBe(2);
+        expect(getAutocompleteItems()).toHaveSize(2);
         expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('A');
     }));
 
@@ -140,7 +140,7 @@ describe('NxAutocompleteComponent:', () => {
         typeInput('A');
         flush();
         expect(getAutocompletePanel()).toBeTruthy();
-        expect(getAutocompleteItems().length).toBe(2);
+        expect(getAutocompleteItems()).toHaveSize(2);
         expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a descr');
         expect(getAutocompleteItems().item(1).textContent!.trim()).toBe('aa descr');
         getAutocompleteItems().item(0).click();
@@ -154,7 +154,7 @@ describe('NxAutocompleteComponent:', () => {
         typeInput('A');
         flush();
         expect(getAutocompletePanel()).toBeTruthy();
-        expect(getAutocompleteItems().length).toBe(2);
+        expect(getAutocompleteItems()).toHaveSize(2);
         expect(getAutocompleteItems().item(0).textContent!.trim()).toBe('a');
     }));
 
@@ -232,7 +232,7 @@ describe('NxAutocompleteComponent:', () => {
         flush();
 
         expect(getAutocompletePanel()).toBeTruthy();
-        expect(getAutocompleteItems().length).toBe(2);
+        expect(getAutocompleteItems()).toHaveSize(2);
 
         document.dispatchEvent(new Event('mouseup'));
         flush();

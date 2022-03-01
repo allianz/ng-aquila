@@ -5,7 +5,7 @@ import { NxPaginationUtils } from './pagination-utils';
 
 describe('NxPaginationUtils', () => {
     function assertCheck(collection: any, length: any, values: any) {
-        expect(collection.length).toEqual(length);
+        expect(collection).toHaveSize(length);
         for (let i = 0; i < values.length; i++) {
             expect(collection[i].label).toEqual(values[i]);
         }
@@ -167,7 +167,7 @@ describe('NxPaginationUtils', () => {
 
         it('should show last 3 elements when current position is "10" and total "10"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {
             const endArray = utils.getEndArray(10, 10);
-            expect(endArray.length).toEqual(3);
+            expect(endArray).toHaveSize(3);
             assertCheck(endArray, 3, [8, 9, 10]);
         }));
 

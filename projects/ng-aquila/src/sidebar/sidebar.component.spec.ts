@@ -88,7 +88,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('is open by default', () => {
-            expect(sidebarInstance.open).toBe(true);
+            expect(sidebarInstance.open).toBeTrue();
         });
 
         it('should not render the resize handle', () => {
@@ -98,7 +98,7 @@ describe('NxSidebarComponent', () => {
         it('expands to a certain width when expand() is called with a parameter', () => {
             sidebarInstance.expand(350);
             fixture.detectChanges();
-            expect(sidebarElement.nativeElement.style.width).toBe(`350px`);
+            expect(sidebarElement.nativeElement.style.width).toBe('350px');
         });
     });
 
@@ -203,7 +203,7 @@ describe('NxSidebarComponent', () => {
                 });
 
                 it('is closed', () => {
-                    expect(sidebarInstance.open).toBe(false);
+                    expect(sidebarInstance.open).toBeFalse();
                 });
             });
 
@@ -218,7 +218,7 @@ describe('NxSidebarComponent', () => {
                 });
 
                 it('is open', () => {
-                    expect(sidebarInstance.open).toBe(true);
+                    expect(sidebarInstance.open).toBeTrue();
                 });
 
                 it('is has reduced width', () => {
@@ -238,7 +238,7 @@ describe('NxSidebarComponent', () => {
                 });
 
                 it('is open', () => {
-                    expect(sidebarInstance.open).toBe(true);
+                    expect(sidebarInstance.open).toBeTrue();
                 });
 
                 it('is restores the previous width', () => {
@@ -256,7 +256,7 @@ describe('NxSidebarComponent', () => {
         });
 
         it('has the minimal width', () => {
-            expect(sidebarElement.nativeElement.style.width).toBe(`140px`);
+            expect(sidebarElement.nativeElement.style.width).toBe('140px');
         });
     });
 
@@ -272,7 +272,7 @@ describe('NxSidebarComponent', () => {
             });
 
             it('is not open', () => {
-                expect(sidebarInstance.open).toBe(false);
+                expect(sidebarInstance.open).toBeFalse();
             });
 
             it('has the minimal width', () => {
@@ -288,7 +288,7 @@ describe('NxSidebarComponent', () => {
             });
 
             it('is open', () => {
-                expect(sidebarInstance.open).toBe(true);
+                expect(sidebarInstance.open).toBeTrue();
             });
 
             it('has the the default width', () => {
@@ -303,7 +303,7 @@ describe('NxSidebarComponent', () => {
             });
 
             it('is not open', () => {
-                expect(sidebarInstance.open).toBe(false);
+                expect(sidebarInstance.open).toBeFalse();
             });
 
             it('has the minimal width', () => {
@@ -317,7 +317,7 @@ describe('NxSidebarComponent', () => {
                 });
 
                 it('is open', () => {
-                    expect(sidebarInstance.open).toBe(true);
+                    expect(sidebarInstance.open).toBeTrue();
                 });
 
                 it('has the default width', () => {
@@ -346,7 +346,7 @@ describe('NxSidebarComponent', () => {
             });
 
             it('has the minimal width', () => {
-                expect(sidebarElement.nativeElement.style.width).toBe(`140px`);
+                expect(sidebarElement.nativeElement.style.width).toBe('140px');
             });
         });
 
@@ -360,7 +360,7 @@ describe('NxSidebarComponent', () => {
             });
 
             it('sets the max width', () => {
-                expect(sidebarElement.nativeElement.style.width).toBe(`500px`);
+                expect(sidebarElement.nativeElement.style.width).toBe('500px');
             });
         });
 

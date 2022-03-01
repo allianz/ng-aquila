@@ -150,19 +150,19 @@ describe('NxToggleButtonGroup', () => {
         toggleComponent.negative = true;
         fixture.detectChanges();
         const iconToggles = Array.from(toggleButtons).map(toggle => toggle.querySelector('nx-icon-toggle-button'));
-        iconToggles.forEach(toggle => expect(toggle?.classList.contains('is-negative')).toBe(true));
+        iconToggles.forEach(toggle => expect(toggle).toHaveClass('is-negative'));
     });
 
     it('circle toggle gets correct styles on value change', () => {
         createTestComponent(SimpleCircleToggleGroupComponent);
         toggleComponent.value = 'B';
         fixture.detectChanges();
-        expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')?.classList.contains('is-flipped')).toBe(true);
+        expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).toHaveClass('is-flipped');
     });
 
     it('recognizes descendants', () => {
         createTestComponent(CircleToggleGroupWithDivComponent);
-        expect(toggleComponent.buttons.length).toBe(3);
+        expect(toggleComponent.buttons).toHaveSize(3);
     });
 
     describe('programmatic change', () => {
@@ -170,7 +170,7 @@ describe('NxToggleButtonGroup', () => {
             createTestComponent(EmptyToggleOnPushComponent);
             toggleComponent.disabled = true;
             fixture.detectChanges();
-            expect(toggleNativeElement.classList.contains('is-disabled')).toBe(true);
+            expect(toggleNativeElement).toHaveClass('is-disabled');
         });
 
         it('should update on id change', () => {
@@ -189,10 +189,10 @@ describe('NxToggleButtonGroup', () => {
 
         it('should update on responsive change', () => {
             createTestComponent(CircleToggleOnPushComponent);
-            expect(toggleNativeElement.classList.contains('is-responsive')).toBe(true);
+            expect(toggleNativeElement).toHaveClass('is-responsive');
             toggleComponent.responsive = false;
             fixture.detectChanges();
-            expect(toggleNativeElement.classList.contains('is-responsive')).toBe(false);
+            expect(toggleNativeElement).not.toHaveClass('is-responsive');
         });
     });
 
@@ -205,7 +205,7 @@ describe('NxToggleButtonGroup', () => {
         it('has expert appearance', () => {
             createTestComponent(ExpertCircleToggleGroupComponent);
             expect(toggleComponent.appearance).toBe('expert');
-            expect(toggleNativeElement.classList.contains('is-expert')).toBe(true);
+            expect(toggleNativeElement).toHaveClass('is-expert');
         });
     });
 

@@ -47,7 +47,7 @@ describe('NxComparisonTableDescriptionCell', () => {
     describe('basic', () => {
         it('renders the content', () => {
             createTestComponent(DescriptionCellComponent);
-            expect(descriptionCellElements.length).toBe(2);
+            expect(descriptionCellElements).toHaveSize(2);
             expect(descriptionCellElements[0].nativeElement.textContent).toBe('This is a description cell');
             expect(descriptionCellElements[1].nativeElement.textContent).toBe('This is a second description cell');
         });
@@ -75,13 +75,13 @@ describe('NxComparisonTableDescriptionCell', () => {
 
         it('should have set the correct class if intersectionRow', () => {
             createTestComponent(DescriptionCellComponent);
-            expect(descriptionCellInstances.length).toBe(2);
-            expect(rowInstances.toArray()[1]._isIntersectionRow()).toBe(false);
-            expect(rowInstances.toArray()[2]._isIntersectionRow()).toBe(true);
+            expect(descriptionCellInstances).toHaveSize(2);
+            expect(rowInstances.toArray()[1]._isIntersectionRow()).toBeFalse();
+            expect(rowInstances.toArray()[2]._isIntersectionRow()).toBeTrue();
 
             // should not contain the is-intersection-column class on desktop
-            expect(descriptionCellElements[0].nativeElement.classList).not.toContain('is-intersection-column');
-            expect(descriptionCellElements[1].nativeElement.classList).not.toContain('is-intersection-column');
+            expect(descriptionCellElements[0].nativeElement).not.toHaveClass('is-intersection-column');
+            expect(descriptionCellElements[1].nativeElement).not.toHaveClass('is-intersection-column');
         });
     });
 
@@ -104,8 +104,8 @@ describe('NxComparisonTableDescriptionCell', () => {
             fixture.detectChanges();
 
             descriptionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__description-cell'));
-            expect(descriptionCellElements[0].nativeElement.classList).not.toContain('is-intersection-column');
-            expect(descriptionCellElements[1].nativeElement.classList).toContain('is-intersection-column');
+            expect(descriptionCellElements[0].nativeElement).not.toHaveClass('is-intersection-column');
+            expect(descriptionCellElements[1].nativeElement).toHaveClass('is-intersection-column');
         }));
 
         it('should set id correctly (mobile)', fakeAsync(() => {

@@ -62,7 +62,7 @@ describe(NxTableRowComponent.name, () => {
         });
 
         it('has no tabindex', () => {
-            expect(tableRowElement.nativeElement.getAttribute('tabindex')).toBe(null);
+            expect(tableRowElement.nativeElement.getAttribute('tabindex')).toBeNull();
         });
 
         describe('when clicking a row', () => {
@@ -154,7 +154,7 @@ describe(NxTableRowComponent.name, () => {
                             element.dispatchEvent(event);
                             fixture.detectChanges();
 
-                            expect(event.defaultPrevented).toBe(false);
+                            expect(event.defaultPrevented).toBeFalse();
                         });
 
                         it('is not selected', () => {

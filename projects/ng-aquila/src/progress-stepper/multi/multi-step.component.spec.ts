@@ -65,13 +65,13 @@ describe('NxMultiStepperComponent', () => {
         createTestComponent(MultiStepBasicTest);
 
         let checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-        expect(checkIcon.length).toBe(0);
+        expect(checkIcon).toHaveSize(0);
 
         multiStepInstance.next();
         fixture.detectChanges();
 
         checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-        expect(checkIcon.length).toBe(1);
+        expect(checkIcon).toHaveSize(1);
     });
 
     it('sets correctly selected class on the currently selected step', () => {
@@ -95,13 +95,13 @@ describe('NxMultiStepperComponent', () => {
         const completionStepper: MultiStepCompletionTest = fixture.componentInstance as MultiStepCompletionTest;
 
         let checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-        expect(checkIcon.length).toBe(0);
+        expect(checkIcon).toHaveSize(0);
 
         completionStepper.completedTwo = true;
         fixture.detectChanges();
 
         checkIcon = fixture.debugElement.queryAll(By.css('nx-icon'));
-        expect(checkIcon.length).toBe(1);
+        expect(checkIcon).toHaveSize(1);
     });
 
     it('should move focus with arrow keys', () => {
@@ -152,7 +152,7 @@ describe('NxMultiStepperComponent', () => {
 
         it('has disabled steps', () => {
             const steps = getSteps();
-            expect(steps[0].getAttribute('aria-disabled')).toBe(null);
+            expect(steps[0].getAttribute('aria-disabled')).toBeNull();
             expect(steps[1].getAttribute('aria-disabled')).toBe('true');
         });
 
@@ -172,7 +172,7 @@ describe('NxMultiStepperComponent', () => {
 
             expect(multiStepInstance.currentStep?.label).toBe('Step1');
             const formField = fixture.nativeElement.querySelector('nx-formfield');
-            expect(formField.classList.contains('has-error')).toBe(true);
+            expect(formField).toHaveClass('has-error');
         });
 
         it('shows errors if a form is untouched on next() call', () => {
@@ -182,7 +182,7 @@ describe('NxMultiStepperComponent', () => {
             fixture.detectChanges();
 
             const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
-            formFields.forEach((formfield: any) => expect(formfield.classList.contains('has-error')).toBe(true));
+            formFields.forEach((formfield: any) => expect(formfield).toHaveClass('has-error'));
         });
 
         it('shows errors if a form is untouched on selectedIndex change', () => {
@@ -192,7 +192,7 @@ describe('NxMultiStepperComponent', () => {
             fixture.detectChanges();
 
             const formFields = fixture.nativeElement.querySelectorAll('nx-formfield');
-            formFields.forEach((formfield: any) => expect(formfield.classList.contains('has-error')).toBe(true));
+            formFields.forEach((formfield: any) => expect(formfield).toHaveClass('has-error'));
         });
     });
 
@@ -211,10 +211,10 @@ describe('NxMultiStepperComponent', () => {
 
             it('has vertical direction', () => {
                 expect(multiStepInstance.direction).toBe('vertical');
-                expect(multiStepElementRef.nativeElement.classList.contains('nx-multi-stepper--vertical')).toBe(true);
+                expect(multiStepElementRef.nativeElement).toHaveClass('nx-multi-stepper--vertical');
                 const steps: HTMLElement[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step'));
                 steps.forEach(step => {
-                    expect(step.classList.contains('nx-multi-step--vertical')).toBe(true);
+                    expect(step).toHaveClass('nx-multi-step--vertical');
                 });
             });
 
@@ -240,7 +240,7 @@ describe('NxMultiStepperComponent', () => {
         it('renders the groups', () => {
             const groups: any[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('.nx-multi-stepper__group'));
 
-            expect(groups.length).toBe(2);
+            expect(groups).toHaveSize(2);
 
             groups.forEach((group: HTMLElement, i) => {
                 const label = group.querySelector('.nx-multi-stepper__group-label');
@@ -251,7 +251,7 @@ describe('NxMultiStepperComponent', () => {
         it('renders the steps', () => {
             const steps: any[] = Array.from(multiStepElementRef.nativeElement.querySelectorAll('nx-multi-step-item'));
 
-            steps.forEach((step: HTMLElement) => expect(step.classList.contains('.nx-multi-step-item--vertical')));
+            steps.forEach((step: HTMLElement) => expect(step).toHaveClass('nx-multi-step-item--vertical'));
         });
 
         it('should set tabindexes correctly', () => {
@@ -290,7 +290,7 @@ describe('NxMultiStepperComponent', () => {
 
             it('first step does not have active state', () => {
                 const step = fixture.nativeElement.querySelector('nx-multi-step-item');
-                expect(step.classList.contains('is-active')).toBe(false);
+                expect(step).not.toHaveClass('is-active');
             });
 
             it('first step has active state', () => {
@@ -298,7 +298,7 @@ describe('NxMultiStepperComponent', () => {
                 fixture.detectChanges();
 
                 const step = fixture.nativeElement.querySelector('nx-multi-step-item');
-                expect(step.classList.contains('is-active')).toBe(true);
+                expect(step).toHaveClass('is-active');
             });
         });
 
@@ -309,7 +309,7 @@ describe('NxMultiStepperComponent', () => {
 
             it('is not completed', () => {
                 const step = fixture.nativeElement.querySelector('nx-multi-step-item');
-                expect(step.classList.contains('is-completed')).toBe(false);
+                expect(step).not.toHaveClass('is-completed');
             });
 
             it('is completed', () => {
@@ -317,7 +317,7 @@ describe('NxMultiStepperComponent', () => {
                 fixture.detectChanges();
 
                 const step = fixture.nativeElement.querySelector('nx-multi-step-item');
-                expect(step.classList.contains('is-completed')).toBe(true);
+                expect(step).toHaveClass('is-completed');
             });
         });
     });
@@ -330,7 +330,7 @@ describe('NxMultiStepperComponent', () => {
         it('has vertical direction', () => {
             multiStepInstance.direction = 'vertical';
             fixture.detectChanges();
-            expect(multiStepElementRef.nativeElement.classList.contains('nx-multi-stepper--vertical')).toBe(true);
+            expect(multiStepElementRef.nativeElement).toHaveClass('nx-multi-stepper--vertical');
         });
     });
 

@@ -102,7 +102,7 @@ describe('NxNumberStepperComponent', () => {
 
         it('default includes the bem block element', () => {
             createTestComponent(BasicStepper);
-            expect(stepperDebugElement.nativeElement.classList.contains('nx-stepper')).toBe(true);
+            expect(stepperDebugElement.nativeElement).toHaveClass('nx-stepper');
         });
 
         it('should have a label', () => {
@@ -120,19 +120,19 @@ describe('NxNumberStepperComponent', () => {
         it('should have min = 0 by default and not decrement', fakeAsync(() => {
             createTestComponent(BasicStepper);
             clickDown();
-            expect(downButton.disabled).toBe(true);
+            expect(downButton.disabled).toBeTrue();
             expect(stepperInstance.value).toBe(0);
             assertInputValue('00');
         }));
 
         it('should create a non-negative number-stepper', () => {
             createTestComponent(BasicStepper);
-            expect(stepperNativeElement.classList).not.toContain('is-negative');
+            expect(stepperNativeElement).not.toHaveClass('is-negative');
         });
 
         it('should create a non-disabled number-stepper', () => {
             createTestComponent(BasicStepper);
-            expect(stepperNativeElement.classList).not.toContain('is-disabled');
+            expect(stepperNativeElement).not.toHaveClass('is-disabled');
         });
     });
 
@@ -144,7 +144,7 @@ describe('NxNumberStepperComponent', () => {
             testInstance.step = 2;
             fixture.detectChanges();
             clickDown();
-            expect(downButton.disabled).toBe(true);
+            expect(downButton.disabled).toBeTrue();
         }));
 
         it('should not disable the down button for correct values', fakeAsync(() => {
@@ -152,7 +152,7 @@ describe('NxNumberStepperComponent', () => {
             testInstance.min = -10;
             fixture.detectChanges();
             clickDown();
-            expect(downButton.disabled).toBe(false);
+            expect(downButton.disabled).toBeFalse();
         }));
 
         it('should disable the up button on max', fakeAsync(() => {
@@ -162,13 +162,13 @@ describe('NxNumberStepperComponent', () => {
             testInstance.step = 2;
             fixture.detectChanges();
             clickUp();
-            expect(upButton.disabled).toBe(true);
+            expect(upButton.disabled).toBeTrue();
         }));
 
         it('should not disable the up button for correct values', fakeAsync(() => {
             createTestComponent(ConfigurableStepper);
             clickUp();
-            expect(upButton.disabled).toBe(false);
+            expect(upButton.disabled).toBeFalse();
         }));
 
         it('should not disable the down button on init for correct values', fakeAsync(() => {
@@ -180,7 +180,7 @@ describe('NxNumberStepperComponent', () => {
             flush();
             fixture.detectChanges();
             flush();
-            expect(downButton.disabled).toBe(false);
+            expect(downButton.disabled).toBeFalse();
         }));
 
         it('should disable the down button if user input is below the minimum', fakeAsync(() => {
@@ -192,7 +192,7 @@ describe('NxNumberStepperComponent', () => {
             inputElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
             tick();
-            expect(downButton.disabled).toBe(true);
+            expect(downButton.disabled).toBeTrue();
         }));
 
         it('should disable the up button if user input is over the maximum', fakeAsync(() => {
@@ -204,7 +204,7 @@ describe('NxNumberStepperComponent', () => {
             inputElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
             tick();
-            expect(upButton.disabled).toBe(true);
+            expect(upButton.disabled).toBeTrue();
         }));
     });
 
@@ -249,7 +249,7 @@ describe('NxNumberStepperComponent', () => {
             testInstance.step = 2;
             fixture.detectChanges();
             tick();
-            expect(stepperInstance.isValidStep(20)).toBe(false);
+            expect(stepperInstance.isValidStep(20)).toBeFalse();
         }));
 
         it('should be invalid for numbers below min', fakeAsync(() => {
@@ -258,7 +258,7 @@ describe('NxNumberStepperComponent', () => {
             testInstance.step = 2;
             fixture.detectChanges();
             tick();
-            expect(stepperInstance.isValidStep(-20)).toBe(false);
+            expect(stepperInstance.isValidStep(-20)).toBeFalse();
         }));
     });
 
@@ -315,8 +315,7 @@ describe('NxNumberStepperComponent', () => {
             inputElement.value = '0.33aa';
             inputElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
-            // @ts-expect-error
-            expect(testInstance.value).toBe(null);
+            expect(testInstance.value).toBeNull();
             clickUp();
             expect(testInstance.value).toBe(1);
         }));
@@ -365,17 +364,17 @@ describe('NxNumberStepperComponent', () => {
     describe('negative styling', () => {
         it('updates on [negative] change', () => {
             createTestComponent(ConfigurableStepper);
-            expect(stepperNativeElement.classList).not.toContain('is-negative');
+            expect(stepperNativeElement).not.toHaveClass('is-negative');
 
             fixture.componentInstance.negative = true;
             fixture.detectChanges();
-            expect(stepperInstance.negative).toBe(true);
-            expect(stepperNativeElement.classList).toContain('is-negative');
+            expect(stepperInstance.negative).toBeTrue();
+            expect(stepperNativeElement).toHaveClass('is-negative');
 
             fixture.componentInstance.negative = false;
             fixture.detectChanges();
-            expect(stepperInstance.negative).toBe(false);
-            expect(stepperNativeElement.classList).not.toContain('is-negative');
+            expect(stepperInstance.negative).toBeFalse();
+            expect(stepperNativeElement).not.toHaveClass('is-negative');
         });
     });
 
@@ -460,12 +459,12 @@ describe('NxNumberStepperComponent', () => {
             createTestComponent(ReactiveFormOnBlurStepper);
             inputElement.value = '2';
             inputElement.dispatchEvent(new Event('input'));
-            expect(testInstance.testForm.get('count')!.value).toBe(0, 'Expected value to remain unchanged until blur.');
+            expect(testInstance.testForm.get('count')!.value).withContext('Expected value to remain unchanged until blur.').toBe(0);
 
             inputElement.dispatchEvent(new Event('blur'));
             fixture.detectChanges();
 
-            expect(testInstance.testForm.get('count')!.value).toEqual(2, 'Expected value to change once control is blurred.');
+            expect(testInstance.testForm.get('count')!.value).withContext('Expected value to change once control is blurred.').toEqual(2);
         });
     });
 
@@ -515,7 +514,7 @@ describe('NxNumberStepperComponent', () => {
             stepperInstance.negative = true;
             fixture.detectChanges();
 
-            expect(stepperNativeElement.classList).toContain('is-negative');
+            expect(stepperNativeElement).toHaveClass('is-negative');
             let button = fixture.nativeElement.querySelector('.nx-button--negative');
             expect(button).not.toBeNull();
 
@@ -524,7 +523,7 @@ describe('NxNumberStepperComponent', () => {
             button = fixture.nativeElement.querySelector('.nx-button--negative');
 
             expect(button).toBeNull();
-            expect(stepperNativeElement.classList).not.toContain('is-negative');
+            expect(stepperNativeElement).not.toHaveClass('is-negative');
         });
     });
 
@@ -537,19 +536,19 @@ describe('NxNumberStepperComponent', () => {
             });
 
             it('disables up button', () => {
-                expect(upButton.disabled).toBe(true);
+                expect(upButton.disabled).toBeTrue();
             });
 
             it('disables down button', () => {
-                expect(downButton.disabled).toBe(true);
+                expect(downButton.disabled).toBeTrue();
             });
 
             it('disables input', () => {
-                expect(inputElement.disabled).toBe(true);
+                expect(inputElement.disabled).toBeTrue();
             });
 
             it('sets host class to .is-disabled', () => {
-                expect(stepperNativeElement.classList).toContain('is-disabled');
+                expect(stepperNativeElement).toHaveClass('is-disabled');
             });
         });
     });

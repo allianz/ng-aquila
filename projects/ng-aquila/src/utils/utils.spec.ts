@@ -73,9 +73,9 @@ describe('shared utils', () => {
             fixture.detectChanges();
             const testInstance = fixture.componentInstance;
             testInstance.testAppendClasses('newClass1 newClass2');
-            expect(fixture.debugElement.nativeElement.classList.contains('newClass1')).toBe(true);
-            expect(fixture.debugElement.nativeElement.classList.contains('newClass2')).toBe(true);
-            expect(fixture.debugElement.nativeElement.classList.contains('testClass')).toBe(true);
+            expect(fixture.debugElement.nativeElement).toHaveClass('newClass1');
+            expect(fixture.debugElement.nativeElement).toHaveClass('newClass2');
+            expect(fixture.debugElement.nativeElement).toHaveClass('testClass');
         });
 
         it('should remove classes', () => {
@@ -83,7 +83,7 @@ describe('shared utils', () => {
             fixture.detectChanges();
             const testInstance = fixture.componentInstance;
             testInstance.testRemoveClasses('testClass');
-            expect(fixture.debugElement.nativeElement.classList.contains('testClass')).toBe(false);
+            expect(fixture.debugElement.nativeElement).not.toHaveClass('testClass');
         });
     });
 

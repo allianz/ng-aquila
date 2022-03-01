@@ -46,7 +46,7 @@ describe(NxExpandableTableRowComponent.name, () => {
         });
 
         it('has the bem class', () => {
-            expect(expandableTableRowElement.nativeElement.classList.contains('nx-expandable-table-row')).toBeTruthy();
+            expect(expandableTableRowElement.nativeElement).toHaveClass('nx-expandable-table-row');
         });
 
         it('renders the content', () => {
@@ -60,7 +60,7 @@ describe(NxExpandableTableRowComponent.name, () => {
         });
 
         it('is not expanded', () => {
-            expect(expandableTableRowInstance.expanded.value).toBe(false);
+            expect(expandableTableRowInstance.expanded.value).toBeFalse();
         });
 
         describe('when toggled', () => {
@@ -69,7 +69,7 @@ describe(NxExpandableTableRowComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(expandableTableRowInstance.expanded.value).toBe(true);
+                expect(expandableTableRowInstance.expanded.value).toBeTrue();
             });
         });
 
@@ -79,7 +79,7 @@ describe(NxExpandableTableRowComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(expandableTableRowInstance.expanded.value).toBe(true);
+                expect(expandableTableRowInstance.expanded.value).toBeTrue();
             });
         });
 
@@ -90,7 +90,7 @@ describe(NxExpandableTableRowComponent.name, () => {
             });
 
             it('is not expanded', () => {
-                expect(expandableTableRowInstance.expanded.value).toBe(false);
+                expect(expandableTableRowInstance.expanded.value).toBeFalse();
             });
         });
     });
@@ -101,13 +101,13 @@ describe(NxExpandableTableRowComponent.name, () => {
         });
 
         it('sets expanded', () => {
-            expect(expandableTableRowInstance.expanded.value).toBe(true);
+            expect(expandableTableRowInstance.expanded.value).toBeTrue();
         });
 
         it('updates expanded on isExpanded change', () => {
             testInstance.isExpanded = false;
             testInstance.cdr.detectChanges();
-            expect(expandableTableRowInstance.expanded.value).toBe(false);
+            expect(expandableTableRowInstance.expanded.value).toBeFalse();
         });
     });
 

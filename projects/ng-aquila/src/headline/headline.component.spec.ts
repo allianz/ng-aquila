@@ -51,7 +51,7 @@ describe('NxHeadlineDirective', () => {
         waitForAsync(() => {
             createTestComponent(BasicHeadline);
             setSize('section');
-            expect(headlineNativeElement.classList).toContain('nx-heading--section');
+            expect(headlineNativeElement).toHaveClass('nx-heading--section');
         }),
     );
 
@@ -60,32 +60,32 @@ describe('NxHeadlineDirective', () => {
         waitForAsync(() => {
             createTestComponent(BasicHeadline);
             setSize('page');
-            expect(headlineNativeElement.classList).toContain('nx-heading--page');
+            expect(headlineNativeElement).toHaveClass('nx-heading--page');
 
             setSize('page-bold-caps');
-            expect(headlineNativeElement.classList).toContain('nx-heading--page-bold-caps');
+            expect(headlineNativeElement).toHaveClass('nx-heading--page-bold-caps');
 
             setSize('section');
-            expect(headlineNativeElement.classList).toContain('nx-heading--section');
+            expect(headlineNativeElement).toHaveClass('nx-heading--section');
 
             setSize('subsection-large');
-            expect(headlineNativeElement.classList).toContain('nx-heading--subsection-large');
+            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-large');
 
             setSize('subsection-medium');
-            expect(headlineNativeElement.classList).toContain('nx-heading--subsection-medium');
+            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-medium');
 
             setSize('subsection-small');
-            expect(headlineNativeElement.classList).toContain('nx-heading--subsection-small');
+            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-small');
 
             setSize('subsection-xsmall');
-            expect(headlineNativeElement.classList).toContain('nx-heading--subsection-xsmall');
+            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-xsmall');
 
             setSize('negative');
-            expect(headlineNativeElement.classList).toContain('nx-heading--negative');
+            expect(headlineNativeElement).toHaveClass('nx-heading--negative');
 
             setSize('section negative');
-            expect(headlineNativeElement.classList).toContain('nx-heading--section');
-            expect(headlineNativeElement.classList).toContain('nx-heading--negative');
+            expect(headlineNativeElement).toHaveClass('nx-heading--section');
+            expect(headlineNativeElement).toHaveClass('nx-heading--negative');
         }),
     );
 
@@ -93,7 +93,7 @@ describe('NxHeadlineDirective', () => {
         'passes through an unknown class',
         waitForAsync(() => {
             createTestComponent(HeadlineWithArbitraryClass);
-            expect(headlineNativeElement.classList).toContain('some-arbitray-class-name');
+            expect(headlineNativeElement).toHaveClass('some-arbitray-class-name');
         }),
     );
 

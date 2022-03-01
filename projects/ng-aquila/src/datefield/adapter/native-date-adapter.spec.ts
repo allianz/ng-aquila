@@ -15,8 +15,10 @@ describe('NxNativeDateAdapter', () => {
     let adapter: NxNativeDateAdapter;
 
     function assertValidDate(date: Date | null, valid: boolean): void {
-        expect(adapter.isDateInstance(date)).not.toBeNull(`Expected ${date} to be a date instance`);
-        expect(adapter.isValid(date as Date)).toBe(valid, `Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`);
+        expect(adapter.isDateInstance(date)).withContext(`Expected ${date} to be a date instance`).not.toBeNull();
+        expect(adapter.isValid(date as Date))
+            .withContext(`Expected ${date} to be ${valid ? 'valid' : 'invalid'}, but was ${valid ? 'invalid' : 'valid'}`)
+            .toBe(valid);
     }
 
     beforeEach(
@@ -275,7 +277,7 @@ describe('NxNativeDateAdapter', () => {
     });
 
     it("should get today's date", () => {
-        expect(adapter.sameDate(adapter.today(), new Date())).toBe(true, "should be equal to today's date");
+        expect(adapter.sameDate(adapter.today(), new Date())).withContext("should be equal to today's date").toBeTrue();
     });
 
     it('should parse string', () => {
@@ -296,8 +298,10 @@ describe('NxNativeDateAdapter', () => {
     it('should parse invalid value as invalid', () => {
         const d = adapter.parse('hello');
         expect(d).not.toBeNull();
-        expect(adapter.isDateInstance(d)).toBe(true, 'Expected string to have been fed through Date.parse');
-        expect(adapter.isValid(d as Date)).toBe(false, 'Expected to parse as "invalid date" object');
+        expect(adapter.isDateInstance(d)).withContext('Expected string to have been fed through Date.parse').toBeTrue();
+        expect(adapter.isValid(d as Date))
+            .withContext('Expected to parse as "invalid date" object')
+            .toBeFalse();
     });
 
     it('should format', () => {
@@ -409,19 +413,19 @@ describe('NxNativeDateAdapter', () => {
 
     it('should count today as a valid date instance', () => {
         const d = new Date();
-        expect(adapter.isValid(d)).toBe(true);
-        expect(adapter.isDateInstance(d)).toBe(true);
+        expect(adapter.isValid(d)).toBeTrue();
+        expect(adapter.isDateInstance(d)).toBeTrue();
     });
 
     it('should count an invalid date as an invalid date instance', () => {
         const d = new Date(NaN);
-        expect(adapter.isValid(d)).toBe(false);
-        expect(adapter.isDateInstance(d)).toBe(true);
+        expect(adapter.isValid(d)).toBeFalse();
+        expect(adapter.isDateInstance(d)).toBeTrue();
     });
 
     it('should count a string as not a date instance', () => {
         const d = '1/1/2017';
-        expect(adapter.isDateInstance(d)).toBe(false);
+        expect(adapter.isDateInstance(d)).toBeFalse();
     });
 
     it('should create dates from valid ISO strings', () => {

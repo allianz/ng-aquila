@@ -74,7 +74,7 @@ describe('NxCodeInputComponent', () => {
 
     it('should have a class nx-code-input', () => {
         createTestComponent(CodeInputTest1);
-        expect(codeInputElement.classList.contains('nx-code-input')).toBe(true);
+        expect(codeInputElement).toHaveClass('nx-code-input');
     });
 
     it('should auto capitalize input', fakeAsync(() => {
@@ -88,7 +88,7 @@ describe('NxCodeInputComponent', () => {
 
     it('should be rendered invalid', () => {
         createTestComponent(CodeInputTest1);
-        expect(codeInputElement.classList.contains('ng-invalid')).toBe(true);
+        expect(codeInputElement).toHaveClass('ng-invalid');
     });
 
     it('should select second input on right arrow', fakeAsync(() => {
@@ -115,20 +115,20 @@ describe('NxCodeInputComponent', () => {
         lastInput.blur();
         tick();
         fixture.detectChanges();
-        expect(codeInputElement.classList.contains('has-error')).toBe(true);
+        expect(codeInputElement).toHaveClass('has-error');
     }));
 
     it('should give code-input element has-error class on submit', fakeAsync(() => {
         createTestComponent(CodeInputTest3);
 
-        expect(codeInputElement.classList).not.toContain('has-error');
+        expect(codeInputElement).not.toHaveClass('has-error');
 
         const submitButton = fixture.nativeElement.querySelector('#submit-button') as HTMLButtonElement;
         submitButton.click();
         tick();
         fixture.detectChanges();
 
-        expect(codeInputElement.classList).toContain('has-error');
+        expect(codeInputElement).toHaveClass('has-error');
     }));
 
     it('should paste', fakeAsync(() => {
@@ -273,23 +273,23 @@ describe('NxCodeInputComponent', () => {
     describe('negative', () => {
         it('should create a basic code input with negative set to false', () => {
             createTestComponent(CodeInputTest1);
-            expect(testInstance.codeInputInstance.negative).toBe(false);
+            expect(testInstance.codeInputInstance.negative).toBeFalse();
         });
 
         it('should update on negative change', () => {
             createTestComponent(ConfigurableCodeInput);
-            expect(testInstance.codeInputInstance.negative).toBe(false);
-            expect(codeInputElement.classList).not.toContain('is-negative');
+            expect(testInstance.codeInputInstance.negative).toBeFalse();
+            expect(codeInputElement).not.toHaveClass('is-negative');
 
             testInstance.negative = true;
             fixture.detectChanges();
-            expect(testInstance.codeInputInstance.negative).toBe(true);
-            expect(codeInputElement.classList).toContain('is-negative');
+            expect(testInstance.codeInputInstance.negative).toBeTrue();
+            expect(codeInputElement).toHaveClass('is-negative');
 
             testInstance.negative = false;
             fixture.detectChanges();
-            expect(testInstance.codeInputInstance.negative).toBe(false);
-            expect(codeInputElement.classList).not.toContain('is-negative');
+            expect(testInstance.codeInputInstance.negative).toBeFalse();
+            expect(codeInputElement).not.toHaveClass('is-negative');
         });
 
         it('should update on negative change (programmatic change)', () => {
@@ -297,30 +297,30 @@ describe('NxCodeInputComponent', () => {
 
             testInstance.codeInputInstance.negative = true;
             fixture.detectChanges();
-            expect(codeInputElement.classList).toContain('is-negative');
+            expect(codeInputElement).toHaveClass('is-negative');
 
             testInstance.codeInputInstance.negative = false;
             fixture.detectChanges();
-            expect(codeInputElement.classList).not.toContain('is-negative');
+            expect(codeInputElement).not.toHaveClass('is-negative');
         });
     });
 
     describe('disabled', () => {
         it('should create a basic code input with disabled set to false', () => {
             createTestComponent(CodeInputTest1);
-            expect(testInstance.codeInputInstance.disabled).toBe(false);
+            expect(testInstance.codeInputInstance.disabled).toBeFalse();
         });
 
         it('should update on disabled change', () => {
             createTestComponent(ConfigurableCodeInput);
             const inputElements = codeInputElement.querySelectorAll('.nx-code-input__field');
-            expect(testInstance.codeInputInstance.disabled).toBe(false);
-            expect(codeInputElement.classList).not.toContain('is-disabled');
+            expect(testInstance.codeInputInstance.disabled).toBeFalse();
+            expect(codeInputElement).not.toHaveClass('is-disabled');
 
             testInstance.disabled = true;
             fixture.detectChanges();
-            expect(testInstance.codeInputInstance.disabled).toBe(true);
-            expect(codeInputElement.classList).toContain('is-disabled');
+            expect(testInstance.codeInputInstance.disabled).toBeTrue();
+            expect(codeInputElement).toHaveClass('is-disabled');
 
             Array.from(inputElements).forEach(inputEl => {
                 expect((inputEl as HTMLElement).getAttribute('disabled')).toBe('');
@@ -328,10 +328,10 @@ describe('NxCodeInputComponent', () => {
 
             testInstance.disabled = false;
             fixture.detectChanges();
-            expect(testInstance.codeInputInstance.disabled).toBe(false);
-            expect(codeInputElement.classList).not.toContain('is-disabled');
+            expect(testInstance.codeInputInstance.disabled).toBeFalse();
+            expect(codeInputElement).not.toHaveClass('is-disabled');
             Array.from(inputElements).forEach(inputEl => {
-                expect((inputEl as HTMLElement).getAttribute('disabled')).toBe(null);
+                expect((inputEl as HTMLElement).getAttribute('disabled')).toBeNull();
             });
         });
 
@@ -340,23 +340,23 @@ describe('NxCodeInputComponent', () => {
 
             testInstance.codeInputInstance.disabled = true;
             fixture.detectChanges();
-            expect(codeInputElement.classList).toContain('is-disabled');
+            expect(codeInputElement).toHaveClass('is-disabled');
 
             testInstance.codeInputInstance.disabled = false;
             fixture.detectChanges();
-            expect(codeInputElement.classList).not.toContain('is-disabled');
+            expect(codeInputElement).not.toHaveClass('is-disabled');
         });
 
         it('should update disabled on formGroup update', () => {
             createTestComponent(CodeInputTest1);
-            expect(testInstance.codeInputInstance.disabled).toBe(false);
+            expect(testInstance.codeInputInstance.disabled).toBeFalse();
 
             const form = (testInstance as CodeInputTest1).codeForm;
             form.get('keyCode')!.disable();
-            expect(testInstance.codeInputInstance.disabled).toBe(true);
+            expect(testInstance.codeInputInstance.disabled).toBeTrue();
 
             form.get('keyCode')!.enable();
-            expect(testInstance.codeInputInstance.disabled).toBe(false);
+            expect(testInstance.codeInputInstance.disabled).toBeFalse();
         });
     });
 

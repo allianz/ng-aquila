@@ -53,7 +53,7 @@ describe('Scrollable TabHeader', () => {
         createTestComponent(NotScrollableTabGroupTest);
         fixture.detectChanges();
         tick(THROTTLE_TIME);
-        expect(tabHeaderNativeElement.classList).not.toContain('scrollable');
+        expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
         expect(getStartScrollElement()).toBeNull();
         expect(getEndScrollElement()).toBeNull();
     }));
@@ -68,7 +68,7 @@ describe('Scrollable TabHeader', () => {
         }));
 
         it('shows scroll buttons if scrollable', fakeAsync(() => {
-            expect(tabHeaderNativeElement.classList).toContain('scrollable');
+            expect(tabHeaderNativeElement).toHaveClass('scrollable');
             expect(getStartScrollElement()).toBeTruthy();
             expect(getEndScrollElement()).toBeTruthy();
         }));
@@ -83,12 +83,12 @@ describe('Scrollable TabHeader', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
             tick(THROTTLE_TIME);
-            expect(tabHeaderNativeElement.classList).not.toContain('scrollable');
+            expect(tabHeaderNativeElement).not.toHaveClass('scrollable');
         }));
 
         it('hides scroll-to-start indicator', fakeAsync(() => {
             expect(tabHeaderNativeElement.querySelector('.nx-tab-header')?.scrollLeft).toBe(0);
-            expect(getStartScrollElement().classList).toContain('is-scrolled-to-start');
+            expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
         }));
 
         it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
@@ -96,11 +96,11 @@ describe('Scrollable TabHeader', () => {
             scrollableContainer!.scrollTo({ left: 50 });
             dispatchFakeEvent(scrollableContainer as Node, 'scroll');
             fixture.detectChanges();
-            expect(getStartScrollElement().classList).not.toContain('is-scrolled-to-start');
+            expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
         }));
 
         it('shows scroll-to-end indicator', fakeAsync(() => {
-            expect(getEndScrollElement().classList).not.toContain('is-scrolled-to-end');
+            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
         }));
 
         it('hides scroll-to-end indicator when at end', fakeAsync(() => {
@@ -108,7 +108,7 @@ describe('Scrollable TabHeader', () => {
             scrollableContainer!.scrollTo({ left: 1000 });
             dispatchFakeEvent(scrollableContainer as Node, 'scroll');
             fixture.detectChanges();
-            expect(getEndScrollElement().classList).toContain('is-scrolled-to-end');
+            expect(getEndScrollElement()).toHaveClass('is-scrolled-to-end');
         }));
     });
 
@@ -123,8 +123,8 @@ describe('Scrollable TabHeader', () => {
         }));
 
         it('marks scrollButtons as mobile', fakeAsync(() => {
-            expect(getStartScrollElement().classList).toContain('is-mobile');
-            expect(getStartScrollElement().classList).not.toContain('is-desktop-button');
+            expect(getStartScrollElement()).toHaveClass('is-mobile');
+            expect(getStartScrollElement()).not.toHaveClass('is-desktop-button');
         }));
 
         it('switches from mobile to desktop', fakeAsync(() => {
@@ -132,8 +132,8 @@ describe('Scrollable TabHeader', () => {
             window.dispatchEvent(new Event('resize'));
             tick(THROTTLE_TIME);
             fixture.detectChanges();
-            expect(getStartScrollElement().classList).not.toContain('is-mobile');
-            expect(getStartScrollElement().classList).toContain('is-desktop-button');
+            expect(getStartScrollElement()).not.toHaveClass('is-mobile');
+            expect(getStartScrollElement()).toHaveClass('is-desktop-button');
         }));
 
         afterEach(fakeAsync(() => {
@@ -183,7 +183,7 @@ describe('Scrollable TabNavBar', () => {
         createTestComponent(NotScrollableTabNavBarTest);
         fixture.detectChanges();
         tick(THROTTLE_TIME);
-        expect(tabNavBarNativeElement.classList).not.toContain('scrollable');
+        expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
         expect(getStartScrollElement()).toBeNull();
         expect(getEndScrollElement()).toBeNull();
     }));
@@ -198,7 +198,7 @@ describe('Scrollable TabNavBar', () => {
         }));
 
         it('shows scroll buttons if scrollable', fakeAsync(() => {
-            expect(tabNavBarNativeElement.classList).toContain('scrollable');
+            expect(tabNavBarNativeElement).toHaveClass('scrollable');
             expect(getStartScrollElement()).toBeTruthy();
             expect(getEndScrollElement()).toBeTruthy();
             tick(THROTTLE_TIME);
@@ -214,12 +214,12 @@ describe('Scrollable TabNavBar', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
             tick(THROTTLE_TIME);
-            expect(tabNavBarNativeElement.classList).not.toContain('scrollable');
+            expect(tabNavBarNativeElement).not.toHaveClass('scrollable');
         }));
 
         it('hides scroll-to-start indicator', fakeAsync(() => {
             expect(tabNavBarNativeElement.querySelector('.nx-tab-nav-bar')!.scrollLeft).toBe(0);
-            expect(getStartScrollElement().classList).toContain('is-scrolled-to-start');
+            expect(getStartScrollElement()).toHaveClass('is-scrolled-to-start');
         }));
 
         it('shows scroll-to-start indicator when scrolled', fakeAsync(() => {
@@ -228,11 +228,11 @@ describe('Scrollable TabNavBar', () => {
             dispatchFakeEvent(scrollableContainer!, 'scroll');
             fixture.detectChanges();
             expect(scrollableContainer!.scrollLeft).toBe(50);
-            expect(getStartScrollElement().classList).not.toContain('is-scrolled-to-start');
+            expect(getStartScrollElement()).not.toHaveClass('is-scrolled-to-start');
         }));
 
         it('shows scroll-to-end indicator', fakeAsync(() => {
-            expect(getEndScrollElement().classList).not.toContain('is-scrolled-to-end');
+            expect(getEndScrollElement()).not.toHaveClass('is-scrolled-to-end');
         }));
 
         it('hides scroll-to-end indicator when at end', fakeAsync(() => {
@@ -240,7 +240,7 @@ describe('Scrollable TabNavBar', () => {
             scrollableContainer!.scrollTo({ left: 1000 });
             dispatchFakeEvent(scrollableContainer!, 'scroll');
             fixture.detectChanges();
-            expect(getEndScrollElement().classList).toContain('is-scrolled-to-end');
+            expect(getEndScrollElement()).toHaveClass('is-scrolled-to-end');
         }));
     });
 });

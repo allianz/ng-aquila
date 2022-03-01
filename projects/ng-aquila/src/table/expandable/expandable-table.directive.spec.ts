@@ -53,7 +53,7 @@ describe(NxTableComponent.name, () => {
         });
 
         it('finds its nested row children', () => {
-            expect(tableInstance.rows.length).not.toBe(0);
+            expect(tableInstance.rows).not.toHaveSize(0);
         });
 
         describe('when clicking on the toggle all button', () => {

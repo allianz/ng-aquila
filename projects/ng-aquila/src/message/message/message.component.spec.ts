@@ -107,14 +107,14 @@ describe('NxMessageComponent', () => {
 
         it('should have the proper closable class', () => {
             createTestComponent(ClosableMessageComponent);
-            expect(fixture.nativeElement.querySelector('nx-message').classList).toContain('nx-message--closable');
+            expect(fixture.nativeElement.querySelector('nx-message')).toHaveClass('nx-message--closable');
         });
 
         it('does not submit form on closing', () => {
             createTestComponent(ClosableFormMessageComponent);
             const closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon') as HTMLButtonElement;
             closeButton.click();
-            expect((testInstance as ClosableFormMessageComponent).submitted).toBe(false);
+            expect((testInstance as ClosableFormMessageComponent).submitted).toBeFalse();
         });
     });
 

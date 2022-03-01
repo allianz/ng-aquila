@@ -197,7 +197,7 @@ describe('nxContextMenu', () => {
         tick(500);
 
         expect(overlayContainerElement.textContent).toBeTruthy();
-        expect(event.defaultPrevented).toBe(false);
+        expect(event.defaultPrevented).toBeFalse();
     }));
 
     it('should set the "menu" role on the overlay panel', () => {
@@ -207,10 +207,10 @@ describe('nxContextMenu', () => {
 
         const menuPanel = overlayContainerElement.querySelector('.nx-context-menu');
 
-        expect(menuPanel).toBeTruthy('Expected to find a menu panel.');
+        expect(menuPanel).withContext('Expected to find a menu panel.').toBeTruthy();
 
         const role = menuPanel ? menuPanel.getAttribute('role') : '';
-        expect(role).toBe('menu', 'Expected panel to have the "menu" role.');
+        expect(role).withContext('Expected panel to have the "menu" role.').toBe('menu');
     });
 
     it('should set the "menuitem" role on the items by default', fakeAsync(() => {
@@ -221,8 +221,8 @@ describe('nxContextMenu', () => {
 
         const items = Array.from(overlayContainerElement.querySelectorAll('.nx-context-menu-item'));
 
-        expect(items.length).toBeGreaterThan(0);
-        expect(items.every(item => item.getAttribute('role') === 'menuitem')).toBe(true);
+        expect(items).not.toHaveSize(0);
+        expect(items.every(item => item.getAttribute('role') === 'menuitem')).toBeTrue();
     }));
 
     it('should not throw an error on destroy', () => {
@@ -255,12 +255,12 @@ describe('nxContextMenu', () => {
         trigger.openContextMenu();
         fixture.detectChanges();
 
-        expect(trigger.contextMenuOpen).toBe(true);
+        expect(trigger.contextMenuOpen).toBeTrue();
 
         scrolledSubject.next();
         tick(500);
 
-        expect(trigger.contextMenuOpen).toBe(false);
+        expect(trigger.contextMenuOpen).toBeFalse();
     }));
 
     it('should not close the menu when using the reposition scroll strategy', fakeAsync(() => {
@@ -278,19 +278,19 @@ describe('nxContextMenu', () => {
         trigger.openContextMenu();
         fixture.detectChanges();
 
-        expect(trigger.contextMenuOpen).toBe(true);
+        expect(trigger.contextMenuOpen).toBeTrue();
 
         scrolledSubject.next();
         tick(500);
 
-        expect(trigger.contextMenuOpen).toBe(true);
+        expect(trigger.contextMenuOpen).toBeTrue();
     }));
 
     it('should toggle the aria-expanded attribute on the trigger', () => {
         const fixture = createComponent(SimpleMenu);
         const triggerEl = fixture.componentInstance.triggerEl.nativeElement;
 
-        expect(triggerEl.hasAttribute('aria-expanded')).toBe(false);
+        expect(triggerEl.hasAttribute('aria-expanded')).toBeFalse();
 
         fixture.componentInstance.trigger.openContextMenu();
         fixture.detectChanges();
@@ -300,7 +300,7 @@ describe('nxContextMenu', () => {
         fixture.componentInstance.trigger.closeContextMenu();
         fixture.detectChanges();
 
-        expect(triggerEl.hasAttribute('aria-expanded')).toBe(false);
+        expect(triggerEl.hasAttribute('aria-expanded')).toBeFalse();
     });
 
     it('should throw the correct error if the menu is not defined after init', () => {
@@ -369,7 +369,7 @@ describe('nxContextMenu', () => {
         fixture.detectChanges();
 
         expect(items[0].focus).toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(true);
+        expect(event.defaultPrevented).toBeTrue();
         flush();
     }));
 
@@ -395,7 +395,7 @@ describe('nxContextMenu', () => {
         fixture.detectChanges();
 
         expect(items[0].focus).not.toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(false);
+        expect(event.defaultPrevented).toBeFalse();
         flush();
     }));
 
@@ -416,7 +416,7 @@ describe('nxContextMenu', () => {
         fixture.detectChanges();
 
         expect(items[items.length - 1].focus).toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(true);
+        expect(event.defaultPrevented).toBeTrue();
         flush();
     }));
 
@@ -438,7 +438,7 @@ describe('nxContextMenu', () => {
         fixture.detectChanges();
 
         expect(items[items.length - 1].focus).not.toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(false);
+        expect(event.defaultPrevented).toBeFalse();
         flush();
     }));
 
@@ -447,11 +447,11 @@ describe('nxContextMenu', () => {
 
         fixture.componentInstance.trigger.openContextMenu();
         fixture.detectChanges();
-        expect(fixture.componentInstance.button.active).toBe(true);
+        expect(fixture.componentInstance.button.active).toBeTrue();
 
         fixture.componentInstance.trigger.closeContextMenu();
         fixture.detectChanges();
-        expect(fixture.componentInstance.button.active).toBe(false);
+        expect(fixture.componentInstance.button.active).toBeFalse();
     });
 
     describe('lazy rendering', () => {
@@ -464,9 +464,9 @@ describe('nxContextMenu', () => {
 
             const panel = overlayContainerElement.querySelector('.nx-context-menu');
 
-            expect(panel).toBeTruthy('Expected panel to be defined');
-            expect(panel!.textContent).toContain('Another item', 'Expected panel to have correct content');
-            expect(fixture.componentInstance.trigger.contextMenuOpen).toBe(true, 'Expected menu to be open');
+            expect(panel).withContext('Expected panel to be defined').toBeTruthy();
+            expect(panel!.textContent).withContext('Expected panel to have correct content').toContain('Another item');
+            expect(fixture.componentInstance.trigger.contextMenuOpen).withContext('Expected menu to be open').toBeTrue();
         }));
 
         it('should detach the lazy content when the menu is closed', fakeAsync(() => {
@@ -476,36 +476,36 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick(500);
 
-            expect(fixture.componentInstance.items.length).toBeGreaterThan(0);
+            expect(fixture.componentInstance.items).not.toHaveSize(0);
 
             fixture.componentInstance.trigger.closeContextMenu();
             fixture.detectChanges();
             tick(500);
             fixture.detectChanges();
 
-            expect(fixture.componentInstance.items.length).toBe(0);
+            expect(fixture.componentInstance.items).toHaveSize(0);
         }));
 
         it('should wait for the close animation to finish before considering the panel as closed', fakeAsync(() => {
             const fixture = createComponent(SimpleLazyMenu);
             const trigger = fixture.componentInstance.trigger;
 
-            expect(trigger.contextMenuOpen).toBe(false, 'Expected menu to start off closed');
+            expect(trigger.contextMenuOpen).withContext('Expected menu to start off closed').toBeFalse();
 
             trigger.openContextMenu();
             fixture.detectChanges();
             tick(500);
 
-            expect(trigger.contextMenuOpen).toBe(true, 'Expected menu to be open');
+            expect(trigger.contextMenuOpen).withContext('Expected menu to be open').toBeTrue();
 
             trigger.closeContextMenu();
             fixture.detectChanges();
 
-            expect(trigger.contextMenuOpen).toBe(true, 'Expected menu to be considered open while the close animation is running');
+            expect(trigger.contextMenuOpen).withContext('Expected menu to be considered open while the close animation is running').toBeTrue();
             tick(500);
             fixture.detectChanges();
 
-            expect(trigger.contextMenuOpen).toBe(false, 'Expected menu to be closed');
+            expect(trigger.contextMenuOpen).withContext('Expected menu to be closed').toBeFalse();
         }));
 
         it('should focus the first menu item when opening a lazy menu via keyboard', fakeAsync(() => {
@@ -530,7 +530,7 @@ describe('nxContextMenu', () => {
 
             const item = document.querySelector('.nx-context-menu [nxContextMenuItem]');
 
-            expect(document.activeElement).toBe(item, 'Expected first item to be focused');
+            expect(document.activeElement).withContext('Expected first item to be focused').toBe(item);
         }));
 
         it('should be able to open the same menu with a different context', fakeAsync(() => {
@@ -577,13 +577,14 @@ describe('nxContextMenu', () => {
             // In "before" position, the right sides of the overlay and the origin are aligned.
             // To find the overlay left, subtract the menu width from the origin's right side.
             const expectedLeft = triggerRect.right - overlayRect.width;
-            expect(Math.floor(overlayRect.left)).toBe(Math.floor(expectedLeft), `Expected menu to open in "before" position if "after" position wouldn't fit.`);
+            expect(Math.floor(overlayRect.left))
+                .withContext('Expected menu to open in "before" position if "after" position wouldn\'t fit.')
+                .toBe(Math.floor(expectedLeft));
 
             // The y-position of the overlay should be unaffected, as it can already fit vertically
-            expect(Math.floor(overlayRect.top)).toBe(
-                Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET_Y),
-                `Expected menu top position to be unchanged if it can fit in the viewport.`,
-            );
+            expect(Math.floor(overlayRect.top))
+                .withContext('Expected menu top position to be unchanged if it can fit in the viewport.')
+                .toBe(Math.floor(triggerRect.bottom + MENU_PANEL_OFFSET_Y));
         });
 
         it('should fall back to "above" mode if not fit on screen', () => {
@@ -601,13 +602,14 @@ describe('nxContextMenu', () => {
             const triggerRect = trigger.getBoundingClientRect();
             const overlayRect = overlayPane.getBoundingClientRect();
 
-            expect(Math.floor(overlayRect.bottom)).toBe(
-                Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
-                `Expected menu to open in "above" position if "below" position wouldn't fit.`,
-            );
+            expect(Math.floor(overlayRect.bottom))
+                .withContext('Expected menu to open in "above" position if "below" position wouldn\'t fit.')
+                .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y));
 
             // The x-position of the overlay should be unaffected, as it can already fit horizontally
-            expect(Math.floor(overlayRect.left)).toBe(Math.floor(triggerRect.left), `Expected menu x position to be unchanged if it can fit in the viewport.`);
+            expect(Math.floor(overlayRect.left))
+                .withContext('Expected menu x position to be unchanged if it can fit in the viewport.')
+                .toBe(Math.floor(triggerRect.left));
         });
 
         it('should re-position menu on both axes if both defaults would not fit', () => {
@@ -628,12 +630,13 @@ describe('nxContextMenu', () => {
 
             const expectedLeft = triggerRect.right - overlayRect.width;
 
-            expect(Math.floor(overlayRect.left)).toBe(Math.floor(expectedLeft), `Expected menu to open in "before" position if "after" position wouldn't fit.`);
+            expect(Math.floor(overlayRect.left))
+                .withContext('Expected menu to open in "before" position if "after" position wouldn\'t fit.')
+                .toBe(Math.floor(expectedLeft));
 
-            expect(Math.floor(overlayRect.bottom)).toBe(
-                Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y),
-                `Expected menu to open in "above" position if "below" position wouldn't fit.`,
-            );
+            expect(Math.floor(overlayRect.bottom))
+                .withContext('Expected menu to open in "above" position if "below" position wouldn\'t fit.')
+                .toBe(Math.floor(triggerRect.top - MENU_PANEL_OFFSET_Y));
         });
 
         function getOverlayPane(): HTMLElement {
@@ -708,14 +711,14 @@ describe('nxContextMenu', () => {
             overlay = overlayContainerElement;
         };
 
-        it('should set the `triggersSubmenu` flags on the triggers', () => {
+        it('should set the "triggersSubmenu" flags on the triggers', () => {
             compileTestComponent();
-            expect(instance.rootTrigger.triggersSubmenu()).toBe(false);
-            expect(instance.levelOneTrigger.triggersSubmenu()).toBe(true);
-            expect(instance.levelTwoTrigger.triggersSubmenu()).toBe(true);
+            expect(instance.rootTrigger.triggersSubmenu()).toBeFalse();
+            expect(instance.levelOneTrigger.triggersSubmenu()).toBeTrue();
+            expect(instance.levelTwoTrigger.triggersSubmenu()).toBeTrue();
         });
 
-        it('should set the `parentMenu` on the sub-menu instances', () => {
+        it('should set the "parentMenu" on the sub-menu instances', () => {
             compileTestComponent();
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
@@ -773,7 +776,7 @@ describe('nxContextMenu', () => {
             compileTestComponent();
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const items = Array.from(overlay.querySelectorAll('.nx-context-menu [nxContextMenuItem]'));
             const levelOneTrigger = overlay.querySelector('#level-one-trigger');
@@ -783,15 +786,15 @@ describe('nxContextMenu', () => {
             tick();
             fixture.detectChanges();
 
-            expect(levelOneTrigger!.classList).toContain('is-highlighted', 'Expected the trigger to be highlighted');
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(levelOneTrigger!).withContext('Expected the trigger to be highlighted').toHaveClass('is-highlighted');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
 
             dispatchMouseEvent(items[items.indexOf(levelOneTrigger as Element) + 1], 'mouseenter');
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
-            expect(levelOneTrigger!.classList).not.toContain('is-highlighted', 'Expected the trigger to not be highlighted');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
+            expect(levelOneTrigger!).not.withContext('Expected the trigger to not be highlighted').toHaveClass('is-highlighted');
         }));
 
         it('should close all the open sub-menus when the hover state is changed at the root', fakeAsync(() => {
@@ -811,13 +814,13 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick();
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(3, 'Expected three open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected three open menus').toHaveSize(3);
 
             dispatchMouseEvent(items[items.indexOf(levelOneTrigger as Element) + 1], 'mouseenter');
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
         }));
 
         it('should close submenu when hovering over disabled sibling item', fakeAsync(() => {
@@ -832,7 +835,7 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
 
             items[1].componentInstance.disabled = true;
             fixture.detectChanges();
@@ -842,7 +845,7 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
         }));
 
         it('should not open submenu when hovering over disabled trigger', fakeAsync(() => {
@@ -851,7 +854,7 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const item = fixture.debugElement.query(By.directive(NxContextMenuItemComponent));
 
@@ -863,31 +866,31 @@ describe('nxContextMenu', () => {
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected to remain at one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected to remain at one open menu').toHaveSize(1);
         }));
 
         it('should open a nested menu when its trigger is clicked', () => {
             compileTestComponent();
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const levelOneTrigger = overlay.querySelector('#level-one-trigger') as HTMLElement;
 
             levelOneTrigger.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
 
             levelOneTrigger.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected repeat clicks not to close the menu.');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected repeat clicks not to close the menu.').toHaveSize(2);
         });
 
         it('should open and close a nested menu with arrow keys in ltr', fakeAsync(() => {
             compileTestComponent();
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const levelOneTrigger = overlay.querySelector('#level-one-trigger') as HTMLElement;
 
@@ -896,19 +899,19 @@ describe('nxContextMenu', () => {
 
             const panels = overlay.querySelectorAll('.nx-context-menu');
 
-            expect(panels.length).toBe(2, 'Expected two open menus');
+            expect(panels).withContext('Expected two open menus').toHaveSize(2);
             dispatchKeyboardEvent(panels[1], 'keydown', LEFT_ARROW);
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1);
+            expect(overlay.querySelectorAll('.nx-context-menu')).toHaveSize(1);
         }));
 
         it('should open and close a nested menu with the arrow keys in rtl', fakeAsync(() => {
             compileTestComponent('rtl');
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const levelOneTrigger = overlay.querySelector('#level-one-trigger') as HTMLElement;
 
@@ -917,12 +920,12 @@ describe('nxContextMenu', () => {
 
             const panels = overlay.querySelectorAll('.nx-context-menu');
 
-            expect(panels.length).toBe(2, 'Expected two open menus');
+            expect(panels).withContext('Expected two open menus').toHaveSize(2);
             dispatchKeyboardEvent(panels[1], 'keydown', RIGHT_ARROW);
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1);
+            expect(overlay.querySelectorAll('.nx-context-menu')).toHaveSize(1);
         }));
 
         it('should not do anything with the arrow keys for a top-level menu', () => {
@@ -934,11 +937,11 @@ describe('nxContextMenu', () => {
 
             dispatchKeyboardEvent(menu as Node, 'keydown', RIGHT_ARROW);
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one menu to remain open');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one menu to remain open').toHaveSize(1);
 
             dispatchKeyboardEvent(menu as Node, 'keydown', LEFT_ARROW);
             fixture.detectChanges();
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one menu to remain open');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one menu to remain open').toHaveSize(1);
         });
 
         it('should close all of the menus when clicked outside the context menu', fakeAsync(() => {
@@ -952,13 +955,13 @@ describe('nxContextMenu', () => {
             instance.levelTwoTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(3, 'Expected three open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected three open menus').toHaveSize(3);
 
             document.body.click();
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(0, 'Expected no open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected no open menus').toHaveSize(0);
         }));
 
         it('should shift focus between the sub-menus', () => {
@@ -966,36 +969,37 @@ describe('nxContextMenu', () => {
             instance.rootTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the root menu');
+            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                .withContext('Expected focus to be inside the root menu')
+                .toBeTrue();
 
             instance.levelOneTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(
-                true,
-                'Expected focus to be inside the first nested menu',
-            );
+            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                .withContext('Expected focus to be inside the first nested menu')
+                .toBeTrue();
 
             instance.levelTwoTrigger.openContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement)).toBe(
-                true,
-                'Expected focus to be inside the second nested menu',
-            );
+            expect(overlay.querySelectorAll('.nx-context-menu')[2].contains(document.activeElement))
+                .withContext('Expected focus to be inside the second nested menu')
+                .toBeTrue();
 
             instance.levelTwoTrigger.closeContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement)).toBe(
-                true,
-                'Expected focus to be back inside the first nested menu',
-            );
+            expect(overlay.querySelectorAll('.nx-context-menu')[1].contains(document.activeElement))
+                .withContext('Expected focus to be back inside the first nested menu')
+                .toBeTrue();
 
             instance.levelOneTrigger.closeContextMenu();
             fixture.detectChanges();
 
-            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement)).toBe(true, 'Expected focus to be back inside the root menu');
+            expect(overlay.querySelector('.nx-context-menu')!.contains(document.activeElement))
+                .withContext('Expected focus to be back inside the root menu')
+                .toBeTrue();
         });
 
         it('should position the sub-menu to the right edge of the trigger in ltr', () => {
@@ -1085,13 +1089,13 @@ describe('nxContextMenu', () => {
 
             const menus = overlay.querySelectorAll('.nx-context-menu');
 
-            expect(menus.length).toBe(3, 'Expected three open menus');
+            expect(menus).withContext('Expected three open menus').toHaveSize(3);
 
             (menus[2].querySelector('.nx-context-menu-item') as HTMLElement).click();
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(0, 'Expected no open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected no open menus').toHaveSize(0);
         }));
 
         it('should close all of the menus when the user tabs away', fakeAsync(() => {
@@ -1107,14 +1111,14 @@ describe('nxContextMenu', () => {
 
             const menus = overlay.querySelectorAll('.nx-context-menu');
 
-            expect(menus.length).toBe(3, 'Expected three open menus');
+            expect(menus).withContext('Expected three open menus').toHaveSize(3);
 
             dispatchKeyboardEvent(menus[menus.length - 1], 'keydown', TAB);
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(0, 'Expected no open menus');
-            expect(instance.rootButtonEl.active).toBe(false);
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected no open menus').toHaveSize(0);
+            expect(instance.rootButtonEl.active).toBeFalse();
         }));
 
         it('should add an expand icon to the menu items that trigger a sub-menu', fakeAsync(() => {
@@ -1145,13 +1149,13 @@ describe('nxContextMenu', () => {
 
             const menus = overlay.querySelectorAll('.nx-context-menu');
 
-            expect(menus.length).toBe(3, 'Expected three open menus');
+            expect(menus).withContext('Expected three open menus').toHaveSize(3);
 
             instance.rootTrigger.closeContextMenu();
             fixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(0, 'Expected no open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected no open menus').toHaveSize(0);
         }));
 
         it('should toggle a nested menu when its trigger is added after init', fakeAsync(() => {
@@ -1159,7 +1163,7 @@ describe('nxContextMenu', () => {
             instance.rootTriggerEl.nativeElement.click();
             fixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             instance.showLazy = true;
             fixture.detectChanges();
@@ -1171,8 +1175,8 @@ describe('nxContextMenu', () => {
             tick(500);
             fixture.detectChanges();
 
-            expect(lazyTrigger!.classList).toContain('is-highlighted', 'Expected the trigger to be highlighted');
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(lazyTrigger!).withContext('Expected the trigger to be highlighted').toHaveClass('is-highlighted');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
         }));
 
         it('should prevent the default mousedown action if the menu item opens a sub-menu', () => {
@@ -1201,12 +1205,12 @@ describe('nxContextMenu', () => {
             repeaterFixture.componentInstance.rootTriggerEl.nativeElement.click();
             repeaterFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
             repeaterFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
         }));
 
         it('should be able to trigger the same nested menu from different triggers', fakeAsync(() => {
@@ -1217,20 +1221,20 @@ describe('nxContextMenu', () => {
             repeaterFixture.componentInstance.rootTriggerEl.nativeElement.click();
             repeaterFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const triggers = overlay.querySelectorAll('.level-one-trigger');
 
             dispatchMouseEvent(triggers[0], 'mouseenter');
             repeaterFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
 
             dispatchMouseEvent(triggers[1], 'mouseenter');
             repeaterFixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
         }));
 
         it('should close the initial menu if the user moves away while animating', fakeAsync(() => {
@@ -1241,7 +1245,7 @@ describe('nxContextMenu', () => {
             repeaterFixture.componentInstance.rootTriggerEl.nativeElement.click();
             repeaterFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             const triggers = overlay.querySelectorAll('.level-one-trigger');
 
@@ -1252,7 +1256,7 @@ describe('nxContextMenu', () => {
             repeaterFixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
         }));
 
         it('should be able to open a submenu through an item that is not a direct descendant of the panel', fakeAsync(() => {
@@ -1263,13 +1267,13 @@ describe('nxContextMenu', () => {
             nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
             nestedFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
             nestedFixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
         }));
 
         it('should not close when hovering over a menu item inside a sub-menu panel that is declared inside the root menu', fakeAsync(() => {
@@ -1280,19 +1284,19 @@ describe('nxContextMenu', () => {
             nestedFixture.componentInstance.rootTriggerEl.nativeElement.click();
             nestedFixture.detectChanges();
             tick(500);
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(1, 'Expected one open menu');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected one open menu').toHaveSize(1);
 
             dispatchMouseEvent(overlay.querySelector('.level-one-trigger') as Node, 'mouseenter');
             nestedFixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus').toHaveSize(2);
 
             dispatchMouseEvent(overlay.querySelector('.level-two-item') as Node, 'mouseenter');
             nestedFixture.detectChanges();
             tick(500);
 
-            expect(overlay.querySelectorAll('.nx-context-menu').length).toBe(2, 'Expected two open menus to remain');
+            expect(overlay.querySelectorAll('.nx-context-menu')).withContext('Expected two open menus to remain').toHaveSize(2);
         }));
     });
 

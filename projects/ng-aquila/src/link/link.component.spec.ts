@@ -48,7 +48,7 @@ describe('NxLinkComponent', () => {
         'default includes the bem block element',
         waitForAsync(() => {
             createTestComponent(BasicLink);
-            expect(linkDebugElement.nativeElement.classList.contains('nx-link')).toBe(true);
+            expect(linkDebugElement.nativeElement).toHaveClass('nx-link');
         }),
     );
 
@@ -56,33 +56,33 @@ describe('NxLinkComponent', () => {
         createTestComponent(DynamicLink);
         (testInstance as DynamicLink).style = 'black';
         fixture.detectChanges();
-        expect(linkDebugElement.nativeElement.classList.contains('nx-link--black')).toBe(true);
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--black');
     });
 
     it('should add a class to nx-icon instances', () => {
         createTestComponent(IconLink);
         const icon: HTMLElement = fixture.nativeElement.querySelector('nx-icon');
-        expect(icon.classList).toContain('nx-link__icon');
+        expect(icon).toHaveClass('nx-link__icon');
     });
 
     it('should have small size on default', () => {
         createTestComponent(BasicLink);
         expect(linkInstance.size).toBe('small');
-        expect(linkDebugElement.nativeElement.classList).toContain('nx-link--small');
-        expect(linkDebugElement.nativeElement.classList).not.toContain('nx-link--large');
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
+        expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
     });
 
     it('should change the link size', () => {
         createTestComponent(DynamicLink);
         expect(linkInstance.size).toBe('large');
-        expect(linkDebugElement.nativeElement.classList).toContain('nx-link--large');
-        expect(linkDebugElement.nativeElement.classList).not.toContain('nx-link--small');
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--large');
+        expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--small');
 
         testInstance.size = 'small';
         fixture.detectChanges();
         expect(linkInstance.size).toBe('small');
-        expect(linkDebugElement.nativeElement.classList).toContain('nx-link--small');
-        expect(linkDebugElement.nativeElement.classList).not.toContain('nx-link--large');
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
+        expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
     });
 
     it('should update size on programmatic change', () => {
@@ -91,13 +91,13 @@ describe('NxLinkComponent', () => {
 
         linkInstance.size = 'small';
         fixture.detectChanges();
-        expect(linkDebugElement.nativeElement.classList).toContain('nx-link--small');
-        expect(linkDebugElement.nativeElement.classList).not.toContain('nx-link--large');
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--small');
+        expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--large');
 
         linkInstance.size = 'large';
         fixture.detectChanges();
-        expect(linkDebugElement.nativeElement.classList).toContain('nx-link--large');
-        expect(linkDebugElement.nativeElement.classList).not.toContain('nx-link--small');
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link--large');
+        expect(linkDebugElement.nativeElement).not.toHaveClass('nx-link--small');
     });
 
     describe('a11y', () => {

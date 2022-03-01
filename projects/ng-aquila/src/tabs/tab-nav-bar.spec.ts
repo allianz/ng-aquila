@@ -48,15 +48,15 @@ describe('NxTabBarNavComponent', () => {
             const instance = testInstance as SimpleTabNavBar;
             const firstLink = fixture.nativeElement.querySelector('.nx-tab-link');
 
-            expect(firstLink.classList.contains('is-active')).toBeTruthy();
+            expect(firstLink).toHaveClass('is-active');
 
             instance.links[0].active = false;
             instance.links[1].active = true;
             fixture.detectChanges();
-            expect(firstLink.classList.contains('is-active')).toBeFalsy();
+            expect(firstLink).not.toHaveClass('is-active');
 
             const secondLink = fixture.nativeElement.querySelectorAll('.nx-tab-link').item(1);
-            expect(secondLink.classList.contains('is-active')).toBeTruthy();
+            expect(secondLink).toHaveClass('is-active');
         });
 
         it('should attach aria-current="true" to the currenly active tab nav link', () => {
@@ -69,14 +69,14 @@ describe('NxTabBarNavComponent', () => {
             createTestComponent(TabNavBarOnPush);
             testInstance.tabNavBar.negative = true;
             fixture.detectChanges();
-            expect(tabNavBarDebugElement.nativeElement.classList.contains('is-negative')).toBeTruthy();
+            expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-negative');
         });
 
         it('should update the nav bar on "disabled" programmatic change', () => {
             createTestComponent(TabNavBarOnPush);
             testInstance.tabNavBar.disabled = true;
             fixture.detectChanges();
-            expect(tabNavBarDebugElement.nativeElement.classList.contains('is-disabled')).toBeTruthy();
+            expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-disabled');
         });
 
         it('should update the nav bar links on "disabled" programmatic change', () => {
@@ -84,7 +84,7 @@ describe('NxTabBarNavComponent', () => {
             testInstance.tabNavBar.disabled = true;
             fixture.detectChanges();
             const tabLink = fixture.nativeElement.querySelector('.nx-tab-link');
-            expect(tabLink.classList.contains('is-disabled')).toBeTruthy();
+            expect(tabLink).toHaveClass('is-disabled');
         });
 
         describe('appearance', () => {
@@ -95,28 +95,28 @@ describe('NxTabBarNavComponent', () => {
             it('should set the appearance to "default" by default', () => {
                 createTestComponent(SimpleTabNavBar);
                 expect(tabNavBar.appearance).toBe('default');
-                expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
             });
 
             it('should change appearance on input change', () => {
                 createTestComponent(ConfigurableTabNavBar);
                 expect(tabNavBar.appearance).toBe('expert');
-                expect(tabNavBarDebugElement.nativeElement.classList).toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-expert');
 
                 testInstance.appearance = 'default';
                 fixture.detectChanges();
                 expect(tabNavBar.appearance).toBe('default');
-                expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
             });
 
             it('should update appearance on programmatic change', () => {
                 createTestComponent(TabNavBarOnPush);
                 expect(tabNavBar.appearance).toBe('default');
-                expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
 
                 tabNavBar.appearance = 'expert';
                 fixture.detectChanges();
-                expect(tabNavBarDebugElement.nativeElement.classList).toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-expert');
             });
         });
     });
@@ -139,14 +139,14 @@ describe('NxTabBarNavComponent', () => {
                 delete defaultOptions.appearance;
                 createTestComponent(SimpleTabNavBar);
                 expect(tabNavBar.appearance).toBe('default');
-                expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
             },
         ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(SimpleTabNavBar);
             expect(tabNavBar.appearance).toBe('expert');
-            expect(tabNavBarDebugElement.nativeElement.classList).toContain('is-expert');
+            expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-expert');
         });
 
         it('should override a custom default appearance', () => {
@@ -156,18 +156,18 @@ describe('NxTabBarNavComponent', () => {
             testInstance.appearance = 'default';
             fixture.detectChanges();
             expect(tabNavBar.appearance).toBe('default');
-            expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+            expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
         });
 
         it('changes the appearance on injection token change', inject([TAB_NAV_BAR_DEFAULT_OPTIONS], (defaultOptions: TabNavBarDefaultOptions) => {
             createTestComponent(SimpleTabNavBar);
             expect(tabNavBar.appearance).toBe('expert');
-            expect(tabNavBarDebugElement.nativeElement.classList).toContain('is-expert');
+            expect(tabNavBarDebugElement.nativeElement).toHaveClass('is-expert');
 
             defaultOptions.appearance = 'default';
             fixture.detectChanges();
             expect(tabNavBar.appearance).toBe('default');
-            expect(tabNavBarDebugElement.nativeElement.classList).not.toContain('is-expert');
+            expect(tabNavBarDebugElement.nativeElement).not.toHaveClass('is-expert');
         }));
     });
 });

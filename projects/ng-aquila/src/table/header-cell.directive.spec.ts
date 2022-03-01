@@ -43,7 +43,7 @@ describe(NxHeaderCellDirective.name, () => {
         });
 
         it('has the bem class', () => {
-            expect(HeaderCellElement.nativeElement.classList.contains('nx-header-cell')).toBeTruthy();
+            expect(HeaderCellElement.nativeElement).toHaveClass('nx-header-cell');
         });
 
         it('renders the content', () => {

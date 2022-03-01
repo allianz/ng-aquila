@@ -48,13 +48,13 @@ describe(NxHeaderComponent.name, () => {
         it(
             'default header includes the bem block element',
             waitForAsync(() => {
-                expect(headerNativeElement.classList.contains('nx-header')).toBe(true);
-                expect(headerNativeElement.classList.contains('nx-header--single-row')).toBe(true);
+                expect(headerNativeElement).toHaveClass('nx-header');
+                expect(headerNativeElement).toHaveClass('nx-header--single-row');
             }),
         );
 
         it('header navigation section has bem class', () => {
-            expect(headerNativeElement.querySelector('nx-header-navigation')?.classList.contains('nx-header__navigation')).toBe(true);
+            expect(headerNativeElement.querySelector('nx-header-navigation')).toHaveClass('nx-header__navigation');
         });
 
         it('header navigation section has navigation role', () => {
@@ -70,7 +70,7 @@ describe(NxHeaderComponent.name, () => {
         });
 
         it('header link has bem class', () => {
-            expect(headerNativeElement.querySelector('a[nxheaderlink]')?.classList.contains('nx-header__link')).toBe(true);
+            expect(headerNativeElement.querySelector('a[nxheaderlink]')).toHaveClass('nx-header__link');
         });
 
         it('header link has a text-content attribute', () => {
@@ -78,11 +78,11 @@ describe(NxHeaderComponent.name, () => {
         });
 
         it('header actions section has bem class', () => {
-            expect(headerNativeElement.querySelector('nx-header-actions')?.classList.contains('nx-header__actions')).toBe(true);
+            expect(headerNativeElement.querySelector('nx-header-actions')).toHaveClass('nx-header__actions');
         });
 
         it('header brand section has bem class', () => {
-            expect(headerNativeElement.querySelector('nx-header-brand')?.classList.contains('nx-header__brand')).toBe(true);
+            expect(headerNativeElement.querySelector('nx-header-brand')).toHaveClass('nx-header__brand');
         });
     });
 
@@ -94,14 +94,14 @@ describe(NxHeaderComponent.name, () => {
         it(
             'header does not include the single row class',
             waitForAsync(() => {
-                expect(headerNativeElement.classList.contains('nx-header--single-row')).toBe(false);
+                expect(headerNativeElement).not.toHaveClass('nx-header--single-row');
             }),
         );
 
         it(
             'header row contains bem class',
             waitForAsync(() => {
-                expect(headerNativeElement.querySelector('nx-header-row')?.classList.contains('nx-header__row')).toBe(true);
+                expect(headerNativeElement.querySelector('nx-header-row')).toHaveClass('nx-header__row');
             }),
         );
     });
@@ -114,10 +114,10 @@ describe(NxHeaderComponent.name, () => {
         it(
             'Should have separator',
             waitForAsync(() => {
-                expect(fixture.nativeElement.querySelector('.nx-header__actions').classList.contains('nx-header__actions--show-separator')).toBe(false);
+                expect(fixture.nativeElement.querySelector('.nx-header__actions')).not.toHaveClass('nx-header__actions--show-separator');
                 testInstance.showSeparator = true;
                 fixture.detectChanges();
-                expect(fixture.nativeElement.querySelector('.nx-header__actions').classList.contains('nx-header__actions--show-separator')).toBe(true);
+                expect(fixture.nativeElement.querySelector('.nx-header__actions')).toHaveClass('nx-header__actions--show-separator');
             }),
         );
     });

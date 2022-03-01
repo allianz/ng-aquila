@@ -64,7 +64,7 @@ describe('NxInputDirective', () => {
         'default includes the bem block element',
         waitForAsync(() => {
             createTestComponent(BasicInput);
-            expect(nativeElement.classList.contains('c-input')).toBe(true);
+            expect(nativeElement).toHaveClass('c-input');
         }),
     );
 
@@ -74,7 +74,7 @@ describe('NxInputDirective', () => {
         tick();
         const formField = fixture.debugElement.query(By.css('.nx-formfield')).nativeElement;
 
-        expect(formField.classList).toContain('nx-formfield--type-nx-input');
+        expect(formField).toHaveClass('nx-formfield--type-nx-input');
     }));
 
     it(
@@ -92,7 +92,7 @@ describe('NxInputDirective', () => {
 
             fixture.detectChanges();
             tick();
-        }).toThrowError(`Input of type 'button' is not supported`);
+        }).toThrowError("Input of type 'button' is not supported");
     }));
 
     it('recognizes never empty inputs like date', fakeAsync(() => {
@@ -115,8 +115,8 @@ describe('NxInputDirective', () => {
             nativeElement.dispatchEvent(autofillTriggerEvent);
             fixture.detectChanges();
             tick();
-            expect(nativeElement.classList).toContain('cdk-text-field-autofilled');
-            expect(nativeElement.classList).toContain('is-filled');
+            expect(nativeElement).toHaveClass('cdk-text-field-autofilled');
+            expect(nativeElement).toHaveClass('is-filled');
         }));
     });
 
@@ -155,7 +155,7 @@ describe('NxInputDirective', () => {
             fixture.detectChanges();
             tick();
             const formField = fixture.debugElement.query(By.css('.nx-formfield')).nativeElement;
-            expect(formField.classList).toContain('nx-formfield--type-textarea');
+            expect(formField).toHaveClass('nx-formfield--type-textarea');
         }));
     });
 
@@ -163,31 +163,31 @@ describe('NxInputDirective', () => {
         it('should forward the disabled state to the native element', () => {
             createTestComponent(ConfigurableInput);
             fixture.detectChanges();
-            expect(nativeElement.disabled).toBe(false);
+            expect(nativeElement.disabled).toBeFalse();
 
             testInstance.disabled = true;
             fixture.detectChanges();
-            expect(nativeElement.disabled).toBe(true);
+            expect(nativeElement.disabled).toBeTrue();
         });
 
         it('should forward the required state to the native element', () => {
             createTestComponent(ConfigurableInput);
             fixture.detectChanges();
-            expect(nativeElement.required).toBe(false);
+            expect(nativeElement.required).toBeFalse();
 
             testInstance.required = true;
             fixture.detectChanges();
-            expect(nativeElement.required).toBe(true);
+            expect(nativeElement.required).toBeTrue();
         });
 
         it('should forward the readonly state to the native element', () => {
             createTestComponent(ConfigurableInput);
             fixture.detectChanges();
-            expect(nativeElement.readOnly).toBe(false);
+            expect(nativeElement.readOnly).toBeFalse();
 
             testInstance.readonly = true;
             fixture.detectChanges();
-            expect(nativeElement.readOnly).toBe(true);
+            expect(nativeElement.readOnly).toBeTrue();
         });
     });
 
@@ -226,7 +226,7 @@ describe('NxInputDirective', () => {
 
             fixture.detectChanges();
 
-            expect(container.classList).toContain('is-floating');
+            expect(container).toHaveClass('is-floating');
             expect(label.textContent.trim()).toBe('Label');
             expect(input.getAttribute('placeholder')).toBe('This is a placeholder');
 
@@ -234,7 +234,7 @@ describe('NxInputDirective', () => {
             fixture.detectChanges();
 
             expect(input.getAttribute('placeholder')).toBeFalsy();
-            expect(container.classList).toContain('is-floating');
+            expect(container).toHaveClass('is-floating');
         });
 
         it('should show the native placeholder when using an outline', () => {
@@ -251,7 +251,7 @@ describe('NxInputDirective', () => {
 
             fixture.detectChanges();
 
-            expect(container.classList).toContain('is-floating');
+            expect(container).toHaveClass('is-floating');
             expect(label.textContent.trim()).toBe('Label');
             expect(input.getAttribute('placeholder')).toBe('This is a placeholder');
 
@@ -259,7 +259,7 @@ describe('NxInputDirective', () => {
             fixture.detectChanges();
 
             expect(input.getAttribute('placeholder')).toBeFalsy();
-            expect(container.classList).toContain('is-floating');
+            expect(container).toHaveClass('is-floating');
         });
 
         it('should always show the native placeholder when floatLabel is set to "always"', () => {
@@ -279,7 +279,7 @@ describe('NxInputDirective', () => {
             fixture.detectChanges();
             const input = fixture.debugElement.query(By.css('input'))!.nativeElement;
 
-            expect(input.hasAttribute('placeholder')).toBe(false);
+            expect(input.hasAttribute('placeholder')).toBeFalse();
         });
     });
 

@@ -83,12 +83,12 @@ describe('NxSmallStageComponent', () => {
     describe('narrow', () => {
         it('has no small text by default', () => {
             createTestComponent(BasicSmallStage);
-            expect(smallStageInstance.narrow).toBe(false);
+            expect(smallStageInstance.narrow).toBeFalse();
         });
 
         it('has narrow content', () => {
             createTestComponent(SmallTextSmallStage);
-            expect(smallStageInstance.narrow).toBe(true);
+            expect(smallStageInstance.narrow).toBeTrue();
             expect(smallStageDebugElement.nativeElement).toHaveClass('is-narrow');
         });
     });

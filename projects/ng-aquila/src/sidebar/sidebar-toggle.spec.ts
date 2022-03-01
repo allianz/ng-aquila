@@ -37,8 +37,8 @@ describe('NxSidebarToggleButton', () => {
         createTestComponent(BasicSidebarToggleComponent);
         expect(buttonInstance.type).toBe('tertiary');
         expect(buttonInstance.size).toBe('small-medium');
-        expect(buttonNativeElement.classList).toContain('nx-button--tertiary');
-        expect(buttonNativeElement.classList).toContain('nx-button--small-medium');
+        expect(buttonNativeElement).toHaveClass('nx-button--tertiary');
+        expect(buttonNativeElement).toHaveClass('nx-button--small-medium');
     });
 });
 

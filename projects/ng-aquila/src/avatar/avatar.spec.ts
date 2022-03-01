@@ -43,7 +43,7 @@ describe('NxAvatarComponent', () => {
         it('is medium size by default', () => {
             createTestComponent(AvatarWithText);
             expect(avatarInstance.size).toBe('medium');
-            expect(avatarElement.classList).toContain('nx-avatar--medium');
+            expect(avatarElement).toHaveClass('nx-avatar--medium');
         });
 
         it('creates the avatar with text inside', () => {
@@ -66,25 +66,25 @@ describe('NxAvatarComponent', () => {
         it('updates the size on input change', () => {
             createTestComponent(ConfigurableAvatar);
             expect(avatarInstance.size).toBe('small');
-            expect(avatarElement.classList).toContain('nx-avatar--small');
-            expect(avatarElement.classList).not.toContain('nx-avatar--medium');
+            expect(avatarElement).toHaveClass('nx-avatar--small');
+            expect(avatarElement).not.toHaveClass('nx-avatar--medium');
 
             avatarInstance.size = 'xlarge';
             fixture.detectChanges();
             expect(avatarInstance.size).toBe('xlarge');
-            expect(avatarElement.classList).toContain('nx-avatar--xlarge');
+            expect(avatarElement).toHaveClass('nx-avatar--xlarge');
         });
     });
 
     describe('avatar button', () => {
         it('sets the button class', () => {
             createTestComponent(AvatarButton);
-            expect(avatarElement.classList).toContain('is-button');
+            expect(avatarElement).toHaveClass('is-button');
         });
 
         it('also uses the NxAvatarComponent for the element', () => {
             createTestComponent(AvatarButton);
-            expect(avatarElement.classList).toContain('nx-avatar--medium');
+            expect(avatarElement).toHaveClass('nx-avatar--medium');
         });
     });
 });

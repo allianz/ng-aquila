@@ -52,13 +52,13 @@ describe(NxTableComponent.name, () => {
         it('every header cell has the bem class', () => {
             createTestComponent(SimpleTableComponent);
             tableElement.queryAll(By.directive(NxHeaderCellDirective)).forEach(element => {
-                expect(element.nativeElement.classList.contains('nx-header-cell')).toBeTruthy();
+                expect(element.nativeElement).toHaveClass('nx-header-cell');
             });
         });
 
         it('has zebra styling', () => {
             createTestComponent(ZebraTableComponent);
-            expect(tableElement.nativeElement.classList.contains(ZEBRA_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(ZEBRA_CSS_CLASS);
         });
 
         it('should ignore zebra styling in expandable mode', () => {
@@ -68,20 +68,20 @@ describe(NxTableComponent.name, () => {
 
         it('has condensed styling', () => {
             createTestComponent(CondensedTableComponent);
-            expect(tableElement.nativeElement.classList.contains(CONDENSED_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(CONDENSED_CSS_CLASS);
         });
 
         it('every table cell contains the bem class', () => {
             createTestComponent(SimpleTableComponent);
             tableElement.queryAll(By.directive(NxTableCellComponent)).forEach(element => {
-                expect(element.nativeElement.classList.contains('nx-table-cell')).toBeTruthy();
+                expect(element.nativeElement).toHaveClass('nx-table-cell');
             });
         });
 
         it('every table row contains the bem class', () => {
             createTestComponent(SimpleTableComponent);
             tableElement.queryAll(By.directive(NxTableRowComponent)).forEach(element => {
-                expect(element.nativeElement.classList.contains('nx-table-row')).toBeTruthy();
+                expect(element.nativeElement).toHaveClass('nx-table-row');
             });
         });
     });
@@ -91,42 +91,42 @@ describe(NxTableComponent.name, () => {
             createTestComponent(ZebraTableComponent);
             tableInstance.zebra = false;
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(ZEBRA_CSS_CLASS)).toBeFalsy();
+            expect(tableElement.nativeElement).not.toHaveClass(ZEBRA_CSS_CLASS);
         });
 
         it('zebra change to true should activate the zebra mode', () => {
             createTestComponent(SimpleTableComponent);
             tableInstance.zebra = true;
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(ZEBRA_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(ZEBRA_CSS_CLASS);
         });
 
         it('condensed change to false should deactivate the condensed mode', () => {
             createTestComponent(CondensedTableComponent);
             tableInstance.condensed = false;
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(CONDENSED_CSS_CLASS)).toBeFalsy();
+            expect(tableElement.nativeElement).not.toHaveClass(CONDENSED_CSS_CLASS);
         });
 
         it('condensed change to true should activate the condensed mode', () => {
             createTestComponent(SimpleTableComponent);
             tableInstance.condensed = true;
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(CONDENSED_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(CONDENSED_CSS_CLASS);
         });
 
         it('sticky set to first should add a corresponding class', () => {
             createTestComponent(SimpleTableComponent);
             tableInstance.sticky = 'first';
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(STICKY_FIRST_CSS_CLASS);
             tableInstance.sticky = 'last';
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(STICKY_LAST_CSS_CLASS);
             tableInstance.sticky = 'both';
             fixture.detectChanges();
-            expect(tableElement.nativeElement.classList.contains(STICKY_FIRST_CSS_CLASS)).toBeTruthy();
-            expect(tableElement.nativeElement.classList.contains(STICKY_LAST_CSS_CLASS)).toBeTruthy();
+            expect(tableElement.nativeElement).toHaveClass(STICKY_FIRST_CSS_CLASS);
+            expect(tableElement.nativeElement).toHaveClass(STICKY_LAST_CSS_CLASS);
         });
     });
 });

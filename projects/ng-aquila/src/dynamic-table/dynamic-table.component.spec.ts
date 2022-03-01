@@ -69,25 +69,25 @@ describe('NxDynamicTableComponent', () => {
         it('should render two columns', () => {
             createTestComponent(BasicDynamicTable);
             fixture.detectChanges();
-            expect(headerCellElements.length).toBe(2);
+            expect(headerCellElements).toHaveSize(2);
         });
 
         it('should render three rows', () => {
             createTestComponent(BasicDynamicTable);
             fixture.detectChanges();
-            expect(rowElements.length).toBe(3);
+            expect(rowElements).toHaveSize(3);
         });
 
         it('should render 2 rows empty', () => {
             createTestComponent(TableEmptyRows);
             fixture.detectChanges();
-            expect(rowElements.length).toBe(2);
+            expect(rowElements).toHaveSize(2);
         });
 
         it('should render 0 rows due to rows are null or undefined', () => {
             createTestComponent(TableWrongRows);
             fixture.detectChanges();
-            expect(rowElements.length).toBe(0);
+            expect(rowElements).toHaveSize(0);
         });
     });
 
@@ -118,7 +118,7 @@ describe('NxDynamicTableComponent', () => {
             rowElements = getRows();
             ngContent = fixture.nativeElement.querySelector('.nx-table__appendix');
             expect(ngContent).toBeFalsy();
-            expect(rowElements.length).toBe(2);
+            expect(rowElements).toHaveSize(2);
         });
     });
 
@@ -131,7 +131,7 @@ describe('NxDynamicTableComponent', () => {
             fixture.detectChanges();
             const rows = getRows();
             const headerRow = getHeaderRow();
-            expect(rows.length).toBe(1);
+            expect(rows).toHaveSize(1);
             expect(headerRow.querySelectorAll('cdk-header-cell')[0].textContent.trim()).toBe('car');
             expect(rows[0].querySelectorAll('cdk-cell')[0].textContent).toBe('Tesla');
         });

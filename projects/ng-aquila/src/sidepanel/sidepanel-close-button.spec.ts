@@ -50,8 +50,8 @@ describe('NxSidepanelCloseButtonComponent', () => {
         it('closes the panel on button click', () => {
             buttonElement.click();
             fixture.detectChanges();
-            expect(sidepanelInstance.opened).toBe(false);
-            expect(sidepanelElement.nativeElement.classList).toContain('is-closed');
+            expect(sidepanelInstance.opened).toBeFalse();
+            expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
         });
     });
 

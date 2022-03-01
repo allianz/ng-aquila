@@ -62,14 +62,14 @@ describe('NxVideoComponent', () => {
         waitForAsync(() => {
             createTestComponent(BasicVideo);
             let thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
-            expect(thumbnail).not.toBe(null);
+            expect(thumbnail).not.toBeNull();
 
             const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
             playButton.nativeElement.click();
             fixture.detectChanges();
 
             thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
-            expect(thumbnail).toBe(null);
+            expect(thumbnail).toBeNull();
         }),
     );
 

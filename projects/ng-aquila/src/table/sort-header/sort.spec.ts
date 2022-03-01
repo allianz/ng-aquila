@@ -129,15 +129,15 @@ describe('NxSort', () => {
             const chevronUpElement = nameHeaderElement.querySelector('.nx-sort-header__icon-up') as HTMLElement;
             const chevronDownElement = nameHeaderElement.querySelector('.nx-sort-header__icon-down') as HTMLElement;
 
-            expect(chevronUpElement.classList).not.toContain('.nx-sort-header__hidden-icon');
-            expect(chevronDownElement.classList).not.toContain('.nx-sort-header__hidden-icon');
+            expect(chevronUpElement).not.toHaveClass('.nx-sort-header__hidden-icon');
+            expect(chevronDownElement).not.toHaveClass('.nx-sort-header__hidden-icon');
 
             const countHeaderElement = fixture.nativeElement.querySelector('#countHeader');
             countHeaderElement.click();
             fixture.detectChanges();
 
-            expect(chevronUpElement.classList).not.toContain('nx-sort-header__hidden-icon');
-            expect(chevronDownElement.classList).not.toContain('nx-sort-header__hidden-icon');
+            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
         });
 
         it('hides one icon when sorted', () => {
@@ -150,20 +150,20 @@ describe('NxSort', () => {
             // sort ascending
             nameHeaderElement.click();
             fixture.detectChanges();
-            expect(chevronUpElement.classList).not.toContain('nx-sort-header__hidden-icon');
-            expect(chevronDownElement.classList).toContain('nx-sort-header__hidden-icon');
+            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            expect(chevronDownElement).toHaveClass('nx-sort-header__hidden-icon');
 
             // sort descending
             nameHeaderElement.click();
             fixture.detectChanges();
-            expect(chevronUpElement.classList).toContain('nx-sort-header__hidden-icon');
-            expect(chevronDownElement.classList).not.toContain('nx-sort-header__hidden-icon');
+            expect(chevronUpElement).toHaveClass('nx-sort-header__hidden-icon');
+            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
 
             const countHeaderElement = fixture.nativeElement.querySelector('#countHeader');
             countHeaderElement.click();
             fixture.detectChanges();
-            expect(chevronUpElement.classList).not.toContain('nx-sort-header__hidden-icon');
-            expect(chevronDownElement.classList).not.toContain('nx-sort-header__hidden-icon');
+            expect(chevronUpElement).not.toHaveClass('nx-sort-header__hidden-icon');
+            expect(chevronDownElement).not.toHaveClass('nx-sort-header__hidden-icon');
         });
     });
 

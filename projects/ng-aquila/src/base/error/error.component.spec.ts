@@ -49,7 +49,7 @@ describe('NxErrorComponent', () => {
             testInstance.appearance = 'text';
             fixture.detectChanges();
             const icon = fixture.nativeElement.querySelector('nx-icon') as HTMLButtonElement;
-            expect(icon.classList).toContain('nx-error__icon');
+            expect(icon).toHaveClass('nx-error__icon');
             expect(errorInstance).toBeTruthy();
         });
 

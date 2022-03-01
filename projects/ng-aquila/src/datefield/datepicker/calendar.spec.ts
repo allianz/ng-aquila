@@ -158,7 +158,7 @@ describe('NxCalendarComponent', () => {
 
             expect(calendarInstance._currentView).toBe('month');
             expect(calendarInstance._activeDate).toEqual(new Date(2000, DEC, 31));
-            expect(testComponent.selected).toBeFalsy('no date should be selected yet');
+            expect(testComponent.selected).withContext('no date should be selected yet').toBeFalsy();
         });
 
         it('should select date in month view', () => {
@@ -323,13 +323,13 @@ describe('NxCalendarComponent', () => {
 
             const prevButton = calendarElement.querySelector('.nx-calendar-previous-button') as HTMLButtonElement;
 
-            expect(prevButton.disabled).toBe(false, 'previous button should not be disabled');
+            expect(prevButton.disabled).withContext('previous button should not be disabled').toBeFalse();
             expect(calendarInstance._activeDate).toEqual(new Date(2016, FEB, 1));
 
             prevButton.click();
             fixture.detectChanges();
 
-            expect(prevButton.disabled).toBe(true, 'previous button should be disabled');
+            expect(prevButton.disabled).withContext('previous button should be disabled').toBeTrue();
             expect(calendarInstance._activeDate).toEqual(new Date(2016, JAN, 1));
 
             prevButton.click();
@@ -344,13 +344,13 @@ describe('NxCalendarComponent', () => {
 
             const nextButton = calendarElement.querySelector('.nx-calendar-next-button') as HTMLButtonElement;
 
-            expect(nextButton.disabled).toBe(false, 'next button should not be disabled');
+            expect(nextButton.disabled).withContext('next button should not be disabled').toBeFalse();
             expect(calendarInstance._activeDate).toEqual(new Date(2017, DEC, 1));
 
             nextButton.click();
             fixture.detectChanges();
 
-            expect(nextButton.disabled).toBe(true, 'next button should be disabled');
+            expect(nextButton.disabled).withContext('next button should be disabled').toBeTrue();
             expect(calendarInstance._activeDate).toEqual(new Date(2018, JAN, 1));
 
             nextButton.click();

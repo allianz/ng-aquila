@@ -40,13 +40,13 @@ describe('NxIbanMaskDirective', () => {
         nativeElement.value = countryCode;
         nativeElement.dispatchEvent(new Event('input'));
         fixture.detectChanges();
-        expect(testInstance.testForm.valid).toBe(false);
+        expect(testInstance.testForm.valid).toBeFalse();
 
         nativeElement.value = inputValue;
         nativeElement.dispatchEvent(new Event('input'));
         fixture.detectChanges();
         expect(nativeElement.value).toBe(asserted);
-        expect(testInstance.testForm.valid).toBe(true);
+        expect(testInstance.testForm.valid).toBeTrue();
     }
 
     beforeEach(
@@ -274,12 +274,12 @@ describe('NxIbanMaskDirective', () => {
     describe('validation', () => {
         it('should mark as invalid and touch input immediately for non-existing country code', () => {
             createTestComponent(FormIbanMaskComponent);
-            expect(testInstance.testForm.touched).toBe(false);
+            expect(testInstance.testForm.touched).toBeFalse();
 
             assertInputValue(nativeElement, 'GD', 'GD');
 
-            expect(testInstance.testForm.valid).toBe(false);
-            expect(testInstance.testForm.touched).toBe(true);
+            expect(testInstance.testForm.valid).toBeFalse();
+            expect(testInstance.testForm.touched).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
         });
 
@@ -303,42 +303,42 @@ describe('NxIbanMaskDirective', () => {
             // quick solution for getting the mask updated after entering the first to letters
             assertInputValue(nativeElement, 'DE', 'DE');
             assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
-            expect(testInstance.testForm.valid).toBe(false);
+            expect(testInstance.testForm.valid).toBeFalse();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
             assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
-            expect(testInstance.testForm.valid).toBe(true);
+            expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
             assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
-            expect(testInstance.testForm.valid).toBe(false);
+            expect(testInstance.testForm.valid).toBeFalse();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
         });
 
         it('should not do iban valdation on mask validation turned off', () => {
             createTestComponent(FormIbanMaskComponent);
-            expect(maskInstance.validateMask).toBe(true);
+            expect(maskInstance.validateMask).toBeTrue();
 
             testInstance.validateMask = false;
             fixture.detectChanges();
 
             assertInputValue(nativeElement, 'GD', 'GD');
 
-            expect(testInstance.testForm.valid).toBe(true);
+            expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('GD');
 
             // quick solution for getting the mask updated after entering the first to letters
             assertInputValue(nativeElement, 'DE', 'DE');
             assertInputValue(nativeElement, 'DE89370400440532013001', 'DE89 3704 0044 0532 0130 01');
-            expect(testInstance.testForm.valid).toBe(true);
+            expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 01');
 
             assertInputValue(nativeElement, 'DE89370400440532013000', 'DE89 3704 0044 0532 0130 00');
-            expect(testInstance.testForm.valid).toBe(true);
+            expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 00');
 
             assertInputValue(nativeElement, 'DE89370400440532013002', 'DE89 3704 0044 0532 0130 02');
-            expect(testInstance.testForm.valid).toBe(true);
+            expect(testInstance.testForm.valid).toBeTrue();
             expect(testInstance.testForm.get('maskInput')!.value).toBe('DE89 3704 0044 0532 0130 02');
         });
     });

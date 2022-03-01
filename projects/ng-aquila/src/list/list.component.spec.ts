@@ -46,9 +46,9 @@ describe('NxListComponent', () => {
         'creates full modifier class from a correct keyword',
         waitForAsync(() => {
             createTestComponent(ListWithModifier);
-            expect(listNativeElement.classList.contains('nx-list--small')).toBe(true);
-            expect(listNativeElement.classList.contains('nx-list--ordered-circle')).toBe(true);
-            expect(listNativeElement.classList.contains('nx-list--negative')).toBe(true);
+            expect(listNativeElement).toHaveClass('nx-list--small');
+            expect(listNativeElement).toHaveClass('nx-list--ordered-circle');
+            expect(listNativeElement).toHaveClass('nx-list--negative');
         }),
     );
 
@@ -67,8 +67,8 @@ describe('NxListComponent', () => {
         createTestComponent(ConfigurableList);
         (testInstance as ConfigurableList).type = 'small negative';
         fixture.detectChanges();
-        expect(listNativeElement.classList.contains('nx-list--small')).toBe(true);
-        expect(listNativeElement.classList.contains('nx-list--negative')).toBe(true);
+        expect(listNativeElement).toHaveClass('nx-list--small');
+        expect(listNativeElement).toHaveClass('nx-list--negative');
     }));
 
     it('should change the icon', () => {
@@ -76,7 +76,7 @@ describe('NxListComponent', () => {
         (testInstance as ConfigurableList).iconName = 'product-cross';
         fixture.detectChanges();
         const listItems: NodeListOf<HTMLLIElement> = listNativeElement.querySelectorAll('li');
-        expect(listItems.item(0).querySelector('nx-icon')?.classList).toContain('product-cross');
+        expect(listItems.item(0).querySelector('nx-icon')).toHaveClass('product-cross');
     });
 
     it(
@@ -85,7 +85,7 @@ describe('NxListComponent', () => {
             createTestComponent(ConfigurableList);
             (testInstance as ConfigurableList).type = 'xsmall';
             fixture.detectChanges();
-            expect(listNativeElement.classList.contains('nx-list--xsmall')).toBe(true);
+            expect(listNativeElement).toHaveClass('nx-list--xsmall');
         }),
     );
 

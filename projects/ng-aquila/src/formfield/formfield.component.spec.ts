@@ -145,7 +145,7 @@ describe('NxFormfieldComponent', () => {
             createTestComponent(NgModelFormfield);
             fillWithContent('fill with content');
 
-            expect(formfieldElement.classList.contains('is-filled')).toBe(true);
+            expect(formfieldElement).toHaveClass('is-filled');
         }));
 
         it('assigns the label', () => {
@@ -157,14 +157,14 @@ describe('NxFormfieldComponent', () => {
             createTestComponent(NgModelFormfield);
             fillWithContent('fill with content');
 
-            expect(formfieldElement.classList.contains('is-floating')).toBe(true);
+            expect(formfieldElement).toHaveClass('is-floating');
         }));
 
         it('always floats the label when floatLabel is set to "always"', () => {
             createTestComponent(FloatingFormfield);
             testInstance.floatLabel = 'always';
             fixture.detectChanges();
-            expect(formfieldElement.classList.contains('is-floating')).toBe(true);
+            expect(formfieldElement).toHaveClass('is-floating');
         });
 
         // The former value of 1.6rem for the translateY transition on the elemen ..nx-formfield__label
@@ -195,7 +195,7 @@ describe('NxFormfieldComponent', () => {
             fixture.detectChanges();
             tick();
 
-            expect(formfieldElement.classList.contains('has-error')).toBe(true);
+            expect(formfieldElement).toHaveClass('has-error');
         }));
 
         it('shows the error instead of a given note', fakeAsync(() => {
@@ -230,50 +230,50 @@ describe('NxFormfieldComponent', () => {
 
         it('should render the formfield with no outline on default', () => {
             createTestComponent(BasicFormfield);
-            expect(fixture.nativeElement.classList).not.toContain('has-outline');
+            expect(fixture.nativeElement).not.toHaveClass('has-outline');
         });
 
         it('should display the formfield with the correct appearance', () => {
             createTestComponent(OutlineFormfield);
-            expect(formfieldElement.classList).not.toContain('has-outline');
+            expect(formfieldElement).not.toHaveClass('has-outline');
 
             fixture.componentInstance.appearance = 'outline';
             fixture.detectChanges();
-            expect(formfieldElement.classList).toContain('has-outline');
+            expect(formfieldElement).toHaveClass('has-outline');
 
             fixture.componentInstance.appearance = 'auto';
             fixture.detectChanges();
-            expect(formfieldElement.classList).not.toContain('has-outline');
+            expect(formfieldElement).not.toHaveClass('has-outline');
         });
 
         it('should add is-disabled class when control is disabled', () => {
             createTestComponent(BasicFormfield);
-            expect(formfieldElement.classList).not.toContain('is-disabled');
+            expect(formfieldElement).not.toHaveClass('is-disabled');
             testInstance.disabled = true;
             fixture.detectChanges();
-            expect(formfieldElement.classList).toContain('is-disabled');
+            expect(formfieldElement).toHaveClass('is-disabled');
         });
 
         it('should add is-readonly class when control is readonly', () => {
             createTestComponent(BasicFormfield);
-            expect(formfieldElement.classList).not.toContain('is-readonly');
+            expect(formfieldElement).not.toHaveClass('is-readonly');
             testInstance.readonly = true;
             fixture.detectChanges();
-            expect(formfieldElement.classList).toContain('is-readonly');
+            expect(formfieldElement).toHaveClass('is-readonly');
         });
 
         describe('programmatic tests', () => {
             it('updates on appearance change', () => {
                 createTestComponent(OnPushFormfield);
-                expect(formfieldElement.classList).not.toContain('has-outline');
+                expect(formfieldElement).not.toHaveClass('has-outline');
 
                 formfieldInstance.appearance = 'outline';
                 fixture.detectChanges();
-                expect(formfieldElement.classList).toContain('has-outline');
+                expect(formfieldElement).toHaveClass('has-outline');
 
                 formfieldInstance.appearance = 'auto';
                 fixture.detectChanges();
-                expect(formfieldElement.classList).not.toContain('has-outline');
+                expect(formfieldElement).not.toHaveClass('has-outline');
             });
         });
 
@@ -338,13 +338,13 @@ describe('NxFormfieldComponent', () => {
         it('should have an "auto" appearance if no default options are provided', () => {
             createTestComponent(OutlineFormfield);
             expect(testInstance.textfieldInstance.appearance).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('has-outline');
+            expect(formfieldElement).not.toHaveClass('has-outline');
         });
 
         it('should have an "auto" floatingLabel if no default options are provided', () => {
             createTestComponent(OutlineFormfield);
             expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('is-floating');
+            expect(formfieldElement).not.toHaveClass('is-floating');
         });
     });
 
@@ -367,7 +367,7 @@ describe('NxFormfieldComponent', () => {
                 delete defaultOptions.appearance;
                 createTestComponent(BasicFormfield);
                 expect(testInstance.textfieldInstance.appearance).toBe('auto');
-                expect(formfieldElement.classList).not.toContain('has-outline');
+                expect(formfieldElement).not.toHaveClass('has-outline');
             },
         ));
 
@@ -377,20 +377,20 @@ describe('NxFormfieldComponent', () => {
                 delete defaultOptions.nxFloatLabel;
                 createTestComponent(BasicFormfield);
                 expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-                expect(formfieldElement.classList).not.toContain('is-floating');
+                expect(formfieldElement).not.toHaveClass('is-floating');
             },
         ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.appearance).toBe('outline');
-            expect(formfieldElement.classList).toContain('has-outline');
+            expect(formfieldElement).toHaveClass('has-outline');
         });
 
         it('should have a custom default floatingLabel if default options contain a custom floatLabel', () => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.floatLabel).toBe('always');
-            expect(formfieldElement.classList).toContain('is-floating');
+            expect(formfieldElement).toHaveClass('is-floating');
         });
 
         it('should override a custom default appearance', () => {
@@ -400,7 +400,7 @@ describe('NxFormfieldComponent', () => {
             fixture.componentInstance.appearance = 'auto';
             fixture.detectChanges();
             expect(testInstance.textfieldInstance.appearance).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('has-outline');
+            expect(formfieldElement).not.toHaveClass('has-outline');
         });
 
         it('should override a custom default floatLabel', () => {
@@ -410,29 +410,29 @@ describe('NxFormfieldComponent', () => {
             testInstance.floatLabel = 'auto';
             fixture.detectChanges();
             expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('is-floating');
+            expect(formfieldElement).not.toHaveClass('is-floating');
         });
 
         it('changes the appearance on injection token change', inject([FORMFIELD_DEFAULT_OPTIONS], (defaultOptions: FormfieldDefaultOptions) => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.appearance).toBe('outline');
-            expect(formfieldElement.classList).toContain('has-outline');
+            expect(formfieldElement).toHaveClass('has-outline');
 
             defaultOptions.appearance = 'auto';
             fixture.detectChanges();
             expect(testInstance.textfieldInstance.appearance).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('has-outline');
+            expect(formfieldElement).not.toHaveClass('has-outline');
         }));
 
         it('changes floatLabel on injection token change', inject([FORMFIELD_DEFAULT_OPTIONS], (defaultOptions: FormfieldDefaultOptions) => {
             createTestComponent(BasicFormfield);
             expect(testInstance.textfieldInstance.floatLabel).toBe('always');
-            expect(formfieldElement.classList).toContain('is-floating');
+            expect(formfieldElement).toHaveClass('is-floating');
 
             defaultOptions.nxFloatLabel = 'auto';
             fixture.detectChanges();
             expect(testInstance.textfieldInstance.floatLabel).toBe('auto');
-            expect(formfieldElement.classList).not.toContain('is-floating');
+            expect(formfieldElement).not.toHaveClass('is-floating');
         }));
     });
 });

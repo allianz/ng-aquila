@@ -61,8 +61,8 @@ describe('NxLabelComponent', () => {
         it('creates a label with the correct size', () => {
             createTestComponent(BasicLabel);
             expect(labelInstance.size).toBe('small');
-            expect(labelElement.classList).toContain('nx-label--small');
-            expect(labelElement.classList).not.toContain('nx-label--large');
+            expect(labelElement).toHaveClass('nx-label--small');
+            expect(labelElement).not.toHaveClass('nx-label--large');
         });
 
         it('changes the appearance on changes', inject([LABEL_DEFAULT_OPTIONS], (defaultOptions: LabelDefaultOptions) => {
@@ -70,8 +70,8 @@ describe('NxLabelComponent', () => {
             defaultOptions.size = 'large';
             fixture.detectChanges();
             expect(labelInstance.size).toBe('large');
-            expect(labelElement.classList).not.toContain('nx-label--small');
-            expect(labelElement.classList).toContain('nx-label--large');
+            expect(labelElement).not.toHaveClass('nx-label--small');
+            expect(labelElement).toHaveClass('nx-label--large');
         }));
 
         it('creates a label with the correct size if the size is explicilty set', () => {
@@ -79,8 +79,8 @@ describe('NxLabelComponent', () => {
             testInstance.size = 'large';
             fixture.detectChanges();
             expect(labelInstance.size).toBe('large');
-            expect(labelElement.classList).not.toContain('nx-label--small');
-            expect(labelElement.classList).toContain('nx-label--large');
+            expect(labelElement).not.toHaveClass('nx-label--small');
+            expect(labelElement).toHaveClass('nx-label--large');
         });
     });
 });

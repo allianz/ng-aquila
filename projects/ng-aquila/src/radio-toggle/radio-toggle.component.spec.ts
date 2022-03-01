@@ -66,7 +66,7 @@ describe('NxRadioToggleComponent', () => {
     describe('basic', () => {
         it('should allow creating empty radio toggles', fakeAsync(() => {
             expect(() => createTestComponent(EmptyRadioToggle)).not.toThrow(new Error());
-            expect(radioElements.length).toBe(0);
+            expect(radioElements).toHaveSize(0);
         }));
 
         it('should project the radio buttons correctly into the view', () => {
@@ -131,8 +131,8 @@ describe('NxRadioToggleComponent', () => {
             createTestComponent(ModifiedRadioToggle);
 
             const containerElement: HTMLDivElement = fixture.nativeElement.querySelector('div');
-            expect(containerElement.classList).toContain('nx-radio-toggle--negative');
-            expect(containerElement.classList).toContain('nx-radio-toggle--small');
+            expect(containerElement).toHaveClass('nx-radio-toggle--negative');
+            expect(containerElement).toHaveClass('nx-radio-toggle--small');
         });
 
         it('should support boolean values', fakeAsync(() => {
@@ -144,13 +144,13 @@ describe('NxRadioToggleComponent', () => {
             fixture.detectChanges();
             tick();
             const toggleButtons = fixture.debugElement.queryAll(By.directive(NxRadioToggleButtonComponent));
-            expect(toggleButtons[0].componentInstance.selected).toBe(false);
-            expect(toggleButtons[1].componentInstance.selected).toBe(true);
+            expect(toggleButtons[0].componentInstance.selected).toBeFalse();
+            expect(toggleButtons[1].componentInstance.selected).toBeTrue();
             testInstance.value = true;
             fixture.detectChanges();
             tick();
-            expect(toggleButtons[0].componentInstance.selected).toBe(true);
-            expect(toggleButtons[1].componentInstance.selected).toBe(false);
+            expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+            expect(toggleButtons[1].componentInstance.selected).toBeFalse();
         }));
     });
 
@@ -163,15 +163,15 @@ describe('NxRadioToggleComponent', () => {
                 fixture.detectChanges();
                 tick();
                 const toggleButtons = fixture.debugElement.queryAll(By.directive(NxRadioToggleButtonComponent));
-                expect(toggleButtons[0].componentInstance.selected).toBe(true);
-                expect(toggleButtons[1].componentInstance.selected).toBe(false);
-                expect(toggleButtons[2].componentInstance.selected).toBe(false);
+                expect(toggleButtons[0].componentInstance.selected).toBeTrue();
+                expect(toggleButtons[1].componentInstance.selected).toBeFalse();
+                expect(toggleButtons[2].componentInstance.selected).toBeFalse();
                 testInstance.value = resetValue;
                 fixture.detectChanges();
                 tick();
-                expect(toggleButtons[0].componentInstance.selected).toBe(false);
-                expect(toggleButtons[1].componentInstance.selected).toBe(false);
-                expect(toggleButtons[2].componentInstance.selected).toBe(false);
+                expect(toggleButtons[0].componentInstance.selected).toBeFalse();
+                expect(toggleButtons[1].componentInstance.selected).toBeFalse();
+                expect(toggleButtons[2].componentInstance.selected).toBeFalse();
             }));
 
             it(`should select respective button for value "${resetValue}" if present`, fakeAsync(() => {
@@ -207,20 +207,20 @@ describe('NxRadioToggleComponent', () => {
     describe('dynamic', () => {
         it('should allow creating radio toggles with ngFor', fakeAsync(() => {
             expect(() => createTestComponent(LoopedRadioToggle)).not.toThrow(new Error());
-            expect(radioElements.length).toBe(3);
+            expect(radioElements).toHaveSize(3);
         }));
 
         it('should allow adding button toggles at runtime', fakeAsync(() => {
             createTestComponent(LoopedRadioToggle);
 
             const loopedToggle: LoopedRadioToggle = fixture.componentInstance as LoopedRadioToggle;
-            expect(radioElements.length).toBe(loopedToggle.data.length);
+            expect(radioElements).toHaveSize(loopedToggle.data.length);
 
             loopedToggle.data.push('D');
             fixture.detectChanges();
 
             const toggleButtons = fixture.nativeElement.querySelectorAll('nx-radio-toggle-button');
-            expect(toggleButtons.length).toBe(loopedToggle.data.length);
+            expect(toggleButtons).toHaveSize(loopedToggle.data.length);
         }));
 
         it('should set the correct classes when toggle buttons are added/removed', fakeAsync(() => {
@@ -229,21 +229,21 @@ describe('NxRadioToggleComponent', () => {
             const loopedToggle: LoopedRadioToggle = fixture.componentInstance as LoopedRadioToggle;
             const toggleLabels = fixture.nativeElement.querySelectorAll('.nx-radio-toggle__label-container');
 
-            expect(toggleLabels.item(0).classList).toContain('nx-radio-toggle__label-container--first');
-            expect(toggleLabels.item(toggleLabels.length - 1).classList).toContain('nx-radio-toggle__label-container--last');
+            expect(toggleLabels.item(0)).toHaveClass('nx-radio-toggle__label-container--first');
+            expect(toggleLabels.item(toggleLabels.length - 1)).toHaveClass('nx-radio-toggle__label-container--last');
 
             loopedToggle.data.push('D');
             fixture.detectChanges();
 
             const toggleLabelsAfterAdd = fixture.nativeElement.querySelectorAll('.nx-radio-toggle__label-container');
-            expect(toggleLabelsAfterAdd.item(toggleLabelsAfterAdd.length - 2).classList).not.toContain('nx-radio-toggle__label-container--last');
-            expect(toggleLabelsAfterAdd.item(toggleLabelsAfterAdd.length - 1).classList).toContain('nx-radio-toggle__label-container--last');
+            expect(toggleLabelsAfterAdd.item(toggleLabelsAfterAdd.length - 2)).not.toHaveClass('nx-radio-toggle__label-container--last');
+            expect(toggleLabelsAfterAdd.item(toggleLabelsAfterAdd.length - 1)).toHaveClass('nx-radio-toggle__label-container--last');
 
             loopedToggle.data.shift();
             fixture.detectChanges();
 
             const toggleLabelsAfterDelete = fixture.nativeElement.querySelectorAll('.nx-radio-toggle__label-container');
-            expect(toggleLabelsAfterDelete.item(0).classList).toContain('nx-radio-toggle__label-container--first');
+            expect(toggleLabelsAfterDelete.item(0)).toHaveClass('nx-radio-toggle__label-container--first');
         }));
     });
 
@@ -408,27 +408,27 @@ describe('NxRadioToggleComponent', () => {
         it('should be invalid and untouched', () => {
             createTestComponent(ValidationToggle);
             const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
-            expect(reactComp.testForm.touched).toBe(false);
+            expect(reactComp.testForm.touched).toBeFalse();
             expect(reactComp.testForm.status).toBe('INVALID');
             const radioBtnElm: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle-button');
-            expect(radioBtnElm.classList.contains('has-error')).toBeFalsy();
+            expect(radioBtnElm).not.toHaveClass('has-error');
         });
 
         it('should be invalid and touched', () => {
             createTestComponent(ValidationToggle);
             const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
             click(0);
-            expect(reactComp.testForm.touched).toBe(true);
+            expect(reactComp.testForm.touched).toBeTrue();
             expect(reactComp.testForm.status).toBe('INVALID');
             const radioBtnElm: HTMLElement = fixture.nativeElement.querySelector('nx-radio-toggle-button');
-            expect(radioBtnElm.classList.contains('has-error')).toBeTruthy();
+            expect(radioBtnElm).toHaveClass('has-error');
         });
 
         it('should be valid and touched', () => {
             createTestComponent(ValidationToggle);
             const reactComp: ValidationToggle = fixture.componentInstance as ValidationToggle;
             click(1);
-            expect(reactComp.testForm.touched).toBe(true);
+            expect(reactComp.testForm.touched).toBeTrue();
             expect(reactComp.testForm.status).toBe('VALID');
         });
     });

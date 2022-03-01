@@ -46,23 +46,23 @@ describe('NxIndicatorComponent', () => {
         });
 
         it('has no positioning classes by default', () => {
-            expect(indicatorNativeElement.classList.contains('nx-indicator')).toBe(true);
-            expect(indicatorNativeElement.classList.length).toBe(1);
+            expect(indicatorNativeElement).toHaveClass('nx-indicator');
+            expect(indicatorNativeElement.classList).toHaveSize(1);
         });
 
         it('sets positioning class when passed through input', () => {
             indicatorInstance.position = 'over-icon';
             fixture.detectChanges();
 
-            expect(indicatorNativeElement.classList.contains('nx-indicator--over-icon')).toBe(true);
+            expect(indicatorNativeElement).toHaveClass('nx-indicator--over-icon');
         });
 
         it('sets multiple positioning classes when passed through input', () => {
             indicatorInstance.position = 'over-text with-overlap';
             fixture.detectChanges();
 
-            expect(indicatorNativeElement.classList.contains('nx-indicator--over-text')).toBe(true);
-            expect(indicatorNativeElement.classList.contains('nx-indicator--with-overlap')).toBe(true);
+            expect(indicatorNativeElement).toHaveClass('nx-indicator--over-text');
+            expect(indicatorNativeElement).toHaveClass('nx-indicator--with-overlap');
         });
     });
 });

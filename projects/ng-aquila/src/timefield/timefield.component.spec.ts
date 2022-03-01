@@ -214,7 +214,7 @@ describe('NxTimefieldComponent', () => {
             expect(timefieldInstance._toggleAMPM).toBe('AM');
             timefieldInstance.twelveHourFormat = false;
             fixture.detectChanges();
-            expect(timefieldInstance._toggleAMPM).toBe(null);
+            expect(timefieldInstance._toggleAMPM).toBeNull();
         });
 
         it('should set minumum minutes to 0 by default', () => {
@@ -272,7 +272,7 @@ describe('NxTimefieldComponent', () => {
             expect(timefieldInstance.maxHours).toBe(12);
             timefieldInstance.twelveHourFormat = false;
             fixture.detectChanges();
-            expect(timefieldInstance._toggleAMPM).toBe(null);
+            expect(timefieldInstance._toggleAMPM).toBeNull();
             expect(timefieldInstance.minHours).toBe(0);
             expect(timefieldInstance.maxHours).toBe(23);
         });
@@ -283,7 +283,7 @@ describe('NxTimefieldComponent', () => {
             createTestComponent(ConfigurableTimefield);
             timefieldInstance.disabled = true;
             fixture.detectChanges();
-            expect(timefieldElement.classList.contains('is-disabled')).toBe(true);
+            expect(timefieldElement).toHaveClass('is-disabled');
         });
     });
 
@@ -292,7 +292,7 @@ describe('NxTimefieldComponent', () => {
             createTestComponent(ConfigurableTimefield);
             timefieldInstance.negative = true;
             fixture.detectChanges();
-            expect(timefieldElement.classList.contains('is-negative')).toBe(true);
+            expect(timefieldElement).toHaveClass('is-negative');
         });
     });
 
@@ -302,16 +302,16 @@ describe('NxTimefieldComponent', () => {
             inputElementHours.focus();
             fixture.detectChanges();
             tick();
-            expect(spanElementSeperator.classList.contains('has-focus')).toBe(true);
-            expect(divElementInputFields.classList.contains('has-focus')).toBe(true);
-            expect(inputElementMinutes.classList.contains('has-focus')).toBe(true);
+            expect(spanElementSeperator).toHaveClass('has-focus');
+            expect(divElementInputFields).toHaveClass('has-focus');
+            expect(inputElementMinutes).toHaveClass('has-focus');
             inputElementHours.blur();
             inputElementMinutes.focus();
             fixture.detectChanges();
             tick();
-            expect(spanElementSeperator.classList.contains('has-focus')).toBe(true);
-            expect(divElementInputFields.classList.contains('has-focus')).toBe(true);
-            expect(inputElementHours.classList.contains('has-focus')).toBe(true);
+            expect(spanElementSeperator).toHaveClass('has-focus');
+            expect(divElementInputFields).toHaveClass('has-focus');
+            expect(inputElementHours).toHaveClass('has-focus');
         }));
     });
 
@@ -357,10 +357,10 @@ describe('NxTimefieldComponent', () => {
         it('should not show the error initially', () => {
             createTestComponent(ReactiveTimefield);
             const reactInstance = testInstance as ReactiveTimefield;
-            expect(reactInstance.testForm.touched).toBe(false);
+            expect(reactInstance.testForm.touched).toBeFalse();
             expect(reactInstance.testForm.status).toBe('INVALID');
-            expect(timefieldElement.classList).not.toContain('has-error');
-            expect(timefieldElement.classList).toContain('ng-untouched');
+            expect(timefieldElement).not.toHaveClass('has-error');
+            expect(timefieldElement).toHaveClass('ng-untouched');
         });
 
         it('should reflect the error state', fakeAsync(() => {

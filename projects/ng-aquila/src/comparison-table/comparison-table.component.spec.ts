@@ -137,20 +137,20 @@ describe('NxComparisonTableComponent', () => {
         it('should return correct number of header cells in _getHeaderCells', () => {
             createTestComponent(BasicComponent);
             const headerCells = tableInstance._getHeaderCells();
-            expect(headerCells.length).toBe(2);
+            expect(headerCells).toHaveSize(2);
         });
 
         it('should display the correct number of rows and toggle sections', fakeAsync(() => {
             createTestComponent(BasicComponent);
             tick(THROTTLE_TIME);
 
-            expect(rowElements.length).toBe(5);
+            expect(rowElements).toHaveSize(5);
 
             const toggleSectionElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__toggle-section'));
-            expect(toggleSectionElements.length).toBe(1);
+            expect(toggleSectionElements).toHaveSize(1);
 
             const rowsInToggleSections = toggleSectionElements[0].queryAll(By.css('.nx-comparison-table__row'));
-            expect(rowsInToggleSections.length).toBe(2);
+            expect(rowsInToggleSections).toHaveSize(2);
         }));
     });
 
@@ -165,13 +165,13 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             rowElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__row'));
-            expect(rowElements.length).toBe(8);
+            expect(rowElements).toHaveSize(8);
 
             const toggleSectionElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__toggle-section'));
-            expect(toggleSectionElements.length).toBe(1);
+            expect(toggleSectionElements).toHaveSize(1);
 
             const rowsInToggleSections = toggleSectionElements[0].queryAll(By.css('.nx-comparison-table__row'));
-            expect(rowsInToggleSections.length).toBe(4);
+            expect(rowsInToggleSections).toHaveSize(4);
         }));
 
         it('should display the correct number of rows and toggle sections (mobile)', fakeAsync(() => {
@@ -182,10 +182,10 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             const rows = fixture.debugElement.queryAll(By.css('tr'));
-            expect(rows.length).toBe(4);
+            expect(rows).toHaveSize(4);
 
-            expect(rows[0].queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header')).length).toBe(1);
-            expect(rows[1].queryAll(By.css('.nx-comparison-table__description-cell')).length).toBe(3);
+            expect(rows[0].queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'))).toHaveSize(1);
+            expect(rows[1].queryAll(By.css('.nx-comparison-table__description-cell'))).toHaveSize(3);
         }));
 
         it('should display the placeholders correctly', fakeAsync(() => {
@@ -198,19 +198,19 @@ describe('NxComparisonTableComponent', () => {
             const rows = fixture.debugElement.queryAll(By.css('tr'));
 
             // toggle-section-header row: 5 placeholders + 1 content column
-            expect(rows[0].queryAll(By.css('th')).length).toBe(5);
-            expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell')).length).toBe(4);
+            expect(rows[0].queryAll(By.css('th'))).toHaveSize(5);
+            expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(4);
 
             // description-header row: 3 placeholders + 3 content columns
-            expect(rows[1].queryAll(By.css('th')).length).toBe(6);
-            expect(rows[1].queryAll(By.css('th.nx-comparison-table__placeholder-cell')).length).toBe(3);
+            expect(rows[1].queryAll(By.css('th'))).toHaveSize(6);
+            expect(rows[1].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(3);
 
             // content rows: 2 placeholders + 1 mobile-header-column + 3 content cells
-            expect(rows[2].queryAll(By.css('td')).length).toBe(6);
-            expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell')).length).toBe(2);
+            expect(rows[2].queryAll(By.css('td'))).toHaveSize(6);
+            expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
 
-            expect(rows[3].queryAll(By.css('td')).length).toBe(6);
-            expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell')).length).toBe(2);
+            expect(rows[3].queryAll(By.css('td'))).toHaveSize(6);
+            expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
         }));
 
         it('should display all the rows when no footer (mobile)', fakeAsync(() => {
@@ -228,15 +228,15 @@ describe('NxComparisonTableComponent', () => {
             const rows = fixture.debugElement.queryAll(By.css('tr'));
 
             // toggle-section-header row: 2 placeholders + 1 content column
-            expect(rows[0].queryAll(By.css('th')).length).toBe(3);
-            expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell')).length).toBe(2);
+            expect(rows[0].queryAll(By.css('th'))).toHaveSize(3);
+            expect(rows[0].queryAll(By.css('th.nx-comparison-table__placeholder-cell'))).toHaveSize(2);
 
             // content rows: 1 placeholder + 1 mobile-header-column + 1 content cell
-            expect(rows[2].queryAll(By.css('td')).length).toBe(3);
-            expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell')).length).toBe(1);
+            expect(rows[2].queryAll(By.css('td'))).toHaveSize(3);
+            expect(rows[2].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(1);
 
-            expect(rows[3].queryAll(By.css('td')).length).toBe(3);
-            expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell')).length).toBe(1);
+            expect(rows[3].queryAll(By.css('td'))).toHaveSize(3);
+            expect(rows[3].queryAll(By.css('td.nx-comparison-table__placeholder-cell'))).toHaveSize(1);
         }));
 
         it('should update when parent is onPush', fakeAsync(() => {
@@ -259,10 +259,10 @@ describe('NxComparisonTableComponent', () => {
         it('should not be selected by default', () => {
             createTestComponent(BasicComponent);
             cellInstances.forEach(cell => {
-                expect(cell._isSelected()).toBe(false);
+                expect(cell._isSelected()).toBeFalse();
             });
             cellElements.forEach(cell => {
-                expect(cell.nativeElement.classList).not.toContain('is-selected');
+                expect(cell.nativeElement).not.toHaveClass('is-selected');
             });
         });
 
@@ -271,15 +271,15 @@ describe('NxComparisonTableComponent', () => {
 
             expect(tableInstance.selectedIndex).toBe(0);
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isSelected()).toBe(true);
-                expect(row.cells.toArray()[1]._isSelected()).toBe(false);
-                expect(row.cells.toArray()[2]._isSelected()).toBe(false);
+                expect(row.cells.toArray()[0]._isSelected()).toBeTrue();
+                expect(row.cells.toArray()[1]._isSelected()).toBeFalse();
+                expect(row.cells.toArray()[2]._isSelected()).toBeFalse();
             });
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).toContain('is-selected');
-                expect(cells[1].nativeElement.classList).not.toContain('is-selected');
-                expect(cells[2].nativeElement.classList).not.toContain('is-selected');
+                expect(cells[0].nativeElement).toHaveClass('is-selected');
+                expect(cells[1].nativeElement).not.toHaveClass('is-selected');
+                expect(cells[2].nativeElement).not.toHaveClass('is-selected');
             });
 
             testInstance.selected = 2;
@@ -287,15 +287,15 @@ describe('NxComparisonTableComponent', () => {
 
             expect(tableInstance.selectedIndex).toBe(2);
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isSelected()).toBe(false);
-                expect(row.cells.toArray()[1]._isSelected()).toBe(false);
-                expect(row.cells.toArray()[2]._isSelected()).toBe(true);
+                expect(row.cells.toArray()[0]._isSelected()).toBeFalse();
+                expect(row.cells.toArray()[1]._isSelected()).toBeFalse();
+                expect(row.cells.toArray()[2]._isSelected()).toBeTrue();
             });
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-selected');
-                expect(cells[1].nativeElement.classList).not.toContain('is-selected');
-                expect(cells[2].nativeElement.classList).toContain('is-selected');
+                expect(cells[0].nativeElement).not.toHaveClass('is-selected');
+                expect(cells[1].nativeElement).not.toHaveClass('is-selected');
+                expect(cells[2].nativeElement).toHaveClass('is-selected');
             });
         });
 
@@ -318,10 +318,10 @@ describe('NxComparisonTableComponent', () => {
         it('should not be disabled by default', () => {
             createTestComponent(DisabledColumnsComponent);
             cellInstances.forEach(cell => {
-                expect(cell._isCellDisabled).toBe(false);
+                expect(cell._isCellDisabled).toBeFalse();
             });
             cellElements.forEach(cell => {
-                expect(cell.nativeElement.classList).not.toContain('is-disabled');
+                expect(cell.nativeElement).not.toHaveClass('is-disabled');
             });
         });
 
@@ -343,16 +343,16 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isCellDisabled).toBe(false);
-                expect(row.cells.toArray()[1]._isCellDisabled).toBe(true);
-                expect(row.cells.toArray()[2]._isCellDisabled).toBe(false);
+                expect(row.cells.toArray()[0]._isCellDisabled).toBeFalse();
+                expect(row.cells.toArray()[1]._isCellDisabled).toBeTrue();
+                expect(row.cells.toArray()[2]._isCellDisabled).toBeFalse();
             });
 
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-disabled');
-                expect(cells[1].nativeElement.classList).toContain('is-disabled');
-                expect(cells[2].nativeElement.classList).not.toContain('is-disabled');
+                expect(cells[0].nativeElement).not.toHaveClass('is-disabled');
+                expect(cells[1].nativeElement).toHaveClass('is-disabled');
+                expect(cells[2].nativeElement).not.toHaveClass('is-disabled');
             });
 
             (testInstance as DisabledColumnsComponent).disabledColumn1 = false;
@@ -360,16 +360,16 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isCellDisabled).toBe(false);
-                expect(row.cells.toArray()[1]._isCellDisabled).toBe(false);
-                expect(row.cells.toArray()[2]._isCellDisabled).toBe(true);
+                expect(row.cells.toArray()[0]._isCellDisabled).toBeFalse();
+                expect(row.cells.toArray()[1]._isCellDisabled).toBeFalse();
+                expect(row.cells.toArray()[2]._isCellDisabled).toBeTrue();
             });
 
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-disabled');
-                expect(cells[1].nativeElement.classList).not.toContain('is-disabled');
-                expect(cells[2].nativeElement.classList).toContain('is-disabled');
+                expect(cells[0].nativeElement).not.toHaveClass('is-disabled');
+                expect(cells[1].nativeElement).not.toHaveClass('is-disabled');
+                expect(cells[2].nativeElement).toHaveClass('is-disabled');
             });
         });
 
@@ -380,16 +380,16 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isCellDisabled).toBe(false);
-                expect(row.cells.toArray()[1]._isCellDisabled).toBe(false);
-                expect(row.cells.toArray()[2]._isCellDisabled).toBe(false);
+                expect(row.cells.toArray()[0]._isCellDisabled).toBeFalse();
+                expect(row.cells.toArray()[1]._isCellDisabled).toBeFalse();
+                expect(row.cells.toArray()[2]._isCellDisabled).toBeFalse();
             });
 
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-disabled');
-                expect(cells[1].nativeElement.classList).not.toContain('is-disabled');
-                expect(cells[2].nativeElement.classList).not.toContain('is-disabled');
+                expect(cells[0].nativeElement).not.toHaveClass('is-disabled');
+                expect(cells[1].nativeElement).not.toHaveClass('is-disabled');
+                expect(cells[2].nativeElement).not.toHaveClass('is-disabled');
             });
         });
 
@@ -404,9 +404,9 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             const mobileContentRows = fixture.debugElement.queryAll(By.css('tr:not(.nx-comparison-table__description-row)'));
-            expect(mobileContentRows[0].nativeElement.classList).not.toContain('is-disabled');
-            expect(mobileContentRows[1].nativeElement.classList).toContain('is-disabled');
-            expect(mobileContentRows[2].nativeElement.classList).toContain('is-disabled');
+            expect(mobileContentRows[0].nativeElement).not.toHaveClass('is-disabled');
+            expect(mobileContentRows[1].nativeElement).toHaveClass('is-disabled');
+            expect(mobileContentRows[2].nativeElement).toHaveClass('is-disabled');
             viewport.reset();
         }));
     });
@@ -620,10 +620,10 @@ describe('NxComparisonTableComponent', () => {
         it('should not be hidden by default', () => {
             createTestComponent(HiddenColumnsComponent);
             cellInstances.forEach(cell => {
-                expect(cell._isCellHidden()).toBe(false);
+                expect(cell._isCellHidden()).toBeFalse();
             });
             cellElements.forEach(cell => {
-                expect(cell.nativeElement.classList).not.toContain('is-hidden');
+                expect(cell.nativeElement).not.toHaveClass('is-hidden');
             });
         });
 
@@ -634,32 +634,32 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isCellHidden()).toBe(false);
-                expect(row.cells.toArray()[1]._isCellHidden()).toBe(false);
-                expect(row.cells.toArray()[2]._isCellHidden()).toBe(true);
+                expect(row.cells.toArray()[0]._isCellHidden()).toBeFalse();
+                expect(row.cells.toArray()[1]._isCellHidden()).toBeFalse();
+                expect(row.cells.toArray()[2]._isCellHidden()).toBeTrue();
             });
 
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-hidden');
-                expect(cells[1].nativeElement.classList).not.toContain('is-hidden');
-                expect(cells[2].nativeElement.classList).toContain('is-hidden');
+                expect(cells[0].nativeElement).not.toHaveClass('is-hidden');
+                expect(cells[1].nativeElement).not.toHaveClass('is-hidden');
+                expect(cells[2].nativeElement).toHaveClass('is-hidden');
             });
 
             (testInstance as HiddenColumnsComponent).hiddenIndexes = [1];
             fixture.detectChanges();
 
             rowInstances.forEach(row => {
-                expect(row.cells.toArray()[0]._isCellHidden()).toBe(false);
-                expect(row.cells.toArray()[1]._isCellHidden()).toBe(true);
-                expect(row.cells.toArray()[2]._isCellHidden()).toBe(false);
+                expect(row.cells.toArray()[0]._isCellHidden()).toBeFalse();
+                expect(row.cells.toArray()[1]._isCellHidden()).toBeTrue();
+                expect(row.cells.toArray()[2]._isCellHidden()).toBeFalse();
             });
 
             rowElements.forEach(row => {
                 const cells = row.queryAll(By.css('.nx-comparison-table__cell'));
-                expect(cells[0].nativeElement.classList).not.toContain('is-hidden');
-                expect(cells[1].nativeElement.classList).toContain('is-hidden');
-                expect(cells[2].nativeElement.classList).not.toContain('is-hidden');
+                expect(cells[0].nativeElement).not.toHaveClass('is-hidden');
+                expect(cells[1].nativeElement).toHaveClass('is-hidden');
+                expect(cells[2].nativeElement).not.toHaveClass('is-hidden');
             });
         });
 
@@ -670,24 +670,32 @@ describe('NxComparisonTableComponent', () => {
 
             // By default no popular columns
             const first = fixture.debugElement.queryAll(querySelector);
-            expect(first.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(-1);
-            expect(first.length).toBe(1);
+            first.forEach(val => expect(val.nativeNode).not.toHaveClass('is-hidden'));
+            expect(first).toHaveSize(1);
 
             (testInstance as HiddenColumnsComponent).popular = 1;
             fixture.detectChanges();
 
             // After usage of popular attribute, the columns are visible but by default no hidden column
             const second = fixture.debugElement.queryAll(querySelector);
-            expect(second.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(-1);
-            expect(second.length).toBe(4);
+            second.forEach(val => expect(val.nativeNode).not.toHaveClass('is-hidden'));
+            expect(second).toHaveSize(4);
 
             (testInstance as HiddenColumnsComponent).hiddenIndexes = [2];
             fixture.detectChanges();
 
             // After usage of popular attribute, the columns are visible and the column before the popular one is hidden
             const third = fixture.debugElement.queryAll(querySelector);
-            expect(third.map(val => val.nativeNode.classList.contains('is-hidden')).indexOf(true)).toBe(2);
-            expect(third.length).toBe(4);
+            third.forEach((val, i) => {
+                switch (i) {
+                    case 2:
+                        expect(val.nativeNode).toHaveClass('is-hidden');
+                        break;
+                    default:
+                        expect(val.nativeNode).not.toHaveClass('is-hidden');
+                }
+            });
+            expect(third).toHaveSize(4);
         });
     });
 });

@@ -38,8 +38,8 @@ describe('NxTabComponent', () => {
         const contentRef = testInstance.tab.contentViewRef;
         testInstance.tab.ngOnDestroy();
         fixture.detectChanges();
-        expect(headerRef.destroyed).toBe(true);
-        expect(contentRef.destroyed).toBe(true);
+        expect(headerRef.destroyed).toBeTrue();
+        expect(contentRef.destroyed).toBeTrue();
     });
 });
 

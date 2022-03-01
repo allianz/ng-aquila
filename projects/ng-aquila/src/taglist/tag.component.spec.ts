@@ -48,7 +48,7 @@ describe('NxTagComponent', () => {
 
     it('should show close icon when removable is set to true', () => {
         createTestComponent(RemovableTag);
-        expect(tagInstance.removable).toBe(true);
+        expect(tagInstance.removable).toBeTrue();
 
         const closeIcon = fixture.debugElement.query(By.css('.nx-tag__close'));
         expect(closeIcon).toBeTruthy();

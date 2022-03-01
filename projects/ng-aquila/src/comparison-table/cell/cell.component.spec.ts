@@ -56,7 +56,7 @@ describe('NxComparisonTableCell', () => {
     describe('basic', () => {
         it('renders the content', () => {
             createTestComponent(BasicCellComponent);
-            expect(cellElements.length).toBe(3);
+            expect(cellElements).toHaveSize(3);
             expect(cellElements[0].nativeElement.textContent).toBe('This is a header cell');
             expect(cellElements[1].nativeElement.textContent).toBe('This is a cell');
             expect(cellElements[2].nativeElement.textContent).toBe('This is a footer cell');
@@ -108,7 +108,7 @@ describe('NxComparisonTableCell', () => {
             expect(cellElements[0].nativeElement.textContent).toBe('This is a cell');
 
             // there should not be a footer cell on mobile
-            expect(cellElements.length).toBe(1);
+            expect(cellElements).toHaveSize(1);
         }));
 
         it('should set id correctly (mobile)', fakeAsync(() => {
@@ -170,7 +170,7 @@ describe('NxComparisonTableCell', () => {
             tick(THROTTLE_TIME);
 
             let headers = cellInstances.toArray()[1]._getHeaderIds();
-            expect(headers.split(' ').length).toBe(2);
+            expect(headers.split(' ')).toHaveSize(2);
             expect(headers).toContain('header-cell-0');
             expect(headers).toContain(descriptionCellInstance.id);
 
@@ -185,7 +185,7 @@ describe('NxComparisonTableCell', () => {
             createTestComponent(ToggleSectionCellComponent);
 
             const headers = cellElements[1].attributes['headers'];
-            expect(headers?.split(' ').length).toBe(3);
+            expect(headers?.split(' ')).toHaveSize(3);
             expect(headers).toContain(cellInstances.toArray()[0].id);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
@@ -201,7 +201,7 @@ describe('NxComparisonTableCell', () => {
 
             cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
             const headers = cellElements[0].attributes['headers'];
-            expect(headers?.split(' ').length).toBe(3);
+            expect(headers?.split(' ')).toHaveSize(3);
             expect(headers).toContain(cellInstances.toArray()[0].id);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);

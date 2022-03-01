@@ -50,7 +50,7 @@ describe('NxCopytextDirective', () => {
         'should use size normal by default',
         waitForAsync(() => {
             createTestComponent(BasicCopytext);
-            expect(textNativeElement.classList.contains('nx-copy--normal')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--normal');
         }),
     );
 
@@ -59,18 +59,18 @@ describe('NxCopytextDirective', () => {
         waitForAsync(() => {
             createTestComponent(BasicCopytext);
             setSize('small');
-            expect(textNativeElement.classList.contains('nx-copy--small')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--small');
             setSize('normal');
-            expect(textNativeElement.classList.contains('nx-copy--normal')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--normal');
             setSize('medium');
-            expect(textNativeElement.classList.contains('nx-copy--medium')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--medium');
             setSize('large');
-            expect(textNativeElement.classList.contains('nx-copy--large')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--large');
             setSize('negative');
-            expect(textNativeElement.classList.contains('nx-copy--negative')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--negative');
             setSize('medium negative');
-            expect(textNativeElement.classList.contains('nx-copy--medium')).toBe(true);
-            expect(textNativeElement.classList.contains('nx-copy--negative')).toBe(true);
+            expect(textNativeElement).toHaveClass('nx-copy--medium');
+            expect(textNativeElement).toHaveClass('nx-copy--negative');
         }),
     );
 

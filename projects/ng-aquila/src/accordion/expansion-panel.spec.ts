@@ -48,15 +48,15 @@ describe('NxExpansionPanelComponent', () => {
         const headerEl = fixture.nativeElement.querySelector('nx-expansion-panel-header');
         fixture.detectChanges();
 
-        expect(headerEl.classList).not.toContain('nx-expanded');
-        expect(itemEl.classList).not.toContain('nx-expanded');
+        expect(headerEl).not.toHaveClass('nx-expanded');
+        expect(itemEl).not.toHaveClass('nx-expanded');
 
         fixture.componentInstance.expanded = true;
         fixture.detectChanges();
         flush();
 
-        expect(headerEl.classList).toContain('nx-expanded');
-        expect(itemEl.classList).toContain('nx-expanded');
+        expect(headerEl).toHaveClass('nx-expanded');
+        expect(itemEl).toHaveClass('nx-expanded');
     }));
 
     it('should be able to render panel content lazily', fakeAsync(() => {
@@ -64,12 +64,12 @@ describe('NxExpansionPanelComponent', () => {
         const content = fixture.debugElement.query(By.css('.nx-expansion-panel__content')).nativeElement;
         fixture.detectChanges();
 
-        expect(content.textContent.trim()).toBe('', 'Expected content element to be empty.');
+        expect(content.textContent.trim()).withContext('Expected content element to be empty.').toBe('');
 
         fixture.componentInstance.expanded = true;
         fixture.detectChanges();
 
-        expect(content.textContent.trim()).toContain('Some content', 'Expected content to be rendered.');
+        expect(content.textContent.trim()).withContext('Expected content to be rendered.').toContain('Some content');
     }));
 
     it('should render the content for a lazy-loaded panel that is opened on init', fakeAsync(() => {
@@ -77,7 +77,7 @@ describe('NxExpansionPanelComponent', () => {
         const content = fixture.debugElement.query(By.css('.nx-expansion-panel__content')).nativeElement;
         fixture.detectChanges();
 
-        expect(content.textContent.trim()).toContain('Some content', 'Expected content to be rendered.');
+        expect(content.textContent.trim()).withContext('Expected content to be rendered.').toContain('Some content');
     }));
 
     it('emit correct events for change in panel expanded state', () => {
@@ -138,7 +138,7 @@ describe('NxExpansionPanelComponent', () => {
         fixture.detectChanges();
 
         expect(fixture.componentInstance.panel.toggle).toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(true);
+        expect(event.defaultPrevented).toBeTrue();
     });
 
     it('should toggle the panel when pressing ENTER on the header', () => {
@@ -152,7 +152,7 @@ describe('NxExpansionPanelComponent', () => {
         fixture.detectChanges();
 
         expect((fixture.componentInstance as PanelWithContent).panel.toggle).toHaveBeenCalled();
-        expect(event.defaultPrevented).toBe(true);
+        expect(event.defaultPrevented).toBeTrue();
     });
 
     it('should not be able to focus content while closed', fakeAsync(() => {
@@ -164,7 +164,7 @@ describe('NxExpansionPanelComponent', () => {
         const button = fixture.debugElement.query(By.css('#test-button')).nativeElement;
 
         button.focus();
-        expect(document.activeElement).toBe(button, 'Expected button to start off focusable.');
+        expect(document.activeElement).withContext('Expected button to start off focusable.').toBe(button);
 
         button.blur();
         fixture.componentInstance.expanded = false;
@@ -172,7 +172,7 @@ describe('NxExpansionPanelComponent', () => {
         tick(250);
 
         button.focus();
-        expect(document.activeElement).not.toBe(button, 'Expected button to no longer be focusable.');
+        expect(document.activeElement).withContext('Expected button to no longer be focusable.').not.toBe(button);
     }));
 
     it('should update the indicator rotation when the expanded state is toggled programmatically', fakeAsync(() => {
@@ -182,13 +182,13 @@ describe('NxExpansionPanelComponent', () => {
 
         const arrow = fixture.debugElement.query(By.css('.nx-expansion-panel__chevron')).nativeElement;
 
-        expect(arrow.style.transform).toBe('rotate(0deg)', 'Expected no rotation.');
+        expect(arrow.style.transform).withContext('Expected no rotation.').toBe('rotate(0deg)');
 
         fixture.componentInstance.expanded = true;
         fixture.detectChanges();
         tick(250);
 
-        expect(arrow.style.transform).toBe('rotate(180deg)', 'Expected 180 degree rotation.');
+        expect(arrow.style.transform).withContext('Expected 180 degree rotation.').toBe('rotate(180deg)');
     }));
 
     it('should make sure accordion item runs ngOnDestroy when expansion panel is destroyed', () => {
@@ -197,64 +197,64 @@ describe('NxExpansionPanelComponent', () => {
         fixture.componentInstance.panel.destroyed.subscribe(() => (destroyedOk = true));
         (fixture.componentInstance as PanelWithContentInNgIf).expansionShown = false;
         fixture.detectChanges();
-        expect(destroyedOk).toBe(true);
+        expect(destroyedOk).toBeTrue();
     });
 
     it('should support two-way binding of the `expanded` property', () => {
         createTestComponent(PanelWithTwoWayBinding);
         const header = fixture.debugElement.query(By.css('.nx-expansion-panel__header-content')).nativeElement;
 
-        expect(fixture.componentInstance.expanded).toBe(false);
+        expect(fixture.componentInstance.expanded).toBeFalse();
 
         header.click();
         fixture.detectChanges();
-        expect(fixture.componentInstance.expanded).toBe(true);
+        expect(fixture.componentInstance.expanded).toBeTrue();
 
         header.click();
         fixture.detectChanges();
-        expect(fixture.componentInstance.expanded).toBe(false);
+        expect(fixture.componentInstance.expanded).toBeFalse();
     });
 
     describe('appearance', () => {
         it('should allow negative appearance', () => {
             createTestComponent(PanelWithDifferentAppearances);
-            expect(panelNativeElement.classList).not.toContain('nx-expansion-panel--negative');
+            expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--negative');
 
             const instance = testInstance as PanelWithDifferentAppearances;
             instance.negative = true;
 
             fixture.detectChanges();
 
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--negative');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
         });
 
         it('should have regular style by default', () => {
             createTestComponent(PanelWithDifferentAppearances);
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--regular');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--regular');
         });
 
         it('should set light style', () => {
             createTestComponent(PanelWithDifferentAppearances);
-            expect(panelNativeElement.classList).not.toContain('nx-expansion-panel--light');
+            expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--light');
 
             const instance = testInstance as PanelWithDifferentAppearances;
             instance.style = 'light';
 
             fixture.detectChanges();
 
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--light');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--light');
         });
 
         it('should set extra-light style', () => {
             createTestComponent(PanelWithDifferentAppearances);
-            expect(panelNativeElement.classList).not.toContain('nx-expansion-panel--extra-light');
+            expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--extra-light');
 
             const instance = testInstance as PanelWithDifferentAppearances;
             instance.style = 'extra-light';
 
             fixture.detectChanges();
 
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--extra-light');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--extra-light');
         });
 
         it('should set regular style', () => {
@@ -262,12 +262,12 @@ describe('NxExpansionPanelComponent', () => {
             const instance = testInstance as PanelWithDifferentAppearances;
             instance.style = 'light';
             fixture.detectChanges();
-            expect(panelNativeElement.classList).not.toContain('nx-expansion-panel--regular');
+            expect(panelNativeElement).not.toHaveClass('nx-expansion-panel--regular');
 
             instance.style = 'regular';
 
             fixture.detectChanges();
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--regular');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--regular');
         });
 
         it('should ignore unknown styles and fallback to regular', () => {
@@ -276,28 +276,28 @@ describe('NxExpansionPanelComponent', () => {
             instance.style = 'unknown';
             fixture.detectChanges();
 
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--regular');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--regular');
         });
 
         it('should inherit negative flag from parent accordion', () => {
             createTestComponent(PanelWithAccordion);
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--negative');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
         });
 
         it('should prefer own negative flag', () => {
             createTestComponent(PanelWithAccordion);
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--negative');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--negative');
 
             const secondPanel = fixture.debugElement.query(By.css('nx-expansion-panel:nth-child(2)')).nativeElement;
-            expect(secondPanel.classList).not.toContain('nx-expansion-panel--negative');
+            expect(secondPanel).not.toHaveClass('nx-expansion-panel--negative');
         });
 
         it('should inherit style from parent accordion', () => {
             createTestComponent(PanelWithAccordion);
-            expect(panelNativeElement.classList).toContain('nx-expansion-panel--light');
+            expect(panelNativeElement).toHaveClass('nx-expansion-panel--light');
 
             const secondPanel = fixture.debugElement.query(By.css('nx-expansion-panel:nth-child(2)')).nativeElement;
-            expect(secondPanel.classList).toContain('nx-expansion-panel--regular');
+            expect(secondPanel).toHaveClass('nx-expansion-panel--regular');
         });
     });
 
@@ -308,18 +308,18 @@ describe('NxExpansionPanelComponent', () => {
 
         it('should toggle the aria-disabled attribute and is-disabled class on the header', () => {
             expect(headerNativeElement.getAttribute('aria-disabled')).toBe('false');
-            expect(headerNativeElement.classList).not.toContain('is-disabled');
+            expect(headerNativeElement).not.toHaveClass('is-disabled');
 
             fixture.componentInstance.disabled = true;
             fixture.detectChanges();
 
             expect(headerNativeElement.getAttribute('aria-disabled')).toBe('true');
-            expect(headerNativeElement.classList).toContain('is-disabled');
+            expect(headerNativeElement).toHaveClass('is-disabled');
         });
 
         it('should not be able to toggle the panel via a user action if disabled', () => {
-            expect(fixture.componentInstance.panel.expanded).toBe(false);
-            expect(headerNativeElement.classList).not.toContain('nx-expanded');
+            expect(fixture.componentInstance.panel.expanded).toBeFalse();
+            expect(headerNativeElement).not.toHaveClass('nx-expanded');
 
             fixture.componentInstance.disabled = true;
             fixture.detectChanges();
@@ -327,13 +327,13 @@ describe('NxExpansionPanelComponent', () => {
             headerNativeElement.click();
             fixture.detectChanges();
 
-            expect(fixture.componentInstance.panel.expanded).toBe(false);
-            expect(headerNativeElement.classList).not.toContain('nx-expanded');
+            expect(fixture.componentInstance.panel.expanded).toBeFalse();
+            expect(headerNativeElement).not.toHaveClass('nx-expanded');
         });
 
         it('should be able to toggle a disabled expansion panel programmatically', () => {
-            expect(fixture.componentInstance.panel.expanded).toBe(false);
-            expect(headerNativeElement.classList).not.toContain('nx-expanded');
+            expect(fixture.componentInstance.panel.expanded).toBeFalse();
+            expect(headerNativeElement).not.toHaveClass('nx-expanded');
 
             fixture.componentInstance.disabled = true;
             fixture.detectChanges();
@@ -341,8 +341,8 @@ describe('NxExpansionPanelComponent', () => {
             fixture.componentInstance.expanded = true;
             fixture.detectChanges();
 
-            expect(fixture.componentInstance.panel.expanded).toBe(true);
-            expect(headerNativeElement.classList).toContain('nx-expanded');
+            expect(fixture.componentInstance.panel.expanded).toBeTrue();
+            expect(headerNativeElement).toHaveClass('nx-expanded');
         });
     });
 });

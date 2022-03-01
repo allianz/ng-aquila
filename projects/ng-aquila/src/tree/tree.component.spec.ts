@@ -40,8 +40,8 @@ describe(NxTreeComponent.name, () => {
             it('with rendered dataNodes', () => {
                 const nodes = getNodes(treeElement);
 
-                expect(nodes).toBeDefined('Expect nodes to be defined');
-                expect(nodes[0].classList).toContain('customNodeClass');
+                expect(nodes).withContext('Expect nodes to be defined').toBeDefined();
+                expect(nodes[0]).toHaveClass('customNodeClass');
             });
 
             it('with the right accessibility roles', () => {
@@ -52,16 +52,16 @@ describe(NxTreeComponent.name, () => {
             });
 
             it('with the right data', () => {
-                expect(underlyingDataSource.data.length).toBe(3);
+                expect(underlyingDataSource.data).toHaveSize(3);
 
                 const data = underlyingDataSource.data;
                 expectFlatTreeToNxch(
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
                 );
 
                 underlyingDataSource.addChild(data[2]);
@@ -71,10 +71,10 @@ describe(NxTreeComponent.name, () => {
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
-                    [`_, topping_4 - cheese_4 + base_4`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
+                    ['_, topping_4 - cheese_4 + base_4'],
                 );
             });
         });
@@ -94,9 +94,9 @@ describe(NxTreeComponent.name, () => {
             });
 
             it('should expand/collapse the node', () => {
-                expect(underlyingDataSource.data.length).toBe(3);
+                expect(underlyingDataSource.data).toHaveSize(3);
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(0, `Expect no expanded node`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect no expanded node').toHaveSize(0);
 
                 component.toggleRecursively = false;
                 const data = underlyingDataSource.data;
@@ -108,38 +108,38 @@ describe(NxTreeComponent.name, () => {
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
                 );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(1, `Expect node expanded one level`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect node expanded one level').toHaveSize(1);
                 expectFlatTreeToNxch(
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
-                    [_, `topping_4 - cheese_4 + base_4`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
+                    [_, 'topping_4 - cheese_4 + base_4'],
                 );
 
                 (getNodes(treeElement)[3] as HTMLElement).click();
                 fixture.detectChanges();
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(2, `Expect node expanded`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect node expanded').toHaveSize(2);
                 expectFlatTreeToNxch(
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
-                    [_, `topping_4 - cheese_4 + base_4`],
-                    [_, _, `topping_5 - cheese_5 + base_5`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
+                    [_, 'topping_4 - cheese_4 + base_4'],
+                    [_, _, 'topping_5 - cheese_5 + base_5'],
                 );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
@@ -149,16 +149,16 @@ describe(NxTreeComponent.name, () => {
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
                 );
             });
 
             it('should expand/collapse the node recursively', () => {
-                expect(underlyingDataSource.data.length).toBe(3);
+                expect(underlyingDataSource.data).toHaveSize(3);
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(0, `Expect no expanded node`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect no expanded node').toHaveSize(0);
 
                 const data = underlyingDataSource.data;
                 const child = underlyingDataSource.addChild(data[2]);
@@ -169,38 +169,38 @@ describe(NxTreeComponent.name, () => {
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
                 );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(3, `Expect nodes expanded`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect nodes expanded').toHaveSize(3);
                 expectFlatTreeToNxch(
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
-                    [_, `topping_4 - cheese_4 + base_4`],
-                    [_, _, `topping_5 - cheese_5 + base_5`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
+                    [_, 'topping_4 - cheese_4 + base_4'],
+                    [_, _, 'topping_5 - cheese_5 + base_5'],
                 );
 
                 (getNodes(treeElement)[2] as HTMLElement).click();
                 fixture.detectChanges();
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(0, `Expect node collapsed`);
+                expect(component.treeControl.expansionModel.selected).withContext('Expect node collapsed').toHaveSize(0);
 
                 expectFlatTreeToNxch(
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
                 );
             });
         });
@@ -224,10 +224,10 @@ describe(NxTreeComponent.name, () => {
                     treeElement,
                     24,
                     32,
-                    [`topping_1 - cheese_1 + base_1`],
-                    [`topping_2 - cheese_2 + base_2`],
-                    [`topping_3 - cheese_3 + base_3`],
-                    [`>>> topping_4 - cheese_4 + base_4`],
+                    ['topping_1 - cheese_1 + base_1'],
+                    ['topping_2 - cheese_2 + base_2'],
+                    ['topping_3 - cheese_3 + base_3'],
+                    ['>>> topping_4 - cheese_4 + base_4'],
                 );
             });
         });
@@ -250,7 +250,7 @@ describe(NxTreeComponent.name, () => {
                 expect(component.tree.focusedData).toBeFalsy();
 
                 dispatchKeyboardEvent(treeElement, 'keydown', HOME);
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
             });
 
             it('should focus on the last data on END', () => {
@@ -258,7 +258,7 @@ describe(NxTreeComponent.name, () => {
 
                 dispatchKeyboardEvent(treeElement, 'keydown', END);
                 // The collapsed last node is topping_3
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_3`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_3');
             });
 
             it('should focus on next data on DOWN_ARROW', () => {
@@ -289,7 +289,7 @@ describe(NxTreeComponent.name, () => {
 
                 // Focus first item
                 dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
                 fixture.detectChanges();
 
                 // Expand the node
@@ -298,23 +298,23 @@ describe(NxTreeComponent.name, () => {
 
                 // Focus first child
                 dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_4`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_4');
 
                 // Focus second child
                 dispatchKeyboardEvent(treeElement, 'keydown', DOWN_ARROW);
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_5`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_5');
 
                 // Focus parent
                 dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
-                expect(component.treeControl.expansionModel.selected.length).toBe(1, '1 node expanded');
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
+                expect(component.treeControl.expansionModel.selected).withContext('1 node expanded').toHaveSize(1);
 
                 // Collapse parent
                 dispatchKeyboardEvent(treeElement, 'keydown', LEFT_ARROW);
                 fixture.detectChanges();
-                expect(component.tree.focusedData.pizzaTopping).toBe(`topping_1`);
+                expect(component.tree.focusedData.pizzaTopping).toBe('topping_1');
 
-                expect(component.treeControl.expansionModel.selected.length).toBe(0, 'no node expanded');
+                expect(component.treeControl.expansionModel.selected).withContext('no node expanded').toHaveSize(0);
             });
         });
     });
@@ -407,7 +407,7 @@ function expectFlatTreeToNxch(treeElement: Element, expectedPaddingIndent = 24, 
     function checkLevel(node: Element, expectedNode: any[]) {
         const actualLevel = (node as HTMLElement).style.paddingLeft;
         if (expectedNode.length === 1) {
-            if (actualLevel !== ``) {
+            if (actualLevel !== '') {
                 missedExpectations.push(`Expected node level to be 0 but was ${actualLevel}`);
             }
         } else {

@@ -64,11 +64,11 @@ describe('NxOverlayService', () => {
         overlayService.open(PlainComponent, fixture.componentInstance.trigger);
         fixture.detectChanges();
         flush();
-        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(2);
+        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveSize(2);
         overlayService.ngOnDestroy();
         fixture.detectChanges();
         flush();
-        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container').length).toBe(0);
+        expect(overlayContainerElement.querySelectorAll('.nx-overlay-container')).toHaveSize(0);
     }));
 
     it('should show backdrop', fakeAsync(() => {
@@ -144,11 +144,11 @@ describe('NxOverlayService', () => {
         const overlayRef = overlayService.open(PlainComponent, fixture.componentInstance.trigger, { triggerButton: fixture.componentInstance.button });
         fixture.detectChanges();
         flush();
-        expect(fixture.componentInstance.button.active).toBe(true);
+        expect(fixture.componentInstance.button.active).toBeTrue();
         overlayRef.close();
         fixture.detectChanges();
         flush();
-        expect(fixture.componentInstance.button.active).toBe(false);
+        expect(fixture.componentInstance.button.active).toBeFalse();
     }));
 });
 

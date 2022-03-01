@@ -41,8 +41,8 @@ describe('NxBreadcrumbComponent', () => {
 
     it('creates a non-danger button', () => {
         createTestComponent(BasicButton);
-        expect(testInstance.buttonInstance.danger).toBe(false);
-        expect(buttonElement.classList).not.toContain('nx-plain-button--danger');
+        expect(testInstance.buttonInstance.danger).toBeFalse();
+        expect(buttonElement).not.toHaveClass('nx-plain-button--danger');
     });
 
     describe('danger', () => {
@@ -50,13 +50,13 @@ describe('NxBreadcrumbComponent', () => {
             createTestComponent(BasicButton);
             fixture.componentInstance.classNames = 'danger';
             fixture.detectChanges();
-            expect(testInstance.buttonInstance.danger).toBe(true);
-            expect(buttonElement.classList).toContain('nx-plain-button--danger');
+            expect(testInstance.buttonInstance.danger).toBeTrue();
+            expect(buttonElement).toHaveClass('nx-plain-button--danger');
 
             fixture.componentInstance.classNames = '';
             fixture.detectChanges();
-            expect(testInstance.buttonInstance.danger).toBe(false);
-            expect(buttonElement.classList).not.toContain('nx-plain-button--danger');
+            expect(testInstance.buttonInstance.danger).toBeFalse();
+            expect(buttonElement).not.toHaveClass('nx-plain-button--danger');
         });
     });
 });

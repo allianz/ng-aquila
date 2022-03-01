@@ -50,16 +50,16 @@ describe(NxMenuButtonComponent.name, () => {
         it(
             'default menu button includes the bem block element',
             waitForAsync(() => {
-                expect(menuButtonElement.classList.contains('nx-menu-button')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('nx-menu-button');
             }),
         );
 
         it('is not expandable', () => {
-            expect(menuButtonElement.classList.contains('is-expandable')).toBeFalsy();
+            expect(menuButtonElement).not.toHaveClass('is-expandable');
         });
 
         it('is not expanded', () => {
-            expect(menuButtonElement.classList.contains('is-expanded')).toBeFalsy();
+            expect(menuButtonElement).not.toHaveClass('is-expanded');
         });
 
         describe('expandable menu button', () => {
@@ -69,7 +69,7 @@ describe(NxMenuButtonComponent.name, () => {
             });
 
             it('is expandable', () => {
-                expect(menuButtonElement.classList.contains('is-expandable')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('is-expandable');
             });
         });
 
@@ -81,7 +81,7 @@ describe(NxMenuButtonComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(menuButtonElement.classList.contains('is-expanded')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('is-expanded');
             });
         });
 
@@ -89,13 +89,13 @@ describe(NxMenuButtonComponent.name, () => {
             it('has the modifier for root button', () => {
                 testInstance.type = 'root';
                 fixture.detectChanges();
-                expect(menuButtonElement.classList.contains('nx-menu-button--root')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('nx-menu-button--root');
             });
 
             it('has the modifier for nested button', () => {
                 testInstance.type = 'nested';
                 fixture.detectChanges();
-                expect(menuButtonElement.classList.contains('nx-menu-button--nested')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('nx-menu-button--nested');
             });
         });
     });
@@ -112,7 +112,7 @@ describe(NxMenuButtonComponent.name, () => {
             });
 
             it('is expandable', () => {
-                expect(menuButtonElement.classList.contains('is-expandable')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('is-expandable');
             });
         });
 
@@ -124,7 +124,7 @@ describe(NxMenuButtonComponent.name, () => {
             });
 
             it('is expanded', () => {
-                expect(menuButtonElement.classList.contains('is-expanded')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('is-expanded');
             });
         });
 
@@ -132,13 +132,13 @@ describe(NxMenuButtonComponent.name, () => {
             it('has the modifier for root button', () => {
                 menuButtonInstance.type = 'root';
                 fixture.detectChanges();
-                expect(menuButtonElement.classList.contains('nx-menu-button--root')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('nx-menu-button--root');
             });
 
             it('has the modifier for nested button', () => {
                 menuButtonInstance.type = 'nested';
                 fixture.detectChanges();
-                expect(menuButtonElement.classList.contains('nx-menu-button--nested')).toBeTruthy();
+                expect(menuButtonElement).toHaveClass('nx-menu-button--nested');
             });
         });
     });

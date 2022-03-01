@@ -60,18 +60,18 @@ describe('NxDatepickerToggleComponent', () => {
     it('focuses toggle after closing datepicker (toggle focusable)', fakeAsync(() => {
         createTestComponent(BasicToggleDateComponent);
         spyOn(inputNativeElement, 'focus');
-        expect(datepickerInstance.opened).toBe(false);
+        expect(datepickerInstance.opened).toBeFalse();
 
         datepickerInstance.open();
         fixture.detectChanges();
-        expect(datepickerInstance.opened).toBe(true);
+        expect(datepickerInstance.opened).toBeTrue();
         flush();
         expect(inputNativeElement.focus).not.toHaveBeenCalled();
 
         datepickerInstance.close();
         fixture.detectChanges();
         flush();
-        expect(datepickerInstance.opened).toBe(false);
+        expect(datepickerInstance.opened).toBeFalse();
         expect(inputNativeElement.focus).not.toHaveBeenCalled();
     }));
 
@@ -83,25 +83,25 @@ describe('NxDatepickerToggleComponent', () => {
 
     it('should disable the datepicker in a readonly datefield', () => {
         createTestComponent(ReadonlyDatefield);
-        expect(toggleInstance.disabled).toBe(true);
+        expect(toggleInstance.disabled).toBeTrue();
     });
 
     it('focuses input after closing datepicker (toggle non-focusable)', fakeAsync(() => {
         createTestComponent(ConfigurableToggleDateComponent);
         testInstance.tabindex = -1;
         const spy = spyOn(inputNativeElement, 'focus');
-        expect(datepickerInstance.opened).toBe(false);
+        expect(datepickerInstance.opened).toBeFalse();
 
         datepickerInstance.open();
         fixture.detectChanges();
-        expect(datepickerInstance.opened).toBe(true);
+        expect(datepickerInstance.opened).toBeTrue();
         flush();
         expect(spy).not.toHaveBeenCalled();
 
         datepickerInstance.close();
         fixture.detectChanges();
         flush();
-        expect(datepickerInstance.opened).toBe(false);
+        expect(datepickerInstance.opened).toBeFalse();
         expect(spy).toHaveBeenCalledTimes(1);
     }));
 });

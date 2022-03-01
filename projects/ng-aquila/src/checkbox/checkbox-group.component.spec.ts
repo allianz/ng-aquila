@@ -50,7 +50,7 @@ describe('NxCheckboxGroupComponent', () => {
 
     it('should inherit the same name as the checkbox-group', () => {
         createTestComponent(BasicCheckboxGroup);
-        checkboxInstances.toArray().map(checkbox => {
+        checkboxInstances.forEach(checkbox => {
             expect(checkbox.name).toBe('terms');
         });
     });
@@ -59,31 +59,31 @@ describe('NxCheckboxGroupComponent', () => {
         createTestComponent(BasicCheckboxGroup);
         checkboxGroupInstance.disabled = true;
         fixture.detectChanges();
-        checkboxInstances.toArray().map(checkbox => {
-            expect(checkbox.disabled).toBe(true);
+        checkboxInstances.forEach(checkbox => {
+            expect(checkbox.disabled).toBeTrue();
         });
     });
 
     it('should update disabled on formGroup update', () => {
         createTestComponent(CheckboxGroupValidation);
-        expect(testInstance.myFormGroup.get('terms')!.disabled).toBe(false);
-        expect(checkboxGroupInstance.disabled).toBe(false);
+        expect(testInstance.myFormGroup.get('terms')!.disabled).toBeFalse();
+        expect(checkboxGroupInstance.disabled).toBeFalse();
 
         testInstance.myFormGroup.get('terms')!.disable();
-        expect(testInstance.myFormGroup.disabled).toBe(true);
-        expect(checkboxGroupInstance.disabled).toBe(true);
+        expect(testInstance.myFormGroup.disabled).toBeTrue();
+        expect(checkboxGroupInstance.disabled).toBeTrue();
 
         testInstance.myFormGroup.get('terms')!.enable();
-        expect(testInstance.myFormGroup.disabled).toBe(false);
-        expect(checkboxGroupInstance.disabled).toBe(false);
+        expect(testInstance.myFormGroup.disabled).toBeFalse();
+        expect(checkboxGroupInstance.disabled).toBeFalse();
     });
 
     it('Every checkbox should be negative', () => {
         createTestComponent(BasicCheckboxGroup);
         checkboxGroupInstance.negative = true;
         fixture.detectChanges();
-        checkboxInstances.toArray().map(checkbox => {
-            expect(checkbox.negative).toBe(true);
+        checkboxInstances.forEach(checkbox => {
+            expect(checkbox.negative).toBeTrue();
         });
     });
 
@@ -96,14 +96,14 @@ describe('NxCheckboxGroupComponent', () => {
         fixture.detectChanges();
 
         let errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
-        expect(errors.length).toBe(1);
+        expect(errors).toHaveSize(1);
         expect(checkboxGroupInstance.errorState).toBeTruthy();
 
         [0, 1, 2].forEach(i => checkboxElements[i].click());
         fixture.detectChanges();
 
         errors = fixture.nativeElement.querySelectorAll('nx-error') as NodeListOf<HTMLInputElement>;
-        expect(errors.length).toBe(0);
+        expect(errors).toHaveSize(0);
         expect(checkboxGroupInstance.errorState).toBeFalsy();
     }));
 
@@ -112,9 +112,9 @@ describe('NxCheckboxGroupComponent', () => {
         const checkedValues = ['Term 2', 'Term 3'];
         fixture.detectChanges();
         tick();
-        checkboxInstances.toArray().map(checkbox => {
+        checkboxInstances.forEach(checkbox => {
             if (checkedValues.includes(checkbox.value)) {
-                expect(checkbox.checked).toBe(true);
+                expect(checkbox.checked).toBeTrue();
             }
         });
     }));
@@ -125,8 +125,8 @@ describe('NxCheckboxGroupComponent', () => {
         testInstance.myFormGroup.get('terms')?.setValue([]);
         fixture.detectChanges();
         tick();
-        checkboxInstances.toArray().map(checkbox => {
-            expect(checkbox.checked).toBe(false);
+        checkboxInstances.forEach(checkbox => {
+            expect(checkbox.checked).toBeFalse();
         });
     }));
 
@@ -134,15 +134,15 @@ describe('NxCheckboxGroupComponent', () => {
         createTestComponent(CheckboxGroupDynamic);
         fixture.detectChanges();
         tick();
-        expect(checkboxInstances.toArray().length).toBe(3);
+        expect(checkboxInstances).toHaveSize(3);
     }));
 
     it('should add the checkboxes dynamically and checked', fakeAsync(() => {
         createTestComponent(CheckboxGroupDynamic);
         fixture.detectChanges();
         tick();
-        checkboxInstances.toArray().map(checkbox => {
-            expect(checkbox.checked).toBe(true);
+        checkboxInstances.forEach(checkbox => {
+            expect(checkbox.checked).toBeTrue();
         });
     }));
 
@@ -152,7 +152,7 @@ describe('NxCheckboxGroupComponent', () => {
         dynamicTest.addNewCb();
         fixture.detectChanges();
         tick();
-        expect(checkboxInstances.toArray().length).toBe(4);
+        expect(checkboxInstances).toHaveSize(4);
     }));
 
     it('should remove one checkbox', fakeAsync(() => {
@@ -161,7 +161,7 @@ describe('NxCheckboxGroupComponent', () => {
         dynamicTest.removeCB();
         fixture.detectChanges();
         tick();
-        expect(checkboxInstances.toArray().length).toBe(2);
+        expect(checkboxInstances).toHaveSize(2);
     }));
 
     it('should emit an event on checked changed', fakeAsync(() => {
@@ -182,7 +182,7 @@ describe('NxCheckboxGroupComponent', () => {
         const checkedValues = ['Term 1', 'Term 2'];
         fixture.detectChanges();
         tick();
-        checkboxInstances.toArray().map(checkbox => {
+        checkboxInstances.forEach(checkbox => {
             expect(checkbox.checked).toBe(checkedValues.includes(checkbox.value));
         });
     }));
@@ -190,9 +190,9 @@ describe('NxCheckboxGroupComponent', () => {
     it('initializes correctly in a conditionally displayed checkbox group', fakeAsync(() => {
         createTestComponent(ConditionalCheckboxGroupReactive);
         tick();
-        expect(checkboxInstances.toArray()[0].checked).toBeTrue();
-        expect(checkboxInstances.toArray()[1].checked).toBeTrue();
-        expect(checkboxInstances.toArray()[2].checked).toBeFalse();
+        checkboxInstances.forEach((checkbox, i) => {
+            expect(checkbox.checked).toBe(i !== 2);
+        });
     }));
 
     it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
@@ -203,13 +203,13 @@ describe('NxCheckboxGroupComponent', () => {
         tick();
         fixture.detectChanges();
 
-        expect(testInstance.myFormGroup.get('terms')!.dirty).toEqual(false, `Expected control to start out pristine.`);
+        expect(testInstance.myFormGroup.get('terms')!.dirty).withContext('Expected control to start out pristine.').toBeFalse();
 
         checkboxElements[0].click();
         tick();
         fixture.detectChanges();
 
-        expect(testInstance.myFormGroup.get('terms')!.dirty).toEqual(true, `Expected control to be dirty.`);
+        expect(testInstance.myFormGroup.get('terms')!.dirty).withContext('Expected control to be dirty.').toBeTrue();
     }));
 
     describe('a11y', () => {

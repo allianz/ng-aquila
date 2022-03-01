@@ -70,20 +70,20 @@ describe('NxComparisonTableRowDirective', () => {
         it('should not be allowed to be sticky for non-header rows', () => {
             createTestComponent(DynamicTypeComponent);
 
-            expect(rowInstances.toArray()[1].mayStick).toBe(false);
-            expect(rowInstances.toArray()[3].mayStick).toBe(false);
+            expect(rowInstances.toArray()[1].mayStick).toBeFalse();
+            expect(rowInstances.toArray()[3].mayStick).toBeFalse();
         });
 
         it('should be sticky for header rows by default', () => {
             createTestComponent(DynamicTypeComponent);
 
-            expect(rowInstances.toArray()[0].mayStick).toBe(true);
+            expect(rowInstances.toArray()[0].mayStick).toBeTrue();
         });
 
         it('should allow to prevent header from being sticky', () => {
             createTestComponent(NonStickyHeaderComponent);
 
-            expect(rowInstances.toArray()[0].mayStick).toBe(false);
+            expect(rowInstances.toArray()[0].mayStick).toBeFalse();
         });
 
         it('should request a cell clipping update on changes to mayStick', () => {

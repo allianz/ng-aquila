@@ -152,7 +152,7 @@ describe('NxExpertPreset', () => {
     describe('comparison-table presets', () => {
         it('should set useFullRowForExpandableArea of row group to true', () => {
             createTestComponent(ComparisonTablePresetComponent);
-            expect((testInstance as ComparisonTablePresetComponent).rowGroupInstance.useFullRowForExpandableArea).toBe(true);
+            expect((testInstance as ComparisonTablePresetComponent).rowGroupInstance.useFullRowForExpandableArea).toBeTrue();
         });
     });
 

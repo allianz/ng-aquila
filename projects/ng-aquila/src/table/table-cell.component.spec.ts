@@ -43,7 +43,7 @@ describe(NxTableCellComponent.name, () => {
         });
 
         it('has the bem class', () => {
-            expect(tableCellElement.nativeElement.classList.contains('nx-table-cell')).toBeTruthy();
+            expect(tableCellElement.nativeElement).toHaveClass('nx-table-cell');
         });
 
         it('renders the content', () => {

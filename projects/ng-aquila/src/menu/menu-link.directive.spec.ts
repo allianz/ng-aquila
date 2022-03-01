@@ -47,7 +47,7 @@ describe(NxMenuLinkDirective.name, () => {
         it(
             'menu link includes the bem block element',
             waitForAsync(() => {
-                expect(menuLinkNativeElement.classList.contains('nx-menu__link')).toBe(true);
+                expect(menuLinkNativeElement).toHaveClass('nx-menu__link');
             }),
         );
     });

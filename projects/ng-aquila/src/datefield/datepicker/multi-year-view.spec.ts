@@ -47,7 +47,7 @@ describe('NxMultiYearView', () => {
 
         it('has correct number of years', () => {
             const cellEls = multiYearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cellEls.length).toBe(yearsPerPage);
+            expect(cellEls).toHaveSize(yearsPerPage);
         });
 
         it('does not show selected year if in different range', () => {
@@ -81,7 +81,7 @@ describe('NxMultiYearView', () => {
             const cellEls = multiYearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
 
             expect((cellEls[cellEls.length - 3] as HTMLElement).innerText.trim()).toBe('2017');
-            expect(cellEls[cellEls.length - 3].classList).toContain('nx-calendar-body-active');
+            expect(cellEls[cellEls.length - 3]).toHaveClass('nx-calendar-body-active');
         });
 
         describe('a11y', () => {
@@ -215,8 +215,8 @@ describe('NxMultiYearView', () => {
 
         it('should disable years with no enabled days', () => {
             const cells = multiYearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cells[0].classList).not.toContain('nx-calendar-body-disabled');
-            expect(cells[1].classList).toContain('nx-calendar-body-disabled');
+            expect(cells[0]).not.toHaveClass('nx-calendar-body-disabled');
+            expect(cells[1]).toHaveClass('nx-calendar-body-disabled');
         });
     });
 });

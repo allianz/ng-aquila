@@ -159,13 +159,13 @@ describe('NxRatingComponent', () => {
             instance.testForm.controls.rating.disable();
             fixture.detectChanges();
             let outerSpanDisabled = fixture.nativeElement.querySelector('.nx-rating--disabled');
-            expect(testInstance.rating.disabled).toBe(true);
+            expect(testInstance.rating.disabled).toBeTrue();
             expect(outerSpanDisabled).toBeTruthy();
 
             instance.testForm.controls.rating.enable();
             fixture.detectChanges();
             outerSpanDisabled = fixture.nativeElement.querySelector('.nx-rating--disabled');
-            expect(testInstance.rating.disabled).toBe(false);
+            expect(testInstance.rating.disabled).toBeFalse();
             expect(outerSpanDisabled).toBeFalsy();
         });
     });
@@ -174,7 +174,7 @@ describe('NxRatingComponent', () => {
         it('updates view on change of "disabled"', () => {
             createTestComponent(RatingOnPushComponent);
             let hasDisabledClass = fixture.nativeElement.querySelector('.nx-rating--disabled');
-            expect(testInstance.rating.disabled).toBe(false);
+            expect(testInstance.rating.disabled).toBeFalse();
             expect(hasDisabledClass).toBeFalsy();
 
             testInstance.rating.disabled = true;
@@ -186,7 +186,7 @@ describe('NxRatingComponent', () => {
         it('updates view on change of "negative"', () => {
             createTestComponent(RatingOnPushComponent);
             let hasNegativeClass = fixture.nativeElement.querySelector('.nx-rating--negative');
-            expect(testInstance.rating.negative).toBe(false);
+            expect(testInstance.rating.negative).toBeFalse();
             expect(hasNegativeClass).toBeFalsy();
 
             testInstance.rating.negative = true;
@@ -200,12 +200,12 @@ describe('NxRatingComponent', () => {
             // check how many stars are filled (=checked)
             let starsSelected = getSelectedStars();
             expect(testInstance.rating.value).toBe(2);
-            expect(starsSelected.length).toBe(2);
+            expect(starsSelected).toHaveSize(2);
 
             testInstance.rating.value = 4;
             fixture.detectChanges();
             starsSelected = getSelectedStars();
-            expect(starsSelected.length).toBe(4);
+            expect(starsSelected).toHaveSize(4);
         });
 
         it('updates view on template driven value set initially', fakeAsync(() => {
@@ -217,7 +217,7 @@ describe('NxRatingComponent', () => {
             const selectedStars = getSelectedStars();
             const rating = fixture.debugElement.query(By.css('nx-rating'));
             expect(testInstance.rating.value).toBe(2);
-            expect(selectedStars.length).toBe(2);
+            expect(selectedStars).toHaveSize(2);
         }));
 
         it('updates view on change of "startLabel"', fakeAsync(() => {

@@ -141,7 +141,7 @@ describe('NxPaginationComponent', () => {
         it('displays an advanced pagination', () => {
             createTestComponent(AdvancedPagination);
             expect(pageElements && nextArrow).not.toBeNull();
-            expect(listElements.length).toBeGreaterThan(0);
+            expect(listElements).not.toHaveSize(0);
         });
 
         it('should emit an event when click next arrow', () => {
@@ -161,14 +161,14 @@ describe('NxPaginationComponent', () => {
         it('displays an advanced pagination with less than 10 pages', () => {
             createTestComponent(AdvancedPaginationLess10);
             expect(pageElements && nextArrow).not.toBeNull();
-            expect(listElements.length).toBe(7);
+            expect(listElements).toHaveSize(7);
         });
 
         it('displays an advanced pagination with more than 10 pages', () => {
             createTestComponent(AdvancedPaginationMore10);
             expect(pageElements && nextArrow).not.toBeNull();
-            expect(listElements.length).toBe(10);
-            expect(pageElements.length).toBe(5);
+            expect(listElements).toHaveSize(10);
+            expect(pageElements).toHaveSize(5);
         });
 
         it('should emit an event when click prev arrow', () => {
@@ -219,8 +219,8 @@ describe('NxPaginationComponent', () => {
             waitForAsync(() => {
                 createTestComponent(AdvancedPagination);
                 fixture.detectChanges();
-                expect(mobileListElements.length).toBe(3);
-                expect(mobilePageElements.length).toBe(3);
+                expect(mobileListElements).toHaveSize(3);
+                expect(mobilePageElements).toHaveSize(3);
             }),
         );
     });

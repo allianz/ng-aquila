@@ -97,28 +97,28 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
             fixture.componentInstance.buttonSize = testSize;
             fixture.detectChanges();
             expect(buttonInstance.size).toBe(testSize);
-            expect(buttonNativeElement.classList).toContain(expectedClass);
+            expect(buttonNativeElement).toHaveClass(expectedClass);
         }
 
         function changeAndCheckButtonType(testType: NxButtonType, expectedClass: string) {
             fixture.componentInstance.buttonType = testType;
             fixture.detectChanges();
             expect(buttonInstance.type).toBe(testType);
-            expect(buttonNativeElement.classList).toContain(expectedClass);
+            expect(buttonNativeElement).toHaveClass(expectedClass);
         }
 
         function changeAndCheckButtonTypeProgrammaticly(testType: NxButtonType, expectedClass: string) {
             buttonInstance.classNames = testType;
             fixture.detectChanges();
             expect(buttonInstance.type).toBe(testType);
-            expect(buttonNativeElement.classList).toContain(expectedClass);
+            expect(buttonNativeElement).toHaveClass(expectedClass);
         }
 
         function changeAndCheckButtonSizeProgrammaticly(testSize: NxButtonSize, expectedClass: string) {
             buttonInstance.classNames = testSize;
             fixture.detectChanges();
             expect(buttonInstance.size).toBe(testSize);
-            expect(buttonNativeElement.classList).toContain(expectedClass);
+            expect(buttonNativeElement).toHaveClass(expectedClass);
         }
 
         beforeEach(
@@ -141,35 +141,35 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
 
             it('creates a button with a medium size', () => {
                 createTestComponent(testTarget.basic);
-                expect(buttonNativeElement.classList).toContain('nx-button--medium');
+                expect(buttonNativeElement).toHaveClass('nx-button--medium');
             });
 
             it('creates a button with primary style', () => {
                 createTestComponent(testTarget.basic);
                 expect(buttonInstance.type).toBe('primary');
-                expect(buttonNativeElement.classList).toContain('nx-button--primary');
+                expect(buttonNativeElement).toHaveClass('nx-button--primary');
             });
 
             it('creates a non-danger button', () => {
                 createTestComponent(testTarget.basic);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
+                expect(buttonNativeElement).not.toHaveClass('nx-button--danger');
             });
 
             it('creates a non-negative button', () => {
                 createTestComponent(testTarget.basic);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--negative');
+                expect(buttonNativeElement).not.toHaveClass('nx-button--negative');
             });
 
             it('creates a non-block button', () => {
                 createTestComponent(testTarget.basic);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--block');
+                expect(buttonNativeElement).not.toHaveClass('nx-button--block');
             });
 
             it(
                 'allow other classes',
                 waitForAsync(() => {
                     createTestComponent(testTarget.basic);
-                    expect(buttonNativeElement.classList.contains('some-arbitray-class-name')).toBe(true);
+                    expect(buttonNativeElement).toHaveClass('some-arbitray-class-name');
                 }),
             );
         });
@@ -200,13 +200,13 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 createTestComponent(testTarget.configurable);
                 fixture.componentInstance.danger = 'danger';
                 fixture.detectChanges();
-                expect(buttonInstance.danger).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--danger');
+                expect(buttonInstance.danger).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--danger');
 
                 fixture.componentInstance.danger = '';
                 fixture.detectChanges();
-                expect(buttonInstance.danger).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
+                expect(buttonInstance.danger).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--danger');
             });
         });
 
@@ -215,13 +215,13 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 createTestComponent(testTarget.configurable);
                 fixture.componentInstance.negative = 'negative';
                 fixture.detectChanges();
-                expect(buttonInstance.negative).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--negative');
+                expect(buttonInstance.negative).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--negative');
 
                 fixture.componentInstance.negative = '';
                 fixture.detectChanges();
-                expect(buttonInstance.negative).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--negative');
+                expect(buttonInstance.negative).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--negative');
             });
         });
 
@@ -230,13 +230,13 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 createTestComponent(testTarget.configurable);
                 fixture.componentInstance.block = 'block';
                 fixture.detectChanges();
-                expect(buttonInstance.block).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--block');
+                expect(buttonInstance.block).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--block');
 
                 fixture.componentInstance.block = '';
                 fixture.detectChanges();
-                expect(buttonInstance.block).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--block');
+                expect(buttonInstance.block).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--block');
             });
         });
 
@@ -262,39 +262,39 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 createTestComponent(testTarget.onPush);
                 buttonInstance.classNames = 'danger';
                 fixture.detectChanges();
-                expect(buttonInstance.danger).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--danger');
+                expect(buttonInstance.danger).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--danger');
 
                 buttonInstance.classNames = '';
                 fixture.detectChanges();
-                expect(buttonInstance.danger).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--danger');
+                expect(buttonInstance.danger).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--danger');
             });
 
             it('updates view on negative change', () => {
                 createTestComponent(testTarget.onPush);
                 buttonInstance.classNames = 'negative';
                 fixture.detectChanges();
-                expect(buttonInstance.negative).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--negative');
+                expect(buttonInstance.negative).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--negative');
 
                 buttonInstance.classNames = '';
                 fixture.detectChanges();
-                expect(buttonInstance.negative).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--negative');
+                expect(buttonInstance.negative).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--negative');
             });
 
             it('updates view on block change', () => {
                 createTestComponent(testTarget.onPush);
                 buttonInstance.classNames = 'block';
                 fixture.detectChanges();
-                expect(buttonInstance.block).toBe(true);
-                expect(buttonNativeElement.classList).toContain('nx-button--block');
+                expect(buttonInstance.block).toBeTrue();
+                expect(buttonNativeElement).toHaveClass('nx-button--block');
 
                 buttonInstance.classNames = '';
                 fixture.detectChanges();
-                expect(buttonInstance.block).toBe(false);
-                expect(buttonNativeElement.classList).not.toContain('nx-button--block');
+                expect(buttonInstance.block).toBeFalse();
+                expect(buttonNativeElement).not.toHaveClass('nx-button--block');
             });
         });
 

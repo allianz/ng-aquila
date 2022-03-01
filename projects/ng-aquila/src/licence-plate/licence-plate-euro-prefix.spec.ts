@@ -47,28 +47,28 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
 
     describe('disabled', () => {
         it('is not disabled', () => {
-            expect(instance._disabled).toBe(false);
+            expect(instance._disabled).toBeFalse();
             expect(element).not.toHaveClass('is-disabled');
         });
 
         it('is disabled', () => {
             testInstance.disabled = true;
             fixture.detectChanges();
-            expect(instance._disabled).toBe(true);
+            expect(instance._disabled).toBeTrue();
             expect(element).toHaveClass('is-disabled');
         });
     });
 
     describe('outline style', () => {
         it('has no outline style', () => {
-            expect(instance._hasOutline).toBe(false);
+            expect(instance._hasOutline).toBeFalse();
             expect(element).not.toHaveClass('has-outline');
         });
 
         it('has no outline style', () => {
             testInstance.appearance = 'outline';
             fixture.detectChanges();
-            expect(instance._hasOutline).toBe(true);
+            expect(instance._hasOutline).toBeTrue();
             expect(element).toHaveClass('has-outline');
         });
     });

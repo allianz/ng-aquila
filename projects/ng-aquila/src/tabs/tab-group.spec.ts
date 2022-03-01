@@ -54,7 +54,7 @@ describe('NxTabGroupComponent', () => {
         expect(tabGroupInstance.selectedIndex).toBe(expectedIndex);
 
         const tabLabelElement = fixture.debugElement.query(By.css(`.nx-tab-header__item:nth-of-type(${expectedIndex + 1})`)).nativeElement;
-        expect(tabLabelElement.classList.contains('nx-tab-header__item--active')).toBe(true);
+        expect(tabLabelElement).toHaveClass('nx-tab-header__item--active');
     }
 
     describe('no preset options', () => {
@@ -146,19 +146,19 @@ describe('NxTabGroupComponent', () => {
             describe('autoselect', () => {
                 it('should be turned on by default', () => {
                     createTestComponent(BasicTabs);
-                    expect(tabGroupInstance.autoselect).toBe(true);
+                    expect(tabGroupInstance.autoselect).toBeTrue();
                 });
             });
 
             describe('negative', () => {
                 it('should update negative on programmatic change', () => {
                     createTestComponent(OnPushTabs);
-                    expect(tabGroupInstance.negative).toBe(false);
-                    expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-negative');
+                    expect(tabGroupInstance.negative).toBeFalse();
+                    expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-negative');
 
                     tabGroupInstance.negative = true;
                     fixture.detectChanges();
-                    expect(tabGroupDebugElement.nativeElement.classList).toContain('is-negative');
+                    expect(tabGroupDebugElement.nativeElement).toHaveClass('is-negative');
                 });
             });
         });
@@ -186,7 +186,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
 
                 const tabGroup = fixture.nativeElement.querySelector('nx-tab-group');
-                expect(tabGroup.classList).toContain('is-disabled');
+                expect(tabGroup).toHaveClass('is-disabled');
             });
 
             it('should set the disabled class on the tab items', () => {
@@ -195,17 +195,17 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
 
                 const tabItems = fixture.nativeElement.querySelectorAll('.nx-tab__item');
-                Array.from(tabItems).forEach(item => expect((item as HTMLElement).classList).toContain('is-disabled'));
+                Array.from(tabItems).forEach(item => expect(item as HTMLElement).toHaveClass('is-disabled'));
             });
 
             it('should update disabled on programmatic change', () => {
                 createTestComponent(OnPushTabs);
-                expect(tabGroupInstance.disabled).toBe(false);
-                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-disabled');
+                expect(tabGroupInstance.disabled).toBeFalse();
+                expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-disabled');
 
                 tabGroupInstance.disabled = true;
                 fixture.detectChanges();
-                expect(tabGroupDebugElement.nativeElement.classList).toContain('is-disabled');
+                expect(tabGroupDebugElement.nativeElement).toHaveClass('is-disabled');
             });
 
             it('should set the disabled class on a single item', () => {
@@ -214,8 +214,8 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
 
                 const tabItem = fixture.nativeElement.querySelector('.nx-tab-header__item');
-                expect(tabItem.classList).toContain('nx-tab-header__item--disabled');
-                expect(fixture.nativeElement.querySelector('nx-tab-group').classList).not.toContain('is-disabled');
+                expect(tabItem).toHaveClass('nx-tab-header__item--disabled');
+                expect(fixture.nativeElement.querySelector('nx-tab-group')).not.toHaveClass('is-disabled');
             });
 
             it('should set the first selectable item as active', () => {
@@ -224,7 +224,7 @@ describe('NxTabGroupComponent', () => {
                 fixture.detectChanges();
 
                 const selectedTabItem = fixture.nativeElement.querySelectorAll('.nx-tab-header__item')[1];
-                expect(selectedTabItem.classList).toContain('nx-tab-header__item--active');
+                expect(selectedTabItem).toHaveClass('nx-tab-header__item--active');
             });
         });
 
@@ -239,7 +239,7 @@ describe('NxTabGroupComponent', () => {
                 dynamicTest.selectedIndex = 3;
                 fixture.detectChanges();
                 tick();
-                expect(tabGroupInstance.tabBodyChildren.toArray()[3].active).toBe(true);
+                expect(tabGroupInstance.tabBodyChildren.toArray()[3].active).toBeTrue();
             }));
 
             it('should update selected index if the first tab is removed while selected', fakeAsync(() => {
@@ -289,7 +289,7 @@ describe('NxTabGroupComponent', () => {
                 tick();
 
                 expect(tabGroupInstance.selectedIndex).toBe(2);
-                expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBe(true);
+                expect(tabGroupInstance.tabBodyChildren.toArray()[2].active).toBeTrue();
             }));
 
             it('should maintain the selected tab if a tab is removed', fakeAsync(() => {
@@ -306,7 +306,7 @@ describe('NxTabGroupComponent', () => {
                 tick(THROTTLE_TIME);
 
                 expect(tabGroupInstance.selectedIndex).toBe(0);
-                expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBe(true);
+                expect(tabGroupInstance.tabBodyChildren.toArray()[0].active).toBeTrue();
             }));
 
             it('should not fire `selectedTabChange` when the amount of tabs changes', fakeAsync(() => {
@@ -345,28 +345,28 @@ describe('NxTabGroupComponent', () => {
             it('should set the appearance to "default" by default', () => {
                 createTestComponent(BasicTabs);
                 expect(tabGroupInstance.appearance).toBe('default');
-                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
             });
 
             it('should change appearance on input change', () => {
                 createTestComponent(ConfigurableTabs);
                 expect(tabGroupInstance.appearance).toBe('expert');
-                expect(tabGroupDebugElement.nativeElement.classList).toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).toHaveClass('is-expert');
 
                 testInstance.appearance = 'default';
                 fixture.detectChanges();
                 expect(tabGroupInstance.appearance).toBe('default');
-                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
             });
 
             it('should change appearance on programmatic change', () => {
                 createTestComponent(OnPushTabs);
                 expect(tabGroupInstance.appearance).toBe('default');
-                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
 
                 tabGroupInstance.appearance = 'expert';
                 fixture.detectChanges();
-                expect(tabGroupDebugElement.nativeElement.classList).toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).toHaveClass('is-expert');
             });
         });
 
@@ -417,7 +417,7 @@ describe('NxTabGroupComponent', () => {
                 instance.selectedIndex = 1;
                 fixture.detectChanges();
                 tick();
-                expect(instance.testComponents.length).toBe(1);
+                expect(instance.testComponents).toHaveSize(1);
                 const element = instance.testComponents.toArray()[0];
                 spyOn(element, 'ngOnDestroy');
                 viewport.set('mobile');
@@ -431,7 +431,7 @@ describe('NxTabGroupComponent', () => {
                 createTestComponent(CustomElementTest);
                 tick();
                 const instance = testInstance as CustomElementTest;
-                expect(instance.customElementInHeader.length).toBe(2);
+                expect(instance.customElementInHeader).toHaveSize(2);
                 const elementInHeader = instance.customElementInHeader.toArray()[0];
                 spyOn(elementInHeader, 'ngOnDestroy');
                 viewport.set('mobile');
@@ -478,13 +478,13 @@ describe('NxTabGroupComponent', () => {
                 tick(THROTTLE_TIME);
                 fixture.detectChanges();
                 const expansionPanelHeaders = fixture.nativeElement.querySelectorAll('nx-expansion-panel-header');
-                expect(expansionPanelHeaders[0].classList.contains('is-disabled')).toBeTruthy();
-                expect(expansionPanelHeaders[1].classList.contains('is-disabled')).toBeFalsy();
+                expect(expansionPanelHeaders[0]).toHaveClass('is-disabled');
+                expect(expansionPanelHeaders[1]).not.toHaveClass('is-disabled');
                 (testInstance as DisabledTabs).disabled = true;
                 fixture.detectChanges();
                 tick();
-                expect(expansionPanelHeaders[0].classList.contains('is-disabled')).toBeTruthy();
-                expect(expansionPanelHeaders[1].classList.contains('is-disabled')).toBeTruthy();
+                expect(expansionPanelHeaders[0]).toHaveClass('is-disabled');
+                expect(expansionPanelHeaders[1]).toHaveClass('is-disabled');
             }));
 
             it('should only emit `_appearanceChange` when the change happens', fakeAsync(() => {
@@ -545,14 +545,14 @@ describe('NxTabGroupComponent', () => {
                 delete defaultOptions.appearance;
                 createTestComponent(BasicTabs);
                 expect(tabGroupInstance.appearance).toBe('default');
-                expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+                expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
             },
         ));
 
         it('should have a custom default appearance if default options contain a custom appearance', () => {
             createTestComponent(BasicTabs);
             expect(tabGroupInstance.appearance).toBe('expert');
-            expect(tabGroupDebugElement.nativeElement.classList).toContain('is-expert');
+            expect(tabGroupDebugElement.nativeElement).toHaveClass('is-expert');
         });
 
         it('should override a custom default appearance', () => {
@@ -562,7 +562,7 @@ describe('NxTabGroupComponent', () => {
             testInstance.appearance = 'default';
             fixture.detectChanges();
             expect(tabGroupInstance.appearance).toBe('default');
-            expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+            expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
         });
 
         it('changes appearance on injection token change', inject([TAB_GROUP_DEFAULT_OPTIONS], (defaultOptions: TabGroupDefaultOptions) => {
@@ -571,12 +571,12 @@ describe('NxTabGroupComponent', () => {
             testInstance.appearance = undefined;
             fixture.detectChanges();
             expect(tabGroupInstance.appearance).toBe('expert');
-            expect(tabGroupDebugElement.nativeElement.classList).toContain('is-expert');
+            expect(tabGroupDebugElement.nativeElement).toHaveClass('is-expert');
 
             defaultOptions.appearance = 'default';
             fixture.detectChanges();
             expect(tabGroupInstance.appearance).toBe('default');
-            expect(tabGroupDebugElement.nativeElement.classList).not.toContain('is-expert');
+            expect(tabGroupDebugElement.nativeElement).not.toHaveClass('is-expert');
         }));
     });
 });

@@ -52,7 +52,7 @@ describe('NxBreadcrumbComponent', () => {
         (testInstance as BasicBreadcrumbComponent).negative = true;
         fixture.detectChanges();
         expect(fixture.nativeElement.querySelector('.is-negative')).toBeTruthy();
-        expect(testInstance.breadcrumbInstance.negative).toBe(true);
+        expect(testInstance.breadcrumbInstance.negative).toBeTrue();
     });
 
     it('should have appearence "link"', () => {

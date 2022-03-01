@@ -61,12 +61,12 @@ describe('NxToggleButton', () => {
 
     it('should support preselection', () => {
         createTestComponent(PreselectedCircleToggleButtoncComponent);
-        expect(input.checked).toBe(true);
+        expect(input.checked).toBeTrue();
     });
 
     it('can be disabled', () => {
         createTestComponent(DisabledToggleButtonComponent);
-        expect(input.disabled).toBe(true);
+        expect(input.disabled).toBeTrue();
     });
 
     it('should link the label with the input field', () => {
@@ -89,13 +89,13 @@ describe('NxToggleButton', () => {
         }
 
         createTestComponent(NgModelToggleButtonComponent);
-        expect(input.checked).toBe(false);
+        expect(input.checked).toBeFalse();
 
         setValueInModel(true);
-        expect(toggleComponent.checked).toBe(true);
+        expect(toggleComponent.checked).toBeTrue();
 
         setValueInModel(false);
-        expect(input.checked).toBe(false);
+        expect(input.checked).toBeFalse();
     }));
 
     it('should work with reactive forms', fakeAsync(() => {
@@ -128,7 +128,7 @@ describe('NxToggleButton', () => {
             const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
             toggleComponent.checked = true;
             fixture.detectChanges();
-            expect(circleButton!.classList.contains('is-flipped')).toBe(true);
+            expect(circleButton!).toHaveClass('is-flipped');
         });
 
         it('should update view on label change', () => {
@@ -213,31 +213,31 @@ describe('NxToggleButton', () => {
             createTestComponent(SvgCircleToggleButtonComponent);
             const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
             expect(toggleComponent.svgUrl).toBe('test.svg');
-            expect(circleButton!.classList).not.toContain('is-negative');
+            expect(circleButton!).not.toHaveClass('is-negative');
 
             toggleComponent.negative = true;
             fixture.detectChanges();
             expect(toggleComponent.svgUrl).toBe('testInverted.svg');
-            expect(circleButton!.classList).toContain('is-negative');
+            expect(circleButton!).toHaveClass('is-negative');
         });
 
         it('should update on touched change', () => {
             createTestComponent(SimpleCircleToggleButtonComponent);
             const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
-            expect(toggleComponent._touched).toBe(false);
-            expect(circleButton!.classList).not.toContain('is-touched');
+            expect(toggleComponent._touched).toBeFalse();
+            expect(circleButton!).not.toHaveClass('is-touched');
 
             dispatchTouchEvent(nativeToggleComponent, 'touchstart');
             fixture.detectChanges();
-            expect(toggleComponent._touched).toBe(true);
-            expect(circleButton!.classList.contains('is-touched')).toBe(true);
+            expect(toggleComponent._touched).toBeTrue();
+            expect(circleButton!).toHaveClass('is-touched');
         });
 
         it('should display correct svg on hover change (mobile)', () => {
             createTestComponent(SvgCircleToggleButtonComponent);
             dispatchTouchEvent(nativeToggleComponent, 'touchstart');
             fixture.detectChanges();
-            expect(toggleComponent._touched).toBe(true);
+            expect(toggleComponent._touched).toBeTrue();
 
             // touch devices dispatch a mouseenter event on click if the element
             // was not active before; here svg should not change
@@ -255,16 +255,16 @@ describe('NxToggleButton', () => {
             createTestComponent(SvgCircleToggleButtonComponent);
             dispatchTouchEvent(nativeToggleComponent, 'touchstart');
             fixture.detectChanges();
-            expect(toggleComponent._touched).toBe(true);
+            expect(toggleComponent._touched).toBeTrue();
 
             click();
             fixture.detectChanges();
-            expect(toggleComponent.checked).toBe(true);
+            expect(toggleComponent.checked).toBeTrue();
             expect(toggleComponent.svgUrl).toBe('testInverted.svg');
 
             click();
             fixture.detectChanges();
-            expect(toggleComponent.checked).toBe(false);
+            expect(toggleComponent.checked).toBeFalse();
             expect(toggleComponent.svgUrl).toBe('test.svg');
         });
 
@@ -273,7 +273,7 @@ describe('NxToggleButton', () => {
             const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
             toggleComponent.disabled = true;
             fixture.detectChanges();
-            expect(circleButton?.classList.contains('is-disabled')).toBe(true);
+            expect(circleButton).toHaveClass('is-disabled');
         });
 
         it('should update on negative change', () => {
@@ -281,7 +281,7 @@ describe('NxToggleButton', () => {
             const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
             toggleComponent.negative = true;
             fixture.detectChanges();
-            expect(circleButton?.classList.contains('is-negative')).toBe(true);
+            expect(circleButton).toHaveClass('is-negative');
         });
 
         it('should update on responsive change', () => {
@@ -289,7 +289,7 @@ describe('NxToggleButton', () => {
             // const circleButton = nativeToggleComponent.querySelector('nx-icon-toggle-button');
             toggleComponent.responsive = true;
             fixture.detectChanges();
-            expect(nativeToggleComponent.classList.contains('is-responsive')).toBe(true);
+            expect(nativeToggleComponent).toHaveClass('is-responsive');
         });
     });
 

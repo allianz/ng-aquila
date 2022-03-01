@@ -26,7 +26,7 @@ describe('NxvTableOfContentsComponent', () => {
         fixture.detectChanges();
         tick();
         const links = getLinks();
-        expect(links.length).toBe(8);
+        expect(links).toHaveSize(8);
         expect(links[0].textContent.trim()).toBe('Markdown parent');
         expect(links[1].textContent.trim()).toBe('Markdown child');
         expect(links[2].textContent.trim()).toBe('Api parent');
@@ -42,8 +42,8 @@ describe('NxvTableOfContentsComponent', () => {
         fixture.detectChanges();
         tick();
         const links = getLinks();
-        expect(links[0].classList).toContain('docs-level-h3');
-        expect(links[1].classList).toContain('docs-level-h4');
+        expect(links[0]).toHaveClass('docs-level-h3');
+        expect(links[1]).toHaveClass('docs-level-h4');
     }));
 
     it('should filter elements in docs-public parent', fakeAsync(() => {
@@ -51,10 +51,10 @@ describe('NxvTableOfContentsComponent', () => {
         fixture.detectChanges();
         tick();
         const links = getLinks();
-        expect(links[4].classList).toContain('docs-public');
-        expect(links[4].classList).not.toContain('docs-private');
-        expect(links[5].classList).toContain('docs-public');
-        expect(links[5].classList).not.toContain('docs-private');
+        expect(links[4]).toHaveClass('docs-public');
+        expect(links[4]).not.toHaveClass('docs-private');
+        expect(links[5]).toHaveClass('docs-public');
+        expect(links[5]).not.toHaveClass('docs-private');
     }));
 
     it('should filter elements in docs-private parent', fakeAsync(() => {
@@ -62,10 +62,10 @@ describe('NxvTableOfContentsComponent', () => {
         fixture.detectChanges();
         tick();
         const links = getLinks();
-        expect(links[6].classList).toContain('docs-private');
-        expect(links[6].classList).not.toContain('docs-public');
-        expect(links[7].classList).toContain('docs-private');
-        expect(links[7].classList).not.toContain('docs-public');
+        expect(links[6]).toHaveClass('docs-private');
+        expect(links[6]).not.toHaveClass('docs-public');
+        expect(links[7]).toHaveClass('docs-private');
+        expect(links[7]).not.toHaveClass('docs-public');
     }));
 });
 

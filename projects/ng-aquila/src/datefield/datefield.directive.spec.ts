@@ -193,7 +193,7 @@ describe('NxDatefieldDirective with Moment', () => {
         flush();
         fixture.detectChanges();
 
-        expect(nativeElement.classList).toContain('ng-invalid');
+        expect(nativeElement).toHaveClass('ng-invalid');
     }));
 
     it('should mark invalid when value is before min', fakeAsync(() => {
@@ -207,7 +207,7 @@ describe('NxDatefieldDirective with Moment', () => {
         flush();
         fixture.detectChanges();
 
-        expect(nativeElement.classList).toContain('ng-invalid');
+        expect(nativeElement).toHaveClass('ng-invalid');
     }));
 
     describe('a11y', () => {
@@ -230,7 +230,7 @@ describe('NxDatefieldDirective with Moment', () => {
             nativeElement.value = '';
             nativeElement.dispatchEvent(new Event('input'));
             fixture.detectChanges();
-            expect(testInstance.form.get('datefield')!.valid).toBe(true);
+            expect(testInstance.form.get('datefield')!.valid).toBeTrue();
         });
 
         it('should have no error on custom date format', () => {
@@ -247,7 +247,7 @@ describe('NxDatefieldDirective with Moment', () => {
             fixture.detectChanges();
 
             expect(nativeElement.value).toBe('10--31--2019');
-            expect(testInstance.form.get('datefield')!.valid).toBe(true);
+            expect(testInstance.form.get('datefield')!.valid).toBeTrue();
         });
 
         it('should reflect the value in the native input element', () => {

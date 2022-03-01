@@ -114,8 +114,8 @@ describe('NxIsoDateAdapter', () => {
     it('should parse invalid value as invalid', () => {
         const d = adapter.parse('hello', 'MM/DD/YYYY', false);
         expect(d).not.toBeNull();
-        expect(adapter.isDateInstance(d)).toBe(true);
-        expect(adapter.isValid(d)).toBe(false);
+        expect(adapter.isDateInstance(d)).toBeTrue();
+        expect(adapter.isValid(d)).toBeFalse();
     });
 
     it('should allow non-strict parsing', () => {

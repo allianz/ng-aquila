@@ -40,7 +40,7 @@ describe(NxActionIconDirective.name, () => {
         it(
             'default action icon includes the bem block element',
             waitForAsync(() => {
-                expect(actionIconElement.classList.contains('nx-action__icon')).toBeTruthy();
+                expect(actionIconElement).toHaveClass('nx-action__icon');
             }),
         );
     });

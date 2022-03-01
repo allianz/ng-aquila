@@ -63,20 +63,20 @@ describe('NxSwitcherComponent', () => {
         expect(labelElement).not.toBeNull();
         expect(labelElement!.textContent?.trim()).toBe('basicLabel');
         expect(labelElement.getAttribute('for')).toBe(inputElement.id);
-        expect(labelElement.classList).toContain('has-label');
+        expect(labelElement).toHaveClass('has-label');
     });
 
     it('creates switcher without label', () => {
         createTestComponent(LabellessSwitcher);
         expect(switcherInstance).toBeTruthy();
         expect(labelElement!.textContent!.trim()).toBe('');
-        expect(labelElement.classList).not.toContain('has-label');
+        expect(labelElement).not.toHaveClass('has-label');
     });
 
     it('renders the switcher with a large label', () => {
         createTestComponent(BasicSwitcher);
         expect(switcherInstance.labelSize).toBe('large');
-        expect(switcherNativeElement.classList).toContain('nx-switcher--large-label');
+        expect(switcherNativeElement).toHaveClass('nx-switcher--large-label');
     });
 
     it('changes the label size on [labelSize] input', () => {
@@ -84,7 +84,7 @@ describe('NxSwitcherComponent', () => {
         fixture.componentInstance.labelSize = 'small';
         fixture.detectChanges();
         expect(switcherInstance.labelSize).toBe('small');
-        expect(switcherNativeElement.classList).toContain('nx-switcher--small-label');
+        expect(switcherNativeElement).toHaveClass('nx-switcher--small-label');
     });
 
     it('toggles the checked state based on [checked] input', () => {
@@ -106,28 +106,28 @@ describe('NxSwitcherComponent', () => {
 
     it('toggles the checked state based on the reactive form value', fakeAsync(() => {
         createTestComponent(SwitcherReactiveForm);
-        expect(switcherInstance.checked).toBe(false);
+        expect(switcherInstance.checked).toBeFalse();
 
         const reactInstance = testInstance as SwitcherReactiveForm;
         reactInstance.testForm.patchValue({ reactiveSwitcher: true });
         fixture.detectChanges();
         tick();
-        expect(switcherInstance.checked).toBe(true);
+        expect(switcherInstance.checked).toBeTrue();
     }));
 
     it('disables the switcher when its reactive form is disabled', fakeAsync(() => {
         createTestComponent(SwitcherReactiveForm);
         const reactInstance = testInstance as SwitcherReactiveForm;
 
-        expect(inputElement.disabled).toBe(false);
-        expect(switcherInstance.disabled).toBe(false);
+        expect(inputElement.disabled).toBeFalse();
+        expect(switcherInstance.disabled).toBeFalse();
 
         reactInstance.testForm.disable();
         fixture.detectChanges();
         tick();
 
-        expect(inputElement.disabled).toBe(true);
-        expect(switcherInstance.disabled).toBe(true);
+        expect(inputElement.disabled).toBeTrue();
+        expect(switcherInstance.disabled).toBeTrue();
     }));
 
     it('does not handle clicks when the switcher is disabled', fakeAsync(() => {
@@ -140,8 +140,8 @@ describe('NxSwitcherComponent', () => {
         inputElement.click();
         fixture.detectChanges();
         tick();
-        expect(switcherInstance.checked).toBe(false);
-        expect(inputElement.checked).toBe(false);
+        expect(switcherInstance.checked).toBeFalse();
+        expect(inputElement.checked).toBeFalse();
     }));
 
     it('toggles on click', () => {
@@ -172,7 +172,7 @@ describe('NxSwitcherComponent', () => {
             createTestComponent(BasicSwitcherOnPush);
             switcherInstance.negative = true;
             fixture.detectChanges();
-            expect(switcherNativeElement.classList.contains('is-negative')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('is-negative');
         });
 
         it('updates view on big change', () => {
@@ -180,17 +180,17 @@ describe('NxSwitcherComponent', () => {
 
             switcherInstance.big = true;
             fixture.detectChanges();
-            expect(switcherNativeElement.classList.contains('is-big')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('is-big');
         });
 
         it('updates view on labelSize change', () => {
             createTestComponent(BasicSwitcherOnPush);
             switcherInstance.labelSize = 'small';
             fixture.detectChanges();
-            expect(switcherNativeElement.classList).toContain('nx-switcher--small-label');
+            expect(switcherNativeElement).toHaveClass('nx-switcher--small-label');
             switcherInstance.labelSize = 'large';
             fixture.detectChanges();
-            expect(switcherNativeElement.classList).not.toContain('nx-switcher--small-label');
+            expect(switcherNativeElement).not.toHaveClass('nx-switcher--small-label');
         });
 
         it('updates view on disabled change', () => {
@@ -198,24 +198,24 @@ describe('NxSwitcherComponent', () => {
 
             switcherInstance.disabled = true;
             fixture.detectChanges();
-            expect(switcherNativeElement.classList.contains('is-disabled')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('is-disabled');
         });
 
         it('updates view on labelPosition value change', () => {
             createTestComponent(BasicSwitcherOnPush);
-            expect(switcherNativeElement.classList.contains('is-swapped')).toBe(false);
+            expect(switcherNativeElement).not.toHaveClass('is-swapped');
 
             switcherInstance.labelPosition = 'left';
             fixture.detectChanges();
-            expect(switcherNativeElement.classList.contains('is-swapped')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('is-swapped');
         });
 
         it('updates view on checked change', () => {
             createTestComponent(BasicSwitcherOnPush);
-            expect(switcherNativeElement.classList.contains('is-checked')).toBe(false);
+            expect(switcherNativeElement).not.toHaveClass('is-checked');
             switcherInstance.checked = true;
             fixture.detectChanges();
-            expect(switcherNativeElement.classList.contains('is-checked')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('is-checked');
         });
     });
 
@@ -223,30 +223,30 @@ describe('NxSwitcherComponent', () => {
         it('Should not show the error initially', () => {
             createTestComponent(ValidationSwitcherForm);
             const reactInstance = testInstance as ValidationSwitcherForm;
-            expect(reactInstance.testForm.touched).toBe(false);
+            expect(reactInstance.testForm.touched).toBeFalse();
             expect(reactInstance.testForm.status).toBe('INVALID');
-            expect(switcherNativeElement.classList).not.toContain('has-error');
-            expect(switcherNativeElement.classList).toContain('ng-untouched');
+            expect(switcherNativeElement).not.toHaveClass('has-error');
+            expect(switcherNativeElement).toHaveClass('ng-untouched');
         });
 
         it('Should reflect the error state', fakeAsync(() => {
             createTestComponent(ValidationSwitcherForm);
             const reactInstance = testInstance as ValidationSwitcherForm;
             assertChecked(false);
-            expect(switcherNativeElement.classList).not.toContain('has-error');
+            expect(switcherNativeElement).not.toHaveClass('has-error');
             inputElement.click();
             fixture.detectChanges();
             tick();
             assertChecked(true);
-            expect(reactInstance.testForm.touched).toBe(true);
+            expect(reactInstance.testForm.touched).toBeTrue();
             expect(reactInstance.testForm.status).toBe('VALID');
-            expect(switcherNativeElement.classList).not.toContain('has-error');
-            expect(switcherNativeElement.classList).toContain('ng-touched');
+            expect(switcherNativeElement).not.toHaveClass('has-error');
+            expect(switcherNativeElement).toHaveClass('ng-touched');
             inputElement.click();
             fixture.detectChanges();
             tick();
             assertChecked(false);
-            expect(switcherNativeElement.classList.contains('has-error')).toBe(true);
+            expect(switcherNativeElement).toHaveClass('has-error');
         }));
     });
 

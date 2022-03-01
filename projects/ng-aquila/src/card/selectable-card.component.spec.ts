@@ -133,10 +133,10 @@ describe('NxSelectableCardComponent', () => {
 
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
             createTestComponent(ReactiveSelectableCard);
-            expect(selectableCardNativeElement.classList.contains('has-error')).toBeFalsy();
+            expect(selectableCardNativeElement).not.toHaveClass('has-error');
             selectableCardInstance.ngControl.control!.markAsTouched();
             fixture.detectChanges();
-            expect(selectableCardNativeElement.classList.contains('has-error')).toBeTruthy();
+            expect(selectableCardNativeElement).toHaveClass('has-error');
         }));
     });
 
@@ -156,7 +156,7 @@ describe('NxSelectableCardComponent', () => {
             selectableCardInstance.ngControl.control!.markAsTouched();
             fixture.detectChanges();
 
-            expect(errors.length).toBe(inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ').length);
+            expect(errors).toHaveSize(inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ').length);
 
             expect(inputElement.attributes.getNamedItem('aria-describedby')!.value).toBe(errors.toArray()[0].id);
             testInstance.customError = true;
@@ -164,7 +164,7 @@ describe('NxSelectableCardComponent', () => {
 
             const errorIds = inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ');
 
-            expect(errorIds.length).toBe(errors.length);
+            expect(errorIds).toHaveSize(errors.length);
 
             errors.toArray().forEach(errorId => {
                 expect(errorIds).toContain(errorId.id);

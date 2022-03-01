@@ -60,7 +60,7 @@ describe('NxYearView', () => {
 
         it('has 12 months', () => {
             const cellEls = yearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cellEls.length).toBe(12);
+            expect(cellEls).toHaveSize(12);
         });
 
         it('shows selected month if in same year', () => {
@@ -99,7 +99,7 @@ describe('NxYearView', () => {
         it('should mark active date', () => {
             const cellEls = yearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
             expect((cellEls[0] as HTMLElement).innerText.trim()).toBe('Jan');
-            expect(cellEls[0].classList).toContain('nx-calendar-body-active');
+            expect(cellEls[0]).toHaveClass('nx-calendar-body-active');
         });
 
         it('should allow selection of month with less days than current active date', inject([NxDateAdapter], (adapter: NxNativeDateAdapter) => {
@@ -312,8 +312,8 @@ describe('NxYearView', () => {
 
         it('should disable months with no enabled days', () => {
             const cells = yearViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cells[0].classList).not.toContain('nx-calendar-body-disabled');
-            expect(cells[1].classList).toContain('nx-calendar-body-disabled');
+            expect(cells[0]).not.toHaveClass('nx-calendar-body-disabled');
+            expect(cells[1]).toHaveClass('nx-calendar-body-disabled');
         });
     });
 });

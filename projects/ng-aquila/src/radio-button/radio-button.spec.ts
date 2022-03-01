@@ -87,7 +87,7 @@ describe('NxRadioComponent', () => {
             expect(labelElements.item(0).textContent!.trim()).toBe('');
 
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(labelElements.item(0).classList).not.toContain('has-label');
+            expect(labelElements.item(0)).not.toHaveClass('has-label');
         });
 
         it('sets the given label', () => {
@@ -95,7 +95,7 @@ describe('NxRadioComponent', () => {
             expect(labelElements.item(0).textContent?.trim()).toBe('Label');
 
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(labelElements.item(0).classList).toContain('has-label');
+            expect(labelElements.item(0)).toHaveClass('has-label');
         });
 
         it('a click on the label changes the checked attribute', () => {
@@ -107,10 +107,10 @@ describe('NxRadioComponent', () => {
 
         it('displays the dot when checked', () => {
             createTestComponent(BasicRadio);
-            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot').length).toBe(0);
+            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(0);
             testInstance.radioInstances.toArray()[0].checked = true;
             fixture.detectChanges();
-            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot').length).toBe(1);
+            expect(fixture.nativeElement.querySelectorAll('.nx-radio__dot')).toHaveSize(1);
         });
 
         it('radio component emits change event', () => {
@@ -133,20 +133,20 @@ describe('NxRadioComponent', () => {
         it('renders a non-negative radio button on default', () => {
             createTestComponent(BasicRadio);
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(radioInstances.toArray()[0].negative).toBe(false);
-            expect(radioElement.classList).not.toContain('nx-radio--negative');
+            expect(radioInstances.toArray()[0].negative).toBeFalse();
+            expect(radioElement).not.toHaveClass('nx-radio--negative');
         });
 
         it('updates negative styling on change', () => {
             createTestComponent(ConfigurableRadio);
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(radioElement.classList).toContain('nx-radio--negative');
-            expect(radioInstances.toArray()[0].negative).toBe(true);
+            expect(radioElement).toHaveClass('nx-radio--negative');
+            expect(radioInstances.toArray()[0].negative).toBeTrue();
 
             testInstance.negative = false;
             fixture.detectChanges();
-            expect(radioElement.classList).not.toContain('nx-radio--negative');
-            expect(radioInstances.toArray()[0].negative).toBe(false);
+            expect(radioElement).not.toHaveClass('nx-radio--negative');
+            expect(radioInstances.toArray()[0].negative).toBeFalse();
         });
     });
 
@@ -226,33 +226,33 @@ describe('NxRadioComponent', () => {
 
         it('child radio components inherit disabled state from radio group', () => {
             createTestComponent(MultipleRadioDisabled);
-            expect(radioElements.item(0).disabled).toBe(true);
-            expect(radioElements.item(1).disabled).toBe(true);
+            expect(radioElements.item(0).disabled).toBeTrue();
+            expect(radioElements.item(1).disabled).toBeTrue();
         });
 
         it('should toggle disabled state', () => {
             createTestComponent(MultipleRadioDisabled);
             testInstance.disabled = false;
             fixture.detectChanges();
-            expect(radioElements.item(0).disabled).toBe(false);
-            expect(radioElements.item(1).disabled).toBe(false);
+            expect(radioElements.item(0).disabled).toBeFalse();
+            expect(radioElements.item(1).disabled).toBeFalse();
             testInstance.disabled = true;
             fixture.detectChanges();
-            expect(radioElements.item(0).disabled).toBe(true);
-            expect(radioElements.item(1).disabled).toBe(true);
+            expect(radioElements.item(0).disabled).toBeTrue();
+            expect(radioElements.item(1).disabled).toBeTrue();
         });
 
         it('should create a basic radio-group with non-negative styling', () => {
             createTestComponent(BasicRadioGroup);
             const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
             const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
-            expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
+            expect(radioGroupNative).not.toHaveClass('nx-radio-group--negative');
             radioElementsNative.forEach((radio: any) => {
-                expect(radio.classList).not.toContain('nx-radio--negative');
+                expect(radio).not.toHaveClass('nx-radio--negative');
             });
-            expect(testInstance.radioGroup.negative).toBe(false);
+            expect(testInstance.radioGroup.negative).toBeFalse();
             testInstance.radioInstances.toArray().forEach(radio => {
-                expect(radio.negative).toBe(false);
+                expect(radio.negative).toBeFalse();
             });
         });
 
@@ -260,25 +260,25 @@ describe('NxRadioComponent', () => {
             createTestComponent(MultipleRadio);
             const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
             const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
-            expect(radioGroupNative.classList).toContain('nx-radio-group--negative');
+            expect(radioGroupNative).toHaveClass('nx-radio-group--negative');
             radioElementsNative.forEach((radio: any) => {
-                expect(radio.classList).toContain('nx-radio--negative');
+                expect(radio).toHaveClass('nx-radio--negative');
             });
-            expect(testInstance.radioGroup.negative).toBe(true);
+            expect(testInstance.radioGroup.negative).toBeTrue();
             testInstance.radioInstances.toArray().forEach(radio => {
-                expect(radio.negative).toBe(true);
+                expect(radio.negative).toBeTrue();
             });
 
             testInstance.groupNegative = false;
             fixture.detectChanges();
 
-            expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
+            expect(radioGroupNative).not.toHaveClass('nx-radio-group--negative');
             radioElementsNative.forEach((radio: any) => {
-                expect(radio.classList).not.toContain('nx-radio--negative');
+                expect(radio).not.toHaveClass('nx-radio--negative');
             });
-            expect(testInstance.radioGroup.negative).toBe(false);
+            expect(testInstance.radioGroup.negative).toBeFalse();
             testInstance.radioInstances.toArray().forEach(radio => {
-                expect(radio.negative).toBe(false);
+                expect(radio.negative).toBeFalse();
             });
         });
 
@@ -290,13 +290,13 @@ describe('NxRadioComponent', () => {
 
             const radioElementsNative = fixture.nativeElement.querySelectorAll('nx-radio');
             const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
-            expect(radioGroupNative.classList).not.toContain('nx-radio-group--negative');
+            expect(radioGroupNative).not.toHaveClass('nx-radio-group--negative');
             radioElementsNative.forEach((radio: any) => {
-                expect(radio.classList).not.toContain('nx-radio--negative');
+                expect(radio).not.toHaveClass('nx-radio--negative');
             });
-            expect(testInstance.radioGroup.negative).toBe(false);
+            expect(testInstance.radioGroup.negative).toBeFalse();
             testInstance.radioInstances.toArray().forEach(radio => {
-                expect(radio.negative).toBe(false);
+                expect(radio.negative).toBeFalse();
             });
         });
 
@@ -337,13 +337,13 @@ describe('NxRadioComponent', () => {
             testInstance.testForm.controls.radioTestReactive.disable();
             fixture.detectChanges();
             Array.from(radioElements).map(radio => {
-                expect(radio.disabled).toBe(true);
+                expect(radio.disabled).toBeTrue();
             });
 
             testInstance.testForm.controls.radioTestReactive.enable();
             fixture.detectChanges();
             Array.from(radioElements).map(radio => {
-                expect(radio.disabled).toBe(false);
+                expect(radio.disabled).toBeFalse();
             });
         });
     });
@@ -368,13 +368,13 @@ describe('NxRadioComponent', () => {
             createTestComponent(BasicRadioOnPush);
             radioInstance = radioInstances.toArray()[0];
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(radioElement.classList).not.toContain('nx-radio-button--small-label');
-            expect(radioElement.classList).toContain('nx-radio-button--big-label');
+            expect(radioElement).not.toHaveClass('nx-radio-button--small-label');
+            expect(radioElement).toHaveClass('nx-radio-button--big-label');
 
             radioInstance.labelSize = 'small';
             fixture.detectChanges();
-            expect(radioElement.classList).toContain('nx-radio-button--small-label');
-            expect(radioElement.classList).not.toContain('nx-radio-button--big-label');
+            expect(radioElement).toHaveClass('nx-radio-button--small-label');
+            expect(radioElement).not.toHaveClass('nx-radio-button--big-label');
         });
 
         it('should update view on negative input change (nx-radio)', () => {
@@ -382,17 +382,17 @@ describe('NxRadioComponent', () => {
             createTestComponent(BasicRadioOnPush);
             radioInstance = radioInstances.toArray()[0];
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(radioElement.classList.contains('nx-radio--negative')).toBeFalsy();
+            expect(radioElement).not.toHaveClass('nx-radio--negative');
             radioInstance.negative = true;
             fixture.detectChanges();
-            expect(radioElement.classList.contains('nx-radio--negative')).toBeTruthy();
+            expect(radioElement).toHaveClass('nx-radio--negative');
         });
 
         it('should update on disabled change', () => {
             radioInstance.disabled = true;
             fixture.detectChanges();
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(getRadioInputElement(radioElement).disabled).toBe(true);
+            expect(getRadioInputElement(radioElement).disabled).toBeTrue();
         });
 
         it('should update on name change', () => {
@@ -406,7 +406,7 @@ describe('NxRadioComponent', () => {
             radioInstance.checked = true;
             fixture.detectChanges();
             const radioElement = fixture.nativeElement.querySelector('nx-radio');
-            expect(getRadioInputElement(radioElement).checked).toBe(true);
+            expect(getRadioInputElement(radioElement).checked).toBeTrue();
         });
 
         it('should update on required change', () => {
@@ -432,22 +432,22 @@ describe('NxRadioComponent', () => {
             createTestComponent(MultipleRadio);
             testInstance.radioGroup.disabled = true;
             fixture.detectChanges();
-            expect(radioElements.item(0).disabled).toBe(true);
+            expect(radioElements.item(0).disabled).toBeTrue();
         });
 
         it('should update on negative input change', () => {
             createTestComponent(MultipleRadioOnPush);
             const radioGroupNative = fixture.nativeElement.querySelector('nx-radio-group');
             const radioButtonsNative = fixture.nativeElement.querySelectorAll('nx-radio');
-            expect(radioGroupNative.classList.contains('nx-radio-group--negative')).toBeFalsy();
+            expect(radioGroupNative).not.toHaveClass('nx-radio-group--negative');
             radioButtonsNative.forEach((radio: any) => {
-                expect(radio.classList.contains('nx-radio--negative')).toBeFalsy();
+                expect(radio).not.toHaveClass('nx-radio--negative');
             });
             testInstance.radioGroup.negative = true;
             fixture.detectChanges();
-            expect(radioGroupNative.classList.contains('nx-radio-group--negative')).toBeTruthy();
+            expect(radioGroupNative).toHaveClass('nx-radio-group--negative');
             radioButtonsNative.forEach((radio: any) => {
-                expect(radio.classList.contains('nx-radio--negative')).toBeTruthy();
+                expect(radio).toHaveClass('nx-radio--negative');
             });
         });
 
@@ -485,14 +485,14 @@ describe('NxRadioComponent', () => {
             fixture.nativeElement.querySelector('button').click();
             fixture.detectChanges();
             const radios = fixture.nativeElement.querySelectorAll('nx-radio');
-            expect(radios[0].classList).toContain('has-error');
+            expect(radios[0]).toHaveClass('has-error');
         });
 
         it('Should be invalid when touched', () => {
             createTestComponent(RadioGroupValidationTouched);
             fixture.detectChanges();
             const radios = fixture.nativeElement.querySelectorAll('nx-radio');
-            expect(radios[0].classList).toContain('has-error');
+            expect(radios[0]).toHaveClass('has-error');
         });
 
         it('Should be valid', () => {
@@ -501,18 +501,18 @@ describe('NxRadioComponent', () => {
             radioElements[0].click();
             fixture.detectChanges();
             const radios = fixture.nativeElement.querySelectorAll('nx-radio');
-            expect(radios[0].classList).not.toContain('has-error');
+            expect(radios[0]).not.toHaveClass('has-error');
         });
 
         it('Should display nx-errors when invalid', () => {
             createTestComponent(RadioGroupValidation);
             let errors = fixture.nativeElement.querySelectorAll('nx-error');
-            expect(errors.length).toBe(0);
+            expect(errors).toHaveSize(0);
 
             fixture.nativeElement.querySelector('button').click();
             fixture.detectChanges();
             errors = fixture.nativeElement.querySelectorAll('nx-error');
-            expect(errors.length).toBe(1);
+            expect(errors).toHaveSize(1);
         });
     });
 

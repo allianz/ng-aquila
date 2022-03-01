@@ -46,8 +46,8 @@ describe('NxCalendarBodyComponent', () => {
         });
 
         it('creates body', () => {
-            expect(rowEls.length).toBe(2);
-            expect(cellEls.length).toBe(14);
+            expect(rowEls).toHaveSize(2);
+            expect(cellEls).toHaveSize(14);
         });
 
         it('highlights today', () => {
@@ -67,12 +67,12 @@ describe('NxCalendarBodyComponent', () => {
             todayElement.click();
             fixture.detectChanges();
 
-            expect(todayElement.classList).toContain('nx-calendar-body-selected', 'today should be selected');
+            expect(todayElement).withContext('today should be selected').toHaveClass('nx-calendar-body-selected');
         });
 
         it('should mark active date', () => {
             expect((cellEls[10] as HTMLElement).innerText.trim()).toBe('11');
-            expect(cellEls[10].classList).toContain('nx-calendar-body-active');
+            expect(cellEls[10]).toHaveClass('nx-calendar-body-active');
         });
     });
 
@@ -124,7 +124,7 @@ describe('NxCalendarBodyComponent', () => {
 
         it('should have correct number of total rows', () => {
             let rows = calendarBodyNativeElement.querySelectorAll('tr');
-            expect(rows.length).toBe(6);
+            expect(rows).toHaveSize(6);
 
             testComponent.previousItems = [];
             testComponent.rows = [
@@ -135,13 +135,13 @@ describe('NxCalendarBodyComponent', () => {
             fixture.detectChanges();
 
             rows = calendarBodyNativeElement.querySelectorAll('tr');
-            expect(rows.length).toBe(3);
+            expect(rows).toHaveSize(3);
         });
 
         it('should have the correct number of adjacent items', () => {
             const followingItemsCount = testComponent.previousItems.length + testComponent.followingItems.reduce((prev, next) => prev.concat(next)).length;
             let adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells.length).toBe(followingItemsCount);
+            expect(adjacentCells).toHaveSize(followingItemsCount);
 
             // only followingitems filled
             testComponent.previousItems = [];
@@ -153,7 +153,7 @@ describe('NxCalendarBodyComponent', () => {
             fixture.detectChanges();
 
             adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells.length).toBe(7);
+            expect(adjacentCells).toHaveSize(7);
 
             // only previous items filled
             testComponent.previousItems = [28, 29, 30];
@@ -166,7 +166,7 @@ describe('NxCalendarBodyComponent', () => {
             fixture.detectChanges();
 
             adjacentCells = calendarBodyNativeElement.querySelectorAll('.nx-calendar-adjacent-cell');
-            expect(adjacentCells.length).toBe(3);
+            expect(adjacentCells).toHaveSize(3);
         });
     });
 });

@@ -80,7 +80,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
 
         expect(overlayContainerElement.textContent).toContain('Pizza');
-        expect(dialogRef.componentInstance instanceof PizzaMsg).toBe(true);
+        expect(dialogRef.componentInstance instanceof PizzaMsg).toBeTrue();
         expect(dialogRef.componentInstance.dialogRef).toEqual(dialogRef);
 
         viewContainerFixture.detectChanges();
@@ -135,9 +135,9 @@ describe('NxDialog', () => {
         const dialogInjector = dialogRef.componentInstance.dialogInjector;
 
         expect(dialogRef.componentInstance.dialogRef).toBe(dialogRef);
-        expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer)).toBeTruthy(
-            'Expected the dialog component to be created with the injector from the viewContainerRef.',
-        );
+        expect(dialogInjector.get<DirectiveWithViewContainer>(DirectiveWithViewContainer))
+            .withContext('Expected the dialog component to be created with the injector from the viewContainerRef.')
+            .toBeTruthy();
     });
 
     it('should open a dialog with a component and no ViewContainerRef', () => {
@@ -146,7 +146,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
 
         expect(overlayContainerElement.textContent).toContain('Pizza');
-        expect(dialogRef.componentInstance instanceof PizzaMsg).toBe(true);
+        expect(dialogRef.componentInstance instanceof PizzaMsg).toBeTrue();
         expect(dialogRef.componentInstance.dialogRef).toBe(dialogRef);
 
         viewContainerFixture.detectChanges();
@@ -238,7 +238,9 @@ describe('NxDialog', () => {
 
             // beforeClose should emit before dialog container is destroyed
             const beforeCloseHandler = jasmine.createSpy('beforeClose callback').and.callFake(() => {
-                expect(overlayContainerElement.querySelector('nx-modal-container')).not.toBeNull('dialog container exists when beforeClose is called');
+                expect(overlayContainerElement.querySelector('nx-modal-container'))
+                    .withContext('dialog container exists when beforeClose is called')
+                    .not.toBeNull();
             });
 
             dialogRef.beforeClosed().subscribe(beforeCloseHandler);
@@ -260,7 +262,7 @@ describe('NxDialog', () => {
             flush();
 
             expect(overlayContainerElement.querySelector('nx-modal-container')).toBeNull();
-            expect(event.defaultPrevented).toBe(true);
+            expect(event.defaultPrevented).toBeTrue();
         }));
 
         it('should not close a dialog via the escape key with a modifier', fakeAsync(() => {
@@ -274,7 +276,7 @@ describe('NxDialog', () => {
             flush();
 
             expect(overlayContainerElement.querySelector('nx-modal-container')).toBeTruthy();
-            expect(event.defaultPrevented).toBe(false);
+            expect(event.defaultPrevented).toBeFalse();
         }));
 
         it('should close from a ViewContainerRef with OnPush change detection', fakeAsync(() => {
@@ -290,14 +292,14 @@ describe('NxDialog', () => {
             onPushFixture.detectChanges();
             flushMicrotasks();
 
-            expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(1, 'Expected one open dialog.');
+            expect(overlayContainerElement.querySelectorAll('nx-modal-container')).withContext('Expected one open dialog.').toHaveSize(1);
 
             dialogRef.close();
             flushMicrotasks();
             onPushFixture.detectChanges();
             tick(500);
 
-            expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(0, 'Expected no open dialogs.');
+            expect(overlayContainerElement.querySelectorAll('nx-modal-container')).withContext('Expected no open dialogs.').toHaveSize(0);
         }));
 
         it('should close when clicking on the overlay backdrop', fakeAsync(() => {
@@ -469,7 +471,7 @@ describe('NxDialog', () => {
 
         let overlayPane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
 
-        expect(overlayPane.style.maxWidth).toBe('736px', 'Expected dialog to set a default max-width on overlay pane');
+        expect(overlayPane.style.maxWidth).withContext('Expected dialog to set a default max-width on overlay pane').toBe('736px');
 
         dialogRef.close();
 
@@ -635,13 +637,13 @@ describe('NxDialog', () => {
         flush();
 
         // One view ref is for the container and one more for the component with the content.
-        expect(testViewContainerRef.length).toBe(2);
+        expect(testViewContainerRef).toHaveSize(2);
 
         dialogRef.close();
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(testViewContainerRef.length).toBe(0);
+        expect(testViewContainerRef).toHaveSize(0);
     }));
 
     it('should close all of the dialogs', fakeAsync(() => {
@@ -649,13 +651,13 @@ describe('NxDialog', () => {
         dialog.open(PizzaMsg);
         dialog.open(PizzaMsg);
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(3);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(3);
 
         dialog.closeAll();
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(0);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(0);
     }));
 
     it('should set the proper animation states', () => {
@@ -673,26 +675,26 @@ describe('NxDialog', () => {
         dialog.open(PizzaMsg);
         dialog.open(PizzaMsg);
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(2);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(2);
 
         mockLocation.simulateUrlPop('');
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(0);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(0);
     }));
 
     it('should close all open dialogs when the location hash changes', fakeAsync(() => {
         dialog.open(PizzaMsg);
         dialog.open(PizzaMsg);
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(2);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(2);
 
         mockLocation.simulateHashChange('');
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(0);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(0);
     }));
 
     it('should close all of the dialogs when the injectable is destroyed', fakeAsync(() => {
@@ -700,13 +702,13 @@ describe('NxDialog', () => {
         dialog.open(PizzaMsg);
         dialog.open(PizzaMsg);
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(3);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(3);
 
         dialog.ngOnDestroy();
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(0);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(0);
     }));
 
     it('should complete open and close streams when the injectable is destroyed', fakeAsync(() => {
@@ -730,13 +732,13 @@ describe('NxDialog', () => {
         dialog.open(PizzaMsg);
         dialog.open(PizzaMsg, { closeOnNavigation: false });
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(2);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(2);
 
         mockLocation.simulateUrlPop('');
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.querySelectorAll('nx-modal-container').length).toBe(1);
+        expect(overlayContainerElement.querySelectorAll('nx-modal-container')).toHaveSize(1);
     }));
 
     it('should have the componentInstance available in the afterClosed callback', fakeAsync(() => {
@@ -749,7 +751,7 @@ describe('NxDialog', () => {
 
         dialogRef.afterClosed().subscribe(() => {
             spy();
-            expect(dialogRef.componentInstance).toBeTruthy('Expected component instance to be defined.');
+            expect(dialogRef.componentInstance).withContext('Expected component instance to be defined.').toBeTruthy();
         });
 
         dialogRef.close();
@@ -830,7 +832,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(dialogRef.componentInstance).toBeFalsy('Expected reference to have been cleared.');
+        expect(dialogRef.componentInstance).withContext('Expected reference to have been cleared.').toBeFalsy();
     }));
 
     it('should assign a unique id to each dialog', () => {
@@ -865,14 +867,14 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to be hidden');
-        expect(overlayContainerElement.hasAttribute('aria-hidden')).toBe(false, 'Expected overlay container not to be hidden.');
+        expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to be hidden').toBe('true');
+        expect(overlayContainerElement.hasAttribute('aria-hidden')).withContext('Expected overlay container not to be hidden.').toBeFalse();
 
         dialogRef.close();
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(sibling.hasAttribute('aria-hidden')).toBe(false, 'Expected sibling to no longer be hidden.');
+        expect(sibling.hasAttribute('aria-hidden')).withContext('Expected sibling to no longer be hidden.').toBeFalse();
         sibling.parentNode!.removeChild(sibling);
     }));
 
@@ -886,13 +888,13 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to be hidden.');
+        expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to be hidden.').toBe('true');
 
         dialogRef.close();
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(sibling.getAttribute('aria-hidden')).toBe('true', 'Expected sibling to remain hidden.');
+        expect(sibling.getAttribute('aria-hidden')).withContext('Expected sibling to remain hidden.').toBe('true');
         sibling.parentNode!.removeChild(sibling);
     }));
 
@@ -906,7 +908,7 @@ describe('NxDialog', () => {
         viewContainerFixture.detectChanges();
         flush();
 
-        expect(sibling.hasAttribute('aria-hidden')).toBe(false, 'Expected live element not to be hidden.');
+        expect(sibling.hasAttribute('aria-hidden')).withContext('Expected live element not to be hidden.').toBeFalse();
         sibling.parentNode!.removeChild(sibling);
     }));
 
@@ -917,13 +919,13 @@ describe('NxDialog', () => {
         });
 
         const pane = overlayContainerElement.querySelector('.cdk-overlay-pane') as HTMLElement;
-        expect(pane.classList).not.toContain('custom-class-one', 'Expected class to be initially missing');
+        expect(pane).withContext('Expected class to be initially missing').not.toHaveClass('custom-class-one');
 
         dialogRef.addPanelClass('custom-class-one');
-        expect(pane.classList).toContain('custom-class-one', 'Expected class to be added');
+        expect(pane).withContext('Expected class to be added').toHaveClass('custom-class-one');
 
         dialogRef.removePanelClass('custom-class-one');
-        expect(pane.classList).not.toContain('custom-class-one', 'Expected class to be removed');
+        expect(pane).withContext('Expected class to be removed').not.toHaveClass('custom-class-one');
     });
 
     describe('disableClose option', () => {
@@ -1054,7 +1056,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).toBe('INPUT', 'Expected first tabbable element (input) in the dialog to be focused.');
+            expect(document.activeElement!.tagName).withContext('Expected first tabbable element (input) in the dialog to be focused.').toBe('INPUT');
         }));
 
         it('should allow disabling focus of the first tabbable element', fakeAsync(() => {
@@ -1082,16 +1084,16 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expected the focus to change when dialog was opened.');
+            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
 
             dialogRef.close();
-            expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expcted the focus not to have changed before the animation finishes.');
+            expect(document.activeElement!.id).withContext('Expcted the focus not to have changed before the animation finishes.').not.toBe('dialog-trigger');
 
             flushMicrotasks();
             viewContainerFixture.detectChanges();
             tick(500);
 
-            expect(document.activeElement!.id).toBe('dialog-trigger', 'Expected that the trigger was refocused after the dialog is closed.');
+            expect(document.activeElement!.id).withContext('Expected that the trigger was refocused after the dialog is closed.').toBe('dialog-trigger');
 
             document.body.removeChild(button);
         }));
@@ -1146,7 +1148,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).toBe('input-to-be-focused', 'Expected that the trigger was refocused after the dialog is closed.');
+            expect(document.activeElement!.id).withContext('Expected that the trigger was refocused after the dialog is closed.').toBe('input-to-be-focused');
 
             document.body.removeChild(button);
             document.body.removeChild(input);
@@ -1159,7 +1161,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.tagName).toBe('NX-MODAL-CONTAINER', 'Expected dialog container to be focused.');
+            expect(document.activeElement!.tagName).withContext('Expected dialog container to be focused.').toBe('NX-MODAL-CONTAINER');
         }));
 
         it('should be able to disable focus restoration', fakeAsync(() => {
@@ -1178,14 +1180,14 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expected the focus to change when dialog was opened.');
+            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
 
             dialogRef.close();
             flushMicrotasks();
             viewContainerFixture.detectChanges();
             tick(500);
 
-            expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expected focus not to have been restored.');
+            expect(document.activeElement!.id).withContext('Expected focus not to have been restored.').not.toBe('dialog-trigger');
 
             document.body.removeChild(button);
         }));
@@ -1207,19 +1209,19 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
             flushMicrotasks();
 
-            expect(document.activeElement!.id).not.toBe('dialog-trigger', 'Expected the focus to change when dialog was opened.');
+            expect(document.activeElement!.id).withContext('Expected the focus to change when dialog was opened.').not.toBe('dialog-trigger');
 
             // Start the closing sequence and move focus out of dialog.
             dialogRef.close();
             otherButton.focus();
 
-            expect(document.activeElement!.id).toBe('other-button', 'Expected focus to be on the alternate button.');
+            expect(document.activeElement!.id).withContext('Expected focus to be on the alternate button.').toBe('other-button');
 
             flushMicrotasks();
             viewContainerFixture.detectChanges();
             flush();
 
-            expect(document.activeElement!.id).toBe('other-button', 'Expected focus to stay on the alternate button.');
+            expect(document.activeElement!.id).withContext('Expected focus to stay on the alternate button.').toBe('other-button');
 
             body.removeChild(button);
             body.removeChild(otherButton);
@@ -1257,26 +1259,26 @@ describe('NxDialog', () => {
 
         function runContentElementTests() {
             it('should add the respective classes for content and action sections', fakeAsync(() => {
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__content').length).toBe(1);
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__actions').length).toBe(1);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__content')).toHaveSize(1);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__actions')).toHaveSize(1);
             }));
 
             it('should close the dialog when clicking on the close button', fakeAsync(() => {
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__container').length).toBe(1);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__container')).toHaveSize(1);
 
                 (overlayContainerElement.querySelector('button[nxModalClose]') as HTMLElement).click();
                 viewContainerFixture.detectChanges();
                 flush();
 
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__container').length).toBe(0);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__container')).toHaveSize(0);
             }));
 
             it('should not close if [nxModalClose] is applied on a non-button node', () => {
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__container').length).toBe(1);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__container')).toHaveSize(1);
 
                 (overlayContainerElement.querySelector('div[nxModalClose]') as HTMLElement).click();
 
-                expect(overlayContainerElement.querySelectorAll('.nx-modal__container').length).toBe(1);
+                expect(overlayContainerElement.querySelectorAll('.nx-modal__container')).toHaveSize(1);
             });
 
             it('should allow for a user-specified aria-label on the close button', fakeAsync(() => {
@@ -1332,7 +1334,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
 
             const container = overlayContainerElement.querySelector('nx-modal-container')!;
-            expect(container.hasAttribute('aria-labelledby')).toBe(false);
+            expect(container.hasAttribute('aria-labelledby')).toBeFalse();
         }));
     });
 
@@ -1358,7 +1360,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
 
             const container = overlayContainerElement.querySelector('nx-modal-container')!;
-            expect(container.hasAttribute('aria-labelledby')).toBe(false);
+            expect(container.hasAttribute('aria-labelledby')).toBeFalse();
         }));
     });
 });
@@ -1405,26 +1407,26 @@ describe('NxDialog with a parent NxDialog', () => {
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+        expect(overlayContainerElement.textContent).withContext('Expected a dialog to be opened').toContain('Pizza');
 
         childDialog.closeAll();
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.textContent!.trim()).toBe('', 'Expected closeAll on child NxDialog to close dialog opened by parent');
+        expect(overlayContainerElement.textContent!.trim()).withContext('Expected closeAll on child NxDialog to close dialog opened by parent').toBe('');
     }));
 
     it('should close dialogs opened by a child when calling closeAll on a parent NxDialog', fakeAsync(() => {
         childDialog.open(PizzaMsg);
         fixture.detectChanges();
 
-        expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+        expect(overlayContainerElement.textContent).withContext('Expected a dialog to be opened').toContain('Pizza');
 
         parentDialog.closeAll();
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.textContent!.trim()).toBe('', 'Expected closeAll on parent NxDialog to close dialog opened by child');
+        expect(overlayContainerElement.textContent!.trim()).withContext('Expected closeAll on parent NxDialog to close dialog opened by child').toBe('');
     }));
 
     it('should close the top dialog via the escape key', fakeAsync(() => {
@@ -1442,13 +1444,13 @@ describe('NxDialog with a parent NxDialog', () => {
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+        expect(overlayContainerElement.textContent).withContext('Expected a dialog to be opened').toContain('Pizza');
 
         childDialog.ngOnDestroy();
         fixture.detectChanges();
         flush();
 
-        expect(overlayContainerElement.textContent).toContain('Pizza', 'Expected a dialog to be opened');
+        expect(overlayContainerElement.textContent).withContext('Expected a dialog to be opened').toContain('Pizza');
     }));
 });
 

@@ -48,7 +48,7 @@ describe(NxExpandableTableCellComponent.name, () => {
         });
 
         it('has the bem class', () => {
-            expect(expandableTableCellElement.nativeElement.classList.contains('nx-expandable-table-cell')).toBeTruthy();
+            expect(expandableTableCellElement.nativeElement).toHaveClass('nx-expandable-table-cell');
         });
 
         it('renders the content', () => {

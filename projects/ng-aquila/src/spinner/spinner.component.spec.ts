@@ -48,29 +48,29 @@ describe('nxSpinnerComponent', () => {
 
     it('should update on size change', () => {
         createTestComponent(ConfigurableSpinner);
-        expect(spinnerNativeElement.classList).toMatch('nx-spinner--small');
+        expect(spinnerNativeElement).toHaveClass('nx-spinner--small');
         expect(componentInstance.size).toBe('small');
 
         testInstance.size = 'medium';
         fixture.detectChanges();
-        expect(spinnerNativeElement.classList).toMatch('nx-spinner--medium');
+        expect(spinnerNativeElement).toHaveClass('nx-spinner--medium');
         expect(componentInstance.size).toBe('medium');
 
         testInstance.size = 'large';
         fixture.detectChanges();
-        expect(spinnerNativeElement.classList).toMatch('nx-spinner--large');
+        expect(spinnerNativeElement).toHaveClass('nx-spinner--large');
         expect(componentInstance.size).toBe('large');
     });
 
     it('should update on negative change', () => {
         createTestComponent(ConfigurableSpinner);
-        expect(componentInstance.negative).toBe(false);
-        expect(spinnerNativeElement.classList).not.toContain('nx-spinner--negative');
+        expect(componentInstance.negative).toBeFalse();
+        expect(spinnerNativeElement).not.toHaveClass('nx-spinner--negative');
 
         testInstance.negative = true;
         fixture.detectChanges();
-        expect(componentInstance.negative).toBe(true);
-        expect(spinnerNativeElement.classList).toContain('nx-spinner--negative');
+        expect(componentInstance.negative).toBeTrue();
+        expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
     });
 
     describe('programmatic changes', () => {
@@ -79,7 +79,7 @@ describe('nxSpinnerComponent', () => {
 
             componentInstance.size = 'medium';
             fixture.detectChanges();
-            expect(spinnerNativeElement.classList).toMatch('medium');
+            expect(spinnerNativeElement).toHaveClass('nx-spinner--medium');
         });
 
         it('should update on negative change', () => {
@@ -87,7 +87,7 @@ describe('nxSpinnerComponent', () => {
 
             componentInstance.negative = true;
             fixture.detectChanges();
-            expect(spinnerNativeElement.classList).toContain('nx-spinner--negative');
+            expect(spinnerNativeElement).toHaveClass('nx-spinner--negative');
         });
     });
 

@@ -56,7 +56,7 @@ describe('NxTabHeaderComponent', () => {
         describe('auto select mode', () => {
             it('should be turned on by default', () => {
                 createTestComponent(BasicHeader);
-                expect(tabHeaderInstance.autoselect).toBe(true);
+                expect(tabHeaderInstance.autoselect).toBeTrue();
             });
 
             it('should emit selectFocusedIndex event', () => {
@@ -115,7 +115,7 @@ describe('NxTabHeaderComponent', () => {
             });
 
             it('autoselect should be turned off', () => {
-                expect(tabHeaderInstance.autoselect).toBe(false);
+                expect(tabHeaderInstance.autoselect).toBeFalse();
             });
 
             it('should move focus on LEFT and RIGHT arrow', () => {

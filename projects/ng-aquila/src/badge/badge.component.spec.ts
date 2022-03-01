@@ -44,14 +44,14 @@ describe('NxBadgeComponent', () => {
 
         it('should change the className according to the input', () => {
             createTestComponent(DefaultBadgeComponent);
-            expect(badgeNativeElement.classList.contains('nx-badge--active')).toBe(true);
+            expect(badgeNativeElement).toHaveClass('nx-badge--active');
             setType('critical');
-            expect(badgeNativeElement.classList.contains('nx-badge--critical')).toBe(true);
+            expect(badgeNativeElement).toHaveClass('nx-badge--critical');
         });
 
         it('should provide vibrant styling', () => {
             createTestComponent(VibrantBadgeComponent);
-            expect(badgeNativeElement.classList.contains('nx-badge--vibrant'));
+            expect(badgeNativeElement).toHaveClass('nx-badge--vibrant');
         });
     });
 
@@ -60,7 +60,7 @@ describe('NxBadgeComponent', () => {
             createTestComponent(BasicBadgeComponent);
             badgeInstance.type = 'critical';
             fixture.detectChanges();
-            expect(badgeNativeElement.classList.contains('nx-badge--critical')).toBe(true);
+            expect(badgeNativeElement).toHaveClass('nx-badge--critical');
         });
     });
 

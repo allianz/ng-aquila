@@ -95,7 +95,7 @@ describe('NxModalComponent', () => {
                 // with a delay due to modal closing animation, we cannot simply "expect(openedModal).toBeFalsy()" here.
                 // But if angular added the "ng-animating" class, we know that it did its job and since the animation
                 // is triggered on ":leave" (see NxModalComponent) the element is surely about to be removed.
-                expect(openedModal.classList.contains('ng-animating')).toBe(true);
+                expect(openedModal).toHaveClass('ng-animating');
             }),
         );
 
@@ -136,7 +136,7 @@ describe('NxModalComponent', () => {
                 const modalElement = fixture.nativeElement.querySelector('nx-modal');
                 const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
                 const containerStyles = window.getComputedStyle(modalContainer);
-                expect(modalElement.classList.contains('nx-modal--fixed-width')).toBe(true);
+                expect(modalElement).toHaveClass('nx-modal--fixed-width');
                 expect(containerStyles.width).toBe('736px');
             }),
         );

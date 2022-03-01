@@ -143,7 +143,7 @@ describe('NxMultiSelectComponent', () => {
         });
 
         it('is closed', async () => {
-            expect(await multiSelectHarness.isOpen()).toBe(false);
+            expect(await multiSelectHarness.isOpen()).toBeFalse();
         });
 
         it('has the aria attributes', async () => {
@@ -172,7 +172,7 @@ describe('NxMultiSelectComponent', () => {
             });
 
             it('opens the panel', async () => {
-                expect(await multiSelectHarness.isOpen()).toBe(true);
+                expect(await multiSelectHarness.isOpen()).toBeTrue();
             });
 
             describe('and clicking the backdrop', () => {
@@ -181,7 +181,7 @@ describe('NxMultiSelectComponent', () => {
                 });
 
                 it('closes the panel', async () => {
-                    expect(await multiSelectHarness.isOpen()).toBe(false);
+                    expect(await multiSelectHarness.isOpen()).toBeFalse();
                 });
             });
         });
@@ -194,7 +194,7 @@ describe('NxMultiSelectComponent', () => {
             it('focuses the filter', fakeAsync(async () => {
                 flush();
                 const filter = await multiSelectHarness.getFilter();
-                expect(await filter?.isFocused()).toBe(true);
+                expect(await filter?.isFocused()).toBeTrue();
             }));
 
             describe('when focusing another element in the panel', () => {
@@ -205,13 +205,13 @@ describe('NxMultiSelectComponent', () => {
 
                 it('focuses the filter', fakeAsync(async () => {
                     const filter = await multiSelectHarness.getFilter();
-                    expect(await filter?.isFocused()).toBe(true);
+                    expect(await filter?.isFocused()).toBeTrue();
                 }));
             });
 
             it('shows all options', async () => {
                 const options = await multiSelectHarness.getOptions();
-                expect(options.length).toBe(4);
+                expect(options).toHaveSize(4);
 
                 for (const [i, option] of testInstance.options.entries()) {
                     expect(await options[i].getLabelText()).toBe(option);
@@ -221,14 +221,14 @@ describe('NxMultiSelectComponent', () => {
             it('has no selected option', async () => {
                 const options = await multiSelectHarness.getOptions();
                 for (const option of options) {
-                    expect(await option.isSelected()).toBe(false);
+                    expect(await option.isSelected()).toBeFalse();
                 }
             });
 
             it('has no disabled option', async () => {
                 const options = await multiSelectHarness.getOptions();
                 for (const option of options) {
-                    expect(await option.isDisabled()).toBe(false);
+                    expect(await option.isDisabled()).toBeFalse();
                 }
             });
 
@@ -263,8 +263,8 @@ describe('NxMultiSelectComponent', () => {
 
             it('has checked the options', async () => {
                 const options = await multiSelectHarness.getOptions();
-                expect(await options[0].isSelected()).toBe(true);
-                expect(await options[3].isSelected()).toBe(true);
+                expect(await options[0].isSelected()).toBeTrue();
+                expect(await options[3].isSelected()).toBeTrue();
             });
 
             it('shows the value in the label', async () => {
@@ -282,8 +282,8 @@ describe('NxMultiSelectComponent', () => {
 
                 it('has no selected options', async () => {
                     const options = await multiSelectHarness.getOptions();
-                    expect(await options[0].isSelected()).toBe(false);
-                    expect(await options[3].isSelected()).toBe(false);
+                    expect(await options[0].isSelected()).toBeFalse();
+                    expect(await options[3].isSelected()).toBeFalse();
                 });
 
                 it('has an empty label', async () => {
@@ -303,7 +303,7 @@ describe('NxMultiSelectComponent', () => {
                 it('has selected all options', async () => {
                     const options = await multiSelectHarness.getOptions();
                     for (const option of options) {
-                        expect(await option.isSelected()).toBe(true);
+                        expect(await option.isSelected()).toBeTrue();
                     }
                 });
 
@@ -323,7 +323,7 @@ describe('NxMultiSelectComponent', () => {
                     it('has no selected options', async () => {
                         const options = await multiSelectHarness.getOptions();
                         for (const option of options) {
-                            expect(await option.isSelected()).toBe(false);
+                            expect(await option.isSelected()).toBeFalse();
                         }
                     });
 
@@ -345,7 +345,7 @@ describe('NxMultiSelectComponent', () => {
                 });
 
                 it('is open', async () => {
-                    expect(await multiSelectHarness.isOpen()).toBe(true);
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
                 });
             });
 
@@ -355,7 +355,7 @@ describe('NxMultiSelectComponent', () => {
                 });
 
                 it('is open', async () => {
-                    expect(await multiSelectHarness.isOpen()).toBe(true);
+                    expect(await multiSelectHarness.isOpen()).toBeTrue();
                 });
 
                 describe('and closing using ESC', () => {
@@ -364,7 +364,7 @@ describe('NxMultiSelectComponent', () => {
                     });
 
                     it('is closed', async () => {
-                        expect(await multiSelectHarness.isOpen()).toBe(false);
+                        expect(await multiSelectHarness.isOpen()).toBeFalse();
                     });
                 });
 
@@ -374,7 +374,7 @@ describe('NxMultiSelectComponent', () => {
                     });
 
                     it('is closed', async () => {
-                        expect(await multiSelectHarness.isOpen()).toBe(false);
+                        expect(await multiSelectHarness.isOpen()).toBeFalse();
                     });
                 });
             });
@@ -392,7 +392,7 @@ describe('NxMultiSelectComponent', () => {
 
                 it('sets the first option active', async () => {
                     const options = await multiSelectHarness.getOptions();
-                    expect(await options[0].isActive()).toBe(true);
+                    expect(await options[0].isActive()).toBeTrue();
                 });
 
                 it('sets the aria activedecenant', async () => {
@@ -411,7 +411,7 @@ describe('NxMultiSelectComponent', () => {
 
                     it('sets the second option active', async () => {
                         const options = await multiSelectHarness.getOptions();
-                        expect(await options[1].isActive()).toBe(true);
+                        expect(await options[1].isActive()).toBeTrue();
                     });
 
                     it('sets the aria activedecenant', async () => {
@@ -430,7 +430,7 @@ describe('NxMultiSelectComponent', () => {
 
                         it('sets the first option active', async () => {
                             const options = await multiSelectHarness.getOptions();
-                            expect(await options[0].isActive()).toBe(true);
+                            expect(await options[0].isActive()).toBeTrue();
                         });
                     });
                 });
@@ -444,7 +444,7 @@ describe('NxMultiSelectComponent', () => {
 
                 it('selects the first option', async () => {
                     const options = await multiSelectHarness.getOptions();
-                    expect(await options[0].isSelected()).toBe(true);
+                    expect(await options[0].isSelected()).toBeTrue();
                 });
 
                 describe('and deselecting', () => {
@@ -454,7 +454,7 @@ describe('NxMultiSelectComponent', () => {
 
                     it('deselects the first option', async () => {
                         const options = await multiSelectHarness.getOptions();
-                        expect(await options[0].isSelected()).toBe(false);
+                        expect(await options[0].isSelected()).toBeFalse();
                     });
                 });
             });
@@ -466,7 +466,7 @@ describe('NxMultiSelectComponent', () => {
 
                 it('shows only matching options', async () => {
                     const options = await multiSelectHarness.getOptions();
-                    expect(options.length).toBe(2);
+                    expect(options).toHaveSize(2);
                     expect(await options[0].getLabelText()).toBe('Audi');
                     expect(await options[1].getLabelText()).toBe('Mini');
                 });
@@ -483,7 +483,7 @@ describe('NxMultiSelectComponent', () => {
 
                     it('sets the first option active', async () => {
                         const options = await multiSelectHarness.getOptions();
-                        expect(await options[0].isActive()).toBe(true);
+                        expect(await options[0].isActive()).toBeTrue();
                     });
                 });
 
@@ -494,7 +494,7 @@ describe('NxMultiSelectComponent', () => {
 
                     it('shows all options', async () => {
                         const options = await multiSelectHarness.getOptions();
-                        expect(options.length).toBe(4);
+                        expect(options).toHaveSize(4);
                     });
                 });
             });
@@ -537,7 +537,7 @@ describe('NxMultiSelectComponent', () => {
 
         it('shows all options with the selected label', async () => {
             const options = await multiSelectHarness.getOptions();
-            expect(options.length).toBe(3);
+            expect(options).toHaveSize(3);
 
             ['Apple', 'Orange', 'Cherry'].forEach(async (label, i) => {
                 expect(await options[i].getLabelText()).toBe(label);
@@ -597,7 +597,7 @@ describe('NxMultiSelectComponent', () => {
 
             it('shows all options with the selected label', async () => {
                 const options = await multiSelectHarness.getOptions();
-                expect(options.length).toBe(3);
+                expect(options).toHaveSize(3);
 
                 ['A', 'O', 'C'].forEach(async (label, i) => {
                     expect(await options[i].getLabelText()).toBe(label);

@@ -63,7 +63,7 @@ describe('NxMessageToast', () => {
             fixture.detectChanges();
             flush();
 
-            expect(overlayContainerElement.childNodes.length).toBe(0);
+            expect(overlayContainerElement.childNodes).toHaveSize(0);
         }));
 
         it('should remove past message toasts when opening new message toasts', fakeAsync(() => {
@@ -126,7 +126,7 @@ describe('NxMessageToast', () => {
             fixture.detectChanges();
             flush();
 
-            expect(overlayContainerElement.childNodes.length).toBe(0);
+            expect(overlayContainerElement.childNodes).toHaveSize(0);
         }));
     });
 

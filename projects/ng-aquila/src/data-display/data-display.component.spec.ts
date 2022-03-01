@@ -76,7 +76,7 @@ describe('DataDisplayComponent', () => {
         });
 
         it('is large', async () => {
-            expect(await dataDisplayHarness.hasSize('large')).toBe(true);
+            expect(await dataDisplayHarness.hasSize('large')).toBeTrue();
         });
     });
 
@@ -102,7 +102,7 @@ describe('DataDisplayComponent', () => {
         });
 
         it('is horizontal', async () => {
-            expect(await dataDisplayHarness.isHorizontal()).toBe(true);
+            expect(await dataDisplayHarness.isHorizontal()).toBeTrue();
         });
     });
 
@@ -115,7 +115,7 @@ describe('DataDisplayComponent', () => {
             it(`is ${size}`, async () => {
                 testInstance.size = size;
                 fixture.detectChanges();
-                expect(await dataDisplayHarness.hasSize(size)).toBe(true);
+                expect(await dataDisplayHarness.hasSize(size)).toBeTrue();
             });
         });
     });

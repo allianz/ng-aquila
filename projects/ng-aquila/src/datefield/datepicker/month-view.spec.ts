@@ -33,7 +33,7 @@ describe('NxMonthView', () => {
     );
 
     function assertAdjacentCells(cells: NxCalendarCell[], assertValues: number[]) {
-        expect(cells.length).toBe(assertValues.length);
+        expect(cells).toHaveSize(assertValues.length);
 
         for (let i = 0; i < cells.length; i++) {
             expect(cells[i].value).toBe(assertValues[i]);
@@ -61,7 +61,7 @@ describe('NxMonthView', () => {
 
         it('has 31 days', () => {
             const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cellEls.length).toBe(31);
+            expect(cellEls).toHaveSize(31);
         });
 
         it('shows selected date if in same month', () => {
@@ -168,7 +168,7 @@ describe('NxMonthView', () => {
         it('should mark active date', () => {
             const cellEls = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
             expect((cellEls[4] as HTMLElement).innerText.trim()).toBe('5');
-            expect(cellEls[4].classList).toContain('nx-calendar-body-active');
+            expect(cellEls[4]).toHaveClass('nx-calendar-body-active');
         });
 
         it('should return the correct number of previous items', () => {
@@ -181,33 +181,33 @@ describe('NxMonthView', () => {
             testComponent.activeDate = new Date(2019, SEP, 10);
             fixture.detectChanges();
             previousItems = monthViewInstance._getLastDaysOfPreviousMonth();
-            expect(previousItems.length).toBe(0);
+            expect(previousItems).toHaveSize(0);
         });
 
         it('should return the correct number of following items', () => {
             testComponent.activeDate = new Date(2019, MAR, 16);
             fixture.detectChanges();
             let followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems.length).toBe(1);
+            expect(followingItems).toHaveSize(1);
             assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6]);
 
             testComponent.activeDate = new Date(2019, MAY, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems.length).toBe(2);
+            expect(followingItems).toHaveSize(2);
             assertAdjacentCells(followingItems[0], [1]);
             assertAdjacentCells(followingItems[1], [2, 3, 4, 5, 6, 7, 8]);
 
             testComponent.activeDate = new Date(2019, AUG, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems.length).toBe(1);
+            expect(followingItems).toHaveSize(1);
             assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6, 7]);
 
             testComponent.activeDate = new Date(2015, FEB, 16);
             fixture.detectChanges();
             followingItems = monthViewInstance._getFirstDaysOfFollowingMonth();
-            expect(followingItems.length).toBe(2);
+            expect(followingItems).toHaveSize(2);
             assertAdjacentCells(followingItems[0], [1, 2, 3, 4, 5, 6, 7]);
             assertAdjacentCells(followingItems[1], [8, 9, 10, 11, 12, 13, 14]);
         });
@@ -388,8 +388,8 @@ describe('NxMonthView', () => {
 
         it('should disable filtered dates', () => {
             const cells = monthViewNativeElement.querySelectorAll('.nx-calendar-body-cell');
-            expect(cells[0].classList).toContain('nx-calendar-body-disabled');
-            expect(cells[1].classList).not.toContain('nx-calendar-body-disabled');
+            expect(cells[0]).toHaveClass('nx-calendar-body-disabled');
+            expect(cells[1]).not.toHaveClass('nx-calendar-body-disabled');
         });
     });
 });

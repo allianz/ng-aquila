@@ -57,7 +57,7 @@ describe('StackBlitzWriter', () => {
         stackBlitzWriter._addFileToForm(form, data, 'Test', 'test.html', 'path/to/file', false);
         stackBlitzWriter._addFileToForm(form, data, 'Detail', 'src/detail.ts', 'path/to/file', false);
 
-        expect(form.elements.length).toBe(3);
+        expect(form.elements).toHaveSize(3);
         expect(form.elements[0].getAttribute('name')).toBe('files[src/app/test.ts]');
         expect(form.elements[1].getAttribute('name')).toBe('files[src/app/test.html]');
         expect(form.elements[2].getAttribute('name')).toBe('files[src/app/src/detail.ts]');
@@ -74,7 +74,7 @@ describe('StackBlitzWriter', () => {
             }
             flushMicrotasks();
 
-            expect(form.elements.length).toBe(14);
+            expect(form.elements).toHaveSize(14);
 
             // Should have correct tags
             expect(form.elements[0].getAttribute('name')).toBe('tags[0]');

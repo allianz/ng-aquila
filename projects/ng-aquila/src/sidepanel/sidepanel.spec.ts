@@ -63,19 +63,19 @@ describe('NxSidepanelComponent', () => {
         );
 
         it('is open by default', () => {
-            expect(sidepanelInstance.opened).toBe(true);
-            expect(sidepanelElement.nativeElement.classList).not.toContain('is-closed');
+            expect(sidepanelInstance.opened).toBeTrue();
+            expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
         });
 
         it('has position floating by default', () => {
             expect(sidepanelInstance.position).toBe('floating');
-            expect(sidepanelElement.nativeElement.classList).toContain('is-floating');
-            expect(sidepanelElement.nativeElement.classList).not.toContain('is-static');
+            expect(sidepanelElement.nativeElement).toHaveClass('is-floating');
+            expect(sidepanelElement.nativeElement).not.toHaveClass('is-static');
         });
 
         it('is dark by default', () => {
             expect(sidepanelInstance.appearance).toBe('dark');
-            expect(sidepanelElement.nativeElement.classList).not.toContain('light');
+            expect(sidepanelElement.nativeElement).not.toHaveClass('light');
         });
 
         it('has open-instant state by default', () => {
@@ -117,13 +117,13 @@ describe('NxSidepanelComponent', () => {
         it('toggles the sidepanel on input change', () => {
             testInstance.opened = false;
             fixture.detectChanges();
-            expect(sidepanelInstance.opened).toBe(false);
-            expect(sidepanelElement.nativeElement.classList).toContain('is-closed');
+            expect(sidepanelInstance.opened).toBeFalse();
+            expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
 
             testInstance.opened = true;
             fixture.detectChanges();
-            expect(sidepanelInstance.opened).toBe(true);
-            expect(sidepanelElement.nativeElement.classList).not.toContain('is-closed');
+            expect(sidepanelInstance.opened).toBeTrue();
+            expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
         });
 
         it('emits change event if opened has changed', () => {
@@ -132,8 +132,8 @@ describe('NxSidepanelComponent', () => {
 
             sidepanelInstance.toggle();
             fixture.detectChanges();
-            expect(testInstance.opened).toBe(false);
-            expect(sidepanelElement.nativeElement.classList).toContain('is-closed');
+            expect(testInstance.opened).toBeFalse();
+            expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
         });
 
         it('opens the sidepanel on open()', () => {
@@ -142,8 +142,8 @@ describe('NxSidepanelComponent', () => {
 
             sidepanelInstance.open();
             fixture.detectChanges();
-            expect(testInstance.opened).toBe(true);
-            expect(sidepanelElement.nativeElement.classList).not.toContain('is-closed');
+            expect(testInstance.opened).toBeTrue();
+            expect(sidepanelElement.nativeElement).not.toHaveClass('is-closed');
         });
 
         it('closes the sidepanel on close()', () => {
@@ -152,8 +152,8 @@ describe('NxSidepanelComponent', () => {
 
             sidepanelInstance.close();
             fixture.detectChanges();
-            expect(testInstance.opened).toBe(false);
-            expect(sidepanelElement.nativeElement.classList).toContain('is-closed');
+            expect(testInstance.opened).toBeFalse();
+            expect(sidepanelElement.nativeElement).toHaveClass('is-closed');
         });
 
         it('updates the openState to "closed" when closing', () => {
@@ -177,8 +177,8 @@ describe('NxSidepanelComponent', () => {
             testInstance.position = 'static';
             fixture.detectChanges();
             expect(sidepanelInstance.position).toBe('static');
-            expect(sidepanelElement.nativeElement.classList).toContain('is-static');
-            expect(sidepanelElement.nativeElement.classList).not.toContain('is-floating');
+            expect(sidepanelElement.nativeElement).toHaveClass('is-static');
+            expect(sidepanelElement.nativeElement).not.toHaveClass('is-floating');
         });
     });
 
@@ -191,7 +191,7 @@ describe('NxSidepanelComponent', () => {
             testInstance.appearance = 'light';
             fixture.detectChanges();
             expect(sidepanelInstance.appearance).toBe('light');
-            expect(sidepanelElement.nativeElement.classList).toContain('light');
+            expect(sidepanelElement.nativeElement).toHaveClass('light');
         });
     });
 
@@ -203,15 +203,15 @@ describe('NxSidepanelComponent', () => {
         });
 
         it('does not set a margin class when creating', () => {
-            expect(outerContainerElement.nativeElement.classList).not.toContain('with-margin');
-            expect(outerContainerElement.nativeElement.classList).not.toContain('without-margin');
+            expect(outerContainerElement.nativeElement).not.toHaveClass('with-margin');
+            expect(outerContainerElement.nativeElement).not.toHaveClass('without-margin');
         });
 
         it('adds correct class when sidepanel is closed', () => {
             sidepanelInstance.close();
             fixture.detectChanges();
-            expect(outerContainerElement.nativeElement.classList).not.toContain('with-margin');
-            expect(outerContainerElement.nativeElement.classList).toContain('without-margin');
+            expect(outerContainerElement.nativeElement).not.toHaveClass('with-margin');
+            expect(outerContainerElement.nativeElement).toHaveClass('without-margin');
         });
 
         it('adds correct class when sidepanel is opened again', () => {
@@ -219,8 +219,8 @@ describe('NxSidepanelComponent', () => {
             fixture.detectChanges();
             sidepanelInstance.open();
             fixture.detectChanges();
-            expect(outerContainerElement.nativeElement.classList).toContain('with-margin');
-            expect(outerContainerElement.nativeElement.classList).not.toContain('without-margin');
+            expect(outerContainerElement.nativeElement).toHaveClass('with-margin');
+            expect(outerContainerElement.nativeElement).not.toHaveClass('without-margin');
         });
     });
 

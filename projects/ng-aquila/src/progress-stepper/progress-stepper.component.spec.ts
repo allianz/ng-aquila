@@ -41,7 +41,7 @@ describe('NxProgressStepperDirective', () => {
 
     it('should hold the correct number of steps', fakeAsync(() => {
         createTestComponent(ProgressStepperBasicComponent);
-        expect(componentInstance._steps.length).toBe(2);
+        expect(componentInstance._steps).toHaveSize(2);
     }));
 
     it('should use the custom current step label', () => {

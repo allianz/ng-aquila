@@ -47,7 +47,7 @@ describe('NxDropdownItem component', () => {
         fixture.detectChanges();
 
         itemInstance.select();
-        expect(itemInstance.selected).toBe(true);
+        expect(itemInstance.selected).toBeTrue();
 
         const spy = jasmine.createSpy('selection change spy');
         const subscription = itemInstance.onSelectionChange.subscribe(spy);
@@ -55,7 +55,7 @@ describe('NxDropdownItem component', () => {
         itemInstance.select();
         fixture.detectChanges();
 
-        expect(itemInstance.selected).toBe(true);
+        expect(itemInstance.selected).toBeTrue();
         expect(spy).not.toHaveBeenCalled();
 
         subscription.unsubscribe();
@@ -66,7 +66,7 @@ describe('NxDropdownItem component', () => {
         fixture.detectChanges();
 
         itemInstance.deselect();
-        expect(itemInstance.selected).toBe(false);
+        expect(itemInstance.selected).toBeFalse();
 
         const spy = jasmine.createSpy('selection change spy');
         const subscription = itemInstance.onSelectionChange.subscribe(spy);
@@ -74,7 +74,7 @@ describe('NxDropdownItem component', () => {
         itemInstance.deselect();
         fixture.detectChanges();
 
-        expect(itemInstance.selected).toBe(false);
+        expect(itemInstance.selected).toBeFalse();
         expect(spy).not.toHaveBeenCalled();
 
         subscription.unsubscribe();

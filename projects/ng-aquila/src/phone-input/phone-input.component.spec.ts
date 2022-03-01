@@ -71,7 +71,7 @@ describe('PhoneInputComponent', () => {
     it('should have class on input', () => {
         createTestComponent(DefaultPhoneInput);
         const input = getInput().nativeElement;
-        expect(input.classList).toContain('c-input');
+        expect(input).toHaveClass('c-input');
     });
 
     it('should class on readonly input', () => {
@@ -79,15 +79,15 @@ describe('PhoneInputComponent', () => {
         testInstance.readonly = true;
         fixture.detectChanges();
         const input = getInput().nativeElement;
-        expect(input.classList).toContain('c-input');
+        expect(input).toHaveClass('c-input');
     });
 
     it('should visually hide the dropdown when readonly', () => {
         createTestComponent(ConfigurablePhoneInput);
-        expect(fixture.nativeElement.querySelector('nx-dropdown').classList).not.toContain('hide');
+        expect(fixture.nativeElement.querySelector('nx-dropdown')).not.toHaveClass('hide');
         testInstance.readonly = true;
         fixture.detectChanges();
-        expect(fixture.nativeElement.querySelector('nx-dropdown').classList).toContain('hide');
+        expect(fixture.nativeElement.querySelector('nx-dropdown')).toHaveClass('hide');
     });
 
     it('should show the unformatted value when readonly', fakeAsync(() => {
@@ -106,12 +106,12 @@ describe('PhoneInputComponent', () => {
         testInstance.disabled = true;
         fixture.detectChanges();
         const input = getInput()?.nativeElement;
-        expect(dropdown.componentInstance.disabled).toBe(true);
+        expect(dropdown.componentInstance.disabled).toBeTrue();
         expect(input.getAttribute('disabled')).toBe('true');
         testInstance.disabled = false;
         fixture.detectChanges();
-        expect(dropdown.componentInstance.disabled).toBe(false);
-        expect(input.getAttribute('disabled')).toBe(null);
+        expect(dropdown.componentInstance.disabled).toBeFalse();
+        expect(input.getAttribute('disabled')).toBeNull();
     });
 
     it('should update template after patchValue', fakeAsync(() => {
@@ -154,12 +154,12 @@ describe('PhoneInputComponent', () => {
         (testInstance as ReactiveFormsPhoneInput).formControl.disable();
         fixture.detectChanges();
         const input = getInput()?.nativeElement;
-        expect(dropdown.componentInstance.disabled).toBe(true);
+        expect(dropdown.componentInstance.disabled).toBeTrue();
         expect(input.getAttribute('disabled')).toBe('true');
         (testInstance as ReactiveFormsPhoneInput).formControl.enable();
         fixture.detectChanges();
-        expect(dropdown.componentInstance.disabled).toBe(false);
-        expect(input.getAttribute('disabled')).toBe(null);
+        expect(dropdown.componentInstance.disabled).toBeFalse();
+        expect(input.getAttribute('disabled')).toBeNull();
     });
 
     it('should remove leading zeros by default on blur', fakeAsync(() => {
@@ -253,7 +253,7 @@ describe('PhoneInputComponent', () => {
 
     it('should have countries', () => {
         createTestComponent(DefaultPhoneInput);
-        expect(Object.keys(phoneInputInstance.countryNames).length).toBeGreaterThan(0);
+        expect(Object.keys(phoneInputInstance.countryNames)).not.toHaveSize(0);
         dispatchFakeEvent(dropdown.nativeElement, 'click');
         fixture.detectChanges();
         expect(getPanel().innerText).toContain('Germany');

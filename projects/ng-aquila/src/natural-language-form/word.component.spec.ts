@@ -141,13 +141,13 @@ describe('NxNaturalLanguageFormComponent', () => {
             tick();
 
             const word = testInstance.words.first;
-            expect(word.nativeElement.classList.contains('size-long')).toBe(true);
+            expect(word.nativeElement).toHaveClass('size-long');
 
             testInstance.size = 'short';
             fixture.detectChanges();
             tick();
 
-            expect(word.nativeElement.classList.contains('size-short')).toBe(true);
+            expect(word.nativeElement).toHaveClass('size-short');
         }));
 
         it('should grow and shrink words with input', fakeAsync(() => {
@@ -215,13 +215,13 @@ describe('NxNaturalLanguageFormComponent', () => {
             const nlfElement = fixture.nativeElement.querySelector('nx-natural-language-form') as HTMLButtonElement;
 
             expect(testInstance.formInstance.size).toBe('small');
-            expect(nlfElement.classList).toContain('nx-natural-language-form--small');
+            expect(nlfElement).toHaveClass('nx-natural-language-form--small');
 
             testInstance.formInstance.size = 'large';
             fixture.detectChanges();
 
             expect(testInstance.formInstance.size).toBe('large');
-            expect(nlfElement.classList.contains('nx-natural-language-form--large')).toBe(true);
+            expect(nlfElement).toHaveClass('nx-natural-language-form--large');
         });
     });
 });

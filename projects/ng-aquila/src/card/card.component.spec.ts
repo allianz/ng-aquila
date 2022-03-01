@@ -46,7 +46,7 @@ describe('NxCardComponent', () => {
         });
 
         it('has no tabindex attribute', () => {
-            expect(cardNativeElement.getAttribute('tabindex')).toBe(null);
+            expect(cardNativeElement.getAttribute('tabindex')).toBeNull();
         });
     });
 

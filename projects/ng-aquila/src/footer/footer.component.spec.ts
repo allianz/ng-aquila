@@ -42,19 +42,19 @@ describe(NxFooterComponent.name, () => {
         });
 
         it('should apply the bem class to the footer', () => {
-            expect(footerNativeElement.classList.contains('nx-footer')).toBe(true);
+            expect(footerNativeElement).toHaveClass('nx-footer');
         });
 
         it('should apply the bem class to the footer navigation', () => {
-            expect(footerNativeElement.querySelector('nx-footer-navigation')?.classList.contains('nx-footer__navigation')).toBeTrue();
+            expect(footerNativeElement.querySelector('nx-footer-navigation')).toHaveClass('nx-footer__navigation');
         });
 
         it('should apply the bem class to the copyright part', () => {
-            expect(footerNativeElement.querySelector('nx-footer-copyright')?.classList.contains('nx-footer__copyright')).toBeTrue();
+            expect(footerNativeElement.querySelector('nx-footer-copyright')).toHaveClass('nx-footer__copyright');
         });
 
         it('should apply the bem class to the link', () => {
-            expect(footerNativeElement.querySelector('nx-footer-link')?.classList.contains('nx-footer__link')).toBeTrue();
+            expect(footerNativeElement.querySelector('nx-footer-link')).toHaveClass('nx-footer__link');
         });
     });
 

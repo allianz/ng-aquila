@@ -38,7 +38,7 @@ describe('ComparisonTableFlexRow', () => {
             createTestComponent(BasicComponent);
             flexRowElements.forEach(flexRow => {
                 const rows = flexRow.queryAll(By.css('.nx-comparison-table__row'));
-                expect(rows.length).toBe(1);
+                expect(rows).toHaveSize(1);
             });
         });
 
@@ -50,9 +50,9 @@ describe('ComparisonTableFlexRow', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
 
-            expect(flexRowElements[0].queryAll(By.css('.nx-comparison-table__row')).length).toBe(1); // header row
-            expect(flexRowElements[1].queryAll(By.css('.nx-comparison-table__row')).length).toBe(2); // content row
-            expect(flexRowElements[2].queryAll(By.css('.nx-comparison-table__row')).length).toBe(1); // footer row
+            expect(flexRowElements[0].queryAll(By.css('.nx-comparison-table__row'))).toHaveSize(1); // header row
+            expect(flexRowElements[1].queryAll(By.css('.nx-comparison-table__row'))).toHaveSize(2); // content row
+            expect(flexRowElements[2].queryAll(By.css('.nx-comparison-table__row'))).toHaveSize(1); // footer row
 
             // and correct role on both
             fixture.debugElement.queryAll(By.css('.nx-comparison-table__row')).forEach(row => {
@@ -64,13 +64,13 @@ describe('ComparisonTableFlexRow', () => {
             createTestComponent(BasicComponent);
 
             const headerPlaceholder = flexRowElements[0].queryAll(By.css('.nx-comparison-table__placeholder-cell'));
-            expect(headerPlaceholder.length).toBe(1);
+            expect(headerPlaceholder).toHaveSize(1);
 
             const contentPlaceholder = flexRowElements[1].queryAll(By.css('.nx-comparison-table__placeholder-cell'));
-            expect(contentPlaceholder.length).toBe(0);
+            expect(contentPlaceholder).toHaveSize(0);
 
             const footerPlaceholder = flexRowElements[2].queryAll(By.css('.nx-comparison-table__placeholder-cell'));
-            expect(footerPlaceholder.length).toBe(1);
+            expect(footerPlaceholder).toHaveSize(1);
         });
 
         it('should have no placeholder cells on (tablet)', fakeAsync(() => {
@@ -82,7 +82,7 @@ describe('ComparisonTableFlexRow', () => {
 
             flexRowElements.forEach(flexRow => {
                 const placeholder = flexRow.queryAll(By.css('.nx-comparison-table__placeholder-cell'));
-                expect(placeholder.length).toBe(0);
+                expect(placeholder).toHaveSize(0);
             });
         }));
 

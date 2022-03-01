@@ -49,7 +49,7 @@ describe('NxComparisonTableSelectButton', () => {
             expect(unselectedButton.unselectedLabel).toBe('Select');
 
             const unselectedButtonElement = buttonNativeElements[0];
-            expect(unselectedButtonElement.nativeElement.classList).toContain('nx-button--secondary');
+            expect(unselectedButtonElement.nativeElement).toHaveClass('nx-button--secondary');
             expect(unselectedButtonElement.nativeElement.textContent.trim()).toBe('Select');
             expect(unselectedButtonElement.nativeElement.getAttribute('aria-pressed')).toBe('false');
         });
@@ -63,7 +63,7 @@ describe('NxComparisonTableSelectButton', () => {
             expect(selectedButton.selectedLabel).toBe('Selected');
 
             const selectedButtonElement = buttonNativeElements[1];
-            expect(selectedButtonElement.nativeElement.classList).toContain('nx-button--primary');
+            expect(selectedButtonElement.nativeElement).toHaveClass('nx-button--primary');
             expect(selectedButtonElement.nativeElement.textContent.trim()).toBe('Selected');
             expect(selectedButtonElement.nativeElement.getAttribute('aria-pressed')).toBe('true');
         }));

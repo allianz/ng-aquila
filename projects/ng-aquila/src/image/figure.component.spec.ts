@@ -52,7 +52,7 @@ describe('NxImageDirective', () => {
         'includes the nx-image--auto class by default',
         waitForAsync(() => {
             createTestComponent(BasicImage);
-            expect(figureNativeElement.classList.contains('nx-image--auto')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--auto');
         }),
     );
 
@@ -61,17 +61,17 @@ describe('NxImageDirective', () => {
         waitForAsync(() => {
             createTestComponent(FigureWithModifier);
             setKeyword('1by1');
-            expect(figureNativeElement.classList.contains('nx-image--1by1')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--1by1');
             setKeyword('1by1dot1');
-            expect(figureNativeElement.classList.contains('nx-image--1by1dot1')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--1by1dot1');
             setKeyword('1dot8by1');
-            expect(figureNativeElement.classList.contains('nx-image--1dot8by1')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--1dot8by1');
             setKeyword('1dot2by1');
-            expect(figureNativeElement.classList.contains('nx-image--1dot2by1')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--1dot2by1');
             setKeyword('2dot6by1');
-            expect(figureNativeElement.classList.contains('nx-image--2dot6by1')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--2dot6by1');
             setKeyword('rounded');
-            expect(figureNativeElement.classList.contains('nx-image--rounded')).toBe(true);
+            expect(figureNativeElement).toHaveClass('nx-image--rounded');
         }),
     );
 

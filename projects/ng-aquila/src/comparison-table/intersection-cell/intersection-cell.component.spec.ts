@@ -52,7 +52,7 @@ describe('NxComparisonTableIntersectionCell', () => {
     describe('basic', () => {
         it('renders the content', () => {
             createTestComponent(IntersectionCellComponent);
-            expect(intersectionCellInstances.length).toBe(2);
+            expect(intersectionCellInstances).toHaveSize(2);
             expect(intersectionCellElements[0].nativeElement.textContent).toBe('This is an intersection cell');
             expect(intersectionCellElements[1].nativeElement.textContent).toBe('This is a second intersection cell');
         });
@@ -88,7 +88,7 @@ describe('NxComparisonTableIntersectionCell', () => {
             tick(THROTTLE_TIME);
 
             const headers = intersectionCellElements[0].attributes['headers'];
-            expect(headers?.split(' ').length).toBe(2);
+            expect(headers?.split(' ')).toHaveSize(2);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
         }));
@@ -97,7 +97,7 @@ describe('NxComparisonTableIntersectionCell', () => {
             createTestComponent(ToggleSectionComponent);
 
             const headers = intersectionCellElements[0].attributes['headers'];
-            expect(headers?.split(' ').length).toBe(2);
+            expect(headers?.split(' ')).toHaveSize(2);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
         });

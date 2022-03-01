@@ -57,7 +57,7 @@ describe('NxSingleStepperComponent', () => {
 
     it('should show a title', fakeAsync(() => {
         createTestComponent(SingleStepTitleTest);
-        expect(fixture.nativeElement.innerText.indexOf('MyTitle')).toBeGreaterThan(-1);
+        expect(fixture.nativeElement.innerText).toContain('MyTitle');
     }));
 
     it('should move to the next step on click', fakeAsync(() => {
@@ -82,13 +82,13 @@ describe('NxSingleStepperComponent', () => {
         createTestComponent(DirectivesTest);
         flush();
         const previousButton = getPreviousButton(1);
-        expect(previousButton.disabled).toBe(true);
+        expect(previousButton.disabled).toBeTrue();
         testInstance.selectedIndex = 1;
         fixture.detectChanges();
-        expect(previousButton.disabled).toBe(false);
+        expect(previousButton.disabled).toBeFalse();
         testInstance.selectedIndex = 0;
         fixture.detectChanges();
-        expect(previousButton.disabled).toBe(true);
+        expect(previousButton.disabled).toBeTrue();
     }));
 
     it('should disable next button', fakeAsync(() => {
@@ -96,14 +96,14 @@ describe('NxSingleStepperComponent', () => {
         flush();
         const nextButton = getNextButton(2);
         const secondNextButton = getNextButton(3);
-        expect(nextButton.disabled).toBe(false);
+        expect(nextButton.disabled).toBeFalse();
         testInstance.selectedIndex = 3;
         fixture.detectChanges();
-        expect(nextButton.disabled).toBe(true);
-        expect(secondNextButton.disabled).toBe(true);
+        expect(nextButton.disabled).toBeTrue();
+        expect(secondNextButton.disabled).toBeTrue();
         testInstance.selectedIndex = 2;
         fixture.detectChanges();
-        expect(nextButton.disabled).toBe(false);
+        expect(nextButton.disabled).toBeFalse();
     }));
 
     describe('a11y', () => {

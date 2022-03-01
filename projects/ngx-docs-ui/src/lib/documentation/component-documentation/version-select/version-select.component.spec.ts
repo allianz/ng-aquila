@@ -61,7 +61,7 @@ describe('NxvVersionSelectComponent', () => {
         openContextMenu();
         fixture.detectChanges();
         const channels = getContextMenuItems();
-        expect(channels.length).toBe(3);
+        expect(channels).toHaveSize(3);
         expect(channels[0].textContent).toBe('lts');
     });
 
@@ -70,7 +70,7 @@ describe('NxvVersionSelectComponent', () => {
         openContextMenu();
         fixture.detectChanges();
         const channels = getContextMenuItems();
-        expect(channels.length).toBe(3);
+        expect(channels).toHaveSize(3);
         expect(channels[0].textContent).toBe('old');
     });
 

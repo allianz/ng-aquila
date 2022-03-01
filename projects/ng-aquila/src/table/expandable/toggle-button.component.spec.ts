@@ -45,7 +45,7 @@ describe(NxToggleButtonComponent.name, () => {
         });
 
         it("doesn't have the expanded state", () => {
-            expect(toggleButtonElement.nativeElement.classList.contains('is-expanded')).toBeFalsy();
+            expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
         });
 
         describe('when clicking the button', () => {
@@ -59,7 +59,7 @@ describe(NxToggleButtonComponent.name, () => {
             });
 
             it('has the expanded state', () => {
-                expect(toggleButtonElement.nativeElement.classList.contains('is-expanded')).toBeTruthy();
+                expect(toggleButtonElement.nativeElement).toHaveClass('is-expanded');
             });
 
             describe('and clicking the button again', () => {
@@ -73,7 +73,7 @@ describe(NxToggleButtonComponent.name, () => {
                 });
 
                 it("doesn't have the expanded state", () => {
-                    expect(toggleButtonElement.nativeElement.classList.contains('is-expanded')).toBeFalsy();
+                    expect(toggleButtonElement.nativeElement).not.toHaveClass('is-expanded');
                 });
             });
         });

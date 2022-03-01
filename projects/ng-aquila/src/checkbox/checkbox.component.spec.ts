@@ -76,14 +76,14 @@ describe('NxCheckboxComponent', () => {
         expect(labelElement).not.toBeNull();
         expect(labelElement.textContent!.trim()).not.toBe('');
         expect(labelElement.htmlFor).toBe(inputElement.id);
-        expect(labelElement.classList).toContain('has-label');
+        expect(labelElement).toHaveClass('has-label');
     });
 
     it('displays a checkbox without a label', () => {
         createTestComponent(LabellessCheckbox);
         expect(inputElement).not.toBeNull();
         expect(labelElement.textContent!.trim()).toBe('');
-        expect(checkboxNativeElement.classList).not.toContain('has-label');
+        expect(checkboxNativeElement).not.toHaveClass('has-label');
     });
 
     it('renders the checkbox with a small label', () => {
@@ -104,22 +104,22 @@ describe('NxCheckboxComponent', () => {
 
     it('creates a non-negative checkbox', () => {
         createTestComponent(BasicCheckbox);
-        expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--negative');
+        expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
     });
 
     it('updates on [negative] change', () => {
         createTestComponent(CheckboxNegative);
-        expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--negative');
+        expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
 
         fixture.componentInstance.negative = true;
         fixture.detectChanges();
-        expect(checkboxInstance.negative).toBe(true);
-        expect(checkboxNativeElement.classList).toContain('nx-checkbox--negative');
+        expect(checkboxInstance.negative).toBeTrue();
+        expect(checkboxNativeElement).toHaveClass('nx-checkbox--negative');
 
         fixture.componentInstance.negative = false;
         fixture.detectChanges();
-        expect(checkboxInstance.negative).toBe(false);
-        expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--negative');
+        expect(checkboxInstance.negative).toBeFalse();
+        expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
     });
 
     it('toggles the checked state based on [checked] input', () => {
@@ -178,12 +178,12 @@ describe('NxCheckboxComponent', () => {
         fixture.componentInstance.labelSize = 'large';
         fixture.detectChanges();
         expect(checkboxInstance.labelSize).toBe('large');
-        expect(checkboxNativeElement.classList).toContain('nx-checkbox--label-large');
+        expect(checkboxNativeElement).toHaveClass('nx-checkbox--label-large');
 
         fixture.componentInstance.labelSize = 'small';
         fixture.detectChanges();
         expect(checkboxInstance.labelSize).toBe('small');
-        expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--label-large');
+        expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--label-large');
     });
 
     it('focuses the checkbox when calling focus()', () => {
@@ -214,22 +214,22 @@ describe('NxCheckboxComponent', () => {
             createTestComponent(CheckboxOnPush);
             checkboxInstance.labelSize = 'large';
             fixture.detectChanges();
-            expect(checkboxNativeElement.classList).toContain('nx-checkbox--label-large');
+            expect(checkboxNativeElement).toHaveClass('nx-checkbox--label-large');
 
             checkboxInstance.labelSize = 'small';
             fixture.detectChanges();
-            expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--label-large');
+            expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--label-large');
         });
 
         it('updates view on [negative] change', () => {
             createTestComponent(CheckboxOnPush);
             checkboxInstance.negative = true;
             fixture.detectChanges();
-            expect(checkboxNativeElement.classList).toContain('nx-checkbox--negative');
+            expect(checkboxNativeElement).toHaveClass('nx-checkbox--negative');
 
             checkboxInstance.negative = false;
             fixture.detectChanges();
-            expect(checkboxNativeElement.classList).not.toContain('nx-checkbox--negative');
+            expect(checkboxNativeElement).not.toHaveClass('nx-checkbox--negative');
         });
     });
 
@@ -247,11 +247,11 @@ describe('NxCheckboxComponent', () => {
 
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
             createTestComponent(ReactiveCheckbox);
-            expect(checkboxNativeElement.classList.contains('has-error')).toBeFalsy();
+            expect(checkboxNativeElement).not.toHaveClass('has-error');
             checkboxInstance.ngControl.control!.markAsTouched();
             fixture.detectChanges();
             flush();
-            expect(checkboxNativeElement.classList.contains('has-error')).toBeTruthy();
+            expect(checkboxNativeElement).toHaveClass('has-error');
         }));
 
         it('should set the control to dirty when value changes in the DOM', fakeAsync(() => {
@@ -263,14 +263,14 @@ describe('NxCheckboxComponent', () => {
             fixture.detectChanges();
             flush();
 
-            expect(testInstance.testForm.get('checkbox')!.dirty).toEqual(false, `Expected control to start out pristine.`);
+            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to start out pristine.').toEqual(false);
 
             labelElement.click();
             tick();
             fixture.detectChanges();
             flush();
 
-            expect(testInstance.testForm.get('checkbox')!.dirty).toEqual(true, `Expected control to be dirty.`);
+            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to be dirty.').toEqual(true);
         }));
     });
 
