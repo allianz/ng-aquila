@@ -46,9 +46,9 @@ nx-checkbox {
     }
 }
 
-:host:hover .nx-dropdown-results__option-label,
-:host(.nx-selected):hover .nx-dropdown-results__option-label,
-:host(.nx-selected):hover .nx-dropdown-results__option-checkicon {
+:host:not(.nx-dropdown-item--disabled):hover .nx-dropdown-results__option-label,
+:host(.nx-selected):not(.nx-dropdown-item--disabled):hover .nx-dropdown-results__option-label,
+:host(.nx-selected):not(.nx-dropdown-item--disabled):hover .nx-dropdown-results__option-checkicon {
     color: v(dropdown-item-hover-color);
 }
 
