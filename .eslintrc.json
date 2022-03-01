@@ -23,12 +23,12 @@
                 "deprecation/deprecation": "warn",
 
                 // ==== imports ====
-                "import/first": "error",
-                "import/newline-after-import": "error",
-                "import/no-duplicates": "error",
-                "simple-import-sort/imports": "error",
-                "simple-import-sort/exports": "error",
-                "unused-imports/no-unused-imports": "error",
+                "import/first": "warn",
+                "import/newline-after-import": "warn",
+                "import/no-duplicates": "warn",
+                "simple-import-sort/imports": "warn",
+                "simple-import-sort/exports": "warn",
+                "unused-imports/no-unused-imports": "warn",
 
                 // ==== regexp ====
                 "regexp/no-unused-capturing-group": "off", // TODO check with others
@@ -49,8 +49,8 @@
                 "rxjs/no-unsafe-takeuntil": "warn",
 
                 // ==== eslint: possible problems ====
-                "no-self-compare": "error",
-                "no-unreachable-loop": "error",
+                "no-self-compare": "warn",
+                "no-unreachable-loop": "warn",
                 "no-unused-private-class-members": "warn",
 
                 // ==== eslint: suggestions ====
