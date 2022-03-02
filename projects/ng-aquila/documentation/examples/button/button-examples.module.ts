@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
-import { LazyLoadedModule } from '../../lazy-loaded-module';
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
 import { ButtonDangerExampleComponent } from './button-danger/button-danger-example';
@@ -39,7 +38,7 @@ const EXAMPLES = [
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
-export class ButtonExamplesModule implements LazyLoadedModule {
+export class ButtonExamplesModule {
     static components() {
         return {
             button: ButtonExampleComponent,

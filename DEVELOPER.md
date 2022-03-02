@@ -232,7 +232,7 @@ const EXAMPLES = [
 ];
 
 // ...
-export class ButtonExamplesModule implements LazyLoadedModule {
+export class ButtonExamplesModule {
     static components() {
         return {
             // ...
