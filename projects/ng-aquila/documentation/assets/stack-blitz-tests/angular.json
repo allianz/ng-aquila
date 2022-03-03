@@ -7,11 +7,6 @@
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
-            "schematics": {
-                "@schematics/angular:component": {
-                    "style": "scss"
-                }
-            },
             "prefix": "app",
             "architect": {
                 "build": {
@@ -31,42 +26,17 @@
                             "node_modules/@aposin/ng-aquila/css/utilities.css",
                             "node_modules/@aposin/ng-aquila/themes/aposin.css"
                         ],
-                        "scripts": []
-                    },
-                    "configurations": {
-                        "production": {
-                            "fileReplacements": [],
-                            "optimization": true,
-                            "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "aot": true,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "5mb"
-                                }
-                            ]
-                        }
+                        "scripts": [],
+                        "buildOptimizer": false,
+                        "optimization": false,
+                        "vendorChunk": true,
+                        "extractLicenses": false,
+                        "sourceMap": true,
+                        "namedChunks": true
                     }
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "aquila-docs-example:build"
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "aquila-docs-example:build:production"
-                        }
-                    }
-                },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
                         "browserTarget": "aquila-docs-example:build"
                     }

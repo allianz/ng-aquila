@@ -2,7 +2,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "./",
-        "outDir": "../dist/out-tsc",
+        "outDir": "./out-tsc",
         "forceConsistentCasingInFileNames": true,
         "sourceMap": true,
         "declaration": false,
@@ -13,17 +13,14 @@
         "lib": ["es2020", "dom"],
         "moduleResolution": "node",
         "importHelpers": true,
-        "typeRoots": ["node_modules/@types"],
-        "noImplicitAny": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
         "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "noFallthroughCasesInSwitch": true,
-        "strictNullChecks": true,
-        "strictBindCallApply": true,
-        "strictFunctionTypes": true
+        "strict": true
     },
     "exclude": ["src/assets", "dist"],
     "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
         "strictInjectionParameters": true,
         "strictInputAccessModifiers": true,
         "strictTemplates": true
