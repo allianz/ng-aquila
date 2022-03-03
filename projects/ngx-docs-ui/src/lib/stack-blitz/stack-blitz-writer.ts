@@ -16,14 +16,11 @@ const DOCS_CONTENT_PATH = 'docs-content/examples-source';
 
 const TEMPLATE_PATH = 'assets/stack-blitz/';
 const TEMPLATE_FILES = [
-    'src/app/aquila-module.ts',
+    'src/app/aquila.module.ts',
     'src/index.html',
     'src/main.ts',
     'src/polyfills.ts',
     'src/styles.scss',
-    // '.browserslistrc', // FIX: Commented these optional files as the ci cannot deploy them
-    // '.editorconfig',
-    // '.gitignore',
     'angular.json',
     'package.json',
     'tsconfig.json',
@@ -35,16 +32,13 @@ const ASSETS_BASE_PATH = 'https://aposin.github.io/ng-aquila/';
 
 const TEST_TEMPLATE_PATH = 'assets/stack-blitz-tests/';
 const TEST_TEMPLATE_FILES = [
-    'src/app/aquila-module.ts',
+    'src/app/aquila.module.ts',
     'src/index.html',
     'src/main.ts',
     'src/polyfills.ts',
     'src/styles.scss',
     'src/test.ts',
     'src/test/jasmine-setup.ts',
-    // '.browserslistrc',
-    // '.editorconfig',
-    // '.gitignore',
     'angular.json',
     'package.json',
     'tsconfig.app.json',

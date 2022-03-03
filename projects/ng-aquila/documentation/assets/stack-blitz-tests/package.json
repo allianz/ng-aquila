@@ -7,6 +7,16 @@
         "build": "ng build"
     },
     "private": true,
+    "browserslist": [
+        "last 1 Chrome version",
+        "last 1 Firefox version",
+        "last 2 Edge major versions",
+        "last 2 Safari major versions",
+        "last 2 iOS major versions",
+        "Firefox ESR",
+        "last 2 ChromeAndroid versions",
+        "last 2 FirefoxAndroid versions"
+    ],
     "dependencies": {
         "@angular/animations": "^13.0.0",
         "@angular/cdk": "^13.0.0",
