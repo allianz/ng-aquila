@@ -101,7 +101,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "allowedCommonJsDependencies": ["parse-color", "decimal.js", "iban", "color-convert"],
+                        "allowedCommonJsDependencies": ["parse-color", "decimal.js", "iban"],
                         "outputPath": "dist/opensource-documentation",
                         "index": "projects/opensource-documentation/src/index.html",
                         "main": "projects/opensource-documentation/src/main.ts",

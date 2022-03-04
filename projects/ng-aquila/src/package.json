@@ -7,16 +7,18 @@
     },
     "license": "MIT",
     "peerDependencies": {
-        "@angular/core": "^13.0.0",
-        "@angular/common": "^13.0.0",
-        "@angular/cdk": "^13.0.0",
         "@angular/animations": "^13.0.0",
-        "moment": "^2.29.1",
+        "@angular/cdk": "^13.0.0",
+        "@angular/common": "^13.0.0",
+        "@angular/core": "^13.0.0",
+        "dayjs": "^1.10.0",
+        "i18n-iso-countries": "^6.8.0",
         "iban": "^0.0.14",
-        "i18n-iso-countries": "^6.8.0"
+        "moment": "^2.29.1"
     },
     "dependencies": {
-        "decimal.js": "^10.3.1"
+        "decimal.js": "^10.3.1",
+        "tslib": "^2.3.0"
     },
     "schematics": "./schematics/collection.json",
     "ng-update": {
