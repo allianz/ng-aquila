@@ -508,8 +508,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             this.closePanel();
         });
 
-        this._keyManager.change.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
-            this._scrollActiveOptionIntoView();
+        this._keyManager.change.pipe(takeUntil(this._destroy)).subscribe(() => {
+            if (this._panelOpen && this.panel) {
+                this._scrollActiveOptionIntoView();
+            } else if (!this._panelOpen && !this.isMultiSelect && this._keyManager.activeItem) {
+                this._keyManager.activeItem._selectViaInteraction();
+            }
         });
     }
 
@@ -908,6 +912,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
                     this.setPreviousItemActive();
                     event.preventDefault();
                     break;
+                default:
+                    this._keyManager.onKeydown(event);
             }
         }
     }

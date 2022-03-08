@@ -1034,6 +1034,20 @@ describe('NxDropdownComponent', () => {
             configureNxDropdownTestingModule([SimpleDropdownComponent, FilterDropdownComponent, MultiSelectDropdownComponent]);
         }));
 
+        it('should auto select value, when dropdown is close + focused then typing keyboard', fakeAsync(() => {
+            createTestComponent(SimpleDropdownComponent);
+
+            const hostElement: HTMLElement = fixture.nativeElement.querySelector('nx-dropdown');
+            hostElement.focus();
+            dispatchKeyboardEvent(hostElement, 'keydown', B);
+            fixture.detectChanges();
+            tick(300);
+            flush();
+
+            expectDropdownClose();
+            expect(dropdownInstance.value).toEqual('BMW');
+        }));
+
         it('should close the dropdown on TAB if opened', fakeAsync(() => {
             createTestComponent(SimpleDropdownComponent);
             openDropdownByClick();
