@@ -1,6 +1,6 @@
 import { OverlayContainer, OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { Component, Directive, ElementRef, Type, ViewChild } from '@angular/core';
+import { Component, Directive, ElementRef, Type, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ComponentFixture, fakeAsync, inject, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +19,11 @@ describe('NxAutocompleteComponent:', () => {
     let overlayContainer: OverlayContainer;
     let triggerInstance: NxAutocompleteTriggerDirective;
 
-    function createTestComponent(component: Type<AutocompleteComponent>) {
+    function createTestComponent(component: Type<AutocompleteComponent>, isShadow?: boolean) {
         fixture = TestBed.createComponent(component);
         fixture.autoDetectChanges();
         testInstance = fixture.componentInstance;
-        input = fixture.nativeElement.querySelector('input');
+        input = isShadow ? fixture.nativeElement.shadowRoot.querySelector('input') : fixture.nativeElement.querySelector('input');
         triggerInstance = fixture.componentInstance.autocompleteTrigger;
     }
 
@@ -51,6 +51,7 @@ describe('NxAutocompleteComponent:', () => {
             TestBed.configureTestingModule({
                 declarations: [
                     BasicAutocompleteComponent,
+                    ShadowAutoCompleteComponent,
                     CustomAutocompleteComponent,
                     ComplexDataAutocompleteComponent,
                     NgModelBindingAutocompleteComponent,
@@ -78,6 +79,13 @@ describe('NxAutocompleteComponent:', () => {
 
     it('should open the overlay when typing into the input field', fakeAsync(() => {
         createTestComponent(BasicAutocompleteComponent);
+        typeInput('A');
+        flush();
+        expect(isVisible(getAutocompletePanel())).toBeTruthy();
+    }));
+
+    it('should open the overlay when typing into the shadow input field', fakeAsync(() => {
+        createTestComponent(ShadowAutoCompleteComponent, true);
         typeInput('A');
         flush();
         expect(isVisible(getAutocompletePanel())).toBeTruthy();
@@ -441,6 +449,25 @@ class AutocompleteInModalComponent extends AutocompleteComponent {
 })
 class AutocompleteComponentWithDirection extends AutocompleteComponent {
     direction = 'rtl';
+}
+@Component({
+    template: `
+        <input type="text" #animalInput [nxAutocomplete]="auto1" (input)="filter(animalInput.value)" />
+        <nx-autocomplete #auto1="nxAutocomplete">
+            <nx-autocomplete-option *ngFor="let option of filteredOptions" [value]="option">
+                {{ option }}
+            </nx-autocomplete-option>
+        </nx-autocomplete>
+    `,
+    encapsulation: ViewEncapsulation.ShadowDom,
+})
+class ShadowAutoCompleteComponent extends AutocompleteComponent {
+    options = ['Abacus', 'Bell', 'Chipmunk'];
+    filteredOptions = this.options.slice();
+
+    filter(value: any) {
+        this.filteredOptions = this.options.filter(s => new RegExp(value, 'gi').test(s));
+    }
 }
 
 function isVisible(el: any) {

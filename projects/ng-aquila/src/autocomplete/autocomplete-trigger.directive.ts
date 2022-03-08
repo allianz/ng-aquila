@@ -431,11 +431,15 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         // filter out all of the extra events, we save the value on focus and between
         // `input` events, and we check whether it changed.
         // See: https://connect.microsoft.com/IE/feedback/details/885747/
-        if (this._isFieldEnabled() && this._previousValue !== value && document.activeElement === event.target) {
+        if (this._isFieldEnabled() && this._previousValue !== value && this._rootElement().activeElement === event.target) {
             this._previousValue = value;
             this._onChange(value);
             this.openPanel();
         }
+    }
+
+    private _rootElement(): Document {
+        return this._element.nativeElement.getRootNode();
     }
 
     _handleFocus(): void {
