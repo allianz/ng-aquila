@@ -1,0 +1,8 @@
+.content {
+    width: 1600px;
+    height: 100px;
+    padding: 24px;
+    background: var(--ui-02);
+    display: flex;
+    justify-content: space-between;
+}

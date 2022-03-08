@@ -195,6 +195,9 @@
   case 'spinner': return import('../examples/spinner/spinner-examples.module').then(m => m.SpinnerExamplesModule);
   
 
+  case 'swipebar': return import('../examples/swipebar/swipebar-examples.module').then(m => m.SwipebarExamplesModule);
+  
+
   case 'switcher': return import('../examples/switcher/switcher-examples.module').then(m => m.SwitcherExamplesModule);
   
 

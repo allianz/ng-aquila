@@ -1,4 +1,4 @@
-<h3 id="expert-module" class="docs-markdown--h3">Expert module</h3>
+<h3 id="expert-module" tabindex="-1" class="docs-markdown--h3">Expert module</h3>
 <p class="docs-markdown--p">If you build internal applications (expert) some components need a specific configuration to be compliant with ergonomics and other requirements for internal applications. To obtain this configuration for your whole application, you can simply activate it by importing the expert module. This acts by setting injection tokens for all affected components (e.g., form fields).</p>
 <p class="docs-markdown--p">When imported, this module sets the injection tokens for a bunch of components. It uses the expert settings explained in dedicated sections of every affected component:</p>
 <ul class="docs-markdown--ul">
@@ -22,11 +22,11 @@
   NxExpertModule
 ]
 </code></pre>
-<h3 id="expert-theming" class="docs-markdown--h3">Expert theming</h3>
-<h4 id="general" class="docs-markdown--h4">General</h4>
+<h3 id="expert-theming" tabindex="-1" class="docs-markdown--h3">Expert theming</h3>
+<h4 id="general" tabindex="-1" class="docs-markdown--h4">General</h4>
 <p class="docs-markdown--p">Expert components have some style differences from the default B2C component styles which <strong>don't get injected</strong> by the <code>NxExpertModule</code>. We reflect such style differences by applying a theme.</p>
 <p class="docs-markdown--p">Our theming is accomplished by using CSS custom properties (CSS variables) to overwrite the styles of our components. The styles of our components are <em>view encapsulated</em> which means that they cannot be overwritten from outside of the component without using the selector <code>::ng-deep</code>. The shadow piercing selector <code>::ng-deep</code> disables the view encapsulation for a css rule and should be used only in exceptional cases. You can find more information on view encapsulation in Angular <a href="https://angular.io/guide/component-styles#view-encapsulation">here</a>.</p>
-<h4 id="theme-import" class="docs-markdown--h4">Theme import</h4>
+<h4 id="theme-import" tabindex="-1" class="docs-markdown--h4">Theme import</h4>
 <p class="docs-markdown--p">You have to import the expert CSS theme into your <code>angular.json</code> file:</p>
 <pre><code class="language-ts"><span class="hljs-string">&quot;styles&quot;</span>: [
   <span class="hljs-string">&quot;node_modules/@aposin/ng-aquila/themes/expert.css&quot;</span>

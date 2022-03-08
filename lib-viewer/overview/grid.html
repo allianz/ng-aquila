@@ -10,7 +10,7 @@
   <span class="current-grid__tier current-grid__tier-2xlarge">2xlarge</span>
   <span class="current-grid__tier current-grid__tier-3xlarge">3xlarge</span>
 </div>
-<h4 id="breakpoints" class="docs-markdown--h4">Breakpoints</h4>
+<h4 id="breakpoints" tabindex="-1" class="docs-markdown--h4">Breakpoints</h4>
 <p class="docs-markdown--p">You can size columns and apply modifications (like justify, push, pull properties) depending on a given set of breakpoints. You will find a set of 7 tiers called tiny, small, medium, large, xlarge, 2xlarge and 3xlarge. We are mobile first, so you will never use tiny as it's the default case.</p>
 <p class="docs-markdown--p">When you specify a tier, it is always understood as from that tier up.</p>
 <p class="docs-markdown--p"><strong>Note:</strong> Additional breakpoints are introduced for B2B(Expert) use cases. B2C users are advised to use the smaller breakpoints (tiny, small, medium, large).</p>
@@ -44,58 +44,58 @@
     <code class="grid-tiers-example__pixel-value">|<br>1760px</code>
   </div>
 </div>
-<h3 id="structure" class="docs-markdown--h3">Structure</h3>
+<h3 id="structure" tabindex="-1" class="docs-markdown--h3">Structure</h3>
 <p class="docs-markdown--p">A grid is based on the directives <strong>grid</strong>, <strong>row</strong> and <strong>column</strong>.</p>
-<h4 id="grid" class="docs-markdown--h4">Grid</h4>
+<h4 id="grid" tabindex="-1" class="docs-markdown--h4">Grid</h4>
 <p class="docs-markdown--p">The root of a grid is always <code>nxLayout='grid'</code>. This establishes the necessary spacings so that the columns and rows can generate a balanced gutter. You can assign a max-width and remove the gutters through modifiers <code>nogutters</code> and <code>maxwidth</code>.</p>
-<h4 id="row" class="docs-markdown--h4">Row</h4>
+<h4 id="row" tabindex="-1" class="docs-markdown--h4">Row</h4>
 <p class="docs-markdown--p">This provides the flex container for the columns to be laid out as flex children. There are modifications available to change the flex behaviour like <code>justify-content-start</code> or <code>align-items-start</code>.</p>
 <p class="docs-markdown--p">Never forget a row when using a column; otherwise you will have spacing problems due to the applied margins having a negative value.</p>
-<h4 id="column" class="docs-markdown--h4">Column</h4>
+<h4 id="column" tabindex="-1" class="docs-markdown--h4">Column</h4>
 <p class="docs-markdown--p">The grid is based on the common 12 column base. This means that a single column takes up 1/12 of the available width. You can configure a column to take up more space ranging from 1 to 12 columns by using the directive <code>nxCol</code>.</p>
 <p class="docs-markdown--p">There are modifiers available like <code>align-self-start</code>, <code>push</code>, <code>pull</code> and <code>offset</code>.</p>
-<h3 id="examples" class="docs-markdown--h3">Examples</h3>
-<h4 id="nxlayout" class="docs-markdown--h4">nxLayout</h4>
+<h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
+<h4 id="nxlayout" tabindex="-1" class="docs-markdown--h4">nxLayout</h4>
 <p class="docs-markdown--p">Use the nxLayout directive on a <code>div</code> element to specify if it's a container:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span> [...] <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<h4 id="nxrow" class="docs-markdown--h4">nxRow</h4>
+<h4 id="nxrow" tabindex="-1" class="docs-markdown--h4">nxRow</h4>
 <p class="docs-markdown--p">Use the <code>nxRow</code> directive on a div element to specify if it's a row:</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxLayout</span>=<span class="hljs-string">&quot;grid&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">nxRow</span>&gt;</span> [...] <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<h4 id="nxcol%3A-auto-sized-(one-input)" class="docs-markdown--h4">nxCol: Auto-sized (one input)</h4>
+<h4 id="nxcol%3A-auto-sized-(one-input)" tabindex="-1" class="docs-markdown--h4">nxCol: Auto-sized (one input)</h4>
 <p class="docs-markdown--p">Two rows with two columns in the first and four columns in the second row. We enter only one value in the directive.</p>
 <p class="docs-markdown--p">They are shared among all tiers.</p>
 <div nx-docs-example="grid-one-input" config="{}">exampleID: grid-one-input</div>
-<h4 id="nxcol%3A-multiple-inputs" class="docs-markdown--h4">nxCol: Multiple inputs</h4>
+<h4 id="nxcol%3A-multiple-inputs" tabindex="-1" class="docs-markdown--h4">nxCol: Multiple inputs</h4>
 <p class="docs-markdown--p">If you assign only one value it will be used for all tiers. If you assign two values the first one will be used for the tiny size and the second one for the remaining ones.</p>
 <p class="docs-markdown--p">Order of the used inputs: <code>nxCol=&quot;<span class="docs-grid-text-tiny">&lt;tiny&gt;</span>, <span class="docs-grid-text-small">&lt;small&gt;</span>, <span class="docs-grid-text-medium">&lt;medium&gt;</span>, <span class="docs-grid-text-large">&lt;large&gt;</span>, <span class="docs-grid-text-xlarge">&lt;xlarge&gt;</span>, <span class="docs-grid-text-2xlarge">&lt;2xlarge&gt;</span>, <span class="docs-grid-text-3xlarge">&lt;3xlarge&gt;</span>&quot;</code>.</p>
 <div nx-docs-example="grid-multi-inputs-1" config="{}">exampleID: grid-multi-inputs-1</div>
 <p class="docs-markdown--p">For example:</p>
 <div nx-docs-example="grid-multi-inputs-2" config="{}">exampleID: grid-multi-inputs-2</div>
-<h4 id="nxcol%3A-offset-columns" class="docs-markdown--h4">nxCol: Offset columns</h4>
+<h4 id="nxcol%3A-offset-columns" tabindex="-1" class="docs-markdown--h4">nxCol: Offset columns</h4>
 <p class="docs-markdown--p">If you want to offset a column you can use the <code>nxColOffset</code> property similar to the <code>nxCol</code> logic.</p>
 <div nx-docs-example="grid-offset" config="{}">exampleID: grid-offset</div>
-<h4 id="nogutters-and-nopadding" class="docs-markdown--h4">NoGutters and NoPadding</h4>
+<h4 id="nogutters-and-nopadding" tabindex="-1" class="docs-markdown--h4">NoGutters and NoPadding</h4>
 <p class="docs-markdown--p">Use <code>nogutters</code> to remove the spacing from rows and (direct) columns. Use <code>nopadding</code> to remove the spacing around the grid, but keep the column gutters. This is useful when you need to place the grid inside of another component that already has spacing (including the grid in grid case).</p>
 <div nx-docs-example="grid-nogutter" config="{}">exampleID: grid-nogutter</div>
-<h4 id="maxwidth" class="docs-markdown--h4">MaxWidth</h4>
+<h4 id="maxwidth" tabindex="-1" class="docs-markdown--h4">MaxWidth</h4>
 <p class="docs-markdown--p">In order to constrain the grid, define an overall maximum width (width: 1184px and max-width: 100%).</p>
 <div nx-docs-example="grid-maxwidth" config="{}">exampleID: grid-maxwidth</div>
-<h4 id="nxrowjustify" class="docs-markdown--h4">nxRowJustify</h4>
+<h4 id="nxrowjustify" tabindex="-1" class="docs-markdown--h4">nxRowJustify</h4>
 <p class="docs-markdown--p">The <code>nxRowJustify</code> directive aligns the flexible container's items when the items do not use all available space on the main axis (horizontally).</p>
 <div nx-docs-example="grid-justify" config="{}">exampleID: grid-justify</div>
-<h4 id="nxrowaligncontent" class="docs-markdown--h4">nxRowAlignContent</h4>
+<h4 id="nxrowaligncontent" tabindex="-1" class="docs-markdown--h4">nxRowAlignContent</h4>
 <p class="docs-markdown--p">To modify the behavior of the flex-wrap property, use the <code>nxRowAlignContent</code> directive. It is similar to <code>nxRowAlignItems</code>, but instead of aligning flex items, it aligns flex lines.</p>
 <div nx-docs-example="grid-align-content" config="{}">exampleID: grid-align-content</div>
-<h4 id="nxrowalignitems" class="docs-markdown--h4">nxRowAlignItems</h4>
+<h4 id="nxrowalignitems" tabindex="-1" class="docs-markdown--h4">nxRowAlignItems</h4>
 <p class="docs-markdown--p">The <code>nxRowAlignItems</code> directive defines the default vertical alignment for items inside the flexible container.</p>
 <div nx-docs-example="grid-align-items" config="{}">exampleID: grid-align-items</div>
-<h4 id="nxalignself" class="docs-markdown--h4">nxAlignSelf</h4>
+<h4 id="nxalignself" tabindex="-1" class="docs-markdown--h4">nxAlignSelf</h4>
 <p class="docs-markdown--p">The <code>nxAlignSelf</code> property specifies the alignment for a selected item inside the flexible container.</p>
 <div nx-docs-example="grid-align-self" config="{}">exampleID: grid-align-self</div>
-<h4 id="nxcolorder" class="docs-markdown--h4">nxColOrder</h4>
+<h4 id="nxcolorder" tabindex="-1" class="docs-markdown--h4">nxColOrder</h4>
 <p class="docs-markdown--p">To specify the order within the row, apply the <code>nxColOrder</code> property.</p>
 <div nx-docs-example="grid-col-order" config="{}">exampleID: grid-col-order</div>

@@ -4,7 +4,7 @@
 </div>
 <p class="docs-markdown--p">The <code>NxDialogService</code> can be used to open modals from components or predefined templates.</p>
 <p class="docs-markdown--p"><strong>Important:</strong> Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the <code>BrowserModule</code> and <code>BrowserAnimationsModule</code> in your app.module.</p>
-<h3 id="modal-opening" class="docs-markdown--h3">Modal Opening</h3>
+<h3 id="modal-opening" tabindex="-1" class="docs-markdown--h3">Modal Opening</h3>
 <p class="docs-markdown--p">A modal can be opened by using the <code>open</code> method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> myDialogRef = dialogService.open(MyModalComponent, {
     <span class="hljs-attr">width</span>: <span class="hljs-string">&#x27;600px&#x27;</span>,
@@ -14,7 +14,7 @@ myDialogRef.close();
 </code></pre>
 <p class="docs-markdown--p">The example below shows how the modal dialog can be opened <strong>with a template</strong> and <strong>with a component</strong>. If you use a specific component for your modal you have to include it in the list of <code>entryComponents</code> in your <code>NgModule</code>, as it gets instantiated at run-time and won't be found otherwise.</p>
 <div nx-docs-example="modal-opening" config="{}">exampleID: modal-opening</div>
-<h3 id="modal-closing" class="docs-markdown--h3">Modal Closing</h3>
+<h3 id="modal-closing" tabindex="-1" class="docs-markdown--h3">Modal Closing</h3>
 <p class="docs-markdown--p">You can close a dialog in three different ways:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">by using the option <code>closeIconButton=&quot;true&quot;</code> in the <code>NxModalConfig</code> to show a &quot;X&quot; close icon in the modal which can be used for closing</li>
@@ -23,16 +23,16 @@ myDialogRef.close();
 </ul>
 <p class="docs-markdown--p">When using the last two options you can also pass a result object/string on close. The three different closing variants are demonstrated in the example below:</p>
 <div nx-docs-example="modal-closing" config="{}">exampleID: modal-closing</div>
-<h3 id="closing-behaviour" class="docs-markdown--h3">Closing behaviour</h3>
+<h3 id="closing-behaviour" tabindex="-1" class="docs-markdown--h3">Closing behaviour</h3>
 <p class="docs-markdown--p">By default, the modal will close if the user clicks on the backdrop or hits the ESC key. These options can be disabled by using the <code>disableClose</code> parameter of the <code>NxModalConfig</code> as shown in the example below:</p>
 <div nx-docs-example="modal-closing-behaviour" config="{}">exampleID: modal-closing-behaviour</div>
-<h3 id="modal-content-directives" class="docs-markdown--h3">Modal Content Directives</h3>
+<h3 id="modal-content-directives" tabindex="-1" class="docs-markdown--h3">Modal Content Directives</h3>
 <p class="docs-markdown--p">You can separate the dialog body into dialog content and dialog actions by using the directives <code>nxModalContent</code> and <code>nxModalActions</code>. <code>nxModalActions</code> is container for action buttons placed at the bottom of the dialog. The example below shows how to apply them for a Dialog with a disclaimer look.</p>
 <div nx-docs-example="modal-content-actions" config="{}">exampleID: modal-content-actions</div>
-<h3 id="fixed-width" class="docs-markdown--h3">Fixed width</h3>
+<h3 id="fixed-width" tabindex="-1" class="docs-markdown--h3">Fixed width</h3>
 <p class="docs-markdown--p">By default the width of the modal dialog is <code>736px</code>. You can change this behavior by setting the <code>width</code> property in the <code>NxModalConfig</code>.</p>
 <div nx-docs-example="modal-fixed-width" config="{}">exampleID: modal-fixed-width</div>
-<h3 id="configuration" class="docs-markdown--h3">Configuration</h3>
+<h3 id="configuration" tabindex="-1" class="docs-markdown--h3">Configuration</h3>
 <p class="docs-markdown--p">Every dialog is opened with a default configuration. By passing a second parameter (<code>NxModalConfig</code> object) when opening a modal you can overwrite this configuration. Configurable are settings such as the dialog width and height, closing on backdrop click, adding additional classses to the dialog container etc. For more details on all configurable properties check out the <code>NxModalConfig</code> documentation <a href="./documentation/modal/api#NxModalConfig">here</a>.</p>
 <p class="docs-markdown--p">You can also share data with your dialog via the configuration object:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">let</span> dialogRef = dialog.open(YourDialog, {
@@ -53,7 +53,7 @@ myDialogRef.close();
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
 <div nx-docs-example="modal-data-injection" config="{}">exampleID: modal-data-injection</div>
-<h3 id="global-configuration" class="docs-markdown--h3">Global Configuration</h3>
+<h3 id="global-configuration" tabindex="-1" class="docs-markdown--h3">Global Configuration</h3>
 <p class="docs-markdown--p">You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">providers</span>: [
@@ -63,16 +63,16 @@ myDialogRef.close();
     }
   ]
 </code></pre>
-<h3 id="directionality" class="docs-markdown--h3">Directionality</h3>
+<h3 id="directionality" tabindex="-1" class="docs-markdown--h3">Directionality</h3>
 <p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction. If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
 <p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>
 <div nx-docs-example="modal-with-direction" config="{}">exampleID: modal-with-direction</div>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">By default, each modal has <code>role=&quot;dialog&quot;</code> on the root element. The role can be changed to <code>alertdialog</code> via the <code>NxModalConfig</code>.</p>
 <p class="docs-markdown--p">The aria-label, aria-labelledby, and aria-describedby attributes of the modal as well as the aria-label of the optional close button can be set via the <code>NxModalConfig</code> as well. It is recommended to at least give a modal an aria-label or aria-labelledby attribute.</p>
 <p class="docs-markdown--p">When a dialog opens, the first focusable element will be focused. The CdkOverlay used in the dialog traps the focus in itself in order to prevent users from interacting with elements in the background. Per default, the focus will be given back to the element which has been focused before the opening of the dialog.</p>
 <p class="docs-markdown--p">Pressing the escape key will close the dialog per default. You can disable this behaviour by setting the <code>disabledClose</code> option to false in the <code>NxModalConfig</code>, but it is recommended to keep it on as it is the expected behaviour of a modal dialog.</p>
-<h3 id="deprecated-modal-component" class="docs-markdown--h3">Deprecated Modal Component</h3>
+<h3 id="deprecated-modal-component" tabindex="-1" class="docs-markdown--h3">Deprecated Modal Component</h3>
 <p class="docs-markdown--p">The example below shows the previous implementation of the modal dialog, which is already deprecated and should not be used.</p>
 <p class="docs-markdown--p">For using it you have to import the <code>NxModalModule</code> as follows:</p>
 <pre><code class="language-ts"><span class="hljs-keyword">import</span> { NxModalModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/modal&#x27;</span>;

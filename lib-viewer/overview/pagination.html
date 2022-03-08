@@ -3,12 +3,12 @@
 <li class="docs-markdown--li">Advanced pagination where parts are referred to by numbers and arrows.</li>
 <li class="docs-markdown--li">Simple pagination where parts are referred with “previous” and “next” buttons.</li>
 </ul>
-<h3 id="advanced-pagination" class="docs-markdown--h3">Advanced Pagination</h3>
+<h3 id="advanced-pagination" tabindex="-1" class="docs-markdown--h3">Advanced Pagination</h3>
 <p class="docs-markdown--p"><strong>Important:</strong> If you use the advanced pagination, please translate the labels that are used by screen readers as shown in the <a href="./documentation/pagination/overview#localization">localization example</a>.</p>
 <div nx-docs-example="pagination-advanced" config="{}">exampleID: pagination-advanced</div>
-<h3 id="simple-pagination" class="docs-markdown--h3">Simple Pagination</h3>
+<h3 id="simple-pagination" tabindex="-1" class="docs-markdown--h3">Simple Pagination</h3>
 <div nx-docs-example="pagination-simple" config="{}">exampleID: pagination-simple</div>
-<h3 id="localization" class="docs-markdown--h3">Localization</h3>
+<h3 id="localization" tabindex="-1" class="docs-markdown--h3">Localization</h3>
 <p class="docs-markdown--p">In order to localize the component you have to implement the interface <code>IPaginationTexts</code> and provide your implementation with the <code>NX_PAGINATION_TEXTS</code> injection token.</p>
 <p class="docs-markdown--p">Pay attention that <code>IPaginationTexts</code> has two optional attributes: <code>first</code> and <code>last</code> used for the first and last arrows of the advanced pagination.</p>
 <div nx-docs-example="pagination-localize" config="{}">exampleID: pagination-localize</div>

@@ -1,4 +1,4 @@
-<h3 id="margins" class="docs-markdown--h3">Margins</h3>
+<h3 id="margins" tabindex="-1" class="docs-markdown--h3">Margins</h3>
 <p class="docs-markdown--p">The margins are intended to help you layout components shipped with this library. Setting such margins is needed since the components we ship are usually agnostic to any layout, putting you in control of laying out the components the way needed for your application's user experience.</p>
 <p class="docs-markdown--p">They can be integrated through the angular JSON <code>angular[-cli].json</code> or by importing it in your styles <code>style.scss</code> file.</p>
 <p class="docs-markdown--p">Use this path to import it via your angular-cli.json file:</p>
@@ -9,10 +9,10 @@
 <p class="docs-markdown--p">If you don't use the Angular CLI or just prefer another place you can use this css import instead:</p>
 <pre><code class="language-css"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/css/utilities.css&#x27;</span>;
 </code></pre>
-<h4 id="margin-sizes" class="docs-markdown--h4">Margin sizes</h4>
+<h4 id="margin-sizes" tabindex="-1" class="docs-markdown--h4">Margin sizes</h4>
 <p class="docs-markdown--p">We provide you with following margin sizes:</p>
 <div nx-docs-example="margin-sizes" config="{ 'hideHeader': true }">exampleID: margin-sizes</div>
-<h4 id="usage" class="docs-markdown--h4">Usage</h4>
+<h4 id="usage" tabindex="-1" class="docs-markdown--h4">Usage</h4>
 <p class="docs-markdown--p">We also provide you with helper classes for all these sizes, which follow the pattern <code>.nx-margin-{direction}-{size}</code>.</p>
 <p class="docs-markdown--p">The <code>direction</code> property is one of the following:</p>
 <ul class="docs-markdown--ul">
@@ -27,16 +27,16 @@
 <p class="docs-markdown--p">Thereby, <code>size</code> has to be matching one of the sizes defined in the table above.</p>
 <p class="docs-markdown--p">An example of the margin helper classes usage can be found in the example below.</p>
 <div nx-docs-example="margin-usage" config="{}">exampleID: margin-usage</div>
-<h3 id="breakpoints-and-viewport" class="docs-markdown--h3">Breakpoints and Viewport</h3>
+<h3 id="breakpoints-and-viewport" tabindex="-1" class="docs-markdown--h3">Breakpoints and Viewport</h3>
 <p class="docs-markdown--p">Our library provides a set of tools for reacting to different viewports. For simple hiding elements on certain breakpoints you can use our utility classes. For more sophisticated use cases there is a viewport service. It provides three methods: <code>min</code>, <code>max</code> and <code>between</code> for subscribing to particular viewport breakpoints.</p>
-<h4 id="hide-elements-on-specific-breakpoints-using-css-classes" class="docs-markdown--h4">Hide elements on specific breakpoints using CSS classes</h4>
+<h4 id="hide-elements-on-specific-breakpoints-using-css-classes" tabindex="-1" class="docs-markdown--h4">Hide elements on specific breakpoints using CSS classes</h4>
 <p class="docs-markdown--p">We provide a set of utility classes that can be used to hide elements on certain viewport sizes.</p>
 <p class="docs-markdown--p">Remember that you can combine CSS classes on the same element. So for example, if you wanted an element to show on small and large desktops, but be hidden on tablets and mobile, you could do something like the following.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-hidden-xs nx-hidden-s nx-hidden-m&quot;</span>&gt;</span>Hidden on tablet and smaller<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 </code></pre>
 <p class="docs-markdown--p"><strong>Available classes:</strong></p>
 <div nx-docs-example="hidden-classes" config="{ 'hideHeader': true }">exampleID: hidden-classes</div>
-<h4 id="breakpoints" class="docs-markdown--h4">Breakpoints</h4>
+<h4 id="breakpoints" tabindex="-1" class="docs-markdown--h4">Breakpoints</h4>
 <p class="docs-markdown--p">The following viewport breakpoints are available:</p>
 <pre><code class="language-ts"><span class="hljs-comment">/** Available breakpoints to subscribe to. */</span>
 <span class="hljs-keyword">export</span> <span class="hljs-built_in">enum</span> NxBreakpoints {
@@ -58,10 +58,10 @@ showComponentX: <span class="hljs-built_in">boolean</span>;
     .subscribe(<span class="hljs-function"><span class="hljs-params">isMaximumLarge</span> =&gt;</span> <span class="hljs-built_in">this</span>.showComponentX = isMaximumLarge);
 }
 </code></pre>
-<h4 id="basic-viewport-subscription" class="docs-markdown--h4">Basic Viewport Subscription</h4>
+<h4 id="basic-viewport-subscription" tabindex="-1" class="docs-markdown--h4">Basic Viewport Subscription</h4>
 <p class="docs-markdown--p">The example below shows a sidebar, which is expanded from 704px (BREAKPOINT_MEDIUM) on and otherwise closed.</p>
 <div nx-docs-example="viewport-change" config="{}">exampleID: viewport-change</div>
-<h4 id="advanced%3A-custom-throttletime" class="docs-markdown--h4">Advanced: custom throttleTime</h4>
+<h4 id="advanced%3A-custom-throttletime" tabindex="-1" class="docs-markdown--h4">Advanced: custom throttleTime</h4>
 <p class="docs-markdown--p">Per default, the viewport service catches window resize events with an interval of 200ms. If this default throttle time does not serve your needs you can change it by passing it as a parameter to the methods <code>min</code>, <code>max</code> and <code>between</code>:</p>
 <pre><code class="language-ts"><span class="hljs-built_in">this</span>.viewportService
     .between(NxBreakpoints.BREAKPOINT_XSMALL, NxBreakpoints.BREAKPOINT_MEDIUM, <span class="hljs-number">500</span>)

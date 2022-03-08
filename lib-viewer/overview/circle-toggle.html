@@ -1,35 +1,35 @@
 <p class="docs-markdown--p">The toggle circle can be used as standalone toggle circle (checkbox role) or multiple toggle circles can be grouped with the circle toggle group wrapper and fullfill a radio group role.</p>
 <p class="docs-markdown--p">Use this component to illustrate what information your checkbox communicates by integrating an icon or custom SVG. In order to edit your SVGs correctly, it should be 80x80px in size. You can use the viewBox attribute to do so. Since the circle has a diameter of 80, it will fit neatly at the edges and cut off the images' corners.<br> This is how the feature is currently implemented in the desktop version.<br> To avoid cutting off the corners you may, however, decide to place a smaller version of the SVG wholly inside the circle. The icon or SVG you use should not have a border as it is a part of the component itself and in case the icon is not shown the user will still see a good looking empty button with a label.</p>
-<h3 id="standalone-circle-toggle-(checkbox-role)" class="docs-markdown--h3">Standalone Circle Toggle (checkbox role)</h3>
+<h3 id="standalone-circle-toggle-(checkbox-role)" tabindex="-1" class="docs-markdown--h3">Standalone Circle Toggle (checkbox role)</h3>
 <p class="docs-markdown--p">The component can be used as a standalone component with a checkbox role where you can select multiple checkboxes at the same time as shown below.</p>
 <div nx-docs-example="circle-toggle-standalone" config="{}">exampleID: circle-toggle-standalone</div>
-<h3 id="circle-toggle-group-(radio-group-role)" class="docs-markdown--h3">Circle Toggle Group (radio group role)</h3>
+<h3 id="circle-toggle-group-(radio-group-role)" tabindex="-1" class="docs-markdown--h3">Circle Toggle Group (radio group role)</h3>
 <p class="docs-markdown--p">The Circle Toggle component can also be wrapped in a circle toggle group, which gives the buttons in the group the behaviour of a radio group, where only one button can be selected at a time.</p>
 <div nx-docs-example="circle-toggle-group" config="{}">exampleID: circle-toggle-group</div>
-<h3 id="styling" class="docs-markdown--h3">Styling</h3>
-<h4 id="different-responsive-behaviors" class="docs-markdown--h4">Different responsive behaviors</h4>
+<h3 id="styling" tabindex="-1" class="docs-markdown--h3">Styling</h3>
+<h4 id="different-responsive-behaviors" tabindex="-1" class="docs-markdown--h4">Different responsive behaviors</h4>
 <p class="docs-markdown--p">The default responsive behavior of the Circle Toggle is to become toggle buttons as can be seen above.</p>
 <p class="docs-markdown--p">To disable that behavior and have the Circle Toggle stay in the same design as on desktop, you can use the <code>[responsive]</code> property and set it to false on the <code>nx-circle-toggle-group</code> element itself:</p>
 <div nx-docs-example="circle-toggle-responsive" config="{}">exampleID: circle-toggle-responsive</div>
-<h4 id="use-textual-content-instead-of-icons" class="docs-markdown--h4">Use textual content instead of icons</h4>
+<h4 id="use-textual-content-instead-of-icons" tabindex="-1" class="docs-markdown--h4">Use textual content instead of icons</h4>
 <p class="docs-markdown--p">Instead of icons it is also possible to display text with <code>[circleText]</code>. This option is not meant for displaying long texts, so the text size will not adapt.</p>
 <p class="docs-markdown--p">Please note that if no label is provided, on mobile the circleText will be displayed instead inside the toggle button.</p>
 <div nx-docs-example="circle-toggle-text" config="{}">exampleID: circle-toggle-text</div>
-<h4 id="negative-styles" class="docs-markdown--h4">Negative styles</h4>
+<h4 id="negative-styles" tabindex="-1" class="docs-markdown--h4">Negative styles</h4>
 <div nx-docs-example="circle-toggle-negative" config="{}">exampleID: circle-toggle-negative</div>
 <div class="docs-expert-container">
-<h4 id="expert%3A-appearance" class="docs-markdown--h4">Expert: Appearance</h4>
+<h4 id="expert%3A-appearance" tabindex="-1" class="docs-markdown--h4">Expert: Appearance</h4>
 <p class="docs-markdown--p">With <code>appearance=&quot;expert&quot;</code> you can change the styling of the card to expert.</p>
 <p class="docs-markdown--p">Please note that this is an <strong>Expert option</strong>. This means that it is only intended for internal applications and not for applications that are client facing.</p>
 <div nx-docs-example="circle-toggle-group-expert" config="{}">exampleID: circle-toggle-group-expert</div>
 </div>
-<h3 id="simple-binding" class="docs-markdown--h3">Simple binding</h3>
+<h3 id="simple-binding" tabindex="-1" class="docs-markdown--h3">Simple binding</h3>
 <div nx-docs-example="circle-toggle-simple-binding" config="{}">exampleID: circle-toggle-simple-binding</div>
-<h3 id="template-driven-form-with-ngmodel" class="docs-markdown--h3">Template driven form with ngModel</h3>
+<h3 id="template-driven-form-with-ngmodel" tabindex="-1" class="docs-markdown--h3">Template driven form with ngModel</h3>
 <div nx-docs-example="circle-toggle-template-driven" config="{}">exampleID: circle-toggle-template-driven</div>
-<h3 id="reactive-form" class="docs-markdown--h3">Reactive form</h3>
+<h3 id="reactive-form" tabindex="-1" class="docs-markdown--h3">Reactive form</h3>
 <div nx-docs-example="circle-toggle-reactive" config="{}">exampleID: circle-toggle-reactive</div>
-<h3 id="reactive-form-disabled" class="docs-markdown--h3">Reactive form disabled</h3>
+<h3 id="reactive-form-disabled" tabindex="-1" class="docs-markdown--h3">Reactive form disabled</h3>
 <div nx-docs-example="circle-toggle-reactive-disabled" config="{}">exampleID: circle-toggle-reactive-disabled</div>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The component can be accessed via keyboard. To do that, use the TAB-key to focus the component. The standalone circle toggle component has the type checkbox and can be checked and unchecked through clicking SPACE after being focused. If there is a wrapper circle toggle group (radio group) around the toggle items than you can change the chosen item by using the arrow keys.</p>

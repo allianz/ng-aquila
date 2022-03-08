@@ -1,55 +1,55 @@
-<h3 id="notes-about-the-usage-of-the-component" class="docs-markdown--h3">Notes about the usage of the component</h3>
+<h3 id="notes-about-the-usage-of-the-component" tabindex="-1" class="docs-markdown--h3">Notes about the usage of the component</h3>
 <p class="docs-markdown--p">It is recommended to use the comparison table with a <strong>maximum of 5 products</strong>.</p>
 <p class="docs-markdown--p">The footer cells are not displayed on mobile. Therefore please <strong>do not put any important content in the footer</strong>.</p>
-<h3 id="examples" class="docs-markdown--h3">Examples</h3>
-<h4 id="basic-comparison-table" class="docs-markdown--h4">Basic Comparison Table</h4>
+<h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
+<h4 id="basic-comparison-table" tabindex="-1" class="docs-markdown--h4">Basic Comparison Table</h4>
 <p class="docs-markdown--p">A basic comparison table consists of rows (<code>nxComparisonTableRow</code>) containing table cells: normal (<code>nx-comparison-table-cell</code>) and description ones (<code>nx-comparison-table-description-cell</code>) as shown in the example below.</p>
 <p class="docs-markdown--p">Products/columns can be selected by using a <code>NxComparisonTableSelectButton</code> button. Pay attention that you have to specify the text of the button via the inputs <code>selectedLabel</code> and <code>unselectedLabel</code>.</p>
 <p class="docs-markdown--p">You can also set the initially selected product by using the <code>[selectedIndex]</code> input of the comparison table.</p>
 <div nx-docs-example="comparison-table" config="{}">exampleID: comparison-table</div>
-<h4 id="intersection-cells" class="docs-markdown--h4">Intersection cells</h4>
+<h4 id="intersection-cells" tabindex="-1" class="docs-markdown--h4">Intersection cells</h4>
 <p class="docs-markdown--p">You can further use intersection cells (<code>nx-comparison-table-intersection-cell</code>) which are a merge of multiple cells.</p>
 <p class="docs-markdown--p">For the mobile view, in this example the content of the intersection cell is displayed inside an extra-light accordion above the table.</p>
 <div nx-docs-example="comparison-table-with-intersection" config="{}">exampleID: comparison-table-with-intersection</div>
-<h4 id="row-groups" class="docs-markdown--h4">Row Groups</h4>
+<h4 id="row-groups" tabindex="-1" class="docs-markdown--h4">Row Groups</h4>
 <p class="docs-markdown--p">If your table has a lot of rows you can group them inside a <code>nxComparisonTableRowGroup</code>. Then, only a certain number of rows is visible at the beginning. The rest can be expanded by the user. By default, the first 5 rows are shown when loading a page. You can change this number via the input <code>[visibleRows]</code>.</p>
 <p class="docs-markdown--p">The text of the expandable button area can be customized by setting <code>[labelCollapsed]</code> and <code>[labelExpanded]</code> on the row group.</p>
 <p class="docs-markdown--p">You can also control the initial expanded state and react to its changes through setting or binding to the <code>isExpanded</code> property.</p>
 <div nx-docs-example="comparison-table-row-group" config="{}">exampleID: comparison-table-row-group</div>
 <div class="docs-expert-container">
-<h4 id="expert%3A-expand-the-expandable-area-over-the-full-row-width" class="docs-markdown--h4">Expert: Expand the expandable area over the full row width</h4>
+<h4 id="expert%3A-expand-the-expandable-area-over-the-full-row-width" tabindex="-1" class="docs-markdown--h4">Expert: Expand the expandable area over the full row width</h4>
 <p class="docs-markdown--p">By setting <code>useFullRowForExpandableArea=&quot;true&quot;</code> on the <code>nxComparisonTableRowGroup</code> element the expandable area uses the full width of the table.</p>
 <p class="docs-markdown--p">If the <code>NxExpertModule</code> is used, this is set by default.</p>
 <p class="docs-markdown--p">Please <strong>switch the theme to &quot;EXPERT&quot; at the top of the page</strong> to see the correct expert comparison table.</p>
 <div nx-docs-example="comparison-table-expandable-area" config="{}">exampleID: comparison-table-expandable-area</div>
 </div>
-<h4 id="toggle-sections" class="docs-markdown--h4">Toggle Sections</h4>
+<h4 id="toggle-sections" tabindex="-1" class="docs-markdown--h4">Toggle Sections</h4>
 <p class="docs-markdown--p">Multiple table rows can be grouped in a toggle section (<code>nxComparisonTableToggleSection</code>) with a toggle section header (<code>nx-comparison-table-toggle-section-header</code>) as shown in the example below.</p>
 <div nx-docs-example="comparison-table-with-toggle-sections" config="{}">exampleID: comparison-table-with-toggle-sections</div>
-<h4 id="disabled-table-columns" class="docs-markdown--h4">Disabled table columns</h4>
+<h4 id="disabled-table-columns" tabindex="-1" class="docs-markdown--h4">Disabled table columns</h4>
 <p class="docs-markdown--p">You can disable certain columns of the comparison table via the input <code>disabledColumn</code> on a header <code>nx-comparison-table-cell</code> as shown in the example below. Keep in mind that the <code>disabledColumn</code> attribute can be set only on header cells.</p>
 <div nx-docs-example="comparison-table-disabled-columns" config="{}">exampleID: comparison-table-disabled-columns</div>
-<h4 id="hidden-table-columns" class="docs-markdown--h4">Hidden table columns</h4>
+<h4 id="hidden-table-columns" tabindex="-1" class="docs-markdown--h4">Hidden table columns</h4>
 <p class="docs-markdown--p">You can hide certain columns of the comparison table via the input <code>hiddenIndexes</code> on table <code>nx-comparison-table</code> as shown in the example below. Keep in mind that <code>hiddenIndexes</code> will also hide selected columns - to avoid submitting selections of not visible columns please make sure that you do not provide the possibility to hide columns that are selected at the same time.</p>
 <p class="docs-markdown--p">Please note that <strong>this example is using the <code>nx-context-menu</code> component which is an Expert component</strong>. This means that this combination is currently only intended for internal and not for client-facing applications.</p>
 <div nx-docs-example="comparison-table-hidden-columns" config="{}">exampleID: comparison-table-hidden-columns</div>
 <div class="docs-private">
-<h4 id="theming-variations" class="docs-markdown--h4">Theming variations</h4>
+<h4 id="theming-variations" tabindex="-1" class="docs-markdown--h4">Theming variations</h4>
 <p class="docs-markdown--p">By setting some theming tokens, you can modify the look of the comparison table. For the basic theming setup check the <a href="./documentation/theming">theming page</a>.</p>
 <p class="docs-markdown--p">Depending on the colors you choose, it may be necessary to modify the default button styling in the comparison table, e.g. use the negative button for an unselected button for the color combinations shown here. For this, you can set <code>unselectedClassNames=&quot;secondary small negative&quot;</code> for <code>nxComparisonTableSelectButton</code>.</p>
 
 </div>
-<h4 id="dynamically-filled-table" class="docs-markdown--h4">Dynamically filled table</h4>
+<h4 id="dynamically-filled-table" tabindex="-1" class="docs-markdown--h4">Dynamically filled table</h4>
 <div nx-docs-example="comparison-table-dynamic" config="{}">exampleID: comparison-table-dynamic</div>
-<h4 id="non-sticky-header-on-desktop" class="docs-markdown--h4">Non-sticky header on Desktop</h4>
+<h4 id="non-sticky-header-on-desktop" tabindex="-1" class="docs-markdown--h4">Non-sticky header on Desktop</h4>
 <p class="docs-markdown--p">You can opt-out of the sticky header row on Desktop by adding the attribute <code>[mayStick]=&quot;false&quot;</code> to your header row.</p>
 <div nx-docs-example="comparison-table-non-sticky-header" config="{}">exampleID: comparison-table-non-sticky-header</div>
 <div class="docs-expert-container">
-<h4 id="expert%3A-form-controls-in-a-comparison-table" class="docs-markdown--h4">Expert: Form controls in a comparison table</h4>
+<h4 id="expert%3A-form-controls-in-a-comparison-table" tabindex="-1" class="docs-markdown--h4">Expert: Form controls in a comparison table</h4>
 <p class="docs-markdown--p">You can easily place other components like a dropdown in the comparison table:</p>
 <p class="docs-markdown--p">Please note that <strong>this is an option for Expert</strong>. This means that form controls inside the comparison table are currently only intended for internal and not for client-facing applications.</p>
 <p class="docs-markdown--p">Switch the theme to &quot;EXPERT&quot; at the top of the page to see the correct expert comparison table.</p>
 <div nx-docs-example="comparison-table-form-elements" config="{}">exampleID: comparison-table-form-elements</div>
 </div>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">When using an icon-only cell it is important that the <code>nx-icon</code> has an <code>aria-label</code>. To learn more about the usage of an aria-label <a href="./documentation/accessibility/overview#usage-of-aria-label">click here</a>.</p>

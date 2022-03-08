@@ -5,35 +5,35 @@
 <p class="docs-markdown--p">The <code>&lt;nx-context-menu&gt;</code> is a floating panel containing a list of options.</p>
 <div nx-docs-example="context-menu-basic" config="{}">exampleID: context-menu-basic</div>
 <p class="docs-markdown--p">By itself, the <code>&lt;nx-context-menu&gt;</code> element does not render anything. The menu is attached to and opened via application of the <code>nxContextTriggerFor</code> directive:</p>
-<h3 id="toggling-the-menu-programmatically" class="docs-markdown--h3">Toggling the menu programmatically</h3>
+<h3 id="toggling-the-menu-programmatically" tabindex="-1" class="docs-markdown--h3">Toggling the menu programmatically</h3>
 <p class="docs-markdown--p">The context menu exposes an API to open/close programmatically. Please note that in this case, an <code>nxContextMenuTriggerFor</code> directive is still necessary to attach the context menu to a trigger element in the DOM.</p>
 <div nx-docs-example="context-menu-programmatic" config="{}">exampleID: context-menu-programmatic</div>
-<h3 id="icons" class="docs-markdown--h3">Icons</h3>
+<h3 id="icons" tabindex="-1" class="docs-markdown--h3">Icons</h3>
 <p class="docs-markdown--p">Context menus support displaying <code>&lt;nx-icon&gt;</code> elements before the menu item text.</p>
 <div nx-docs-example="context-menu-icons" config="{}">exampleID: context-menu-icons</div>
-<h3 id="indicators" class="docs-markdown--h3">Indicators</h3>
+<h3 id="indicators" tabindex="-1" class="docs-markdown--h3">Indicators</h3>
 <p class="docs-markdown--p">Using the <a href="./documentation/indicator/overview"><code>&lt;nx-indicator&gt;</code></a>, certain entries of the context menu can be marked.</p>
 <div nx-docs-example="context-menu-indicator" config="{}">exampleID: context-menu-indicator</div>
-<h3 id="nested-context-menu" class="docs-markdown--h3">Nested context menu</h3>
+<h3 id="nested-context-menu" tabindex="-1" class="docs-markdown--h3">Nested context menu</h3>
 <p class="docs-markdown--p">The context menu has the ability to open a sub-menu. To do so, you have to define your root menu and sub-menus, in addition to setting the <code>nxContextMenuTriggerFor</code> on the <code>nxContextMenuItem</code> that should trigger the sub-menu:</p>
 <div nx-docs-example="context-menu-nested" config="{}">exampleID: context-menu-nested</div>
-<h3 id="disabling-menu-items" class="docs-markdown--h3">Disabling menu items</h3>
+<h3 id="disabling-menu-items" tabindex="-1" class="docs-markdown--h3">Disabling menu items</h3>
 <p class="docs-markdown--p">Menu items can be disabled by adding a <code>disabled</code> attribute to the <code>nxContextMenuItem</code>.</p>
 <div nx-docs-example="context-menu-disabled" config="{}">exampleID: context-menu-disabled</div>
-<h3 id="lazy-rendering" class="docs-markdown--h3">Lazy rendering</h3>
+<h3 id="lazy-rendering" tabindex="-1" class="docs-markdown--h3">Lazy rendering</h3>
 <p class="docs-markdown--p">By default, the context menu content will be initialized even when the panel is closed. To defer initialization until the context menu is open, the content can be provided as an ng-template with the <code>nxContextMenuContent</code> attribute:</p>
 <div nx-docs-example="context-menu-lazy" config="{}">exampleID: context-menu-lazy</div>
-<h3 id="passing-in-data-to-a-menu" class="docs-markdown--h3">Passing in data to a menu</h3>
+<h3 id="passing-in-data-to-a-menu" tabindex="-1" class="docs-markdown--h3">Passing in data to a menu</h3>
 <p class="docs-markdown--p">When using lazy rendering, additional context data can be passed to the context menu panel via the <code>nxContextMenuTriggerData</code> input. This allows for a single context menu instance to be rendered with a different set of data, depending on the trigger that opened it:</p>
 <div nx-docs-example="context-menu-data" config="{}">exampleID: context-menu-data</div>
-<h3 id="scroll-strategy" class="docs-markdown--h3">Scroll strategy</h3>
+<h3 id="scroll-strategy" tabindex="-1" class="docs-markdown--h3">Scroll strategy</h3>
 <p class="docs-markdown--p">By default scroll strategy of the context <code>reposition</code>, which lets the menu stay open and reposition itself when scrolling. To close the context menu on scroll, the scroll strategy can be set to <code>close</code>.</p>
 <p class="docs-markdown--p">To use a custom scroll container instead of the body element, <a href="./documentation/popover/overview#cdkscrollable">add cdkScrollable to the container element</a></p>
 <div nx-docs-example="context-menu-scroll-strategy" config="{}">exampleID: context-menu-scroll-strategy</div>
-<h3 id="right-click" class="docs-markdown--h3">Right click</h3>
+<h3 id="right-click" tabindex="-1" class="docs-markdown--h3">Right click</h3>
 <p class="docs-markdown--p">You can set the mode of the context menu to <code>cursor</code> to be able to open it via right click. Be aware that this can cause usability issues and it is only recommended to use this in combination with a visible button.</p>
 <div nx-docs-example="context-menu-cursor-mode" config="{}">exampleID: context-menu-cursor-mode</div>
-<h3 id="keyboard-interaction" class="docs-markdown--h3">Keyboard interaction</h3>
+<h3 id="keyboard-interaction" tabindex="-1" class="docs-markdown--h3">Keyboard interaction</h3>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">DOWN_ARROW: Focuses the next menu item</li>
 <li class="docs-markdown--li">UP_ARROW: Focuses previous menu item</li>

@@ -3,9 +3,9 @@
 The overlay service is provided as a beta preview. Breaking changes may still likely be introduced outside of major versions until the service is
 considered stable.
 </div>
-<h3 id="purpose" class="docs-markdown--h3">Purpose</h3>
+<h3 id="purpose" tabindex="-1" class="docs-markdown--h3">Purpose</h3>
 <p class="docs-markdown--p">The overlay service provides reusable functionality to open any kind of content in an overlay panel that is attached to another element. Components that open these overlay panels in the library are e.g. the dropdown, context menu or the autocomplete. While these serve specific purposes this service can be used to create custom menus or autocomplete style components.</p>
-<h3 id="features" class="docs-markdown--h3">Features</h3>
+<h3 id="features" tabindex="-1" class="docs-markdown--h3">Features</h3>
 <p class="docs-markdown--p">Here are some features and advantages you get by using the service</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">Style consistency of the overlay</li>
@@ -13,7 +13,7 @@ considered stable.
 <li class="docs-markdown--li">Focus trap into the overlay for better accessibility</li>
 <li class="docs-markdown--li">Configurable backdrops and closing behavior</li>
 </ul>
-<h3 id="angular-cdk" class="docs-markdown--h3">Angular CDK</h3>
+<h3 id="angular-cdk" tabindex="-1" class="docs-markdown--h3">Angular CDK</h3>
 <p class="docs-markdown--p">Under the hood the service is using the <a href="https://material.angular.io/cdk/overlay/overview">CDK overlay</a>. You can learn more about position and scroll strategies in the CDK documentation.</p>
 <p class="docs-markdown--p">The CDK is required by a number of modules such as message toast, popover or dropdown as they use the overlay component. If you intend to use those, please make sure you have imported the cdk-a11y and cdk-overlay stylesheets, so that everything gets displayed correctly:</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@angular/cdk/overlay-prebuilt.css&#x27;</span>;
@@ -21,13 +21,13 @@ considered stable.
 </code></pre>
 <p class="docs-markdown--p">If you create a new project, the best way to add the necessary styles would be by running <code>ng add @allianz/ngx-ndbx</code>.</p>
 <p class="docs-markdown--p">If you migrate an existing project, make sure to add these to your global styles or into the styles option in the angular.json.</p>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">It is important to notice that the content that gets put into the overlay has to implement the specific accessibility patterns it needs. The service only takes care of accessibility features around the content, like closing or focus trapping. As an example a dropdown or autocomplete has to implement the role listbox, the context menu in contrast implements role menu. The role can be either set on the overlay wrapper directly via the configuration or can come from the content component.</p>
-<h4 id="focus-trap-and-keyboard-navigation" class="docs-markdown--h4">Focus trap and keyboard navigation</h4>
+<h4 id="focus-trap-and-keyboard-navigation" tabindex="-1" class="docs-markdown--h4">Focus trap and keyboard navigation</h4>
 <p class="docs-markdown--p">By default the focus gets trapped into the overlay that keyboard and screen reader users can navigate inside the content. Pressing escape closes the overlay. The focus trap can be turned off via the configuration for tooltip style patterns that only serve optional content that is presented differently to the user via a live region or with aria-describedby.</p>
-<h3 id="positioning" class="docs-markdown--h3">Positioning</h3>
+<h3 id="positioning" tabindex="-1" class="docs-markdown--h3">Positioning</h3>
 <p class="docs-markdown--p">You can use the predefined directions <code>top</code>, <code>top-start</code>, <code>top-end</code>, <code>bottom</code>, <code>bottom-start</code>, <code>bottom-end</code>, <code>left</code> or <code>right</code> which all have fallback positions if the overlay doesn't fit into the direction.</p>
 <div nx-docs-example="overlay-positioning" config="{}">exampleID: overlay-positioning</div>
-<h3 id="limiting-fallbacks" class="docs-markdown--h3">Limiting Fallbacks</h3>
+<h3 id="limiting-fallbacks" tabindex="-1" class="docs-markdown--h3">Limiting Fallbacks</h3>
 <p class="docs-markdown--p">Depending on the requirements of your overlay you can limit the fallbacks the overlay can choose by setting the <code>fallbackOrientation</code> option in the configuration. By default the overlay will choose fallbacks clockwise from the starting direction.</p>
 <div nx-docs-example="overlay-limiting-fallbacks" config="{}">exampleID: overlay-limiting-fallbacks</div>

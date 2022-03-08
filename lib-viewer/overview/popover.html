@@ -1,5 +1,5 @@
 <p class="docs-markdown--p">Popover requires Angular CDK (incl. CSS). Learn <a href="./documentation/overlay/overview#angular-cdk">how to enable Angular CDK styles</a>.</p>
-<h3 id="trigger-types" class="docs-markdown--h3">Trigger types</h3>
+<h3 id="trigger-types" tabindex="-1" class="docs-markdown--h3">Trigger types</h3>
 <p class="docs-markdown--p">It is possible to open the popover by hover, click event or manually. To adjust the trigger type accordingly, set the <code>nxPopoverTrigger</code> attribute to click/hover/manual.</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">The popover triggered by hover will close immediately after the mouse exits the trigger.</li>
@@ -8,40 +8,40 @@
 <li class="docs-markdown--li">To learn more about the hover trigger please check the <a href="./documentation/popover/overview#hover-triggered-popover">Hover triggered popover</a> section.</li>
 </ul>
 <div nx-docs-example="popover-trigger" config="{}">exampleID: popover-trigger</div>
-<h3 id="closing-on-document-click" class="docs-markdown--h3">Closing on document click</h3>
+<h3 id="closing-on-document-click" tabindex="-1" class="docs-markdown--h3">Closing on document click</h3>
 <p class="docs-markdown--p">You can enable the popover to close when the user clicks outside of it by setting the property <code>closeOnClickOutside</code> as shown in the example below. Per default the triggers of type <code>click</code> and <code>manual</code> close on click outside of the popover. The property has no effect if you apply it on a trigger of type <code>hover</code>.</p>
 <div nx-docs-example="popover-click-outside" config="{}">exampleID: popover-click-outside</div>
-<h3 id="positioning" class="docs-markdown--h3">Positioning</h3>
+<h3 id="positioning" tabindex="-1" class="docs-markdown--h3">Positioning</h3>
 <p class="docs-markdown--p">It is possible to position the popover top/right/bottom/left to the trigger by setting the <code>nxPopoverDirection</code> attribute to top/right/bottom/left.</p>
 <div nx-docs-example="popover-positioning" config="{}">exampleID: popover-positioning</div>
-<h3 id="fallback-strategy" class="docs-markdown--h3">Fallback strategy</h3>
+<h3 id="fallback-strategy" tabindex="-1" class="docs-markdown--h3">Fallback strategy</h3>
 <p class="docs-markdown--p">The positioning of the popover follows a fallback strategy to make sure that the component is displayed correctly in the most common situations. Fallback means that the popover tries to find a fitting position within the window.</p>
 <p class="docs-markdown--p">The following table explains the fallback strategy of the popover.</p>
 <div nx-docs-example="popover-table" config="{ 'hideHeader': true }">exampleID: popover-table</div>
-<h3 id="custom-content" class="docs-markdown--h3">Custom content</h3>
+<h3 id="custom-content" tabindex="-1" class="docs-markdown--h3">Custom content</h3>
 <p class="docs-markdown--p">The popover can carry custom content.</p>
 <div nx-docs-example="popover-custom" config="{}">exampleID: popover-custom</div>
-<h3 id="custom-lazyloaded-content" class="docs-markdown--h3">Custom lazyloaded content</h3>
+<h3 id="custom-lazyloaded-content" tabindex="-1" class="docs-markdown--h3">Custom lazyloaded content</h3>
 <p class="docs-markdown--p">The popovers supports lazyloading when you provide a <code>ng-template</code> with the <code>nxPopoverContent</code> directive attached. The content of the template will only be instantiated once the popover gets opened. After closing the content will be destroyed again.</p>
 <div nx-docs-example="popover-lazyload" config="{}">exampleID: popover-lazyload</div>
-<h3 id="modal-popover" class="docs-markdown--h3">Modal popover</h3>
+<h3 id="modal-popover" tabindex="-1" class="docs-markdown--h3">Modal popover</h3>
 <p class="docs-markdown--p">It is possible to configure the popover to be modal - just set <code>nxPopoverTrigger=click</code> and <code>nxPopoverModal=true</code>. Now the popover can be closed via the close icon as well as with the ESC-Key.</p>
 <div nx-docs-example="popover-modal" config="{}">exampleID: popover-modal</div>
-<h3 id="scroll-strategy" class="docs-markdown--h3">Scroll strategy</h3>
+<h3 id="scroll-strategy" tabindex="-1" class="docs-markdown--h3">Scroll strategy</h3>
 <p class="docs-markdown--p">The popover implements the two strategies close and reposition to handle the behavior of the popover when the owning container scrolls. The strategy close will automatically close the popover while reposition scrolls the popover with its origin.</p>
 <div nx-docs-example="popover-scroll" config="{}">exampleID: popover-scroll</div>
-<h3 id="cdkscrollable" class="docs-markdown--h3">cdkScrollable</h3>
+<h3 id="cdkscrollable" tabindex="-1" class="docs-markdown--h3">cdkScrollable</h3>
 <p class="docs-markdown--p">To make the popovers behave correctly while scrolling, you have to place the directive cdkScrollable on the scrolling container.</p>
 <pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">cdkScrollable</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <p class="docs-markdown--p">The following examples illustrates the usage of <code>cdkScrollable</code>. Make sure to import the <code>CdkScrollableModule</code> from <code>@angular/cdk/scrolling</code>. The popovers are configured to close on scroll events. If there is no <code>cdkScrollable</code> on the container, scrolling leads to unexpected behaviour (left). By adding <code>cdkScrollable</code> to the right container, the popover closes as expected (right).</p>
 <div nx-docs-example="popover-scrollable" config="{}">exampleID: popover-scrollable</div>
-<h3 id="hover-triggered-popover" class="docs-markdown--h3">Hover triggered popover</h3>
+<h3 id="hover-triggered-popover" tabindex="-1" class="docs-markdown--h3">Hover triggered popover</h3>
 <p class="docs-markdown--p">The popover triggered by hover will close immediately after the mouse exits the trigger.</p>
 <p class="docs-markdown--p">Please note that the popover with hover is only suitable for optional information. The information in the popover is not accessible for all use cases (e.g., touch devices) and is therefore to be used with care - if at all.</p>
 <div nx-docs-example="popover-hover" config="{}">exampleID: popover-hover</div>
-<h2 id="internationalization" class="docs-markdown--h2">Internationalization</h2>
+<h2 id="internationalization" tabindex="-1" class="docs-markdown--h2">Internationalization</h2>
 <p class="docs-markdown--p">To set different translations of the countries and to change texts like the close icon aria label you can set these via the <code>NxPopoverIntl</code> class provider.</p>
 <div nx-docs-example="popover-i18n" config="{}">exampleID: popover-i18n</div>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
 <p class="docs-markdown--p">The assigned trigger will always receive <code>aria-describedby</code> property to point screenreaders to the related content in the popover.</p>

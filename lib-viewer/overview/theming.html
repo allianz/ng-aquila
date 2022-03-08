@@ -1,7 +1,7 @@
-<h2 id="custom-theming---release-candidate" class="docs-markdown--h2">Custom theming - release candidate</h2>
+<h2 id="custom-theming---release-candidate" tabindex="-1" class="docs-markdown--h2">Custom theming - release candidate</h2>
 <p class="docs-markdown--p">All components in this library are styled by using the style tokens listed <a href="./documentation/theming/overview#general-theming-tokens">here</a>. You can create your own custom theme by overwriting the values of these style tokens.</p>
 <p class="docs-markdown--p">The library provides an interface for extending and overwriting properties of our base theme to enable the creation of custom application themes. This is accomplished by using SCSS maps for merging your newly defined style tokens and our base theme tokens and then injecting those into the components by CSS variables.</p>
-<h3 id="customizing-the-base-theme" class="docs-markdown--h3">Customizing the base theme</h3>
+<h3 id="customizing-the-base-theme" tabindex="-1" class="docs-markdown--h3">Customizing the base theme</h3>
 <p class="docs-markdown--p">In order to define your custom theme first create a file <code>&lt;your-theme&gt;.scss</code>.</p>
 <p class="docs-markdown--p">To register your theme import the theming utilities:</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/styles/theming&#x27;</span>;
@@ -28,7 +28,7 @@
 <div class="docs-private">
 Currently the following internal themes are available as a base theme: **aposin** (implicitly), **ndbx**, **ndbx-expert** and **direct**, which have to be explicitly imported as shown in the example above.
 </div>
-<h3 id="enabling-(building)-a-new-theme" class="docs-markdown--h3">Enabling (building) a new theme</h3>
+<h3 id="enabling-(building)-a-new-theme" tabindex="-1" class="docs-markdown--h3">Enabling (building) a new theme</h3>
 <p class="docs-markdown--p">In order to inject the newly defined custom theme tokens into the components you have to build your new theme by using the <code>nx-buid-theme</code> mixin.</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@include</span> nx-build-theme(themeName);
 </code></pre>
@@ -38,7 +38,7 @@ Currently the following internal themes are available as a base theme: **aposin*
 
 <span class="hljs-keyword">@include</span> nx-build-theme(themeName);
 </code></pre>
-<h3 id="using-your-new-theme" class="docs-markdown--h3">Using your new theme</h3>
+<h3 id="using-your-new-theme" tabindex="-1" class="docs-markdown--h3">Using your new theme</h3>
 <p class="docs-markdown--p">In order to have access to the newly defined tokens you have to import <code>&lt;your-theme&gt;.scss</code> into every SCSS file where you want to use your tokens. You can also import it to a global SCSS stylesheet and import this one wherever needed.</p>
 <p class="docs-markdown--p">We provide you with two utility helpers:</p>
 <ul class="docs-markdown--ul">
@@ -52,7 +52,7 @@ Currently the following internal themes are available as a base theme: **aposin*
     <span class="hljs-attribute">background</span>: nx-theme(interactive-primary);
 }
 </code></pre>
-<h3 id="advanced" class="docs-markdown--h3">Advanced</h3>
+<h3 id="advanced" tabindex="-1" class="docs-markdown--h3">Advanced</h3>
 <p class="docs-markdown--p">You can also add new tokens when creating your custom theme as well as use exisiting token values for your new tokens:</p>
 <pre><code class="language-scss"><span class="hljs-variable">$my-theme</span>: (
     my-new-token: pink,
@@ -68,7 +68,7 @@ Currently the following internal themes are available as a base theme: **aposin*
     <span class="hljs-attribute">background</span>: nx-theme(my-new-token);
 }
 </code></pre>
-<h3 id="general-theming-tokens" class="docs-markdown--h3">General Theming Tokens</h3>
+<h3 id="general-theming-tokens" tabindex="-1" class="docs-markdown--h3">General Theming Tokens</h3>
 <p class="docs-markdown--p">Our components are themed by the following general tokens. You can overwrite their values in your custom theme. A full list of the current style tokens can be found <a href="https://www.github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss">here</a>.</p>
 <pre><code class="language-scss">  ui-<span class="hljs-attribute">background</span>: <span class="hljs-number">#0f2A3D</span>,
   ui-<span class="hljs-number">01</span>: <span class="hljs-number">#0F2A3D</span>,

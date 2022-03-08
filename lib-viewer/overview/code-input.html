@@ -1,31 +1,31 @@
 <p class="docs-markdown--p">Use this component when you want users to input a one-time, fixed, and specific set of characters to be validated. There is no limit to how many fields can be used.</p>
 <p class="docs-markdown--p">The code input component is primarily used for key codes that are generally meaningless and abide by specific character patterns.</p>
 <p class="docs-markdown--p">This component can be used for anything ranging from one time codes sent via SMS or email verification codes on desktop or mobile.</p>
-<h3 id="4-character-code-input" class="docs-markdown--h3">4 character code input</h3>
+<h3 id="4-character-code-input" tabindex="-1" class="docs-markdown--h3">4 character code input</h3>
 <p class="docs-markdown--p">This is a 4 character code input where only uppercase letters are permitted with auto uppercase enabled. This form will validate on submit.</p>
 <div nx-docs-example="code-input-four-char" config="{}">exampleID: code-input-four-char</div>
-<h3 id="6-character-code-input" class="docs-markdown--h3">6 character code input</h3>
+<h3 id="6-character-code-input" tabindex="-1" class="docs-markdown--h3">6 character code input</h3>
 <p class="docs-markdown--p">This is a 6 character code input where any character is permitted. This code input will validate on blur.</p>
 <div nx-docs-example="code-input-six-char" config="{}">exampleID: code-input-six-char</div>
-<h3 id="7-character-code-input" class="docs-markdown--h3">7 character code input</h3>
+<h3 id="7-character-code-input" tabindex="-1" class="docs-markdown--h3">7 character code input</h3>
 <p class="docs-markdown--p">This is an 7 character code input where only lower case letters and numbers are permitted with auto lowercase enabled and input required.</p>
 <div nx-docs-example="code-input-seven-char" config="{}">exampleID: code-input-seven-char</div>
-<h3 id="disabled" class="docs-markdown--h3">Disabled</h3>
+<h3 id="disabled" tabindex="-1" class="docs-markdown--h3">Disabled</h3>
 <p class="docs-markdown--p">With <code>[disabled]</code> the code input can be disabled. When using reactive forms you can also set the disabled state in the FormControl:</p>
 <div nx-docs-example="code-input-disabled" config="{}">exampleID: code-input-disabled</div>
-<h3 id="input-type" class="docs-markdown--h3">Input type</h3>
+<h3 id="input-type" tabindex="-1" class="docs-markdown--h3">Input type</h3>
 <p class="docs-markdown--p">The default type of the inputs is <code>text</code>. The value can be changed by setting the property <code>type</code>. For example, a PIN code that accepts only four digits.</p>
 <p class="docs-markdown--p"><strong>Please note</strong> that the selection is not possible on <code>input[&quot;type=number&quot;]</code>. To get cross browser support for text selection on focus use <code>input[&quot;type=tel&quot;]</code> instead. For further information see <a href="https://html.spec.whatwg.org/multipage/input.html#concept-input-apply">WHATWG forms spec</a>.</p>
 <div nx-docs-example="code-input-type" config="{}">exampleID: code-input-type</div>
-<h3 id="negative-styling" class="docs-markdown--h3">Negative styling</h3>
+<h3 id="negative-styling" tabindex="-1" class="docs-markdown--h3">Negative styling</h3>
 <p class="docs-markdown--p">You can apply the negative styling to the code input by using the <code>[negative]</code> input.</p>
 <div nx-docs-example="code-input-negative" config="{}">exampleID: code-input-negative</div>
-<h3 id="accessibility" class="docs-markdown--h3">Accessibility</h3>
-<h4 id="limitations" class="docs-markdown--h4">Limitations</h4>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<h4 id="limitations" tabindex="-1" class="docs-markdown--h4">Limitations</h4>
 <p class="docs-markdown--p">The value of the model is a truncated string with no spaces between characters. This means that when the user enters a value and skips one or more inputs, these skipped inputs are not reflected as spaces in the model string and therefore the control is invalid.</p>
 <p class="docs-markdown--p">It is suggested to only change the programmatic model once the control is valid. Otherwise you can end up in unexpected behavior.</p>
 <p class="docs-markdown--p">In this example the value is reflected on change. If you try to enter a string like <code>AB C</code> the value will be <code>ABC</code> and the form will be invalid. In this example, we manipulate the model to <code>1234</code> when it is valid.</p>
 <div nx-docs-example="code-input-model" config="{}">exampleID: code-input-model</div>
-<h4 id="localization" class="docs-markdown--h4">Localization</h4>
+<h4 id="localization" tabindex="-1" class="docs-markdown--h4">Localization</h4>
 <p class="docs-markdown--p">The input fields need to have an aria-label for a11y support. By default they have english aria-labels, to translate them you can subclass the <code>NxCodeInputIntl</code> and provide it in your module. The default aria-label is 'Enter Key X of Y'. Thereby you can provide your own translations for 'Enter Key' and 'of' as shown in the example below.</p>
 <div nx-docs-example="code-input-localize" config="{}">exampleID: code-input-localize</div>

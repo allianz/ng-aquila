@@ -6,7 +6,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AquilaDocsExample } from './app/aquila-docs-example';
-import { AquilaModule } from './app/aquila-module';
+import { AquilaModule } from './app/aquila.module';
 import './polyfills';
 
 @NgModule({

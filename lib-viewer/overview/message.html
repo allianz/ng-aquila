@@ -4,34 +4,34 @@
   The import endpoint remains the same:
   <pre>import { NxMessageModule } from '@aposin/ng-aquila/message';</pre>
 </div>
-<h3 id="inline-notification" class="docs-markdown--h3">Inline Notification</h3>
+<h3 id="inline-notification" tabindex="-1" class="docs-markdown--h3">Inline Notification</h3>
 <p class="docs-markdown--p">Use this component to present a contextual message with different color coding. You can pass in any content you consider appropriate.</p>
-<h4 id="info" class="docs-markdown--h4">Info</h4>
+<h4 id="info" tabindex="-1" class="docs-markdown--h4">Info</h4>
 <div nx-docs-example="message-info" config="{}">exampleID: message-info</div>
-<h4 id="error" class="docs-markdown--h4">Error</h4>
+<h4 id="error" tabindex="-1" class="docs-markdown--h4">Error</h4>
 <p class="docs-markdown--p">Besides the message component you can also use <code>&lt;nx-error&gt;</code>. The NxErrorComponent has a different look in expert applications (for a global configuration please have a look at the <a href="./documentation/config/overview">expert module</a>). We recommend using <em>nx-error</em>, especially for use cases where you need to support both styles.</p>
 <div nx-docs-example="message-error" config="{}">exampleID: message-error</div>
-<h4 id="success" class="docs-markdown--h4">Success</h4>
+<h4 id="success" tabindex="-1" class="docs-markdown--h4">Success</h4>
 <div nx-docs-example="message-success" config="{}">exampleID: message-success</div>
-<h4 id="warning" class="docs-markdown--h4">Warning</h4>
+<h4 id="warning" tabindex="-1" class="docs-markdown--h4">Warning</h4>
 <div nx-docs-example="message-warning" config="{}">exampleID: message-warning</div>
-<h4 id="closable" class="docs-markdown--h4">Closable</h4>
+<h4 id="closable" tabindex="-1" class="docs-markdown--h4">Closable</h4>
 <p class="docs-markdown--p">You can add a close icon to the message component by using the <code>closable</code> input. A <code>(close)</code> event is emitted when the user clicks on the close icon.</p>
 <p class="docs-markdown--p">When using a closable message please set an <code>aria-label</code> on the close button via the <code>closeButtonLabel</code> property. If you don't set the <code>aria-label</code> explicitly it will have <strong>'Close dialog'</strong> as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <p class="docs-markdown--p">When displaying notifications we recommend that you use <code>aria-live</code> combined with the <a href="https://material.angular.io/cdk/a11y/api">LiveAnnouncer</a> in order to be accessibility compliant.</p>
 <div nx-docs-example="message-closable" config="{}">exampleID: message-closable</div>
-<h3 id="message-banner" class="docs-markdown--h3">Message Banner</h3>
+<h3 id="message-banner" tabindex="-1" class="docs-markdown--h3">Message Banner</h3>
 <p class="docs-markdown--p">The notification banner is a static element that shifts the content of the page down in order to communicate information, a warning or an error to the user. Respectively it can have an <strong>info, success or warning context</strong>. Per default, message banners have a close icon button in the top right, which can be disabled by the <code>closable</code> input.</p>
 <p class="docs-markdown--p">Analogously to the Inline Notification, a message banner emits a <code>close</code> event when being closed by the close icon button. The example below shows how the <code>close</code> event can be used for hiding a message banner.</p>
 <div nx-docs-example="message-banner" config="{}">exampleID: message-banner</div>
-<h3 id="message-toast" class="docs-markdown--h3">Message Toast</h3>
+<h3 id="message-toast" tabindex="-1" class="docs-markdown--h3">Message Toast</h3>
 <p class="docs-markdown--p">Message Toast is a small popup <strong>which should only contain success or informative messages</strong>. It has a title, that should be short and descriptive. A Message Toast appears center-aligned from the bottom of the application. Per default it disappears after 3 seconds, but please keep in mind that the show duration should be set dependent on the length of the message.</p>
 <p class="docs-markdown--p">The <code>NxMessageToastModule</code> provides a service for displaying these Message Toasts: <code>NxMessageToastService</code>.</p>
 <p class="docs-markdown--p"><strong>Please make sure you have imported the cdk-a11y and cdk-overlay stylesheets</strong> as shown below, so that the message toasts get displayed correctly:</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@angular/cdk/overlay-prebuilt.css&#x27;</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@angular/cdk/a11y-prebuilt.css&#x27;</span>;
 </code></pre>
-<h4 id="showing-a-message-toast" class="docs-markdown--h4">Showing a message toast</h4>
+<h4 id="showing-a-message-toast" tabindex="-1" class="docs-markdown--h4">Showing a message toast</h4>
 <p class="docs-markdown--p">The <code>NxMessageToastService</code> offers two options for showing a message toast: by passing a text string or a template.</p>
 <pre><code class="language-ts"><span class="hljs-comment">// Simple message toast with a custom text</span>
 <span class="hljs-keyword">let</span> toastRef: NxMessageToastRef = messageToastService.open(<span class="hljs-string">&#x27;My message toasttext&#x27;</span>);
@@ -41,7 +41,7 @@
 </code></pre>
 <p class="docs-markdown--p">In both cases a <code>NxMessageToastRef</code> is returned. It can be used for closing the message toast or subscribing to its closing. This behaviour is shown in the following examples.</p>
 <div nx-docs-example="message-toast-opening" config="{}">exampleID: message-toast-opening</div>
-<h4 id="configuration" class="docs-markdown--h4">Configuration</h4>
+<h4 id="configuration" tabindex="-1" class="docs-markdown--h4">Configuration</h4>
 <p class="docs-markdown--p">Every message toast is opened with a default <code>NxMessageToastConfig</code> value. You can pass your own configuration as a second optional argument when opening a message toast. By passing your custom configuration you can change the context of the message toast and set a duration. For more information on the configurable parameters check out the <a href="./documentation/notifications/api">notifcation API</a>.</p>
 <p class="docs-markdown--p">In the following example the toast message does not close automatically, but in a programmatic way. By pasing a <code>duration: 0</code> via the toast message config the toast won't close automatically,</p>
 <pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> myCustomOptions: NxMessageToastConfig = {
@@ -53,7 +53,7 @@
 <span class="hljs-keyword">let</span> toastRef = messageToastService.open(<span class="hljs-string">&#x27;My message toasttext.&#x27;</span>, myCustomOptions);
 </code></pre>
 <div nx-docs-example="message-toast-custom-settings" config="{}">exampleID: message-toast-custom-settings</div>
-<h4 id="global-configuration" class="docs-markdown--h4">Global Configuration</h4>
+<h4 id="global-configuration" tabindex="-1" class="docs-markdown--h4">Global Configuration</h4>
 <p class="docs-markdown--p">You can also overwrite the default message toast options by using the <code>NX_MESSAGE_TOAST_DEFAULT_CONFIG</code> injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">providers</span>: [
@@ -64,12 +64,12 @@
   ]
 })
 </code></pre>
-<h4 id="accessibility" class="docs-markdown--h4">Accessibility</h4>
-<h5 id="aria-live-and-politeness" class="docs-markdown--h5">Aria-live and politeness</h5>
+<h4 id="accessibility" tabindex="-1" class="docs-markdown--h4">Accessibility</h4>
+<h5 id="aria-live-and-politeness" tabindex="-1" class="docs-markdown--h5">Aria-live and politeness</h5>
 <p class="docs-markdown--p">Message toasts are announced via an <code>aria-live</code> region. By default, their politeness level is set to <code>polite</code>. This can be changed by overwriting the <code>politeness</code> in the message toast configuration. The <code>polite</code> value is recommended, as then the toast messages are not presented while the user is active on the page (e.g. while the user is listening to the text of another element), but at the next opportunity (e.g. when the user pauses typing).</p>
-<h5 id="announcement-messages" class="docs-markdown--h5">Announcement messages</h5>
+<h5 id="announcement-messages" tabindex="-1" class="docs-markdown--h5">Announcement messages</h5>
 <p class="docs-markdown--p">If there is no <code>announcementMessage</code> specified the screen reader will read the content of the message toast. <strong>Please pay attention that some screen readers don't read the text out loud when a message toast is opened from a template</strong>. In these cases you <strong>must</strong> define an <code>announcementMessage</code> in order to guarantee compatibility with all screen readers.</p>
-<h5 id="a11y-styles" class="docs-markdown--h5">A11y styles</h5>
+<h5 id="a11y-styles" tabindex="-1" class="docs-markdown--h5">A11y styles</h5>
 <p class="docs-markdown--p"><strong>Please make sure you have imported the cdk-a11y styles</strong>, so that <code>aria-live</code> messages don't get displayed on the webpage. The message toasts use the Cdk LiveAnnouncer, which needs these styles to work properly. It is best to import them in your global application stylesheets as follows:</p>
 <pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&#x27;@angular/cdk/a11y-prebuilt.css&#x27;</span>;
 </code></pre>

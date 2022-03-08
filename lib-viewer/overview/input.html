@@ -1,19 +1,19 @@
-<h3 id="module" class="docs-markdown--h3">Module</h3>
+<h3 id="module" tabindex="-1" class="docs-markdown--h3">Module</h3>
 <p class="docs-markdown--p"><strong>Important:</strong> You will almost never use the <code>nxInput</code> directive without a <a href="./documentation/formfield/overview">formfield</a> as you won't get any chrome or labels.</p>
 <p class="docs-markdown--p">Therefore, the Input Module gives you access to the NxInputDirective which is required to use the <a href="./documentation/formfield/overview">formfield component</a>.</p>
 <p class="docs-markdown--p">As <code>nxInput</code> is only a directive, you will get the full angular support for input elements like ngModel and reactive forms. You can also pass all attributes native to the input element.</p>
 <p class="docs-markdown--p">If convenient for your use case, feel free to use this directive in combination with a textarea.</p>
 <p class="docs-markdown--p">There is, however, one caveat: We currently block unsupported input types like file, select, button and the like. For more details, see further down.</p>
-<h4 id="without-formfields" class="docs-markdown--h4">Without formfields</h4>
+<h4 id="without-formfields" tabindex="-1" class="docs-markdown--h4">Without formfields</h4>
 <p class="docs-markdown--p">As mentioned in the introduction, you won't get any chrome or labels when using inputs without formfields. Hence it will look like this (dashed border so you can see them):</p>
 <div nx-docs-example="input-without-formfield" config="{}">exampleID: input-without-formfield</div>
-<h3 id="examples" class="docs-markdown--h3">Examples</h3>
+<h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
 <p class="docs-markdown--p">Most of the native input field types are supported. You are not allowed to use non-text inputs like checkbox, file or hidden - those will throw an error.</p>
 <div nx-docs-example="input" config="{}">exampleID: input</div>
-<h4 id="textarea-autoresize" class="docs-markdown--h4">Textarea Autoresize</h4>
+<h4 id="textarea-autoresize" tabindex="-1" class="docs-markdown--h4">Textarea Autoresize</h4>
 <p class="docs-markdown--p">You can resize <code>&lt;textarea&gt;</code> elements by using the <code>cdkTextareaAutosize</code> directive from the CDK <code>@angular/cdk/text-field</code> module. More information on this directive can be found <a href="https://material.angular.io/cdk/text-field/overview#automatically-resizing-a-code-lt-textarea-gt-code-">here</a>.</p>
 <div nx-docs-example="input-autoresize" config="{}">exampleID: input-autoresize</div>
-<h4 id="forbidden-types" class="docs-markdown--h4">Forbidden Types</h4>
+<h4 id="forbidden-types" tabindex="-1" class="docs-markdown--h4">Forbidden Types</h4>
 <p class="docs-markdown--p">Here comes the full list of input field types that you are not allowed to use with this directive:</p>
 <ul class="docs-markdown--ul">
 <li class="docs-markdown--li">button</li>
@@ -26,15 +26,15 @@
 <li class="docs-markdown--li">reset</li>
 <li class="docs-markdown--li">submit</li>
 </ul>
-<h4 id="ngmodel-%26-reactive" class="docs-markdown--h4">NgModel &amp; Reactive</h4>
+<h4 id="ngmodel-%26-reactive" tabindex="-1" class="docs-markdown--h4">NgModel &amp; Reactive</h4>
 <p class="docs-markdown--p">As you are using the native input field, you will get the full support for ngModel, reactive form and template driven forms.</p>
-<h4 id="standalone" class="docs-markdown--h4">Standalone</h4>
+<h4 id="standalone" tabindex="-1" class="docs-markdown--h4">Standalone</h4>
 <div nx-docs-example="input-standalone" config="{}">exampleID: input-standalone</div>
-<h4 id="ngmodel" class="docs-markdown--h4">NgModel</h4>
+<h4 id="ngmodel" tabindex="-1" class="docs-markdown--h4">NgModel</h4>
 <div nx-docs-example="input-template-driven" config="{}">exampleID: input-template-driven</div>
-<h4 id="reactive" class="docs-markdown--h4">Reactive</h4>
+<h4 id="reactive" tabindex="-1" class="docs-markdown--h4">Reactive</h4>
 <div nx-docs-example="input-reactive" config="{}">exampleID: input-reactive</div>
-<h3 id="password-visibility-toggle" class="docs-markdown--h3">Password visibility toggle</h3>
+<h3 id="password-visibility-toggle" tabindex="-1" class="docs-markdown--h3">Password visibility toggle</h3>
 <p class="docs-markdown--p">In order to hide/show characters on inputs of type password you can use the <code>nx-password-toggle</code> component in combination with a <code>nxFormFieldSuffix</code> as shown in the example below. The input field has to be passed as a <code>control</code> to the <code>nx-password-toggle</code> component.</p>
 <p class="docs-markdown--p"><strong>Important:</strong> When using a formfield with a visibility toggle please pass an <code>aria-label</code> to the password toggle via the <code>ariaLabel</code> input. If you don't set it explicitly it will have 'Show password' as default value. As the default is in English, in almost all cases you should explicitly set the label.</p>
 <div nx-docs-example="formfield-password-visibility" config="{}">exampleID: formfield-password-visibility</div>
