@@ -27,12 +27,7 @@
                             "node_modules/@aposin/ng-aquila/themes/aposin.css"
                         ],
                         "scripts": [],
-                        "buildOptimizer": false,
-                        "optimization": false,
-                        "vendorChunk": true,
-                        "extractLicenses": false,
-                        "sourceMap": true,
-                        "namedChunks": true
+                        "outputHashing": "all"
                     }
                 },
                 "serve": {
