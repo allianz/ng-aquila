@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.2.0](https://github.com/aposin/ng-aquila/compare/v13.1.0...v13.2.0) (2022-03-08)
+
+### Bug Fixes
+
+-   **formfield:** add a title attribute ([f35da28](https://github.com/aposin/ng-aquila/commit/f35da282d434004e4c70e8cdb7946467cc85f054))
+-   **dropdown:** disabled option hover visuals ([9dcdb43](https://github.com/aposin/ng-aquila/commit/9dcdb43b3ed15441f28ae572224f01a85e9a191a))
+-   **dropdown:** do not run value formatter on label ([fe2ca60](https://github.com/aposin/ng-aquila/commit/fe2ca60ef6e22418b5dd1c3b12fec20d6b13417a))
+-   **dropdown:** fix keyboard selection ([9f19ea7](https://github.com/aposin/ng-aquila/commit/9f19ea79def377e4bde19b9c819e9f679eb86772))
+-   **formfield:** bottom line color in readonly mode ([9623429](https://github.com/aposin/ng-aquila/commit/962342936ece13bf0e40e420d72ac4921d09e942))
+-   **table:** disable zebra in expandable mode ([e3d91bd](https://github.com/aposin/ng-aquila/commit/e3d91bd5c6183bedb5888cd6554169cb43283cd2))
+
+### Features
+
+-   **autocomplete:** use generic element to support shadowDom ([9889791](https://github.com/aposin/ng-aquila/commit/9889791c996f3af052f63f1665e90971e283c7e1))
+-   **swipebar:** move swipebar to own module ([7c3f348](https://github.com/aposin/ng-aquila/commit/7c3f348dfb04d0128f3582934ce9d84311d3eea2))
+
 # [13.1.0](https://github.com/aposin/ng-aquila/compare/v13.0.0...v13.1.0) (2022-02-08)
 
 ### Bug Fixes
