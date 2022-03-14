@@ -1,5 +1,6 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceArray, coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
+import { CdkScrollable, ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -9,6 +10,7 @@ import {
     EventEmitter,
     HostBinding,
     Input,
+    NgZone,
     OnDestroy,
     OnInit,
     Optional,
@@ -42,6 +44,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
 
     private _selectedIndex: number | undefined;
+    private _scrollableArea: CdkScrollable;
 
     @ViewChild('headerRow') _headerRowElement!: NxComparisonTableFlexRow;
     @ViewChild('desktopContent') _desktopContentDiv!: ElementRef;
@@ -85,8 +88,16 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         return this._hiddenIndexes;
     }
 
-    constructor(private _element: ElementRef, @Optional() private _dir: Directionality, viewportService: NxViewportService, protected _cdr: ChangeDetectorRef) {
+    constructor(
+        private _element: ElementRef,
+        @Optional() private _dir: Directionality,
+        viewportService: NxViewportService,
+        protected _cdr: ChangeDetectorRef,
+        private scrollDispatch: ScrollDispatcher,
+        private _ngZone: NgZone,
+    ) {
         super(viewportService, _cdr);
+        this._scrollableArea = new CdkScrollable(this._element, this.scrollDispatch, this._ngZone);
     }
 
     /** @docs-private */
@@ -96,6 +107,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
     ngOnInit() {
         window.addEventListener('scroll', this._scrollHandler, true);
+        this.scrollDispatch.register(this._scrollableArea);
         // set the clipping for the cells once at the beginnig
         setTimeout(() => this._updateCellClipping());
     }
@@ -108,6 +120,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
     ngOnDestroy() {
         window.removeEventListener('scroll', this._scrollHandler, true);
+        this.scrollDispatch.deregister(this._scrollableArea);
         this._destroyed.next();
         this._destroyed.complete();
     }
