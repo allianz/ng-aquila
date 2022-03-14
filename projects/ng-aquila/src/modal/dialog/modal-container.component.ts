@@ -190,7 +190,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
             // the consumer moved it themselves before the animation was done, in which case we shouldn't
             // do anything.
             if (!activeElement || activeElement === this._document.body || activeElement === element || element.contains(activeElement)) {
-                toFocus.focus();
+                this._focusMonitor.focusVia(toFocus as HTMLElement, 'keyboard');
             }
         }
 
