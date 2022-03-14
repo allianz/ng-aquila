@@ -6,7 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxContextMenuComponent } from './context-menu.component';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
 import { NxContextMenuItemComponent } from './context-menu-item.component';
-import { NxContextMenuTriggerDirective } from './context-menu-trigger.directive';
+import { NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER, NxContextMenuTriggerDirective } from './context-menu-trigger.directive';
 
 const EXPORTED_MODULES = [NxContextMenuComponent, NxContextMenuContentDirective, NxContextMenuItemComponent, NxContextMenuTriggerDirective];
 
@@ -14,5 +14,6 @@ const EXPORTED_MODULES = [NxContextMenuComponent, NxContextMenuContentDirective,
     imports: [CommonModule, OverlayModule, NxIconModule],
     exports: EXPORTED_MODULES,
     declarations: EXPORTED_MODULES,
+    providers: [NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER],
 })
 export class NxContextMenuModule {}

@@ -15,6 +15,7 @@ import { ContextMenuIndicatorExampleComponent } from './context-menu-indicator/c
 import { ContextMenuLazyExampleComponent } from './context-menu-lazy/context-menu-lazy-example';
 import { ContextMenuNestedExampleComponent } from './context-menu-nested/context-menu-nested-example';
 import { ContextMenuProgrammaticExampleComponent } from './context-menu-programmatic/context-menu-programmatic-example';
+import { ContextMenuScrollStrategyProviderExampleComponent } from './context-menu-scroll-strategy-provider/context-menu-scroll-strategy-provider-example';
 import { ContextMenuScrollStrategyExampleComponent } from './context-menu-scroll-strategy/context-menu-scroll-strategy-example';
 
 const EXAMPLES = [
@@ -28,6 +29,7 @@ const EXAMPLES = [
     ContextMenuScrollStrategyExampleComponent,
     ContextMenuIndicatorExampleComponent,
     ContextMenuCursorModeExampleComponent,
+    ContextMenuScrollStrategyProviderExampleComponent,
 ];
 
 @NgModule({
@@ -56,6 +58,8 @@ export class ContextExamplesModule {
                 ContextMenuProgrammaticExampleComponent,
             'context-menu-scroll-strategy':
                 ContextMenuScrollStrategyExampleComponent,
+            'context-menu-scroll-strategy-provider':
+                ContextMenuScrollStrategyProviderExampleComponent,
             'context-menu-indicator': ContextMenuIndicatorExampleComponent,
             'context-menu-cursor-mode': ContextMenuCursorModeExampleComponent,
         };

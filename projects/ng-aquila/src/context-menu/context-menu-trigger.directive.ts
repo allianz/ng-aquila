@@ -4,7 +4,22 @@ import { LEFT_ARROW, RIGHT_ARROW } from '@angular/cdk/keycodes';
 import { ConnectedPosition, FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
 import { _getEventTarget } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AfterContentInit, Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Optional, Output, Self, ViewContainerRef } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectorRef,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    Inject,
+    InjectionToken,
+    Input,
+    OnDestroy,
+    OnInit,
+    Optional,
+    Output,
+    Self,
+    ViewContainerRef,
+} from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subscription } from 'rxjs';
 import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
@@ -23,6 +38,21 @@ export const MENU_PANEL_OFFSET_X = 8;
 export type NxContextMenuScrollStrategy = 'close' | 'reposition';
 
 export type NxContextMenuMode = 'button' | 'cursor';
+
+/** Injection token that determines the scroll handling while a context-menu is open. */
+export const NX_CONTEXT_MENU_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-context-menu-scroll-strategy');
+
+/** @docs-private */
+export function NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_CONTEXT_MENU_SCROLL_STRATEGY,
+    useFactory: NX_CONTEXT_MENU_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
 
 interface Point {
     x: number;
@@ -54,7 +84,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     private _contextMenuCloseSubscription = Subscription.EMPTY;
     private _dirChangeSubscription = Subscription.EMPTY;
     private _documentClickObservable: Observable<MouseEvent>;
-    private _scrollStrategy: () => ScrollStrategy;
+
+    /** Strategy factory that will be used to handle scrolling while the context-menu panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** References the context menu instance that the trigger is associated with. */
     @Input('nxContextMenuTriggerFor')
@@ -83,13 +115,17 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     private _contextMenu!: NxContextMenuComponent;
 
     @Input()
-    set scrollStrategy(value: NxContextMenuScrollStrategy) {
-        if (value === 'close') {
-            this._scrollStrategy = this._overlay.scrollStrategies.close;
-        } else {
-            this._scrollStrategy = this._overlay.scrollStrategies.reposition;
+    set scrollStrategy(value: NxContextMenuScrollStrategy | null | undefined) {
+        if (this.#scrollStrategy !== value) {
+            this.#scrollStrategy = value;
+            this._scrollStrategyFactory = value ? this.getScrollStrtegyFactory(value) : this._defaultScrollStrategyFactory;
+            this._cdr.markForCheck();
         }
     }
+    get scrollStrategy(): NxContextMenuScrollStrategy | null | undefined {
+        return this.#scrollStrategy;
+    }
+    #scrollStrategy?: NxContextMenuScrollStrategy | null;
 
     /** Whether the context menu is open. */
     get contextMenuOpen(): boolean {
@@ -128,12 +164,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
         private _contextMenuItemInstance: NxContextMenuItemComponent,
         @Optional() private _dir: Directionality,
         @Optional() @Self() private _triggerButton: NxTriggerButton,
+        @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private _cdr: ChangeDetectorRef,
     ) {
         if (_contextMenuItemInstance) {
             _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();
         }
-
-        this._scrollStrategy = this._overlay.scrollStrategies.reposition;
         this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
     }
 
@@ -216,6 +252,15 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
     /** Closes the context menu. */
     closeContextMenu(): void {
         this.contextMenu.closed.emit();
+    }
+
+    private getScrollStrtegyFactory(scrollStrategy: NxContextMenuScrollStrategy): () => ScrollStrategy {
+        switch (scrollStrategy) {
+            case 'close':
+                return this._overlay.scrollStrategies.close;
+            default:
+                return this._overlay.scrollStrategies.reposition;
+        }
     }
 
     /** Closes the context menu and does the necessary cleanup. */
@@ -325,7 +370,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
                 .withLockedPosition()
                 .withFlexibleDimensions(false)
                 .withTransformOriginOn('.nx-context-menu'),
-            scrollStrategy: this._scrollStrategy(),
+            scrollStrategy: this._scrollStrategyFactory(),
             direction: this._dir,
         });
     }
