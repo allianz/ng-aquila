@@ -14,6 +14,7 @@ import { DropdownOutlineExampleComponent } from './dropdown-outline/dropdown-out
 import { DropdownPlaceholderExampleComponent } from './dropdown-placeholder/dropdown-placeholder-example';
 import { DropdownReactiveExampleComponent } from './dropdown-reactive/dropdown-reactive-example';
 import { DropdownRenderingItemsExampleComponent } from './dropdown-rendering-items/dropdown-rendering-items-example';
+import { DropdownScrollStrategyProviderExampleComponent } from './dropdown-scroll-strategy-provider/dropdown-scroll-strategy-provider-example';
 import { DropdownSimpleBindingExampleComponent } from './dropdown-simple-binding/dropdown-simple-binding-example';
 import { DropdownStandardExampleComponent } from './dropdown-standard/dropdown-standard-example';
 import { DropdownTemplateDrivenExampleComponent } from './dropdown-template-driven/dropdown-template-driven-example';
@@ -35,6 +36,7 @@ const EXAMPLES = [
     DropdownStandardExampleComponent,
     DropdownTemplateDrivenExampleComponent,
     DropdownLazyExampleComponent,
+    DropdownScrollStrategyProviderExampleComponent,
     MultiSelectExampleComponent,
 ];
 
@@ -61,6 +63,8 @@ export class DropdownExamplesModule {
             'dropdown-standard': DropdownStandardExampleComponent,
             'dropdown-template-driven': DropdownTemplateDrivenExampleComponent,
             'dropdown-lazy': DropdownLazyExampleComponent,
+            'dropdown-scroll-strategy-provider':
+                DropdownScrollStrategyProviderExampleComponent,
             'multi-select': MultiSelectExampleComponent,
         };
     }

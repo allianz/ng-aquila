@@ -3,7 +3,7 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
 import { DOWN_ARROW, END, ENTER, HOME, LEFT_ARROW, RIGHT_ARROW, SHIFT, SPACE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
-import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, ConnectionPositionPair, FlexibleConnectedPositionStrategy, Overlay, ScrollStrategy } from '@angular/cdk/overlay';
 import {
     AfterContentInit,
     AfterViewInit,
@@ -16,6 +16,8 @@ import {
     DoCheck,
     ElementRef,
     EventEmitter,
+    Inject,
+    InjectionToken,
     Input,
     isDevMode,
     NgZone,
@@ -63,6 +65,21 @@ export class NxDropdownSelectChange<T = any> {
         public value: T,
     ) {}
 }
+
+/** Injection token that determines the scroll handling while a dropdown is open. */
+export const NX_DROPDOWN_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-dropdown-scroll-strategy');
+
+/** @docs-private */
+export function NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_DROPDOWN_SCROLL_STRATEGY,
+    useFactory: NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
 
 @Component({
     selector: 'nx-dropdown',
@@ -332,6 +349,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this._panelOpen = value;
     }
 
+    /** Strategy factory that will be used to handle scrolling while the dropdown panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+
+    /** Strategy that will be used to handle scrolling while the dropdown panel is open. */
+    _scrollStrategy = this._scrollStrategyFactory();
+
     /**
      * Function that transforms the value into a string.
      * This function is used for displaying and filtering the content
@@ -426,6 +449,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         @Optional() private _parentForm: NgForm,
         @Optional() private _parentFormGroup: FormGroupDirective,
         @Optional() private _dir: Directionality,
+        @Inject(NX_DROPDOWN_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
