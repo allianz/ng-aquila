@@ -7,7 +7,7 @@ export class NxvNavigationService {
     constructor(private _router: Router) {}
 
     isNavigationWithinComponent(previousUrl: string, newUrl: string) {
-        const componentViewExpression = /documentation\/([^/]+)/;
+        const componentViewExpression = /((guides|documentation))\/([^#/]+)/;
 
         const previousUrlMatch = previousUrl.match(componentViewExpression);
         const newUrlMatch = newUrl.match(componentViewExpression);
