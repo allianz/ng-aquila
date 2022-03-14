@@ -19,6 +19,7 @@ import { DatefieldMinMaxExampleComponent } from './datefield-min-max/datefield-m
 import { DatefieldParsingExampleComponent } from './datefield-parsing/datefield-parsing-example';
 import { DatefieldRangeExampleComponent } from './datefield-range/datefield-range-example';
 import { DatefieldReactiveExampleComponent } from './datefield-reactive/datefield-reactive-example';
+import { DatefieldScrollStrategyProviderExampleComponent } from './datefield-scroll-strategy-provider/datefield-scroll-strategy-provider-example';
 import { DatefieldStartviewExampleComponent } from './datefield-startview/datefield-startview-example';
 import { DatefieldToggleFocusExampleComponent } from './datefield-toggle-focus/datefield-toggle-focus-example';
 
@@ -39,6 +40,7 @@ const EXAMPLES = [
     DatefieldReactiveExampleComponent,
     DatefieldStartviewExampleComponent,
     DatefieldToggleFocusExampleComponent,
+    DatefieldScrollStrategyProviderExampleComponent,
 ];
 
 @NgModule({
@@ -74,6 +76,8 @@ export class DatefieldExamplesModule {
             'datefield-reactive': DatefieldReactiveExampleComponent,
             'datefield-startview': DatefieldStartviewExampleComponent,
             'datefield-toggle-focus': DatefieldToggleFocusExampleComponent,
+            'datefield-scroll-strategy-provider':
+                DatefieldScrollStrategyProviderExampleComponent,
         };
     }
 }

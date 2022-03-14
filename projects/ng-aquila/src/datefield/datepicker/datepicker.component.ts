@@ -8,7 +8,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
-import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, RepositionScrollStrategy, ScrollStrategy } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import {
@@ -46,7 +46,7 @@ let datepickerUid = 0;
 export const NX_DATEPICKER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-datepicker-scroll-strategy');
 
 /** @docs-private */
-export function NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => RepositionScrollStrategy {
+export function NX_DATEPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
     return () => overlay.scrollStrategies.reposition();
 }
 
@@ -248,6 +248,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     _dirChangeSubscription: Subscription;
 
+    /** Strategy factory that will be used to handle scrolling while the datepicker panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+
     /** Emits when the datepicker is disabled. */
     readonly _disabledChange = new Subject<boolean>();
 
@@ -255,7 +258,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
         private _overlay: Overlay,
         private _ngZone: NgZone,
         private _viewContainerRef: ViewContainerRef,
-        @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _scrollStrategy: any,
+        @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         @Optional() private _dateAdapter: NxDateAdapter<D>,
         @Optional() private _dir: Directionality,
         @Optional() @Inject(DOCUMENT) private _document: any,
@@ -430,7 +433,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             hasBackdrop: true,
             backdropClass: 'nx-overlay-transparent-backdrop',
             direction: this._dir?.value || 'ltr',
-            scrollStrategy: this._scrollStrategy(),
+            scrollStrategy: this._scrollStrategyFactory(),
             panelClass: 'nx-datepicker-popup',
         });
 
