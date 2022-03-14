@@ -82,7 +82,18 @@ Please note that the popover with hover is only suitable for optional informatio
 
 <!-- example(popover-hover) -->
 
-## Internationalization
+### Global Settings
+
+If you want to use a custom scroll strategy for all of your popovers, you can use the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.
+
+<!-- example(popover-scroll-strategy-provider) -->
+
+#### Internationalization
 
 To set different translations of the countries and to change texts like the close icon aria label you can set these via the `NxPopoverIntl` class provider.
 

@@ -12,6 +12,7 @@ import {
     OverlayConnectionPosition,
     OverlayRef,
     PositionStrategy,
+    ScrollStrategy,
     VerticalConnectionPos,
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
@@ -19,11 +20,13 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
+    ChangeDetectorRef,
     Directive,
     ElementRef,
     EmbeddedViewRef,
     EventEmitter,
     Inject,
+    InjectionToken,
     Input,
     NgZone,
     OnDestroy,
@@ -43,8 +46,24 @@ export declare type PopoverHorizontalDirection = 'left' | 'right';
 export declare type PopoverDirection = PopoverHorizontalDirection | PopoverVerticalDirection;
 export declare type PopoverTriggerType = 'click' | 'hover' | 'manual';
 export declare type PopoverTriggerScrollStrategy = 'close' | 'reposition';
+
 let nextId = 0;
 const BASE_OFFSET = 16;
+
+/** Injection token that determines the scroll handling while a popover is open. */
+export const NX_POPOVER_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-popover-scroll-strategy');
+
+/** @docs-private */
+export function NX_POPOVER_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.close();
+}
+
+/** @docs-private */
+export const NX_POPOVER_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_POPOVER_SCROLL_STRATEGY,
+    useFactory: NX_POPOVER_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
 
 /**
  * Creates an error to be thrown if the user provided an invalid popover direction.
@@ -165,7 +184,20 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
 
     /** Sets the scroll strategy. 'close' closes the popover on scroll while 'reposition' scrolls the popover with the origin. */
     @Input('nxPopoverScrollStrategy')
-    scrollStrategy: PopoverTriggerScrollStrategy = 'close';
+    set scrollStrategy(value: PopoverTriggerScrollStrategy | null | undefined) {
+        if (this.#scrollStrategy !== value) {
+            this.#scrollStrategy = value;
+            this._scrollStrategyFactory = value ? this.getScrollStrategyFactory(value) : this._defaultScrollStrategyFactory;
+            this._cdr.markForCheck();
+        }
+    }
+    get scrollStrategy(): PopoverTriggerScrollStrategy | null | undefined {
+        return this.#scrollStrategy;
+    }
+    #scrollStrategy?: PopoverTriggerScrollStrategy | null;
+
+    /** Strategy factory that will be used to handle scrolling while the popover panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
         private overlay: Overlay,
@@ -178,6 +210,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         private _platform: Platform,
         @Optional() private _dir: Directionality,
         @Optional() @Inject(DOCUMENT) private _document: any,
+        @Inject(NX_POPOVER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private _cdr: ChangeDetectorRef,
     ) {
         const element: HTMLElement = elementRef.nativeElement;
         if (!this._platform.IOS && !this._platform.ANDROID) {
@@ -358,6 +392,15 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         }
     }
 
+    private getScrollStrategyFactory(scrollStrategy: PopoverTriggerScrollStrategy): () => ScrollStrategy {
+        switch (scrollStrategy) {
+            case 'reposition':
+                return this.overlay.scrollStrategies.reposition;
+            default:
+                return this.overlay.scrollStrategies.close;
+        }
+    }
+
     private createOverlay(): OverlayRef {
         if (!this.overlayRef) {
             this.portal = new TemplatePortal(this.popover.templateRef, this.viewContainerRef);
@@ -365,11 +408,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             overlayState.positionStrategy = this.getPosition();
             this._positionStrategy = overlayState.positionStrategy;
 
-            if (this.scrollStrategy === 'reposition') {
-                overlayState.scrollStrategy = this.overlay.scrollStrategies.reposition();
-            } else {
-                overlayState.scrollStrategy = this.overlay.scrollStrategies.close();
-            }
+            overlayState.scrollStrategy = this._scrollStrategyFactory();
 
             overlayState.scrollStrategy.enable();
             overlayState.direction = this._dir?.value || 'ltr';
