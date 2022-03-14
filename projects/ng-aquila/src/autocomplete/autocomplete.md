@@ -59,6 +59,17 @@ Please note that this is an **Expert styling option**. This means that the outli
 
 </div>
 
+### Global Settings
+
+If you want to use a custom scroll strategy for all of your autocompletes, you can use the `NX_AUTOCOMPLETE_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.
+
+<!-- example(autocomplete-scroll-strategy-provider) -->
+
 ### Accessibility
 
 The autocomplete can be accessed via keyboard. You can trigger the search by simply start typing in the input. After the overlay popped up, you can use ARROW_UP and ARROW_DOWN to focus on the desired element. Hitting SPACE or ENTER selects the value however ESC or TAB closes the autocomplete.

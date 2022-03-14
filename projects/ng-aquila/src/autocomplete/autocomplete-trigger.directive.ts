@@ -1,7 +1,7 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
-import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ViewportRuler } from '@angular/cdk/overlay';
+import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy, ViewportRuler } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import {
@@ -12,6 +12,7 @@ import {
     forwardRef,
     Host,
     Inject,
+    InjectionToken,
     Input,
     NgZone,
     OnChanges,
@@ -37,6 +38,21 @@ export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NxAutocompleteTriggerDirective),
     multi: true,
+};
+
+/** Injection token that determines the scroll handling while a autocomplete is open. */
+export const NX_AUTOCOMPLETE_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-autocomplete-scroll-strategy');
+
+/** @docs-private */
+export function NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_AUTOCOMPLETE_SCROLL_STRATEGY,
+    useFactory: NX_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
 };
 
 /**
@@ -110,6 +126,9 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
     /** Subscription to direction changes */
     private _dirChangeSubscription = Subscription.EMPTY;
+
+    /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** The autocomplete panel to be attached to this trigger. */
     @Input('nxAutocomplete') autocomplete!: NxAutocompleteComponent;
@@ -233,6 +252,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         @Optional() @Host() private _nxFormField: NxFormfieldComponent,
         @Optional() @Host() private _nxWordField: NxWordComponent,
         @Optional() @Inject(DOCUMENT) private _document: any,
+        @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         private _viewportRuler?: ViewportRuler,
     ) {
         if (typeof window !== 'undefined') {
@@ -631,7 +651,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private _getOverlayConfig(): OverlayConfig {
         return new OverlayConfig({
             positionStrategy: this._getOverlayPosition(),
-            scrollStrategy: this._scrollStrategy(),
+            scrollStrategy: this._scrollStrategyFactory(),
             minWidth: this._getHostWidth(),
             direction: this._dir?.value || 'ltr',
         });
@@ -667,10 +687,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
             ]);
 
         return this._positionStrategy;
-    }
-
-    private _scrollStrategy() {
-        return this._overlay.scrollStrategies.reposition();
     }
 
     private _getConnectedElement(): ElementRef {
