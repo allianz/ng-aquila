@@ -59,3 +59,12 @@ You can use the predefined directions `top`, `top-start`, `top-end`, `bottom`, `
 Depending on the requirements of your overlay you can limit the fallbacks the overlay can choose by setting the `fallbackOrientation` option in the configuration. By default the overlay will choose fallbacks clockwise from the starting direction.
 
 <!-- example(overlay-limiting-fallbacks) -->
+
+### Global Settings
+
+If you want to use a custom scroll strategy, you can use the `NX_OVERLAY_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.

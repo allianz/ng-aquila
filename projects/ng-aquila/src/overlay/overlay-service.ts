@@ -1,7 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef, ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
-import { Injectable, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -9,6 +9,21 @@ import { NxOverlayConfig } from './overlay-config';
 import { NxOverlayContainerComponent } from './overlay-container.component';
 import { NxOverlayRef } from './overlay-ref';
 import { NxOverlayPositionBuilder } from './position-builder';
+
+/** Injection token that determines the scroll handling while a overlay is open. */
+export const NX_OVERLAY_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-overlay-scroll-strategy');
+
+/** @docs-private */
+export function NX_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_OVERLAY_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_OVERLAY_SCROLL_STRATEGY,
+    useFactory: NX_OVERLAY_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
 
 /** Possible states of the lifecycle of a overlay. */
 export const enum NxOverlayState {
@@ -21,7 +36,9 @@ export class NxOverlayService implements OnDestroy {
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();
     private readonly _afterOpenedAtThisLevel = new Subject<NxOverlayRef<any>>();
     private _openOverlaysAtThisLevel: NxOverlayRef<any>[] = [];
-    private _scrollStrategy: () => ScrollStrategy;
+
+    /** Strategy factory that will be used to handle scrolling while an overlay panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
         private _overlay: Overlay,
@@ -30,9 +47,8 @@ export class NxOverlayService implements OnDestroy {
         private _positionBuilder: NxOverlayPositionBuilder,
         @Optional() @SkipSelf() private _parentOverlayService: NxOverlayService,
         @Optional() private _dir: Directionality,
-    ) {
-        this._scrollStrategy = this._overlay.scrollStrategies.reposition;
-    }
+        @Inject(NX_OVERLAY_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+    ) {}
 
     /** Keeps track of the currently-open overlays. */
     get openOverlays(): NxOverlayRef<any>[] {
@@ -110,7 +126,7 @@ export class NxOverlayService implements OnDestroy {
     private _getOverlayConfig(overlayConfig: NxOverlayConfig, origin: FlexibleConnectedPositionStrategyOrigin): OverlayConfig {
         const state = new OverlayConfig({
             positionStrategy: overlayConfig.positionStrategy || this._positionBuilder.createPositionStrategy(origin, overlayConfig),
-            scrollStrategy: overlayConfig.scrollStrategy || this._scrollStrategy(),
+            scrollStrategy: overlayConfig.scrollStrategy || this._scrollStrategyFactory(),
             panelClass: overlayConfig.panelClass,
             hasBackdrop: overlayConfig.hasBackdrop,
             width: overlayConfig.width,
