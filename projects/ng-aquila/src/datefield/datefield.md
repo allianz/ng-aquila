@@ -260,7 +260,7 @@ You can use the `DATEPICKER_DEFAULT_OPTIONS` injection token if you want to set 
 
 <!-- example(datefield-injection-token) -->
 
-If you want to use a custom scroll strategy for all of your datepickers, you can use the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+If you want to use a custom scroll strategy, you can use the `NX_DATEPICKER_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
 
 -   **reposition:** allow background scroll, the overlay moves with the background (default).
 -   **close:** allow background scroll, closes the overlay on scroll.

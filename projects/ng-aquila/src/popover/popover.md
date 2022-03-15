@@ -84,7 +84,7 @@ Please note that the popover with hover is only suitable for optional informatio
 
 ### Global Settings
 
-If you want to use a custom scroll strategy for all of your popovers, you can use the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+If you want to use a custom scroll strategy, you can use the `NX_POPOVER_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
 
 -   **reposition:** allow background scroll, the overlay moves with the background (default).
 -   **close:** allow background scroll, closes the overlay on scroll.

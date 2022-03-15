@@ -61,7 +61,7 @@ Please note that this is an **Expert styling option**. This means that the outli
 
 ### Global Settings
 
-If you want to use a custom scroll strategy for all of your autocompletes, you can use the `NX_AUTOCOMPLETE_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+If you want to use a custom scroll strategy, you can use the `NX_AUTOCOMPLETE_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
 
 -   **reposition:** allow background scroll, the overlay moves with the background (default).
 -   **close:** allow background scroll, closes the overlay on scroll.
