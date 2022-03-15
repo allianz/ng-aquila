@@ -80,7 +80,7 @@ describe(NxSwipebarComponent.name, () => {
             await nextFrame();
 
             const indicator: HTMLElement = swipebarElement.querySelector('.indicator') as HTMLElement;
-            expect(indicator.style.transform).toBe(`translateX(${Math.round(screenWidth / 4)}px)`);
+            expect(indicator.style.transform).toBe(`translateX(${Math.floor(screenWidth / 4)}px)`);
         });
     });
 
