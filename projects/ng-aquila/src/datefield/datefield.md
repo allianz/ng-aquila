@@ -35,6 +35,10 @@ The ISO date adapter works solely with YYYY-MM-DD strings. Under the hood it use
 
 Please install the `dayjs` package to use this adapter.
 
+```ts
+import { NxIsoDateModule } from '@aposin/ng-aquila/iso-date-adapter';
+```
+
 #### Native Date
 
 ```ts

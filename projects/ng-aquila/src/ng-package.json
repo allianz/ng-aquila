@@ -6,5 +6,5 @@
         "entryFile": "public-api.ts",
         "cssUrl": "inline"
     },
-    "allowedNonPeerDependencies": ["decimal.js", "tslib"]
+    "allowedNonPeerDependencies": ["dayjs", "decimal.js", "tslib"]
 }
