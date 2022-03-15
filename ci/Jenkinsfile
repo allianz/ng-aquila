@@ -65,7 +65,7 @@ node('nodejs-with-browsers-v12') {
     shared.withNotification('ci/test/ngx-docs-ui', "Test ngx-docs-ui") {
       echo 'Testing ngx-docs-ui'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test -- ngx-docs-ui --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:docs-ui:coverage'
       // The unit test will generate some report files which we want to save in the jenkins job (junit log & coverage)
       junit 'reports/ngx-docs-ui/junit/*.xml'
       publishHTML target: [
@@ -83,7 +83,7 @@ node('nodejs-with-browsers-v12') {
     shared.withNotification('ci/test/ng-aquila', "Test ng-aquila") {
       echo 'Testing ng-aquila'
 
-      sh 'COMPACT_TEST_RESULTS=true npm run test:lib -- --watch=false --code-coverage'
+      sh 'COMPACT_TEST_RESULTS=true npm run test:lib:coverage'
       // The unit test will generate some report files which we want to save in the jenkins job (junit log & coverage)
       junit 'reports/ng-aquila/junit/*.xml'
       publishHTML target: [
@@ -116,7 +116,7 @@ node('nodejs-with-browsers-v12') {
       echo "Building documentation"
       // workaround until https://github.com/angular/angular/issues/35602 is fixed
       sh "sed -i 's/\"sideEffects\": false/\"sideEffects\": true/g' dist/ng-aquila/package.json"
-      sh "npm run build:docs -- --no-progress"
+      sh "npm run build:docs -- --progress=false"
     }
   }
 }
