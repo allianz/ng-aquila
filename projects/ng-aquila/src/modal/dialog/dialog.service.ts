@@ -14,13 +14,8 @@ export const NX_MODAL_DATA = new InjectionToken<any>('NxModalData');
 /** Injection token that can be used to specify default modal options. */
 export const NX_MODAL_DEFAULT_OPTIONS = new InjectionToken<NxModalConfig>('nx-modal-default-options');
 
-/** Injection token that determines the scroll handling while the modal is open. */
+/** Injection token that determines the scroll handling while a modal is open. */
 export const NX_MODAL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-modal-scroll-strategy');
-
-/** @docs-private */
-export function NX_MODAL_SCROLL_STRATEGY_FACTORY(overlay: Overlay): () => ScrollStrategy {
-    return () => overlay.scrollStrategies.block();
-}
 
 /** @docs-private */
 export function NX_MODAL_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
@@ -30,8 +25,8 @@ export function NX_MODAL_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () 
 /** @docs-private */
 export const NX_MODAL_SCROLL_STRATEGY_PROVIDER = {
     provide: NX_MODAL_SCROLL_STRATEGY,
-    deps: [Overlay],
     useFactory: NX_MODAL_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
 };
 
 /**
@@ -43,7 +38,6 @@ export class NxDialogService implements OnDestroy {
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();
     private readonly _afterOpenedAtThisLevel = new Subject<NxModalRef<any>>();
     private _ariaHiddenElements = new Map<Element, string | null>();
-    private _scrollStrategy: () => ScrollStrategy;
 
     /** Keeps track of the currently-open modals. */
     get openModals(): NxModalRef<any>[] {
@@ -68,16 +62,17 @@ export class NxDialogService implements OnDestroy {
         this.openModals.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined)),
     ) as Observable<any>;
 
+    /** Strategy factory that will be used to handle scrolling while the modal panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+
     constructor(
         private _overlay: Overlay,
         private _injector: Injector,
         @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private _defaultOptions: NxModalConfig,
-        @Inject(NX_MODAL_SCROLL_STRATEGY) scrollStrategy: any,
         @Optional() @SkipSelf() private _parentDialogService: NxDialogService,
         private _overlayContainer: OverlayContainer,
-    ) {
-        this._scrollStrategy = scrollStrategy;
-    }
+        @Inject(NX_MODAL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+    ) {}
 
     /**
      * Opens a modal modal containing the given component.
@@ -150,7 +145,7 @@ export class NxDialogService implements OnDestroy {
     private _getOverlayConfig(modalConfig: NxModalConfig): OverlayConfig {
         const state = new OverlayConfig({
             positionStrategy: this._overlay.position().global(),
-            scrollStrategy: modalConfig.scrollStrategy || this._scrollStrategy(),
+            scrollStrategy: modalConfig.scrollStrategy || this._scrollStrategyFactory(),
             panelClass: modalConfig.panelClass,
             hasBackdrop: modalConfig.hasBackdrop,
             minWidth: modalConfig.minWidth,

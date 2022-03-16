@@ -92,7 +92,7 @@ If you are using a template for the content of your dialog the data object will 
 
 <!-- example(modal-data-injection) -->
 
-### Global Configuration
+### Global Settings
 
 You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:
 
@@ -104,6 +104,29 @@ You can also overwrite the default dialog configuration by using the NX_MODAL_DE
         useValue: { width: 700px, showCloseIcon: true}
     }
   ]
+```
+
+If you want to use a custom scroll strategy, you can use the `NX_MODAL_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.
+
+```ts
+function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.close({ threshold: 100 });
+}
+
+@NgModule({
+  /* ... */
+  providers: [{
+    provide: NX_MODAL_SCROLL_STRATEGY,
+    useFactory: scrollStrategyFactory,
+    deps: [Overlay],
+  }],
+}
+export class AppModule {}
 ```
 
 ### Directionality
