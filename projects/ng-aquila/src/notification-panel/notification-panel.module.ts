@@ -9,7 +9,7 @@ import {
     NxNotificationItemHeaderDirective,
     NxNotificationItemMetadataDirective,
 } from './notification-item/notification-item-slots';
-import { NxNotificationPanelTriggerDirective } from './notification-panel-trigger.directive';
+import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER, NxNotificationPanelTriggerDirective } from './notification-panel-trigger.directive';
 import { NxNotificationPanelComponent } from './panel/notification-panel.component';
 
 @NgModule({
@@ -32,6 +32,6 @@ import { NxNotificationPanelComponent } from './panel/notification-panel.compone
         NxNotificationItemMetadataDirective,
         NxNotificationItemHeaderDirective,
     ],
-    providers: [],
+    providers: [NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER],
 })
 export class NxNotificationPanelModule {}

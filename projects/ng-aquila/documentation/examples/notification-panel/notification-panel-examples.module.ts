@@ -8,11 +8,13 @@ import { ExamplesSharedModule } from '../examples-shared.module';
 import { NotificationPanelActionsExampleComponent } from './notification-panel-actions/notification-panel-actions-example';
 import { NotificationPanelClickableExampleComponent } from './notification-panel-clickable/notification-panel-clickable-example';
 import { NotificationPanelMixedExampleComponent } from './notification-panel-mixed/notification-panel-mixed-example';
+import { NotificationPanelScrollStrategyProviderExampleComponent } from './notification-panel-scroll-strategy-provider/notification-panel-scroll-strategy-provider-example';
 
 const EXAMPLES = [
     NotificationPanelActionsExampleComponent,
     NotificationPanelClickableExampleComponent,
     NotificationPanelMixedExampleComponent,
+    NotificationPanelScrollStrategyProviderExampleComponent,
 ];
 
 @NgModule({
@@ -35,6 +37,8 @@ export class NotificationExamplesModule {
             'notification-panel-clickable':
                 NotificationPanelClickableExampleComponent,
             'notification-panel-mixed': NotificationPanelMixedExampleComponent,
+            'notification-panel-scroll-strategy-provider':
+                NotificationPanelScrollStrategyProviderExampleComponent,
         };
     }
 }

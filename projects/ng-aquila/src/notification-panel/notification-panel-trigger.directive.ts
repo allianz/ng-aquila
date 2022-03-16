@@ -1,6 +1,22 @@
-import { Directive, ElementRef, Input, Optional, Self, TemplateRef } from '@angular/core';
+import { Overlay, ScrollStrategy } from '@angular/cdk/overlay';
+import { Directive, ElementRef, Inject, InjectionToken, Input, Optional, Self, TemplateRef } from '@angular/core';
 import { NxOverlayConfig, NxOverlayRef, NxOverlayService, NxTriggerButton } from '@aposin/ng-aquila/overlay';
 import { take } from 'rxjs/operators';
+
+/** Injection token that determines the scroll handling while a notification-panel is open. */
+export const NX_NOTIFICATION_PANEL_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-notification-panel-scroll-strategy');
+
+/** @docs-private */
+export function NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_NOTIFICATION_PANEL_SCROLL_STRATEGY,
+    useFactory: NX_NOTIFICATION_PANEL_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
 
 const DEFAULT_CONFIG: NxOverlayConfig = {
     direction: 'bottom-start',
@@ -27,13 +43,21 @@ export class NxNotificationPanelTriggerDirective {
         return this._panelTemplate;
     }
 
-    constructor(private _nxOverlay: NxOverlayService, private _element: ElementRef<HTMLElement>, @Optional() @Self() private _triggerButton: NxTriggerButton) {}
+    /** Strategy factory that will be used to handle scrolling while the notification-panel panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+
+    constructor(
+        private _nxOverlay: NxOverlayService,
+        private _element: ElementRef<HTMLElement>,
+        @Optional() @Self() private _triggerButton: NxTriggerButton,
+        @Inject(NX_NOTIFICATION_PANEL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+    ) {}
 
     open() {
         if (this._overlayRef) {
             return;
         }
-        const config = { ...DEFAULT_CONFIG, ...{ triggerButton: this._triggerButton } };
+        const config: NxOverlayConfig = { ...DEFAULT_CONFIG, scrollStrategy: this._scrollStrategyFactory(), triggerButton: this._triggerButton };
         this._overlayRef = this._nxOverlay.open(this._panelTemplate, this._element, config);
         this._overlayRef
             .afterClosed()

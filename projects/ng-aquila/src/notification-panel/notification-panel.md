@@ -26,6 +26,17 @@ If you need more actions inside a notification set the property `clickable` to f
 
 <!-- example(notification-panel-actions) -->
 
+## Global Settings
+
+If you want to use a custom scroll strategy, you can use the `NX_NOTIFICATION_PANEL_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.
+
+<!-- example(notification-panel-scroll-strategy-provider) -->
+
 ## Accessibility
 
 Don't forget to add an title aria-label to the trigger button. Use an anchor tag if the whole notification is supposed to be clickable. A good way to help screen reader users is to add a wrapper around the triggering button defining an region, e.g. `region="Notifications"`. That helps screen reader users to quickly access the trigger button from anywhere in the page.
