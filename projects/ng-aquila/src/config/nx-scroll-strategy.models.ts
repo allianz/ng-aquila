@@ -22,6 +22,13 @@ export interface NxScrollStrategyDefaultConfig {
         dropdown?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
         notificationPanel?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
     };
+    /** Configure default behavior for additional overlay-based component types. */
+    extraComponents?: {
+        dialog?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+        overlay?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+        popover?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+        // tooltip?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    };
 }
 
 /** Scroll strategy factory creator function. */
@@ -38,5 +45,12 @@ export interface NxScrollStrategyFactoryConfig {
         datepicker?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
         dropdown?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
         notificationPanel?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    };
+    /** Configure default behavior for additional overlay-based component types. */
+    extraComponents?: {
+        dialog?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+        overlay?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+        popover?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+        // tooltip?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
     };
 }

@@ -12,6 +12,12 @@ import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './
  * - dropdown
  * - notification-panel
  *
+ * These components will be affected only if configured separately in the `extraComponents` property:
+ *
+ * - dialog
+ * - overlay
+ * - popover
+ *
  * @example
  * NxScrollStrategyModule.withConfig({
  *   scrollStrategy: 'close',
