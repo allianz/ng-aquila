@@ -84,6 +84,8 @@ If you want to use a custom scroll strategy, you can use the `NX_CONTEXT_MENU_SC
 
 <!-- example(context-menu-scroll-strategy-provider) -->
 
+Alternatively, the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 ### Keyboard interaction
 
 -   DOWN_ARROW: Focuses the next menu item

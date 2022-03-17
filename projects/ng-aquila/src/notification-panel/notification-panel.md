@@ -37,6 +37,8 @@ If you want to use a custom scroll strategy, you can use the `NX_NOTIFICATION_PA
 
 <!-- example(notification-panel-scroll-strategy-provider) -->
 
+Alternatively, the `NX_NOTIFICATION_PANEL_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 ## Accessibility
 
 Don't forget to add an title aria-label to the trigger button. Use an anchor tag if the whole notification is supposed to be clickable. A good way to help screen reader users is to add a wrapper around the triggering button defining an region, e.g. `region="Notifications"`. That helps screen reader users to quickly access the trigger button from anywhere in the page.

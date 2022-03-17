@@ -70,6 +70,8 @@ If you want to use a custom scroll strategy, you can use the `NX_AUTOCOMPLETE_SC
 
 <!-- example(autocomplete-scroll-strategy-provider) -->
 
+Alternatively, the `NX_AUTOCOMPLETE_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 ### Accessibility
 
 The autocomplete can be accessed via keyboard. You can trigger the search by simply start typing in the input. After the overlay popped up, you can use ARROW_UP and ARROW_DOWN to focus on the desired element. Hitting SPACE or ENTER selects the value however ESC or TAB closes the autocomplete.

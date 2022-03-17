@@ -130,6 +130,8 @@ If you want to use a custom scroll strategy, you can use the `NX_DROPDOWN_SCROLL
 
 <!-- example(dropdown-scroll-strategy-provider) -->
 
+Alternatively, the `NX_DROPDOWN_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 ### Accessibility
 
 The dropdown can be accessed via keyboard. If the component owns the focus, the dropdown will open when you hit ENTER. Pressing ESC while the dropdown is open will close it. To select a value while the dropdown is open, use ARROW-UP and ARROW-DOWN. You can quickly navigate to the first item with the HOME key and to the last item with the END key. Pressing the ALT key plus either the ARROW_UP or ARROW_DOWN key opens or closes the dropdown.

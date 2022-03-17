@@ -272,3 +272,5 @@ If you want to use a custom scroll strategy, you can use the `NX_DATEPICKER_SCRO
 -   **noop:** allow background scroll, the overlay does not move.
 
 <!-- example(datefield-scroll-strategy-provider) -->
+
+Alternatively, the `NX_DATEPICKER_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
