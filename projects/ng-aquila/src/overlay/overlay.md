@@ -68,3 +68,19 @@ If you want to use a custom scroll strategy, you can use the `NX_OVERLAY_SCROLL_
 -   **close:** allow background scroll, closes the overlay on scroll.
 -   **block:** disallow background scroll, the overlay does not move.
 -   **noop:** allow background scroll, the overlay does not move.
+
+```ts
+function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.close({ threshold: 100 });
+}
+
+@NgModule({
+  /* ... */
+  providers: [{
+    provide: NX_OVERLAY_SCROLL_STRATEGY,
+    useFactory: scrollStrategyFactory,
+    deps: [Overlay],
+  }],
+}
+export class AppModule {}
+```

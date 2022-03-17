@@ -40,7 +40,7 @@ export const NX_AUTOCOMPLETE_VALUE_ACCESSOR: any = {
     multi: true,
 };
 
-/** Injection token that determines the scroll handling while a autocomplete is open. */
+/** Injection token that determines the scroll handling while an autocomplete is open. */
 export const NX_AUTOCOMPLETE_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-autocomplete-scroll-strategy');
 
 /** @docs-private */
