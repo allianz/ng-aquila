@@ -8,6 +8,7 @@ import { NX_MODAL_SCROLL_STRATEGY } from '@aposin/ng-aquila/modal';
 import { NX_NOTIFICATION_PANEL_SCROLL_STRATEGY } from '@aposin/ng-aquila/notification-panel';
 import { NX_OVERLAY_SCROLL_STRATEGY } from '@aposin/ng-aquila/overlay';
 import { NX_POPOVER_SCROLL_STRATEGY } from '@aposin/ng-aquila/popover';
+import { NX_TOOLTIP_SCROLL_STRATEGY } from '@aposin/ng-aquila/tooltip';
 
 import { NxScrollStrategy, NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig, NxScrollStrategyOptions } from './nx-scroll-strategy.models';
 
@@ -90,8 +91,8 @@ function getInjectionToken(componentName: string): InjectionToken<() => ScrollSt
             return NX_OVERLAY_SCROLL_STRATEGY;
         case 'popover':
             return NX_POPOVER_SCROLL_STRATEGY;
-        // case 'tooltip':
-        //     return NX_TOOLTIP_SCROLL_STRATEGY;
+        case 'tooltip':
+            return NX_TOOLTIP_SCROLL_STRATEGY;
         default:
             throw new Error(`Injection token for ${componentName} scroll strategy not recognized.`);
     }

@@ -17,6 +17,7 @@ import { NxScrollStrategyDefaultConfig, NxScrollStrategyFactoryConfig } from './
  * - dialog
  * - overlay
  * - popover
+ * - tooltip
  *
  * @example
  * NxScrollStrategyModule.withConfig({

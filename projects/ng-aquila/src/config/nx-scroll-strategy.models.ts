@@ -27,7 +27,7 @@ export interface NxScrollStrategyDefaultConfig {
         dialog?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
         overlay?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
         popover?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
-        // tooltip?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+        tooltip?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
     };
 }
 
@@ -51,6 +51,6 @@ export interface NxScrollStrategyFactoryConfig {
         dialog?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
         overlay?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
         popover?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
-        // tooltip?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+        tooltip?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
     };
 }

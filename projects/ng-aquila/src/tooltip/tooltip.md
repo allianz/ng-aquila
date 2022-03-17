@@ -67,11 +67,20 @@ To manually cause the tooltip to show or hide, you can call the show and hide di
 
 <!-- example(tooltip-programmatic) -->
 
-### Changing the default delay behavior
+### Global Settings
 
 You can configure your app's tooltip default show/hide delays and default position by configuring and providing your options using the `NX_TOOLTIP_DEFAULT_OPTIONS` injection token.
 
 <!-- example(tooltip-settings) -->
+
+If you want to use a custom scroll strategy, you can use the `NX_TOOLTIP_SCROLL_STRATEGY` injection token with a factory provider. The `Overlay` service from `@angular/cdk/overlay` offers 4 different scroll strategy options:
+
+-   **reposition:** allow background scroll, the overlay moves with the background (default).
+-   **close:** allow background scroll, closes the overlay on scroll.
+-   **block:** disallow background scroll, the overlay does not move.
+-   **noop:** allow background scroll, the overlay does not move.
+
+<!-- example(tooltip-scroll-strategy-provider) -->
 
 ### Accessibility
 

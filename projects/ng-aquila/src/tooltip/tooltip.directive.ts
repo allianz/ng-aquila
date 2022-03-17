@@ -31,6 +31,21 @@ export type TooltipPosition = TooltipVerticalPosition | TooltipHorizontalPositio
 export type TooltipHorizontalPosition = 'left' | 'right';
 export type TooltipVerticalPosition = 'top' | 'bottom';
 
+/** Injection token that determines the scroll handling while a tooltip is open. */
+export const NX_TOOLTIP_SCROLL_STRATEGY = new InjectionToken<() => ScrollStrategy>('nx-tooltip-scroll-strategy');
+
+/** @docs-private */
+export function NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER_FACTORY(overlay: Overlay): () => ScrollStrategy {
+    return () => overlay.scrollStrategies.reposition();
+}
+
+/** @docs-private */
+export const NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER = {
+    provide: NX_TOOLTIP_SCROLL_STRATEGY,
+    useFactory: NX_TOOLTIP_SCROLL_STRATEGY_PROVIDER_FACTORY,
+    deps: [Overlay],
+};
+
 /**
  * CSS class that will be attached to the overlay panel.
  * @docs-private
@@ -94,7 +109,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     private _position: TooltipPosition = 'bottom';
     private _disabled = false;
     private _selectable = false;
-    private _scrollStrategy: () => ScrollStrategy;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
     private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
     private _dirChangeSubscription: Subscription;
@@ -177,6 +191,9 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         }
     }
 
+    /** Strategy factory that will be used to handle scrolling while the tooltip panel is open. */
+    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+
     private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
 
     /** Emits when the component is destroyed. */
@@ -195,8 +212,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         @Optional()
         @Inject(NX_TOOLTIP_DEFAULT_OPTIONS)
         private _defaultOptions: NxTooltipDefaultOptions,
+        @Inject(NX_TOOLTIP_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {
-        this._scrollStrategy = this._overlay.scrollStrategies.reposition;
         this._dirChangeSubscription = _dir.change.subscribe(this._dirChangeHandler.bind(this));
         const element: HTMLElement = _elementRef.nativeElement;
 
@@ -348,7 +365,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
             direction: this._dir.value || 'ltr',
             positionStrategy: strategy,
             panelClass: NX_TOOLTIP_PANEL_CLASS,
-            scrollStrategy: this._scrollStrategy(),
+            scrollStrategy: this._scrollStrategyFactory(),
             disposeOnNavigation: true,
         });
 
