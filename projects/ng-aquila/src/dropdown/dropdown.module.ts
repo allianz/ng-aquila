@@ -12,7 +12,7 @@ import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
 
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
-import { NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER, NxDropdownComponent } from './dropdown';
+import { NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER, NxDropdownComponent, NxDropdownIntl } from './dropdown';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
 import { NxMultiSelectComponent } from './multi-select/multi-select.component';
@@ -40,7 +40,7 @@ import { NxMultiSelectOptionComponent } from './multi-select/multi-select-option
         NxMultiSelectComponent,
         NxMultiSelectOptionComponent,
     ],
-    providers: [NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER],
+    providers: [NxDropdownIntl, NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER],
     exports: [NxDropdownComponent, NxDropdownItemComponent, NxDropdownGroupComponent, NxDropdownClosedLabelDirective, NxMultiSelectComponent],
 })
 export class NxDropdownModule {}

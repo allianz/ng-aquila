@@ -56,6 +56,19 @@ export interface NxDropdownOption {
     label?: string;
 }
 
+/** Dropdown data that requires internationalization. */
+export class NxDropdownIntl {
+    /**
+     * Stream that emits whenever the labels here are changed. Use this to notify
+     * components if the labels have changed after initialization.
+     */
+    readonly changes = new Subject<void>();
+    /** A label for the multi-select component. */
+    selectAll = 'Select all';
+    /** A label for the multi-select component. */
+    clearAll = 'Clear all';
+}
+
 /** Change event object that is emitted when the select value has changed. */
 export class NxDropdownSelectChange<T = any> {
     constructor(

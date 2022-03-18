@@ -74,8 +74,8 @@
             </nx-formfield>
         </div>
         <div class="item actions" *ngIf="_isOutline">
-            <nx-checkbox [ngModel]="_allSelected" (ngModelChange)="_onSelectAll()" [indeterminate]="_someSelected"> Select all </nx-checkbox>
-            <button type="button" nxPlainButton (click)="_clear()" [disabled]="selectedItems.size === 0"> Clear all </button>
+            <nx-checkbox [ngModel]="_allSelected" (ngModelChange)="_onSelectAll()" [indeterminate]="_someSelected">{{ _intl.selectAll }}</nx-checkbox>
+            <button type="button" nxPlainButton (click)="_clear()" [disabled]="selectedItems.size === 0">{{ _intl.clearAll }}</button>
         </div>
         <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
             <nx-multi-select-option

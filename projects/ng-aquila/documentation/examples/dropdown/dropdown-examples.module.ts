@@ -8,6 +8,7 @@ import { DropdownFilterCustomExampleComponent } from './dropdown-filter-custom/d
 import { DropdownFilterExampleComponent } from './dropdown-filter/dropdown-filter-example';
 import { DropdownGroupExampleComponent } from './dropdown-group/dropdown-group-example';
 import { DropdownLazyExampleComponent } from './dropdown-lazy/dropdown-lazy-example';
+import { MultiSelectIntlExampleComponent } from './multi-select-intl/multi-select-intl-example';
 import { DropdownMultiSelectExampleComponent } from './dropdown-multi-select/dropdown-multi-select-example';
 import { DropdownNegativeExampleComponent } from './dropdown-negative/dropdown-negative-example';
 import { DropdownOutlineExampleComponent } from './dropdown-outline/dropdown-outline-example';
@@ -38,6 +39,7 @@ const EXAMPLES = [
     DropdownLazyExampleComponent,
     DropdownScrollStrategyProviderExampleComponent,
     MultiSelectExampleComponent,
+    MultiSelectIntlExampleComponent,
 ];
 
 @NgModule({
@@ -66,6 +68,7 @@ export class DropdownExamplesModule {
             'dropdown-scroll-strategy-provider':
                 DropdownScrollStrategyProviderExampleComponent,
             'multi-select': MultiSelectExampleComponent,
+            'multi-select-intl': MultiSelectIntlExampleComponent,
         };
     }
 }

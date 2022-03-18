@@ -9,6 +9,7 @@ import {
     ElementRef,
     HostBinding,
     Input,
+    OnDestroy,
     Optional,
     QueryList,
     Self,
@@ -18,9 +19,10 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { NxDropdownIntl } from '../dropdown';
 import { getPositionOffset, getPositions } from '../dropdown-position';
 import { NxMultiSelectOptionComponent } from './multi-select-option.component';
 
@@ -40,7 +42,7 @@ const OVERLAY_MIN_WIDTH = 260;
     providers: [{ provide: NxFormfieldControl, useExisting: NxMultiSelectComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, AfterViewInit {
+export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, OnDestroy, AfterViewInit {
     get value(): T[] {
         return this.options.filter(option => this.selectedItems.has(option)).map(option => this._selectValue(option));
     }
@@ -138,6 +140,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     constructor(
+        public _intl: NxDropdownIntl,
         private _elementRef: ElementRef,
         private _errorStateMatcher: ErrorStateMatcher,
         private _cdr: ChangeDetectorRef,
@@ -152,6 +155,8 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             this.ngControl.valueAccessor = this;
         }
         this._isDisabled = this._isDisabled.bind(this);
+
+        this._intlChanges = _intl.changes.subscribe(() => _cdr.markForCheck());
     }
 
     private get _isActiveItemFiltered(): boolean {
@@ -258,6 +263,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     @HostBinding('class.is-open')
     _isOpen = false;
+
+    private _intlChanges: Subscription;
+
+    ngOnDestroy(): void {
+        this._intlChanges.unsubscribe();
+    }
 
     private _onChange: (value: T[]) => void = () => {};
 
