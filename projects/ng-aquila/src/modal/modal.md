@@ -129,6 +129,8 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
 export class AppModule {}
 ```
 
+Alternatively, the `NX_MODAL_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 ### Directionality
 
 By default all dialogs are rendered with `ltr` direction. If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the `direction` configuration property.

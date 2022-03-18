@@ -93,6 +93,8 @@ If you want to use a custom scroll strategy, you can use the `NX_POPOVER_SCROLL_
 
 <!-- example(popover-scroll-strategy-provider) -->
 
+Alternatively, the `NX_POPOVER_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+
 #### Internationalization
 
 To set different translations of the countries and to change texts like the close icon aria label you can set these via the `NxPopoverIntl` class provider.

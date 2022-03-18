@@ -84,3 +84,5 @@ function scrollStrategyFactory(overlay: Overlay): () => ScrollStrategy {
 }
 export class AppModule {}
 ```
+
+Alternatively, the `NX_OVERLAY_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
