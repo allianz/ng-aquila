@@ -13,7 +13,7 @@ $border-size: nx-border-size(xs);
 @mixin focus-style {
     box-shadow: v(focus-box-shadow);
 
-    @media screen and (-ms-high-contrast: active) {
+    @media screen and (-ms-high-contrast: active), (forced-colors: active) {
         box-shadow: 0 0 0 2px background, 0 0 0 6px windowText;
         outline: 4px solid CanvasText; // Chromium Edge
         outline-offset: 2px; // Chromium Edge
