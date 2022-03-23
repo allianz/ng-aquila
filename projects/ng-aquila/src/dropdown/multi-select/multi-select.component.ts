@@ -181,6 +181,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     private _openedBy: FocusOrigin = 'mouse';
 
+    /** @docs-private */
+    _divider = 0;
+
     @ViewChild('trigger')
     private _trigger?: ElementRef;
 
@@ -365,6 +368,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this._width = Math.max(OVERLAY_MIN_WIDTH, this._trigger?.nativeElement.getBoundingClientRect().width);
         this._isOpen = true;
         this.listItems = this.options.slice().sort(sortSelectedToTop);
+        this._divider = this.selectedItems.size - 1;
         this._openedBy = origin;
     }
 

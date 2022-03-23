@@ -79,8 +79,9 @@
         </div>
         <div class="items" #itemsList [id]="_comboboxId" role="listbox" aria-multiselectable="true">
             <nx-multi-select-option
-                *ngFor="let option of listItems"
+                *ngFor="let option of listItems; let i = index"
                 class="item"
+                [class.divider]="_divider === i"
                 (selectedChange)="_onSelect(option, $event)"
                 [value]="_selectValue(option)"
                 [label]="_selectLabel(option)"

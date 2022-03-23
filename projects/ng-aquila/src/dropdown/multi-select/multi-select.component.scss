@@ -116,3 +116,8 @@
 .hidden {
     display: none;
 }
+.divider {
+    border-bottom: 1px solid v(dropdown-item-divider);
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+}

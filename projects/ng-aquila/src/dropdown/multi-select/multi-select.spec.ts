@@ -35,6 +35,8 @@ class MultiSelectHarness extends ComponentHarness {
 
     getClearFilterButton = this.documentRootLocator.locatorFor('.filter .clear');
 
+    getDivider = this.documentRootLocator.locatorForOptional('.divider');
+
     async clickOptions(indexes: number[]) {
         const options = await this.getOptions();
         for (const i of indexes) {
@@ -273,6 +275,14 @@ describe('NxMultiSelectComponent', () => {
 
             it('updates the model', () => {
                 expect(testInstance.model).toEqual(['BMW', 'Mini']);
+            });
+
+            it('should show divider line when close and reopen', async () => {
+                await multiSelectHarness.closeWithEsc();
+                await multiSelectHarness.click();
+                const divider = await multiSelectHarness.getDivider();
+
+                expect(divider).not.toBeNull();
             });
 
             describe('and using "clear" button', () => {
