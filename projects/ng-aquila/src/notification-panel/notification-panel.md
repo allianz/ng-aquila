@@ -37,7 +37,7 @@ If you want to use a custom scroll strategy, you can use the `NX_NOTIFICATION_PA
 
 <!-- example(notification-panel-scroll-strategy-provider) -->
 
-Alternatively, the `NX_NOTIFICATION_PANEL_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module.
+Alternatively, the `NX_NOTIFICATION_PANEL_SCROLL_STRATEGY` injection token can be provided by importing `NxScrollStrategyModule.withConfig({ ... })` into your application or feature module, after your other aquila imports.
 
 ## Accessibility
 
