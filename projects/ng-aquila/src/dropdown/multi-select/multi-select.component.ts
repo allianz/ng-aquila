@@ -121,6 +121,21 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         return this._filter;
     }
 
+    /** Whether the (select all / clear all) should be disabled and hidden. */
+    @Input()
+    set disableSelectAll(value: BooleanInput) {
+        const coercedValue = coerceBooleanProperty(value);
+        if (this.#disableSelectAll !== coercedValue) {
+            this.#disableSelectAll = coercedValue;
+            this._cdr.markForCheck();
+        }
+    }
+    get disableSelectAll(): boolean {
+        return this.#disableSelectAll;
+    }
+
+    #disableSelectAll = false;
+
     /** @docs-private */
     get shouldLabelFloat(): boolean {
         return this.focused || !this.empty || !!(this.placeholder && this.placeholder.length > 0);

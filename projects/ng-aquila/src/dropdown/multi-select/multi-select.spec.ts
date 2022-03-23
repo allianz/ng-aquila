@@ -255,6 +255,13 @@ describe('NxMultiSelectComponent', () => {
                 expect(ariaExpanded).toBe('true');
                 expect(ariaLabelledBy).toBe(`${multiSelectInstance.id} ${testInstance.formField.labelId}`);
             });
+
+            it('has no select all & clear all buttons', async () => {
+                multiSelectInstance.disableSelectAll = true;
+                fixture.detectChanges();
+
+                expect(await multiSelectHarness.getSelectAllButton()).toBeNull();
+            });
         });
 
         describe('when selecting options', () => {
