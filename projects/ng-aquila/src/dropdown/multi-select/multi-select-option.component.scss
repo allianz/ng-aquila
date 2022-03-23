@@ -19,7 +19,7 @@
     color: v(checkbox-label-color);
     cursor: pointer;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     &.is-active {
         @include focus-style;
@@ -60,7 +60,7 @@
     min-width: v(checkbox-control-size);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 0;
 }
 
