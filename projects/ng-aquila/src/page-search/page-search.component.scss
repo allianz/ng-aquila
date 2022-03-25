@@ -10,6 +10,12 @@
             padding-bottom: 0;
         }
 
+        .has-outline {
+            .nx-formfield__wrapper {
+                padding-top: 4px;
+            }
+        }
+
         .c-input {
             height: auto;
             @include type-style(page-search);
