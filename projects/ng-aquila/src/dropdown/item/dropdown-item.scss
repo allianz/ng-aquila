@@ -156,3 +156,10 @@ nx-checkbox {
         }
     }
 }
+
+.ellipsis {
+    max-width: 35ch;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -14,9 +14,12 @@
 
 <ng-template #contentTemplate>
     <div class="nx-dropdown-results__option-label">
-        <span #content (cdkObserveContent)="_onLabelChange()">
+        <div #content (cdkObserveContent)="_onLabelChange()" [nxTooltip]="viewValue?.length > 35 ? viewValue : null" class="ellipsis">
             <ng-content></ng-content>
-        </span>
-        <ng-container *ngIf="_isContentEmpty(content)"> {{_formattedValue}} </ng-container>
+        </div>
+
+        <div [nxTooltip]="value?.length > 35 ? value : null" class="ellipsis">
+            <ng-container *ngIf="_isContentEmpty(content)"> {{_formattedValue }} </ng-container>
+        </div>
     </div>
 </ng-template>
