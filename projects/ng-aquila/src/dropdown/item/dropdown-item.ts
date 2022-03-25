@@ -66,7 +66,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     @Input('nxValue') value: any;
 
     get label(): string {
-        return this._mostRecentViewValue;
+        return this._mostRecentViewValue || this.viewValue;
     }
 
     /** The unique ID of the option. */
