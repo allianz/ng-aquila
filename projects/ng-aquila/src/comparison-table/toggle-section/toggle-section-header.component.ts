@@ -1,6 +1,9 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, Inject, Input, NgZone, OnDestroy, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxToggleSectionAnimations } from './toggle-section-animations';
@@ -36,22 +39,37 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
         return this._id;
     }
 
-    constructor(public _table: NxComparisonTableBase, public _toggleSection: NxToggleSectionBase, private _focusMonitor: FocusMonitor) {
-        this._table.viewTypeChange.subscribe(viewType => {
-            // timeout is needed here so that the focus monitor is updated after the view was updated
-            setTimeout(() => {
-                this._updateFocusMonitoring();
+    private _destroyed = new Subject<void>();
+
+    constructor(
+        private _ngZone: NgZone,
+        public _table: NxComparisonTableBase,
+        public _toggleSection: NxToggleSectionBase,
+        private _focusMonitor: FocusMonitor,
+        @Inject(PLATFORM_ID) platformId: string,
+    ) {
+        // There's no need to start monitoring the element on the Node.js side since there're no `focus` events.
+        if (isPlatformBrowser(platformId)) {
+            this._table.viewTypeChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
+                this._updateFocusMonitoringWithTimeout();
             });
-        });
+        }
     }
 
     ngAfterViewInit() {
-        // timeout is needed here so that the focus monitor is updated after the view was updated
-        setTimeout(() => this._updateFocusMonitoring());
+        this._updateFocusMonitoringWithTimeout();
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
         this._focusMonitor.stopMonitoring(this._wrapperElement);
+    }
+
+    private _updateFocusMonitoringWithTimeout(): void {
+        this._ngZone.runOutsideAngular(() =>
+            // timeout is needed here so that the focus monitor is updated after the view was updated
+            setTimeout(() => this._updateFocusMonitoring()),
+        );
     }
 
     private _updateFocusMonitoring() {
