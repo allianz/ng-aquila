@@ -1,4 +1,4 @@
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+import { ActiveDescendantKeyManager, LiveAnnouncer } from '@angular/cdk/a11y';
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
@@ -463,6 +463,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         @Optional() private _parentFormGroup: FormGroupDirective,
         @Optional() private _dir: Directionality,
         @Inject(NX_DROPDOWN_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private liveAnnouncer: LiveAnnouncer,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -791,6 +792,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         }
 
         const activeItem = this._keyManager.activeItem.containerElement.nativeElement;
+        this.liveAnnouncer.announce(activeItem.textContent); // force screen reader to speak active option
         const panel = this.panelBody.nativeElement;
         const panelOffset = panel.offsetTop; // how much the overlay is repositioned on the page
         const panelTopScrollPosition = panel.scrollTop;

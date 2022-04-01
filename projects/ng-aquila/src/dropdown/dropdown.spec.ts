@@ -796,6 +796,7 @@ describe('NxDropdownComponent', () => {
             dispatchFakeEvent(filterInput, 'input');
             fixture.detectChanges();
             visibleItems = getVisibleItems();
+            flush();
             expect(visibleItems).toHaveSize(1);
             expect(visibleItems[0].textContent!.trim()).toBe('BMW');
         }));
