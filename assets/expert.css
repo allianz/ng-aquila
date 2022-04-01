@@ -645,6 +645,7 @@
   --dropdown-filter-input-border-color: var(--ui-05);
   --dropdown-filter-input-active-text-color: var(--interactive-primary);
   --dropdown-filter-input-active-border-color: var(--interactive-primary);
+  --dropdown-item-divider: #d9d9d9;
   --footer-font-size: var(--paragraph-03-font-size);
   --footer-line-height: var(--paragraph-03-line-height);
   --footer-font-weight: var(--paragraph-03-font-weight);

@@ -27,7 +27,6 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxImageModule } from '@aposin/ng-aquila/image';
 import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { NxIsoDateModule } from '@aposin/ng-aquila/iso-date-adapter';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxListModule } from '@aposin/ng-aquila/list';
 import { NxMaskModule } from '@aposin/ng-aquila/mask';
@@ -93,7 +92,6 @@ import { NxVideoModule } from '@aposin/ng-aquila/video';
         NxImageModule,
         NxIndicatorModule,
         NxInputModule,
-        NxIsoDateModule,
         NxLinkModule,
         NxListModule,
         NxMaskModule,

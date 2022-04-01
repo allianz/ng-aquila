@@ -619,6 +619,21 @@ as they are sentinel values signalling empty data.</p>
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
             <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">disableSelectAll</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the (select all / clear all) should be disabled and hidden.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">disabled</span>:
                 <span class="docs-api-property__type">boolean</span>
             </code>
@@ -766,6 +781,19 @@ When empty the whole option is treated as the label.</p>
 Can be either a property name or a selector function.
 When empty the whole option is treated as the value.</p>
 </td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">#disableSelectAll</span>:
+                <span class="docs-api-property__type">false</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        </td>
 </tr>
    
 
@@ -981,6 +1009,64 @@ When empty the whole option is treated as the value.</p>
         
     </div></div>
    
+   
+
+<h4 id="NxDropdownIntl" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDropdownIntl"></span>
+    <code>NxDropdownIntl</code></h4><p class="docs-api-class-description"><p>Dropdown data that requires internationalization.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">changes</span>:
+                <span class="docs-api-property__type">Subject<void></span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Stream that emits whenever the labels here are changed. Use this to notify
+components if the labels have changed after initialization.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">clearAll</span>:
+                <span class="docs-api-property__type">'Clear all'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the multi-select component.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">selectAll</span>:
+                <span class="docs-api-property__type">'Select all'</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>A label for the multi-select component.</p>
+</td>
+</tr>
+  
+</table> 
+
+ 
    
 
 <h4 id="NxDropdownSelectChange" class="docs-header-link docs-api-h4 docs-api-class-name">

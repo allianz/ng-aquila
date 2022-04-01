@@ -9,6 +9,7 @@ import { AutocompleteDataBindingExampleComponent } from './autocomplete-data-bin
 import { AutocompleteDefaultRenderingExampleComponent } from './autocomplete-default-rendering/autocomplete-default-rendering-example';
 import { AutocompleteFilteringExampleComponent } from './autocomplete-filtering/autocomplete-filtering-example';
 import { AutocompleteOutlineExampleComponent } from './autocomplete-outline/autocomplete-outline-example';
+import { AutocompleteScrollStrategyProviderExampleComponent } from './autocomplete-scroll-strategy-provider/autocomplete-scroll-strategy-provider-example';
 
 const EXAMPLES = [
     AutocompleteBasicExampleComponent,
@@ -16,6 +17,7 @@ const EXAMPLES = [
     AutocompleteDefaultRenderingExampleComponent,
     AutocompleteFilteringExampleComponent,
     AutocompleteOutlineExampleComponent,
+    AutocompleteScrollStrategyProviderExampleComponent,
 ];
 
 @NgModule({
@@ -40,6 +42,8 @@ export class AutocompleteExamplesModule {
                 AutocompleteDefaultRenderingExampleComponent,
             'autocomplete-filtering': AutocompleteFilteringExampleComponent,
             'autocomplete-outline': AutocompleteOutlineExampleComponent,
+            'autocomplete-scroll-strategy-provider':
+                AutocompleteScrollStrategyProviderExampleComponent,
         };
     }
 }

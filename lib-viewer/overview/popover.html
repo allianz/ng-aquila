@@ -40,7 +40,17 @@
 <p class="docs-markdown--p">The popover triggered by hover will close immediately after the mouse exits the trigger.</p>
 <p class="docs-markdown--p">Please note that the popover with hover is only suitable for optional information. The information in the popover is not accessible for all use cases (e.g., touch devices) and is therefore to be used with care - if at all.</p>
 <div nx-docs-example="popover-hover" config="{}">exampleID: popover-hover</div>
-<h2 id="internationalization" tabindex="-1" class="docs-markdown--h2">Internationalization</h2>
+<h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global Settings</h3>
+<p class="docs-markdown--p">If you want to use a custom scroll strategy, you can use the <code>NX_POPOVER_SCROLL_STRATEGY</code> injection token with a factory provider. The <code>Overlay</code> service from <code>@angular/cdk/overlay</code> offers 4 different scroll strategy options:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>reposition:</strong> allow background scroll, the overlay moves with the background (default).</li>
+<li class="docs-markdown--li"><strong>close:</strong> allow background scroll, closes the overlay on scroll.</li>
+<li class="docs-markdown--li"><strong>block:</strong> disallow background scroll, the overlay does not move.</li>
+<li class="docs-markdown--li"><strong>noop:</strong> allow background scroll, the overlay does not move.</li>
+</ul>
+<div nx-docs-example="popover-scroll-strategy-provider" config="{}">exampleID: popover-scroll-strategy-provider</div>
+<p class="docs-markdown--p">Alternatively, the <code>NX_POPOVER_SCROLL_STRATEGY</code> injection token can be provided by importing <code>NxScrollStrategyModule.withConfig({ ... })</code> into your application or feature module, after your other aquila imports.</p>
+<h4 id="internationalization" tabindex="-1" class="docs-markdown--h4">Internationalization</h4>
 <p class="docs-markdown--p">To set different translations of the countries and to change texts like the close icon aria label you can set these via the <code>NxPopoverIntl</code> class provider.</p>
 <div nx-docs-example="popover-i18n" config="{}">exampleID: popover-i18n</div>
 <h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>

@@ -53,7 +53,7 @@ myDialogRef.close();
 </code></pre>
 <p class="docs-markdown--p">If you are using a template for the content of your dialog the data object will be available implicitly in your template as shown in the example below:</p>
 <div nx-docs-example="modal-data-injection" config="{}">exampleID: modal-data-injection</div>
-<h3 id="global-configuration" tabindex="-1" class="docs-markdown--h3">Global Configuration</h3>
+<h3 id="global-settings" tabindex="-1" class="docs-markdown--h3">Global Settings</h3>
 <p class="docs-markdown--p">You can also overwrite the default dialog configuration by using the NX_MODAL_DEFAULT_CONFIG injection token as shown in the code snippet below:</p>
 <pre><code class="language-ts"><span class="hljs-meta">@NgModule</span>({
   <span class="hljs-attr">providers</span>: [
@@ -63,6 +63,28 @@ myDialogRef.close();
     }
   ]
 </code></pre>
+<p class="docs-markdown--p">If you want to use a custom scroll strategy, you can use the <code>NX_MODAL_SCROLL_STRATEGY</code> injection token with a factory provider. The <code>Overlay</code> service from <code>@angular/cdk/overlay</code> offers 4 different scroll strategy options:</p>
+<ul class="docs-markdown--ul">
+<li class="docs-markdown--li"><strong>reposition:</strong> allow background scroll, the overlay moves with the background (default).</li>
+<li class="docs-markdown--li"><strong>close:</strong> allow background scroll, closes the overlay on scroll.</li>
+<li class="docs-markdown--li"><strong>block:</strong> disallow background scroll, the overlay does not move.</li>
+<li class="docs-markdown--li"><strong>noop:</strong> allow background scroll, the overlay does not move.</li>
+</ul>
+<pre><code class="language-ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">scrollStrategyFactory</span>(<span class="hljs-params">overlay: Overlay</span>): (<span class="hljs-params"></span>) =&gt; <span class="hljs-title">ScrollStrategy</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> overlay.scrollStrategies.close({ <span class="hljs-attr">threshold</span>: <span class="hljs-number">100</span> });
+}
+
+<span class="hljs-meta">@NgModule</span>({
+  <span class="hljs-comment">/* ... */</span>
+  <span class="hljs-attr">providers</span>: [{
+    <span class="hljs-attr">provide</span>: NX_MODAL_SCROLL_STRATEGY,
+    <span class="hljs-attr">useFactory</span>: scrollStrategyFactory,
+    <span class="hljs-attr">deps</span>: [Overlay],
+  }],
+}
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppModule</span> </span>{}
+</code></pre>
+<p class="docs-markdown--p">Alternatively, the <code>NX_MODAL_SCROLL_STRATEGY</code> injection token can be provided by importing <code>NxScrollStrategyModule.withConfig({ ... })</code> into your application or feature module, after your other aquila imports.</p>
 <h3 id="directionality" tabindex="-1" class="docs-markdown--h3">Directionality</h3>
 <p class="docs-markdown--p">By default all dialogs are rendered with <code>ltr</code> direction. If you need the dialog to use your application locale direction, for example when you need to support RTL scripts, you can use the <code>direction</code> configuration property.</p>
 <p class="docs-markdown--p">To get your app direction we recommend using <a href="https://material.angular.io/cdk/bidi/overview">Directionality</a> from Angular CDK.</p>

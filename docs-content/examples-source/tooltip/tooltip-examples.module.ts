@@ -10,6 +10,7 @@ import { TooltipDisabledExampleComponent } from './tooltip-disabled/tooltip-disa
 import { TooltipFallbacksTableExampleComponent } from './tooltip-fallbacks-table/tooltip-fallbacks-table-example';
 import { TooltipPositionsExampleComponent } from './tooltip-positions/tooltip-positions-example';
 import { TooltipProgrammaticExampleComponent } from './tooltip-programmatic/tooltip-programmatic-example';
+import { TooltipScrollStrategyProviderExampleComponent } from './tooltip-scroll-strategy-provider/tooltip-scroll-strategy-provider-example';
 import { TooltipSettingsExampleComponent } from './tooltip-settings/tooltip-settings-example';
 
 const EXAMPLES = [
@@ -20,6 +21,7 @@ const EXAMPLES = [
     TooltipPositionsExampleComponent,
     TooltipProgrammaticExampleComponent,
     TooltipSettingsExampleComponent,
+    TooltipScrollStrategyProviderExampleComponent,
 ];
 
 @NgModule({
@@ -43,6 +45,8 @@ export class TooltipExamplesModule {
             'tooltip-positions': TooltipPositionsExampleComponent,
             'tooltip-programmatic': TooltipProgrammaticExampleComponent,
             'tooltip-settings': TooltipSettingsExampleComponent,
+            'tooltip-scroll-strategy-provider':
+                TooltipScrollStrategyProviderExampleComponent,
         };
     }
 }

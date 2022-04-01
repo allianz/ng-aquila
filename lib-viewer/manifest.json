@@ -337,6 +337,10 @@
         {
           "name": "autocomplete-outline",
           "config": {}
+        },
+        {
+          "name": "autocomplete-scroll-strategy-provider",
+          "config": {}
         }
       ],
       "category": "components",
@@ -813,6 +817,10 @@
         {
           "name": "context-menu-cursor-mode",
           "config": {}
+        },
+        {
+          "name": "context-menu-scroll-strategy-provider",
+          "config": {}
         }
       ],
       "category": "components",
@@ -941,6 +949,10 @@
         {
           "name": "datefield-injection-token",
           "config": {}
+        },
+        {
+          "name": "datefield-scroll-strategy-provider",
+          "config": {}
         }
       ],
       "category": "components",
@@ -1016,6 +1028,14 @@
         },
         {
           "name": "multi-select",
+          "config": {}
+        },
+        {
+          "name": "dropdown-scroll-strategy-provider",
+          "config": {}
+        },
+        {
+          "name": "multi-select-intl",
           "config": {}
         }
       ],
@@ -1867,6 +1887,10 @@
         {
           "name": "notification-panel-actions",
           "config": {}
+        },
+        {
+          "name": "notification-panel-scroll-strategy-provider",
+          "config": {}
         }
       ],
       "category": "components",
@@ -2119,6 +2143,10 @@
           "config": {}
         },
         {
+          "name": "popover-scroll-strategy-provider",
+          "config": {}
+        },
+        {
           "name": "popover-i18n",
           "config": {}
         }
@@ -2126,6 +2154,66 @@
       "category": "components",
       "apiFile": "lib-viewer/api/popover.html",
       "overviewFile": "lib-viewer/overview/popover.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "progress-stepper",
+      "title": "Progress Indicator",
+      "examples": [
+        {
+          "name": "progress-stepper",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-custom",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-title",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-form",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-nonlinear",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-vertical",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-multi-groups",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-step",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivesingle",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-reactivemulti",
+          "config": {}
+        },
+        {
+          "name": "progress-stepper-progress",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/progress-stepper.html",
+      "overviewFile": "lib-viewer/overview/progress-stepper.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -2242,66 +2330,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/radio-toggle.html",
       "overviewFile": "lib-viewer/overview/radio-toggle.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "progress-stepper",
-      "title": "Progress Indicator",
-      "examples": [
-        {
-          "name": "progress-stepper",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-custom",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-title",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-form",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-nonlinear",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-vertical",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-multi-groups",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-step",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivesingle",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-reactivemulti",
-          "config": {}
-        },
-        {
-          "name": "progress-stepper-progress",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/progress-stepper.html",
-      "overviewFile": "lib-viewer/overview/progress-stepper.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -2544,6 +2572,22 @@
       "stable": "done"
     },
     {
+      "id": "swipebar",
+      "title": "Swipebar",
+      "examples": [
+        {
+          "name": "swipebar",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/swipebar.html",
+      "overviewFile": "lib-viewer/overview/swipebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
       "id": "switcher",
       "title": "Switcher",
       "examples": [
@@ -2583,22 +2627,6 @@
       "category": "components",
       "apiFile": "lib-viewer/api/switcher.html",
       "overviewFile": "lib-viewer/overview/switcher.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
-      "id": "swipebar",
-      "title": "Swipebar",
-      "examples": [
-        {
-          "name": "swipebar",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/swipebar.html",
-      "overviewFile": "lib-viewer/overview/swipebar.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -2888,6 +2916,10 @@
         {
           "name": "tooltip-settings",
           "config": {}
+        },
+        {
+          "name": "tooltip-scroll-strategy-provider",
+          "config": {}
         }
       ],
       "category": "components",
@@ -3164,6 +3196,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/autocomplete-outline-###TYPE###.html"
+    },
+    {
+      "id": "autocomplete-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "autocomplete",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/autocomplete-scroll-strategy-provider-###TYPE###.html"
     },
     {
       "id": "avatar",
@@ -4057,6 +4100,17 @@
       "url": "lib-viewer/examples/context-menu-scroll-strategy-###TYPE###.html"
     },
     {
+      "id": "context-menu-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "context-menu",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/context-menu-scroll-strategy-provider-###TYPE###.html"
+    },
+    {
       "id": "copytext-negative",
       "title": "Negative styling example",
       "module": "copytext",
@@ -4288,6 +4342,17 @@
       "url": "lib-viewer/examples/datefield-reactive-###TYPE###.html"
     },
     {
+      "id": "datefield-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "datefield",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/datefield-scroll-strategy-provider-###TYPE###.html"
+    },
+    {
       "id": "datefield-startview",
       "title": "Start view example",
       "module": "datefield",
@@ -4442,6 +4507,17 @@
       "url": "lib-viewer/examples/dropdown-rendering-items-###TYPE###.html"
     },
     {
+      "id": "dropdown-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "dropdown",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dropdown-scroll-strategy-provider-###TYPE###.html"
+    },
+    {
       "id": "dropdown-simple-binding",
       "title": "Simple binding example",
       "module": "dropdown",
@@ -4484,6 +4560,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/multi-select-###TYPE###.html"
+    },
+    {
+      "id": "multi-select-intl",
+      "title": "Multi select intl example",
+      "module": "dropdown",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/multi-select-intl-###TYPE###.html"
     },
     {
       "id": "dynamic-table",
@@ -6026,6 +6113,17 @@
       "url": "lib-viewer/examples/notification-panel-mixed-###TYPE###.html"
     },
     {
+      "id": "notification-panel-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "notification-panel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/notification-panel-scroll-strategy-provider-###TYPE###.html"
+    },
+    {
       "id": "number-stepper-a11y",
       "title": "Number Stepper Accessiblity Example",
       "module": "number-stepper",
@@ -6486,6 +6584,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/popover-scroll-###TYPE###.html"
+    },
+    {
+      "id": "popover-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "popover",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/popover-scroll-strategy-provider-###TYPE###.html"
     },
     {
       "id": "popover-scrollable",
@@ -7960,6 +8069,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/tooltip-programmatic-###TYPE###.html"
+    },
+    {
+      "id": "tooltip-scroll-strategy-provider",
+      "title": "Scroll Strategy Provider Example",
+      "module": "tooltip",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/tooltip-scroll-strategy-provider-###TYPE###.html"
     },
     {
       "id": "tooltip-settings",

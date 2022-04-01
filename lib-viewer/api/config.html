@@ -4,7 +4,7 @@
     <p class="docs-api-module-import">
         <code>
             <span class="docs-api-module-import__import-span">import</span>
-            { NxExpertModule }
+            { NxScrollStrategyModule }
             <span class="docs-api-module-import__from-span">from</span>
             <span class="docs-api-module-import__path-span">'@aposin/ng-aquila/config'</span>;
         </code>
@@ -50,4 +50,190 @@ It is only meant to showcase different options for documentation purposes.</p>
     </div>
     <div class="docs-api-method-description"></div></div>
    
+  <h3 id="additional_interfaces" class="docs-header-link docs-api-h3">
+        <span header-link="additional_interfaces"></span>
+        Additional interfaces
+    </h3>
+     
+
+<h4 id="NxScrollStrategyDefaultConfig" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxScrollStrategyDefaultConfig"></span>
+    <code>NxScrollStrategyDefaultConfig</code>
+</h4><p class="docs-api-interface-description"><p>Scroll strategy default configuration.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">extraComponents</span>:
+                <span class="docs-api-property__type">{
+    dialog?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    overlay?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    popover?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    tooltip?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Configure default behavior for additional overlay-based component types.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">overrides</span>:
+                <span class="docs-api-property__type">{
+    autocomplete?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    contextMenu?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    datepicker?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    dropdown?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+    notificationPanel?: Pick<NxScrollStrategyDefaultConfig, 'scrollStrategy' | 'scrollStrategyOptions'>;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Override default config for each component type separately.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">scrollStrategy</span>:
+                <span class="docs-api-property__type">NxScrollStrategy</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Preset for strategy factory that will be used to handle scrolling while a panel is open.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">scrollStrategyOptions</span>:
+                <span class="docs-api-property__type">NxScrollStrategyOptions</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Additional strategy preset options.</p>
+</td>
+</tr>
+  
+</table>   
+   
+
+<h4 id="NxScrollStrategyFactoryConfig" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxScrollStrategyFactoryConfig"></span>
+    <code>NxScrollStrategyFactoryConfig</code>
+</h4><p class="docs-api-interface-description"><p>Scroll strategy factory configuration.</p>
+</p><h5 class="docs-api-method-header">Properties</h5>
+<table class="docs-api-properties-table">
+    <tr class="docs-api-properties-header-row">
+        <th class="docs-api-properties-th">Name</th>
+        <th class="docs-api-properties-th">Description</th>
+    </tr>
+     
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">extraComponents</span>:
+                <span class="docs-api-property__type">{
+    dialog?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    overlay?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    popover?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    tooltip?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Configure default behavior for additional overlay-based component types.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">overrides</span>:
+                <span class="docs-api-property__type">{
+    autocomplete?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    contextMenu?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    datepicker?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    dropdown?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+    notificationPanel?: Pick<NxScrollStrategyFactoryConfig, 'scrollStrategyFactory'>;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Override default config for each component type separately.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">scrollStrategyFactory</span>:
+                <span class="docs-api-property__type">NxScrollStrategyFactoryFn</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Creator function for strategy factory that will be used to handle scrolling while a panel is open.</p>
+</td>
+</tr>
+  
+</table>   
+  <h3 id="additional_type_aliases" class="docs-header-link docs-api-h3">
+        <span header-link="additional_type_aliases"></span>
+        Additional type aliases
+    </h3>
+     
+
+<h4 id="NxScrollStrategy" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxScrollStrategy"></span>
+    <code>NxScrollStrategy</code>
+</h4><p class="docs-api-type-alias-description"><p>Scroll strategy default presets for overlay-based components.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">'reposition' | 'block' | 'close' | 'noop'</code>
+</p>
+   
+
+<h4 id="NxScrollStrategyOptions" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxScrollStrategyOptions"></span>
+    <code>NxScrollStrategyOptions</code>
+</h4><p class="docs-api-type-alias-description"><p>Scroll strategy default preset options for overlay-based components.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">RepositionScrollStrategyConfig & CloseScrollStrategyConfig</code>
+</p>
+   
+
+<h4 id="NxScrollStrategyFactoryFn" class="docs-header-link docs-api-h4 docs-api-type-alias-name">
+    <span header-link="NxScrollStrategyFactoryFn"></span>
+    <code>NxScrollStrategyFactoryFn</code>
+</h4><p class="docs-api-type-alias-description"><p>Scroll strategy factory creator function.</p>
+</p><p class="docs-api-type-alias-value">
+    <span class="docs-api-type-alias-value-label">Type:</span>
+    <code class="docs-api-type-alias-value">(overlay: Overlay) => () => ScrollStrategy</code>
+</p>
   </div>
