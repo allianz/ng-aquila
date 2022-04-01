@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.3.0](https://github.com/aposin/ng-aquila/compare/v13.2.0...v13.3.0) (2022-04-01)
+
+### Bug Fixes
+
+-   **compare-table:** hide popover when table is scrolling horizontally ([2b75c97](https://github.com/aposin/ng-aquila/commit/2b75c97492dccc1e1d6af7223b5b61ecf5c88cea))
+-   **dropdown:** force active item to speak in screen-reader for a11y ([e682198](https://github.com/aposin/ng-aquila/commit/e6821989200088e940b37e781b0378d2ab255f47))
+-   **dropdown:** use label viewValue fallback ([ea4f931](https://github.com/aposin/ng-aquila/commit/ea4f9311abe28cc51f259e197e4fe0b50ed1b71d))
+-   **modal:** cdk re-focus open button on close ([3861518](https://github.com/aposin/ng-aquila/commit/3861518a1a093afa51c560d36ce03b64a3894676))
+
+### Features
+
+-   **autocomplete:** add scroll strategy provider ([7eb4634](https://github.com/aposin/ng-aquila/commit/7eb46340ea7dd864160d683e8c504fa32ae46302))
+-   **dropdown:** multi-select i18n provider ([cf078d1](https://github.com/aposin/ng-aquila/commit/cf078d18ad458afd738ade605265047df2c4e245))
+-   **dropdown:** truncate long text in dropdown ([40a53a8](https://github.com/aposin/ng-aquila/commit/40a53a8d67577286cb6115747192e2377781cb3b))
+-   **multi-select:** add divider line when sorted ([aa51a07](https://github.com/aposin/ng-aquila/commit/aa51a07455222e686be05041fa366fd1728f7fe3))
+-   **multi-select:** add option to disable select all/clear all ([2f5d181](https://github.com/aposin/ng-aquila/commit/2f5d18179bc52a8abe9d358a300c7e9c80de0f8c))
+-   **config:** add scroll strategy provider module ([4785962](https://github.com/aposin/ng-aquila/commit/4785962c8bca89e458e3e1cef69afd1586225a24))
+-   **config:** add scroll strategy provider module extra config ([5a999b8](https://github.com/aposin/ng-aquila/commit/5a999b8e4c0399518fd67d4eb718cc228ff52998))
+-   **config:** add scroll strategy provider module override config ([c78c775](https://github.com/aposin/ng-aquila/commit/c78c775a3eecb5814835553002aaa6cc3892cf00))
+-   **context-menu:** add scroll strategy provider ([10d6c2d](https://github.com/aposin/ng-aquila/commit/10d6c2dae79db062ba37be5a814f59bada3759a6))
+-   **datefield:** add scroll strategy provider ([39987fd](https://github.com/aposin/ng-aquila/commit/39987fd5d5c6fbae5ce7d4d9bbbc258f830d2053))
+-   **dropdown:** add scroll strategy provider ([bc1ae19](https://github.com/aposin/ng-aquila/commit/bc1ae19e038b2219cb097d91a2fbad9d3debe93c))
+-   **notification-panel:** add scroll strategy provider ([2248cea](https://github.com/aposin/ng-aquila/commit/2248cea6c06d6915dc61764022b1dc16f5e1c865))
+-   **overlay:** add scroll strategy provider ([048d7b7](https://github.com/aposin/ng-aquila/commit/048d7b7e893629b4f2ed01be9505c3dd71a4efe9))
+-   **popover:** add scroll strategy provider ([1e4f89d](https://github.com/aposin/ng-aquila/commit/1e4f89d9fc084c3dceb2d99609c42e856a5eac1c))
+-   **tooltip:** add scroll strategy provider ([6f320d9](https://github.com/aposin/ng-aquila/commit/6f320d9a9134f3ac3dedb0368c498ffa55817f34))
+
 # [13.2.0](https://github.com/aposin/ng-aquila/compare/v13.1.0...v13.2.0) (2022-03-08)
 
 ### Bug Fixes
