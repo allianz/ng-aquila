@@ -43,7 +43,7 @@ export function convertToDayjsLocale(localeId: string): string {
  * @returns a Promise that resolves with the dayjs localeData for the given locale
  */
 export async function getDayjsLocaleData(localeId: string): Promise<dayjs.InstanceLocaleDataReturn> {
-    return import(`dayjs/locale/${localeId}`)
+    return import(`dayjs/locale/${localeId}.js`)
         .then(() => dayjs().locale(localeId).localeData())
         .catch(() => {
             console.warn(`The requested dayjs locale '${localeId}' could not be loaded.`);
