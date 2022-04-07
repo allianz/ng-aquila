@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.3.1](https://github.com/aposin/ng-aquila/compare/v13.3.0...v13.3.1) (2022-04-07)
+
+### Bug Fixes
+
+-   **comparison-table:** teardown subscription and change detection ([e060040](https://github.com/aposin/ng-aquila/commit/e060040ccf7e1fe319e5f2cfd657a8f20af2148b))
+-   **iso-date-adapter:** only load JS files to avoid webpack issue ([605df85](https://github.com/aposin/ng-aquila/commit/605df85e46dd017da6800e15349e3cb0738ce67d))
+
 # [13.3.0](https://github.com/aposin/ng-aquila/compare/v13.2.0...v13.3.0) (2022-04-01)
 
 ### Bug Fixes
