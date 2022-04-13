@@ -3,6 +3,7 @@ import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { DOWN_ARROW, ENTER, ESCAPE, TAB, UP_ARROW } from '@angular/cdk/keycodes';
 import { FlexibleConnectedPositionStrategy, Overlay, OverlayConfig, OverlayRef, PositionStrategy, ScrollStrategy, ViewportRuler } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { AutofillMonitor } from '@angular/cdk/text-field';
 import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
@@ -89,6 +90,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private _overlayRef!: OverlayRef | null;
     private _portal!: TemplatePortal;
     private _componentDestroyed = false;
+    private _isAutofill = false;
 
     /** Old value of the native input. Used to work around issues with the `input` event on IE. */
     private _previousValue: string | number | null | undefined;
@@ -249,6 +251,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         private _zone: NgZone,
         private _cdr: ChangeDetectorRef,
         private _dir: Directionality,
+        private _autofillMonitor: AutofillMonitor,
         @Optional() @Host() private _nxFormField: NxFormfieldComponent,
         @Optional() @Host() private _nxWordField: NxWordComponent,
         @Optional() @Inject(DOCUMENT) private _document: any,
@@ -267,6 +270,9 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
             this._flipDirection();
             this._cdr.markForCheck();
         });
+        this._autofillMonitor.monitor(this._element.nativeElement).subscribe(event => {
+            this._isAutofill = event.isAutofilled;
+        });
     }
 
     ngOnDestroy() {
@@ -280,6 +286,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         this._controlValueChangesSubscription?.unsubscribe();
         this._itemsSubscription?.unsubscribe();
         this._dirChangeSubscription?.unsubscribe();
+        this._autofillMonitor.stopMonitoring(this._element.nativeElement);
     }
 
     ngOnChanges() {
@@ -444,6 +451,16 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         // Based on `NumberValueAccessor` from forms.
         if (target.type === 'number') {
             value = value === '' ? null : parseFloat(value);
+        }
+
+        // in case of autofill from browser
+        // input can come from any activeElement which differ from event.target
+        // so checking if it's autofill instead.
+        if (this._isFieldEnabled() && this._previousValue !== value && this._isAutofill) {
+            this._previousValue = value;
+            this._onChange(value);
+            this._isAutofill = false;
+            return;
         }
 
         // If the input has a placeholder, IE will fire the `input` event on page load,
