@@ -193,7 +193,13 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
 
         this._subscriptions.add(subscription);
 
-        subscription = merge(this._hintChildren.changes, this._appendixChildren.changes, this._prefixChildren.changes, this._suffixChildren.changes)
+        subscription = merge(
+            this._hintChildren.changes,
+            this._appendixChildren.changes,
+            this._prefixChildren.changes,
+            this._suffixChildren.changes,
+            this._noteChildren.changes,
+        )
             .pipe(startWith(null))
             .subscribe(() => {
                 this._cdr.markForCheck();
