@@ -22,7 +22,7 @@ import { startWith, switchMap, take } from 'rxjs/operators';
 
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
-import { NxContextMenuItemComponent } from './context-menu-item.component';
+import { NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './context-menu-item.component';
 
 @Component({
     selector: 'nx-context-menu',
@@ -37,6 +37,9 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     @ContentChildren(NxContextMenuItemComponent)
     private _items!: QueryList<NxContextMenuItemComponent>;
+
+    @ContentChild(NxContextMenuItemWrapComponent)
+    private _wrap!: NxContextMenuItemWrapComponent;
 
     /** Subscription to tab events on the menu panel */
     private _tabSubscription = Subscription.EMPTY;
@@ -86,6 +89,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     constructor(private _ngZone: NgZone) {}
 
     ngAfterContentInit() {
+        this._items = this._wrap ? this._wrap?._items : this._items;
         this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items).withWrap().withTypeAhead().setFocusOrigin('keyboard');
         this._tabSubscription = this._keyManager.tabOut.subscribe(() => this.closed.emit('tab'));
         this._init.next();

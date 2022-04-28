@@ -1,0 +1,34 @@
+<nx-context-menu #menu2="nxContextMenu">
+    <nx-context-menu-header> Language </nx-context-menu-header>
+    <button
+        nxContextMenuItem
+        type="button"
+        *ngFor="let o of options"
+        (click)="selectedLanguage = o.value"
+    >
+        <nx-icon
+            aria-hidden="true"
+            size="s"
+            *ngIf="selectedLanguage === o.value"
+            name="check"
+            class="icon"
+        ></nx-icon>
+        {{o.label}}
+    </button>
+</nx-context-menu>
+
+<button
+    nxButton="primary small"
+    class="uppercase"
+    [nxContextMenuTriggerFor]="menu2"
+    aria-label="Open menu"
+    type="button"
+>
+    <nx-icon
+        aria-hidden="true"
+        size="s"
+        name="globe"
+        class="nx-margin-right-xs"
+    ></nx-icon>
+    {{ selectedLanguage }}
+</button>

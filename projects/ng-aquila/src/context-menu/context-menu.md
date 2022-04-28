@@ -94,3 +94,15 @@ Alternatively, the `NX_CONTEXT_MENU_SCROLL_STRATEGY` injection token can be prov
 -   LEFT_ARROW: Closes the current menu, if it is a sub-menu
 -   ENTER: Activates the focused menu item
 -   ESCAPE: Closes the menu
+
+### Selection Menu
+
+Selection menu stores its state. It can easily be built on top of Context Menu, simply copy the source code of the examples below and modify as needed.
+
+#### Single selection
+
+<!-- example(context-menu-selection) -->
+
+#### Multiple selection
+
+<!-- example(context-menu-select-multiple) -->

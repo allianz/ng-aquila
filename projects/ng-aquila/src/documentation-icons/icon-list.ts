@@ -36,4 +36,6 @@ export const ICON_MAPPINGS: { [key: string]: FontIcon } = {
     // the users icon in font awesome is not quadratic as a workaround
     // we just reuse the single user here
     users: { alias: 'user', font: 'fas' },
+    globe: { alias: 'globe', font: 'fas' },
+    'grip-vertical': { alias: 'grip-vertical', font: 'fas' },
 };

@@ -1,7 +1,7 @@
 import { FocusMonitor, FocusOrigin } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChildren, ElementRef, Inject, Input, OnDestroy, QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 
 /**
@@ -47,6 +47,17 @@ export class NxContextMenuItemComponent implements OnDestroy {
     }
     private _disabled = false;
 
+    /** Whether the context menu close on select. */
+    @Input()
+    set disableCloseOnSelect(value: BooleanInput) {
+        this._disableCloseOnSelect = coerceBooleanProperty(value);
+        this._cdr.markForCheck();
+    }
+    get disableCloseOnSelect(): boolean {
+        return this._disableCloseOnSelect;
+    }
+    private _disableCloseOnSelect = false;
+
     /** Whether the context menu item is highlighted. */
     _highlighted = false;
 
@@ -89,6 +100,10 @@ export class NxContextMenuItemComponent implements OnDestroy {
 
     /** Prevents the default element actions if it is disabled. */
     _checkDisabled(event: Event): void {
+        if (this.disableCloseOnSelect) {
+            event.stopPropagation();
+        }
+
         if (this.disabled) {
             event.preventDefault();
             event.stopPropagation();
@@ -121,4 +136,26 @@ export class NxContextMenuItemComponent implements OnDestroy {
 
         return output.trim();
     }
+}
+
+/**
+ * This directive is need when [nx-context-menu-item] is not directly under [nx-context-menu].
+ *
+ * <nx-context-menu>
+ *      <something else> // blocker
+ *        <nx-context-menu-item-wrap> // come to rescue
+ *          <nx-context-menu-item/>
+ *          <nx-context-menu-item/>
+ *        </nx-context-menu-item-wrap>
+ *      </something else>
+ * </nx-context-menu>
+ */
+@Component({
+    selector: 'nx-context-menu-item-wrap',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `<ng-content></ng-content> `,
+})
+export class NxContextMenuItemWrapComponent {
+    @ContentChildren(NxContextMenuItemComponent)
+    _items!: QueryList<NxContextMenuItemComponent>;
 }

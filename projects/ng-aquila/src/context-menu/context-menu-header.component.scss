@@ -1,0 +1,14 @@
+@import '../shared-styles/index.scss';
+
+:host {
+    @include type-style(formfield-label);
+    color: v(dropdown-panel-header-text-color);
+    background-color: v(dropdown-panel-header-background-color);
+    padding: nx-spacer(2xs) nx-spacer(2m);
+    border-top-left-radius: nx-border-radius(s);
+    border-top-right-radius: nx-border-radius(s);
+    z-index: 1;
+    position: relative;
+    top: -8px;
+    font-weight: bold;
+}
