@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.4.0](https://github.com/aposin/ng-aquila/compare/v13.3.1...v13.4.0) (2022-05-03)
+
+### Bug Fixes
+
+-   **form-field:** add note-directive into change detection ([bccf169](https://github.com/aposin/ng-aquila/commit/bccf169151871867f382570d011ec4238f246935))
+-   **input:** make autocomplete work ([02e4685](https://github.com/aposin/ng-aquila/commit/02e4685e1a2cf65ed712dd93ff37250a9715b20c))
+
+### Features
+
+-   **context-menu:** add selection menu reference ([5ac733e](https://github.com/aposin/ng-aquila/commit/5ac733e260165d71fcc588c5ad129b9293b96039))
+
 ## [13.3.1](https://github.com/aposin/ng-aquila/compare/v13.3.0...v13.3.1) (2022-04-07)
 
 ### Bug Fixes
