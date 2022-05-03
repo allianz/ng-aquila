@@ -12,5 +12,6 @@
     "scripts": {
         "prepublish": "tsc",
         "release": ""
-    }
+    },
+    "sideEffects": false
 }
