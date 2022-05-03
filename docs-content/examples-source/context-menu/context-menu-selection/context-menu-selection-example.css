@@ -1,0 +1,7 @@
+.uppercase {
+    text-transform: uppercase;
+}
+.icon {
+    position: absolute;
+    left: 8px;
+}

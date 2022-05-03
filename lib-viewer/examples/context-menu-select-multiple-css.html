@@ -1,0 +1,50 @@
+<span class="hljs-selector-class">.uppercase</span> {
+    <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+<span class="hljs-selector-class">.example-list</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">border</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#ccc</span>;
+    <span class="hljs-attribute">min-height</span>: <span class="hljs-number">60px</span>;
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">overflow</span>: hidden;
+}
+
+<span class="hljs-selector-class">.example-box</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span> <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#ccc</span>;
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.87</span>);
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: row;
+    <span class="hljs-attribute">align-items</span>: center;
+    <span class="hljs-attribute">justify-content</span>: space-between;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">cursor</span>: move;
+    <span class="hljs-attribute">background</span>: white;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+}
+
+<span class="hljs-selector-class">.cdk-drag-preview</span> {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">5px</span> -<span class="hljs-number">3px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.2</span>),
+        <span class="hljs-number">0</span> <span class="hljs-number">8px</span> <span class="hljs-number">10px</span> <span class="hljs-number">1px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.14</span>), <span class="hljs-number">0</span> <span class="hljs-number">3px</span> <span class="hljs-number">14px</span> <span class="hljs-number">2px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.12</span>);
+}
+
+<span class="hljs-selector-class">.cdk-drag-placeholder</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
+}
+
+<span class="hljs-selector-class">.cdk-drag-animating</span> {
+    <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">250ms</span> <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">1</span>);
+}
+
+<span class="hljs-selector-class">.example-box</span><span class="hljs-selector-pseudo">:last-child</span> {
+    <span class="hljs-attribute">border</span>: none;
+}
+
+<span class="hljs-selector-class">.example-list</span><span class="hljs-selector-class">.cdk-drop-list-dragging</span> <span class="hljs-selector-class">.example-box</span><span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-class">.cdk-drag-placeholder</span>) {
+    <span class="hljs-attribute">transition</span>: transform <span class="hljs-number">250ms</span> <span class="hljs-built_in">cubic-bezier</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">1</span>);
+}

@@ -29,6 +29,20 @@
  
    
 
+<h4 id="NxContextMenuHeaderComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxContextMenuHeaderComponent"></span>
+    <code>NxContextMenuHeaderComponent</code></h4><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">nx-context-menu-header</span>
+        
+    </div>
+</p> 
+
+ 
+   
+
 <h4 id="NxContextMenuItemComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
     <span header-link="NxContextMenuItemComponent"></span>
     <code>NxContextMenuItemComponent</code></h4><p class="docs-api-class-description"><p>This directive is intended to be used inside an nx-context-menu tag.
@@ -48,6 +62,21 @@ It exists mostly to set the role attribute, disabled state and styling.</p>
         <th class="docs-api-properties-th">Description</th>
     </tr>
      
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
+            <span class="docs-api-input__keyword">@Input</span>()</div><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">disableCloseOnSelect</span>:
+                <span class="docs-api-property__type">boolean</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Whether the context menu close on select.</p>
+</td>
+</tr>
+   
 
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker">
@@ -97,6 +126,28 @@ It exists mostly to set the role attribute, disabled state and styling.</p>
     <div class="docs-api-method-description"><p>Gets the label to be used when determining whether the option should be focused.</p>
 </div></div>
    
+   
+
+<h4 id="NxContextMenuItemWrapComponent" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxContextMenuItemWrapComponent"></span>
+    <code>NxContextMenuItemWrapComponent</code></h4><p class="docs-api-class-description"><p>This directive is need when [nx-context-menu-item] is not directly under [nx-context-menu].</p>
+<nx-context-menu>
+     <something else> // blocker
+       <nx-context-menu-item-wrap> // come to rescue
+         <nx-context-menu-item/>
+         <nx-context-menu-item/>
+       </nx-context-menu-item-wrap>
+     </something else>
+</nx-context-menu></p><p class="docs-api-directive-selectors">
+    <span class="docs-api-class-selector-label">Selector:</span>
+    <div class="docs-api__selector-container">
+        
+        <span class="docs-api-class-selector-name">nx-context-menu-item-wrap</span>
+        
+    </div>
+</p> 
+
+ 
    
 
 <h4 id="NxContextMenuTriggerDirective" class="docs-header-link docs-api-h4 docs-api-class-name">
