@@ -94,6 +94,7 @@ export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
     deps: [Overlay],
 };
 
+export type FilterInputType = 'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email';
 @Component({
     selector: 'nx-dropdown',
     templateUrl: 'dropdown.html',
@@ -191,6 +192,18 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
     get options(): NxDropdownOption[] {
         return this._options.value;
+    }
+
+    private _filterInputType: FilterInputType = 'text';
+    /**
+     * Type of filter input (default: text)
+     */
+    @Input()
+    set filterInputType(value: FilterInputType) {
+        this._filterInputType = value;
+    }
+    get filterInputType(): FilterInputType {
+        return this._filterInputType;
     }
 
     @Input()

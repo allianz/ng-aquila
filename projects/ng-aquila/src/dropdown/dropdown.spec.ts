@@ -801,7 +801,25 @@ describe('NxDropdownComponent', () => {
             expect(visibleItems[0].textContent!.trim()).toBe('BMW');
         }));
 
-        it('should filter spaces', fakeAsync(() => {
+        it('should set filter input type if filterInputType is present', fakeAsync(() => {
+            createTestComponent(FilterDropdownComponent);
+            openDropdownByClick();
+            dropdownInstance.filterInputType = 'tel';
+            fixture.detectChanges();
+            const filterInput = getFilterInput();
+
+            expect(filterInput.getAttribute('type')).toBe('tel');
+        }));
+
+        it('should be text type by default for filter input', fakeAsync(() => {
+            createTestComponent(FilterDropdownComponent);
+            openDropdownByClick();
+            const filterInput = getFilterInput();
+
+            expect(filterInput.getAttribute('type')).toBe('text');
+        }));
+
+        it('should filter space', fakeAsync(() => {
             createTestComponent(FilterDropdownComponent);
             openDropdownByClick();
 

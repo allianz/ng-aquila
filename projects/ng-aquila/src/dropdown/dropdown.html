@@ -46,7 +46,7 @@
                 class="nx-dropdown__filter-input"
                 [class.is-filled]="!isFilterEmpty"
                 #filterInput
-                type="text"
+                [type]="filterInputType"
                 (input)="_onFilter($event)"
                 [placeholder]="filterPlaceholder"
             />
