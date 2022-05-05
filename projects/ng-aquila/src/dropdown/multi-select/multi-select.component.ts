@@ -500,7 +500,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         if (this._allSelected) {
             this.selectedItems.clear();
         } else {
-            this.options.filter(option => !this._isDisabled(option)).forEach(option => this.selectedItems.add(option));
+            this.listItems.filter(option => !this._isDisabled(option)).forEach(option => this.selectedItems.add(option));
         }
         this._onChange(this.value);
     }

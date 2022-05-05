@@ -324,6 +324,14 @@ describe('NxMultiSelectComponent', () => {
                     }
                 });
 
+                it('selected only visible option when filter', async () => {
+                    await multiSelectHarness.clickClearAll();
+                    await multiSelectHarness.setFilter('i');
+                    await multiSelectHarness.clickSelectAll();
+
+                    expect(testInstance.model).toEqual(['Audi', 'Mini']);
+                });
+
                 it('shows the value in the trigger', async () => {
                     expect(await multiSelectHarness.getValueText()).toBe('BMW, Audi, Volvo, Mini(4)');
                 });
