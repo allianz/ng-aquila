@@ -37,11 +37,11 @@ describe('StackBlitzWriter', () => {
     it('should append correct copyright', () => {
         expect(stackBlitzWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
 
-/**  Copyright APOSIN 2021 */`);
+/**  Copyright APOSIN 2022 */`);
 
         expect(stackBlitzWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
 
-<!-- Copyright APOSIN 2021 -->`);
+<!-- Copyright APOSIN 2022 -->`);
     });
 
     it('should create form element', () => {
