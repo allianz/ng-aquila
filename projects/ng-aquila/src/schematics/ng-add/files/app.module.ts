@@ -52,4 +52,4 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 
-/**  Copyright APOSIN 2022 */
+/**  Copyright APOSIN */

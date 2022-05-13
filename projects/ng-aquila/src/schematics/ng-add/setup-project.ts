@@ -64,8 +64,26 @@ function addStarterApp(options: Schema) {
             throw new SchematicsException(`Incompatible Starter project: ${projectAppPath}/app.module.ts does not import AppComponent`);
         }
 
-        return mergeWith(apply(url('./files'), [move(projectAppPath)]), MergeStrategy.Overwrite);
+        return chain([mergeWith(apply(url('./files'), [move(projectAppPath)]), MergeStrategy.Overwrite), rewriteCopyrightYear()]);
     };
+
+    function rewriteCopyrightYear() {
+        return async (host: Tree, context: SchematicContext) => {
+            const currentYear = new Date().getFullYear();
+            const copyrightTemplate = 'Copyright APOSIN';
+            const copyrightStamp = `Copyright APOSIN ${currentYear}`;
+
+            const workspace = await getWorkspace(host);
+            const project = getProjectFromWorkspace(workspace, options.project);
+            const projectAppPath = buildDefaultPath(project);
+
+            [`${projectAppPath}/app.module.ts`, `${projectAppPath}/app.component.ts`, `${projectAppPath}/app.component.html`].forEach(file => {
+                let fileContent = host.read(file)!.toString('utf-8');
+                fileContent = fileContent.replace(copyrightTemplate, copyrightStamp);
+                host.overwrite(file, fileContent);
+            });
+        };
+    }
 }
 
 function addAposinTheme(options: Schema) {

@@ -35,13 +35,14 @@ describe('StackBlitzWriter', () => {
     });
 
     it('should append correct copyright', () => {
+        const currentYear = new Date().getFullYear();
         expect(stackBlitzWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
 
-/**  Copyright APOSIN 2022 */`);
+/**  Copyright APOSIN ${currentYear} */`);
 
         expect(stackBlitzWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
 
-<!-- Copyright APOSIN 2022 -->`);
+<!-- Copyright APOSIN ${currentYear} -->`);
     });
 
     it('should create form element', () => {

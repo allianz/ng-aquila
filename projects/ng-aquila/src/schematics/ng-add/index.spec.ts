@@ -73,8 +73,9 @@ describe('ng-aquila ng add', () => {
         });
 
         it('should update Starter App files', () => {
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain('openConsentDialog()');
-            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain('Aquila Insurance App');
+            const currentYear = new Date().getFullYear();
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.ts')).toContain(`/**  Copyright APOSIN ${currentYear} */`);
+            expect(testSetup.appTree.readContent('projects/aquila-testing/src/app/app.component.html')).toContain(`<!-- Copyright APOSIN ${currentYear} -->`);
         });
     });
 });

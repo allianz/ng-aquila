@@ -40,4 +40,4 @@ export class AppComponent {
     }
 }
 
-/**  Copyright APOSIN 2022 */
+/**  Copyright APOSIN */

@@ -5,7 +5,8 @@ import { ExampleData } from './example-data';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
-const COPYRIGHT = `Copyright APOSIN 2022`;
+const currentYear = new Date().getFullYear();
+const COPYRIGHT = `Copyright APOSIN ${currentYear}`;
 
 /**
  * Path that refers to the docs-content from the "@angular/components-examples" package. The
