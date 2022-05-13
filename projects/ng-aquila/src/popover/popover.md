@@ -8,6 +8,10 @@ stable: done
 
 Popover requires Angular CDK (incl. CSS). Learn [how to enable Angular CDK styles](./documentation/overlay/overview#angular-cdk).
 
+### UX guidelines
+
+If you're building an Expert (internal B2B/B2E) application, you can use both the Popover and the [Tooltip component](./documentation/tooltip/overview#ux-guidelines). If you only need to display a short contextual hint (button hint, info icon, etc.) please consider if the simpler [Tooltip element is better for your use case](./documentation/tooltip/overview#ux-guidelines).
+
 ### Trigger types
 
 It is possible to open the popover by hover, click event or manually. To adjust the trigger type accordingly, set the `nxPopoverTrigger` attribute to click/hover/manual.
