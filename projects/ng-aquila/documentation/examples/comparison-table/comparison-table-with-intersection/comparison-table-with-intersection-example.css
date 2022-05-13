@@ -108,3 +108,7 @@ ul.benefits-list ::ng-deep nx-icon {
 .benefits-list li {
     text-align: left;
 }
+
+nx-comparison-table {
+    min-width: 600px;
+}
