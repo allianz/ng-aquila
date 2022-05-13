@@ -6,13 +6,6 @@ expert: true
 stable: done
 ---
 
-<div class="docs-deprecation-warning">
-  <h3>Naming changes</h3>
-  Notice that the messages are now called inline notifications (used for form field errors etc.).
-  The import endpoint remains the same:
-
-  <pre>import { NxMessageModule } from '@aposin/ng-aquila/message';</pre>
-</div>
 
 ### Inline Notification
 

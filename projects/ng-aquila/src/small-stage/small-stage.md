@@ -6,11 +6,6 @@ expert: true
 stable: done
 ---
 
-<div class="docs-deprecation-warning">
-<strong>Work in progress / Experimental</strong>
-The small stage component is provided as a beta preview. Breaking changes may still be introduced outside of major versions until the component is
-considered stable.
-</div>
 
 ### Overview
 

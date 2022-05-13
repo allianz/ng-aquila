@@ -6,11 +6,6 @@ expert: true
 stable: done
 ---
 
-<div class="docs-deprecation-warning">
-  <strong>Important: </strong>
-  Please note that the <strong>nx-modal</strong> component is deprecated. For opening modals use the new <strong> NxDialogService</strong> instead.
-</div>
-
 The `NxDialogService` can be used to open modals from components or predefined templates.
 
 **Important:** Please note that the module for this component depends on the Angular animations module, so in case you do not already have it, you need to explicitly import the `BrowserModule` and `BrowserAnimationsModule` in your app.module.

@@ -3,7 +3,7 @@ title: Phone Input
 category: components
 b2c: true
 expert: true
-stable: progress
+stable: done
 ---
 
 ## Dependencies

@@ -6,11 +6,6 @@ expert: true
 stable: done
 ---
 
-<div class="docs-deprecation-warning">
-<strong>Work in progress / Experimental</strong>
-The overlay service is provided as a beta preview. Breaking changes may still likely be introduced outside of major versions until the service is
-considered stable.
-</div>
 
 ### Purpose
 
