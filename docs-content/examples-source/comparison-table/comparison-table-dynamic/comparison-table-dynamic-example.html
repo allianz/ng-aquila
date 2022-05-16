@@ -1,97 +1,40 @@
 <div class="container">
-    <nx-comparison-table>
-        <ng-container *ngFor="let element of data">
-            <!-- header row -->
-            <ng-container
-                *ngIf="element['type'] === 'header'"
-                nxComparisonTableRow
-                type="header"
-            >
-                <nx-comparison-table-cell
-                    *ngFor="let cell of element['cells']"
+    <nx-swipebar label="Swipe to view more">
+        <nx-comparison-table>
+            <ng-container *ngFor="let element of data">
+                <!-- header row -->
+                <ng-container
+                    *ngIf="element['type'] === 'header'"
+                    nxComparisonTableRow
                     type="header"
                 >
-                    {{ cell }}<br />
-                    <button
-                        nxComparisonTableSelectButton
-                        type="button"
-                        class="nx-margin-top-s nx-margin-bottom-0"
-                    ></button>
-                </nx-comparison-table-cell>
-            </ng-container>
-
-            <!-- content rows -->
-            <ng-container
-                *ngIf="element['type'] === 'content'"
-                nxComparisonTableRow
-            >
-                <nx-comparison-table-description-cell
-                    *ngIf="element['description']"
-                >
-                    <div class="has-popover">
-                        <span>{{ element['description'] }}</span>
+                    <nx-comparison-table-cell
+                        *ngFor="let cell of element['cells']"
+                        type="header"
+                    >
+                        {{ cell }}<br />
                         <button
-                            nxPlainButton
-                            class="info-icon"
-                            [attr.aria-label]="element['description']"
-                            [nxPopoverTriggerFor]="popoverContent"
-                            nxPopoverTrigger="click"
+                            nxComparisonTableSelectButton
                             type="button"
-                        >
-                            <nx-icon name="info-circle-o"></nx-icon>
-                        </button>
-                        <nx-popover #popoverContent>
-                            <span>{{ element['description'] }}</span>
-                        </nx-popover>
-                    </div>
-                </nx-comparison-table-description-cell>
-                <nx-comparison-table-cell *ngFor="let cell of element['cells']">
-                    {{ cell }}
-                </nx-comparison-table-cell>
-            </ng-container>
+                            class="nx-margin-top-s nx-margin-bottom-0"
+                        ></button>
+                    </nx-comparison-table-cell>
+                </ng-container>
 
-            <!-- footer row -->
-            <ng-container
-                *ngIf="element['type'] === 'footer'"
-                nxComparisonTableRow
-                type="footer"
-            >
-                <nx-comparison-table-cell
-                    *ngFor="let cell of element['cells']"
-                    type="footer"
-                >
-                    <button
-                        nxComparisonTableSelectButton
-                        type="button"
-                        class="nx-margin-bottom-s"
-                    ></button
-                    ><br />
-                    {{ cell }}
-                </nx-comparison-table-cell>
-            </ng-container>
-
-            <!-- toggle section -->
-            <ng-container
-                *ngIf="element['type'] === 'toggleSection'"
-                nxComparisonTableToggleSection
-            >
-                <nx-comparison-table-toggle-section-header
-                    >{{ element['header']
-                    }}</nx-comparison-table-toggle-section-header
-                >
+                <!-- content rows -->
                 <ng-container
-                    *ngFor="let row of element['content']"
+                    *ngIf="element['type'] === 'content'"
                     nxComparisonTableRow
                 >
                     <nx-comparison-table-description-cell
-                        *ngIf="row['description']"
+                        *ngIf="element['description']"
                     >
                         <div class="has-popover">
-                            <span>{{ row['description'] }}</span>
+                            <span>{{ element['description'] }}</span>
                             <button
                                 nxPlainButton
                                 class="info-icon"
-                                [attr.aria-label]="row['description']"
+                                [attr.aria-label]="element['description']"
                                 [nxPopoverTriggerFor]="popoverContent"
                                 nxPopoverTrigger="click"
                                 type="button"
@@ -99,15 +42,77 @@
                                 <nx-icon name="info-circle-o"></nx-icon>
                             </button>
                             <nx-popover #popoverContent>
-                                <span>{{row['description']}}</span>
+                                <span>{{ element['description'] }}</span>
                             </nx-popover>
-                        </div> </nx-comparison-table-description-cell
-                    >>
-                    <nx-comparison-table-cell *ngFor="let cell of row['cells']"
-                        >{{ cell }}</nx-comparison-table-cell
+                        </div>
+                    </nx-comparison-table-description-cell>
+                    <nx-comparison-table-cell
+                        *ngFor="let cell of element['cells']"
                     >
+                        {{ cell }}
+                    </nx-comparison-table-cell>
+                </ng-container>
+
+                <!-- footer row -->
+                <ng-container
+                    *ngIf="element['type'] === 'footer'"
+                    nxComparisonTableRow
+                    type="footer"
+                >
+                    <nx-comparison-table-cell
+                        *ngFor="let cell of element['cells']"
+                        type="footer"
+                    >
+                        <button
+                            nxComparisonTableSelectButton
+                            type="button"
+                            class="nx-margin-bottom-s"
+                        ></button
+                        ><br />
+                        {{ cell }}
+                    </nx-comparison-table-cell>
+                </ng-container>
+
+                <!-- toggle section -->
+                <ng-container
+                    *ngIf="element['type'] === 'toggleSection'"
+                    nxComparisonTableToggleSection
+                >
+                    <nx-comparison-table-toggle-section-header
+                        >{{ element['header']
+                        }}</nx-comparison-table-toggle-section-header
+                    >
+                    <ng-container
+                        *ngFor="let row of element['content']"
+                        nxComparisonTableRow
+                    >
+                        <nx-comparison-table-description-cell
+                            *ngIf="row['description']"
+                        >
+                            <div class="has-popover">
+                                <span>{{ row['description'] }}</span>
+                                <button
+                                    nxPlainButton
+                                    class="info-icon"
+                                    [attr.aria-label]="row['description']"
+                                    [nxPopoverTriggerFor]="popoverContent"
+                                    nxPopoverTrigger="click"
+                                    type="button"
+                                >
+                                    <nx-icon name="info-circle-o"></nx-icon>
+                                </button>
+                                <nx-popover #popoverContent>
+                                    <span>{{row['description']}}</span>
+                                </nx-popover>
+                            </div> </nx-comparison-table-description-cell
+                        >>
+                        <nx-comparison-table-cell
+                            *ngFor="let cell of row['cells']"
+                            >{{ cell }}</nx-comparison-table-cell
+                        >
+                    </ng-container>
                 </ng-container>
             </ng-container>
-        </ng-container>
-    </nx-comparison-table>
+        </nx-comparison-table>
+    </nx-swipebar>
 </div>

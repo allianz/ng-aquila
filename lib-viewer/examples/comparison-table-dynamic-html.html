@@ -1,97 +1,40 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let element of data&quot;</span>&gt;</span>
-            <span class="hljs-comment">&lt;!-- header row --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
-                *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;header&#x27;&quot;</span>
-                <span class="hljs-attr">nxComparisonTableRow</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-swipebar</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Swipe to view more&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let element of data&quot;</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- header row --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;header&#x27;&quot;</span>
+                    <span class="hljs-attr">nxComparisonTableRow</span>
                     <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>
                 &gt;</span>
-                    {{ cell }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s nx-margin-bottom-0&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- content rows --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
-                *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;content&#x27;&quot;</span>
-                <span class="hljs-attr">nxComparisonTableRow</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;description&#x27;]&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ element[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>
+                    &gt;</span>
+                        {{ cell }}<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                            <span class="hljs-attr">nxPlainButton</span>
-                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
-                            [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;element[&#x27;description&#x27;]&quot;</span>
-                            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent&quot;</span>
-                            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
                             <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        &gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ element[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>&gt;</span>
-                    {{ cell }}
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-top-s nx-margin-bottom-0&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
-            <span class="hljs-comment">&lt;!-- footer row --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
-                *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;footer&#x27;&quot;</span>
-                <span class="hljs-attr">nxComparisonTableRow</span>
-                <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>
-                &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    &gt;</span>&lt;/button
-                    &gt;<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
-                    {{ cell }}
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-            <span class="hljs-comment">&lt;!-- toggle section --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
-                *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;toggleSection&#x27;&quot;</span>
-                <span class="hljs-attr">nxComparisonTableToggleSection</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-toggle-section-header</span>
-                    &gt;</span>{{ element[&#x27;header&#x27;]
-                    }}&lt;/nx-comparison-table-toggle-section-header
-                &gt;
+                <span class="hljs-comment">&lt;!-- content rows --&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
-                    *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let row of element[&#x27;content&#x27;]&quot;</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;content&#x27;&quot;</span>
                     <span class="hljs-attr">nxComparisonTableRow</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;row[&#x27;description&#x27;]&quot;</span>
+                        *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;description&#x27;]&quot;</span>
                     &gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
-                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ row[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ element[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
                                 <span class="hljs-attr">nxPlainButton</span>
                                 <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
-                                [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;row[&#x27;description&#x27;]&quot;</span>
+                                [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;element[&#x27;description&#x27;]&quot;</span>
                                 [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent&quot;</span>
                                 <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
                                 <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
@@ -99,15 +42,77 @@
                                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
                             <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent</span>&gt;</span>
-                                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{row[&#x27;description&#x27;]}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ element[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                             <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> &lt;/nx-comparison-table-description-cell
-                    &gt;&gt;
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of row[&#x27;cells&#x27;]&quot;</span>
-                        &gt;</span>{{ cell }}&lt;/nx-comparison-table-cell
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>
+                    &gt;</span>
+                        {{ cell }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+                <span class="hljs-comment">&lt;!-- footer row --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;footer&#x27;&quot;</span>
+                    <span class="hljs-attr">nxComparisonTableRow</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of element[&#x27;cells&#x27;]&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        &gt;</span>&lt;/button
+                        &gt;<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                        {{ cell }}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+                <span class="hljs-comment">&lt;!-- toggle section --&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
+                    *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;element[&#x27;type&#x27;] === &#x27;toggleSection&#x27;&quot;</span>
+                    <span class="hljs-attr">nxComparisonTableToggleSection</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-toggle-section-header</span>
+                        &gt;</span>{{ element[&#x27;header&#x27;]
+                        }}&lt;/nx-comparison-table-toggle-section-header
                     &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
+                        *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let row of element[&#x27;content&#x27;]&quot;</span>
+                        <span class="hljs-attr">nxComparisonTableRow</span>
+                    &gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
+                            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;row[&#x27;description&#x27;]&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{ row[&#x27;description&#x27;] }}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                                    <span class="hljs-attr">nxPlainButton</span>
+                                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
+                                    [<span class="hljs-attr">attr.aria-label</span>]=<span class="hljs-string">&quot;row[&#x27;description&#x27;]&quot;</span>
+                                    [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent&quot;</span>
+                                    <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                                &gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                                <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent</span>&gt;</span>
+                                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{{row[&#x27;description&#x27;]}}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+                            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> &lt;/nx-comparison-table-description-cell
+                        &gt;&gt;
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                            *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let cell of row[&#x27;cells&#x27;]&quot;</span>
+                            &gt;</span>{{ cell }}&lt;/nx-comparison-table-cell
+                        &gt;
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-swipebar</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

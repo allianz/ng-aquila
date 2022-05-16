@@ -12,210 +12,177 @@
         <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngTemplateOutlet</span>=<span class="hljs-string">&quot;benefitsList&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nx-expansion-panel</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span> <span class="hljs-attr">selectedIndex</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-popular-cell</span> <span class="hljs-attr">forColumn</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-cell__content-wrapper&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-cell__title&quot;</span>&gt;</span>Most popular<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxPlainButton</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-info-icon&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
-                        #<span class="hljs-attr">popoverTrigger</span>=<span class="hljs-string">&quot;nxPopoverTrigger&quot;</span>
-                        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popover&quot;</span>
-                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popover</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
-                            &gt;</span>This product was chosen by most of the users&lt;/span
-                        &gt;
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-popular-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>105,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>110,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>115,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-swipebar</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Swipe to view more&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table</span> <span class="hljs-attr">selectedIndex</span>=<span class="hljs-string">&quot;1&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-popular-cell</span> <span class="hljs-attr">forColumn</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-cell__content-wrapper&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-cell__title&quot;</span>&gt;</span>Most popular<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxPlainButton</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;popular-info-icon&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+                            #<span class="hljs-attr">popoverTrigger</span>=<span class="hljs-string">&quot;nxPopoverTrigger&quot;</span>
+                            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popover&quot;</span>
+                            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popover</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>
+                                &gt;</span>This product was chosen by most of the
+                                users&lt;/span
+                            &gt;
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-popular-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>105,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                            <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>110,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                            <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>115,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                            <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 4<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>139,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 4<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>139,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                            <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 5<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>89,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 5<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span>&gt;</span>89,99 €<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                            <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                            <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!showOverviewSeparately&quot;</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Overview of product benefits<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxPlainButton</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;more-information&quot;</span>
-                        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent1&quot;</span>
-                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
-                        <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent1</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Summary of what all services include<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-intersection-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngTemplateOutlet</span>=<span class="hljs-string">&quot;benefitsList&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-intersection-cell</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!showOverviewSeparately&quot;</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Overview of product benefits<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxPlainButton</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;more-information&quot;</span>
+                            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent1&quot;</span>
+                            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                            <span class="hljs-attr">tabindex</span>=<span class="hljs-string">&quot;0&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent1</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Summary of what all services include<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-intersection-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span>
+                        *<span class="hljs-attr">ngTemplateOutlet</span>=<span class="hljs-string">&quot;benefitsList&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-intersection-cell</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxPlainButton</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
-                        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent1&quot;</span>
-                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent1</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline popover content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>100 Mio. Euro<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>150 Mio. Euro<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>200 Mio. Euro<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>300 Mio. Euro<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>50 Mio. Euro<span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                        <span class="hljs-attr">nxPlainButton</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
-                        [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent2&quot;</span>
-                        <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
-                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                    &gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent2</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline popover content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;minus-icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
-                    <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;minus-icon&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRowGroup</span> <span class="hljs-attr">visibleRows</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>
             <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                    &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxPlainButton</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+                            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent1&quot;</span>
+                            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent1</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline popover content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                    &gt;</span>100 Mio. Euro&lt;/nx-comparison-table-cell
                 &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                    &gt;</span>150 Mio. Euro&lt;/nx-comparison-table-cell
+                &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                    &gt;</span>200 Mio. Euro&lt;/nx-comparison-table-cell
+                &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                    &gt;</span>300 Mio. Euro&lt;/nx-comparison-table-cell
+                &gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                    &gt;</span>50 Mio. Euro&lt;/nx-comparison-table-cell
+                &gt;
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;has-popover&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                            <span class="hljs-attr">nxPlainButton</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;info-icon&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;More information&quot;</span>
+                            [<span class="hljs-attr">nxPopoverTriggerFor</span>]=<span class="hljs-string">&quot;popoverContent2&quot;</span>
+                            <span class="hljs-attr">nxPopoverTrigger</span>=<span class="hljs-string">&quot;click&quot;</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                        &gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle-o&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-popover</span> #<span class="hljs-attr">popoverContent2</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Service headline popover content<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-popover</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-description-cell</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
                         <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
@@ -252,154 +219,202 @@
                     <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
                         <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
                         <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not Included&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                    &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
-                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
                         <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>
                         <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;minus-icon&quot;</span>
                     &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
-                        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
-                        <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
-                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
-                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                    &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>100 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>150 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>200 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>210 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>220 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRowGroup</span> <span class="hljs-attr">visibleRows</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
+                        &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;minus-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
+                        &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;minus&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Not included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;minus-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">nx-icon</span>
+                            <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;check&quot;</span>
+                            <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;s&quot;</span>
+                            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Included&quot;</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;check-icon&quot;</span>
+                        &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-icon</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
+                        &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>100 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>150 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>200 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>210 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>220 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
+                        &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>100 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>150 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>200 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>180 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
+                        &gt;</span>225 Mio. Euro&lt;/nx-comparison-table-cell
+                    &gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
 
-            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-description-cell</span>
-                    &gt;</span>Service headline&lt;/nx-comparison-table-description-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>100 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>150 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>200 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>180 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>
-                    &gt;</span>225 Mio. Euro&lt;/nx-comparison-table-cell
-                &gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                        <span class="hljs-attr">nxComparisonTableSelectButton</span>
+                        <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
+                        <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
+                        <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
+                    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
             <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> <span class="hljs-attr">nxComparisonTableRow</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                    <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                    <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                    <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                    <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                    <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                    <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                    <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                    <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                    <span class="hljs-attr">nxComparisonTableSelectButton</span>
-                    <span class="hljs-attr">unselectedLabel</span>=<span class="hljs-string">&quot;Select&quot;</span>
-                    <span class="hljs-attr">selectedLabel</span>=<span class="hljs-string">&quot;Selected&quot;</span>
-                    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>
-                    <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span>
-                &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-underline&quot;</span>&gt;</span>Some short information<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table-cell</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nx-comparison-table</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-swipebar</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">ng-template</span> #<span class="hljs-attr">benefitsList</span>&gt;</span>

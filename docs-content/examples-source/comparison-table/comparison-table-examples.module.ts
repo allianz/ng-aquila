@@ -20,6 +20,7 @@ import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
+import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 const EXAMPLES = [
     ComparisonTableExampleComponent,
@@ -47,6 +48,7 @@ const EXAMPLES = [
         NxAccordionModule,
         NxContextMenuModule,
         NxSpinnerModule,
+        NxSwipebarModule,
     ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],

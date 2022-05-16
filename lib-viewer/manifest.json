@@ -2102,7 +2102,7 @@
       "overviewFile": "lib-viewer/overview/phone-input.html",
       "b2c": true,
       "expert": true,
-      "stable": "progress"
+      "stable": "done"
     },
     {
       "id": "popover",

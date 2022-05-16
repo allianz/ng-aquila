@@ -1,11 +1,4 @@
-:host {
-    display: block;
-}
-
-.nx-table {
-    width: 2000px;
-}
-
 .table-container {
     overflow-x: auto;
+    display: block;
 }
