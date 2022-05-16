@@ -7,3 +7,8 @@
     margin-top: 24px;
     align-self: flex-end;
 }
+
+.scroll-container {
+    overflow-x: auto;
+    display: block;
+}

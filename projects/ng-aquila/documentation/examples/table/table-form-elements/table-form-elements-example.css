@@ -1,9 +1,9 @@
-:host {
-    overflow-x: auto;
-    display: block;
-}
-
 .date-cell,
 .status-cell {
     min-width: 160px;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    display: block;
 }
