@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.5.0](https://github.com/aposin/ng-aquila/compare/v13.4.0...v13.5.0) (2022-05-16)
+
+
+### Bug Fixes
+
+* **multi-select:** select all only visible items when filter ([1c3c832](https://github.com/aposin/ng-aquila/commit/1c3c832c9d47887666e345dacffdb33ae8d6e6e8))
+
+
+### Features
+
+* **dropdown:** add inputType for filter input ([db3e732](https://github.com/aposin/ng-aquila/commit/db3e732481d1246356a0c22b4593e724ccebe696))
+
+
+
 # [13.4.0](https://github.com/aposin/ng-aquila/compare/v13.3.1...v13.4.0) (2022-05-03)
 
 ### Bug Fixes
