@@ -9,6 +9,7 @@
     (click)="_onInputClick($event)"
     [checked]="checked"
     [attr.aria-labelledby]="labelId"
+    [attr.aria-invalid]="_controlInvalid() || null"
     class="nx-radio__input"
 />
 <label [id]="labelId" [attr.for]="inputId" class="nx-radio__label" [class.has-label]="labelHasContent">
