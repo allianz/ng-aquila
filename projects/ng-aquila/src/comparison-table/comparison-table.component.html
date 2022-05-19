@@ -77,7 +77,8 @@ Mobile: table is flipped diagonally (with no footer cells!):
                 >
                 </nx-comparison-table-desktop-group>
 
-                <div *ngIf="_isToggleSection(element)" class="nx-comparison-table__toggle-section">
+                <!-- add role=table here to prevent screen reader wrong reading. since toggleSection is like another table, -->
+                <div role="table" *ngIf="_isToggleSection(element)" class="nx-comparison-table__toggle-section">
                     <div class="nx-comparison-table__toggle-section-header" role="row">
                         <ng-container *ngTemplateOutlet="element.toggleSectionHeader._content"></ng-container>
                     </div>
