@@ -20,6 +20,10 @@ $toc-width: 200px;
     }
 }
 
+:host(.hide-nav) {
+    padding-top: 0;
+}
+
 .nx-header {
     position: fixed;
     top: 0;

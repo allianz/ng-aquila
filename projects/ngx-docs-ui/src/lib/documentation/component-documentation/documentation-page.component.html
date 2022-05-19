@@ -1,4 +1,4 @@
-<nx-sidebar class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
+<nx-sidebar *ngIf="!documentationFrame.hideNavigation" class="docs-sidebar" minWidth="240" [class.mobile-sidebar--visible]="documentationFrame.mobileSidebar">
     <nxv-navigation></nxv-navigation>
 </nx-sidebar>
 

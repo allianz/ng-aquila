@@ -22,6 +22,9 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
     selector: 'nxv-viewer',
     templateUrl: 'documentation-frame.component.html',
     styleUrls: ['./documentation-frame.scss'],
+    host: {
+        '[class.hide-nav]': 'hideNavigation',
+    },
 })
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     manifestFile!: Blob;
@@ -36,6 +39,8 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     showThemingSidebar = false;
 
     showMobileMenuButton = false;
+
+    hideNavigation = false;
 
     @ViewChild(CssVarSidebarComponent)
     cssVarSidebar!: CssVarSidebarComponent;
@@ -74,8 +79,9 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
             if (!this._featureFlags?.themeSwitcher) {
                 this.showThemingSwitcher = showTheming;
             }
-            this.showThemingSidebar = showTheming;
         });
+
+        this.hideNavigation = !!this._route.snapshot.queryParamMap.get('hideNav');
 
         this._themeSwitcherService.themeChanged.pipe(takeUntil(this._destroyed)).subscribe(theme => {
             this.selectedTheme = theme;
