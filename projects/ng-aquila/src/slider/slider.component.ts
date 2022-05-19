@@ -44,7 +44,7 @@ const VALUE_MARGIN = 4;
     ],
     host: {
         '[attr.aria-disabled]': 'disabled ? true : null',
-        '(keydown)': 'handleKeypress($event)',
+        '(keydown)': '_handleKeypress($event)',
         '[class.nx-slider--disabled]': 'disabled',
         '[class.nx-slider--negative]': 'negative',
     },
