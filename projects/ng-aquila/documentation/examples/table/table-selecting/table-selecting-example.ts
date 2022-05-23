@@ -21,6 +21,9 @@ interface Contract {
 export class TableSelectingExampleComponent {
     showSelected: boolean = false;
 
+    activateSelected: boolean = true;
+    activeRow: Contract | undefined;
+
     tableElements: Contract[] = [
         {
             product: 'Car',
@@ -70,5 +73,10 @@ export class TableSelectingExampleComponent {
         this.isAllSelected()
             ? this.selection.clear()
             : this.tableElements.forEach(row => this.selection.select(row));
+    }
+
+    /** marks a row as active without changing this.selection */
+    activateRow(row: Contract) {
+        this.activeRow = row;
     }
 }

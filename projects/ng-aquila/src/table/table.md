@@ -56,7 +56,10 @@ The following example shows how you can implement a selection functionality with
 
 Multi selection can be implemented by switching on the multi select flag on the `SelectionModel`.
 
+Note that you can separate the data selection logic from row highlighting, for example if click on the row has to trigger a popup, sidebar expansion, etc.
+
 <!-- example(table-selecting) -->
+
 
 <div class="docs-expert-container">
 
