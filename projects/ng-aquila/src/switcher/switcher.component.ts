@@ -16,7 +16,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { ErrorStateMatcher, randomString } from '@aposin/ng-aquila/utils';
 
 let nextId = 0;
 /** Options for placement of the label */
@@ -45,7 +45,7 @@ export type LABEL_SIZE = 'small' | 'large';
     },
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
-    private _id = `nx-switcher-${nextId++}`;
+    private _id = `nx-switcher-${nextId++}-${randomString()}`;
     /** @docs-private */
     errorState = false;
 

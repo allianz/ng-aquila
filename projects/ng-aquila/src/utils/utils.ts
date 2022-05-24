@@ -113,6 +113,10 @@ export function clamp(value: number, min = 0, max = 1) {
     return Math.max(min, Math.min(max, value));
 }
 
+export function randomString() {
+    return Math.random().toString(36);
+}
+
 /** Provider that defines when form controls have an error. */
 @Injectable({ providedIn: 'root' })
 export class ErrorStateMatcher {
