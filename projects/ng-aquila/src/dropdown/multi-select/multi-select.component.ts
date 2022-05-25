@@ -363,7 +363,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _open($event: Event, origin: FocusOrigin) {
-        if (this._isOpen) {
+        if (this._isOpen || this.disabled) {
             return;
         }
 
@@ -404,7 +404,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     _onKeydown($event: KeyboardEvent) {
-        if (!this._isOpen) {
+        if (!this._isOpen || this.disabled) {
             return;
         }
 

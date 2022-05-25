@@ -15,7 +15,7 @@
     [attr.aria-expanded]="_isOpen"
     [attr.aria-labelledby]="_getAriaLabelledBy()"
     [id]="id"
-    (focus)="_inputFocused = true"
+    (focus)="disabled ? null : (_inputFocused = true)"
     (keydown)="_onKeydown($event)"
 >
     <span class="value-text">{{ empty ? placeholder : _getValueText() }}</span>
