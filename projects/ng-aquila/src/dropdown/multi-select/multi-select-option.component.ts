@@ -84,8 +84,10 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
 
     @HostListener('click')
     _onClick() {
-        this.selected = !this.selected;
-        this.selectedChange.emit(this.selected);
+        if (!this.disabled) {
+            this.selected = !this.selected;
+            this.selectedChange.emit(this.selected);
+        }
     }
 
     /**

@@ -163,6 +163,12 @@ describe('NxMultiSelectOptionComponent', () => {
 
                 expect(ariaDisabled).toBe('true');
             });
+
+            it('can not be selected', async () => {
+                await multiSelectOptionHarness.click();
+                expect(await multiSelectOptionHarness.isSelected()).toBeFalse();
+                expect(testInstance.onSelect).not.toHaveBeenCalled();
+            });
         });
 
         describe('when set active', () => {
