@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.6.0](https://github.com/aposin/ng-aquila/compare/v13.5.0...v13.6.0) (2022-05-27)
+
+
+### Bug Fixes
+
+* **comparisontable:** fix wrong reading for NVDA screen reader ([f5679fd](https://github.com/aposin/ng-aquila/commit/f5679fdfaac4aab7a9005b2ae1b66b5140e0ec70))
+* **multi-select:** bring back select all/clear all i18n label ([7abbf34](https://github.com/aposin/ng-aquila/commit/7abbf34fcbe513297619700fe0f7e1e386a0c7e3))
+* **multi-select:** deactivate disabled options ([cdf9e51](https://github.com/aposin/ng-aquila/commit/cdf9e51d33c73cc143fda8e29a371d1679c73706))
+* **multi-select:** deactivate when disabled ([7b766ef](https://github.com/aposin/ng-aquila/commit/7b766ef0e64934d587614e1fdd19f419f736d16f))
+* **radio-button:** add aria-invalid to input ([840b158](https://github.com/aposin/ng-aquila/commit/840b158ca326aed0d5e3f6f4d03b017f06f4a7fc))
+* **slider:** fix keydown func name ([2e0ff8b](https://github.com/aposin/ng-aquila/commit/2e0ff8b424aad3a46fb224762e01fa1edfdb5aa8))
+* **switcher:** add random id to prevent id collide ([178b782](https://github.com/aposin/ng-aquila/commit/178b782c6e1d762b60346fe0b8346cb028856519))
+
+
+### Features
+
+* **circle-toggle:** add error state ([cc7e196](https://github.com/aposin/ng-aquila/commit/cc7e19697d001f2e433bae927065f9b7a2ae81a2))
+
+
+
 # [13.5.0](https://github.com/aposin/ng-aquila/compare/v13.4.0...v13.5.0) (2022-05-16)
 
 
