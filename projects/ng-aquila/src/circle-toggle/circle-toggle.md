@@ -72,6 +72,9 @@ Please note that this is an **Expert option**. This means that it is only intend
 
 <!-- example(circle-toggle-reactive-disabled) -->
 
+### Validation
+<!-- example(circle-toggle-validation)-->
+
 ### Accessibility
 
 The component can be accessed via keyboard. To do that, use the TAB-key to focus the component. The standalone circle toggle component has the type checkbox and can be checked and unchecked through clicking SPACE after being focused. If there is a wrapper circle toggle group (radio group) around the toggle items than you can change the chosen item by using the arrow keys.

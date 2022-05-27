@@ -45,3 +45,16 @@
         z-index: 1;
     }
 }
+
+:host(.has-error) {
+    ::ng-deep {
+        .is-flipped .nx-toggle-circle__check-icon,
+        .is-flipped .nx-toggle-circle__icon-wrapper {
+            background-color: v(danger) !important;
+        }
+
+        .nx-toggle-circle__icon-wrapper {
+            border-color: v(danger) !important;
+        }
+    }
+}

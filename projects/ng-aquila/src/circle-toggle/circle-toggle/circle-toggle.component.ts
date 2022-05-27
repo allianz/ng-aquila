@@ -6,6 +6,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
     EventEmitter,
     forwardRef,
@@ -15,9 +16,10 @@ import {
     OnInit,
     Optional,
     Output,
+    Self,
     ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 import { NxCircleToggleGroupComponent } from '../circle-toggle-group/circle-toggle-group.component';
 import { NxMobileToggleButtonComponent } from '../mobile-toggle-button/mobile-toggle-button.component';
@@ -48,26 +50,24 @@ let nextId = 0;
             provide: ToggleButton,
             useExisting: forwardRef(() => NxCircleToggleComponent),
         },
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NxCircleToggleComponent),
-            multi: true,
-        },
     ],
     host: {
         '[class.nx-toggle-circle]': 'true',
         '[class.in-group]': 'inGroup',
         '[class.is-disabled]': 'disabled',
         '[class.is-responsive]': 'responsive',
+        '[class.has-error]': 'errorState',
     },
 })
-export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor {
+export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnDestroy, AfterViewInit, ControlValueAccessor, DoCheck {
     private _id = `toggle-button-${nextId++}`;
 
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** @docs-private */
     inGroup = false;
+
+    errorState = false;
 
     /**
      * Id of the circle toggle.
@@ -292,17 +292,32 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         private _checkedDispatcher: UniqueSelectionDispatcher,
         private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
+        @Self() @Optional() public ngControl: NgControl,
     ) {
         super();
 
         if (this.toggleGroup) {
             this.name = this.toggleGroup.name;
         }
+        if (this.ngControl) {
+            // Note: we provide the value accessor through here, instead of
+            // the `providers` to avoid running into a circular import.
+            this.ngControl.valueAccessor = this;
+        }
     }
 
     ngOnInit() {
         if (this.toggleGroup) {
             this.attachListenerForGroup();
+        }
+    }
+
+    ngDoCheck() {
+        if (this.ngControl) {
+            // We need to re-evaluate this on every change detection cycle, because there are some
+            // error triggers that we can't subscribe to (e.g. parent form submissions). This means
+            // that whatever logic is in here has to be super lean or we risk destroying the performance.
+            this.errorState = !this.ngControl.valid;
         }
     }
 

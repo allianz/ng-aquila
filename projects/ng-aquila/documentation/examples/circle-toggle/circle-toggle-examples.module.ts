@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxCircleToggleModule } from '@aposin/ng-aquila/circle-toggle';
+import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { CircleToggleGroupExpertExampleComponent } from './circle-toggle-group-expert/circle-toggle-group-expert-example';
 import { CircleToggleGroupExampleComponent } from './circle-toggle-group/circle-toggle-group-example';
@@ -11,6 +13,7 @@ import { CircleToggleSimpleBindingExampleComponent } from './circle-toggle-simpl
 import { CircleToggleStandaloneExampleComponent } from './circle-toggle-standalone/circle-toggle-standalone-example';
 import { CircleToggleTemplateDrivenExampleComponent } from './circle-toggle-template-driven/circle-toggle-template-driven-example';
 import { CircleToggleTextExampleComponent } from './circle-toggle-text/circle-toggle-text-example';
+import { CircleToggleValidationExampleComponent } from './circle-toggle-validation/circle-toggle-validation-example';
 
 const EXAMPLES = [
     CircleToggleGroupExampleComponent,
@@ -23,10 +26,16 @@ const EXAMPLES = [
     CircleToggleTemplateDrivenExampleComponent,
     CircleToggleTextExampleComponent,
     CircleToggleGroupExpertExampleComponent,
+    CircleToggleValidationExampleComponent,
 ];
 
 @NgModule({
-    imports: [NxCircleToggleModule, ExamplesSharedModule],
+    imports: [
+        NxCircleToggleModule,
+        ExamplesSharedModule,
+        NxErrorModule,
+        NxFormfieldModule,
+    ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
 })
@@ -47,6 +56,7 @@ export class CircleExamplesModule {
             'circle-toggle-text': CircleToggleTextExampleComponent,
             'circle-toggle-group-expert':
                 CircleToggleGroupExpertExampleComponent,
+            'circle-toggle-validation': CircleToggleValidationExampleComponent,
         };
     }
 }

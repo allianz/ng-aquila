@@ -5,8 +5,8 @@ import {
     ChangeDetectorRef,
     Component,
     ContentChildren,
+    DoCheck,
     EventEmitter,
-    forwardRef,
     HostBinding,
     Inject,
     InjectionToken,
@@ -15,8 +15,10 @@ import {
     Optional,
     Output,
     QueryList,
+    Self,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { merge, Subject } from 'rxjs';
 import { filter, startWith, takeUntil, tap } from 'rxjs/operators';
 
@@ -44,28 +46,26 @@ let nextId = 0;
 
 @Component({
     selector: 'nx-circle-toggle-group',
-    template: `<ng-content></ng-content>`,
+    template: `<ng-content></ng-content>
+        <ng-container *ngIf="errorState">
+            <ng-content select="nx-error"></ng-content>
+        </ng-container> `,
     styleUrls: ['./circle-toggle-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => NxCircleToggleGroupComponent),
-            multi: true,
-        },
-    ],
+    providers: [],
     host: {
         '[class.is-responsive]': 'responsive',
         '[class.is-disabled]': 'disabled',
         '[attr.aria-disabled]': 'disabled',
         '[attr.aria-labelledby]': 'name',
+        '[class.has-error]': 'errorState',
         '[attr.name]': 'name',
         '[attr.id]': 'id',
         '[class.nx-circle-toggle-group]': 'true',
         role: 'radiogroup',
     },
 })
-export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
+export class NxCircleToggleGroupComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, DoCheck {
     /**
      * Id of the circle toggle group.
      *
@@ -150,10 +150,22 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this.appearance === 'expert';
     }
 
+    errorState = false;
+
     constructor(
         private _cdr: ChangeDetectorRef,
+        private _errorStateMatcher: ErrorStateMatcher,
         @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions,
-    ) {}
+        @Self() @Optional() public ngControl: NgControl,
+        @Optional() private _parentForm: NgForm,
+        @Optional() private _parentFormGroup: FormGroupDirective,
+    ) {
+        if (this.ngControl) {
+            // Note: we provide the value accessor through here, instead of
+            // the `providers` to avoid running into a circular import.
+            this.ngControl.valueAccessor = this;
+        }
+    }
 
     /** @docs-private */
     get selectedButton(): ToggleButton | null {
@@ -279,5 +291,26 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     setDisabledState?(isDisabled: boolean): void {
         this.disabled = isDisabled;
+    }
+
+    ngDoCheck() {
+        if (this.ngControl) {
+            // We need to re-evaluate this on every change detection cycle, because there are some
+            // error triggers that we can't subscribed to (e.g. parent form submissions). This means
+            // that whatever logic is in here has to be super lean or we risk destroying the performance.
+            this._updateErrorState();
+        }
+    }
+
+    _updateErrorState() {
+        const oldState = this.errorState;
+        const parent = this._parentFormGroup || this._parentForm;
+        const control = this.ngControl ? (this.ngControl.control as FormControl) : null;
+        const newState = this._errorStateMatcher.isErrorState(control, parent);
+
+        if (newState !== oldState) {
+            this.errorState = newState;
+            this._cdr.markForCheck();
+        }
     }
 }

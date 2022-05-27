@@ -122,6 +122,18 @@ describe('NxToggleButton', () => {
         expect(nativeToggleComponent.querySelector('.nx-circle-toggle__input')).toEqual(document.activeElement);
     });
 
+    it('should go into errorState when control invalid', fakeAsync(() => {
+        createTestComponent(ReactiveToggleButtonComponent);
+
+        const reactComp: ReactiveToggleButtonComponent = fixture.componentInstance as ReactiveToggleButtonComponent;
+
+        reactComp.testGroup.controls.reactiveToggle.setValue(null);
+        fixture.detectChanges();
+        tick();
+
+        expect(toggleComponent.errorState).toBeTrue();
+    }));
+
     describe('programmatic change', () => {
         it('should update view on checked change', () => {
             createTestComponent(SimpleCircleToggleButtonComponent);

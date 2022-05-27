@@ -1,0 +1,67 @@
+<h3> Radio group </h3>
+<div class="container">
+    <form novalidate [formGroup]="testForm">
+        <nx-circle-toggle-group
+            formControlName="reactiveToggle"
+            responsive="false"
+        >
+            <div *ngFor="let item of sampleValues">
+                <nx-circle-toggle
+                    [value]="item.value"
+                    [icon]="item.icon"
+                    [hint]="item.hint"
+                    [label]="item.label"
+                ></nx-circle-toggle>
+            </div>
+            <nx-error appearance="message" class="nx-margin-top-xs">
+                Please make a choice.
+            </nx-error>
+        </nx-circle-toggle-group>
+        <button nxButton="small-medium" type="submit" class="nx-margin-top-xs"
+            >Submit</button
+        >
+    </form>
+</div>
+<p>Form value: {{ testForm.value | json }}</p>
+<p>Form status: {{ testForm.status | json }}</p>
+
+<hr />
+<h3> Checkbox </h3>
+<form novalidate [formGroup]="testForm2">
+    <nx-circle-toggle
+        formControlName="heart"
+        icon="product-heart"
+        label="Heart"
+        #heart
+    >
+        <nx-error class="nx-margin-y-xs"> Required </nx-error>
+    </nx-circle-toggle>
+</form>
+
+<hr />
+<h3> Cross field validation Checkbox </h3>
+
+<form novalidate [formGroup]="testForm3">
+    <nx-circle-toggle
+        formControlName="heart"
+        icon="product-heart"
+        label="Heart"
+        [class.has-error]="testForm3.invalid"
+        #heart
+    >
+    </nx-circle-toggle>
+    <nx-circle-toggle
+        formControlName="car"
+        icon="product-car"
+        label="Car"
+        [class.has-error]="testForm3.invalid"
+    >
+    </nx-circle-toggle>
+    <div *ngIf="testForm3.invalid">
+        <nx-error class="nx-margin-y-xs"> Need to select 2 options </nx-error>
+    </div>
+</form>
+<p>Form value: {{ testForm3.value | json }}</p>
+<p>Form status: {{ testForm3.status | json }}</p>
+<p>heart status: {{ testForm3.get('heart')?.status | json }}</p>
+<p>car status: {{ testForm3.get('car')?.status | json }}</p>

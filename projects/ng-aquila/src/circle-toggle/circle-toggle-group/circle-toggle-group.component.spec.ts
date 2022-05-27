@@ -87,6 +87,19 @@ describe('NxToggleButtonGroup', () => {
         expect(testInstance.modelValue).toBe('B');
     }));
 
+    it('should go into errorState when control invalid', fakeAsync(() => {
+        createTestComponent(ReactiveCircleToggleGroupComponent);
+
+        const reactComp: ReactiveCircleToggleGroupComponent = fixture.componentInstance as ReactiveCircleToggleGroupComponent;
+
+        reactComp.testGroup.controls.reactiveToggle.setValue(null);
+        reactComp.testGroup.markAllAsTouched();
+        fixture.detectChanges();
+        tick();
+
+        expect(toggleComponent.errorState).toBeTrue();
+    }));
+
     it('should work with rective forms', fakeAsync(() => {
         createTestComponent(ReactiveCircleToggleGroupComponent);
 
