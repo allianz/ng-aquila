@@ -1,3 +1,14 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">novalidate</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-s&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">nxCopytext</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-margin-bottom-2xs&quot;</span>
+        &gt;</span>Selection highlights row at the same time:&lt;/p
+    &gt;
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;activateRowSelect&quot;</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;activateSelected&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>Yes<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nx-radio-toggle-button</span> [<span class="hljs-attr">nxValue</span>]=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>No<span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-radio-toggle</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-container&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
@@ -26,9 +37,9 @@
             <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>
                     <span class="hljs-attr">nxTableRow</span>
-                    [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;selection.isSelected(item)&quot;</span>
+                    [<span class="hljs-attr">selected</span>]=<span class="hljs-string">&quot;activateSelected ? selection.isSelected(item) : item === activeRow&quot;</span>
                     <span class="hljs-attr">selectable</span>
-                    (<span class="hljs-attr">select</span>)=<span class="hljs-string">&quot;selection.toggle(item)&quot;</span>
+                    (<span class="hljs-attr">select</span>)=<span class="hljs-string">&quot;activateSelected ? selection.toggle(item) : activateRow(item)&quot;</span>
                 &gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table-cell--checkbox&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span>

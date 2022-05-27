@@ -1,0 +1,7 @@
+input {
+    margin-right: 4px;
+}
+
+.patch-container {
+    display: flex;
+}

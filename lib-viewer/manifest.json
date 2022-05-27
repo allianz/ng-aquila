@@ -657,6 +657,10 @@
         {
           "name": "circle-toggle-reactive-disabled",
           "config": {}
+        },
+        {
+          "name": "circle-toggle-validation",
+          "config": {}
         }
       ],
       "category": "components",
@@ -3798,6 +3802,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/circle-toggle-text-###TYPE###.html"
+    },
+    {
+      "id": "circle-toggle-validation",
+      "title": "Validation example",
+      "module": "circle-toggle",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/circle-toggle-validation-###TYPE###.html"
     },
     {
       "id": "code-input-disabled",

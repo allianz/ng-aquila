@@ -1,3 +1,14 @@
+<form novalidate class="nx-margin-bottom-s">
+    <p nxCopytext class="nx-margin-bottom-2xs"
+        >Selection highlights row at the same time:</p
+    >
+
+    <nx-radio-toggle name="activateRowSelect" [(ngModel)]="activateSelected">
+        <nx-radio-toggle-button [nxValue]="true">Yes</nx-radio-toggle-button>
+        <nx-radio-toggle-button [nxValue]="false">No</nx-radio-toggle-button>
+    </nx-radio-toggle>
+</form>
+
 <div class="scroll-container">
     <table nxTable>
         <thead>
@@ -26,9 +37,9 @@
             <ng-container *ngFor="let item of tableElements">
                 <tr
                     nxTableRow
-                    [selected]="selection.isSelected(item)"
+                    [selected]="activateSelected ? selection.isSelected(item) : item === activeRow"
                     selectable
-                    (select)="selection.toggle(item)"
+                    (select)="activateSelected ? selection.toggle(item) : activateRow(item)"
                 >
                     <td nxTableCell class="nx-table-cell--checkbox">
                         <nx-checkbox

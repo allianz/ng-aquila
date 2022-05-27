@@ -21,6 +21,9 @@
 <span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableSelectingExampleComponent</span> </span>{
     <span class="hljs-attr">showSelected</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">false</span>;
 
+    activateSelected: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
+    activeRow: Contract | <span class="hljs-literal">undefined</span>;
+
     tableElements: Contract[] = [
         {
             <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
@@ -70,5 +73,10 @@
         <span class="hljs-built_in">this</span>.isAllSelected()
             ? <span class="hljs-built_in">this</span>.selection.clear()
             : <span class="hljs-built_in">this</span>.tableElements.forEach(<span class="hljs-function"><span class="hljs-params">row</span> =&gt;</span> <span class="hljs-built_in">this</span>.selection.select(row));
+    }
+
+    <span class="hljs-comment">/** marks a row as active without changing this.selection */</span>
+    <span class="hljs-function"><span class="hljs-title">activateRow</span>(<span class="hljs-params">row: Contract</span>)</span> {
+        <span class="hljs-built_in">this</span>.activeRow = row;
     }
 }
