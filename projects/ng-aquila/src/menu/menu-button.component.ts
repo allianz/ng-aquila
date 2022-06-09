@@ -14,6 +14,7 @@ export type NxMenuButtonType = 'root' | 'nested';
     host: {
         '[class.is-expanded]': 'expandable && expanded',
         '[class.is-expandable]': 'expandable',
+        '[attr.aria-expanded]': 'expandable ? expanded : null',
         '[class.nx-menu-button--nested]': 'type === "nested"',
         '[class.nx-menu-button--root]': 'type === "root"',
         class: 'nx-menu-button',
