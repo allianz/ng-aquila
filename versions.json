@@ -2,6 +2,6 @@
     "current": "stable",
     "channels": ["stable"],
     "urls": {
-        "stable": "https://github.com/aposin/ng-aquila"
+        "stable": "https://github.com/allianz/ng-aquila"
     }
 }

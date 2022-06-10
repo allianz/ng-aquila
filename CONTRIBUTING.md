@@ -157,12 +157,12 @@ Some useful notes about this project:
 -   This is a mono repository containing the library itself and the documentation together with the tools needed to create the documentation assets.
 -   We use [ng-packagr](https://github.com/dherges/ng-packagr) to build the library.
 -   Every component is a module. There are no exceptions.
--   Every component needs to support i18n in an agnostic way. Best case is that the user has full access to content via content projection or inputs. If there are texts that need to be translated and are not directly accessible over the template for the developer provide an injectable, e.g. [DatepickerIntl](https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/datefield/datepicker/datepicker-intl.ts)
+-   Every component needs to support i18n in an agnostic way. Best case is that the user has full access to content via content projection or inputs. If there are texts that need to be translated and are not directly accessible over the template for the developer provide an injectable, e.g. [DatepickerIntl](https://github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/src/datefield/datepicker/datepicker-intl.ts)
 -   Don't forget the prefixes. Every component, directive and module is prefixed., e.g. `nx-button` and `NxButtonModule`.
 -   Prefixing inside the documentation app is more relaxed. Try to use the prefix `nxv-` for all selectors. You can skip it for modules.
 
 [angular commit guidelines]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines
 [angular style guide]: https://angular.io/guide/styleguide
 [material style guide]: https://github.com/angular/components/blob/master/CODING_STANDARDS.md
-[issue tracker]: https://github.com/aposin/ngx-aquila/issues
-[create new issue]: https://github.com/aposin/ngx-aquila/issues/new/choose
+[issue tracker]: https://github.com/allianz/ngx-aquila/issues
+[create new issue]: https://github.com/allianz/ngx-aquila/issues/new/choose

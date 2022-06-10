@@ -6,7 +6,7 @@ import { ExampleData } from './example-data';
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
 const currentYear = new Date().getFullYear();
-const COPYRIGHT = `Copyright APOSIN ${currentYear}`;
+const COPYRIGHT = `Copyright ALLIANZ ${currentYear}`;
 
 /**
  * Path that refers to the docs-content from the "@angular/components-examples" package. The
@@ -29,7 +29,7 @@ const TEMPLATE_FILES = [
     'tsconfig.spec.json',
 ];
 
-const ASSETS_BASE_PATH = 'https://aposin.github.io/ng-aquila/';
+const ASSETS_BASE_PATH = 'https://allianz.github.io/ng-aquila/';
 
 const TEST_TEMPLATE_PATH = 'assets/stack-blitz-tests/';
 const TEST_TEMPLATE_FILES = [

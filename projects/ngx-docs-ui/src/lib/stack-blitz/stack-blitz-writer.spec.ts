@@ -38,11 +38,11 @@ describe('StackBlitzWriter', () => {
         const currentYear = new Date().getFullYear();
         expect(stackBlitzWriter._appendCopyright('test.ts', 'NoContent')).toBe(`NoContent
 
-/**  Copyright APOSIN ${currentYear} */`);
+/**  Copyright ALLIANZ ${currentYear} */`);
 
         expect(stackBlitzWriter._appendCopyright('test.html', 'NoContent')).toBe(`NoContent
 
-<!-- Copyright APOSIN ${currentYear} -->`);
+<!-- Copyright ALLIANZ ${currentYear} -->`);
     });
 
     it('should create form element', () => {
@@ -107,13 +107,13 @@ describe('StackBlitzWriter', () => {
         it('converts path to absolute for images', () => {
             const fakeFileContents = '<img src="assets/images/blah.jpeg" />';
             const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
-            expect(result).toBe('<img src="https://aposin.github.io/ng-aquila/assets/images/blah.jpeg" />');
+            expect(result).toBe('<img src="https://allianz.github.io/ng-aquila/assets/images/blah.jpeg" />');
         });
 
         it('converts path to absolute for logos', () => {
             const fakeFileContents = '<img src="assets/logos/blah.svg" />';
             const result = stackBlitzWriter._replaceImagePaths(fakeFileContents);
-            expect(result).toBe('<img src="https://aposin.github.io/ng-aquila/assets/logos/blah.svg" />');
+            expect(result).toBe('<img src="https://allianz.github.io/ng-aquila/assets/logos/blah.svg" />');
         });
 
         it('does not convert path for other assets', () => {

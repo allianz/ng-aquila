@@ -54,11 +54,11 @@ const VERSIONS: DocVersions = {
 };
 
 const LOGO_PATH: LogoPath = {
-    logoWithTitlePath: 'assets/logos/aposin_logo_with_text.svg',
+    logoWithTitlePath: 'assets/logos/aposin_logo.svg',
 };
 
 const GITHUB_REPO_LINK: GithubLinkConfig = {
-    repoLink: 'https://github.com/aposin/ng-aquila',
+    repoLink: 'https://github.com/allianz/ng-aquila',
     logoAltText: 'Github Brand Logo',
 };
 

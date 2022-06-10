@@ -24,7 +24,7 @@ export class TableStickyExampleComponent {
             product: 'Health',
             contractNumber: 2423,
             desc: 'this is another contract',
-            website: 'www.aposin.org',
+            website: 'www.allianz.com',
             endingAt: '4/2/2020',
             status: 'active',
             statusText: 'accepted',

@@ -70,8 +70,8 @@ function addStarterApp(options: Schema) {
     function rewriteCopyrightYear() {
         return async (host: Tree, context: SchematicContext) => {
             const currentYear = new Date().getFullYear();
-            const copyrightTemplate = 'Copyright APOSIN';
-            const copyrightStamp = `Copyright APOSIN ${currentYear}`;
+            const copyrightTemplate = 'Copyright ALLIANZ';
+            const copyrightStamp = `Copyright ALLIANZ ${currentYear}`;
 
             const workspace = await getWorkspace(host);
             const project = getProjectFromWorkspace(workspace, options.project);

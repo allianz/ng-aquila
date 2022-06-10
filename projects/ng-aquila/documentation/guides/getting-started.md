@@ -16,7 +16,7 @@ You should have Node.js and the Angular CLI installed.
 
     ```console
     npm install -g @angular/cli
-    ng new my-aposin-project
+    ng new my-allianz-project
     ```
 
 2. **Add ng-aquila:**
@@ -45,13 +45,13 @@ You can also install ng-aquila manually.
 
     ```
     npm install -g @angular/cli
-    ng new my-aposin-project
+    ng new my-allianz-project
     ```
 
 2. **Install ng-aquila and dependencies**
 
     ```
-    cd my-aposin-project
+    cd my-allianz-project
     npm install @aposin/ng-aquila
     npm install @angular/cdk
     ```
@@ -62,7 +62,7 @@ You can also install ng-aquila manually.
 
     - [moment.js](https://github.com/moment/moment) if you want to use it as the adapter for the [datefield](./documentation/datefield/overview) (`npm install moment`)
 
-    You can check the supported versions of peer dependencies [here](https://github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/package.json).
+    You can check the supported versions of peer dependencies [here](https://github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/src/package.json).
 
 3. **Add base styles**
 

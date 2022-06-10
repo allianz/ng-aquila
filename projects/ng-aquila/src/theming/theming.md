@@ -113,7 +113,7 @@ And then use them as stated before:
 
 ### General Theming Tokens
 
-Our components are themed by the following general tokens. You can overwrite their values in your custom theme. A full list of the current style tokens can be found [here](https://www.github.com/aposin/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss).
+Our components are themed by the following general tokens. You can overwrite their values in your custom theme. A full list of the current style tokens can be found [here](https://www.github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/src/shared-styles/theming/tokens.scss).
 
 ```scss
   ui-background: #0f2A3D,

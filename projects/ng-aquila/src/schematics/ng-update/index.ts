@@ -58,7 +58,7 @@ function v11MarginsWarning(context: SchematicContext, targetVersion: TargetVersi
         `
     ⚠ In ng-aquila v11 some components got their default outer margins removed please check your applications for visual changes.
     You can find more details at:
-    https://aposin.github.io/ng-aquila/guides/releases
+    https://allianz.github.io/ng-aquila/guides/releases
     `,
     );
 }
