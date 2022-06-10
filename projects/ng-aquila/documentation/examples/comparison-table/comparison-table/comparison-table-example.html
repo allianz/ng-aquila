@@ -32,7 +32,10 @@
                 <nx-comparison-table-cell type="header">
                     <div class="header-container">
                         <p class="product-title">Product 1</p>
-                        <p class="product-price" *ngIf="!loading; else spinner">
+                        <p
+                            class="product-price-dynamic"
+                            *ngIf="!loading; else spinner"
+                        >
                             105,99 €
                         </p>
                         <button
@@ -48,7 +51,9 @@
                         <p class="product-title"
                             >Product 2 with a very long name</p
                         >
-                        <p class="product-price" *ngIf="!loading; else spinner"
+                        <p
+                            class="product-price-dynamic"
+                            *ngIf="!loading; else spinner"
                             >110,99 €</p
                         >
                         <button
@@ -62,7 +67,10 @@
                 <nx-comparison-table-cell type="header">
                     <div class="header-container">
                         <p class="product-title">Product 3</p>
-                        <p class="product-price" *ngIf="!loading; else spinner">
+                        <p
+                            class="product-price-dynamic"
+                            *ngIf="!loading; else spinner"
+                        >
                             115,99 €</p
                         >
                         <button

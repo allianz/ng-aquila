@@ -14,6 +14,14 @@ The footer cells are not displayed on mobile. Therefore please **do not put any 
 
 For better mobile side-to-side scrolling user experience the table should be placed in a horizontal scroll indicator `<nx-swipebar>` component.
 
+### Accessibility
+
+When using an icon-only cell it is important that the `nx-icon` has an `aria-label`. To learn more about the usage of an aria-label [click here](./documentation/accessibility/overview#usage-of-aria-label).
+
+### Avoiding CLS issues with dynamic content
+
+With the new [Core Web Vitals set of Google page metrics](https://web.dev/vitals/), pages can get penalized for hight [Cumulative Layout Shift](https://web.dev/cls/) measurements, which commonly occures with the content that is added to the page dynamically. To ensure good user experience (and avoid sanctions from search engines), make sure to [use placeholders or fixed-height containers](https://web.dev/optimize-cls/#dynamic-content) for content that is loaded dynamically. You can refer to our examples.
+
 ### Examples
 
 #### Basic Comparison Table
@@ -113,7 +121,3 @@ Switch the theme to "EXPERT" at the top of the page to see the correct expert co
 <!-- example(comparison-table-form-elements) -->
 
 </div>
-
-### Accessibility
-
-When using an icon-only cell it is important that the `nx-icon` has an `aria-label`. To learn more about the usage of an aria-label [click here](./documentation/accessibility/overview#usage-of-aria-label).
