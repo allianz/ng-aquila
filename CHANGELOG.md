@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.6.1](https://github.com/allianz/ng-aquila/compare/v13.6.0...v13.6.1) (2022-06-10)
+
+### Bug Fixes
+
+* **menu-button:** mark aria expanded ([7038fcf](https://github.com/allianz/ng-aquila/commit/7038fcf9cd127997f7462960df078c01c261be29))
+
+
+
 # [13.6.0](https://github.com/aposin/ng-aquila/compare/v13.5.0...v13.6.0) (2022-05-27)
 
 
