@@ -2,6 +2,10 @@
 <p class="docs-markdown--p">It is recommended to use the comparison table with a <strong>maximum of 5 products</strong>.</p>
 <p class="docs-markdown--p">The footer cells are not displayed on mobile. Therefore please <strong>do not put any important content in the footer</strong>.</p>
 <p class="docs-markdown--p">For better mobile side-to-side scrolling user experience the table should be placed in a horizontal scroll indicator <code>&lt;nx-swipebar&gt;</code> component.</p>
+<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
+<p class="docs-markdown--p">When using an icon-only cell it is important that the <code>nx-icon</code> has an <code>aria-label</code>. To learn more about the usage of an aria-label <a href="./documentation/accessibility/overview#usage-of-aria-label">click here</a>.</p>
+<h3 id="avoiding-cls-issues-with-dynamic-content" tabindex="-1" class="docs-markdown--h3">Avoiding CLS issues with dynamic content</h3>
+<p class="docs-markdown--p">With the new <a href="https://web.dev/vitals/">Core Web Vitals set of Google page metrics</a>, pages can get penalized for hight <a href="https://web.dev/cls/">Cumulative Layout Shift</a> measurements, which commonly occures with the content that is added to the page dynamically. To ensure good user experience (and avoid sanctions from search engines), make sure to <a href="https://web.dev/optimize-cls/#dynamic-content">use placeholders or fixed-height containers</a> for content that is loaded dynamically. You can refer to our examples.</p>
 <h3 id="examples" tabindex="-1" class="docs-markdown--h3">Examples</h3>
 <h4 id="basic-comparison-table" tabindex="-1" class="docs-markdown--h4">Basic Comparison Table</h4>
 <p class="docs-markdown--p">A basic comparison table consists of rows (<code>nxComparisonTableRow</code>) containing table cells: normal (<code>nx-comparison-table-cell</code>) and description ones (<code>nx-comparison-table-description-cell</code>) as shown in the example below.</p>
@@ -52,5 +56,3 @@
 <p class="docs-markdown--p">Switch the theme to &quot;EXPERT&quot; at the top of the page to see the correct expert comparison table.</p>
 <div nx-docs-example="comparison-table-form-elements" config="{}">exampleID: comparison-table-form-elements</div>
 </div>
-<h3 id="accessibility" tabindex="-1" class="docs-markdown--h3">Accessibility</h3>
-<p class="docs-markdown--p">When using an icon-only cell it is important that the <code>nx-icon</code> has an <code>aria-label</code>. To learn more about the usage of an aria-label <a href="./documentation/accessibility/overview#usage-of-aria-label">click here</a>.</p>

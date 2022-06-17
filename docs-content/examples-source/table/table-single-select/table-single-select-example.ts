@@ -33,7 +33,7 @@ export class TableSingleSelectExampleComponent {
         {
             product: 'Health',
             contractNumber: 2423,
-            website: 'www.aposin.org',
+            website: 'www.allianz.com',
             endingAt: new Date('4/2/2020'),
             status: 'positive',
             statusText: 'accepted',

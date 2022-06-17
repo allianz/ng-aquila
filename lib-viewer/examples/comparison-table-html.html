@@ -32,7 +32,10 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price-dynamic&quot;</span>
+                            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>
+                        &gt;</span>
                             105,99 €
                         <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
@@ -48,7 +51,9 @@
                         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>
                             &gt;</span>Product 2 with a very long name&lt;/p
                         &gt;
-                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price-dynamic&quot;</span>
+                            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>
                             &gt;</span>110,99 €&lt;/p
                         &gt;
                         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
@@ -62,7 +67,10 @@
                 <span class="hljs-tag">&lt;<span class="hljs-name">nx-comparison-table-cell</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header-container&quot;</span>&gt;</span>
                         <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-title&quot;</span>&gt;</span>Product 3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price&quot;</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>
+                            <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;product-price-dynamic&quot;</span>
+                            *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!loading; else spinner&quot;</span>
+                        &gt;</span>
                             115,99 €&lt;/p
                         &gt;
                         <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
