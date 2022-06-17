@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.6.2](https://github.com/allianz/ng-aquila/compare/v13.6.1...v13.6.2) (2022-06-17)
+
+This is a technical release to help us move our project to `github/allianz`.
+
 ## [13.6.1](https://github.com/allianz/ng-aquila/compare/v13.6.0...v13.6.1) (2022-06-10)
 
 ### Bug Fixes
