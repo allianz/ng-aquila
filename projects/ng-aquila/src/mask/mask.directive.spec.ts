@@ -402,6 +402,14 @@ describe('NxMaskDirective', () => {
             assertInputValue(nativeElement, 'test', 'test');
             expect(testInstance.modelVal).toBe('test');
         });
+
+        it('should keep preset model value if deactiveMask set', () => {
+            createTestComponent(PresetDeactiveMaskComponent);
+            setMask('AA-AA');
+
+            fixture.detectChanges();
+            expect(testInstance.modelVal).toBe('AAAA');
+        });
     });
 
     it('should not accept characters if mask is filled up', () => {
@@ -974,6 +982,13 @@ class ConfigurableMaskComponent extends MaskTest {}
     `,
 })
 class ValidationMaskComponent extends MaskTest {}
+
+@Component({
+    template: ` <input [nxMask]="mask" [(ngModel)]="modelVal" [deactivateMask]="true" /> `,
+})
+class PresetDeactiveMaskComponent extends MaskTest {
+    modelVal = 'AAAA';
+}
 
 @Component({
     template: `<input [nxMask]="mask" [separators]="separators" />`,

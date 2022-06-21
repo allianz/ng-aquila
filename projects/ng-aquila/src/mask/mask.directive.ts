@@ -498,7 +498,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
 
         this.cvaModelChange.next(value);
         if (this.deactivateMask) {
-            this.updateValue(this.getUnmaskedValue());
+            this.updateValue(value || this.getUnmaskedValue());
         } else {
             this.updateValue(this.getMaskedString(value));
         }

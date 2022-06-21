@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./mask-deactivate-example.css'],
 })
 export class MaskDeactivateExampleComponent {
-    modelVal!: string;
-    templateModel: string = 'deactivate';
+    modelVal = 'SSAAAAA';
+    templateModel = 'deactivate';
 }
