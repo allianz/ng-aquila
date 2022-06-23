@@ -182,7 +182,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     readonly controlType?: string = 'nx-phone-input';
 
     _sortedCountries!: NxDropdownOption[];
-    _countryCallingCode = '';
+    _countryCallingCode = getDialCodeByCountryCode(this.countryCode);
 
     private _subscriptions = new Subscription();
 
@@ -255,9 +255,9 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     writeValue(value: any): void {
-        if (value) {
+        if (typeof value === 'string') {
             const noWhitespaceNumber = value.replace(/\s/g, '');
-            const { countryCallingCode, number } = getCountryCallingCodeFromNumber(noWhitespaceNumber);
+            const { countryCallingCode, number } = getCountryCallingCodeFromNumber(noWhitespaceNumber || '+' + getDialCodeByCountryCode(this.countryCode)); // requires string starting with '+'
             this._countryCallingCode = countryCallingCode;
             this._inputValue = this.inputFormatter(number, countryCallingCode);
             this._countryCode = getCountryCodeforCallingCode(countryCallingCode);

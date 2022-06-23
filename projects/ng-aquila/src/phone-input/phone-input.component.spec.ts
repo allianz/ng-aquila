@@ -137,7 +137,7 @@ describe('PhoneInputComponent', () => {
         fixture.detectChanges();
         expect(getInput().nativeElement.value).toBe('');
         // should fall back to what previous country code was set, by default +49
-        expect(dropdown.nativeElement.innerText).toBe('+33');
+        expect(dropdown.nativeElement.innerText).toBe('+1');
     }));
 
     it('should reset country code after reset of form', fakeAsync(() => {

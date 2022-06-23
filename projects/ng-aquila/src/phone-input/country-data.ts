@@ -7,7 +7,7 @@ const MAX_LENGTH_COUNTRY_CODE = 3;
 
 class CountryMetadata {
     countries: { [key: string]: string } = {};
-    callingCodes: { [key: string]: string } = {};
+    callingCodes: { [key: string]: string[] } = {};
     constructor(sourceObj: any) {
         this.countries = sourceObj.countries;
         this.callingCodes = sourceObj.callingCodes;
