@@ -26,21 +26,19 @@ describe('NxRatingComponent', () => {
         testComponent = testInstance.rating;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
-                declarations: [
-                    SimpleRatingComponent,
-                    SimpleBindingRatingComponent,
-                    NgModelBindingRatingComponent,
-                    ReactiveBindingRatingComponent,
-                    RatingOnPushComponent,
-                    TemplateDrivenOnPushComponent,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [FormsModule, ReactiveFormsModule, NxRatingModule],
+            declarations: [
+                SimpleRatingComponent,
+                SimpleBindingRatingComponent,
+                NgModelBindingRatingComponent,
+                ReactiveBindingRatingComponent,
+                RatingOnPushComponent,
+                TemplateDrivenOnPushComponent,
+            ],
+        }).compileComponents();
+    }));
 
     function getIcons() {
         return fixture.debugElement.queryAll(By.css('nx-icon'));

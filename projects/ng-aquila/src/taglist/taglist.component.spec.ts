@@ -37,14 +37,12 @@ describe('NxTaglistComponent', () => {
         return tagElement.querySelector('.nx-tag__close');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicTaglist, TaglistNoDelete, TaglistObjects, TaglistWithFormatter, AriaLabelledByTaglist, TaglistOnPush],
-                imports: [NxTaglistModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicTaglist, TaglistNoDelete, TaglistObjects, TaglistWithFormatter, AriaLabelledByTaglist, TaglistOnPush],
+            imports: [NxTaglistModule],
+        }).compileComponents();
+    }));
 
     it('creates the Taglist', () => {
         createTestComponent(BasicTaglist);

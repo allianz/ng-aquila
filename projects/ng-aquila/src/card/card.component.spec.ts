@@ -23,22 +23,17 @@ describe('NxCardComponent', () => {
         cardNativeElement = fixture.nativeElement.querySelector('nx-card') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicCard],
-                imports: [NxCardModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicCard],
+            imports: [NxCardModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the component',
-        waitForAsync(() => {
-            createTestComponent(BasicCard);
-            expect(cardInstance).toBeTruthy();
-        }),
-    );
+    it('creates the component', waitForAsync(() => {
+        createTestComponent(BasicCard);
+        expect(cardInstance).toBeTruthy();
+    }));
 
     describe('basic card', () => {
         beforeEach(() => {

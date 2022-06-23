@@ -26,14 +26,12 @@ describe('NxProgressbarComponent', () => {
         componentInstanceRef = testInstance.componentInstanceRef;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
-                imports: [NxProgressbarModule, FormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ProgressBarBasicComponent, ProgressBarValueComponent],
+            imports: [NxProgressbarModule, FormsModule],
+        }).compileComponents();
+    }));
 
     it('should create the component', fakeAsync(() => {
         createTestComponent(ProgressBarBasicComponent);

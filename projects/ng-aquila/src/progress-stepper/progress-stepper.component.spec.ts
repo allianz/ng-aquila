@@ -25,14 +25,12 @@ describe('NxProgressStepperDirective', () => {
         componentInstanceRef = testInstance.componentInstanceRef;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ProgressStepperBasicComponent],
-                imports: [NxProgressStepperModule, FormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ProgressStepperBasicComponent],
+            imports: [NxProgressStepperModule, FormsModule],
+        }).compileComponents();
+    }));
 
     it('should create the component', fakeAsync(() => {
         createTestComponent(ProgressStepperBasicComponent);

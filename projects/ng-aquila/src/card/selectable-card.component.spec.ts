@@ -48,14 +48,12 @@ describe('NxSelectableCardComponent', () => {
         expect(inputElement.checked).toBe(checked);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSelectableCard, ReactiveSelectableCard, DynamicErrorSelectableCard, ExpertSelectableCard],
-                imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSelectableCard, ReactiveSelectableCard, DynamicErrorSelectableCard, ExpertSelectableCard],
+            imports: [NxCardModule, FormsModule, ReactiveFormsModule, NxErrorModule],
+        }).compileComponents();
+    }));
 
     it('Should create the test component without errors', () => {
         createTestComponent(BasicSelectableCard);

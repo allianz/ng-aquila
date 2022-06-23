@@ -43,15 +43,13 @@ describe('NxComparisonTableCell', () => {
         cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicCellComponent, ConfigurableCellComponent, ToggleSectionCellComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [BasicCellComponent, ConfigurableCellComponent, ToggleSectionCellComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('renders the content', () => {

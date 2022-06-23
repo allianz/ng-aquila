@@ -39,23 +39,21 @@ describe('NxCodeInputComponent', () => {
         inputElement = fixture.nativeElement.querySelector('.nx-code-input__field') as HTMLInputElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
-                declarations: [
-                    CodeInputTest1,
-                    CodeInputTest2,
-                    CodeInputTest3,
-                    NumberCodeInput,
-                    ConfigurableCodeInput,
-                    OnPushCodeInput,
-                    OverrideDefaultLabelsCodeInput,
-                ],
-                providers: [NxCodeInputIntl],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxCodeInputModule, FormsModule, ReactiveFormsModule],
+            declarations: [
+                CodeInputTest1,
+                CodeInputTest2,
+                CodeInputTest3,
+                NumberCodeInput,
+                ConfigurableCodeInput,
+                OnPushCodeInput,
+                OverrideDefaultLabelsCodeInput,
+            ],
+            providers: [NxCodeInputIntl],
+        }).compileComponents();
+    }));
 
     it('creates a 4 character input form', () => {
         createTestComponent(CodeInputTest1);

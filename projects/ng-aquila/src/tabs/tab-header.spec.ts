@@ -35,22 +35,17 @@ describe('NxTabHeaderComponent', () => {
         tabListContainer = tabHeaderNativeElement.querySelector('.nx-tab-header') as HTMLDivElement;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicHeader, SimpleHeader],
-                imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicHeader, SimpleHeader],
+            imports: [NxTabsModule, FormsModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the tab header',
-        waitForAsync(() => {
-            createTestComponent(BasicHeader);
-            expect(tabHeaderInstance).toBeTruthy();
-        }),
-    );
+    it('creates the tab header', waitForAsync(() => {
+        createTestComponent(BasicHeader);
+        expect(tabHeaderInstance).toBeTruthy();
+    }));
 
     describe('keyboard support', () => {
         describe('auto select mode', () => {

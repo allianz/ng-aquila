@@ -26,14 +26,12 @@ describe(NxToggleButtonComponent.name, () => {
         toggleButtonElement = fixture.debugElement.query(By.css('.nx-toggle-button'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicToggleButtonComponent],
-                imports: [NxTableModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicToggleButtonComponent],
+            imports: [NxTableModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

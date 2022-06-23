@@ -24,14 +24,12 @@ describe(NxHeaderCellDirective.name, () => {
         HeaderCellElement = fixture.debugElement.query(By.directive(NxHeaderCellDirective));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicHeaderCellComponent],
-                imports: [NxTableModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicHeaderCellComponent],
+            imports: [NxTableModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

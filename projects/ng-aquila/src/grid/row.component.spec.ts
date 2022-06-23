@@ -28,30 +28,28 @@ describe('NxRowDirective', () => {
         return fixture.debugElement.query(By.css(input));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicRowDefault,
-                    BasicRow,
-                    BasicRowClassTest,
-                    BasicRowReverse,
-                    BasicRowIncorrect,
-                    BasicRowWrap,
-                    BasicRowNoWrap,
-                    BasicRowWrapReverse,
-                    BasicRowJustifyStart,
-                    BasicRowJustifyEnd,
-                    BasicRowContentStart,
-                    BasicRowContentEnd,
-                    BasicRowItemsStart,
-                    BasicRowItemsEnd,
-                    DynamicTest,
-                ],
-                imports: [NxGridModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicRowDefault,
+                BasicRow,
+                BasicRowClassTest,
+                BasicRowReverse,
+                BasicRowIncorrect,
+                BasicRowWrap,
+                BasicRowNoWrap,
+                BasicRowWrapReverse,
+                BasicRowJustifyStart,
+                BasicRowJustifyEnd,
+                BasicRowContentStart,
+                BasicRowContentEnd,
+                BasicRowItemsStart,
+                BasicRowItemsEnd,
+                DynamicTest,
+            ],
+            imports: [NxGridModule],
+        }).compileComponents();
+    }));
 
     it('should test with any input', () => {
         expect(() => {

@@ -106,22 +106,20 @@ describe('NxComparisonTableComponent', () => {
         rowElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__row'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [
-                    BasicComponent,
-                    BasicOnPushComponent,
-                    DisabledColumnsComponent,
-                    SelectableIndexComponent,
-                    LongPageWithTableComponent,
-                    HiddenColumnsComponent,
-                ],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [
+                BasicComponent,
+                BasicOnPushComponent,
+                DisabledColumnsComponent,
+                SelectableIndexComponent,
+                LongPageWithTableComponent,
+                HiddenColumnsComponent,
+            ],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('creates the component', () => {

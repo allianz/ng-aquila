@@ -28,54 +28,37 @@ describe('NxIconComponent', () => {
         iconNativeElement = fixture.nativeElement.querySelector('nx-icon') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicIcon, SizeIcon, OutlineIcon, FillIcon, DynamicIcon, FontIcon],
-                imports: [NxIconModule, HttpClientTestingModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicIcon, SizeIcon, OutlineIcon, FillIcon, DynamicIcon, FontIcon],
+            imports: [NxIconModule, HttpClientTestingModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the button',
-        waitForAsync(() => {
-            createTestComponent(BasicIcon);
-            expect(iconInstance).toBeTruthy();
-        }),
-    );
+    it('creates the button', waitForAsync(() => {
+        createTestComponent(BasicIcon);
+        expect(iconInstance).toBeTruthy();
+    }));
 
-    it(
-        'adds the class name for a icon',
-        waitForAsync(() => {
-            createTestComponent(BasicIcon);
-            expect(iconNativeElement).toHaveClass('heart');
-        }),
-    );
+    it('adds the class name for a icon', waitForAsync(() => {
+        createTestComponent(BasicIcon);
+        expect(iconNativeElement).toHaveClass('heart');
+    }));
 
-    it(
-        'adds the class name for size',
-        waitForAsync(() => {
-            createTestComponent(SizeIcon);
-            expect(iconNativeElement).toHaveClass('nx-icon--m');
-        }),
-    );
+    it('adds the class name for size', waitForAsync(() => {
+        createTestComponent(SizeIcon);
+        expect(iconNativeElement).toHaveClass('nx-icon--m');
+    }));
 
-    it(
-        'adds the class name for outline',
-        waitForAsync(() => {
-            createTestComponent(OutlineIcon);
-            expect(iconNativeElement).toHaveClass('nx-icon--outline');
-        }),
-    );
+    it('adds the class name for outline', waitForAsync(() => {
+        createTestComponent(OutlineIcon);
+        expect(iconNativeElement).toHaveClass('nx-icon--outline');
+    }));
 
-    it(
-        'adds the class name for fill',
-        waitForAsync(() => {
-            createTestComponent(FillIcon);
-            expect(iconNativeElement).toHaveClass('nx-icon--fill');
-        }),
-    );
+    it('adds the class name for fill', waitForAsync(() => {
+        createTestComponent(FillIcon);
+        expect(iconNativeElement).toHaveClass('nx-icon--fill');
+    }));
 
     it('should change icon on binding changes', () => {
         createTestComponent(DynamicIcon);

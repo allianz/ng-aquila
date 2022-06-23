@@ -32,25 +32,23 @@ describe('NxLayoutDirective', () => {
         return element.className.split(' ').sort().join(' ');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicLayout,
-                    BasicGridLayout,
-                    BasicGridLayoutClassTest,
-                    BasicNoGutters,
-                    BasicNoPadding,
-                    BasicMaxWidth,
-                    BasicCombinate,
-                    Basic2Combinate,
-                    BasicCompleteReverse,
-                    DynamicLayout,
-                ],
-                imports: [NxGridModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicLayout,
+                BasicGridLayout,
+                BasicGridLayoutClassTest,
+                BasicNoGutters,
+                BasicNoPadding,
+                BasicMaxWidth,
+                BasicCombinate,
+                Basic2Combinate,
+                BasicCompleteReverse,
+                DynamicLayout,
+            ],
+            imports: [NxGridModule],
+        }).compileComponents();
+    }));
 
     it('should test with input nxLayout="grid"', () => {
         expect(getClassesCreated(BasicGridLayout)).toEqual('nx-grid');

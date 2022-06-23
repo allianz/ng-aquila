@@ -21,26 +21,24 @@ describe('NxRadioToggleComponent', () => {
         labelElements = fixture.nativeElement.querySelectorAll('label') as NodeListOf<HTMLLabelElement>;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
-                declarations: [
-                    NoSelectionRadioToggle,
-                    EmptyRadioToggle,
-                    MultiRadioToggle,
-                    SelectionRadioToggle,
-                    ModifiedRadioToggle,
-                    SingleDisableRadioToggle,
-                    AllDisableRadioToggle,
-                    LoopedRadioToggle,
-                    ModelRadioToggle,
-                    ReactiveFormToggle,
-                    ValidationToggle,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxRadioToggleModule, FormsModule, ReactiveFormsModule],
+            declarations: [
+                NoSelectionRadioToggle,
+                EmptyRadioToggle,
+                MultiRadioToggle,
+                SelectionRadioToggle,
+                ModifiedRadioToggle,
+                SingleDisableRadioToggle,
+                AllDisableRadioToggle,
+                LoopedRadioToggle,
+                ModelRadioToggle,
+                ReactiveFormToggle,
+                ValidationToggle,
+            ],
+        }).compileComponents();
+    }));
 
     function checkSelection(a: boolean, b: boolean, c: boolean) {
         const checked = (index: number): boolean => radioElements.item(index).checked;

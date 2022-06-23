@@ -70,39 +70,37 @@ describe('NxExpertPreset', () => {
         dataDisplayInstance = testInstance.dataDisplayInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [
-                    NxComparisonTableModule,
-                    NxDatefieldModule,
-                    NxErrorModule,
-                    NxExpertModule,
-                    NxInputModule,
-                    NxLabelModule,
-                    NxMomentDateModule,
-                    NxTabsModule,
-                    NxCardModule,
-                    NxSmallStageModule,
-                    NxCircleToggleModule,
-                    NxDataDisplayModule,
-                ],
-                declarations: [
-                    DatepickerPresetComponent,
-                    ErrorPresetComponent,
-                    FormfieldPresetComponent,
-                    LabelPresetComponent,
-                    TabGroupPresetComponent,
-                    TabNavBarPresetComponent,
-                    ComparisonTablePresetComponent,
-                    SelectableCardPresetComponent,
-                    SmallStagePresetComponent,
-                    CircleToggleGroupPresetComponent,
-                    DataDisplayPresetComponent,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                NxComparisonTableModule,
+                NxDatefieldModule,
+                NxErrorModule,
+                NxExpertModule,
+                NxInputModule,
+                NxLabelModule,
+                NxMomentDateModule,
+                NxTabsModule,
+                NxCardModule,
+                NxSmallStageModule,
+                NxCircleToggleModule,
+                NxDataDisplayModule,
+            ],
+            declarations: [
+                DatepickerPresetComponent,
+                ErrorPresetComponent,
+                FormfieldPresetComponent,
+                LabelPresetComponent,
+                TabGroupPresetComponent,
+                TabNavBarPresetComponent,
+                ComparisonTablePresetComponent,
+                SelectableCardPresetComponent,
+                SmallStagePresetComponent,
+                CircleToggleGroupPresetComponent,
+                DataDisplayPresetComponent,
+            ],
+        }).compileComponents();
+    }));
 
     describe('formfield presets', () => {
         it('should have set floatingLabel to always on default', () => {

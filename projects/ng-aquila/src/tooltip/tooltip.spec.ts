@@ -67,15 +67,13 @@ describe('NxTooltipDirective', () => {
         TestBed.compileComponents();
     });
 
-    beforeEach(
-        waitForAsync(() => {
-            inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {
-                overlayContainer = oc;
-                overlayContainerElement = oc.getContainerElement();
-                focusMonitor = fm;
-            })();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {
+            overlayContainer = oc;
+            overlayContainerElement = oc.getContainerElement();
+            focusMonitor = fm;
+        })();
+    }));
 
     afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
         // Since we're resetting the testing module in some of the tests,
@@ -223,25 +221,22 @@ describe('NxTooltipDirective', () => {
             expect(tooltipDirective._isTooltipVisible()).toBeFalse();
         }));
 
-        it(
-            'should not show if hide is called before delay finishes',
-            waitForAsync(() => {
-                assertTooltipInstance(tooltipDirective, false);
+        it('should not show if hide is called before delay finishes', waitForAsync(() => {
+            assertTooltipInstance(tooltipDirective, false);
 
-                const tooltipDelay = 1000;
+            const tooltipDelay = 1000;
 
-                tooltipDirective.show(tooltipDelay);
+            tooltipDirective.show(tooltipDelay);
+            expect(tooltipDirective._isTooltipVisible()).toBeFalse();
+
+            fixture.detectChanges();
+            expect(overlayContainerElement.textContent).toContain('');
+            tooltipDirective.hide();
+
+            fixture.whenStable().then(() => {
                 expect(tooltipDirective._isTooltipVisible()).toBeFalse();
-
-                fixture.detectChanges();
-                expect(overlayContainerElement.textContent).toContain('');
-                tooltipDirective.hide();
-
-                fixture.whenStable().then(() => {
-                    expect(tooltipDirective._isTooltipVisible()).toBeFalse();
-                });
-            }),
-        );
+            });
+        }));
 
         it('should not show tooltip if message is not present or empty', () => {
             assertTooltipInstance(tooltipDirective, false);
@@ -815,20 +810,18 @@ describe('navigation', () => {
     let overlayContainerElement: HTMLElement;
     let overlayContainer: OverlayContainer;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule],
-                providers: [
-                    {
-                        provide: Location,
-                        useClass: SpyLocation,
-                    },
-                ],
-                declarations: [TooltipDispose],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxTooltipModule, BrowserAnimationsModule, OverlayModule],
+            providers: [
+                {
+                    provide: Location,
+                    useClass: SpyLocation,
+                },
+            ],
+            declarations: [TooltipDispose],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([Location, OverlayContainer], (l: Location, oc: OverlayContainer) => {
         overlayContainer = oc;

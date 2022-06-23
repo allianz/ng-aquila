@@ -18,28 +18,26 @@ import { NxYearViewComponent } from './year-view';
 describe('NxCalendarComponent', () => {
     let dir: { value: Direction };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxButtonModule, NxNativeDateModule, NxIconModule],
-                declarations: [
-                    NxCalendarBodyComponent,
-                    NxCalendarComponent,
-                    NxMonthViewComponent,
-                    NxYearViewComponent,
-                    NxMultiYearViewComponent,
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxButtonModule, NxNativeDateModule, NxIconModule],
+            declarations: [
+                NxCalendarBodyComponent,
+                NxCalendarComponent,
+                NxMonthViewComponent,
+                NxYearViewComponent,
+                NxMultiYearViewComponent,
 
-                    // Test components.
-                    StandardCalendar,
-                    CalendarWithMinMax,
-                    CalendarWithDateFilter,
-                ],
-                providers: [NxDatepickerIntl, { provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
-            });
+                // Test components.
+                StandardCalendar,
+                CalendarWithMinMax,
+                CalendarWithDateFilter,
+            ],
+            providers: [NxDatepickerIntl, { provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
+        });
 
-            TestBed.compileComponents();
-        }),
-    );
+        TestBed.compileComponents();
+    }));
 
     describe('standard calendar', () => {
         let fixture: ComponentFixture<StandardCalendar>;

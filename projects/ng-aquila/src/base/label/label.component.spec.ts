@@ -27,36 +27,29 @@ describe('NxLabelComponent', () => {
     }
 
     describe('basic', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    declarations: [BasicLabel],
-                    imports: [NxLabelModule],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [BasicLabel],
+                imports: [NxLabelModule],
+            }).compileComponents();
+        }));
 
-        it(
-            'creates the nx-label',
-            waitForAsync(() => {
-                createTestComponent(BasicLabel);
-                expect(labelInstance).toBeTruthy();
-                expect(labelInstance.size).toBe('large');
-            }),
-        );
+        it('creates the nx-label', waitForAsync(() => {
+            createTestComponent(BasicLabel);
+            expect(labelInstance).toBeTruthy();
+            expect(labelInstance.size).toBe('large');
+        }));
     });
 
     describe('injection token', () => {
-        beforeEach(
-            waitForAsync(() => {
-                customDefaultOptions.size = 'small';
-                TestBed.configureTestingModule({
-                    declarations: [BasicLabel, ConfigurableLabel],
-                    imports: [NxLabelModule],
-                    providers: [{ provide: LABEL_DEFAULT_OPTIONS, useValue: customDefaultOptions }],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            customDefaultOptions.size = 'small';
+            TestBed.configureTestingModule({
+                declarations: [BasicLabel, ConfigurableLabel],
+                imports: [NxLabelModule],
+                providers: [{ provide: LABEL_DEFAULT_OPTIONS, useValue: customDefaultOptions }],
+            }).compileComponents();
+        }));
 
         it('creates a label with the correct size', () => {
             createTestComponent(BasicLabel);

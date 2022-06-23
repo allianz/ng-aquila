@@ -21,22 +21,17 @@ describe('NxToolbarComponent', () => {
         toolbarInstance = testInstance.toolbarInstance;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicToolbar],
-                imports: [NxToolbarModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicToolbar],
+            imports: [NxToolbarModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'should create toolbar component',
-        waitForAsync(() => {
-            createTestComponent(BasicToolbar);
-            expect(toolbarInstance).toBeTruthy();
-        }),
-    );
+    it('should create toolbar component', waitForAsync(() => {
+        createTestComponent(BasicToolbar);
+        expect(toolbarInstance).toBeTruthy();
+    }));
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {

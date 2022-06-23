@@ -24,14 +24,12 @@ describe(NxTableCellComponent.name, () => {
         tableCellElement = fixture.debugElement.query(By.directive(NxTableCellComponent));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicTableCellComponent],
-                imports: [NxTableModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicTableCellComponent],
+            imports: [NxTableModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

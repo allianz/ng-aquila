@@ -30,14 +30,12 @@ describe('NxErrorComponent', () => {
     }
 
     describe('basic', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    declarations: [BasicError, ConfigurableError],
-                    imports: [NxErrorModule],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [BasicError, ConfigurableError],
+                imports: [NxErrorModule],
+            }).compileComponents();
+        }));
 
         it('creates the nx-error', () => {
             createTestComponent(BasicError);
@@ -84,16 +82,14 @@ describe('NxErrorComponent', () => {
     });
 
     describe('error option injection', () => {
-        beforeEach(
-            waitForAsync(() => {
-                errorOptions.appearance = 'text';
-                TestBed.configureTestingModule({
-                    declarations: [BasicError, ConfigurableError],
-                    imports: [NxErrorModule],
-                    providers: [{ provide: ERROR_DEFAULT_OPTIONS, useValue: errorOptions }],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            errorOptions.appearance = 'text';
+            TestBed.configureTestingModule({
+                declarations: [BasicError, ConfigurableError],
+                imports: [NxErrorModule],
+                providers: [{ provide: ERROR_DEFAULT_OPTIONS, useValue: errorOptions }],
+            }).compileComponents();
+        }));
 
         it('creates an error with the correct appearance', () => {
             createTestComponent(BasicError);

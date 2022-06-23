@@ -12,24 +12,22 @@ import { NxMultiYearViewComponent, yearsPerPage, yearsPerRow } from './multi-yea
 describe('NxMultiYearView', () => {
     let dir: { value: Direction };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-                declarations: [
-                    NxCalendarBodyComponent,
-                    NxMultiYearViewComponent,
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+            declarations: [
+                NxCalendarBodyComponent,
+                NxMultiYearViewComponent,
 
-                    // Test components.
-                    StandardMultiYearView,
-                    MultiYearViewWithDateFilter,
-                ],
-                providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
-            });
+                // Test components.
+                StandardMultiYearView,
+                MultiYearViewWithDateFilter,
+            ],
+            providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
+        });
 
-            TestBed.compileComponents();
-        }),
-    );
+        TestBed.compileComponents();
+    }));
 
     describe('standard multi-year view', () => {
         let fixture: ComponentFixture<StandardMultiYearView>;

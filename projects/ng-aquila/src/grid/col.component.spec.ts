@@ -31,30 +31,28 @@ describe('NxColDirective', () => {
         return column?.nativeElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicTestNxColFourInputs,
-                    BasicTestNxColTwoInputs,
-                    BasicTestNxColTrheeInputs,
-                    BasicTestNxColOneInputs,
-                    BasicTestNxColEmptyInputs,
-                    BasicTestNxColClassTest,
-                    BasicTestNxOrderInputs,
-                    BasicTestColAlignSelf,
-                    BasicTestColOrder,
-                    OffsetTest,
-                    OffsetTestTwoInputs,
-                    OffsetTestThreeInputs,
-                    OffsetTestFourInputs,
-                    OffsetTestFourInputsWithZero,
-                    DynamicTest,
-                ],
-                imports: [NxGridModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicTestNxColFourInputs,
+                BasicTestNxColTwoInputs,
+                BasicTestNxColTrheeInputs,
+                BasicTestNxColOneInputs,
+                BasicTestNxColEmptyInputs,
+                BasicTestNxColClassTest,
+                BasicTestNxOrderInputs,
+                BasicTestColAlignSelf,
+                BasicTestColOrder,
+                OffsetTest,
+                OffsetTestTwoInputs,
+                OffsetTestThreeInputs,
+                OffsetTestFourInputs,
+                OffsetTestFourInputsWithZero,
+                DynamicTest,
+            ],
+            imports: [NxGridModule],
+        }).compileComponents();
+    }));
 
     it('should test with input cols 8,3,5,7', () => {
         expect(

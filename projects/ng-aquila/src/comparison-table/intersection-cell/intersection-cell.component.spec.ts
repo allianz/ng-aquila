@@ -39,15 +39,13 @@ describe('NxComparisonTableIntersectionCell', () => {
         toggleSectionInstance = testInstance.toggleSectionInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [IntersectionCellComponent, ToggleSectionComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [IntersectionCellComponent, ToggleSectionComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('renders the content', () => {

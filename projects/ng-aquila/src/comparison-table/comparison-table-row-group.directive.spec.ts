@@ -40,15 +40,13 @@ describe('NxComparisonTableRowGroupDirective', () => {
         flexRowElements = rowGroupElement ? rowGroupElement.queryAll(By.css('nx-comparison-table-flex-row')) : null;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicComponent, ConfigurableComponent, ToggleSectionComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [BasicComponent, ConfigurableComponent, ToggleSectionComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('should show expandable button area correctly', () => {
@@ -236,17 +234,15 @@ describe('NxComparisonTableRowGroupDirective using injection token', () => {
         rowGroupElement = fixture.debugElement.query(By.css('nx-comparison-table-desktop-group'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            comparisonTableDefaultOptions.useFullRowForExpandableArea = true;
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicComponent, ConfigurableComponent],
-                providers: [{ provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableDefaultOptions }],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        comparisonTableDefaultOptions.useFullRowForExpandableArea = true;
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [BasicComponent, ConfigurableComponent],
+            providers: [{ provide: COMPARISON_TABLE_DEFAULT_OPTIONS, useValue: comparisonTableDefaultOptions }],
+        });
+        TestBed.compileComponents();
+    }));
 
     it('changes useFullRowForExpandableArea on injection token change', inject(
         [COMPARISON_TABLE_DEFAULT_OPTIONS],

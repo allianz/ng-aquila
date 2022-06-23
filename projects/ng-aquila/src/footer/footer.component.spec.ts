@@ -23,14 +23,12 @@ describe(NxFooterComponent.name, () => {
         footerNativeElement = fixture.nativeElement.querySelector('nx-footer') as HTMLElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicFooter],
-                imports: [NxFooterModule],
-            });
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicFooter],
+            imports: [NxFooterModule],
+        });
+    }));
 
     describe('basic footer', () => {
         beforeEach(() => {

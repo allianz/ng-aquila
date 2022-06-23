@@ -28,15 +28,13 @@ describe('ToggleSectionHeaderComponent', () => {
         rowInstances = testInstance.rowInstances;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [BasicComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('sets numberOfRows correctly', () => {

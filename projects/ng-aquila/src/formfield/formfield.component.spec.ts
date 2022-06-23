@@ -64,28 +64,26 @@ describe('NxFormfieldComponent', () => {
     }
 
     describe('basic', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    imports: [ReactiveFormsModule, FormsModule, NxInputModule],
-                    declarations: [
-                        BasicFormfield,
-                        NoInputFormfield,
-                        DirectivesFormfield,
-                        ErrorFormfield,
-                        NoteFormfield,
-                        NgModelFormfield,
-                        FloatingFormfield,
-                        CustomLabelAndInputFormfield,
-                        CustomLabelFormfield,
-                        OutlineFormfield,
-                        OnPushFormfield,
-                        NativeSelectFormfield,
-                        ConditionalInputComponent,
-                    ],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+                declarations: [
+                    BasicFormfield,
+                    NoInputFormfield,
+                    DirectivesFormfield,
+                    ErrorFormfield,
+                    NoteFormfield,
+                    NgModelFormfield,
+                    FloatingFormfield,
+                    CustomLabelAndInputFormfield,
+                    CustomLabelFormfield,
+                    OutlineFormfield,
+                    OnPushFormfield,
+                    NativeSelectFormfield,
+                    ConditionalInputComponent,
+                ],
+            }).compileComponents();
+        }));
 
         it('creates a formfield', () => {
             createTestComponent(BasicFormfield);
@@ -349,17 +347,15 @@ describe('NxFormfieldComponent', () => {
     });
 
     describe('Default options', () => {
-        beforeEach(
-            waitForAsync(() => {
-                formfieldDefaultOptions.appearance = 'outline';
-                formfieldDefaultOptions.nxFloatLabel = 'always';
-                TestBed.configureTestingModule({
-                    imports: [ReactiveFormsModule, FormsModule, NxInputModule],
-                    declarations: [BasicFormfield, OutlineFormfield, FloatingFormfield],
-                    providers: [{ provide: FORMFIELD_DEFAULT_OPTIONS, useValue: formfieldDefaultOptions }],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            formfieldDefaultOptions.appearance = 'outline';
+            formfieldDefaultOptions.nxFloatLabel = 'always';
+            TestBed.configureTestingModule({
+                imports: [ReactiveFormsModule, FormsModule, NxInputModule],
+                declarations: [BasicFormfield, OutlineFormfield, FloatingFormfield],
+                providers: [{ provide: FORMFIELD_DEFAULT_OPTIONS, useValue: formfieldDefaultOptions }],
+            }).compileComponents();
+        }));
 
         it('should have an "auto" appearance if empty default options are provided', inject(
             [FORMFIELD_DEFAULT_OPTIONS],

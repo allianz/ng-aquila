@@ -28,15 +28,13 @@ describe('NxComparisonTableRowDirective', () => {
         cellInstances = testInstance.cellInstances;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule],
-                declarations: [BasicComponent, DynamicTypeComponent, NonStickyHeaderComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule],
+            declarations: [BasicComponent, DynamicTypeComponent, NonStickyHeaderComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('should have type "content" by default', () => {

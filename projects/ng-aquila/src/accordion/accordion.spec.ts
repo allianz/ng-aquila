@@ -6,15 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NxAccordionDirective, NxAccordionModule, NxExpansionPanelComponent } from './index';
 
 describe('NxAccordion', () => {
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [BrowserAnimationsModule, NxAccordionModule],
-                declarations: [NestedPanel, SetOfItems],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [BrowserAnimationsModule, NxAccordionModule],
+            declarations: [NestedPanel, SetOfItems],
+        });
+        TestBed.compileComponents();
+    }));
 
     it('should ensure only one item is expanded at a time', () => {
         const fixture = TestBed.createComponent(SetOfItems);

@@ -34,14 +34,12 @@ describe(NxTableComponent.name, () => {
         tableElement = fixture.debugElement.query(By.css('table'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [SimpleTableComponent, ZebraTableComponent, CondensedTableComponent, NxExpandableTableDirective],
-                imports: [NxTableModule, NoopAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [SimpleTableComponent, ZebraTableComponent, CondensedTableComponent, NxExpandableTableDirective],
+            imports: [NxTableModule, NoopAnimationsModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('has created the component', () => {

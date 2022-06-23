@@ -29,14 +29,12 @@ describe(NxExpandableTableCellComponent.name, () => {
         expandableTableCellElement = fixture.debugElement.query(By.directive(NxExpandableTableCellComponent));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicExpandableTableCellComponent],
-                imports: [NxTableModule, NoopAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicExpandableTableCellComponent],
+            imports: [NxTableModule, NoopAnimationsModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

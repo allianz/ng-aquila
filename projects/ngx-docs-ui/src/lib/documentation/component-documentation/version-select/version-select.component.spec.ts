@@ -39,18 +39,16 @@ describe('NxvVersionSelectComponent', () => {
         return overlayContainer.getContainerElement().querySelectorAll('[nxContextMenuItem]');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxvVersionSelectModule, BrowserAnimationsModule],
-                declarations: [BasicVersionSelect, VersionSelectWithToken],
-            }).compileComponents();
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxvVersionSelectModule, BrowserAnimationsModule],
+            declarations: [BasicVersionSelect, VersionSelectWithToken],
+        }).compileComponents();
 
-            inject([OverlayContainer], (oc: OverlayContainer) => {
-                overlayContainer = oc;
-            })();
-        }),
-    );
+        inject([OverlayContainer], (oc: OverlayContainer) => {
+            overlayContainer = oc;
+        })();
+    }));
 
     afterEach(() => {
         overlayContainer.ngOnDestroy();

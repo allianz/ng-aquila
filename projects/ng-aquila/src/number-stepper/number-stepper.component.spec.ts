@@ -55,27 +55,25 @@ describe('NxNumberStepperComponent', () => {
         stepperNativeElement = stepperDebugElement.nativeElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
-                providers: [{ provide: NxNumberStepperIntl, useClass: MyIntl }],
-                declarations: [
-                    BasicStepper,
-                    SimpleBindingStepper,
-                    ConfigurableStepper,
-                    NgModelStepper,
-                    ResizeOnInitTest,
-                    StepperOnPush,
-                    ResizeOnInitTestOnPush,
-                    DirectivesStepper,
-                    ReactiveFormStepper,
-                    ReactiveFormOnBlurStepper,
-                    DisableableStepper,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNumberStepperModule, FormsModule, ReactiveFormsModule],
+            providers: [{ provide: NxNumberStepperIntl, useClass: MyIntl }],
+            declarations: [
+                BasicStepper,
+                SimpleBindingStepper,
+                ConfigurableStepper,
+                NgModelStepper,
+                ResizeOnInitTest,
+                StepperOnPush,
+                ResizeOnInitTestOnPush,
+                DirectivesStepper,
+                ReactiveFormStepper,
+                ReactiveFormOnBlurStepper,
+                DisableableStepper,
+            ],
+        }).compileComponents();
+    }));
 
     function clickUp() {
         upButton.click();

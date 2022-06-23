@@ -23,22 +23,17 @@ describe('NxIndicatorComponent', () => {
         indicatorNativeElement = fixture.nativeElement.querySelector('nx-indicator') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicIndicator],
-                imports: [NxIndicatorModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicIndicator],
+            imports: [NxIndicatorModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the component',
-        waitForAsync(() => {
-            createTestComponent(BasicIndicator);
-            expect(indicatorInstance).toBeTruthy();
-        }),
-    );
+    it('creates the component', waitForAsync(() => {
+        createTestComponent(BasicIndicator);
+        expect(indicatorInstance).toBeTruthy();
+    }));
 
     describe('basic indicator', () => {
         beforeEach(() => {

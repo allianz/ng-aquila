@@ -75,14 +75,12 @@ describe('NxPageSearchComponent', () => {
         });
     });
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [PageSearchSimpleComponent, PageSearchHideButtonComponent],
-                imports: [NxPageSearchModule, NxAutocompleteModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [PageSearchSimpleComponent, PageSearchHideButtonComponent],
+            imports: [NxPageSearchModule, NxAutocompleteModule],
+        }).compileComponents();
+    }));
 });
 
 @Directive()

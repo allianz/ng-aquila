@@ -37,14 +37,12 @@ describe('NxDatepickerToggleComponent', () => {
         inputNativeElement = fixture.nativeElement.querySelector('input');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicToggleDateComponent, ConfigurableToggleDateComponent, DoubleToggleErrorComponent, ReadonlyDatefield],
-                imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicToggleDateComponent, ConfigurableToggleDateComponent, DoubleToggleErrorComponent, ReadonlyDatefield],
+            imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
+        }).compileComponents();
+    }));
 
     it('should set tabindex on default', () => {
         createTestComponent(BasicToggleDateComponent);
@@ -118,16 +116,14 @@ describe('NxDatepickerToggleComponent using injection token', () => {
         toggleInstance = testInstance.toggleInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            datepickerOptions.toggleIconTabindex = -1;
-            TestBed.configureTestingModule({
-                declarations: [BasicToggleDateComponent, ConfigurableToggleDateComponent],
-                imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
-                providers: [{ provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerOptions }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        datepickerOptions.toggleIconTabindex = -1;
+        TestBed.configureTestingModule({
+            declarations: [BasicToggleDateComponent, ConfigurableToggleDateComponent],
+            imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule],
+            providers: [{ provide: DATEPICKER_DEFAULT_OPTIONS, useValue: datepickerOptions }],
+        }).compileComponents();
+    }));
 
     it('changes the tabindex on injection token change', inject([DATEPICKER_DEFAULT_OPTIONS], (defaultOptions: DatepickerDefaultOptions) => {
         createTestComponent(BasicToggleDateComponent);

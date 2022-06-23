@@ -28,23 +28,21 @@ describe('NxToggleButton', () => {
         fixture.detectChanges();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    SimpleCircleToggleButtonComponent,
-                    PreselectedCircleToggleButtoncComponent,
-                    NgModelToggleButtonComponent,
-                    ReactiveToggleButtonComponent,
-                    DisabledToggleButtonComponent,
-                    SvgCircleToggleButtonComponent,
-                    CircleToggleButtonOnPushComponent,
-                    TextCircleToggleButtonComponent,
-                ],
-                imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                SimpleCircleToggleButtonComponent,
+                PreselectedCircleToggleButtoncComponent,
+                NgModelToggleButtonComponent,
+                ReactiveToggleButtonComponent,
+                DisabledToggleButtonComponent,
+                SvgCircleToggleButtonComponent,
+                CircleToggleButtonOnPushComponent,
+                TextCircleToggleButtonComponent,
+            ],
+            imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
     it('should change the checked attribute of the toggle button when clicked', () => {
         createTestComponent(SimpleCircleToggleButtonComponent);

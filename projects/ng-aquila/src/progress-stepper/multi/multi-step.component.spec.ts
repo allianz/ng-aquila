@@ -40,21 +40,19 @@ describe('NxMultiStepperComponent', () => {
         return fixture.nativeElement.querySelectorAll('nx-multi-step-item');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    MultiStepBasicTest,
-                    LinearStepBasicTest,
-                    MultiStepCompletionTest,
-                    MultiStepValidationTest,
-                    MultiStepDirectionTest,
-                    MultiStepGroupTest,
-                ],
-                imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                MultiStepBasicTest,
+                LinearStepBasicTest,
+                MultiStepCompletionTest,
+                MultiStepValidationTest,
+                MultiStepDirectionTest,
+                MultiStepGroupTest,
+            ],
+            imports: [NxProgressStepperModule, NxInputModule, NxFormfieldModule, FormsModule, ReactiveFormsModule, NxDropdownModule],
+        }).compileComponents();
+    }));
 
     it('should create the component', fakeAsync(() => {
         createTestComponent(MultiStepBasicTest);

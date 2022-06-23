@@ -24,34 +24,26 @@ describe(NxHeaderComponent.name, () => {
         headerNativeElement = fixture.nativeElement.querySelector('nx-header') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicHeader, MultiRowHeader, CobrandingHeader],
-                imports: [NxHeaderModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicHeader, MultiRowHeader, CobrandingHeader],
+            imports: [NxHeaderModule],
+        }).compileComponents();
+    }));
 
     describe('basic header', () => {
         beforeEach(() => {
             createTestComponent(BasicHeader);
         });
 
-        it(
-            'creates the header',
-            waitForAsync(() => {
-                expect(headerInstance).toBeTruthy();
-            }),
-        );
+        it('creates the header', waitForAsync(() => {
+            expect(headerInstance).toBeTruthy();
+        }));
 
-        it(
-            'default header includes the bem block element',
-            waitForAsync(() => {
-                expect(headerNativeElement).toHaveClass('nx-header');
-                expect(headerNativeElement).toHaveClass('nx-header--single-row');
-            }),
-        );
+        it('default header includes the bem block element', waitForAsync(() => {
+            expect(headerNativeElement).toHaveClass('nx-header');
+            expect(headerNativeElement).toHaveClass('nx-header--single-row');
+        }));
 
         it('header navigation section has bem class', () => {
             expect(headerNativeElement.querySelector('nx-header-navigation')).toHaveClass('nx-header__navigation');
@@ -91,19 +83,13 @@ describe(NxHeaderComponent.name, () => {
             createTestComponent(MultiRowHeader);
         });
 
-        it(
-            'header does not include the single row class',
-            waitForAsync(() => {
-                expect(headerNativeElement).not.toHaveClass('nx-header--single-row');
-            }),
-        );
+        it('header does not include the single row class', waitForAsync(() => {
+            expect(headerNativeElement).not.toHaveClass('nx-header--single-row');
+        }));
 
-        it(
-            'header row contains bem class',
-            waitForAsync(() => {
-                expect(headerNativeElement.querySelector('nx-header-row')).toHaveClass('nx-header__row');
-            }),
-        );
+        it('header row contains bem class', waitForAsync(() => {
+            expect(headerNativeElement.querySelector('nx-header-row')).toHaveClass('nx-header__row');
+        }));
     });
 
     describe('Header actions separator', () => {
@@ -111,15 +97,12 @@ describe(NxHeaderComponent.name, () => {
             createTestComponent(CobrandingHeader);
         });
 
-        it(
-            'Should have separator',
-            waitForAsync(() => {
-                expect(fixture.nativeElement.querySelector('.nx-header__actions')).not.toHaveClass('nx-header__actions--show-separator');
-                testInstance.showSeparator = true;
-                fixture.detectChanges();
-                expect(fixture.nativeElement.querySelector('.nx-header__actions')).toHaveClass('nx-header__actions--show-separator');
-            }),
-        );
+        it('Should have separator', waitForAsync(() => {
+            expect(fixture.nativeElement.querySelector('.nx-header__actions')).not.toHaveClass('nx-header__actions--show-separator');
+            testInstance.showSeparator = true;
+            fixture.detectChanges();
+            expect(fixture.nativeElement.querySelector('.nx-header__actions')).toHaveClass('nx-header__actions--show-separator');
+        }));
     });
 
     describe('a11y', () => {

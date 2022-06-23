@@ -30,14 +30,12 @@ describe(NxTableRowComponent.name, () => {
         tableRowElement = fixture.debugElement.query(By.directive(NxTableRowComponent));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicTableRowComponent, SelectableTableRowComponent],
-                imports: [NxTableModule, NxDropdownModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicTableRowComponent, SelectableTableRowComponent],
+            imports: [NxTableModule, NxDropdownModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

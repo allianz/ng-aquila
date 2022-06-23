@@ -36,29 +36,27 @@ describe('NxRadioComponent', () => {
         labelElements = fixture.nativeElement.querySelectorAll('label') as NodeListOf<HTMLLabelElement>;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
-                declarations: [
-                    BasicRadio,
-                    LabellessRadio,
-                    ConfigurableRadio,
-                    BasicRadioGroup,
-                    MultipleRadio,
-                    DynamicRadio,
-                    MultipleRadioDisabled,
-                    GroupWithNgModel,
-                    ReactiveRadio,
-                    BasicRadioOnPush,
-                    MultipleRadioOnPush,
-                    RadioGroupTest,
-                    RadioGroupValidation,
-                    RadioGroupValidationTouched,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxRadioModule, FormsModule, ReactiveFormsModule, NxLabelModule, NxErrorModule],
+            declarations: [
+                BasicRadio,
+                LabellessRadio,
+                ConfigurableRadio,
+                BasicRadioGroup,
+                MultipleRadio,
+                DynamicRadio,
+                MultipleRadioDisabled,
+                GroupWithNgModel,
+                ReactiveRadio,
+                BasicRadioOnPush,
+                MultipleRadioOnPush,
+                RadioGroupTest,
+                RadioGroupValidation,
+                RadioGroupValidationTouched,
+            ],
+        }).compileComponents();
+    }));
 
     function getRadioLabelElement(radioElement: HTMLElement): HTMLLabelElement {
         return radioElement.querySelector('label')!;

@@ -28,14 +28,12 @@ describe('NxAnchorPlainButtonComponent', () => {
         buttonElement = fixture.nativeElement.querySelector('a') as HTMLAnchorElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxButtonModule],
-                declarations: [BasicButton],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxButtonModule],
+            declarations: [BasicButton],
+        }).compileComponents();
+    }));
 
     it('should create the button component', () => {
         createTestComponent(BasicButton);

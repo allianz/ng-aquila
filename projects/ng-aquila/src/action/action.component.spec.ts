@@ -26,33 +26,25 @@ describe(NxActionComponent.name, () => {
         actionElement = fixture.nativeElement.querySelector('[nxAction]');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicAction, DefaultAction],
-                imports: [NxActionModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicAction, DefaultAction],
+            imports: [NxActionModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {
             createTestComponent(BasicAction);
         });
 
-        it(
-            'creates the action',
-            waitForAsync(() => {
-                expect(actionInstance).toBeTruthy();
-            }),
-        );
+        it('creates the action', waitForAsync(() => {
+            expect(actionInstance).toBeTruthy();
+        }));
 
-        it(
-            'default action includes the bem block element',
-            waitForAsync(() => {
-                expect(actionElement).toHaveClass('nx-action');
-            }),
-        );
+        it('default action includes the bem block element', waitForAsync(() => {
+            expect(actionElement).toHaveClass('nx-action');
+        }));
 
         it('is not selected', () => {
             expect(actionElement).not.toHaveClass('is-selected');

@@ -28,13 +28,11 @@ describe('NxMomentDateAdapter', () => {
             .toBe(valid);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxMomentDateModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxMomentDateModule],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([NxDateAdapter], (dateAdapter: NxMomentDateAdapter) => {
         moment.locale('en');

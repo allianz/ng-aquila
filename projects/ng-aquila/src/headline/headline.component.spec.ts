@@ -29,73 +29,59 @@ describe('NxHeadlineDirective', () => {
         fixture.detectChanges();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicHeadline, HeadlineWithArbitraryClass],
-                imports: [NxHeadlineModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicHeadline, HeadlineWithArbitraryClass],
+            imports: [NxHeadlineModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the Headline',
-        waitForAsync(() => {
-            createTestComponent(BasicHeadline);
-            expect(headlineInstance).toBeTruthy();
-        }),
-    );
+    it('creates the Headline', waitForAsync(() => {
+        createTestComponent(BasicHeadline);
+        expect(headlineInstance).toBeTruthy();
+    }));
 
-    it(
-        'should use type section by default',
-        waitForAsync(() => {
-            createTestComponent(BasicHeadline);
-            setSize('section');
-            expect(headlineNativeElement).toHaveClass('nx-heading--section');
-        }),
-    );
+    it('should use type section by default', waitForAsync(() => {
+        createTestComponent(BasicHeadline);
+        setSize('section');
+        expect(headlineNativeElement).toHaveClass('nx-heading--section');
+    }));
 
-    it(
-        'creates full modifier class from a correct keyword',
-        waitForAsync(() => {
-            createTestComponent(BasicHeadline);
-            setSize('page');
-            expect(headlineNativeElement).toHaveClass('nx-heading--page');
+    it('creates full modifier class from a correct keyword', waitForAsync(() => {
+        createTestComponent(BasicHeadline);
+        setSize('page');
+        expect(headlineNativeElement).toHaveClass('nx-heading--page');
 
-            setSize('page-bold-caps');
-            expect(headlineNativeElement).toHaveClass('nx-heading--page-bold-caps');
+        setSize('page-bold-caps');
+        expect(headlineNativeElement).toHaveClass('nx-heading--page-bold-caps');
 
-            setSize('section');
-            expect(headlineNativeElement).toHaveClass('nx-heading--section');
+        setSize('section');
+        expect(headlineNativeElement).toHaveClass('nx-heading--section');
 
-            setSize('subsection-large');
-            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-large');
+        setSize('subsection-large');
+        expect(headlineNativeElement).toHaveClass('nx-heading--subsection-large');
 
-            setSize('subsection-medium');
-            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-medium');
+        setSize('subsection-medium');
+        expect(headlineNativeElement).toHaveClass('nx-heading--subsection-medium');
 
-            setSize('subsection-small');
-            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-small');
+        setSize('subsection-small');
+        expect(headlineNativeElement).toHaveClass('nx-heading--subsection-small');
 
-            setSize('subsection-xsmall');
-            expect(headlineNativeElement).toHaveClass('nx-heading--subsection-xsmall');
+        setSize('subsection-xsmall');
+        expect(headlineNativeElement).toHaveClass('nx-heading--subsection-xsmall');
 
-            setSize('negative');
-            expect(headlineNativeElement).toHaveClass('nx-heading--negative');
+        setSize('negative');
+        expect(headlineNativeElement).toHaveClass('nx-heading--negative');
 
-            setSize('section negative');
-            expect(headlineNativeElement).toHaveClass('nx-heading--section');
-            expect(headlineNativeElement).toHaveClass('nx-heading--negative');
-        }),
-    );
+        setSize('section negative');
+        expect(headlineNativeElement).toHaveClass('nx-heading--section');
+        expect(headlineNativeElement).toHaveClass('nx-heading--negative');
+    }));
 
-    it(
-        'passes through an unknown class',
-        waitForAsync(() => {
-            createTestComponent(HeadlineWithArbitraryClass);
-            expect(headlineNativeElement).toHaveClass('some-arbitray-class-name');
-        }),
-    );
+    it('passes through an unknown class', waitForAsync(() => {
+        createTestComponent(HeadlineWithArbitraryClass);
+        expect(headlineNativeElement).toHaveClass('some-arbitray-class-name');
+    }));
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {

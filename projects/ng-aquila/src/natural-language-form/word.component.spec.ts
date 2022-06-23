@@ -33,28 +33,24 @@ describe('NxNaturalLanguageFormComponent', () => {
         formInstance = testInstance.formInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
-                declarations: [
-                    NaturalLanguageFormBasicComponent,
-                    NaturalLanguageFormErrorComponent,
-                    NaturalLanguageFormSizesComponent,
-                    NaturalLanguageFormSmallComponent,
-                    FormWithPreviousFormfieldComponent,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNaturalLanguageFormModule, FormsModule, ReactiveFormsModule, NxInputModule],
+            declarations: [
+                NaturalLanguageFormBasicComponent,
+                NaturalLanguageFormErrorComponent,
+                NaturalLanguageFormSizesComponent,
+                NaturalLanguageFormSmallComponent,
+                FormWithPreviousFormfieldComponent,
+            ],
+        }).compileComponents();
+    }));
 
-    beforeEach(
-        waitForAsync(() => {
-            inject([OverlayContainer], (oc: OverlayContainer) => {
-                overlayContainer = oc;
-            })();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        inject([OverlayContainer], (oc: OverlayContainer) => {
+            overlayContainer = oc;
+        })();
+    }));
 
     afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
         // Since we're resetting the testing module in some of the tests,

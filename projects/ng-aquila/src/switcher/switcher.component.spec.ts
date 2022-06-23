@@ -40,22 +40,20 @@ describe('NxSwitcherComponent', () => {
         expect(inputElement.getAttribute('aria-checked')).toBe(checked.toString());
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicSwitcher,
-                    SwitcherTemplateDriven,
-                    SwitcherReactiveForm,
-                    BasicSwitcherOnPush,
-                    LabelSizeSwitcher,
-                    ValidationSwitcherForm,
-                    LabellessSwitcher,
-                ],
-                imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicSwitcher,
+                SwitcherTemplateDriven,
+                SwitcherReactiveForm,
+                BasicSwitcherOnPush,
+                LabelSizeSwitcher,
+                ValidationSwitcherForm,
+                LabellessSwitcher,
+            ],
+            imports: [NxSwitcherModule, FormsModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
     it('creates switcher with label', () => {
         createTestComponent(BasicSwitcher);

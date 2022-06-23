@@ -31,49 +31,38 @@ describe('NxImageDirective', () => {
         fixture.detectChanges();
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicImage, FigureWithModifier],
-                imports: [NxImageModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicImage, FigureWithModifier],
+            imports: [NxImageModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the Image',
-        waitForAsync(() => {
-            createTestComponent(BasicImage);
-            expect(imageInstance).toBeTruthy();
-        }),
-    );
+    it('creates the Image', waitForAsync(() => {
+        createTestComponent(BasicImage);
+        expect(imageInstance).toBeTruthy();
+    }));
 
-    it(
-        'includes the nx-image--auto class by default',
-        waitForAsync(() => {
-            createTestComponent(BasicImage);
-            expect(figureNativeElement).toHaveClass('nx-image--auto');
-        }),
-    );
+    it('includes the nx-image--auto class by default', waitForAsync(() => {
+        createTestComponent(BasicImage);
+        expect(figureNativeElement).toHaveClass('nx-image--auto');
+    }));
 
-    it(
-        'creates full modifier class from a correct keyword',
-        waitForAsync(() => {
-            createTestComponent(FigureWithModifier);
-            setKeyword('1by1');
-            expect(figureNativeElement).toHaveClass('nx-image--1by1');
-            setKeyword('1by1dot1');
-            expect(figureNativeElement).toHaveClass('nx-image--1by1dot1');
-            setKeyword('1dot8by1');
-            expect(figureNativeElement).toHaveClass('nx-image--1dot8by1');
-            setKeyword('1dot2by1');
-            expect(figureNativeElement).toHaveClass('nx-image--1dot2by1');
-            setKeyword('2dot6by1');
-            expect(figureNativeElement).toHaveClass('nx-image--2dot6by1');
-            setKeyword('rounded');
-            expect(figureNativeElement).toHaveClass('nx-image--rounded');
-        }),
-    );
+    it('creates full modifier class from a correct keyword', waitForAsync(() => {
+        createTestComponent(FigureWithModifier);
+        setKeyword('1by1');
+        expect(figureNativeElement).toHaveClass('nx-image--1by1');
+        setKeyword('1by1dot1');
+        expect(figureNativeElement).toHaveClass('nx-image--1by1dot1');
+        setKeyword('1dot8by1');
+        expect(figureNativeElement).toHaveClass('nx-image--1dot8by1');
+        setKeyword('1dot2by1');
+        expect(figureNativeElement).toHaveClass('nx-image--1dot2by1');
+        setKeyword('2dot6by1');
+        expect(figureNativeElement).toHaveClass('nx-image--2dot6by1');
+        setKeyword('rounded');
+        expect(figureNativeElement).toHaveClass('nx-image--rounded');
+    }));
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {

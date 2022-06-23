@@ -46,36 +46,34 @@ describe('NxAutocompleteComponent:', () => {
         return getAutocompletePanel().querySelectorAll('.nx-autocomplete-option');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicAutocompleteComponent,
-                    ShadowAutoCompleteComponent,
-                    CustomAutocompleteComponent,
-                    ComplexDataAutocompleteComponent,
-                    NgModelBindingAutocompleteComponent,
-                    ReactiveAutocompleteComponent,
-                    AutocompleteInModalComponent,
-                    AutocompleteComponentWithDirection,
-                ],
-                imports: [
-                    CommonModule,
-                    OverlayModule,
-                    NxAutocompleteModule,
-                    NxInputModule,
-                    FormsModule,
-                    ReactiveFormsModule,
-                    NoopAnimationsModule,
-                    NxModalModule.forRoot(),
-                ],
-            }).compileComponents();
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicAutocompleteComponent,
+                ShadowAutoCompleteComponent,
+                CustomAutocompleteComponent,
+                ComplexDataAutocompleteComponent,
+                NgModelBindingAutocompleteComponent,
+                ReactiveAutocompleteComponent,
+                AutocompleteInModalComponent,
+                AutocompleteComponentWithDirection,
+            ],
+            imports: [
+                CommonModule,
+                OverlayModule,
+                NxAutocompleteModule,
+                NxInputModule,
+                FormsModule,
+                ReactiveFormsModule,
+                NoopAnimationsModule,
+                NxModalModule.forRoot(),
+            ],
+        }).compileComponents();
 
-            inject([OverlayContainer], (oc: OverlayContainer) => {
-                overlayContainer = oc;
-            })();
-        }),
-    );
+        inject([OverlayContainer], (oc: OverlayContainer) => {
+            overlayContainer = oc;
+        })();
+    }));
 
     it('should open the overlay when typing into the input field', fakeAsync(() => {
         createTestComponent(BasicAutocompleteComponent);

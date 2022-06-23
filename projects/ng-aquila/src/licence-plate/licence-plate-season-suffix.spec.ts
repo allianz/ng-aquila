@@ -28,14 +28,12 @@ describe('NxLicencePlateSeasonSuffixComponent', () => {
         element = fixture.debugElement.nativeElement.querySelector('nx-licence-plate-season-suffix');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicLicencePlateSeasonSuffix],
-                imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicLicencePlateSeasonSuffix],
+            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         createTestComponent(BasicLicencePlateSeasonSuffix);

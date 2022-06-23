@@ -59,14 +59,12 @@ describe('shared utils', () => {
     });
 
     describe('appendClasses/removeClasses', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    declarations: [TestComponent],
-                    imports: [],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [TestComponent],
+                imports: [],
+            }).compileComponents();
+        }));
 
         it('should append classes', () => {
             const fixture = TestBed.createComponent(TestComponent);

@@ -13,24 +13,22 @@ import { NxMonthViewComponent } from './month-view';
 describe('NxMonthView', () => {
     let dir: { value: Direction };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-                declarations: [
-                    NxCalendarBodyComponent,
-                    NxMonthViewComponent,
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+            declarations: [
+                NxCalendarBodyComponent,
+                NxMonthViewComponent,
 
-                    // Test components.
-                    StandardMonthView,
-                    MonthViewWithDateFilter,
-                ],
-                providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
-            });
+                // Test components.
+                StandardMonthView,
+                MonthViewWithDateFilter,
+            ],
+            providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
+        });
 
-            TestBed.compileComponents();
-        }),
-    );
+        TestBed.compileComponents();
+    }));
 
     function assertAdjacentCells(cells: NxCalendarCell[], assertValues: number[]) {
         expect(cells).toHaveSize(assertValues.length);

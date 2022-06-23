@@ -21,14 +21,12 @@ describe('NxAnchorButtonComponent', () => {
     let buttonInstance: NxAnchorButtonComponent;
     let buttonNativeElement: HTMLAnchorElement;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [AnchorButton],
-                imports: [NxIconModule, NxButtonModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [AnchorButton],
+            imports: [NxIconModule, NxButtonModule],
+        }).compileComponents();
+    }));
 
     function createTestComponent(component: Type<AnchorButton>) {
         fixture = TestBed.createComponent(component);
@@ -38,13 +36,10 @@ describe('NxAnchorButtonComponent', () => {
         buttonNativeElement = fixture.nativeElement.querySelector('a') as HTMLAnchorElement;
     }
 
-    it(
-        'creates the button',
-        waitForAsync(() => {
-            createTestComponent(AnchorButton);
-            expect(buttonInstance).toBeTruthy();
-        }),
-    );
+    it('creates the button', waitForAsync(() => {
+        createTestComponent(AnchorButton);
+        expect(buttonInstance).toBeTruthy();
+    }));
 
     it('prevents default when the anchor button is disabled', fakeAsync(() => {
         createTestComponent(AnchorButton);

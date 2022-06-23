@@ -24,44 +24,33 @@ describe('NxListComponent', () => {
         listNativeElement = fixture.nativeElement.querySelector('ul') as HTMLUListElement;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicList, ListWithModifier, ListWithIcons, ConfigurableList],
-                imports: [NxListModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicList, ListWithModifier, ListWithIcons, ConfigurableList],
+            imports: [NxListModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the List',
-        waitForAsync(() => {
-            createTestComponent(BasicList);
-            expect(listInstance).toBeTruthy();
-            expect(listInstance.type).toBe('normal');
-        }),
-    );
+    it('creates the List', waitForAsync(() => {
+        createTestComponent(BasicList);
+        expect(listInstance).toBeTruthy();
+        expect(listInstance.type).toBe('normal');
+    }));
 
-    it(
-        'creates full modifier class from a correct keyword',
-        waitForAsync(() => {
-            createTestComponent(ListWithModifier);
-            expect(listNativeElement).toHaveClass('nx-list--small');
-            expect(listNativeElement).toHaveClass('nx-list--ordered-circle');
-            expect(listNativeElement).toHaveClass('nx-list--negative');
-        }),
-    );
+    it('creates full modifier class from a correct keyword', waitForAsync(() => {
+        createTestComponent(ListWithModifier);
+        expect(listNativeElement).toHaveClass('nx-list--small');
+        expect(listNativeElement).toHaveClass('nx-list--ordered-circle');
+        expect(listNativeElement).toHaveClass('nx-list--negative');
+    }));
 
-    it(
-        'displays list icons',
-        waitForAsync(() => {
-            createTestComponent(ListWithIcons);
-            const icons = fixture.debugElement.queryAll(By.css('nx-icon'));
+    it('displays list icons', waitForAsync(() => {
+        createTestComponent(ListWithIcons);
+        const icons = fixture.debugElement.queryAll(By.css('nx-icon'));
 
-            expect(icons[0].componentInstance.name).toBe('check');
-            expect(icons[1].componentInstance.name).toBe('product-cross');
-        }),
-    );
+        expect(icons[0].componentInstance.name).toBe('check');
+        expect(icons[1].componentInstance.name).toBe('product-cross');
+    }));
 
     it('should update class names after input changes', fakeAsync(() => {
         createTestComponent(ConfigurableList);
@@ -79,15 +68,12 @@ describe('NxListComponent', () => {
         expect(listItems.item(0).querySelector('nx-icon')).toHaveClass('product-cross');
     });
 
-    it(
-        'Should change size',
-        waitForAsync(() => {
-            createTestComponent(ConfigurableList);
-            (testInstance as ConfigurableList).type = 'xsmall';
-            fixture.detectChanges();
-            expect(listNativeElement).toHaveClass('nx-list--xsmall');
-        }),
-    );
+    it('Should change size', waitForAsync(() => {
+        createTestComponent(ConfigurableList);
+        (testInstance as ConfigurableList).type = 'xsmall';
+        fixture.detectChanges();
+        expect(listNativeElement).toHaveClass('nx-list--xsmall');
+    }));
 
     describe('a11y', () => {
         it('has no accessibility violations', async () => {

@@ -12,14 +12,12 @@ describe('NxvTableOfContentsComponent', () => {
         return fixture.nativeElement.querySelector('nxv-table-of-contents').querySelectorAll('a');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxvTableOfContentsModule, BrowserAnimationsModule, RouterTestingModule],
-                declarations: [TableOfContentsTest],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxvTableOfContentsModule, BrowserAnimationsModule, RouterTestingModule],
+            declarations: [TableOfContentsTest],
+        }).compileComponents();
+    }));
 
     it('should only show known selectors', fakeAsync(() => {
         fixture = TestBed.createComponent(TableOfContentsTest);

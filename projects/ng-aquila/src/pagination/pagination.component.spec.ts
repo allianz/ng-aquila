@@ -66,25 +66,23 @@ describe('NxPaginationComponent', () => {
         mobilePageElements = fixture.nativeElement.querySelectorAll('.nx-pagination__item.nx-pagination__item--mobile .nx-pagination--number');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxPaginationModule, BidiModule],
-                declarations: [
-                    SimplePagination,
-                    SimplePaginationBeginat10,
-                    AdvancedPagination,
-                    AdvancedPaginationLess10,
-                    AdvancedPaginationMore10,
-                    AdvancedPaginationBeginat10,
-                    LocalizationToken,
-                    SimplePaginationWithDirection,
-                    AdvancedPaginationWithDirection,
-                ],
-                providers: [NxPaginationUtils, { provide: NX_PAGINATION_TEXTS, useValue: { previous: 'Before', next: 'Later' } }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxPaginationModule, BidiModule],
+            declarations: [
+                SimplePagination,
+                SimplePaginationBeginat10,
+                AdvancedPagination,
+                AdvancedPaginationLess10,
+                AdvancedPaginationMore10,
+                AdvancedPaginationBeginat10,
+                LocalizationToken,
+                SimplePaginationWithDirection,
+                AdvancedPaginationWithDirection,
+            ],
+            providers: [NxPaginationUtils, { provide: NX_PAGINATION_TEXTS, useValue: { previous: 'Before', next: 'Later' } }],
+        }).compileComponents();
+    }));
 
     describe('helpers', () => {
         it('should always yield the minimal reachable page', () => {
@@ -214,15 +212,12 @@ describe('NxPaginationComponent', () => {
     });
 
     describe('mobile pagination', () => {
-        it(
-            'should display advanced mobile pagination correctly',
-            waitForAsync(() => {
-                createTestComponent(AdvancedPagination);
-                fixture.detectChanges();
-                expect(mobileListElements).toHaveSize(3);
-                expect(mobilePageElements).toHaveSize(3);
-            }),
-        );
+        it('should display advanced mobile pagination correctly', waitForAsync(() => {
+            createTestComponent(AdvancedPagination);
+            fixture.detectChanges();
+            expect(mobileListElements).toHaveSize(3);
+            expect(mobilePageElements).toHaveSize(3);
+        }));
     });
 
     describe('localization', () => {

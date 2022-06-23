@@ -23,14 +23,12 @@ describe('NxBreadcrumbComponent', () => {
         breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item') as QueryList<HTMLElement>;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxBreadcrumbModule],
-                declarations: [BasicBreadcrumbComponent, BreadcrumbOnPushComponent, DynamicBreadcrumbComponent, LinkBreadcrumbComponent],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxBreadcrumbModule],
+            declarations: [BasicBreadcrumbComponent, BreadcrumbOnPushComponent, DynamicBreadcrumbComponent, LinkBreadcrumbComponent],
+        }).compileComponents();
+    }));
 
     it('should create the breadcrumb component', () => {
         createTestComponent(BasicBreadcrumbComponent);

@@ -44,41 +44,39 @@ describe('NxPopoverTriggerDirective', () => {
         buttonNativeElement = fixture.debugElement.query(By.css('button')).nativeElement as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [OverlayModule, NxPopoverModule],
-                declarations: [
-                    PopoverShowClose,
-                    PopoverHideClose,
-                    PopoverHoverComponent,
-                    PopoverClickComponent,
-                    PopoverHideCloseForClick,
-                    ModalPopover,
-                    LazyloadContent,
-                    NxTestComponent,
-                    PopoverFallBackComponent,
-                    ManualTrigger,
-                    ClickOnDocument,
-                    ScrollablePopover,
-                    PopoverWithinRTLContainer,
-                    PopoverClickShadowDomComponent,
-                    I18nTest,
-                ],
-            });
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [OverlayModule, NxPopoverModule],
+            declarations: [
+                PopoverShowClose,
+                PopoverHideClose,
+                PopoverHoverComponent,
+                PopoverClickComponent,
+                PopoverHideCloseForClick,
+                ModalPopover,
+                LazyloadContent,
+                NxTestComponent,
+                PopoverFallBackComponent,
+                ManualTrigger,
+                ClickOnDocument,
+                ScrollablePopover,
+                PopoverWithinRTLContainer,
+                PopoverClickShadowDomComponent,
+                I18nTest,
+            ],
+        });
 
-            // Simple trick to simulate that the user is using `preserveWhitespaces: true`
-            // as we had a bug with it. (see ngx-ndbx #3215)
-            // This shouldn't be an issue for the tests as they should work regardless,
-            // but it would indicate quickly if something is wrong
-            TestBed.overrideComponent(NxPopoverComponent, {
-                set: {
-                    preserveWhitespaces: true,
-                },
-            });
-            TestBed.compileComponents();
-        }),
-    );
+        // Simple trick to simulate that the user is using `preserveWhitespaces: true`
+        // as we had a bug with it. (see ngx-ndbx #3215)
+        // This shouldn't be an issue for the tests as they should work regardless,
+        // but it would indicate quickly if something is wrong
+        TestBed.overrideComponent(NxPopoverComponent, {
+            set: {
+                preserveWhitespaces: true,
+            },
+        });
+        TestBed.compileComponents();
+    }));
 
     beforeEach(() => {
         inject([OverlayContainer, FocusMonitor], (oc: OverlayContainer, fm: FocusMonitor) => {

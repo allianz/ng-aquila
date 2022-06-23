@@ -27,30 +27,22 @@ describe('NxLinkComponent', () => {
         linkDebugElement = fixture.debugElement.query(By.directive(NxLinkComponent));
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicLink, DynamicLink, IconLink, OnPushLink],
-                imports: [NxLinkModule, NxIconModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicLink, DynamicLink, IconLink, OnPushLink],
+            imports: [NxLinkModule, NxIconModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the Link',
-        waitForAsync(() => {
-            createTestComponent(BasicLink);
-            expect(linkInstance).toBeTruthy();
-        }),
-    );
+    it('creates the Link', waitForAsync(() => {
+        createTestComponent(BasicLink);
+        expect(linkInstance).toBeTruthy();
+    }));
 
-    it(
-        'default includes the bem block element',
-        waitForAsync(() => {
-            createTestComponent(BasicLink);
-            expect(linkDebugElement.nativeElement).toHaveClass('nx-link');
-        }),
-    );
+    it('default includes the bem block element', waitForAsync(() => {
+        createTestComponent(BasicLink);
+        expect(linkDebugElement.nativeElement).toHaveClass('nx-link');
+    }));
 
     it('should change class when input changes', () => {
         createTestComponent(DynamicLink);

@@ -58,34 +58,29 @@ describe('NxTabGroupComponent', () => {
     }
 
     describe('no preset options', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    imports: [NxTabsModule, BrowserAnimationsModule],
-                    declarations: [
-                        BasicTabs,
-                        OnPushTabs,
-                        ConfigurableTabs,
-                        DynamicTabTest,
-                        CustomElementTest,
-                        TestComponent,
-                        BindingTabs,
-                        EventTabsTest,
-                        DisabledTabs,
-                        TemplateTabs,
-                    ],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                imports: [NxTabsModule, BrowserAnimationsModule],
+                declarations: [
+                    BasicTabs,
+                    OnPushTabs,
+                    ConfigurableTabs,
+                    DynamicTabTest,
+                    CustomElementTest,
+                    TestComponent,
+                    BindingTabs,
+                    EventTabsTest,
+                    DisabledTabs,
+                    TemplateTabs,
+                ],
+            }).compileComponents();
+        }));
 
         describe('basic tabs', () => {
-            it(
-                'creates the tab group',
-                waitForAsync(() => {
-                    createTestComponent(BasicTabs);
-                    expect(tabGroupInstance).toBeTruthy();
-                }),
-            );
+            it('creates the tab group', waitForAsync(() => {
+                createTestComponent(BasicTabs);
+                expect(tabGroupInstance).toBeTruthy();
+            }));
 
             it('should default to the first tab', () => {
                 createTestComponent(BasicTabs);
@@ -528,16 +523,14 @@ describe('NxTabGroupComponent', () => {
     });
 
     describe('default options injection token', () => {
-        beforeEach(
-            waitForAsync(() => {
-                tabsDefaultOptions.appearance = 'expert';
-                TestBed.configureTestingModule({
-                    imports: [NxTabsModule, BrowserAnimationsModule],
-                    declarations: [BasicTabs, ConfigurableTabs],
-                    providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            tabsDefaultOptions.appearance = 'expert';
+            TestBed.configureTestingModule({
+                imports: [NxTabsModule, BrowserAnimationsModule],
+                declarations: [BasicTabs, ConfigurableTabs],
+                providers: [{ provide: TAB_GROUP_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
+            }).compileComponents();
+        }));
 
         it('should have an "default" appearance if empty default options are provided', inject(
             [TAB_GROUP_DEFAULT_OPTIONS],

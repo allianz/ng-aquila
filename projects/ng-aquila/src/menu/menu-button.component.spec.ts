@@ -26,33 +26,25 @@ describe(NxMenuButtonComponent.name, () => {
         menuButtonElement = fixture.nativeElement.querySelector('[nxMenuButton]');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxMenuModule],
-                declarations: [BasicMenuButton, DefaultMenuButton],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxMenuModule],
+            declarations: [BasicMenuButton, DefaultMenuButton],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {
             createTestComponent(BasicMenuButton);
         });
 
-        it(
-            'creates the menu button',
-            waitForAsync(() => {
-                expect(menuButtonInstance).toBeTruthy();
-            }),
-        );
+        it('creates the menu button', waitForAsync(() => {
+            expect(menuButtonInstance).toBeTruthy();
+        }));
 
-        it(
-            'default menu button includes the bem block element',
-            waitForAsync(() => {
-                expect(menuButtonElement).toHaveClass('nx-menu-button');
-            }),
-        );
+        it('default menu button includes the bem block element', waitForAsync(() => {
+            expect(menuButtonElement).toHaveClass('nx-menu-button');
+        }));
 
         it('is not expandable', () => {
             expect(menuButtonElement).not.toHaveClass('is-expandable');

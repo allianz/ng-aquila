@@ -61,21 +61,19 @@ describe('NxTimefieldComponent', () => {
         assertTime(time);
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
-                declarations: [
-                    SimpleTimefield,
-                    ConfigurableTimefield,
-                    ReactiveTimefield,
-                    TemplateDrivenTimefield,
-                    TemplateDrivenOnPushTimefield,
-                    OverrideDefaultLabelsTimefield,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxTimefieldModule, FormsModule, ReactiveFormsModule],
+            declarations: [
+                SimpleTimefield,
+                ConfigurableTimefield,
+                ReactiveTimefield,
+                TemplateDrivenTimefield,
+                TemplateDrivenOnPushTimefield,
+                OverrideDefaultLabelsTimefield,
+            ],
+        }).compileComponents();
+    }));
 
     it('should create a simple timefield component', () => {
         createTestComponent(SimpleTimefield);

@@ -31,24 +31,22 @@ describe('NxToggleButtonGroup', () => {
         fixture.detectChanges();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    SimpleCircleToggleGroupComponent,
-                    NgModelCircleToggleGroupComponent,
-                    ReactiveCircleToggleGroupComponent,
-                    NgForCircleToggleGroupComponent,
-                    DisabledCircleToggleGroupComponent,
-                    CircleToggleOnPushComponent,
-                    EmptyToggleOnPushComponent,
-                    CircleToggleGroupWithDivComponent,
-                    ExpertCircleToggleGroupComponent,
-                ],
-                imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                SimpleCircleToggleGroupComponent,
+                NgModelCircleToggleGroupComponent,
+                ReactiveCircleToggleGroupComponent,
+                NgForCircleToggleGroupComponent,
+                DisabledCircleToggleGroupComponent,
+                CircleToggleOnPushComponent,
+                EmptyToggleOnPushComponent,
+                CircleToggleGroupWithDivComponent,
+                ExpertCircleToggleGroupComponent,
+            ],
+            imports: [NxCircleToggleModule, FormsModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
     it('should not allow more than one button to be checked at once', () => {
         createTestComponent(SimpleCircleToggleGroupComponent);

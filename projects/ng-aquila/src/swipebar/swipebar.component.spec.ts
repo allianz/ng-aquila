@@ -27,14 +27,12 @@ describe(NxSwipebarComponent.name, () => {
         swipebarElement = fixture.nativeElement.querySelector('nx-swipebar');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSwipebar],
-                imports: [NxSwipebarModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSwipebar],
+            imports: [NxSwipebarModule],
+        }).compileComponents();
+    }));
 
     beforeEach(async () => {
         createTestComponent(BasicSwipebar);

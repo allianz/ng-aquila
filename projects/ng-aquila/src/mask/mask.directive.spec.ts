@@ -66,14 +66,12 @@ describe('NxMaskDirective', () => {
         fixture.detectChanges();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicMaskComponent, ConfigurableMaskComponent, ValidationMaskComponent, HookedMaskComponent],
-                imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicMaskComponent, ConfigurableMaskComponent, ValidationMaskComponent, HookedMaskComponent],
+            imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
+        }).compileComponents();
+    }));
 
     it('creates the input', () => {
         createTestComponent(BasicMaskComponent);

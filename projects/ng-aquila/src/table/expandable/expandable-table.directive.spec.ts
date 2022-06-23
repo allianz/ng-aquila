@@ -26,14 +26,12 @@ describe(NxTableComponent.name, () => {
         tableElement = fixture.debugElement.query(By.directive(NxTableComponent));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ExpandableTableComponent],
-                imports: [NxTableModule, NoopAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ExpandableTableComponent],
+            imports: [NxTableModule, NoopAnimationsModule],
+        }).compileComponents();
+    }));
 
     it('has created the component', () => {
         createTestComponent(ExpandableTableComponent);

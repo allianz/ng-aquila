@@ -49,26 +49,24 @@ describe('NxSliderComponent', () => {
         sliderNativeElement = sliderDebugElement.nativeElement;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
-                declarations: [
-                    BasicSlider,
-                    ConfigurableSlider,
-                    InvertedSlider,
-                    DisabledSlider,
-                    NegativeSlider,
-                    FloatSlider,
-                    TruncateTestSlider,
-                    SimpleBindingSlider,
-                    NgModelSlider,
-                    ReactiveFormsSlider,
-                    BasicSliderOnPush,
-                ],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxSliderModule, FormsModule, ReactiveFormsModule],
+            declarations: [
+                BasicSlider,
+                ConfigurableSlider,
+                InvertedSlider,
+                DisabledSlider,
+                NegativeSlider,
+                FloatSlider,
+                TruncateTestSlider,
+                SimpleBindingSlider,
+                NgModelSlider,
+                ReactiveFormsSlider,
+                BasicSliderOnPush,
+            ],
+        }).compileComponents();
+    }));
 
     /**
      * Helper function to fake a slide event

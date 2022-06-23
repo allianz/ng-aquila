@@ -32,14 +32,12 @@ describe('Scrollable TabHeader', () => {
         tabHeaderNativeElement = fixture.debugElement.nativeElement.querySelector('nx-tab-header');
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [NotScrollableTabGroupTest, ScrollableTabGroupTest],
-                imports: [NxTabsModule, BrowserAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [NotScrollableTabGroupTest, ScrollableTabGroupTest],
+            imports: [NxTabsModule, BrowserAnimationsModule],
+        }).compileComponents();
+    }));
 
     function getStartScrollElement(): HTMLElement {
         return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');
@@ -162,14 +160,12 @@ describe('Scrollable TabNavBar', () => {
         tabNavBarNativeElement = fixture.debugElement.query(By.directive(NxTabNavBarComponent)).nativeElement;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
-                imports: [NxTabsModule, BrowserAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [NotScrollableTabNavBarTest, ScrollableTabNavBarTest],
+            imports: [NxTabsModule, BrowserAnimationsModule],
+        }).compileComponents();
+    }));
 
     function getStartScrollElement(): HTMLElement {
         return fixture.debugElement.nativeElement.querySelector('nx-tab-scroll-indicator.start-button');

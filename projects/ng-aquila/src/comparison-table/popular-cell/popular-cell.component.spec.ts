@@ -31,15 +31,13 @@ describe('NxComparisonTablePopularCell', () => {
         popularCellElement = fixture.nativeElement.querySelector('.nx-comparison-table__popular-cell');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule],
-                declarations: [PopularCellComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule],
+            declarations: [PopularCellComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     it('renders the content correctly', () => {
         createTestComponent(PopularCellComponent);

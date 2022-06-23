@@ -28,14 +28,12 @@ describe('NxLicencePlateEuroPrefixComponent', () => {
         element = fixture.debugElement.nativeElement.querySelector('nx-licence-plate-euro-prefix');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicLicencePlateEuroPrefix],
-                imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicLicencePlateEuroPrefix],
+            imports: [NxLicencePlateModule, NxFormfieldModule, NxInputModule],
+        }).compileComponents();
+    }));
 
     beforeEach(() => {
         createTestComponent(BasicLicencePlateEuroPrefix);

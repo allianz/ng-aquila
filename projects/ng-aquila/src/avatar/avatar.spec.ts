@@ -25,14 +25,12 @@ describe('NxAvatarComponent', () => {
         avatarElement = fixture.debugElement.nativeElement.querySelector('[nxavatar]');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxAvatarModule, NxIconModule],
-                declarations: [AvatarWithText, AvatarWithIcon, AvatarWithImage, AvatarButton, ConfigurableAvatar],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxAvatarModule, NxIconModule],
+            declarations: [AvatarWithText, AvatarWithIcon, AvatarWithImage, AvatarButton, ConfigurableAvatar],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('creates the avatar', () => {

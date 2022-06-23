@@ -24,33 +24,25 @@ describe(NxMenuItemDirective.name, () => {
         menuGroupNativeElement = fixture.nativeElement.querySelector('[nxMenuItem]') as HTMLElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicMenuItem],
-                imports: [NxMenuModule, NoopAnimationsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicMenuItem],
+            imports: [NxMenuModule, NoopAnimationsModule],
+        }).compileComponents();
+    }));
 
     describe('basic menu item', () => {
         beforeEach(() => {
             createTestComponent(BasicMenuItem);
         });
 
-        it(
-            'creates the menu item',
-            waitForAsync(() => {
-                expect(menuGroupInstance).toBeTruthy();
-            }),
-        );
+        it('creates the menu item', waitForAsync(() => {
+            expect(menuGroupInstance).toBeTruthy();
+        }));
 
-        it(
-            'menu item includes the bem block element',
-            waitForAsync(() => {
-                expect(menuGroupNativeElement).toHaveClass('nx-menu__item');
-            }),
-        );
+        it('menu item includes the bem block element', waitForAsync(() => {
+            expect(menuGroupNativeElement).toHaveClass('nx-menu__item');
+        }));
     });
 
     describe('a11y', () => {

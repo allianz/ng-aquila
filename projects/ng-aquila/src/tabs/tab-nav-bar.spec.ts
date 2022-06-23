@@ -33,14 +33,12 @@ describe('NxTabBarNavComponent', () => {
     };
 
     describe('no preset options', () => {
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    declarations: [SimpleTabNavBar, ConfigurableTabNavBar, TabNavBarOnPush],
-                    imports: [NxTabsModule],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [SimpleTabNavBar, ConfigurableTabNavBar, TabNavBarOnPush],
+                imports: [NxTabsModule],
+            }).compileComponents();
+        }));
 
         it('should attach the active styles to the active nav tab', () => {
             createTestComponent(SimpleTabNavBar);
@@ -122,16 +120,14 @@ describe('NxTabBarNavComponent', () => {
     });
 
     describe('default options injection token', () => {
-        beforeEach(
-            waitForAsync(() => {
-                tabsDefaultOptions.appearance = 'expert';
-                TestBed.configureTestingModule({
-                    declarations: [SimpleTabNavBar, ConfigurableTabNavBar],
-                    imports: [NxTabsModule],
-                    providers: [{ provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            tabsDefaultOptions.appearance = 'expert';
+            TestBed.configureTestingModule({
+                declarations: [SimpleTabNavBar, ConfigurableTabNavBar],
+                imports: [NxTabsModule],
+                providers: [{ provide: TAB_NAV_BAR_DEFAULT_OPTIONS, useValue: tabsDefaultOptions }],
+            }).compileComponents();
+        }));
 
         it('should have an "default" appearance if empty default options are provided', inject(
             [TAB_NAV_BAR_DEFAULT_OPTIONS],

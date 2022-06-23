@@ -26,14 +26,12 @@ describe('NxAutoResizeDirective', () => {
         nativeElement = fixture.nativeElement.querySelector('input');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DefaultResize, DisabledResize, MinWidthResize, BorderPaddingResize, InitTest, InitOnPushTest],
-                imports: [FormsModule, NxNumberStepperModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DefaultResize, DisabledResize, MinWidthResize, BorderPaddingResize, InitTest, InitOnPushTest],
+            imports: [FormsModule, NxNumberStepperModule],
+        }).compileComponents();
+    }));
 
     it('should change input width on initialization', () => {
         createTestComponent(InitTest);

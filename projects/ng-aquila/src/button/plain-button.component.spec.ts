@@ -23,14 +23,12 @@ describe('NxBreadcrumbComponent', () => {
         buttonElement = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxButtonModule],
-                declarations: [BasicButton],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxButtonModule],
+            declarations: [BasicButton],
+        }).compileComponents();
+    }));
 
     it('should create the button component', () => {
         createTestComponent(BasicButton);

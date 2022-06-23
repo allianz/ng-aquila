@@ -24,22 +24,17 @@ describe('NxSmallStageComponent', () => {
         smallStageDebugElement = fixture.debugElement.query(By.directive(NxSmallStageComponent));
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSmallStage, SmallTextSmallStage, ExpertSmallStage],
-                imports: [NxSmallStageModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSmallStage, SmallTextSmallStage, ExpertSmallStage],
+            imports: [NxSmallStageModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the small stage',
-        waitForAsync(() => {
-            createTestComponent(BasicSmallStage);
-            expect(smallStageInstance).toBeTruthy();
-        }),
-    );
+    it('creates the small stage', waitForAsync(() => {
+        createTestComponent(BasicSmallStage);
+        expect(smallStageInstance).toBeTruthy();
+    }));
 
     describe('basic', () => {
         it('renders the start image', () => {

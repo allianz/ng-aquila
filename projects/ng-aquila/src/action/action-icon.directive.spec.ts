@@ -23,26 +23,21 @@ describe(NxActionIconDirective.name, () => {
         actionIconElement = fixture.nativeElement.querySelector('[nxActionIcon]');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicActionIcon],
-                imports: [NxActionModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicActionIcon],
+            imports: [NxActionModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {
             createTestComponent(BasicActionIcon);
         });
 
-        it(
-            'default action icon includes the bem block element',
-            waitForAsync(() => {
-                expect(actionIconElement).toHaveClass('nx-action__icon');
-            }),
-        );
+        it('default action icon includes the bem block element', waitForAsync(() => {
+            expect(actionIconElement).toHaveClass('nx-action__icon');
+        }));
     });
 
     describe('a11y', () => {

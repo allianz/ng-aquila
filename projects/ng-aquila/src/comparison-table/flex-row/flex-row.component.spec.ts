@@ -23,15 +23,13 @@ describe('ComparisonTableFlexRow', () => {
         flexRowElements = fixture.debugElement.queryAll(By.css('nx-comparison-table-flex-row'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule],
-                declarations: [BasicComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule],
+            declarations: [BasicComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('responsive', () => {
         it('should have one row for every flex-row (desktop)', () => {

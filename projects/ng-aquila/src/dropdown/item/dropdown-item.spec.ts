@@ -21,14 +21,12 @@ describe('NxDropdownItem component', () => {
         itemInstance = testInstance.item;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxDropdownModule],
-                declarations: [BasicItem, EmptyItem, ProjectedItem],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxDropdownModule],
+            declarations: [BasicItem, EmptyItem, ProjectedItem],
+        }).compileComponents();
+    }));
 
     it('should complete the `stateChanges` stream on destroy', () => {
         createTestComponent(BasicItem);

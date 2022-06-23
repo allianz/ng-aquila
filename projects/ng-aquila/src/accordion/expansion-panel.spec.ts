@@ -23,24 +23,22 @@ describe('NxExpansionPanelComponent', () => {
         headerNativeElement = fixture.nativeElement.querySelector('nx-expansion-panel-header') as HTMLElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NoopAnimationsModule, NxAccordionModule],
-                declarations: [
-                    PanelWithContent,
-                    PanelWithContentInNgIf,
-                    PanelWithCustomMargin,
-                    LazyPanelWithContent,
-                    LazyPanelOpenOnLoad,
-                    PanelWithTwoWayBinding,
-                    PanelWithDifferentAppearances,
-                    PanelWithAccordion,
-                ],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NoopAnimationsModule, NxAccordionModule],
+            declarations: [
+                PanelWithContent,
+                PanelWithContentInNgIf,
+                PanelWithCustomMargin,
+                LazyPanelWithContent,
+                LazyPanelOpenOnLoad,
+                PanelWithTwoWayBinding,
+                PanelWithDifferentAppearances,
+                PanelWithAccordion,
+            ],
+        });
+        TestBed.compileComponents();
+    }));
 
     it('should expand and collapse the panel', fakeAsync(() => {
         createTestComponent(PanelWithContent);

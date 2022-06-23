@@ -25,24 +25,22 @@ const DEC = 11;
 describe('NxYearView', () => {
     let dir: { value: Direction };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-                declarations: [
-                    NxCalendarBodyComponent,
-                    NxYearViewComponent,
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+            declarations: [
+                NxCalendarBodyComponent,
+                NxYearViewComponent,
 
-                    // Test components.
-                    StandardYearView,
-                    YearViewWithDateFilter,
-                ],
-                providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
-            });
+                // Test components.
+                StandardYearView,
+                YearViewWithDateFilter,
+            ],
+            providers: [{ provide: Directionality, useFactory: () => (dir = { value: 'ltr' }) }],
+        });
 
-            TestBed.compileComponents();
-        }),
-    );
+        TestBed.compileComponents();
+    }));
 
     describe('standard year view', () => {
         let fixture: ComponentFixture<StandardYearView>;

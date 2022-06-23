@@ -23,33 +23,25 @@ describe(NxMenuLinkDirective.name, () => {
         menuLinkNativeElement = fixture.nativeElement.querySelector('[nxMenuLink]') as HTMLElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicMenuLink],
-                imports: [NxMenuModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicMenuLink],
+            imports: [NxMenuModule],
+        }).compileComponents();
+    }));
 
     describe('basic menu link', () => {
         beforeEach(() => {
             createTestComponent(BasicMenuLink);
         });
 
-        it(
-            'creates the menu link',
-            waitForAsync(() => {
-                expect(menuLinkInstance).toBeTruthy();
-            }),
-        );
+        it('creates the menu link', waitForAsync(() => {
+            expect(menuLinkInstance).toBeTruthy();
+        }));
 
-        it(
-            'menu link includes the bem block element',
-            waitForAsync(() => {
-                expect(menuLinkNativeElement).toHaveClass('nx-menu__link');
-            }),
-        );
+        it('menu link includes the bem block element', waitForAsync(() => {
+            expect(menuLinkNativeElement).toHaveClass('nx-menu__link');
+        }));
     });
 
     describe('a11y', () => {

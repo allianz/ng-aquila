@@ -66,15 +66,13 @@ describe('NxSort', () => {
         countHeader = testInstance.countHeader;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSortTableComponent, ConfigurableSortTableComponent],
-                imports: [NxTableModule],
-                providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSortTableComponent, ConfigurableSortTableComponent],
+            imports: [NxTableModule],
+            providers: [{ provide: NxSortHeaderIntl, useClass: MyIntl }],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('creates the component', () => {

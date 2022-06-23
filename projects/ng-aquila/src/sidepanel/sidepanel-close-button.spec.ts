@@ -29,14 +29,12 @@ describe('NxSidepanelCloseButtonComponent', () => {
         buttonElement = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSidepanel],
-                imports: [BrowserAnimationsModule, NxSidepanelModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSidepanel],
+            imports: [BrowserAnimationsModule, NxSidepanelModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

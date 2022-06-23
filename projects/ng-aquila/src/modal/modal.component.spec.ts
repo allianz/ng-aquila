@@ -14,14 +14,12 @@ abstract class ModalTest {
 }
 
 describe('NxModalComponent', () => {
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NoopAnimationsModule, NxModalModule.forRoot()],
-                declarations: [BasicModal, FixedWidthModal, ManualModal, OnPushTest],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NoopAnimationsModule, NxModalModule.forRoot()],
+            declarations: [BasicModal, FixedWidthModal, ManualModal, OnPushTest],
+        }).compileComponents();
+    }));
 
     let fixture: ComponentFixture<ModalTest>;
     let testInstance: ModalTest;
@@ -44,102 +42,81 @@ describe('NxModalComponent', () => {
     };
 
     describe('basic modal', () => {
-        it(
-            'should not add the modal to the DOM if it is closed',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                const basicModalDebugElement: DebugElement = debugElement.query(By.css('#basicModal'));
-                expect(basicModalDebugElement).toBeFalsy();
-            }),
-        );
+        it('should not add the modal to the DOM if it is closed', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            const basicModalDebugElement: DebugElement = debugElement.query(By.css('#basicModal'));
+            expect(basicModalDebugElement).toBeFalsy();
+        }));
 
-        it(
-            'should open the modal when the button is clicked',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                openModal();
-                const openedModal = fixture.nativeElement.querySelector('#basicModal');
-                expect(openedModal).toBeTruthy();
-            }),
-        );
+        it('should open the modal when the button is clicked', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            openModal();
+            const openedModal = fixture.nativeElement.querySelector('#basicModal');
+            expect(openedModal).toBeTruthy();
+        }));
 
-        it(
-            'allow clicking on content within the modal',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                openModal();
-                const button: HTMLButtonElement = fixture.nativeElement.querySelector('#button');
+        it('allow clicking on content within the modal', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            openModal();
+            const button: HTMLButtonElement = fixture.nativeElement.querySelector('#button');
 
-                let clicked = false;
-                button.addEventListener('click', () => {
-                    clicked = true;
-                });
+            let clicked = false;
+            button.addEventListener('click', () => {
+                clicked = true;
+            });
 
-                button.click();
+            button.click();
 
-                expect(clicked).toBeTruthy();
-            }),
-        );
+            expect(clicked).toBeTruthy();
+        }));
 
-        it(
-            'should close the modal on click outside',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                openModal();
-                // a click on the backdrop should close the modal again
-                const modalBackdrop = fixture.nativeElement.querySelector('.nx-modal__backdrop');
-                modalBackdrop.click();
-                fixture.detectChanges();
-                const openedModal = fixture.nativeElement.querySelector('#basicModal');
-                // Expect modal to be closing again; however, since the respective DOM node will only be removed
-                // with a delay due to modal closing animation, we cannot simply "expect(openedModal).toBeFalsy()" here.
-                // But if angular added the "ng-animating" class, we know that it did its job and since the animation
-                // is triggered on ":leave" (see NxModalComponent) the element is surely about to be removed.
-                expect(openedModal).toHaveClass('ng-animating');
-            }),
-        );
+        it('should close the modal on click outside', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            openModal();
+            // a click on the backdrop should close the modal again
+            const modalBackdrop = fixture.nativeElement.querySelector('.nx-modal__backdrop');
+            modalBackdrop.click();
+            fixture.detectChanges();
+            const openedModal = fixture.nativeElement.querySelector('#basicModal');
+            // Expect modal to be closing again; however, since the respective DOM node will only be removed
+            // with a delay due to modal closing animation, we cannot simply "expect(openedModal).toBeFalsy()" here.
+            // But if angular added the "ng-animating" class, we know that it did its job and since the animation
+            // is triggered on ":leave" (see NxModalComponent) the element is surely about to be removed.
+            expect(openedModal).toHaveClass('ng-animating');
+        }));
 
-        it(
-            'should not close the modal on click inside content',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                openModal();
-                const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
-                modalContainer.click();
-                fixture.detectChanges();
-                const openedModal = fixture.nativeElement.querySelector('#basicModal');
-                // expect modal to be still open
-                expect(openedModal).toBeTruthy();
-            }),
-        );
+        it('should not close the modal on click inside content', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            openModal();
+            const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
+            modalContainer.click();
+            fixture.detectChanges();
+            const openedModal = fixture.nativeElement.querySelector('#basicModal');
+            // expect modal to be still open
+            expect(openedModal).toBeTruthy();
+        }));
 
-        it(
-            'should contain the cdkscrollable attribute in the content wrapper',
-            waitForAsync(() => {
-                createTestComponent(BasicModal);
-                openModal();
-                const modalWrapper = fixture.nativeElement.querySelector('.nx-modal__content-wrapper');
+        it('should contain the cdkscrollable attribute in the content wrapper', waitForAsync(() => {
+            createTestComponent(BasicModal);
+            openModal();
+            const modalWrapper = fixture.nativeElement.querySelector('.nx-modal__content-wrapper');
 
-                expect(modalWrapper).toBeTruthy();
-                expect(modalWrapper.attributes.getNamedItem('cdkscrollable')).toBeTruthy();
-            }),
-        );
+            expect(modalWrapper).toBeTruthy();
+            expect(modalWrapper.attributes.getNamedItem('cdkscrollable')).toBeTruthy();
+        }));
     });
 
     describe('fixed width', () => {
-        it(
-            'should test for nxSize="fixed"',
-            waitForAsync(() => {
-                createTestComponent(FixedWidthModal);
-                testInstance.open = true;
-                fixture.detectChanges();
-                const modalElement = fixture.nativeElement.querySelector('nx-modal');
-                const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
-                const containerStyles = window.getComputedStyle(modalContainer);
-                expect(modalElement).toHaveClass('nx-modal--fixed-width');
-                expect(containerStyles.width).toBe('736px');
-            }),
-        );
+        it('should test for nxSize="fixed"', waitForAsync(() => {
+            createTestComponent(FixedWidthModal);
+            testInstance.open = true;
+            fixture.detectChanges();
+            const modalElement = fixture.nativeElement.querySelector('nx-modal');
+            const modalContainer = fixture.nativeElement.querySelector('.nx-modal__container');
+            const containerStyles = window.getComputedStyle(modalContainer);
+            expect(modalElement).toHaveClass('nx-modal--fixed-width');
+            expect(containerStyles.width).toBe('736px');
+        }));
     });
 
     describe('closing', () => {

@@ -21,13 +21,11 @@ describe('NxNativeDateAdapter', () => {
             .toBe(valid);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([NxDateAdapter, Platform], (dateAdapter: NxNativeDateAdapter, _platform: Platform) => {
         adapter = dateAdapter;
@@ -459,14 +457,12 @@ describe('NxNativeDateAdapter', () => {
 describe('NxNativeDateAdapter with MAT_DATE_LOCALE override', () => {
     let adapter: NxNativeDateAdapter;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-                providers: [{ provide: NX_DATE_LOCALE, useValue: 'da-DK' }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+            providers: [{ provide: NX_DATE_LOCALE, useValue: 'da-DK' }],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([NxDateAdapter], (d: NxNativeDateAdapter) => {
         adapter = d;
@@ -484,14 +480,12 @@ describe('NxNativeDateAdapter with MAT_DATE_LOCALE override', () => {
 describe('NxNativeDateAdapter with LOCALE_ID override', () => {
     let adapter: NxNativeDateAdapter;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxNativeDateModule],
-                providers: [{ provide: LOCALE_ID, useValue: 'da-DK' }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxNativeDateModule],
+            providers: [{ provide: LOCALE_ID, useValue: 'da-DK' }],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([NxDateAdapter], (d: NxNativeDateAdapter) => {
         adapter = d;

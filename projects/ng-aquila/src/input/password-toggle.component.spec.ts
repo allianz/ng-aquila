@@ -24,14 +24,12 @@ describe('NxPasswordToggleComponent', () => {
         nativeElement = fixture.nativeElement.querySelector('nx-password-toggle');
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicPasswordToggle, NoControlToggle, BasicPasswordToggleOnPush],
-                imports: [NxInputModule, FormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicPasswordToggle, NoControlToggle, BasicPasswordToggleOnPush],
+            imports: [NxInputModule, FormsModule],
+        }).compileComponents();
+    }));
 
     it('creates the password toggle', () => {
         createTestComponent(BasicPasswordToggle);

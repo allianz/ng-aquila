@@ -49,14 +49,12 @@ describe('NxIbanMaskDirective', () => {
         expect(testInstance.testForm.valid).toBeTrue();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicIbanMaskComponent, FormIbanMaskComponent, FormWithInitalIbanMaskComponent, FormIbanOnBlurMaskComponent],
-                imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicIbanMaskComponent, FormIbanMaskComponent, FormWithInitalIbanMaskComponent, FormIbanOnBlurMaskComponent],
+            imports: [FormsModule, ReactiveFormsModule, NxMaskModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('creates the input', () => {

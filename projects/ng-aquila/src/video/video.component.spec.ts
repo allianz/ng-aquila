@@ -40,93 +40,70 @@ describe('NxVideoComponent', () => {
         return fixture.nativeElement.querySelector('.nx-video__play-button');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicVideo],
-                imports: [NxVideoModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicVideo],
+            imports: [NxVideoModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the video component',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
-            expect(videoInstance).toBeTruthy();
-        }),
-    );
+    it('creates the video component', waitForAsync(() => {
+        createTestComponent(BasicVideo);
+        expect(videoInstance).toBeTruthy();
+    }));
 
-    it(
-        'replaces the image on play button click',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
-            let thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
-            expect(thumbnail).not.toBeNull();
+    it('replaces the image on play button click', waitForAsync(() => {
+        createTestComponent(BasicVideo);
+        let thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
+        expect(thumbnail).not.toBeNull();
 
-            const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
-            playButton.nativeElement.click();
-            fixture.detectChanges();
+        const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+        playButton.nativeElement.click();
+        fixture.detectChanges();
 
-            thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
-            expect(thumbnail).toBeNull();
-        }),
-    );
+        thumbnail = fixture.nativeElement.querySelector('.nx-video__thumbnail');
+        expect(thumbnail).toBeNull();
+    }));
 
-    it(
-        'constructs correct preview image source URL',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
+    it('constructs correct preview image source URL', waitForAsync(() => {
+        createTestComponent(BasicVideo);
 
-            testInstance.videoId = 'fooBAR';
-            fixture.detectChanges();
-            expect(videoInstance.imgSrc).toBe('https://img.youtube.com/vi/fooBAR/sddefault.jpg');
-        }),
-    );
+        testInstance.videoId = 'fooBAR';
+        fixture.detectChanges();
+        expect(videoInstance.imgSrc).toBe('https://img.youtube.com/vi/fooBAR/sddefault.jpg');
+    }));
 
-    it(
-        'use preview img src if set',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
-            testInstance.previewImageSrc = 'testURI';
-            fixture.detectChanges();
-            expect(videoInstance.imgSrc).toBe('testURI');
-        }),
-    );
+    it('use preview img src if set', waitForAsync(() => {
+        createTestComponent(BasicVideo);
+        testInstance.previewImageSrc = 'testURI';
+        fixture.detectChanges();
+        expect(videoInstance.imgSrc).toBe('testURI');
+    }));
 
-    it(
-        'uses sensible defaults for nxPlayButtonAriaLabel if not set',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
+    it('uses sensible defaults for nxPlayButtonAriaLabel if not set', waitForAsync(() => {
+        createTestComponent(BasicVideo);
 
-            const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
-            expect(playButton.nativeElement.getAttribute('aria-label')).toBe('Play Video');
-        }),
-    );
+        const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+        expect(playButton.nativeElement.getAttribute('aria-label')).toBe('Play Video');
+    }));
 
-    it(
-        'uses altText to construct aria-label if set',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
-            testInstance.altText = 'foo';
-            fixture.detectChanges();
+    it('uses altText to construct aria-label if set', waitForAsync(() => {
+        createTestComponent(BasicVideo);
+        testInstance.altText = 'foo';
+        fixture.detectChanges();
 
-            const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
-            expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foo - Play Video');
-        }),
-    );
+        const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+        expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foo - Play Video');
+    }));
 
-    it(
-        'uses nxPlayButtonAriaLabel as aria-label if set',
-        waitForAsync(() => {
-            createTestComponent(BasicVideo);
-            testInstance.nxPlayButtonAriaLabel = 'foobar';
-            fixture.detectChanges();
+    it('uses nxPlayButtonAriaLabel as aria-label if set', waitForAsync(() => {
+        createTestComponent(BasicVideo);
+        testInstance.nxPlayButtonAriaLabel = 'foobar';
+        fixture.detectChanges();
 
-            const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
-            expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foobar');
-        }),
-    );
+        const playButton = fixture.debugElement.query(By.css('.nx-video__play-button'));
+        expect(playButton.nativeElement.getAttribute('aria-label')).toBe('foobar');
+    }));
 
     it('allows allowfullscreen by default', () => {
         createTestComponent(BasicVideo);

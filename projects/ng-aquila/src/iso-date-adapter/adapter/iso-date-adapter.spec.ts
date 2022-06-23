@@ -18,13 +18,11 @@ describe('NxIsoDateAdapter', () => {
         expect(adapter.isValid(date as string)).toBe(valid);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxIsoDateModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxIsoDateModule],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([NxDateAdapter], (dateAdapter: NxIsoDateAdapter) => {
         adapter = dateAdapter;

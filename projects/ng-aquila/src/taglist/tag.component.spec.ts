@@ -26,14 +26,12 @@ describe('NxTagComponent', () => {
         tagNativeElement = fixture.nativeElement.querySelector('nx-tag');
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicTag, RemovableTag],
-                imports: [NxTaglistModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicTag, RemovableTag],
+            imports: [NxTaglistModule],
+        }).compileComponents();
+    }));
 
     it('creates the Tag', () => {
         createTestComponent(BasicTag);

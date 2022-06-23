@@ -34,26 +34,21 @@ describe(NxMenuComponent.name, () => {
         expect(!!getMenuWrapper()).toBe(open);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicMenu],
-                imports: [NoopAnimationsModule, NxMenuModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicMenu],
+            imports: [NoopAnimationsModule, NxMenuModule],
+        }).compileComponents();
+    }));
 
     describe('basic menu', () => {
         beforeEach(() => {
             createTestComponent(BasicMenu);
         });
 
-        it(
-            'creates the menu',
-            waitForAsync(() => {
-                expect(menuInstance).toBeTruthy();
-            }),
-        );
+        it('creates the menu', waitForAsync(() => {
+            expect(menuInstance).toBeTruthy();
+        }));
 
         it('menu is closed', () => {
             expectOpenMenu(false);

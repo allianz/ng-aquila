@@ -34,39 +34,31 @@ describe('NxInputDirective', () => {
         nativeElement = fixture.nativeElement.querySelector('.c-input');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicInput,
-                    BasicTextarea,
-                    TypedAndRequiredInput,
-                    RequiredInput,
-                    NgModelInput,
-                    BasicInputWithFormControl,
-                    ConfigurableInput,
-                    InputWithLabelAndPlaceholder,
-                ],
-                imports: [FormsModule, NxInputModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicInput,
+                BasicTextarea,
+                TypedAndRequiredInput,
+                RequiredInput,
+                NgModelInput,
+                BasicInputWithFormControl,
+                ConfigurableInput,
+                InputWithLabelAndPlaceholder,
+            ],
+            imports: [FormsModule, NxInputModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
-    it(
-        'creates the Input',
-        waitForAsync(() => {
-            createTestComponent(BasicInput);
-            expect(inputInstance).toBeTruthy();
-        }),
-    );
+    it('creates the Input', waitForAsync(() => {
+        createTestComponent(BasicInput);
+        expect(inputInstance).toBeTruthy();
+    }));
 
-    it(
-        'default includes the bem block element',
-        waitForAsync(() => {
-            createTestComponent(BasicInput);
-            expect(nativeElement).toHaveClass('c-input');
-        }),
-    );
+    it('default includes the bem block element', waitForAsync(() => {
+        createTestComponent(BasicInput);
+        expect(nativeElement).toHaveClass('c-input');
+    }));
 
     it('should add a class to the form field', fakeAsync(() => {
         createTestComponent(BasicInput);
@@ -77,13 +69,10 @@ describe('NxInputDirective', () => {
         expect(formField).toHaveClass('nx-formfield--type-nx-input');
     }));
 
-    it(
-        'defaults to type text',
-        waitForAsync(() => {
-            createTestComponent(BasicInput);
-            expect(nativeElement.type).toBe('text');
-        }),
-    );
+    it('defaults to type text', waitForAsync(() => {
+        createTestComponent(BasicInput);
+        expect(nativeElement.type).toBe('text');
+    }));
 
     it('reject forbidden types', fakeAsync(() => {
         expect(() => {
@@ -142,13 +131,10 @@ describe('NxInputDirective', () => {
     });
 
     describe('Textarea', () => {
-        it(
-            'is working with nxInput',
-            waitForAsync(() => {
-                createTestComponent(BasicTextarea);
-                expect(inputInstance).toBeTruthy();
-            }),
-        );
+        it('is working with nxInput', waitForAsync(() => {
+            createTestComponent(BasicTextarea);
+            expect(inputInstance).toBeTruthy();
+        }));
 
         it('should add a class to the form field', fakeAsync(() => {
             createTestComponent(BasicTextarea);
@@ -284,15 +270,12 @@ describe('NxInputDirective', () => {
     });
 
     describe('a11y', () => {
-        it(
-            'sets aria-required',
-            waitForAsync(() => {
-                createTestComponent(RequiredInput);
-                const ariaRequired = nativeElement.attributes.getNamedItem('aria-required')!.value;
+        it('sets aria-required', waitForAsync(() => {
+            createTestComponent(RequiredInput);
+            const ariaRequired = nativeElement.attributes.getNamedItem('aria-required')!.value;
 
-                expect(ariaRequired).toBe('true');
-            }),
-        );
+            expect(ariaRequired).toBe('true');
+        }));
 
         it('sets aria-invalid', fakeAsync(() => {
             createTestComponent(NgModelInput);

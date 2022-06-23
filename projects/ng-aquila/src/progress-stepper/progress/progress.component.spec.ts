@@ -29,14 +29,12 @@ describe('NxProgressStepperComponent', () => {
         progressInstance = fixture.debugElement.query(By.css('nx-progress-stepper')).componentInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ProgressBasicTest, ProgressBindingTest, ProgressClampTest],
-                imports: [NxProgressStepperModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ProgressBasicTest, ProgressBindingTest, ProgressClampTest],
+            imports: [NxProgressStepperModule],
+        }).compileComponents();
+    }));
 
     it('should create the component', fakeAsync(() => {
         createTestComponent(ProgressBasicTest);

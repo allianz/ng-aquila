@@ -13,14 +13,12 @@ describe(NxTreeComponent.name, () => {
     let treeElement: HTMLElement;
     let underlyingDataSource: FakeDataSource;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxTreeModule],
-                declarations: [SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxTreeModule],
+            declarations: [SimpleNxTreeApp, NxTreeAppWithToggle, WhenNodeNxTreeApp],
+        }).compileComponents();
+    }));
 
     describe('flat tree', () => {
         describe('should initialize', () => {

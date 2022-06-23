@@ -24,14 +24,12 @@ describe('NxSidebarToggleButton', () => {
         buttonNativeElement = fixture.nativeElement.querySelector('.nx-sidebar__toggle-button') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSidebarToggleComponent],
-                imports: [NxButtonModule, NxSidebarModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSidebarToggleComponent],
+            imports: [NxButtonModule, NxSidebarModule],
+        }).compileComponents();
+    }));
 
     it('creates the toggle with the correct base class bindings', () => {
         createTestComponent(BasicSidebarToggleComponent);

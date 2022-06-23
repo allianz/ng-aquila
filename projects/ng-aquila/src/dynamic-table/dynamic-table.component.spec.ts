@@ -43,14 +43,12 @@ describe('NxDynamicTableComponent', () => {
         headerCellElements = fixture.nativeElement.querySelectorAll('cdk-header-cell');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxDynamicTableModule, CdkTableModule],
-                declarations: [BasicDynamicTable, TableEmptyRows, TableWrongRows, DynamicTableEvent, EmptyDynamicTable, ProgrammaticTable],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxDynamicTableModule, CdkTableModule],
+            declarations: [BasicDynamicTable, TableEmptyRows, TableWrongRows, DynamicTableEvent, EmptyDynamicTable, ProgrammaticTable],
+        }).compileComponents();
+    }));
 
     function getRows() {
         return fixture.nativeElement.querySelectorAll('cdk-row');

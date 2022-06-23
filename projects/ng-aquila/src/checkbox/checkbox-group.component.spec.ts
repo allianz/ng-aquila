@@ -34,14 +34,12 @@ describe('NxCheckboxGroupComponent', () => {
         checkboxElements = fixture.nativeElement.querySelectorAll('input') as NodeListOf<HTMLInputElement>;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicCheckboxGroup, CheckboxGroupValidation, CheckboxGroupDynamic, CheckboxGroupReactive, ConditionalCheckboxGroupReactive],
-                imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicCheckboxGroup, CheckboxGroupValidation, CheckboxGroupDynamic, CheckboxGroupReactive, ConditionalCheckboxGroupReactive],
+            imports: [NxCheckboxModule, FormsModule, NxErrorModule, NxLabelModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
     it('should displays a checkbox-group with a checkboxes', () => {
         createTestComponent(BasicCheckboxGroup);

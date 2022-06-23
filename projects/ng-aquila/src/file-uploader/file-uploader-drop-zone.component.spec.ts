@@ -39,14 +39,12 @@ describe('NxFileUploaderComponent', () => {
         dropZoneElm = fixture.debugElement.query(By.css('nx-file-uploader-drop-zone'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DropZoneFileUpload],
-                imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, HttpClientModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DropZoneFileUpload],
+            imports: [NxFileUploaderModule, NxLabelModule, NxIconModule, ReactiveFormsModule, FormsModule, NxErrorModule, HttpClientModule],
+        }).compileComponents();
+    }));
 
     describe('drop zone', () => {
         it('should call onDrop when dropping event', () => {

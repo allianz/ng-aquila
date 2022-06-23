@@ -26,14 +26,12 @@ describe('nxSpinnerComponent', () => {
         spinnerNativeElement = fixture.nativeElement.querySelector('nx-spinner') as HTMLElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicTestSpinner, OnPushSpinner, ConfigurableSpinner],
-                imports: [NxSpinnerModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicTestSpinner, OnPushSpinner, ConfigurableSpinner],
+            imports: [NxSpinnerModule],
+        }).compileComponents();
+    }));
 
     it('should create', () => {
         createTestComponent(BasicTestSpinner);

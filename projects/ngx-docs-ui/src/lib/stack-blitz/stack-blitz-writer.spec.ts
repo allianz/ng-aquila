@@ -11,15 +11,13 @@ describe('StackBlitzWriter', () => {
     let data: ExampleData;
     let http: HttpTestingController;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [HttpClientTestingModule],
-                declarations: [],
-                providers: [StackBlitzWriter],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [HttpClientTestingModule],
+            declarations: [],
+            providers: [StackBlitzWriter],
+        }).compileComponents();
+    }));
 
     beforeEach(inject([HttpTestingController], (h: HttpTestingController) => {
         http = h;

@@ -35,15 +35,13 @@ describe('NxSingleStepperComponent', () => {
         return fixture.debugElement.queryAll(By.directive(NxStepperNextDirective))[index].nativeElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [SingleStepBasicTest, SingleStepCustomLabelTest, SingleStepTitleTest, DirectivesTest],
-                imports: [NxProgressStepperModule, NxLabelModule],
-                providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [SingleStepBasicTest, SingleStepCustomLabelTest, SingleStepTitleTest, DirectivesTest],
+            imports: [NxProgressStepperModule, NxLabelModule],
+            providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }],
+        }).compileComponents();
+    }));
 
     it('should create the component', fakeAsync(() => {
         createTestComponent(SingleStepBasicTest);

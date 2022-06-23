@@ -5,22 +5,20 @@ import { By } from '@angular/platform-browser';
 import { NxCalendarBodyComponent, NxCalendarCell } from './calendar-body';
 
 describe('NxCalendarBodyComponent', () => {
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    NxCalendarBodyComponent,
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                NxCalendarBodyComponent,
 
-                    // Test components.
-                    StandardCalendarBody,
-                    CalendarBodyWithDisabledCells,
-                    CalendarBodyWithPreviousAndFollowingCells,
-                ],
-            });
+                // Test components.
+                StandardCalendarBody,
+                CalendarBodyWithDisabledCells,
+                CalendarBodyWithPreviousAndFollowingCells,
+            ],
+        });
 
-            TestBed.compileComponents();
-        }),
-    );
+        TestBed.compileComponents();
+    }));
 
     describe('standard calendar body', () => {
         let fixture: ComponentFixture<StandardCalendarBody>;

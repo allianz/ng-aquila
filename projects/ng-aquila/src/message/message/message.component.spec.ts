@@ -49,14 +49,12 @@ describe('NxMessageComponent', () => {
         expect(componentInstance._iconName).toBe(iconName);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [MessageBasicComponent, MessageOnPushComponent, ClosableMessageComponent, ClosableFormMessageComponent],
-                imports: [NxMessageModule, FormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [MessageBasicComponent, MessageOnPushComponent, ClosableMessageComponent, ClosableFormMessageComponent],
+            imports: [NxMessageModule, FormsModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('should create the component', () => {

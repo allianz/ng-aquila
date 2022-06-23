@@ -54,34 +54,26 @@ describe('NxSidebarComponent', () => {
         sidebarHandleElement = sidebarElement.query(By.css('.nx-sidebar__handle'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSidebar, ResizeableSidebar, WideSidebar],
-                imports: [BrowserAnimationsModule, NxSidebarModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSidebar, ResizeableSidebar, WideSidebar],
+            imports: [BrowserAnimationsModule, NxSidebarModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {
             createTestComponent(BasicSidebar);
         });
 
-        it(
-            'creates the sidebar',
-            waitForAsync(() => {
-                expect(sidebarInstance).toBeTruthy();
-            }),
-        );
+        it('creates the sidebar', waitForAsync(() => {
+            expect(sidebarInstance).toBeTruthy();
+        }));
 
-        it(
-            'displays the content',
-            waitForAsync(() => {
-                const content = sidebarElement.nativeElement.querySelector('.nx-sidebar__content').textContent;
-                expect(content).toBe('Hello sidebar');
-            }),
-        );
+        it('displays the content', waitForAsync(() => {
+            const content = sidebarElement.nativeElement.querySelector('.nx-sidebar__content').textContent;
+            expect(content).toBe('Hello sidebar');
+        }));
 
         it('has default width by default', () => {
             expect(sidebarElement.nativeElement.style.width).toBe(`${DEFAULT_WIDTH}px`);

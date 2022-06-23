@@ -63,15 +63,13 @@ describe('NxFileUploaderComponent', () => {
         triggerButton = fixture.nativeElement.querySelector('#upload-trigger') as HTMLButtonElement;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicFileUpload],
-                imports: [NxFileUploaderModule, NxLabelModule, HttpClientModule, ReactiveFormsModule, FormsModule],
-                providers: [{ provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicFileUpload],
+            imports: [NxFileUploaderModule, NxLabelModule, HttpClientModule, ReactiveFormsModule, FormsModule],
+            providers: [{ provide: HTTP_INTERCEPTORS, useClass: UploadInterceptor, multi: true }],
+        }).compileComponents();
+    }));
 
     describe('trigger directive', () => {
         it('should call uploadFiles when triggerButton was clicked', () => {

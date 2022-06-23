@@ -34,15 +34,13 @@ describe('ToggleSectionHeaderComponent', () => {
         mobileHeaderElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__mobile-toggle-section-header'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule, BrowserAnimationsModule],
-                declarations: [BasicComponent, IdTestingComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule, BrowserAnimationsModule],
+            declarations: [BasicComponent, IdTestingComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('renders the content', () => {

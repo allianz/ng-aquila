@@ -52,23 +52,21 @@ describe('NxCheckboxComponent', () => {
         expect(inputElement.indeterminate).toBe(indeterminate);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicCheckbox,
-                    LabellessCheckbox,
-                    CheckboxTemplateDriven,
-                    CheckboxDisabled,
-                    ReactiveCheckbox,
-                    CheckboxLabelSize,
-                    CheckboxOnPush,
-                    CheckboxNegative,
-                ],
-                imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                BasicCheckbox,
+                LabellessCheckbox,
+                CheckboxTemplateDriven,
+                CheckboxDisabled,
+                ReactiveCheckbox,
+                CheckboxLabelSize,
+                CheckboxOnPush,
+                CheckboxNegative,
+            ],
+            imports: [NxCheckboxModule, FormsModule, ReactiveFormsModule],
+        }).compileComponents();
+    }));
 
     it('displays a checkbox with a label', () => {
         createTestComponent(BasicCheckbox);

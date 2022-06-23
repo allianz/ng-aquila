@@ -45,19 +45,12 @@ describe('NxMessageBannerComponent', () => {
         expect(componentInstance._iconName).toBe(iconName);
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [
-                    BasicMessageBannerComponent,
-                    MessageBannerOnPushComponent,
-                    ClosableMessageBannerComponent,
-                    ClosableMessageBannerWithFormComponent,
-                ],
-                imports: [NxMessageModule, FormsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicMessageBannerComponent, MessageBannerOnPushComponent, ClosableMessageBannerComponent, ClosableMessageBannerWithFormComponent],
+            imports: [NxMessageModule, FormsModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('should create the component', () => {

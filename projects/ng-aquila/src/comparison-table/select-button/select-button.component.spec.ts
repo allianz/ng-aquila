@@ -32,14 +32,12 @@ describe('NxComparisonTableSelectButton', () => {
         buttonNativeElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__select-button'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicComponent, ConfigurableComponent, DynamicComponent],
-                imports: [NxComparisonTableModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicComponent, ConfigurableComponent, DynamicComponent],
+            imports: [NxComparisonTableModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('selects no button by default', () => {

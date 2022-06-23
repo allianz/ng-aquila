@@ -32,35 +32,27 @@ describe('NxSidepanelComponent', () => {
         outerContainerElement = fixture.debugElement.query(By.css('.nx-sidepanel-outer-container__content'));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicSidepanel, SidepanelWithoutHeaderAndContent, ConfigurableSidepanel, SidepanelWithDirection],
-                imports: [BrowserAnimationsModule, NxSidepanelModule, BidiModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicSidepanel, SidepanelWithoutHeaderAndContent, ConfigurableSidepanel, SidepanelWithDirection],
+            imports: [BrowserAnimationsModule, NxSidepanelModule, BidiModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {
             createTestComponent(BasicSidepanel);
         });
 
-        it(
-            'creates the sidepanel',
-            waitForAsync(() => {
-                expect(sidepanelInstance).toBeTruthy();
-            }),
-        );
+        it('creates the sidepanel', waitForAsync(() => {
+            expect(sidepanelInstance).toBeTruthy();
+        }));
 
-        it(
-            'displays the content',
-            waitForAsync(() => {
-                const content = sidepanelElement.nativeElement.textContent;
-                expect(content).toContain('Sidepanel header');
-                expect(content).toContain('Sidepanel content');
-            }),
-        );
+        it('displays the content', waitForAsync(() => {
+            const content = sidepanelElement.nativeElement.textContent;
+            expect(content).toContain('Sidepanel header');
+            expect(content).toContain('Sidepanel content');
+        }));
 
         it('is open by default', () => {
             expect(sidepanelInstance.opened).toBeTrue();
@@ -96,13 +88,10 @@ describe('NxSidepanelComponent', () => {
             expect(sidepanelInstance).toBeTruthy();
         });
 
-        it(
-            'displays the content',
-            waitForAsync(() => {
-                const content = sidepanelElement.nativeElement.textContent;
-                expect(content).toBe('My sidepanel');
-            }),
-        );
+        it('displays the content', waitForAsync(() => {
+            const content = sidepanelElement.nativeElement.textContent;
+            expect(content).toBe('My sidepanel');
+        }));
 
         it('openState is "open-instant" by default', () => {
             expect(sidepanelInstance._getOpenState()).toBe('open-instant');

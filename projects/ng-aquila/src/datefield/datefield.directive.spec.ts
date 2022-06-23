@@ -41,23 +41,18 @@ describe('NxDatefieldDirective with Moment', () => {
         nativeElement = fixture.nativeElement.querySelector('input');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicDatefield, AdvancedDatefield, MinMaxDatefield, ReactiveDatefield],
-                imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
-                providers: [{ provide: NX_DATE_LOCALE, useValue: 'ja' }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicDatefield, AdvancedDatefield, MinMaxDatefield, ReactiveDatefield],
+            imports: [NxDatefieldModule, NxMomentDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
+            providers: [{ provide: NX_DATE_LOCALE, useValue: 'ja' }],
+        }).compileComponents();
+    }));
 
-    it(
-        'should create the directive',
-        waitForAsync(() => {
-            createTestComponent(BasicDatefield);
-            expect(datefieldInstance).toBeTruthy();
-        }),
-    );
+    it('should create the directive', waitForAsync(() => {
+        createTestComponent(BasicDatefield);
+        expect(datefieldInstance).toBeTruthy();
+    }));
 
     it('should disable the input', fakeAsync(() => {
         createTestComponent(BasicDatefield);
@@ -323,15 +318,13 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
         nativeElement = fixture.nativeElement.querySelector('input');
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [ReactiveIsoDatefield],
-                imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
-                providers: [{ provide: NX_DATE_LOCALE, useValue: 'en' }],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [ReactiveIsoDatefield],
+            imports: [NxDatefieldModule, NxIsoDateModule, NxInputModule, FormsModule, ReactiveFormsModule],
+            providers: [{ provide: NX_DATE_LOCALE, useValue: 'en' }],
+        }).compileComponents();
+    }));
 
     it('has no error for a correct date', () => {
         createTestComponent(ReactiveIsoDatefield);

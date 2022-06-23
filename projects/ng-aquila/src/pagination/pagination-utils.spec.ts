@@ -11,14 +11,12 @@ describe('NxPaginationUtils', () => {
         }
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxPaginationModule],
-                providers: [NxPaginationUtils],
-            });
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxPaginationModule],
+            providers: [NxPaginationUtils],
+        });
+    }));
 
     describe('getStartArray() Method', () => {
         it('should show first 3 elements when current position is "1"', inject([NxPaginationUtils], (utils: NxPaginationUtils) => {

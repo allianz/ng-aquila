@@ -19,14 +19,12 @@ describe('NxTabComponent', () => {
         testInstance = fixture.componentInstance;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [NoGroupTest, WithGroup],
-                imports: [NxTabsModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [NoGroupTest, WithGroup],
+            imports: [NxTabsModule],
+        }).compileComponents();
+    }));
 
     it('should throw an error if tab is not wrapped in tab-group', () => {
         expect(() => createTestComponent(NoGroupTest)).toThrowError(/The nx-tab element has to be wrapped.*/);

@@ -121,23 +121,18 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
             expect(buttonNativeElement).toHaveClass(expectedClass);
         }
 
-        beforeEach(
-            waitForAsync(() => {
-                TestBed.configureTestingModule({
-                    declarations: [testTarget.basic, testTarget.configurable, testTarget.onPush],
-                    imports: [NxIconModule, NxButtonModule],
-                }).compileComponents();
-            }),
-        );
+        beforeEach(waitForAsync(() => {
+            TestBed.configureTestingModule({
+                declarations: [testTarget.basic, testTarget.configurable, testTarget.onPush],
+                imports: [NxIconModule, NxButtonModule],
+            }).compileComponents();
+        }));
 
         describe('basic', () => {
-            it(
-                'creates the button',
-                waitForAsync(() => {
-                    createTestComponent(testTarget.basic);
-                    expect(buttonInstance).toBeTruthy();
-                }),
-            );
+            it('creates the button', waitForAsync(() => {
+                createTestComponent(testTarget.basic);
+                expect(buttonInstance).toBeTruthy();
+            }));
 
             it('creates a button with a medium size', () => {
                 createTestComponent(testTarget.basic);
@@ -165,13 +160,10 @@ class ConfigurableOnPushIconButton extends ButtonTest {}
                 expect(buttonNativeElement).not.toHaveClass('nx-button--block');
             });
 
-            it(
-                'allow other classes',
-                waitForAsync(() => {
-                    createTestComponent(testTarget.basic);
-                    expect(buttonNativeElement).toHaveClass('some-arbitray-class-name');
-                }),
-            );
+            it('allow other classes', waitForAsync(() => {
+                createTestComponent(testTarget.basic);
+                expect(buttonNativeElement).toHaveClass('some-arbitray-class-name');
+            }));
         });
 
         describe('buttonType', () => {

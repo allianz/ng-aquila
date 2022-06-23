@@ -27,14 +27,12 @@ describe('NxBadgeComponent', () => {
         fixture.detectChanges();
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [DefaultBadgeComponent, BasicBadgeComponent, VibrantBadgeComponent],
-                imports: [NxBadgeModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [DefaultBadgeComponent, BasicBadgeComponent, VibrantBadgeComponent],
+            imports: [NxBadgeModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         it('should create', () => {

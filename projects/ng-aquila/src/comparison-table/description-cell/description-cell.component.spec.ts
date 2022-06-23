@@ -34,15 +34,13 @@ describe('NxComparisonTableDescriptionCell', () => {
         rowInstances = testInstance.rowInstances;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxComparisonTableModule],
-                declarations: [DescriptionCellComponent, ConfigurableDescriptionCellComponent],
-            });
-            TestBed.compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxComparisonTableModule],
+            declarations: [DescriptionCellComponent, ConfigurableDescriptionCellComponent],
+        });
+        TestBed.compileComponents();
+    }));
 
     describe('basic', () => {
         it('renders the content', () => {

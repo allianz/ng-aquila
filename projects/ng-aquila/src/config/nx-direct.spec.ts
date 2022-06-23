@@ -24,14 +24,12 @@ describe('NxDirectPreset', () => {
         formfieldInstance = testInstance.formfieldInstance;
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                imports: [NxDirectModule, NxInputModule],
-                declarations: [FormfieldPresetComponent],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            imports: [NxDirectModule, NxInputModule],
+            declarations: [FormfieldPresetComponent],
+        }).compileComponents();
+    }));
 
     it('should have set floatingLabel to always on default', () => {
         createTestComponent(FormfieldPresetComponent);

@@ -27,14 +27,12 @@ describe(NxExpandableTableRowComponent.name, () => {
         expandableTableRowElement = fixture.debugElement.query(By.directive(NxExpandableTableRowComponent));
     }
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [BasicExpandableTableRowComponent, ConfigurableExpandableTableRowComponent],
-                imports: [NxTableModule],
-            }).compileComponents();
-        }),
-    );
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [BasicExpandableTableRowComponent, ConfigurableExpandableTableRowComponent],
+            imports: [NxTableModule],
+        }).compileComponents();
+    }));
 
     describe('basic', () => {
         beforeEach(() => {

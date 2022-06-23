@@ -22,19 +22,17 @@ describe('NxLinkComponent', () => {
         testInstance = fixture.componentInstance;
     };
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [TestComponent],
-                imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
-            }).compileComponents();
+    beforeEach(waitForAsync(() => {
+        TestBed.configureTestingModule({
+            declarations: [TestComponent],
+            imports: [NxNotificationPanelModule, NxButtonModule, NxIconModule, RouterTestingModule],
+        }).compileComponents();
 
-            inject([OverlayContainer], (oc: OverlayContainer) => {
-                overlayContainer = oc;
-                overlayContainerElement = oc.getContainerElement();
-            })();
-        }),
-    );
+        inject([OverlayContainer], (oc: OverlayContainer) => {
+            overlayContainer = oc;
+            overlayContainerElement = oc.getContainerElement();
+        })();
+    }));
 
     afterEach(inject([OverlayContainer], (currentOverlayContainer: OverlayContainer) => {
         // Since we're resetting the testing module in some of the tests,
