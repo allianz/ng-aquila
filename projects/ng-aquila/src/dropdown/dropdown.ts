@@ -322,16 +322,16 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * @docs-private
      * Panel containing the select options.
      */
-    @ViewChild('panel') panel!: ElementRef;
+    @ViewChild('panel') panel?: ElementRef;
 
     /** @docs-private */
-    @ViewChild('panelBody') panelBody!: ElementRef;
+    @ViewChild('panelBody') panelBody?: ElementRef;
 
     /** @docs-private */
     @ViewChild('trigger', { static: true }) trigger!: ElementRef;
 
     /** @docs-private */
-    @ViewChild('filterInput') filterInput!: ElementRef;
+    @ViewChild('filterInput') filterInput?: ElementRef;
 
     /**
      * @docs-private
@@ -781,6 +781,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     private _scrollActiveOptionIntoCenter() {
+        if (!this.panelBody) {
+            return;
+        }
         // reset the scrolltop to make calculation easier
         this.panelBody.nativeElement.scrollTop = 0;
 
@@ -800,7 +803,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     /** Scrolls the active option into view. */
     private _scrollActiveOptionIntoView(): void {
-        if (!this.panelOpen || !this._keyManager.activeItem) {
+        if (!this.panelBody || !this.panelOpen || !this._keyManager.activeItem) {
             return;
         }
 
@@ -928,14 +931,14 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     private setNextItemActive() {
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        const next = Math.min(options.length - 1, options.indexOf(this._selectionModel.selected[0]) + 1);
+        const next = Math.min(options.length - 1, options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent) + 1);
         this._selectionModel.select(options[next]);
         this._propagateChanges();
     }
 
     private setPreviousItemActive() {
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        const prev = Math.max(0, options.indexOf(this._selectionModel.selected[0]) - 1);
+        const prev = Math.max(0, options.indexOf(this._selectionModel.selected[0] as NxDropdownItemComponent) - 1);
         this._selectionModel.select(options[prev]);
         this._propagateChanges();
     }
@@ -1070,9 +1073,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             this.openedChange.emit(true);
 
             if (this.showFilter) {
-                this.filterInput.nativeElement.focus();
+                this.filterInput?.nativeElement.focus();
             } else {
-                this.panelBody.nativeElement.focus();
+                this.panelBody?.nativeElement.focus();
             }
         });
     }
@@ -1108,6 +1111,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     _clearFilter() {
+        if (!this.filterInput) {
+            return;
+        }
         this.filterInput.nativeElement.value = '';
         this.currentFilter = '';
         this.filterChanges.next('');

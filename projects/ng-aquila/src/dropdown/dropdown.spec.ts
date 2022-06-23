@@ -581,7 +581,7 @@ describe('NxDropdownComponent', () => {
             fixture.detectChanges();
             tick(1);
             // 4 * 44 + 22 (half of item height) + 16 (firstItemPaddingTop) - 100 (middle of panel)
-            expect(dropdownInstance.panelBody.nativeElement.scrollTop).toBe(106);
+            expect(dropdownInstance.panelBody?.nativeElement.scrollTop).toBe(106);
         }));
     });
 
@@ -1083,7 +1083,7 @@ describe('NxDropdownComponent', () => {
             fixture.detectChanges();
             tick(300);
             const items = overlayContainer.getContainerElement().querySelectorAll('nx-dropdown-item');
-            expect(dropdownInstance.panelBody.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(0).id);
+            expect(dropdownInstance.panelBody?.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(0).id);
 
             dispatchKeyboardEvent(getDropdown()!, 'keydown', DOWN_ARROW);
             fixture.detectChanges();
@@ -1093,13 +1093,13 @@ describe('NxDropdownComponent', () => {
             fixture.detectChanges();
             tick(300);
 
-            expect(dropdownInstance.panelBody.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(2).id);
+            expect(dropdownInstance.panelBody?.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(2).id);
 
             dispatchKeyboardEvent(getDropdown()!, 'keydown', UP_ARROW);
             fixture.detectChanges();
             tick(300);
 
-            expect(dropdownInstance.panelBody.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(1).id);
+            expect(dropdownInstance.panelBody?.nativeElement.getAttribute('aria-activedescendant')).toBe(items.item(1).id);
         }));
 
         it('should highlight options via UP/DOWN arrows', fakeAsync(() => {
