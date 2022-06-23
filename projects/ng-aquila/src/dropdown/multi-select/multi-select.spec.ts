@@ -292,6 +292,22 @@ describe('NxMultiSelectComponent', () => {
                 expect(divider).not.toBeNull();
             });
 
+            it('should go into error state when error state matcher is true', fakeAsync(() => {
+                createTestComponent(BasicMultiSelectComponent);
+                fixture.detectChanges();
+                const spy = jasmine.createSpy();
+                const stateChangesSubscription = multiSelectInstance.stateChanges.subscribe(spy);
+                // quick hack to replace the default matcher without any large
+                // TestBed magic
+                multiSelectInstance['_errorStateMatcher'] = { isErrorState: () => true };
+                fixture.detectChanges();
+                flush();
+                expect(multiSelectInstance.errorState).toBeTrue();
+                expect(spy).toHaveBeenCalled();
+
+                stateChangesSubscription.unsubscribe();
+            }));
+
             describe('and using "clear" button', () => {
                 beforeEach(async () => {
                     await multiSelectHarness.clickClearAll();

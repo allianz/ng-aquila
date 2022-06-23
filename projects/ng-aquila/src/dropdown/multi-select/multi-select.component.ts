@@ -6,6 +6,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    DoCheck,
     ElementRef,
     HostBinding,
     Input,
@@ -42,7 +43,7 @@ const OVERLAY_MIN_WIDTH = 260;
     providers: [{ provide: NxFormfieldControl, useExisting: NxMultiSelectComponent }],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, OnDestroy, AfterViewInit {
+export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFormfieldControl<T[]>, DoCheck, OnDestroy, AfterViewInit {
     get value(): T[] {
         return this.options.filter(option => this.selectedItems.has(option)).map(option => this._selectValue(option));
     }
@@ -537,6 +538,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     registerOnTouched(fn: any): void {
         this._onTouched = fn;
+    }
+
+    ngDoCheck() {
+        if (this.ngControl) {
+            this.updateErrorState();
+        }
     }
 
     updateErrorState() {
