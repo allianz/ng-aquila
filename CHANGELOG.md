@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.6.3](https://github.com/allianz/ng-aquila/compare/v13.6.2...v13.6.3) (2022-06-24)
+
+
+### Bug Fixes
+
+* **input-mask:** keep model value if deactiveMask is set ([388dba6](https://github.com/allianz/ng-aquila/commit/388dba60aca949242089475ce5a549cb7ef71dda))
+* **multi-select:** show formfield error state ([7ffebec](https://github.com/allianz/ng-aquila/commit/7ffebec4ee5b7b55669517851bc799fbe30962e3))
+* **phone-input:** add missing initial country number code ([34aa6a1](https://github.com/allianz/ng-aquila/commit/34aa6a1b66c20e3d5d2d8e460c502db50f0aa6df))
+
+
+
 ## [13.6.2](https://github.com/allianz/ng-aquila/compare/v13.6.1...v13.6.2) (2022-06-17)
 
 This is a technical release to help us move our project to `github/allianz`.
