@@ -30,3 +30,20 @@
     Selected options:
     <pre>[{{ model.join(', ') }}]</pre>
 </div>
+
+<h3>Reactive forms validation</h3>
+<nx-formfield nxFloatLabel="always" nxLabel="Multi select with validation">
+    <nx-multi-select
+        placeholder="Choose options"
+        [formControl]="control"
+        [options]="options"
+        [selectLabel]="selectLabel"
+        [selectValue]="selectValue"
+    ></nx-multi-select>
+    <nx-error nxFormfieldError>Error {{ control.errors | json }}</nx-error>
+</nx-formfield>
+
+<div>
+    Selected options:
+    <pre>[{{ control.value?.join(', ') }}]</pre>
+</div>

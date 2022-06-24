@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 interface MyOption {
     label: string;
@@ -84,6 +85,10 @@ export class MultiSelectExampleComponent {
     modelWithFilter: number[] = [];
 
     options: MyOption[] = getOptions();
+
+    control = new FormControl(undefined, {
+        validators: Validators.minLength(3),
+    });
 
     selectLabel(option: MyOption) {
         return option.label;

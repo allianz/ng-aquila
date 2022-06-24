@@ -1,4 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { FormControl, Validators } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/forms&#x27;</span>;
 
 <span class="hljs-keyword">interface</span> MyOption {
     <span class="hljs-attr">label</span>: <span class="hljs-built_in">string</span>;
@@ -84,6 +85,10 @@
     modelWithFilter: <span class="hljs-built_in">number</span>[] = [];
 
     options: MyOption[] = getOptions();
+
+    control = <span class="hljs-keyword">new</span> FormControl(<span class="hljs-literal">undefined</span>, {
+        <span class="hljs-attr">validators</span>: Validators.minLength(<span class="hljs-number">3</span>),
+    });
 
     <span class="hljs-function"><span class="hljs-title">selectLabel</span>(<span class="hljs-params">option: MyOption</span>)</span> {
         <span class="hljs-keyword">return</span> option.label;
