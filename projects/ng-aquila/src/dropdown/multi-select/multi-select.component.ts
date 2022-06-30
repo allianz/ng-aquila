@@ -56,7 +56,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         return this._formFieldComponent?.appearance;
     }
 
-    get _overlayLabel(): string {
+    get _overlayLabel(): string | null | undefined {
         return this._formFieldComponent?.label;
     }
 

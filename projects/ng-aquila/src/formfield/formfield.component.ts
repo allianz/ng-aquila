@@ -87,7 +87,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Sets the label which will act as a floating label.
      * In addition, the component uses input and label to properly support accessibility.
      */
-    @Input('nxLabel') label!: string;
+    @Input('nxLabel') label?: string | null;
 
     @ContentChild(NxFormfieldLabelDirective) _labelChild!: NxFormfieldLabelDirective;
     @ContentChildren(NxFormfieldHintDirective) _hintChildren!: QueryList<NxFormfieldHintDirective>;

@@ -394,7 +394,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             return '';
         }
 
-        return this.overlayLabel ? this.overlayLabel : this.formFieldComponent ? this.formFieldComponent.label : '';
+        return this.overlayLabel ? this.overlayLabel : this.formFieldComponent?.label ?? '';
     }
 
     /** Comparison function to specify which option is displayed. Defaults to object equality. */
