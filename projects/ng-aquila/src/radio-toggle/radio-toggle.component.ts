@@ -1,7 +1,6 @@
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     AfterContentInit,
-    AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -15,8 +14,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { ErrorStateMatcher, mapClassNames } from '@aposin/ng-aquila/utils';
-import { merge, Subject } from 'rxjs';
-import { filter, startWith, takeUntil } from 'rxjs/operators';
+import { merge, Observable, Subject } from 'rxjs';
+import { startWith, switchMap, takeUntil } from 'rxjs/operators';
 
 import { NxRadioToggleButtonChange, NxRadioToggleButtonComponent } from './radio-toggle-button.component';
 import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.component';
@@ -36,7 +35,7 @@ export const RESET_VALUES = [null, undefined, ''];
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['radio-toggle.component.scss'],
 })
-export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewInit, OnDestroy, AfterContentInit, DoCheck {
+export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
     private _toggleId: string = (nextId++).toString();
 
     private _selection: any;
@@ -103,18 +102,33 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
         }
     }
 
-    ngAfterViewInit() {
-        this.subscribeToToggleButtonsChange();
-    }
-
     ngAfterContentInit() {
-        const changedOrDestroyed = merge(this.toggleButtons.changes, this._destroyed);
-
-        merge(...this.toggleButtons.map<NxRadioToggleButtonChange[]>((button: any) => button.onChecked))
-            .pipe(takeUntil(changedOrDestroyed))
-            .subscribe((change: NxRadioToggleButtonChange) => {
+        this.toggleButtons.changes
+            .pipe(
+                startWith(this.toggleButtons),
+                switchMap(_ => merge(...this.toggleButtons.map((button: any) => button.onChecked as Observable<NxRadioToggleButtonChange>))),
+                takeUntil(this._destroyed),
+            )
+            .subscribe(change => {
                 this._selection = change.value;
                 this.change(this._selection);
+            });
+
+        this.toggleButtons.changes
+            .pipe(startWith(this.toggleButtons), takeUntil(this._destroyed))
+            .subscribe((toggles: QueryList<NxRadioToggleButtonComponent>) => {
+                toggles.forEach(toggle => {
+                    toggle.resetClasses();
+                    if (toggle.value === this.selection) {
+                        // We need to defer the selection for the edge case that the button with the value of this.selection
+                        // didn't exist yet but was added afterwards to prevent changed after checked errors
+                        setTimeout(() => toggle.select());
+                    }
+                });
+                if (toggles.length > 0) {
+                    toggles.first.setFirstButton();
+                    toggles.last.setLastButton();
+                }
             });
     }
 
@@ -131,28 +145,6 @@ export class NxRadioToggleComponent implements ControlValueAccessor, AfterViewIn
             // that whatever logic is in here has to be super lean or we risk destroying the performance.
             this.updateErrorState();
         }
-    }
-
-    /** @docs-private */
-    subscribeToToggleButtonsChange(): void {
-        this.toggleButtons.changes
-            .pipe(
-                startWith(this.toggleButtons),
-                filter(toggles => toggles.length > 0),
-                takeUntil(this._destroyed),
-            )
-            .subscribe(toggles => {
-                toggles.forEach((toggle: NxRadioToggleButtonComponent) => {
-                    toggle.resetClasses();
-                    if (toggle.value === this.selection) {
-                        // We need to defer the selection for the edge case that the button with the value of this.selection
-                        // didn't exist yet but was added afterwards to prevent changed after checked errors
-                        setTimeout(() => toggle.select());
-                    }
-                });
-                toggles.first.setFirstButton();
-                toggles.last.setLastButton();
-            });
     }
 
     registerOnChange(onChangeCallback: any): void {
