@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { NxDisplayedColumns } from './displayedColumns';
-import { TableDataSource } from './tabledata-source';
+import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dynamic-table.models';
 
 @Component({
     selector: 'nx-dynamic-table',
@@ -12,9 +11,9 @@ import { TableDataSource } from './tabledata-source';
 })
 export class NxDynamicTableComponent implements OnInit {
     private _dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
-    private _dataSource!: TableDataSource | null;
+    private _dataSource!: NxDynamicTableDataSource | null;
     private _data: any[] = [];
-    private _displayedColumns!: NxDisplayedColumns[];
+    private _displayedColumns!: NxDynamicTableColumnDefinition[];
     private _columnKeys: string[] = [];
 
     /** Sets the data that it will show in the table. */
@@ -49,12 +48,12 @@ export class NxDynamicTableComponent implements OnInit {
 
     /** Sets the name order and type of columns. */
     @Input('nxDisplayedColumns')
-    set displayedColumns(value: NxDisplayedColumns[] | undefined) {
-        this._displayedColumns = value as NxDisplayedColumns[];
+    set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
+        this._displayedColumns = value as NxDynamicTableColumnDefinition[];
         this._columnKeys = value ? value.map(column => column.key) : [];
         this._cdr.markForCheck();
     }
-    get displayedColumns(): NxDisplayedColumns[] | undefined {
+    get displayedColumns(): NxDynamicTableColumnDefinition[] | undefined {
         return this._displayedColumns;
     }
 
@@ -62,8 +61,8 @@ export class NxDynamicTableComponent implements OnInit {
     @Output() nxRowClick = new EventEmitter();
 
     /** @docs-private */
-    get dataSource(): TableDataSource {
-        return this._dataSource as TableDataSource;
+    get dataSource(): NxDynamicTableDataSource {
+        return this._dataSource as NxDynamicTableDataSource;
     }
 
     /** @docs-private */
@@ -78,7 +77,7 @@ export class NxDynamicTableComponent implements OnInit {
             this._data = [];
             this._dataChange.next(this._data);
         }
-        this._dataSource = new TableDataSource(this._dataChange);
+        this._dataSource = new NxDynamicTableDataSource(this._dataChange);
     }
 
     /** @docs-private */
@@ -87,7 +86,7 @@ export class NxDynamicTableComponent implements OnInit {
     }
 
     /** @docs-private */
-    isNumeric(element: NxDisplayedColumns): boolean {
+    isNumeric(element: NxDynamicTableColumnDefinition): boolean {
         if (element.type === 'numeric') {
             return true;
         }

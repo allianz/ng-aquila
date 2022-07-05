@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Tooltip Fallbacks Table Example
@@ -51,7 +52,7 @@ export class TooltipFallbacksTableExampleComponent {
             fallback7: 'top-right',
         },
     ];
-    displayedColumns = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         // HINT: \xa0 is a non-breaking space, so the table header looks nicer
         {
             title: 'nxTooltipPosition',

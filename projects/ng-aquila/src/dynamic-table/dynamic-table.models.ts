@@ -1,7 +1,17 @@
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export class TableDataSource extends DataSource<any> {
+/** Dynamic table column definition consisting of key, title and type properties. */
+export interface NxDynamicTableColumnDefinition {
+    /** Column data property name. */
+    key: string;
+    /** Column display name. */
+    title: string;
+    /** Column display type. Defaults to 'string'. */
+    type?: 'string' | 'numeric';
+}
+
+export class NxDynamicTableDataSource extends DataSource<any> {
     constructor(private _datachange: BehaviorSubject<any[]>) {
         super();
     }

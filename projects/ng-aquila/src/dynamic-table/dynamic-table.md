@@ -12,21 +12,21 @@ The **dynamic table** is a component to show data in an organized way in a simpl
 
 User can choose between two options when implementing a dynamic table.
 
-#### Passing data with column names
+#### With column definitions
 
-User can pass an array with the name of columns that he want to show, with order, custom name of columns and type of data ('numeric' or 'string') that it contain ( type numeric will align right ) . The structure of displayed columns array must be: `title: '-', key: '-', type: '-'`. The key param should match with the key of the data array.
+User can pass an array of column definitions, including the ordering, display name and the type of data ('numeric' will align right) as `NxDynamicTablColumnDefinition[]`. The key param should match the property name of the data.
 
 <!-- example(dynamic-table) -->
 
-#### Passing only data
+#### Passing data only
 
-User can use the dynamic table only passing the data. The name of columns will be the key and table will show all data.
+User can omit column definitions. The name of columns will fall back to the property name of the data and the table will show all data.
 
 <!-- example(dynamic-table-data) -->
 
 #### No data provided
 
-Without data provided. Users can add a customized message when they do not provide data to the DynamicTable.
+Without data provided. Users can add a customized message when they do not provide any data.
 
 <!-- example(dynamic-table-without-data) -->
 

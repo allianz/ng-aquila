@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxDynamicTableColumnDefinition } from 'projects/ng-aquila/src/dynamic-table/dynamic-table.models';
 
 /**
  * @title Table Example
@@ -56,7 +57,7 @@ export class DynamicTableExampleComponent {
             lorem: 'ab tyuy ',
         },
     ];
-    displayedColumns = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         { title: 'Code', key: 'code', type: 'string' },
         { title: 'Company', key: 'company', type: 'string' },
         { title: 'Price', key: 'price', type: 'numeric' },

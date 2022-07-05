@@ -2,8 +2,8 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { NxDisplayedColumns } from './displayedColumns';
 import { NxDynamicTableComponent } from './dynamic-table.component';
+import { NxDynamicTableColumnDefinition } from './dynamic-table.models';
 import { NxDynamicTableModule } from './dynamic-table.module';
 
 @Directive()
@@ -14,7 +14,7 @@ abstract class DynamicTableTest {
         { name: 'Samuel', email: 'samuel@email.com', phone: '123456789' },
         { name: 'Adrian', email: 'adrian@email.com', phone: '987654321' },
     ];
-    displayedColumns: NxDisplayedColumns[] = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         { title: 'User Name', key: 'name', type: 'string' },
         { title: 'Phone Number', key: 'phone', type: 'string' },
     ];
