@@ -34,6 +34,12 @@ Please note that you are only allowed to make the first and/or last column stick
 
 <!-- example(table-sticky) -->
 
+### Column hiding
+
+Application developers can implement custom column behavior, such as column hiding.
+
+<!-- example(table-column-hiding) -->
+
 ### Sorting header
 
 This example shows how you can implement a basic sorting functionality for a table with `nxSort` and `nxSortHeaderCell`. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an `(sortChange)` event is outputted.
