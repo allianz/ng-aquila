@@ -469,6 +469,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
             // run change detection to update value and position of handle
             this._ngZone.run(() => {
                 this.value = newValue;
+                this._onChange(this.value);
                 this._cdr.markForCheck();
             });
         }
