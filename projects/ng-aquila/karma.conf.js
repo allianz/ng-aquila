@@ -15,6 +15,7 @@ module.exports = function (config) {
             outputDir: '../../reports/ng-aquila/junit',
         },
         files: [
+            { pattern: '../../node_modules/@angular/cdk/a11y-prebuilt.css', watched: true, included: true, served: true },
             { pattern: '../../node_modules/@angular/cdk/overlay-prebuilt.css', watched: true, included: true, served: true },
             { pattern: '../../dist/ng-aquila/css/normalize.css', included: true, watched: false },
             { pattern: '../../dist/ng-aquila/themes/aposin.css', included: true, watched: false },
