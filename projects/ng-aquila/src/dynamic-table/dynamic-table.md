@@ -33,3 +33,7 @@ Without data provided. Users can add a customized message when they do not provi
 ### Table Event Example
 
 <!-- example(dynamic-table-event) -->
+
+### Table Column Options
+
+<!-- example(dynamic-table-column-options) -->
