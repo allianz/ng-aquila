@@ -1,0 +1,21 @@
+.example-container {
+    height: 400px;
+}
+
+.main-content {
+    padding-right: 24px;
+}
+
+.my-sidepanel {
+    width: 240px;
+}
+
+.my-sidepanel-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 32px 24px 32px;
+}
+
+.my-sidepanel-content {
+    padding: 0 32px 32px 32px;
+}

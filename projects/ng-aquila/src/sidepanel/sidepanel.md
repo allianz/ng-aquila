@@ -86,3 +86,6 @@ With `[static]="true"` the sidepanel can be used as a static element on the page
 The sidepanel can contain a lot of different content. This is an example how tabs with a fixed tab-header can be used:
 
 <!-- example(sidepanel-with-tabs) -->
+
+### Focus on open sidepanel
+<!-- example(sidepanel-focus) -->

@@ -37,6 +37,7 @@ export type Appearance = 'light' | 'dark';
         // if no wrapper is used, the sidepanel currently is not animated when opening closing,
         // since a controlled environment is needed so that the animation works as expected.
         '[@sidepanelExpansion]': '{ value: _wrapper ? _getOpenState() : "", params: { transformX: dir === "rtl" ? "-100%" : "100%" } }',
+        '(@sidepanelExpansion.done)': 'onAnimationDone($event)',
         '[class.without-wrapper]': '!this._wrapper',
     },
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -74,6 +75,8 @@ export class NxSidepanelComponent {
     get appearance(): Appearance {
         return this._appearance;
     }
+
+    triggerElem?: HTMLElement | null;
 
     constructor(
         private _cdr: ChangeDetectorRef,
@@ -136,6 +139,21 @@ export class NxSidepanelComponent {
             return;
         }
         this._openState = opened ? 'open' : 'closed';
+        if (opened) {
+            this.triggerElem = document.activeElement as HTMLElement;
+        }
+    }
+
+    onAnimationDone(event: AnimationEvent) {
+        this.openedChange.emit(this._opened);
+        this.focusTrigger(this._opened);
+    }
+
+    focusTrigger(opened: boolean) {
+        if (!opened && this.triggerElem) {
+            this.triggerElem.focus();
+            this.triggerElem = null;
+        }
     }
 
     /** The text direction of the containing app. */

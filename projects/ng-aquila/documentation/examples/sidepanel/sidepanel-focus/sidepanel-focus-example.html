@@ -1,0 +1,56 @@
+<nx-sidepanel-outer-container class="example-container">
+    <div class="main-content">
+        <nx-radio-toggle nxStyle="small" [(ngModel)]="opened">
+            <nx-radio-toggle-button [nxValue]="true"
+                >Open</nx-radio-toggle-button
+            >
+            <nx-radio-toggle-button [nxValue]="false"
+                >Close</nx-radio-toggle-button
+            >
+        </nx-radio-toggle>
+
+        <p>Opened: {{ opened }}</p>
+
+        <p><i>Here is some example content that can be scrolled.</i></p>
+
+        <button (click)="this.panel.toggle()">open sidepanel 1</button>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <p>Aliquam tincidunt mauris eu risus.</p>
+        <p>Vestibulum auctor dapibus neque.</p>
+        <p>Nunc dignissim risus id metus.</p>
+        <button (click)="this.panel.toggle()">open sidepanel 2</button>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        <p>Aliquam tincidunt mauris eu risus.</p>
+        <p>Vestibulum auctor dapibus neque.</p>
+        <p>Nunc dignissim risus id metus.</p>
+    </div>
+
+    <nx-sidepanel class="my-sidepanel" [(opened)]="opened" position="static">
+        <nx-sidepanel-header>
+            <div class="my-sidepanel-header">
+                Sidepanel
+                <button
+                    nxSidepanelCloseButton
+                    #closeButton
+                    aria-label="Close Sidepanel"
+                ></button>
+            </div>
+        </nx-sidepanel-header>
+
+        <nx-sidepanel-content>
+            <div class="my-sidepanel-content">
+                <p class="nx-margin-top-0"
+                    >Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    elit.</p
+                >
+                <p>Aliquam tincidunt mauris eu risus.</p>
+                <p>Vestibulum auctor dapibus neque.</p>
+                <p>Nunc dignissim risus id metus.</p>
+                <p>Cras ornare tristique elit.</p>
+                <p>Vivamus vestibulum ntulla nec ante.</p>
+                <p>Praesent placerat risus quis eros.</p>
+                <p>Fusce pellentesque suscipit nibh.</p>
+            </div>
+        </nx-sidepanel-content>
+    </nx-sidepanel>
+</nx-sidepanel-outer-container>
