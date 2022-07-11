@@ -16,7 +16,14 @@ abstract class DynamicTableTest {
     ];
     displayedColumns: NxDynamicTableColumnDefinition[] = [
         { title: 'User Name', key: 'name', type: 'string' },
-        { title: 'Phone Number', key: 'phone', type: 'string' },
+        {
+            title: 'Phone Number',
+            key: 'phone',
+            type: 'string',
+            headerCellClass: 'column-header-class',
+            headerCellStyle: { 'width.px': 100 },
+            cellClass: 'column-class',
+        },
     ];
     handleRowClick = jasmine.createSpy('handleRowClickSpy');
     style = '';
@@ -86,6 +93,13 @@ describe('NxDynamicTableComponent', () => {
             createTestComponent(TableWrongRows);
             fixture.detectChanges();
             expect(rowElements).toHaveSize(0);
+        });
+
+        it('sets column styles', () => {
+            createTestComponent(BasicDynamicTable);
+            expect(headerCellElements[1].classList.contains('column-header-class')).toBeTrue();
+            expect(headerCellElements[1].style.width).toEqual('100px');
+            expect(fixture.nativeElement.querySelector('.column-class')).toBeTruthy();
         });
     });
 

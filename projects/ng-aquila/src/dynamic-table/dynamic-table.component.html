@@ -3,15 +3,20 @@
         <cdk-table [dataSource]="dataSource" class="nx-table">
             <!-- Column Definition -->
             <ng-container *ngFor="let element of displayedColumns" cdkColumnDef="{{ element.key }}">
-                <cdk-header-cell *cdkHeaderCellDef class="nx-table__header-cell" [ngClass]="{ 'nx-table__header-cell--number': isNumeric(element) }">
-                    <div class="nx-table__header-title--block">
+                <cdk-header-cell
+                    *cdkHeaderCellDef
+                    class="nx-table__header-cell"
+                    [ngClass]="[element.headerCellClass ?? '', isNumeric(element) ? 'nx-table__header-cell--number' : '']"
+                    [ngStyle]="element.headerCellStyle || null"
+                    ><div class="nx-table__header-title--block">
                         <span class="nx-table__header-title"> {{ element.title }}</span>
                     </div>
                 </cdk-header-cell>
                 <cdk-cell
                     *cdkCellDef="let row"
                     class="nx-table__cell"
-                    [ngClass]="{ 'nx-table__cell--number': isNumeric(element) }"
+                    [ngClass]="[element.cellClass ?? '', isNumeric(element) ? 'nx-table__cell--number' : '']"
+                    [ngStyle]="element.cellStyle ?? null"
                     [innerHTML]="row[element.key]"
                 ></cdk-cell>
             </ng-container>

@@ -58,7 +58,13 @@ export class DynamicTableExampleComponent {
         },
     ];
     displayedColumns: NxDynamicTableColumnDefinition[] = [
-        { title: 'Code', key: 'code', type: 'string' },
+        {
+            title: 'Code',
+            key: 'code',
+            type: 'string',
+            headerCellClass: 'text-underline',
+            cellStyle: { 'font-weight': 600 },
+        },
         { title: 'Company', key: 'company', type: 'string' },
         { title: 'Price', key: 'price', type: 'numeric' },
         { title: 'Change Percent', key: 'changePercent', type: 'numeric' },

@@ -9,6 +9,14 @@ export interface NxDynamicTableColumnDefinition {
     title: string;
     /** Column display type. Defaults to 'string'. */
     type?: 'string' | 'numeric';
+    /** Add custom column header cell styles. */
+    headerCellStyle?: { [prop: string]: any };
+    /** Add custom column header cell class. */
+    headerCellClass?: string;
+    /** Add custom column cell styles. */
+    cellStyle?: { [prop: string]: any };
+    /** Add custom column cell class. */
+    cellClass?: string;
 }
 
 export class NxDynamicTableDataSource extends DataSource<any> {
