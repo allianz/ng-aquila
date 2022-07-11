@@ -34,16 +34,12 @@ export class ManifestService {
     available = new ReplaySubject<boolean>(1);
     protected _current!: Manifest;
 
-    constructor(
-        @Optional()
-        @Inject(NXV_MANIFEST_TOKEN)
-        private initialManifest: Manifest,
-    ) {
+    constructor(@Optional() @Inject(NXV_MANIFEST_TOKEN) private initialManifest: Manifest | null) {
         this.init();
     }
 
     init() {
-        this.update({ ...this.initialManifest });
+        this.update({ ...(this.initialManifest ?? { api: [], components: [], examples: [], guides: [] }) });
     }
 
     isEmpty() {

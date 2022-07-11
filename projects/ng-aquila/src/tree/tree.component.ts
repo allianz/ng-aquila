@@ -85,7 +85,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
     constructor(
         private _wrapperDiffers: IterableDiffers,
         private _cdr: ChangeDetectorRef,
-        @Optional() private dir: Directionality,
+        @Optional() private dir: Directionality | null,
         protected _elementRef: ElementRef,
         protected _focusMonitor: FocusMonitor,
     ) {

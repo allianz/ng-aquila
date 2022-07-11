@@ -188,7 +188,7 @@ describe('NxFormfieldComponent', () => {
 
         it('reflects control error state in css', fakeAsync(() => {
             createTestComponent(ErrorFormfield);
-            testInstance.inputInstance.ngControl.control!.markAsTouched();
+            testInstance.inputInstance.ngControl!.control!.markAsTouched();
 
             fixture.detectChanges();
             tick();
@@ -203,7 +203,7 @@ describe('NxFormfieldComponent', () => {
             expect(fixture.nativeElement.textContent).not.toContain('content-error');
             expect(fixture.nativeElement.textContent).toContain('content-note');
 
-            testInstance.inputInstance.ngControl.control!.markAsTouched();
+            testInstance.inputInstance.ngControl!.control!.markAsTouched();
             fixture.detectChanges();
             tick();
             fixture.detectChanges();
@@ -218,7 +218,7 @@ describe('NxFormfieldComponent', () => {
             createTestComponent(NoteFormfield);
             expect(fixture.nativeElement.textContent).toContain('content-note');
 
-            testInstance.inputInstance.ngControl.control!.markAsTouched();
+            testInstance.inputInstance.ngControl!.control!.markAsTouched();
 
             fixture.detectChanges();
             tick();
@@ -305,7 +305,7 @@ describe('NxFormfieldComponent', () => {
                 ariaDescribedBy = inputElement.attributes.getNamedItem('aria-describedby')!.value;
                 expect(ariaDescribedBy).toBe(testInstance.formfieldNote.id);
 
-                testInstance.inputInstance.ngControl.control!.markAsTouched();
+                testInstance.inputInstance.ngControl!.control!.markAsTouched();
                 fixture.detectChanges();
                 tick();
                 fixture.detectChanges();

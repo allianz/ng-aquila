@@ -49,7 +49,7 @@ export class NxNotificationPanelTriggerDirective {
     constructor(
         private _nxOverlay: NxOverlayService,
         private _element: ElementRef<HTMLElement>,
-        @Optional() @Self() private _triggerButton: NxTriggerButton,
+        @Optional() @Self() private _triggerButton: NxTriggerButton | null,
         @Inject(NX_NOTIFICATION_PANEL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}
 
@@ -57,7 +57,7 @@ export class NxNotificationPanelTriggerDirective {
         if (this._overlayRef) {
             return;
         }
-        const config: NxOverlayConfig = { ...DEFAULT_CONFIG, scrollStrategy: this._scrollStrategyFactory(), triggerButton: this._triggerButton };
+        const config: NxOverlayConfig = { ...DEFAULT_CONFIG, scrollStrategy: this._scrollStrategyFactory(), triggerButton: this._triggerButton ?? undefined };
         this._overlayRef = this._nxOverlay.open(this._panelTemplate, this._element, config);
         this._overlayRef
             .afterClosed()

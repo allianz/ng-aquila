@@ -10,9 +10,11 @@ import {
     forwardRef,
     Inject,
     Input,
+    OnDestroy,
     Optional,
     Output,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { nxSidepanelAnimations } from './sidepanel-animations';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
@@ -81,7 +83,7 @@ export class NxSidepanelComponent {
     constructor(
         private _cdr: ChangeDetectorRef,
         protected _elementRef: ElementRef,
-        private _dir: Directionality,
+        @Optional() private _dir: Directionality | null,
         @Optional() @Inject(forwardRef(() => NxSidepanelOuterContainerComponent)) public _wrapper: NxSidepanelOuterContainerComponent | null,
     ) {
         if (this._wrapper == null) {
@@ -179,13 +181,21 @@ export class NxSidepanelComponent {
     styleUrls: ['./sidepanel-outer-container.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NxSidepanelOuterContainerComponent {
+export class NxSidepanelOuterContainerComponent implements OnDestroy {
     @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;
 
-    constructor(@Optional() private _dir: Directionality, private _cdr: ChangeDetectorRef) {
-        this._dir.change.subscribe(() => {
-            this._cdr.markForCheck();
-        });
+    private _dirChangeSubscription = Subscription.EMPTY;
+
+    constructor(@Optional() private _dir: Directionality | null, private _cdr: ChangeDetectorRef) {
+        if (this._dir) {
+            this._dir.change.subscribe(() => {
+                this._cdr.markForCheck();
+            });
+        }
+    }
+
+    ngOnDestroy() {
+        this._dirChangeSubscription.unsubscribe();
     }
 
     _update() {

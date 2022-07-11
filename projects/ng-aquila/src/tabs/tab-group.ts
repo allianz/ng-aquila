@@ -178,7 +178,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     constructor(
         public viewportService: NxViewportService,
         private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions,
+        @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions | null,
         private _focusMonitor: FocusMonitor,
     ) {
         this._groupId = nextId++;

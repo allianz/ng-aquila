@@ -90,7 +90,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
 
     constructor(
         private _element: ElementRef,
-        @Optional() private _dir: Directionality,
+        @Optional() private _dir: Directionality | null,
         viewportService: NxViewportService,
         protected _cdr: ChangeDetectorRef,
         private scrollDispatch: ScrollDispatcher,

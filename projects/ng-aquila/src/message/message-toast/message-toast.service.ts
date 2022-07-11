@@ -39,8 +39,8 @@ export class NxMessageToastService implements OnDestroy {
         private _overlay: Overlay,
         private _injector: Injector,
         private _live: LiveAnnouncer,
-        @Optional() @SkipSelf() private _parentMessageToastService: NxMessageToastService,
-        @Optional() @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG) private _defaultConfig: NxMessageToastConfig,
+        @Optional() @SkipSelf() private _parentMessageToastService: NxMessageToastService | null,
+        @Optional() @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG) private _defaultConfig: NxMessageToastConfig | null,
     ) {}
 
     /** Creates and dispatches a message toastwith a custom text.

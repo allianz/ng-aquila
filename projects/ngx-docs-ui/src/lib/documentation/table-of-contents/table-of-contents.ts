@@ -48,7 +48,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
         private _router: Router,
         private _route: ActivatedRoute,
         private _element: ElementRef,
-        @Inject(DOCUMENT) private _document: any,
+        @Inject(DOCUMENT) private _document: Document,
         private _cdr: ChangeDetectorRef,
     ) {
         this._router.events.pipe(takeUntil(this._destroyed)).subscribe(event => {

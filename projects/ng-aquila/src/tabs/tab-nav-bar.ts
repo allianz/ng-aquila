@@ -91,8 +91,8 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
 
     constructor(
         public _cdr: ChangeDetectorRef,
-        _dir: Directionality,
-        @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions,
+        @Optional() _dir: Directionality | null,
+        @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private _defaultOptions: TabNavBarDefaultOptions | null,
         _element: ElementRef,
     ) {
         super(_cdr, _dir, _element);
@@ -138,7 +138,7 @@ export class NxTabLinkDirective implements OnDestroy {
         }
     }
 
-    constructor(@Optional() @SkipSelf() private _tabNavBar: NxTabNavBarComponent, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(@Optional() @SkipSelf() private _tabNavBar: NxTabNavBarComponent | null, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
         if (!this._tabNavBar) {
             throw Error(`The nx-tab-link element has to be wrapped in a nx-tab-nav-bar to work.`);
         }

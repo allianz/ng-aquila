@@ -1,5 +1,5 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, OnDestroy, QueryList } from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, OnDestroy, Optional, QueryList } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 const SPACE_BETWEEN_TABS = 32;
@@ -16,15 +16,17 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     _isScrolledToEnd = true;
     private _dirChangeSubscription = Subscription.EMPTY;
 
-    constructor(public _cdr: ChangeDetectorRef, private _dir: Directionality, private _element: ElementRef) {
-        this._dirChangeSubscription = this._dir.change.subscribe(() => {
-            if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
-                const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);
-                setTimeout(() => {
-                    this.scrollableTabsList.nativeElement.scrollLeft = this.direction === 'ltr' ? absoluteScrollLeft : -absoluteScrollLeft;
-                });
-            }
-        });
+    constructor(public _cdr: ChangeDetectorRef, @Optional() private _dir: Directionality | null, private _element: ElementRef) {
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => {
+                if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
+                    const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);
+                    setTimeout(() => {
+                        this.scrollableTabsList.nativeElement.scrollLeft = this.direction === 'ltr' ? absoluteScrollLeft : -absoluteScrollLeft;
+                    });
+                }
+            });
+        }
     }
 
     ngAfterContentInit() {

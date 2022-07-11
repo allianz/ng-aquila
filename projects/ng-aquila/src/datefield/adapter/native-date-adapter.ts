@@ -71,9 +71,9 @@ export class NxNativeDateAdapter extends NxDateAdapter<Date> {
      */
     useUtcForDisplay = true;
 
-    constructor(@Optional() @Inject(NX_DATE_LOCALE) matDateLocale: string, platform: Platform) {
+    constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string | null, platform: Platform) {
         super();
-        super.setLocale(matDateLocale);
+        super.setLocale(dateLocale || 'en-US');
 
         // IE does its own time zone correction, so we disable this on IE.
         this.useUtcForDisplay = !platform.TRIDENT;

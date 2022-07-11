@@ -64,5 +64,5 @@ export class NxSmallStageComponent {
         return this.appearance === 'expert';
     }
 
-    constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) private _defaultOptions: SmallStageDefaultOptions) {}
+    constructor(@Optional() @Inject(SMALL_STAGE_DEFAULT_OPTIONS) private _defaultOptions: SmallStageDefaultOptions | null) {}
 }

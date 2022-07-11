@@ -77,8 +77,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     @Input('nxLabel') label = '';
 
     constructor(
-        /** @docs-private */
-        public elementRef: ElementRef,
+        /** @docs-private */ public elementRef: ElementRef,
         private _cdr: ChangeDetectorRef,
         private _renderer: Renderer2,
         private _overlay: Overlay,

@@ -42,7 +42,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
 
     private _dayjsLocale!: string;
 
-    constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string) {
+    constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string | null) {
         super();
         this.setLocale(dateLocale || dayjs.locale());
     }

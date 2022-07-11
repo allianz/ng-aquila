@@ -75,7 +75,7 @@ export const ORIGIN_POSITIONS: { [key in NxOverlayDirection]: (arg0: boolean) =>
 
 @Injectable()
 export class NxOverlayPositionBuilder {
-    constructor(private _overlay: Overlay, @Optional() private _dir: Directionality) {}
+    constructor(private _overlay: Overlay, @Optional() private _dir: Directionality | null) {}
 
     createPositionStrategy(element: FlexibleConnectedPositionStrategyOrigin, config: NxOverlayConfig) {
         const fallbacks = this._getFallbackPositions(config.direction as NxOverlayDirection, config);
@@ -212,7 +212,7 @@ export class NxOverlayPositionBuilder {
     }
 
     get isRtl(): boolean {
-        return this._dir && this._dir.value === 'rtl';
+        return this._dir?.value === 'rtl';
     }
 
     /** Returns the opposite position, using angular position naming: top, bottom, start, end, center */

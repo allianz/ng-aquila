@@ -92,21 +92,18 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         return this._portal;
     }
 
-    /** @docs-private */
-    accordion: NxAccordionDirective;
     _headerId = `nx-expansion-panel-header-${nextId++}`;
 
     /** Stream that emits for changes in `@Input` properties. */
     readonly _inputChanges = new Subject<SimpleChanges>();
 
     constructor(
-        @Optional() @SkipSelf() accordion: NxAccordionDirective,
+        /** @docs-private */ @Optional() @SkipSelf() public accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
         _cdr: ChangeDetectorRef,
         _expansionDispatcher: UniqueSelectionDispatcher,
         private _viewContainerRef: ViewContainerRef,
     ) {
-        super(accordion, _cdr, _expansionDispatcher);
-        this.accordion = accordion;
+        super(accordion!, _cdr, _expansionDispatcher);
     }
 
     ngAfterContentInit() {

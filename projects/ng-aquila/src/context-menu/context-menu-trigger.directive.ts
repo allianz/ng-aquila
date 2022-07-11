@@ -14,7 +14,6 @@ import {
     InjectionToken,
     Input,
     OnDestroy,
-    OnInit,
     Optional,
     Output,
     Self,
@@ -75,7 +74,7 @@ interface Point {
     },
     exportAs: 'nxContextMenuTrigger',
 })
-export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, OnDestroy {
+export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestroy {
     private _portal!: TemplatePortal;
     private _overlayRef: OverlayRef | null = null;
     private _contextMenuOpen = false;
@@ -158,12 +157,10 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
         private _overlay: Overlay,
         private _element: ElementRef<HTMLElement>,
         private _viewContainerRef: ViewContainerRef,
-        @Optional() private _parentMenu: NxContextMenuComponent,
-        @Optional()
-        @Self()
-        private _contextMenuItemInstance: NxContextMenuItemComponent,
-        @Optional() private _dir: Directionality,
-        @Optional() @Self() private _triggerButton: NxTriggerButton,
+        @Optional() private _parentMenu: NxContextMenuComponent | null,
+        @Optional() @Self() private _contextMenuItemInstance: NxContextMenuItemComponent | null,
+        @Optional() private _dir: Directionality | null,
+        @Optional() @Self() private _triggerButton: NxTriggerButton | null,
         @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         private _cdr: ChangeDetectorRef,
     ) {
@@ -171,16 +168,16 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
             _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();
         }
         this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
-    }
 
-    ngOnInit() {
-        this._dirChangeSubscription = this._dir.change.subscribe(() => {
-            if (this.contextMenuOpen) {
-                // HINT: closing menu on direction change.
-                // When user re-opens it, the overlay and menu will be initialized properly, based on new direction.
-                this.closeContextMenu();
-            }
-        });
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => {
+                if (this.contextMenuOpen) {
+                    // HINT: closing menu on direction change.
+                    // When user re-opens it, the overlay and menu will be initialized properly, based on new direction.
+                    this.closeContextMenu();
+                }
+            });
+        }
     }
 
     ngAfterContentInit() {
@@ -243,7 +240,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
 
         if (this._triggerButton) {
             this._triggerButton.setTriggerActive();
-            this.contextMenu.closed.pipe(take(1)).subscribe(() => this._triggerButton.setTriggerInactive());
+            this.contextMenu.closed.pipe(take(1)).subscribe(() => this._triggerButton?.setTriggerInactive());
         }
 
         this._waitForClose();
@@ -300,7 +297,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
      * the context menu was opened via the keyboard.
      */
     private _initContextMenu(origin?: FocusOrigin): void {
-        this.contextMenu.parentMenu = this.triggersSubmenu() ? this._parentMenu : undefined;
+        this.contextMenu.parentMenu = this.triggersSubmenu() ? this._parentMenu ?? undefined : undefined;
         this.contextMenu.direction = this.dir;
         this._setIsContextMenuOpen(true);
         this.contextMenu.focusFirstItem(origin);
@@ -328,7 +325,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
         this._contextMenuOpen ? this.contextMenuOpened.emit() : this.contextMenuClosed.emit();
 
         if (this.triggersSubmenu()) {
-            this._contextMenuItemInstance._highlighted = isOpen;
+            this._contextMenuItemInstance!._highlighted = isOpen;
         }
     }
 
@@ -371,7 +368,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
                 .withFlexibleDimensions(false)
                 .withTransformOriginOn('.nx-context-menu'),
             scrollStrategy: this._scrollStrategyFactory(),
-            direction: this._dir,
+            direction: this._dir ?? undefined,
         });
     }
 
@@ -573,8 +570,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
             return;
         }
 
-        this._hoverSubscription = this._parentMenu
-            ._hovered()
+        this._hoverSubscription = this._parentMenu!._hovered()
             // Since we might have multiple competing triggers for the same menu (e.g. a sub-menu
             // with different data and triggers), we have to delay it by a tick to ensure that
             // it won't be closed immediately after it is opened.
@@ -590,7 +586,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnInit, 
                     // We need the `delay(0)` here in order to avoid
                     // 'changed after checked' errors in some cases.
                     this.contextMenu._animationDone
-                        .pipe(take(1), delay(0, asapScheduler), takeUntil(this._parentMenu._hovered()))
+                        .pipe(take(1), delay(0, asapScheduler), takeUntil(this._parentMenu!._hovered()))
                         .subscribe(() => this.openContextMenu('mouse'));
                 } else {
                     this.openContextMenu('mouse');

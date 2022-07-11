@@ -83,8 +83,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
 
     constructor(
         @Inject(forwardRef(() => NxRadioToggleComponent)) private radioToggle: NxRadioToggleComponent,
-        /** @docs-private */
-        renderer: Renderer2,
+        /** @docs-private */ renderer: Renderer2,
         private _cdr: ChangeDetectorRef,
         private _toggleDispatcher: UniqueSelectionDispatcher,
         private _focusMonitor: FocusMonitor,

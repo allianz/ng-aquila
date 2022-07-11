@@ -232,6 +232,9 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     private _localeSubscription = Subscription.EMPTY;
 
+    readonly _dateAdapter: NxDateAdapter<D>;
+    private readonly _dateFormats: NxDateFormats;
+
     _dateFilter!: (date: D | null) => boolean;
 
     _onTouched = () => {};
@@ -242,16 +245,19 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
 
     constructor(
         private _elementRef: ElementRef,
-        @Optional() public _dateAdapter: NxDateAdapter<D>,
-        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
-        @Optional() private _formField: NxFormfieldComponent,
+        @Optional() _dateAdapter: NxDateAdapter<D> | null,
+        @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
+        @Optional() private _formField: NxFormfieldComponent | null,
     ) {
-        if (!this._dateAdapter) {
+        if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
-        if (!this._dateFormats) {
+        this._dateAdapter = _dateAdapter;
+
+        if (!_dateFormats) {
             throw createMissingDateImplError('NX_DATE_FORMATS');
         }
+        this._dateFormats = _dateFormats;
 
         // Update the displayed date when the locale changes.
         this._localeSubscription = _dateAdapter.localeChanges.subscribe(() => {

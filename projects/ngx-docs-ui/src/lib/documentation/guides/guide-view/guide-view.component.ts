@@ -20,7 +20,7 @@ export class NxvGuideViewComponent {
         _route: ActivatedRoute,
         private manifestService: ManifestService,
         private router: Router,
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any | null,
     ) {
         // Listen for changes in the route or our manifest
         combineLatest(manifestService.manifest, _route.params.pipe(map(params => params['id'])))

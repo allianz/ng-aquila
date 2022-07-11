@@ -468,13 +468,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         private _elementRef: ElementRef,
         private _ngZone: NgZone,
         @Attribute('tabindex') tabIndex: string,
-        @Optional() private formFieldComponent: NxFormfieldComponent,
+        @Optional() private formFieldComponent: NxFormfieldComponent | null,
         private _errorStateMatcher: ErrorStateMatcher,
-        /** @docs-private */
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
-        @Optional() private _dir: Directionality,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        @Optional() private _dir: Directionality | null,
         @Inject(NX_DROPDOWN_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         private liveAnnouncer: LiveAnnouncer,
     ) {

@@ -45,7 +45,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _count!: number;
     private _perPage!: number;
     private _type = 'simple';
-    private _dirChangeSubscription: Subscription;
+    private _dirChangeSubscription = Subscription.EMPTY;
 
     /** @docs-private */
     paginationTexts: IPaginationTexts;
@@ -114,16 +114,18 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     @Output() nxGoPage = new EventEmitter<number>();
 
     constructor(
-        @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts,
-        @Optional() private _dir: Directionality,
+        @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts | null,
+        @Optional() private _dir: Directionality | null,
         private paginationUtilsService: NxPaginationUtils,
         private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
         this.paginationTexts = paginationTexts || DefaultPaginationTexts;
-        this._dirChangeSubscription = this._dir.change.subscribe(() => {
-            this._cdr.detectChanges();
-        });
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => {
+                this._cdr.detectChanges();
+            });
+        }
     }
 
     ngOnInit() {
@@ -148,7 +150,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
     ngOnDestroy() {
         this._linkElements?.forEach(link => this._focusMonitor.stopMonitoring(link));
-        this._dirChangeSubscription.unsubscribe();
+        this._dirChangeSubscription?.unsubscribe();
     }
 
     /** Returns the number of the first page. */
@@ -261,6 +263,6 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     get _isRTL(): boolean {
-        return this._dir.value === 'rtl';
+        return this._dir?.value === 'rtl';
     }
 }

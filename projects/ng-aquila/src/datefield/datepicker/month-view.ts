@@ -128,18 +128,24 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     /** Number of days that should be displayed in one row. */
     _numCols = 7;
 
+    readonly _dateAdapter: NxDateAdapter<D>;
+    private readonly _dateFormats: NxDateFormats;
+
     constructor(
         private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
-        @Optional() public _dateAdapter: NxDateAdapter<D>,
-        @Optional() private _dir?: Directionality,
+        @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
+        @Optional() _dateAdapter: NxDateAdapter<D> | null,
+        @Optional() private _dir?: Directionality | null,
     ) {
-        if (!this._dateAdapter) {
+        if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
-        if (!this._dateFormats) {
+        this._dateAdapter = _dateAdapter;
+
+        if (!_dateFormats) {
             throw createMissingDateImplError('MAT_DATE_FORMATS');
         }
+        this._dateFormats = _dateFormats;
 
         const firstDayOfWeek = this._dateAdapter.getFirstDayOfWeek();
         const narrowWeekdays = this._dateAdapter.getDayOfWeekNames('narrow');

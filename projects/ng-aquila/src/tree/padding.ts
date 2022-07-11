@@ -79,7 +79,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         private _tree: CdkTree<T>,
         private _renderer: Renderer2,
         private _element: ElementRef<HTMLElement>,
-        @Optional() private _dir: Directionality,
+        @Optional() private _dir: Directionality | null,
     ) {
         this._setPadding();
         if (this._dir) {

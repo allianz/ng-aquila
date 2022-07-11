@@ -205,7 +205,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         private elementRef: ElementRef,
         private _cdr: ChangeDetectorRef,
         private _ngZone: NgZone,
-        @Optional() private _dir: Directionality,
+        @Optional() private _dir: Directionality | null,
         private _focusMonitor: FocusMonitor,
     ) {}
 
@@ -421,7 +421,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     }
 
     private _getValueFromPosition(position: number): number {
-        const isRTL = this._dir.value === 'rtl';
+        const isRTL = this._dir?.value === 'rtl';
         const rect = this.elementRef.nativeElement.getBoundingClientRect();
         const x = Math.max(rect.left, Math.min(rect.right, position));
 

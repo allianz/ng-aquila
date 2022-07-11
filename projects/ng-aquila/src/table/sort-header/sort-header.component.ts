@@ -35,12 +35,19 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         return this._key;
     }
 
+    readonly _sort: NxSortDirective;
+
     constructor(
-        @Optional() public _sort: NxSortDirective,
+        @Optional() _sort: NxSortDirective | null,
         public _intl: NxSortHeaderIntl,
         private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
+        if (!_sort) {
+            throw new Error(`NxTable: Using the 'nxSortHeaderCell' component requires the 'nxSort' directive on containing table.`);
+        }
+        this._sort = _sort;
+
         this._intlSubscription = this._intl.changes.subscribe(() => this._cdr.markForCheck());
     }
 

@@ -1,5 +1,5 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Optional, Output } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Subscription } from 'rxjs';
 
@@ -33,7 +33,7 @@ export class NxTabScrollIndicator implements OnDestroy {
     private _viewportServiceSubscription: Subscription = Subscription.EMPTY;
     private _dirChangeSubscription = Subscription.EMPTY;
 
-    constructor(private _cdr: ChangeDetectorRef, private _viewportService: NxViewportService, private _dir: Directionality) {
+    constructor(private _cdr: ChangeDetectorRef, private _viewportService: NxViewportService, @Optional() private _dir: Directionality | null) {
         this._viewportServiceSubscription = this._viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).subscribe(isGreaterThanMedium => {
             if (isGreaterThanMedium) {
                 this._view = 'desktop';
@@ -42,8 +42,9 @@ export class NxTabScrollIndicator implements OnDestroy {
             }
             this._cdr.markForCheck();
         });
-
-        this._dirChangeSubscription = this._dir.change.subscribe(() => this._cdr.markForCheck());
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => this._cdr.markForCheck());
+        }
     }
 
     ngOnDestroy() {

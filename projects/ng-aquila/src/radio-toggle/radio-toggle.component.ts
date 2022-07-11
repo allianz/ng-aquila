@@ -89,11 +89,10 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
 
     constructor(
         private _cdr: ChangeDetectorRef,
-        /** @docs-private */
-        @Optional() @Self() public ngControl: NgControl,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

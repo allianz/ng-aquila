@@ -67,7 +67,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
         it('should show an error in a popover', fakeAsync(() => {
             createTestComponent(NaturalLanguageFormBasicComponent);
-            const formControl = testInstance.inputs.first.ngControl.control as FormControl;
+            const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
             formControl.markAsTouched();
 
             fixture.detectChanges();
@@ -79,7 +79,7 @@ describe('NxNaturalLanguageFormComponent', () => {
 
         it('should dispose overlay container for word popover upon destroy', fakeAsync(() => {
             createTestComponent(NaturalLanguageFormBasicComponent);
-            const formControl = testInstance.inputs.first.ngControl.control as FormControl;
+            const formControl = testInstance.inputs.first.ngControl?.control as FormControl;
             formControl.markAsTouched();
 
             fixture.detectChanges();

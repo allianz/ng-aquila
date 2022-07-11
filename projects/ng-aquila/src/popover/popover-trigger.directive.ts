@@ -17,7 +17,6 @@ import {
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -99,7 +98,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
     private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
     private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
-    private _dirChangeSubscription: Subscription;
+    private _dirChangeSubscription = Subscription.EMPTY;
     private _removeEventListener!: () => void;
     /** @docs-private */
     id = 'nx-popover-' + nextId++;
@@ -208,8 +207,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         private _focusMonitor: FocusMonitor,
         private _ngZone: NgZone,
         private _platform: Platform,
-        @Optional() private _dir: Directionality,
-        @Optional() @Inject(DOCUMENT) private _document: any,
+        @Optional() private _dir: Directionality | null,
         @Inject(NX_POPOVER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         private _cdr: ChangeDetectorRef,
     ) {
@@ -254,7 +252,9 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 }
             });
 
-        this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
+        }
     }
 
     ngOnInit() {

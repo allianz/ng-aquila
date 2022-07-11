@@ -9,7 +9,7 @@ import { NxIconFontDefinition } from './icon-registry';
 export class NxSvgIcon {
     svgElement: SVGElement | undefined;
 
-    constructor(protected _httpClient: HttpClient, protected _sanitizer: DomSanitizer, protected _document: Document) {}
+    constructor(protected _httpClient: HttpClient | null, protected _sanitizer: DomSanitizer, protected _document: Document) {}
 
     /** Returns the content. */
     getContent(): Observable<SVGElement | undefined> {
@@ -30,7 +30,7 @@ export class NxSvgIcon {
 }
 
 export class NxSvgIconLiteral extends NxSvgIcon {
-    constructor(data: SafeHtml, protected _httpClient: HttpClient, protected _sanitizer: DomSanitizer, protected _document: Document) {
+    constructor(data: SafeHtml, _httpClient: HttpClient | null, _sanitizer: DomSanitizer, _document: Document) {
         super(_httpClient, _sanitizer, _document);
         const sanitizedLiteral = this._sanitizer.sanitize(SecurityContext.HTML, data);
 
@@ -45,10 +45,12 @@ export class NxSvgIconLiteral extends NxSvgIcon {
 export class NxSvgIconFromUrl extends NxSvgIcon {
     url: string;
 
+    protected _httpClient: HttpClient;
+
     // used to not send multiple requests for the same url
     private _pendingRequest: Observable<any> | undefined;
 
-    constructor(safeUrl: SafeResourceUrl, protected _httpClient: HttpClient, protected _sanitizer: DomSanitizer, protected _document: Document) {
+    constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, protected _sanitizer: DomSanitizer, protected _document: Document) {
         super(_httpClient, _sanitizer, _document);
 
         this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
@@ -56,12 +58,13 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
         if (!this.url) {
             throw Error(`The URL provided to NxIconRegistry was not trusted as a resource URL via Angular's DomSanitizer. Attempted URL was "${safeUrl}".`);
         }
-        if (!this._httpClient) {
+        if (!_httpClient) {
             throw Error(
                 'Could not find HttpClient provider for using a SVG url in the nx-icon registry. ' +
                     'Please include the HttpClientModule from @angular/common/http in your app imports.',
             );
         }
+        this._httpClient = _httpClient;
     }
 
     /** Returns the content. If the SVG is not already loaded it fetches the SVG from icons' URL */

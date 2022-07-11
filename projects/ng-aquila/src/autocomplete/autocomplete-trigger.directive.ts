@@ -237,7 +237,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     /** `View -> model callback called when autocomplete has been touched` */
     _onTouched = () => {};
 
-    private get _formField(): NxFormfieldComponent | NxWordComponent {
+    private get _formField(): NxFormfieldComponent | NxWordComponent | null {
         if (this._nxFormField) {
             return this._nxFormField;
         }
@@ -252,9 +252,9 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         private _cdr: ChangeDetectorRef,
         private _dir: Directionality,
         private _autofillMonitor: AutofillMonitor,
-        @Optional() @Host() private _nxFormField: NxFormfieldComponent,
-        @Optional() @Host() private _nxWordField: NxWordComponent,
-        @Optional() @Inject(DOCUMENT) private _document: any,
+        @Optional() @Host() private _nxFormField: NxFormfieldComponent | null,
+        @Optional() @Host() private _nxWordField: NxWordComponent | null,
+        @Optional() @Inject(DOCUMENT) private _document: Document | null,
         @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
         private _viewportRuler?: ViewportRuler,
     ) {
@@ -503,7 +503,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
 
     /** If the label has been manually elevated, return it to its normal state. */
     private _resetLabel(): void {
-        if (this._manuallyFloatingLabel) {
+        if (this._nxFormField && this._manuallyFloatingLabel) {
             this._nxFormField.floatLabel = 'auto';
             this._manuallyFloatingLabel = false;
         }

@@ -246,7 +246,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
     _toggleButton!: NxDatepickerToggleComponent<D>;
 
-    _dirChangeSubscription: Subscription;
+    _dirChangeSubscription = Subscription.EMPTY;
 
     /** Strategy factory that will be used to handle scrolling while the datepicker panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -254,22 +254,28 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     /** Emits when the datepicker is disabled. */
     readonly _disabledChange = new Subject<boolean>();
 
+    private readonly _dateAdapter: NxDateAdapter<D>;
+
     constructor(
         private _overlay: Overlay,
         private _ngZone: NgZone,
         private _viewContainerRef: ViewContainerRef,
         @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
-        @Optional() private _dateAdapter: NxDateAdapter<D>,
-        @Optional() private _dir: Directionality,
-        @Optional() @Inject(DOCUMENT) private _document: any,
+        @Optional() _dateAdapter: NxDateAdapter<D> | null,
+        @Optional() private _dir: Directionality | null,
+        @Optional() @Inject(DOCUMENT) private _document: Document | null,
     ) {
-        if (!this._dateAdapter) {
+        if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
-        this._dirChangeSubscription = this._dir.change.subscribe(() => {
-            this.close();
-            this._destroyPopup();
-        });
+        this._dateAdapter = _dateAdapter;
+
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(() => {
+                this.close();
+                this._destroyPopup();
+            });
+        }
     }
 
     ngOnDestroy() {
@@ -348,7 +354,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             throw Error('Attempted to open an NxDatepicker with no associated input.');
         }
         if (this._document) {
-            this._focusedElementBeforeOpen = this._document.activeElement;
+            this._focusedElementBeforeOpen = this._document.activeElement as HTMLElement | null;
         }
 
         this._openAsPopup();

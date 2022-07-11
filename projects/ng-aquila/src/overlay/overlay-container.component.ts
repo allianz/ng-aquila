@@ -33,8 +33,6 @@ export function throwNxOverlayContentAlreadyAttachedError() {
     },
 })
 export class NxOverlayContainerComponent extends BasePortalOutlet {
-    private _document: Document;
-
     /** The portal outlet inside of this container into which the overlay content will be loaded. */
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
@@ -53,13 +51,12 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
     constructor(
         private _elementRef: ElementRef,
         private _focusTrapFactory: FocusTrapFactory,
-        @Optional() @Inject(DOCUMENT) _document: any,
+        @Optional() @Inject(DOCUMENT) private _document: Document | null,
         /** The overlay configuration. */
         public _config: NxOverlayConfig,
     ) {
         super();
         this._ariaLabelledBy = _config.ariaLabelledBy || null;
-        this._document = _document;
     }
 
     get elementRef() {
@@ -121,7 +118,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
         if (this._config.autoFocus) {
             this._focusTrap.focusInitialElementWhenReady();
         } else {
-            const activeElement = this._document.activeElement;
+            const activeElement = this._document?.activeElement;
 
             // Otherwise ensure that focus is on the overlay container. It's possible that a different
             // component tried to move focus while the open animation was running. See:
@@ -140,14 +137,14 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
         // We need the extra check, because IE can set the `activeElement` to null in some cases.
         if (this._config.restoreFocus && toFocus && typeof toFocus.focus === 'function') {
-            const activeElement = this._document.activeElement;
+            const activeElement = this._document?.activeElement;
             const element = this._elementRef.nativeElement;
 
             // Make sure that focus is still inside the overlay or is on the body (usually because a
             // non-focusable element like the backdrop was clicked) before moving it. It's possible that
             // the consumer moved it themselves before the animation was done, in which case we shouldn't
             // do anything.
-            if (!activeElement || activeElement === this._document.body || activeElement === element || element.contains(activeElement)) {
+            if (!activeElement || activeElement === this._document?.body || activeElement === element || element.contains(activeElement)) {
                 toFocus.focus();
             }
         }
@@ -159,16 +156,17 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
     /** Saves a reference to the element that was focused before the overlay was opened. */
     private _savePreviouslyFocusedElement() {
-        if (this._document) {
-            this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;
+        if (!this._document) {
+            return;
+        }
+        this._elementFocusedBeforeDialogWasOpened = this._document.activeElement as HTMLElement;
 
-            // Note that there is no focus method when rendering on the server.
-            if (this._elementRef.nativeElement.focus) {
-                // Move focus onto the overlay immediately in order to prevent the user from accidentally
-                // opening multiple overlays at the same time. Needs to be async, because the element
-                // may not be focusable immediately.
-                Promise.resolve().then(() => this._elementRef.nativeElement.focus());
-            }
+        // Note that there is no focus method when rendering on the server.
+        if (this._elementRef.nativeElement.focus) {
+            // Move focus onto the overlay immediately in order to prevent the user from accidentally
+            // opening multiple overlays at the same time. Needs to be async, because the element
+            // may not be focusable immediately.
+            Promise.resolve().then(() => this._elementRef.nativeElement.focus());
         }
     }
 }

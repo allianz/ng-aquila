@@ -27,7 +27,7 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
     feedbackLinkNegative!: string;
 
     constructor(
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any | null,
         private viewportService: NxViewportService,
         private focusMonitor: FocusMonitor,
     ) {

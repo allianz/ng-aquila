@@ -152,10 +152,10 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
 
     constructor(
         private _cdr: ChangeDetectorRef,
-        @Optional() @Self() public ngControl: NgControl,
+        @Optional() @Self() public ngControl: NgControl | null,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
         private _focusMonitor: FocusMonitor,
     ) {
         if (this.ngControl) {

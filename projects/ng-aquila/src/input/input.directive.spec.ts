@@ -121,7 +121,7 @@ describe('NxInputDirective', () => {
 
         it('reflect ngModel errors', fakeAsync(() => {
             createTestComponent(NgModelInput);
-            inputInstance.ngControl.control!.markAsTouched();
+            inputInstance.ngControl!.control!.markAsTouched();
 
             fixture.detectChanges();
             tick();
@@ -279,7 +279,7 @@ describe('NxInputDirective', () => {
 
         it('sets aria-invalid', fakeAsync(() => {
             createTestComponent(NgModelInput);
-            inputInstance.ngControl.control!.markAsTouched();
+            inputInstance.ngControl!.control!.markAsTouched();
 
             fixture.detectChanges();
             tick();

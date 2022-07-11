@@ -1,4 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +42,7 @@ describe('NxvVersionSelectComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            imports: [NxvVersionSelectModule, BrowserAnimationsModule],
+            imports: [NxvVersionSelectModule, BrowserAnimationsModule, HttpClientTestingModule],
             declarations: [BasicVersionSelect, VersionSelectWithToken],
         }).compileComponents();
 

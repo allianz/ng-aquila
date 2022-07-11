@@ -164,12 +164,11 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     constructor(
         protected _elementRef: ElementRef,
         protected _platform: Platform,
-        /** @docs-private */
-        @Optional() @Self() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() @Self() @Inject(NX_INPUT_VALUE_ACCESSOR) inputValueAccessor: any,
+        @Optional() @Self() @Inject(NX_INPUT_VALUE_ACCESSOR) inputValueAccessor: { value: any } | null,
         private _autofillMonitor: AutofillMonitor,
     ) {
         const id = this.id;

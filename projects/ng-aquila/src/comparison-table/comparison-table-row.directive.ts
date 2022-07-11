@@ -61,7 +61,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
         return this._type === 'header' && this._mayStick;
     }
 
-    constructor(@Optional() private _toggleSection: NxToggleSectionBase, @Optional() private _rowGroup: NxComparisonTableRowGroupBase) {
+    constructor(@Optional() private _toggleSection: NxToggleSectionBase | null, @Optional() private _rowGroup: NxComparisonTableRowGroupBase | null) {
         super();
     }
 

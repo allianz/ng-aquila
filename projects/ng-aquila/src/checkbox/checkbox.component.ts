@@ -160,9 +160,9 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
-        @Optional() @Self() public ngControl: NgControl,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        @Optional() @Self() public ngControl: NgControl | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -456,10 +456,10 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() public checkboxGroup: NxCheckboxGroupComponent,
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() public checkboxGroup: NxCheckboxGroupComponent | null,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
         private _focusMonitor: FocusMonitor,
     ) {
         if (this.ngControl) {

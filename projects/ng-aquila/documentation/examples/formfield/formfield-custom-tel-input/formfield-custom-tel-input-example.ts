@@ -125,7 +125,7 @@ export class FormfieldCustomTelInputExampleComponent
         formBuilder: FormBuilder,
         private _focusMonitor: FocusMonitor,
         private _elementRef: ElementRef<HTMLElement>,
-        @Optional() @Self() public ngControl: NgControl,
+        @Optional() @Self() public ngControl: NgControl | null,
     ) {
         this.parts = formBuilder.group({
             area: [

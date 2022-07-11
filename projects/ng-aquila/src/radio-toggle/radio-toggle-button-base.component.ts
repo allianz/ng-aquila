@@ -21,10 +21,7 @@ export class NxRadioToggleButtonBaseComponent {
     @ViewChild('toggleInput', { static: true })
     toggleInput!: ElementRef;
 
-    constructor(
-        /** @docs-private */
-        protected renderer: Renderer2,
-    ) {}
+    constructor(/** @docs-private */ protected renderer: Renderer2) {}
 
     /** @docs-private */
     triggerInputClick(event: MouseEvent) {

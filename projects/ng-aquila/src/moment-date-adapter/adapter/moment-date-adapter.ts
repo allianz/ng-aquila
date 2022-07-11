@@ -33,7 +33,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
         narrowDaysOfWeek: string[];
     };
 
-    constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string) {
+    constructor(@Optional() @Inject(NX_DATE_LOCALE) dateLocale: string | null) {
         super();
         this.setLocale(dateLocale || moment.locale());
     }

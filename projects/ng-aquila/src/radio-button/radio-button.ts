@@ -157,9 +157,9 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
 
     constructor(
         private _cdr: ChangeDetectorRef,
-        @Optional() @Self() public ngControl: NgControl,
-        @Optional() public _parentForm: NgForm,
-        @Optional() public _parentFormGroup: FormGroupDirective,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() public _parentForm: NgForm | null,
+        @Optional() public _parentFormGroup: FormGroupDirective | null,
         private _errorStateMatcher: ErrorStateMatcher,
     ) {
         if (this.ngControl) {
@@ -399,7 +399,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     /** @docs-private */
     get disabled(): boolean {
-        return this._disabled || this.radioGroup?.disabled;
+        return this._disabled || !!this.radioGroup?.disabled;
     }
 
     /** Whether the radio button should be disabled or not. */
@@ -411,7 +411,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     /** @docs-private */
     get required(): boolean {
-        return this._required || this.radioGroup?.required;
+        return this._required || !!this.radioGroup?.required;
     }
 
     /** Sets if at least a radio button should be selected. */
@@ -423,7 +423,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._cdr.markForCheck();
     }
 
-    constructor(@Optional() public radioGroup: NxRadioGroupComponent, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(@Optional() public radioGroup: NxRadioGroupComponent | null, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngOnInit() {
         if (this.radioGroup) {

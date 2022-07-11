@@ -68,8 +68,8 @@ export class NxDialogService implements OnDestroy {
     constructor(
         private _overlay: Overlay,
         private _injector: Injector,
-        @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private _defaultOptions: NxModalConfig,
-        @Optional() @SkipSelf() private _parentDialogService: NxDialogService,
+        @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private _defaultOptions: NxModalConfig | null,
+        @Optional() @SkipSelf() private _parentDialogService: NxDialogService | null,
         private _overlayContainer: OverlayContainer,
         @Inject(NX_MODAL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}

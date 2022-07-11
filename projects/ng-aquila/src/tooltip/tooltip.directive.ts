@@ -111,7 +111,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     private _selectable = false;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
     private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
-    private _dirChangeSubscription: Subscription;
+    private _dirChangeSubscription = Subscription.EMPTY;
 
     /** Allows the user to define the position of the tooltip relative to the parent element */
     @Input('nxTooltipPosition')
@@ -165,10 +165,10 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     }
 
     /** The default delay in ms before showing the tooltip after show is called */
-    @Input('nxTooltipShowDelay') showDelay: number = this._defaultOptions.showDelay;
+    @Input('nxTooltipShowDelay') showDelay: number = this._defaultOptions!.showDelay;
 
     /** The default delay in ms before hiding the tooltip after hide is called */
-    @Input('nxTooltipHideDelay') hideDelay: number = this._defaultOptions.hideDelay;
+    @Input('nxTooltipHideDelay') hideDelay: number = this._defaultOptions!.hideDelay;
 
     private _message = '';
 
@@ -208,13 +208,13 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         platform: Platform,
         private _ariaDescriber: AriaDescriber,
         private _focusMonitor: FocusMonitor,
-        @Optional() private _dir: Directionality,
-        @Optional()
-        @Inject(NX_TOOLTIP_DEFAULT_OPTIONS)
-        private _defaultOptions: NxTooltipDefaultOptions,
+        @Optional() private _dir: Directionality | null,
+        @Optional() @Inject(NX_TOOLTIP_DEFAULT_OPTIONS) private _defaultOptions: NxTooltipDefaultOptions | null,
         @Inject(NX_TOOLTIP_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {
-        this._dirChangeSubscription = _dir.change.subscribe(this._dirChangeHandler.bind(this));
+        if (this._dir) {
+            this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
+        }
         const element: HTMLElement = _elementRef.nativeElement;
 
         // The mouse events shouldn't be bound on mobile devices, because they can prevent the
@@ -270,7 +270,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
         this._ariaDescriber.removeDescription(this._elementRef.nativeElement, this.message);
         this._focusMonitor.stopMonitoring(this._elementRef);
-        this._dirChangeSubscription.unsubscribe();
+        this._dirChangeSubscription?.unsubscribe();
     }
 
     /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */
@@ -320,7 +320,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     /** Handles the touchend events on the host element. */
     _handleTouchend() {
-        this.hide(this._defaultOptions.touchendHideDelay);
+        this.hide(this._defaultOptions?.touchendHideDelay);
     }
 
     /**
@@ -362,7 +362,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         });
 
         this._overlayRef = this._overlay.create({
-            direction: this._dir.value || 'ltr',
+            direction: this._dir?.value || 'ltr',
             positionStrategy: strategy,
             panelClass: NX_TOOLTIP_PANEL_CLASS,
             scrollStrategy: this._scrollStrategyFactory(),

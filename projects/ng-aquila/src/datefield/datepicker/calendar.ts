@@ -180,24 +180,29 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     }
 
     get _isRtl(): boolean {
-        return this._dir && this._dir.value === 'rtl';
+        return this._dir?.value === 'rtl';
     }
+
+    private readonly _dateAdapter: NxDateAdapter<D>;
+    private readonly _dateFormats: NxDateFormats;
 
     constructor(
         private _intl: NxDatepickerIntl,
-        @Optional() private _dateAdapter: NxDateAdapter<D>,
-        @Optional() private _dir: Directionality,
-        @Optional() @Inject(NX_DATE_FORMATS) private _dateFormats: NxDateFormats,
+        @Optional() _dateAdapter: NxDateAdapter<D> | null,
+        @Optional() private _dir: Directionality | null,
+        @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
     ) {
-        if (!this._dateAdapter) {
+        if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }
+        this._dateAdapter = _dateAdapter;
 
-        if (!this._dateFormats) {
+        if (!_dateFormats) {
             throw createMissingDateImplError('MAT_DATE_FORMATS');
         }
+        this._dateFormats = _dateFormats;
 
         this._intlChanges = _intl.changes.subscribe(() => _cdr.markForCheck());
     }

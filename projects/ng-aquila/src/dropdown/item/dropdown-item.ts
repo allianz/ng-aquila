@@ -128,8 +128,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     constructor(
         @Inject(NxDropdownControl) private _dropdown: NxDropdownControl,
-        /** @docs-private */
-        @Optional() readonly group: NxDropdownGroupComponent,
+        /** @docs-private */ @Optional() readonly group: NxDropdownGroupComponent | null,
         private _cdr: ChangeDetectorRef,
         private _elementRef: ElementRef,
     ) {

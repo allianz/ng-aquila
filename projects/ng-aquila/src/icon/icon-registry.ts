@@ -16,14 +16,12 @@ export class NxIconFontDefinition {
 
 @Injectable({ providedIn: 'root' })
 export class NxIconRegistry implements OnDestroy {
-    private _document: Document;
     private _icons = new Map<string, NxSvgIcon | NxFontIcon>();
     private _fonts = new Map<string, NxIconFontDefinition>();
 
     private _defaultFont?: NxIconFontDefinition;
 
-    constructor(@Optional() private _httpClient: HttpClient, private _sanitizer: DomSanitizer, @Optional() @Inject(DOCUMENT) document: any) {
-        this._document = document;
+    constructor(@Optional() private _httpClient: HttpClient | null, private _sanitizer: DomSanitizer, @Inject(DOCUMENT) private _document: Document) {
         // register default icons
         Object.keys(DEFAULT_ICONS).forEach(icon => {
             this.addSvgIconLiteral(icon, _sanitizer.bypassSecurityTrustHtml(DEFAULT_ICONS[icon]));

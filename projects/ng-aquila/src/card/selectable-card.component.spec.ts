@@ -132,7 +132,7 @@ describe('NxSelectableCardComponent', () => {
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
             createTestComponent(ReactiveSelectableCard);
             expect(selectableCardNativeElement).not.toHaveClass('has-error');
-            selectableCardInstance.ngControl.control!.markAsTouched();
+            selectableCardInstance.ngControl!.control!.markAsTouched();
             fixture.detectChanges();
             expect(selectableCardNativeElement).toHaveClass('has-error');
         }));
@@ -151,7 +151,7 @@ describe('NxSelectableCardComponent', () => {
 
         it('should use nx-error IDs for aria-describedby', fakeAsync(() => {
             createTestComponent(DynamicErrorSelectableCard);
-            selectableCardInstance.ngControl.control!.markAsTouched();
+            selectableCardInstance.ngControl!.control!.markAsTouched();
             fixture.detectChanges();
 
             expect(errors).toHaveSize(inputElement.attributes.getNamedItem('aria-describedby')!.value.split(' ').length);

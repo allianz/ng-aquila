@@ -36,6 +36,6 @@ export class FormfieldGlobalExampleComponent implements AfterContentInit {
     errorNgModel!: NxInputDirective;
 
     ngAfterContentInit() {
-        this.errorNgModel.ngControl.control?.markAsTouched();
+        this.errorNgModel.ngControl?.control?.markAsTouched();
     }
 }

@@ -52,7 +52,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         private _router: Router,
         private _themeSwitcherService: ThemeSwitcherService,
         private iconRegistry: NxIconRegistry,
-        @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures,
+        @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures | null,
         @Inject(NX_DOCS_LOGO_PATH) public logoPath: LogoPath,
         @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig,
     ) {

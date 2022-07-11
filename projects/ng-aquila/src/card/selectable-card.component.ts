@@ -217,11 +217,11 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
         private _focusMonitor: FocusMonitor,
-        @Optional() @Inject(SELECTABLE_CARD_DEFAULT_OPTIONS) private _defaultOptions: SelectableCardDefaultOptions,
+        @Optional() @Inject(SELECTABLE_CARD_DEFAULT_OPTIONS) private _defaultOptions: SelectableCardDefaultOptions | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

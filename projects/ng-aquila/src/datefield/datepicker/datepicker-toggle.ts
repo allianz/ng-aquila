@@ -100,7 +100,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     constructor(
         public _intl: NxDatepickerIntl,
         private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions,
+        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions | null,
         private _focusMonitor: FocusMonitor,
     ) {
         if (this._defaultOptions?.changes) {

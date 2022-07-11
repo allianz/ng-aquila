@@ -154,7 +154,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     @Input('nxValueFormatter')
     valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
-    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent) {}
+    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent | null) {}
 
     ngAfterViewInit(): void {
         this._keyManager = new ActiveDescendantKeyManager<NxAutocompleteOptionComponent>(this.options).withWrap();

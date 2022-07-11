@@ -57,8 +57,6 @@ export function throwNxDialogContentAlreadyAttachedError() {
     },
 })
 export class NxModalContainer extends BasePortalOutlet implements AfterViewInit, OnDestroy {
-    private _document: Document;
-
     /** The portal outlet inside of this container into which the modal content will be loaded. */
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
@@ -89,14 +87,13 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         private _elementRef: ElementRef,
         private _focusTrapFactory: FocusTrapFactory,
         private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(DOCUMENT) _document: any,
+        @Optional() @Inject(DOCUMENT) private _document: Document | null,
         /** The modal configuration. */
         public _config: NxModalConfig,
         private _focusMonitor: FocusMonitor,
     ) {
         super();
         this._ariaLabelledBy = _config.ariaLabelledBy || null;
-        this._document = _document;
     }
 
     ngAfterViewInit() {
@@ -163,7 +160,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         if (this._config.autoFocus) {
             this._focusTrap.focusInitialElementWhenReady();
         } else {
-            const activeElement = this._document.activeElement;
+            const activeElement = this._document?.activeElement;
 
             // Otherwise ensure that focus is on the modal container. It's possible that a different
             // component tried to move focus while the open animation was running. See:
@@ -189,7 +186,7 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
             // non-focusable element like the backdrop was clicked) before moving it. It's possible that
             // the consumer moved it themselves before the animation was done, in which case we shouldn't
             // do anything.
-            if (!activeElement || activeElement === this._document.body || activeElement === element || element.contains(activeElement)) {
+            if (!activeElement || activeElement === this._document?.body || activeElement === element || element.contains(activeElement)) {
                 this._focusMonitor.focusVia(toFocus as HTMLElement, 'keyboard');
             }
         }
@@ -201,16 +198,17 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
 
     /** Saves a reference to the element that was focused before the modal was opened. */
     private _savePreviouslyFocusedElement() {
-        if (this._document) {
-            this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
+        if (!this._document) {
+            return;
+        }
+        this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
 
-            // Note that there is no focus method when rendering on the server.
-            if (this._elementRef.nativeElement.focus) {
-                // Move focus onto the modal immediately in order to prevent the user from accidentally
-                // opening multiple modals at the same time. Needs to be async, because the element
-                // may not be focusable immediately.
-                Promise.resolve().then(() => this._elementRef.nativeElement.focus());
-            }
+        // Note that there is no focus method when rendering on the server.
+        if (this._elementRef.nativeElement.focus) {
+            // Move focus onto the modal immediately in order to prevent the user from accidentally
+            // opening multiple modals at the same time. Needs to be async, because the element
+            // may not be focusable immediately.
+            Promise.resolve().then(() => this._elementRef.nativeElement.focus());
         }
     }
 

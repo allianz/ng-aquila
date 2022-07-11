@@ -48,7 +48,7 @@ export class NxvComponentPage {
         private router: Router,
         private manifestService: ManifestService,
         public componentService: ComponentService,
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any | null,
     ) {
         // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
         // parent route for the section (material/cdk).

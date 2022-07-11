@@ -162,11 +162,10 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
 
     constructor(
-        /** @docs-private */
-        public elementRef: ElementRef,
+        /** @docs-private */ public elementRef: ElementRef,
         private renderer: Renderer2,
         private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions,
+        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions | null,
     ) {}
 
     /** @docs-private */

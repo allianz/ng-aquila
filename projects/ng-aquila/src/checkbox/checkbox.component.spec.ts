@@ -246,7 +246,7 @@ describe('NxCheckboxComponent', () => {
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
             createTestComponent(ReactiveCheckbox);
             expect(checkboxNativeElement).not.toHaveClass('has-error');
-            checkboxInstance.ngControl.control!.markAsTouched();
+            checkboxInstance.ngControl!.control!.markAsTouched();
             fixture.detectChanges();
             flush();
             expect(checkboxNativeElement).toHaveClass('has-error');

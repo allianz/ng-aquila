@@ -113,11 +113,11 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     constructor(
         private _cdr: ChangeDetectorRef,
         private _el: ElementRef,
-        @Self() @Optional() public _control: NgControl,
+        @Optional() @Self() public _control: NgControl | null,
         public _intl: NxCodeInputIntl,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this._control) {
             // Note: we provide the value accessor through here, instead of

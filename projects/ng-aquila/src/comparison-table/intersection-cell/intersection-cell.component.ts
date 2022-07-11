@@ -11,7 +11,7 @@ import { NxToggleSectionBase } from '../toggle-section/toggle-section-base';
 export class NxComparisonTableIntersectionCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
-    constructor(public _table: NxComparisonTableBase, public _row: NxComparisonTableRowBase, @Optional() public _toggleSection: NxToggleSectionBase) {}
+    constructor(public _table: NxComparisonTableBase, public _row: NxComparisonTableRowBase, @Optional() public _toggleSection: NxToggleSectionBase | null) {}
 
     _getHeaderIds() {
         // description cell + (toggle section)

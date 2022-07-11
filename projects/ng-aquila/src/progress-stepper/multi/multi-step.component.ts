@@ -1,5 +1,4 @@
 import { Directionality } from '@angular/cdk/bidi';
-import { DOCUMENT } from '@angular/common';
 import {
     AfterContentInit,
     AfterViewChecked,
@@ -8,8 +7,8 @@ import {
     Component,
     ContentChildren,
     ElementRef,
-    Inject,
     Input,
+    Optional,
     QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -50,8 +49,8 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
     }
     private _direction: NxMultiStepperDirection = 'horizontal';
 
-    constructor(_cdr: ChangeDetectorRef, _dir: Directionality, _el: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
-        super(_cdr, _dir, _el, _document);
+    constructor(_cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, _el: ElementRef<HTMLElement>) {
+        super(_cdr, _dir, _el);
     }
 
     ngAfterViewChecked() {

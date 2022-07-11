@@ -25,7 +25,7 @@ export class NxVersionSelectComponent {
 
     @ViewChild(NxContextMenuTriggerDirective, { static: true }) contextMenuTrigger!: NxContextMenuTriggerDirective;
 
-    constructor(@Optional() @Inject(NX_DOC_VERSIONS) _versions: DocVersions) {
+    constructor(@Optional() @Inject(NX_DOC_VERSIONS) _versions: DocVersions | null) {
         if (_versions) {
             this.versions = _versions;
         }

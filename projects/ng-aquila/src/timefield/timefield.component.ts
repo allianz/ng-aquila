@@ -233,10 +233,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
 
     constructor(
         private _cdr: ChangeDetectorRef,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
         public _intl: NxTimefieldIntl,
     ) {
         if (this.ngControl) {

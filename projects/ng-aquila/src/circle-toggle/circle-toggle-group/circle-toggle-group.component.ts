@@ -155,10 +155,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions,
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private _defaultOptions: CircleToggleGroupDefaultOptions | null,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

@@ -45,8 +45,8 @@ export class NxOverlayService implements OnDestroy {
         private _injector: Injector,
         private _router: Router,
         private _positionBuilder: NxOverlayPositionBuilder,
-        @Optional() @SkipSelf() private _parentOverlayService: NxOverlayService,
-        @Optional() private _dir: Directionality,
+        @Optional() @SkipSelf() private _parentOverlayService: NxOverlayService | null,
+        @Optional() private _dir: Directionality | null,
         @Inject(NX_OVERLAY_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}
 
@@ -147,7 +147,7 @@ export class NxOverlayService implements OnDestroy {
     }
 
     get isRtl(): boolean {
-        return this._dir && this._dir.value === 'rtl';
+        return this._dir?.value === 'rtl';
     }
 
     /**

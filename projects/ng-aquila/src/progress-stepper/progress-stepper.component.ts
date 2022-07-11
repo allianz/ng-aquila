@@ -1,6 +1,5 @@
 import { Directionality } from '@angular/cdk/bidi';
 import { CdkStep, CdkStepHeader, CdkStepper } from '@angular/cdk/stepper';
-import { DOCUMENT } from '@angular/common';
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -14,6 +13,7 @@ import {
     Input,
     OnChanges,
     OnDestroy,
+    Optional,
     QueryList,
     SkipSelf,
 } from '@angular/core';
@@ -116,8 +116,8 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
     @Input() currentStepLabel!: string;
 
-    constructor(private _cdr: ChangeDetectorRef, _dir: Directionality, _elementRef: ElementRef<HTMLElement>, @Inject(DOCUMENT) _document?: any) {
-        super(_dir, _cdr, _elementRef, _document);
+    constructor(private _cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, _elementRef: ElementRef<HTMLElement>) {
+        super(_dir!, _cdr, _elementRef, null);
     }
 
     ngAfterContentInit() {

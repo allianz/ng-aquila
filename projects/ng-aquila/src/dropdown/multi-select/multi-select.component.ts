@@ -18,7 +18,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
-import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
+import { AppearanceType, NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -52,8 +52,8 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         return this._appearance === 'outline';
     }
 
-    get _appearance() {
-        return this._formFieldComponent?.appearance;
+    get _appearance(): AppearanceType {
+        return this._formFieldComponent?.appearance as AppearanceType;
     }
 
     get _overlayLabel(): string | null | undefined {
@@ -160,10 +160,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         private _elementRef: ElementRef,
         private _errorStateMatcher: ErrorStateMatcher,
         private _cdr: ChangeDetectorRef,
-        @Optional() private _formFieldComponent: NxFormfieldComponent,
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private _formFieldComponent: NxFormfieldComponent | null,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

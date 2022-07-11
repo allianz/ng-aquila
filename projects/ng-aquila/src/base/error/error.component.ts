@@ -86,12 +86,10 @@ export class NxErrorComponent implements OnDestroy {
         return this._appearance || this._defaultOptions?.appearance || 'message';
     }
 
-    constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions) {
-        if (this._defaultOptions?.changes) {
-            this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
-                this._cdr.markForCheck();
-            });
-        }
+    constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions | null) {
+        this._defaultOptions?.changes?.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this._cdr.markForCheck();
+        });
     }
 
     ngOnDestroy() {

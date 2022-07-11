@@ -241,9 +241,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         public _intl: NxFileUploaderIntl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
         private _focusMonitor: FocusMonitor,
     ) {
         if (this.ngControl) {

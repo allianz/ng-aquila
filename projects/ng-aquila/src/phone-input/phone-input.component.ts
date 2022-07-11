@@ -200,11 +200,10 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
         private _intl: NxPhoneInputIntl,
-        @Optional() private formFieldComponent: NxFormfieldComponent,
-        /** @docs-private */
-        @Self() @Optional() public ngControl: NgControl,
-        @Optional() private _parentForm: NgForm,
-        @Optional() private _parentFormGroup: FormGroupDirective,
+        @Optional() private formFieldComponent: NxFormfieldComponent | null,
+        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private _parentForm: NgForm | null,
+        @Optional() private _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -247,7 +246,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     get _ariaLabelledBy() {
-        return this.formFieldComponent.labelId;
+        return this.formFieldComponent?.labelId;
     }
 
     get elementRef(): ElementRef<any> {

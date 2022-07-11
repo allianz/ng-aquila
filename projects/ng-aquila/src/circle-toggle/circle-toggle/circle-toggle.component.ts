@@ -288,11 +288,11 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     private onTouchedCallback = () => {};
 
     constructor(
-        /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent,
+        /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent | null,
         private _checkedDispatcher: UniqueSelectionDispatcher,
         private _cdr: ChangeDetectorRef,
         private _focusMonitor: FocusMonitor,
-        @Self() @Optional() public ngControl: NgControl,
+        @Optional() @Self() public ngControl: NgControl | null,
     ) {
         super();
 
@@ -322,15 +322,15 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     }
 
     ngAfterViewInit() {
-        if (this.toggleGroup) {
-            Promise.resolve().then(() => {
+        Promise.resolve().then(() => {
+            if (this.toggleGroup) {
                 this.inGroup = true;
                 this.negative = this.toggleGroup.negative;
                 this.disabled = this.toggleGroup.disabled;
                 this.responsive = this.toggleGroup.responsive;
                 this.id = this.toggleGroup.id + `-button-${nextId++}`;
-            });
-        }
+            }
+        });
 
         this._focusMonitor.monitor(this._nativeInput);
     }
@@ -344,7 +344,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     /** @docs-private */
     attachListenerForGroup() {
         this._removeUniqueSelectionListener = this._checkedDispatcher.listen((groupId: string, buttonId: string) => {
-            if (this.id !== buttonId && groupId === this.toggleGroup.id) {
+            if (this.id !== buttonId && groupId === this.toggleGroup?.id) {
                 this.checked = false;
             }
         });
@@ -395,6 +395,9 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
      * does not trigger change emission
      */
     setGroupSelection() {
+        if (!this.toggleGroup) {
+            return;
+        }
         // propagate changes only if the value in the group is different than the button checked value
         if (!this.checked) {
             this.checked = !this.checked;

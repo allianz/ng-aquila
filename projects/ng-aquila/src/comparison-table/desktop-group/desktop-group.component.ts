@@ -58,8 +58,8 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
     constructor(
         public _table: NxComparisonTableBase,
         private _focusMonitor: FocusMonitor,
-        @Optional() private _dir: Directionality,
-        @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions,
+        @Optional() private _dir: Directionality | null,
+        @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions | null,
     ) {}
 
     ngAfterViewInit() {
