@@ -43,7 +43,7 @@ describe(NxTreeComponent.name, () => {
             });
 
             it('with the right accessibility roles', () => {
-                expect(treeElement.getAttribute('role')).toBe('tree');
+                expect(treeElement.getAttribute('role')).toBe('application');
                 getNodes(treeElement).forEach(node => {
                     expect(node.getAttribute('role')).toBe('treeitem');
                 });
