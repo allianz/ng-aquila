@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.7.0](https://github.com/allianz/ng-aquila/compare/v13.6.3...v13.7.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **formfield:** hide undefined html title ([95f6f60](https://github.com/allianz/ng-aquila/commit/95f6f60b10cf6da84cc12c14c056d8da3e96efbd))
+* **slider:** update control value when slider is moved ([91d10b0](https://github.com/allianz/ng-aquila/commit/91d10b00b57ad8c4bdc7a316d8f65be8025c723c))
+* **toggle-button:** track model changes after buttons changed ([985ba20](https://github.com/allianz/ng-aquila/commit/985ba2014fb1ecef87dd5d26e070343aa7570ce1))
+* **tree:** prevent screenreader intercept key event ([a88ed7a](https://github.com/allianz/ng-aquila/commit/a88ed7a627a0d836f0b1ac6b586c98b650420fa2))
+
+
+### Features
+
+* **dynamic-table:** add column definition model ([6bcf047](https://github.com/allianz/ng-aquila/commit/6bcf04795646ab060f1692e37f2a1b4d5e9ad898))
+* **dynamic-table:** add column styles ([5757c29](https://github.com/allianz/ng-aquila/commit/5757c296652e16095618627c9457e5e5690eef48))
+* **sidepanel:** focus on opened and closed ([97a4acb](https://github.com/allianz/ng-aquila/commit/97a4acbbf9e844904754b5cbe1f818fc94f9ba0d))
+
+
+
 ## [13.6.3](https://github.com/allianz/ng-aquila/compare/v13.6.2...v13.6.3) (2022-06-24)
 
 
