@@ -34,8 +34,8 @@ import { filter, take } from 'rxjs/operators';
 
 import { NxDateAdapter } from '../adapter/date-adapter';
 import { NxDatefieldDirective } from '../datefield.directive';
+import { createMissingDateImplError } from '../datefield.functions';
 import { NxCalendarComponent } from './calendar';
-import { createMissingDateImplError } from './datepicker-errors';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxDatepickerToggleComponent } from './datepicker-toggle';
 

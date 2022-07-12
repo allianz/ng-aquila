@@ -1,23 +1,23 @@
 <div class="nx-table__container" *ngIf="data && data.length > 0">
     <div class="nx-table__scroll">
         <cdk-table [dataSource]="dataSource" class="nx-table">
-            <!-- Column Definition -->
-            <ng-container *ngFor="let element of displayedColumns" cdkColumnDef="{{ element.key }}">
+            <!-- Column Definitions -->
+            <ng-container *ngFor="let column of displayedColumns" cdkColumnDef="{{ column.key }}">
                 <cdk-header-cell
                     *cdkHeaderCellDef
                     class="nx-table__header-cell"
-                    [ngClass]="[element.headerCellClass ?? '', isNumeric(element) ? 'nx-table__header-cell--number' : '']"
-                    [ngStyle]="element.headerCellStyle || null"
+                    [ngClass]="[column.headerCellClass ?? '', isNumeric(column) ? 'nx-table__header-cell--number' : '']"
+                    [ngStyle]="column.headerCellStyle || null"
                     ><div class="nx-table__header-title--block">
-                        <span class="nx-table__header-title"> {{ element.title }}</span>
+                        <span class="nx-table__header-title">{{ column.title }}</span>
                     </div>
                 </cdk-header-cell>
                 <cdk-cell
                     *cdkCellDef="let row"
                     class="nx-table__cell"
-                    [ngClass]="[element.cellClass ?? '', isNumeric(element) ? 'nx-table__cell--number' : '']"
-                    [ngStyle]="element.cellStyle ?? null"
-                    [innerHTML]="row[element.key]"
+                    [ngClass]="[column.cellClass ?? '', isNumeric(column) ? 'nx-table__cell--number' : '']"
+                    [ngStyle]="column.cellStyle ?? null"
+                    [innerHTML]="row[column.key]"
                 ></cdk-cell>
             </ng-container>
 

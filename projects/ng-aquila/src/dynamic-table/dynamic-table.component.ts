@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dynamic-table.models';
@@ -70,7 +70,7 @@ export class NxDynamicTableComponent implements OnInit {
         return this._columnKeys;
     }
 
-    constructor(private el: ElementRef, private _cdr: ChangeDetectorRef) {}
+    constructor(private _cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
         if (!this._data) {
@@ -86,10 +86,7 @@ export class NxDynamicTableComponent implements OnInit {
     }
 
     /** @docs-private */
-    isNumeric(element: NxDynamicTableColumnDefinition): boolean {
-        if (element.type === 'numeric') {
-            return true;
-        }
-        return false;
+    isNumeric(column: NxDynamicTableColumnDefinition): boolean {
+        return column.type === 'numeric';
     }
 }

@@ -20,7 +20,7 @@ import {
 import { Subscription } from 'rxjs';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
-import { createMissingDateImplError } from './datepicker-errors';
+import { createMissingDateImplError } from '../datefield.functions';
 import { NxDatepickerIntl } from './datepicker-intl';
 import { NxMonthViewComponent } from './month-view';
 import { NxMultiYearViewComponent } from './multi-year-view';

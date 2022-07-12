@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from './adapter/index';
 import { NxDateValidators } from './date-validators';
-import { createMissingDateImplError } from './datefield-errors';
+import { createMissingDateImplError } from './datefield.functions';
 import { NxDatepickerComponent } from './datepicker/datepicker.component';
 
 export const NX_DATEFIELD_VALUE_ACCESSOR: any = {
