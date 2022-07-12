@@ -1077,6 +1077,10 @@
         {
           "name": "dynamic-table-event",
           "config": {}
+        },
+        {
+          "name": "dynamic-table-column-options",
+          "config": {}
         }
       ],
       "category": "components",
@@ -2462,6 +2466,10 @@
         {
           "name": "sidepanel-with-tabs",
           "config": {}
+        },
+        {
+          "name": "sidepanel-focus",
+          "config": {}
         }
       ],
       "category": "components",
@@ -2661,6 +2669,10 @@
         },
         {
           "name": "table-sticky",
+          "config": {}
+        },
+        {
+          "name": "table-column-hiding",
           "config": {}
         },
         {
@@ -4627,6 +4639,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/dynamic-table-###TYPE###.html"
+    },
+    {
+      "id": "dynamic-table-column-options",
+      "title": "Table Column Options Example",
+      "module": "dynamic-table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/dynamic-table-column-options-###TYPE###.html"
     },
     {
       "id": "dynamic-table-data",
@@ -7203,6 +7226,17 @@
       "url": "lib-viewer/examples/sidepanel-floating-###TYPE###.html"
     },
     {
+      "id": "sidepanel-focus",
+      "title": "Focus sidepanel on open",
+      "module": "sidepanel",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/sidepanel-focus-###TYPE###.html"
+    },
+    {
       "id": "sidepanel-light",
       "title": "Light color variant",
       "module": "sidepanel",
@@ -7564,6 +7598,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/table-###TYPE###.html"
+    },
+    {
+      "id": "table-column-hiding",
+      "title": "Table Column Options",
+      "module": "table",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/table-column-hiding-###TYPE###.html"
     },
     {
       "id": "table-condensed",

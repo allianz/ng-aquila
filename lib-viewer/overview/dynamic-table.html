@@ -1,14 +1,16 @@
 <p class="docs-markdown--p">The <strong>dynamic table</strong> is a component to show data in an organized way in a simple table. This component implements the table using Angular CDK, specifically <code>cdk-table</code> that is an unopinionated, customizable data-table with a fully-templated API, dynamic columns, and an accessible DOM structure. When the viewport is smaller than the table, a horizontal scroll will appear on top of the table.</p>
 <h3 id="ways-for-implementation" tabindex="-1" class="docs-markdown--h3">Ways for implementation</h3>
 <p class="docs-markdown--p">User can choose between two options when implementing a dynamic table.</p>
-<h4 id="passing-data-with-column-names" tabindex="-1" class="docs-markdown--h4">Passing data with column names</h4>
-<p class="docs-markdown--p">User can pass an array with the name of columns that he want to show, with order, custom name of columns and type of data ('numeric' or 'string') that it contain ( type numeric will align right ) . The structure of displayed columns array must be: <code>title: '-', key: '-', type: '-'</code>. The key param should match with the key of the data array.</p>
+<h4 id="with-column-definitions" tabindex="-1" class="docs-markdown--h4">With column definitions</h4>
+<p class="docs-markdown--p">User can pass an array of column definitions, including the ordering, display name and the type of data ('numeric' will align right) as <code>NxDynamicTablColumnDefinition[]</code>. The key param should match the property name of the data.</p>
 <div nx-docs-example="dynamic-table" config="{}">exampleID: dynamic-table</div>
-<h4 id="passing-only-data" tabindex="-1" class="docs-markdown--h4">Passing only data</h4>
-<p class="docs-markdown--p">User can use the dynamic table only passing the data. The name of columns will be the key and table will show all data.</p>
+<h4 id="passing-data-only" tabindex="-1" class="docs-markdown--h4">Passing data only</h4>
+<p class="docs-markdown--p">User can omit column definitions. The name of columns will fall back to the property name of the data and the table will show all data.</p>
 <div nx-docs-example="dynamic-table-data" config="{}">exampleID: dynamic-table-data</div>
 <h4 id="no-data-provided" tabindex="-1" class="docs-markdown--h4">No data provided</h4>
-<p class="docs-markdown--p">Without data provided. Users can add a customized message when they do not provide data to the DynamicTable.</p>
+<p class="docs-markdown--p">Without data provided. Users can add a customized message when they do not provide any data.</p>
 <div nx-docs-example="dynamic-table-without-data" config="{}">exampleID: dynamic-table-without-data</div>
 <h3 id="table-event-example" tabindex="-1" class="docs-markdown--h3">Table Event Example</h3>
 <div nx-docs-example="dynamic-table-event" config="{}">exampleID: dynamic-table-event</div>
+<h3 id="table-column-options" tabindex="-1" class="docs-markdown--h3">Table Column Options</h3>
+<div nx-docs-example="dynamic-table-column-options" config="{}">exampleID: dynamic-table-column-options</div>

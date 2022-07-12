@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Popover Table Example
@@ -51,7 +52,7 @@ export class PopoverTableExampleComponent {
             fallback7: 'top-right',
         },
     ];
-    displayedColumns = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         // HINT: \xa0 is a non-breaking space, so the table header looks nicer
         { title: 'nxDirection', key: 'nxDirection', type: 'string' },
         { title: 'fallback\xa01', key: 'fallback1', type: 'string' },

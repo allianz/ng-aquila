@@ -12,6 +12,9 @@
 <p class="docs-markdown--p">Using attribute <code>sticky</code>, you can make first or last column (or both of them at the same time) of the table be displayed as &quot;sticky&quot;, by setting its value to <code>first</code>, <code>last</code> or <code>both</code> respectively.</p>
 <p class="docs-markdown--p">Please note that you are only allowed to make the first and/or last column sticky, to prohibit covering too much screen estate by fixed columns. For the same reason, this setting won't have effect on mobile screens.</p>
 <div nx-docs-example="table-sticky" config="{}">exampleID: table-sticky</div>
+<h3 id="column-hiding" tabindex="-1" class="docs-markdown--h3">Column hiding</h3>
+<p class="docs-markdown--p">Application developers can implement custom column behavior, such as column hiding.</p>
+<div nx-docs-example="table-column-hiding" config="{}">exampleID: table-column-hiding</div>
 <h3 id="sorting-header" tabindex="-1" class="docs-markdown--h3">Sorting header</h3>
 <p class="docs-markdown--p">This example shows how you can implement a basic sorting functionality for a table with <code>nxSort</code> and <code>nxSortHeaderCell</code>. As we don't know how your data looks like, you can implement the actual sorting function by yourself and call the function every time an <code>(sortChange)</code> event is outputted.</p>
 <p class="docs-markdown--p">For <strong>localization</strong> please use the provider <code>NxHeaderSortIntl</code> which contains some labels for screen reader users. By default the labels are in english. This is also shown in the following example.</p>

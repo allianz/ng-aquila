@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxCheckboxModule } from '@aposin/ng-aquila/checkbox';
+import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
 import { NxDatefieldModule } from '@aposin/ng-aquila/datefield';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -13,6 +14,7 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 import { NxTableModule } from '@aposin/ng-aquila/table';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
@@ -24,6 +26,7 @@ import { TableSortingExampleComponent } from './table-sorting/table-sorting-exam
 import { TableStickyExampleComponent } from './table-sticky/table-sticky-example';
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
 import { TableExampleComponent } from './table/table-example';
+import { TableCoumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
 
 const EXAMPLES = [
     TableExampleComponent,
@@ -36,6 +39,7 @@ const EXAMPLES = [
     TableZebraExampleComponent,
     TableFormElementsExampleComponent,
     TableStickyExampleComponent,
+    TableCoumnHidingExampleComponent,
 ];
 
 @NgModule({
@@ -43,6 +47,7 @@ const EXAMPLES = [
         NxTableModule,
         NxSwitcherModule,
         NxCheckboxModule,
+        NxContextMenuModule,
         NxPaginationModule,
         NxDropdownModule,
         NxDatefieldModule,
@@ -73,6 +78,7 @@ export class TableExamplesModule {
             'table-zebra': TableZebraExampleComponent,
             'table-form-elements': TableFormElementsExampleComponent,
             'table-sticky': TableStickyExampleComponent,
+            'table-column-hiding': TableCoumnHidingExampleComponent,
         };
     }
 }

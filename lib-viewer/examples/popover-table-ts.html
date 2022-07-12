@@ -1,4 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxDynamicTableColumnDefinition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Popover Table Example
@@ -51,7 +52,7 @@
             <span class="hljs-attr">fallback7</span>: <span class="hljs-string">&#x27;top-right&#x27;</span>,
         },
     ];
-    displayedColumns = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         <span class="hljs-comment">// HINT: \xa0 is a non-breaking space, so the table header looks nicer</span>
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;nxDirection&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;nxDirection&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;fallback\xa01&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;fallback1&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },

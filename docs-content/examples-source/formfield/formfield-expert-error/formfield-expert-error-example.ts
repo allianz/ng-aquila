@@ -18,7 +18,7 @@ export class FormfieldExpertErrorExampleComponent implements AfterContentInit {
     public valueErrorWithHint!: string;
 
     ngAfterContentInit() {
-        this.exampleErrorNgModel.ngControl.control?.markAsTouched();
-        this.exampleErrorWithHintNgModel.ngControl.control?.markAsTouched();
+        this.exampleErrorNgModel.ngControl?.control?.markAsTouched();
+        this.exampleErrorWithHintNgModel.ngControl?.control?.markAsTouched();
     }
 }

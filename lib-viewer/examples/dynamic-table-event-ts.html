@@ -1,4 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxDynamicTableColumnDefinition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Table Event Example
@@ -57,7 +58,7 @@
         },
     ];
 
-    displayedColumns: <span class="hljs-built_in">any</span>[] = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },

@@ -49,7 +49,7 @@
     <td class="docs-api-properties-name-cell"><div class="docs-api-input-marker"><span class="docs-api-input__keyword">@Input</span>(<span class="docs-api-input-alias">'nxDisplayedColumns'</span>) </div><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">displayedColumns</span>:
-                <span class="docs-api-property__type">NxDisplayedColumns[] | undefined</span>
+                <span class="docs-api-property__type">NxDynamicTableColumnDefinition[] | undefined</span>
             </code>
         </p>
     </td>
@@ -82,9 +82,9 @@
     </h3>
      
 
-<h4 id="TableDataSource" class="docs-header-link docs-api-h4 docs-api-class-name">
-    <span header-link="TableDataSource"></span>
-    <code>TableDataSource</code><span class="docs-api-class-extends-clauses">
+<h4 id="NxDynamicTableDataSource" class="docs-header-link docs-api-h4 docs-api-class-name">
+    <span header-link="NxDynamicTableDataSource"></span>
+    <code>NxDynamicTableDataSource</code><span class="docs-api-class-extends-clauses">
         <span class="docs-api-class-extends-label">extends</span>
         <span class="docs-api-class-extends-type">DataSource<any></span>
     </span></h4> 
@@ -96,10 +96,10 @@
     </h3>
      
 
-<h4 id="NxDisplayedColumns" class="docs-header-link docs-api-h4 docs-api-interface-name">
-    <span header-link="NxDisplayedColumns"></span>
-    <code>NxDisplayedColumns</code>
-</h4><p class="docs-api-interface-description"><p>Interface consisting of key, title and type triple for columns to be displayed.</p>
+<h4 id="NxDynamicTableColumnDefinition" class="docs-header-link docs-api-h4 docs-api-interface-name">
+    <span header-link="NxDynamicTableColumnDefinition"></span>
+    <code>NxDynamicTableColumnDefinition</code>
+</h4><p class="docs-api-interface-description"><p>Dynamic table column definition consisting of key, title and type properties.</p>
 </p><h5 class="docs-api-method-header">Properties</h5>
 <table class="docs-api-properties-table">
     <tr class="docs-api-properties-header-row">
@@ -111,13 +111,74 @@
 <tr class="docs-api-properties-row">
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
+                <span class="docs-api-property__name">cellClass</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Add custom column cell class.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">cellStyle</span>:
+                <span class="docs-api-property__type">{
+    [prop: string]: any;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Add custom column cell styles.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">headerCellClass</span>:
+                <span class="docs-api-property__type">string</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Add custom column header cell class.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
+                <span class="docs-api-property__name">headerCellStyle</span>:
+                <span class="docs-api-property__type">{
+    [prop: string]: any;
+}</span>
+            </code>
+        </p>
+    </td>
+    <td class="docs-api-property-description">
+        <p>Add custom column header cell styles.</p>
+</td>
+</tr>
+   
+
+<tr class="docs-api-properties-row">
+    <td class="docs-api-properties-name-cell"><p class="docs-api-property">
+            <code>
                 <span class="docs-api-property__name">key</span>:
                 <span class="docs-api-property__type">string</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Column data property name.</p>
+</td>
 </tr>
    
 
@@ -130,7 +191,8 @@
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Column display name.</p>
+</td>
 </tr>
    
 
@@ -138,12 +200,13 @@
     <td class="docs-api-properties-name-cell"><p class="docs-api-property">
             <code>
                 <span class="docs-api-property__name">type</span>:
-                <span class="docs-api-property__type">string</span>
+                <span class="docs-api-property__type">'string' | 'numeric'</span>
             </code>
         </p>
     </td>
     <td class="docs-api-property-description">
-        </td>
+        <p>Column display type. Defaults to &#39;string&#39;.</p>
+</td>
 </tr>
   
 </table>   

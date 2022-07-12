@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NxDynamicTableColumnDefinition } from '@aposin/ng-aquila/dynamic-table';
 
 /**
  * @title Table Event Example
@@ -57,7 +58,7 @@ export class DynamicTableEventExampleComponent {
         },
     ];
 
-    displayedColumns: any[] = [
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
         { title: 'Code', key: 'code', type: 'string' },
         { title: 'Company', key: 'company', type: 'string' },
         { title: 'Price', key: 'price', type: 'numeric' },

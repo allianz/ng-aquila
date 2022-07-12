@@ -1,0 +1,71 @@
+<div style="text-align: end">
+    <button
+        nxButton="small"
+        [nxContextMenuTriggerFor]="menu"
+        style="margin-bottom: 24px"
+    >
+        Column Settings
+    </button>
+</div>
+
+<nx-context-menu #menu="nxContextMenu">
+    <nx-checkbox-group [(ngModel)]="selected">
+        <div
+            nxContextMenuItem
+            disableCloseOnSelect
+            *ngFor="let option of options"
+        >
+            <nx-checkbox [value]="option.value">{{option.label}}</nx-checkbox>
+        </div>
+    </nx-checkbox-group>
+</nx-context-menu>
+
+<div class="scroll-container">
+    <table nxTable class="nx-table--scrollable">
+        <thead>
+            <tr nxTableRow>
+                <ng-container *ngFor="let option of options">
+                    <th nxHeaderCell *ngIf="selected?.includes(option.value)">
+                        {{option.label}}
+                    </th>
+                </ng-container>
+                <!-- <th
+                    nxHeaderCell
+                    *ngIf="!selected?.length"
+                    style="text-align: center"
+                >
+                    All table columns are currently hidden.
+                </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr nxTableRow *ngFor="let item of tableElements">
+                <td nxTableCell *ngIf="selected?.includes('product')">
+                    {{item.product}}
+                </td>
+                <td nxTableCell *ngIf="selected?.includes('contractNumber')">
+                    {{item.contractNumber}}
+                </td>
+                <td nxTableCell *ngIf="selected?.includes('desc')">
+                    {{item.desc}}
+                </td>
+                <td nxTableCell *ngIf="selected?.includes('website')">
+                    <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
+                </td>
+                <td nxTableCell *ngIf="selected?.includes('endingAt')">
+                    {{item.endingAt}}
+                </td>
+                <td nxTableCell *ngIf="selected?.includes('statusText')">
+                    <nx-badge [type]="item.status">
+                        {{item.statusText}}
+                    </nx-badge>
+                </td>
+            </tr>
+            <tr nxTableRow *ngIf="!selected?.length">
+                <td nxTableCell style="text-align: center">
+                    All table columns are currently hidden.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,45 @@
+<div style="text-align: end">
+    <button
+        nxButton="small"
+        [nxContextMenuTriggerFor]="menu"
+        style="margin-bottom: 24px"
+    >
+        Column Settings
+    </button>
+</div>
+
+<nx-context-menu #menu="nxContextMenu">
+    <nx-checkbox-group
+        [(ngModel)]="selected"
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+    >
+        <nx-context-menu-item-wrap>
+            <div
+                nxContextMenuItem
+                disableCloseOnSelect
+                cdkDrag
+                *ngFor="let column of columns"
+            >
+                <nx-icon
+                    aria-hidden="true"
+                    size="s"
+                    name="grip-vertical"
+                    class="nx-margin-right-xs"
+                ></nx-icon>
+
+                <nx-checkbox [value]="column.key">
+                    {{column.title}}
+                </nx-checkbox>
+
+                <!-- TODO keyboard selection not working -->
+                <!-- TODO item span not full length, icon cannot be at the end -->
+            </div>
+        </nx-context-menu-item-wrap>
+    </nx-checkbox-group>
+</nx-context-menu>
+
+<nx-dynamic-table
+    [nxData]="data"
+    [nxDisplayedColumns]="displayedColumns"
+></nx-dynamic-table>

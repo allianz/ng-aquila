@@ -6,6 +6,7 @@ import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
 import { SidepanelDarkExampleComponent } from './sidepanel-dark/sidepanel-dark-example';
 import { SidepanelFloatingExampleComponent } from './sidepanel-floating/sidepanel-floating-example';
+import { SidepanelFocuskExampleComponent } from './sidepanel-focus/sidepanel-focus-example';
 import { SidepanelLightExampleComponent } from './sidepanel-light/sidepanel-light-example';
 import { SidepanelStaticExampleComponent } from './sidepanel-static/sidepanel-static-example';
 import { SidepanelWithTabsExampleComponent } from './sidepanel-with-tabs/sidepanel-with-tabs-example';
@@ -16,6 +17,7 @@ const EXAMPLES = [
     SidepanelLightExampleComponent,
     SidepanelWithTabsExampleComponent,
     SidepanelDarkExampleComponent,
+    SidepanelFocuskExampleComponent,
 ];
 
 @NgModule({
@@ -37,6 +39,7 @@ export class SidepanelExamplesModule {
             'sidepanel-light': SidepanelLightExampleComponent,
             'sidepanel-with-tabs': SidepanelWithTabsExampleComponent,
             'sidepanel-dark': SidepanelDarkExampleComponent,
+            'sidepanel-focus': SidepanelFocuskExampleComponent,
         };
     }
 }

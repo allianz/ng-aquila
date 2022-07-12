@@ -1,0 +1,71 @@
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: end&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+        <span class="hljs-attr">nxButton</span>=<span class="hljs-string">&quot;small&quot;</span>
+        [<span class="hljs-attr">nxContextMenuTriggerFor</span>]=<span class="hljs-string">&quot;menu&quot;</span>
+        <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-bottom: 24px&quot;</span>
+    &gt;</span>
+        Column Settings
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">nx-context-menu</span> #<span class="hljs-attr">menu</span>=<span class="hljs-string">&quot;nxContextMenu&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox-group</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">&quot;selected&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+            <span class="hljs-attr">nxContextMenuItem</span>
+            <span class="hljs-attr">disableCloseOnSelect</span>
+            *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let option of options&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">nx-checkbox</span> [<span class="hljs-attr">value</span>]=<span class="hljs-string">&quot;option.value&quot;</span>&gt;</span>{{option.label}}<span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-checkbox-group</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">nx-context-menu</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">nxTable</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nx-table--scrollable&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">ng-container</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let option of options&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">nxHeaderCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(option.value)&quot;</span>&gt;</span>
+                        {{option.label}}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">ng-container</span>&gt;</span>
+                <span class="hljs-comment">&lt;!-- &lt;th
+                    nxHeaderCell
+                    *ngIf=&quot;!selected?.length&quot;
+                    style=&quot;text-align: center&quot;
+                &gt;
+                    All table columns are currently hidden.
+                &lt;/th&gt; --&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngFor</span>=<span class="hljs-string">&quot;let item of tableElements&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;product&#x27;)&quot;</span>&gt;</span>
+                    {{item.product}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;contractNumber&#x27;)&quot;</span>&gt;</span>
+                    {{item.contractNumber}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;desc&#x27;)&quot;</span>&gt;</span>
+                    {{item.desc}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;website&#x27;)&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-link</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">routerLink</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>{{item.website}}<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nx-link</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;endingAt&#x27;)&quot;</span>&gt;</span>
+                    {{item.endingAt}}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;selected?.includes(&#x27;statusText&#x27;)&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">nx-badge</span> [<span class="hljs-attr">type</span>]=<span class="hljs-string">&quot;item.status&quot;</span>&gt;</span>
+                        {{item.statusText}}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">nx-badge</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">nxTableRow</span> *<span class="hljs-attr">ngIf</span>=<span class="hljs-string">&quot;!selected?.length&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">nxTableCell</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: center&quot;</span>&gt;</span>
+                    All table columns are currently hidden.
+                <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>

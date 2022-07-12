@@ -125,7 +125,7 @@
         formBuilder: FormBuilder,
         <span class="hljs-keyword">private</span> _focusMonitor: FocusMonitor,
         <span class="hljs-keyword">private</span> _elementRef: ElementRef&lt;HTMLElement&gt;,
-        <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">public</span> ngControl: NgControl,
+        <span class="hljs-meta">@Optional</span>() <span class="hljs-meta">@Self</span>() <span class="hljs-keyword">public</span> ngControl: NgControl | <span class="hljs-literal">null</span>,
     </span>)</span> {
         <span class="hljs-built_in">this</span>.parts = formBuilder.group({
             <span class="hljs-attr">area</span>: [

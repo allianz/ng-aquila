@@ -1,0 +1,62 @@
+<span class="hljs-keyword">import</span> { CdkDragDrop, moveItemInArray } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/cdk/drag-drop&#x27;</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@title </span>Table Column Options
+ */</span>
+<span class="hljs-meta">@Component</span>({
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;table-column-hiding-example&#x27;</span>,
+    <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./table-column-hiding-example.html&#x27;</span>,
+    <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;./table-column-hiding-example.css&#x27;</span>],
+})
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TableCoumnHidingExampleComponent</span> </span>{
+    tableElements = [
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">1234</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/3/2020&#x27;</span>,
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;negative&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;open&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Health&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">2423</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is another contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.allianz.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;4/2/2020&#x27;</span>,
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;active&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Car&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">353455</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet, csis libero. &#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.com&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;6/2/2020&#x27;</span>,
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;positive&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;accepted&#x27;</span>,
+        },
+        {
+            <span class="hljs-attr">product</span>: <span class="hljs-string">&#x27;Home&#x27;</span>,
+            <span class="hljs-attr">contractNumber</span>: <span class="hljs-number">22344</span>,
+            <span class="hljs-attr">desc</span>: <span class="hljs-string">&#x27;this is a description of a contract&#x27;</span>,
+            <span class="hljs-attr">website</span>: <span class="hljs-string">&#x27;www.example.org&#x27;</span>,
+            <span class="hljs-attr">endingAt</span>: <span class="hljs-string">&#x27;1/2/2027&#x27;</span>,
+            <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;critical&#x27;</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">&#x27;rejected&#x27;</span>,
+        },
+    ];
+
+    options = [
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Product&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;product&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Contract Number&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;contractNumber&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Description&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;desc&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Website&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;website&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Ending At&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;endingAt&#x27;</span> },
+        { <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;Status&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;statusText&#x27;</span> },
+    ];
+
+    selected = [<span class="hljs-string">&#x27;product&#x27;</span>, <span class="hljs-string">&#x27;website&#x27;</span>, <span class="hljs-string">&#x27;endingAt&#x27;</span>, <span class="hljs-string">&#x27;statusText&#x27;</span>];
+}

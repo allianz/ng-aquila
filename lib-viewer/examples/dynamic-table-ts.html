@@ -1,4 +1,5 @@
 <span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { NxDynamicTableColumnDefinition } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/dynamic-table&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Table Example
@@ -56,8 +57,14 @@
             <span class="hljs-attr">lorem</span>: <span class="hljs-string">&#x27;ab tyuy &#x27;</span>,
         },
     ];
-    displayedColumns = [
-        { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
+    displayedColumns: NxDynamicTableColumnDefinition[] = [
+        {
+            <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Code&#x27;</span>,
+            <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;code&#x27;</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span>,
+            <span class="hljs-attr">headerCellClass</span>: <span class="hljs-string">&#x27;text-underline&#x27;</span>,
+            <span class="hljs-attr">cellStyle</span>: { <span class="hljs-string">&#x27;font-weight&#x27;</span>: <span class="hljs-number">600</span> },
+        },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Company&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;company&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;string&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Price&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;price&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
         { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;Change Percent&#x27;</span>, <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;changePercent&#x27;</span>, <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;numeric&#x27;</span> },
