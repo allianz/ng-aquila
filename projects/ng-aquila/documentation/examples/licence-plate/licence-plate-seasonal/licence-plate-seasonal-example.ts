@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Licence plate seasonal (Germany)
  */
 @Component({
-    templateUrl: 'licence-plate-seasonal-example.html',
     selector: 'licence-plate-seasonal-example',
+    templateUrl: 'licence-plate-seasonal-example.html',
+    styleUrls: ['licence-plate-seasonal-example.css'],
 })
 export class LicencePlateSeasonalExampleComponent {
     startMonth!: number;

@@ -58,9 +58,9 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
 
 /** @title Phone input validation */
 @Component({
-    templateUrl: 'phone-input-validation-example.html',
-    styleUrls: ['./phone-input-validation-example.html'],
     selector: 'phone-input-validation-example',
+    templateUrl: 'phone-input-validation-example.html',
+    styleUrls: ['./phone-input-validation-example.css'],
 })
 export class PhoneInputValidationExampleComponent {
     phoneControl = new FormControl('', [

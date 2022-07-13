@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'data-display-custom-label-example',
     templateUrl: './data-display-custom-label-example.html',
+    styleUrls: ['./data-display-custom-label-example.css'],
 })
 export class DataDisplayCustomLabelExampleComponent {}

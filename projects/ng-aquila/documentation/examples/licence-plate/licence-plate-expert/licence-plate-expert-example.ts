@@ -5,8 +5,9 @@ import { NxLicencePlateType } from '@aposin/ng-aquila/licence-plate';
  * @title Licence plate expert
  */
 @Component({
-    templateUrl: 'licence-plate-expert-example.html',
     selector: 'licence-plate-expert-example',
+    templateUrl: 'licence-plate-expert-example.html',
+    styleUrls: ['licence-plate-expert-example.css'],
 })
 export class LicencePlateExpertExample {
     licencePlateModel: {

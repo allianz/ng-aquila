@@ -7,7 +7,7 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS } from '@aposin/ng-aquila/data-display';
 @Component({
     selector: 'data-display-horizontal-example',
     templateUrl: './data-display-horizontal-example.html',
-    // Only for this example. Import the NxExpertModule instead!
+    styleUrls: ['./data-display-horizontal-example.css'],
     providers: [
         {
             provide: DATA_DISPLAY_DEFAULT_OPTIONS,
