@@ -1,14 +1,16 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnDestroy, OnInit } from '@angular/core';
 import {
+    NxFileUploadConfig,
     NxFileUploader,
     NxFileUploaderIntl,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable()
 export class FileUploaderIntl extends NxFileUploaderIntl {
@@ -30,9 +32,8 @@ export const myCustomConfig: NxMessageToastConfig = {
     styleUrls: ['./file-uploader-intl-example.css'],
     providers: [{ provide: NxFileUploaderIntl, useClass: FileUploaderIntl }],
 })
-export class FileUploaderIntlExampleComponent {
-    uploader: NxFileUploader;
-    uploadConfig = {
+export class FileUploaderIntlExampleComponent implements OnInit, OnDestroy {
+    uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -40,22 +41,33 @@ export class FileUploaderIntlExampleComponent {
         },
     };
 
+    uploader = new NxFileUploader(this.uploadConfig, this.http);
+
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private messageToastService: NxMessageToastService,
         private http: HttpClient,
-    ) {
-        this.uploader = new NxFileUploader(this.uploadConfig, this.http);
+    ) {}
 
-        this.uploader.response.subscribe((result: NxFileUploadResult) => {
-            if (result.success) {
-                this.messageToastService.open(
-                    'All files were uploaded successfully!',
-                    myCustomConfig,
-                );
-            } else if (result.error) {
-                // error handling
-                console.log(result.error);
-            }
-        });
+    ngOnInit() {
+        this.uploader.response
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(result => {
+                if (result.success) {
+                    this.messageToastService.open(
+                        'All files were uploaded successfully!',
+                        myCustomConfig,
+                    );
+                } else if (result.error) {
+                    // error handling
+                    console.log(result.error);
+                }
+            });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

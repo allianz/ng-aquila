@@ -17,6 +17,7 @@ import {
 } from '@angular/forms';
 import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @title Implementing Custom Formfield Control example
@@ -121,6 +122,8 @@ export class FormfieldCustomTelInputExampleComponent
         this.stateChanges.next();
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         formBuilder: FormBuilder,
         private _focusMonitor: FocusMonitor,
@@ -154,13 +157,16 @@ export class FormfieldCustomTelInputExampleComponent
             ],
         });
 
-        _focusMonitor.monitor(_elementRef, true).subscribe(origin => {
-            if (this.focused && !origin) {
-                this.onTouched();
-            }
-            this.focused = !!origin;
-            this.stateChanges.next();
-        });
+        _focusMonitor
+            .monitor(_elementRef, true)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(origin => {
+                if (this.focused && !origin) {
+                    this.onTouched();
+                }
+                this.focused = !!origin;
+                this.stateChanges.next();
+            });
 
         if (this.ngControl != null) {
             this.ngControl.valueAccessor = this;
@@ -175,6 +181,8 @@ export class FormfieldCustomTelInputExampleComponent
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this.stateChanges.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);
     }

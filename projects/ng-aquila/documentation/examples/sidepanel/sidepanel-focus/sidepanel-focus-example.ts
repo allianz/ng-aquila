@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    OnDestroy,
+    ViewChild,
+} from '@angular/core';
 import {
     NxSidepanelCloseButtonComponent,
     NxSidepanelComponent,
@@ -14,12 +20,14 @@ import { takeUntil, skip } from 'rxjs/operators';
     templateUrl: './sidepanel-focus-example.html',
     styleUrls: ['sidepanel-focus-example.css'],
 })
-export class SidepanelFocuskExampleComponent implements AfterViewInit {
+export class SidepanelFocuskExampleComponent
+    implements OnDestroy, AfterViewInit
+{
     opened = true;
     @ViewChild(NxSidepanelComponent) panel!: NxSidepanelComponent;
     @ViewChild('closeButton', { read: ElementRef }) closeButton!: ElementRef;
 
-    private _destroyed = new Subject<void>();
+    private readonly _destroyed = new Subject<void>();
 
     ngAfterViewInit(): void {
         this.panel.openedChange
@@ -27,5 +35,10 @@ export class SidepanelFocuskExampleComponent implements AfterViewInit {
             .subscribe(
                 opened => opened && this.closeButton.nativeElement.focus(),
             );
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }
