@@ -53,7 +53,7 @@ let nextId = 0;
 })
 export class NxFileUploaderComponent implements ControlValueAccessor, AfterContentInit, OnChanges, OnDestroy, DoCheck, OnInit, AfterViewInit {
     /** @docs-private */
-    @ContentChild(NxFileUploaderButtonDirective, { static: false }) button!: NxFileUploaderButtonDirective;
+    @ContentChild(NxFileUploaderButtonDirective, { static: false }) button?: NxFileUploaderButtonDirective;
 
     /** @docs-private */
     @ContentChild(NxFileUploaderDropZoneComponent, { static: true }) _dropZone!: NxFileUploaderDropZoneComponent;
@@ -349,6 +349,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     }
 
     ngAfterContentInit() {
+        if (!this.button) {
+            return;
+        }
         let subscription;
         const subscriptions = [];
 
@@ -522,7 +525,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         ids = this._hintChildren.map(hint => hint.id);
         ids = [this._label.id, ...ids];
         ids = [...this._errorList.map(error => error.id), ...ids];
-        this.button.setDescribedByIds(ids);
+        this.button?.setDescribedByIds(ids);
     }
 
     _handleKeydownListRow(event: KeyboardEvent) {
