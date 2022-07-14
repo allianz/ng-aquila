@@ -9,12 +9,12 @@ const options: DataDisplayDefaultOptions = {
 };
 
 /**
- * @title Expert data display example
+ * @title Condensed data display example
  */
 @Component({
-    selector: 'data-display-expert-example',
-    templateUrl: './data-display-expert-example.html',
-    styleUrls: ['./data-display-expert-example.css'],
+    selector: 'data-display-condensed-example',
+    templateUrl: './data-display-condensed-example.html',
+    styleUrls: ['./data-display-condensed-example.css'],
     providers: [
         {
             provide: DATA_DISPLAY_DEFAULT_OPTIONS,
@@ -22,4 +22,4 @@ const options: DataDisplayDefaultOptions = {
         },
     ],
 })
-export class DataDisplayExpertExampleComponent {}
+export class DataDisplayCondensedExampleComponent {}
