@@ -28,7 +28,6 @@ export const NX_DOCS_FEATURE_FLAGS = new InjectionToken<NxDocFeatures>('NX_DOCS_
 })
 export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     manifestFile!: Blob;
-    private _destroyed: Subject<void> = new Subject();
     selectedTheme: Theme;
     themes: Theme[];
 
@@ -44,6 +43,8 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
 
     @ViewChild(CssVarSidebarComponent)
     cssVarSidebar!: CssVarSidebarComponent;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         public manifestService: ManifestService,

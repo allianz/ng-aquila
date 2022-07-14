@@ -11,7 +11,7 @@ import {
     OnDestroy,
     QueryList,
 } from '@angular/core';
-import { merge, Observable, Subject, Subscription } from 'rxjs';
+import { merge, Observable, Subject } from 'rxjs';
 import { delay, takeUntil, throttleTime } from 'rxjs/operators';
 
 import { NxWordComponent } from './word.component';
@@ -41,12 +41,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     /** @docs-private */
     resizeObservable!: Observable<void>;
 
-    private _destroyed = new Subject();
-
     @ContentChildren(NxWordComponent) _words!: QueryList<NxWordComponent>;
-
-    /** @docs-private */
-    updatePopoversSubscription: Subscription = Subscription.EMPTY;
 
     /** @docs-private */
     private _size: NxNaturalLanguageFormSize = DEFAULT_SIZE;
@@ -73,6 +68,8 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
         return this._size;
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(private _cdr: ChangeDetectorRef, private _ngZone: NgZone) {
         // Normally we wouldn't have to explicitly run this outside the `NgZone`, however
         // if the consumer is using `zone-patch-rxjs`, the call throws `Maximum call stack size exceeded` error.
@@ -97,12 +94,12 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
         const subjects = this._words.map((word: NxWordComponent) => word.inputChanges);
         const source = merge(...subjects);
 
-        this.updatePopoversSubscription = source.subscribe(() => {
+        source.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.updatePositionPopovers();
         });
 
         this.resizeObservable = this.resizeEvent$.pipe(throttleTime(500), delay(100));
-        this.resizeObservable.subscribe(() => this.resizeWords());
+        this.resizeObservable.pipe(takeUntil(this._destroyed)).subscribe(() => this.resizeWords());
     }
 
     /** @docs-private */
@@ -113,7 +110,6 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
     }
 
     ngOnDestroy(): void {
-        this.updatePopoversSubscription.unsubscribe();
         this._destroyed.next();
         this._destroyed.complete();
     }

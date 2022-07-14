@@ -1,6 +1,7 @@
 import { FocusKeyManager } from '@angular/cdk/a11y';
-import { AfterContentInit, Component, ContentChildren, QueryList, TemplateRef, ViewChild } from '@angular/core';
-import { merge } from 'rxjs';
+import { AfterContentInit, Component, ContentChildren, OnDestroy, QueryList, TemplateRef, ViewChild } from '@angular/core';
+import { merge, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxNotificationPanelItemComponent } from './../notification-item/notification-item.component';
 
@@ -14,7 +15,7 @@ import { NxNotificationPanelItemComponent } from './../notification-item/notific
         '(keydown)': '_handleKeydown($event)',
     },
 })
-export class NxNotificationPanelComponent implements AfterContentInit {
+export class NxNotificationPanelComponent implements OnDestroy, AfterContentInit {
     @ViewChild(TemplateRef)
     templateRef!: TemplateRef<any>;
 
@@ -22,17 +23,26 @@ export class NxNotificationPanelComponent implements AfterContentInit {
 
     private _keyManager!: FocusKeyManager<NxNotificationPanelItemComponent>;
 
+    private readonly _destroyed = new Subject<void>();
+
     ngAfterContentInit() {
         this._initKeyManager();
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     private _initKeyManager() {
         this._keyManager = new FocusKeyManager<NxNotificationPanelItemComponent>(this.items).withVerticalOrientation().withHorizontalOrientation('ltr');
 
         if (this.items.length > 0) {
-            merge(...this.items.map(item => item.focused)).subscribe(item => {
-                this._keyManager.updateActiveItem(item);
-            });
+            merge(...this.items.map(item => item.focused))
+                .pipe(takeUntil(this._destroyed))
+                .subscribe(item => {
+                    this._keyManager.updateActiveItem(item);
+                });
         }
     }
 

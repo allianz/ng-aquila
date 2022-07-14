@@ -29,8 +29,8 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import { merge, Subject, Subscription } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
+import { merge, Subject } from 'rxjs';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 import { NxDateAdapter } from '../adapter/date-adapter';
 import { NxDatefieldDirective } from '../datefield.directive';
@@ -238,15 +238,10 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     /** The element that was focused before the datepicker was opened. */
     private _focusedElementBeforeOpen: HTMLElement | null = null;
 
-    /** Subscription to value changes in the associated input element. */
-    private _inputSubscription = Subscription.EMPTY;
-
     /** The input element this datepicker is associated with. */
     _datepickerInput!: NxDatefieldDirective<D>;
 
     _toggleButton!: NxDatepickerToggleComponent<D>;
-
-    _dirChangeSubscription = Subscription.EMPTY;
 
     /** Strategy factory that will be used to handle scrolling while the datepicker panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -255,6 +250,8 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     readonly _disabledChange = new Subject<boolean>();
 
     private readonly _dateAdapter: NxDateAdapter<D>;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         private _overlay: Overlay,
@@ -270,18 +267,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
         }
         this._dateAdapter = _dateAdapter;
 
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(() => {
-                this.close();
-                this._destroyPopup();
-            });
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this.close();
+            this._destroyPopup();
+        });
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this.close();
-        this._inputSubscription.unsubscribe();
-        this._dirChangeSubscription.unsubscribe();
         this._disabledChange.complete();
 
         if (this._popupRef) {
@@ -328,7 +323,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
             throw Error('A NxDatepicker can only be associated with a single input.');
         }
         this._datepickerInput = input;
-        this._inputSubscription = this._datepickerInput._valueChange.subscribe((value: D | null) => (this.selected = value));
+        this._datepickerInput._valueChange.pipe(takeUntil(this._destroyed)).subscribe((value: D | null) => (this.selected = value));
     }
 
     /**
@@ -445,7 +440,9 @@ export class NxDatepickerComponent<D> implements OnDestroy {
 
         this._popupRef = this._overlay.create(overlayConfig);
 
-        merge(this._popupRef.backdropClick(), this._popupRef.keydownEvents().pipe(filter(event => event.keyCode === ESCAPE))).subscribe(() => this.close());
+        merge(this._popupRef.backdropClick(), this._popupRef.keydownEvents().pipe(filter(event => event.keyCode === ESCAPE)))
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(() => this.close());
     }
 
     /** Destroy popup */

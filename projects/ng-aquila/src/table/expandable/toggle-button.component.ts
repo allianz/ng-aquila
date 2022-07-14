@@ -38,9 +38,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     set target(value: NxExpandable) {
         this._target = value;
 
-        if (this._subscription) {
-            this._subscription.unsubscribe();
-        }
+        this._subscription?.unsubscribe();
 
         if (this._target) {
             this._subscription = this._target.expanded.subscribe(expanded => {
@@ -58,7 +56,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     }
     _ariaLabel = '';
 
-    private _subscription!: Subscription;
+    private _subscription = Subscription.EMPTY;
 
     constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
@@ -73,9 +71,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (this._subscription) {
-            this._subscription.unsubscribe();
-        }
+        this._subscription?.unsubscribe();
         this._focusMonitor.stopMonitoring(this._buttonElement);
     }
 }

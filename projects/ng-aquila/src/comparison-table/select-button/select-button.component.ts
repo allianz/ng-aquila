@@ -20,8 +20,6 @@ import { NxComparisonTableBase } from '../comparison-table-base';
     },
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
-    private _destroyed = new Subject();
-
     private _selectedLabel = 'Selected';
 
     _ariaPressed = false;
@@ -73,6 +71,8 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     get selectedClassNames(): string {
         return this._selectedClassNames;
     }
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         _cdr: ChangeDetectorRef,

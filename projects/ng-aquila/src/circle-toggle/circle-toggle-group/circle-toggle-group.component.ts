@@ -180,7 +180,6 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
 
     private _id = `nx-circle-toggle-group-${nextId++}`;
-    private _destroyed: Subject<void> = new Subject();
 
     /** An event emitted when the selection changes. Outputs the value of the currently selected button. */
     @Output()
@@ -214,6 +213,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get appearance(): NxCircleToggleGroupAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
+
+    private readonly _destroyed = new Subject<void>();
 
     private onChangeCallback = (value: string) => {};
     private onTouchedCallback = () => {};
@@ -252,10 +253,8 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     /** @docs-private */
     subscribeToSelectionChanges() {
-        const changedOrDestroyed = merge(this.buttons.changes, this._destroyed);
-
         merge(...this.buttons.map(button => button.selectionChange))
-            .pipe(takeUntil(changedOrDestroyed))
+            .pipe(takeUntil(this.buttons.changes), takeUntil(this._destroyed))
             .subscribe((change: any) => {
                 this.onChangeCallback(change.value);
                 this.valueChange.emit(change.value);

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { GuideDescriptor, Manifest } from '../../core/manifest';
 import { ManifestService } from '../../service/manifest.service';
@@ -14,27 +14,33 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
 })
 export class NxvGuidesComponent implements OnDestroy {
     availableGuides!: GuideDescriptor[];
-    private guideSubscription: Subscription;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private manifestService: ManifestService,
+        manifestService: ManifestService,
         private router: Router,
         private route: ActivatedRoute,
         public documentationFrame: DocumentationFrameComponent,
     ) {
-        this.guideSubscription = manifestService.manifest.pipe(map((manifest: Manifest) => manifest.guides)).subscribe(guides => {
-            this.availableGuides = guides;
-            const hasChildRoute = this.route.snapshot.firstChild;
-            if (guides.length && !hasChildRoute) {
-                this.router.navigate([guides[0].id], { relativeTo: this.route });
-            }
-        });
+        manifestService.manifest
+            .pipe(
+                map((manifest: Manifest) => manifest.guides),
+                takeUntil(this._destroyed),
+            )
+            .subscribe(guides => {
+                this.availableGuides = guides;
+                const hasChildRoute = this.route.snapshot.firstChild;
+
+                if (guides.length && !hasChildRoute) {
+                    this.router.navigate([guides[0].id], { relativeTo: this.route });
+                }
+            });
     }
 
     ngOnDestroy() {
-        if (this.guideSubscription) {
-            this.guideSubscription.unsubscribe();
-        }
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     mainContentClicked() {

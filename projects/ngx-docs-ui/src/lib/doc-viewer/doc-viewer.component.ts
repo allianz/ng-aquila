@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, Output, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'nxv-doc-viewer',
@@ -10,19 +10,10 @@ export class DocViewerComponent {
     private _loadedContent: any;
     @Output() contentLoaded = new EventEmitter<any>();
 
-    constructor(
-        private _appRef: ApplicationRef,
-        private _http: HttpClient,
-        private _elementRef: ElementRef,
-        private _componentFactoryResolver: ComponentFactoryResolver,
-        private _viewContainerRef: ViewContainerRef,
-        private _injector: Injector,
-    ) {}
+    constructor(private _http: HttpClient, private _elementRef: ElementRef) {}
 
     private _fetchDocument(url: string) {
-        const httpRequest$ = this._http.get(url, { responseType: 'text' });
-
-        httpRequest$.subscribe(
+        this._http.get(url, { responseType: 'text' }).subscribe(
             document => this.updateContent(document),
             error => this.handleError(url, error),
         );

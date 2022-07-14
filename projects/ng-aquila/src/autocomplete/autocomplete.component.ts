@@ -17,7 +17,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 import { NxAutocompleteOptionComponent } from './autocomplete-option.component';
 
@@ -76,9 +76,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
         if (Array.isArray(val)) {
             this._items = val;
         } else if (val instanceof Observable) {
-            if (this._itemsSubscription) {
-                this._itemsSubscription.unsubscribe();
-            }
+            this._itemsSubscription?.unsubscribe();
             this._itemsSubscription = val.subscribe(itms => {
                 this._items = itms;
                 this._cdr.markForCheck();
@@ -95,7 +93,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
         return this._items as string[]; // TODO properly coerce input as empty array
     }
     private _items: string[] | null = null;
-    private _itemsSubscription!: Subscription;
+    private _itemsSubscription?: Subscription;
 
     /**
      * @docs-private
@@ -144,6 +142,8 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     /** Unique ID to be used by autocomplete trigger's "aria-owns" property. */
     id = `nx-autocomplete-${_uniqueAutocompleteIdCounter++}`;
 
+    private readonly _destroyed = new Subject<void>();
+
     /**
      * Value to string converter function.
      * As an autocomplete option can hold any value, a converter might be needed
@@ -162,9 +162,9 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (this._itemsSubscription) {
-            this._itemsSubscription.unsubscribe();
-        }
+        this._destroyed.next();
+        this._destroyed.complete();
+        this._itemsSubscription?.unsubscribe();
     }
 
     /**

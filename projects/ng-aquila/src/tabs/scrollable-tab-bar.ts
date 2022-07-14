@@ -1,6 +1,7 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { AfterContentInit, ChangeDetectorRef, Directive, ElementRef, OnDestroy, Optional, QueryList } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const SPACE_BETWEEN_TABS = 32;
 const START_BUTTON_WIDTH = 40;
@@ -14,23 +15,22 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
 
     _isScrolledToStart = true;
     _isScrolledToEnd = true;
-    private _dirChangeSubscription = Subscription.EMPTY;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(public _cdr: ChangeDetectorRef, @Optional() private _dir: Directionality | null, private _element: ElementRef) {
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(() => {
-                if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
-                    const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);
-                    setTimeout(() => {
-                        this.scrollableTabsList.nativeElement.scrollLeft = this.direction === 'ltr' ? absoluteScrollLeft : -absoluteScrollLeft;
-                    });
-                }
-            });
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
+                const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);
+                setTimeout(() => {
+                    this.scrollableTabsList.nativeElement.scrollLeft = this.direction === 'ltr' ? absoluteScrollLeft : -absoluteScrollLeft;
+                });
+            }
+        });
     }
 
     ngAfterContentInit() {
-        this.tabButtons.changes.subscribe(() => setTimeout(() => this._updateScrollButtons()));
+        this.tabButtons.changes.pipe(takeUntil(this._destroyed)).subscribe(() => setTimeout(() => this._updateScrollButtons()));
         setTimeout(() => {
             this.scrollableTabsList.nativeElement.addEventListener('scroll', this._scrollHandler);
             this._updateScrollButtons();
@@ -38,7 +38,8 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
     }
 
     ngOnDestroy() {
-        this._dirChangeSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     _scrollHandler = (event: Event): void => {

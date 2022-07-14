@@ -17,7 +17,8 @@ import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, Va
 import { MappedStyles } from '@aposin/ng-aquila/core';
 import { mapClassNames, pad } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxAutoResizeDirective } from './auto-resize.directive';
 import { NxNumberStepperIntl } from './number-stepper-intl';
@@ -69,7 +70,6 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     private _decrementAriaLabel = '';
     private _inputAriaLabel = '';
     private _resize = false;
-    private _intlSubscription: Subscription;
     private _negative = false;
     private _leadingZero = true;
     private _disabled = false;
@@ -242,9 +242,12 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         return this._disabled;
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(private _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, public _intl: NxNumberStepperIntl) {
         super(SIZE_MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
-        this._intlSubscription = this._intl.changes.subscribe(() => this._cdr.markForCheck());
+
+        this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
     ngAfterViewInit() {
@@ -255,7 +258,8 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     }
 
     ngOnDestroy() {
-        this._intlSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     /** @docs-private */

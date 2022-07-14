@@ -1,6 +1,7 @@
 import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { NxButtonBase } from '@aposin/ng-aquila/button';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxModalService } from './modal.service';
 
@@ -9,22 +10,23 @@ export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
     /** @docs-private */
     elements!: any[];
 
-    private subscription!: ISubscription;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef, private modalService: NxModalService) {}
 
     ngOnInit() {
-        this.subscription = this.modalService.close$.subscribe(() => this.viewContainer.clear());
+        this.modalService.close$.pipe(takeUntil(this._destroyed)).subscribe(() => this.viewContainer.clear());
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
+
         this.elements.forEach(el => {
             if (el.removeEventListener) {
                 el.removeEventListener('click', this.clickHandler);
             }
         });
-
-        this.subscription.unsubscribe();
     }
 
     /** @docs-private */

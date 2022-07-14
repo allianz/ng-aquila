@@ -20,8 +20,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { AppearanceType, NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject, Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownIntl } from '../dropdown';
 import { getPositionOffset, getPositions } from '../dropdown-position';
@@ -172,7 +172,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         }
         this._isDisabled = this._isDisabled.bind(this);
 
-        this._intlChanges = _intl.changes.subscribe(() => _cdr.markForCheck());
+        _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => _cdr.markForCheck());
     }
 
     private get _isActiveItemFiltered(): boolean {
@@ -283,10 +283,11 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     @HostBinding('class.is-open')
     _isOpen = false;
 
-    private _intlChanges: Subscription;
+    private readonly _destroyed = new Subject<void>();
 
     ngOnDestroy(): void {
-        this._intlChanges.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     private _onChange: (value: T[]) => void = () => {};
@@ -602,6 +603,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             .withHorizontalOrientation('ltr')
             .skipPredicate(item => item.disabled);
 
-        this._keyManager.tabOut.subscribe(() => this._close());
+        this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this._close());
     }
 }

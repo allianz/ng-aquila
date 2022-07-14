@@ -1,7 +1,8 @@
 import { Direction, Directionality } from '@angular/cdk/bidi';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Optional, Output } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export type NxScrollDirection = 'start' | 'end';
 
@@ -30,26 +31,26 @@ export class NxTabScrollIndicator implements OnDestroy {
 
     @Output() buttonClicked: EventEmitter<void> = new EventEmitter<void>();
 
-    private _viewportServiceSubscription: Subscription = Subscription.EMPTY;
-    private _dirChangeSubscription = Subscription.EMPTY;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private _cdr: ChangeDetectorRef, private _viewportService: NxViewportService, @Optional() private _dir: Directionality | null) {
-        this._viewportServiceSubscription = this._viewportService.min(NxBreakpoints.BREAKPOINT_MEDIUM).subscribe(isGreaterThanMedium => {
-            if (isGreaterThanMedium) {
-                this._view = 'desktop';
-            } else if (!isGreaterThanMedium) {
-                this._view = 'mobile';
-            }
-            this._cdr.markForCheck();
-        });
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(() => this._cdr.markForCheck());
-        }
+        this._viewportService
+            .min(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(isGreaterThanMedium => {
+                if (isGreaterThanMedium) {
+                    this._view = 'desktop';
+                } else if (!isGreaterThanMedium) {
+                    this._view = 'mobile';
+                }
+                this._cdr.markForCheck();
+            });
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
     ngOnDestroy() {
-        this._viewportServiceSubscription.unsubscribe();
-        this._dirChangeSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     get direction(): Direction {

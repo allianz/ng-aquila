@@ -20,7 +20,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import { NxTriggerButton } from '@aposin/ng-aquila/overlay';
-import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subscription } from 'rxjs';
+import { asapScheduler, fromEvent, merge, Observable, of as observableOf, Subject, Subscription } from 'rxjs';
 import { delay, filter, map, take, takeUntil } from 'rxjs/operators';
 
 import { NxContextMenuComponent } from './context-menu.component';
@@ -79,9 +79,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     private _overlayRef: OverlayRef | null = null;
     private _contextMenuOpen = false;
     private _closingActionsSubscription = Subscription.EMPTY;
-    private _hoverSubscription = Subscription.EMPTY;
     private _contextMenuCloseSubscription = Subscription.EMPTY;
-    private _dirChangeSubscription = Subscription.EMPTY;
     private _documentClickObservable: Observable<MouseEvent>;
 
     /** Strategy factory that will be used to handle scrolling while the context-menu panel is open. */
@@ -153,6 +151,8 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     /** Event emitted when the associated context menu is closed. */
     @Output() readonly contextMenuClosed: EventEmitter<void> = new EventEmitter<void>();
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private _overlay: Overlay,
         private _element: ElementRef<HTMLElement>,
@@ -169,15 +169,13 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
         }
         this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');
 
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(() => {
-                if (this.contextMenuOpen) {
-                    // HINT: closing menu on direction change.
-                    // When user re-opens it, the overlay and menu will be initialized properly, based on new direction.
-                    this.closeContextMenu();
-                }
-            });
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            if (this.contextMenuOpen) {
+                // HINT: closing menu on direction change.
+                // When user re-opens it, the overlay and menu will be initialized properly, based on new direction.
+                this.closeContextMenu();
+            }
+        });
     }
 
     ngAfterContentInit() {
@@ -186,6 +184,9 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
+
         if (this._overlayRef) {
             this._overlayRef.dispose();
             this._overlayRef = null;
@@ -193,8 +194,6 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
 
         this._contextMenuCloseSubscription.unsubscribe();
         this._closingActionsSubscription.unsubscribe();
-        this._hoverSubscription.unsubscribe();
-        this._dirChangeSubscription.unsubscribe();
     }
 
     /** Whether the context menu triggers a sub-menu or a top-level one. */
@@ -349,7 +348,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
             this._overlayRef = this._overlay.create(config);
 
             // Consume the `keydownEvents` in order to prevent them from going to another overlay.
-            this._overlayRef.keydownEvents().subscribe();
+            this._overlayRef.keydownEvents().pipe(takeUntil(this._destroyed)).subscribe();
         }
 
         return this._overlayRef;
@@ -570,13 +569,14 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
             return;
         }
 
-        this._hoverSubscription = this._parentMenu!._hovered()
+        this._parentMenu!._hovered()
             // Since we might have multiple competing triggers for the same menu (e.g. a sub-menu
             // with different data and triggers), we have to delay it by a tick to ensure that
             // it won't be closed immediately after it is opened.
             .pipe(
                 filter(active => active === this._contextMenuItemInstance && !active.disabled),
                 delay(0, asapScheduler),
+                takeUntil(this._destroyed), // TODO this may not be sufficient, subscriptions may be piling up
             )
             .subscribe(() => {
                 // If the same menu is used between multiple triggers, it might still be animating

@@ -17,7 +17,8 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { DefaultPaginationTexts, IPaginationTexts, NX_PAGINATION_TEXTS } from './pagination-texts';
 import { NxPaginationUtils } from './pagination-utils';
@@ -45,7 +46,6 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     private _count!: number;
     private _perPage!: number;
     private _type = 'simple';
-    private _dirChangeSubscription = Subscription.EMPTY;
 
     /** @docs-private */
     paginationTexts: IPaginationTexts;
@@ -113,6 +113,8 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
      */
     @Output() nxGoPage = new EventEmitter<number>();
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts | null,
         @Optional() private _dir: Directionality | null,
@@ -121,11 +123,10 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         private _focusMonitor: FocusMonitor,
     ) {
         this.paginationTexts = paginationTexts || DefaultPaginationTexts;
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(() => {
-                this._cdr.detectChanges();
-            });
-        }
+
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this._cdr.detectChanges();
+        });
     }
 
     ngOnInit() {
@@ -149,8 +150,9 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._linkElements?.forEach(link => this._focusMonitor.stopMonitoring(link));
-        this._dirChangeSubscription?.unsubscribe();
     }
 
     /** Returns the number of the first page. */

@@ -1,7 +1,7 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { GuideDescriptor } from '../../../core/manifest';
 import { NXV_FEEDBACK_LINKS } from '../../../core/tokens';
@@ -12,9 +12,11 @@ import { ManifestService } from '../../../service/manifest.service';
     templateUrl: 'guide-view.component.html',
     styleUrls: ['guide-view.component.scss'],
 })
-export class NxvGuideViewComponent {
+export class NxvGuideViewComponent implements OnDestroy {
     guide!: GuideDescriptor;
     guides: string[] = [];
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         _route: ActivatedRoute,
@@ -24,7 +26,10 @@ export class NxvGuideViewComponent {
     ) {
         // Listen for changes in the route or our manifest
         combineLatest(manifestService.manifest, _route.params.pipe(map(params => params['id'])))
-            .pipe(map(([manifest, id]: any) => ({ manifest, id })))
+            .pipe(
+                map(([manifest, id]: any) => ({ manifest, id })),
+                takeUntil(this._destroyed),
+            )
             .subscribe(result => {
                 // check if there is a guide with the specified id
                 if (this.manifestService.hasGuide(result.id)) {
@@ -34,5 +39,10 @@ export class NxvGuideViewComponent {
                     this.router.navigate(['/']);
                 }
             });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

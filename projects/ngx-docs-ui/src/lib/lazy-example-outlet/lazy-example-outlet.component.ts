@@ -1,7 +1,8 @@
 import { Direction } from '@angular/cdk/bidi';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { BaseLazyLoadingService } from '../service/lazy-loading.service';
 import { ExampleDescriptor } from './../core/manifest';
@@ -12,14 +13,14 @@ import { ManifestService } from './../service/manifest.service';
     templateUrl: 'lazy-example-outlet.component.html',
 })
 export class LazyExampleOutletComponent implements OnInit, OnDestroy {
-    @Input()
-    exampleId!: string;
+    @Input() exampleId!: string;
 
     exampleComponent: any = null;
     exampleModuleFactory: any = null;
     exampleDescriptor!: ExampleDescriptor;
-    _queryParamSubscription!: Subscription;
     directionQuery!: Direction;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         private _lazyLoadingService: BaseLazyLoadingService,
@@ -45,14 +46,15 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
     }
 
     subscribeToDirectionQueryParams() {
-        this._queryParamSubscription = this._route.queryParams.subscribe(params => {
+        this._route.queryParams.pipe(takeUntil(this._destroyed)).subscribe(params => {
             const { dir } = params;
             this.directionQuery = isAllowedDir(dir) ? dir : null;
         });
     }
 
     ngOnDestroy() {
-        this._queryParamSubscription?.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }
 

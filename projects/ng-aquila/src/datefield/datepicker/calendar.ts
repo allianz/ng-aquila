@@ -17,7 +17,8 @@ import {
     SimpleChanges,
     ViewChild,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from '../adapter/index';
 import { createMissingDateImplError } from '../datefield.functions';
@@ -51,8 +52,6 @@ const yearsPerPage = 20;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {
-    private _intlChanges: Subscription;
-
     /** A date representing the period (month or year) to start the calendar in. */
     @Input()
     get startAt(): D | null {
@@ -186,6 +185,8 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     private readonly _dateAdapter: NxDateAdapter<D>;
     private readonly _dateFormats: NxDateFormats;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private _intl: NxDatepickerIntl,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
@@ -204,7 +205,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         }
         this._dateFormats = _dateFormats;
 
-        this._intlChanges = _intl.changes.subscribe(() => _cdr.markForCheck());
+        _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => _cdr.markForCheck());
     }
 
     ngAfterContentInit() {
@@ -219,7 +220,8 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     }
 
     ngOnDestroy() {
-        this._intlChanges.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._previousButton);
         this._focusMonitor.stopMonitoring(this._nextButton);
         this._focusMonitor.stopMonitoring(this._changeViewButton);

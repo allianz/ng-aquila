@@ -1,5 +1,6 @@
 import { Component, EmbeddedViewRef, Input, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxTabGroupBase } from './tab-group-base';
 
@@ -13,12 +14,12 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
 
     @Input() content!: EmbeddedViewRef<any>;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(private _tabGroup: NxTabGroupBase) {}
 
-    private _appearanceSubscription!: Subscription;
-
     ngOnInit() {
-        this._appearanceSubscription = this._tabGroup._appearanceChange.subscribe(() => {
+        this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.detach();
         });
         this.attach();
@@ -36,6 +37,7 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this._appearanceSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

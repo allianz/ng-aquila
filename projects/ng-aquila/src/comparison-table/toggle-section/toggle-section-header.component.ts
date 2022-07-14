@@ -28,7 +28,7 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
 
     private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
 
-    private _isDestroyed = new Subject<void>();
+    private readonly _destroyed = new Subject<void>();
 
     /** Sets the id of the toggle section header. */
     @Input()
@@ -49,7 +49,7 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
         @Inject(PLATFORM_ID) platformId: string,
     ) {
         if (isPlatformBrowser(platformId)) {
-            this._table.viewTypeChange.pipe(takeUntil(this._isDestroyed)).subscribe(() => {
+            this._table.viewTypeChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._updateFocusMonitoringTimeout();
             });
         }
@@ -60,7 +60,8 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     }
 
     ngOnDestroy() {
-        this._isDestroyed.next();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._wrapperElement);
     }
 
@@ -77,11 +78,14 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
             this._wrapperElementPrevious = this._wrapperElement;
         }
         if (!this._wrapperElementPrevious && this._wrapperElement) {
-            this._focusMonitor.monitor(this._wrapperElement).subscribe(origin => {
-                if (origin === 'keyboard') {
-                    this._table._scrollElementIntoView(this._wrapperElement, 8);
-                }
-            });
+            this._focusMonitor
+                .monitor(this._wrapperElement)
+                .pipe(takeUntil(this._destroyed))
+                .subscribe(origin => {
+                    if (origin === 'keyboard') {
+                        this._table._scrollElementIntoView(this._wrapperElement, 8);
+                    }
+                });
             this._wrapperElementPrevious = this._wrapperElement;
         }
     }

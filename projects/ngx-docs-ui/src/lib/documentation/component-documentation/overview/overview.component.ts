@@ -1,5 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NX_DOCS_GITHUB_LINK } from '../../../core/tokens';
 import { GithubLinkConfig } from '../../../core/types';
@@ -10,16 +12,23 @@ import { Category, ManifestService } from '../../../service/manifest.service';
     templateUrl: 'overview.component.html',
     styleUrls: ['overview.component.scss'],
 })
-export class NxvOverviewComponent {
+export class NxvOverviewComponent implements OnDestroy {
     components!: Category[];
     issueBoardLink: string;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(public manifestService: ManifestService, @Inject(NX_DOCS_GITHUB_LINK) private githubLinkConfig: GithubLinkConfig, private _router: Router) {
-        manifestService.manifest.subscribe(() => {
+        manifestService.manifest.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.components = this.manifestService.getGroupedComponents();
         });
 
         this.issueBoardLink = `${githubLinkConfig.repoLink}/issues`;
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     navigateToComponent(component: { component: { id: string | number } }) {

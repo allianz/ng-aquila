@@ -20,7 +20,8 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { take } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.
@@ -88,13 +89,15 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     /** Preserves the current value of the _cells ViewChildren in case _cells changes. */
     private _cellsPrevious!: QueryList<ElementRef<HTMLElement>>;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(private _elementRef: ElementRef, private _ngZone: NgZone, private _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit() {
         this._cells.forEach(cell => this._focusMonitor.monitor(cell));
         this._cellsPrevious = this._cells;
 
-        this._cells.changes.subscribe(changes => {
+        this._cells.changes.pipe(takeUntil(this._destroyed)).subscribe(changes => {
             this._cellsPrevious.forEach(cell => this._focusMonitor.stopMonitoring(cell));
             this._cellsPrevious = this._cells;
             this._cells.forEach(cell => this._focusMonitor.monitor(cell));
@@ -102,6 +105,8 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._cells.forEach(cell => this._focusMonitor.stopMonitoring(cell));
     }
 

@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxSortDirective } from './sort.directive';
 import { NxSortHeaderIntl } from './sort-header-intl';
@@ -18,8 +19,6 @@ import { NxSortHeaderIntl } from './sort-header-intl';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-    private _parentChangeSubscription!: Subscription;
-    private _intlSubscription: Subscription;
     private _key!: string;
 
     @ViewChild('focusContainer') _focusContainer!: ElementRef;
@@ -37,6 +36,8 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     readonly _sort: NxSortDirective;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         @Optional() _sort: NxSortDirective | null,
         public _intl: NxSortHeaderIntl,
@@ -48,11 +49,11 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         this._sort = _sort;
 
-        this._intlSubscription = this._intl.changes.subscribe(() => this._cdr.markForCheck());
+        this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
     ngOnInit() {
-        this._parentChangeSubscription = this._sort._stateChanges.subscribe(() => {
+        this._sort._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });
     }
@@ -62,10 +63,8 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (this._parentChangeSubscription) {
-            this._parentChangeSubscription.unsubscribe();
-        }
-        this._intlSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._focusContainer);
     }
 

@@ -14,7 +14,8 @@ import {
     Optional,
     Output,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { nxSidepanelAnimations } from './sidepanel-animations';
 import { NxSidepanelHeaderComponent } from './sidepanel-header';
@@ -184,18 +185,17 @@ export class NxSidepanelComponent {
 export class NxSidepanelOuterContainerComponent implements OnDestroy {
     @ContentChild(NxSidepanelComponent) _sidepanel!: NxSidepanelComponent;
 
-    private _dirChangeSubscription = Subscription.EMPTY;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(@Optional() private _dir: Directionality | null, private _cdr: ChangeDetectorRef) {
-        if (this._dir) {
-            this._dir.change.subscribe(() => {
-                this._cdr.markForCheck();
-            });
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this._cdr.markForCheck();
+        });
     }
 
     ngOnDestroy() {
-        this._dirChangeSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     _update() {

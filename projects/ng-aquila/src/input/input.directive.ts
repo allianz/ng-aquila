@@ -6,6 +6,7 @@ import { FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/for
 import { NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 export const NX_INPUT_VALUE_ACCESSOR = new InjectionToken<{ value: any }>('NX_INPUT_VALUE_ACCESSOR');
 
@@ -161,6 +162,8 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         this._placeholder = value;
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         protected _elementRef: ElementRef,
         protected _platform: Platform,
@@ -188,10 +191,13 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
 
     ngOnInit() {
         if (this._platform.isBrowser) {
-            this._autofillMonitor.monitor(this._elementRef.nativeElement).subscribe(event => {
-                this.autofilled = event.isAutofilled;
-                this.stateChanges.next();
-            });
+            this._autofillMonitor
+                .monitor(this._elementRef.nativeElement)
+                .pipe(takeUntil(this._destroyed))
+                .subscribe(event => {
+                    this.autofilled = event.isAutofilled;
+                    this.stateChanges.next();
+                });
         }
     }
 
@@ -216,6 +222,8 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this.stateChanges.complete();
 
         if (this._platform.isBrowser) {

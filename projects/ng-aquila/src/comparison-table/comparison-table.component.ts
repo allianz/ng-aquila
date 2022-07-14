@@ -119,10 +119,10 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     ngOnDestroy() {
-        window.removeEventListener('scroll', this._scrollHandler, true);
-        this.scrollDispatch.deregister(this._scrollableArea);
         this._destroyed.next();
         this._destroyed.complete();
+        window.removeEventListener('scroll', this._scrollHandler, true);
+        this.scrollDispatch.deregister(this._scrollableArea);
     }
 
     private _scrollHandler = (event: Event): void => {

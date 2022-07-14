@@ -12,7 +12,8 @@ import { AfterContentInit, Directive, ElementRef, EventEmitter, forwardRef, Inje
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NX_INPUT_VALUE_ACCESSOR } from '@aposin/ng-aquila/input';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NX_DATE_FORMATS, NxDateAdapter, NxDateFormats } from './adapter/index';
 import { NxDateValidators } from './date-validators';
@@ -228,12 +229,10 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     /** Emits when the readonly state has changed. */
     _readonlyChange = new EventEmitter<boolean>();
 
-    private _datepickerSubscription = Subscription.EMPTY;
-
-    private _localeSubscription = Subscription.EMPTY;
-
     readonly _dateAdapter: NxDateAdapter<D>;
     private readonly _dateFormats: NxDateFormats;
+
+    private readonly _destroyed = new Subject<void>();
 
     _dateFilter!: (date: D | null) => boolean;
 
@@ -260,28 +259,26 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         this._dateFormats = _dateFormats;
 
         // Update the displayed date when the locale changes.
-        this._localeSubscription = _dateAdapter.localeChanges.subscribe(() => {
+        _dateAdapter.localeChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
             const value = this.value;
             this.value = value; // invoke setter
         });
     }
 
     ngAfterContentInit() {
-        if (this._datepicker) {
-            this._datepickerSubscription = this._datepicker.selectedChanged.subscribe((selected: D) => {
-                this.value = selected;
-                this._cvaOnChange(selected);
-                this._onTouched();
-                this.dateInput.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
-                this.dateChange.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
-            });
-        }
+        this._datepicker?.selectedChanged.pipe(takeUntil(this._destroyed)).subscribe((selected: D) => {
+            this.value = selected;
+            this._cvaOnChange(selected);
+            this._onTouched();
+            this.dateInput.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
+            this.dateChange.emit(new NxDatepickerInputEvent(this, this._elementRef.nativeElement));
+        });
         this._isInitialized = true;
     }
 
     ngOnDestroy() {
-        this._datepickerSubscription.unsubscribe();
-        this._localeSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._valueChange.complete();
         this._disabledChange.complete();
         this._readonlyChange.complete();

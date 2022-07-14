@@ -3,6 +3,8 @@ import { Direction, Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Inject, Input, OnDestroy, Optional, Output, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { COMPARISON_TABLE_DEFAULT_OPTIONS, ComparisonTableDefaultOptions } from '../comparison-table.models';
 import { NxComparisonTableBase } from '../comparison-table-base';
@@ -55,6 +57,8 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
     @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         public _table: NxComparisonTableBase,
         private _focusMonitor: FocusMonitor,
@@ -64,13 +68,15 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
 
     ngAfterViewInit() {
         this._updateFocusMonitoring();
-        this.group?.rows.changes.subscribe(rows =>
+        this.group?.rows.changes.pipe(takeUntil(this._destroyed)).subscribe(rows =>
             // timeout is needed here so that the focus monitor is updated after the view was updated
             setTimeout(() => this._updateFocusMonitoring()),
         );
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._expansionCell);
     }
 
@@ -90,11 +96,14 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
             this._expansionCellPrevious = this._expansionCell;
         }
         if (!this._expansionCellPrevious && this._expansionCell) {
-            this._focusMonitor.monitor(this._expansionCell).subscribe(origin => {
-                if (origin === 'keyboard') {
-                    this._table._scrollElementIntoView(this._expansionCell, 8);
-                }
-            });
+            this._focusMonitor
+                .monitor(this._expansionCell)
+                .pipe(takeUntil(this._destroyed))
+                .subscribe(origin => {
+                    if (origin === 'keyboard') {
+                        this._table._scrollElementIntoView(this._expansionCell, 8);
+                    }
+                });
             this._expansionCellPrevious = this._expansionCell;
         }
     }

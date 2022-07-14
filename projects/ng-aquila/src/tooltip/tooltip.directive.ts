@@ -17,7 +17,7 @@ import { Platform } from '@angular/cdk/platform';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import { ComponentRef, Directive, ElementRef, Inject, InjectionToken, Input, NgZone, OnDestroy, OnInit, Optional, ViewContainerRef } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
 import { NxTooltipComponent } from './tooltip.component';
@@ -111,7 +111,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     private _selectable = false;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
     private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
-    private _dirChangeSubscription = Subscription.EMPTY;
 
     /** Allows the user to define the position of the tooltip relative to the parent element */
     @Input('nxTooltipPosition')
@@ -196,7 +195,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
     private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
 
-    /** Emits when the component is destroyed. */
     private readonly _destroyed = new Subject<void>();
 
     constructor(
@@ -212,9 +210,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         @Optional() @Inject(NX_TOOLTIP_DEFAULT_OPTIONS) private _defaultOptions: NxTooltipDefaultOptions | null,
         @Inject(NX_TOOLTIP_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
+
         const element: HTMLElement = _elementRef.nativeElement;
 
         // The mouse events shouldn't be bound on mobile devices, because they can prevent the
@@ -270,7 +267,6 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
 
         this._ariaDescriber.removeDescription(this._elementRef.nativeElement, this.message);
         this._focusMonitor.stopMonitoring(this._elementRef);
-        this._dirChangeSubscription?.unsubscribe();
     }
 
     /** Shows the tooltip after the delay in ms, defaults to tooltip-delay-show or 0ms if no input */

@@ -24,7 +24,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NG_VALUE_ACCESSOR, NgControl, NgForm } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /** The change event object emitted by the radio group and radio button. */
 export class NxRadioChange {
@@ -277,7 +278,6 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     /** @docs-private */
     @ViewChild('radioLabelWrapper', { static: true }) _radioLabelWrapper!: ElementRef;
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
-    private _parentChangeSubscription!: Subscription;
 
     private _id = `nx-radio-${nextId++}`;
     /** Sets the id of the radio component. */
@@ -363,13 +363,6 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         return !!this._radioLabelWrapper.nativeElement.innerHTML.trim();
     }
 
-    /** @docs-private
-     * Callback for when the content of the label has changed.
-     */
-    labelContentChanged() {
-        this._cdr.detectChanges();
-    }
-
     /** Sets the value of the form control element (Default: null). */
     @Input('nxValue')
     set value(value: any) {
@@ -423,6 +416,8 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         this._cdr.markForCheck();
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(@Optional() public radioGroup: NxRadioGroupComponent | null, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
     ngOnInit() {
@@ -430,7 +425,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
             this.name = this.radioGroup.name;
             // when relevant properties of the parent like name and disabled change
             // we need to let change detection know that the template needs an update
-            this._parentChangeSubscription = this.radioGroup._stateChanges.subscribe(() => {
+            this.radioGroup._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._cdr.markForCheck();
             });
 
@@ -445,10 +440,16 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
 
     ngOnDestroy() {
-        if (this._parentChangeSubscription) {
-            this._parentChangeSubscription.unsubscribe();
-        }
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);
+    }
+
+    /** @docs-private
+     * Callback for when the content of the label has changed.
+     */
+    labelContentChanged() {
+        this._cdr.detectChanges();
     }
 
     writeValue(value: any): void {

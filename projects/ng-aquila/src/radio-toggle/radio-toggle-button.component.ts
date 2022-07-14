@@ -45,7 +45,6 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     // emits when the button is checked to notify the group
     readonly onChecked = new Subject<NxRadioToggleButtonChange>();
 
-    private _destroyed: Subject<void> = new Subject();
     private _disabled = false;
     private _selected = false;
 
@@ -77,6 +76,8 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     get selected(): boolean {
         return this._selected;
     }
+
+    private readonly _destroyed = new Subject<void>();
 
     /** Unregister function for _expansionDispatcher. */
     private _removeUniqueSelectionListener: () => void = () => {};

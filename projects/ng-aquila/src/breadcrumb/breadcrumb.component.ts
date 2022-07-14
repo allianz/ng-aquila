@@ -21,8 +21,6 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
     },
 })
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
-    _destroyed: Subject<void> = new Subject();
-
     private _negative = false;
 
     private _appeareance: NxBreadcrumpAppearance = 'default';
@@ -54,6 +52,8 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
     /** @docs-private */
     @ContentChildren(NxBreadcrumbItemComponent, { descendants: true })
     breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private _cdr: ChangeDetectorRef) {}
 

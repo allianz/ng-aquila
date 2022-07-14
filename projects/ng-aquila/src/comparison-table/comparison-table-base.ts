@@ -15,11 +15,12 @@ export abstract class NxComparisonTableBase implements OnDestroy {
     _disabledIndexes: number[] = [];
     _hiddenIndexes: number[] = [];
     abstract selectedIndex: number;
-    _destroyed: Subject<void> = new Subject();
 
     readonly viewTypeChange: EventEmitter<NxComparisonTableViewType> = new EventEmitter<NxComparisonTableViewType>();
 
     private _viewType: NxComparisonTableViewType = 'desktop';
+
+    protected readonly _destroyed = new Subject<void>();
 
     /** Get all header cells of the table. */
     abstract _getHeaderCells(): NxComparisonTableCell[];

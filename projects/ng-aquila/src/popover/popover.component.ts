@@ -25,8 +25,6 @@ import { NxPopoverIntl } from './popover-intl';
     exportAs: 'nxPopover',
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {
-    private _destroyed = new Subject();
-
     /** @docs-private */
     @ViewChild(TemplateRef)
     templateRef!: TemplateRef<any>;
@@ -53,6 +51,8 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */
     arrowStyle = {};
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(public _intl: NxPopoverIntl, private _cdr: ChangeDetectorRef) {}
 
     ngOnInit() {
@@ -62,9 +62,9 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this.closed.complete();
         this._destroyed.next();
         this._destroyed.complete();
+        this.closed.complete();
     }
 
     /**

@@ -2,7 +2,7 @@ import { Overlay, OverlayConfig, OverlayContainer, OverlayRef, ScrollStrategy } 
 import { ComponentPortal, ComponentType, TemplatePortal } from '@angular/cdk/portal';
 import { Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, StaticProvider, TemplateRef } from '@angular/core';
 import { defer, Observable, Subject } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 import { NxModalConfig } from './modal-config';
 import { NxModalContainer } from './modal-container.component';
@@ -62,6 +62,8 @@ export class NxDialogService implements OnDestroy {
         this.openModals.length ? this._afterAllClosed : this._afterAllClosed.pipe(startWith(undefined)),
     ) as Observable<any>;
 
+    private readonly _destroyed = new Subject<void>();
+
     /** Strategy factory that will be used to handle scrolling while the modal panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
@@ -120,6 +122,9 @@ export class NxDialogService implements OnDestroy {
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
+
         // Only close the modals at this level on destroy
         // since the parent service may still be active.
         this._closeModals(this._openModalsAtThisLevel);
@@ -203,11 +208,14 @@ export class NxDialogService implements OnDestroy {
 
         // When the modal backdrop is clicked, we want to close it.
         if (config.hasBackdrop) {
-            overlayRef.backdropClick().subscribe(() => {
-                if (!modalRef.disableClose) {
-                    modalRef.close();
-                }
-            });
+            overlayRef
+                .backdropClick()
+                .pipe(takeUntil(this._destroyed))
+                .subscribe(() => {
+                    if (!modalRef.disableClose) {
+                        modalRef.close();
+                    }
+                });
         }
 
         if (componentOrTemplateRef instanceof TemplateRef) {

@@ -24,6 +24,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxErrorComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxSelectableCardChangeEvent } from './selectable-card-change-event';
 
@@ -214,6 +216,8 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         return this.appearance === 'expert';
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
@@ -235,7 +239,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     }
 
     ngAfterContentInit() {
-        this._errorList.changes.subscribe(() => {
+        this._errorList.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._errorListIds = this._getErrorListIds();
             this._cdr.markForCheck();
         });
@@ -244,6 +248,8 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);
     }
 

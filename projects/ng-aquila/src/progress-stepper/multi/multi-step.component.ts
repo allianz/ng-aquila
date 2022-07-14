@@ -8,10 +8,12 @@ import {
     ContentChildren,
     ElementRef,
     Input,
+    OnDestroy,
     Optional,
     QueryList,
     ViewChildren,
 } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxProgressStepperDirective, NxStepComponent } from '../progress-stepper.component';
 import { NxMultiStepperDirection } from '../progress-stepper.models';
@@ -28,7 +30,7 @@ import { NxMultiStepItemComponent } from './multi-step-item.component';
         '[class.nx-multi-stepper--vertical]': 'direction === "vertical"',
     },
 })
-export class NxMultiStepperComponent extends NxProgressStepperDirective implements AfterContentInit, AfterViewChecked {
+export class NxMultiStepperComponent extends NxProgressStepperDirective implements OnDestroy, AfterContentInit, AfterViewChecked {
     /**
      * We need to set the _stepHeader property as ViewChildren here
      * as it is a ContentChildren query in the CDK
@@ -70,10 +72,15 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
             this.steps.notifyOnChanges();
         }
 
-        this.groups.changes.subscribe(() => {
+        this.groups.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.steps.reset(this._stepsInGroups);
             this.steps.notifyOnChanges();
         });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     _stepDisabled(index: number): boolean {

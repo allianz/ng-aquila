@@ -26,7 +26,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 import { NxWordComponent } from '@aposin/ng-aquila/natural-language-form';
 import { defer, fromEvent, merge, Observable, of, Subject, Subscription } from 'rxjs';
-import { debounceTime, delay, filter, first, switchMap, take, tap } from 'rxjs/operators';
+import { debounceTime, delay, filter, first, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 
 import { NxAutocompleteComponent } from './autocomplete.component';
 import { NxAutocompleteOptionComponent, NxAutocompleteOptionSelected } from './autocomplete-option.component';
@@ -126,9 +126,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     /** Value changes */
     private readonly _valueChanges: Subject<any> = new Subject<any>();
 
-    /** Subscription to direction changes */
-    private _dirChangeSubscription = Subscription.EMPTY;
-
     /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
@@ -218,6 +215,8 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         );
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     /**
      * Event handler for when the window is blurred. Needs to be an
      * arrow function in order to preserve the context.
@@ -266,16 +265,22 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     ngOnInit() {
-        this._dirChangeSubscription = this._dir.change.subscribe(() => {
+        this._dir.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._flipDirection();
             this._cdr.markForCheck();
         });
-        this._autofillMonitor.monitor(this._element.nativeElement).subscribe(event => {
-            this._isAutofill = event.isAutofilled;
-        });
+        this._autofillMonitor
+            .monitor(this._element.nativeElement)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(event => {
+                this._isAutofill = event.isAutofilled;
+            });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
+
         if (typeof window !== 'undefined') {
             window.removeEventListener('blur', this._windowBlurHandler);
         }
@@ -285,7 +290,6 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         this._closeKeyEventStream.complete();
         this._controlValueChangesSubscription?.unsubscribe();
         this._itemsSubscription?.unsubscribe();
-        this._dirChangeSubscription?.unsubscribe();
         this._autofillMonitor.stopMonitoring(this._element.nativeElement);
     }
 

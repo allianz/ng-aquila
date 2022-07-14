@@ -1,4 +1,4 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { Component, Inject, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export interface DocItem {
     templateUrl: 'component-page.html',
     styleUrls: ['component-page.scss'],
 })
-export class NxvComponentPage {
+export class NxvComponentPage implements OnDestroy {
     componentDescriptor!: ComponentDescriptor;
 
     tabs = [
@@ -41,7 +41,7 @@ export class NxvComponentPage {
         },
     ];
 
-    private _destroyed = new Subject();
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         private _route: ActivatedRoute,
@@ -77,6 +77,11 @@ export class NxvComponentPage {
                     apiTab.show = !component.noApi;
                 }
             });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     get activeTabs() {

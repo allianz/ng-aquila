@@ -98,9 +98,6 @@ export class SchematicTestSetup {
     errorOutput!: string[];
     hostTree!: HostTree;
     appTree!: UnitTestTree;
-    // logger uses an internal rxjs version so if import Subscription
-    // from rxjs here TS reports an error
-    logSubscription: any;
 
     constructor(public schematicName: string, public collection = Collection.MIGRATIONS) {
         this.setup();
@@ -148,7 +145,6 @@ export class SchematicTestSetup {
         afterEach(async () => {
             shx.cd(this.previousWorkingDir);
             shx.rm('-r', this.tmpDirPath);
-            // this.logSubscription.unsubscribe();
         });
     }
 

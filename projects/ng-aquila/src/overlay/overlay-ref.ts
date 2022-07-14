@@ -81,7 +81,10 @@ export class NxOverlayRef<T, R = any> {
 
         _overlayRef
             .keydownEvents()
-            .pipe(filter(event => event.keyCode === ESCAPE && !hasModifierKey(event)))
+            .pipe(
+                filter(event => event.keyCode === ESCAPE && !hasModifierKey(event)),
+                takeUntil(this._afterClosed),
+            )
             .subscribe(event => {
                 event.preventDefault();
                 this.close();

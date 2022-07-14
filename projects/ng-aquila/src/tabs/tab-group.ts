@@ -22,6 +22,7 @@ import {
 import { NxAccordionDirective, NxExpansionPanelComponent } from '@aposin/ng-aquila/accordion';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { merge, Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxTabComponent } from './tab';
 import { NxTabBodyComponent } from './tab-body';
@@ -162,18 +163,14 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
      */
     @Output() readonly focusChange: EventEmitter<NxTabChangeEvent> = new EventEmitter<NxTabChangeEvent>();
 
-    /** Subscription to tabs being added/removed. */
-    private _tabsSubscription = Subscription.EMPTY;
-
     /** Subscription to changes in the tab labels. */
     private _tabLabelSubscription = Subscription.EMPTY;
-
-    /** Subscription to viewport changes. */
-    private _viewportSubscription = Subscription.EMPTY;
 
     private _disabledTabsCache: boolean[] = [];
 
     _appearanceChange = new Subject<void>();
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         public viewportService: NxViewportService,
@@ -183,8 +180,9 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     ) {
         this._groupId = nextId++;
 
-        this._viewportSubscription = this.viewportService
+        this.viewportService
             .max(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .pipe(takeUntil(this._destroyed))
             .subscribe(isSmallTablet => this._switchAppearance(isSmallTablet));
     }
 
@@ -193,7 +191,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
 
         // Subscribe to changes in the amount of tabs, in order to be
         // able to re-render the content as new tabs are added or removed.
-        this._tabsSubscription = this.tabs.changes.subscribe(() => {
+        this.tabs.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             const indexToSelect = this._clampTabIndex(this._indexToSelect);
             // Maintain the previously-selected tab if a new tab is added or removed and there is no
             // explicit change that selects a different tab.
@@ -283,9 +281,9 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     }
 
     ngOnDestroy() {
-        this._tabsSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._tabLabelSubscription.unsubscribe();
-        this._viewportSubscription.unsubscribe();
         this._tabButtons.forEach(button => {
             this._focusMonitor.stopMonitoring(button);
         });

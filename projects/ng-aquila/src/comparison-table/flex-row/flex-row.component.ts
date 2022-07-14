@@ -1,5 +1,7 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, ElementRef, Input, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxComparisonTableBase } from '../comparison-table-base';
 import { NxComparisonTableRowDirective } from '../comparison-table-row.directive';
@@ -25,15 +27,22 @@ import { NxComparisonTableRowDirective } from '../comparison-table-row.directive
 export class NxComparisonTableFlexRow implements OnDestroy {
     @Input() row!: NxComparisonTableRowDirective;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(public _table: NxComparisonTableBase, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
-        this._focusMonitor.monitor(this._elementRef, true).subscribe(origin => {
-            if (this.row.type !== 'header' && origin === 'keyboard') {
-                this._table._scrollElementIntoView(this._elementRef);
-            }
-        });
+        this._focusMonitor
+            .monitor(this._elementRef, true)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(origin => {
+                if (this.row.type !== 'header' && origin === 'keyboard') {
+                    this._table._scrollElementIntoView(this._elementRef);
+                }
+            });
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

@@ -40,9 +40,10 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     headerSelectors = '.docs-markdown--h2, .docs-api-h2, .docs-markdown--h3, .docs-markdown--h4, .docs-api-h3, .docs-api-h4';
 
     _rootUrl = this._router.url.split('#')[0];
-    private _destroyed = new Subject();
     private _urlFragment = '';
     scrollingSubscription: any;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         private _router: Router,
@@ -77,6 +78,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
 
     ngOnDestroy(): void {
         this._destroyed.next();
+        this._destroyed.complete();
     }
 
     refresh(): void {

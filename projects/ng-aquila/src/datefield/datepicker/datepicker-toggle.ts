@@ -46,7 +46,6 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
 
     private _disabled: boolean | undefined;
     private _tabindex: number | undefined;
-    private _destroyed = new Subject();
 
     /** Custom icon set by the consumer. */
     @ContentChild(NxDatepickerToggleIconComponent) _customIcon!: NxDatepickerToggleIconComponent;
@@ -62,13 +61,6 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         return this._datepicker;
     }
     _datepicker!: NxDatepickerComponent<D>;
-
-    private registerDatepicker(value: NxDatepickerComponent<D>) {
-        if (value) {
-            this._datepicker = value;
-            this._datepicker.registerToggle(this);
-        }
-    }
 
     /** Whether the toggle button is disabled. */
     @Input()
@@ -97,6 +89,8 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         return 0;
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         public _intl: NxDatepickerIntl,
         private _cdr: ChangeDetectorRef,
@@ -121,9 +115,9 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     }
 
     ngOnDestroy() {
-        this._stateChanges.unsubscribe();
         this._destroyed.next();
         this._destroyed.complete();
+        this._stateChanges.unsubscribe();
         this._focusMonitor.stopMonitoring(this._toggleButton);
     }
 
@@ -138,6 +132,13 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         }
     }
 
+    private registerDatepicker(value: NxDatepickerComponent<D>) {
+        if (value) {
+            this._datepicker = value;
+            this._datepicker.registerToggle(this);
+        }
+    }
+
     private _watchStateChanges() {
         const datepickerDisabled = this.datepicker ? this.datepicker._disabledChange : observableOf();
         const inputDisabled = this.datepicker?._datepickerInput ? this.datepicker._datepickerInput._disabledChange : observableOf();
@@ -145,8 +146,8 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         const datepickerToggled = this.datepicker ? merge(this.datepicker.openedStream, this.datepicker.closedStream) : observableOf();
 
         this._stateChanges.unsubscribe();
-        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled).subscribe(() =>
-            this._cdr.markForCheck(),
-        );
+        this._stateChanges = merge(this._intl.changes, datepickerDisabled, inputDisabled, inputReadonly, datepickerToggled)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(() => this._cdr.markForCheck());
     }
 }

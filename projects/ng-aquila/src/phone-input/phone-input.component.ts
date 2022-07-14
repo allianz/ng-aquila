@@ -19,7 +19,8 @@ import { NxDropdownComponent, NxDropdownOption } from '@aposin/ng-aquila/dropdow
 import { NxFormfieldComponent, NxFormfieldControl } from '@aposin/ng-aquila/formfield';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
 import { LocalizedCountryNames } from 'i18n-iso-countries';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { getCountryCallingCodeFromNumber, getCountryCodeforCallingCode, getDialCodeByCountryCode, getSortedCountryCodes } from './country-data';
 import { NxPhoneInputIntl } from './phone-input-intl';
@@ -184,7 +185,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     _sortedCountries!: NxDropdownOption[];
     _countryCallingCode = getDialCodeByCountryCode(this.countryCode);
 
-    private _subscriptions = new Subscription();
+    private readonly _destroyed = new Subject<void>();
 
     private _inputFormatter = (inputValue: string, countryCode: string) => this._removeLeadingZero(inputValue);
 
@@ -211,12 +212,10 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
             this.ngControl.valueAccessor = this;
         }
 
-        const intlSubscription = _intl.changes.subscribe(_ => {
+        _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(_ => {
             this._sortCountries();
             this._cdr.detectChanges();
         });
-
-        this._subscriptions.add(intlSubscription);
     }
 
     ngDoCheck() {
@@ -237,7 +236,8 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
 
     ngOnDestroy() {
-        this._subscriptions.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     setDescribedByIds(ids: string[]): void {

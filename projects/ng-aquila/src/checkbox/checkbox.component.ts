@@ -24,7 +24,8 @@ import {
 import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { NxLabelComponent } from '@aposin/ng-aquila/base';
 import { ErrorStateMatcher } from '@aposin/ng-aquila/utils';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 let nextId = 0;
 
@@ -157,6 +158,8 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
     private _value: any[] | undefined;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private _cdr: ChangeDetectorRef,
         private _errorStateMatcher: ErrorStateMatcher,
@@ -176,7 +179,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
             this._updateSelectedCheckboxFromValue(true);
         });
 
-        this._checkboxes.changes.subscribe(() => {
+        this._checkboxes.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._value = this._checkboxes.filter(checkbox => checkbox.checked).map(cb => cb.value);
 
             if (this.ngControl) {
@@ -196,6 +199,8 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._stateChanges.complete();
     }
 
@@ -280,7 +285,6 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     },
 })
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
-    private _parentChangeSubscription!: Subscription;
     private _id: string = (nextId++).toString();
     private _disabled = false;
     private _negative = false;
@@ -446,6 +450,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         return !!this._checkboxLabelWrapper.nativeElement.innerHTML.trim();
     }
 
+    private readonly _destroyed = new Subject<void>();
+
     /** @docs-private
      * Callback for when the content of the label has changed.
      */
@@ -488,7 +494,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
             this.name = this.checkboxGroup.name;
             // when relevant properties of the parent like name and disabled change
             // we need to let change detection know that the template needs an update
-            this._parentChangeSubscription = this.checkboxGroup._stateChanges.subscribe(() => {
+            this.checkboxGroup._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._cdr.markForCheck();
             });
         }
@@ -499,9 +505,8 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     ngOnDestroy() {
-        if (this._parentChangeSubscription) {
-            this._parentChangeSubscription.unsubscribe();
-        }
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);
     }
 

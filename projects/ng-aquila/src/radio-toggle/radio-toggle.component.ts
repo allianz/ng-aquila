@@ -40,8 +40,6 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
 
     private _selection: any;
 
-    private _destroyed: Subject<void> = new Subject();
-
     private _disabled = false;
     /** @docs-private */
     errorState = false;
@@ -82,6 +80,8 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     /** @docs-private */
     @ContentChildren(NxRadioToggleButtonBaseComponent)
     toggleButtons: QueryList<NxRadioToggleButtonBaseComponent> = new QueryList();
+
+    private readonly _destroyed = new Subject<void>();
 
     private onTouchedCallback = () => {};
 

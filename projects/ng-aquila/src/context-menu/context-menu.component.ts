@@ -17,8 +17,8 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import { merge, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
-import { startWith, switchMap, take } from 'rxjs/operators';
+import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
+import { startWith, switchMap, take, takeUntil } from 'rxjs/operators';
 
 import { nxContextMenuAnimations } from './context-menu-animations';
 import { NxContextMenuContentDirective } from './context-menu-content.directive';
@@ -40,9 +40,6 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     @ContentChild(NxContextMenuItemWrapComponent)
     private _wrap!: NxContextMenuItemWrapComponent;
-
-    /** Subscription to tab events on the menu panel */
-    private _tabSubscription = Subscription.EMPTY;
 
     private _init: ReplaySubject<void> = new ReplaySubject(1);
 
@@ -81,6 +78,8 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     /** Event emitted when the menu is closed. */
     @Output() readonly closed: EventEmitter<void | 'click' | 'keydown' | 'tab'> = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
 
+    private readonly _destroyed = new Subject<void>();
+
     @HostListener('click')
     private _onClick(event: Event) {
         event.preventDefault();
@@ -91,12 +90,12 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     ngAfterContentInit() {
         this._items = this._wrap ? this._wrap?._items : this._items;
         this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items).withWrap().withTypeAhead().setFocusOrigin('keyboard');
-        this._tabSubscription = this._keyManager.tabOut.subscribe(() => this.closed.emit('tab'));
+        this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this.closed.emit('tab'));
         this._init.next();
     }
-
     ngOnDestroy() {
-        this._tabSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this.closed.complete();
         this._init.complete();
     }

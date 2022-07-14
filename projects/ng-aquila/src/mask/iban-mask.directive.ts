@@ -1,6 +1,8 @@
-import { Directive, ElementRef, forwardRef, Inject, OnInit } from '@angular/core';
+import { Directive, ElementRef, forwardRef, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NG_VALIDATORS, Validator } from '@angular/forms';
 import * as IBAN from 'iban';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxMaskDirective } from './mask.directive';
 
@@ -21,14 +23,16 @@ export const NX_IBAN_MASK_VALIDATORS: any = {
         '(input)': '_countryCodeValid() && _touch()',
     },
 })
-export class NxIbanMaskDirective implements OnInit, Validator {
+export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
     private _countryCode!: string | null;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private _elementRef: ElementRef, @Inject(forwardRef(() => NxMaskDirective)) private maskDirective: NxMaskDirective) {
         this.maskDirective.registerAfterInputHook(this._afterInputHook);
         this.maskDirective.registerBeforePasteHook(this._beforePasteHook);
 
-        this.maskDirective.cvaModelChange.subscribe((value: string) => {
+        this.maskDirective.cvaModelChange.pipe(takeUntil(this._destroyed)).subscribe((value: string) => {
             const enteredCountryCode = this.maskDirective.getMaskedString(value).substr(0, 2);
             this._setCountryCode(enteredCountryCode);
         });
@@ -69,6 +73,11 @@ export class NxIbanMaskDirective implements OnInit, Validator {
         // set only first two letters as I don't know a country yet
         this.maskDirective.mask = 'SS';
         this.maskDirective.convertTo = 'upper';
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     private _getMask(countryCode: string) {

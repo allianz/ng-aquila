@@ -362,8 +362,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
     private _closedDropdownLabel!: TemplateRef<any>;
 
-    /** Emits whenever the component is destroyed. */
-    private readonly _destroy = new Subject<void>();
+    private readonly _destroyed = new Subject<void>();
 
     private _keyManager!: ActiveDescendantKeyManager<NxDropdownItemComponent>;
 
@@ -503,7 +502,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     ngAfterContentInit() {
         this._closedDropdownLabel = this._customClosedDropdownLabel?.templateRef || this._defaultClosedDropdownLabel;
 
-        this._selectionModel.changed.pipe(takeUntil(this._destroy)).subscribe(event => {
+        this._selectionModel.changed.pipe(takeUntil(this._destroyed)).subscribe(event => {
             event.added.forEach(({ value }) => {
                 this.dropdownItems.filter(option => option.value === value).forEach(option => option.select());
             });
@@ -514,11 +513,11 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         });
 
         if (this._isLazy) {
-            this._options.pipe(takeUntil(this._destroy)).subscribe(() => {
+            this._options.pipe(takeUntil(this._destroyed)).subscribe(() => {
                 this._initializeSelection();
             });
         } else {
-            this.dropdownItems.changes.pipe(startWith<any, any>(null), takeUntil(this._destroy)).subscribe(() => {
+            this.dropdownItems.changes.pipe(startWith<any, any>(null), takeUntil(this._destroyed)).subscribe(() => {
                 this._subscribeToOptionChanges();
                 this._initializeSelection();
             });
@@ -526,8 +525,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     ngOnDestroy() {
-        this._destroy.next();
-        this._destroy.complete();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     /** @docs-private */
@@ -552,13 +551,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             .withHorizontalOrientation('ltr')
             .skipPredicate(item => item._hidden || item.disabled);
 
-        this._keyManager.tabOut.pipe(takeUntil(merge(this._destroy, this._closedStream))).subscribe(() => {
+        this._keyManager.tabOut.pipe(takeUntil(this._closedStream), takeUntil(this._destroyed)).subscribe(() => {
             // Restore focus to the trigger before closing. Ensures that the focus
             // position won't be lost if the user got focus into the overlay.
             this.closePanel();
         });
 
-        this._keyManager.change.pipe(takeUntil(this._destroy)).subscribe(() => {
+        this._keyManager.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             if (this._panelOpen && this.panel) {
                 this._scrollActiveOptionIntoView();
             } else if (!this._panelOpen && !this.isMultiSelect && this._keyManager.activeItem) {
@@ -581,10 +580,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     private _subscribeToOptionChanges(): void {
-        const changedOrDestroyed = merge(this.dropdownItems.changes, this._destroy);
-
         merge(...this.dropdownItems.map(option => option.onSelectionChange))
-            .pipe(takeUntil(changedOrDestroyed))
+            .pipe(takeUntil(this.dropdownItems.changes), takeUntil(this._destroyed))
             .subscribe(event => {
                 this._onSelect(event.item, event.isUserInput);
             });
@@ -592,7 +589,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         // Listen to changes in the internal state of the options and react accordingly.
         // Handles cases like the labels of the selected options changing.
         merge(...this.dropdownItems.map(option => option._stateChanges))
-            .pipe(takeUntil(changedOrDestroyed))
+            .pipe(takeUntil(this.dropdownItems.changes), takeUntil(this._destroyed))
             .subscribe(() => {
                 // defer it for the next cycle to not run in changed after checked errors
                 // the combination of dropdown-item notifying parent and when the parent

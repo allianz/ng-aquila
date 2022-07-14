@@ -41,7 +41,6 @@ export class NxErrorComponent implements OnDestroy {
     private _showIcon = true;
     private _appearance!: ErrorStyleType;
     private _id = `nx-error-${nextId++}`;
-    private _destroyed = new Subject();
 
     /** Whether an icon should be displayed. Only has an effect for type 'text' */
     @Input()
@@ -85,6 +84,8 @@ export class NxErrorComponent implements OnDestroy {
     get appearance(): ErrorStyleType {
         return this._appearance || this._defaultOptions?.appearance || 'message';
     }
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions | null) {
         this._defaultOptions?.changes?.pipe(takeUntil(this._destroyed)).subscribe(() => {

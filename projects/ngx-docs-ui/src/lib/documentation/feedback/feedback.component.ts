@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { Component, ElementRef, Inject, Input, OnDestroy, OnInit, Optional, ViewChild } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NXV_FEEDBACK_LINKS } from './../../core/tokens';
 
@@ -19,27 +20,30 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
 
     @Input() page!: string;
 
-    viewportServiceSubscription: Subscription;
-
     showMobileView = false;
 
     feedbackLinkPositive!: string;
     feedbackLinkNegative!: string;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any | null,
         private viewportService: NxViewportService,
         private focusMonitor: FocusMonitor,
     ) {
-        this.viewportServiceSubscription = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE).subscribe(isGreaterThanMedium => {
-            if (isGreaterThanMedium && this.showMobileView) {
-                this.showMobileView = false;
-                this.focusMonitor.stopMonitoring(this.mobileButton);
-            } else if (!isGreaterThanMedium && !this.showMobileView) {
-                this.showMobileView = true;
-                setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
-            }
-        });
+        this.viewportService
+            .min(NxBreakpoints.BREAKPOINT_LARGE)
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(isGreaterThanMedium => {
+                if (isGreaterThanMedium && this.showMobileView) {
+                    this.showMobileView = false;
+                    this.focusMonitor.stopMonitoring(this.mobileButton);
+                } else if (!isGreaterThanMedium && !this.showMobileView) {
+                    this.showMobileView = true;
+                    setTimeout(() => this.focusMonitor.monitor(this.mobileButton));
+                }
+            });
     }
 
     ngOnInit() {
@@ -48,6 +52,7 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.viewportServiceSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

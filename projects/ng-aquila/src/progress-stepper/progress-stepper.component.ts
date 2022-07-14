@@ -34,8 +34,6 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
-    _destroyed: Subject<boolean> = new Subject();
-
     constructor(
         @Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective,
         @SkipSelf() private _errorStateMatcher: ErrorStateMatcher,
@@ -51,6 +49,8 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     stepControl: any;
 
     private _interacted!: boolean;
+
+    readonly _destroyed = new Subject<void>();
 
     /** Custom error state matcher that checks for validity of the step form. */
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -74,8 +74,8 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
             if (this._stepControl) {
                 this._stepControl.statusChanges
                     .pipe(
-                        takeUntil(this._destroyed),
                         takeWhile(() => this._stepControl === this.stepControl),
+                        takeUntil(this._destroyed),
                     )
                     .subscribe(() => {
                         this.stepper._stateChanged();
@@ -92,7 +92,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     }
 
     ngOnDestroy() {
-        this._destroyed.next(true);
+        this._destroyed.next();
         this._destroyed.complete();
     }
 }

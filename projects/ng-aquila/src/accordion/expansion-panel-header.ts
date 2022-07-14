@@ -1,8 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Directive, ElementRef, Host, OnDestroy } from '@angular/core';
-import { merge, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { merge, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { nxAccordionAnimations } from './accordion-animations';
 import { NxExpansionPanelComponent } from './expansion-panel';
@@ -28,7 +28,7 @@ import { NxExpansionPanelComponent } from './expansion-panel';
     },
 })
 export class NxExpansionPanelHeaderComponent implements OnDestroy {
-    private _parentChangeSubscription = Subscription.EMPTY;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         /** @docs-private */ @Host() public panel: NxExpansionPanelComponent,
@@ -36,17 +36,16 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
         private _elementRef: ElementRef,
         private _focusMonitor: FocusMonitor,
     ) {
-        this._parentChangeSubscription = merge(
-            panel.opened,
-            panel.closed,
-            panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))),
-        ).subscribe(() => this._cdr.markForCheck());
+        merge(panel.opened, panel.closed, panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))))
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(() => this._cdr.markForCheck());
 
         this._focusMonitor.monitor(this._elementRef);
     }
 
-    ngOnDestroy() {
-        this._parentChangeSubscription.unsubscribe();
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

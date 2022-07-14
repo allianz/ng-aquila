@@ -18,8 +18,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { getClassNameList } from '@aposin/ng-aquila/utils';
-import { merge, Subscription } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { merge, Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 import { NxFormfieldAppendixDirective } from './appendix.directive';
 import { NxFormfieldErrorDirective } from './error.directive';
@@ -76,7 +76,6 @@ export type AppearanceType = 'outline' | 'auto';
 })
 export class NxFormfieldComponent implements AfterContentInit, AfterContentChecked, OnDestroy {
     private _styles = '';
-    private _subscriptions: Subscription = new Subscription();
 
     /** Html id of the formfield label */
     readonly labelId: string = `nx-formfield-label-${nextUniqueId++}`;
@@ -161,17 +160,19 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         return this._control.shouldLabelFloat || this._shouldAlwaysFloat;
     }
 
+    /** @docs-private */
+    get control() {
+        return this._control;
+    }
+
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         /** @docs-private */ public elementRef: ElementRef,
         private renderer: Renderer2,
         private _cdr: ChangeDetectorRef,
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions | null,
     ) {}
-
-    /** @docs-private */
-    get control() {
-        return this._control;
-    }
 
     ngAfterContentInit() {
         let subscription;
@@ -183,37 +184,32 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         }
 
         // Subscribe to changes in the child control state in order to update the form field UI.
-        subscription = this._control.stateChanges.pipe(startWith(null)).subscribe(() => {
+        this._control.stateChanges.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
             Promise.resolve().then(() => {
                 this._syncDescribedByIds();
                 this._cdr.markForCheck();
             });
         });
 
-        this._subscriptions.add(subscription);
-
-        subscription = merge(
+        merge(
             this._hintChildren.changes,
             this._appendixChildren.changes,
             this._prefixChildren.changes,
             this._suffixChildren.changes,
             this._noteChildren.changes,
         )
-            .pipe(startWith(null))
+            .pipe(startWith(null), takeUntil(this._destroyed))
             .subscribe(() => {
                 this._cdr.markForCheck();
             });
 
-        this._subscriptions.add(subscription);
-
         // Update the aria-described by when the number of errors changes.
-        subscription = this._errorChildren.changes.pipe(startWith(null)).subscribe(() => {
+        this._errorChildren.changes.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
             Promise.resolve().then(() => {
                 this._syncDescribedByIds();
                 this._cdr.markForCheck();
             });
         });
-        this._subscriptions.add(subscription);
     }
 
     ngAfterContentChecked() {
@@ -221,7 +217,8 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     }
 
     ngOnDestroy() {
-        this._subscriptions.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     /** @docs-private */

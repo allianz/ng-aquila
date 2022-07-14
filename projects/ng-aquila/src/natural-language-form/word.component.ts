@@ -22,8 +22,8 @@ import { NxDropdownComponent } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldControl, NxFormfieldErrorDirective } from '@aposin/ng-aquila/formfield';
 import { NxPopoverComponent } from '@aposin/ng-aquila/popover';
 import { getFontShorthand } from '@aposin/ng-aquila/utils';
-import { Subject, Subscription } from 'rxjs';
-import { startWith } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { startWith, takeUntil } from 'rxjs/operators';
 
 /** Type to determine the minimal width of a word. */
 export type SIZES = 'regular' | 'short' | 'long';
@@ -44,8 +44,6 @@ export type SIZES = 'regular' | 'short' | 'long';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
-    private subscription: Subscription = Subscription.EMPTY;
-    private subscriptionValues: Subscription = Subscription.EMPTY;
     private measureCanvas!: HTMLCanvasElement;
 
     /** @docs-private */
@@ -76,6 +74,8 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
      */
     @Input('nxLabel') label = '';
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         /** @docs-private */ public elementRef: ElementRef,
         private _cdr: ChangeDetectorRef,
@@ -91,7 +91,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
     ngAfterContentInit() {
         this._validateControlChild();
-        this.subscription = this._control.stateChanges.pipe(startWith(null)).subscribe(() => {
+        this._control.stateChanges.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
             this._hasErrors = this._control.errorState;
             this.updateErrorPopoverState();
             this._cdr.markForCheck();
@@ -99,13 +99,13 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
 
         // if we have a ngcontrol available stick to its valueChanges subject
         if (this._control.ngControl) {
-            this.subscriptionValues = this._control.ngControl.valueChanges!.subscribe(value => {
+            this._control.ngControl.valueChanges!.pipe(takeUntil(this._destroyed)).subscribe(value => {
                 this.updateCurrentTextWidth();
                 this.inputChanges.next();
             });
             // in any other case it is a bre input and input changes are signaled through simple state changes
         } else {
-            this.subscriptionValues = this._control.stateChanges.subscribe(value => {
+            this._control.stateChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
                 this.updateCurrentTextWidth();
                 this.inputChanges.next();
             });
@@ -115,10 +115,12 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
+
         if (this._overlayRef) {
             this._overlayRef.dispose();
         }
-        this.subscription.unsubscribe();
     }
 
     /**
@@ -229,7 +231,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         this._overlayState.scrollStrategy = this._overlay.scrollStrategies.reposition();
         this._overlayRef = this._overlay.create(this._overlayState);
 
-        (this._overlayState.positionStrategy as FlexibleConnectedPositionStrategy).positionChanges.subscribe(change => {
+        (this._overlayState.positionStrategy as FlexibleConnectedPositionStrategy).positionChanges.pipe(takeUntil(this._destroyed)).subscribe(change => {
             const pair = change.connectionPair;
             this.positionArrow(pair);
 

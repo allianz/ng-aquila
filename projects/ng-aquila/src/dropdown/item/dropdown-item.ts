@@ -111,8 +111,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         return this._dropdown?.isMultiSelect;
     }
 
-    /** Emits whenever the component is destroyed. */
-    private readonly _destroy = new Subject<void>();
+    private readonly _destroyed = new Subject<void>();
 
     /** Event emitted when the option is selected or deselected. */
     @Output() readonly onSelectionChange = new EventEmitter<NxDropdownItemChange>();
@@ -132,11 +131,11 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         private _cdr: ChangeDetectorRef,
         private _elementRef: ElementRef,
     ) {
-        this._dropdown.filterChanges.pipe(takeUntil(this._destroy)).subscribe(value => {
+        this._dropdown.filterChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
             this._showOrHideByFilter(value);
         });
         // reset the hidden state when dropdown closes that on next open the user is seeing the full list again
-        this._dropdown._closedStream.pipe(takeUntil(this._destroy)).subscribe(() => {
+        this._dropdown._closedStream.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._hidden = false;
         });
     }
@@ -162,9 +161,9 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this._stateChanges.complete();
-        this._destroy.next();
-        this._destroy.complete();
     }
 
     _onClick(event: Event) {

@@ -16,7 +16,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { fadeIn, fadeOut, scaleDown, scaleUp } from './animations';
 import { NxModalService } from './modal.service';
@@ -113,7 +114,8 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
      */
     @Output('nxClose') closeEvent = new EventEmitter<void>();
 
-    private closeSubscription: Subscription = Subscription.EMPTY;
+    private readonly _destroyed = new Subject<void>();
+
     private removeEventListener!: () => void;
 
     constructor(
@@ -124,7 +126,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     ) {}
 
     ngOnInit() {
-        this.closeSubscription = this.modalService.close$.subscribe(() => this.closeEvent.emit());
+        this.modalService.close$.pipe(takeUntil(this._destroyed)).subscribe(() => this.closeEvent.emit());
 
         this.removeEventListener = this.eventManager.addGlobalEventListener('window', 'keyup.esc', () => {
             if (this.hideOnEsc) {
@@ -140,8 +142,9 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
         this.removeEventListener();
-        this.closeSubscription.unsubscribe();
         this._focusMonitor.stopMonitoring(this._closeButton);
     }
 

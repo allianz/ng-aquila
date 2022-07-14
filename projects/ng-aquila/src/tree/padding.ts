@@ -22,9 +22,6 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     /** Current padding value applied to the element. Used to avoid unnecessarily hitting the DOM. */
     private _currentPadding!: string | null;
 
-    /** Subject that emits when the component has been destroyed. */
-    private _destroyed = new Subject<void>();
-
     /** CSS units used for the indentation value. */
     indentUnits = 'px';
 
@@ -74,6 +71,8 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     }
     _indent = 24;
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
         private _treeNode: CdkTreeNode<T>,
         private _tree: CdkTree<T>,
@@ -89,7 +88,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         // In Ivy the indentation binding might be set before the tree node's data has been added,
         // which means that we'll miss the first render. We have to subscribe to changes in the
         // data to ensure that everything is up to date.
-        _treeNode._dataChanges.subscribe(() => this._setPadding());
+        _treeNode._dataChanges.pipe(takeUntil(this._destroyed)).subscribe(() => this._setPadding());
     }
 
     ngOnDestroy() {

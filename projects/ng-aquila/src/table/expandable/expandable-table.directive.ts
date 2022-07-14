@@ -1,6 +1,6 @@
-import { AfterViewInit, ContentChildren, Directive, QueryList } from '@angular/core';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { distinctUntilChanged, flatMap, map, startWith } from 'rxjs/operators';
+import { AfterViewInit, ContentChildren, Directive, OnDestroy, QueryList } from '@angular/core';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { distinctUntilChanged, flatMap, map, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
 import { NxExpandable } from './toggle-button.component';
@@ -13,10 +13,12 @@ import { NxExpandable } from './toggle-button.component';
     selector: 'table[nxExpandableTable]',
     exportAs: 'nxExpandableTable',
 })
-export class NxExpandableTableDirective implements AfterViewInit, NxExpandable {
+export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxExpandable {
     @ContentChildren(NxExpandableTableRowComponent, { descendants: true }) rows!: QueryList<NxExpandableTableRowComponent>;
 
     expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+    private readonly _destroyed = new Subject<void>();
 
     ngAfterViewInit() {
         this.rows.changes
@@ -25,10 +27,16 @@ export class NxExpandableTableDirective implements AfterViewInit, NxExpandable {
                 flatMap((rows: NxExpandableTableRowComponent[]) => combineLatest(rows.map(row => row.expanded))),
                 map((values: boolean[]) => values.reduce((a, x) => a && x, true)),
                 distinctUntilChanged(),
+                takeUntil(this._destroyed),
             )
             .subscribe(rowsOpen => {
                 this.expanded.next(rowsOpen);
             });
+    }
+
+    ngOnDestroy() {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     /**

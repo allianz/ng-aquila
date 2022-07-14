@@ -1,7 +1,8 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { NxTabComponent } from './tab';
 import { NxTabGroupBase } from './tab-group-base';
@@ -14,13 +15,31 @@ import { NxTabGroupBase } from './tab-group-base';
     styleUrls: ['./tab-body.scss'],
 })
 export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
-    private _appearanceSubscription!: Subscription;
-
     @ViewChild('outlet', { static: true, read: ViewContainerRef }) _outlet!: ViewContainerRef;
 
     @Input() tab!: NxTabComponent;
 
     private _active = false;
+
+    @Input()
+    set active(value: BooleanInput) {
+        this._active = coerceBooleanProperty(value);
+    }
+    get active(): boolean {
+        return this._active;
+    }
+
+    private readonly _destroyed = new Subject<void>();
+
+    constructor(private _tabGroup: NxTabGroupBase, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
+        this._focusMonitor.monitor(this._elementRef);
+    }
+
+    ngOnInit() {
+        this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
+            this.detach();
+        });
+    }
 
     ngOnChanges(changes: SimpleChanges) {
         if ('active' in changes) {
@@ -33,26 +52,9 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
         }
     }
 
-    @Input()
-    set active(value: BooleanInput) {
-        this._active = coerceBooleanProperty(value);
-    }
-    get active(): boolean {
-        return this._active;
-    }
-
-    constructor(private _tabGroup: NxTabGroupBase, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
-        this._focusMonitor.monitor(this._elementRef);
-    }
-
-    ngOnInit() {
-        this._appearanceSubscription = this._tabGroup._appearanceChange.subscribe(() => {
-            this.detach();
-        });
-    }
-
     ngOnDestroy() {
-        this._appearanceSubscription.unsubscribe();
+        this._destroyed.next();
+        this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

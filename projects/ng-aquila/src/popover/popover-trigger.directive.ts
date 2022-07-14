@@ -35,7 +35,7 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import { EventManager } from '@angular/platform-browser';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
 import { NxPopoverComponent } from './popover.component';
@@ -85,7 +85,6 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnInit {
     private overlayRef!: OverlayRef | null;
     private portal!: TemplatePortal<any>;
-    private _destroyed = new Subject<void>();
     private _overlayDestroyed = new Subject<void>();
     private _show = false;
     private _closeable: boolean | null = null;
@@ -98,7 +97,6 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
     private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
     private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
-    private _dirChangeSubscription = Subscription.EMPTY;
     private _removeEventListener!: () => void;
     /** @docs-private */
     id = 'nx-popover-' + nextId++;
@@ -195,6 +193,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }
     #scrollStrategy?: PopoverTriggerScrollStrategy | null;
 
+    private readonly _destroyed = new Subject<void>();
+
     /** Strategy factory that will be used to handle scrolling while the popover panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
@@ -252,9 +252,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
                 }
             });
 
-        if (this._dir) {
-            this._dirChangeSubscription = this._dir.change.subscribe(this._dirChangeHandler.bind(this));
-        }
+        this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
     }
 
     ngOnInit() {
@@ -280,6 +278,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     }
 
     ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
         this.show = false;
         this._removeEventListener();
         this._focusMonitor.stopMonitoring(this.elementRef.nativeElement);
@@ -291,11 +291,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             this.overlayRef.dispose();
         }
         this._manualListeners.clear();
-        this._dirChangeSubscription.unsubscribe();
         this._overlayDestroyed.next();
-        this._destroyed.next();
         this._overlayDestroyed.complete();
-        this._destroyed.complete();
     }
 
     /** @docs-private */

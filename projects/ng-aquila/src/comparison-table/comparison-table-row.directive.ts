@@ -37,8 +37,6 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     private _mayStick = true;
     _requestCellClippingUpdate$ = new Subject<void>();
 
-    private _destroyed = new Subject();
-
     /** Sets the type of the row. Default: 'content'. */
     @Input()
     set type(newValue: NxComparisonTableRowType) {
@@ -60,6 +58,8 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     get mayStick(): boolean {
         return this._type === 'header' && this._mayStick;
     }
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(@Optional() private _toggleSection: NxToggleSectionBase | null, @Optional() private _rowGroup: NxComparisonTableRowGroupBase | null) {
         super();
