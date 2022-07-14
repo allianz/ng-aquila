@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 
-import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayOrientation, NxDataDisplaySize } from './data-display.models';
+import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayOrientation, NxDataDisplaySize } from '../data-display.models';
 
 /**
  * Data display component.
@@ -31,22 +31,11 @@ export class NxDataDisplayComponent {
 
     /**
      * Layout orientation of the label and value.
-     * 'vertical': label and value are vertically stacked.
-     * 'horizontal': label and value are on the same line.
+     * - 'vertical': label and value are vertically stacked.
+     * - 'horizontal': label and value are on the same line.
      */
     @Input()
     orientation: NxDataDisplayOrientation = 'vertical';
 
     constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) private _defaultOptions: DataDisplayDefaultOptions | null) {}
 }
-
-/**
- * Label within a `<nx-data-display>`.
- */
-@Component({
-    selector: 'nx-data-display-label',
-    template: '<ng-content></ng-content>',
-    styleUrls: ['./data-display-label.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-})
-export class NxDataDisplayLabelComponent {}

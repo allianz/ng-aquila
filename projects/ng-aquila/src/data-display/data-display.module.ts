@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { NxDataDisplayComponent, NxDataDisplayLabelComponent } from './data-display.component';
+import { NxDataDisplayComponent } from './data-display/data-display.component';
+import { NxDataDisplayLabelComponent } from './data-display-label/data-display-label.component';
 
 @NgModule({
     imports: [CommonModule],
