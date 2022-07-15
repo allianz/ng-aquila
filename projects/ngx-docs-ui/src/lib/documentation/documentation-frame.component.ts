@@ -80,6 +80,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
             if (!this._featureFlags?.themeSwitcher) {
                 this.showThemingSwitcher = showTheming;
             }
+            this.showThemingSidebar = showTheming;
         });
 
         this.hideNavigation = !!this._route.snapshot.queryParamMap.get('hideNav');
