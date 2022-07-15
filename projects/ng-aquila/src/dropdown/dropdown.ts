@@ -147,6 +147,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     errorState = false;
 
     /**
+     * Disable truncation of long item texts.
+     * We recommend following UX guidelines and always truncating long items.
+     * Please only disable truncation if it's impossible to use short descriptions.
+     */
+    private _ignoreItemTrunctation = false;
+
+    /**
      * Name of this control that is used inside the formfield component
      * @docs-private
      */
@@ -277,6 +284,19 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
+    }
+
+    /**
+     * Disable truncation of long item texts.
+     * We recommend following UX guidelines and always truncating long items.
+     * Please only disable truncation if it's impossible to use short descriptions.
+     */
+    @Input('nxIgnoreItemTrunctation')
+    get ignoreItemTrunctation(): boolean {
+        return this._ignoreItemTrunctation;
+    }
+    set ignoreItemTrunctation(value: BooleanInput) {
+        this._ignoreItemTrunctation = coerceBooleanProperty(value);
     }
 
     /** Whether the dropdown should be shown with an additional filter input. */

@@ -8,6 +8,8 @@ export abstract class NxDropdownControl extends NxFormfieldControl<any> {
      * Note: Please make sure the value you bind is an array. If not an error is thrown! */
     isMultiSelect = false;
 
+    ignoreItemTrunctation = false;
+
     readonly filterChanges!: Subject<any>;
 
     readonly _closedStream!: Observable<void>;

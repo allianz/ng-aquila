@@ -560,12 +560,21 @@ describe('NxDropdownComponent', () => {
             dropdownElement.style.width = '200px';
         }));
 
-        it('should not use the whole viewport width', fakeAsync(() => {
+        it('should not use the whole viewport width by default', fakeAsync(() => {
             openDropdownByClick();
             fixture.detectChanges();
             flush();
 
             expect(getDropdown()!.clientWidth).toBe(453);
+        }));
+
+        it('should use the whole viewport width with _truncateItems', fakeAsync(() => {
+            dropdownInstance.ignoreItemTrunctation = true;
+            openDropdownByClick();
+            fixture.detectChanges();
+            flush();
+
+            expect(getDropdown()!.clientWidth).toBe(document.body.clientWidth - dropdownInstance._overlayViewportMargin);
         }));
     });
 
