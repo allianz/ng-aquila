@@ -14,20 +14,16 @@ The data display component resembles a HTML description list element. It consist
 
 <div class="docs-expert-container">
 
+### Expert: Size variations
+
+By default, expert data display is downsized to `size="medium"` via `DATA_DISPLAY_DEFAULT_OPTIONS`. A more condensed version is available using `size="small"`.
+
+<!-- example(data-display-condensed) -->
+
 ### Expert: Horizontal orientation
 
 The orientation of the data display can be changed to horizontal using `orientation="horizontal"` input.
 
 <!-- example(data-display-horizontal) -->
-
-### Expert: Size variations
-
-By default, expert data display is downsized to `size="medium"` via `DATA_DISPLAY_DEFAULT_OPTIONS`.
-
-<!-- example(data-display-expert) -->
-
-A condensed version is available using `size="small"`.
-
-<!-- example(data-display-condensed) -->
 
 </div>
