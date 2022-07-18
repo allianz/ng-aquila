@@ -1,6 +1,7 @@
-<span class="hljs-keyword">import</span> { ChangeDetectorRef, Component } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
+<span class="hljs-keyword">import</span> { ChangeDetectorRef, Component, OnDestroy } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
-<span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-comment">/**
  * <span class="hljs-doctag">@title </span>Floating sidepanel example
@@ -10,18 +11,19 @@
     <span class="hljs-attr">templateUrl</span>: <span class="hljs-string">&#x27;./sidepanel-floating-example.html&#x27;</span>,
     <span class="hljs-attr">styleUrls</span>: [<span class="hljs-string">&#x27;sidepanel-floating-example.css&#x27;</span>],
 })
-<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SidepanelFloatingExampleComponent</span> </span>{
+<span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SidepanelFloatingExampleComponent</span> <span class="hljs-title">implements</span> <span class="hljs-title">OnDestroy</span> </span>{
     <span class="hljs-attr">opened</span>: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
     isGreaterThanSmall: <span class="hljs-built_in">boolean</span> = <span class="hljs-literal">true</span>;
 
-    viewportServiceSubscription: Subscription;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params">
         <span class="hljs-keyword">public</span> viewportService: NxViewportService,
         <span class="hljs-keyword">private</span> _cdr: ChangeDetectorRef,
     </span>)</span> {
-        <span class="hljs-built_in">this</span>.viewportServiceSubscription = <span class="hljs-built_in">this</span>.viewportService
+        <span class="hljs-built_in">this</span>.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)
+            .pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))
             .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanSmall</span> =&gt;</span> {
                 <span class="hljs-comment">// only do something if the width has changed between small and bigger</span>
                 <span class="hljs-keyword">if</span> (isGreaterThanSmall !== <span class="hljs-built_in">this</span>.isGreaterThanSmall) {
@@ -34,5 +36,10 @@
                     <span class="hljs-built_in">this</span>._cdr.detectChanges();
                 }
             });
+    }
+
+    ngOnDestroy(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-built_in">this</span>._destroyed.next();
+        <span class="hljs-built_in">this</span>._destroyed.complete();
     }
 }

@@ -15,9 +15,9 @@ export class MyPhoneInputIntl extends NxPhoneInputIntl {
 
 /** @title Phone Input Internationalization */
 @Component({
-    templateUrl: 'phone-input-i18n-example.html',
-    styleUrls: ['./phone-input-i18n-example.html'],
     selector: 'phone-input-i18n-example',
+    templateUrl: 'phone-input-i18n-example.html',
+    styleUrls: ['./phone-input-i18n-example.css'],
     providers: [
         {
             provide: NxPhoneInputIntl,

@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 /** @title Phone Input Formatting */
 @Component({
+    selector: 'phone-input-formatting-example',
     templateUrl: 'phone-input-formatting-example.html',
     styleUrls: ['./phone-input-formatting-example.css'],
-    selector: 'phone-input-formatting-example',
 })
 export class PhoneInputFormattingExampleComponent {
     value = '+49891234567';

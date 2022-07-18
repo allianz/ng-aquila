@@ -1,7 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
 import * as moment from 'moment';
 import { Moment } from 'moment';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @title Parsing example
@@ -11,22 +13,31 @@ import { Moment } from 'moment';
     templateUrl: './datefield-parsing-example.html',
     styleUrls: ['./datefield-parsing-example.css'],
 })
-export class DatefieldParsingExampleComponent {
+export class DatefieldParsingExampleComponent implements OnInit, OnDestroy {
     public strictDate = moment();
     public nonStrictDate = moment();
     public openedStrict = false;
     public openedNonStrict = false;
-    public currentLocale: string;
+    public currentLocale = this.nxDateLocale;
     public parseFormat = 'MM/DD/YYYY';
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         public nxDateAdapter: NxDateAdapter<Moment>,
         @Inject(NX_DATE_LOCALE) public nxDateLocale: string,
-    ) {
-        this.currentLocale = nxDateLocale;
+    ) {}
 
-        this.nxDateAdapter.localeChanges.subscribe(locale => {
-            this.currentLocale = locale;
-        });
+    ngOnInit(): void {
+        this.nxDateAdapter.localeChanges
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(locale => {
+                this.currentLocale = locale;
+            });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

@@ -1,10 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
     NxMultiStepperComponent,
     NxMultiStepperDirection,
     NxProgressStepperDirective,
 } from '@aposin/ng-aquila/progress-stepper';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 interface Animal {
     type: 'dog' | 'cat';
@@ -25,7 +27,7 @@ interface Animal {
         '[class.is-vertical]': 'direction === "vertical"',
     },
 })
-export class ProgressStepperMultiVerticalExampleComponent {
+export class ProgressStepperMultiVerticalExampleComponent implements OnDestroy {
     @ViewChild(NxProgressStepperDirective, { static: true })
     stepper!: NxMultiStepperComponent;
 
@@ -77,10 +79,13 @@ export class ProgressStepperMultiVerticalExampleComponent {
         }),
     };
 
+    private readonly _destroyed = new Subject<void>();
+
     constructor(private _formBuilder: FormBuilder) {
         this.animalTypeForm.form
             .get('animalType')
-            ?.valueChanges.subscribe(value => {
+            ?.valueChanges.pipe(takeUntil(this._destroyed))
+            .subscribe(value => {
                 if (value === 'dog') {
                     this.breedForm.form.removeControl('catBreed');
                     this.breedForm.form.addControl(
@@ -97,6 +102,11 @@ export class ProgressStepperMultiVerticalExampleComponent {
 
                 this.breedForm.form.reset();
             });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     onSubmit() {

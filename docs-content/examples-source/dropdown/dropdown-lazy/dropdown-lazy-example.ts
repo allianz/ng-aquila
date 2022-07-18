@@ -7,6 +7,7 @@ import { NxDropdownOption } from '@aposin/ng-aquila/dropdown';
 @Component({
     selector: 'dropdown-lazy-example',
     templateUrl: './dropdown-lazy-example.html',
+    styleUrls: ['./dropdown-lazy-example.css'],
 })
 export class DropdownLazyExampleComponent {
     items: NxDropdownOption[];

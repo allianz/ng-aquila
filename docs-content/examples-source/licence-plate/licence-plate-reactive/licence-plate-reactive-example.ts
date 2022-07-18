@@ -6,8 +6,9 @@ import { nxLicensePlateValidator } from '@aposin/ng-aquila/licence-plate';
  * @title Licence plate reactive form
  */
 @Component({
-    templateUrl: 'licence-plate-reactive-example.html',
     selector: 'licence-plate-reactive-example',
+    templateUrl: 'licence-plate-reactive-example.html',
+    styleUrls: ['licence-plate-reactive-example.css'],
 })
 export class LicencePlateReactiveExample {
     licencePlateForm: FormGroup;

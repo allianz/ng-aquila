@@ -5,9 +5,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
  * @title Phone input usage in forms
  */
 @Component({
+    selector: 'phone-input-forms-example',
     templateUrl: 'phone-input-forms-example.html',
     styleUrls: ['./phone-input-forms-example.css'],
-    selector: 'phone-input-forms-example',
 })
 export class PhoneInputFormsExampleComponent {
     value = '';

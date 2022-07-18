@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { DATA_DISPLAY_DEFAULT_OPTIONS } from '@aposin/ng-aquila/data-display';
+import {
+    DataDisplayDefaultOptions,
+    DATA_DISPLAY_DEFAULT_OPTIONS,
+} from '@aposin/ng-aquila/data-display';
+
+const options: DataDisplayDefaultOptions = {
+    size: 'medium', // expert mode default size
+};
 
 /**
  * @title Horizontal data display example
@@ -7,11 +14,11 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS } from '@aposin/ng-aquila/data-display';
 @Component({
     selector: 'data-display-horizontal-example',
     templateUrl: './data-display-horizontal-example.html',
-    // Only for this example. Import the NxExpertModule instead!
+    styleUrls: ['./data-display-horizontal-example.css'],
     providers: [
         {
             provide: DATA_DISPLAY_DEFAULT_OPTIONS,
-            useValue: { size: 'medium' },
+            useValue: options,
         },
     ],
 })

@@ -1,16 +1,17 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,
     NxMessageToastService,
 } from '@aposin/ng-aquila/message';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 const myCustomConfig: NxMessageToastConfig = {
     duration: 3000,
@@ -24,9 +25,9 @@ const myCustomConfig: NxMessageToastConfig = {
     templateUrl: './file-uploader-max-file-number-example.html',
     styleUrls: ['./file-uploader-max-file-number-example.css'],
 })
-export class FileUploaderMaxFileNumberExampleComponent {
-    testForm!: FormGroup;
-    uploader: NxFileUploader;
+export class FileUploaderMaxFileNumberExampleComponent
+    implements OnInit, OnDestroy
+{
     uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
@@ -35,32 +36,38 @@ export class FileUploaderMaxFileNumberExampleComponent {
         },
     };
 
+    uploader = new NxFileUploader(this.uploadConfig, this.http);
+
+    testForm = new FormGroup({
+        documents: new FormControl([], Validators.required),
+    });
+
+    private readonly _destroyed = new Subject<void>();
+
     constructor(
-        private fb: FormBuilder,
         private messageToastService: NxMessageToastService,
         private http: HttpClient,
-    ) {
-        this.createForm();
+    ) {}
 
-        this.uploader = new NxFileUploader(this.uploadConfig, this.http);
-
-        this.uploader.response.subscribe((result: NxFileUploadResult) => {
-            if (result.success) {
-                this.messageToastService.open(
-                    'All files were uploaded successfully!',
-                    myCustomConfig,
-                );
-            } else if (result.error) {
-                // error handling
-                console.log(result.error);
-            }
-        });
+    ngOnInit() {
+        this.uploader.response
+            .pipe(takeUntil(this._destroyed))
+            .subscribe(result => {
+                if (result.success) {
+                    this.messageToastService.open(
+                        'All files were uploaded successfully!',
+                        myCustomConfig,
+                    );
+                } else if (result.error) {
+                    // error handling
+                    console.log(result.error);
+                }
+            });
     }
 
-    createForm() {
-        this.testForm = this.fb.group({
-            documents: [[], Validators.required],
-        });
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 
     onChange($event: FileItem[]) {

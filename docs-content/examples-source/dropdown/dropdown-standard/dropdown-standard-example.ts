@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'dropdown-standard-example',
     templateUrl: './dropdown-standard-example.html',
+    styleUrls: ['./dropdown-standard-example.css'],
 })
 export class DropdownStandardExampleComponent {
     options = [

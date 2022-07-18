@@ -66,7 +66,7 @@
   case 'copytext': return import('../examples/copytext/copytext-examples.module').then(m => m.CopytextExamplesModule);
   
 
-  case 'data-display': return import('../examples/data-display/data-display-examples.module').then(m => m.BadgeExamplesModule);
+  case 'data-display': return import('../examples/data-display/data-display-examples.module').then(m => m.DataDisplayExamplesModule);
   
 
   case 'datefield': return import('../examples/datefield/datefield-examples.module').then(m => m.DatefieldExamplesModule);

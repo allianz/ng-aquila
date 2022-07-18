@@ -767,18 +767,6 @@
       "stable": "done"
     },
     {
-      "id": "config",
-      "title": "Expert",
-      "examples": [],
-      "category": "general",
-      "apiFile": "lib-viewer/api/config.html",
-      "overviewFile": "lib-viewer/overview/config.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done",
-      "noApi": true
-    },
-    {
       "id": "context-menu",
       "title": "Context Menu",
       "examples": [
@@ -867,23 +855,15 @@
       "title": "Data Display",
       "examples": [
         {
-          "name": "data-display",
+          "name": "data-display-standard",
           "config": {}
         },
         {
-          "name": "data-display-custom-label",
-          "config": {}
-        },
-        {
-          "name": "data-display-cols",
+          "name": "data-display-condensed",
           "config": {}
         },
         {
           "name": "data-display-horizontal",
-          "config": {}
-        },
-        {
-          "name": "data-display-expert",
           "config": {}
         }
       ],
@@ -2315,42 +2295,6 @@
       "stable": "done"
     },
     {
-      "id": "radio-toggle",
-      "title": "Toggle Button",
-      "examples": [
-        {
-          "name": "radio-toggle",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-negative",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-custom",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-form",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-reactive",
-          "config": {}
-        },
-        {
-          "name": "radio-toggle-validation",
-          "config": {}
-        }
-      ],
-      "category": "components",
-      "apiFile": "lib-viewer/api/radio-toggle.html",
-      "overviewFile": "lib-viewer/overview/radio-toggle.html",
-      "b2c": true,
-      "expert": true,
-      "stable": "done"
-    },
-    {
       "id": "rating",
       "title": "Rating",
       "examples": [
@@ -2603,6 +2547,42 @@
       "category": "components",
       "apiFile": "lib-viewer/api/swipebar.html",
       "overviewFile": "lib-viewer/overview/swipebar.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done"
+    },
+    {
+      "id": "radio-toggle",
+      "title": "Toggle Button",
+      "examples": [
+        {
+          "name": "radio-toggle",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-negative",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-custom",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-form",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-reactive",
+          "config": {}
+        },
+        {
+          "name": "radio-toggle-validation",
+          "config": {}
+        }
+      ],
+      "category": "components",
+      "apiFile": "lib-viewer/api/radio-toggle.html",
+      "overviewFile": "lib-viewer/overview/radio-toggle.html",
       "b2c": true,
       "expert": true,
       "stable": "done"
@@ -3009,6 +2989,18 @@
       "b2c": true,
       "expert": true,
       "stable": "done"
+    },
+    {
+      "id": "config",
+      "title": "Expert",
+      "examples": [],
+      "category": "general",
+      "apiFile": "lib-viewer/api/config.html",
+      "overviewFile": "lib-viewer/overview/config.html",
+      "b2c": true,
+      "expert": true,
+      "stable": "done",
+      "noApi": true
     }
   ],
   "examples": [
@@ -4190,48 +4182,15 @@
       "url": "lib-viewer/examples/copytext-sizes-###TYPE###.html"
     },
     {
-      "id": "data-display",
-      "title": "Basic data display example",
+      "id": "data-display-condensed",
+      "title": "Condensed data display example",
       "module": "data-display",
       "types": [
         "ts",
         "html",
         "css"
       ],
-      "url": "lib-viewer/examples/data-display-###TYPE###.html"
-    },
-    {
-      "id": "data-display-cols",
-      "title": "Basic data display columns example",
-      "module": "data-display",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/data-display-cols-###TYPE###.html"
-    },
-    {
-      "id": "data-display-custom-label",
-      "title": "Custom label data display example",
-      "module": "data-display",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/data-display-custom-label-###TYPE###.html"
-    },
-    {
-      "id": "data-display-expert",
-      "title": "Expert data display example",
-      "module": "data-display",
-      "types": [
-        "ts",
-        "html",
-        "css"
-      ],
-      "url": "lib-viewer/examples/data-display-expert-###TYPE###.html"
+      "url": "lib-viewer/examples/data-display-condensed-###TYPE###.html"
     },
     {
       "id": "data-display-horizontal",
@@ -4243,6 +4202,17 @@
         "css"
       ],
       "url": "lib-viewer/examples/data-display-horizontal-###TYPE###.html"
+    },
+    {
+      "id": "data-display-standard",
+      "title": "Standard data display example",
+      "module": "data-display",
+      "types": [
+        "ts",
+        "html",
+        "css"
+      ],
+      "url": "lib-viewer/examples/data-display-standard-###TYPE###.html"
     },
     {
       "id": "datefield-basic",
@@ -8228,7 +8198,7 @@
     },
     {
       "id": "viewport-change",
-      "title": "Viewport Subscription example",
+      "title": "Viewport Change example",
       "module": "viewport",
       "types": [
         "ts",

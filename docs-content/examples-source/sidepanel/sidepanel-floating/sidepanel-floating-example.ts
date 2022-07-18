@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
  * @title Floating sidepanel example
@@ -10,18 +11,19 @@ import { Subscription } from 'rxjs';
     templateUrl: './sidepanel-floating-example.html',
     styleUrls: ['sidepanel-floating-example.css'],
 })
-export class SidepanelFloatingExampleComponent {
+export class SidepanelFloatingExampleComponent implements OnDestroy {
     opened: boolean = true;
     isGreaterThanSmall: boolean = true;
 
-    viewportServiceSubscription: Subscription;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         public viewportService: NxViewportService,
         private _cdr: ChangeDetectorRef,
     ) {
-        this.viewportServiceSubscription = this.viewportService
+        this.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)
+            .pipe(takeUntil(this._destroyed))
             .subscribe(isGreaterThanSmall => {
                 // only do something if the width has changed between small and bigger
                 if (isGreaterThanSmall !== this.isGreaterThanSmall) {
@@ -34,5 +36,10 @@ export class SidepanelFloatingExampleComponent {
                     this._cdr.detectChanges();
                 }
             });
+    }
+
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

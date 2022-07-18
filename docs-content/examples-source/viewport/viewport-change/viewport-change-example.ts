@@ -1,10 +1,11 @@
 import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { NxSidebarComponent } from '@aposin/ng-aquila/sidebar';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /**
- * @title Viewport Subscription example
+ * @title Viewport Change example
  */
 @Component({
     selector: 'viewport-change-example',
@@ -41,11 +42,12 @@ export class ViewportChangeExampleComponent implements OnDestroy {
         },
     ];
 
-    viewportServiceSubscription: Subscription;
+    private readonly _destroyed = new Subject<void>();
 
     constructor(private viewportService: NxViewportService) {
-        this.viewportServiceSubscription = this.viewportService
+        this.viewportService
             .min(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .pipe(takeUntil(this._destroyed))
             .subscribe(isGreaterThanMedium => {
                 if (isGreaterThanMedium && !this.sidebar.open) {
                     this.sidebar.expand();
@@ -58,7 +60,8 @@ export class ViewportChangeExampleComponent implements OnDestroy {
             });
     }
 
-    ngOnDestroy() {
-        this.viewportServiceSubscription.unsubscribe();
+    ngOnDestroy(): void {
+        this._destroyed.next();
+        this._destroyed.complete();
     }
 }

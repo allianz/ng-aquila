@@ -8,8 +8,9 @@ export class MyPopoverIntl extends NxPopoverIntl {
 
 /** @title Popover Internationalization */
 @Component({
+    selector: 'popover-i18n-example',
     templateUrl: 'popover-i18n-example.html',
-    selector: 'phone-input-i18n-example',
+    styleUrls: ['popover-i18n-example.css'],
     providers: [
         {
             provide: NxPopoverIntl,

@@ -1,10 +1,11 @@
 <span class="hljs-keyword">import</span> { Component, OnDestroy, ViewChild } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxSidebarComponent } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/sidebar&#x27;</span>;
 <span class="hljs-keyword">import</span> { NxBreakpoints, NxViewportService } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@aposin/ng-aquila/utils&#x27;</span>;
-<span class="hljs-keyword">import</span> { Subscription } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { Subject } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs&#x27;</span>;
+<span class="hljs-keyword">import</span> { takeUntil } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;rxjs/operators&#x27;</span>;
 
 <span class="hljs-comment">/**
- * <span class="hljs-doctag">@title </span>Viewport Subscription example
+ * <span class="hljs-doctag">@title </span>Viewport Change example
  */</span>
 <span class="hljs-meta">@Component</span>({
     <span class="hljs-attr">selector</span>: <span class="hljs-string">&#x27;viewport-change-example&#x27;</span>,
@@ -41,11 +42,12 @@
         },
     ];
 
-    viewportServiceSubscription: Subscription;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">readonly</span> _destroyed = <span class="hljs-keyword">new</span> Subject&lt;<span class="hljs-built_in">void</span>&gt;();
 
     <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> viewportService: NxViewportService</span>)</span> {
-        <span class="hljs-built_in">this</span>.viewportServiceSubscription = <span class="hljs-built_in">this</span>.viewportService
+        <span class="hljs-built_in">this</span>.viewportService
             .min(NxBreakpoints.BREAKPOINT_MEDIUM)
+            .pipe(takeUntil(<span class="hljs-built_in">this</span>._destroyed))
             .subscribe(<span class="hljs-function"><span class="hljs-params">isGreaterThanMedium</span> =&gt;</span> {
                 <span class="hljs-keyword">if</span> (isGreaterThanMedium &amp;&amp; !<span class="hljs-built_in">this</span>.sidebar.open) {
                     <span class="hljs-built_in">this</span>.sidebar.expand();
@@ -58,7 +60,8 @@
             });
     }
 
-    <span class="hljs-function"><span class="hljs-title">ngOnDestroy</span>(<span class="hljs-params"></span>)</span> {
-        <span class="hljs-built_in">this</span>.viewportServiceSubscription.unsubscribe();
+    ngOnDestroy(): <span class="hljs-built_in">void</span> {
+        <span class="hljs-built_in">this</span>._destroyed.next();
+        <span class="hljs-built_in">this</span>._destroyed.complete();
     }
 }

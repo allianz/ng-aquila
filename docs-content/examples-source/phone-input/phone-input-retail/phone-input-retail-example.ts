@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 /** @title Retail variation */
 @Component({
-    templateUrl: 'phone-input-retail-example.html',
-    styleUrls: ['./phone-input-retail-example.html'],
     selector: 'phone-input-retail-example',
+    templateUrl: 'phone-input-retail-example.html',
+    styleUrls: ['./phone-input-retail-example.css'],
 })
 export class PhoneInputRetailExampleComponent {
     value = '';

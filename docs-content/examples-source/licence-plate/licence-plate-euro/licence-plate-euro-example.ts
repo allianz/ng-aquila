@@ -4,8 +4,9 @@ import { Component } from '@angular/core';
  * @title Licence plate euro
  */
 @Component({
-    templateUrl: 'licence-plate-euro-example.html',
     selector: 'licence-plate-euro-example',
+    templateUrl: 'licence-plate-euro-example.html',
+    styleUrls: ['licence-plate-euro-example.css'],
 })
 export class LicencePlateEuroExampleComponent {
     country: string = 'A';
