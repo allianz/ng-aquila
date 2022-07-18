@@ -16,6 +16,11 @@ export type NxDataDisplaySize = 'small' | 'medium' | 'large';
  * Default options for the NxDataDisplayComponent.
  */
 export interface DataDisplayDefaultOptions {
+    /**
+     * Size of the data display.
+     *
+     * Defaults to 'large'.
+     */
     size?: NxDataDisplaySize;
 }
 

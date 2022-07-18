@@ -1,6 +1,4 @@
-<nx-data-display-label *ngIf="label; else labelTemplate">
-    {{ label }}
-</nx-data-display-label>
+<nx-data-display-label *ngIf="label; else labelTemplate">{{ label }}</nx-data-display-label>
 
 <ng-template #labelTemplate>
     <ng-content select="nx-data-display-label"></ng-content>

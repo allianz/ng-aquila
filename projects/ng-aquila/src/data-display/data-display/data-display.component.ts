@@ -19,23 +19,37 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayO
 })
 export class NxDataDisplayComponent {
     /**
-     * Sets the label which will describe the data.
+     * Label describing the data.
      */
     @Input() label?: string | null;
 
     /**
      * Size of the data display.
+     *
+     * Defaults to 'large'.
      */
-    @Input()
-    size: NxDataDisplaySize = this._defaultOptions?.size ?? 'large';
+    @Input() set size(value: NxDataDisplaySize | null | undefined) {
+        this.#size = value;
+    }
+    get size(): NxDataDisplaySize {
+        return this.#size ?? 'large';
+    }
+    #size?: NxDataDisplaySize | null = this._defaultOptions?.size;
 
     /**
      * Layout orientation of the label and value.
      * - 'vertical': label and value are vertically stacked.
      * - 'horizontal': label and value are on the same line.
+     *
+     * Defaults to 'vertical'.
      */
-    @Input()
-    orientation: NxDataDisplayOrientation = 'vertical';
+    @Input() set orientation(value: NxDataDisplayOrientation | null | undefined) {
+        this.#orientation = value;
+    }
+    get orientation(): NxDataDisplayOrientation {
+        return this.#orientation ?? 'vertical';
+    }
+    #orientation?: NxDataDisplayOrientation | null;
 
     constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) private _defaultOptions: DataDisplayDefaultOptions | null) {}
 }
