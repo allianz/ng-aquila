@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [13.8.0](https://github.com/allianz/ng-aquila/compare/v13.7.0...v13.8.0) (2022-07-15)
+
+### Features
+
+* **dropdown:** optional truncation of items ([e437cfe](https://github.com/allianz/ng-aquila/commit/e437cfe7fff2d27835dc67b8b9e7b14b0f5f49cb))
+
 # [13.7.0](https://github.com/allianz/ng-aquila/compare/v13.6.3...v13.7.0) (2022-07-12)
 
 
