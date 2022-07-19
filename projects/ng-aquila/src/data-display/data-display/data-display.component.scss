@@ -13,6 +13,24 @@
         }
     }
 
+    &.is-horizontal-columns {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+
+        > .nx-data-display__value {
+            grid-column-end: span 6;
+        }
+
+        ::ng-deep > nx-data-display-label {
+            grid-column-end: span 6;
+
+            &:after {
+                display: inline;
+                content: ':\a0';
+            }
+        }
+    }
+
     &.is-small {
         @include type-style(data-display-small);
     }

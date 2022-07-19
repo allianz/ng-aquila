@@ -12,6 +12,7 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayO
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class.is-horizontal]': 'orientation === "horizontal"',
+        '[class.is-horizontal-columns]': 'orientation === "horizontal-columns"',
         '[class.is-small]': 'size === "small"',
         '[class.is-medium]': 'size === "medium"',
         '[class.is-large]': 'size === "large"',
@@ -38,8 +39,10 @@ export class NxDataDisplayComponent {
 
     /**
      * Layout orientation of the label and value.
+     *
      * - 'vertical': label and value are vertically stacked.
      * - 'horizontal': label and value are on the same line.
+     * - 'horizontal-columns': label and value are on the same line in a fixed position.
      *
      * Defaults to 'vertical'.
      */

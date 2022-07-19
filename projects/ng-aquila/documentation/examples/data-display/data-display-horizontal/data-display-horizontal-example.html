@@ -1,13 +1,57 @@
 <div nxRow>
     <div nxCol="12,12,12,12,6" class="nx-margin-bottom-s">
+        <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s">
+            Inline layout
+        </h4>
+
         <nx-data-display label="Label" orientation="horizontal">
             Lorem ipsum
+        </nx-data-display>
+
+        <nx-data-display orientation="horizontal">
+            <nx-data-display-label class="text-lightgreen"
+                >Custom Label</nx-data-display-label
+            >
+            Lorem ipsum
+        </nx-data-display>
+
+        <nx-data-display label="Label" orientation="horizontal">
+            <nx-link nxStyle="text"><a href="#">Textlink</a></nx-link>
+        </nx-data-display>
+
+        <nx-data-display label="Label" orientation="horizontal">
+            <ul nxList="small">
+                <li class="nx-margin-bottom-0">List item</li>
+                <li class="nx-margin-bottom-0">List item</li>
+            </ul>
         </nx-data-display>
     </div>
 
     <div nxCol="12,12,12,12,6" class="nx-margin-bottom-s">
-        <nx-data-display label="Label" orientation="horizontal">
+        <h4 nxHeadline="subsection-xsmall" class="nx-margin-bottom-s">
+            Column layout
+        </h4>
+
+        <nx-data-display label="Label" orientation="horizontal-columns">
+            Lorem ipsum
+        </nx-data-display>
+
+        <nx-data-display orientation="horizontal-columns">
+            <nx-data-display-label class="text-lightgreen"
+                >Custom Label</nx-data-display-label
+            >
+            Lorem ipsum
+        </nx-data-display>
+
+        <nx-data-display label="Label" orientation="horizontal-columns">
             <nx-link nxStyle="text"><a href="#">Textlink</a></nx-link>
+        </nx-data-display>
+
+        <nx-data-display label="Label" orientation="horizontal-columns">
+            <ul nxList="small">
+                <li class="nx-margin-bottom-0">List item</li>
+                <li class="nx-margin-bottom-0">List item</li>
+            </ul>
         </nx-data-display>
     </div>
 </div>
