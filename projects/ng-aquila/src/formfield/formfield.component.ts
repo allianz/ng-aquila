@@ -273,4 +273,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     _hideControlPlaceholder() {
         return (!this.shouldLabelFloat && this._hasLabel()) || !this._control.empty;
     }
+
+    _getTitle(): string {
+        if (!this._labelChild) {
+            return this.label ?? '';
+        }
+        return this._labelChild.el.nativeElement?.innerText;
+    }
 }
