@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
+
 import { CopytextNegativeExampleComponent } from './copytext-negative/copytext-negative-example';
 import { CopytextSizesExampleComponent } from './copytext-sizes/copytext-sizes-example';
 

@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ComparisonTableWithIntersectionExampleComponent
     implements OnInit, OnDestroy
 {
-    showOverviewSeparately: boolean = false;
+    showOverviewSeparately = false;
 
     private readonly _destroyed = new Subject<void>();
 

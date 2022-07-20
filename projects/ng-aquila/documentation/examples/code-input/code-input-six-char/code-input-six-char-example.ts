@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodeInputSixCharExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
     ngOnInit() {

@@ -10,8 +10,8 @@ import { NxTabChangeEvent } from '@aposin/ng-aquila/tabs';
     styleUrls: ['./tabs-output-events-example.css'],
 })
 export class TabsOutputEventsExampleComponent {
-    messages: Array<any> = [];
-    logMessage: string = '';
+    messages: any[] = [];
+    logMessage = '';
 
     tabChanged($event: NxTabChangeEvent) {
         this.messages.push(

@@ -9,6 +9,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./mask-drop-characters-example.css'],
 })
 export class MaskDropCharactersExampleComponent {
-    dateTimeDropped: string = '020618';
-    dateTimeValue: string = '020618';
+    dateTimeDropped = '020618';
+    dateTimeValue = '020618';
 }

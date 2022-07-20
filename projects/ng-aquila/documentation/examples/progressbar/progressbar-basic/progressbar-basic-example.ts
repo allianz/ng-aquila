@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./progressbar-basic-example.css'],
 })
 export class ProgressbarBasicExampleComponent {
-    myProgress: number = 0.3;
+    myProgress = 0.3;
 }

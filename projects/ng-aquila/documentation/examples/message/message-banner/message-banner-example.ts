@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./message-banner-example.css'],
 })
 export class MessageBannerExampleComponent {
-    infoBanner: boolean = true;
-    warningBanner: boolean = true;
-    errorBanner: boolean = true;
+    infoBanner = true;
+    warningBanner = true;
+    errorBanner = true;
 
     showAllBanners() {
         this.infoBanner = true;

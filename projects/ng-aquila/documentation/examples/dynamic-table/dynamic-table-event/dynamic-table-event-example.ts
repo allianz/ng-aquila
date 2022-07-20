@@ -67,10 +67,10 @@ export class DynamicTableEventExampleComponent {
         { title: 'Lorem Ipsum', key: 'lorem', type: 'string' },
     ];
 
-    modalOpen: boolean = false;
-    basicModalBody: string = '';
+    modalOpen = false;
+    basicModalBody = '';
 
-    handleRowClick(row: Object): void {
+    handleRowClick(row: unknown): void {
         this.basicModalBody = JSON.stringify(row);
         this.toggleModal();
     }

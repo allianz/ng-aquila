@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./tabs-template-example.css'],
 })
 export class TabsTemplateExampleComponent {
-    currentIndex: number = 0;
+    currentIndex = 0;
 }

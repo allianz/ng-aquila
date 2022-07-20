@@ -4,10 +4,11 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxHeaderModule } from '@aposin/ng-aquila/header';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
+
+import { HeaderExampleComponent } from './header/header-example';
 import { HeaderCobrandingExampleComponent } from './header-cobranding/header-cobranding-example';
 import { HeaderIconsExampleComponent } from './header-icons/header-icons-example';
 import { HeaderTwoRowsExampleComponent } from './header-two-rows/header-two-rows-example';
-import { HeaderExampleComponent } from './header/header-example';
 
 const EXAMPLES = [
     HeaderExampleComponent,

@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./number-stepper-floating-point-example.css'],
 })
 export class NumberStepperFloatingPointExampleComponent {
-    number: number = 0;
+    number = 0;
 }

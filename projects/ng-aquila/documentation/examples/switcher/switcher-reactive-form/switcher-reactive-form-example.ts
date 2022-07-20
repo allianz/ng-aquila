@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SwitcherReactiveFormExampleComponent {
     testForm!: FormGroup;
-    isSubmitted: boolean = false;
+    isSubmitted = false;
 
     constructor(private fb: FormBuilder) {
         this.createForm();

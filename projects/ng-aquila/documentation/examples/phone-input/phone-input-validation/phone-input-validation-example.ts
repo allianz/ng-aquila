@@ -42,7 +42,6 @@ export function phoneNumberValidator(type?: PhoneNumberType): ValidatorFn {
                 } else if (type === 'landline') {
                     typeValid = LANDLINE_TYPES.includes(parsedType);
                 }
-                console.log(parsed);
 
                 valid = parsed.isValid() && typeValid;
             }

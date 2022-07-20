@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-    DataDisplayDefaultOptions,
     DATA_DISPLAY_DEFAULT_OPTIONS,
+    DataDisplayDefaultOptions,
 } from '@aposin/ng-aquila/data-display';
 
 const options: DataDisplayDefaultOptions = {

@@ -53,7 +53,7 @@ export class FormfieldCustomTelInputExampleComponent
     implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy
 {
     static nextId = 0;
-    private _placeholder: string = '';
+    private _placeholder = '';
     private _required = false;
     private _disabled = false;
     readonly!: boolean;
@@ -64,8 +64,6 @@ export class FormfieldCustomTelInputExampleComponent
     controlType = 'example-tel-input';
     id = `example-tel-input-${FormfieldCustomTelInputExampleComponent.nextId++}`;
     describedBy = '';
-    onChange = (_: any) => {};
-    onTouched = () => {};
 
     get empty() {
         const {
@@ -79,34 +77,39 @@ export class FormfieldCustomTelInputExampleComponent
     }
 
     @Input()
-    get placeholder(): string {
-        return this._placeholder;
-    }
     set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
+    get placeholder(): string {
+        return this._placeholder;
+    }
 
     @Input()
-    get required(): boolean {
-        return this._required;
-    }
     set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+    get required(): boolean {
+        return this._required;
+    }
 
     @Input()
-    get disabled(): boolean {
-        return this._disabled;
-    }
     set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._disabled ? this.parts.disable() : this.parts.enable();
         this.stateChanges.next();
     }
+    get disabled(): boolean {
+        return this._disabled;
+    }
 
     @Input()
+    set value(tel: MyTel | null) {
+        const { area, exchange, subscriber } = tel || new MyTel('', '', '');
+        this.parts.setValue({ area, exchange, subscriber });
+        this.stateChanges.next();
+    }
     get value(): MyTel | null {
         if (this.parts.valid) {
             const {
@@ -116,13 +119,11 @@ export class FormfieldCustomTelInputExampleComponent
         }
         return null;
     }
-    set value(tel: MyTel | null) {
-        const { area, exchange, subscriber } = tel || new MyTel('', '', '');
-        this.parts.setValue({ area, exchange, subscriber });
-        this.stateChanges.next();
-    }
 
     private readonly _destroyed = new Subject<void>();
+
+    onChange = (_: any) => {};
+    onTouched = () => {};
 
     constructor(
         formBuilder: FormBuilder,

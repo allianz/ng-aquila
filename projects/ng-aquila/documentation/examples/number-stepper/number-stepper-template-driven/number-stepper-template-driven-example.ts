@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./number-stepper-template-driven-example.css'],
 })
 export class NumberStepperTemplateDrivenExampleComponent {
-    number: number = 3;
+    number = 3;
 }

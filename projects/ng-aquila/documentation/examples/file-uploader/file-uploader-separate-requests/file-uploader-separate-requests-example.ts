@@ -34,7 +34,7 @@ export class FileUploaderSeparateRequestsExampleComponent
         },
         uploadSeparately: true,
     };
-    showUploadError: boolean = false;
+    showUploadError = false;
 
     uploader = new NxFileUploader(this.uploadConfig, this.http);
 

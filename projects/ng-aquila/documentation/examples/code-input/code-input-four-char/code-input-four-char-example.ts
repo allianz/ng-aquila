@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['code-input-four-char-example.css'],
 })
 export class CodeInputFourCharExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
     ngOnInit() {

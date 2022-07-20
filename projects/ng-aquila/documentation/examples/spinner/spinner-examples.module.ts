@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
+
 import { SpinnerNegativeExampleComponent } from './spinner-negative/spinner-negative-example';
 import { SpinnerSizesExampleComponent } from './spinner-sizes/spinner-sizes-example';
 

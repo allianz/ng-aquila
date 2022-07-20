@@ -6,10 +6,6 @@ import {
     NxTreeNode,
 } from '@aposin/ng-aquila/tree';
 
-interface Link {
-    label: string;
-    query: any;
-}
 /**
   This interface defines a single node of the trees data structure.
 */

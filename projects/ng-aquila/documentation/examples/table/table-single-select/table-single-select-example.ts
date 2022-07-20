@@ -19,7 +19,7 @@ interface Contract {
     styleUrls: ['./table-single-select-example.css'],
 })
 export class TableSingleSelectExampleComponent {
-    showSelected: boolean = false;
+    showSelected = false;
 
     tableElements: Contract[] = [
         {

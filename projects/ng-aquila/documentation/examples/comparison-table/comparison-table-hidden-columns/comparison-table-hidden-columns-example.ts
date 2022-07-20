@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./comparison-table-hidden-columns-example.css'],
 })
 export class ComparisonTableHiddenColumnsExampleComponent {
-    hiddenIndexes: Array<number> = [];
+    hiddenIndexes: number[] = [];
     selectedColumnIndex = 1;
 
     isHiddenIndex = (index: number) => this.hiddenIndexes.indexOf(index) !== -1;
@@ -20,9 +20,9 @@ export class ComparisonTableHiddenColumnsExampleComponent {
         if (this.hiddenIndexes.indexOf(index) === -1) {
             this.hiddenIndexes.push(index);
         } else {
-            this.hiddenIndexes = this.hiddenIndexes.filter(value => {
-                return value !== index;
-            });
+            this.hiddenIndexes = this.hiddenIndexes.filter(
+                value => value !== index,
+            );
         }
     }
 

@@ -16,7 +16,7 @@ interface TelephonePrefixData {
 export class DropdownCustomLabelExampleComponent {
     customLabelDropdownValue: TelephonePrefixData | undefined;
 
-    telPrefixDemoData: Array<TelephonePrefixData> = [
+    telPrefixDemoData: TelephonePrefixData[] = [
         {
             prefix: '+1',
             countryId: 'United States of America',

@@ -5,6 +5,7 @@ import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxHeadlineModule } from '@aposin/ng-aquila/headline';
 import { NxSliderModule } from '@aposin/ng-aquila/slider';
+
 import { RtlBasicExampleComponent } from './rtl-basic/rtl-basic-example';
 import { RtlDynamicExampleComponent } from './rtl-dynamic/rtl-dynamic-example';
 

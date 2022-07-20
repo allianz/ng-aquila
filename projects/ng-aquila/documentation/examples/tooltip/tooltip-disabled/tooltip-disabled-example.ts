@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./tooltip-disabled-example.css'],
 })
 export class TooltipDisabledExampleComponent {
-    disabled: boolean = false;
+    disabled = false;
 
     toggle() {
         this.disabled = !this.disabled;

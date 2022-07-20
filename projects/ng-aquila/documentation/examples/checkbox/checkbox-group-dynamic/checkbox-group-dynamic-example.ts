@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-dynamic-example.css'],
 })
 export class CheckboxGroupDynamicExampleComponent {
-    public myFormGroup: FormGroup;
+    myFormGroup: FormGroup;
     data = ['one', 'two', 'three'];
     i = 1;
 
@@ -20,12 +20,12 @@ export class CheckboxGroupDynamicExampleComponent {
         });
     }
 
-    public addNewCb() {
+    addNewCb() {
         this.data.push('Checkbox ' + this.i);
         this.i++;
     }
 
-    public removeCB() {
+    removeCB() {
         this.data.shift();
     }
 }

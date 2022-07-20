@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./tabs-auto-manual-select-example.css'],
 })
 export class TabsAutoManualSelectExampleComponent {
-    autoselect: boolean = true;
+    autoselect = true;
 
     toggleAutoselect() {
-        this.autoselect = this.autoselect ? false : true;
+        this.autoselect = !this.autoselect;
     }
 }

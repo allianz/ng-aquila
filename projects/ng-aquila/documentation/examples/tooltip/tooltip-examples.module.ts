@@ -4,6 +4,7 @@ import { NxBadgeModule } from '@aposin/ng-aquila/badge';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxDynamicTableModule } from '@aposin/ng-aquila/dynamic-table';
 import { NxTooltipModule } from '@aposin/ng-aquila/tooltip';
+
 import { TooltipBasicExampleComponent } from './tooltip-basic/tooltip-basic-example';
 import { TooltipDelayExampleComponent } from './tooltip-delay/tooltip-delay-example';
 import { TooltipDisabledExampleComponent } from './tooltip-disabled/tooltip-disabled-example';

@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-validation-example.css'],
 })
 export class CheckboxGroupValidationExampleComponent {
-    public myFormGroup: FormGroup;
+    myFormGroup: FormGroup;
 
     constructor(private fb: FormBuilder) {
         this.myFormGroup = this.fb.group({
@@ -23,8 +23,7 @@ export class CheckboxGroupValidationExampleComponent {
             return {
                 min: false,
             };
-        } else {
-            return null;
         }
+        return null;
     }
 }

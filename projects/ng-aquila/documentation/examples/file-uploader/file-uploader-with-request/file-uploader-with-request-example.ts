@@ -24,7 +24,7 @@ const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderWithRequestExampleComponent {
     @ViewChild('documentUpload', { static: false })
     documentUpload!: NxFileUploaderComponent;
-    public showUploadError: boolean = false;
+    showUploadError = false;
 
     constructor(
         private messageToastService: NxMessageToastService,

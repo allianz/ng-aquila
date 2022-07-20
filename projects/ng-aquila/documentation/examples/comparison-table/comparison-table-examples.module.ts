@@ -9,7 +9,10 @@ import { NxListModule } from '@aposin/ng-aquila/list';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
+import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
 import { ComparisonTableExpandableAreaExampleComponent } from './comparison-table-expandable-area/comparison-table-expandable-area-example';
@@ -19,8 +22,6 @@ import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-tab
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
-import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
-import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 const EXAMPLES = [
     ComparisonTableExampleComponent,

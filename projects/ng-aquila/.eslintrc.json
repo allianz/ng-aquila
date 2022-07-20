@@ -1,6 +1,6 @@
 {
     "extends": "../../.eslintrc.json",
-    "ignorePatterns": ["!**/*", "src/schematics/**/*"],
+    "ignorePatterns": ["!**/*", "src/schematics/**/*", "documentation/examples/**/*"],
     "overrides": [
         {
             "files": ["*.ts"],
@@ -10,10 +10,7 @@
             },
             "rules": {
                 "@angular-eslint/no-conflicting-lifecycle": "warn", // TODO resolve 2 occurrences and kick
-                "@angular-eslint/no-output-on-prefix": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
-
-                "@angular-eslint/directive-selector": "off",
-                "@angular-eslint/component-selector": "off"
+                "@angular-eslint/no-output-on-prefix": "warn" // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
             }
         },
         {

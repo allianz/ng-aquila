@@ -8,10 +8,7 @@
                 "project": ["projects/opensource-documentation/tsconfig.app.json"],
                 "createDefaultProgram": true
             },
-            "rules": {
-                "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "doc", "style": "camelCase" }],
-                "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "doc", "style": "kebab-case" }]
-            }
+            "rules": {}
         },
         {
             "files": ["*.html"],

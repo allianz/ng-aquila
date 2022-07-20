@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./slider-label-example.css'],
 })
 export class SliderLabelExampleComponent {
-    euroSliderDemoValue: number = 0;
+    euroSliderDemoValue = 0;
     euroValueFormatter = (value: string | number) =>
         `${Number(value).toFixed(2)} €`;
     minEuroFormatter = (value: number) => `min. ${value} €`;

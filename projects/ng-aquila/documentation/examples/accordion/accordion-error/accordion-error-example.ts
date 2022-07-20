@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./accordion-error-example.css'],
 })
 export class AccordionErrorExampleComponent {
-    public showErrorPayment: boolean = true;
-    public showErrorInfo: boolean = false;
+    showErrorPayment = true;
+    showErrorInfo = false;
 
     formGroupInfo!: FormGroup;
     formGroupPayment!: FormGroup;
@@ -25,7 +25,7 @@ export class AccordionErrorExampleComponent {
             surname: ['Mustermann', Validators.required],
         });
         this.formGroupPayment = this.fb.group({
-            input: [, Validators.required],
+            input: ['', Validators.required],
         });
         this.formGroupPayment.markAllAsTouched();
     }

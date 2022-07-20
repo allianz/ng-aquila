@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./radio-button-form-example.css'],
 })
 export class RadioButtonFormExampleComponent {
-    templateModel: string = 'apples';
+    templateModel = 'apples';
 }

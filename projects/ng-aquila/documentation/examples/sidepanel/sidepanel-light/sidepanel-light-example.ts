@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['sidepanel-light-example.css'],
 })
 export class SidepanelLightExampleComponent {
-    opened: boolean = true;
+    opened = true;
 }

@@ -25,5 +25,5 @@ export class DropdownSimpleBindingExampleComponent {
         'Ferrari',
     ];
 
-    simpleBinding: string = 'Audi';
+    simpleBinding = 'Audi';
 }

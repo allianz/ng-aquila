@@ -9,13 +9,14 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMessageModule } from '@aposin/ng-aquila/message';
 import { NxPopoverModule } from '@aposin/ng-aquila/popover';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FormfieldAppearanceExampleComponent } from './formfield-appearance/formfield-appearance-example';
 import { FormfieldBasicExampleComponent } from './formfield-basic/formfield-basic-example';
 import { FormfieldCharacterCountExampleComponent } from './formfield-character-count/formfield-character-count-example';
+import { FormfieldCustomExampleComponent } from './formfield-custom/formfield-custom-example';
 import { FormfieldCustomLabelExampleComponent } from './formfield-custom-label/formfield-custom-label-example';
 import { FormfieldCustomTelInputExampleComponent } from './formfield-custom-tel-input/formfield-custom-tel-input-example';
-import { FormfieldCustomExampleComponent } from './formfield-custom/formfield-custom-example';
 import { FormfieldErrorExampleComponent } from './formfield-error/formfield-error-example';
 import { FormfieldExpertErrorExampleComponent } from './formfield-expert-error/formfield-expert-error-example';
 import { FormfieldFloatingExampleComponent } from './formfield-floating/formfield-floating-example';
@@ -23,8 +24,8 @@ import { FormfieldGlobalExampleComponent } from './formfield-global/formfield-gl
 import { FormfieldHintExampleComponent } from './formfield-hint/formfield-hint-example';
 import { FormfieldMultipleErrorsExampleComponent } from './formfield-multiple-errors/formfield-multiple-errors-example';
 import { FormfieldNegativeExampleComponent } from './formfield-negative/formfield-negative-example';
-import { FormfieldNoteAndErrorExampleComponent } from './formfield-note-and-error/formfield-note-and-error-example';
 import { FormfieldNoteExampleComponent } from './formfield-note/formfield-note-example';
+import { FormfieldNoteAndErrorExampleComponent } from './formfield-note-and-error/formfield-note-and-error-example';
 import { FormfieldPasswordVisibilityExampleComponent } from './formfield-password-visibility/formfield-password-visibility-example';
 import { FormfieldPlaceholderExampleComponent } from './formfield-placeholder/formfield-placeholder-example';
 import { FormfieldPrefixSuffixAppendixExampleComponent } from './formfield-prefix-suffix-appendix/formfield-prefix-suffix-appendix-example';

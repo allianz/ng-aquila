@@ -13,7 +13,7 @@ export class RadioToggleReactiveExampleComponent {
     data = ['A', 'B', 'C'];
     testForm!: FormGroup;
     disabledToggleForm: FormGroup;
-    isToggleDisabled: boolean = false;
+    isToggleDisabled = false;
 
     constructor(private fb: FormBuilder) {
         this.createForm();

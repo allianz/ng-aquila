@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./code-input-negative-example.css'],
 })
 export class CodeInputNegativeExampleComponent {
-    inputValue: string = '';
+    inputValue = '';
 }

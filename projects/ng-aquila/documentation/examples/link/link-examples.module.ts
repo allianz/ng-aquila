@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { NxCopytextModule } from '@aposin/ng-aquila/copytext';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
+
 import { LinkBlackExampleComponent } from './link-black/link-black-example';
 import { LinkDefaultExampleComponent } from './link-default/link-default-example';
 import { LinkIconsExampleComponent } from './link-icons/link-icons-example';

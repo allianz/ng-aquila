@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {
-    TabNavBarDefaultOptions,
     TAB_NAV_BAR_DEFAULT_OPTIONS,
+    TabNavBarDefaultOptions,
 } from '@aposin/ng-aquila/tabs';
 
 const myDefaultOptions: TabNavBarDefaultOptions = {

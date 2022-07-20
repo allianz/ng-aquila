@@ -14,8 +14,10 @@ import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
 import { NxTableModule } from '@aposin/ng-aquila/table';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { TableExampleComponent } from './table/table-example';
+import { TableCoumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
 import { TableCondensedExampleComponent } from './table-condensed/table-condensed-example';
 import { TableExpandableExampleComponent } from './table-expandable/table-expandable-example';
 import { TableFilterSortPaginateExampleComponent } from './table-filter-sort-paginate/table-filter-sort-paginate-example';
@@ -25,8 +27,6 @@ import { TableSingleSelectExampleComponent } from './table-single-select/table-s
 import { TableSortingExampleComponent } from './table-sorting/table-sorting-example';
 import { TableStickyExampleComponent } from './table-sticky/table-sticky-example';
 import { TableZebraExampleComponent } from './table-zebra/table-zebra-example';
-import { TableExampleComponent } from './table/table-example';
-import { TableCoumnHidingExampleComponent } from './table-column-hiding/table-column-hiding-example';
 
 const EXAMPLES = [
     TableExampleComponent,

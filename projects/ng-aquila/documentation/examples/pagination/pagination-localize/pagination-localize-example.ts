@@ -21,9 +21,9 @@ const myPaginationTexts: IPaginationTexts = {
     providers: [{ provide: NX_PAGINATION_TEXTS, useValue: myPaginationTexts }],
 })
 export class PaginationLocalizeExampleComponent {
-    page: number = 1;
-    count: number = 210;
-    perPage: number = 10;
+    page = 1;
+    count = 210;
+    perPage = 10;
 
     prevPage() {
         this.page--;

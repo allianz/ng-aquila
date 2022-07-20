@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./checkbox-template-driven-example.css'],
 })
 export class CheckboxTemplateDrivenExampleComponent {
-    checked: boolean = false;
+    checked = false;
 }

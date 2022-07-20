@@ -44,7 +44,6 @@ export class PopoverTriggerExampleComponent
                 this.popoverManualOpenFlag = !this.popoverManualOpenFlag;
                 break;
             default:
-                return;
         }
     }
 }

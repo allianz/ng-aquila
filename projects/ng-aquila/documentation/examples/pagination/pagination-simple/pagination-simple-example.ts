@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./pagination-simple-example.css'],
 })
 export class PaginationSimpleExampleComponent {
-    page: number = 1;
-    count: number = 210;
-    perPage: number = 10;
+    page = 1;
+    count = 210;
+    perPage = 10;
 
     prevPage() {
         this.page--;

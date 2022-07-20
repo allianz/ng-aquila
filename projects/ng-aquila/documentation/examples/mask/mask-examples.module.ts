@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxMaskModule } from '@aposin/ng-aquila/mask';
 import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { IbanMaskExampleComponent } from './iban-mask/iban-mask-example';
+import { MaskExampleComponent } from './mask/mask-example';
 import { MaskCaseExampleComponent } from './mask-case/mask-case-example';
 import { MaskDeactivateExampleComponent } from './mask-deactivate/mask-deactivate-example';
 import { MaskDropCharactersExampleComponent } from './mask-drop-characters/mask-drop-characters-example';
 import { MaskSeparatorsExampleComponent } from './mask-separators/mask-separators-example';
 import { MaskValidationExampleComponent } from './mask-validation/mask-validation-example';
-import { MaskExampleComponent } from './mask/mask-example';
 
 const EXAMPLES = [
     MaskExampleComponent,

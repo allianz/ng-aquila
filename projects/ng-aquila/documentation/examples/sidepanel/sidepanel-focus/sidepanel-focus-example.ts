@@ -5,12 +5,9 @@ import {
     OnDestroy,
     ViewChild,
 } from '@angular/core';
-import {
-    NxSidepanelCloseButtonComponent,
-    NxSidepanelComponent,
-} from '@aposin/ng-aquila/sidepanel';
+import { NxSidepanelComponent } from '@aposin/ng-aquila/sidepanel';
 import { Subject } from 'rxjs';
-import { takeUntil, skip } from 'rxjs/operators';
+import { skip, takeUntil } from 'rxjs/operators';
 
 /**
  * @title Focus sidepanel on open

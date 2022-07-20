@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NxErrorModule } from '@aposin/ng-aquila/base';
 import { NxInputModule } from '@aposin/ng-aquila/input';
-import { ErrorCustomMatcherFormfieldExampleComponent } from './error-custom-matcher-formfield/error-custom-matcher-formfield-example';
+
 import { ErrorExampleComponent } from './error/error-example';
+import { ErrorCustomMatcherFormfieldExampleComponent } from './error-custom-matcher-formfield/error-custom-matcher-formfield-example';
 
 const EXAMPLES = [
     ErrorExampleComponent,

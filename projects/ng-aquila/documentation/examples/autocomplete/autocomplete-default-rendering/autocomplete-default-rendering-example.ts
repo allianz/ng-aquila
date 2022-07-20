@@ -13,13 +13,13 @@ export class WikipediaService {
 
     search(term: string): Observable<any[]> {
         const url = searchUrl(term, this.WIKIPEDIA_URL);
-        return this.client.jsonp(url, 'callback').pipe(
-            map((response: any) =>
-                response[1].map((item: any) => {
-                    return { value: item };
-                }),
-            ),
-        );
+        return this.client
+            .jsonp(url, 'callback')
+            .pipe(
+                map((response: any) =>
+                    response[1].map((item: any) => ({ value: item })),
+                ),
+            );
 
         function searchUrl(searchTeam: string, base: string) {
             const params = new HttpParams()

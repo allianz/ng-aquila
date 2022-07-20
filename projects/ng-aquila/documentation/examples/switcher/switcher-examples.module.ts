@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NxSwitcherModule } from '@aposin/ng-aquila/switcher';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { SwitcherDefaultExampleComponent } from './switcher-default/switcher-default-example';
 import { SwitcherDisabledExampleComponent } from './switcher-disabled/switcher-disabled-example';

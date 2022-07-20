@@ -10,7 +10,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./selectable-card-dynamic-example.css'],
 })
 export class SelectableCardDynamicExampleComponent {
-    public myFormGroup: FormGroup;
+    myFormGroup: FormGroup;
 
     cardArray = new FormArray([
         new FormControl(false),
@@ -24,11 +24,11 @@ export class SelectableCardDynamicExampleComponent {
         });
     }
 
-    public addNewCard() {
+    addNewCard() {
         this.cardArray.push(new FormControl(false));
     }
 
-    public removeFirstCard() {
+    removeFirstCard() {
         this.cardArray.removeAt(0);
     }
 

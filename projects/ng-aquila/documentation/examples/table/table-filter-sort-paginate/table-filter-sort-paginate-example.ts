@@ -154,9 +154,9 @@ export class TableFilterSortPaginateExampleComponent {
     currentlyShownPageElements!: Contract[];
     currentlyAvailableElements: Contract[];
 
-    page: number = 1;
-    filterValue: string = '';
-    elementsPerPage: number = 5;
+    page = 1;
+    filterValue = '';
+    elementsPerPage = 5;
 
     /**
      * Sorts the table data by a certain category.
@@ -198,11 +198,10 @@ export class TableFilterSortPaginateExampleComponent {
 
     filterData(filterValue: string) {
         this.currentlyAvailableElements = this.tableElements.filter(
-            tableRowObject => {
-                return Object.values(tableRowObject).some(propertyValue =>
+            tableRowObject =>
+                Object.values(tableRowObject).some(propertyValue =>
                     new RegExp(filterValue, 'i').test(String(propertyValue)),
-                );
-            },
+                ),
         );
 
         this.updatePage();

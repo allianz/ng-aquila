@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-inheritance-example.css'],
 })
 export class CheckboxGroupInheritanceExampleComponent {
-    public optionsForm!: FormGroup;
-    public myFormGroup!: FormGroup;
+    optionsForm!: FormGroup;
+    myFormGroup!: FormGroup;
 
     constructor(private fb: FormBuilder) {
         this.createForm();

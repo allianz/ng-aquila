@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./number-stepper-auto-resizing-example.css'],
 })
 export class NumberStepperAutoResizingExampleComponent {
-    number: number = 1000;
+    number = 1000;
 }

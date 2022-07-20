@@ -12,8 +12,8 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['sidepanel-floating-example.css'],
 })
 export class SidepanelFloatingExampleComponent implements OnDestroy {
-    opened: boolean = true;
-    isGreaterThanSmall: boolean = true;
+    opened = true;
+    isGreaterThanSmall = true;
 
     private readonly _destroyed = new Subject<void>();
 

@@ -4,7 +4,6 @@ import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,

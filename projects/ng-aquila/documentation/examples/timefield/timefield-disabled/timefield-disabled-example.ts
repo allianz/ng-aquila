@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./timefield-disabled-example.css'],
 })
 export class TimefieldDisabledExampleComponent {
-    templateModel: string = '12:54';
+    templateModel = '12:54';
 }

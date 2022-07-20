@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./number-stepper-validation-example.css'],
 })
 export class NumberStepperValidationExampleComponent {
-    number: number = 0;
+    number = 0;
 }

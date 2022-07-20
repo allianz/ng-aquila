@@ -18,7 +18,7 @@ export class MyIntl extends NxCodeInputIntl {
     providers: [{ provide: NxCodeInputIntl, useClass: MyIntl }],
 })
 export class CodeInputLocalizeExampleComponent implements OnInit {
-    inputValue: string = '';
+    inputValue = '';
     codeForm!: FormGroup;
 
     ngOnInit() {

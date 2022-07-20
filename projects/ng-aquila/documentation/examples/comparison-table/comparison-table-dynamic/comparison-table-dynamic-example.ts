@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { NxComparisonTableRowType } from '@aposin/ng-aquila/comparison-table';
 
-type ContentCell = {
+interface ContentCell {
     type: NxComparisonTableRowType;
     description?: string;
     cells: string[];
-};
-type ToggleSection = {
+}
+interface ToggleSection {
     type: 'toggleSection';
     header: string;
     content: ContentCell[];
-};
+}
 type TableData = (ContentCell | ToggleSection)[];
 
 /** @title Dynamically filled table */

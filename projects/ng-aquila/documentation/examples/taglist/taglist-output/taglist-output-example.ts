@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
 })
 export class TaglistOutputExampleComponent {
     tags = ['Apples', 'Oranges'];
-    messages: Array<any> = [];
-    logMessage: string = '';
+    messages: any[] = [];
+    logMessage = '';
 
     log(value: Event) {
         this.messages.push(value);

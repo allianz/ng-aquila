@@ -1,5 +1,5 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { NxDateAdapter, NX_DATE_LOCALE } from '@aposin/ng-aquila/datefield';
+import { NX_DATE_LOCALE, NxDateAdapter } from '@aposin/ng-aquila/datefield';
 import { Moment } from 'moment';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -15,8 +15,8 @@ import { takeUntil } from 'rxjs/operators';
 export class DatefieldLocalizeDateExampleComponent
     implements OnInit, OnDestroy
 {
-    public currentDate: Moment | null = null;
-    public currentLocale = this.nxDateLocale;
+    currentDate: Moment | null = null;
+    currentLocale = this.nxDateLocale;
 
     private readonly _destroyed = new Subject<void>();
 

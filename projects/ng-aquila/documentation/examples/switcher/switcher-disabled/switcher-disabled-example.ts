@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./switcher-disabled-example.css'],
 })
 export class SwitcherDisabledExampleComponent {
-    checked: boolean = true;
-    templateModel: boolean = false;
+    checked = true;
+    templateModel = false;
     testForm!: FormGroup;
 
     constructor(private fb: FormBuilder) {

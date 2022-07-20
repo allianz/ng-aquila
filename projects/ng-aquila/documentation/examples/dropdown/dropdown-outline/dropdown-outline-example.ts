@@ -43,7 +43,7 @@ export class DropdownOutlineExampleComponent {
         },
     ];
 
-    model: string = 'Catfish';
+    model = 'Catfish';
 
     brands: string[] = [];
 }

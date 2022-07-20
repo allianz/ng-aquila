@@ -14,8 +14,8 @@ export class FormfieldErrorExampleComponent implements AfterContentInit {
     exampleErrorNgModel!: NxInputDirective;
     @ViewChild('exampleErrorNgModelHint', { static: true })
     exampleErrorNgModelHint!: NxInputDirective;
-    public valueSupplementError!: string;
-    public valueSupplementErrorHint!: string;
+    valueSupplementError!: string;
+    valueSupplementErrorHint!: string;
 
     ngAfterContentInit() {
         this.exampleErrorNgModel.ngControl?.control?.markAsTouched();

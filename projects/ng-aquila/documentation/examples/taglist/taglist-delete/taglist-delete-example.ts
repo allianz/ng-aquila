@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./taglist-delete-example.css'],
 })
 export class TaglistDeleteExampleComponent {
-    public tags: string[] = [
+    tags: string[] = [
         'Apples',
         'Oranges',
         'Bananas',

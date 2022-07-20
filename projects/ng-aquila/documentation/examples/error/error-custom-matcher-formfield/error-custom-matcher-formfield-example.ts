@@ -14,11 +14,7 @@ export class ShowOnDirtyErrorStateMatcher implements ErrorStateMatcher {
         control: FormControl | null,
         form: FormGroupDirective | NgForm | null,
     ): boolean {
-        return !!(
-            control &&
-            control.invalid &&
-            (control.dirty || (form && form.submitted))
-        );
+        return !!(control?.invalid && (control.dirty || form?.submitted));
     }
 }
 

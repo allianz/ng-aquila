@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NxActionModule } from '@aposin/ng-aquila/action';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxSidebarModule } from '@aposin/ng-aquila/sidebar';
+
 import { ViewportChangeExampleComponent } from './viewport-change/viewport-change-example';
 
 const EXAMPLES = [ViewportChangeExampleComponent];

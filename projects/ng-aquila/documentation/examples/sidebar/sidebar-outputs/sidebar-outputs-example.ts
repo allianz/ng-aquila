@@ -108,7 +108,7 @@ export class SidebarOutputsExampleComponent {
     _treeControl: NxFlatTreeControl<MyFlatTreeNode>;
 
     logMessage!: string;
-    messages: Array<string> = [];
+    messages: string[] = [];
 
     constructor() {
         this._treeControl = new NxFlatTreeControl();

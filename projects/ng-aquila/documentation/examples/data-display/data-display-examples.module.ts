@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
 import { NxLinkModule } from '@aposin/ng-aquila/link';
 import { NxListModule } from '@aposin/ng-aquila/list';
-import { DataDisplayStandardExampleComponent } from './data-display-standard/data-display-standard-example';
+
 import { DataDisplayCondensedExampleComponent } from './data-display-condensed/data-display-condensed-example';
 import { DataDisplayHorizontalExampleComponent } from './data-display-horizontal/data-display-horizontal-example';
+import { DataDisplayStandardExampleComponent } from './data-display-standard/data-display-standard-example';
 import { DataDisplayResponsiveExampleComponent } from './data-display-responsive/data-display-responsive-example';
 import { ExamplesSharedModule } from '../examples-shared.module';
 

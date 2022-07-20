@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./input-reactive-example.css'],
 })
 export class InputReactiveExampleComponent {
-    public testForm: FormGroup = new FormGroup({
+    testForm: FormGroup = new FormGroup({
         textfield: new FormControl('', {
             validators: Validators.required,
         }),

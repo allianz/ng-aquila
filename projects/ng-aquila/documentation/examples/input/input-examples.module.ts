@@ -1,13 +1,14 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { NgModule } from '@angular/core';
 import { NxInputModule } from '@aposin/ng-aquila/input';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { InputExampleComponent } from './input/input-example';
 import { InputAutoresizeExampleComponent } from './input-autoresize/input-autoresize-example';
 import { InputReactiveExampleComponent } from './input-reactive/input-reactive-example';
 import { InputStandaloneExampleComponent } from './input-standalone/input-standalone-example';
 import { InputTemplateDrivenExampleComponent } from './input-template-driven/input-template-driven-example';
 import { InputWithoutFormfieldExampleComponent } from './input-without-formfield/input-without-formfield-example';
-import { InputExampleComponent } from './input/input-example';
 
 const EXAMPLES = [
     InputExampleComponent,

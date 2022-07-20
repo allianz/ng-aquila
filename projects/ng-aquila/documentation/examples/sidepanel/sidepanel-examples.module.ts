@@ -4,6 +4,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
 import { NxSidepanelModule } from '@aposin/ng-aquila/sidepanel';
 import { NxTabsModule } from '@aposin/ng-aquila/tabs';
+
 import { SidepanelDarkExampleComponent } from './sidepanel-dark/sidepanel-dark-example';
 import { SidepanelFloatingExampleComponent } from './sidepanel-floating/sidepanel-floating-example';
 import { SidepanelFocuskExampleComponent } from './sidepanel-focus/sidepanel-focus-example';

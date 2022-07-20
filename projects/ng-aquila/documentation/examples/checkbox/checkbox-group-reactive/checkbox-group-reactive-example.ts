@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./checkbox-group-reactive-example.css'],
 })
 export class CheckboxGroupReactiveExampleComponent {
-    public myFormGroup: FormGroup;
+    myFormGroup: FormGroup;
 
     constructor(private fb: FormBuilder) {
         this.myFormGroup = this.fb.group({

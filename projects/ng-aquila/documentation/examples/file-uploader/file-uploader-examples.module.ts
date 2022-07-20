@@ -6,6 +6,7 @@ import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxInputModule } from '@aposin/ng-aquila/input';
 import { NxRadioModule } from '@aposin/ng-aquila/radio-button';
 import { NxRadioToggleModule } from '@aposin/ng-aquila/radio-toggle';
+
 import { ExamplesSharedModule } from '../examples-shared.module';
 import { FileUploaderAutoExampleComponent } from './file-uploader-auto/file-uploader-auto-example';
 import { FileUploaderBasicExampleComponent } from './file-uploader-basic/file-uploader-basic-example';

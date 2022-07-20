@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
     styleUrls: ['code-input-model-example.css'],
 })
 export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
-    inputValue: string = '';
+    inputValue = '';
 
     codeForm = new FormGroup({
         keyCode: new FormControl(this.inputValue, {

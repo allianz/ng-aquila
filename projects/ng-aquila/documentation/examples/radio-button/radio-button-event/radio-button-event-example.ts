@@ -9,9 +9,9 @@ import { Component } from '@angular/core';
     styleUrls: ['./radio-button-event-example.css'],
 })
 export class RadioButtonEventExampleComponent {
-    public logMessage!: string;
-    public messages: string[] = [];
-    public log(value: string) {
+    logMessage!: string;
+    messages: string[] = [];
+    log(value: string) {
         this.messages.push(value);
         this.logMessage = this.messages.join('\n');
     }

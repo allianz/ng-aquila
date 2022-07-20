@@ -3,19 +3,20 @@ import { NgModule } from '@angular/core';
 import { NxButtonModule } from '@aposin/ng-aquila/button';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
 import { NxIndicatorModule } from '@aposin/ng-aquila/indicator';
+
 import { AnchorButtonExampleComponent } from './anchor-button/anchor-button-example';
+import { ButtonExampleComponent } from './button/button-example';
 import { ButtonBlockExampleComponent } from './button-block/button-block-example';
 import { ButtonDangerExampleComponent } from './button-danger/button-danger-example';
-import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
 import { ButtonIconExampleComponent } from './button-icon/button-icon-example';
+import { ButtonIconIndicatorExampleComponent } from './button-icon-indicator/button-icon-indicator-example';
 import { ButtonLargeExampleComponent } from './button-large/button-large-example';
 import { ButtonMediumExampleComponent } from './button-medium/button-medium-example';
 import { ButtonNegativeExampleComponent } from './button-negative/button-negative-example';
 import { ButtonPlainExampleComponent } from './button-plain/button-plain-example';
-import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-small-medium-example';
 import { ButtonSmallExampleComponent } from './button-small/button-small-example';
+import { ButtonSmallMediumExampleComponent } from './button-small-medium/button-small-medium-example';
 import { ButtonWithIconExampleComponent } from './button-with-icon/button-with-icon-example';
-import { ButtonExampleComponent } from './button/button-example';
 
 const EXAMPLES = [
     ButtonExampleComponent,

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { NxProgressbarModule } from '@aposin/ng-aquila/progressbar';
-import { ProgressbarBasicExampleComponent } from './progressbar-basic/progressbar-basic-example';
+
 import { ProgressbarExampleComponent } from './progressbar/progressbar-example';
+import { ProgressbarBasicExampleComponent } from './progressbar-basic/progressbar-basic-example';
 
 const EXAMPLES = [
     ProgressbarExampleComponent,

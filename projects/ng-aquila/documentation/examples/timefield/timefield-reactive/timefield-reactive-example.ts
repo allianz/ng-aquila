@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./timefield-reactive-example.css'],
 })
 export class TimefieldReactiveExampleComponent {
-    public testForm!: FormGroup;
+    testForm!: FormGroup;
 
     constructor(private fb: FormBuilder) {
         this.createForm();

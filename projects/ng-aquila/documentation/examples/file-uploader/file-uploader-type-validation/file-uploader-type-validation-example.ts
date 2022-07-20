@@ -1,16 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-    FormBuilder,
-    FormControl,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
     FileItem,
     NxFileUploadConfig,
     NxFileUploader,
-    NxFileUploadResult,
 } from '@aposin/ng-aquila/file-uploader';
 import {
     NxMessageToastConfig,

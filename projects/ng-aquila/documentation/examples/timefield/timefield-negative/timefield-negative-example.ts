@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./timefield-negative-example.css'],
 })
 export class TimefieldNegativeExampleComponent {
-    templateModel: string = '00:54';
-    templateModel2: string = '12:54';
+    templateModel = '00:54';
+    templateModel2 = '12:54';
 }

@@ -52,7 +52,7 @@ Thumbs.db
 /reports
 
 # ngx-docs-cli generated files
-/projects/ng-aquila/documentation
+/projects/ng-aquila/documentation/generated
 
 # component-specific
 /projects/ng-aquila/src/phone-input/metadata.json
