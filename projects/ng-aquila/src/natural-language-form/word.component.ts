@@ -85,11 +85,11 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         private _overlayPositionBuilder: OverlayPositionBuilder,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.setupErrorPopover();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._validateControlChild();
         this._control.stateChanges.pipe(startWith(null), takeUntil(this._destroyed)).subscribe(() => {
             this._hasErrors = this._control.errorState;
@@ -114,7 +114,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
         this._control.setAriaLabel!(this.label);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
 

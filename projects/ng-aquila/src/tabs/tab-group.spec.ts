@@ -675,7 +675,7 @@ class DynamicTabTest extends TabsTest {
     selector: 'my-test-component',
 })
 class TestComponent implements OnDestroy {
-    ngOnDestroy() {}
+    ngOnDestroy(): void {}
 }
 
 @Component({

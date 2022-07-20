@@ -11,7 +11,7 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
 export class NxvDocumentationComponent implements OnDestroy {
     constructor(public componentService: ComponentService, public documentationFrame: DocumentationFrameComponent) {}
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.componentService.current.next();
     }
 

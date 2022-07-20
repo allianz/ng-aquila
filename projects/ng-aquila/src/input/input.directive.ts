@@ -189,7 +189,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this._platform.isBrowser) {
             this._autofillMonitor
                 .monitor(this._elementRef.nativeElement)
@@ -217,11 +217,11 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         }
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.stateChanges.next();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.stateChanges.complete();
@@ -231,7 +231,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
         }
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

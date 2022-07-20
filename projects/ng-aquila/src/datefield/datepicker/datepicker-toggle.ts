@@ -104,24 +104,24 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._toggleButton);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes.datepicker) {
             this._watchStateChanges();
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._stateChanges.unsubscribe();
         this._focusMonitor.stopMonitoring(this._toggleButton);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._watchStateChanges();
     }
 

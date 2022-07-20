@@ -42,7 +42,7 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
         this._focusMonitor.monitor(this._elementRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

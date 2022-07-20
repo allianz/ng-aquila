@@ -113,11 +113,11 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
 
     constructor(private sanitizer: DomSanitizer, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._playButton);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._playButton);
     }
 

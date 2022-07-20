@@ -209,7 +209,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         private _focusMonitor: FocusMonitor,
     ) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._handleElement);
 
         setTimeout(() => {
@@ -232,7 +232,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._value;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._reset();
         this._focusMonitor.stopMonitoring(this._handleElement);
     }

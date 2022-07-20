@@ -72,7 +72,7 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
         });
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         Promise.resolve().then(() => this.refresh());
     }
 

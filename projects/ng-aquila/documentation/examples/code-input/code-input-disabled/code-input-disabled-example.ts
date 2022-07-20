@@ -13,7 +13,7 @@ export class CodeInputDisabledExampleComponent implements OnInit {
     inputValue = '';
     codeForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(
                 { value: this.inputValue, disabled: true },

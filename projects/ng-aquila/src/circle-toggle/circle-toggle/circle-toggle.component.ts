@@ -306,13 +306,13 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.toggleGroup) {
             this.attachListenerForGroup();
         }
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
@@ -321,7 +321,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         Promise.resolve().then(() => {
             if (this.toggleGroup) {
                 this.inGroup = true;
@@ -335,7 +335,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._focusMonitor.monitor(this._nativeInput);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         // function returned by the listener
         this._removeUniqueSelectionListener();
         this._focusMonitor.stopMonitoring(this._nativeInput);

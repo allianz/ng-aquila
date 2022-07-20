@@ -55,7 +55,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
         super(_cdr, _dir, _el);
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         // the _keyManager is currently private in the CdkStepper and the CDK/Material way
         // is to create to separate components for the vertical and horizontal stepper with no
         // possibility to change it during runtime
@@ -64,7 +64,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
         this['_keyManager'].withVerticalOrientation(this._direction === 'vertical');
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         super.ngAfterContentInit();
 
         if (this.groups.length) {

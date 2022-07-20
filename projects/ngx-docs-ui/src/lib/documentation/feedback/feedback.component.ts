@@ -46,12 +46,12 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
             });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.feedbackLinkPositive = this._feedbackLinks[this.page].positivePreset;
         this.feedbackLinkNegative = this._feedbackLinks[this.page].negativePreset;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

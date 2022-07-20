@@ -21,7 +21,7 @@ export class CodeInputLocalizeExampleComponent implements OnInit {
     inputValue = '';
     codeForm!: FormGroup;
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.codeForm = new FormGroup({
             keyCode: new FormControl(this.inputValue, {
                 validators: [

@@ -101,7 +101,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this.toggleButtons.changes
             .pipe(
                 startWith(this.toggleButtons),
@@ -131,13 +131,13 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._disableChange.complete();
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

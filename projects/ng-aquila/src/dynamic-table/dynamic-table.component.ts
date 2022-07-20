@@ -72,7 +72,7 @@ export class NxDynamicTableComponent implements OnInit {
 
     constructor(private _cdr: ChangeDetectorRef) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!this._data) {
             this._data = [];
             this._dataChange.next(this._data);

@@ -165,11 +165,11 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._nativeInput);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._nativeInput);
     }
 
@@ -202,7 +202,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         this.onTouchedCallback = fn;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

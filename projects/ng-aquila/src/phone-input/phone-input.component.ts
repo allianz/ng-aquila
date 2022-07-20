@@ -218,7 +218,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         });
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
@@ -227,15 +227,15 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._sortCountries();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this.dropdown.elementRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

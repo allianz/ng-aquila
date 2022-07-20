@@ -55,13 +55,13 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     constructor(public _intl: NxPopoverIntl, private _cdr: ChangeDetectorRef) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.closed.complete();

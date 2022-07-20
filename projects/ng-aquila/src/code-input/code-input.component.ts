@@ -126,7 +126,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         }
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this._control) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

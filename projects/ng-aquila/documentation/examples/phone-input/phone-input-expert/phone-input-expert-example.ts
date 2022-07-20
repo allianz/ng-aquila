@@ -14,7 +14,7 @@ export class PhoneInputExpertExampleComponent implements OnInit {
     readonly = false;
     disabled = false;
 
-    ngOnInit() {
+    ngOnInit(): void {
         setTimeout(() => (this.countryCode = 'AT'));
     }
 }

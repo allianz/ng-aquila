@@ -186,7 +186,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
             .subscribe(isSmallTablet => this._switchAppearance(isSmallTablet));
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._subscribeToTabLabels();
 
         // Subscribe to changes in the amount of tabs, in order to be
@@ -217,7 +217,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
      * After the content is checked, this component knows what tabs have been defined
      * and what the selected index should be.
      */
-    ngAfterContentChecked() {
+    ngAfterContentChecked(): void {
         // Don't clamp the `indexToSelect` immediately in the setter because it can happen that
         // the amount of tabs changes before the actual change detection runs.
         let indexToSelect = (this._indexToSelect = this._clampTabIndex(this._indexToSelect));
@@ -270,7 +270,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._tabButtons.forEach(button => this._focusMonitor.monitor(button));
         this._tabButtonsPrevious = this._tabButtons;
         this._tabButtons.changes.subscribe(tabButtons => {
@@ -280,7 +280,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._tabLabelSubscription.unsubscribe();

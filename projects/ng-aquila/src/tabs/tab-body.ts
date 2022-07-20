@@ -35,13 +35,13 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
         this._focusMonitor.monitor(this._elementRef);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.detach();
         });
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if ('active' in changes) {
             const change = changes.active;
             if (change.currentValue) {
@@ -52,7 +52,7 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);

@@ -93,7 +93,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     constructor(private _elementRef: ElementRef, private _ngZone: NgZone, private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._cells.forEach(cell => this._focusMonitor.monitor(cell));
         this._cellsPrevious = this._cells;
 
@@ -104,7 +104,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._cells.forEach(cell => this._focusMonitor.stopMonitoring(cell));

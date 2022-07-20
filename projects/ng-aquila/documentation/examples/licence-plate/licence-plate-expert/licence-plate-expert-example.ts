@@ -76,5 +76,4 @@ export class LicencePlateExpertExample {
         { country: 'S', countryName: 'Sweden' },
         { country: 'UA', countryName: 'Ukraine' },
     ];
-    constructor() {}
 }

@@ -112,7 +112,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         this._themeSwitcherService.switchTheme(theme);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.hideEggs();
     }
 
@@ -156,7 +156,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

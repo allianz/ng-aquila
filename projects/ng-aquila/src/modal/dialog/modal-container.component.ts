@@ -96,13 +96,13 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
         this._ariaLabelledBy = _config.ariaLabelledBy || null;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this._config.showCloseIcon) {
             this._focusMonitor.monitor(this._closeButton);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._closeButton);
     }
 

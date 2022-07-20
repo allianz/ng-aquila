@@ -18,7 +18,7 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
 
     constructor(private _tabGroup: NxTabGroupBase) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.detach();
         });
@@ -36,7 +36,7 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

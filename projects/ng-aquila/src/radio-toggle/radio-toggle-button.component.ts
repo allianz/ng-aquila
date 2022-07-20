@@ -104,11 +104,11 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
         });
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this.toggleInput);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._removeUniqueSelectionListener();
         this._destroyed.next();
         this._destroyed.complete();

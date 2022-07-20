@@ -129,17 +129,17 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         });
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.totalNumberPages = this.calculateTotalPages();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this.type === 'advanced' && (!this.paginationTexts.last || !this.paginationTexts.first)) {
             console.warn('Please define aria labels for the last and first arrows.');
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._linkElements.forEach(link => this._focusMonitor.monitor(link));
         this._linkElementsPrevious = this._linkElements;
         this._linkElements.changes.subscribe(_linkElements => {
@@ -149,7 +149,7 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._linkElements?.forEach(link => this._focusMonitor.stopMonitoring(link));

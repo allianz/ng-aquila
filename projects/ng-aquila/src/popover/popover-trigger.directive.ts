@@ -255,7 +255,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.popover.showCloseButton = this.isCloseable();
     }
 

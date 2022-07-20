@@ -26,7 +26,7 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
 
     constructor(@Optional() public modalRef: NxModalRef<any> | null, private _elementRef: ElementRef<HTMLElement>, private _dialogService: NxDialogService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!this.modalRef) {
             // When this directive is included in a modal via TemplateRef (rather than being
             // in a Component), the DialogRef isn't available via injection because embedded
@@ -37,7 +37,7 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const proxiedChange = changes['modalResult'];
 
         if (proxiedChange) {

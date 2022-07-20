@@ -87,13 +87,13 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
 
     constructor(private _ngZone: NgZone) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._items = this._wrap ? this._wrap?._items : this._items;
         this._keyManager = new FocusKeyManager<NxContextMenuItemComponent>(this._items).withWrap().withTypeAhead().setFocusOrigin('keyboard');
         this._keyManager.tabOut.pipe(takeUntil(this._destroyed)).subscribe(() => this.closed.emit('tab'));
         this._init.next();
     }
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.closed.complete();

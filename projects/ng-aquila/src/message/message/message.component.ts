@@ -104,13 +104,13 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
 
     constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.closable) {
             this._focusMonitor.monitor(this._closeButton);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._closeButton);
     }
 

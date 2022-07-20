@@ -234,11 +234,11 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._nativeInput);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._errorList.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._errorListIds = this._getErrorListIds();
             this._cdr.markForCheck();
@@ -247,7 +247,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         this._errorListIds = this._getErrorListIds();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);
@@ -274,7 +274,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         this.checked = !!value;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribed to (e.g. parent form submissions). This means

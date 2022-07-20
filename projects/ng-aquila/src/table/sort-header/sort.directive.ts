@@ -68,7 +68,7 @@ export class NxSortDirective implements OnDestroy {
     /** An event emitted when either the active sort or sort direction changes. */
     @Output() readonly sortChange: EventEmitter<SortEvent> = new EventEmitter<SortEvent>();
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._stateChanges.complete();
     }
 

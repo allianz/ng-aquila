@@ -149,7 +149,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         });
     }
 
-    ngAfterViewChecked() {
+    ngAfterViewChecked(): void {
         // Since the parent dropdown component could be using the item's label to display the selected values
         // and it doesn't have a way of knowing if the item's label has changed
         // we have to check for changes in the DOM ourselves and dispatch an event. These checks are
@@ -169,7 +169,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._stateChanges.complete();

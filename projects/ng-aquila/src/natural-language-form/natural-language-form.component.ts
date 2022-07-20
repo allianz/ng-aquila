@@ -88,7 +88,7 @@ export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestr
         this.resizeEvent$.next();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         // Collect all words and listen for changes so we can update any open error popover
         // which would otherwise get wrongly positioned.
         const subjects = this._words.map((word: NxWordComponent) => word.inputChanges);

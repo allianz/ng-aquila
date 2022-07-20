@@ -268,7 +268,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         this._resetValidators();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._fileRowElements.forEach(row => this._focusMonitor.monitor(row));
         this._fileRowElementsPrevious = this._fileRowElements;
         this._fileRowElements.changes.pipe(takeUntil(this._destroyed)).subscribe(rowElements => {
@@ -278,11 +278,11 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         });
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this.stateChanges.next();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.stateChanges.complete();
@@ -347,7 +347,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (!this.button) {
             return;
         }
@@ -458,7 +458,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

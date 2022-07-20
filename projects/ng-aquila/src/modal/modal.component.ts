@@ -125,7 +125,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
         private _focusMonitor: FocusMonitor,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.modalService.close$.pipe(takeUntil(this._destroyed)).subscribe(() => this.closeEvent.emit());
 
         this.removeEventListener = this.eventManager.addGlobalEventListener('window', 'keyup.esc', () => {
@@ -135,13 +135,13 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
         }) as () => void;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.showCloseIcon) {
             this._focusMonitor.monitor(this._closeButton);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.removeEventListener();

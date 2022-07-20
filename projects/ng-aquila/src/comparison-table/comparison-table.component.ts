@@ -105,20 +105,20 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         return this._dir?.value || 'ltr';
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         window.addEventListener('scroll', this._scrollHandler, true);
         this.scrollDispatch.register(this._scrollableArea);
         // set the clipping for the cells once at the beginnig
         setTimeout(() => this._updateCellClipping());
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._getHeaderRow()
             ?._requestCellClippingUpdate$.pipe(delay(0), takeUntil(this._destroyed))
             .subscribe(() => this._updateCellClipping());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         window.removeEventListener('scroll', this._scrollHandler, true);

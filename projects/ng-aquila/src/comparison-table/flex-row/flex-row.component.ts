@@ -40,7 +40,7 @@ export class NxComparisonTableFlexRow implements OnDestroy {
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);

@@ -91,7 +91,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         _treeNode._dataChanges.pipe(takeUntil(this._destroyed)).subscribe(() => this._setPadding());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

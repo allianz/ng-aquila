@@ -149,17 +149,17 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
         this._onResizeEnd = this._onResizeEnd.bind(this);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.width = this._element.nativeElement.clientWidth;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.resizeable) {
             this._focusMonitor.monitor(this._resizeHandle);
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._removeDragEventListeners();
         this._focusMonitor.stopMonitoring(this._resizeHandle);
     }

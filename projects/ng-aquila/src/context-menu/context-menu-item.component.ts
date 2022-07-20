@@ -91,7 +91,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._hovered.complete();
         this._focusMonitor.stopMonitoring(this._elementRef);
     }

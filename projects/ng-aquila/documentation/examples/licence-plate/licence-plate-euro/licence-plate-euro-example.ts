@@ -41,5 +41,4 @@ export class LicencePlateEuroExampleComponent {
         { country: 'UA', countryName: 'Ukraine' },
     ];
     value = '';
-    constructor() {}
 }

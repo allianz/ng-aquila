@@ -52,17 +52,17 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._sort._stateChanges.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._focusContainer);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._focusContainer);

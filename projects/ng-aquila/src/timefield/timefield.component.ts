@@ -246,7 +246,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         }
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means

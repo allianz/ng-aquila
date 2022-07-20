@@ -117,11 +117,11 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
     constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.icons.forEach(icon => this._focusMonitor.monitor(icon));
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.icons.forEach(icon => this._focusMonitor.stopMonitoring(icon));
     }
 

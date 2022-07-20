@@ -170,12 +170,12 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._updateSelectedRadioFromValue();
         this._checkSelectedRadioButton();
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
@@ -184,7 +184,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._stateChanges.complete();
     }
 
@@ -420,7 +420,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     constructor(@Optional() public radioGroup: NxRadioGroupComponent | null, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.radioGroup) {
             this.name = this.radioGroup.name;
             // when relevant properties of the parent like name and disabled change
@@ -435,11 +435,11 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._nativeInput);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);

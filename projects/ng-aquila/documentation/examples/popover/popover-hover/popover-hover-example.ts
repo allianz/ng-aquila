@@ -22,11 +22,11 @@ export class PopoverHoverExampleComponent implements AfterViewInit, OnDestroy {
 
     constructor(private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._hoverTriggerIcon);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._hoverTriggerIcon);
     }
 }

@@ -48,7 +48,7 @@ export class NxTabScrollIndicator implements OnDestroy {
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

@@ -51,7 +51,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
         this._focusMonitor.monitor(this._elementRef);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (!this.control) {
             console.warn('You need to pass an input as a control to the password toggle.');
             return;
@@ -60,7 +60,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
         this._currentIcon = this.control.type === 'password' ? visibilityIcons['show'] : visibilityIcons['hide'];
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

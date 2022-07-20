@@ -28,13 +28,13 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
         this.updateInputWidth = this.updateInputWidth.bind(this);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.resize) {
             this._addEventListener();
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._removeEventListener();
     }
 

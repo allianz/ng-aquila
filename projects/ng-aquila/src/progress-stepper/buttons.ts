@@ -28,7 +28,7 @@ export class NxStepperNextDirective extends CdkStepperNext implements DoCheck {
      * after the stepper has checked its contents the button needs to be enabled resulting
      * in the error.
      */
-    ngDoCheck() {
+    ngDoCheck(): void {
         const stepper = this._stepper as any as NxProgressStepperDirective;
         if (this.disabled !== !stepper.hasNext) {
             this.disabled = !stepper.hasNext;

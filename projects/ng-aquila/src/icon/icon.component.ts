@@ -76,7 +76,7 @@ export class NxIconComponent implements OnChanges {
 
     constructor(/** @docs-private */ public el: ElementRef, private _iconRegistry: NxIconRegistry) {}
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         if (changes['name'] || changes['font']) {
             this.renderIcon();
         }

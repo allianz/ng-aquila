@@ -265,7 +265,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._datepicker?.selectedChanged.pipe(takeUntil(this._destroyed)).subscribe((selected: D) => {
             this.value = selected;
             this._cvaOnChange(selected);
@@ -276,7 +276,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
         this._isInitialized = true;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._valueChange.complete();

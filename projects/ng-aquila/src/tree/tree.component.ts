@@ -92,12 +92,12 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         super(_wrapperDiffers, _cdr);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         super.ngOnInit();
         this._monitorTreeFocus();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         super.ngOnDestroy();
         this._wrapperOnDestroy.next();
         this._wrapperOnDestroy.complete();

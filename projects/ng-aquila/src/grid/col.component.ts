@@ -115,7 +115,7 @@ export class NxColComponent implements OnInit {
 
     constructor(private el: ElementRef) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (!validateClassInElement(this.el.nativeElement.parentElement, 'nxRow')) {
             this.generateError("Exception: NxColDirective. nxRow don't exist");
         }

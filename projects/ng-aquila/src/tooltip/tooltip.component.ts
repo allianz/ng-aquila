@@ -152,7 +152,7 @@ export class NxTooltipComponent implements OnDestroy {
         return this._showTimeoutId !== null || this._hideTimeoutId !== null;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._onHide.complete();
     }
 

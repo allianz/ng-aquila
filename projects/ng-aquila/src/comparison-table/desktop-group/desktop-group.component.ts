@@ -66,7 +66,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
         @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions | null,
     ) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._updateFocusMonitoring();
         this.group?.rows.changes.pipe(takeUntil(this._destroyed)).subscribe(rows =>
             // timeout is needed here so that the focus monitor is updated after the view was updated
@@ -74,7 +74,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
         );
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._expansionCell);

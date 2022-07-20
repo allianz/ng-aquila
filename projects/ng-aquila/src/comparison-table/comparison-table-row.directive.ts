@@ -65,7 +65,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
         super();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._setCellIndexes();
 
         this.cells.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {
@@ -73,7 +73,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

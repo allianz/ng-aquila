@@ -15,7 +15,7 @@ export class NxBreadcrumbItemComponent implements OnDestroy {
         this._focusMonitor.monitor(this._elemRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elemRef);
     }
 

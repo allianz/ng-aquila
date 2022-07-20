@@ -121,7 +121,7 @@ export class NxDialogService implements OnDestroy {
         return this.openModals.find(modal => modal.id === id);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
 

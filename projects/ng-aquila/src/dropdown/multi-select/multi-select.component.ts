@@ -360,7 +360,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this._ariaDescribedby = ids.join(' ');
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._initKeyManager();
     }
 
@@ -541,7 +541,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this._onTouched = fn;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             this.updateErrorState();
         }

@@ -62,7 +62,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
         return originalErrorState || customErrorState;
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         // We can't use the `changes: SimpleChanges` as a parameter here
         // because CdkStep only defines the ngOnChanges() method.
         super.ngOnChanges();
@@ -91,7 +91,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }
@@ -120,7 +120,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
         super(_dir!, _cdr, _elementRef, null);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         super.ngAfterContentInit();
         // Mark the component for change detection whenever the content children query changes
         this.steps.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {

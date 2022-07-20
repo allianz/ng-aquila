@@ -505,21 +505,21 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         this.tabIndex = parseInt(tabIndex, 10) || 0;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             this.updateErrorState();
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._selectionModel = new SelectionModel(this.isMultiSelect);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._initKeyManager();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._closedDropdownLabel = this._customClosedDropdownLabel?.templateRef || this._defaultClosedDropdownLabel;
 
         this._selectionModel.changed.pipe(takeUntil(this._destroyed)).subscribe(event => {
@@ -544,7 +544,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

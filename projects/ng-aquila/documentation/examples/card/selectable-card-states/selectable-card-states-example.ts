@@ -30,5 +30,5 @@ export class SelectableCardStatesExampleComponent {
 }
 
 function validateSecondCard(control: AbstractControl) {
-    return control.value ? { invalid: true } : null;
+    return !!control.value ? { invalid: true } : null;
 }

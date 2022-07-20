@@ -122,7 +122,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this.templateLabel) {
             this._headerViewRef = this.templateLabel.createEmbeddedView({});
         }

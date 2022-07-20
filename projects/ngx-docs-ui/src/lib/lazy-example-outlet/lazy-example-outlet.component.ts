@@ -31,7 +31,7 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
         this.subscribeToDirectionQueryParams();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this._manifestService.hasExample(this.exampleId)) {
             this.exampleDescriptor = this._manifestService.getExample(this.exampleId);
         } else {
@@ -52,7 +52,7 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

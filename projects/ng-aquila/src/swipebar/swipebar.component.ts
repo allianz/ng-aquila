@@ -39,7 +39,7 @@ export class NxSwipebarComponent implements AfterViewInit {
         this._onScroll = this._onScroll.bind(this);
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._onResize();
 
         // Run outside zone to not trigger change detection when scrolling.

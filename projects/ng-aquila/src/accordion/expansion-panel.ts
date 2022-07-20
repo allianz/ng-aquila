@@ -106,7 +106,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         super(accordion!, _cdr, _expansionDispatcher);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this.lazyContent) {
             // Render the content as soon as the panel becomes open.
             this.opened
@@ -132,11 +132,11 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         this._inputChanges.next(changes);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         super.ngOnDestroy();
         this._inputChanges.complete();
     }

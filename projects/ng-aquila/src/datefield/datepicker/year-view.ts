@@ -137,7 +137,7 @@ export class NxYearViewComponent<D> implements AfterContentInit {
         this._activeDate = this._dateAdapter.today();
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._init();
         this._focusActiveCell();
     }

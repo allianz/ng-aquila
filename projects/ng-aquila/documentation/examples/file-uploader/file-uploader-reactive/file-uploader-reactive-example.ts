@@ -46,7 +46,7 @@ export class FileUploaderReactiveExampleComponent implements OnInit, OnDestroy {
         private http: HttpClient,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.uploader.response
             .pipe(takeUntil(this._destroyed))
             .subscribe(result => {

@@ -264,7 +264,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._dir.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._flipDirection();
             this._cdr.markForCheck();
@@ -293,11 +293,11 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
         this._autofillMonitor.stopMonitoring(this._element.nativeElement);
     }
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         this._bindAutocompleteItems();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._bindAutocompleteItems();
     }
 

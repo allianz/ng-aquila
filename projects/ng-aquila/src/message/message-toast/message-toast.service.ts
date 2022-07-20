@@ -155,7 +155,7 @@ export class NxMessageToastService implements OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._toastRefAtThisLevel) {
             this._toastRefAtThisLevel.dismiss();
         }

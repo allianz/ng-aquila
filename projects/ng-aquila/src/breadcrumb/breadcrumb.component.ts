@@ -57,7 +57,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
 
     constructor(private _cdr: ChangeDetectorRef) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this.breadcrumbItems.length === 0) {
             console.warn('A breadcrumb needs NxBreadcrumbItemComponent children wrapped in <li>!');
         }
@@ -74,7 +74,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

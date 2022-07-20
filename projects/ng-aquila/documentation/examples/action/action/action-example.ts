@@ -41,9 +41,7 @@ export class ActionExampleComponent implements OnInit {
 
     selectedAction!: Action;
 
-    constructor() {}
-
-    ngOnInit() {
+    ngOnInit(): void {
         this.selectedAction = this.actions[1];
     }
 

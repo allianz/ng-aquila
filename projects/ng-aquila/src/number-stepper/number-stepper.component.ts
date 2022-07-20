@@ -250,14 +250,14 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         if (this.ngContentWrapper) {
             this.ariaDescribedBy = this.ngContentWrapper.nativeElement.children.length > 0 ? `label-for-${this.inputId}` : '';
         }
         this.setInputValue(this._value);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

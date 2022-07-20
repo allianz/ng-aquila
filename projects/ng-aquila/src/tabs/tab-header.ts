@@ -84,7 +84,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         super(_cdr, _dir, _element);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         super.ngAfterContentInit();
         this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels).withHorizontalOrientation('ltr').withWrap();
         this._keyManager.updateActiveItem(0);

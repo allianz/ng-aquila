@@ -181,7 +181,7 @@ export class FormfieldCustomTelInputExampleComponent
         throw new Error('Method not implemented.');
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.stateChanges.complete();

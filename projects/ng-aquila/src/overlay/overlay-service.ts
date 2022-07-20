@@ -99,7 +99,7 @@ export class NxOverlayService implements OnDestroy {
         return this.openOverlays.find(overlay => overlay.id === id);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         // Only close the overlays at this level on destroy
         // since the parent service may still be active.
         this._closeOverlays(this._openOverlaysAtThisLevel);

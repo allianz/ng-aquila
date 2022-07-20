@@ -226,12 +226,12 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.subscribeToSelectionChanges();
 
         // react if a content child is deleted, added etc.
@@ -292,7 +292,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         this.disabled = isDisabled;
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribed to (e.g. parent form submissions). This means

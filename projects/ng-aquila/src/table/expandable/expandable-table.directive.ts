@@ -20,7 +20,7 @@ export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxE
 
     private readonly _destroyed = new Subject<void>();
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.rows.changes
             .pipe(
                 startWith(this.rows),
@@ -34,7 +34,7 @@ export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxE
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

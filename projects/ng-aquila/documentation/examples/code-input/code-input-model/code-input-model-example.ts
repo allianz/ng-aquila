@@ -27,7 +27,7 @@ export class CodeInputModelExampleComponent implements OnInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.keyCode?.valueChanges
             .pipe(takeUntil(this._destroyed))
             .subscribe(() => {

@@ -27,12 +27,12 @@ export class PopoverTriggerExampleComponent
 
     constructor(private _focusMonitor: FocusMonitor) {}
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._clickTriggerIcon);
         this._focusMonitor.monitor(this._manualTriggerIcon);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._clickTriggerIcon);
         this._focusMonitor.stopMonitoring(this._manualTriggerIcon);
     }

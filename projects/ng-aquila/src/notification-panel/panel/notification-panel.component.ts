@@ -25,7 +25,7 @@ export class NxNotificationPanelComponent implements OnDestroy, AfterContentInit
 
     private readonly _destroyed = new Subject<void>();
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._initKeyManager();
     }
 

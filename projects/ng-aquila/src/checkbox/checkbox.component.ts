@@ -174,7 +174,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         }
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         setTimeout(() => {
             this._updateSelectedCheckboxFromValue(true);
         });
@@ -189,7 +189,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         });
     }
 
-    ngDoCheck() {
+    ngDoCheck(): void {
         if (this.ngControl) {
             // We need to re-evaluate this on every change detection cycle, because there are some
             // error triggers that we can't subscribe to (e.g. parent form submissions). This means
@@ -198,7 +198,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._stateChanges.complete();
@@ -489,7 +489,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         return this._errorStateMatcher.isErrorState(control as FormControl, parent);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         if (this.checkboxGroup) {
             this.name = this.checkboxGroup.name;
             // when relevant properties of the parent like name and disabled change
@@ -500,11 +500,11 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._nativeInput);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._nativeInput);

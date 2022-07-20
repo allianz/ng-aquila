@@ -178,12 +178,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._checkContextMenu();
         this._handleHover();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
 

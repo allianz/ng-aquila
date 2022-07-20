@@ -174,7 +174,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions | null,
     ) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         let subscription;
 
         this._validateControlChild();
@@ -212,11 +212,11 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         });
     }
 
-    ngAfterContentChecked() {
+    ngAfterContentChecked(): void {
         this._validateControlChild();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

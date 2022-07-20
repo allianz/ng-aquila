@@ -95,7 +95,7 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit {
 
     constructor(public _intl: NxDatepickerIntl, public elementRef: ElementRef, private _ngZone: NgZone) {}
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._focusActiveCell();
     }
 
@@ -273,7 +273,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this.close();

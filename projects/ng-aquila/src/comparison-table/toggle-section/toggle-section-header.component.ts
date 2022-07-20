@@ -55,11 +55,11 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
         }
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._updateFocusMonitoringTimeout();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._wrapperElement);

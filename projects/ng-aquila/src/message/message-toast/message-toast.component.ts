@@ -106,7 +106,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     }
 
     /** Makes sure the exit callbacks have been invoked when the element is destroyed. */
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed = true;
         this._completeExit();
     }

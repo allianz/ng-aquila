@@ -58,7 +58,7 @@ export class NxActionComponent implements OnDestroy {
         this._focusMonitor.monitor(this._elementRef);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 }

@@ -54,7 +54,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
         this._focusMonitor.monitor(this._elementRef, true);
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         // Add a specific link class that the css gets more specific than the nx-icon css
         const icons = this.elementRef.nativeElement.querySelectorAll('nx-icon');
         for (let i = 0; i < icons.length; i++) {
@@ -62,7 +62,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef);
     }
 

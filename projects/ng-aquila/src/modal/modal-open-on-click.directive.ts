@@ -14,11 +14,11 @@ export class NxOpenModalOnClickDirective implements OnInit, OnDestroy {
 
     constructor(private templateRef: TemplateRef<any>, private viewContainer: ViewContainerRef, private modalService: NxModalService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.modalService.close$.pipe(takeUntil(this._destroyed)).subscribe(() => this.viewContainer.clear());
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
 

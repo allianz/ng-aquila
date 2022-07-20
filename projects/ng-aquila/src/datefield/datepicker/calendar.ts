@@ -208,18 +208,18 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => _cdr.markForCheck());
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._activeDate = this.startAt || this._dateAdapter.today();
         this._currentView = this.startView;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._previousButton);
         this._focusMonitor.monitor(this._nextButton);
         this._focusMonitor.monitor(this._changeViewButton);
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         this._focusMonitor.stopMonitoring(this._previousButton);
@@ -227,7 +227,7 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
         this._focusMonitor.stopMonitoring(this._changeViewButton);
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const change = changes.minDate || changes.maxDate || changes.dateFilter;
 
         if (change && !change.firstChange) {

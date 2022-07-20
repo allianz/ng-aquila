@@ -243,14 +243,14 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
         }
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this._updateSelectabilityStyles();
     }
 
     /**
      * Dispose the tooltip when destroyed.
      */
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._overlayRef) {
             this._overlayRef.dispose();
             this._tooltipInstance = null;

@@ -21,7 +21,7 @@ export class NxvFooterComponent implements OnInit {
         private _viewContainerRef: ViewContainerRef,
     ) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this._footerComponent);
         const componentRef = this._viewContainerRef.createComponent(componentFactory);
     }

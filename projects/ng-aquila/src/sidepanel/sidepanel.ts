@@ -193,7 +193,7 @@ export class NxSidepanelOuterContainerComponent implements OnDestroy {
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

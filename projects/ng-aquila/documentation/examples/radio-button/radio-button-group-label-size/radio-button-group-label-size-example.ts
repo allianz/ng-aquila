@@ -8,6 +8,4 @@ import { Component } from '@angular/core';
     templateUrl: './radio-button-group-label-size-example.html',
     styleUrls: ['./radio-button-group-label-size-example.css'],
 })
-export class RadioButtonGroupLabelSizeExampleComponent {
-    constructor() {}
-}
+export class RadioButtonGroupLabelSizeExampleComponent {}

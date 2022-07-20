@@ -62,7 +62,7 @@ export class NxContextMenuContentDirective implements OnDestroy {
         }
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._outlet) {
             this._outlet.dispose();
         }

@@ -29,7 +29,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
         });
     }
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this.tabButtons.changes.pipe(takeUntil(this._destroyed)).subscribe(() => setTimeout(() => this._updateScrollButtons()));
         setTimeout(() => {
             this.scrollableTabsList.nativeElement.addEventListener('scroll', this._scrollHandler);
@@ -37,7 +37,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }
