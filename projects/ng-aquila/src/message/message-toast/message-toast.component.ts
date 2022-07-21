@@ -8,7 +8,7 @@ import { messageToastAnimations } from './message-toast-animations';
 import { NxMessageToastConfig, NxMessageToastContext, NxMessageToastData } from './message-toast-config';
 
 /**
- * Internal component that wraps user-provided message toastcontent.
+ * Internal component that wraps user-provided message toast content.
  * @docs-private
  */
 @Component({
@@ -26,19 +26,19 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     /** Whether the component has been destroyed. */
     private _destroyed = false;
 
-    /** The portal outlet inside of this container into which the message toastcontent will be loaded. */
+    /** The portal outlet inside of this container into which the message toast content will be loaded. */
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
-    /** Subject for notifying that the message toasthas exited from view. */
+    /** Subject for notifying that the message toast has exited from view. */
     readonly _onExit: Subject<any> = new Subject();
 
-    /** Subject for notifying that the message toasthas finished entering the view. */
+    /** Subject for notifying that the message toast has finished entering the view. */
     readonly _onEnter: Subject<any> = new Subject();
 
-    /** The state of the message toastanimations. */
+    /** The state of the message toast animations. */
     _animationState = 'void';
 
-    /** ARIA role for the message toastcontainer. */
+    /** ARIA role for the message toast container. */
     _role: 'alert' | 'status' | null = null;
 
     _context: NxMessageToastContext;
@@ -46,7 +46,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     constructor(
         private _ngZone: NgZone,
         private _cdr: ChangeDetectorRef,
-        /** The message toastconfiguration. */
+        /** The message toast configuration. */
         public config: NxMessageToastConfig,
         /** Injected data into the notifciation. */
         public data?: NxMessageToastData,
@@ -57,13 +57,13 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
         this._setAriaLabels();
     }
 
-    /** Attach a component portal as content to this message toastcontainer. */
+    /** Attach a component portal as content to this message toast container. */
     attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T> {
         this._assertNotAttached();
         return this._portalOutlet.attachComponentPortal(portal);
     }
 
-    /** Attach a template portal as content to this message toastcontainer. */
+    /** Attach a template portal as content to this message toast container. */
     attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C> {
         this._assertNotAttached();
         return this._portalOutlet.attachTemplatePortal(portal);
@@ -89,7 +89,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
         }
     }
 
-    /** Begin animation of message toastentrance into view. */
+    /** Begin animation of message toast entrance into view. */
     enter(): void {
         if (!this._destroyed) {
             this._animationState = 'visible';
@@ -97,7 +97,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
         }
     }
 
-    /** Begin animation of the message toastexiting from view. */
+    /** Begin animation of the message toast exiting from view. */
     exit() {
         // Note: this one transitions to `hidden`, rather than `void`, in order to handle the case
         // where multiple notifications are opened in quick succession (e.g. two consecutive calls to
@@ -128,7 +128,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     /** Asserts that no content is already attached to the container. */
     private _assertNotAttached() {
         if (this._portalOutlet.hasAttached()) {
-            throw Error('Attempting to attach message toastcontent after content is already attached');
+            throw Error('Attempting to attach message toast content after content is already attached');
         }
     }
 

@@ -66,7 +66,7 @@ The `NxMessageToastService` offers two options for showing a message toast: by p
 
 ```ts
 // Simple message toast with a custom text
-let toastRef: NxMessageToastRef = messageToastService.open('My message toasttext');
+let toastRef: NxMessageToastRef = messageToastService.open('My message toast text');
 
 // Message toast with a custom template
 let toastRef: NxMessageToastRef = messageToastService.openFromTemplate(myTemplateRef);
@@ -89,7 +89,7 @@ export const myCustomOptions: NxMessageToastConfig = {
     announcementMessage: 'Yay, you see a success message toast',
 };
 
-let toastRef = messageToastService.open('My message toasttext.', myCustomOptions);
+let toastRef = messageToastService.open('My message toast text.', myCustomOptions);
 ```
 
 <!-- example(message-toast-custom-settings) -->

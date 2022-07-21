@@ -157,7 +157,7 @@ describe('NxMessageToast', () => {
         expect(afterDismissSpy).toHaveBeenCalled();
     }));
 
-    it('should dismiss the open message toaston service destroy', fakeAsync(() => {
+    it('should dismiss the open message toast on service destroy', fakeAsync(() => {
         messageToastService.open(text);
         fixture.detectChanges();
         expect(overlayContainerElement.childElementCount).toBeGreaterThan(0);
@@ -302,7 +302,7 @@ describe('NxMessageToast with parent and child service', () => {
         expect(overlayContainerElement.textContent!.trim()).toBe('Child message toast');
     }));
 
-    it('should not dismiss parent message toastif child is destroyed', fakeAsync(() => {
+    it('should not dismiss parent message toast if child is destroyed', fakeAsync(() => {
         parentService.open('Parent', { duration: 0 });
         fixture.detectChanges();
         expect(overlayContainerElement.childElementCount).toBe(1);

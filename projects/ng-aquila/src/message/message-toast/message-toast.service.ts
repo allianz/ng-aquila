@@ -21,7 +21,7 @@ export class NxMessageToastService implements OnDestroy {
      */
     private _toastRefAtThisLevel: NxMessageToastRef | null = null;
 
-    /** Reference to the currently opened message toastat *any* level. */
+    /** Reference to the currently opened message toast at *any* level. */
     get _oldToastMessageRef(): NxMessageToastRef | null {
         const parent = this._parentMessageToastService;
         return parent ? parent._oldToastMessageRef : this._toastRefAtThisLevel;
@@ -43,7 +43,7 @@ export class NxMessageToastService implements OnDestroy {
         @Optional() @Inject(NX_MESSAGE_TOAST_DEFAULT_CONFIG) private _defaultConfig: NxMessageToastConfig | null,
     ) {}
 
-    /** Creates and dispatches a message toastwith a custom text.
+    /** Creates and dispatches a message toast with a custom text.
      *
      * @param text Text to be used for the message toast.
      * @param config Extra configuration for the message toast.
@@ -62,7 +62,7 @@ export class NxMessageToastService implements OnDestroy {
         return this._oldToastMessageRef;
     }
 
-    /** Creates and dispatches a message toastwith a custom template for the content.
+    /** Creates and dispatches a message toast with a custom template for the content.
      *
      * @param template Template to be used for the message toast.
      * @param config Extra configuration for the message toast.
@@ -80,7 +80,7 @@ export class NxMessageToastService implements OnDestroy {
         return this._oldToastMessageRef;
     }
 
-    // Attaches the message toastcontainer component to the overlay.
+    // Attaches the message toast container component to the overlay.
     private _attachToastComponent(overlayRef: OverlayRef, config: NxMessageToastConfig): NxMessageToastComponent {
         const injector = this._createInjector(config, null, this._injector);
         const containerPortal = new ComponentPortal(NxMessageToastComponent, null, injector);
@@ -102,11 +102,11 @@ export class NxMessageToastService implements OnDestroy {
         return this._overlay.create(overlayConfig);
     }
 
-    /** Animates the old message toastout and the new one in. */
+    /** Animates the old message toast out and the new one in. */
     private _animateToast(toastRef: NxMessageToastRef, config: NxMessageToastConfig) {
-        // When the message toastis dismissed, clear the reference to it.
+        // When the message toast is dismissed, clear the reference to it.
         toastRef.afterDismissed().subscribe(() => {
-            // Clear the message toastref if it hasn't already been replaced by a newer message toast.
+            // Clear the message toast ref if it hasn't already been replaced by a newer message toast.
             if (this._oldToastMessageRef === toastRef) {
                 this._oldToastMessageRef = null;
             }
@@ -117,18 +117,18 @@ export class NxMessageToastService implements OnDestroy {
         });
 
         if (this._oldToastMessageRef) {
-            // If a message toastis opened, dismiss it and enter the
-            // new message toastafter exit animation is complete.
+            // If a message toast is opened, dismiss it and enter the
+            // new message toast after exit animation is complete.
             this._oldToastMessageRef.afterDismissed().subscribe(() => {
                 toastRef.toastInstance.enter();
             });
             this._oldToastMessageRef.dismiss();
         } else {
-            // If no message toastis in view, enter the message toast.
+            // If no message toast is in view, enter the message toast.
             toastRef.toastInstance.enter();
         }
 
-        // If a message toastduration is provided, set up dismiss based on after the message toastis opened.
+        // If a message toast duration is provided, set up dismiss based on after the message toast is opened.
         if (config.duration && config.duration > 0) {
             toastRef.afterOpened().subscribe(() => toastRef._dismissAfter(config.duration!));
         }

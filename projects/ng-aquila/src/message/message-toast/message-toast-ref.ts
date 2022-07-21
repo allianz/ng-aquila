@@ -14,14 +14,14 @@ export class NxMessageToastRef {
      */
     toastInstance: NxMessageToastComponent;
 
-    /** Subject for notifying the user that the message toasthas been dismissed. */
+    /** Subject for notifying the user that the message toast has been dismissed. */
     private readonly _afterDismissed = new Subject<any>();
 
-    /** Subject for notifying the user that the message toasthas opened and appeared. */
+    /** Subject for notifying the user that the message toast has opened and appeared. */
     private readonly _afterOpened = new Subject<void>();
 
     /**
-     * Timeout ID for the duration setTimeout call. Used to clear the timeout if the message toastis
+     * Timeout ID for the duration setTimeout call. Used to clear the timeout if the message toast is
      * dismissed before the duration passes.
      */
     private _durationTimeoutId: any;
@@ -46,7 +46,7 @@ export class NxMessageToastRef {
         this._durationTimeoutId = setTimeout(() => this.dismiss(), Math.min(duration, MAX_TIMEOUT));
     }
 
-    /** Marks the message toastas opened */
+    /** Marks the message toast as opened */
     _open(): void {
         if (!this._afterOpened.closed) {
             this._afterOpened.next();
@@ -62,12 +62,12 @@ export class NxMessageToastRef {
         this._afterDismissed.complete();
     }
 
-    /** Gets an observable that is notified when the message toastis finished closing. */
+    /** Gets an observable that is notified when the message toast is finished closing. */
     afterDismissed(): Observable<any> {
         return this._afterDismissed.asObservable();
     }
 
-    /** Gets an observable that is notified when the message toasthas opened and appeared. */
+    /** Gets an observable that is notified when the message toast has opened and appeared. */
     afterOpened(): Observable<void> {
         return this.toastInstance._onEnter;
     }
