@@ -321,15 +321,6 @@ describe('NxTabGroupComponent', () => {
 
                 expect(dynamicTest.handleSelection).not.toHaveBeenCalled();
             }));
-
-            it('Should not focus on the new tab content', fakeAsync(() => {
-                createTestComponent(DynamicTabTest);
-                const dynamicTest = fixture.componentInstance as DynamicTabTest;
-                dynamicTest.tabs.push({ label: 'new label', content: 'new content' });
-                fixture.detectChanges();
-                tick(THROTTLE_TIME);
-                expect(fixture.nativeElement.querySelector('nx-tab-body:nth-child(3)').getAttribute('tabindex')).toMatch('-1');
-            }));
         });
 
         describe('appearance', () => {
