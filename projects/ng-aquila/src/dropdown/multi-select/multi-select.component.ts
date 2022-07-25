@@ -183,7 +183,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     @ViewChildren(NxMultiSelectOptionComponent)
-    private readonly _options!: QueryList<NxMultiSelectOptionComponent<T>>;
+    private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
 
     private _required = false;
 
@@ -201,19 +201,19 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     _divider = 0;
 
     @ViewChild('trigger')
-    private readonly _trigger?: ElementRef;
+    private _trigger?: ElementRef;
 
     @ViewChild('filterInput')
-    private readonly _filterInput?: ElementRef;
+    private _filterInput?: ElementRef;
 
     @ViewChild('itemsList')
-    private readonly _optionsList?: ElementRef;
+    private _optionsList?: ElementRef;
 
     @ViewChild('panelHeader')
-    private readonly _panelHeader?: ElementRef;
+    private _panelHeader?: ElementRef;
 
     @ViewChild(CdkConnectedOverlay, { static: true })
-    private readonly _overlayDir?: CdkConnectedOverlay;
+    private _overlayDir?: CdkConnectedOverlay;
 
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';

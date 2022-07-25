@@ -368,7 +368,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
 
     @ViewChild('defaultClosedDropdownLabel', { static: true })
-    private readonly _defaultClosedDropdownLabel!: TemplateRef<any>;
+    private _defaultClosedDropdownLabel!: TemplateRef<any>;
 
     @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
 

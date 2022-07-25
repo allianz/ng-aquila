@@ -115,11 +115,11 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
     /** Autocomplete options in view - ie from items */
     @ViewChildren(NxAutocompleteOptionComponent)
-    private readonly _vOptions!: QueryList<NxAutocompleteOptionComponent>;
+    private _vOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options in content - ie user provided */
     @ContentChildren(NxAutocompleteOptionComponent, { descendants: true })
-    private readonly _cOptions!: QueryList<NxAutocompleteOptionComponent>;
+    private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options */
     get options(): QueryList<NxAutocompleteOptionComponent> {

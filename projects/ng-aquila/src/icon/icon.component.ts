@@ -21,7 +21,7 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 })
 export class NxIconComponent implements OnChanges {
     /** Keeps track of the elements and attributes that we've prefixed with the current path. */
-    private readonly _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
+    private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>; // TODO why is this never assigned?
     private _name = '';
     private _previousFontClasses: string[] = [];
 

@@ -1,13 +1,15 @@
+import './polyfills';
+
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { RouterModule } from '@angular/router';
-import { AquilaDocsExample } from './app/aquila-docs-example';
+
 import { AquilaModule } from './app/aquila.module';
-import './polyfills';
+import { AquilaDocsExample } from './app/aquila-docs-example';
 
 @NgModule({
     bootstrap: [AquilaDocsExample],

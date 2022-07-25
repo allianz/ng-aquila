@@ -39,7 +39,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     private _items!: QueryList<NxContextMenuItemComponent>;
 
     @ContentChild(NxContextMenuItemWrapComponent)
-    private readonly _wrap!: NxContextMenuItemWrapComponent;
+    private _wrap!: NxContextMenuItemWrapComponent;
 
     private readonly _init: ReplaySubject<void> = new ReplaySubject(1);
 

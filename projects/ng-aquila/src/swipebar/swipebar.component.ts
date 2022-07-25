@@ -8,13 +8,13 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostList
 })
 export class NxSwipebarComponent implements AfterViewInit {
     @ViewChild('element')
-    private readonly _element!: ElementRef;
+    private _element!: ElementRef;
 
     @ViewChild('scrollable')
-    private readonly _scrollable!: ElementRef;
+    private _scrollable!: ElementRef;
 
     @ViewChild('indicator')
-    private readonly _indicator!: ElementRef;
+    private _indicator!: ElementRef;
 
     private _barLength = 0;
 

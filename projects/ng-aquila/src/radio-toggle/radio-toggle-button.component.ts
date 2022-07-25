@@ -80,7 +80,7 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     private readonly _destroyed = new Subject<void>();
 
     /** Unregister function for _expansionDispatcher. */
-    private readonly _removeUniqueSelectionListener: () => void = () => {};
+    private _removeUniqueSelectionListener: () => void = () => {};
 
     constructor(
         @Inject(forwardRef(() => NxRadioToggleComponent)) private readonly radioToggle: NxRadioToggleComponent,

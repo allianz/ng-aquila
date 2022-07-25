@@ -124,7 +124,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         this.scrollDispatch.deregister(this._scrollableArea);
     }
 
-    private readonly _scrollHandler = (event: Event): void => {
+    private _scrollHandler = (event: Event): void => {
         this._updateCellClipping();
     };
 

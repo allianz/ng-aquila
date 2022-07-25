@@ -221,7 +221,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      * Event handler for when the window is blurred. Needs to be an
      * arrow function in order to preserve the context.
      */
-    private readonly _windowBlurHandler = () => {
+    private _windowBlurHandler = () => {
         // If the user blurred the window while the autocomplete is focused, it means that it'll be
         // refocused when they come back. In this case we want to skip the first focus event, if the
         // pane was closed, in order to avoid reopening it unintentionally.

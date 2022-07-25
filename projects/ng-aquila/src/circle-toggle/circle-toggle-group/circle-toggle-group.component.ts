@@ -177,7 +177,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this._buttons;
     }
 
-    @ContentChildren(ToggleButton, { descendants: true }) private readonly _buttons!: QueryList<ToggleButton>;
+    @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
 
     private _id = `nx-circle-toggle-group-${nextId++}`;
 

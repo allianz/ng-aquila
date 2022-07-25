@@ -65,7 +65,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _hideLabels = false;
     private _disabled = false;
 
-    @ViewChild('handle', { static: true }) private readonly _handleElement!: ElementRef;
+    @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
 
     _labelPosition: string = DEFAULT_LABEL_POSITION;
 
