@@ -6,11 +6,6 @@
 
     &.is-horizontal {
         flex-direction: row;
-
-        ::ng-deep > nx-data-display-label:after {
-            display: inline;
-            content: ':\a0';
-        }
     }
 
     &.is-horizontal-columns {
@@ -23,10 +18,17 @@
 
         ::ng-deep > nx-data-display-label {
             grid-column-end: span 6;
+        }
+    }
+
+    &.is-horizontal,
+    &.is-horizontal-columns {
+        ::ng-deep > nx-data-display-label {
+            padding-right: 4px;
 
             &:after {
                 display: inline;
-                content: ':\a0';
+                content: ':';
             }
         }
     }
