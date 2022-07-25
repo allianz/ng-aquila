@@ -10,7 +10,7 @@ export class DocViewerComponent {
     private _loadedContent: any;
     @Output() contentLoaded = new EventEmitter<any>();
 
-    constructor(private _http: HttpClient, private _elementRef: ElementRef) {}
+    constructor(private readonly _http: HttpClient, private readonly _elementRef: ElementRef) {}
 
     private _fetchDocument(url: string) {
         this._http.get(url, { responseType: 'text' }).subscribe(

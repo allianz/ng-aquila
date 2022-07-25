@@ -116,7 +116,7 @@ const testDependencies = {
  */
 @Injectable()
 export class StackBlitzWriter {
-    constructor(private _http: HttpClient) {}
+    constructor(private readonly _http: HttpClient) {}
 
     /**
      * Returns an HTMLFormElement that will open a new StackBlitz template with the example data when

@@ -6,9 +6,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 export class NxAutocompleteOptionSelected {
     constructor(
         /** The option that is selected or deselected. */
-        public source: NxAutocompleteOptionComponent,
+        readonly source: NxAutocompleteOptionComponent,
         /** Whether the input was triggered by the user. */
-        public isUserInput = false,
+        readonly isUserInput = false,
     ) {}
 }
 
@@ -41,7 +41,7 @@ export class NxAutocompleteOptionComponent {
     get id(): string {
         return this._id;
     }
-    private _id = `nx-autocomplete-option-${_uniqueIdCounter++}`;
+    private readonly _id = `nx-autocomplete-option-${_uniqueIdCounter++}`;
 
     /** Whether or not the option is currently selected. */
     get selected(): boolean {
@@ -79,7 +79,7 @@ export class NxAutocompleteOptionComponent {
     /** Event emitted when the option is selected or deselected. */
     @Output() readonly onSelectionChange = new EventEmitter<NxAutocompleteOptionSelected>();
 
-    constructor(/** @docs-private */ public elementRef: ElementRef, private _cdr: ChangeDetectorRef) {}
+    constructor(/** @docs-private */ readonly elementRef: ElementRef, private readonly _cdr: ChangeDetectorRef) {}
 
     /** Ensures the option is selected when activated from the keyboard. */
     _handleKeydown(event: KeyboardEvent): void {

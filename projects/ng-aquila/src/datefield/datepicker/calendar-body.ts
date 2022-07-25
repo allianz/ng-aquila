@@ -28,7 +28,7 @@ import { take, takeUntil } from 'rxjs/operators';
  * @docs-private
  */
 export class NxCalendarCell {
-    constructor(public value: number, public displayValue: string, public ariaLabel?: string, public enabled?: boolean) {}
+    constructor(readonly value: number, readonly displayValue: string, readonly ariaLabel?: string, readonly enabled?: boolean) {}
 }
 
 /**
@@ -91,7 +91,7 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _elementRef: ElementRef, private _ngZone: NgZone, private _focusMonitor: FocusMonitor) {}
+    constructor(private readonly _elementRef: ElementRef, private readonly _ngZone: NgZone, private readonly _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit(): void {
         this._cells.forEach(cell => this._focusMonitor.monitor(cell));

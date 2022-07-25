@@ -43,7 +43,7 @@ export class NxComparisonTablePopularCell {
         return this._forColumn as number;
     }
 
-    constructor(public _table: NxComparisonTableBase, public _row: NxComparisonTableRowBase) {
+    constructor(readonly _table: NxComparisonTableBase, readonly _row: NxComparisonTableRowBase) {
         if (this._row.type !== 'header') {
             console.warn('A popular cell should be only in a header row.');
         }

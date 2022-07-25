@@ -84,13 +84,13 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     _id!: string;
 
     constructor(
-        private _elementRef: ElementRef,
-        private _focusTrapFactory: FocusTrapFactory,
-        private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(DOCUMENT) private _document: Document | null,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusTrapFactory: FocusTrapFactory,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
         /** The modal configuration. */
-        public _config: NxModalConfig,
-        private _focusMonitor: FocusMonitor,
+        readonly _config: NxModalConfig,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         super();
         this._ariaLabelledBy = _config.ariaLabelledBy || null;

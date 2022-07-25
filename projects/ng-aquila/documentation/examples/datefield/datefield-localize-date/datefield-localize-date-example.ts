@@ -21,8 +21,8 @@ export class DatefieldLocalizeDateExampleComponent
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public nxDateAdapter: NxDateAdapter<Moment>,
-        @Inject(NX_DATE_LOCALE) public nxDateLocale: string,
+        readonly nxDateAdapter: NxDateAdapter<Moment>,
+        @Inject(NX_DATE_LOCALE) readonly nxDateLocale: string,
     ) {}
 
     ngOnInit(): void {

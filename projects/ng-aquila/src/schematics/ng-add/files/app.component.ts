@@ -12,7 +12,7 @@ export class AppComponent {
     dialogRef!: NxModalRef<any, any>;
     formGroup: FormGroup;
 
-    constructor(public dialogService: NxDialogService) {
+    constructor(readonly dialogService: NxDialogService) {
         this.formGroup = new FormBuilder().group({
             name: ['', Validators.required],
             items: ['', Validators.required],

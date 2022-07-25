@@ -23,10 +23,10 @@ export class LazyExampleOutletComponent implements OnInit, OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _lazyLoadingService: BaseLazyLoadingService,
-        private _cdr: ChangeDetectorRef,
-        private _manifestService: ManifestService,
-        private _route: ActivatedRoute,
+        private readonly _lazyLoadingService: BaseLazyLoadingService,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _manifestService: ManifestService,
+        private readonly _route: ActivatedRoute,
     ) {
         this.subscribeToDirectionQueryParams();
     }

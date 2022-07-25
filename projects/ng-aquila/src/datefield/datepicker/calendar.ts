@@ -188,12 +188,12 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _intl: NxDatepickerIntl,
+        private readonly _intl: NxDatepickerIntl,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
-        @Optional() private _dir: Directionality | null,
+        @Optional() private readonly _dir: Directionality | null,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');

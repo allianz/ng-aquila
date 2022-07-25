@@ -80,7 +80,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     private _contextMenuOpen = false;
     private _closingActionsSubscription = Subscription.EMPTY;
     private _contextMenuCloseSubscription = Subscription.EMPTY;
-    private _documentClickObservable: Observable<MouseEvent>;
+    private readonly _documentClickObservable: Observable<MouseEvent>;
 
     /** Strategy factory that will be used to handle scrolling while the context-menu panel is open. */
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
@@ -154,15 +154,15 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _overlay: Overlay,
-        private _element: ElementRef<HTMLElement>,
-        private _viewContainerRef: ViewContainerRef,
-        @Optional() private _parentMenu: NxContextMenuComponent | null,
-        @Optional() @Self() private _contextMenuItemInstance: NxContextMenuItemComponent | null,
-        @Optional() private _dir: Directionality | null,
-        @Optional() @Self() private _triggerButton: NxTriggerButton | null,
-        @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
-        private _cdr: ChangeDetectorRef,
+        private readonly _overlay: Overlay,
+        private readonly _element: ElementRef<HTMLElement>,
+        private readonly _viewContainerRef: ViewContainerRef,
+        @Optional() private readonly _parentMenu: NxContextMenuComponent | null,
+        @Optional() @Self() private readonly _contextMenuItemInstance: NxContextMenuItemComponent | null,
+        @Optional() private readonly _dir: Directionality | null,
+        @Optional() @Self() private readonly _triggerButton: NxTriggerButton | null,
+        @Inject(NX_CONTEXT_MENU_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _cdr: ChangeDetectorRef,
     ) {
         if (_contextMenuItemInstance) {
             _contextMenuItemInstance._triggersSubmenu = this.triggersSubmenu();

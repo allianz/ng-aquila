@@ -49,11 +49,11 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
     _id!: string;
 
     constructor(
-        private _elementRef: ElementRef,
-        private _focusTrapFactory: FocusTrapFactory,
-        @Optional() @Inject(DOCUMENT) private _document: Document | null,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusTrapFactory: FocusTrapFactory,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
         /** The overlay configuration. */
-        public _config: NxOverlayConfig,
+        readonly _config: NxOverlayConfig,
     ) {
         super();
         this._ariaLabelledBy = _config.ariaLabelledBy || null;

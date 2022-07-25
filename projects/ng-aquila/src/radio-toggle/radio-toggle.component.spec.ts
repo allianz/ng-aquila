@@ -568,7 +568,7 @@ class ValidationToggle extends RadioToggleTest {
     data = ['A', 'B', 'C'];
     testForm!: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }

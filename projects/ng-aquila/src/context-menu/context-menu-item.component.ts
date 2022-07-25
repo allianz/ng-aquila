@@ -74,10 +74,10 @@ export class NxContextMenuItemComponent implements OnDestroy {
     _triggersSubmenu = false;
 
     constructor(
-        private _elementRef: ElementRef<HTMLElement>,
-        @Optional() @Inject(DOCUMENT) private _document: Document | null,
-        private _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
+        private readonly _elementRef: ElementRef<HTMLElement>,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         this._focusMonitor.monitor(this._elementRef);
     }

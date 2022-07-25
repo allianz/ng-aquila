@@ -17,7 +17,7 @@ export class CssVarSidebarComponent {
     displayedProperties: any;
     filterValue = '';
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     getCustomProperties() {
         return Array.from(document.styleSheets).reduce((rules, styleSheet: CSSStyleSheet) => {

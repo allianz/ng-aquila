@@ -136,14 +136,14 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
 
     private _resizeStartWidth!: number;
 
-    private _unsubscribeListeners: (() => void)[] = [];
+    private readonly _unsubscribeListeners: (() => void)[] = [];
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private renderer: Renderer2,
-        private _element: ElementRef,
-        @Optional() private _dir: Directionality | null,
-        private _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly renderer: Renderer2,
+        private readonly _element: ElementRef,
+        @Optional() private readonly _dir: Directionality | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         this._onResize = this._onResize.bind(this);
         this._onResizeEnd = this._onResizeEnd.bind(this);

@@ -54,5 +54,5 @@ export class NxDataDisplayComponent {
     }
     #orientation?: NxDataDisplayOrientation | null;
 
-    constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) private _defaultOptions: DataDisplayDefaultOptions | null) {}
+    constructor(@Optional() @Inject(DATA_DISPLAY_DEFAULT_OPTIONS) private readonly _defaultOptions: DataDisplayDefaultOptions | null) {}
 }

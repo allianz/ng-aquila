@@ -51,7 +51,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
         return this._viewType;
     }
 
-    constructor(private viewportService: NxViewportService, protected _cdr: ChangeDetectorRef) {
+    constructor(private readonly viewportService: NxViewportService, protected readonly _cdr: ChangeDetectorRef) {
         const mobile$ = this.viewportService.max(NxBreakpoints.BREAKPOINT_MEDIUM);
         const tablet$ = this.viewportService.between(NxBreakpoints.BREAKPOINT_MEDIUM, NxBreakpoints.BREAKPOINT_LARGE);
         const desktop$ = this.viewportService.min(NxBreakpoints.BREAKPOINT_LARGE);

@@ -79,7 +79,7 @@ import { NX_MODAL_DATA } from '@aposin/ng-aquila/modal';
     template: 'passed in {{ data.name }}',
 })
 export class YourDialog {
-    constructor(@Inject(NX_MODAL_DATA) public data: any) {}
+    constructor(@Inject(NX_MODAL_DATA) readonly data: any) {}
 }
 ```
 

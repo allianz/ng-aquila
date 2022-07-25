@@ -18,7 +18,11 @@ export class NxvOverviewComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(public manifestService: ManifestService, @Inject(NX_DOCS_GITHUB_LINK) private githubLinkConfig: GithubLinkConfig, private _router: Router) {
+    constructor(
+        readonly manifestService: ManifestService,
+        @Inject(NX_DOCS_GITHUB_LINK) private readonly githubLinkConfig: GithubLinkConfig,
+        private readonly _router: Router,
+    ) {
         manifestService.manifest.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this.components = this.manifestService.getGroupedComponents();
         });

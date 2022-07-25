@@ -6,7 +6,7 @@ import { NxvNavigationService } from '@aposin/ngx-docs-ui';
     template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent implements OnInit {
-    constructor(private _navigationService: NxvNavigationService) {}
+    constructor(private readonly _navigationService: NxvNavigationService) {}
 
     ngOnInit(): void {
         this._navigationService.resetScrollPositionWatcher();

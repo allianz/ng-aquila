@@ -87,7 +87,7 @@ export class NxTooltipComponent implements OnDestroy {
     /** Subject for notifying that the tooltip has been hidden from the view */
     private readonly _onHide: Subject<any> = new Subject();
 
-    constructor(private _cdr: ChangeDetectorRef, public elementRef: ElementRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef) {}
 
     /**
      * Shows the tooltip with an aninxion originating from the provided origin

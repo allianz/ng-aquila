@@ -22,5 +22,5 @@ export class NxMultiStepperGroupComponent {
     }
     private _label!: string;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

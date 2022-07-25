@@ -93,7 +93,7 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit {
 
     @ViewChild(NxCalendarComponent, { static: true }) _calendar!: NxCalendarComponent<D>;
 
-    constructor(public _intl: NxDatepickerIntl, public elementRef: ElementRef, private _ngZone: NgZone) {}
+    constructor(readonly _intl: NxDatepickerIntl, readonly elementRef: ElementRef, private readonly _ngZone: NgZone) {}
 
     ngAfterContentInit(): void {
         this._focusActiveCell();
@@ -244,7 +244,7 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     _toggleButton!: NxDatepickerToggleComponent<D>;
 
     /** Strategy factory that will be used to handle scrolling while the datepicker panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** Emits when the datepicker is disabled. */
     readonly _disabledChange = new Subject<boolean>();
@@ -254,13 +254,13 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _overlay: Overlay,
-        private _ngZone: NgZone,
-        private _viewContainerRef: ViewContainerRef,
-        @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _overlay: Overlay,
+        private readonly _ngZone: NgZone,
+        private readonly _viewContainerRef: ViewContainerRef,
+        @Inject(NX_DATEPICKER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
-        @Optional() private _dir: Directionality | null,
-        @Optional() @Inject(DOCUMENT) private _document: Document | null,
+        @Optional() private readonly _dir: Directionality | null,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');

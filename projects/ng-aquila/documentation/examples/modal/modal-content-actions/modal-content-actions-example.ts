@@ -15,7 +15,7 @@ export class ModalContentActionsExampleComponent {
 
     dialogRef!: NxModalRef<any, any>;
 
-    constructor(public dialogService: NxDialogService) {}
+    constructor(readonly dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
         this.dialogRef = this.dialogService.open(this.templateRef, {

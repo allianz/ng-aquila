@@ -109,7 +109,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
      */
     isActive = false;
 
-    constructor(@Inject(NxTabGroupBase) @Optional() @Host() private _tabGroup: NxTabGroupBase | null) {
+    constructor(@Inject(NxTabGroupBase) @Optional() @Host() private readonly _tabGroup: NxTabGroupBase | null) {
         if (!this._tabGroup) {
             throw Error(`The nx-tab element has to be wrapped in a nx-tab-group to work.
       Please provide a nx-tab-group element and place your tabs inside it.`);

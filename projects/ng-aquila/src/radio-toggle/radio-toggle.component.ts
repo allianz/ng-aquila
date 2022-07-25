@@ -36,7 +36,7 @@ export const RESET_VALUES = [null, undefined, ''];
     styleUrls: ['radio-toggle.component.scss'],
 })
 export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, AfterContentInit, DoCheck {
-    private _toggleId: string = (nextId++).toString();
+    private readonly _toggleId: string = (nextId++).toString();
 
     private _selection: any;
 
@@ -88,11 +88,11 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     private onChangeCallback = (option: any) => {};
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
-        private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        private readonly _cdr: ChangeDetectorRef,
+        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

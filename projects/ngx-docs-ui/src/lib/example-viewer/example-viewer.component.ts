@@ -21,7 +21,7 @@ interface ExampleConfig {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleViewerComponent {
-    constructor(public manifestService: ManifestService, public copyService: CopyService) {}
+    constructor(readonly manifestService: ManifestService, readonly copyService: CopyService) {}
 
     moduleId!: string;
     showSourceCode = false;

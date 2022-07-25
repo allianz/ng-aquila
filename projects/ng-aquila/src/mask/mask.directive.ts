@@ -207,7 +207,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         return this._validateMask;
     }
 
-    constructor(private _elementRef: ElementRef) {}
+    constructor(private readonly _elementRef: ElementRef) {}
 
     /** @docs-private */
     get elementRefValue(): string {

@@ -27,19 +27,19 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     /** Event that emits the time in 24h ISO format. */
     @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
 
-    private _idHours = `nx-timefield__hours-${nextId++}`;
+    private readonly _idHours = `nx-timefield__hours-${nextId++}`;
     /** @docs-private */
     get idHours(): string {
         return this._idHours;
     }
 
-    private _idMinutes = `nx-timefield__minutes-${nextId++}`;
+    private readonly _idMinutes = `nx-timefield__minutes-${nextId++}`;
     /** @docs-private */
     get idMinutes(): string {
         return this._idMinutes;
     }
 
-    private _idRadioGroup = `nx-timefield__radio-group-${nextId++}`;
+    private readonly _idRadioGroup = `nx-timefield__radio-group-${nextId++}`;
     /** @docs-private */
     get idRadioGroup(): string {
         return this._idRadioGroup;
@@ -57,13 +57,13 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._minHours;
     }
 
-    private _maxMinutes = 59;
+    private readonly _maxMinutes = 59;
     /** @docs-private */
     get maxMinutes() {
         return this._maxMinutes;
     }
 
-    private _minMinutes = 0;
+    private readonly _minMinutes = 0;
     /** @docs-private */
     get minMinutes() {
         return this._minMinutes;
@@ -232,12 +232,12 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     }
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
-        private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
-        public _intl: NxTimefieldIntl,
+        private readonly _cdr: ChangeDetectorRef,
+        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+        readonly _intl: NxTimefieldIntl,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

@@ -128,7 +128,7 @@ describe('NxCalendarBodyComponent', () => {
             testComponent.rows = [
                 [1, 2, 3, 4, 5, 6, 7],
                 [8, 9, 10, 11, 12, 13, 14],
-            ].map(r => r.map(createCell));
+            ].map(r => r.map(v => createCell(v)));
             testComponent.followingItems = [[1, 2, 3, 4, 5, 6, 7]];
             fixture.detectChanges();
 
@@ -146,7 +146,7 @@ describe('NxCalendarBodyComponent', () => {
             testComponent.rows = [
                 [1, 2, 3, 4, 5, 6, 7],
                 [8, 9, 10, 11, 12, 13, 14],
-            ].map(r => r.map(createCell));
+            ].map(r => r.map(v => createCell(v)));
             testComponent.followingItems = [[1, 2, 3, 4, 5, 6, 7]];
             fixture.detectChanges();
 
@@ -159,7 +159,7 @@ describe('NxCalendarBodyComponent', () => {
                 [1, 2, 3, 4],
                 [5, 6, 7, 8, 9, 10, 11],
                 [12, 13, 14, 15, 16, 17, 18],
-            ].map(r => r.map(createCell));
+            ].map(r => r.map(v => createCell(v)));
             testComponent.followingItems = [];
             fixture.detectChanges();
 
@@ -187,7 +187,7 @@ class StandardCalendarBody {
     rows = [
         [1, 2, 3, 4, 5, 6, 7],
         [8, 9, 10, 11, 12, 13, 14],
-    ].map(r => r.map(createCell));
+    ].map(r => r.map(v => createCell(v)));
     todayValue = 3;
     selectedValue = 4;
     numCols = 7;
@@ -201,13 +201,7 @@ class StandardCalendarBody {
     template: `<table nx-calendar-body [rows]="rows" [allowDisabledSelection]="allowDisabledSelection" (selectedValueChange)="selected = $event"> </table>`,
 })
 class CalendarBodyWithDisabledCells {
-    rows = [[1, 2, 3, 4]].map(r =>
-        r.map(d => {
-            const cell = createCell(d);
-            cell.enabled = d % 2 === 0;
-            return cell;
-        }),
-    );
+    rows = [[1, 2, 3, 4]].map(r => r.map(d => createCell(d, d % 2 === 0)));
     allowDisabledSelection = false;
     selected!: number;
 }
@@ -222,7 +216,7 @@ class CalendarBodyWithPreviousAndFollowingCells {
         [5, 6, 7, 8, 9, 10, 11],
         [12, 13, 14, 15, 16, 17, 18],
         [19, 20],
-    ].map(r => r.map(createCell));
+    ].map(r => r.map(v => createCell(v)));
     followingItems = [
         [1, 2, 3, 4, 5],
         [6, 7, 8, 9, 10, 11, 12],
@@ -230,6 +224,6 @@ class CalendarBodyWithPreviousAndFollowingCells {
     ];
 }
 
-function createCell(value: number) {
-    return new NxCalendarCell(value, `${value}`, `${value}-label`, true);
+function createCell(value: number, enabled = true) {
+    return new NxCalendarCell(value, `${value}`, `${value}-label`, enabled);
 }

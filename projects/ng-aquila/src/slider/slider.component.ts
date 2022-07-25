@@ -65,7 +65,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _hideLabels = false;
     private _disabled = false;
 
-    @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
+    @ViewChild('handle', { static: true }) private readonly _handleElement!: ElementRef;
 
     _labelPosition: string = DEFAULT_LABEL_POSITION;
 
@@ -202,11 +202,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _onTouched: () => any = () => {};
 
     constructor(
-        private elementRef: ElementRef,
-        private _cdr: ChangeDetectorRef,
-        private _ngZone: NgZone,
-        @Optional() private _dir: Directionality | null,
-        private _focusMonitor: FocusMonitor,
+        private readonly elementRef: ElementRef,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _ngZone: NgZone,
+        @Optional() private readonly _dir: Directionality | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {}
 
     ngAfterViewInit(): void {

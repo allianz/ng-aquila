@@ -147,7 +147,7 @@ export class NxTreeFlatDataSource<T extends NxTreeNode, F extends NxFlatTreeNode
         this.treeControl.dataNodes = this._flattenedData.value;
     }
 
-    constructor(private treeControl: FlatTreeControl<F>, initialData: T[] = []) {
+    constructor(private readonly treeControl: FlatTreeControl<F>, initialData: T[] = []) {
         super();
         this._treeFlattener = new NxTreeFlattener();
         this.data = initialData;

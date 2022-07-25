@@ -10,7 +10,7 @@ import { NxvTableOfContentsComponent } from '../../table-of-contents/table-of-co
 })
 export class ComponentApi {
     @ViewChild(NxvTableOfContentsComponent, { static: true }) tableOfContents!: NxvTableOfContentsComponent;
-    constructor(public componentService: ComponentService) {}
+    constructor(readonly componentService: ComponentService) {}
 
     onAPIloaded() {
         // update the toc when the api table is loaded

@@ -168,10 +168,10 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        /** @docs-private */ public elementRef: ElementRef,
-        private renderer: Renderer2,
-        private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private _defaultOptions: FormfieldDefaultOptions | null,
+        /** @docs-private */ readonly elementRef: ElementRef,
+        private readonly renderer: Renderer2,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Inject(FORMFIELD_DEFAULT_OPTIONS) private readonly _defaultOptions: FormfieldDefaultOptions | null,
     ) {}
 
     ngAfterContentInit(): void {

@@ -44,13 +44,13 @@ export class NxNotificationPanelTriggerDirective {
     }
 
     /** Strategy factory that will be used to handle scrolling while the notification-panel panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
-        private _nxOverlay: NxOverlayService,
-        private _element: ElementRef<HTMLElement>,
-        @Optional() @Self() private _triggerButton: NxTriggerButton | null,
-        @Inject(NX_NOTIFICATION_PANEL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _nxOverlay: NxOverlayService,
+        private readonly _element: ElementRef<HTMLElement>,
+        @Optional() @Self() private readonly _triggerButton: NxTriggerButton | null,
+        @Inject(NX_NOTIFICATION_PANEL_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}
 
     open() {

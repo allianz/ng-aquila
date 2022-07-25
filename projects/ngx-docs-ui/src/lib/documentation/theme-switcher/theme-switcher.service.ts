@@ -14,7 +14,7 @@ export class ThemeSwitcherService {
     readonly themeChanged = new Subject<Theme>();
     private _selectedTheme!: Theme;
 
-    constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private _themes: Theme[]) {}
+    constructor(@Inject(NX_DOCS_SELECTABLE_THEMES) private readonly _themes: Theme[]) {}
 
     switchTheme(newTheme: Theme) {
         if (this._selectedTheme === newTheme) {

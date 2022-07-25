@@ -4,7 +4,7 @@ import { filter, map, pairwise, startWith } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NxvNavigationService {
-    constructor(private _router: Router) {}
+    constructor(private readonly _router: Router) {}
 
     isNavigationWithinComponent(previousUrl: string, newUrl: string) {
         const componentViewExpression = /((guides|documentation))\/([^#/]+)/;

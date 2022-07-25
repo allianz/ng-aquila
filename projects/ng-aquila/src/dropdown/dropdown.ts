@@ -73,9 +73,9 @@ export class NxDropdownIntl {
 export class NxDropdownSelectChange<T = any> {
     constructor(
         /** Reference to the select that emitted the change event. */
-        public source: NxDropdownComponent,
+        readonly source: NxDropdownComponent,
         /** Current value of the select that emitted the event. */
-        public value: T,
+        readonly value: T,
     ) {}
 }
 
@@ -188,7 +188,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     currentFilter = '';
 
     // @ts-expect-error TODO: refactor to be TS compatible
-    private _options: BehaviorSubject<NxDropdownOption[]> = new BehaviorSubject(null);
+    private readonly _options: BehaviorSubject<NxDropdownOption[]> = new BehaviorSubject(null);
 
     /**
      * Array of options for the dropdown.
@@ -368,7 +368,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
 
     @ViewChild('defaultClosedDropdownLabel', { static: true })
-    private _defaultClosedDropdownLabel!: TemplateRef<any>;
+    private readonly _defaultClosedDropdownLabel!: TemplateRef<any>;
 
     @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
 
@@ -395,7 +395,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /** Strategy factory that will be used to handle scrolling while the dropdown panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** Strategy that will be used to handle scrolling while the dropdown panel is open. */
     _scrollStrategy = this._scrollStrategyFactory();
@@ -483,18 +483,18 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private _elementRef: ElementRef,
-        private _ngZone: NgZone,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        private readonly _ngZone: NgZone,
         @Attribute('tabindex') tabIndex: string,
-        @Optional() private formFieldComponent: NxFormfieldComponent | null,
-        private _errorStateMatcher: ErrorStateMatcher,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
-        @Optional() private _dir: Directionality | null,
-        @Inject(NX_DROPDOWN_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
-        private liveAnnouncer: LiveAnnouncer,
+        @Optional() private readonly formFieldComponent: NxFormfieldComponent | null,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+        @Optional() private readonly _dir: Directionality | null,
+        @Inject(NX_DROPDOWN_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly liveAnnouncer: LiveAnnouncer,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

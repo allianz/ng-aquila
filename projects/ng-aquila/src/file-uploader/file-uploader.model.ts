@@ -11,8 +11,8 @@ export class FileItem {
     /** Sets the name of the file. */
     name: string;
 
-    private _size: number;
-    private _type: string;
+    private readonly _size: number;
+    private readonly _type: string;
 
     /** Whether the file is being uploaded at the moment. */
     isUploading = false;

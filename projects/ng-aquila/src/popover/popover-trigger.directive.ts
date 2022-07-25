@@ -85,7 +85,7 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnInit {
     private overlayRef!: OverlayRef | null;
     private portal!: TemplatePortal<any>;
-    private _overlayDestroyed = new Subject<void>();
+    private readonly _overlayDestroyed = new Subject<void>();
     private _show = false;
     private _closeable: boolean | null = null;
     private _positionStrategy!: PositionStrategy;
@@ -95,8 +95,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _focusTrap!: FocusTrap;
     /** Element that was focused before the Popover was opened. Save this to restore upon close. */
     private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
-    private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
-    private _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
+    private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
+    private readonly _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
     private _removeEventListener!: () => void;
     /** @docs-private */
     id = 'nx-popover-' + nextId++;
@@ -199,17 +199,17 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
-        private overlay: Overlay,
-        private elementRef: ElementRef,
-        private viewContainerRef: ViewContainerRef,
-        private eventManager: EventManager,
-        private _focusTrapFactory: FocusTrapFactory,
-        private _focusMonitor: FocusMonitor,
-        private _ngZone: NgZone,
-        private _platform: Platform,
-        @Optional() private _dir: Directionality | null,
-        @Inject(NX_POPOVER_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
-        private _cdr: ChangeDetectorRef,
+        private readonly overlay: Overlay,
+        private readonly elementRef: ElementRef,
+        private readonly viewContainerRef: ViewContainerRef,
+        private readonly eventManager: EventManager,
+        private readonly _focusTrapFactory: FocusTrapFactory,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _ngZone: NgZone,
+        private readonly _platform: Platform,
+        @Optional() private readonly _dir: Directionality | null,
+        @Inject(NX_POPOVER_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _cdr: ChangeDetectorRef,
     ) {
         const element: HTMLElement = elementRef.nativeElement;
         if (!this._platform.IOS && !this._platform.ANDROID) {

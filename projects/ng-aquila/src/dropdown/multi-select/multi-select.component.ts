@@ -156,14 +156,14 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     constructor(
-        public _intl: NxDropdownIntl,
-        private _elementRef: ElementRef,
-        private _errorStateMatcher: ErrorStateMatcher,
-        private _cdr: ChangeDetectorRef,
-        @Optional() private _formFieldComponent: NxFormfieldComponent | null,
-        @Optional() @Self() public ngControl: NgControl | null,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        readonly _intl: NxDropdownIntl,
+        private readonly _elementRef: ElementRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() private readonly _formFieldComponent: NxFormfieldComponent | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -183,7 +183,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     @ViewChildren(NxMultiSelectOptionComponent)
-    private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
+    private readonly _options!: QueryList<NxMultiSelectOptionComponent<T>>;
 
     private _required = false;
 
@@ -201,19 +201,19 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     _divider = 0;
 
     @ViewChild('trigger')
-    private _trigger?: ElementRef;
+    private readonly _trigger?: ElementRef;
 
     @ViewChild('filterInput')
-    private _filterInput?: ElementRef;
+    private readonly _filterInput?: ElementRef;
 
     @ViewChild('itemsList')
-    private _optionsList?: ElementRef;
+    private readonly _optionsList?: ElementRef;
 
     @ViewChild('panelHeader')
-    private _panelHeader?: ElementRef;
+    private readonly _panelHeader?: ElementRef;
 
     @ViewChild(CdkConnectedOverlay, { static: true })
-    private _overlayDir?: CdkConnectedOverlay;
+    private readonly _overlayDir?: CdkConnectedOverlay;
 
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';

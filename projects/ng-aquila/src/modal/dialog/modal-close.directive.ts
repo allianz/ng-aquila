@@ -24,7 +24,15 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
     /** Dialog close input. */
     @Input('nxModalClose') modalResult: any;
 
-    constructor(@Optional() public modalRef: NxModalRef<any> | null, private _elementRef: ElementRef<HTMLElement>, private _dialogService: NxDialogService) {}
+    modalRef: NxModalRef<any> | null;
+
+    constructor(
+        @Optional() modalRef: NxModalRef<any> | null,
+        private readonly _elementRef: ElementRef<HTMLElement>,
+        private readonly _dialogService: NxDialogService,
+    ) {
+        this.modalRef = modalRef;
+    }
 
     ngOnInit(): void {
         if (!this.modalRef) {

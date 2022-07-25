@@ -15,7 +15,7 @@ export class NxvStatusDotComponent {
     message = 'Not applicable';
     iconName = '';
 
-    constructor(public iconRegistry: NxIconRegistry) {
+    constructor(readonly iconRegistry: NxIconRegistry) {
         this.iconRegistry.registerFont('fa', 'fas', 'fa-');
         this.iconRegistry.addFontIcon('docs-progress', 'hourglass-half', 'fa');
         this.iconRegistry.addFontIcon('docs-not-applicable', 'minus', 'fa');

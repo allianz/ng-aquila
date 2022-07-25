@@ -8,13 +8,13 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostList
 })
 export class NxSwipebarComponent implements AfterViewInit {
     @ViewChild('element')
-    private _element!: ElementRef;
+    private readonly _element!: ElementRef;
 
     @ViewChild('scrollable')
-    private _scrollable!: ElementRef;
+    private readonly _scrollable!: ElementRef;
 
     @ViewChild('indicator')
-    private _indicator!: ElementRef;
+    private readonly _indicator!: ElementRef;
 
     private _barLength = 0;
 
@@ -32,7 +32,7 @@ export class NxSwipebarComponent implements AfterViewInit {
     @Input()
     label = '';
 
-    constructor(private zone: NgZone) {
+    constructor(private readonly zone: NgZone) {
         this._onMousedown = this._onMousedown.bind(this);
         this._onMousemove = this._onMousemove.bind(this);
         this._onMouseup = this._onMouseup.bind(this);

@@ -24,7 +24,7 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
         return this._resize;
     }
 
-    constructor(private _element: ElementRef, private _renderer: Renderer2, private _cdr: ChangeDetectorRef) {
+    constructor(private readonly _element: ElementRef, private readonly _renderer: Renderer2, private readonly _cdr: ChangeDetectorRef) {
         this.updateInputWidth = this.updateInputWidth.bind(this);
     }
 

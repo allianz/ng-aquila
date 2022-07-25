@@ -16,7 +16,7 @@ export class ModalWithDirectionExampleComponent {
     templateDialogRef!: NxModalRef<any>;
 
     constructor(
-        public dialogService: NxDialogService,
+        readonly dialogService: NxDialogService,
         private dir: Directionality,
     ) {}
 

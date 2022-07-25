@@ -55,7 +55,7 @@ export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     ngAfterContentInit(): void {
         if (this.breadcrumbItems.length === 0) {

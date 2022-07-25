@@ -29,7 +29,7 @@ export class NxOverlayRef<T, R = any> {
     /** Subject for notifying the user that the overlay has started closing. */
     private readonly _beforeClosed = new Subject<R | undefined>();
 
-    private _documentClickObservable: Observable<MouseEvent>;
+    private readonly _documentClickObservable: Observable<MouseEvent>;
 
     /** Result to be passed to afterClosed. */
     private _result: R | undefined;
@@ -38,10 +38,10 @@ export class NxOverlayRef<T, R = any> {
     private _state = NxOverlayState.OPEN;
 
     constructor(
-        private _overlayRef: OverlayRef,
-        public _containerInstance: NxOverlayContainerComponent,
-        public origin: FlexibleConnectedPositionStrategyOrigin,
-        private _router: Router,
+        private readonly _overlayRef: OverlayRef,
+        readonly _containerInstance: NxOverlayContainerComponent,
+        readonly origin: FlexibleConnectedPositionStrategyOrigin,
+        private readonly _router: Router,
         readonly id: string = `nx-overlay-${nextId++}`,
     ) {
         this._documentClickObservable = fromEvent<MouseEvent>(document, 'click');

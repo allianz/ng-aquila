@@ -19,9 +19,9 @@ export class NxvGuidesComponent implements OnDestroy {
 
     constructor(
         manifestService: ManifestService,
-        private router: Router,
-        private route: ActivatedRoute,
-        public documentationFrame: DocumentationFrameComponent,
+        private readonly router: Router,
+        private readonly route: ActivatedRoute,
+        readonly documentationFrame: DocumentationFrameComponent,
     ) {
         manifestService.manifest
             .pipe(

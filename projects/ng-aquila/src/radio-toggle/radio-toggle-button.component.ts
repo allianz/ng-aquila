@@ -21,7 +21,7 @@ import { NxRadioToggleButtonBaseComponent } from './radio-toggle-button-base.com
 
 /** @docs-private */
 export class NxRadioToggleButtonChange {
-    constructor(public source: NxRadioToggleButtonComponent, public value: any) {}
+    constructor(readonly source: NxRadioToggleButtonComponent, readonly value: any) {}
 }
 
 @Component({
@@ -80,14 +80,14 @@ export class NxRadioToggleButtonComponent extends NxRadioToggleButtonBaseCompone
     private readonly _destroyed = new Subject<void>();
 
     /** Unregister function for _expansionDispatcher. */
-    private _removeUniqueSelectionListener: () => void = () => {};
+    private readonly _removeUniqueSelectionListener: () => void = () => {};
 
     constructor(
-        @Inject(forwardRef(() => NxRadioToggleComponent)) private radioToggle: NxRadioToggleComponent,
+        @Inject(forwardRef(() => NxRadioToggleComponent)) private readonly radioToggle: NxRadioToggleComponent,
         /** @docs-private */ renderer: Renderer2,
-        private _cdr: ChangeDetectorRef,
-        private _toggleDispatcher: UniqueSelectionDispatcher,
-        private _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _toggleDispatcher: UniqueSelectionDispatcher,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         super(renderer);
 

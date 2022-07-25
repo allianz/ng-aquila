@@ -16,18 +16,18 @@ export interface NxFileUploadConfig {
 export class NxFileUploadSuccess {
     constructor(
         /** The files that were successfully uploaded. */
-        public files: FileItem[],
+        readonly files: FileItem[],
         /** The results of the request(s). */
-        public requests: object[],
+        readonly requests: object[],
     ) {}
 }
 
 export class NxFileUploadError {
     constructor(
         /** The files that had an error while uploading. */
-        public files: FileItem[],
+        readonly files: FileItem[],
         /** The returned errors of the request(s). */
-        public requests: object[],
+        readonly requests: object[],
     ) {}
 }
 
@@ -42,7 +42,7 @@ export interface NxFileUploadResult {
 
 export class NxFileUploader {
     private _config: NxFileUploadConfig;
-    private _httpClient: HttpClient;
+    private readonly _httpClient: HttpClient;
 
     /** Stream that emits the result of an upload request. */
     readonly response: Subject<NxFileUploadResult> = new Subject<NxFileUploadResult>();

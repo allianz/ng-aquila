@@ -237,13 +237,13 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private _errorStateMatcher: ErrorStateMatcher,
-        public _intl: NxFileUploaderIntl,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
-        private _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        readonly _intl: NxFileUploaderIntl,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

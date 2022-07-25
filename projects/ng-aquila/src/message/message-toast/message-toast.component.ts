@@ -44,12 +44,12 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     _context: NxMessageToastContext;
 
     constructor(
-        private _ngZone: NgZone,
-        private _cdr: ChangeDetectorRef,
+        private readonly _ngZone: NgZone,
+        private readonly _cdr: ChangeDetectorRef,
         /** The message toast configuration. */
         public config: NxMessageToastConfig,
         /** Injected data into the notifciation. */
-        public data?: NxMessageToastData,
+        readonly data?: NxMessageToastData,
     ) {
         super();
 

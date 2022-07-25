@@ -76,9 +76,9 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 
     constructor(
-        public _cdr: ChangeDetectorRef,
+        readonly _cdr: ChangeDetectorRef,
         @Optional() _dir: Directionality | null,
-        @Optional() public _tabGroup: NxTabGroupBase | null,
+        @Optional() readonly _tabGroup: NxTabGroupBase | null,
         _element: ElementRef,
     ) {
         super(_cdr, _dir, _element);

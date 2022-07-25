@@ -85,7 +85,11 @@ export class NxComparisonTableCell {
         return this._type;
     }
 
-    constructor(public _table: NxComparisonTableBase, private _row: NxComparisonTableRowBase, @Optional() private _toggleSection: NxToggleSectionBase | null) {}
+    constructor(
+        readonly _table: NxComparisonTableBase,
+        private readonly _row: NxComparisonTableRowBase,
+        @Optional() private readonly _toggleSection: NxToggleSectionBase | null,
+    ) {}
 
     _isSelected(): boolean {
         return this.index !== undefined && this.index === this._table.selectedIndex;

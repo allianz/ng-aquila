@@ -87,7 +87,10 @@ export class NxErrorComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _cdr: ChangeDetectorRef, @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private _defaultOptions: ErrorDefaultOptions | null) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Inject(ERROR_DEFAULT_OPTIONS) private readonly _defaultOptions: ErrorDefaultOptions | null,
+    ) {
         this._defaultOptions?.changes?.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });

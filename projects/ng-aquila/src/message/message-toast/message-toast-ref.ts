@@ -26,7 +26,7 @@ export class NxMessageToastRef {
      */
     private _durationTimeoutId: any;
 
-    constructor(toastInstance: NxMessageToastComponent, private _overlayRef: OverlayRef) {
+    constructor(toastInstance: NxMessageToastComponent, private readonly _overlayRef: OverlayRef) {
         this.toastInstance = toastInstance;
         toastInstance._onExit.pipe(take(1)).subscribe(() => this._finishDismiss());
     }

@@ -54,7 +54,7 @@ export class NxActionComponent implements OnDestroy {
     }
     private _expanded = false;
 
-    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

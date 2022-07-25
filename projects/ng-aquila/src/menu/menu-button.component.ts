@@ -63,7 +63,7 @@ export class NxMenuButtonComponent implements OnDestroy {
     }
     private _type: NxMenuButtonType = 'root';
 
-    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
+    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor, private readonly _elementRef: ElementRef) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

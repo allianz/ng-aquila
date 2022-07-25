@@ -34,10 +34,10 @@ export const NX_MODAL_SCROLL_STRATEGY_PROVIDER = {
  */
 @Injectable()
 export class NxDialogService implements OnDestroy {
-    private _openModalsAtThisLevel: NxModalRef<any>[] = [];
+    private readonly _openModalsAtThisLevel: NxModalRef<any>[] = [];
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();
     private readonly _afterOpenedAtThisLevel = new Subject<NxModalRef<any>>();
-    private _ariaHiddenElements = new Map<Element, string | null>();
+    private readonly _ariaHiddenElements = new Map<Element, string | null>();
 
     /** Keeps track of the currently-open modals. */
     get openModals(): NxModalRef<any>[] {
@@ -65,15 +65,15 @@ export class NxDialogService implements OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     /** Strategy factory that will be used to handle scrolling while the modal panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
-        private _overlay: Overlay,
-        private _injector: Injector,
-        @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private _defaultOptions: NxModalConfig | null,
-        @Optional() @SkipSelf() private _parentDialogService: NxDialogService | null,
-        private _overlayContainer: OverlayContainer,
-        @Inject(NX_MODAL_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _overlay: Overlay,
+        private readonly _injector: Injector,
+        @Optional() @Inject(NX_MODAL_DEFAULT_OPTIONS) private readonly _defaultOptions: NxModalConfig | null,
+        @Optional() @SkipSelf() private readonly _parentDialogService: NxDialogService | null,
+        private readonly _overlayContainer: OverlayContainer,
+        @Inject(NX_MODAL_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}
 
     /**

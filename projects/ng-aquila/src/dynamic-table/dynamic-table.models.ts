@@ -20,7 +20,7 @@ export interface NxDynamicTableColumnDefinition {
 }
 
 export class NxDynamicTableDataSource extends DataSource<any> {
-    constructor(private _datachange: BehaviorSubject<any[]>) {
+    constructor(private readonly _datachange: BehaviorSubject<any[]>) {
         super();
     }
     /** @docs-private Connect function called by the table to retrieve one stream containing the data to render. */

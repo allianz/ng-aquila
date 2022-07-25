@@ -92,5 +92,8 @@ export class NxLabelComponent {
         return this._for;
     }
 
-    constructor(@Optional() @Inject(LABEL_DEFAULT_OPTIONS) private _defaultOptions: LabelDefaultOptions | null, private _cdr: ChangeDetectorRef) {}
+    constructor(
+        @Optional() @Inject(LABEL_DEFAULT_OPTIONS) private readonly _defaultOptions: LabelDefaultOptions | null,
+        private readonly _cdr: ChangeDetectorRef,
+    ) {}
 }

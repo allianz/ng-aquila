@@ -412,7 +412,7 @@ class ConfigurableTimefield extends TimefieldTest {}
 class ReactiveTimefield extends TimefieldTest {
     testForm!: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }

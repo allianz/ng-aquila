@@ -39,7 +39,7 @@ export class NxMobileToggleButtonComponent {
     /** @docs-private */
     isLast = false;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     setFirstButton() {

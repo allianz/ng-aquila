@@ -36,5 +36,5 @@ export class NxMenuComponent {
         this.open = !this.open;
     }
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

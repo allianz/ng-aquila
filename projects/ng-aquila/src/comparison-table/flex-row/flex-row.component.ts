@@ -29,7 +29,7 @@ export class NxComparisonTableFlexRow implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(public _table: NxComparisonTableBase, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(readonly _table: NxComparisonTableBase, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor
             .monitor(this._elementRef, true)
             .pipe(takeUntil(this._destroyed))

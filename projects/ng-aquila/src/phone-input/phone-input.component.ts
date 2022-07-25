@@ -54,7 +54,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     focused = false;
 
-    private _uid = 'phone-input-' + next++;
+    private readonly _uid = 'phone-input-' + next++;
 
     private _id!: string;
 
@@ -196,15 +196,15 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     _onTouched = () => {};
 
     constructor(
-        private _elementRef: ElementRef,
-        private _focusMonitor: FocusMonitor,
-        private _cdr: ChangeDetectorRef,
-        private _errorStateMatcher: ErrorStateMatcher,
-        private _intl: NxPhoneInputIntl,
-        @Optional() private formFieldComponent: NxFormfieldComponent | null,
-        /** @docs-private */ @Optional() @Self() public ngControl: NgControl | null,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        private readonly _intl: NxPhoneInputIntl,
+        @Optional() private readonly formFieldComponent: NxFormfieldComponent | null,
+        /** @docs-private */ @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of

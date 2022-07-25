@@ -119,10 +119,10 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
     private removeEventListener!: () => void;
 
     constructor(
-        private modalService: NxModalService,
-        private eventManager: EventManager,
-        private _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
+        private readonly modalService: NxModalService,
+        private readonly eventManager: EventManager,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
     ) {}
 
     ngOnInit(): void {

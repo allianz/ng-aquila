@@ -99,7 +99,7 @@ export class SchematicTestSetup {
     hostTree!: HostTree;
     appTree!: UnitTestTree;
 
-    constructor(public schematicName: string, public collection = Collection.MIGRATIONS) {
+    constructor(readonly schematicName: string, readonly collection = Collection.MIGRATIONS) {
         this.setup();
     }
 

@@ -7,7 +7,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 export class NxTabLabelWrapperDirective implements FocusableOption {
     private _disabled = false;
 
-    constructor(public elementRef: ElementRef) {}
+    constructor(readonly elementRef: ElementRef) {}
 
     /** Whether the tab group is disabled. Default: false. */
     @Input()

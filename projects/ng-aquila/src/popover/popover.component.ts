@@ -53,7 +53,7 @@ export class NxPopoverComponent implements OnDestroy, OnInit {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(public _intl: NxPopoverIntl, private _cdr: ChangeDetectorRef) {}
+    constructor(readonly _intl: NxPopoverIntl, private readonly _cdr: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {

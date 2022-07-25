@@ -95,7 +95,7 @@ export class NxHeaderNavigationItemDirective {}
     template: '<span class="nx-header__link-title"><ng-content></ng-content></span>',
 })
 export class NxHeaderLinkComponent implements OnDestroy {
-    constructor(private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

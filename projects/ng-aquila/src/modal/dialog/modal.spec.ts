@@ -1542,7 +1542,7 @@ describe('NxDialog with default options', () => {
 
 @Directive({ selector: 'nx-with-view-container' })
 class DirectiveWithViewContainer {
-    constructor(public viewContainerRef: ViewContainerRef) {}
+    constructor(readonly viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
@@ -1550,7 +1550,7 @@ class DirectiveWithViewContainer {
     template: 'hello',
 })
 class ComponentWithOnPushViewContainer {
-    constructor(public viewContainerRef: ViewContainerRef) {}
+    constructor(readonly viewContainerRef: ViewContainerRef) {}
 }
 
 @Component({
@@ -1582,7 +1582,7 @@ class ComponentWithTemplateRef {
 /** Simple component for testing ComponentPortal. */
 @Component({ template: '<p>Pizza</p> <input> <button>Close</button>' })
 class PizzaMsg {
-    constructor(public dialogRef: NxModalRef<PizzaMsg>, public dialogInjector: Injector, public directionality: Directionality) {}
+    constructor(readonly dialogRef: NxModalRef<PizzaMsg>, readonly dialogInjector: Injector, readonly directionality: Directionality) {}
 }
 
 @Component({
@@ -1622,13 +1622,13 @@ class ComponentWithContentElementTemplateRef {
     providers: [NxDialogService],
 })
 class ComponentThatProvidesNxDialog {
-    constructor(public dialog: NxDialogService) {}
+    constructor(readonly dialog: NxDialogService) {}
 }
 
 /** Simple component for testing ComponentPortal. */
 @Component({ template: '' })
 class DialogWithInjectedData {
-    constructor(@Inject(NX_MODAL_DATA) public data: any) {}
+    constructor(@Inject(NX_MODAL_DATA) readonly data: any) {}
 }
 
 @Component({ template: '<p>Pasta</p>' })

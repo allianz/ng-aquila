@@ -23,9 +23,9 @@ import { NxDropdownGroupComponent } from '../group/dropdown-group';
 export class NxDropdownItemChange {
     constructor(
         /** Reference to the option that emitted the event. */
-        public item: NxDropdownItemComponent,
+        readonly item: NxDropdownItemComponent,
         /** Whether the change in the option's value was a result of a user action. */
-        public isUserInput = false,
+        readonly isUserInput = false,
     ) {}
 }
 
@@ -56,7 +56,7 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
 
     private _mostRecentViewValue = '';
 
-    private _id = `nx-dropdown-item-${nextId++}`;
+    private readonly _id = `nx-dropdown-item-${nextId++}`;
 
     /**
      * The value of the dropdown item.
@@ -135,10 +135,10 @@ export class NxDropdownItemComponent implements Highlightable, OnDestroy, AfterV
     @ViewChild('container', { static: true }) containerElement: any;
 
     constructor(
-        @Inject(NxDropdownControl) private _dropdown: NxDropdownControl,
+        @Inject(NxDropdownControl) private readonly _dropdown: NxDropdownControl,
         /** @docs-private */ @Optional() readonly group: NxDropdownGroupComponent | null,
-        private _cdr: ChangeDetectorRef,
-        private _elementRef: ElementRef,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
     ) {
         this._dropdown.filterChanges.pipe(takeUntil(this._destroyed)).subscribe(value => {
             this._showOrHideByFilter(value);

@@ -10,7 +10,7 @@ abstract class ExpandableTableRowTest {
     isExpanded = true;
     @ViewChild(NxExpandableTableRowComponent) expandableTableRowInstance!: NxExpandableTableRowComponent;
 
-    constructor(public cdr: ChangeDetectorRef) {}
+    constructor(readonly cdr: ChangeDetectorRef) {}
 }
 
 describe(NxExpandableTableRowComponent.name, () => {

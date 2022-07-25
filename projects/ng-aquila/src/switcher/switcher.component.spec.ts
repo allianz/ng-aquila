@@ -300,7 +300,7 @@ class LabelSizeSwitcher extends SwitcherTest {}
 class ValidationSwitcherForm extends SwitcherTest {
     testForm!: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }

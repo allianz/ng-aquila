@@ -347,7 +347,7 @@ describe('NxDropdownComponent', () => {
             const stateChangesSubscription = dropdownInstance.stateChanges.subscribe(spy);
             // quick hack to replace the default matcher without any large
             // TestBed magic
-            dropdownInstance['_errorStateMatcher'] = { isErrorState: () => true };
+            (dropdownInstance['_errorStateMatcher'] as any) = { isErrorState: () => true };
             fixture.detectChanges();
             flush();
             expect(dropdownInstance.errorState).toBeTrue();

@@ -80,14 +80,14 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
     }
 
     /** Subject that emits when the component has been destroyed. */
-    private _wrapperOnDestroy = new Subject<void>();
+    private readonly _wrapperOnDestroy = new Subject<void>();
 
     constructor(
-        private _wrapperDiffers: IterableDiffers,
-        private _cdr: ChangeDetectorRef,
-        @Optional() private dir: Directionality | null,
-        protected _elementRef: ElementRef,
-        protected _focusMonitor: FocusMonitor,
+        _wrapperDiffers: IterableDiffers,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() private readonly dir: Directionality | null,
+        protected readonly _elementRef: ElementRef,
+        protected readonly _focusMonitor: FocusMonitor,
     ) {
         super(_wrapperDiffers, _cdr);
     }

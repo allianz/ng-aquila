@@ -325,7 +325,7 @@ describe('NxFileUploaderComponent', () => {
 class BasicFileUpload extends FileUploaderTest {
     fb: FormBuilder;
 
-    constructor(private http: HttpClient) {
+    constructor(private readonly http: HttpClient) {
         super();
 
         this.fb = new FormBuilder();

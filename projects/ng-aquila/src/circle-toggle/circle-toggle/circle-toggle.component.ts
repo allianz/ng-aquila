@@ -288,11 +288,11 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     private onTouchedCallback = () => {};
 
     constructor(
-        /** @docs-private */ @Optional() public toggleGroup: NxCircleToggleGroupComponent | null,
-        private _checkedDispatcher: UniqueSelectionDispatcher,
-        private _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
-        @Optional() @Self() public ngControl: NgControl | null,
+        /** @docs-private */ @Optional() readonly toggleGroup: NxCircleToggleGroupComponent | null,
+        private readonly _checkedDispatcher: UniqueSelectionDispatcher,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
+        @Optional() @Self() readonly ngControl: NgControl | null,
     ) {
         super();
 

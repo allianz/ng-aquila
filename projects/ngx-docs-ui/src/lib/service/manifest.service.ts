@@ -34,7 +34,7 @@ export class ManifestService {
     available = new ReplaySubject<boolean>(1);
     protected _current!: Manifest;
 
-    constructor(@Optional() @Inject(NXV_MANIFEST_TOKEN) private initialManifest: Manifest | null) {
+    constructor(@Optional() @Inject(NXV_MANIFEST_TOKEN) private readonly initialManifest: Manifest | null) {
         this.init();
     }
 

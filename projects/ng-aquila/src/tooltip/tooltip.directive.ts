@@ -110,7 +110,7 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     private _disabled = false;
     private _selectable = false;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
-    private _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
+    private readonly _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
 
     /** Allows the user to define the position of the tooltip relative to the parent element */
     @Input('nxTooltipPosition')
@@ -191,24 +191,24 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     }
 
     /** Strategy factory that will be used to handle scrolling while the tooltip panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
-    private _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
+    private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _overlay: Overlay,
-        private _elementRef: ElementRef<HTMLElement>,
-        private _scrollDispatcher: ScrollDispatcher,
-        private _viewContainerRef: ViewContainerRef,
-        private _ngZone: NgZone,
+        private readonly _overlay: Overlay,
+        private readonly _elementRef: ElementRef<HTMLElement>,
+        private readonly _scrollDispatcher: ScrollDispatcher,
+        private readonly _viewContainerRef: ViewContainerRef,
+        private readonly _ngZone: NgZone,
         platform: Platform,
-        private _ariaDescriber: AriaDescriber,
-        private _focusMonitor: FocusMonitor,
-        @Optional() private _dir: Directionality | null,
-        @Optional() @Inject(NX_TOOLTIP_DEFAULT_OPTIONS) private _defaultOptions: NxTooltipDefaultOptions | null,
-        @Inject(NX_TOOLTIP_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _ariaDescriber: AriaDescriber,
+        private readonly _focusMonitor: FocusMonitor,
+        @Optional() private readonly _dir: Directionality | null,
+        @Optional() @Inject(NX_TOOLTIP_DEFAULT_OPTIONS) private readonly _defaultOptions: NxTooltipDefaultOptions | null,
+        @Inject(NX_TOOLTIP_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(this._dirChangeHandler.bind(this));
 

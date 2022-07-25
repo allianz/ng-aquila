@@ -21,7 +21,7 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 })
 export class NxIconComponent implements OnChanges {
     /** Keeps track of the elements and attributes that we've prefixed with the current path. */
-    private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
+    private readonly _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
     private _name = '';
     private _previousFontClasses: string[] = [];
 
@@ -74,7 +74,7 @@ export class NxIconComponent implements OnChanges {
     /** Sets the font name that should be used. */
     @Input() font = '';
 
-    constructor(/** @docs-private */ public el: ElementRef, private _iconRegistry: NxIconRegistry) {}
+    constructor(/** @docs-private */ readonly el: ElementRef, private readonly _iconRegistry: NxIconRegistry) {}
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['name'] || changes['font']) {

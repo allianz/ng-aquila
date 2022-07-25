@@ -44,7 +44,7 @@ export class NxTableRowComponent {
     @Output()
     select: EventEmitter<void> = new EventEmitter();
 
-    constructor(protected _cdr: ChangeDetectorRef, private _elementRef: ElementRef) {}
+    constructor(protected readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef) {}
 
     _onSelect($event: KeyboardEvent) {
         if (!this._selectable || this.isSelectionPrevented($event)) {

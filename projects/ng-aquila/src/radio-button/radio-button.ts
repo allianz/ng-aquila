@@ -157,11 +157,11 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     }
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        @Optional() @Self() public ngControl: NgControl | null,
-        @Optional() public _parentForm: NgForm | null,
-        @Optional() public _parentFormGroup: FormGroupDirective | null,
-        private _errorStateMatcher: ErrorStateMatcher,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() readonly _parentForm: NgForm | null,
+        @Optional() readonly _parentFormGroup: FormGroupDirective | null,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -418,7 +418,11 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(@Optional() public radioGroup: NxRadioGroupComponent | null, private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(
+        @Optional() readonly radioGroup: NxRadioGroupComponent | null,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {}
 
     ngOnInit(): void {
         if (this.radioGroup) {

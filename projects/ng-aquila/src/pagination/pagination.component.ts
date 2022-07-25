@@ -117,10 +117,10 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
 
     constructor(
         @Optional() @Inject(NX_PAGINATION_TEXTS) paginationTexts: IPaginationTexts | null,
-        @Optional() private _dir: Directionality | null,
-        private paginationUtilsService: NxPaginationUtils,
-        private _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
+        @Optional() private readonly _dir: Directionality | null,
+        private readonly paginationUtilsService: NxPaginationUtils,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         this.paginationTexts = paginationTexts || DefaultPaginationTexts;
 

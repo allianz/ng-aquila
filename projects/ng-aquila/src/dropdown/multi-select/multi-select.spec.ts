@@ -15,7 +15,7 @@ import { MultiSelectOptionHarness } from './multi-select-option.spec';
 class MultiSelectHarness extends ComponentHarness {
     static hostSelector = 'nx-multi-select';
 
-    private documentRootLocator: LocatorFactory = this.documentRootLocatorFactory();
+    private readonly documentRootLocator: LocatorFactory = this.documentRootLocatorFactory();
 
     getValue = this.locatorFor('.value');
 
@@ -299,7 +299,7 @@ describe('NxMultiSelectComponent', () => {
                 const stateChangesSubscription = multiSelectInstance.stateChanges.subscribe(spy);
                 // quick hack to replace the default matcher without any large
                 // TestBed magic
-                multiSelectInstance['_errorStateMatcher'] = { isErrorState: () => true };
+                (multiSelectInstance['_errorStateMatcher'] as any) = { isErrorState: () => true };
                 fixture.detectChanges();
                 flush();
                 expect(multiSelectInstance.errorState).toBeTrue();

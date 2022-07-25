@@ -40,9 +40,9 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
     constructor(
         @Optional() _sort: NxSortDirective | null,
-        public _intl: NxSortHeaderIntl,
-        private _cdr: ChangeDetectorRef,
-        private _focusMonitor: FocusMonitor,
+        readonly _intl: NxSortHeaderIntl,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         if (!_sort) {
             throw new Error(`NxTable: Using the 'nxSortHeaderCell' component requires the 'nxSort' directive on containing table.`);

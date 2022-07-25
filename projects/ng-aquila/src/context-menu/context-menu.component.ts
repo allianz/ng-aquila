@@ -39,9 +39,9 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     private _items!: QueryList<NxContextMenuItemComponent>;
 
     @ContentChild(NxContextMenuItemWrapComponent)
-    private _wrap!: NxContextMenuItemWrapComponent;
+    private readonly _wrap!: NxContextMenuItemWrapComponent;
 
-    private _init: ReplaySubject<void> = new ReplaySubject(1);
+    private readonly _init: ReplaySubject<void> = new ReplaySubject(1);
 
     /** Config object to be passed into the menu's ngClass */
     _classList: { [key: string]: boolean } = {};
@@ -85,7 +85,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
         event.preventDefault();
     }
 
-    constructor(private _ngZone: NgZone) {}
+    constructor(private readonly _ngZone: NgZone) {}
 
     ngAfterContentInit(): void {
         this._items = this._wrap ? this._wrap?._items : this._items;

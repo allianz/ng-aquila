@@ -42,10 +42,10 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     }
 
     constructor(
-        public _table: NxComparisonTableBase,
-        public _toggleSection: NxToggleSectionBase,
-        private _focusMonitor: FocusMonitor,
-        private _ngZone: NgZone,
+        readonly _table: NxComparisonTableBase,
+        readonly _toggleSection: NxToggleSectionBase,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _ngZone: NgZone,
         @Inject(PLATFORM_ID) platformId: string,
     ) {
         if (isPlatformBrowser(platformId)) {

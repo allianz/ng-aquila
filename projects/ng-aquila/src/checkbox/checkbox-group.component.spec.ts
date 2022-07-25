@@ -248,7 +248,7 @@ class CheckboxGroupValidation extends CheckboxGroupTest {
 
     checkboxGroupCheckedValues = ['Term 2', 'Term 3'];
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }
@@ -277,7 +277,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
     data = ['one', 'two', 'three'];
     i = 1;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.createForm();
     }
@@ -316,7 +316,7 @@ class CheckboxGroupDynamic extends CheckboxGroupTest {
 export class CheckboxGroupReactive extends CheckboxGroupTest {
     myFormGroup: FormGroup;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.myFormGroup = this.fb.group({
             terms: [['Term 1', 'Term 2'], null],

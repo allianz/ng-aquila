@@ -977,7 +977,7 @@ class OnPushTooltipDemo {
 class DynamicTooltipsDemo {
     tooltips: string[] = [];
 
-    constructor(private _elementRef: ElementRef<HTMLElement>) {}
+    constructor(private readonly _elementRef: ElementRef<HTMLElement>) {}
 
     getButtons() {
         return this._elementRef.nativeElement.querySelectorAll('button');

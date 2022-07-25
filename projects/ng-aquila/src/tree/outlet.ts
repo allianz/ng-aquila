@@ -9,5 +9,5 @@ import { Directive, ViewContainerRef } from '@angular/core';
     selector: '[nxTreeNodeOutlet]',
 })
 export class NxTreeNodeOutletDirective implements CdkTreeNodeOutlet {
-    constructor(public viewContainer: ViewContainerRef) {}
+    constructor(readonly viewContainer: ViewContainerRef) {}
 }

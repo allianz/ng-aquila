@@ -19,7 +19,7 @@ export class NxSidebarToggleComponent extends NxButtonBase {
         _cdr: ChangeDetectorRef,
         _elementRef: ElementRef,
         _focusMonitor: FocusMonitor,
-        @Optional() @Host() private _sidebar: NxSidebarComponent | null,
+        @Optional() @Host() private readonly _sidebar: NxSidebarComponent | null,
     ) {
         super(_cdr, _elementRef, _focusMonitor);
         this.classNames = 'tertiary small-medium';

@@ -102,7 +102,11 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
 
     readonly _dateAdapter: NxDateAdapter<D>;
 
-    constructor(private _cdr: ChangeDetectorRef, @Optional() _dateAdapter: NxDateAdapter<D> | null, @Optional() private _dir?: Directionality | null) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() _dateAdapter: NxDateAdapter<D> | null,
+        @Optional() private readonly _dir?: Directionality | null,
+    ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');
         }

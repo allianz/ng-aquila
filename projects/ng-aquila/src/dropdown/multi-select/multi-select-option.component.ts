@@ -72,7 +72,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
         return this._active;
     }
 
-    constructor(private _cdr: ChangeDetectorRef, public elementRef: ElementRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, readonly elementRef: ElementRef) {}
 
     setActiveStyles(): void {
         this.active = true;

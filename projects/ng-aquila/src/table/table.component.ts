@@ -28,7 +28,7 @@ export class NxTableComponent {
 
     private _sticky!: string;
 
-    constructor(private _cdr: ChangeDetectorRef, @Optional() private _expandableTableDirective: NxExpandableTableDirective | null) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, @Optional() private readonly _expandableTableDirective: NxExpandableTableDirective | null) {}
 
     /** Change the table mode to condensed  */
     @Input() set condensed(value: BooleanInput) {

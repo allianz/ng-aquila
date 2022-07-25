@@ -11,5 +11,5 @@ import { ComponentService } from '../../../service/component.service';
 export class ComponentOverview {
     componentDescriptor!: ComponentDescriptor;
 
-    constructor(public componentService: ComponentService) {}
+    constructor(readonly componentService: ComponentService) {}
 }

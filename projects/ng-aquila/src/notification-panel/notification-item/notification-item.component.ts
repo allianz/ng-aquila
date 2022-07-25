@@ -38,7 +38,7 @@ export class NxNotificationPanelItemComponent implements FocusableOption, OnDest
         return this._clickable;
     }
 
-    constructor(private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

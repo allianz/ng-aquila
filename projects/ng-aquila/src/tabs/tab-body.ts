@@ -31,7 +31,7 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _tabGroup: NxTabGroupBase, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
+    constructor(private readonly _tabGroup: NxTabGroupBase, private readonly _focusMonitor: FocusMonitor, private readonly _elementRef: ElementRef) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

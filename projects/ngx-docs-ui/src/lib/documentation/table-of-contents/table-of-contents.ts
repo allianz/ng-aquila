@@ -46,11 +46,11 @@ export class NxvTableOfContentsComponent implements OnDestroy, AfterViewInit {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _router: Router,
-        private _route: ActivatedRoute,
-        private _element: ElementRef,
-        @Inject(DOCUMENT) private _document: Document,
-        private _cdr: ChangeDetectorRef,
+        private readonly _router: Router,
+        private readonly _route: ActivatedRoute,
+        private readonly _element: ElementRef,
+        @Inject(DOCUMENT) private readonly _document: Document,
+        private readonly _cdr: ChangeDetectorRef,
     ) {
         this._router.events.pipe(takeUntil(this._destroyed)).subscribe(event => {
             if (event instanceof NavigationEnd) {

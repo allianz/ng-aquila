@@ -44,7 +44,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
 
     private _selectedIndex: number | undefined;
-    private _scrollableArea: CdkScrollable;
+    private readonly _scrollableArea = new CdkScrollable(this._element, this.scrollDispatch, this._ngZone);
 
     @ViewChild('headerRow') _headerRowElement!: NxComparisonTableFlexRow;
     @ViewChild('desktopContent') _desktopContentDiv!: ElementRef;
@@ -89,15 +89,14 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     constructor(
-        private _element: ElementRef,
-        @Optional() private _dir: Directionality | null,
+        private readonly _element: ElementRef,
+        @Optional() private readonly _dir: Directionality | null,
         viewportService: NxViewportService,
-        protected _cdr: ChangeDetectorRef,
-        private scrollDispatch: ScrollDispatcher,
-        private _ngZone: NgZone,
+        protected readonly _cdr: ChangeDetectorRef,
+        private readonly scrollDispatch: ScrollDispatcher,
+        private readonly _ngZone: NgZone,
     ) {
         super(viewportService, _cdr);
-        this._scrollableArea = new CdkScrollable(this._element, this.scrollDispatch, this._ngZone);
     }
 
     /** @docs-private */
@@ -125,7 +124,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         this.scrollDispatch.deregister(this._scrollableArea);
     }
 
-    private _scrollHandler = (event: Event): void => {
+    private readonly _scrollHandler = (event: Event): void => {
         this._updateCellClipping();
     };
 

@@ -31,9 +31,9 @@ let _uniqueAutocompleteIdCounter = 0;
 export class NxAutocompleteSelectedEvent {
     constructor(
         /** Reference to the autocomplete panel that emitted the event. */
-        public source: NxAutocompleteComponent,
+        readonly source: NxAutocompleteComponent,
         /** Option that was selected. */
-        public option: NxAutocompleteOptionComponent,
+        readonly option: NxAutocompleteOptionComponent,
     ) {}
 }
 
@@ -115,11 +115,11 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
 
     /** Autocomplete options in view - ie from items */
     @ViewChildren(NxAutocompleteOptionComponent)
-    private _vOptions!: QueryList<NxAutocompleteOptionComponent>;
+    private readonly _vOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options in content - ie user provided */
     @ContentChildren(NxAutocompleteOptionComponent, { descendants: true })
-    private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
+    private readonly _cOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options */
     get options(): QueryList<NxAutocompleteOptionComponent> {
@@ -154,7 +154,11 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     @Input('nxValueFormatter')
     valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
-    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, @Optional() private formFieldComponent: NxFormfieldComponent | null) {}
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        @Optional() private readonly formFieldComponent: NxFormfieldComponent | null,
+    ) {}
 
     ngAfterViewInit(): void {
         this._keyManager = new ActiveDescendantKeyManager<NxAutocompleteOptionComponent>(this.options).withWrap();

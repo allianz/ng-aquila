@@ -58,7 +58,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
 
     private _subscription = Subscription.EMPTY;
 
-    constructor(private _cdr: ChangeDetectorRef, private _focusMonitor: FocusMonitor) {}
+    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._buttonElement);

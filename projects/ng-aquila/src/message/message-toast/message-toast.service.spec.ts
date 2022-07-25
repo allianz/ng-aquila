@@ -333,7 +333,7 @@ class ComponentWithTemplateRef {
     providers: [NxMessageToastService],
 })
 class ComponentProvidingService {
-    constructor(public messageToastService: NxMessageToastService) {}
+    constructor(readonly messageToastService: NxMessageToastService) {}
 }
 
 @NgModule({

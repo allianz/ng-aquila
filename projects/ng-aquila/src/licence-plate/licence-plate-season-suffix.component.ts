@@ -36,7 +36,7 @@ export class NxLicencePlateSeasonSuffixComponent {
         return this._formField.appearance === 'outline';
     }
 
-    constructor(private _formField: NxFormfieldComponent) {}
+    constructor(private readonly _formField: NxFormfieldComponent) {}
 
     _format(value: number): string {
         if (typeof value !== 'number') {

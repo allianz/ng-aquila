@@ -35,7 +35,7 @@ export class NxAvatarComponent {
         return this._size;
     }
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }
 
 @Directive({
@@ -45,7 +45,7 @@ export class NxAvatarComponent {
     },
 })
 export class NxAvatarButtonDirective implements OnDestroy {
-    constructor(private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

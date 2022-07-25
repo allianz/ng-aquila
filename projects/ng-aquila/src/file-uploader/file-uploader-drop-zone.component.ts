@@ -18,7 +18,7 @@ export class NxFileUploaderDropZoneComponent {
     private _active = false;
     private _disabled = false;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** Whether the file uploader is disabled. */
     @Input()

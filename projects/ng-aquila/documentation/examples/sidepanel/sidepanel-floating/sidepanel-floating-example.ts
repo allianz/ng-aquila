@@ -18,7 +18,7 @@ export class SidepanelFloatingExampleComponent implements OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public viewportService: NxViewportService,
+        readonly viewportService: NxViewportService,
         private _cdr: ChangeDetectorRef,
     ) {
         this.viewportService

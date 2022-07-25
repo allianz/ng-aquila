@@ -10,7 +10,7 @@ import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dyna
     styleUrls: ['./dynamic-table.component.scss'],
 })
 export class NxDynamicTableComponent implements OnInit {
-    private _dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+    private readonly _dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
     private _dataSource!: NxDynamicTableDataSource | null;
     private _data: any[] = [];
     private _displayedColumns!: NxDynamicTableColumnDefinition[];
@@ -70,7 +70,7 @@ export class NxDynamicTableComponent implements OnInit {
         return this._columnKeys;
     }
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         if (!this._data) {

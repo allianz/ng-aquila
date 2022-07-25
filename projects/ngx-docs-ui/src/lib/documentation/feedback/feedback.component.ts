@@ -28,9 +28,9 @@ export class NxvFeedbackComponent implements OnInit, OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) private _feedbackLinks: any | null,
-        private viewportService: NxViewportService,
-        private focusMonitor: FocusMonitor,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) private readonly _feedbackLinks: any | null,
+        private readonly viewportService: NxViewportService,
+        private readonly focusMonitor: FocusMonitor,
     ) {
         this.viewportService
             .min(NxBreakpoints.BREAKPOINT_LARGE)

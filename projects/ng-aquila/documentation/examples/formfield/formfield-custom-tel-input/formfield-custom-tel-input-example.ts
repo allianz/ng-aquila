@@ -26,9 +26,9 @@ import { takeUntil } from 'rxjs/operators';
 /** Data structure for holding telephone number. */
 export class MyTel {
     constructor(
-        public area: string,
-        public exchange: string,
-        public subscriber: string,
+        readonly area: string,
+        readonly exchange: string,
+        readonly subscriber: string,
     ) {}
 }
 
@@ -129,7 +129,7 @@ export class FormfieldCustomTelInputExampleComponent
         formBuilder: FormBuilder,
         private _focusMonitor: FocusMonitor,
         private _elementRef: ElementRef<HTMLElement>,
-        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
     ) {
         this.parts = formBuilder.group({
             area: [

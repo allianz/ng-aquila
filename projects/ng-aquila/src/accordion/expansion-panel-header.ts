@@ -31,10 +31,10 @@ export class NxExpansionPanelHeaderComponent implements OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        /** @docs-private */ @Host() public panel: NxExpansionPanelComponent,
-        private _cdr: ChangeDetectorRef,
-        private _elementRef: ElementRef,
-        private _focusMonitor: FocusMonitor,
+        /** @docs-private */ @Host() readonly panel: NxExpansionPanelComponent,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _elementRef: ElementRef,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         merge(panel.opened, panel.closed, panel._inputChanges.pipe(filter(changes => !!(changes.hideToggle || changes.disabled))))
             .pipe(takeUntil(this._destroyed))

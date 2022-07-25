@@ -11,17 +11,21 @@ export function throwNxIconNotFoundError(iconName: string) {
 }
 
 export class NxIconFontDefinition {
-    constructor(public hostClass: string, public prefix: string = '') {}
+    constructor(readonly hostClass: string, readonly prefix: string = '') {}
 }
 
 @Injectable({ providedIn: 'root' })
 export class NxIconRegistry implements OnDestroy {
-    private _icons = new Map<string, NxSvgIcon | NxFontIcon>();
-    private _fonts = new Map<string, NxIconFontDefinition>();
+    private readonly _icons = new Map<string, NxSvgIcon | NxFontIcon>();
+    private readonly _fonts = new Map<string, NxIconFontDefinition>();
 
     private _defaultFont?: NxIconFontDefinition;
 
-    constructor(@Optional() private _httpClient: HttpClient | null, private _sanitizer: DomSanitizer, @Inject(DOCUMENT) private _document: Document) {
+    constructor(
+        @Optional() private readonly _httpClient: HttpClient | null,
+        private readonly _sanitizer: DomSanitizer,
+        @Inject(DOCUMENT) private readonly _document: Document,
+    ) {
         // register default icons
         Object.keys(DEFAULT_ICONS).forEach(icon => {
             this.addSvgIconLiteral(icon, _sanitizer.bypassSecurityTrustHtml(DEFAULT_ICONS[icon]));

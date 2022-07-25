@@ -50,5 +50,5 @@ export class NxSpinnerComponent {
         return this._negative;
     }
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

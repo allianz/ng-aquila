@@ -33,7 +33,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
 
     expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /**
      * Toggles the expansion of this row.

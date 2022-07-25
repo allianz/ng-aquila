@@ -8,5 +8,5 @@ import { Directive, TemplateRef } from '@angular/core';
     selector: 'ng-template[nxPopoverContent]',
 })
 export class NxPopoverContentDirective {
-    constructor(public _template: TemplateRef<any>) {}
+    constructor(readonly _template: TemplateRef<any>) {}
 }

@@ -75,7 +75,7 @@ export const ORIGIN_POSITIONS: { [key in NxOverlayDirection]: (arg0: boolean) =>
 
 @Injectable()
 export class NxOverlayPositionBuilder {
-    constructor(private _overlay: Overlay, @Optional() private _dir: Directionality | null) {}
+    constructor(private readonly _overlay: Overlay, @Optional() private readonly _dir: Directionality | null) {}
 
     createPositionStrategy(element: FlexibleConnectedPositionStrategyOrigin, config: NxOverlayConfig) {
         const fallbacks = this._getFallbackPositions(config.direction as NxOverlayDirection, config);

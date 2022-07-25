@@ -45,7 +45,7 @@ export class PageSearchAutocompleteExampleComponent {
     searchTerm1 = '';
     searchTerm2 = '';
 
-    constructor(public wikipediaService: WikipediaService) {
+    constructor(readonly wikipediaService: WikipediaService) {
         this.searchFunction = (term: string) =>
             wikipediaService
                 .search(term)

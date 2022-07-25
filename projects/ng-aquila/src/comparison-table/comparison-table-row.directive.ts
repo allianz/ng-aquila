@@ -61,7 +61,10 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(@Optional() private _toggleSection: NxToggleSectionBase | null, @Optional() private _rowGroup: NxComparisonTableRowGroupBase | null) {
+    constructor(
+        @Optional() private readonly _toggleSection: NxToggleSectionBase | null,
+        @Optional() private readonly _rowGroup: NxComparisonTableRowGroupBase | null,
+    ) {
         super();
     }
 

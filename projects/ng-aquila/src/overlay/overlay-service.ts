@@ -35,19 +35,19 @@ export const enum NxOverlayState {
 export class NxOverlayService implements OnDestroy {
     private readonly _afterAllClosedAtThisLevel = new Subject<void>();
     private readonly _afterOpenedAtThisLevel = new Subject<NxOverlayRef<any>>();
-    private _openOverlaysAtThisLevel: NxOverlayRef<any>[] = [];
+    private readonly _openOverlaysAtThisLevel: NxOverlayRef<any>[] = [];
 
     /** Strategy factory that will be used to handle scrolling while an overlay panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     constructor(
-        private _overlay: Overlay,
-        private _injector: Injector,
-        private _router: Router,
-        private _positionBuilder: NxOverlayPositionBuilder,
-        @Optional() @SkipSelf() private _parentOverlayService: NxOverlayService | null,
-        @Optional() private _dir: Directionality | null,
-        @Inject(NX_OVERLAY_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _overlay: Overlay,
+        private readonly _injector: Injector,
+        private readonly _router: Router,
+        private readonly _positionBuilder: NxOverlayPositionBuilder,
+        @Optional() @SkipSelf() private readonly _parentOverlayService: NxOverlayService | null,
+        @Optional() private readonly _dir: Directionality | null,
+        @Inject(NX_OVERLAY_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
     ) {}
 
     /** Keeps track of the currently-open overlays. */

@@ -12,7 +12,7 @@ export interface NxTreeNode {
 }
 
 class MyFlatTreeNode {
-    constructor(public label: string, public expandable: boolean, public level: number, public component?: ComponentDescriptor) {}
+    constructor(readonly label: string, readonly expandable: boolean, readonly level: number, readonly component?: ComponentDescriptor) {}
 }
 
 @Component({
@@ -27,7 +27,7 @@ export class NavigationComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(public manifestService: ManifestService) {
+    constructor(readonly manifestService: ManifestService) {
         this._treeControl = new NxFlatTreeControl();
         this._dataSource = new NxTreeFlatDataSource(this._treeControl);
 

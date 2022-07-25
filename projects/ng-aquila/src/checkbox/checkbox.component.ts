@@ -32,20 +32,20 @@ let nextId = 0;
 export class NxCheckboxChangeEvent {
     constructor(
         /** The checked value of the checkbox. */
-        public checked: boolean,
+        readonly checked: boolean,
         /** The value of the checkbox. */
-        public value: string,
+        readonly value: string,
         /** The component instance of the checkbox which emitted the change event. */
-        public checkbox: NxCheckboxComponent,
+        readonly checkbox: NxCheckboxComponent,
     ) {}
 }
 
 export class NxCheckboxGroupChangeEvent {
     constructor(
         /** The value of the checkbox group. An array containing all checked checkbox values. */
-        public value: string[],
+        readonly value: string[],
         /** The component instance of the checkbox group. */
-        public checkboxGroup: NxCheckboxGroupComponent,
+        readonly checkboxGroup: NxCheckboxGroupComponent,
     ) {}
 }
 
@@ -161,11 +161,11 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
-        @Optional() @Self() public ngControl: NgControl | null,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -460,13 +460,13 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     }
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() public checkboxGroup: NxCheckboxGroupComponent | null,
-        @Optional() @Self() public ngControl: NgControl | null,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
-        private _focusMonitor: FocusMonitor,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() readonly checkboxGroup: NxCheckboxGroupComponent | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         if (this.ngControl) {
             // Note: we provide the value accessor through here, instead of
@@ -578,10 +578,6 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
 
     /** @docs-private */
     private _createChangeEvent(checkedValue: boolean): NxCheckboxChangeEvent {
-        const event = new NxCheckboxChangeEvent(checkedValue, this.value, this);
-        event.checked = checkedValue;
-        event.value = this.value;
-        event.checkbox = this;
-        return event;
+        return new NxCheckboxChangeEvent(checkedValue, this.value, this);
     }
 }

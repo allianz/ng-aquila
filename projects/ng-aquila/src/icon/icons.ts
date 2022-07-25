@@ -9,7 +9,7 @@ import { NxIconFontDefinition } from './icon-registry';
 export class NxSvgIcon {
     svgElement: SVGElement | undefined;
 
-    constructor(protected _httpClient: HttpClient | null, protected _sanitizer: DomSanitizer, protected _document: Document) {}
+    constructor(protected readonly _httpClient: HttpClient | null, protected readonly _sanitizer: DomSanitizer, protected readonly _document: Document) {}
 
     /** Returns the content. */
     getContent(): Observable<SVGElement | undefined> {
@@ -50,7 +50,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     // used to not send multiple requests for the same url
     private _pendingRequest: Observable<any> | undefined;
 
-    constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, protected _sanitizer: DomSanitizer, protected _document: Document) {
+    constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, protected readonly _sanitizer: DomSanitizer, protected readonly _document: Document) {
         super(_httpClient, _sanitizer, _document);
 
         this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
@@ -116,7 +116,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
 }
 
 export class NxFontIcon {
-    constructor(public alias: string, public font: NxIconFontDefinition) {}
+    constructor(readonly alias: string, readonly font: NxIconFontDefinition) {}
 
     getClasses() {
         return { alias: this.alias, font: this.font };

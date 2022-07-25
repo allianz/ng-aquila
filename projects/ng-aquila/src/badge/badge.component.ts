@@ -20,7 +20,7 @@ export class NxBadgeComponent {
     private _type!: NxBadgeType;
     private _vibrant = false;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** Sets the class name for the badge element.  */
     @Input()

@@ -44,7 +44,7 @@ export class NxModalRef<T, R = any> {
     /** Current state of the modal. */
     private _state = NxModalState.OPEN;
 
-    constructor(private _overlayRef: OverlayRef, public _containerInstance: NxModalContainer, readonly id: string = `nx-modal-${nexId++}`) {
+    constructor(private readonly _overlayRef: OverlayRef, readonly _containerInstance: NxModalContainer, readonly id: string = `nx-modal-${nexId++}`) {
         // Pass the id along to the container.
         _containerInstance._id = id;
 

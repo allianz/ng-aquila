@@ -244,7 +244,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, public _intl: NxNumberStepperIntl) {
+    constructor(private readonly _cdr: ChangeDetectorRef, _renderer: Renderer2, _elementRef: ElementRef, readonly _intl: NxNumberStepperIntl) {
         super(SIZE_MAPPING, _elementRef, _renderer, DEFAULT_CLASSES);
 
         this._intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => this._cdr.markForCheck());

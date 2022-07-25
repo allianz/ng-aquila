@@ -664,7 +664,7 @@ class RadioGroupValidation extends RadioTest {
     submitted = false;
     @ViewChild(NxErrorComponent) radioGroupError!: NxErrorComponent;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: FormBuilder) {
         super();
 
         this.createForm();
@@ -700,7 +700,7 @@ class RadioGroupValidationTouched extends RadioTest {
     testForm!: FormGroup;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder) {
+    constructor(private readonly formBuilder: FormBuilder) {
         super();
 
         this.createForm();

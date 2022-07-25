@@ -44,11 +44,11 @@ export class NxvComponentPage implements OnDestroy {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private _route: ActivatedRoute,
-        private router: Router,
-        private manifestService: ManifestService,
-        public componentService: ComponentService,
-        @Optional() @Inject(NXV_FEEDBACK_LINKS) public feedbackLinks: any | null,
+        private readonly _route: ActivatedRoute,
+        private readonly router: Router,
+        private readonly manifestService: ManifestService,
+        readonly componentService: ComponentService,
+        @Optional() @Inject(NXV_FEEDBACK_LINKS) readonly feedbackLinks: any | null,
     ) {
         // Listen to changes on the current route for the doc id (e.g. button/checkbox) and the
         // parent route for the section (material/cdk).

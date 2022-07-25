@@ -16,7 +16,7 @@ export class NxvThemeSwitcherComponent {
     @Input() selected!: Theme;
     @Output() readonly selectedChange = new EventEmitter<Theme>();
 
-    constructor(private iconRegistry: NxIconRegistry) {
+    constructor(private readonly iconRegistry: NxIconRegistry) {
         this.iconRegistry.registerFont('fa', 'fas', 'fa-');
         this.iconRegistry.addFontIcon('fill-drip', 'fill-drip', 'fa');
     }

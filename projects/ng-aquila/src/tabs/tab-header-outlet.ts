@@ -16,7 +16,7 @@ export class NxTabHeaderOutletComponent implements OnInit, OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _tabGroup: NxTabGroupBase) {}
+    constructor(private readonly _tabGroup: NxTabGroupBase) {}
 
     ngOnInit(): void {
         this._tabGroup._appearanceChange.pipe(takeUntil(this._destroyed)).subscribe(() => {

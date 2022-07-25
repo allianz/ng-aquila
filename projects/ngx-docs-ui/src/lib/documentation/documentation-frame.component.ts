@@ -47,15 +47,15 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public manifestService: ManifestService,
-        private _rabbitHole: RabbitHole,
-        private _route: ActivatedRoute,
-        private _router: Router,
-        private _themeSwitcherService: ThemeSwitcherService,
-        private iconRegistry: NxIconRegistry,
-        @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private _featureFlags: NxDocFeatures | null,
-        @Inject(NX_DOCS_LOGO_PATH) public logoPath: LogoPath,
-        @Inject(NX_DOCS_GITHUB_LINK) public githubLinkConfig: GithubLinkConfig,
+        readonly manifestService: ManifestService,
+        private readonly _rabbitHole: RabbitHole,
+        private readonly _route: ActivatedRoute,
+        private readonly _router: Router,
+        private readonly _themeSwitcherService: ThemeSwitcherService,
+        private readonly iconRegistry: NxIconRegistry,
+        @Optional() @Inject(NX_DOCS_FEATURE_FLAGS) private readonly _featureFlags: NxDocFeatures | null,
+        @Inject(NX_DOCS_LOGO_PATH) readonly logoPath: LogoPath,
+        @Inject(NX_DOCS_GITHUB_LINK) readonly githubLinkConfig: GithubLinkConfig,
     ) {
         this.themes = this._themeSwitcherService.themes();
         this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;

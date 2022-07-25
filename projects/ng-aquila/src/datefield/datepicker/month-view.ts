@@ -132,10 +132,10 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     private readonly _dateFormats: NxDateFormats;
 
     constructor(
-        private _cdr: ChangeDetectorRef,
+        private readonly _cdr: ChangeDetectorRef,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
-        @Optional() private _dir?: Directionality | null,
+        @Optional() private readonly _dir?: Directionality | null,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');

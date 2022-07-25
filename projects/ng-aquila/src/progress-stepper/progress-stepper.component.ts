@@ -35,8 +35,8 @@ import { takeUntil, takeWhile } from 'rxjs/operators';
 })
 export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnChanges, OnDestroy {
     constructor(
-        @Inject(forwardRef(() => NxProgressStepperDirective)) public stepper: NxProgressStepperDirective,
-        @SkipSelf() private _errorStateMatcher: ErrorStateMatcher,
+        @Inject(forwardRef(() => NxProgressStepperDirective)) readonly stepper: NxProgressStepperDirective,
+        @SkipSelf() private readonly _errorStateMatcher: ErrorStateMatcher,
     ) {
         super(stepper as CdkStepper);
 
@@ -116,7 +116,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
     @Input() currentStepLabel!: string;
 
-    constructor(private _cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, _elementRef: ElementRef<HTMLElement>) {
+    constructor(private readonly _cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, _elementRef: ElementRef<HTMLElement>) {
         super(_dir!, _cdr, _elementRef, null);
     }
 

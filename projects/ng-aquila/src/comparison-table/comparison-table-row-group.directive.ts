@@ -100,8 +100,8 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(
-        @Optional() private _toggleSection: NxToggleSectionBase | null,
-        @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private _defaultOptions: ComparisonTableDefaultOptions | null,
+        @Optional() private readonly _toggleSection: NxToggleSectionBase | null,
+        @Optional() @Inject(COMPARISON_TABLE_DEFAULT_OPTIONS) private readonly _defaultOptions: ComparisonTableDefaultOptions | null,
     ) {
         super();
     }

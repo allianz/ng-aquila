@@ -33,7 +33,11 @@ export class NxTabScrollIndicator implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private _cdr: ChangeDetectorRef, private _viewportService: NxViewportService, @Optional() private _dir: Directionality | null) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _viewportService: NxViewportService,
+        @Optional() private readonly _dir: Directionality | null,
+    ) {
         this._viewportService
             .min(NxBreakpoints.BREAKPOINT_MEDIUM)
             .pipe(takeUntil(this._destroyed))

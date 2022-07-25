@@ -77,12 +77,12 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        /** @docs-private */ public elementRef: ElementRef,
-        private _cdr: ChangeDetectorRef,
-        private _renderer: Renderer2,
-        private _overlay: Overlay,
-        private _viewContainerRef: ViewContainerRef,
-        private _overlayPositionBuilder: OverlayPositionBuilder,
+        /** @docs-private */ readonly elementRef: ElementRef,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _renderer: Renderer2,
+        private readonly _overlay: Overlay,
+        private readonly _viewContainerRef: ViewContainerRef,
+        private readonly _overlayPositionBuilder: OverlayPositionBuilder,
     ) {}
 
     ngOnInit(): void {

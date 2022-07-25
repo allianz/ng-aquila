@@ -5,5 +5,5 @@ import { Directive, TemplateRef } from '@angular/core';
     selector: '[nxClosedLabel]',
 })
 export class NxDropdownClosedLabelDirective {
-    constructor(public templateRef: TemplateRef<any>) {}
+    constructor(readonly templateRef: TemplateRef<any>) {}
 }

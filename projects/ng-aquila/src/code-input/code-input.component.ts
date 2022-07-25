@@ -111,13 +111,13 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _disabled = false;
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        private _el: ElementRef,
-        @Optional() @Self() public _control: NgControl | null,
-        public _intl: NxCodeInputIntl,
-        private _errorStateMatcher: ErrorStateMatcher,
-        @Optional() private _parentForm: NgForm | null,
-        @Optional() private _parentFormGroup: FormGroupDirective | null,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _el: ElementRef,
+        @Optional() @Self() readonly _control: NgControl | null,
+        readonly _intl: NxCodeInputIntl,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     ) {
         if (this._control) {
             // Note: we provide the value accessor through here, instead of

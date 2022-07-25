@@ -127,7 +127,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private readonly _valueChanges: Subject<any> = new Subject<any>();
 
     /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
-    private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
+    private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** The autocomplete panel to be attached to this trigger. */
     @Input('nxAutocomplete') autocomplete!: NxAutocompleteComponent;
@@ -221,7 +221,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
      * Event handler for when the window is blurred. Needs to be an
      * arrow function in order to preserve the context.
      */
-    private _windowBlurHandler = () => {
+    private readonly _windowBlurHandler = () => {
         // If the user blurred the window while the autocomplete is focused, it means that it'll be
         // refocused when they come back. In this case we want to skip the first focus event, if the
         // pane was closed, in order to avoid reopening it unintentionally.
@@ -244,18 +244,18 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     }
 
     constructor(
-        private _element: ElementRef,
-        private _overlay: Overlay,
-        private _viewContainerRef: ViewContainerRef,
-        private _zone: NgZone,
-        private _cdr: ChangeDetectorRef,
-        private _dir: Directionality,
-        private _autofillMonitor: AutofillMonitor,
-        @Optional() @Host() private _nxFormField: NxFormfieldComponent | null,
-        @Optional() @Host() private _nxWordField: NxWordComponent | null,
-        @Optional() @Inject(DOCUMENT) private _document: Document | null,
-        @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY) private _defaultScrollStrategyFactory: () => ScrollStrategy,
-        private _viewportRuler?: ViewportRuler,
+        private readonly _element: ElementRef,
+        private readonly _overlay: Overlay,
+        private readonly _viewContainerRef: ViewContainerRef,
+        private readonly _zone: NgZone,
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _dir: Directionality,
+        private readonly _autofillMonitor: AutofillMonitor,
+        @Optional() @Host() private readonly _nxFormField: NxFormfieldComponent | null,
+        @Optional() @Host() private readonly _nxWordField: NxWordComponent | null,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
+        @Inject(NX_AUTOCOMPLETE_SCROLL_STRATEGY) private readonly _defaultScrollStrategyFactory: () => ScrollStrategy,
+        private readonly _viewportRuler?: ViewportRuler,
     ) {
         if (typeof window !== 'undefined') {
             _zone.runOutsideAngular(() => {

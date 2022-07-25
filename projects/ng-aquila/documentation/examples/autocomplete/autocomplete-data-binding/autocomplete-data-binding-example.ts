@@ -50,7 +50,7 @@ export class AutocompleteDataBindingExampleComponent {
 
     dynamicBackendOptions: (term: string) => Observable<string[]>;
 
-    constructor(public wikipediaService: WikipediaService) {
+    constructor(readonly wikipediaService: WikipediaService) {
         this.dynamicBackendOptions = (term: string) =>
             wikipediaService
                 .search(term)

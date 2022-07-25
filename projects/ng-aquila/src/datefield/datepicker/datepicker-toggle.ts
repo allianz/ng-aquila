@@ -92,10 +92,10 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public _intl: NxDatepickerIntl,
-        private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private _defaultOptions: DatepickerDefaultOptions | null,
-        private _focusMonitor: FocusMonitor,
+        readonly _intl: NxDatepickerIntl,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Inject(DATEPICKER_DEFAULT_OPTIONS) private readonly _defaultOptions: DatepickerDefaultOptions | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         if (this._defaultOptions?.changes) {
             this._defaultOptions.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {

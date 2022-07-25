@@ -11,7 +11,7 @@ import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxLicencePlateEuroPrefixComponent {
-    constructor(private _formField: NxFormfieldComponent) {}
+    constructor(private readonly _formField: NxFormfieldComponent) {}
 
     @HostBinding('class.is-disabled')
     get _disabled(): boolean {

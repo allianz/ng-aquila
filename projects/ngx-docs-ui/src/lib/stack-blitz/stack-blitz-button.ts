@@ -41,7 +41,7 @@ export class StackBlitzButton {
         }
     }
 
-    constructor(public manifestService: ManifestService, private stackBlitzWriter: StackBlitzWriter) {}
+    constructor(readonly manifestService: ManifestService, private readonly stackBlitzWriter: StackBlitzWriter) {}
 
     openStackBlitz(): void {
         if (this.stackBlitzForm) {

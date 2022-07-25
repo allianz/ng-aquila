@@ -17,12 +17,12 @@ export class NxContextMenuContentDirective implements OnDestroy {
     _attached = new Subject<void>();
 
     constructor(
-        private _template: TemplateRef<any>,
-        private _componentFactoryResolver: ComponentFactoryResolver,
-        private _appRef: ApplicationRef,
-        private _injector: Injector,
-        private _viewContainerRef: ViewContainerRef,
-        @Inject(DOCUMENT) private _document: Document,
+        private readonly _template: TemplateRef<any>,
+        private readonly _componentFactoryResolver: ComponentFactoryResolver,
+        private readonly _appRef: ApplicationRef,
+        private readonly _injector: Injector,
+        private readonly _viewContainerRef: ViewContainerRef,
+        @Inject(DOCUMENT) private readonly _document: Document,
     ) {}
 
     /**

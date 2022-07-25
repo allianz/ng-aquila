@@ -7,5 +7,5 @@ import { ComponentService } from '../../../service/component.service';
     templateUrl: 'component-examples.html',
 })
 export class ComponentExamples {
-    constructor(public componentService: ComponentService) {}
+    constructor(readonly componentService: ComponentService) {}
 }

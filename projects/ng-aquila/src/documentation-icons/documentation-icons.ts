@@ -9,7 +9,7 @@ import { ICON_MAPPINGS } from './icon-list';
     providers: [],
 })
 export class NxDocumentationIconModule {
-    constructor(private _iconRegistry: NxIconRegistry) {
+    constructor(private readonly _iconRegistry: NxIconRegistry) {
         this._iconRegistry.registerFont('far', 'far', 'fa-');
         this._iconRegistry.registerFont('fas', 'fas', 'fa-');
         this._iconRegistry.registerFont('fab', 'fab', 'fa-');

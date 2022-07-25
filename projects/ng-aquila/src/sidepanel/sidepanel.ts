@@ -82,10 +82,10 @@ export class NxSidepanelComponent {
     triggerElem?: HTMLElement | null;
 
     constructor(
-        private _cdr: ChangeDetectorRef,
-        protected _elementRef: ElementRef,
-        @Optional() private _dir: Directionality | null,
-        @Optional() @Inject(forwardRef(() => NxSidepanelOuterContainerComponent)) public _wrapper: NxSidepanelOuterContainerComponent | null,
+        private readonly _cdr: ChangeDetectorRef,
+        protected readonly _elementRef: ElementRef,
+        @Optional() private readonly _dir: Directionality | null,
+        @Optional() @Inject(forwardRef(() => NxSidepanelOuterContainerComponent)) readonly _wrapper: NxSidepanelOuterContainerComponent | null,
     ) {
         if (this._wrapper == null) {
             console.warn(`NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`);
@@ -187,7 +187,7 @@ export class NxSidepanelOuterContainerComponent implements OnDestroy {
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(@Optional() private _dir: Directionality | null, private _cdr: ChangeDetectorRef) {
+    constructor(@Optional() private readonly _dir: Directionality | null, private readonly _cdr: ChangeDetectorRef) {
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             this._cdr.markForCheck();
         });

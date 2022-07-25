@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 /** @docs-private */
 @Injectable()
 export class NxModalService {
-    private subject = new Subject();
+    private readonly subject = new Subject();
     close$: Observable<any> = this.subject.asObservable();
 
     close() {

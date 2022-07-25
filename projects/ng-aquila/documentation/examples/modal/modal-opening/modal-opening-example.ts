@@ -26,7 +26,7 @@ export class ModalOpeningExampleComponent {
     templateDialogRef!: NxModalRef<any>;
     componentDialogRef!: NxModalRef<SimpleModalComponent>;
 
-    constructor(public dialogService: NxDialogService) {}
+    constructor(readonly dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
         this.templateDialogRef = this.dialogService.open(this.templateRef, {

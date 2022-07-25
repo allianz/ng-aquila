@@ -12,12 +12,12 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
 })
 export class ExampleLoaderComponent {
     constructor(
-        private _appRef: ApplicationRef,
-        private _http: HttpClient,
-        private _elementRef: ElementRef,
-        private _componentFactoryResolver: ComponentFactoryResolver,
-        private _viewContainerRef: ViewContainerRef,
-        private _injector: Injector,
+        private readonly _appRef: ApplicationRef,
+        private readonly _http: HttpClient,
+        private readonly _elementRef: ElementRef,
+        private readonly _componentFactoryResolver: ComponentFactoryResolver,
+        private readonly _viewContainerRef: ViewContainerRef,
+        private readonly _injector: Injector,
     ) {}
 
     @Input()

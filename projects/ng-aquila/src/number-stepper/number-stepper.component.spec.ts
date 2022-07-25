@@ -693,7 +693,7 @@ class ReactiveFormStepper extends NumberStepperTest {}
     `,
 })
 class ReactiveFormOnBlurStepper extends NumberStepperTest {
-    constructor(private fb: FormBuilder) {
+    constructor(private readonly fb: FormBuilder) {
         super();
         this.testForm = this.fb.group(
             {

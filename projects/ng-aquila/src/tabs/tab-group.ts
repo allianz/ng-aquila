@@ -54,7 +54,7 @@ let nextId = 0;
 })
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
     private _selectedIndex: number | null = null;
-    private _groupId: number;
+    private readonly _groupId: number;
     private _negative = false;
     private _disabled = false;
     private _indexToSelect: number | null = 0;
@@ -173,10 +173,10 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        public viewportService: NxViewportService,
-        private _cdr: ChangeDetectorRef,
-        @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private _defaultOptions: TabGroupDefaultOptions | null,
-        private _focusMonitor: FocusMonitor,
+        readonly viewportService: NxViewportService,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() @Inject(TAB_GROUP_DEFAULT_OPTIONS) private readonly _defaultOptions: TabGroupDefaultOptions | null,
+        private readonly _focusMonitor: FocusMonitor,
     ) {
         this._groupId = nextId++;
 

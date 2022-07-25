@@ -98,10 +98,10 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     readonly _inputChanges = new Subject<SimpleChanges>();
 
     constructor(
-        /** @docs-private */ @Optional() @SkipSelf() public accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
+        /** @docs-private */ @Optional() @SkipSelf() readonly accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
         _cdr: ChangeDetectorRef,
         _expansionDispatcher: UniqueSelectionDispatcher,
-        private _viewContainerRef: ViewContainerRef,
+        private readonly _viewContainerRef: ViewContainerRef,
     ) {
         super(accordion!, _cdr, _expansionDispatcher);
     }

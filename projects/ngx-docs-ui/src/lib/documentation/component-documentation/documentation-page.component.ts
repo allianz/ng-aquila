@@ -9,7 +9,7 @@ import { DocumentationFrameComponent } from '../documentation-frame.component';
     styleUrls: ['./documentation-page.component.scss'],
 })
 export class NxvDocumentationComponent implements OnDestroy {
-    constructor(public componentService: ComponentService, public documentationFrame: DocumentationFrameComponent) {}
+    constructor(readonly componentService: ComponentService, readonly documentationFrame: DocumentationFrameComponent) {}
 
     ngOnDestroy(): void {
         this.componentService.current.next();

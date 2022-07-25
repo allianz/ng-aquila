@@ -113,7 +113,7 @@ export class NxColComponent implements OnInit {
     @Input()
     class!: string;
 
-    constructor(private el: ElementRef) {}
+    constructor(private readonly el: ElementRef) {}
 
     ngOnInit(): void {
         if (!validateClassInElement(this.el.nativeElement.parentElement, 'nxRow')) {

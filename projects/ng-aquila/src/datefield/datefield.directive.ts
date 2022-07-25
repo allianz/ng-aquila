@@ -43,9 +43,9 @@ export class NxDatepickerInputEvent<D> {
 
     constructor(
         /** Reference to the datepicker input component that emitted the event. */
-        public target: NxDatefieldDirective<D>,
+        readonly target: NxDatefieldDirective<D>,
         /** Reference to the native input element associated with the datepicker input. */
-        public targetElement: HTMLElement,
+        readonly targetElement: HTMLElement,
     ) {
         this.value = this.target.value;
     }
@@ -243,10 +243,10 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _validatorOnChange = () => {};
 
     constructor(
-        private _elementRef: ElementRef,
+        private readonly _elementRef: ElementRef,
         @Optional() _dateAdapter: NxDateAdapter<D> | null,
         @Optional() @Inject(NX_DATE_FORMATS) _dateFormats: NxDateFormats | null,
-        @Optional() private _formField: NxFormfieldComponent | null,
+        @Optional() private readonly _formField: NxFormfieldComponent | null,
     ) {
         if (!_dateAdapter) {
             throw createMissingDateImplError('DateAdapter');

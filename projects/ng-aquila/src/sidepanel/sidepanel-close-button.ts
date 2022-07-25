@@ -17,7 +17,7 @@ export class NxSidepanelCloseButtonComponent implements OnDestroy {
         this._sidepanel.toggle();
     }
 
-    constructor(private _sidepanel: NxSidepanelComponent, private _focusMonitor: FocusMonitor, private _elementRef: ElementRef) {
+    constructor(private readonly _sidepanel: NxSidepanelComponent, private readonly _focusMonitor: FocusMonitor, private readonly _elementRef: ElementRef) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

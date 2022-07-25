@@ -60,7 +60,7 @@ export class NxTagComponent implements OnDestroy {
     /** An event is dispatched each time when the tag is removed. */
     @Output() readonly removed: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(private _cdr: ChangeDetectorRef, private _elementRef: ElementRef, private _focusMonitor: FocusMonitor) {
+    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);
     }
 

@@ -71,7 +71,7 @@ export class NxPageSearchComponent {
         return this.hideSearchButton ? '12' : '12,12,12,10';
     }
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     onButtonClick() {

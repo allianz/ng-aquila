@@ -127,7 +127,7 @@ export class NxTaglistComponent implements ControlValueAccessor {
     private _onChange: (value: any) => void = () => {};
     private _onTouched: () => any = () => {};
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** Allows to delete a tag given index. Takes index of the tag to be deleted as a parameter */
     delete(index: number, value: any) {
