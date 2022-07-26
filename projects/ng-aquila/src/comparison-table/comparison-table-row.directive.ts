@@ -33,13 +33,10 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     /** @docs-private */
     @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell!: NxComparisonTablePopularCell;
 
-    private _type: NxComparisonTableRowType = 'content';
-    private _mayStick = true;
     readonly _requestCellClippingUpdate$ = new Subject<void>();
 
     /** Sets the type of the row. Default: 'content'. */
-    @Input()
-    set type(newValue: NxComparisonTableRowType) {
+    @Input() set type(newValue: NxComparisonTableRowType) {
         if (newValue !== this._type) {
             this._type = newValue;
         }
@@ -47,9 +44,9 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     get type(): NxComparisonTableRowType {
         return this._type;
     }
+    private _type: NxComparisonTableRowType = 'content';
 
-    @Input()
-    set mayStick(newValue: BooleanInput) {
+    @Input() set mayStick(newValue: BooleanInput) {
         if (newValue !== this._mayStick) {
             this._mayStick = coerceBooleanProperty(newValue);
             this._requestCellClippingUpdate$.next(undefined);
@@ -58,6 +55,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
     get mayStick(): boolean {
         return this._type === 'header' && this._mayStick;
     }
+    private _mayStick = true;
 
     private readonly _destroyed = new Subject<void>();
 

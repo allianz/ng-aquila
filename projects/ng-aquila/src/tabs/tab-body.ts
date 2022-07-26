@@ -19,15 +19,13 @@ export class NxTabBodyComponent implements OnInit, OnDestroy, OnChanges {
 
     @Input() tab!: NxTabComponent;
 
-    private _active = false;
-
-    @Input()
-    set active(value: BooleanInput) {
+    @Input() set active(value: BooleanInput) {
         this._active = coerceBooleanProperty(value);
     }
     get active(): boolean {
         return this._active;
     }
+    private _active = false;
 
     private readonly _destroyed = new Subject<void>();
 

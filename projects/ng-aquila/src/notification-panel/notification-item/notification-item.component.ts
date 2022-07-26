@@ -16,27 +16,25 @@ import { Subject } from 'rxjs';
     },
 })
 export class NxNotificationPanelItemComponent implements FocusableOption, OnDestroy {
-    private _read = false;
-    private _clickable = true;
-    private _hasFocus = false;
-
-    focused = new Subject<NxNotificationPanelItemComponent>();
-
-    @Input()
-    set read(value: BooleanInput) {
+    @Input() set read(value: BooleanInput) {
         this._read = coerceBooleanProperty(value);
     }
     get read() {
         return this._read;
     }
+    private _read = false;
 
-    @Input()
-    set clickable(value: BooleanInput) {
+    @Input() set clickable(value: BooleanInput) {
         this._clickable = coerceBooleanProperty(value);
     }
     get clickable() {
         return this._clickable;
     }
+    private _clickable = true;
+
+    readonly focused = new Subject<NxNotificationPanelItemComponent>();
+
+    private _hasFocus = false;
 
     constructor(private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);

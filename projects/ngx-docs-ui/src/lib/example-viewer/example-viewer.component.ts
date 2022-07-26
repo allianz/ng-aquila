@@ -21,11 +21,8 @@ interface ExampleConfig {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleViewerComponent {
-    constructor(readonly manifestService: ManifestService, readonly copyService: CopyService) {}
-
     moduleId!: string;
     showSourceCode = false;
-    _example!: string;
     exampleData!: ComponentExample;
     exampleDescriptor!: ExampleDescriptor;
     examplePortal!: ComponentPortal<any>;
@@ -42,8 +39,7 @@ export class ExampleViewerComponent {
     exampleComponent = null;
     exampleModuleFactory = null;
 
-    @Input()
-    set example(id: string) {
+    @Input() set example(id: string) {
         this._example = id;
 
         if (this.manifestService.hasExample(id)) {
@@ -54,9 +50,11 @@ export class ExampleViewerComponent {
     get example() {
         return this._example;
     }
+    _example!: string;
 
-    @Input()
-    config!: ExampleConfig;
+    @Input() config!: ExampleConfig;
+
+    constructor(readonly manifestService: ManifestService, readonly copyService: CopyService) {}
 
     toggleSourceView() {
         this.showSourceCode = !this.showSourceCode;

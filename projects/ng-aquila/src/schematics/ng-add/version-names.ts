@@ -25,6 +25,6 @@ export function installAllPeerDependencies(host: Tree) {
     } catch (e) {
         // we reuse ng-add in unit tests. this should never fail when run with the angular cli
         // as the library package will be downloaded before hand.
-        console.log('WARNING NG-AQUILA PACKAGE AND PACKAGE.JSON NOT FOUND IS IT RUNNING IN TESTS?');
+        console.warn('WARNING NG-AQUILA PACKAGE AND PACKAGE.JSON NOT FOUND IS IT RUNNING IN TESTS?');
     }
 }

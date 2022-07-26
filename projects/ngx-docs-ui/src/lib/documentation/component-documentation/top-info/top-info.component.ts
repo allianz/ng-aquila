@@ -15,6 +15,6 @@ export class NxvTopInfoComponent implements OnInit {
 
     ngOnInit(): void {
         const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this._topInfoComponent);
-        const componentRef = this._viewContainerRef.createComponent(componentFactory);
+        this._viewContainerRef.createComponent(componentFactory);
     }
 }

@@ -15,23 +15,12 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     },
 })
 export class NxMobileToggleButtonComponent {
-    @Input()
-    checked = false;
-
-    @Input()
-    negative = false;
-
-    @Input()
-    disabled = false;
-
-    @Input()
-    hint = '';
-
-    @Input()
-    label = '';
-
-    @Input()
-    circleText = '';
+    @Input() checked = false;
+    @Input() negative = false;
+    @Input() disabled = false;
+    @Input() hint = '';
+    @Input() label = '';
+    @Input() circleText = '';
 
     /** @docs-private */
     isFirst = false;

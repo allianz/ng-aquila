@@ -53,14 +53,8 @@ let nextId = 0;
     providers: [{ provide: NxTabGroupBase, useExisting: NxTabGroupComponent }],
 })
 export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterViewInit, AfterContentInit, AfterContentChecked {
-    private _selectedIndex: number | null = null;
     private readonly _groupId: number;
-    private _negative = false;
-    private _disabled = false;
     private _indexToSelect: number | null = 0;
-    private _autoselect = true;
-    private _mobileAccordion = true;
-    private _appearance!: NxTabsAppearance;
     _showAccordion = false;
 
     /** @docs-private */
@@ -84,63 +78,62 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     private _tabButtonsPrevious!: QueryList<ElementRef>;
 
     /** Sets the selected tab. */
-    @Input()
+    @Input() set selectedIndex(value: NumberInput) {
+        this._indexToSelect = coerceNumberProperty(value, null);
+    }
     get selectedIndex(): number {
         return this._selectedIndex as number;
     }
-    set selectedIndex(value: NumberInput) {
-        this._indexToSelect = coerceNumberProperty(value, null);
-    }
+    private _selectedIndex: number | null = null;
 
     /** Whether the negative set of styling should be used. */
-    @Input()
-    get negative(): boolean {
-        return this._negative;
-    }
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
             this._cdr.markForCheck();
         }
     }
+    get negative(): boolean {
+        return this._negative;
+    }
+    private _negative = false;
 
     /** Whether the tab group is disabled. Default: false. */
-    @Input()
-    get disabled(): boolean {
-        return this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         if (value !== this._disabled) {
             this._disabled = coerceBooleanProperty(value);
             this._cdr.markForCheck();
         }
     }
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    private _disabled = false;
 
     /** Whether the tab should be immediately selected on focus. */
-    @Input()
+    @Input() set autoselect(value: BooleanInput) {
+        this._autoselect = coerceBooleanProperty(value);
+    }
     get autoselect(): boolean {
         return this._autoselect;
     }
-    set autoselect(value: BooleanInput) {
-        this._autoselect = coerceBooleanProperty(value);
-    }
+    private _autoselect = true;
 
     /** Whether the tabs should to accordion on mobile viewports. */
-    @Input()
+    @Input() set mobileAccordion(value: BooleanInput) {
+        this._mobileAccordion = coerceBooleanProperty(value);
+    }
     get mobileAccordion(): boolean {
         return this._mobileAccordion;
     }
-    set mobileAccordion(value: BooleanInput) {
-        this._mobileAccordion = coerceBooleanProperty(value);
-    }
+    private _mobileAccordion = true;
 
     /**
      * **Expert option**
      *
      * Sets the appearance of the tab group. Default: 'default'.
      */
-    @Input()
-    set appearance(value: NxTabsAppearance) {
+    @Input() set appearance(value: NxTabsAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
             this._cdr.markForCheck();
@@ -149,6 +142,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     get appearance(): NxTabsAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
+    private _appearance!: NxTabsAppearance;
 
     /** An event emitted when the selected tab has changed. */
     @Output() readonly selectedIndexChange = new EventEmitter<number>();

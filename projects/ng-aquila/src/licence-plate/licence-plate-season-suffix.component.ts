@@ -17,14 +17,12 @@ export class NxLicencePlateSeasonSuffixComponent {
     /**
      * Start month of the licence plate.
      */
-    @Input()
-    startMonth = 1;
+    @Input() startMonth = 1;
 
     /**
      * End month of the licence plate.
      */
-    @Input()
-    endMonth = 1;
+    @Input() endMonth = 1;
 
     @HostBinding('class.is-disabled') get _disabled(): boolean {
         return this._formField._control?.disabled;

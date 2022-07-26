@@ -61,19 +61,6 @@ let nextUniqueId = 0;
     providers: [CUSTOM_VALUE_ACCESSOR, CUSTOM_VALIDATOR],
 })
 export class NxNumberStepperComponent extends MappedStyles implements AfterViewInit, ControlValueAccessor, Validator, OnDestroy {
-    private _step = 1;
-    private _min = 0;
-    private _max = 100;
-    private _value: number | null = 0;
-    private _label!: string;
-    private _incrementAriaLabel = '';
-    private _decrementAriaLabel = '';
-    private _inputAriaLabel = '';
-    private _resize = false;
-    private _negative = false;
-    private _leadingZero = true;
-    private _disabled = false;
-
     /** @docs-private */
     numberInputValue!: string;
 
@@ -102,96 +89,84 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 
     /** Whether the input should be resized. Default: false */
-    @Input('nxResize')
-    set resize(value: BooleanInput) {
+    @Input('nxResize') set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get resize(): boolean {
         return this._resize;
     }
-
-    get label(): string {
-        return this._label;
-    }
+    private _resize = false;
 
     /** Defines the the label shown above the stepper input. */
-    @Input('nxLabel')
-    set label(value: string) {
+    @Input('nxLabel') set label(value: string) {
         if (this._label !== value) {
             this._label = value;
             this._cdr.markForCheck();
         }
     }
+    get label(): string {
+        return this._label;
+    }
+    private _label!: string;
 
     /** Sets the aria-label for the increment button. */
-    @Input()
-    set incrementAriaLabel(value: string) {
+    @Input() set incrementAriaLabel(value: string) {
         this._incrementAriaLabel = value;
     }
-
     get incrementAriaLabel(): string {
         return this._incrementAriaLabel;
     }
+    private _incrementAriaLabel = '';
 
     /** Sets the aria-label for the decrement button. */
-    @Input()
-    set decrementAriaLabel(value: string) {
+    @Input() set decrementAriaLabel(value: string) {
         this._decrementAriaLabel = value;
     }
-
     get decrementAriaLabel(): string {
         return this._decrementAriaLabel;
     }
+    private _decrementAriaLabel = '';
 
     /** Sets the aria-label for the input of the number stepper. */
-    @Input()
-    set inputAriaLabel(value: string) {
+    @Input() set inputAriaLabel(value: string) {
         this._inputAriaLabel = value;
     }
-
     get inputAriaLabel(): string {
         return this._inputAriaLabel;
     }
+    private _inputAriaLabel = '';
 
     /** Sets the step size. Default: 1 */
-    @Input('nxStep')
-    set step(value: NumberInput) {
+    @Input('nxStep') set step(value: NumberInput) {
         // only internal changes no need to call markForCheck
         this._step = Number(value);
     }
-
     get step(): number {
         return this._step;
     }
+    private _step = 1;
 
     /** Sets the minimum accepted number. Default: 0 */
-    @Input('nxMin')
-    set min(value: NumberInput) {
+    @Input('nxMin') set min(value: NumberInput) {
         this._min = Number(value);
     }
-
     get min(): number {
         return this._min;
     }
+    private _min = 0;
 
     /** Sets the maximum accepted number. Default: 100 */
-    @Input('nxMax')
-    set max(value: NumberInput) {
+    @Input('nxMax') set max(value: NumberInput) {
         this._max = Number(value);
     }
-
     get max(): number {
         return this._max;
     }
-
-    get value(): number | null {
-        return this._value;
-    }
+    private _max = 100;
 
     /** Sets the value of the number-stepper. */
-    @Input('nxValue')
-    set value(value: number | null) {
+    @Input('nxValue') set value(value: number | null) {
         this._value = value as number;
         if (this._value) {
             this.setInputValue(this._value);
@@ -200,10 +175,13 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
         }
         this._cdr.markForCheck();
     }
+    get value(): number | null {
+        return this._value;
+    }
+    private _value: number | null = 0;
 
     /** Whether the negative set of styling should be used. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         if (this._negative !== value) {
             this._negative = coerceBooleanProperty(value);
             this._cdr.markForCheck();
@@ -212,13 +190,13 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
     /** Whether the number stepper value should have a leading zero.
      *
      * Default value is true.
      */
-    @Input()
-    set leadingZero(value: BooleanInput) {
+    @Input() set leadingZero(value: BooleanInput) {
         if (this._leadingZero !== value) {
             this._leadingZero = coerceBooleanProperty(value);
             this.setInputValue(this.value);
@@ -228,19 +206,19 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     get leadingZero(): boolean {
         return this._leadingZero;
     }
+    private _leadingZero = true;
 
     /** Whether the user input in the number stepper should be disabled.
      *
      * Default value is false.
      */
-    @Input('nxDisabled')
-    set disabled(value: BooleanInput) {
+    @Input('nxDisabled') set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     private readonly _destroyed = new Subject<void>();
 

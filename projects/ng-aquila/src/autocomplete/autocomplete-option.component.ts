@@ -61,15 +61,14 @@ export class NxAutocompleteOptionComponent {
     private _active = false;
 
     /** Whether the option is disabled. */
-    @Input()
-    get disabled(): boolean {
-        return this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
         }
+    }
+    get disabled(): boolean {
+        return this._disabled;
     }
     private _disabled = false;
 

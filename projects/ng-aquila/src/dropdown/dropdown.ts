@@ -131,12 +131,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     private _selectionModel!: SelectionModel<NxDropdownOption>;
 
-    protected _disabled = false;
-
     /** The ID of rendered dropdown html element. */
     readonly renderedValueId: string = `nx-dropdown-rendered-${nextUniqueId++}`;
-
-    private _placeholder = '';
 
     private _focused = false;
 
@@ -147,20 +143,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     errorState = false;
 
     /**
-     * Disable truncation of long item texts.
-     * We recommend following UX guidelines and always truncating long items.
-     * Please only disable truncation if it's impossible to use short descriptions.
-     */
-    private _ignoreItemTrunctation = false;
-
-    /**
      * Name of this control that is used inside the formfield component
      * @docs-private
      */
     controlType = 'nx-dropdown';
-
-    /** Holds the value from nxValue. */
-    private _value: any;
 
     /** The minimal space between the viewport and the overlay */
     _overlayViewportMargin: number = this.dir === 'rtl' ? 0 : 16;
@@ -182,16 +168,13 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** @docs-private */
     ariaDescribedby: string | undefined;
 
-    private _tabIndex = 0;
-
     /** @docs-private */
     currentFilter = '';
 
     /**
      * Array of options for the dropdown.
      */
-    @Input()
-    set options(value: NxDropdownOption[]) {
+    @Input() set options(value: NxDropdownOption[]) {
         this._options.next(value);
     }
     get options(): NxDropdownOption[] {
@@ -200,48 +183,48 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     // @ts-expect-error TODO: refactor to be TS compatible
     private readonly _options = new BehaviorSubject<NxDropdownOption[]>(null);
 
-    private _filterInputType: FilterInputType = 'text';
     /**
      * Type of filter input (default: text)
      */
-    @Input()
-    set filterInputType(value: FilterInputType) {
+    @Input() set filterInputType(value: FilterInputType) {
         this._filterInputType = value;
     }
     get filterInputType(): FilterInputType {
         return this._filterInputType;
     }
+    private _filterInputType: FilterInputType = 'text';
 
-    @Input()
-    get tabIndex(): number {
-        return this.disabled ? -1 : this._tabIndex;
-    }
-    set tabIndex(value: number) {
+    @Input() set tabIndex(value: number) {
         // If the specified tabIndex value is null or undefined, fall back to the default value.
         this._tabIndex = value != null ? value : 0;
     }
+    get tabIndex(): number {
+        return this.disabled ? -1 : this._tabIndex;
+    }
+    private _tabIndex = 0;
 
     /** Selected value */
-    @Input('nxValue')
-    get value(): any {
-        return this._value;
-    }
-    set value(newValue: any) {
+    @Input('nxValue') set value(newValue: any) {
         if (newValue !== this._value) {
             this.writeValue(newValue);
             this._value = newValue;
             this._onChange(newValue);
         }
     }
+    get value(): any {
+        return this._value;
+    }
+    /** Holds the value from nxValue. */
+    private _value: any;
 
     /** Whether the dropdown is disabled. */
-    @Input('nxDisabled')
+    @Input('nxDisabled') set disabled(value: BooleanInput) {
+        this._disabled = coerceBooleanProperty(value);
+    }
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: BooleanInput) {
-        this._disabled = coerceBooleanProperty(value);
-    }
+    protected _disabled = false;
 
     /**
      * Whether the dropdown should allow multi selection and additional checkboxes are shown.
@@ -265,8 +248,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _negative = false;
 
     /** If set to 'negative', the component is displayed with the negative set of styles. */
-    @Input('nxStyle')
-    set styles(value: string) {
+    @Input('nxStyle') set styles(value: string) {
         if (this._style === value) {
             return;
         }
@@ -276,27 +258,27 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /** Placeholder to be shown if no value has been selected. */
-    @Input()
-    get placeholder(): string {
-        return this._placeholder;
-    }
-    set placeholder(value: string) {
+    @Input() set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
+    get placeholder(): string {
+        return this._placeholder;
+    }
+    private _placeholder = '';
 
     /**
      * Disable truncation of long item texts.
      * We recommend following UX guidelines and always truncating long items.
      * Please only disable truncation if it's impossible to use short descriptions.
      */
-    @Input('nxIgnoreItemTrunctation')
+    @Input('nxIgnoreItemTrunctation') set ignoreItemTrunctation(value: BooleanInput) {
+        this._ignoreItemTrunctation = coerceBooleanProperty(value);
+    }
     get ignoreItemTrunctation(): boolean {
         return this._ignoreItemTrunctation;
     }
-    set ignoreItemTrunctation(value: BooleanInput) {
-        this._ignoreItemTrunctation = coerceBooleanProperty(value);
-    }
+    private _ignoreItemTrunctation = false;
 
     /** Whether the dropdown should be shown with an additional filter input. */
     @Input('nxShowFilter') showFilter = false;
@@ -384,12 +366,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
 
     private _keyManager!: ActiveDescendantKeyManager<NxDropdownItemComponent>;
 
+    set panelOpen(value: boolean) {
+        this._panelOpen = value;
+    }
     /** @docs-private */
     get panelOpen(): boolean {
         return this._panelOpen;
-    }
-    set panelOpen(value: boolean) {
-        this._panelOpen = value;
     }
 
     /** Strategy factory that will be used to handle scrolling while the dropdown panel is open. */
@@ -414,19 +396,12 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         return this.overlayLabel ? this.overlayLabel : this.formFieldComponent?.label ?? '';
     }
 
-    /** Comparison function to specify which option is displayed. Defaults to object equality. */
-    private _compareWith = (o1: any, o2: any) => o1 === o2;
-
     /**
      * Function to compare the option values with the selected values. The first argument
      * is a value from an option. The second is a value from the selection. A boolean
      * should be returned.
      */
-    @Input()
-    get compareWith() {
-        return this._compareWith;
-    }
-    set compareWith(fn: (o1: any, o2: any) => boolean) {
+    @Input() set compareWith(fn: (o1: any, o2: any) => boolean) {
         if (typeof fn !== 'function') {
             throw getNxDropdownNonFunctionValueError();
         }
@@ -436,8 +411,11 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
             this._initializeSelection();
         }
     }
-
-    private _filterFn = (search: string, itemValue: string) => itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    get compareWith() {
+        return this._compareWith;
+    }
+    /** Comparison function to specify which option is displayed. Defaults to object equality. */
+    private _compareWith = (o1: any, o2: any) => o1 === o2;
 
     /**
      * Function to be used when the user types into the search filter. The first argument is the user input,
@@ -445,16 +423,16 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * visibility state.
      * A boolean should be returned.
      */
-    @Input()
-    get filterFn() {
-        return this._filterFn;
-    }
-    set filterFn(fn: (search: string, itemValue: string) => boolean) {
+    @Input() set filterFn(fn: (search: string, itemValue: string) => boolean) {
         if (typeof fn !== 'function') {
             throw getNxDropdownNonFunctionValueError();
         }
         this._filterFn = fn;
     }
+    get filterFn() {
+        return this._filterFn;
+    }
+    private _filterFn = (search: string, itemValue: string) => itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
 
     /**
      * @docs-private

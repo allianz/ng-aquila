@@ -60,16 +60,6 @@ export const SELECTABLE_CARD_DEFAULT_OPTIONS = new InjectionToken<SelectableCard
     },
 })
 export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck, AfterContentInit, OnDestroy, AfterViewInit {
-    private _id = `nx-selectable-card-${nextId++}`;
-    private _checked = false;
-    private _disabled = false;
-    private _value = '';
-    private _name = '';
-    private _negative = false;
-    private _tabindex = '0';
-    private _required: boolean | undefined;
-    private _appearance: NxSelectableCardAppearance | undefined;
-
     _errorListIds = '';
 
     @ContentChildren(NxErrorComponent) _errorList!: QueryList<NxErrorComponent>;
@@ -89,127 +79,118 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
      *
      * Sets the appearance of the small stage. Default: 'default'
      */
-    @Input()
-    set appearance(value: NxSelectableCardAppearance) {
+    @Input() set appearance(value: NxSelectableCardAppearance) {
         if (value !== this.appearance) {
             this._appearance = value;
             this._cdr.markForCheck();
         }
     }
-
     get appearance(): NxSelectableCardAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
+    private _appearance?: NxSelectableCardAppearance;
 
     /**
      * Id of the selectable card.
      *
      * If not set, the selectable card gets an incremented value by default.
      */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (value !== this._id) {
             this._id = value;
             this._cdr.markForCheck();
         }
     }
-
     get id() {
         return this._id;
     }
+    private _id = `nx-selectable-card-${nextId++}`;
 
     /** Whether the selectable card  is checked. */
-    @Input()
-    set checked(value: BooleanInput) {
+    @Input() set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._checked) {
             this._checked = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get checked(): boolean {
         return this._checked;
     }
+    private _checked = false;
 
     /** The value attribute of the native input element  */
-    @Input()
-    get value(): string {
-        return this._value;
-    }
-
-    set value(value: string) {
+    @Input() set value(value: string) {
         if (value) {
             this._value = value;
         }
 
         this._cdr.markForCheck();
     }
+    get value(): string {
+        return this._value;
+    }
+    private _value = '';
 
     /** Whether the selectable card is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     /**
      * Whether the selectable card is negative.
      * @deprecated Obsolete as negative state is not implemented.
      * @deletion-target 12.0.0
      */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
     /** Whether the selectable card is required. */
-    @Input()
+    @Input() set required(value: BooleanInput) {
+        this._required = coerceBooleanProperty(value);
+    }
     get required(): boolean {
         return !!this._required;
     }
-    set required(value: BooleanInput) {
-        this._required = coerceBooleanProperty(value);
-    }
+    private _required?: boolean;
 
     /** Name of the selectable card. */
-    @Input()
+    @Input() set name(value: string) {
+        this._name = value;
+    }
     get name(): string {
         return this._name;
     }
-
-    set name(value: string) {
-        this._name = value;
-    }
+    private _name = '';
 
     /** The tabindex of the selectable card. */
-    @Input()
+    @Input() set tabindex(value: string) {
+        this._tabindex = value;
+    }
     get tabindex(): string {
         if (this.disabled) {
             return '-1';
         }
-
         return this._tabindex;
     }
-
-    set tabindex(value: string) {
-        this._tabindex = value;
-    }
+    private _tabindex = '0';
 
     @HostBinding('class.is-expert') get _isExpert() {
         return this.appearance === 'expert';

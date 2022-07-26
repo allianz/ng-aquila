@@ -138,13 +138,13 @@ export class NxTreeFlatDataSource<T extends NxTreeNode, F extends NxFlatTreeNode
 
     readonly _data = new BehaviorSubject<T[]>([]);
 
-    get data() {
-        return this._data.value;
-    }
     set data(value: T[]) {
         this._data.next(value);
         this._flattenedData.next(this._treeFlattener.flattenNodes(this.data));
         this.treeControl.dataNodes = this._flattenedData.value;
+    }
+    get data() {
+        return this._data.value;
     }
 
     constructor(private readonly treeControl: FlatTreeControl<F>, initialData: T[] = []) {

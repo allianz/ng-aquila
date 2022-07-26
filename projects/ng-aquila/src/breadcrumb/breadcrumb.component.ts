@@ -21,33 +21,27 @@ export type NxBreadcrumpAppearance = 'default' | 'link';
     },
 })
 export class NxBreadcrumbComponent implements AfterContentInit, OnDestroy {
-    private _negative = false;
-
-    private _appeareance: NxBreadcrumpAppearance = 'default';
-
     /**
      * Sets the appearance of the breadcrumb. default: 'default'
      */
-    @Input()
-    set appearance(value: NxBreadcrumpAppearance) {
+    @Input() set appearance(value: NxBreadcrumpAppearance) {
         this._appeareance = value;
         this._cdr.markForCheck();
     }
-
     get appearance() {
         return this._appeareance;
     }
+    private _appeareance: NxBreadcrumpAppearance = 'default';
 
     /** Whether the component uses the negative styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
-
     get negative() {
         return this._negative;
     }
+    private _negative = false;
 
     /** @docs-private */
     @ContentChildren(NxBreadcrumbItemComponent, { descendants: true }) breadcrumbItems!: QueryList<NxBreadcrumbItemComponent>;

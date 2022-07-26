@@ -551,8 +551,7 @@ describe('NxTabGroupComponent', () => {
 
         it('changes appearance on injection token change', inject([TAB_GROUP_DEFAULT_OPTIONS], (defaultOptions: TabGroupDefaultOptions) => {
             createTestComponent(BasicTabs);
-            // @ts-expect-error
-            testInstance.appearance = undefined;
+            testInstance.appearance = undefined!;
             fixture.detectChanges();
             expect(tabGroupInstance.appearance).toBe('expert');
             expect(tabGroupDebugElement.nativeElement).toHaveClass('is-expert');

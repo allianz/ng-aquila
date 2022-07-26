@@ -27,32 +27,27 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
 
     id = `nx-multi-select-option-${optionId++}`;
 
-    @Input()
-    appearance: AppearanceType = 'auto';
+    @Input() appearance: AppearanceType = 'auto';
 
     /**
      * Value of this option.
      */
-    @Input()
-    value?: T;
+    @Input() value?: T;
 
     /**
      * Label of this option.
      */
-    @Input()
-    label = '';
+    @Input() label = '';
 
     /**
      * Whether this option is selected.
      */
-    @Input()
-    selected = false;
+    @Input() selected = false;
 
     /**
      * Whether thisoption is disabled.
      */
-    @Input()
-    disabled = false;
+    @Input() disabled = false;
 
     /**
      * Emits an event when this option is selected or unselected by the user.

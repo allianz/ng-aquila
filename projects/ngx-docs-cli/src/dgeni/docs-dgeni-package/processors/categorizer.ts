@@ -99,10 +99,10 @@ export class Categorizer implements Processor {
         const outputMetadata = metadata ? getOutputBindingData(propertyDoc, metadata) : null;
 
         propertyDoc.isDirectiveInput = !!inputMetadata;
-        propertyDoc.directiveInputAlias = (inputMetadata && inputMetadata.alias) || '';
+        propertyDoc.directiveInputAlias = inputMetadata?.alias || '';
 
         propertyDoc.isDirectiveOutput = !!outputMetadata;
-        propertyDoc.directiveOutputAlias = (outputMetadata && outputMetadata.alias) || '';
+        propertyDoc.directiveOutputAlias = outputMetadata?.alias || '';
     }
 }
 

@@ -41,8 +41,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     @Output() readonly widthChange = new EventEmitter<number>();
 
     /** If set to `true` this will enable dynamic resizing of the sidebar. */
-    @Input()
-    set resizeable(value: BooleanInput) {
+    @Input() set resizeable(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (newValue !== this._resizeable) {
@@ -56,8 +55,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _resizeable = false;
 
     /** Sets the minimal width (in pixel) of the sidebar. */
-    @Input()
-    set minWidth(value: NumberInput) {
+    @Input() set minWidth(value: NumberInput) {
         this._minWidth = coerceNumberProperty(value) || MIN_WIDTH;
     }
     get minWidth(): number {
@@ -66,8 +64,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _minWidth: number = MIN_WIDTH;
 
     /** Sets the maximal width (in pixel) of the sidebar. */
-    @Input()
-    set maxWidth(value: NumberInput) {
+    @Input() set maxWidth(value: NumberInput) {
         this._maxWidth = coerceNumberProperty(value) || MAX_WIDTH;
     }
     get maxWidth(): number {
@@ -76,8 +73,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     private _maxWidth: number = MAX_WIDTH;
 
     /** This sets the accessibility label for the resize handle of the sidebar. */
-    @Input()
-    set resizeHandleAriaLabel(value: string) {
+    @Input() set resizeHandleAriaLabel(value: string) {
         if (value !== this._resizeHandleAriaLabel) {
             this._resizeHandleAriaLabel = value;
             this._cdr.markForCheck();

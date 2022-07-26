@@ -11,14 +11,11 @@ import { Component, Input } from '@angular/core';
 })
 export class NxFileUploaderItemStatus {
     /** Whether the file is uploading at the moment. If this is true, a spinner is shown. Default: false.*/
-    @Input()
-    isUploading!: boolean;
+    @Input() isUploading!: boolean;
 
     /** Whether the file was uploaded. If this is true, a `check-circle` icon is shown. Default: false.*/
-    @Input()
-    isUploaded!: boolean;
+    @Input() isUploaded!: boolean;
 
     /** The label that is used once the file has been uploaded (used by screen readers).*/
-    @Input()
-    uploadedLabel!: string;
+    @Input() uploadedLabel!: string;
 }

@@ -19,11 +19,8 @@ export class NxToggleSectionDirective extends NxToggleSectionBase implements NxT
     /** @docs-private */
     @ContentChildren(NxTableContentElement) rows!: QueryList<NxTableContentElement>;
 
-    private _isExpanded = true;
-
     /** Whether the toggle section is expanded. Default: true. */
-    @Input()
-    set isExpanded(value: boolean) {
+    @Input() set isExpanded(value: boolean) {
         if (this._isExpanded !== value) {
             this._isExpanded = value;
         }
@@ -31,6 +28,7 @@ export class NxToggleSectionDirective extends NxToggleSectionBase implements NxT
     get isExpanded(): boolean {
         return this._isExpanded;
     }
+    private _isExpanded = true;
 
     _numberOfRows(): number {
         return this.rows.filter(row => row instanceof NxComparisonTableRowDirective).length;

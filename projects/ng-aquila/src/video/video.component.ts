@@ -12,13 +12,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 // note that this currently only supports youtube videos
 export class NxVideoComponent implements AfterViewInit, OnDestroy {
-    private _videoId: string | null = null;
-
     @ViewChild('playButton') _playButton!: ElementRef;
 
     /** Sets the id of the YouTube video. */
-    @Input('nxVideoId')
-    set videoId(value: string) {
+    @Input('nxVideoId') set videoId(value: string) {
         if (this._videoId !== value) {
             this._videoId = value;
             this._cdr.markForCheck();
@@ -27,12 +24,10 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     get videoId(): string {
         return this._videoId as string;
     }
-
-    private _altText = '';
+    private _videoId: string | null = null;
 
     /** Sets the value of the alt attribute for the preview image. */
-    @Input('nxAltText')
-    set altText(value: string) {
+    @Input('nxAltText') set altText(value: string) {
         if (this._altText !== value) {
             this._altText = value;
             this._cdr.markForCheck();
@@ -41,12 +36,10 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     get altText(): string {
         return this._altText;
     }
-
-    private _playButtonAriaLabel = '';
+    private _altText = '';
 
     /** Sets the value of the aria-label attribute on the play button (Default: Play Video). */
-    @Input('nxPlayButtonAriaLabel')
-    set nxPlayButtonAriaLabel(value: string) {
+    @Input('nxPlayButtonAriaLabel') set nxPlayButtonAriaLabel(value: string) {
         if (this._playButtonAriaLabel !== value) {
             this._playButtonAriaLabel = value;
             this._cdr.markForCheck();
@@ -55,12 +48,10 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     get nxPlayButtonAriaLabel(): string {
         return this._playButtonAriaLabel;
     }
-
-    private _previewImageSrc: string | null = null;
+    private _playButtonAriaLabel = '';
 
     /** Sets the preview image. If this is not provided, an image from YouTube will be used as default. */
-    @Input('nxPreviewImageSrc')
-    set previewImageSrc(value: string) {
+    @Input('nxPreviewImageSrc') set previewImageSrc(value: string) {
         if (this._previewImageSrc !== value) {
             this._previewImageSrc = value;
             this._cdr.markForCheck();
@@ -69,36 +60,30 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     get previewImageSrc(): string {
         return this._previewImageSrc as string;
     }
-
-    private _showPlayerControls = true;
+    private _previewImageSrc: string | null = null;
 
     /** Sets player controls. If set to false, player controls are not available. */
-    @Input('nxShowPlayerControls')
-    set showPlayerControls(value: BooleanInput) {
+    @Input('nxShowPlayerControls') set showPlayerControls(value: BooleanInput) {
         this._showPlayerControls = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get showPlayerControls(): boolean {
         return this._showPlayerControls;
     }
-
-    private _allowFullScreen = true;
+    private _showPlayerControls = true;
 
     /** Sets fullscreen option. If set to false, fullscreen option is not available. */
-    @Input('nxAllowFullScreen')
-    set allowFullScreen(value: BooleanInput) {
+    @Input('nxAllowFullScreen') set allowFullScreen(value: BooleanInput) {
         this._allowFullScreen = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get allowFullScreen(): boolean {
         return this._allowFullScreen;
     }
-
-    private _interfaceLanguage: string | null = null;
+    private _allowFullScreen = true;
 
     /** Sets interface language. Can be used to override the interface language determined by YouTube. */
-    @Input('nxInterfaceLanguage')
-    set interfaceLanguage(value: string) {
+    @Input('nxInterfaceLanguage') set interfaceLanguage(value: string) {
         if (this._interfaceLanguage !== value) {
             this._interfaceLanguage = value;
             this._cdr.markForCheck();
@@ -107,6 +92,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
     get interfaceLanguage(): string {
         return this._interfaceLanguage as string;
     }
+    private _interfaceLanguage: string | null = null;
 
     /** @docs-private */
     showPlayer = false;

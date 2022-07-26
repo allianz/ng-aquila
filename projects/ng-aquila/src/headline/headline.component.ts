@@ -22,16 +22,9 @@ const DEFAULT_TYPE = 'section';
     },
 })
 export class NxHeadlineComponent {
-    private _classNames = '';
-    /** @docs-private */
-    type: HeadlineType = DEFAULT_TYPE;
-    /** @docs-private */
-    negative = false;
-
     /** Changes the type of the headline which affects the visual appearance.
      * You can combine a HeadlineType and 'negative'. */
-    @Input('nxHeadline')
-    set classNames(value: string) {
+    @Input('nxHeadline') set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -44,8 +37,13 @@ export class NxHeadlineComponent {
 
         this.negative = !!this._classNames?.match(/negative/);
     }
-
     get classNames(): string {
         return this._classNames;
     }
+    private _classNames = '';
+
+    /** @docs-private */
+    type: HeadlineType = DEFAULT_TYPE;
+    /** @docs-private */
+    negative = false;
 }

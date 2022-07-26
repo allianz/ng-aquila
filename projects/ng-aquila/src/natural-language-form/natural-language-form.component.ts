@@ -33,40 +33,35 @@ const DEFAULT_SIZE = 'large';
     },
 })
 export class NxNaturalLanguageFormComponent implements AfterContentInit, OnDestroy {
-    private _negative = false;
-
-    /** @docs-private */
-    resizeEvent$: Subject<void> = new Subject<void>();
-
-    /** @docs-private */
-    resizeObservable!: Observable<void>;
-
-    @ContentChildren(NxWordComponent) _words!: QueryList<NxWordComponent>;
-
-    /** @docs-private */
-    private _size: NxNaturalLanguageFormSize = DEFAULT_SIZE;
-
     /** Whether the negative set of stylings should be used. */
-    @Input('nxNegative')
-    set negative(value: BooleanInput) {
+    @Input('nxNegative') set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
-
     get negative() {
         return this._negative;
     }
+    private _negative = false;
 
     /**
      * Sets the size of the NLF. Default value: large
      */
-    @Input()
-    set size(value: NxNaturalLanguageFormSize) {
+    @Input() set size(value: NxNaturalLanguageFormSize) {
         this._size = value;
         this._cdr.markForCheck();
     }
     get size(): NxNaturalLanguageFormSize {
         return this._size;
     }
+    /** @docs-private */
+    private _size: NxNaturalLanguageFormSize = DEFAULT_SIZE;
+
+    /** @docs-private */
+    readonly resizeEvent$ = new Subject<void>();
+
+    /** @docs-private */
+    resizeObservable!: Observable<void>;
+
+    @ContentChildren(NxWordComponent) _words!: QueryList<NxWordComponent>;
 
     private readonly _destroyed = new Subject<void>();
 

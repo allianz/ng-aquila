@@ -20,17 +20,6 @@ export type NxListSize = 'xsmall' | 'small' | 'normal';
     },
 })
 export class NxListComponent {
-    private _classNames = '';
-
-    /** @docs-private */
-    type: NxListSize | undefined = DEFAULT_TYPE;
-
-    /** @docs-private */
-    negative = false;
-
-    /** @docs-private */
-    orderedCircle = false;
-
     /**
      * Sets the visual appearance of the list. You can combine different values:
      *
@@ -41,8 +30,7 @@ export class NxListComponent {
      *
      * ordered-circle: Display the list item numbers in a color filled circle.
      */
-    @Input('nxList')
-    set classNames(value: string) {
+    @Input('nxList') set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -55,8 +43,17 @@ export class NxListComponent {
         this.negative = !!this._classNames?.match(/negative/);
         this.orderedCircle = !!this._classNames?.match(/ordered-circle/);
     }
-
     get classNames(): string {
         return this._classNames;
     }
+    private _classNames = '';
+
+    /** @docs-private */
+    type: NxListSize | undefined = DEFAULT_TYPE;
+
+    /** @docs-private */
+    negative = false;
+
+    /** @docs-private */
+    orderedCircle = false;
 }

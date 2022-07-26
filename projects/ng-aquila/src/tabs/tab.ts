@@ -28,9 +28,6 @@ import { NxTabLabelDirective } from './tab-label';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
-    private _label!: string;
-    private _disabled = false;
-
     /** Emits whenever the internal state of the tab changes. */
     readonly _stateChanges = new Subject<void>();
 
@@ -38,11 +35,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
      * Content for the tab label given by `<ng-template nxTabLabel>`.
      * @docs-private
      * */
-    @ContentChild(NxTabLabelDirective, { read: TemplateRef, static: true })
-    get templateLabel(): TemplateRef<any> {
-        return this._templateLabel;
-    }
-    set templateLabel(value: TemplateRef<any>) {
+    @ContentChild(NxTabLabelDirective, { read: TemplateRef, static: true }) set templateLabel(value: TemplateRef<any>) {
         // Only update the templateLabel via query if there is actually
         // a nxTabLabel found. This works around an issue where a user may have
         // manually set `templateLabel` during creation mode, which would then get clobbered
@@ -50,6 +43,9 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
         if (value) {
             this._templateLabel = value;
         }
+    }
+    get templateLabel(): TemplateRef<any> {
+        return this._templateLabel;
     }
 
     private _templateLabel!: TemplateRef<any>;
@@ -62,28 +58,28 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     @ContentChild(NxTabContentDirective, { read: TemplateRef, static: true }) _explicitContent!: TemplateRef<any>;
 
     /** Sets the label of the tab shown in the tablist. */
-    @Input()
-    get label(): string {
-        return this._label;
-    }
-    set label(value: string) {
+    @Input() set label(value: string) {
         if (this._label !== value) {
             this._label = value;
         }
     }
+    get label(): string {
+        return this._label;
+    }
+    private _label!: string;
 
     /** Sets the tab to disabled. */
-    @Input()
-    get disabled(): boolean {
-        return this._tabGroup?.disabled || this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const coercedValue = coerceBooleanProperty(value);
 
         if (this._disabled !== coercedValue) {
             this._disabled = coercedValue;
         }
     }
+    get disabled(): boolean {
+        return this._tabGroup?.disabled || this._disabled;
+    }
+    private _disabled = false;
 
     private _headerViewRef!: EmbeddedViewRef<any>;
     private _contentViewRef!: EmbeddedViewRef<any>;

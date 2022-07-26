@@ -53,12 +53,11 @@ const yearsPerPage = 20;
 })
 export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, OnDestroy, OnChanges {
     /** A date representing the period (month or year) to start the calendar in. */
-    @Input()
+    @Input() set startAt(value: D | null) {
+        this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get startAt(): D | null {
         return this._startAt;
-    }
-    set startAt(value: D | null) {
-        this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _startAt!: D | null;
 
@@ -66,32 +65,29 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     @Input() startView: 'month' | 'year' | 'multi-year' = 'month';
 
     /** The currently selected date. */
-    @Input()
+    @Input() set selected(value: D | null) {
+        this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get selected(): D | null {
         return this._selected;
-    }
-    set selected(value: D | null) {
-        this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _selected!: D | null;
 
     /** The minimum selectable date. */
-    @Input()
+    @Input() set minDate(value: D | null) {
+        this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get minDate(): D | null {
         return this._minDate;
-    }
-    set minDate(value: D | null) {
-        this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _minDate!: D | null;
 
     /** The maximum selectable date. */
-    @Input()
+    @Input() set maxDate(value: D | null) {
+        this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get maxDate(): D | null {
         return this._maxDate;
-    }
-    set maxDate(value: D | null) {
-        this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _maxDate!: D | null;
 
@@ -131,11 +127,11 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
      * The current active date. This determines which time period is shown and which date is
      * highlighted when using keyboard navigation.
      */
-    get _activeDate(): D {
-        return this._clampedActiveDate;
-    }
     set _activeDate(value: D) {
         this._clampedActiveDate = this._dateAdapter.clampDate(value, this.minDate, this.maxDate);
+    }
+    get _activeDate(): D {
+        return this._clampedActiveDate;
     }
     private _clampedActiveDate!: D;
 

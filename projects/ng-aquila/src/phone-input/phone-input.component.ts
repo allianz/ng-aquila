@@ -56,17 +56,15 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     private readonly _uid = 'phone-input-' + next++;
 
-    private _id!: string;
-
     /** Sets the id of the phone input component. */
-    @Input()
-    get id() {
-        return this._id || this._uid;
-    }
-    set id(value: string) {
+    @Input() set id(value: string) {
         this._id = value;
         this.stateChanges.next();
     }
+    get id() {
+        return this._id || this._uid;
+    }
+    private _id!: string;
 
     /** Whether the component should be required. */
     @Input() set required(value: BooleanInput) {
@@ -81,38 +79,32 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     }
     #required = false;
 
-    private _disabled = false;
-
     /** Whether the component should be disabled. */
-    @Input()
+    @Input() set disabled(value: BooleanInput) {
+        this._disabled = value! as any; // TODO properly coerce input value
+    }
     get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: BooleanInput) {
-        this._disabled = value! as any; // TODO properly coerce input value
-    }
-
-    private _readonly = false;
+    private _disabled = false;
 
     /** Whether the component should be read only. */
-    @Input()
-    get readonly(): boolean {
-        return this._readonly;
-    }
-    set readonly(value: BooleanInput) {
+    @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
 
-    private _countryCode = 'DE';
     private _initialCountryCode = 'DE';
 
     /** Sets the initial country to be selected in the dropdown. Format is the international
      * country code like DE, US.
      * If there is already a number in the input field changing this property has no effect.
      */
-    @Input()
-    set countryCode(value: string) {
+    @Input() set countryCode(value: string) {
         if (this._inputValue) {
             return;
         }
@@ -122,56 +114,36 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
     get countryCode() {
         return this._countryCode;
     }
-
-    private _areaCodeLabel!: string;
+    private _countryCode = 'DE';
 
     /** Set the text at the top of the dropdown. The default value is 'Area Code'. */
-    @Input()
+    @Input() set areaCodeLabel(value: string) {
+        this._areaCodeLabel = value;
+    }
     get areaCodeLabel() {
         return this._areaCodeLabel || this._intl.areaCodeLabel;
     }
-    set areaCodeLabel(value: string) {
-        this._areaCodeLabel = value;
-    }
-
-    private _countryNames!: LocalizedCountryNames<any>;
+    private _areaCodeLabel!: string;
 
     /** Set the translations of the countries. */
-    @Input()
-    get countryNames() {
-        return this._countryNames || this._intl.countryNames;
-    }
-    set countryNames(value: LocalizedCountryNames<any>) {
+    @Input() set countryNames(value: LocalizedCountryNames<any>) {
         this._countryNames = value;
         this._sortCountries();
     }
-
-    private _placeholder = '';
+    get countryNames() {
+        return this._countryNames || this._intl.countryNames;
+    }
+    private _countryNames!: LocalizedCountryNames<any>;
 
     /** The placeholder to be shown in the input field. */
-    @Input()
-    get placeholder() {
-        return this._placeholder;
-    }
-    set placeholder(value: string) {
+    @Input() set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
-
-    /**
-     * Function to format the value in the input part of the component.
-     * The function is called on blur. The default function removes leading zeros.
-     * Please note: to determine the model value the component will remove parenthesis,
-     * whitespace and dash characters from the formatted input.
-     */
-    @Input()
-    get inputFormatter() {
-        return this._inputFormatter;
+    get placeholder() {
+        return this._placeholder;
     }
-    set inputFormatter(formatFn) {
-        this._inputFormatter = formatFn;
-        this._inputValue = this._inputFormatter(this._inputValue, this._countryCallingCode);
-    }
+    private _placeholder = '';
 
     // TODO we are disabling the floating label for now. the problem is: the label
     // is supposed to float next to the dropdown. we could introduce some changes to the
@@ -187,6 +159,19 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
 
     private readonly _destroyed = new Subject<void>();
 
+    /**
+     * Function to format the value in the input part of the component.
+     * The function is called on blur. The default function removes leading zeros.
+     * Please note: to determine the model value the component will remove parenthesis,
+     * whitespace and dash characters from the formatted input.
+     */
+    @Input() set inputFormatter(formatFn) {
+        this._inputFormatter = formatFn;
+        this._inputValue = this._inputFormatter(this._inputValue, this._countryCallingCode);
+    }
+    get inputFormatter() {
+        return this._inputFormatter;
+    }
     private _inputFormatter = (inputValue: string, countryCode: string) => this._removeLeadingZero(inputValue);
 
     /** `View -> model callback called when value changes` */

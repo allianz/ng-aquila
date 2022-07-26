@@ -18,13 +18,10 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     /** @docs-private */
     @ContentChildren(NxComparisonTableRowDirective) rows!: QueryList<NxComparisonTableRowDirective>;
 
-    private _labelCollapsed = 'More services';
-
     /**
      * Sets the label of the expandable area that is shown when the row group is collapsed.
      */
-    @Input()
-    set labelCollapsed(newValue: string) {
+    @Input() set labelCollapsed(newValue: string) {
         if (newValue !== this._labelCollapsed) {
             this._labelCollapsed = newValue;
         }
@@ -32,12 +29,10 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     get labelCollapsed(): string {
         return this._labelCollapsed;
     }
-
-    private _labelExpanded = 'Less services';
+    private _labelCollapsed = 'More services';
 
     /** Sets the label of the expandable area that is shown when the row group is expanded. */
-    @Input()
-    set labelExpanded(newValue: string) {
+    @Input() set labelExpanded(newValue: string) {
         if (newValue !== this._labelExpanded) {
             this._labelExpanded = newValue;
         }
@@ -45,12 +40,10 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     get labelExpanded(): string {
         return this._labelExpanded;
     }
-
-    private _visibleRows = 5;
+    private _labelExpanded = 'Less services';
 
     /** Sets the number of rows that are visible when loading the component. Default: 5. */
-    @Input()
-    set visibleRows(value: NumberInput) {
+    @Input() set visibleRows(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (newValue !== this._visibleRows) {
             this._visibleRows = newValue;
@@ -59,31 +52,26 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     get visibleRows(): number {
         return this._visibleRows;
     }
-
-    private _isExpanded = false;
+    private _visibleRows = 5;
 
     /** Sets the expanded state of the row group */
-    @Input()
-    set isExpanded(value: BooleanInput) {
+    @Input() set isExpanded(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._isExpanded) {
             this._isExpanded = newValue;
         }
     }
-
     get isExpanded(): boolean {
         return this._isExpanded;
     }
-
-    private _useFullRowForExpandableArea: boolean | undefined;
+    private _isExpanded = false;
 
     /**
      * **Expert Option**
      *
      * Sets if the expandable area uses the full width of the row or leaves out the first column. Default: false.
      */
-    @Input()
-    set useFullRowForExpandableArea(value: BooleanInput) {
+    @Input() set useFullRowForExpandableArea(value: BooleanInput) {
         this._useFullRowForExpandableArea = coerceBooleanProperty(value);
     }
     get useFullRowForExpandableArea(): boolean {
@@ -95,6 +83,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
         }
         return false;
     }
+    private _useFullRowForExpandableArea?: boolean;
 
     /** An event emitted every time the expanded state of the group changes */
     @Output() readonly isExpandedChange = new EventEmitter<boolean>();

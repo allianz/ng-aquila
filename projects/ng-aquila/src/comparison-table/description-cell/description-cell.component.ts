@@ -13,11 +13,8 @@ export class NxComparisonTableDescriptionCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
     @ViewChild('mobileCell') _mobileCell!: ElementRef;
 
-    private _id = `nx-comparison-table-description-cell-${nextId++}`;
-
     /** Sets the Id of the description cell. */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
         }
@@ -25,6 +22,7 @@ export class NxComparisonTableDescriptionCell {
     get id(): string {
         return this._id;
     }
+    private _id = `nx-comparison-table-description-cell-${nextId++}`;
 
     constructor(readonly _table: NxComparisonTableBase, readonly _row: NxComparisonTableRowBase) {
         if (this._row.type === 'header' || this._row.type === 'footer') {

@@ -12,8 +12,7 @@ export class NxMultiStepperGroupComponent {
     @ContentChildren(NxStepComponent, { descendants: true }) steps!: QueryList<NxStepComponent>;
 
     /** Sets the label of a group that is shown to the user. */
-    @Input()
-    set label(value: string) {
+    @Input() set label(value: string) {
         this._label = value;
         this._cdr.markForCheck();
     }

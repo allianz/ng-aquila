@@ -43,54 +43,48 @@ export class NxTaglistComponent implements ControlValueAccessor {
     /** @docs-private */
     @ViewChildren(NxTagComponent, { read: ElementRef }) tagChildren!: QueryList<ElementRef>;
 
-    private _tags: any[] = [];
     /** Sets the list of tags. */
-    @Input('nxTags')
-    set tags(value: any[]) {
+    @Input('nxTags') set tags(value: any[]) {
         this._tags = value;
         this._cdr.markForCheck();
     }
     get tags(): any[] {
         return this._tags;
     }
+    private _tags: any[] = [];
 
-    private _tabindex = -1;
     /** Sets the tabindex of the contained tags. Default value: -1. */
-    @Input()
-    set tabindex(value: NumberInput) {
+    @Input() set tabindex(value: NumberInput) {
         this._tabindex = coerceNumberProperty(value);
         this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this.allowTagDeletion ? 0 : this._tabindex;
     }
+    private _tabindex = -1;
 
-    private _allowTagDeletion = true;
     /** Whether the tags can be removed from the list. Default: true. */
-    @Input('nxAllowTagDeletion')
-    set allowTagDeletion(value: BooleanInput) {
+    @Input('nxAllowTagDeletion') set allowTagDeletion(value: BooleanInput) {
         this._allowTagDeletion = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get allowTagDeletion(): boolean {
         return this._allowTagDeletion;
     }
+    private _allowTagDeletion = true;
 
-    private _isKeywordList = false;
     /** Whether the tags can be styled as keywords. */
-    @Input('nxIsKeywordList')
-    set isKeywordList(value: BooleanInput) {
+    @Input('nxIsKeywordList') set isKeywordList(value: BooleanInput) {
         this._isKeywordList = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get isKeywordList(): boolean {
         return this._isKeywordList;
     }
+    private _isKeywordList = false;
 
-    private _labelProperty = 'nxTaglistLabel';
     /** Sets the label property, in case tags represent objects. */
-    @Input('nxLabelProperty')
-    set labelProp(value: string) {
+    @Input('nxLabelProperty') set labelProp(value: string) {
         if (this._labelProperty !== value) {
             this._labelProperty = value;
             this._cdr.markForCheck();
@@ -99,11 +93,10 @@ export class NxTaglistComponent implements ControlValueAccessor {
     get labelProp(): string {
         return this._labelProperty;
     }
+    private _labelProperty = 'nxTaglistLabel';
 
-    private _ariaLabelledBy!: string;
     /** Sets the label property to improve accessibility. */
-    @Input('aria-labelledby')
-    set labelledby(value: string) {
+    @Input('aria-labelledby') set labelledby(value: string) {
         if (this._ariaLabelledBy !== value) {
             this._ariaLabelledBy = value;
             this._cdr.markForCheck();
@@ -112,17 +105,17 @@ export class NxTaglistComponent implements ControlValueAccessor {
     get labelledby(): string {
         return this._ariaLabelledBy;
     }
+    private _ariaLabelledBy!: string;
 
-    private _valueFormatterFn: (value: any) => string = value => value;
     /** Sets the customization function for tag value.  */
-    @Input('nxValueFormatter')
-    set valueFormatter(fn: (value: any) => string) {
+    @Input('nxValueFormatter') set valueFormatter(fn: (value: any) => string) {
         this._valueFormatterFn = fn;
         this._cdr.markForCheck();
     }
     get valueFormatter(): (value: any) => string {
         return this._valueFormatterFn;
     }
+    private _valueFormatterFn: (value: any) => string = value => value;
 
     private _onChange: (value: any) => void = () => {};
     private _onTouched: () => any = () => {};

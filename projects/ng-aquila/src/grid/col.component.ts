@@ -59,59 +59,53 @@ export type ColOrder = 'first' | 'last' | 'unordered';
     },
 })
 export class NxColComponent implements OnInit {
-    private _columnClasses = '';
-    private _offsetClasses = '';
-    private _alignSelfClasses = '';
-    private _orderClasses = '';
-
-    get _classNames() {
-        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
-    }
+    /**
+     * Overwrite default class property to access user provided class.
+     * @docs-private
+     */
+    @Input() class!: string;
 
     /**
      * Number of columns used.
      *
      * Values: 1 - 12, default value: 12.
      */
-    @Input('nxCol')
-    set col(value: string) {
+    @Input('nxCol') set col(value: string) {
         this._columnClasses = this._mapTiers(value, [], MAPPING, ['0']);
 
         if (this._columnClasses.length === 0) {
             this.generateError('Exception: NxColDirective. Empty nxCol attribute.');
         }
     }
+    private _columnClasses = '';
 
     /**
      * The number of columns the column should be offset.
      *
      * Values: 1 - 12, default value: 12.
      */
-    @Input('nxColOffset')
-    set offset(value: string) {
+    @Input('nxColOffset') set offset(value: string) {
         this._offsetClasses = this._mapTiers(value, [], OFFSET_MAPPING);
     }
+    private _offsetClasses = '';
 
     /** The alignment for a column inside the flexible container. */
-    @Input('nxAlignSelf')
-    set itemSelf(value: ColSelfAlignment | string) {
+    @Input('nxAlignSelf') set itemSelf(value: ColSelfAlignment | string) {
         /** Values: auto, start, end, center, baseline, stretch */
         this._alignSelfClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_SELF) : '';
     }
+    private _alignSelfClasses = '';
 
     /** Order of the column within the row. */
-    @Input('nxColOrder')
-    set order(value: ColOrder | string) {
+    @Input('nxColOrder') set order(value: ColOrder | string) {
         /** Values: first, last or unordered */
         this._orderClasses = value ? addStylesFromDimensions(value, MAPPING_ORDER) : '';
     }
+    private _orderClasses = '';
 
-    /**
-     * Overwrite default class property to access user provided class.
-     * @docs-private
-     */
-    @Input()
-    class!: string;
+    get _classNames() {
+        return [this._columnClasses, this._offsetClasses, this._alignSelfClasses, this._orderClasses, this.class].filter(classes => classes?.length).join(' ');
+    }
 
     constructor(private readonly el: ElementRef) {}
 

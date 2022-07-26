@@ -40,7 +40,6 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
 
     private _selection: any;
 
-    private _disabled = false;
     /** @docs-private */
     errorState = false;
     // emits to signal children to run change detection
@@ -50,24 +49,20 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     additionalClasses = '';
 
     /** Sets the component to the disabled state.*/
-    @Input('nxDisabled')
-    set disabled(value: BooleanInput) {
+    @Input('nxDisabled') set disabled(value: BooleanInput) {
         const coerced = coerceBooleanProperty(value);
         if (this._disabled !== coerced) {
             this._disabled = coerced;
             this._disableChange.next();
         }
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
-
-    private _name!: string;
+    private _disabled = false;
 
     /** Sets the name used for accessibility. */
-    @Input('nxName')
-    set name(value: string) {
+    @Input('nxName') set name(value: string) {
         if (this._name !== value) {
             this._name = value;
             this._cdr.markForCheck();
@@ -76,9 +71,27 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     get name(): string {
         return this._name;
     }
+    private _name!: string;
 
     /** @docs-private */
     @ContentChildren(NxRadioToggleButtonBaseComponent) toggleButtons: QueryList<NxRadioToggleButtonBaseComponent> = new QueryList();
+
+    /** @docs-private */
+    get id(): string {
+        return `nx-radio-toggle-${this._toggleId}`;
+    }
+
+    /** Sets the modifiers for the component. */
+    @Input('nxStyle') set style(value: string) {
+        this.additionalClasses = mapClassNames(value, [], MAPPING);
+    }
+
+    /**
+     * @docs-private
+     */
+    get selection(): any {
+        return this._selection;
+    }
 
     private readonly _destroyed = new Subject<void>();
 
@@ -154,8 +167,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     }
 
     /** Preselects the respective options. */
-    @Input('nxSelection')
-    writeValue(value: any): void {
+    @Input('nxSelection') writeValue(value: any): void {
         this._selection = value;
         const correspondingButton = this.toggleButtons.find((button: NxRadioToggleButtonBaseComponent) => button.value === this._selection);
         if (correspondingButton) {
@@ -169,24 +181,6 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
 
     setDisabledState(isDisabled: boolean): void {
         this.disabled = isDisabled;
-    }
-
-    /** @docs-private */
-    get id(): string {
-        return `nx-radio-toggle-${this._toggleId}`;
-    }
-
-    /** Sets the modifiers for the component. */
-    @Input('nxStyle')
-    set style(value: string) {
-        this.additionalClasses = mapClassNames(value, [], MAPPING);
-    }
-
-    /**
-     * @docs-private
-     */
-    get selection(): any {
-        return this._selection;
     }
 
     /** @docs-private */

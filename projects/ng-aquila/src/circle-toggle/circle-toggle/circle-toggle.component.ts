@@ -82,17 +82,15 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         return this._id;
     }
 
-    private _name: string | null = null;
-
     /** Name that is used for accessibility. */
-    @Input()
-    set name(value: string) {
+    @Input() set name(value: string) {
         this._name = value;
         this._cdr.markForCheck();
     }
     get name(): string {
         return this._name as string;
     }
+    private _name: string | null = null;
 
     /**
      * An event that is emitted when the checked state fo the circle toggle changes.
@@ -105,10 +103,8 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
      */
     @Output() readonly selectionChange = new EventEmitter<ToggleChangeEvent>();
 
-    _checked = false;
     /** Whether the circle toggle is checked. */
-    @Input()
-    set checked(value: BooleanInput) {
+    @Input() set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.checked !== newValue) {
             this._checked = newValue;
@@ -118,59 +114,50 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     get checked(): boolean {
         return this._checked;
     }
-
-    private _value: string | null = null;
+    _checked = false;
 
     /** The value that is used in the model. */
-    @Input()
-    set value(newValue: string) {
+    @Input() set value(newValue: string) {
         this._value = newValue;
         this._cdr.markForCheck();
     }
     get value(): string {
         return this._value as string;
     }
+    private _value: string | null = null;
 
-    private _iconName: string | null = null;
     /** Id of the icon that should be displayed. */
-    @Input('icon')
-    set iconName(name: string) {
+    @Input('icon') set iconName(name: string) {
         this._iconName = name;
         this._cdr.markForCheck();
     }
     get iconName(): string {
         return this._iconName as string;
     }
-
-    private _svg: string | null = null;
+    private _iconName: string | null = null;
 
     /** SVG that is displayed if the circle toggle is unchecked. */
-    @Input()
-    set svg(src: string) {
+    @Input() set svg(src: string) {
         this._svg = src;
         this._cdr.markForCheck();
     }
     get svg(): string {
         return this._svg as string;
     }
-
-    private _svgChecked: string | null = null;
+    private _svg: string | null = null;
 
     /** SVG that is displayed if the circle toggle is checked. */
-    @Input()
-    set svgChecked(src: string) {
+    @Input() set svgChecked(src: string) {
         this._svgChecked = src;
         this._cdr.markForCheck();
     }
     get svgChecked(): string {
         return this._svgChecked as string;
     }
-
-    private _circleText: string | null = null;
+    private _svgChecked: string | null = null;
 
     /** A text that is displayed inside the circle toggle. */
-    @Input()
-    set circleText(value: string) {
+    @Input() set circleText(value: string) {
         if (value !== this._circleText) {
             this._circleText = value;
             this._cdr.markForCheck();
@@ -179,78 +166,66 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     get circleText(): string {
         return this._circleText as string;
     }
-
-    private _label: string | null = null;
+    private _circleText: string | null = null;
 
     /** Label displayed below the circle. */
-    @Input()
-    set label(value: string) {
+    @Input() set label(value: string) {
         this._label = value;
         this._cdr.markForCheck();
     }
     get label(): string {
         return this._label as string;
     }
-
-    private _hint: string | null = null;
+    private _label: string | null = null;
 
     /** Additional hint displayed below the label. */
-    @Input()
-    set hint(value: string) {
+    @Input() set hint(value: string) {
         this._hint = value;
         this._cdr.markForCheck();
     }
     get hint(): string {
         return this._hint as string;
     }
-
-    private _negative: boolean | undefined;
+    private _hint: string | null = null;
 
     /** Whether the circle toggle uses the negative set of styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.negative !== newValue) {
             this._negative = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get negative(): boolean {
         return !!this._negative;
     }
-
-    private _responsive: boolean | undefined;
+    private _negative?: boolean;
 
     /** Whether the circle toggle has a responsive behavior. */
-    @Input()
-    set responsive(value: BooleanInput) {
+    @Input() set responsive(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.responsive !== newValue) {
             this._responsive = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get responsive(): boolean {
         return !!this._responsive;
     }
-
-    private _disabled: boolean | undefined;
+    private _responsive?: boolean;
 
     /** Whether the circle toggle is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.disabled !== newValue) {
             this._disabled = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get disabled(): boolean {
         return !!this._disabled;
     }
+    private _disabled?: boolean;
 
     /** @docs-private */
     @ViewChild(NxMobileToggleButtonComponent, { static: true }) toggleButton!: NxMobileToggleButtonComponent;

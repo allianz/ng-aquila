@@ -29,8 +29,7 @@ export class StackBlitzButton {
         this.isDisabled = !this.exampleDescriptor;
     }
 
-    @Input()
-    set example(example: string) {
+    @Input() set example(example: string) {
         if (this.manifestService.hasExample(example)) {
             this.exampleDescriptor = this.manifestService.getExample(example);
             this.exampleData = new ExampleData(example, this.exampleDescriptor.title);

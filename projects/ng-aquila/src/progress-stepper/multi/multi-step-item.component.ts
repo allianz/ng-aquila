@@ -25,13 +25,12 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
 })
 export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy {
     /** The direction of the step */
-    @Input()
-    get direction(): NxMultiStepperDirection {
-        return this._direction;
-    }
-    set direction(value: NxMultiStepperDirection) {
+    @Input() set direction(value: NxMultiStepperDirection) {
         this._direction = value;
         this._cdr.markForCheck();
+    }
+    get direction(): NxMultiStepperDirection {
+        return this._direction;
     }
     private _direction: NxMultiStepperDirection = 'horizontal';
 
@@ -39,56 +38,51 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     @Input() label!: CdkStepLabel | string;
 
     /** Sets the selected step. */
-    @Input()
-    get selected(): boolean {
-        return this._selected;
-    }
-    set selected(value: BooleanInput) {
+    @Input() set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._cdr.markForCheck();
+    }
+    get selected(): boolean {
+        return this._selected;
     }
     private _selected!: boolean;
 
     /** Sets the active step. */
-    @Input()
-    get active(): boolean {
-        return this._active;
-    }
-    set active(value: BooleanInput) {
+    @Input() set active(value: BooleanInput) {
         this._active = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
+    get active(): boolean {
+        return this._active;
+    }
     private _active!: boolean;
 
-    @Input()
-    get disabled(): boolean {
-        return this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._cdr.markForCheck();
+    }
+    get disabled(): boolean {
+        return this._disabled;
     }
     private _disabled!: boolean;
 
     /** Sets the last step. */
-    @Input()
-    get last(): boolean {
-        return this._last;
-    }
-    set last(value: BooleanInput) {
+    @Input() set last(value: BooleanInput) {
         this._last = coerceBooleanProperty(value);
         this._cdr.markForCheck();
+    }
+    get last(): boolean {
+        return this._last;
     }
     private _last!: boolean;
 
     /** Sets the step completed. */
-    @Input()
-    get completed(): boolean {
-        return this._completed;
-    }
-    set completed(value: BooleanInput) {
+    @Input() set completed(value: BooleanInput) {
         this._completed = coerceBooleanProperty(value);
         this._cdr.markForCheck();
+    }
+    get completed(): boolean {
+        return this._completed;
     }
     private _completed!: boolean;
 

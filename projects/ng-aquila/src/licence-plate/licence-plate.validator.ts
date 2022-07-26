@@ -50,8 +50,7 @@ export class NxLicencePlateValidatorDirective implements Validator {
      * Supports validation for german standard and special plate numbers.
      * Choose `other` to allow all values.
      */
-    @Input('nxLicensePlate')
-    type: NxLicencePlateType = 'other';
+    @Input('nxLicensePlate') type: NxLicencePlateType = 'other';
 
     validate(control: AbstractControl): ValidationErrors | null {
         return nxLicensePlateValidator(this.type)(control);

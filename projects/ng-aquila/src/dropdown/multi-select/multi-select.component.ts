@@ -74,57 +74,56 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     // @Input()
     // selectValue(value: string | () )
 
-    @Input()
+    @Input() set required(value: boolean) {
+        this._required = value;
+    }
     get required() {
         return this._required;
     }
-    set required(value: boolean) {
-        this._required = value;
-    }
+    private _required = false;
 
     /** Whether the multi select is disabled. */
-    @Input()
+    @Input() set disabled(value: boolean) {
+        this._disabled = value;
+    }
     get disabled() {
         return this._disabled;
     }
-    set disabled(value: boolean) {
-        this._disabled = value;
-    }
+    private _disabled = false;
 
     /** Whether the multi select should be read only. */
-    @Input()
-    get readonly(): boolean {
-        return this._readonly;
-    }
-    set readonly(value: BooleanInput) {
+    @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     /** The placeholder shown in the multi select field. */
-    @Input()
-    get placeholder() {
-        return this._placeholder;
-    }
-    set placeholder(value: string) {
+    @Input() set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
+    get placeholder() {
+        return this._placeholder;
+    }
+    private _placeholder = '';
 
     /**
      * Whether this multi select can be filtered.
      */
-    @Input()
-    set filter(value: BooleanInput) {
+    @Input() set filter(value: BooleanInput) {
         this._filter = coerceBooleanProperty(value);
     }
     get filter(): boolean {
         return this._filter;
     }
+    private _filter = false;
 
     /** Whether the (select all / clear all) should be disabled and hidden. */
-    @Input()
-    set disableSelectAll(value: BooleanInput) {
+    @Input() set disableSelectAll(value: BooleanInput) {
         const coercedValue = coerceBooleanProperty(value);
         if (this.#disableSelectAll !== coercedValue) {
             this.#disableSelectAll = coercedValue;
@@ -155,26 +154,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         return this.selectedItems.size > 0 && !this._allSelected;
     }
 
-    constructor(
-        readonly _intl: NxDropdownIntl,
-        private readonly _elementRef: ElementRef,
-        private readonly _errorStateMatcher: ErrorStateMatcher,
-        private readonly _cdr: ChangeDetectorRef,
-        @Optional() private readonly _formFieldComponent: NxFormfieldComponent | null,
-        @Optional() @Self() readonly ngControl: NgControl | null,
-        @Optional() private readonly _parentForm: NgForm | null,
-        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
-    ) {
-        if (this.ngControl) {
-            // Note: we provide the value accessor through here, instead of
-            // the `providers` to avoid running into a circular import.
-            this.ngControl.valueAccessor = this;
-        }
-        this._isDisabled = this._isDisabled.bind(this);
-
-        _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => _cdr.markForCheck());
-    }
-
     private get _isActiveItemFiltered(): boolean {
         return (
             typeof this._keyManager.activeItem !== 'undefined' &&
@@ -183,16 +162,6 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     @ViewChildren(NxMultiSelectOptionComponent) private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
-
-    private _required = false;
-
-    private _disabled = false;
-
-    private _readonly = false;
-
-    private _placeholder = '';
-
-    private _filter = false;
 
     private _openedBy: FocusOrigin = 'mouse';
 
@@ -239,41 +208,56 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /**
      * List of options to choose from.
      */
-    @Input()
-    options: S[] = [];
+    @Input() options: S[] = [];
 
     /**
      * Placeholder for the filter input.
      */
-    @Input()
-    filterPlaceholder = 'Type to filter';
+    @Input() filterPlaceholder = 'Type to filter';
 
     /**
      * Selector to get the value of an option.
      * Can be either a property name or a selector function.
      * When empty the whole option is treated as the value.
      */
-    @Input()
-    selectValue: string | ((option: S) => T) = '';
+    @Input() selectValue: string | ((option: S) => T) = '';
 
     /**
      * Selector to get the label of an option.
      * Can be either a property name or a selector function.
      * When empty the whole option is treated as the label.
      */
-    @Input()
-    selectLabel: string | ((option: S) => string) = '';
+    @Input() selectLabel: string | ((option: S) => string) = '';
 
     /**
      * Selector to get the disabled state of an option.
      * Can be either a property name or a selector function.
      */
-    @Input()
-    selectDisabled?: string | ((option: S) => boolean);
+    @Input() selectDisabled?: string | ((option: S) => boolean);
 
     @HostBinding('class.is-open') _isOpen = false;
 
     private readonly _destroyed = new Subject<void>();
+
+    constructor(
+        readonly _intl: NxDropdownIntl,
+        private readonly _elementRef: ElementRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        private readonly _cdr: ChangeDetectorRef,
+        @Optional() private readonly _formFieldComponent: NxFormfieldComponent | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+    ) {
+        if (this.ngControl) {
+            // Note: we provide the value accessor through here, instead of
+            // the `providers` to avoid running into a circular import.
+            this.ngControl.valueAccessor = this;
+        }
+        this._isDisabled = this._isDisabled.bind(this);
+
+        _intl.changes.pipe(takeUntil(this._destroyed)).subscribe(() => _cdr.markForCheck());
+    }
 
     ngOnDestroy(): void {
         this._destroyed.next();

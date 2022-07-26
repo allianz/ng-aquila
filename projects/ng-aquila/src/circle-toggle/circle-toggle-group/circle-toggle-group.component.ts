@@ -78,10 +78,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get id(): string {
         return this._id;
     }
+    private _id = `nx-circle-toggle-group-${nextId++}`;
 
     /** Name that is used for accessibility. */
-    @Input()
-    set name(value: string) {
+    @Input() set name(value: string) {
         this._name = value;
         this.updateToggleButtonsNames();
         this._cdr.markForCheck();
@@ -89,10 +89,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get name(): string {
         return this._name;
     }
+    private _name = `toggle-group-${nextId++}`;
 
     /** Whether the circle toggle group is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
@@ -105,9 +105,10 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
+
     /** Whether the circle toggle group uses the negative styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this.negative !== newValue) {
             this._negative = newValue;
@@ -119,52 +120,38 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get negative(): boolean {
         return this._negative;
     }
+    _negative = false;
+
     /** The value of the selected circle toggle in the circle toggle group. */
-    @Input()
-    set value(value: string) {
+    @Input() set value(value: string) {
         this.writeValue(value);
     }
-
     get value(): string {
         return this._value;
     }
+    private _value!: string;
+
     /** Whether the circle toggle group has a responsive behavior. */
-    @Input()
-    set responsive(value: BooleanInput) {
+    @Input() set responsive(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.responsive) {
             this._responsive = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get responsive(): boolean {
         if (this._isExpert) {
             return false;
         }
         return this._responsive;
     }
+    private _responsive = true;
 
     @HostBinding('class.is-expert') get _isExpert(): boolean {
         return this.appearance === 'expert';
     }
 
     errorState = false;
-
-    constructor(
-        private readonly _cdr: ChangeDetectorRef,
-        private readonly _errorStateMatcher: ErrorStateMatcher,
-        @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private readonly _defaultOptions: CircleToggleGroupDefaultOptions | null,
-        @Optional() @Self() readonly ngControl: NgControl | null,
-        @Optional() private readonly _parentForm: NgForm | null,
-        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
-    ) {
-        if (this.ngControl) {
-            // Note: we provide the value accessor through here, instead of
-            // the `providers` to avoid running into a circular import.
-            this.ngControl.valueAccessor = this;
-        }
-    }
 
     /** @docs-private */
     get selectedButton(): ToggleButton | null {
@@ -178,41 +165,41 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
 
     @ContentChildren(ToggleButton, { descendants: true }) private _buttons!: QueryList<ToggleButton>;
 
-    private _id = `nx-circle-toggle-group-${nextId++}`;
-
     /** An event emitted when the selection changes. Outputs the value of the currently selected button. */
     @Output() readonly valueChange = new EventEmitter<any>();
-
-    private _name = `toggle-group-${nextId++}`;
-
-    private _disabled = false;
-
-    _negative = false;
-
-    private _value!: string;
-
-    private _responsive = true;
-
-    private _appearance: NxCircleToggleGroupAppearance | undefined;
 
     /**
      * **Expert option**
      *
      * Sets the appearance of the circle toggle group. Default: 'default'
      */
-    @Input()
-    set appearance(value: NxCircleToggleGroupAppearance) {
+    @Input() set appearance(value: NxCircleToggleGroupAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
             this._cdr.markForCheck();
         }
     }
-
     get appearance(): NxCircleToggleGroupAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
+    private _appearance: NxCircleToggleGroupAppearance | undefined;
 
     private readonly _destroyed = new Subject<void>();
+
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        private readonly _errorStateMatcher: ErrorStateMatcher,
+        @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private readonly _defaultOptions: CircleToggleGroupDefaultOptions | null,
+        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() private readonly _parentForm: NgForm | null,
+        @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
+    ) {
+        if (this.ngControl) {
+            // Note: we provide the value accessor through here, instead of
+            // the `providers` to avoid running into a circular import.
+            this.ngControl.valueAccessor = this;
+        }
+    }
 
     private onChangeCallback = (value: string) => {};
     private onTouchedCallback = () => {};

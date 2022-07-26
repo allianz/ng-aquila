@@ -29,15 +29,13 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     _currentIcon: string = visibilityIcons['show'];
     /** @docs-private */
     _pressed = false;
-    private _ariaLabel = 'Show password';
 
     /** Sets the aria-label needed for accessibility.
      * Notice that this `aria-label` should describe the initial action according to the status of the visibility.
      * E.g if you have an `input[type=password]` at the beginning then the
      * password will be hidden and the correct aria-label would be 'Show password.'
      */
-    @Input()
-    set ariaLabel(value: string) {
+    @Input() set ariaLabel(value: string) {
         if (value !== this._ariaLabel) {
             this._ariaLabel = value;
             this._cdr.markForCheck();
@@ -46,6 +44,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     get ariaLabel(): string {
         return this._ariaLabel;
     }
+    private _ariaLabel = 'Show password';
 
     constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);

@@ -45,7 +45,6 @@ export type LABEL_SIZE = 'small' | 'large';
     },
 })
 export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, AfterViewInit, OnDestroy {
-    private _id = `nx-switcher-${nextId++}-${randomString()}`;
     /** @docs-private */
     errorState = false;
 
@@ -55,52 +54,47 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     /** Sets the id of the switcher */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         this._id = value;
         this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
     }
+    private _id = `nx-switcher-${nextId++}-${randomString()}`;
 
-    private _labelPosition: POSITION = 'right';
     /** Specifies the placement of the label */
-    @Input()
-    set labelPosition(value: POSITION) {
+    @Input() set labelPosition(value: POSITION) {
         this._labelPosition = value;
         this._cdr.markForCheck();
     }
     get labelPosition(): POSITION {
         return this._labelPosition;
     }
+    private _labelPosition: POSITION = 'right';
 
-    private _name: string | null = null;
     /** Sets the label text of the switcher */
-    @Input()
-    set name(value: string) {
+    @Input() set name(value: string) {
         this._name = value;
         this._cdr.markForCheck();
     }
     get name(): string {
         return this._name as string;
     }
+    private _name: string | null = null;
 
-    private _checked = false;
     /** Whether the switcher is checked (on) or unchecked (off) */
-    @Input()
-    set checked(value: boolean) {
+    @Input() set checked(value: boolean) {
         this._checked = value;
         this._cdr.markForCheck();
     }
     get checked(): boolean {
         return this._checked;
     }
+    private _checked = false;
 
-    private _big = false;
     /** Whether the big switcher is used */
-    @Input('nxBig')
-    set big(value: BooleanInput) {
+    @Input('nxBig') set big(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._big = newValue;
         this._cdr.markForCheck();
@@ -108,22 +102,20 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     get big(): boolean {
         return this._big;
     }
+    private _big = false;
 
-    private _labelSize: LABEL_SIZE = 'large';
     /** Sets the size of the label */
-    @Input()
-    set labelSize(value: LABEL_SIZE) {
+    @Input() set labelSize(value: LABEL_SIZE) {
         this._labelSize = value;
         this._cdr.markForCheck();
     }
     get labelSize(): LABEL_SIZE {
         return this._labelSize;
     }
+    private _labelSize: LABEL_SIZE = 'large';
 
-    private _negative = false;
     /** Whether the style for a dark background is used */
-    @Input('nxNegative')
-    set negative(value: BooleanInput) {
+    @Input('nxNegative') set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._negative = newValue;
         this._cdr.markForCheck();
@@ -131,11 +123,10 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
-    private _disabled = false;
     /** Whether the switcher is in the disabled state */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         this._disabled = newValue;
         this._cdr.markForCheck();
@@ -143,6 +134,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     /** An event is dispatched each time the switcher value is changed */
     @Output('checkedChange') readonly checkedChange = new EventEmitter<boolean>();

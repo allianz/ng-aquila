@@ -10,8 +10,7 @@ import { Directive, Input } from '@angular/core';
     providers: [{ provide: CdkTreeNodeToggle, useExisting: NxTreeNodeToggleDirective }],
 })
 export class NxTreeNodeToggleDirective<T> extends CdkTreeNodeToggle<T> {
-    @Input('nxTreeNodeToggleRecursive')
-    set recursive(value: boolean) {
+    @Input('nxTreeNodeToggleRecursive') set recursive(value: boolean) {
         this._recursive = coerceBooleanProperty(value);
     }
     get recursive(): boolean {

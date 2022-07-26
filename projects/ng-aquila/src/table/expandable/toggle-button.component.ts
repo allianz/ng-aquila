@@ -34,8 +34,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     /**
      * This is the expandable target that will be toggled when the user clicks the button.
      */
-    @Input()
-    set target(value: NxExpandable) {
+    @Input() set target(value: NxExpandable) {
         this._target = value;
 
         this._subscription?.unsubscribe();
@@ -49,8 +48,7 @@ export class NxToggleButtonComponent implements AfterViewInit, OnDestroy {
     }
     _target!: NxExpandable;
 
-    @Input()
-    set ariaLabel(value: string) {
+    @Input() set ariaLabel(value: string) {
         this._ariaLabel = value;
         this._cdr.markForCheck();
     }

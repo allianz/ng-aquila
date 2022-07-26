@@ -11,17 +11,16 @@ import { DocVersions } from './../../../core/types';
 })
 export class NxVersionSelectComponent {
     _selected = '';
-    private _versions: DocVersions | null = null;
     _versionSelectIsOpened = false;
 
-    @Input()
-    set versions(value: DocVersions) {
+    @Input() set versions(value: DocVersions) {
         this._versions = value;
         this._selected = value.currentChannel;
     }
     get versions(): DocVersions {
         return this._versions as DocVersions;
     }
+    private _versions: DocVersions | null = null;
 
     @ViewChild(NxContextMenuTriggerDirective, { static: true }) contextMenuTrigger!: NxContextMenuTriggerDirective;
 

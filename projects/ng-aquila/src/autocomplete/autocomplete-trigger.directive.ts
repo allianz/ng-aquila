@@ -133,8 +133,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     @Input('nxAutocomplete') autocomplete!: NxAutocompleteComponent;
 
     /** The items callback. Called with input value, must return Observable of Array of strings */
-    @Input('nxAutocompleteItems')
-    set itemsCb(val: (val: string) => Observable<string[]>) {
+    @Input('nxAutocompleteItems') set itemsCb(val: (val: string) => Observable<string[]>) {
         if (typeof val === 'function') {
             this._itemsCb = val;
         } else {
@@ -147,15 +146,13 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private _itemsCb!: (val: string) => Observable<string[]>;
 
     /** Debounce in ms before items callback is triggered. Defaults to 400 */
-    @Input('nxAutocompleteDebounce')
-    set debounce(val: NumberInput) {
+    @Input('nxAutocompleteDebounce') set debounce(val: NumberInput) {
         this._debounce = coerceNumberProperty(val);
     }
     private _debounce = 400;
 
     /** Whether autocomplete functionality is disabled. */
-    @Input('nxAutocompleteDisabled')
-    set autocompleteDisabled(val: boolean) {
+    @Input('nxAutocompleteDisabled') set autocompleteDisabled(val: boolean) {
         this._autocompleteDisabled = val;
         this._bindAutocompleteItems();
     }

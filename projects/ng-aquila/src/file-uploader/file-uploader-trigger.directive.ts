@@ -8,11 +8,8 @@ import { NxFileUploaderComponent } from './file-uploader.component';
     exportAs: 'nxFileUploadTrigger',
 })
 export class NxFileUploaderTriggerDirective {
-    _fileUpload!: NxFileUploaderComponent;
-
     /** References the file upload component instance that the trigger is associated with. */
-    @Input('nxFileUploadTriggerFor')
-    set fileUpload(value: NxFileUploaderComponent) {
+    @Input('nxFileUploadTriggerFor') set fileUpload(value: NxFileUploaderComponent) {
         if (this._fileUpload !== value) {
             this._fileUpload = value;
         }
@@ -20,6 +17,7 @@ export class NxFileUploaderTriggerDirective {
     get fileUpload(): NxFileUploaderComponent {
         return this._fileUpload;
     }
+    _fileUpload!: NxFileUploaderComponent;
 
     @HostListener('click')
     _onClick() {

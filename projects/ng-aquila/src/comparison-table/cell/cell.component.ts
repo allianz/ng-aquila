@@ -16,11 +16,8 @@ let nextId = 0;
 export class NxComparisonTableCell {
     @ViewChild('content', { static: true }) _content!: TemplateRef<any>;
 
-    private _index!: number;
-
     /** @docs-private */
-    @Input()
-    set index(newValue: number) {
+    @Input() set index(newValue: number) {
         if (this._index !== newValue) {
             if (this._disabledColumn) {
                 this._table._removeDisabledColumn(this._index);
@@ -34,14 +31,12 @@ export class NxComparisonTableCell {
     get index(): number {
         return this._index;
     }
-
-    private _disabledColumn = false;
+    private _index!: number;
 
     /** Sets all cells below a header cell to be disabled (disabled column).
      *  Important: this property can be set only on header cells.
      */
-    @Input()
-    set disabledColumn(value: BooleanInput) {
+    @Input() set disabledColumn(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._type === 'header' && newValue !== this.disabledColumn) {
             this._disabledColumn = newValue;
@@ -55,15 +50,13 @@ export class NxComparisonTableCell {
     get disabledColumn(): boolean {
         return this._disabledColumn;
     }
+    private _disabledColumn = false;
 
     /** @docs-private */
     @Output() readonly indexChange = new EventEmitter<number>();
 
-    private _id = `nx-comparison-table-cell-${nextId++}`;
-
     /** Sets the Id of the cell. */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
         }
@@ -71,18 +64,21 @@ export class NxComparisonTableCell {
     get id(): string {
         return this._id;
     }
-
-    private _type: NxComparisonTableRowType = 'content';
+    private _id = `nx-comparison-table-cell-${nextId++}`;
 
     /** Sets the type of the cell. Default: 'content'. */
-    @Input()
-    set type(value: NxComparisonTableRowType) {
+    @Input() set type(value: NxComparisonTableRowType) {
         if (this._type !== value) {
             this._type = value;
         }
     }
     get type(): NxComparisonTableRowType {
         return this._type;
+    }
+    private _type: NxComparisonTableRowType = 'content';
+
+    get _isCellDisabled(): boolean {
+        return this._table._disabledIndexes.includes(this.index);
     }
 
     constructor(
@@ -101,10 +97,6 @@ export class NxComparisonTableCell {
 
     _selectCell() {
         this._table.selectedIndex = this.index;
-    }
-
-    get _isCellDisabled(): boolean {
-        return this._table._disabledIndexes.includes(this.index);
     }
 
     _getHeaderIds(): string {

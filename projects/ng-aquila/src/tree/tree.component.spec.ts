@@ -340,11 +340,11 @@ class TestData {
 class FakeDataSource {
     dataIndex = 0;
     _dataChange = new BehaviorSubject<TestData[]>([]);
-    get data() {
-        return this._dataChange.getValue();
-    }
     set data(data: TestData[]) {
         this._dataChange.next(data);
+    }
+    get data() {
+        return this._dataChange.getValue();
     }
 
     connect(): Observable<TestData[]> {

@@ -96,20 +96,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
      */
     @Output() readonly filesSelected = new EventEmitter<FileItem[]>();
 
-    private _id = `nx-file-uploader-${nextId++}`;
-    private _name!: string;
-    private _value!: FileItem[] | null;
-    private _maxFileSize = 0;
-    private _required = false;
-    private _disabled = false;
-    private _multiple = false;
-    private _accept!: string;
     private _controlValidators: ValidatorFn | null = null;
-    private _uploader!: NxFileUploader;
-    private _maxFileNumber: number | null = null;
     _inputId = `${this.id}-input`;
     _labelId = `${this.id}-label`;
-    _itemTemplate!: TemplateRef<any>;
     _templateContext;
 
     /** @docs-private */
@@ -122,45 +111,44 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     validatorFnArray: any[] = [];
 
     /** Sets the id of the file uploader. */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         this._id = value;
         this._cdr.markForCheck();
     }
     get id(): string {
         return this._id;
     }
+    private _id = `nx-file-uploader-${nextId++}`;
 
     /** Whether the file uploader is required. */
-    @Input()
-    set required(value: BooleanInput) {
+    @Input() set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
     }
     get required(): boolean {
         return this._required;
     }
+    private _required = false;
 
     /** The value of the file upload. */
-    @Input()
-    set value(value: FileItem[] | undefined) {
+    @Input() set value(value: FileItem[] | undefined) {
         this.writeValue(value as FileItem[]);
     }
     get value(): FileItem[] | undefined {
         return this._value as FileItem[];
     }
+    private _value!: FileItem[] | null;
 
     /** Name that is used for accessibility. */
-    @Input()
-    set name(value: string) {
+    @Input() set name(value: string) {
         this._name = value;
     }
     get name(): string {
         return this._name;
     }
+    private _name!: string;
 
     /** Whether the file uploader is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         if (this.button) {
             this.button.disabled = this._disabled;
@@ -175,37 +163,37 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     /** Whether the file uploader accepts multiple files to be added. */
-    @Input()
-    set multiple(value: BooleanInput) {
+    @Input() set multiple(value: BooleanInput) {
         this._multiple = coerceBooleanProperty(value);
     }
     get multiple(): boolean {
         return this._multiple;
     }
+    private _multiple = false;
 
     /** The accepted file types */
-    @Input()
-    set accept(value: string) {
+    @Input() set accept(value: string) {
         this._accept = value;
     }
     get accept(): string {
         return this._accept;
     }
+    private _accept!: string;
 
     /** The max file size in bytes used for validation */
-    @Input()
-    set maxFileSize(value: NumberInput) {
+    @Input() set maxFileSize(value: NumberInput) {
         this._maxFileSize = coerceNumberProperty(value);
     }
     get maxFileSize(): number {
         return this._maxFileSize;
     }
+    private _maxFileSize = 0;
 
     /** Sets the file uploader for the component. */
-    @Input()
-    set uploader(newUploader: NxFileUploader) {
+    @Input() set uploader(newUploader: NxFileUploader) {
         if (this._uploader !== newUploader) {
             this._uploader = newUploader;
         }
@@ -213,19 +201,19 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     get uploader(): NxFileUploader {
         return this._uploader;
     }
+    private _uploader!: NxFileUploader;
 
     /** The max number of files that is accepted. */
-    @Input()
-    set maxFileNumber(value: NumberInput) {
+    @Input() set maxFileNumber(value: NumberInput) {
         this._maxFileNumber = coerceNumberProperty(value);
     }
     get maxFileNumber(): number {
         return this._maxFileNumber as number;
     }
+    private _maxFileNumber: number | null = null;
 
     /** Sets the template for the file items. */
-    @Input()
-    set itemTemplate(template: TemplateRef<any>) {
+    @Input() set itemTemplate(template: TemplateRef<any>) {
         if (this._itemTemplate !== template) {
             this._itemTemplate = template;
         }
@@ -233,6 +221,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     get itemTemplate(): TemplateRef<any> {
         return this._itemTemplate;
     }
+    _itemTemplate!: TemplateRef<any>;
 
     private readonly _destroyed = new Subject<void>();
 

@@ -10,8 +10,7 @@ export class NxSmallStageImageDirective {
     /**
      * The source url of the image.
      */
-    @Input()
-    set src(value: string) {
+    @Input() set src(value: string) {
         this._renderer.setStyle(this._elementRef.nativeElement, 'backgroundImage', `url('${value}')`);
     }
 

@@ -32,14 +32,11 @@ const DEFAULT_CLASSES = ['nx-link'];
     },
 })
 export class NxLinkComponent extends MappedStyles implements AfterContentInit, OnDestroy {
-    private _size: NxLinkSize = 'small';
-
     /** @docs-private */
     @ContentChild(NxIconComponent) icon!: NxIconComponent;
 
     /** Sets the size of the link. Default: 'small'. */
-    @Input()
-    set size(value: NxLinkSize) {
+    @Input() set size(value: NxLinkSize) {
         if (this._size !== value) {
             this._size = value;
             this._cdr.markForCheck();
@@ -48,6 +45,7 @@ export class NxLinkComponent extends MappedStyles implements AfterContentInit, O
     get size(): NxLinkSize {
         return this._size;
     }
+    private _size: NxLinkSize = 'small';
 
     constructor(
         _elementRef: ElementRef,

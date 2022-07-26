@@ -21,18 +21,17 @@ export class NxMessageToastService implements OnDestroy {
      */
     private _toastRefAtThisLevel: NxMessageToastRef | null = null;
 
-    /** Reference to the currently opened message toast at *any* level. */
-    get _oldToastMessageRef(): NxMessageToastRef | null {
-        const parent = this._parentMessageToastService;
-        return parent ? parent._oldToastMessageRef : this._toastRefAtThisLevel;
-    }
-
     set _oldToastMessageRef(value: NxMessageToastRef | null) {
         if (this._parentMessageToastService) {
             this._parentMessageToastService._oldToastMessageRef = value;
         } else {
             this._toastRefAtThisLevel = value;
         }
+    }
+    /** Reference to the currently opened message toast at *any* level. */
+    get _oldToastMessageRef(): NxMessageToastRef | null {
+        const parent = this._parentMessageToastService;
+        return parent ? parent._oldToastMessageRef : this._toastRefAtThisLevel;
     }
 
     constructor(

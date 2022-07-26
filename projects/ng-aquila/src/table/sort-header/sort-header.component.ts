@@ -19,13 +19,8 @@ import { NxSortHeaderIntl } from './sort-header-intl';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-    private _key!: string;
-
-    @ViewChild('focusContainer') _focusContainer!: ElementRef;
-
     /** Sets the key of this sort header. */
-    @Input('nxSortHeaderCell')
-    set key(value: string) {
+    @Input('nxSortHeaderCell') set key(value: string) {
         if (this._key !== value) {
             this._key = value;
         }
@@ -33,6 +28,9 @@ export class NxSortHeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     get key(): string {
         return this._key;
     }
+    private _key!: string;
+
+    @ViewChild('focusContainer') _focusContainer!: ElementRef;
 
     readonly _sort: NxSortDirective;
 

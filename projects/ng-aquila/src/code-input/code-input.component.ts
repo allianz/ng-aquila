@@ -31,8 +31,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     errorState = false;
 
     /** The length of the code input. Default: 6. */
-    @Input('length')
-    set codeLength(value: number) {
+    @Input('length') set codeLength(value: number) {
         this._codeLength = value;
         this.setInputLength();
         this._cdr.markForCheck();
@@ -43,8 +42,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _codeLength: number = DEFAULT_INPUT_LENGTH;
 
     /** The type of HTML input */
-    @Input()
-    set type(value: string) {
+    @Input() set type(value: string) {
         this._type = value;
         this._cdr.markForCheck();
     }
@@ -52,11 +50,9 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         return this._type;
     }
     private _type = 'text';
-    private _isUpDown = false;
 
     /** Sets the tabindex of the contained input elements. */
-    @Input()
-    set tabindex(value: number) {
+    @Input() set tabindex(value: number) {
         this._tabindex = value;
         this._cdr.markForCheck();
     }
@@ -66,8 +62,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _tabindex = 0;
 
     /** Whether the form should auto capitalize or lowercase (optional). */
-    @Input('nxConvertTo')
-    set convertTo(value: NxConversionTypes) {
+    @Input('nxConvertTo') set convertTo(value: NxConversionTypes) {
         this._convertTo = value;
         this._cdr.markForCheck();
     }
@@ -81,8 +76,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     private _focused = false;
 
     /** Whether the code input uses the negative set of styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
@@ -92,12 +86,10 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     get negative() {
         return this._negative;
     }
-
     private _negative = false;
 
     /** Whether the code input is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
@@ -107,8 +99,9 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     get disabled() {
         return this._disabled;
     }
-
     private _disabled = false;
+
+    private _isUpDown = false;
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,

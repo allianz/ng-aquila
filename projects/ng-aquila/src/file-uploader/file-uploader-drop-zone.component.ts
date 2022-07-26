@@ -11,25 +11,23 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Ho
     },
 })
 export class NxFileUploaderDropZoneComponent {
-    /** An event emitted when files were dropped. */
-    @Output() fileDropped: EventEmitter<File[]> = new EventEmitter<File[]>();
-
-    // flag when the drop zone is hovered
-    private _active = false;
-    private _disabled = false;
-
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
-
     /** Whether the file uploader is disabled. */
-    @Input()
-    set disabled(value: boolean) {
+    @Input() set disabled(value: boolean) {
         this._disabled = value;
         this._cdr.markForCheck();
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
+
+    // flag when the drop zone is hovered
+    private _active = false;
+
+    /** An event emitted when files were dropped. */
+    @Output() readonly fileDropped = new EventEmitter<File[]>();
+
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     @HostListener('drop', ['$event'])

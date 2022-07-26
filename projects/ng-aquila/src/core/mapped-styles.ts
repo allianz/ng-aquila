@@ -6,22 +6,6 @@ export interface MappingObject {
 }
 
 export class MappedStyles {
-    private _classNames: string | undefined;
-    private _classNamesSanitized: string | undefined;
-
-    constructor(
-        private readonly mapping: MappingObject,
-        protected readonly _elementRef: ElementRef,
-        protected readonly _renderer: Renderer2,
-        private readonly baseClasses: string[] = [],
-    ) {
-        this.classNames = '';
-    }
-
-    get classNames(): string {
-        return this._classNames as string;
-    }
-
     set classNames(value: string) {
         if (this._classNames === value) {
             return;
@@ -30,5 +14,20 @@ export class MappedStyles {
         this._classNamesSanitized = mapClassNames(value, this.baseClasses, this.mapping);
         this._classNames = value;
         appendClasses(this._renderer, this._elementRef, this._classNamesSanitized);
+    }
+    get classNames(): string {
+        return this._classNames as string;
+    }
+    private _classNames?: string;
+
+    private _classNamesSanitized?: string;
+
+    constructor(
+        private readonly mapping: MappingObject,
+        protected readonly _elementRef: ElementRef,
+        protected readonly _renderer: Renderer2,
+        private readonly baseClasses: string[] = [],
+    ) {
+        this.classNames = ''; // invoke setter
     }
 }

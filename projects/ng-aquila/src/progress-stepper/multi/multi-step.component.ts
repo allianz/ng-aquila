@@ -41,12 +41,11 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
     @ContentChildren(NxMultiStepperGroupComponent, { descendants: true }) groups!: QueryList<NxMultiStepperGroupComponent>;
 
     /** Sets the direction of the multi stepper. */
-    @Input()
+    @Input() set direction(value: NxMultiStepperDirection) {
+        this._direction = value;
+    }
     get direction(): NxMultiStepperDirection {
         return this._direction;
-    }
-    set direction(value: NxMultiStepperDirection) {
-        this._direction = value;
     }
     private _direction: NxMultiStepperDirection = 'horizontal';
 

@@ -14,6 +14,7 @@ export class FormfieldErrorExampleComponent implements AfterContentInit {
     exampleErrorNgModel!: NxInputDirective;
     @ViewChild('exampleErrorNgModelHint', { static: true })
     exampleErrorNgModelHint!: NxInputDirective;
+
     valueSupplementError!: string;
     valueSupplementErrorHint!: string;
 

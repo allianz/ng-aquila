@@ -51,27 +51,15 @@ const VALUE_MARGIN = 4;
 })
 export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
     private _dragSubscriptions: Subscription[] = [];
-    private _value = 0;
     private _decimalPlaces = 0;
-    private _step: number = DEFAULT_STEP;
-    private _id = `nx-slider-${nextId++}`;
-    private _tabIndex = 0;
-    private _min = DEFAULT_MIN;
-    private _max = DEFAULT_MAX;
-    private _label = '';
-    private _inverted = false;
     private _thumbLabel = true;
-    private _negative = false;
-    private _hideLabels = false;
-    private _disabled = false;
 
     @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
 
     _labelPosition: string = DEFAULT_LABEL_POSITION;
 
     /** Sets the id of the slider. */
-    @Input('id')
-    set id(value: string) {
+    @Input('id') set id(value: string) {
         if (this._id !== value) {
             this._id = value;
             this._cdr.markForCheck();
@@ -80,53 +68,53 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     get id(): string {
         return this._id;
     }
+    private _id = `nx-slider-${nextId++}`;
 
     /** Sets the tabindex of the slider. */
-    @Input()
-    set tabindex(value: NumberInput) {
+    @Input() set tabindex(value: NumberInput) {
         this._tabIndex = coerceNumberProperty(value);
         this._cdr.markForCheck();
     }
     get tabindex(): number {
         return this._disabled ? -1 : this._tabIndex;
     }
+    private _tabIndex = 0;
 
     /** Sets the minimum value (Default: 0). */
-    @Input('nxMin')
-    set min(value: NumberInput) {
+    @Input('nxMin') set min(value: NumberInput) {
         this._min = coerceNumberProperty(value);
         this._cdr.markForCheck();
     }
     get min(): number {
         return this._min;
     }
+    private _min = DEFAULT_MIN;
 
     /** Sets the maximum value (Default: 100). */
-    @Input('nxMax')
-    set max(value: NumberInput) {
+    @Input('nxMax') set max(value: NumberInput) {
         this._max = coerceNumberProperty(value);
         this._cdr.markForCheck();
     }
     get max(): number {
         return this._max;
     }
+    private _max = DEFAULT_MAX;
 
     /** Sets the step size by which the value of the slider can be increased or decreased (Default: 1). */
-    @Input('nxStep')
-    get step(): number {
-        return this._step;
-    }
-    set step(value: NumberInput) {
+    @Input('nxStep') set step(value: NumberInput) {
         this._step = coerceNumberProperty(value, this._step);
 
         if (this._step % 1 !== 0) {
             this._decimalPlaces = this._step.toString().split('.').pop()!.length;
         }
     }
+    get step(): number {
+        return this._step;
+    }
+    private _step: number = DEFAULT_STEP;
 
     /** Sets the label which is displayed on top of the slider. */
-    @Input('nxLabel')
-    set label(value: string) {
+    @Input('nxLabel') set label(value: string) {
         if (this._label !== value) {
             this._label = value;
             this._cdr.markForCheck();
@@ -135,30 +123,30 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     get label(): string {
         return this._label;
     }
+    private _label = '';
 
     /** Whether the input to the control of the slider should be disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     /** Whether the max value is to the right (false) or left (true).*/
-    @Input('nxInverted')
-    set inverted(value: BooleanInput) {
+    @Input('nxInverted') set inverted(value: BooleanInput) {
         this._inverted = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get inverted(): boolean {
         return this._inverted;
     }
+    private _inverted = false;
 
     /** Whether to display the thumb label on top of the slider.*/
-    @Input()
-    set thumbLabel(value: BooleanInput) {
+    @Input() set thumbLabel(value: BooleanInput) {
         this._thumbLabel = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -166,25 +154,39 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._thumbLabel;
     }
 
+    /** Sets the current value of the slider. */
+    @Input('nxValue') set value(value: NumberInput) {
+        this.writeValue(Number(value));
+
+        // wait for rerender to calculate latest label position
+        setTimeout(() => {
+            this._updateLabelPosition();
+        });
+    }
+    get value(): number {
+        return this._value;
+    }
+    private _value = 0;
+
     /** Whether the negative set of styles is applied (Default: 'false').*/
-    @Input('negative')
-    set negative(value: BooleanInput) {
+    @Input('negative') set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
     /** Hides the min/max labels (Default: 'false'). */
-    @Input('hideLabels')
-    set hideLabels(value: BooleanInput) {
+    @Input('hideLabels') set hideLabels(value: BooleanInput) {
         this._hideLabels = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get hideLabels(): boolean {
         return this._hideLabels;
     }
+    private _hideLabels = false;
 
     /** An event is dispatched on each value change. */
     @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
@@ -215,21 +217,6 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         setTimeout(() => {
             this._updateLabelPosition();
         });
-    }
-
-    /** Sets the current value of the slider. */
-    @Input('nxValue')
-    set value(value: NumberInput) {
-        this.writeValue(Number(value));
-
-        // wait for rerender to calculate latest label position
-        setTimeout(() => {
-            this._updateLabelPosition();
-        });
-    }
-
-    get value(): number {
-        return this._value;
     }
 
     ngOnDestroy(): void {

@@ -47,8 +47,7 @@ export type Appearance = 'light' | 'dark';
 })
 export class NxSidepanelComponent {
     /** Whether the sidepanel should be opened and visible. */
-    @Input()
-    set opened(value: BooleanInput) {
+    @Input() set opened(value: BooleanInput) {
         this._opened = coerceBooleanProperty(value);
         this._setOpenState(this._opened);
         this._wrapper?._update();
@@ -57,10 +56,10 @@ export class NxSidepanelComponent {
     get opened(): boolean {
         return this._opened;
     }
+    private _opened = true;
 
     /** Sets the position of the sidepanel. */
-    @Input()
-    set position(value: PositionType) {
+    @Input() set position(value: PositionType) {
         this._position = value;
         this._cdr.markForCheck();
         this._wrapper?._update();
@@ -68,18 +67,30 @@ export class NxSidepanelComponent {
     get position(): PositionType {
         return this._position;
     }
+    private _position: PositionType = 'floating';
 
     /** Sets the appearance of the sidepanel. Default: dark. */
-    @Input()
-    set appearance(value: Appearance) {
+    @Input() set appearance(value: Appearance) {
         this._appearance = value;
         this._cdr.markForCheck();
     }
     get appearance(): Appearance {
         return this._appearance;
     }
+    private _appearance: Appearance = 'dark';
+
+    private _openState = 'open-instant';
 
     triggerElem?: HTMLElement | null;
+
+    @ContentChild(NxSidepanelHeaderComponent, { read: ElementRef, static: false }) _header!: ElementRef;
+
+    /**
+     * An event emitted when the opened value has changed.
+     *
+     * Emits the boolean value.
+     */
+    @Output() readonly openedChange = new EventEmitter<boolean>();
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,
@@ -91,23 +102,6 @@ export class NxSidepanelComponent {
             console.warn(`NxSidepanelComponent needs a wrapping NxSidepanelOuterContainerComponent to work as expected.`);
         }
     }
-
-    private _opened = true;
-
-    @ContentChild(NxSidepanelHeaderComponent, { read: ElementRef, static: false }) _header!: ElementRef;
-
-    /**
-     * An event emitted when the opened value has changed.
-     *
-     * Emits the boolean value.
-     */
-    @Output() readonly openedChange = new EventEmitter<boolean>();
-
-    private _position: PositionType = 'floating';
-
-    private _appearance: Appearance = 'dark';
-
-    private _openState = 'open-instant';
 
     /** Toggles the opened state of the sidepanel. */
     toggle() {

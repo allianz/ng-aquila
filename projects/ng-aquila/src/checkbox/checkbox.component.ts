@@ -72,89 +72,75 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
 
     @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
 
-    readonly _stateChanges = new Subject<void>();
-
     errorState = false;
+
+    readonly _stateChanges = new Subject<void>();
 
     @Output() readonly selectionChange = new EventEmitter<NxCheckboxGroupChangeEvent>();
 
-    private _id = `nx-checkbox-group-${nextId++}`;
     /** Sets the Id of the checkbox group. */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
             this._cdr.markForCheck();
         }
     }
-
     get id(): string {
         return this._id;
     }
+    private _id = `nx-checkbox-group-${nextId++}`;
 
-    private _name = '';
     /** Sets the name of the checkboxes inside the nx-checkbox-group. */
-    @Input()
-    set name(value: string) {
+    @Input() set name(value: string) {
         this._name = value;
         this._cdr.markForCheck();
     }
-
     get name(): string {
         return this._name;
     }
-
-    private _disabled = false;
+    private _name = '';
 
     /** Disables all checkboxes inside the nx-checkbox-group. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         if (this._label) {
             this._label.disabled = this._disabled;
         }
         this._stateChanges.next();
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
-    private _negative = false;
     /** Set the negative styles for all the checkboxes inside the nx-checkbox-group */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
         this._cdr.markForCheck();
         this._stateChanges.next();
     }
-
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
-    private _labelSize: NxCheckboxLabelSize | undefined;
     /** Sets the label size of the checkboxes inside the group */
-    @Input()
-    set labelSize(value: NxCheckboxLabelSize) {
+    @Input() set labelSize(value: NxCheckboxLabelSize) {
         this._labelSize = value;
         this._stateChanges.next();
     }
-
     get labelSize(): NxCheckboxLabelSize {
         return this._labelSize as NxCheckboxLabelSize;
     }
+    private _labelSize: NxCheckboxLabelSize | undefined;
 
     /** Whether the nx-checkbox-group are required. */
-    @Input()
+    @Input() set required(value: BooleanInput) {
+        this._required = coerceBooleanProperty(value);
+    }
     get required(): boolean {
         return !!this._required;
     }
-
-    set required(value: BooleanInput) {
-        this._required = coerceBooleanProperty(value);
-    }
-
     private _required: boolean | undefined;
 
     private _value: any[] | undefined;
@@ -286,13 +272,6 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     },
 })
 export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnInit, AfterViewInit {
-    private _id: string = (nextId++).toString();
-    private _disabled = false;
-    private _negative = false;
-    private _labelSize: NxCheckboxLabelSize = 'small';
-    private _checked = false;
-    private _name: string | null = null;
-
     /** @docs-private */
     @ViewChild('checkboxLabelWrapper', { static: true }) _checkboxLabelWrapper!: ElementRef;
 
@@ -303,74 +282,68 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
      *
      * If not set, the checkbox gets an incremented value by default.
      */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (value !== this._id) {
             this._id = value;
             this._cdr.markForCheck();
         }
     }
-
     get id(): string {
         return `nx-checkbox-${this._id}`;
     }
+    private _id: string = (nextId++).toString();
 
     /** Name of the checkbox. */
-    @Input()
-    set name(name: string) {
+    @Input() set name(name: string) {
         this._name = name;
     }
-
     get name(): string {
         return (this.checkboxGroup?.name || this._name) as string;
     }
+    private _name: string | null = null;
 
     /** Whether the checkbox is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get disabled(): boolean {
         return this.checkboxGroup?.disabled || this._disabled;
     }
+    private _disabled = false;
 
     /**
      * Sets the label size of the checkbox. Default value: small
      */
-    @Input()
-    set labelSize(value: NxCheckboxLabelSize) {
+    @Input() set labelSize(value: NxCheckboxLabelSize) {
         this._labelSize = value;
         this._cdr.markForCheck();
     }
-
     get labelSize(): NxCheckboxLabelSize {
         return this.checkboxGroup?.labelSize || this._labelSize;
     }
+    private _labelSize: NxCheckboxLabelSize = 'small';
 
     /**
      * Whether the checkbox has negative styling.
      */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._negative) {
             this._negative = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get negative(): boolean {
         return this.checkboxGroup?.negative || this._negative;
     }
+    private _negative = false;
 
     /** Whether the checkbox is checked. */
-    @Input()
-    set checked(value: BooleanInput) {
+    @Input() set checked(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._checked) {
             if (this._indeterminate) {
@@ -379,16 +352,15 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
             this._setChecked(newValue);
         }
     }
-
     get checked(): boolean {
         return this._checked;
     }
+    private _checked = false;
 
     private _indeterminate = false;
 
     /** Whether the checkbox is indeterminated. */
-    @Input()
-    set indeterminate(value: BooleanInput) {
+    @Input() set indeterminate(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._indeterminate !== newValue) {
             if (this._checked) {
@@ -398,34 +370,27 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         }
         this._cdr.markForCheck();
     }
-
     get indeterminate(): boolean {
         return this._indeterminate;
     }
 
     /** Whether the checkbox is required. */
-    @Input()
+    @Input() set required(value: BooleanInput) {
+        this._required = coerceBooleanProperty(value);
+    }
     get required(): boolean {
         return !!this._required;
     }
-
-    set required(value: BooleanInput) {
-        this._required = coerceBooleanProperty(value);
-    }
-
     private _required: boolean | undefined;
 
     /** Sets the value of the checkbox. Default value is the checked status. */
-    @Input()
-    get value(): string {
-        return this._value ? this._value : this.checked.toString();
-    }
-
-    set value(value: string) {
+    @Input() set value(value: string) {
         this._value = value;
         this._cdr.markForCheck();
     }
-
+    get value(): string {
+        return this._value ? this._value : this.checked.toString();
+    }
     private _value = '';
 
     /** An event emitted when the indeterminate value has changed */

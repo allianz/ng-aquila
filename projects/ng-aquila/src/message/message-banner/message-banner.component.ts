@@ -13,6 +13,16 @@ export type BANNER_CONTEXT = 'info' | 'error' | 'warning';
     exportAs: 'nxMessageBanner',
 })
 export class NxMessageBannerComponent extends NxMessageComponent {
+    /**
+     * Sets the context of the message banner.
+     * The message box will color accordingly. Default: 'info'
+     */
+    @Input('context') set context(value: BANNER_CONTEXT) {
+        this._updateContext(value);
+    }
+    get context(): BANNER_CONTEXT {
+        return this._context as BANNER_CONTEXT;
+    }
     _context: CONTEXT = 'info';
 
     _closable = true;
@@ -21,17 +31,5 @@ export class NxMessageBannerComponent extends NxMessageComponent {
 
     constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
         super(_cdr, _fm);
-    }
-
-    /**
-     * Sets the context of the message banner.
-     * The message box will color accordingly. Default: 'info'
-     */
-    @Input('context')
-    set context(value: BANNER_CONTEXT) {
-        this._updateContext(value);
-    }
-    get context(): BANNER_CONTEXT {
-        return this._context as BANNER_CONTEXT;
     }
 }

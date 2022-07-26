@@ -43,7 +43,6 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     /** @docs-private */
     @ContentChildren(NxTableContentElement, { descendants: true }) elements!: QueryList<NxTableContentElement>;
 
-    private _selectedIndex: number | undefined;
     private readonly _scrollableArea = new CdkScrollable(this._element, this.scrollDispatch, this._ngZone);
 
     @ViewChild('headerRow') _headerRowElement!: NxComparisonTableFlexRow;
@@ -61,8 +60,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     private _mobileStickyEdge: number | undefined;
 
     /** Sets which info column is selected. */
-    @Input()
-    set selectedIndex(value: NumberInput) {
+    @Input() set selectedIndex(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (this._selectedIndex !== newValue) {
             this._selectedIndex = newValue;
@@ -72,13 +70,13 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     get selectedIndex(): number {
         return this._selectedIndex as number;
     }
+    private _selectedIndex?: number;
 
     /** An event that is is dispatched each time selected index of the table has changed. */
     @Output() readonly selectedIndexChange = new EventEmitter<number>();
 
     /** Sets which column is hidden. */
-    @Input()
-    set hiddenIndexes(value: number[]) {
+    @Input() set hiddenIndexes(value: number[]) {
         const newValue = coerceArray(value);
         if (this._hiddenIndexes !== newValue) {
             this._hiddenIndexes = newValue;

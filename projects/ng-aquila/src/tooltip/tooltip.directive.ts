@@ -106,18 +106,11 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     _tooltipInstance!: NxTooltipComponent | null;
 
     private _portal!: ComponentPortal<NxTooltipComponent>;
-    private _position: TooltipPosition = 'bottom';
-    private _disabled = false;
-    private _selectable = false;
     private _embeddedViewRef!: ComponentRef<NxTooltipComponent>;
     private readonly _possibleTooltipPositions: TooltipPosition[] = ['bottom', 'top', 'left', 'right'];
 
     /** Allows the user to define the position of the tooltip relative to the parent element */
-    @Input('nxTooltipPosition')
-    get position(): TooltipPosition {
-        return this._position;
-    }
-    set position(value: TooltipPosition) {
+    @Input('nxTooltipPosition') set position(value: TooltipPosition) {
         if (value !== this._position) {
             this._position = value;
 
@@ -133,13 +126,13 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
             }
         }
     }
+    get position(): TooltipPosition {
+        return this._position;
+    }
+    private _position: TooltipPosition = 'bottom';
 
     /** Disables the display of the tooltip. */
-    @Input('nxTooltipDisabled')
-    get disabled(): boolean {
-        return this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input('nxTooltipDisabled') set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
 
         // If tooltip is disabled, hide immediately.
@@ -147,21 +140,25 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
             this.hide(0);
         }
     }
+    get disabled(): boolean {
+        return this._disabled;
+    }
+    private _disabled = false;
 
     /** Allows selection of text within tooltip trigger
      *  NOTE: inputs and textareas always remain selectable, ignoring this input.
      */
-    @Input('nxTooltipSelectable')
-    get selectable(): boolean {
-        return this._selectable;
-    }
-    set selectable(value: BooleanInput) {
+    @Input('nxTooltipSelectable') set selectable(value: BooleanInput) {
         const oldValue = this._selectable;
         this._selectable = coerceBooleanProperty(value);
         if (this._selectable !== oldValue) {
             this._updateSelectabilityStyles();
         }
     }
+    get selectable(): boolean {
+        return this._selectable;
+    }
+    private _selectable = false;
 
     /** The default delay in ms before showing the tooltip after show is called */
     @Input('nxTooltipShowDelay') showDelay: number = this._defaultOptions!.showDelay;
@@ -169,14 +166,8 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
     /** The default delay in ms before hiding the tooltip after hide is called */
     @Input('nxTooltipHideDelay') hideDelay: number = this._defaultOptions!.hideDelay;
 
-    private _message = '';
-
     /** The message to be displayed in the tooltip */
-    @Input('nxTooltip')
-    get message(): string {
-        return this._message;
-    }
-    set message(value: string) {
+    @Input('nxTooltip') set message(value: string) {
         this._ariaDescriber.removeDescription(this._elementRef.nativeElement, this._message);
 
         // If the message is not a string (e.g. number), convert it to a string and trim it.
@@ -189,6 +180,10 @@ export class NxTooltipDirective implements OnDestroy, OnInit {
             this._ariaDescriber.describe(this._elementRef.nativeElement, this.message);
         }
     }
+    get message(): string {
+        return this._message;
+    }
+    private _message = '';
 
     /** Strategy factory that will be used to handle scrolling while the tooltip panel is open. */
     private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;

@@ -18,12 +18,11 @@ export class NxProgressbarComponent {
     progressbarId = `nx-progress-bar-${progressbarId++}`;
 
     /** Sets the value of the progress bar. Defaults to zero. Mirrored to aria-value now. */
-    @Input()
+    @Input() set value(value: NumberInput) {
+        this._value = clamp((value as any) || 0); // TODO properly coerce input value
+    }
     get value(): number {
         return this._value;
-    }
-    set value(value: NumberInput) {
-        this._value = clamp((value as any) || 0); // TODO properly coerce input value
     }
     private _value = 0;
 

@@ -24,20 +24,11 @@ const DEFAULT_SIZE = 'auto';
     },
 })
 export class NxFigureComponent {
-    private _classNames!: FigureType;
-
-    /** @docs-private */
-    rounded = false;
-
-    /** @docs-private */
-    size: figureSizes = DEFAULT_SIZE;
-
     /**
      * Sets the type of the visual appearance of the image.
      * The default value  is 'auto'.
      */
-    @Input('nxFigure')
-    set classNames(value: FigureType | string | null | undefined) {
+    @Input('nxFigure') set classNames(value: FigureType | string | null | undefined) {
         if (this._classNames === value) {
             return;
         }
@@ -50,8 +41,14 @@ export class NxFigureComponent {
 
         this.rounded = !!this._classNames?.match(/rounded/);
     }
-
     get classNames(): FigureType {
         return this._classNames;
     }
+    private _classNames!: FigureType;
+
+    /** @docs-private */
+    rounded = false;
+
+    /** @docs-private */
+    size: figureSizes = DEFAULT_SIZE;
 }

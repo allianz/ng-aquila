@@ -38,44 +38,38 @@ export const ERROR_DEFAULT_OPTIONS = new InjectionToken<ErrorDefaultOptions>('ER
     },
 })
 export class NxErrorComponent implements OnDestroy {
-    private _showIcon = true;
-    private _appearance!: ErrorStyleType;
-    private _id = `nx-error-${nextId++}`;
-
     /** Whether an icon should be displayed. Only has an effect for type 'text' */
-    @Input()
-    set showIcon(value: BooleanInput) {
+    @Input() set showIcon(value: BooleanInput) {
         this._showIcon = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
     get showIcon(): boolean {
         return this._showIcon;
     }
+    private _showIcon = true;
 
     /**
      * Id of the nx-error.
      *
      * If not set, the selectable card gets an incremented value by default.
      */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (value && value !== this._id) {
             this._id = value;
             this._cdr.markForCheck();
         }
     }
-
     get id(): string {
         return this._id;
     }
+    private _id = `nx-error-${nextId++}`;
 
     /**
      * Whether the error should have message or text styling.
      *
      * Default is 'message'.
      */
-    @Input()
-    set appearance(value: ErrorStyleType) {
+    @Input() set appearance(value: ErrorStyleType) {
         if (value !== this.appearance) {
             this._appearance = value;
             this._cdr.markForCheck();
@@ -84,6 +78,7 @@ export class NxErrorComponent implements OnDestroy {
     get appearance(): ErrorStyleType {
         return this._appearance || this._defaultOptions?.appearance || 'message';
     }
+    private _appearance!: ErrorStyleType;
 
     private readonly _destroyed = new Subject<void>();
 

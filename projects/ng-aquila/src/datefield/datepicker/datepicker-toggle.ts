@@ -44,17 +44,13 @@ export class NxDatepickerToggleIconComponent {}
 export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterViewInit, OnChanges, OnDestroy {
     private _stateChanges = Subscription.EMPTY;
 
-    private _disabled: boolean | undefined;
-    private _tabindex: number | undefined;
-
     /** Custom icon set by the consumer. */
     @ContentChild(NxDatepickerToggleIconComponent) _customIcon!: NxDatepickerToggleIconComponent;
 
     @ViewChild('toggleButton') _toggleButton!: ElementRef<HTMLElement>;
 
     /** Datepicker instance that the button will toggle. */
-    @Input('for')
-    set datepicker(value: NxDatepickerComponent<D>) {
+    @Input('for') set datepicker(value: NxDatepickerComponent<D>) {
         this.registerDatepicker(value);
     }
     get datepicker(): NxDatepickerComponent<D> {
@@ -63,17 +59,16 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     _datepicker!: NxDatepickerComponent<D>;
 
     /** Whether the toggle button is disabled. */
-    @Input()
+    @Input() set disabled(value: BooleanInput) {
+        this._disabled = coerceBooleanProperty(value);
+    }
     get disabled(): boolean {
         return this._disabled === undefined ? this.datepicker.disabled : !!this._disabled;
     }
-    set disabled(value: BooleanInput) {
-        this._disabled = coerceBooleanProperty(value);
-    }
+    private _disabled: boolean | undefined;
 
     /** Sets the tabindex for the toggle button. Default: 0. */
-    @Input()
-    set tabindex(value: NumberInput) {
+    @Input() set tabindex(value: NumberInput) {
         const newValue = coerceNumberProperty(value);
         if (this._tabindex !== newValue) {
             this._tabindex = newValue;
@@ -88,6 +83,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
         }
         return 0;
     }
+    private _tabindex?: number;
 
     private readonly _destroyed = new Subject<void>();
 

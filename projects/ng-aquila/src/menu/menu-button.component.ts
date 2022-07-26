@@ -23,8 +23,7 @@ export type NxMenuButtonType = 'root' | 'nested';
 })
 export class NxMenuButtonComponent implements OnDestroy {
     /** Whether this menu button is expandable or not. Will add a caret icon. */
-    @Input()
-    set expandable(value: BooleanInput) {
+    @Input() set expandable(value: BooleanInput) {
         this._expandable = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -37,8 +36,7 @@ export class NxMenuButtonComponent implements OnDestroy {
      * Whether this menu button is expanded or not.
      * Only works in combination with the `expandable` option set to `true`.
      */
-    @Input()
-    set expanded(value: BooleanInput) {
+    @Input() set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -51,8 +49,7 @@ export class NxMenuButtonComponent implements OnDestroy {
      * The type of this menu button.
      * Can be `primary` or `secondary`, defaults to `primary`.
      */
-    @Input('nxType')
-    set type(value: NxMenuButtonType) {
+    @Input('nxType') set type(value: NxMenuButtonType) {
         if (value === 'root' || value === 'nested') {
             this._type = value;
             this._cdr.markForCheck();

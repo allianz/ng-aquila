@@ -42,64 +42,58 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     /** Preserves the current value of the _linkElements ViewChildren in case _linkElements changes. */
     _linkElementsPrevious!: QueryList<ElementRef>;
 
-    private _page!: number;
-    private _count!: number;
-    private _perPage!: number;
-    private _type = 'simple';
-
     /** @docs-private */
     paginationTexts: IPaginationTexts;
 
     /** @docs-private */
     totalNumberPages = 0;
 
+    /** Sets the current page. */
+    @Input('nxPage') set page(value: number) {
+        this._page = value;
+        this._cdr.markForCheck();
+    }
     get page(): number {
         return this._page;
     }
+    private _page!: number;
 
-    /** Sets the current page. */
-    @Input('nxPage') // the current page
-    set page(value: number) {
-        this._page = value;
+    /** Number of total items over all pages. */
+    @Input('nxCount') set count(value: number) {
+        this._count = value;
+        this.totalNumberPages = this.calculateTotalPages();
         this._cdr.markForCheck();
     }
     get count(): number {
         return this._count;
     }
+    private _count!: number;
 
-    /** Number of total items over all pages. */
-    @Input('nxCount') // how many total items there are in all pages
-    set count(value: number) {
-        this._count = value;
+    /** Sets the number of items you want to show per page. */
+    @Input('nxPerPage') set perPage(value: number) {
+        this._perPage = value;
         this.totalNumberPages = this.calculateTotalPages();
         this._cdr.markForCheck();
     }
     get perPage(): number {
         return this._perPage;
     }
-
-    /** Sets the number of items you want to show per page. */
-    @Input('nxPerPage') // how many items we want to show per page
-    set perPage(value: number) {
-        this._perPage = value;
-        this.totalNumberPages = this.calculateTotalPages();
-        this._cdr.markForCheck();
-    }
-    get type(): string {
-        return this._type;
-    }
+    private _perPage!: number;
 
     /**
      * Determines the type of pagination.
      *
      * Values: simple | advanced, default: simple.
      */
-    @Input('nxType')
-    set type(value: string) {
+    @Input('nxType') set type(value: string) {
         // type advanced or simple
         this._type = value;
         this._cdr.markForCheck();
     }
+    get type(): string {
+        return this._type;
+    }
+    private _type = 'simple';
 
     /** An event emitted when the previous page button is clicked. */
     @Output() readonly nxGoPrev = new EventEmitter<void>();

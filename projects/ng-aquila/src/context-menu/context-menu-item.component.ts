@@ -46,8 +46,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     readonly _hovered = new Subject<NxContextMenuItemComponent>();
 
     /** Whether the context menu item is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -57,8 +56,7 @@ export class NxContextMenuItemComponent implements OnDestroy {
     private _disabled = false;
 
     /** Whether the context menu close on select. */
-    @Input()
-    set disableCloseOnSelect(value: BooleanInput) {
+    @Input() set disableCloseOnSelect(value: BooleanInput) {
         this._disableCloseOnSelect = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }

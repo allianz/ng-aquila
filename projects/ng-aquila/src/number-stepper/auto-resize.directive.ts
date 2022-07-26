@@ -9,9 +9,7 @@ import { getFontShorthand } from '@aposin/ng-aquila/utils';
 export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
     @HostBinding('style.width.px') width!: number;
 
-    private _resize = true;
-    @Input('nxAutoResize')
-    set resize(value: BooleanInput) {
+    @Input('nxAutoResize') set resize(value: BooleanInput) {
         this._resize = coerceBooleanProperty(value);
         if (this._resize) {
             this._addEventListener();
@@ -23,6 +21,7 @@ export class NxAutoResizeDirective implements AfterViewInit, OnDestroy {
     get resize(): boolean {
         return this._resize;
     }
+    private _resize = true;
 
     constructor(private readonly _element: ElementRef, private readonly _renderer: Renderer2, private readonly _cdr: ChangeDetectorRef) {
         this.updateInputWidth = this.updateInputWidth.bind(this);

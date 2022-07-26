@@ -32,8 +32,6 @@ const ICONS: { [k: string]: string } = {
     exportAs: 'nxMessage',
 })
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
-    _context: CONTEXT = 'regular';
-
     @HostBinding('class.context-info') get _isInfo() {
         return this._context === 'info';
     }
@@ -57,20 +55,16 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     /**
      * Sets the context of the message.
      * The message box will color accordingly. Default: 'regular' */
-    @Input('nxContext')
-    set context(value: CONTEXT) {
+    @Input('nxContext') set context(value: CONTEXT) {
         this._updateContext(value);
     }
     get context(): CONTEXT {
         return this._context;
     }
-
-    _closable = false;
+    _context: CONTEXT = 'regular';
 
     /** Whether a message should have a close icon in order to be dismissed. */
-    @HostBinding('class.nx-message--closable')
-    @Input()
-    set closable(value: BooleanInput) {
+    @Input() @HostBinding('class.nx-message--closable') set closable(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._closable) {
             this._closable = newValue;
@@ -80,12 +74,10 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     get closable(): boolean {
         return this._closable;
     }
-
-    private _closeButtonLabel = 'Close dialog';
+    _closable = false;
 
     /** Sets the label of the close button of the message. */
-    @Input()
-    set closeButtonLabel(value: string) {
+    @Input() set closeButtonLabel(value: string) {
         if (value !== this._closeButtonLabel) {
             this._closeButtonLabel = value;
             this._cdr.markForCheck();
@@ -93,6 +85,13 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     }
     get closeButtonLabel(): string {
         return this._closeButtonLabel;
+    }
+    private _closeButtonLabel = 'Close dialog';
+
+    get _iconName(): string {
+        const context = this._allowedContexts.includes(this._context) ? this._context : this._allowedContexts[0];
+
+        return ICONS[context];
     }
 
     /** Event emitted when the close icon of the message has been clicked. */
@@ -112,12 +111,6 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
 
     _emitCloseEvent() {
         this.closeEvent.emit();
-    }
-
-    get _iconName(): string {
-        const context = this._allowedContexts.includes(this._context) ? this._context : this._allowedContexts[0];
-
-        return ICONS[context];
     }
 
     _updateContext(value: CONTEXT) {

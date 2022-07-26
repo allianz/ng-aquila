@@ -47,17 +47,14 @@ export class NxHeaderBrandDirective {}
     },
 })
 export class NxHeaderActionsDirective {
-    private _showSeparator = false;
-
     /* Whenever to show the left separator*/
-    @Input()
+    @Input() set showSeparator(value: BooleanInput) {
+        this._showSeparator = coerceBooleanProperty(value);
+    }
     get showSeparator(): boolean {
         return this._showSeparator;
     }
-
-    set showSeparator(value: BooleanInput) {
-        this._showSeparator = coerceBooleanProperty(value);
-    }
+    private _showSeparator = false;
 }
 
 /** This component defines the header navigation section within the `<nx-header>` component. */

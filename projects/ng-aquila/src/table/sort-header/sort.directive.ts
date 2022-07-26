@@ -23,11 +23,8 @@ export class SortEvent {
 export class NxSortDirective implements OnDestroy {
     readonly _stateChanges = new Subject<void>();
 
-    private _active!: string;
-
     /** Sets the key of the most recently sorted column. */
-    @Input()
-    set active(value: string) {
+    @Input() set active(value: string) {
         if (this._active !== value) {
             this._active = value;
             this.sortChange.emit(new SortEvent(this.active, this.direction));
@@ -37,12 +34,10 @@ export class NxSortDirective implements OnDestroy {
     get active(): string {
         return this._active;
     }
-
-    private _direction: SortDirection = 'asc';
+    private _active!: string;
 
     /** Sets the direction of the currently active sorted column. Default: 'asc'. */
-    @Input()
-    set direction(value: SortDirection) {
+    @Input() set direction(value: SortDirection) {
         if (this._direction !== value) {
             this._direction = value;
             this.sortChange.emit(new SortEvent(this.active, this.direction));
@@ -52,6 +47,7 @@ export class NxSortDirective implements OnDestroy {
     get direction(): SortDirection {
         return this._direction;
     }
+    private _direction: SortDirection = 'asc';
 
     /**
      * @docs-private

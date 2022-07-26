@@ -13,8 +13,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     },
 })
 export class NxLayoutComponent {
-    private _classNames = '';
-
     /** @docs-private */
     grid = true;
 
@@ -32,8 +30,7 @@ export class NxLayoutComponent {
      *
      * Values: grid | grid nogutters | grid maxwidth | grid nopadding. Default value: grid.
      */
-    @Input('nxLayout')
-    set classNames(value: string) {
+    @Input('nxLayout') set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -45,8 +42,8 @@ export class NxLayoutComponent {
         this.maxWidth = !!this._classNames?.includes('maxwidth');
         this.noPadding = !!this._classNames?.includes('nopadding');
     }
-
     get classNames(): string {
         return this._classNames;
     }
+    private _classNames = '';
 }

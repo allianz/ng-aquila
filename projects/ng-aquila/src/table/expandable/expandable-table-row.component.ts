@@ -18,11 +18,8 @@ import { NxExpandable } from './toggle-button.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxExpandableTableRowComponent implements NxExpandable {
-    private _isExpanded!: boolean;
-
     /* Whether the row is expanded. */
-    @Input()
-    set isExpanded(value: BooleanInput) {
+    @Input() set isExpanded(value: BooleanInput) {
         this._isExpanded = coerceBooleanProperty(value);
         this.expanded.next(this._isExpanded);
         this._cdr.markForCheck();
@@ -30,6 +27,7 @@ export class NxExpandableTableRowComponent implements NxExpandable {
     get isExpanded() {
         return this._isExpanded;
     }
+    private _isExpanded!: boolean;
 
     readonly expanded = new BehaviorSubject<boolean>(false);
 

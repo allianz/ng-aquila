@@ -26,13 +26,8 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     /** Preserves the current value of the _wrapperElement ViewChild in case it changes. */
     private _wrapperElementPrevious!: ElementRef;
 
-    private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
-
-    private readonly _destroyed = new Subject<void>();
-
     /** Sets the id of the toggle section header. */
-    @Input()
-    set id(value: string) {
+    @Input() set id(value: string) {
         if (this._id !== value) {
             this._id = value;
         }
@@ -40,6 +35,9 @@ export class NxToggleSectionHeaderComponent implements AfterViewInit, OnDestroy 
     get id(): string {
         return this._id;
     }
+    private _id = `nx-comparison-table-toggle-section-header-${nextId++}`;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor(
         readonly _table: NxComparisonTableBase,

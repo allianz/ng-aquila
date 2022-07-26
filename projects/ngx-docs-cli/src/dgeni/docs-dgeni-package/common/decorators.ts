@@ -48,7 +48,7 @@ export function isNgModule(doc: ClassExportDoc) {
 }
 
 export function isDeprecatedDoc(doc: any) {
-    return ((doc.tags && doc.tags.tags) || []).some((tag: any) => tag.tagName === 'deprecated');
+    return (doc.tags?.tags || []).some((tag: any) => tag.tagName === 'deprecated');
 }
 
 export function getDirectiveSelectors(classDoc: CategorizedClassDoc) {

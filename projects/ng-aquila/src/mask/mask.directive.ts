@@ -41,12 +41,6 @@ interface CursorInfo {
     providers: [NX_MASK_VALUE_ACCESSOR, { provide: NX_INPUT_VALUE_ACCESSOR, useExisting: NxMaskDirective }, NX_MASK_VALIDATORS],
 })
 export class NxMaskDirective implements ControlValueAccessor, Validator {
-    private _mask!: string;
-    private _separators = ['/', '(', ')', '.', ':', '-', ' ', '+', ','];
-    private _dropSpecialCharacters = false;
-    private _validateMask = true;
-    private _convertTo?: MaskConversionTypes;
-    private _deactivateMask?: boolean = false;
     /**
      * _cursor is a helper for saving a position or a selectionRange (selectionStart + selectionEnd)
      * and then apply it later on (in _onInputChange()).
@@ -68,6 +62,101 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
      * Emits the unmasked value before the value changes.
      */
     readonly cvaModelChange = new Subject<string>();
+
+    /** Whether the mask validation should be deactivated. */
+    @Input() set deactivateMask(value: BooleanInput) {
+        const newValue = coerceBooleanProperty(value);
+        if (newValue !== this._deactivateMask) {
+            this._deactivateMask = newValue;
+            if (this._deactivateMask) {
+                this.updateValue(this.getUnmaskedValue());
+            } else {
+                this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+            }
+            this._callOnChangeCallback();
+        }
+    }
+    get deactivateMask(): boolean {
+        return this._deactivateMask as boolean;
+    }
+    private _deactivateMask?: boolean = false;
+
+    /** Sets the mask. */
+    @Input('nxMask') set mask(value: string) {
+        if (!value) {
+            value = '';
+        }
+        if (value !== this._mask) {
+            this._mask = value;
+            this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+            this._callOnChangeCallback();
+            this._validatorOnChange();
+        }
+    }
+    get mask(): string {
+        return this._mask;
+    }
+    private _mask!: string;
+
+    /** Sets the case sensitivity of the mask. */
+    @Input('nxConvertTo') set convertTo(value: MaskConversionTypes | null | undefined) {
+        this._convertTo = value!; // TODO properly coerce input value
+        this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+        this._callOnChangeCallback();
+    }
+    get convertTo(): MaskConversionTypes {
+        return this._convertTo as MaskConversionTypes;
+    }
+    private _convertTo?: MaskConversionTypes;
+
+    /**
+     * Sets the keys that are recognized as separators.
+     * Default separators: / ( ) . : - + , and space.
+     */
+    @Input() set separators(values: string[]) {
+        this._separators = values;
+        this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+        this._validatorOnChange();
+        this._callOnChangeCallback();
+    }
+    get separators(): string[] {
+        return this._separators;
+    }
+    private _separators = ['/', '(', ')', '.', ':', '-', ' ', '+', ','];
+
+    /** Whether the separators should be dropped in the control value accessor. */
+    @Input() set dropSpecialCharacters(value: BooleanInput) {
+        const newValue = coerceBooleanProperty(value);
+        if (newValue !== this._dropSpecialCharacters) {
+            this._dropSpecialCharacters = newValue;
+            this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
+            this._callOnChangeCallback();
+        }
+    }
+    get dropSpecialCharacters(): boolean {
+        return this._dropSpecialCharacters;
+    }
+    private _dropSpecialCharacters = false;
+
+    /** Whether the mask validation should be applied on the input. Default: true. */
+    @Input() set validateMask(value: BooleanInput) {
+        const newValue = coerceBooleanProperty(value);
+        if (newValue !== this._validateMask) {
+            this._validateMask = newValue;
+            this._validatorOnChange();
+        }
+    }
+    get validateMask(): boolean {
+        return this._validateMask;
+    }
+    private _validateMask = true;
+
+    /** @docs-private */
+    get elementRefValue(): string {
+        return this._elementRef.nativeElement.value;
+    }
+
+    constructor(private readonly _elementRef: ElementRef) {}
 
     private _onChangeCallback = (_: any) => {};
     private _onTouchedCallback = () => {};
@@ -103,39 +192,11 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
         this._beforePasteHook = beforePaste;
     }
 
-    /** Whether the mask validation should be deactivated. */
-    @Input()
-    set deactivateMask(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (newValue !== this._deactivateMask) {
-            this._deactivateMask = newValue;
-            if (this._deactivateMask) {
-                this.updateValue(this.getUnmaskedValue());
-            } else {
-                this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-            }
-            this._callOnChangeCallback();
-        }
-    }
-    get deactivateMask(): boolean {
-        return this._deactivateMask as boolean;
-    }
+    /** Returns the unmasked value. */
+    getUnmaskedValue(): string {
+        const unmaskedValue = this.separators.reduce((unmasked, separator) => unmasked.split(separator).join(''), this._elementRef.nativeElement.value);
 
-    /** Sets the mask. */
-    @Input('nxMask')
-    set mask(value: string) {
-        if (!value) {
-            value = '';
-        }
-        if (value !== this._mask) {
-            this._mask = value;
-            this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-            this._callOnChangeCallback();
-            this._validatorOnChange();
-        }
-    }
-    get mask(): string {
-        return this._mask;
+        return unmaskedValue;
     }
 
     /**
@@ -152,73 +213,6 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
             this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
             this._validatorOnChange();
         }
-    }
-
-    /** Sets the case sensitivity of the mask. */
-    @Input('nxConvertTo')
-    set convertTo(value: MaskConversionTypes | null | undefined) {
-        this._convertTo = value!; // TODO properly coerce input value
-        this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-        this._callOnChangeCallback();
-    }
-    get convertTo(): MaskConversionTypes {
-        return this._convertTo as MaskConversionTypes;
-    }
-
-    /**
-     * Sets the keys that are recognized as separators.
-     * Default separators: / ( ) . : - + , and space.
-     */
-    @Input()
-    set separators(values: string[]) {
-        this._separators = values;
-        this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-        this._validatorOnChange();
-        this._callOnChangeCallback();
-    }
-    get separators(): string[] {
-        return this._separators;
-    }
-
-    /** Whether the separators should be dropped in the control value accessor. */
-    @Input()
-    set dropSpecialCharacters(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (newValue !== this._dropSpecialCharacters) {
-            this._dropSpecialCharacters = newValue;
-            this.updateValue(this.getMaskedString(this._elementRef.nativeElement.value));
-            this._callOnChangeCallback();
-        }
-    }
-    get dropSpecialCharacters(): boolean {
-        return this._dropSpecialCharacters;
-    }
-
-    /** Whether the mask validation should be applied on the input. Default: true. */
-    @Input()
-    set validateMask(value: BooleanInput) {
-        const newValue = coerceBooleanProperty(value);
-        if (newValue !== this._validateMask) {
-            this._validateMask = newValue;
-            this._validatorOnChange();
-        }
-    }
-    get validateMask(): boolean {
-        return this._validateMask;
-    }
-
-    constructor(private readonly _elementRef: ElementRef) {}
-
-    /** @docs-private */
-    get elementRefValue(): string {
-        return this._elementRef.nativeElement.value;
-    }
-
-    /** Returns the unmasked value. */
-    getUnmaskedValue(): string {
-        const unmaskedValue = this.separators.reduce((unmasked, separator) => unmasked.split(separator).join(''), this._elementRef.nativeElement.value);
-
-        return unmaskedValue;
     }
 
     /**

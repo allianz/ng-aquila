@@ -21,11 +21,8 @@ export type NxAvatarSize = 'xsmall' | 'small' | 'small-medium' | 'medium' | 'lar
     },
 })
 export class NxAvatarComponent {
-    private _size: NxAvatarSize = 'medium';
-
     /** Sets the size of the avatar. Default: 'medium'. */
-    @Input()
-    set size(size: NxAvatarSize) {
+    @Input() set size(size: NxAvatarSize) {
         if (this._size !== size) {
             this._size = size;
             this._cdr.markForCheck();
@@ -34,6 +31,7 @@ export class NxAvatarComponent {
     get size(): NxAvatarSize {
         return this._size;
     }
+    private _size: NxAvatarSize = 'medium';
 
     constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

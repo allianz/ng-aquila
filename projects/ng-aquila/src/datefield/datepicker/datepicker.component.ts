@@ -121,14 +121,13 @@ export class NxDatepickerContentComponent<D> implements AfterContentInit {
 })
 export class NxDatepickerComponent<D> implements OnDestroy {
     /** The date to open the calendar initially. */
-    @Input()
+    @Input() set startAt(value: D | null) {
+        this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get startAt(): D | null {
         // If an explicit startAt is set we start there, otherwise we start at whatever the currently
         // selected value is.
         return this._startAt || (this._datepickerInput ? this._datepickerInput.value : null);
-    }
-    set startAt(value: D | null) {
-        this._startAt = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _startAt!: D | null;
 
@@ -139,17 +138,16 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * Whether the datepicker pop-up should be disabled.
      * The datepicker is also disabled if the belonging input is readonly.
      */
-    @Input()
-    get disabled(): boolean {
-        return this._disabled === undefined && this._datepickerInput ? this._datepickerInput.disabled || this._datepickerInput.readonly : !!this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (newValue !== this._disabled) {
             this._disabled = newValue;
             this._disabledChange.next(newValue);
         }
+    }
+    get disabled(): boolean {
+        return this._disabled === undefined && this._datepickerInput ? this._datepickerInput.disabled || this._datepickerInput.readonly : !!this._disabled;
     }
     private _disabled!: boolean;
 
@@ -178,12 +176,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     @Output('closed') readonly closedStream = new EventEmitter<void>();
 
     /** Whether the calendar is open. */
-    @Input()
+    @Input() set opened(value: boolean) {
+        value ? this.open() : this.close();
+    }
     get opened(): boolean {
         return this._opened;
-    }
-    set opened(value: boolean) {
-        value ? this.open() : this.close();
     }
     private _opened = false;
 
@@ -197,11 +194,11 @@ export class NxDatepickerComponent<D> implements OnDestroy {
      * @docs-private
      * The currently selected date.
      */
-    get selected(): D | null {
-        return this._validSelected;
-    }
     set selected(value: D | null) {
         this._validSelected = value;
+    }
+    get selected(): D | null {
+        return this._validSelected;
     }
     private _validSelected: D | null = null;
 

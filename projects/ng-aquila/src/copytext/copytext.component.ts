@@ -20,14 +20,6 @@ const DEFAULT_TYPE = 'normal';
     },
 })
 export class NxCopytextComponent {
-    private _classNames = '';
-
-    /** @docs-private */
-    type: NxCopytextType = DEFAULT_TYPE;
-
-    /** @docs-private */
-    negative = false;
-
     /**
      * Sets the type and whether the negative set of styling should be used.
      *
@@ -35,8 +27,7 @@ export class NxCopytextComponent {
      *
      * Default type: 'normal'
      */
-    @Input('nxCopytext')
-    set classNames(value: string) {
+    @Input('nxCopytext') set classNames(value: string) {
         if (this._classNames === value) {
             return;
         }
@@ -48,8 +39,14 @@ export class NxCopytextComponent {
 
         this.negative = !!this._classNames?.match(/negative/);
     }
-
     get classNames(): string {
         return this._classNames;
     }
+    private _classNames = '';
+
+    /** @docs-private */
+    type: NxCopytextType = DEFAULT_TYPE;
+
+    /** @docs-private */
+    negative = false;
 }

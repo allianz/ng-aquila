@@ -39,47 +39,38 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
     @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons!: QueryList<HTMLElement>;
 
-    private _negative = false;
-
     /** Whether the tab nav bar has negative styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.negative) {
             this._negative = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get negative(): boolean {
         return this._negative;
     }
-
-    private _disabled = false;
+    private _negative = false;
 
     /** Whether the tab nav bar has disabled styling. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this.disabled) {
             this._disabled = newValue;
             this._cdr.markForCheck();
         }
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
-
-    private _appearance!: NxTabsAppearance;
+    private _disabled = false;
 
     /**
      * **Expert option**
      *
      * Sets the appearance of the tab nav bar. Default: 'default'.
      */
-    @Input()
-    set appearance(value: NxTabsAppearance) {
+    @Input() set appearance(value: NxTabsAppearance) {
         if (this._appearance !== value) {
             this._appearance = value;
             this._cdr.markForCheck();
@@ -88,6 +79,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     get appearance(): NxTabsAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
+    private _appearance!: NxTabsAppearance;
 
     constructor(
         readonly _cdr: ChangeDetectorRef,
@@ -111,32 +103,29 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     },
 })
 export class NxTabLinkDirective implements OnDestroy {
-    private _active = false;
-    private _disabled = false;
-
     /** Whether the tab link is active and has the active styling. */
-    @Input()
-    get active(): boolean {
-        return this._active;
-    }
-    set active(value: BooleanInput) {
+    @Input() set active(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._active) {
             this._active = newValue;
         }
     }
+    get active(): boolean {
+        return this._active;
+    }
+    private _active = false;
 
     /** Whether the tab link is disabled. Default: false. */
-    @Input()
-    get disabled(): boolean {
-        return this._tabNavBar?.disabled || this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (newValue !== this._disabled) {
             this._disabled = newValue;
         }
     }
+    get disabled(): boolean {
+        return this._tabNavBar?.disabled || this._disabled;
+    }
+    private _disabled = false;
 
     constructor(
         @Optional() @SkipSelf() private readonly _tabNavBar: NxTabNavBarComponent | null,

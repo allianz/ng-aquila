@@ -1,6 +1,6 @@
 import { AfterViewInit, ContentChildren, Directive, OnDestroy, QueryList } from '@angular/core';
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { distinctUntilChanged, flatMap, map, startWith, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, map, mergeMap, startWith, takeUntil } from 'rxjs/operators';
 
 import { NxExpandableTableRowComponent } from './expandable-table-row.component';
 import { NxExpandable } from './toggle-button.component';
@@ -24,7 +24,7 @@ export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxE
         this.rows.changes
             .pipe(
                 startWith(this.rows),
-                flatMap((rows: NxExpandableTableRowComponent[]) => combineLatest(rows.map(row => row.expanded))),
+                mergeMap((rows: NxExpandableTableRowComponent[]) => combineLatest(rows.map(row => row.expanded))),
                 map((values: boolean[]) => values.reduce((a, x) => a && x, true)),
                 distinctUntilChanged(),
                 takeUntil(this._destroyed),

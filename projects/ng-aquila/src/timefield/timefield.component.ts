@@ -81,10 +81,8 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         return this._time as string;
     }
 
-    private _twelveHourFormat = false;
     /** Whether to show the time in 12-hour format with AM/PM toggle. Default: false. */
-    @Input()
-    set twelveHourFormat(value: BooleanInput) {
+    @Input() set twelveHourFormat(value: BooleanInput) {
         this._twelveHourFormat = coerceBooleanProperty(value);
         if (this._twelveHourFormat) {
             this._maxHours = 12;
@@ -100,11 +98,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get twelveHourFormat(): boolean {
         return this._twelveHourFormat;
     }
+    private _twelveHourFormat = false;
 
-    private _label!: string;
     /** Sets the label which is displayed on top of timefield. */
-    @Input()
-    set label(value: string) {
+    @Input() set label(value: string) {
         if (this._label !== value) {
             this._label = value;
             this._cdr.markForCheck();
@@ -113,11 +110,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get label(): string {
         return this._label;
     }
+    private _label!: string;
 
-    private _labelAM = 'AM';
     /** Sets the AM radio button label which is displayed in radio group. */
-    @Input()
-    set labelAM(value: string) {
+    @Input() set labelAM(value: string) {
         if (this._labelAM !== value) {
             this._labelAM = value;
             this._cdr.markForCheck();
@@ -126,11 +122,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get labelAM(): string {
         return this._labelAM;
     }
+    private _labelAM = 'AM';
 
-    private _labelPM = 'PM';
     /** Sets the PM radio button label which is displayed in radio group. */
-    @Input()
-    set labelPM(value: string) {
+    @Input() set labelPM(value: string) {
         if (this._labelPM !== value) {
             this._labelPM = value;
             this._cdr.markForCheck();
@@ -139,11 +134,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get labelPM(): string {
         return this._labelPM;
     }
+    private _labelPM = 'PM';
 
-    private _placeholderHours = 'hh';
     /** Sets the placeholder of hours field. Default: 'hh' */
-    @Input()
-    set placeholderHours(value: string) {
+    @Input() set placeholderHours(value: string) {
         if (this._placeholderHours !== value) {
             this._placeholderHours = value;
             this._cdr.markForCheck();
@@ -152,11 +146,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get placeholderHours(): string {
         return this._placeholderHours;
     }
+    private _placeholderHours = 'hh';
 
-    private _placeholderMinutes = 'mm';
     /** Sets the placeholder of minutes field. Default: 'mm' */
-    @Input()
-    set placeholderMinutes(value: string) {
+    @Input() set placeholderMinutes(value: string) {
         if (this._placeholderMinutes !== value) {
             this._placeholderMinutes = value;
             this._cdr.markForCheck();
@@ -165,21 +158,19 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get placeholderMinutes(): string {
         return this._placeholderMinutes;
     }
+    private _placeholderMinutes = 'mm';
 
-    private _required!: boolean;
     /** Whether the timefield is required. */
-    @Input()
+    @Input() set required(value: BooleanInput) {
+        this._required = coerceBooleanProperty(value);
+    }
     get required(): boolean {
         return this._required;
     }
-    set required(value: BooleanInput) {
-        this._required = coerceBooleanProperty(value);
-    }
+    private _required!: boolean;
 
-    private _negative = false;
     /** Whether the timefield uses the negative set of styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._negative !== newValue) {
             this._negative = newValue;
@@ -189,12 +180,10 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get negative() {
         return this._negative;
     }
-
-    private _disabled = false;
+    private _negative = false;
 
     /** Whether the timefield is disabled. */
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
         if (this._disabled !== newValue) {
             this._disabled = newValue;
@@ -204,6 +193,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     private _hours!: string;
     /** @docs-private */

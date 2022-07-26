@@ -11,22 +11,20 @@ import { Subject } from 'rxjs';
     },
 })
 export class NxFileUploaderButtonDirective implements OnDestroy {
-    _clicked = new Subject();
-    _ariaDescribedby: string | undefined;
-    private _disabled = false;
-
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
-
     /** Whether the file uploader is disabled */
-    @Input()
-    set disabled(value: boolean) {
+    @Input() set disabled(value: boolean) {
         this._disabled = value;
         this._cdr.markForCheck();
     }
-
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
+
+    readonly _clicked = new Subject();
+    _ariaDescribedby: string | undefined;
+
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /** @docs-private */
     setDescribedByIds(ids: string[]): void {

@@ -20,8 +20,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Even
 })
 export class NxTableRowComponent {
     /** Whether this table row is selectable */
-    @Input()
-    set selectable(value: BooleanInput) {
+    @Input() set selectable(value: BooleanInput) {
         this._selectable = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -31,8 +30,7 @@ export class NxTableRowComponent {
     private _selectable = false;
 
     /** Whether this table row is selected */
-    @Input()
-    set selected(value: BooleanInput) {
+    @Input() set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }

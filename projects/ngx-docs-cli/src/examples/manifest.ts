@@ -17,9 +17,9 @@ function getComponentTitle(exampleName: string, module: string, source: string) 
     const visit = (node: any): void => {
         if (node.kind === ts.SyntaxKind.ClassDeclaration) {
             // get the title of the example from the doc string in the TS file
-            if (node.jsDoc && node.jsDoc.length) {
+            if (node.jsDoc?.length) {
                 for (const doc of node.jsDoc) {
-                    if (doc.tags && doc.tags.length) {
+                    if (doc.tags?.length) {
                         for (const tag of doc.tags) {
                             // comment is the value of title
                             const tagValue = tag.comment;

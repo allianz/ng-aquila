@@ -37,38 +37,34 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
     @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
     @ContentChildren('tabButton') tabButtons!: QueryList<HTMLElement>;
 
-    private _selectedIndex = 0;
-
-    @Input()
-    get selectedIndex(): number {
-        return this._selectedIndex;
-    }
-    set selectedIndex(value: number) {
+    @Input() set selectedIndex(value: number) {
         this._selectedIndex = value;
         if (this._keyManager) {
             this._keyManager.updateActiveItem(value);
         }
     }
-
-    get focusIndex(): number {
-        return this._keyManager ? (this._keyManager.activeItemIndex as number) : 0;
+    get selectedIndex(): number {
+        return this._selectedIndex;
     }
+    private _selectedIndex = 0;
+
     set focusIndex(value: number) {
         if (!this._isValidIndex(value) || this.focusIndex === value || !this._keyManager) {
             return;
         }
         this._keyManager.setActiveItem(value);
     }
+    get focusIndex(): number {
+        return this._keyManager ? (this._keyManager.activeItemIndex as number) : 0;
+    }
 
-    private _autoselect = true;
-
-    @Input()
+    @Input() set autoselect(value: boolean) {
+        this._autoselect = value;
+    }
     get autoselect(): boolean {
         return this._autoselect;
     }
-    set autoselect(value: boolean) {
-        this._autoselect = value;
-    }
+    private _autoselect = true;
 
     @Output() readonly selectFocusedIndex = new EventEmitter<number>();
     @Output() readonly indexFocused = new EventEmitter<number>();

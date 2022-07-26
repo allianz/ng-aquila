@@ -86,11 +86,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     private _scrollStrategyFactory = this._defaultScrollStrategyFactory;
 
     /** References the context menu instance that the trigger is associated with. */
-    @Input('nxContextMenuTriggerFor')
-    get contextMenu() {
-        return this._contextMenu;
-    }
-    set contextMenu(contextMenu: NxContextMenuComponent) {
+    @Input('nxContextMenuTriggerFor') set contextMenu(contextMenu: NxContextMenuComponent) {
         if (contextMenu === this._contextMenu) {
             return;
         }
@@ -109,10 +105,12 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
             });
         }
     }
+    get contextMenu() {
+        return this._contextMenu;
+    }
     private _contextMenu!: NxContextMenuComponent;
 
-    @Input()
-    set scrollStrategy(value: NxContextMenuScrollStrategy | null | undefined) {
+    @Input() set scrollStrategy(value: NxContextMenuScrollStrategy | null | undefined) {
         if (this.#scrollStrategy !== value) {
             this.#scrollStrategy = value;
             this._scrollStrategyFactory = value ? this.getScrollStrtegyFactory(value) : this._defaultScrollStrategyFactory;
@@ -142,8 +140,7 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
      * 'button' (default): Opens by clicking the trigger
      * 'cursor': Opens at the cursor position by right clicking anywhere on the trigger.
      */
-    @Input('nxContextMenuTriggerMode')
-    mode: NxContextMenuMode = 'button';
+    @Input('nxContextMenuTriggerMode') mode: NxContextMenuMode = 'button';
 
     /** Event emitted when the associated context menu is opened. */
     @Output() readonly contextMenuOpened = new EventEmitter<void>();

@@ -21,55 +21,48 @@ export type IconSize = 'auto' | 's' | 'm' | 'l' | 'xl';
 })
 export class NxIconComponent implements OnChanges {
     /** Keeps track of the elements and attributes that we've prefixed with the current path. */
-    private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>; // TODO why is this never assigned?
-    private _name = '';
+    private _elementsWithExternalReferences?: Map<Element, { name: string; value: string }[]>;
     private _previousFontClasses: string[] = [];
 
     /** Sets the name for specifying the icon.*/
-    @Input()
-    set name(name: string) {
+    @Input() set name(name: string) {
         this._name = name;
     }
-
     get name(): string {
         return this._name;
     }
+    private _name = '';
 
-    private _outline = false;
     /** Whether the icon has an outline. */
-    @Input()
-    set outline(value: BooleanInput) {
+    @Input() set outline(value: BooleanInput) {
         this._outline = coerceBooleanProperty(value);
     }
     get outline(): boolean {
         return this._outline;
     }
+    private _outline = false;
 
-    private _fill = false;
     /** Whether the icon is filled. */
-    @Input()
-    set fill(value: BooleanInput) {
+    @Input() set fill(value: BooleanInput) {
         this._fill = coerceBooleanProperty(value);
     }
     get fill(): boolean {
         return this._fill;
     }
-
-    private _size: IconSize = 'auto';
+    private _fill = false;
 
     /** Specifies the size of the icon. */
-    @Input()
-    set size(value: IconSize) {
+    @Input() set size(value: IconSize) {
         if (this._size === value) {
             return;
         }
         this._size = value;
         this.el.nativeElement.classList.add('nx-icon--' + this.size);
     }
-
     get size(): IconSize {
         return this._size;
     }
+    private _size: IconSize = 'auto';
 
     /** Sets the font name that should be used. */
     @Input() font = '';

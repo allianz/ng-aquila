@@ -22,14 +22,6 @@ import { NxExpandableTableDirective } from './expandable/expandable-table.direct
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NxTableComponent {
-    private _condensed!: boolean;
-
-    private _zebra!: boolean;
-
-    private _sticky!: string;
-
-    constructor(private readonly _cdr: ChangeDetectorRef, @Optional() private readonly _expandableTableDirective: NxExpandableTableDirective | null) {}
-
     /** Change the table mode to condensed  */
     @Input() set condensed(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
@@ -39,10 +31,10 @@ export class NxTableComponent {
             this._cdr.markForCheck();
         }
     }
-
     get condensed(): boolean {
         return this._condensed;
     }
+    private _condensed!: boolean;
 
     /** Change the table mode to zebra  */
     @Input() set zebra(value: BooleanInput) {
@@ -52,10 +44,10 @@ export class NxTableComponent {
             this._cdr.markForCheck();
         }
     }
-
     get zebra(): boolean {
         return this._expandableTableDirective ? false : this._zebra;
     }
+    private _zebra!: boolean;
 
     /**
      * Makes first or last column "sticky".
@@ -66,8 +58,10 @@ export class NxTableComponent {
         this._sticky = value;
         this._cdr.markForCheck();
     }
-
     get sticky(): string {
         return this._sticky;
     }
+    private _sticky!: string;
+
+    constructor(private readonly _cdr: ChangeDetectorRef, @Optional() private readonly _expandableTableDirective: NxExpandableTableDirective | null) {}
 }

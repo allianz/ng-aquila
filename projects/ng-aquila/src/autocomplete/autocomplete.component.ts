@@ -70,8 +70,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     @ViewChild('panel') panel!: ElementRef;
 
     /** Items observable. If given, autocomplete takes care of the options and ng-content is discarderd */
-    @Input()
-    set items(val: string[] | Observable<string[]>) {
+    @Input() set items(val: string[] | Observable<string[]>) {
         this._hasItems = true;
         if (Array.isArray(val)) {
             this._items = val;
@@ -129,8 +128,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      * Takes classes set on the host nx-autocomplete element and applies them to the panel
      * inside the overlay container to allow for easy styling.
      */
-    @Input('class')
-    set classList(value: string) {
+    @Input('class') set classList(value: string) {
         if (value?.length) {
             value.split(' ').forEach(className => (this._classList[className.trim()] = true));
             this._elementRef.nativeElement.className = '';
@@ -150,8 +148,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
      *
      * Default: value ? value.toString() : null.
      */
-    @Input('nxValueFormatter')
-    valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
+    @Input('nxValueFormatter') valueFormatter: (value: any) => string = (value: any) => (value ? value.toString() : null);
 
     constructor(
         private readonly _cdr: ChangeDetectorRef,

@@ -32,6 +32,7 @@ const myErrorOptions: ErrorDefaultOptions = {
 })
 export class FormfieldGlobalExampleComponent implements AfterContentInit {
     modelValue!: string;
+
     @ViewChild('errorNgModel', { static: true })
     errorNgModel!: NxInputDirective;
 

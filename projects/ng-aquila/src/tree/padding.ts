@@ -26,24 +26,22 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
     indentUnits = 'px';
 
     /** The level of depth of the tree node. The padding will be `level * indent` pixels. */
-    @Input('nxTreeNodePadding')
-    get level(): number {
-        return this._level;
-    }
-    set level(value: NumberInput) {
+    @Input('nxTreeNodePadding') set level(value: NumberInput) {
         this._level = coerceNumberProperty(value);
         this._setPadding();
+    }
+    get level(): number {
+        return this._level;
     }
     _level!: number;
 
     /** The offset is added once on top of each indent. Default number is 0. */
-    @Input('nxTreeNodePaddingOffset')
-    get offset(): number {
-        return this._offset;
-    }
-    set offset(value: NumberInput) {
+    @Input('nxTreeNodePaddingOffset') set offset(value: NumberInput) {
         this._offset = coerceNumberProperty(value);
         this._setPadding();
+    }
+    get offset(): number {
+        return this._offset;
     }
     _offset = 0;
 
@@ -51,11 +49,7 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
      * The indent for each level. Can be a number or a CSS string.
      * Default number 24px from material design menu sub-menu spec.
      */
-    @Input('nxTreeNodePaddingIndent')
-    get indent(): number {
-        return this._indent;
-    }
-    set indent(indent: NumberInput) {
+    @Input('nxTreeNodePaddingIndent') set indent(indent: NumberInput) {
         let value = indent;
         let units = 'px';
 
@@ -68,6 +62,9 @@ export class NxTreeNodePaddingDirective<T> implements OnDestroy {
         this.indentUnits = units;
         this._indent = coerceNumberProperty(value);
         this._setPadding();
+    }
+    get indent(): number {
+        return this._indent;
     }
     _indent = 24;
 

@@ -15,18 +15,16 @@ export type NxIndicatorPosition = 'over-text' | 'over-icon' | 'after-text' | 'wi
     },
 })
 export class NxIndicatorComponent {
-    private _position: NxIndicatorPosition[] = [];
-
     /** Sets the indicator positioning preset.
      * Should be one or more of 'over-text', 'over-icon', 'after-text', 'with-overlap'
      */
-    @Input()
-    set position(value: string) {
+    @Input() set position(value: string) {
         this._position = value.split(' ') as NxIndicatorPosition[];
     }
     get position(): string {
         return this._position.join(' ');
     }
+    private _position: NxIndicatorPosition[] = [];
 
     _hasPosition(position: NxIndicatorPosition) {
         return this._position.includes(position);

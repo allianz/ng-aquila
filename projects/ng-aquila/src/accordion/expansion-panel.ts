@@ -52,34 +52,30 @@ const DEFAULT_TYPE = 'regular';
 })
 export class NxExpansionPanelComponent extends CdkAccordionItem implements AfterContentInit, OnChanges, OnDestroy {
     /** Whether the negative set of styles should be used. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
     get negative(): boolean {
         return this._negative as boolean;
     }
-
     private _negative: boolean | null = null;
+
     _accordionStyle: AccordionStyle = DEFAULT_TYPE;
 
     /**
      * Value for the styling that should be chosen.
      * Default value: 'regular'.
      */
-    @Input('nxStyle')
-    set style(value: AccordionStyle) {
+    @Input('nxStyle') set style(value: AccordionStyle) {
         value = value ? value : DEFAULT_TYPE;
 
         const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
         this._style = newValue as AccordionStyle;
         this._accordionStyle = newValue as AccordionStyle;
     }
-
     get style(): AccordionStyle {
         return this._style as AccordionStyle;
     }
-
     private _style: AccordionStyle | null = null;
 
     /** @docs-private */

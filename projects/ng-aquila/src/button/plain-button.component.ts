@@ -25,15 +25,13 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         return this.disabled.toString();
     }
 
-    private _disabled = false;
-
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
     }
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
     private _classNames = '';
 
@@ -54,6 +52,10 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         return this._classNames;
     }
 
+    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
+        this._focusMonitor.monitor(this._elementRef);
+    }
+
     @HostBinding('class.nx-button--active') active = false;
 
     setTriggerActive(): void {
@@ -67,10 +69,6 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
             this.active = false;
             this._cdr.markForCheck();
         }
-    }
-
-    constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
-        this._focusMonitor.monitor(this._elementRef);
     }
 
     ngOnDestroy(): void {

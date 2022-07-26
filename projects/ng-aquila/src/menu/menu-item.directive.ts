@@ -12,8 +12,7 @@ import { Directive, Input } from '@angular/core';
     },
 })
 export class NxMenuItemDirective {
-    @Input('nxMenuItem')
-    set size(value: string) {
+    @Input('nxMenuItem') set size(value: string) {
         this._size = value === 'l' ? 'l' : 's';
     }
     get size(): string {

@@ -84,25 +84,19 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _isInitialized: boolean | undefined;
 
     /** The datepicker that this input is associated with. */
-    @Input('nxDatepicker')
-    set datepicker(value: NxDatepickerComponent<D>) {
+    @Input('nxDatepicker') set datepicker(value: NxDatepickerComponent<D>) {
         this.registerDatepicker(value);
     }
     _datepicker!: NxDatepickerComponent<D>;
 
     /** Function that can be used to filter out dates within the datepicker and invalidate values in the datefield. */
-    @Input('nxDatefieldFilter')
-    set datefieldFilter(value: (date: D | null) => boolean) {
+    @Input('nxDatefieldFilter') set datefieldFilter(value: (date: D | null) => boolean) {
         this._dateFilter = value;
         this._validatorOnChange();
     }
 
     /** Provide or read the current date. It's type <D> depends on the chosen date implementation */
-    @Input()
-    get value(): D | null {
-        return this._value;
-    }
-    set value(value: D | null) {
+    @Input() set value(value: D | null) {
         value = this._dateAdapter.deserialize(value);
         value = this._getValidDateOrNull(value);
         const oldDate = this.value;
@@ -112,27 +106,28 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
             this._valueChange.emit(value);
         }
     }
+    get value(): D | null {
+        return this._value;
+    }
     private _value!: D | null;
 
     /** Sets the minimum valid date. */
-    @Input('nxMin')
-    get min(): D | null {
-        return this._min;
-    }
-    set min(value: D | null) {
+    @Input('nxMin') set min(value: D | null) {
         this._min = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._validatorOnChange();
+    }
+    get min(): D | null {
+        return this._min;
     }
     private _min!: D | null;
 
     /** Sets the maximum valid date. */
-    @Input('nxMax')
-    get max(): D | null {
-        return this._max;
-    }
-    set max(value: D | null) {
+    @Input('nxMax') set max(value: D | null) {
         this._max = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._validatorOnChange();
+    }
+    get max(): D | null {
+        return this._max;
     }
     private _max!: D | null;
 
@@ -141,12 +136,11 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
      *
      * The date value is not updated on a `strict` change.
      */
-    @Input('nxStrict')
+    @Input('nxStrict') set strict(value: any) {
+        this._strict = coerceBooleanProperty(value);
+    }
     get strict() {
         return this._strict;
-    }
-    set strict(value: any) {
-        this._strict = coerceBooleanProperty(value);
     }
     private _strict = true;
 
@@ -155,32 +149,26 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
      *
      * The date value is not updated on a `parseFormat` change.
      */
-    @Input('nxParseFormat')
+    @Input('nxParseFormat') set parseFormat(value: string | string[]) {
+        this._parseFormat = value;
+    }
     get parseFormat() {
         return this._parseFormat;
-    }
-    set parseFormat(value: string | string[]) {
-        this._parseFormat = value;
     }
     private _parseFormat!: string | string[];
 
     /** Override the display format given with display.dateInput with the token NX_DATE_FORMATS  */
-    @Input('nxDisplayFormat')
-    get displayFormat() {
-        return this._displayFormat;
-    }
-    set displayFormat(value: string) {
+    @Input('nxDisplayFormat') set displayFormat(value: string) {
         this._displayFormat = value;
         this._formatValue(this.value);
+    }
+    get displayFormat() {
+        return this._displayFormat;
     }
     private _displayFormat!: string;
 
     /** Whether the datepicker-input is disabled. */
-    @Input()
-    get disabled(): boolean {
-        return !!this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (this._disabled !== newValue) {
@@ -197,20 +185,22 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
             this._elementRef.nativeElement.blur();
         }
     }
+    get disabled(): boolean {
+        return !!this._disabled;
+    }
     private _disabled!: boolean;
 
     /** Whether the datefield is readonly. */
-    @Input()
-    get readonly(): boolean {
-        return !!this._readonly;
-    }
-    set readonly(value: BooleanInput) {
+    @Input() set readonly(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (this._readonly !== newValue) {
             this._readonly = newValue;
             this._readonlyChange.emit(newValue);
         }
+    }
+    get readonly(): boolean {
+        return !!this._readonly;
     }
     private _readonly!: boolean;
 

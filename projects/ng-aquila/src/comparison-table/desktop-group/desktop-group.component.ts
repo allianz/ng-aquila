@@ -21,9 +21,6 @@ import { NxComparisonTableRowGroupDirective } from '../comparison-table-row-grou
     styleUrls: ['./desktop-group.component.scss'],
 })
 export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
-    _expanded = false;
-    _useFullRowForExpandableArea = false;
-
     @Input() group!: NxComparisonTableRowGroupDirective;
 
     @ViewChild('expansionCell') _expansionCell!: ElementRef;
@@ -32,17 +29,16 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
     private _expansionCellPrevious!: ElementRef;
 
     /** Sets if the row group is expanded. Default: false. */
-    @Input()
-    set isExpanded(value: BooleanInput) {
+    @Input() set isExpanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
     }
     get isExpanded(): boolean {
         return this._expanded;
     }
+    _expanded = false;
 
     /** Sets if the expansion cell uses the full row of the table or leaves out the first column. Default: false. */
-    @Input()
-    set useFullRowForExpandableArea(value: BooleanInput) {
+    @Input() set useFullRowForExpandableArea(value: BooleanInput) {
         this._useFullRowForExpandableArea = coerceBooleanProperty(value);
     }
     get useFullRowForExpandableArea(): boolean {
@@ -54,6 +50,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
         }
         return false;
     }
+    _useFullRowForExpandableArea = false;
 
     @Output() readonly isExpandedChange = new EventEmitter<boolean>();
 

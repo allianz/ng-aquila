@@ -42,17 +42,10 @@ let nextUniqueId = 0;
     providers: [{ provide: NxFormfieldControl, useExisting: NxInputDirective }],
 })
 export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, NxFormfieldControl<any> {
-    protected _type = 'text';
-
-    protected _id!: string;
     protected _uid = `nx-input-${nextUniqueId++}`;
     protected _previousNativeValue: any;
-    protected _disabled = false;
-    protected _required = false;
-    private _readonly = false;
     private _inputValueAccessor: { value: any };
     _ariaDescribedby!: string;
-    private _placeholder!: string;
 
     @Input('nxAriaLabel') _ariaLabel!: string;
 
@@ -77,44 +70,36 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     focused = false;
 
     /** The id of the input. */
-    @Input()
+    @Input() set id(value: string) {
+        this._id = value || this._uid;
+    }
     get id() {
         return this._id;
     }
-    set id(value: string) {
-        this._id = value || this._uid;
-    }
+    protected _id!: string;
 
     /** The input element's value. */
-    @Input()
-    get value(): any {
-        return this._inputValueAccessor.value;
-    }
-    set value(value: any) {
+    @Input() set value(value: any) {
         if (value !== this.value) {
             this._inputValueAccessor.value = value;
         }
     }
+    get value(): any {
+        return this._inputValueAccessor.value;
+    }
 
     /** Whether the element is readonly. */
-    @Input()
-    get readonly(): boolean {
-        return this._readonly;
-    }
-    set readonly(value: BooleanInput) {
+    @Input() set readonly(value: BooleanInput) {
         this._readonly = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
+    get readonly(): boolean {
+        return this._readonly;
+    }
+    private _readonly = false;
 
     /** Whether the input is disabled. */
-    @Input()
-    get disabled(): boolean {
-        if (this.ngControl?.disabled != null) {
-            return this.ngControl.disabled;
-        }
-        return this._disabled;
-    }
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
 
         // Browsers may not fire the blur event if the input is disabled too quickly.
@@ -124,22 +109,25 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
             this.stateChanges.next();
         }
     }
+    get disabled(): boolean {
+        if (this.ngControl?.disabled != null) {
+            return this.ngControl.disabled;
+        }
+        return this._disabled;
+    }
+    protected _disabled = false;
 
     /** Whether the element is required. */
-    @Input()
+    @Input() set required(value: any) {
+        this._required = coerceBooleanProperty(value);
+    }
     get required() {
         return this._required;
     }
-    set required(value: any) {
-        this._required = coerceBooleanProperty(value);
-    }
+    protected _required = false;
 
     /** Sets the type of the input element (e.g. password, text etc). */
-    @Input()
-    get type() {
-        return this._type;
-    }
-    set type(value: string) {
+    @Input() set type(value: string) {
         this._type = value || 'text';
         this._validateType();
 
@@ -150,17 +138,21 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
             this._elementRef.nativeElement.type = this._type;
         }
     }
+    get type() {
+        return this._type;
+    }
+    protected _type = 'text';
 
     /**
      * Sets the text for the input placeholder
      */
-    @Input()
+    @Input() set placeholder(value: string) {
+        this._placeholder = value;
+    }
     get placeholder() {
         return this.empty ? this._placeholder : '';
     }
-    set placeholder(value: string) {
-        this._placeholder = value;
-    }
+    private _placeholder!: string;
 
     private readonly _destroyed = new Subject<void>();
 

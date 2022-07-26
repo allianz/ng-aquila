@@ -12,13 +12,10 @@ import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dyna
 export class NxDynamicTableComponent implements OnInit {
     private readonly _dataChange = new BehaviorSubject<any[]>([]);
     private _dataSource!: NxDynamicTableDataSource | null;
-    private _data: any[] = [];
-    private _displayedColumns!: NxDynamicTableColumnDefinition[];
     private _columnKeys: string[] = [];
 
     /** Sets the data that it will show in the table. */
-    @Input('nxData')
-    set data(value: any[]) {
+    @Input('nxData') set data(value: any[]) {
         this._data = value.filter(element => element);
         // If user dont pass displayedColumns the table will show all data and the name of columns will be the key of data
         if (!this._displayedColumns) {
@@ -45,10 +42,10 @@ export class NxDynamicTableComponent implements OnInit {
     get data(): any[] {
         return this._data;
     }
+    private _data: any[] = [];
 
     /** Sets the name order and type of columns. */
-    @Input('nxDisplayedColumns')
-    set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
+    @Input('nxDisplayedColumns') set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
         this._displayedColumns = value as NxDynamicTableColumnDefinition[];
         this._columnKeys = value ? value.map(column => column.key) : [];
         this._cdr.markForCheck();
@@ -56,6 +53,7 @@ export class NxDynamicTableComponent implements OnInit {
     get displayedColumns(): NxDynamicTableColumnDefinition[] | undefined {
         return this._displayedColumns;
     }
+    private _displayedColumns!: NxDynamicTableColumnDefinition[];
 
     /** An event is dispatched when a row is clicked. */
     @Output() readonly nxRowClick = new EventEmitter();

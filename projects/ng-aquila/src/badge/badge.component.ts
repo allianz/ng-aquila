@@ -17,14 +17,8 @@ export type NxBadgeType = 'active' | 'positive' | 'critical' | 'negative' | '';
     },
 })
 export class NxBadgeComponent {
-    private _type!: NxBadgeType;
-    private _vibrant = false;
-
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
-
     /** Sets the class name for the badge element.  */
-    @Input()
-    set type(value: NxBadgeType | string | null | undefined) {
+    @Input() set type(value: NxBadgeType | string | null | undefined) {
         if (value !== this._type) {
             this._type = value! as NxBadgeType; // TODO properly coerce input value
             this._cdr.markForCheck();
@@ -33,9 +27,10 @@ export class NxBadgeComponent {
     get type(): NxBadgeType {
         return this._type;
     }
+    private _type!: NxBadgeType;
+
     /** Change badge style to vibrant. */
-    @Input()
-    set vibrant(value: BooleanInput) {
+    @Input() set vibrant(value: BooleanInput) {
         const newValue = coerceBooleanProperty(value);
 
         if (value !== this._vibrant) {
@@ -46,4 +41,7 @@ export class NxBadgeComponent {
     get vibrant(): boolean {
         return this._vibrant;
     }
+    private _vibrant = false;
+
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

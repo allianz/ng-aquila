@@ -36,21 +36,18 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     },
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
-    private _value = 0;
     /** Sets the selected rating 1 - 5. */
-    @Input('nxValue')
-    set value(newValue: NumberInput) {
+    @Input('nxValue') set value(newValue: NumberInput) {
         this._value = coerceNumberProperty(newValue);
         this._cdr.markForCheck();
     }
     get value(): number {
         return this._value;
     }
+    private _value = 0;
 
-    private _disabled = false;
     /** Whether the rating component should be disabled. */
-    @Input('nxDisabled')
-    set disabled(newValue: BooleanInput) {
+    @Input('nxDisabled') set disabled(newValue: BooleanInput) {
         if (this._disabled === newValue) {
             return;
         }
@@ -60,11 +57,10 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
-    private _negative = false;
     /** Whether the negative colors be used. */
-    @Input('nxNegative')
-    set negative(newValue: BooleanInput) {
+    @Input('nxNegative') set negative(newValue: BooleanInput) {
         if (this._negative === newValue) {
             return;
         }
@@ -74,39 +70,39 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
-    private _startLabel = '';
     /** Sets the label painted at the start of the rating component. */
-    @Input('nxStartLabel')
-    set startLabel(newValue: string) {
+    @Input('nxStartLabel') set startLabel(newValue: string) {
         this._startLabel = newValue;
         this._cdr.markForCheck();
     }
     get startLabel(): string {
         return this._startLabel;
     }
+    private _startLabel = '';
 
-    private _endLabel: string | null = null;
     /** Sets the label painted at the end of the rating component. */
-    @Input('nxEndLabel')
-    set endLabel(newValue: string) {
+    @Input('nxEndLabel') set endLabel(newValue: string) {
         this._endLabel = newValue;
         this._cdr.markForCheck();
     }
     get endLabel(): string {
         return this._endLabel as string;
     }
+    private _endLabel: string | null = null;
 
-    private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
-    @Input('nxAriaLabel')
-    /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */
-    set ariaLabel(newAriaLabels: string[]) {
+    @Input('nxAriaLabel') /** Sets an array of custom aria-describedby attributes for each of the stars in the component. */ set ariaLabel(
+        newAriaLabels: string[],
+    ) {
         this._ariaLabel = newAriaLabels;
         this._cdr.markForCheck();
     }
     get ariaLabel(): string[] {
         return this._ariaLabel;
     }
+    private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
+
     /** An event is dispatched each time when the rating changes. */
     @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 

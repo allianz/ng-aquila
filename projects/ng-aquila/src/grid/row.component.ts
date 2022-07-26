@@ -56,25 +56,18 @@ export type RowWrapping = 'wrap' | 'nowrap' | 'reverse';
     },
 })
 export class NxRowComponent {
-    private _justifyClasses = '';
-    private _alignContentClasses = '';
-    private _alignItemsClasses = '';
-    private _wrapClasses = '';
-    private _rowClass: string = MAPPING_LAYOUT.row;
-
-    get _classNames() {
-        return [this._rowClass, this._justifyClasses, this._alignContentClasses, this._alignItemsClasses, this._wrapClasses, this.class]
-            .filter(classes => classes?.length)
-            .join(' ');
-    }
+    /**
+     * Overwrite default class property to access user provided class.
+     * @docs-private
+     */
+    @Input() class = '';
 
     /**
      * Values: row | row-reverse
      *
      * Default value: row
      */
-    @Input()
-    set nxRow(value: string) {
+    @Input() set nxRow(value: string) {
         if (value) {
             this._rowClass = MAPPING_LAYOUT[value];
 
@@ -85,35 +78,35 @@ export class NxRowComponent {
             this._rowClass = MAPPING_LAYOUT.row;
         }
     }
+    private _rowClass: string = MAPPING_LAYOUT.row;
 
     /** Align items on the main axis (horizontally). */
-    @Input('nxRowJustify')
-    set nxRowJustify(value: RowJustification | string) {
+    @Input('nxRowJustify') set nxRowJustify(value: RowJustification | string) {
         this._justifyClasses = value ? addStylesFromDimensions(value, MAPPING_JUSTIFY) : '';
     }
+    private _justifyClasses = '';
 
     /** Similar to nxRowAlignItems, but instead of aligning flex items, it aligns flex lines. */
-    @Input('nxRowAlignContent')
-    set nxRowAlignContent(value: RowContentAlignment | string) {
+    @Input('nxRowAlignContent') set nxRowAlignContent(value: RowContentAlignment | string) {
         this._alignContentClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_CONTENT) : '';
     }
+    private _alignContentClasses = '';
 
     /** The default alignment for items inside the flexible container. */
-    @Input('nxRowAlignItems')
-    set nxRowAlignItems(value: RowItemsAlignment | string) {
+    @Input('nxRowAlignItems') set nxRowAlignItems(value: RowItemsAlignment | string) {
         this._alignItemsClasses = value ? addStylesFromDimensions(value, MAPPING_ALIGN_ITEMS) : '';
     }
+    private _alignItemsClasses = '';
 
     /** How the flexible items should be wrapped. */
-    @Input('nxRowWrap')
-    set nxRowWrap(value: RowWrapping) {
+    @Input('nxRowWrap') set nxRowWrap(value: RowWrapping) {
         this._wrapClasses = value ? addStylesFromDimensions(value, MAPPING_WRAP) : '';
     }
+    private _wrapClasses = '';
 
-    /**
-     * Overwrite default class property to access user provided class.
-     * @docs-private
-     */
-    @Input()
-    class = '';
+    get _classNames() {
+        return [this._rowClass, this._justifyClasses, this._alignContentClasses, this._alignItemsClasses, this._wrapClasses, this.class]
+            .filter(classes => classes?.length)
+            .join(' ');
+    }
 }

@@ -20,8 +20,7 @@ export class NxActionComponent implements OnDestroy {
     @ContentChild(NxActionIconDirective) _iconChild!: NxActionIconDirective;
 
     /** Whether this action is selected or not.  */
-    @Input()
-    set selected(value: BooleanInput) {
+    @Input() set selected(value: BooleanInput) {
         this._selected = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -31,8 +30,7 @@ export class NxActionComponent implements OnDestroy {
     private _selected = false;
 
     /** Whether this action is expandable or not. Will add a caret icon. */
-    @Input()
-    set expandable(value: BooleanInput) {
+    @Input() set expandable(value: BooleanInput) {
         this._expandable = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }
@@ -44,8 +42,7 @@ export class NxActionComponent implements OnDestroy {
     /** Whether this action is expanded or not.
     Only works in combination with the `expandable` option set to `true`.
    */
-    @Input()
-    set expanded(value: BooleanInput) {
+    @Input() set expanded(value: BooleanInput) {
         this._expanded = coerceBooleanProperty(value);
         this._cdr.markForCheck();
     }

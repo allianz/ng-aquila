@@ -80,9 +80,6 @@ export class FormfieldCustomTelInputExampleComponent
         ],
     });
 
-    private _placeholder = '';
-    private _required = false;
-    private _disabled = false;
     readonly!: boolean;
     readonly stateChanges = new Subject<void>();
     focused = false;
@@ -102,26 +99,25 @@ export class FormfieldCustomTelInputExampleComponent
         return this.focused || !this.empty;
     }
 
-    @Input()
-    set placeholder(value: string) {
+    @Input() set placeholder(value: string) {
         this._placeholder = value;
         this.stateChanges.next();
     }
     get placeholder(): string {
         return this._placeholder;
     }
+    private _placeholder = '';
 
-    @Input()
-    set required(value: BooleanInput) {
+    @Input() set required(value: BooleanInput) {
         this._required = coerceBooleanProperty(value);
         this.stateChanges.next();
     }
     get required(): boolean {
         return this._required;
     }
+    private _required = false;
 
-    @Input()
-    set disabled(value: BooleanInput) {
+    @Input() set disabled(value: BooleanInput) {
         this._disabled = coerceBooleanProperty(value);
         this._disabled ? this.parts.disable() : this.parts.enable();
         this.stateChanges.next();
@@ -129,9 +125,9 @@ export class FormfieldCustomTelInputExampleComponent
     get disabled(): boolean {
         return this._disabled;
     }
+    private _disabled = false;
 
-    @Input()
-    set value(tel: MyTel | null) {
+    @Input() set value(tel: MyTel | null) {
         const { area, exchange, subscriber } = tel || new MyTel('', '', '');
         this.parts.setValue({ area, exchange, subscriber });
         this.stateChanges.next();

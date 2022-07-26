@@ -12,14 +12,12 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 })
 export class NxSingleStepperComponent extends NxProgressStepperDirective {
     /** Sets the label on the right showing the next step. */
-    @Input('nextLabel')
+    @Input('nextLabel') set rightLabel(v) {
+        this._rightLabel = v;
+    }
     get rightLabel(): string {
         return this._rightLabel;
     }
-    set rightLabel(v) {
-        this._rightLabel = v;
-    }
-
     private _rightLabel = 'Next step:';
 
     /** @docs-private */

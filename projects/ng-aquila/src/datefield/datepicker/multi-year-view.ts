@@ -31,11 +31,7 @@ export const yearsPerRow = 4;
 })
 export class NxMultiYearViewComponent<D> implements AfterContentInit {
     /** The date to display in this multi-year view (everything other than the year is ignored). */
-    @Input()
-    get activeDate(): D {
-        return this._activeDate;
-    }
-    set activeDate(value: D) {
+    @Input() set activeDate(value: D) {
         const oldActiveDate = this._activeDate;
         const validDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value)) || this._dateAdapter.today();
         this._activeDate = this._dateAdapter.clampDate(validDate, this.minDate, this.maxDate);
@@ -43,36 +39,36 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
             this._init();
         }
     }
+    get activeDate(): D {
+        return this._activeDate;
+    }
     private _activeDate: D;
 
     /** The currently selected date. */
-    @Input()
-    get selected(): D | null {
-        return this._selected;
-    }
-    set selected(value: D | null) {
+    @Input() set selected(value: D | null) {
         this._selected = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
         this._selectedYear = this._selected && this._dateAdapter.getYear(this._selected);
+    }
+    get selected(): D | null {
+        return this._selected;
     }
     private _selected!: D | null;
 
     /** The minimum selectable date. */
-    @Input()
+    @Input() set minDate(value: D | null) {
+        this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get minDate(): D | null {
         return this._minDate;
-    }
-    set minDate(value: D | null) {
-        this._minDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _minDate!: D | null;
 
     /** The maximum selectable date. */
-    @Input()
+    @Input() set maxDate(value: D | null) {
+        this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
+    }
     get maxDate(): D | null {
         return this._maxDate;
-    }
-    set maxDate(value: D | null) {
-        this._maxDate = this._getValidDateOrNull(this._dateAdapter.deserialize(value));
     }
     private _maxDate!: D | null;
 

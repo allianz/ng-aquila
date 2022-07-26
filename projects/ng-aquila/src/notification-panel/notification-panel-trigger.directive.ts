@@ -32,16 +32,15 @@ const DEFAULT_CONFIG: NxOverlayConfig = {
     },
 })
 export class NxNotificationPanelTriggerDirective {
-    private _panelTemplate!: TemplateRef<any>;
     private _overlayRef!: NxOverlayRef<any> | null;
 
-    @Input('nxNotificationPanelTriggerFor')
-    set notificationPanel(value: TemplateRef<any>) {
+    @Input('nxNotificationPanelTriggerFor') set notificationPanel(value: TemplateRef<any>) {
         this._panelTemplate = value;
     }
     get notificationPanel() {
         return this._panelTemplate;
     }
+    private _panelTemplate!: TemplateRef<any>;
 
     /** Strategy factory that will be used to handle scrolling while the notification-panel panel is open. */
     private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;

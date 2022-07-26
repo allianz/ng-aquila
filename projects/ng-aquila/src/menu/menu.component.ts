@@ -15,26 +15,23 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
     },
 })
 export class NxMenuComponent {
-    private _open = false;
-
     /** Whether the menu is open or closed. */
-    @Input()
-    set open(value: BooleanInput) {
+    @Input() set open(value: BooleanInput) {
         const open = coerceBooleanProperty(value);
         if (open !== this._open) {
             this._open = open;
             this._cdr.markForCheck();
         }
     }
-
     get open(): boolean {
         return this._open;
     }
+    private _open = false;
+
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     /* Toggles the open state of the menu. */
     toggle() {
         this.open = !this.open;
     }
-
-    constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

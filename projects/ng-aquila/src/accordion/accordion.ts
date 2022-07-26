@@ -14,14 +14,11 @@ const DEFAULT_TYPE: AccordionStyle = 'regular';
     },
 })
 export class NxAccordionDirective extends CdkAccordion {
-    private _style: AccordionStyle = 'regular';
-
     /**
      * Value for the styling that should be chosen.
      * Default value: 'regular'
      */
-    @Input('nxStyle')
-    set style(value: AccordionStyle) {
+    @Input('nxStyle') set style(value: AccordionStyle) {
         value = value ? value : DEFAULT_TYPE;
 
         const [newValue] = value.match(/regular|light|extra-light/) || [DEFAULT_TYPE];
@@ -30,15 +27,14 @@ export class NxAccordionDirective extends CdkAccordion {
     get style(): AccordionStyle {
         return this._style;
     }
-
-    private _negative: boolean | undefined;
+    private _style: AccordionStyle = 'regular';
 
     /** Whether the negative set of styles should be used. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         this._negative = coerceBooleanProperty(value);
     }
     get negative(): boolean {
         return !!this._negative;
     }
+    private _negative: boolean | undefined;
 }

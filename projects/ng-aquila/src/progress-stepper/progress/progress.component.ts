@@ -13,12 +13,11 @@ import { NxProgressStepperDirective } from '../progress-stepper.component';
 })
 export class NxProgressStepperComponent extends NxProgressStepperDirective {
     /** Sets the current value/progress of the progress bar. */
-    @Input()
+    @Input() set progress(value: number) {
+        this._progress = clamp(value || 0);
+    }
     get progress(): number {
         return this._progress;
-    }
-    set progress(value: number) {
-        this._progress = clamp(value || 0);
     }
     private _progress = 0;
 

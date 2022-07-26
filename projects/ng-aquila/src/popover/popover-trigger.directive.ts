@@ -86,11 +86,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private overlayRef!: OverlayRef | null;
     private portal!: TemplatePortal<any>;
     private readonly _overlayDestroyed = new Subject<void>();
-    private _show = false;
-    private _closeable: boolean | null = null;
     private _positionStrategy!: PositionStrategy;
     private _embeddedViewRef!: EmbeddedViewRef<any> | null;
-    private _modal = false;
     /** The class that traps and manages focus within the popover. */
     private _focusTrap!: FocusTrap;
     /** Element that was focused before the Popover was opened. Save this to restore upon close. */
@@ -105,8 +102,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     @Output('nxPopoverShowChange') readonly changeShow = new EventEmitter<boolean>();
 
     /** Whether to show or hide the popover. */
-    @Input('nxPopoverShow')
-    set show(value: BooleanInput) {
+    @Input('nxPopoverShow') set show(value: BooleanInput) {
         value = coerceBooleanProperty(value);
         if (this._show !== value) {
             this._show = value;
@@ -117,14 +113,13 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             }
         }
     }
-
     get show() {
         return this._show;
     }
+    private _show = false;
 
     /** Whether to show a close button. By default a close icon is only shown for trigger type click. */
-    @Input('nxPopoverCloseable')
-    set closeable(value: BooleanInput) {
+    @Input('nxPopoverCloseable') set closeable(value: BooleanInput) {
         this._closeable = coerceBooleanProperty(value);
 
         if (this.popover) {
@@ -134,52 +129,46 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     get closeable(): boolean {
         return this._closeable as boolean;
     }
+    private _closeable: boolean | null = null;
 
     /** Whether the popover should be closed on click outside of the popover in the trigger modes 'manual' and 'click'. */
-    @Input()
-    set closeOnClickOutside(value: BooleanInput) {
+    @Input() set closeOnClickOutside(value: BooleanInput) {
         this._closeOnClickOutside = coerceBooleanProperty(value);
     }
     get closeOnClickOutside(): boolean {
         return this._closeOnClickOutside;
     }
-
     private _closeOnClickOutside = true;
 
     /** Links the trigger with the popover to open. */
-    @Input('nxPopoverTriggerFor')
-    popover!: NxPopoverComponent;
+    @Input('nxPopoverTriggerFor') popover!: NxPopoverComponent;
 
     /** Sets the desired direction to open the popover. E.g., right, left, bottom, top */
-    @Input('nxPopoverDirection')
-    direction: PopoverDirection = 'right';
+    @Input('nxPopoverDirection') direction: PopoverDirection = 'right';
 
     /** Whether the popover will be opened automatically. */
-    @Input('nxPopoverInitialVisible')
-    popoverInitialVisible = false;
+    @Input('nxPopoverInitialVisible') popoverInitialVisible = false;
 
     /** An event is emitted when the visibility of the popopver changes. */
     @Input('nxPopoverVisibleChange') visibleChange = new EventEmitter<boolean>(); // TODO this should be an output
 
     /** Whether the popover opens in modal state. */
-    @Input('nxPopoverModal')
-    set modal(value: BooleanInput) {
+    @Input('nxPopoverModal') set modal(value: BooleanInput) {
         this._modal = coerceBooleanProperty(value);
     }
     get modal(): boolean {
         return this._modal;
     }
+    private _modal = false;
 
     // If nxPopoverTrigger equals to 'hover' the popover opens on mouseenter and closes on mouseout.
     // If nxPopoverTrigger equals to 'click' the popover opens on click and closes on a click of the close icon or pressing ESC key.
     // If nxPopoverTrigger equals to 'manual' the popover opens only when programatically requested.
     /** Sets the way to trigger the popover. Options are hover, click, manual */
-    @Input('nxPopoverTrigger')
-    trigger: PopoverTriggerType = 'click';
+    @Input('nxPopoverTrigger') trigger: PopoverTriggerType = 'click';
 
     /** Sets the scroll strategy. 'close' closes the popover on scroll while 'reposition' scrolls the popover with the origin. */
-    @Input('nxPopoverScrollStrategy')
-    set scrollStrategy(value: PopoverTriggerScrollStrategy | null | undefined) {
+    @Input('nxPopoverScrollStrategy') set scrollStrategy(value: PopoverTriggerScrollStrategy | null | undefined) {
         if (this.#scrollStrategy !== value) {
             this.#scrollStrategy = value;
             this._scrollStrategyFactory = value ? this.getScrollStrategyFactory(value) : this._defaultScrollStrategyFactory;

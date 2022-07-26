@@ -22,11 +22,8 @@ const DEFAULT_SIZE = 'small';
     },
 })
 export class NxSpinnerComponent {
-    private _size: SpinnerSize = DEFAULT_SIZE;
-
     /** Sets the size of the spinner. Default is 'small'. */
-    @Input('nxSize')
-    set size(value: SpinnerSize) {
+    @Input('nxSize') set size(value: SpinnerSize) {
         if (value !== this._size) {
             this._size = value;
             this._cdr.markForCheck();
@@ -35,12 +32,10 @@ export class NxSpinnerComponent {
     get size(): SpinnerSize {
         return this._size;
     }
-
-    private _negative = false;
+    private _size: SpinnerSize = DEFAULT_SIZE;
 
     /** Whether the spinner should use a negative styling. */
-    @Input()
-    set negative(value: BooleanInput) {
+    @Input() set negative(value: BooleanInput) {
         if (value !== this._negative) {
             this._negative = coerceBooleanProperty(value);
             this._cdr.markForCheck();
@@ -49,6 +44,7 @@ export class NxSpinnerComponent {
     get negative(): boolean {
         return this._negative;
     }
+    private _negative = false;
 
     constructor(private readonly _cdr: ChangeDetectorRef) {}
 }

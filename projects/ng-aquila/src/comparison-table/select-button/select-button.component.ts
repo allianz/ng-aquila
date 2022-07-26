@@ -20,35 +20,26 @@ import { NxComparisonTableBase } from '../comparison-table-base';
     },
 })
 export class NxComparisonTableSelectButton extends NxButtonBase implements OnDestroy {
-    private _selectedLabel = 'Selected';
-
-    _ariaPressed = false;
-
     /** Sets the label that is displayed when the column is selected. Default: 'Selected'. */
-    @Input()
-    set selectedLabel(value: string) {
+    @Input() set selectedLabel(value: string) {
         this._selectedLabel = value;
     }
     get selectedLabel(): string {
         return this._selectedLabel;
     }
-
-    private _unselectedLabel = 'Select';
+    private _selectedLabel = 'Selected';
 
     /** Sets the label that is displayed when the column is not selected. Default: 'Select'. */
-    @Input()
-    set unselectedLabel(value: string) {
+    @Input() set unselectedLabel(value: string) {
         this._unselectedLabel = value;
     }
     get unselectedLabel(): string {
         return this._unselectedLabel;
     }
-
-    private _unselectedClassNames = 'secondary small';
+    private _unselectedLabel = 'Select';
 
     /** Sets the classNames (style, size and negative) of the unselected button. Default: 'secondary small'. */
-    @Input()
-    set unselectedClassNames(value: string) {
+    @Input() set unselectedClassNames(value: string) {
         if (value !== this._unselectedClassNames) {
             this._unselectedClassNames = value;
             this._setClassNames();
@@ -57,12 +48,10 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     get unselectedClassNames(): string {
         return this._unselectedClassNames;
     }
-
-    private _selectedClassNames = 'primary small';
+    private _unselectedClassNames = 'secondary small';
 
     /** Sets the classNames (style, size and negative) of the selected button. Default: 'primary small'. */
-    @Input()
-    set selectedClassNames(value: string) {
+    @Input() set selectedClassNames(value: string) {
         if (value !== this._selectedClassNames) {
             this._selectedClassNames = value;
             this._setClassNames();
@@ -71,6 +60,9 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
     get selectedClassNames(): string {
         return this._selectedClassNames;
     }
+    private _selectedClassNames = 'primary small';
+
+    _ariaPressed = false;
 
     private readonly _destroyed = new Subject<void>();
 

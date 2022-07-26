@@ -102,15 +102,14 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Whether the label should float once the input is focused or filled (auto, default)
      * or force it to always float with a value of always to simulate a more static form.
      */
-    @Input('nxFloatLabel')
-    get floatLabel(): FloatLabelType {
-        return this._floatLabel || this._defaultOptions?.nxFloatLabel || 'auto';
-    }
-    set floatLabel(value: FloatLabelType) {
+    @Input('nxFloatLabel') set floatLabel(value: FloatLabelType) {
         if (value !== this._floatLabel) {
             this._floatLabel = value || 'auto';
             this._cdr.markForCheck();
         }
+    }
+    get floatLabel(): FloatLabelType {
+        return this._floatLabel || this._defaultOptions?.nxFloatLabel || 'auto';
     }
     private _floatLabel!: FloatLabelType;
 
@@ -118,8 +117,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
      * Sets the styling of the formfield.
      * If 'negative', a negative set of stylings is used.
      */
-    @Input('nxStyle')
-    set styles(value: string) {
+    @Input('nxStyle') set styles(value: string) {
         if (this._styles === value) {
             return;
         }
@@ -133,15 +131,12 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
         this._styles = value;
     }
 
-    private _appearance!: AppearanceType;
-
     /**
      * **Expert option**
      *
      * Sets the appearance of the formfield.
      */
-    @Input()
-    set appearance(value: AppearanceType) {
+    @Input() set appearance(value: AppearanceType) {
         if (this._appearance !== value) {
             this._appearance = value;
             this._cdr.markForCheck();
@@ -150,6 +145,7 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     get appearance(): AppearanceType {
         return this._appearance || this._defaultOptions?.appearance || 'auto';
     }
+    private _appearance!: AppearanceType;
 
     get _shouldAlwaysFloat(): boolean {
         return this.floatLabel === 'always';
@@ -175,8 +171,6 @@ export class NxFormfieldComponent implements AfterContentInit, AfterContentCheck
     ) {}
 
     ngAfterContentInit(): void {
-        let subscription;
-
         this._validateControlChild();
 
         if (this._control.controlType) {

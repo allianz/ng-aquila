@@ -11,6 +11,11 @@ const EXAMPLE_SELECTOR = 'nx-docs-example';
     templateUrl: 'example-loader.component.html',
 })
 export class ExampleLoaderComponent {
+    @Input() file!: string;
+    @Input() examples: string[] = [];
+
+    @Output() readonly contentLoaded = new EventEmitter<any>();
+
     constructor(
         private readonly _appRef: ApplicationRef,
         private readonly _http: HttpClient,
@@ -19,11 +24,6 @@ export class ExampleLoaderComponent {
         private readonly _viewContainerRef: ViewContainerRef,
         private readonly _injector: Injector,
     ) {}
-
-    @Input()
-    file!: string;
-    @Input() examples: string[] = [];
-    @Output() readonly contentLoaded = new EventEmitter<any>();
 
     onContentLoaded() {
         this.contentLoaded.emit();
