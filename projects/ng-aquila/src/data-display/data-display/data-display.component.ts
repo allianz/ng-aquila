@@ -1,3 +1,4 @@
+import { coerceNumberProperty, NumberInput } from '@angular/cdk/coercion';
 import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 
 import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayOrientation, NxDataDisplaySize } from '../data-display.models';
@@ -16,6 +17,10 @@ import { DATA_DISPLAY_DEFAULT_OPTIONS, DataDisplayDefaultOptions, NxDataDisplayO
         '[class.is-small]': 'size === "small"',
         '[class.is-medium]': 'size === "medium"',
         '[class.is-large]': 'size === "large"',
+        '[class.nx-data-display__label-columns-3]': 'labelColumns === 3',
+        '[class.nx-data-display__label-columns-4]': 'labelColumns === 4',
+        '[class.nx-data-display__label-columns-8]': 'labelColumns === 8',
+        '[class.nx-data-display__label-columns-9]': 'labelColumns === 9',
     },
 })
 export class NxDataDisplayComponent {
@@ -23,6 +28,21 @@ export class NxDataDisplayComponent {
      * Label describing the data.
      */
     @Input() label?: string | null;
+
+    /**
+     * Column span of the label text based on a 12 column system, when in `orientation="horizontal-columns"` layout.
+     *
+     * Accepted values: 3, 4, 6, 8, 9
+     *
+     * Defaults to 6.
+     */
+    @Input() set labelColumns(value: NumberInput) {
+        this.#labelColumns = coerceNumberProperty(value);
+    }
+    get labelColumns(): number {
+        return this.#labelColumns ?? 6;
+    }
+    #labelColumns?: number;
 
     /**
      * Size of the data display.

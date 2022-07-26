@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     template: '<ng-content></ng-content>',
     styleUrls: ['./data-display-label.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: { class: 'nx-data-display__label' },
 })
 export class NxDataDisplayLabelComponent {}

@@ -32,6 +32,8 @@ Make sure to treat the `<nx-data-display-label>` element as inline to prevent a 
 
 Application developers can implement responsive layout based on individual needs using the `NxViewportService`.
 
+Use the `labelColumns` input for finer control of the label:value horizontal size ratio when in `orientation="horizontal-columns"` mode.
+
 <!-- example(data-display-responsive) -->
 
 </div>

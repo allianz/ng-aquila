@@ -16,19 +16,29 @@
             grid-column-end: span 6;
         }
 
-        ::ng-deep > nx-data-display-label {
+        ::ng-deep > .nx-data-display__label {
             grid-column-end: span 6;
         }
     }
 
     &.is-horizontal,
     &.is-horizontal-columns {
-        ::ng-deep > nx-data-display-label {
+        ::ng-deep > .nx-data-display__label {
             padding-right: 4px;
 
             &:after {
                 display: inline;
                 content: ':';
+            }
+        }
+
+        @each $col in 3, 4, 8, 9 {
+            &.nx-data-display__label-columns-#{$col} > ::ng-deep .nx-data-display__label {
+                grid-column-end: span $col;
+            }
+
+            &.nx-data-display__label-columns-#{$col} > .nx-data-display__value {
+                grid-column-end: span (12 - $col);
             }
         }
     }
