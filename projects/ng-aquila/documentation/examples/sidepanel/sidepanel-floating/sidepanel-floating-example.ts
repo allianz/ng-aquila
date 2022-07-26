@@ -19,7 +19,7 @@ export class SidepanelFloatingExampleComponent implements OnDestroy {
 
     constructor(
         readonly viewportService: NxViewportService,
-        private _cdr: ChangeDetectorRef,
+        private readonly _cdr: ChangeDetectorRef,
     ) {
         this.viewportService
             .min(NxBreakpoints.BREAKPOINT_SMALL)

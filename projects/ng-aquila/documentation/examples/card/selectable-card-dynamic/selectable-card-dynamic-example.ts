@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 
 /**
  * @title Selectable cards dynamic example
@@ -10,19 +10,17 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
     styleUrls: ['./selectable-card-dynamic-example.css'],
 })
 export class SelectableCardDynamicExampleComponent {
-    myFormGroup: FormGroup;
-
-    cardArray = new FormArray([
+    readonly cardArray = new FormArray([
         new FormControl(false),
         new FormControl(false),
         new FormControl(false),
     ]);
 
-    constructor(private fb: FormBuilder) {
-        this.myFormGroup = this.fb.group({
-            cards: this.cardArray,
-        });
-    }
+    readonly myFormGroup = this.fb.group({
+        cards: this.cardArray,
+    });
+
+    constructor(private readonly fb: FormBuilder) {}
 
     addNewCard() {
         this.cardArray.push(new FormControl(false));

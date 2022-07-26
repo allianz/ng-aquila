@@ -9,6 +9,8 @@
                 "createDefaultProgram": true
             },
             "rules": {
+                "@typescript-eslint/prefer-readonly": "off", // TODO check occurrences and kick
+
                 "@angular-eslint/no-conflicting-lifecycle": "warn", // TODO resolve 2 occurrences and kick
                 "@angular-eslint/no-output-on-prefix": "warn" // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3463
             }

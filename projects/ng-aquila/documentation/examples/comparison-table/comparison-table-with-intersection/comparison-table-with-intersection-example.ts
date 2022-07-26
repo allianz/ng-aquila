@@ -16,7 +16,7 @@ export class ComparisonTableWithIntersectionExampleComponent
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(private viewportService: NxViewportService) {}
+    constructor(private readonly viewportService: NxViewportService) {}
 
     ngOnInit(): void {
         this.viewportService

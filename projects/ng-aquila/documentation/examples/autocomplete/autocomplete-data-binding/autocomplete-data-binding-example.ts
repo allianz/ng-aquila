@@ -8,9 +8,9 @@ import { map } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class WikipediaService {
-    private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+    private readonly WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
 
-    constructor(private client: HttpClient) {}
+    constructor(private readonly client: HttpClient) {}
 
     search(term: string): Observable<any[]> {
         const url = searchUrl(term, this.WIKIPEDIA_URL);
@@ -68,8 +68,6 @@ export class AutocompleteDataBindingExampleComponent {
             'Clownfish,Cobra,Cockroach,Cod,Condor,Constrictor,Coral,Cougar,Cow,' +
             'Coyote,Coypu,Crab,Crane,Crane fly,Crawdad,Crayfish,Cricket,Crocodile,Crow'
         ).split(',');
-        return data.filter(
-            item => item.toLowerCase().indexOf(value.toLowerCase()) >= 0,
-        );
+        return data.filter(d => d.toLowerCase().includes(value.toLowerCase()));
     }
 }

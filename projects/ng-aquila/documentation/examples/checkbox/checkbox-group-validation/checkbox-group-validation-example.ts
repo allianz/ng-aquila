@@ -10,13 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-validation-example.css'],
 })
 export class CheckboxGroupValidationExampleComponent {
-    myFormGroup: FormGroup;
+    readonly myFormGroup = this.fb.group({
+        terms: [[], [Validators.required, this.validateCheckboxes]],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.myFormGroup = this.fb.group({
-            terms: [[], [Validators.required, this.validateCheckboxes]],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 
     private validateCheckboxes(formGroup: FormGroup) {
         if (formGroup.value.length <= 2) {

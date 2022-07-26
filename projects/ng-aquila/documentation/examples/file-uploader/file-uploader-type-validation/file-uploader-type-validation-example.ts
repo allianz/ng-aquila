@@ -28,7 +28,7 @@ export const myCustomConfig: NxMessageToastConfig = {
 export class FileUploaderTypeValidationExampleComponent
     implements OnInit, OnDestroy
 {
-    uploadConfig: NxFileUploadConfig = {
+    readonly uploadConfig: NxFileUploadConfig = {
         requestUrl: 'file-upload',
         options: {
             params: new HttpParams(),
@@ -36,17 +36,17 @@ export class FileUploaderTypeValidationExampleComponent
         },
     };
 
-    uploader = new NxFileUploader(this.uploadConfig, this.http);
+    readonly uploader = new NxFileUploader(this.uploadConfig, this.http);
 
-    testForm = new FormGroup({
+    readonly testForm = new FormGroup({
         documents: new FormControl([], Validators.required),
     });
 
     private readonly _destroyed = new Subject<void>();
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
     ngOnInit(): void {

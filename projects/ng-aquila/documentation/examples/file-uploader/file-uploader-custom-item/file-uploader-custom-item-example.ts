@@ -35,8 +35,8 @@ export class FileUploaderCustomItemExampleComponent {
     @ViewChild('ngModel') ngModel!: NgModel;
 
     constructor(
-        private messageToastService: NxMessageToastService,
-        private http: HttpClient,
+        private readonly messageToastService: NxMessageToastService,
+        private readonly http: HttpClient,
     ) {}
 
     onChange() {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards expert example
@@ -10,16 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./selectable-card-expert-example.css'],
 })
 export class SelectableCardExpertExampleComponent {
-    formGroup!: FormGroup;
+    readonly formGroup = this.fb.group({
+        card: [false, Validators.requiredTrue],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.formGroup = this.fb.group({
-            card: [false, Validators.requiredTrue],
-        });
+    constructor(private readonly fb: FormBuilder) {
         this.formGroup.markAllAsTouched();
     }
 }

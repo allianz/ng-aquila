@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Checkbox group inheritance example
@@ -10,26 +10,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-group-inheritance-example.css'],
 })
 export class CheckboxGroupInheritanceExampleComponent {
-    optionsForm!: FormGroup;
-    myFormGroup!: FormGroup;
+    readonly optionsForm = this.fb.group({
+        terms: [[]],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
+    readonly myFormGroup = this.fb.group({
+        isNegative: [false, null],
+        isRequired: [false, null],
+        isDisabled: [false, null],
+        isLarge: [false, null],
+        isLabelExpert: [false, null],
+    });
 
-    createForm() {
-        this.myFormGroup = this.fb.group({
-            terms: [[]],
-        });
-
-        this.optionsForm = this.fb.group({
-            isNegative: [false, null],
-            isRequired: [false, null],
-            isDisabled: [false, null],
-            isLarge: [false, null],
-            isLabelExpert: [false, null],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 
     toggleDisabled() {
         const checkboxGroup = this.myFormGroup.get('terms');

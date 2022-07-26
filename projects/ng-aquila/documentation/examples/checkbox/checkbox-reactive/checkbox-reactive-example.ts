@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./checkbox-reactive-example.css'],
 })
 export class CheckboxReactiveExampleComponent {
-    testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        checkboxTestReactive: [false, Validators.requiredTrue],
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.fb.group({
-            checkboxTestReactive: [false, Validators.requiredTrue],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

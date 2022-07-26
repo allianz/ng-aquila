@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Radio button group validation Example
@@ -10,15 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./radio-button-group-validation-example.css'],
 })
 export class RadioButtonGroupValidationExampleComponent {
-    testForm!: FormGroup;
+    readonly testForm = this.fb.group({
+        radioTestReactive: [null, Validators.required],
+    });
 
-    constructor(private formBuilder: FormBuilder) {
-        this.createForm();
-    }
-
-    createForm() {
-        this.testForm = this.formBuilder.group({
-            radioTestReactive: [null, Validators.required],
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

@@ -11,7 +11,6 @@ import {
 import {
     ControlValueAccessor,
     FormBuilder,
-    FormGroup,
     NgControl,
     Validators,
 } from '@angular/forms';
@@ -53,11 +52,38 @@ export class FormfieldCustomTelInputExampleComponent
     implements ControlValueAccessor, NxFormfieldControl<MyTel>, OnDestroy
 {
     static nextId = 0;
+
+    readonly parts = this.fb.group({
+        area: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(3),
+            ],
+        ],
+        exchange: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(3),
+                Validators.maxLength(3),
+            ],
+        ],
+        subscriber: [
+            null,
+            [
+                Validators.required,
+                Validators.minLength(4),
+                Validators.maxLength(4),
+            ],
+        ],
+    });
+
     private _placeholder = '';
     private _required = false;
     private _disabled = false;
     readonly!: boolean;
-    parts: FormGroup;
     stateChanges = new Subject<void>();
     focused = false;
     errorState = false;
@@ -126,38 +152,11 @@ export class FormfieldCustomTelInputExampleComponent
     onTouched = () => {};
 
     constructor(
-        formBuilder: FormBuilder,
-        private _focusMonitor: FocusMonitor,
-        private _elementRef: ElementRef<HTMLElement>,
+        private readonly fb: FormBuilder,
+        private readonly _focusMonitor: FocusMonitor,
+        private readonly _elementRef: ElementRef<HTMLElement>,
         @Optional() @Self() readonly ngControl: NgControl | null,
     ) {
-        this.parts = formBuilder.group({
-            area: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(3),
-                ],
-            ],
-            exchange: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(3),
-                ],
-            ],
-            subscriber: [
-                null,
-                [
-                    Validators.required,
-                    Validators.minLength(4),
-                    Validators.maxLength(4),
-                ],
-            ],
-        });
-
         _focusMonitor
             .monitor(_elementRef, true)
             .pipe(takeUntil(this._destroyed))
@@ -177,6 +176,7 @@ export class FormfieldCustomTelInputExampleComponent
     setAriaLabel?(value: string): void {
         throw new Error('Method not implemented.');
     }
+
     get elementRef(): ElementRef<any> {
         throw new Error('Method not implemented.');
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 /**
  * @title Progress Indicator reactive form with separate form per step
@@ -10,10 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./progress-stepper-reactivemulti-example.css'],
 })
 export class ProgressStepperReactivemultiExampleComponent {
-    stepOneForm: FormGroup;
-    stepTwoForm: FormGroup;
-    constructor(private _formBuilder: FormBuilder) {
-        this.stepOneForm = this._formBuilder.group({ name: '' });
-        this.stepTwoForm = this._formBuilder.group({ age: '' });
-    }
+    readonly stepOneForm = this.fb.group({ name: '' });
+    readonly stepTwoForm = this.fb.group({ age: '' });
+
+    constructor(private readonly fb: FormBuilder) {}
 }

@@ -17,7 +17,7 @@ export class ModalWithDirectionExampleComponent {
 
     constructor(
         readonly dialogService: NxDialogService,
-        private dir: Directionality,
+        private readonly dir: Directionality,
     ) {}
 
     openFromTemplate(): void {

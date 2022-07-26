@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 /**
  * @title Reactive example
@@ -10,11 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
     styleUrls: ['./number-stepper-reactive-example.css'],
 })
 export class NumberStepperReactiveExampleComponent {
-    testForm: FormGroup;
+    readonly testForm = this.fb.group({
+        stepperTestReactive: 3,
+    });
 
-    constructor(private fb: FormBuilder) {
-        this.testForm = this.fb.group({
-            stepperTestReactive: 3,
-        });
-    }
+    constructor(private readonly fb: FormBuilder) {}
 }

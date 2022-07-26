@@ -21,11 +21,13 @@ export class PopoverTriggerExampleComponent
 {
     popoverManualOpenFlag = false;
 
-    @ViewChild('clickTriggerIcon') _clickTriggerIcon!: ElementRef<HTMLElement>;
+    @ViewChild('clickTriggerIcon')
+    _clickTriggerIcon!: ElementRef<HTMLElement>;
+
     @ViewChild('manualTriggerIcon')
     _manualTriggerIcon!: ElementRef<HTMLElement>;
 
-    constructor(private _focusMonitor: FocusMonitor) {}
+    constructor(private readonly _focusMonitor: FocusMonitor) {}
 
     ngAfterViewInit(): void {
         this._focusMonitor.monitor(this._clickTriggerIcon);

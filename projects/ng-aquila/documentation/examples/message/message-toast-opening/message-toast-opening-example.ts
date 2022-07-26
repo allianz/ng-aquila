@@ -10,10 +10,11 @@ import { NxMessageToastService } from '@aposin/ng-aquila/message';
     styleUrls: ['./message-toast-opening-example.css'],
 })
 export class MessageToastOpeningExampleComponent {
-    toastText = 'A success message toast with a custom text.';
+    readonly toastText = 'A success message toast with a custom text.';
+
     @ViewChild('template') templateRef!: TemplateRef<any>;
 
-    constructor(private messageToastService: NxMessageToastService) {}
+    constructor(private readonly messageToastService: NxMessageToastService) {}
 
     openFromText() {
         this.messageToastService.open(this.toastText, {

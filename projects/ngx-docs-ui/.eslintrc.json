@@ -11,6 +11,10 @@
             "rules": {}
         },
         {
+            "files": ["*.spec.ts"],
+            "rules": {}
+        },
+        {
             "files": ["*.html"],
             "rules": {}
         }

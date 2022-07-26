@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-    AbstractControl,
-    FormBuilder,
-    FormGroup,
-    Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * @title Selectable cards states example
@@ -15,20 +10,16 @@ import {
     styleUrls: ['./selectable-card-states-example.css'],
 })
 export class SelectableCardStatesExampleComponent {
-    formGroup!: FormGroup;
-    constructor(private fb: FormBuilder) {
-        this.createForm();
-    }
+    readonly formGroup = this.fb.group({
+        errorCard: [false, Validators.requiredTrue],
+        errorCard2: [true, validateSecondCard],
+    });
 
-    createForm() {
-        this.formGroup = this.fb.group({
-            errorCard: [false, Validators.requiredTrue],
-            errorCard2: [true, validateSecondCard],
-        });
+    constructor(private readonly fb: FormBuilder) {
         this.formGroup.markAllAsTouched();
     }
 }
 
 function validateSecondCard(control: AbstractControl) {
-    return !!control.value ? { invalid: true } : null;
+    return control.value ? { invalid: true } : null;
 }

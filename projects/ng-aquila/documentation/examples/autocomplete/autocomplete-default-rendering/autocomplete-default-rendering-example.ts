@@ -7,9 +7,9 @@ import { map } from 'rxjs/operators';
     providedIn: 'root',
 })
 export class WikipediaService {
-    private WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
+    private readonly WIKIPEDIA_URL = 'https://en.wikipedia.org/w/api.php';
 
-    constructor(private client: HttpClient) {}
+    constructor(private readonly client: HttpClient) {}
 
     search(term: string): Observable<any[]> {
         const url = searchUrl(term, this.WIKIPEDIA_URL);

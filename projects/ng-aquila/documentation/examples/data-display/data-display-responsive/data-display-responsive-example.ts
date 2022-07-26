@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import {
-    DataDisplayDefaultOptions,
     DATA_DISPLAY_DEFAULT_OPTIONS,
+    DataDisplayDefaultOptions,
     NxDataDisplayOrientation,
 } from '@aposin/ng-aquila/data-display';
 import { NxBreakpoints, NxViewportService } from '@aposin/ng-aquila/utils';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 const options: DataDisplayDefaultOptions = {
     size: 'medium', // expert mode default size

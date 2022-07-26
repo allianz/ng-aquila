@@ -15,7 +15,7 @@ import {
 export class ComparisonTableExampleComponent implements OnInit {
     loading = true;
 
-    constructor(private _cdr: ChangeDetectorRef) {}
+    constructor(private readonly _cdr: ChangeDetectorRef) {}
 
     ngOnInit(): void {
         this.reload();
