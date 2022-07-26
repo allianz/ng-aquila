@@ -187,9 +187,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** @docs-private */
     currentFilter = '';
 
-    // @ts-expect-error TODO: refactor to be TS compatible
-    private readonly _options: BehaviorSubject<NxDropdownOption[]> = new BehaviorSubject(null);
-
     /**
      * Array of options for the dropdown.
      */
@@ -200,6 +197,8 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     get options(): NxDropdownOption[] {
         return this._options.value;
     }
+    // @ts-expect-error TODO: refactor to be TS compatible
+    private readonly _options = new BehaviorSubject<NxDropdownOption[]>(null);
 
     private _filterInputType: FilterInputType = 'text';
     /**
@@ -309,10 +308,10 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     @Input('nxOverlayLabel') overlayLabel = '';
 
     /** Event emitted when the select panel has been toggled. */
-    @Output() readonly openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly openedChange = new EventEmitter<boolean>();
 
     /** Event emitted when the dropdown items get filtered. Returns the currently visible dropdown items. */
-    @Output('filterResult') readonly filterResultChange: EventEmitter<NxDropdownItemComponent[]> = new EventEmitter<NxDropdownItemComponent[]>();
+    @Output('filterResult') readonly filterResultChange = new EventEmitter<NxDropdownItemComponent[]>();
 
     /** Event emitted when the select has been opened. */
     @Output('opened') readonly _openedStream: Observable<void> = this.openedChange.pipe(
@@ -327,16 +326,17 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     );
 
     /** Event emitted when the user types in the filter input. */
-    @Output('filterInput') readonly filterChanges: Subject<any> = new Subject<any>();
+    @Output('filterInput') readonly filterChanges = new EventEmitter<any>();
+
     /**
      * Event that emits whenever the raw value of the select changes. This is here primarily
      * to facilitate the two-way binding for the `value` input.
      * @docs-private
      */
-    @Output('nxValueChange') readonly valueChange: EventEmitter<any> = new EventEmitter<any>();
+    @Output('nxValueChange') readonly valueChange = new EventEmitter<any>();
 
     /** Event emitted when the selected value has been changed. */
-    @Output() readonly selectionChange: EventEmitter<NxDropdownSelectChange> = new EventEmitter<NxDropdownSelectChange>();
+    @Output() readonly selectionChange = new EventEmitter<NxDropdownSelectChange>();
 
     /**
      * @docs-private
@@ -364,11 +364,9 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** @docs-private */
     @ContentChildren(NxDropdownGroupComponent) groups: any;
 
-    @ContentChild(NxDropdownClosedLabelDirective)
-    _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
+    @ContentChild(NxDropdownClosedLabelDirective) _customClosedDropdownLabel!: NxDropdownClosedLabelDirective;
 
-    @ViewChild('defaultClosedDropdownLabel', { static: true })
-    private _defaultClosedDropdownLabel!: TemplateRef<any>;
+    @ViewChild('defaultClosedDropdownLabel', { static: true }) private _defaultClosedDropdownLabel!: TemplateRef<any>;
 
     @ViewChildren(NxDropdownItemComponent) _lazyDropdownItems!: QueryList<NxDropdownItemComponent>;
 

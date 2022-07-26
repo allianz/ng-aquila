@@ -21,9 +21,10 @@ const DEFAULT_THROTTLE_TIME = 200;
 /** Service subscribing to window resize events and providing breakpoint matching functions. */
 @Injectable({ providedIn: 'root' })
 export class NxViewportService implements OnDestroy {
-    private readonly _destroyed: Subject<void> = new Subject();
     initialViewportWidth = 0;
     viewportChange$: Observable<number>;
+
+    private readonly _destroyed = new Subject<void>();
 
     constructor() {
         this.viewportChange$ = fromEvent(window, 'resize').pipe(

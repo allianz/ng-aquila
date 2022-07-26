@@ -55,7 +55,7 @@ export class NxComparisonTableDesktopGroup implements AfterViewInit, OnDestroy {
         return false;
     }
 
-    @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly isExpandedChange = new EventEmitter<boolean>();
 
     private readonly _destroyed = new Subject<void>();
 

@@ -44,7 +44,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     /** @docs-private */
     errorState = false;
     // emits to signal children to run change detection
-    _disableChange = new Subject<void>();
+    readonly _disableChange = new Subject<void>();
 
     /** @docs-private */
     additionalClasses = '';
@@ -78,8 +78,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     }
 
     /** @docs-private */
-    @ContentChildren(NxRadioToggleButtonBaseComponent)
-    toggleButtons: QueryList<NxRadioToggleButtonBaseComponent> = new QueryList();
+    @ContentChildren(NxRadioToggleButtonBaseComponent) toggleButtons: QueryList<NxRadioToggleButtonBaseComponent> = new QueryList();
 
     private readonly _destroyed = new Subject<void>();
 

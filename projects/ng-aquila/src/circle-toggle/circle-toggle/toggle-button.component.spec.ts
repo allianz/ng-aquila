@@ -313,8 +313,8 @@ describe('NxToggleButton', () => {
 
 @Directive()
 abstract class AbstractButtonToggleComponent {
-    @ViewChild(NxCircleToggleComponent)
-    buttonToggle!: NxCircleToggleComponent;
+    @ViewChild(NxCircleToggleComponent) buttonToggle!: NxCircleToggleComponent;
+
     toggleModel!: boolean;
 }
 

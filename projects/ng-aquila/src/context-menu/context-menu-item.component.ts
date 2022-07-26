@@ -43,7 +43,7 @@ import { Subject } from 'rxjs';
 })
 export class NxContextMenuItemComponent implements OnDestroy {
     /** Stream that emits when the context menu item is hovered. */
-    readonly _hovered: Subject<NxContextMenuItemComponent> = new Subject<NxContextMenuItemComponent>();
+    readonly _hovered = new Subject<NxContextMenuItemComponent>();
 
     /** Whether the context menu item is disabled. */
     @Input()
@@ -164,6 +164,5 @@ export class NxContextMenuItemComponent implements OnDestroy {
     template: `<ng-content></ng-content> `,
 })
 export class NxContextMenuItemWrapComponent {
-    @ContentChildren(NxContextMenuItemComponent)
-    _items!: QueryList<NxContextMenuItemComponent>;
+    @ContentChildren(NxContextMenuItemComponent) _items!: QueryList<NxContextMenuItemComponent>;
 }

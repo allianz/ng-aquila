@@ -99,22 +99,22 @@ export class NxCalendarComponent<D> implements AfterContentInit, AfterViewInit, 
     @Input() dateFilter!: (date: D) => boolean;
 
     /** Emits when the currently selected date changes. */
-    @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly selectedChange = new EventEmitter<D>();
 
     /**
      * Emits the year chosen in multiyear view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly yearSelected = new EventEmitter<D>();
 
     /**
      * Emits the month chosen in year view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly monthSelected = new EventEmitter<D>();
 
     /** Emits when any date is selected. */
-    @Output() readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly _userSelection = new EventEmitter<void>();
 
     /** Reference to the current month view component. */
     @ViewChild(NxMonthViewComponent) monthView!: NxMonthViewComponent<D>;

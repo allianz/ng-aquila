@@ -16,26 +16,16 @@ import { NxExpertModule } from './nx-expert.module';
 
 @Directive()
 abstract class PresetTest {
-    @ViewChild(NxDatepickerToggleComponent)
-    datepickerToggleInstance!: NxDatepickerToggleComponent<Date>;
-    @ViewChild(NxErrorComponent)
-    errorInstance!: NxErrorComponent;
-    @ViewChild(NxFormfieldComponent)
-    formfieldInstance!: NxFormfieldComponent;
-    @ViewChild(NxLabelComponent)
-    labelInstance!: NxLabelComponent;
-    @ViewChild(NxTabGroupComponent)
-    tabGroupInstance!: NxTabGroupComponent;
-    @ViewChild(NxTabNavBarComponent)
-    tabNavBarInstance!: NxTabNavBarComponent;
-    @ViewChild(NxSelectableCardComponent)
-    selectableCardInstance!: NxSelectableCardComponent;
-    @ViewChild(NxSmallStageComponent)
-    smallStageInstance!: NxSmallStageComponent;
-    @ViewChild(NxCircleToggleGroupComponent)
-    circleToggleGroupInstance!: NxCircleToggleGroupComponent;
-    @ViewChild(NxDataDisplayComponent)
-    dataDisplayInstance!: NxDataDisplayComponent;
+    @ViewChild(NxDatepickerToggleComponent) datepickerToggleInstance!: NxDatepickerToggleComponent<Date>;
+    @ViewChild(NxErrorComponent) errorInstance!: NxErrorComponent;
+    @ViewChild(NxFormfieldComponent) formfieldInstance!: NxFormfieldComponent;
+    @ViewChild(NxLabelComponent) labelInstance!: NxLabelComponent;
+    @ViewChild(NxTabGroupComponent) tabGroupInstance!: NxTabGroupComponent;
+    @ViewChild(NxTabNavBarComponent) tabNavBarInstance!: NxTabNavBarComponent;
+    @ViewChild(NxSelectableCardComponent) selectableCardInstance!: NxSelectableCardComponent;
+    @ViewChild(NxSmallStageComponent) smallStageInstance!: NxSmallStageComponent;
+    @ViewChild(NxCircleToggleGroupComponent) circleToggleGroupInstance!: NxCircleToggleGroupComponent;
+    @ViewChild(NxDataDisplayComponent) dataDisplayInstance!: NxDataDisplayComponent;
 }
 
 describe('NxExpertPreset', () => {

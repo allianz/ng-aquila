@@ -99,7 +99,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
     @ViewChild('nativeInput') nativeInput!: ElementRef;
 
     /** An event emitted on value change. */
-    @Output('nxValueChange') valueChange = new EventEmitter<number>();
+    @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 
     /** Whether the input should be resized. Default: false */
     @Input('nxResize')

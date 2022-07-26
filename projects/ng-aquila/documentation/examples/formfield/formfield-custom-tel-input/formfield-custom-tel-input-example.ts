@@ -84,7 +84,7 @@ export class FormfieldCustomTelInputExampleComponent
     private _required = false;
     private _disabled = false;
     readonly!: boolean;
-    stateChanges = new Subject<void>();
+    readonly stateChanges = new Subject<void>();
     focused = false;
     errorState = false;
     controlType = 'example-tel-input';

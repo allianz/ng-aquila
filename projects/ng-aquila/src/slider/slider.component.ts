@@ -187,7 +187,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     }
 
     /** An event is dispatched on each value change. */
-    @Output('nxValueChange') valueChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 
     /** Sets the customization function for the value which is displayed above the slider handle (Default:(value) => value). ). */
     @Input('nxValueFormatter') valueFormatter = (value: any) => value;

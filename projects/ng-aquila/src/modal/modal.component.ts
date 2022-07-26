@@ -112,7 +112,7 @@ export class NxModalComponent implements OnInit, AfterViewInit, OnDestroy {
      * This event can be applied in conjunction with the custom open state handling
      * of a modal to close it when requested by the user.
      */
-    @Output('nxClose') closeEvent = new EventEmitter<void>();
+    @Output('nxClose') readonly closeEvent = new EventEmitter<void>();
 
     private readonly _destroyed = new Subject<void>();
 

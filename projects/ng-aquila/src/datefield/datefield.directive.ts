@@ -215,19 +215,19 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     private _readonly!: boolean;
 
     /** Emits when a `change` event is fired on this `<input>`. */
-    @Output() readonly dateChange: EventEmitter<NxDatepickerInputEvent<D>> = new EventEmitter<NxDatepickerInputEvent<D>>();
+    @Output() readonly dateChange = new EventEmitter<NxDatepickerInputEvent<D>>();
 
     /** Emits when an `input` event is fired on this `<input>`. */
-    @Output() readonly dateInput: EventEmitter<NxDatepickerInputEvent<D>> = new EventEmitter<NxDatepickerInputEvent<D>>();
+    @Output() readonly dateInput = new EventEmitter<NxDatepickerInputEvent<D>>();
 
     /** Emits when the value changes (either due to user input or programmatic change). */
-    _valueChange = new EventEmitter<D | null>();
+    readonly _valueChange = new EventEmitter<D | null>();
 
     /** Emits when the disabled state has changed. */
-    _disabledChange = new EventEmitter<boolean>();
+    readonly _disabledChange = new EventEmitter<boolean>();
 
     /** Emits when the readonly state has changed. */
-    _readonlyChange = new EventEmitter<boolean>();
+    readonly _readonlyChange = new EventEmitter<boolean>();
 
     readonly _dateAdapter: NxDateAdapter<D>;
     private readonly _dateFormats: NxDateFormats;

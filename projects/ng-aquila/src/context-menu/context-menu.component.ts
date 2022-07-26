@@ -35,13 +35,11 @@ import { NxContextMenuItemComponent, NxContextMenuItemWrapComponent } from './co
 export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     private _keyManager!: FocusKeyManager<NxContextMenuItemComponent>;
 
-    @ContentChildren(NxContextMenuItemComponent)
-    private _items!: QueryList<NxContextMenuItemComponent>;
+    @ContentChildren(NxContextMenuItemComponent) private _items!: QueryList<NxContextMenuItemComponent>;
 
-    @ContentChild(NxContextMenuItemWrapComponent)
-    private _wrap!: NxContextMenuItemWrapComponent;
+    @ContentChild(NxContextMenuItemWrapComponent) private _wrap!: NxContextMenuItemWrapComponent;
 
-    private readonly _init: ReplaySubject<void> = new ReplaySubject(1);
+    private readonly _init = new ReplaySubject<void>(1);
 
     /** Config object to be passed into the menu's ngClass */
     _classList: { [key: string]: boolean } = {};
@@ -50,7 +48,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     _panelAnimationState: 'void' | 'enter' = 'void';
 
     /** Emits whenever an animation on the menu completes. */
-    _animationDone = new Subject<AnimationEvent>();
+    readonly _animationDone = new Subject<AnimationEvent>();
 
     /** Whether the menu is animating. */
     _isAnimating = false;
@@ -65,18 +63,16 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     direction: Direction = 'ltr';
 
     /** @docs-private */
-    @ViewChild(TemplateRef)
-    templateRef!: TemplateRef<any>;
+    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 
     /**
      * Menu content that will be rendered lazily.
      * @docs-private
      */
-    @ContentChild(NxContextMenuContentDirective)
-    lazyContent!: NxContextMenuContentDirective;
+    @ContentChild(NxContextMenuContentDirective) lazyContent!: NxContextMenuContentDirective;
 
     /** Event emitted when the menu is closed. */
-    @Output() readonly closed: EventEmitter<void | 'click' | 'keydown' | 'tab'> = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
+    @Output() readonly closed = new EventEmitter<void | 'click' | 'keydown' | 'tab'>();
 
     private readonly _destroyed = new Subject<void>();
 

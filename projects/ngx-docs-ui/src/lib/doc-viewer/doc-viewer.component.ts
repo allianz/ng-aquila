@@ -8,7 +8,8 @@ import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/cor
 })
 export class DocViewerComponent {
     private _loadedContent: any;
-    @Output() contentLoaded = new EventEmitter<any>();
+
+    @Output() readonly contentLoaded = new EventEmitter<any>();
 
     constructor(private readonly _http: HttpClient, private readonly _elementRef: ElementRef) {}
 

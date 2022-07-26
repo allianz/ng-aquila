@@ -72,10 +72,10 @@ export class NxModalContainer extends BasePortalOutlet implements AfterViewInit,
     _state: 'void' | 'enter' | 'exit' = 'enter';
 
     /** Emits when an animation state changes. */
-    _animationStateChanged = new EventEmitter<AnimationEvent>();
+    readonly _animationStateChanged = new EventEmitter<AnimationEvent>();
 
     /** Emits when the close button (X) is clicked. */
-    _closeButtonClicked = new EventEmitter<any>();
+    readonly _closeButtonClicked = new EventEmitter<any>();
 
     /** ID of the element that should be considered as the modal's label. */
     _ariaLabelledBy: string | null;

@@ -132,11 +132,11 @@ class NxTreeFlattener<T extends NxTreeNode, F extends NxFlatTreeNode> {
 export class NxTreeFlatDataSource<T extends NxTreeNode, F extends NxFlatTreeNode> extends DataSource<F> {
     _treeFlattener: NxTreeFlattener<T, F>;
 
-    _flattenedData = new BehaviorSubject<F[]>([]);
+    readonly _flattenedData = new BehaviorSubject<F[]>([]);
 
-    _expandedData = new BehaviorSubject<F[]>([]);
+    readonly _expandedData = new BehaviorSubject<F[]>([]);
 
-    _data = new BehaviorSubject<T[]>([]);
+    readonly _data = new BehaviorSubject<T[]>([]);
 
     get data() {
         return this._data.value;

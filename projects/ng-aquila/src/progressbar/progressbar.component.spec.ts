@@ -8,8 +8,7 @@ import { NxProgressbarModule } from './progressbar.module';
 @Directive()
 abstract class ProgressBarTest {
     @ViewChild(NxProgressbarComponent) componentInstance!: NxProgressbarComponent;
-    @ViewChild(NxProgressbarComponent, { read: ElementRef })
-    componentInstanceRef!: ElementRef;
+    @ViewChild(NxProgressbarComponent, { read: ElementRef }) componentInstanceRef!: ElementRef;
 }
 
 describe('NxProgressbarComponent', () => {

@@ -11,7 +11,7 @@ export class NxPhoneInputIntl {
      * Stream that emits whenever the labels here are changed. Use this to notify
      * components if the properties have changed after initialization.
      */
-    readonly changes: Subject<void> = new Subject<void>();
+    readonly changes = new Subject<void>();
 
     /** The label that is shown at the top of the opened overlay. */
     areaCodeLabel = 'Country code';

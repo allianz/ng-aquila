@@ -71,7 +71,7 @@ export class NxInputDirective implements OnInit, DoCheck, OnChanges, OnDestroy, 
     autofilled = false;
 
     /** @docs-private */
-    stateChanges = new Subject<void>();
+    readonly stateChanges = new Subject<void>();
 
     /** @docs-private */
     focused = false;

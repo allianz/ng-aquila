@@ -443,8 +443,7 @@ describe('NxRadioToggleComponent', () => {
 abstract class RadioToggleTest {
     value: any;
 
-    @ViewChildren(NxRadioToggleComponent)
-    radioToggles!: QueryList<NxRadioToggleComponent>;
+    @ViewChildren(NxRadioToggleComponent) radioToggles!: QueryList<NxRadioToggleComponent>;
 }
 
 @Component({

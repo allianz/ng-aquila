@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 /** Base class for all adapter implementations */
 export abstract class NxDateAdapter<D> {
     protected locale = 'de-DE';
-    protected _localeChanges = new Subject<string>();
+    protected readonly _localeChanges = new Subject<string>();
 
     /**
      * Gets the RFC 3339 compatible string (https://tools.ietf.org/html/rfc3339) for the given date.

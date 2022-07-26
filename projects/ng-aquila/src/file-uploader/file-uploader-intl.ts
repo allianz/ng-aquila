@@ -8,7 +8,7 @@ export class NxFileUploaderIntl {
      * Stream that emits whenever the labels here are changed. Use this to notify
      * components if the labels have changed after initialization.
      */
-    readonly changes: Subject<void> = new Subject<void>();
+    readonly changes = new Subject<void>();
 
     /** A label for the uploading state used in the queue. */
     uploadingLabel = 'uploading';

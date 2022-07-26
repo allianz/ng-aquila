@@ -182,8 +182,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         );
     }
 
-    @ViewChildren(NxMultiSelectOptionComponent)
-    private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
+    @ViewChildren(NxMultiSelectOptionComponent) private _options!: QueryList<NxMultiSelectOptionComponent<T>>;
 
     private _required = false;
 
@@ -200,20 +199,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     /** @docs-private */
     _divider = 0;
 
-    @ViewChild('trigger')
-    private _trigger?: ElementRef;
+    @ViewChild('trigger') private _trigger?: ElementRef;
+    @ViewChild('filterInput') private _filterInput?: ElementRef;
+    @ViewChild('itemsList') private _optionsList?: ElementRef;
+    @ViewChild('panelHeader') private _panelHeader?: ElementRef;
 
-    @ViewChild('filterInput')
-    private _filterInput?: ElementRef;
-
-    @ViewChild('itemsList')
-    private _optionsList?: ElementRef;
-
-    @ViewChild('panelHeader')
-    private _panelHeader?: ElementRef;
-
-    @ViewChild(CdkConnectedOverlay, { static: true })
-    private _overlayDir?: CdkConnectedOverlay;
+    @ViewChild(CdkConnectedOverlay, { static: true }) private _overlayDir?: CdkConnectedOverlay;
 
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';
@@ -280,8 +271,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     @Input()
     selectDisabled?: string | ((option: S) => boolean);
 
-    @HostBinding('class.is-open')
-    _isOpen = false;
+    @HostBinding('class.is-open') _isOpen = false;
 
     private readonly _destroyed = new Subject<void>();
 

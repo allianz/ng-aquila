@@ -16,7 +16,7 @@ import { NxExpandable } from './toggle-button.component';
 export class NxExpandableTableDirective implements OnDestroy, AfterViewInit, NxExpandable {
     @ContentChildren(NxExpandableTableRowComponent, { descendants: true }) rows!: QueryList<NxExpandableTableRowComponent>;
 
-    expanded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    readonly expanded = new BehaviorSubject<boolean>(false);
 
     private readonly _destroyed = new Subject<void>();
 

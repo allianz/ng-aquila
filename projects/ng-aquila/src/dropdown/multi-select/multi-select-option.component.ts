@@ -57,8 +57,7 @@ export class NxMultiSelectOptionComponent<T> implements Highlightable {
     /**
      * Emits an event when this option is selected or unselected by the user.
      */
-    @Output()
-    selectedChange: EventEmitter<boolean> = new EventEmitter();
+    @Output() readonly selectedChange = new EventEmitter<boolean>();
 
     /**
      * Sets this option active highlighting it to the user.

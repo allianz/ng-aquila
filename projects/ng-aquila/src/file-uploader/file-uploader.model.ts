@@ -29,7 +29,7 @@ export class FileItem {
     /**
      * emits the FileItem on changed
      */
-    onChange: EventEmitter<FileItem> = new EventEmitter<FileItem>();
+    readonly onChange = new EventEmitter<FileItem>();
 
     constructor(file: File, index = 0) {
         this.file = file;

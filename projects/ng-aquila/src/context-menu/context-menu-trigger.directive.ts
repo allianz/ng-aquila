@@ -146,10 +146,10 @@ export class NxContextMenuTriggerDirective implements AfterContentInit, OnDestro
     mode: NxContextMenuMode = 'button';
 
     /** Event emitted when the associated context menu is opened. */
-    @Output() readonly contextMenuOpened: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly contextMenuOpened = new EventEmitter<void>();
 
     /** Event emitted when the associated context menu is closed. */
-    @Output() readonly contextMenuClosed: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly contextMenuClosed = new EventEmitter<void>();
 
     private readonly _destroyed = new Subject<void>();
 

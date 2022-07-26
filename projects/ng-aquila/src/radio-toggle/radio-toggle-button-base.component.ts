@@ -14,12 +14,10 @@ export class NxRadioToggleButtonBaseComponent {
     value: any;
 
     /** @docs-private */
-    @ViewChild('toggleButtonLabelContainer', { static: true })
-    labelContainer!: ElementRef;
+    @ViewChild('toggleButtonLabelContainer', { static: true }) labelContainer!: ElementRef;
 
     /** @docs-private */
-    @ViewChild('toggleInput', { static: true })
-    toggleInput!: ElementRef;
+    @ViewChild('toggleInput', { static: true }) toggleInput!: ElementRef;
 
     constructor(/** @docs-private */ protected readonly renderer: Renderer2) {}
 

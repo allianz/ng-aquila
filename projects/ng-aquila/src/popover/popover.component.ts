@@ -26,18 +26,16 @@ import { NxPopoverIntl } from './popover-intl';
 })
 export class NxPopoverComponent implements OnDestroy, OnInit {
     /** @docs-private */
-    @ViewChild(TemplateRef)
-    templateRef!: TemplateRef<any>;
+    @ViewChild(TemplateRef) templateRef!: TemplateRef<any>;
 
     /** Content that will be rendered lazily. */
     @ContentChild(NxPopoverContentDirective) _lazyContent!: NxPopoverContentDirective;
 
     /** Event emitted when the popover is closed. */
-    @Output('nxClosed')
-    closed = new EventEmitter<void>();
+    @Output('nxClosed') readonly closed = new EventEmitter<void>();
 
     /** @docs-private */
-    closeButtonClick = new Subject<void>();
+    readonly closeButtonClick = new Subject<void>();
 
     /** @docs-private */
     id!: string;

@@ -97,7 +97,7 @@ export class NxComparisonTableRowGroupDirective extends NxComparisonTableRowGrou
     }
 
     /** An event emitted every time the expanded state of the group changes */
-    @Output() isExpandedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly isExpandedChange = new EventEmitter<boolean>();
 
     constructor(
         @Optional() private readonly _toggleSection: NxToggleSectionBase | null,

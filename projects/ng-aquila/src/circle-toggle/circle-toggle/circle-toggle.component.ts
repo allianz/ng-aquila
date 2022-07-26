@@ -97,15 +97,13 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     /**
      * An event that is emitted when the checked state fo the circle toggle changes.
      */
-    @Output()
-    checkedChange = new EventEmitter<boolean>();
+    @Output() readonly checkedChange = new EventEmitter<boolean>();
 
     /**
      * An event that is emitted when the checked state of the circle toggle changes.
      * The event object contains the circle toggle itself and its value (see ToggleChangeEvent).
      */
-    @Output()
-    selectionChange = new EventEmitter<ToggleChangeEvent>();
+    @Output() readonly selectionChange = new EventEmitter<ToggleChangeEvent>();
 
     _checked = false;
     /** Whether the circle toggle is checked. */
@@ -255,8 +253,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
     }
 
     /** @docs-private */
-    @ViewChild(NxMobileToggleButtonComponent, { static: true })
-    toggleButton!: NxMobileToggleButtonComponent;
+    @ViewChild(NxMobileToggleButtonComponent, { static: true }) toggleButton!: NxMobileToggleButtonComponent;
 
     private _hover = false;
 

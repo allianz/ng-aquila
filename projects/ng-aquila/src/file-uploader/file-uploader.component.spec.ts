@@ -11,8 +11,8 @@ import { NxFileUploaderModule } from './file-uploader.module';
 
 @Directive()
 abstract class FileUploaderTest {
-    @ViewChild(NxFileUploaderComponent, { static: false })
-    fileUploaderInstance!: NxFileUploaderComponent;
+    @ViewChild(NxFileUploaderComponent, { static: false }) fileUploaderInstance!: NxFileUploaderComponent;
+
     form!: FormGroup;
     queueList!: null | FileItem[];
     required = false;

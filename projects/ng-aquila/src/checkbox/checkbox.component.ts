@@ -70,12 +70,13 @@ export type NxCheckboxLabelSize = 'small' | 'large';
 export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
     @ContentChildren(forwardRef(() => NxCheckboxComponent), { descendants: true }) _checkboxes!: QueryList<NxCheckboxComponent>;
 
-    @ContentChild(forwardRef(() => NxLabelComponent))
-    _label!: NxLabelComponent;
+    @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
 
     readonly _stateChanges = new Subject<void>();
+
     errorState = false;
-    @Output() selectionChange: EventEmitter<NxCheckboxGroupChangeEvent> = new EventEmitter<NxCheckboxGroupChangeEvent>();
+
+    @Output() readonly selectionChange = new EventEmitter<NxCheckboxGroupChangeEvent>();
 
     private _id = `nx-checkbox-group-${nextId++}`;
     /** Sets the Id of the checkbox group. */
@@ -428,22 +429,19 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     private _value = '';
 
     /** An event emitted when the indeterminate value has changed */
-    @Output()
-    indeterminateChange: EventEmitter<boolean> = new EventEmitter<boolean>(false);
+    @Output() readonly indeterminateChange = new EventEmitter<boolean>(false);
 
     /** An event emitted when the checked value has changed.
      *
      * Emits the boolean checked value of the changed checkbox.
      */
-    @Output()
-    checkedChange = new EventEmitter<boolean>(false);
+    @Output() readonly checkedChange = new EventEmitter<boolean>(false);
 
     /** An event emitted when the checked value has changed.
      *
      * Emits a NxCheckboxChangeEvent.
      */
-    @Output()
-    checkboxChange: EventEmitter<NxCheckboxChangeEvent> = new EventEmitter<NxCheckboxChangeEvent>();
+    @Output() readonly checkboxChange = new EventEmitter<NxCheckboxChangeEvent>();
 
     /** @docs-private */
     get labelHasContent(): boolean {

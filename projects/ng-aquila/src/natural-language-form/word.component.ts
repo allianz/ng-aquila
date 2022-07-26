@@ -47,7 +47,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     private measureCanvas!: HTMLCanvasElement;
 
     /** @docs-private */
-    inputChanges = new Subject<any>();
+    readonly inputChanges = new Subject<any>();
 
     _hasErrors = false;
     private _overlayRef!: OverlayRef;
@@ -60,8 +60,7 @@ export class NxWordComponent implements AfterContentInit, OnDestroy, OnInit {
     @ContentChild(NxDropdownComponent) _dropdown!: NxDropdownComponent;
 
     /** @docs-private */
-    @HostBinding('style.width.px')
-    currentTextWidth = 0;
+    @HostBinding('style.width.px') currentTextWidth = 0;
 
     // this will apply different min-widths to our component through our styles
     /** Provide a hint for a minimal width. The actual size will be determined for inputs for each change. */

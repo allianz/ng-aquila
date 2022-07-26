@@ -59,8 +59,7 @@ export class NxTabComponent implements OnChanges, OnDestroy, AfterContentInit {
     /**
      * Template provided in the tab content that will be used if present, used to enable lazy-loading
      */
-    @ContentChild(NxTabContentDirective, { read: TemplateRef, static: true })
-    _explicitContent!: TemplateRef<any>;
+    @ContentChild(NxTabContentDirective, { read: TemplateRef, static: true }) _explicitContent!: TemplateRef<any>;
 
     /** Sets the label of the tab shown in the tablist. */
     @Input()

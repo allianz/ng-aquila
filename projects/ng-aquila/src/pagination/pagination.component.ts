@@ -102,16 +102,16 @@ export class NxPaginationComponent implements OnInit, AfterContentInit, AfterVie
     }
 
     /** An event emitted when the previous page button is clicked. */
-    @Output() nxGoPrev = new EventEmitter<void>();
+    @Output() readonly nxGoPrev = new EventEmitter<void>();
 
     /** An event emitted when the next page button is clicked */
-    @Output() nxGoNext = new EventEmitter<void>();
+    @Output() readonly nxGoNext = new EventEmitter<void>();
 
     /**
      * An event emitted when a page number is clicked.
      * Provides the number of the page as parameter.
      */
-    @Output() nxGoPage = new EventEmitter<number>();
+    @Output() readonly nxGoPage = new EventEmitter<number>();
 
     private readonly _destroyed = new Subject<void>();
 

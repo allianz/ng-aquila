@@ -154,28 +154,28 @@ export class NxDatepickerComponent<D> implements OnDestroy {
     private _disabled!: boolean;
 
     /** @docs-private */
-    selectedChanged: EventEmitter<D> = new EventEmitter<D>();
+    readonly selectedChanged = new EventEmitter<D>();
 
     /**
      * Emits selected year in multiyear view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly yearSelected = new EventEmitter<D>();
 
     /**
      * Emits selected month in year view.
      * This doesn't imply a change on the selected date.
      */
-    @Output() readonly monthSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly monthSelected = new EventEmitter<D>();
 
     /** Classes to be passed to the date picker panel. Supports the same syntax as `ngClass`. */
     @Input() panelClass!: string | string[];
 
     /** Emits when the datepicker has been opened. */
-    @Output('opened') openedStream: EventEmitter<void> = new EventEmitter<void>();
+    @Output('opened') readonly openedStream = new EventEmitter<void>();
 
     /** Emits when the datepicker has been closed. */
-    @Output('closed') closedStream: EventEmitter<void> = new EventEmitter<void>();
+    @Output('closed') readonly closedStream = new EventEmitter<void>();
 
     /** Whether the calendar is open. */
     @Input()

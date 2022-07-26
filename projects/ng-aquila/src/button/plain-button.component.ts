@@ -54,8 +54,8 @@ export class NxPlainButtonComponent implements NxTriggerButton, OnDestroy {
         return this._classNames;
     }
 
-    @HostBinding('class.nx-button--active')
-    active = false;
+    @HostBinding('class.nx-button--active') active = false;
+
     setTriggerActive(): void {
         if (!this.active) {
             this.active = true;

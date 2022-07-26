@@ -38,8 +38,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
     @ViewChildren(NxMultiStepItemComponent) _stepHeader!: QueryList<NxMultiStepItemComponent>;
 
     /** @docs-private */
-    @ContentChildren(NxMultiStepperGroupComponent, { descendants: true })
-    groups!: QueryList<NxMultiStepperGroupComponent>;
+    @ContentChildren(NxMultiStepperGroupComponent, { descendants: true }) groups!: QueryList<NxMultiStepperGroupComponent>;
 
     /** Sets the direction of the multi stepper. */
     @Input()

@@ -38,7 +38,7 @@ export class NxSidebarComponent implements AfterViewInit, OnDestroy, OnInit {
     @ViewChild('resizeHandle') _resizeHandle!: ElementRef;
 
     /** Emits the new width of the sidebar on resize or on close/open event.*/
-    @Output() widthChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly widthChange = new EventEmitter<number>();
 
     /** If set to `true` this will enable dynamic resizing of the sidebar. */
     @Input()

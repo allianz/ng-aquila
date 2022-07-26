@@ -8,8 +8,8 @@ import { NxLicencePlateEuroPrefixComponent } from './licence-plate-euro-prefix.c
 
 @Directive()
 abstract class LicencePlateEuroPrefixTest {
-    @ViewChild(NxLicencePlateEuroPrefixComponent)
-    instance!: NxLicencePlateEuroPrefixComponent;
+    @ViewChild(NxLicencePlateEuroPrefixComponent) instance!: NxLicencePlateEuroPrefixComponent;
+
     appearance = 'default';
     disabled = false;
 }

@@ -108,7 +108,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return this._ariaLabel;
     }
     /** An event is dispatched each time when the rating changes. */
-    @Output('nxValueChange') valueChange = new EventEmitter<number>();
+    @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 
     /** @docs-private */
     @ViewChildren(NxIconComponent, { read: ElementRef }) icons!: QueryList<ElementRef>;

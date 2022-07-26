@@ -73,16 +73,16 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
     _errorListIds = '';
 
     @ContentChildren(NxErrorComponent) _errorList!: QueryList<NxErrorComponent>;
+
     @ViewChild('input') _nativeInput!: ElementRef<HTMLElement>;
 
     _errorState = false;
 
     /** An event is dispatched each time the selectable card value is changed */
-    @Output()
-    selectionChange: EventEmitter<NxSelectableCardChangeEvent> = new EventEmitter<NxSelectableCardChangeEvent>();
+    @Output() readonly selectionChange = new EventEmitter<NxSelectableCardChangeEvent>();
 
     /** An event is dispatched each time the selectable card value is changed */
-    @Output() checkedChange = new EventEmitter<boolean>();
+    @Output() readonly checkedChange = new EventEmitter<boolean>();
 
     /**
      * ** Expert option **
@@ -211,8 +211,7 @@ export class NxSelectableCardComponent implements ControlValueAccessor, DoCheck,
         this._tabindex = value;
     }
 
-    @HostBinding('class.is-expert')
-    get _isExpert() {
+    @HostBinding('class.is-expert') get _isExpert() {
         return this.appearance === 'expert';
     }
 

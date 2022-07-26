@@ -80,13 +80,13 @@ export class NxMultiYearViewComponent<D> implements AfterContentInit {
     @Input() dateFilter!: (date: D) => boolean;
 
     /** Emits when a new year is selected. */
-    @Output() readonly selectedChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly selectedChange = new EventEmitter<D>();
 
     /** Emits the selected year. This doesn't imply a change on the selected date */
-    @Output() readonly yearSelected: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly yearSelected = new EventEmitter<D>();
 
     /** Emits when any date is activated. */
-    @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly activeDateChange = new EventEmitter<D>();
 
     /** The body of calendar table */
     @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody: any;

@@ -58,8 +58,7 @@ let nextId = 0;
     styleUrls: ['radio-button-group.scss'],
 })
 export class NxRadioGroupComponent implements ControlValueAccessor, AfterContentInit, OnDestroy, DoCheck {
-    @ContentChild(forwardRef(() => NxLabelComponent))
-    _label!: NxLabelComponent;
+    @ContentChild(forwardRef(() => NxLabelComponent)) _label!: NxLabelComponent;
 
     /** @docs-private */
     errorState = false;
@@ -116,14 +115,13 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     }
 
     /** An event is dispatched on each group value change. */
-    @Output('nxGroupValueChange') groupValueChange: EventEmitter<NxRadioChange> = new EventEmitter<NxRadioChange>();
+    @Output('nxGroupValueChange') readonly groupValueChange = new EventEmitter<NxRadioChange>();
     private _name = `nx-radio-group-${nextId++}`;
     private _value: any = null;
     // The currently selected radio button; should match _value
     private _selected: NxRadioComponent | null = null;
 
-    @ContentChildren(forwardRef(() => NxRadioComponent), { descendants: true })
-    _radios!: QueryList<NxRadioComponent>;
+    @ContentChildren(forwardRef(() => NxRadioComponent), { descendants: true }) _radios!: QueryList<NxRadioComponent>;
 
     private _onChange: (value: any) => void = () => {};
     private _onTouched: () => void = () => {};
@@ -351,7 +349,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
     }
 
     /** An event is dispatched on each value change. */
-    @Output('nxValueChange') valueChange: EventEmitter<NxRadioChange> = new EventEmitter<NxRadioChange>();
+    @Output('nxValueChange') readonly valueChange = new EventEmitter<NxRadioChange>();
 
     private _value: any = null;
     private _checked = false;

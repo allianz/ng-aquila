@@ -57,7 +57,7 @@ export class NxComparisonTableCell {
     }
 
     /** @docs-private */
-    @Output() indexChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly indexChange = new EventEmitter<number>();
 
     private _id = `nx-comparison-table-cell-${nextId++}`;
 

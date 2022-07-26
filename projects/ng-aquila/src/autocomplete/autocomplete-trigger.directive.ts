@@ -124,7 +124,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private readonly _closeKeyEventStream = new Subject<void>();
 
     /** Value changes */
-    private readonly _valueChanges: Subject<any> = new Subject<any>();
+    private readonly _valueChanges = new Subject<any>();
 
     /** Strategy factory that will be used to handle scrolling while the autocomplete panel is open. */
     private readonly _scrollStrategyFactory = this._defaultScrollStrategyFactory;

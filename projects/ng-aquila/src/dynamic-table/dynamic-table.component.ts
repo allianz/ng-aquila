@@ -10,7 +10,7 @@ import { NxDynamicTableColumnDefinition, NxDynamicTableDataSource } from './dyna
     styleUrls: ['./dynamic-table.component.scss'],
 })
 export class NxDynamicTableComponent implements OnInit {
-    private readonly _dataChange: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+    private readonly _dataChange = new BehaviorSubject<any[]>([]);
     private _dataSource!: NxDynamicTableDataSource | null;
     private _data: any[] = [];
     private _displayedColumns!: NxDynamicTableColumnDefinition[];
@@ -58,7 +58,7 @@ export class NxDynamicTableComponent implements OnInit {
     }
 
     /** An event is dispatched when a row is clicked. */
-    @Output() nxRowClick = new EventEmitter();
+    @Output() readonly nxRowClick = new EventEmitter();
 
     /** @docs-private */
     get dataSource(): NxDynamicTableDataSource {

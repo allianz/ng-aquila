@@ -81,20 +81,20 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
      *
      * Emits the changed array of FileItems.
      * @docs-private */
-    @Output() valueChange = new EventEmitter<FileItem[]>();
+    @Output() readonly valueChange = new EventEmitter<FileItem[]>();
 
     /** An event emitted when a file is deleted from the queue
      *
      * Emits the deleted FileItem.
      */
-    @Output() fileDeleted = new EventEmitter<FileItem>();
+    @Output() readonly fileDeleted = new EventEmitter<FileItem>();
 
     /**
      * An event emitted when one or more files were added to the file input.
      *
      * Emits the selected FileItem | FileItem[]
      */
-    @Output() filesSelected = new EventEmitter<FileItem[]>();
+    @Output() readonly filesSelected = new EventEmitter<FileItem[]>();
 
     private _id = `nx-file-uploader-${nextId++}`;
     private _name!: string;
@@ -116,7 +116,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     errorState = false;
 
     /** @docs-private */
-    stateChanges = new Subject<void>();
+    readonly stateChanges = new Subject<void>();
 
     /** @docs-private */
     validatorFnArray: any[] = [];

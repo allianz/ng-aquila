@@ -151,24 +151,24 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
     }
 
     /** An event emitted when the selected tab has changed. */
-    @Output() readonly selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectedIndexChange = new EventEmitter<number>();
 
     /** An event emitted when the selected tab has changed. */
-    @Output() readonly selectedTabChange: EventEmitter<NxTabChangeEvent> = new EventEmitter<NxTabChangeEvent>();
+    @Output() readonly selectedTabChange = new EventEmitter<NxTabChangeEvent>();
 
     /**
      * An event emitted when focus has changed within a tab group.
      *
      * **Note:** is not supported in mobile view.
      */
-    @Output() readonly focusChange: EventEmitter<NxTabChangeEvent> = new EventEmitter<NxTabChangeEvent>();
+    @Output() readonly focusChange = new EventEmitter<NxTabChangeEvent>();
 
     /** Subscription to changes in the tab labels. */
     private _tabLabelSubscription = Subscription.EMPTY;
 
     private _disabledTabsCache: boolean[] = [];
 
-    _appearanceChange = new Subject<void>();
+    readonly _appearanceChange = new Subject<void>();
 
     private readonly _destroyed = new Subject<void>();
 

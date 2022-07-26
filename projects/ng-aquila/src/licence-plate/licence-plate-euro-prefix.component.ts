@@ -13,13 +13,11 @@ import { NxFormfieldComponent } from '@aposin/ng-aquila/formfield';
 export class NxLicencePlateEuroPrefixComponent {
     constructor(private readonly _formField: NxFormfieldComponent) {}
 
-    @HostBinding('class.is-disabled')
-    get _disabled(): boolean {
+    @HostBinding('class.is-disabled') get _disabled(): boolean {
         return this._formField._control?.disabled;
     }
 
-    @HostBinding('class.has-outline')
-    get _hasOutline(): boolean {
+    @HostBinding('class.has-outline') get _hasOutline(): boolean {
         return this._formField.appearance === 'outline';
     }
 }

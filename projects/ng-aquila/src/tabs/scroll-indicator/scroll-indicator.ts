@@ -29,7 +29,7 @@ export class NxTabScrollIndicator implements OnDestroy {
 
     @Input() isScrolledToEnd!: boolean;
 
-    @Output() buttonClicked: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly buttonClicked = new EventEmitter<void>();
 
     private readonly _destroyed = new Subject<void>();
 

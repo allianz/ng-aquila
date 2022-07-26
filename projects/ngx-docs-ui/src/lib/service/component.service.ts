@@ -6,5 +6,5 @@ import { ComponentDescriptor } from '../core/manifest';
 // Service Provider to get notified when component is changing in the viewer.
 @Injectable()
 export class ComponentService {
-    current: ReplaySubject<ComponentDescriptor> = new ReplaySubject(1);
+    readonly current = new ReplaySubject<ComponentDescriptor>(1);
 }

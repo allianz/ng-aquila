@@ -10,10 +10,8 @@ import { CONTEXT, NxMessageComponent } from './message.component';
 abstract class MessageTest {
     context: CONTEXT = 'regular';
 
-    @ViewChild(NxMessageComponent)
-    componentInstance!: NxMessageComponent;
-    @ViewChild(NxMessageComponent, { read: ElementRef })
-    formInscomponentInstanceRef!: ElementRef;
+    @ViewChild(NxMessageComponent) componentInstance!: NxMessageComponent;
+    @ViewChild(NxMessageComponent, { read: ElementRef }) formInscomponentInstanceRef!: ElementRef;
 }
 
 describe('NxMessageComponent', () => {

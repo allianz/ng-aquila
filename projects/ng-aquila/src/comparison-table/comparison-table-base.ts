@@ -16,7 +16,7 @@ export abstract class NxComparisonTableBase implements OnDestroy {
     _hiddenIndexes: number[] = [];
     abstract selectedIndex: number;
 
-    readonly viewTypeChange: EventEmitter<NxComparisonTableViewType> = new EventEmitter<NxComparisonTableViewType>();
+    readonly viewTypeChange = new EventEmitter<NxComparisonTableViewType>();
 
     private _viewType: NxComparisonTableViewType = 'desktop';
 

@@ -101,7 +101,7 @@ export class NxSidepanelComponent {
      *
      * Emits the boolean value.
      */
-    @Output() readonly openedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() readonly openedChange = new EventEmitter<boolean>();
 
     private _position: PositionType = 'floating';
 

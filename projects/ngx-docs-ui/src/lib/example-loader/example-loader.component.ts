@@ -23,7 +23,7 @@ export class ExampleLoaderComponent {
     @Input()
     file!: string;
     @Input() examples: string[] = [];
-    @Output() contentLoaded = new EventEmitter<any>();
+    @Output() readonly contentLoaded = new EventEmitter<any>();
 
     onContentLoaded() {
         this.contentLoaded.emit();

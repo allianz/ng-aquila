@@ -102,8 +102,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     id = 'nx-popover-' + nextId++;
 
     /** An event is emitted if the visibility status of the popover changes. */
-    @Output('nxPopoverShowChange')
-    changeShow: EventEmitter<boolean> = new EventEmitter();
+    @Output('nxPopoverShowChange') readonly changeShow = new EventEmitter<boolean>();
 
     /** Whether to show or hide the popover. */
     @Input('nxPopoverShow')
@@ -160,8 +159,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     popoverInitialVisible = false;
 
     /** An event is emitted when the visibility of the popopver changes. */
-    @Input('nxPopoverVisibleChange')
-    visibleChange: EventEmitter<boolean> = new EventEmitter();
+    @Input('nxPopoverVisibleChange') visibleChange = new EventEmitter<boolean>(); // TODO this should be an output
 
     /** Whether the popover opens in modal state. */
     @Input('nxPopoverModal')

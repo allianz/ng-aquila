@@ -14,12 +14,9 @@ const THROTTLE_TIME = 200;
 
 @Directive()
 abstract class CellTest {
-    @ViewChildren(NxComparisonTableCell)
-    cellInstances!: QueryList<NxComparisonTableCell>;
-    @ViewChild(NxComparisonTableDescriptionCell)
-    descriptionCellInstance!: NxComparisonTableDescriptionCell;
-    @ViewChild(NxToggleSectionDirective)
-    toggleSectionInstance!: NxToggleSectionDirective;
+    @ViewChildren(NxComparisonTableCell) cellInstances!: QueryList<NxComparisonTableCell>;
+    @ViewChild(NxComparisonTableDescriptionCell) descriptionCellInstance!: NxComparisonTableDescriptionCell;
+    @ViewChild(NxToggleSectionDirective) toggleSectionInstance!: NxToggleSectionDirective;
 
     selected = 0;
     headerTestId = 'header-cell-0';

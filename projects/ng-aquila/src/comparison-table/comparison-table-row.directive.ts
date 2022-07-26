@@ -35,7 +35,7 @@ export class NxComparisonTableRowDirective extends NxComparisonTableRowBase impl
 
     private _type: NxComparisonTableRowType = 'content';
     private _mayStick = true;
-    _requestCellClippingUpdate$ = new Subject<void>();
+    readonly _requestCellClippingUpdate$ = new Subject<void>();
 
     /** Sets the type of the row. Default: 'content'. */
     @Input()

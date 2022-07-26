@@ -56,9 +56,10 @@ export class NxTagComponent implements OnDestroy {
     }
 
     /** An event is dispatched each time when the tag is clicked. */
-    @Output() readonly clicked: EventEmitter<any> = new EventEmitter<any>();
+    @Output() readonly clicked = new EventEmitter<any>();
+
     /** An event is dispatched each time when the tag is removed. */
-    @Output() readonly removed: EventEmitter<any> = new EventEmitter<any>();
+    @Output() readonly removed = new EventEmitter<any>();
 
     constructor(private readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef, private readonly _focusMonitor: FocusMonitor) {
         this._focusMonitor.monitor(this._elementRef);

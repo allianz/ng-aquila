@@ -30,9 +30,10 @@ export class FileUploaderCustomItemExampleComponent {
     myFiles: CustomFileItem[] = [];
 
     @ViewChild('documentUpload') documentUpload!: NxFileUploaderComponent;
-    showUploadError = false;
 
     @ViewChild('ngModel') ngModel!: NgModel;
+
+    showUploadError = false;
 
     constructor(
         private readonly messageToastService: NxMessageToastService,

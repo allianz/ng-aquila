@@ -230,8 +230,8 @@ describe('NxToggleButtonGroup', () => {
 
 @Directive()
 abstract class ButtonToggleGroupTest {
-    @ViewChild(NxCircleToggleGroupComponent)
-    buttonToggleGroup!: NxCircleToggleGroupComponent;
+    @ViewChild(NxCircleToggleGroupComponent) buttonToggleGroup!: NxCircleToggleGroupComponent;
+
     modelValue!: string;
     valueBinding = 'B';
     appearance = 'default';

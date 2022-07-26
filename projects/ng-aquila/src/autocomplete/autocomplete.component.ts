@@ -105,21 +105,20 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
     private _hasItems = false;
 
     /** Event that is emitted whenever an option from the list is selected. */
-    @Output() readonly optionSelected: EventEmitter<NxAutocompleteSelectedEvent> = new EventEmitter<NxAutocompleteSelectedEvent>();
+    @Output() readonly optionSelected = new EventEmitter<NxAutocompleteSelectedEvent>();
 
     /** Event that is emitted when the autocomplete panel is opened. */
-    @Output() readonly opened: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly opened = new EventEmitter<void>();
 
     /** Event that is emitted when the autocomplete panel is closed. */
-    @Output() readonly closed: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly closed = new EventEmitter<void>();
 
     /** Autocomplete options in view - ie from items */
     @ViewChildren(NxAutocompleteOptionComponent)
     private _vOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options in content - ie user provided */
-    @ContentChildren(NxAutocompleteOptionComponent, { descendants: true })
-    private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
+    @ContentChildren(NxAutocompleteOptionComponent, { descendants: true }) private _cOptions!: QueryList<NxAutocompleteOptionComponent>;
 
     /** Autocomplete options */
     get options(): QueryList<NxAutocompleteOptionComponent> {

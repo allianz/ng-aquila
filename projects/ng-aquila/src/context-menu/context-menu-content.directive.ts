@@ -14,7 +14,7 @@ export class NxContextMenuContentDirective implements OnDestroy {
     private _outlet!: DomPortalOutlet;
 
     /** Emits when the menu content has been attached. */
-    _attached = new Subject<void>();
+    readonly _attached = new Subject<void>();
 
     constructor(
         private readonly _template: TemplateRef<any>,

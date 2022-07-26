@@ -145,8 +145,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         return this._responsive;
     }
 
-    @HostBinding('class.is-expert')
-    get _isExpert(): boolean {
+    @HostBinding('class.is-expert') get _isExpert(): boolean {
         return this.appearance === 'expert';
     }
 
@@ -182,8 +181,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     private _id = `nx-circle-toggle-group-${nextId++}`;
 
     /** An event emitted when the selection changes. Outputs the value of the currently selected button. */
-    @Output()
-    valueChange: EventEmitter<any> = new EventEmitter();
+    @Output() readonly valueChange = new EventEmitter<any>();
 
     private _name = `toggle-group-${nextId++}`;
 

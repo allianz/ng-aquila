@@ -35,10 +35,10 @@ import { NxTagComponent } from './tag.component';
 })
 export class NxTaglistComponent implements ControlValueAccessor {
     /** An event is dispatched each time when the list of tags changed. */
-    @Output('nxTagsChange') tagsChange: EventEmitter<any[]> = new EventEmitter<any[]>();
+    @Output('nxTagsChange') readonly tagsChange = new EventEmitter<any[]>();
 
     /** An event is dispatched each time when a tag is clicked. */
-    @Output('nxTagClick') tagClickEvent: EventEmitter<any> = new EventEmitter<any>();
+    @Output('nxTagClick') readonly tagClickEvent = new EventEmitter<any>();
 
     /** @docs-private */
     @ViewChildren(NxTagComponent, { read: ElementRef }) tagChildren!: QueryList<ElementRef>;

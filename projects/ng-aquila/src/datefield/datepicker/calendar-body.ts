@@ -76,13 +76,13 @@ export class NxCalendarBodyComponent implements AfterViewInit, OnDestroy {
     @Input() followingItems: NxCalendarCell[][] = [[]];
 
     /** Emits when a new value out of rows is selected. */
-    @Output() readonly selectedValueChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectedValueChange = new EventEmitter<number>();
 
     /** Emits when a new value out of previousItems is selected. */
-    @Output() readonly selectedValueChangeToPrevious: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectedValueChangeToPrevious = new EventEmitter<number>();
 
     /** Emits when a new value out of followingItems is selected. */
-    @Output() readonly selectedValueChangeToFollowing: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectedValueChangeToFollowing = new EventEmitter<number>();
 
     @ViewChildren('cell') _cells!: QueryList<ElementRef<HTMLElement>>;
 

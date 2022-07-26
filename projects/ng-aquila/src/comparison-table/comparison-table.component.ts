@@ -74,7 +74,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     }
 
     /** An event that is is dispatched each time selected index of the table has changed. */
-    @Output() selectedIndexChange: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectedIndexChange = new EventEmitter<number>();
 
     /** Sets which column is hidden. */
     @Input()

@@ -45,7 +45,7 @@ export class NxFileUploader {
     private readonly _httpClient: HttpClient;
 
     /** Stream that emits the result of an upload request. */
-    readonly response: Subject<NxFileUploadResult> = new Subject<NxFileUploadResult>();
+    readonly response = new Subject<NxFileUploadResult>();
 
     /** Sets the config options for http requests for uploading the files. */
     set config(options: NxFileUploadConfig) {
@@ -147,7 +147,7 @@ export class NxFileUploader {
 
     /** Uploads one file with a POST request to the url specified in config. */
     private _uploadFile(file: FileItem): Subject<NxFileUploadResult> {
-        const fileReturnVal: Subject<NxFileUploadResult> = new Subject<NxFileUploadResult>();
+        const fileReturnVal = new Subject<NxFileUploadResult>();
 
         const formData = new FormData();
         if (!file.isUploaded) {

@@ -8,8 +8,8 @@ import { NxLicencePlateSeasonSuffixComponent } from './licence-plate-season-suff
 
 @Directive()
 abstract class LicencePlateSeasonSuffixTest {
-    @ViewChild(NxLicencePlateSeasonSuffixComponent)
-    instance!: NxLicencePlateSeasonSuffixComponent;
+    @ViewChild(NxLicencePlateSeasonSuffixComponent) instance!: NxLicencePlateSeasonSuffixComponent;
+
     appearance = 'default';
     disabled = false;
 }

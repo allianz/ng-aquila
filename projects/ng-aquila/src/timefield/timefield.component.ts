@@ -25,7 +25,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
     _toggleAMPM!: string | null;
 
     /** Event that emits the time in 24h ISO format. */
-    @Output() valueChange: EventEmitter<string> = new EventEmitter<string>();
+    @Output() readonly valueChange = new EventEmitter<string>();
 
     private readonly _idHours = `nx-timefield__hours-${nextId++}`;
     /** @docs-private */

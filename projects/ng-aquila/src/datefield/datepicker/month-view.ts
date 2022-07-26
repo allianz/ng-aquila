@@ -93,13 +93,13 @@ export class NxMonthViewComponent<D> implements AfterContentInit {
     @Input() dateFilter!: (date: D) => boolean;
 
     /** Emits when a new date is selected. */
-    @Output() readonly selectedChange: EventEmitter<D | null> = new EventEmitter<D | null>();
+    @Output() readonly selectedChange = new EventEmitter<D | null>();
 
     /** Emits when any date is selected. */
-    @Output() readonly _userSelection: EventEmitter<void> = new EventEmitter<void>();
+    @Output() readonly _userSelection = new EventEmitter<void>();
 
     /** Emits when any date is activated. */
-    @Output() readonly activeDateChange: EventEmitter<D> = new EventEmitter<D>();
+    @Output() readonly activeDateChange = new EventEmitter<D>();
 
     /** The body of calendar table */
     @ViewChild(NxCalendarBodyComponent, { static: true }) _nxCalendarBody: any;

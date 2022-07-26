@@ -70,8 +70,8 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         this._autoselect = value;
     }
 
-    @Output() readonly selectFocusedIndex: EventEmitter<number> = new EventEmitter<number>();
-    @Output() readonly indexFocused: EventEmitter<number> = new EventEmitter<number>();
+    @Output() readonly selectFocusedIndex = new EventEmitter<number>();
+    @Output() readonly indexFocused = new EventEmitter<number>();
 
     @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 

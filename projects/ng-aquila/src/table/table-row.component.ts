@@ -41,8 +41,7 @@ export class NxTableRowComponent {
     }
     private _selected = false;
 
-    @Output()
-    select: EventEmitter<void> = new EventEmitter();
+    @Output() readonly select = new EventEmitter<void>();
 
     constructor(protected readonly _cdr: ChangeDetectorRef, private readonly _elementRef: ElementRef) {}
 

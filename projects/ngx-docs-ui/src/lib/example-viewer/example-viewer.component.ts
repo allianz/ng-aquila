@@ -36,10 +36,8 @@ export class ExampleViewerComponent {
     ];
     copyButtonText = 'copy';
 
-    @ViewChildren(DocViewerComponent)
-    docViewers!: QueryList<DocViewerComponent>;
-    @ViewChild(NxTabGroupComponent)
-    tabGroup!: NxTabGroupComponent;
+    @ViewChildren(DocViewerComponent) docViewers!: QueryList<DocViewerComponent>;
+    @ViewChild(NxTabGroupComponent) tabGroup!: NxTabGroupComponent;
 
     exampleComponent = null;
     exampleModuleFactory = null;

@@ -34,23 +34,19 @@ const ICONS: { [k: string]: string } = {
 export class NxMessageComponent implements AfterViewInit, OnDestroy {
     _context: CONTEXT = 'regular';
 
-    @HostBinding('class.context-info')
-    get _isInfo() {
+    @HostBinding('class.context-info') get _isInfo() {
         return this._context === 'info';
     }
 
-    @HostBinding('class.context-success')
-    get _isSuccess() {
+    @HostBinding('class.context-success') get _isSuccess() {
         return this._context === 'success';
     }
 
-    @HostBinding('class.context-warning')
-    get _isWarning() {
+    @HostBinding('class.context-warning') get _isWarning() {
         return this._context === 'warning';
     }
 
-    @HostBinding('class.context-error')
-    get _isError() {
+    @HostBinding('class.context-error') get _isError() {
         return this._context === 'error';
     }
 
@@ -100,7 +96,7 @@ export class NxMessageComponent implements AfterViewInit, OnDestroy {
     }
 
     /** Event emitted when the close icon of the message has been clicked. */
-    @Output('close') closeEvent = new EventEmitter<void>();
+    @Output('close') readonly closeEvent = new EventEmitter<void>();
 
     constructor(private readonly _cdr: ChangeDetectorRef, private readonly _focusMonitor: FocusMonitor) {}
 
