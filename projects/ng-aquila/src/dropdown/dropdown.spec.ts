@@ -913,10 +913,14 @@ describe('NxDropdownComponent', () => {
             expect((testInstance as MultiSelectSimpleBinding).value).toEqual(['BMW', 'Audi']);
         }));
 
-        it('should throw an error when value is no array for multiselect', fakeAsync(() => {
+        it('should throw an error when value is no array for multiselect', fakeAsync(async () => {
             createTestComponent(MultiSelectSimpleBinding);
             (testInstance as MultiSelectSimpleBinding).value = 'string';
-            expect(() => fixture.detectChanges()).toThrowError('Value must be an array in multiselect mode.');
+            fixture.detectChanges();
+
+            return new Promise(() => flush()).catch((error: any) => {
+                expect((error as any).rejection.message).toBe('Value must be an array in multiselect mode.');
+            });
         }));
     });
 
@@ -1250,6 +1254,7 @@ describe('NxDropdownComponent', () => {
         beforeEach(fakeAsync(() => {
             configureNxDropdownTestingModule([DropdownLazy]);
             createTestComponent(DropdownLazy);
+            flush();
         }));
 
         it('renders options', fakeAsync(() => {

@@ -886,10 +886,17 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
      * Sets the select's value. Part of the ControlValueAccessor interface
      * required to integrate with Angular's core forms API.
      *
+     * setTimeout allows to write value after ngOnInit (happens before it right now),
+     * so that we have the input `options` set, and it's shown properly in the dropdown
+     * https://github.com/angular/angular/issues/29218#issuecomment-592015773
+     * It can be removed after the Angular issue is resolved
+     *
      * @param value New value to be written to the model.
      */
     writeValue(value: any): void {
-        this._setSelectionByValue(value);
+        Promise.resolve().then(() => {
+            this._setSelectionByValue(value);
+        });
     }
 
     registerOnChange(fn: any): void {

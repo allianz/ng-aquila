@@ -142,7 +142,7 @@ describe('PhoneInputComponent', () => {
 
     it('should reset country code after reset of form', fakeAsync(() => {
         createTestComponent(ReactiveFormsPhoneInput);
-
+        flush();
         const formControl = (testInstance as ReactiveFormsPhoneInput).formControl;
         formControl.reset();
         fixture.detectChanges();
