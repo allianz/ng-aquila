@@ -288,6 +288,14 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         this.updateModel();
     }
 
+    _onCountryChange(countryCode: string) {
+        this._countryCode = countryCode;
+        this._countryCallingCode = getDialCodeByCountryCode(this.countryCode);
+        this._inputValue = this.inputFormatter(this._inputValue, this._countryCallingCode);
+
+        this._onInput();
+    }
+
     updateModel() {
         const hasNumber = typeof this._inputValue === 'string' && this._removeLeadingZero(this._trimInputValue(this._inputValue)).length > 0;
 

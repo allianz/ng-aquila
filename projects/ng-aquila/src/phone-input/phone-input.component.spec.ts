@@ -303,6 +303,25 @@ describe('PhoneInputComponent', () => {
         flush();
         expect(getRenderedValue().innerText).toBe('+49');
     }));
+
+    it('should call inputFormatter and update countryCode when country change', fakeAsync(() => {
+        createTestComponent(ConfigurablePhoneInput);
+        flush();
+        spyOn(testInstance.phoneInput, 'inputFormatter');
+
+        const select = dropdown.nativeElement;
+        select.click();
+        fixture.detectChanges();
+
+        const selectOption = dropdown.query(By.css('[ng-reflect-value="UA"]'));
+        selectOption.nativeElement.click();
+
+        fixture.detectChanges();
+        flush();
+
+        expect(testInstance.phoneInput.countryCode).toBe('UA');
+        expect(testInstance.phoneInput.inputFormatter).toHaveBeenCalled();
+    }));
 });
 
 @Directive()

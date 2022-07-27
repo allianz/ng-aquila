@@ -6,7 +6,7 @@
         [nxShowFilter]="true"
         [nxDisabled]="disabled"
         [nxOverlayLabel]="areaCodeLabel"
-        (nxValueChange)="_onInput()"
+        (nxValueChange)="_onCountryChange($event)"
         [options]="_sortedCountries"
     >
         <span *nxClosedLabel>+{{ _getCallingCode(dropdown.value) }}</span>
