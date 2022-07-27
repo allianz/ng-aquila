@@ -40,7 +40,7 @@ export class DocsPrivateFilter implements Processor {
 
     /** Marks the given API doc with a property that describes its public state. */
     private isPublicDoc(doc: ApiDoc) {
-        if (this.hasDocsPrivateTag(doc) || doc.name.startsWith('_')) {
+        if (this.hasDocsPrivateTag(doc) || doc.name.startsWith('_') || doc.name.startsWith('#')) {
             return false;
         } else if (doc instanceof MemberDoc) {
             return !this.isInternalMember(doc);
