@@ -48,7 +48,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     protected _httpClient: HttpClient;
 
     // used to not send multiple requests for the same url
-    private _pendingRequest: Observable<any> | undefined;
+    private _pendingRequest?: Observable<any>;
 
     constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, protected readonly _sanitizer: DomSanitizer, protected readonly _document: Document) {
         super(_httpClient, _sanitizer, _document);

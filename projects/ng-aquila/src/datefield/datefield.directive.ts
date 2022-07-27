@@ -81,7 +81,7 @@ export class NxDatefieldDirective<D> implements AfterContentInit, ControlValueAc
     currentFormattedDate: string | null = null;
 
     /** Whether the component has been initialized. */
-    private _isInitialized: boolean | undefined;
+    private _isInitialized?: boolean;
 
     /** The datepicker that this input is associated with. */
     @Input('nxDatepicker') set datepicker(value: NxDatepickerComponent<D>) {

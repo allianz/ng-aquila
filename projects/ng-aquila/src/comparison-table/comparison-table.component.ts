@@ -57,7 +57,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
      * The value of the right or left edge of the first column of the mobile table,
      * that describes the threshold for how much clip-path is needed.
      */
-    private _mobileStickyEdge: number | undefined;
+    private _mobileStickyEdge?: number;
 
     /** Sets which info column is selected. */
     @Input() set selectedIndex(value: NumberInput) {

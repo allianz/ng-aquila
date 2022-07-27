@@ -22,7 +22,7 @@ export class NxFileUploaderButtonDirective implements OnDestroy {
     private _disabled = false;
 
     readonly _clicked = new Subject();
-    _ariaDescribedby: string | undefined;
+    _ariaDescribedby?: string;
 
     constructor(private readonly _cdr: ChangeDetectorRef) {}
 

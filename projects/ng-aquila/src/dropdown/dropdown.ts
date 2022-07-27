@@ -155,7 +155,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     _triggerRect!: ClientRect;
 
     /** Holds the panelWidth after panel was attached. */
-    _panelWidth: number | undefined;
+    _panelWidth?: number;
 
     _positions: ConnectionPositionPair[] = getPositions('auto', 0);
 
@@ -166,7 +166,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     readonly stateChanges = new Subject<any>();
 
     /** @docs-private */
-    ariaDescribedby: string | undefined;
+    ariaDescribedby?: string;
 
     /** @docs-private */
     currentFilter = '';

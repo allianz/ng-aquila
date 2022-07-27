@@ -54,7 +54,7 @@ export class NxContextMenuComponent implements AfterContentInit, OnDestroy {
     _isAnimating = false;
 
     /** Parent menu of the current menu panel. */
-    parentMenu: NxContextMenuComponent | undefined;
+    parentMenu?: NxContextMenuComponent;
 
     /**
      * @docs-private

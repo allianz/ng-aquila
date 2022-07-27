@@ -22,7 +22,7 @@ export class TableSelectingExampleComponent {
     showSelected = false;
 
     activateSelected = true;
-    activeRow: Contract | undefined;
+    activeRow?: Contract;
 
     tableElements: Contract[] = [
         {

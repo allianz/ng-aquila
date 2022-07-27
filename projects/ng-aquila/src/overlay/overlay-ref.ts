@@ -18,7 +18,7 @@ export class NxOverlayRef<T, R = any> {
     componentInstance!: T;
 
     /** Whether the user is allowed to close the overlay. */
-    closeOnClickOutside: boolean | undefined = this._containerInstance._config.closeOnClickOutside;
+    closeOnClickOutside?: boolean = this._containerInstance._config.closeOnClickOutside;
 
     /** Subject for notifying the user that the overlay has finished opening. */
     private readonly _afterOpened = new Subject<void>();
@@ -32,7 +32,7 @@ export class NxOverlayRef<T, R = any> {
     private readonly _documentClickObservable: Observable<MouseEvent>;
 
     /** Result to be passed to afterClosed. */
-    private _result: R | undefined;
+    private _result?: R;
 
     /** Current state of the overlay. */
     private _state = NxOverlayState.OPEN;

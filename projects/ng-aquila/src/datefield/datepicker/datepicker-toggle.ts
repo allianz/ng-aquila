@@ -65,7 +65,7 @@ export class NxDatepickerToggleComponent<D> implements AfterContentInit, AfterVi
     get disabled(): boolean {
         return this._disabled === undefined ? this.datepicker.disabled : !!this._disabled;
     }
-    private _disabled: boolean | undefined;
+    private _disabled?: boolean;
 
     /** Sets the tabindex for the toggle button. Default: 0. */
     @Input() set tabindex(value: NumberInput) {

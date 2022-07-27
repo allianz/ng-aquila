@@ -14,7 +14,7 @@ interface TelephonePrefixData {
     styleUrls: ['./dropdown-custom-label-example.css'],
 })
 export class DropdownCustomLabelExampleComponent {
-    customLabelDropdownValue: TelephonePrefixData | undefined;
+    customLabelDropdownValue?: TelephonePrefixData;
 
     telPrefixDemoData: TelephonePrefixData[] = [
         {

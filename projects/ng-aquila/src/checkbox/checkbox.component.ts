@@ -132,7 +132,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     get labelSize(): NxCheckboxLabelSize {
         return this._labelSize as NxCheckboxLabelSize;
     }
-    private _labelSize: NxCheckboxLabelSize | undefined;
+    private _labelSize?: NxCheckboxLabelSize;
 
     /** Whether the nx-checkbox-group are required. */
     @Input() set required(value: BooleanInput) {
@@ -141,9 +141,9 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
     get required(): boolean {
         return !!this._required;
     }
-    private _required: boolean | undefined;
+    private _required?: boolean;
 
-    private _value: any[] | undefined;
+    private _value?: any[];
 
     private readonly _destroyed = new Subject<void>();
 
@@ -381,7 +381,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
     get required(): boolean {
         return !!this._required;
     }
-    private _required: boolean | undefined;
+    private _required?: boolean;
 
     /** Sets the value of the checkbox. Default value is the checked status. */
     @Input() set value(value: string) {

@@ -182,7 +182,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     get appearance(): NxCircleToggleGroupAppearance {
         return this._appearance || this._defaultOptions?.appearance || 'default';
     }
-    private _appearance: NxCircleToggleGroupAppearance | undefined;
+    private _appearance?: NxCircleToggleGroupAppearance;
 
     private readonly _destroyed = new Subject<void>();
 

@@ -13,7 +13,7 @@ export interface DeprecationDoc extends ApiDoc {
 
 /** Interface that describes Dgeni documents that have decorators. */
 export interface HasDecoratorsDoc {
-    decorators?: ParsedDecorator[] | undefined;
+    decorators?: ParsedDecorator[];
 }
 
 /** Extended Dgeni class-like document that includes separated class members. */

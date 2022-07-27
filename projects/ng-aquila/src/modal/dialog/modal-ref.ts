@@ -24,7 +24,7 @@ export class NxModalRef<T, R = any> {
     componentInstance!: T;
 
     /** Whether the user is allowed to close the modal. */
-    disableClose: boolean | undefined = this._containerInstance._config.disableClose;
+    disableClose?: boolean = this._containerInstance._config.disableClose;
 
     /** Subject for notifying the user that the modal has finished opening. */
     private readonly _afterOpened = new Subject<void>();
@@ -36,7 +36,7 @@ export class NxModalRef<T, R = any> {
     private readonly _beforeClosed = new Subject<R | undefined>();
 
     /** Result to be passed to afterClosed. */
-    private _result: R | undefined;
+    private _result?: R;
 
     /** Handle to the timeout that's running as a fallback in case the exit animation doesn't fire. */
     private _closeFallbackTimeout: any;

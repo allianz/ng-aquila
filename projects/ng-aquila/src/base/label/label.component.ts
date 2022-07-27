@@ -68,7 +68,7 @@ export class NxLabelComponent {
     get size(): LABEL_SIZE_TYPE {
         return this._size || this._defaultOptions?.size || DEFAULT_SIZE;
     }
-    private _size: LABEL_SIZE_TYPE | undefined;
+    private _size?: LABEL_SIZE_TYPE;
 
     /**
      * Sets the html `for` attribute on the label.

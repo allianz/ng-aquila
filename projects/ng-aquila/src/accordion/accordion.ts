@@ -36,5 +36,5 @@ export class NxAccordionDirective extends CdkAccordion {
     get negative(): boolean {
         return !!this._negative;
     }
-    private _negative: boolean | undefined;
+    private _negative?: boolean;
 }

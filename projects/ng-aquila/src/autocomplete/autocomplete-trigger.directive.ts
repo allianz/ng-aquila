@@ -93,7 +93,7 @@ export class NxAutocompleteTriggerDirective implements ControlValueAccessor, OnD
     private _isAutofill = false;
 
     /** Old value of the native input. Used to work around issues with the `input` event on IE. */
-    private _previousValue: string | number | null | undefined;
+    private _previousValue?: string | number | null;
 
     /** Strategy that is used to position the panel. */
     private _positionStrategy!: FlexibleConnectedPositionStrategy;
