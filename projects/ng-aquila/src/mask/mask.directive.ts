@@ -96,7 +96,7 @@ export class NxMaskDirective implements ControlValueAccessor, Validator {
     get mask(): string {
         return this._mask;
     }
-    private _mask!: string;
+    private _mask = '';
 
     /** Sets the case sensitivity of the mask. */
     @Input('nxConvertTo') set convertTo(value: MaskConversionTypes | null | undefined) {
