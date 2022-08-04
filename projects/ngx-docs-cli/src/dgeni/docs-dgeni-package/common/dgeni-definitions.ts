@@ -24,6 +24,7 @@ export interface CategorizedClassLikeDoc extends ClassLikeExportDoc, Deprecation
 
 /** Extended Dgeni class document that includes extracted Angular metadata. */
 export interface CategorizedClassDoc extends ClassExportDoc, CategorizedClassLikeDoc {
+    isComponent: boolean;
     isDirective: boolean;
     isService: boolean;
     isNgModule: boolean;

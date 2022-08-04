@@ -19,7 +19,12 @@ endmacro %} {% macro interface(interface) -%} {% include 'interface.template.htm
         <span header-link="services"></span>
         Services
     </h3>
-    {% for service in doc.services %} {$ class(service) $} {% endfor %} {%- endif -%} {%- if doc.directives.length -%}
+    {% for service in doc.services %} {$ class(service) $} {% endfor %} {%- endif -%} {%- if doc.components.length -%}
+    <h3 id="components" class="docs-header-link docs-api-h3">
+        <span header-link="components"></span>
+        Components
+    </h3>
+    {% for component in doc.components %} {$ class(component) $} {% endfor %} {%- endif -%}{%- if doc.directives.length -%}
     <h3 id="directives" class="docs-header-link docs-api-h3">
         <span header-link="directives"></span>
         Directives

@@ -1,7 +1,7 @@
 import { DocCollection, Processor } from 'dgeni';
 import { MethodMemberDoc } from 'dgeni-packages/typescript/api-doc-types/MethodMemberDoc';
 
-import { decorateDeprecatedDoc, getDirectiveSelectors, isDirective, isMethod, isNgModule, isProperty, isService } from '../common/decorators';
+import { decorateDeprecatedDoc, getDirectiveSelectors, isComponent, isDirective, isMethod, isNgModule, isProperty, isService } from '../common/decorators';
 import { CategorizedClassDoc, CategorizedClassLikeDoc, CategorizedMethodMemberDoc, CategorizedPropertyMemberDoc } from '../common/dgeni-definitions';
 import { getDirectiveMetadata } from '../common/directive-metadata';
 import { normalizeMethodParameters } from '../common/normalize-method-parameters';
@@ -12,9 +12,10 @@ import { sortCategorizedMembers } from '../common/sort-members';
  * Processor to add properties to docs objects.
  *
  * isMethod     | Whether the doc is for a method on a class.
- * isDirective  | Whether the doc is for a @Component or a @Directive
+ * isComponent  | Whether the doc is for a @Component
+ * isDirective  | Whether the doc is for a @Directive
  * isService    | Whether the doc is for an @Injectable
- * isNgModule   | Whether the doc is for an NgModule
+ * isNgModule   | Whether the doc is for an @NgModule
  */
 export class Categorizer implements Processor {
     name = 'categorizer';
@@ -65,6 +66,10 @@ export class Categorizer implements Processor {
         // Categorize the current visited classDoc into its Angular type.
         if (isDirective(classDoc) && classDoc.directiveMetadata) {
             classDoc.isDirective = true;
+            classDoc.directiveExportAs = classDoc.directiveMetadata.get('exportAs');
+            classDoc.directiveSelectors = getDirectiveSelectors(classDoc);
+        } else if (isComponent(classDoc) && classDoc.directiveMetadata) {
+            classDoc.isComponent = true;
             classDoc.directiveExportAs = classDoc.directiveMetadata.get('exportAs');
             classDoc.directiveSelectors = getDirectiveSelectors(classDoc);
         } else if (isService(classDoc)) {

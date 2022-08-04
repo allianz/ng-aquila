@@ -35,8 +35,12 @@ export function isProperty(doc: MemberDoc) {
     return false;
 }
 
+export function isComponent(doc: ClassExportDoc) {
+    return hasClassDecorator(doc, 'Component');
+}
+
 export function isDirective(doc: ClassExportDoc) {
-    return hasClassDecorator(doc, 'Component') || hasClassDecorator(doc, 'Directive');
+    return hasClassDecorator(doc, 'Directive');
 }
 
 export function isService(doc: ClassExportDoc) {

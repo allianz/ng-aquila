@@ -36,6 +36,9 @@ export class ComponentGroup {
     /** List of categorized class docs that are defining a directive. */
     directives: CategorizedClassDoc[] = [];
 
+    /** List of categorized class docs that are defining a component. */
+    components: CategorizedClassDoc[] = [];
+
     /** List of categorized class docs that are defining a service. */
     services: CategorizedClassDoc[] = [];
 
@@ -92,6 +95,8 @@ export class ComponentGrouper implements Processor {
             // Put this doc into the appropriate list in this group.
             if (doc.isDirective) {
                 group.directives.push(doc);
+            } else if (doc.isComponent) {
+                group.components.push(doc);
             } else if (doc.isService) {
                 group.services.push(doc);
             } else if (doc.isNgModule) {
