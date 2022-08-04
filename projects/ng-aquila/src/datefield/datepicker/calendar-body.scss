@@ -52,6 +52,27 @@ $item-size: nx-spacer(3m);
         }
     }
 
+    &.nx-calendar-body-today {
+        color: v(datefield-controls-color) !important;
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            margin-top: 24px;
+            background-color: v(datefield-controls-color);
+            border-radius: 50%;
+        }
+
+        &.nx-calendar-body-selected {
+            color: v(datefield-cell-selected-color) !important;
+            &::after {
+                background-color: v(datefield-cell-selected-color);
+            }
+        }
+    }
+
     .nx-calendar-body-disabled > &:not(.nx-calendar-body-selected) {
         color: v(datefield-cell-disabled-color);
         font-weight: nx-font-weight(regular);
