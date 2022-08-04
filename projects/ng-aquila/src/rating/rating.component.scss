@@ -46,7 +46,7 @@
 
 .nx-rating__icon {
     font-size: v(rating-icon-size);
-    color: v(rating-icon-color);
+    color: var(--iconColor, v(rating-icon-color));
     width: auto;
     background: none;
     border: none;

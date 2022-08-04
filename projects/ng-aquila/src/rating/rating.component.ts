@@ -33,6 +33,7 @@ import { NxIconComponent } from '@aposin/ng-aquila/icon';
     host: {
         '[class.nx-rating--negative]': 'negative',
         '[class.nx-rating--disabled]': 'disabled',
+        '[style.--iconColor]': 'iconColor',
     },
 })
 export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, OnDestroy {
@@ -45,6 +46,8 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         return this._value;
     }
     private _value = 0;
+
+    private _hover = 0;
 
     /** Whether the rating component should be disabled. */
     @Input('nxDisabled') set disabled(newValue: BooleanInput) {
@@ -103,6 +106,15 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     }
     private _ariaLabel: string[] = ['1/5', '2/5', '3/5', '4/5', '5/5'];
 
+    @Input('nxIconColor') /** Sets the color of rating icon. */ set iconColor(color: string) {
+        this._iconColor = color;
+        this._cdr.markForCheck();
+    }
+    get iconColor(): string {
+        return this._iconColor;
+    }
+    private _iconColor = '';
+
     /** An event is dispatched each time when the rating changes. */
     @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
 
@@ -123,7 +135,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
 
     /** Whether the given rating is selected. */
     isSelected(index: number) {
-        return index <= this.value;
+        return index <= this.value || index <= this._hover;
     }
 
     /** Allows to set the rating. */
@@ -183,5 +195,13 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
     /** @docs-private */
     getIconName(rating: number) {
         return 'star' + (this.isSelected(rating) ? '' : '-o');
+    }
+
+    /** @docs-private */
+    setHover(rating: number) {
+        if (this.disabled) {
+            return;
+        }
+        this._hover = rating;
     }
 }

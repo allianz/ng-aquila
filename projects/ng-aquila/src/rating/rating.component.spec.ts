@@ -4,7 +4,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angul
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
-import { dispatchKeyboardEvent } from '../cdk-test-utils';
+import { dispatchKeyboardEvent, dispatchMouseEvent } from '../cdk-test-utils';
 import { NxRatingComponent } from './rating.component';
 import { NxRatingModule } from './rating.module';
 
@@ -122,6 +122,20 @@ describe('NxRatingComponent', () => {
             fixture.detectChanges();
 
             expect(testComponent.valueChange.emit).toHaveBeenCalledWith(1);
+        });
+
+        it('should fill/unfill color when hover/unhover', () => {
+            createTestComponent(SimpleRatingComponent);
+
+            dispatchMouseEvent(icons[3], 'mouseenter');
+            fixture.detectChanges();
+
+            checkSelection(true, true, true, true, false);
+
+            dispatchMouseEvent(icons[3], 'mouseleave');
+            fixture.detectChanges();
+
+            checkSelection(false, false, false, false, false);
         });
     });
 

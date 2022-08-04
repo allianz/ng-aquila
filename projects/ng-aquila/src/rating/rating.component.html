@@ -9,6 +9,8 @@
         [tabindex]="disabled ? -1 : 0"
         class="nx-rating__icon"
         [name]="getIconName(rating)"
+        (mouseenter)="setHover(rating)"
+        (mouseleave)="setHover(0)"
         size="m"
     >
     </nx-icon>
