@@ -79,8 +79,10 @@ describe('NxMomentDateAdapter', () => {
     it('should parse invalid value as invalid', () => {
         const d = adapter.parse('hello', 'MM/DD/YYYY', false);
         expect(d).not.toBeNull();
-        expect(adapter.isDateInstance(d)).toBe(true, 'Expected string to have been fed through Date.parse');
-        expect(adapter.isValid(d as moment.Moment)).toBe(false, 'Expected to parse as "invalid date" object');
+        expect(adapter.isDateInstance(d)).withContext('Expected string to have been fed through Date.parse').toBeTrue();
+        expect(adapter.isValid(d as moment.Moment))
+            .withContext('Expected to parse as "invalid date" object')
+            .toBeFalse();
     });
 
     it('should allow strict parsing', () => {

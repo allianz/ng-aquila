@@ -176,7 +176,11 @@
                 "jasmine/new-line-before-expect": "off", // does not ignore arrow fuction bodies
                 "jasmine/no-unsafe-spy": "off", // TODO check with others
                 "jasmine/prefer-toBeUndefined": "warn",
-                "jasmine/prefer-toHaveBeenCalledWith": "off" // TODO check with others (undefined param not intuitive)
+                "jasmine/prefer-toHaveBeenCalledWith": "off", // TODO check with others (undefined param not intuitive)
+
+                // ==== @typescript-eslint ====
+                "@typescript-eslint/no-unused-vars": "off",
+                "@angular-eslint/no-empty-lifecycle-method": "off"
             }
         },
         {

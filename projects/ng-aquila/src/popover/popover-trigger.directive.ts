@@ -1,4 +1,4 @@
-import { FocusMonitor, FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory, FocusMonitor } from '@angular/cdk/a11y';
 import { Directionality } from '@angular/cdk/bidi';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ENTER, SPACE } from '@angular/cdk/keycodes';
@@ -89,7 +89,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private _positionStrategy!: PositionStrategy;
     private _embeddedViewRef!: EmbeddedViewRef<any> | null;
     /** The class that traps and manages focus within the popover. */
-    private _focusTrap!: FocusTrap;
+    private _focusTrap!: ConfigurableFocusTrap;
     /** Element that was focused before the Popover was opened. Save this to restore upon close. */
     private _elementFocusedBeforePopoverWasOpened: HTMLElement | null = null;
     private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
@@ -190,7 +190,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         private readonly elementRef: ElementRef,
         private readonly viewContainerRef: ViewContainerRef,
         private readonly eventManager: EventManager,
-        private readonly _focusTrapFactory: FocusTrapFactory,
+        private readonly _focusTrapFactory: ConfigurableFocusTrapFactory,
         private readonly _focusMonitor: FocusMonitor,
         private readonly _ngZone: NgZone,
         private readonly _platform: Platform,

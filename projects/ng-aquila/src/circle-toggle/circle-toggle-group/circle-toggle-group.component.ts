@@ -190,7 +190,7 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
         private readonly _cdr: ChangeDetectorRef,
         private readonly _errorStateMatcher: ErrorStateMatcher,
         @Optional() @Inject(CIRCLE_TOGGLE_GROUP_DEFAULT_OPTIONS) private readonly _defaultOptions: CircleToggleGroupDefaultOptions | null,
-        @Optional() @Self() public ngControl: NgControl | null,
+        @Optional() @Self() readonly ngControl: NgControl | null,
         @Optional() private readonly _parentForm: NgForm | null,
         @Optional() private readonly _parentFormGroup: FormGroupDirective | null,
     ) {

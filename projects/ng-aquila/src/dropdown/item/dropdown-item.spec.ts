@@ -33,7 +33,7 @@ describe('NxDropdownItem component', () => {
         fixture.detectChanges();
 
         const completeSpy = jasmine.createSpy('complete spy');
-        const subscription = itemInstance._stateChanges.subscribe(undefined, undefined, completeSpy);
+        const subscription = itemInstance._stateChanges.subscribe({ complete: completeSpy });
 
         fixture.destroy();
         expect(completeSpy).toHaveBeenCalled();

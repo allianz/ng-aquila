@@ -1,6 +1,18 @@
-import { ComponentPortal, DomPortalHost } from '@angular/cdk/portal';
-import { HttpClient } from '@angular/common/http';
-import { ApplicationRef, Component, ComponentFactoryResolver, ElementRef, EventEmitter, Injector, Input, Output, ViewContainerRef } from '@angular/core';
+import { ComponentPortal, DomPortalOutlet } from '@angular/cdk/portal';
+import { DOCUMENT } from '@angular/common';
+import {
+    ApplicationRef,
+    Component,
+    ComponentFactoryResolver,
+    ElementRef,
+    EventEmitter,
+    Inject,
+    Injector,
+    Input,
+    Optional,
+    Output,
+    ViewContainerRef,
+} from '@angular/core';
 
 import { ExampleViewerComponent } from '../example-viewer/example-viewer.component';
 
@@ -18,11 +30,11 @@ export class ExampleLoaderComponent {
 
     constructor(
         private readonly _appRef: ApplicationRef,
-        private readonly _http: HttpClient,
         private readonly _elementRef: ElementRef,
         private readonly _componentFactoryResolver: ComponentFactoryResolver,
         private readonly _viewContainerRef: ViewContainerRef,
         private readonly _injector: Injector,
+        @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
     ) {}
 
     onContentLoaded() {
@@ -31,14 +43,13 @@ export class ExampleLoaderComponent {
     }
 
     private collectExamples() {
-        const componentClass = ExampleViewerComponent;
         const exampleElements = this._elementRef.nativeElement.querySelectorAll(`[${EXAMPLE_SELECTOR}]`);
 
         Array.prototype.slice.call(exampleElements).forEach((exampleElement: Element) => {
             exampleElement.innerHTML = '';
             const example = exampleElement.getAttribute(EXAMPLE_SELECTOR);
-            const portalHost = new DomPortalHost(exampleElement, this._componentFactoryResolver, this._appRef, this._injector);
-            const examplePortal = new ComponentPortal(componentClass, this._viewContainerRef);
+            const portalHost = new DomPortalOutlet(exampleElement, this._componentFactoryResolver, this._appRef, this._injector, this._document ?? undefined);
+            const examplePortal = new ComponentPortal(ExampleViewerComponent, this._viewContainerRef);
             const exampleViewer = portalHost.attach(examplePortal);
             exampleViewer.instance.example = example as string;
 

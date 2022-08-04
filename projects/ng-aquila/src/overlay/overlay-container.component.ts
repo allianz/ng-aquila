@@ -1,4 +1,4 @@
-import { FocusTrap, FocusTrapFactory } from '@angular/cdk/a11y';
+import { ConfigurableFocusTrap, ConfigurableFocusTrapFactory } from '@angular/cdk/a11y';
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, DomPortal, TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ComponentRef, ElementRef, EmbeddedViewRef, Inject, Optional, ViewChild } from '@angular/core';
@@ -37,7 +37,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
     @ViewChild(CdkPortalOutlet, { static: true }) _portalOutlet!: CdkPortalOutlet;
 
     /** The class that traps and manages focus within the overlay. */
-    private _focusTrap!: FocusTrap;
+    private _focusTrap!: ConfigurableFocusTrap;
 
     /** Element that was focused before the overlay was opened. Save this to restore upon close. */
     private _elementFocusedBeforeDialogWasOpened: HTMLElement | null = null;
@@ -50,7 +50,7 @@ export class NxOverlayContainerComponent extends BasePortalOutlet {
 
     constructor(
         private readonly _elementRef: ElementRef,
-        private readonly _focusTrapFactory: FocusTrapFactory,
+        private readonly _focusTrapFactory: ConfigurableFocusTrapFactory,
         @Optional() @Inject(DOCUMENT) private readonly _document: Document | null,
         /** The overlay configuration. */
         readonly _config: NxOverlayConfig,

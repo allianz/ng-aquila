@@ -238,6 +238,7 @@ describe('NxPopoverTriggerDirective', () => {
             click();
             getCloseIcon().click();
             expect(getPopoverContent()).toBeFalsy();
+            flush();
         }));
 
         it('should close the popover by clicking on element again for nxTrigger="click"', fakeAsync(() => {
@@ -253,6 +254,7 @@ describe('NxPopoverTriggerDirective', () => {
             document.body.dispatchEvent(new MouseEvent('click'));
             fixture.detectChanges();
             expect(getPopoverContent()).toBeFalsy();
+            flush();
         }));
 
         it('should open correctly inside shadow dom', fakeAsync(() => {
@@ -295,6 +297,7 @@ describe('NxPopoverTriggerDirective', () => {
             document.body.dispatchEvent(new MouseEvent('click'));
             expect(spy).toHaveBeenCalled();
             subscription.unsubscribe();
+            flush();
         }));
 
         it('should emit closed event on trigger click', fakeAsync(() => {
@@ -331,6 +334,7 @@ describe('NxPopoverTriggerDirective', () => {
             overlayContainer.getContainerElement().click();
             expect(spy).toHaveBeenCalled();
             subscription.unsubscribe();
+            flush();
         }));
 
         it('should close the popover by clicking anywhere outside the component', fakeAsync(() => {
@@ -351,6 +355,7 @@ describe('NxPopoverTriggerDirective', () => {
             });
             window.dispatchEvent(event);
             expect(getPopoverContent()).toBeFalsy();
+            flush();
         }));
 
         it('should not close the popover when clicking on it', fakeAsync(() => {
@@ -443,6 +448,7 @@ describe('NxPopoverTriggerDirective', () => {
             window.dispatchEvent(event);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledWith(false);
             expect(fixture.componentInstance.triggerInstance.changeShow.emit).toHaveBeenCalledTimes(2);
+            flush();
         }));
 
         it('should emit a show change event on click popover', fakeAsync(() => {
@@ -557,6 +563,7 @@ describe('NxPopoverTriggerDirective', () => {
             spyOn(buttonNativeElement, 'focus').and.callThrough();
             getCloseIcon().click();
             expect(buttonNativeElement.focus).toHaveBeenCalled();
+            flush();
         }));
 
         it('Should open on focus when the trigger type is hover', fakeAsync(() => {
@@ -631,6 +638,7 @@ describe('NxPopoverTriggerDirective', () => {
             fixture.detectChanges();
             expect(disposeFunction).toHaveBeenCalledTimes(1);
             expect(triggerInstanceWithPrivateAccess.overlayRef).toBeNull();
+            flush();
         }));
     });
 });

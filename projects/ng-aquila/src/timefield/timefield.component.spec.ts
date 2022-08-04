@@ -48,12 +48,21 @@ describe('NxTimefieldComponent', () => {
         divElementsWrapper = fixture.nativeElement.querySelector('.nx-timefield__wrapper') as HTMLDivElement;
     }
 
-    const assertTime = (time: string) => {
+    const assertTime = (time?: string | null) => {
         fixture.detectChanges();
-        expect(timefieldInstance.time).toBe(time);
-    };
 
-    const flushAndAssertTime = (time: string) => {
+        switch (time) {
+            case null:
+                expect(timefieldInstance.time).toBeNull();
+                break;
+            case undefined:
+                expect(timefieldInstance.time).toBeUndefined();
+                break;
+            default:
+                expect(timefieldInstance.time).toBe(time);
+        }
+    };
+    const flushAndAssertTime = (time?: string | null) => {
         fixture.detectChanges();
         tick();
         fixture.detectChanges();
@@ -110,16 +119,12 @@ describe('NxTimefieldComponent', () => {
         const templateInstance = testInstance as TemplateDrivenTimefield;
         flushAndAssertTime('00:00');
         templateInstance.today = '00:00:00';
-        // @ts-expect-error
         flushAndAssertTime(null);
         templateInstance.today = '00-00';
-        // @ts-expect-error
         flushAndAssertTime(null);
         templateInstance.today = '00/00';
-        // @ts-expect-error
         flushAndAssertTime(null);
         templateInstance.today = '00.00';
-        // @ts-expect-error
         flushAndAssertTime(null);
     }));
 
@@ -132,7 +137,6 @@ describe('NxTimefieldComponent', () => {
         createTestComponent(TemplateDrivenTimefield);
         const templateInstance = testInstance as TemplateDrivenTimefield;
         templateInstance.today = '24:00';
-        // @ts-expect-error
         flushAndAssertTime(null);
         fixture.detectChanges();
         tick();
@@ -143,7 +147,6 @@ describe('NxTimefieldComponent', () => {
         createTestComponent(TemplateDrivenTimefield);
         const templateInstance = testInstance as TemplateDrivenTimefield;
         templateInstance.today = '22:62';
-        // @ts-expect-error
         flushAndAssertTime(null);
         fixture.detectChanges();
         tick();
@@ -186,7 +189,6 @@ describe('NxTimefieldComponent', () => {
         createTestComponent(TemplateDrivenTimefield);
         const templateInstance = testInstance as TemplateDrivenTimefield;
         templateInstance.today = 'abcd';
-        // @ts-expect-error
         flushAndAssertTime(null);
         fixture.detectChanges();
         tick();
@@ -364,7 +366,6 @@ describe('NxTimefieldComponent', () => {
         it('should reflect the error state', fakeAsync(() => {
             createTestComponent(ReactiveTimefield);
             const reactInstance = testInstance as ReactiveTimefield;
-            // @ts-expect-error
             assertTime(null);
             expect(reactInstance.testForm.status).toBe('INVALID');
             reactInstance.testForm.patchValue({ today: '00:00' });

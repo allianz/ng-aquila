@@ -18,7 +18,7 @@ describe('Grid utils', () => {
     });
 
     it('should test addStyles', () => {
-        // @ts-expect-error
+        // @ts-expect-error fix nullability
         expect(addStyles(undefined, MAP)).not.toBeUndefined();
         expect(addStyles('xs', MAP)).toBe(' xstest--{tier}');
     });
@@ -32,9 +32,7 @@ describe('Grid utils', () => {
     });
 
     it('should test processSplit', () => {
-        expect(() => {
-            // @ts-expect-error
-            processSplit(undefined);
-        }).toThrow();
+        // @ts-expect-error fix nullability
+        expect(() => processSplit(undefined)).toThrow();
     });
 });

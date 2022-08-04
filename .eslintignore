@@ -54,6 +54,9 @@ Thumbs.db
 # ngx-docs-cli generated files
 /projects/ng-aquila/documentation/generated
 
+# stackblitz assets
+/projects/ng-aquila/documentation/assets
+
 # component-specific
 /projects/ng-aquila/src/phone-input/metadata.json
 

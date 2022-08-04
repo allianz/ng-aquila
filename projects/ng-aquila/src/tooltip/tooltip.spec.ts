@@ -15,10 +15,8 @@ import { createKeyboardEvent } from '../cdk-test-utils';
 import { NX_TOOLTIP_DEFAULT_OPTIONS, NX_TOOLTIP_PANEL_CLASS, NxTooltipDirective } from './tooltip.directive';
 import { NxTooltipModule } from './tooltip.module';
 
-function createFakeEvent(type: string, canBubble = false, cancelable = true) {
-    const event = document.createEvent('Event');
-    event.initEvent(type, canBubble, cancelable);
-    return event;
+function createFakeEvent(type: string, bubbles = false, cancelable = true) {
+    return new Event(type, { bubbles, cancelable });
 }
 
 export function dispatchKeyboardEvent(node: Node, type: string, keyCode: number, target?: Element): KeyboardEvent {
@@ -275,7 +273,7 @@ describe('NxTooltipDirective', () => {
 
             assertTooltipInstance(tooltipDirective, true);
 
-            // @ts-expect-error
+            // @ts-expect-error fix nullability
             spyOn(tooltipDirective._overlayRef, 'updatePosition').and.callThrough();
 
             tooltipDirective.position = 'top';

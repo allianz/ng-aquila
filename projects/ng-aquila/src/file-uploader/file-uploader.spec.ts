@@ -90,8 +90,7 @@ describe('NxFileUploaderComponent', () => {
             fakeFile = Object.defineProperty(fakeFile, 'size', { value: 1024, writable: false });
             testInstance.form.patchValue({ documents: [new FileItem(fakeFile)] });
 
-            // @ts-expect-error
-            const file = fileUploaderInstance.value[0];
+            const file = fileUploaderInstance.value?.[0] as FileItem;
 
             // status: should not be uploaded or uploading
             expect(file.isUploaded).toBeFalse();

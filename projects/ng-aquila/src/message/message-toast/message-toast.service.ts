@@ -1,6 +1,6 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector, TemplatePortal } from '@angular/cdk/portal';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { ComponentRef, Inject, Injectable, InjectionToken, Injector, OnDestroy, Optional, SkipSelf, TemplateRef } from '@angular/core';
 
 import { NxMessageModule } from '../message.module';
@@ -137,12 +137,15 @@ export class NxMessageToastService implements OnDestroy {
         }
     }
 
-    private _createInjector(config: NxMessageToastConfig, data: NxMessageToastData | null, injector: Injector): PortalInjector {
-        const tokens = new WeakMap();
-        tokens.set(NxMessageToastConfig, config);
-        tokens.set(NxMessageToastData, data);
-
-        return new PortalInjector(injector, tokens);
+    private _createInjector(config: NxMessageToastConfig, data: NxMessageToastData | null, injector: Injector): Injector {
+        return Injector.create({
+            parent: injector,
+            providers: [
+                { provide: NxMessageToastConfig, useValue: config },
+                { provide: NxMessageToastData, useValue: data },
+            ],
+            name: 'nx-message-toast__portal-injector',
+        });
     }
 
     /**

@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 
 import { NXV_TOP_INFO } from './../../../core/tokens';
 
@@ -7,14 +7,9 @@ import { NXV_TOP_INFO } from './../../../core/tokens';
     template: '',
 })
 export class NxvTopInfoComponent implements OnInit {
-    constructor(
-        @Inject(NXV_TOP_INFO) private readonly _topInfoComponent: any,
-        private readonly _componentFactoryResolver: ComponentFactoryResolver,
-        private readonly _viewContainerRef: ViewContainerRef,
-    ) {}
+    constructor(@Inject(NXV_TOP_INFO) private readonly _topInfoComponent: any, private readonly _viewContainerRef: ViewContainerRef) {}
 
     ngOnInit(): void {
-        const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this._topInfoComponent);
-        this._viewContainerRef.createComponent(componentFactory);
+        this._viewContainerRef.createComponent(this._topInfoComponent);
     }
 }

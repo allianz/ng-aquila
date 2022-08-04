@@ -4,7 +4,9 @@
     "overrides": [
         {
             "files": ["*.ts"],
-            "rules": {}
+            "rules": {
+                "no-console": "off" // console output is ok in examples
+            }
         },
         {
             "files": ["*.html"],

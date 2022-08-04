@@ -14,13 +14,13 @@ abstract class BreadcrumbTest {
 describe('NxBreadcrumbComponent', () => {
     let fixture: ComponentFixture<BreadcrumbTest>;
     let testInstance: BreadcrumbTest;
-    let breadcrumbItemInstances: QueryList<HTMLElement>;
+    let breadcrumbItemInstances: NodeListOf<HTMLElement>;
 
     function createTestComponent(component: Type<BreadcrumbTest>) {
         fixture = TestBed.createComponent(component);
         fixture.detectChanges();
         testInstance = fixture.componentInstance;
-        breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item') as QueryList<HTMLElement>;
+        breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
     }
 
     beforeEach(waitForAsync(() => {
@@ -60,20 +60,15 @@ describe('NxBreadcrumbComponent', () => {
 
     it('sets aria-current to last item', () => {
         createTestComponent(DynamicBreadcrumbComponent);
-        // @ts-expect-error
         expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-        // @ts-expect-error
         expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBeFalsy();
-        // @ts-expect-error
         expect(breadcrumbItemInstances[2].getAttribute('aria-current')).toBe('page');
 
         (testInstance as DynamicBreadcrumbComponent).items = ['test', 'test2'];
         fixture.detectChanges();
         breadcrumbItemInstances = fixture.nativeElement.querySelectorAll('.nx-breadcrumb-item');
 
-        // @ts-expect-error
         expect(breadcrumbItemInstances[0].getAttribute('aria-current')).toBeFalsy();
-        // @ts-expect-error
         expect(breadcrumbItemInstances[1].getAttribute('aria-current')).toBe('page');
     });
 });

@@ -306,7 +306,7 @@ describe('nxContextMenu', () => {
     it('should throw the correct error if the menu is not defined after init', () => {
         const fixture = createComponent(SimpleMenu);
 
-        // @ts-expect-error
+        // @ts-expect-error fix nullability
         fixture.componentInstance.trigger.contextMenu = null;
         fixture.detectChanges();
 

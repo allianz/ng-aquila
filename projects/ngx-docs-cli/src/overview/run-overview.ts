@@ -22,11 +22,7 @@ const findAllFiles = sourceFolder => {
 };
 
 const readFileStream = pipe(
-    mergeMap(
-        filename => readFile$(filename, 'utf8'),
-        // return not only the new content, keep the filename
-        (filename: string, content: any) => ({ filename, content, rawData: content, yaml: {} } as MarkdownFile),
-    ),
+    mergeMap(filename => readFile$(filename, 'utf8').pipe(map((content: any) => ({ filename, content, rawData: content, yaml: {} } as MarkdownFile)))),
 );
 
 const save = folder =>

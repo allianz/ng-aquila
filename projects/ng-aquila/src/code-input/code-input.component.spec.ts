@@ -165,7 +165,7 @@ describe('NxCodeInputComponent', () => {
             expect(input.value).toBe(char);
         });
 
-        // @ts-expect-error
+        // @ts-expect-error fix nullability
         expect(testInstance.codeInputInstance._keyCode).toEqual(['1', '2', '3', undefined]);
     }));
 

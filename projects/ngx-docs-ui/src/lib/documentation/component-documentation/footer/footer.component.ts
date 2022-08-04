@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Inject, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Inject, OnInit, ViewContainerRef } from '@angular/core';
 
 import { NXV_FOOTER } from './../../../core/tokens';
 
@@ -15,14 +15,9 @@ import { NXV_FOOTER } from './../../../core/tokens';
     ],
 })
 export class NxvFooterComponent implements OnInit {
-    constructor(
-        @Inject(NXV_FOOTER) private readonly _footerComponent: any,
-        private readonly _componentFactoryResolver: ComponentFactoryResolver,
-        private readonly _viewContainerRef: ViewContainerRef,
-    ) {}
+    constructor(@Inject(NXV_FOOTER) private readonly _footerComponent: any, private readonly _viewContainerRef: ViewContainerRef) {}
 
     ngOnInit(): void {
-        const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this._footerComponent);
-        this._viewContainerRef.createComponent(componentFactory);
+        this._viewContainerRef.createComponent(this._footerComponent);
     }
 }

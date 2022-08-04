@@ -15,7 +15,7 @@ export class CopyService {
         this.textarea = document.createElement('textarea');
         this.textarea.classList.add('cdk-visually-hidden');
         // Prevent jumping
-        const yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        const yPosition = window.scrollY || document.documentElement.scrollTop;
         this.textarea.style.top = yPosition + 'px';
         this.textarea.setAttribute('readonly', '');
         this.textarea.value = text;

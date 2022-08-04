@@ -101,44 +101,36 @@ export class Egg {
         return typeof fn === 'function' && fn.call(this);
     }
 
-    __toCharCodes(keys: string[]) {
-        const special = {
-                slash: 191,
-                up: 38,
-                down: 40,
-                left: 37,
-                right: 39,
-                enter: 13,
-                space: 32,
-                ctrl: 17,
-                alt: 18,
-                tab: 9,
-                esc: 27,
-            },
-            specialKeys = Object.keys(special);
+    __toCharCodes(keys: string | (string | number)[]) {
+        const special: { [key: string]: number } = {
+            slash: 191,
+            up: 38,
+            down: 40,
+            left: 37,
+            right: 39,
+            enter: 13,
+            space: 32,
+            ctrl: 17,
+            alt: 18,
+            tab: 9,
+            esc: 27,
+        };
 
         if (typeof keys === 'string') {
             // make sure there isn't any whitespace
-            // @ts-expect-error
             keys = keys.split(',').map(key => key.trim());
         }
 
-        const characterKeyCodes = keys.map((key: string | number) => {
+        const characterKeyCodes = keys.map(key => {
             // check if it's already a keycode
             if (key === parseInt(key.toString(), 10)) {
                 return key;
             }
+            key = key as string; // should not be a number after the previous if block
 
-            // lookup in named key map
-            if (specialKeys.includes(key.toString())) {
-                // @ts-expect-error
-                return special[key];
-            }
             // it's a letter, return the char code for it
-            // @ts-expect-error
-            return key.charCodeAt(0);
+            return special[key] ?? key.charCodeAt(0);
         });
-
         return characterKeyCodes.join(',');
     }
 }
