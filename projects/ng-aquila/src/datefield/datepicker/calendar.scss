@@ -26,6 +26,13 @@ $calendar-content-width: 7 * $item-size;
     &:hover {
         color: v(datefield-controls-hover-color);
     }
+
+    &[disabled] {
+        cursor: not-allowed;
+        nx-icon {
+            color: v(disabled-01);
+        }
+    }
 }
 
 .nx-calendar-controls {
