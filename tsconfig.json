@@ -22,9 +22,7 @@
             "@aposin/ng-aquila/documentation/*": ["projects/ng-aquila/documentation/generated/*"]
         },
         "allowSyntheticDefaultImports": true,
-        "noPropertyAccessFromIndexSignature": false,
         "noFallthroughCasesInSwitch": true,
-        "noImplicitOverride": true,
         "noImplicitReturns": true,
         "strict": true
     },
