@@ -22,16 +22,16 @@ import { NxToggleSectionBase } from './toggle-section/toggle-section-base';
 })
 export class NxComparisonTableRowDirective extends NxComparisonTableRowBase implements AfterContentInit, OnDestroy, NxTableContentElement {
     /** @docs-private */
-    @ContentChildren(NxComparisonTableCell) cells!: QueryList<NxComparisonTableCell>;
+    @ContentChildren(NxComparisonTableCell) override cells!: QueryList<NxComparisonTableCell>;
 
     /** @docs-private */
     @ContentChild(NxComparisonTableIntersectionCell, { static: false }) intersectionCell!: NxComparisonTableIntersectionCell;
 
     /** @docs-private */
-    @ContentChild(NxComparisonTableDescriptionCell, { static: false }) descriptionCell!: NxComparisonTableDescriptionCell;
+    @ContentChild(NxComparisonTableDescriptionCell, { static: false }) override descriptionCell!: NxComparisonTableDescriptionCell;
 
     /** @docs-private */
-    @ContentChild(NxComparisonTablePopularCell, { static: false }) popularCell!: NxComparisonTablePopularCell;
+    @ContentChild(NxComparisonTablePopularCell, { static: false }) override popularCell!: NxComparisonTablePopularCell;
 
     readonly _requestCellClippingUpdate$ = new Subject<void>();
 

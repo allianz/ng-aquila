@@ -45,12 +45,12 @@ export class NxSvgIconLiteral extends NxSvgIcon {
 export class NxSvgIconFromUrl extends NxSvgIcon {
     url: string;
 
-    protected _httpClient: HttpClient;
+    protected override _httpClient: HttpClient;
 
     // used to not send multiple requests for the same url
     private _pendingRequest?: Observable<any>;
 
-    constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, protected readonly _sanitizer: DomSanitizer, protected readonly _document: Document) {
+    constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, _sanitizer: DomSanitizer, _document: Document) {
         super(_httpClient, _sanitizer, _document);
 
         this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
@@ -68,7 +68,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     }
 
     /** Returns the content. If the SVG is not already loaded it fetches the SVG from icons' URL */
-    getContent(): Observable<SVGElement> {
+    override getContent(): Observable<SVGElement> {
         return this._loadSvgIcon();
     }
 

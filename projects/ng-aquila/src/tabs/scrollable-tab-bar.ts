@@ -18,7 +18,7 @@ export abstract class NxScrollableTabBar implements AfterContentInit, OnDestroy 
 
     private readonly _destroyed = new Subject<void>();
 
-    constructor(readonly _cdr: ChangeDetectorRef, @Optional() private readonly _dir: Directionality | null, private readonly _element: ElementRef) {
+    constructor(protected readonly _cdr: ChangeDetectorRef, @Optional() private readonly _dir: Directionality | null, private readonly _element: ElementRef) {
         this._dir?.change.pipe(takeUntil(this._destroyed)).subscribe(() => {
             if (this.scrollableTabsList?.nativeElement.scrollLeft !== 0) {
                 const absoluteScrollLeft = Math.abs(this.scrollableTabsList?.nativeElement.scrollLeft);

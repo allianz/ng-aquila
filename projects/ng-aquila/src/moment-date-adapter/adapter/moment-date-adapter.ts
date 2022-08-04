@@ -38,7 +38,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
         this.setLocale(dateLocale || moment.locale());
     }
 
-    setLocale(locale: string) {
+    override setLocale(locale: string) {
         super.setLocale(locale);
 
         const momentLocaleData = moment.localeData(locale);
@@ -96,7 +96,7 @@ export class NxMomentDateAdapter extends NxDateAdapter<Moment> {
         return this.clone(date).date();
     }
 
-    deserialize(value: any): Moment | null {
+    override deserialize(value: any): Moment | null {
         let date;
         if (value instanceof Date) {
             date = moment.utc({ year: value.getFullYear(), month: value.getMonth(), date: value.getDate() });

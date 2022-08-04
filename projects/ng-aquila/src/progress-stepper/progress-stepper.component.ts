@@ -46,7 +46,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
     private _stepControl: any;
 
     /** The top level abstract control of the step. */
-    stepControl: any;
+    override stepControl: any;
 
     private _interacted!: boolean;
 
@@ -62,7 +62,7 @@ export class NxStepComponent extends CdkStep implements ErrorStateMatcher, OnCha
         return originalErrorState || customErrorState;
     }
 
-    ngOnChanges(): void {
+    override ngOnChanges(): void {
         // We can't use the `changes: SimpleChanges` as a parameter here
         // because CdkStep only defines the ngOnChanges() method.
         super.ngOnChanges();
@@ -106,12 +106,12 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     // Do not initialize with an empty QueryList or the hasNext() function produces
     // wrong results on init
     /** Full list of steps inside the stepper, including inside nested steppers */
-    @ContentChildren(NxStepComponent, { descendants: true }) _steps!: QueryList<NxStepComponent>;
+    @ContentChildren(NxStepComponent, { descendants: true }) override _steps!: QueryList<NxStepComponent>;
 
     /** Steps that belong to the current stepper, excluding ones from nested steppers. */
-    readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
+    override readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
 
-    _stepHeader: QueryList<CdkStepHeader> = new QueryList();
+    override _stepHeader: QueryList<CdkStepHeader> = new QueryList();
 
     /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
     @Input() currentStepLabel!: string;
@@ -120,7 +120,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
         super(_dir!, _cdr, _elementRef, null);
     }
 
-    ngAfterContentInit(): void {
+    override ngAfterContentInit(): void {
         super.ngAfterContentInit();
         // Mark the component for change detection whenever the content children query changes
         this.steps.changes.pipe(takeUntil(this._destroyed)).subscribe(() => {

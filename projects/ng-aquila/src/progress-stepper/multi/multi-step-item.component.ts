@@ -86,7 +86,11 @@ export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy
     }
     private _completed!: boolean;
 
-    constructor(private readonly _cdr: ChangeDetectorRef, readonly _elementRef: ElementRef<HTMLElement>, private readonly _focusMonitor: FocusMonitor) {
+    constructor(
+        private readonly _cdr: ChangeDetectorRef,
+        override readonly _elementRef: ElementRef<HTMLElement>,
+        private readonly _focusMonitor: FocusMonitor,
+    ) {
         super(_elementRef);
         this._focusMonitor.monitor(this._elementRef);
     }

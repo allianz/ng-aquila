@@ -24,14 +24,14 @@ import { NxTreeComponent } from './tree.component';
     templateUrl: './node.html',
 })
 export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy {
-    constructor(protected readonly _elementRef: ElementRef<HTMLElement>, protected readonly _tree: CdkTree<T>, protected readonly _focusMonitor: FocusMonitor) {
+    constructor(_elementRef: ElementRef<HTMLElement>, _tree: CdkTree<T>, protected readonly _focusMonitor: FocusMonitor) {
         super(_elementRef, _tree);
         this._focusMonitor.monitor(this._elementRef.nativeElement);
     }
 
     @ContentChild(NxTreeNodeActionItem) actionItem!: FocusableOption;
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef.nativeElement);
         super.ngOnDestroy();
     }
@@ -41,7 +41,7 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy 
         (this._tree as NxTreeComponent<T>).updateFocusedData(this._data);
     }
 
-    focus(): void {
+    override focus(): void {
         if (this.actionItem) {
             this.actionItem.focus?.();
         } else {

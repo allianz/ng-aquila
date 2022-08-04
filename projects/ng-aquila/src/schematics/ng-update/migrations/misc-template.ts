@@ -12,7 +12,7 @@ export class MiscTemplateMigration extends Migration<UpgradeData> {
     // functionality for future major versions as well
     enabled = this.targetVersion === TargetVersion.V11;
 
-    visitTemplate(template: ResolvedResource): void {
+    override visitTemplate(template: ResolvedResource): void {
         let relativeOffsets: number[] = [];
         const limitedTo = ['nx-single-stepper', 'nx-multi-stepper', 'nx-progress-stepper'];
         relativeOffsets.push(...findInputsOnElementWithTag(template.content, 'title', limitedTo));

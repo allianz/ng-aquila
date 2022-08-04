@@ -51,7 +51,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         return dayjs.utc(date).format();
     }
 
-    deserialize(value: any): string | null {
+    override deserialize(value: any): string | null {
         let date;
 
         // TODO should we accept that or only take strings?
@@ -229,7 +229,7 @@ export class NxIsoDateAdapter extends NxDateAdapter<string> {
         return this._localeData.narrowDaysOfWeek;
     }
 
-    async setLocale(locale: string) {
+    override async setLocale(locale: string) {
         this._dayjsLocale = convertToDayjsLocale(locale);
         const data = await getDayjsLocaleData(this._dayjsLocale);
 

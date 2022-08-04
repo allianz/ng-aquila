@@ -36,8 +36,8 @@ import { NxTabsAppearance, TAB_NAV_BAR_DEFAULT_OPTIONS, TabNavBarDefaultOptions 
     },
 })
 export class NxTabNavBarComponent extends NxScrollableTabBar {
-    @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
-    @ContentChildren(forwardRef(() => NxTabLinkDirective)) tabButtons!: QueryList<HTMLElement>;
+    @ViewChild('tabsList') override scrollableTabsList!: ElementRef<HTMLElement>;
+    @ContentChildren(forwardRef(() => NxTabLinkDirective)) override tabButtons!: QueryList<HTMLElement>;
 
     /** Whether the tab nav bar has negative styling. */
     @Input() set negative(value: BooleanInput) {
@@ -82,7 +82,7 @@ export class NxTabNavBarComponent extends NxScrollableTabBar {
     private _appearance!: NxTabsAppearance;
 
     constructor(
-        readonly _cdr: ChangeDetectorRef,
+        _cdr: ChangeDetectorRef,
         @Optional() _dir: Directionality | null,
         @Optional() @Inject(TAB_NAV_BAR_DEFAULT_OPTIONS) private readonly _defaultOptions: TabNavBarDefaultOptions | null,
         _element: ElementRef,

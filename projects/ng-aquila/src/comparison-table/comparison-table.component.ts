@@ -73,7 +73,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
     private _selectedIndex?: number;
 
     /** An event that is is dispatched each time selected index of the table has changed. */
-    @Output() readonly selectedIndexChange = new EventEmitter<number>();
+    @Output() override readonly selectedIndexChange = new EventEmitter<number>();
 
     /** Sets which column is hidden. */
     @Input() set hiddenIndexes(value: number[]) {
@@ -90,7 +90,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         private readonly _element: ElementRef,
         @Optional() private readonly _dir: Directionality | null,
         viewportService: NxViewportService,
-        protected readonly _cdr: ChangeDetectorRef,
+        protected override readonly _cdr: ChangeDetectorRef,
         private readonly scrollDispatch: ScrollDispatcher,
         private readonly _ngZone: NgZone,
     ) {
@@ -115,7 +115,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
             .subscribe(() => this._updateCellClipping());
     }
 
-    ngOnDestroy(): void {
+    override ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
         window.removeEventListener('scroll', this._scrollHandler, true);

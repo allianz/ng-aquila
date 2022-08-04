@@ -34,8 +34,9 @@ import { NxTabLabelWrapperDirective } from './tab-label-wrapper';
 export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterContentInit {
     private _keyManager!: FocusKeyManager<NxTabLabelWrapperDirective>;
 
-    @ViewChild('tabsList') scrollableTabsList!: ElementRef<HTMLElement>;
-    @ContentChildren('tabButton') tabButtons!: QueryList<HTMLElement>;
+    @ViewChild('tabsList') override scrollableTabsList!: ElementRef<HTMLElement>;
+
+    @ContentChildren('tabButton') override tabButtons!: QueryList<HTMLElement>;
 
     @Input() set selectedIndex(value: number) {
         this._selectedIndex = value;
@@ -71,16 +72,11 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
 
     @ContentChildren(NxTabLabelWrapperDirective) labels!: QueryList<NxTabLabelWrapperDirective>;
 
-    constructor(
-        readonly _cdr: ChangeDetectorRef,
-        @Optional() _dir: Directionality | null,
-        @Optional() readonly _tabGroup: NxTabGroupBase | null,
-        _element: ElementRef,
-    ) {
+    constructor(_cdr: ChangeDetectorRef, @Optional() _dir: Directionality | null, @Optional() readonly _tabGroup: NxTabGroupBase | null, _element: ElementRef) {
         super(_cdr, _dir, _element);
     }
 
-    ngAfterContentInit(): void {
+    override ngAfterContentInit(): void {
         super.ngAfterContentInit();
         this._keyManager = new FocusKeyManager<NxTabLabelWrapperDirective>(this.labels).withHorizontalOrientation('ltr').withWrap();
         this._keyManager.updateActiveItem(0);
