@@ -538,6 +538,35 @@ describe('NxMultiSelectComponent', () => {
                         expect(options).toHaveSize(4);
                     });
                 });
+
+                it('shows options with no filter', async () => {
+                    await multiSelectHarness.setFilter('');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(4);
+                    await multiSelectHarness.setFilter(null!);
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(4);
+                    await multiSelectHarness.setFilter(undefined!);
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(0); // TODO why not 4?
+                });
+
+                it('shows options with custom filterFn', async () => {
+                    multiSelectInstance.filterFn = (query, label) => query === label;
+
+                    await multiSelectHarness.setFilter('');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(4);
+                    expect(await (await (await multiSelectHarness.getOptions()).at(1)?.getLabel())?.text()).toEqual('Audi');
+
+                    await multiSelectHarness.setFilter('Aud');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(0);
+                    await multiSelectHarness.setFilter('Audi');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(1);
+                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toEqual('Audi');
+
+                    await multiSelectHarness.setFilter('BM');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(0);
+                    await multiSelectHarness.setFilter('BMW');
+                    expect(await multiSelectHarness.getOptions()).toHaveSize(1);
+                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toEqual('BMW');
+                });
             });
 
             describe('without filter', () => {

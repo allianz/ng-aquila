@@ -31,6 +31,10 @@ let id = 0;
 
 const OVERLAY_MIN_WIDTH = 260;
 
+export type NxMultiSelectFilterFn = (query: string, label: string) => boolean;
+
+const _defaultFilterFn: NxMultiSelectFilterFn = (query, label) => label.toLowerCase().includes(query.toLowerCase());
+
 /**
  * Multi Select component.
  * @typeParam S Type of the items in the options array
@@ -133,8 +137,22 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     get disableSelectAll(): boolean {
         return this.#disableSelectAll;
     }
-
     #disableSelectAll = false;
+
+    /**
+     * Function to be used when the user types into the search filter. The first argument is the user input,
+     * the second argument is the dropdown item value as displayed. The dropdown items will use this function
+     * to set their visibility state. A boolean should be returned.
+     *
+     * Defaults to lower case inclusion.
+     */
+    @Input() set filterFn(value: NxMultiSelectFilterFn | null | undefined) {
+        this.#filterFn = value;
+    }
+    get filterFn(): NxMultiSelectFilterFn {
+        return this.#filterFn ?? _defaultFilterFn;
+    }
+    #filterFn?: NxMultiSelectFilterFn | null;
 
     /** @docs-private */
     get shouldLabelFloat(): boolean {
@@ -426,9 +444,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         return null;
     }
 
-    _onFilterChange(query: string) {
+    _onFilterChange(query: string | null | undefined) {
         if (query) {
-            this.listItems = this.options.filter(item => this._selectLabel(item).toLowerCase().includes(query.toLowerCase()));
+            this.listItems = this.options.filter(item => this.filterFn(query, this._selectLabel(item)));
         } else {
             this.listItems = this.options.slice();
         }
