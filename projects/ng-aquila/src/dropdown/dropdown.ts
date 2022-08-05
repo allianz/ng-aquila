@@ -39,7 +39,7 @@ import { filter, map, startWith, take, takeUntil } from 'rxjs/operators';
 
 import { NxDropdownClosedLabelDirective } from './closed-label.directive';
 import { NxDropdownControl } from './dropdown.control';
-import { getNxDropdownNonArrayValueError, getNxDropdownNonFunctionValueError } from './dropdown-errors';
+import { getNxDropdownNonArrayValueError } from './dropdown-errors';
 import { getPositionOffset, getPositions } from './dropdown-position';
 import { NxDropdownGroupComponent } from './group/dropdown-group';
 import { NxDropdownItemComponent } from './item/dropdown-item';
@@ -95,6 +95,19 @@ export const NX_DROPDOWN_SCROLL_STRATEGY_PROVIDER = {
 };
 
 export type FilterInputType = 'text' | 'number' | 'tel' | 'search' | 'date' | 'datetime' | 'month' | 'email';
+
+export type NxDropdownFilterFn = (query: string, label: string) => boolean;
+
+const _defaultFilterFn: NxDropdownFilterFn = (query, label) => label.toLocaleLowerCase().includes(query.toLocaleLowerCase()); // TODO why not `toLowerCase()` as in multi-select?
+
+export type NxDropdownCompareWithFn = (o1: any, o2: any) => boolean;
+
+const _defaultCompareWithFn: NxDropdownCompareWithFn = (o1, o2) => o1 === o2;
+
+export type NxDropdownValueFormatterFn = (value: any) => any; // TODO why not return a string?
+
+const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == null ? '' : value.toString());
+
 @Component({
     selector: 'nx-dropdown',
     templateUrl: 'dropdown.html',
@@ -380,13 +393,6 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     /** Strategy that will be used to handle scrolling while the dropdown panel is open. */
     _scrollStrategy = this._scrollStrategyFactory();
 
-    /**
-     * Function that transforms the value into a string.
-     * This function is used for displaying and filtering the content
-     * ( Default: (value) => value ? value.toString() : null; ).
-     */
-    @Input('nxValueFormatter') valueFormatter = (value: any) => (value == null ? '' : value.toString());
-
     /** @docs-private */
     get label(): string {
         if (this._isInOutlineField) {
@@ -397,42 +403,52 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
     }
 
     /**
+     * Function that transforms the value into a string.
+     * This function is used for displaying and filtering the content.
+     *
+     * Defaults to `(value: any) => value == null ? '' : value.toString()`
+     */
+    @Input('nxValueFormatter') set valueFormatter(value: NxDropdownValueFormatterFn | null | undefined) {
+        this.#valueFormatter = value;
+    }
+    get valueFormatter(): NxDropdownValueFormatterFn {
+        return this.#valueFormatter ?? _defaultValueFormatterFn;
+    }
+    #valueFormatter?: NxDropdownValueFormatterFn | null;
+
+    /**
      * Function to compare the option values with the selected values. The first argument
      * is a value from an option. The second is a value from the selection. A boolean
      * should be returned.
+     *
+     * Defaults to object equality.
      */
-    @Input() set compareWith(fn: (o1: any, o2: any) => boolean) {
-        if (typeof fn !== 'function') {
-            throw getNxDropdownNonFunctionValueError();
-        }
-        this._compareWith = fn;
+    @Input() set compareWith(value: NxDropdownCompareWithFn | null | undefined) {
+        this.#compareWith = value;
         if (this._selectionModel) {
             // A different comparator means the selection could change.
             this._initializeSelection();
         }
     }
-    get compareWith() {
-        return this._compareWith;
+    get compareWith(): NxDropdownCompareWithFn {
+        return this.#compareWith ?? _defaultCompareWithFn;
     }
-    /** Comparison function to specify which option is displayed. Defaults to object equality. */
-    private _compareWith = (o1: any, o2: any) => o1 === o2;
+    #compareWith?: NxDropdownCompareWithFn | null;
 
     /**
      * Function to be used when the user types into the search filter. The first argument is the user input,
-     * the second argument is the dropdown item value. The dropdown items will use this function to set their
-     * visibility state.
-     * A boolean should be returned.
+     * the second argument is the dropdown item value as displayed. The dropdown items will use this function
+     * to set their visibility state. A boolean should be returned.
+     *
+     * Defaults to lower case inclusion.
      */
-    @Input() set filterFn(fn: (search: string, itemValue: string) => boolean) {
-        if (typeof fn !== 'function') {
-            throw getNxDropdownNonFunctionValueError();
-        }
-        this._filterFn = fn;
+    @Input() set filterFn(value: NxDropdownFilterFn | null | undefined) {
+        this.#filterFn = value;
     }
-    get filterFn() {
-        return this._filterFn;
+    get filterFn(): NxDropdownFilterFn {
+        return this.#filterFn ?? _defaultFilterFn;
     }
-    private _filterFn = (search: string, itemValue: string) => itemValue.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+    #filterFn?: NxDropdownFilterFn | null;
 
     /**
      * @docs-private
@@ -675,7 +691,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         const filterFn = (o: NxDropdownOption) => {
             try {
                 // Treat null as a special reset value.
-                return o.value !== null && this._compareWith(o.value, value);
+                return o.value !== null && this.compareWith(o.value, value);
             } catch (error) {
                 if (isDevMode()) {
                     // Notify developers of errors in their comparator.

@@ -16,12 +16,3 @@ export function getNxDropdownDynamicMultipleError(): Error {
 export function getNxDropdownNonArrayValueError(): Error {
     return Error('Value must be an array in multiselect mode.');
 }
-
-/**
- * Returns an exception to be thrown when assigning a non-function value to the comparator
- * used to determine if a value corresponds to an option. Note that whether the function
- * actually takes two values and returns a boolean is not checked.
- */
-export function getNxDropdownNonFunctionValueError(): Error {
-    return Error('`compareWith` must be a function.');
-}
