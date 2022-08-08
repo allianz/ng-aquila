@@ -44,7 +44,7 @@ export function isDirective(doc: ClassExportDoc) {
 }
 
 export function isService(doc: ClassExportDoc) {
-    return hasClassDecorator(doc, 'Injectable');
+    return doc.docType === 'class' && doc.name?.endsWith('Service');
 }
 
 export function isNgModule(doc: ClassExportDoc) {
