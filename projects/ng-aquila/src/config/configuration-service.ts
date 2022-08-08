@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ErrorDefaultOptions, LabelDefaultOptions } from '@aposin/ng-aquila/base';
 import { SelectableCardDefaultOptions } from '@aposin/ng-aquila/card';
 import { CircleToggleGroupDefaultOptions } from '@aposin/ng-aquila/circle-toggle';
+import { DataDisplayDefaultOptions } from '@aposin/ng-aquila/data-display';
 import { DatepickerDefaultOptions } from '@aposin/ng-aquila/datefield';
 import { FormfieldDefaultOptions } from '@aposin/ng-aquila/formfield';
 import { SmallStageDefaultOptions } from '@aposin/ng-aquila/small-stage';
@@ -17,6 +18,7 @@ export const tabNavBarOptions: TabNavBarDefaultOptions = {};
 export const selectableCardOptions: SelectableCardDefaultOptions = {};
 export const smallStageOptions: SmallStageDefaultOptions = {};
 export const circleToggleGroupOptions: CircleToggleGroupDefaultOptions = {};
+export const dataDisplayOptions: DataDisplayDefaultOptions = {};
 
 /**
  * Service for switching values of the defaultOptions injection tokens at runtime.
@@ -38,6 +40,7 @@ export class NxConfigurationService {
         delete selectableCardOptions.appearance;
         delete smallStageOptions.appearance;
         delete circleToggleGroupOptions.appearance;
+        delete dataDisplayOptions.size;
     }
 
     switchToExpert() {
@@ -53,6 +56,7 @@ export class NxConfigurationService {
         selectableCardOptions.appearance = 'expert';
         smallStageOptions.appearance = 'expert';
         circleToggleGroupOptions.appearance = 'expert';
+        dataDisplayOptions.size = 'medium';
     }
 
     switchToRetail() {
@@ -68,5 +72,6 @@ export class NxConfigurationService {
         selectableCardOptions.appearance = 'default';
         smallStageOptions.appearance = 'default';
         circleToggleGroupOptions.appearance = 'default';
+        dataDisplayOptions.size = 'large';
     }
 }
