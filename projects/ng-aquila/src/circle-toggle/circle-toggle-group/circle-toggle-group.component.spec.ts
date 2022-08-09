@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Directive, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
@@ -164,12 +164,15 @@ describe('NxToggleButtonGroup', () => {
         iconToggles.forEach(toggle => expect(toggle).toHaveClass('is-negative'));
     });
 
-    it('circle toggle gets correct styles on value change', () => {
+    it('circle toggle gets correct styles on value change', fakeAsync(() => {
         createTestComponent(SimpleCircleToggleGroupComponent);
         toggleComponent.value = 'B';
+        tick();
         fixture.detectChanges();
+        flush();
+
         expect(toggleButtons.item(1).querySelector('nx-icon-toggle-button')).toHaveClass('is-flipped');
-    });
+    }));
 
     it('recognizes descendants', () => {
         createTestComponent(CircleToggleGroupWithDivComponent);

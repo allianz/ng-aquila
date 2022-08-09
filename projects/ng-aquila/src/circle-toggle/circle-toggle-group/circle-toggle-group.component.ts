@@ -205,10 +205,12 @@ export class NxCircleToggleGroupComponent implements ControlValueAccessor, After
     private onTouchedCallback = () => {};
 
     writeValue(value: any) {
-        if (this.value !== value) {
-            this._value = value;
-            this.notifySelectedChild(value);
-        }
+        Promise.resolve().then(() => {
+            if (this.value !== value) {
+                this._value = value;
+                this.notifySelectedChild(value);
+            }
+        });
     }
 
     ngOnDestroy(): void {
