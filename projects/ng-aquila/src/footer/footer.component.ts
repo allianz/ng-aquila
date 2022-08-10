@@ -36,6 +36,7 @@ export class NxFooterLinkDirective {}
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'nx-footer',
+        role: 'contentinfo',
     },
 })
 export class NxFooterComponent {}
