@@ -20,7 +20,7 @@
 
         <p class="docs-api-property">
             <code>
-                <span class="docs-api-property__name">{$ property.name $}</span>:
+                <span class="docs-api-property__name">{$ property.name $}</span>{%- if property.isOptional -%}?{%- endif -%}:
                 <span class="docs-api-property__type">{$ property.type $}</span>
             </code>
         </p>
