@@ -12,12 +12,12 @@
                 cdkDrag
                 *ngFor="let o of options"
             >
-                <nx-icon
+                <img
+                    height="32"
                     aria-hidden="true"
-                    size="s"
-                    name="grip-vertical"
-                    class="nx-margin-right-xs"
-                ></nx-icon>
+                    src="/assets/images/drag-handler.svg"
+                    alt="drag handler icon"
+                />
                 <nx-checkbox [value]="o.value">{{o.label}}</nx-checkbox>
             </div>
         </nx-context-menu-item-wrap>
