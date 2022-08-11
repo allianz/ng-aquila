@@ -32,6 +32,7 @@
         "type": "git",
         "url": "https://www.github.com/allianz/ng-aquila.git"
     },
+    "sideEffects": false,
     "private": true,
     "dependencies": {
         "@angular/animations": "^13.3.1",
@@ -121,6 +122,5 @@
         "standard-version": "^9.3.2",
         "ts-node": "^10.7.0",
         "typescript": "4.4.4"
-    },
-    "sideEffects": false
+    }
 }
