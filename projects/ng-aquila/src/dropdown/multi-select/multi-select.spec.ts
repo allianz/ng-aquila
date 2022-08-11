@@ -5,7 +5,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { CommonModule } from '@angular/common';
 import { Component, Directive, Type, ViewChild } from '@angular/core';
 import { ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NxFormfieldComponent, NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 
 import { NxDropdownModule } from '../dropdown.module';
@@ -117,7 +117,7 @@ describe('NxMultiSelectComponent', () => {
     async function configureTestingModule() {
         return TestBed.configureTestingModule({
             imports: [CommonModule, OverlayModule, NxDropdownModule, FormsModule, ReactiveFormsModule, NxFormfieldModule],
-            declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent],
+            declarations: [BasicMultiSelectComponent, ComplexMultiSelectComponent, ReactiveMultiSelectComponent],
         }).compileComponents();
     }
 
@@ -685,6 +685,20 @@ describe('NxMultiSelectComponent', () => {
             await expectAsync(fixture.nativeElement).toBeAccessible();
         });
     });
+
+    describe('binding', () => {
+        beforeEach(async () => {
+            await createTestComponent(ReactiveMultiSelectComponent);
+        });
+
+        it('should has class disable when form is programatically disabled', async () => {
+            (testInstance as ReactiveMultiSelectComponent).testForm.disable();
+            fixture.detectChanges();
+
+            const nxFormField = fixture.elementRef.nativeElement.querySelector('nx-formfield');
+            expect(nxFormField).toHaveClass('is-disabled');
+        });
+    });
 });
 
 @Directive()
@@ -739,4 +753,17 @@ class ComplexMultiSelectComponent extends DropdownTest {
 
     selectLabel: string | ((option: ComplexOption) => string) = 'label';
     selectValue: string | ((option: ComplexOption) => any) = '';
+}
+
+@Component({
+    template: `<form [formGroup]="testForm"
+        ><nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield
+    ></form>`,
+})
+class ReactiveMultiSelectComponent extends DropdownTest {
+    options = ['BMW', 'Audi', 'Volvo', 'Mini'];
+
+    testForm = new FormBuilder().group({
+        testControl: ['BMW'],
+    });
 }

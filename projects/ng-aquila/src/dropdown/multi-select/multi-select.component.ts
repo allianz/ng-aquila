@@ -282,6 +282,12 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this._destroyed.complete();
     }
 
+    setDisabledState(isDisabled: boolean): void {
+        this.disabled = isDisabled;
+        this._cdr.markForCheck();
+        this.stateChanges.next();
+    }
+
     private _onChange: (value: T[]) => void = () => {};
 
     private _onTouched: () => void = () => {};
