@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NxAccordionModule } from '@aposin/ng-aquila/accordion';
 import { NxComparisonTableModule } from '@aposin/ng-aquila/comparison-table';
 import { NxContextMenuModule } from '@aposin/ng-aquila/context-menu';
+import { NxDataDisplayModule } from '@aposin/ng-aquila/data-display';
 import { NxDropdownModule } from '@aposin/ng-aquila/dropdown';
 import { NxFormfieldModule } from '@aposin/ng-aquila/formfield';
 import { NxIconModule } from '@aposin/ng-aquila/icon';
@@ -12,6 +13,8 @@ import { NxSpinnerModule } from '@aposin/ng-aquila/spinner';
 import { NxSwipebarModule } from '@aposin/ng-aquila/swipebar';
 
 import { ExamplesSharedModule } from '../examples-shared.module';
+import { BreakdownTableExampleComponent } from './breakdown-table/breakdown-table-example';
+import { BreakdownTableExpertExampleComponent } from './breakdown-table-expert/breakdown-table-expert-example';
 import { ComparisonTableExampleComponent } from './comparison-table/comparison-table-example';
 import { ComparisonTableDisabledColumnsExampleComponent } from './comparison-table-disabled-columns/comparison-table-disabled-columns-example';
 import { ComparisonTableDynamicExampleComponent } from './comparison-table-dynamic/comparison-table-dynamic-example';
@@ -34,6 +37,8 @@ const EXAMPLES = [
     ComparisonTableExpandableAreaExampleComponent,
     ComparisonTableHiddenColumnsExampleComponent,
     ComparisonTableNonStickyHeaderExampleComponent,
+    BreakdownTableExampleComponent,
+    BreakdownTableExpertExampleComponent,
 ];
 
 @NgModule({
@@ -48,6 +53,7 @@ const EXAMPLES = [
         ExamplesSharedModule,
         NxAccordionModule,
         NxContextMenuModule,
+        NxDataDisplayModule,
         NxSpinnerModule,
         NxSwipebarModule,
     ],
@@ -75,6 +81,8 @@ export class ComparisonExamplesModule {
                 ComparisonTableHiddenColumnsExampleComponent,
             'comparison-table-non-sticky-header':
                 ComparisonTableNonStickyHeaderExampleComponent,
+            'breakdown-table': BreakdownTableExampleComponent,
+            'breakdown-table-expert': BreakdownTableExpertExampleComponent,
         };
     }
 }

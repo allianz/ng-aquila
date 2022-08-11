@@ -1,0 +1,43 @@
+.breakdown-table {
+    padding-top: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: var(--selectable-card-background-hover-color);
+    border: solid 1px var(--ui-04);
+}
+
+.breakdown-table__content {
+    text-align: center;
+}
+
+.breakdown-table ::ng-deep .nx-expansion-panel--light {
+    box-shadow: none;
+}
+
+.breakdown-table ::ng-deep .nx-expansion-panel__header-title {
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+.breakdown-table ::ng-deep .nx-expansion-panel__header-content {
+    padding-top: 16px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.breakdown-table ::ng-deep .nx-expansion-panel__body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.breakdown-table nx-data-display:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.breakdown-table ::ng-deep .nx-data-display__label {
+    font-weight: normal;
+}
+
+.breakdown-table ::ng-deep .nx-data-display__value {
+    text-align: end;
+}

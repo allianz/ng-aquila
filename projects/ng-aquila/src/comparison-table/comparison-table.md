@@ -121,3 +121,19 @@ Switch the theme to "EXPERT" at the top of the page to see the correct expert co
 <!-- example(comparison-table-form-elements) -->
 
 </div>
+
+#### Premium breakdown table
+
+Display the summary of an offer as a breakdown table.
+
+<!-- example(breakdown-table) -->
+
+<div class="docs-expert-container">
+
+#### Expert: Premium breakdown table
+
+A simplified variant is available for expert applications.
+
+<!-- example(breakdown-table-expert) -->
+
+</div>

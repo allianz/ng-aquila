@@ -6,6 +6,10 @@
 
     &.is-horizontal {
         flex-direction: row;
+
+        > .nx-data-display__value {
+            flex-grow: 1;
+        }
     }
 
     &.is-horizontal-columns {
