@@ -124,9 +124,15 @@ Switch the theme to "EXPERT" at the top of the page to see the correct expert co
 
 #### Premium breakdown table
 
-Display the summary of an offer as a breakdown table.
+Display data as premium breakdown table.
 
 <!-- example(breakdown-table) -->
+
+#### Recommendation table
+
+Display the summary of a single offer as recommendation table.
+
+<!-- example(recommendation-table) -->
 
 <div class="docs-expert-container">
 
@@ -135,5 +141,11 @@ Display the summary of an offer as a breakdown table.
 A simplified variant is available for expert applications.
 
 <!-- example(breakdown-table-expert) -->
+
+#### Expert: Recommendation table
+
+A more neutral variant is available for expert applications.
+
+<!-- example(recommendation-table-expert) -->
 
 </div>

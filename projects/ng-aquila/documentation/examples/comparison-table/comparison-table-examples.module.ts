@@ -25,6 +25,8 @@ import { ComparisonTableNonStickyHeaderExampleComponent } from './comparison-tab
 import { ComparisonTableRowGroupExampleComponent } from './comparison-table-row-group/comparison-table-row-group-example';
 import { ComparisonTableWithIntersectionExampleComponent } from './comparison-table-with-intersection/comparison-table-with-intersection-example';
 import { ComparisonTableWithToggleSectionsExampleComponent } from './comparison-table-with-toggle-sections/comparison-table-with-toggle-sections-example';
+import { RecommendationTableExampleComponent } from './recommendation-table/recommendation-table-example';
+import { RecommendationTableExpertExampleComponent } from './recommendation-table-expert/recommendation-table-expert-example';
 
 const EXAMPLES = [
     ComparisonTableExampleComponent,
@@ -39,6 +41,8 @@ const EXAMPLES = [
     ComparisonTableNonStickyHeaderExampleComponent,
     BreakdownTableExampleComponent,
     BreakdownTableExpertExampleComponent,
+    RecommendationTableExampleComponent,
+    RecommendationTableExpertExampleComponent,
 ];
 
 @NgModule({
@@ -50,12 +54,12 @@ const EXAMPLES = [
         NxDropdownModule,
         NxFormfieldModule,
         NxListModule,
-        ExamplesSharedModule,
         NxAccordionModule,
         NxContextMenuModule,
         NxDataDisplayModule,
         NxSpinnerModule,
         NxSwipebarModule,
+        ExamplesSharedModule,
     ],
     declarations: [EXAMPLES],
     exports: [EXAMPLES],
@@ -83,6 +87,9 @@ export class ComparisonExamplesModule {
                 ComparisonTableNonStickyHeaderExampleComponent,
             'breakdown-table': BreakdownTableExampleComponent,
             'breakdown-table-expert': BreakdownTableExpertExampleComponent,
+            'recommendation-table': RecommendationTableExampleComponent,
+            'recommendation-table-expert':
+                RecommendationTableExpertExampleComponent,
         };
     }
 }
