@@ -1,4 +1,5 @@
-import { Component, Injectable } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, Inject, Injectable, LOCALE_ID } from '@angular/core';
 import {
     NxSortHeaderIntl,
     SortDirection,
@@ -186,7 +187,7 @@ export class TableFilterSortPaginateExampleComponent {
         return (a < b ? -1 : 1) * (direction === 'asc' ? 1 : -1);
     }
 
-    constructor() {
+    constructor(@Inject(LOCALE_ID) private readonly localeId: string) {
         this.currentlyAvailableElements = this.tableElements;
         // init first page on page load
         this.updatePage();
@@ -197,10 +198,21 @@ export class TableFilterSortPaginateExampleComponent {
     }
 
     filterData(filterValue: string) {
+        const filterRegexp = new RegExp(filterValue, 'i');
+        const dateFormat = 'dd/MM/yyyy';
+
         this.currentlyAvailableElements = this.tableElements.filter(
             tableRowObject =>
                 Object.values(tableRowObject).some(propertyValue =>
-                    new RegExp(filterValue, 'i').test(String(propertyValue)),
+                    filterRegexp.test(
+                        propertyValue instanceof Date
+                            ? formatDate(
+                                  propertyValue,
+                                  dateFormat,
+                                  this.localeId,
+                              )
+                            : String(propertyValue),
+                    ),
                 ),
         );
 
