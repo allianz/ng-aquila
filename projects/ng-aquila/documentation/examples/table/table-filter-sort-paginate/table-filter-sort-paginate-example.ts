@@ -36,7 +36,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'Car',
             contractNumber: 1234,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: new Date('1/3/2020'),
             status: 'negative',
@@ -45,7 +45,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'AA',
             contractNumber: 334,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.allianz.com',
             endingAt: new Date('1/3/2019'),
             status: 'negative',
@@ -54,7 +54,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'BB',
             contractNumber: 6643,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: new Date('1/3/2020'),
             status: 'negative',
@@ -63,7 +63,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'DD',
             contractNumber: 1288,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: new Date('1/12/2018'),
             status: 'negative',
@@ -72,7 +72,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'DDE',
             contractNumber: 1456,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: new Date('1/11/2020'),
             status: 'negative',
@@ -81,7 +81,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'GG',
             contractNumber: 122,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.org',
             endingAt: new Date('12/6/2020'),
             status: 'negative',
@@ -90,7 +90,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'JK',
             contractNumber: 1422,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.allianz.com',
             endingAt: new Date('1/3/2020'),
             status: 'negative',
@@ -99,7 +99,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'M',
             contractNumber: 1225,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.org',
             endingAt: new Date('4/5/2020'),
             status: 'negative',
@@ -108,7 +108,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'L',
             contractNumber: 1313,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.allianz.com',
             endingAt: new Date('1/4/2020'),
             status: 'negative',
@@ -117,7 +117,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'Legal',
             contractNumber: 2423,
-            desc: 'this is another contract',
+            desc: 'This is another contract',
             website: 'www.allianz.com',
             endingAt: new Date('4/2/2020'),
             status: 'active',
@@ -126,7 +126,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'CC',
             contractNumber: 4356,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: new Date('1/9/2020'),
             status: 'negative',
@@ -144,7 +144,7 @@ export class TableFilterSortPaginateExampleComponent {
         {
             product: 'Car',
             contractNumber: 22344,
-            desc: 'this is a description of a contract',
+            desc: 'This is a description of a contract',
             website: 'www.example.com',
             endingAt: new Date('1/20/2027'),
             status: 'critical',

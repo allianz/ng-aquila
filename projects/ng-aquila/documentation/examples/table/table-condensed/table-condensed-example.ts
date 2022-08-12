@@ -13,7 +13,7 @@ export class TableCondensedExampleComponent {
         {
             product: 'Car',
             contractNumber: 1234,
-            desc: 'this is a contract',
+            desc: 'This is a contract',
             website: 'www.example.com',
             endingAt: '1/3/2020',
             status: 'negative',
@@ -22,7 +22,7 @@ export class TableCondensedExampleComponent {
         {
             product: 'Health',
             contractNumber: 2423,
-            desc: 'this is another contract',
+            desc: 'This is another contract',
             website: 'www.allianz.com',
             endingAt: '4/2/2020',
             status: 'active',
@@ -40,7 +40,7 @@ export class TableCondensedExampleComponent {
         {
             product: 'Home',
             contractNumber: 22344,
-            desc: 'this is a description of a contract',
+            desc: 'This is a description of a contract',
             website: 'www.example.org',
             endingAt: '1/2/2027',
             status: 'critical',
