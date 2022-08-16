@@ -8,10 +8,12 @@ import {
     Component,
     DoCheck,
     ElementRef,
+    EventEmitter,
     HostBinding,
     Input,
     OnDestroy,
     Optional,
+    Output,
     QueryList,
     Self,
     ViewChild,
@@ -192,6 +194,9 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     @ViewChild('panelHeader') private _panelHeader?: ElementRef;
 
     @ViewChild(CdkConnectedOverlay, { static: true }) private _overlayDir?: CdkConnectedOverlay;
+
+    /** Event emitted when the selected value has been changed. */
+    @Output() readonly selectionChange = new EventEmitter<T[]>();
 
     /** @docs-private */
     readonly controlType: string = 'nx-multi-select';
@@ -406,6 +411,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         }
 
         this._onChange(this.value);
+        this.selectionChange.emit(this.value);
     }
 
     _onKeydown($event: KeyboardEvent) {
@@ -508,11 +514,13 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             this.listItems.filter(option => !this._isDisabled(option)).forEach(option => this.selectedItems.add(option));
         }
         this._onChange(this.value);
+        this.selectionChange.emit(this.value);
     }
 
     _clear() {
         this.selectedItems.clear();
         this._onChange(this.value);
+        this.selectionChange.emit(this.value);
     }
 
     _clearFilter() {
