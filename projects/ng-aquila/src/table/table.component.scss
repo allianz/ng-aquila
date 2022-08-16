@@ -24,7 +24,6 @@ $sticky-shadow-size: nx-spacer(3xs);
     @include type-style(table-header-cell);
     color: v(table-header-cell-color);
     background: v(table-header-cell-background-color);
-    border-top: $cell-border-width solid v(table-header-border-top-color);
     border-bottom: $border-bottom-width solid v(table-header-border-bottom-color);
     padding-top: $vertical-padding - $cell-border-width;
     padding-bottom: $vertical-padding - $border-bottom-width;
@@ -111,6 +110,13 @@ $sticky-shadow-size: nx-spacer(3xs);
             padding-bottom: $condensed-vertical-padding - $cell-border-width;
             padding-top: $condensed-vertical-padding;
         }
+    }
+}
+
+:host(.nx-table--condensed) {
+    ::ng-deep .nx-header-cell {
+        padding-top: $condensed-vertical-padding;
+        padding-bottom: $condensed-vertical-padding;
     }
 }
 
