@@ -530,7 +530,9 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
 
         const target = event.target as HTMLInputElement;
-        this._addFilesToQueue(Array.from(target.files as FileList));
+        const files: File[] = Array.from(target.files ?? []);
+
+        this._addFilesToQueue(files);
         this.stateChanges.next();
         this._cdr.markForCheck();
         this.nativeInputFile.nativeElement.value = '';

@@ -75,7 +75,7 @@ describe('NxFileUploaderComponent', () => {
             const file = new File([''], 'fake-file.jpg');
             const files = [file, file, file];
             const fileDropEvent = { preventDefault: () => {}, dataTransfer: { files, clearData: () => {} } };
-            dropZone.onDrop(fileDropEvent);
+            dropZone.onDrop(fileDropEvent as any);
             fixture.detectChanges();
 
             expect(dropZone.fileDropped.emit).toHaveBeenCalledWith(files);
@@ -88,7 +88,7 @@ describe('NxFileUploaderComponent', () => {
             spyOn(dropZone.fileDropped, 'emit');
             const file = new File([''], 'fake-file.jpg');
             const fileDropEvent = { preventDefault: () => {}, dataTransfer: { files: [file, file, file], clearData: () => {} } };
-            dropZone.onDrop(fileDropEvent);
+            dropZone.onDrop(fileDropEvent as any);
             fixture.detectChanges();
 
             expect(dropZone.fileDropped.emit).toHaveBeenCalledTimes(0);
