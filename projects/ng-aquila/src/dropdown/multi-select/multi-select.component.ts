@@ -362,6 +362,10 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this._initKeyManager();
     }
 
+    open($event: Event, origin: FocusOrigin) {
+        this._open($event, origin);
+    }
+
     _open($event: Event, origin: FocusOrigin) {
         if (this._isOpen || this.disabled) {
             return;
@@ -385,6 +389,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
         this.listItems = this.options.slice().sort(sortSelectedToTop);
         this._divider = this.selectedItems.size - 1;
         this._openedBy = origin;
+        this._cdr.markForCheck();
     }
 
     _close() {
