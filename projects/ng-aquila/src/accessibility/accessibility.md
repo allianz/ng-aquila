@@ -65,6 +65,33 @@ For more information on which colors to use in the high contrast mode, please vi
 
 <!-- example(accessibility-high-contrast-svg) -->
 
+#### Standards and testing 
+
+Our library enables accessibility with the AA (W3C) standard. To keep your application compatible with the standard please check with ([WAI-ARIA](http://w3c.github.io/aria-practices/)). In addition, we recommend to include automated tests checking a11y properties for every component using [Axe - automatic a11y compliance checker](https://www.deque.com/axe). 
+
+The main a11y tasks are to ensure that:
+
+-   the focus state is displayed properly
+-   keyboard navigation within the component is working and documented
+-   aria-label attributes are properly set and documented (use one of the [recommended online tools or browser plugins](https://www.w3.org/WAI/ER/tools/))
+-   components are working in [high-contrast mode](https://github.com/MicrosoftEdge/MSEdgeExplainers/blob/master/Accessibility/HighContrast/explainer.md)
+-   color contrast is sufficient (use [Color contrast checker](https://webaim.org/resources/contrastchecker/) or install a browser plugin)
+
+You could easily include basic A11Y testing with [Axe](https://www.deque.com/axe) in your automated tests like so: 
+
+```typescript
+axe.run(actual, {}, (error: Error, results: axe.AxeResults) => {
+    if (results.violations.length) {
+        // report violations
+    }
+});
+```
+
+You can also refer to our [Jasmine custom Axe matcher](https://github.com/allianz/ng-aquila/blob/main/projects/ng-aquila/test.ts)
+
+Please also check:
+-   [Easy Checks – A First Review of Web Accessibility](https://www.w3.org/WAI/test-evaluate/preliminary/)
+
 ### Helpful tools and links for ARIA guidelines and verification
 
 -   [Color contrast checker](https://webaim.org/resources/contrastchecker/)
