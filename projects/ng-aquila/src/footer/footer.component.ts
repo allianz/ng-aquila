@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Directive } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, Directive, Input } from '@angular/core';
 
 @Directive({
     selector: 'nx-footer-copyright',
@@ -31,7 +31,7 @@ export class NxFooterLinkDirective {}
 
 @Component({
     selector: 'nx-footer, [nx-footer]',
-    template: '<ng-content></ng-content>',
+    templateUrl: 'footer.component.html',
     styleUrls: ['./footer.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -39,4 +39,10 @@ export class NxFooterLinkDirective {}
         role: 'contentinfo',
     },
 })
-export class NxFooterComponent {}
+export class NxFooterComponent {
+    @Input() copyright?: string | null;
+
+    readonly currentYear = new Date().getFullYear();
+
+    @ContentChild(NxFooterCopyrightDirective, { static: true }) _copyrightDirective?: NxFooterCopyrightDirective;
+}

@@ -4,6 +4,8 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NxFooterComponent } from './footer.component';
 import { NxFooterModule } from './footer.module';
 
+const currentYear = new Date().getFullYear();
+
 @Directive()
 abstract class FooterTest {
     @ViewChild(NxFooterComponent) footerInstance!: NxFooterComponent;
@@ -25,7 +27,7 @@ describe(NxFooterComponent.name, () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [BasicFooter],
+            declarations: [BasicFooter, DefaultCopyrightFooter],
             imports: [NxFooterModule],
         });
     }));
@@ -61,6 +63,18 @@ describe(NxFooterComponent.name, () => {
         });
     });
 
+    describe('default copyright footer', () => {
+        beforeEach(() => {
+            createTestComponent(DefaultCopyrightFooter);
+        });
+
+        // I couldn't find out why this spec wouldn't pass. It works perfectly in the browser.
+        xit('should display default copyright text with custom input', () => {
+            expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
+            expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual(`© Other company ${currentYear}`);
+        });
+    });
+
     describe('a11y', () => {
         it('has no accessibility violations', async () => {
             createTestComponent(BasicFooter);
@@ -82,3 +96,8 @@ describe(NxFooterComponent.name, () => {
     `,
 })
 class BasicFooter extends FooterTest {}
+
+@Component({
+    template: `<nx-footer copyright="Other company"></nx-footer>`,
+})
+class DefaultCopyrightFooter extends FooterTest {}

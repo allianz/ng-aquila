@@ -18,3 +18,9 @@ This component provides a basic skeleton of the footer including two parts. On o
 Use the `nx-footer-copyright` directive to set any copyright text and navigation links via `nx-footer-navigation` and `nx-footer-link`.
 
 <!-- example(footer-basic) -->
+
+#### Default copyright
+
+You can set default copyright text by omitting the `nx-footer-copyright` directive and using the `copyright` input for company name instead.
+
+<!-- example(footer-default-copyright) -->
