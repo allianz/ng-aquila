@@ -54,6 +54,11 @@ describe(NxFooterComponent.name, () => {
         it('should apply the bem class to the link', () => {
             expect(footerNativeElement.querySelector('nx-footer-link')).toHaveClass('nx-footer__link');
         });
+
+        it('should display copyright text', () => {
+            expect(footerNativeElement.querySelectorAll('nx-footer-copyright').length).toBe(1);
+            expect(footerNativeElement.querySelector('nx-footer-copyright')?.textContent).toEqual('Some company');
+        });
     });
 
     describe('a11y', () => {
@@ -67,7 +72,7 @@ describe(NxFooterComponent.name, () => {
 @Component({
     template: `
         <nx-footer>
-            <nx-footer-copyright></nx-footer-copyright>
+            <nx-footer-copyright>Some company</nx-footer-copyright>
             <nx-footer-navigation>
                 <nx-footer-link>
                     <a routerLink="./">Link1</a>

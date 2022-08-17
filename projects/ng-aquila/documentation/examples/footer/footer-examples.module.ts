@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NxFooterModule } from '@aposin/ng-aquila/footer';
 
-import { FooterExampleComponent } from './footer/footer-example';
+import { FooterBasicExampleComponent } from './footer-basic/footer-basic-example';
 
-const EXAMPLES = [FooterExampleComponent];
+const EXAMPLES = [FooterBasicExampleComponent];
 
 @NgModule({
     imports: [NxFooterModule, RouterModule],
@@ -14,7 +14,7 @@ const EXAMPLES = [FooterExampleComponent];
 export class FooterExamplesModule {
     static components() {
         return {
-            footer: FooterExampleComponent,
+            'footer-basic': FooterBasicExampleComponent,
         };
     }
 }
