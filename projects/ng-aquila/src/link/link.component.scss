@@ -20,7 +20,7 @@
 
     &::ng-deep a {
         display: flex; // get icons aligned with text
-        align-items: center;
+        align-items: start; // align with the top
     }
 }
 
