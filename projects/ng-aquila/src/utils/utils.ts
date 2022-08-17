@@ -1,10 +1,13 @@
-import { ElementRef, Injectable, Renderer2 } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ElementRef, Renderer2 } from '@angular/core';
 
-export function isString(value: any) {
+/**
+ * Assert that a value is a string using `typeof` check and redefine its type.
+ */
+export function isString(value: any): value is string {
     return typeof value === 'string';
 }
 
+// TODO comment function purpose
 export function pad(str: string, length = 2, padCharacter = '0'): string {
     if (!isString(str) || str.length >= length) {
         return str;
@@ -16,37 +19,37 @@ export function pad(str: string, length = 2, padCharacter = '0'): string {
 }
 
 // DATE -> YYYY-MM-DD
-export function formatDate(date: Date) {
-    const dateOfBirth = [String(date.getFullYear()), pad(String(date.getMonth() + 1)), pad(String(date.getDate()))].join('-');
-
-    return dateOfBirth;
+// TODO comment function purpose
+export function formatDate(date: Date): string {
+    return [String(date.getFullYear()), pad(String(date.getMonth() + 1)), pad(String(date.getDate()))].join('-');
 }
-export function formatDateHuman(date: Date) {
-    const dateOfBirth = [pad(String(date.getDate())), pad(String(date.getMonth() + 1)), String(date.getFullYear())].join('-');
 
-    return dateOfBirth;
+// TODO comment function purpose
+export function formatDateHuman(date: Date): string {
+    return [pad(String(date.getDate())), pad(String(date.getMonth() + 1)), String(date.getFullYear())].join('-');
 }
-/*
-  Purpose of this function is to allow a list of short keywords
-  expand to longer bem class names with will then be applied to the classname value.
 
-  This function will map a list of keys to values in a MAPPING list.
-  Whatever value is found will replace the keyword.
-  Every keyword not found will just transfered wiithmout modifying.
-*/
-
-export function mapClassNames(value: string, DEFAULTS: string[] = [], MAPPING = {}) {
+/**
+ * The purpose of this function is to allow a list of short keywords
+ * expand to longer bem class names with will then be applied to the classname value.
+ *
+ * This function will map a list of keys to values in a MAPPING list.
+ * Whatever value is found will replace the keyword.
+ * Every keyword not found will just transfered wiithmout modifying.
+ */
+export function mapClassNames(value: string, DEFAULTS: string[] = [], MAPPING = {}): string {
     let sanitizedList: string[] = [...DEFAULTS];
 
     if (typeof value === 'string') {
         const mappedClasses = getClassNameList(value, MAPPING);
+
         sanitizedList = [...sanitizedList, ...mappedClasses];
     }
-
     return sanitizedList.join(' ').trim();
 }
 
-export function getClassNameList(value: string, MAPPING: { [k: string]: string } = {}) {
+// TODO comment function purpose
+export function getClassNameList(value: string, MAPPING: { [k: string]: string } = {}): string[] {
     let mappedClasses: string[] = [];
 
     if (typeof value === 'string') {
@@ -60,11 +63,13 @@ export function getClassNameList(value: string, MAPPING: { [k: string]: string }
             return className;
         });
     }
-
     return mappedClasses;
 }
 
-export function appendClasses(renderer: Renderer2, element: ElementRef, classes: string) {
+/**
+ * Add classes to the native element using the provided renderer.
+ */
+export function appendClasses(renderer: Renderer2, element: ElementRef, classes: string): void {
     if (renderer && element && classes) {
         classes.split(' ').forEach(item => {
             renderer.addClass(element.nativeElement, item);
@@ -72,7 +77,10 @@ export function appendClasses(renderer: Renderer2, element: ElementRef, classes:
     }
 }
 
-export function removeClasses(renderer: Renderer2, element: ElementRef, classes: string) {
+/**
+ * Remove classes from the native element using the provided renderer.
+ */
+export function removeClasses(renderer: Renderer2, element: ElementRef, classes: string): void {
     if (renderer && element && classes) {
         classes.split(' ').forEach(item => {
             renderer.removeClass(element.nativeElement, item);
@@ -80,24 +88,29 @@ export function removeClasses(renderer: Renderer2, element: ElementRef, classes:
     }
 }
 
-// YYYY-MM-DD -> DATE
-export function parseDate(dateString: string | number | Date) {
+/**
+ * Create a new `Date` instance using the provided value.
+ */
+export function parseDate(dateString: string | number | Date): Date {
     return new Date(dateString);
 }
 
-// Manually compose a font shorthand defintion as it's not
-// guaranteed to be given by the computed style object.
-export function getFontShorthand(style: CSSStyleDeclaration) {
+/**
+ * Manually compose a font shorthand defintion as it's not guaranteed to be given by the computed style object.
+ */
+export function getFontShorthand(style: CSSStyleDeclaration): string {
     const { font, fontStyle, fontVariant, fontWeight, fontSize, lineHeight, fontFamily } = style;
 
     if (font.length > 0) {
         return font;
     }
-
     return `${fontStyle} ${fontVariant} ${fontWeight} ${fontSize}/${lineHeight} ${fontFamily}`;
 }
 
-export function numberOfDecimals(number: string | number) {
+/**
+ * Return the number of decimal places of a number.
+ */
+export function numberOfDecimals(number: string | number): number {
     const parsed = Number(number);
     if (Number.isNaN(parsed) || Number.isInteger(parsed)) {
         return 0;
@@ -109,18 +122,16 @@ export function numberOfDecimals(number: string | number) {
     return match[1].length;
 }
 
-export function clamp(value: number, min = 0, max = 1) {
+/**
+ * Return the provided value if in specified range, the lower or upper boundary otherwise.
+ */
+export function clamp(value: number, min = 0, max = 1): number {
     return Math.max(min, Math.min(max, value));
 }
 
-export function randomString() {
+/**
+ * Generate a random string.
+ */
+export function randomString(): string {
     return Math.random().toString(36);
-}
-
-/** Provider that defines when form controls have an error. */
-@Injectable({ providedIn: 'root' })
-export class ErrorStateMatcher {
-    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-        return !!(control?.invalid && (control.touched || form?.submitted));
-    }
 }
