@@ -158,7 +158,7 @@ describe('NxIsoDateAdapter', () => {
     });
 
     it('should format date according to given format', () => {
-        expect(adapter.format('2017-01-02', 'MM/DD/YYYY')).toEqual('01/02/2017');
-        expect(adapter.format('2017-01-02', 'DD/MM/YYYY')).toEqual('02/01/2017');
+        expect(adapter.format('2017-01-02', 'MM/DD/YYYY')).toBe('01/02/2017');
+        expect(adapter.format('2017-01-02', 'DD/MM/YYYY')).toBe('02/01/2017');
     });
 });

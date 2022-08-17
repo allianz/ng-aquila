@@ -72,7 +72,7 @@ describe('NxMultiYearView', () => {
             fixture.detectChanges();
 
             const normalizedYear: Date = fixture.componentInstance.selectedYear;
-            expect(normalizedYear.getFullYear()).toEqual(2001);
+            expect(normalizedYear.getFullYear()).toBe(2001);
         });
 
         it('should mark active date', () => {

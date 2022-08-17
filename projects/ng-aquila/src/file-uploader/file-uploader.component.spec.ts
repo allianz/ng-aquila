@@ -154,7 +154,7 @@ describe('NxFileUploaderComponent', () => {
         it('should set the control to dirty when value changes in the DOM', () => {
             createTestComponent(ReactiveFileUpload);
 
-            expect(testInstance.form.get('documents')?.dirty).withContext('Expected control to start out pristine.').toEqual(false);
+            expect(testInstance.form.get('documents')?.dirty).withContext('Expected control to start out pristine.').toBeFalse();
 
             let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
             fakeFile = Object.defineProperty(fakeFile, 'size', { value: 0, writable: false });
@@ -165,7 +165,7 @@ describe('NxFileUploaderComponent', () => {
 
             fixture.detectChanges();
 
-            expect(testInstance.form.dirty).withContext('Expected control to be dirty.').toEqual(true);
+            expect(testInstance.form.dirty).withContext('Expected control to be dirty.').toBeTrue();
         });
 
         it('should programmatically set the files', () => {

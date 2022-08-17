@@ -114,7 +114,7 @@ describe('NxMomentDateAdapter', () => {
     });
 
     it('should format date according to given format', () => {
-        expect(adapter.format(moment([2017, JAN, 2]), 'MM/DD/YYYY')).toEqual('01/02/2017');
-        expect(adapter.format(moment([2017, JAN, 2]), 'DD/MM/YYYY')).toEqual('02/01/2017');
+        expect(adapter.format(moment([2017, JAN, 2]), 'MM/DD/YYYY')).toBe('01/02/2017');
+        expect(adapter.format(moment([2017, JAN, 2]), 'DD/MM/YYYY')).toBe('02/01/2017');
     });
 });

@@ -1077,7 +1077,7 @@ describe('NxDropdownComponent', () => {
             flush();
 
             expectDropdownClose();
-            expect(dropdownInstance.value).toEqual('BMW');
+            expect(dropdownInstance.value).toBe('BMW');
         }));
 
         it('should close the dropdown on TAB if opened', fakeAsync(() => {
@@ -1309,7 +1309,7 @@ describe('NxDropdownComponent', () => {
 
         it('should set the tabindex of the select to 0 by default', fakeAsync(() => {
             createTestComponent(TabIndexTestComponent);
-            expect(dropdownElement.getAttribute('tabindex')).toEqual('0');
+            expect(dropdownElement.getAttribute('tabindex')).toBe('0');
         }));
 
         it('should be able to override the tabindex', fakeAsync(() => {
@@ -1324,11 +1324,11 @@ describe('NxDropdownComponent', () => {
             createTestComponent(TabIndexTestComponent);
             (fixture.componentInstance as TabIndexTestComponent).disabled = true;
             fixture.detectChanges();
-            expect(dropdownElement.getAttribute('tabindex')).toEqual('-1');
+            expect(dropdownElement.getAttribute('tabindex')).toBe('-1');
 
             (fixture.componentInstance as TabIndexTestComponent).disabled = false;
             fixture.detectChanges();
-            expect(dropdownElement.getAttribute('tabindex')).toEqual('0');
+            expect(dropdownElement.getAttribute('tabindex')).toBe('0');
         }));
 
         it('should be able to set the tabindex via the native attribute', fakeAsync(() => {

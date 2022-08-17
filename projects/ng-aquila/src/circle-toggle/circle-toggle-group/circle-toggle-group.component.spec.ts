@@ -151,9 +151,9 @@ describe('NxToggleButtonGroup', () => {
 
         fixture.detectChanges();
         tick();
-        expect(toggleComponent.buttons.toArray()[0].disabled).toEqual(true);
-        expect(toggleComponent.buttons.toArray()[1].disabled).toEqual(true);
-        expect(toggleComponent.buttons.toArray()[2].disabled).toEqual(true);
+        expect(toggleComponent.buttons.toArray()[0].disabled).toBeTrue();
+        expect(toggleComponent.buttons.toArray()[1].disabled).toBeTrue();
+        expect(toggleComponent.buttons.toArray()[2].disabled).toBeTrue();
     }));
 
     it('circle toggle components inherit negative style on change from toggle group', () => {

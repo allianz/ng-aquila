@@ -327,7 +327,7 @@ describe('NxDialog', () => {
             viewContainerFixture.detectChanges();
 
             const closeIconButton = overlayContainerElement.querySelector('.nx-modal__close') as HTMLElement;
-            expect(closeIconButton.getAttribute('aria-label')).toEqual('Close dialog');
+            expect(closeIconButton.getAttribute('aria-label')).toBe('Close dialog');
 
             closeIconButton.click();
             viewContainerFixture.detectChanges();
@@ -347,7 +347,7 @@ describe('NxDialog', () => {
 
             const closeIconButton = overlayContainerElement.querySelector('.nx-modal__close') as HTMLElement;
 
-            expect(closeIconButton.getAttribute('aria-label')).toEqual('best label');
+            expect(closeIconButton.getAttribute('aria-label')).toBe('best label');
         }));
     });
 

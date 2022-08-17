@@ -87,10 +87,10 @@ describe('NxPaginationComponent', () => {
     describe('helpers', () => {
         it('should always yield the minimal reachable page', () => {
             createTestComponent(SimplePagination);
-            expect(testInstance.paginationInstance.getMin()).toEqual(1);
+            expect(testInstance.paginationInstance.getMin()).toBe(1);
 
             testInstance.paginationInstance.totalNumberPages = 0;
-            expect(testInstance.paginationInstance.getMin()).toEqual(0);
+            expect(testInstance.paginationInstance.getMin()).toBe(0);
         });
     });
 
@@ -100,7 +100,7 @@ describe('NxPaginationComponent', () => {
             expect(currentPage && totalPages && nextArrowSimple).not.toBeNull();
             expect(currentPage.textContent).toContain('1');
             expect(totalPages.textContent).toContain('21');
-            expect(spanElement.nativeElement.textContent).toEqual(' Before ');
+            expect(spanElement.nativeElement.textContent).toBe(' Before ');
         });
 
         it('should emit an event when click next arrow', () => {
@@ -121,7 +121,7 @@ describe('NxPaginationComponent', () => {
             createTestComponent(SimplePaginationBeginat10);
             fixture.detectChanges();
             expect(currentPage && totalPages && prevArrowSimple).not.toBeNull();
-            expect(currentPage.textContent?.trim()).toEqual('10');
+            expect(currentPage.textContent?.trim()).toBe('10');
             prevArrowSimple.click();
             expect(testInstance.prevPage).toHaveBeenCalled();
         });
@@ -131,7 +131,7 @@ describe('NxPaginationComponent', () => {
             const simpleInstance = testInstance as SimplePagination;
             simpleInstance.count = 100;
             fixture.detectChanges();
-            expect(paginationInstance.totalNumberPages).toEqual(10);
+            expect(paginationInstance.totalNumberPages).toBe(10);
         });
     });
 
@@ -173,7 +173,7 @@ describe('NxPaginationComponent', () => {
             createTestComponent(AdvancedPaginationBeginat10);
             fixture.detectChanges();
             expect(pageElements && prevArrow).not.toBeNull();
-            expect(active.textContent?.trim()).toEqual('10');
+            expect(active.textContent?.trim()).toBe('10');
             prevArrow.click();
             expect(testInstance.prevPage).toHaveBeenCalled();
         });

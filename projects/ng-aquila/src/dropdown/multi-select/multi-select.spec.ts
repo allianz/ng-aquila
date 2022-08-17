@@ -553,19 +553,19 @@ describe('NxMultiSelectComponent', () => {
 
                     await multiSelectHarness.setFilter('');
                     expect(await multiSelectHarness.getOptions()).toHaveSize(4);
-                    expect(await (await (await multiSelectHarness.getOptions()).at(1)?.getLabel())?.text()).toEqual('Audi');
+                    expect(await (await (await multiSelectHarness.getOptions()).at(1)?.getLabel())?.text()).toBe('Audi');
 
                     await multiSelectHarness.setFilter('Aud');
                     expect(await multiSelectHarness.getOptions()).toHaveSize(0);
                     await multiSelectHarness.setFilter('Audi');
                     expect(await multiSelectHarness.getOptions()).toHaveSize(1);
-                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toEqual('Audi');
+                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toBe('Audi');
 
                     await multiSelectHarness.setFilter('BM');
                     expect(await multiSelectHarness.getOptions()).toHaveSize(0);
                     await multiSelectHarness.setFilter('BMW');
                     expect(await multiSelectHarness.getOptions()).toHaveSize(1);
-                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toEqual('BMW');
+                    expect(await (await (await multiSelectHarness.getOptions()).at(0)?.getLabel())?.text()).toBe('BMW');
                 });
             });
 

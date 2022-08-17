@@ -184,7 +184,7 @@ describe('NxCalendarComponent', () => {
             (calendarElement.querySelector('.nx-calendar-body-active') as HTMLElement).click();
 
             const normalizedMonth: Date = fixture.componentInstance.selectedMonth;
-            expect(normalizedMonth.getMonth()).toEqual(0);
+            expect(normalizedMonth.getMonth()).toBe(0);
         });
 
         it('should emit the selected year on cell clicked in multiyear view', () => {
@@ -199,7 +199,7 @@ describe('NxCalendarComponent', () => {
             fixture.detectChanges();
 
             const normalizedYear: Date = fixture.componentInstance.selectedYear;
-            expect(normalizedYear.getFullYear()).toEqual(2017);
+            expect(normalizedYear.getFullYear()).toBe(2017);
         });
 
         it('should re-render when the i18n labels have changed', inject([NxDatepickerIntl], (intl: NxDatepickerIntl) => {

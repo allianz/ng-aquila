@@ -304,9 +304,9 @@ describe('NxNativeDateAdapter', () => {
 
     it('should format', () => {
         if (SUPPORTS_INTL) {
-            expect(adapter.format(new Date(2017, JAN, 1), {})).toEqual('1/1/2017');
+            expect(adapter.format(new Date(2017, JAN, 1), {})).toBe('1/1/2017');
         } else {
-            expect(adapter.format(new Date(2017, JAN, 1), {})).toEqual('Sun Jan 01 2017');
+            expect(adapter.format(new Date(2017, JAN, 1), {})).toBe('Sun Jan 01 2017');
         }
     });
 
@@ -318,7 +318,7 @@ describe('NxNativeDateAdapter', () => {
                     month: 'long',
                     day: 'numeric',
                 }),
-            ).toEqual('January 1, 2017');
+            ).toBe('January 1, 2017');
         } else {
             expect(
                 adapter.format(new Date(2017, JAN, 1), {
@@ -326,7 +326,7 @@ describe('NxNativeDateAdapter', () => {
                     month: 'long',
                     day: 'numeric',
                 }),
-            ).toEqual('Sun Jan 01 2017');
+            ).toBe('Sun Jan 01 2017');
         }
     });
 
@@ -335,12 +335,12 @@ describe('NxNativeDateAdapter', () => {
         if (SUPPORTS_INTL) {
             // Edge & IE use a different format in Japanese.
             if (platform.EDGE || platform.TRIDENT) {
-                expect(adapter.format(new Date(2017, JAN, 1), {})).toEqual('2017年1月1日');
+                expect(adapter.format(new Date(2017, JAN, 1), {})).toBe('2017年1月1日');
             } else {
-                expect(adapter.format(new Date(2017, JAN, 1), {})).toEqual('2017/1/1');
+                expect(adapter.format(new Date(2017, JAN, 1), {})).toBe('2017/1/1');
             }
         } else {
-            expect(adapter.format(new Date(2017, JAN, 1), {})).toEqual('Sun Jan 01 2017');
+            expect(adapter.format(new Date(2017, JAN, 1), {})).toBe('Sun Jan 01 2017');
         }
     });
 

@@ -202,7 +202,7 @@ describe('NxRadioComponent', () => {
             const returnValue = latestCall.args[0];
 
             expect(returnValue.source).toEqual(instance);
-            expect(returnValue.value).toEqual('0');
+            expect(returnValue.value).toBe('0');
 
             subscription.unsubscribe();
         });

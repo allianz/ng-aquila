@@ -91,7 +91,7 @@ describe('NxYearView', () => {
 
             const normalizedMonth: Date = fixture.componentInstance.selectedMonth;
 
-            expect(normalizedMonth.getMonth()).toEqual(11);
+            expect(normalizedMonth.getMonth()).toBe(11);
         });
 
         it('should mark active date', () => {

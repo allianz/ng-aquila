@@ -248,11 +248,11 @@ describe('NxDatefieldDirective with Moment', () => {
         it('should reflect the value in the native input element', () => {
             createTestComponent(ReactiveDatefield);
             fixture.detectChanges();
-            expect(nativeElement.value).toEqual('2018/01/01');
+            expect(nativeElement.value).toBe('2018/01/01');
             expect(moment(datefieldInstance.value)).toEqual(moment([2018, 0, 1]));
             testInstance.form.reset();
-            expect(nativeElement.value).toEqual('');
-            expect(datefieldInstance.value).toEqual(null);
+            expect(nativeElement.value).toBe('');
+            expect(datefieldInstance.value).toBeNull();
         });
     });
 });

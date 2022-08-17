@@ -131,7 +131,7 @@ describe('NxFormfieldComponent', () => {
 
         it('prefers a label directive over label input', () => {
             createTestComponent(CustomLabelAndInputFormfield);
-            expect(fixture.nativeElement.textContent).toEqual('directiveLabel');
+            expect(fixture.nativeElement.textContent).toBe('directiveLabel');
         });
 
         it("doesn't show the error by default", () => {

@@ -51,42 +51,42 @@ describe('NxLayoutDirective', () => {
     }));
 
     it('should test with input nxLayout="grid"', () => {
-        expect(getClassesCreated(BasicGridLayout)).toEqual('nx-grid');
+        expect(getClassesCreated(BasicGridLayout)).toBe('nx-grid');
     });
 
     it('should test with input nxLayout="grid" and class="test"', () => {
-        expect(getClassesCreated(BasicGridLayoutClassTest)).toEqual('nx-grid test');
+        expect(getClassesCreated(BasicGridLayoutClassTest)).toBe('nx-grid test');
     });
 
     it('should test with input nxLayout="grid nogutters"', () => {
-        expect(getClassesCreated(BasicNoGutters)).toEqual('nx-grid nx-grid--no-gutters');
+        expect(getClassesCreated(BasicNoGutters)).toBe('nx-grid nx-grid--no-gutters');
     });
 
     it('should test with input nxLayout="grid nopadding"', () => {
-        expect(getClassesCreated(BasicNoPadding)).toEqual('nx-grid nx-grid--no-padding');
+        expect(getClassesCreated(BasicNoPadding)).toBe('nx-grid nx-grid--no-padding');
     });
 
     it('should test with input nxLayout="grid maxwidth"', () => {
-        expect(getClassesCreated(BasicMaxWidth)).toEqual('nx-grid nx-grid--max-width');
+        expect(getClassesCreated(BasicMaxWidth)).toBe('nx-grid nx-grid--max-width');
     });
 
     it('should test with input "grid" maxwidth nogutters', () => {
-        expect(getClassesCreated(BasicCombinate)).toEqual('nx-grid nx-grid--max-width nx-grid--no-gutters');
+        expect(getClassesCreated(BasicCombinate)).toBe('nx-grid nx-grid--max-width nx-grid--no-gutters');
     });
 
     it('should test with input "grid" nogutters maxwidth', () => {
-        expect(getClassesCreated(Basic2Combinate)).toEqual('nx-grid nx-grid--max-width nx-grid--no-gutters');
+        expect(getClassesCreated(Basic2Combinate)).toBe('nx-grid nx-grid--max-width nx-grid--no-gutters');
     });
 
     it('should test with input nogutters grid maxwidth', () => {
-        expect(getClassesCreated(BasicCompleteReverse)).toEqual('nx-grid nx-grid--max-width nx-grid--no-gutters');
+        expect(getClassesCreated(BasicCompleteReverse)).toBe('nx-grid nx-grid--max-width nx-grid--no-gutters');
     });
 
     it('should update class names after input change', () => {
         createTestComponent(DynamicLayout);
         (testInstance as DynamicLayout).layout = 'grid nogutters';
         fixture.detectChanges();
-        expect(sortedClassNames(divNativeElement)).toEqual('nx-grid nx-grid--no-gutters');
+        expect(sortedClassNames(divNativeElement)).toBe('nx-grid nx-grid--no-gutters');
     });
 });
 

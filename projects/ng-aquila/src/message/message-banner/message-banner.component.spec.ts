@@ -125,12 +125,12 @@ describe('NxMessageBannerComponent', () => {
             componentInstance.closable = true;
             fixture.detectChanges();
             let closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
-            expect(closeButton.getAttribute('aria-label')).toEqual('Close dialog');
+            expect(closeButton.getAttribute('aria-label')).toBe('Close dialog');
 
             componentInstance.closeButtonLabel = 'Close dialog 2';
             fixture.detectChanges();
             closeButton = fixture.nativeElement.querySelector('.nx-message__close-icon');
-            expect(closeButton.getAttribute('aria-label')).toEqual('Close dialog 2');
+            expect(closeButton.getAttribute('aria-label')).toBe('Close dialog 2');
         });
 
         it('should set proper icon on context change', () => {

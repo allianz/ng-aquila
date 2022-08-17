@@ -462,7 +462,7 @@ describe('NxNumberStepperComponent', () => {
             inputElement.dispatchEvent(new Event('blur'));
             fixture.detectChanges();
 
-            expect(testInstance.testForm.get('count')!.value).withContext('Expected value to change once control is blurred.').toEqual(2);
+            expect(testInstance.testForm.get('count')!.value).withContext('Expected value to change once control is blurred.').toBe(2);
         });
     });
 

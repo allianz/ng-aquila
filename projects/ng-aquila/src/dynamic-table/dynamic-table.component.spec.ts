@@ -98,7 +98,7 @@ describe('NxDynamicTableComponent', () => {
         it('sets column styles', () => {
             createTestComponent(BasicDynamicTable);
             expect(headerCellElements[1].classList.contains('column-header-class')).toBeTrue();
-            expect(headerCellElements[1].style.width).toEqual('100px');
+            expect(headerCellElements[1].style.width).toBe('100px');
             expect(fixture.nativeElement.querySelector('.column-class')).toBeTruthy();
         });
     });

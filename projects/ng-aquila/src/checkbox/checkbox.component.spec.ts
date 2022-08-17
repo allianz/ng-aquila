@@ -97,7 +97,7 @@ describe('NxCheckboxComponent', () => {
     it('can be disabled', () => {
         createTestComponent(CheckboxDisabled);
 
-        expect(inputElement.disabled).toEqual(true);
+        expect(inputElement.disabled).toBeTrue();
     });
 
     it('creates a non-negative checkbox', () => {
@@ -240,7 +240,7 @@ describe('NxCheckboxComponent', () => {
             fixture.detectChanges();
             tick();
 
-            expect(inputElement.disabled).toEqual(true);
+            expect(inputElement.disabled).toBeTrue();
         }));
 
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
@@ -261,14 +261,14 @@ describe('NxCheckboxComponent', () => {
             fixture.detectChanges();
             flush();
 
-            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to start out pristine.').toEqual(false);
+            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to start out pristine.').toBeFalse();
 
             labelElement.click();
             tick();
             fixture.detectChanges();
             flush();
 
-            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to be dirty.').toEqual(true);
+            expect(testInstance.testForm.get('checkbox')!.dirty).withContext('Expected control to be dirty.').toBeTrue();
         }));
     });
 

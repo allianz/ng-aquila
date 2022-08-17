@@ -71,7 +71,7 @@ describe('NxSelectableCardComponent', () => {
         createTestComponent(BasicSelectableCard);
         testInstance.disabled = true;
         fixture.detectChanges();
-        expect(inputElement.disabled).toEqual(true);
+        expect(inputElement.disabled).toBeTrue();
     });
 
     it('toggles the checked state based on [checked] input', () => {
@@ -119,14 +119,14 @@ describe('NxSelectableCardComponent', () => {
             fixture.detectChanges();
             tick();
 
-            expect(inputElement.disabled).toEqual(true);
+            expect(inputElement.disabled).toBeTrue();
 
             testInstance.testForm.controls.card.enable();
 
             fixture.detectChanges();
             tick();
 
-            expect(inputElement.disabled).toEqual(false);
+            expect(inputElement.disabled).toBeFalse();
         }));
 
         it('toggles error states accordingly when in a reactive form', fakeAsync(() => {
