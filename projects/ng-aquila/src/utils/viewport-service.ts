@@ -1,6 +1,6 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { asyncScheduler, fromEvent, Observable, Subject } from 'rxjs';
-import { map, startWith, takeUntil, throttleTime } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { asyncScheduler, fromEvent, Observable } from 'rxjs';
+import { map, startWith, throttleTime } from 'rxjs/operators';
 
 /** Available breakpoints to subscribe to. */
 export enum NxBreakpoints {
@@ -18,20 +18,14 @@ export enum NxBreakpoints {
 
 const DEFAULT_THROTTLE_TIME = 200;
 
-/** Service subscribing to window resize events and providing breakpoint matching functions. */
-@Injectable({ providedIn: 'root' })
-export class NxViewportService implements OnDestroy {
-    initialViewportWidth = 0;
-    viewportChange$: Observable<number>;
-
-    private readonly _destroyed = new Subject<void>();
-
-    constructor() {
-        this.viewportChange$ = fromEvent(window, 'resize').pipe(
-            map(() => window.innerWidth),
-            takeUntil(this._destroyed),
-        );
-    }
+/**
+ *  Service subscribing to window resize events and providing breakpoint matching functions.
+ */
+@Injectable({
+    providedIn: 'root',
+})
+export class NxViewportService {
+    readonly viewportChange$: Observable<number> = fromEvent(window, 'resize').pipe(map(() => window.innerWidth));
 
     /** Returns whether the current viewport width is greater than or equal (>=) to minSize. */
     min(minSize: NxBreakpoints, throttleTimeMs = DEFAULT_THROTTLE_TIME): Observable<boolean> {
@@ -58,10 +52,5 @@ export class NxViewportService implements OnDestroy {
             throttleTime(throttleTimeMs, asyncScheduler, { trailing: true }),
             map(windowInnerWidth => windowInnerWidth >= minSize && windowInnerWidth < maxSize),
         );
-    }
-
-    ngOnDestroy(): void {
-        this._destroyed.next();
-        this._destroyed.complete();
     }
 }
