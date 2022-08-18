@@ -63,10 +63,14 @@
         padding-right: nx-spacer(2m);
         padding-left: initial;
     }
-}
 
-// focus style
-:host-context([data-whatinput='keyboard']) ::ng-deep a:focus {
-    @include focus-style;
-    border-radius: nx-border-radius(s);
+    a {
+        display: flex; // get icons aligned with text
+        align-items: start; // align with the top
+    }
+
+    &.cdk-keyboard-focused a {
+        border-radius: nx-border-radius(s);
+        @include focus-style;
+    }
 }
