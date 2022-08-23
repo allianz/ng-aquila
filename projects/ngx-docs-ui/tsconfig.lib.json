@@ -5,8 +5,7 @@
         "declaration": true,
         "declarationMap": true,
         "inlineSources": true,
-        "types": [],
-        "noImplicitOverride": true
+        "types": []
     },
     "angularCompilerOptions": {
         "skipTemplateCodegen": true,

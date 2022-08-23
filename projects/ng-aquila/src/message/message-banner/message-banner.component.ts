@@ -17,17 +17,17 @@ export class NxMessageBannerComponent extends NxMessageComponent {
      * Sets the context of the message banner.
      * The message box will color accordingly. Default: 'info'
      */
-    @Input('context') override set context(value: BANNER_CONTEXT) {
+    @Input('context') set context(value: BANNER_CONTEXT) {
         this._updateContext(value);
     }
-    override get context(): BANNER_CONTEXT {
+    get context(): BANNER_CONTEXT {
         return this._context as BANNER_CONTEXT;
     }
-    override _context: CONTEXT = 'info';
+    _context: CONTEXT = 'info';
 
-    override _closable = true;
+    _closable = true;
 
-    override _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
+    _allowedContexts: CONTEXT[] = ['info', 'error', 'warning'];
 
     constructor(_cdr: ChangeDetectorRef, _fm: FocusMonitor) {
         super(_cdr, _fm);

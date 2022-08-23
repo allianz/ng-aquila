@@ -45,7 +45,7 @@ export class NxSvgIconLiteral extends NxSvgIcon {
 export class NxSvgIconFromUrl extends NxSvgIcon {
     url: string;
 
-    protected override _httpClient: HttpClient;
+    protected _httpClient: HttpClient;
 
     // used to not send multiple requests for the same url
     private _pendingRequest?: Observable<any>;
@@ -68,7 +68,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     }
 
     /** Returns the content. If the SVG is not already loaded it fetches the SVG from icons' URL */
-    override getContent(): Observable<SVGElement> {
+    getContent(): Observable<SVGElement> {
         return this._loadSvgIcon();
     }
 

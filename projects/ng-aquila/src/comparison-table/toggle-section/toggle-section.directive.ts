@@ -14,7 +14,7 @@ import { NxToggleSectionHeaderComponent } from './toggle-section-header.componen
 })
 export class NxToggleSectionDirective extends NxToggleSectionBase implements NxTableContentElement {
     /** @docs-private */
-    @ContentChild(NxToggleSectionHeaderComponent, { static: false }) override toggleSectionHeader!: NxToggleSectionHeaderComponent;
+    @ContentChild(NxToggleSectionHeaderComponent, { static: false }) toggleSectionHeader!: NxToggleSectionHeaderComponent;
 
     /** @docs-private */
     @ContentChildren(NxTableContentElement) rows!: QueryList<NxTableContentElement>;

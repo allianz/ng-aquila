@@ -25,6 +25,9 @@ const INTERNAL_METHODS = [
 
     // tabIndex exists on all elements, no need to document it
     'tabIndex',
+
+    // override is a special typescript keyword (it gets printed out as property for some reason)
+    'override',
 ];
 
 /**

@@ -51,7 +51,7 @@ import { NxTreeNodeOutletDirective } from './outlet';
 })
 export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit {
     // Outlets within the tree's template where the dataNodes will be inserted.
-    @ViewChild(NxTreeNodeOutletDirective, { static: true }) override _nodeOutlet!: NxTreeNodeOutletDirective;
+    @ViewChild(NxTreeNodeOutletDirective, { static: true }) _nodeOutlet!: NxTreeNodeOutletDirective;
 
     /** The node map map data nodes to CdkTreeNodes */
     protected nodeMap: Map<T, FocusableOption> = new Map<T, FocusableOption>();
@@ -92,12 +92,12 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
         super(_wrapperDiffers, _cdr);
     }
 
-    override ngOnInit(): void {
+    ngOnInit(): void {
         super.ngOnInit();
         this._monitorTreeFocus();
     }
 
-    override ngOnDestroy(): void {
+    ngOnDestroy(): void {
         super.ngOnDestroy();
         this._wrapperOnDestroy.next();
         this._wrapperOnDestroy.complete();
@@ -366,7 +366,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
     /**
      * Extended CdkTree method to track new nodes for a11y.
      */
-    override insertNode(nodeData: T, index: number, viewContainer?: ViewContainerRef, parentData?: T) {
+    insertNode(nodeData: T, index: number, viewContainer?: ViewContainerRef, parentData?: T) {
         super.insertNode(nodeData, index, viewContainer, parentData);
 
         if (CdkTreeNode.mostRecentTreeNode) {
@@ -379,7 +379,7 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
      * ⚠️  Here we override the method from cdk tree ⚠️
      * Adds some extra method calls to update the a11y node tracking.
      */
-    override renderNodeChanges(
+    renderNodeChanges(
         data: T[],
         dataDiffer: IterableDiffer<T> = this['_dataDiffer'],
         viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer,

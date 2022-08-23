@@ -89,7 +89,7 @@ export class NxComparisonTableSelectButton extends NxButtonBase implements OnDes
         });
     }
 
-    override ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

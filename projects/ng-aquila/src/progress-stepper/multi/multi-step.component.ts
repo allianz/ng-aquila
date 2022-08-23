@@ -35,7 +35,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
      * We need to set the _stepHeader property as ViewChildren here
      * as it is a ContentChildren query in the CDK
      */
-    @ViewChildren(NxMultiStepItemComponent) override _stepHeader!: QueryList<NxMultiStepItemComponent>;
+    @ViewChildren(NxMultiStepItemComponent) _stepHeader!: QueryList<NxMultiStepItemComponent>;
 
     /** @docs-private */
     @ContentChildren(NxMultiStepperGroupComponent, { descendants: true }) groups!: QueryList<NxMultiStepperGroupComponent>;
@@ -62,7 +62,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
         this['_keyManager'].withVerticalOrientation(this._direction === 'vertical');
     }
 
-    override ngAfterContentInit(): void {
+    ngAfterContentInit(): void {
         super.ngAfterContentInit();
 
         if (this.groups.length) {
@@ -76,7 +76,7 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
         });
     }
 
-    override ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this._destroyed.next();
         this._destroyed.complete();
     }

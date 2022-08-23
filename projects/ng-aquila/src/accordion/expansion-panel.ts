@@ -94,7 +94,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
     readonly _inputChanges = new Subject<SimpleChanges>();
 
     constructor(
-        /** @docs-private */ @Optional() @SkipSelf() override readonly accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
+        /** @docs-private */ @Optional() @SkipSelf() readonly accordion: NxAccordionDirective, // not typed as nullable: super class does not support `null`
         _cdr: ChangeDetectorRef,
         _expansionDispatcher: UniqueSelectionDispatcher,
         private readonly _viewContainerRef: ViewContainerRef,
@@ -132,7 +132,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         this._inputChanges.next(changes);
     }
 
-    override ngOnDestroy(): void {
+    ngOnDestroy(): void {
         super.ngOnDestroy();
         this._inputChanges.complete();
     }

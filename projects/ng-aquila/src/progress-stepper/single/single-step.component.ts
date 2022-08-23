@@ -26,7 +26,7 @@ export class NxSingleStepperComponent extends NxProgressStepperDirective {
     }
 
     /** @docs-private */
-    override get currentLabel() {
+    get currentLabel() {
         const step = this.currentStep;
         const label = step!.stepLabel || step!.label;
 

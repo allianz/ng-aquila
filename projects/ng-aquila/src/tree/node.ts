@@ -31,7 +31,7 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy 
 
     @ContentChild(NxTreeNodeActionItem) actionItem!: FocusableOption;
 
-    override ngOnDestroy(): void {
+    ngOnDestroy(): void {
         this._focusMonitor.stopMonitoring(this._elementRef.nativeElement);
         super.ngOnDestroy();
     }
@@ -41,7 +41,7 @@ export class NxTreeNodeComponent<T> extends CdkTreeNode<T> implements OnDestroy 
         (this._tree as NxTreeComponent<T>).updateFocusedData(this._data);
     }
 
-    override focus(): void {
+    focus(): void {
         if (this.actionItem) {
             this.actionItem.focus?.();
         } else {
