@@ -79,3 +79,8 @@ The thumb label on top of the slider can be hidden by changing the `[thumbLabel]
 The Min/Max labels under the slider can be hidden by changing the `[hideLabels]` input property to true.
 
 <!-- example(slider-labels) -->
+
+### Slider with ticks
+
+Tick under the slider can be shown with `[tickInterval]` which relative to `[nxStep]`
+<!-- example(slider-tick) -->

@@ -1,0 +1,35 @@
+Configure slider
+<div nxRow class="nx-margin-top-s">
+    <div nxCol="12,6,6,6,3">
+        <nx-formfield nxLabel="Min">
+            <input nxInput type="number" [(ngModel)]="min" />
+        </nx-formfield>
+    </div>
+    <div nxCol="12,6,6,6,3">
+        <nx-formfield nxLabel="Max">
+            <input nxInput type="number" [(ngModel)]="max" />
+        </nx-formfield>
+    </div>
+    <div nxCol="12,6,6,6,3">
+        <nx-formfield nxLabel="Step">
+            <input nxInput type="number" [(ngModel)]="step" />
+        </nx-formfield>
+    </div>
+    <div nxCol="12,6,6,6,3">
+        <nx-formfield nxLabel="TickInterval">
+            <input nxInput type="number" [(ngModel)]="interval" />
+        </nx-formfield>
+    </div>
+</div>
+
+<nx-slider
+    [nxMin]="min"
+    [nxMax]="max"
+    [nxStep]="step"
+    [tickInterval]="interval"
+    nxLabel="Slider with ticks"
+    [(nxValue)]="sliderDemoValue"
+>
+</nx-slider>
+
+<div class="nx-margin-top-s">Slider value: {{ sliderDemoValue }}</div>

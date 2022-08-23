@@ -15,8 +15,10 @@ import { SliderReactiveExampleComponent } from './slider-reactive/slider-reactiv
 import { SliderTemplateExampleComponent } from './slider-template/slider-template-example';
 import { SliderTextualExampleComponent } from './slider-textual/slider-textual-example';
 import { SliderThumbExampleComponent } from './slider-thumb/slider-thumb-example';
+import { SliderTickExampleComponent } from './slider-tick/slider-tick-example';
 
 const EXAMPLES = [
+    SliderTickExampleComponent,
     SliderBasicExampleComponent,
     SliderDecimalExampleComponent,
     SliderDefaultExampleComponent,
@@ -39,6 +41,7 @@ const EXAMPLES = [
 export class SliderExamplesModule {
     static components() {
         return {
+            'slider-tick': SliderTickExampleComponent,
             'slider-basic': SliderBasicExampleComponent,
             'slider-decimal': SliderDecimalExampleComponent,
             'slider-default': SliderDefaultExampleComponent,

@@ -1,6 +1,6 @@
 <label class="nx-slider__label" [id]="id + '-label'" [attr.for]="id + '-handle'" (click)="_focusHandleElement()">{{ label }}</label>
 
-<div class="nx-slider__wrapper" (click)="_sliderClick($event)">
+<div class="nx-slider__wrapper" (click)="_sliderClick($event)" [class.nx-slider__has-ticks]="!tickInterval">
     <span class="nx-slider__background">
         <span class="nx-slider__filler" [style.width.%]="_percentageValue">
             <div
@@ -25,6 +25,15 @@
             </div>
         </span>
     </span>
+    <div *ngIf="tickInterval" class="nx-slider__tick-container">
+        <div
+            *ngFor="let t of ticks"
+            class="nx-slider__tick"
+            [class.nx-slider__tick-primary]="t.isPrimary"
+            [class.nx-slider__tick-hidden]="t.hideTick"
+            [ngStyle]="{ width: t.gapSize + '%' }"
+        ></div>
+    </div>
 </div>
 
 <div *ngIf="!hideLabels" class="nx-slider__label-container">

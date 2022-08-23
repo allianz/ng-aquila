@@ -22,6 +22,12 @@ import { clamp } from '@aposin/ng-aquila/utils';
 import { Decimal } from 'decimal.js';
 import { fromEvent, Subscription } from 'rxjs';
 
+interface TickItem {
+    gapSize: number;
+    hideTick: boolean;
+    isPrimary: boolean;
+}
+
 let nextId = 0;
 
 const DEFAULT_MIN = 0;
@@ -54,6 +60,22 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _decimalPlaces = 0;
     private _thumbLabel = true;
 
+    /**
+     * How often to show ticks. Relative to the step so that a tick always appears on a step.
+     * Ex: Tick interval of 4 with a step of 3 will draw a tick every 4 steps (every 12 values).
+     */
+    @Input('tickInterval') set tickInterval(value: NumberInput) {
+        this._tickInterval = coerceNumberProperty(value);
+        this.ticks = this.getTicks(this.min, this.max, this.step, this._tickInterval);
+        this._cdr.markForCheck();
+    }
+    get tickInterval(): number {
+        return this._tickInterval;
+    }
+    private _tickInterval = 0;
+
+    ticks: TickItem[] = [];
+
     @ViewChild('handle', { static: true }) private _handleElement!: ElementRef;
 
     _labelPosition: string = DEFAULT_LABEL_POSITION;
@@ -83,6 +105,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the minimum value (Default: 0). */
     @Input('nxMin') set min(value: NumberInput) {
         this._min = coerceNumberProperty(value);
+        this.ticks = this.getTicks(this._min, this.max, this.step, this.tickInterval);
         this._cdr.markForCheck();
     }
     get min(): number {
@@ -93,6 +116,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the maximum value (Default: 100). */
     @Input('nxMax') set max(value: NumberInput) {
         this._max = coerceNumberProperty(value);
+        this.ticks = this.getTicks(this.min, this._max, this.step, this.tickInterval);
         this._cdr.markForCheck();
     }
     get max(): number {
@@ -103,10 +127,11 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the step size by which the value of the slider can be increased or decreased (Default: 1). */
     @Input('nxStep') set step(value: NumberInput) {
         this._step = coerceNumberProperty(value, this._step);
-
+        this.ticks = this.getTicks(this.min, this.max, this._step, this._tickInterval);
         if (this._step % 1 !== 0) {
             this._decimalPlaces = this._step.toString().split('.').pop()!.length;
         }
+        this._cdr.markForCheck();
     }
     get step(): number {
         return this._step;
@@ -484,5 +509,24 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     private _getPositionFromEvent(event: MouseEvent | TouchEvent): number {
         const cursor: any = event.type.includes('touch') ? (event as TouchEvent).touches.item(0) : event;
         return cursor.clientX;
+    }
+
+    private getTicks(min: number, max: number, step: number, interval: number): TickItem[] {
+        if (!interval) {
+            return [];
+        }
+
+        const range = max - min;
+        const stepProduct = step * interval;
+        const gapSize = (stepProduct / range) * 100; // %
+        const numberOfTicks = Math.floor(100 / gapSize);
+        const spaceLeft = 100 - gapSize * numberOfTicks; // %
+        const primaryPoint = range / 2;
+
+        return Array.from({ length: numberOfTicks }, (_, i) => ({
+            gapSize,
+            hideTick: i + 1 === numberOfTicks && spaceLeft <= 3,
+            isPrimary: (i + 1) * stepProduct === primaryPoint,
+        }));
     }
 }

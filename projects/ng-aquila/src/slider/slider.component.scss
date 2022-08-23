@@ -21,7 +21,13 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 
 .nx-slider__wrapper {
     width: 100%;
-    padding: $wrapper-padding-top 0 $wrapper-padding-bottom;
+    padding-top: $wrapper-padding-top;
+    padding-left: 0;
+    padding-right: 0;
+
+    &.nx-slider__has-ticks {
+        padding-bottom: $wrapper-padding-bottom;
+    }
 }
 
 .nx-slider__background {
@@ -32,6 +38,29 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
     border-radius: nx-border-radius(xs);
     white-space: nowrap;
     cursor: pointer;
+}
+
+.nx-slider__tick-container {
+    margin-top: 9px;
+    display: flex;
+    border-left: 1px solid v(slider-value-background-color);
+    border-right: 1px solid v(slider-value-background-color);
+    height: 9px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nx-slider__tick {
+    height: 5px;
+    display: flex;
+    border-right: 1px solid v(slider-value-background-color);
+
+    &.nx-slider__tick-primary {
+        height: 9px;
+    }
+    &.nx-slider__tick-hidden {
+        border: none;
+    }
 }
 
 .nx-slider__filler {
