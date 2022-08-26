@@ -4,7 +4,9 @@
     (click)="openFromTemplate()"
     >open dialog</button
 >
+
 <br />
+
 The user clicked on: {{actionResult}}
 
 <ng-template #template>
@@ -39,14 +41,14 @@ The user clicked on: {{actionResult}}
     </div>
     <div nxModalActions>
         <button
-            nxModalClose="Disagree"
+            nxModalClose="disagree"
             class="nx-margin-bottom-0 nx-margin-right-xs"
             nxButton="small secondary"
             type="button"
             >Disagree</button
         >
         <button
-            nxModalClose="Agree"
+            nxModalClose="agree"
             class="nx-margin-bottom-0"
             nxButton="small"
             type="button"

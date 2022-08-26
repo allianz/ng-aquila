@@ -15,11 +15,20 @@ The `NxDialogService` can be used to open modals from components or predefined t
 A modal can be opened by using the `open` method of the service and passing an optional configuration object as a second parameter as shown below. The return object of the open function is a reference to the opened modal, which can be used for closing the modal or subscribing to its closing events.
 
 ```ts
-let myDialogRef = dialogService.open(MyModalComponent, {
+const myDialogData: MyDialogData = { /* some data */ };
+
+const myDialogRef: NxModalRef<MyDialogComponent, MyDialogResult> = this.dialogService.open(MyDialogComponent, {
     width: '600px',
+    data: myDialogData,
 });
 
-myDialogRef.close();
+// always support undefined result type for easily closable dialogs
+myDialogRef.beforeClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+});
+
+// result parameter is optional, defaults to undefined
+myDialogRef.close('some dialog result');
 ```
 
 The example below shows how the modal dialog can be opened **with a template** and **with a component**. If you use a specific component for your modal you have to include it in the list of `entryComponents` in your `NgModule`, as it gets instantiated at run-time and won't be found otherwise.
@@ -30,11 +39,13 @@ The example below shows how the modal dialog can be opened **with a template** a
 
 You can close a dialog in three different ways:
 
--   by using the option `closeIconButton="true"` in the `NxModalConfig` to show a "X" close icon in the modal which can be used for closing
--   by using the `myDialog.close()` method on a `NxModalRef` to close the dialog programatically
--   by using the `nxModalClose` directive on an action button
+-   set `NxModalConfig.closeIconButton` to `true` to show a standard close button, returning `undefined` as result.
+-   call `NxModalRef.close()` programatically, optionally with a result parameter. Returns `undefined` by default.
+-   use `nxModalClose` directive on an action button, optionally with a result input. Returns `undefined` by default.
 
-When using the last two options you can also pass a result object/string on close. The three different closing variants are demonstrated in the example below:
+The dialog result can be observed by subscribing to `NxModalRef.beforeClosed()` and `NxModalRef.afterClosed()` observables.
+
+The three different closing variants are demonstrated in the example below:
 
 <!-- example(modal-closing) -->
 

@@ -23,10 +23,10 @@ export class ModalOpeningExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
     @ViewChild('template2') templateRef2!: TemplateRef<any>;
 
-    templateDialogRef!: NxModalRef<any>;
-    componentDialogRef!: NxModalRef<SimpleModalComponent>;
+    templateDialogRef?: NxModalRef<any>;
+    componentDialogRef?: NxModalRef<SimpleModalComponent>;
 
-    constructor(readonly dialogService: NxDialogService) {}
+    constructor(private readonly dialogService: NxDialogService) {}
 
     openFromTemplate(): void {
         this.templateDialogRef = this.dialogService.open(this.templateRef, {
@@ -45,6 +45,6 @@ export class ModalOpeningExampleComponent {
     }
 
     closeTemplateDialog() {
-        this.templateDialogRef.close();
+        this.templateDialogRef?.close();
     }
 }

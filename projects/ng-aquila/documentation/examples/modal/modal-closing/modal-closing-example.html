@@ -4,7 +4,9 @@
     (click)="openFromTemplate()"
     >open modal</button
 >
+
 <br />
+
 The user clicked on: {{actionResult}}
 
 <ng-template #template>
@@ -19,14 +21,14 @@ The user clicked on: {{actionResult}}
     </div>
     <div nxModalActions>
         <button
-            (click)="closeDialog('Cancel')"
+            (click)="closeDialog('cancel')"
             class="nx-margin-bottom-0 nx-margin-right-xs"
             nxButton="small secondary"
             type="button"
             >Cancel</button
         >
         <button
-            nxModalClose="Proceed"
+            nxModalClose="proceed"
             class="nx-margin-bottom-0"
             nxButton="small"
             type="button"

@@ -13,10 +13,10 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 export class ModalWithDirectionExampleComponent {
     @ViewChild('template') templateRef!: TemplateRef<any>;
 
-    templateDialogRef!: NxModalRef<any>;
+    templateDialogRef?: NxModalRef<any>;
 
     constructor(
-        readonly dialogService: NxDialogService,
+        private readonly dialogService: NxDialogService,
         private readonly dir: Directionality,
     ) {}
 
@@ -28,6 +28,6 @@ export class ModalWithDirectionExampleComponent {
     }
 
     closeTemplateDialog() {
-        this.templateDialogRef.close();
+        this.templateDialogRef?.close();
     }
 }
