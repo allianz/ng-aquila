@@ -144,6 +144,7 @@ $action-bar-height: nx-spacer(2xl);
     @include media-breakpoint-down('small') {
         // needed because of the absolute positioning of the action bar
         max-height: calc(70vh - #{$action-bar-height} - #{nx-spacer(4m)});
+        margin: 0 -#{nx-spacer(2m)};
     }
 }
 
