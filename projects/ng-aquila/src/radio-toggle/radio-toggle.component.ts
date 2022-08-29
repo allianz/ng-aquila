@@ -74,7 +74,7 @@ export class NxRadioToggleComponent implements ControlValueAccessor, OnDestroy, 
     private _name!: string;
 
     /** @docs-private */
-    @ContentChildren(NxRadioToggleButtonBaseComponent) toggleButtons: QueryList<NxRadioToggleButtonBaseComponent> = new QueryList();
+    @ContentChildren(NxRadioToggleButtonBaseComponent) toggleButtons = new QueryList<NxRadioToggleButtonBaseComponent>();
 
     /** @docs-private */
     get id(): string {

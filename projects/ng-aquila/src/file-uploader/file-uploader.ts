@@ -64,7 +64,7 @@ export class NxFileUploader {
 
     /** Uploads the files to the url specified in config. */
     uploadFiles(files: FileItem[]) {
-        if (this.config['uploadSeparately']) {
+        if (this.config.uploadSeparately) {
             this._uploadFilesSeparately(files);
         } else {
             this._uploadFilesCollectively(files);
@@ -87,7 +87,7 @@ export class NxFileUploader {
             formData.append('uploads[]', file.file as Blob, file.name);
         });
 
-        this._httpClient.post(this.config['requestUrl'], formData, this.config['options']).subscribe(
+        this._httpClient.post(this.config.requestUrl, formData, this.config.options).subscribe(
             data => {
                 valuesToUpload.forEach((file: FileItem) => file.setUploadedState());
                 this.response.next({ allSucessful: true, success: new NxFileUploadSuccess(valuesToUpload, [data]) });
@@ -155,7 +155,7 @@ export class NxFileUploader {
             formData.append('uploads[]', file.file as Blob, file.name);
         }
 
-        this._httpClient.post(this.config['requestUrl'], formData, this.config['options']).subscribe(
+        this._httpClient.post(this.config.requestUrl, formData, this.config.options).subscribe(
             data => {
                 file.setUploadedState();
                 fileReturnVal.next({ success: new NxFileUploadSuccess([file], [data]) });

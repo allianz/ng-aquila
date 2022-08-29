@@ -91,7 +91,7 @@ export class NxRatingComponent implements ControlValueAccessor, AfterViewInit, O
         this._cdr.markForCheck();
     }
     get endLabel(): string {
-        return this._endLabel as string;
+        return this._endLabel!;
     }
     private _endLabel: string | null = null;
 

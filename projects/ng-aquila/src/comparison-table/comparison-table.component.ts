@@ -68,7 +68,7 @@ export class NxComparisonTableComponent extends NxComparisonTableBase implements
         }
     }
     get selectedIndex(): number {
-        return this._selectedIndex as number;
+        return this._selectedIndex!;
     }
     private _selectedIndex?: number;
 

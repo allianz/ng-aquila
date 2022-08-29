@@ -10,13 +10,13 @@ export class MappedStyles {
         if (this._classNames === value) {
             return;
         }
-        removeClasses(this._renderer, this._elementRef, this._classNamesSanitized as string);
+        removeClasses(this._renderer, this._elementRef, this._classNamesSanitized!);
         this._classNamesSanitized = mapClassNames(value, this.baseClasses, this.mapping);
         this._classNames = value;
         appendClasses(this._renderer, this._elementRef, this._classNamesSanitized);
     }
     get classNames(): string {
-        return this._classNames as string;
+        return this._classNames!;
     }
     private _classNames?: string;
 

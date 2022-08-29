@@ -36,7 +36,7 @@ export class NxComparisonTablePopularCell {
         }
     }
     get forColumn(): number {
-        return this._forColumn as number;
+        return this._forColumn!;
     }
     private _forColumn?: number;
 

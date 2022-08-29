@@ -347,7 +347,8 @@ describe('NxDropdownComponent', () => {
             const stateChangesSubscription = dropdownInstance.stateChanges.subscribe(spy);
             // quick hack to replace the default matcher without any large
             // TestBed magic
-            (dropdownInstance['_errorStateMatcher'] as any) = { isErrorState: () => true };
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            (dropdownInstance['_errorStateMatcher'] as any) = { isErrorState: () => true }; // workaround: accessing private class member
             fixture.detectChanges();
             flush();
             expect(dropdownInstance.errorState).toBeTrue();

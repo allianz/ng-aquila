@@ -214,7 +214,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
     /** Automatically focuses and selects the next input on key input. */
     _selectNextInput(event: Event): void {
         const eventTarget: HTMLInputElement = event.target as HTMLInputElement;
-        eventTarget.value = this._convertLetterSize(eventTarget.value.slice(0, 1)) as string;
+        eventTarget.value = this._convertLetterSize(eventTarget.value.slice(0, 1))!;
         const currentIndex = Number(this._getFocusedInputIndex(event));
         // save in model with uppercase if needed
         this._keyCode[currentIndex] = eventTarget.value;
@@ -246,7 +246,7 @@ export class NxCodeInputComponent implements ControlValueAccessor, DoCheck {
         copiedText = this.type === 'number' ? this._formatNumberInput(copiedText) : copiedText;
 
         for (let i: number = inputIndex; i < this.codeLength; i++) {
-            this._keyCode[i] = this._convertLetterSize(copiedText[copiedTextIndex]) as string;
+            this._keyCode[i] = this._convertLetterSize(copiedText[copiedTextIndex])!;
             copiedTextIndex++;
         }
 

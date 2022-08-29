@@ -299,7 +299,8 @@ describe('NxMultiSelectComponent', () => {
                 const stateChangesSubscription = multiSelectInstance.stateChanges.subscribe(spy);
                 // quick hack to replace the default matcher without any large
                 // TestBed magic
-                (multiSelectInstance['_errorStateMatcher'] as any) = { isErrorState: () => true };
+                // eslint-disable-next-line @typescript-eslint/dot-notation
+                (multiSelectInstance['_errorStateMatcher'] as any) = { isErrorState: () => true }; // workaround: accessing private class member
                 fixture.detectChanges();
                 flush();
                 expect(multiSelectInstance.errorState).toBeTrue();

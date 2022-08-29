@@ -381,7 +381,8 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
      */
     renderNodeChanges(
         data: T[],
-        dataDiffer: IterableDiffer<T> = this['_dataDiffer'],
+        // eslint-disable-next-line @typescript-eslint/dot-notation
+        dataDiffer: IterableDiffer<T> = this['_dataDiffer'], // accessing private super class member
         viewContainer: ViewContainerRef = this._nodeOutlet.viewContainer,
         parentData?: T,
     ) {
@@ -395,9 +396,9 @@ export class NxTreeComponent<T> extends CdkTree<T> implements OnDestroy, OnInit 
 
         changes.forEachOperation((item: IterableChangeRecord<T>, adjustedPreviousIndex: number | null, currentIndex: number | null) => {
             if (currentIndex == null) {
-                this.removeFromA11yNodeTracking(adjustedPreviousIndex as number, parentData);
+                this.removeFromA11yNodeTracking(adjustedPreviousIndex!, parentData);
             } else if (item.previousIndex !== null) {
-                this.moveInA11yNodeTracking(adjustedPreviousIndex as number, currentIndex, parentData);
+                this.moveInA11yNodeTracking(adjustedPreviousIndex!, currentIndex, parentData);
             }
         });
     }

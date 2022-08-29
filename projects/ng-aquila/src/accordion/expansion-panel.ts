@@ -56,7 +56,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         this._negative = coerceBooleanProperty(value);
     }
     get negative(): boolean {
-        return this._negative as boolean;
+        return this._negative!;
     }
     private _negative: boolean | null = null;
 
@@ -74,7 +74,7 @@ export class NxExpansionPanelComponent extends CdkAccordionItem implements After
         this._accordionStyle = newValue as AccordionStyle;
     }
     get style(): AccordionStyle {
-        return this._style as AccordionStyle;
+        return this._style!;
     }
     private _style: AccordionStyle | null = null;
 

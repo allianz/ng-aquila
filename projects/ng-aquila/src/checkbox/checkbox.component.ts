@@ -130,7 +130,7 @@ export class NxCheckboxGroupComponent implements ControlValueAccessor, AfterCont
         this._stateChanges.next();
     }
     get labelSize(): NxCheckboxLabelSize {
-        return this._labelSize as NxCheckboxLabelSize;
+        return this._labelSize!;
     }
     private _labelSize?: NxCheckboxLabelSize;
 
@@ -298,7 +298,7 @@ export class NxCheckboxComponent implements ControlValueAccessor, OnDestroy, OnI
         this._name = name;
     }
     get name(): string {
-        return (this.checkboxGroup?.name || this._name) as string;
+        return this.checkboxGroup?.name || this._name!;
     }
     private _name: string | null = null;
 

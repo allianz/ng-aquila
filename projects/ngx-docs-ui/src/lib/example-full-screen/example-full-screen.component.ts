@@ -30,7 +30,7 @@ export class ExampleFullScreenComponent {
         }
 
         const themeName = routeSnapshot.queryParamMap.get('theme');
-        const selectedTheme = _themeSwitcherService.get(themeName as string);
+        const selectedTheme = _themeSwitcherService.get(themeName!);
         if (selectedTheme) {
             _themeSwitcherService.switchTheme(selectedTheme);
         }

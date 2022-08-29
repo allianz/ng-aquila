@@ -26,7 +26,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
     @Input() control!: HTMLInputElement;
 
     /** @docs-private */
-    _currentIcon: string = visibilityIcons['show'];
+    _currentIcon: string = visibilityIcons.show;
     /** @docs-private */
     _pressed = false;
 
@@ -56,7 +56,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
             return;
         }
         // show the right icon according to the initial type of the input
-        this._currentIcon = this.control.type === 'password' ? visibilityIcons['show'] : visibilityIcons['hide'];
+        this._currentIcon = this.control.type === 'password' ? visibilityIcons.show : visibilityIcons.hide;
     }
 
     ngOnDestroy(): void {
@@ -75,7 +75,7 @@ export class NxPasswordToggleComponent implements AfterViewInit, OnDestroy {
 
     /** @docs-private */
     toggleIcon(): void {
-        this._currentIcon = this._currentIcon === visibilityIcons['show'] ? visibilityIcons['hide'] : visibilityIcons['show'];
+        this._currentIcon = this._currentIcon === visibilityIcons.show ? visibilityIcons.hide : visibilityIcons.show;
     }
 
     /** @docs-private */

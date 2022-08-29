@@ -19,7 +19,7 @@ export class NxPageSearchComponent {
         }
     }
     get buttonLabel(): string {
-        return this._buttonLabel as string;
+        return this._buttonLabel!;
     }
     private _buttonLabel: string | null = null;
 

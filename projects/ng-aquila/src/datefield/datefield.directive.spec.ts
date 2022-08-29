@@ -60,8 +60,7 @@ describe('NxDatefieldDirective with Moment', () => {
 
         fixture.detectChanges();
         tick();
-        // @ts-expect-error
-        expect(nativeElement.attributes['disabled']).toBeTruthy();
+        expect(nativeElement.attributes.getNamedItem('disabled')).toBeTruthy();
     }));
 
     it('should accept a custom parseFormat', fakeAsync(() => {
@@ -338,7 +337,7 @@ describe('NxDatefieldDirective with IsoAdapter', () => {
         nativeElement.dispatchEvent(new Event('input'));
         fixture.detectChanges();
         expect(datefield!.valid).toBeFalse();
-        expect(datefield!.errors!['nxDatefieldParse']).toBeDefined();
+        expect(datefield!.errors!.nxDatefieldParse).toBeTruthy();
     });
 
     it('has no error if input is empty', () => {

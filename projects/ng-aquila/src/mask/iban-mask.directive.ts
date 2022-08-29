@@ -49,8 +49,7 @@ export class NxIbanMaskDirective implements OnInit, OnDestroy, Validator {
         const pastedData = (event.clipboardData || (window as any).clipboardData).getData('text');
 
         const enteredCountryCode = (
-            this.maskDirective.elementRefValue.substr(0, input.selectionStart as number) +
-            this.maskDirective.getMaskedString(pastedData, input.selectionStart as number)
+            this.maskDirective.elementRefValue.substr(0, input.selectionStart!) + this.maskDirective.getMaskedString(pastedData, input.selectionStart!)
         ).substr(0, 2);
 
         this._setCountryCode(enteredCountryCode);

@@ -173,7 +173,7 @@ export class FormfieldCustomTelInputExampleComponent
         throw new Error('Method not implemented.');
     }
 
-    get elementRef(): ElementRef<any> {
+    get elementRef(): ElementRef {
         throw new Error('Method not implemented.');
     }
 

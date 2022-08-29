@@ -18,7 +18,7 @@ export class NxVersionSelectComponent {
         this._selected = value.currentChannel;
     }
     get versions(): DocVersions {
-        return this._versions as DocVersions;
+        return this._versions!;
     }
     private _versions: DocVersions | null = null;
 

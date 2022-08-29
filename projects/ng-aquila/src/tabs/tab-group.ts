@@ -82,7 +82,7 @@ export class NxTabGroupComponent implements NxTabGroupBase, OnDestroy, AfterView
         this._indexToSelect = coerceNumberProperty(value, null);
     }
     get selectedIndex(): number {
-        return this._selectedIndex as number;
+        return this._selectedIndex!;
     }
     private _selectedIndex: number | null = null;
 

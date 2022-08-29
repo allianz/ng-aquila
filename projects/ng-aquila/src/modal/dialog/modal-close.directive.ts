@@ -42,7 +42,7 @@ export class NxModalCloseDirective implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        const proxiedChange = changes['modalResult'];
+        const proxiedChange = changes.modalResult;
 
         if (proxiedChange) {
             this.modalResult = proxiedChange.currentValue;

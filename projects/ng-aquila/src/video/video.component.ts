@@ -22,7 +22,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         }
     }
     get videoId(): string {
-        return this._videoId as string;
+        return this._videoId!;
     }
     private _videoId: string | null = null;
 
@@ -58,7 +58,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         }
     }
     get previewImageSrc(): string {
-        return this._previewImageSrc as string;
+        return this._previewImageSrc!;
     }
     private _previewImageSrc: string | null = null;
 
@@ -90,7 +90,7 @@ export class NxVideoComponent implements AfterViewInit, OnDestroy {
         }
     }
     get interfaceLanguage(): string {
-        return this._interfaceLanguage as string;
+        return this._interfaceLanguage!;
     }
     private _interfaceLanguage: string | null = null;
 

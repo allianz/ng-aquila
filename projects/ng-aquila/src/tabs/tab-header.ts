@@ -56,7 +56,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         this._keyManager.setActiveItem(value);
     }
     get focusIndex(): number {
-        return this._keyManager ? (this._keyManager.activeItemIndex as number) : 0;
+        return this._keyManager ? this._keyManager.activeItemIndex! : 0;
     }
 
     @Input() set autoselect(value: boolean) {
@@ -108,7 +108,7 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
                 break;
             case ENTER:
             case SPACE:
-                this.selectFocusedIndex.emit(this._keyManager.activeItemIndex as number);
+                this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
                 event.preventDefault();
                 break;
             default:
@@ -116,9 +116,9 @@ export class NxTabHeaderComponent extends NxScrollableTabBar implements AfterCon
         }
 
         if (this.autoselect) {
-            this.selectFocusedIndex.emit(this._keyManager.activeItemIndex as number);
+            this.selectFocusedIndex.emit(this._keyManager.activeItemIndex!);
         } else if (event.keyCode !== ENTER && event.keyCode !== SPACE) {
-            this.indexFocused.emit(this._keyManager.activeItemIndex as number);
+            this.indexFocused.emit(this._keyManager.activeItemIndex!);
         }
     }
 }

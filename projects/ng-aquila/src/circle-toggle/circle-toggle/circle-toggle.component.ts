@@ -88,7 +88,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get name(): string {
-        return this._name as string;
+        return this._name!;
     }
     private _name: string | null = null;
 
@@ -122,7 +122,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get value(): string {
-        return this._value as string;
+        return this._value!;
     }
     private _value: string | null = null;
 
@@ -132,7 +132,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get iconName(): string {
-        return this._iconName as string;
+        return this._iconName!;
     }
     private _iconName: string | null = null;
 
@@ -142,7 +142,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get svg(): string {
-        return this._svg as string;
+        return this._svg!;
     }
     private _svg: string | null = null;
 
@@ -152,7 +152,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get svgChecked(): string {
-        return this._svgChecked as string;
+        return this._svgChecked!;
     }
     private _svgChecked: string | null = null;
 
@@ -164,7 +164,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         }
     }
     get circleText(): string {
-        return this._circleText as string;
+        return this._circleText!;
     }
     private _circleText: string | null = null;
 
@@ -174,7 +174,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get label(): string {
-        return this._label as string;
+        return this._label!;
     }
     private _label: string | null = null;
 
@@ -184,7 +184,7 @@ export class NxCircleToggleComponent extends ToggleButton implements OnInit, OnD
         this._cdr.markForCheck();
     }
     get hint(): string {
-        return this._hint as string;
+        return this._hint!;
     }
     private _hint: string | null = null;
 

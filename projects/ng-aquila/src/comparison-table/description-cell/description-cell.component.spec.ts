@@ -125,7 +125,7 @@ describe('NxComparisonTableDescriptionCell', () => {
     describe('a11y', () => {
         it('should have set the roles correctly (desktop)', () => {
             createTestComponent(DescriptionCellComponent);
-            expect(descriptionCellElements[0].attributes['role']).toBe('rowheader');
+            expect(descriptionCellElements[0].attributes.role).toBe('rowheader');
         });
 
         it('should have set the roles correctly (tablet)', fakeAsync(() => {
@@ -137,7 +137,7 @@ describe('NxComparisonTableDescriptionCell', () => {
             fixture.detectChanges();
 
             descriptionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__description-cell'));
-            expect(descriptionCellElements[0].attributes['role']).toBe('columnheader');
+            expect(descriptionCellElements[0].attributes.role).toBe('columnheader');
         }));
 
         it('should have set the roles correctly (mobile)', fakeAsync(() => {
@@ -150,8 +150,8 @@ describe('NxComparisonTableDescriptionCell', () => {
             fixture.detectChanges();
 
             descriptionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__description-cell'));
-            expect(descriptionCellElements[0].attributes['role']).toBeUndefined();
-            expect(descriptionCellElements[0].attributes['scope']).toBe('col');
+            expect(descriptionCellElements[0].attributes.role).toBeUndefined();
+            expect(descriptionCellElements[0].attributes.scope).toBe('col');
         }));
 
         it('should not have set an aria-colspan (desktop)', () => {

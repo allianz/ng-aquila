@@ -59,7 +59,9 @@ export class NxMultiStepperComponent extends NxProgressStepperDirective implemen
         // possibility to change it during runtime
         // opened a ticket: https://github.com/angular/components/issues/21874
         // for now the quick solution is the hacky way to access the private property
-        this['_keyManager'].withVerticalOrientation(this._direction === 'vertical');
+
+        // eslint-disable-next-line @typescript-eslint/dot-notation
+        this['_keyManager'].withVerticalOrientation(this._direction === 'vertical'); // workaround: accessing private class member
     }
 
     ngAfterContentInit(): void {

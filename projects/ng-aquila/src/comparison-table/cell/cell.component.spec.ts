@@ -129,9 +129,9 @@ describe('NxComparisonTableCell', () => {
         it('should have set the roles correctly (desktop / tablet)', fakeAsync(() => {
             createTestComponent(BasicCellComponent);
 
-            expect(cellElements[0].attributes['role']).toBe('columnheader');
-            expect(cellElements[1].attributes['role']).toBe('cell');
-            expect(cellElements[2].attributes['role']).toBe('cell');
+            expect(cellElements[0].attributes.role).toBe('columnheader');
+            expect(cellElements[1].attributes.role).toBe('cell');
+            expect(cellElements[2].attributes.role).toBe('cell');
 
             viewport.set('tablet');
             window.dispatchEvent(new Event('resize'));
@@ -139,9 +139,9 @@ describe('NxComparisonTableCell', () => {
             tick(THROTTLE_TIME);
             fixture.detectChanges();
 
-            expect(cellElements[0].attributes['role']).toBe('columnheader');
-            expect(cellElements[1].attributes['role']).toBe('cell');
-            expect(cellElements[2].attributes['role']).toBe('cell');
+            expect(cellElements[0].attributes.role).toBe('columnheader');
+            expect(cellElements[1].attributes.role).toBe('cell');
+            expect(cellElements[2].attributes.role).toBe('cell');
         }));
 
         it('should have set the scope correctly (mobile)', fakeAsync(() => {
@@ -154,10 +154,10 @@ describe('NxComparisonTableCell', () => {
             fixture.detectChanges();
 
             const mobileHeaderCell = fixture.debugElement.query(By.css('.nx-comparison-table__mobile-header-cell'));
-            expect(mobileHeaderCell.attributes['scope']).toBe('row');
+            expect(mobileHeaderCell.attributes.scope).toBe('row');
 
             cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
-            expect(cellElements[0].attributes['scope']).toBe('');
+            expect(cellElements[0].attributes.scope).toBe('');
         }));
 
         it('should have set the correct headers', fakeAsync(() => {
@@ -179,7 +179,7 @@ describe('NxComparisonTableCell', () => {
         it('should have set the correct headers (with a toggle section) (desktop)', () => {
             createTestComponent(ToggleSectionCellComponent);
 
-            const headers = cellElements[1].attributes['headers'];
+            const headers = cellElements[1].attributes.headers;
             expect(headers?.split(' ')).toHaveSize(3);
             expect(headers).toContain(cellInstances.toArray()[0].id);
             expect(headers).toContain(descriptionCellInstance.id);
@@ -195,7 +195,7 @@ describe('NxComparisonTableCell', () => {
             fixture.detectChanges();
 
             cellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__cell'));
-            const headers = cellElements[0].attributes['headers'];
+            const headers = cellElements[0].attributes.headers;
             expect(headers?.split(' ')).toHaveSize(3);
             expect(headers).toContain(cellInstances.toArray()[0].id);
             expect(headers).toContain(descriptionCellInstance.id);

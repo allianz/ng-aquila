@@ -41,7 +41,7 @@ export class NxFileUploaderValidators {
     /** The form control validator for the accepted file type. */
     static fileType<D>(file: File, accept: string | undefined): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
-            if (isFileTypeValid(file, accept as string)) {
+            if (isFileTypeValid(file, accept!)) {
                 return null;
             }
             return { NxFileUploadFileTypeNotAccepted: { fileName: file.name } };

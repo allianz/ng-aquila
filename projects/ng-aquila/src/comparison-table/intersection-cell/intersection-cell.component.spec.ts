@@ -85,7 +85,7 @@ describe('NxComparisonTableIntersectionCell', () => {
             createTestComponent(ToggleSectionComponent);
             tick(THROTTLE_TIME);
 
-            const headers = intersectionCellElements[0].attributes['headers'];
+            const headers = intersectionCellElements[0].attributes.headers;
             expect(headers?.split(' ')).toHaveSize(2);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
@@ -94,7 +94,7 @@ describe('NxComparisonTableIntersectionCell', () => {
         it('should have set the correct headers (mobile)', () => {
             createTestComponent(ToggleSectionComponent);
 
-            const headers = intersectionCellElements[0].attributes['headers'];
+            const headers = intersectionCellElements[0].attributes.headers;
             expect(headers?.split(' ')).toHaveSize(2);
             expect(headers).toContain(descriptionCellInstance.id);
             expect(headers).toContain(toggleSectionInstance.toggleSectionHeader.id);
@@ -102,13 +102,13 @@ describe('NxComparisonTableIntersectionCell', () => {
 
         it('should have the correct role defined', () => {
             createTestComponent(IntersectionCellComponent);
-            expect(intersectionCellElements[0].attributes['role']).toBe('cell');
+            expect(intersectionCellElements[0].attributes.role).toBe('cell');
         });
 
         it('should have set the correct aria-colspan (desktop)', () => {
             createTestComponent(IntersectionCellComponent);
             expect(intersectionCellElements[0].attributes['aria-colspan']).toBe('3');
-            expect(intersectionCellElements[0].attributes['rowspan']).toBeUndefined();
+            expect(intersectionCellElements[0].attributes.rowspan).toBeUndefined();
         });
 
         it('should have set the correct rowspan (mobile)', fakeAsync(() => {
@@ -122,7 +122,7 @@ describe('NxComparisonTableIntersectionCell', () => {
 
             intersectionCellElements = fixture.debugElement.queryAll(By.css('.nx-comparison-table__intersection-cell'));
             expect(intersectionCellElements[0].attributes['aria-colspan']).toBeUndefined();
-            expect(intersectionCellElements[0].attributes['rowspan']).toBe('3');
+            expect(intersectionCellElements[0].attributes.rowspan).toBe('3');
         }));
 
         it('has no accessibility violations', async () => {

@@ -78,7 +78,7 @@ export class NxOverlayPositionBuilder {
     constructor(private readonly _overlay: Overlay, @Optional() private readonly _dir: Directionality | null) {}
 
     createPositionStrategy(element: FlexibleConnectedPositionStrategyOrigin, config: NxOverlayConfig) {
-        const fallbacks = this._getFallbackPositions(config.direction as NxOverlayDirection, config);
+        const fallbacks = this._getFallbackPositions(config.direction!, config);
         const origin = this.getOrigin(config.direction);
         const overlay = this.getOverlayPosition(config.direction);
         const offset = this.getOffset(config.direction, config);

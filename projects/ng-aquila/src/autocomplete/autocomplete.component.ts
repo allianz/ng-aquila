@@ -89,7 +89,7 @@ export class NxAutocompleteComponent implements AfterViewInit, OnDestroy {
         }
     }
     get items(): string[] {
-        return this._items as string[]; // TODO properly coerce input as empty array
+        return this._items!; // TODO properly coerce input as empty array
     }
     private _items: string[] | null = null;
     private _itemsSubscription?: Subscription;

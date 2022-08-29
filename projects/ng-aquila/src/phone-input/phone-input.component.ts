@@ -234,7 +234,7 @@ export class NxPhoneInputComponent implements ControlValueAccessor, NxFormfieldC
         return this.formFieldComponent?.labelId;
     }
 
-    get elementRef(): ElementRef<any> {
+    get elementRef(): ElementRef {
         return this._elementRef;
     }
 

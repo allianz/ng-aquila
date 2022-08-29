@@ -54,7 +54,7 @@ describe('ComparisonTableFlexRow', () => {
 
             // and correct role on both
             fixture.debugElement.queryAll(By.css('.nx-comparison-table__row')).forEach(row => {
-                expect(row.attributes['role']).toBe('row');
+                expect(row.attributes.role).toBe('row');
             });
         }));
 

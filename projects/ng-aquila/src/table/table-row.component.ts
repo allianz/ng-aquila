@@ -73,7 +73,7 @@ export class NxTableRowComponent {
                 return true;
             }
 
-            parent = parent.parentElement as HTMLElement;
+            parent = parent.parentElement!;
         }
 
         return false;

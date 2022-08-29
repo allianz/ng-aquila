@@ -330,8 +330,8 @@ describe('NxComparisonTableComponent', () => {
             fixture.detectChanges();
 
             const selectButtons = fixture.debugElement.queryAll(By.css('.nx-comparison-table__select-button'));
-            expect(selectButtons[1].nativeElement.attributes['disabled']).toBeTruthy();
-            expect(selectButtons[0].nativeElement.attributes['disabled']).toBeFalsy();
+            expect(selectButtons[1].nativeElement.attributes.getNamedItem('disabled')).toBeTruthy();
+            expect(selectButtons[0].nativeElement.attributes.getNamedItem('disabled')).toBeFalsy();
         });
 
         it('should update on disabled input change', () => {
@@ -593,15 +593,15 @@ describe('NxComparisonTableComponent', () => {
         it('should have set the roles correctly (desktop / tablet)', () => {
             createTestComponent(BasicComponent);
 
-            expect(tableElement.query(By.css('div')).attributes['role']).toBe('table');
+            expect(tableElement.query(By.css('div')).attributes.role).toBe('table');
             expect(tableElement.query(By.css('table'))).toBeNull();
 
             const toggleSection = tableElement.query(By.css('.nx-comparison-table__toggle-section'));
             const toggleSectionHeader = toggleSection.query(By.css('.nx-comparison-table__toggle-section-header'));
-            expect(toggleSectionHeader.attributes['role']).toBe('row');
+            expect(toggleSectionHeader.attributes.role).toBe('row');
 
             const toggleSectionBody = toggleSection.query(By.css('.nx-comparison-table__toggle-section-body'));
-            expect(toggleSectionBody.attributes['role']).toBe('rowgroup');
+            expect(toggleSectionBody.attributes.role).toBe('rowgroup');
         });
 
         it('has no accessibility violations', async () => {

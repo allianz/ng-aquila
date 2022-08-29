@@ -78,7 +78,7 @@ export class NxIconRegistry implements OnDestroy {
             throw Error(`Could not find a registered font with name ${fontName}.`);
         }
 
-        this._icons.set(iconName, new NxFontIcon(alias as string, fontDefinition));
+        this._icons.set(iconName, new NxFontIcon(alias!, fontDefinition));
     }
 
     /** Returns the icon from the registry or undefined if not found. */

@@ -131,10 +131,10 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
 
     /** The value of the file upload. */
     @Input() set value(value: FileItem[] | undefined) {
-        this.writeValue(value as FileItem[]);
+        this.writeValue(value!);
     }
     get value(): FileItem[] | undefined {
-        return this._value as FileItem[];
+        return this._value!;
     }
     private _value!: FileItem[] | null;
 
@@ -208,7 +208,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         this._maxFileNumber = coerceNumberProperty(value);
     }
     get maxFileNumber(): number {
-        return this._maxFileNumber as number;
+        return this._maxFileNumber!;
     }
     private _maxFileNumber: number | null = null;
 
@@ -328,8 +328,8 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
             }
 
             const validators = this._controlValidators
-                ? [this._controlValidators, NxFileUploaderValidators.maxFileNumber(this.value as FileItem[], this.maxFileNumber), ...this.validatorFnArray]
-                : [NxFileUploaderValidators.maxFileNumber(this.value as FileItem[], this.maxFileNumber), ...this.validatorFnArray];
+                ? [this._controlValidators, NxFileUploaderValidators.maxFileNumber(this.value!, this.maxFileNumber), ...this.validatorFnArray]
+                : [NxFileUploaderValidators.maxFileNumber(this.value!, this.maxFileNumber), ...this.validatorFnArray];
 
             this.ngControl.control.setValidators(validators);
             this.ngControl.control.updateValueAndValidity();
@@ -443,7 +443,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
         }
 
         if (this.uploader) {
-            this.uploader.uploadFiles(this.value as FileItem[]);
+            this.uploader.uploadFiles(this.value!);
         }
     }
 

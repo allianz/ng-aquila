@@ -53,7 +53,7 @@ describe(NxSwipebarComponent.name, () => {
         beforeEach(async () => {
             testInstance.overflow = true;
             fixture.detectChanges();
-            swipebarInstance['_onResize']();
+            swipebarInstance._onResize();
             await nextFrame();
         });
 

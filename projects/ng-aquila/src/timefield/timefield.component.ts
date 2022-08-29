@@ -78,7 +78,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         this._cdr.markForCheck();
     }
     get time(): string {
-        return this._time as string;
+        return this._time!;
     }
 
     /** Whether to show the time in 12-hour format with AM/PM toggle. Default: false. */
@@ -380,7 +380,7 @@ export class NxTimefieldComponent implements ControlValueAccessor, DoCheck {
         this._minutes = '';
         this._time = null;
         if (value) {
-            this.time = this._parseAndSetTime(value) as string;
+            this.time = this._parseAndSetTime(value)!;
         }
         this.valueChange.emit(this.time);
     }

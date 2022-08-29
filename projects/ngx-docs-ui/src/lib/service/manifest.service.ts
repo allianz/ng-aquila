@@ -56,7 +56,7 @@ export class ManifestService {
             throw new Error(`Could not find Guide with id ${id}`);
         }
 
-        return this._current.guides.find(item => item.id === id) as GuideDescriptor;
+        return this._current.guides.find(item => item.id === id)!;
     }
 
     hasComponent(id: string) {
@@ -68,7 +68,7 @@ export class ManifestService {
             throw new Error(`Could not find Component with id ${id}`);
         }
 
-        return this._current.components.find(item => item.id === id) as ComponentDescriptor;
+        return this._current.components.find(item => item.id === id)!;
     }
 
     getGroupedComponents(): Category[] {
@@ -109,7 +109,7 @@ export class ManifestService {
             throw new Error(`Could not find Example with id ${id}`);
         }
 
-        return this._current.examples.find(item => item.id === id) as ExampleDescriptor;
+        return this._current.examples.find(item => item.id === id)!;
     }
 
     update(value: Manifest) {

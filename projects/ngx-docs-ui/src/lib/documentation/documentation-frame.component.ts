@@ -61,7 +61,7 @@ export class DocumentationFrameComponent implements OnDestroy, AfterViewInit {
         this.showThemingSwitcher = this._featureFlags ? this._featureFlags.themeSwitcher : false;
 
         const themeQuery = this._route.snapshot.queryParamMap.get('theme');
-        const themeFromQuery = this._themeSwitcherService.get(themeQuery as string);
+        const themeFromQuery = this._themeSwitcherService.get(themeQuery!);
         if (themeFromQuery) {
             this.selectedTheme = themeFromQuery;
             this._themeSwitcherService.switchTheme(this.selectedTheme);

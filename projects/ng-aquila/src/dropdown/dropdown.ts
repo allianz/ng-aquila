@@ -702,7 +702,7 @@ export class NxDropdownComponent implements NxDropdownControl, ControlValueAcces
         };
 
         const options = this._isLazy ? this.options : this.dropdownItems.toArray();
-        const option = options.find(filterFn) as NxDropdownOption;
+        const option = options.find(filterFn);
 
         if (option) {
             this._selectionModel.select(option);

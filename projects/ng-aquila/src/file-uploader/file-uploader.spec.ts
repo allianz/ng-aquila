@@ -156,7 +156,7 @@ describe('NxFileUploaderComponent', () => {
                 });
 
                 testInstance.form.patchValue({
-                    documents: [...testInstance.form.controls['documents'].value, new FileItem(fakeFile), new FileItem(fakeFile)],
+                    documents: [...testInstance.form.controls.documents.value, new FileItem(fakeFile), new FileItem(fakeFile)],
                 });
                 fileUploaderInstance.uploadFiles();
             }, 10);
@@ -164,7 +164,7 @@ describe('NxFileUploaderComponent', () => {
 
         it('should return an error if the request was not successful', done => {
             createTestComponent(BasicFileUpload);
-            testInstance.uploadConfig['requestUrl'] = 'error-url';
+            testInstance.uploadConfig.requestUrl = 'error-url';
 
             testInstance.uploader.response.subscribe(response => {
                 expect(response).toBeDefined();
@@ -194,7 +194,7 @@ describe('NxFileUploaderComponent', () => {
     describe('upload separately', () => {
         it('should set the file status correctly for a successful request', fakeAsync(() => {
             createTestComponent(BasicFileUpload);
-            testInstance.uploadConfig['uploadSeparately'] = true;
+            testInstance.uploadConfig.uploadSeparately = true;
 
             // add files
             let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -230,7 +230,7 @@ describe('NxFileUploaderComponent', () => {
 
         it('should upload all files correctly', done => {
             createTestComponent(BasicFileUpload);
-            testInstance.uploadConfig['uploadSeparately'] = true;
+            testInstance.uploadConfig.uploadSeparately = true;
 
             testInstance.uploader.response.subscribe(response => {
                 expect(response).toBeDefined();
@@ -251,7 +251,7 @@ describe('NxFileUploaderComponent', () => {
 
         it('should not upload files that are already uploaded', done => {
             createTestComponent(BasicFileUpload);
-            testInstance.uploadConfig['uploadSeparately'] = true;
+            testInstance.uploadConfig.uploadSeparately = true;
 
             // add files
             let fakeFile = new File(['1'], 'fake file', { type: 'text/html' });
@@ -272,15 +272,15 @@ describe('NxFileUploaderComponent', () => {
                     done();
                 });
 
-                testInstance.form.patchValue({ documents: [...testInstance.form.controls['documents'].value, new FileItem(fakeFile), new FileItem(fakeFile)] });
+                testInstance.form.patchValue({ documents: [...testInstance.form.controls.documents.value, new FileItem(fakeFile), new FileItem(fakeFile)] });
                 fileUploaderInstance.uploadFiles();
             }, 10);
         });
 
         it('should return an error if one of the files was not uploaded successful', done => {
             createTestComponent(BasicFileUpload);
-            testInstance.uploadConfig['requestUrl'] = 'error-url';
-            testInstance.uploadConfig['uploadSeparately'] = true;
+            testInstance.uploadConfig.requestUrl = 'error-url';
+            testInstance.uploadConfig.uploadSeparately = true;
 
             testInstance.uploader.response.subscribe(response => {
                 expect(response).toBeDefined();

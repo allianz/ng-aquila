@@ -11,6 +11,7 @@
             "extends": [
                 "eslint:recommended",
                 "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/strict",
                 "plugin:@angular-eslint/base",
                 "plugin:@angular-eslint/recommended--extra",
                 "plugin:@angular-eslint/template/process-inline-templates",
@@ -31,21 +32,21 @@
                 "unused-imports/no-unused-imports": "warn",
 
                 // ==== regexp ====
-                "regexp/no-unused-capturing-group": "off", // TODO check with others
+                "regexp/no-unused-capturing-group": "off", // recommended override: avoid unnecessary changes
                 "regexp/sort-character-class-elements": "warn",
 
                 // ==== rxjs ====
                 "rxjs/no-async-subscribe": "warn",
-                "rxjs/no-create": "error",
+                "rxjs/no-create": "warn",
                 "rxjs/no-ignored-replay-buffer": "warn",
                 "rxjs/no-ignored-takewhile-value": "warn",
-                "rxjs/no-index": "error",
-                "rxjs/no-internal": "error",
+                "rxjs/no-index": "warn",
+                "rxjs/no-internal": "warn",
                 "rxjs/no-nested-subscribe": "warn",
-                "rxjs/no-redundant-notify": "error",
-                "rxjs/no-sharereplay": ["error", { "allowConfig": true }],
+                "rxjs/no-redundant-notify": "warn",
+                "rxjs/no-sharereplay": ["warn", { "allowConfig": true }],
                 "rxjs/no-subject-unsubscribe": "warn",
-                "rxjs/no-unbound-methods": "error",
+                "rxjs/no-unbound-methods": "warn",
                 "rxjs/no-unsafe-takeuntil": "warn",
 
                 // ==== eslint: possible problems ====
@@ -54,117 +55,97 @@
                 "no-unused-private-class-members": "warn",
 
                 // ==== eslint: suggestions ====
-                "arrow-body-style": "error",
-                "curly": "error",
-                "default-case-last": "error",
-                "eqeqeq": ["error", "always", { "null": "ignore" }],
-                "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+                "arrow-body-style": "warn",
+                "curly": "warn",
+                "default-case-last": "warn",
+                "eqeqeq": ["warn", "always", { "null": "ignore" }],
+                "func-style": ["warn", "declaration", { "allowArrowFunctions": true }],
                 "grouped-accessor-pairs": ["warn", "setBeforeGet"],
-                "guard-for-in": "error",
-                "no-alert": "warn", // TODO check with others
+                "guard-for-in": "warn",
+                "no-alert": "warn", // TODO check with others, might be fine for exampes
                 "no-bitwise": "warn",
-                "no-caller": "error",
+                "no-caller": "warn",
                 "no-console": ["warn", { "allow": ["warn", "error"] }], // TODO check with others
-                "no-else-return": "error",
-                "no-empty": ["error", { "allowEmptyCatch": true }], // recommended override: allow empty catch block
-                "no-eval": "error",
-                "no-extend-native": "error",
-                "no-extra-bind": "error",
-                "no-extra-label": "error",
-                "no-iterator": "error",
-                "no-lone-blocks": "error",
-                "no-lonely-if": "error",
-                "no-new-func": "error",
-                "no-new-object": "error",
-                "no-new-wrappers": "error",
-                "no-octal-escape": "error",
-                "no-proto": "error",
-                "no-script-url": "error",
-                "no-undef-init": "error",
-                "no-unneeded-ternary": "error",
-                "no-useless-computed-key": ["error", { "enforceForClassMembers": true }],
+                "no-else-return": "warn",
+                "no-empty": ["warn", { "allowEmptyCatch": true }], // recommended override: allow empty catch block
+                "no-eval": "warn",
+                "no-extend-native": "warn",
+                "no-extra-bind": "warn",
+                "no-extra-label": "warn",
+                "no-iterator": "warn",
+                "no-lone-blocks": "warn",
+                "no-lonely-if": "warn",
+                "no-new-func": "warn",
+                "no-new-object": "warn",
+                "no-new-wrappers": "warn",
+                "no-octal-escape": "warn",
+                "no-proto": "warn",
+                "no-script-url": "warn",
+                "no-undef-init": "warn",
+                "no-unneeded-ternary": "warn",
+                "no-useless-computed-key": ["warn", { "enforceForClassMembers": true }],
                 "no-useless-concat": "warn",
-                "no-useless-rename": "error",
-                "no-useless-return": "error",
+                "no-useless-rename": "warn",
+                "no-useless-return": "warn",
                 "no-warning-comments": ["warn", { "terms": ["todo"] }],
-                "object-shorthand": ["error", "always", { "avoidQuotes": true }],
-                "operator-assignment": "error",
-                "prefer-arrow-callback": ["error", { "allowUnboundThis": false }],
-                "prefer-const": ["error", { "destructuring": "all" }], // recommended override: loosen destructuring sensitivity to avoid workarounds
-                "prefer-exponentiation-operator": "error",
-                "prefer-numeric-literals": "error",
-                "prefer-object-spread": "error",
-                "radix": "error",
+                "object-shorthand": ["warn", "always", { "avoidQuotes": true }],
+                "operator-assignment": "warn",
+                "prefer-arrow-callback": ["warn", { "allowUnboundThis": false }],
+                "prefer-const": ["warn", { "destructuring": "all" }], // recommended override: loosen destructuring sensitivity to avoid workarounds
+                "prefer-exponentiation-operator": "warn",
+                "prefer-numeric-literals": "warn",
+                "prefer-object-spread": "warn",
+                "radix": "warn",
                 "require-unicode-regexp": "off", // TODO check with others
-                "spaced-comment": ["error", "always", { "markers": ["/"], "exceptions": ["*"] }],
-                "yoda": ["error", "never", { "exceptRange": true }],
+                "spaced-comment": ["warn", "always", { "markers": ["/"], "exceptions": ["*"] }],
+                "yoda": ["warn", "never", { "exceptRange": true }],
 
                 // ==== @typescript-eslint: supported rules ====
-                "@typescript-eslint/array-type": "error",
-                "@typescript-eslint/ban-ts-comment": "warn",
-                "@typescript-eslint/class-literal-property-style": ["error", "fields"],
-                "@typescript-eslint/consistent-indexed-object-style": ["off", "index-signature"], // TODO test
-                "@typescript-eslint/consistent-type-assertions": "error",
-                "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-                "@typescript-eslint/consistent-type-exports": "error",
-                "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "no-type-imports" }],
-                "@typescript-eslint/explicit-function-return-type": "off", // TODO test, check options
-                "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
-                "@typescript-eslint/explicit-module-boundary-types": "off", // TODO test, check options
-                "@typescript-eslint/method-signature-style": ["error", "method"],
-                "@typescript-eslint/no-confusing-non-null-assertion": "error",
+                "@typescript-eslint/ban-ts-comment": "warn", // recommended override: used frequently
+                "@typescript-eslint/consistent-indexed-object-style": ["warn", "index-signature"], // strict override: use index-signature instead of record type
+                "@typescript-eslint/explicit-function-return-type": "off", // TODO enable eventually
+                "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
+                "@typescript-eslint/explicit-module-boundary-types": "off", // TODO enable eventually
+                "@typescript-eslint/method-signature-style": ["warn", "method"],
                 "@typescript-eslint/no-empty-interface": "off", // recommended overide: useful with certain libraries
                 "@typescript-eslint/no-explicit-any": "off", // recommended override: used frequently
+                "@typescript-eslint/no-extraneous-class": "off", // strict override: support annotated classes
                 "@typescript-eslint/no-non-null-assertion": "off", // recommended override: used frequently
-                "@typescript-eslint/no-meaningless-void-operator": ["error", {}], // TODO check options
-                "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
-                "@typescript-eslint/no-parameter-properties": ["warn", { "allows": ["readonly", "protected readonly", "private readonly"] }],
-                "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
-                "@typescript-eslint/non-nullable-type-assertion-style": "off", // problematic with jasmine specs
-                "@typescript-eslint/prefer-function-type": "error",
-                "@typescript-eslint/prefer-includes": "error", // requires ES2016
-                "@typescript-eslint/prefer-literal-enum-member": "warn",
-                "@typescript-eslint/prefer-optional-chain": "warn",
+                "@typescript-eslint/no-unnecessary-condition": "off", // strict override: support incorrect typings
+                "@typescript-eslint/no-useless-constructor": "off", // strict override: TODO check why a spec is failing
+                "@typescript-eslint/prefer-nullish-coalescing": "off", // strict override: may cause false positives with strings and numbers
+                "@typescript-eslint/parameter-properties": [
+                    "warn",
+                    { "prefer": "parameter-property", "allow": ["readonly", "protected readonly", "private readonly"] }
+                ],
                 "@typescript-eslint/prefer-readonly": "warn",
-                "@typescript-eslint/prefer-reduce-type-parameter": "error",
-                "@typescript-eslint/prefer-return-this-type": "error",
-                "@typescript-eslint/prefer-string-starts-ends-with": "error",
-                "@typescript-eslint/prefer-ts-expect-error": "error",
-                "@typescript-eslint/promise-function-async": "error",
-                "@typescript-eslint/require-array-sort-compare": ["error", { "ignoreStringArrays": true }],
-                "@typescript-eslint/triple-slash-reference": "error",
-                "@typescript-eslint/typedef": "off", // TODO check viability
 
                 // ==== @typescript-eslint: extension rules ====
                 "default-param-last": "off",
-                "@typescript-eslint/default-param-last": "error",
+                "@typescript-eslint/default-param-last": "warn",
                 "no-dupe-class-members": "off",
                 "@typescript-eslint/no-dupe-class-members": "error",
-                "no-duplicate-imports": "off",
-                "@typescript-eslint/no-duplicate-imports": "error",
                 "no-empty-function": "off",
-                "@typescript-eslint/no-empty-function": "off", // recommended override: empty event callbacks are used frequently
+                "@typescript-eslint/no-empty-function": "off", // recommended override: used frequently
                 "no-invalid-this": "off",
                 "@typescript-eslint/no-invalid-this": "error",
                 "no-redeclare": "off",
                 "@typescript-eslint/no-redeclare": "error",
                 "no-shadow": "off",
                 "@typescript-eslint/no-shadow": "warn",
-                "no-throw-literal": "off",
-                "@typescript-eslint/no-throw-literal": "error",
                 "no-unused-vars": "off",
                 "@typescript-eslint/no-unused-vars": ["warn", { "args": "none", "varsIgnorePattern": "^_+$" }], // recommended override: provide special options
                 "no-return-await": "off",
-                "@typescript-eslint/return-await": "error",
+                "@typescript-eslint/return-await": "warn",
 
                 // ==== @angular-eslint: typescript ====
-                "@angular-eslint/contextual-lifecycle": "error",
-                "@angular-eslint/no-conflicting-lifecycle": "error",
+                "@angular-eslint/contextual-lifecycle": "warn",
+                "@angular-eslint/no-conflicting-lifecycle": "warn",
                 "@angular-eslint/no-empty-lifecycle-method": "warn",
                 "@angular-eslint/no-output-native": "warn", // related issue: https://github.developer.allianz.io/ilt/ngx-ndbx/issues/3464
-                "@angular-eslint/no-output-on-prefix": "error",
+                "@angular-eslint/no-output-on-prefix": "warn",
                 "@angular-eslint/use-lifecycle-interface": "warn",
-                "@angular-eslint/use-pipe-transform-interface": "error"
+                "@angular-eslint/use-pipe-transform-interface": "warn"
             }
         },
         {
@@ -173,14 +154,17 @@
             "plugins": ["jasmine"],
             "rules": {
                 // ==== jasmine ====
-                "jasmine/new-line-before-expect": "off", // does not ignore arrow fuction bodies
-                "jasmine/no-unsafe-spy": "off", // TODO check with others
+                "jasmine/new-line-before-expect": "off", // recommended override: does not ignore arrow fuction bodies
+                "jasmine/no-unsafe-spy": "off", // recommended override: TODO check
                 "jasmine/prefer-toBeUndefined": "warn",
-                "jasmine/prefer-toHaveBeenCalledWith": "off", // TODO check with others (undefined param not intuitive)
+                "jasmine/prefer-toHaveBeenCalledWith": "off", // recommended override: undefined as param not intuitive
 
-                // ==== @typescript-eslint ====
-                "@typescript-eslint/no-unused-vars": "off",
-                "@angular-eslint/no-empty-lifecycle-method": "off"
+                // ==== @typescript-eslint: supported rules ====
+                "@typescript-eslint/no-unused-vars": "off", // recommended override: used frequently
+                "@typescript-eslint/non-nullable-type-assertion-style": "off", // strict override: incorrectly alters cast types
+
+                // ==== @angular-eslint: typescript ====
+                "@angular-eslint/no-empty-lifecycle-method": "off" // custom override: used frequently
             }
         },
         {
@@ -190,19 +174,17 @@
                 // ==== @angular-eslint: template ====
                 "@angular-eslint/template/accessibility-alt-text": "warn",
                 "@angular-eslint/template/accessibility-elements-content": "warn",
-                "@angular-eslint/template/accessibility-label-for": "warn",
                 "@angular-eslint/template/accessibility-label-has-associated-control": "warn",
-                "@angular-eslint/template/accessibility-table-scope": "error",
+                "@angular-eslint/template/accessibility-table-scope": "warn",
                 "@angular-eslint/template/accessibility-valid-aria": "warn",
                 "@angular-eslint/template/click-events-have-key-events": "warn",
-                "@angular-eslint/template/eqeqeq": ["error", { "allowNullOrUndefined": true }],
+                "@angular-eslint/template/eqeqeq": ["warn", { "allowNullOrUndefined": true }],
                 "@angular-eslint/template/mouse-events-have-key-events": "warn",
                 "@angular-eslint/template/no-any": "warn",
-                "@angular-eslint/template/no-autofocus": "error",
-                "@angular-eslint/template/no-distracting-elements": "error",
-                "@angular-eslint/template/no-duplicate-attributes": "error",
-                "@angular-eslint/template/no-positive-tabindex": "warn",
-                "@angular-eslint/template/use-track-by-function": "off" // TODO check with others
+                "@angular-eslint/template/no-autofocus": "warn",
+                "@angular-eslint/template/no-distracting-elements": "warn",
+                "@angular-eslint/template/no-duplicate-attributes": "warn",
+                "@angular-eslint/template/no-positive-tabindex": "warn"
             }
         }
     ]

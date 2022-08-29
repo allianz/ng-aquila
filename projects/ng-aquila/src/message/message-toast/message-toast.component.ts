@@ -53,7 +53,7 @@ export class NxMessageToastComponent extends BasePortalOutlet implements OnDestr
     ) {
         super();
 
-        this._context = this.config.context as NxMessageToastContext;
+        this._context = this.config.context!;
         this._setAriaLabels();
     }
 

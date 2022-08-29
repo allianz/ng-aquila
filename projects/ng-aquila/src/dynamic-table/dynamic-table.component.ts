@@ -46,7 +46,7 @@ export class NxDynamicTableComponent implements OnInit {
 
     /** Sets the name order and type of columns. */
     @Input('nxDisplayedColumns') set displayedColumns(value: NxDynamicTableColumnDefinition[] | undefined) {
-        this._displayedColumns = value as NxDynamicTableColumnDefinition[];
+        this._displayedColumns = value!;
         this._columnKeys = value ? value.map(column => column.key) : [];
         this._cdr.markForCheck();
     }
@@ -60,7 +60,7 @@ export class NxDynamicTableComponent implements OnInit {
 
     /** @docs-private */
     get dataSource(): NxDynamicTableDataSource {
-        return this._dataSource as NxDynamicTableDataSource;
+        return this._dataSource!;
     }
 
     /** @docs-private */

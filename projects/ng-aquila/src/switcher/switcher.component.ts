@@ -79,7 +79,7 @@ export class NxSwitcherComponent implements ControlValueAccessor, DoCheck, After
         this._cdr.markForCheck();
     }
     get name(): string {
-        return this._name as string;
+        return this._name!;
     }
     private _name: string | null = null;
 

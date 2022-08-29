@@ -111,7 +111,7 @@ export class NxProgressStepperDirective extends CdkStepper implements AfterConte
     /** Steps that belong to the current stepper, excluding ones from nested steppers. */
     readonly steps: QueryList<NxStepComponent> = new QueryList<NxStepComponent>();
 
-    _stepHeader: QueryList<CdkStepHeader> = new QueryList();
+    _stepHeader = new QueryList<CdkStepHeader>();
 
     /** Sets the label on the left side showing the current step label. Used for mobile viewports. */
     @Input() currentStepLabel!: string;

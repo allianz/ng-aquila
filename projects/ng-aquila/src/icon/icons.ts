@@ -53,7 +53,7 @@ export class NxSvgIconFromUrl extends NxSvgIcon {
     constructor(safeUrl: SafeResourceUrl, _httpClient: HttpClient | null, _sanitizer: DomSanitizer, _document: Document) {
         super(_httpClient, _sanitizer, _document);
 
-        this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl) as string;
+        this.url = this._sanitizer.sanitize(SecurityContext.RESOURCE_URL, safeUrl)!;
 
         if (!this.url) {
             throw Error(`The URL provided to NxIconRegistry was not trusted as a resource URL via Angular's DomSanitizer. Attempted URL was "${safeUrl}".`);

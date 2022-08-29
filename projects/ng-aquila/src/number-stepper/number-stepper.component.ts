@@ -167,7 +167,7 @@ export class NxNumberStepperComponent extends MappedStyles implements AfterViewI
 
     /** Sets the value of the number-stepper. */
     @Input('nxValue') set value(value: number | null) {
-        this._value = value as number;
+        this._value = value!;
         if (this._value) {
             this.setInputValue(this._value);
         } else {

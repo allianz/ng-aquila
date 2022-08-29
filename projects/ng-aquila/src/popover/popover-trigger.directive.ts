@@ -84,7 +84,7 @@ export function getNxPopoverInvalidDirectionError(direction: string) {
 })
 export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnInit {
     private overlayRef!: OverlayRef | null;
-    private portal!: TemplatePortal<any>;
+    private portal!: TemplatePortal;
     private readonly _overlayDestroyed = new Subject<void>();
     private _positionStrategy!: PositionStrategy;
     private _embeddedViewRef!: EmbeddedViewRef<any> | null;
@@ -127,7 +127,7 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         }
     }
     get closeable(): boolean {
-        return this._closeable as boolean;
+        return this._closeable!;
     }
     private _closeable: boolean | null = null;
 
@@ -327,12 +327,12 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
         if (!this.createOverlay().hasAttached()) {
             this._embeddedViewRef = this.createOverlay().attach(this.portal);
 
-            const element = this.getPopoverContainer() as HTMLElement;
+            const element = this.getPopoverContainer()!;
             this._focusTrap = this._focusTrapFactory.create(element);
             this._elementFocusedBeforePopoverWasOpened = this.elementRef.nativeElement;
 
-            this._focusMonitor.monitor(element.querySelector('.nx-popover__content') as HTMLElement);
-            const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon') as HTMLElement;
+            this._focusMonitor.monitor(element.querySelector('.nx-popover__content')!);
+            const closeIcon: HTMLElement = element.querySelector('.nx-popover__close-icon')!;
             if (closeIcon) {
                 this._focusMonitor.monitor(closeIcon);
             }
@@ -366,8 +366,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private closePopover(): void {
         if (this.overlayRef!.hasAttached()) {
             const element = this.getPopoverContainer();
-            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content') as HTMLElement);
-            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon') as HTMLElement);
+            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__content')!);
+            this._focusMonitor.stopMonitoring(element!.querySelector('.nx-popover__close-icon')!);
 
             this._returnFocusAfterPopover();
             this.overlayRef!.detach();

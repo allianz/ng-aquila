@@ -60,7 +60,7 @@ export class FileUploaderValidationExampleComponent
                     );
                 } else if (result.error) {
                     // error handling
-                    this.testForm.controls['documents'].setErrors({
+                    this.testForm.controls.documents.setErrors({
                         serverError: true,
                     });
                 }

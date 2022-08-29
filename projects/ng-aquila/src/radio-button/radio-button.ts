@@ -195,7 +195,7 @@ export class NxRadioGroupComponent implements ControlValueAccessor, AfterContent
     change(value: any) {
         this.value = value;
         this._onChange(value);
-        this.groupValueChange.emit(new NxRadioChange(this._selected as NxRadioComponent, this._value));
+        this.groupValueChange.emit(new NxRadioChange(this._selected!, this._value));
     }
 
     /** @docs-private this is meant to be called by the radio buttons in this group. */
@@ -301,7 +301,7 @@ export class NxRadioComponent implements ControlValueAccessor, OnInit, AfterView
         }
     }
     get name(): string {
-        return this.radioGroup?.name || (this._name as string);
+        return this.radioGroup?.name || this._name!;
     }
     private _name: string | null = null;
 

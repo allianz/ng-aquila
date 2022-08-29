@@ -59,7 +59,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     get _appearance(): AppearanceType {
-        return this._formFieldComponent?.appearance as AppearanceType;
+        return this._formFieldComponent?.appearance as unknown as AppearanceType; // TODO this is not ideal
     }
 
     get _overlayLabel(): string | null | undefined {
@@ -162,7 +162,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     }
 
     /** @docs-private */
-    get elementRef(): ElementRef<any> {
+    get elementRef(): ElementRef {
         return this._elementRef;
     }
 
@@ -218,7 +218,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     listItems: S[] = [];
 
-    selectedItems: Set<S> = new Set();
+    selectedItems = new Set<S>();
 
     id = `nx-multi-select-${id++}`;
 
@@ -486,7 +486,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
 
     _onAttach() {
         this._overlayDir?.positionChange.pipe(take(1)).subscribe(() => {
-            const overlayRef = (this._overlayDir as CdkConnectedOverlay).overlayRef;
+            const overlayRef = this._overlayDir!.overlayRef;
             const positionStrategy = overlayRef.getConfig().positionStrategy as FlexibleConnectedPositionStrategy;
 
             this._updatePositions();

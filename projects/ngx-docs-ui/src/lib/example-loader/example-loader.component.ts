@@ -51,7 +51,7 @@ export class ExampleLoaderComponent {
             const portalHost = new DomPortalOutlet(exampleElement, this._componentFactoryResolver, this._appRef, this._injector, this._document ?? undefined);
             const examplePortal = new ComponentPortal(ExampleViewerComponent, this._viewContainerRef);
             const exampleViewer = portalHost.attach(examplePortal);
-            exampleViewer.instance.example = example as string;
+            exampleViewer.instance.example = example!;
 
             const config = exampleElement.getAttribute('config')?.replace(/'/g, `"`);
             exampleViewer.instance.config = config ? JSON.parse(config) : {};

@@ -42,7 +42,8 @@ export function getScrollStrategyDefaultProviders(config: NxScrollStrategyDefaul
 
 function getFactoryFnByDefaultConfig(
     config: NxScrollStrategyDefaultConfig,
-    componentName: keyof (NxScrollStrategyDefaultConfig['overrides'] & Record<never, never>),
+    // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
+    componentName: keyof (NxScrollStrategyDefaultConfig['overrides'] & Record<never, never>), // workaround: index signature not working
 ): (overlay: Overlay) => () => ScrollStrategy {
     const componentConfig = config.overrides?.[componentName] ?? config;
     return (overlay: Overlay) => getScrollStrategyFactory(componentConfig.scrollStrategy, overlay, componentConfig.scrollStrategyOptions);
@@ -70,9 +71,10 @@ export function getScrollStrategyFactoryProviders(config: NxScrollStrategyFactor
 
 function getFactoryFnByFactoryConfig(
     config: NxScrollStrategyFactoryConfig,
-    componentName: keyof (NxScrollStrategyDefaultConfig['overrides'] & Record<never, never>),
+    // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
+    componentName: keyof (NxScrollStrategyDefaultConfig['overrides'] & Record<never, never>), // workaround: index signature not working
 ): (overlay: Overlay) => () => ScrollStrategy {
-    return (config.overrides?.[componentName] ?? config).scrollStrategyFactory;
+    return config.overrides?.[componentName]?.scrollStrategyFactory ?? config.scrollStrategyFactory;
 }
 
 function getExtraProvidersByFactoryConfig(config: NxScrollStrategyFactoryConfig): FactoryProvider[] {
