@@ -22,10 +22,12 @@
     </ng-container>
 </div>
 
-<div class="labels-container" *ngIf="direction === 'horizontal'">
+<div class="labels-container" *ngIf="direction === 'horizontal'" role="tablist">
     <div
         class="label"
-        [attr.label]="step.label"
+        role="tab"
+        tabindex="-1"
+        [attr.aria-selected]="selectedIndex === i"
         *ngFor="let step of steps; let i = index"
         [ngClass]="{ 'is-disabled': _stepDisabled(i), 'is-selected': selectedIndex === i }"
         (click)="!_stepDisabled(i) && step.select()"

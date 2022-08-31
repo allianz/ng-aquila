@@ -21,6 +21,7 @@ import { NxMultiStepperDirection } from '../progress-stepper.models';
         '[attr.aria-disabled]': 'disabled ? "true" : null',
         role: 'tab',
         '[attr.aria-selected]': 'selected',
+        '[attr.aria-label]': 'label',
     },
 })
 export class NxMultiStepItemComponent extends CdkStepHeader implements OnDestroy {
