@@ -61,7 +61,7 @@ describe('NxvVersionSelectComponent', () => {
         fixture.detectChanges();
         const channels = getContextMenuItems();
         expect(channels).toHaveSize(3);
-        expect(channels[0].textContent).toBe('lts');
+        expect(channels[0].textContent).toContain('lts');
     });
 
     it('should work with InjectionToken', () => {
@@ -70,7 +70,7 @@ describe('NxvVersionSelectComponent', () => {
         fixture.detectChanges();
         const channels = getContextMenuItems();
         expect(channels).toHaveSize(3);
-        expect(channels[0].textContent).toBe('old');
+        expect(channels[0].textContent).toContain('old');
     });
 
     it('should show the version on the current channel', () => {

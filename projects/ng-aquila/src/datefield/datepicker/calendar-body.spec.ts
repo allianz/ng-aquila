@@ -179,8 +179,7 @@ describe('NxCalendarBodyComponent', () => {
         [numCols]="numCols"
         [activeCell]="10"
         (selectedValueChange)="onSelect($event)"
-    >
-    </table>`,
+    ></table>`,
 })
 class StandardCalendarBody {
     label = 'Jan 2017';
@@ -198,7 +197,7 @@ class StandardCalendarBody {
 }
 
 @Component({
-    template: `<table nx-calendar-body [rows]="rows" [allowDisabledSelection]="allowDisabledSelection" (selectedValueChange)="selected = $event"> </table>`,
+    template: `<table nx-calendar-body [rows]="rows" [allowDisabledSelection]="allowDisabledSelection" (selectedValueChange)="selected = $event"></table>`,
 })
 class CalendarBodyWithDisabledCells {
     rows = [[1, 2, 3, 4]].map(r => r.map(d => createCell(d, d % 2 === 0)));
@@ -207,7 +206,7 @@ class CalendarBodyWithDisabledCells {
 }
 
 @Component({
-    template: `<table nx-calendar-body [rows]="rows" [previousItems]="previousItems" [followingItems]="followingItems"> </table>`,
+    template: `<table nx-calendar-body [rows]="rows" [previousItems]="previousItems" [followingItems]="followingItems"></table>`,
 })
 class CalendarBodyWithPreviousAndFollowingCells {
     previousItems = [28, 29, 30];

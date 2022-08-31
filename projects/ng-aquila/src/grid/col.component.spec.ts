@@ -358,7 +358,7 @@ class OffsetTestFourInputsWithZero extends DirectiveTest {}
 @Component({
     template: `<div nxLayout="grid">
         <div nxRow="row">
-            <div [nxCol]="cols" [nxColOrder]="order" [nxColOffset]="offset" [nxAlignSelf]="alignSelf"> Hello World </div>
+            <div [nxCol]="cols" [nxColOrder]="order" [nxColOffset]="offset" [nxAlignSelf]="alignSelf">Hello World</div>
         </div>
     </div>`,
 })

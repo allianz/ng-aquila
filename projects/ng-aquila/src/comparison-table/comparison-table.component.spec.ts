@@ -718,7 +718,7 @@ class BasicComponent extends TableTest {
 }
 
 @Component({
-    template: `<div style="height: 200px; width: 200px; overflow: scroll;"> ${BASIC_COMPARISON_TABLE_TEMPLATE} </div>`,
+    template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicOnPushComponent extends TableTest {
@@ -816,7 +816,7 @@ class DisabledColumnsComponent extends TableTest {
 }
 
 @Component({
-    template: `<div style="height: 200px; width: 200px; overflow: scroll;"> ${BASIC_COMPARISON_TABLE_TEMPLATE} </div>`,
+    template: `<div style="height: 200px; width: 200px; overflow: scroll;">${BASIC_COMPARISON_TABLE_TEMPLATE}</div>`,
 })
 class LongPageWithTableComponent extends TableTest {
     data = [

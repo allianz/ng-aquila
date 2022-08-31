@@ -1,5 +1,5 @@
 <div class="component-overview__header-container">
-    <h1 class="component-overview__header"> {{(componentService.current | async)?.title}} </h1>
+    <h1 class="component-overview__header">{{(componentService.current | async)?.title}}</h1>
     <nx-badge *ngIf="(componentService.current | async)?.expert === true && (componentService.current | async)?.b2c === false" type="active">
         expert component
     </nx-badge>

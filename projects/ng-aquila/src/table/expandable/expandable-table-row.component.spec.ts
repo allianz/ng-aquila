@@ -48,7 +48,7 @@ describe(NxExpandableTableRowComponent.name, () => {
         });
 
         it('renders the content', () => {
-            expect(expandableTableRowElement.nativeElement.textContent).toBe('example content');
+            expect(expandableTableRowElement.nativeElement.textContent).toContain('example content');
         });
     });
 
@@ -118,13 +118,17 @@ describe(NxExpandableTableRowComponent.name, () => {
 });
 
 @Component({
-    template: `<tr nxExpandableTableRow>example content</tr>`,
+    template: `<tr nxExpandableTableRow>
+        example content
+    </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicExpandableTableRowComponent extends ExpandableTableRowTest {}
 
 @Component({
-    template: `<tr nxExpandableTableRow [isExpanded]="isExpanded">example content</tr>`,
+    template: `<tr nxExpandableTableRow [isExpanded]="isExpanded">
+        example content
+    </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ConfigurableExpandableTableRowComponent extends ExpandableTableRowTest {}

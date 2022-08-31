@@ -51,7 +51,7 @@ describe(NxTableRowComponent.name, () => {
         });
 
         it('renders the content', () => {
-            expect(tableRowElement.nativeElement.textContent).toBe('example content');
+            expect(tableRowElement.nativeElement.textContent).toContain('example content');
         });
 
         it('is not selectable', () => {
@@ -201,7 +201,9 @@ describe(NxTableRowComponent.name, () => {
 });
 
 @Component({
-    template: `<tr nxTableRow>example content</tr>`,
+    template: `<tr nxTableRow>
+        example content
+    </tr>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class BasicTableRowComponent extends TableRowTest {}

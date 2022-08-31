@@ -3,7 +3,7 @@ import { NxDialogService, NxModalRef } from '@aposin/ng-aquila/modal';
 
 @Component({
     template: `<div class="u-text-center">
-        <h3>Modal Dialog from a component </h3>
+        <h3>Modal Dialog from a component</h3>
         <p>
             Any content can be included in a modal view and styled as necessary.
         </p>

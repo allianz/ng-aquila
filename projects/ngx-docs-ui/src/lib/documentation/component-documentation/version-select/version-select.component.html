@@ -11,7 +11,7 @@
 </button>
 
 <nx-context-menu #nxvVersionSelect="nxContextMenu">
-    <button nxContextMenuItem type="button" *ngFor="let channel of versions?.channels" (click)="changeVersion($event)" [value]="channel.name">{{
-        channel.name
-    }}</button>
+    <button nxContextMenuItem type="button" *ngFor="let channel of versions?.channels" (click)="changeVersion($event)" [value]="channel.name">
+        {{ channel.name }}
+    </button>
 </nx-context-menu>

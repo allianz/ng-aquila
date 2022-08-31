@@ -645,7 +645,7 @@ describe('NxPopoverTriggerDirective', () => {
 
 @Component({
     template: `<div style="width: 400px; height: 400px; display: flex; justify-content: center; align-items: center;">
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover" [nxPopoverCloseable]="closeable">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverTrigger="hover" [nxPopoverCloseable]="closeable">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -656,7 +656,7 @@ class PopoverHoverComponent extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -667,7 +667,7 @@ class PopoverClickComponent extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click">Hover</button>
         </div>
 
         <button class="other">Other button</button>
@@ -681,7 +681,7 @@ class PopoverClickShadowDomComponent extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="true">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="true">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -692,7 +692,7 @@ class PopoverShowClose extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -703,7 +703,7 @@ class PopoverHideClose extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [nxPopoverCloseable]="false">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [nxPopoverCloseable]="false">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -714,7 +714,7 @@ class PopoverHideCloseForClick extends PopoverTest {}
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="hover" [nxPopoverCloseable]="false">Hover</button>
         </div>
 
         <nx-popover #popoverHover>
@@ -733,7 +733,8 @@ class PopoverFallBackComponent extends PopoverTest {}
                 [nxPopoverCloseable]="false"
                 [closeOnClickOutside]="closable"
                 [nxPopoverModal]="true"
-                >Hover
+            >
+                Hover
             </button>
         </div>
 
@@ -747,7 +748,7 @@ class ModalPopover extends PopoverTest {
 
 @Component({
     template: `
-        <button [nxPopoverTriggerFor]="popoverLazyloadContent" nxPopoverTrigger="click">click </button>
+        <button [nxPopoverTriggerFor]="popoverLazyloadContent" nxPopoverTrigger="click">click</button>
 
         <nx-popover #popoverLazyloadContent>
             <ng-template nxPopoverContent>
@@ -769,7 +770,8 @@ class LazyloadContent extends PopoverTest {}
             nxPopoverDirection="top"
             (click)="popoverManualOpenFlag = !popoverManualOpenFlag"
             nxPopoverTrigger="manual"
-            >Manual
+        >
+            Manual
         </button>
 
         <nx-popover #popoverManual>
@@ -787,7 +789,7 @@ class ManualTrigger extends PopoverTest {
 
 @Component({
     template: `<div>
-            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable"> Hover </button>
+            <button [nxPopoverTriggerFor]="popoverHover" nxPopoverDirection="right" nxPopoverTrigger="click" [closeOnClickOutside]="closable">Hover</button>
         </div>
 
         <nx-popover #popoverHover> </nx-popover>`,
@@ -798,7 +800,7 @@ class ClickOnDocument extends PopoverTest {
 
 @Component({
     template: `<div cdkScrollable class="scrollWindow" style="padding: 100px; margin: 300px;height: 200px; width: 200px; overflow: auto;">
-            <button [nxPopoverTriggerFor]="popoverInScrollableContainer" nxPopoverTrigger="click"> Click </button>
+            <button [nxPopoverTriggerFor]="popoverInScrollableContainer" nxPopoverTrigger="click">Click</button>
         </div>
 
         <nx-popover #popoverInScrollableContainer> </nx-popover>`,

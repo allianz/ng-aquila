@@ -919,7 +919,7 @@ describe('NxTooltipComponent', () => {
 
 @Component({
     selector: 'nx-app',
-    template: `<button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
+    template: `<button #button *ngIf="showButton" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>`,
 })
 class BasicTooltipDemo {
     position = 'bottom';
@@ -937,7 +937,7 @@ class BasicTooltipDemo {
         style="padding: 100px; margin: 300px;
                                height: 200px; width: 200px; overflow: auto;"
     >
-        <button *ngIf="showButton" style="margin-bottom: 600px" [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>
+        <button *ngIf="showButton" style="margin-bottom: 600px" [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>
     </div>`,
 })
 class ScrollableTooltipDemo {
@@ -960,7 +960,7 @@ class ScrollableTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: `<button [nxTooltip]="message" [nxTooltipPosition]="position"> Button </button>`,
+    template: `<button [nxTooltip]="message" [nxTooltipPosition]="position">Button</button>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class OnPushTooltipDemo {
@@ -970,7 +970,7 @@ class OnPushTooltipDemo {
 
 @Component({
     selector: 'nx-app',
-    template: `<button *ngFor="let tooltip of tooltips" [nxTooltip]="tooltip"> Button {{ tooltip }} </button>`,
+    template: `<button *ngFor="let tooltip of tooltips" [nxTooltip]="tooltip">Button {{ tooltip }}</button>`,
 })
 class DynamicTooltipsDemo {
     tooltips: string[] = [];
@@ -1018,7 +1018,7 @@ class TooltipDispose {
 @Component({
     selector: 'nx-app',
     template: `
-        <button #button [nxTooltip]="message" [nxTooltipSelectable]="selectable"> Button </button>
+        <button #button [nxTooltip]="message" [nxTooltipSelectable]="selectable">Button</button>
         <input #input [nxTooltipSelectable]="selectable" nxTooltip="Something" />
 
         <textarea #textarea [nxTooltipSelectable]="selectable" nxTooltip="Another thing"></textarea>

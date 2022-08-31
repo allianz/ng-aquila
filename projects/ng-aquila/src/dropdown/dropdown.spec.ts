@@ -1634,12 +1634,12 @@ class ReactiveBindingDropdownComponent extends DropdownTest {
             </nx-dropdown>
             <div class="c-notification c-notification--error" nxFormfieldError>
                 <div class="c-notification__content">
-                    <p class="c-copy "> Please select a value </p>
+                    <p class="c-copy ">Please select a value</p>
                 </div>
             </div>
             <div class="c-notification c-notification--info" nxFormfieldNote>
                 <div class="c-notification__content">
-                    <p class="c-copy "> This field is required </p>
+                    <p class="c-copy ">This field is required</p>
                 </div>
             </div>
         </nx-formfield>

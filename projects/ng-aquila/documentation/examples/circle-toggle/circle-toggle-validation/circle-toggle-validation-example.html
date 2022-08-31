@@ -1,4 +1,4 @@
-<h3> Radio group </h3>
+<h3>Radio group</h3>
 <div class="container">
     <form novalidate [formGroup]="testForm">
         <nx-circle-toggle-group
@@ -17,16 +17,16 @@
                 Please make a choice.
             </nx-error>
         </nx-circle-toggle-group>
-        <button nxButton="small-medium" type="submit" class="nx-margin-top-xs"
-            >Submit</button
-        >
+        <button nxButton="small-medium" type="submit" class="nx-margin-top-xs">
+            Submit
+        </button>
     </form>
 </div>
 <p>Form value: {{ testForm.value | json }}</p>
 <p>Form status: {{ testForm.status | json }}</p>
 
 <hr />
-<h3> Checkbox </h3>
+<h3>Checkbox</h3>
 <form novalidate [formGroup]="testForm2">
     <nx-circle-toggle
         formControlName="heart"
@@ -39,7 +39,7 @@
 </form>
 
 <hr />
-<h3> Cross field validation Checkbox </h3>
+<h3>Cross field validation Checkbox</h3>
 
 <form novalidate [formGroup]="testForm3">
     <nx-circle-toggle

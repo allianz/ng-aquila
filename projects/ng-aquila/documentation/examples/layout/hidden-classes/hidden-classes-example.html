@@ -6,8 +6,9 @@
                 nxHeaderCell
                 *ngFor="let breakpoint of breakpoints; let i = index"
                 [ngStyle]="{ background: 'var(--documentation-grid-' + breakpoint.name + '-color)'}"
-                >{{ breakpoint.name }}</th
             >
+                {{ breakpoint.name }}
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +18,9 @@
                 <td
                     *ngIf="breakpoint.prefix === col.prefix; else visible"
                     nxTableCell
-                    >hidden</td
                 >
+                    hidden
+                </td>
                 <ng-template #visible>
                     <td nxTableCell class="visible">visible</td>
                 </ng-template>

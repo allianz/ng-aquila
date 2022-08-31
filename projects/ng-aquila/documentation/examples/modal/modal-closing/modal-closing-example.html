@@ -2,8 +2,9 @@
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
     (click)="openFromTemplate()"
-    >open modal</button
 >
+    open modal
+</button>
 
 <br />
 
@@ -11,13 +12,12 @@ The user clicked on: {{actionResult}}
 
 <ng-template #template>
     <div nxModalContent>
-        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m"
-            >Modal from a template</h3
-        >
-        <p nxCopytext="small" class="nx-margin-bottom-2m"
-            >This content is placed within the
-            <code>nx-modal-container</code></p
-        >
+        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">
+            Modal from a template
+        </h3>
+        <p nxCopytext="small" class="nx-margin-bottom-2m">
+            This content is placed within the <code>nx-modal-container</code>
+        </p>
     </div>
     <div nxModalActions>
         <button
@@ -25,14 +25,16 @@ The user clicked on: {{actionResult}}
             class="nx-margin-bottom-0 nx-margin-right-xs"
             nxButton="small secondary"
             type="button"
-            >Cancel</button
         >
+            Cancel
+        </button>
         <button
             nxModalClose="proceed"
             class="nx-margin-bottom-0"
             nxButton="small"
             type="button"
-            >Proceed</button
         >
+            Proceed
+        </button>
     </div>
 </ng-template>

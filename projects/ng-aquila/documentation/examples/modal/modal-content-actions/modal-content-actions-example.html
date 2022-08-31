@@ -2,8 +2,9 @@
     nxButton
     class="nx-margin-right-xs nx-margin-bottom-m"
     (click)="openFromTemplate()"
-    >open dialog</button
 >
+    open dialog
+</button>
 
 <br />
 
@@ -11,21 +12,21 @@ The user clicked on: {{actionResult}}
 
 <ng-template #template>
     <div nxModalContent>
-        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m"
-            >Modal with Disclaimer</h3
-        >
+        <h3 nxHeadline="subsection-medium" class="nx-margin-bottom-3m">
+            Modal with Disclaimer
+        </h3>
 
-        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold"
-            >Conditions and Disclaimer</p
-        >
+        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold">
+            Conditions and Disclaimer
+        </p>
         <p nxCopytext class="nx-margin-bottom-m">
             Some copy text that describes what this overlay is all about. This
             text provides the user with additional information and lorem ipsum
             dolor is max. three lines long.
         </p>
-        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold"
-            >In case of an accident</p
-        >
+        <p nxCopytext class="nx-margin-bottom-s nx-font-weight-bold">
+            In case of an accident
+        </p>
         <p nxCopytext class="nx-margin-bottom-m">
             Some copy text that describes what this overlay is all about. Tdiam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
@@ -45,14 +46,16 @@ The user clicked on: {{actionResult}}
             class="nx-margin-bottom-0 nx-margin-right-xs"
             nxButton="small secondary"
             type="button"
-            >Disagree</button
         >
+            Disagree
+        </button>
         <button
             nxModalClose="agree"
             class="nx-margin-bottom-0"
             nxButton="small"
             type="button"
-            >Agree</button
         >
+            Agree
+        </button>
     </div>
 </ng-template>

@@ -2,12 +2,12 @@
     <table nxTable class="nx-table--scrollable">
         <thead>
             <tr nxTableRow>
-                <th nxHeaderCell> Product </th>
-                <th nxHeaderCell> Contract Number </th>
-                <th nxHeaderCell> Description </th>
-                <th nxHeaderCell> Website </th>
-                <th nxHeaderCell> Ending At </th>
-                <th nxHeaderCell> Status </th>
+                <th nxHeaderCell>Product</th>
+                <th nxHeaderCell>Contract Number</th>
+                <th nxHeaderCell>Description</th>
+                <th nxHeaderCell>Website</th>
+                <th nxHeaderCell>Ending At</th>
+                <th nxHeaderCell>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -19,11 +19,11 @@
                     <nx-link><a routerLink="#">{{item.website}}</a></nx-link>
                 </td>
                 <td nxTableCell>{{item.endingAt}}</td>
-                <td nxTableCell
-                    ><nx-badge [type]="item.status"
+                <td nxTableCell>
+                    <nx-badge [type]="item.status"
                         >{{item.statusText}}</nx-badge
-                    ></td
-                >
+                    >
+                </td>
             </tr>
         </tbody>
     </table>

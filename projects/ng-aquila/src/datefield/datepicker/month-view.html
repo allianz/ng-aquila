@@ -1,8 +1,10 @@
 <table class="nx-calendar-table">
     <thead class="nx-calendar-table-head">
-        <tr> <th class="nx-calendar-table-header" *ngFor="let day of _weekdays" [attr.aria-label]="day.long">{{day.narrow}}</th></tr>
-        <tr> </tr
-    ></thead>
+        <tr>
+            <th class="nx-calendar-table-header" *ngFor="let day of _weekdays" [attr.aria-label]="day.long">{{day.narrow}}</th>
+        </tr>
+        <tr></tr>
+    </thead>
 
     <tbody
         nx-calendar-body
@@ -18,6 +20,5 @@
         (selectedValueChangeToPrevious)="_dateSelected($event, -1)"
         (selectedValueChangeToFollowing)="_dateSelected($event, 1)"
         (keydown)="_handleCalendarBodyKeydown($event)"
-    >
-    </tbody>
+    ></tbody>
 </table>

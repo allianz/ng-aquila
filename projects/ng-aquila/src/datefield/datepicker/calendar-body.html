@@ -14,7 +14,7 @@
             [class.nx-calendar-body-disabled]="!item.enabled"
             (click)="_previousCellClicked(item)"
         >
-            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content"> {{ item.displayValue }} </div>
+            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
         </td>
     </ng-container>
 
@@ -48,7 +48,7 @@
             [class.nx-calendar-body-disabled]="!item.enabled"
             (click)="_followingCellClicked(item)"
         >
-            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content"> {{ item.displayValue }} </div>
+            <div aria-hidden="true" class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
         </td>
     </ng-container>
 </tr>
@@ -59,6 +59,6 @@
 -->
 <tr *ngFor="let row of _followingRows" aria-hidden="true">
     <td *ngFor="let item of row" class="nx-calendar-adjacent-cell" [class.nx-calendar-body-disabled]="!item.enabled" (click)="_followingCellClicked(item)">
-        <div class="nx-calendar-adjacent-cell-content"> {{ item.displayValue }} </div>
+        <div class="nx-calendar-adjacent-cell-content">{{ item.displayValue }}</div>
     </td>
 </tr>

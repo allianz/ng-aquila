@@ -394,10 +394,10 @@ class NgModelBindingAutocompleteComponent extends AutocompleteComponent {
                 <input nxInput type="text" [nxAutocomplete]="auto1" [nxAutocompleteItems]="searchFunction" formControlName="autocomplete" />
                 <nx-autocomplete #auto1></nx-autocomplete>
                 <div class="c-notification c-notification--error" nxFormfieldError>
-                    <div class="c-notification__content"> </div>
+                    <div class="c-notification__content"></div>
                 </div>
                 <div class="c-notification c-notification--info" nxFormfieldNote>
-                    <div class="c-notification__content"> </div>
+                    <div class="c-notification__content"></div>
                 </div>
             </nx-formfield>
         </form>

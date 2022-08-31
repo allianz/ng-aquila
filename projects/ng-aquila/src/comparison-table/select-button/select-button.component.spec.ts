@@ -233,8 +233,9 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                        >Click</button
                     >
+                        Click
+                    </button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
@@ -245,8 +246,9 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                        >Click</button
                     >
+                        Click
+                    </button>
                 </nx-comparison-table-cell>
                 <nx-comparison-table-cell type="header">
                     This is a header cell
@@ -257,8 +259,9 @@ class BasicComponent extends ToggleTest {}
                         [unselectedLabel]="unselectedLabel"
                         [unselectedClassNames]="unselectedClassNames"
                         [selectedClassNames]="selectedClassNames"
-                        >Click</button
                     >
+                        Click
+                    </button>
                 </nx-comparison-table-cell>
             </ng-container>
             <ng-container nxComparisonTableRow>

@@ -4,7 +4,7 @@
     "useTabs": false,
     "arrowParens": "avoid",
     "bracketSpacing": true,
-    "htmlWhitespaceSensitivity": "strict",
+    "htmlWhitespaceSensitivity": "css",
     "printWidth": 160,
     "trailingComma": "all",
     "semi": true,

@@ -12,10 +12,10 @@
                         ariaLabel="Toggle all rows"
                     ></nx-toggle-button>
                 </th>
-                <th nxHeaderCell> Product </th>
-                <th nxHeaderCell> Contract number </th>
-                <th nxHeaderCell> Ending date </th>
-                <th nxHeaderCell> Status </th>
+                <th nxHeaderCell>Product</th>
+                <th nxHeaderCell>Contract number</th>
+                <th nxHeaderCell>Ending date</th>
+                <th nxHeaderCell>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -30,11 +30,11 @@
                     <td nxTableCell>{{item.product}}</td>
                     <td nxTableCell>{{item.contractNumber}}</td>
                     <td nxTableCell>{{item.endingAt}}</td>
-                    <td nxTableCell
-                        ><nx-badge [type]="item.status"
+                    <td nxTableCell>
+                        <nx-badge [type]="item.status"
                             >{{item.statusText}}</nx-badge
-                        ></td
-                    >
+                        >
+                    </td>
                 </tr>
                 <tr nxExpandableTableRow #expandableRow>
                     <td nxExpandableTableCell></td>

@@ -1412,13 +1412,13 @@ describe('nxContextMenu', () => {
     template: `
         <button nxButton="tertiary small" [nxContextMenuTriggerFor]="menu" #triggerEl>Toggle menu</button>
         <nx-context-menu #menu="nxContextMenu" [class]="panelClass" (closed)="closeCallback($event)">
-            <button nxContextMenuItem> Item </button>
-            <button nxContextMenuItem disabled> Disabled </button>
+            <button nxContextMenuItem>Item</button>
+            <button nxContextMenuItem disabled>Disabled</button>
             <button nxContextMenuItem>
                 <nx-icon name="settings"></nx-icon>
                 Item with an icon
             </button>
-            <button *ngFor="let item of extraItems" nxContextMenuItem> {{ item }} </button>
+            <button *ngFor="let item of extraItems" nxContextMenuItem>{{ item }}</button>
         </nx-context-menu>
     `,
 })
@@ -1434,9 +1434,9 @@ class SimpleMenu {
 
 @Component({
     template: `
-        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="root" #rootTrigger="nxContextMenuTrigger" #rootTriggerEl #rootTriggerButton
-            >Toggle menu</button
-        >
+        <button nxButton="tertiary small" [nxContextMenuTriggerFor]="root" #rootTrigger="nxContextMenuTrigger" #rootTriggerEl #rootTriggerButton>
+            Toggle menu
+        </button>
 
         <button [nxContextMenuTriggerFor]="levelTwo" #alternateTrigger="nxContextMenuTrigger">Toggle alternate menu</button>
 
@@ -1599,7 +1599,7 @@ class DynamicPanelMenu {
     template: `
         <div #triggerArea [nxContextMenuTriggerFor]="menu" nxContextMenuTriggerMode="cursor" style="height: 200px;"></div>
         <nx-context-menu #menu="nxContextMenu">
-            <button nxContextMenuItem> Item </button>
+            <button nxContextMenuItem>Item</button>
         </nx-context-menu>
     `,
 })

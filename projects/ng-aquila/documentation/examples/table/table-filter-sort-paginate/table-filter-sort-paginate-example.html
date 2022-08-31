@@ -7,17 +7,17 @@
         />
     </nx-formfield>
 
-    <p nxCopytext class="nx-margin-bottom-2xs"
-        >Matching items: {{currentlyAvailableElements.length}}</p
-    >
+    <p nxCopytext class="nx-margin-bottom-2xs">
+        Matching items: {{currentlyAvailableElements.length}}
+    </p>
     <div class="scroll-container">
         <table nxTable nxSort (sortChange)="sortTable($event)">
             <thead>
                 <tr nxTableRow>
                     <th nxHeaderCell nxSortHeaderCell="product">Product</th>
-                    <th nxHeaderCell nxSortHeaderCell="contractNumber"
-                        >Contract Number</th
-                    >
+                    <th nxHeaderCell nxSortHeaderCell="contractNumber">
+                        Contract Number
+                    </th>
                     <th nxHeaderCell>Description</th>
                     <th nxHeaderCell>Website</th>
                     <th nxHeaderCell nxSortHeaderCell="endingAt">Ending At</th>
@@ -34,14 +34,14 @@
                             ><a routerLink="#">{{item.website}}</a></nx-link
                         >
                     </td>
-                    <td nxTableCell
-                        >{{ item.endingAt | date: 'dd/MM/yyyy' }}</td
-                    >
-                    <td nxTableCell
-                        ><nx-badge [type]="item.status"
+                    <td nxTableCell>
+                        {{ item.endingAt | date: 'dd/MM/yyyy' }}
+                    </td>
+                    <td nxTableCell>
+                        <nx-badge [type]="item.status"
                             >{{item.statusText}}</nx-badge
-                        ></td
-                    >
+                        >
+                    </td>
                 </tr>
             </tbody>
         </table>

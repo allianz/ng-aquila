@@ -24,7 +24,7 @@
 
 <div class="property-container">
     <div *ngFor="let prop of displayedProperties; trackBy: trackProperties">
-        <p class="property-title"> {{ prop.name.replace('--', '') }}</p>
+        <p class="property-title">{{ prop.name.replace('--', '') }}</p>
         <div *ngIf="prop.type === 'color'" class="picker-container">
             <input
                 class="picker"

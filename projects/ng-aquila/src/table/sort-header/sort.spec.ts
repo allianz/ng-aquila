@@ -281,8 +281,8 @@ describe('NxSort', () => {
         <table nxTable nxSort (sortChange)="sortTable($event)">
             <thead>
                 <tr nxTableRow>
-                    <th nxHeaderCell nxSortHeaderCell="name" #nameHeader id="nameHeader"> Name </th>
-                    <th nxHeaderCell nxSortHeaderCell="count" #countHeader id="countHeader"> Count </th>
+                    <th nxHeaderCell nxSortHeaderCell="name" #nameHeader id="nameHeader">Name</th>
+                    <th nxHeaderCell nxSortHeaderCell="count" #countHeader id="countHeader">Count</th>
                 </tr>
             </thead>
         </table>
@@ -295,8 +295,8 @@ class BasicSortTableComponent extends SortHeaderTest {}
         <table nxTable nxSort (sortChange)="sortTable($event)" [(active)]="active" [(direction)]="direction">
             <thead>
                 <tr nxTableRow>
-                    <th nxHeaderCell nxSortHeaderCell="name" #nameHeader id="nameHeader"> Name </th>
-                    <th nxHeaderCell nxSortHeaderCell="count" #countHeader id="countHeader"> Count </th>
+                    <th nxHeaderCell nxSortHeaderCell="name" #nameHeader id="nameHeader">Name</th>
+                    <th nxHeaderCell nxSortHeaderCell="count" #countHeader id="countHeader">Count</th>
                 </tr>
             </thead>
         </table>

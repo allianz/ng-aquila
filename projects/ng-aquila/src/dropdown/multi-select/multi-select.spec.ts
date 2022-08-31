@@ -757,9 +757,9 @@ class ComplexMultiSelectComponent extends DropdownTest {
 }
 
 @Component({
-    template: `<form [formGroup]="testForm"
-        ><nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield
-    ></form>`,
+    template: `<form [formGroup]="testForm">
+        <nx-formfield> <nx-multi-select formControlName="testControl" [options]="options"></nx-multi-select> </nx-formfield>
+    </form>`,
 })
 class ReactiveMultiSelectComponent extends DropdownTest {
     options = ['BMW', 'Audi', 'Volvo', 'Mini'];
