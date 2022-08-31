@@ -46,6 +46,7 @@
         [attr.aria-activedescendant]="_getAriaActiveDescendant()"
         tabindex="-1"
         [attr.aria-labelledby]="_getAriaLabelledBy()"
+        #panelContent
     >
         <div *ngIf="!_isOutline && _overlayLabel" class="panel-header" #panelHeader>
             {{ _overlayLabel }}

@@ -192,6 +192,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
     @ViewChild('filterInput') private _filterInput?: ElementRef;
     @ViewChild('itemsList') private _optionsList?: ElementRef;
     @ViewChild('panelHeader') private _panelHeader?: ElementRef;
+    @ViewChild('panelContent') private _panelContent?: ElementRef;
 
     @ViewChild(CdkConnectedOverlay, { static: true }) private _overlayDir?: CdkConnectedOverlay;
 
@@ -494,6 +495,7 @@ export class NxMultiSelectComponent<S, T> implements ControlValueAccessor, NxFor
             overlayRef.updatePosition();
 
             this._filterInput?.nativeElement.focus();
+            this._panelContent?.nativeElement.focus();
 
             if (this._openedBy === 'keyboard') {
                 this._keyManager.setFirstItemActive();
