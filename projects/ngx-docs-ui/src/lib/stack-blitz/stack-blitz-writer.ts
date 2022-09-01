@@ -68,7 +68,7 @@ const dependencies = {
     iban: '^0.0.14',
     moment: '^2.29.1',
     rxjs: '^6.6.7',
-    tslib: '^2.3.1',
+    tslib: '^2.3.0',
     'zone.js': '~0.11.4',
 };
 
@@ -91,7 +91,7 @@ const testDependencies = {
     'jasmine-spec-reporter': '^7.0.0',
     moment: '^2.29.1',
     rxjs: '^6.6.7',
-    tslib: '^2.3.1',
+    tslib: '^2.3.0',
     'zone.js': '~0.11.4',
 };
 
