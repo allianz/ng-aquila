@@ -62,7 +62,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     @ViewChild('nativeInputFile', { static: false }) nativeInputFile!: ElementRef;
 
     /** @docs-private */
-    @ContentChild(NxLabelComponent, { static: false }) _label!: NxLabelComponent;
+    @ContentChild(NxLabelComponent, { static: false }) _label?: NxLabelComponent;
 
     /** @docs-private */
     @ContentChildren(NxFileUploaderHintDirective) _hintChildren!: QueryList<NxFileUploaderHintDirective>;
@@ -500,7 +500,7 @@ export class NxFileUploaderComponent implements ControlValueAccessor, AfterConte
     private _syncDescribedByIds() {
         let ids: string[] = [];
         ids = this._hintChildren.map(hint => hint.id);
-        ids = [this._label.id, ...ids];
+        ids = this._label ? [this._label.id, ...ids] : ids;
         ids = [...this._errorList.map(error => error.id), ...ids];
         this.button?.setDescribedByIds(ids);
     }
