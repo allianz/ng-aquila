@@ -118,7 +118,7 @@ const _defaultValueFormatterFn: NxDropdownValueFormatterFn = value => (value == 
         { provide: NxFormfieldControl, useExisting: NxDropdownComponent },
     ],
     host: {
-        role: 'button',
+        role: 'combobox',
         '[class.nx-dropdown]': 'true',
         '[class.is-filled]': 'hasValue',
         '[class.has-focus]': 'focused',
