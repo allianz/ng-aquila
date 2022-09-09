@@ -95,6 +95,19 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
     private readonly _manualListeners = new Map<string, EventListenerOrEventListenerObject>();
     private readonly _possiblePopoverDirections: PopoverDirection[] = ['bottom', 'top', 'left', 'right'];
     private _removeEventListener!: () => void;
+
+    closeOnLeftViewport = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    this._ngZone.run(() => this.overlayRef?.detach());
+                }
+                this.closeOnLeftViewport.disconnect();
+            });
+        },
+        { threshold: 0.2 },
+    );
+
     /** @docs-private */
     id = 'nx-popover-' + nextId++;
 
@@ -417,6 +430,8 @@ export class NxPopoverTriggerDirective implements AfterViewInit, OnDestroy, OnIn
             const pair = change.connectionPair;
             this.positionOverlay(pair);
             this.positionArrow(pair);
+
+            this.closeOnLeftViewport.observe(this.elementRef.nativeElement);
 
             // These position changes arrive too late,
             // We have to trigger the change detection manually
