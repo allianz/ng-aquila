@@ -14,4 +14,19 @@ export class SliderTickExampleComponent {
     interval = 1;
     min = 0;
     max = 100;
+    longTicksString = '16,32,48,64,80,96';
+    longTicks: number[] = [16, 32, 48, 64, 80, 96];
+
+    toArray() {
+        this.longTicks = this.longTicksString
+            .split(',')
+            .reduce((acc: number[], v) => {
+                const val = parseInt(v, 10);
+                if (!isNaN(val)) {
+                    acc.push(val);
+                }
+
+                return acc;
+            }, []);
+    }
 }

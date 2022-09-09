@@ -25,7 +25,7 @@ import { fromEvent, Subscription } from 'rxjs';
 interface TickItem {
     gapSize: number;
     hideTick: boolean;
-    isPrimary: boolean;
+    isLongTick: boolean;
 }
 
 let nextId = 0;
@@ -66,7 +66,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
      */
     @Input('tickInterval') set tickInterval(value: NumberInput) {
         this._tickInterval = coerceNumberProperty(value);
-        this.ticks = this.getTicks(this.min, this.max, this.step, this._tickInterval);
+        this.ticks = this.getTicks(this.min, this.max, this.step, this._tickInterval, this.longTicks);
         this._cdr.markForCheck();
     }
     get tickInterval(): number {
@@ -105,7 +105,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the minimum value (Default: 0). */
     @Input('nxMin') set min(value: NumberInput) {
         this._min = coerceNumberProperty(value);
-        this.ticks = this.getTicks(this._min, this.max, this.step, this.tickInterval);
+        this.ticks = this.getTicks(this._min, this.max, this.step, this.tickInterval, this.longTicks);
         this._cdr.markForCheck();
     }
     get min(): number {
@@ -116,7 +116,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the maximum value (Default: 100). */
     @Input('nxMax') set max(value: NumberInput) {
         this._max = coerceNumberProperty(value);
-        this.ticks = this.getTicks(this.min, this._max, this.step, this.tickInterval);
+        this.ticks = this.getTicks(this.min, this._max, this.step, this.tickInterval, this.longTicks);
         this._cdr.markForCheck();
     }
     get max(): number {
@@ -127,7 +127,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
     /** Sets the step size by which the value of the slider can be increased or decreased (Default: 1). */
     @Input('nxStep') set step(value: NumberInput) {
         this._step = coerceNumberProperty(value, this._step);
-        this.ticks = this.getTicks(this.min, this.max, this._step, this._tickInterval);
+        this.ticks = this.getTicks(this.min, this.max, this._step, this._tickInterval, this.longTicks);
         if (this._step % 1 !== 0) {
             this._decimalPlaces = this._step.toString().split('.').pop()!.length;
         }
@@ -212,6 +212,19 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return this._hideLabels;
     }
     private _hideLabels = false;
+
+    /** Sets the array of value which will render as long tick (Default: Middle value if present). */
+    @Input('longTicks') set longTicks(value: number[]) {
+        if (this._longTicks !== value) {
+            this._longTicks = value;
+            this.ticks = this.getTicks(this.min, this.max, this.step, this.tickInterval, this._longTicks);
+            this._cdr.markForCheck();
+        }
+    }
+    get longTicks(): number[] {
+        return this._longTicks;
+    }
+    private _longTicks = [0];
 
     /** An event is dispatched on each value change. */
     @Output('nxValueChange') readonly valueChange = new EventEmitter<number>();
@@ -511,7 +524,7 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         return cursor.clientX;
     }
 
-    private getTicks(min: number, max: number, step: number, interval: number): TickItem[] {
+    private getTicks(min: number, max: number, step: number, interval: number, longTick: number[] = []): TickItem[] {
         if (!interval) {
             return [];
         }
@@ -521,12 +534,21 @@ export class NxSliderComponent implements ControlValueAccessor, AfterViewInit, O
         const gapSize = (stepProduct / range) * 100; // %
         const numberOfTicks = Math.floor(100 / gapSize);
         const spaceLeft = 100 - gapSize * numberOfTicks; // %
-        const primaryPoint = range / 2;
+        const hiddenThreshold = 3; // %
 
-        return Array.from({ length: numberOfTicks }, (_, i) => ({
-            gapSize,
-            hideTick: i + 1 === numberOfTicks && spaceLeft <= 3,
-            isPrimary: (i + 1) * stepProduct === primaryPoint,
-        }));
+        if (!longTick.length) {
+            const middleValue = range / 2;
+            longTick.push(middleValue);
+        }
+
+        return Array.from({ length: numberOfTicks }, (_, i) => {
+            const index = i + 1;
+            const value = index * stepProduct;
+            return {
+                gapSize,
+                hideTick: index === numberOfTicks && spaceLeft <= hiddenThreshold,
+                isLongTick: longTick.includes(value),
+            };
+        });
     }
 }

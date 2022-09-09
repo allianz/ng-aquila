@@ -29,7 +29,7 @@
         <div
             *ngFor="let t of ticks"
             class="nx-slider__tick"
-            [class.nx-slider__tick-primary]="t.isPrimary"
+            [class.nx-slider__tick-primary]="t.isLongTick"
             [class.nx-slider__tick-hidden]="t.hideTick"
             [ngStyle]="{ width: t.gapSize + '%' }"
         ></div>
