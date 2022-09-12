@@ -43,8 +43,8 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 .nx-slider__tick-container {
     margin-top: 9px;
     display: flex;
-    border-left: 1px solid v(slider-value-background-color);
-    border-right: 1px solid v(slider-value-background-color);
+    border-left: 1px solid v(slider-tick-color);
+    border-right: 1px solid v(slider-tick-color);
     height: 9px;
     align-items: center;
     overflow: hidden;
@@ -53,7 +53,7 @@ $wrapper-padding-bottom: (($handle-diameter - $background-height) * 0.5) + nx-sp
 .nx-slider__tick {
     height: 5px;
     display: flex;
-    border-right: 1px solid v(slider-value-background-color);
+    border-right: 1px solid v(slider-tick-color);
 
     &.nx-slider__tick-primary {
         height: 9px;
