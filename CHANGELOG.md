@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [13.9.0](https://github.com/allianz/ng-aquila/compare/v13.8.0...v13.9.0) (2022-09-13)
+
+
+### Bug Fixes
+
+* **dropdown:** support null and undefined ([c030431](https://github.com/allianz/ng-aquila/commit/c030431a3622276f5d1535a39b803ba6a57c8b9a))
+* **file-uploader:** add null checks ([60aafac](https://github.com/allianz/ng-aquila/commit/60aafacceffe52d26295ecbc9dcb2e7417b0ae19))
+* **file-uploader:** avoid label undefined error ([6fa0f8f](https://github.com/allianz/ng-aquila/commit/6fa0f8f48935486db083185263e835e47c86c450))
+* **file-uploader:** change file name font weight to regular ([25d6adf](https://github.com/allianz/ng-aquila/commit/25d6adf75f1e27d6c7e887ca0b7dfb0be425632b))
+* **footer:** add keyboard focus outline to links ([bd0f6ac](https://github.com/allianz/ng-aquila/commit/bd0f6ac1ce846c888a9899e67e81c1a4b0c22efe))
+* **footer:** add role attribute ([c99754e](https://github.com/allianz/ng-aquila/commit/c99754e620deeb1f6e06066b1f5fe8c32a0fc0d3))
+* **formfield:** align html title with label ([0501a52](https://github.com/allianz/ng-aquila/commit/0501a5266ac38175bccdf544782ea61da0fbbaf4))
+* **link:** top align icons ([d39b1bd](https://github.com/allianz/ng-aquila/commit/d39b1bdb43fe440c0743f17d0369280485f1e642))
+* **mask:** prevent undefined error from unordered setter ([5c381af](https://github.com/allianz/ng-aquila/commit/5c381afd1a01ccc847b32557b823935639cf8219))
+* **modal:** prevent horizontal scroll on mobile view, modal style ([925b5b8](https://github.com/allianz/ng-aquila/commit/925b5b84ce7f99dc7be17b333d1d7485e1c66394))
+* **multi-select:** add open method ([8155532](https://github.com/allianz/ng-aquila/commit/81555321c2a1cb3e6e0d1bbdfaed58d94b459fd4))
+* **multi-select:** make reactive form disable work ([3dedbe8](https://github.com/allianz/ng-aquila/commit/3dedbe8006ff41c6fc3c4bd55cd326c4558e17a0))
+* **multi-select:** make screenreader work when focus on options ([15b99ed](https://github.com/allianz/ng-aquila/commit/15b99edff3ffd62790cd472aeb88faee06c9ff26))
+* **multi-step:** add aria attributes ([b0e97f2](https://github.com/allianz/ng-aquila/commit/b0e97f21322d207fbae539f4752eadfa8f73e074))
+* **phone-input:** update country, call formatter when countryCode changed ([0d67679](https://github.com/allianz/ng-aquila/commit/0d676790fc82d42ac31f32c40134e1c62c88cfec))
+* **popover:** hide popover when left viewport ([c4e474a](https://github.com/allianz/ng-aquila/commit/c4e474a8d0e583b6dfd8b2636a32c0a1d31a77f3))
+* **tabs:** remove tab area focus ([d886209](https://github.com/allianz/ng-aquila/commit/d8862091702933fcc3c1a7e76e0f4f268aab9402))
+* **circle-toggle-group:** preset model is not reflected in view ([3f806bd](https://github.com/allianz/ng-aquila/commit/3f806bd617262324b857f70a5862b250be490c8c))
+
+
+
+### Features
+
+* **comparison-table:** add recommendation table example ([acf95de](https://github.com/allianz/ng-aquila/commit/acf95de1f1ac21a4def412782fe605fc7e6d6a41))
+* **data-display:** add horizontal column layout ([cd5ea34](https://github.com/allianz/ng-aquila/commit/cd5ea34500d1c6f4cb45a06efbb7eb3b98f03da8))
+* **data-display:** add label column span input ([f866f3e](https://github.com/allianz/ng-aquila/commit/f866f3e10b48333365c660d710e72ebc8149a44c))
+* **datefield:** add today mark ([d644c07](https://github.com/allianz/ng-aquila/commit/d644c0705d0c524269e08a7777bce9a466d85544))
+* **file-uploader:** hide dropzone on mobile ([4b0d20c](https://github.com/allianz/ng-aquila/commit/4b0d20c9256220062a2287af6e106c9ecf765984))
+* **footer:** add copyright input and default text ([79bab34](https://github.com/allianz/ng-aquila/commit/79bab346c31a0638433340d2b57fb12f0fea7cf0))
+* **icons:** add relation icon svg ([d0c270e](https://github.com/allianz/ng-aquila/commit/d0c270ecc1f3d2f2cb0376b9106a2c2e63fa0077))
+* **multi-select:** add selectionChange api ([6886631](https://github.com/allianz/ng-aquila/commit/688663170358603e4d4c5540151aa05645a4d78e))
+* **multiselect:** add filter function input ([0d67d80](https://github.com/allianz/ng-aquila/commit/0d67d80196f4530e3dc93f6aa69ee088e8458252))
+* **rating:** default blue color ([ff90255](https://github.com/allianz/ng-aquila/commit/ff902554d07336d26d7d21b8e28c612d03e59a10))
+* **slider:** add tick marker ([cb2ab6f](https://github.com/allianz/ng-aquila/commit/cb2ab6f45ca8fd1f26a8b277838fa52afe34d4c2))
+
+
+
 ## [13.8.0](https://github.com/allianz/ng-aquila/compare/v13.7.0...v13.8.0) (2022-07-15)
 
 ### Features
